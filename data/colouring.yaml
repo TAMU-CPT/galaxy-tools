@@ -1,0 +1,185 @@
+---
+trna:
+  title: "tRNAs"
+  color: "113 188 120"
+  members:
+    - "tRNA"
+terminator:
+  title: "terminator"
+  color: "0 255 0"
+  members:
+    - "terminator"
+morpho:
+  title: "Morphogenesis"
+  color: "135 206 250"
+  members:
+    - "tail\\s*spike"
+    - "fiber"
+    - "neck"
+    - "sheath"
+    - "tube"
+    - "pectin"
+    - "prohead"
+    - "scaffold"
+    - "capsid"
+    - "head"
+    - "head-to-tail joining"
+    - "pre-neck"
+    - "Tape"
+    - "tailspike"
+    - "structural"
+    - "morphogenesis"
+    - "assembly"
+    - "chaperone"
+    - "joining"
+    - "decoration"
+    - "protease"
+    - "frameshift"
+    - "portal"
+  custom:
+    tail:
+      is:
+        - "tail"
+      isnot:
+        - "tail lysozyme"
+    baseplate:
+      is:
+        - "baseplate"
+      isnot:
+        - "lysozyme baseplate"
+dna_rep_recomb:
+  title: "DNA Replication/Recombination"
+  color: "255 255 0"
+  members:
+    - "Clamp"
+    - "DNA binding protein"
+    - "DNA end Protector"
+    - "DNA ligase"
+    - "DexA"
+    - "DnaA"
+    - "DnaB"
+    - "DnaQ"
+    - "Helicase"
+    - "RNA ligase"
+    - "RNaseH"
+    - "RecA"
+    - "RecF"
+    - "Recombination"
+    - "RuvC"
+    - "UvsW"
+    - "UvsY"
+    - "helicase"
+    - "holliday junction"
+    - "phosphoesterase"
+    - "primase"
+    - "recombinase"
+    - "recombination"
+    - "repair"
+    - "single strand annealing"
+    - "topoisomerase"
+    - "whisker"
+    - "sliding"
+    - "methylase"
+    - "methyltransferase"
+    - "mom"
+    - "glucosyl\\s*transferase"
+    - "glycosyl\\s*transferase"
+    - "integrase"
+  custom:
+    polymerase:
+      is: 
+        - "polymerase"
+      isnot: 
+        - "rna polymerase"
+        - "polymerase sigma factor"
+    hnh:
+      is:
+        - "nuclease"
+      isnot:
+        - "HNH"
+        - "homing endonuclease"
+lysis:
+  title: "Lysis"
+  color: "255 0 255"
+  members:
+    - "antiholin"
+    - "holin"
+    - "endolysin"
+    - "spanin"
+    - "peptidoglycan"
+    - "amidase"
+    - "transglycosylase"
+    - "carboxypeptidase"
+  custom:
+    lysozyme:
+      is:
+        - "lysozyme"
+      isnot:
+        - "lysozyme baseplate"
+        - "tail lysozyme"
+regulation:
+  title: "Regulation"
+  color: "255 165 0"
+  members:
+    - "Translational repressor"
+    - "RegA"
+    - "RegB"
+    - "regulatory"
+    - "regulator"
+    - "transcriptional repressor"
+    - "anti-repressor"
+    - "rna"
+    - "rna polymerase"
+    - "Sigma Factor"
+biosynthesis:
+  title: "Biosynthesis"
+  color: "0 0 255"
+  members:
+    - "Deoxynucleoside"
+    - "Deoxyribonucleotidase"
+    - "Deoxyuridine"
+    - "Ribonucleoside-diphoshate reductase"
+    - "Serine kinase"
+    - "threonine kinase"
+    - "cytidine deaminase"
+    - "dUTPase"
+    - "dUTPase"
+    - "deoxynucleotide"
+    - "dihydrofolate reductase"
+    - "glutaredoxin"
+    - "guanylate kinase"
+    - "reductase"
+    - "ribonucleotide reductase"
+    - "thioredoxin"
+    - "thymidylate"
+dna_pack:
+  title: "DNA Packaging"
+  color: "0 255 255"
+  members:
+    - "terminase"
+novel:
+  title: "Novel"
+  color: "170 170 170" # You can specify EITHER artemis #s or proper RGB triplets
+  members:
+    - "Novel"
+hnh:
+  title: "HNH/Homing/GIY-YIG"
+  color: "200 150 100"
+  members:
+    - "HNH"
+    - "homing endonuclease"
+    - "GIY-YIG"
+defense:
+  title: "Defense"
+  color: "200 255 200"
+  members:
+    - "rII"
+    - "rIIA"
+    - "rIIB"
+    - "rex"
+    - "rexA"
+    - "rexB"
+    - "ocr"
+    - "dar"
+    - "darA"
+    - "darB"

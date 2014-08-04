@@ -1,0 +1,7 @@
+##gff-version 3
+Phagey214	CDD	Match	11	63	2.79792e-05	.	0	Dbxref=cd00093
+Phagey214	CDD	Match	11	63	2.79792e-05	.	0	Dbxref=cl17200
+Phagey214	CDD	Match	11	72	2.38819e-11	.	0	Dbxref=pfam13443
+Phagey214	CDD	Match	11	63	6.17049e-06	.	0	Dbxref=smart00530
+Phagey214	CDD	Match	15	47	0.00303136	.	0	Dbxref=COG3093
+Phagey214	CDD	Match	12	62	0.00405861	.	0	Dbxref=TIGR03070

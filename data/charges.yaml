@@ -1,0 +1,10 @@
+---
+charged:
+  background: "rgb(238,0,0)"
+  text: "#000000"
+polar:
+  background: "#0000cc"
+  text: "#ffffff"
+hydrophobic:
+  background: "#ffcc00"
+  text: "#000000"
