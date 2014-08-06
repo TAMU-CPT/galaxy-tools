@@ -6,7 +6,7 @@ use IPC::Run3 qw(run3);
 
 my ( @base, @cmd, $in, $out, $err );
 
-@base = ('perl', 'bin/cpt_feature_export.pl');
+@base = ('python', 'bin/feature-export.py');
 my %result_files = (
   "Default DNA export" => {
     command_line => "--file test-data/inputs/single.gbk --tag CDS ",
@@ -52,8 +52,8 @@ foreach ( keys(%result_files) ) {
     my @diff = ( "diff", $gen, $static );
     my ($in_g, $out_g, $err_g);
     run3 \@diff, \$in_g, \$out_g, \$err_g;
-    if($err_g) { print STDERR "err_g $err_g\n"; }
-    if($out_g) { print STDOUT "out_g $out_g\n"; }
+    #if($err_g) { print STDERR "err_g $err_g\n"; }
+    #if($out_g) { print STDOUT "out_g $out_g\n"; }
     chomp $out_g;
     is( -e $gen, 1, "[$_] Output file must exist"); 
     is( length($out_g), 0, "[$_] Checking validity of output '$file_cmp'" );
