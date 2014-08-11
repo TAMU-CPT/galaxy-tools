@@ -13,16 +13,20 @@ Exports features from a GenBank file
 """
 
 
-def get_id(feature=None):
+def get_id(feature=None, parent_prefix=None):
+    result = ""
+    if parent_prefix is not None:
+        result += parent_prefix + '|'
     if 'locus_tag' in feature.qualifiers:
-        return feature.qualifiers['locus_tag'][0]
+        result += feature.qualifiers['locus_tag'][0]
     elif 'gene' in feature.qualifiers:
-        return feature.qualifiers['gene'][0]
+        result += feature.qualifiers['gene'][0]
     elif 'product' in feature.qualifiers:
-        return feature.qualifiers['product'][0]
+        result += feature.qualifiers['product'][0]
     else:
-        return '%s_%s_%s' % (feature.location.start, feature.location.end,
-                             feature.location.strand)
+        result += '%s_%s_%s' % (feature.location.start, feature.location.end,
+                                feature.location.strand)
+    return result
 
 
 def ensure_location_in_bounds(start=0, end=0, parent_length=0):
@@ -86,7 +90,7 @@ def extract_features(gbk_file=None, tag='CDS', translate=False,
                     seq = tmp.extract(records[i].seq).translate(table=tn_table)
                 else:
                     seq = tmp.extract(records[i].seq)
-                output.append(SeqRecord(seq=seq, id=get_id(feature),
+                output.append(SeqRecord(seq=seq, id=get_id(feature, parent_prefix=records[i].id),
                                         name=get_id(feature),
                                         description=get_id(feature)))
     return output
