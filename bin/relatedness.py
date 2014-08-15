@@ -23,30 +23,31 @@ def top_related(parent=None, blast_results=None, method='n'):
         else:
             hits[hit] = 1
     # Top results
-    top_accessions = []
+    top_accessions = {}
     # Allow different result process methods
     if method == 'sd':
         std = numpy.std(hits.values())
         mean = numpy.mean(hits.values())
         for key, value in hits.iteritems():
             if value > (mean + 2 * std):
-                top_accessions.append(key)
+                top_accessions[key] = value
     else:
         for key, value in reversed(sorted(hits.iteritems(), key=lambda (k, v):
                                           (v, k))):
             if len(top_accessions) > 4:
                 break
             else:
-                top_accessions.append(key)
-
-    print top_accessions
+                top_accessions[key] = value
 
     from Bio import SeqIO
     records = list(SeqIO.parse(parent, "genbank"))
     top_records = []
-    top_names = [
-        ['Name', 'Source', 'Organism']
-    ]
+    top_names = {
+	'Sheet1': {
+            'header': ['Name', 'Source', 'Organism', 'Number of Hits'],
+            'data': [],
+	}
+    }
     for i in range(len(records)):
         if records[i].id in top_accessions:
             top_records.append(records[i])
@@ -59,9 +60,10 @@ def top_related(parent=None, blast_results=None, method='n'):
                 n.append(records[i].annotations['organism'])
             else:
                 n.append("")
-            top_names.append(n)
+            n.append(top_accessions[records[i].id])
+            top_names['Sheet1']['data'].append(n)
     # Return top
-    return (top_records, top_accessions, top_names)
+    return (top_records, top_accessions.keys(), top_names)
 
 
 if __name__ == '__main__':
@@ -132,4 +134,4 @@ if __name__ == '__main__':
     of2 = OutputFiles(name='accession_list', GGO=opts)
     of2.CRR(data='\n'.join(txt))
     of3 = OutputFiles(name='name_list', GGO=opts)
-    of3.CRR(data='\n'.join(names))
+    of3.CRR(data=names)
