@@ -16,7 +16,7 @@ def renumber_genes(gbk_file=None, tag_to_update="locus_tag",
                    string_prefix="display_id", leading_zeros=3):
 
     from Bio import SeqIO
-    records = list(SeqIO.parse(gbk_file, "embl"))
+    records = list(SeqIO.parse(gbk_file, "genbank"))
     delta = {
         'Sheet1': {
             'header': ['old', 'new'],
@@ -66,7 +66,7 @@ def renumber_genes(gbk_file=None, tag_to_update="locus_tag",
         def delta_old(feature):
             # First part of delta entry, old name
             val = '%s %s %s' % (f.location.start, f.location.end,
-                                f.location.strand),
+                                f.location.strand,)
             if tag_to_update in f.qualifiers:
                 val = f.qualifiers[tag_to_update][0]
             return val
@@ -152,3 +152,5 @@ if __name__ == '__main__':
     from galaxygetopt.outputfiles import OutputFiles
     of = OutputFiles(name='genbank', GGO=opts)
     of.CRR(data=result)
+    of = OutputFiles(name='change_table', GGO=opts)
+    of.CRR(data=delta)
