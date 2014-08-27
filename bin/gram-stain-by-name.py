@@ -886,7 +886,7 @@ if __name__ == '__main__':
             ]
         ],
         defaults={
-            'appid': 'edu.tamu.cpt.general.GramAnnotator',
+            'appid': 'edu.tamu.cpt.generic.GramAnnotator',
             'appname': 'Annotate Gram Stain for Bacteria list',
             'appvers': '1.94',
             'appdesc': 'compares bacteria strain name against a database and attempts to guess gram stain',
