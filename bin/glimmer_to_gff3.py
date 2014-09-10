@@ -9,6 +9,7 @@ def glimmer3_to_gff3(glimmer3_orf_table=None):
         raise ValueError("Must specify orf file")
 
     orfs = ['##gff-version 3']
+    id_number = 0
     for line in glimmer3_orf_table.readlines():
         if not line.startswith('>'):
             (g3i, g3s, g3e, g3p, g3score) = line.strip().split()
@@ -31,8 +32,9 @@ def glimmer3_to_gff3(glimmer3_orf_table=None):
                 g3score,  # score
                 strand,  # strand
                 '.',  # phase
-                '.',  # attr
+                'id=orf%s' % id_number,  # attr
             ]
+            id_number += 1
             orfs.append('\t'.join([str(x) for x in gff_line]))
     return "\n".join(orfs)
 
