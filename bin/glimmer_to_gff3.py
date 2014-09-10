@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from galaxygetopt.ggo import GalaxyGetOpt as GGO
-import sys
 import logging
 logging.basicConfig(level=logging.INFO)
 
@@ -9,13 +8,15 @@ def glimmer3_to_gff3(glimmer3_orf_table=None):
     if glimmer3_orf_table is None:
         raise ValueError("Must specify orf file")
 
-    orfs = []
+    orfs = ['##gff-version 3']
     for line in glimmer3_orf_table.readlines():
         if not line.startswith('>'):
             (g3i, g3s, g3e, g3p, g3score) = line.strip().split()
-            strand = 1
+            g3s = int(g3s)
+            g3e = int(g3e)
+            strand = '+'
             if g3s > g3e:
-                strand = -1
+                strand = '-'
                 start = g3e
                 end = g3s
             else:
