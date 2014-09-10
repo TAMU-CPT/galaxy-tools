@@ -25,7 +25,7 @@ def mga_to_gff3(mga_orf_table=None):
                     '.',
                     strand,
                     '.',
-                    'locus_tag=%s' % gene_id,
+                    'ID=rbs-%s' % gene_id,
                 ]
                 orfs.append('\t'.join([str(x) for x in rbs_line]))
 
@@ -38,7 +38,7 @@ def mga_to_gff3(mga_orf_table=None):
                 score,  # score
                 strand,  # strand
                 '.',  # phase
-                'locus_tag=%s' % gene_id,  # attr
+                'ID=%s' % gene_id,  # attr
             ]
             orfs.append('\t'.join([str(x) for x in gff_line]))
     return "\n".join(orfs)

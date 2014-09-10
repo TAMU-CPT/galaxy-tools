@@ -32,7 +32,7 @@ def glimmer3_to_gff3(glimmer3_orf_table=None):
                 g3score,  # score
                 strand,  # strand
                 '.',  # phase
-                'id=orf%s' % id_number,  # attr
+                'ID=orf%s' % id_number,  # attr
             ]
             id_number += 1
             orfs.append('\t'.join([str(x) for x in gff_line]))
