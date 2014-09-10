@@ -15,21 +15,24 @@ def compare_feature_lists(list_a=[], list_b=[]):
     (both, a_only, b_only) = match_feature_lists(list_a=list_a, list_b=list_b)
     data = {
         'PresentInBoth': {
-            'headers': ['Feature', 'Strand', 'Location in A', 'Location in B'],
+            'header': ['Feature', 'Strand', 'Identical Locations', 'Location in A', 'Location in B'],
             'data': [],
         },
         'Unique': {
-            'headers': ['Parent', 'Feature', 'Strand', 'Location'],
+            'header': ['Parent', 'Feature', 'Strand', 'Location'],
             'data': [],
         }
     }
 
     for f_a, f_b in both:
+        loc_a = '%s..%s' % (f_a.location.start, f_a.location.end)
+        loc_b = '%s..%s' % (f_b.location.start, f_b.location.end)
         data['PresentInBoth']['data'].append([
             f_a.id,
             f_a.strand,
-            '%s..%s' % (f_a.location.start, f_a.location.end),
-            '%s..%s' % (f_b.location.start, f_b.location.end),
+            loc_a == loc_b,
+            loc_a,
+            loc_b,
         ])
 
     for f in a_only:
@@ -71,11 +74,13 @@ def match_feature_lists(list_a=[], list_b=[]):
     f_b_map = mapify_features(list_b)
 
     # Find those keys in common
+    both_list = []
     for key in f_a_map:
         if key in f_b_map:
+            both_list.append(key)
             both.append([f_a_map[key], f_b_map[key]])
     # Remove those in both from a and b
-    for key, key2 in both:
+    for key in both_list:
         del(f_a_map[key])
         del(f_b_map[key])
     # Those left, copy back to original arrays
@@ -130,5 +135,5 @@ if __name__ == '__main__':
     results = compare_feature_lists(list_a=cds1, list_b=cds2)
 
     from galaxygetopt.outputfiles import OutputFiles
-    of = OutputFiles(name='plot', GGO=opts)
+    of = OutputFiles(name='results', GGO=opts)
     of.CRR(data=results)
