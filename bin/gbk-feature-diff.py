@@ -13,6 +13,7 @@ Compare two Genbank Files
 
 def compare_feature_lists(list_a=[], list_b=[]):
     (both, a_only, b_only) = match_feature_lists(list_a=list_a, list_b=list_b)
+
     data = {
         'PresentInBoth': {
             'header': ['Feature', 'Strand', 'Identical Locations', 'Location in A', 'Location in B'],
@@ -61,7 +62,7 @@ def match_feature_lists(list_a=[], list_b=[]):
 
     def mapify_features(feature_list):
         fmap = {}
-        for f in list_a:
+        for f in feature_list:
             if f.strand == 1:
                 fid = '%s.%s' % (f.location.end, f.strand)
             else:
@@ -131,7 +132,6 @@ if __name__ == '__main__':
     options = opts.params()
     cds1 = get_features_from_gbk(gbk_file=options['gbk1'])
     cds2 = get_features_from_gbk(gbk_file=options['gbk2'])
-
     results = compare_feature_lists(list_a=cds1, list_b=cds2)
 
     from galaxygetopt.outputfiles import OutputFiles
