@@ -16,11 +16,12 @@ def compare_feature_lists(list_a=[], list_b=[]):
 
     data = {
         'PresentInBoth': {
-            'header': ['Feature', 'Strand', 'Identical Locations', 'Location in A', 'Location in B'],
+            'header': ['Feature', 'Strand', 'Identical Locations', 'A Start',
+                       'A End', 'B Start', 'B End'],
             'data': [],
         },
         'Unique': {
-            'header': ['Parent', 'Feature', 'Strand', 'Location'],
+            'header': ['Parent', 'Feature', 'Strand', 'Start', 'End'],
             'data': [],
         }
     }
@@ -32,16 +33,19 @@ def compare_feature_lists(list_a=[], list_b=[]):
             f_a.id,
             f_a.strand,
             loc_a == loc_b,
-            loc_a,
-            loc_b,
+            f_a.location.start, f_a.location.end,
+            f_b.location.start, f_b.location.end,
         ])
+
+    data['PresentInBoth']['data'].sort(key=lambda x: x[3])
 
     for f in a_only:
         data['Unique']['data'].append([
             'File 1',
             f.id,
             f.strand,
-            '%s..%s' % (f.location.start, f.location.end),
+            f.location.start,
+            f.location.end,
         ])
 
     for f in b_only:
@@ -51,6 +55,9 @@ def compare_feature_lists(list_a=[], list_b=[]):
             f.strand,
             '%s..%s' % (f.location.start, f.location.end),
         ])
+
+    data['Unique']['data'].sort(key=lambda x: x[3])
+
     return data
 
 
