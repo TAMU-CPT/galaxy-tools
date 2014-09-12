@@ -23,47 +23,32 @@ def top_related(parent=None, blast_results=None, method='n'):
         else:
             hits[hit] = 1
     # Top results
-    top_accessions = {}
+    top_accessions = []
     # Allow different result process methods
     if method == 'sd':
         std = numpy.std(hits.values())
         mean = numpy.mean(hits.values())
         for key, value in hits.iteritems():
             if value > (mean + 2 * std):
-                top_accessions[key] = value
+                top_accessions.append(key)
     else:
         for key, value in reversed(sorted(hits.iteritems(), key=lambda (k, v):
                                           (v, k))):
             if len(top_accessions) > 4:
                 break
             else:
-                top_accessions[key] = value
+                top_accessions.append(key)
+
+    print top_accessions
 
     from Bio import SeqIO
     records = list(SeqIO.parse(parent, "genbank"))
     top_records = []
-    top_names = {
-	'Sheet1': {
-            'header': ['Name', 'Source', 'Organism', 'Number of Hits'],
-            'data': [],
-	}
-    }
     for i in range(len(records)):
         if records[i].id in top_accessions:
             top_records.append(records[i])
-            n = [records[i].name]
-            if 'source' in records[i].annotations:
-                n.append(records[i].annotations['source'])
-            else:
-                n.append("")
-            if 'organism' in records[i].annotations:
-                n.append(records[i].annotations['organism'])
-            else:
-                n.append("")
-            n.append(top_accessions[records[i].id])
-            top_names['Sheet1']['data'].append(n)
     # Return top
-    return (top_records, top_accessions.keys(), top_names)
+    return (top_records, top_accessions)
 
 
 if __name__ == '__main__':
@@ -101,17 +86,6 @@ if __name__ == '__main__':
                     'data_format': 'text/plain',
                     'default_format': 'TXT',
                 }
-            ],
-            [
-                'name_list',
-                'Human readable names of matched genomes',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'top_names',
-                    'data_format': 'text/tabular',
-                    'default_format': 'TSV_U',
-                }
             ]
         ],
         defaults={
@@ -124,14 +98,12 @@ if __name__ == '__main__':
         doc=__doc__
     )
     options = opts.params()
-    (gbk, txt, names) = top_related(parent=options['db_gbk'],
-                                    blast_results=options['blast'],
-                                    method=options['method'])
+    (gbk, txt) = top_related(parent=options['db_gbk'],
+                             blast_results=options['blast'],
+                             method=options['method'])
 
     from galaxygetopt.outputfiles import OutputFiles
     of = OutputFiles(name='top_genomes', GGO=opts)
     of.CRR(data=gbk)
     of2 = OutputFiles(name='accession_list', GGO=opts)
     of2.CRR(data='\n'.join(txt))
-    of3 = OutputFiles(name='name_list', GGO=opts)
-    of3.CRR(data=names)
