@@ -245,7 +245,8 @@ def mist(ggo, file, label, zoom, *args, **kwargs):
         ]
         convert_arguments_left += [
             '-fill', 'black', '-annotate',
-            '+%s+%s' % (current_sum - 10, left_offset - 40), file_data[i]['header']
+            # I have no bloody clue where the 350 is coming from. -_-
+            '+%s+%s' % (current_sum - 10, left_offset - 350), file_data[i]['header']
         ]
 
         current_sum += current_image['width'] + (2 * inter_image_borders)
