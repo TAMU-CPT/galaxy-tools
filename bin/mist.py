@@ -31,7 +31,7 @@ def add_image_border(outfile, i, j, file_data, img_data, zoom):
            '-pointsize', '40',
            '-font', 'Ubuntu-Mono-Regular',
            '-fill', 'black', '-annotate',
-           '+%s+%s' % (half_height, img_data['orig_width'] + 50 + 45), file_data[i]['header'],
+           '+%s+%s' % (half_height, img_data['orig_width'] + 50 + 45), file_data[j]['header'],
            '-pointsize', '20',
            ]
     for z in range(0, int(.8 * file_data[j]['seqlen']/zoom), int(BestTick(file_data[j]['seqlen'], 5)/zoom)):
@@ -46,7 +46,12 @@ def add_image_border(outfile, i, j, file_data, img_data, zoom):
             '+%s+30' % half_width, file_data[i]['header'],
             '-pointsize', '20',
             '-annotate', '+%s+%s' % (2, 50 + img_data['orig_height'] + 30),
-            "Produced by the CPT's MIST (Multiple Interrelated Sequence doT plotter). Written by Eric Rasche <esr@tamu.edu>.\nDot plots produced by the Gepard Dot Plotter by Dr. Jan Krumsiek",
+            (
+                "Produced by the CPT's MIST (Multiple Interrelated "
+                "Sequence doT plotter). "
+                "Written by Eric Rasche <rasche.eric\@yandex.ru>.\n"
+                "Dot plots produced by the Gepard Dot Plotter by Dr. Jan Krumsiek"
+            ),
             ]
     for z in range(0, int(.8 * file_data[i]['seqlen']/zoom), int(BestTick(file_data[i]['seqlen'], 5)/zoom)):
         label = label_formatter(z, zoom)
@@ -117,12 +122,12 @@ def extract_info_from_file(infile, label, tmpdir):
     return ret
 
 
-def run_gepard(seq_a, seq_b, zoom, output):
+def run_gepard(seq_a, seq_b, zoom, output, matrix):
     print "Running %s vs %s" % (seq_a, seq_b)
     cmd = ['java', '-jar', 'gepard.jar',
            '--seq1', seq_a,
            '--seq2', seq_b,
-           '--matrix', 'edna.mat',
+           '--matrix', matrix,
            '--outfile', output,
            '--zoom', zoom,
            '--silent'
@@ -135,7 +140,7 @@ def resize_image(scale, from_file, to_file):
     subprocess.check_call(cmd)
 
 
-def mist(ggo, file, label, zoom, *args, **kwargs):
+def mist(ggo, file, label, zoom, matrix, *args, **kwargs):
     inputs = zip(file, label)
 
     tmpdir = tempfile.mkdtemp(prefix="cpt.mist.")
@@ -171,7 +176,7 @@ def mist(ggo, file, label, zoom, *args, **kwargs):
             gepard_png = os.path.join(tmpdir, 'png', '%s-%s.png' % (i, j))
             thumb_png = os.path.join(tmpdir, 'thumb', '%s-%s.png' % (i, j))
             run_gepard(file_data[i]['fasta_path'], file_data[j]['fasta_path'],
-                       zoom, gepard_png)
+                       zoom, gepard_png, matrix)
             resize_image(rescale_p, gepard_png, thumb_png)
             img_array[i][j] = {
                 'orig': gepard_png,
@@ -221,10 +226,10 @@ def mist(ggo, file, label, zoom, *args, **kwargs):
             img_array[i][j]['orig_height'] = int(h)
 
             if ordering.index(i) == 0:
-                cumulative_width += img_array[i][j]['width'] + 2
+                cumulative_width += img_array[i][j]['height'] + 2
 
             if ordering.index(j) == 0:
-                cumulative_height += img_array[i][j]['height'] + 2
+                cumulative_height += img_array[i][j]['width'] + 2
 
             gepard_annot_png = os.path.join(tmpdir, 'png', 'a_%s-%s.png' % (i, j))
             add_image_border(gepard_annot_png, i, j, file_data,
@@ -235,7 +240,7 @@ def mist(ggo, file, label, zoom, *args, **kwargs):
     current_sum = 51 + inter_image_borders
     convert_arguments_top = []
     convert_arguments_left = []
-    left_offset = cumulative_width + 51 + 20
+    left_offset = cumulative_width + 51 + 30
 
     for i in ordering:
         current_image = img_array[i][i]
@@ -243,15 +248,14 @@ def mist(ggo, file, label, zoom, *args, **kwargs):
             '-fill', 'black', '-annotate',
             '+%s+40' % current_sum, file_data[i]['header']
         ]
+        print "CS: %s LO: %s" % (current_sum, left_offset)
         convert_arguments_left += [
             '-fill', 'black', '-annotate',
-            # I have no bloody clue where the 350 is coming from. -_-
-            '+%s+%s' % (current_sum - 10, left_offset - 350), file_data[i]['header']
+            '+%s+%s' % (current_sum - 10, left_offset), file_data[i]['header']
         ]
 
         current_sum += current_image['width'] + (2 * inter_image_borders)
 
-    m2 = os.path.join(tmpdir, 'prefinal', 'montage_2.png')
     cmd = ['convert', m1,
            '-rotate', '-90',
            '-pointsize', '20',
@@ -263,7 +267,12 @@ def mist(ggo, file, label, zoom, *args, **kwargs):
     cmd += [
         '-pointsize', '14',
         '-annotate', '+%s+%s' % (2, left_offset),
-        "Produced by the CPT's MIST (Multiple Interrelated Sequence doT plotter). Written by Eric Rasche <rasche.eric\@yandex.ru>.\nDot plots produced by the Gepard Dot Plotter by Dr. Jan Krumsiek",
+        (
+            "Produced by the CPT's MIST (Multiple Interrelated "
+            "Sequence doT plotter). "
+            "Written by Eric Rasche <rasche.eric\@yandex.ru>.\n"
+            "Dot plots produced by the Gepard Dot Plotter by Dr. Jan Krumsiek"
+        ),
         os.path.join(tmpdir, 'prefinal', 'large.png')
     ]
     print ' '.join(cmd)
@@ -292,7 +301,8 @@ def mist(ggo, file, label, zoom, *args, **kwargs):
                    int(cur_y),
                    int(cur_x+width+2),
                    int(cur_y+height+2),
-                    "%s vs %s" % (file_data[i]['header'], file_data[j]['header']),
+                    "%s vs %s" % (file_data[i]['header'],
+                                  file_data[j]['header']),
                    'a_%s-%s.png' % (i, j)
                    )
             cur_x += width + 4
@@ -333,6 +343,14 @@ if __name__ == '__main__':
              {'required': True, 'multiple': True, 'validate': 'String'}],
             ['zoom', 'How zoomed in the image is. Be careful with this option. It represents the number of bases to plot in a single pixel. For large genomes, this can mean very large images, and should be lowered appropriately. For a value of 50, 50 bases would be considered a single pixel in the output image. For 1Mbp of genomes totaly (say 5 x 200 kb phages), this would result in a 20,000 pixel image.',
              {'required': True, 'validate': 'String', 'default': 50}],
+            ['matrix', 'Comparison Matrix',
+             {'required': True, 'validate': 'Option', 'options': {
+                 'ednaorig.mat': 'Extended DNA (Original)',
+                 'pam250.mat': 'Pam 250',
+                 'edna.mat': 'Extended DNA',
+                 'protidentity.mat': 'Protein Identity',
+                 'blosum62': 'Blosum62',
+             }, 'default': 'edna.mat'}]
         ],
         outputs=[
             [
