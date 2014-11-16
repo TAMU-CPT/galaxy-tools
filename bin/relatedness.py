@@ -17,7 +17,14 @@ for figuring out top related genomes signifcantly easier
 def top_related(parent=None, blast_results=None, method='n'):
     hits = {}
     for line in blast_results.readlines():
-        hit = line.split('\t')[1].split('|')[0]
+        hit_id = line.split('\t')[1]
+
+        split_id = hit_id.split('|')
+        if split_id[0] == 'gi':
+            hit = split_id[1]
+        else:
+            hit = split_id[0]
+
         if hit in hits:
             hits[hit] += 1
         else:
