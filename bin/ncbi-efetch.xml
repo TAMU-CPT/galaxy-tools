@@ -39,14 +39,14 @@ $split
             <option value="text">Direct Entry</option>
         </param>
         <when value="file">
-            <param help="Comma/space/tab separated accessions (from File)" label="accessions_file" name="accessions_file" optional="True" type="data"/>
+            <param help="Comma/space/tab separated accessions (from File)" label="accessions_file" name="accessions_file" type="data"/>
         </when>
         <when value="text">
-            <param help="Comma/space/tab separated accessions" label="accessions_list" name="accessions_list" optional="True" type="text"/>
+            <param help="Comma/space/tab separated accessions" label="accessions_list" name="accessions_list" type="text"/>
         </when>
     </conditional>
-    <param checked="true" falsevalue="" help="Split genbank record (for multiple records)" label="split" name="split" optional="True" truevalue="--split" type="boolean"/>
-    <param help="Database to fetch from" label="db" name="db" optional="True" type="text" value="nucleotide"/>
+    <param checked="true" falsevalue="" help="Split genbank record (for multiple records)" label="split" name="split" truevalue="--split" type="boolean"/>
+    <param help="Database to fetch from" label="db" name="db" type="text" value="nucleotide"/>
   </inputs>
   <outputs>
     <data format="txt" name="data">
