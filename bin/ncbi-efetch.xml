@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.ncbi.entrez.efetch" name="NCBI Entrez EFetch" version="1.0.0">
+  <description>downloads data from NCBI via Entrez EFetch</description>
+  <version_command>python ncbi-efetch.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">ncbi-efetch.py
+--galaxy
+--outfile_supporting $__new_file_path__
+
+#if $accessions_list and $accessions_list is not "None":
+--accessions_list "${accessions_list}"
+#end if
+
+#if $accessions_file and $accessions_file is not "None":
+--accessions_file "${accessions_file}"
+#end if
+
+--email $__user_email__
+$split
+#if $db and $db is not "None":
+--db "${db}"
+#end if
+
+--data "${data}"
+
+--data_files_path "${data.files_path}"
+
+--data_format "${data_format}"
+
+--data_id "${data.id}"
+
+</command>
+  <inputs>
+    <conditional name="source">
+        <param name="source_select" type="select" label="Accession List Source">
+            <option value="file">File</option>
+            <option value="text">Direct Entry</option>
+        </param>
+        <when value="file">
+            <param help="Comma/space/tab separated accessions (from File)" label="accessions_file" name="accessions_file" optional="True" type="data"/>
+        </when>
+        <when value="text">
+            <param help="Comma/space/tab separated accessions" label="accessions_list" name="accessions_list" optional="True" type="text"/>
+        </when>
+    </conditional>
+    <param checked="true" falsevalue="" help="Split genbank record (for multiple records)" label="split" name="split" optional="True" truevalue="--split" type="boolean"/>
+    <param help="Database to fetch from" label="db" name="db" optional="True" type="text" value="nucleotide"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="data">
+        <discover_datasets pattern="__designation__" ext="gbk" directory="gbk_out" visible="true" />
+    </data>
+  </outputs>
+  <help>NCBI Entrez Fetcher
+=======================
+
+fetch records from NCBI via Entrez EFetch
+</help>
+  <tests/>
+</tool>
