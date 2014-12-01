@@ -53,7 +53,8 @@ def compare_feature_lists(list_a=[], list_b=[]):
             'File 2',
             f.id,
             f.strand,
-            '%s..%s' % (f.location.start, f.location.end),
+            f.location.start,
+            f.location.end,
         ])
 
     data['Unique']['data'].sort(key=lambda x: x[3])
@@ -95,7 +96,7 @@ def match_feature_lists(list_a=[], list_b=[]):
     for key in f_a_map:
         a_only.append(f_a_map[key])
     for key in f_b_map:
-        a_only.append(f_b_map[key])
+        b_only.append(f_b_map[key])
 
     return (both, a_only, b_only)
 
