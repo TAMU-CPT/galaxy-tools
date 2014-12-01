@@ -6,7 +6,6 @@
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <command interpreter="python">ncbi-efetch.py
---galaxy
 --outfile_supporting $__new_file_path__
 
 #if $source.source_select=="file":
