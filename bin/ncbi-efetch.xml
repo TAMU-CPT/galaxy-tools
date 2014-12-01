@@ -9,12 +9,10 @@
 --galaxy
 --outfile_supporting $__new_file_path__
 
-#if $source.accessions_list and $source.accessions_list is not "None":
---accessions_list "${source.accessions_list}"
-#end if
-
-#if $source.accessions_file and $source.accessions_file is not "None":
+#if $source.source_select=="file":
 --accessions_file "${source.accessions_file}"
+#else
+--accessions_list "${source.accessions_list}"
 #end if
 
 --email $__user_email__
