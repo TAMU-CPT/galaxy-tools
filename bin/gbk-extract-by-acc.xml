@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.ExtractAccessions" name="Subset Genbank File: Accessions" version="1.94">
+  <description>given an accession list, extract a subset of the genbank records into a new file.</description>
+  <version_command>python gbk-extract-by-acc.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">gbk-extract-by-acc.py
+--galaxy
+--outfile_supporting $__new_file_path__
+--db_gbk "${db_gbk}"
+
+--accession_list "${accession_list}"
+
+#if $strict:
+--strict
+#end if
+
+--extracted "${extracted}"
+
+--extracted_files_path "${extracted.files_path}"
+
+--extracted_format "${extracted_format}"
+
+--extracted_id "${extracted.id}"
+
+</command>
+  <inputs>
+    <param help="Genbank &quot;database&quot; to extract from" label="db_gbk" name="db_gbk" optional="False" type="data"/>
+    <param help="List of Accessions to extract frommulti-record Genbank file" label="accession_list" name="accession_list" optional="False" type="data"/>
+    <param checked="" falsevalue="False" help="Accession numbers have versions, setting strictindicates an exact version match is required" label="strict" name="strict" optional="True" truevalue="True" type="boolean"/>
+    <param help="Extracted genomes" label="Format of extracted" name="extracted_format" optional="False" type="select">
+      <option selected="True" value="Genbank">Genbank</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="Genbank" name="extracted">
+      <change_format>
+        <when format="txt" input="extracted_format" value="Genbank"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>Extract Subset of Genbank File by Accessions
+============================================
+
+Sometimes you have a "master" database of genbank records, a single huge file
+containing all of your genomes, then you do somet analysis which generates a
+list of accession numbers, and you need to extract those from the main file for
+downstream analysis.
+</help>
+  <tests/>
+</tool>

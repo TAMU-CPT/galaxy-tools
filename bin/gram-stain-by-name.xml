@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.generic.GramAnnotator" name="Annotate Gram Stain for Bacteria list" version="1.94">
+  <description>compares bacteria strain name against a database and attempts to guess gram stain</description>
+  <version_command>python gram-stain-by-name.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">gram-stain-by-name.py
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+</command>
+  <inputs>
+    <param help="Single column list of bacterial strains" label="file" name="file" optional="False" type="data"/>
+    <param help="Input list with gram stain annotated" label="Format of results" name="results_format" optional="False" type="select">
+      <option value="CSV">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option selected="True" value="TSV_U">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="TSV_U" name="results">
+      <change_format>
+        <when format="tabular" input="results_format" value="CSV"/>
+        <when format="tabular" input="results_format" value="CSV_U"/>
+        <when format="txt" input="results_format" value="Dumper"/>
+        <when format="txt" input="results_format" value="JSON"/>
+        <when format="data" input="results_format" value="ODS"/>
+        <when format="tabular" input="results_format" value="TSV"/>
+        <when format="tabular" input="results_format" value="TSV_U"/>
+        <when format="data" input="results_format" value="XLS"/>
+        <when format="data" input="results_format" value="XLSX"/>
+        <when format="txt" input="results_format" value="YAML"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>Detect Gram Stain
+=================
+
+Given a list of genomes to query for, attempt to detect gram stain information
+</help>
+  <tests/>
+</tool>

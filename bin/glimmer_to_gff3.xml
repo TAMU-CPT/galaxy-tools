@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.generic.glimmer3-to-gff3" name="Glimmer3 to GFF3" version="1.0">
+  <description>convert formats</description>
+  <version_command>python glimmer_to_gff3.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">glimmer_to_gff3.py
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--data "${data}"
+
+--data_files_path "${data.files_path}"
+
+--data_format "${data_format}"
+
+--data_id "${data.id}"
+
+</command>
+  <inputs>
+    <param help="Glimmer3 Output" label="file" name="file" optional="False" type="data"/>
+    <param help="Exported data" label="Format of data" name="data_format" optional="False" type="select">
+      <option value="CONF">CONF</option>
+      <option selected="True" value="TXT">TXT</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="TXT" name="data">
+      <change_format>
+        <when format="txt" input="data_format" value="CONF"/>
+        <when format="txt" input="data_format" value="TXT"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>Convert Glimmer3 Table to GFF3
+==============================
+</help>
+  <tests/>
+</tool>

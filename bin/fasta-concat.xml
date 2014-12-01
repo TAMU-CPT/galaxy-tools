@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.fasta-merge" name="Concatenate Fasta Sequences" version="1.94">
+  <description>merge into single long sequence</description>
+  <version_command>python fasta-concat.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">fasta-concat.py
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--id "${id}"
+
+--fasta "${fasta}"
+
+--fasta_files_path "${fasta.files_path}"
+
+--fasta_format "${fasta_format}"
+
+--fasta_id "${fasta.id}"
+
+</command>
+  <inputs>
+    <param help="Fasta file to merge" label="file" name="file" optional="False" type="data"/>
+    <param help="New fasta identifier for merged sequences" label="id" name="id" optional="False" type="text" value="merged"/>
+    <param help="Concatenated fasta file" label="Format of fasta" name="fasta_format" optional="False" type="select">
+      <option selected="True" value="Fasta">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="Fasta" name="fasta">
+      <change_format>
+        <when format="fasta" input="fasta_format" value="Fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>Fasta Concatentation
+======================
+
+Merge all fasta sequences into a single one. Useful for preparing data for use in MIST
+</help>
+  <tests/>
+</tool>

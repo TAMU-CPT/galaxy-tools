@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.subsection" name="Subsection of Genbank File" version="0.1">
+  <description>take a Genbank file and produce a subsection retaining features</description>
+  <version_command>python subsection.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">subsection.py
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+#if $start and $start is not "None":
+--start "${start}"
+#end if
+
+#if $end and $end is not "None":
+--end "${end}"
+#end if
+
+--subsection "${subsection}"
+
+--subsection_files_path "${subsection.files_path}"
+
+--subsection_format "${subsection_format}"
+
+--subsection_id "${subsection.id}"
+
+</command>
+  <inputs>
+    <param help="Genbank file renumber genes on" label="file" name="file" optional="False" type="data"/>
+    <param help="Start of subsection" label="start" name="start" optional="True" type="integer" value="1"/>
+    <param help="End of subsection" label="end" name="end" optional="True" type="integer" value="100"/>
+    <param help="Subsection of Genbank File" label="Format of subsection" name="subsection_format" optional="False" type="select">
+      <option selected="True" value="Genbank">Genbank</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="Genbank" name="subsection">
+      <change_format>
+        <when format="txt" input="subsection_format" value="Genbank"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>Genome subsectio Tool
+=====================
+
+Take a subsection of a genbank file, useful for extracting regions of interest for downstream analysis
+
+</help>
+  <tests/>
+</tool>

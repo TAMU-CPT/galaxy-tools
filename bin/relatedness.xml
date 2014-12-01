@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.TopRelated" name="Top Related Genomes" version="1.94">
+  <description>finds top related sequences from blast results</description>
+  <version_command>python relatedness.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">relatedness.py
+--galaxy
+--outfile_supporting $__new_file_path__
+--db_gbk "${db_gbk}"
+
+--blast "${blast}"
+
+--method "${method}"
+
+--top_genomes "${top_genomes}"
+
+--top_genomes_files_path "${top_genomes.files_path}"
+
+--top_genomes_format "${top_genomes_format}"
+
+--top_genomes_id "${top_genomes.id}"
+
+--accession_list "${accession_list}"
+
+--accession_list_files_path "${accession_list.files_path}"
+
+--accession_list_format "${accession_list_format}"
+
+--accession_list_id "${accession_list.id}"
+
+--name_list "${name_list}"
+
+--name_list_files_path "${name_list.files_path}"
+
+--name_list_format "${name_list_format}"
+
+--name_list_id "${name_list.id}"
+
+</command>
+  <inputs>
+    <param help="Original Genbank file used in Blast database" label="db_gbk" name="db_gbk" optional="False" type="data"/>
+    <param help="Blast results" label="blast" name="blast" optional="False" type="data"/>
+    <param help="Method to select &quot;top&quot; results" label="method" name="method" optional="False" type="select" value="n">
+      <option selected="True" value="n">Top 5 results</option>
+      <option value="sd">Statistical significance</option>
+    </param>
+    <param help="Re-export of top matched genomes for use in downstream tools" label="Format of top_genomes" name="top_genomes_format" optional="False" type="select">
+      <option selected="True" value="Genbank">Genbank</option>
+    </param>
+    <param help="Accession numbers of top matched genomes" label="Format of accession_list" name="accession_list_format" optional="False" type="select">
+      <option value="CONF">CONF</option>
+      <option selected="True" value="TXT">TXT</option>
+    </param>
+    <param help="Human readable names of matched genomes" label="Format of name_list" name="name_list_format" optional="False" type="select">
+      <option value="CSV">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option selected="True" value="TSV_U">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="Genbank" name="top_genomes">
+      <change_format>
+        <when format="txt" input="top_genomes_format" value="Genbank"/>
+      </change_format>
+    </data>
+    <data format="TXT" name="accession_list">
+      <change_format>
+        <when format="txt" input="accession_list_format" value="CONF"/>
+        <when format="txt" input="accession_list_format" value="TXT"/>
+      </change_format>
+    </data>
+    <data format="TSV_U" name="name_list">
+      <change_format>
+        <when format="tabular" input="name_list_format" value="CSV"/>
+        <when format="tabular" input="name_list_format" value="CSV_U"/>
+        <when format="txt" input="name_list_format" value="Dumper"/>
+        <when format="txt" input="name_list_format" value="JSON"/>
+        <when format="data" input="name_list_format" value="ODS"/>
+        <when format="tabular" input="name_list_format" value="TSV"/>
+        <when format="tabular" input="name_list_format" value="TSV_U"/>
+        <when format="data" input="name_list_format" value="XLS"/>
+        <when format="data" input="name_list_format" value="XLSX"/>
+        <when format="txt" input="name_list_format" value="YAML"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>Find top related genomes
+========================
+
+Phage genomes share a huge percentage similarity, this tool makes the process
+for figuring out top related genomes signifcantly easier
+</help>
+  <tests/>
+</tool>
