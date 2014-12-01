@@ -25,7 +25,7 @@ $split
 
 --data_files_path "${data.files_path}"
 
---data_format "${data_format}"
+--data_format "Genbank"
 
 --data_id "${data.id}"
 
