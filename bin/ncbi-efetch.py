@@ -91,17 +91,6 @@ if __name__ == '__main__':
             ['db', 'Database to fetch from', {'validate': 'String', 'default': 'nucleotide'}],
         ],
         outputs=[
-            [
-                'data',
-                'Exported data',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'export',
-                    'data_format': 'genomic/annotated',
-                    'default_format': 'Genbank',
-                }
-            ]
         ],
         defaults={
             'appid': 'edu.tamu.cpt.ncbi.entrez.efetch',
