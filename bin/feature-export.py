@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from galaxygetopt.ggo import GalaxyGetOpt as GGO
-import sys
 import logging
 logging.basicConfig(level=logging.INFO)
 
@@ -13,10 +12,12 @@ Exports features from a GenBank file
 """
 
 
-def get_id(feature=None, parent_prefix=None):
+def get_id(feature=None, parent_prefix=None, idx=None):
     result = ""
     if parent_prefix is not None:
         result += parent_prefix + '|'
+    if idx is not None:
+        result += '%03d_' % idx
     if 'locus_tag' in feature.qualifiers:
         result += feature.qualifiers['locus_tag'][0]
     elif 'gene' in feature.qualifiers:
@@ -50,6 +51,8 @@ def extract_features(gbk_file=None, tag='CDS', translate=False,
     from Bio.SeqRecord import SeqRecord
     from Bio.SeqFeature import SeqFeature, FeatureLocation
     records = list(SeqIO.parse(gbk_file, "genbank"))
+
+    idx = 0
     for i in range(len(records)):
         for feature in records[i].features:
             if feature.type in tag:
@@ -90,7 +93,9 @@ def extract_features(gbk_file=None, tag='CDS', translate=False,
                     seq = tmp.extract(records[i].seq).translate(table=tn_table)
                 else:
                     seq = tmp.extract(records[i].seq)
-                output.append(SeqRecord(seq=seq, id=get_id(feature, parent_prefix=records[i].id),
+
+                idx += 1
+                output.append(SeqRecord(seq=seq, id=get_id(feature, parent_prefix=records[i].id, idx=idx),
                                         name=get_id(feature),
                                         description=get_id(feature)))
     return output
