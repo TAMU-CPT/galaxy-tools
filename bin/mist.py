@@ -124,7 +124,7 @@ def extract_info_from_file(infile, label, tmpdir):
 
 def run_gepard(seq_a, seq_b, zoom, output, matrix):
     print "Running %s vs %s" % (seq_a, seq_b)
-    cmd = ['java', '-jar', 'gepard.jar',
+    cmd = ['java', '-jar', '/var/lib/gepard.jar',
            '--seq1', seq_a,
            '--seq2', seq_b,
            '--matrix', matrix,
