@@ -8,6 +8,11 @@ from Bio import Entrez
 from Bio import SeqIO
 import tempfile
 import os
+import re
+phage_in_middle = re.compile('^(?P<host>.*)\s*phage (?P<phage>.*)$')
+bacteriophage_in_middle = re.compile('^(?P<host>.*)\s*bacteriophage (?P<phage>.*)$')
+starts_with_phage = re.compile('^(bacterio|vibrio|Bacterio|Vibrio|)?[Pp]hage (?P<phage>.*)$')
+new_style_names = re.compile('(?P<phage>v[A-Z]_[A-Z][a-z]{2}_.*)')
 
 
 __doc__ = """
@@ -81,6 +86,35 @@ def db_finder():
         handle.write(yaml.dump(data))
 
 
+def name_parser(name):
+    host = None
+    phage = None
+    name = name.replace(', complete genome', '')
+
+    m = bacteriophage_in_middle.match(name)
+    if m:
+        host = m.group('host')
+        phage = m.group('phage')
+        return (host, phage)
+
+    m = phage_in_middle.match(name)
+    if m:
+        host = m.group('host')
+        phage = m.group('phage')
+        return (host, phage)
+
+    m = starts_with_phage.match(name)
+    if m:
+        phage = m.group('phage')
+        return (host, phage)
+
+    m = new_style_names.match(name)
+    if m:
+        phage = m.group('phage')
+        return (host, phage)
+
+    return (host, phage)
+
 if __name__ == '__main__':
     opts = GGO(
         options=[
@@ -107,7 +141,6 @@ if __name__ == '__main__':
     af = options['accessions_file']
 
     accessions = []
-    import re
     if al is not None and al is not "None":
         for value in re.findall(r'[A-Za-z0-9_-]+', al):
             accessions.append(value)
@@ -127,7 +160,18 @@ if __name__ == '__main__':
     if options['split']:
         for record_set in results:
             for record in record_set:
-                id = record.id
+                (host, phage) = name_parser(record.description)
+                # Move to regex
+                host = host.strip()
+                phage = phage.strip()
+
+                if host and phage:
+                    id = "%s [%s]" % (phage, host)
+                elif not host and phage:
+                    id = "%s" % (phage)
+                else:
+                    id = record.id
+
                 out_name = os.path.join("gbk_out", '%s.gbk' % id)
 
                 # Collision free names
@@ -139,6 +183,8 @@ if __name__ == '__main__':
 
                 with open(out_name, 'w') as handle:
                     SeqIO.write(record, handle, 'genbank')
+
+
     else:
         for record_set in results:
             out_name = os.path.join("gbk_out", 'merged.gbk')
