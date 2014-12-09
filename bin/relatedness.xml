@@ -6,54 +6,24 @@
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <command interpreter="python">relatedness.py
---galaxy
---outfile_supporting $__new_file_path__
 --db_gbk "${db_gbk}"
-
 --blast "${blast}"
-
 --method "${method}"
-
---top_genomes "${top_genomes}"
-
---top_genomes_files_path "${top_genomes.files_path}"
-
---top_genomes_format "${top_genomes_format}"
-
---top_genomes_id "${top_genomes.id}"
-
+--email $__user_email__
+$restrict_to_phage
 --accession_list "${accession_list}"
-
---accession_list_files_path "${accession_list.files_path}"
-
---accession_list_format "${accession_list_format}"
-
---accession_list_id "${accession_list.id}"
-
 --name_list "${name_list}"
-
---name_list_files_path "${name_list.files_path}"
-
 --name_list_format "${name_list_format}"
-
---name_list_id "${name_list.id}"
 
 </command>
   <inputs>
-    <param help="Original Genbank file used in Blast database" label="db_gbk" name="db_gbk" optional="False" type="data"/>
-    <param help="Blast results" label="blast" name="blast" optional="False" type="data"/>
+    <param help="Blast 25 Column Tabular Results" label="blast" name="blast" optional="False" type="tabular"/>
     <param help="Method to select &quot;top&quot; results" label="method" name="method" optional="False" type="select" value="n">
-      <option selected="True" value="n">Top 5 results</option>
+      <option selected="True" value="n">Top 10 results</option>
       <option value="sd">Statistical significance</option>
     </param>
-    <param help="Re-export of top matched genomes for use in downstream tools" label="Format of top_genomes" name="top_genomes_format" optional="False" type="select">
-      <option selected="True" value="Genbank">Genbank</option>
-    </param>
-    <param help="Accession numbers of top matched genomes" label="Format of accession_list" name="accession_list_format" optional="False" type="select">
-      <option value="CONF">CONF</option>
-      <option selected="True" value="TXT">TXT</option>
-    </param>
-    <param help="Human readable names of matched genomes" label="Format of name_list" name="name_list_format" optional="False" type="select">
+    <param checked="True" falsevalue="" help="Restrict results to Phage/Viruses" label="restrict_to_phage" name="restrict_to_phage" truevalue="--restrict_to_phage" type="boolean"/>
+    <param help="Human readable names of matched genomes" label="Format of name_list" name="name_list_format" optional="False" type="select" default="TSV">
       <option value="CSV">CSV</option>
       <option value="CSV_U">CSV_U</option>
       <option value="Dumper">Dumper</option>
@@ -67,16 +37,7 @@
     </param>
   </inputs>
   <outputs>
-    <data format="Genbank" name="top_genomes">
-      <change_format>
-        <when format="txt" input="top_genomes_format" value="Genbank"/>
-      </change_format>
-    </data>
-    <data format="TXT" name="accession_list">
-      <change_format>
-        <when format="txt" input="accession_list_format" value="CONF"/>
-        <when format="txt" input="accession_list_format" value="TXT"/>
-      </change_format>
+    <data format="txt" name="accession_list">
     </data>
     <data format="TSV_U" name="name_list">
       <change_format>
