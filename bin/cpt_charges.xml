@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.tools.charges" name="Charges" version="1.0">
+  <description>colour sequences based on rules</description>
+  <version_command>python cpt_charges.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">cpt_charges.py
+--galaxy
+--outfile_supporting $__new_file_path__
+--fasta "${fasta}"
+--cs "${cs}"
+--html "${html}"
+
+</command>
+  <inputs>
+    <param help="Fasta protein file" label="fasta" name="fasta" optional="False" type="data"/>
+    <param help="Colour scheme" label="cs" name="cs" optional="False" type="select">
+      <option value="default">Deafult hyrophobic/polar/charged</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="HTML" name="html">
+    </data>
+  </outputs>
+  <help>Charges
+=======
+
+Colour sequences based on rules. Email esr@tamu.edu to request new rules
+
+</help>
+  <tests/>
+</tool>
