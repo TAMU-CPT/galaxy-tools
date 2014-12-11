@@ -3,3 +3,4 @@ galaxygetopt
 pyyaml
 numpy
 svgwrite
+bcbio-gff
