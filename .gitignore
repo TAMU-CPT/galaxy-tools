@@ -131,3 +131,5 @@ docs/_build/
 # PyBuilder
 target/
 
+.venv
+cpt
