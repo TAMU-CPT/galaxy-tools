@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gbk.add_tr" name="Add Terminal Repeats" version="1.0">
+  <description>to a Genbank file with one or more genomes</description>
+  <version_command>python cpt_gbk_addtr.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">cpt_gbk_addtr.py
+--galaxy
+--outfile_supporting $__new_file_path__
+--gbk_file "${gbk_file}"
+
+#if $source.source_select!="file":
+--end "${source.end}"
+#end if
+
+--gbk "${gbk}"
+</command>
+  <inputs>
+    <param help="Input Genome" label="gbk_file" name="gbk_file" optional="False" type="data"/>
+
+    <conditional name="source">
+        <param name="source_select" type="select" label="Location of TR Information">
+            <option value="file">TR already added to Genbank File</option>
+            <option value="text">Direct Entry</option>
+        </param>
+        <when value="file">
+        </when>
+        <when value="text">
+            <param help="READ THE DIRECTIONS BELOW" label="End of Terminal Repeat Region." name="end" optional="True" type="integer" value="1000"/>
+        </when>
+    </conditional>
+  </inputs>
+  <outputs>
+    <data format="txt" name="gbk">
+    </data>
+  </outputs>
+  <help>TR Addition
+===========
+
+This tools adds TR regions to a Genbank file.
+
+The region you supply duplicated and added to the end of the genome. The
+features from that region are likewise duplicated, and "\_rep" added to
+their locus tag to indicate repeated features. If the specified TR
+region ends inside a feature, it is not duplicated. This tool does
+**not** renumber.
+
+Requirements
+------------
+
+Your genomes MUST be opened such that the start of the terminal repeat
+is the first base! This is unfortunately non-negotiable. If the
+repeat\_region is in the middle of the genome, it will be duplicated
+as-is, and appended to the end. This feature can be abused, but you
+**must** be aware of it. See the section `"Feature
+Abuse" &lt;#feature-abuse&gt;`__
+
+You may specify repeats in one of the following ways:
+
+-  Add a repeat\_region feature to the start of your genome in artemis
+-  Specify a repeat end location
+
+Either of these methods is sufficient to add terminal repeats.
+
+Feature Abuse
+-------------
+
+Sometimes you may find yourself in the following situation:
+
+-  You have a genome with a ``repeat_region``
+-  During sequencing, this repeat region was not fully collapsed by the
+   sequencer
+-  The full repeat is at the start
+-  A portion of the front of the repeat is also at the end (maybe this
+   was done to improve annotation?)
+
+In this event, you need to do the following:
+
+-  Calculate how much of the repeat region was duplicated
+-  Create the ``repeat_region`` feature at the start of the genome
+-  Move the feature up by the number of duplicated bases
+
+Then, when the tool is run, this subset of the (true) repeat region will
+be duplicated and features added to the end. After that, you will need
+to fix the location of both repeat regions to reflect the true repeat
+region
+</help>
+  <tests/>
+</tool>
