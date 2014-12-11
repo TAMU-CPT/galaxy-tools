@@ -42,14 +42,14 @@ def charges_html(fasta=None, cs=None, **kwd):
 
     # CSS and header styling
     css = """<style type="text/css">
-    .list li { list-style: none }
+    .list li { list-style: none; margin:10px }
     .info { float:left; width:20px }
     pre { font-size:1.3em }
     """
-    info = '<ul class="list">'
+    info = '<h1>Charges</h1><h3>Legend</h3><ul class="list">'
     for group in COLOUR_SCHEMES[cs]:
         css += '.%(match)s{ background: %(bg)s; color: %(fg)s}\n' % COLOUR_SCHEMES[cs][group]
-        info += '<li>&nbsp;-&nbsp;%(match)s<span class="info" style="background: %(bg)s">&nbsp;</span><span class="info" style="background: %(fg)s">&nbsp;</span></li>\n' % COLOUR_SCHEMES[cs][group]
+        info += '<li><span class="%(match)s" style="padding:5px">%(match)s</span></li>\n' % COLOUR_SCHEMES[cs][group]
     css += '</style>'
     info += '</ul>'
 
