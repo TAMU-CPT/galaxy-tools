@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
+
 <tool id="edu.tamu.cpt.genbank.subsection" name="Subsection of Genbank File" version="0.1">
   <description>take a Genbank file and produce a subsection retaining features</description>
-  <version_command>python subsection.py --version</version_command>
+  <version_command>python cpt_gbk_subsection.py --version</version_command>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">subsection.py
+  <command interpreter="python">cpt_gbk_subsection.py
 --galaxy
 --outfile_supporting $__new_file_path__
 --file "${file}"

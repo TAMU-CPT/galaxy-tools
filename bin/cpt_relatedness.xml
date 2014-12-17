@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.genbank.TopRelated" name="Top Related Genomes" version="1.94">
   <description>finds top related sequences from blast results</description>
-  <version_command>python relatedness.py --version</version_command>
+  <version_command>python cpt_relatedness.py --version</version_command>
+
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">relatedness.py
---db_gbk "${db_gbk}"
+  <command interpreter="python">cpt_relatedness.py
+--galaxy
 --blast "${blast}"
 --method "${method}"
 --email $__user_email__
@@ -17,7 +18,7 @@ $restrict_to_phage
 
 </command>
   <inputs>
-    <param help="Blast 25 Column Tabular Results" label="blast" name="blast" optional="False" type="tabular"/>
+    <param help="Blast 25 Column Tabular Results" label="blast" name="blast" optional="False" type="data" format="tabular"/>
     <param help="Method to select &quot;top&quot; results" label="method" name="method" optional="False" type="select" value="n">
       <option selected="True" value="n">Top 10 results</option>
       <option value="sd">Statistical significance</option>
@@ -26,7 +27,6 @@ $restrict_to_phage
     <param help="Human readable names of matched genomes" label="Format of name_list" name="name_list_format" optional="False" type="select" default="TSV">
       <option value="CSV">CSV</option>
       <option value="CSV_U">CSV_U</option>
-      <option value="Dumper">Dumper</option>
       <option value="JSON">JSON</option>
       <option value="ODS">ODS</option>
       <option value="TSV">TSV</option>

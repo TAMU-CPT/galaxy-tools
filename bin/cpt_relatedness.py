@@ -111,8 +111,7 @@ def top_related(blast=None, method='n', restrict_to_phage=True, email=None, **kw
             extra_data[hit]['std'],
             acc,
         ])
-
-    return ([], top_names)
+    return (acc_list, top_names)
 
 
 def get_refseq_for_name(name=None, email=None):

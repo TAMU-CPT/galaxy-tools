@@ -7,6 +7,7 @@ import logging
 import os
 import math
 logging.basicConfig(level=logging.INFO)
+log = logging.getLogger()
 from Bio import SeqIO
 import subprocess
 
@@ -148,9 +149,9 @@ def mist(ggo, file, label, zoom, matrix, *args, **kwargs):
     ordering = []
     file_data = {}
 
-    for input_file in inputs:
-        parsed_new_files = extract_info_from_file(input_file[0], input_file[1],
-                                                  tmpdir)
+    for (f, l) in inputs:
+        parsed_new_files = extract_info_from_file(f, l, tmpdir)
+        print parsed_new_files
         for f in parsed_new_files:
             ordering.append(f['id'])
             file_data[f['id']] = f
@@ -349,7 +350,7 @@ if __name__ == '__main__':
                  'pam250.mat': 'Pam 250',
                  'edna.mat': 'Extended DNA',
                  'protidentity.mat': 'Protein Identity',
-                 'blosum62': 'Blosum62',
+                 'blosum62.mat': 'Blosum62',
              }, 'default': 'edna.mat'}]
         ],
         outputs=[

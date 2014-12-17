@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.genbank.MetadataExport" name="Genbank Metadata Export" version="1.94">
   <description>exports metadata about genbank files (citations, taxonomy, etc)</description>
-  <version_command>python export-gbk-info.py --version</version_command>
+  <version_command>pythoncpt_gbk_info_export.py --version</version_command>
+
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">export-gbk-info.py
+  <command interpreter="python">cpt_gbk_feature_export.py
 --galaxy
 --outfile_supporting $__new_file_path__
 --file "${file}"

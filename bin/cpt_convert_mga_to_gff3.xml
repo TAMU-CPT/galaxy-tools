@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.generic.mga-to-gff3" name="MGA to GFF3" version="1.0">
   <description>convert formats</description>
-  <version_command>python mga_to_gff3.py --version</version_command>
+  <version_command>python cpt_convert_mga_to_gff3.py --version</version_command>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">mga_to_gff3.py
+  <command interpreter="python">cpt_convert_mga_to_gff3.py
 --galaxy
 --outfile_supporting $__new_file_path__
 --file "${file}"

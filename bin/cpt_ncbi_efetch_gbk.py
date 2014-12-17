@@ -161,6 +161,10 @@ if __name__ == '__main__':
         for record_set in results:
             for record in record_set:
                 (host, phage) = name_parser(record.description)
+                if host is None:
+                    host = ""
+                if phage is None:
+                    phage = ""
                 # Move to regex
                 host = host.strip()
                 phage = phage.strip()

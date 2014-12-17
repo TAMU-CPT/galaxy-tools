@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.generic.GramAnnotator" name="Annotate Gram Stain for Bacteria list" version="1.94">
   <description>compares bacteria strain name against a database and attempts to guess gram stain</description>
-  <version_command>python gram-stain-by-name.py --version</version_command>
+  <version_command>python cpt_gram_stain_db_lookup.py --version</version_command>
+
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">gram-stain-by-name.py
+  <command interpreter="python">cpt_gram_stain_db_lookup.py
 --galaxy
 --outfile_supporting $__new_file_path__
 --file "${file}"
