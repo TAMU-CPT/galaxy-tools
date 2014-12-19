@@ -1,13 +1,17 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.mist" name="MIST2" version="0.1">
-  <description>Multiple Interrelated Sequence doT plotter. Uses a stripped down vesion of Gepard (Dr. Jan Krumsiek/HelmholtzZentrum/IBIS) for dot plotting.</description>
-  <version_command>python cpt_mist2.py --version</version_command>
+<tool id="edu.tamu.cpt.mist-1vN" name="MIST - 1vN" version="0.1">
+  <description>dot plot with 1 file against N others</description>
+  <version_command>python cpt_mist2_1vN.py --version</version_command>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">cpt_mist2.py
+  <command interpreter="python">cpt_mist2_1vN.py
 --galaxy
 --outfile_supporting $__new_file_path__
+--parent "${parent}"
+
+--parent_label "${parent_label}"
+
 #for $item in $repeat_file:
 --file "${item.file}"
 --label "${item.label}"
@@ -29,12 +33,14 @@
 
 </command>
   <inputs>
+    <param help="Parent sequence" label="parent" name="parent" optional="False" type="data"/>
+    <param help="Parent Label" label="parent_label" name="parent_label" optional="False" type="text"/>
     <repeat name="repeat_file" title="File">
-      <param help="Input file" label="file" name="file" optional="False" type="data"/>
+      <param help="Input file to run against Parent" label="file" name="file" optional="False" type="data"/>
       <param help="Label (per input file)" label="label" name="label" optional="False" type="text"/>
     </repeat>
     <param help="How zoomed in the image is. Be careful with this option. It represents the number of bases to plot in a single pixel. For large genomes, this can mean very large images, and should be lowered appropriately. For a value of 50, 50 bases would be considered a single pixel in the output image. For 1Mbp of genomes totaly (say 5 x 200 kb phages), this would result in a 20,000 pixel image." label="zoom" name="zoom" optional="False" type="text" value="50"/>
-    <param help="Window Size" label="window" name="window" optional="False" type="integer" value="10"/>
+    <param help="Window size" label="window" name="window" optional="False" type="integer" value="10"/>
     <param help="Comparison Matrix" label="matrix" name="matrix" optional="False" type="select" value="edna.mat">
       <option value="blosum62.mat">Blosum62</option>
       <option selected="True" value="edna.mat">Extended DNA</option>

@@ -24,7 +24,7 @@ for dot plotting.
 """
 
 
-def add_image_border(outfile, i, j, file_data, img_data, zoom):
+def add_image_border(outfile, j, i, file_data, img_data, zoom):
     half_height = img_data['orig_height']/2
     half_width = img_data['orig_width']/2
 
@@ -147,20 +147,27 @@ def resize_image(scale, from_file, to_file):
     subprocess.check_call(cmd)
 
 
-def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
+def mist(ggo, parent, parent_label, file, label, zoom, matrix, window=10, *args, **kwargs):
     inputs = zip(file, label)
 
     tmpdir = tempfile.mkdtemp(prefix="cpt.mist.")
 
+
     ordering = []
     file_data = {}
 
+    parent_info = extract_info_from_file(parent, parent_label, tmpdir)
+    for x in parent_info:
+        ordering.append(x['id'])
+        file_data[x['id']] = x
+
+    number_of_parent_sequences = len(parent_info)
+
     for (f, l) in inputs:
         parsed_new_files = extract_info_from_file(f, l, tmpdir)
-        print parsed_new_files
-        for f in parsed_new_files:
-            ordering.append(f['id'])
-            file_data[f['id']] = f
+        for x in parsed_new_files:
+            ordering.append(x['id'])
+            file_data[x['id']] = x
 
     for subdir in ['png', 'thumb', 'prefinal']:
         directory = os.path.join(tmpdir, subdir)
@@ -177,12 +184,12 @@ def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
     rescale = 1000.0 / approx_size
     rescale_p = '%s%%' % (100 * rescale)
     img_array = {}
-    for i in ordering:
+    for i in ordering[number_of_parent_sequences:]:
         img_array[i] = {}
-        for j in ordering:
+        for j in ordering[0:number_of_parent_sequences]:
             gepard_png = os.path.join(tmpdir, 'png', '%s-%s.png' % (i, j))
             thumb_png = os.path.join(tmpdir, 'thumb', '%s-%s.png' % (i, j))
-            run_gepard(file_data[i]['fasta_path'], file_data[j]['fasta_path'],
+            run_gepard(file_data[j]['fasta_path'], file_data[i]['fasta_path'],
                        zoom, gepard_png, matrix, window)
             resize_image(rescale_p, gepard_png, thumb_png)
             img_array[i][j] = {
@@ -190,19 +197,19 @@ def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
                 'thumb': thumb_png,
             }
 
-    cardinality = len(ordering)
+    cardinality = len(ordering) - number_of_parent_sequences
     inter_image_borders = 2
 
     reordered = []
-    for i in ordering:
-        for j in ordering:
+    for i in ordering[number_of_parent_sequences:]:
+        for j in ordering[0:number_of_parent_sequences]:
             reordered.append(os.path.join(tmpdir,
-                                          'thumb', '%s-%s.png' % (j, i)))
+                                          'thumb', '%s-%s.png' % (i, j)))
     # Make the monatge
     m0 = os.path.join(tmpdir, 'prefinal', 'montage_0.png')
     m1 = os.path.join(tmpdir, 'prefinal', 'montage_1.png')
     cmd = ['montage'] + reordered + \
-        ['-tile', '%sx%s' % (cardinality, cardinality),
+        ['-tile', '%sx%s' % (number_of_parent_sequences, cardinality),
          '-geometry', '+0+0',
          '-border', str(inter_image_borders),
          '-bordercolor', 'purple',
@@ -220,8 +227,8 @@ def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
 
     cumulative_width = 0
     cumulative_height = 0
-    for i in ordering:
-        for j in ordering:
+    for i in ordering[number_of_parent_sequences:]:
+        for j in ordering[0:number_of_parent_sequences]:
             current_image = img_array[i][j]
             output = subprocess.check_output(['identify',
                                               current_image['orig']])
@@ -232,11 +239,11 @@ def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
             img_array[i][j]['orig_width'] = int(w)
             img_array[i][j]['orig_height'] = int(h)
 
-            if ordering.index(i) == 1:
-                cumulative_width += img_array[i][j]['height'] + 2
+            if ordering.index(i) == number_of_parent_sequences:
+                cumulative_width += img_array[i][j]['width'] + 2
 
             if ordering.index(j) == 0:
-                cumulative_height += img_array[i][j]['width'] + 2
+                cumulative_height += img_array[i][j]['height'] + 2
 
             gepard_annot_png = os.path.join(tmpdir, 'png', 'a_%s-%s.png' % (i, j))
             add_image_border(gepard_annot_png, i, j, file_data,
@@ -246,14 +253,13 @@ def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
     # The +1 and +2 are as a result of adding a 1 width purple border, so the border is consistent everywhere.
     convert_arguments_top = []
     convert_arguments_left = []
-    left_offset = cumulative_width + IMAGE_BORDER
 
     current_sum_width = IMAGE_BORDER
     current_sum_height = IMAGE_BORDER
 
     # Top side
-    for i in ordering:
-        current_image = img_array[i][ordering[0]]
+    for i in ordering[0:number_of_parent_sequences]:
+        current_image = img_array[ordering[number_of_parent_sequences]][i]
         convert_arguments_top += [
             '-fill', 'black', '-annotate',
             '+%s+40' % current_sum_width, file_data[i]['header']
@@ -262,12 +268,13 @@ def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
         print "CSW: %s" % (current_sum_width)
 
     # Left side
-    for i in ordering:
-        current_image = img_array[ordering[0]][i]
+    for i in ordering[number_of_parent_sequences:]:
+        current_image = img_array[i][ordering[0]]
         convert_arguments_left += [
             '-fill', 'black', '-annotate',
-            '+%s+%s' % (current_sum_height, left_offset), '\n' + file_data[i]['header']
+            '+%s+%s' % (current_sum_height, current_sum_width), '\n' + file_data[i]['header']
         ]
+        print 'Text @ (%s, %s)' % (current_sum_height, current_sum_width)
 
         current_sum_height += current_image['height'] + (2 * inter_image_borders)
         print "CSH: %s" % (current_sum_height)
@@ -284,7 +291,7 @@ def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
         '-pointsize', '14',
         '-annotate', '+%s+%s' % (2, current_sum_height + 15),
         (
-            "\nProduced by the CPT's MIST (Multiple Interrelated "
+            "Produced by the CPT's MIST (Multiple Interrelated "
             "Sequence doT plotter). "
             "Written by Eric Rasche <rasche.eric\@yandex.ru>.\n"
             "Dot plots produced by the Gepard Dot Plotter by Dr. Jan Krumsiek"
@@ -301,10 +308,10 @@ def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
     ]
 
     cur_y = 51
-    for j in ordering:
+    for i in ordering[number_of_parent_sequences:]:
         cur_x = 51
         tmp_height = 0
-        for i in ordering:
+        for j in ordering[0:number_of_parent_sequences]:
             current = img_array[i][j]
             width = current['width']
             height = current['height']
@@ -353,7 +360,12 @@ if __name__ == '__main__':
     # Grab all of the filters from our plugin loader
     opts = GGO(
         options=[
-            ['file', 'Input file',
+            ['parent', 'Parent sequence',
+             {'required': True, 'multiple': False, 'validate': 'File/Input'}],
+            ['parent_label', 'Parent Label',
+             {'required': True, 'multiple': False, 'validate': 'String'}],
+
+            ['file', 'Input file to run against Parent',
              {'required': True, 'multiple': True, 'validate': 'File/Input'}],
             ['label', 'Label (per input file)',
              {'required': True, 'multiple': True, 'validate': 'String'}],
@@ -384,10 +396,10 @@ if __name__ == '__main__':
             ],
         ],
         defaults={
-            'appid': 'edu.tamu.cpt.mist',
-            'appname': 'MIST',
+            'appid': 'edu.tamu.cpt.mist-1vN',
+            'appname': 'MIST - 1vN',
             'appvers': '0.1',
-            'appdesc': 'N v N dot plotter',
+            'appdesc': 'dot plot with 1 file against N others',
         },
         tests=[],
         doc=__doc__
