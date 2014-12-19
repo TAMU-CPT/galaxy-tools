@@ -123,14 +123,15 @@ def extract_info_from_file(infile, label, tmpdir):
     return ret
 
 
-def run_gepard(seq_a, seq_b, zoom, output, matrix):
+def run_gepard(seq_a, seq_b, zoom, output, matrix, window):
     print "Running %s vs %s" % (seq_a, seq_b)
     cmd = ['java', '-jar', '/var/lib/gepard.jar',
            '--seq1', seq_a,
            '--seq2', seq_b,
            '--matrix', matrix,
            '--outfile', output,
-           '--zoom', zoom,
+           '--word', str(window),
+           '--zoom', str(zoom),
            '--silent'
            ]
     subprocess.check_call(cmd)
@@ -141,7 +142,7 @@ def resize_image(scale, from_file, to_file):
     subprocess.check_call(cmd)
 
 
-def mist(ggo, file, label, zoom, matrix, *args, **kwargs):
+def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
     inputs = zip(file, label)
 
     tmpdir = tempfile.mkdtemp(prefix="cpt.mist.")
@@ -177,7 +178,7 @@ def mist(ggo, file, label, zoom, matrix, *args, **kwargs):
             gepard_png = os.path.join(tmpdir, 'png', '%s-%s.png' % (i, j))
             thumb_png = os.path.join(tmpdir, 'thumb', '%s-%s.png' % (i, j))
             run_gepard(file_data[i]['fasta_path'], file_data[j]['fasta_path'],
-                       zoom, gepard_png, matrix)
+                       zoom, gepard_png, matrix, window)
             resize_image(rescale_p, gepard_png, thumb_png)
             img_array[i][j] = {
                 'orig': gepard_png,
@@ -344,6 +345,8 @@ if __name__ == '__main__':
              {'required': True, 'multiple': True, 'validate': 'String'}],
             ['zoom', 'How zoomed in the image is. Be careful with this option. It represents the number of bases to plot in a single pixel. For large genomes, this can mean very large images, and should be lowered appropriately. For a value of 50, 50 bases would be considered a single pixel in the output image. For 1Mbp of genomes totaly (say 5 x 200 kb phages), this would result in a 20,000 pixel image.',
              {'required': True, 'validate': 'String', 'default': 50}],
+            ['window', 'Window size',
+             {'required': True, 'validate': 'Int', 'default': 10}],
             ['matrix', 'Comparison Matrix',
              {'required': True, 'validate': 'Option', 'options': {
                  'ednaorig.mat': 'Extended DNA (Original)',

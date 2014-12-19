@@ -13,6 +13,8 @@
 --label "${item.label}"
 #end for
 
+--window "${window}"
+
 --zoom "${zoom}"
 
 --matrix "${matrix}"
@@ -32,6 +34,7 @@
       <param help="Label (per input file)" label="label" name="label" optional="False" type="text"/>
     </repeat>
     <param help="How zoomed in the image is. Be careful with this option. It represents the number of bases to plot in a single pixel. For large genomes, this can mean very large images, and should be lowered appropriately. For a value of 50, 50 bases would be considered a single pixel in the output image. For 1Mbp of genomes totaly (say 5 x 200 kb phages), this would result in a 20,000 pixel image." label="zoom" name="zoom" optional="False" type="text" value="50"/>
+    <param help="Window Size" label="window" name="window" optional="False" type="integer" value="10"/>
     <param help="Comparison Matrix" label="matrix" name="matrix" optional="False" type="select" value="edna.mat">
       <option value="blosum62.mat">Blosum62</option>
       <option selected="True" value="edna.mat">Extended DNA</option>
