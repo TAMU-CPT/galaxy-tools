@@ -81,12 +81,13 @@ def renumber_genes(gbk_file=None, tag_to_update="locus_tag",
                  #Renumber all features in list
                 for f in feature:
                     delta_entry = [delta_old(f)]
-                    f.qualifiers[tag_to_update] = []
+                    f.qualifiers[tag_to_update] = [format_string % index]
                     clean_features.append(f)
                     delta_entry.append(format_string % index)
                     delta['Sheet1']['data'].append(delta_entry)
             else:
                 delta_entry = [delta_old(f)]
+                print f
                 feature.qualifiers[tag_to_update] = [format_string % index]
                 clean_features.append(feature)
                 delta_entry.append(format_string % index)
