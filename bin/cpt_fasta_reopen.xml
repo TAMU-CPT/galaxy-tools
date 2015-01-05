@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.fasta.reopen" name="Reopen Fasta Sequences" version="1.0">
+  <description>at specific location</description>
+  <version_command>python cpt_fasta_reopen.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">cpt_fasta_reopen.py
+--galaxy
+--outfile_supporting $__new_file_path__
+--fasta_file "${fasta_file}"
+
+--after "${after}"
+
+--fasta "${fasta}"
+
+--fasta_files_path "${fasta.files_path}"
+
+--fasta_format "${fasta_format}"
+
+--fasta_id "${fasta.id}"
+
+</command>
+  <inputs>
+    <param help="Fasta file to reopen" label="fasta_file" name="fasta_file" optional="False" type="data"/>
+    <param help="Reopen contig after this base (1-indexed)" label="after" name="after" optional="False" type="integer" value="1000"/>
+    <param help="Reopened fasta file" label="Format of fasta" name="fasta_format" optional="False" type="select">
+      <option selected="True" value="Fasta">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="Fasta" name="fasta">
+      <change_format>
+        <when format="fasta" input="fasta_format" value="Fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>Fasta Reopen
+============
+
+Reopen a fasta contig
+
+For the example contig:
+
+::
+
+    &gt;test
+    aaaaaccccc
+
+Reopening with 5, implying that we should reopen after the fifth base, we see:
+
+::
+
+    &gt;test
+    cccccaaaaa
+</help>
+  <tests/>
+</tool>
