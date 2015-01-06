@@ -4,7 +4,7 @@
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command>cpt_read_subset.sh "${file}" "${length}" "${coverage}" > $fastq</command>
+  <command interperter="bash">cpt_read_subset.sh "${file}" "${length}" "${coverage}" > $fastq</command>
   <inputs>
     <param help="FastQ Readset" label="file" name="file" optional="False" type="data" format="fastq,fastqsanger"/>
     <param help="Expected length of genome" label="length" name="length" optional="False" type="integer" value="100000"/>
