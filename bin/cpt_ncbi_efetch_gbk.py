@@ -2,6 +2,7 @@
 from galaxygetopt.ggo import GalaxyGetOpt as GGO
 import sys
 import logging
+import string
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 from Bio import Entrez
@@ -13,6 +14,8 @@ phage_in_middle = re.compile('^(?P<host>.*)\s*phage (?P<phage>.*)$')
 bacteriophage_in_middle = re.compile('^(?P<host>.*)\s*bacteriophage (?P<phage>.*)$')
 starts_with_phage = re.compile('^(bacterio|vibrio|Bacterio|Vibrio|)?[Pp]hage (?P<phage>.*)$')
 new_style_names = re.compile('(?P<phage>v[A-Z]_[A-Z][a-z]{2}_.*)')
+
+valid_chars = "-_.() %s%s" % (string.ascii_letters, string.digits)
 
 
 __doc__ = """
@@ -176,14 +179,16 @@ if __name__ == '__main__':
                 else:
                     id = record.id
 
-                out_name = os.path.join("gbk_out", '%s.gbk' % id)
+                id_fixed = ''.join(c for c in id if c in valid_chars)
+
+                out_name = os.path.join("gbk_out", '%s.gbk' % id_fixed)
 
                 # Collision free names
                 if os.path.exists(out_name):
                     i = 0
-                    while os.path.exists(os.path.join("gbk_out", '%s.x%s.gbk' % (id, i))):
+                    while os.path.exists(os.path.join("gbk_out", '%s.x%s.gbk' % (id_fixed, i))):
                         i += 1
-                    out_name = os.path.join("gbk_out", '%s.x%s.gbk' % (id, i))
+                    out_name = os.path.join("gbk_out", '%s.x%s.gbk' % (id_fixed, i))
 
                 with open(out_name, 'w') as handle:
                     SeqIO.write(record, handle, 'genbank')
