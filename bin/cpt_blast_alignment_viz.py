@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from galaxygetopt.ggo import GalaxyGetOpt as GGO
-import sys
 import logging
 logging.basicConfig(level=logging.INFO)
 
@@ -76,10 +75,6 @@ def generate_viz(blast_file=None):
         length_database[data[0]] = int(data[22])
         length_database[data[1]] = int(data[23])
 
-    hits_1 = coallesce(blast_hits=queries['unitig_1|quiver']['gi|299829511|gb|HM134276.1|'],
-              query = length_database['unitig_1|quiver'],
-              subject= length_database['gi|299829511|gb|HM134276.1|'])
-
     import svgwrite
     svg_document = svgwrite.Drawing(size=("1200px", "1200px"))
 
@@ -102,7 +97,8 @@ def generate_viz(blast_file=None):
                 stroke="black",
                 fill="red"))
             current_y += 20
-	    for box in hits:
+
+            for box in hits:
                 svg_document.add(svg_document.rect(
                     insert=(calc_x(box_idx), calc_y(row_idx)),
                     size=("%spx" % box_size, "%spx" % box_size),
