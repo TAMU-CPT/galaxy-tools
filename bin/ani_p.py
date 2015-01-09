@@ -10,13 +10,14 @@ BASE_PATH = os.path.join(os.sep, 'tmp', 'cpt.ani.blast')
 GENOMES = os.path.join(BASE_PATH, 'genome')
 CHUNKS = os.path.join(BASE_PATH, 'chunks')
 BLASTDB = os.path.join(BASE_PATH, 'blastdb')
+SUFFIX = '_prot'
 
 def serialize_sequences(fasta_file):
     records = SeqIO.parse(fasta_file, 'genbank')
     data = []
     for record in records:
         seqhash = hashlib.md5(str(record.seq)).hexdigest()
-        file_path = os.path.join(GENOMES, seqhash + '.gbk')
+        file_path = os.path.join(GENOMES, seqhash + SUFFIX + '.gbk')
 
         # Only write out if new file
         if not os.path.exists(file_path):
@@ -57,7 +58,7 @@ def makeblastdb(files):
     # Sort
     files = sorted(files)
     dbname = hashlib.md5(''.join(files)).hexdigest()
-    merged_file_location = os.path.join(BLASTDB, dbname)
+    merged_file_location = os.path.join(BLASTDB, dbname + SUFFIX)
 
     # Concatenate all files
     if not os.path.exists(merged_file_location + '.fa'):
@@ -73,7 +74,7 @@ def makeblastdb(files):
     return merged_file_location
 
 def blastp(query, query_id, db):
-    path = db + query_id + '.tsv'
+    path = db + query_id + SUFFIX + '.tsv'
     if not os.path.exists(path):
         blastp_cline = NcbiblastpCommandline(query=query, db=db, evalue="0.001", outfmt=6, out=path)
         (stdout, stderr) = blastp_cline()

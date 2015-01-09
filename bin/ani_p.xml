@@ -4,7 +4,7 @@
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">ani.py
+  <command interpreter="python">ani_p.py
 #set file_list = '" "'.join( [ str($file) for $file in $files])
 $file_list > $outfile
 </command>
