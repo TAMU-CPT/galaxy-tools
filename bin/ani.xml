@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.ani" name="ANI" version="2.0">
+<tool id="edu.tamu.cpt.ani" name="ANI v2" version="2.0">
   <description>average nucleotide identity.</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <command interpreter="python">ani.py
-#for $item in $repeat_file:
-"${item.file}"
-#end for
+#set file_list = '" "'.join( [ str($file) for $file in $files])
+
+$file_list
 --window_size "${window_size}"
 --step_size "${step_size}" > $outfile
 </command>
   <inputs>
-    <param help="Input file" multiple="True" label="file" name="file" optional="False" type="data"/>
+    <param help="Input file" multiple="True" label="files" name="files" optional="False" type="data" format="fasta"/>
     <param help="Window Size" label="window_size" name="window_size" optional="False" type="integer" value="1000"/>
     <param help="Step Size" label="step_size" name="step_size" optional="False" type="integer" value="1000"/>
   </inputs>

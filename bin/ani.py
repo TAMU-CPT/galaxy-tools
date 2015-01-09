@@ -5,7 +5,6 @@ from Bio import SeqIO
 import copy
 import hashlib
 from Bio.Blast.Applications import NcbiblastnCommandline
-from blast import BlastCache
 
 BASE_PATH = os.path.join(os.sep, 'tmp', 'cpt.ani.blast')
 GENOMES = os.path.join(BASE_PATH, 'genome')
@@ -70,7 +69,7 @@ def makeblastdb(files):
     if not os.path.exists(merged_file_location + '.nin'):
         command = ['makeblastdb', '-dbtype', 'nucl', '-out',
                 merged_file_location, '-in', merged_file_location + '.fa']
-        subprocess.check_call(command)
+        output = subprocess.check_output(command)
     return merged_file_location
 
 def blastn(query, query_id, db):
