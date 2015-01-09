@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.ani" name="ANI" version="2.0">
+  <description>average nucleotide identity.</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">ani.py
+#for $item in $repeat_file:
+"${item.file}"
+#end for
+--window_size "${window_size}"
+--step_size "${step_size}" > $outfile
+</command>
+  <inputs>
+    <param help="Input file" multiple="True" label="file" name="file" optional="False" type="data"/>
+    <param help="Window Size" label="window_size" name="window_size" optional="False" type="integer" value="1000"/>
+    <param help="Step Size" label="step_size" name="step_size" optional="False" type="integer" value="1000"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="outfile">
+    </data>
+  </outputs>
+  <help>
+ANI - Average Nucleotide Identity
+=================================
+
+I currently recommend running with the default values for window and step size.
+There is some...odd behaviour in the case of smaller steps that I'm yet to
+resolve completely. The result for
+
+::
+
+    step_size == window_size
+
+is technically
+correct, to the best of my knowledge.
+</help>
+  <tests/>
+</tool>
