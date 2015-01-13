@@ -53,7 +53,6 @@ def chunky(fasta_path, parent_id, window_size=1000, step_size=500):
                         ))
         return (chunk_path, num_chunks, chunk_range)
 
-
 def makeblastdb(files):
     # Sort
     files = sorted(files)
@@ -76,10 +75,13 @@ def makeblastdb(files):
 def blastn(query, query_id, db):
     path = db + query_id + SUFFIX + '.tsv'
     if not os.path.exists(path):
-        blastn_cline = NcbiblastnCommandline(query=query, db=db, evalue="0.001", outfmt=6, out=path)
+        #-outfmt 6 -word_size 11 -evalue 10 -gapopen 5 -gapextend 2 -reward 2 -penalty -3
+        blastn_cline = NcbiblastnCommandline(query=query, db=db, evalue="1",
+                                             outfmt=6, out=path, word_size=11,
+                                             gapopen=5, gapextend=2, reward=2,
+                                             penalty=-3)
         (stdout, stderr) = blastn_cline()
     return path
-
 
 def ani_analysis(genomes, results_location, window_size=1000):
     #{'0c55417ff7136f14e693de66105ff9c6': {
@@ -172,7 +174,6 @@ def format_results(genomes, results_data):
         tabular.append('\t'.join(row))
     return '\n'.join(tabular)
 
-
 def ani(fasta_files, window_size, step_size):
     complete_genomes = {}
     for fasta in fasta_files:
@@ -202,7 +203,6 @@ def ani(fasta_files, window_size, step_size):
 
     results = format_results(complete_genomes, ani_results)
     return results
-
 
 
 if __name__ == '__main__':

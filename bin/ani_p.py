@@ -76,7 +76,10 @@ def makeblastdb(files):
 def blastp(query, query_id, db):
     path = db + query_id + SUFFIX + '.tsv'
     if not os.path.exists(path):
-        blastp_cline = NcbiblastpCommandline(query=query, db=db, evalue="0.001", outfmt=6, out=path)
+        blastp_cline = NcbiblastpCommandline(query=query, db=db, evalue="1",
+                                             outfmt=6, out=path, word_size=11,
+                                             gapopen=5, gapextend=2, reward=2,
+                                             penalty=-3)
         (stdout, stderr) = blastp_cline()
     return path
 

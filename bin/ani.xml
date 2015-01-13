@@ -5,7 +5,7 @@
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <command interpreter="python">ani.py
-#set file_list = '" "'.join( [ str($file) for $file in $files])
+#set file_list = ' '.join( [ str($file) for $file in $files])
 
 $file_list
 --window_size "${window_size}"
