@@ -7,8 +7,8 @@
 $positional_2
 > $default]]></command>
   <inputs>
-    <param label="fasta file" name="positional_1" positional="true" type="data"/>
-    <param area="false" label="New name for the fasta sequence" name="positional_2" positional="true" type="text"/>
+    <param label="fasta file" name="positional_1" type="data"/>
+    <param area="false" label="New name for the fasta sequence" name="positional_2" type="text"/>
   </inputs>
   <outputs>
     <data format="txt" hidden="false" name="default"/>
