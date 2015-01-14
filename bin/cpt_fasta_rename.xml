@@ -1,0 +1,38 @@
+<tool id="edu.tamu.cpt.fasta.rename" name="Fasta Rename/Replace ID" version="1.0">
+  <description>rename the fasta sequence in the record</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python"><![CDATA[cpt_fasta_rename.py $positional_1
+$positional_2
+> $default]]></command>
+  <inputs>
+    <param label="fasta file" name="positional_1" type="data" required="True"/>
+    <param area="false" label="New name for the fasta sequence" name="positional_2" type="text" required="True"/>
+  </inputs>
+  <outputs>
+    <data format="txt" hidden="false" name="default"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Given a fasta input like
+
+::
+
+    >NODE_REALLY_UGLY_NAME_COV_1231123081293192783912873912873
+    ACTG...
+
+This tool will replace the sequence ID and produce something nicer:
+
+::
+
+    >phage_Caitlin
+    ACTG...
+
+**Notes**
+
+You may only have ONE sequence in your fasta file. More/fewer will result in failure
+      ]]></help>
+</tool>
+
