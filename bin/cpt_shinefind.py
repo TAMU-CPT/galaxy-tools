@@ -113,11 +113,12 @@ def shinefind(genbank_file, lookahead_min=5, lookahead_max=15, top_only=False):
                 seq = str(tmp.extract(record.seq))
                 sds = sd_finder.list_sds(seq)
                 feature_id = get_id(feature)
+                human_strand = '+' if strand == 1 else '-'
                 if len(sds) == 0:
                     results.append([
                         feature_id,
-                        start,
-                        end,
+                        feature.location.start,
+                        feature.location.end,
                         strand,
                         seq,
                         None,
@@ -128,8 +129,8 @@ def shinefind(genbank_file, lookahead_min=5, lookahead_max=15, top_only=False):
                 if top_only:
                     results.append([
                         feature_id,
-                        start,
-                        end,
+                        feature.location.start,
+                        feature.location.end,
                         strand,
                         sd_finder.highlight_sd(seq, sds[0]['start'], sds[0]['end']),
                         sds[0]['hit'],
@@ -139,8 +140,8 @@ def shinefind(genbank_file, lookahead_min=5, lookahead_max=15, top_only=False):
                     for sd in sds:
                         results.append([
                             feature_id,
-                            start,
-                            end,
+                            feature.location.start,
+                            feature.location.end,
                             strand,
                             sd_finder.highlight_sd(seq, sd['start'], sd['end']),
                             sd['hit'],

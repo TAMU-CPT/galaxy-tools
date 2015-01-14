@@ -10,8 +10,8 @@ $top_only
 > $default]]></command>
   <inputs>
     <param label="Genbank file" name="positional_1" type="data"/>
-    <param label="Number of bases upstream of CDSs to end search (--lookahead_min)" name="lookahead_min" type="integer" value="0"/>
-    <param label="Number of bases upstream of CDSs to begin search (--lookahead_max)" name="lookahead_max" type="integer" value="0"/>
+    <param label="Number of bases upstream of CDSs to end search (--lookahead_min)" name="lookahead_min" type="integer" value="5"/>
+    <param label="Number of bases upstream of CDSs to begin search (--lookahead_max)" name="lookahead_max" type="integer" value="15"/>
     <param checked="false" label="Only report best hits (--top_only)" name="top_only" type="boolean" falsevalue="" truevalue="--top_only"/>
   </inputs>
   <outputs>
