@@ -23,7 +23,7 @@ def rename_fasta_sequences(fasta_file, new_name):
     return output.getvalue()
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser = argparse.ArgumentParser(description='rename fasta sequences')
     parser.add_argument('fasta_file', metavar='N', type=file, nargs='?',
                                         help='fasta file')
     parser.add_argument('new_name', nargs='?', help='New name for the fasta sequence')
