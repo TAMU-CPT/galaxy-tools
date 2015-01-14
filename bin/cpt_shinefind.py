@@ -152,7 +152,7 @@ def shinefind(genbank_file, lookahead_min=5, lookahead_max=15, top_only=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
     parser.add_argument('genbank_file', metavar='N', type=file, nargs='?',
-                                        help='fasta file')
+                                        help='Genbank file')
     parser.add_argument('--lookahead_min', nargs='?', type=int, help='Number of bases upstream of CDSs to end search', default=5)
     parser.add_argument('--lookahead_max', nargs='?', type=int, help='Number of bases upstream of CDSs to begin search', default=15)
 
