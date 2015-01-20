@@ -13,6 +13,10 @@ BLASTDB = os.path.join(BASE_PATH, 'blastdb')
 SUFFIX = '_nucl'
 
 def serialize_sequences(fasta_file):
+    """Store a fasta file with multiple sequences to a set of files with single sequences
+
+    Sometimes users will pass files with 10, 100 sequences. We need to treat these as individual genomes
+    """
     records = SeqIO.parse(fasta_file, 'fasta')
     data = []
     for record in records:
@@ -32,11 +36,24 @@ def serialize_sequences(fasta_file):
     return data
 
 def chunky_range(length, window_size, step_size):
+    """Convenience function to get a set of chunks for a range
+
+    Here's an example
+
+        >>> chunky_range(1000, 100, 100)
+        (10, [0, 100, 200, 300, 400, 500, 600, 700, 800, 900])
+
+    TODO: refactor into just returning the list, and grabbing num_chunks from len()
+    """
     nearest_multiple = int(length/step_size)*step_size
     num_chunks = nearest_multiple / step_size
     return (num_chunks, range(0, nearest_multiple, step_size))
 
 def chunky(fasta_path, parent_id, window_size=1000, step_size=500):
+    """Given a fasta file, chunk it and store those chunks to a "_chunks.fa" file.
+
+    Returns the path to the file, the number of chunks, and the list of chunks.
+    """
 
     with open(fasta_path, 'r') as handle:
         record = list(SeqIO.parse(handle, 'fasta'))[0]
@@ -54,8 +71,11 @@ def chunky(fasta_path, parent_id, window_size=1000, step_size=500):
         return (chunk_path, num_chunks, chunk_range)
 
 def makeblastdb(files):
+    """Create a blastdb from a set of files.
+    """
     # Sort
     files = sorted(files)
+    # Not relocatable.
     dbname = hashlib.md5(''.join(files)).hexdigest()
     merged_file_location = os.path.join(BLASTDB, dbname + SUFFIX)
 
@@ -73,6 +93,10 @@ def makeblastdb(files):
     return merged_file_location
 
 def blastn(query, query_id, db):
+    """Blast a query against a database
+
+        >>> blastn_output_path = blastn('/path/to/query.fa', 'query-id', '/path/to/db')
+    """
     path = db + query_id + SUFFIX + '.tsv'
     if not os.path.exists(path):
         #-outfmt 6 -word_size 11 -evalue 10 -gapopen 5 -gapextend 2 -reward 2 -penalty -3
@@ -84,11 +108,18 @@ def blastn(query, query_id, db):
     return path
 
 def ani_analysis(genomes, results_location, window_size=1000):
-    #{'0c55417ff7136f14e693de66105ff9c6': {
-      #'chunks': '/tmp/cpt.ani.blast/chunks/0c55417ff7136f14e693de66105ff9c6_1000_500.fa',
-      #'hash': '0c55417ff7136f14e693de66105ff9c6',
-      #'id': '01',
-      #'path': '/tmp/cpt.ani.blast/genome/0c55417ff7136f14e693de66105ff9c6.fa'},
+    """Run analysis of an ANI internal data structure.
+
+    The `genomes` structure looks like this:
+
+        {'0c55417ff7136f14e693de66105ff9c6': {
+        'chunks': '/tmp/cpt.ani.blast/chunks/0c55417ff7136f14e693de66105ff9c6_1000_500.fa',
+        'hash': '0c55417ff7136f14e693de66105ff9c6',
+        'id': '01',
+        'path': '/tmp/cpt.ani.blast/genome/0c55417ff7136f14e693de66105ff9c6.fa'},
+
+    The results_location refers to the output of BLASTN. Window size must be passed for doing calculations.
+    """
 
     # Dict keys
     blast_data = {}
@@ -119,28 +150,6 @@ def ani_analysis(genomes, results_location, window_size=1000):
                 (pident * length) / window_size
 
 
-    #window_size = 200
-    #step_size = 1000
-    #{'0c55417ff7136f14e693de66105ff9c6': {
-        #'0c55417ff7136f14e693de66105ff9c6': 100.0,
-        #'7943324a73e7fdd3f85e6e95ab5f99e2': 39.0985401459854,
-        #'8102f5b1eaa2f67634611e517ef0afb8': 59.12405437956204,
-        #'85f0b0797f73c6d0e32349883091b690': 83.4525200729927,
-        #'b1928f69950fe45e0c19b74e6466e56a': 63.558394160583944,
-        #'c187c6fae8597ed50583412e9d16b4a1': 50.218967883211675},
-    #}
-
-    # window_size = 1000
-    # step_size = 1000
-    #{'0c55417ff7136f14e693de66105ff9c6': {
-        #'0c55417ff7136f14e693de66105ff9c6': 99.43976777939042,
-        #'7943324a73e7fdd3f85e6e95ab5f99e2': 95.19678963715629,
-        #'8102f5b1eaa2f67634611e517ef0afb8': 91.3461407402036,
-        #'85f0b0797f73c6d0e32349883091b690': 96.43665911465986,
-        #'b1928f69950fe45e0c19b74e6466e56a': 92.42191791001551,
-        #'c187c6fae8597ed50583412e9d16b4a1': 91.13827849056656},
-    #}
-
     for genome_query in genomes:
         for genome_subject in genomes:
             qs_results = []
@@ -159,6 +168,8 @@ def ani_analysis(genomes, results_location, window_size=1000):
     return results_map
 
 def format_results(genomes, results_data):
+    """Convenience function to turn list of lists into a TSV
+    """
     id_map = {}
     for genome in genomes:
         id_map[genomes[genome]['hash']] = genomes[genome]['id']
@@ -175,6 +186,11 @@ def format_results(genomes, results_data):
     return '\n'.join(tabular)
 
 def ani(fasta_files, window_size, step_size):
+    """Main ANI method.
+
+    Given a list of fasta files, a window and step size (please ensure that
+    window_size==step_size), calculate average nucleotide identity.
+    """
     complete_genomes = {}
     for fasta in fasta_files:
         output_files = serialize_sequences(fasta)
@@ -210,18 +226,21 @@ if __name__ == '__main__':
     parser.add_argument('fasta_files', type=file, nargs='+', help='input fasta genomes')
 
     parser.add_argument('--window_size', type=int, default=1000, help='window size for splitting the genome')
-    parser.add_argument('--step_size', type=int, default=500, help='step size for each window')
 
 
+    # Ensure paths exist
     for path in (GENOMES, CHUNKS, BLASTDB):
         if not os.path.exists(path):
             os.makedirs(path)
 
-
     args = vars(parser.parse_args())
+    # Honestly...not sure why this is being done here.
     fasta_files = args['fasta_files']
     del args['fasta_files']
 
+    # Deprecate step_size option and ensure step_size==window_size
+    args['step_size'] = args['window_size']
     # Execute
     results = ani(fasta_files, **args)
+    # STDOUT
     print results
