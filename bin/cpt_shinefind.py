@@ -83,11 +83,12 @@ class NaiveSDCaller(object):
             sequence[end:].lower()
         ])
 
-def shinefind(genbank_file, lookahead_min=5, lookahead_max=15, top_only=False):
+def shinefind(genbank_file, table_output, gff3_output, lookahead_min=5, lookahead_max=15, top_only=False):
     output = StringIO.StringIO()
     records = list(SeqIO.parse(genbank_file, "genbank"))
 
     results = [['Name', 'Terminus', 'Terminus', 'Strand', 'Upstream Sequence', 'SD', 'Spacing']]
+    gff3 = ['##gff-version 3']
 
     sd_finder = NaiveSDCaller()
 
@@ -136,6 +137,18 @@ def shinefind(genbank_file, lookahead_min=5, lookahead_max=15, top_only=False):
                         sds[0]['hit'],
                         sds[0]['spacing'] + lookahead_min,
                     ])
+
+                    gff3.append('\t'.join([
+                        record.id,
+                        'CPT_ShineFind',
+                        'Shine_Dalgarno_sequence',
+                        sds[0]['hit'],
+                        sds[0]['spacing'] + lookahead_min,
+                        '.',
+                        human_strand,
+                        '.',
+                        'ID=rbs_%s' % feature_id
+                    ]))
                 else:
                     for sd in sds:
                         results.append([
@@ -147,17 +160,34 @@ def shinefind(genbank_file, lookahead_min=5, lookahead_max=15, top_only=False):
                             sd['hit'],
                             sd['spacing'] + lookahead_min,
                         ])
+                        gff3.append('\t'.join([
+                            record.id,
+                            'CPT_ShineFind',
+                            'Shine_Dalgarno_sequence',
+                            sd['hit'],
+                            sd['spacing'] + lookahead_min,
+                            '.',
+                            human_strand,
+                            '.',
+                            'ID=rbs_%s' % feature_id
+                        ]))
 
-    return '\n'.join(['\t'.join(map(str, row)) for row in results])
+    human_table = '\n'.join(['\t'.join(map(str, row)) for row in results])
+    table_output.write(human_table)
+    gff3_output.write('\n'.join(gff3))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
-    parser.add_argument('genbank_file', metavar='N', type=file, nargs='?',
+    parser.add_argument('genbank_file', type=file, nargs='?',
                                         help='Genbank file')
+    parser.add_argument('table_output', type=file, nargs='?',
+                                        help='Tabular Output')
+    parser.add_argument('gff3_output', type=file, nargs='?',
+                                        help='GFF3 Output')
     parser.add_argument('--lookahead_min', nargs='?', type=int, help='Number of bases upstream of CDSs to end search', default=5)
     parser.add_argument('--lookahead_max', nargs='?', type=int, help='Number of bases upstream of CDSs to begin search', default=15)
 
     parser.add_argument('--top_only', action='store_true', help='Only report best hits')
 
     args = parser.parse_args()
-    print shinefind(**vars(args))
+    shinefind(**vars(args))

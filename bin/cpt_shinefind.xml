@@ -7,7 +7,10 @@
 --lookahead_min $lookahead_min
 --lookahead_max $lookahead_max
 $top_only
-> $default]]></command>
+$default_output
+$gff3_output
+
+]]></command>
   <inputs>
     <param label="Genbank file" name="positional_1" type="data"/>
     <param label="Number of bases upstream of CDSs to end search (--lookahead_min)" name="lookahead_min" type="integer" value="5"/>
@@ -15,7 +18,8 @@ $top_only
     <param checked="false" label="Only report best hits (--top_only)" name="top_only" type="boolean" falsevalue="" truevalue="--top_only"/>
   </inputs>
   <outputs>
-    <data format="tabular" name="default"/>
+    <data format="tabular" name="default_output" label="ShineFind RBS list from $data.name"/>
+    <data format="gff3" name="tabular_output" label="ShineFind GFF3 RBSs from $data.name"/>
   </outputs>
   <help><![CDATA[
 **What it does**

@@ -1,4 +1,5 @@
 import argparse
+import yaml
 import os
 import subprocess
 from Bio import SeqIO
@@ -31,7 +32,8 @@ def serialize_sequences(fasta_file):
         data.append((
                 record.id,
                 seqhash,
-                file_path
+                file_path,
+                len(record.seq),
             ))
     return data
 
@@ -121,16 +123,22 @@ def ani_analysis(genomes, results_location, window_size=1000):
     The results_location refers to the output of BLASTN. Window size must be passed for doing calculations.
     """
 
-    # Dict keys
+    # Set up dict
     blast_data = {}
     for genome in genomes:
         for genome2 in genomes:
             if genome not in blast_data:
                 blast_data[genome] = {}
+                blast_data[genome]['_meta'] = copy.deepcopy(genomes[genome])
+                # Useful
+                blast_data[genome]['_meta']['chunk_size'] = window_size
+                # Useless
+                if 'chunk_range' in blast_data[genome]['_meta']:
+                    del blast_data[genome]['_meta']['chunk_range']
             if genome2 not in blast_data[genome]:
                 blast_data[genome][genome2] = {}
 
-    # Seemed like a shame to waste a nice set of dict keys
+    # Clone dict keys
     results_map = copy.deepcopy(blast_data)
 
     with open(results_location, 'r') as handle:
@@ -148,7 +156,12 @@ def ani_analysis(genomes, results_location, window_size=1000):
 
             blast_data[qseqid_hash][sseqid_hash][qseqid_idx][sseqid_idx] = \
                 (pident * length) / window_size
+    # blast_dict looks like
+    #
+    # blast_dict[genome_a_id][genome_b_id][genome_a_index][genome_b_index] = some_value
 
+    with open('/tmp/ani_syn_data.yaml', 'w') as handle:
+        yaml.dump(blast_data, handle)
 
     for genome_query in genomes:
         for genome_subject in genomes:
@@ -198,7 +211,8 @@ def ani(fasta_files, window_size, step_size):
             complete_genomes[sequence[1]] = {
                     'id': sequence[0],
                     'path': sequence[2],
-                    'hash': sequence[1]
+                    'hash': sequence[1],
+                    'size': sequence[3],
                     }
 
     for genome in complete_genomes:
