@@ -109,7 +109,7 @@ def blastn(query, query_id, db):
         (stdout, stderr) = blastn_cline()
     return path
 
-def ani_analysis(genomes, results_location, window_size=1000):
+def ani_analysis(genomes, results_location, window_size=1000, ani_yaml=None):
     """Run analysis of an ANI internal data structure.
 
     The `genomes` structure looks like this:
@@ -160,7 +160,7 @@ def ani_analysis(genomes, results_location, window_size=1000):
     #
     # blast_dict[genome_a_id][genome_b_id][genome_a_index][genome_b_index] = some_value
 
-    with open('/tmp/ani_syn_data.yaml', 'w') as handle:
+    with open(ani_yaml, 'w') as handle:
         yaml.dump(blast_data, handle)
 
     for genome_query in genomes:
@@ -198,7 +198,7 @@ def format_results(genomes, results_data):
         tabular.append('\t'.join(row))
     return '\n'.join(tabular)
 
-def ani(fasta_files, window_size, step_size):
+def ani(fasta_files, window_size, step_size, *args, **kwd):
     """Main ANI method.
 
     Given a list of fasta files, a window and step size (please ensure that
@@ -229,7 +229,7 @@ def ani(fasta_files, window_size, step_size):
     chunked_files = [complete_genomes[x]['chunks'] for x in complete_genomes]
     blastdb = makeblastdb(chunked_files)
     results_location = blastn(blastdb + '.fa', 'self', blastdb)
-    ani_results = ani_analysis(complete_genomes, results_location, window_size=window_size)
+    ani_results = ani_analysis(complete_genomes, results_location, window_size=window_size, ani_yaml=kwd['ani_yaml_out'])
 
     results = format_results(complete_genomes, ani_results)
     return results
@@ -238,6 +238,8 @@ def ani(fasta_files, window_size, step_size):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Average Nucleotide Identity')
     parser.add_argument('fasta_files', type=file, nargs='+', help='input fasta genomes')
+    parser.add_argument('ani_output', help='Output')
+    parser.add_argument('ani_yaml_out', help='ANI YAML Output')
 
     parser.add_argument('--window_size', type=int, default=1000, help='window size for splitting the genome')
 
@@ -247,14 +249,13 @@ if __name__ == '__main__':
         if not os.path.exists(path):
             os.makedirs(path)
 
-    args = vars(parser.parse_args())
-    # Honestly...not sure why this is being done here.
-    fasta_files = args['fasta_files']
-    del args['fasta_files']
-
+    parsed_args = parser.parse_args()
+    args = vars(parsed_args)
     # Deprecate step_size option and ensure step_size==window_size
     args['step_size'] = args['window_size']
     # Execute
-    results = ani(fasta_files, **args)
+    results = ani(**args)
     # STDOUT
-    print results
+
+    with open(parsed_args.ani_output, 'w') as output_file:
+        output_file.write(results)

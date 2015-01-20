@@ -8,15 +8,15 @@
 #set file_list = ' '.join( [ str($file) for $file in $files])
 
 $file_list
---window_size "${window_size}"  > $outfile
+--window_size "${window_size}"  $outfile $ani_yaml
 </command>
   <inputs>
     <param help="Input file" multiple="True" label="files" name="files" optional="False" type="data" format="fasta"/>
     <param help="Window Size" label="window_size" name="window_size" optional="False" type="integer" value="1000"/>
   </inputs>
   <outputs>
-    <data format="tabular" name="outfile">
-    </data>
+    <data format="tabular" name="outfile" />
+    <data format="txt" name="ani_yaml" label="ANI Plot Data" />
   </outputs>
   <help>
 ANI - Average Nucleotide Identity
