@@ -238,8 +238,8 @@ def ani(fasta_files, window_size, step_size, *args, **kwd):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Average Nucleotide Identity')
     parser.add_argument('fasta_files', type=file, nargs='+', help='input fasta genomes')
-    parser.add_argument('ani_output', help='Output')
-    parser.add_argument('ani_yaml_out', help='ANI YAML Output')
+    parser.add_argument('--ani_output', help='Output')
+    parser.add_argument('--ani_yaml_out', help='ANI YAML Output')
 
     parser.add_argument('--window_size', type=int, default=1000, help='window size for splitting the genome')
 
