@@ -8,7 +8,7 @@
 #set file_list = ' '.join( [ str($file) for $file in $files])
 
 $file_list
---window_size "${window_size}"  $outfile $ani_yaml
+--window_size "${window_size}" --ani_output $outfile --ani_yaml_out $ani_yaml
 </command>
   <inputs>
     <param help="Input file" multiple="True" label="files" name="files" optional="False" type="data" format="fasta"/>
