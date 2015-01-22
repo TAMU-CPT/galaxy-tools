@@ -10,7 +10,7 @@ $positional_3
   <inputs>
     <param label="Genbank file" name="positional_1"  type="data"/>
     <param label="GFF3 Input" name="positional_2"  type="data" format="gff3"/>
-    <param label="Fasta file used in GFF3 producing analysis" name="positional_3" type="data"/>
+    <param label="Fasta file used in GFF3 producing analysis" name="positional_3" type="data" optional="True"/>
   </inputs>
   <outputs>
     <data format="txt" hidden="false" name="default"/>

@@ -41,8 +41,8 @@ def merge_features(features=None, genbank_file=None, **kwd):
 if __name__ == '__main__':
     # Grab all of the filters from our plugin loader
     parser = argparse.ArgumentParser(description='Merge GFF3 data into a Genbank file')
-    parser.add_argument('genbank_file', type=file, nargs=1, help='Genbank file')
-    parser.add_argument('gff3_file', type=file, nargs=1, help='GFF3 Input')
+    parser.add_argument('genbank_file', type=file, help='Genbank file')
+    parser.add_argument('gff3_file', type=file, help='GFF3 Input')
     parser.add_argument('fasta_file', type=file, nargs='?', help='Fasta file used in GFF3 producing analysis')
 
     args = vars(parser.parse_args())
