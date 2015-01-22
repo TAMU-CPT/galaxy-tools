@@ -1,0 +1,23 @@
+<tool id="edu.tamu.cpt.genbank.ipr_gff3_adder" name="Merge InterPro GFF3 into GenBank" version="1.0">
+  <description></description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python"><![CDATA[cpt_add_gff_to_gbk.py $positional_1
+$positional_2
+> $default]]></command>
+  <inputs>
+    <param label="Genbank file" name="positional_1"  type="data"/>
+    <param label="InterProScan GFF3 Input" name="positional_2"  type="data" format="gff3"/>
+  </inputs>
+  <outputs>
+    <data format="txt" hidden="false" name="default"/>
+  </outputs>
+  <help><![CDATA[
+**Merge InterProScan Results into GBK**
+
+Humans make mistakes
+
+]]></help>
+</tool>
+
