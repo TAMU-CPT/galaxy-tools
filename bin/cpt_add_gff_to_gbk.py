@@ -43,7 +43,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Merge GFF3 data into a Genbank file')
     parser.add_argument('genbank_file', type=file, help='Genbank file')
     parser.add_argument('gff3_file', type=file, help='GFF3 Input')
-    parser.add_argument('fasta_file', type=file, nargs='?', help='Fasta file used in GFF3 producing analysis')
+    parser.add_argument('fasta_file', type=str, nargs='?', help='Fasta file used in GFF3 producing analysis')
 
     args = vars(parser.parse_args())
     features = extract_features(**args)
