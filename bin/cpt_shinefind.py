@@ -72,6 +72,7 @@ class NaiveSDCaller(object):
                     'hit': match.group(),
                     'start': match.start(),
                     'end': match.end(),
+                    'len': len(match.group()),
                 })
         return hits
 
@@ -83,8 +84,35 @@ class NaiveSDCaller(object):
             sequence[end:].lower()
         ])
 
+    @classmethod
+    def to_features(cls, hits, strand, parent_start, parent_end):
+        results = []
+        for hit in hits:
+            #gene            complement(124..486)
+            #-1      491     501     0       5       5
+            #-1      491     501     0       4       5
+            #-1      491     501     1       4       5
+            #-1      491     501     2       3       5
+            #-1      491     501     1       3       5
+            #-1      491     501     0       3       5
+
+            print '\t'.join(map(str, [strand, parent_start, parent_end, hit['spacing'], hit['len']]))
+            if strand > 0:
+                tmp = SeqFeature(FeatureLocation(
+                            parent_start - hit['spacing'] - hit['len'],
+                            parent_start - hit['spacing'],
+                            strand=strand
+                        ), type='RBS')
+            else:
+                tmp = SeqFeature(FeatureLocation(
+                            parent_end + hit['spacing'],
+                            parent_end + hit['spacing'] + hit['len'],
+                            strand=strand
+                        ), type='RBS')
+            results.append(tmp)
+        return results
+
 def shinefind(genbank_file, table_output, gff3_output, lookahead_min=5, lookahead_max=15, top_only=False):
-    output = StringIO.StringIO()
     records = list(SeqIO.parse(genbank_file, "genbank"))
 
     results = [['Name', 'Terminus', 'Terminus', 'Strand', 'Upstream Sequence', 'SD', 'Spacing']]
@@ -113,6 +141,8 @@ def shinefind(genbank_file, table_output, gff3_output, lookahead_min=5, lookahea
                                  type='domain')
                 seq = str(tmp.extract(record.seq))
                 sds = sd_finder.list_sds(seq)
+                sd_features = sd_finder.to_features(sds, strand, start, end)
+
                 feature_id = get_id(feature)
                 human_strand = '+' if strand == 1 else '-'
                 if len(sds) == 0:
@@ -142,8 +172,8 @@ def shinefind(genbank_file, table_output, gff3_output, lookahead_min=5, lookahea
                         record.id,
                         'CPT_ShineFind',
                         'Shine_Dalgarno_sequence',
-                        sds[0]['hit'],
-                        sds[0]['spacing'] + lookahead_min,
+                        sd_features[0].location.start,
+                        sd_features[0].location.end,
                         '.',
                         human_strand,
                         '.',
