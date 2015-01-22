@@ -96,21 +96,19 @@ class NaiveSDCaller(object):
             #-1      491     501     1       3       5
             #-1      491     501     0       3       5
 
-            print '\t'.join(map(str, [strand, parent_start, parent_end, hit['spacing'], hit['len']]))
             if strand > 0:
                 tmp = SeqFeature(FeatureLocation(
-                            parent_start - hit['spacing'] - hit['len'],
-                            parent_start - hit['spacing'],
+                            parent_end - hit['spacing'] - hit['len'] + 1,
+                            parent_end - hit['spacing'],
                             strand=strand
                         ), type='RBS')
             else:
                 tmp = SeqFeature(FeatureLocation(
-                            parent_start + hit['spacing'],
+                            parent_start + hit['spacing'] + 1,
                             parent_start + hit['spacing'] + hit['len'],
                             strand=strand
                         ), type='RBS')
             results.append(tmp)
-            print tmp
         return results
 
 def shinefind(genbank_file, table_output, gff3_output, lookahead_min=5, lookahead_max=15, top_only=False):
