@@ -1,4 +1,4 @@
-<tool force_history_refresh="false" hidden="false" id="cpt_fasta_rename.py" name="cpt_fasta_rename.py" workflow_compatible="true">
+<tool force_history_refresh="false" hidden="false" id="cpt_fasta_rename.py" name="Fasta Sequence Renamer" workflow_compatible="true">
   <description>rename fasta sequences</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
@@ -11,7 +11,7 @@ $positional_2
     <param area="false" label="New name for the fasta sequence" name="positional_2" type="text"/>
   </inputs>
   <outputs>
-    <data format="txt" hidden="false" name="default"/>
+    <data format="fasta" hidden="false" name="default" label="$positional_2"/>
   </outputs>
   <help><![CDATA[TODO: Bug @erasche until he fixes it or make a PR]]></help>
 </tool>
