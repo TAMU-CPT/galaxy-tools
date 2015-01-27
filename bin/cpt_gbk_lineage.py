@@ -30,5 +30,6 @@ if __name__ == '__main__':
     parser.add_argument('genbank_files', type=file, nargs='+', help='Genbank file')
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
+    print '\t'.join(['# ID'] + map(str, range(10)))
     for line in lineage(**vars(args)):
         print '\t'.join(line)
