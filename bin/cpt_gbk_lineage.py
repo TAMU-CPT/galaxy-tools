@@ -18,10 +18,13 @@ def lineage(genbank_files=None, **kwargs):
     for genbank_file in genbank_files:
         records = list(SeqIO.parse(genbank_file, "genbank"))
         for record in records:
+            id = record.id
+            if '.' in id:
+                id = id.split('.')[0]
             try:
-                rows.append([record.id] + record.annotations['taxonomy'])
+                rows.append([id] + record.annotations['taxonomy'])
             except:
-                rows.append([record.id])
+                rows.append([id])
                 pass
     return rows
 
