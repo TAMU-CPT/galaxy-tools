@@ -1,0 +1,51 @@
+<tool id="cpt_gbk_source.py" name="cpt_gbk_source.py" version="0.1">
+  <description>Extract lineage information from genbank files</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_gbk_source.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_gbk_source.py
+#set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])
+"$repeat_var_1"
+
+> $default]]></command>
+  <inputs>
+    <repeat min="1" name="repeat_1" title="repeat_title">
+      <param label="Genbank file (positional_1)" name="positional_1" type="data"/>
+    </repeat>
+  </inputs>
+  <outputs>
+    <data format="txt" hidden="false" name="default"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Extract source information from a GenBank file. If there's a source feature
+with a /host field
+
+::
+
+     source          1..38439
+                     /organism="Pseudomonas phage B3"
+                     /strain="ATCC15692-B1"
+                     /host="Pseudomonas aeruginosa PAO1 (ATCC 15692)"
+
+Then this will be parsed into a table like the following:
+
+::
+
+    # ID            Host Genus      Host Species    Host Strain     Other
+    NC_006548       Pseudomonas     aeruginosa      PAO1            (ATCC 15692)
+
+If there isn't a source feature with a host qualifier, then we'll failover to
+detecting it from the genome name and less information will be available:
+
+::
+
+    # ID            Host Genus      Host Species    Host Strain     Other
+    NC_006548       Pseudomonas
+
+
+      ]]></help>
+</tool>
+
