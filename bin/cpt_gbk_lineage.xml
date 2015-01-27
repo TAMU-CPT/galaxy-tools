@@ -1,0 +1,26 @@
+<tool id="edu.tamu.cpt.genbank.taxonomy" name="Extract Taxonomy from GenBank" version="0.1">
+  <description>as tabular data</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_gbk_lineage.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_gbk_lineage.py
+#set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])
+"$repeat_var_1"
+
+> $default]]></command>
+  <inputs>
+    <repeat min="1" name="repeat_1" title="repeat_title">
+      <param label="Genbank file" name="positional_1" type="data"/>
+    </repeat>
+  </inputs>
+  <outputs>
+    <data format="tabular" hidden="false" name="default"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Extracts taxonomy information from GenBank files into a table.
+      ]]></help>
+</tool>
+
