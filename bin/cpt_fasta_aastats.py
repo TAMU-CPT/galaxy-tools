@@ -13,7 +13,7 @@ def aa_stats(fasta_file, **kwargs):
 
     tn_table_keys = list(string.ascii_uppercase) + ['*']
 
-    header = ['#ID'] + tn_table_keys
+    header = ['#ID', 'Length'] + tn_table_keys
     yield header
 
     for record in records:
@@ -25,13 +25,16 @@ def aa_stats(fasta_file, **kwargs):
             except:
                 aa_counts[nt] = 1
 
-        row = [record.id]
+        row = [record.id, len(record.seq)]
+        numbers = []
         for nt in tn_table_keys:
             if nt in aa_counts:
-                row.append(aa_counts[nt])
+                numbers.append(aa_counts[nt])
             else:
-                row.append(0)
-        yield row
+                numbers.append(0)
+
+        numbers = [float(x)/sum(numbers) for x in numbers]
+        yield row + numbers
 
 
 if __name__ == '__main__':

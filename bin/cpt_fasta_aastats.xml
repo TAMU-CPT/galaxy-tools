@@ -1,4 +1,4 @@
-<tool id="cpt_fasta_aastats.py" name="cpt_fasta_aastats.py" version="0.1">
+<tool id="edu.tamu.cpt.fasta.stats" name="Fasta AA Stats" version="0.1">
   <description>Calculate AA frequencies in sequences</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
@@ -21,16 +21,17 @@ Given a translated fasta file like:
 ::
 
     >test
-    MAIVMGRKGARM*
+    MAIVMGRKRGARM*
 
 The tool will print out useful statistics on AA frequencies.
 
 ::
 
-    #ID  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z *
-    test 2 0 0 0 0 0 2 0 1 0 1 0 3 0 0 0 0 2 0 0 0 1 0 0 0 0 1
+    #ID  Length A              B   C   D   E   F   G              H   I               ...
+    test 14     0.142857142857 0.0 0.0 0.0 0.0 0.0 0.142857142857 0.0 0.0714285714286 ...
 
-The entire alphabet is used for simplicity
+
+The entire alphabet is used for simplicity, and the values are normalized for easier use in downstream analysis
 
 ]]></help>
 </tool>
