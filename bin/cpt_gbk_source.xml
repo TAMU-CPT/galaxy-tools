@@ -1,5 +1,5 @@
-<tool id="cpt_gbk_source.py" name="cpt_gbk_source.py" version="0.1">
-  <description>Extract lineage information from genbank files</description>
+<tool id="edu.tamu.cpt.gbk.source" name="GenBank Source Extractor" version="0.1">
+  <description>Extract host genus &amp; species from GenBank files</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>

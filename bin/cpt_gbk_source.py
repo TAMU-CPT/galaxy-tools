@@ -15,7 +15,6 @@ Renumber genes in a genome
 
 def phage_source(genbank_files=None, **kwargs):
     from Bio import SeqIO
-    rows = []
     for genbank_file in genbank_files:
         records = list(SeqIO.parse(genbank_file, "genbank"))
         for record in records:
@@ -24,10 +23,19 @@ def phage_source(genbank_files=None, **kwargs):
                 id = id.split('.')[0]
 
             source_feats = [x for x in record.features if x.type == 'source']
-            if len(source_feats) == 0:
-                (host, phage) = name_parser(record.description)
-                rows.append([id, host])
+
+            # Provide a default value from a parsing attempt at the name
+            (host, phage) = name_parser(record.description)
+            if host is not None:
+                ret = (id, host)
             else:
+                ret = (id, '')
+
+            # If there isn't a source feature, return that immediately
+            if len(source_feats) == 0:
+                yield ret
+            else:
+                # Otherwise look through any and all source features for a /host qualifier
                 for source_feat in source_feats:
                     if 'host' in source_feat.qualifiers:
                         source_host = source_feat.qualifiers['host'][0].split(' ')
@@ -50,9 +58,8 @@ def phage_source(genbank_files=None, **kwargs):
                             genus = source_host[0]
                         else:
                             genus = ""
-
-                        rows.append([id, genus, species, strain, other])
-    return rows
+                        ret = (id, genus, species, strain, other)
+                yield ret
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract lineage information from genbank files')
@@ -60,5 +67,10 @@ if __name__ == '__main__':
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
     print '\t'.join(['# ID', 'Host Genus', 'Host Species', 'Host Strain', 'Other'])
-    for line in phage_source(**vars(args)):
-        print '\t'.join(line)
+
+    line = iter(phage_source(**vars(args)))
+    try:
+        while True:
+            print '\t'.join(line.next())
+    except StopIteration:
+        pass
