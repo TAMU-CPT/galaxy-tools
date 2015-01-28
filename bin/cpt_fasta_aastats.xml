@@ -1,0 +1,37 @@
+<tool id="cpt_fasta_aastats.py" name="cpt_fasta_aastats.py" version="0.1">
+  <description>Calculate AA frequencies in sequences</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_fasta_aastats.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_fasta_aastats.py
+$positional_1
+> $default]]></command>
+  <inputs>
+    <param label="Fasta file" name="positional_1" type="data"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" hidden="false" name="default" label="Amino Acid usage in $positional_1"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Given a translated fasta file like:
+
+::
+
+    >test
+    MAIVMGRKGARM*
+
+The tool will print out useful statistics on AA frequencies.
+
+::
+
+    #ID  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z *
+    test 2 0 0 0 0 0 2 0 1 0 1 0 3 0 0 0 0 2 0 0 0 1 0 0 0 0 1
+
+The entire alphabet is used for simplicity
+
+]]></help>
+</tool>
+
