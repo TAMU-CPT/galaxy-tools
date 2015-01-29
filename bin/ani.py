@@ -145,6 +145,7 @@ def ani_analysis(genomes, results_location, window_size=1000, ani_yaml=None):
         for line in handle.readlines():
             split_line = line.split('\t')
             (qseqid, sseqid) = split_line[0:2]
+
             (pident, length, mismatch, gapopen, qstart, qend,
                     sstart, send, evalue, bitscore) = map(float, split_line[2:])
 
@@ -154,11 +155,13 @@ def ani_analysis(genomes, results_location, window_size=1000, ani_yaml=None):
             if qseqid_idx not in blast_data[qseqid_hash][sseqid_hash]:
                 blast_data[qseqid_hash][sseqid_hash][qseqid_idx] = {}
 
-            blast_data[qseqid_hash][sseqid_hash][qseqid_idx][sseqid_idx] = \
-                (pident * length) / window_size
-    # blast_dict looks like
-    #
-    # blast_dict[genome_a_id][genome_b_id][genome_a_index][genome_b_index] = some_value
+            dice = (pident * length) / window_size
+
+            if sseqid_idx not in blast_data[qseqid_hash][sseqid_hash][qseqid_idx]:
+                blast_data[qseqid_hash][sseqid_hash][qseqid_idx][sseqid_idx] = dice
+            else:
+                if dice > blast_data[qseqid_hash][sseqid_hash][qseqid_idx][sseqid_idx]:
+                    blast_data[qseqid_hash][sseqid_hash][qseqid_idx][sseqid_idx] = dice
 
     with open(ani_yaml, 'w') as handle:
         yaml.dump(blast_data, handle)
