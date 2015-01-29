@@ -95,9 +95,10 @@ def extract_features(gbk_file=None, tag='CDS', translate=False,
                     seq = tmp.extract(records[i].seq)
 
                 idx += 1
+                location = ' [start=%s,end=%s]' % (start, end)
                 output.append(SeqRecord(seq=seq, id=get_id(feature, parent_prefix=records[i].id, idx=idx),
                                         name=get_id(feature),
-                                        description=get_id(feature)))
+                                        description=get_id(feature) + location))
     return output
 
 
