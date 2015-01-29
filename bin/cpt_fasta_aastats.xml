@@ -11,7 +11,7 @@ $positional_1
     <param label="Fasta file" name="positional_1" type="data"/>
   </inputs>
   <outputs>
-    <data format="tabular" hidden="false" name="default" label="Amino Acid usage in $positional_1"/>
+    <data format="tabular" hidden="false" name="default" label="Amino Acid usage in $positional_1.name"/>
   </outputs>
   <help><![CDATA[
 **What it does**

@@ -1,0 +1,45 @@
+<tool id="edu.tamu.cpt.fasta.codonstats" name="Fasta Codon Stats" version="0.1">
+  <description>Calculate Codon frequencies in sequences</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_fasta_codonstats.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_fasta_codonstats.py
+$positional_1
+> $default]]></command>
+  <inputs>
+    <param label="Fasta file" name="positional_1" type="data"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" hidden="false" name="default" label="Codon usage in $positional_1.name"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Given an DNA fasta file like:
+
+::
+
+    >AL009126.3|001_BSU00010 BSU00010 [start=409,end=1747]
+    ATGGAAAATATATTAGACCTGTGGAACCAAGCCCTTGCTCAAATCGAAAAAAAGTTGAGC
+    AAACCGAGTTTTGAGACTTGGATGAAGTCAACCAAAGCCCACTCACTGCAAGGCGATACA
+    TTAACAATCACGGCTCCCAATGAATTTGCCAGAGACTGGCTGGAGTCCAGATACTTGCAT
+    CTGATTGCAGATACTATATATGAATTAACCGGGGAAGAATTGAGCATTAAGTTTGTCATT
+    CCTCAAAATCAAGATGTTGAGGACTTTATGCCGAAACCGCAAGTCAAAAAAGCGGTCAAA
+    GAAGATACATCTGATTTTCCTCAAAATATGCTCAATCCAAAATATACTTTTGATACTTTT
+    GTCATCGGATCTGGAAACCGATTTGCACATGCTGCTTCCCTCGCAGTAGCGGAAGCGCCC
+
+The tool will print out useful statistics on Codon frequencies.
+
+::
+
+    #ID                     Length  AAA (K)         AAC (N)         AAG (K)         ...
+    AL009126.3|001_BSU00010 1338    0.0717488789238 0.0156950672646 0.0134529147982 ...
+
+
+
+Values are normalized for easier use in downstream analysis
+
+]]></help>
+</tool>
+
