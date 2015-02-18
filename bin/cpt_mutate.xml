@@ -11,9 +11,9 @@ $positional_2
   <inputs>
     <param label="Fasta file" format="fasta" name="positional_1" type="data"/>
     <param label="Type of mutation to make" name="positional_2" type="select">
-      <option selected="true" name="mutate">mutate</option>
-      <option name="insert">insert</option>
-      <option name="delete">delete</option>
+      <option selected="true" value="mutate">mutate</option>
+      <option value="insert">insert</option>
+      <option value="delete">delete</option>
     </param>
   </inputs>
   <outputs>
@@ -22,7 +22,10 @@ $positional_2
   <help><![CDATA[
 **What it does**
 
-Generate SNPs in a fasta file
-      ]]></help>
+Generate SNPs in a fasta file.
+
+Be **CAREFUL** with large/many sequences.
+
+]]></help>
 </tool>
 

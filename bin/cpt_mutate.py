@@ -58,7 +58,7 @@ def snp(fasta_file, mutation='mutate'):
     print output.getvalue()
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Replace ambiguous bases')
+    parser = argparse.ArgumentParser(description='make SNPs in fasta files')
     parser.add_argument('fasta_file', type=file, help='Fasta file')
     parser.add_argument('mutation', type=str, help='Type of mutation to make', default='mutate', choices=['mutate', 'insert', 'delete'])
 

@@ -1,0 +1,43 @@
+<tool id="edu.tamu.cpt.fasta.dedup" name="Fasta Deduplicator" version="1.0">
+  <description>remove duplicate sequences in a fasta file</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_dedup.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_dedup.py
+$positional_1
+> $default]]></command>
+  <inputs>
+    <param label="Fasta file" name="positional_1" type="data"/>
+  </inputs>
+  <outputs>
+    <data format="txt" hidden="false" name="default" label="Unique sequences in $positional_1.name"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Say you generated a bunch of SNPs and then translated that data, and found a
+large number didn't cause missense mutations. You might want to de-duplicate
+that to reduce the number of sequences:
+
+::
+
+    >test
+    ATGC
+    >test2
+    ATGC
+    >test3
+    AAAA
+
+will be reduced to
+
+::
+
+    >test test [Ident: test2]
+    ATGC
+    >test3
+    AAAA
+
+]]></help>
+</tool>
+
