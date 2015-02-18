@@ -44,7 +44,11 @@ def plot_snps(reference, mutated):
     char_width = 20
     char_height = 20
 
-    for i in range(len(reference)/width):
+    yrange = range(len(reference)/width)
+    if len(yrange) == 0:
+        yrange = [0]
+
+    for i in yrange:
         start = i * width
         end = (i+1) * width
         max_height = max([0] + [
