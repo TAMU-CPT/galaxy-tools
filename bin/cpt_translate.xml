@@ -1,72 +1,50 @@
-{'text': 1, 'selected': False, 'value': 1}
-{'text': 2, 'selected': False, 'value': 2}
-{'text': 3, 'selected': False, 'value': 3}
-{'text': 4, 'selected': False, 'value': 4}
-{'text': 5, 'selected': False, 'value': 5}
-{'text': 6, 'selected': False, 'value': 6}
-{'text': 7, 'selected': False, 'value': 7}
-{'text': 8, 'selected': False, 'value': 8}
-{'text': 9, 'selected': False, 'value': 9}
-{'text': 10, 'selected': False, 'value': 10}
-{'text': 11, 'selected': True, 'value': 11}
-{'text': 12, 'selected': False, 'value': 12}
-{'text': 13, 'selected': False, 'value': 13}
-{'text': 14, 'selected': False, 'value': 14}
-{'text': 15, 'selected': False, 'value': 15}
-{'text': 16, 'selected': False, 'value': 16}
-{'text': 17, 'selected': False, 'value': 17}
-{'text': 18, 'selected': False, 'value': 18}
-{'text': 19, 'selected': False, 'value': 19}
-{'text': 20, 'selected': False, 'value': 20}
-{'text': 21, 'selected': False, 'value': 21}
-{'text': 22, 'selected': False, 'value': 22}
 <tool id="cpt_translate.py" name="cpt_translate.py" version="1.0">
   <description>Translate fasta file</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <version_command>python cpt_translate.py --version</version_command>
-  <command interpreter="python"><![CDATA[cpt_translate.py 
-#if $positional_1 and $positional_1 is not None:
+  <command interpreter="python"><![CDATA[cpt_translate.py
 $positional_1
-#end if
-
-#if $table and $table is not None:
 --table $table
-#end if
 $strip_stops
 > $default]]></command>
   <inputs>
-    <param label="Fasta file (positional_1)" name="positional_1" type="data"/>
-    <param label="Translation table to use (--table)" name="table">
-      <option name="1">1</option>
-      <option name="2">2</option>
-      <option name="3">3</option>
-      <option name="4">4</option>
-      <option name="5">5</option>
-      <option name="6">6</option>
-      <option name="7">7</option>
-      <option name="8">8</option>
-      <option name="9">9</option>
-      <option name="10">10</option>
-      <option name="11" selected="true">11</option>
-      <option name="12">12</option>
-      <option name="13">13</option>
-      <option name="14">14</option>
-      <option name="15">15</option>
-      <option name="16">16</option>
-      <option name="17">17</option>
-      <option name="18">18</option>
-      <option name="19">19</option>
-      <option name="20">20</option>
-      <option name="21">21</option>
-      <option name="22">22</option>
+    <param label="Fasta file" name="positional_1" type="data"/>
+    <param label="Translation table to use" help="(--table)" name="table">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option selected="true" value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
     </param>
     <param checked="false" label="Remove stop characters (--strip_stops)" name="strip_stops" type="boolean" truevalue="--strip_stops" falsevalue=""/>
   </inputs>
   <outputs>
-    <data format="txt" hidden="false" name="default"/>
+    <data format="fasta" hidden="false" name="default"/>
   </outputs>
-  <help><![CDATA[TODO: Write help]]></help>
+  <help><![CDATA[
+**What it does**
+
+Translate DNA sequences to protein sequences
+
+]]></help>
 </tool>
 

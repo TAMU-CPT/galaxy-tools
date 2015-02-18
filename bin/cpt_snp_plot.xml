@@ -1,0 +1,52 @@
+<tool id="edu.tamu.cpt.plot.snp" name="SNP Plot" version="1.0">
+  <description>simple plot of generated snps against a reference sequence</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_snp_plot.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_snp_plot.py
+$positional_1
+$positional_2
+
+> $default]]></command>
+  <inputs>
+    <param label="Reference sequence" help="only 1 fasta sequence allowed" name="positional_1" type="data"/>
+    <param label="Fasta file of SNPs" name="positional_2" type="data"/>
+  </inputs>
+  <outputs>
+    <data format="svg" name="default" label="SNPs from $positional_2.name against $positional_1.name"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Given a reference sequence
+
+::
+
+    >orig
+    QECDQA
+
+and some mutated sequences:
+
+::
+
+    >S-24S_m1A S-24S[mutate at 1: A]
+    KECDQA
+    >S-24S_m1A S-24S[mutate at 1: T]
+    EECDQA
+    >S-24S_m1G S-24S[mutate at 1: G]
+    QEC
+
+a simple plot will be generated:
+
+::
+
+    E
+    K *
+    QECDQA...
+    0        10
+
+
+]]></help>
+</tool>
+
