@@ -11,7 +11,7 @@ $positional_1
     <param label="Fasta file" name="positional_1" type="data"/>
   </inputs>
   <outputs>
-    <data format="txt" hidden="false" name="default" label="Unique sequences in $positional_1.name"/>
+    <data format="fasta" hidden="false" name="default" label="Unique sequences in $positional_1.name"/>
   </outputs>
   <help><![CDATA[
 **What it does**
