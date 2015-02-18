@@ -1,0 +1,28 @@
+<tool id="edu.tamu.cpt.fasta.mutate" name="Generate SNPs" version="1.0">
+  <description>in fasta files</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_mutate.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_mutate.py
+$positional_1
+$positional_2
+> $default]]></command>
+  <inputs>
+    <param label="Fasta file" format="fasta" name="positional_1" type="data"/>
+    <param label="Type of mutation to make" name="positional_2">
+      <option selected="true" name="mutate">mutate</option>
+      <option name="insert">insert</option>
+      <option name="delete">delete</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="fasta" name="default" label="Mutated $positional_1.name"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Generate SNPs in a fasta file
+      ]]></help>
+</tool>
+
