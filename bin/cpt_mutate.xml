@@ -10,7 +10,7 @@ $positional_2
 > $default]]></command>
   <inputs>
     <param label="Fasta file" format="fasta" name="positional_1" type="data"/>
-    <param label="Type of mutation to make" name="positional_2">
+    <param label="Type of mutation to make" name="positional_2" type="select">
       <option selected="true" name="mutate">mutate</option>
       <option name="insert">insert</option>
       <option name="delete">delete</option>
