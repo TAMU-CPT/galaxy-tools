@@ -1,0 +1,62 @@
+<tool id="edu.tamu.cpt.fasta.disambig" name="Disambiguate ambiguous sequences" version="1.0">
+  <description>given a fasta file with ambiguities, replace them randomly</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_disambig.py --version</version_command>
+  <command interpreter="python"><![CDATA[
+cpt_disambig.py
+
+$positional_1
+--tbl_out $tbl_out
+--seed $seed
+
+> $default]]></command>
+  <inputs>
+    <param label="Fasta file" format="fasta" name="positional_1" type="data"/>
+    <param label="Seed for reproducible analysis" help="(--seed)" name="seed" type="integer" value="42"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="tbl_out" label="Ambiguities" />
+    <data format="txt" name="default" label="Disambiguated $positional_1.name"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Sometimes fasta files have ambiguous bases in them. Many downstream tools
+dislike, or outright don't tolerate ambiguous bases. Thus, those have to be
+removed. The easiest way to do that is to randomly replace them.
+
+
+::
+
+    >test
+    ACTGURYMKWSBDHVN
+
+Running this tool will correct the above sequence to:
+
+::
+
+    >test
+    ACTGTATCTTCCATAT
+
+and also produce a table of the changes:
+
+::
+
+    # Pos	Orig	New
+    4	U	T
+    5	R	A
+    6	Y	T
+    7	M	C
+    8	K	T
+    9	W	T
+    10	S	C
+    11	B	C
+    12	D	A
+    13	H	T
+    14	V	A
+    15	N	T
+      ]]></help>
+</tool>
+
