@@ -11,7 +11,7 @@ $strip_stops
 > $default]]></command>
   <inputs>
     <param label="Fasta file" name="positional_1" type="data"/>
-    <param label="Translation table to use" help="(--table)" name="table">
+    <param label="Translation table to use" help="(--table)" name="table" type="select">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
