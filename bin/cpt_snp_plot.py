@@ -38,12 +38,40 @@ def plot_snps(reference, mutated):
                 # Silent mutation
 
     dwg = svgwrite.Drawing()
-    width = 40
+    width = 120
     global_y_offset = 20
     global_x_offset = 20
-    char_width = 20
-    char_height = 20
+    char_width = 10
+    char_height = 15
 
+    color_ref = {
+        'r': ('A91a00', 'CA290C'),
+        'g': ('045069', '0C627E'),
+        'o': ('A97700', 'ca920c'),
+    }
+
+    colors = {
+        #Charged:
+        'R': color_ref['r'][0], 'K': color_ref['r'][0], 'D': color_ref['r'][0], 'E': color_ref['r'][0],
+        #Polar (may participate in hydrogen bonds):
+        'Q': color_ref['g'][0], 'N': color_ref['g'][0], 'H': color_ref['g'][0], 'S': color_ref['g'][0],
+        'T': color_ref['g'][0], 'Y': color_ref['g'][0], 'C': color_ref['g'][0], 'M': color_ref['g'][0],
+        'W': color_ref['g'][0],
+        #Hydrophobic (normally buried inside the protein core):
+        'A': color_ref['o'][0], 'I': color_ref['o'][0], 'L': color_ref['o'][0], 'F': color_ref['o'][0],
+        'V': color_ref['o'][0], 'P': color_ref['o'][0], 'G': color_ref['o'][0],
+    }
+    colors_muted = {
+        #Charged:
+        'R': color_ref['r'][1], 'K': color_ref['r'][1], 'D': color_ref['r'][1], 'E': color_ref['r'][1],
+        #Polar (may participate in hydrogen bonds):
+        'Q': color_ref['g'][1], 'N': color_ref['g'][1], 'H': color_ref['g'][1], 'S': color_ref['g'][1],
+        'T': color_ref['g'][1], 'Y': color_ref['g'][1], 'C': color_ref['g'][1], 'M': color_ref['g'][1],
+        'W': color_ref['g'][1],
+        #Hydrophobic (normally buried inside the protein core):
+        'A': color_ref['o'][1], 'I': color_ref['o'][1], 'L': color_ref['o'][1], 'F': color_ref['o'][1],
+        'V': color_ref['o'][1], 'P': color_ref['o'][1], 'G': color_ref['o'][1],
+    }
     yrange = range(len(reference)/width)
     if len(yrange) == 0:
         yrange = [0]
@@ -59,22 +87,27 @@ def plot_snps(reference, mutated):
         global_y_offset += (max_height + 4) * char_height
         # Add zero in case no muts are found
 
+        # Reference sequence
         for x_offset, char in enumerate(reference[start:end]):
             dwg.add(dwg.text(char,
                              insert=(
                                  global_x_offset + x_offset * char_width,
                                  global_y_offset
-                             )))
+                             ),
+                             style="font-family:monospace;fill:#%s" % colors.get(char, 'black'),
+                             ))
+
+        # Scale
         for x_offset, char in enumerate(reference[start:end]):
             if x_offset % 10 == 0:
                 dwg.add(dwg.line(
                     start=(
-                        global_x_offset + x_offset * char_width - .2 * char_width,
-                        global_y_offset - 0.5 * char_height
+                        global_x_offset + x_offset * char_width - .1 * char_width,
+                        global_y_offset
                     ),
                     end=(
-                        global_x_offset + x_offset * char_width - .2 * char_width,
-                        global_y_offset + 0.5 * char_height
+                        global_x_offset + x_offset * char_width - .1 * char_width,
+                        global_y_offset + char_height
                     ),
                     style="stroke:black",
                 ))
@@ -82,8 +115,10 @@ def plot_snps(reference, mutated):
                                 insert=(
                                     global_x_offset + x_offset * char_width,
                                     global_y_offset + char_height
-                                )))
+                                ),
+                                style="font-family:monospace"))
 
+        # SNPs
         for j in range(start, end):
             if j in diffs:
                 for k, char in enumerate(sorted(diffs[j])):
@@ -91,7 +126,9 @@ def plot_snps(reference, mutated):
                                      insert=(
                                          global_x_offset + (j - start) * char_width,
                                          global_y_offset - (1 + k) * char_height
-                                     )))
+                                     ),
+                                     style="font-family:monospace; fill:#%s" % colors_muted.get(char, 'black'),
+                                     ))
 
 
     print dwg.tostring()
