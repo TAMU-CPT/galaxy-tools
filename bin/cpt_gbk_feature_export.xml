@@ -1,135 +1,101 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.FeatureExport" name="Genbank Feature Export" version="1.94">
-  <description>Export features from a Genbank File</description>
-  <version_command>python cpt_gbk_feature_export.py --version</version_command>
+<tool id="cpt_gbk_feature_export.py" name="cpt_gbk_feature_export.py" version="1.0">
+  <description>Export a subset of features from a Genbank file</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">cpt_gbk_feature_export.py
---galaxy
---outfile_supporting $__new_file_path__
---file "${file}"
+  <version_command>python cpt_gbk_feature_export.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_gbk_feature_export.py
+$positional_1
 
-#for $item in $repeat_tag:
---tag "${item.tag}"
-#end for
+#set repeat_var_2 = ' '.join(str($positional_2).split(','))
+$repeat_var_2
 
-#if $translate:
---translate
-#end if
+$translate
+--translation_table_id $translation_table_id
+--n_bases_upstream $n_bases_upstream
+--n_bases_downstream $n_bases_downstream
+$strip_stops
 
---translation_table_id "${translation_table_id}"
-
-#if $n_bases_upstream and $n_bases_upstream is not "None":
---n_bases_upstream "${n_bases_upstream}"
-#end if
-
-#if $n_bases_downstream and $n_bases_downstream is not "None":
---n_bases_downstream "${n_bases_downstream}"
-#end if
-
-#if $strip_stops:
---strip_stops
-#end if
-
---fasta "${fasta}"
-
---fasta_files_path "${fasta.files_path}"
-
---fasta_format "${fasta_format}"
-
---fasta_id "${fasta.id}"
-
-</command>
+> $default]]></command>
   <inputs>
-    <param help="Genbank file to filter" label="file" name="file" optional="False" type="data"/>
-    <repeat name="repeat_tag" title="Tag">
-      <param help="Tag to extract" label="tag" name="tag" optional="False" type="select" value="CDS">
-        <option value="-10_signal">-10_signal</option>
-        <option value="-35_signal">-35_signal</option>
-        <option value="3'UTR">3'UTR</option>
-        <option value="5'UTR">5'UTR</option>
-        <option value="CAAT_signal">CAAT_signal</option>
-        <option value="CDS">CDS</option>
-        <option value="C_region">C_region</option>
-        <option value="D-loop">D-loop</option>
-        <option value="D_segment">D_segment</option>
-        <option value="GC_signal">GC_signal</option>
-        <option value="J_segment">J_segment</option>
-        <option value="LTR">LTR</option>
-        <option value="N_region">N_region</option>
-        <option value="RBS">RBS</option>
-        <option value="STS">STS</option>
-        <option value="S_region">S_region</option>
-        <option value="TATA_signal">TATA_signal</option>
-        <option value="V_region">V_region</option>
-        <option value="V_segment">V_segment</option>
-        <option value="all">all</option>
-        <option value="assembly_gap">assembly_gap</option>
-        <option value="attenuator">attenuator</option>
-        <option value="enhancer">enhancer</option>
-        <option value="exon">exon</option>
-        <option value="gap">gap</option>
-        <option value="gene">gene</option>
-        <option value="iDNA">iDNA</option>
-        <option value="intron">intron</option>
-        <option value="mRNA">mRNA</option>
-        <option value="mat_peptide">mat_peptide</option>
-        <option value="misc_RNA">misc_RNA</option>
-        <option value="misc_binding">misc_binding</option>
-        <option value="misc_difference">misc_difference</option>
-        <option value="misc_feature">misc_feature</option>
-        <option value="misc_recomb">misc_recomb</option>
-        <option value="misc_signal">misc_signal</option>
-        <option value="misc_structure">misc_structure</option>
-        <option value="mobile_element">mobile_element</option>
-        <option value="modified_base">modified_base</option>
-        <option value="ncRNA">ncRNA</option>
-        <option value="old_sequence">old_sequence</option>
-        <option value="operon">operon</option>
-        <option value="oriT">oriT</option>
-        <option value="polyA_signal">polyA_signal</option>
-        <option value="polyA_site">polyA_site</option>
-        <option value="precursor_RNA">precursor_RNA</option>
-        <option value="prim_transcript">prim_transcript</option>
-        <option value="primer_bind">primer_bind</option>
-        <option value="promoter">promoter</option>
-        <option value="protein_bind">protein_bind</option>
-        <option value="rRNA">rRNA</option>
-        <option value="rep_origin">rep_origin</option>
-        <option value="repeat_region">repeat_region</option>
-        <option value="sig_peptide">sig_peptide</option>
-        <option value="source">source</option>
-        <option value="stem_loop">stem_loop</option>
-        <option value="tRNA">tRNA</option>
-        <option value="terminator">terminator</option>
-        <option value="tmRNA">tmRNA</option>
-        <option value="transit_peptide">transit_peptide</option>
-        <option value="unsure">unsure</option>
-        <option value="variation">variation</option>
-        <option value="whole">whole</option>
-      </param>
-    </repeat>
-    <param checked="" falsevalue="False" help="Translate sequence during analysis" label="translate" name="translate" optional="True" truevalue="True" type="boolean"/>
-    <param help="ID Number of tranlsation table to use" label="translation_table_id" name="translation_table_id" optional="False" type="integer" value="11"/>
-    <param help="Added N bases upstream to result" label="n_bases_upstream" min="0" name="n_bases_upstream" optional="True" type="integer" value="0"/>
-    <param help="Added N bases downstream to result" label="n_bases_downstream" min="0" name="n_bases_downstream" optional="True" type="integer" value="0"/>
-    <param checked="" falsevalue="False" help="Remove all stop codons from translated proteins" label="strip_stops" name="strip_stops" optional="True" truevalue="True" type="boolean"/>
-    <param help="Fasta export of selected tag" label="Format of fasta" name="fasta_format" optional="False" type="select">
-      <option selected="True" value="Fasta">Fasta</option>
+    <param label="Genbank file" name="positional_1" type="data"/>
+    <param label="tags to export" multiple="True" name="positional_2">
+      <option value="-10_signal">-10_signal</option>
+      <option value="-35_signal">-35_signal</option>
+      <option value="3'UTR">3'UTR</option>
+      <option value="5'UTR">5'UTR</option>
+      <option value="CAAT_signal">CAAT_signal</option>
+      <option selected="true" value="CDS">CDS</option>
+      <option value="C_region">C_region</option>
+      <option value="D-loop">D-loop</option>
+      <option value="D_segment">D_segment</option>
+      <option value="GC_signal">GC_signal</option>
+      <option value="J_segment">J_segment</option>
+      <option value="LTR">LTR</option>
+      <option value="N_region">N_region</option>
+      <option value="RBS">RBS</option>
+      <option value="STS">STS</option>
+      <option value="S_region">S_region</option>
+      <option value="TATA_signal">TATA_signal</option>
+      <option value="V_region">V_region</option>
+      <option value="V_segment">V_segment</option>
+      <option value="all">all</option>
+      <option value="assembly_gap">assembly_gap</option>
+      <option value="attenuator">attenuator</option>
+      <option value="enhancer">enhancer</option>
+      <option value="exon">exon</option>
+      <option value="gap">gap</option>
+      <option value="gene">gene</option>
+      <option value="iDNA">iDNA</option>
+      <option value="intron">intron</option>
+      <option value="mRNA">mRNA</option>
+      <option value="mat_peptide">mat_peptide</option>
+      <option value="misc_RNA">misc_RNA</option>
+      <option value="misc_binding">misc_binding</option>
+      <option value="misc_difference">misc_difference</option>
+      <option value="misc_feature">misc_feature</option>
+      <option value="misc_recomb">misc_recomb</option>
+      <option value="misc_signal">misc_signal</option>
+      <option value="misc_structure">misc_structure</option>
+      <option value="mobile_element">mobile_element</option>
+      <option value="modified_base">modified_base</option>
+      <option value="ncRNA">ncRNA</option>
+      <option value="old_sequence">old_sequence</option>
+      <option value="operon">operon</option>
+      <option value="oriT">oriT</option>
+      <option value="polyA_signal">polyA_signal</option>
+      <option value="polyA_site">polyA_site</option>
+      <option value="precursor_RNA">precursor_RNA</option>
+      <option value="prim_transcript">prim_transcript</option>
+      <option value="primer_bind">primer_bind</option>
+      <option value="promoter">promoter</option>
+      <option value="protein_bind">protein_bind</option>
+      <option value="rRNA">rRNA</option>
+      <option value="rep_origin">rep_origin</option>
+      <option value="repeat_region">repeat_region</option>
+      <option value="sig_peptide">sig_peptide</option>
+      <option value="source">source</option>
+      <option value="stem_loop">stem_loop</option>
+      <option value="tRNA">tRNA</option>
+      <option value="terminator">terminator</option>
+      <option value="tmRNA">tmRNA</option>
+      <option value="transit_peptide">transit_peptide</option>
+      <option value="unsure">unsure</option>
+      <option value="variation">variation</option>
     </param>
+    <param label="Translate sequence (--translate)" name="translate" type="boolean" truevalue="--translate" falsevalue=""/>
+    <param area="false" default="11" label="Translation table ID (--translation_table_id)" name="translation_table_id" type="text"/>
+    <param label="Add N bases upstream to exported features (--n_bases_upstream)" name="n_bases_upstream" type="integer" value="0"/>
+    <param label="Add N bases downstream to exported features (--n_bases_downstream)" name="n_bases_downstream" type="integer" value="0"/>
+    <param selected="true" label="Remove stop codons (--strip_stops)" name="strip_stops" type="boolean" truevalue="--strip_stops" falsevalue=""/>
   </inputs>
   <outputs>
-    <data format="Fasta" name="fasta">
-      <change_format>
-        <when format="fasta" input="fasta_format" value="Fasta"/>
-      </change_format>
-    </data>
+    <data format="fasta" name="default" label="$positional_2.name exported from $positional_1.name"/>
   </outputs>
-  <help>GenBank Feature Export
-======================
+  <help><![CDATA[
+**What it does **
 
-Exports features from a GenBank file
-</help>
-  <tests/>
+Exports features from a genbank file
+      ]]></help>
 </tool>

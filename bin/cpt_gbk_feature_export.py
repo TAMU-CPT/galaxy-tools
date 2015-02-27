@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-from galaxygetopt.ggo import GalaxyGetOpt as GGO
+import argparse
 import logging
+import copy
 logging.basicConfig(level=logging.INFO)
-
 
 __doc__ = """
 GenBank Feature Export
@@ -12,12 +12,10 @@ Exports features from a GenBank file
 """
 
 
-def get_id(feature=None, parent_prefix=None, idx=None):
+def get_id(feature=None, parent_prefix=None):
     result = ""
     if parent_prefix is not None:
         result += parent_prefix + '|'
-    if idx is not None:
-        result += '%03d_' % idx
     if 'locus_tag' in feature.qualifiers:
         result += feature.qualifiers['locus_tag'][0]
     elif 'gene' in feature.qualifiers:
@@ -43,113 +41,96 @@ def ensure_location_in_bounds(start=0, end=0, parent_length=0):
     return (start, end)
 
 
-def extract_features(gbk_file=None, tag='CDS', translate=False,
+def extract_features(genbank_file=None, tag='CDS', translate=False,
                      n_bases_upstream=0, n_bases_downstream=0,
-                     strip_stops=False, tn_table=11):
-    output = []
+                     strip_stops=False, translation_table_id=11):
     from Bio import SeqIO
     from Bio.SeqRecord import SeqRecord
     from Bio.SeqFeature import SeqFeature, FeatureLocation
-    records = list(SeqIO.parse(gbk_file, "genbank"))
+    records = list(SeqIO.parse(genbank_file, "genbank"))
 
-    idx = 0
     for i in range(len(records)):
         for feature in records[i].features:
             if feature.type in tag:
                 # Find new feature boundaries
-                start = feature.location.start
-                end = feature.location.end
+                start = int(feature.location.start)
+                end = int(feature.location.end)
                 strand = feature.location.strand
-                if n_bases_downstream == 0:
-                    # Remove stops
-                    if strip_stops:
-                        if strand > 0:
-                            end -= 3
-                        else:
-                            start += 3
-                else:
+                if n_bases_downstream != 0:
                     # If we want extra on the end we cannot listen to
                     # stop_stripping requests
                     if strand > 0:
                         end += n_bases_downstream
                     else:
                         start -= n_bases_downstream
+
                 # n_bases_upstream
                 if strand > 0:
                     start -= n_bases_upstream
                 else:
                     end += n_bases_upstream
 
-                (start, end) = ensure_location_in_bounds(start=start, end=end,
-                                                         parent_length=records[i].__len__)
+                __seqs = []
+                # Upstream addition
+                if n_bases_upstream > 0:
+                    __seqs.append(SeqFeature(FeatureLocation(start,
+                                                             int(feature.location.start),
+                                                             strand=strand),
+                                             type='domain'))
 
+                __seqs.append(feature)
+                # Downstream addition
+                if n_bases_downstream > 0:
+                    __seqs.append(SeqFeature(FeatureLocation(int(feature.location.end),
+                                                             end,
+                                                             strand=strand),
+                                             type='domain'))
 
-                # Create our temp feature used to obtain correct portion of
-                # genome
-                tmp = SeqFeature(FeatureLocation(start, end, strand=strand),
-                                 type='domain')
-                # Translate the sequence
                 if translate:
-                    seq = tmp.extract(records[i].seq).translate(table=tn_table)
+                    extracted_seqs = [x.extract(records[i].seq).translate(table=translation_table_id) for x in __seqs]
                 else:
-                    seq = tmp.extract(records[i].seq)
+                    extracted_seqs = [x.extract(records[i].seq) for x in __seqs]
 
-                idx += 1
                 location = ' [start=%s,end=%s]' % (start, end)
-                output.append(SeqRecord(seq=seq, id=get_id(feature, parent_prefix=records[i].id, idx=idx),
-                                        name=get_id(feature),
-                                        description=get_id(feature) + location))
-    return output
+
+                extracted_seq = ''.join(map(str, extracted_seqs))
+
+                if strip_stops:
+                    extracted_seq = extracted_seq.replace('*', '')
+
+                print '>%s %s\n%s' % (
+                    get_id(feature),
+                    location,
+                    extracted_seq.strip(),
+                )
 
 
 if __name__ == '__main__':
     # Grab all of the filters from our plugin loader
-    opts = GGO(
-        options=[
-            ['file', 'Genbank file to filter', {'required': True, 'validate':
-                                                'File/Input'}],
-            ['tag', 'Tag to extract', {'required': True, 'validate':
-                                       'Genomic/Tag', 'multiple': True,
-                                       'default': ['CDS']}],
-            ['translate', 'Translate sequence during analysis'],
-            ['translation_table_id', 'ID Number of tranlsation table to use',
-             {'default': 11, 'validate': 'Int', 'required': True}],
-            ['n_bases_upstream', 'Added N bases upstream to result',
-             {'validate': 'Int', 'default': 0, 'min': 0}],
-            ['n_bases_downstream', 'Added N bases downstream to result',
-             {'validate': 'Int', 'default': 0, 'min': 0}],
-            ['strip_stops', 'Remove all stop codons from translated proteins',
-             {'validate': 'Flag'}],
-        ],
-        outputs=[
-            [
-                'fasta',
-                'Fasta export of selected tag',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'export',
-                    'data_format': 'genomic/raw',
-                    'default_format': 'Fasta',
-                }
-            ]
-        ],
-        defaults={
-            'appid': 'edu.tamu.cpt.genbank.FeatureExport',
-            'appname': 'Genbank Feature Export',
-            'appvers': '1.94',
-            'appdesc': 'Export features from a Genbank File',
-        },
-        tests=[],
-        doc=__doc__
-    )
-    options = opts.params()
-    result = extract_features(gbk_file=options['file'], tag=options['tag'],
-                              translate=options['translate'],
-                              n_bases_upstream=options['n_bases_upstream'],
-                              n_bases_downstream=options['n_bases_downstream'],
-                              strip_stops=options['strip_stops'],
-                              tn_table=options['translation_table_id'])
-    from galaxygetopt.outputfiles import OutputFiles
-    of = OutputFiles(name='fasta', GGO=opts)
-    of.CRR(data=result)
+    gbk_tags = ["all", "-10_signal", "-35_signal", "3'UTR", "5'UTR",
+                "CAAT_signal", "CDS", "C_region", "D-loop", "D_segment",
+                "GC_signal", "J_segment", "LTR", "N_region", "RBS", "STS",
+                "S_region", "TATA_signal", "V_region", "V_segment",
+                "assembly_gap", "attenuator", "enhancer", "exon", "gap",
+                "gene", "iDNA", "intron", "mRNA", "mat_peptide", "misc_RNA",
+                "misc_binding", "misc_difference", "misc_feature",
+                "misc_recomb", "misc_signal", "misc_structure",
+                "mobile_element", "modified_base", "ncRNA", "old_sequence",
+                "operon", "oriT", "polyA_signal", "polyA_site",
+                "precursor_RNA", "prim_transcript", "primer_bind", "promoter",
+                "protein_bind", "rRNA", "rep_origin", "repeat_region",
+                "sig_peptide", "source", "stem_loop", "tRNA", "terminator",
+                "tmRNA", "transit_peptide", "unsure", "variation"]
+
+    parser = argparse.ArgumentParser(description='Export a subset of features from a Genbank file', epilog="")
+    parser.add_argument('genbank_file', type=file, help='Genbank file')
+    parser.add_argument('tag', nargs='+', type=str, choices=gbk_tags, help='tags to export')
+
+    parser.add_argument('--translate', action='store_true', help='Translate sequence')
+    parser.add_argument('--translation_table_id', help='Translation table ID', default=11)
+    parser.add_argument('--n_bases_upstream', type=int, help='Add N bases upstream to exported features', default=0)
+    parser.add_argument('--n_bases_downstream', type=int, help='Add N bases downstream to exported features', default=0)
+    parser.add_argument('--strip_stops', action='store_true', help='Remove stop codons')
+
+    args = vars(parser.parse_args())
+    extract_features(**args)
