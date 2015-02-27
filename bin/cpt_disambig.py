@@ -26,6 +26,7 @@ def disambiguate(fasta_file, seed=42, tbl_out=None):
         'H': 'ATC',
         'V': 'ACG',
         'N': 'ACTG',
+        '*': 'ACTG',
     }
     delta_tbl = [('# Pos', 'Orig', 'New')]
 
