@@ -6,7 +6,6 @@ logging.basicConfig(level=logging.INFO)
 import argparse
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-import StringIO
 
 def get_id(feature=None, parent_prefix=None, idx=None):
     result = ""
