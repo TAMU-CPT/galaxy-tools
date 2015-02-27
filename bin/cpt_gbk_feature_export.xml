@@ -20,7 +20,7 @@ $strip_stops
 > $default]]></command>
   <inputs>
     <param label="Genbank file" name="positional_1" type="data"/>
-    <param label="tags to export" multiple="True" name="positional_2">
+    <param label="tags to export" multiple="True" name="positional_2" type="select">
       <option value="-10_signal">-10_signal</option>
       <option value="-35_signal">-35_signal</option>
       <option value="3'UTR">3'UTR</option>
