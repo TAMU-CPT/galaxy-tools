@@ -1,53 +1,40 @@
 <?xml version="1.0"?>
-
-<tool id="edu.tamu.cpt.genbank.subsection" name="Subsection of Genbank File" version="0.1">
-  <description>take a Genbank file and produce a subsection retaining features</description>
-  <version_command>python cpt_gbk_subsection.py --version</version_command>
+<tool id="cpt_gbk_subsection.py" name="cpt_gbk_subsection.py" version="1.0">
+  <description>Extract subsets of genbank files</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">cpt_gbk_subsection.py
---galaxy
---outfile_supporting $__new_file_path__
---file "${file}"
+  <version_command>python cpt_gbk_subsection.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_gbk_subsection.py
+$positional_1
 
-#if $start and $start is not "None":
---start "${start}"
+#if $source.source_select == 'file':
+--table $table
+#else:
+--coordinates $start,$end
 #end if
 
-#if $end and $end is not "None":
---end "${end}"
-#end if
-
---subsection "${subsection}"
-
---subsection_files_path "${subsection.files_path}"
-
---subsection_format "${subsection_format}"
-
---subsection_id "${subsection.id}"
-
-</command>
+$include_unlisted
+> $default]]></command>
   <inputs>
-    <param help="Genbank file renumber genes on" label="file" name="file" optional="False" type="data"/>
-    <param help="Start of subsection" label="start" name="start" optional="True" type="integer" value="1"/>
-    <param help="End of subsection" label="end" name="end" optional="True" type="integer" value="100"/>
-    <param help="Subsection of Genbank File" label="Format of subsection" name="subsection_format" optional="False" type="select">
-      <option selected="True" value="Genbank">Genbank</option>
-    </param>
+    <param label="Genbank file" name="positional_1" type="data"/>
+    <conditional name="source">
+        <param name="source_select" type="select" label="Subsection Location List">
+            <option value="file">Tabular File</option>
+            <option value="text">Direct Entry</option>
+        </param>
+        <when value="file">
+            <param label="Table of coordinates to cut" help="(--table)" name="table" type="text"/>
+        </when>
+        <when value="text">
+            <param label="Start coordinate" name="start" type="integer" default="1"/>
+            <param label="End coordinate" name="end" type="integer" default="1000"/>
+        </when>
+    </conditional>
+    <param checked="false" label="If coordinates aren't listed in the file, still include in output" help="(--include_unlisted)" name="include_unlisted" type="boolean" truevalue="--include_unlisted" falsevalue=""/>
   </inputs>
   <outputs>
-    <data format="Genbank" name="subsection">
-      <change_format>
-        <when format="txt" input="subsection_format" value="Genbank"/>
-      </change_format>
-    </data>
+    <data format="txt" hidden="false" name="default"/>
   </outputs>
-  <help>Genome subsectio Tool
-=====================
-
-Take a subsection of a genbank file, useful for extracting regions of interest for downstream analysis
-
-</help>
-  <tests/>
+  <help><![CDATA[]]></help>
 </tool>

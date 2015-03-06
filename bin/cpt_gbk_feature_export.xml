@@ -91,7 +91,7 @@ $strip_stops
     <param selected="true" label="Remove stop codons (--strip_stops)" name="strip_stops" type="boolean" truevalue="--strip_stops" falsevalue=""/>
   </inputs>
   <outputs>
-    <data format="fasta" name="default" label="$positional_2.name exported from $positional_1.name"/>
+    <data format="fasta" name="default" label="$positional_2 exported from $positional_1.name"/>
   </outputs>
   <help><![CDATA[
 **What it does **

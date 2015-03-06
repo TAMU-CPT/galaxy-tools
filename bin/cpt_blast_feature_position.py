@@ -24,8 +24,10 @@ def locate_hits(database, blast_results):
     for record in SeqIO.parse(database, 'genbank'):
         for feature in record.features:
             if get_id(feature) in hit_ids:
+                start = str(feature.location.start)
+                end = str(feature.location.end)
                 print '\t'.join([record.id, get_id(feature), feature.type,
-                                 feature.location.start, feature.location.end])
+                                 start, end])
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Match blast hits to positions in Genbank file', epilog="")
