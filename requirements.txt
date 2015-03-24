@@ -4,3 +4,4 @@ pyyaml
 numpy
 svgwrite
 bcbio-gff
+pypng
