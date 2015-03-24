@@ -12,8 +12,8 @@ $positional_1
 > $default]]></command>
   <inputs>
     <param label="fasta file" name="positional_1" type="data"/>
-    <param label="Window size for skew calculation" help="(--window)" name="window" type="integer" default="1000"/>
-    <param label="Step size for skew calculation" help="(--step_size)" name="step_size" type="integer" default="100"/>
+    <param label="Window size for skew calculation" help="(--window)" name="window" type="integer" value="1000"/>
+    <param label="Step size for skew calculation" help="(--step_size)" name="step_size" type="integer" value="100"/>
   </inputs>
   <outputs>
     <data format="wig" name="default"/>
