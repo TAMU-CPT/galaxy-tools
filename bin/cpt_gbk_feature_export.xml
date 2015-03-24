@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="cpt_gbk_feature_export.py" name="cpt_gbk_feature_export.py" version="1.0">
+<tool id="edu.tamu.cpt.gbk.feature_export" name="Genbank Feature Export" version="1.0">
   <description>Export a subset of features from a Genbank file</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
@@ -20,7 +20,7 @@ $strip_stops
 > $default]]></command>
   <inputs>
     <param label="Genbank file" name="positional_1" type="data"/>
-    <param label="tags to export" multiple="True" name="positional_2">
+    <param label="tags to export" multiple="True" name="positional_2" type="select">
       <option value="-10_signal">-10_signal</option>
       <option value="-35_signal">-35_signal</option>
       <option value="3'UTR">3'UTR</option>
@@ -91,7 +91,7 @@ $strip_stops
     <param selected="true" label="Remove stop codons (--strip_stops)" name="strip_stops" type="boolean" truevalue="--strip_stops" falsevalue=""/>
   </inputs>
   <outputs>
-    <data format="fasta" name="default" label="$positional_2.name exported from $positional_1.name"/>
+    <data format="fasta" name="default" label="$positional_2 exported from $positional_1.name"/>
   </outputs>
   <help><![CDATA[
 **What it does **
