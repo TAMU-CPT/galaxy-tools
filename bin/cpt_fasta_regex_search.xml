@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<tool id="cpt_fasta_regex_search.py" name="cpt_fasta_regex_search.py" version="1.0">
+  <description>Filter sequences based on regular expressions</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_fasta_regex_search.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_fasta_regex_search.py
+$positional_1
+"$positional_2"
+> $default]]></command>
+  <inputs>
+    <param label="Fasta Sequence" name="positional_1" type="data"/>
+    <param area="false" label="Regular Expression" name="positional_2" type="text"/>
+  </inputs>
+  <outputs>
+    <data format="fasta" hidden="false" name="default"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Filter FASTA Sequences with regular expressions.
+
+For example to find a sequence with a Cysteine residue within the first 30
+amino acids, you might use the following: ``.{0,29}C``, which says 0-29 of ANY
+character, then a C. For help with advanced queries, please talk to your
+friendly bioinformatician.
+]]></help>
+</tool>
