@@ -10,7 +10,7 @@ $positional_1
 "$positional_2"
 > $default]]></command>
   <inputs>
-    <param label="Fasta Sequence" name="positional_1" type="data"/>
+    <param label="Fasta Sequence" name="positional_1" type="data" format="fasta"/>
     <param area="false" label="Regular Expression" name="positional_2" type="text"/>
   </inputs>
   <outputs>
