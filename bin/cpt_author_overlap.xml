@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.tabular.overlap" name="Authorship Overlap" version="0.1">
+  <description>Determine overlaps in column data</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_author_overlap.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_author_overlap.py
+$file
+> $default]]></command>
+  <inputs>
+    <param label="2 column table" name="positional_1" format="tabular" type="data"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" hidden="false" name="default"/>
+  </outputs>
+  <help><![CDATA[
+NOTE: **MUST BE TWO COLUMN DATA**: Sequence ID and author list.
+
+**What it does**
+
+Given extracted authorship information from a set of Genbank files, you're left
+trying to determine if any sequences share significant levels of overlap (and
+are likely published by the same group)
+
+E.g. ::
+
+        # Sequences Authors
+        JQ957925    Cox,C.R. and Voorhees,K.J.
+        JQ965700    Rashid,M.H., Revazishvili,T., Dean,T., Butani,A., Verratti,K., Bishop-Lilly,K.A., Sozhamannan,S., Sulakvelidze,A. and Rajanna,C.
+        JQ965701    Rajanna,C., Butani,A., Verratti,K., Bishop-Lilly,K.A., Sozhamannan,S., Sulakvelidze,A., Rashid,M.H. and Revazishvili,T.
+        JQ965702    Rashid,M.H., Revazishvili,T., Dean,T., Butani,A., Verratti,K., Bishop-Lilly,K.A., Sozhamannan,S., Sulakvelidze,A. and Rajanna,C.
+
+Here the first sequence is an obvious outlier. Sequences JQ965700 and JQ965702
+should be classed together. JQ965701 shares at least three authors with the
+other two, and should likely be placed in a category together.
+
+This is a VERY simple tool to produce quick and dirty answers. There are much
+more interesting questions to answer about sequences and authorship that
+require deeper graph information. That will be added in a later tool. Ping
+esr@tamu.edu if you need that.
+]]></help>
+</tool>
