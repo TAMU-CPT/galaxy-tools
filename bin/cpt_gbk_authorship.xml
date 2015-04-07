@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="cpt_gbk_authorship.py" name="cpt_gbk_authorship.py" version="0.1">
+  <description>Extract authorship information from genbank file</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_gbk_authorship.py --version</version_command>
+  <command interpreter="python"><![CDATA[
+cpt_gbk_authorship.py
+#set files = '" "'.join( [ str( $file ) for $file in $positional_1 ] )
+"$repeat_var_1"
+$first
+> $default]]></command>
+  <inputs>
+    <param label="Genbank files" multiple="True" name="positional_1" type="data"/>
+    <param label="Only pick out first reference (--first)" name="first" type="boolean" truevalue="--first" falsevalue=""/>
+  </inputs>
+  <outputs>
+    <data format="tabular" hidden="false" name="default" label="Extracted Authorship"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Extract authorship/references from genbank files.
+
+The ``--first`` flag lets you
+select only the first reference, likely to be the paper published about the
+sequence, rather than one simply citing it.
+]]></help>
+</tool>

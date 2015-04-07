@@ -5,17 +5,15 @@
   </stdio>
   <version_command>python cpt_gbk_lineage.py --version</version_command>
   <command interpreter="python"><![CDATA[cpt_gbk_lineage.py
-#set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])
+#set files = '" "'.join( [ str( $file ) for $file in $positional_1 ] )
 "$repeat_var_1"
 
 > $default]]></command>
   <inputs>
-    <repeat min="1" name="repeat_1" title="repeat_title">
-      <param label="Genbank file" name="positional_1" type="data"/>
-    </repeat>
+    <param label="Genbank files" multiple="True" name="positional_1" type="data"/>
   </inputs>
   <outputs>
-    <data format="tabular" hidden="false" name="default"/>
+    <data format="tabular" hidden="false" name="default" label="Extracted Lineage Information"/>
   </outputs>
   <help><![CDATA[
 **What it does**
