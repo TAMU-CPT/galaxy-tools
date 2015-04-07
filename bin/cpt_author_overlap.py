@@ -8,7 +8,6 @@ class Paper(object):
     def __init__(self, id, authors):
         self.id = id
         self.authors = self.process(authors)
-        print self.id, self.authors
 
     def process(self, author_list):
         full_list = []
