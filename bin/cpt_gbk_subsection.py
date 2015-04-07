@@ -15,13 +15,24 @@ def genbank_subsection(genbank_file=None, table=None, coordinates=None, include_
         cut_sites = {}
         for row in table.readlines():
             (a, b, c) = row.split('\t')
-            cut_sites[a] = (int(b), int(c.strip()))
+            if '.' in a:
+                a = a[0:a.index('.')]
+
+            b = int(b)
+            c = int(c.strip())
+            cut_sites[a] = sorted([b, c])
+
 
         for record in records:
             output = StringIO.StringIO()
             # If found, cut
-            if record.id in cut_sites:
-                start, end = cut_sites[record.id]
+            rid = record.id
+            if '.' in rid:
+                rid = rid[0:rid.index('.')]
+
+
+            if rid in cut_sites:
+                start, end = cut_sites[rid]
                 SeqIO.write(record[start-1:end], output, "genbank")
             # if want unlisted, print
             elif include_unlisted:
@@ -38,10 +49,10 @@ def genbank_subsection(genbank_file=None, table=None, coordinates=None, include_
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract subsets of genbank files', epilog='')
     parser.add_argument('genbank_file', type=file, help='Genbank file')
-    parser.add_argument('--table', help='Table of coordinates to cut')
+    parser.add_argument('--table', type=file, help='Table of coordinates to cut')
     parser.add_argument('--coordinates', help='Manually entered coordinates')
     parser.add_argument('--include_unlisted', action='store_true',
                         help='If coordinates aren\'t listed in the file, still include in output')
 
     args = parser.parse_args()
-    shinefind(**vars(args))
+    genbank_subsection(**vars(args))

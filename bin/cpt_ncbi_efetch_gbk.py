@@ -186,9 +186,9 @@ if __name__ == '__main__':
                 # Collision free names
                 if os.path.exists(out_name):
                     i = 0
-                    while os.path.exists(os.path.join("gbk_out", '%s.x%s.gbk' % (id_fixed, i))):
+                    while os.path.exists(os.path.join("gbk_out", '%s.x%s.txt' % (id_fixed, i))):
                         i += 1
-                    out_name = os.path.join("gbk_out", '%s.x%s.gbk' % (id_fixed, i))
+                    out_name = os.path.join("gbk_out", '%s.x%s.txt' % (id_fixed, i))
 
                 with open(out_name, 'w') as handle:
                     SeqIO.write(record, handle, 'genbank')
@@ -196,7 +196,7 @@ if __name__ == '__main__':
 
     else:
         for record_set in results:
-            out_name = os.path.join("gbk_out", 'merged.gbk')
+            out_name = os.path.join("gbk_out", 'merged.txt')
             with open(out_name, 'a') as handle:
                 for record in record_set:
                     SeqIO.write(record, handle, 'genbank')

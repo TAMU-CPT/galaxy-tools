@@ -101,7 +101,8 @@ def top_related(blast=None, method='n', restrict_to_phage=True, email=None, **kw
     acc_list = []
     for hit in top_accessions:
         acc = get_refseq_for_name(name=hit, email=email)
-        acc_list.append(acc)
+        if isinstance(acc, str):
+            acc_list.append(acc)
         top_names['Sheet1']['data'].append([
             hit,
             hits[hit],
