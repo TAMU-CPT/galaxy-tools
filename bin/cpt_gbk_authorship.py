@@ -16,11 +16,13 @@ def lineage(genbank_files=None, first=False):
 
             if 'references' in record.annotations:
                 refs = record.annotations['references']
-                for ref in refs:
-                    yield [id] + ['' if not hasattr(ref, x) else
-                                  getattr(ref, x) for x in REF_KEYS]
-                    if first:
-                        continue
+                if first:
+                    yield [id] + ['' if not hasattr(refs[0], x) else
+                                  getattr(refs[0], x) for x in REF_KEYS]
+                else:
+                    for ref in refs:
+                        yield [id] + ['' if not hasattr(ref, x) else
+                                      getattr(ref, x) for x in REF_KEYS]
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract authorship '
