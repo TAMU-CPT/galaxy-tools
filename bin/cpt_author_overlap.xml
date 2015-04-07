@@ -6,7 +6,7 @@
   </stdio>
   <version_command>python cpt_author_overlap.py --version</version_command>
   <command interpreter="python"><![CDATA[cpt_author_overlap.py
-$file
+$positional_1
 > $default]]></command>
   <inputs>
     <param label="2 column table" name="positional_1" format="tabular" type="data"/>
