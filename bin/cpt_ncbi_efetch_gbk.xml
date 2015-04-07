@@ -41,7 +41,7 @@ $split
   </inputs>
   <outputs>
     <data format="txt" name="data">
-        <discover_datasets pattern="__designation__" ext="gbk" directory="gbk_out" visible="true" />
+        <discover_datasets pattern="__designation__" ext="txt" directory="gbk_out" visible="true" />
     </data>
   </outputs>
   <help>NCBI Entrez Fetcher

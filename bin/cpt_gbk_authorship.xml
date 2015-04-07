@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="cpt_gbk_authorship.py" name="cpt_gbk_authorship.py" version="0.1">
-  <description>Extract authorship information from genbank file</description>
+<tool id="edu.tamu.cpt.genbank.authorship" name="Extract Authorship from Genbank File" version="0.1">
+  <description></description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
@@ -8,7 +8,7 @@
   <command interpreter="python"><![CDATA[
 cpt_gbk_authorship.py
 #set files = '" "'.join( [ str( $file ) for $file in $positional_1 ] )
-"$repeat_var_1"
+"$files"
 $first
 > $default]]></command>
   <inputs>

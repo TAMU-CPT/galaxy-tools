@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="cpt_gbk_subsection.py" name="cpt_gbk_subsection.py" version="1.0">
+<tool id="edu.tamu.cpt.gbk.subsection" name="Genbank Subsection" version="1.0">
   <description>Extract subsets of genbank files</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
@@ -24,11 +24,11 @@ $include_unlisted
             <option value="text">Direct Entry</option>
         </param>
         <when value="file">
-            <param label="Table of coordinates to cut" help="(--table)" name="table" type="text"/>
+            <param label="Table of coordinates to cut" help="(--table)" name="table" type="data" format="tabular"/>
         </when>
         <when value="text">
-            <param label="Start coordinate" name="start" type="integer" default="1"/>
-            <param label="End coordinate" name="end" type="integer" default="1000"/>
+            <param label="Start coordinate" name="start" type="integer" value="1"/>
+            <param label="End coordinate" name="end" type="integer" value="1000"/>
         </when>
     </conditional>
     <param checked="false" label="If coordinates aren't listed in the file, still include in output" help="(--include_unlisted)" name="include_unlisted" type="boolean" truevalue="--include_unlisted" falsevalue=""/>
