@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="cpt_gbk_remove_tag.py" name="cpt_gbk_remove_tag.py" version="1.0">
-  <description>Remove specific features from a Genbank file</description>
+<tool id="edu.tamu.cpt.gbk.remove_tag" name="Remove Genbank Tags" version="1.0">
+    <description>removes specific tags/qualifiers from a Genbank file</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>

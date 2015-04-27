@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-from galaxygetopt.ggo import GalaxyGetOpt as GGO
-from galaxygetopt.outputfiles import OutputFiles
+import argparse
 import tempfile
 import shutil
 import logging
@@ -12,17 +11,6 @@ from Bio import SeqIO
 import subprocess
 IMAGE_BORDER = 50
 IMAGE_BORDER_COORD = '%sx%s' % (IMAGE_BORDER, IMAGE_BORDER)
-
-
-__doc__ = """
-Multiple Interrlated Sequence doTplotter
-========================================
-
-Uses a stripped down vesion of Gepard (Dr. Jan Krumsiek/HelmholtzZentrum/IBIS)
-for dot plotting.
-
-"""
-
 
 def add_image_border(outfile, i, j, file_data, img_data, zoom):
     half_height = img_data['orig_height']/2
@@ -147,10 +135,23 @@ def resize_image(scale, from_file, to_file):
     subprocess.check_call(cmd)
 
 
-def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
+def mist(file, label, zoom, matrix, window=10, filepath=None):
     inputs = zip(file, label)
 
     tmpdir = tempfile.mkdtemp(prefix="cpt.mist.")
+    # If no path provided, make a directory
+    if filepath is None:
+        outdir = tempfile.mkdtemp(prefix='cpt.mist.')
+    else:
+        if os.path.isdir(filepath):
+            outdir = filepath
+        else:
+            try:
+                os.mkdir(filepath)
+                outdir = filepath
+            except:
+                # TODO: make this less terrible
+                raise Exception("--filepath must be a directory")
 
     ordering = []
     file_data = {}
@@ -338,59 +339,32 @@ def mist(ggo, file, label, zoom, matrix, window=10, *args, **kwargs):
     </body>
     </html>
     """ % imagemap
-
-    of = OutputFiles(name='dotplot', GGO=ggo)
-    of.CRR(data=html_page)
+    print html_page
 
     for (original, new) in files_to_move:
-        produced_files = of.subCRR(data_format="dummy", format_as="Dummy",
-                                   filename=new, extension='png', data="dummy")
-        destination = produced_files[0]
-        shutil.copy(original, destination)
+        shutil.copy(original, outdir)
+    print outdir
 
 
 if __name__ == '__main__':
     # Grab all of the filters from our plugin loader
-    opts = GGO(
-        options=[
-            ['file', 'Input file',
-             {'required': True, 'multiple': True, 'validate': 'File/Input'}],
-            ['label', 'Label (per input file)',
-             {'required': True, 'multiple': True, 'validate': 'String'}],
-            ['zoom', 'How zoomed in the image is. Be careful with this option. It represents the number of bases to plot in a single pixel. For large genomes, this can mean very large images, and should be lowered appropriately. For a value of 50, 50 bases would be considered a single pixel in the output image. For 1Mbp of genomes totaly (say 5 x 200 kb phages), this would result in a 20,000 pixel image.',
-             {'required': True, 'validate': 'String', 'default': 50}],
-            ['window', 'Window size',
-             {'required': True, 'validate': 'Int', 'default': 10}],
-            ['matrix', 'Comparison Matrix',
-             {'required': True, 'validate': 'Option', 'options': {
-                 'ednaorig.mat': 'Extended DNA (Original)',
-                 'pam250.mat': 'Pam 250',
-                 'edna.mat': 'Extended DNA',
-                 'protidentity.mat': 'Protein Identity',
-                 'blosum62.mat': 'Blosum62',
-             }, 'default': 'edna.mat'}]
-        ],
-        outputs=[
-            [
-                'dotplot',
-                'MIST Plot',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'extracted',
-                    'data_format': 'text/html',
-                    'default_format': 'HTML',
-                }
-            ],
-        ],
-        defaults={
-            'appid': 'edu.tamu.cpt.mist',
-            'appname': 'MIST',
-            'appvers': '0.1',
-            'appdesc': 'N v N dot plotter',
-        },
-        tests=[],
-        doc=__doc__
-    )
-    options = opts.params()
-    result = mist(ggo=opts, **options)
+    parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
+    parser.add_argument('file', nargs='+', type=file, help='Input file')
+    parser.add_argument('label', nargs='+', help='Label (per input file)')
+    parser.add_argument('--zoom', type=int, help='How zoomed in the image is. Be careful with this option. '
+                                       'It represents the number of bases to plot in a single pixel.'
+                                       ' For large genomes, this can mean very large images, and '
+                                       'should be lowered appropriately. For a value of 49, 50 '
+                                       'bases would be considered a single pixel in the output image.'
+                                       ' For 1Mbp of genomes totally (say 5 x 200 kb phages), this '
+                                       'would result in a 20,000 pixel image.', default=50)
+    parser.add_argument('--window', type=int, help='Window size', default=10)
+    parser.add_argument('--matrix', choices=['ednaorig.mat', 'pam250.mat',
+                                             'edna.mat', 'protidentity.mat',
+                                             'blosum62.mat'], help='Comparison Matrix', default='edna.mat')
+    parser.add_argument('--filepath', help='Directory for images')
+    args = parser.parse_args()
+
+    if len(args.file) != len(args.label):
+        raise Exception("Must provide the same number of files and labels")
+    result = mist(**vars(args))
