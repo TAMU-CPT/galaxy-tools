@@ -5,3 +5,4 @@ numpy
 svgwrite
 bcbio-gff
 pypng
+pygal
