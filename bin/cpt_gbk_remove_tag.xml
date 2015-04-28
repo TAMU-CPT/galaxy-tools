@@ -22,7 +22,7 @@ $positional_1
 > $default]]></command>
   <inputs>
     <param label="Genbank file" name="positional_1" type="data"/>
-    <param label="Feature type to remove" name="positional_2" type="select" optional="True">
+    <param label="Feature type to remove" name="feature_type" type="select" optional="True">
       <option value="-10_signal">-10_signal</option>
       <option value="-35_signal">-35_signal</option>
       <option value="3'UTR">3'UTR</option>
