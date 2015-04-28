@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.464.questionnaire" name="464 Questionnaire" version="1.0">
+  <description></description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_464_questions.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_464_questions.py
+--name "$name"
+--seq_cov "$seq_cov"
+--morph "$morph"
+--host "$host"
+--host_range "$host_range"
+--sample_type "$sample_type"
+--date "$date"
+--location "$location"
+--isolator "$isolator"
+--annotator "$annotator"
+--last_annotated "$last_annotated"
+--genome_length $genome_length
+--cdss $cdss
+--cdss_assigned $cdss_assigned
+--cdss_hypo_novel $cdss_hypo_novel
+--cdss_hypo_consv $cdss_hypo_consv
+--coding_density $coding_density
+--pigs $pigs
+--gc $gc
+--trna $trna
+--terminators $terminators
+--missing_core "$missing_core"
+--no_phage_homos "$no_phage_homos"
+
+#set repeat_var_24 = '" "'.join([ str($var.unusual) for $var in $repeat_24 ])
+--unusual "$repeat_var_24"
+
+#set repeat_var_25 = '" "'.join([ str($var.no_sd) for $var in $repeat_25 ])
+--no_sd "$repeat_var_25"
+
+#set repeat_var_26 = '" "'.join([ str($var.gaps) for $var in $repeat_26 ])
+--gaps "$repeat_var_26"
+
+--closed "$closed"
+--reopened "$reopened"
+--sim "$sim"
+--gc_skew "$gc_skew"
+--trna_genes "$trna_genes"
+--email $__user_email__
+
+> $default]]></command>
+  <inputs>
+    <param area="false" label="Phage Name" name="name" type="text"/>
+    <param area="false" label="Sequence Coverage" name="seq_cov" type="text"/>
+    <param label="Morphology" name="morph">
+      <option value="Podo">Podo</option>
+      <option value="Sipho">Sipho</option>
+      <option value="Myo">Myo</option>
+    </param>
+    <param area="false" label="Host" name="host" type="text"/>
+    <param area="false" label="Host Range" name="host_range" type="text"/>
+    <param area="false" label="Isolation Sample type" name="sample_type" type="text"/>
+    <param area="false" label="Isolation Date" name="date" type="text"/>
+    <param area="false" label="Isolation Location" name="location" type="text"/>
+    <param area="false" label="Isolator" name="isolator" type="text"/>
+    <param area="false" label="Annotator (You!)" name="annotator" type="text"/>
+    <param area="false" label="Date of Last Annotation" name="last_annotated" type="text"/>
+    <param label="Genome Length" name="genome_length" type="integer" value="0"/>
+    <param label="# of CDSs" name="cdss" type="integer" value="0"/>
+    <param label="# of CDSs with assigned functions" name="cdss_assigned" type="integer" value="0"/>
+    <param label="# of Hypothetical Novels" name="cdss_hypo_novel" type="integer" value="0"/>
+    <param label="# of Hypothetical Conserveds" name="cdss_hypo_consv" type="integer" value="0"/>
+    <param label="Coding Density" name="coding_density" type="float" value="0"/>
+    <param label="PIGS Score" name="pigs" type="float" value="0"/>
+    <param label="GC Content" name="gc" type="float" value="0"/>
+    <param label="# of tRNAs" name="trna" type="integer" value="0"/>
+    <param label="# of terminators" name="terminators" type="integer" value="0"/>
+    <param area="false" label="Are there any core genes missing or out of place? Identify and explain." name="missing_core" type="text"/>
+    <param area="false" label="Do you have any gene with assigned function that has no phage sequence homolog? We are interested in &quot;bacteria only&quot; hits--this does not include your hypothetical novel genes. Justify the inclusion of bacteria-only annotations." name="no_phage_homos" type="text"/>
+    <repeat min="1" name="repeat_24" title="repeat_title">
+      <param area="false" label="What unusual or unexpected genes or genomic features did you find? (e.g., morons, introns, inteins, invertible sequences, etc. and genes that have unique features" name="unusual" type="text"/>
+    </repeat>
+    <repeat min="1" name="repeat_25" title="repeat_title">
+      <param area="false" label="Do you have any genes without a legitimate (sequence and spacing) Shine-Dalgarno? If so, for each gene, justify retaining them in the genome (i.e. does it have a conserved gene product?)." name="no_sd" type="text"/>
+    </repeat>
+    <repeat min="1" name="repeat_26" title="repeat_title">
+      <param area="false" label="Justify any intergenic gap larger than 150 bp. (explain why you did not annotate genes?)" name="gaps" type="text"/>
+    </repeat>
+    <param area="false" label="Is your genome closed? How did you determine this? (link to gel images &amp; analysis text , including primer sequence)." name="closed" type="text"/>
+    <param area="false" label="Has your phage genome been re-opened? If so, where and why? If not, why not?" name="reopened" type="text"/>
+    <param area="false" label="Is your phage similar to another phage? Which one? How similar? How was the similarity determined?" name="sim" type="text"/>
+    <param area="false" label="Does your phage exhibit GC skew? Can you approximate an origin of replication? (Open your genome in Artemis, go to &quot;Graph&quot;-&gt;&quot;GC Deviation&quot;. Use the right scroll bar to adjust the window to 5000. Scroll through your genome to see if and where your deviation line crosses from positive to negative.) Does this origin fit with the location of DNA replication genes?" name="gc_skew" type="text"/>
+    <param area="false" label="Do you have any tRNA genes?" name="trna_genes" type="text"/>
+    <param area="false" label="Email address" name="email" type="text"/>
+  </inputs>
+  <outputs>
+    <data format="html" hidden="false" name="default" label="464 Genome Questionnaire"/>
+  </outputs>
+  <help><![CDATA[Fill out questions, run as many times as you need!
+
+These questions are intended to reinforce key concepts that should be part of your GenomeA papers.]]></help>
+</tool>
