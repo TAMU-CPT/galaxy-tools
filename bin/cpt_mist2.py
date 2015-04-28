@@ -111,7 +111,7 @@ def extract_info_from_file(infile, label, tmpdir):
         temp.write('>%s\n%s' % (seq_record.id, seq_record.seq))
     # We overwrite the first one with label, if there are multiple, those
     # retain their own labels.
-    if len(ret) > 0:
+    if len(ret) > 0 and label != "none" and label != "None":
         ret[0]['header'] = label
     return ret
 
