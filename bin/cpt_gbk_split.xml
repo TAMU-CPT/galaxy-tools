@@ -1,36 +1,18 @@
 <?xml version="1.0"?>
-
-<tool id="edu.tamu.cpt.genbank.ExtractAccessions" name="Subset Genbank File: Accessions" version="1.94">
-  <description>given an accession list, extract a subset of the genbank records into a new file.</description>
+<tool id="edu.tamu.cpt.genbank.Split" name="Split Genbank File" version="1.0">
+  <description>splits into individual records.</description>
   <version_command>python cpt_gbk_split.py --version</version_command>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">cpt_gbk_split.py
---galaxy
---outfile_supporting $__new_file_path__
---gbk "${gbk}"
-
---genbank "${genbank}"
-
---genbank_files_path "${genbank.files_path}"
-
---genbank_format "${genbank_format}"
-
---genbank_id "${genbank.id}"
-
+  <command interpreter="python">cpt_gbk_split.py $genbank
 </command>
   <inputs>
-    <param help="Multi-record genbank file to split" label="gbk" name="gbk" optional="False" type="data"/>
-    <param help="Extracted genomes" label="Format of genbank" name="genbank_format" optional="False" type="select">
-      <option selected="True" value="Genbank">Genbank</option>
-    </param>
+    <param help="Multi-record genbank file to split" label="gbk" name="genbank" type="data"/>
   </inputs>
   <outputs>
-    <data format="Genbank" name="genbank">
-      <change_format>
-        <when format="txt" input="genbank_format" value="Genbank"/>
-      </change_format>
+    <data format="txt" name="data">
+        <discover_datasets pattern="__designation__.gbk" ext="txt" directory="gbk_out" visible="true" />
     </data>
   </outputs>
   <help>Split Multi-record Genbank Files
