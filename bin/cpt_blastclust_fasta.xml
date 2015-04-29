@@ -20,7 +20,7 @@ $positional_2
   </inputs>
   <outputs>
     <data format="txt" name="data">
-        <discover_datasets pattern="__designation__.fa" ext="txt" visible="true" />
+        <discover_datasets pattern="__designation__.fa" ext="txt" directory="out" visible="true" />
     </data>
   </outputs>
   <help><![CDATA[
