@@ -9,9 +9,9 @@
 $positional_1
 
 #if $source.source_select == 'file':
---table $table
+--table $source.table
 #else:
---coordinates $start,$end
+--coordinates $source.start,$source.end
 #end if
 
 $include_unlisted

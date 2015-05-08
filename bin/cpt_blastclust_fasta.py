@@ -19,11 +19,15 @@ if __name__ == '__main__':
             for clust_id in line.strip().split():
                 id_to_clust[clust_id] = i
 
-    os.mkdir("out")
+    try:
+        os.mkdir("gbk_out")
+    except:
+        pass
+
     for sequence in SeqIO.parse(args.fasta_file, 'fasta'):
         if sequence.id in id_to_clust:
-            name = os.path.join('out', 'blastclust_%s.fa' % id_to_clust[sequence.id])
+            name = os.path.join('gbk_out', 'Cluster %s.fa' % id_to_clust[sequence.id])
             with open(name, 'a') as handle:
-                tmp = StringIO.StringIO("HI")
+                tmp = StringIO.StringIO()
                 SeqIO.write([sequence], tmp, 'fasta')
                 handle.write(tmp.getvalue())
