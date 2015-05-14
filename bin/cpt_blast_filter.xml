@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.hacks.blast_filter" name="Filter top N blast results" version="1.0">
+  <description></description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_blast_filter.py --version</version_command>
+  <command interpreter="python"><![CDATA[cpt_blast_filter.py
+$positional_1
+$positional_2
+
+> $default]]></command>
+  <inputs>
+    <param label="Tabular Blast Results" name="positional_1" type="data" format="tabular"/>
+    <param label="Top N hits" name="positional_2" type="integer" value="5"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="default"/>
+  </outputs>
+  <help><![CDATA[Extract top N results for each blast hit by query id]]></help>
+</tool>
