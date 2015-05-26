@@ -1,0 +1,181 @@
+########################################
+# Program: diffseq
+# Rundate: Thu 14 May 2015 14:10:26
+# Commandline: diffseq
+#    -asequence f_01.fa
+#    -bsequence f_1747.fa
+#    -wordsize 10
+#    -outfile report.diffseq
+# Report_format: diffseq
+# Report_file: report.diffseq
+# Additional_files: 2
+# 1: phi2.diffgff (Feature file for first sequence)
+# 2: phi1747.diffgff (Feature file for second sequence)
+########################################
+
+#=======================================
+#
+# Sequence: phi2     from: 1   to: 137919
+# HitCount: 27
+#
+# Compare: phi1747     from: 1   to: 138181
+# 
+# phi2 overlap starts at 1
+# phi1747 overlap starts at 1
+# 
+#
+#=======================================
+
+
+phi2 13-29 Length: 17
+Sequence: ATTACTACTACTATTAC
+Sequence: GTTAG
+phi1747 13-17 Length: 5
+
+phi2 118-118 Length: 1
+Sequence: C
+Sequence: A
+phi1747 106-106 Length: 1
+
+phi2 4568-4648 Length: 81
+Sequence: CGGATACTCTAGAATATGCTTACACACAAGTTAAAACAAATAGAATTAGTCAATAAAATTAAATATGAAGCGGTTGAATAT
+Sequence: AAGATACATTAAATTTTGCACTAGATAATGTTAAAGAAATAGAAGCGGTTAAGAATTAA
+phi1747 4556-4614 Length: 59
+
+phi2 6598-6601 Length: 4
+Sequence: CTAT
+Sequence: TTAC
+phi1747 6564-6567 Length: 4
+
+phi2 7017-7017 Length: 1
+Sequence: A
+Sequence: G
+phi1747 6983-6983 Length: 1
+
+phi2 25914-25914 Length: 1
+Sequence: A
+Sequence: G
+phi1747 25880-25880 Length: 1
+
+phi2 39530 Length: 0
+Sequence: 
+Sequence: AT
+phi1747 39497-39498 Length: 2
+
+phi2 43398-43398 Length: 1
+Sequence: T
+Sequence: C
+phi1747 43366-43366 Length: 1
+
+phi2 45568-45568 Length: 1
+Sequence: T
+Sequence: C
+phi1747 45536-45536 Length: 1
+
+phi2 46774-46823 Length: 50
+Sequence: CCTGAACCTGAACCTGAACCTGAACCTGAACCTGAACCTGAACCGTTACG
+Sequence: 
+phi1747 46741 Length: 0
+
+phi2 48602-48602 Length: 1
+Sequence: G
+Sequence: A
+phi1747 48520-48520 Length: 1
+
+phi2 48842-48845 Length: 4
+Sequence: CAAC
+Sequence: TAAT
+phi1747 48760-48763 Length: 4
+
+phi2 48860-48860 Length: 1
+Sequence: A
+Sequence: T
+phi1747 48778-48778 Length: 1
+
+phi2 48893-48893 Length: 1
+Sequence: C
+Sequence: A
+phi1747 48811-48811 Length: 1
+
+phi2 48905-48914 Length: 10
+Sequence: AACTGCTAAT
+Sequence: TACTGCTAAC
+phi1747 48823-48832 Length: 10
+
+phi2 78291-78291 Length: 1
+Sequence: C
+Sequence: A
+phi1747 78209-78209 Length: 1
+
+phi2 83567-83567 Length: 1
+Sequence: A
+Sequence: T
+phi1747 83485-83485 Length: 1
+
+phi2 85760-85760 Length: 1
+Sequence: G
+Sequence: T
+phi1747 85678-85678 Length: 1
+
+phi2 87186-87186 Length: 1
+Sequence: C
+Sequence: T
+phi1747 87104-87104 Length: 1
+
+phi2 98498-98498 Length: 1
+Sequence: T
+Sequence: C
+phi1747 98416-98416 Length: 1
+
+phi2 98741-98741 Length: 1
+Sequence: C
+Sequence: T
+phi1747 98659-98659 Length: 1
+
+phi2 98916-98916 Length: 1
+Sequence: G
+Sequence: A
+phi1747 98834-98834 Length: 1
+
+phi2 98969-98969 Length: 1
+Sequence: T
+Sequence: C
+phi1747 98887-98887 Length: 1
+
+phi2 98981-98981 Length: 1
+Sequence: G
+Sequence: A
+phi1747 98899-98899 Length: 1
+
+phi2 98996-98996 Length: 1
+Sequence: C
+Sequence: G
+phi1747 98914-98914 Length: 1
+
+phi2 123300-123300 Length: 1
+Sequence: G
+Sequence: A
+phi1747 123218-123218 Length: 1
+
+phi2 137890 Length: 0
+Sequence: 
+Sequence: CTATTACTACTACTATTACTACTACTACTACTACTACTATTACTATTACTACTACTACTATTACTA
+phi1747 137809-137874 Length: 66
+
+#---------------------------------------
+#
+# Overlap_end: 137919 in phi2
+# Overlap_end: 137903 in phi1747
+# 
+# SNP_count: 19
+# Transitions: 12
+# Transversions: 7
+#
+#---------------------------------------
+
+#---------------------------------------
+# Total_sequences: 2
+# Total_length: 276100
+# Reported_sequences: 1
+# Reported_hitcount: 27
+#---------------------------------------

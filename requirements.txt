@@ -1,5 +1,4 @@
 biopython
-galaxygetopt
 pyyaml
 numpy
 svgwrite
