@@ -1,0 +1,57 @@
+>1|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 288 bp
+acttacgcggagagatgagaccaacgctcgcctaggggcacgcttgtaattgacttatct
+agcttgccgtgaatggctccgggaataatggcaaggtatattgaagagcatgactccgtg
+ttgtagcatatctagttgttctccaagccttgctgagtccgagaaccacctgaggagtat
+ggaccttgggtagccgatttacaataagcctcctacccttgacaaccggaatcatgcgca
+tgatcgatgaccttttgcgcctcgcaccgttaacgAAAtatcgccgta
+>2|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 232 bp
+gttggggacccacctatcagggagtgtagtagtataagactgtccaataccccccaacat
+cgcagtttacggtcgcatagttattagacgccgatgcgcgtcccaggatggagtcacggc
+ggcaatatccctccgttggatttagccaagctgcggccaatagtaagaatggcgggtacc
+tttagcatctcttgAAActagtaggtcgcattactcAAAcagttcgtttcat
+>3|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 261 bp
+tctctgttggttaccgaatgagcactgccacggacggaatggcAAAggtgaattcgtgtc
+gaggacaaggcaatcccattgccttagttttcctgtggagAAAgcttagccccattgaca
+gcgaacagttcagttcttttgctggcatccaatgcacatgagctcggtccatggccatcc
+gtcaatagAAAccacataaggtacgagctcgtgtattgccgattccaactgattgattga
+ggtagactacccggattcgcc
+>4|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 251 bp
+gcgcgggacgtcagccccaacgtagtcgataatggagatgtttatgacagtgatcatacc
+cAAAcaagcagttatactgggtagtagcaactctggctatttatcccagccagcatacac
+ggcaaggacgaagactaattcgttctactgtcgattgctggtctctgccttgaacgttac
+gtgcgttcgactcggattgcgtcagcgaacgattacactcgtctttagacagttggcatt
+cgacttggcca
+>5|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 283 bp
+tctcgcacAAActtcgtgcctataggggtgatggcagaattgacAAAgtagtgcctcacA
+AAtcgcgcagcagtggttttacatacaagagagcgggctggactggctagttgtccattg
+AAAcgtAAAggtaattatgcgattgtcttggccgagtccgatattctccatcgtctcccc
+gtacacctccccgtcagtAAAatggaatctcattataggtgaaccgttcacctgttctct
+gtacgccatgttcaggcggaagcattcactactgagcgcgagg
+>6|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 221 bp
+agcttagatggtatgtgacggtccgtaaggaagtgatatccgactgccaccatgtgacga
+aggtgcctcggggcctttaggcctactgagtataccgaaccacgcagtatgtcattcttt
+ctcttcAAAaggcgAAAatccacgtcAAAactttccaagacgccgttcgctacattctgt
+cgaagtgtgggaacacagcgatacgtggctgctgctttact
+>7|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 271 bp
+gtttagagagttgtaatgtcaggttttgcaacgttgcttacatttaccccgggcacagta
+gtgcgaccaagacaagtgttgcggtggtgtatagtccaagttacagttcatgttaggttc
+gtccacggtcattttctgccgagAAAatcataatcgcctactctcctgttccgcaacggA
+AAcgAAActagaatagagtgcactgcccgtgaacgcttcgggtctatccccgatcctggc
+cacgAAAcagtctgagtatgaccgcggacca
+>8|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 210 bp
+ggtctttatgatcgtacactacagggttattagaggtgggagtaatcgatcaatctgcaa
+cgtcgcctcgccgcctgtggccatccagcacggggccgattcattcaagaacgagttgag
+ctcccgcaaccgtccagagtgtctacgtttttgagcagtAAAtaaccgttttttgagagc
+gtctAAAagAAAacgcccgtctttagccat
+>9|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 290 bp
+AAAtcatcatgatccggcatatcgggggaacgtaagaactcgcccgaatttggactgtga
+ccgcaacagattgtgtgtAAAagagcgacacgcatgacacgcccagtgattcgttggcgA
+AAccccattccagccttacgctccagactttAAAcacttgcgtttagtgcttggcggcgt
+ctggctacgtcagacccagcttcgtgttatatttctctaacaggtatagtagcctagatt
+caggccgcggcgggtgcAAAactctagttctgtctttaatagttcggaag
+>10|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 275 bp
+catgtaggttccgactgggctaatccaacgatcttgacttcgcttttgatgtgacattaa
+gtcggggactaactgtttcgagagcactgtcccaatgcgtcgtactgccaacaatgcctc
+ttgtgatgctattgactggccgcatccgatgggatcggtcccccggAAAtagtttccaga
+ttgatcatctaaccaggaggccgaccgaagaggAAAacttaggcgaagccactccactat
+attgagaccatgacttgcgaggtgagattatcttc

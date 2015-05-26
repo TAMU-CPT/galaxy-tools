@@ -24,6 +24,13 @@ $positional_1
   <outputs>
     <data format="fasta" hidden="false" name="default"/>
   </outputs>
+  <tests>
+      <test>
+          <param name="positional_1" value="random.fa" />
+          <param name="positional_2" value="A{3}" />
+          <output name="default" file="regex.a3.fa" />
+      </test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
@@ -34,4 +41,5 @@ amino acids, you might use the following: ``.{0,29}C``, which says 0-29 of ANY
 character, then a C. For help with advanced queries, please talk to your
 friendly bioinformatician.
 ]]></help>
+    <expand macro="citations" />
 </tool>
