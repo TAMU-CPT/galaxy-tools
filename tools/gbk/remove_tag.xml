@@ -1,12 +1,15 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.remove_tag" name="Remove Genbank Tags" version="1.0">
+<tool id="edu.tamu.cpt.gbk.remove_tag" name="Remove Genbank Tags" version="0.2">
     <description>removes specific tags/qualifiers from a Genbank file</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
   <version_command>python cpt_gbk_remove_tag.py --version</version_command>
   <command interpreter="python"><![CDATA[cpt_gbk_remove_tag.py
-$positional_1
+#set gbk_files = '" "'.join([str($var) for $var in $positional_1])
+"$gbk_files"
 
 #if $feature_type and $feature_type is not None:
 --feature_type "$feature_type"
@@ -21,7 +24,7 @@ $positional_1
 #end if
 > $default]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1" type="data"/>
+    <param label="Genbank files" name="positional_1" type="data" multiple="True"/>
     <param label="Feature type to remove" name="feature_type" type="select" optional="True">
       <option value="-10_signal">-10_signal</option>
       <option value="-35_signal">-35_signal</option>
@@ -90,8 +93,16 @@ $positional_1
     <param label="String in tag to match" name="tag_match" type="text"/>
   </inputs>
   <outputs>
-    <data format="txt" hidden="false" name="default" label="$positional_1.name without selected feature tags"/>
+    <data format="txt" name="default" label="$positional_1.name without selected feature tags"/>
   </outputs>
+  <tests>
+      <test>
+          <param name="positional_1" value="related.gbk" />
+          <param name="feature_type" value="CDS" />
+          <param name="tag_type" value="translation" />
+          <output name="default" file="related.nolocus.gbk" />
+      </test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
