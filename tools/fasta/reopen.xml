@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.fasta.reopen" name="Reopen Fasta Sequences" version="1.0">
+  <description>at specific location</description>
+  <version_command>python cpt_fasta_reopen.py --version</version_command>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <command interpreter="python">cpt_fasta_reopen.py
+$fasta_file
+$after
+> $default
+
+</command>
+  <inputs>
+      <param label="Fasta file to reopen" label="fasta_file" name="fasta_file"
+          type="data" format="fasta"/>
+      <param label="Reopen contig after this base" help="1-indexed"
+          label="after" name="after" type="integer" value="1000"/>
+  </inputs>
+  <outputs>
+    <data format="fasta" name="default" label="$fasta_file.name reopened at $after">
+    </data>
+  </outputs>
+  <tests>
+      <test>
+          <param name="fasta_file" value="random.fa" />
+          <param name="after" value="10" />
+          <output name="output" file="random.reopened.fa" />
+      </test>
+  </tests>
+  <help>
+Reopen Fasta Contigs
+====================
+
+Reopen a fasta contig
+
+For the example contig:
+
+::
+
+    &gt;test
+    aaaaaccccc
+
+Reopening with 5, implying that we should reopen after the fifth base, we see:
+
+::
+
+    &gt;test
+    cccccaaaaa
+</help>
+    <expand macro="citations" />
+</tool>
