@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.fasta.simpleprimer" name="Simple Primer Generator" version="1.0">
+  <description/>
+  <version_command>python simple_primer.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">simple_primer.py
+${fasta_file}
+--end_overlap ${end_overlap}
+> $output
+</command>
+  <inputs>
+    <param label="Fasta file" name="fasta_file" type="data" format="fasta"/>
+    <param label="End overlap" name="end_overlap" type="integer" value="500"/>
+  </inputs>
+  <outputs>
+    <data format="fasta" name="output">
+    </data>
+  </outputs>
+  <help>Simple Primer Tool
+==================
+
+For the example contig:
+
+::
+
+    &gt;test
+    aaaaaNNNNNNNNNNNNccccc
+
+Requesting a primer with a 5 base end overlap, you would get
+
+::
+
+    &gt;test
+    ccccc[ccc]aaaaa
+</help>
+  <tests/>
+</tool>
