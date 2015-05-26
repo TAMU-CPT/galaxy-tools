@@ -56,7 +56,7 @@
       <option value="Myo">Myo</option>
     </param>
     <param area="false" label="Host" name="host" type="text"/>
-    <param area="false" label="Host Range" name="host_range" type="text"/>
+    <param area="false" label="UNUSED QUESTION, SKIP THIS!" name="host_range" type="text"/>
     <param area="false" label="Isolation Sample type" name="sample_type" type="text"/>
     <param area="false" label="Isolation Date" name="date" type="text"/>
     <param area="false" label="Isolation Location" name="location" type="text"/>
@@ -84,7 +84,7 @@
     <repeat min="1" name="repeat_26" title="repeat_title">
       <param area="true" label="Justify any intergenic gap larger than 150 bp. (explain why you did not annotate genes?)" name="gaps" type="text"/>
     </repeat>
-    <param area="true" label="Is your genome closed? How did you determine this? (link to gel images &amp; analysis text , including primer sequence)." name="closed" type="text"/>
+    <param area="true" label="UNUSED QUESTION, SKIP THIS!" name="closed" type="text"/>
     <param area="true" label="Has your phage genome been re-opened? If so, where and why? If not, why not?" name="reopened" type="text"/>
     <param area="true" label="Is your phage similar to another phage? Which one? How similar? How was the similarity determined?" name="sim" type="text"/>
     <param area="true" label="Does your phage exhibit GC skew? Can you approximate an origin of replication? (Open your genome in Artemis, go to &quot;Graph&quot;-&gt;&quot;GC Deviation&quot;. Use the right scroll bar to adjust the window to 5000. Scroll through your genome to see if and where your deviation line crosses from positive to negative.) Does this origin fit with the location of DNA replication genes?" name="gc_skew" type="text"/>
