@@ -13,7 +13,7 @@ $first
 > $default]]></command>
   <inputs>
     <param label="Genbank files" multiple="True" name="positional_1" type="data"/>
-    <param label="Only pick out first reference (--first)" name="first" type="boolean" truevalue="--first" falsevalue=""/>
+    <param label="Only pick out first reference" name="first" type="boolean" truevalue="--first" falsevalue=""/>
   </inputs>
   <outputs>
     <data format="tabular" hidden="false" name="default" label="Extracted Authorship"/>
