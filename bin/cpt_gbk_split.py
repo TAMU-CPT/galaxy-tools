@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import sys
 import argparse
 from Bio import SeqIO
 import logging
@@ -12,9 +13,12 @@ if __name__ == '__main__':
     parser.add_argument('genbank_file', type=file, help='Genbank file')
     args = parser.parse_args()
 
+    outdir = os.path.join(os.getcwd(), 'gbk_out')
+    os.makedirs(outdir)
+
     for record in SeqIO.parse(args.genbank_file, "genbank"):
-        name = '%s.gbk' % record.id
+        name = os.path.join(outdir, '%s.gbk' % record.id)
         if not os.path.exists(name):
-            with open('%s.gbk' % record.id, 'w') as handle:
-                log.info("Storing %s" % record.id)
+            with open(name, 'w') as handle:
+                log.info("Storing %s to %s", record.id, name)
                 SeqIO.write([record], handle, 'genbank')

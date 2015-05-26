@@ -12,7 +12,8 @@
   </inputs>
   <outputs>
     <data format="txt" name="data">
-        <discover_datasets pattern="__designation__.gbk" ext="txt" directory="gbk_out" visible="true" />
+        <discover_datasets pattern="__designation__" ext="txt"
+            directory="gbk_out" visible="true" />
     </data>
   </outputs>
   <help>Split Multi-record Genbank Files
