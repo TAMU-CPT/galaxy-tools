@@ -3,9 +3,9 @@
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <version_command>python cpt_disambig.py --version</version_command>
+  <version_command>python fasta_disambig.py --version</version_command>
   <command interpreter="python"><![CDATA[
-cpt_disambig.py
+fasta_disambig.py
 
 $positional_1
 --tbl_out $tbl_out

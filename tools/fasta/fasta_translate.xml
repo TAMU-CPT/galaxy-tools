@@ -1,10 +1,10 @@
-<tool id="cpt_translate.py" name="cpt_translate.py" version="1.0">
+<tool id="edu.tamu.cpt.fasta.translate" name="Fasta Translate" version="1.0">
   <description>Translate fasta file</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <version_command>python cpt_translate.py --version</version_command>
-  <command interpreter="python"><![CDATA[cpt_translate.py
+  <version_command>python fasta_translate.py --version</version_command>
+  <command interpreter="python"><![CDATA[fasta_translate.py
 $positional_1
 --table $table
 $strip_stops

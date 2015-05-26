@@ -1,14 +1,16 @@
-<tool force_history_refresh="false" hidden="false" id="cpt_fasta_rename.py" name="Fasta Sequence Renamer" workflow_compatible="true">
+<tool id="edu.tamu.cpt.fasta.rename" name="Fasta Sequence Renamer" workflow_compatible="true">
   <description>rename fasta sequences</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python"><![CDATA[cpt_fasta_rename.py $positional_1
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <command interpreter="python"><![CDATA[fasta_rename.py $positional_1
 $positional_2
 > $default]]></command>
   <inputs>
-    <param label="fasta file" name="positional_1" type="data"/>
-    <param area="false" label="New name for the fasta sequence" name="positional_2" type="text"/>
+    <param label="Input sequence" name="positional_1" type="data" format="fasta"/>
+    <param label="New name for the fasta sequence" name="positional_2" type="text"/>
   </inputs>
   <outputs>
     <data format="fasta" hidden="false" name="default" label="$positional_2"/>

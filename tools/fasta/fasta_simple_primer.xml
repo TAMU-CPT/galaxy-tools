@@ -6,8 +6,8 @@
   </macros>
   <expand macro="requirements"/>
   <expand macro="stdio"/>
-  <version_command>python simple_primer.py --version</version_command>
-  <command interpreter="python">simple_primer.py
+  <version_command>python fasta_simple_primer.py --version</version_command>
+  <command interpreter="python">fasta_simple_primer.py
 ${fasta_file}
 --end_overlap ${end_overlap}
 > $output

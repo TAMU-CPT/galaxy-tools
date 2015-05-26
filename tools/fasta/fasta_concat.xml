@@ -6,8 +6,8 @@
   </macros>
   <expand macro="requirements"/>
   <expand macro="stdio"/>
-  <version_command>python cpt_fasta_concat.py --version</version_command>
-  <command interpreter="python">cpt_fasta_concat.py
+  <version_command>python fasta_concat.py --version</version_command>
+  <command interpreter="python">fasta_concat.py
 $file
 --id "${id}"
 > $output
