@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gbk.subsection" name="Genbank Subsection" version="1.1">
+  <description>Extract subsets of genbank files</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python subsection.py --version</version_command>
+  <command interpreter="python"><![CDATA[
+#set gbk_files = '" "'.join([str($var) for $var in $positional_1])
+"$gbk_files"
+
+subsection.py
+
+#if $source.source_select == 'file':
+--table $source.table
+$include_unlisted
+#else:
+--coordinates $source.start,$source.end
+#end if
+
+> $default]]></command>
+  <inputs>
+    <param label="Genbank file" name="positional_1" type="data"/>
+    <conditional name="source">
+        <param name="source_select" type="select" label="Subsection Location List">
+            <option value="file">Tabular File</option>
+            <option value="text">Direct Entry</option>
+        </param>
+        <when value="file">
+            <param label="Table of coordinates to cut" name="table" type="data" format="tabular"/>
+            <param checked="false" help="If coordinates aren't listed in the file, still include in output" label="Include unlisted" name="include_unlisted"
+                type="boolean" truevalue="--include_unlisted" falsevalue=""/>
+        </when>
+        <when value="text">
+            <param label="Start coordinate" name="start" type="integer" value="1"/>
+            <param label="End coordinate" name="end" type="integer" value="1000"/>
+        </when>
+    </conditional>
+  </inputs>
+  <outputs>
+    <data format="txt" name="default"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="positional_1" value="related.gbk" />
+          <param name="source_select" value="text" />
+          <param name="start" value="1" />
+          <param name="end" value="2000" />
+          <output name="default" value="related.1-2000.gbk" />
+      </test>
+      <test>
+          <param name="positional_1" value="related.gbk" />
+          <param name="source_select" value="table" />
+          <param name="table" value="related.subsection.tsv" />
+          <output name="default" value="karma.1-2000.gbk" />
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Lets you extract subsections of genbank files. If a table is provided, it should be formatted like the following::
+
+    genome_id	start	end
+
+For example::
+
+	phage_cbk	2831	3032
+
+]]></help>
+</tool>

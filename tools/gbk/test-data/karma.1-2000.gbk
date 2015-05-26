@@ -1,0 +1,67 @@
+LOCUS       Karma                   2000 bp    DNA              UNK 01-JAN-1980
+DEFINITION  Phage Karma.
+ACCESSION   Karma
+VERSION     Karma
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     CDS             1002..1193
+                     /codon_start=1
+                     /locus_tag="Karma_gp001"
+                     /product="hypothetical conserved protein"
+                     /transl_table=11
+                     /translation="MAEFLALIPNLAPFLVWGILLWIAAEVVWSVCLWVYGLRTLFKLH
+                     RDDLAEAISFERALSPFD"
+     CDS             1277..1525
+                     /codon_start=1
+                     /locus_tag="Karma_gp002"
+                     /product="hypothetical conserved protein"
+                     /transl_table=11
+                     /translation="MSIRTFFHDLAVRFVVLGWIFARKPLKWAPKGHNFQPKPPVQVGA
+                     LAAGSLLALSLALGGLWFRFTFPDKSQVVSRRPQAMS"
+     CDS             1587..1691
+                     /codon_start=1
+                     /locus_tag="Karma_gp003"
+                     /product="hypothetical conserved protein"
+                     /transl_table=11
+                     /translation="MFAFLRRLSLAAVHGVLWAILLAMLALGGPRRPL"
+     terminator      1746..1775
+                     /note="predicted rho-independent terminator"
+ORIGIN
+        1 gggctctggg cgaagttttg tgggactact atgacttgca ttatttcaag cgcaagcggt
+       61 ccgagtggaa gtaccaaaga tttgctttgg tttatcaaca acttgccgac gcggcctcgg
+      121 acacctccat cgcgtccaag tttcagacct acgatcacct gccccacctg gagccgaagg
+      181 tgctcaaggc ccggcttgac gcgggtcacg ccgacgagcg cgggcggccg attccggacc
+      241 gcaaggagca cttccggcgg gtggtggtca gcgtcgactc ggccaacaag cccggcgccc
+      301 gcaacgacta cagcgtcgcc caggtctggg gggagaccca cgcccgcaag cactacctga
+      361 tctaccagga gcgcaagaag gtcgacatca ccggcctgac cgagatgatc gagcgggtgg
+      421 ccaagcgcta cgaggtcgac gccatcctgg tcgaagacaa gggcaacggc accgcctaca
+      481 tccaggcgcg gggccagacc gacagccagc ggcggctcgc cccggccccg atcgaggcga
+      541 tccaggtccc gagcacctat tccaaggagt tccgcttcaa cgagatcgtc ccgatgatcg
+      601 aggccggcga ggtcttcctg ccgggcaagg ccccgtggct cgacctgctg atccgcgaaa
+      661 tcggtcagtt ccccgaaggc gcccatgacg accaagtcga cgccatgacg cagtacctcc
+      721 gctgggccaa gtccaagcgc acgcggttcg gcgcgcgcaa ggtcggctcg atgggctgac
+      781 gaggcccgtt aaccacgttt gttaacctcc gccggggcct taaccctaac acggcgaggg
+      841 ttaacaggtc cagggaccct tcgaaattaa cctttcgggg accctgggaa atcgtaaggc
+      901 agggaccctg gccattttcc ggctggggac cctggcaaat tcaccgccgg ggaccctccg
+      961 aaattcatcc tcggggaccc tggcaaatca aggagccggc gatggccgaa tttctcgccc
+     1021 tgatccccaa cctcgcgccg ttcctggtct ggggaatcct cctctggatc gccgccgagg
+     1081 tggtctggag cgtctgcctc tgggtctatg gcctgcggac cctgttcaag ttgcaccgcg
+     1141 atgatctggc cgaggcgatc agcttcgagc gggccttgag ccccttcgac taggcgcggc
+     1201 ctgccgacct aagtcacgga ctgtaggttt cgtgacaagg tgagatattc cacaacgatt
+     1261 tcaaaggctt actgcgatgt cgatccgcac gttcttccac gatctggccg tccgtttcgt
+     1321 cgttttgggg tggatttttg cccgaaaacc gctgaaatgg gctccaaaag ggcataattt
+     1381 tcagcctaaa ccgccggtcc aggtcggcgc cctggcggcc ggctcgctcc tcgccctcag
+     1441 tctggcgctc ggcgggctct ggttccgctt cacgtttccg gacaaaagtc aagtggtctc
+     1501 gcgccggccg caggctatgt catagaccgt gggcttcgtg accagatcac gcttccgtta
+     1561 ccgctccagc ccttgtgagg cctcggatgt tcgcctttct ccgccggctc agcctcgccg
+     1621 ccgtccatgg cgtgctctgg gcgatcctcc tggcgatgct cgccctgggc gggccgcgcc
+     1681 gcccgctcta aagcgtcata tctgacgcct aaggccccct aaggcctcat ctgtgagaca
+     1741 ttcaacgccc tcgtgttcct ctgaacgcgg gggcgttttg acgtcggcgc atttttgact
+     1801 tgacgcgcga gcgttttgac gcgggcgcat ttttgattcg acgggcgagc gttttgacgt
+     1861 ccgagcattt ttcaacttga cgtcgttcca tttaccggga gcgccttagg gttaacgccg
+     1921 gccgccgagc cctggggcga tttaccaccg ccacgttaac ctaacgcctg ttaacctatc
+     1981 ggttgttaag gttaacgccc
+//
