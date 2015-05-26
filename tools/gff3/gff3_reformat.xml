@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.reformat" name="Reformat GFF3 File" version="1.0">
+  <description>by passing it through biopython</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python gff3_reformat.py --version</version_command>
+  <command interpreter="python"><![CDATA[gff3_reformat.py
+$input
+> $default]]></command>
+  <inputs>
+    <param label="Input annotations" name="input" type="data" format="gff2,gff3"/>
+  </inputs>
+  <outputs>
+    <ata format="gff3" hidden="false" name="default"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Helps with poorly formatted input data/gff2 data.
+      ]]></help>
+</tool>

@@ -1,17 +1,12 @@
 #!/usr/bin/env python
-import logging
-logging.basicConfig(level=logging.INFO)
+import sys
 import argparse
 from BCBio import GFF
+import logging
+logging.basicConfig(level=logging.INFO)
 
 def reformat(data):
-    import StringIO
-    output = StringIO.StringIO()
-
-    recs = list(GFF.parse(data))
-    GFF.write(recs, output)
-
-    print output.getvalue()
+    GFF.write(list(GFF.parse(data)), sys.stdout)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reformat GFF files')
