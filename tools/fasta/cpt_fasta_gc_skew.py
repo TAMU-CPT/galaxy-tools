@@ -1,8 +1,9 @@
 #!/usr/bin/env python
+import argparse
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(name=__name__)
-import argparse
+
 
 def calculate_gc_skew(seq):
     counts = {
@@ -23,9 +24,11 @@ def calculate_gc_skew(seq):
         return float(gmc) / float(gpc)
     return 0
 
+
 def gc_wig(fasta_file, window=100, step_size=50):
     from Bio import SeqIO
     for record in SeqIO.parse(fasta_file, "fasta"):
+        print "variableStep chrom=%s span=%s" % (record.id, step_size)
         seqstr = str(record.seq)
 
         modseqstr = seqstr[-window:] + seqstr + seqstr[0:window]
@@ -35,9 +38,7 @@ def gc_wig(fasta_file, window=100, step_size=50):
             end = i + window + halfwindow
             skew = calculate_gc_skew(modseqstr[start:end])
             print '\t'.join(map(str, [
-                record.id,
-                i-step_size/2 if i != 1 else i,
-                i+step_size/2 if (i+step_size/2) < len(seqstr) else i,
+                i - step_size / 2 if i != 1 else i,
                 skew
             ]))
 
