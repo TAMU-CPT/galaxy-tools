@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     for sequence in SeqIO.parse(args.fasta_file, 'fasta'):
         if sequence.id in id_to_clust:
-            name = os.path.join('gbk_out', 'Cluster %s.fa' % id_to_clust[sequence.id])
+            name = os.path.join('gbk_out', 'Cluster %s.fasta' % id_to_clust[sequence.id])
             with open(name, 'a') as handle:
                 tmp = StringIO.StringIO()
                 SeqIO.write([sequence], tmp, 'fasta')
