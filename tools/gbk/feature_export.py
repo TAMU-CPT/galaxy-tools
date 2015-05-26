@@ -1,15 +1,14 @@
 #!/usr/bin/env python
+import sys
 import argparse
+from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+from Bio.SeqFeature import SeqFeature, FeatureLocation
+
 import logging
-import copy
 logging.basicConfig(level=logging.INFO)
-
-__doc__ = """
-GenBank Feature Export
-======================
-
-Exports features from a GenBank file
-"""
+log = logging.getLogger()
 
 
 def get_id(feature=None, parent_prefix=None):
@@ -44,13 +43,9 @@ def ensure_location_in_bounds(start=0, end=0, parent_length=0):
 def extract_features(genbank_file=None, tag='CDS', translate=False,
                      n_bases_upstream=0, n_bases_downstream=0,
                      strip_stops=False, translation_table_id=11):
-    from Bio import SeqIO
-    from Bio.SeqRecord import SeqRecord
-    from Bio.SeqFeature import SeqFeature, FeatureLocation
-    records = list(SeqIO.parse(genbank_file, "genbank"))
 
-    for i in range(len(records)):
-        for feature in records[i].features:
+    for record in SeqIO.parse(genbank_file, "genbank"):
+        for feature in record.features:
             if feature.type in tag:
                 # Find new feature boundaries
                 start = int(feature.location.start)
@@ -87,9 +82,9 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                                              type='domain'))
 
                 if translate:
-                    extracted_seqs = [x.extract(records[i].seq).translate(table=translation_table_id) for x in __seqs]
+                    extracted_seqs = [x.extract(record.seq).translate(table=translation_table_id) for x in __seqs]
                 else:
-                    extracted_seqs = [x.extract(records[i].seq) for x in __seqs]
+                    extracted_seqs = [x.extract(record.seq) for x in __seqs]
 
                 location = ' [start=%s,end=%s]' % (start, end)
 
@@ -98,11 +93,7 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                 if strip_stops:
                     extracted_seq = extracted_seq.replace('*', '')
 
-                print '>%s %s\n%s' % (
-                    get_id(feature),
-                    location,
-                    extracted_seq.strip(),
-                )
+                yield [SeqRecord(Seq(extracted_seq.strip()), id=get_id(feature), description=location)]
 
 
 if __name__ == '__main__':
@@ -133,4 +124,5 @@ if __name__ == '__main__':
     parser.add_argument('--strip_stops', action='store_true', help='Remove stop codons')
 
     args = vars(parser.parse_args())
-    extract_features(**args)
+    for seq in extract_features(**args):
+        SeqIO.write(seq, sys.stdout, 'fasta')

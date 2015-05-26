@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gbk.feature_export" name="Genbank Feature Export" version="1.0">
   <description>Export a subset of features from a Genbank file</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <version_command>python cpt_gbk_feature_export.py --version</version_command>
-  <command interpreter="python"><![CDATA[cpt_gbk_feature_export.py
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python feature_export.py --version</version_command>
+  <command interpreter="python"><![CDATA[feature_export.py
 $positional_1
 
 #set repeat_var_2 = ' '.join(str($positional_2).split(','))
@@ -84,15 +86,28 @@ $strip_stops
       <option value="unsure">unsure</option>
       <option value="variation">variation</option>
     </param>
-    <param label="Translate sequence (--translate)" name="translate" type="boolean" truevalue="--translate" falsevalue=""/>
-    <param area="false" default="11" label="Translation table ID (--translation_table_id)" name="translation_table_id" type="text"/>
-    <param label="Add N bases upstream to exported features (--n_bases_upstream)" name="n_bases_upstream" type="integer" value="0"/>
-    <param label="Add N bases downstream to exported features (--n_bases_downstream)" name="n_bases_downstream" type="integer" value="0"/>
-    <param selected="true" label="Remove stop codons (--strip_stops)" name="strip_stops" type="boolean" truevalue="--strip_stops" falsevalue=""/>
+    <param label="Translate sequence" name="translate" type="boolean"
+        truevalue="--translate" falsevalue=""/>
+    <param default="11" label="Translation table ID"
+        name="translation_table_id" type="integer"/>
+    <param label="Add N bases upstream to exported features" name="n_bases_upstream"
+        type="integer" value="0"/>
+    <param label="Add N bases downstream to exported features"
+        name="n_bases_downstream" type="integer" value="0"/>
+    <param selected="true" label="Remove stop codons" name="strip_stops"
+        type="boolean" truevalue="--strip_stops" falsevalue=""/>
   </inputs>
   <outputs>
     <data format="fasta" name="default" label="$positional_2 exported from $positional_1.name"/>
   </outputs>
+  <tests>
+      <test>
+          <param name="positional_1" value="related.gbk" />
+          <param name="positional_2" value="CDS" />
+          <param name="translate" value="True" />
+          <output name="default" file="related.cds.fa" />
+      </test>
+  </tests>
   <help><![CDATA[
 **What it does **
 
