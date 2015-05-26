@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.compare" name="Genbank Feature Comparison" version="0.2.0">
+ <description>compare feature locations</description>
+  <version_command>python cpt_gbk_diff.py --version</version_command>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <command interpreter="python">diff.py
+$gbk1
+$gbk2
+> $results
+</command>
+  <inputs>
+    <param help="Genbank reference file" label="gbk1" name="gbk1" optional="False" type="data"/>
+    <param help="Updated/new genbank file" label="gbk2" name="gbk2" optional="False" type="data"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="results">
+    </data>
+  </outputs>
+  <tests/>
+  <help>
+Compare two Genbank Files
+=========================
+
+</help>
+    <citations />
+</tool>

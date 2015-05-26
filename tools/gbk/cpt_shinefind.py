@@ -1,11 +1,12 @@
 #!/usr/bin/env python
-import sys
 import re
-import logging
-logging.basicConfig(level=logging.INFO)
 import argparse
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
+
+import logging
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger()
 
 def get_id(feature=None, parent_prefix=None, idx=None):
     result = ""

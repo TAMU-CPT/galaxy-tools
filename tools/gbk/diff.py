@@ -1,14 +1,10 @@
 #!/usr/bin/env python
-from galaxygetopt.ggo import GalaxyGetOpt as GGO
+import argparse
 from Bio import SeqIO
+
 import logging
 logging.basicConfig(level=logging.INFO)
-
-__doc__ = """
-Compare two Genbank Files
-=========================
-
-"""
+log = logging.getLogger()
 
 
 def compare_feature_lists(list_a=[], list_b=[]):
@@ -107,41 +103,12 @@ def get_features_from_gbk(gbk_file=None, feature_type='CDS'):
 
 
 if __name__ == '__main__':
-    # Grab all of the filters from our plugin loader
-    opts = GGO(
-        options=[
-            ['gbk1', 'Genbank reference file',
-             {'required': True, 'validate': 'File/Input'}],
-            ['gbk2', 'Updated/new genbank file',
-             {'required': True, 'validate': 'File/Input'}],
-        ],
-        outputs=[
-            [
-                'results',
-                'Results Table',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'comparison',
-                    'data_format': 'text/tabular',
-                    'default_format': 'TSV_U',
-                }
-            ],
-        ],
-        defaults={
-            'appid': 'edu.tamu.cpt.genbank.compare',
-            'appname': 'Genbank Feature Comparison',
-            'appvers': '0.2.0',
-            'appdesc': 'compare feature locations',
-        },
-        tests=[],
-        doc=__doc__
-    )
-    options = opts.params()
-    cds1 = get_features_from_gbk(gbk_file=options['gbk1'])
-    cds2 = get_features_from_gbk(gbk_file=options['gbk2'])
-    results = compare_feature_lists(list_a=cds1, list_b=cds2)
+    parser = argparse.ArgumentParser(description='Compare two genbank files')
+    parser.add_argument('gbk1', type=file, help='First Genbank file')
+    parser.add_argument('gbk2', type=file, help='Second Genbank file')
 
-    from galaxygetopt.outputfiles import OutputFiles
-    of = OutputFiles(name='results', GGO=opts)
-    of.CRR(data=results)
+    args = parser.parse_args()
+
+    cds1 = get_features_from_gbk(gbk_file=args.gbk1)
+    cds2 = get_features_from_gbk(gbk_file=args.gbk2)
+    print compare_feature_lists(list_a=cds1, list_b=cds2)
