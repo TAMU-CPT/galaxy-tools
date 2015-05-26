@@ -16,5 +16,16 @@ $positional_2
   <outputs>
     <data format="svg" hidden="false" name="default"/>
   </outputs>
-  <help><![CDATA[]]></help>
+  <help><![CDATA[
+**What it does**
+
+Creates a bar chart comparing two codon frequency tables. The input tables should generally look like this::
+
+
+	GCA	32
+	GCC	22
+	GCG	94
+	GCT	50
+
+      ]]></help>
 </tool>

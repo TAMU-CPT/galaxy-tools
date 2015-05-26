@@ -33,10 +33,16 @@ def main(reference, comparison):
     table, translation = tntable()
 
     for codon in ref_data:
-        table[translation[codon[0]]][codon[0]]['ref'] = codon[1]
+        # AAA \t N
+        # N -> AAA = 32
+        nt = codon[0]
+        aa = translation[nt]
+        table[aa][nt]['ref'] = codon[1]
 
     for codon in comp_data:
-        table[translation[codon[0]]][codon[0]]['comp'] = codon[1]
+        nt = codon[0]
+        aa = translation[nt]
+        table[aa][nt]['comp'] = codon[1]
 
     keys = []
     ref_flat = []
