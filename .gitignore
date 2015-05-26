@@ -133,3 +133,8 @@ target/
 
 .venv
 cpt
+
+
+## Galaxy/Planemo
+tool_test_output.html
+tool_test_output.json

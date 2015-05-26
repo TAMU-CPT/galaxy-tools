@@ -1,44 +1,37 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.genbank.fasta-merge" name="Concatenate Fasta Sequences" version="1.94">
   <description>merge into single long sequence</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
   <version_command>python cpt_fasta_concat.py --version</version_command>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <command interpreter="python">cpt_fasta_concat.py
---galaxy
---outfile_supporting $__new_file_path__
---file "${file}"
-
+$file
 --id "${id}"
-
---fasta "${fasta}"
-
---fasta_files_path "${fasta.files_path}"
-
---fasta_format "${fasta_format}"
-
---fasta_id "${fasta.id}"
-
+> $output
 </command>
   <inputs>
-    <param help="Fasta file to merge" label="file" name="file" optional="False" type="data"/>
-    <param help="New fasta identifier for merged sequences" label="id" name="id" optional="False" type="text" value="merged"/>
-    <param help="Concatenated fasta file" label="Format of fasta" name="fasta_format" optional="False" type="select">
-      <option selected="True" value="Fasta">Fasta</option>
-    </param>
+    <param label="Fasta file to merge" name="file" type="data" format="fasta"/>
+    <param label="New fasta identifier for merged sequences" name="id"
+        type="text" value="merged"/>
   </inputs>
   <outputs>
-    <data format="Fasta" name="fasta">
-      <change_format>
-        <when format="fasta" input="fasta_format" value="Fasta"/>
-      </change_format>
+    <data format="fasta" name="output">
     </data>
   </outputs>
-  <help>Fasta Concatentation
-======================
+  <tests>
+      <test>
+          <param name="file" value="merge_input.fa" />
+          <output name="output" file="concated.fa" />
+      </test>
+  </tests>
+  <help>
+Fasta Concatentation
+====================
 
 Merge all fasta sequences into a single one. Useful for preparing data for use in MIST
 </help>
-  <tests/>
+    <expand macro="citations" />
 </tool>
