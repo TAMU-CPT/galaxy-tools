@@ -1,22 +1,28 @@
 <tool id="edu.tamu.cpt.gbk.source" name="GenBank Source Extractor" version="0.1">
   <description>Extract host genus &amp; species from GenBank files</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <version_command>python cpt_gbk_source.py --version</version_command>
-  <command interpreter="python"><![CDATA[cpt_gbk_source.py
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python source.py --version</version_command>
+  <command interpreter="python"><![CDATA[source.py
 #set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])
 "$repeat_var_1"
 
 > $default]]></command>
   <inputs>
-    <repeat min="1" name="repeat_1" title="repeat_title">
-      <param label="Genbank file (positional_1)" name="positional_1" type="data"/>
-    </repeat>
+    <param label="Genbank files" name="positional_1" type="data" multiple="True"/>
   </inputs>
   <outputs>
-    <data format="txt" hidden="false" name="default"/>
+    <data format="tabular" name="default"/>
   </outputs>
+  <tests>
+      <test>
+          <param name="positional_1" value="related.gbk" />
+          <output name="default" file="related.source.txt" />
+      </test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
@@ -47,5 +53,5 @@ detecting it from the genome name and less information will be available:
 
 
       ]]></help>
+  <citations />
 </tool>
-

@@ -1,23 +1,12 @@
 #!/usr/bin/env python
 import argparse
-import logging
+from Bio import SeqIO
 from cpt_ncbi_efetch_gbk import name_parser
-logging.basicConfig(level=logging.INFO)
-
-
-__doc__ = """
-Gene Renumbering Tool
-=====================
-
-Renumber genes in a genome
-"""
 
 
 def phage_source(genbank_files=None, **kwargs):
-    from Bio import SeqIO
     for genbank_file in genbank_files:
-        records = list(SeqIO.parse(genbank_file, "genbank"))
-        for record in records:
+        for record in SeqIO.parse(genbank_file, "genbank"):
             id = record.id
             if '.' in id:
                 id = id.split('.')[0]
@@ -68,9 +57,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print '\t'.join(['# ID', 'Host Genus', 'Host Species', 'Host Strain', 'Other'])
 
-    line = iter(phage_source(**vars(args)))
-    try:
-        while True:
-            print '\t'.join(line.next())
-    except StopIteration:
-        pass
+    for line in phage_source(**vars(args)):
+        print '\t'.join(map(str, line))
