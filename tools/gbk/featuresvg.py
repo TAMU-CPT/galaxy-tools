@@ -1,14 +1,11 @@
 #!/usr/bin/env python
-from galaxygetopt.ggo import GalaxyGetOpt as GGO
+import argparse
+import svgwrite
+from Bio import SeqIO
+
 import logging
 logging.basicConfig(level=logging.INFO)
-
-__doc__ = """
-Print Features as Colored Boxes
-===============================
-
-c.f. Alan Davidson's software
-"""
+log = logging.getLogger()
 
 
 def get_boxes(features):
@@ -24,7 +21,6 @@ def get_boxes(features):
 
 
 def plot_boxes(parent=None, box_size=20):
-    from Bio import SeqIO
     records = list(SeqIO.parse(parent, "genbank"))
     extracted = []
     name_list = []
@@ -41,16 +37,15 @@ def plot_boxes(parent=None, box_size=20):
         if ',' in desc:
             desc = desc[:desc.index(',')]
         name_list.append(records[i].id + " " + desc)
-    import svgwrite
 
     left_side_gap = 400
 
     # Convenience functions to calculate positioning
     def calc_x(box_idx):
-        return (box_size+1) * box_idx + left_side_gap
+        return (box_size + 1) * box_idx + left_side_gap
 
     def calc_y(box_idx):
-        return (box_size+5) * box_idx
+        return (box_size + 5) * box_idx
 
     # Box_size + 1 accounts for border on one side, then +1 for last border
     width = calc_x(max_len) + 1
@@ -60,7 +55,9 @@ def plot_boxes(parent=None, box_size=20):
 
     for row_idx, gbk_name in zip(range(len(extracted)), name_list):
         row = extracted[row_idx]
-        svg_document.add(svg_document.text(gbk_name, insert=(calc_x(0) - left_side_gap, calc_y(row_idx+0.5))))
+        svg_document.add(svg_document.text(gbk_name,
+                                           insert=(calc_x(0) - left_side_gap,
+                                                   calc_y(row_idx + 0.5))))
         for box_idx in range(len(row)):
             if row[box_idx] is not None:
                 # [0] is so we always take the "First" specified colour
@@ -85,37 +82,9 @@ def plot_boxes(parent=None, box_size=20):
 
 
 if __name__ == '__main__':
-    # Grab all of the filters from our plugin loader
-    opts = GGO(
-        options=[
-            ['gbk', 'Genbank file to plot',
-             {'required': True, 'validate': 'File/Input'}],
-        ],
-        outputs=[
-            [
-                'plot',
-                'SVG Plot',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'extracted',
-                    'data_format': 'text/plain',
-                    'default_format': 'TXT',
-                }
-            ],
-        ],
-        defaults={
-            'appid': 'edu.tamu.cpt.genbank.DavidsonPlot',
-            'appname': 'Genbank Feature Array Plot',
-            'appvers': '1.94',
-            'appdesc': 'plots features as an array of colored boxes',
-        },
-        tests=[],
-        doc=__doc__
-    )
-    options = opts.params()
-    svg_xml = plot_boxes(parent=options['gbk'])
+    parser = argparse.ArgumentParser(description='Genbank Feature Array Plot')
+    parser.add_argument('parent', type=file, help='Genbank file')
+    parser.add_argument('--box_size', type=int, help='Box size', default=20)
 
-    from galaxygetopt.outputfiles import OutputFiles
-    of = OutputFiles(name='plot', GGO=opts)
-    of.CRR(data=svg_xml)
+    args = parser.parse_args()
+    print plot_boxes(**vars(args))
