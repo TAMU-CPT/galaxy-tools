@@ -1,19 +1,20 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.remove_feature" name="Remove Genbank Features" version="1.0">
+<tool id="edu.tamu.cpt.gbk.remove_feature" name="Remove Genbank Features" version="0.2">
   <description>removes specific features from a Genbank file</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <version_command>python cpt_gbk_remove_feature.py --version</version_command>
   <command interpreter="python"><![CDATA[cpt_gbk_remove_feature.py
-$positional_1
+#set gbk_files = '" "'.join([str($var) for $var in $positional_1])
+"$gbk_files"
 
-#set repeat_var_2 = ' '.join(str($positional_2).split(','))
-$repeat_var_2
+#set repeat_var_2 = '" "'.join(str($positional_2).split(','))
+"$repeat_var_2"
 
 > $default]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1" type="data"/>
+    <param label="Genbank files" name="positional_1" type="data" multiple="True"/>
     <param label="Feature type to remove" multiple="True" name="positional_2" type="select">
       <option value="-10_signal">-10_signal</option>
       <option value="-35_signal">-35_signal</option>
@@ -80,11 +81,18 @@ $repeat_var_2
     </param>
   </inputs>
   <outputs>
-    <data format="txt" hidden="false" name="default" label="$positional_1.name without selected features"/>
+    <data format="txt" hidden="false" name="default" label="$positional_1.name without $positional_2"/>
   </outputs>
+  <tests>
+      <test>
+          <param name="positional_1" value="related.gbk" />
+          <param name="positional_2" value="CDS,gene" />
+          <output name="default" file="related.nocdsgene.gbk" />
+      </test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
-Removes selected tags from genbank file
+Removes selected features from genbank file
 ]]></help>
 </tool>

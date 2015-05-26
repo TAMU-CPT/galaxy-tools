@@ -6,7 +6,7 @@ from Bio import SeqIO
 
 import logging
 logging.basicConfig(level=logging.INFO)
-log = logging.getLogger(name='add_tr')
+log = logging.getLogger()
 
 
 def add_tr(genbank_file, end=None):
