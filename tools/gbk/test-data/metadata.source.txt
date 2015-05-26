@@ -1,0 +1,6 @@
+CbK	Bacteriophage phiCbK
+Colossus	Phage Colossus
+Karma	Phage Karma
+Magneto	Bacteriophage Magneto
+Rogue	phage Rogue
+Swift	phage Swift

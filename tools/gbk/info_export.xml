@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.MetadataExport" name="Genbank Metadata Export" version="0.2">
+  <description>exports metadata about genbank files (citations, taxonomy, etc)</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python info_export.py --version</version_command>
+  <command interpreter="python">info_export.py
+${file}
+${section}
+> $data
+</command>
+  <inputs>
+    <param label="Genbank file"  name="file" type="data"/>
+    <param label="Metadata elements to extract" name="section" type="select">
+      <option value="comment">User entered genome comments (assembly data)</option>
+      <option value="date">Date</option>
+      <option value="organism">Organism</option>
+      <option value="references">All references</option>
+      <option value="source">Genome source</option>
+      <option value="taxonomy">Taxonomy</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="txt" name="data">
+      <change_format>
+        <when format="tabular" input="section" value="date"/>
+        <when format="tabular" input="section" value="organism"/>
+        <when format="tabular" input="section" value="source"/>
+        <when format="tabular" input="section" value="taxonomy"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+      <test>
+          <param name="file" value="related.gbk" />
+          <param name="section" value="comment" />
+          <output name="data" file="metadata.comment.txt" />
+      </test>
+      <test>
+          <param name="file" value="related.gbk" />
+          <param name="section" value="date" />
+          <output name="data" file="metadata.date.txt" />
+      </test>
+      <test>
+          <param name="file" value="related.gbk" />
+          <param name="section" value="organism" />
+          <output name="data" file="metadata.organism.txt" />
+      </test>
+      <test>
+          <param name="file" value="related.gbk" />
+          <param name="section" value="references" />
+          <output name="data" file="metadata.references.txt" />
+      </test>
+      <test>
+          <param name="file" value="related.gbk" />
+          <param name="section" value="source" />
+          <output name="data" file="metadata.source.txt" />
+      </test>
+      <test>
+          <param name="file" value="related.gbk" />
+          <param name="section" value="taxonomy" />
+          <output name="data" file="metadata.taxonomy.txt" />
+      </test>
+  </tests>
+  <help>
+Genbank Metadata Export
+=======================
+
+Export metadata from genbank files like taxonomy, citations, etc.
+</help>
+<citations />
+</tool>

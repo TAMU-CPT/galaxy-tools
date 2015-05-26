@@ -1,0 +1,48 @@
+=== CbK ===
+
+##Assembly-Data-START##
+Assembly Method       :: Newbler v. 2.5.3
+Sequencing Technology :: Sanger dideoxy sequencing; 454
+##Assembly-Data-END##
+
+
+=== Colossus ===
+
+##Assembly-Data-START##
+Assembly Method       :: sdf v. sdf
+Sequencing Technology :: Sanger dideoxy sequencing; 454
+##Assembly-Data-END##
+
+
+=== Karma ===
+
+##Assembly-Data-START##
+Assembly Method       :: dsf v. f
+Sequencing Technology :: 454
+##Assembly-Data-END##
+
+
+=== Magneto ===
+
+##Assembly-Data-START##
+Assembly Method       :: Newbler v. 2.5.3
+Sequencing Technology :: Sanger dideoxy sequencing; 454
+##Assembly-Data-END##
+
+
+=== Rogue ===
+
+##Assembly-Data-START##
+Assembly Method       :: j v. hj
+Sequencing Technology :: 454
+##Assembly-Data-END##
+
+
+=== Swift ===
+
+##Assembly-Data-START##
+Assembly Method       :: khjg v. gjh
+Sequencing Technology :: 454
+##Assembly-Data-END##
+
+

@@ -1,0 +1,6 @@
+CbK	Bacteriophage phiCbK
+Colossus	Phage Colossus Unclassified.
+Karma	Phage Karma Unclassified.
+Magneto	Bacteriophage Magneto Unclassified.
+Rogue	phage Rogue Unclassified.
+Swift	phage Swift Unclassified.

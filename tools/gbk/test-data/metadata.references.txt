@@ -1,0 +1,90 @@
+
+% genome/ref: CbK/1
+@Article{CbK.1,
+    Author="Gill,J.J., Berry,J.D., Russell,W.K., Escobar Garcia,D.A., Hernandez,D., Kane,A., Keene,J., Maddox,M., Martin,R., Mohan,S., Spring,A. and Young,R.F.",
+    Title="Complete genomes of six CbK-like phages of Caulobacter crescentus",
+    Journal="Unpublished",
+}
+
+% genome/ref: CbK/2
+@Article{CbK.2,
+    Author="Gill,J.J., Berry,J.D., Russell,W.K., Escobar Garcia,D.A., Hernandez,D., Kane,A., Keene,J., Maddox,M., Martin,R., Mohan,S., Spring,A. and Young,R.F.",
+    Title="Direct Submission University, 2128 TAMU, College Station, TX 77843, USA",
+    Journal="",
+}
+
+
+% genome/ref: Colossus/1
+@Article{Colossus.1,
+    Author="asdf,asdf.",
+    Title="sdf",
+    Journal="Unpublished",
+}
+
+% genome/ref: Colossus/2
+@Article{Colossus.2,
+    Author="asdf,asdf.",
+    Title="Direct Submission",
+    Journal="Submitted (27-APR-2012) sdf, sdf, adf, fs, dffd df, df",
+}
+
+
+% genome/ref: Karma/1
+@Article{Karma.1,
+    Author="sd,ssdf.",
+    Title="ads",
+    Journal="Unpublished",
+}
+
+% genome/ref: Karma/2
+@Article{Karma.2,
+    Author="sd,ssdf.",
+    Title="Direct Submission",
+    Journal="Submitted (28-APR-2012) df, sdf, sd, sdf, sdf sdf, sdf",
+}
+
+
+% genome/ref: Magneto/1
+@Article{Magneto.1,
+    Author="Gill,J.J., Berry,J.D., Russell,W.K., Escobar Garcia,D.A., Hernandez,D., Kane,A., Keene,J., Maddox,M., Martin,R., Mohan,S., Spring,A. and Young,R.F.",
+    Title="Complete genomes of six CbK-like phages of Caulobacter crescentus",
+    Journal="Unpublished",
+}
+
+% genome/ref: Magneto/2
+@Article{Magneto.2,
+    Author="Gill,J.J., Berry,J.D., Russell,W.K., Escobar Garcia,D.A., Hernandez,D., Kane,A., Keene,J., Maddox,M., Martin,R., Mohan,S., Spring,A. and Young,R.F.",
+    Title="Direct Submission",
+    Journal="Submitted (09-APR-2012) Center for Phage Technology, Texas A&M University, 2128 TAMU, College Station, TX 77843, USA",
+}
+
+
+% genome/ref: Rogue/1
+@Article{Rogue.1,
+    Author="hvgv,jjhg.",
+    Title="Rogue",
+    Journal="Unpublished",
+}
+
+% genome/ref: Rogue/2
+@Article{Rogue.2,
+    Author="hvgv,jjhg.",
+    Title="Direct Submission",
+    Journal="Submitted (28-APR-2012) gff, jhg, a, a, a a, a",
+}
+
+
+% genome/ref: Swift/1
+@Article{Swift.1,
+    Author="sdf,ssdf.",
+    Title="af",
+    Journal="Unpublished",
+}
+
+% genome/ref: Swift/2
+@Article{Swift.2,
+    Author="sdf,ssdf.",
+    Title="Direct Submission",
+    Journal="Submitted (28-APR-2012) sdf, sdf, sdf, sdfsdf, sdfsdf sdfsdf, sdfsdf",
+}
+
