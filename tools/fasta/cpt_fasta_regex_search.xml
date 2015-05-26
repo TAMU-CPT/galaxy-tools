@@ -11,7 +11,15 @@ $positional_1
 > $default]]></command>
   <inputs>
     <param label="Fasta Sequence" name="positional_1" type="data" format="fasta"/>
-    <param area="false" label="Regular Expression" name="positional_2" type="text"/>
+    <param area="false" label="Regular Expression" name="positional_2" type="text">
+        <sanitizer invalid_char="">
+            <valid>
+                <add value="{" />
+                <add value="}" />
+                <add value="$" />
+            </valid>
+        </sanitizer>
+    </param>
   </inputs>
   <outputs>
     <data format="fasta" hidden="false" name="default"/>
