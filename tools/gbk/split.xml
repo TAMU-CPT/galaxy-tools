@@ -1,14 +1,22 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.genbank.Split" name="Split Genbank File" version="1.0">
   <description>splits into individual records.</description>
-  <version_command>python cpt_gbk_split.py --version</version_command>
+  <version_command>python split.py --version</version_command>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">cpt_gbk_split.py $genbank
+  <command interpreter="python">
+#set gbk_files = '" "'.join([str($var) for $var in $genbank])
+
+split.py
+$allow_dupes
+"$gbk_files"
+
 </command>
   <inputs>
-    <param help="Multi-record genbank file to split" label="gbk" name="genbank" type="data"/>
+    <param label="Genbank files to split" name="genbank" type="data"/>
+    <param label="Allow duplicate files" type="boolean" selected="true"
+        name="allow_dupes" truevalue="--allow_dupes" falsevalue="" />
   </inputs>
   <outputs>
     <data format="txt" name="data">
@@ -21,5 +29,5 @@
 
 Artemis will only open single-record genbank files.
 </help>
-  <tests/>
+  <citations/>
 </tool>

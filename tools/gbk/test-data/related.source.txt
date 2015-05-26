@@ -1,0 +1,7 @@
+# ID	Host Genus	Host Species	Host Strain	Other
+CbK	Caulobacter	crescentus		
+Colossus	
+Karma	
+Magneto	Caulobacter	crescentus		
+Rogue	
+Swift	
