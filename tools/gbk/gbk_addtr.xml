@@ -2,22 +2,21 @@
 <tool id="edu.tamu.cpt.gbk.add_tr" name="Add Terminal Repeats" version="1.0">
   <description>to a Genbank file with one or more genomes</description>
   <version_command>python cpt_gbk_addtr.py --version</version_command>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
   <command interpreter="python">cpt_gbk_addtr.py
---galaxy
---outfile_supporting $__new_file_path__
---gbk_file "${gbk_file}"
+$gbk_file
 
 #if $source.source_select!="file":
 --end "${source.end}"
 #end if
-
---gbk "${gbk}"
+> $gbk
 </command>
   <inputs>
-    <param help="Input Genome" label="gbk_file" name="gbk_file" optional="False" type="data"/>
+    <param label="Gebank File" name="gbk_file" type="data"/>
 
     <conditional name="source">
         <param name="source_select" type="select" label="Location of TR Information">
@@ -27,7 +26,9 @@
         <when value="file">
         </when>
         <when value="text">
-            <param help="READ THE DIRECTIONS BELOW" label="End of Terminal Repeat Region." name="end" optional="True" type="integer" value="1000"/>
+            <param help="READ THE DIRECTIONS BELOW"
+                label="End of Terminal Repeat Region."
+                name="end" type="integer" value="1000"/>
         </when>
     </conditional>
   </inputs>
@@ -86,5 +87,5 @@ be duplicated and features added to the end. After that, you will need
 to fix the location of both repeat regions to reflect the true repeat
 region
 </help>
-  <tests/>
+    <expand macro="citations" />
 </tool>
