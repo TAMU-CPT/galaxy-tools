@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.RelabelTags" name="Renumber Genbank Genes" version="0.3">
+    <description>relabels/renumbers genbank tags according to rules</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python renumber.py --version</version_command>
+  <command interpreter="python">renumber.py
+#set gbk_files = '" "'.join([str($var) for $var in $file])
+"$gbk_files"
+
+--tag_to_update "${tag_to_update}"
+--string_prefix "${string_prefix}"
+--leading_zeros "${leading_zeros}"
+--change_table $change_table
+
+> $genbank
+
+</command>
+  <inputs>
+    <param label="Genbank files" name="file" type="data"/>
+    <param help="Which tag is used to store gene numbers" label="Tag to update"
+        name="tag_to_update" type="text" value="locus_tag"/>
+    <param help="A string to use as a prefix for the numbering. Will be used as XXXXXXNNN where XXXXXX is the string and NNN is a numerical identifier. Using &quot;display_id&quot; has special meaning, it will use the genome's name/accession number"
+        label="String prefix" name="string_prefix" type="text" value="display_id"/>
+    <param label="Number of leading zeros/padding" name="leading_zeros"
+        type="integer" value="3"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="genbank">
+    </data>
+    <data format="tabular" name="change_table">
+    </data>
+  </outputs>
+  <tests>
+      <test>
+          <param name="file" value="related.gbk" />
+          <param name="leading_zeros" value="10" />
+          <output name="genbank" value="renumbered.gbk" />
+          <output name="change_table" value="renumbered.tsv" />
+      </test>
+  </tests>
+  <help>
+Gene Renumbering Tool
+=====================
+
+Renumber genes in a genome
+</help>
+<citations />
+</tool>
