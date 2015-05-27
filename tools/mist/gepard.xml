@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<tool id="org.krumsiek.gepard" name="Gepard" version="0.1">
+  <description>dot plotter</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command>java -jar gepard.jar
+
+--seq1 $seq1
+--seq2 $seq2
+
+#if $seq_subset.use_subset == 'subset':
+    --from1 $seq_subset.from1
+    --to1 $seq_subset.to1
+    --from2 $seq_subset.from2
+    --to2 $seq_subset.to2
+#end if
+
+--matrix ${matrix}.mat
+
+--lower $lower
+--upper $upper
+
+--word $word
+
+#if $plot_size.use_zoom == "zoom":
+    --zoom $zoom
+#else
+    --maxwidth $maxwidth
+    --maxheight $maxheight
+#end if
+
+--outfile ${output}
+</command>
+  <inputs>
+    <param label="Sequence 1" name="seq1" type="data" format="fasta"/>
+    <param label="Sequence 2" name="seq2" type="data" format="fasta"/>
+
+    <conditional name="seq_subset">
+        <param name="use_subset" type="select" label="Sequence subsection">
+            <option value="complete" checked="True">Use the complete sequences</option>
+            <option value="subset">Use a portion of the sequences</option>
+        </param>
+        <when value="complete" />
+        <when value="subset">
+            <param label="Sequence 1 Start" name="from1" type="integer" value="0" />
+            <param label="Sequence 1 End" name="to1" type="integer" value="1000" />
+            <param label="Sequence 2 Start" name="from2" type="integer" value="0" />
+            <param label="Sequence 2 End" name="to2" type="integer" value="1000" />
+        </when>
+    </conditional>
+
+    <param name="matrix" type="select" label="Sequence Comparison Matrix">
+        <option value="ednaorig">Extended DNA Original</option>
+        <option value="pam250">Pam 250</option>
+        <option value="edna" checked="True">Extended DNA</option>
+        <option value="protidentity">Protein Identity</option>
+        <option value="blosum62">Blosum62</option>
+    </param>
+
+    <conditional name="plot_size">
+        <param name="use_zoom" type="select" label="Plot size">
+            <option value="zoom" checked="True">Specify bases/pixel</option>
+            <option value="width_height">Specify maximum width/height</option>
+        </param>
+        <when value="zoom">
+            <param label="Bases per pixel" name="zoom" type="integer" value="100" minimum="20"/>
+        </when>
+        <when value="width_height">
+            <param label="Maximum width" name="maxwidth" type="integer" value="1000" />
+            <param label="Maximum height" name="maxheight" type="integer" value="1000" />
+        </when>
+    </conditional>
+
+    <param label="Lower limit for dot intensity" help="(in %)" type="integer"
+        minimum="0" maximum="100" name="lower" value="0" />
+    <param label="Upper limit for dot intensity" help="(in %)" type="integer"
+        minimum="0" maximum="100" name="upper" value="100" />
+
+    <!-- Correlates with memory usage/runtime, so force a minimum -->
+    <param label="Word length" name="word" type="integer"
+        minimum="5" value="10" />
+  </inputs>
+  <outputs>
+      <data format="png" name="output" label="Dotplot of $seq1.name and $seq2.name" />
+  </outputs>
+  <help>
+Gepard Dot Plotter
+==================
+
+
+</help>
+    <citations>
+        <citation type="doi">10.1093/bioinformatics/btm039</citation>
+    </citations>
+</tool>
