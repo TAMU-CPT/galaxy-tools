@@ -5,7 +5,7 @@ from graphviz import Digraph
 logging.basicConfig(level=logging.INFO)
 
 
-def xmfa_graph(xmfa):
+def xmfa_graph(xmfa_backbone):
     dot = Digraph(comment='XMFA')
     nodes = [
         {'id': 'start', 'text': 'Alignment Start'}
@@ -14,7 +14,7 @@ def xmfa_graph(xmfa):
     last_id = 'start'
     node_genome_last_seen = {}
 
-    for idx, line in enumerate(xmfa):
+    for idx, line in enumerate(xmfa_backbone):
         if line.startswith('seq'):
             continue
         parsed = map(int, line.split('\t'))
@@ -60,7 +60,7 @@ def xmfa_graph(xmfa):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Graph of XMFA backbone')
-    parser.add_argument('xmfa', type=file, help='XMFA Backbone')
+    parser.add_argument('xmfa_backbone', type=file, help='XMFA Backbone')
 
     args = parser.parse_args()
     xmfa_graph(**vars(args))
