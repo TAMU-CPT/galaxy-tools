@@ -7,51 +7,20 @@
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <command interpreter="python">cpt_relatedness.py
---galaxy
---blast "${blast}"
---method "${method}"
+$blast
 --email $__user_email__
-$restrict_to_phage
---accession_list "${accession_list}"
---name_list "${name_list}"
---name_list_format "${name_list_format}"
+--report $report
+> $accession_list
 
 </command>
   <inputs>
-    <param help="Blast 25 Column Tabular Results" label="blast" name="blast" optional="False" type="data" format="tabular"/>
-    <param help="Method to select &quot;top&quot; results" label="method" name="method" optional="False" type="select" value="n">
-      <option selected="True" value="n">Top 10 results</option>
-      <option value="sd">Statistical significance</option>
-    </param>
-    <param checked="True" falsevalue="" help="Restrict results to Phage/Viruses" label="restrict_to_phage" name="restrict_to_phage" truevalue="--restrict_to_phage" type="boolean"/>
-    <param help="Human readable names of matched genomes" label="Format of name_list" name="name_list_format" optional="False" type="select" default="TSV">
-      <option value="CSV">CSV</option>
-      <option value="CSV_U">CSV_U</option>
-      <option value="JSON">JSON</option>
-      <option value="ODS">ODS</option>
-      <option value="TSV">TSV</option>
-      <option selected="True" value="TSV_U">TSV_U</option>
-      <option value="XLS">XLS</option>
-      <option value="XLSX">XLSX</option>
-      <option value="YAML">YAML</option>
-    </param>
+      <param label"Blast 25 Column Tabular Results" name="blast"
+          type="data" format="tabular"/>
   </inputs>
   <outputs>
-    <data format="txt" name="accession_list">
+    <data format="txt" name="accession_list" label="Top accession #s from $blast.name">
     </data>
-    <data format="TSV_U" name="name_list">
-      <change_format>
-        <when format="tabular" input="name_list_format" value="CSV"/>
-        <when format="tabular" input="name_list_format" value="CSV_U"/>
-        <when format="txt" input="name_list_format" value="Dumper"/>
-        <when format="txt" input="name_list_format" value="JSON"/>
-        <when format="data" input="name_list_format" value="ODS"/>
-        <when format="tabular" input="name_list_format" value="TSV"/>
-        <when format="tabular" input="name_list_format" value="TSV_U"/>
-        <when format="data" input="name_list_format" value="XLS"/>
-        <when format="data" input="name_list_format" value="XLSX"/>
-        <when format="txt" input="name_list_format" value="YAML"/>
-      </change_format>
+    <data format="tabular" name="report" label="Report on top blast hits">
     </data>
   </outputs>
   <help>Find top related genomes
