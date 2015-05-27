@@ -6,28 +6,35 @@
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <command interpreter="python">cpt_charges.py
---galaxy
---outfile_supporting $__new_file_path__
---fasta "${fasta}"
---cs "${cs}"
---html "${html}"
+$fasta
+--cs $cs
+--width $width
 
+> $html
 </command>
   <inputs>
-    <param help="Fasta protein file" label="fasta" name="fasta" optional="False" type="data"/>
-    <param help="Colour scheme" label="cs" name="cs" optional="False" type="select">
+    <param label="Fasta protein file" name="fasta" format="fasta" type="data"/>
+    <param label="Colour scheme" name="cs" type="select">
       <option value="default">Deafult hyrophobic/polar/charged</option>
     </param>
+    <param label="Plot width" name="width" type="integer" value="120" />
   </inputs>
   <outputs>
-    <data format="HTML" name="html">
+    <data format="html" name="html">
     </data>
   </outputs>
+  <tests>
+      <test>
+          <param name="fasta" value="prot.fa"/>
+          <param name="cs" value="default" />
+          <param name="width" value="120" />
+          <output name="html" file="charges.html" />
+      </test>
+  </tests>
   <help>Charges
 =======
 
-Colour sequences based on rules. Email esr@tamu.edu to request new rules
+Colour sequences based on rules. Email esr@tamu.edu to request new colour schemes
 
 </help>
-  <tests/>
 </tool>

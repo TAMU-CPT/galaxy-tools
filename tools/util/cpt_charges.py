@@ -1,15 +1,11 @@
 #!/usr/bin/env python
-from galaxygetopt.ggo import GalaxyGetOpt as GGO
+import argparse
+from Bio import SeqIO
 import sys
+
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(name='charges')
-
-__doc__ = """
-Charges
-=======
-
-"""
 
 COLOUR_SCHEMES = {
     'default': {
@@ -31,11 +27,11 @@ COLOUR_SCHEMES = {
         }
     }
 }
-WIDTH = 120
 HTML_HEADER = '<html><head><title>Charges Report</title></head><body>'
 HTML_FOOTER = '</body></html>'
 
-def charges_html(fasta=None, cs=None, **kwd):
+
+def charges_html(fasta, cs='default', width=120):
     if cs not in COLOUR_SCHEMES:
         log.error("Colour scheme not known to script")
         sys.exit(1)
@@ -58,16 +54,14 @@ def charges_html(fasta=None, cs=None, **kwd):
 
     page = ''
     # Parse sequences from fasta file
-    from Bio import SeqIO
     for record in SeqIO.parse(fasta, "fasta"):
         page += '<pre><h3>&gt;%s %s</h3>\n' % (record.id, record.description)
         seq = list(str(record.seq).upper())
 
-
         idx = 0
-        for i in range(0, len(seq), WIDTH):
+        for i in range(0, len(seq), width):
             line_charges = []
-            line_residues = seq[i:i+WIDTH]
+            line_residues = seq[i:i + width]
             line_numbers = []
 
             for char in range(len(line_residues)):
@@ -88,7 +82,6 @@ def charges_html(fasta=None, cs=None, **kwd):
                     if line_residues[char] in m:
                         line_residues[char] = '<span class="%s">%s</span>' % (m, line_residues[char])
 
-
             page += ''.join(line_charges) + '\n'
             page += ''.join(line_residues) + '\n'
             page += ''.join(line_numbers) + '\n'
@@ -97,48 +90,11 @@ def charges_html(fasta=None, cs=None, **kwd):
     return HTML_HEADER + css + info + page + HTML_FOOTER
 
 
-def passthrough(cb):
-    opts = GGO(
-        options=[
-            ['fasta', 'Fasta protein file',
-             {'required': True, 'validate': 'File/Input'}],
-            ['cs', 'Colour scheme',
-             {'required': True, 'validate': 'Option', 'options':
-              {
-                  'default': 'Deafult hyrophobic/polar/charged'
-              }
-              }]
-        ],
-        outputs=[
-            [
-                'html',
-                'HTML Report',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'charges',
-                    'data_format': 'text/html',
-                    'default_format': 'HTML',
-                }
-            ],
-        ],
-        defaults={
-            'appid': 'edu.tamu.cpt.tools.charges',
-            'appname': 'Charges',
-            'appvers': '1.0',
-            'appdesc': 'colour sequences based on rules',
-        },
-        tests=[],
-        doc=__doc__
-    )
-    options = opts.params()
-    return (opts, options, cb(**options))
-
-
 if __name__ == '__main__':
-    # Grab all of the filters from our plugin loader
-    (opts, options, result) = passthrough(charges_html)
+    parser = argparse.ArgumentParser(description='Top related genomes')
+    parser.add_argument('fasta', type=file, help='Fasta protein file')
+    parser.add_argument('--cs', help='Colour scheme', default='default')
+    parser.add_argument('--width', type=int, help='Plot width', default=120)
+    args = parser.parse_args()
 
-    from galaxygetopt.outputfiles import OutputFiles
-    of = OutputFiles(name='html', GGO=opts)
-    of.CRR(data=result)
+    print charges_html(**vars(args))
