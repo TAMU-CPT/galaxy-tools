@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import argparse
 import tempfile
+import pprint
 import shutil
 import os
 import math
@@ -9,19 +10,234 @@ from Bio import SeqIO
 import subprocess
 
 import logging
-logging.basicConfig(level=logging.DEBUG)
+FORMAT = "[%(levelname)s:%(filename)s:%(lineno)s:%(funcName)s()] %(message)s"
+logging.basicConfig(level=logging.INFO, format=FORMAT)
 log = logging.getLogger("mist")
 
+MONTAGE_BORDER = 50
+IMAGE_BORDER = 1
+
+MONTAGE_BORDER_COORD = '%sx%s' % (MONTAGE_BORDER, MONTAGE_BORDER)
+IMAGE_BORDER_COORD = '%sx%s' % (IMAGE_BORDER, IMAGE_BORDER)
+
+DOUBLE_IMAGE_BORDER_COORD = '%sx%s' % (2 * IMAGE_BORDER, 2 * IMAGE_BORDER)
+
+MONTAGE_BORDER_COLOUR = "grey70"
+IMAGE_BORDER_COLOUR = "green"
+LABEL_COLOUR = "grey22"
+TICK_LENGTH = (.3 * MONTAGE_BORDER)
+
+CREDITS = (
+    "Produced by the CPT's MISTv3 (C) 2015 Eric Rasche <esr\@tamu.edu>\n"
+    "Dot plots produced by the Gepard Dot Plotter by Dr. Jan Krumsiek"
+)
+
+
+class FancyRecord(object):
+
+    def __init__(self, record, tmpdir):
+        self.temp = tempfile.NamedTemporaryFile(dir=tmpdir, delete=False, suffix=".fa")
+        self.temp_path = self.temp.name
+        self.id = self.temp_path.rsplit('/')[-1]
+        self.record = record
+        self.header = record.id
+        self.description = record.description
+        self.length = len(record.seq)
+
+        # Serialize to disk
+        self._write(self.temp)
+
+    def _write(self, handle):
+        SeqIO.write([self.record], handle, 'fasta')
+
+class Subplot(object):
+
+    def __init__(self, i, j, tmpdir, zoom):
+        self.i = i
+        self.j = j
+        # Mist information
+        self.tmpdir = tmpdir
+        self.zoom = zoom
+
+        self.original_path = None
+        self.thumb_path = None
+        self.annotated_original_path = None
+
+    def safe(self, string):
+        return "".join([c for c in string.strip() if
+                        c.isalpha() or c.isdigit() or c == ' ' or
+                        c in ('[', ']', '-', '_')]).rstrip()
+
+    def move_to_dir(self, files_path):
+        """Move a specific image that's part of a subplot to an output
+        directory and return the name
+        """
+        destination_fn = self.safe('%s_vs_%s_[annotated]' % (self.i.header, self.j.header)) + '.png'
+        destination = os.path.join(files_path, destination_fn)
+        log.debug('mv %s %s', self.annotated_original_path, destination)
+        if self.annotated_original_path is not None:
+            shutil.move(
+                self.annotated_original_path, destination
+            )
+        return destination_fn
+
+    def get_description(self):
+        return "%s v %s" % (self.i.header, self.j.header)
+
+    def __repr__(self):
+        return "Subplot [%s]" % self.get_description()
+
+    def run_gepard(self, matrix, window, global_rescale='35%'):
+        """Run gepard on two sequences, with a specified output file
+        """
+        log.info("Running Gepard on %s", self.get_description())
+
+        destination_fn = self.safe('%s_vs_%s_orig' % (self.i.header, self.j.header)) + '.png'
+        self.original_path = os.path.join(self.tmpdir, destination_fn)
+
+        cmd = ['java', '-jar', '/var/lib/gepard.jar',
+               '--seq1', self.j.temp_path,
+               '--seq2', self.i.temp_path,
+               '--matrix', matrix + '.mat',
+               '--outfile', self.original_path,
+               '--word', str(window),
+               '--zoom', str(self.zoom),
+               '--silent'
+               ]
+        log.debug(' '.join(cmd))
+        subprocess.check_call(cmd)
+        # Generate border/individualised images
+        destination_fn = self.safe('%s_vs_%s_annotated' % (self.i.header, self.j.header)) + '.png'
+        self.annotated_original_path = os.path.join(self.tmpdir, destination_fn)
+        self.annotate_image(self.original_path, self.annotated_original_path)
+
+        # Generate thumbnail version of base image
+        destination_fn = self.safe('%s_vs_%s_thumb' % (self.i.header, self.j.header)) + '.png'
+        self.thumb_path = os.path.join(self.tmpdir, destination_fn)
+        Misty.resize_image(global_rescale, self.original_path, self.thumb_path)
+
+    def get_thumb_dims(self):
+        """
+        For NxN sized images, this avoids running `identify` when it won't be
+        used (e.g i=3,j=4)
+        """
+        if not hasattr(self, 'thumb_dims') or self.thumb_dims is None:
+            self.thumb_dims = Misty.obtain_image_dimensions(self.thumb_path)
+        return self.thumb_dims
+
+    def label_formatter(self, bases):
+        label = bases * self.zoom
+        if label > 1000000:
+            label = "%s Mbp" % int(label / 1000000)
+        elif label > 1000:
+            label = "%s kbp" % int(label / 1000)
+        else:
+            label = "%s b" % label
+        return label
+
+    def annotate_image(self, infile, outfile):
+        original_dims = Misty.obtain_image_dimensions(infile)
+
+        half_height = original_dims[1] / 2
+        half_width = original_dims[0] / 2
+
+        j_range = int(1.0 * self.j.length / self.zoom)
+        i_range = int(1.0 * self.i.length / self.zoom)
+
+        j_ticks = int(Misty.BestTick(self.j.length, 5)) / self.zoom
+        i_ticks = int(Misty.BestTick(self.i.length, 5)) / self.zoom
+        # Convert definitions
+        GREY_FILL = ['-fill', LABEL_COLOUR]
+        WHITE_FILL = ['-fill', 'white']
+        NO_STROKE = ['-stroke', 'none']
+        GREY_STROKE = ['-stroke', LABEL_COLOUR, '-strokewidth', '2']
+        GFNS = GREY_FILL + NO_STROKE
+        WFGS = WHITE_FILL + GREY_STROKE
+
+        cmd = [
+            'convert',
+            infile,
+            '-bordercolor', IMAGE_BORDER_COLOUR,
+            '-border', DOUBLE_IMAGE_BORDER_COORD,
+            '-bordercolor', MONTAGE_BORDER_COLOUR,
+            '-border', MONTAGE_BORDER_COORD,
+            '-font', 'Ubuntu-Mono-Regular',
+        ]
+
+        # Rotate -90, apply row header at bottom.
+        cmd += [
+            '-rotate', '-90',
+            # Side label (i/row)
+            '-pointsize', '40',
+            '-fill', LABEL_COLOUR, '-annotate',
+            '+%s+%s' % (half_height, original_dims[0] + MONTAGE_BORDER + 45),
+            self.i.header,
+            '-pointsize', '20',
+        ]
+
+        # Apply row ticks at bottom.
+        for z in range(0, i_range, i_ticks):
+            # Text label
+            cmd += GFNS
+            cmd += [
+                '-annotate',
+                '+%s+%s' % (z + 56, MONTAGE_BORDER + original_dims[0] + 20),
+                self.label_formatter(z)
+            ]
+            cmd += WFGS
+            cmd += [
+                '-draw',
+                'line %s,%s %s,%s' % (
+                    z + MONTAGE_BORDER + 2 * IMAGE_BORDER,
+                    MONTAGE_BORDER + original_dims[0] + 2 * IMAGE_BORDER,
+                    z + MONTAGE_BORDER + 2 * IMAGE_BORDER,
+                    MONTAGE_BORDER + original_dims[0] + 2 * IMAGE_BORDER + TICK_LENGTH,
+                ),
+            ]
+
+        # Rotate back to final rotation
+        cmd += [
+            '-rotate', '90',
+            # Top label (j/column)
+            '-pointsize', '40',
+            '-fill', LABEL_COLOUR, '-annotate',
+            '+%s+30' % half_width,
+            self.j.header,
+            '-pointsize', '20',
+
+            # Credits
+            '-annotate', '+%s+%s' % (2, MONTAGE_BORDER + original_dims[1] + 30),
+            CREDITS
+        ]
+
+        # Apply col ticks along top
+        for z in range(0, j_range, j_ticks):
+            cmd += GFNS
+            cmd += [
+                '-annotate',
+                '+%s+%s' % (z + 56, MONTAGE_BORDER),
+                self.label_formatter(z)
+            ]
+
+            cmd += WFGS
+            cmd += [
+                '-draw',
+                'line %s,%s %s,%s' % (
+                    z + MONTAGE_BORDER + 2 * IMAGE_BORDER,
+                    MONTAGE_BORDER,
+                    z + MONTAGE_BORDER + 2 * IMAGE_BORDER,
+                    MONTAGE_BORDER - TICK_LENGTH,
+                ),
+            ]
+
+
+        cmd.append(outfile)
+        log.info(' '.join(cmd))
+        subprocess.check_output(cmd)
 
 class Misty(object):
-
-    IMAGE_BORDER = 50
-    IMAGE_BORDER_COORD = '%sx%s' % (IMAGE_BORDER, IMAGE_BORDER)
-    CREDITS = (
-        "Produced by the CPT's MISTv3 (Multiple Interrelated Sequence doT plotter). "
-        "Written by Eric Rasche <esr\@tamu.edu>.\n"
-        "Dot plots produced by the Gepard Dot Plotter by Dr. Jan Krumsiek"
-    )
+    """MIST Class for building MIST Plots
+    """
 
     def __init__(self, window=10, zoom=50, matrix='edna', files_path='mist_images'):
         self.tmpdir = tempfile.mkdtemp(prefix="cpt.mist3.", dir='.')
@@ -37,11 +253,16 @@ class Misty(object):
             os.makedirs(self.files_path)
 
     def _get_record(self, record_id):
-        matched = [x for x in self.records if x['id'] == record_id]
-        if len(matched) == 1:
-            return matched[0]
-        else:
-            raise RuntimeError("%s instances in self.records with ID=%s" % (len(matched), record_id))
+        for i, record in enumerate(self.records):
+            if record.id == record_id:
+                return record
+
+    def _get_record_idx(self, record_id):
+        for i, record in enumerate(self.records):
+            if record.id == record_id:
+                return i
+
+        raise RuntimeError("Could not find record ID=%s" % record_id)
 
     def register_all_files(self, file_list):
         for fasta_file in file_list:
@@ -49,20 +270,18 @@ class Misty(object):
                 self.register_record(record)
 
     def register_record(self, record):
-        temp = tempfile.NamedTemporaryFile(dir=self.tmpdir, delete=False)
-        file_id = temp.name.rsplit('/')[-1]
-        self.records.append({
-            'file_path': temp.name,
-            'id': file_id,
-            'header': record.id,
-            'description': record.description,
-            'length': len(record.seq),
-        })
-        SeqIO.write([record], temp, 'fasta')
+        self.records.append(FancyRecord(record, self.tmpdir))
 
     def set_matrix(self, matrix):
-        # More processing?
         self.matrix_data = matrix
+        for i in range(len(self.matrix_data)):
+            record_i = self._get_record(self.matrix_data[i][0]['i'])
+            for j in range(len(self.matrix_data[i])):
+                record_j = self._get_record(self.matrix_data[i][j]['j'])
+                self.matrix_data[i][j]['subplot'] = Subplot(record_i, record_j, self.tmpdir, self.zoom)
+
+        # More processing?
+        logging.debug("\n" + pprint.pformat(matrix))
 
     def generate_matrix(self, mtype='complete'):
         matrix = []
@@ -71,8 +290,8 @@ class Misty(object):
                 row = []
                 for j in self.records:
                     row.append({
-                        'i': i['id'],
-                        'j': j['id']
+                        'i': i.id,
+                        'j': j.id
                     })
                 matrix.append(row)
         elif mtype == '1vn':
@@ -82,110 +301,19 @@ class Misty(object):
                 row = []
                 for j in self.records[1:]:
                     row.append({
-                        'i': self.records[0]['id'],
-                        'j': j['id']
+                        'i': self.records[0].id,
+                        'j': j.id
                     })
                 matrix.append(row)
         return matrix
 
-
-    def run_gepard(self, seq_a, seq_b, output):
-        log.info("Running %s vs %s", seq_a, seq_b)
-        cmd = ['java', '-jar', '/var/lib/gepard.jar',
-               '--seq1', seq_a,
-               '--seq2', seq_b,
-               '--matrix', self.matrix,
-               '--outfile', output,
-               '--word', self.window,
-               '--zoom', str(self.zoom),
-               '--silent'
-               ]
-        log.debug(' '.join(cmd))
-        subprocess.check_call(cmd)
-
-    def add_image_border(self, outfile, i, j, file_data, img_data):
-        half_height = img_data['orig_height'] / 2
-        half_width = img_data['orig_width'] / 2
-
-        j_range = int(1.0 * file_data[j]['seqlen'] / self.zoom)
-        i_range = int(1.0 * file_data[i]['seqlen'] / self.zoom)
-
-        j_ticks = int(self.BestTick(file_data[j]['seqlen'], 5)) / self.zoom
-        i_ticks = int(self.BestTick(file_data[i]['seqlen'], 5)) / self.zoom
-        # Convert definitions
-        GREY_FILL = ['-fill', 'grey22']
-        WHITE_FILL = ['-fill', 'white']
-        NO_STROKE = ['-stroke', 'none']
-        GREY_STROKE = ['-stroke', 'grey22', '-strokewidth', '2']
-        GFNS = GREY_FILL + NO_STROKE
-        WFGS = WHITE_FILL + GREY_STROKE
-
-        cmd = ['convert', img_data['orig'],
-               '-bordercolor', 'purple',
-               '-border', '2x2',
-               '-bordercolor', 'gray',
-               '-border', self.IMAGE_BORDER_COORD,
-               '-rotate', '-90',
-               '-pointsize', '40',
-               '-font', 'Ubuntu-Mono-Regular',
-               '-fill', 'black', '-annotate',
-               '+%s+%s' % (half_height, img_data['orig_width'] + self.IMAGE_BORDER + 45),
-               file_data[j]['header'],
-               '-pointsize', '20',
-               ]
-
-        for z in range(0, int(0.8 * j_range), j_ticks):
-            cmd += GFNS
-            cmd += [
-                '-annotate',
-                '+%s+%s' % (z + 56, self.IMAGE_BORDER + img_data['orig_width'] + 20),
-                self.label_formatter(z)
-            ]
-
-        cmd += ['-rotate', '90',
-                '-pointsize', '40',
-                '-fill', 'black', '-annotate',
-                '+%s+30' % half_width, file_data[i]['header'],
-                '-pointsize', '20',
-                '-annotate', '+%s+%s' % (2, self.IMAGE_BORDER + img_data['orig_height'] + 30),
-                self.CREDITS
-                ]
-
-        for z in range(0, int(.8 * i_range), i_ticks):
-            cmd += GFNS
-            cmd += [
-                '-annotate',
-                '+%s+%s' % (z + 56, self.IMAGE_BORDER),
-                self.label_formatter(z)
-            ]
-
-        for z in range(0, i_range, i_ticks):
-            cmd += WFGS
-            cmd += [
-                '-draw',
-                'line %s,35 %s,%s' % (z + 51, z + 51, self.IMAGE_BORDER),
-            ]
-
-        for z in range(0, j_range, j_ticks):
-            cmd += WFGS
-            cmd += [
-                '-draw',
-                'line 35,%s %s,%s' % (z + 51, self.IMAGE_BORDER, z + 51),
-            ]
-
-        cmd.append(outfile)
-        log.debug(' '.join(cmd))
-        subprocess.check_output(cmd)
-
-    def label_formatter(self, bases):
-        label = bases * self.zoom
-        if label > 1000000:
-            label = "%s Mbp" % int(label / 1000000)
-        elif label > 1000:
-            label = "%s kbp" % int(label / 1000)
-        else:
-            label = "%s b" % label
-        return label
+    @classmethod
+    def obtain_image_dimensions(cls, path):
+        cmd = ['identify', path]
+        output = subprocess.check_output(cmd)
+        size = output.split(' ')[3]
+        (w, h) = size[0:size.index('+')].split('x')
+        return (int(w), int(h))
 
     @classmethod
     def BestTick(cls, largest, mostticks):
@@ -209,147 +337,135 @@ class Misty(object):
         log.debug(' '.join(cmd))
         subprocess.check_call(cmd)
 
-    def extract_info_from_file(self, infile):
-        ret = []
-        for seq_record in SeqIO.parse(infile, "fasta"):
-            temp = tempfile.NamedTemporaryFile(dir=self.tmpdir, delete=False)
-            file_id = temp.name.rsplit('/')[-1]
+    def get_image_map(self):
+        image_template = Template('<area shape="rect" coords="${x1},${y1},${x2},${y2}" alt="${alt}" href="${href}" />')
+        imagemap = []
 
-            ret.append({
-                'fasta_path': temp.name,
-                'id': file_id,
-                'header': seq_record.id,
-                'seqlen': len(seq_record.seq),
-            })
+        j_widths = []
+        i_height = []
 
-            temp.write('>%s\n%s' % (seq_record.id, seq_record.seq))
+        for j in range(len(self.matrix_data[0])):
+            j_widths.append(
+                self.matrix_data[0][j]['subplot'].get_thumb_dims()[0]
+            )
 
-        return ret
+        for i in range(len(self.matrix_data)):
+            i_height.append(
+                self.matrix_data[i][0]['subplot'].get_thumb_dims()[1]
+            )
 
-    def mist(self, files):
-        ordering = []
-        file_data = {}
+        log.debug(pprint.pformat(j_widths))
+        log.debug(pprint.pformat(i_height))
 
-        for input_file in files:
-            parsed_new_files = self.extract_info_from_file(input_file)
-            log.info('Parsed out: ' + ','.join(parsed_new_files))
-            for f in parsed_new_files:
-                ordering.append(f['id'])
-                file_data[f['id']] = f
+        def cur_y(i_idx):
+            return MONTAGE_BORDER + sum(i_height[0:i_idx]) + (2 * IMAGE_BORDER * (1 + i_idx))
 
-        for subdir in ['png', 'thumb', 'prefinal']:
-            directory = os.path.join(self.tmpdir, subdir)
-            if not os.path.exists(directory):
-                os.makedirs(directory)
+        def cur_x(j_idx):
+            return MONTAGE_BORDER + sum(j_widths[0:j_idx]) + (2 * IMAGE_BORDER * (1 + j_idx))
 
-        total_seqlen = 0
-        for i in file_data:
-            total_seqlen += file_data[i]['seqlen']
+        for j in range(len(self.matrix_data[0])):
+            for i in range(len(self.matrix_data)):
+                current = self.matrix_data[i][j]['subplot']
+                # Move to final resting place
+                new_image_location = current.move_to_dir(self.files_path)
 
-        # Approx how many pixels wide it is
-        approx_size = total_seqlen / float(self.zoom)
-        # Goal number of pixels
-        rescale = 1000.0 / approx_size
-        rescale_p = '%s%%' % (100 * rescale)
-        img_array = {}
-        for i in ordering:
-            img_array[i] = {}
-            for j in ordering:
-                gepard_png = os.path.join(self.tmpdir, 'png', '%s-%s.png' % (i, j))
-                thumb_png = os.path.join(self.tmpdir, 'thumb', '%s-%s.png' % (i, j))
-                self.run_gepard(file_data[i]['fasta_path'],
-                                file_data[j]['fasta_path'],
-                                gepard_png)
-                self.resize_image(rescale_p, gepard_png, thumb_png)
-                img_array[i][j] = {
-                    'orig': gepard_png,
-                    'thumb': thumb_png,
-                }
+                # Build imagemagp string
+                imagemap.append(image_template.substitute({
+                    # Start at +image border so the border isn't included in
+                    # start of box
+                    'x1': cur_x(j),
+                    'y1': cur_y(i),
 
-        cardinality = len(ordering)
-        inter_image_borders = 2
+                    'x2': cur_x(j) + j_widths[j],
+                    'y2': cur_y(i) + i_height[i],
 
-        reordered = []
-        for i in ordering:
-            for j in ordering:
-                reordered.append(os.path.join(self.tmpdir, 'thumb', '%s-%s.png' % (j, i)))
-        # Make the monatge
-        m0 = os.path.join(self.tmpdir, 'prefinal', 'montage_0.png')
-        m1 = os.path.join(self.tmpdir, 'prefinal', 'montage_1.png')
-        cmd = ['montage'] + reordered + \
-            ['-tile', '%sx%s' % (cardinality, cardinality),
-             '-geometry', '+0+0',
-             '-border', str(inter_image_borders),
-             '-bordercolor', 'purple',
-             m0]
+                    'alt': current.get_description(),
+                    'href': new_image_location,
+                }))
+        return '\n'.join(imagemap)
+
+    def _generate_montage(self):
+        image_list = []
+        for i in range(len(self.matrix_data)):
+            for j in range(len(self.matrix_data[i])):
+                subplot = self.matrix_data[i][j]['subplot']
+                image_list.append(subplot.thumb_path)
+
+        # Montage step
+        m0 = os.path.join(self.tmpdir, 'm0.png')
+        cmd = ['montage'] + image_list
+        cmd += [
+            '-tile', '%sx%s' % (len(self.matrix_data), len(self.matrix_data[0])),
+            '-geometry', '+0+0',
+            '-border', str(IMAGE_BORDER),
+            '-bordercolor', IMAGE_BORDER_COLOUR,
+            m0
+        ]
+
+        log.debug(' '.join(cmd))
         subprocess.check_call(cmd)
-        # Add borders and labels
+
+        # Add grey borders
+        montage_path = os.path.join(self.tmpdir, 'montage.png')
         cmd = [
             'convert', m0,
-            '-bordercolor', 'purple',
-            '-border', '1x1',
-            '-bordercolor', 'gray',
-            '-border', self.IMAGE_BORDER_COORD,
-            m1
+            '-bordercolor', IMAGE_BORDER_COLOUR,
+            '-border', IMAGE_BORDER_COORD,
+            '-bordercolor', MONTAGE_BORDER_COLOUR,
+            '-border', MONTAGE_BORDER_COORD,
+            montage_path
         ]
-        subprocess.check_call(cmd)
 
+        log.debug(' '.join(cmd))
+        subprocess.check_call(cmd)
+        os.unlink(m0)
+        return montage_path
+
+    def _annotate_montage(self, base_path):
+        # Calculate some expected dimension
         cumulative_width = 0
         cumulative_height = 0
-        for i in ordering:
-            for j in ordering:
-                current_image = img_array[i][j]
-                output = subprocess.check_output(['identify',
-                                                  current_image['orig']])
-                size = output.split(' ')[3]
-                (w, h) = size[0:size.index('+')].split('x')
-                img_array[i][j]['width'] = int(w) * rescale
-                img_array[i][j]['height'] = int(h) * rescale
-                img_array[i][j]['orig_width'] = int(w)
-                img_array[i][j]['orig_height'] = int(h)
+        for i in range(len(self.matrix_data)):
+            for j in range(len(self.matrix_data[i])):
+                subplot = self.matrix_data[i][j]['subplot']
 
-                if ordering.index(i) == 1:
-                    cumulative_width += img_array[i][j]['height'] + 2
+                if i == 0:
+                    cumulative_width += subplot.get_thumb_dims()[0] + IMAGE_BORDER * 2
 
-                if ordering.index(j) == 0:
-                    cumulative_height += img_array[i][j]['width'] + 2
+                if j == 0:
+                    cumulative_height += subplot.get_thumb_dims()[1] + IMAGE_BORDER * 2
 
-                gepard_annot_png = os.path.join(self.tmpdir, 'png', 'a_%s-%s.png' % (i, j))
-                self.add_image_border(gepard_annot_png, i, j, file_data,
-                                      img_array[i][j])
-                img_array[i][j]['annotated_original'] = gepard_annot_png
-
-        # The +1 and +2 are as a result of adding a 1 width purple border, so the border is consistent everywhere.
         convert_arguments_top = []
         convert_arguments_left = []
-        left_offset = cumulative_width + self.IMAGE_BORDER
+        left_offset = cumulative_width + MONTAGE_BORDER
 
-        current_sum_width = self.IMAGE_BORDER
-        current_sum_height = self.IMAGE_BORDER
+        current_sum_width = MONTAGE_BORDER
+        current_sum_height = MONTAGE_BORDER
 
         # Top side
-        for i in ordering:
-            current_image = img_array[i][ordering[0]]
+        for j in range(len(self.matrix_data[0])):
+            subplot = self.matrix_data[0][j]['subplot']
             convert_arguments_top += [
-                '-fill', 'black', '-annotate',
-                '+%s+40' % current_sum_width, file_data[i]['header']
+                '-fill', LABEL_COLOUR,
+                '-annotate', '+%s+40' % current_sum_width,
+                subplot.j.header
             ]
-            current_sum_width += current_image['width'] + (2 * inter_image_borders)
-            print "CSW: %s" % (current_sum_width)
+            current_sum_width += subplot.get_thumb_dims()[0] + (2 * IMAGE_BORDER)
+            log.debug("CSW %s", current_sum_width)
 
         # Left side
-        for i in ordering:
-            current_image = img_array[ordering[0]][i]
+        for i in range(len(self.matrix_data)):
+            subplot = self.matrix_data[i][0]['subplot']
             convert_arguments_left += [
-                '-fill', 'black', '-annotate',
-                '+%s+%s' % (current_sum_height, left_offset), '\n' + file_data[i]['header']
+                '-fill', LABEL_COLOUR,
+                '-annotate', '+%s+%s' % (current_sum_height, left_offset),
+                '\n' + subplot.i.header
             ]
-
-            current_sum_height += current_image['height'] + (2 * inter_image_borders)
-            print "CSH: %s" % (current_sum_height)
+            current_sum_height += subplot.get_thumb_dims()[1] + (2 * IMAGE_BORDER)
+            log.debug('CSH %s', current_sum_height)
 
         cmd = [
-            'convert', m1,
+            'convert', base_path,
             '-rotate', '-90',
             '-pointsize', '20',
             '-font', 'Ubuntu-Mono-Regular',
@@ -357,51 +473,46 @@ class Misty(object):
         cmd += convert_arguments_left
         cmd += ['-rotate', '90']
         cmd += convert_arguments_top
+
+        output_path = os.path.join(self.tmpdir, 'large.png')
         cmd += [
             '-pointsize', '14',
             '-annotate', '+%s+%s' % (2, current_sum_height + 15),
-            self.CREDIS,
-            os.path.join(self.tmpdir, 'prefinal', 'large.png')
+            CREDITS,
+            output_path
         ]
         log.debug(' '.join(cmd))
         subprocess.check_output(cmd)
+        return output_path
 
-        imagemap = ""
+    def run(self):
+        # We want the final thumbnail for the overall image to have a max width/height
+        # of 700px for nice display
+        total_seqlen_j = 0
+        total_seqlen_i = 0
+        for j in range(len(self.matrix_data[0])):
+            total_seqlen_j += self.matrix_data[0][j]['subplot'].j.length
 
-        files_to_move = [
-            (os.path.join(self.tmpdir, 'prefinal', 'large.png'), 'large')
-        ]
+        for i in range(len(self.matrix_data)):
+            total_seqlen_i += self.matrix_data[i][0]['subplot'].i.length
+        total_seqlen = max(total_seqlen_i, total_seqlen_j)
+        rescale = 100 * (700.0 / (float(total_seqlen) / self.zoom))
+        rescale_p = '%s%%' % rescale
 
-        image_template = '<area shape="rect" coords="{x1},{y1},{x2},{y2}" alt="{alt}" href="{href}" />\n'
-        cur_y = 51
-        for j in ordering:
-            cur_x = 51
-            tmp_height = 0
-            for i in ordering:
-                current = img_array[i][j]
-                width = current['width']
-                height = current['height']
-                tmp_height = height
-                files_to_move.append((img_array[i][j]['annotated_original'],
-                                      'a_%s-%s' % (i, j)))
-                print current
-                imagemap += image_template.format({
-                    'x1': int(cur_x),
-                    'y1': int(cur_y),
-                    'x2': int(cur_x + width + 2),
-                    'y2': int(cur_y + height + 2),
-                    'alt': "%s vs %s" % (file_data[i]['header'], file_data[j]['header']),
-                    'href': 'a_%s-%s.png' % (i, j)
-                })
+        # Generate gepard plots for each of the sub-images
+        for i in range(len(self.matrix_data)):
+            for j in range(len(self.matrix_data[i])):
+                subplot = self.matrix_data[i][j]['subplot']
 
-                cur_x += width + 4
-            cur_y += tmp_height + 4
+                # generates _orig and _thumb versions
+                subplot.run_gepard(self.matrix, self.window, global_rescale=rescale_p)
 
-        for (original, new) in files_to_move:
-            produced_files = of.subCRR(data_format="dummy", format_as="Dummy",
-                                    filename=new, extension='png', data="dummy")
-            destination = produced_files[0]
-            shutil.copy(original, destination)
+        base_montage = self._generate_montage()
+        annotated_montage = self._annotate_montage(base_montage)
+
+        final_montage_path = os.path.join(self.files_path, 'large.png')
+        shutil.move(annotated_montage, final_montage_path)
+        return final_montage_path
 
 def mist_wrapper(files, zoom=50, matrix='edna', plot_type='complete', files_path='mist_images'):
     html_page = """
@@ -420,6 +531,8 @@ def mist_wrapper(files, zoom=50, matrix='edna', plot_type='complete', files_path
 
     m = Misty(window=10, zoom=zoom, matrix=matrix, files_path=files_path)
 
+    # There is only one special case, so we handle that separately. Every other
+    # plot type wants ALL of the sequences available.
     if plot_type == '2up' and len(files) != 2 and matrix not in ('protidentity', 'blosum62'):
         idx = 0
         # Pull top two sequences.
@@ -434,7 +547,9 @@ def mist_wrapper(files, zoom=50, matrix='edna', plot_type='complete', files_path
     else:
         m.register_all_files(files)
 
-
+    # Generate the matrix appropriate to this plot type. There are two matrix
+    # types: 1vN and complete. 1vN is just a line, complete is a complete
+    # square.
     if plot_type == 'complete':
         # ALL sequences are used.
         m.set_matrix(m.generate_matrix(mtype='complete'))
@@ -450,8 +565,9 @@ def mist_wrapper(files, zoom=50, matrix='edna', plot_type='complete', files_path
     else:
         raise ValueError("Unknown plot type %s" % plot_type)
 
+    m.run()
     # image_map will be returned from MIST
-    image_map = ""
+    image_map = m.get_image_map()
 
     return html_page % image_map
 
