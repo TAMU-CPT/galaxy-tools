@@ -64,7 +64,7 @@ class Misty(object):
         # More processing?
         self.matrix_data = matrix
 
-    def autodetermine(self, mtype='complete'):
+    def generate_matrix(self, mtype='complete'):
         matrix = []
         if mtype == 'complete':
             for i in self.records:
@@ -420,32 +420,33 @@ def mist_wrapper(files, zoom=50, matrix='edna', plot_type='complete', files_path
 
     m = Misty(window=10, zoom=zoom, matrix=matrix, files_path=files_path)
 
+    if plot_type == '2up' and len(files) != 2 and matrix not in ('protidentity', 'blosum62'):
+        idx = 0
+        # Pull top two sequences.
+        for fasta_file in files:
+            for record in SeqIO.parse(fasta_file, 'fasta'):
+                m.register_record(record)
+
+                # Exit after we've seen two sequences
+                idx += 1
+                if idx == 2:
+                    break
+    else:
+        m.register_all_files(files)
+
+
     if plot_type == 'complete':
         # ALL sequences are used.
-        m.register_all_files(files)
-        m.set_matrix(m.autodetermine(mtype='complete'))
+        m.set_matrix(m.generate_matrix(mtype='complete'))
     elif plot_type == '2up':
         # Just two sequences.
         if len(files) == 2 and matrix in ('protidentity', 'blosum62'):
-            m.register_all_files(files)
-            m.set_matrix(m.autodetermine(mtype='complete'))
+            m.set_matrix(m.generate_matrix(mtype='complete'))
         else:
-            idx = 0
-            # Pull top two sequences.
-            for fasta_file in files:
-                for record in SeqIO.parse(fasta_file, 'fasta'):
-                    m.register_record(record)
-
-                    # Exit after we've seen two sequences
-                    idx += 1
-                    if idx == 2:
-                        break
-
             # Co-op the 1vn to do a single plot, rather than a "complete" plot
-            m.set_matrix(m.autodetermine(mtype='1vn'))
+            m.set_matrix(m.generate_matrix(mtype='1vn'))
     elif plot_type == '1vn':
-        m.register_all_files(files)
-        m.set_matrix(m.autodetermine(mtype='1vn'))
+        m.set_matrix(m.generate_matrix(mtype='1vn'))
     else:
         raise ValueError("Unknown plot type %s" % plot_type)
 
