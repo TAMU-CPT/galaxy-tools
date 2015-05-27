@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO, format=FORMAT)
 log = logging.getLogger("mist")
 
 MONTAGE_BORDER = 50
-IMAGE_BORDER = 1
+IMAGE_BORDER = 2
 
 MONTAGE_BORDER_COORD = '%sx%s' % (MONTAGE_BORDER, MONTAGE_BORDER)
 IMAGE_BORDER_COORD = '%sx%s' % (IMAGE_BORDER, IMAGE_BORDER)
@@ -23,13 +23,15 @@ IMAGE_BORDER_COORD = '%sx%s' % (IMAGE_BORDER, IMAGE_BORDER)
 DOUBLE_IMAGE_BORDER_COORD = '%sx%s' % (2 * IMAGE_BORDER, 2 * IMAGE_BORDER)
 
 MONTAGE_BORDER_COLOUR = "grey70"
-IMAGE_BORDER_COLOUR = "green"
+IMAGE_BORDER_COLOUR = "purple"
 LABEL_COLOUR = "grey22"
-TICK_LENGTH = (.3 * MONTAGE_BORDER)
+TICK_LENGTH = (.2 * MONTAGE_BORDER)
+
 
 CREDITS = (
-    "Produced by the CPT's MISTv3 (C) 2015 Eric Rasche <esr\@tamu.edu>\n"
-    "Dot plots produced by the Gepard Dot Plotter by Dr. Jan Krumsiek"
+    "CPT's MISTv3\n"
+    "GPLv3 (C) 2015 Eric Rasche <esr\@tamu.edu>\n"
+    "Dot plots by Gepard Dot Plotter by Dr. Jan Krumsiek"
 )
 
 
@@ -41,7 +43,14 @@ class FancyRecord(object):
         self.id = self.temp_path.rsplit('/')[-1]
         self.record = record
         self.header = record.id
-        self.description = record.description
+
+        # Description include record.id
+        sd = record.description.strip().split(' ')
+        if len(sd) > 1:
+            self.description = ' '.join(sd[1:])
+        else:
+            self.description = ''
+
         self.length = len(record.seq)
 
         # Serialize to disk
@@ -49,6 +58,7 @@ class FancyRecord(object):
 
     def _write(self, handle):
         SeqIO.write([self.record], handle, 'fasta')
+
 
 class Subplot(object):
 
@@ -126,113 +136,188 @@ class Subplot(object):
         return self.thumb_dims
 
     def label_formatter(self, bases):
-        label = bases * self.zoom
-        if label > 1000000:
-            label = "%s Mbp" % int(label / 1000000)
-        elif label > 1000:
-            label = "%s kbp" % int(label / 1000)
+        if bases > 1000000:
+            label = "%s Mbp" % int(bases / 1000000)
+        elif bases > 1000:
+            label = "%s kbp" % int(bases / 1000)
         else:
-            label = "%s b" % label
+            label = "%s b" % bases
         return label
 
     def annotate_image(self, infile, outfile):
         original_dims = Misty.obtain_image_dimensions(infile)
 
-        half_height = original_dims[1] / 2
-        half_width = original_dims[0] / 2
+        half_height = (original_dims[1] / 2) + MONTAGE_BORDER + IMAGE_BORDER
+        half_width = (original_dims[0] / 2) + MONTAGE_BORDER + IMAGE_BORDER
 
-        j_range = int(1.0 * self.j.length / self.zoom)
-        i_range = int(1.0 * self.i.length / self.zoom)
+        def char_width(font_size):
+            """approximate pixel width of a single character at Xpt font
 
-        j_ticks = int(Misty.BestTick(self.j.length, 5)) / self.zoom
-        i_ticks = int(Misty.BestTick(self.i.length, 5)) / self.zoom
+            Assumes that 40pt font results in 20px characters
+            """
+            return int(float(font_size) / 2)
+
+        def char_height(font_size):
+            """approximate pixel height of a single character at Xpt font
+
+            Assumes that 40pt font results in 30px characters
+            """
+            return int(float(font_size) * 30 / 40)
+
+        def est_pixels(string, font_size):
+            """guess pixel width of a string at a given font size
+            """
+            return char_width(font_size) * len(string)
+
+        j_ticks = int(Misty.BestTick(self.j.length, 5))
+        i_ticks = int(Misty.BestTick(self.i.length, 5))
+
         # Convert definitions
         GREY_FILL = ['-fill', LABEL_COLOUR]
-        WHITE_FILL = ['-fill', 'white']
+        NO_FILL = ['-fill', 'none']
         NO_STROKE = ['-stroke', 'none']
         GREY_STROKE = ['-stroke', LABEL_COLOUR, '-strokewidth', '2']
         GFNS = GREY_FILL + NO_STROKE
-        WFGS = WHITE_FILL + GREY_STROKE
+        NFGS = NO_FILL + GREY_STROKE
+        # Font for labels
+        FONT_SPEC = GFNS + ['-font', 'Ubuntu-Mono-Regular']
+        FONT_10pt = FONT_SPEC + ['-pointsize', '10']
+        FONT_20pt = FONT_SPEC + ['-pointsize', '20']
+        FONT_30pt = FONT_SPEC + ['-pointsize', '30']
 
         cmd = [
             'convert',
             infile,
             '-bordercolor', IMAGE_BORDER_COLOUR,
-            '-border', DOUBLE_IMAGE_BORDER_COORD,
+            '-border', IMAGE_BORDER_COORD,
             '-bordercolor', MONTAGE_BORDER_COLOUR,
             '-border', MONTAGE_BORDER_COORD,
-            '-font', 'Ubuntu-Mono-Regular',
         ]
 
         # Rotate -90, apply row header at bottom.
+        primary_header = self.i.header
+        secondary_head = self.i.description
         cmd += [
             '-rotate', '-90',
+        ] + FONT_30pt + [
             # Side label (i/row)
-            '-pointsize', '40',
-            '-fill', LABEL_COLOUR, '-annotate',
-            '+%s+%s' % (half_height, original_dims[0] + MONTAGE_BORDER + 45),
-            self.i.header,
-            '-pointsize', '20',
+            '-annotate',
+            '+%s+%s' % (
+                half_height - 0.5 * est_pixels(self.i.header, 30),
+                original_dims[0] + MONTAGE_BORDER + 2 * IMAGE_BORDER + \
+                char_height(30 + 20)
+                # 30 = primary header
+                # 20 = tick labels
+            ),
+            primary_header
         ]
 
-        # Apply row ticks at bottom.
-        for z in range(0, i_range, i_ticks):
-            # Text label
-            cmd += GFNS
-            cmd += [
+        if est_pixels(self.i.description, 10) < original_dims[1]:
+            cmd += FONT_10pt + [
+                # Side label (i/row)
                 '-annotate',
-                '+%s+%s' % (z + 56, MONTAGE_BORDER + original_dims[0] + 20),
-                self.label_formatter(z)
+                '+%s+%s' % (
+                    half_height - 0.5 * est_pixels(self.i.description, 10),
+                    original_dims[0] + MONTAGE_BORDER + 2 * IMAGE_BORDER + \
+                    char_height(30 + 20 + 10 + 4)
+                    # 30 = primary header
+                    # 20 = tick labels
+                    # 10 = secondary header height
+                    # 4  = line spacing
+                ),
+                secondary_head
             ]
-            cmd += WFGS
+
+        # Apply row ticks labels at bottom
+        for z in range(0, self.i.length, i_ticks):
+
+            image_side_percentage = float(z) / self.i.length
+            x = (image_side_percentage * original_dims[1]) + MONTAGE_BORDER + IMAGE_BORDER
+            y = MONTAGE_BORDER + original_dims[0] + (2 * IMAGE_BORDER)
+
+            # Apply ticks
+            cmd += NFGS
             cmd += [
                 '-draw',
-                'line %s,%s %s,%s' % (
-                    z + MONTAGE_BORDER + 2 * IMAGE_BORDER,
-                    MONTAGE_BORDER + original_dims[0] + 2 * IMAGE_BORDER,
-                    z + MONTAGE_BORDER + 2 * IMAGE_BORDER,
-                    MONTAGE_BORDER + original_dims[0] + 2 * IMAGE_BORDER + TICK_LENGTH,
-                ),
+                'line %s,%s %s,%s' % (x, y, x, y + TICK_LENGTH),
+            ]
+
+            # Keep text from running off the edge.
+            space_to_end_of_image = (1 - image_side_percentage) * original_dims[1]
+            if space_to_end_of_image - est_pixels(self.label_formatter(z), 20) < 0:
+                continue
+
+            # Text label
+            cmd += FONT_20pt
+            cmd += [
+                '-annotate',
+                '+%s+%s' % (x + 5, y + 15),
+                self.label_formatter(z)
             ]
 
         # Rotate back to final rotation
+        primary_header = self.j.header
+        secondary_head = self.j.description
         cmd += [
             '-rotate', '90',
             # Top label (j/column)
-            '-pointsize', '40',
-            '-fill', LABEL_COLOUR, '-annotate',
-            '+%s+30' % half_width,
-            self.j.header,
-            '-pointsize', '20',
+        ] + FONT_30pt + [
+            '-annotate',
+            '+%s+%s' % (
+                half_width - 0.5 * est_pixels(self.j.header, 30),
+                MONTAGE_BORDER - char_height(20 + 10 + 8)
+            ),
+            primary_header,
 
+        ] + FONT_10pt + [
             # Credits
-            '-annotate', '+%s+%s' % (2, MONTAGE_BORDER + original_dims[1] + 30),
-            CREDITS
+            '-annotate',
+            '+%s+%s' % (
+                2,
+                MONTAGE_BORDER + original_dims[1] + 2 * IMAGE_BORDER
+            ),
+            '\n' + CREDITS
         ]
 
+        if est_pixels(self.j.description, 10) < original_dims[0]:
+            cmd += FONT_10pt + [
+                '-annotate',
+                '+%s+%s' % (
+                    half_width - .5 * est_pixels(self.j.description, 10),
+                    MONTAGE_BORDER - char_height(20 + 4)
+                    # 4  = line spacing
+                ),
+                secondary_head
+            ]
+
         # Apply col ticks along top
-        for z in range(0, j_range, j_ticks):
-            cmd += GFNS
+        for z in range(0, self.j.length, j_ticks):
+            image_side_percentage = float(z) / self.j.length
+            x = (image_side_percentage * original_dims[0]) + MONTAGE_BORDER + IMAGE_BORDER
+            y = MONTAGE_BORDER - 1
+
+            # Ticks
+            cmd += NFGS
+            cmd += [
+                '-draw',
+                'line %s,%s %s,%s' % (x, y, x, y - TICK_LENGTH),
+            ]
+
+            # Keep text from running off the edge.
+            space_to_end_of_image = (1 - image_side_percentage) * original_dims[0]
+            if space_to_end_of_image - est_pixels(self.label_formatter(z), 20) < 0:
+                continue
+
+            # Text labels
+            cmd += FONT_20pt
             cmd += [
                 '-annotate',
-                '+%s+%s' % (z + 56, MONTAGE_BORDER),
+                '+%s+%s' % (x + 5, y),
                 self.label_formatter(z)
             ]
 
-            cmd += WFGS
-            cmd += [
-                '-draw',
-                'line %s,%s %s,%s' % (
-                    z + MONTAGE_BORDER + 2 * IMAGE_BORDER,
-                    MONTAGE_BORDER,
-                    z + MONTAGE_BORDER + 2 * IMAGE_BORDER,
-                    MONTAGE_BORDER - TICK_LENGTH,
-                ),
-            ]
-
-
         cmd.append(outfile)
-        log.info(' '.join(cmd))
+        log.debug(subprocess.list2cmdline(cmd))
         subprocess.check_output(cmd)
 
 class Misty(object):
