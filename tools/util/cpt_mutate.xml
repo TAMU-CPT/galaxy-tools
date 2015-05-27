@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.mutate" name="Generate SNPs" version="1.0">
+<tool id="edu.tamu.cpt.fasta.mutate" name="Generate all possible SNPs" version="1.0">
   <description>in fasta files</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
@@ -19,13 +19,19 @@ $positional_2
   <outputs>
     <data format="fasta" name="default" label="Mutated $positional_1.name"/>
   </outputs>
+  <tests>
+      <test>
+          <param name="positional_1" value="random.fa"/>
+          <param name="positional_2" value="delete"/>
+          <output name="default" value="random.delete.fa"/>
+      </test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
-Generate SNPs in a fasta file.
+Generate **ALL POSSIBLE SNPs** in a fasta file.
 
 Be **CAREFUL** with large/many sequences.
 
 ]]></help>
 </tool>
-
