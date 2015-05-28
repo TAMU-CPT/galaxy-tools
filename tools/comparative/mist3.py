@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import argparse
+import time
 import tempfile
 import pprint
 import shutil
@@ -55,6 +56,8 @@ class FancyRecord(object):
 
         # Serialize to disk
         self._write(self.temp)
+        self.temp.flush()
+        self.temp.close()
 
     def _write(self, handle):
         SeqIO.write([self.record], handle, 'fasta')
@@ -90,7 +93,6 @@ class Subplot(object):
                 self.annotated_original_path, destination
             )
         return destination_fn
-
     def get_description(self):
         return "%s v %s" % (self.i.header, self.j.header)
 
@@ -114,14 +116,28 @@ class Subplot(object):
                '--zoom', str(self.zoom),
                '--silent'
                ]
-        log.debug(' '.join(cmd))
-        subprocess.check_call(cmd)
+        log.debug(subprocess.list2cmdline(cmd))
+
+        failure_count = 0
+        while True:
+            try:
+                subprocess.check_call(cmd)
+                break
+            except subprocess.CalledProcessError:
+                failure_count += 1
+                log.warn("sp.CPE FC %s", failure_count)
+                if failure_count > 3:
+                    break
+                time.sleep(1)
+
         # Generate border/individualised images
+        log.debug("    Annotating")
         destination_fn = self.safe('%s_vs_%s_annotated' % (self.i.header, self.j.header)) + '.png'
         self.annotated_original_path = os.path.join(self.tmpdir, destination_fn)
         self.annotate_image(self.original_path, self.annotated_original_path)
 
         # Generate thumbnail version of base image
+        log.debug("    Resizing")
         destination_fn = self.safe('%s_vs_%s_thumb' % (self.i.header, self.j.header)) + '.png'
         self.thumb_path = os.path.join(self.tmpdir, destination_fn)
         Misty.resize_image(global_rescale, self.original_path, self.thumb_path)
@@ -480,7 +496,7 @@ class Misty(object):
         m0 = os.path.join(self.tmpdir, 'm0.png')
         cmd = ['montage'] + image_list
         cmd += [
-            '-tile', '%sx%s' % (len(self.matrix_data), len(self.matrix_data[0])),
+            '-tile', '%sx%s' % (len(self.matrix_data[0]), len(self.matrix_data)),
             '-geometry', '+0+0',
             '-border', str(IMAGE_BORDER),
             '-bordercolor', IMAGE_BORDER_COLOUR,
@@ -599,7 +615,7 @@ class Misty(object):
         shutil.move(annotated_montage, final_montage_path)
         return final_montage_path
 
-def mist_wrapper(files, zoom=50, matrix='edna', plot_type='complete', files_path='mist_images'):
+def mist_wrapper(files, window=10, zoom=50, matrix='edna', plot_type='complete', files_path='mist_images'):
     html_page = """
     <!DOCTYPE html>
     <html>
@@ -614,7 +630,7 @@ def mist_wrapper(files, zoom=50, matrix='edna', plot_type='complete', files_path
     </html>
     """
 
-    m = Misty(window=10, zoom=zoom, matrix=matrix, files_path=files_path)
+    m = Misty(window=window, zoom=zoom, matrix=matrix, files_path=files_path)
 
     # There is only one special case, so we handle that separately. Every other
     # plot type wants ALL of the sequences available.
@@ -662,6 +678,7 @@ if __name__ == '__main__':
     parser.add_argument('files', nargs='+', type=file, help='Fasta sequences')
 
     parser.add_argument('--zoom', type=int, help='# bases / pixel', default=50)
+    parser.add_argument('--window', type=int, help='Window size', default=10)
     parser.add_argument('--matrix', type=str, choices=['ednaorig', 'pam250',
                                                        'edna', 'protidentity',
                                                        'blosum62'],

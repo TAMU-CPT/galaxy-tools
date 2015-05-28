@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gbk.seq" name="Genbank Genome Sequence Export" version="1.0">
+  <description>export sequence from Genbank files as fasta</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python seq_export.py --version</version_command>
+  <command interpreter="python"><![CDATA[seq_export.py
+#set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])
+"$repeat_var_1"
+> $default]]></command>
+  <inputs>
+    <param label="Genbank file" name="positional_1" type="data" multiple="True"/>
+  </inputs>
+  <outputs>
+    <data format="fasta" hidden="false" name="default"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Exports genomes from Genbank files
+]]></help>
+</tool>
