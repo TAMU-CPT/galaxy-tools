@@ -10,7 +10,7 @@
 --window "${window}"
 --zoom "${zoom}"
 --matrix "${matrix}"
---files_path $__new_file_path__
+--files_path $output.files_path
 --plot_type $plot_type
 
 "$repeat_var_1"
