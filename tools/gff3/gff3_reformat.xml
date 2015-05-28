@@ -9,10 +9,10 @@
 $input
 > $default]]></command>
   <inputs>
-    <param label="Input annotations" name="input" type="data" format="gff2,gff3"/>
+    <param label="Input annotations" name="input" type="data" format="gff,gff3"/>
   </inputs>
   <outputs>
-    <ata format="gff3" hidden="false" name="default"/>
+    <data format="gff3" hidden="false" name="default"/>
   </outputs>
   <help><![CDATA[
 **What it does**
