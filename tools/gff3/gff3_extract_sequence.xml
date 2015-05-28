@@ -1,21 +1,17 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gff3.export_seq" name="GFF3 Feature Sequence Export" version="1.0">
   <description>Export corresponding sequence in genome from GFF3</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
   <version_command>python gff3_extract_sequence.py --version</version_command>
-  <command interpreter="python"><![CDATA[
-#if $reference_genome.source == 'history':
-    ln -s $reference_genome.genome_fasta genomeref.fa &&
-#end if
+  <command><![CDATA[
+@GENOME_SELECTOR_PRE@
 
 gff3_extract_sequence.py
-#if $reference_genome.source == 'cached':
-    "${reference_genome.fasta_indexes.fields.path}"
-#elif $reference_genome.source == 'history':
-    genomeref.fa
-#end if
+@GENOME_SELECTOR@
 
 $positional_2
 
@@ -24,21 +20,8 @@ $positional_2
 #end if
 > $default]]></command>
   <inputs>
-      <conditional name="reference_genome">
-          <param name="source" type="select" label="Reference Genome">
-              <option value="cached">Locally Cached</option>
-              <option value="history">From History</option>
-          </param>
-          <when value="cached">
-            <param name="fasta_indexes" type="select" label="Source FASTA Sequence">
-                <options from_data_table="all_fasta"/>
-            </param>
-        </when>
-        <when value="history">
-            <param name="genome_fasta" type="data" format="fasta" label="Source FASTA Sequence"/>
-        </when>
-    </conditional>
-    <param area="false" label="GFF3 File" name="positional_2" type="data" format="gff3"/>
+      <expand macro="genome_selector" />
+      <expand macro="gff3_input" />
     <param label="Filter for specific feature types (--feature_filter)" name="feature_filter" type="text"/>
   </inputs>
   <outputs>

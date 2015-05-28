@@ -5,7 +5,7 @@
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <version_command>python gff3_reformat.py --version</version_command>
-  <command interpreter="python"><![CDATA[gff3_reformat.py
+  <command><![CDATA[gff3_reformat.py
 $input
 > $default]]></command>
   <inputs>
