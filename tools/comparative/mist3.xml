@@ -6,7 +6,7 @@
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <command interpreter="python">mist3.py
-#set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $fasta_files ])
+#set repeat_var_1 = '" "'.join([ str($var) for $var in $fasta_files ])
 --window "${window}"
 --zoom "${zoom}"
 --matrix "${matrix}"
