@@ -6,8 +6,8 @@
   </macros>
   <expand macro="requirements"/>
   <expand macro="stdio"/>
-  <version_command>python cpt_gbk_addtr.py --version</version_command>
-  <command interpreter="python">cpt_gbk_addtr.py
+  <version_command>python addtr.py --version</version_command>
+  <command interpreter="python">addtr.py
 $gbk_file
 
 #if $source.source_select!="file":

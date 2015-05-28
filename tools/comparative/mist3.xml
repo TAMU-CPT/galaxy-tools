@@ -1,63 +1,78 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.mist3" name="MIST v3" version="3.0">
-  <description>Multiple Interrelated Sequence doT plotter. Uses a stripped down vesion of Gepard (Dr. Jan Krumsiek/HelmholtzZentrum/IBIS) for dot plotting.</description>
-  <version_command>python cpt_mist2.py --version</version_command>
+  <description>Multiple Interrelated Sequence doT plotter.</description>
+  <version_command>python mist3.py --version</version_command>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python">cpt_mist2.py
---galaxy
---outfile_supporting $__new_file_path__
-#for $item in $repeat_file:
---file "${item.file}"
---label "${item.label}"
-#end for
-
+  <command interpreter="python">mist3.py
+#set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $fasta_files ])
 --window "${window}"
-
 --zoom "${zoom}"
-
 --matrix "${matrix}"
+--files_path $__new_file_path__
+--plot_type $plot_type
 
---dotplot "${dotplot}"
-
---dotplot_files_path "${dotplot.files_path}"
-
---dotplot_format "${dotplot_format}"
-
---dotplot_id "${dotplot.id}"
-
+"$repeat_var_1"
+> $output
 </command>
   <inputs>
-    <repeat name="repeat_file" title="File">
-      <param help="Input file" label="file" name="file" optional="False" type="data"/>
-      <param help="Label (per input file)" label="label" name="label" optional="False" type="text"/>
-    </repeat>
-    <param help="How zoomed in the image is. Be careful with this option. It represents the number of bases to plot in a single pixel. For large genomes, this can mean very large images, and should be lowered appropriately. For a value of 50, 50 bases would be considered a single pixel in the output image. For 1Mbp of genomes totaly (say 5 x 200 kb phages), this would result in a 20,000 pixel image." label="zoom" name="zoom" optional="False" type="text" value="50"/>
-    <param help="Window Size" label="window" name="window" optional="False" type="integer" value="10"/>
-    <param help="Comparison Matrix" label="matrix" name="matrix" optional="False" type="select" value="edna.mat">
-      <option value="blosum62.mat">Blosum62</option>
-      <option selected="True" value="edna.mat">Extended DNA</option>
-      <option value="ednaorig.mat">Extended DNA (Original)</option>
-      <option value="pam250.mat">Pam 250</option>
-      <option value="protidentity.mat">Protein Identity</option>
-    </param>
-    <param help="MIST Plot" label="Format of dotplot" name="dotplot_format" optional="False" type="select">
-      <option selected="True" value="HTML">HTML</option>
-    </param>
+      <param help="Sequences to plot" label="file" name="fasta_files"
+          type="data" format="fasta" multiple="True"/>
+
+      <param name="plot_type" label="Plot Type" type="select">
+          <option value="complete">[complete] Complete NxN plot</option>
+          <option value="1vn">[1vN] 1 genome versus the rest</option>
+          <option value="2up">[2up] Compare two genomes (see help)</option>
+      </param>
+
+      <param help="How zoomed in the image is" label="zoom" name="zoom"
+          type="integer" value="50" minimum="5"/>
+
+      <param help="Window Size" label="window" name="window"
+          type="integer" value="10" minimum="5"/>
+
+      <param label="Comparison Matrix" name="matrix" type="select">
+        <option value="blosum62">Blosum62</option>
+        <option selected="True" value="edna">Extended DNA</option>
+        <option value="ednaorig">Extended DNA (Original)</option>
+        <option value="pam250">Pam 250</option>
+        <option value="protidentity">Protein Identity</option>
+      </param>
+
   </inputs>
   <outputs>
-    <data format="HTML" name="dotplot">
-      <change_format>
-        <when format="html" input="dotplot_format" value="HTML"/>
-      </change_format>
-    </data>
+    <data format="html" name="output" />
   </outputs>
   <help>Multiple Interrlated Sequence doTplotter
 ========================================
 
 Uses a stripped down vesion of Gepard (Dr. Jan Krumsiek/HelmholtzZentrum/IBIS)
 for dot plotting.
+
+Plot Types
+----------
+
+There are three main plot types:
+
+-  **complete** does a normal N x N plot of each genome versus each other genome.
+-  **1vN** The first genome encountered is compared to all of the rest
+-  **2up** two-genome comparison
+
+    -  If you provide TWO files and are using a protein comparison matrix, then the invidual protein sequences of both files will be compared in a "complete" style plot.
+    -  Otherwise the first two genomes encountered will be compared.
+
+Options
+-------
+
+**Zoom**
+
+Be careful with this option. It represents the number of bases to plot in a
+single pixel. For large genomes, this can mean very large images, and should be
+lowered appropriately. For a value of 50, 50 bases would be considered a single
+pixel in the output image. For 1Mbp of genomes totaly (say 5 x 200 kb phages),
+this would result in a 20,000 pixel image.
+
 
 </help>
   <tests/>

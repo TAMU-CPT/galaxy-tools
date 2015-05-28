@@ -4,9 +4,9 @@
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <version_command>python cpt_gbk_authorship.py --version</version_command>
+  <version_command>python authorship.py --version</version_command>
   <command interpreter="python"><![CDATA[
-cpt_gbk_authorship.py
+authorship.py
 #set files = '" "'.join( [ str( $file ) for $file in $positional_1 ] )
 "$files"
 $first
