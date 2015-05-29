@@ -28,7 +28,10 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
     blast_records = NCBIXML.parse(blastxml)
     records = []
     for record in blast_records:
-        rec = SeqRecord(Seq("ACTG"), id=record.query)
+        recid = record.query
+        if ' ' in recid:
+            recid = recid[0:recid.index(' ')]
+        rec = SeqRecord(Seq("ACTG"), id=recid)
         for hit in record.alignments:
             for hsp in hit.hsps:
                 qualifiers = {
