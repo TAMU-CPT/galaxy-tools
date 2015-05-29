@@ -10,7 +10,7 @@
   <command><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-aa_stats.py
+$__tool_directory__/aa_stats.py
 
 @GENOME_SELECTOR@
 $gff3_data
@@ -21,7 +21,7 @@ $gff3_data
     <expand macro="gff3_input" />
   </inputs>
   <outputs>
-    <data format="tabular" name="Codon Usage"/>
+    <data format="tabular" name="default" label="Codon Usage"/>
   </outputs>
   <help><![CDATA[
 **What it does**

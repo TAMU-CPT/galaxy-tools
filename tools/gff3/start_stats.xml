@@ -10,7 +10,7 @@
   <command><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-start_stats.py
+$__tool_directory__/start_stats.py
 
 @GENOME_SELECTOR@
 $gff3_data
@@ -20,7 +20,7 @@ $gff3_data
     <expand macro="gff3_input" />
   </inputs>
   <outputs>
-    <data format="tabular" name="Start Codon Usage"/>
+    <data format="tabular" name="default" label="Start Codon Usage"/>
   </outputs>
   <help><![CDATA[]]></help>
 </tool>
