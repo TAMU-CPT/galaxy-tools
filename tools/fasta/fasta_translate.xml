@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.translate" name="Fasta Translate" version="1.0">
+<tool id="edu.tamu.cpt.fasta.seq_trans" name="Fasta Translate" version="1.1">
   <description>Translate fasta file</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
