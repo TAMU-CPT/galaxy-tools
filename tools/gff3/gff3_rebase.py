@@ -18,7 +18,6 @@ def __get_features(child, interpro=False):
         for feature in rec.features:
             parent_feature_id = rec.id
             if interpro:
-                parent_feature_id = parent_feature_id[parent_feature_id.index('_') + 1:]
                 if feature.type == 'polypeptide':
                     continue
 
