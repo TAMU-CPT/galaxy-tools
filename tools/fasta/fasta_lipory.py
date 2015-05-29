@@ -33,27 +33,24 @@ def get_id(feature=None, parent_prefix=None, idx=None):
 
 def find_lipoprotein(genbank_file=None, lipobox_mindist=10, lipobox_maxdist=30):
     for record in SeqIO.parse(genbank_file, "genbank"):
-        for feature in record.features:
-            if feature.type in ('gene', 'CDS'):
-                extracted_seq = str(feature.extract(record.seq).translate(table=11)).replace("*", "").strip()
-                if LIPOBOX.search(extracted_seq):
+        if LIPOBOX.search(record.seq):
 
-                    newseq = ""
-                    last_idx = 0
-                    should_yield = False
-                    for hit in LIPOBOX.finditer(extracted_seq):
-                        if lipobox_mindist < hit.start() < lipobox_maxdist:
-                            newseq += extracted_seq[last_idx:hit.start()].lower()
-                            newseq += extracted_seq[hit.start():hit.end()].upper()
-                            last_idx = hit.end()
-                            should_yield = True
+            newseq = ""
+            last_idx = 0
+            should_yield = False
+            for hit in LIPOBOX.finditer(record.seq):
+                if lipobox_mindist < hit.start() < lipobox_maxdist:
+                    newseq += record.seq[last_idx:hit.start()].lower()
+                    newseq += record.seq[hit.start():hit.end()].upper()
+                    last_idx = hit.end()
+                    should_yield = True
 
-                    newseq += extracted_seq[last_idx:].lower()
-                    # Update sequence
+            newseq += record.seq[last_idx:].lower()
+            # Update sequence
 
-                    if should_yield:
-                        yield [SeqRecord(Seq(newseq), id=get_id(feature),
-                                         description="")]
+            if should_yield:
+                yield [SeqRecord(Seq(newseq), id=get_id(feature),
+                                    description="")]
 
 
 if __name__ == '__main__':

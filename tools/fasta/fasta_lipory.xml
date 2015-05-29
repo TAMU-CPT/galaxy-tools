@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.lipory" name="Identify Lipoboxes" version="1.0">
-  <description> in Genbank files</description>
+<tool id="edu.tamu.cpt.fasta.lipory" name="Identify Lipoboxes" version="1.0">
+  <description> in fasta protein sequences</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
@@ -13,9 +13,9 @@ $positional_1
 
 > $default]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1" type="data"/>
-    <param label="Minimum distance in codons to start of lipobox" name="lipobox_mindist" type="integer" default="10"/>
-    <param label="Maximum distance in codons to start of lipobox" name="lipobox_maxdist" type="integer" default="33"/>
+    <param label="Protein sequences" name="positional_1" type="data" format="fasta"/>
+    <param label="Minimum distance in codons to start of lipobox" name="lipobox_mindist" type="integer" value="10"/>
+    <param label="Maximum distance in codons to start of lipobox" name="lipobox_maxdist" type="integer" value="33"/>
   </inputs>
   <outputs>
       <data format="fasta" name="default" label="Lipoboxes in ${on_string}"/>
