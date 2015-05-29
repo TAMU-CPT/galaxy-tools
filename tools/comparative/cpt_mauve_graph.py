@@ -14,6 +14,7 @@ def xmfa_graph(xmfa_backbone):
     last_id = 'start'
     node_genome_last_seen = {}
 
+    parsed = []
     for idx, line in enumerate(xmfa_backbone):
         if line.startswith('seq'):
             continue

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.lipory" name="Identify Lipoboxes" version="1.0">
+  <description> in Genbank files</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python lipory.py --version</version_command>
+  <command interpreter="python"><![CDATA[lipory.py
+$positional_1
+
+--lipobox_mindist $lipobox_mindist
+--lipobox_maxdist $lipobox_maxdist
+
+> $default]]></command>
+  <inputs>
+    <param label="Genbank file" name="positional_1" type="data"/>
+    <param label="Minimum distance in codons to start of lipobox" name="lipobox_mindist" type="integer" default="10"/>
+    <param label="Maximum distance in codons to start of lipobox" name="lipobox_maxdist" type="integer" default="33"/>
+  </inputs>
+  <outputs>
+      <data format="fasta" name="default" label="Lipoboxes in ${on_string}"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Identifies possible LipoBoxes based on regular expressions
+      ]]></help>
+</tool>
