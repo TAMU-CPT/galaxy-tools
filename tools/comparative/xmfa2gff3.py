@@ -86,8 +86,8 @@ def convert_xmfa_to_gff3(xmfa_file, relative_to='1', sequences=None, window_size
 
     lcbs = parse_xmfa(xmfa_file)
 
-    records = [SeqRecord(Seq("A"), id=label_convert.get(relative_to, relative_to))]
-    for lcb in lcbs:
+    for lcb_idx, lcb in enumerate(lcbs):
+        record = SeqRecord(Seq("A"), id=label_convert.get(relative_to, relative_to))
         ids = [seq['id'] for seq in lcb]
 
         # Doesn't match part of our sequence
@@ -101,14 +101,20 @@ def convert_xmfa_to_gff3(xmfa_file, relative_to='1', sequences=None, window_size
         parent = [seq for seq in lcb if seq['id'] == relative_to][0]
         others = [seq for seq in lcb if seq['id'] != relative_to]
 
-        for other in others:
+        if parent['start'] == 0 and parent['end'] == 0:
+            continue
+
+        #print [seq['id'] for seq in lcb if seq['id'] == relative_to][0], \
+            #[seq['id'] for seq in lcb if seq['id'] != relative_to]
+
+        for o_idx, other in enumerate(others):
             other['feature'] = SeqFeature(
                 FeatureLocation(parent['start'], parent['end'] + 1),
                 type="match", strand=parent['strand'],
                 qualifiers={
                     "source": "progressiveMauve",
                     "target": label_convert.get(other['id'], other['id']),
-                    "ID": label_convert.get(other['id'], 'xmfa_' + other['rid'])
+                    "ID": 'm_%s_%s_%s' % (lcb_idx, o_idx, label_convert.get(other['id'], 'xmfa_' + other['rid']))
                 }
             )
 
@@ -143,8 +149,8 @@ def convert_xmfa_to_gff3(xmfa_file, relative_to='1', sequences=None, window_size
                 )
 
         for other in others:
-            records[0].features.append(other['feature'])
-    return records
+            record.features.append(other['feature'])
+        yield [record]
 
 
 if __name__ == '__main__':
@@ -158,5 +164,5 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    result = convert_xmfa_to_gff3(**vars(args))
-    GFF.write(result, sys.stdout)
+    for result in convert_xmfa_to_gff3(**vars(args)):
+        GFF.write(result, sys.stdout)

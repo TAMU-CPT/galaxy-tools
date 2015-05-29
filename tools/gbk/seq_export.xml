@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.seq" name="Genbank Genome Sequence Export" version="1.0">
+<tool id="edu.tamu.cpt.gbk.seq_export" name="Genbank Genome Sequence Export" version="1.0">
   <description>export sequence from Genbank files as fasta</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
