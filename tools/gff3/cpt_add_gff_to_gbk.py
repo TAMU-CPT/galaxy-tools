@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import argparse
+import copy
 import logging
 logging.basicConfig(level=logging.INFO)
 from BCBio import GFF
@@ -24,9 +25,20 @@ def extract_features(gff3_file):
 
     for rec in GFF.parse(gff3_file):
         for feat in rec.features:
+            if feat.type == 'remark':
+                continue
+
             if feat.type not in ('CDS', 'RBS', "gene"):
                 feat.type = 'CDS'
             feat.qualifiers['color'] = ['255 0 0']
+
+            # Remove keys with '-'
+            quals = copy.deepcopy(feat.qualifiers)
+            for key in quals.keys():
+                if '-' in key:
+                    del quals[key]
+            feat.qualifiers = quals
+
             yield feat
 
 
