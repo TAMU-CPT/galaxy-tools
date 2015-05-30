@@ -1,27 +1,13 @@
 #!/usr/bin/env python
-"""Convert BAM files to BigWig file format in a specified region.
-
-Original version copyright Brad Chapman with revisions from Peter Cock
-and ideas from Lance Parsons
-
-Usage:
-    bam_to_bigwig.py <BAM file> [--outfile=<output file name>] [--split]
-
-The --split argument is passed to bedtools genomecov
-
-The script requires:
-    bedGraphToBigWig from UCSC (http://hgdownload.cse.ucsc.edu/admin/exe/)
-"""
 import os
 import sys
+import argparse
 import subprocess
 import tempfile
-from optparse import OptionParser
 from contextlib import contextmanager, closing
 
-import pysam
 
-def main(bam_file, outfile=None, split=False):
+def main(xmfa_file, window_size=100, relative_to=1, sequences=None):
     config = {"program": {"ucsc_bedGraphToBigWig": ["bedGraphToBigWig"]}}
     if outfile is None:
         outfile = "%s.bigwig" % os.path.splitext(bam_file)[-1]
@@ -81,16 +67,15 @@ def convert_to_bigwig(bedgraph_file, chr_sizes, config, bw_file):
         os.remove(size_file)
     return bw_file
 
+
 if __name__ == "__main__":
-    parser = OptionParser()
-    parser.add_option("-o", "--outfile", dest="outfile")
-    parser.add_option("-s", "--split", action="store_true", dest="split")
-    (options, args) = parser.parse_args()
-    if len(args) not in [1, 2]:
-        print "Incorrect arguments"
-        print __doc__
-        sys.exit()
-    kwargs = dict(
-        outfile=options.outfile,
-        split=options.split)
-    main(*args, **kwargs)
+    parser = argparse.ArgumentParser(description='Convert XMFA alignments to gff3', prog='xmfa2gff3')
+    parser.add_argument('xmfa_file', type=file, help='XMFA File')
+    parser.add_argument('--window_size', type=int, help='Window size for analysis', default=1000)
+    parser.add_argument('--relative_to', type=str, help='Index of the parent sequence in the MSA', default='1')
+    parser.add_argument('--sequences', type=file, nargs='+',
+                        help='Fasta files (in same order) passed to parent for reconstructing proper IDs')
+    parser.add_argument('--version', action='version', version='%(prog)s 1.0')
+
+    args = parser.parse_args()
+    main(**vars(args))

@@ -6,7 +6,7 @@
   </stdio>
   <version_command>python seq_export.py --version</version_command>
   <command interpreter="python"><![CDATA[seq_export.py
-#set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])
+#set repeat_var_1 = '" "'.join([ str($var) for $var in $positional_1 ])
 "$repeat_var_1"
 > $default]]></command>
   <inputs>

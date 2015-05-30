@@ -4,8 +4,8 @@
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <version_command>python lipory.py --version</version_command>
-  <command interpreter="python"><![CDATA[lipory.py
+  <version_command>python fasta_lipory.py --version</version_command>
+  <command interpreter="python"><![CDATA[fasta_lipory.py
 $positional_1
 
 --lipobox_mindist $lipobox_mindist
