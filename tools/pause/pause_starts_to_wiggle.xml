@@ -1,46 +1,25 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.pause2.starts_to_wiggle" name="PAUSE2 BAM to Starts Wiggle" version="0.1">
+<tool id="edu.tamu.cpt.pause3.starts_to_wiggle" name="PAUSE BAM to Starts Wiggle" version="3.0">
   <description>create wiggle file from starts information</description>
   <version_command>python pause_starts_to_wiggle.py --version</version_command>
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <command interpreter="python">pause_starts_to_wiggle.py
---galaxy
---outfile_supporting $__new_file_path__
---bam_file "${bam_file}"
+${bam_file}
 
---wig_f "${wig_f}"
-
---wig_f_files_path "${wig_f.files_path}"
-
---wig_f_format TXT
-
---wig_f_id "${wig_f.id}"
-
---wig_r "${wig_r}"
-
---wig_r_files_path "${wig_r.files_path}"
-
---wig_r_format TXT
-
---wig_r_id "${wig_r.id}"
-
+--starts_f ${wig_f}
+--starts_r ${wig_r}
 </command>
   <inputs>
-    <param help="Bam File" label="bam_file" name="bam_file" optional="False" type="data" format="bam"/>
+    <param label="Bam file" name="bam_file" type="data" format="bam"/>
   </inputs>
   <outputs>
-    <data format="wig" name="wig_f">
+    <data format="bigwig" name="wig_f">
     </data>
-    <data format="wig" name="wig_r">
+    <data format="bigwig" name="wig_r">
     </data>
   </outputs>
-  <help>Extract read start from BAM files to Wig format for PAUSE.
-
-Usage:
-    bam_to_wiggle.py &lt;BAM file&gt;
-
-</help>
+  <help>Extract read start from BAM files</help>
   <tests/>
 </tool>
