@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.pause2.analysis" name="PAUSE2 Analaysis" version="0.1">
+  <description>run PAUSE analysis</description>
+  <version_command>python pause_analysis.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">pause_analysis.py
+--galaxy
+--outfile_supporting $__new_file_path__
+--genome "${genome}"
+
+--starts_f "${starts_f}"
+
+--starts_r "${starts_r}"
+
+--cov_f "${cov_f}"
+
+--cov_r "${cov_r}"
+
+--bam_file "${bam_file}"
+
+--wig_f "${wig_f}"
+
+--wig_f_files_path "${wig_f.files_path}"
+
+--wig_f_format "TXT"
+
+--wig_f_id "${wig_f.id}"
+
+--wig_r "${wig_r}"
+
+--wig_r_files_path "${wig_r.files_path}"
+
+--wig_r_format  "TXT"
+
+--wig_r_id "${wig_r.id}"
+
+--pause_report "${pause_report}"
+
+--pause_report_files_path "${pause_report.files_path}"
+
+--pause_report_format  "TXT"
+
+--pause_report_id "${pause_report.id}"
+
+--repeat_region_list "${repeat_region_list}"
+
+--repeat_region_list_files_path "${repeat_region_list.files_path}"
+
+--repeat_region_list_format  "TXT"
+
+--repeat_region_list_id "${repeat_region_list.id}"
+
+</command>
+  <inputs>
+    <param help="Genome (for length)" label="genome" name="genome" optional="False" type="data" format="fasta"/>
+    <param help="+ strand start wig data" label="starts_f" name="starts_f" optional="False" type="data" format="wig"/>
+    <param help="- strand start wig data" label="starts_r" name="starts_r" optional="False" type="data" format="wig"/>
+    <param help="+ strand start wig data" label="cov_f" name="cov_f" optional="False" type="data" format="wig"/>
+    <param help="- strand start wig data" label="cov_r" name="cov_r" optional="False" type="data" format="wig"/>
+    <param help="Bam File" label="bam_file" name="bam_file" optional="False" type="data" format="bam"/>
+  </inputs>
+  <outputs>
+    <data format="wig" name="wig_f">
+    </data>
+    <data format="wig" name="wig_r">
+    </data>
+    <data format="txt" name="pause_report">
+    </data>
+    <data format="tabular" name="repeat_region_list">
+    </data>
+  </outputs>
+  <help>Extract read start from BAM files to Wig format for PAUSE.
+
+Usage:
+    bam_to_wiggle.py &lt;BAM file&gt;
+
+</help>
+  <tests/>
+</tool>

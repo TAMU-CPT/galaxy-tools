@@ -1,0 +1,6 @@
+track type=wiggle_0 name=highlights_r visibility=full
+variableStep chrom=AbauRCB_40431nt
+9221 63
+11184 47
+13536 70
+40108 51
