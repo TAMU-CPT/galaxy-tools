@@ -1,0 +1,4 @@
+track type=wiggle_0 name=highlights_f visibility=full
+variableStep chrom=AbauRCB_40431nt
+13228 71
+31011 50

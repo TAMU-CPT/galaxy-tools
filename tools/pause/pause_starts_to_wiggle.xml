@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.pause3.starts_to_wiggle" name="PAUSE BAM to Starts Wiggle" version="3.0">
+  <description>create wiggle file from starts information</description>
+  <version_command>python pause_starts_to_wiggle.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">pause_starts_to_wiggle.py
+${bam_file}
+
+--starts_f ${wig_f}
+--starts_r ${wig_r}
+</command>
+  <inputs>
+    <param label="Bam file" name="bam_file" type="data" format="bam"/>
+  </inputs>
+  <outputs>
+    <data format="bigwig" name="wig_f">
+    </data>
+    <data format="bigwig" name="wig_r">
+    </data>
+  </outputs>
+  <help>Extract read start from BAM files</help>
+  <tests/>
+</tool>

@@ -1,0 +1,6 @@
+biopython
+bx-python
+galaxygetopt
+numpy
+pysam
+svgwrite
