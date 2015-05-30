@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<tool id="xmfa2bigwig" name="Convert XMFA to BigWig track" version="@WRAPPER_VERSION@.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python xmfa2bigwig.py --version</version_command>
+  <command interpreter="python"><![CDATA[
+xmfa2bigwig.py
+$xmfa
+$sequences
+]]></command>
+  <inputs>
+      <param type="data" format="xmfa" name="xmfa"
+          label="XMFA MSA" />
+
+      <param type="data" format="fasta" name="sequences"
+          label="Select sequences used in progressiveMauve alignment"
+          help="Should be provided in the same order as in original progressiveMauve run"/>
+  </inputs>
+  <outputs>
+    <data format="bigwig" name="output">
+        <discover_datasets pattern="__designation_and_ext__"
+            directory="out" visible="true" />
+    </data>
+  </outputs>
+  <help><![CDATA[
+What it does
+============
+
+XMFA Alignments are great, but now you need a way to visualize this data!
+
+This tool provides a conversion step to BigWig data.
+]]></help>
+  <citations>
+  </citations>
+</tool>
