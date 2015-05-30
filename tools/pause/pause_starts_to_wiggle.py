@@ -6,9 +6,11 @@ Usage:
 
 """
 import os
+import tempfile
 from contextlib import contextmanager
 import pysam
-from galaxygetopt.ggo import GalaxyGetOpt as GGO
+import subprocess
+import argparse
 
 
 @contextmanager
@@ -26,10 +28,25 @@ def gen_header(bam_file, suffix):
     return "track type=wiggle_0 %s visibility=full\n" % track_name
 
 
-def start_data(bam_file):
-    wig_f = ""
-    wig_r = ""
+def convert_to_bigwig(wig_file, chr_sizes, bw_file):
+    #This will be fine under Galaxy, but could use temp folder?
+    size_file = "%s-sizes.txt" % (os.path.splitext(bw_file)[0])
+    with open(size_file, "w") as out_handle:
+        for chrom, size in chr_sizes:
+            out_handle.write("%s\t%s\n" % (chrom, size))
+    try:
+        cl = ["wigToBigWig", wig_file, size_file, bw_file]
+        subprocess.check_call(cl)
+    finally:
+        os.remove(size_file)
+    return bw_file
+
+
+def start_data(bam_file, starts_f=None, starts_r=None):
     with indexed_bam(bam_file) as work_bam:
+        starts_f_wig = tempfile.NamedTemporaryFile(delete=False)
+        starts_r_wig = tempfile.NamedTemporaryFile(delete=False)
+
         sizes = zip(work_bam.references, work_bam.lengths)
         regions = [(name, 0, length) for name, length in sizes]
         for chrom, start, end in regions:
@@ -63,67 +80,38 @@ def start_data(bam_file):
                     else:
                         start_map_f[rstart] = 1
             # Write to file
-            wig_f += gen_header(bam_file.name, 'f')
-            wig_f += "variableStep chrom=%s\n" % chrom
+            starts_f_wig.write(gen_header(bam_file.name, 'f'))
+            starts_f_wig.write("variableStep chrom=%s\n" % chrom)
             for i in range(start + 1, end + 1):
                 if i in start_map_f:
-                    wig_f += "%s %.1f\n" % (i, start_map_f[i])
+                    starts_f_wig.write("%s %.1f\n" % (i, start_map_f[i]))
                 else:
-                    wig_f += "%s 0.0\n" % i
-            wig_r += gen_header(bam_file.name, 'r')
-            wig_r += "variableStep chrom=%s\n" % chrom
+                    starts_f_wig.write("%s 0.0\n" % i)
+            starts_r_wig.write(gen_header(bam_file.name, 'r'))
+            starts_r_wig.write("variableStep chrom=%s\n" % chrom)
             for i in range(start + 1, end + 1):
                 if i in start_map_r:
-                    wig_r += "%s %.1f\n" % (i, start_map_r[i])
+                    starts_r_wig.write("%s %.1f\n" % (i, start_map_r[i]))
                 else:
-                    wig_r += "%s 0.0\n" % i
-    return (wig_f, wig_r)
+                    starts_r_wig.write("%s 0.0\n" % i)
+
+        starts_f_wig.close()
+        starts_r_wig.close()
+
+        try:
+            convert_to_bigwig(starts_f_wig.name, sizes, starts_f.name)
+            convert_to_bigwig(starts_r_wig.name, sizes, starts_r.name)
+        finally:
+            os.unlink(starts_f_wig.name)
+            os.unlink(starts_r_wig.name)
 
 
-if __name__ == "__main__":
-    opts = GGO(
-        options=[
-            ['bam_file', 'Bam File',
-             {'required': True, 'validate': 'File/Input'}],
-        ],
-        outputs=[
-            [
-                'wig_f',
-                '+ strand wig data',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'wig.starts.f',
-                    'data_format': 'text/plain',
-                    'default_format': 'TXT',
-                }
-            ],
-            [
-                'wig_r',
-                '- strand wig data',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'wig.starts.r',
-                    'data_format': 'text/plain',
-                    'default_format': 'TXT',
-                }
-            ]
-        ],
-        defaults={
-            'appid': 'edu.tamu.cpt.pause2.starts_to_wiggle',
-            'appname': 'PAUSE2 BAM to Starts Wiggle',
-            'appvers': '0.1',
-            'appdesc': 'create wiggle file from starts information',
-        },
-        tests=[],
-        doc=__doc__
-    )
-    options = opts.params()
-    (data_f, data_r) = start_data(options['bam_file'])
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Extract starts from BAM as BigWig')
+    parser.add_argument('bam_file', type=file, help='Bam file')
+    parser.add_argument('--starts_f', type=argparse.FileType('wb'), default='starts.f.bw', help='Sense Starts File')
+    parser.add_argument('--starts_r', type=argparse.FileType('wb'), default='starts.r.bw', help='Antisense Starts File')
+    parser.add_argument('--version', action='version', version='0.1')
+    args = parser.parse_args()
 
-    from galaxygetopt.outputfiles import OutputFiles
-    off = OutputFiles(name='wig_f', GGO=opts)
-    off.CRR(data=data_f)
-    ofr = OutputFiles(name='wig_r', GGO=opts)
-    ofr.CRR(data=data_r)
+    start_data(**vars(args))
