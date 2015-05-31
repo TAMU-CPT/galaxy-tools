@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.subsection" name="Genbank Subsection" version="1.1">
-  <description>Extract subsets of genbank files</description>
+<tool id="edu.tamu.cpt.genbank.subsection" name="Subsection of Genbank file" version="1.1">
+    <description>Extract range/subsection/segment/subset from genbank files</description>
   <macros>
     <import>macros.xml</import>
   </macros>
