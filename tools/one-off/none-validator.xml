@@ -5,7 +5,7 @@
   </stdio>
   <version_command>python none-validator.py --version</version_command>
   <command interpreter="python"><![CDATA[none-validator.py
-"$repeat_var_1"
+$positional_1
 --problematic $problematic
 > $default]]></command>
   <inputs>
@@ -16,6 +16,12 @@
     <data format="txt" name="default" label="Problematic"/>
   </outputs>
   <help><![CDATA[
+**NEW**
+
+OK, an endolysin/synonym hit with a membrane protein within 3 genes. This
+makes a lysis cluster.
+
+**OLD VERSION**
 
 1.  Take all the NONEs and sort out all those with genome size <90 kb.
 2.  Call this the SMALLNONEs.  Everything else is PROBLEMATIC (because

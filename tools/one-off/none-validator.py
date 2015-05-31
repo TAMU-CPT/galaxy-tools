@@ -128,6 +128,17 @@ def feat_contains_keyword(feat, KWD_LIST):
     return False
 
 
+def nearby_cds(features, center_feature, dist=3):
+    center_idx = None
+    for i, feature in enumerate(features):
+        if feature == center_feature:
+            center_idx = i
+
+    for i, feature in enumerate(features):
+        if center_idx - dist <= i <= center_idx + dist:
+            yield feature
+
+
 def features_in_range(features, center_feature, dist=2000):
     for feature in features:
         if feature.start < center_feature.start:
@@ -167,19 +178,16 @@ def renumber_genes(gbk_files, problematic=None):
                 SeqIO.write([record], problematic, 'genbank')
             else:
                 for feature in putative_endolysins:
-                    tag(feature, 'color', '255 0 0')
+                    tag(feature, 'color', '255 128 128')
                     tag(feature, 'note', 'putative endolysin')
 
-                    for nearby in feat_contains_keyword(
-                            features_in_range(record.features, feature, dist=2000),
-                            HOLIN_KEYWORDS):
-                        tag(nearby, 'color', '0 255 0')
-                        tag(nearby, 'note', 'putative holin')
+                    for nearby in nearby_cds(record.features, feature, dist=3):
+                        if putative_lipobox(nearby):
+                            tag(feature, 'color', '255 0 0')
 
-                    for nearby in features_in_range(record.features, feature, dist=2000):
-                        if putative_lipobox(record, nearby):
-                            tag(nearby, 'color', '0 0 255')
+                            tag(nearby, 'color', '0 255 0')
                             tag(nearby, 'note', 'putative lipobox')
+
                 SeqIO.write([record], sys.stdout, 'genbank')
 
 if __name__ == '__main__':
