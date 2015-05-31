@@ -1,0 +1,35 @@
+<tool id="edu.tamu.cpt.oneoff.none-validator" name="NONE Validator" version="1.0">
+  <description></description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python none-validator.py --version</version_command>
+  <command interpreter="python"><![CDATA[none-validator.py
+"$repeat_var_1"
+--problematic $problematic
+> $default]]></command>
+  <inputs>
+    <param label="Genbank file" name="positional_1" type="data"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="default" label="Annotated"/>
+    <data format="txt" name="default" label="Problematic"/>
+  </outputs>
+  <help><![CDATA[
+
+1.  Take all the NONEs and sort out all those with genome size <90 kb.
+2.  Call this the SMALLNONEs.  Everything else is PROBLEMATIC (because
+    lysis cassettes are not as common in large genomes)
+3.  Then sort out all the genomes with the words holin and endolysin anywhere in the record.
+
+    1.   If I am right, holin and endolysin will be within 3 CDSs of each
+         other.  If not, then put into PROBLEMATIC
+    2.   Then look for all possible Lipoboxes within x= 2kb of the endolysin
+         CDS. Let x and 'endolysin' be default but assignable.
+    3.   Then manually inspect each lipobox possibility ....
+
+
+
+]]></help>
+</tool>
+
