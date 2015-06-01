@@ -8,6 +8,7 @@
   <command interpreter="python"><![CDATA[fasta_regex_search.py
 $positional_1
 "$positional_2"
+$positional_3
 > $default]]></command>
   <inputs>
     <param label="Fasta Sequence" name="positional_1" type="data" format="fasta"/>
@@ -22,13 +23,15 @@ $positional_1
     </param>
   </inputs>
   <outputs>
-    <data format="fasta" hidden="false" name="default"/>
+    <data format="fasta" name="default" label="$positional_2 in $positional_1.name"/>
+    <data format="tabular" name="positional_3" label="Regular expression search statistics"/>
   </outputs>
   <tests>
       <test>
           <param name="positional_1" value="random.fa" />
           <param name="positional_2" value="A{3}" />
           <output name="default" file="regex.a3.fa" />
+          <output name="positional_3" file="stats.tsv" />
       </test>
   </tests>
   <help><![CDATA[
