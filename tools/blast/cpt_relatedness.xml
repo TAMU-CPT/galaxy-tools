@@ -14,7 +14,7 @@ $blast
 
 </command>
   <inputs>
-      <param label"Blast 25 Column Tabular Results" name="blast"
+      <param label="Blast 25 Column Tabular Results" name="blast"
           type="data" format="tabular"/>
   </inputs>
   <outputs>
