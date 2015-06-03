@@ -1,0 +1,36 @@
+<tool id="edu.tamu.cpt.phantasm.data_transform" name="PHAnTASM Data Transformation" version="0.1">
+    <description>apply simple mathematical operations to datasets</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python phantasm_data_transformation.py --version</version_command>
+  <command interpreter="python"><![CDATA[phantasm_data_transformation.py
+$positional_1
+
+#set repeat_var_2 = '" "'.join([ str($var.operation) for $var in $repeat_2 ])
+--operation "$repeat_var_2"
+
+> $default]]></command>
+  <inputs>
+    <param label="Tabular Dataset" name="positional_1" type="data" format="tabular"/>
+    <repeat min="1" name="repeat_2" title="repeat_title">
+      <param label="Transformation to apply to the data (--operation)" name="operation" type="select">
+        <option value="log">(log) Base10 Log</option>
+        <option value="ln">(ln) Natural Log</option>
+        <option value="neg">(neg) Negate</option>
+        <option value="inv">(inv) Invert, 1/x</option>
+        <option value="abs">(abs) Absolute Value</option>
+        <option value="exp">(exp) e^x</option>
+      </param>
+    </repeat>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="default"/>
+  </outputs>
+  <help><![CDATA[
+PHAnTASM Data Transformation tool will apply simple mathematical transforms to
+your data. Additionally, this tool allows for chaining transforms. They will be
+applied sequentially, in the order that they are specified.
+]]></help>
+</tool>
+

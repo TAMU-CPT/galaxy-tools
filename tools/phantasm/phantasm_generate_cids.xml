@@ -1,0 +1,133 @@
+<tool id="edu.tamu.cpt.phantasm.cid_generator" name="PHAnTASM CID Generator" version="0.2">
+  <description>generates Cassette IDs for a set of genomes</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python phantasm_generate_cids.py --version</version_command>
+  <command interpreter="python"><![CDATA[phantasm_generate_cids.py
+$positional_1 > $default]]></command>
+  <inputs>
+    <param label="GenBank File" name="positional_1" type="data" file_format="txt,genbank,data"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="default" label="Cassette IDs for $positional_1.name"/>
+  </outputs>
+  <help><![CDATA[
+For an input *multi-genome genbank* file, this tool will generate CIDs for
+every genome in the file.
+
+What is a CID you ask? Why it's a genomic "cassette ID". We identify every
+cassette within the genome using a list of keywords that likely appear in the
+"note" or "product" tags, and generate a string which identifies this genome in
+a non-unique manner.
+
+For a given genome with a replication, lysis, and morphogenesis cassette all on
+the same strand, you would receive a CID of "r+l+m+".
+
+CIDS consist of a set of letters and +/- signs to denote strands. These strings
+can be used to compare the genomic layout of two phages.
+
+
++----------------+--------+---------------------------------------+
+| Category       | Symbol | Keywords                              |
++================+========+=======================================+
+| Morphogenesis  | m      | - Tail spike                          |
+|                |        | - fiber                               |
+|                |        | - neck                                |
+|                |        | - sheath                              |
+|                |        | - tube                                |
+|                |        | - pectin                              |
+|                |        | - prohead                             |
+|                |        | - scaffold                            |
+|                |        | - capsid                              |
+|                |        | - head                                |
+|                |        | - head-to-tail joining                |
+|                |        | - pre-neck                            |
+|                |        | - Tape                                |
+|                |        | - tailspike                           |
+|                |        | - structural                          |
+|                |        | - morphogenesis                       |
+|                |        | - assembly                            |
+|                |        | - chaperone                           |
+|                |        | - joining                             |
+|                |        | - decoration                          |
+|                |        | - protease                            |
+|                |        | - frameshift                          |
+|                |        | - portal                              |
++----------------+--------+---------------------------------------+
+| DNA Rep/Recomb | r      | - Clamp                               |
+|                |        | - DNA Binding protein                 |
+|                |        | - DNA end protector                   |
+|                |        | - DNA ligase                          |
+|                |        | - DexA                                |
+|                |        | - DnaA                                |
+|                |        | - DnaB                                |
+|                |        | - DnaQ                                |
+|                |        | - Helicase                            |
+|                |        | - RNA Ligase                          |
+|                |        | - RNaseH                              |
+|                |        | - RecA                                |
+|                |        | - RecF                                |
+|                |        | - Recombination                       |
+|                |        | - RuvC                                |
+|                |        | - UvsW                                |
+|                |        | - UvsY                                |
+|                |        | - helicase                            |
+|                |        | - holliday junction                   |
+|                |        | - phosphoesterase                     |
+|                |        | - primase                             |
+|                |        | - recombinase                         |
+|                |        | - recombination                       |
+|                |        | - repair                              |
+|                |        | - single strand annealing             |
+|                |        | - topoisomerase                       |
+|                |        | - whisker                             |
+|                |        | - sliding                             |
+|                |        | - methylase                           |
+|                |        | - methyltransferase                   |
+|                |        | - mom                                 |
+|                |        | - glucosyltransferase                 |
+|                |        | - integras                            |
++----------------+--------+---------------------------------------+
+| Lysis          | l      | - antiholin                           |
+|                |        | - holin                               |
+|                |        | - endolysin                           |
+|                |        | - spanin                              |
+|                |        | - peptidoglycan                       |
+|                |        | - amidase                             |
+|                |        | - transglycosylase                    |
+|                |        | - carboxypeptidase                    |
++----------------+--------+---------------------------------------+
+| Regulation     | b      | - Deoxynucleoside                     |
+|                |        | - Deoxyribonucleotidase               |
+|                |        | - Deoxyuridine                        |
+|                |        | - Ribonucleoside-diphoshate reductase |
+|                |        | - Serine kinase                       |
+|                |        | - threonine kinase                    |
+|                |        | - cytidine deaminase                  |
+|                |        | - dUTPase                             |
+|                |        | - deoxynucleotide                     |
+|                |        | - dihydrofolate reductase             |
+|                |        | - glutaredoxin                        |
+|                |        | - guanylate kinase                    |
+|                |        | - reductase                           |
+|                |        | - ribonucleotide reductase            |
+|                |        | - thioredoxin                         |
+|                |        | - thymidylate                         |
++----------------+--------+---------------------------------------+
+| DNA Packaging  | p      | - terminase                           |
++----------------+--------+---------------------------------------+
+| Defense        | d      | - rII                                 |
+|                |        | - rIIA                                |
+|                |        | - rIIB                                |
+|                |        | - rex                                 |
+|                |        | - rexA                                |
+|                |        | - rexB                                |
+|                |        | - ocr                                 |
+|                |        | - dar                                 |
+|                |        | - darA                                |
+|                |        | - darB                                |
++----------------+--------+---------------------------------------+
+]]></help>
+</tool>
+

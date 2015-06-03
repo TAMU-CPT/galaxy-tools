@@ -1,0 +1,59 @@
+<tool id="edu.tamu.cpt.phantasm.data_rescale" name="PHAnTASM Data Rescale" version="0.1">
+  <description>rescales data to fit in a user specified range</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python phantasm_data_rescale.py --version</version_command>
+  <command interpreter="python"><![CDATA[phantasm_data_rescale.py
+$positional_1
+
+#if $min and $min is not None:
+--min $min
+#end if
+
+#if $max and $max is not None:
+--max $max
+#end if
+> $default]]></command>
+  <inputs>
+    <param label="Tabular Dataset" name="positional_1" type="data" format="tabular"/>
+    <param label="New Minimum (--min)" name="min" type="float" value="0.0"/>
+    <param label="New Maximum (--max)" name="max" type="float" value="1.0"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="default" label="$positional_1.name rescaled to [$min,$max]"/>
+  </outputs>
+  <help><![CDATA[
+PHAnTASM Data Rescaling tool will help the user fix the distribution of data in
+their tables of values. Given a table
+
+::
+
+    #ID, VAL
+    A,-1
+    B,-2
+    C,3
+    D,4
+
+this tool will allow you to rescale that so as to not exceed a specified minimum and maximum
+
+
+**Changing Scale of Data**
+
+Rescaling data allows you to adapt your data into a format more palatable to
+downstream analysis. Given a set of negative numbers, it may be desirable to
+shift these to be positive numbers so a logarithm may be applied. By setting
+min and max, it is possible to do exactly that. For the above table, if
+we set min = 1 and max = 10, we would see the following results:
+
+::
+
+    A,2.5
+    B,1
+    C,8.5
+    D,10
+
+Very easy!
+]]></help>
+</tool>
+

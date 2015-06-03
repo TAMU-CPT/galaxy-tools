@@ -1,0 +1,69 @@
+<tool id="edu.tamu.cpt.phantasm.compare" name="PHAnTASM Comparison Mapper" version="0.2">
+  <description>PHAnTASM Comparison Mapper</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python phantasm_compare.py --version</version_command>
+  <command interpreter="python"><![CDATA[phantasm_compare.py
+
+#set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])
+#set repeat_var_2 = '" "'.join([ str($var.positional_2) for $var in $repeat_1 ])
+
+--files "$repeat_var_1"
+--weights "$repeat_var_2"
+
+> $default]]></command>
+  <inputs>
+    <repeat min="1" name="repeat_1" title="Analysis File">
+      <param label="Input Two-Way Comparison" name="positional_1" type="data" file_format="tabular">
+          <help>
+            Should be a three-column file with column 1 and 2 being a from/to name of a
+            node. Column 3 should be the edge weight between the  nodes. For bi-directional
+            nodes, this tool will  average the values.
+          </help>
+      </param>
+      <param label="Metric Weighting" name="positional_2" type="float" value="1" min="1">
+          <help>
+            How important/how much of the overall result should this particular variable
+            count as.
+          </help>
+      </param>
+    </repeat>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="default" label="PHAnTASM Comparison Map"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Given a set G of genomes, and one or more sets of scores S_{1..n}, this
+tool aggregates those sets of scores (with appropriate modifications) and
+produces a single comparison map which can be fed in to the PHAnTASM
+Hierarchical Clustering Tool
+
+To put it mathematically,
+
+::
+
+    let f(S_i, g1, g2) be a function of S_i which returns the score associated
+    with the pair g1,g2 in S_i
+
+    forall sets of scores S_i in S_{1..n}:
+        forall genomes g1,g2 in G:
+            f(S_i, g1, g2) is defined
+
+    From this knowledge, and a set of transformations T with a unique mapping
+    to S, we can generate a result mapping R (like S)
+
+    f(R, g1, g2) = \sum_{i=1}^{n} f(S_i, g1, g2) * T_i
+
+    Which represents an aggregation of all our score sets S
+
+**Metric Weight**
+
+If you have 3 files and you  specify the numbers 2, 1, 1, then dataset 1 will
+have a 50%  weight and the other two will have a 25% weighting.
+
+      ]]></help>
+</tool>
+

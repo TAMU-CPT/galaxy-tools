@@ -1,0 +1,34 @@
+<tool id="edu.tamu.cpt.phantasm.cluster" name="PHAnTASM Hierarchical Clustering Tool" version="0.2">
+  <description>clusters compmaps with hclust</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="RScript"><![CDATA[phantasm_cluster.R
+      $input_file
+      $output_hist
+      $output_newick
+]]></command>
+  <inputs>
+      <param label="Input Comparison Map" name="input_file" type="data" file_format="tabular"/>
+  </inputs>
+  <outputs>
+    <data format="png" name="output_hist" label="PHAnTASM Cladogram"/>
+    <data format="nhx" name="output_newick" label="PHAnTASM Newick Tree"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Given a "comparison map" like:
+
+::
+
+    #f/t A1 A2 A3
+    A1   1  3  0
+    A2   3  4  1
+    A3   0  1  5
+
+This tool will run R's `hclust` and generate a cladogram
+
+]]></help>
+</tool>
+
