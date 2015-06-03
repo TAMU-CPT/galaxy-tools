@@ -1,86 +1,81 @@
 #!/usr/bin/env python
-from galaxygetopt.ggo import GalaxyGetOpt as GGO
 import sys
+import argparse
 import logging
 logging.basicConfig(level=logging.INFO)
+from BCBio import GFF
+from Bio import SeqIO
+from Bio.SeqFeature import SeqFeature
+from Bio.SeqFeature import FeatureLocation
 
 
-def mga_to_gff3(mga_orf_table=None):
-    if mga_orf_table is None:
-        raise ValueError("Must specify orf file")
+def mga_to_gff3(mga_output, genome):
+    rec = SeqIO.read(genome, 'fasta')
 
-    orfs = ['##gff-version 3']
-    for line in mga_orf_table.readlines():
+    for line in mga_output:
         if not line.startswith('#'):
             (gene_id, start, end, strand, phase, complete, score, model,
                 rbs_start, rbs_end, rbs_score) = line.strip().split('\t')
+            start = int(start)
+            end = int(end)
+            strand = +1 if strand == '+' else -1
 
+            rbs_feat = None
             if rbs_start != '-':
-                rbs_line = [
-                    'seq',
-                    'MGA',
-                    'Shine_Dalgarno_sequence',
-                    rbs_start,
-                    rbs_end,
-                    '.',
-                    strand,
-                    '.',
-                    'ID=rbs-%s' % gene_id,
-                ]
-                orfs.append('\t'.join([str(x) for x in rbs_line]))
+                rbs_start = int(rbs_start)
+                rbs_end = int(rbs_end)
+                rbs_feat = SeqFeature(
+                    FeatureLocation(rbs_start, rbs_end),
+                    type="Shine_Dalgarno_sequence",
+                    strand=strand,
+                    qualifiers={
+                        'ID': 'rbs_%s' % gene_id
+                    }
+                )
 
-            gff_line = [
-                'seq',  # seqid
-                'MGA',  # source
-                'CDS',  # type
-                start,  # start
-                end,  # end
-                score,  # score
-                strand,  # strand
-                '.',  # phase
-                'ID=%s' % gene_id,  # attr
-            ]
-            orfs.append('\t'.join([str(x) for x in gff_line]))
-    return "\n".join(orfs)
+            cds_feat = SeqFeature(
+                FeatureLocation(start, end),
+                type="CDS",
+                strand=strand,
+                qualifiers={
+                    'ID': 'cds_%s' % gene_id
+                }
+            )
 
+            if rbs_feat is not None:
+                if strand > 0:
+                    gene_start = rbs_start
+                    gene_end = end
+                else:
+                    gene_start = start
+                    gene_end = rbs_end
+            else:
+                gene_start = start
+                gene_end = end
 
-__doc__ = """
-Convert MetaGeneAnnotator Table to GFF3
-=======================================
-"""
+            gene = SeqFeature(
+                FeatureLocation(gene_start, gene_end),
+                type="gene",
+                strand=strand,
+                qualifiers={
+                    'ID': gene_id
+                }
+            )
+
+            gene.sub_features = [cds_feat]
+            if rbs_feat is not None:
+                gene.sub_features.append(rbs_feat)
+
+            rec.features.append(gene)
+    return rec
+
 
 if __name__ == '__main__':
-    # Grab all of the filters from our plugin loader
-    opts = GGO(
-        options=[
-            ['file', 'MGA Output', {'required': True, 'validate':
-                                         'File/Input'}],
-        ],
-        outputs=[
-            [
-                'data',
-                'Exported data',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'export',
-                    'data_format': 'text/plain',
-                    'default_format': 'TXT',
-                }
-            ]
-        ],
-        defaults={
-            'appid': 'edu.tamu.cpt.generic.mga-to-gff3',
-            'appname': 'MGA to GFF3',
-            'appvers': '1.0',
-            'appdesc': 'convert formats',
-        },
-        tests=[],
-        doc=__doc__
-    )
-    options = opts.params()
-    result = mga_to_gff3(mga_orf_table=options['file'])
+    parser = argparse.ArgumentParser(description='Convert MGA to GFF3', epilog="")
+    parser.add_argument('mga_output', type=file, help='MetaGeneAnnotator Output')
+    parser.add_argument('genome', type=file, help='Fasta Genome')
+    args = parser.parse_args()
 
-    from galaxygetopt.outputfiles import OutputFiles
-    of = OutputFiles(name='data', GGO=opts)
-    of.CRR(data=result)
+    result = mga_to_gff3(**vars(args))
+
+    GFF.write([result], sys.stdout)

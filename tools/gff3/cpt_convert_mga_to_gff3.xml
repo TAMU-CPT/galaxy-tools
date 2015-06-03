@@ -1,33 +1,41 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.generic.mga-to-gff3" name="MGA to GFF3" version="1.0">
-  <description>convert formats</description>
+<tool id="edu.tamu.cpt2.util.mga_to_gff3" name="MGA to GFF3" version="1.0">
+  <description></description>
   <version_command>python cpt_convert_mga_to_gff3.py --version</version_command>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python">cpt_convert_mga_to_gff3.py
---galaxy
---outfile_supporting $__new_file_path__
---file "${file}"
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <command>
+@GENOME_SELECTOR_PRE@
 
---data "${data}"
-
---data_files_path "${data.files_path}"
-
---data_format "TXT"
-
---data_id "${data.id}"
+python $__tool_directory__/cpt_convert_mga_to_gff3.py
+$mga
+@GENOME_SELECTOR@
+> $data
 
 </command>
   <inputs>
-    <param help="MGA Output" label="file" name="file" optional="False" type="data"/>
+    <param label="MGA Output" name="mga" type="data" format="tabular"/>
+    <expand macro="genome_selector" />
   </inputs>
   <outputs>
     <data format="gff3" name="data">
     </data>
   </outputs>
-  <help>Convert MetaGeneAnnotator Table to GFF3
-=======================================
+  <tests>
+      <test>
+          <param name="reference_genome_source" value="history" />
+          <param name="genome_fasta" value="mga.fa" />
+          <param name="mga" value="mga.out" />
+          <output name="data" file="mga.gff3" />
+      </test>
+  </tests>
+  <help>
+**What it does**
+
+Converts MetaGeneAnnotator Table to GFF3
 </help>
   <tests/>
 </tool>

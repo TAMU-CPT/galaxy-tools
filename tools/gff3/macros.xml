@@ -21,7 +21,7 @@
   </xml>
   <xml name="genome_selector">
       <conditional name="reference_genome">
-          <param name="source" type="select" label="Reference Genome">
+          <param name="reference_genome_source" type="select" label="Reference Genome">
               <option value="cached">Locally Cached</option>
               <option value="history">From History</option>
           </param>
@@ -39,14 +39,14 @@
     <param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
   </xml>
   <token name="@GENOME_SELECTOR_PRE@">
-#if $reference_genome.source == 'history':
+#if $reference_genome.reference_genome_source == 'history':
     ln -s $reference_genome.genome_fasta genomeref.fa;
 #end if
   </token>
   <token name="@GENOME_SELECTOR@">
-#if $reference_genome.source == 'cached':
+#if $reference_genome.reference_genome_source == 'cached':
     "${reference_genome.fasta_indexes.fields.path}"
-#elif $reference_genome.source == 'history':
+#elif $reference_genome.reference_genome_source == 'history':
     genomeref.fa
 #end if
   </token>
