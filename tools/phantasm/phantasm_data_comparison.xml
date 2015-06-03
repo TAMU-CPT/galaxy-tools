@@ -1,0 +1,83 @@
+<tool id="edu.tamu.cpt.phantasm.data_comp" name="PHAnTASM Data Comparison" version="0.1">
+  <description>Generate comparisons between two PHAnTASM datasets</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python phantasm_data_comparison.py --version</version_command>
+  <command interpreter="python"><![CDATA[phantasm_data_comparison.py
+$positional_1
+$positional_2
+$positional_3
+$positional_4
+
+> $default]]></command>
+  <inputs>
+    <param label="First Tabular Dataset" name="positional_1" type="data" format="tabular"/>
+    <param label="Second Tabular Dataset" name="positional_2" type="data" format="tabular"/>
+    <param label="Method for comparison" name="positional_3" type="select">
+      <option value="add">(add) addition</option>
+      <option value="sub">(sub) subtraction</option>
+      <option value="div">(div) division</option>
+      <option value="mult">(mult) multiplication</option>
+      <option value="numeq">(numeq) ==</option>
+      <option value="dist">(dist) absolute distance</option>
+      <option value="pdiff">(pdiff) percent difference</option>
+      <option value="bit_diff">(bit_diff) # of different bits</option>
+      <option value="phantasm_cids">(phantasm_cids) CIDs</option>
+      <option value="levenshtein">(levenshtein) Levenshtein distance of text</option>
+      <option value="texteq">(texteq) Text equality</option>
+    </param>
+    <param label="Undefined value. For operations involving division, what should undefined results be set to? (e.g. 3/0 = ?)." name="positional_4" type="float" value="0"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="default" label="NxM Dataset Comparison from $positional_1.name and $positional_2.name"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Given two datasets (often the same dataset):
+
+::
+
+    #ID Val
+    A   1
+    B   2
+    C   3
+
+This tool will let you produce an NxM comparison of those datasets for use in
+the comarpison mapper. Multiple comparison methods are available, for example a
+multiplication method would produce the following:
+
+::
+
+    #ID1 ID2 Val
+    A    A   1
+    A    B   2
+    A    C   3
+    B    A   2
+    B    B   4
+    B    C   6
+    C    A   3
+    C    B   6
+    C    C   9
+
+**Comparison Methods**
+
+(dist) absolute distance
+  abs(a-b)
+
+(pdiff) percent difference
+  (a-b)/(a+b)
+
+(bit_diff) # of different bits
+  Values are converted to positive integers, and then the number of different
+  bits in an XOR are counted
+
+(phantasm_cids) CIDs
+  Compare cassette IDs from CID generator tool
+
+(texteq) Text equality
+  1 for identical, 0 for non-identical. Empty/"None" default to undefined value
+      ]]></help>
+</tool>
+

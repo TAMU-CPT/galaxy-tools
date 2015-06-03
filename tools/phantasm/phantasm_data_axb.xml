@@ -1,0 +1,25 @@
+<tool id="edu.tamu.cpt.phantasm.data_mxb" name="PHAnTASM Data MxB" version="0.1">
+    <description>apply linear transform to datasets</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python phantasm_data_axb.py --version</version_command>
+  <command interpreter="python"><![CDATA[phantasm_data_axb.py
+$positional_1
+$m
+$b
+> $default]]></command>
+  <inputs>
+    <param label="Tabular Dataset" name="positional_1" type="data" format="tabular"/>
+    <param label="m of mx+b" name="m" type="float"/>
+    <param label="b of mx+b" name="b" type="float"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="default"/>
+  </outputs>
+  <help><![CDATA[
+PHAnTASM Data Linear Transform tool will allows application of a simple linear
+transform to all data.
+]]></help>
+</tool>
+

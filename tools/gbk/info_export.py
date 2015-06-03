@@ -41,30 +41,32 @@ def tabular_handler(comment, genome_id):
 
 
 def extract_metadata(genbank_file, section):
-    for record in SeqIO.parse(genbank_file, "genbank"):
-        output = ''
-        if section in record.annotations:
-            if section == 'references':
-                output += references_handler(record.annotations[section],
-                                             record.id)
-            elif section in ['comment']:
-                output += comment_handler(record.annotations[section],
-                                          record.id)
-            elif section in ['source', 'taxonomy', 'date', 'organism']:
-                output += tabular_handler(record.annotations[section],
-                                          record.id)
-            else:
-                log.error("Cannot handle section type %s. "
-                          "Please submit a feature request", section)
-        yield output
+    with open(genbank_file, 'r') as handle:
+        for record in SeqIO.parse(handle, "genbank"):
+            output = ''
+            if section in record.annotations:
+                if section == 'references':
+                    output += references_handler(record.annotations[section],
+                                                record.id)
+                elif section in ['comment']:
+                    output += comment_handler(record.annotations[section],
+                                            record.id)
+                elif section in ['source', 'taxonomy', 'date', 'organism']:
+                    output += tabular_handler(record.annotations[section],
+                                            record.id)
+                else:
+                    log.error("Cannot handle section type %s. "
+                            "Please submit a feature request", section)
+            yield output
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Genbank Metadata Export')
-    parser.add_argument('genbank_file', type=file, help='Genbank file')
-    parser.add_argument('section', type=str, help='Section to export')
+    parser.add_argument('genbank_files', nargs='+', type=file, help='Genbank file')
+    parser.add_argument('--section', type=str, help='Section to export', default='taxonomy')
 
     args = parser.parse_args()
 
-    for metadata in extract_metadata(**vars(args)):
-        print metadata
+    for gbk_file in args.genbank_files:
+        for metadata in extract_metadata(gbk_file, args.section):
+            print metadata

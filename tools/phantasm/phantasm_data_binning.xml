@@ -1,0 +1,91 @@
+<tool id="edu.tamu.cpt.phantasm.data_binning" name="PHAnTASM Data Binning" version="0.2">
+  <description>partition data into sensible bins</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python phantasm_data_binning.py --version</version_command>
+  <command interpreter="python"><![CDATA[phantasm_data_binning.py
+$positional_1
+$method.positional_2
+
+#if $method.positional_2 == "simple":
+
+--percentage_breakpoints $method.percentage_breakpoints
+
+#elif $method.positional_2 == "user":
+
+#set repeat_var_3 = '" "'.join([ str($var.user_breakpoints) for $var in $method.repeat_3 ])
+--user_breakpoints "$repeat_var_3"
+
+#fi
+
+> $default]]></command>
+  <inputs>
+    <param label="Tabular Dataset" name="positional_1" type="data"/>
+    <conditional name="method">
+        <param label="Partitioning Method" name="positional_2" type="select">
+            <option value="MeanShift">MeanShift</option>
+            <option value="simple">simple</option>
+            <option value="user">user</option>
+        </param>
+        <when value="MeanShift"></when>
+        <when value="simple">
+            <repeat name="repeat_3" title="repeat_title">
+                <param label="User specified breakpoints (--user_breakpoints)" name="user_breakpoints" type="float" value="0"/>
+            </repeat>
+        </when>
+        <when value="user">
+            <param label="Percentage based breakpoints into N bins (--percentage_breakpoints)"
+                name="percentage_breakpoints" type="integer" value="0"/>
+        </when>
+    </conditional>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="default" label="Binned Data"/>
+  </outputs>
+  <help><![CDATA[
+You may find that the range of values in your dataset is too larger, and that
+these values should be binned or clustered. This tool offers a couple different
+methods by which that might be achieved.
+
+E.g. for the dataset:
+
+::
+
+    #Id  val
+    A    -100
+    C    32
+    B    -99
+    D    100
+
+These values can be binned into
+
+::
+
+    #Id  val
+    A    0
+    C    1
+    B    0
+    D    2
+
+**MeanShift Clustering**
+
+Uses scikit-learn's MeanShift to do the clustering.
+
+**User Specified Breakpoints**
+
+These are the simplest and most controlled option. The user specifies a number
+of different breakpoints and values will be distributed into bins that are
+inside those breakpoints.
+
+**Percentage Based Partitions**
+
+Another very simple option is to say "I want N bins". The number line along
+which your data is distributed is then split into N+1 pieces and your data is
+binned accordingly.
+
+where N is the number of data points you have and K is the number of clusters
+you wish to have.
+]]></help>
+</tool>
+

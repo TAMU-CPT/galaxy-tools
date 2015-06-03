@@ -8,12 +8,14 @@
   <expand macro="stdio"/>
   <version_command>python info_export.py --version</version_command>
   <command interpreter="python">info_export.py
-${file}
-${section}
+#set gbk_files = '" "'.join([str($var) for $var in $file])
+"$gbk_files"
+
+--${section}
 > $data
 </command>
   <inputs>
-    <param label="Genbank file"  name="file" type="data"/>
+    <param label="Genbank file"  name="file" type="data" multiple="true"/>
     <param label="Metadata elements to extract" name="section" type="select">
       <option value="comment">User entered genome comments (assembly data)</option>
       <option value="date">Date</option>
