@@ -179,8 +179,6 @@ def convert_xmfa_to_gff3(xmfa_file, fasta_genomes, window_size=3, relative_to='1
 
         parent = [seq for seq in lcb if seq['id'] == relative_to][0]
         others = [seq for seq in lcb if seq['id'] != relative_to]
-        for other in others:
-            other.update(label_convert[other['id']])
 
         if parent['start'] == 0 and parent['end'] == 0:
             continue
@@ -198,14 +196,22 @@ def convert_xmfa_to_gff3(xmfa_file, fasta_genomes, window_size=3, relative_to='1
                 right_bound = i + window_size
                 point_pid = _percent_identity(parent['corrected'][left_bound:right_bound],
                                               other['corrected'][left_bound:right_bound])
-                label_convert[other['id']]['temp'].write("%s\t%s\n" % (i, point_pid))
+                label_convert[other['id']]['temp'].write("%s\t%s\n" % (
+                    abs(parent['start']) + i,
+                    point_pid
+                ))
 
-        for other in others:
-            other['temp'].close()
-            sizes = [(other['record_id'], label_convert[parent['id']]['len'])]
-            bw_file = os.path.join("out", secure_filename(other['record_id'] + '.bigwig'))
+    for key in label_convert.keys():
+        # Ignore self-self
+        if key == relative_to:
+            continue
 
-            convert_to_bigwig(label_convert[other['id']]['temp'].name, sizes, bw_file)
+        other = label_convert[key]
+        other['temp'].close()
+        sizes = [(other['record_id'], label_convert[relative_to]['len'])]
+        bw_file = os.path.join("out", secure_filename(other['record_id'] + '.bigwig'))
+
+        convert_to_bigwig(label_convert[key]['temp'].name, sizes, bw_file)
 
 
 if __name__ == '__main__':
