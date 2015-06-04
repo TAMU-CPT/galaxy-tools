@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-import sys
-import math
 import argparse
 from BCBio import GFF
 from Bio import SeqIO
@@ -21,6 +19,7 @@ __email__ = "esr@tamu.edu"
 ENCOURAGEMENT = (
     (100, 'Perfection itself!'),
     (90, 'Not too bad, a few minor things to fix...'),
+    (70, 'Some issues to address'),
     (50, 'Issues detected! </p><p class="text-muted">Have you heard of the <a href="https://cpt.tamu.edu">CPT</a>\'s Automated Phage Annotation Pipeline?'),
     (0, '<b>MAJOR</b> issues detected! Please strongly consider using the <a href="https://cpt.tamu.edu">CPT</a>\'s Automated Phage Annotation Pipeline'),
 )
@@ -198,11 +197,15 @@ def evaluate_and_report(annotations, genome):
     upstream_min = 5
     upstream_max = 15
 
+    log.info("Locating missing RBSs")
     mb_good, mb_bad, mb_results = missing_rbs(record,
                                               lookahead_min=upstream_min,
                                               lookahead_max=upstream_max)
+    log.info("Locating excessive gaps")
     eg_good, eg_bad, eg_results = excessive_gap(record, excess=3 * upstream_max)
+    log.info("Locating excessive overlaps")
     eo_good, eo_bad, eo_results = excessive_overlap(record, excessive=15)
+    log.info("Locating morons")
     mo_good, mo_bad, mo_results = find_morons(record)
 
     score_good = float(sum((mb_good, eg_good, eo_good)))
