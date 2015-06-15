@@ -10,12 +10,15 @@
 $blast
 --email $__user_email__
 --report $report
+$phages
 > $accession_list
 
 </command>
   <inputs>
       <param label="Blast 25 Column Tabular Results" name="blast"
           type="data" format="tabular"/>
+      <param label="Restrict to phage results" name="phages"
+          type="boolean" truevalue="--only_phage" falsevalue="" checked="True"/>
   </inputs>
   <outputs>
     <data format="txt" name="accession_list" label="Top accession #s from $blast.name">

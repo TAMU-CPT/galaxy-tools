@@ -14,10 +14,8 @@ $after
 
 </command>
   <inputs>
-      <param label="Fasta file to reopen" label="fasta_file" name="fasta_file"
-          type="data" format="fasta"/>
-      <param label="Reopen contig after this base" help="1-indexed"
-          label="after" name="after" type="integer" value="1000"/>
+      <param label="Fasta file to reopen" name="fasta_file" type="data" format="fasta" />
+      <param label="Reopen contig after this base" help="1-indexed" name="after" type="integer" value="1000"/>
   </inputs>
   <outputs>
     <data format="fasta" name="default" label="$fasta_file.name reopened at $after">

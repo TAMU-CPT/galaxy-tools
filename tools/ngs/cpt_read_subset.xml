@@ -4,21 +4,44 @@
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interperter="bash">cpt_read_subset.sh "${file}" "${length}" "${coverage}" > $fastq</command>
+  <command interperter="bash"><![CDATA[cpt_read_subset.sh
+"${file}"
+
+#if $source.source_select!="file":
+    ${length}
+#elif:
+    \$(grep -v ">" ${fasta} | wc | awk '{print $3-$1}')
+#end if
+${coverage} > $fastq
+]]>
+  </command>
   <inputs>
-    <param help="FastQ Readset" label="file" name="file" optional="False" type="data" format="fastq,fastqsanger"/>
-    <param help="Expected length of genome" label="length" name="length" optional="False" type="integer" value="100000"/>
-    <param help="Desired coverage" label="coverage" name="coverage" optional="False" type="integer" value="100"/>
+    <param label="FastQ Readset" name="file" type="data" format="fastq,fastqsanger"/>
+
+    <conditional name="source">
+        <param name="source_select" type="select" label="Genome Size">
+            <option value="file">Obtain from fasta sequence</option>
+            <option value="text">Direct Entry</option>
+        </param>
+        <when value="file">
+            <param label="Fasta Genome File" name="fasta" type="data" format="fasta" />
+        </when>
+        <when value="text">
+            <param label="Expected length of genome" name="length" type="integer" value="100000"/>
+        </when>
+    </conditional>
+    <param label="Desired coverage" name="coverage" type="integer" value="100"/>
   </inputs>
   <outputs>
     <data format="fastq" name="fastq"></data>
   </outputs>
-  <help>Subset FastQ file
+  <help><![CDATA[Subset FastQ file
 =================
 
 Reduce a FastQ file to a specific fold coverage. In phage genomics, we've
 started seeing huge coverage numbers for genome sequences (>500X). These seem
 to be leading to poor assemblies and mis-assemblies. We've found that reducing
 the coverage to ~100X produce better assemblies.
+]]>
 </help>
 </tool>

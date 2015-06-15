@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Phage QC</title>
+    <title>Phage QC on {{record_name}} - {{score}}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
@@ -25,7 +25,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Phage QC</a>
+          <a class="navbar-brand" href="#">Phage QC on {{record_name}}</a>
         </div>
       </div>
     </nav>
@@ -48,26 +48,6 @@
                 <h2>Score: {{score}}/100</h2>
                 <p>{{encouragement}}</p>
             </div>
-
-            <!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="http://placekitten.com/g/320/339" class="img-responsive" />
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="http://placekitten.com/g/400/220" class="img-responsive" />
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="http://placekitten.com/g/200/139" class="img-responsive" />
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
-          -->
 
           <h2 class="sub-header" id="bad_gene_starts">Gene Starts</h2>
           <h3 id="missing_rbs">Missing RBS <small>{{missing_rbs_good}} / {{missing_rbs_good + missing_rbs_bad}}</small></h3>
