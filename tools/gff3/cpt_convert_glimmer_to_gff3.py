@@ -1,81 +1,60 @@
 #!/usr/bin/env python
-from galaxygetopt.ggo import GalaxyGetOpt as GGO
+import sys
+import argparse
+from BCBio import GFF
+from Bio import SeqIO
+from Bio.SeqFeature import SeqFeature
+from Bio.SeqFeature import FeatureLocation
 import logging
 logging.basicConfig(level=logging.INFO)
 
 
-def glimmer3_to_gff3(glimmer3_orf_table=None):
-    if glimmer3_orf_table is None:
-        raise ValueError("Must specify orf file")
+def glimmer3_to_gff3(glimmer, genome):
+    rec = SeqIO.read(genome, 'fasta')
 
-    orfs = ['##gff-version 3']
-    id_number = 0
-    for line in glimmer3_orf_table.readlines():
+    for line in glimmer:
         if not line.startswith('>'):
-            (g3i, g3s, g3e, g3p, g3score) = line.strip().split()
-            g3s = int(g3s)
-            g3e = int(g3e)
-            strand = '+'
-            if g3s > g3e:
-                strand = '-'
-                start = g3e
-                end = g3s
+            (id, gstart, gend, phase, score) = line.strip().split()
+            gstart = int(gstart)
+            gend = int(gend)
+
+            if '+' in phase:
+                strand = 1
+                start = gstart
+                end = gend
             else:
-                start = g3s
-                end = g3e
-            gff_line = [
-                'glimmer',  # seqid
-                'Glimmer3',  # source
-                'CDS',  # type
-                start,  # start
-                end,  # end
-                g3score,  # score
-                strand,  # strand
-                '.',  # phase
-                'ID=orf%s' % id_number,  # attr
-            ]
-            id_number += 1
-            orfs.append('\t'.join([str(x) for x in gff_line]))
-    return "\n".join(orfs)
+                strand = -1
+                start = gend
+                end = gstart
 
+            cds_feat = SeqFeature(
+                FeatureLocation(start, end),
+                type="CDS",
+                strand=strand,
+                qualifiers={
+                    'source': 'glimmer',
+                    'ID': 'cds_%s' % id
+                }
+            )
 
-__doc__ = """
-Convert Glimmer3 Table to GFF3
-==============================
-"""
+            gene = SeqFeature(
+                FeatureLocation(start, end),
+                type="gene",
+                strand=strand,
+                qualifiers={
+                    'source': 'glimmer',
+                    'ID': id,
+                }
+            )
+            gene.sub_features = [cds_feat]
+            rec.features.append(gene)
+    return rec
 
 if __name__ == '__main__':
-    # Grab all of the filters from our plugin loader
-    opts = GGO(
-        options=[
-            ['file', 'Glimmer3 Output', {'required': True, 'validate':
-                                         'File/Input'}],
-        ],
-        outputs=[
-            [
-                'data',
-                'Exported data',
-                {
-                    'validate': 'File/Output',
-                    'required': True,
-                    'default': 'export',
-                    'data_format': 'text/plain',
-                    'default_format': 'TXT',
-                }
-            ]
-        ],
-        defaults={
-            'appid': 'edu.tamu.cpt.generic.glimmer3-to-gff3',
-            'appname': 'Glimmer3 to GFF3',
-            'appvers': '1.0',
-            'appdesc': 'convert formats',
-        },
-        tests=[],
-        doc=__doc__
-    )
-    options = opts.params()
-    result = glimmer3_to_gff3(glimmer3_orf_table=options['file'])
+    parser = argparse.ArgumentParser(description='Convert Glimmer to GFF3')
+    parser.add_argument('glimmer', type=file, help='Glimmer3 Output')
+    parser.add_argument('genome', type=file, help='Fasta Genome')
+    args = parser.parse_args()
 
-    from galaxygetopt.outputfiles import OutputFiles
-    of = OutputFiles(name='data', GGO=opts)
-    of.CRR(data=result)
+    result = glimmer3_to_gff3(**vars(args))
+    GFF.write([result], sys.stdout)

@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 import sys
 import argparse
-import logging
-logging.basicConfig(level=logging.INFO)
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature
 from Bio.SeqFeature import FeatureLocation
+import logging
+logging.basicConfig(level=logging.INFO)
 
 
 def mga_to_gff3(mga_output, genome):

@@ -35,7 +35,6 @@ $mga
   <help>
 **What it does**
 
-Converts MetaGeneAnnotator Table to GFF3
+Converts MetaGeneAnnotator table to GFF3
 </help>
-  <tests/>
 </tool>
