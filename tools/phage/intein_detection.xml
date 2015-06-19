@@ -16,7 +16,7 @@ $blast
 > $output]]></command>
   <inputs>
     <expand macro="gff3_input" />
-    <param label="Tabular Blast Results" name="input" type="data" format="tabular"/>
+    <param label="Tabular Blast Results" name="blast" type="data" format="tabular"/>
   </inputs>
   <outputs>
     <data format="gff3" name="output"/>
