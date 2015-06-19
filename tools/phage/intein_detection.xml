@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.phage.intein_detection" name="Intein Detection" version="1.0">
+  <description>based on nearby protein blast results</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python intein_detection.py --version</version_command>
+  <command><![CDATA[
+$__tool_directory__/intein_detection.py
+
+$genes
+$blast
+
+> $output]]></command>
+  <inputs>
+    <param label="Gene Calls" name="input" type="data" format="gff,gff3"/>
+    <param label="Tabular Blast Results" name="input" type="data" format="tabular"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+This tool attempts to identify putative intein regions by identifying nearby
+proteins which blast to the same results.
+
+      ]]></help>
+</tool>
