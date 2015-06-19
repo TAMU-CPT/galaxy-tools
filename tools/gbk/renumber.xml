@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.RelabelTags" name="Renumber Genbank Genes" version="0.3">
+<tool id="edu.tamu.cpt.genbank.RelabelTags" name="Renumber Genbank Genes" version="0.4">
     <description>relabels/renumbers genbank tags according to rules</description>
   <macros>
     <import>macros.xml</import>
@@ -8,9 +8,7 @@
   <expand macro="stdio"/>
   <version_command>python renumber.py --version</version_command>
   <command interpreter="python">renumber.py
-#set gbk_files = '" "'.join([str($var) for $var in $file])
-"$gbk_files"
-
+  $file
 --tag_to_update "${tag_to_update}"
 --string_prefix "${string_prefix}"
 --leading_zeros "${leading_zeros}"
