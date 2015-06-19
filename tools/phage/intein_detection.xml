@@ -8,7 +8,7 @@
   <expand macro="stdio"/>
   <version_command>python intein_detection.py --version</version_command>
   <command><![CDATA[
-$__tool_directory__/intein_detection.py
+python $__tool_directory__/intein_detection.py
 
 $gff3_data
 $blast
