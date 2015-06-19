@@ -1,19 +1,21 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage.intein_detection" name="Intein Detection" version="1.0">
+<tool id="edu.tamu.cpt2.phage.intein_detection" name="Intein Detection" version="1.1">
   <description>based on nearby protein blast results</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
   <version_command>python intein_detection.py --version</version_command>
   <command><![CDATA[
 $__tool_directory__/intein_detection.py
 
-$genes
+$gff3_data
 $blast
 
 > $output]]></command>
   <inputs>
-    <param label="Gene Calls" name="input" type="data" format="gff,gff3"/>
+    <expand macro="gff3_input" />
     <param label="Tabular Blast Results" name="input" type="data" format="tabular"/>
   </inputs>
   <outputs>
