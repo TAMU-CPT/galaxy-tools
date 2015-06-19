@@ -92,7 +92,7 @@ class InteinFinder(object):
                     strand=strand,
                     qualifiers={
                         "source": "InteinFinder",
-                        "evidence": id_output[possibility]['hits'],
+                        "evidence": sorted(id_output[possibility]['hits']),
                         "ID": "intein_%s" % idx
                     }
                 )
