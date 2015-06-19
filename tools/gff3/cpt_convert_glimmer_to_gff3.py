@@ -27,6 +27,9 @@ def glimmer3_to_gff3(glimmer, genome):
                 start = gend
                 end = gstart
 
+            # Correct for gff3
+            start -= 1
+
             cds_feat = SeqFeature(
                 FeatureLocation(start, end),
                 type="CDS",
