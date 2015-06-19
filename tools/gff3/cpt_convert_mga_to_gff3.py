@@ -20,6 +20,9 @@ def mga_to_gff3(mga_output, genome):
             end = int(end)
             strand = +1 if strand == '+' else -1
 
+            # Correct for gff3
+            start -= 1
+
             rbs_feat = None
             if rbs_start != '-':
                 rbs_start = int(rbs_start)
