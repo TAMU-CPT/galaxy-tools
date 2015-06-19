@@ -16,7 +16,7 @@ $glimmer
 > $data
 </command>
   <inputs>
-    <param label="Glimmer Output" name="glimmer" type="data" format="tabular"/>
+    <param label="Glimmer Output" name="glimmer" type="data" format="tabular,txt"/>
     <expand macro="genome_selector" />
   </inputs>
   <outputs>

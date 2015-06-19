@@ -89,7 +89,7 @@ $strip_stops
     <param label="Translate sequence" name="translate" type="boolean"
         truevalue="--translate" falsevalue=""/>
     <param default="11" label="Translation table ID"
-        name="translation_table_id" type="integer"/>
+        name="translation_table_id" type="integer" value="11" />
     <param label="Add N bases upstream to exported features" name="n_bases_upstream"
         type="integer" value="0"/>
     <param label="Add N bases downstream to exported features"
@@ -109,7 +109,7 @@ $strip_stops
       </test>
   </tests>
   <help><![CDATA[
-**What it does **
+**What it does**
 
 Exports features from a genbank file
       ]]></help>
