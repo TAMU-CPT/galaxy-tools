@@ -8,7 +8,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 
 
-class InteinFinder(object):
+class IntronFinder(object):
 
     def __init__(self, genes, blast):
         feats = {}
@@ -30,7 +30,7 @@ class InteinFinder(object):
             return y[0] - x[1]
         return 0
 
-    def filter_possible_inteins(self, a_id, b_id, threshold=60):
+    def filter_possible_introns(self, a_id, b_id, threshold=60):
         try:
             a = self.genes[a_id]
             b = self.genes[b_id]
@@ -45,7 +45,7 @@ class InteinFinder(object):
 
         return False
 
-    def intein_detection(self):
+    def intron_detection(self):
         data = {}
         for row in self.blast:
             rowdata = row.split('\t')
@@ -61,7 +61,7 @@ class InteinFinder(object):
         for k in data.keys():
             if len(data[k]) > 1:
                 for x, y in itertools.combinations(data[k], 2):
-                    if self.filter_possible_inteins(x, y):
+                    if self.filter_possible_introns(x, y):
                         ok = '%s..%s' % (x, y)
                         if ok in output:
                             output[ok]['hits'].append(k)
@@ -81,19 +81,19 @@ class InteinFinder(object):
             gene_a = id_output[possibility]['a']
             gene_b = id_output[possibility]['b']
 
-            intein_start = min(gene_a.location.start, gene_b.location.start)
-            intein_end = max(gene_a.location.end, gene_b.location.end)
+            intron_start = min(gene_a.location.start, gene_b.location.start)
+            intron_end = max(gene_a.location.end, gene_b.location.end)
             strand = gene_a.location.strand
 
             rec.features.append(
                 SeqFeature(
-                    FeatureLocation(intein_start, intein_end),
+                    FeatureLocation(intron_start, intron_end),
                     type="misc_feature",
                     strand=strand,
                     qualifiers={
-                        "source": "InteinFinder",
+                        "source": "IntronFinder",
                         "evidence": sorted(id_output[possibility]['hits']),
-                        "ID": "intein_%s" % idx
+                        "ID": "intron_%s" % idx
                     }
                 )
             )
@@ -102,10 +102,10 @@ class InteinFinder(object):
         return [rec]
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Intein detection')
+    parser = argparse.ArgumentParser(description='Intron detection')
     parser.add_argument('genes', type=file, help='GFF3 Gene Calls')
     parser.add_argument('blast', type=file, help='Blast TSV Data')
     args = parser.parse_args()
 
-    intf = InteinFinder(**vars(args))
-    GFF.write(intf.output_to_gff3(intf.intein_detection()), sys.stdout)
+    intf = IntronFinder(**vars(args))
+    GFF.write(intf.output_to_gff3(intf.intron_detection()), sys.stdout)
