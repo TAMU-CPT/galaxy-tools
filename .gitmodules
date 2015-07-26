@@ -1,0 +1,3 @@
+[submodule "viz/xmfa/d3-parsets"]
+	path = viz/xmfa/d3-parsets
+	url = https://github.com/jasondavies/d3-parsets
