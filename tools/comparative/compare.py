@@ -83,7 +83,10 @@ def _id_tn_dict(sequences):
     return label_convert
 
 
-def total_similarity(xmfa_file, sequences=None):
+def total_similarity(xmfa_file, sequences=None, dice=False):
+    if sequences is None:
+        raise Exception("Must provide a non-zero number of sequence files")
+
     label_convert = _id_tn_dict(sequences)
     lcbs = parse_xmfa(xmfa_file)
 
@@ -108,7 +111,10 @@ def total_similarity(xmfa_file, sequences=None):
     # finalize total percent similarity by dividing by length of parent sequence
     for i in range(len(label_convert)):
         for j in range(len(label_convert)):
-            table[i][j] = table[i][j]/label_convert[str(i+1)]['len']
+            if dice:
+                table[i][j] = table[i][j] / (label_convert[str(i+1)]['len'] + label_convert[str(j+1)]['len'])
+            else:
+                table[i][j] = table[i][j] / label_convert[str(i+1)]['len']
              
     # insert 1 for comparisons between the same sequence
     for i in range(len(label_convert)):
@@ -127,6 +133,7 @@ if __name__ == '__main__':
     parser.add_argument('xmfa_file', type=file, help='XMFA File')
     parser.add_argument('sequences', type=file, nargs='+',
                         help='Fasta files (in same order) passed to parent for reconstructing proper IDs')
+    parser.add_argument('--dice', action='store_true', help='Use dice method for calculating % identity')
     parser.add_argument('--version', action='version', version='%(prog)s 1.0')
 
     args = parser.parse_args()
