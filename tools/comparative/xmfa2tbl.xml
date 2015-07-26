@@ -8,9 +8,24 @@
   <expand macro="stdio"/>
   <version_command>python xmfa2tbl.py --version</version_command>
   <command interpreter="python"><![CDATA[
+xmfa2tbl.py
+--dice $dice
+$xmfa
+#for file in $sequences:
+    "${file}"
+#end for
+> $output
 ]]></command>
   <inputs>
-    <!-- Inputs go here -->
+      <param type="data" format="xmfa" name="xmfa"
+          label="XMFA MSA" />
+
+      <param type="data" format="fasta" name="sequences" multiple="True"
+          label="Select sequences used in progressiveMauve alignment"
+          help="Should be provided in the same order as in original progressiveMauve run"/>
+
+      <param type="boolean" label="use dice method in percent similarity calculation" 
+          checked="true" truevalue="--dice" falsevalue="" name="dice" help="The dice method alters the total similarity calculation to reflect the length of both sequences. The default for this option is true."
   </inputs>
   <outputs>
     <data format="tabular" name="output">
@@ -18,15 +33,23 @@
   </outputs>
   <tests>
       <test>
+          <param name="dice" value="false"/>
           <param name="xmfa" value="test.xmfa"/>
           <param name="sequences" value="test.fa" />
-          <output name="output" file="out.tbl"/>
+          <output name="output" file="output.tsv"/>
+      </test>
+      <test>
+          <param name="dice" value="true"/>
+          <param name="xmfa" value="test.xmfa"/>
+          <param name="sequences" value="test.fa" />
+          <output name="output" file="output_dice.tsv"/>
       </test>
   </tests>
   <help><![CDATA[
 What it does
 ============
 
+This tool compares N sequences and outputs a table reflecting the total similarity between every sequence pair. Total similarity is based on regions of similarity called locally collinear blocks, or LCBs.
 
 ]]></help>
   <citations>
