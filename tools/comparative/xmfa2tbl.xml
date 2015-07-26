@@ -25,7 +25,7 @@ $xmfa
           help="Should be provided in the same order as in original progressiveMauve run"/>
 
       <param type="boolean" label="use dice method in percent similarity calculation" 
-          checked="true" truevalue="--dice" falsevalue="" name="dice" help="The dice method alters the total similarity calculation to reflect the length of both sequences. The default for this option is true."
+          checked="true" truevalue="--dice" falsevalue="" name="dice" help="The dice method alters the total similarity calculation to reflect the length of both sequences. The default for this option is true."/>
   </inputs>
   <outputs>
     <data format="tabular" name="output">
