@@ -1,0 +1,25 @@
+<tool id="edu.tamu.cpt.charm.post-process-extract-chromosome" name="Extract chromosome from GFF3 for loading" version="1.0">
+    <description>generally for those from NCBI/EBI</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <stdio>
+        <exit_code level="fatal" range="1:"/>
+    </stdio>
+    <command interpreter="python"><![CDATA[
+post-process-extract-chromosome.py $gff > $default
+]]></command>
+    <inputs>
+        <expand macro="input_gff3" />
+    </inputs>
+    <outputs>
+        <expand macro="output_gff3" />
+    </outputs>
+    <help><![CDATA[
+**What it does**
+
+Extracts correct chromosome feature from GFF file. This allows creation of the
+chromosome before loading multiple tracks of annotations.
+]]></help>
+</tool>
+

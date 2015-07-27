@@ -1,0 +1,24 @@
+<tool id="edu.tamu.cpt.charm.process-fasta" name="Pre-process gff files" version="1.0">
+    <description>generally for those from NCBI/EBI</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <stdio>
+        <exit_code level="fatal" range="1:"/>
+    </stdio>
+    <version_command>python process-fasta.py --version</version_command>
+    <command interpreter="python"><![CDATA[process-fasta.py $fasta > $default]]></command>
+    <inputs>
+        <param label="Fasta file to process" name="fasta" type="data"/>
+    </inputs>
+    <outputs>
+        <data format="fasta" hidden="false" name="default" label="Processed $fasta.name"/>
+    </outputs>
+    <help><![CDATA[
+**What it does**
+
+Ensures that only one sequence is present in the file. Multiple sequences are known to cause issues.
+
+]]></help>
+</tool>
+

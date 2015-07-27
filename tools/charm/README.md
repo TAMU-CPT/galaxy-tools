@@ -5,13 +5,14 @@ This is a re-write of charm to be a set of utilities for managing gmod product i
 ## Required Tools
 
 - jbrowse
-    - add new instances based on chado
-    - update existing ones based on diff?
+    - [ ] add new instances based on chado
+    - [ ] update existing ones based on diff?
 - bulkfiles
+    - [ ] bulkfiles wrapper
 - chado
-    - add-organism
-    - gmod-bulk-load-gff3.pl
-    - process.py
-    - process-fasta.py
-    - post-process-features.py
-    - post-process-extract-chromosome.py
+    - [x] add-organism
+    - [x] gmod-bulk-load-gff3.pl
+    - [x] process.py
+    - [x] process-fasta.py
+    - [x] post-process-features.py
+    - [x] post-process-extract-chromosome.py
