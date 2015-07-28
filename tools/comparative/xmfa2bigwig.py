@@ -112,12 +112,16 @@ def _id_tn_dict(sequences):
     """Figure out sequence IDs
     """
     label_convert = {}
+    correct_chrom = None
     for i, record in enumerate(SeqIO.parse(sequences, 'fasta')):
+        if correct_chrom is None:
+            correct_chrom = record.id
+
         label_convert[str(i + 1)] = {'record_id': record.id,
                                      'len': len(record.seq),
                                      'temp': tempfile.NamedTemporaryFile(delete=False)}
 
-        label_convert[str(i + 1)]['temp'].write("variableStep chrom=%s\n" % record.id)
+        label_convert[str(i + 1)]['temp'].write("variableStep chrom=%s\n" % (correct_chrom or record.id, ))
     return label_convert
 
 
@@ -132,6 +136,7 @@ def convert_to_bigwig(wig_file, chr_sizes, bw_file):
         print ' '.join(cl)
         subprocess.check_call(cl)
     finally:
+        pass
         os.remove(wig_file)
         os.remove(size_file)
     return bw_file
@@ -208,7 +213,7 @@ def convert_xmfa_to_gff3(xmfa_file, fasta_genomes, window_size=3, relative_to='1
 
         other = label_convert[key]
         other['temp'].close()
-        sizes = [(other['record_id'], label_convert[relative_to]['len'])]
+        sizes = [(label_convert[relative_to]['record_id'], label_convert[relative_to]['len'])]
         bw_file = os.path.join("out", secure_filename(other['record_id'] + '.bigwig'))
 
         convert_to_bigwig(label_convert[key]['temp'].name, sizes, bw_file)
