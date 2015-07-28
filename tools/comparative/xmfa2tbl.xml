@@ -33,12 +33,12 @@ $xmfa
   </outputs>
   <tests>
       <test>
-          <param name="dice" value="true"/>
           <param name="xmfa" value="test.xmfa"/>
           <param name="sequences" value="test.fa" />
           <output name="output" file="output.tsv"/>
       </test>
       <test>
+          <param name="dice" value="true"/>
           <param name="xmfa" value="test.xmfa"/>
           <param name="sequences" value="test.fa" />
           <output name="output" file="output_dice.tsv"/>
