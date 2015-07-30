@@ -77,7 +77,7 @@ def _id_tn_dict(sequences):
         else:
             for i, sequence in enumerate(sequences):
                 for record in SeqIO.parse(sequence, 'fasta'):
-                    label_convert[str(i + 1)] = record.id
+                    label_convert[str(i + 1)] = {'id': record.id, 'len': len(record)}
                     continue
 
     return label_convert
@@ -93,11 +93,11 @@ def total_similarity(xmfa_file, sequences=None, dice=False):
     # make a matrix based on number of sequences
     table = [[0 for x in range(len(label_convert))] for y in range(len(label_convert))]
 
-    for lcb in lcbs:       
+    for lcb in lcbs:
         # ignore LCBs containing only one sequence
         if len(lcb) == 0:
             continue
-            
+
         # permutations based on num sequences to compare for current LCB
         compare_seqs = list(itertools.permutations(range(0, len(lcb)), 2))
         for permutation in compare_seqs:
@@ -115,7 +115,7 @@ def total_similarity(xmfa_file, sequences=None, dice=False):
                 table[i][j] = 2 * table[i][j] / (label_convert[str(i+1)]['len'] + label_convert[str(j+1)]['len'])
             else:
                 table[i][j] = table[i][j] / label_convert[str(i+1)]['len']
-             
+
     # insert 1 for comparisons between the same sequence
     for i in range(len(label_convert)):
         table[i][i] = 1
