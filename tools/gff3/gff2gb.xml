@@ -1,0 +1,28 @@
+<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GBK" version="1.0">
+  <description>convert gff3 to gbk</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python gff2gb.py --version</version_command>
+  <command interpreter="python"><![CDATA[gff2gb.py
+$gff3
+$fasta
+> $default]]></command>
+  <inputs>
+    <param label="GFF3 file" name="gff3" type="data" format="gff,gff3"/>
+    <param label="Fasta Input" name="fasta" type="data" format="fasta"/>
+  </inputs>
+  <outputs>
+    <data format="txt" hidden="false" name="default" label="${gff3.name} as GenBank"/>
+  </outputs>
+  <help><![CDATA[
+**WARNING**
+
+This is a LOSSY conversion.
+
+**What it does**:
+
+Convert gff(3) data to genbank.
+      ]]></help>
+</tool>
+
