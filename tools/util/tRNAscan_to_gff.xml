@@ -13,7 +13,7 @@ tRNAscan_to_gff.py
 > $output
 ]]></command>
   <inputs>
-      <param type="data" name="tsv" label="XMFA MSA" />
+      <param type="data" name="tsv" label="tsv" />
   </inputs>
   <outputs>
     <data format="tabular" name="output">
