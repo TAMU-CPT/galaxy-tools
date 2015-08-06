@@ -16,7 +16,6 @@ def parse_tsv(trna):
 		'.',
 		attributes
 	]
-
 	return cols_gff
 
 if __name__ == '__main__':
