@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<tool id="xmfa2tbl" name="Convert XMFA to percent identity table" version="@WRAPPER_VERSION@.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python xmfa2tbl.py --version</version_command>
+  <command interpreter="python"><![CDATA[
+tRNAscan_to_gff.py 
+< $input 
+> $output
+]]></command>
+  <inputs>
+      <param type="data" name="tsv" label="XMFA MSA" />
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output">
+    </data>
+  </outputs>
+  <tests>
+      <test>
+          <param name="tsv" value="test-data/trnascan.tsv"/>
+          <output name="output" file="test-data/trnascan.gff"/>
+      </test>
+  </tests>
+  <help><![CDATA[
+What it does
+============
+
+converts tsv file to gff file
+
+]]></help>
+  <citations>
+  </citations>
+</tool>

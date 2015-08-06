@@ -4,11 +4,6 @@ import sys
 
 def parse_tsv(trna):
 	cols_tsv = trna.split('\t')
-	attr = {
-		'ID': 'tRNA-%s' % cols_tsv[1],
-		'Anticodon': cols_tsv[5].lower(),
-		'Codon': cols_tsv[4]
-	}
 	attributes = 'ID="%s";Anticodon="%s";Codon="%s"' % ('tRNA-%s' % cols_tsv[1], cols_tsv[5].lower(), cols_tsv[4])
 	cols_gff = [
 		cols_tsv[0],
