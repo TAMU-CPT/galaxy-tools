@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import fileinput
-import sys
 
 def parse_tsv(trna):
 	cols_tsv = trna.split('\t')
@@ -22,5 +21,5 @@ if __name__ == '__main__':
 	# print file heading
 	print '##gff-version-3'
 	# process each trna in tsv file
-	for trna in fileinput.input(sys.argv[1]):
+	for trna in fileinput.input():
 		print '\t'.join(parse_tsv(trna))

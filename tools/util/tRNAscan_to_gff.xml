@@ -13,7 +13,7 @@ tRNAscan_to_gff.py
 > $output
 ]]></command>
   <inputs>
-      <param type="data" name="trnascan" label="tRNAscan table" />
+      <param format="tabular" type="data" name="trnascan" label="tRNAscan table" />
   </inputs>
   <outputs>
     <data format="Gff3" name="output">
@@ -22,7 +22,7 @@ tRNAscan_to_gff.py
   <tests>
       <test>
           <param name="trnascan" value="trnascan.tsv"/>
-          <output name="output" file="trnascan.gff"/>
+          <output name="output" file="trnascan_with_id.gff"/>
       </test>
   </tests>
   <help><![CDATA[
