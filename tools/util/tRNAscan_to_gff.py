@@ -13,7 +13,7 @@ def parse_tsv(trna):
 		cols_tsv[8],
 		'.',
 		'.',
-		attributes
+		'ID="tRNA-%s";Anticodon="%s";Codon="%s"' % (cols_tsv[1], cols_tsv[5].lower(), cols_tsv[4])
 	]
 	return cols_gff
 
