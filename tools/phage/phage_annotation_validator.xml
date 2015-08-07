@@ -20,7 +20,7 @@ $gff3_data
       <expand macro="genome_selector" />
   </inputs>
   <outputs>
-    <data format="gff3" name="output"/>
+    <data format="html" name="output"/>
   </outputs>
   <help><![CDATA[
 **What it does**
