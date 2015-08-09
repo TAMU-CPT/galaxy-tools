@@ -2,11 +2,24 @@
 import sys
 import argparse
 from Bio import SeqIO
+from Bio.SeqFeature import SeqFeature, FeatureLocation
 
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
+def gen_annotation(record, start, end):
+    return SeqFeature(
+        FeatureLocation(start, end),
+        type="source",
+        strand=0,
+        qualifiers={
+            'note': [
+                'Source genome originally %s bp' % (len(record.seq)),
+                'Cut from %s to %s' % (start + 1, end),
+            ]
+        }
+    )
 
 def genbank_subsection(genbank_files, table=None, coordinates=None, include_unlisted=False):
     if (table is None and coordinates is None) or \
@@ -32,11 +45,14 @@ def genbank_subsection(genbank_files, table=None, coordinates=None, include_unli
 
                 if rid in cut_sites:
                     start, end = cut_sites[rid]
+                    record.features = [gen_annotation(record, start -1, end)] + record.features
                     yield [record[start - 1:end]]
                 # if want unlisted, print
                 elif include_unlisted:
+                    record.features = [gen_annotation(record, start -1, end)] + record.features
                     yield [record]
             else:
+                record.features = [gen_annotation(record, start -1, end)] + record.features
                 yield [record[start - 1:end]]
 
 if __name__ == '__main__':

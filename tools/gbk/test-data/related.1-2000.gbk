@@ -7,26 +7,29 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
+     source          1..2000
+                     /note="Source genome originally 215710 bp"
+                     /note="Cut from 1 to 2000"
      CDS             1002..1193
                      /codon_start=1
-                     /gene="CbK_gp001"
                      /product="hypothetical conserved protein"
-                     /transl_table=11
+                     /gene="CbK_gp001"
                      /translation="MAEFLALIPNLAPFLAWGILLWIAAEVVWSVCLWVYGLRTLFKLH
                      RDDLAEAISFERALSPFD"
+                     /transl_table=11
      CDS             1277..1540
                      /codon_start=1
-                     /gene="CbK_gp002"
                      /product="hypothetical conserved protein"
-                     /transl_table=11
+                     /gene="CbK_gp002"
                      /translation="MTIRHYLHDLAVRFVVLGWIFAKKPRKTAPKGQNFQPHPPALVDW
                      DHRWLYLAAGTGLTAVWLCFRFVGPSQDPSTAPPPSHRPWAS"
+                     /transl_table=11
      CDS             1586..1690
                      /codon_start=1
-                     /gene="CbK_gp003"
                      /product="hypothetical conserved protein"
-                     /transl_table=11
+                     /gene="CbK_gp003"
                      /translation="MFAFLRRLSLAAVHGVLWAILLAMLALGGPRRAP"
+                     /transl_table=11
      terminator      1745..1774
                      /note="Predicted Rho-independent terminator"
 ORIGIN
@@ -74,6 +77,9 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
+     source          1..2000
+                     /note="Source genome originally 279967 bp"
+                     /note="Cut from 1 to 2000"
 ORIGIN
         1 ggccccgacc ccgagcgctc atctacattt ggtgccaatt tcgacatcac cccatagatg
        61 tggggcaaat ctcgggctct agacacctgg gattctgcgg ggcgcgttaa ccatgtttgt
@@ -119,26 +125,29 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
+     source          1..2000
+                     /note="Source genome originally 221828 bp"
+                     /note="Cut from 1 to 2000"
      CDS             1002..1193
-                     /codon_start=1
-                     /locus_tag="Karma_gp001"
                      /product="hypothetical conserved protein"
-                     /transl_table=11
+                     /locus_tag="Karma_gp001"
+                     /codon_start=1
                      /translation="MAEFLALIPNLAPFLVWGILLWIAAEVVWSVCLWVYGLRTLFKLH
                      RDDLAEAISFERALSPFD"
-     CDS             1277..1525
-                     /codon_start=1
-                     /locus_tag="Karma_gp002"
-                     /product="hypothetical conserved protein"
                      /transl_table=11
+     CDS             1277..1525
+                     /product="hypothetical conserved protein"
+                     /locus_tag="Karma_gp002"
+                     /codon_start=1
                      /translation="MSIRTFFHDLAVRFVVLGWIFARKPLKWAPKGHNFQPKPPVQVGA
                      LAAGSLLALSLALGGLWFRFTFPDKSQVVSRRPQAMS"
-     CDS             1587..1691
-                     /codon_start=1
-                     /locus_tag="Karma_gp003"
-                     /product="hypothetical conserved protein"
                      /transl_table=11
+     CDS             1587..1691
+                     /product="hypothetical conserved protein"
+                     /locus_tag="Karma_gp003"
+                     /codon_start=1
                      /translation="MFAFLRRLSLAAVHGVLWAILLAMLALGGPRRPL"
+                     /transl_table=11
      terminator      1746..1775
                      /note="predicted rho-independent terminator"
 ORIGIN
@@ -186,26 +195,29 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
+     source          1..2000
+                     /note="Source genome originally 218929 bp"
+                     /note="Cut from 1 to 2000"
      CDS             1014..1217
-                     /codon_start=1
-                     /locus_tag="Magneto_gp001"
                      /product="hypothetical conserved protein"
-                     /transl_table=11
+                     /locus_tag="Magneto_gp001"
+                     /codon_start=1
                      /translation="MEPTMAGFLNLIPNLAPFALWGILLWIAAEVVWSVCLWVYGLRTL
                      FKLHRDDVAEALTLERALAPFD"
-     CDS             1287..1535
-                     /codon_start=1
-                     /locus_tag="Magneto_gp002"
-                     /product="hypothetical conserved protein"
                      /transl_table=11
+     CDS             1287..1535
+                     /product="hypothetical conserved protein"
+                     /locus_tag="Magneto_gp002"
+                     /codon_start=1
                      /translation="MSIRTFFHDLAVRFVVLGWIFARKPLKWAPKGHNFQPKPPVQVGA
                      LAAGSLLALSLALGGLWFRFTFPDKSQVVSRRPQAMS"
-     CDS             1597..1701
-                     /codon_start=1
-                     /locus_tag="Magneto_gp003"
-                     /product="hypothetical conserved protein"
                      /transl_table=11
+     CDS             1597..1701
+                     /product="hypothetical conserved protein"
+                     /locus_tag="Magneto_gp003"
+                     /codon_start=1
                      /translation="MFAFLRRLSLAAVHGVLWAILLAMYAVGGPRRAP"
+                     /transl_table=11
 ORIGIN
         1 gcgccctggg cgaagttttg tgggactact atgacttgca ttatttcaag cgcaagcggt
        61 ccgagtggaa gtaccaaaga tttgctttgg tttatcaaca acttgccgac gcggcctcgg
@@ -251,26 +263,29 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
+     source          1..2000
+                     /note="Source genome originally 223720 bp"
+                     /note="Cut from 1 to 2000"
      CDS             992..1225
-                     /codon_start=1
-                     /locus_tag="Rogue_gp001"
                      /product="hypothetical conserved protein"
-                     /transl_table=11
+                     /locus_tag="Rogue_gp001"
+                     /codon_start=1
                      /translation="MAELMSLLFNIAPFLLLAIVVYHVLEAVWAISLWVYGLRTLWKLH
                      RDDVSEALTLERALSPFSSPGRDRNGNPVPPA"
-     CDS             1298..1546
-                     /codon_start=1
-                     /locus_tag="Rogue_gp002"
-                     /product="hypothetical conserved protein"
                      /transl_table=11
+     CDS             1298..1546
+                     /product="hypothetical conserved protein"
+                     /locus_tag="Rogue_gp002"
+                     /codon_start=1
                      /translation="MSIRTFFHDLAVRFVVLGWIFAQKPQKWAPKGHNFQPIPPAQVER
                      QDLRGRVLLLRSFGVLAAACTTMGLCQYLLWRRAPMS"
-     CDS             1594..1692
-                     /codon_start=1
-                     /locus_tag="Rogue_gp003"
-                     /product="hypothetical conserved protein"
                      /transl_table=11
+     CDS             1594..1692
+                     /product="hypothetical conserved protein"
+                     /locus_tag="Rogue_gp003"
+                     /codon_start=1
                      /translation="MPHLGFWLSAACIALAWAIWALRRLIAPPPPA"
+                     /transl_table=11
 ORIGIN
         1 gcgctctggg cgaagttttg tgggactact atgacttgca ttacttcaaa cggaagcgct
        61 ccgagtggaa gtaccaaaga tttgctttgg tttatcaaca acttgcggac gccgcctcgg
@@ -316,26 +331,29 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
+     source          1..2000
+                     /note="Source genome originally 219216 bp"
+                     /note="Cut from 1 to 2000"
      CDS             1026..1217
-                     /codon_start=1
-                     /locus_tag="Swift_gp001"
                      /product="hypothetical conserved protein"
-                     /transl_table=11
+                     /locus_tag="Swift_gp001"
+                     /codon_start=1
                      /translation="MAGFLNLIPNLAPFALWGVLLWIAAEVVWSVCLWVYGLRTLFKLH
                      RDDLAEAISFERALSPFD"
-     CDS             1301..1549
-                     /codon_start=1
-                     /locus_tag="Swift_gp002"
-                     /product="hypothetical conserved protein"
                      /transl_table=11
+     CDS             1301..1549
+                     /product="hypothetical conserved protein"
+                     /locus_tag="Swift_gp002"
+                     /codon_start=1
                      /translation="MSIRAFLHDLAVRFVVLGWIFAQKPQKWAPKGHNFQPIPPAQVER
                      QDLRGRVLLLRSFGVLAAACTTMGLCQYLLWRRAAMS"
-     CDS             1597..1695
-                     /codon_start=1
-                     /locus_tag="Swift_gp003"
-                     /product="hypothetical conserved protein"
                      /transl_table=11
+     CDS             1597..1695
+                     /product="hypothetical conserved protein"
+                     /locus_tag="Swift_gp003"
+                     /codon_start=1
                      /translation="MPHLGFWLSAACIALAWAIWALRRLIGPPPPT"
+                     /transl_table=11
 ORIGIN
         1 gggctctggg cgaagttttg tgggactact atgacttgca ttatttcaag cgcaagcggt
        61 ccgagtggaa gtaccaaaga tttgctttgg tttatcaaca acttgccgac gcggcctcgg
