@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 import argparse
 from BCBio import GFF
 from Bio import SeqIO
@@ -7,9 +8,11 @@ from jinja2 import Template
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
+SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 
-REPORT_TEMPLATE = Template(open('phage_annotation_validator.html').read())
-dashcss = open('dashboard.css').read()
+REPORT_TEMPLATE = Template(open(os.path.join(SCRIPT_PATH, 'phage_annotation_validator.html'), 'r').read())
+
+dashcss = open(os.path.join(SCRIPT_PATH, 'dashboard.css')).read()
 
 __author__ = "Eric Rasche"
 __version__ = "0.4.0"
@@ -201,6 +204,7 @@ def evaluate_and_report(annotations, genome):
     mb_good, mb_bad, mb_results = missing_rbs(record,
                                               lookahead_min=upstream_min,
                                               lookahead_max=upstream_max)
+    log.info('%s %s %s', mb_good, mb_bad, mb_results)
     log.info("Locating excessive gaps")
     eg_good, eg_bad, eg_results = excessive_gap(record, excess=3 * upstream_max)
     log.info("Locating excessive overlaps")

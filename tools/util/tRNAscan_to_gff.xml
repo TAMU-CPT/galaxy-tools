@@ -8,21 +8,21 @@
   <expand macro="stdio"/>
   <version_command>python tRNAscan_to_gff.py --version</version_command>
   <command interpreter="python"><![CDATA[
-tRNAscan_to_gff.py 
-< $trnascan 
+tRNAscan_to_gff.py
+< $trnascan
 > $output
 ]]></command>
   <inputs>
-      <param type="data" name="trnascan" label="tRNAscan table" />
+      <param format="tabular" type="data" name="trnascan" label="tRNAscan table" />
   </inputs>
   <outputs>
-    <data format="Gff3" name="output">
+    <data format="gff3" name="output">
     </data>
   </outputs>
   <tests>
       <test>
           <param name="trnascan" value="trnascan.tsv"/>
-          <output name="output" file="trnascan.gff"/>
+          <output name="output" file="trnascan_with_id.gff"/>
       </test>
   </tests>
   <help><![CDATA[
