@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<tool id="tRNAscan_to_gff" name="Convert tRNAscan table to gff format" version="@WRAPPER_VERSION@.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python tRNAscan_to_gff.py --version</version_command>
+  <command interpreter="python"><![CDATA[
+tRNAscan_to_gff.py 
+< $trnascan 
+> $output
+]]></command>
+  <inputs>
+      <param type="data" name="trnascan" label="tRNAscan table" />
+  </inputs>
+  <outputs>
+    <data format="Gff3" name="output">
+    </data>
+  </outputs>
+  <tests>
+      <test>
+          <param name="trnascan" value="trnascan.tsv"/>
+          <output name="output" file="trnascan.gff"/>
+      </test>
+  </tests>
+  <help><![CDATA[
+What it does
+============
+
+converts tRNAscan table to gff format
+
+]]></help>
+  <citations>
+  </citations>
+</tool>

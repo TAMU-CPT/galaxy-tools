@@ -7,26 +7,29 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
+     source          1..2000
+                     /note="Source genome originally 221828 bp"
+                     /note="Cut from 1 to 2000"
      CDS             1002..1193
-                     /codon_start=1
-                     /locus_tag="Karma_gp001"
                      /product="hypothetical conserved protein"
-                     /transl_table=11
+                     /locus_tag="Karma_gp001"
+                     /codon_start=1
                      /translation="MAEFLALIPNLAPFLVWGILLWIAAEVVWSVCLWVYGLRTLFKLH
                      RDDLAEAISFERALSPFD"
-     CDS             1277..1525
-                     /codon_start=1
-                     /locus_tag="Karma_gp002"
-                     /product="hypothetical conserved protein"
                      /transl_table=11
+     CDS             1277..1525
+                     /product="hypothetical conserved protein"
+                     /locus_tag="Karma_gp002"
+                     /codon_start=1
                      /translation="MSIRTFFHDLAVRFVVLGWIFARKPLKWAPKGHNFQPKPPVQVGA
                      LAAGSLLALSLALGGLWFRFTFPDKSQVVSRRPQAMS"
-     CDS             1587..1691
-                     /codon_start=1
-                     /locus_tag="Karma_gp003"
-                     /product="hypothetical conserved protein"
                      /transl_table=11
+     CDS             1587..1691
+                     /product="hypothetical conserved protein"
+                     /locus_tag="Karma_gp003"
+                     /codon_start=1
                      /translation="MFAFLRRLSLAAVHGVLWAILLAMLALGGPRRPL"
+                     /transl_table=11
      terminator      1746..1775
                      /note="predicted rho-independent terminator"
 ORIGIN
