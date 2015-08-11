@@ -21,22 +21,17 @@ body {
   padding-top: 50px;
 }
 
-h2{ 
-  position:relative; 
-}
-
-h2 span{ 
-  position:absolute; 
-  top:-50px;
-}
-
-h3{ 
-  position:relative; 
-}
-
-h3 span{ 
-  position:absolute; 
-  top:-50px;
+#bad_gene_starts:before,
+#missing_rbs:before,
+#excessive_gaps:before,
+#excessive_overlap:before,
+#antisense:before,
+#morons:before { 
+  display: block; 
+  content: " "; 
+  margin-top: -50px; 
+  height: 50px; 
+  visibility: hidden; 
 }
 
 /*
@@ -205,8 +200,8 @@ h3 span{
                 <p>{{encouragement}}</p>
             </div>
 
-          <h2 class="sub-header"><span id="bad_gene_starts"></span>Gene Starts</h2>
-          <h3><span id="missing_rbs"></span>Missing RBS <small>{{missing_rbs_good}} / {{missing_rbs_good + missing_rbs_bad}}</small></h3>
+          <h2 class="sub-header" id="bad_gene_starts">Gene Starts</h2>
+          <h3 id="missing_rbs">Missing RBS <small>{{missing_rbs_good}} / {{missing_rbs_good + missing_rbs_bad}}</small></h3>
           <p>This section covers genes with missing or incorrectly chosen
           RBSs.</p>
           <div class="table-responsive">
@@ -234,7 +229,7 @@ h3 span{
             </table>
           </div>
 
-          <h3><span id="excessive_gaps"></span>Excessive Gaps <small>{{excessive_gap_good}} / {{excessive_gap_good + excessive_gap_bad}}</small></h3>
+          <h3 id="excessive_gaps">Excessive Gaps <small>{{excessive_gap_good}} / {{excessive_gap_good + excessive_gap_bad}}</small></h3>
           <p>Phage genomes are under selection pressures for high coding
           densities. Large gaps are a sign of poorly chosen starts, or
           unannotated regions.</p>
@@ -257,7 +252,7 @@ h3 span{
             </table>
           </div>
 
-          <h3><span id="excessive_overlap"></span>Excessive Overlap <small>{{excessive_overlap_good}} / {{excessive_overlap_good + excessive_overlap_bad}}</small></h3>
+          <h3 id="excessive_overlap">Excessive Overlap <small>{{excessive_overlap_good}} / {{excessive_overlap_good + excessive_overlap_bad}}</small></h3>
           <p>While large gaps are discouraged, large overlaps are likewise
           discouraged, as it indicates possible misannotation.</p>
           <div class="table-responsive">
@@ -283,8 +278,8 @@ h3 span{
             </table>
           </div>
 
-          <h2 class="sub-header"><span id="antisense"></span>Antisense Genes</h2>
-          <h3><span id="morons"></span>Possible Morons <small>{{morons_good}} / {{morons_good + morons_bad}} (Doesn't count towards score)</small></h3>
+          <h2 class="sub-header" id="antisense">Antisense Genes</h2>
+          <h3 id="morons">Possible Morons <small>{{morons_good}} / {{morons_good + morons_bad}} (Doesn't count towards score)</small></h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
