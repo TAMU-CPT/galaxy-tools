@@ -154,18 +154,16 @@ def get_peptides(nuc_seq):
     answer.sort()
     return answer
 
-def filter_gap(record, seq_start, seq_end):
+def gap_has_genes(sequence):
     out_count = 0
-    for i, (f_start, f_end, f_strand, n, t) in enumerate(get_peptides(str(record[seq_start:seq_end].seq).upper())):
+    for i, (f_start, f_end, f_strand, n, t) in enumerate(get_peptides(sequence.upper())):
         out_count += 1
         if f_strand == +1:
             loc = "%i..%i" % (f_start+1, f_end)
         else:
             loc = "complement(%i..%i)" % (f_start+1, f_end)
-        descr = "length %i aa, %i bp, from %s of %s" \
-                % (len(t), len(n), loc, record.description)
-        fid = record.id + "|%s%i" % ('ORF', i+1)
-        #log.info('\t'.join(map(str,[record.id, f_start, f_end, fid, 0, '+' if f_strand == +1 else '-'])) + '\n')
+        fid = "|%s%i" % ('ORF', i+1)
+        log.info('\t'.join(map(str,[f_start, f_end, fid, 0, '+' if f_strand == +1 else '-'])) + '\n')
 
     # if orfs are found, out_count will be > 0, meaning a "bad" gap
     if out_count > 0:
@@ -216,7 +214,7 @@ def excessive_gap(record, excess=10):
                 if unannotated_count > excess:
                     # check if good or bad gap. If bad, append results
                     # this might not be the best approach
-                    if filter_gap(record, region_start, i) == True:
+                    if gap_has_genes(str(record[region_start:i].seq)):
                         results.append((region_start, i))
                 unannotated_count = 0
 
