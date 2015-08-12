@@ -239,6 +239,7 @@ body {
                 <tr>
                   <th>Region</th>
                   <th>Size</th>
+                  <th>Message</th>
                 </tr>
               </thead>
               <tbody>
@@ -246,6 +247,12 @@ body {
                 <tr>
                     <td>{{row[0]}} .. {{row[1]}}</td>
                     <td>{{row[1] - row[0]}}</td>
+                    <td>
+                        {% if row[2] == 0 %}
+                        {% else %}
+                        {{row[2]}} possible genes found in this sequence
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
               </tbody>
