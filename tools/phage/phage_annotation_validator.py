@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import argparse
+import itertools
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -179,34 +180,28 @@ def excessive_overlap(record, excessive=15):
 
     Does a product of all the top-level features in the genome, and calculates
     gaps.
-
-    TODO: switch to itertools
     """
     results = []
     bad = 0
 
-    for gene_a in genes(record.features):
-        for gene_b in genes(record.features):
-            # If they're not the same feature, and a<b (so we don't compare A+B
-            # and B+A), itertools would fix all of this....
-            if gene_a != gene_b and gene_a.location.start <= gene_b.location.start:
-                # Get the CDS from the subfeature list.
-                # TODO: not recursive.
-                cds_a = [x for x in gene_a.sub_features if x.type == "CDS"][0]
-                cds_b = [x for x in gene_b.sub_features if x.type == "CDS"][0]
+    for (gene_a, gene_b) in itertools.combinations(genes(record.features), 2):
+        # Get the CDS from the subfeature list.
+        # TODO: not recursive.
+        cds_a = [x for x in gene_a.sub_features if x.type == "CDS"][0]
+        cds_b = [x for x in gene_b.sub_features if x.type == "CDS"][0]
 
-                # Set of locations that are included in the CDS of A and the
-                # CDS of B
-                cas = set(range(cds_a.location.start, cds_a.location.end))
-                cbs = set(range(cds_b.location.start, cds_b.location.end))
+        # Set of locations that are included in the CDS of A and the
+        # CDS of B
+        cas = set(range(cds_a.location.start, cds_a.location.end))
+        cbs = set(range(cds_b.location.start, cds_b.location.end))
 
-                # Here we calculate the intersection between the two sets, and
-                # if it's larger than our excessive size, we know that they're
-                # overlapped
-                ix = cas.intersection(cbs)
-                if len(ix) >= excessive:
-                    bad += 1
-                    results.append((gene_a, gene_b, min(ix), max(ix)))
+        # Here we calculate the intersection between the two sets, and
+        # if it's larger than our excessive size, we know that they're
+        # overlapped
+        ix = cas.intersection(cbs)
+        if len(ix) >= excessive:
+            bad += 1
+            results.append((gene_a, gene_b, min(ix), max(ix)))
 
     # Good isn't accurate here. It's a triangle number and just ugly, but we
     # don't care enough to fix it.
