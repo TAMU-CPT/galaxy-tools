@@ -179,7 +179,7 @@ def get_peptides(nuc_seq):
     return answer
 
 
-def gap_has_genes(sequence):
+def putative_genes_in_sequence(sequence):
     out_count = 0
     for i, (f_start, f_end, f_strand, n, t) in enumerate(get_peptides(sequence.upper())):
         out_count += 1
@@ -249,7 +249,7 @@ def excessive_gap(record, excess=10):
     if not annotated and unannotated_count > excess:
         results.append((region_start, i))
 
-    results = [(start, end, gap_has_genes(str(record[start:end].seq))) for (start, end) in results]
+    results = [(start, end, putative_genes_in_sequence(str(record[start:end].seq))) for (start, end) in results]
 
     # Bad gaps are those with more than zero possible genes found
     bad = len([x for x in results if x[2] > 0])
