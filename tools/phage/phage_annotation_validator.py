@@ -251,10 +251,11 @@ def excessive_gap(record, excess=10):
 
     results = [(start, end, gap_has_genes(str(record[start:end].seq))) for (start, end) in results]
 
+    # Bad gaps are those with more than zero possible genes found
+    bad = len([x for x in results if x[2] > 0])
     # Generally taking "good" here as every possible gap in the genome
-    good = len(list(genes(record.features))) + 1 - len(results)
     # Thus, good is TOTAL - gaps
-    bad = len(results)
+    good = len(list(genes(record.features))) + 1 - bad
     # and bad is just gaps
     return good, bad, results
 
