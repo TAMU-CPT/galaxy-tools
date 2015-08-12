@@ -3,10 +3,14 @@ import os
 import argparse
 import itertools
 from BCBio import GFF
+from Bio.Data import CodonTable
 from Bio import SeqIO
+from Bio.Seq import Seq, reverse_complement, translate
+from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from jinja2 import Template
 import logging
+import re
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -105,6 +109,72 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 
     return good, bad, results
 
+# modified from get_orfs_or_cdss.py
+#-----------------------------------------------------------
+
+# get stop codons
+table_obj = CodonTable.ambiguous_generic_by_id[1]
+stops = sorted(table_obj.stop_codons)
+assert "NNN" not in stops
+re_stops = re.compile("|".join(stops))
+
+def break_up_frame(s):
+    """Returns offset, nuc, protein."""
+    start = 0
+    for match in re_stops.finditer(s):
+        index = match.start() + 3
+        if index % 3 != 0:
+            continue
+        n = s[start:index]
+        offset = 0
+        t = translate(n, 1, to_stop=True)
+        if n and len(t) >= 10:
+            yield start + offset, n, t
+        start = index
+
+def get_peptides(nuc_seq):
+    """Returns start, end, strand, nucleotides, protein.
+    Co-ordinates are Python style zero-based.
+    """
+    #TODO - Refactor to use a generator function (in start order)
+    #rather than making a list and sorting?
+    answer = []
+    full_len = len(nuc_seq)
+
+    for frame in range(0,3):
+        for offset, n, t in break_up_frame(nuc_seq[frame:]):
+            start = frame + offset #zero based
+            answer.append((start, start + len(n), +1, n, t))
+
+    rc = reverse_complement(nuc_seq)
+    for frame in range(0,3) :
+        for offset, n, t in break_up_frame(rc[frame:]):
+            start = full_len - frame - offset #zero based
+            answer.append((start - len(n), start, -1, n ,t))
+    answer.sort()
+    return answer
+
+def filter_gap(record, seq_start, seq_end):
+    out_count = 0
+    for i, (f_start, f_end, f_strand, n, t) in enumerate(get_peptides(str(record[seq_start:seq_end].seq).upper())):
+        out_count += 1
+        if f_strand == +1:
+            loc = "%i..%i" % (f_start+1, f_end)
+        else:
+            loc = "complement(%i..%i)" % (f_start+1, f_end)
+        descr = "length %i aa, %i bp, from %s of %s" \
+                % (len(t), len(n), loc, record.description)
+        fid = record.id + "|%s%i" % ('ORF', i+1)
+        #log.info('\t'.join(map(str,[record.id, f_start, f_end, fid, 0, '+' if f_strand == +1 else '-'])) + '\n')
+
+    # if orfs are found, out_count will be > 0, meaning a "bad" gap
+    if out_count > 0:
+        return True
+    # if out_count == 0, the gap is "acceptable"
+    else:
+        return False
+
+#-----------------------------------------------------------
 
 def excessive_gap(record, excess=10):
     """
@@ -115,7 +185,6 @@ def excessive_gap(record, excess=10):
     results = []
     good = 0
     bad = 0
-
     # This is a dictionary containing True for every point on the genome that
     # has a feature covering it. There is almost certainly a better way to do
     # this, but this is quick&dirty.
@@ -145,7 +214,10 @@ def excessive_gap(record, excess=10):
             # state...
             if not annotated:
                 if unannotated_count > excess:
-                    results.append((region_start, i))
+                    # check if good or bad gap. If bad, append results
+                    # this might not be the best approach
+                    if filter_gap(record, region_start, i) == True:
+                        results.append((region_start, i))
                 unannotated_count = 0
 
             annotated = True
