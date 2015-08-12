@@ -246,7 +246,7 @@ def excessive_gap(record, excess=10):
             annotated = True
 
     # Append any remaining regions to our list of regions which are large gaps.
-    if not annotated:
+    if not annotated and unannotated_count > excess:
         results.append((region_start, i))
 
     # Generally taking "good" here as every possible gap in the genome
