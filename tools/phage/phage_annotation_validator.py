@@ -240,7 +240,7 @@ def excessive_gap(record, excess=10):
                 if unannotated_count > excess:
                     # check if good or bad gap, defined by whether or not it
                     # has possible CDSs found in that gap.
-                    results.append((region_start, i, gap_has_genes(str(record[region_start:i].seq))))
+                    results.append((region_start, i))
                 unannotated_count = 0
 
             annotated = True
@@ -248,6 +248,8 @@ def excessive_gap(record, excess=10):
     # Append any remaining regions to our list of regions which are large gaps.
     if not annotated and unannotated_count > excess:
         results.append((region_start, i))
+
+    results = [(start, end, gap_has_genes(str(record[start:end].seq))) for (start, end) in results]
 
     # Generally taking "good" here as every possible gap in the genome
     good = len(list(genes(record.features))) + 1 - len(results)
