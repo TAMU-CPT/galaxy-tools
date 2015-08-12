@@ -140,6 +140,7 @@ def start_chop_and_trans(s, strict=True):
             return start, n, t
     return None, None, None
 
+
 def break_up_frame(s):
     """Returns offset, nuc, protein."""
     start = 0
@@ -153,6 +154,7 @@ def break_up_frame(s):
         if n and len(t) >= 10:
             yield start + offset, n, t
         start = index
+
 
 def get_peptides(nuc_seq):
     """Returns start, end, strand, nucleotides, protein.
@@ -176,6 +178,7 @@ def get_peptides(nuc_seq):
     answer.sort()
     return answer
 
+
 def gap_has_genes(sequence):
     out_count = 0
     for i, (f_start, f_end, f_strand, n, t) in enumerate(get_peptides(sequence.upper())):
@@ -185,16 +188,17 @@ def gap_has_genes(sequence):
         else:
             loc = "complement(%i..%i)" % (f_start+1, f_end)
         fid = "|%s%i" % ('ORF', i+1)
-        log.info('\t'.join(map(str,[f_start, f_end, fid, 0, '+' if f_strand == +1 else '-'])) + '\n')
+        #log.info('\t'.join(map(str,[f_start, f_end, fid, 0, '+' if f_strand == +1 else '-'])) + '\n')
 
+    return out_count
     # if orfs are found, out_count will be > 0, meaning a "bad" gap
+    log.info('Found %s sequences', out_count)
     if out_count > 0:
         return True
     # if out_count == 0, the gap is "acceptable"
     else:
         return False
 
-#-----------------------------------------------------------
 
 def excessive_gap(record, excess=10):
     """
@@ -234,10 +238,9 @@ def excessive_gap(record, excess=10):
             # state...
             if not annotated:
                 if unannotated_count > excess:
-                    # check if good or bad gap. If bad, append results
-                    # this might not be the best approach
-                    if gap_has_genes(str(record[region_start:i].seq)):
-                        results.append((region_start, i))
+                    # check if good or bad gap, defined by whether or not it
+                    # has possible CDSs found in that gap.
+                    results.append((region_start, i, gap_has_genes(str(record[region_start:i].seq))))
                 unannotated_count = 0
 
             annotated = True
