@@ -33,6 +33,15 @@ ENCOURAGEMENT = (
 )
 
 
+def gen_qc_feature(start, end, message, strand=0):
+    return SeqFeature(
+        FeatureLocation(start, end, strand=strand),
+        qualifiers={
+            'note': [message]
+        }
+    )
+
+
 def __ensure_location_in_bounds(start=0, end=0, parent_length=0):
     # This prevents frameshift errors
     while start < 0:
@@ -59,6 +68,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     results = []
     good = 0
     bad = 0
+    qc_features = []
 
     for gene in genes(record.features):
         # Check if there are RBSs, TODO: make this recursive. Each feature in
@@ -86,6 +96,8 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
             gene.__upstream = seq
             gene.__message = "No RBS"
 
+            qc_features.append(gen_qc_feature(start, end, 'Missing RBS', strand=gene.strand))
+
             bad += 1
             results.append(gene)
         else:
@@ -102,12 +114,19 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
             # If the RBS is too far away, annotate that
             if distance > lookahead_max:
                 gene.__message = "RBS too far away (%s nt)" % distance
+
+                qc_features.append(gen_qc_feature(
+                    rbs.location.start,
+                    rbs.location.end,
+                    gene.__message,
+                    strand=gene.strand))
+
                 bad += 1
                 results.append(gene)
             else:
                 good += 1
 
-    return good, bad, results, []
+    return good, bad, results, qc_features
 
 # modified from get_orfs_or_cdss.py
 #-----------------------------------------------------------
@@ -222,6 +241,14 @@ def excessive_gap(record, excess=10):
         if b[0] > a[1] + excess:
             results.append((a[1], b[0]))
 
+    qc_features = [
+        gen_qc_feature(
+            start,
+            end,
+            'Excessive gap, %s bases' % abs(end-start))
+        for (start, end) in results
+    ]
+
     results = [(start, end, putative_genes_in_sequence(str(record[start:end].seq))) for (start, end) in results]
     # Bad gaps are those with more than zero possible genes found
     bad = len([x for x in results if x[2] > 0])
@@ -229,7 +256,7 @@ def excessive_gap(record, excess=10):
     # Thus, good is TOTAL - gaps
     good = len(list(genes(record.features))) + 1 - bad
     # and bad is just gaps
-    return good, bad, results, []
+    return good, bad, results, qc_features
 
 
 def genes(feature_list):
@@ -253,6 +280,7 @@ def excessive_overlap(record, excessive=15):
     """
     results = []
     bad = 0
+    qc_features = []
 
     for (gene_a, gene_b) in itertools.combinations(genes(record.features), 2):
         # Get the CDS from the subfeature list.
@@ -271,11 +299,16 @@ def excessive_overlap(record, excessive=15):
         ix = cas.intersection(cbs)
         if len(ix) >= excessive:
             bad += 1
+            qc_features.append(gen_qc_feature(
+                min(ix),
+                max(ix),
+                "Excessive Overlap")
+            )
             results.append((gene_a, gene_b, min(ix), max(ix)))
 
     # Good isn't accurate here. It's a triangle number and just ugly, but we
     # don't care enough to fix it.
-    return len(list(genes(record.features))), bad, results, []
+    return len(list(genes(record.features))), bad, results, qc_features
 
 
 def get_encouragement(score):
