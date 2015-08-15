@@ -1,0 +1,3 @@
+gene_1
+rbs_gene_2
+cds_gene_3

@@ -1,0 +1,7 @@
+['gene_1', 'rbs_gene_2', 'cds_gene_3']
+##gff-version 3
+##sequence-region 01 1 137473
+01	annotation	remark	1	137473	.	.	.	gff-version=3;sequence-region=%28%2701%27%2C 0%2C 137835%29
+01	feature	gene	28	243	.	+	.	ID=gene_1
+01	feature	Shine_Dalgarno_sequence	616	620	.	+	.	ID=rbs_gene_2;Parent=gene_2
+01	feature	CDS	945	1130	.	+	0	ID=cds_gene_3;Parent=gene_3
