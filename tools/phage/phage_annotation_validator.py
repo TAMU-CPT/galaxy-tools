@@ -112,13 +112,12 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 #-----------------------------------------------------------
 
 # get stop codons
-table_obj = CodonTable.ambiguous_generic_by_id[1]
+table_obj = CodonTable.ambiguous_generic_by_id[11]
 
 starts = sorted(table_obj.start_codons)
 re_starts = re.compile("|".join(starts))
 
 stops = sorted(table_obj.stop_codons)
-assert "NNN" not in stops
 re_stops = re.compile("|".join(stops))
 
 def start_chop_and_trans(s, strict=True):
@@ -180,25 +179,7 @@ def get_peptides(nuc_seq):
 
 
 def putative_genes_in_sequence(sequence):
-    out_count = 0
-    for i, (f_start, f_end, f_strand, n, t) in enumerate(get_peptides(sequence.upper())):
-        out_count += 1
-        if f_strand == +1:
-            loc = "%i..%i" % (f_start+1, f_end)
-        else:
-            loc = "complement(%i..%i)" % (f_start+1, f_end)
-        fid = "|%s%i" % ('ORF', i+1)
-        #log.info('\t'.join(map(str,[f_start, f_end, fid, 0, '+' if f_strand == +1 else '-'])) + '\n')
-
-    return out_count
-    # if orfs are found, out_count will be > 0, meaning a "bad" gap
-    log.info('Found %s sequences', out_count)
-    if out_count > 0:
-        return True
-    # if out_count == 0, the gap is "acceptable"
-    else:
-        return False
-
+    return len(get_peptides(sequence.upper())) > 0
 
 def excessive_gap(record, excess=10):
     """
@@ -246,11 +227,10 @@ def excessive_gap(record, excess=10):
             annotated = True
 
     # Append any remaining regions to our list of regions which are large gaps.
-    if not annotated and unannotated_count > excess:
+    if (not annotated) and (unannotated_count > excess):
         results.append((region_start, i))
 
     results = [(start, end, putative_genes_in_sequence(str(record[start:end].seq))) for (start, end) in results]
-
     # Bad gaps are those with more than zero possible genes found
     bad = len([x for x in results if x[2] > 0])
     # Generally taking "good" here as every possible gap in the genome
