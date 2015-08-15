@@ -3,10 +3,13 @@ import os
 import argparse
 import itertools
 from BCBio import GFF
+from Bio.Data import CodonTable
 from Bio import SeqIO
+from Bio.Seq import reverse_complement, translate
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from jinja2 import Template
 import logging
+import re
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -105,6 +108,78 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 
     return good, bad, results
 
+# modified from get_orfs_or_cdss.py
+#-----------------------------------------------------------
+
+# get stop codons
+table_obj = CodonTable.ambiguous_generic_by_id[11]
+
+starts = sorted(table_obj.start_codons)
+re_starts = re.compile("|".join(starts))
+
+stops = sorted(table_obj.stop_codons)
+re_stops = re.compile("|".join(stops))
+
+def start_chop_and_trans(s, strict=True):
+    """Returns offset, trimmed nuc, protein."""
+    if strict:
+        assert s[-3:] in stops, s
+    assert len(s) % 3 == 0
+    for match in re_starts.finditer(s):
+        #Must check the start is in frame
+        start = match.start()
+        if start % 3 == 0:
+            n = s[start:]
+            assert len(n) % 3 == 0, "%s is len %i" % (n, len(n))
+            if strict:
+                t = translate(n, 11, cds=True)
+            else:
+                #Use when missing stop codon,
+                t = "M" + translate(n[3:], 11, to_stop=True)
+            return start, n, t
+    return None, None, None
+
+
+def break_up_frame(s):
+    """Returns offset, nuc, protein."""
+    start = 0
+    for match in re_stops.finditer(s):
+        index = match.start() + 3
+        if index % 3 != 0:
+            continue
+        n = s[start:index]
+
+        offset, n, t = start_chop_and_trans(n)
+        if n and len(t) >= 10:
+            yield start + offset, n, t
+        start = index
+
+
+def get_peptides(nuc_seq):
+    """Returns start, end, strand, nucleotides, protein.
+    Co-ordinates are Python style zero-based.
+    """
+    #TODO - Refactor to use a generator function (in start order)
+    #rather than making a list and sorting?
+    answer = []
+    full_len = len(nuc_seq)
+
+    for frame in range(0,3):
+        for offset, n, t in break_up_frame(nuc_seq[frame:]):
+            start = frame + offset #zero based
+            answer.append((start, start + len(n), +1, n, t))
+
+    rc = reverse_complement(nuc_seq)
+    for frame in range(0,3) :
+        for offset, n, t in break_up_frame(rc[frame:]):
+            start = full_len - frame - offset #zero based
+            answer.append((start - len(n), start, -1, n ,t))
+    answer.sort()
+    return answer
+
+
+def putative_genes_in_sequence(sequence):
+    return len(get_peptides(sequence.upper())) > 0
 
 def excessive_gap(record, excess=10):
     """
@@ -115,7 +190,6 @@ def excessive_gap(record, excess=10):
     results = []
     good = 0
     bad = 0
-
     # This is a dictionary containing True for every point on the genome that
     # has a feature covering it. There is almost certainly a better way to do
     # this, but this is quick&dirty.
@@ -145,19 +219,23 @@ def excessive_gap(record, excess=10):
             # state...
             if not annotated:
                 if unannotated_count > excess:
+                    # check if good or bad gap, defined by whether or not it
+                    # has possible CDSs found in that gap.
                     results.append((region_start, i))
                 unannotated_count = 0
 
             annotated = True
 
     # Append any remaining regions to our list of regions which are large gaps.
-    if not annotated:
+    if (not annotated) and (unannotated_count > excess):
         results.append((region_start, i))
 
+    results = [(start, end, putative_genes_in_sequence(str(record[start:end].seq))) for (start, end) in results]
+    # Bad gaps are those with more than zero possible genes found
+    bad = len([x for x in results if x[2] > 0])
     # Generally taking "good" here as every possible gap in the genome
-    good = len(list(genes(record.features))) + 1 - len(results)
     # Thus, good is TOTAL - gaps
-    bad = len(results)
+    good = len(list(genes(record.features))) + 1 - bad
     # and bad is just gaps
     return good, bad, results
 
