@@ -28,8 +28,6 @@ def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
 def feature_test(feature, **kwargs):
     for attribute_value in feature.qualifiers.get(kwargs['qualifier'], []):
         if attribute_value in kwargs['attribute_list']:
-            log.info(kwargs['attribute_list'])
-            log.info(attribute_value)
             return True
     return False
 
