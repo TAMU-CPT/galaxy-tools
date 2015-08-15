@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import copy
 import argparse
 import itertools
 from BCBio import GFF
@@ -106,7 +107,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
             else:
                 good += 1
 
-    return good, bad, results
+    return good, bad, results, []
 
 # modified from get_orfs_or_cdss.py
 #-----------------------------------------------------------
@@ -119,6 +120,7 @@ re_starts = re.compile("|".join(starts))
 
 stops = sorted(table_obj.stop_codons)
 re_stops = re.compile("|".join(stops))
+
 
 def start_chop_and_trans(s, strict=True):
     """Returns offset, trimmed nuc, protein."""
@@ -181,6 +183,7 @@ def get_peptides(nuc_seq):
 def putative_genes_in_sequence(sequence):
     return len(get_peptides(sequence.upper())) > 0
 
+
 def excessive_gap(record, excess=10):
     """
     Identify excessive gaps between gene features.
@@ -190,45 +193,34 @@ def excessive_gap(record, excess=10):
     results = []
     good = 0
     bad = 0
-    # This is a dictionary containing True for every point on the genome that
-    # has a feature covering it. There is almost certainly a better way to do
-    # this, but this is quick&dirty.
-    # TODO: replace with real math rather than bruteforcing.
-    annotated_regions = {}
-    for gene in genes(record.features):
-        for i in range(gene.location.start, gene.location.end):
-            annotated_regions[i] = True
 
-    # loop across every base in the genome, if we count a run of Falses, that
-    # indicates a gap, add that to our list of gaps.
-    annotated = True
-    unannotated_count = 0
-    region_start = 0
-    for i in range(1, len(record.seq)):
-        # If it's not annotated
-        if i not in annotated_regions:
-            # Bump the count
-            unannotated_count += 1
-            # Moving from annotated to unannotated
-            if annotated:
-                region_start = i
-            # Ensure we mark that we're in an unannotated region
-            annotated = False
+
+    contiguous_regions = []
+    sorted_genes = sorted(genes(record.features), key=lambda feature: feature.location.start)
+    current_gene = [
+        int(sorted_genes[0].location.start),
+        int(sorted_genes[0].location.end)
+    ]
+    for gene in sorted_genes[1:]:
+        if gene.location.start <= current_gene[1] + excess:
+            current_gene[1] = int(gene.location.end)
         else:
-            # IF we're switching to an annotated state from an unannotated
-            # state...
-            if not annotated:
-                if unannotated_count > excess:
-                    # check if good or bad gap, defined by whether or not it
-                    # has possible CDSs found in that gap.
-                    results.append((region_start, i))
-                unannotated_count = 0
+            contiguous_regions.append(current_gene)
+            current_gene = [int(gene.location.start), int(gene.location.end)]
 
-            annotated = True
+    for i in range(len(contiguous_regions) + 1):
+        if i == 0:
+            a = (1, 1)
+            b = contiguous_regions[i]
+        elif i >= len(contiguous_regions):
+            a = contiguous_regions[i - 1]
+            b = (len(record.seq), None)
+        else:
+            a = contiguous_regions[i - 1]
+            b = contiguous_regions[i]
 
-    # Append any remaining regions to our list of regions which are large gaps.
-    if (not annotated) and (unannotated_count > excess):
-        results.append((region_start, i))
+        if b[0] > a[1] + excess:
+            results.append((a[1], b[0]))
 
     results = [(start, end, putative_genes_in_sequence(str(record[start:end].seq))) for (start, end) in results]
     # Bad gaps are those with more than zero possible genes found
@@ -237,7 +229,7 @@ def excessive_gap(record, excess=10):
     # Thus, good is TOTAL - gaps
     good = len(list(genes(record.features))) + 1 - bad
     # and bad is just gaps
-    return good, bad, results
+    return good, bad, results, []
 
 
 def genes(feature_list):
@@ -283,7 +275,7 @@ def excessive_overlap(record, excessive=15):
 
     # Good isn't accurate here. It's a triangle number and just ugly, but we
     # don't care enough to fix it.
-    return len(list(genes(record.features))), bad, results
+    return len(list(genes(record.features))), bad, results, []
 
 
 def get_encouragement(score):
@@ -326,10 +318,10 @@ def find_morons(record):
             bad += 1
         else:
             good += 1
-    return good, bad, results
+    return good, bad, results, []
 
 
-def evaluate_and_report(annotations, genome):
+def evaluate_and_report(annotations, genome, gff3):
     """
     Generate our HTML evaluation of the genome
     """
@@ -337,20 +329,33 @@ def evaluate_and_report(annotations, genome):
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
     # Get the first GFF3 record
     record = list(GFF.parse(annotations, base_dict=seq_dict))[0]
+
+    gff3_qc_record = copy.deepcopy(record)
+    gff3_qc_record.features = []
+    gff3_qc_features = []
     upstream_min = 5
     upstream_max = 15
 
     log.info("Locating missing RBSs")
-    mb_good, mb_bad, mb_results = missing_rbs(record,
-                                              lookahead_min=upstream_min,
-                                              lookahead_max=upstream_max)
-    log.info('%s %s %s', mb_good, mb_bad, mb_results)
+    mb_good, mb_bad, mb_results, mb_annotations = missing_rbs(
+        record,
+        lookahead_min=upstream_min,
+        lookahead_max=upstream_max
+    )
+    gff3_qc_features += mb_annotations
+    #log.info('%s %s %s', mb_good, mb_bad, mb_results)
+
     log.info("Locating excessive gaps")
-    eg_good, eg_bad, eg_results = excessive_gap(record, excess=3 * upstream_max)
+    eg_good, eg_bad, eg_results, eg_annotations = excessive_gap(record, excess=3 * upstream_max)
+    gff3_qc_features += eg_annotations
+
     log.info("Locating excessive overlaps")
-    eo_good, eo_bad, eo_results = excessive_overlap(record, excessive=15)
+    eo_good, eo_bad, eo_results, eo_annotations = excessive_overlap(record, excessive=15)
+    gff3_qc_features += eo_annotations
+
     log.info("Locating morons")
-    mo_good, mo_bad, mo_results = find_morons(record)
+    mo_good, mo_bad, mo_results, mo_annotations = find_morons(record)
+    gff3_qc_features += mo_annotations
 
     score_good = float(sum((mb_good, eg_good, eo_good)))
     score_bad = float(sum((mb_bad, eg_bad, eo_bad)))
@@ -380,6 +385,10 @@ def evaluate_and_report(annotations, genome):
         'morons_bad': mo_bad,
     }
 
+    with open(gff3, 'w') as handle:
+        gff3_qc_record.features = gff3_qc_features
+        GFF.write([gff3_qc_record], handle)
+
     return REPORT_TEMPLATE.render(**kwargs)
 
 
@@ -387,6 +396,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
     parser.add_argument('annotations', type=file, help='Parent GFF3 annotations')
     parser.add_argument('genome', type=file, help='Genome Sequence')
+    parser.add_argument('--gff3', type=str, help='GFF3 Annotations', default='qc_annotations.gff3')
     args = parser.parse_args()
 
     print evaluate_and_report(**vars(args))

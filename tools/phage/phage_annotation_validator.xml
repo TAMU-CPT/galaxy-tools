@@ -14,6 +14,8 @@ python $__tool_directory__/phage_annotation_validator.py
 $gff3_data
 @GENOME_SELECTOR@
 
+--gff3 $gff3
+
 > $output]]></command>
   <inputs>
       <expand macro="gff3_input" />
@@ -21,6 +23,7 @@ $gff3_data
   </inputs>
   <outputs>
     <data format="html" name="output"/>
+    <data format="gff3" name="gff3" label="Phage QC annotation track"/>
   </outputs>
   <help><![CDATA[
 **What it does**
