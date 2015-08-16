@@ -1,0 +1,13 @@
+##gff-version 3
+##sequence-region Miro 1 176055
+Miro	annotation	remark	1	176055	.	.	.	gff-version=3;sequence-region=%28%27Miro%27%2C 0%2C 176055%29
+Miro	GenBank	CDS	66499	66807	.	-	1	ID=Miro_112.CDS;Name=Miro_112;Parent=Miro_112;obsolete_name=Miro_052;product=hypothetical conserved;signal=signal peptidase I cleavage site 17-18
+Miro	GenBank	CDS	97741	98013	.	-	1	ID=Miro_177.CDS;Name=Miro_177;Parent=Miro_177;obsolete_name=Miro_263;product=hypothetical conserved
+Miro	GenBank	CDS	120100	121539	.	+	1	Alias=Miro_204;ID=Miro_204.CDS;Name=Miro_204;Note=T4 gp12-like;Parent=Miro_204;dbxref=InterPro:IPR011083;obsolete_name=Miro_236;product=short tail fiber protein
+Miro	GenBank	CDS	24933	25313	.	-	1	ID=Miro_40.CDS;Name=Miro_40;Parent=Miro_40;obsolete_name=Miro_124;product=hypothetical conserved
+Miro	GenBank	CDS	138852	139028	.	+	1	Alias=Miro_222;ID=Miro_222.CDS;Name=Miro_222;Parent=Miro_222;dbxref=InterPro:IPR024362;obsolete_name=Miro_218;product=hypothetical conserved
+Miro	GenBank	CDS	139536	141044	.	-	1	ID=Miro_224.CDS;Name=Miro_224;Note=contains helicase superfamily and ATP-binding domains;Parent=Miro_224;dbxref=GO:0003677,GO:0005524,GO:0016787,InterPro:IPR001650,InterPro:IPR006935,InterPro:IPR014001,InterPro:IPR027417;obsolete_name=Miro_216;product=DNA helicase
+Miro	GenBank	CDS	151171	152640	.	+	1	Alias=Miro_244;ID=Miro_244.CDS;Name=Miro_244;Note=contains quinolinate phosphoribosyl transferase domain;Parent=Miro_244;dbxref=GO:0004514,GO:0009435,InterPro:IPR002638,InterPro:IPR007229,InterPro:IPR016471,KEGG:00760%2B6.3.4.21,MetaCyc:PWY-5381,Reactome:REACT_11193,UniPathway:UPA00253;obsolete_name=Miro_196;product=nicotinamide phosphoribosyl transferase
+Miro	GenBank	CDS	72339	73316	.	-	1	ID=Miro_123.CDS;Name=Miro_123;Note=C-5 cytosine-specific active site;Parent=Miro_123;dbxref=GO:0003677,GO:0006306,GO:0008168,InterPro:IPR001525,InterPro:IPR018117,InterPro:IPR029063,KEGG:00270%2B2.1.1.37;obsolete_name=Miro_041;product=cytosine-specific methyltransferase
+Miro	GenBank	CDS	9776	10012	.	-	1	ID=Miro_13.CDS;Name=Miro_13;Parent=Miro_13;obsolete_name=Miro_151;product=hypothetical conserved
+Miro	GenBank	CDS	10345	10737	.	-	1	ID=Miro_15.CDS;Name=Miro_15;Parent=Miro_15;obsolete_name=Miro_149;product=hypothetical conserved;tmhelix=1 TMD %284-21%29 N out%2C C in

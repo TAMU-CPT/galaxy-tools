@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.phage.virtual_suppressor_strain" name="Virtual Suppressor Strain" version="1.0">
+  <description>suppresses stop codons</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python virtual_suppressor_strain.py --version</version_command>
+  <command><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+python $__tool_directory__/virtual_suppressor_strain.py
+@GENOME_SELECTOR@
+$gff3_data
+--suppress
+#for $item in $suppress:
+    "${item.stop_codon}"
+#end for
+
+> $output]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+      <expand macro="genome_selector" />
+      <repeat name="suppress" title="Suppressed Stop Codons" min="1">
+        <param name="stop_codon" label="Stop codon to suppress"
+            help="E.g. TAG" type="text" value="TAG"/>
+      </repeat>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output" label="Suppressed features"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="gff3_data" value="miro.gff3" />
+          <param name="genome_fasta" value="miro.fa" />
+          <param name="stop_codon" value="TAG" />
+          <output name="output" file="suppress.tag.gff3" />
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Given a set of GFF3 annotations, this tool will extend CDSs past specific
+stop codons, suppressing them.
+
+The output is optimised for visualization in JBrowse, alongside the original
+annotation set.
+
+**Acknowledgements**
+
+This tool was developed with significant input from Dr. Jason Gill @ TAMU
+      ]]></help>
+</tool>
