@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import re
 import argparse
+import copy
+from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 
@@ -8,22 +10,26 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
-def get_id(feature=None, parent_prefix=None, idx=None):
-    result = ""
-    if parent_prefix is not None:
-        result += parent_prefix + '|'
-    if idx is not None:
-        result += '%03d_' % idx
-    if 'locus_tag' in feature.qualifiers:
-        result += feature.qualifiers['locus_tag'][0]
-    elif 'gene' in feature.qualifiers:
-        result += feature.qualifiers['gene'][0]
-    elif 'product' in feature.qualifiers:
-        result += feature.qualifiers['product'][0]
-    else:
-        result += '%s_%s_%s' % (feature.location.start, feature.location.end,
-                                feature.location.strand)
-    return result
+
+def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
+    # Either the top level set of [features] or the subfeature attribute
+    for feature in feature_list:
+        if test(feature, **test_kwargs):
+            # Necessary? Or should we just wipe out actual feature's subfeatuers?
+            if not subfeatures:
+                feature_copy = copy.deepcopy(feature)
+                feature_copy.sub_features = []
+                yield feature_copy
+            else:
+                yield feature
+
+        if hasattr(feature, 'sub_features'):
+            for x in feature_lambda(feature.sub_features, test, test_kwargs, subfeatures=subfeatures):
+                yield x
+
+
+def feature_test(feature, **kwargs):
+    return feature.type == kwargs['type']
 
 
 def ensure_location_in_bounds(start=0, end=0, parent_length=0):
@@ -111,108 +117,108 @@ class NaiveSDCaller(object):
             results.append(tmp)
         return results
 
-def shinefind(genbank_file, table_output, gff3_output, lookahead_min=5, lookahead_max=15, top_only=False):
-    records = list(SeqIO.parse(genbank_file, "genbank"))
 
-    results = [['Name', 'Terminus', 'Terminus', 'Strand', 'Upstream Sequence', 'SD', 'Spacing']]
-    gff3 = ['##gff-version 3']
+def shinefind(fasta, gff3, gff3_output, table_output=None, lookahead_min=5, lookahead_max=15, top_only=False):
+    table_output.write('\t'.join(['Name', 'Terminus', 'Terminus', 'Strand', 'Upstream Sequence', 'SD', 'Spacing']))
 
     sd_finder = NaiveSDCaller()
 
-    for record in records:
-        for feature in record.features:
-            if feature.type in ('CDS',):
-                strand = feature.location.strand
-                # n_bases_upstream
-                if strand > 0:
-                    start = feature.location.start - lookahead_max
-                    end = feature.location.start - lookahead_min
-                else:
-                    start = feature.location.end + lookahead_min
-                    end = feature.location.end + lookahead_max
+    # Load up sequence(s) for GFF3 data
+    seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
+    # Parse GFF3 records
+    for record in GFF.parse(gff3, base_dict=seq_dict):
+        # Filter out just coding sequences
+        for cds in feature_lambda(record.features, feature_test, {'type': 'CDS'}, subfeature=False):
+            # Strand information necessary to getting correct upstream sequence
+            # TODO: library?
+            strand = feature.location.strand
+            # n_bases_upstream
+            if strand > 0:
+                start = feature.location.start - lookahead_max
+                end = feature.location.start - lookahead_min
+            else:
+                start = feature.location.end + lookahead_min
+                end = feature.location.end + lookahead_max
 
-                (start, end) = ensure_location_in_bounds(start=start, end=end,
-                                                         parent_length=record.__len__)
+            (start, end) = ensure_location_in_bounds(start=start, end=end,
+                                                        parent_length=record.__len__)
 
-                # Create our temp feature used to obtain correct portion of
-                # genome
-                tmp = SeqFeature(FeatureLocation(start, end, strand=strand),
-                                 type='domain')
-                seq = str(tmp.extract(record.seq))
-                sds = sd_finder.list_sds(seq)
-                sd_features = sd_finder.to_features(sds, strand, start, end)
+            # Create our temp feature used to obtain correct portion of
+            # genome
+            tmp = SeqFeature(FeatureLocation(start, end, strand=strand),
+                                type='domain')
+            seq = str(tmp.extract(record.seq))
+            sds = sd_finder.list_sds(seq)
+            sd_features = sd_finder.to_features(sds, strand, start, end)
 
-                feature_id = get_id(feature)
-                human_strand = '+' if strand == 1 else '-'
-                if len(sds) == 0:
-                    results.append([
+            feature_id = get_id(feature)
+            human_strand = '+' if strand == 1 else '-'
+            if len(sds) == 0:
+                table_output.write('\t'.join([
+                    feature_id,
+                    feature.location.start,
+                    feature.location.end,
+                    human_strand,
+                    seq,
+                    None,
+                    -1,
+                ]))
+                continue
+
+            if top_only:
+                table_output.write('\t'.join([
+                    feature_id,
+                    feature.location.start,
+                    feature.location.end,
+                    human_strand,
+                    sd_finder.highlight_sd(seq, sds[0]['start'], sds[0]['end']),
+                    sds[0]['hit'],
+                    sds[0]['spacing'] + lookahead_min,
+                ]))
+
+                #gff3.append('\t'.join(map(str,[
+                    #record.id,
+                    #'CPT_ShineFind',
+                    #'Shine_Dalgarno_sequence',
+                    #sd_features[0].location.start,
+                    #sd_features[0].location.end,
+                    #'.',
+                    #human_strand,
+                    #'.',
+                    #'ID=rbs_%s' % (feature_id, )
+                #])))
+            else:
+                for sd in sds:
+                    table_output.write('\t'.join([
                         feature_id,
                         feature.location.start,
                         feature.location.end,
                         human_strand,
-                        seq,
-                        None,
-                        -1,
-                    ])
-                    continue
+                        sd_finder.highlight_sd(seq, sd['start'], sd['end']),
+                        sd['hit'],
+                        sd['spacing'] + lookahead_min,
+                    ]))
+                    #gff3.append('\t'.join(map(str,[
+                        #record.id,
+                        #'CPT_ShineFind',
+                        #'Shine_Dalgarno_sequence',
+                        #sd_features[0].location.start,
+                        #sd_features[0].location.end,
+                        #'.',
+                        #human_strand,
+                        #'.',
+                        #'ID=rbs_%s' % (feature_id, )
+                    #])))
 
-                if top_only:
-                    results.append([
-                        feature_id,
-                        feature.location.start,
-                        feature.location.end,
-                        human_strand,
-                        sd_finder.highlight_sd(seq, sds[0]['start'], sds[0]['end']),
-                        sds[0]['hit'],
-                        sds[0]['spacing'] + lookahead_min,
-                    ])
-
-                    gff3.append('\t'.join(map(str,[
-                        record.id,
-                        'CPT_ShineFind',
-                        'Shine_Dalgarno_sequence',
-                        sd_features[0].location.start,
-                        sd_features[0].location.end,
-                        '.',
-                        human_strand,
-                        '.',
-                        'ID=rbs_%s' % (feature_id, )
-                    ])))
-                else:
-                    for sd in sds:
-                        results.append([
-                            feature_id,
-                            feature.location.start,
-                            feature.location.end,
-                            human_strand,
-                            sd_finder.highlight_sd(seq, sd['start'], sd['end']),
-                            sd['hit'],
-                            sd['spacing'] + lookahead_min,
-                        ])
-                        gff3.append('\t'.join(map(str,[
-                            record.id,
-                            'CPT_ShineFind',
-                            'Shine_Dalgarno_sequence',
-                            sd_features[0].location.start,
-                            sd_features[0].location.end,
-                            '.',
-                            human_strand,
-                            '.',
-                            'ID=rbs_%s' % (feature_id, )
-                        ])))
-
-    human_table = '\n'.join(['\t'.join(map(str, row)) for row in results])
-    with open(table_output, 'w') as handle:
-        handle.write(human_table)
-
-    with open(gff3_output, 'w') as handle:
-        handle.write('\n'.join(gff3))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
-    parser.add_argument('genbank_file', type=file, help='Genbank file')
-    parser.add_argument('table_output', help='Tabular Output')
+    parser.add_argument('fasta', type=file, help='Fasta Genome')
+    parser.add_argument('gff3', type=file, help='GFF3 annotations')
+
     parser.add_argument('gff3_output', help='GFF3 Output')
+    parser.add_argument('--table_output', type=argparse.FileType('w'), help='Tabular Output', default='shinefind.tbl')
+
     parser.add_argument('--lookahead_min', nargs='?', type=int, help='Number of bases upstream of CDSs to end search', default=5)
     parser.add_argument('--lookahead_max', nargs='?', type=int, help='Number of bases upstream of CDSs to begin search', default=15)
 
