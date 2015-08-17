@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.revcom" name="GFF3 Reverse and Complement" version="1.0.0">
+  <description>reverses and complements the entire set of features</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python revcom.py --version</version_command>
+  <command><![CDATA[
+$__tool_directory__/revcom.py
+$gff3_data
+> $default]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="default"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="gff3_data" value="mga.gff3" />
+          <output name="default" file="mga.revcom.gff3" />
+      </test>
+  </tests>
+  <help><![CDATA[]]></help>
+</tool>
