@@ -1,0 +1,871 @@
+ID	Name	Terminus	Terminus	Strand	Upstream Sequence	SD	Spacing
+Miro_8.CDS	hypothetical conserved	7453	7894	-	tgt GAGG att	GAGG	8
+Miro_8.CDS	hypothetical conserved	7453	7894	-	tgtg AGGA tt	AGGA	7
+Miro_8.CDS	hypothetical conserved	7453	7894	-	tgtga GGA tt	GGA	7
+Miro_8.CDS	hypothetical conserved	7453	7894	-	tgt GAG gatt	GAG	9
+Miro_8.CDS	hypothetical conserved	7453	7894	-	tgtg AGG att	AGG	8
+Miro_9.CDS	hypothetical conserved	7916	8501	-	ataa AGGT at	AGGT	7
+Miro_9.CDS	hypothetical conserved	7916	8501	-	ataa AGG tat	AGG	8
+Miro_9.CDS	hypothetical conserved	7916	8501	-	ataaa GGT at	GGT	7
+Miro_206.CDS	hypothetical conserved	123285	124212	+	ctttt GAGG a	GAGG	6
+Miro_206.CDS	hypothetical conserved	123285	124212	+	cttttg AGGA 	AGGA	5
+Miro_206.CDS	hypothetical conserved	123285	124212	+	cttttga GGA 	GGA	5
+Miro_206.CDS	hypothetical conserved	123285	124212	+	ctttt GAG ga	GAG	7
+Miro_206.CDS	hypothetical conserved	123285	124212	+	cttttg AGG a	AGG	6
+Miro_117.CDS	hypothetical conserved	68489	70706	-	ataaat GAG a	GAG	6
+Miro_200.CDS	baseplate structural protein	115742	116735	+	a AGGT aggaa	AGGT	10
+Miro_200.CDS	baseplate structural protein	115742	116735	+	aaggt AGGA a	AGGA	6
+Miro_200.CDS	baseplate structural protein	115742	116735	+	aaggta GGA a	GGA	6
+Miro_200.CDS	baseplate structural protein	115742	116735	+	a AGG taggaa	AGG	11
+Miro_200.CDS	baseplate structural protein	115742	116735	+	aaggt AGG aa	AGG	7
+Miro_200.CDS	baseplate structural protein	115742	116735	+	aa GGT aggaa	GGT	10
+Miro_201.CDS	baseplate structural protein	116744	117608	+	ttcta AGGA a	AGGA	6
+Miro_201.CDS	baseplate structural protein	116744	117608	+	ttctaa GGA a	GGA	6
+Miro_201.CDS	baseplate structural protein	116744	117608	+	ttcta AGG aa	AGG	7
+Miro_202.CDS	baseplate structural protein	117604	119422	+	atcag GGA tc	GGA	7
+Miro_202.CDS	baseplate structural protein	117604	119422	+	atc AGG gatc	AGG	9
+Miro_203.CDS	baseplate to short tail fiber connector protein	119421	120090	+	gataa GGGT t	GGGT	6
+Miro_203.CDS	baseplate to short tail fiber connector protein	119421	120090	+	gata AGG gtt	AGG	8
+Miro_203.CDS	baseplate to short tail fiber connector protein	119421	120090	+	gataag GGT t	GGT	6
+Miro_142.CDS	hypothetical conserved	81828	81927	-	ac GGA aagcg	GGA	10
+Miro_1.CDS	rIIb	0	900	-	aatac GGT gg	GGT	7
+Miro_2.CDS	rIIa	899	3161	-	agt GAG aaat	GAG	9
+Miro_3.CDS	hypothetical conserved	3171	3408	-	aaagag GGGT 	GGGT	5
+Miro_3.CDS	hypothetical conserved	3171	3408	-	aaa GAGG ggt	GAGG	8
+Miro_3.CDS	hypothetical conserved	3171	3408	-	aaaga GGGG t	GGGG	6
+Miro_3.CDS	hypothetical conserved	3171	3408	-	aaa GAG gggt	GAG	9
+Miro_3.CDS	hypothetical conserved	3171	3408	-	aaag AGG ggt	AGG	8
+Miro_3.CDS	hypothetical conserved	3171	3408	-	aaagagg GGT 	GGT	5
+Miro_4.CDS	hypothetical conserved	3411	3966	-	aa AGGAG att	AGGAG	8
+Miro_4.CDS	hypothetical conserved	3411	3966	-	aa AGGA gatt	AGGA	9
+Miro_4.CDS	hypothetical conserved	3411	3966	-	aaa GGAG att	GGAG	8
+Miro_4.CDS	hypothetical conserved	3411	3966	-	aaa GGA gatt	GGA	9
+Miro_4.CDS	hypothetical conserved	3411	3966	-	aaag GAG att	GAG	8
+Miro_4.CDS	hypothetical conserved	3411	3966	-	aa AGG agatt	AGG	10
+Miro_5.CDS	DNA topoisomerase II medium subunit	4037	5324	-	ttcta AGGT t	AGGT	6
+Miro_5.CDS	DNA topoisomerase II medium subunit	4037	5324	-	ttcta AGG tt	AGG	7
+Miro_5.CDS	DNA topoisomerase II medium subunit	4037	5324	-	ttctaa GGT t	GGT	6
+Miro_6.CDS	DNA topoisomerase II, large subunit	5323	7222	-	aacaaa GAGG 	GAGG	5
+Miro_6.CDS	DNA topoisomerase II, large subunit	5323	7222	-	aacaaa GAG g	GAG	6
+Miro_6.CDS	DNA topoisomerase II, large subunit	5323	7222	-	aacaaag AGG 	AGG	5
+Miro_7.CDS	hypothetical conserved	7289	7454	-	aaaa GAG att	GAG	8
+Miro_207.CDS	neck protein	124221	124968	+	atgta AGGAG 	AGGAG	5
+Miro_207.CDS	neck protein	124221	124968	+	atgta AGGA g	AGGA	6
+Miro_207.CDS	neck protein	124221	124968	+	atgtaa GGAG 	GGAG	5
+Miro_207.CDS	neck protein	124221	124968	+	atgtaa GGA g	GGA	6
+Miro_207.CDS	neck protein	124221	124968	+	atgtaag GAG 	GAG	5
+Miro_207.CDS	neck protein	124221	124968	+	atgta AGG ag	AGG	7
+Miro_269.CDS	hypothetical conserved	173060	173351	-	tgtaa AGGT t	AGGT	6
+Miro_269.CDS	hypothetical conserved	173060	173351	-	tgtaa AGG tt	AGG	7
+Miro_269.CDS	hypothetical conserved	173060	173351	-	tgtaaa GGT t	GGT	6
+Miro_112.CDS	hypothetical conserved	66522	66807	-	aat GAGG aat	GAGG	8
+Miro_112.CDS	hypothetical conserved	66522	66807	-	aatg AGGA at	AGGA	7
+Miro_112.CDS	hypothetical conserved	66522	66807	-	aatga GGA at	GGA	7
+Miro_112.CDS	hypothetical conserved	66522	66807	-	aat GAG gaat	GAG	9
+Miro_112.CDS	hypothetical conserved	66522	66807	-	aatg AGG aat	AGG	8
+Miro_113.CDS	hypothetical conserved	66878	67163	-	ccactg GGGT 	GGGT	5
+Miro_113.CDS	hypothetical conserved	66878	67163	-	ccact GGGG t	GGGG	6
+Miro_113.CDS	hypothetical conserved	66878	67163	-	ccactgg GGT 	GGT	5
+Miro_69.CDS	RNA ligase	44574	45732	+	 GGA ataaaca	GGA	12
+Miro_68.CDS	homing endonuclease	44228	44594	+	tt GGA tatat	GGA	10
+Miro_67	hypothetical conserved	43904	44225	+	TCAGTGATGA	None	-1
+Miro_66.CDS	ribonucleotide reductase, small subunit	42757	43933	+	tttaa AGGT a	AGGT	6
+Miro_66.CDS	ribonucleotide reductase, small subunit	42757	43933	+	tttaa AGG ta	AGG	7
+Miro_66.CDS	ribonucleotide reductase, small subunit	42757	43933	+	tttaaa GGT a	GGT	6
+Miro_65.CDS	ribonucleotide reductase, large subunit	40468	42721	+	taaca AGGT a	AGGT	6
+Miro_65.CDS	ribonucleotide reductase, large subunit	40468	42721	+	taaca AGG ta	AGG	7
+Miro_65.CDS	ribonucleotide reductase, large subunit	40468	42721	+	taacaa GGT a	GGT	6
+Miro_64.CDS	thymidylate synthase	39553	40429	+	ataaaa AGGT 	AGGT	5
+Miro_64.CDS	thymidylate synthase	39553	40429	+	ataaaa AGG t	AGG	6
+Miro_64.CDS	thymidylate synthase	39553	40429	+	ataaaaa GGT 	GGT	5
+Miro_63.CDS	dihydrofolate reductase	38973	39552	+	aatgt GGA tc	GGA	7
+Miro_62.CDS	hypothetical conserved	38719	38977	+	tgaac AGGA a	AGGA	6
+Miro_62.CDS	hypothetical conserved	38719	38977	+	tgaaca GGA a	GGA	6
+Miro_62.CDS	hypothetical conserved	38719	38977	+	tgaac AGG aa	AGG	7
+Miro_61.CDS	hypothetical conserved	38492	38723	+	tgcat GGAG t	GGAG	6
+Miro_61.CDS	hypothetical conserved	38492	38723	+	tgcat GGA gt	GGA	7
+Miro_61.CDS	hypothetical conserved	38492	38723	+	tgcatg GAG t	GAG	6
+Miro_60.CDS	hypothetical conserved	38205	38496	+	ttt GAGG aaa	GAGG	8
+Miro_60.CDS	hypothetical conserved	38205	38496	+	tttg AGGA aa	AGGA	7
+Miro_60.CDS	hypothetical conserved	38205	38496	+	tttga GGA aa	GGA	7
+Miro_60.CDS	hypothetical conserved	38205	38496	+	ttt GAG gaaa	GAG	9
+Miro_60.CDS	hypothetical conserved	38205	38496	+	tttg AGG aaa	AGG	8
+Miro_176.CDS	hypothetical conserved	97403	97727	-	ttt GAGG atc	GAGG	8
+Miro_176.CDS	hypothetical conserved	97403	97727	-	tttg AGGA tc	AGGA	7
+Miro_176.CDS	hypothetical conserved	97403	97727	-	tttga GGA tc	GGA	7
+Miro_176.CDS	hypothetical conserved	97403	97727	-	ttt GAG gatc	GAG	9
+Miro_176.CDS	hypothetical conserved	97403	97727	-	tttg AGG atc	AGG	8
+Miro_177.CDS	hypothetical conserved	97755	98013	-	aaccaa AGG c	AGG	6
+Miro_174.CDS	hypothetical conserved	95965	96880	-	gtat GAG aat	GAG	8
+Miro_175.CDS	hypothetical conserved	96876	97404	-	gat GGT gatt	GGT	9
+Miro_172.CDS	hypothetical conserved	95497	95692	-	tc AGGT ttac	AGGT	9
+Miro_172.CDS	hypothetical conserved	95497	95692	-	tc AGG tttac	AGG	10
+Miro_172.CDS	hypothetical conserved	95497	95692	-	tca GGT ttac	GGT	9
+Miro_173.CDS	hypothetical conserved	95688	95889	-	agaa AGGA aa	AGGA	7
+Miro_173.CDS	hypothetical conserved	95688	95889	-	agaaa GGA aa	GGA	7
+Miro_173.CDS	hypothetical conserved	95688	95889	-	agaa AGG aaa	AGG	8
+Miro_170.CDS	hypothetical conserved	94532	95108	-	ctatgt GAGG 	GAGG	5
+Miro_170.CDS	hypothetical conserved	94532	95108	-	ctatgt GAG g	GAG	6
+Miro_170.CDS	hypothetical conserved	94532	95108	-	ctatgtg AGG 	AGG	5
+Miro_171.CDS	hypothetical conserved	95115	95514	-	aaagt GAGGT 	GAGGT	5
+Miro_171.CDS	hypothetical conserved	95115	95514	-	aaagtg AGGT 	AGGT	5
+Miro_171.CDS	hypothetical conserved	95115	95514	-	aaagt GAGG t	GAGG	6
+Miro_171.CDS	hypothetical conserved	95115	95514	-	aaagt GAG gt	GAG	7
+Miro_171.CDS	hypothetical conserved	95115	95514	-	aaagtg AGG t	AGG	6
+Miro_171.CDS	hypothetical conserved	95115	95514	-	aaagtga GGT 	GGT	5
+Miro_178.CDS	hypothetical conserved	98014	98398	-	gat GAG aaat	GAG	9
+Miro_179.CDS	NUDIX hydrolase	98408	98816	-	tttgc GGGT g	GGGT	6
+Miro_179.CDS	NUDIX hydrolase	98408	98816	-	tttgcg GGT g	GGT	6
+Miro_194.CDS	restriction endonuclease	105708	106176	-	ttt AGGA ttt	AGGA	8
+Miro_194.CDS	restriction endonuclease	105708	106176	-	ttta GGA ttt	GGA	8
+Miro_194.CDS	restriction endonuclease	105708	106176	-	ttt AGG attt	AGG	9
+Miro_195.CDS	baseplate wedge protein	106226	106781	+	ata GGGG aac	GGGG	8
+Miro_195.CDS	baseplate wedge protein	106226	106781	+	atagg GGA ac	GGA	7
+Miro_195.CDS	baseplate wedge protein	106226	106781	+	at AGG ggaac	AGG	10
+Miro_196.CDS	baseplate hub structural protein and tail lysozyme	106777	108547	+	 GGA aaaggct	GGA	12
+Miro_196.CDS	baseplate hub structural protein and tail lysozyme	106777	108547	+	ggaaa AGG ct	AGG	7
+Miro_197.CDS	hypothetical conserved	108551	110618	+	aagtg GGGT a	GGGT	6
+Miro_197.CDS	hypothetical conserved	108551	110618	+	aagt GGGG ta	GGGG	7
+Miro_197.CDS	hypothetical conserved	108551	110618	+	aagtgg GGT a	GGT	6
+Miro_190.CDS	tail tube protein	102566	103097	-	aggaa AGGAG 	AGGAG	5
+Miro_190.CDS	tail tube protein	102566	103097	-	 AGGA aaggag	AGGA	11
+Miro_190.CDS	tail tube protein	102566	103097	-	aggaa AGGA g	AGGA	6
+Miro_190.CDS	tail tube protein	102566	103097	-	aggaaa GGAG 	GGAG	5
+Miro_190.CDS	tail tube protein	102566	103097	-	a GGA aaggag	GGA	11
+Miro_190.CDS	tail tube protein	102566	103097	-	aggaaa GGA g	GGA	6
+Miro_190.CDS	tail tube protein	102566	103097	-	aggaaag GAG 	GAG	5
+Miro_190.CDS	tail tube protein	102566	103097	-	 AGG aaaggag	AGG	12
+Miro_190.CDS	tail tube protein	102566	103097	-	aggaa AGG ag	AGG	7
+Miro_191.CDS	hypothetical conserved	103466	104255	+	atc AGGA aaa	AGGA	8
+Miro_191.CDS	hypothetical conserved	103466	104255	+	atca GGA aaa	GGA	8
+Miro_191.CDS	hypothetical conserved	103466	104255	+	atc AGG aaaa	AGG	9
+Miro_192.CDS	homing endonuclease	104360	104819	+	gct GGA atcg	GGA	9
+Miro_124.CDS	hypothetical conserved	73312	73570	-	aac GGAG tgg	GGAG	8
+Miro_124.CDS	hypothetical conserved	73312	73570	-	aac GGA gtgg	GGA	9
+Miro_124.CDS	hypothetical conserved	73312	73570	-	aacg GAG tgg	GAG	8
+Miro_208.CDS	hypothetical conserved	125047	125872	+	tac AGGA aaa	AGGA	8
+Miro_208.CDS	hypothetical conserved	125047	125872	+	taca GGA aaa	GGA	8
+Miro_208.CDS	hypothetical conserved	125047	125872	+	tac AGG aaaa	AGG	9
+Miro_198.CDS	hypothetical conserved	110649	112575	+	 GAGG aattta	GAGG	11
+Miro_198.CDS	hypothetical conserved	110649	112575	+	g AGGA attta	AGGA	10
+Miro_198.CDS	hypothetical conserved	110649	112575	+	ga GGA attta	GGA	10
+Miro_198.CDS	hypothetical conserved	110649	112575	+	 GAG gaattta	GAG	12
+Miro_198.CDS	hypothetical conserved	110649	112575	+	g AGG aattta	AGG	11
+Miro_199.CDS	hypothetical conserved	112655	115742	+	attt GGAG aa	GGAG	7
+Miro_199.CDS	hypothetical conserved	112655	115742	+	attt GGA gaa	GGA	8
+Miro_199.CDS	hypothetical conserved	112655	115742	+	atttg GAG aa	GAG	7
+Miro_219.CDS	homing endonuclease	136167	136806	+	attc GAGG ct	GAGG	7
+Miro_219.CDS	homing endonuclease	136167	136806	+	attc GAG gct	GAG	8
+Miro_219.CDS	homing endonuclease	136167	136806	+	attcg AGG ct	AGG	7
+Miro_209.CDS	terminase, small subunit	125871	126369	+	acc GAGG ggc	GAGG	8
+Miro_209.CDS	terminase, small subunit	125871	126369	+	accga GGGG c	GGGG	6
+Miro_209.CDS	terminase, small subunit	125871	126369	+	acc GAG gggc	GAG	9
+Miro_209.CDS	terminase, small subunit	125871	126369	+	accg AGG ggc	AGG	8
+Miro_169.CDS	hypothetical conserved	93914	94193	-	caaa AGGA aa	AGGA	7
+Miro_169.CDS	hypothetical conserved	93914	94193	-	caaaa GGA aa	GGA	7
+Miro_169.CDS	hypothetical conserved	93914	94193	-	caaa AGG aaa	AGG	8
+Miro_168.CDS	hypothetical conserved	93591	93843	-	acga AGGAGG 	AGGAGG	5
+Miro_168.CDS	hypothetical conserved	93591	93843	-	acga AGGAG g	AGGAG	6
+Miro_168.CDS	hypothetical conserved	93591	93843	-	acgaa GGAGG 	GGAGG	5
+Miro_168.CDS	hypothetical conserved	93591	93843	-	acgaag GAGG 	GAGG	5
+Miro_168.CDS	hypothetical conserved	93591	93843	-	acga AGGA gg	AGGA	7
+Miro_168.CDS	hypothetical conserved	93591	93843	-	acgaa GGAG g	GGAG	6
+Miro_168.CDS	hypothetical conserved	93591	93843	-	acgaa GGA gg	GGA	7
+Miro_168.CDS	hypothetical conserved	93591	93843	-	acgaag GAG g	GAG	6
+Miro_168.CDS	hypothetical conserved	93591	93843	-	acga AGG agg	AGG	8
+Miro_168.CDS	hypothetical conserved	93591	93843	-	acgaagg AGG 	AGG	5
+Miro_78.CDS	dCMP deaminase	48770	49277	+	atcacgt GGT 	GGT	5
+Miro_79.CDS	chaperonin-GroEL	49280	49634	+	c GGA tcaaat	GGA	11
+Miro_204.CDS	short tail fiber protein	120099	121485	+	gcata AGGA t	AGGA	6
+Miro_204.CDS	short tail fiber protein	120099	121485	+	gcataa GGA t	GGA	6
+Miro_204.CDS	short tail fiber protein	120099	121485	+	gcata AGG at	AGG	7
+Miro_74.CDS	nucleoside triphosphate hydrolase	47031	47916	+	atat GAG ata	GAG	8
+Miro_75.CDS	hypothetical conserved	47968	48256	+	aaa GAGG att	GAGG	8
+Miro_75.CDS	hypothetical conserved	47968	48256	+	aaag AGGA tt	AGGA	7
+Miro_75.CDS	hypothetical conserved	47968	48256	+	aaaga GGA tt	GGA	7
+Miro_75.CDS	hypothetical conserved	47968	48256	+	aaa GAG gatt	GAG	9
+Miro_75.CDS	hypothetical conserved	47968	48256	+	aaag AGG att	AGG	8
+Miro_76.CDS	hypothetical conserved	48252	48504	+	ATGGGCGGCT	None	-1
+Miro_77.CDS	hypothetical conserved	48496	48781	+	taa AGGT gat	AGGT	8
+Miro_77.CDS	hypothetical conserved	48496	48781	+	taa AGG tgat	AGG	9
+Miro_77.CDS	hypothetical conserved	48496	48781	+	taaa GGT gat	GGT	8
+Miro_70.CDS	homing endonuclease	45728	46265	+	tcct GGAG ag	GGAG	7
+Miro_70.CDS	homing endonuclease	45728	46265	+	tcct GGA gag	GGA	8
+Miro_70.CDS	homing endonuclease	45728	46265	+	tcctg GAG ag	GAG	7
+Miro_71.CDS	i-spanin	46233	46569	+	at GAGG aaac	GAGG	9
+Miro_71.CDS	i-spanin	46233	46569	+	atg AGGA aac	AGGA	8
+Miro_71.CDS	i-spanin	46233	46569	+	atga GGA aac	GGA	8
+Miro_71.CDS	i-spanin	46233	46569	+	at GAG gaaac	GAG	10
+Miro_71.CDS	i-spanin	46233	46569	+	atg AGG aaac	AGG	9
+Miro_72.CDS	o-spanin	46565	46883	+	ga AGGA ttac	AGGA	9
+Miro_72.CDS	o-spanin	46565	46883	+	gaa GGA ttac	GGA	9
+Miro_72.CDS	o-spanin	46565	46883	+	ga AGG attac	AGG	10
+Miro_73.CDS	hypothetical conserved	46867	47035	+	g GGA tacccc	GGA	11
+Miro_161.CDS	hypothetical conserved	90379	90760	-	atgaa GAGG a	GAGG	6
+Miro_161.CDS	hypothetical conserved	90379	90760	-	atgaag AGGA 	AGGA	5
+Miro_161.CDS	hypothetical conserved	90379	90760	-	atgaaga GGA 	GGA	5
+Miro_161.CDS	hypothetical conserved	90379	90760	-	atgaa GAG ga	GAG	7
+Miro_161.CDS	hypothetical conserved	90379	90760	-	atgaag AGG a	AGG	6
+Miro_160.CDS	hypothetical conserved	90051	90399	-	aacg GGAGG c	GGAGG	6
+Miro_160.CDS	hypothetical conserved	90051	90399	-	aacgg GAGG c	GAGG	6
+Miro_160.CDS	hypothetical conserved	90051	90399	-	aacg GGAG gc	GGAG	7
+Miro_160.CDS	hypothetical conserved	90051	90399	-	aacg GGA ggc	GGA	8
+Miro_160.CDS	hypothetical conserved	90051	90399	-	aacgg GAG gc	GAG	7
+Miro_160.CDS	hypothetical conserved	90051	90399	-	aacggg AGG c	AGG	6
+Miro_163.CDS	radical SAM superfamily protein	91042	92197	-	cattat GAGG 	GAGG	5
+Miro_163.CDS	radical SAM superfamily protein	91042	92197	-	cattat GAG g	GAG	6
+Miro_163.CDS	radical SAM superfamily protein	91042	92197	-	cattatg AGG 	AGG	5
+Miro_187.CDS	hypothetical conserved	100921	101545	-	ttattg GGGT 	GGGT	5
+Miro_187.CDS	hypothetical conserved	100921	101545	-	ttatt GGGG t	GGGG	6
+Miro_187.CDS	hypothetical conserved	100921	101545	-	ttattgg GGT 	GGT	5
+Miro_186.CDS	hypothetical conserved	100374	100914	-	atcagt GAGG 	GAGG	5
+Miro_186.CDS	hypothetical conserved	100374	100914	-	atcagt GAG g	GAG	6
+Miro_186.CDS	hypothetical conserved	100374	100914	-	atcagtg AGG 	AGG	5
+Miro_185.CDS	hypothetical conserved	100168	100309	-	acaa AGGAGG 	AGGAGG	5
+Miro_185.CDS	hypothetical conserved	100168	100309	-	acaa AGGAG g	AGGAG	6
+Miro_185.CDS	hypothetical conserved	100168	100309	-	acaaa GGAGG 	GGAGG	5
+Miro_185.CDS	hypothetical conserved	100168	100309	-	acaaag GAGG 	GAGG	5
+Miro_185.CDS	hypothetical conserved	100168	100309	-	acaa AGGA gg	AGGA	7
+Miro_185.CDS	hypothetical conserved	100168	100309	-	acaaa GGAG g	GGAG	6
+Miro_185.CDS	hypothetical conserved	100168	100309	-	acaaa GGA gg	GGA	7
+Miro_185.CDS	hypothetical conserved	100168	100309	-	acaaag GAG g	GAG	6
+Miro_185.CDS	hypothetical conserved	100168	100309	-	acaa AGG agg	AGG	8
+Miro_185.CDS	hypothetical conserved	100168	100309	-	acaaagg AGG 	AGG	5
+Miro_162.CDS	hypothetical conserved	90743	91046	-	cgcggt GGA a	GGA	6
+Miro_162.CDS	hypothetical conserved	90743	91046	-	cgc GGT ggaa	GGT	9
+Miro_183.CDS	hypothetical conserved	99592	99928	-	agt GAG aaat	GAG	9
+Miro_182.CDS	hypothetical conserved	99302	99596	-	 GGA atatgta	GGA	12
+Miro_181.CDS	hypothetical conserved	99058	99310	-	ATTTCGAAGA	None	-1
+Miro_180.CDS	hypothetical conserved	98816	99062	-	aat AGG ctat	AGG	9
+Miro_165.CDS	hypothetical conserved	92930	93185	-	aaacc GGAG a	GGAG	6
+Miro_165.CDS	hypothetical conserved	92930	93185	-	aaacc GGA ga	GGA	7
+Miro_165.CDS	hypothetical conserved	92930	93185	-	aaaccg GAG a	GAG	6
+Miro_189.CDS	hypothetical conserved	101871	102567	-	aaa GAG aatg	GAG	9
+Miro_164.CDS	hypothetical conserved	92209	92938	+	cat AGGA acc	AGGA	8
+Miro_164.CDS	hypothetical conserved	92209	92938	+	cata GGA acc	GGA	8
+Miro_164.CDS	hypothetical conserved	92209	92938	+	cat AGG aacc	AGG	9
+Miro_167.CDS	hypothetical conserved	93448	93595	-	cgc GGT acgt	GGT	9
+Miro_205.CDS	neck whisker protein	121495	123247	+	aata GAGGT t	GAGGT	6
+Miro_205.CDS	neck whisker protein	121495	123247	+	aatag AGGT t	AGGT	6
+Miro_205.CDS	neck whisker protein	121495	123247	+	aata GAGG tt	GAGG	7
+Miro_205.CDS	neck whisker protein	121495	123247	+	aata GAG gtt	GAG	8
+Miro_205.CDS	neck whisker protein	121495	123247	+	aatag AGG tt	AGG	7
+Miro_205.CDS	neck whisker protein	121495	123247	+	aataga GGT t	GGT	6
+Miro_166.CDS	hypothetical conserved	93251	93452	-	ttat GGA aat	GGA	8
+Miro_49.CDS	hypothetical conserved	30314	30560	-	gata AGG cgt	AGG	8
+Miro_48.CDS	helicase assembly protein	29658	30318	-	tct GGA cggc	GGA	9
+Miro_118.CDS	hypothetical conserved	70713	71034	-	gac GAG tcat	GAG	9
+Miro_119.CDS	hypothetical conserved	71033	71549	-	ttg GGAG aaa	GGAG	8
+Miro_119.CDS	hypothetical conserved	71033	71549	-	ttg GGA gaaa	GGA	9
+Miro_119.CDS	hypothetical conserved	71033	71549	-	ttgg GAG aaa	GAG	8
+Miro_41.CDS	hypothetical conserved	25309	25597	-	tga GAGG gat	GAGG	8
+Miro_41.CDS	hypothetical conserved	25309	25597	-	tgagag GGA t	GGA	6
+Miro_41.CDS	hypothetical conserved	25309	25597	-	t GAG agggat	GAG	11
+Miro_41.CDS	hypothetical conserved	25309	25597	-	tgag AGG gat	AGG	8
+Miro_40.CDS	hypothetical conserved	24983	25313	-	aat GGAGG ac	GGAGG	7
+Miro_40.CDS	hypothetical conserved	24983	25313	-	aatg GAGG ac	GAGG	7
+Miro_40.CDS	hypothetical conserved	24983	25313	-	aatgg AGGA c	AGGA	6
+Miro_40.CDS	hypothetical conserved	24983	25313	-	aat GGAG gac	GGAG	8
+Miro_40.CDS	hypothetical conserved	24983	25313	-	aat GGA ggac	GGA	9
+Miro_40.CDS	hypothetical conserved	24983	25313	-	aatgga GGA c	GGA	6
+Miro_40.CDS	hypothetical conserved	24983	25313	-	aatg GAG gac	GAG	8
+Miro_40.CDS	hypothetical conserved	24983	25313	-	aatgg AGG ac	AGG	7
+Miro_43.CDS	hypothetical conserved	26031	26595	-	ctg GGAGG cg	GGAGG	7
+Miro_43.CDS	hypothetical conserved	26031	26595	-	ctgg GAGG cg	GAGG	7
+Miro_43.CDS	hypothetical conserved	26031	26595	-	ctg GGAG gcg	GGAG	8
+Miro_43.CDS	hypothetical conserved	26031	26595	-	ctg GGA ggcg	GGA	9
+Miro_43.CDS	hypothetical conserved	26031	26595	-	ctgg GAG gcg	GAG	8
+Miro_43.CDS	hypothetical conserved	26031	26595	-	ctggg AGG cg	AGG	7
+Miro_42.CDS	translational repressor protein	25665	26028	-	aaacaat GGT 	GGT	5
+Miro_45.CDS	DNA polymerase processivity component	27654	28320	-	aactaa AGG c	AGG	6
+Miro_44.CDS	sliding-clamp-loader subunit	26597	27596	-	ttttga AGGT 	AGGT	5
+Miro_44.CDS	sliding-clamp-loader subunit	26597	27596	-	ttttga AGG t	AGG	6
+Miro_44.CDS	sliding-clamp-loader subunit	26597	27596	-	ttttgaa GGT 	GGT	5
+Miro_47.CDS	ssDNA-binding protein	28671	29643	-	ac GAG aaaac	GAG	10
+Miro_46.CDS	RNA polymerase binding protein	28346	28616	-	tta GAG aaga	GAG	9
+Miro_258.CDS	hypothetical conserved	159736	160702	+	tt GAG agata	GAG	10
+Miro_263.CDS	hypothetical conserved	165802	166927	+	tgagt GGGT g	GGGT	6
+Miro_263.CDS	hypothetical conserved	165802	166927	+	t GAG tgggtg	GAG	11
+Miro_263.CDS	hypothetical conserved	165802	166927	+	tgagtg GGT g	GGT	6
+Miro_210.CDS	terminase, large subunit	126365	128186	+	 GGA atgtgag	GGA	12
+Miro_210.CDS	terminase, large subunit	126365	128186	+	ggaatgt GAG 	GAG	5
+Miro_56.CDS	hypothetical conserved	34203	34491	+	ca GAGGT tac	GAGGT	8
+Miro_56.CDS	hypothetical conserved	34203	34491	+	cag AGGT tac	AGGT	8
+Miro_56.CDS	hypothetical conserved	34203	34491	+	ca GAGG ttac	GAGG	9
+Miro_56.CDS	hypothetical conserved	34203	34491	+	ca GAG gttac	GAG	10
+Miro_56.CDS	hypothetical conserved	34203	34491	+	cag AGG ttac	AGG	9
+Miro_56.CDS	hypothetical conserved	34203	34491	+	caga GGT tac	GGT	8
+Miro_57.CDS	methyl methanesulphonate-sensitivity protein	34474	36172	+	cccaa AGGA t	AGGA	6
+Miro_57.CDS	methyl methanesulphonate-sensitivity protein	34474	36172	+	cccaaa GGA t	GGA	6
+Miro_57.CDS	methyl methanesulphonate-sensitivity protein	34474	36172	+	cccaa AGG at	AGG	7
+Miro_54.CDS	hypothetical conserved	32807	33134	+	tcat GGAG at	GGAG	7
+Miro_54.CDS	hypothetical conserved	32807	33134	+	tcat GGA gat	GGA	8
+Miro_54.CDS	hypothetical conserved	32807	33134	+	tcatg GAG at	GAG	7
+Miro_55.CDS	exonuclease	33185	34217	+	at GAG aaagt	GAG	10
+Miro_52.CDS	hypothetical conserved	32075	32603	+	cttcaaa GAG 	GAG	5
+Miro_53.CDS	hypothetical conserved	32599	32815	+	att GGA agat	GGA	9
+Miro_50.CDS	dsDNA-binding protein	30563	30827	-	tttt GAGGT a	GAGGT	6
+Miro_50.CDS	dsDNA-binding protein	30563	30827	-	ttttg AGGT a	AGGT	6
+Miro_50.CDS	dsDNA-binding protein	30563	30827	-	tttt GAGG ta	GAGG	7
+Miro_50.CDS	dsDNA-binding protein	30563	30827	-	tttt GAG gta	GAG	8
+Miro_50.CDS	dsDNA-binding protein	30563	30827	-	ttttg AGG ta	AGG	7
+Miro_50.CDS	dsDNA-binding protein	30563	30827	-	ttttga GGT a	GGT	6
+Miro_51.CDS	5'-3' exonuclease	30836	31772	-	aaaatt GAGG 	GAGG	5
+Miro_51.CDS	5'-3' exonuclease	30836	31772	-	aaaatt GAG g	GAG	6
+Miro_51.CDS	5'-3' exonuclease	30836	31772	-	aaaattg AGG 	AGG	5
+Miro_58.CDS	hypothetical conserved	36171	36363	+	tgatc GAGGT 	GAGGT	5
+Miro_58.CDS	hypothetical conserved	36171	36363	+	tgatcg AGGT 	AGGT	5
+Miro_58.CDS	hypothetical conserved	36171	36363	+	tgatc GAGG t	GAGG	6
+Miro_58.CDS	hypothetical conserved	36171	36363	+	tgatc GAG gt	GAG	7
+Miro_58.CDS	hypothetical conserved	36171	36363	+	tgatcg AGG t	AGG	6
+Miro_58.CDS	hypothetical conserved	36171	36363	+	tgatcga GGT 	GGT	5
+Miro_59.CDS	hypothetical conserved	36436	38146	+	ttt GAGG aac	GAGG	8
+Miro_59.CDS	hypothetical conserved	36436	38146	+	tttg AGGA ac	AGGA	7
+Miro_59.CDS	hypothetical conserved	36436	38146	+	tttga GGA ac	GGA	7
+Miro_59.CDS	hypothetical conserved	36436	38146	+	ttt GAG gaac	GAG	9
+Miro_59.CDS	hypothetical conserved	36436	38146	+	tttg AGG aac	AGG	8
+Miro_109.CDS	tail lysozyme	65406	65799	+	ttaa AGGT gg	AGGT	7
+Miro_109.CDS	tail lysozyme	65406	65799	+	ttaa AGG tgg	AGG	8
+Miro_109.CDS	tail lysozyme	65406	65799	+	ttaaa GGT gg	GGT	7
+Miro_108.CDS	baseplate structural protein	64851	65406	+	aca AGGT gct	AGGT	8
+Miro_108.CDS	baseplate structural protein	64851	65406	+	aca AGG tgct	AGG	9
+Miro_108.CDS	baseplate structural protein	64851	65406	+	acaa GGT gct	GGT	8
+Miro_107.CDS	baseplate structural protein	64111	64855	+	cctttt GAGG 	GAGG	5
+Miro_107.CDS	baseplate structural protein	64111	64855	+	cctttt GAG g	GAG	6
+Miro_107.CDS	baseplate structural protein	64111	64855	+	ccttttg AGG 	AGG	5
+Miro_106.CDS	tail tube protein	63219	64083	+	tacta AGGAG 	AGGAG	5
+Miro_106.CDS	tail tube protein	63219	64083	+	tacta AGGA g	AGGA	6
+Miro_106.CDS	tail tube protein	63219	64083	+	tactaa GGAG 	GGAG	5
+Miro_106.CDS	tail tube protein	63219	64083	+	tactaa GGA g	GGA	6
+Miro_106.CDS	tail tube protein	63219	64083	+	tactaag GAG 	GAG	5
+Miro_106.CDS	tail tube protein	63219	64083	+	tacta AGG ag	AGG	7
+Miro_105.CDS	tail tube assembly protein	62136	63210	+	cata AGGA ac	AGGA	7
+Miro_105.CDS	tail tube assembly protein	62136	63210	+	cataa GGA ac	GGA	7
+Miro_105.CDS	tail tube assembly protein	62136	63210	+	cata AGG aac	AGG	8
+Miro_104.CDS	hypothetical conserved	60353	62126	+	catt GGT gaa	GGT	8
+Miro_103.CDS	baseplate structural protein	59775	60351	+	caattt GAGG 	GAGG	5
+Miro_103.CDS	baseplate structural protein	59775	60351	+	caattt GAG g	GAG	6
+Miro_103.CDS	baseplate structural protein	59775	60351	+	caatttg AGG 	AGG	5
+Miro_102.CDS	baseplate structural protein	58596	59706	-	tt AGGAGG ga	AGGAGG	7
+Miro_102.CDS	baseplate structural protein	58596	59706	-	tt AGGAG gga	AGGAG	8
+Miro_102.CDS	baseplate structural protein	58596	59706	-	tta GGAGG ga	GGAGG	7
+Miro_102.CDS	baseplate structural protein	58596	59706	-	ttag GAGG ga	GAGG	7
+Miro_102.CDS	baseplate structural protein	58596	59706	-	tt AGGA ggga	AGGA	9
+Miro_102.CDS	baseplate structural protein	58596	59706	-	tta GGAG gga	GGAG	8
+Miro_102.CDS	baseplate structural protein	58596	59706	-	tta GGA ggga	GGA	9
+Miro_102.CDS	baseplate structural protein	58596	59706	-	ttaggag GGA 	GGA	5
+Miro_102.CDS	baseplate structural protein	58596	59706	-	ttag GAG gga	GAG	8
+Miro_102.CDS	baseplate structural protein	58596	59706	-	tt AGG aggga	AGG	10
+Miro_102.CDS	baseplate structural protein	58596	59706	-	ttagg AGG ga	AGG	7
+Miro_101.CDS	hypothetical conserved	58222	58600	+	ca AGGA aaat	AGGA	9
+Miro_101.CDS	hypothetical conserved	58222	58600	+	caa GGA aaat	GGA	9
+Miro_101.CDS	hypothetical conserved	58222	58600	+	ca AGG aaaat	AGG	10
+Miro_100.CDS	hypothetical conserved	57945	58236	+	agc GGA aaat	GGA	9
+Miro_228.CDS	hypothetical conserved	142779	143313	+	taa GAGGT ta	GAGGT	7
+Miro_228.CDS	hypothetical conserved	142779	143313	+	taag AGGT ta	AGGT	7
+Miro_228.CDS	hypothetical conserved	142779	143313	+	taa GAGG tta	GAGG	8
+Miro_228.CDS	hypothetical conserved	142779	143313	+	taa GAG gtta	GAG	9
+Miro_228.CDS	hypothetical conserved	142779	143313	+	taag AGG tta	AGG	8
+Miro_228.CDS	hypothetical conserved	142779	143313	+	taaga GGT ta	GGT	7
+Miro_229.CDS	hypothetical conserved	143323	143599	+	tctaa GAGG c	GAGG	6
+Miro_229.CDS	hypothetical conserved	143323	143599	+	tctaa GAG gc	GAG	7
+Miro_229.CDS	hypothetical conserved	143323	143599	+	tctaag AGG c	AGG	6
+Miro_222.CDS	hypothetical conserved	138851	139028	+	agaaagt GGT 	GGT	5
+Miro_223.CDS	ATP-dependent DNA helicase	139302	139536	-	aattta GAGG 	GAGG	5
+Miro_223.CDS	ATP-dependent DNA helicase	139302	139536	-	aattta GAG g	GAG	6
+Miro_223.CDS	ATP-dependent DNA helicase	139302	139536	-	aatttag AGG 	AGG	5
+Miro_220.CDS	major capsid protein	136838	138128	+	acgc AGGA ac	AGGA	7
+Miro_220.CDS	major capsid protein	136838	138128	+	acgca GGA ac	GGA	7
+Miro_220.CDS	major capsid protein	136838	138128	+	acgc AGG aac	AGG	8
+Miro_221.CDS	UvsY recombination protein	138432	138852	+	attggt GAG t	GAG	6
+Miro_221.CDS	UvsY recombination protein	138432	138852	+	att GGT gagt	GGT	9
+Miro_226.CDS	hypothetical conserved	141830	142142	+	aga AGGA aat	AGGA	8
+Miro_226.CDS	hypothetical conserved	141830	142142	+	agaa GGA aat	GGA	8
+Miro_226.CDS	hypothetical conserved	141830	142142	+	aga AGG aaat	AGG	9
+Miro_227.CDS	hypothetical conserved	142181	142751	+	tctttt AGGT 	AGGT	5
+Miro_227.CDS	hypothetical conserved	142181	142751	+	tctttt AGG t	AGG	6
+Miro_227.CDS	hypothetical conserved	142181	142751	+	tctttta GGT 	GGT	5
+Miro_224.CDS	DNA helicase	139544	141044	-	tat AGGA tac	AGGA	8
+Miro_224.CDS	DNA helicase	139544	141044	-	tata GGA tac	GGA	8
+Miro_224.CDS	DNA helicase	139544	141044	-	tat AGG atac	AGG	9
+Miro_225.CDS	hypothetical conserved	141114	141738	+	catt GGAG aa	GGAG	7
+Miro_225.CDS	hypothetical conserved	141114	141738	+	catt GGA gaa	GGA	8
+Miro_225.CDS	hypothetical conserved	141114	141738	+	cattg GAG aa	GAG	7
+Miro_248.CDS	recombination endonuclease	154051	154534	+	ctgaat GGT g	GGT	6
+Miro_249.CDS	hypothetical novel	154530	154857	+	aatga AGG ca	AGG	7
+Miro_240.CDS	hypothetical conserved	149246	149828	+	GCAAAATCCT	None	-1
+Miro_241.CDS	hypothetical conserved	149821	150346	+	aacgtt GGA t	GGA	6
+Miro_242.CDS	hypothetical conserved	150423	150684	+	aga AGGA taa	AGGA	8
+Miro_242.CDS	hypothetical conserved	150423	150684	+	agaa GGA taa	GGA	8
+Miro_242.CDS	hypothetical conserved	150423	150684	+	aga AGG ataa	AGG	9
+Miro_243.CDS	hypothetical conserved	150693	151143	+	ttcta AGGA a	AGGA	6
+Miro_243.CDS	hypothetical conserved	150693	151143	+	ttctaa GGA a	GGA	6
+Miro_243.CDS	hypothetical conserved	150693	151143	+	ttcta AGG aa	AGG	7
+Miro_244.CDS	nicotinamide phosphoribosyl transferase	151170	152604	+	acgt GGAG ta	GGAG	7
+Miro_244.CDS	nicotinamide phosphoribosyl transferase	151170	152604	+	acgt GGA gta	GGA	8
+Miro_244.CDS	nicotinamide phosphoribosyl transferase	151170	152604	+	acgtg GAG ta	GAG	7
+Miro_245.CDS	hypothetical conserved	152590	152893	+	 AGGA aattag	AGGA	11
+Miro_245.CDS	hypothetical conserved	152590	152893	+	a GGA aattag	GGA	11
+Miro_245.CDS	hypothetical conserved	152590	152893	+	 AGG aaattag	AGG	12
+Miro_246.CDS	DNA adenine methylase	153015	153741	+	tgc GGT ggcc	GGT	9
+Miro_247.CDS	glutaredoxin	153749	154019	+	aatgta AGGT 	AGGT	5
+Miro_247.CDS	glutaredoxin	153749	154019	+	aatgta AGG t	AGG	6
+Miro_247.CDS	glutaredoxin	153749	154019	+	aatgtaa GGT 	GGT	5
+Miro_23.CDS	DNA helicase	12731	14060	-	 GGT attgatt	GGT	12
+Miro_22.CDS	hypothetical conserved	12398	12707	-	cccttt GAGG 	GAGG	5
+Miro_22.CDS	hypothetical conserved	12398	12707	-	cccttt GAG g	GAG	6
+Miro_22.CDS	hypothetical conserved	12398	12707	-	ccctttg AGG 	AGG	5
+Miro_21.CDS	hypothetical conserved	12113	12398	-	ctt GAGG gat	GAGG	8
+Miro_21.CDS	hypothetical conserved	12113	12398	-	cttgag GGA t	GGA	6
+Miro_21.CDS	hypothetical conserved	12113	12398	-	ctt GAG ggat	GAG	9
+Miro_21.CDS	hypothetical conserved	12113	12398	-	cttg AGG gat	AGG	8
+Miro_20.CDS	hypothetical conserved	11727	12117	-	taagcg GGGT 	GGGT	5
+Miro_20.CDS	hypothetical conserved	11727	12117	-	taagc GGGG t	GGGG	6
+Miro_20.CDS	hypothetical conserved	11727	12117	-	taagcgg GGT 	GGT	5
+Miro_27.CDS	DNA primase	15072	16098	-	caact GAGGT 	GAGGT	5
+Miro_27.CDS	DNA primase	15072	16098	-	caactg AGGT 	AGGT	5
+Miro_27.CDS	DNA primase	15072	16098	-	caact GAGG t	GAGG	6
+Miro_27.CDS	DNA primase	15072	16098	-	caact GAG gt	GAG	7
+Miro_27.CDS	DNA primase	15072	16098	-	caactg AGG t	AGG	6
+Miro_27.CDS	DNA primase	15072	16098	-	caactga GGT 	GGT	5
+Miro_26.CDS	dCTP pyrophosphatase	14528	15065	-	aaaaat GAG a	GAG	6
+Miro_25.CDS	hypothetical conserved	14343	14529	-	GGCTAACAAC	None	-1
+Miro_24.CDS	hypothetical conserved	14056	14347	-	ttat GAGG gg	GAGG	7
+Miro_24.CDS	hypothetical conserved	14056	14347	-	ttatga GGGG 	GGGG	5
+Miro_24.CDS	hypothetical conserved	14056	14347	-	ttat GAG ggg	GAG	8
+Miro_24.CDS	hypothetical conserved	14056	14347	-	ttatg AGG gg	AGG	7
+Miro_29.CDS	hypothetical conserved	16417	16636	-	gaaa AGGA aa	AGGA	7
+Miro_29.CDS	hypothetical conserved	16417	16636	-	gaaaa GGA aa	GGA	7
+Miro_29.CDS	hypothetical conserved	16417	16636	-	gaaa AGG aaa	AGG	8
+Miro_28.CDS	hypothetical conserved	16101	16362	-	tt AGGAGG at	AGGAGG	7
+Miro_28.CDS	hypothetical conserved	16101	16362	-	tt AGGAG gat	AGGAG	8
+Miro_28.CDS	hypothetical conserved	16101	16362	-	tta GGAGG at	GGAGG	7
+Miro_28.CDS	hypothetical conserved	16101	16362	-	ttag GAGG at	GAGG	7
+Miro_28.CDS	hypothetical conserved	16101	16362	-	tt AGGA ggat	AGGA	9
+Miro_28.CDS	hypothetical conserved	16101	16362	-	tta GGAG gat	GGAG	8
+Miro_28.CDS	hypothetical conserved	16101	16362	-	tta GGA ggat	GGA	9
+Miro_28.CDS	hypothetical conserved	16101	16362	-	ttagga GGA t	GGA	6
+Miro_28.CDS	hypothetical conserved	16101	16362	-	ttag GAG gat	GAG	8
+Miro_28.CDS	hypothetical conserved	16101	16362	-	tt AGG aggat	AGG	10
+Miro_28.CDS	hypothetical conserved	16101	16362	-	ttagg AGG at	AGG	7
+Miro_132.CDS	NUDIX hydrolase	76661	77723	-	aacgt GGAG c	GGAG	6
+Miro_132.CDS	NUDIX hydrolase	76661	77723	-	aacgt GGA gc	GGA	7
+Miro_132.CDS	NUDIX hydrolase	76661	77723	-	aacgtg GAG c	GAG	6
+Miro_133.CDS	hypothetical conserved	77899	78814	-	cttat GGA aa	GGA	7
+Miro_130.CDS	hypothetical conserved	76024	76297	-	aat GGA agaa	GGA	9
+Miro_131.CDS	hypothetical conserved	76293	76488	-	tgaaa AGGA a	AGGA	6
+Miro_131.CDS	hypothetical conserved	76293	76488	-	tgaaaa GGA a	GGA	6
+Miro_131.CDS	hypothetical conserved	76293	76488	-	tgaaa AGG aa	AGG	7
+Miro_136.CDS	hypothetical conserved	79667	80060	-	caaa AGGAG a	AGGAG	6
+Miro_136.CDS	hypothetical conserved	79667	80060	-	caaa AGGA ga	AGGA	7
+Miro_136.CDS	hypothetical conserved	79667	80060	-	caaaa GGAG a	GGAG	6
+Miro_136.CDS	hypothetical conserved	79667	80060	-	caaaa GGA ga	GGA	7
+Miro_136.CDS	hypothetical conserved	79667	80060	-	caaaag GAG a	GAG	6
+Miro_136.CDS	hypothetical conserved	79667	80060	-	caaa AGG aga	AGG	8
+Miro_137.CDS	thymidine kinase	80076	80685	-	ttgtt GAG ag	GAG	7
+Miro_134.CDS	hypothetical conserved	78885	79308	-	ggatta GGGT 	GGGT	5
+Miro_134.CDS	hypothetical conserved	78885	79308	-	 GGA ttagggt	GGA	12
+Miro_134.CDS	hypothetical conserved	78885	79308	-	ggatt AGG gt	AGG	7
+Miro_134.CDS	hypothetical conserved	78885	79308	-	ggattag GGT 	GGT	5
+Miro_135.CDS	hypothetical conserved	79279	79561	-	aaaa GAG taa	GAG	8
+Miro_138.CDS	hypothetical conserved	80677	80875	-	a AGGA tggtt	AGGA	10
+Miro_138.CDS	hypothetical conserved	80677	80875	-	aa GGA tggtt	GGA	10
+Miro_138.CDS	hypothetical conserved	80677	80875	-	a AGG atggtt	AGG	11
+Miro_138.CDS	hypothetical conserved	80677	80875	-	aaggat GGT t	GGT	6
+Miro_139.CDS	hypothetical conserved	80867	81083	-	t GAG tggtta	GAG	11
+Miro_139.CDS	hypothetical conserved	80867	81083	-	tgagt GGT ta	GGT	7
+Miro_211.CDS	tail sheath protein	128205	130197	+	a GAGG aaact	GAGG	10
+Miro_211.CDS	tail sheath protein	128205	130197	+	ag AGGA aact	AGGA	9
+Miro_211.CDS	tail sheath protein	128205	130197	+	aga GGA aact	GGA	9
+Miro_211.CDS	tail sheath protein	128205	130197	+	a GAG gaaact	GAG	11
+Miro_211.CDS	tail sheath protein	128205	130197	+	ag AGG aaact	AGG	10
+Miro_239.CDS	RNA ligase	148237	149257	+	atgaa AGGT t	AGGT	6
+Miro_239.CDS	RNA ligase	148237	149257	+	atgaa AGG tt	AGG	7
+Miro_239.CDS	RNA ligase	148237	149257	+	atgaaa GGT t	GGT	6
+Miro_184.CDS	hypothetical conserved	99938	100079	-	aaaa AGGAGG 	AGGAGG	5
+Miro_184.CDS	hypothetical conserved	99938	100079	-	aaaa AGGAG g	AGGAG	6
+Miro_184.CDS	hypothetical conserved	99938	100079	-	aaaaa GGAGG 	GGAGG	5
+Miro_184.CDS	hypothetical conserved	99938	100079	-	aaaaag GAGG 	GAGG	5
+Miro_184.CDS	hypothetical conserved	99938	100079	-	aaaa AGGA gg	AGGA	7
+Miro_184.CDS	hypothetical conserved	99938	100079	-	aaaaa GGAG g	GGAG	6
+Miro_184.CDS	hypothetical conserved	99938	100079	-	aaaaa GGA gg	GGA	7
+Miro_184.CDS	hypothetical conserved	99938	100079	-	aaaaag GAG g	GAG	6
+Miro_184.CDS	hypothetical conserved	99938	100079	-	aaaa AGG agg	AGG	8
+Miro_184.CDS	hypothetical conserved	99938	100079	-	aaaaagg AGG 	AGG	5
+Miro_235.CDS	hypothetical conserved	146852	147029	+	tttttgt GAG 	GAG	5
+Miro_234.CDS	hypothetical conserved	146538	146856	+	ttaaag GGAG 	GGAG	5
+Miro_234.CDS	hypothetical conserved	146538	146856	+	ttaaag GGA g	GGA	6
+Miro_234.CDS	hypothetical conserved	146538	146856	+	ttaaagg GAG 	GAG	5
+Miro_234.CDS	hypothetical conserved	146538	146856	+	ttaa AGG gag	AGG	8
+Miro_237.CDS	hypothetical conserved	147353	147710	+	ccaa AGGA aa	AGGA	7
+Miro_237.CDS	hypothetical conserved	147353	147710	+	ccaaa GGA aa	GGA	7
+Miro_237.CDS	hypothetical conserved	147353	147710	+	ccaa AGG aaa	AGG	8
+Miro_236.CDS	hypothetical conserved	147025	147352	+	ggaaa AGGA t	AGGA	6
+Miro_236.CDS	hypothetical conserved	147025	147352	+	 GGA aaaggat	GGA	12
+Miro_236.CDS	hypothetical conserved	147025	147352	+	ggaaaa GGA t	GGA	6
+Miro_236.CDS	hypothetical conserved	147025	147352	+	ggaaa AGG at	AGG	7
+Miro_231.CDS	hypothetical conserved	144162	144627	-	aact GAGG aa	GAGG	7
+Miro_231.CDS	hypothetical conserved	144162	144627	-	aactg AGGA a	AGGA	6
+Miro_231.CDS	hypothetical conserved	144162	144627	-	aactga GGA a	GGA	6
+Miro_231.CDS	hypothetical conserved	144162	144627	-	aact GAG gaa	GAG	8
+Miro_231.CDS	hypothetical conserved	144162	144627	-	aactg AGG aa	AGG	7
+Miro_230.CDS	hypothetical conserved	143612	144131	+	aaaata AGG c	AGG	6
+Miro_233.CDS	hypothetical conserved	145630	146506	+	cata AGGT at	AGGT	7
+Miro_233.CDS	hypothetical conserved	145630	146506	+	cata AGG tat	AGG	8
+Miro_233.CDS	hypothetical conserved	145630	146506	+	cataa GGT at	GGT	7
+Miro_232.CDS	hypothetical conserved	144676	145516	-	act GGAG aat	GGAG	8
+Miro_232.CDS	hypothetical conserved	144676	145516	-	act GGA gaat	GGA	9
+Miro_232.CDS	hypothetical conserved	144676	145516	-	actg GAG aat	GAG	8
+Miro_259.CDS	hypothetical conserved	160744	161413	+	tttat GAGGT 	GAGGT	5
+Miro_259.CDS	hypothetical conserved	160744	161413	+	tttatg AGGT 	AGGT	5
+Miro_259.CDS	hypothetical conserved	160744	161413	+	tttat GAGG t	GAGG	6
+Miro_259.CDS	hypothetical conserved	160744	161413	+	tttat GAG gt	GAG	7
+Miro_259.CDS	hypothetical conserved	160744	161413	+	tttatg AGG t	AGG	6
+Miro_259.CDS	hypothetical conserved	160744	161413	+	tttatga GGT 	GGT	5
+Miro_110.CDS	hypothetical conserved	65833	66289	-	tgaaat GAGG 	GAGG	5
+Miro_110.CDS	hypothetical conserved	65833	66289	-	tgaaat GAG g	GAG	6
+Miro_110.CDS	hypothetical conserved	65833	66289	-	tgaaatg AGG 	AGG	5
+Miro_253	hypothetical conserved	157780	157987	+	ATTAAAGTCT	None	-1
+Miro_252.CDS	hypothetical conserved	157286	157781	+	att GAGG gat	GAGG	8
+Miro_252.CDS	hypothetical conserved	157286	157781	+	attgag GGA t	GGA	6
+Miro_252.CDS	hypothetical conserved	157286	157781	+	att GAG ggat	GAG	9
+Miro_252.CDS	hypothetical conserved	157286	157781	+	attg AGG gat	AGG	8
+Miro_251.CDS	hypothetical conserved	157044	157287	+	aaa AGGAG ac	AGGAG	7
+Miro_251.CDS	hypothetical conserved	157044	157287	+	aaa AGGA gac	AGGA	8
+Miro_251.CDS	hypothetical conserved	157044	157287	+	aaaa GGAG ac	GGAG	7
+Miro_251.CDS	hypothetical conserved	157044	157287	+	aaaa GGA gac	GGA	8
+Miro_251.CDS	hypothetical conserved	157044	157287	+	aaaag GAG ac	GAG	7
+Miro_251.CDS	hypothetical conserved	157044	157287	+	aaa AGG agac	AGG	9
+Miro_250.CDS	anaerobic ribonucleoside-triphosphate reductase	154853	156977	+	ccata AGG ca	AGG	7
+Miro_257.CDS	ribonucleoside-triphosphate reductase activating protein	159175	159667	+	tacat GGAG a	GGAG	6
+Miro_257.CDS	ribonucleoside-triphosphate reductase activating protein	159175	159667	+	tacat GGA ga	GGA	7
+Miro_257.CDS	ribonucleoside-triphosphate reductase activating protein	159175	159667	+	tacatg GAG a	GAG	6
+Miro_256.CDS	homing endonuclease	158537	159179	+	aacat GGA ac	GGA	7
+Miro_255.CDS	hypothetical conserved	158319	158511	+	acta AGGAGG 	AGGAGG	5
+Miro_255.CDS	hypothetical conserved	158319	158511	+	acta AGGAG g	AGGAG	6
+Miro_255.CDS	hypothetical conserved	158319	158511	+	actaa GGAGG 	GGAGG	5
+Miro_255.CDS	hypothetical conserved	158319	158511	+	actaag GAGG 	GAGG	5
+Miro_255.CDS	hypothetical conserved	158319	158511	+	acta AGGA gg	AGGA	7
+Miro_255.CDS	hypothetical conserved	158319	158511	+	actaa GGAG g	GGAG	6
+Miro_255.CDS	hypothetical conserved	158319	158511	+	actaa GGA gg	GGA	7
+Miro_255.CDS	hypothetical conserved	158319	158511	+	actaag GAG g	GAG	6
+Miro_255.CDS	hypothetical conserved	158319	158511	+	acta AGG agg	AGG	8
+Miro_255.CDS	hypothetical conserved	158319	158511	+	actaagg AGG 	AGG	5
+Miro_254.CDS	hypothetical conserved	158007	158259	+	cttt GAGG ca	GAGG	7
+Miro_254.CDS	hypothetical conserved	158007	158259	+	cttt GAG gca	GAG	8
+Miro_254.CDS	hypothetical conserved	158007	158259	+	ctttg AGG ca	AGG	7
+Miro_30.CDS	major capsid protein	16632	17121	-	aata GAG taa	GAG	8
+Miro_31.CDS	radical SAM protein	17126	17813	-	ACTTACGAAG	None	-1
+Miro_32.CDS	hypothetical conserved	17838	18231	-	taaaga GGGT 	GGGT	5
+Miro_32.CDS	hypothetical conserved	17838	18231	-	taaa GAGG gt	GAGG	7
+Miro_32.CDS	hypothetical conserved	17838	18231	-	taaa GAG ggt	GAG	8
+Miro_32.CDS	hypothetical conserved	17838	18231	-	taaag AGG gt	AGG	7
+Miro_32.CDS	hypothetical conserved	17838	18231	-	taaagag GGT 	GGT	5
+Miro_33.CDS	hypothetical conserved	18227	18464	-	acaa AGGAGG 	AGGAGG	5
+Miro_33.CDS	hypothetical conserved	18227	18464	-	acaa AGGAG g	AGGAG	6
+Miro_33.CDS	hypothetical conserved	18227	18464	-	acaaa GGAGG 	GGAGG	5
+Miro_33.CDS	hypothetical conserved	18227	18464	-	acaaag GAGG 	GAGG	5
+Miro_33.CDS	hypothetical conserved	18227	18464	-	acaa AGGA gg	AGGA	7
+Miro_33.CDS	hypothetical conserved	18227	18464	-	acaaa GGAG g	GGAG	6
+Miro_33.CDS	hypothetical conserved	18227	18464	-	acaaa GGA gg	GGA	7
+Miro_33.CDS	hypothetical conserved	18227	18464	-	acaaag GAG g	GAG	6
+Miro_33.CDS	hypothetical conserved	18227	18464	-	acaa AGG agg	AGG	8
+Miro_33.CDS	hypothetical conserved	18227	18464	-	acaaagg AGG 	AGG	5
+Miro_34.CDS	hypothetical conserved	18555	18810	-	caa AGGAG at	AGGAG	7
+Miro_34.CDS	hypothetical conserved	18555	18810	-	caa AGGA gat	AGGA	8
+Miro_34.CDS	hypothetical conserved	18555	18810	-	caaa GGAG at	GGAG	7
+Miro_34.CDS	hypothetical conserved	18555	18810	-	caaa GGA gat	GGA	8
+Miro_34.CDS	hypothetical conserved	18555	18810	-	caaag GAG at	GAG	7
+Miro_34.CDS	hypothetical conserved	18555	18810	-	caa AGG agat	AGG	9
+Miro_35.CDS	hypothetical conserved	18888	19158	-	atgta AGGT a	AGGT	6
+Miro_35.CDS	hypothetical conserved	18888	19158	-	atgta AGG ta	AGG	7
+Miro_35.CDS	hypothetical conserved	18888	19158	-	atgtaa GGT a	GGT	6
+Miro_36.CDS	DNA helicase	19201	20638	-	gtata AGG ca	AGG	7
+Miro_37.CDS	head formation protein	20647	20968	-	taacc GAGG c	GAGG	6
+Miro_37.CDS	head formation protein	20647	20968	-	taacc GAG gc	GAG	7
+Miro_37.CDS	head formation protein	20647	20968	-	taaccg AGG c	AGG	6
+Miro_38.CDS	DNA recombination and repair protein	21005	22163	-	aatc GGA aaa	GGA	8
+Miro_39.CDS	DNA polymerase	22237	24937	-	AGAATACAAG	None	-1
+Miro_188.CDS	hypothetical conserved	101596	101857	-	acaat GGGT a	GGGT	6
+Miro_188.CDS	hypothetical conserved	101596	101857	-	acaatg GGT a	GGT	6
+Miro_125.CDS	hypothetical conserved	73569	73815	-	tgt GAGGT ac	GAGGT	7
+Miro_125.CDS	hypothetical conserved	73569	73815	-	tgtg AGGT ac	AGGT	7
+Miro_125.CDS	hypothetical conserved	73569	73815	-	tgt GAGG tac	GAGG	8
+Miro_125.CDS	hypothetical conserved	73569	73815	-	tgt GAG gtac	GAG	9
+Miro_125.CDS	hypothetical conserved	73569	73815	-	tgtg AGG tac	AGG	8
+Miro_125.CDS	hypothetical conserved	73569	73815	-	tgtga GGT ac	GGT	7
+Miro_111.CDS	hypothetical conserved	66296	66521	-	aaa GAGG gca	GAGG	8
+Miro_111.CDS	hypothetical conserved	66296	66521	-	aaa GAG ggca	GAG	9
+Miro_111.CDS	hypothetical conserved	66296	66521	-	aaag AGG gca	AGG	8
+Miro_127.CDS	hypothetical conserved	74818	75196	-	ttgtt GGAG a	GGAG	6
+Miro_127.CDS	hypothetical conserved	74818	75196	-	ttgtt GGA ga	GGA	7
+Miro_127.CDS	hypothetical conserved	74818	75196	-	ttgttg GAG a	GAG	6
+Miro_126.CDS	nucleotidyltransferase	73811	74819	-	aa AGGT tgaa	AGGT	9
+Miro_126.CDS	nucleotidyltransferase	73811	74819	-	aa AGG ttgaa	AGG	10
+Miro_126.CDS	nucleotidyltransferase	73811	74819	-	aaa GGT tgaa	GGT	9
+Miro_121.CDS	hypothetical conserved	71860	72028	-	tttcgt GAGG 	GAGG	5
+Miro_121.CDS	hypothetical conserved	71860	72028	-	tttcgt GAG g	GAG	6
+Miro_121.CDS	hypothetical conserved	71860	72028	-	tttcgtg AGG 	AGG	5
+Miro_120.CDS	hypothetical conserved	71576	71861	-	cgtta GGGG g	GGGG	6
+Miro_120.CDS	hypothetical conserved	71576	71861	-	cgtt AGG ggg	AGG	8
+Miro_123.CDS	cytosine-specific methyltransferase	72389	73316	-	 GGT tgatttc	GGT	12
+Miro_122.CDS	hypothetical conserved	72067	72346	-	caaa AGGA ac	AGGA	7
+Miro_122.CDS	hypothetical conserved	72067	72346	-	caaaa GGA ac	GGA	7
+Miro_122.CDS	hypothetical conserved	72067	72346	-	caaa AGG aac	AGG	8
+Miro_129.CDS	hypothetical conserved	75416	76022	-	tgt GAGG aaa	GAGG	8
+Miro_129.CDS	hypothetical conserved	75416	76022	-	tgtg AGGA aa	AGGA	7
+Miro_129.CDS	hypothetical conserved	75416	76022	-	tgtga GGA aa	GGA	7
+Miro_129.CDS	hypothetical conserved	75416	76022	-	tgt GAG gaaa	GAG	9
+Miro_129.CDS	hypothetical conserved	75416	76022	-	tgtg AGG aaa	AGG	8
+Miro_128.CDS	hypothetical conserved	75192	75420	-	a GAGGT gtat	GAGGT	9
+Miro_128.CDS	hypothetical conserved	75192	75420	-	ag AGGT gtat	AGGT	9
+Miro_128.CDS	hypothetical conserved	75192	75420	-	a GAGG tgtat	GAGG	10
+Miro_128.CDS	hypothetical conserved	75192	75420	-	a GAG gtgtat	GAG	11
+Miro_128.CDS	hypothetical conserved	75192	75420	-	ag AGG tgtat	AGG	10
+Miro_128.CDS	hypothetical conserved	75192	75420	-	aga GGT gtat	GGT	9
+Miro_217.CDS	hypothetical conserved	133698	134487	+	ac AGGA aaat	AGGA	9
+Miro_217.CDS	hypothetical conserved	133698	134487	+	aca GGA aaat	GGA	9
+Miro_217.CDS	hypothetical conserved	133698	134487	+	ac AGG aaaat	AGG	10
+Miro_268.CDS	hypothetical conserved	172794	173064	-	ttttt GGGG g	GGGG	6
+Miro_216.CDS	prohead core protein protease	133018	133666	+	act GGGG cta	GGGG	8
+Miro_266.CDS	receptor-recognizing protein	171502	172030	+	tt AGGAG aaa	AGGAG	8
+Miro_266.CDS	receptor-recognizing protein	171502	172030	+	tt AGGA gaaa	AGGA	9
+Miro_266.CDS	receptor-recognizing protein	171502	172030	+	tta GGAG aaa	GGAG	8
+Miro_266.CDS	receptor-recognizing protein	171502	172030	+	tta GGA gaaa	GGA	9
+Miro_266.CDS	receptor-recognizing protein	171502	172030	+	ttag GAG aaa	GAG	8
+Miro_266.CDS	receptor-recognizing protein	171502	172030	+	tt AGG agaaa	AGG	10
+Miro_267.CDS	holin	172146	172794	+	gaa GAG tctt	GAG	9
+Miro_264.CDS	tail fiber	166976	167645	+	taaaaa GGGG 	GGGG	5
+Miro_264.CDS	tail fiber	166976	167645	+	taaaa AGG gg	AGG	7
+Miro_265.CDS	hypothetical conserved	167653	171466	+	ttatta AGGT 	AGGT	5
+Miro_265.CDS	hypothetical conserved	167653	171466	+	ttatta AGG t	AGG	6
+Miro_265.CDS	hypothetical conserved	167653	171466	+	ttattaa GGT 	GGT	5
+Miro_262.CDS	hypothetical conserved	162029	165803	+	at AGGA aaaa	AGGA	9
+Miro_262.CDS	hypothetical conserved	162029	165803	+	ata GGA aaaa	GGA	9
+Miro_262.CDS	hypothetical conserved	162029	165803	+	at AGG aaaaa	AGG	10
+Miro_215.CDS	prohead core protein	132611	133016	+	tgagt GAGGT 	GAGGT	5
+Miro_215.CDS	prohead core protein	132611	133016	+	tgagtg AGGT 	AGGT	5
+Miro_215.CDS	prohead core protein	132611	133016	+	tgagt GAGG t	GAGG	6
+Miro_215.CDS	prohead core protein	132611	133016	+	t GAG tgaggt	GAG	11
+Miro_215.CDS	prohead core protein	132611	133016	+	tgagt GAG gt	GAG	7
+Miro_215.CDS	prohead core protein	132611	133016	+	tgagtg AGG t	AGG	6
+Miro_215.CDS	prohead core protein	132611	133016	+	tgagtga GGT 	GGT	5
+Miro_260.CDS	glutaredoxin	161372	161654	+	ga AGGA aagc	AGGA	9
+Miro_260.CDS	glutaredoxin	161372	161654	+	gaa GGA aagc	GGA	9
+Miro_260.CDS	glutaredoxin	161372	161654	+	ga AGG aaagc	AGG	10
+Miro_261.CDS	hypothetical conserved	161650	161950	+	gtattt GGGT 	GGGT	5
+Miro_261.CDS	hypothetical conserved	161650	161950	+	gtatttg GGT 	GGT	5
+Miro_214.CDS	hypothetical conserved	132360	132603	+	a GAGG aaaac	GAGG	10
+Miro_214.CDS	hypothetical conserved	132360	132603	+	ag AGGA aaac	AGGA	9
+Miro_214.CDS	hypothetical conserved	132360	132603	+	aga GGA aaac	GGA	9
+Miro_214.CDS	hypothetical conserved	132360	132603	+	a GAG gaaaac	GAG	11
+Miro_214.CDS	hypothetical conserved	132360	132603	+	ag AGG aaaac	AGG	10
+Miro_213.CDS	portal protein	130786	132361	+	ttttc GGAG t	GGAG	6
+Miro_213.CDS	portal protein	130786	132361	+	ttttc GGA gt	GGA	7
+Miro_213.CDS	portal protein	130786	132361	+	ttttcg GAG t	GAG	6
+Miro_238.CDS	hypothetical conserved	147709	148234	+	tgc GGGG att	GGGG	8
+Miro_238.CDS	hypothetical conserved	147709	148234	+	tgcgg GGA tt	GGA	7
+Miro_212.CDS	tail tube protein	130245	130731	+	cata GAGGT t	GAGGT	6
+Miro_212.CDS	tail tube protein	130245	130731	+	catag AGGT t	AGGT	6
+Miro_212.CDS	tail tube protein	130245	130731	+	cata GAGG tt	GAGG	7
+Miro_212.CDS	tail tube protein	130245	130731	+	cata GAG gtt	GAG	8
+Miro_212.CDS	tail tube protein	130245	130731	+	catag AGG tt	AGG	7
+Miro_212.CDS	tail tube protein	130245	130731	+	cataga GGT t	GGT	6
+Miro_85.CDS	hypothetical conserved	51902	52172	+	taca GAG agt	GAG	8
+Miro_84.CDS	autonomous glycyl radical cofactor	51540	51903	+	agtaa AGGT a	AGGT	6
+Miro_84.CDS	autonomous glycyl radical cofactor	51540	51903	+	agtaa AGG ta	AGG	7
+Miro_84.CDS	autonomous glycyl radical cofactor	51540	51903	+	agtaaa GGT a	GGT	6
+Miro_87.CDS	hypothetical conserved	52593	52833	+	tgcaag GGGT 	GGGT	5
+Miro_87.CDS	hypothetical conserved	52593	52833	+	tgcaa GGGG t	GGGG	6
+Miro_87.CDS	hypothetical conserved	52593	52833	+	tgca AGG ggt	AGG	8
+Miro_87.CDS	hypothetical conserved	52593	52833	+	tgcaagg GGT 	GGT	5
+Miro_86.CDS	hypothetical conserved	52297	52591	+	tat GAGG atg	GAGG	8
+Miro_86.CDS	hypothetical conserved	52297	52591	+	tatg AGGA tg	AGGA	7
+Miro_86.CDS	hypothetical conserved	52297	52591	+	tatga GGA tg	GGA	7
+Miro_86.CDS	hypothetical conserved	52297	52591	+	tat GAG gatg	GAG	9
+Miro_86.CDS	hypothetical conserved	52297	52591	+	tatg AGG atg	AGG	8
+Miro_81.CDS	hypothetical conserved	50211	50493	+	tttaat GAGG 	GAGG	5
+Miro_81.CDS	hypothetical conserved	50211	50493	+	tttaat GAG g	GAG	6
+Miro_81.CDS	hypothetical conserved	50211	50493	+	tttaatg AGG 	AGG	5
+Miro_80.CDS	hypothetical conserved	49644	49896	+	aataa GAG at	GAG	7
+Miro_83.CDS	hypothetical conserved	50963	51530	+	attttt GGGG 	GGGG	5
+Miro_82.CDS	hypothetical conserved	50502	50922	+	atttaaa GAG 	GAG	5
+Miro_193.CDS	hypothetical conserved	104838	105693	-	tccct GGAGG 	GGAGG	5
+Miro_193.CDS	hypothetical conserved	104838	105693	-	tccctg GAGG 	GAGG	5
+Miro_193.CDS	hypothetical conserved	104838	105693	-	tccct GGAG g	GGAG	6
+Miro_193.CDS	hypothetical conserved	104838	105693	-	tccct GGA gg	GGA	7
+Miro_193.CDS	hypothetical conserved	104838	105693	-	tccctg GAG g	GAG	6
+Miro_193.CDS	hypothetical conserved	104838	105693	-	tccctgg AGG 	AGG	5
+Miro_89.CDS	hypothetical conserved	52984	53137	+	ccat GAGGT g	GAGGT	6
+Miro_89.CDS	hypothetical conserved	52984	53137	+	ccatg AGGT g	AGGT	6
+Miro_89.CDS	hypothetical conserved	52984	53137	+	ccat GAGG tg	GAGG	7
+Miro_89.CDS	hypothetical conserved	52984	53137	+	ccat GAG gtg	GAG	8
+Miro_89.CDS	hypothetical conserved	52984	53137	+	ccatg AGG tg	AGG	7
+Miro_89.CDS	hypothetical conserved	52984	53137	+	ccatga GGT g	GGT	6
+Miro_88.CDS	hypothetical conserved	52817	52988	+	tga AGGT ggt	AGGT	8
+Miro_88.CDS	hypothetical conserved	52817	52988	+	tga AGG tggt	AGG	9
+Miro_88.CDS	hypothetical conserved	52817	52988	+	tgaa GGT ggt	GGT	8
+Miro_88.CDS	hypothetical conserved	52817	52988	+	tgaaggt GGT 	GGT	5
+Miro_150.CDS	PhoH-like protein	85192	86539	-	acata AGGT t	AGGT	6
+Miro_150.CDS	PhoH-like protein	85192	86539	-	acata AGG tt	AGG	7
+Miro_150.CDS	PhoH-like protein	85192	86539	-	acataa GGT t	GGT	6
+Miro_151.CDS	HNH endonuclease	86548	87073	-	ttcgct GGGT 	GGGT	5
+Miro_151.CDS	HNH endonuclease	86548	87073	-	ttcgctg GGT 	GGT	5
+Miro_152.CDS	hypothetical conserved	87072	87531	-	ccttaa AGGT 	AGGT	5
+Miro_152.CDS	hypothetical conserved	87072	87531	-	ccttaa AGG t	AGG	6
+Miro_152.CDS	hypothetical conserved	87072	87531	-	ccttaaa GGT 	GGT	5
+Miro_153.CDS	endolysin	87562	87958	-	tacaa GAGGT 	GAGGT	5
+Miro_153.CDS	endolysin	87562	87958	-	tacaag AGGT 	AGGT	5
+Miro_153.CDS	endolysin	87562	87958	-	tacaa GAGG t	GAGG	6
+Miro_153.CDS	endolysin	87562	87958	-	tacaa GAG gt	GAG	7
+Miro_153.CDS	endolysin	87562	87958	-	tacaag AGG t	AGG	6
+Miro_153.CDS	endolysin	87562	87958	-	tacaaga GGT 	GGT	5
+Miro_154.CDS	hypothetical conserved	88025	88427	-	tga GAGG aat	GAGG	8
+Miro_154.CDS	hypothetical conserved	88025	88427	-	tgag AGGA at	AGGA	7
+Miro_154.CDS	hypothetical conserved	88025	88427	-	tgaga GGA at	GGA	7
+Miro_154.CDS	hypothetical conserved	88025	88427	-	t GAG aggaat	GAG	11
+Miro_154.CDS	hypothetical conserved	88025	88427	-	tgag AGG aat	AGG	8
+Miro_155.CDS	hypothetical conserved	88481	88805	-	tttgt AGGT a	AGGT	6
+Miro_155.CDS	hypothetical conserved	88481	88805	-	tttgt AGG ta	AGG	7
+Miro_155.CDS	hypothetical conserved	88481	88805	-	tttgta GGT a	GGT	6
+Miro_156.CDS	hypothetical conserved	88844	89108	-	cttt AGGAG a	AGGAG	6
+Miro_156.CDS	hypothetical conserved	88844	89108	-	cttt AGGA ga	AGGA	7
+Miro_156.CDS	hypothetical conserved	88844	89108	-	cttta GGAG a	GGAG	6
+Miro_156.CDS	hypothetical conserved	88844	89108	-	cttta GGA ga	GGA	7
+Miro_156.CDS	hypothetical conserved	88844	89108	-	ctttag GAG a	GAG	6
+Miro_156.CDS	hypothetical conserved	88844	89108	-	cttt AGG aga	AGG	8
+Miro_157.CDS	hypothetical conserved	89177	89438	-	taaaaa GAG t	GAG	6
+Miro_158.CDS	hypothetical conserved	89439	89871	-	tttaag GGA a	GGA	6
+Miro_158.CDS	hypothetical conserved	89439	89871	-	ttta AGG gaa	AGG	8
+Miro_159.CDS	hypothetical conserved	89881	90055	-	agaaga GGGT 	GGGT	5
+Miro_159.CDS	hypothetical conserved	89881	90055	-	agaa GAGG gt	GAGG	7
+Miro_159.CDS	hypothetical conserved	89881	90055	-	agaa GAG ggt	GAG	8
+Miro_159.CDS	hypothetical conserved	89881	90055	-	agaag AGG gt	AGG	7
+Miro_159.CDS	hypothetical conserved	89881	90055	-	agaagag GGT 	GGT	5
+Miro_218.CDS	major capsid protein	134506	136075	+	aaa AGGT aag	AGGT	8
+Miro_218.CDS	major capsid protein	134506	136075	+	aaa AGG taag	AGG	9
+Miro_218.CDS	major capsid protein	134506	136075	+	aaaa GGT aag	GGT	8
+Miro_271.CDS	hypothetical conserved	174228	174456	-	cact GGGT tc	GGGT	7
+Miro_271.CDS	hypothetical conserved	174228	174456	-	cactg GGT tc	GGT	7
+Miro_270.CDS	hypothetical conserved	173350	174148	-	tta AGGAG aa	AGGAG	7
+Miro_270.CDS	hypothetical conserved	173350	174148	-	tta AGGA gaa	AGGA	8
+Miro_270.CDS	hypothetical conserved	173350	174148	-	ttaa GGAG aa	GGAG	7
+Miro_270.CDS	hypothetical conserved	173350	174148	-	ttaa GGA gaa	GGA	8
+Miro_270.CDS	hypothetical conserved	173350	174148	-	ttaag GAG aa	GAG	7
+Miro_270.CDS	hypothetical conserved	173350	174148	-	tta AGG agaa	AGG	9
+Miro_273.CDS	hypothetical conserved	174759	174894	-	ctttaa GGGG 	GGGG	5
+Miro_273.CDS	hypothetical conserved	174759	174894	-	cttta AGG gg	AGG	7
+Miro_272.CDS	hypothetical conserved	174452	174785	-	acaa AGGT aa	AGGT	7
+Miro_272.CDS	hypothetical conserved	174452	174785	-	acaa AGG taa	AGG	8
+Miro_272.CDS	hypothetical conserved	174452	174785	-	acaaa GGT aa	GGT	7
+Miro_275.CDS	hypothetical conserved	175223	175661	-	t GGT atctaa	GGT	11
+Miro_274.CDS	hypothetical conserved	174938	175187	-	caatt GAG at	GAG	7
+Miro_276.CDS	hypothetical conserved	175635	176010	-	gcat AGGAG a	AGGAG	6
+Miro_276.CDS	hypothetical conserved	175635	176010	-	gcat AGGA ga	AGGA	7
+Miro_276.CDS	hypothetical conserved	175635	176010	-	gcata GGAG a	GGAG	6
+Miro_276.CDS	hypothetical conserved	175635	176010	-	gcata GGA ga	GGA	7
+Miro_276.CDS	hypothetical conserved	175635	176010	-	gcatag GAG a	GAG	6
+Miro_276.CDS	hypothetical conserved	175635	176010	-	gcat AGG aga	AGG	8
+Miro_144.CDS	hypothetical conserved	82145	82469	-	gaata AGGA a	AGGA	6
+Miro_144.CDS	hypothetical conserved	82145	82469	-	gaataa GGA a	GGA	6
+Miro_144.CDS	hypothetical conserved	82145	82469	-	gaata AGG aa	AGG	7
+Miro_18.CDS	peptidoglycan-binding protein	11177	11459	-	tat AGGA aag	AGGA	8
+Miro_18.CDS	peptidoglycan-binding protein	11177	11459	-	tata GGA aag	GGA	8
+Miro_18.CDS	peptidoglycan-binding protein	11177	11459	-	tat AGG aaag	AGG	9
+Miro_19	hypothetical conserved	11455	11731	-	TATGCTGTAC	None	-1
+Miro_12.CDS	hypothetical conserved	9398	9728	-	ttt AGGAG at	AGGAG	7
+Miro_12.CDS	hypothetical conserved	9398	9728	-	ttt AGGA gat	AGGA	8
+Miro_12.CDS	hypothetical conserved	9398	9728	-	ttta GGAG at	GGAG	7
+Miro_12.CDS	hypothetical conserved	9398	9728	-	ttta GGA gat	GGA	8
+Miro_12.CDS	hypothetical conserved	9398	9728	-	tttag GAG at	GAG	7
+Miro_12.CDS	hypothetical conserved	9398	9728	-	ttt AGG agat	AGG	9
+Miro_13.CDS	hypothetical conserved	9787	10012	-	ag GGAGG aaa	GGAGG	8
+Miro_13.CDS	hypothetical conserved	9787	10012	-	agg GAGG aaa	GAGG	8
+Miro_13.CDS	hypothetical conserved	9787	10012	-	aggg AGGA aa	AGGA	7
+Miro_13.CDS	hypothetical conserved	9787	10012	-	ag GGAG gaaa	GGAG	9
+Miro_13.CDS	hypothetical conserved	9787	10012	-	ag GGA ggaaa	GGA	10
+Miro_13.CDS	hypothetical conserved	9787	10012	-	aggga GGA aa	GGA	7
+Miro_13.CDS	hypothetical conserved	9787	10012	-	agg GAG gaaa	GAG	9
+Miro_13.CDS	hypothetical conserved	9787	10012	-	 AGG gaggaaa	AGG	12
+Miro_13.CDS	hypothetical conserved	9787	10012	-	aggg AGG aaa	AGG	8
+Miro_10.CDS	hypothetical conserved	8487	8766	-	cg GGGT gaaa	GGGT	9
+Miro_10.CDS	hypothetical conserved	8487	8766	-	c GGGG tgaaa	GGGG	10
+Miro_10.CDS	hypothetical conserved	8487	8766	-	cgg GGT gaaa	GGT	9
+Miro_11.CDS	hypothetical conserved	8762	9359	-	taaa AGGA at	AGGA	7
+Miro_11.CDS	hypothetical conserved	8762	9359	-	taaaa GGA at	GGA	7
+Miro_11.CDS	hypothetical conserved	8762	9359	-	taaa AGG aat	AGG	8
+Miro_16.CDS	hypothetical conserved	10736	10961	-	attaag GGGT 	GGGT	5
+Miro_16.CDS	hypothetical conserved	10736	10961	-	attaa GGGG t	GGGG	6
+Miro_16.CDS	hypothetical conserved	10736	10961	-	atta AGG ggt	AGG	8
+Miro_16.CDS	hypothetical conserved	10736	10961	-	attaagg GGT 	GGT	5
+Miro_17.CDS	hypothetical conserved	10964	11114	-	agaa AGGAG a	AGGAG	6
+Miro_17.CDS	hypothetical conserved	10964	11114	-	agaa AGGA ga	AGGA	7
+Miro_17.CDS	hypothetical conserved	10964	11114	-	agaaa GGAG a	GGAG	6
+Miro_17.CDS	hypothetical conserved	10964	11114	-	agaaa GGA ga	GGA	7
+Miro_17.CDS	hypothetical conserved	10964	11114	-	agaaag GAG a	GAG	6
+Miro_17.CDS	hypothetical conserved	10964	11114	-	agaa AGG aga	AGG	8
+Miro_14.CDS	hypothetical conserved	10085	10349	-	gaa AGGA ata	AGGA	8
+Miro_14.CDS	hypothetical conserved	10085	10349	-	gaaa GGA ata	GGA	8
+Miro_14.CDS	hypothetical conserved	10085	10349	-	gaa AGG aata	AGG	9
+Miro_15.CDS	hypothetical conserved	10437	10737	-	aaacag GGGT 	GGGT	5
+Miro_15.CDS	hypothetical conserved	10437	10737	-	aaaca GGGG t	GGGG	6
+Miro_15.CDS	hypothetical conserved	10437	10737	-	aaac AGG ggt	AGG	8
+Miro_15.CDS	hypothetical conserved	10437	10737	-	aaacagg GGT 	GGT	5
+Miro_92.CDS	hypothetical conserved	53922	54144	+	tgtata AGG g	AGG	6
+Miro_93.CDS	hypothetical conserved	54140	54755	+	ttat GAGGT t	GAGGT	6
+Miro_93.CDS	hypothetical conserved	54140	54755	+	ttatg AGGT t	AGGT	6
+Miro_93.CDS	hypothetical conserved	54140	54755	+	ttat GAGG tt	GAGG	7
+Miro_93.CDS	hypothetical conserved	54140	54755	+	ttat GAG gtt	GAG	8
+Miro_93.CDS	hypothetical conserved	54140	54755	+	ttatg AGG tt	AGG	7
+Miro_93.CDS	hypothetical conserved	54140	54755	+	ttatga GGT t	GGT	6
+Miro_90.CDS	hypothetical conserved	53220	53661	+	cggcgg GGGT 	GGGT	5
+Miro_90.CDS	hypothetical conserved	53220	53661	+	cggc GGGG gt	GGGG	7
+Miro_90.CDS	hypothetical conserved	53220	53661	+	cggcggg GGT 	GGT	5
+Miro_91.CDS	hypothetical conserved	53657	53921	+	att GAG agat	GAG	9
+Miro_96.CDS	hypothetical conserved	56999	57203	+	ac GGAG ataa	GGAG	9
+Miro_96.CDS	hypothetical conserved	56999	57203	+	ac GGA gataa	GGA	10
+Miro_96.CDS	hypothetical conserved	56999	57203	+	acg GAG ataa	GAG	9
+Miro_97.CDS	hypothetical conserved	57205	57382	+	at GGA tgggc	GGA	10
+Miro_94.CDS	DNA ligase	54735	56265	+	ttgaa GAG aa	GAG	7
+Miro_95.CDS	hypothetical conserved	56341	56911	+	ctaa GAG aat	GAG	8
+Miro_98.CDS	hypothetical conserved	57378	57543	+	gttt GAGGT g	GAGGT	6
+Miro_98.CDS	hypothetical conserved	57378	57543	+	gtttg AGGT g	AGGT	6
+Miro_98.CDS	hypothetical conserved	57378	57543	+	gttt GAGG tg	GAGG	7
+Miro_98.CDS	hypothetical conserved	57378	57543	+	gttt GAG gtg	GAG	8
+Miro_98.CDS	hypothetical conserved	57378	57543	+	gtttg AGG tg	AGG	7
+Miro_98.CDS	hypothetical conserved	57378	57543	+	gtttga GGT g	GGT	6
+Miro_99.CDS	hypothetical conserved	57623	57914	+	caaa AGGA ac	AGGA	7
+Miro_99.CDS	hypothetical conserved	57623	57914	+	caaaa GGA ac	GGA	7
+Miro_99.CDS	hypothetical conserved	57623	57914	+	caaa AGG aac	AGG	8
+Miro_143.CDS	hypothetical conserved	81923	82079	-	ACAATGCTGG	None	-1
+Miro_114.CDS	hypothetical conserved	67178	67649	-	taatat GGT g	GGT	6
+Miro_141.CDS	hypothetical conserved	81365	81839	-	atc GGA aaaa	GGA	9
+Miro_140.CDS	hypothetical conserved	81075	81363	-	ta AGG cgaat	AGG	10
+Miro_147.CDS	hypothetical conserved	83222	83618	-	tga GAGG aat	GAGG	8
+Miro_147.CDS	hypothetical conserved	83222	83618	-	tgag AGGA at	AGGA	7
+Miro_147.CDS	hypothetical conserved	83222	83618	-	tgaga GGA at	GGA	7
+Miro_147.CDS	hypothetical conserved	83222	83618	-	t GAG aggaat	GAG	11
+Miro_147.CDS	hypothetical conserved	83222	83618	-	tgag AGG aat	AGG	8
+Miro_146.CDS	hypothetical conserved	83065	83212	-	aat GAGG aat	GAGG	8
+Miro_146.CDS	hypothetical conserved	83065	83212	-	aatg AGGA at	AGGA	7
+Miro_146.CDS	hypothetical conserved	83065	83212	-	aatga GGA at	GGA	7
+Miro_146.CDS	hypothetical conserved	83065	83212	-	aat GAG gaat	GAG	9
+Miro_146.CDS	hypothetical conserved	83065	83212	-	aatg AGG aat	AGG	8
+Miro_145.CDS	hypothetical conserved	82478	83069	-	c GGGG aatgg	GGGG	10
+Miro_145.CDS	hypothetical conserved	82478	83069	-	cgg GGA atgg	GGA	9
+Miro_115.CDS	hypothetical conserved	67645	67804	-	aat GGA tacc	GGA	9
+Miro_149.CDS	hypothetical conserved	84391	84946	-	tt GAGGT ttc	GAGGT	8
+Miro_149.CDS	hypothetical conserved	84391	84946	-	ttg AGGT ttc	AGGT	8
+Miro_149.CDS	hypothetical conserved	84391	84946	-	tt GAGG tttc	GAGG	9
+Miro_149.CDS	hypothetical conserved	84391	84946	-	tt GAG gtttc	GAG	10
+Miro_149.CDS	hypothetical conserved	84391	84946	-	ttg AGG tttc	AGG	9
+Miro_149.CDS	hypothetical conserved	84391	84946	-	ttga GGT ttc	GGT	8
+Miro_148.CDS	endoribonuclease	83685	84327	-	aacat AGGT a	AGGT	6
+Miro_148.CDS	endoribonuclease	83685	84327	-	aacat AGG ta	AGG	7
+Miro_148.CDS	endoribonuclease	83685	84327	-	aacata GGT a	GGT	6
+Miro_116.CDS	hypothetical conserved	67800	68451	-	gcttt GAGGT 	GAGGT	5
+Miro_116.CDS	hypothetical conserved	67800	68451	-	gctttg AGGT 	AGGT	5
+Miro_116.CDS	hypothetical conserved	67800	68451	-	gcttt GAGG t	GAGG	6
+Miro_116.CDS	hypothetical conserved	67800	68451	-	gcttt GAG gt	GAG	7
+Miro_116.CDS	hypothetical conserved	67800	68451	-	gctttg AGG t	AGG	6
+Miro_116.CDS	hypothetical conserved	67800	68451	-	gctttga GGT 	GGT	5

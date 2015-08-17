@@ -1,32 +1,54 @@
-<tool id="edu.tamu.cpt.genbank.shinefind" name="ShineFind v1.1" version="1.1.5">
+<tool id="edu.tamu.cpt.genbank.shinefind" name="ShineFind v1.4" version="1.4">
   <description>Identify shine-dalgarno sequences</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <expand macro="stdio"/>
-  <command interpreter="python"><![CDATA[shinefind.py $positional_1
+  <command><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+$__tool_directory__/shinefind.py
+
+@GENOME_SELECTOR@
+$gff3_data
+
+--table_output $default_output
+
 --lookahead_min $lookahead_min
 --lookahead_max $lookahead_max
 $top_only
-$default_output
-$gff3_output
+
+> $gff3_output
 
 ]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1" type="data"/>
+    <expand macro="genome_selector" />
+    <expand macro="gff3_input" />
+
     <param label="Number of bases upstream of CDSs to end search (--lookahead_min)" name="lookahead_min" type="integer" value="5"/>
     <param label="Number of bases upstream of CDSs to begin search (--lookahead_max)" name="lookahead_max" type="integer" value="15"/>
     <param checked="false" label="Only report best hits (--top_only)" name="top_only" type="boolean" falsevalue="" truevalue="--top_only"/>
   </inputs>
   <outputs>
-    <data format="tabular" name="default_output" label="ShineFind RBS list from $positional_1.name"/>
-    <data format="gff3" name="gff3_output" label="ShineFind GFF3 RBSs from $positional_1.name"/>
+    <data format="tabular" name="default_output" label="ShineFind RBS list from $gff3_data.name"/>
+    <data format="gff3" name="gff3_output" label="ShineFind GFF3 RBSs from $gff3_data.name"/>
   </outputs>
+  <tests>
+      <test>
+          <param name="genome_fasta" value="miro.fa" />
+          <param name="gff3_data" value="miro.gff3" />
+          <param name="lookahead_max" value="15" />
+          <param name="lookahead_min" value="5" />
+          <param name="top_only" value="False" />
+          <output name="default_output" file="shinefind.tbl" />
+          <output name="gff3_output" file="shinefind.gff3" />
+      </test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
-Generates a list of possible Shine Dalgarno sites in a Genbank file
+Generates a list of possible Shine Dalgarno sites from a set of Gene Calls
 
       ]]></help>
 </tool>
