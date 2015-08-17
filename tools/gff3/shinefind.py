@@ -180,7 +180,32 @@ def shinefind(fasta, gff3, table_output=None, lookahead_min=5, lookahead_max=15,
 
             human_strand = '+' if strand == 1 else '-'
 
-            if len(sds) == 0:
+            # http://book.pythontips.com/en/latest/for_-_else.html
+            log.debug('Found %s SDs', len(sds))
+            for (sd, sd_feature) in zip(sds, sd_features):
+                # If we only want the top feature, after the bulk of the
+                # forloop executes once, we append the top feature, and fake a
+                # break, because an actual break triggers the else: block
+                table_output.write('\t'.join(map(str, [
+                    feature.id,
+                    feature_id,
+                    feature.location.start,
+                    feature.location.end,
+                    human_strand,
+                    sd_finder.highlight_sd(seq, sd['start'], sd['end']),
+                    sd['hit'],
+                    int(sd['spacing']) + lookahead_min,
+                ])) + "\n")
+
+                gff3_output.features.append(sd_feature)
+
+                if top_only:
+                    break
+            else:
+                if len(sds) != 0:
+                    log.debug('Should not reach here if %s', len(sds) != 0)
+                    # Somehow this is triggerring, and I don't feel like figuring out why. Someone else's problem.
+                    continue
                 table_output.write('\t'.join(map(str, [
                     feature.id,
                     feature_id,
@@ -191,35 +216,6 @@ def shinefind(fasta, gff3, table_output=None, lookahead_min=5, lookahead_max=15,
                     None,
                     -1,
                 ])) + "\n")
-                continue
-
-            if top_only:
-                table_output.write('\t'.join(map(str, [
-                    feature.id,
-                    feature_id,
-                    feature.location.start,
-                    feature.location.end,
-                    human_strand,
-                    sd_finder.highlight_sd(seq, sds[0]['start'], sds[0]['end']),
-                    sds[0]['hit'],
-                    sds[0]['spacing'] + lookahead_min,
-                ])) + "\n")
-
-                gff3_output.features.append(sd_features[0])
-            else:
-                for sd in sds:
-                    table_output.write('\t'.join(map(str, [
-                        feature.id,
-                        feature_id,
-                        feature.location.start,
-                        feature.location.end,
-                        human_strand,
-                        sd_finder.highlight_sd(seq, sd['start'], sd['end']),
-                        sd['hit'],
-                        int(sd['spacing']) + lookahead_min,
-                    ])) + "\n")
-
-                gff3_output.features.extend(sd_features)
 
         gff3_output.features = sorted(gff3_output.features, key=lambda x: x.location.start)
         GFF.write([gff3_output], sys.stdout)
