@@ -13,6 +13,7 @@ __email__ = "esr@tamu.edu"
 
 def gff_filter(gff3):
     for rec in GFF.parse(gff3):
+        rec.annotations = {}
         GFF.write([rec.reverse_complement(id=rec.id)], sys.stdout)
 
 if __name__ == '__main__':

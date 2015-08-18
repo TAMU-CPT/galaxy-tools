@@ -6,7 +6,10 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 def reformat(data):
-    GFF.write(list(GFF.parse(data)), sys.stdout)
+    for input_file in data:
+        for record in GFF.parse(input_file):
+            record.annotations = {}
+            GFF.write([record], sys.stdout)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reformat GFF files')

@@ -37,6 +37,7 @@ def merge_interpro(gff3, interpro):
                         feature.qualifiers[key] = []
 
                     feature.qualifiers[key] += list(ipr_additions[feature.id][key])
+        rec.annotations = {}
         GFF.write([rec], sys.stdout)
 
 if __name__ == '__main__':

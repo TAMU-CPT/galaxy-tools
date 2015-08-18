@@ -72,6 +72,7 @@ def suppress(genome, annotations, suppress=None):
             suppressed_features.append(feature)
 
         record.features = suppressed_features
+        record.annotations = {}
         GFF.write([record], sys.stdout)
 
 if __name__ == '__main__':

@@ -108,4 +108,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     intf = IntronFinder(**vars(args))
-    GFF.write(intf.output_to_gff3(intf.intron_detection()), sys.stdout)
+    records = intf.output_to_gff3(intf.intron_detection())
+    for record in records:
+        record.annotations = {}
+        GFF.write([record], sys.stdout)

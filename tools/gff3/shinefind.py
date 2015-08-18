@@ -218,6 +218,7 @@ def shinefind(fasta, gff3, table_output=None, lookahead_min=5, lookahead_max=15,
                 ])) + "\n")
 
         gff3_output.features = sorted(gff3_output.features, key=lambda x: x.location.start)
+        gff3_output.annotations = {}
         GFF.write([gff3_output], sys.stdout)
 
 

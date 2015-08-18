@@ -81,4 +81,5 @@ if __name__ == '__main__':
 
     result = mga_to_gff3(**vars(args))
 
+    result.annotations = {}
     GFF.write([result], sys.stdout)

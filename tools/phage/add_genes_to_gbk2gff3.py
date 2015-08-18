@@ -53,4 +53,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     for record in fix(**vars(args)):
+        record.annotations = {}
         GFF.write(record, sys.stdout)

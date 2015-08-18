@@ -420,6 +420,7 @@ def evaluate_and_report(annotations, genome, gff3):
 
     with open(gff3, 'w') as handle:
         gff3_qc_record.features = gff3_qc_features
+        gff3_qc_record.annotations = {}
         GFF.write([gff3_qc_record], handle)
 
     return REPORT_TEMPLATE.render(**kwargs)

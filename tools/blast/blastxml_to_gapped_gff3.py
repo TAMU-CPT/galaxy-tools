@@ -26,7 +26,6 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
     from Bio.SeqFeature import SeqFeature, FeatureLocation
 
     blast_records = NCBIXML.parse(blastxml)
-    records = []
     for record in blast_records:
         recid = record.query
         if ' ' in recid:
@@ -113,8 +112,7 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
                     )
 
                 rec.features.append(top_feature)
-        records.append(rec)
-    return records
+        yield rec
 
 
 def __remove_query_gaps(query, match, subject):
@@ -256,6 +254,6 @@ if __name__ == '__main__':
     parser.add_argument('--trim_end', action='store_true', help='Cut blast results off at end of gene')
     args = parser.parse_args()
 
-    result = blastxml2gff3(**vars(args))
-
-    GFF.write(result, sys.stdout)
+    for record in blastxml2gff3(**vars(args)):
+        record.annotations = {}
+        GFF.write([record], sys.stdout)

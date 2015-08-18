@@ -42,6 +42,7 @@ def gff_filter(gff3, filter_list, attribute_field='ID', subfeatures=True):
             {'qualifier': attribute_field, 'attribute_list': filter_strings},
             subfeatures=subfeatures
         )
+        rec.annotations = {}
         GFF.write([rec], sys.stdout)
 
 if __name__ == '__main__':

@@ -165,4 +165,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     for result in convert_xmfa_to_gff3(**vars(args)):
+        result.annotations = {}
         GFF.write(result, sys.stdout)

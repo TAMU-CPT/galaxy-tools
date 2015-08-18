@@ -52,4 +52,5 @@ if __name__ == '__main__':
                 rec_prefix_name(feature, args.feature_prefix)
 
 
+        rec.annotations = {}
         GFF.write([rec], sys.stdout)
