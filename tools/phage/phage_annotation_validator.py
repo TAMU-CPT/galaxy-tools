@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import json
 import copy
 import argparse
 import itertools
@@ -376,7 +377,7 @@ def missing_tags(record):
     return good, bad, results, qc_features
 
 
-def evaluate_and_report(annotations, genome, gff3):
+def evaluate_and_report(annotations, genome, gff3=None, tbl=None):
     """
     Generate our HTML evaluation of the genome
     """
@@ -451,6 +452,13 @@ def evaluate_and_report(annotations, genome, gff3):
         'missing_tags_bad': mt_bad,
     }
 
+    with open(tbl, 'w') as handle:
+        kw_subset = {}
+        for key in kwargs:
+            if key in ('score', 'record_name') or '_good' in key or '_bad' in key:
+                kw_subset[key] = kwargs[key]
+        json.dump(kw_subset, handle)
+
     with open(gff3, 'w') as handle:
         gff3_qc_record.features = gff3_qc_features
         gff3_qc_record.annotations = {}
@@ -464,6 +472,7 @@ if __name__ == '__main__':
     parser.add_argument('annotations', type=file, help='Parent GFF3 annotations')
     parser.add_argument('genome', type=file, help='Genome Sequence')
     parser.add_argument('--gff3', type=str, help='GFF3 Annotations', default='qc_annotations.gff3')
+    parser.add_argument('--tbl', type=str, help='Table for noninteractive parsing', default='qc_results.json')
     args = parser.parse_args()
 
     print evaluate_and_report(**vars(args))
