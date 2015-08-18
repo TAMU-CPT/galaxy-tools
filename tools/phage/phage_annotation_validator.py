@@ -354,6 +354,28 @@ def find_morons(record):
     return good, bad, results, []
 
 
+def missing_tags(record):
+    """Find features without product
+    """
+    results = []
+    good = 0
+    bad = 0
+    qc_features = []
+
+    for gene in genes(record.features):
+        cds = [x for x in gene.sub_features if x.type == "CDS"][0]
+
+        if 'product' not in cds.qualifiers:
+            log.warn("Missing product tag on %s", cds.id)
+            qc_features.append(gen_qc_feature(cds.location.start, cds.location.end, 'Missing product tag', strand=cds.strand))
+            results.append(cds)
+            bad += 1
+        else:
+            good += 1
+
+    return good, bad, results, qc_features
+
+
 def evaluate_and_report(annotations, genome, gff3):
     """
     Generate our HTML evaluation of the genome
@@ -390,8 +412,12 @@ def evaluate_and_report(annotations, genome, gff3):
     mo_good, mo_bad, mo_results, mo_annotations = find_morons(record)
     gff3_qc_features += mo_annotations
 
-    score_good = float(sum((mb_good, eg_good, eo_good)))
-    score_bad = float(sum((mb_bad, eg_bad, eo_bad)))
+    log.info("Locating missing tags")
+    mt_good, mt_bad, mt_results, mt_annotations = missing_tags(record)
+    gff3_qc_features += mt_annotations
+
+    score_good = float(sum((mb_good, eg_good, eo_good, mt_good)))
+    score_bad = float(sum((mb_bad, eg_bad, eo_bad, mt_bad)))
 
     score = int(100 * score_good / (score_bad + score_good))
 
@@ -407,15 +433,22 @@ def evaluate_and_report(annotations, genome, gff3):
         'missing_rbs': mb_results,
         'missing_rbs_good': mb_good,
         'missing_rbs_bad': mb_bad,
+
         'excessive_gap': eg_results,
         'excessive_gap_good': eg_good,
         'excessive_gap_bad': eg_bad,
+
         'excessive_overlap': eo_results,
         'excessive_overlap_good': eo_good,
         'excessive_overlap_bad': eo_bad,
+
         'morons': mo_results,
         'morons_good': mo_good,
         'morons_bad': mo_bad,
+
+        'missing_tags': mt_results,
+        'missing_tags_good': mt_good,
+        'missing_tags_bad': mt_bad,
     }
 
     with open(gff3, 'w') as handle:

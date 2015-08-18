@@ -185,12 +185,14 @@ body {
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-              <li><a href="#bad_gene_starts"><b>Bad Gene Starts</b></a></li>
+            <li><a href="#bad_gene_starts"><b>Bad Gene Starts</b></a></li>
             <li><a href="#missing_rbs"><small>Missing RBS</small></a></li>
             <li><a href="#excessive_gaps"><small>Excessive Gaps</small></a></li>
             <li><a href="#excessive_overlap"><small>Excessive Overlaps</small></a></li>
             <li><a href="#antisense"><b>Antisense Genes</b></a></li>
             <li><a href="#morons"><small>Possible Morons</small></a></li>
+            <li><a href="#annotations"><b>Annotation Issues</b></a></li>
+            <li><a href="#missing_product"><small>Missing Product Tags</small></a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -319,9 +321,35 @@ body {
           </div>
 
 
-
-
-
+          <h2 class="sub-header" id="annotations">Annotation Issues</h2>
+          <h3 id="missing_product">Missing Product Tags <small>{{missing_tags_good}} / {{missing_tags_good + missing_tags_bad}}</small></h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Qualifiers</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in missing_tags %}
+                <tr>
+                    <td>{{row.id}}</td>
+                    <td>
+                        {% for key in row.qualifiers %}
+                        {{ key }}
+                        <ul>
+                            {% for value in row.qualifiers[key] %}
+                            <li>{{value}}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
 
 
 

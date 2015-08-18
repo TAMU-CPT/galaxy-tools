@@ -823,5 +823,5 @@ Miro	feature	gene	83686	84337	.	-	.	ID=Miro_148
 Miro	GenBank	CDS	83686	84327	.	-	1	ID=Miro_148.CDS;Name=Miro_148;Note=T4 RegB-like;Parent=Miro_148;dbxref=InterPro:IPR019653,InterPro:IPR023346;obsolete_name=Miro_016;product=endoribonuclease;signal=signal peptidase II cleavage site 12-13
 Miro	GenBank	Shine_Dalgarno_sequence	84334	84337	.	-	1	Alias=Miro_148;ID=Miro_148.RBS;Name=Miro_148.RBS;Parent=Miro_148
 Miro	feature	gene	67801	68461	.	-	.	ID=Miro_116
-Miro	GenBank	CDS	67801	68451	.	-	1	ID=Miro_116.CDS;Name=Miro_116;Parent=Miro_116;obsolete_name=Miro_048;product=hypothetical conserved
+Miro	GenBank	CDS	67801	68451	.	-	1	ID=Miro_116.CDS;Name=Miro_116;Parent=Miro_116;obsolete_name=Miro_048
 Miro	GenBank	Shine_Dalgarno_sequence	68457	68461	.	-	1	Alias=Miro_116;ID=Miro_116.RBS;Name=Miro_116.RBS;Parent=Miro_116
