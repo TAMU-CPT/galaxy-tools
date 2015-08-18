@@ -34,7 +34,6 @@ def feature_test(feature, **kwargs):
 
 def gff_filter(gff3, filter_list, attribute_field='ID', subfeatures=True):
     filter_strings = [line.strip() for line in filter_list]
-    print filter_strings
     for rec in GFF.parse(gff3):
         rec.features = feature_lambda(
             rec.features,
