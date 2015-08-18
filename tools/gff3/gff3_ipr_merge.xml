@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.merge_ipr" name="GFF3 Merge Dbxrefs/Ontology terms" version="1.0.0">
+  <description>into an annotation set</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python gff3_ipr_merge.py --version</version_command>
+  <command><![CDATA[
+$__tool_directory__/gff3_ipr_merge.py
+$gff3_data
+$ipr_data
+> $default]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+      <param label="InterPro Annotations" name="ipr_data" type="data" format="gff3"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="default"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+      ]]></help>
+</tool>
