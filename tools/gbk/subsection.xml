@@ -22,7 +22,7 @@ subsection.py
 
 > $default]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1" type="data"/>
+    <param label="Genbank file" name="positional_1" type="data" multiple="True"/>
     <conditional name="source">
         <param name="source_select" type="select" label="Subsection Location List">
             <option value="file">Tabular File</option>
