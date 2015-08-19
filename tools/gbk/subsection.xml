@@ -8,10 +8,10 @@
   <expand macro="stdio"/>
   <version_command>python subsection.py --version</version_command>
   <command interpreter="python"><![CDATA[
+subsection.py
+
 #set gbk_files = '" "'.join([str($var) for $var in $positional_1])
 "$gbk_files"
-
-subsection.py
 
 #if $source.source_select == 'file':
     --table $source.table
