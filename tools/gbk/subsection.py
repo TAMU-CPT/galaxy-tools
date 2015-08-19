@@ -45,7 +45,7 @@ def genbank_subsection(genbank_files, table=None, coordinates=None, include_unli
         for record in SeqIO.parse(genbank_file, "genbank"):
             if table is not None:
                 # If found, cut
-                rid = record.id
+                rid = record.name
 
                 if rid in cut_sites:
                     for (start, end) in cut_sites[rid]:
