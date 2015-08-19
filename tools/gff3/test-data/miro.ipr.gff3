@@ -1,0 +1,35 @@
+##gff-version 3
+##feature-ontology http://song.cvs.sourceforge.net/viewvc/song/ontology/sofa.obo?revision=1.269
+##sequence-region Miro|137_Miro_137 1 341
+Miro_137	.	polypeptide	1	341	.	+	.	md5=674e90e7be1aff10bfd93d518d92cfa8;ID=Miro|137_Miro_137
+Miro_137	Gene3D	protein_match	172	204	3.6E-5	+	.	Name=G3DSA:3.90.980.10;Target=Miro|137_Miro_137 172 204;status=T;ID=match$1_172_204;date=24-02-2015;Dbxref=InterPro:IPR013264,KEGG:00520+2.7.7.-
+Miro_137	Pfam	protein_match	171	205	1.3E-5	+	.	Name=PF08275;signature_desc=DNA primase catalytic core, N-terminal domain;Target=Miro|137_Miro_137 171 205;status=T;ID=match$2_171_205;date=24-02-2015;Dbxref=InterPro:IPR013264,KEGG:00520+2.7.7.-
+Miro_137	SUPERFAMILY	protein_match	130	243	.	+	.	Name=SSF56731;Target=Miro|137_Miro_137 130 243;status=T;ID=match$3_130_243;date=24-02-2015
+##sequence-region Miro|031_Miro_031 1 304
+Miro_031	.	polypeptide	1	304	.	+	.	md5=7c817d1e59bb4a446538d57430d98206;ID=Miro|031_Miro_031
+Miro_031	Pfam	protein_match	42	212	3.6E-11	+	.	Name=PF01145;signature_desc=SPFH domain / Band 7 family;Target=Miro|031_Miro_031 42 212;status=T;ID=match$4_42_212;date=24-02-2015;Dbxref=InterPro:IPR001107
+Miro_031	SUPERFAMILY	protein_match	66	192	.	+	.	Name=SSF117892;Target=Miro|031_Miro_031 66 192;status=T;ID=match$5_66_192;date=24-02-2015
+Miro_031	TMHMM	protein_match	13	35	.	+	.	Name=TMhelix;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.;Target=Miro|031_Miro_031 13 35;status=T;ID=match$6_13_35;date=24-02-2015
+##sequence-region Miro|158_Miro_158 1 632
+Miro_158	.	polypeptide	1	632	.	+	.	md5=21a5825db5e418ee8592092b1f6b7cc4;ID=Miro|158_Miro_158
+Miro_158	Gene3D	protein_match	403	566	3.0E-39	+	.	Name=G3DSA:3.40.50.670;Target=Miro|158_Miro_158 403 566;status=T;ID=match$7_403_566;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR013759
+Miro_158	PANTHER	protein_match	31	623	.	+	.	Name=PTHR10169:SF25;Target=Miro|158_Miro_158 31 623;status=T;ID=match$8_31_623;date=24-02-2015
+Miro_158	Pfam	protein_match	432	537	1.2E-8	+	.	Name=PF01751;signature_desc=Toprim domain;Target=Miro|158_Miro_158 432 537;status=T;ID=match$9_432_537;date=24-02-2015;Dbxref=InterPro:IPR006171
+Miro_158	SMART	protein_match	69	627	4.6E-33	+	.	Name=SM00433;signature_desc=TopoisomeraseII;Target=Miro|158_Miro_158 69 627;status=T;ID=match$10_69_627;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR001241
+Miro_158	PANTHER	protein_match	31	623	.	+	.	Name=PTHR10169;Target=Miro|158_Miro_158 31 623;status=T;ID=match$11_31_623;date=24-02-2015
+Miro_158	Pfam	protein_match	269	402	4.2E-28	+	.	Name=PF00204;signature_desc=DNA gyrase B;Target=Miro|158_Miro_158 269 402;status=T;ID=match$12_269_402;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR013506
+Miro_158	SUPERFAMILY	protein_match	426	624	.	+	.	Name=SSF56719;Target=Miro|158_Miro_158 426 624;status=T;ID=match$13_426_624;Ontology_term=GO:0003918,GO:0005524;date=24-02-2015;Dbxref=InterPro:IPR013760
+Miro_158	Gene3D	protein_match	265	390	1.1E-24	+	.	Name=G3DSA:3.30.230.10;Target=Miro|158_Miro_158 265 390;status=T;ID=match$14_265_390;date=24-02-2015;Dbxref=InterPro:IPR014721
+Miro_158	ProSitePatterns	protein_match	435	443	.	+	.	Name=PS00177;signature_desc=DNA topoisomerase II signature.;Target=Miro|158_Miro_158 435 443;status=T;ID=match$15_435_443;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR018522
+Miro_158	PRINTS	protein_match	496	512	.	+	.	Name=PR00418;signature_desc=DNA topoisomerase II family signature;Target=Miro|158_Miro_158 496 512;status=T;ID=match$16_496_512;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR001241
+Miro_158	PRINTS	protein_match	69	84	.	+	.	Name=PR00418;signature_desc=DNA topoisomerase II family signature;Target=Miro|158_Miro_158 69 84;status=T;ID=match$16_69_84;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR001241
+Miro_158	PRINTS	protein_match	151	165	.	+	.	Name=PR00418;signature_desc=DNA topoisomerase II family signature;Target=Miro|158_Miro_158 151 165;status=T;ID=match$16_151_165;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR001241
+Miro_158	PRINTS	protein_match	287	300	.	+	.	Name=PR00418;signature_desc=DNA topoisomerase II family signature;Target=Miro|158_Miro_158 287 300;status=T;ID=match$16_287_300;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR001241
+Miro_158	PRINTS	protein_match	433	447	.	+	.	Name=PR00418;signature_desc=DNA topoisomerase II family signature;Target=Miro|158_Miro_158 433 447;status=T;ID=match$16_433_447;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR001241
+Miro_158	PRINTS	protein_match	106	119	.	+	.	Name=PR00418;signature_desc=DNA topoisomerase II family signature;Target=Miro|158_Miro_158 106 119;status=T;ID=match$16_106_119;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR001241
+Miro_158	PRINTS	protein_match	570	586	.	+	.	Name=PR00418;signature_desc=DNA topoisomerase II family signature;Target=Miro|158_Miro_158 570 586;status=T;ID=match$16_570_586;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR001241
+Miro_158	PRINTS	protein_match	514	531	.	+	.	Name=PR00418;signature_desc=DNA topoisomerase II family signature;Target=Miro|158_Miro_158 514 531;status=T;ID=match$16_514_531;Ontology_term=GO:0003677,GO:0003918,GO:0005524,GO:0006265;date=24-02-2015;Dbxref=InterPro:IPR001241
+Miro_158	Pfam	protein_match	67	210	2.2E-13	+	.	Name=PF02518;signature_desc=Histidine kinase-, DNA gyrase B-, and HSP90-like ATPase;Target=Miro|158_Miro_158 67 210;status=T;ID=match$17_67_210;date=24-02-2015;Dbxref=InterPro:IPR003594
+Miro_158	SUPERFAMILY	protein_match	27	249	.	+	.	Name=SSF55874;Target=Miro|158_Miro_158 27 249;status=T;ID=match$18_27_249;date=24-02-2015;Dbxref=InterPro:IPR003594
+Miro_158	Gene3D	protein_match	32	251	4.1E-51	+	.	Name=G3DSA:3.30.565.10;Target=Miro|158_Miro_158 32 251;status=T;ID=match$19_32_251;date=24-02-2015;Dbxref=InterPro:IPR003594
+Miro_158	SUPERFAMILY	protein_match	241	405	.	+	.	Name=SSF54211;Target=Miro|158_Miro_158 241 405;status=T;ID=match$20_241_405;date=24-02-2015;Dbxref=InterPro:IPR020568

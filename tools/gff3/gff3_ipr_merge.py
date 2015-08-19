@@ -13,7 +13,8 @@ __email__ = "esr@tamu.edu"
 
 def merge_interpro(gff3, interpro):
     ipr_additions = {}
-    badkeys = ('Name', 'ID', 'Target', 'date', 'status', 'signature_desc', 'source', 'md5', 'score')
+    blacklist = ('Name', 'ID', 'Target', 'date', 'status', 'signature_desc', 'source', 'md5', 'score')
+    whitelist = ('Dbxref', 'Ontology_term')
 
     for rec in GFF.parse(interpro):
         ipr_additions[rec.id] = {}
@@ -25,8 +26,11 @@ def merge_interpro(gff3, interpro):
                 for value in quals[key]:
                     ipr_additions[rec.id][key].add(value)
 
-        for key in badkeys:
-            if key in ipr_additions[rec.id]:
+        # Cast as a list so we aren't iterating over actual keyset. Otherwise,
+        # we'll throw an error for modifying keyset during iteration, which we
+        # don't really care about here.
+        for key in list(ipr_additions[rec.id]):
+            if key not in whitelist:
                 del ipr_additions[rec.id][key]
 
     for rec in GFF.parse(gff3):
