@@ -28,7 +28,7 @@ def extract_features(gff3_file):
             if feat.type == 'remark':
                 continue
 
-            if feat.type not in ('CDS', 'RBS', "gene"):
+            if feat.type not in ('CDS', 'RBS', "gene", 'terminator'):
                 feat.type = 'CDS'
             feat.qualifiers['color'] = ['255 0 0']
 

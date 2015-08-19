@@ -20,26 +20,24 @@ $sequences
           label="Select sequences used in progressiveMauve alignment"
           help="Should be provided in the same order as in original progressiveMauve run"/>
   </inputs>
-
   <outputs>
-    <collection
-        name="list_output"
-        type="list"
-        label="BigWig Tracks from ${xmfa.name}"
-        format="bigwig">
-        <discover_datasets pattern="__designation_and_ext__" directory="out" />
-    </collection>
+    <data format="bigwig" name="output">
+        <discover_datasets pattern="__designation_and_ext__"
+            directory="out" visible="true" />
+    </data>
   </outputs>
   <help><![CDATA[
 What it does
 ============
 
-XMFA Alignments are great, but now you need a way to visualize this data! This
-tool provides a conversion step to BigWig data, which is easy to view in
-JBrowse.
+XMFA Alignments are great, but now you need a way to visualize this data!
 
-Please note that this tool expects a single fasta file provided which should
-contain the genomes in the same order they were run with progressiveMauve.
+This tool provides a conversion step to BigWig data, which is easy to view in JBrowse.
+
+Please note:
+
+-  the "parent" genome should be first.
+-  that it expects a single fasta file provided which should contain the genomes in the same order they were run with progressiveMauve.
 
 ]]></help>
   <citations>

@@ -5,11 +5,7 @@ import subprocess
 import re
 import sys
 import tempfile
-import itertools
 from Bio import SeqIO
-import logging
-logging.basicConfig(level=logging.INFO)
-log = logging.getLogger()
 
 
 def secure_filename(filename):
@@ -121,22 +117,12 @@ def _id_tn_dict(sequences):
         if correct_chrom is None:
             correct_chrom = record.id
 
-        label_convert[str(i + 1)] = {
-            'record_id': record.id,
-            'len': len(record.seq),
-            #'temp': tempfile.NamedTemporaryFile(delete=False)
-        }
+        label_convert[str(i + 1)] = {'record_id': record.id,
+                                     'len': len(record.seq),
+                                     'temp': tempfile.NamedTemporaryFile(delete=False)}
 
+        label_convert[str(i + 1)]['temp'].write("variableStep chrom=%s\n" % (correct_chrom or record.id, ))
     return label_convert
-
-
-def _tempfiles(tn_dict):
-    tmpfiles = {}
-    for (a, b) in itertools.permutations(tn_dict, 2):
-        key = '%s %s' % (a, b)
-        tmpfiles[key] = tempfile.NamedTemporaryFile(delete=False, prefix="cpt.xmfa2bw.")
-        tmpfiles[key].write("variableStep chrom=%s\n" % tn_dict[a]['record_id'])
-    return tmpfiles
 
 
 def convert_to_bigwig(wig_file, chr_sizes, bw_file):
@@ -147,89 +133,90 @@ def convert_to_bigwig(wig_file, chr_sizes, bw_file):
             out_handle.write("%s\t%s\n" % (chrom, size))
     try:
         cl = ["wigToBigWig", wig_file, size_file, bw_file]
-        log.debug('CLI: %s', ' '.join(cl))
+        print ' '.join(cl)
         subprocess.check_call(cl)
     finally:
+        pass
         os.remove(wig_file)
         os.remove(size_file)
     return bw_file
 
 
-def remove_gaps(parent, other):
+def remove_gaps(parent, others):
     # one or more dashes
     m = re.compile('-+')
     fixed_parent = ""
-    fixed_other = ""
+    fixed_others = ["" for x in others]
 
     last_gap_idx = 0
     # Body
     for gap in m.finditer(parent):
         fixed_parent += parent[last_gap_idx:gap.start()]
-        fixed_other += other[last_gap_idx:gap.start()]
-
+        for i, other in enumerate(others):
+            fixed_others[i] += other[last_gap_idx:gap.start()]
         last_gap_idx = gap.end()
 
     # Tail
     fixed_parent += parent[last_gap_idx:]
-    fixed_other += other[last_gap_idx:]
+    for i, other in enumerate(others):
+        fixed_others[i] += other[last_gap_idx:]
 
-    return fixed_parent, fixed_other
+    return fixed_parent, fixed_others
 
 
-def convert_xmfa_to_gff3(xmfa_file, fasta_genomes, window_size=3):
+def convert_xmfa_to_gff3(xmfa_file, fasta_genomes, window_size=3, relative_to='1'):
     label_convert = _id_tn_dict(fasta_genomes)
-    tmpfiles = _tempfiles(label_convert)
-
     try:
         os.makedirs("out")
     except Exception:
         pass
 
-    log.info("Making Comparisons")
     for lcb_idx, lcb in enumerate(parse_xmfa(xmfa_file)):
-        log.debug("Processing lcb %s", lcb_idx)
-        for (parent, other) in itertools.permutations(lcb, 2):
-            local_tmp = tmpfiles['%s %s' % (parent['id'], other['id'])]
+        ids = [seq['id'] for seq in lcb]
 
-            if parent['start'] == 0 and parent['end'] == 0:
-                continue
+        # Doesn't match part of our sequence
+        if relative_to not in ids:
+            continue
 
-            corrected_parent, corrected_target = remove_gaps(
-                parent['seq'],
-                other['seq']
-            )
+        # Skip sequences that are JUST our "relative_to" genome
+        if len(ids) == 1:
+            continue
 
-            for i in range(1, len(corrected_parent) - 1):
+        parent = [seq for seq in lcb if seq['id'] == relative_to][0]
+        others = [seq for seq in lcb if seq['id'] != relative_to]
+
+        if parent['start'] == 0 and parent['end'] == 0:
+            continue
+
+        corrected_parent, corrected_targets = remove_gaps(parent['seq'],
+                                                          [other['seq'] for other in others])
+        # Update the parent/others with corrected sequences
+        parent['corrected'] = corrected_parent
+        for i, target in enumerate(corrected_targets):
+            others[i]['corrected'] = target
+
+        for i in range(1, len(corrected_parent) - 1):
+            for other in others:
                 left_bound = max(0, i - window_size)
                 right_bound = i + window_size
-                point_pid = _percent_identity(
-                    corrected_parent[left_bound:right_bound],
-                    corrected_target[left_bound:right_bound]
-                )
-
-                local_tmp.write("%s\t%s\n" % (
+                point_pid = _percent_identity(parent['corrected'][left_bound:right_bound],
+                                              other['corrected'][left_bound:right_bound])
+                label_convert[other['id']]['temp'].write("%s\t%s\n" % (
                     abs(parent['start']) + i,
                     point_pid
                 ))
 
-    log.info("Converting files")
-    for (pid, oid) in itertools.permutations(label_convert, 2):
-        parent = label_convert[pid]
-        other = label_convert[oid]
+    for key in label_convert.keys():
+        # Ignore self-self
+        if key == relative_to:
+            continue
 
-        key = '%s %s' % (pid, oid)
-        tmpfiles[key].close()
+        other = label_convert[key]
+        other['temp'].close()
+        sizes = [(label_convert[relative_to]['record_id'], label_convert[relative_to]['len'])]
+        bw_file = os.path.join("out", secure_filename(other['record_id'] + '.bigwig'))
 
-        bw_file = os.path.join(
-            "out", secure_filename(
-                '%s - %s.bigwig' % (parent['record_id'], other['record_id']))
-        )
-        log.debug("Converting %s to %s", key, bw_file)
-
-        # Generate a custom sizes file where all the "TO" genomes are listed as
-        # being the same size as the "FROM" (key) genome.
-        sizes = [(label_convert[pid]['record_id'], label_convert[pid]['len'])]
-        convert_to_bigwig(tmpfiles[key].name, sizes, bw_file)
+        convert_to_bigwig(label_convert[key]['temp'].name, sizes, bw_file)
 
 
 if __name__ == '__main__':
