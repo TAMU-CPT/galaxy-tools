@@ -29,11 +29,15 @@ def genbank_subsection(genbank_files, table=None, coordinates=None, include_unli
     if table is not None:
         cut_sites = {}
         for row in table.readlines():
-            (a, b, c) = row.split('\t')
+            tmp = row.strip().split('\t')
 
-            b = int(b)
-            c = int(c.strip())
-            cut_sites[a] = sorted([b, c])
+            b = int(tmp[1])
+            c = int(tmp[2])
+
+            if tmp[0] not in cut_sites:
+                cut_sites[tmp[0]] = []
+
+            cut_sites[tmp[0]].append(sorted([b, c]))
     else:
         start, end = map(int, coordinates.split(','))
 
@@ -44,13 +48,13 @@ def genbank_subsection(genbank_files, table=None, coordinates=None, include_unli
                 rid = record.id
 
                 if rid in cut_sites:
-                    start, end = cut_sites[rid]
-                    record.features = [gen_annotation(record, start -1, end)] + record.features
-                    yield [record[start - 1:end]]
+                    for (start, end) in cut_sites[rid]:
+                        record.features = [gen_annotation(record, start -1, end)] + record.features
+                        yield [record[start - 1:end]]
                 # if want unlisted, print
                 elif include_unlisted:
-                    record.features = [gen_annotation(record, start -1, end)] + record.features
-                    yield [record]
+                        record.features = [gen_annotation(record, start -1, end)] + record.features
+                        yield [record]
             else:
                 record.features = [gen_annotation(record, start -1, end)] + record.features
                 yield [record[start - 1:end]]

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.subsection" name="Subsection of Genbank file" version="1.1">
+<tool id="edu.tamu.cpt.genbank.subsection" name="Subsection of Genbank file" version="1.2">
     <description>Extract range/subsection/segment/subset from genbank files</description>
   <macros>
     <import>macros.xml</import>
@@ -14,10 +14,10 @@
 subsection.py
 
 #if $source.source_select == 'file':
---table $source.table
-$include_unlisted
+    --table $source.table
+    $include_unlisted
 #else:
---coordinates $source.start,$source.end
+    --coordinates $source.start,$source.end
 #end if
 
 > $default]]></command>
@@ -60,13 +60,18 @@ $include_unlisted
   <help><![CDATA[
 **What it does**
 
-Lets you extract subsections of genbank files. If a table is provided, it should be formatted like the following::
+Lets you extract subsections of genbank files. If a table is provided, it
+should be in BED format like the following::
 
     genome_id	start	end
 
 For example::
 
 	phage_cbk	2831	3032
+
+BED3/6/12 are all acceptable, anything past the first three columns is ignored.
+If multiple regions are provided, they will be extracted as separate genbank
+files. Overlapped regions should be collapsed with mergeBed.
 
 ]]></help>
 </tool>
