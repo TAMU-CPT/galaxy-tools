@@ -7,6 +7,7 @@ from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
+from gff3 import feature_lambda, feature_test_type
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -27,27 +28,6 @@ def get_id(feature=None, parent_prefix=None):
         result += '%s_%s_%s' % (feature.location.start, feature.location.end,
                                 feature.location.strand)
     return result
-
-
-def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
-    # Either the top level set of [features] or the subfeature attribute
-    for feature in feature_list:
-        if test(feature, **test_kwargs):
-            # Necessary? Or should we just wipe out actual feature's subfeatuers?
-            if not subfeatures:
-                feature_copy = copy.deepcopy(feature)
-                feature_copy.sub_features = []
-                yield feature_copy
-            else:
-                yield feature
-
-        if hasattr(feature, 'sub_features'):
-            for x in feature_lambda(feature.sub_features, test, test_kwargs, subfeatures=subfeatures):
-                yield x
-
-
-def feature_test(feature, **kwargs):
-    return feature.type == kwargs['type']
 
 
 def ensure_location_in_bounds(start=0, end=0, parent_length=0):
@@ -153,7 +133,7 @@ def shinefind(fasta, gff3, table_output=None, lookahead_min=5, lookahead_max=15,
     for record in GFF.parse(gff3, base_dict=seq_dict):
         gff3_output = SeqRecord(record.seq, record.id)
         # Filter out just coding sequences
-        for feature in feature_lambda(record.features, feature_test, {'type': 'CDS'}, subfeatures=False):
+        for feature in feature_lambda(record.features, feature_test_type, {'type': 'CDS'}, subfeatures=False):
             # Strand information necessary to getting correct upstream sequence
             # TODO: library?
             strand = feature.location.strand
