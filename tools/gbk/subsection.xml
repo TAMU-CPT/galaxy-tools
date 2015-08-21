@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.subsection" name="Subsection of Genbank file" version="1.2">
+<tool id="edu.tamu.cpt.genbank.subsection" name="Subsection of Genbank file" version="1.3">
     <description>Extract range/subsection/segment/subset from genbank files</description>
   <macros>
     <import>macros.xml</import>
@@ -14,8 +14,8 @@ subsection.py
 "$gbk_files"
 
 #if $source.source_select == 'file':
-    --table "$source.table
-    $include_unlisted
+    --table $source.table
+    $source.include_unlisted
 #else:
     --coordinates $source.start,$source.end
 #end if
