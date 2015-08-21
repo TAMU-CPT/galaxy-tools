@@ -34,6 +34,15 @@ def feature_test_quals(feature, **kwargs):
                 return False
     return True
 
+def feature_test_contains(feature, **kwargs):
+    if 'index' in kwargs:
+        return feature.location.start < kwargs['index'] < feature.location.end
+    elif 'range' in kwargs:
+        return feature.location.start < kwargs['range']['start'] < feature.location.end and \
+                feature.location.start < kwargs['range']['end'] < feature.location.end
+    else:
+        raise RuntimeError('Must use index or range keyword')
+
 def get_id(feature=None, parent_prefix=None):
     result = ""
     if parent_prefix is not None:
