@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.color" name="GFF3 Color" version="1.0.0">
+  <description>color gff3 features based on product tags</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python gff3_color.py --version</version_command>
+  <command><![CDATA[
+$__tool_directory__/gff3_color.py
+$gff3_data
+> $default]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="default"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="gff3_data" value="miro.gff3" />
+          <output name="default" value="miro.colored.gff3" />
+      </test>
+  </tests>
+  <help><![CDATA[]]></help>
+</tool>
