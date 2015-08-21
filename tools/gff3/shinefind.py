@@ -102,7 +102,7 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
     # Parse GFF3 records
     for record in GFF.parse(gff3, base_dict=seq_dict):
         # Shinefind's "gff3_output".
-        gff3_output = SeqRecord(record.seq, record.id)
+        gff3_output_record = SeqRecord(record.seq, record.id)
         # Filter out just coding sequences
         ignored_features = []
         for x in record.features:
@@ -191,7 +191,7 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
                     gene.location._start = min(locations)
                     gene.location._end = max(locations)
                 # Also register the feature with the separate GFF3 output
-                gff3_output.features.append(sd_feature)
+                gff3_output_record.features.append(sd_feature)
 
                 if top_only:
                     break
@@ -212,11 +212,11 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
                 ])) + "\n")
 
         record.annotations = {}
-        GFF.write([gff3_output], sys.stdout)
+        GFF.write([record], sys.stdout)
 
-        gff3_output.features = sorted(gff3_output.features, key=lambda x: x.location.start)
-        gff3_output.annotations = {}
-        GFF.write([gff3_output], gff3_output)
+        gff3_output_record.features = sorted(gff3_output_record.features, key=lambda x: x.location.start)
+        gff3_output_record.annotations = {}
+        GFF.write([gff3_output_record], gff3_output)
 
 
 if __name__ == '__main__':
