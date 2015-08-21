@@ -6,11 +6,11 @@
   </macros>
   <expand macro="requirements"/>
   <expand macro="stdio"/>
-  <version_command>python aa_stats.py --version</version_command>
+  <version_command>python gff3_aa_stats.py --version</version_command>
   <command><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-$__tool_directory__/aa_stats.py
+$__tool_directory__/gff3_aa_stats.py
 
 @GENOME_SELECTOR@
 $gff3_data
