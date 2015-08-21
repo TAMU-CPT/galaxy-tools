@@ -32,7 +32,8 @@ def mga_to_gff3(mga_output, genome):
                     type="Shine_Dalgarno_sequence",
                     strand=strand,
                     qualifiers={
-                        'ID': 'rbs_%s' % gene_id
+                        'ID': 'rbs_%s' % gene_id,
+                        'Source': 'MGA'
                     }
                 )
 
@@ -41,6 +42,7 @@ def mga_to_gff3(mga_output, genome):
                 type="CDS",
                 strand=strand,
                 qualifiers={
+                    'Source': 'MGA',
                     'ID': 'cds_%s' % gene_id
                 }
             )
@@ -61,6 +63,7 @@ def mga_to_gff3(mga_output, genome):
                 type="gene",
                 strand=strand,
                 qualifiers={
+                    'Source': 'MGA',
                     'ID': gene_id
                 }
             )
