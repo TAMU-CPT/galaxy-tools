@@ -3,6 +3,7 @@ import sys
 import logging
 logging.basicConfig(level=logging.INFO)
 import argparse
+from gff3 import feature_lambda, feature_test_qual_value
 from BCBio import GFF
 from Bio.SeqFeature import FeatureLocation
 log = logging.getLogger(__name__)
@@ -66,27 +67,32 @@ def rebase(parent, child, interpro=False, protein2dna=False):
     child_features = __get_features(child, interpro=interpro)
 
     for rec in GFF.parse(parent):
-        # TODO, replace with recursion in case it's matched against a
-        # non-parent feature. We're cheating a bit here right now...
         replacement_features = []
-        for feature in rec.features:
-            if feature.id in child_features:
-                new_subfeatures = child_features[feature.id]
-                # TODO: update starts
-                fixed_subfeatures = []
-                for x in new_subfeatures:
-                    # Then update the location of the actual feature
-                    __update_feature_location(x, feature, protein2dna)
+        for feature in feature_lambda(
+                rec.features,
+                feature_test_qual_value,
+                {
+                    'qualifier': 'ID',
+                    'attribute_list': child_features.keys(),
+                },
+                subfeatures=False):
 
-                    if interpro:
-                        for y in ('status', 'Target'):
-                            try:
-                                del x.qualifiers[y]
-                            except:
-                                pass
+            new_subfeatures = child_features[feature.id]
+            # TODO: update starts
+            fixed_subfeatures = []
+            for x in new_subfeatures:
+                # Then update the location of the actual feature
+                __update_feature_location(x, feature, protein2dna)
 
-                    fixed_subfeatures.append(x)
-                replacement_features.extend(fixed_subfeatures)
+                if interpro:
+                    for y in ('status', 'Target'):
+                        try:
+                            del x.qualifiers[y]
+                        except:
+                            pass
+
+                fixed_subfeatures.append(x)
+            replacement_features.extend(fixed_subfeatures)
         # We do this so we don't include the original set of features that we
         # were rebasing against in our result.
         rec.features = replacement_features
