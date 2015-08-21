@@ -6,9 +6,9 @@
   </macros>
   <expand macro="requirements"/>
   <expand macro="stdio"/>
-  <version_command>python revcom.py --version</version_command>
+  <version_command>python gff3_revcom.py --version</version_command>
   <command><![CDATA[
-$__tool_directory__/revcom.py
+$__tool_directory__/gff3_revcom.py
 $gff3_data
 > $default]]></command>
   <inputs>
