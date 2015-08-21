@@ -109,7 +109,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
             results.append(gene)
         else:
             if len(rbss) > 1:
-                log.warn("%s RBSs found for gene %s", rbss.id, gene.id)
+                log.warn("%s RBSs found for gene %s", rbss[0].id, gene.id)
             # get first RBS/CDS
             cds = list(genes(gene.sub_features, feature_type='CDS'))[0]
             rbs = rbss[0]
@@ -235,11 +235,19 @@ def excessive_gap(record, excess=10):
         int(sorted_genes[0].location.end)
     ]
     for gene in sorted_genes[1:]:
+        # If the gene's start is contiguous to the "current_gene", then we
+        # extend current_gene
         if gene.location.start <= current_gene[1] + excess:
             current_gene[1] = int(gene.location.end)
         else:
+            # If it's discontiguous, we append the region and clear.
             contiguous_regions.append(current_gene)
             current_gene = [int(gene.location.start), int(gene.location.end)]
+
+    # This generally expected that annotations would NOT continue unto the end
+    # of the genome, however that's a bug, and we can make it here with an
+    # empty contiguous_regions list
+    contiguous_regions.append(current_gene)
 
     for i in range(len(contiguous_regions) + 1):
         if i == 0:
@@ -259,6 +267,7 @@ def excessive_gap(record, excess=10):
     qc_features = []
     for (start, end) in results:
         f = gen_qc_feature(start, end, 'Excessive gap, %s bases' % abs(end-start))
+        qc_features.append(f)
         putative_genes = putative_genes_in_sequence(str(record[start:end].seq))
         for putative_gene in putative_genes:
             #(0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF')
@@ -266,8 +275,7 @@ def excessive_gap(record, excess=10):
                 putative_genes_feature = gen_qc_feature(start + putative_gene[0], start + putative_gene[1], 'Possible gene', strand=1)
             else:
                 putative_genes_feature = gen_qc_feature(end - putative_gene[1], end - putative_gene[0], 'Possible gene', strand=-1)
-            f.sub_features.append(putative_genes_feature)
-        qc_features.append(f)
+            qc_features.append(putative_genes_feature)
 
         better_results.append((start, end, len(putative_genes)))
 
@@ -488,7 +496,10 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None):
     score_good = float(sum((mb_good, eg_good, eo_good, mt_good)))
     score_bad = float(sum((mb_bad, eg_bad, eo_bad, mt_bad)))
 
-    score = int(100 * score_good / (score_bad + score_good))
+    if score_bad + score_good == 0:
+        score = 0
+    else:
+        score = int(100 * score_good / (score_bad + score_good))
 
     # This is data that will go into our HTML template
     kwargs = {
