@@ -1,5 +1,6 @@
 ##gff-version 3
 ##sequence-region 01 1 137835
+01	GenBank	region	1	137835	.	+	1	ID=01;Dbxref=taxon:1195073;Name=JX104231;Note=Burkholderia phage BcepMigl%2C complete genome.,##Assembly-Data-START##%0AAssembly Method :: Newbler v. 2.5.3%3B Sequencher v. 5.0%0ASequencing Technology :: Sanger dideoxy sequencing%3B454%0A##Assembly-Data-END##;collection_date=26-Jul-2007;comment1=##Assembly-Data-START## Assembly Method :: Newbler v. 2.5.3%3B Sequencher v. 5.0 Sequencing Technology :: Sanger dideoxy sequencing%3B 454 ##Assembly-Data-END## ;date=14-JUL-2012;host=Burkholderia cenocepacia;isolation_source=soil;mol_type=genomic DNA;organism=Burkholderia phage BcepMigl
 01	feature	gene	28	243	.	+	.	ID=gene_1
 01	feature	CDS	28	243	.	+	0	ID=cds_gene_1;Parent=gene_1
 01	feature	gene	616	929	.	+	.	ID=gene_2
