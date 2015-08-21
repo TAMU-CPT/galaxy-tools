@@ -9,23 +9,21 @@ import sys
 from Bio import SeqIO
 from Bio.Alphabet import generic_dna
 from BCBio import GFF
-
-def flatten(feature):
-    if hasattr(feature, 'sub_features'):
-        for subfeature in feature.sub_features:
-            for value in flatten(subfeature):
-                yield value
-    yield feature
+from gff3 import feature_lambda
 
 
 def main(gff_file, fasta_file):
     fasta_input = SeqIO.to_dict(SeqIO.parse(fasta_file, "fasta", generic_dna))
     gff_iter = GFF.parse(gff_file, fasta_input)
 
+    def test_true(feature, **kwargs):
+        return True
+
     for record in gff_iter:
         full_feats = []
         for feature in record.features:
-            for flat_feat in flatten(feature):
+            for flat_feat in feature_lambda(
+                    record.features, test_true, {}, subfeatures=True):
                 if flat_feat.type == 'Shine_Dalgarno_sequence':
                     flat_feat.type = 'RBS'
 
