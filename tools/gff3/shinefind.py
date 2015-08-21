@@ -2,45 +2,16 @@
 import re
 import sys
 import argparse
-import copy
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-from gff3 import feature_lambda, feature_test_type
+from gff3 import feature_lambda, feature_test_type, feature_test_quals, get_id, \
+    ensure_location_in_bounds
 
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
-
-
-def get_id(feature=None, parent_prefix=None):
-    result = ""
-    if parent_prefix is not None:
-        result += parent_prefix + '|'
-    if 'locus_tag' in feature.qualifiers:
-        result += feature.qualifiers['locus_tag'][0]
-    elif 'gene' in feature.qualifiers:
-        result += feature.qualifiers['gene'][0]
-    elif 'product' in feature.qualifiers:
-        result += feature.qualifiers['product'][0]
-    else:
-        result += '%s_%s_%s' % (feature.location.start, feature.location.end,
-                                feature.location.strand)
-    return result
-
-
-def ensure_location_in_bounds(start=0, end=0, parent_length=0):
-    # This prevents frameshift errors
-    while start < 0:
-        start += 3
-    while end < 0:
-        end += 3
-    while start > parent_length:
-        start -= 3
-    while end > parent_length:
-        end -= 3
-    return (start, end)
 
 
 class NaiveSDCaller(object):
@@ -120,20 +91,54 @@ class NaiveSDCaller(object):
         return results
 
 
-def shinefind(fasta, gff3, table_output=None, lookahead_min=5, lookahead_max=15, top_only=False):
+def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5, lookahead_max=15, top_only=False, add=False):
     table_output.write('\t'.join(['ID', 'Name', 'Terminus', 'Terminus', 'Strand',
                                   'Upstream Sequence', 'SD', 'Spacing']) +
                        "\n")
 
     sd_finder = NaiveSDCaller()
-
     # Load up sequence(s) for GFF3 data
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
     # Parse GFF3 records
     for record in GFF.parse(gff3, base_dict=seq_dict):
+        # Shinefind's "gff3_output".
         gff3_output = SeqRecord(record.seq, record.id)
         # Filter out just coding sequences
-        for feature in feature_lambda(record.features, feature_test_type, {'type': 'CDS'}, subfeatures=False):
+        ignored_features = []
+        for x in record.features:
+            # If feature X does NOT contain a CDS, add to ignored_features
+            # list. This means if we have a top level gene feature with or
+            # without a CDS subfeature, we're catch it appropriately here.
+            if len(list(feature_lambda([x], feature_test_type, {'type': 'CDS'}, subfeatures=True))) == 0:
+                ignored_features.append(x)
+
+        # Loop over all gene features
+        for gene in feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True):
+
+            # Get the CDS from this gene.
+            feature = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=True))
+            # If no CDSs are in this gene feature, then quit
+            if len(feature) == 0:
+                # We've already caught these above in our ignored_features
+                # list, so we skip out on the rest of this for loop
+                continue
+            else:
+                # Otherwise pull the first (bad?) We don't expect >1 CDS/gene
+                feature = feature[0]
+
+            # Three different ways RBSs can be stored that we expect.
+            rbs_rbs = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'RBS'}, subfeatures=False))
+            rbs_sds = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
+            regulatory_elements = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'regulatory'}, subfeatures=False))
+            rbs_regulatory = list(feature_lambda(regulatory_elements, feature_test_quals, {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
+            rbss = rbs_rbs + rbs_sds + rbs_regulatory
+
+            # If someone has already annotated an RBS, we quit
+            if len(rbss) > 0:
+                log.debug("Has %s RBSs", len(rbss))
+                ignored_features.append(gene)
+                continue
+
             # Strand information necessary to getting correct upstream sequence
             # TODO: library?
             strand = feature.location.strand
@@ -177,6 +182,15 @@ def shinefind(fasta, gff3, table_output=None, lookahead_min=5, lookahead_max=15,
                     int(sd['spacing']) + lookahead_min,
                 ])) + "\n")
 
+                if add:
+                    # Append the top RBS to the gene feature
+                    gene.sub_features.append(sd_feature)
+                    # Pick out start/end locations for all sub_features
+                    locations = [x.location.start for x in gene.sub_features] + [x.location.end for x in gene.sub_features]
+                    # Update gene's start/end to be inclusive
+                    gene.location._start = min(locations)
+                    gene.location._end = max(locations)
+                # Also register the feature with the separate GFF3 output
                 gff3_output.features.append(sd_feature)
 
                 if top_only:
@@ -197,9 +211,12 @@ def shinefind(fasta, gff3, table_output=None, lookahead_min=5, lookahead_max=15,
                     -1,
                 ])) + "\n")
 
+        record.annotations = {}
+        GFF.write([gff3_output], sys.stdout)
+
         gff3_output.features = sorted(gff3_output.features, key=lambda x: x.location.start)
         gff3_output.annotations = {}
-        GFF.write([gff3_output], sys.stdout)
+        GFF.write([gff3_output], gff3_output)
 
 
 if __name__ == '__main__':
@@ -207,12 +224,14 @@ if __name__ == '__main__':
     parser.add_argument('fasta', type=file, help='Fasta Genome')
     parser.add_argument('gff3', type=file, help='GFF3 annotations')
 
+    parser.add_argument('--gff3_output', type=argparse.FileType('w'), help='GFF3 Output', default='shinefind.gff3')
     parser.add_argument('--table_output', type=argparse.FileType('w'), help='Tabular Output', default='shinefind.tbl')
 
     parser.add_argument('--lookahead_min', nargs='?', type=int, help='Number of bases upstream of CDSs to end search', default=5)
     parser.add_argument('--lookahead_max', nargs='?', type=int, help='Number of bases upstream of CDSs to begin search', default=15)
 
     parser.add_argument('--top_only', action='store_true', help='Only report best hits')
+    parser.add_argument('--add', action='store_true', help='Function in "addition" mode whereby the RBSs are added directly to the gene model.')
 
     args = parser.parse_args()
     shinefind(**vars(args))

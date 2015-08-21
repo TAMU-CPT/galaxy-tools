@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 from BCBio import GFF
-from gff3 import feature_lambda, feature_test_quals
+from gff3 import feature_lambda, feature_test_qual_value
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -17,7 +17,7 @@ def gff_filter(gff3, filter_list, attribute_field='ID', subfeatures=True):
     for rec in GFF.parse(gff3):
         rec.features = feature_lambda(
             rec.features,
-            feature_test_quals,
+            feature_test_qual_value,
             {'qualifier': attribute_field, 'attribute_list': filter_strings},
             subfeatures=subfeatures
         )

@@ -18,11 +18,21 @@ def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
 def feature_test_type(feature, **kwargs):
     return feature.type == kwargs['type']
 
-def feature_test_quals(feature, **kwargs):
+def feature_test_qual_value(feature, **kwargs):
     for attribute_value in feature.qualifiers.get(kwargs['qualifier'], []):
         if attribute_value in kwargs['attribute_list']:
             return True
     return False
+
+def feature_test_quals(feature, **kwargs):
+    for key in kwargs:
+        if key not in feature.qualifiers:
+            return False
+
+        for value in kwargs[key]:
+            if value not in feature.qualifiers[key]:
+                return False
+    return True
 
 def get_id(feature=None, parent_prefix=None):
     result = ""
@@ -39,3 +49,15 @@ def get_id(feature=None, parent_prefix=None):
                                 feature.location.strand)
     return result
 
+
+def ensure_location_in_bounds(start=0, end=0, parent_length=0):
+    # This prevents frameshift errors
+    while start < 0:
+        start += 3
+    while end < 0:
+        end += 3
+    while start > parent_length:
+        start -= 3
+    while end > parent_length:
+        end -= 3
+    return (start, end)

@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.genbank.shinefind" name="ShineFind v1.4" version="1.4">
+<tool id="edu.tamu.cpt.genbank.shinefind" name="ShineFind v1.5" version="1.5">
   <description>Identify shine-dalgarno sequences</description>
   <macros>
     <import>macros.xml</import>
@@ -14,12 +14,14 @@ $__tool_directory__/shinefind.py
 $gff3_data
 
 --table_output $default_output
+--gff3_output $gff3_output
 
 --lookahead_min $lookahead_min
 --lookahead_max $lookahead_max
 $top_only
 
-> $gff3_output
+
+> $stdout
 
 ]]></command>
   <inputs>
@@ -28,11 +30,15 @@ $top_only
 
     <param label="Number of bases upstream of CDSs to end search (--lookahead_min)" name="lookahead_min" type="integer" value="5"/>
     <param label="Number of bases upstream of CDSs to begin search (--lookahead_max)" name="lookahead_max" type="integer" value="15"/>
-    <param checked="false" label="Only report best hits (--top_only)" name="top_only" type="boolean" falsevalue="" truevalue="--top_only"/>
+    <param checked="true" label="Automatically add RBSs to input GFF3" name="add"
+        type="boolean" truevalue="--add" falsevalue="" />
+    <param checked="false" label="Only report best hits (--top_only)"
+        name="top_only" type="boolean" falsevalue="" truevalue="--top_only"/>
   </inputs>
   <outputs>
     <data format="tabular" name="default_output" label="ShineFind RBS list from $gff3_data.name"/>
     <data format="gff3" name="gff3_output" label="ShineFind GFF3 RBSs from $gff3_data.name"/>
+    <data format="gff3" name="stdout" label="$gff3_data.name with RBSs"/>
   </outputs>
   <tests>
       <test>
