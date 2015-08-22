@@ -11,14 +11,16 @@
 xmfa2bigwig.py
 $xmfa
 $sequences
+--window_size $window_size
 ]]></command>
   <inputs>
-      <param type="data" format="xmfa" name="xmfa"
-          label="XMFA MSA" />
+      <param type="data" format="xmfa" name="xmfa" label="XMFA MSA" />
 
       <param type="data" format="fasta" name="sequences"
           label="Select sequences used in progressiveMauve alignment"
           help="Should be provided in the same order as in original progressiveMauve run"/>
+
+      <param type="integer" name="window_size" value="3" label="Default window size for BigWig files" />
   </inputs>
   <outputs>
     <data format="bigwig" name="output">
