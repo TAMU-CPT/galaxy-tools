@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.text.cat" name="Concatentate multiple files" version="1.0">
+  <description>into a single file</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="bash">
+#set f = '" "'.join([str($var) for $var in $files])
+cat "$f" > $output
+
+</command>
+  <inputs>
+    <param label="Files to merge" name="files" type="data" multiple="True"/>
+  </inputs>
+  <outputs>
+    <data format_source="files" name="output" />
+  </outputs>
+  <help>Merge files</help>
+  <citations/>
+</tool>
