@@ -23,6 +23,8 @@ def __get_features(child, interpro=False):
             if interpro:
                 if feature.type == 'polypeptide':
                     continue
+                if '_' in parent_feature_id:
+                    parent_feature_id = parent_feature_id[parent_feature_id.index('_') + 1:]
 
             try:
                 child_features[parent_feature_id].append(feature)

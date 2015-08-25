@@ -223,6 +223,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert XMFA file to BigWig tracks')
     parser.add_argument('xmfa_file', type=file, help='XMFA file')
     parser.add_argument('fasta_genomes', type=file, help='Fasta genomes')
+    parser.add_argument('--window_size', type=int, help='Window Size', default=3)
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
 
