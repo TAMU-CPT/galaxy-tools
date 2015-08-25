@@ -13,9 +13,11 @@ __version__ = "0.4.0"
 __maintainer__ = "Eric Rasche"
 __email__ = "esr@tamu.edu"
 
+
 def __get_features(child, interpro=False):
     child_features = {}
     for rec in GFF.parse(child):
+        log.info("Parsing %s", rec.id)
         for feature in rec.features:
             parent_feature_id = rec.id
             if interpro:
