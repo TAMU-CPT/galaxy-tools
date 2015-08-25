@@ -44,9 +44,9 @@
 #end if
   </token>
   <token name="@GENOME_SELECTOR@">
-#if $reference_genome.reference_genome_source == 'cached':
+#if str($reference_genome.reference_genome_source) == 'cached':
     "${reference_genome.fasta_indexes.fields.path}"
-#elif $reference_genome.reference_genome_source == 'history':
+#else if str($reference_genome.reference_genome_source) == 'history':
     genomeref.fa
 #end if
   </token>

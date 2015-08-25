@@ -31,15 +31,16 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
         if ' ' in recid:
             recid = recid[0:recid.index(' ')]
         rec = SeqRecord(Seq("ACTG"), id=recid)
-        for hit in record.alignments:
-            for hsp in hit.hsps:
+        for hit_idx, hit in enumerate(record.alignments):
+            for hsp_idx, hsp in enumerate(hit.hsps):
                 qualifiers = {
                     "source": "blast",
                     "score": hsp.expect,
                     "accession": hit.accession,
                     "hit_id": hit.hit_id,
                     "length": hit.length,
-                    "hit_titles": hit.title.split(' >')
+                    "hit_titles": hit.title.split(' >'),
+                    "ID": '%s.%s.%s' % (recid, hit_idx, hsp_idx),
                 }
                 desc = hit.title.split(' >')[0]
                 qualifiers['description'] = desc[desc.index(' '):]
