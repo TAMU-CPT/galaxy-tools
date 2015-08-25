@@ -6,11 +6,10 @@
   </stdio>
   <version_command>python seq_export.py --version</version_command>
   <command interpreter="python"><![CDATA[seq_export.py
-#set repeat_var_1 = '" "'.join([ str($var) for $var in $positional_1 ])
-"$repeat_var_1"
+$positional_1
 > $default]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1" type="data" multiple="True"/>
+    <param label="Genbank file" name="positional_1" type="data"/>
   </inputs>
   <outputs>
     <data format="fasta" hidden="false" name="default"/>
