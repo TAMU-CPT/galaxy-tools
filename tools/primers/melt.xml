@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.primers.tm" name="Melting Point Calculator" version="1.0.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python melt.py --version</version_command>
+  <command interpreter="python"><![CDATA[melt.py
+$fasta
+$csalt.salt_select
+#if str($csalt.salt_select) == "salt":
+    --na ${csalt.salt}
+#end if
+> $output]]></command>
+  <inputs>
+    <param label="DNA Fasta File" name="fasta" type="data" format="fasta"/>
+      <conditional name="csalt">
+        <param name="salt_select" type="select" label="Calculation Mode">
+            <option value="nosalt">Basic Melting Temperature</option>
+            <option value="salt">Salt Adjusted Melting Temperature</option>
+        </param>
+        <when value="nosalt" />
+        <when value="salt">
+          <param name="salt" type="float" label="Concentration of [Na+] in mM" default="50.0"/>
+        </when>
+    </conditional>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="fasta" value="tm.fa" />
+          <param name="salt_select" value="nosalt" />
+          <output name="output" file="tm.nosalt.tabular" />
+      </test>
+      <test>
+          <param name="fasta" value="tm.fa" />
+          <param name="salt_select" value="salt" />
+          <param name="salt" value="25" />
+          <output name="output" file="tm.salt.tabular" />
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Calculates the melting point of DNA sequences
+
+**How it works**
+
+The algorithms used as precisely as they are per `OligoCalc's Documentation <http://www.basic.northwestern.edu/biotools/oligocalc.html>`__.
+
+
+
+]]></help>
+    <citations>
+        <citation type="doi">10.1093/nar/6.11.3543</citation>
+        <citation type="doi">10.1093/nar/27.14.2957</citation>
+        <citation type="bibtex">
+@article{Howley10061979,
+author = {Howley, P M and Israel, M A and Law, M F and Martin, M A},
+title = {A rapid method for detecting and mapping homology between heterologous DNAs. Evaluation of polyomavirus genomes.},
+volume = {254},
+number = {11},
+pages = {4876-83},
+year = {1979},
+abstract ={A new approach for evaluating homologous sequences among related DNAs is presented. Conventional filter hybridization techniques are employed at 35 degrees C in a range of formamide concentrations in order to perform annealings at effective temperatures as low as Tm -50 degrees C which permits the detection of regions of homology with as much as 33% base mismatch. Under such nonstringent conditions, high levels of specific annealing can be obtained at plateau levels. In combination with the Southern "blotting" technique (1975), this approach can be used to perform biochemical heteroduplex melting experiments. The homology among the genomes of the murine polyoma virus (Py), the simian virus 40 (SV40), and the human papovavirus BK was evaluated using this new methodology.},
+URL = {http://www.jbc.org/content/254/11/4876.abstract},
+eprint = {http://www.jbc.org/content/254/11/4876.full.pdf+html},
+journal = {Journal of Biological Chemistry}
+}
+        </citation>
+    </citations>
+</tool>
