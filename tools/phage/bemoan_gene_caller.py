@@ -134,6 +134,7 @@ class SDScore(object):
                 return len(i)
         return 1
 
+
 class PhageGeneCaller(object):
     """
         Manages application of gene annotations to a genome and generation of
@@ -234,14 +235,11 @@ class PhageGeneCaller(object):
                         log.debug("Refusing to add BLAST de-novo protein [%s %s %s] due to presence of %s stop codons" % (strand, calc_start, calc_end, protein.count('*')))
                     else:
                         log.debug("Adding BLAST de-novo protein [%s %s %s]" % (strand, calc_start, calc_end))
-                        new_blast_features.append(feature)
                 else:
                     self.append_qual(feature, 'note', 'De-novo ORF called without BLAST hit')
                     self.append_qual(feature, 'color', '2')
                     # DON'T APPEND FEATURE
 
-
-        return new_blast_features
 
     def analyse_group(self, blast_hit_list, sequence_info):
         # Ignore empty lists, no blast hits shouldn't get here but just in case
@@ -402,7 +400,6 @@ class PhageGeneCaller(object):
             feature.qualifiers[qualifier].append(message)
         else:
             feature.qualifiers[qualifier] = [message]
-
 
 
 class CoalesceGeneCalls(object):
