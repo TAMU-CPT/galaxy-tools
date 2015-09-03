@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.bemoan" name="BEMOAN" version="1.0.0">
+  <description>BactEriophage Meta Orf ANnotator</description>
+  <version_command>bemoan_gene_caller.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">bemoan_gene_caller.py
+
+${genome}
+#set gene_calls = '" "'.join([str($var) for $var in $file])
+"$gene_calls"
+> $output
+
+</command>
+  <inputs>
+    <param format="fasta" help="Fasta Genome" label="genome" name="genome" optional="False" type="data"/>
+    <param help="GFF3" label="GFF3 formatted gene calls" name="file" type="data" multiple="True" format="gff3"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output">
+    </data>
+  </outputs>
+  <help>BactEriophage Meta Orf ANnotator
+================================
+
+Phages are special. They have unique requirements for gene calling that do not
+apply to other organism. As such, we have a custom gene annotator that makes
+use of data from many other sources, and synthesizes this into a coherent gene
+calling process.
+
+The BEMOAN software synthesizes data from multiple different sources into a
+single set of coherent gene calls. Further correction based on BLAST hits is
+done to ensure high quality starts.
+
+Further end-user corrections will need to be made, as BEMOAN currently
+significantly overcalls genes. This is seen as less of an issue than wildly
+incorrect gene starts.
+
+
+Process
+=======
+
+1. Gene Calls are loaded and their union is processed
+2. These are coalesced into a set of coherent calls
+3. Empty regions are identified and a de-novo, naive ORF calling process is done
+4. The gene call coalescing routine is again called to reduce the search space as the naive ORF caller identifies many overlapped regions
+5. All data is blasted, BLAST and a Shine-Dalgarno list are used to determine the best start for a given gene region
+6. Any errant called regions containing stop codons are tossed out
+
+</help>
+  <tests/>
+</tool>
