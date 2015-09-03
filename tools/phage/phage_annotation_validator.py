@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import os
 import json
-import copy
 import argparse
 import itertools
+from gff3 import feature_lambda, feature_test_type, feature_test_quals
 from BCBio import GFF
 from Bio.Data import CodonTable
 from Bio import SeqIO
@@ -138,7 +138,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     return good, bad, results, qc_features
 
 # modified from get_orfs_or_cdss.py
-#-----------------------------------------------------------
+# -----------------------------------------------------------
 
 # get stop codons
 table_obj = CodonTable.ambiguous_generic_by_id[11]
@@ -289,36 +289,11 @@ def excessive_gap(record, excess=10):
     return good, bad, better_results, qc_features
 
 
-def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
-    # Either the top level set of [features] or the subfeature attribute
-    for feature in feature_list:
-        if test(feature, **test_kwargs):
-            feature_copy = copy.deepcopy(feature)
-            if not subfeatures:
-                feature_copy.sub_features = []
-            yield feature_copy
-
-        if hasattr(feature, 'sub_features'):
-            for x in feature_lambda(feature.sub_features, test, test_kwargs, subfeatures=subfeatures):
-                yield x
-
-def feature_test_type(feature, **kwargs):
-    return feature.type == kwargs['type']
-
-def feature_test_quals(feature, **kwargs):
-    for key in kwargs:
-        if key not in feature.qualifiers:
-            return False
-
-        for value in kwargs[key]:
-            if value not in feature.qualifiers[key]:
-                return False
-    return True
-
 def coding_genes(feature_list):
     for x in feature_lambda(feature_list, feature_test_type, {'type': 'gene'}, subfeatures=True):
         if len(list(feature_lambda(x.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))) > 0:
             yield x
+
 
 def genes(feature_list, feature_type='gene'):
     """
