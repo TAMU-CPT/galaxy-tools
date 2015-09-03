@@ -1,30 +1,18 @@
 #!/usr/bin/env python
 import logging
 import sys
-import copy
 import argparse
+from gff3 import feature_lambda
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.Seq import reverse_complement, translate
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
-# Copied from gff3_filter.py, todo LIBRARY
-def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
-    # Either the top level set of [features] or the subfeature attribute
-    for feature in feature_list:
-        if test(feature, **test_kwargs):
-            feature_copy = copy.deepcopy(feature)
-            if not subfeatures:
-                feature_copy.sub_features = []
-            yield feature_copy
-
-        if hasattr(feature, 'sub_features'):
-            for x in feature_lambda(feature.sub_features, test, test_kwargs, subfeatures=subfeatures):
-                yield x
 
 def feature_test(feature, **kwargs):
     return feature.type == kwargs['type'] and str(feature.extract(kwargs['record'].seq))[-3:] in kwargs['stops']
+
 
 def suppress(genome, annotations, suppress=None):
     if suppress is None:
@@ -53,7 +41,6 @@ def suppress(genome, annotations, suppress=None):
                     cs = feature.location.start - (3 * (1 + codon_idx))
                     codon = reverse_complement(record.seq[cs:cs + 3])
 
-
                 if codon not in suppress and translate(codon, 11) == '*':
                     new_end = codon_idx
                     break
@@ -63,8 +50,7 @@ def suppress(genome, annotations, suppress=None):
                     log.warn("Could not find a new stop codon")
                     break
 
-            if new_end != None:
-                #print dir(feature.location)
+            if new_end is not None:
                 if feature.strand > 0:
                     feature.location._end += (codon_idx * 3)
                 else:
@@ -79,7 +65,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='generates a genome with specified stop codons suppressed')
     parser.add_argument('genome', type=file, help='Genome Sequence')
     parser.add_argument('annotations', type=file, help='Parent GFF3 annotations')
-    parser.add_argument('--suppress', type=str, nargs='+', help='Suppress this stop codon. All features with this codon will be extended to the next available stop codon')
+    parser.add_argument('--suppress', type=str, nargs='+',
+                        help=(
+                            'Suppress this stop codon. All features with this '
+                            'codon will be extended to the next available stop '
+                            'codon'
+                        ))
     args = parser.parse_args()
 
     suppress(**vars(args))
