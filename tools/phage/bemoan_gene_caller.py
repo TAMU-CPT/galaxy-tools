@@ -7,7 +7,7 @@ from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation, ExactPosition
 from collections import Counter
-
+from phage_annotation_validator import excessive_gap
 import logging
 logging.basicConfig(level=logging.DEBUG,  format='%(asctime)-15s %(message)s')
 log = logging.getLogger('bemoan')
@@ -169,34 +169,8 @@ class PhageGeneCaller(object):
 
         min_open_frame is the smalled ORF to examine. Set to 50 AAs by default.
         """
-        annotated = set(range(len(self.record)))
-        for feature in self.record.features:
-            annotated = annotated - set(range(feature.location.start,
-                                              feature.location.end))
-        region_list = []
-        current_region_start = None
-        last_nt = None
-
-        for nt in sorted(list(annotated)):
-            if current_region_start is None:
-                current_region_start = nt
-            if last_nt is None:
-                last_nt = nt
-            if nt != last_nt + 1:
-                region_list.append([current_region_start - allowed_overlap,
-                                    last_nt + allowed_overlap])
-                last_nt = nt
-                current_region_start = nt
-            else:
-                last_nt = nt
-        region_list.append([current_region_start - allowed_overlap, last_nt +
-                            allowed_overlap])
-
-        # remove short empty regions
-        region_list = [l for l in region_list if abs(l[1]-l[0]) >
-                       min_open_frame*3]
-
-        return region_list
+        data = excessive_gap(self.record)
+        return data[2]
 
     def annotate_empty_areas(self, region_list):
         """Attempt to locate empty regions of the genome, then do gene calling
