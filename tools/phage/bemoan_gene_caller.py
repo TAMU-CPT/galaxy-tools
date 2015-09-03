@@ -31,12 +31,10 @@ class GenomicUtils(object):
 
     @classmethod
     def find_orfs_with_trans2(cls, seq, trans_table=11, min_protein_length=20):
-        answer = []
         seq_len = len(seq)
         # Leading M not needed because alternative starts
         pattern = re.compile('(^[A-Z]{3,})\*')
-        start_codons = ['ATG', 'TTG', 'CTG', 'GTG']
-        # Table 11 says these are starts too? 'ATT', 'ATC', 'ATA'
+        start_codons = ['ATG', 'TTG', 'CTG', 'GTG', 'ATT', 'ATC', 'ATA']
         # For F and R
         for strand, nuc in [(+1, seq), (-1, seq.reverse_complement())]:
             # for each frame
@@ -60,38 +58,19 @@ class GenomicUtils(object):
                         for result in pattern.finditer(trans):  # Should there ever be more than one?
                             if len(result.group(1)) > min_protein_length:
                                 if strand == 1:
-                                    answer.append((
-                                        # Index to get our left shift, in addition to frame.
-                                        string_index + frame - 3,
-                                        # Then we take 3*end (length
-                                        # basically), and add 3 to account for
-                                        # added stop codon
-                                        3*result.end(1) + 3,
+                                    yield (
+                                        string_index + frame,
+                                        string_index + frame + 3 * len(result.group(1)),
                                         strand,
                                         result.group(1)
-                                    ))
+                                    )
                                 else:
-                                    log.debug(result.group(1))
-                                    log.debug(' '.join(map(str, [result.start(1),
-                                                                 result.end(1),
-                                                                 3*result.start(1),
-                                                                 3*result.end(1),
-                                                                 frame,
-                                                                 string_index])))
-                                    answer.append((
-                                        # See below, then subtract length of protein found on top of that
-                                        seq_len - string_index - 3*result.end(1) - frame + 3,
-                                        # Here we have the "end" (right most
-                                        # portion), which takes length of input
-                                        # sequence, and subtracts our progress
-                                        # along that (since we're looking at
-                                        # that sequence backwards)
-                                        3*result.end(1) + 3,
+                                    yield (
+                                        len(seq) - (string_index + frame + 3 * len(result.group(1))),
+                                        len(seq) - (string_index + frame),
                                         strand,
                                         result.group(1)
-                                    ))
-        answer.sort()
-        return answer
+                                    )
 
     @classmethod
     def features_with_bad_stops(cls, record, translation_table=11):
@@ -180,125 +159,39 @@ class PhageGeneCaller(object):
         Additionally this method blasts called features, and will colour them
         according to presence/absence of BLAST hits
         """
-        new_possible_orfs = []
         for region in region_list:
             (start, end, unused) = region
-            log.info("\n\nExtracting region %s..%s" % (start, end))
             # Allow some overlap
             start -= 20
             end += 20
             # Fetch sequence
             sequence = self.record.seq[start:end]
             # Search in that sequence
-            orf_list = GenomicUtils.find_orfs_with_trans2(sequence, trans_table=11)
-            for (orf_start, orf_end, strand, protein) in orf_list:
-                new_possible_orfs.append((
-                    start,
-                    end,
-                    orf_start,
-                    orf_end,
-                    strand,
-                    str(protein),
-                    self.digest(str(protein))
-                ))
-
-        import pprint; pprint.pprint(new_possible_orfs)
-        seq_map = self._gen_seq_map(new_possible_orfs)
-
-        # Find all listed protein hashes in the blast results, we're only
-        # interested in de-novo features if they have blast results. Raw orf
-        # calling isn't likely to be succesfully without evidence
-        good_ids = {}
-
-        # For all of the protein hashes found in blast results, if they're in
-        # our sequence map (and they bloody well should be, but it happens?
-        # Sometimes?)
-        for crc_id in [x for x in seq_map]:
-            for feature_info in seq_map[crc_id]:
+            found_orfs = GenomicUtils.find_orfs_with_trans2(sequence, trans_table=11)
+            log.info("Extracting region %s..%s. Found %s orfs", start, end, len(found_orfs))
+            for (orf_start, orf_end, strand, protein) in found_orfs:
                 # Region start, quit
-                (rs, rq, dist_from_left_end, seq_length, strand) = feature_info
-                calc_start = rs + dist_from_left_end
-                calc_end = rs + dist_from_left_end + seq_length
+                calc_start = start + orf_start
+                calc_end = start + orf_end
 
-                feature = SeqFeature(FeatureLocation(calc_start, calc_end),
-                                     type="CDS", strand=strand)
+                feature = SeqFeature(
+                    FeatureLocation(calc_start, calc_end),
+                    type="CDS",
+                    strand=strand,
+                    qualifiers={
+                        'note': 'De-novo ORF called from six frame translation',
+                        'color': '#aaffaa',
+                    },
+                )
                 protein = str(feature.extract(self.record).seq.translate(table=11))
 
-                if crc_id in good_ids:
-                    # Has blast data backing it up
-                    self.append_qual(feature, 'note', 'De-novo ORF called with BLAST hit')
-                    self.append_qual(feature, 'color', '3')
-                    # Translate to check for stops
-                    # This actually catches some
-                    if protein.count('*') > 1 and \
-                            protein.index('*') < len(protein) - 1:
-                        log.debug("Refusing to add BLAST de-novo protein [%s %s %s] due to presence of %s stop codons" % (strand, calc_start, calc_end, protein.count('*')))
-                    else:
-                        log.debug("Adding BLAST de-novo protein [%s %s %s]" % (strand, calc_start, calc_end))
+                if protein.count('*') > 1 and \
+                        protein.index('*') < len(protein) - 1:
+                    log.debug("Refusing to feature [%s %s %s] due to presence of %s stop codons" % (strand, calc_start, calc_end, protein.count('*')))
                 else:
-                    self.append_qual(feature, 'note', 'De-novo ORF called without BLAST hit')
-                    self.append_qual(feature, 'color', '2')
-                    # DON'T APPEND FEATURE
+                    log.debug("Adding new feature [%s %s %s]" % (strand, calc_start, calc_end))
 
-
-    def analyse_group(self, blast_hit_list, sequence_info):
-        # Ignore empty lists, no blast hits shouldn't get here but just in case
-        if len(blast_hit_list) == 0:
-            return None
-
-        # Check that we're completely aligned:
-        alignment = {
-            'ends_exact': 0,     # Ends exactly matched, we assume that we aren't
-                                 # missing stop codons/gene callers aren't missing
-                                 # stop codons either
-            'start_exact': 0,    # Starts exactly matched
-            'longer_than_db': 0,   # query is longer than hit, maybe move downstream
-            'shorter_than_db': 0,  # query is shorter, maybe move upstream
-            'diffs': [],         # differences in starts
-        }
-        for hit in blast_hit_list:
-            if hit.qend == hit.send:
-                alignment['ends_exact'] += 1
-            if hit.qstart == hit.sstart:
-                alignment['start_exact'] += 1
-            elif hit.qstart < hit.sstart:
-                alignment['shorter_than_db'] += 1
-            elif hit.qstart > hit.sstart:
-                alignment['longer_than_db'] += 1
-            alignment['diffs'].append(int(hit.qstart) - int(hit.sstart))
-
-        # We've got a set of alignments. We're under the unique constraint of
-        # wanting longer alignments if they exist, thus we bias towards longest
-        # possible gene length. We'll aim for a reasonable % of the hits being
-        # longer than our query sequence before we change the start.
-
-        # This method no longer appears to bias towards upstream hits
-
-        # If the number of hits in the DB that are longer than our query
-        # account for >15% of the hits, then we're interested.
-        hit_hist = {k: v for k, v in
-                    GenomicUtils.normalize(Counter(alignment['diffs'])).iteritems() if
-                    v > .10}
-        if len(hit_hist) > 0:
-            # We have some possibilities. We might have multiple ones.
-            # We have some k/v pairs in hit_hist representing a start change
-            # with at least 10% of hits
-            sd_score = SDScore(sequence_info['seq'],
-                               upstream=sequence_info['upstream_distance'])
-            for key in hit_hist:
-                # We'll need to evaluate the SD sequence available to that
-                # start
-                best = sd_score.score_for_delta(key)
-                # Multiply this with our fractional hit number...
-                hit_hist[key] *= best
-
-            # Then return the highest scoring one!
-            #inverse = [(value, key) for key, value in hit_hist.items()]
-            #best_upstream_start = max(inverse)[1]
-            #return best_upstream_start
-            return hit_hist
-        else:
-            return None
+                print protein.count('*')
 
     def reannotate_existing_genes(self):
         orfs = []
@@ -365,7 +258,7 @@ class PhageGeneCaller(object):
 
     def _gen_seq_map(self, orf_list):
         seq_map = {}
-        for (rs, re1, oq, oe, strand, protein, crc) in orf_list:
+        for (rs, re1, oq, oe, strand, protein) in orf_list:
             if crc not in seq_map:
                 seq_map[crc] = [(rs, re1, oq, oe, strand)]
             else:
@@ -395,7 +288,9 @@ class PhageGeneCaller(object):
                 ExactPosition(feature.location.end.position - strip_to_first_stop),
                 feature.location.strand)
 
-    def append_qual(self, feature, qualifier, message):
+
+    @classmethod
+    def append_qual(cls, feature, qualifier, message):
         if 'qualifier' in feature.qualifiers:
             feature.qualifiers[qualifier].append(message)
         else:
@@ -421,8 +316,7 @@ class CoalesceGeneCalls(object):
             calculations are run
         """
         for rec in GFF.parse(handle):
-            for parent_feature in genes(rec.features, feature_type='gene'):
-                print parent_feature
+            for parent_feature in genes(rec.features, feature_type='CDS'):
                 # Features are keyed on strand and end base, as that should be
                 # shared amongst similar features
                 if parent_feature.strand == 1:
@@ -451,6 +345,15 @@ class CoalesceGeneCalls(object):
         return fixed_features
 
     @classmethod
+    def _append_dict(cls, parent_dictionary, child_dictionary):
+        for key in child_dictionary:
+            if key not in parent_dictionary:
+                parent_dictionary[key] = child_dictionary[key]
+            else:
+                parent_dictionary[key].extend(child_dictionary[key])
+        return parent_dictionary
+
+    @classmethod
     def _process_group(cls, feature_list=None):
         """
             Run the collapsing process.
@@ -464,14 +367,12 @@ class CoalesceGeneCalls(object):
             results, something to say "this phage is more relevant than that
             one"
         """
-        if not isinstance(feature_list, list) and feature_list is not None:
-            raise Exception("Must provide list of features")
         end = feature_list[0].location.end
         strand = feature_list[0].location.strand
         start = None
         # We'll add another color if the start was updated
         changed_start = False
-        qualifiers = {'note':[]}
+        qualifiers = {'note': []}
         # Pick Max Start/Longest ORF
         for feature in feature_list:
             if start is None:
@@ -486,24 +387,22 @@ class CoalesceGeneCalls(object):
                         start = feature.location.start
                         changed_start = True
 
-            for key in feature.qualifiers:
-                for value in feature.qualifiers[key]:
-                    if key not in qualifiers:
-                        qualifiers[key] = []
+            qualifiers = cls._append_dict(qualifiers, feature.qualifiers)
+            for key in ['score', 'phase', 'ID']:
+                if key in qualifiers:
+                    del qualifiers[key]
 
-                    if key in ['score', 'phase', 'ID']:
-                        # Ignore completely
-                        pass
-                    elif key is 'source':
-                        qualifiers['note'].append('%s..%s Source %s' % (start, end, value))
-                    elif key not in ['color', 'colour']:
-                        qualifiers[key].append('%s..%s %s' % (start, end, value))
-                    else:
-                        qualifiers[key] = value
         if changed_start:
-            qualifiers['color'] = ['4']
-        final_feature = SeqFeature(FeatureLocation(start, end, strand=strand),
-                                   type="CDS", qualifiers=qualifiers)
+            qualifiers['color'] = ['#ffaaaa']
+
+        feature_loc = FeatureLocation(start, end, strand=strand)
+
+        final_feature = SeqFeature(feature_loc, type="gene")
+        final_cds = SeqFeature(feature_loc, type="CDS", qualifiers=qualifiers)
+        final_feature.sub_features = [
+            final_cds
+        ]
+
         return final_feature
 
 
@@ -517,14 +416,13 @@ if __name__ == '__main__':
     pgc = PhageGeneCaller(genome=args.genome)
     log.info("Gene Calls")
     gene_calls = CoalesceGeneCalls(gff_data_sources=args.annotations)
-    import pprint; pprint.pprint(gene_calls.coalesce())
     log.info("Added annotations")
-    #pgc.apply_annotations(gene_calls.coalesce())
+    pgc.apply_annotations(gene_calls.coalesce())
     # Annotate all empty streches first
-    #log.info("Annotation of empty ORFs")
-    ## We want to merge down the denovo features and the existing annotations.
-    ## Sometimes the de-novo caller will call multiple overlapping ORFs
-    #denovo_features = pgc.annotate_empty_areas(pgc.identify_empty_areas())
+    log.info("Annotation of empty ORFs")
+    # We want to merge down the denovo features and the existing annotations.
+    # Sometimes the de-novo caller will call multiple overlapping ORFs
+    denovo_features = pgc.annotate_empty_areas(pgc.identify_empty_areas())
     #gene_calls2 = CoalesceGeneCalls()
     #gene_calls2.add_features(denovo_features)
     #pgc.apply_annotations(gene_calls2.coalesce())
