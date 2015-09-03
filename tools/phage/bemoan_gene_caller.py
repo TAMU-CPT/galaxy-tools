@@ -7,7 +7,7 @@ from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation, ExactPosition
 from collections import Counter
-from phage_annotation_validator import excessive_gap
+from phage_annotation_validator import excessive_gap, genes
 import logging
 logging.basicConfig(level=logging.DEBUG,  format='%(asctime)-15s %(message)s')
 log = logging.getLogger('bemoan')
@@ -421,35 +421,25 @@ class CoalesceGeneCalls(object):
             calculations are run
         """
         for rec in GFF.parse(handle):
-            # TODO: Provide method for obtaining RBS features/other types
-            for feature in [f for f in rec.features if f.type == 'CDS']:
-                self.features.append(feature)
+            for parent_feature in genes(rec.features, feature_type='gene'):
+                print parent_feature
+                # Features are keyed on strand and end base, as that should be
+                # shared amongst similar features
+                if parent_feature.strand == 1:
+                    fid = '%s:%s' % (parent_feature.location.end, parent_feature.strand)
+                else:
+                    fid = '%s:%s' % (parent_feature.location.start, parent_feature.strand)
 
-    def add_features(self, feature_list):
-        for feature in feature_list:
-            if feature.type == "CDS":
-                self.features.append(feature)
+                if fid not in self.feature_groupings:
+                    self.feature_groupings[fid] = [parent_feature]
+                else:
+                    self.feature_groupings[fid].append(parent_feature)
 
     def coalesce(self):
         """
             Given the internal feature set (after loading of data), this
             function coalesces these into a single set of gene annotations
         """
-
-        for feature in self.features:
-            # We assume that all features have correct stop data
-            if feature.strand == 1:
-                fid = '%s:%s' % (feature.location.end, feature.strand)
-            else:
-                fid = '%s:%s' % (feature.location.start, feature.strand)
-            if fid not in self.feature_groupings:
-                self.feature_groupings[fid] = [feature]
-            else:
-                self.feature_groupings[fid].append(feature)
-
-        if len(self.features) == 34:
-            import pprint; pprint.pprint(self.feature_groupings)
-
         fixed_features = []
         for group_id in self.feature_groupings:
             log.debug('Processing %s' % group_id)
