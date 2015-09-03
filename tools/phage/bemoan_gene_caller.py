@@ -159,6 +159,7 @@ class PhageGeneCaller(object):
         Additionally this method blasts called features, and will colour them
         according to presence/absence of BLAST hits
         """
+        features = []
         for region in region_list:
             (start, end, unused) = region
             # Allow some overlap
@@ -167,8 +168,9 @@ class PhageGeneCaller(object):
             # Fetch sequence
             sequence = self.record.seq[start:end]
             # Search in that sequence
-            found_orfs = GenomicUtils.find_orfs_with_trans2(sequence, trans_table=11)
+            found_orfs = list(GenomicUtils.find_orfs_with_trans2(sequence, trans_table=11))
             log.info("Extracting region %s..%s. Found %s orfs", start, end, len(found_orfs))
+            # TODO: FIGURE OUT WHICH FEATURES TO KEEP!!!!
             for (orf_start, orf_end, strand, protein) in found_orfs:
                 # Region start, quit
                 calc_start = start + orf_start
@@ -179,19 +181,14 @@ class PhageGeneCaller(object):
                     type="CDS",
                     strand=strand,
                     qualifiers={
-                        'note': 'De-novo ORF called from six frame translation',
-                        'color': '#aaffaa',
+                        'note': ['De-novo ORF called from six frame translation'],
+                        'color': ['#aaffaa'],
                     },
                 )
                 protein = str(feature.extract(self.record).seq.translate(table=11))
-
-                if protein.count('*') > 1 and \
-                        protein.index('*') < len(protein) - 1:
-                    log.debug("Refusing to feature [%s %s %s] due to presence of %s stop codons" % (strand, calc_start, calc_end, protein.count('*')))
-                else:
-                    log.debug("Adding new feature [%s %s %s]" % (strand, calc_start, calc_end))
-
-                print protein.count('*')
+                log.debug("Adding new feature [%s %s %s]" % (strand, calc_start, calc_end))
+                features.append(feature)
+        return features
 
     def reannotate_existing_genes(self):
         orfs = []
@@ -317,17 +314,20 @@ class CoalesceGeneCalls(object):
         """
         for rec in GFF.parse(handle):
             for parent_feature in genes(rec.features, feature_type='CDS'):
-                # Features are keyed on strand and end base, as that should be
-                # shared amongst similar features
-                if parent_feature.strand == 1:
-                    fid = '%s:%s' % (parent_feature.location.end, parent_feature.strand)
-                else:
-                    fid = '%s:%s' % (parent_feature.location.start, parent_feature.strand)
+                self.apply_feature(parent_feature)
 
-                if fid not in self.feature_groupings:
-                    self.feature_groupings[fid] = [parent_feature]
-                else:
-                    self.feature_groupings[fid].append(parent_feature)
+    def apply_feature(self, parent_feature):
+        # Features are keyed on strand and end base, as that should be
+        # shared amongst similar features
+        if parent_feature.strand == 1:
+            fid = '%s:%s' % (parent_feature.location.end, parent_feature.strand)
+        else:
+            fid = '%s:%s' % (parent_feature.location.start, parent_feature.strand)
+
+        if fid not in self.feature_groupings:
+            self.feature_groupings[fid] = [parent_feature]
+        else:
+            self.feature_groupings[fid].append(parent_feature)
 
     def coalesce(self):
         """
@@ -423,9 +423,11 @@ if __name__ == '__main__':
     # We want to merge down the denovo features and the existing annotations.
     # Sometimes the de-novo caller will call multiple overlapping ORFs
     denovo_features = pgc.annotate_empty_areas(pgc.identify_empty_areas())
-    #gene_calls2 = CoalesceGeneCalls()
-    #gene_calls2.add_features(denovo_features)
-    #pgc.apply_annotations(gene_calls2.coalesce())
+    gene_calls2 = CoalesceGeneCalls()
+    for feature in denovo_features:
+        gene_calls2.apply_feature(feature)
+    pgc.apply_annotations(gene_calls2.coalesce())
+
     ## And then correct ALL the calls
     #log.info("Start Correction")
     #pgc.reannotate_existing_genes()
