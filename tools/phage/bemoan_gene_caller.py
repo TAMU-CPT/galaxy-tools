@@ -181,28 +181,34 @@ class PhageGeneCaller(object):
         """
         new_possible_orfs = []
         for region in region_list:
-            (start, end) = region
+            (start, end, unused) = region
             log.info("\n\nExtracting region %s..%s" % (start, end))
+            # Allow some overlap
+            start -= 20
+            end += 20
+            # Fetch sequence
             sequence = self.record.seq[start:end]
+            # Search in that sequence
             orf_list = GenomicUtils.find_orfs_with_trans2(sequence, trans_table=11)
             for (orf_start, orf_end, strand, protein) in orf_list:
-                new_possible_orfs.append(( start, end, orf_start,
-                                          orf_end, strand, str(protein),
-                                          self.crc32(str(protein)) ))
+                new_possible_orfs.append((
+                    start,
+                    end,
+                    orf_start,
+                    orf_end,
+                    strand,
+                    str(protein),
+                    self.digest(str(protein))
+                ))
 
-        blast_stdout = self._blast_orfs(new_possible_orfs)
+        import pprint; pprint.pprint(new_possible_orfs)
         seq_map = self._gen_seq_map(new_possible_orfs)
 
         # Find all listed protein hashes in the blast results, we're only
         # interested in de-novo features if they have blast results. Raw orf
         # calling isn't likely to be succesfully without evidence
         good_ids = {}
-        for line in blast_stdout.split('\n'):
-            if len(line) > 1:
-                good_ids[line.split('\t')[0]] = True
-        log.debug("Found these blast hits: " + str(good_ids))
 
-        new_blast_features = []
         # For all of the protein hashes found in blast results, if they're in
         # our sequence map (and they bloody well should be, but it happens?
         # Sometimes?)
@@ -306,9 +312,9 @@ class PhageGeneCaller(object):
                     feature.location.start,
                     feature.location.end,
                     0, 0,
-                    feature.strand, protein, self.crc32(str(protein))
+                    feature.strand, protein, self.digest(str(protein))
                 ])
-                feature_map[self.crc32(str(protein))] = feature
+                feature_map[self.digest(str(protein))] = feature
             except Exception, e:
                 log.warn(e)
                 log.info(feature)
@@ -318,7 +324,7 @@ class PhageGeneCaller(object):
 
         for feature in self.record.features:
             protein = str(feature.extract(self.record).seq.translate(table=11))
-            protein_hash = self.crc32(protein)
+            protein_hash = self.digest(protein)
 
             if protein_hash in modifications:
                 # Here we create a temporary feature to check that if we were
@@ -356,15 +362,14 @@ class PhageGeneCaller(object):
                         ExactPosition(feature.location.end.position),
                         feature.location.strand)
 
-    def crc32(self, seq):
+    def digest(self, seq):
         return hashlib.md5(seq).hexdigest()
-        #return '%08x' % (binascii.crc32(seq) & 0xffffffff)
 
     def _gen_seq_map(self, orf_list):
         seq_map = {}
         for (rs, re1, oq, oe, strand, protein, crc) in orf_list:
             if crc not in seq_map:
-                seq_map[crc] = [[rs, re1, oq, oe, strand]]
+                seq_map[crc] = [(rs, re1, oq, oe, strand)]
             else:
                 seq_map[crc].append([rs, re1, oq, oe, strand])
         return seq_map
@@ -531,8 +536,7 @@ if __name__ == '__main__':
     log.info("Annotation of empty ORFs")
     # We want to merge down the denovo features and the existing annotations.
     # Sometimes the de-novo caller will call multiple overlapping ORFs
-    empty_region_list = pgc.identify_empty_areas()
-    denovo_features = pgc.annotate_empty_areas(empty_region_list)
+    denovo_features = pgc.annotate_empty_areas(pgc.identify_empty_areas())
     gene_calls2 = CoalesceGeneCalls()
     gene_calls2.add_features(denovo_features)
     pgc.apply_annotations(gene_calls2.coalesce())
