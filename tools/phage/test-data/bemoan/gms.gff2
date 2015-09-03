@@ -1,0 +1,70 @@
+##gff-version 2
+##source-version GeneMark.hmm_PROKARYOTIC 3.05
+##date: Wed Sep 10 10:53:20 2014
+# Sequence file name: /home/galaxy/galaxy/database/files/014/dataset_14326.dat
+# Model file name: GeneMark_hmm_heuristic.mod
+# RBS: false
+# Model information: Heuristic_model_for_genetic_code_11_and_GC_50
+
+NC_001416	GeneMark.hmm	CDS	191	736	-717.099752	+	0	gene_id 1
+NC_001416	GeneMark.hmm	CDS	711	2636	-2584.146575	+	0	gene_id 2
+NC_001416	GeneMark.hmm	CDS	2633	2839	-271.362185	+	0	gene_id 3
+NC_001416	GeneMark.hmm	CDS	2836	4437	-2147.187837	+	0	gene_id 4
+NC_001416	GeneMark.hmm	CDS	4457	5737	-1708.342572	+	0	gene_id 5
+NC_001416	GeneMark.hmm	CDS	5741	6079	-445.764119	+	0	gene_id 6
+NC_001416	GeneMark.hmm	CDS	6135	7160	-1360.168004	+	0	gene_id 7
+NC_001416	GeneMark.hmm	CDS	7163	7600	-578.332006	+	0	gene_id 8
+NC_001416	GeneMark.hmm	CDS	7612	7965	-474.897757	+	0	gene_id 9
+NC_001416	GeneMark.hmm	CDS	7977	8555	-774.099466	+	0	gene_id 10
+NC_001416	GeneMark.hmm	CDS	8552	8947	-519.743798	+	0	gene_id 11
+NC_001416	GeneMark.hmm	CDS	8937	9695	-1010.228175	+	0	gene_id 12
+NC_001416	GeneMark.hmm	CDS	9711	10133	-558.913406	+	0	gene_id 13
+NC_001416	GeneMark.hmm	CDS	10115	10549	-573.214393	+	0	gene_id 14
+NC_001416	GeneMark.hmm	CDS	10542	13103	-3380.108779	+	0	gene_id 15
+NC_001416	GeneMark.hmm	CDS	13100	13429	-439.432176	+	0	gene_id 16
+NC_001416	GeneMark.hmm	CDS	13429	14127	-937.771383	+	0	gene_id 17
+NC_001416	GeneMark.hmm	CDS	14276	14875	-811.731040	+	0	gene_id 18
+NC_001416	GeneMark.hmm	CDS	14872	15444	-759.317742	+	0	gene_id 19
+NC_001416	GeneMark.hmm	CDS	15505	18903	-4564.599394	+	0	gene_id 20
+NC_001416	GeneMark.hmm	CDS	18965	19585	-833.843645	+	0	gene_id 21
+NC_001416	GeneMark.hmm	CDS	19650	20855	-1625.557521	+	0	gene_id 22
+NC_001416	GeneMark.hmm	CDS	21029	21973	-1283.864323	+	0	gene_id 23
+NC_001416	GeneMark.hmm	CDS	21973	22557	-778.605710	+	0	gene_id 24
+NC_001416	GeneMark.hmm	CDS	22686	23945	-1708.132918	-	0	gene_id 25
+NC_001416	GeneMark.hmm	CDS	24509	25399	-1211.068939	-	0	gene_id 26
+NC_001416	GeneMark.hmm	CDS	25396	26973	-2153.924999	-	0	gene_id 27
+NC_001416	GeneMark.hmm	CDS	27372	27533	-210.824619	+	0	gene_id 28
+NC_001416	GeneMark.hmm	CDS	27812	28882	-1454.580298	-	0	gene_id 29
+NC_001416	GeneMark.hmm	CDS	29118	29285	-217.363513	-	0	gene_id 30
+NC_001416	GeneMark.hmm	CDS	29847	30395	-725.425065	-	0	gene_id 31
+NC_001416	GeneMark.hmm	CDS	30620	30715	-119.316972	-	0	gene_id 32
+NC_001416	GeneMark.hmm	CDS	30712	30894	-239.677050	-	0	gene_id 33
+NC_001416	GeneMark.hmm	CDS	31005	31196	-250.929096	-	0	gene_id 34
+NC_001416	GeneMark.hmm	CDS	31348	32028	-903.847892	-	0	gene_id 35
+NC_001416	GeneMark.hmm	CDS	32025	32810	-1046.196078	-	0	gene_id 36
+NC_001416	GeneMark.hmm	CDS	32816	33112	-386.833464	-	0	gene_id 37
+NC_001416	GeneMark.hmm	CDS	33187	33456	-355.585818	-	0	gene_id 38
+NC_001416	GeneMark.hmm	CDS	33536	33904	-489.423519	-	0	gene_id 39
+NC_001416	GeneMark.hmm	CDS	34087	34287	-263.293143	-	0	gene_id 40
+NC_001416	GeneMark.hmm	CDS	34485	35036	-744.884451	+	0	gene_id 41
+NC_001416	GeneMark.hmm	CDS	35037	35438	-544.489861	-	0	gene_id 42
+NC_001416	GeneMark.hmm	CDS	35825	36103	-371.794142	-	0	gene_id 43
+NC_001416	GeneMark.hmm	CDS	36275	37114	-1122.929136	-	0	gene_id 44
+NC_001416	GeneMark.hmm	CDS	37227	37940	-955.302537	-	0	gene_id 45
+NC_001416	GeneMark.hmm	CDS	38041	38241	-261.394367	+	0	gene_id 46
+NC_001416	GeneMark.hmm	CDS	38360	38653	-382.164179	+	0	gene_id 47
+NC_001416	GeneMark.hmm	CDS	38686	39585	-1205.642964	+	0	gene_id 48
+NC_001416	GeneMark.hmm	CDS	39582	40283	-935.371003	+	0	gene_id 49
+NC_001416	GeneMark.hmm	CDS	40280	40570	-384.965329	+	0	gene_id 50
+NC_001416	GeneMark.hmm	CDS	40644	41084	-588.939721	+	0	gene_id 51
+NC_001416	GeneMark.hmm	CDS	41081	41953	-1175.558609	+	0	gene_id 52
+NC_001416	GeneMark.hmm	CDS	42429	43043	-831.788140	+	0	gene_id 53
+NC_001416	GeneMark.hmm	CDS	43152	43889	-983.178295	+	0	gene_id 54
+NC_001416	GeneMark.hmm	CDS	43886	44509	-842.513134	+	0	gene_id 55
+NC_001416	GeneMark.hmm	CDS	45186	45509	-422.974632	+	0	gene_id 56
+NC_001416	GeneMark.hmm	CDS	45493	45969	-633.369104	+	0	gene_id 57
+NC_001416	GeneMark.hmm	CDS	45966	46427	-613.318982	+	0	gene_id 58
+NC_001416	GeneMark.hmm	CDS	46459	46752	-390.421308	-	0	gene_id 59
+NC_001416	GeneMark.hmm	CDS	47042	47575	-723.037801	-	0	gene_id 60
+NC_001416	GeneMark.hmm	CDS	47738	47944	-270.853412	+	0	gene_id 61
+
