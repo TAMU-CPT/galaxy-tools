@@ -1,10 +1,4 @@
 #!/usr/bin/env python
-from galaxygetopt.ggo import GalaxyGetOpt as GGO
-import sys
-import re
-import os
-import subprocess
-import yaml
 import argparse
 
 

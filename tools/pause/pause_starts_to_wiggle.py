@@ -29,7 +29,7 @@ def gen_header(bam_file, suffix):
 
 
 def convert_to_bigwig(wig_file, chr_sizes, bw_file):
-    #This will be fine under Galaxy, but could use temp folder?
+    # This will be fine under Galaxy, but could use temp folder?
     size_file = "%s-sizes.txt" % (os.path.splitext(bw_file)[0])
     with open(size_file, "w") as out_handle:
         for chrom, size in chr_sizes:
@@ -61,7 +61,7 @@ def start_data(bam_file, starts_f=None, starts_r=None):
             start_map_r = {}
 
             for col in work_bam.fetch(chrom, start, end):
-                #print " ".join(map(str, [col.qstart, col.qend, col.rlen, col.aend, col.alen, col.pos]))
+                # print " ".join(map(str, [col.qstart, col.qend, col.rlen, col.aend, col.alen, col.pos]))
                 #   qstart   qend   rlen   aend    alen   pos
                 #   0        145    145    13537   143    13394
                 # reverse strand

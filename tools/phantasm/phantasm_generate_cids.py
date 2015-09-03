@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-from galaxygetopt.ggo import GalaxyGetOpt as GGO
+from Bio import SeqIO
 import re
-import yaml
 import argparse
 from phantasm import Cassettes
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate Cassette IDs for a set of genomes')
@@ -31,15 +31,10 @@ if __name__ == '__main__':
                               cassette_model[key]['custom'][custom]['isnot']],
                 }
 
-    from Bio import SeqIO
-    from Bio.SeqRecord import SeqRecord
-    from Bio.SeqFeature import SeqFeature, FeatureLocation
-    records = list(SeqIO.parse(args.genbank_file, "genbank"))
-
     print "\t".join(["#ID", "CID"])
-    for i in range(len(records)):
+    for i, record in enumerate(SeqIO.parse(args.genbank_file, "genbank")):
         data = ''
-        for feature in [x for x in records[i].features if x.type == 'CDS' and
+        for feature in [x for x in record.features if x.type == 'CDS' and
                         'product' in x.qualifiers]:
             matched_result = None
             feature_result = ''.join(feature.qualifiers['product'])
@@ -85,4 +80,4 @@ if __name__ == '__main__':
         if len(data) > 4:
             mod = Cassettes.collapse(data)
             if mod is not None:
-                print "\t".join([records[i].id, mod])
+                print "\t".join([record.id, mod])

@@ -229,7 +229,6 @@ def excessive_gap(record, excess=10):
     good = 0
     bad = 0
 
-
     contiguous_regions = []
 
     sorted_genes = sorted(genes(record.features), key=lambda feature: feature.location.start)

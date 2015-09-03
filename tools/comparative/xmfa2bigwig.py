@@ -126,7 +126,7 @@ def _id_tn_dict(sequences):
 
 
 def convert_to_bigwig(wig_file, chr_sizes, bw_file):
-    #This will be fine under Galaxy, but could use temp folder?
+    # This will be fine under Galaxy, but could use temp folder?
     size_file = "%s-sizes.txt" % (os.path.splitext(bw_file)[0])
     with open(size_file, "w") as out_handle:
         for chrom, size in chr_sizes:

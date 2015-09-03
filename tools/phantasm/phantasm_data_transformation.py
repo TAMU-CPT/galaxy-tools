@@ -17,7 +17,8 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Transform data')
     parser.add_argument('tabular_data', type=file, help='Tabular Dataset')
-    parser.add_argument('--operation', choices=transformations.keys(), nargs='+', help='Transformation to apply to the data')
+    parser.add_argument('--operation', choices=transformations.keys(),
+                        nargs='+', help='Transformation to apply to the data')
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
 

@@ -1,5 +1,7 @@
 import re
+from Bio import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
+
 
 class SequinReportParser(object):
 
@@ -23,14 +25,13 @@ class SequinReportParser(object):
         }
         self.id = id
 
-
     def parse_discrep(self, discrep):
         gff3_qc_record = SeqRecord(self.id, id=self.id)
         gff3_qc_record.features = []
 
         with open(discrep, 'r') as handle:
             detailed = False
-            current_id = None
+            # current_id = None
             for line in handle:
                 if line.startswith('Detailed Report'):
                     detailed = True
@@ -40,10 +41,10 @@ class SequinReportParser(object):
                         m = re.match(self.regex[regex_key], line.strip())
                         if m:
                             if regex_key in ('DiscRep_Erorr_Fatal'):
-                                #gen_qc_feature()
-                                ## Error
-                                #print m.group('ID')
-
+                                # gen_qc_feature()
+                                # # Error
+                                # print m.group('ID')
+                                pass
 
 if __name__ == '__main__':
     import sys

@@ -6,6 +6,7 @@ import argparse
 from Bio import SeqIO, Seq
 import StringIO
 
+
 def disambiguate(fasta_file, seed=42, tbl_out=None):
     records = list(SeqIO.parse(fasta_file, "fasta"))
     output = StringIO.StringIO()

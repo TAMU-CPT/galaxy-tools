@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 import re
 import sys
 import argparse
@@ -63,13 +63,13 @@ class NaiveSDCaller(object):
     def to_features(cls, hits, strand, parent_start, parent_end, feature_id=None):
         results = []
         for idx, hit in enumerate(hits):
-            #gene            complement(124..486)
-            #-1      491     501     0       5       5
-            #-1      491     501     0       4       5
-            #-1      491     501     1       4       5
-            #-1      491     501     2       3       5
-            #-1      491     501     1       3       5
-            #-1      491     501     0       3       5
+            # gene            complement(124..486)
+            # -1      491     501     0       5       5
+            # -1      491     501     0       4       5
+            # -1      491     501     1       4       5
+            # -1      491     501     2       3       5
+            # -1      491     501     1       3       5
+            # -1      491     501     0       3       5
 
             qualifiers = {
                 'source': 'CPT_ShineFind',
@@ -128,9 +128,12 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
 
             # Three different ways RBSs can be stored that we expect.
             rbs_rbs = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'RBS'}, subfeatures=False))
-            rbs_sds = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
-            regulatory_elements = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'regulatory'}, subfeatures=False))
-            rbs_regulatory = list(feature_lambda(regulatory_elements, feature_test_quals, {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
+            rbs_sds = list(feature_lambda(gene.sub_features, feature_test_type,
+                                          {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
+            regulatory_elements = list(feature_lambda(gene.sub_features, feature_test_type,
+                                                      {'type': 'regulatory'}, subfeatures=False))
+            rbs_regulatory = list(feature_lambda(regulatory_elements, feature_test_quals,
+                                                 {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
             rbss = rbs_rbs + rbs_sds + rbs_regulatory
 
             # If someone has already annotated an RBS, we quit
@@ -151,12 +154,12 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
                 end = feature.location.end + lookahead_max
 
             (start, end) = ensure_location_in_bounds(start=start, end=end,
-                                                        parent_length=record.__len__)
+                                                     parent_length=record.__len__)
 
             # Create our temp feature used to obtain correct portion of
             # genome
             tmp = SeqFeature(FeatureLocation(start, end, strand=strand),
-                                type='domain')
+                             type='domain')
             seq = str(tmp.extract(record.seq))
             sds = sd_finder.list_sds(seq)
 
@@ -186,7 +189,8 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
                     # Append the top RBS to the gene feature
                     gene.sub_features.append(sd_feature)
                     # Pick out start/end locations for all sub_features
-                    locations = [x.location.start for x in gene.sub_features] + [x.location.end for x in gene.sub_features]
+                    locations = [x.location.start for x in gene.sub_features] + \
+                        [x.location.end for x in gene.sub_features]
                     # Update gene's start/end to be inclusive
                     gene.location._start = min(locations)
                     gene.location._end = max(locations)
@@ -227,11 +231,15 @@ if __name__ == '__main__':
     parser.add_argument('--gff3_output', type=argparse.FileType('w'), help='GFF3 Output', default='shinefind.gff3')
     parser.add_argument('--table_output', type=argparse.FileType('w'), help='Tabular Output', default='shinefind.tbl')
 
-    parser.add_argument('--lookahead_min', nargs='?', type=int, help='Number of bases upstream of CDSs to end search', default=5)
-    parser.add_argument('--lookahead_max', nargs='?', type=int, help='Number of bases upstream of CDSs to begin search', default=15)
+    parser.add_argument('--lookahead_min', nargs='?', type=int,
+                        help='Number of bases upstream of CDSs to end search', default=5)
+    parser.add_argument('--lookahead_max', nargs='?', type=int,
+                        help='Number of bases upstream of CDSs to begin search', default=15)
 
     parser.add_argument('--top_only', action='store_true', help='Only report best hits')
-    parser.add_argument('--add', action='store_true', help='Function in "addition" mode whereby the RBSs are added directly to the gene model.')
+    parser.add_argument('--add', action='store_true',
+                        help='Function in "addition" mode whereby the ' +
+                        'RBSs are added directly to the gene model.')
 
     args = parser.parse_args()
     shinefind(**vars(args))

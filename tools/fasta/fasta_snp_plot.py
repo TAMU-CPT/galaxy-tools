@@ -1,13 +1,9 @@
 #!/usr/bin/env python
 import logging
-import random
 import svgwrite
-import copy
 logging.basicConfig(level=logging.INFO)
 import argparse
 from Bio import SeqIO
-import StringIO
-import hashlib
 
 
 def plot_snps(reference, mutated):
@@ -51,24 +47,24 @@ def plot_snps(reference, mutated):
     }
 
     colors = {
-        #Charged:
+        # Charged:
         'R': color_ref['r'][0], 'K': color_ref['r'][0], 'D': color_ref['r'][0], 'E': color_ref['r'][0],
-        #Polar (may participate in hydrogen bonds):
+        # Polar (may participate in hydrogen bonds):
         'Q': color_ref['g'][0], 'N': color_ref['g'][0], 'H': color_ref['g'][0], 'S': color_ref['g'][0],
         'T': color_ref['g'][0], 'Y': color_ref['g'][0], 'C': color_ref['g'][0], 'M': color_ref['g'][0],
         'W': color_ref['g'][0],
-        #Hydrophobic (normally buried inside the protein core):
+        # Hydrophobic (normally buried inside the protein core):
         'A': color_ref['o'][0], 'I': color_ref['o'][0], 'L': color_ref['o'][0], 'F': color_ref['o'][0],
         'V': color_ref['o'][0], 'P': color_ref['o'][0], 'G': color_ref['o'][0],
     }
     colors_muted = {
-        #Charged:
+        # Charged:
         'R': color_ref['r'][1], 'K': color_ref['r'][1], 'D': color_ref['r'][1], 'E': color_ref['r'][1],
-        #Polar (may participate in hydrogen bonds):
+        # Polar (may participate in hydrogen bonds):
         'Q': color_ref['g'][1], 'N': color_ref['g'][1], 'H': color_ref['g'][1], 'S': color_ref['g'][1],
         'T': color_ref['g'][1], 'Y': color_ref['g'][1], 'C': color_ref['g'][1], 'M': color_ref['g'][1],
         'W': color_ref['g'][1],
-        #Hydrophobic (normally buried inside the protein core):
+        # Hydrophobic (normally buried inside the protein core):
         'A': color_ref['o'][1], 'I': color_ref['o'][1], 'L': color_ref['o'][1], 'F': color_ref['o'][1],
         'V': color_ref['o'][1], 'P': color_ref['o'][1], 'G': color_ref['o'][1],
     }
@@ -111,12 +107,13 @@ def plot_snps(reference, mutated):
                     ),
                     style="stroke:black",
                 ))
-                dwg.add(dwg.text(x_offset + start,
-                                insert=(
-                                    global_x_offset + x_offset * char_width,
-                                    global_y_offset + char_height
-                                ),
-                                style="font-family:monospace"))
+                dwg.add(dwg.text(
+                    x_offset + start,
+                    insert=(
+                        global_x_offset + x_offset * char_width,
+                        global_y_offset + char_height
+                    ),
+                    style="font-family:monospace"))
 
         # SNPs
         for j in range(start, end):
@@ -129,7 +126,6 @@ def plot_snps(reference, mutated):
                                      ),
                                      style="font-family:monospace; fill:#%s" % colors_muted.get(char, 'black'),
                                      ))
-
 
     print dwg.tostring()
 

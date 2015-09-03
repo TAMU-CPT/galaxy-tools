@@ -104,9 +104,6 @@ def convert_xmfa_to_gff3(xmfa_file, relative_to='1', sequences=None, window_size
         if parent['start'] == 0 and parent['end'] == 0:
             continue
 
-        #print [seq['id'] for seq in lcb if seq['id'] == relative_to][0], \
-            #[seq['id'] for seq in lcb if seq['id'] != relative_to]
-
         for o_idx, other in enumerate(others):
             other['feature'] = SeqFeature(
                 FeatureLocation(parent['start'], parent['end'] + 1),

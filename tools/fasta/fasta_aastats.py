@@ -1,12 +1,10 @@
 #!/usr/bin/env python
-import sys
-import re
 import logging
 logging.basicConfig(level=logging.INFO)
 import argparse
-from Bio import SeqIO, Seq
-from Bio.SeqFeature import SeqFeature, FeatureLocation
+from Bio import SeqIO
 import string
+
 
 def aa_stats(fasta_file, **kwargs):
     records = list(SeqIO.parse(fasta_file, "fasta"))

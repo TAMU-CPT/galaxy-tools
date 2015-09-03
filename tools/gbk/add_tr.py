@@ -34,8 +34,8 @@ def add_tr(genbank_file, end=None):
     # Clone features in region of interest for duplication, this will actually
     # grab the repeat_region as well, conveniently
     clonefeats = [copy.deepcopy(x) for x in record.features if
-                    cut_start <= x.location.start <= cut_end and
-                    cut_start <= x.location.end <= cut_end]
+                  cut_start <= x.location.start <= cut_end and
+                  cut_start <= x.location.end <= cut_end]
 
     # For each cloned feature update the location
     for feat in clonefeats:

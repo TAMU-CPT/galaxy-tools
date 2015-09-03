@@ -13,7 +13,7 @@ __email__ = "esr@tamu.edu"
 
 def merge_interpro(gff3, interpro):
     ipr_additions = {}
-    blacklist = ('Name', 'ID', 'Target', 'date', 'status', 'signature_desc', 'source', 'md5', 'score')
+    # blacklist = ('Name', 'ID', 'Target', 'date', 'status', 'signature_desc', 'source', 'md5', 'score')
     whitelist = ('Dbxref', 'Ontology_term')
 
     for rec in GFF.parse(interpro):

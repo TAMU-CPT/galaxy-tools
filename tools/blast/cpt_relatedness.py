@@ -120,7 +120,8 @@ def get_refseq_for_name(name=None, email=None, only_phage=False):
         query_templates.append(
             # If that fails, expand query to include bacteria, but remove plasmids
             # and highlight "whole/complete genomes"
-            '"{name}"[ORGN] AND ({gbdiv_phg} OR {gbdiv_bct}) {not_plasmids} AND {whole_bacteria} {not_bact_shotgun} {incomplete}',
+            '"{name}"[ORGN] AND ({gbdiv_phg} OR {gbdiv_bct}) {not_plasmids}' +
+            ' AND {whole_bacteria} {not_bact_shotgun} {incomplete}',
         )
 
     # Grabs variables by name from local scope and templates them into strings,

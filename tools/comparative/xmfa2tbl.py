@@ -1,9 +1,5 @@
 #!/usr/bin/env python
-import sys
 from Bio import SeqIO
-from Bio.Seq import Seq
-from Bio.SeqRecord import SeqRecord
-from Bio.SeqFeature import SeqFeature, FeatureLocation
 import argparse
 import logging
 import itertools

@@ -15,7 +15,7 @@ def main(fasta, gff3, feature_filter=None):
             rec.features,
             feature_test_type,
             {'type': feature_filter},
-            subfeatures = False
+            subfeatures=False
         ):
             id = feat.id
             if len(id) == 0:

@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import logging
-import random
 logging.basicConfig(level=logging.INFO)
 import argparse
-from Bio import SeqIO, Seq
+from Bio import SeqIO
 import StringIO
+
 
 def translate(fasta_file, table=11, strip_stops=False):
     records = list(SeqIO.parse(fasta_file, "fasta"))
@@ -27,7 +27,8 @@ def translate(fasta_file, table=11, strip_stops=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Translate fasta file')
     parser.add_argument('fasta_file', type=file, help='Fasta file')
-    parser.add_argument('--table', type=int, default=11, help='Translation table to use', choices=range(1,23))
+    parser.add_argument('--table', type=int, default=11,
+                        help='Translation table to use', choices=range(1, 23))
     parser.add_argument('--strip_stops', action='store_true', help='Remove stop characters')
 
     args = parser.parse_args()

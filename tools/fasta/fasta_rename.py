@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-import sys
 import logging
 logging.basicConfig(level=logging.INFO)
 import argparse
+
 
 def rename_fasta_sequences(fasta_file, new_name):
     from Bio import SeqIO
@@ -25,7 +25,7 @@ def rename_fasta_sequences(fasta_file, new_name):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rename fasta sequences')
     parser.add_argument('fasta_file', metavar='N', type=file, nargs='?',
-                                        help='fasta file')
+                        help='fasta file')
     parser.add_argument('new_name', nargs='?', help='New name for the fasta sequence')
     args = parser.parse_args()
 
