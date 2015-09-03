@@ -162,15 +162,6 @@ class PhageGeneCaller(object):
         for gene in sorted(gene_calls, key=lambda f: f.location.start):
             self.record.features.append(gene)
 
-    def get_annotations(self):
-        """Returns annotations currently applied to genome object"""
-        return self.record.features
-
-    def clear_annotations(self):
-        """Removes all annotations from object
-        """
-        self.record.features = []
-
     def identify_empty_areas(self, allowed_overlap=30, min_open_frame=40):
         """Attempt to locate empty regions of the genome
 
