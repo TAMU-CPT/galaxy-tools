@@ -1,13 +1,11 @@
 #!/usr/bin/env python
+import sys
+import re
+import hashlib
 import argparse
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation, ExactPosition
-from Bio.Alphabet import IUPAC
-import subprocess
-import os
-import re
-import hashlib
 from collections import Counter
 
 import logging
@@ -136,125 +134,6 @@ class SDScore(object):
                 return len(i)
         return 1
 
-class BlastCache(object):
-
-    def __init__(self, proteins):
-        self.proteins = proteins
-        self.cache_dir = os.path.join(os.sep, 'tmp', 'cpt.bemoan.blast')
-        self.num_threads = 1
-
-    def blast(self):
-        unblasted_proteins = []
-
-        results = {}
-        pmap = {}
-        for (protein_id, protein_str) in self.proteins:
-            # Normalize data
-            protein_str = protein_str.upper()
-            # If the protein is cached, we can skip it
-            # If it's not cached, we'll need to blast it.
-            protein_hash = self.calculate_hash(protein_str)
-            cached_result = self.__full_cached_path(protein_hash)
-            if not os.path.exists(cached_result):
-                unblasted_proteins.append(protein_str)
-            else:
-                results[protein_id] = open(cached_result, 'r').read()
-            pmap[protein_str] = protein_id
-        # Blast the unblasted & cache the results
-        unblasted_results = self.__blast_proteins(unblasted_proteins)
-
-        # loop across unblasted results, and merge those in with our cached results
-        for protein in unblasted_proteins:
-            protein_hash = self.calculate_hash(protein)
-            results[pmap[protein]] = unblasted_results[protein_hash]
-        return results
-
-    def split_hash(self, hashstring):
-        """Parse a hash into a list for use in path building
-
-        e.g. 764efa883dda1e11db47671c4a3bbd9e will become
-             7/6/4/e/fa883dda1e11db47671c4a3bbd9e
-        """
-        split = list(hashstring)
-        head = split[0:4] + [''.join(split[4:])]
-        return head
-
-    def calculate_hash(self, data):
-        """Hash a string
-        """
-        return hashlib.md5(data).hexdigest()
-
-    def __full_cached_path(self, protein_hash):
-        """Check if a protein's results are cached
-        """
-        # We calculate the parent separately in order that we can ensure the
-        # path exists before trying to access it.
-        cache_parent = os.path.join(self.cache_dir,
-                *self.split_hash(protein_hash))
-        # Mkdirs will apparently work recursively
-        if not os.path.exists(cache_parent):
-            os.makedirs(cache_parent)
-
-        # cachedir + split_protein hash + protein_hash
-        full_cached_path = os.path.join(cache_parent, protein_hash)
-        return full_cached_path
-
-    def __blast_proteins(self, protein_list):
-        """From a list of proteins, build the fasta string, and then run that through blast.
-
-        Returns the stdout of blast
-        """
-        fasta_string = ""
-        for protein in protein_list:
-            fasta_string += ">%s\n%s\n" % (self.calculate_hash(protein), protein)
-        (blast_stdout, blast_stderr) = self.__blast(fasta_string)
-
-        blast_data = {}
-        for line in blast_stdout.split('\n'):
-            if len(line) > 1:
-                id = line.split('\t')[0]
-                if id not in blast_data:
-                    blast_data[id] = []
-                blast_data[id].append(line)
-        for hit in blast_data:
-            with open(self.__full_cached_path( hit ), 'w') as handle:
-                handle.write('\n'.join(blast_data[hit]))
-        return blast_data
-
-    def __blast(self, fasta_string):
-        command = ['blastp', '-db', '/usr/local/syncdb/community/nr/nr',
-                   '-outfmt', '6', '-num_threads', str(self.num_threads)]
-        process = subprocess.Popen(command,
-                                   stdout=subprocess.PIPE,
-                                   stdin=subprocess.PIPE,
-                                   stderr=subprocess.PIPE)
-        (stdout, stderr) = process.communicate(input=fasta_string)
-        return (stdout, stderr)
-
-
-class BlastHit(object):
-    """Class representing Blast Hits
-
-    Originally intended to have more functionality, just allows named access to
-    variables for now.
-    """
-
-    def __init__(self, qseqid, sseqid, pident, length, mismatch, gapopen,
-                 qstart, qend, sstart, send, evalue, bitscore):
-        self.qseqid = qseqid
-        self.sseqid = sseqid
-        self.pident = pident
-        self.length = length
-        self.mismatch = mismatch
-        self.gapopen = gapopen
-        self.qstart = qstart
-        self.qend = qend
-        self.sstart = sstart
-        self.send = send
-        self.evalue = evalue
-        self.bitscore = bitscore
-
-
 class PhageGeneCaller(object):
     """
         Manages application of gene annotations to a genome and generation of
@@ -266,14 +145,11 @@ class PhageGeneCaller(object):
         """
         if genome is None:
             raise Exception("Must provide fasta genome file name")
-        self.genome_file = genome
-        for record in SeqIO.parse(genome, 'fasta',
-                                  alphabet=IUPAC.unambiguous_dna):
-            self.record_id = record.id
-            self.record = record
-            self.record_len = len(record)
-            # Only want first record
-            break
+
+        record = SeqIO.read(genome, 'fasta')
+        self.record_id = record.id
+        self.record = record
+        self.record_len = len(record)
 
     def apply_annotations(self, gene_calls):
         """
@@ -471,65 +347,9 @@ class PhageGeneCaller(object):
             except Exception, e:
                 log.warn(e)
                 log.info(feature)
-        blast_stdout = self._blast_orfs(orfs)
-        seq_map = self._gen_seq_map(orfs)
-
-        groups = {}
-        seq = {}
-        # Look throw blast results
-        for row in blast_stdout.split('\n'):
-            # Blast sometimes has empty lines
-            if len(row) < 30:
-                continue
-            (qseqid, sseqid, pident, length, mismatch, gapopen, qstart, qend,
-             sstart, send, evalue, bitscore) = row.split('\t')
-            # If this qseqid is not yet known to our groups{}
-            if qseqid not in groups and qseqid in feature_map:
-                groups[qseqid] = []
-                # Fetch correct feature
-                feature = feature_map[qseqid]
-                # Extract upstream sequence
-                upstream_distance = 300
-                start = feature.location.start.position
-                end = feature.location.end.position
-                if feature.location.strand > 0:
-                    if start <= upstream_distance:
-                        upstream_distance = start - 1
-
-                    start -= upstream_distance
-                else:
-                    if end + upstream_distance >= len(self.record.seq):
-                        upstream_distance = len(self.record.seq) - end
-                    end += upstream_distance
-
-                tmp = SeqFeature(FeatureLocation(start, end,
-                                                 strand=feature.location.strand),
-                                 type='domain')
-                seq[qseqid] = {
-                    'strand': feature.location.strand,
-                    'seq': str(tmp.extract(self.record).seq),
-                    'upstream_distance': upstream_distance,
-                }
-                #log.debug("Adding feature to analysis pile: %s %s %s" % (
-                    #feature.location.strand, feature.location.start,
-                    #feature.location.end))
-            if int(mismatch) < 10 and float(pident) > 90 and qseqid in groups:
-                groups[qseqid].append(BlastHit(*row.split('\t')))
 
         modifications = {}
         notes = {}
-
-        for key in groups:
-            results = self.analyse_group(groups[key], seq[key])
-            if results is not None:
-                # Then we've found a better start, and should adjust
-                # accordingly, by 3x number of AAs that this sequence has
-                # changed by
-                inverse = [(value, key) for key, value in results.items()]
-                best_upstream_start = max(inverse)[1]
-
-                modifications[key] = best_upstream_start * 3
-                notes[key] = str(results)
 
         for feature in self.record.features:
             protein = str(feature.extract(self.record).seq.translate(table=11))
@@ -583,18 +403,6 @@ class PhageGeneCaller(object):
             else:
                 seq_map[crc].append([rs, re1, oq, oe, strand])
         return seq_map
-
-    def _blast_orfs(self, orf_list):
-        data = []
-        for (rs, re1, oq, oe, strand, protein, crc) in orf_list:
-            data.append((crc, protein))
-
-        bc = BlastCache(data)
-        blast_results = bc.blast()
-        # we reformat the results from a id based dict into a giant string for
-        # reparsing later. TODO: Refactor
-        stdout = "\n".join([blast_results[x] for x in blast_results])
-        return stdout
 
     def fix_bad_stops(self):
         for feature in GenomicUtils.features_with_bad_stops(self.record):
@@ -744,14 +552,14 @@ class CoalesceGeneCalls(object):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='bemoan')
-    parser.add_argument('annotations', type=file, help='Parent GFF3 annotations')
     parser.add_argument('genome', type=file, help='Genome Sequence')
+    parser.add_argument('annotations', type=file, nargs='+', help='Parent GFF3 annotations')
     args = parser.parse_args()
 
     log.info("Loading Data")
-    pgc = bemoan.PhageGeneCaller(genome=options['genome'])
+    pgc = PhageGeneCaller(genome=args.genome)
     log.info("Gene Calls")
-    gene_calls = bemoan.CoalesceGeneCalls(gff_data_sources=options['file'])
+    gene_calls = CoalesceGeneCalls(gff_data_sources=args.annotations)
     log.info("Added annotations")
     pgc.apply_annotations(gene_calls.coalesce())
     # Annotate all empty streches first
@@ -760,7 +568,7 @@ if __name__ == '__main__':
     # Sometimes the de-novo caller will call multiple overlapping ORFs
     empty_region_list = pgc.identify_empty_areas()
     denovo_features = pgc.annotate_empty_areas(empty_region_list)
-    gene_calls2 = bemoan.CoalesceGeneCalls()
+    gene_calls2 = CoalesceGeneCalls()
     gene_calls2.add_features(denovo_features)
     pgc.apply_annotations(gene_calls2.coalesce())
     # And then correct ALL the calls
@@ -769,4 +577,4 @@ if __name__ == '__main__':
     log.info("In-gene stop Corrections")
     pgc.fix_bad_stops()
 
-    handle.write(pgc.record.format('genbank'))
+    GFF.write([pgc.record], sys.stdout)
