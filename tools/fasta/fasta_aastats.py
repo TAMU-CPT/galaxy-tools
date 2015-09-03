@@ -41,9 +41,5 @@ if __name__ == '__main__':
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
 
-    aa_result_iter = iter(aa_stats(**vars(args)))
-    try:
-        while True:
-            print '\t'.join(map(str, aa_result_iter.next()))
-    except StopIteration:
-        pass
+    for row in aa_stats(**vars(args)):
+        print '\t'.join(map(str, row))
