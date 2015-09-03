@@ -530,20 +530,21 @@ if __name__ == '__main__':
     pgc = PhageGeneCaller(genome=args.genome)
     log.info("Gene Calls")
     gene_calls = CoalesceGeneCalls(gff_data_sources=args.annotations)
+    import pprint; pprint.pprint(gene_calls.coalesce())
     log.info("Added annotations")
-    pgc.apply_annotations(gene_calls.coalesce())
+    #pgc.apply_annotations(gene_calls.coalesce())
     # Annotate all empty streches first
-    log.info("Annotation of empty ORFs")
-    # We want to merge down the denovo features and the existing annotations.
-    # Sometimes the de-novo caller will call multiple overlapping ORFs
-    denovo_features = pgc.annotate_empty_areas(pgc.identify_empty_areas())
-    gene_calls2 = CoalesceGeneCalls()
-    gene_calls2.add_features(denovo_features)
-    pgc.apply_annotations(gene_calls2.coalesce())
-    # And then correct ALL the calls
-    log.info("Start Correction")
-    pgc.reannotate_existing_genes()
-    log.info("In-gene stop Corrections")
-    pgc.fix_bad_stops()
+    #log.info("Annotation of empty ORFs")
+    ## We want to merge down the denovo features and the existing annotations.
+    ## Sometimes the de-novo caller will call multiple overlapping ORFs
+    #denovo_features = pgc.annotate_empty_areas(pgc.identify_empty_areas())
+    #gene_calls2 = CoalesceGeneCalls()
+    #gene_calls2.add_features(denovo_features)
+    #pgc.apply_annotations(gene_calls2.coalesce())
+    ## And then correct ALL the calls
+    #log.info("Start Correction")
+    #pgc.reannotate_existing_genes()
+    #log.info("In-gene stop Corrections")
+    #pgc.fix_bad_stops()
 
     GFF.write([pgc.record], sys.stdout)
