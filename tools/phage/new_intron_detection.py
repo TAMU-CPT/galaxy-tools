@@ -38,12 +38,23 @@ class IntronFinder(object):
                                           iter_num))
             self.blast.append(blast_gene)
 
+    def create_clusters(self):
+        clusters = {}
+        for gene in self.blast:
+            for hit in gene:
+                name = ''.join(hit.gi_nos)
+                if name in clusters:
+                    clusters[name].append(hit.iter_def)
+                else:
+                    clusters[name] = [hit.iter_def]
+
     # checker function(s)
     # call checker functions to make sure intron is legit
     # def check_strand():
     # def check_distance():
 
     # look through gi nos, find matching ones, append self.matches
+    """
     def compare_genes(self, gene1, gene2):
         for hit_1 in gene1:
             for hit_2 in gene2:
@@ -65,7 +76,7 @@ class IntronFinder(object):
         # with open('out.txt', 'w') as handle:
             # for tup in self.matches:
                 # handle.write(tup[0].iter_def + ' ' + tup[1].iter_def)
-
+    """
     # merge 2 or more seq records into one
     # def modify_gff3(?):
 
@@ -77,4 +88,4 @@ if __name__ == '__main__':
 
     # create new IntronFinder object based on user input
     ifinder = IntronFinder(**vars(args))
-    ifinder.find_introns()
+    ifinder.create_clusters()
