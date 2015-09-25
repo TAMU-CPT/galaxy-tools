@@ -33,8 +33,10 @@ if __name__ == '__main__':
     parser.add_argument('gff3_file', type=file, help='Naive ORF Calls')
     parser.add_argument('fasta_genome', type=file, help='Fasta genome sequence')
 
-    parser.add_argument('--lipobox_mindist', type=int, help='Minimum distance in codons to start of lipobox', default=10)
-    parser.add_argument('--lipobox_maxdist', type=int, help='Maximum distance in codons to start of lipobox', default=33)
+    parser.add_argument('--lipobox_mindist', type=int,
+                        help='Minimum distance in codons to start of lipobox', default=10)
+    parser.add_argument('--lipobox_maxdist', type=int,
+                        help='Maximum distance in codons to start of lipobox', default=33)
 
     args = parser.parse_args()
 

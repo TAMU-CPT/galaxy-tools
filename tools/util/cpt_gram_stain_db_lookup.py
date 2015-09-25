@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import argparse
-#import sys
 import logging
 logging.basicConfig(level=logging.INFO)
 
@@ -792,13 +791,12 @@ class GramStainDetector(object):
         # Resolve any conflicting names, don't want to find something as "both negative and positive".
         self.find_conflicts()
 
-
     def expand_search_list(self):
         # First lower case everything.
         self.gram_stain_list['negative'] = map(lambda x: x.lower(),
-                                        self.gram_stain_list['negative'])
+                                               self.gram_stain_list['negative'])
         self.gram_stain_list['positive'] = map(lambda x: x.lower(),
-                                        self.gram_stain_list['positive'])
+                                               self.gram_stain_list['positive'])
 
         # Then do list expansions
         negative_expand = []
@@ -819,12 +817,10 @@ class GramStainDetector(object):
             if i not in self.gram_stain_list['positive']:
                 self.gram_stain_list['positive'].append(i)
 
-
     def find_conflicts(self):
         for word in self.gram_stain_list['negative']:
             if word in self.gram_stain_list['positive']:
                 print "Found conflicting name: %s" % word
-
 
     def annotate_name(self, line):
         line = line.lower().strip()

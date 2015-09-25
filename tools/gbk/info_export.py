@@ -47,16 +47,16 @@ def extract_metadata(genbank_file, section):
             if section in record.annotations:
                 if section == 'references':
                     output += references_handler(record.annotations[section],
-                                                record.id)
+                                                 record.id)
                 elif section in ['comment']:
                     output += comment_handler(record.annotations[section],
-                                            record.id)
+                                              record.id)
                 elif section in ['source', 'taxonomy', 'date', 'organism']:
                     output += tabular_handler(record.annotations[section],
-                                            record.id)
+                                              record.id)
                 else:
                     log.error("Cannot handle section type %s. "
-                            "Please submit a feature request", section)
+                              "Please submit a feature request", section)
             yield output
 
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import os
 import json
-import copy
 import argparse
 import itertools
+from gff3 import feature_lambda, feature_test_type, feature_test_quals
 from BCBio import GFF
 from Bio.Data import CodonTable
 from Bio import SeqIO
@@ -30,8 +30,11 @@ ENCOURAGEMENT = (
     (100, 'Perfection itself!'),
     (90, 'Not too bad, a few minor things to fix...'),
     (70, 'Some issues to address'),
-    (50, 'Issues detected! </p><p class="text-muted">Have you heard of the <a href="https://cpt.tamu.edu">CPT</a>\'s Automated Phage Annotation Pipeline?'),
-    (0, '<b>MAJOR</b> issues detected! Please strongly consider using the <a href="https://cpt.tamu.edu">CPT</a>\'s Automated Phage Annotation Pipeline'),
+    (50, """Issues detected! </p><p class="text-muted">Have you heard of the
+     <a href="https://cpt.tamu.edu">CPT</a>\'s Automated Phage Annotation
+     Pipeline?"""),
+    (0, """<b>MAJOR</b> issues detected! Please consider using the
+     <a href="https://cpt.tamu.edu">CPT</a>\'s Automated Phage Annotation Pipeline"""),
 )
 
 
@@ -76,9 +79,13 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
         # Check if there are RBSs, TODO: make this recursive. Each feature in
         # gene.sub_features can also have sub_features.
         rbs_rbs = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'RBS'}, subfeatures=False))
-        rbs_sds = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
-        regulatory_elements = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'regulatory'}, subfeatures=False))
-        rbs_regulatory = list(feature_lambda(regulatory_elements, feature_test_quals, {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
+        rbs_sds = list(feature_lambda(gene.sub_features,
+                                      feature_test_type, {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
+        regulatory_elements = list(feature_lambda(gene.sub_features,
+                                                  feature_test_type, {'type': 'regulatory'}, subfeatures=False))
+        rbs_regulatory = list(feature_lambda(regulatory_elements,
+                                             feature_test_quals, {'regulatory_class': ['ribosome_binding_site']},
+                                             subfeatures=False))
 
         rbss = rbs_rbs + rbs_sds + rbs_regulatory
         # No RBS found
@@ -138,7 +145,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     return good, bad, results, qc_features
 
 # modified from get_orfs_or_cdss.py
-#-----------------------------------------------------------
+# -----------------------------------------------------------
 
 # get stop codons
 table_obj = CodonTable.ambiguous_generic_by_id[11]
@@ -156,7 +163,7 @@ def start_chop_and_trans(s, strict=True):
         assert s[-3:] in stops, s
     assert len(s) % 3 == 0
     for match in re_starts.finditer(s):
-        #Must check the start is in frame
+        # Must check the start is in frame
         start = match.start()
         if start % 3 == 0:
             n = s[start:]
@@ -164,7 +171,7 @@ def start_chop_and_trans(s, strict=True):
             if strict:
                 t = translate(n, 11, cds=True)
             else:
-                #Use when missing stop codon,
+                # Use when missing stop codon,
                 t = "M" + translate(n[3:], 11, to_stop=True)
             return start, n, t
     return None, None, None
@@ -189,21 +196,21 @@ def get_peptides(nuc_seq):
     """Returns start, end, strand, nucleotides, protein.
     Co-ordinates are Python style zero-based.
     """
-    #TODO - Refactor to use a generator function (in start order)
-    #rather than making a list and sorting?
+    # TODO - Refactor to use a generator function (in start order)
+    # rather than making a list and sorting?
     answer = []
     full_len = len(nuc_seq)
 
-    for frame in range(0,3):
+    for frame in range(0, 3):
         for offset, n, t in break_up_frame(nuc_seq[frame:]):
-            start = frame + offset #zero based
+            start = frame + offset  # zero based
             answer.append((start, start + len(n), +1, n, t))
 
     rc = reverse_complement(nuc_seq)
-    for frame in range(0,3) :
+    for frame in range(0, 3):
         for offset, n, t in break_up_frame(rc[frame:]):
-            start = full_len - frame - offset #zero based
-            answer.append((start - len(n), start, -1, n ,t))
+            start = full_len - frame - offset  # zero based
+            answer.append((start - len(n), start, -1, n, t))
     answer.sort()
     return answer
 
@@ -221,7 +228,6 @@ def excessive_gap(record, excess=10):
     results = []
     good = 0
     bad = 0
-
 
     contiguous_regions = []
 
@@ -270,16 +276,25 @@ def excessive_gap(record, excess=10):
         qc_features.append(f)
         putative_genes = putative_genes_in_sequence(str(record[start:end].seq))
         for putative_gene in putative_genes:
-            #(0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF')
+            # (0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF')
             if putative_gene[2] > 0:
-                putative_genes_feature = gen_qc_feature(start + putative_gene[0], start + putative_gene[1], 'Possible gene', strand=1)
+                putative_genes_feature = gen_qc_feature(
+                    start + putative_gene[0],
+                    start + putative_gene[1],
+                    'Possible gene',
+                    strand=1
+                )
             else:
-                putative_genes_feature = gen_qc_feature(end - putative_gene[1], end - putative_gene[0], 'Possible gene', strand=-1)
+                putative_genes_feature = gen_qc_feature(
+                    end - putative_gene[1],
+                    end - putative_gene[0],
+                    'Possible gene',
+                    strand=-1
+                )
             qc_features.append(putative_genes_feature)
 
         better_results.append((start, end, len(putative_genes)))
 
-    #results = [(start, end, len(putative_genes_in_sequence(str(record[start:end].seq)))) for (start, end) in results]
     # Bad gaps are those with more than zero possible genes found
     bad = len([x for x in better_results if x[2] > 0])
     # Generally taking "good" here as every possible gap in the genome
@@ -289,36 +304,11 @@ def excessive_gap(record, excess=10):
     return good, bad, better_results, qc_features
 
 
-def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
-    # Either the top level set of [features] or the subfeature attribute
-    for feature in feature_list:
-        if test(feature, **test_kwargs):
-            feature_copy = copy.deepcopy(feature)
-            if not subfeatures:
-                feature_copy.sub_features = []
-            yield feature_copy
-
-        if hasattr(feature, 'sub_features'):
-            for x in feature_lambda(feature.sub_features, test, test_kwargs, subfeatures=subfeatures):
-                yield x
-
-def feature_test_type(feature, **kwargs):
-    return feature.type == kwargs['type']
-
-def feature_test_quals(feature, **kwargs):
-    for key in kwargs:
-        if key not in feature.qualifiers:
-            return False
-
-        for value in kwargs[key]:
-            if value not in feature.qualifiers[key]:
-                return False
-    return True
-
 def coding_genes(feature_list):
     for x in feature_lambda(feature_list, feature_test_type, {'type': 'gene'}, subfeatures=True):
         if len(list(feature_lambda(x.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))) > 0:
             yield x
+
 
 def genes(feature_list, feature_type='gene'):
     """
@@ -444,7 +434,12 @@ def missing_tags(record):
 
         if 'product' not in cds.qualifiers:
             log.warn("Missing product tag on %s", cds.id)
-            qc_features.append(gen_qc_feature(cds.location.start, cds.location.end, 'Missing product tag', strand=cds.strand))
+            qc_features.append(gen_qc_feature(
+                cds.location.start,
+                cds.location.end,
+                'Missing product tag',
+                strand=cds.strand
+            ))
             results.append(cds)
             bad += 1
         else:
@@ -475,7 +470,6 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None):
         lookahead_max=upstream_max
     )
     gff3_qc_features += mb_annotations
-    #log.info('%s %s %s', mb_good, mb_bad, mb_results)
 
     log.info("Locating excessive gaps")
     eg_good, eg_bad, eg_results, eg_annotations = excessive_gap(record, excess=3 * upstream_max)

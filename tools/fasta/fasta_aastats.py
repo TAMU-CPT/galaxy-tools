@@ -1,12 +1,10 @@
 #!/usr/bin/env python
-import sys
-import re
 import logging
 logging.basicConfig(level=logging.INFO)
 import argparse
-from Bio import SeqIO, Seq
-from Bio.SeqFeature import SeqFeature, FeatureLocation
+from Bio import SeqIO
 import string
+
 
 def aa_stats(fasta_file, **kwargs):
     records = list(SeqIO.parse(fasta_file, "fasta"))
@@ -43,9 +41,5 @@ if __name__ == '__main__':
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
 
-    aa_result_iter = iter(aa_stats(**vars(args)))
-    try:
-        while True:
-            print '\t'.join(map(str, aa_result_iter.next()))
-    except StopIteration:
-        pass
+    for row in aa_stats(**vars(args)):
+        print '\t'.join(map(str, row))

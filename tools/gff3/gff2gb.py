@@ -12,6 +12,7 @@ from BCBio import GFF
 from gff3 import feature_lambda
 
 
+
 def main(gff_file, fasta_file):
     fasta_input = SeqIO.to_dict(SeqIO.parse(fasta_file, "fasta", generic_dna))
     gff_iter = GFF.parse(gff_file, fasta_input)
@@ -22,7 +23,8 @@ def main(gff_file, fasta_file):
     for record in gff_iter:
         full_feats = []
         for feature in record.features:
-            if feature.type == 'region' and 'source' in feature.qualifiers and 'GenBank' in feature.qualifiers['source']:
+            if feature.type == 'region' and 'source' in feature.qualifiers and \
+                    'GenBank' in feature.qualifiers['source']:
                 feature.type = 'source'
 
                 if 'comment1' in feature.qualifiers:
@@ -36,7 +38,6 @@ def main(gff_file, fasta_file):
 
                 if 'comment' in feature.qualifiers:
                     del feature.qualifiers['comment']
-
 
             for flat_feat in feature_lambda(
                     record.features, test_true, {}, subfeatures=True):

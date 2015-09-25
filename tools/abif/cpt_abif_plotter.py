@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import pygal
 import numpy
 import argparse
 from Bio import SeqIO
@@ -70,18 +69,6 @@ class ABIFParser(object):
         if spacing < 0:
             spacing = float(self.basepos[-1] - self.basepos[0]) / (len(self.basepos) - 1)
         print spacing
-
-
-    def plot_region(self, start, length):
-        bar_chart = pygal.Line(interpolate='cubic', width=1500, height=400)
-        bar_chart.title = 'ABI Plot (%s - %s)' % (start, start+length)
-
-        for key in self.base_order:
-            print sn[key]['correction']
-            bar_chart.add('%s %s' % (key, sn[key]['wavelength']), sn[key]['data'][start:start+length] / sn[key]['correction'])
-
-        with open('/var/www/dot/test-%s.svg' % start, 'w') as handle:
-            handle.write(bar_chart.render())
 
 
 if __name__ == '__main__':

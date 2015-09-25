@@ -48,9 +48,8 @@ if __name__ == '__main__':
             if feature.type == 'polypeptide':
                 feature.type = 'CDS'
 
-            if args.feature_prefix is not None and not feature.type is 'chromosome':
+            if args.feature_prefix is not None and feature.type is not 'chromosome':
                 rec_prefix_name(feature, args.feature_prefix)
-
 
         rec.annotations = {}
         GFF.write([rec], sys.stdout)

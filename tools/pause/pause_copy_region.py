@@ -2,8 +2,8 @@
 """PAUSE: Plotter
 """
 from Bio import SeqIO
-import cpt_pause
 from galaxygetopt.ggo import GalaxyGetOpt as GGO
+
 
 def main(genomic_region=None, genomic_region_start=None, genomic_region_end=None, genome=None, **kwd):
     cut_start = 0
@@ -22,7 +22,7 @@ def main(genomic_region=None, genomic_region_start=None, genomic_region_end=None
     cut_start = int(cut_start)
     cut_end = int(cut_end)
 
-    for record in SeqIO.parse(genome, "fasta") :
+    for record in SeqIO.parse(genome, "fasta"):
         reassemble = record.seq[cut_start:] + record.seq[0:cut_start] + record.seq[cut_start:cut_end]
 
         record.seq = reassemble

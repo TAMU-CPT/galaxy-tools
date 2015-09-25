@@ -1,12 +1,9 @@
 #!/usr/bin/env python
-import sys
-import re
 import logging
 logging.basicConfig(level=logging.INFO)
 import argparse
 from Bio import SeqIO, Seq
-from Bio.SeqFeature import SeqFeature, FeatureLocation
-import string
+
 
 def codon_stats(fasta_file, **kwargs):
     records = list(SeqIO.parse(fasta_file, "fasta"))
@@ -33,7 +30,6 @@ def codon_stats(fasta_file, **kwargs):
             except:
                 codon_counts[tri_nt] = 1
 
-
         row = [record.id, len(record.seq)]
         numbers = []
         for tri_nt in tn_table_keys:
@@ -52,9 +48,5 @@ if __name__ == '__main__':
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
 
-    aa_result_iter = iter(codon_stats(**vars(args)))
-    try:
-        while True:
-            print '\t'.join(map(str, aa_result_iter.next()))
-    except StopIteration:
-        pass
+    for row in codon_stats(**vars(args)):
+        print '\t'.join(map(str, row))
