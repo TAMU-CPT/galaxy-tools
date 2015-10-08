@@ -1,4 +1,4 @@
-<tool id="TMHMM" name="TMHMM" version="1.1.0">
+<tool id="TMHMM_to_gff3" name="TMHMM (GFF3)" version="1.1.0">
     <description>predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms.</description>
     <command><![CDATA[
 $__tool_directory__/tmhmm-2.0c/bin/decodeanhmm.Linux_x86_64
