@@ -1,6 +1,6 @@
 <tool id="TMHMM_to_gff3" name="TMHMM (GFF3)" version="1.1.0">
     <description>predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms.</description>
-    <command><![CDATA[
+    <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/tmhmm-2.0c/bin/decodeanhmm.Linux_x86_64
     $__tool_directory__/tmhmm-2.0c/lib/TMHMM2.0.model
     -f $__tool_directory__/tmhmm-2.0c/lib/TMHMM2.0.options
@@ -13,7 +13,7 @@ $__tool_directory__/tmhmm-2.0c/bin/decodeanhmm.Linux_x86_64
         <param name="infile" type="data" format="fasta" label="Protein Fasta file" />
     </inputs>
     <outputs>
-        <data name="output" label="TMHMM Output" format="gff3" />
+        <data name="output" label="TMHMM on ${on_string}" format="gff3" />
     </outputs>
     <help>
 
