@@ -47,6 +47,12 @@ def convert(data=None):
             if len(regions) == 1:
                 continue
 
+            if regions[0].startswith('i'):
+                n_dir = 'in'
+                c_dir = 'out'
+            else:
+                n_dir = 'out'
+                c_dir = 'in'
             # Q7TNJ0  UniProtKB   Chain   1   470 .   .   .   ID=PRO_0000072585;Note=Dendritic cell-specific transmembrane protein
             feature = SeqFeature(
                 FeatureLocation(1, length),
@@ -55,6 +61,7 @@ def convert(data=None):
                 qualifiers={
                     'ID': 'TODO',
                     'Note': 'Transmembrane protein',
+                    'Description': 'TMD - N %s C %s' % (n_dir, c_dir)
                 }
             )
             for region in regions:
