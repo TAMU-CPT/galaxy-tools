@@ -1,4 +1,5 @@
 from Bio import SeqIO
+import tempfile
 
 
 def parse_xmfa(xmfa):
@@ -55,17 +56,22 @@ def percent_identity(a, b):
     return 100 * float(match) / (match + mismatch)
 
 
-def id_tn_dict(sequences):
+def id_tn_dict(sequences, tempfile=False):
     """Figure out sequence IDs
     """
     label_convert = {}
-    if sequences is not None:
-        if len(sequences) == 1:
-            for i, record in enumerate(SeqIO.parse(sequences[0], 'fasta')):
-                label_convert[str(i + 1)] = record.id
-        else:
-            for i, sequence in enumerate(sequences):
-                for record in SeqIO.parse(sequence, 'fasta'):
-                    label_convert[str(i + 1)] = record.id
-                    continue
+    correct_chrom = None
+    for i, record in enumerate(SeqIO.parse(sequences, 'fasta')):
+        if correct_chrom is None:
+            correct_chrom = record.id
+
+        key = str(i + 1)
+        label_convert[key] = {
+            'record_id': record.id,
+            'len': len(record.seq),
+        }
+
+        if tempfile:
+            label_convert[key] = tempfile.NamedTemporaryFile(delete=False)
+
     return label_convert
