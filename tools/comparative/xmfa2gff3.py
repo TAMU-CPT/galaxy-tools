@@ -7,8 +7,7 @@ from Bio.Alphabet import IUPAC
 import argparse
 from BCBio import GFF
 import logging
-from xmfa import parse_xmfa, _percent_identity
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
 from xmfa import parse_xmfa, percent_identity, id_tn_dict
 

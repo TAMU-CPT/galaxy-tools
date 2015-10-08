@@ -4,7 +4,6 @@ from xmfa import parse_xmfa, percent_identity
 import argparse
 import logging
 import itertools
-from xmfa import parse_xmfa, _percent_identity
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 

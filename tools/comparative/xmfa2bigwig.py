@@ -5,7 +5,6 @@ import subprocess
 import re
 import sys
 import tempfile
-from xmfa import parse_xmfa, _percent_identity
 from Bio import SeqIO
 from xmfa import parse_xmfa, percent_identity
 
