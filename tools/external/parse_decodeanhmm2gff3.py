@@ -19,6 +19,7 @@ __email__ = "esr@tamu.edu"
 def convert(data=None):
     record = None
     length = None
+    count = 1
 
     if data is None:
         data = sys.stdin
@@ -59,11 +60,13 @@ def convert(data=None):
                 type="Chain",
                 strand=1,
                 qualifiers={
-                    'ID': 'TODO',
-                    'Note': 'Transmembrane protein',
-                    'Description': 'TMD - N %s C %s' % (n_dir, c_dir)
+                    'ID': 'tmhmm_tmd_%s' % count,
+                    'Description': 'Transmembrane protein',
+                    'Note': 'Transmembrane protein - N %s C %s' % (n_dir, c_dir),
+                    'Target': header,
                 }
             )
+            count += 1
             for region in regions:
                 (region_type, start, end) = region.strip().split(' ')
                 qualifiers = {
