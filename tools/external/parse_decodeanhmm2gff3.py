@@ -90,7 +90,7 @@ def convert(data=None):
                     })
 
                 sub_feat = SeqFeature(
-                    FeatureLocation(int(start), int(end)),
+                    FeatureLocation(int(start) - 1, int(end)),
                     type="Transmembrane" if region_type == 'M' else "Topological domain",
                     strand=1,
                     qualifiers=qualifiers,

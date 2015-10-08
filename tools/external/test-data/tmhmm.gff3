@@ -1,6 +1,6 @@
 ##gff-version 3
 ##sequence-region AIN000|CDS62 1 4
 AIN000|CDS62	feature	Chain	2	44	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_1;Note=Transmembrane protein - N in C out;Target=AIN000%7CCDS62
-AIN000|CDS62	TMHMM	Topological domain	2	8	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_1;evidence=ECO:0000255
-AIN000|CDS62	TMHMM	Transmembrane	10	28	.	+	.	Note=Helical;Parent=tmhmm_tmd_1;evidence=ECO:0000255
-AIN000|CDS62	TMHMM	Topological domain	30	44	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_1;evidence=ECO:0000255
+AIN000|CDS62	TMHMM	Topological domain	1	8	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_1;evidence=ECO:0000255
+AIN000|CDS62	TMHMM	Transmembrane	9	28	.	+	.	Note=Helical;Parent=tmhmm_tmd_1;evidence=ECO:0000255
+AIN000|CDS62	TMHMM	Topological domain	29	44	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_1;evidence=ECO:0000255
