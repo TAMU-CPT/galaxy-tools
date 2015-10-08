@@ -6,6 +6,7 @@ import re
 import sys
 import tempfile
 from Bio import SeqIO
+from xmfa import parse_xmfa, percent_identity
 
 
 def secure_filename(filename):
@@ -54,60 +55,6 @@ def secure_filename(filename):
     return filename
 
 
-def parse_xmfa(xmfa):
-    """Simple XMFA parser until https://github.com/biopython/biopython/pull/544
-    """
-    current_lcb = []
-    current_seq = {}
-    for line in xmfa.readlines():
-        if line.startswith('#'):
-            continue
-
-        if line.strip() == '=':
-            if 'id' in current_seq:
-                current_lcb.append(current_seq)
-                current_seq = {}
-            yield current_lcb
-            current_lcb = []
-        else:
-            line = line.strip()
-            if line.startswith('>'):
-                if 'id' in current_seq:
-                    current_lcb.append(current_seq)
-                    current_seq = {}
-                data = line.strip().split()
-                id, loc = data[1].split(':')
-                start, end = loc.split('-')
-                current_seq = {
-                    'rid': '_'.join(data[1:]),
-                    'id': id,
-                    'start': int(start),
-                    'end': int(end),
-                    'strand': 1 if data[2] == '+' else -1,
-                    'seq': ''
-                }
-            else:
-                current_seq['seq'] += line.strip()
-
-
-def _percent_identity(a, b):
-    """Calculate % identity, ignoring gaps in the host sequence
-    """
-    match = 0
-    mismatch = 0
-    for char_a, char_b in zip(list(a), list(b)):
-        if char_a == '-':
-            continue
-        if char_a == char_b:
-            match += 1
-        else:
-            mismatch += 1
-
-    if match + mismatch == 0:
-        return 0
-    return 100 * float(match) / (match + mismatch)
-
-
 def _id_tn_dict(sequences):
     """Figure out sequence IDs
     """
@@ -126,7 +73,7 @@ def _id_tn_dict(sequences):
 
 
 def convert_to_bigwig(wig_file, chr_sizes, bw_file):
-    #This will be fine under Galaxy, but could use temp folder?
+    # This will be fine under Galaxy, but could use temp folder?
     size_file = "%s-sizes.txt" % (os.path.splitext(bw_file)[0])
     with open(size_file, "w") as out_handle:
         for chrom, size in chr_sizes:
@@ -199,7 +146,7 @@ def convert_xmfa_to_gff3(xmfa_file, fasta_genomes, window_size=3, relative_to='1
             for other in others:
                 left_bound = max(0, i - window_size)
                 right_bound = i + window_size
-                point_pid = _percent_identity(parent['corrected'][left_bound:right_bound],
+                point_pid = percent_identity(parent['corrected'][left_bound:right_bound],
                                               other['corrected'][left_bound:right_bound])
                 label_convert[other['id']]['temp'].write("%s\t%s\n" % (
                     abs(parent['start']) + i,
