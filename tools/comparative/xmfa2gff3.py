@@ -7,20 +7,23 @@ from Bio.Alphabet import IUPAC
 import argparse
 from BCBio import GFF
 import logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
 from xmfa import parse_xmfa, percent_identity, id_tn_dict
 
 
 def generate_subfeatures(parent, window_size, other):
+    log.debug("Generating subfeatures for %s %s %s", parent, window_size, other)
     for i in range(0, len(parent['seq']), window_size):
         block_seq = parent['seq'][i:i + window_size]
         real_window_size = len(block_seq)
-        real_start = abs(parent['start']) - parent['seq'][0:i].count('-') + i
+        real_start = abs(parent['start']) - parent['seq'][0:i].count('-') + i - 1
         real_end = real_start + real_window_size - block_seq.count('-')
 
-        if (real_end - real_start) < 10:
-            continue
+        log.debug("  I: %s, BS: %s, RWS: %s, RS: %s, RE: %s", i, block_seq, real_window_size, real_start, real_end)
+
+        # if (real_end - real_start) < 10:
+            # continue
 
         if parent['start'] < 0:
             strand = -1
@@ -52,6 +55,7 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
     }
 
     for lcb_idx, lcb in enumerate(lcbs):
+        import pprint; pprint.pprint(lcb)
         ids = [seq['id'] for seq in lcb]
         # Skip sequences that are JUST a single genome
         if len(ids) == 1:
@@ -67,7 +71,7 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
             for o_idx, other in enumerate(others):
                 # A feature representing a region of synteny between parent and the given other
                 other_feature = SeqFeature(
-                    FeatureLocation(parent['start'], parent['end'] + 1),
+                    FeatureLocation(parent['start'] - 1, parent['end']),
                     type="match", strand=parent['strand'],
                     qualifiers={
                         "source": "progressiveMauve",
