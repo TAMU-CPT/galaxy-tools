@@ -7,6 +7,7 @@ import sys
 import tempfile
 from xmfa import parse_xmfa, _percent_identity
 from Bio import SeqIO
+from xmfa import parse_xmfa, percent_identity
 
 
 def secure_filename(filename):
@@ -146,7 +147,7 @@ def convert_xmfa_to_gff3(xmfa_file, fasta_genomes, window_size=3, relative_to='1
             for other in others:
                 left_bound = max(0, i - window_size)
                 right_bound = i + window_size
-                point_pid = _percent_identity(parent['corrected'][left_bound:right_bound],
+                point_pid = percent_identity(parent['corrected'][left_bound:right_bound],
                                               other['corrected'][left_bound:right_bound])
                 label_convert[other['id']]['temp'].write("%s\t%s\n" % (
                     abs(parent['start']) + i,

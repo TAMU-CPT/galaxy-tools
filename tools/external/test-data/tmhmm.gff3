@@ -1,0 +1,6 @@
+##gff-version 3
+##sequence-region AIN000|CDS62 1 4
+AIN000|CDS62	feature	Chain	2	44	.	+	.	ID=TODO;Note=Transmembrane protein
+AIN000|CDS62	TMHMM	Topological domain	2	8	.	+	.	Note=Cytoplasmic;Parent=TODO;evidence=ECO:0000255
+AIN000|CDS62	TMHMM	Transmembrane	10	28	.	+	.	Note=Helical;Parent=TODO;evidence=ECO:0000255
+AIN000|CDS62	TMHMM	Topological domain	30	44	.	+	.	Note=Extracellular;Parent=TODO;evidence=ECO:0000255

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from Bio import SeqIO
+from xmfa import parse_xmfa, percent_identity
 import argparse
 import logging
 import itertools
@@ -44,7 +45,7 @@ def total_similarity(xmfa_file, sequences=None, dice=False):
         compare_seqs = list(itertools.permutations(range(0, len(lcb)), 2))
         for permutation in compare_seqs:
             (i, j) = permutation
-            similarity = _percent_identity(lcb[i]['seq'], lcb[j]['seq'])
+            similarity = percent_identity(lcb[i]['seq'], lcb[j]['seq'])
             # find length of sequence in LCB
             length_seq_lcb = lcb[i]['end'] - (lcb[i]['start'] - 1)
             # populate table with normalized similarity value based on length_seq_lcb
