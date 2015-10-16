@@ -12,7 +12,6 @@ from BCBio import GFF
 from gff3 import feature_lambda
 
 
-
 def main(gff_file, fasta_file):
     fasta_input = SeqIO.to_dict(SeqIO.parse(fasta_file, "fasta", generic_dna))
     gff_iter = GFF.parse(gff_file, fasta_input)
@@ -21,6 +20,7 @@ def main(gff_file, fasta_file):
         return True
 
     for record in gff_iter:
+        print record.id
         full_feats = []
         for feature in record.features:
             if feature.type == 'region' and 'source' in feature.qualifiers and \
@@ -39,21 +39,20 @@ def main(gff_file, fasta_file):
                 if 'comment' in feature.qualifiers:
                     del feature.qualifiers['comment']
 
-            for flat_feat in feature_lambda(
-                    record.features, test_true, {}, subfeatures=True):
-                if flat_feat.type == 'Shine_Dalgarno_sequence':
-                    flat_feat.type = 'RBS'
+        for flat_feat in feature_lambda(
+                record.features, test_true, {}, subfeatures=True):
+            if flat_feat.type == 'Shine_Dalgarno_sequence':
+                flat_feat.type = 'RBS'
 
-                if 'ID' in flat_feat.qualifiers:
-                    flat_feat.qualifiers['locus_tag'] = flat_feat.qualifiers['ID']
+            if 'ID' in flat_feat.qualifiers:
+                flat_feat.qualifiers['locus_tag'] = flat_feat.qualifiers['ID']
 
-                for x in ('source', 'phase', 'Parent', 'ID'):
-                    if x in flat_feat.qualifiers:
-                        del flat_feat.qualifiers[x]
-                full_feats.append(flat_feat)
+            for x in ('source', 'phase', 'Parent', 'ID'):
+                if x in flat_feat.qualifiers:
+                    del flat_feat.qualifiers[x]
+            full_feats.append(flat_feat)
 
         record.features = full_feats
-
         yield record
 
 if __name__ == '__main__':
