@@ -61,6 +61,7 @@ def _id_tn_dict(sequences):
     label_convert = {}
     correct_chrom = None
     for i, record in enumerate(SeqIO.parse(sequences, 'fasta')):
+        print i, record
         if correct_chrom is None:
             correct_chrom = record.id
 
@@ -69,6 +70,7 @@ def _id_tn_dict(sequences):
                                      'temp': tempfile.NamedTemporaryFile(delete=False)}
 
         label_convert[str(i + 1)]['temp'].write("variableStep chrom=%s\n" % (correct_chrom or record.id, ))
+    import pprint; pprint.pprint(label_convert)
     return label_convert
 
 
