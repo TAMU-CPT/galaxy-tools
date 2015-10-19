@@ -9,8 +9,11 @@
 $sequence
 "$host"
 
-#if $masks:
---mask $masks
+#if len($masks) > 0:
+--mask
+    #for mask in $masks:
+        $mask
+    #end for
 #end if
 
 --codondb /home/galaxy/galaxy/tools/cpt2/galaxy-tools/tools/fasta/gbbct.spsum
