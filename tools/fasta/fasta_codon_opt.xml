@@ -9,7 +9,7 @@
 $sequence
 "$host"
 
-#if $masks is not None:
+#if str($masks) != "None":
 --mask
     #for mask in $masks:
         $mask
