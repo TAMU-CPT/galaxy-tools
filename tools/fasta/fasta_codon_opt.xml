@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.codonopt" name="Fasta Codon Optimiser" version="0.2">
+<tool id="edu.tamu.cpt.fasta.codonopt" name="Fasta Codon Optimiser" version="0.3">
   <description>optimizes codons for a particular host bacteria</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
@@ -4938,7 +4938,7 @@ $sequence
         <option value="secondary endosymbiont of Bemisia tabaci">secondary endosymbiont of Bemisia tabaci</option>
         <option value="thiosulfate-reducing anaerobe SRL 4198">thiosulfate-reducing anaerobe SRL 4198</option>
     </param>
-    <param label="Mask Regions" name="masks" type="data" format="bed" multiple="true" optional="true"/>
+    <param label="Mask Regions" name="masks" type="data" format="bed" multiple="true" optional="True"/>
     <param label="Random seed" name="seed" type="integer" value="0"
         help="Set to zero for random result each run. Any other number will produce consistent, reproducible results"/>
   </inputs>
