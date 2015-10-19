@@ -91,7 +91,7 @@ class Mutator(object):
             log.debug('Codon: %s translates to %s, target table offers following frequencies: %s and we chose %s',
                       codon, codon_aa, possible_alternates, replacement)
             fixed_seq += replacement
-        seq.seq = replacement
+        seq.seq = fixed_seq
         return seq
 
     def weighted_sample(self, popweights, k=1):
