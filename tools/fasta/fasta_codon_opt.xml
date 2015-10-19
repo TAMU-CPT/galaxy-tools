@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.codonopt" name="Fasta Codon Optimiser" version="0.4">
+<tool id="edu.tamu.cpt.fasta.codonopt" name="Fasta Codon Optimiser" version="1.0">
   <description>optimizes codons for a particular host bacteria</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
@@ -4948,6 +4948,15 @@ $sequence
   <outputs>
     <data format="fasta" name="output" label="$sequence.name optimised for $host"/>
   </outputs>
+  <tests>
+      <test>
+          <param name="sequence" value="pre-opt.fa"/>
+          <param name="host" value="Streptomyces coelicolor A3(2)" />
+          <param name="masks" value="opt-region1.bed,opt-region2.bed" />
+          <param name="seed" value="42" />
+          <output name="output" file="post-opt.fa" />
+      </test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
