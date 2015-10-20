@@ -55,7 +55,6 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
     }
 
     for lcb_idx, lcb in enumerate(lcbs):
-        import pprint; pprint.pprint(lcb)
         ids = [seq['id'] for seq in lcb]
         # Skip sequences that are JUST a single genome
         if len(ids) == 1:
