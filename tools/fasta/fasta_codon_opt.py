@@ -69,12 +69,16 @@ class Mutator(object):
 
     def mutate(self):
         final_seq = Seq('')
-        for (region_start, region_end, mutable) in self.generate_evaluatable_regions():
-            region = self.sequence[region_start:region_end]
-            if not mutable:
-                final_seq += region
-            else:
-                final_seq += self._mutate(region)
+        regions = self.generate_evaluatable_regions()
+        if len(regions) == 1:
+            final_seq += self._mutate(self.sequence)
+        else:
+            for (region_start, region_end, masked) in regions:
+                region = self.sequence[region_start:region_end]
+                if masked:
+                    final_seq += region
+                else:
+                    final_seq += self._mutate(region)
 
         return final_seq
 

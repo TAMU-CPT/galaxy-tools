@@ -4941,7 +4941,7 @@ $sequence
         <option value="secondary endosymbiont of Bemisia tabaci">secondary endosymbiont of Bemisia tabaci</option>
         <option value="thiosulfate-reducing anaerobe SRL 4198">thiosulfate-reducing anaerobe SRL 4198</option>
     </param>
-    <param label="Mask Regions" name="masks" type="data" format="bed" multiple="true" optional="true"/>
+    <param label="Selected Regions" name="masks" type="data" format="bed" multiple="true" optional="true" help="Mark these regions as 'to-edit'. If no file is specified, the entire sequence will be optimized."/>
     <param label="Random seed" name="seed" type="integer" value="0"
         help="Set to zero for random result each run. Any other number will produce consistent, reproducible results"/>
   </inputs>
@@ -4949,6 +4949,12 @@ $sequence
     <data format="fasta" name="output" label="$sequence.name optimised for $host"/>
   </outputs>
   <tests>
+      <test>
+          <param name="sequence" value="pre-opt.fa"/>
+          <param name="host" value="Streptomyces coelicolor A3(2)" />
+          <param name="seed" value="42" />
+          <output name="output" file="post-opt-2.fa" />
+      </test>
       <test>
           <param name="sequence" value="pre-opt.fa"/>
           <param name="host" value="Streptomyces coelicolor A3(2)" />
