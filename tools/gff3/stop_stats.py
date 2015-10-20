@@ -26,7 +26,7 @@ def main(fasta, gff3):
     # TODO: print all actg combinations? Or just ones that are there
     print '# Name\tCodon\tCount'
     for key in sorted(codon_usage):
-        print '\t'.join((names.get(key, 'None'), key, str(codon_usage[key])))
+        print '\t'.join((names.get(key.upper(), 'None'), key, str(codon_usage[key])))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Summarise stop codon usage', epilog="")
