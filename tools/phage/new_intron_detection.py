@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # import sys
 import re
+import itertools
 import argparse
 import hashlib
 from BCBio import GFF
@@ -48,7 +49,6 @@ def parse_gff(gff3):
             {},
             subfeatures = False
         ):
-            print dir(feat)
             if feat.type == 'CDS':
                  gff_info[feat.id] = {'strand': feat.strand,'start': feat.location.start}
 
@@ -138,9 +138,36 @@ class IntronFinder(object):
     # maybe figure out how to merge with check_gene_gap?
     # def check_seq_gap():
 
-    # could simply see if all sbjct_ranges don't intersect, but can't.
     # also need a check for gap in sequence coverage?
-    # def check_seq_overlap():
+    def check_seq_overlap(self):
+        filtered_clusters = {}
+        for key in self.clusters:
+            add_cluster = True
+            sbjct_ranges = []
+            for gene in self.clusters[key]:
+                sbjct_ranges.append(gene['sbjct_range'])
+
+            combinations = list(itertools.combinations(sbjct_ranges, 2))
+
+            for pair in combinations:
+                if len(set(range(pair[0][0],pair[0][1])) &
+                       set(range(pair[1][0],pair[1][1]))) > 0:
+                    add_cluster = False
+                    break
+            if add_cluster:
+                filtered_clusters[key] = self.clusters[key]
+        return filtered_clusters
+
+    def cluster_report(self):
+        condensed_report = {}
+        for key in self.clusters:
+            for gene in self.clusters[key]:
+                if gene['name'] in condensed_report:
+                    condensed_report[gene['name']].append(gene['sbjct_range'])
+                else:
+                    condensed_report[gene['name']] = [gene['sbjct_range']]
+        return condensed_report
+
 
     # def modify_gff3(?):
     # """ merge 2 or more seq records into one """
@@ -156,6 +183,8 @@ if __name__ == '__main__':
     ifinder.create_clusters()
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
+    ifinder.clusters = ifinder.check_seq_overlap()
+    condensed_report = ifinder.cluster_report()
 
-    # with open('out.txt', 'w') as handle:
-        # import pprint; pprint.pprint(ifinder.gff_info)
+    with open('out.txt', 'w') as handle:
+        import pprint; pprint.pprint(condensed_report)
