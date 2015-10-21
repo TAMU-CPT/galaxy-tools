@@ -13,7 +13,6 @@
     --post "$post_sequence"
     --id "$id"
     --bed $bed_data
-    --sequences
     #for sequence in $sequences:
         $sequence
     #end for
