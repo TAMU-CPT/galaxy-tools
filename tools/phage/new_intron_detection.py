@@ -19,7 +19,7 @@ def parse_xml(blastxml):
             for hsp in alignment.hsps:
                 blast_gene.append({
                     'gi_nos' : gi_nos,
-                    'sbject_range' : (hsp.sbjct_start, hsp.sbjct_end),
+                    'sbjct_range' : (hsp.sbjct_start, hsp.sbjct_end),
                     'query_range' : (hsp.query_start, hsp.query_end),
                     'name' : blast_record.query,
                     'iter_num' : iter_num
@@ -48,7 +48,9 @@ def parse_gff(gff3):
             {},
             subfeatures = False
         ):
-            gff_info[feat.id] = {'strand': feat.strand,'start': feat.location.start}
+            print dir(feat)
+            if feat.type == 'CDS':
+                 gff_info[feat.id] = {'strand': feat.strand,'start': feat.location.start}
 
     gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
     for i, feat_id in enumerate(gff_info):
@@ -121,11 +123,11 @@ class IntronFinder(object):
             for gene in self.clusters[key]:
                 for hits in hits_lists:
                     for hit in hits:
-                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10:
+                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 2:
                             hits.append(gene)
                             gene_added = True
                             break
-                if gene_added == False:
+                if not gene_added:
                     hits_lists.append([gene])
 
             for i, hits in enumerate(hits_lists):
@@ -136,7 +138,8 @@ class IntronFinder(object):
     # maybe figure out how to merge with check_gene_gap?
     # def check_seq_gap():
 
-    # could simply see if all sbject_ranges don't intersect, but can't. (right?)
+    # could simply see if all sbjct_ranges don't intersect, but can't.
+    # also need a check for gap in sequence coverage?
     # def check_seq_overlap():
 
     # def modify_gff3(?):
@@ -154,5 +157,5 @@ if __name__ == '__main__':
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
 
-    with open('out.txt', 'w') as handle:
-        import pprint; pprint.pprint(ifinder.clusters)
+    # with open('out.txt', 'w') as handle:
+        # import pprint; pprint.pprint(ifinder.gff_info)
