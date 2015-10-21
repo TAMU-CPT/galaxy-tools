@@ -60,7 +60,7 @@ def parse_gff(gff3):
 
 def all_same(genes_list):
     """ Returns True if all gene names in cluster are identical """
-    return all(gene['name'] == genes_list[0]['name'] for gene in genes_list)
+    return all(gene['name'] == genes_list[0]['name'] for gene in genes_list[1:])
 
 def remove_duplicates(clusters):
     """ Removes clusters with multiple members but only one gene name """
@@ -123,7 +123,7 @@ class IntronFinder(object):
             for gene in self.clusters[key]:
                 for hits in hits_lists:
                     for hit in hits:
-                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 2:
+                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) == 2:
                             hits.append(gene)
                             gene_added = True
                             break
@@ -168,6 +168,17 @@ class IntronFinder(object):
                     condensed_report[gene['name']] = [gene['sbjct_range']]
         return condensed_report
 
+    def cluster_report_2(self):
+        condensed_report = {}
+        for key in self.clusters:
+            gene_names = []
+            for gene in self.clusters[key]:
+                gene_names.append(gene['name'])
+            if ', '.join(gene_names) in condensed_report:
+                condensed_report[', '.join(gene_names)] += 1
+            else:
+                condensed_report[', '.join(gene_names)] = 1
+        return condensed_report
 
     # def modify_gff3(?):
     # """ merge 2 or more seq records into one """
@@ -184,7 +195,7 @@ if __name__ == '__main__':
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
     ifinder.clusters = ifinder.check_seq_overlap()
-    condensed_report = ifinder.cluster_report()
+    condensed_report = ifinder.cluster_report_2()
 
     with open('out.txt', 'w') as handle:
         import pprint; pprint.pprint(condensed_report)
