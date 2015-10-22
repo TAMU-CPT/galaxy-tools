@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.codonopt" name="Fasta Codon Optimiser" version="1.0">
+<tool id="edu.tamu.cpt.fasta.codonopt" name="Fasta Codon Optimiser" version="1.1">
   <description>optimizes codons for a particular host bacteria</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
