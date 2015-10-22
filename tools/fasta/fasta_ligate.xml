@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.fasta.ligate" name="Ligate Fasta Sequences" version="1.0">
+<tool id="edu.tamu.cpt.genbank.fasta.ligate" name="Ligate Fasta Sequences" version="1.2">
   <description>with common and custom adapter sequences</description>
   <macros>
     <import>macros.xml</import>
@@ -13,14 +13,37 @@
     --post "$post_sequence"
     --id "$id"
     --bed $bed_data
-    #for sequence in $sequences:
-        $sequence
-    #end for
+    #if $source.source_select == "dc":
+        #for sequence in $source.sequences:
+            "$sequence"
+        #end for
+    #else
+        #for sequence in $source.sequences:
+            "${sequence.sequence}"
+        #end for
+
+    #end if
 > $output
 </command>
   <inputs>
     <param name="pre_sequence" type="text" label="Pre-sequence addition" help="Enter the sequence of the front adapter" optional="True"/>
-    <param name="sequences" type="data" format="fasta" multiple="True" label="Sequences to ligate" help="1 or more fasta sequences per file is fine. Multiple files will be reduced to a single output file."/>
+
+    <conditional name="source">
+        <param name="source_select" type="select" label="Source Sequences">
+            <option value="dc">Dataset Collection/Unordered</option>
+            <option value="repeat">Manually Specify</option>
+        </param>
+        <when value="dc">
+            <param name="sequences" type="data" format="fasta" multiple="True" label="Sequences to ligate" help="1 or more fasta sequences per file is fine. Multiple files will be reduced to a single output file."/>
+        </when>
+        <when value="repeat">
+            <repeat name="sequences" title="Sequences to Ligate">
+                <param name="sequence" type="data" format="fasta" label="Sequence to ligate"
+                    help="1 or more fasta sequences per file is fine. Multiple files will be reduced to a single output file."/>
+            </repeat>
+        </when>
+    </conditional>
+
     <param name="linker_sequence" type="text" label="Inter-sequence linker" help="Enter the sequence used to link multiple your selected sequences together" optional="True"/>
     <param name="post_sequence" type="text" label="Post-sequence addition" help="Enter the sequence of the end adapter" optional="True"/>
     <param label="New fasta identifier for merged sequences" name="id" type="text" value="merged" optional="True"/>
