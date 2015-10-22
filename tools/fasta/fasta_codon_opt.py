@@ -159,7 +159,7 @@ class Mutator(object):
 
             # Finally we correct our existing region set with the non-overlapping regions, and our new split regions
             regions = nonoverlapping + splitregions
-        return regions
+        return sorted(regions, key=lambda x: x[0])
 
     def contiguous(self, data):
         # http://stackoverflow.com/a/2154437

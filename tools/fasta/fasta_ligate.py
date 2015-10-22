@@ -30,10 +30,9 @@ def merge(sequences, id="merged", pre="", post="", link="", bed="out.bed"):
                 score=1000,
                 strand='+'
             ))
-            start_offset += len(s)
+            start_offset += len(s) + len(link)
 
     output_seq = pre + link.join(seqs) + post
-    print output_seq
 
     output = SeqRecord(
         seq=Seq(output_seq),
