@@ -28,6 +28,6 @@ with open(sys.argv[1], 'r') as table_handle, open(sys.argv[2], 'r') as fasta_han
 
     for record in SeqIO.parse(fasta_handle, 'fasta'):
         xd = find_by_id(record.id)
-        fn = os.path.join('output', 'round_{round}_bin_{bin}.fa'.format(**xd))
+        fn = os.path.join('output', 'round_{round}_bin_{bin}.fasta'.format(**xd))
         with open(fn, 'a') as outhandle:
             SeqIO.write([record], outhandle, 'fasta')
