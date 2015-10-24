@@ -1,0 +1,73 @@
+<tool id="edu.tamu.cpt.fasta.bin" name="Bin Fasta Sequences" version="1.0">
+  <description>to reach a target length</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command><![CDATA[
+      $__tool_directory__/fasta_bin
+-batchSize=$batchSize
+-lengthTable=$lengthTable
+-maxBins=$maxBins
+-patience=$patience
+-slop=$slop
+-targetLength=$targetLength
+> $output
+]]></command>
+  <inputs>
+    <param label="Fasta Length Table" name="lengthTable" type="data" format="tabular"/>
+    <param label="Target Length" name="targetLength" value="2000" type="integer" min="100" />
+    <param label="Slop" name="slop" help="How close to target length should we be?" type="integer" value="100" min="10"/>
+
+    <param label="Batch size" name="batchSize" type="integer" min="10" max="80" value="40"/>
+    <param label="Maximum number of bins per batch" name="maxBins" type="integer" min="1" max="30" value="10" />
+    <param label="Your patience level" type="select" name="patience">
+        <option value="0">Impatient</option>
+        <option value="1">Mildly impatient</option>
+        <option value="2">Somewhat patient</option>
+        <option value="3">Quite patient</option>
+        <option value="4">Incredibly patient</option>
+        <option value="5">I'm doing this before my lunch break</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Given a set of fasta sequence lengths, e.g.
+
+::
+
+    gp_0    386
+    gp_1    320
+    gp_2    288
+    gp_3    338
+    gp_4    171
+    gp_5    603
+    gp_6    557
+    gp_7    202
+    gp_8    744
+    gp_9    524
+
+This tool will attempt to bin them correctly such that they all bins are close to a target length (such as 1000 nts)
+
+::
+
+    # Round IDX     Bin Idx Sum     Feature IDs
+    0       1       1032    gp_8,gp_2
+    0       2       910     gp_9,gp_0
+    0       3       1094    gp_4,gp_5,gp_1
+    0       4       1097    gp_3,gp_6,gp_7
+
+
+You'll note a "round IDX", this is because the programme will take an
+incredibly long time to parse large amounts of data (e.g. 100 genes). So, we
+split them up into individual batches first and then process those subtasks
+separately. This reaches an "acceptable" result, without the insane (weeks)
+running time that you might have if you were requesting the globally optimal
+result.
+
+]]></help>
+</tool>
+

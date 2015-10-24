@@ -1,0 +1,47 @@
+<tool id="edu.tamu.cpt.fasta.bin-post" name="Bin Fasta Sequences - Postprocess" version="1.0">
+  <description>into separate collections</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python"><![CDATA[
+fasta_bin_post.py
+$table
+$fasta
+]]></command>
+  <inputs>
+    <param label="Fasta Bin Table" name="table" type="data" format="tabular"/>
+    <param label="Sequence File" name="fasta" type="data" format="fasta"/>
+  </inputs>
+  <outputs>
+    <collection name="binned-fasta-sequences" type="list">
+      <discover_datasets pattern="__designation_and_ext__" directory="output" />
+    </collection>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Given a binned set of fasta data from the associated "Bin Fasta Sequences"
+tool, this will separate those into separated Fasta files that can be processed
+separately.
+
+::
+
+    # Round IDX     Bin Idx Sum     Feature IDs
+    0       1       1032    gp_8,gp_2
+    0       2       910     gp_9,gp_0
+    0       3       1094    gp_4,gp_5,gp_1
+    0       4       1097    gp_3,gp_6,gp_7
+
+The output will be a Dataset Collection with individual fasta files:
+
+::
+
+    $ cat round_0_bin_1.fa
+    >gp_8
+    ...
+    >gp_2
+    ...
+
+]]></help>
+</tool>
+
