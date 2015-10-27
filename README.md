@@ -9,6 +9,11 @@ maintenance, such as Björn's
 (galaxytools)[https://github.com/bgruening/galaxytools] or the IUC
 (repo)[https://github.com/galaxyproject/tools-iuc]
 
+## Nota Bene
+
+NONE of these tools are written/configured for the Toolshed. They will be
+eventually, but that's a wishlist item.
+
 ## LICENSE
 
 Except where otherwise noted, all code is GPLv3.
