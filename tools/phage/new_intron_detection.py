@@ -199,7 +199,9 @@ class IntronFinder(object):
         return condensed_report
 
     def draw_genes(self, name):
-        dwg = svgwrite.Drawing(filename=name, debug=True)
+        height = 200 * len(self.clusters)
+        print height
+        dwg = svgwrite.Drawing(filename=name, size=("1000px", "%spx" % height), debug=True)
         genes = dwg.add(dwg.g(id='genes', fill='red'))
 
         sbjct_y = 10
