@@ -29,6 +29,7 @@ def parse_xml(blastxml):
                     'sbjct_range' : (hsp.sbjct_start, hsp.sbjct_end),
                     'query_range' : (hsp.query_start, hsp.query_end),
                     'name' : blast_record.query,
+                    'identity' : hsp.identities,
                     'iter_num' : iter_num
                 })
         blast.append(blast_gene)
@@ -204,22 +205,29 @@ class IntronFinder(object):
     def draw_genes(self, name):
         height = 200 * len(self.clusters)
         dwg = svgwrite.Drawing(filename=name, size=("1500px", "%spx" % height), debug=True)
-        genes = dwg.add(dwg.g(id='genes', fill='red'))
+        genes = dwg.add(dwg.g(id='genes', fill='white'))
 
         sbjct_y = 10
         query_x = 10
         for i, key in enumerate(self.clusters):
-            for j, gene in enumerate(self.clusters[key]):
+            if i > 10:
+                break
+            for j, gene in enumerate(sorted(self.clusters[key],
+                                            key=lambda k: self.gff_info[k['name']]['start'],
+                                            reverse=True)):
                 if j == 0:
                     genes.add(dwg.rect(insert=(10, sbjct_y), size=(gene['sbjct_length'], 20), fill='blue'))
 
-                genes.add(dwg.rect(insert=(query_x, sbjct_y+80), size=(gene['query_length'], 20), fill='green'))
+                genes.add(dwg.rect(insert=(query_x, sbjct_y+80), size=(gene['query_length'], 20),
+                                   fill='green'))
+                genes.add(dwg.text(gene['name'], insert=(query_x, sbjct_y+95)))
 
                 p1 = (gene['sbjct_range'][0] + 10, sbjct_y + 20)
                 p2 = (gene['sbjct_range'][1] + 10, sbjct_y + 20)
                 p3 = (gene['query_range'][1] + query_x, sbjct_y + 80)
                 p4 = (gene['query_range'][0] + query_x, sbjct_y + 80)
-                genes.add(dwg.polyline([p1, p2, p3, p4]))
+                identity = float(gene['identity'])/gene['sbjct_length']
+                genes.add(dwg.polyline([p1, p2, p3, p4], fill='red', opacity='%s' % identity))
 
                 dwg.save()
                 query_x += (gene['query_length']+10)
@@ -249,5 +257,5 @@ if __name__ == '__main__':
     condensed_report = ifinder.cluster_report()
     ifinder.draw_genes('clusters.svg')
 
-    with open('out.txt', 'w') as handle:
-        import pprint; pprint.pprint(ifinder.clusters)
+    # with open('out.txt', 'w') as handle:
+        # import pprint; pprint.pprint(ifinder.clusters)
