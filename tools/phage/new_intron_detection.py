@@ -4,6 +4,7 @@ import re
 import itertools
 import argparse
 import hashlib
+import svgwrite
 from BCBio import GFF
 from Bio.Blast import NCBIXML
 from gff3 import feature_lambda
@@ -20,6 +21,8 @@ def parse_xml(blastxml):
             for hsp in alignment.hsps:
                 blast_gene.append({
                     'gi_nos' : gi_nos,
+                    'sbjct_length': alignment.length,
+                    'query_length': blast_record.query_length,
                     'sbjct_range' : (hsp.sbjct_start, hsp.sbjct_end),
                     'query_range' : (hsp.query_start, hsp.query_end),
                     'name' : blast_record.query,
@@ -173,12 +176,51 @@ class IntronFinder(object):
         for key in self.clusters:
             gene_names = []
             for gene in self.clusters[key]:
-                gene_names.append(gene['name'])
+                gene_names.append((gene['name']).strip('CPT_phageK_'))
             if ', '.join(gene_names) in condensed_report:
                 condensed_report[', '.join(gene_names)] += 1
             else:
                 condensed_report[', '.join(gene_names)] = 1
         return condensed_report
+
+    def cluster_report_3(self):
+        condensed_report = {}
+        for key in self.clusters:
+            gene_names = []
+            gi_nos = []
+            for i, gene in enumerate(self.clusters[key]):
+                if i == 0:
+                    gi_nos = gene['gi_nos']
+                gene_names.append((gene['name']).strip('.p01').strip('CPT_phageK_gp'))
+            if ', '.join(gene_names) in condensed_report:
+                condensed_report[', '.join(gene_names)].append(gi_nos)
+            else:
+                condensed_report[', '.join(gene_names)] = [gi_nos]
+        return condensed_report
+
+    def draw_genes(self, name):
+        height = 200 * len(self.clusters)
+        print height
+        dwg = svgwrite.Drawing(filename=name, size=("1000px", "%spx" % height), debug=True)
+        genes = dwg.add(dwg.g(id='genes', fill='red'))
+
+        sbjct_y = 10
+        query_x = 10
+        for i, key in enumerate(self.clusters):
+            for j, gene in enumerate(self.clusters[key]):
+                if j == 0:
+                    genes.add(dwg.rect(insert=(10, sbjct_y), size=(gene['sbjct_length'], 20), fill='blue'))
+
+                genes.add(dwg.rect(insert=(query_x, sbjct_y+80), size=(gene['query_length'], 20), fill='green'))
+                dwg.save()
+                query_x += (gene['query_length']+10)
+
+            query_x = 10
+
+            if i == 0:
+                sbjct_y += 190
+            else:
+                sbjct_y += 200
 
     # def modify_gff3(?):
     # """ merge 2 or more seq records into one """
@@ -195,7 +237,8 @@ if __name__ == '__main__':
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
     ifinder.clusters = ifinder.check_seq_overlap()
-    condensed_report = ifinder.cluster_report_2()
+    condensed_report = ifinder.cluster_report()
+    ifinder.draw_genes('clusters.svg')
 
-    with open('out.txt', 'w') as handle:
-        import pprint; pprint.pprint(condensed_report)
+    # with open('out.txt', 'w') as handle:
+        # import pprint; pprint.pprint(ifinder.clusters)
