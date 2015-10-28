@@ -9,6 +9,9 @@ from BCBio import GFF
 from Bio.Blast import NCBIXML
 from gff3 import feature_lambda
 from collections import OrderedDict
+import logging
+logging.basicConfig()
+log = logging.getLogger()
 
 def parse_xml(blastxml):
     """ Parses xml file to get desired info (genes, hits, etc) """
@@ -200,8 +203,7 @@ class IntronFinder(object):
 
     def draw_genes(self, name):
         height = 200 * len(self.clusters)
-        print height
-        dwg = svgwrite.Drawing(filename=name, size=("1000px", "%spx" % height), debug=True)
+        dwg = svgwrite.Drawing(filename=name, size=("1500px", "%spx" % height), debug=True)
         genes = dwg.add(dwg.g(id='genes', fill='red'))
 
         sbjct_y = 10
@@ -212,6 +214,13 @@ class IntronFinder(object):
                     genes.add(dwg.rect(insert=(10, sbjct_y), size=(gene['sbjct_length'], 20), fill='blue'))
 
                 genes.add(dwg.rect(insert=(query_x, sbjct_y+80), size=(gene['query_length'], 20), fill='green'))
+
+                p1 = (gene['sbjct_range'][0] + 10, sbjct_y + 20)
+                p2 = (gene['sbjct_range'][1] + 10, sbjct_y + 20)
+                p3 = (gene['query_range'][1] + query_x, sbjct_y + 80)
+                p4 = (gene['query_range'][0] + query_x, sbjct_y + 80)
+                genes.add(dwg.polyline([p1, p2, p3, p4]))
+
                 dwg.save()
                 query_x += (gene['query_length']+10)
 
@@ -240,5 +249,5 @@ if __name__ == '__main__':
     condensed_report = ifinder.cluster_report()
     ifinder.draw_genes('clusters.svg')
 
-    # with open('out.txt', 'w') as handle:
-        # import pprint; pprint.pprint(ifinder.clusters)
+    with open('out.txt', 'w') as handle:
+        import pprint; pprint.pprint(ifinder.clusters)
