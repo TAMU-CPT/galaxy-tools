@@ -23,10 +23,9 @@ $sequences
       <param type="integer" name="window_size" value="3" label="Default window size for BigWig files" />
   </inputs>
   <outputs>
-    <data format="bigwig" name="output">
-        <discover_datasets pattern="__designation_and_ext__"
-            directory="out" visible="true" />
-    </data>
+    <collection name="xmfa2bigwig-tracks" type="list">
+      <discover_datasets pattern="__designation_and_ext__" directory="out" />
+    </collection>
   </outputs>
   <help><![CDATA[
 What it does

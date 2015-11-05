@@ -15,8 +15,6 @@ $xmfa
 #for file in $sequences:
     "${file}"
 #end for
-> $output
-
 ]]></command>
   <inputs>
       <param type="data" format="xmfa" name="xmfa"
@@ -30,15 +28,16 @@ $xmfa
           help="maximum length of a match_part feature. Lower number = larger GFF output" />
   </inputs>
   <outputs>
-    <data format="gff3" name="output">
-    </data>
+    <collection name="xmfa2gff3-tracks" type="list">
+      <discover_datasets pattern="__designation_and_ext__" directory="outdir" />
+    </collection>
   </outputs>
   <tests>
       <test>
           <param name="xmfa" value="1.xmfa"/>
           <param name="sequences" value="karma.fa,phagey.fa" />
           <param name="window_size" value="10" />
-          <output name="output" file="1.gff3"/>
+          <!--<output name="output" file="1.gff3"/>-->
       </test>
   </tests>
   <help><![CDATA[
