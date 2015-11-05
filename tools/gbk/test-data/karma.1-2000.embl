@@ -1,0 +1,129 @@
+ID   Karma; ; ; DNA; ; UNC; 2000 BP.
+XX
+AC   Karma;
+XX
+DE   Phage Karma.
+XX
+KW   
+XX
+OS   . .
+OC   .
+XX
+FH   Key             Location/Qualifiers
+FT   source          1..2000
+FT                   /note="Source genome originally 221828 bp"
+FT                   /note="Cut from 1 to 2000"
+FT   CDS             1002..1193
+FT                   /product="hypothetical conserved protein"
+FT                   /codon_start=1
+FT                   /translation="MAEFLALIPNLAPFLVWGILLWIAAEVVWSVCLWVYGLRTLFKLH
+FT                   RDDLAEAISFERALSPFD"
+FT                   /locus_tag="Karma_gp001"
+FT                   /transl_table=11
+FT   CDS             1277..1525
+FT                   /product="hypothetical conserved protein"
+FT                   /codon_start=1
+FT                   /translation="MSIRTFFHDLAVRFVVLGWIFARKPLKWAPKGHNFQPKPPVQVGA
+FT                   LAAGSLLALSLALGGLWFRFTFPDKSQVVSRRPQAMS"
+FT                   /locus_tag="Karma_gp002"
+FT                   /transl_table=11
+FT   CDS             1587..1691
+FT                   /product="hypothetical conserved protein"
+FT                   /codon_start=1
+FT                   /translation="MFAFLRRLSLAAVHGVLWAILLAMLALGGPRRPL"
+FT                   /locus_tag="Karma_gp003"
+FT                   /transl_table=11
+FT   terminator      1746..1775
+FT                   /note="predicted rho-independent terminator"
+SQ   Sequence 2000 BP; 356 A; 649 C; 595 G; 400 T; 0 other;
+     gggctctggg cgaagttttg tgggactact atgacttgca ttatttcaag cgcaagcggt        60
+     ccgagtggaa gtaccaaaga tttgctttgg tttatcaaca acttgccgac gcggcctcgg       120
+     acacctccat cgcgtccaag tttcagacct acgatcacct gccccacctg gagccgaagg       180
+     tgctcaaggc ccggcttgac gcgggtcacg ccgacgagcg cgggcggccg attccggacc       240
+     gcaaggagca cttccggcgg gtggtggtca gcgtcgactc ggccaacaag cccggcgccc       300
+     gcaacgacta cagcgtcgcc caggtctggg gggagaccca cgcccgcaag cactacctga       360
+     tctaccagga gcgcaagaag gtcgacatca ccggcctgac cgagatgatc gagcgggtgg       420
+     ccaagcgcta cgaggtcgac gccatcctgg tcgaagacaa gggcaacggc accgcctaca       480
+     tccaggcgcg gggccagacc gacagccagc ggcggctcgc cccggccccg atcgaggcga       540
+     tccaggtccc gagcacctat tccaaggagt tccgcttcaa cgagatcgtc ccgatgatcg       600
+     aggccggcga ggtcttcctg ccgggcaagg ccccgtggct cgacctgctg atccgcgaaa       660
+     tcggtcagtt ccccgaaggc gcccatgacg accaagtcga cgccatgacg cagtacctcc       720
+     gctgggccaa gtccaagcgc acgcggttcg gcgcgcgcaa ggtcggctcg atgggctgac       780
+     gaggcccgtt aaccacgttt gttaacctcc gccggggcct taaccctaac acggcgaggg       840
+     ttaacaggtc cagggaccct tcgaaattaa cctttcgggg accctgggaa atcgtaaggc       900
+     agggaccctg gccattttcc ggctggggac cctggcaaat tcaccgccgg ggaccctccg       960
+     aaattcatcc tcggggaccc tggcaaatca aggagccggc gatggccgaa tttctcgccc      1020
+     tgatccccaa cctcgcgccg ttcctggtct ggggaatcct cctctggatc gccgccgagg      1080
+     tggtctggag cgtctgcctc tgggtctatg gcctgcggac cctgttcaag ttgcaccgcg      1140
+     atgatctggc cgaggcgatc agcttcgagc gggccttgag ccccttcgac taggcgcggc      1200
+     ctgccgacct aagtcacgga ctgtaggttt cgtgacaagg tgagatattc cacaacgatt      1260
+     tcaaaggctt actgcgatgt cgatccgcac gttcttccac gatctggccg tccgtttcgt      1320
+     cgttttgggg tggatttttg cccgaaaacc gctgaaatgg gctccaaaag ggcataattt      1380
+     tcagcctaaa ccgccggtcc aggtcggcgc cctggcggcc ggctcgctcc tcgccctcag      1440
+     tctggcgctc ggcgggctct ggttccgctt cacgtttccg gacaaaagtc aagtggtctc      1500
+     gcgccggccg caggctatgt catagaccgt gggcttcgtg accagatcac gcttccgtta      1560
+     ccgctccagc ccttgtgagg cctcggatgt tcgcctttct ccgccggctc agcctcgccg      1620
+     ccgtccatgg cgtgctctgg gcgatcctcc tggcgatgct cgccctgggc gggccgcgcc      1680
+     gcccgctcta aagcgtcata tctgacgcct aaggccccct aaggcctcat ctgtgagaca      1740
+     ttcaacgccc tcgtgttcct ctgaacgcgg gggcgttttg acgtcggcgc atttttgact      1800
+     tgacgcgcga gcgttttgac gcgggcgcat ttttgattcg acgggcgagc gttttgacgt      1860
+     ccgagcattt ttcaacttga cgtcgttcca tttaccggga gcgccttagg gttaacgccg      1920
+     gccgccgagc cctggggcga tttaccaccg ccacgttaac ctaacgcctg ttaacctatc      1980
+     ggttgttaag gttaacgccc                                                  2000
+//
+ID   Karma; ; ; DNA; ; UNC; 1001 BP.
+XX
+AC   Karma;
+XX
+DE   Phage Karma.
+XX
+KW   
+XX
+OS   . .
+OC   .
+XX
+FH   Key             Location/Qualifiers
+FT   source          1..1001
+FT                   /note="Source genome originally 221828 bp"
+FT                   /note="Cut from 1000 to 2000"
+FT   CDS             3..194
+FT                   /product="hypothetical conserved protein"
+FT                   /codon_start=1
+FT                   /translation="MAEFLALIPNLAPFLVWGILLWIAAEVVWSVCLWVYGLRTLFKLH
+FT                   RDDLAEAISFERALSPFD"
+FT                   /locus_tag="Karma_gp001"
+FT                   /transl_table=11
+FT   CDS             278..526
+FT                   /product="hypothetical conserved protein"
+FT                   /codon_start=1
+FT                   /translation="MSIRTFFHDLAVRFVVLGWIFARKPLKWAPKGHNFQPKPPVQVGA
+FT                   LAAGSLLALSLALGGLWFRFTFPDKSQVVSRRPQAMS"
+FT                   /locus_tag="Karma_gp002"
+FT                   /transl_table=11
+FT   CDS             588..692
+FT                   /product="hypothetical conserved protein"
+FT                   /codon_start=1
+FT                   /translation="MFAFLRRLSLAAVHGVLWAILLAMLALGGPRRPL"
+FT                   /locus_tag="Karma_gp003"
+FT                   /transl_table=11
+FT   terminator      747..776
+FT                   /note="predicted rho-independent terminator"
+SQ   Sequence 1001 BP; 152 A; 321 C; 287 G; 241 T; 0 other;
+     cgatggccga atttctcgcc ctgatcccca acctcgcgcc gttcctggtc tggggaatcc        60
+     tcctctggat cgccgccgag gtggtctgga gcgtctgcct ctgggtctat ggcctgcgga       120
+     ccctgttcaa gttgcaccgc gatgatctgg ccgaggcgat cagcttcgag cgggccttga       180
+     gccccttcga ctaggcgcgg cctgccgacc taagtcacgg actgtaggtt tcgtgacaag       240
+     gtgagatatt ccacaacgat ttcaaaggct tactgcgatg tcgatccgca cgttcttcca       300
+     cgatctggcc gtccgtttcg tcgttttggg gtggattttt gcccgaaaac cgctgaaatg       360
+     ggctccaaaa gggcataatt ttcagcctaa accgccggtc caggtcggcg ccctggcggc       420
+     cggctcgctc ctcgccctca gtctggcgct cggcgggctc tggttccgct tcacgtttcc       480
+     ggacaaaagt caagtggtct cgcgccggcc gcaggctatg tcatagaccg tgggcttcgt       540
+     gaccagatca cgcttccgtt accgctccag cccttgtgag gcctcggatg ttcgcctttc       600
+     tccgccggct cagcctcgcc gccgtccatg gcgtgctctg ggcgatcctc ctggcgatgc       660
+     tcgccctggg cgggccgcgc cgcccgctct aaagcgtcat atctgacgcc taaggccccc       720
+     taaggcctca tctgtgagac attcaacgcc ctcgtgttcc tctgaacgcg ggggcgtttt       780
+     gacgtcggcg catttttgac ttgacgcgcg agcgttttga cgcgggcgca tttttgattc       840
+     gacgggcgag cgttttgacg tccgagcatt tttcaacttg acgtcgttcc atttaccggg       900
+     agcgccttag ggttaacgcc ggccgccgag ccctggggcg atttaccacc gccacgttaa       960
+     cctaacgcct gttaacctat cggttgttaa ggttaacgcc c                          1001
+//

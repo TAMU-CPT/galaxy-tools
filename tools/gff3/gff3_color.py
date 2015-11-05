@@ -13,231 +13,232 @@ __maintainer__ = "Eric Rasche"
 __email__ = "esr@tamu.edu"
 
 color_scheme = {
-   "defense" : {
-      "members" : [
-         "rII",
-         "rIIA",
-         "rIIB",
-         "rex",
-         "rexA",
-         "rexB",
-         "ocr",
-         "dar",
-         "darA",
-         "darB"
-      ],
-      "color" : "#C8FFC8",
-      "title" : "Defense"
-   },
-   "trna" : {
-      "members" : [
-         "tRNA"
-      ],
-      "color" : "#71BC78",
-      "title" : "tRNAs"
-   },
-   "regulation" : {
-      "title" : "Regulation",
-      "color" : "#FFA500",
-      "members" : [
-         "Translational repressor",
-         "RegA",
-         "RegB",
-         "regulatory",
-         "regulator",
-         "transcriptional repressor",
-         "anti-repressor",
-         "rna",
-         "rna polymerase",
-         "Sigma Factor"
-      ]
-   },
-   "biosynthesis" : {
-      "title" : "Biosynthesis",
-      "color" : "#0000FF",
-      "members" : [
-         "Deoxynucleoside",
-         "Deoxyribonucleotidase",
-         "Deoxyuridine",
-         "Ribonucleoside-diphoshate reductase",
-         "Serine kinase",
-         "threonine kinase",
-         "cytidine deaminase",
-         "dUTPase",
-         "dUTPase",
-         "deoxynucleotide",
-         "dihydrofolate reductase",
-         "glutaredoxin",
-         "guanylate kinase",
-         "reductase",
-         "ribonucleotide reductase",
-         "thioredoxin",
-         "thymidylate"
-      ]
-   },
-   "dna_rep_recomb" : {
-      "title" : "DNA Replication/Recombination",
-      "color" : "#FFFF00",
-      "members" : [
-         "Clamp",
-         "DNA binding protein",
-         "DNA end Protector",
-         "DNA ligase",
-         "DexA",
-         "DnaA",
-         "DnaB",
-         "DnaQ",
-         "Helicase",
-         "RNA ligase",
-         "RNaseH",
-         "RecA",
-         "RecF",
-         "Recombination",
-         "RuvC",
-         "UvsW",
-         "UvsY",
-         "helicase",
-         "holliday junction",
-         "phosphoesterase",
-         "primase",
-         "recombinase",
-         "recombination",
-         "repair",
-         "single strand annealing",
-         "topoisomerase",
-         "whisker",
-         "sliding",
-         "methylase",
-         "methyltransferase",
-         "mom",
-         "glucosyl\\s*transferase",
-         "glycosyl\\s*transferase",
-         "integrase"
-      ],
-      "custom" : {
-         "hnh" : {
-            "isnot" : [
-               "HNH",
-               "homing endonuclease"
-            ],
-            "is" : [
-               "nuclease"
-            ]
-         },
-         "polymerase" : {
-            "is" : [
-               "polymerase"
-            ],
-            "isnot" : [
-               "rna polymerase",
-               "polymerase sigma factor"
-            ]
-         }
-      }
-   },
-   "novel" : {
-      "members" : [
-         "Novel"
-      ],
-      "color" : "#AAAAAA",
-      "title" : "Novel"
-   },
-   "dna_pack" : {
-      "members" : [
-         "terminase"
-      ],
-      "color" : "#00FFFF",
-      "title" : "DNA Packaging"
-   },
-   "terminator" : {
-      "color" : "#00FF00",
-      "title" : "terminator",
-      "members" : [
-         "terminator"
-      ]
-   },
-   "lysis" : {
-      "custom" : {
-         "lysozyme" : {
-            "isnot" : [
-               "lysozyme baseplate",
-               "tail lysozyme"
-            ],
-            "is" : [
-               "lysozyme"
-            ]
-         }
-      },
-      "members" : [
-         "antiholin",
-         "holin",
-         "endolysin",
-         "spanin",
-         "peptidoglycan",
-         "amidase",
-         "transglycosylase",
-         "carboxypeptidase"
-      ],
-      "color" : "#FF00FF",
-      "title" : "Lysis"
-   },
-   "morpho" : {
-      "custom" : {
-         "tail" : {
-            "isnot" : [
-               "tail lysozyme"
-            ],
-            "is" : [
-               "tail"
-            ]
-         },
-         "baseplate" : {
-            "is" : [
-               "baseplate"
-            ],
-            "isnot" : [
-               "lysozyme baseplate"
-            ]
-         }
-      },
-      "members" : [
-         "tail\\s*spike",
-         "fiber",
-         "neck",
-         "sheath",
-         "tube",
-         "pectin",
-         "prohead",
-         "scaffold",
-         "capsid",
-         "head",
-         "head-to-tail joining",
-         "pre-neck",
-         "Tape",
-         "tailspike",
-         "structural",
-         "morphogenesis",
-         "assembly",
-         "chaperone",
-         "joining",
-         "decoration",
-         "protease",
-         "frameshift",
-         "portal"
-      ],
-      "color" : "#87CEFA",
-      "title" : "Morphogenesis"
-   },
-   "hnh" : {
-      "title" : "HNH/Homing/GIY-YIG",
-      "color" : "#C89664",
-      "members" : [
-         "HNH",
-         "homing endonuclease",
-         "GIY-YIG"
-      ]
-   }
+    "defense": {
+        "members": [
+            "rII",
+            "rIIA",
+            "rIIB",
+            "rex",
+            "rexA",
+            "rexB",
+            "ocr",
+            "dar",
+            "darA",
+            "darB"
+        ],
+        "color": "#C8FFC8",
+        "title": "Defense"
+    },
+    "trna": {
+        "members": [
+            "tRNA"
+        ],
+        "color": "#71BC78",
+        "title": "tRNAs"
+    },
+    "regulation": {
+        "title": "Regulation",
+        "color": "#FFA500",
+        "members": [
+            "Translational repressor",
+            "RegA",
+            "RegB",
+            "regulatory",
+            "regulator",
+            "transcriptional repressor",
+            "anti-repressor",
+            "rna",
+            "rna polymerase",
+            "Sigma Factor"
+        ]
+    },
+    "biosynthesis": {
+        "title": "Biosynthesis",
+        "color": "#0000FF",
+        "members": [
+            "Deoxynucleoside",
+            "Deoxyribonucleotidase",
+            "Deoxyuridine",
+            "Ribonucleoside-diphoshate reductase",
+            "Serine kinase",
+            "threonine kinase",
+            "cytidine deaminase",
+            "dUTPase",
+            "dUTPase",
+            "deoxynucleotide",
+            "dihydrofolate reductase",
+            "glutaredoxin",
+            "guanylate kinase",
+            "reductase",
+            "ribonucleotide reductase",
+            "thioredoxin",
+            "thymidylate"
+        ]
+    },
+    "dna_rep_recomb": {
+        "title": "DNA Replication/Recombination",
+        "color": "#FFFF00",
+        "members": [
+            "Clamp",
+            "DNA binding protein",
+            "DNA end Protector",
+            "DNA ligase",
+            "DexA",
+            "DnaA",
+            "DnaB",
+            "DnaQ",
+            "Helicase",
+            "RNA ligase",
+            "RNaseH",
+            "RecA",
+            "RecF",
+            "Recombination",
+            "RuvC",
+            "UvsW",
+            "UvsY",
+            "helicase",
+            "holliday junction",
+            "phosphoesterase",
+            "primase",
+            "recombinase",
+            "recombination",
+            "repair",
+            "single strand annealing",
+            "topoisomerase",
+            "whisker",
+            "sliding",
+            "methylase",
+            "methyltransferase",
+            "mom",
+            "glucosyl\\s*transferase",
+            "glycosyl\\s*transferase",
+            "integrase"
+        ],
+        "custom": {
+            "hnh": {
+                "isnot": [
+                    "HNH",
+                    "homing endonuclease"
+                ],
+                "is": [
+                    "nuclease"
+                ]
+            },
+            "polymerase": {
+                "is": [
+                    "polymerase"
+                ],
+                "isnot": [
+                    "rna polymerase",
+                    "polymerase sigma factor"
+                ]
+            }
+        }
+    },
+    "novel": {
+        "members": [
+            "Novel"
+        ],
+        "color": "#AAAAAA",
+        "title": "Novel"
+    },
+    "dna_pack": {
+        "members": [
+            "terminase"
+        ],
+        "color": "#00FFFF",
+        "title": "DNA Packaging"
+    },
+    "terminator": {
+        "color": "#00FF00",
+        "title": "terminator",
+        "members": [
+            "terminator"
+        ]
+    },
+    "lysis": {
+        "custom": {
+            "lysozyme": {
+                "isnot": [
+                    "lysozyme baseplate",
+                    "tail lysozyme"
+                ],
+                "is": [
+                    "lysozyme"
+                ]
+            }
+        },
+        "members": [
+            "antiholin",
+            "holin",
+            "endolysin",
+            "spanin",
+            "peptidoglycan",
+            "amidase",
+            "transglycosylase",
+            "carboxypeptidase"
+        ],
+        "color": "#FF00FF",
+        "title": "Lysis"
+    },
+    "morpho": {
+        "custom": {
+            "tail": {
+                "isnot": [
+                    "tail lysozyme"
+                ],
+                "is": [
+                    "tail"
+                ]
+            },
+            "baseplate": {
+                "is": [
+                    "baseplate"
+                ],
+                "isnot": [
+                    "lysozyme baseplate"
+                ]
+            }
+        },
+        "members": [
+            "tail\\s*spike",
+            "fiber",
+            "neck",
+            "sheath",
+            "tube",
+            "pectin",
+            "prohead",
+            "scaffold",
+            "capsid",
+            "head",
+            "head-to-tail joining",
+            "pre-neck",
+            "Tape",
+            "tailspike",
+            "structural",
+            "morphogenesis",
+            "assembly",
+            "chaperone",
+            "joining",
+            "decoration",
+            "protease",
+            "frameshift",
+            "portal"
+        ],
+        "color": "#87CEFA",
+        "title": "Morphogenesis"
+    },
+    "hnh": {
+        "title": "HNH/Homing/GIY-YIG",
+        "color": "#C89664",
+        "members": [
+            "HNH",
+            "homing endonuclease",
+            "GIY-YIG"
+        ]
+    }
 }
+
 
 class ColorScheme(object):
 
@@ -256,13 +257,11 @@ class ColorScheme(object):
             if 'custom' in color_scheme[key]:
                 for custom_key in color_scheme[key]['custom']:
                     cu = color_scheme[key]['custom'][custom_key]
-                    import pprint; pprint.pprint(cu)
                     self.custom_regex[key + '/' + custom_key] = {
                         'color': color_scheme[key]['color'],
                         'is': [re.compile('\b' + x + '\b') for x in cu.get('is', [])],
                         'isnot': [re.compile('\b' + x + '\b') for x in cu.get('isnot', [])],
                     }
-
 
     def get_color(self, product_list):
         for product in product_list:

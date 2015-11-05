@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="xmfa2gff3" name="Convert XMFA to gapped GFF3" version="@WRAPPER_VERSION@.0">
+<tool id="xmfa2gff3" name="Convert XMFA to gapped GFF3" version="@WRAPPER_VERSION@.1">
   <description></description>
   <macros>
     <import>macros.xml</import>
@@ -11,7 +11,6 @@
 xmfa2gff3.py
 $xmfa
 --window_size $window_size
---relative_to $relative_to
 --sequences
 #for file in $sequences:
     "${file}"
@@ -29,9 +28,6 @@ $xmfa
 
       <param type="integer" label="Window Size" value="100" name="window_size"
           help="maximum length of a match_part feature. Lower number = larger GFF output" />
-
-      <param type="integer" label="Generate relative to Nth sequence in XMFA file" value="1" name="relative_to"
-          help="progressiveMauve (un)helpfully strips original sequence IDs and replaces with integer numbers. This option lets you generate the alignment relative to e.g. the second genome if you wished to display against that base sequence" />
   </inputs>
   <outputs>
     <data format="gff3" name="output">
@@ -42,7 +38,6 @@ $xmfa
           <param name="xmfa" value="1.xmfa"/>
           <param name="sequences" value="karma.fa,phagey.fa" />
           <param name="window_size" value="10" />
-          <param name="relative_to" value="1" />
           <output name="output" file="1.gff3"/>
       </test>
   </tests>

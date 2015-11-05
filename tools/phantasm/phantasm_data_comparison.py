@@ -5,6 +5,7 @@ from phantasm import Cassettes, Utils
 import logging
 logging.basicConfig(level=logging.INFO)
 
+
 def compare_values(a, b, method, undef_value):
     if method not in ('phantasm_cids', 'texteq', 'levenshtein'):
         # Methods listed above use strings, so we can ignore those.
@@ -38,7 +39,7 @@ def compare_values(a, b, method, undef_value):
     elif method == 'bit_diff':
         a = abs(int(a))
         b = abs(int(b))
-        return bin(a^b).count("1")
+        return bin(a ^ b).count("1")
     elif method == 'phantasm_cids':
         chunked = Cassettes.revcomrot(a)
         # Compare each for levenshtein distance, return the minimum
@@ -62,10 +63,10 @@ def compare_values(a, b, method, undef_value):
         raise NotImplementedError("Comparison method %s not available" % method)
     return None
 
-def compare_files(file_a, file_b, comparison_method, undef_value, **kwargs):
 
-    (header_a, data_a) =  Utils.load_data_with_headers(file_a)
-    (header_b, data_b) =  Utils.load_data_with_headers(file_b)
+def compare_files(file_a, file_b, comparison_method, undef_value, **kwargs):
+    (header_a, data_a) = Utils.load_data_with_headers(file_a)
+    (header_b, data_b) = Utils.load_data_with_headers(file_b)
 
     header = ['# ID_A', 'ID_B', 'Value']
     yield header
@@ -85,14 +86,10 @@ if __name__ == '__main__':
     parser.add_argument('comparison_method', choices=choices,
                         help='Method for comparison')
     parser.add_argument('undef_value', nargs='?', type=float, default=0,
-                        help='Undefined value. For operations involving division, what should undefined results be set to? (e.g. 3/0 = ?).')
+                        help='Undefined value. For operations involving division, ' +
+                        'what should undefined results be set to? (e.g. 3/0 = ?).')
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
 
-
-    result_iter = iter(compare_files(**vars(args)))
-    try:
-        while True:
-            print '\t'.join(map(str, result_iter.next()))
-    except StopIteration:
-        pass
+    for row in compare_files(**vars(args)):
+        print '\t'.join(map(str, row))

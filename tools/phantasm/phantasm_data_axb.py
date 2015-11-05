@@ -2,7 +2,6 @@
 import argparse
 import logging
 logging.basicConfig(level=logging.INFO)
-from phantasm import Utils
 import numpy
 
 if __name__ == '__main__':

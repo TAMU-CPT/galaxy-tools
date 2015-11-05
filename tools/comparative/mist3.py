@@ -93,6 +93,7 @@ class Subplot(object):
                 self.annotated_original_path, destination
             )
         return destination_fn
+
     def get_description(self):
         return "%s v %s" % (self.i.header, self.j.header)
 
@@ -220,7 +221,7 @@ class Subplot(object):
             '-annotate',
             '+%s+%s' % (
                 half_height - 0.5 * est_pixels(self.i.header, 30),
-                original_dims[0] + MONTAGE_BORDER + 2 * IMAGE_BORDER + \
+                original_dims[0] + MONTAGE_BORDER + 2 * IMAGE_BORDER +
                 char_height(30 + 20)
                 # 30 = primary header
                 # 20 = tick labels
@@ -234,7 +235,7 @@ class Subplot(object):
                 '-annotate',
                 '+%s+%s' % (
                     half_height - 0.5 * est_pixels(self.i.description, 10),
-                    original_dims[0] + MONTAGE_BORDER + 2 * IMAGE_BORDER + \
+                    original_dims[0] + MONTAGE_BORDER + 2 * IMAGE_BORDER +
                     char_height(30 + 20 + 10 + 4)
                     # 30 = primary header
                     # 20 = tick labels
@@ -335,6 +336,7 @@ class Subplot(object):
         cmd.append(outfile)
         log.debug(subprocess.list2cmdline(cmd))
         subprocess.check_output(cmd)
+
 
 class Misty(object):
     """MIST Class for building MIST Plots
@@ -614,6 +616,7 @@ class Misty(object):
         final_montage_path = os.path.join(self.files_path, 'large.png')
         shutil.move(annotated_montage, final_montage_path)
         return final_montage_path
+
 
 def mist_wrapper(files, window=10, zoom=50, matrix='edna', plot_type='complete', files_path='mist_images'):
     html_page = """

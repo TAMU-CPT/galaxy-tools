@@ -52,7 +52,7 @@ def overlap(table):
 
     ids = []
     for group in groups:
-        ids.append([paper.id for paper in group])
+        ids.append([x.id for x in group])
     return ids
 
 if __name__ == '__main__':

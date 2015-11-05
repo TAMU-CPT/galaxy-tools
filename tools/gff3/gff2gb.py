@@ -20,9 +20,11 @@ def main(gff_file, fasta_file):
         return True
 
     for record in gff_iter:
+        print record.id
         full_feats = []
         for feature in record.features:
-            if feature.type == 'region' and 'source' in feature.qualifiers and 'GenBank' in feature.qualifiers['source']:
+            if feature.type == 'region' and 'source' in feature.qualifiers and \
+                    'GenBank' in feature.qualifiers['source']:
                 feature.type = 'source'
 
                 if 'comment1' in feature.qualifiers:
@@ -37,22 +39,20 @@ def main(gff_file, fasta_file):
                 if 'comment' in feature.qualifiers:
                     del feature.qualifiers['comment']
 
+        for flat_feat in feature_lambda(
+                record.features, test_true, {}, subfeatures=True):
+            if flat_feat.type == 'Shine_Dalgarno_sequence':
+                flat_feat.type = 'RBS'
 
-            for flat_feat in feature_lambda(
-                    record.features, test_true, {}, subfeatures=True):
-                if flat_feat.type == 'Shine_Dalgarno_sequence':
-                    flat_feat.type = 'RBS'
+            if 'ID' in flat_feat.qualifiers:
+                flat_feat.qualifiers['locus_tag'] = flat_feat.qualifiers['ID']
 
-                if 'ID' in flat_feat.qualifiers:
-                    flat_feat.qualifiers['locus_tag'] = flat_feat.qualifiers['ID']
-
-                for x in ('source', 'phase', 'Parent', 'ID'):
-                    if x in flat_feat.qualifiers:
-                        del flat_feat.qualifiers[x]
-                full_feats.append(flat_feat)
+            for x in ('source', 'phase', 'Parent', 'ID'):
+                if x in flat_feat.qualifiers:
+                    del flat_feat.qualifiers[x]
+            full_feats.append(flat_feat)
 
         record.features = full_feats
-
         yield record
 
 if __name__ == '__main__':

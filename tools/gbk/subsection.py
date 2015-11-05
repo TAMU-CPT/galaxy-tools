@@ -8,6 +8,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
+
 def gen_annotation(record, start, end):
     return SeqFeature(
         FeatureLocation(start, end),
@@ -20,6 +21,7 @@ def gen_annotation(record, start, end):
             ]
         }
     )
+
 
 def genbank_subsection(genbank_files, table=None, coordinates=None, include_unlisted=False):
     if (table is None and coordinates is None) or \
@@ -49,14 +51,14 @@ def genbank_subsection(genbank_files, table=None, coordinates=None, include_unli
 
                 if rid in cut_sites:
                     for (start, end) in cut_sites[rid]:
-                        record.features = [gen_annotation(record, start -1, end)] + record.features
+                        record.features = [gen_annotation(record, start - 1, end)] + record.features
                         yield [record[start - 1:end]]
                 # if want unlisted, print
                 elif include_unlisted:
-                        record.features = [gen_annotation(record, start -1, end)] + record.features
+                        record.features = [gen_annotation(record, start - 1, end)] + record.features
                         yield [record]
             else:
-                record.features = [gen_annotation(record, start -1, end)] + record.features
+                record.features = [gen_annotation(record, start - 1, end)] + record.features
                 yield [record[start - 1:end]]
 
 if __name__ == '__main__':

@@ -1,165 +1,98 @@
 #!/usr/bin/env python
 import sys
-from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
+from Bio.Alphabet import IUPAC
 import argparse
 from BCBio import GFF
 import logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
+from xmfa import parse_xmfa, percent_identity, id_tn_dict
 
 
-def parse_xmfa(xmfa):
-    """Simple XMFA parser until https://github.com/biopython/biopython/pull/544
-    """
-    current_lcb = []
-    current_seq = {}
-    for line in xmfa.readlines():
-        if line.startswith('#'):
+def generate_subfeatures(parent, window_size, other):
+    log.debug("Generating subfeatures for %s %s %s", parent, window_size, other)
+    for i in range(0, len(parent['seq']), window_size):
+        block_seq = parent['seq'][i:i + window_size]
+        real_window_size = len(block_seq)
+        real_start = abs(parent['start']) - parent['seq'][0:i].count('-') + i - 1
+        real_end = real_start + real_window_size - block_seq.count('-')
+
+        log.debug("  I: %s, BS: %s, RWS: %s, RS: %s, RE: %s", i, block_seq, real_window_size, real_start, real_end)
+
+        # if (real_end - real_start) < 10:
+            # continue
+
+        if parent['start'] < 0:
+            strand = -1
+        else:
+            strand = 1
+
+        pid = percent_identity(block_seq, other['seq'][i:i + real_window_size])
+        # Ignore 0% identity sequences
+        if pid == 0:
             continue
 
-        if line.strip() == '=':
-            if 'id' in current_seq:
-                current_lcb.append(current_seq)
-                current_seq = {}
-            yield current_lcb
-            current_lcb = []
-        else:
-            line = line.strip()
-            if line.startswith('>'):
-                if 'id' in current_seq:
-                    current_lcb.append(current_seq)
-                    current_seq = {}
-                data = line.strip().split()
-                id, loc = data[1].split(':')
-                start, end = loc.split('-')
-                current_seq = {
-                    'rid': '_'.join(data[1:]),
-                    'id': id,
-                    'start': int(start),
-                    'end': int(end),
-                    'strand': 1 if data[2] == '+' else -1,
-                    'seq': ''
-                }
-            else:
-                current_seq['seq'] += line.strip()
+        yield SeqFeature(
+            FeatureLocation(real_start, real_end),
+            type="match_part", strand=strand,
+            qualifiers={
+                "source": "progressiveMauve",
+                'score': pid
+            }
+        )
 
 
-def _percent_identity(a, b):
-    """Calculate % identity, ignoring gaps in the host sequence
-    """
-    match = 0
-    mismatch = 0
-    for char_a, char_b in zip(list(a), list(b)):
-        if char_a == '-':
-            continue
-        if char_a == char_b:
-            match += 1
-        else:
-            mismatch += 1
-
-    if match + mismatch == 0:
-        return 0
-    return 100 * float(match) / (match + mismatch)
-
-
-def _id_tn_dict(sequences):
-    """Figure out sequence IDs
-    """
-    label_convert = {}
-    if sequences is not None:
-        if len(sequences) == 1:
-            for i, record in enumerate(SeqIO.parse(sequences[0], 'fasta')):
-                label_convert[str(i + 1)] = record.id
-        else:
-            for i, sequence in enumerate(sequences):
-                for record in SeqIO.parse(sequence, 'fasta'):
-                    label_convert[str(i + 1)] = record.id
-                    continue
-    return label_convert
-
-
-def convert_xmfa_to_gff3(xmfa_file, relative_to='1', sequences=None, window_size=1000):
-    label_convert = _id_tn_dict(sequences)
-
+def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
+    label_convert = id_tn_dict(sequences)
     lcbs = parse_xmfa(xmfa_file)
 
+    parent_records = {
+        x: SeqRecord(Seq("ACTG", IUPAC.IUPACUnambiguousDNA), id=label_convert[x]['record_id'])
+        for x in label_convert.keys()
+    }
+
     for lcb_idx, lcb in enumerate(lcbs):
-        record = SeqRecord(Seq("A"), id=label_convert.get(relative_to, relative_to))
         ids = [seq['id'] for seq in lcb]
-
-        # Doesn't match part of our sequence
-        if relative_to not in ids:
-            continue
-
-        # Skip sequences that are JUST our "relative_to" genome
+        # Skip sequences that are JUST a single genome
         if len(ids) == 1:
             continue
 
-        parent = [seq for seq in lcb if seq['id'] == relative_to][0]
-        others = [seq for seq in lcb if seq['id'] != relative_to]
+        for parent_id in ids:
+            parent = [seq for seq in lcb if seq['id'] == parent_id][0]
+            others = [seq for seq in lcb if seq['id'] != parent_id]
 
-        if parent['start'] == 0 and parent['end'] == 0:
-            continue
-
-        #print [seq['id'] for seq in lcb if seq['id'] == relative_to][0], \
-            #[seq['id'] for seq in lcb if seq['id'] != relative_to]
-
-        for o_idx, other in enumerate(others):
-            other['feature'] = SeqFeature(
-                FeatureLocation(parent['start'], parent['end'] + 1),
-                type="match", strand=parent['strand'],
-                qualifiers={
-                    "source": "progressiveMauve",
-                    "target": label_convert.get(other['id'], other['id']),
-                    "ID": 'm_%s_%s_%s' % (lcb_idx, o_idx, label_convert.get(other['id'], 'xmfa_' + other['rid']))
-                }
-            )
-
-        for i in range(0, len(lcb[0]['seq']), window_size):
-            block_seq = parent['seq'][i:i + window_size]
-            real_window_size = len(block_seq)
-            real_start = abs(parent['start']) - parent['seq'][0:i].count('-') + i
-            real_end = real_start + real_window_size - block_seq.count('-')
-
-            if (real_end - real_start) < 10:
+            if parent['start'] == 0 and parent['end'] == 0:
                 continue
 
-            if parent['start'] < 0:
-                strand = -1
-            else:
-                strand = 1
-
-            for other in others:
-                pid = _percent_identity(block_seq, other['seq'][i:i + real_window_size])
-                # Ignore 0% identity sequences
-                if pid == 0:
-                    continue
-                other['feature'].sub_features.append(
-                    SeqFeature(
-                        FeatureLocation(real_start, real_end),
-                        type="match_part", strand=strand,
-                        qualifiers={
-                            "source": "progressiveMauve",
-                            'score': pid
-                        }
-                    )
+            for o_idx, other in enumerate(others):
+                # A feature representing a region of synteny between parent and the given other
+                other_feature = SeqFeature(
+                    FeatureLocation(parent['start'] - 1, parent['end']),
+                    type="match", strand=parent['strand'],
+                    qualifiers={
+                        "source": "progressiveMauve",
+                        "target": label_convert[other['id']]['record_id'],
+                        "ID": 'm_%s_%s_%s' % (lcb_idx, o_idx, label_convert[other['id']]['record_id'])
+                    }
                 )
 
-        for other in others:
-            record.features.append(other['feature'])
-        record.annotations = {}
-        yield [record]
+                for subfeature in generate_subfeatures(parent, window_size, other):
+                    other_feature.sub_features.append(subfeature)
+
+                parent_records[parent['id']].features.append(other_feature)
+
+    for i in parent_records:
+        yield [parent_records[i]]
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert XMFA alignments to gff3', prog='xmfa2gff3')
     parser.add_argument('xmfa_file', type=file, help='XMFA File')
     parser.add_argument('--window_size', type=int, help='Window size for analysis', default=1000)
-    parser.add_argument('--relative_to', type=str, help='Index of the parent sequence in the MSA', default='1')
-    parser.add_argument('--sequences', type=file, nargs='+',
+    parser.add_argument('--sequences', type=file,
                         help='Fasta files (in same order) passed to parent for reconstructing proper IDs')
     parser.add_argument('--version', action='version', version='%(prog)s 1.0')
 

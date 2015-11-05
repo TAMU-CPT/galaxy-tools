@@ -1,0 +1,1008 @@
+##gff-version 3
+##sequence-region NC_005880 1 148317
+# conversion-by bp_genbank2gff3.pl
+# organism Staphylococcus phage K
+# Note Staphylococcus phage K, complete genome.
+# date 18-JUN-2014
+NC_005880	GenBank	region	1	148317	.	+	1	ID=NC_005880;Dbxref=taxon:221915;Name=NC_005880;Note=Staphylococcus phage K%2C complete genome.,PROVISIONAL REFSEQ: This record has not yet been subject to final NCBI review. The reference sequence is identical to KF766114. On Jun 17,2014 this sequence version replaced gi:48696391. ##Assembly-Data-START## Assembly Method :: Velvet v. 1.2.10 Coverage :: 30x Sequencing Technology :: Illumina ##Assembly-Data-END## COMPLETENESS: full length. ;comment1=PROVISIONAL REFSEQ: This record has not yet been subject to final NCBI review. The reference sequence is identical to KF766114. On Jun 17%2C 2014 this sequence version replaced gi:48696391. ##Assembly-Data-START## Assembly Method :: Velvet v. 1.2.10 Coverage :: 30x Sequencing Technology :: Illumina ##Assembly-Data-END## COMPLETENESS: full length. ;culture_collection=ATCC:19685-B1;date=18-JUN-2014;host=Staphylococcus aureus;mol_type=genomic DNA;organism=Staphylococcus phage K
+NC_005880	GenBank	repeat_region	1	8486	.	+	1	ID=GenBank:repeat_region:NC_005880:1:8486;Note=inferred from sequence similarity to terminal repeat boundaries in other K-like phages;rpt_type=terminal
+NC_005880	GenBank	gene	486	785	.	+	1	ID=CPT_phageK_gp001;Dbxref=GeneID:19622155;Name=CPT_phageK_gp001
+NC_005880	GenBank	mRNA	486	785	.	+	1	ID=CPT_phageK_gp001.t01;Parent=CPT_phageK_gp001
+NC_005880	GenBank	CDS	486	785	.	+	1	ID=CPT_phageK_gp001.p01;Parent=CPT_phageK_gp001.t01;Dbxref=GI:657184120,GeneID:19622155;Name=CPT_phageK_gp001;codon_start=1;product=hypothetical protein;protein_id=YP_009041223.1;transl_table=11;translation=length.99
+NC_005880	GenBank	exon	486	785	.	+	1	Parent=CPT_phageK_gp001.t01
+NC_005880	GenBank	gene	801	986	.	+	1	ID=CPT_phageK_gp002;Dbxref=GeneID:19622037;Name=CPT_phageK_gp002
+NC_005880	GenBank	mRNA	801	986	.	+	1	ID=CPT_phageK_gp002.t01;Parent=CPT_phageK_gp002
+NC_005880	GenBank	CDS	801	986	.	+	1	ID=CPT_phageK_gp002.p01;Parent=CPT_phageK_gp002.t01;Dbxref=GI:657184121,GeneID:19622037;Name=CPT_phageK_gp002;codon_start=1;product=hypothetical protein;protein_id=YP_009041224.1;transl_table=11;translation=length.61
+NC_005880	GenBank	exon	801	986	.	+	1	Parent=CPT_phageK_gp002.t01
+NC_005880	GenBank	gene	1093	1380	.	+	1	ID=CPT_phageK_gp003;Dbxref=GeneID:19622038;Name=CPT_phageK_gp003
+NC_005880	GenBank	mRNA	1093	1380	.	+	1	ID=CPT_phageK_gp003.t01;Parent=CPT_phageK_gp003
+NC_005880	GenBank	CDS	1093	1380	.	+	1	ID=CPT_phageK_gp003.p01;Parent=CPT_phageK_gp003.t01;Dbxref=GI:657184122,GeneID:19622038;Name=CPT_phageK_gp003;codon_start=1;product=hypothetical protein;protein_id=YP_009041225.1;transl_table=11;translation=length.95
+NC_005880	GenBank	exon	1093	1380	.	+	1	Parent=CPT_phageK_gp003.t01
+NC_005880	GenBank	gene	1380	1706	.	+	1	ID=CPT_phageK_gp004;Dbxref=GeneID:19622039;Name=CPT_phageK_gp004
+NC_005880	GenBank	mRNA	1380	1706	.	+	1	ID=CPT_phageK_gp004.t01;Parent=CPT_phageK_gp004
+NC_005880	GenBank	CDS	1380	1706	.	+	1	ID=CPT_phageK_gp004.p01;Parent=CPT_phageK_gp004.t01;Dbxref=GI:657184123,GeneID:19622039;Name=CPT_phageK_gp004;codon_start=1;product=hypothetical protein;protein_id=YP_009041226.1;transl_table=11;translation=length.108
+NC_005880	GenBank	exon	1380	1706	.	+	1	Parent=CPT_phageK_gp004.t01
+NC_005880	GenBank	gene	1722	2015	.	+	1	ID=CPT_phageK_gp005;Dbxref=GeneID:19622040;Name=CPT_phageK_gp005
+NC_005880	GenBank	mRNA	1722	2015	.	+	1	ID=CPT_phageK_gp005.t01;Parent=CPT_phageK_gp005
+NC_005880	GenBank	CDS	1722	2015	.	+	1	ID=CPT_phageK_gp005.p01;Parent=CPT_phageK_gp005.t01;Dbxref=GI:657184124,GeneID:19622040;Name=CPT_phageK_gp005;codon_start=1;product=hypothetical protein;protein_id=YP_009041227.1;transl_table=11;translation=length.97
+NC_005880	GenBank	exon	1722	2015	.	+	1	Parent=CPT_phageK_gp005.t01
+NC_005880	GenBank	gene	2019	2276	.	+	1	ID=CPT_phageK_gp006;Dbxref=GeneID:19622041;Name=CPT_phageK_gp006
+NC_005880	GenBank	mRNA	2019	2276	.	+	1	ID=CPT_phageK_gp006.t01;Parent=CPT_phageK_gp006
+NC_005880	GenBank	CDS	2019	2276	.	+	1	ID=CPT_phageK_gp006.p01;Parent=CPT_phageK_gp006.t01;Dbxref=GI:657184125,GeneID:19622041;Name=CPT_phageK_gp006;codon_start=1;product=hypothetical protein;protein_id=YP_009041228.1;transl_table=11;translation=length.85
+NC_005880	GenBank	exon	2019	2276	.	+	1	Parent=CPT_phageK_gp006.t01
+NC_005880	GenBank	gene	2354	2593	.	+	1	ID=CPT_phageK_gp007;Dbxref=GeneID:19622042;Name=CPT_phageK_gp007
+NC_005880	GenBank	mRNA	2354	2593	.	+	1	ID=CPT_phageK_gp007.t01;Parent=CPT_phageK_gp007
+NC_005880	GenBank	CDS	2354	2593	.	+	1	ID=CPT_phageK_gp007.p01;Parent=CPT_phageK_gp007.t01;Dbxref=GI:657184126,GeneID:19622042;Name=CPT_phageK_gp007;codon_start=1;product=hypothetical protein;protein_id=YP_009041229.1;transl_table=11;translation=length.79
+NC_005880	GenBank	exon	2354	2593	.	+	1	Parent=CPT_phageK_gp007.t01
+NC_005880	GenBank	regulatory	3123	3148	.	-	1	ID=GenBank:regulatory:NC_005880:3123:3148;regulatory_class=terminator
+NC_005880	GenBank	gene	2604	2951	.	+	1	ID=CPT_phageK_gp008;Dbxref=GeneID:19622043;Name=CPT_phageK_gp008
+NC_005880	GenBank	mRNA	2604	2951	.	+	1	ID=CPT_phageK_gp008.t01;Parent=CPT_phageK_gp008
+NC_005880	GenBank	CDS	2604	2951	.	+	1	ID=CPT_phageK_gp008.p01;Parent=CPT_phageK_gp008.t01;Dbxref=GI:657184127,GeneID:19622043;Name=CPT_phageK_gp008;codon_start=1;product=hypothetical protein;protein_id=YP_009041230.1;transl_table=11;translation=length.115
+NC_005880	GenBank	exon	2604	2951	.	+	1	Parent=CPT_phageK_gp008.t01
+NC_005880	GenBank	gene	3162	3500	.	-	1	ID=CPT_phageK_gp009;Dbxref=GeneID:19622044;Name=CPT_phageK_gp009
+NC_005880	GenBank	mRNA	3162	3500	.	-	1	ID=CPT_phageK_gp009.t01;Parent=CPT_phageK_gp009
+NC_005880	GenBank	CDS	3162	3500	.	-	1	ID=CPT_phageK_gp009.p01;Parent=CPT_phageK_gp009.t01;Dbxref=GI:657184128,GeneID:19622044;Name=CPT_phageK_gp009;codon_start=1;product=hypothetical protein;protein_id=YP_009041231.1;transl_table=11;translation=length.112
+NC_005880	GenBank	exon	3162	3500	.	-	1	Parent=CPT_phageK_gp009.t01
+NC_005880	GenBank	gene	3811	4119	.	+	1	ID=CPT_phageK_gp010;Dbxref=GeneID:19622045;Name=CPT_phageK_gp010
+NC_005880	GenBank	mRNA	3811	4119	.	+	1	ID=CPT_phageK_gp010.t01;Parent=CPT_phageK_gp010
+NC_005880	GenBank	CDS	3811	4119	.	+	1	ID=CPT_phageK_gp010.p01;Parent=CPT_phageK_gp010.t01;Dbxref=GI:657184129,GeneID:19622045;Name=CPT_phageK_gp010;codon_start=1;product=hypothetical protein;protein_id=YP_009041232.1;transl_table=11;translation=length.102
+NC_005880	GenBank	exon	3811	4119	.	+	1	Parent=CPT_phageK_gp010.t01
+NC_005880	GenBank	gene	4325	4612	.	+	1	ID=CPT_phageK_gp011;Dbxref=GeneID:19622046;Name=CPT_phageK_gp011
+NC_005880	GenBank	mRNA	4325	4612	.	+	1	ID=CPT_phageK_gp011.t01;Parent=CPT_phageK_gp011
+NC_005880	GenBank	CDS	4325	4612	.	+	1	ID=CPT_phageK_gp011.p01;Parent=CPT_phageK_gp011.t01;Dbxref=GI:657184130,GeneID:19622046;Name=CPT_phageK_gp011;codon_start=1;product=hypothetical protein;protein_id=YP_009041233.1;transl_table=11;translation=length.95
+NC_005880	GenBank	exon	4325	4612	.	+	1	Parent=CPT_phageK_gp011.t01
+NC_005880	GenBank	regulatory	4874	4897	.	+	1	ID=GenBank:regulatory:NC_005880:4874:4897;regulatory_class=terminator
+NC_005880	GenBank	regulatory	5150	5168	.	-	1	ID=GenBank:regulatory:NC_005880:5150:5168;regulatory_class=terminator
+NC_005880	GenBank	gene	4662	4853	.	+	1	ID=CPT_phageK_gp012;Dbxref=GeneID:19622047;Name=CPT_phageK_gp012
+NC_005880	GenBank	mRNA	4662	4853	.	+	1	ID=CPT_phageK_gp012.t01;Parent=CPT_phageK_gp012
+NC_005880	GenBank	CDS	4662	4853	.	+	1	ID=CPT_phageK_gp012.p01;Parent=CPT_phageK_gp012.t01;Dbxref=GI:657184131,GeneID:19622047;Name=CPT_phageK_gp012;codon_start=1;product=hypothetical protein;protein_id=YP_009041234.1;transl_table=11;translation=length.63
+NC_005880	GenBank	exon	4662	4853	.	+	1	Parent=CPT_phageK_gp012.t01
+NC_005880	GenBank	gene	5170	5658	.	-	1	ID=CPT_phageK_gp013;Dbxref=GeneID:19622048;Name=CPT_phageK_gp013
+NC_005880	GenBank	mRNA	5170	5658	.	-	1	ID=CPT_phageK_gp013.t01;Parent=CPT_phageK_gp013
+NC_005880	GenBank	CDS	5170	5658	.	-	1	ID=CPT_phageK_gp013.p01;Parent=CPT_phageK_gp013.t01;Dbxref=GI:657184132,GeneID:19622048;Name=CPT_phageK_gp013;codon_start=1;product=putative HNH endonuclease;protein_id=YP_009041235.1;transl_table=11;translation=length.162
+NC_005880	GenBank	exon	5170	5658	.	-	1	Parent=CPT_phageK_gp013.t01
+NC_005880	GenBank	gene	5826	5984	.	+	1	ID=CPT_phageK_gp014;Dbxref=GeneID:19622049;Name=CPT_phageK_gp014
+NC_005880	GenBank	mRNA	5826	5984	.	+	1	ID=CPT_phageK_gp014.t01;Parent=CPT_phageK_gp014
+NC_005880	GenBank	CDS	5826	5984	.	+	1	ID=CPT_phageK_gp014.p01;Parent=CPT_phageK_gp014.t01;Dbxref=GI:657184133,GeneID:19622049;Name=CPT_phageK_gp014;codon_start=1;product=hypothetical protein;protein_id=YP_009041236.1;transl_table=11;translation=length.52
+NC_005880	GenBank	exon	5826	5984	.	+	1	Parent=CPT_phageK_gp014.t01
+NC_005880	GenBank	gene	6054	6185	.	+	1	ID=CPT_phageK_gp015;Dbxref=GeneID:19622050;Name=CPT_phageK_gp015
+NC_005880	GenBank	mRNA	6054	6185	.	+	1	ID=CPT_phageK_gp015.t01;Parent=CPT_phageK_gp015
+NC_005880	GenBank	CDS	6054	6185	.	+	1	ID=CPT_phageK_gp015.p01;Parent=CPT_phageK_gp015.t01;Dbxref=GI:657184134,GeneID:19622050;Name=CPT_phageK_gp015;codon_start=1;product=hypothetical protein;protein_id=YP_009041237.1;transl_table=11;translation=length.43
+NC_005880	GenBank	exon	6054	6185	.	+	1	Parent=CPT_phageK_gp015.t01
+NC_005880	GenBank	gene	6353	6676	.	+	1	ID=CPT_phageK_gp016;Dbxref=GeneID:19622051;Name=CPT_phageK_gp016
+NC_005880	GenBank	mRNA	6353	6676	.	+	1	ID=CPT_phageK_gp016.t01;Parent=CPT_phageK_gp016
+NC_005880	GenBank	CDS	6353	6676	.	+	1	ID=CPT_phageK_gp016.p01;Parent=CPT_phageK_gp016.t01;Dbxref=GI:657184135,GeneID:19622051;Name=CPT_phageK_gp016;codon_start=1;product=hypothetical protein;protein_id=YP_009041238.1;transl_table=11;translation=length.107
+NC_005880	GenBank	exon	6353	6676	.	+	1	Parent=CPT_phageK_gp016.t01
+NC_005880	GenBank	gene	6776	7012	.	+	1	ID=CPT_phageK_gp017;Dbxref=GeneID:19622052;Name=CPT_phageK_gp017
+NC_005880	GenBank	mRNA	6776	7012	.	+	1	ID=CPT_phageK_gp017.t01;Parent=CPT_phageK_gp017
+NC_005880	GenBank	CDS	6776	7012	.	+	1	ID=CPT_phageK_gp017.p01;Parent=CPT_phageK_gp017.t01;Dbxref=GI:657184136,GeneID:19622052;Name=CPT_phageK_gp017;codon_start=1;product=hypothetical protein;protein_id=YP_009041239.1;transl_table=11;translation=length.78
+NC_005880	GenBank	exon	6776	7012	.	+	1	Parent=CPT_phageK_gp017.t01
+NC_005880	GenBank	gene	7092	7562	.	+	1	ID=CPT_phageK_gp018;Dbxref=GeneID:19622053;Name=CPT_phageK_gp018
+NC_005880	GenBank	mRNA	7092	7562	.	+	1	ID=CPT_phageK_gp018.t01;Parent=CPT_phageK_gp018
+NC_005880	GenBank	CDS	7092	7562	.	+	1	ID=CPT_phageK_gp018.p01;Parent=CPT_phageK_gp018.t01;Dbxref=GI:657184137,GeneID:19622053;Name=CPT_phageK_gp018;codon_start=1;product=hypothetical protein;protein_id=YP_009041240.1;transl_table=11;translation=length.156
+NC_005880	GenBank	exon	7092	7562	.	+	1	Parent=CPT_phageK_gp018.t01
+NC_005880	GenBank	gene	7621	7794	.	+	1	ID=CPT_phageK_gp019;Dbxref=GeneID:19622054;Name=CPT_phageK_gp019
+NC_005880	GenBank	mRNA	7621	7794	.	+	1	ID=CPT_phageK_gp019.t01;Parent=CPT_phageK_gp019
+NC_005880	GenBank	CDS	7621	7794	.	+	1	ID=CPT_phageK_gp019.p01;Parent=CPT_phageK_gp019.t01;Dbxref=GI:657184138,GeneID:19622054;Name=CPT_phageK_gp019;codon_start=1;product=hypothetical protein;protein_id=YP_009041241.1;transl_table=11;translation=length.57
+NC_005880	GenBank	exon	7621	7794	.	+	1	Parent=CPT_phageK_gp019.t01
+NC_005880	GenBank	gene	7794	8063	.	+	1	ID=CPT_phageK_gp020;Dbxref=GeneID:19622055;Name=CPT_phageK_gp020
+NC_005880	GenBank	mRNA	7794	8063	.	+	1	ID=CPT_phageK_gp020.t01;Parent=CPT_phageK_gp020
+NC_005880	GenBank	CDS	7794	8063	.	+	1	ID=CPT_phageK_gp020.p01;Parent=CPT_phageK_gp020.t01;Dbxref=GI:657184139,GeneID:19622055;Name=CPT_phageK_gp020;codon_start=1;product=hypothetical protein;protein_id=YP_009041242.1;transl_table=11;translation=length.89
+NC_005880	GenBank	exon	7794	8063	.	+	1	Parent=CPT_phageK_gp020.t01
+NC_005880	GenBank	regulatory	8370	8387	.	+	1	ID=GenBank:regulatory:NC_005880:8370:8387;regulatory_class=terminator
+NC_005880	GenBank	gene	8148	8369	.	+	1	ID=CPT_phageK_gp021;Dbxref=GeneID:19622056;Name=CPT_phageK_gp021
+NC_005880	GenBank	mRNA	8148	8369	.	+	1	ID=CPT_phageK_gp021.t01;Parent=CPT_phageK_gp021
+NC_005880	GenBank	CDS	8148	8369	.	+	1	ID=CPT_phageK_gp021.p01;Parent=CPT_phageK_gp021.t01;Dbxref=GI:657184140,GeneID:19622056;Name=CPT_phageK_gp021;codon_start=1;product=hypothetical protein;protein_id=YP_009041243.1;transl_table=11;translation=length.73
+NC_005880	GenBank	exon	8148	8369	.	+	1	Parent=CPT_phageK_gp021.t01
+NC_005880	GenBank	gene	8666	8902	.	-	1	ID=CPT_phageK_gp022;Dbxref=GeneID:19622057;Name=CPT_phageK_gp022
+NC_005880	GenBank	mRNA	8666	8902	.	-	1	ID=CPT_phageK_gp022.t01;Parent=CPT_phageK_gp022
+NC_005880	GenBank	CDS	8666	8902	.	-	1	ID=CPT_phageK_gp022.p01;Parent=CPT_phageK_gp022.t01;Dbxref=GI:657184141,GeneID:19622057;Name=CPT_phageK_gp022;codon_start=1;product=hypothetical protein;protein_id=YP_009041244.1;transl_table=11;translation=length.78
+NC_005880	GenBank	exon	8666	8902	.	-	1	Parent=CPT_phageK_gp022.t01
+NC_005880	GenBank	gene	8902	9075	.	-	1	ID=CPT_phageK_gp023;Dbxref=GeneID:19622058;Name=CPT_phageK_gp023
+NC_005880	GenBank	mRNA	8902	9075	.	-	1	ID=CPT_phageK_gp023.t01;Parent=CPT_phageK_gp023
+NC_005880	GenBank	CDS	8902	9075	.	-	1	ID=CPT_phageK_gp023.p01;Parent=CPT_phageK_gp023.t01;Dbxref=GI:657184142,GeneID:19622058;Name=CPT_phageK_gp023;codon_start=1;product=hypothetical protein;protein_id=YP_009041245.1;transl_table=11;translation=length.57
+NC_005880	GenBank	exon	8902	9075	.	-	1	Parent=CPT_phageK_gp023.t01
+NC_005880	GenBank	gene	9082	9336	.	-	1	ID=CPT_phageK_gp024;Dbxref=GeneID:19622059;Name=CPT_phageK_gp024
+NC_005880	GenBank	mRNA	9082	9336	.	-	1	ID=CPT_phageK_gp024.t01;Parent=CPT_phageK_gp024
+NC_005880	GenBank	CDS	9082	9336	.	-	1	ID=CPT_phageK_gp024.p01;Parent=CPT_phageK_gp024.t01;Dbxref=GI:657184143,GeneID:19622059;Name=CPT_phageK_gp024;codon_start=1;product=putative DUF1024 domain protein;protein_id=YP_009041246.1;transl_table=11;translation=length.84
+NC_005880	GenBank	exon	9082	9336	.	-	1	Parent=CPT_phageK_gp024.t01
+NC_005880	GenBank	gene	9527	10012	.	-	1	ID=CPT_phageK_gp025;Dbxref=GeneID:19622060;Name=CPT_phageK_gp025
+NC_005880	GenBank	mRNA	9527	10012	.	-	1	ID=CPT_phageK_gp025.t01;Parent=CPT_phageK_gp025
+NC_005880	GenBank	CDS	9527	10012	.	-	1	ID=CPT_phageK_gp025.p01;Parent=CPT_phageK_gp025.t01;Dbxref=GI:657184144,GeneID:19622060;Name=CPT_phageK_gp025;codon_start=1;product=hypothetical protein;protein_id=YP_009041247.1;transl_table=11;translation=length.161
+NC_005880	GenBank	exon	9527	10012	.	-	1	Parent=CPT_phageK_gp025.t01
+NC_005880	GenBank	gene	10005	10436	.	-	1	ID=CPT_phageK_gp026;Dbxref=GeneID:19622061;Name=CPT_phageK_gp026
+NC_005880	GenBank	mRNA	10005	10436	.	-	1	ID=CPT_phageK_gp026.t01;Parent=CPT_phageK_gp026
+NC_005880	GenBank	CDS	10005	10436	.	-	1	ID=CPT_phageK_gp026.p01;Parent=CPT_phageK_gp026.t01;Dbxref=GI:657184145,GeneID:19622061;Name=CPT_phageK_gp026;codon_start=1;product=hypothetical protein;protein_id=YP_009041248.1;transl_table=11;translation=length.143
+NC_005880	GenBank	exon	10005	10436	.	-	1	Parent=CPT_phageK_gp026.t01
+NC_005880	GenBank	gene	10450	10992	.	-	1	ID=CPT_phageK_gp027;Dbxref=GeneID:19622062;Name=CPT_phageK_gp027
+NC_005880	GenBank	mRNA	10450	10992	.	-	1	ID=CPT_phageK_gp027.t01;Parent=CPT_phageK_gp027
+NC_005880	GenBank	CDS	10450	10992	.	-	1	ID=CPT_phageK_gp027.p01;Parent=CPT_phageK_gp027.t01;Dbxref=GI:657184146,GeneID:19622062;Name=CPT_phageK_gp027;codon_start=1;product=hypothetical protein;protein_id=YP_009041249.1;transl_table=11;translation=length.180
+NC_005880	GenBank	exon	10450	10992	.	-	1	Parent=CPT_phageK_gp027.t01
+NC_005880	GenBank	gene	11004	11492	.	-	1	ID=CPT_phageK_gp028;Dbxref=GeneID:19622063;Name=CPT_phageK_gp028
+NC_005880	GenBank	mRNA	11004	11492	.	-	1	ID=CPT_phageK_gp028.t01;Parent=CPT_phageK_gp028
+NC_005880	GenBank	CDS	11004	11492	.	-	1	ID=CPT_phageK_gp028.p01;Parent=CPT_phageK_gp028.t01;Dbxref=GI:657184147,GeneID:19622063;Name=CPT_phageK_gp028;codon_start=1;product=YbiA-like protein;protein_id=YP_009041250.1;transl_table=11;translation=length.162
+NC_005880	GenBank	exon	11004	11492	.	-	1	Parent=CPT_phageK_gp028.t01
+NC_005880	GenBank	gene	11505	11903	.	-	1	ID=CPT_phageK_gp029;Dbxref=GeneID:19622064;Name=CPT_phageK_gp029
+NC_005880	GenBank	mRNA	11505	11903	.	-	1	ID=CPT_phageK_gp029.t01;Parent=CPT_phageK_gp029
+NC_005880	GenBank	CDS	11505	11903	.	-	1	ID=CPT_phageK_gp029.p01;Parent=CPT_phageK_gp029.t01;Dbxref=GI:657184148,GeneID:19622064;Name=CPT_phageK_gp029;codon_start=1;product=hypothetical protein;protein_id=YP_009041251.1;transl_table=11;translation=length.132
+NC_005880	GenBank	exon	11505	11903	.	-	1	Parent=CPT_phageK_gp029.t01
+NC_005880	GenBank	regulatory	12672	12692	.	-	1	ID=GenBank:regulatory:NC_005880:12672:12692;regulatory_class=terminator
+NC_005880	GenBank	gene	11900	12607	.	-	1	ID=CPT_phageK_gp030;Dbxref=GeneID:19622065;Name=CPT_phageK_gp030
+NC_005880	GenBank	mRNA	11900	12607	.	-	1	ID=CPT_phageK_gp030.t01;Parent=CPT_phageK_gp030
+NC_005880	GenBank	CDS	11900	12607	.	-	1	ID=CPT_phageK_gp030.p01;Parent=CPT_phageK_gp030.t01;Dbxref=GI:657184149,GeneID:19622065;Name=CPT_phageK_gp030;codon_start=1;product=putative protein metallophosphatase;protein_id=YP_009041252.1;transl_table=11;translation=length.235
+NC_005880	GenBank	exon	11900	12607	.	-	1	Parent=CPT_phageK_gp030.t01
+NC_005880	GenBank	gene	12707	13261	.	-	1	ID=CPT_phageK_gp031;Dbxref=GeneID:19622066;Name=CPT_phageK_gp031
+NC_005880	GenBank	mRNA	12707	13261	.	-	1	ID=CPT_phageK_gp031.t01;Parent=CPT_phageK_gp031
+NC_005880	GenBank	CDS	12707	13261	.	-	1	ID=CPT_phageK_gp031.p01;Parent=CPT_phageK_gp031.t01;Dbxref=GI:657184150,GeneID:19622066;Name=CPT_phageK_gp031;codon_start=1;product=hypothetical protein;protein_id=YP_009041253.1;transl_table=11;translation=length.184
+NC_005880	GenBank	exon	12707	13261	.	-	1	Parent=CPT_phageK_gp031.t01
+NC_005880	GenBank	regulatory	13644	13665	.	-	1	ID=GenBank:regulatory:NC_005880:13644:13665;regulatory_class=terminator
+NC_005880	GenBank	gene	13277	13594	.	-	1	ID=CPT_phageK_gp032;Dbxref=GeneID:19622067;Name=CPT_phageK_gp032
+NC_005880	GenBank	mRNA	13277	13594	.	-	1	ID=CPT_phageK_gp032.t01;Parent=CPT_phageK_gp032
+NC_005880	GenBank	CDS	13277	13594	.	-	1	ID=CPT_phageK_gp032.p01;Parent=CPT_phageK_gp032.t01;Dbxref=GI:657184151,GeneID:19622067;Name=CPT_phageK_gp032;codon_start=1;product=hypothetical protein;protein_id=YP_009041254.1;transl_table=11;translation=length.105
+NC_005880	GenBank	exon	13277	13594	.	-	1	Parent=CPT_phageK_gp032.t01
+NC_005880	GenBank	gene	14229	14300	.	-	1	ID=CPT_phageK_gt001;Dbxref=GeneID:19622068;Name=tRNA-Met;locus_tag=CPT_phageK_gt001
+NC_005880	GenBank	tRNA	14229	14300	.	-	1	ID=CPT_phageK_gt001.r01;Parent=CPT_phageK_gt001;Dbxref=GeneID:19622068;Name=tRNA-Met;codon_recognized=AUG;locus_tag=CPT_phageK_gt001;product=tRNA-Met
+NC_005880	GenBank	exon	14229	14300	.	-	1	Parent=CPT_phageK_gt001.r01;Name=tRNA-Met;locus_tag=CPT_phageK_gt001
+NC_005880	GenBank	gene	14580	15128	.	-	1	ID=CPT_phageK_gp233;Dbxref=GeneID:19622033;Name=CPT_phageK_gp233
+NC_005880	GenBank	mRNA	14580	15128	.	-	1	ID=CPT_phageK_gp233.t01;Parent=CPT_phageK_gp233
+NC_005880	GenBank	CDS	14580	15128	.	-	1	ID=CPT_phageK_gp233.p01;Parent=CPT_phageK_gp233.t01;Dbxref=GI:657184152,GeneID:19622033;Name=CPT_phageK_gp233;codon_start=1;product=hypothetical protein;protein_id=YP_009041255.1;transl_table=11;translation=length.182
+NC_005880	GenBank	exon	14580	15128	.	-	1	Parent=CPT_phageK_gp233.t01
+NC_005880	GenBank	gene	15132	15350	.	-	1	ID=CPT_phageK_gp232;Dbxref=GeneID:19622069;Name=CPT_phageK_gp232
+NC_005880	GenBank	mRNA	15132	15350	.	-	1	ID=CPT_phageK_gp232.t01;Parent=CPT_phageK_gp232
+NC_005880	GenBank	CDS	15132	15350	.	-	1	ID=CPT_phageK_gp232.p01;Parent=CPT_phageK_gp232.t01;Dbxref=GI:657184153,GeneID:19622069;Name=CPT_phageK_gp232;codon_start=1;product=hypothetical protein;protein_id=YP_009041256.1;transl_table=11;translation=length.72
+NC_005880	GenBank	exon	15132	15350	.	-	1	Parent=CPT_phageK_gp232.t01
+NC_005880	GenBank	gene	15351	15545	.	-	1	ID=CPT_phageK_gp231;Dbxref=GeneID:19622070;Name=CPT_phageK_gp231
+NC_005880	GenBank	mRNA	15351	15545	.	-	1	ID=CPT_phageK_gp231.t01;Parent=CPT_phageK_gp231
+NC_005880	GenBank	CDS	15351	15545	.	-	1	ID=CPT_phageK_gp231.p01;Parent=CPT_phageK_gp231.t01;Dbxref=GI:657184154,GeneID:19622070;Name=CPT_phageK_gp231;codon_start=1;product=hypothetical protein;protein_id=YP_009041257.1;transl_table=11;translation=length.64
+NC_005880	GenBank	exon	15351	15545	.	-	1	Parent=CPT_phageK_gp231.t01
+NC_005880	GenBank	gene	15535	16272	.	-	1	ID=CPT_phageK_gp230;Dbxref=GeneID:19622071;Name=CPT_phageK_gp230
+NC_005880	GenBank	mRNA	15535	16272	.	-	1	ID=CPT_phageK_gp230.t01;Parent=CPT_phageK_gp230
+NC_005880	GenBank	CDS	15535	16272	.	-	1	ID=CPT_phageK_gp230.p01;Parent=CPT_phageK_gp230.t01;Dbxref=GI:657184155,GeneID:19622071;Name=CPT_phageK_gp230;codon_start=1;product=hypothetical protein;protein_id=YP_009041258.1;transl_table=11;translation=length.245
+NC_005880	GenBank	exon	15535	16272	.	-	1	Parent=CPT_phageK_gp230.t01
+NC_005880	GenBank	gene	16451	16690	.	-	1	ID=CPT_phageK_gp229;Dbxref=GeneID:19622072;Name=CPT_phageK_gp229
+NC_005880	GenBank	mRNA	16451	16690	.	-	1	ID=CPT_phageK_gp229.t01;Parent=CPT_phageK_gp229
+NC_005880	GenBank	CDS	16451	16690	.	-	1	ID=CPT_phageK_gp229.p01;Parent=CPT_phageK_gp229.t01;Dbxref=GI:657184156,GeneID:19622072;Name=CPT_phageK_gp229;codon_start=1;product=hypothetical protein;protein_id=YP_009041259.1;transl_table=11;translation=length.79
+NC_005880	GenBank	exon	16451	16690	.	-	1	Parent=CPT_phageK_gp229.t01
+NC_005880	GenBank	regulatory	17150	17169	.	-	1	ID=GenBank:regulatory:NC_005880:17150:17169;regulatory_class=terminator
+NC_005880	GenBank	gene	16692	17081	.	-	1	ID=CPT_phageK_gp228;Dbxref=GeneID:19622073;Name=CPT_phageK_gp228
+NC_005880	GenBank	mRNA	16692	17081	.	-	1	ID=CPT_phageK_gp228.t01;Parent=CPT_phageK_gp228
+NC_005880	GenBank	CDS	16692	17081	.	-	1	ID=CPT_phageK_gp228.p01;Parent=CPT_phageK_gp228.t01;Dbxref=GI:657184157,GeneID:19622073;Name=CPT_phageK_gp228;codon_start=1;product=hypothetical protein;protein_id=YP_009041260.1;transl_table=11;translation=length.129
+NC_005880	GenBank	exon	16692	17081	.	-	1	Parent=CPT_phageK_gp228.t01
+NC_005880	GenBank	gene	17180	17353	.	-	1	ID=CPT_phageK_gp227;Dbxref=GeneID:19622074;Name=CPT_phageK_gp227
+NC_005880	GenBank	mRNA	17180	17353	.	-	1	ID=CPT_phageK_gp227.t01;Parent=CPT_phageK_gp227
+NC_005880	GenBank	CDS	17180	17353	.	-	1	ID=CPT_phageK_gp227.p01;Parent=CPT_phageK_gp227.t01;Dbxref=GI:657184158,GeneID:19622074;Name=CPT_phageK_gp227;codon_start=1;product=hypothetical protein;protein_id=YP_009041261.1;transl_table=11;translation=length.57
+NC_005880	GenBank	exon	17180	17353	.	-	1	Parent=CPT_phageK_gp227.t01
+NC_005880	GenBank	regulatory	17917	17937	.	-	1	ID=GenBank:regulatory:NC_005880:17917:17937;regulatory_class=terminator
+NC_005880	GenBank	gene	17394	17876	.	-	1	ID=CPT_phageK_gp226;Dbxref=GeneID:19622075;Name=CPT_phageK_gp226
+NC_005880	GenBank	mRNA	17394	17876	.	-	1	ID=CPT_phageK_gp226.t01;Parent=CPT_phageK_gp226
+NC_005880	GenBank	CDS	17394	17876	.	-	1	ID=CPT_phageK_gp226.p01;Parent=CPT_phageK_gp226.t01;Dbxref=GI:657184159,GeneID:19622075;Name=CPT_phageK_gp226;codon_start=1;product=hypothetical protein;protein_id=YP_009041262.1;transl_table=11;translation=length.160
+NC_005880	GenBank	exon	17394	17876	.	-	1	Parent=CPT_phageK_gp226.t01
+NC_005880	GenBank	gene	17926	18468	.	-	1	ID=CPT_phageK_gp225;Dbxref=GeneID:19622076;Name=CPT_phageK_gp225
+NC_005880	GenBank	mRNA	17926	18468	.	-	1	ID=CPT_phageK_gp225.t01;Parent=CPT_phageK_gp225
+NC_005880	GenBank	CDS	17926	18468	.	-	1	ID=CPT_phageK_gp225.p01;Parent=CPT_phageK_gp225.t01;Dbxref=GI:657184160,GeneID:19622076;Name=CPT_phageK_gp225;codon_start=1;product=hypothetical protein;protein_id=YP_009041263.1;transl_table=11;translation=length.180
+NC_005880	GenBank	exon	17926	18468	.	-	1	Parent=CPT_phageK_gp225.t01
+NC_005880	GenBank	gene	18468	19001	.	-	1	ID=CPT_phageK_gp224;Dbxref=GeneID:19622077;Name=CPT_phageK_gp224
+NC_005880	GenBank	mRNA	18468	19001	.	-	1	ID=CPT_phageK_gp224.t01;Parent=CPT_phageK_gp224
+NC_005880	GenBank	CDS	18468	19001	.	-	1	ID=CPT_phageK_gp224.p01;Parent=CPT_phageK_gp224.t01;Dbxref=GI:657184161,GeneID:19622077;Name=CPT_phageK_gp224;codon_start=1;product=hypothetical protein;protein_id=YP_009041264.1;transl_table=11;translation=length.177
+NC_005880	GenBank	exon	18468	19001	.	-	1	Parent=CPT_phageK_gp224.t01
+NC_005880	GenBank	gene	19004	19168	.	-	1	ID=CPT_phageK_gp223;Dbxref=GeneID:19622078;Name=CPT_phageK_gp223
+NC_005880	GenBank	mRNA	19004	19168	.	-	1	ID=CPT_phageK_gp223.t01;Parent=CPT_phageK_gp223
+NC_005880	GenBank	CDS	19004	19168	.	-	1	ID=CPT_phageK_gp223.p01;Parent=CPT_phageK_gp223.t01;Dbxref=GI:657184162,GeneID:19622078;Name=CPT_phageK_gp223;codon_start=1;product=hypothetical protein;protein_id=YP_009041265.1;transl_table=11;translation=length.54
+NC_005880	GenBank	exon	19004	19168	.	-	1	Parent=CPT_phageK_gp223.t01
+NC_005880	GenBank	gene	19171	19446	.	-	1	ID=CPT_phageK_gp222;Dbxref=GeneID:19622079;Name=CPT_phageK_gp222
+NC_005880	GenBank	mRNA	19171	19446	.	-	1	ID=CPT_phageK_gp222.t01;Parent=CPT_phageK_gp222
+NC_005880	GenBank	CDS	19171	19446	.	-	1	ID=CPT_phageK_gp222.p01;Parent=CPT_phageK_gp222.t01;Dbxref=GI:657184163,GeneID:19622079;Name=CPT_phageK_gp222;codon_start=1;product=putative MFS transporter-like protein;protein_id=YP_009041266.1;transl_table=11;translation=length.91
+NC_005880	GenBank	exon	19171	19446	.	-	1	Parent=CPT_phageK_gp222.t01
+NC_005880	GenBank	gene	19446	20291	.	-	1	ID=CPT_phageK_gp221;Dbxref=GeneID:19622080;Name=CPT_phageK_gp221
+NC_005880	GenBank	mRNA	19446	20291	.	-	1	ID=CPT_phageK_gp221.t01;Parent=CPT_phageK_gp221
+NC_005880	GenBank	CDS	19446	20291	.	-	1	ID=CPT_phageK_gp221.p01;Parent=CPT_phageK_gp221.t01;Dbxref=GI:657184164,GeneID:19622080;Name=CPT_phageK_gp221;codon_start=1;product=hypothetical protein;protein_id=YP_009041267.1;transl_table=11;translation=length.281
+NC_005880	GenBank	exon	19446	20291	.	-	1	Parent=CPT_phageK_gp221.t01
+NC_005880	GenBank	gene	20303	20887	.	-	1	ID=CPT_phageK_gp220;Dbxref=GeneID:19622081;Name=CPT_phageK_gp220
+NC_005880	GenBank	mRNA	20303	20887	.	-	1	ID=CPT_phageK_gp220.t01;Parent=CPT_phageK_gp220
+NC_005880	GenBank	CDS	20303	20887	.	-	1	ID=CPT_phageK_gp220.p01;Parent=CPT_phageK_gp220.t01;Dbxref=GI:657184165,GeneID:19622081;Name=CPT_phageK_gp220;codon_start=1;product=putative ATPase domain protein;protein_id=YP_009041268.1;transl_table=11;translation=length.194
+NC_005880	GenBank	exon	20303	20887	.	-	1	Parent=CPT_phageK_gp220.t01
+NC_005880	GenBank	regulatory	21525	21559	.	-	1	ID=GenBank:regulatory:NC_005880:21525:21559;regulatory_class=terminator
+NC_005880	GenBank	gene	21156	21422	.	-	1	ID=CPT_phageK_gp219;Dbxref=GeneID:19622082;Name=CPT_phageK_gp219
+NC_005880	GenBank	mRNA	21156	21422	.	-	1	ID=CPT_phageK_gp219.t01;Parent=CPT_phageK_gp219
+NC_005880	GenBank	CDS	21156	21422	.	-	1	ID=CPT_phageK_gp219.p01;Parent=CPT_phageK_gp219.t01;Dbxref=GI:657184166,GeneID:19622082;Name=CPT_phageK_gp219;codon_start=1;product=hypothetical protein;protein_id=YP_009041269.1;transl_table=11;translation=length.88
+NC_005880	GenBank	exon	21156	21422	.	-	1	Parent=CPT_phageK_gp219.t01
+NC_005880	GenBank	gene	21576	21902	.	-	1	ID=CPT_phageK_gp218;Dbxref=GeneID:19622083;Name=CPT_phageK_gp218
+NC_005880	GenBank	mRNA	21576	21902	.	-	1	ID=CPT_phageK_gp218.t01;Parent=CPT_phageK_gp218
+NC_005880	GenBank	CDS	21576	21902	.	-	1	ID=CPT_phageK_gp218.p01;Parent=CPT_phageK_gp218.t01;Dbxref=GI:657184167,GeneID:19622083;Name=CPT_phageK_gp218;codon_start=1;product=hypothetical protein;protein_id=YP_009041270.1;transl_table=11;translation=length.108
+NC_005880	GenBank	exon	21576	21902	.	-	1	Parent=CPT_phageK_gp218.t01
+NC_005880	GenBank	regulatory	22343	22368	.	-	1	ID=GenBank:regulatory:NC_005880:22343:22368;regulatory_class=terminator
+NC_005880	GenBank	gene	21895	22311	.	-	1	ID=CPT_phageK_gp217;Dbxref=GeneID:19622084;Name=CPT_phageK_gp217
+NC_005880	GenBank	mRNA	21895	22311	.	-	1	ID=CPT_phageK_gp217.t01;Parent=CPT_phageK_gp217
+NC_005880	GenBank	CDS	21895	22311	.	-	1	ID=CPT_phageK_gp217.p01;Parent=CPT_phageK_gp217.t01;Dbxref=GI:657184168,GeneID:19622084;Name=CPT_phageK_gp217;codon_start=1;product=putative nucleotide kinase;protein_id=YP_009041271.1;transl_table=11;translation=length.138
+NC_005880	GenBank	exon	21895	22311	.	-	1	Parent=CPT_phageK_gp217.t01
+NC_005880	GenBank	gene	22445	22747	.	-	1	ID=CPT_phageK_gp216;Dbxref=GeneID:19622085;Name=CPT_phageK_gp216
+NC_005880	GenBank	mRNA	22445	22747	.	-	1	ID=CPT_phageK_gp216.t01;Parent=CPT_phageK_gp216
+NC_005880	GenBank	CDS	22445	22747	.	-	1	ID=CPT_phageK_gp216.p01;Parent=CPT_phageK_gp216.t01;Dbxref=GI:657184169,GeneID:19622085;Name=CPT_phageK_gp216;codon_start=1;product=putative NTP pyrophosphohydrolase;protein_id=YP_009041272.1;transl_table=11;translation=length.100
+NC_005880	GenBank	exon	22445	22747	.	-	1	Parent=CPT_phageK_gp216.t01
+NC_005880	GenBank	gene	22747	22935	.	-	1	ID=CPT_phageK_gp215;Dbxref=GeneID:19622086;Name=CPT_phageK_gp215
+NC_005880	GenBank	mRNA	22747	22935	.	-	1	ID=CPT_phageK_gp215.t01;Parent=CPT_phageK_gp215
+NC_005880	GenBank	CDS	22747	22935	.	-	1	ID=CPT_phageK_gp215.p01;Parent=CPT_phageK_gp215.t01;Dbxref=GI:657184170,GeneID:19622086;Name=CPT_phageK_gp215;codon_start=1;product=hypothetical protein;protein_id=YP_009041273.1;transl_table=11;translation=length.62
+NC_005880	GenBank	exon	22747	22935	.	-	1	Parent=CPT_phageK_gp215.t01
+NC_005880	GenBank	gene	22979	23140	.	-	1	ID=CPT_phageK_gp214;Dbxref=GeneID:19622087;Name=CPT_phageK_gp214
+NC_005880	GenBank	mRNA	22979	23140	.	-	1	ID=CPT_phageK_gp214.t01;Parent=CPT_phageK_gp214
+NC_005880	GenBank	CDS	22979	23140	.	-	1	ID=CPT_phageK_gp214.p01;Parent=CPT_phageK_gp214.t01;Dbxref=GI:657184171,GeneID:19622087;Name=CPT_phageK_gp214;codon_start=1;product=hypothetical protein;protein_id=YP_009041274.1;transl_table=11;translation=length.53
+NC_005880	GenBank	exon	22979	23140	.	-	1	Parent=CPT_phageK_gp214.t01
+NC_005880	GenBank	regulatory	25256	25277	.	-	1	ID=GenBank:regulatory:NC_005880:25256:25277;regulatory_class=terminator
+NC_005880	GenBank	gene	23140	25188	.	-	1	ID=CPT_phageK_gp213;Dbxref=GeneID:19622088;Name=CPT_phageK_gp213
+NC_005880	GenBank	mRNA	23140	25188	.	-	1	ID=CPT_phageK_gp213.t01;Parent=CPT_phageK_gp213
+NC_005880	GenBank	CDS	23140	25188	.	-	1	ID=CPT_phageK_gp213.p01;Parent=CPT_phageK_gp213.t01;Dbxref=GI:657184172,GeneID:19622088;Name=CPT_phageK_gp213;codon_start=1;product=putative PcfJ-like domain protein;protein_id=YP_009041275.1;transl_table=11;translation=length.682
+NC_005880	GenBank	exon	23140	25188	.	-	1	Parent=CPT_phageK_gp213.t01
+NC_005880	GenBank	gene	25266	25529	.	-	1	ID=CPT_phageK_gp212;Dbxref=GeneID:19622089;Name=CPT_phageK_gp212
+NC_005880	GenBank	mRNA	25266	25529	.	-	1	ID=CPT_phageK_gp212.t01;Parent=CPT_phageK_gp212
+NC_005880	GenBank	CDS	25266	25529	.	-	1	ID=CPT_phageK_gp212.p01;Parent=CPT_phageK_gp212.t01;Dbxref=GI:657184173,GeneID:19622089;Name=CPT_phageK_gp212;codon_start=1;product=hypothetical protein;protein_id=YP_009041276.1;transl_table=11;translation=length.87
+NC_005880	GenBank	exon	25266	25529	.	-	1	Parent=CPT_phageK_gp212.t01
+NC_005880	GenBank	gene	25546	25719	.	-	1	ID=CPT_phageK_gp211;Dbxref=GeneID:19622090;Name=CPT_phageK_gp211
+NC_005880	GenBank	mRNA	25546	25719	.	-	1	ID=CPT_phageK_gp211.t01;Parent=CPT_phageK_gp211
+NC_005880	GenBank	CDS	25546	25719	.	-	1	ID=CPT_phageK_gp211.p01;Parent=CPT_phageK_gp211.t01;Dbxref=GI:657184174,GeneID:19622090;Name=CPT_phageK_gp211;codon_start=1;product=putative peptidoglycan-binding protein;protein_id=YP_009041277.1;transl_table=11;translation=length.57
+NC_005880	GenBank	exon	25546	25719	.	-	1	Parent=CPT_phageK_gp211.t01
+NC_005880	GenBank	gene	25726	26304	.	-	1	ID=CPT_phageK_gp210;Dbxref=GeneID:19622091;Name=CPT_phageK_gp210
+NC_005880	GenBank	mRNA	25726	26304	.	-	1	ID=CPT_phageK_gp210.t01;Parent=CPT_phageK_gp210
+NC_005880	GenBank	CDS	25726	26304	.	-	1	ID=CPT_phageK_gp210.p01;Parent=CPT_phageK_gp210.t01;Dbxref=GI:657184175,GeneID:19622091;Name=CPT_phageK_gp210;codon_start=1;product=hypothetical protein;protein_id=YP_009041278.1;transl_table=11;translation=length.192
+NC_005880	GenBank	exon	25726	26304	.	-	1	Parent=CPT_phageK_gp210.t01
+NC_005880	GenBank	gene	26297	26923	.	-	1	ID=CPT_phageK_gp209;Dbxref=GeneID:19622092;Name=CPT_phageK_gp209
+NC_005880	GenBank	mRNA	26297	26923	.	-	1	ID=CPT_phageK_gp209.t01;Parent=CPT_phageK_gp209
+NC_005880	GenBank	CDS	26297	26923	.	-	1	ID=CPT_phageK_gp209.p01;Parent=CPT_phageK_gp209.t01;Dbxref=GI:657184176,GeneID:19622092;Name=CPT_phageK_gp209;codon_start=1;product=hypothetical protein;protein_id=YP_009041279.1;transl_table=11;translation=length.208
+NC_005880	GenBank	exon	26297	26923	.	-	1	Parent=CPT_phageK_gp209.t01
+NC_005880	GenBank	gene	26916	27812	.	-	1	ID=CPT_phageK_gp208;Dbxref=GeneID:19622093;Name=CPT_phageK_gp208
+NC_005880	GenBank	mRNA	26916	27812	.	-	1	ID=CPT_phageK_gp208.t01;Parent=CPT_phageK_gp208
+NC_005880	GenBank	CDS	26916	27812	.	-	1	ID=CPT_phageK_gp208.p01;Parent=CPT_phageK_gp208.t01;Dbxref=GI:657184177,GeneID:19622093;Name=CPT_phageK_gp208;codon_start=1;product=putative RNA ligase;protein_id=YP_009041280.1;transl_table=11;translation=length.298
+NC_005880	GenBank	exon	26916	27812	.	-	1	Parent=CPT_phageK_gp208.t01
+NC_005880	GenBank	regulatory	28048	28084	.	-	1	ID=GenBank:regulatory:NC_005880:28048:28084;regulatory_class=terminator
+NC_005880	GenBank	gene	27812	28036	.	-	1	ID=CPT_phageK_gp207;Dbxref=GeneID:19622094;Name=CPT_phageK_gp207
+NC_005880	GenBank	mRNA	27812	28036	.	-	1	ID=CPT_phageK_gp207.t01;Parent=CPT_phageK_gp207
+NC_005880	GenBank	CDS	27812	28036	.	-	1	ID=CPT_phageK_gp207.p01;Parent=CPT_phageK_gp207.t01;Dbxref=GI:657184178,GeneID:19622094;Name=CPT_phageK_gp207;codon_start=1;product=hypothetical protein;protein_id=YP_009041281.1;transl_table=11;translation=length.74
+NC_005880	GenBank	exon	27812	28036	.	-	1	Parent=CPT_phageK_gp207.t01
+NC_005880	GenBank	gene	28105	28845	.	-	1	ID=CPT_phageK_gp206;Dbxref=GeneID:19622095;Name=CPT_phageK_gp206
+NC_005880	GenBank	mRNA	28105	28845	.	-	1	ID=CPT_phageK_gp206.t01;Parent=CPT_phageK_gp206
+NC_005880	GenBank	CDS	28105	28845	.	-	1	ID=CPT_phageK_gp206.p01;Parent=CPT_phageK_gp206.t01;Dbxref=GI:657184179,GeneID:19622095;Name=CPT_phageK_gp206;codon_start=1;product=putative ATPase;protein_id=YP_009041282.1;transl_table=11;translation=length.246
+NC_005880	GenBank	exon	28105	28845	.	-	1	Parent=CPT_phageK_gp206.t01
+NC_005880	GenBank	gene	28897	29511	.	-	1	ID=CPT_phageK_gp205;Dbxref=GeneID:19622096;Name=CPT_phageK_gp205
+NC_005880	GenBank	mRNA	28897	29511	.	-	1	ID=CPT_phageK_gp205.t01;Parent=CPT_phageK_gp205
+NC_005880	GenBank	CDS	28897	29511	.	-	1	ID=CPT_phageK_gp205.p01;Parent=CPT_phageK_gp205.t01;Dbxref=GI:657184180,GeneID:19622096;Name=CPT_phageK_gp205;codon_start=1;product=hypothetical protein;protein_id=YP_009041283.1;transl_table=11;translation=length.204
+NC_005880	GenBank	exon	28897	29511	.	-	1	Parent=CPT_phageK_gp205.t01
+NC_005880	GenBank	gene	29527	29952	.	-	1	ID=CPT_phageK_gp204;Dbxref=GeneID:19622097;Name=CPT_phageK_gp204
+NC_005880	GenBank	mRNA	29527	29952	.	-	1	ID=CPT_phageK_gp204.t01;Parent=CPT_phageK_gp204
+NC_005880	GenBank	CDS	29527	29952	.	-	1	ID=CPT_phageK_gp204.p01;Parent=CPT_phageK_gp204.t01;Dbxref=GI:657184181,GeneID:19622097;Name=CPT_phageK_gp204;codon_start=1;product=putative ribonuclease;protein_id=YP_009041284.1;transl_table=11;translation=length.141
+NC_005880	GenBank	exon	29527	29952	.	-	1	Parent=CPT_phageK_gp204.t01
+NC_005880	GenBank	gene	29942	30133	.	-	1	ID=CPT_phageK_gp203;Dbxref=GeneID:19622098;Name=CPT_phageK_gp203
+NC_005880	GenBank	mRNA	29942	30133	.	-	1	ID=CPT_phageK_gp203.t01;Parent=CPT_phageK_gp203
+NC_005880	GenBank	CDS	29942	30133	.	-	1	ID=CPT_phageK_gp203.p01;Parent=CPT_phageK_gp203.t01;Dbxref=GI:657184182,GeneID:19622098;Name=CPT_phageK_gp203;codon_start=1;product=hypothetical protein;protein_id=YP_009041285.1;transl_table=11;translation=length.63
+NC_005880	GenBank	exon	29942	30133	.	-	1	Parent=CPT_phageK_gp203.t01
+NC_005880	GenBank	gene	30156	30797	.	-	1	ID=CPT_phageK_gp202;Dbxref=GeneID:19622099;Name=CPT_phageK_gp202
+NC_005880	GenBank	mRNA	30156	30797	.	-	1	ID=CPT_phageK_gp202.t01;Parent=CPT_phageK_gp202
+NC_005880	GenBank	CDS	30156	30797	.	-	1	ID=CPT_phageK_gp202.p01;Parent=CPT_phageK_gp202.t01;Dbxref=GI:657184183,GeneID:19622099;Name=CPT_phageK_gp202;codon_start=1;product=hypothetical protein;protein_id=YP_009041286.1;transl_table=11;translation=length.213
+NC_005880	GenBank	exon	30156	30797	.	-	1	Parent=CPT_phageK_gp202.t01
+NC_005880	GenBank	gene	30787	31017	.	-	1	ID=CPT_phageK_gp201;Dbxref=GeneID:19622100;Name=CPT_phageK_gp201
+NC_005880	GenBank	mRNA	30787	31017	.	-	1	ID=CPT_phageK_gp201.t01;Parent=CPT_phageK_gp201
+NC_005880	GenBank	CDS	30787	31017	.	-	1	ID=CPT_phageK_gp201.p01;Parent=CPT_phageK_gp201.t01;Dbxref=GI:657184184,GeneID:19622100;Name=CPT_phageK_gp201;codon_start=1;product=putative transcriptional regulator;protein_id=YP_009041287.1;transl_table=11;translation=length.76
+NC_005880	GenBank	exon	30787	31017	.	-	1	Parent=CPT_phageK_gp201.t01
+NC_005880	GenBank	regulatory	31327	31348	.	-	1	ID=GenBank:regulatory:NC_005880:31327:31348;regulatory_class=terminator
+NC_005880	GenBank	gene	31020	31247	.	-	1	ID=CPT_phageK_gp200;Dbxref=GeneID:19622101;Name=CPT_phageK_gp200
+NC_005880	GenBank	mRNA	31020	31247	.	-	1	ID=CPT_phageK_gp200.t01;Parent=CPT_phageK_gp200
+NC_005880	GenBank	CDS	31020	31247	.	-	1	ID=CPT_phageK_gp200.p01;Parent=CPT_phageK_gp200.t01;Dbxref=GI:657184185,GeneID:19622101;Name=CPT_phageK_gp200;codon_start=1;product=hypothetical protein;protein_id=YP_009041288.1;transl_table=11;translation=length.75
+NC_005880	GenBank	exon	31020	31247	.	-	1	Parent=CPT_phageK_gp200.t01
+NC_005880	GenBank	regulatory	32221	32244	.	-	1	ID=GenBank:regulatory:NC_005880:32221:32244;regulatory_class=terminator
+NC_005880	GenBank	gene	31357	32049	.	-	1	ID=CPT_phageK_gp199;Dbxref=GeneID:19622102;Name=CPT_phageK_gp199
+NC_005880	GenBank	mRNA	31357	32049	.	-	1	ID=CPT_phageK_gp199.t01;Parent=CPT_phageK_gp199
+NC_005880	GenBank	CDS	31357	32049	.	-	1	ID=CPT_phageK_gp199.p01;Parent=CPT_phageK_gp199.t01;Dbxref=GI:657184186,GeneID:19622102;Name=CPT_phageK_gp199;codon_start=1;product=hypothetical protein;protein_id=YP_009041289.1;transl_table=11;translation=length.230
+NC_005880	GenBank	exon	31357	32049	.	-	1	Parent=CPT_phageK_gp199.t01
+NC_005880	GenBank	regulatory	32909	32928	.	-	1	ID=GenBank:regulatory:NC_005880:32909:32928;regulatory_class=terminator
+NC_005880	GenBank	gene	32236	32871	.	-	1	ID=CPT_phageK_gp198;Dbxref=GeneID:19622103;Name=CPT_phageK_gp198
+NC_005880	GenBank	mRNA	32236	32871	.	-	1	ID=CPT_phageK_gp198.t01;Parent=CPT_phageK_gp198
+NC_005880	GenBank	CDS	32236	32871	.	-	1	ID=CPT_phageK_gp198.p01;Parent=CPT_phageK_gp198.t01;Dbxref=GI:657184187,GeneID:19622103;Name=CPT_phageK_gp198;codon_start=1;product=hypothetical protein;protein_id=YP_009041290.1;transl_table=11;translation=length.211
+NC_005880	GenBank	exon	32236	32871	.	-	1	Parent=CPT_phageK_gp198.t01
+NC_005880	GenBank	gene	32938	33729	.	-	1	ID=CPT_phageK_gp197;Dbxref=GeneID:19622104;Name=CPT_phageK_gp197
+NC_005880	GenBank	mRNA	32938	33729	.	-	1	ID=CPT_phageK_gp197.t01;Parent=CPT_phageK_gp197
+NC_005880	GenBank	CDS	32938	33729	.	-	1	ID=CPT_phageK_gp197.p01;Parent=CPT_phageK_gp197.t01;Dbxref=GI:657184188,GeneID:19622104;Name=CPT_phageK_gp197;codon_start=1;product=putative ion transporter;protein_id=YP_009041291.1;transl_table=11;translation=length.263
+NC_005880	GenBank	exon	32938	33729	.	-	1	Parent=CPT_phageK_gp197.t01
+NC_005880	GenBank	regulatory	34117	34139	.	-	1	ID=GenBank:regulatory:NC_005880:34117:34139;regulatory_class=terminator
+NC_005880	GenBank	gene	33729	34037	.	-	1	ID=CPT_phageK_gp196;Dbxref=GeneID:19622105;Name=CPT_phageK_gp196
+NC_005880	GenBank	mRNA	33729	34037	.	-	1	ID=CPT_phageK_gp196.t01;Parent=CPT_phageK_gp196
+NC_005880	GenBank	CDS	33729	34037	.	-	1	ID=CPT_phageK_gp196.p01;Parent=CPT_phageK_gp196.t01;Dbxref=GI:657184189,GeneID:19622105;Name=CPT_phageK_gp196;codon_start=1;product=hypothetical protein;protein_id=YP_009041292.1;transl_table=11;translation=length.102
+NC_005880	GenBank	exon	33729	34037	.	-	1	Parent=CPT_phageK_gp196.t01
+NC_005880	GenBank	gene	34150	34839	.	-	1	ID=CPT_phageK_gp195a;Dbxref=GeneID:19622106;Name=CPT_phageK_gp195a
+NC_005880	GenBank	mRNA	34150	34839	.	-	1	ID=CPT_phageK_gp195a.t01;Parent=CPT_phageK_gp195a
+NC_005880	GenBank	CDS	34150	34839	.	-	1	ID=CPT_phageK_gp195a.p01;Parent=CPT_phageK_gp195a.t01;Dbxref=GI:657184190,GeneID:19622106;Name=CPT_phageK_gp195a;codon_start=1;product=putative endolysin;protein_id=YP_009041293.1;transl_table=11;translation=length.495
+NC_005880	GenBank	exon	34150	34839	.	-	1	Parent=CPT_phageK_gp195a.t01
+NC_005880	GenBank	gene	35716	36513	.	-	1	ID=CPT_phageK_gp195b;Dbxref=GeneID:19622106;Name=CPT_phageK_gp195b
+NC_005880	GenBank	mRNA	35716	36513	.	-	1	ID=CPT_phageK_gp195b.t01;Parent=CPT_phageK_gp195b
+NC_005880	GenBank	CDS	35716	36513	.	-	1	ID=CPT_phageK_gp195b.p01;Parent=CPT_phageK_gp195b.t01;Dbxref=GI:657184190,GeneID:19622106;Name=CPT_phageK_gp195b;codon_start=1;product=putative endolysin;protein_id=YP_009041293.1;transl_table=11;translation=length.495
+NC_005880	GenBank	exon	35716	36513	.	-	1	Parent=CPT_phageK_gp195b.t01
+NC_005880	GenBank	gene	35050	35550	.	-	1	ID=CPT_phageK_gp194;Dbxref=GeneID:19622107;Name=CPT_phageK_gp194
+NC_005880	GenBank	mRNA	35050	35550	.	-	1	ID=CPT_phageK_gp194.t01;Parent=CPT_phageK_gp194
+NC_005880	GenBank	CDS	35050	35550	.	-	1	ID=CPT_phageK_gp194.p01;Parent=CPT_phageK_gp194.t01;Dbxref=GI:657184191,GeneID:19622107;Name=CPT_phageK_gp194;codon_start=1;product=putative HNH endonuclease;protein_id=YP_009041294.1;transl_table=11;translation=length.166
+NC_005880	GenBank	exon	35050	35550	.	-	1	Parent=CPT_phageK_gp194.t01
+NC_005880	GenBank	gene	36513	37016	.	-	1	ID=CPT_phageK_gp193;Dbxref=GeneID:19622108;Name=CPT_phageK_gp193
+NC_005880	GenBank	mRNA	36513	37016	.	-	1	ID=CPT_phageK_gp193.t01;Parent=CPT_phageK_gp193
+NC_005880	GenBank	CDS	36513	37016	.	-	1	ID=CPT_phageK_gp193.p01;Parent=CPT_phageK_gp193.t01;Dbxref=GI:657184192,GeneID:19622108;Name=CPT_phageK_gp193;codon_start=1;product=putative holin%2C class II;protein_id=YP_009041295.1;transl_table=11;translation=length.167
+NC_005880	GenBank	exon	36513	37016	.	-	1	Parent=CPT_phageK_gp193.t01
+NC_005880	GenBank	gene	37101	37286	.	-	1	ID=CPT_phageK_gp192;Dbxref=GeneID:19622156;Name=CPT_phageK_gp192
+NC_005880	GenBank	mRNA	37101	37286	.	-	1	ID=CPT_phageK_gp192.t01;Parent=CPT_phageK_gp192
+NC_005880	GenBank	CDS	37101	37286	.	-	1	ID=CPT_phageK_gp192.p01;Parent=CPT_phageK_gp192.t01;Dbxref=GI:657184193,GeneID:19622156;Name=CPT_phageK_gp192;codon_start=1;product=hypothetical protein;protein_id=YP_009041296.1;transl_table=11;translation=length.61
+NC_005880	GenBank	exon	37101	37286	.	-	1	Parent=CPT_phageK_gp192.t01
+NC_005880	GenBank	gene	37448	37519	.	-	1	ID=CPT_phageK_gt002;Dbxref=GeneID:19622157;Name=tRNA-Trp;locus_tag=CPT_phageK_gt002
+NC_005880	GenBank	tRNA	37448	37519	.	-	1	ID=CPT_phageK_gt002.r01;Parent=CPT_phageK_gt002;Dbxref=GeneID:19622157;Name=tRNA-Trp;codon_recognized=UGG;locus_tag=CPT_phageK_gt002;product=tRNA-Trp
+NC_005880	GenBank	exon	37448	37519	.	-	1	Parent=CPT_phageK_gt002.r01;Name=tRNA-Trp;locus_tag=CPT_phageK_gt002
+NC_005880	GenBank	gene	37526	37598	.	-	1	ID=CPT_phageK_gt003;Dbxref=GeneID:19622034;Name=tRNA-Phe;locus_tag=CPT_phageK_gt003
+NC_005880	GenBank	tRNA	37526	37598	.	-	1	ID=CPT_phageK_gt003.r01;Parent=CPT_phageK_gt003;Dbxref=GeneID:19622034;Name=tRNA-Phe;codon_recognized=UUC;locus_tag=CPT_phageK_gt003;product=tRNA-Phe
+NC_005880	GenBank	exon	37526	37598	.	-	1	Parent=CPT_phageK_gt003.r01;Name=tRNA-Phe;locus_tag=CPT_phageK_gt003
+NC_005880	GenBank	regulatory	38650	38677	.	-	1	ID=GenBank:regulatory:NC_005880:38650:38677;regulatory_class=terminator
+NC_005880	GenBank	gene	37605	37678	.	-	1	ID=CPT_phageK_gt004;Dbxref=GeneID:19622035;Name=tRNA-Asp;locus_tag=CPT_phageK_gt004
+NC_005880	GenBank	tRNA	37605	37678	.	-	1	ID=CPT_phageK_gt004.r01;Parent=CPT_phageK_gt004;Dbxref=GeneID:19622035;Name=tRNA-Asp;codon_recognized=GAC;locus_tag=CPT_phageK_gt004;product=tRNA-Asp
+NC_005880	GenBank	exon	37605	37678	.	-	1	Parent=CPT_phageK_gt004.r01;Name=tRNA-Asp;locus_tag=CPT_phageK_gt004
+NC_005880	GenBank	regulatory	39504	39521	.	-	1	ID=GenBank:regulatory:NC_005880:39504:39521;regulatory_class=terminator
+NC_005880	GenBank	gene	38833	39051	.	-	1	ID=CPT_phageK_gp191;Dbxref=GeneID:19622036;Name=CPT_phageK_gp191
+NC_005880	GenBank	mRNA	38833	39051	.	-	1	ID=CPT_phageK_gp191.t01;Parent=CPT_phageK_gp191
+NC_005880	GenBank	CDS	38833	39051	.	-	1	ID=CPT_phageK_gp191.p01;Parent=CPT_phageK_gp191.t01;Dbxref=GI:657184194,GeneID:19622036;Name=CPT_phageK_gp191;codon_start=1;product=hypothetical protein;protein_id=YP_009041297.1;transl_table=11;translation=length.72
+NC_005880	GenBank	exon	38833	39051	.	-	1	Parent=CPT_phageK_gp191.t01
+NC_005880	GenBank	gene	39529	39738	.	-	1	ID=CPT_phageK_gp190;Dbxref=GeneID:19622158;Name=CPT_phageK_gp190
+NC_005880	GenBank	mRNA	39529	39738	.	-	1	ID=CPT_phageK_gp190.t01;Parent=CPT_phageK_gp190
+NC_005880	GenBank	CDS	39529	39738	.	-	1	ID=CPT_phageK_gp190.p01;Parent=CPT_phageK_gp190.t01;Dbxref=GI:657184195,GeneID:19622158;Name=CPT_phageK_gp190;codon_start=1;product=hypothetical protein;protein_id=YP_009041298.1;transl_table=11;translation=length.69
+NC_005880	GenBank	exon	39529	39738	.	-	1	Parent=CPT_phageK_gp190.t01
+NC_005880	GenBank	gene	39751	40083	.	-	1	ID=CPT_phageK_gp189;Dbxref=GeneID:19622159;Name=CPT_phageK_gp189
+NC_005880	GenBank	mRNA	39751	40083	.	-	1	ID=CPT_phageK_gp189.t01;Parent=CPT_phageK_gp189
+NC_005880	GenBank	CDS	39751	40083	.	-	1	ID=CPT_phageK_gp189.p01;Parent=CPT_phageK_gp189.t01;Dbxref=GI:657184196,GeneID:19622159;Name=CPT_phageK_gp189;codon_start=1;product=hypothetical protein;protein_id=YP_009041299.1;transl_table=11;translation=length.110
+NC_005880	GenBank	exon	39751	40083	.	-	1	Parent=CPT_phageK_gp189.t01
+NC_005880	GenBank	gene	40096	40422	.	-	1	ID=CPT_phageK_gp188;Dbxref=GeneID:19622160;Name=CPT_phageK_gp188
+NC_005880	GenBank	mRNA	40096	40422	.	-	1	ID=CPT_phageK_gp188.t01;Parent=CPT_phageK_gp188
+NC_005880	GenBank	CDS	40096	40422	.	-	1	ID=CPT_phageK_gp188.p01;Parent=CPT_phageK_gp188.t01;Dbxref=GI:657184197,GeneID:19622160;Name=CPT_phageK_gp188;codon_start=1;product=hypothetical protein;protein_id=YP_009041300.1;transl_table=11;translation=length.108
+NC_005880	GenBank	exon	40096	40422	.	-	1	Parent=CPT_phageK_gp188.t01
+NC_005880	GenBank	gene	40455	40721	.	-	1	ID=CPT_phageK_gp187;Dbxref=GeneID:19622161;Name=CPT_phageK_gp187
+NC_005880	GenBank	mRNA	40455	40721	.	-	1	ID=CPT_phageK_gp187.t01;Parent=CPT_phageK_gp187
+NC_005880	GenBank	CDS	40455	40721	.	-	1	ID=CPT_phageK_gp187.p01;Parent=CPT_phageK_gp187.t01;Dbxref=GI:657184198,GeneID:19622161;Name=CPT_phageK_gp187;codon_start=1;product=hypothetical protein;protein_id=YP_009041301.1;transl_table=11;translation=length.88
+NC_005880	GenBank	exon	40455	40721	.	-	1	Parent=CPT_phageK_gp187.t01
+NC_005880	GenBank	gene	40862	41248	.	+	1	ID=CPT_phageK_gp186;Dbxref=GeneID:19622162;Name=CPT_phageK_gp186
+NC_005880	GenBank	mRNA	40862	41248	.	+	1	ID=CPT_phageK_gp186.t01;Parent=CPT_phageK_gp186
+NC_005880	GenBank	CDS	40862	41248	.	+	1	ID=CPT_phageK_gp186.p01;Parent=CPT_phageK_gp186.t01;Dbxref=GI:657184199,GeneID:19622162;Name=CPT_phageK_gp186;codon_start=1;product=hypothetical protein;protein_id=YP_009041302.1;transl_table=11;translation=length.128
+NC_005880	GenBank	exon	40862	41248	.	+	1	Parent=CPT_phageK_gp186.t01
+NC_005880	GenBank	gene	41226	41504	.	+	1	ID=CPT_phageK_gp185;Dbxref=GeneID:19622163;Name=CPT_phageK_gp185
+NC_005880	GenBank	mRNA	41226	41504	.	+	1	ID=CPT_phageK_gp185.t01;Parent=CPT_phageK_gp185
+NC_005880	GenBank	CDS	41226	41504	.	+	1	ID=CPT_phageK_gp185.p01;Parent=CPT_phageK_gp185.t01;Dbxref=GI:657184200,GeneID:19622163;Name=CPT_phageK_gp185;codon_start=1;product=hypothetical protein;protein_id=YP_009041303.1;transl_table=11;translation=length.92
+NC_005880	GenBank	exon	41226	41504	.	+	1	Parent=CPT_phageK_gp185.t01
+NC_005880	GenBank	gene	41501	41911	.	+	1	ID=CPT_phageK_gp184;Dbxref=GeneID:19622164;Name=CPT_phageK_gp184
+NC_005880	GenBank	mRNA	41501	41911	.	+	1	ID=CPT_phageK_gp184.t01;Parent=CPT_phageK_gp184
+NC_005880	GenBank	CDS	41501	41911	.	+	1	ID=CPT_phageK_gp184.p01;Parent=CPT_phageK_gp184.t01;Dbxref=GI:657184201,GeneID:19622164;Name=CPT_phageK_gp184;codon_start=1;product=hypothetical protein;protein_id=YP_009041304.1;transl_table=11;translation=length.136
+NC_005880	GenBank	exon	41501	41911	.	+	1	Parent=CPT_phageK_gp184.t01
+NC_005880	GenBank	gene	41926	43743	.	+	1	ID=CPT_phageK_gp183;Dbxref=GeneID:19622165;Name=CPT_phageK_gp183
+NC_005880	GenBank	mRNA	41926	43743	.	+	1	ID=CPT_phageK_gp183.t01;Parent=CPT_phageK_gp183
+NC_005880	GenBank	CDS	41926	43743	.	+	1	ID=CPT_phageK_gp183.p01;Parent=CPT_phageK_gp183.t01;Dbxref=GI:657184202,GeneID:19622165;Name=CPT_phageK_gp183;codon_start=1;product=putative terminase large subunit;protein_id=YP_009041305.1;transl_table=11;translation=length.605
+NC_005880	GenBank	exon	41926	43743	.	+	1	Parent=CPT_phageK_gp183.t01
+NC_005880	GenBank	gene	43736	44557	.	+	1	ID=CPT_phageK_gp182;Dbxref=GeneID:19622166;Name=CPT_phageK_gp182
+NC_005880	GenBank	mRNA	43736	44557	.	+	1	ID=CPT_phageK_gp182.t01;Parent=CPT_phageK_gp182
+NC_005880	GenBank	CDS	43736	44557	.	+	1	ID=CPT_phageK_gp182.p01;Parent=CPT_phageK_gp182.t01;Dbxref=GI:657184203,GeneID:19622166;Name=CPT_phageK_gp182;codon_start=1;product=hypothetical protein;protein_id=YP_009041306.1;transl_table=11;translation=length.273
+NC_005880	GenBank	exon	43736	44557	.	+	1	Parent=CPT_phageK_gp182.t01
+NC_005880	GenBank	gene	44544	44717	.	+	1	ID=CPT_phageK_gp181;Dbxref=GeneID:19622167;Name=CPT_phageK_gp181
+NC_005880	GenBank	mRNA	44544	44717	.	+	1	ID=CPT_phageK_gp181.t01;Parent=CPT_phageK_gp181
+NC_005880	GenBank	CDS	44544	44717	.	+	1	ID=CPT_phageK_gp181.p01;Parent=CPT_phageK_gp181.t01;Dbxref=GI:657184204,GeneID:19622167;Name=CPT_phageK_gp181;codon_start=1;product=hypothetical protein;protein_id=YP_009041307.1;transl_table=11;translation=length.57
+NC_005880	GenBank	exon	44544	44717	.	+	1	Parent=CPT_phageK_gp181.t01
+NC_005880	GenBank	gene	44714	45193	.	+	1	ID=CPT_phageK_gp180;Dbxref=GeneID:19622168;Name=CPT_phageK_gp180
+NC_005880	GenBank	mRNA	44714	45193	.	+	1	ID=CPT_phageK_gp180.t01;Parent=CPT_phageK_gp180
+NC_005880	GenBank	CDS	44714	45193	.	+	1	ID=CPT_phageK_gp180.p01;Parent=CPT_phageK_gp180.t01;Dbxref=GI:657184205,GeneID:19622168;Name=CPT_phageK_gp180;codon_start=1;product=hypothetical protein;protein_id=YP_009041308.1;transl_table=11;translation=length.159
+NC_005880	GenBank	exon	44714	45193	.	+	1	Parent=CPT_phageK_gp180.t01
+NC_005880	GenBank	regulatory	46420	46437	.	+	1	ID=GenBank:regulatory:NC_005880:46420:46437;regulatory_class=terminator
+NC_005880	GenBank	gene	45235	46428	.	+	1	ID=CPT_phageK_gp179;Dbxref=GeneID:19622169;Name=CPT_phageK_gp179
+NC_005880	GenBank	mRNA	45235	46428	.	+	1	ID=CPT_phageK_gp179.t01;Parent=CPT_phageK_gp179
+NC_005880	GenBank	CDS	45235	46428	.	+	1	ID=CPT_phageK_gp179.p01;Parent=CPT_phageK_gp179.t01;Dbxref=GI:657184206,GeneID:19622169;Name=CPT_phageK_gp179;codon_start=1;product=hypothetical protein;protein_id=YP_009041309.1;transl_table=11;translation=length.397
+NC_005880	GenBank	exon	45235	46428	.	+	1	Parent=CPT_phageK_gp179.t01
+NC_005880	GenBank	gene	46513	46854	.	+	1	ID=CPT_phageK_gp178;Dbxref=GeneID:19622170;Name=CPT_phageK_gp178
+NC_005880	GenBank	mRNA	46513	46854	.	+	1	ID=CPT_phageK_gp178.t01;Parent=CPT_phageK_gp178
+NC_005880	GenBank	CDS	46513	46854	.	+	1	ID=CPT_phageK_gp178.p01;Parent=CPT_phageK_gp178.t01;Dbxref=GI:657184207,GeneID:19622170;Name=CPT_phageK_gp178;codon_start=1;product=hypothetical protein;protein_id=YP_009041310.1;transl_table=11;translation=length.113
+NC_005880	GenBank	exon	46513	46854	.	+	1	Parent=CPT_phageK_gp178.t01
+NC_005880	GenBank	gene	46872	47243	.	+	1	ID=CPT_phageK_gp177;Dbxref=GeneID:19622171;Name=CPT_phageK_gp177
+NC_005880	GenBank	mRNA	46872	47243	.	+	1	ID=CPT_phageK_gp177.t01;Parent=CPT_phageK_gp177
+NC_005880	GenBank	CDS	46872	47243	.	+	1	ID=CPT_phageK_gp177.p01;Parent=CPT_phageK_gp177.t01;Dbxref=GI:657184208,GeneID:19622171;Name=CPT_phageK_gp177;codon_start=1;product=hypothetical protein;protein_id=YP_009041311.1;transl_table=11;translation=length.123
+NC_005880	GenBank	exon	46872	47243	.	+	1	Parent=CPT_phageK_gp177.t01
+NC_005880	GenBank	regulatory	48946	48964	.	+	1	ID=GenBank:regulatory:NC_005880:48946:48964;regulatory_class=terminator
+NC_005880	GenBank	gene	47247	48938	.	+	1	ID=CPT_phageK_gp176;Dbxref=GeneID:19622172;Name=CPT_phageK_gp176
+NC_005880	GenBank	mRNA	47247	48938	.	+	1	ID=CPT_phageK_gp176.t01;Parent=CPT_phageK_gp176
+NC_005880	GenBank	CDS	47247	48938	.	+	1	ID=CPT_phageK_gp176.p01;Parent=CPT_phageK_gp176.t01;Dbxref=GI:657184209,GeneID:19622172;Name=CPT_phageK_gp176;codon_start=1;product=putative portal protein;protein_id=YP_009041312.1;transl_table=11;translation=length.563
+NC_005880	GenBank	exon	47247	48938	.	+	1	Parent=CPT_phageK_gp176.t01
+NC_005880	GenBank	gene	49132	49905	.	+	1	ID=CPT_phageK_gp175;Dbxref=GeneID:19622173;Name=CPT_phageK_gp175
+NC_005880	GenBank	mRNA	49132	49905	.	+	1	ID=CPT_phageK_gp175.t01;Parent=CPT_phageK_gp175
+NC_005880	GenBank	CDS	49132	49905	.	+	1	ID=CPT_phageK_gp175.p01;Parent=CPT_phageK_gp175.t01;Dbxref=GI:657184210,GeneID:19622173;Name=CPT_phageK_gp175;codon_start=1;product=putative prohead protease;protein_id=YP_009041313.1;transl_table=11;translation=length.257
+NC_005880	GenBank	exon	49132	49905	.	+	1	Parent=CPT_phageK_gp175.t01
+NC_005880	GenBank	gene	49924	50874	.	+	1	ID=CPT_phageK_gp174;Dbxref=GeneID:19622174;Name=CPT_phageK_gp174
+NC_005880	GenBank	mRNA	49924	50874	.	+	1	ID=CPT_phageK_gp174.t01;Parent=CPT_phageK_gp174
+NC_005880	GenBank	CDS	49924	50874	.	+	1	ID=CPT_phageK_gp174.p01;Parent=CPT_phageK_gp174.t01;Dbxref=GI:657184211,GeneID:19622174;Name=CPT_phageK_gp174;codon_start=1;product=hypothetical protein;protein_id=YP_009041314.1;transl_table=11;translation=length.316
+NC_005880	GenBank	exon	49924	50874	.	+	1	Parent=CPT_phageK_gp174.t01
+NC_005880	GenBank	regulatory	52413	52435	.	+	1	ID=GenBank:regulatory:NC_005880:52413:52435;regulatory_class=terminator
+NC_005880	GenBank	gene	50990	52381	.	+	1	ID=CPT_phageK_gp173;Dbxref=GeneID:19622175;Name=CPT_phageK_gp173
+NC_005880	GenBank	mRNA	50990	52381	.	+	1	ID=CPT_phageK_gp173.t01;Parent=CPT_phageK_gp173
+NC_005880	GenBank	CDS	50990	52381	.	+	1	ID=CPT_phageK_gp173.p01;Parent=CPT_phageK_gp173.t01;Dbxref=GI:657184212,GeneID:19622175;Name=CPT_phageK_gp173;codon_start=1;product=putative major capsid protein;protein_id=YP_009041315.1;transl_table=11;translation=length.463
+NC_005880	GenBank	exon	50990	52381	.	+	1	Parent=CPT_phageK_gp173.t01
+NC_005880	GenBank	gene	52473	52769	.	+	1	ID=CPT_phageK_gp172;Dbxref=GeneID:19622176;Name=CPT_phageK_gp172
+NC_005880	GenBank	mRNA	52473	52769	.	+	1	ID=CPT_phageK_gp172.t01;Parent=CPT_phageK_gp172
+NC_005880	GenBank	CDS	52473	52769	.	+	1	ID=CPT_phageK_gp172.p01;Parent=CPT_phageK_gp172.t01;Dbxref=GI:657184213,GeneID:19622176;Name=CPT_phageK_gp172;codon_start=1;product=hypothetical protein;protein_id=YP_009041316.1;transl_table=11;translation=length.98
+NC_005880	GenBank	exon	52473	52769	.	+	1	Parent=CPT_phageK_gp172.t01
+NC_005880	GenBank	gene	52782	53690	.	+	1	ID=CPT_phageK_gp171;Dbxref=GeneID:19622177;Name=CPT_phageK_gp171
+NC_005880	GenBank	mRNA	52782	53690	.	+	1	ID=CPT_phageK_gp171.t01;Parent=CPT_phageK_gp171
+NC_005880	GenBank	CDS	52782	53690	.	+	1	ID=CPT_phageK_gp171.p01;Parent=CPT_phageK_gp171.t01;Dbxref=GI:657184214,GeneID:19622177;Name=CPT_phageK_gp171;codon_start=1;product=hypothetical protein;protein_id=YP_009041317.1;transl_table=11;translation=length.302
+NC_005880	GenBank	exon	52782	53690	.	+	1	Parent=CPT_phageK_gp171.t01
+NC_005880	GenBank	gene	53704	54582	.	+	1	ID=CPT_phageK_gp170;Dbxref=GeneID:19622178;Name=CPT_phageK_gp170
+NC_005880	GenBank	mRNA	53704	54582	.	+	1	ID=CPT_phageK_gp170.t01;Parent=CPT_phageK_gp170
+NC_005880	GenBank	CDS	53704	54582	.	+	1	ID=CPT_phageK_gp170.p01;Parent=CPT_phageK_gp170.t01;Dbxref=GI:657184215,GeneID:19622178;Name=CPT_phageK_gp170;codon_start=1;product=hypothetical protein;protein_id=YP_009041318.1;transl_table=11;translation=length.292
+NC_005880	GenBank	exon	53704	54582	.	+	1	Parent=CPT_phageK_gp170.t01
+NC_005880	GenBank	gene	54582	55202	.	+	1	ID=CPT_phageK_gp169;Dbxref=GeneID:19622179;Name=CPT_phageK_gp169
+NC_005880	GenBank	mRNA	54582	55202	.	+	1	ID=CPT_phageK_gp169.t01;Parent=CPT_phageK_gp169
+NC_005880	GenBank	CDS	54582	55202	.	+	1	ID=CPT_phageK_gp169.p01;Parent=CPT_phageK_gp169.t01;Dbxref=GI:657184216,GeneID:19622179;Name=CPT_phageK_gp169;codon_start=1;product=hypothetical protein;protein_id=YP_009041319.1;transl_table=11;translation=length.206
+NC_005880	GenBank	exon	54582	55202	.	+	1	Parent=CPT_phageK_gp169.t01
+NC_005880	GenBank	gene	55221	56057	.	+	1	ID=CPT_phageK_gp168;Dbxref=GeneID:19622180;Name=CPT_phageK_gp168
+NC_005880	GenBank	mRNA	55221	56057	.	+	1	ID=CPT_phageK_gp168.t01;Parent=CPT_phageK_gp168
+NC_005880	GenBank	CDS	55221	56057	.	+	1	ID=CPT_phageK_gp168.p01;Parent=CPT_phageK_gp168.t01;Dbxref=GI:657184217,GeneID:19622180;Name=CPT_phageK_gp168;codon_start=1;product=hypothetical protein;protein_id=YP_009041320.1;transl_table=11;translation=length.278
+NC_005880	GenBank	exon	55221	56057	.	+	1	Parent=CPT_phageK_gp168.t01
+NC_005880	GenBank	gene	56059	56274	.	+	1	ID=CPT_phageK_gp167;Dbxref=GeneID:19622181;Name=CPT_phageK_gp167
+NC_005880	GenBank	mRNA	56059	56274	.	+	1	ID=CPT_phageK_gp167.t01;Parent=CPT_phageK_gp167
+NC_005880	GenBank	CDS	56059	56274	.	+	1	ID=CPT_phageK_gp167.p01;Parent=CPT_phageK_gp167.t01;Dbxref=GI:657184218,GeneID:19622181;Name=CPT_phageK_gp167;codon_start=1;product=hypothetical protein;protein_id=YP_009041321.1;transl_table=11;translation=length.71
+NC_005880	GenBank	exon	56059	56274	.	+	1	Parent=CPT_phageK_gp167.t01
+NC_005880	GenBank	regulatory	58075	58097	.	+	1	ID=GenBank:regulatory:NC_005880:58075:58097;regulatory_class=terminator
+NC_005880	GenBank	gene	56301	58064	.	+	1	ID=CPT_phageK_gp166;Dbxref=GeneID:19622182;Name=CPT_phageK_gp166
+NC_005880	GenBank	mRNA	56301	58064	.	+	1	ID=CPT_phageK_gp166.t01;Parent=CPT_phageK_gp166
+NC_005880	GenBank	CDS	56301	58064	.	+	1	ID=CPT_phageK_gp166.p01;Parent=CPT_phageK_gp166.t01;Dbxref=GI:657184219,GeneID:19622182;Name=CPT_phageK_gp166;codon_start=1;product=putative tail sheath protein;protein_id=YP_009041322.1;transl_table=11;translation=length.587
+NC_005880	GenBank	exon	56301	58064	.	+	1	Parent=CPT_phageK_gp166.t01
+NC_005880	GenBank	regulatory	58573	58592	.	+	1	ID=GenBank:regulatory:NC_005880:58573:58592;regulatory_class=terminator
+NC_005880	GenBank	gene	58137	58565	.	+	1	ID=CPT_phageK_gp165;Dbxref=GeneID:19622183;Name=CPT_phageK_gp165
+NC_005880	GenBank	mRNA	58137	58565	.	+	1	ID=CPT_phageK_gp165.t01;Parent=CPT_phageK_gp165
+NC_005880	GenBank	CDS	58137	58565	.	+	1	ID=CPT_phageK_gp165.p01;Parent=CPT_phageK_gp165.t01;Dbxref=GI:657184220,GeneID:19622183;Name=CPT_phageK_gp165;codon_start=1;product=putative tail tube protein;protein_id=YP_009041323.1;transl_table=11;translation=length.142
+NC_005880	GenBank	exon	58137	58565	.	+	1	Parent=CPT_phageK_gp165.t01
+NC_005880	GenBank	gene	58662	58802	.	+	1	ID=CPT_phageK_gp164;Dbxref=GeneID:19622184;Name=CPT_phageK_gp164
+NC_005880	GenBank	mRNA	58662	58802	.	+	1	ID=CPT_phageK_gp164.t01;Parent=CPT_phageK_gp164
+NC_005880	GenBank	CDS	58662	58802	.	+	1	ID=CPT_phageK_gp164.p01;Parent=CPT_phageK_gp164.t01;Dbxref=GI:657184221,GeneID:19622184;Name=CPT_phageK_gp164;codon_start=1;product=hypothetical protein;protein_id=YP_009041324.1;transl_table=11;translation=length.46
+NC_005880	GenBank	exon	58662	58802	.	+	1	Parent=CPT_phageK_gp164.t01
+NC_005880	GenBank	gene	58845	59303	.	+	1	ID=CPT_phageK_gp163;Dbxref=GeneID:19622185;Name=CPT_phageK_gp163
+NC_005880	GenBank	mRNA	58845	59303	.	+	1	ID=CPT_phageK_gp163.t01;Parent=CPT_phageK_gp163
+NC_005880	GenBank	CDS	58845	59303	.	+	1	ID=CPT_phageK_gp163.p01;Parent=CPT_phageK_gp163.t01;Dbxref=GI:657184222,GeneID:19622185;Name=CPT_phageK_gp163;codon_start=1;product=hypothetical protein;protein_id=YP_009041325.1;transl_table=11;translation=length.152
+NC_005880	GenBank	exon	58845	59303	.	+	1	Parent=CPT_phageK_gp163.t01
+NC_005880	GenBank	gene	59316	59510	.	+	1	ID=CPT_phageK_gp162;Dbxref=GeneID:19622186;Name=CPT_phageK_gp162
+NC_005880	GenBank	mRNA	59316	59510	.	+	1	ID=CPT_phageK_gp162.t01;Parent=CPT_phageK_gp162
+NC_005880	GenBank	CDS	59316	59510	.	+	1	ID=CPT_phageK_gp162.p01;Parent=CPT_phageK_gp162.t01;Dbxref=GI:657184223,GeneID:19622186;Name=CPT_phageK_gp162;codon_start=1;product=hypothetical protein;protein_id=YP_009041326.1;transl_table=11;translation=length.64
+NC_005880	GenBank	exon	59316	59510	.	+	1	Parent=CPT_phageK_gp162.t01
+NC_005880	GenBank	gene	59592	59903	.	+	1	ID=CPT_phageK_gp161;Dbxref=GeneID:19622187;Name=CPT_phageK_gp161
+NC_005880	GenBank	mRNA	59592	59903	.	+	1	ID=CPT_phageK_gp161.t01;Parent=CPT_phageK_gp161
+NC_005880	GenBank	CDS	59592	59903	.	+	1	ID=CPT_phageK_gp161.p01;Parent=CPT_phageK_gp161.t01;Dbxref=GI:657184224,GeneID:19622187;Name=CPT_phageK_gp161;codon_start=1;product=hypothetical protein;protein_id=YP_009041327.1;transl_table=11;translation=length.103
+NC_005880	GenBank	exon	59592	59903	.	+	1	Parent=CPT_phageK_gp161.t01
+NC_005880	GenBank	gene	60035	60493	.	+	1	ID=CPT_phageK_gp160;Dbxref=GeneID:19622188;Name=CPT_phageK_gp160
+NC_005880	GenBank	mRNA	60035	60493	.	+	1	ID=CPT_phageK_gp160.t01;Parent=CPT_phageK_gp160
+NC_005880	GenBank	CDS	60035	60493	.	+	1	ID=CPT_phageK_gp160.p01;Parent=CPT_phageK_gp160.t01;Dbxref=GI:657184225,GeneID:19622188;Name=CPT_phageK_gp160;codon_start=1;product=putative tapemeasure chaperone protein;protein_id=YP_009041328.1;transl_table=11;translation=length.152
+NC_005880	GenBank	exon	60035	60493	.	+	1	Parent=CPT_phageK_gp160.t01
+NC_005880	GenBank	regulatory	61075	61098	.	+	1	ID=GenBank:regulatory:NC_005880:61075:61098;regulatory_class=terminator
+NC_005880	GenBank	gene	60537	61073	.	+	1	ID=CPT_phageK_gp159;Dbxref=GeneID:19622189;Name=CPT_phageK_gp159
+NC_005880	GenBank	mRNA	60537	61073	.	+	1	ID=CPT_phageK_gp159.t01;Parent=CPT_phageK_gp159
+NC_005880	GenBank	CDS	60537	61073	.	+	1	ID=CPT_phageK_gp159.p01;Parent=CPT_phageK_gp159.t01;Dbxref=GI:657184226,GeneID:19622189;Name=CPT_phageK_gp159;codon_start=1;product=putative tapemeasure chaperone frameshift protein;protein_id=YP_009041329.1;transl_table=11;translation=length.178
+NC_005880	GenBank	exon	60537	61073	.	+	1	Parent=CPT_phageK_gp159.t01
+NC_005880	GenBank	gene	61129	65184	.	+	1	ID=CPT_phageK_gp158;Dbxref=GeneID:19622190;Name=CPT_phageK_gp158
+NC_005880	GenBank	mRNA	61129	65184	.	+	1	ID=CPT_phageK_gp158.t01;Parent=CPT_phageK_gp158
+NC_005880	GenBank	CDS	61129	65184	.	+	1	ID=CPT_phageK_gp158.p01;Parent=CPT_phageK_gp158.t01;Dbxref=GI:657184227,GeneID:19622190;Name=CPT_phageK_gp158;codon_start=1;product=putative tail tape measure protein;protein_id=YP_009041330.1;transl_table=11;translation=length.1351
+NC_005880	GenBank	exon	61129	65184	.	+	1	Parent=CPT_phageK_gp158.t01
+NC_005880	GenBank	gene	65263	67689	.	+	1	ID=CPT_phageK_gp157;Dbxref=GeneID:19622191;Name=CPT_phageK_gp157
+NC_005880	GenBank	mRNA	65263	67689	.	+	1	ID=CPT_phageK_gp157.t01;Parent=CPT_phageK_gp157
+NC_005880	GenBank	CDS	65263	67689	.	+	1	ID=CPT_phageK_gp157.p01;Parent=CPT_phageK_gp157.t01;Dbxref=GI:657184228,GeneID:19622191;Name=CPT_phageK_gp157;codon_start=1;product=putative CHAP domain protein;protein_id=YP_009041331.1;transl_table=11;translation=length.808
+NC_005880	GenBank	exon	65263	67689	.	+	1	Parent=CPT_phageK_gp157.t01
+NC_005880	GenBank	gene	67703	68590	.	+	1	ID=CPT_phageK_gp156;Dbxref=GeneID:19622192;Name=CPT_phageK_gp156
+NC_005880	GenBank	mRNA	67703	68590	.	+	1	ID=CPT_phageK_gp156.t01;Parent=CPT_phageK_gp156
+NC_005880	GenBank	CDS	67703	68590	.	+	1	ID=CPT_phageK_gp156.p01;Parent=CPT_phageK_gp156.t01;Dbxref=GI:657184229,GeneID:19622192;Name=CPT_phageK_gp156;codon_start=1;product=putative cysteine protease;protein_id=YP_009041332.1;transl_table=11;translation=length.295
+NC_005880	GenBank	exon	67703	68590	.	+	1	Parent=CPT_phageK_gp156.t01
+NC_005880	GenBank	regulatory	71144	71161	.	+	1	ID=GenBank:regulatory:NC_005880:71144:71161;regulatory_class=terminator
+NC_005880	GenBank	gene	68590	71136	.	+	1	ID=CPT_phageK_gp155;Dbxref=GeneID:19622193;Name=CPT_phageK_gp155
+NC_005880	GenBank	mRNA	68590	71136	.	+	1	ID=CPT_phageK_gp155.t01;Parent=CPT_phageK_gp155
+NC_005880	GenBank	CDS	68590	71136	.	+	1	ID=CPT_phageK_gp155.p01;Parent=CPT_phageK_gp155.t01;Dbxref=GI:657184230,GeneID:19622193;Name=CPT_phageK_gp155;codon_start=1;product=putative phosphodiesterase;protein_id=YP_009041333.1;transl_table=11;translation=length.848
+NC_005880	GenBank	exon	68590	71136	.	+	1	Parent=CPT_phageK_gp155.t01
+NC_005880	GenBank	gene	71243	72034	.	+	1	ID=CPT_phageK_gp154;Dbxref=GeneID:19621957;Name=CPT_phageK_gp154
+NC_005880	GenBank	mRNA	71243	72034	.	+	1	ID=CPT_phageK_gp154.t01;Parent=CPT_phageK_gp154
+NC_005880	GenBank	CDS	71243	72034	.	+	1	ID=CPT_phageK_gp154.p01;Parent=CPT_phageK_gp154.t01;Dbxref=GI:657184231,GeneID:19621957;Name=CPT_phageK_gp154;codon_start=1;product=hypothetical protein;protein_id=YP_009041334.1;transl_table=11;translation=length.263
+NC_005880	GenBank	exon	71243	72034	.	+	1	Parent=CPT_phageK_gp154.t01
+NC_005880	GenBank	gene	72034	72558	.	+	1	ID=CPT_phageK_gp153;Dbxref=GeneID:19621958;Name=CPT_phageK_gp153
+NC_005880	GenBank	mRNA	72034	72558	.	+	1	ID=CPT_phageK_gp153.t01;Parent=CPT_phageK_gp153
+NC_005880	GenBank	CDS	72034	72558	.	+	1	ID=CPT_phageK_gp153.p01;Parent=CPT_phageK_gp153.t01;Dbxref=GI:657184232,GeneID:19621958;Name=CPT_phageK_gp153;codon_start=1;product=hypothetical protein;protein_id=YP_009041335.1;transl_table=11;translation=length.174
+NC_005880	GenBank	exon	72034	72558	.	+	1	Parent=CPT_phageK_gp153.t01
+NC_005880	GenBank	gene	72558	73262	.	+	1	ID=CPT_phageK_gp152;Dbxref=GeneID:19621959;Name=CPT_phageK_gp152
+NC_005880	GenBank	mRNA	72558	73262	.	+	1	ID=CPT_phageK_gp152.t01;Parent=CPT_phageK_gp152
+NC_005880	GenBank	CDS	72558	73262	.	+	1	ID=CPT_phageK_gp152.p01;Parent=CPT_phageK_gp152.t01;Dbxref=GI:657184233,GeneID:19621959;Name=CPT_phageK_gp152;codon_start=1;product=hypothetical protein;protein_id=YP_009041336.1;transl_table=11;translation=length.234
+NC_005880	GenBank	exon	72558	73262	.	+	1	Parent=CPT_phageK_gp152.t01
+NC_005880	GenBank	gene	73277	74323	.	+	1	ID=CPT_phageK_gp151;Dbxref=GeneID:19621960;Name=CPT_phageK_gp151
+NC_005880	GenBank	mRNA	73277	74323	.	+	1	ID=CPT_phageK_gp151.t01;Parent=CPT_phageK_gp151
+NC_005880	GenBank	CDS	73277	74323	.	+	1	ID=CPT_phageK_gp151.p01;Parent=CPT_phageK_gp151.t01;Dbxref=GI:657184234,GeneID:19621960;Name=CPT_phageK_gp151;codon_start=1;product=putative baseplate protein;protein_id=YP_009041337.1;transl_table=11;translation=length.348
+NC_005880	GenBank	exon	73277	74323	.	+	1	Parent=CPT_phageK_gp151.t01
+NC_005880	GenBank	gene	74344	77403	.	+	1	ID=CPT_phageK_gp150;Dbxref=GeneID:19621961;Name=CPT_phageK_gp150
+NC_005880	GenBank	mRNA	74344	77403	.	+	1	ID=CPT_phageK_gp150.t01;Parent=CPT_phageK_gp150
+NC_005880	GenBank	CDS	74344	77403	.	+	1	ID=CPT_phageK_gp150.p01;Parent=CPT_phageK_gp150.t01;Dbxref=GI:657184235,GeneID:19621961;Name=CPT_phageK_gp150;codon_start=1;product=hypothetical protein;protein_id=YP_009041338.1;transl_table=11;translation=length.1019
+NC_005880	GenBank	exon	74344	77403	.	+	1	Parent=CPT_phageK_gp150.t01
+NC_005880	GenBank	gene	77514	78035	.	+	1	ID=CPT_phageK_gp149;Dbxref=GeneID:19621962;Name=CPT_phageK_gp149
+NC_005880	GenBank	mRNA	77514	78035	.	+	1	ID=CPT_phageK_gp149.t01;Parent=CPT_phageK_gp149
+NC_005880	GenBank	CDS	77514	78035	.	+	1	ID=CPT_phageK_gp149.p01;Parent=CPT_phageK_gp149.t01;Dbxref=GI:657184236,GeneID:19621962;Name=CPT_phageK_gp149;codon_start=1;product=hypothetical protein;protein_id=YP_009041339.1;transl_table=11;translation=length.173
+NC_005880	GenBank	exon	77514	78035	.	+	1	Parent=CPT_phageK_gp149.t01
+NC_005880	GenBank	regulatory	81519	81538	.	+	1	ID=GenBank:regulatory:NC_005880:81519:81538;regulatory_class=terminator
+NC_005880	GenBank	gene	78056	81514	.	+	1	ID=CPT_phageK_gp148;Dbxref=GeneID:19621963;Name=CPT_phageK_gp148
+NC_005880	GenBank	mRNA	78056	81514	.	+	1	ID=CPT_phageK_gp148.t01;Parent=CPT_phageK_gp148
+NC_005880	GenBank	CDS	78056	81514	.	+	1	ID=CPT_phageK_gp148.p01;Parent=CPT_phageK_gp148.t01;Dbxref=GI:657184237,GeneID:19621963;Name=CPT_phageK_gp148;codon_start=1;product=hypothetical protein;protein_id=YP_009041340.1;transl_table=11;translation=length.1152
+NC_005880	GenBank	exon	78056	81514	.	+	1	Parent=CPT_phageK_gp148.t01
+NC_005880	GenBank	gene	81563	81721	.	+	1	ID=CPT_phageK_gp147;Dbxref=GeneID:19621964;Name=CPT_phageK_gp147
+NC_005880	GenBank	mRNA	81563	81721	.	+	1	ID=CPT_phageK_gp147.t01;Parent=CPT_phageK_gp147
+NC_005880	GenBank	CDS	81563	81721	.	+	1	ID=CPT_phageK_gp147.p01;Parent=CPT_phageK_gp147.t01;Dbxref=GI:657184238,GeneID:19621964;Name=CPT_phageK_gp147;codon_start=1;product=hypothetical protein;protein_id=YP_009041341.1;transl_table=11;translation=length.52
+NC_005880	GenBank	exon	81563	81721	.	+	1	Parent=CPT_phageK_gp147.t01
+NC_005880	GenBank	gene	81722	83644	.	+	1	ID=CPT_phageK_gp146;Dbxref=GeneID:19621965;Name=CPT_phageK_gp146
+NC_005880	GenBank	mRNA	81722	83644	.	+	1	ID=CPT_phageK_gp146.t01;Parent=CPT_phageK_gp146
+NC_005880	GenBank	CDS	81722	83644	.	+	1	ID=CPT_phageK_gp146.p01;Parent=CPT_phageK_gp146.t01;Dbxref=GI:657184239,GeneID:19621965;Name=CPT_phageK_gp146;codon_start=1;product=putative carbohydrate-binding domain protein;protein_id=YP_009041342.1;transl_table=11;translation=length.640
+NC_005880	GenBank	exon	81722	83644	.	+	1	Parent=CPT_phageK_gp146.t01
+NC_005880	GenBank	gene	83667	84041	.	+	1	ID=CPT_phageK_gp145;Dbxref=GeneID:19621966;Name=CPT_phageK_gp145
+NC_005880	GenBank	mRNA	83667	84041	.	+	1	ID=CPT_phageK_gp145.t01;Parent=CPT_phageK_gp145
+NC_005880	GenBank	CDS	83667	84041	.	+	1	ID=CPT_phageK_gp145.p01;Parent=CPT_phageK_gp145.t01;Dbxref=GI:657184240,GeneID:19621966;Name=CPT_phageK_gp145;codon_start=1;product=putative DUF2977 domain protein;protein_id=YP_009041343.1;transl_table=11;translation=length.124
+NC_005880	GenBank	exon	83667	84041	.	+	1	Parent=CPT_phageK_gp145.t01
+NC_005880	GenBank	regulatory	85424	85445	.	+	1	ID=GenBank:regulatory:NC_005880:85424:85445;regulatory_class=terminator
+NC_005880	GenBank	gene	84048	85424	.	+	1	ID=CPT_phageK_gp144;Dbxref=GeneID:19621967;Name=CPT_phageK_gp144
+NC_005880	GenBank	mRNA	84048	85424	.	+	1	ID=CPT_phageK_gp144.t01;Parent=CPT_phageK_gp144
+NC_005880	GenBank	CDS	84048	85424	.	+	1	ID=CPT_phageK_gp144.p01;Parent=CPT_phageK_gp144.t01;Dbxref=GI:657184241,GeneID:19621967;Name=CPT_phageK_gp144;codon_start=1;product=putative receptor binding protein;protein_id=YP_009041344.1;transl_table=11;translation=length.458
+NC_005880	GenBank	exon	84048	85424	.	+	1	Parent=CPT_phageK_gp144.t01
+NC_005880	GenBank	gene	85516	87264	.	+	1	ID=CPT_phageK_gp143;Dbxref=GeneID:19621968;Name=CPT_phageK_gp143
+NC_005880	GenBank	mRNA	85516	87264	.	+	1	ID=CPT_phageK_gp143.t01;Parent=CPT_phageK_gp143
+NC_005880	GenBank	CDS	85516	87264	.	+	1	ID=CPT_phageK_gp143.p01;Parent=CPT_phageK_gp143.t01;Dbxref=GI:657184242,GeneID:19621968;Name=CPT_phageK_gp143;codon_start=1;product=putative helicase;protein_id=YP_009041345.1;transl_table=11;translation=length.582
+NC_005880	GenBank	exon	85516	87264	.	+	1	Parent=CPT_phageK_gp143.t01
+NC_005880	GenBank	gene	87276	88889	.	+	1	ID=CPT_phageK_gp142;Dbxref=GeneID:19621969;Name=CPT_phageK_gp142
+NC_005880	GenBank	mRNA	87276	88889	.	+	1	ID=CPT_phageK_gp142.t01;Parent=CPT_phageK_gp142
+NC_005880	GenBank	CDS	87276	88889	.	+	1	ID=CPT_phageK_gp142.p01;Parent=CPT_phageK_gp142.t01;Dbxref=GI:657184243,GeneID:19621969;Name=CPT_phageK_gp142;codon_start=1;product=putative winged helix domain protein;protein_id=YP_009041346.1;transl_table=11;translation=length.537
+NC_005880	GenBank	exon	87276	88889	.	+	1	Parent=CPT_phageK_gp142.t01
+NC_005880	GenBank	regulatory	90335	90369	.	+	1	ID=GenBank:regulatory:NC_005880:90335:90369;regulatory_class=terminator
+NC_005880	GenBank	gene	88882	90324	.	+	1	ID=CPT_phageK_gp141;Dbxref=GeneID:19621970;Name=CPT_phageK_gp141
+NC_005880	GenBank	mRNA	88882	90324	.	+	1	ID=CPT_phageK_gp141.t01;Parent=CPT_phageK_gp141
+NC_005880	GenBank	CDS	88882	90324	.	+	1	ID=CPT_phageK_gp141.p01;Parent=CPT_phageK_gp141.t01;Dbxref=GI:657184244,GeneID:19621970;Name=CPT_phageK_gp141;codon_start=1;product=putative ATPase;protein_id=YP_009041347.1;transl_table=11;translation=length.480
+NC_005880	GenBank	exon	88882	90324	.	+	1	Parent=CPT_phageK_gp141.t01
+NC_005880	GenBank	gene	90403	91440	.	+	1	ID=CPT_phageK_gp140;Dbxref=GeneID:19621971;Name=CPT_phageK_gp140
+NC_005880	GenBank	mRNA	90403	91440	.	+	1	ID=CPT_phageK_gp140.t01;Parent=CPT_phageK_gp140
+NC_005880	GenBank	CDS	90403	91440	.	+	1	ID=CPT_phageK_gp140.p01;Parent=CPT_phageK_gp140.t01;Dbxref=GI:657184245,GeneID:19621971;Name=CPT_phageK_gp140;codon_start=1;product=putative calcineurin-like phosphoesterase protein;protein_id=YP_009041348.1;transl_table=11;translation=length.345
+NC_005880	GenBank	exon	90403	91440	.	+	1	Parent=CPT_phageK_gp140.t01
+NC_005880	GenBank	gene	91440	91817	.	+	1	ID=CPT_phageK_gp139;Dbxref=GeneID:19621972;Name=CPT_phageK_gp139
+NC_005880	GenBank	mRNA	91440	91817	.	+	1	ID=CPT_phageK_gp139.t01;Parent=CPT_phageK_gp139
+NC_005880	GenBank	CDS	91440	91817	.	+	1	ID=CPT_phageK_gp139.p01;Parent=CPT_phageK_gp139.t01;Dbxref=GI:657184246,GeneID:19621972;Name=CPT_phageK_gp139;codon_start=1;product=hypothetical protein;protein_id=YP_009041349.1;transl_table=11;translation=length.125
+NC_005880	GenBank	exon	91440	91817	.	+	1	Parent=CPT_phageK_gp139.t01
+NC_005880	GenBank	gene	91817	93736	.	+	1	ID=CPT_phageK_gp138;Dbxref=GeneID:19621973;Name=CPT_phageK_gp138
+NC_005880	GenBank	mRNA	91817	93736	.	+	1	ID=CPT_phageK_gp138.t01;Parent=CPT_phageK_gp138
+NC_005880	GenBank	CDS	91817	93736	.	+	1	ID=CPT_phageK_gp138.p01;Parent=CPT_phageK_gp138.t01;Dbxref=GI:657184247,GeneID:19621973;Name=CPT_phageK_gp138;codon_start=1;product=putative ATPase;protein_id=YP_009041350.1;transl_table=11;translation=length.639
+NC_005880	GenBank	exon	91817	93736	.	+	1	Parent=CPT_phageK_gp138.t01
+NC_005880	GenBank	gene	93736	94332	.	+	1	ID=CPT_phageK_gp137;Dbxref=GeneID:19621974;Name=CPT_phageK_gp137
+NC_005880	GenBank	mRNA	93736	94332	.	+	1	ID=CPT_phageK_gp137.t01;Parent=CPT_phageK_gp137
+NC_005880	GenBank	CDS	93736	94332	.	+	1	ID=CPT_phageK_gp137.p01;Parent=CPT_phageK_gp137.t01;Dbxref=GI:657184248,GeneID:19621974;Name=CPT_phageK_gp137;codon_start=1;product=hypothetical protein;protein_id=YP_009041351.1;transl_table=11;translation=length.198
+NC_005880	GenBank	exon	93736	94332	.	+	1	Parent=CPT_phageK_gp137.t01
+NC_005880	GenBank	gene	94347	95414	.	+	1	ID=CPT_phageK_gp136;Dbxref=GeneID:19621975;Name=CPT_phageK_gp136
+NC_005880	GenBank	mRNA	94347	95414	.	+	1	ID=CPT_phageK_gp136.t01;Parent=CPT_phageK_gp136
+NC_005880	GenBank	CDS	94347	95414	.	+	1	ID=CPT_phageK_gp136.p01;Parent=CPT_phageK_gp136.t01;Dbxref=GI:657184249,GeneID:19621975;Name=CPT_phageK_gp136;codon_start=1;product=putative DNA primase;protein_id=YP_009041352.1;transl_table=11;translation=length.355
+NC_005880	GenBank	exon	94347	95414	.	+	1	Parent=CPT_phageK_gp136.t01
+NC_005880	GenBank	gene	95481	95819	.	+	1	ID=CPT_phageK_gp135;Dbxref=GeneID:19621976;Name=CPT_phageK_gp135
+NC_005880	GenBank	mRNA	95481	95819	.	+	1	ID=CPT_phageK_gp135.t01;Parent=CPT_phageK_gp135
+NC_005880	GenBank	CDS	95481	95819	.	+	1	ID=CPT_phageK_gp135.p01;Parent=CPT_phageK_gp135.t01;Dbxref=GI:657184250,GeneID:19621976;Name=CPT_phageK_gp135;codon_start=1;product=hypothetical protein;protein_id=YP_009041353.1;transl_table=11;translation=length.112
+NC_005880	GenBank	exon	95481	95819	.	+	1	Parent=CPT_phageK_gp135.t01
+NC_005880	GenBank	gene	95819	96271	.	+	1	ID=CPT_phageK_gp134;Dbxref=GeneID:19621977;Name=CPT_phageK_gp134
+NC_005880	GenBank	mRNA	95819	96271	.	+	1	ID=CPT_phageK_gp134.t01;Parent=CPT_phageK_gp134
+NC_005880	GenBank	CDS	95819	96271	.	+	1	ID=CPT_phageK_gp134.p01;Parent=CPT_phageK_gp134.t01;Dbxref=GI:657184251,GeneID:19621977;Name=CPT_phageK_gp134;codon_start=1;product=hypothetical protein;protein_id=YP_009041354.1;transl_table=11;translation=length.150
+NC_005880	GenBank	exon	95819	96271	.	+	1	Parent=CPT_phageK_gp134.t01
+NC_005880	GenBank	gene	96258	96866	.	+	1	ID=CPT_phageK_gp133;Dbxref=GeneID:19621978;Name=CPT_phageK_gp133
+NC_005880	GenBank	mRNA	96258	96866	.	+	1	ID=CPT_phageK_gp133.t01;Parent=CPT_phageK_gp133
+NC_005880	GenBank	CDS	96258	96866	.	+	1	ID=CPT_phageK_gp133.p01;Parent=CPT_phageK_gp133.t01;Dbxref=GI:657184252,GeneID:19621978;Name=CPT_phageK_gp133;codon_start=1;product=hypothetical protein;protein_id=YP_009041355.1;transl_table=11;translation=length.202
+NC_005880	GenBank	exon	96258	96866	.	+	1	Parent=CPT_phageK_gp133.t01
+NC_005880	GenBank	gene	96883	97275	.	+	1	ID=CPT_phageK_gp132;Dbxref=GeneID:19621979;Name=CPT_phageK_gp132
+NC_005880	GenBank	mRNA	96883	97275	.	+	1	ID=CPT_phageK_gp132.t01;Parent=CPT_phageK_gp132
+NC_005880	GenBank	CDS	96883	97275	.	+	1	ID=CPT_phageK_gp132.p01;Parent=CPT_phageK_gp132.t01;Dbxref=GI:657184253,GeneID:19621979;Name=CPT_phageK_gp132;codon_start=1;product=putative ribonucleotide reductase flavodoxin;protein_id=YP_009041356.1;transl_table=11;translation=length.130
+NC_005880	GenBank	exon	96883	97275	.	+	1	Parent=CPT_phageK_gp132.t01
+NC_005880	GenBank	gene	97290	99404	.	+	1	ID=CPT_phageK_gp131;Dbxref=GeneID:19621980;Name=CPT_phageK_gp131
+NC_005880	GenBank	mRNA	97290	99404	.	+	1	ID=CPT_phageK_gp131.t01;Parent=CPT_phageK_gp131
+NC_005880	GenBank	CDS	97290	99404	.	+	1	ID=CPT_phageK_gp131.p01;Parent=CPT_phageK_gp131.t01;Dbxref=GI:657184254,GeneID:19621980;Name=CPT_phageK_gp131;codon_start=1;product=putative ribonucleotide reductase large subunit;protein_id=YP_009041357.1;transl_table=11;translation=length.704
+NC_005880	GenBank	exon	97290	99404	.	+	1	Parent=CPT_phageK_gp131.t01
+NC_005880	GenBank	gene	99418	100467	.	+	1	ID=CPT_phageK_gp130;Dbxref=GeneID:19621981;Name=CPT_phageK_gp130
+NC_005880	GenBank	mRNA	99418	100467	.	+	1	ID=CPT_phageK_gp130.t01;Parent=CPT_phageK_gp130
+NC_005880	GenBank	CDS	99418	100467	.	+	1	ID=CPT_phageK_gp130.p01;Parent=CPT_phageK_gp130.t01;Dbxref=GI:657184255,GeneID:19621981;Name=CPT_phageK_gp130;codon_start=1;product=putative ribonucleotide reductase small subunit;protein_id=YP_009041358.1;transl_table=11;translation=length.349
+NC_005880	GenBank	exon	99418	100467	.	+	1	Parent=CPT_phageK_gp130.t01
+NC_005880	GenBank	gene	100485	100814	.	+	1	ID=CPT_phageK_gp129;Dbxref=GeneID:19621982;Name=CPT_phageK_gp129
+NC_005880	GenBank	mRNA	100485	100814	.	+	1	ID=CPT_phageK_gp129.t01;Parent=CPT_phageK_gp129
+NC_005880	GenBank	CDS	100485	100814	.	+	1	ID=CPT_phageK_gp129.p01;Parent=CPT_phageK_gp129.t01;Dbxref=GI:657184256,GeneID:19621982;Name=CPT_phageK_gp129;codon_start=1;product=hypothetical protein;protein_id=YP_009041359.1;transl_table=11;translation=length.109
+NC_005880	GenBank	exon	100485	100814	.	+	1	Parent=CPT_phageK_gp129.t01
+NC_005880	GenBank	regulatory	101128	101170	.	+	1	ID=GenBank:regulatory:NC_005880:101128:101170;regulatory_class=terminator
+NC_005880	GenBank	gene	100798	101118	.	+	1	ID=CPT_phageK_gp128;Dbxref=GeneID:19621983;Name=CPT_phageK_gp128
+NC_005880	GenBank	mRNA	100798	101118	.	+	1	ID=CPT_phageK_gp128.t01;Parent=CPT_phageK_gp128
+NC_005880	GenBank	CDS	100798	101118	.	+	1	ID=CPT_phageK_gp128.p01;Parent=CPT_phageK_gp128.t01;Dbxref=GI:657184257,GeneID:19621983;Name=CPT_phageK_gp128;codon_start=1;product=putative thioredoxin-like protein;protein_id=YP_009041360.1;transl_table=11;translation=length.106
+NC_005880	GenBank	exon	100798	101118	.	+	1	Parent=CPT_phageK_gp128.t01
+NC_005880	GenBank	gene	101325	101921	.	+	1	ID=CPT_phageK_gp127;Dbxref=GeneID:19621984;Name=CPT_phageK_gp127
+NC_005880	GenBank	mRNA	101325	101921	.	+	1	ID=CPT_phageK_gp127.t01;Parent=CPT_phageK_gp127
+NC_005880	GenBank	CDS	101325	101921	.	+	1	ID=CPT_phageK_gp127.p01;Parent=CPT_phageK_gp127.t01;Dbxref=GI:657184258,GeneID:19621984;Name=CPT_phageK_gp127;codon_start=1;product=hypothetical protein;protein_id=YP_009041361.1;transl_table=11;translation=length.198
+NC_005880	GenBank	exon	101325	101921	.	+	1	Parent=CPT_phageK_gp127.t01
+NC_005880	GenBank	regulatory	102225	102244	.	+	1	ID=GenBank:regulatory:NC_005880:102225:102244;regulatory_class=terminator
+NC_005880	GenBank	gene	101931	102236	.	+	1	ID=CPT_phageK_gp126;Dbxref=GeneID:19621985;Name=CPT_phageK_gp126
+NC_005880	GenBank	mRNA	101931	102236	.	+	1	ID=CPT_phageK_gp126.t01;Parent=CPT_phageK_gp126
+NC_005880	GenBank	CDS	101931	102236	.	+	1	ID=CPT_phageK_gp126.p01;Parent=CPT_phageK_gp126.t01;Dbxref=GI:657184259,GeneID:19621985;Name=CPT_phageK_gp126;codon_start=1;product=putative DNA binding protein;protein_id=YP_009041362.1;transl_table=11;translation=length.101
+NC_005880	GenBank	exon	101931	102236	.	+	1	Parent=CPT_phageK_gp126.t01
+NC_005880	GenBank	gene	102312	103181	.	+	1	ID=CPT_phageK_gp125a;Dbxref=GeneID:19621986;Name=CPT_phageK_gp125a
+NC_005880	GenBank	mRNA	102312	103181	.	+	1	ID=CPT_phageK_gp125a.t01;Parent=CPT_phageK_gp125a
+NC_005880	GenBank	CDS	102312	103181	.	+	1	ID=CPT_phageK_gp125a.p01;Parent=CPT_phageK_gp125a.t01;Dbxref=GI:657184260,GeneID:19621986;Name=CPT_phageK_gp125a;codon_start=1;product=putative DNA polymerase A;protein_id=YP_009041363.1;transl_table=11;translation=length.1072
+NC_005880	GenBank	exon	102312	103181	.	+	1	Parent=CPT_phageK_gp125a.t01
+NC_005880	GenBank	gene	103980	105338	.	+	1	ID=CPT_phageK_gp125b;Dbxref=GeneID:19621986;Name=CPT_phageK_gp125b
+NC_005880	GenBank	mRNA	103980	105338	.	+	1	ID=CPT_phageK_gp125b.t01;Parent=CPT_phageK_gp125b
+NC_005880	GenBank	CDS	103980	105338	.	+	1	ID=CPT_phageK_gp125b.p01;Parent=CPT_phageK_gp125b.t01;Dbxref=GI:657184260,GeneID:19621986;Name=CPT_phageK_gp125b;codon_start=1;product=putative DNA polymerase A;protein_id=YP_009041363.1;transl_table=11;translation=length.1072
+NC_005880	GenBank	exon	103980	105338	.	+	1	Parent=CPT_phageK_gp125b.t01
+NC_005880	GenBank	gene	106421	107410	.	+	1	ID=CPT_phageK_gp125c;Dbxref=GeneID:19621986;Name=CPT_phageK_gp125c
+NC_005880	GenBank	mRNA	106421	107410	.	+	1	ID=CPT_phageK_gp125c.t01;Parent=CPT_phageK_gp125c
+NC_005880	GenBank	CDS	106421	107410	.	+	1	ID=CPT_phageK_gp125c.p01;Parent=CPT_phageK_gp125c.t01;Dbxref=GI:657184260,GeneID:19621986;Name=CPT_phageK_gp125c;codon_start=1;product=putative DNA polymerase A;protein_id=YP_009041363.1;transl_table=11;translation=length.1072
+NC_005880	GenBank	exon	106421	107410	.	+	1	Parent=CPT_phageK_gp125c.t01
+NC_005880	GenBank	gene	103392	103862	.	+	1	ID=CPT_phageK_gp124;Dbxref=GeneID:19621987;Name=CPT_phageK_gp124
+NC_005880	GenBank	mRNA	103392	103862	.	+	1	ID=CPT_phageK_gp124.t01;Parent=CPT_phageK_gp124
+NC_005880	GenBank	CDS	103392	103862	.	+	1	ID=CPT_phageK_gp124.p01;Parent=CPT_phageK_gp124.t01;Dbxref=GI:657184261,GeneID:19621987;Name=CPT_phageK_gp124;codon_start=1;product=hypothetical protein;protein_id=YP_009041364.1;transl_table=11;translation=length.156
+NC_005880	GenBank	exon	103392	103862	.	+	1	Parent=CPT_phageK_gp124.t01
+NC_005880	GenBank	gene	105507	106316	.	+	1	ID=CPT_phageK_gp123;Dbxref=GeneID:19621988;Name=CPT_phageK_gp123
+NC_005880	GenBank	mRNA	105507	106316	.	+	1	ID=CPT_phageK_gp123.t01;Parent=CPT_phageK_gp123
+NC_005880	GenBank	CDS	105507	106316	.	+	1	ID=CPT_phageK_gp123.p01;Parent=CPT_phageK_gp123.t01;Dbxref=GI:657184262,GeneID:19621988;Name=CPT_phageK_gp123;codon_start=1;product=putative HNH endonuclease;protein_id=YP_009041365.1;transl_table=11;translation=length.269
+NC_005880	GenBank	exon	105507	106316	.	+	1	Parent=CPT_phageK_gp123.t01
+NC_005880	GenBank	gene	107479	107721	.	+	1	ID=CPT_phageK_gp122;Dbxref=GeneID:19621989;Name=CPT_phageK_gp122
+NC_005880	GenBank	mRNA	107479	107721	.	+	1	ID=CPT_phageK_gp122.t01;Parent=CPT_phageK_gp122
+NC_005880	GenBank	CDS	107479	107721	.	+	1	ID=CPT_phageK_gp122.p01;Parent=CPT_phageK_gp122.t01;Dbxref=GI:657184263,GeneID:19621989;Name=CPT_phageK_gp122;codon_start=1;product=hypothetical protein;protein_id=YP_009041366.1;transl_table=11;translation=length.80
+NC_005880	GenBank	exon	107479	107721	.	+	1	Parent=CPT_phageK_gp122.t01
+NC_005880	GenBank	gene	107738	108220	.	+	1	ID=CPT_phageK_gp121;Dbxref=GeneID:19621990;Name=CPT_phageK_gp121
+NC_005880	GenBank	mRNA	107738	108220	.	+	1	ID=CPT_phageK_gp121.t01;Parent=CPT_phageK_gp121
+NC_005880	GenBank	CDS	107738	108220	.	+	1	ID=CPT_phageK_gp121.p01;Parent=CPT_phageK_gp121.t01;Dbxref=GI:657184264,GeneID:19621990;Name=CPT_phageK_gp121;codon_start=1;product=hypothetical protein;protein_id=YP_009041367.1;transl_table=11;translation=length.160
+NC_005880	GenBank	exon	107738	108220	.	+	1	Parent=CPT_phageK_gp121.t01
+NC_005880	GenBank	regulatory	109585	109602	.	+	1	ID=GenBank:regulatory:NC_005880:109585:109602;regulatory_class=terminator
+NC_005880	GenBank	gene	108307	109578	.	+	1	ID=CPT_phageK_gp120;Dbxref=GeneID:19621991;Name=CPT_phageK_gp120
+NC_005880	GenBank	mRNA	108307	109578	.	+	1	ID=CPT_phageK_gp120.t01;Parent=CPT_phageK_gp120
+NC_005880	GenBank	CDS	108307	109578	.	+	1	ID=CPT_phageK_gp120.p01;Parent=CPT_phageK_gp120.t01;Dbxref=GI:657184265,GeneID:19621991;Name=CPT_phageK_gp120;codon_start=1;product=hypothetical protein;protein_id=YP_009041368.1;transl_table=11;translation=length.423
+NC_005880	GenBank	exon	108307	109578	.	+	1	Parent=CPT_phageK_gp120.t01
+NC_005880	GenBank	gene	109638	110894	.	+	1	ID=CPT_phageK_gp119;Dbxref=GeneID:19621992;Name=CPT_phageK_gp119
+NC_005880	GenBank	mRNA	109638	110894	.	+	1	ID=CPT_phageK_gp119.t01;Parent=CPT_phageK_gp119
+NC_005880	GenBank	CDS	109638	110894	.	+	1	ID=CPT_phageK_gp119.p01;Parent=CPT_phageK_gp119.t01;Dbxref=GI:657184266,GeneID:19621992;Name=CPT_phageK_gp119;codon_start=1;product=putative RecA-like protein;protein_id=YP_009041369.1;transl_table=11;translation=length.418
+NC_005880	GenBank	exon	109638	110894	.	+	1	Parent=CPT_phageK_gp119.t01
+NC_005880	GenBank	gene	110898	111251	.	+	1	ID=CPT_phageK_gp118;Dbxref=GeneID:19621993;Name=CPT_phageK_gp118
+NC_005880	GenBank	mRNA	110898	111251	.	+	1	ID=CPT_phageK_gp118.t01;Parent=CPT_phageK_gp118
+NC_005880	GenBank	CDS	110898	111251	.	+	1	ID=CPT_phageK_gp118.p01;Parent=CPT_phageK_gp118.t01;Dbxref=GI:657184267,GeneID:19621993;Name=CPT_phageK_gp118;codon_start=1;product=hypothetical protein;protein_id=YP_009041370.1;transl_table=11;translation=length.117
+NC_005880	GenBank	exon	110898	111251	.	+	1	Parent=CPT_phageK_gp118.t01
+NC_005880	GenBank	regulatory	111908	111962	.	+	1	ID=GenBank:regulatory:NC_005880:111908:111962;regulatory_class=terminator
+NC_005880	GenBank	gene	111238	111900	.	+	1	ID=CPT_phageK_gp117;Dbxref=GeneID:19621994;Name=CPT_phageK_gp117
+NC_005880	GenBank	mRNA	111238	111900	.	+	1	ID=CPT_phageK_gp117.t01;Parent=CPT_phageK_gp117
+NC_005880	GenBank	CDS	111238	111900	.	+	1	ID=CPT_phageK_gp117.p01;Parent=CPT_phageK_gp117.t01;Dbxref=GI:657184268,GeneID:19621994;Name=CPT_phageK_gp117;codon_start=1;product=hypothetical protein;protein_id=YP_009041371.1;transl_table=11;translation=length.220
+NC_005880	GenBank	exon	111238	111900	.	+	1	Parent=CPT_phageK_gp117.t01
+NC_005880	GenBank	gene	112028	112660	.	+	1	ID=CPT_phageK_gp116;Dbxref=GeneID:19621995;Name=CPT_phageK_gp116
+NC_005880	GenBank	mRNA	112028	112660	.	+	1	ID=CPT_phageK_gp116.t01;Parent=CPT_phageK_gp116
+NC_005880	GenBank	CDS	112028	112660	.	+	1	ID=CPT_phageK_gp116.p01;Parent=CPT_phageK_gp116.t01;Dbxref=GI:657184269,GeneID:19621995;Name=CPT_phageK_gp116;codon_start=1;product=hypothetical protein;protein_id=YP_009041372.1;transl_table=11;translation=length.210
+NC_005880	GenBank	exon	112028	112660	.	+	1	Parent=CPT_phageK_gp116.t01
+NC_005880	GenBank	gene	112683	113195	.	+	1	ID=CPT_phageK_gp115;Dbxref=GeneID:19621996;Name=CPT_phageK_gp115
+NC_005880	GenBank	mRNA	112683	113195	.	+	1	ID=CPT_phageK_gp115.t01;Parent=CPT_phageK_gp115
+NC_005880	GenBank	CDS	112683	113195	.	+	1	ID=CPT_phageK_gp115.p01;Parent=CPT_phageK_gp115.t01;Dbxref=GI:657184270,GeneID:19621996;Name=CPT_phageK_gp115;codon_start=1;product=putative bacterial adhesin/Ig-like protein;protein_id=YP_009041373.1;transl_table=11;translation=length.170
+NC_005880	GenBank	exon	112683	113195	.	+	1	Parent=CPT_phageK_gp115.t01
+NC_005880	GenBank	regulatory	113445	113464	.	+	1	ID=GenBank:regulatory:NC_005880:113445:113464;regulatory_class=terminator
+NC_005880	GenBank	gene	113210	113437	.	+	1	ID=CPT_phageK_gp114;Dbxref=GeneID:19621997;Name=CPT_phageK_gp114
+NC_005880	GenBank	mRNA	113210	113437	.	+	1	ID=CPT_phageK_gp114.t01;Parent=CPT_phageK_gp114
+NC_005880	GenBank	CDS	113210	113437	.	+	1	ID=CPT_phageK_gp114.p01;Parent=CPT_phageK_gp114.t01;Dbxref=GI:657184271,GeneID:19621997;Name=CPT_phageK_gp114;codon_start=1;product=hypothetical protein;protein_id=YP_009041374.1;transl_table=11;translation=length.75
+NC_005880	GenBank	exon	113210	113437	.	+	1	Parent=CPT_phageK_gp114.t01
+NC_005880	GenBank	gene	113533	113793	.	+	1	ID=CPT_phageK_gp113;Dbxref=GeneID:19621998;Name=CPT_phageK_gp113
+NC_005880	GenBank	mRNA	113533	113793	.	+	1	ID=CPT_phageK_gp113.t01;Parent=CPT_phageK_gp113
+NC_005880	GenBank	CDS	113533	113793	.	+	1	ID=CPT_phageK_gp113.p01;Parent=CPT_phageK_gp113.t01;Dbxref=GI:657184272,GeneID:19621998;Name=CPT_phageK_gp113;codon_start=1;product=hypothetical protein;protein_id=YP_009041375.1;transl_table=11;translation=length.86
+NC_005880	GenBank	exon	113533	113793	.	+	1	Parent=CPT_phageK_gp113.t01
+NC_005880	GenBank	gene	113797	114552	.	+	1	ID=CPT_phageK_gp112;Dbxref=GeneID:19621999;Name=CPT_phageK_gp112
+NC_005880	GenBank	mRNA	113797	114552	.	+	1	ID=CPT_phageK_gp112.t01;Parent=CPT_phageK_gp112
+NC_005880	GenBank	CDS	113797	114552	.	+	1	ID=CPT_phageK_gp112.p01;Parent=CPT_phageK_gp112.t01;Dbxref=GI:657184273,GeneID:19621999;Name=CPT_phageK_gp112;codon_start=1;product=hypothetical protein;protein_id=YP_009041376.1;transl_table=11;translation=length.251
+NC_005880	GenBank	exon	113797	114552	.	+	1	Parent=CPT_phageK_gp112.t01
+NC_005880	GenBank	gene	114545	115795	.	+	1	ID=CPT_phageK_gp111;Dbxref=GeneID:19622000;Name=CPT_phageK_gp111
+NC_005880	GenBank	mRNA	114545	115795	.	+	1	ID=CPT_phageK_gp111.t01;Parent=CPT_phageK_gp111
+NC_005880	GenBank	CDS	114545	115795	.	+	1	ID=CPT_phageK_gp111.p01;Parent=CPT_phageK_gp111.t01;Dbxref=GI:657184274,GeneID:19622000;Name=CPT_phageK_gp111;codon_start=1;product=putative metallophosphatase;protein_id=YP_009041377.1;transl_table=11;translation=length.416
+NC_005880	GenBank	exon	114545	115795	.	+	1	Parent=CPT_phageK_gp111.t01
+NC_005880	GenBank	gene	115809	116177	.	+	1	ID=CPT_phageK_gp110;Dbxref=GeneID:19622001;Name=CPT_phageK_gp110
+NC_005880	GenBank	mRNA	115809	116177	.	+	1	ID=CPT_phageK_gp110.t01;Parent=CPT_phageK_gp110
+NC_005880	GenBank	CDS	115809	116177	.	+	1	ID=CPT_phageK_gp110.p01;Parent=CPT_phageK_gp110.t01;Dbxref=GI:657184275,GeneID:19622001;Name=CPT_phageK_gp110;codon_start=1;product=hypothetical protein;protein_id=YP_009041378.1;transl_table=11;translation=length.122
+NC_005880	GenBank	exon	115809	116177	.	+	1	Parent=CPT_phageK_gp110.t01
+NC_005880	GenBank	regulatory	116475	116496	.	+	1	ID=GenBank:regulatory:NC_005880:116475:116496;regulatory_class=terminator
+NC_005880	GenBank	gene	116164	116475	.	+	1	ID=CPT_phageK_gp109;Dbxref=GeneID:19622002;Name=CPT_phageK_gp109
+NC_005880	GenBank	mRNA	116164	116475	.	+	1	ID=CPT_phageK_gp109.t01;Parent=CPT_phageK_gp109
+NC_005880	GenBank	CDS	116164	116475	.	+	1	ID=CPT_phageK_gp109.p01;Parent=CPT_phageK_gp109.t01;Dbxref=GI:657184276,GeneID:19622002;Name=CPT_phageK_gp109;codon_start=1;product=hypothetical protein;protein_id=YP_009041379.1;transl_table=11;translation=length.103
+NC_005880	GenBank	exon	116164	116475	.	+	1	Parent=CPT_phageK_gp109.t01
+NC_005880	GenBank	gene	116539	117075	.	+	1	ID=CPT_phageK_gp108;Dbxref=GeneID:19622003;Name=CPT_phageK_gp108
+NC_005880	GenBank	mRNA	116539	117075	.	+	1	ID=CPT_phageK_gp108.t01;Parent=CPT_phageK_gp108
+NC_005880	GenBank	CDS	116539	117075	.	+	1	ID=CPT_phageK_gp108.p01;Parent=CPT_phageK_gp108.t01;Dbxref=GI:657184277,GeneID:19622003;Name=CPT_phageK_gp108;codon_start=1;product=hypothetical protein;protein_id=YP_009041380.1;transl_table=11;translation=length.178
+NC_005880	GenBank	exon	116539	117075	.	+	1	Parent=CPT_phageK_gp108.t01
+NC_005880	GenBank	gene	117068	117835	.	+	1	ID=CPT_phageK_gp107;Dbxref=GeneID:19622004;Name=CPT_phageK_gp107
+NC_005880	GenBank	mRNA	117068	117835	.	+	1	ID=CPT_phageK_gp107.t01;Parent=CPT_phageK_gp107
+NC_005880	GenBank	CDS	117068	117835	.	+	1	ID=CPT_phageK_gp107.p01;Parent=CPT_phageK_gp107.t01;Dbxref=GI:657184278,GeneID:19622004;Name=CPT_phageK_gp107;codon_start=1;product=hypothetical protein;protein_id=YP_009041381.1;transl_table=11;translation=length.255
+NC_005880	GenBank	exon	117068	117835	.	+	1	Parent=CPT_phageK_gp107.t01
+NC_005880	GenBank	gene	117813	118259	.	+	1	ID=CPT_phageK_gp106;Dbxref=GeneID:19622005;Name=CPT_phageK_gp106
+NC_005880	GenBank	mRNA	117813	118259	.	+	1	ID=CPT_phageK_gp106.t01;Parent=CPT_phageK_gp106
+NC_005880	GenBank	CDS	117813	118259	.	+	1	ID=CPT_phageK_gp106.p01;Parent=CPT_phageK_gp106.t01;Dbxref=GI:657184279,GeneID:19622005;Name=CPT_phageK_gp106;codon_start=1;product=hypothetical protein;protein_id=YP_009041382.1;transl_table=11;translation=length.148
+NC_005880	GenBank	exon	117813	118259	.	+	1	Parent=CPT_phageK_gp106.t01
+NC_005880	GenBank	gene	118259	119122	.	+	1	ID=CPT_phageK_gp105;Dbxref=GeneID:19622006;Name=CPT_phageK_gp105
+NC_005880	GenBank	mRNA	118259	119122	.	+	1	ID=CPT_phageK_gp105.t01;Parent=CPT_phageK_gp105
+NC_005880	GenBank	CDS	118259	119122	.	+	1	ID=CPT_phageK_gp105.p01;Parent=CPT_phageK_gp105.t01;Dbxref=GI:657184280,GeneID:19622006;Name=CPT_phageK_gp105;codon_start=1;product=hypothetical protein;protein_id=YP_009041383.1;transl_table=11;translation=length.287
+NC_005880	GenBank	exon	118259	119122	.	+	1	Parent=CPT_phageK_gp105.t01
+NC_005880	GenBank	gene	119494	120225	.	+	1	ID=CPT_phageK_gp104;Dbxref=GeneID:19622007;Name=CPT_phageK_gp104
+NC_005880	GenBank	mRNA	119494	120225	.	+	1	ID=CPT_phageK_gp104.t01;Parent=CPT_phageK_gp104
+NC_005880	GenBank	CDS	119494	120225	.	+	1	ID=CPT_phageK_gp104.p01;Parent=CPT_phageK_gp104.t01;Dbxref=GI:657184281,GeneID:19622007;Name=CPT_phageK_gp104;codon_start=1;product=hypothetical protein;protein_id=YP_009041384.1;transl_table=11;translation=length.243
+NC_005880	GenBank	exon	119494	120225	.	+	1	Parent=CPT_phageK_gp104.t01
+NC_005880	GenBank	gene	120243	120701	.	+	1	ID=CPT_phageK_gp103;Dbxref=GeneID:19622008;Name=CPT_phageK_gp103
+NC_005880	GenBank	mRNA	120243	120701	.	+	1	ID=CPT_phageK_gp103.t01;Parent=CPT_phageK_gp103
+NC_005880	GenBank	CDS	120243	120701	.	+	1	ID=CPT_phageK_gp103.p01;Parent=CPT_phageK_gp103.t01;Dbxref=GI:657184282,GeneID:19622008;Name=CPT_phageK_gp103;codon_start=1;product=hypothetical protein;protein_id=YP_009041385.1;transl_table=11;translation=length.152
+NC_005880	GenBank	exon	120243	120701	.	+	1	Parent=CPT_phageK_gp103.t01
+NC_005880	GenBank	gene	120766	121209	.	+	1	ID=CPT_phageK_gp102;Dbxref=GeneID:19622009;Name=CPT_phageK_gp102
+NC_005880	GenBank	mRNA	120766	121209	.	+	1	ID=CPT_phageK_gp102.t01;Parent=CPT_phageK_gp102
+NC_005880	GenBank	CDS	120766	121209	.	+	1	ID=CPT_phageK_gp102.p01;Parent=CPT_phageK_gp102.t01;Dbxref=GI:657184283,GeneID:19622009;Name=CPT_phageK_gp102;codon_start=1;product=hypothetical protein;protein_id=YP_009041386.1;transl_table=11;translation=length.147
+NC_005880	GenBank	exon	120766	121209	.	+	1	Parent=CPT_phageK_gp102.t01
+NC_005880	GenBank	regulatory	121936	121968	.	+	1	ID=GenBank:regulatory:NC_005880:121936:121968;regulatory_class=terminator
+NC_005880	GenBank	gene	121226	121930	.	+	1	ID=CPT_phageK_gp101;Dbxref=GeneID:19622010;Name=CPT_phageK_gp101
+NC_005880	GenBank	mRNA	121226	121930	.	+	1	ID=CPT_phageK_gp101.t01;Parent=CPT_phageK_gp101
+NC_005880	GenBank	CDS	121226	121930	.	+	1	ID=CPT_phageK_gp101.p01;Parent=CPT_phageK_gp101.t01;Dbxref=GI:657184284,GeneID:19622010;Name=CPT_phageK_gp101;codon_start=1;product=hypothetical protein;protein_id=YP_009041387.1;transl_table=11;translation=length.234
+NC_005880	GenBank	exon	121226	121930	.	+	1	Parent=CPT_phageK_gp101.t01
+NC_005880	GenBank	regulatory	122468	122489	.	+	1	ID=GenBank:regulatory:NC_005880:122468:122489;regulatory_class=terminator
+NC_005880	GenBank	gene	121992	122390	.	+	1	ID=CPT_phageK_gp100;Dbxref=GeneID:19622011;Name=CPT_phageK_gp100
+NC_005880	GenBank	mRNA	121992	122390	.	+	1	ID=CPT_phageK_gp100.t01;Parent=CPT_phageK_gp100
+NC_005880	GenBank	CDS	121992	122390	.	+	1	ID=CPT_phageK_gp100.p01;Parent=CPT_phageK_gp100.t01;Dbxref=GI:657184285,GeneID:19622011;Name=CPT_phageK_gp100;codon_start=1;product=hypothetical protein;protein_id=YP_009041388.1;transl_table=11;translation=length.132
+NC_005880	GenBank	exon	121992	122390	.	+	1	Parent=CPT_phageK_gp100.t01
+NC_005880	GenBank	gene	122537	122779	.	+	1	ID=CPT_phageK_gp099;Dbxref=GeneID:19622012;Name=CPT_phageK_gp099
+NC_005880	GenBank	mRNA	122537	122779	.	+	1	ID=CPT_phageK_gp099.t01;Parent=CPT_phageK_gp099
+NC_005880	GenBank	CDS	122537	122779	.	+	1	ID=CPT_phageK_gp099.p01;Parent=CPT_phageK_gp099.t01;Dbxref=GI:657184286,GeneID:19622012;Name=CPT_phageK_gp099;codon_start=1;product=hypothetical protein;protein_id=YP_009041389.1;transl_table=11;translation=length.80
+NC_005880	GenBank	exon	122537	122779	.	+	1	Parent=CPT_phageK_gp099.t01
+NC_005880	GenBank	gene	122784	123341	.	+	1	ID=CPT_phageK_gp098;Dbxref=GeneID:19622013;Name=CPT_phageK_gp098
+NC_005880	GenBank	mRNA	122784	123341	.	+	1	ID=CPT_phageK_gp098.t01;Parent=CPT_phageK_gp098
+NC_005880	GenBank	CDS	122784	123341	.	+	1	ID=CPT_phageK_gp098.p01;Parent=CPT_phageK_gp098.t01;Dbxref=GI:657184287,GeneID:19622013;Name=CPT_phageK_gp098;codon_start=1;product=hypothetical protein;protein_id=YP_009041390.1;transl_table=11;translation=length.185
+NC_005880	GenBank	exon	122784	123341	.	+	1	Parent=CPT_phageK_gp098.t01
+NC_005880	GenBank	gene	123377	123553	.	+	1	ID=CPT_phageK_gp097;Dbxref=GeneID:19622014;Name=CPT_phageK_gp097
+NC_005880	GenBank	mRNA	123377	123553	.	+	1	ID=CPT_phageK_gp097.t01;Parent=CPT_phageK_gp097
+NC_005880	GenBank	CDS	123377	123553	.	+	1	ID=CPT_phageK_gp097.p01;Parent=CPT_phageK_gp097.t01;Dbxref=GI:657184288,GeneID:19622014;Name=CPT_phageK_gp097;codon_start=1;product=hypothetical protein;protein_id=YP_009041391.1;transl_table=11;translation=length.58
+NC_005880	GenBank	exon	123377	123553	.	+	1	Parent=CPT_phageK_gp097.t01
+NC_005880	GenBank	gene	123543	124076	.	+	1	ID=CPT_phageK_gp096;Dbxref=GeneID:19622015;Name=CPT_phageK_gp096
+NC_005880	GenBank	mRNA	123543	124076	.	+	1	ID=CPT_phageK_gp096.t01;Parent=CPT_phageK_gp096
+NC_005880	GenBank	CDS	123543	124076	.	+	1	ID=CPT_phageK_gp096.p01;Parent=CPT_phageK_gp096.t01;Dbxref=GI:657184289,GeneID:19622015;Name=CPT_phageK_gp096;codon_start=1;product=hypothetical protein;protein_id=YP_009041392.1;transl_table=11;translation=length.177
+NC_005880	GenBank	exon	123543	124076	.	+	1	Parent=CPT_phageK_gp096.t01
+NC_005880	GenBank	gene	124091	124339	.	+	1	ID=CPT_phageK_gp095;Dbxref=GeneID:19622016;Name=CPT_phageK_gp095
+NC_005880	GenBank	mRNA	124091	124339	.	+	1	ID=CPT_phageK_gp095.t01;Parent=CPT_phageK_gp095
+NC_005880	GenBank	CDS	124091	124339	.	+	1	ID=CPT_phageK_gp095.p01;Parent=CPT_phageK_gp095.t01;Dbxref=GI:657184290,GeneID:19622016;Name=CPT_phageK_gp095;codon_start=1;product=hypothetical protein;protein_id=YP_009041393.1;transl_table=11;translation=length.82
+NC_005880	GenBank	exon	124091	124339	.	+	1	Parent=CPT_phageK_gp095.t01
+NC_005880	GenBank	gene	124351	124527	.	+	1	ID=CPT_phageK_gp094;Dbxref=GeneID:19622017;Name=CPT_phageK_gp094
+NC_005880	GenBank	mRNA	124351	124527	.	+	1	ID=CPT_phageK_gp094.t01;Parent=CPT_phageK_gp094
+NC_005880	GenBank	CDS	124351	124527	.	+	1	ID=CPT_phageK_gp094.p01;Parent=CPT_phageK_gp094.t01;Dbxref=GI:657184291,GeneID:19622017;Name=CPT_phageK_gp094;codon_start=1;product=hypothetical protein;protein_id=YP_009041394.1;transl_table=11;translation=length.58
+NC_005880	GenBank	exon	124351	124527	.	+	1	Parent=CPT_phageK_gp094.t01
+NC_005880	GenBank	gene	124520	124816	.	+	1	ID=CPT_phageK_gp093;Dbxref=GeneID:19622018;Name=CPT_phageK_gp093
+NC_005880	GenBank	mRNA	124520	124816	.	+	1	ID=CPT_phageK_gp093.t01;Parent=CPT_phageK_gp093
+NC_005880	GenBank	CDS	124520	124816	.	+	1	ID=CPT_phageK_gp093.p01;Parent=CPT_phageK_gp093.t01;Dbxref=GI:657184292,GeneID:19622018;Name=CPT_phageK_gp093;codon_start=1;product=hypothetical protein;protein_id=YP_009041395.1;transl_table=11;translation=length.98
+NC_005880	GenBank	exon	124520	124816	.	+	1	Parent=CPT_phageK_gp093.t01
+NC_005880	GenBank	gene	124864	125046	.	+	1	ID=CPT_phageK_gp092;Dbxref=GeneID:19622019;Name=CPT_phageK_gp092
+NC_005880	GenBank	mRNA	124864	125046	.	+	1	ID=CPT_phageK_gp092.t01;Parent=CPT_phageK_gp092
+NC_005880	GenBank	CDS	124864	125046	.	+	1	ID=CPT_phageK_gp092.p01;Parent=CPT_phageK_gp092.t01;Dbxref=GI:657184293,GeneID:19622019;Name=CPT_phageK_gp092;codon_start=1;product=hypothetical protein;protein_id=YP_009041396.1;transl_table=11;translation=length.60
+NC_005880	GenBank	exon	124864	125046	.	+	1	Parent=CPT_phageK_gp092.t01
+NC_005880	GenBank	gene	125059	125427	.	+	1	ID=CPT_phageK_gp091;Dbxref=GeneID:19622020;Name=CPT_phageK_gp091
+NC_005880	GenBank	mRNA	125059	125427	.	+	1	ID=CPT_phageK_gp091.t01;Parent=CPT_phageK_gp091
+NC_005880	GenBank	CDS	125059	125427	.	+	1	ID=CPT_phageK_gp091.p01;Parent=CPT_phageK_gp091.t01;Dbxref=GI:657184294,GeneID:19622020;Name=CPT_phageK_gp091;codon_start=1;product=hypothetical protein;protein_id=YP_009041397.1;transl_table=11;translation=length.122
+NC_005880	GenBank	exon	125059	125427	.	+	1	Parent=CPT_phageK_gp091.t01
+NC_005880	GenBank	gene	125440	125787	.	+	1	ID=CPT_phageK_gp090;Dbxref=GeneID:19622021;Name=CPT_phageK_gp090
+NC_005880	GenBank	mRNA	125440	125787	.	+	1	ID=CPT_phageK_gp090.t01;Parent=CPT_phageK_gp090
+NC_005880	GenBank	CDS	125440	125787	.	+	1	ID=CPT_phageK_gp090.p01;Parent=CPT_phageK_gp090.t01;Dbxref=GI:657184295,GeneID:19622021;Name=CPT_phageK_gp090;codon_start=1;product=hypothetical protein;protein_id=YP_009041398.1;transl_table=11;translation=length.115
+NC_005880	GenBank	exon	125440	125787	.	+	1	Parent=CPT_phageK_gp090.t01
+NC_005880	GenBank	gene	125793	126065	.	+	1	ID=CPT_phageK_gp089;Dbxref=GeneID:19622022;Name=CPT_phageK_gp089
+NC_005880	GenBank	mRNA	125793	126065	.	+	1	ID=CPT_phageK_gp089.t01;Parent=CPT_phageK_gp089
+NC_005880	GenBank	CDS	125793	126065	.	+	1	ID=CPT_phageK_gp089.p01;Parent=CPT_phageK_gp089.t01;Dbxref=GI:657184296,GeneID:19622022;Name=CPT_phageK_gp089;codon_start=1;product=hypothetical protein;protein_id=YP_009041399.1;transl_table=11;translation=length.90
+NC_005880	GenBank	exon	125793	126065	.	+	1	Parent=CPT_phageK_gp089.t01
+NC_005880	GenBank	gene	126135	126440	.	+	1	ID=CPT_phageK_gp088;Dbxref=GeneID:19622023;Name=CPT_phageK_gp088
+NC_005880	GenBank	mRNA	126135	126440	.	+	1	ID=CPT_phageK_gp088.t01;Parent=CPT_phageK_gp088
+NC_005880	GenBank	CDS	126135	126440	.	+	1	ID=CPT_phageK_gp088.p01;Parent=CPT_phageK_gp088.t01;Dbxref=GI:657184297,GeneID:19622023;Name=CPT_phageK_gp088;codon_start=1;product=hypothetical protein;protein_id=YP_009041400.1;transl_table=11;translation=length.101
+NC_005880	GenBank	exon	126135	126440	.	+	1	Parent=CPT_phageK_gp088.t01
+NC_005880	GenBank	gene	126455	126805	.	+	1	ID=CPT_phageK_gp087;Dbxref=GeneID:19622024;Name=CPT_phageK_gp087
+NC_005880	GenBank	mRNA	126455	126805	.	+	1	ID=CPT_phageK_gp087.t01;Parent=CPT_phageK_gp087
+NC_005880	GenBank	CDS	126455	126805	.	+	1	ID=CPT_phageK_gp087.p01;Parent=CPT_phageK_gp087.t01;Dbxref=GI:657184298,GeneID:19622024;Name=CPT_phageK_gp087;codon_start=1;product=hypothetical protein;protein_id=YP_009041401.1;transl_table=11;translation=length.116
+NC_005880	GenBank	exon	126455	126805	.	+	1	Parent=CPT_phageK_gp087.t01
+NC_005880	GenBank	gene	126805	127407	.	+	1	ID=CPT_phageK_gp086;Dbxref=GeneID:19622025;Name=CPT_phageK_gp086
+NC_005880	GenBank	mRNA	126805	127407	.	+	1	ID=CPT_phageK_gp086.t01;Parent=CPT_phageK_gp086
+NC_005880	GenBank	CDS	126805	127407	.	+	1	ID=CPT_phageK_gp086.p01;Parent=CPT_phageK_gp086.t01;Dbxref=GI:657184299,GeneID:19622025;Name=CPT_phageK_gp086;codon_start=1;product=putative endonuclease;protein_id=YP_009041402.1;transl_table=11;translation=length.200
+NC_005880	GenBank	exon	126805	127407	.	+	1	Parent=CPT_phageK_gp086.t01
+NC_005880	GenBank	gene	127421	127600	.	+	1	ID=CPT_phageK_gp085;Dbxref=GeneID:19622026;Name=CPT_phageK_gp085
+NC_005880	GenBank	mRNA	127421	127600	.	+	1	ID=CPT_phageK_gp085.t01;Parent=CPT_phageK_gp085
+NC_005880	GenBank	CDS	127421	127600	.	+	1	ID=CPT_phageK_gp085.p01;Parent=CPT_phageK_gp085.t01;Dbxref=GI:657184300,GeneID:19622026;Name=CPT_phageK_gp085;codon_start=1;product=hypothetical protein;protein_id=YP_009041403.1;transl_table=11;translation=length.59
+NC_005880	GenBank	exon	127421	127600	.	+	1	Parent=CPT_phageK_gp085.t01
+NC_005880	GenBank	gene	127827	128228	.	+	1	ID=CPT_phageK_gp084;Dbxref=GeneID:19622027;Name=CPT_phageK_gp084
+NC_005880	GenBank	mRNA	127827	128228	.	+	1	ID=CPT_phageK_gp084.t01;Parent=CPT_phageK_gp084
+NC_005880	GenBank	CDS	127827	128228	.	+	1	ID=CPT_phageK_gp084.p01;Parent=CPT_phageK_gp084.t01;Dbxref=GI:657184301,GeneID:19622027;Name=CPT_phageK_gp084;codon_start=1;product=hypothetical protein;protein_id=YP_009041404.1;transl_table=11;translation=length.133
+NC_005880	GenBank	exon	127827	128228	.	+	1	Parent=CPT_phageK_gp084.t01
+NC_005880	GenBank	gene	128230	128523	.	+	1	ID=CPT_phageK_gp083;Dbxref=GeneID:19622028;Name=CPT_phageK_gp083
+NC_005880	GenBank	mRNA	128230	128523	.	+	1	ID=CPT_phageK_gp083.t01;Parent=CPT_phageK_gp083
+NC_005880	GenBank	CDS	128230	128523	.	+	1	ID=CPT_phageK_gp083.p01;Parent=CPT_phageK_gp083.t01;Dbxref=GI:657184302,GeneID:19622028;Name=CPT_phageK_gp083;codon_start=1;product=hypothetical protein;protein_id=YP_009041405.1;transl_table=11;translation=length.97
+NC_005880	GenBank	exon	128230	128523	.	+	1	Parent=CPT_phageK_gp083.t01
+NC_005880	GenBank	gene	128540	128827	.	+	1	ID=CPT_phageK_gp082;Dbxref=GeneID:19622029;Name=CPT_phageK_gp082
+NC_005880	GenBank	mRNA	128540	128827	.	+	1	ID=CPT_phageK_gp082.t01;Parent=CPT_phageK_gp082
+NC_005880	GenBank	CDS	128540	128827	.	+	1	ID=CPT_phageK_gp082.p01;Parent=CPT_phageK_gp082.t01;Dbxref=GI:657184303,GeneID:19622029;Name=CPT_phageK_gp082;codon_start=1;product=hypothetical protein;protein_id=YP_009041406.1;transl_table=11;translation=length.95
+NC_005880	GenBank	exon	128540	128827	.	+	1	Parent=CPT_phageK_gp082.t01
+NC_005880	GenBank	gene	128838	128954	.	+	1	ID=CPT_phageK_gp081;Dbxref=GeneID:19622030;Name=CPT_phageK_gp081
+NC_005880	GenBank	mRNA	128838	128954	.	+	1	ID=CPT_phageK_gp081.t01;Parent=CPT_phageK_gp081
+NC_005880	GenBank	CDS	128838	128954	.	+	1	ID=CPT_phageK_gp081.p01;Parent=CPT_phageK_gp081.t01;Dbxref=GI:657184304,GeneID:19622030;Name=CPT_phageK_gp081;codon_start=1;product=putative basic-leucine zipper domain protein;protein_id=YP_009041407.1;transl_table=11;translation=length.38
+NC_005880	GenBank	exon	128838	128954	.	+	1	Parent=CPT_phageK_gp081.t01
+NC_005880	GenBank	regulatory	129218	129240	.	+	1	ID=GenBank:regulatory:NC_005880:129218:129240;regulatory_class=terminator
+NC_005880	GenBank	gene	128944	129207	.	+	1	ID=CPT_phageK_gp080;Dbxref=GeneID:19622031;Name=CPT_phageK_gp080
+NC_005880	GenBank	mRNA	128944	129207	.	+	1	ID=CPT_phageK_gp080.t01;Parent=CPT_phageK_gp080
+NC_005880	GenBank	CDS	128944	129207	.	+	1	ID=CPT_phageK_gp080.p01;Parent=CPT_phageK_gp080.t01;Dbxref=GI:657184305,GeneID:19622031;Name=CPT_phageK_gp080;codon_start=1;product=hypothetical protein;protein_id=YP_009041408.1;transl_table=11;translation=length.87
+NC_005880	GenBank	exon	128944	129207	.	+	1	Parent=CPT_phageK_gp080.t01
+NC_005880	GenBank	gene	129284	129589	.	+	1	ID=CPT_phageK_gp079;Dbxref=GeneID:19622032;Name=CPT_phageK_gp079
+NC_005880	GenBank	mRNA	129284	129589	.	+	1	ID=CPT_phageK_gp079.t01;Parent=CPT_phageK_gp079
+NC_005880	GenBank	CDS	129284	129589	.	+	1	ID=CPT_phageK_gp079.p01;Parent=CPT_phageK_gp079.t01;Dbxref=GI:657184306,GeneID:19622032;Name=CPT_phageK_gp079;codon_start=1;product=hypothetical protein;protein_id=YP_009041409.1;transl_table=11;translation=length.101
+NC_005880	GenBank	exon	129284	129589	.	+	1	Parent=CPT_phageK_gp079.t01
+NC_005880	GenBank	gene	129589	129960	.	+	1	ID=CPT_phageK_gp078;Dbxref=GeneID:19622109;Name=CPT_phageK_gp078
+NC_005880	GenBank	mRNA	129589	129960	.	+	1	ID=CPT_phageK_gp078.t01;Parent=CPT_phageK_gp078
+NC_005880	GenBank	CDS	129589	129960	.	+	1	ID=CPT_phageK_gp078.p01;Parent=CPT_phageK_gp078.t01;Dbxref=GI:657184307,GeneID:19622109;Name=CPT_phageK_gp078;codon_start=1;product=hypothetical protein;protein_id=YP_009041410.1;transl_table=11;translation=length.123
+NC_005880	GenBank	exon	129589	129960	.	+	1	Parent=CPT_phageK_gp078.t01
+NC_005880	GenBank	gene	129998	130234	.	+	1	ID=CPT_phageK_gp077;Dbxref=GeneID:19622110;Name=CPT_phageK_gp077
+NC_005880	GenBank	mRNA	129998	130234	.	+	1	ID=CPT_phageK_gp077.t01;Parent=CPT_phageK_gp077
+NC_005880	GenBank	CDS	129998	130234	.	+	1	ID=CPT_phageK_gp077.p01;Parent=CPT_phageK_gp077.t01;Dbxref=GI:657184308,GeneID:19622110;Name=CPT_phageK_gp077;codon_start=1;product=hypothetical protein;protein_id=YP_009041411.1;transl_table=11;translation=length.78
+NC_005880	GenBank	exon	129998	130234	.	+	1	Parent=CPT_phageK_gp077.t01
+NC_005880	GenBank	gene	130231	130758	.	+	1	ID=CPT_phageK_gp076;Dbxref=GeneID:19622111;Name=CPT_phageK_gp076
+NC_005880	GenBank	mRNA	130231	130758	.	+	1	ID=CPT_phageK_gp076.t01;Parent=CPT_phageK_gp076
+NC_005880	GenBank	CDS	130231	130758	.	+	1	ID=CPT_phageK_gp076.p01;Parent=CPT_phageK_gp076.t01;Dbxref=GI:657184309,GeneID:19622111;Name=CPT_phageK_gp076;codon_start=1;product=putative metallophosphatase;protein_id=YP_009041412.1;transl_table=11;translation=length.175
+NC_005880	GenBank	exon	130231	130758	.	+	1	Parent=CPT_phageK_gp076.t01
+NC_005880	GenBank	gene	130739	131059	.	+	1	ID=CPT_phageK_gp075;Dbxref=GeneID:19622112;Name=CPT_phageK_gp075
+NC_005880	GenBank	mRNA	130739	131059	.	+	1	ID=CPT_phageK_gp075.t01;Parent=CPT_phageK_gp075
+NC_005880	GenBank	CDS	130739	131059	.	+	1	ID=CPT_phageK_gp075.p01;Parent=CPT_phageK_gp075.t01;Dbxref=GI:657184310,GeneID:19622112;Name=CPT_phageK_gp075;codon_start=1;product=hypothetical protein;protein_id=YP_009041413.1;transl_table=11;translation=length.106
+NC_005880	GenBank	exon	130739	131059	.	+	1	Parent=CPT_phageK_gp075.t01
+NC_005880	GenBank	gene	131059	131289	.	+	1	ID=CPT_phageK_gp074;Dbxref=GeneID:19622113;Name=CPT_phageK_gp074
+NC_005880	GenBank	mRNA	131059	131289	.	+	1	ID=CPT_phageK_gp074.t01;Parent=CPT_phageK_gp074
+NC_005880	GenBank	CDS	131059	131289	.	+	1	ID=CPT_phageK_gp074.p01;Parent=CPT_phageK_gp074.t01;Dbxref=GI:657184311,GeneID:19622113;Name=CPT_phageK_gp074;codon_start=1;product=hypothetical protein;protein_id=YP_009041414.1;transl_table=11;translation=length.76
+NC_005880	GenBank	exon	131059	131289	.	+	1	Parent=CPT_phageK_gp074.t01
+NC_005880	GenBank	gene	131342	131521	.	+	1	ID=CPT_phageK_gp073;Dbxref=GeneID:19622114;Name=CPT_phageK_gp073
+NC_005880	GenBank	mRNA	131342	131521	.	+	1	ID=CPT_phageK_gp073.t01;Parent=CPT_phageK_gp073
+NC_005880	GenBank	CDS	131342	131521	.	+	1	ID=CPT_phageK_gp073.p01;Parent=CPT_phageK_gp073.t01;Dbxref=GI:657184312,GeneID:19622114;Name=CPT_phageK_gp073;codon_start=1;product=hypothetical protein;protein_id=YP_009041415.1;transl_table=11;translation=length.59
+NC_005880	GenBank	exon	131342	131521	.	+	1	Parent=CPT_phageK_gp073.t01
+NC_005880	GenBank	gene	131536	131799	.	+	1	ID=CPT_phageK_gp072;Dbxref=GeneID:19622115;Name=CPT_phageK_gp072
+NC_005880	GenBank	mRNA	131536	131799	.	+	1	ID=CPT_phageK_gp072.t01;Parent=CPT_phageK_gp072
+NC_005880	GenBank	CDS	131536	131799	.	+	1	ID=CPT_phageK_gp072.p01;Parent=CPT_phageK_gp072.t01;Dbxref=GI:657184313,GeneID:19622115;Name=CPT_phageK_gp072;codon_start=1;product=hypothetical protein;protein_id=YP_009041416.1;transl_table=11;translation=length.87
+NC_005880	GenBank	exon	131536	131799	.	+	1	Parent=CPT_phageK_gp072.t01
+NC_005880	GenBank	gene	131802	132119	.	+	1	ID=CPT_phageK_gp071;Dbxref=GeneID:19622116;Name=CPT_phageK_gp071
+NC_005880	GenBank	mRNA	131802	132119	.	+	1	ID=CPT_phageK_gp071.t01;Parent=CPT_phageK_gp071
+NC_005880	GenBank	CDS	131802	132119	.	+	1	ID=CPT_phageK_gp071.p01;Parent=CPT_phageK_gp071.t01;Dbxref=GI:657184314,GeneID:19622116;Name=CPT_phageK_gp071;codon_start=1;product=hypothetical protein;protein_id=YP_009041417.1;transl_table=11;translation=length.105
+NC_005880	GenBank	exon	131802	132119	.	+	1	Parent=CPT_phageK_gp071.t01
+NC_005880	GenBank	regulatory	132814	132843	.	+	1	ID=GenBank:regulatory:NC_005880:132814:132843;regulatory_class=terminator
+NC_005880	GenBank	gene	132120	132800	.	+	1	ID=CPT_phageK_gp070;Dbxref=GeneID:19622117;Name=CPT_phageK_gp070
+NC_005880	GenBank	mRNA	132120	132800	.	+	1	ID=CPT_phageK_gp070.t01;Parent=CPT_phageK_gp070
+NC_005880	GenBank	CDS	132120	132800	.	+	1	ID=CPT_phageK_gp070.p01;Parent=CPT_phageK_gp070.t01;Dbxref=GI:657184315,GeneID:19622117;Name=CPT_phageK_gp070;codon_start=1;product=hypothetical protein;protein_id=YP_009041418.1;transl_table=11;translation=length.226
+NC_005880	GenBank	exon	132120	132800	.	+	1	Parent=CPT_phageK_gp070.t01
+NC_005880	GenBank	gene	132889	133047	.	+	1	ID=CPT_phageK_gp069;Dbxref=GeneID:19622118;Name=CPT_phageK_gp069
+NC_005880	GenBank	mRNA	132889	133047	.	+	1	ID=CPT_phageK_gp069.t01;Parent=CPT_phageK_gp069
+NC_005880	GenBank	CDS	132889	133047	.	+	1	ID=CPT_phageK_gp069.p01;Parent=CPT_phageK_gp069.t01;Dbxref=GI:657184316,GeneID:19622118;Name=CPT_phageK_gp069;codon_start=1;product=hypothetical protein;protein_id=YP_009041419.1;transl_table=11;translation=length.52
+NC_005880	GenBank	exon	132889	133047	.	+	1	Parent=CPT_phageK_gp069.t01
+NC_005880	GenBank	gene	133082	133282	.	+	1	ID=CPT_phageK_gp068;Dbxref=GeneID:19622119;Name=CPT_phageK_gp068
+NC_005880	GenBank	mRNA	133082	133282	.	+	1	ID=CPT_phageK_gp068.t01;Parent=CPT_phageK_gp068
+NC_005880	GenBank	CDS	133082	133282	.	+	1	ID=CPT_phageK_gp068.p01;Parent=CPT_phageK_gp068.t01;Dbxref=GI:657184317,GeneID:19622119;Name=CPT_phageK_gp068;codon_start=1;product=hypothetical protein;protein_id=YP_009041420.1;transl_table=11;translation=length.66
+NC_005880	GenBank	exon	133082	133282	.	+	1	Parent=CPT_phageK_gp068.t01
+NC_005880	GenBank	gene	133283	133573	.	+	1	ID=CPT_phageK_gp067;Dbxref=GeneID:19622120;Name=CPT_phageK_gp067
+NC_005880	GenBank	mRNA	133283	133573	.	+	1	ID=CPT_phageK_gp067.t01;Parent=CPT_phageK_gp067
+NC_005880	GenBank	CDS	133283	133573	.	+	1	ID=CPT_phageK_gp067.p01;Parent=CPT_phageK_gp067.t01;Dbxref=GI:657184318,GeneID:19622120;Name=CPT_phageK_gp067;codon_start=1;product=hypothetical protein;protein_id=YP_009041421.1;transl_table=11;translation=length.96
+NC_005880	GenBank	exon	133283	133573	.	+	1	Parent=CPT_phageK_gp067.t01
+NC_005880	GenBank	gene	133665	133973	.	+	1	ID=CPT_phageK_gp066;Dbxref=GeneID:19622121;Name=CPT_phageK_gp066
+NC_005880	GenBank	mRNA	133665	133973	.	+	1	ID=CPT_phageK_gp066.t01;Parent=CPT_phageK_gp066
+NC_005880	GenBank	CDS	133665	133973	.	+	1	ID=CPT_phageK_gp066.p01;Parent=CPT_phageK_gp066.t01;Dbxref=GI:657184319,GeneID:19622121;Name=CPT_phageK_gp066;codon_start=1;product=hypothetical protein;protein_id=YP_009041422.1;transl_table=11;translation=length.102
+NC_005880	GenBank	exon	133665	133973	.	+	1	Parent=CPT_phageK_gp066.t01
+NC_005880	GenBank	gene	133970	134878	.	+	1	ID=CPT_phageK_gp065;Dbxref=GeneID:19622122;Name=CPT_phageK_gp065
+NC_005880	GenBank	mRNA	133970	134878	.	+	1	ID=CPT_phageK_gp065.t01;Parent=CPT_phageK_gp065
+NC_005880	GenBank	CDS	133970	134878	.	+	1	ID=CPT_phageK_gp065.p01;Parent=CPT_phageK_gp065.t01;Dbxref=GI:657184320,GeneID:19622122;Name=CPT_phageK_gp065;codon_start=1;product=putative PRTase-like protein;protein_id=YP_009041423.1;transl_table=11;translation=length.302
+NC_005880	GenBank	exon	133970	134878	.	+	1	Parent=CPT_phageK_gp065.t01
+NC_005880	GenBank	regulatory	136378	136397	.	+	1	ID=GenBank:regulatory:NC_005880:136378:136397;regulatory_class=terminator
+NC_005880	GenBank	gene	134896	136365	.	+	1	ID=CPT_phageK_gp064;Dbxref=GeneID:19622123;Name=CPT_phageK_gp064
+NC_005880	GenBank	mRNA	134896	136365	.	+	1	ID=CPT_phageK_gp064.t01;Parent=CPT_phageK_gp064
+NC_005880	GenBank	CDS	134896	136365	.	+	1	ID=CPT_phageK_gp064.p01;Parent=CPT_phageK_gp064.t01;Dbxref=GI:657184321,GeneID:19622123;Name=CPT_phageK_gp064;codon_start=1;product=putative nicotinate phosphoribosyltransferase;protein_id=YP_009041424.1;transl_table=11;translation=length.489
+NC_005880	GenBank	exon	134896	136365	.	+	1	Parent=CPT_phageK_gp064.t01
+NC_005880	GenBank	gene	136444	136689	.	+	1	ID=CPT_phageK_gp063;Dbxref=GeneID:19622124;Name=CPT_phageK_gp063
+NC_005880	GenBank	mRNA	136444	136689	.	+	1	ID=CPT_phageK_gp063.t01;Parent=CPT_phageK_gp063
+NC_005880	GenBank	CDS	136444	136689	.	+	1	ID=CPT_phageK_gp063.p01;Parent=CPT_phageK_gp063.t01;Dbxref=GI:657184322,GeneID:19622124;Name=CPT_phageK_gp063;codon_start=1;product=hypothetical protein;protein_id=YP_009041425.1;transl_table=11;translation=length.81
+NC_005880	GenBank	exon	136444	136689	.	+	1	Parent=CPT_phageK_gp063.t01
+NC_005880	GenBank	gene	136706	137101	.	+	1	ID=CPT_phageK_gp062;Dbxref=GeneID:19622125;Name=CPT_phageK_gp062
+NC_005880	GenBank	mRNA	136706	137101	.	+	1	ID=CPT_phageK_gp062.t01;Parent=CPT_phageK_gp062
+NC_005880	GenBank	CDS	136706	137101	.	+	1	ID=CPT_phageK_gp062.p01;Parent=CPT_phageK_gp062.t01;Dbxref=GI:657184323,GeneID:19622125;Name=CPT_phageK_gp062;codon_start=1;product=hypothetical protein;protein_id=YP_009041426.1;transl_table=11;translation=length.131
+NC_005880	GenBank	exon	136706	137101	.	+	1	Parent=CPT_phageK_gp062.t01
+NC_005880	GenBank	gene	137098	137349	.	+	1	ID=CPT_phageK_gp061;Dbxref=GeneID:19622126;Name=CPT_phageK_gp061
+NC_005880	GenBank	mRNA	137098	137349	.	+	1	ID=CPT_phageK_gp061.t01;Parent=CPT_phageK_gp061
+NC_005880	GenBank	CDS	137098	137349	.	+	1	ID=CPT_phageK_gp061.p01;Parent=CPT_phageK_gp061.t01;Dbxref=GI:657184324,GeneID:19622126;Name=CPT_phageK_gp061;codon_start=1;product=hypothetical protein;protein_id=YP_009041427.1;transl_table=11;translation=length.83
+NC_005880	GenBank	exon	137098	137349	.	+	1	Parent=CPT_phageK_gp061.t01
+NC_005880	GenBank	gene	137414	137710	.	+	1	ID=CPT_phageK_gp060;Dbxref=GeneID:19622127;Name=CPT_phageK_gp060
+NC_005880	GenBank	mRNA	137414	137710	.	+	1	ID=CPT_phageK_gp060.t01;Parent=CPT_phageK_gp060
+NC_005880	GenBank	CDS	137414	137710	.	+	1	ID=CPT_phageK_gp060.p01;Parent=CPT_phageK_gp060.t01;Dbxref=GI:657184325,GeneID:19622127;Name=CPT_phageK_gp060;codon_start=1;product=hypothetical protein;protein_id=YP_009041428.1;transl_table=11;translation=length.98
+NC_005880	GenBank	exon	137414	137710	.	+	1	Parent=CPT_phageK_gp060.t01
+NC_005880	GenBank	gene	137714	138025	.	+	1	ID=CPT_phageK_gp059;Dbxref=GeneID:19622128;Name=CPT_phageK_gp059
+NC_005880	GenBank	mRNA	137714	138025	.	+	1	ID=CPT_phageK_gp059.t01;Parent=CPT_phageK_gp059
+NC_005880	GenBank	CDS	137714	138025	.	+	1	ID=CPT_phageK_gp059.p01;Parent=CPT_phageK_gp059.t01;Dbxref=GI:657184326,GeneID:19622128;Name=CPT_phageK_gp059;codon_start=1;product=hypothetical protein;protein_id=YP_009041429.1;transl_table=11;translation=length.103
+NC_005880	GenBank	exon	137714	138025	.	+	1	Parent=CPT_phageK_gp059.t01
+NC_005880	GenBank	gene	138031	138330	.	+	1	ID=CPT_phageK_gp058;Dbxref=GeneID:19622129;Name=CPT_phageK_gp058
+NC_005880	GenBank	mRNA	138031	138330	.	+	1	ID=CPT_phageK_gp058.t01;Parent=CPT_phageK_gp058
+NC_005880	GenBank	CDS	138031	138330	.	+	1	ID=CPT_phageK_gp058.p01;Parent=CPT_phageK_gp058.t01;Dbxref=GI:657184327,GeneID:19622129;Name=CPT_phageK_gp058;codon_start=1;product=hypothetical protein;protein_id=YP_009041430.1;transl_table=11;translation=length.99
+NC_005880	GenBank	exon	138031	138330	.	+	1	Parent=CPT_phageK_gp058.t01
+NC_005880	GenBank	gene	138409	138636	.	+	1	ID=CPT_phageK_gp057;Dbxref=GeneID:19622130;Name=CPT_phageK_gp057
+NC_005880	GenBank	mRNA	138409	138636	.	+	1	ID=CPT_phageK_gp057.t01;Parent=CPT_phageK_gp057
+NC_005880	GenBank	CDS	138409	138636	.	+	1	ID=CPT_phageK_gp057.p01;Parent=CPT_phageK_gp057.t01;Dbxref=GI:657184328,GeneID:19622130;Name=CPT_phageK_gp057;codon_start=1;product=hypothetical protein;protein_id=YP_009041431.1;transl_table=11;translation=length.75
+NC_005880	GenBank	exon	138409	138636	.	+	1	Parent=CPT_phageK_gp057.t01
+NC_005880	GenBank	gene	138664	138858	.	+	1	ID=CPT_phageK_gp056;Dbxref=GeneID:19622131;Name=CPT_phageK_gp056
+NC_005880	GenBank	mRNA	138664	138858	.	+	1	ID=CPT_phageK_gp056.t01;Parent=CPT_phageK_gp056
+NC_005880	GenBank	CDS	138664	138858	.	+	1	ID=CPT_phageK_gp056.p01;Parent=CPT_phageK_gp056.t01;Dbxref=GI:657184329,GeneID:19622131;Name=CPT_phageK_gp056;codon_start=1;product=hypothetical protein;protein_id=YP_009041432.1;transl_table=11;translation=length.64
+NC_005880	GenBank	exon	138664	138858	.	+	1	Parent=CPT_phageK_gp056.t01
+NC_005880	GenBank	gene	138877	139230	.	+	1	ID=CPT_phageK_gp055;Dbxref=GeneID:19622132;Name=CPT_phageK_gp055
+NC_005880	GenBank	mRNA	138877	139230	.	+	1	ID=CPT_phageK_gp055.t01;Parent=CPT_phageK_gp055
+NC_005880	GenBank	CDS	138877	139230	.	+	1	ID=CPT_phageK_gp055.p01;Parent=CPT_phageK_gp055.t01;Dbxref=GI:657184330,GeneID:19622132;Name=CPT_phageK_gp055;codon_start=1;product=hypothetical protein;protein_id=YP_009041433.1;transl_table=11;translation=length.117
+NC_005880	GenBank	exon	138877	139230	.	+	1	Parent=CPT_phageK_gp055.t01
+NC_005880	GenBank	repeat_region	139832	148317	.	+	1	ID=GenBank:repeat_region:NC_005880:139832:148317;Note=inferred from sequence similarity to terminal repeat boundaries in other K-like phages;rpt_type=terminal
+NC_005880	GenBank	gene	139249	139635	.	+	1	ID=CPT_phageK_gp054;Dbxref=GeneID:19622133;Name=CPT_phageK_gp054
+NC_005880	GenBank	mRNA	139249	139635	.	+	1	ID=CPT_phageK_gp054.t01;Parent=CPT_phageK_gp054
+NC_005880	GenBank	CDS	139249	139635	.	+	1	ID=CPT_phageK_gp054.p01;Parent=CPT_phageK_gp054.t01;Dbxref=GI:657184331,GeneID:19622133;Name=CPT_phageK_gp054;codon_start=1;product=hypothetical protein;protein_id=YP_009041434.1;transl_table=11;translation=length.128
+NC_005880	GenBank	exon	139249	139635	.	+	1	Parent=CPT_phageK_gp054.t01
+NC_005880	GenBank	gene	140317	140616	.	+	1	ID=CPT_phageK_gp053;Dbxref=GeneID:19622134;Name=CPT_phageK_gp053
+NC_005880	GenBank	mRNA	140317	140616	.	+	1	ID=CPT_phageK_gp053.t01;Parent=CPT_phageK_gp053
+NC_005880	GenBank	CDS	140317	140616	.	+	1	ID=CPT_phageK_gp053.p01;Parent=CPT_phageK_gp053.t01;Dbxref=GI:657184332,GeneID:19622134;Name=CPT_phageK_gp053;codon_start=1;product=hypothetical protein;protein_id=YP_009041435.1;transl_table=11;translation=length.99
+NC_005880	GenBank	exon	140317	140616	.	+	1	Parent=CPT_phageK_gp053.t01
+NC_005880	GenBank	gene	140632	140817	.	+	1	ID=CPT_phageK_gp052;Dbxref=GeneID:19622135;Name=CPT_phageK_gp052
+NC_005880	GenBank	mRNA	140632	140817	.	+	1	ID=CPT_phageK_gp052.t01;Parent=CPT_phageK_gp052
+NC_005880	GenBank	CDS	140632	140817	.	+	1	ID=CPT_phageK_gp052.p01;Parent=CPT_phageK_gp052.t01;Dbxref=GI:657184333,GeneID:19622135;Name=CPT_phageK_gp052;codon_start=1;product=hypothetical protein;protein_id=YP_009041436.1;transl_table=11;translation=length.61
+NC_005880	GenBank	exon	140632	140817	.	+	1	Parent=CPT_phageK_gp052.t01
+NC_005880	GenBank	gene	140924	141211	.	+	1	ID=CPT_phageK_gp051;Dbxref=GeneID:19622136;Name=CPT_phageK_gp051
+NC_005880	GenBank	mRNA	140924	141211	.	+	1	ID=CPT_phageK_gp051.t01;Parent=CPT_phageK_gp051
+NC_005880	GenBank	CDS	140924	141211	.	+	1	ID=CPT_phageK_gp051.p01;Parent=CPT_phageK_gp051.t01;Dbxref=GI:657184334,GeneID:19622136;Name=CPT_phageK_gp051;codon_start=1;product=hypothetical protein;protein_id=YP_009041437.1;transl_table=11;translation=length.95
+NC_005880	GenBank	exon	140924	141211	.	+	1	Parent=CPT_phageK_gp051.t01
+NC_005880	GenBank	gene	141211	141537	.	+	1	ID=CPT_phageK_gp050;Dbxref=GeneID:19622137;Name=CPT_phageK_gp050
+NC_005880	GenBank	mRNA	141211	141537	.	+	1	ID=CPT_phageK_gp050.t01;Parent=CPT_phageK_gp050
+NC_005880	GenBank	CDS	141211	141537	.	+	1	ID=CPT_phageK_gp050.p01;Parent=CPT_phageK_gp050.t01;Dbxref=GI:657184335,GeneID:19622137;Name=CPT_phageK_gp050;codon_start=1;product=hypothetical protein;protein_id=YP_009041438.1;transl_table=11;translation=length.108
+NC_005880	GenBank	exon	141211	141537	.	+	1	Parent=CPT_phageK_gp050.t01
+NC_005880	GenBank	gene	141553	141846	.	+	1	ID=CPT_phageK_gp049;Dbxref=GeneID:19622138;Name=CPT_phageK_gp049
+NC_005880	GenBank	mRNA	141553	141846	.	+	1	ID=CPT_phageK_gp049.t01;Parent=CPT_phageK_gp049
+NC_005880	GenBank	CDS	141553	141846	.	+	1	ID=CPT_phageK_gp049.p01;Parent=CPT_phageK_gp049.t01;Dbxref=GI:657184336,GeneID:19622138;Name=CPT_phageK_gp049;codon_start=1;product=hypothetical protein;protein_id=YP_009041439.1;transl_table=11;translation=length.97
+NC_005880	GenBank	exon	141553	141846	.	+	1	Parent=CPT_phageK_gp049.t01
+NC_005880	GenBank	gene	141850	142107	.	+	1	ID=CPT_phageK_gp048;Dbxref=GeneID:19622139;Name=CPT_phageK_gp048
+NC_005880	GenBank	mRNA	141850	142107	.	+	1	ID=CPT_phageK_gp048.t01;Parent=CPT_phageK_gp048
+NC_005880	GenBank	CDS	141850	142107	.	+	1	ID=CPT_phageK_gp048.p01;Parent=CPT_phageK_gp048.t01;Dbxref=GI:657184337,GeneID:19622139;Name=CPT_phageK_gp048;codon_start=1;product=hypothetical protein;protein_id=YP_009041440.1;transl_table=11;translation=length.85
+NC_005880	GenBank	exon	141850	142107	.	+	1	Parent=CPT_phageK_gp048.t01
+NC_005880	GenBank	gene	142185	142424	.	+	1	ID=CPT_phageK_gp047;Dbxref=GeneID:19622140;Name=CPT_phageK_gp047
+NC_005880	GenBank	mRNA	142185	142424	.	+	1	ID=CPT_phageK_gp047.t01;Parent=CPT_phageK_gp047
+NC_005880	GenBank	CDS	142185	142424	.	+	1	ID=CPT_phageK_gp047.p01;Parent=CPT_phageK_gp047.t01;Dbxref=GI:657184338,GeneID:19622140;Name=CPT_phageK_gp047;codon_start=1;product=hypothetical protein;protein_id=YP_009041441.1;transl_table=11;translation=length.79
+NC_005880	GenBank	exon	142185	142424	.	+	1	Parent=CPT_phageK_gp047.t01
+NC_005880	GenBank	regulatory	142954	142979	.	-	1	ID=GenBank:regulatory:NC_005880:142954:142979;regulatory_class=terminator
+NC_005880	GenBank	gene	142435	142782	.	+	1	ID=CPT_phageK_gp046;Dbxref=GeneID:19622141;Name=CPT_phageK_gp046
+NC_005880	GenBank	mRNA	142435	142782	.	+	1	ID=CPT_phageK_gp046.t01;Parent=CPT_phageK_gp046
+NC_005880	GenBank	CDS	142435	142782	.	+	1	ID=CPT_phageK_gp046.p01;Parent=CPT_phageK_gp046.t01;Dbxref=GI:657184339,GeneID:19622141;Name=CPT_phageK_gp046;codon_start=1;product=hypothetical protein;protein_id=YP_009041442.1;transl_table=11;translation=length.115
+NC_005880	GenBank	exon	142435	142782	.	+	1	Parent=CPT_phageK_gp046.t01
+NC_005880	GenBank	gene	142993	143331	.	-	1	ID=CPT_phageK_gp045;Dbxref=GeneID:19622142;Name=CPT_phageK_gp045
+NC_005880	GenBank	mRNA	142993	143331	.	-	1	ID=CPT_phageK_gp045.t01;Parent=CPT_phageK_gp045
+NC_005880	GenBank	CDS	142993	143331	.	-	1	ID=CPT_phageK_gp045.p01;Parent=CPT_phageK_gp045.t01;Dbxref=GI:657184340,GeneID:19622142;Name=CPT_phageK_gp045;codon_start=1;product=hypothetical protein;protein_id=YP_009041443.1;transl_table=11;translation=length.112
+NC_005880	GenBank	exon	142993	143331	.	-	1	Parent=CPT_phageK_gp045.t01
+NC_005880	GenBank	gene	143642	143950	.	+	1	ID=CPT_phageK_gp044;Dbxref=GeneID:19622143;Name=CPT_phageK_gp044
+NC_005880	GenBank	mRNA	143642	143950	.	+	1	ID=CPT_phageK_gp044.t01;Parent=CPT_phageK_gp044
+NC_005880	GenBank	CDS	143642	143950	.	+	1	ID=CPT_phageK_gp044.p01;Parent=CPT_phageK_gp044.t01;Dbxref=GI:657184341,GeneID:19622143;Name=CPT_phageK_gp044;codon_start=1;product=hypothetical protein;protein_id=YP_009041444.1;transl_table=11;translation=length.102
+NC_005880	GenBank	exon	143642	143950	.	+	1	Parent=CPT_phageK_gp044.t01
+NC_005880	GenBank	gene	144156	144443	.	+	1	ID=CPT_phageK_gp043;Dbxref=GeneID:19622144;Name=CPT_phageK_gp043
+NC_005880	GenBank	mRNA	144156	144443	.	+	1	ID=CPT_phageK_gp043.t01;Parent=CPT_phageK_gp043
+NC_005880	GenBank	CDS	144156	144443	.	+	1	ID=CPT_phageK_gp043.p01;Parent=CPT_phageK_gp043.t01;Dbxref=GI:657184342,GeneID:19622144;Name=CPT_phageK_gp043;codon_start=1;product=hypothetical protein;protein_id=YP_009041445.1;transl_table=11;translation=length.95
+NC_005880	GenBank	exon	144156	144443	.	+	1	Parent=CPT_phageK_gp043.t01
+NC_005880	GenBank	regulatory	144705	144728	.	+	1	ID=GenBank:regulatory:NC_005880:144705:144728;regulatory_class=terminator
+NC_005880	GenBank	regulatory	144981	144999	.	-	1	ID=GenBank:regulatory:NC_005880:144981:144999;regulatory_class=terminator
+NC_005880	GenBank	gene	144493	144684	.	+	1	ID=CPT_phageK_gp042;Dbxref=GeneID:19622145;Name=CPT_phageK_gp042
+NC_005880	GenBank	mRNA	144493	144684	.	+	1	ID=CPT_phageK_gp042.t01;Parent=CPT_phageK_gp042
+NC_005880	GenBank	CDS	144493	144684	.	+	1	ID=CPT_phageK_gp042.p01;Parent=CPT_phageK_gp042.t01;Dbxref=GI:657184343,GeneID:19622145;Name=CPT_phageK_gp042;codon_start=1;product=hypothetical protein;protein_id=YP_009041446.1;transl_table=11;translation=length.63
+NC_005880	GenBank	exon	144493	144684	.	+	1	Parent=CPT_phageK_gp042.t01
+NC_005880	GenBank	gene	145001	145489	.	-	1	ID=CPT_phageK_gp041;Dbxref=GeneID:19622146;Name=CPT_phageK_gp041
+NC_005880	GenBank	mRNA	145001	145489	.	-	1	ID=CPT_phageK_gp041.t01;Parent=CPT_phageK_gp041
+NC_005880	GenBank	CDS	145001	145489	.	-	1	ID=CPT_phageK_gp041.p01;Parent=CPT_phageK_gp041.t01;Dbxref=GI:657184344,GeneID:19622146;Name=CPT_phageK_gp041;codon_start=1;product=putative HNH endonuclease;protein_id=YP_009041447.1;transl_table=11;translation=length.162
+NC_005880	GenBank	exon	145001	145489	.	-	1	Parent=CPT_phageK_gp041.t01
+NC_005880	GenBank	gene	145657	145815	.	+	1	ID=CPT_phageK_gp040;Dbxref=GeneID:19622147;Name=CPT_phageK_gp040
+NC_005880	GenBank	mRNA	145657	145815	.	+	1	ID=CPT_phageK_gp040.t01;Parent=CPT_phageK_gp040
+NC_005880	GenBank	CDS	145657	145815	.	+	1	ID=CPT_phageK_gp040.p01;Parent=CPT_phageK_gp040.t01;Dbxref=GI:657184345,GeneID:19622147;Name=CPT_phageK_gp040;codon_start=1;product=hypothetical protein;protein_id=YP_009041448.1;transl_table=11;translation=length.52
+NC_005880	GenBank	exon	145657	145815	.	+	1	Parent=CPT_phageK_gp040.t01
+NC_005880	GenBank	gene	145885	146016	.	+	1	ID=CPT_phageK_gp039;Dbxref=GeneID:19622148;Name=CPT_phageK_gp039
+NC_005880	GenBank	mRNA	145885	146016	.	+	1	ID=CPT_phageK_gp039.t01;Parent=CPT_phageK_gp039
+NC_005880	GenBank	CDS	145885	146016	.	+	1	ID=CPT_phageK_gp039.p01;Parent=CPT_phageK_gp039.t01;Dbxref=GI:657184346,GeneID:19622148;Name=CPT_phageK_gp039;codon_start=1;product=hypothetical protein;protein_id=YP_009041449.1;transl_table=11;translation=length.43
+NC_005880	GenBank	exon	145885	146016	.	+	1	Parent=CPT_phageK_gp039.t01
+NC_005880	GenBank	gene	146184	146507	.	+	1	ID=CPT_phageK_gp038;Dbxref=GeneID:19622149;Name=CPT_phageK_gp038
+NC_005880	GenBank	mRNA	146184	146507	.	+	1	ID=CPT_phageK_gp038.t01;Parent=CPT_phageK_gp038
+NC_005880	GenBank	CDS	146184	146507	.	+	1	ID=CPT_phageK_gp038.p01;Parent=CPT_phageK_gp038.t01;Dbxref=GI:657184347,GeneID:19622149;Name=CPT_phageK_gp038;codon_start=1;product=hypothetical protein;protein_id=YP_009041450.1;transl_table=11;translation=length.107
+NC_005880	GenBank	exon	146184	146507	.	+	1	Parent=CPT_phageK_gp038.t01
+NC_005880	GenBank	gene	146607	146843	.	+	1	ID=CPT_phageK_gp037;Dbxref=GeneID:19622150;Name=CPT_phageK_gp037
+NC_005880	GenBank	mRNA	146607	146843	.	+	1	ID=CPT_phageK_gp037.t01;Parent=CPT_phageK_gp037
+NC_005880	GenBank	CDS	146607	146843	.	+	1	ID=CPT_phageK_gp037.p01;Parent=CPT_phageK_gp037.t01;Dbxref=GI:657184348,GeneID:19622150;Name=CPT_phageK_gp037;codon_start=1;product=hypothetical protein;protein_id=YP_009041451.1;transl_table=11;translation=length.78
+NC_005880	GenBank	exon	146607	146843	.	+	1	Parent=CPT_phageK_gp037.t01
+NC_005880	GenBank	gene	146923	147393	.	+	1	ID=CPT_phageK_gp036;Dbxref=GeneID:19622151;Name=CPT_phageK_gp036
+NC_005880	GenBank	mRNA	146923	147393	.	+	1	ID=CPT_phageK_gp036.t01;Parent=CPT_phageK_gp036
+NC_005880	GenBank	CDS	146923	147393	.	+	1	ID=CPT_phageK_gp036.p01;Parent=CPT_phageK_gp036.t01;Dbxref=GI:657184349,GeneID:19622151;Name=CPT_phageK_gp036;codon_start=1;product=hypothetical protein;protein_id=YP_009041452.1;transl_table=11;translation=length.156
+NC_005880	GenBank	exon	146923	147393	.	+	1	Parent=CPT_phageK_gp036.t01
+NC_005880	GenBank	gene	147452	147625	.	+	1	ID=CPT_phageK_gp035;Dbxref=GeneID:19622152;Name=CPT_phageK_gp035
+NC_005880	GenBank	mRNA	147452	147625	.	+	1	ID=CPT_phageK_gp035.t01;Parent=CPT_phageK_gp035
+NC_005880	GenBank	CDS	147452	147625	.	+	1	ID=CPT_phageK_gp035.p01;Parent=CPT_phageK_gp035.t01;Dbxref=GI:657184350,GeneID:19622152;Name=CPT_phageK_gp035;codon_start=1;product=hypothetical protein;protein_id=YP_009041453.1;transl_table=11;translation=length.57
+NC_005880	GenBank	exon	147452	147625	.	+	1	Parent=CPT_phageK_gp035.t01
+NC_005880	GenBank	gene	147625	147894	.	+	1	ID=CPT_phageK_gp034;Dbxref=GeneID:19622153;Name=CPT_phageK_gp034
+NC_005880	GenBank	mRNA	147625	147894	.	+	1	ID=CPT_phageK_gp034.t01;Parent=CPT_phageK_gp034
+NC_005880	GenBank	CDS	147625	147894	.	+	1	ID=CPT_phageK_gp034.p01;Parent=CPT_phageK_gp034.t01;Dbxref=GI:657184351,GeneID:19622153;Name=CPT_phageK_gp034;codon_start=1;product=hypothetical protein;protein_id=YP_009041454.1;transl_table=11;translation=length.89
+NC_005880	GenBank	exon	147625	147894	.	+	1	Parent=CPT_phageK_gp034.t01
+NC_005880	GenBank	regulatory	148201	148218	.	+	1	ID=GenBank:regulatory:NC_005880:148201:148218;regulatory_class=terminator
+NC_005880	GenBank	gene	147979	148200	.	+	1	ID=CPT_phageK_gp033;Dbxref=GeneID:19622154;Name=CPT_phageK_gp033
+NC_005880	GenBank	mRNA	147979	148200	.	+	1	ID=CPT_phageK_gp033.t01;Parent=CPT_phageK_gp033
+NC_005880	GenBank	CDS	147979	148200	.	+	1	ID=CPT_phageK_gp033.p01;Parent=CPT_phageK_gp033.t01;Dbxref=GI:657184352,GeneID:19622154;Name=CPT_phageK_gp033;codon_start=1;product=hypothetical protein;protein_id=YP_009041455.1;transl_table=11;translation=length.73
+NC_005880	GenBank	exon	147979	148200	.	+	1	Parent=CPT_phageK_gp033.t01

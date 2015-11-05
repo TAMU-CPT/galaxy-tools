@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import logging
-import random
 import copy
 logging.basicConfig(level=logging.INFO)
 import argparse

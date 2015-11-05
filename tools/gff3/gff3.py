@@ -1,5 +1,6 @@
 import copy
 
+
 def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
     """Recursively search through features, testing each with a test function, yielding matches.
 
@@ -51,8 +52,10 @@ def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
             for x in feature_lambda(feature.sub_features, test, test_kwargs, subfeatures=subfeatures):
                 yield x
 
+
 def feature_test_type(feature, **kwargs):
     return feature.type == kwargs['type']
+
 
 def feature_test_qual_value(feature, **kwargs):
     """Test qualifier values.
@@ -65,6 +68,7 @@ def feature_test_qual_value(feature, **kwargs):
             return True
     return False
 
+
 def feature_test_quals(feature, **kwargs):
     for key in kwargs:
         if key not in feature.qualifiers:
@@ -75,14 +79,16 @@ def feature_test_quals(feature, **kwargs):
                 return False
     return True
 
+
 def feature_test_contains(feature, **kwargs):
     if 'index' in kwargs:
         return feature.location.start < kwargs['index'] < feature.location.end
     elif 'range' in kwargs:
         return feature.location.start < kwargs['range']['start'] < feature.location.end and \
-                feature.location.start < kwargs['range']['end'] < feature.location.end
+            feature.location.start < kwargs['range']['end'] < feature.location.end
     else:
         raise RuntimeError('Must use index or range keyword')
+
 
 def get_id(feature=None, parent_prefix=None):
     result = ""

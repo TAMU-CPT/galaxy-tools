@@ -36,15 +36,32 @@ These questions are intended to reinforce key concepts that should be part of yo
     parser.add_argument('--trna', help='# of tRNAs', type=int)
     parser.add_argument('--terminators', help='# of terminators', type=int)
 
-    parser.add_argument('--missing_core', help='Are there any core genes missing or out of place? Identify and explain.')
-    parser.add_argument('--no_phage_homos', help='Do you have any gene with assigned function that has no phage sequence homolog? We are interested in "bacteria only" hits--this does not include your hypothetical novel genes. Justify the inclusion of bacteria-only annotations.')
-    parser.add_argument('--unusual', nargs='+', help='What unusual or unexpected genes or genomic features did you find? (e.g., morons, introns, inteins, invertible sequences, etc. and genes that have unique features')
-    parser.add_argument('--no_sd', nargs='+', help='Do you have any genes without a legitimate (sequence and spacing) Shine-Dalgarno? If so, for each gene, justify retaining them in the genome (i.e. does it have a conserved gene product?).')
-    parser.add_argument('--gaps', nargs='+', help='Justify any intergenic gap larger than 150 bp. (explain why you did not annotate genes?)')
-    parser.add_argument('--closed', help='Is your genome closed? How did you determine this? (link to gel images & analysis text , including primer sequence).')
-    parser.add_argument('--reopened', help='Has your phage genome been re-opened? If so, where and why? If not, why not?')
-    parser.add_argument('--sim', help='Is your phage similar to another phage? Which one? How similar? How was the similarity determined?')
-    parser.add_argument('--gc_skew', help='Does your phage exhibit GC skew? Can you approximate an origin of replication? (Open your genome in Artemis, go to "Graph"->"GC Deviation". Use the right scroll bar to adjust the window to 5000. Scroll through your genome to see if and where your deviation line crosses from positive to negative.) Does this origin fit with the location of DNA replication genes?')
+    parser.add_argument('--missing_core', help='Are there any core genes missing or out of place? ' +
+                        'Identify and explain.')
+    parser.add_argument('--no_phage_homos', help='Do you have any gene with assigned function that' +
+                        ' has no phage sequence homolog? We are interested in "bacteria only" hits' +
+                        '--this does not include your hypothetical novel genes. Justify the inclus' +
+                        'ion of bacteria-only annotations.')
+    parser.add_argument('--unusual', nargs='+', help='What unusual or unexpected genes or genomic ' +
+                        'features did you find? (e.g., morons, introns, inteins, invertible sequen' +
+                        'ces, etc. and genes that have unique features')
+    parser.add_argument('--no_sd', nargs='+', help='Do you have any genes without a legitimate (se' +
+                        'quence and spacing) Shine-Dalgarno? If so, for each gene, justify retaini' +
+                        'ng them in the genome (i.e. does it have a conserved gene product?).')
+    parser.add_argument('--gaps', nargs='+', help='Justify any intergenic gap larger than 150 bp. ' +
+                        '(explain why you did not annotate genes?)')
+    parser.add_argument('--closed', help='Is your genome closed? How did you determine this? (link' +
+                        ' to gel images & analysis text , including primer sequence).')
+    parser.add_argument('--reopened', help='Has your phage genome been re-opened? If so, where and' +
+                        ' why? If not, why not?')
+    parser.add_argument('--sim', help='Is your phage similar to another phage? Which one? How simi' +
+                        'lar? How was the similarity determined?')
+    parser.add_argument('--gc_skew', help='Does your phage exhibit GC skew? Can you approximate an' +
+                        ' origin of replication? (Open your genome in Artemis, go to "Graph"->"GC ' +
+                        'Deviation". Use the right scroll bar to adjust the window to 5000. Scroll' +
+                        ' through your genome to see if and where your deviation line crosses from' +
+                        ' positive to negative.) Does this origin fit with the location of DNA rep' +
+                        'lication genes?')
     parser.add_argument('--trna_genes', help='Do you have any tRNA genes?')
 
     parser.add_argument('--email', help="Email address")
@@ -106,21 +123,33 @@ These questions are intended to reinforce key concepts that should be part of yo
                     <table class="table table-striped">
                         <tr><td>Are there any core genes missing or out of place? Identify and explain.</td></tr>
                         <tr><td>$missing_core</td></tr>
-                        <tr><td>Do you have any gene with assigned function that has no phage sequence homolog? We are interested in "bacteria only" hits--this does not include your hypothetical novel genes. Justify the inclusion of bacteria-only annotations.</td></tr>
+                        <tr><td>Do you have any gene with assigned function that has no phage sequence homolog?
+                        We are interested in "bacteria only" hits--this does not include your hypothetical novel
+                         genes. Justify the inclusion of bacteria-only annotations.</td></tr>
                         <tr><td>$no_phage_homos</td></tr>
-                        <tr><td>What unusual or unexpected genes or genomic features did you find? (e.g., morons, introns, inteins, invertible sequences, etc. and genes that have unique features)</td></tr>
+                        <tr><td>What unusual or unexpected genes or genomic features did you find? (e.g., morons,
+                         introns, inteins, invertible sequences, etc. and genes that have unique features)</td></tr>
                         <tr><td>$unusual</td></tr>
-                        <tr><td>Do you have any genes without a legitimate (sequence and spacing) Shine-Dalgarno? If so, for each gene, justify retaining them in the genome (i.e. does it have a conserved gene product?).</td></tr>
+                        <tr><td>Do you have any genes without a legitimate (sequence and spacing) Shine-Dalgarno?
+                         If so, for each gene, justify retaining them in the genome (i.e. does it have a
+                         conserved gene product?).</td></tr>
                         <tr><td>$no_sd</td></tr>
-                        <tr><td>Justify any intergenic gap larger than 150 bp. (explain why you did not annotate genes?)</td></tr>
+                        <tr><td>Justify any intergenic gap larger than 150 bp. (explain why you did not annotate
+                         genes?)</td></tr>
                         <tr><td>$gaps</td></tr>
-                        <tr><td>Is your genome closed? How did you determine this? (link to gel images & analysis text , including primer sequence).</td></tr>
+                        <tr><td>Is your genome closed? How did you determine this? (link to gel images &
+                         analysis text , including primer sequence).</td></tr>
                         <tr><td>$closed</td></tr>
                         <tr><td>Has your phage genome been re-opened? If so, where and why? If not, why not?</td></tr>
                         <tr><td>$reopened</td></tr>
-                        <tr><td>Is your phage similar to another phage? Which one? How similar? How was the similarity determined?</td></tr>
+                        <tr><td>Is your phage similar to another phage? Which one? How similar? How was the
+                         similarity determined?</td></tr>
                         <tr><td>$sim</td></tr>
-                        <tr><td>Does your phage exhibit GC skew? Can you approximate an origin of replication? (Open your genome in Artemis, go to "Graph"/"GC Deviation". Use the right scroll bar to adjust the window to 5000. Scroll through your genome to see if and where your deviation line crosses from positive to negative.) Does this origin fit with the location of DNA replication genes?</td></tr>
+                        <tr><td>Does your phage exhibit GC skew? Can you approximate an origin of replication?
+                         (Open your genome in Artemis, go to "Graph"/"GC Deviation". Use the right scroll bar
+                         to adjust the window to 5000. Scroll through your genome to see if and where your deviation
+                         line crosses from positive to negative.) Does this origin fit with the location of DNA
+                         replication genes?</td></tr>
                         <tr><td>$gc_skew</td></tr>
                         <tr><td>Do you have any tRNA genes?</td></tr>
                         <tr><td>$trna_genes</td></tr>

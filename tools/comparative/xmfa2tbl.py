@@ -1,69 +1,11 @@
 #!/usr/bin/env python
-import sys
 from Bio import SeqIO
-from Bio.Seq import Seq
-from Bio.SeqRecord import SeqRecord
-from Bio.SeqFeature import SeqFeature, FeatureLocation
+from xmfa import parse_xmfa, percent_identity
 import argparse
 import logging
 import itertools
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
-
-
-def parse_xmfa(xmfa):
-    """Simple XMFA parser until https://github.com/biopython/biopython/pull/544
-    """
-    current_lcb = []
-    current_seq = {}
-    for line in xmfa.readlines():
-        if line.startswith('#'):
-            continue
-
-        if line.strip() == '=':
-            if 'id' in current_seq:
-                current_lcb.append(current_seq)
-                current_seq = {}
-            yield current_lcb
-            current_lcb = []
-        else:
-            line = line.strip()
-            if line.startswith('>'):
-                if 'id' in current_seq:
-                    current_lcb.append(current_seq)
-                    current_seq = {}
-                data = line.strip().split()
-                id, loc = data[1].split(':')
-                start, end = loc.split('-')
-                current_seq = {
-                    'rid': '_'.join(data[1:]),
-                    'id': id,
-                    'start': int(start),
-                    'end': int(end),
-                    'strand': 1 if data[2] == '+' else -1,
-                    'seq': ''
-                }
-            else:
-                current_seq['seq'] += line.strip()
-
-
-def _percent_identity(a, b):
-    """Calculate % identity, ignoring gaps in the host sequence
-    """
-    match = 0
-    mismatch = 0
-    for char_a, char_b in zip(list(a), list(b)):
-        if char_a == '-':
-            continue
-        if char_a == char_b:
-            match += 1
-        else:
-            mismatch += 1
-
-    if match + mismatch == 0:
-        return 0
-
-    return 100 * float(match) / (match + mismatch)
 
 
 def _id_tn_dict(sequences):
@@ -102,7 +44,7 @@ def total_similarity(xmfa_file, sequences=None, dice=False):
         compare_seqs = list(itertools.permutations(range(0, len(lcb)), 2))
         for permutation in compare_seqs:
             (i, j) = permutation
-            similarity = _percent_identity(lcb[i]['seq'], lcb[j]['seq'])
+            similarity = percent_identity(lcb[i]['seq'], lcb[j]['seq'])
             # find length of sequence in LCB
             length_seq_lcb = lcb[i]['end'] - (lcb[i]['start'] - 1)
             # populate table with normalized similarity value based on length_seq_lcb

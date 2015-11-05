@@ -23,7 +23,7 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
             f_rbs = [f for f in record.features if f.type == 'RBS']
             f_gene = [f for f in record.features if f.type == 'gene']
             f_oth = [f for f in record.features if f.type not in ['CDS', 'RBS',
-                                                                'gene']]
+                                                                  'gene']]
             f_care_about = []
 
             # Make sure we've hit every RBS and gene
@@ -36,12 +36,12 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
                 # If there's an RBS it'll be upstream a bit.
                 if cds.location.strand > 0:
                     associated_rbss = [f for f in f_rbs if f.location.end <
-                                    cds.location.start and f.location.end >
-                                    cds.location.start - 30]
+                                       cds.location.start and f.location.end >
+                                       cds.location.start - 30]
                 else:
                     associated_rbss = [f for f in f_rbs if f.location.start >
-                                    cds.location.end and f.location.start <
-                                    cds.location.end + 30]
+                                       cds.location.end and f.location.start <
+                                       cds.location.end + 30]
                 tmp_result = [cds]
                 if len(associated_genes) > 0:
                     h_gene[f_gene.index(associated_genes[0])] = True
