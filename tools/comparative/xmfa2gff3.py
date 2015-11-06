@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import sys
+import os
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -7,7 +7,7 @@ from Bio.Alphabet import IUPAC
 import argparse
 from BCBio import GFF
 import logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 from xmfa import parse_xmfa, percent_identity, id_tn_dict
 
@@ -85,7 +85,7 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
                 parent_records[parent['id']].features.append(other_feature)
 
     for i in parent_records:
-        yield [parent_records[i]]
+        yield parent_records[i]
 
 
 if __name__ == '__main__':
@@ -98,5 +98,10 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    try:
+        os.makedirs('outdir')
+    except:
+        pass
     for result in convert_xmfa_to_gff3(**vars(args)):
-        GFF.write(result, sys.stdout)
+        with open(os.path.join('outdir', result.id + '.gff3'), 'w') as handle:
+            GFF.write([result], handle)

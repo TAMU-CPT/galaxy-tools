@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.primers.weight" name="Sequence Molecular Weight (MW)" version="1.0.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python weight.py --version</version_command>
+  <command interpreter="python"><![CDATA[weight.py
+$fasta
+> $output]]></command>
+  <inputs>
+    <param label="DNA Fasta File" name="fasta" type="data" format="fasta"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="fasta" value="tm.fa" />
+          <output name="output" file="mass.tabular" />
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Calculates molecular weight of an input DNA sequence.
+
+**How it works**
+
+This section is taken from `OligoCalc's Documentation <http://www.basic.northwestern.edu/biotools/oligocalc.html>`__.
+
+    DNA Molecular Weight (typically for synthesized DNA oligonucleotides. The
+    OligoCalc DNA MW calculations assume that there is not a 5' monophosphate)
+
+    Anhydrous Molecular Weight = (An x 313.21) + (Tn x 304.2) + (Cn x 289.18) + (Gn x 329.21) - 61.96
+
+    An, Tn, Cn, and Gn are the number of each respective nucleotide within the
+    polynucleotide. The subtraction of 61.96 gm/mole from the oligonucleotide
+    molecular weight takes into account the removal of HPO2 (63.98) and the
+    addition of two hydrogens (2.02). Alternatively, you could think of this of
+    the removal of a phosphate and the addition of a hydroxyl, since this formula
+    calculates the molecular weight of 5' and 3' hydroxylated oligonucleotides.
+
+    Please note: this calculation works well for synthesized oligonucleotides. If you would like an accurate MW for restriction enzyme cut DNA, please use:
+
+    Molecular Weight = (An x 313.21) + (Tn x 304.2) + (Cn x 289.18) + (Gn x 329.21) - 61.96 + 79.0
+
+    The addition of 79.0 gm/mole to the oligonucleotide molecular weight takes
+    into account the 5' monophosphate left by most restriction enzymes. No
+    phosphate is present at the 5' end of strands made by primer extension, so no
+    adjustment to the OligoCalc DNA MW calculation is necessary for primer
+    extensions. That means that for ssDNA, you need to add 79.0 to the value
+    calculated by OligoCalc to get the weight with a 5' monophosphate. Finally, if
+    you need to calculate the molecular weight of phosphorylated dsDNA, don't
+    forget to adjust both strands. You can automatically perform either addition
+    by selecting the Phosphorylated option from the 5' modification select list.
+    Please note that the chemical modifications are only valid for DNA and may not
+    be valid for RNA due to differences in the linkage chemistry, and also due to
+    the lack of the 5' phosphates from synthetic RNA molecules.
+
+]]></help>
+    <expand macro="citations" />
+</tool>
