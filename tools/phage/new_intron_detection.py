@@ -10,18 +10,23 @@ from Bio.Blast import NCBIXML
 from gff3 import feature_lambda
 from collections import OrderedDict
 import logging
-logging.basicConfig()
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
 def parse_xml(blastxml):
     """ Parses xml file to get desired info (genes, hits, etc) """
     blast = []
+    discarded_records = 0
     for iter_num, blast_record in enumerate(NCBIXML.parse(blastxml), 1):
         blast_gene = []
         for alignment in blast_record.alignments:
             hit_gis = alignment.hit_id + alignment.hit_def
             gi_nos =  [str(gi) for gi in re.findall('(?<=gi\|)\d{9}', hit_gis)]
             for hsp in alignment.hsps:
+                x = float(hsp.identities) / (hsp.query_end - hsp.query_start)
+                if x < .5:
+                    discarded_records += 1
+                    continue
                 blast_gene.append({
                     'gi_nos' : gi_nos,
                     'sbjct_length': alignment.length,
@@ -33,6 +38,7 @@ def parse_xml(blastxml):
                     'iter_num' : iter_num
                 })
         blast.append(blast_gene)
+    log.debug("parse_blastxml %s -> %s", len(blast) + discarded_records, len(blast))
     return blast
 
 def filter_lone_clusters(clusters):
@@ -41,6 +47,7 @@ def filter_lone_clusters(clusters):
     for key in clusters:
         if len(clusters[key]) > 1 and len(key) > 0:
             filtered_clusters[key] = clusters[key]
+    log.debug("filter_lone_clusters %s -> %s", len(clusters), len(filtered_clusters))
     return filtered_clusters
 
 def test_true(feature, **kwargs):
@@ -48,6 +55,7 @@ def test_true(feature, **kwargs):
 
 def parse_gff(gff3):
     """ Extracts strand and start location to be used in cluster filtering """
+    log.debug("parse_gff3")
     gff_info = {}
     for rec in GFF.parse(gff3):
         for feat in feature_lambda(
@@ -77,6 +85,7 @@ def remove_duplicates(clusters):
             continue
         else:
             filtered_clusters[key] = clusters[key]
+    log.debug("remove_duplicates %s -> %s", len(clusters), len(filtered_clusters))
     return filtered_clusters
 
 class IntronFinder(object):
@@ -140,6 +149,7 @@ class IntronFinder(object):
             for i, hits in enumerate(hits_lists):
                 if len(hits) >= 2:
                     filtered_clusters[key+'_'+str(i)] = hits
+        log.debug("check_gene_gap %s -> %s", len(self.clusters), len(filtered_clusters))
         return remove_duplicates(filtered_clusters) # call remove_duplicates somewhere else?
 
     # maybe figure out how to merge with check_gene_gap?
@@ -163,6 +173,7 @@ class IntronFinder(object):
                     break
             if add_cluster:
                 filtered_clusters[key] = self.clusters[key]
+        log.debug("check_seq_overlap %s -> %s", len(self.clusters), len(filtered_clusters))
         return filtered_clusters
 
     def cluster_report(self):
@@ -210,8 +221,7 @@ class IntronFinder(object):
         sbjct_y = 10
         query_x = 10
         for i, key in enumerate(self.clusters):
-            if i > 10:
-                break
+            log.info('Done with %s', i)
             for j, gene in enumerate(sorted(self.clusters[key],
                                             key=lambda k: self.gff_info[k['name']]['start'],
                                             reverse=True)):
@@ -254,8 +264,8 @@ if __name__ == '__main__':
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
     ifinder.clusters = ifinder.check_seq_overlap()
+
     condensed_report = ifinder.cluster_report()
     ifinder.draw_genes('clusters.svg')
 
-    # with open('out.txt', 'w') as handle:
-        # import pprint; pprint.pprint(ifinder.clusters)
+    import pprint; pprint.pprint(ifinder.clusters)
