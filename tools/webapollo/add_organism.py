@@ -1,25 +1,6 @@
 #!/usr/bin/env python
 import argparse
-import requests
-
-
-def addOrganism(apollo, username, password, cn, jbrowse, blatdb=None,
-                genus=None, species=None):
-
-    payload = {
-        'username': username,
-        'password': password,
-
-        'organism': {
-            'commonName': cn,
-            'directory': jbrowse,
-            'blatdb': blatdb,
-            'genus': genus,
-            'species': species,
-        }
-    }
-    r = requests.post(apollo + '/organism/addOrganism', data=payload)
-    print(r.text)
+from webapollo import WebApolloInstance
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
@@ -32,6 +13,16 @@ if __name__ == '__main__':
     parser.add_argument('--blatdb', help='BlatDB Directory')
     parser.add_argument('--genus', help='Organism Genus')
     parser.add_argument('--species', help='Organism Species')
+    parser.add_argument('--public', action='store_true', help='Make organism public')
 
     args = parser.parse_args()
-    addOrganism(**vars(args))
+
+    wa = WebApolloInstance(args.apollo, args.username, args.password)
+    print wa.organisms.addOrganism(
+        args.cn,
+        args.jbrowse,
+        blatdb=args.blatdb,
+        genus=args.genus,
+        species=args.species,
+        public=args.public
+    )

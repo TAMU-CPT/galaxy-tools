@@ -148,7 +148,8 @@ class IOClient(Client):
 class OrganismsClient(Client):
     CLIENT_BASE = '/organism/'
 
-    def addOrganism(self, commonName, directory, blatdb=None, species=None, genus=None, public=False):
+    def addOrganism(self, commonName, directory, blatdb=None, species=None,
+                    genus=None, public=False):
         data = {
             'commonName': commonName,
             'directory': directory,
