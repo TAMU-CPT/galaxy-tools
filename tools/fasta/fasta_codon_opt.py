@@ -85,7 +85,12 @@ class Mutator(object):
     def _mutate(self, seq):
         fixed_seq = ''
         for i in range(0, len(seq), 3):
-            codon = str(seq[i:i+3].seq.upper())
+            codon = str(seq[i:i + 3].seq.upper())
+            if len(codon) != 3:
+                fixed_seq += codon
+                log.warn("Feature was not of length % 3")
+                continue
+
             codon_aa = self.translation_table[codon]
             possible_alternates = {k: v for (k, v) in self.target_table[codon_aa].iteritems() if v > 0.1}
             if len(possible_alternates) == 0:
