@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<macros>
+  <xml name="requirements">
+    <requirements>
+      <requirement type="package" version="2.7">python</requirement>
+      <yield/>
+    </requirements>
+  </xml>
+  <token name="@AUTH@">
+--username galaxy@cpt.tamu.edu
+--password \$GALAXY_WEBAPOLLO_PASSWORD
+--apollo https://cpt.tamu.edu/apollo/
+  </token>
+  <xml name="auth_file">
+    <param label="Apollo Authentication File"
+    name="apolloCredentialsFile" type="data" format="json" />
+  </xml>
+
+  <xml name="citations">
+      <citations>
+      </citations>
+  </xml>
+  <xml name="dummy">
+    <param label="Dummy Inputs" name="dummy" type="data" multiple="True" optional="True">
+        <help>
+            With workflows that contact remote databases, it is sometimes
+            necessary to have particular operations happen in a particular
+            order. I.e. you would not want to try and add data to an organism
+            if the organism did not yet exist in WebApollo.
+            Since few of the WebApollo2 toolsuite output files which are
+            used in a downstream task (e.g. the output adding an organism is
+            not used elsewhere), we provide this dummy option which lets you
+            select outputs to help provide context for when this task should
+            execute.
+        </help>
+    </param>
+  </xml>
+  <xml name="gff3_input">
+    <param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
+  </xml>
+  <token name="@GENOME_SELECTOR_PRE@">
+#if $reference_genome.reference_genome_source == 'history':
+    ln -s $reference_genome.genome_fasta genomeref.fa;
+#end if
+  </token>
+  <token name="@GENOME_SELECTOR@">
+#if $reference_genome.reference_genome_source == 'cached':
+    "${reference_genome.fasta_indexes.fields.path}"
+#elif $reference_genome.reference_genome_source == 'history':
+    genomeref.fa
+#end if
+  </token>
+</macros>
