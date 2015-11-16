@@ -19,12 +19,16 @@ class GroupObj(object):
     def __init__(self, **kwargs):
         self.name = kwargs['name']
 
+        if 'id' in kwargs:
+            self.groupId = kwargs['id']
+
 
 class UserObj(object):
     ROLE_USER = 'USER'
     ROLE_ADMIN = 'ADMIN'
 
     def __init__(self, **kwargs):
+        # Generally expect 'userId', 'firstName', 'lastName', 'username' (email)
         for attr in kwargs.keys():
             setattr(self, attr, kwargs[attr])
 
@@ -99,6 +103,60 @@ class AnnotationsClient(Client):
 
 class GroupsClient(Client):
     CLIENT_BASE = '/group/'
+
+    def createGroup(self, name):
+        data = {'name': name}
+        return self.request('createGroup', data)
+
+    def getOrganismPermissionsForGroup(self, group):
+        data = {
+            'id': group.groupId,
+            'name': group.name,
+        }
+        return self.request('getOrganismPermissionsForGroup', data)
+
+    def loadGroups(self, group=None):
+        data ={}
+        if group is not None:
+            data['groupId'] = group.groupId
+
+        return self.request('loadGroups', data)
+
+    def deleteGroup(self, group):
+        data = {
+            'id': group.groupId,
+            'name': group.name,
+        }
+        return self.request('deleteGroup', data)
+
+    def updateGroup(self, group, newName):
+        # TODO: Sure would be nice if modifying ``group.name`` would invoke
+        # this?
+        data = {
+            'id': group.groupId,
+            'name': newName,
+        }
+        return self.request('updateGroup', data)
+
+    def updateOrganismPermission(self, group, organismName,
+                                 administrate=False, write=False, read=False,
+                                 export=False):
+        data = {
+            'groupId': group.groupId,
+            'name': organismName,
+            'administrate': administrate,
+            'write': write,
+            'export': export,
+            'read': read,
+        }
+        return self.request('updateOrganismPermission', data)
+
+    def updateMembership(self, group, users):
+        data = {
+            'groupId': group.groupId,
+            'user': [user.email for user in users]
+        }
+        return self.request('updateMembership', data)
 
 
 class IOClient(Client):
