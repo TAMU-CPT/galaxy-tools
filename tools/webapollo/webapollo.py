@@ -1,5 +1,4 @@
 import requests
-import json
 
 class WebApolloInstance(object):
 
@@ -13,6 +12,10 @@ class WebApolloInstance(object):
         self.io = IOClient(self)
         self.organisms = OrganismsClient(self)
         self.users = UsersClient(self)
+        self.metrics = MetricsClient(self)
+
+    def __str__(self):
+        return '<WebApolloInstance at %s>' % self.apollo_url
 
 
 class GroupObj(object):
@@ -66,30 +69,41 @@ class UserObj(object):
 class Client(object):
 
     def __init__(self, webapolloinstance, **requestArgs):
-        self.wa = webapolloinstance
+        self.__wa = webapolloinstance
 
-        self.verify = requestArgs.get('verify', True)
-        self.requestArgs = requestArgs
+        self.__verify = requestArgs.get('verify', True)
+        self._requestArgs = requestArgs
 
-        if 'verify' in self.requestArgs:
-            del self.requestArgs['verify']
+        if 'verify' in self._requestArgs:
+            del self._requestArgs['verify']
 
     def request(self, clientMethod, data, post_params={}):
-        url = self.wa.apollo_url + self.CLIENT_BASE + clientMethod
+        url = self.__wa.apollo_url + self.CLIENT_BASE + clientMethod
 
         headers = {
-            # 'Content-Type': 'application/json'
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json'
         }
 
         data.update({
-            'username': self.wa.username,
-            'password': self.wa.password,
+            'username': self.__wa.username,
+            'password': self.__wa.password,
         })
 
-        formatted_data = "data=%s" % json.dumps(data)
-        r = requests.post(url, data=formatted_data, headers=headers,
-                          verify=self.verify, params=post_params)
+        r = requests.post(url, data=data, headers=headers,
+                          verify=self.__verify, params=post_params, **self._requestArgs)
+        print r, url, data, headers
+        if r.status_code == 200:
+            return r.json()
+        # @see self.body for HTTP response body
+        raise Exception("Unexpected response from apollo %s: %s" %
+                        (r.status_code, r.text))
+
+    def get(self, clientMethod, get_params):
+        url = self.__wa.apollo_url + self.CLIENT_BASE + clientMethod
+        headers = {}
+
+        r = requests.get(url, headers=headers, verify=self.__verify,
+                         params=get_params, **self._requestArgs)
         if r.status_code == 200:
             return r.json()
         # @see self.body for HTTP response body
@@ -97,8 +111,127 @@ class Client(object):
                         (r.status_code, r.text))
 
 
+class MetricsClient(Client):
+    CLIENT_BASE = '/metrics/'
+
+    def getServerMetrics(self):
+        return self.get('metrics', {})
+
+
 class AnnotationsClient(Client):
     CLIENT_BASE = '/annotationEditor/'
+
+    def _update_data(self, data):
+        if not hasattr(self, '_extra_data'): raise Exception("Please call setSequence first")
+        data.update(self._extra_data)
+        return data
+
+    def setSequence(self, sequence, organism):
+        self._extra_data = {
+            'sequence': sequence,
+            'organism': organism,
+        }
+
+    def setDescription(self, featureDescriptions):
+        data = {
+            'features': featureDescriptions,
+        }
+        data = self._update_data(data)
+        return self.request('setDescription', data)
+
+    def setStatus(self, statuses):
+        data = {
+            'features': statuses,
+        }
+        data = self._update_data(data)
+        return self.request('setStatus', data)
+
+    def setSymbol(self, symbols):
+        data = {
+            'features': symbols,
+        }
+        data.update(self._extra_data)
+        return self.request('setSymbol', data)
+
+    def getComments(self, features):
+        data = {
+            'features': features,
+        }
+        data = self._update_data(data)
+        return self.request('getComments', data)
+
+    def addAttribute(self, features):
+        data = {
+            'features': features,
+        }
+        data = self._update_data(data)
+        return self.request('addAttribute', data)
+
+    def getFeatures(self):
+        data = self._update_data({})
+        return self.request('getFeatures', data)
+
+    def getSequence(self, sequences):
+        data = self._update_data({'features': sequences})
+        return self.request('getSequence', data)
+
+    def addFeature(self, feature, trustme=False):
+        if not trustme:
+            raise NotImplementedError("Waiting on better docs from project. If you know what you are doing, pass trustme=True to this function.")
+
+        data = {
+            'features': feature,
+        }
+        data = self._update_data(data)
+        return self.request('addFeature', data)
+
+    # addExon, add/delete/updateComments, addTranscript skipped due to docs
+
+    def duplicateTranscript(self, transcriptId):
+        data = {
+            'features': [{'uniquename': transcriptId}]
+        }
+
+        data = self._update_data(data)
+        return self.request('duplicateTranscript', data)
+
+    def setTranslationStart(self, uniquename, start):
+        data = {
+            'features': [{
+                'uniquename': uniquename,
+                'location': {
+                    'fmin': start
+                }
+            }]
+        }
+        data = self._update_data(data)
+        return self.request('setTranslationStart', data)
+
+    def setTranslationEnd(self, uniquename, end):
+        data = {
+            'features': [{
+                'uniquename': uniquename,
+                'location': {
+                    'fmax': end
+                }
+            }]
+        }
+        data = self._update_data(data)
+        return self.request('setTranslationEnd', data)
+
+    def setLongestOrf(self, uniquename):
+        data = {
+            'features': [{
+                'uniquename': uniquename,
+            }]
+        }
+        data = self._update_data(data)
+        return self.request('setTranslationEnd', data)
+
+
+
+
+
 
 
 class GroupsClient(Client):
