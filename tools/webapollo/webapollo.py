@@ -1,5 +1,6 @@
 import requests
 import json
+import collections
 
 
 class WebApolloInstance(object):
@@ -229,12 +230,119 @@ class AnnotationsClient(Client):
             }]
         }
         data = self._update_data(data)
-        return self.request('setTranslationEnd', data)
+        return self.request('setLongestOrf', data)
 
+    def setBoundaries(self, uniquename, start, end):
+        data = {
+            'features': [{
+                'uniquename': uniquename,
+                'location': {
+                    'fmin': start,
+                    'fmax': end,
+                }
+            }]
+        }
+        data = self._update_data(data)
+        return self.request('setBoundaries', data)
 
+    def getFeatures(self):
+        data = {
+        }
+        data = self._update_data(data)
+        return self.request('getFeatures', data)
 
+    def getSequenceAlterations(self):
+        data = {
+        }
+        data = self._update_data(data)
+        return self.request('getSequenceAlterations', data)
 
+    def setReadthroughStopCodon(self, uniquename):
+        data = {
+            'features': [{
+                'uniquename': uniquename,
+            }]
+        }
+        data = self._update_data(data)
+        return self.request('setReadthroughStopCodon', data)
 
+    def deleteSequenceAlteration(self, uniquename):
+        data = {
+            'features': [{
+                'uniquename': uniquename,
+            }]
+        }
+        data = self._update_data(data)
+        return self.request('deleteSequenceAlteration', data)
+
+    def flipStrand(self, uniquenames):
+        data = {
+            'features': [
+                {'uniquename': x} for x in uniquenames
+            ]
+        }
+        data = self._update_data(data)
+        return self.request('flipStrand', data)
+
+    def mergeExons(self, exonA, exonB):
+        data = {
+            'features': [
+                {'uniquename': exonA},
+                {'uniquename': exonB},
+            ]
+        }
+        data = self._update_data(data)
+        return self.request('mergeExons', data)
+
+    # def splitExon(): pass
+
+    def deleteFeatures(self, uniquenames):
+        assert isinstance(uniquenames, collections.Iterable)
+        data = {
+            'features': [
+                {'uniquename': x} for x in uniquenames
+            ]
+        }
+        data = self._update_data(data)
+        return self.request('deleteFeature', data)
+
+    # def deleteExon(): pass
+
+    # def makeIntron(self, uniquename, ): pass
+
+    def getSequenceSearchTools(self):
+        return self.get('getSequenceSearchTools', {})
+
+    def getCannedComments(self):
+        return self.get('getCannedComments', {})
+
+    def searchSequence(self, searchTool, sequence, database):
+        data = {
+            'key': searchTool,
+            'residues': sequence,
+            'database_id': database,
+        }
+        return self.request('searchSequences', data)
+
+    def getGff3(self, uniquenames)
+        assert isinstance(uniquenames, collections.Iterable)
+        data = {
+            'features': [
+                {'uniquename': x} for x in uniquenames
+            ]
+        }
+        data = self._update_data(data)
+        return self.request('getGff3', data)
+
+    def getSequence(self, uniquenames)
+        assert isinstance(uniquenames, collections.Iterable)
+        data = {
+            'features': [
+                {'uniquename': x} for x in uniquenames
+            ]
+        }
+        data = self._update_data(data)
+        return self.request('getSequences', data)
 
 
 class GroupsClient(Client):
