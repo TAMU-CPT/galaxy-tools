@@ -1,4 +1,6 @@
 import requests
+import json
+
 
 class WebApolloInstance(object):
 
@@ -89,11 +91,12 @@ class Client(object):
             'password': self.__wa.password,
         })
 
-        r = requests.post(url, data=data, headers=headers,
+        r = requests.post(url, data=json.dumps(data), headers=headers,
                           verify=self.__verify, params=post_params, **self._requestArgs)
-        print r, url, data, headers
+
         if r.status_code == 200:
             return r.json()
+
         # @see self.body for HTTP response body
         raise Exception("Unexpected response from apollo %s: %s" %
                         (r.status_code, r.text))
