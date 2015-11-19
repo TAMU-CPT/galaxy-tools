@@ -10,33 +10,33 @@ python $__tool_directory__/add_organism.py
 
 @AUTH@
 
-#if str($jbrowse) != "None":
-    --jbrowse $jbrowse.files_path/JBrowse-1.11.6/data/
-#end if
+"$commonName"
+$jbrowse.files_path/JBrowse-1.11.6/data/
 
 #if str($blatdb) != "None":
     --blastdb "$blatdb"
 #end if
 
---cn "$organism_cn"
---genus "$genus"
---species "$species"
+#if str($genus) != "None":
+    --genus "$genus"
+#end if
+
+#if str($genus) != "None":
+    --species "$species"
+#end if
+$public
 
 > $output]]></command>
   <inputs>
-    <!--<expand macro="auth_file" />-->
-
-    <param name="jbrowse" type="data" format="html" label="JBrowse HTML Output" />
-    <param name="blatdb" type="data" label="Blat DB" />
-
-    <param name="organism_cn" type="text" label="Organism Common Name"/>
-    <param name="genus" type="text" label="Host Bacteria" />
-    <param name="specis" type="text" label="Phage Name" />
-
-    <!--<expand macro="dummy" />-->
+    <param name="jbrowse" type="data" format="html" label="JBrowse Output" optional="True"/>
+    <param name="blatdb" type="data" label="Blat DB"  optional="True"/>
+    <param name="commonName" type="text" label="Organism Common Name" optional="True"/>
+    <param name="genus" type="text" label="Host Bacteria" optional="True" />
+    <param name="species" type="text" label="Phage Name" optional="True" />
+    <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
   </inputs>
   <outputs>
-    <data format="gff3" name="output"/>
+    <data format="txt" name="output"/>
   </outputs>
   <help><![CDATA[
 **What it does**
