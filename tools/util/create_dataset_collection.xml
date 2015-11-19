@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.create_dc" name="Create Dataset Collection" version="1.0">
+  <description>from manually ordered datasets</description>
+  <command>
+
+  </command>
+  <inputs>
+  </inputs>
+  <outputs>
+  </outputs>
+  <help></help>
+  <tests/>
+</tool>

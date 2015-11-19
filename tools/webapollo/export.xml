@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.export" name="WA2: Retrieve/Export data" version="1.1">
+  <description>from WebApollo into Galaxy</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/export.py
+
+@AUTH@
+
+"$commonName"
+
+> $output]]></command>
+  <inputs>
+    <param name="jbrowse" type="data" format="html" label="JBrowse Output" optional="True"/>
+    <param name="blatdb" type="data" label="Blat DB"  optional="True"/>
+    <param name="commonName" type="text" label="Organism Common Name" optional="True"/>
+    <param name="genus" type="text" label="Host Bacteria" optional="True" />
+    <param name="species" type="text" label="Phage Name" optional="True" />
+    <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
+  </inputs>
+  <outputs>
+    <data format="txt" name="output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Adds an organism to the Apollo database. The tool takes the output of a
+JBrowse run as that contains all of the necessary information for which
+tracks are appropriate for a given analysis.
+      ]]></help>
+</tool>

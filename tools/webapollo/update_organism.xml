@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.add_organism" name="WA2: Add Organism" version="1.1">
+  <description>registers a new genome with WebApollo</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/add_organism.py
+
+@AUTH@
+
+$organismId
+
+#if str($jbrowse) !="None":
+    --jbrowse $jbrowse.files_path/JBrowse-1.11.6/data/
+#end if
+
+#if str($commonName) != "None":
+    --commonName "$commonName"
+#end if
+
+#if str($blatdb) != "None":
+    --blatdb "$blatdb"
+#end if
+
+#if str($genus) != "None":
+    --genus "$genus"
+#end if
+
+#if str($species) != "None":
+    --species "$species"
+#end if
+
+$public
+
+> $output]]></command>
+  <inputs>
+    <!--<expand macro="auth_file" />-->
+    <param name="id" type="integer" minimum="1" value="1" label="Organism ID" />
+
+    <param name="jbrowse" type="data" format="html" label="JBrowse Output" optional="True"/>
+    <param name="blatdb" type="data" label="Blat DB"  optional="True"/>
+    <param name="commonName" type="text" label="Organism Common Name" optional="True"/>
+    <param name="genus" type="text" label="Host Bacteria" optional="True" />
+    <param name="species" type="text" label="Phage Name" optional="True" />
+
+    <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
+  </inputs>
+  <outputs>
+    <data format="txt" name="output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Adds an organism to the Apollo database. The tool takes the output of a
+JBrowse run as that contains all of the necessary information for which
+tracks are appropriate for a given analysis.
+      ]]></help>
+</tool>
