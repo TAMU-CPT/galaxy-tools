@@ -11,7 +11,7 @@
 #set gbk_files = '" "'.join([str($var) for $var in $file])
 "$gbk_files"
 
---${section}
+--section ${section}
 > $data
 </command>
   <inputs>
@@ -23,6 +23,7 @@
       <option value="references">All references</option>
       <option value="source">Genome source</option>
       <option value="taxonomy">Taxonomy</option>
+      <option value="length">Length</option>
     </param>
   </inputs>
   <outputs>
