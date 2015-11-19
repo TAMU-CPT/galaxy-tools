@@ -9,6 +9,7 @@ data = {}
 for record in SeqIO.parse(sys.argv[1], 'fasta'):
     data[record.id] = len(record)
 
+print '# Contig ID\tAverage Coverage\tStdev\tContig Length'
 for row in sys.stdin:
     rowdata = row.strip().split(' ')
 
@@ -23,4 +24,4 @@ for row in sys.stdin:
     avg = dsum / dlen
     stdev = math.sqrt(dsumsq/dlen - math.pow((dsum/dlen), 2))
 
-    print '%s\t%s\t%s' % (rowdata[0], avg, stdev)
+    print '\t'.join(map(str, (rowdata[0], avg, stdev, dlen)))
