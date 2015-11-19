@@ -80,7 +80,7 @@ class Client(object):
         if 'verify' in self._requestArgs:
             del self._requestArgs['verify']
 
-    def request(self, clientMethod, data, post_params={}, isJson=True):
+    def request(self, clientMethod, data, post_params={}):
         url = self.__wa.apollo_url + self.CLIENT_BASE + clientMethod
 
         headers = {
@@ -96,10 +96,7 @@ class Client(object):
                           verify=self.__verify, params=post_params, **self._requestArgs)
 
         if r.status_code == 200:
-            if isJson:
-                return r.json()
-            else:
-                return r.text
+            return r.json()
 
         # @see self.body for HTTP response body
         raise Exception("Unexpected response from apollo %s: %s" %
@@ -178,14 +175,8 @@ class AnnotationsClient(Client):
         data = self._update_data({})
         return self.request('getFeatures', data)
 
-    def getSequence(self, uniquenames):
-        assert isinstance(uniquenames, collections.Iterable)
-        data = {
-            'features': [
-                {'uniquename': x} for x in uniquenames
-            ]
-        }
-        data = self._update_data(data)
+    def getSequence(self, sequences):
+        data = self._update_data({'features': sequences})
         return self.request('getSequence', data)
 
     def addFeature(self, feature, trustme=False):
@@ -253,6 +244,12 @@ class AnnotationsClient(Client):
         }
         data = self._update_data(data)
         return self.request('setBoundaries', data)
+
+    def getFeatures(self):
+        data = {
+        }
+        data = self._update_data(data)
+        return self.request('getFeatures', data)
 
     def getSequenceAlterations(self):
         data = {
@@ -327,7 +324,7 @@ class AnnotationsClient(Client):
         }
         return self.request('searchSequences', data)
 
-    def getGff3(self, uniquenames):
+    def getGff3(self, uniquenames)
         assert isinstance(uniquenames, collections.Iterable)
         data = {
             'features': [
@@ -336,6 +333,16 @@ class AnnotationsClient(Client):
         }
         data = self._update_data(data)
         return self.request('getGff3', data)
+
+    def getSequence(self, uniquenames)
+        assert isinstance(uniquenames, collections.Iterable)
+        data = {
+            'features': [
+                {'uniquename': x} for x in uniquenames
+            ]
+        }
+        data = self._update_data(data)
+        return self.request('getSequences', data)
 
 
 class GroupsClient(Client):
@@ -397,7 +404,7 @@ class GroupsClient(Client):
 
 
 class IOClient(Client):
-    CLIENT_BASE = '/IOService/'
+    CLIENT_BASE = '/ioService/'
 
     def write(self, exportType='FASTA', seqType='peptide',
               exportFormat='text', sequences=None, organism=None,
@@ -426,9 +433,7 @@ class IOClient(Client):
             'exportGff3Fasta': exportGff3Fasta,
         }
 
-        isJson = output != 'text'
-
-        return self.request('write', data, isJson=isJson)
+        return self.request('write', data)
 
     def download(self, uuid, outputFormat='gzip'):
 
@@ -474,12 +479,21 @@ class OrganismsClient(Client):
     def getSequencesForOrganism(self, commonName):
         return self.request('getSequencesForOrganism', {'organism': commonName})
 
-    def updateOrganismInfo(self, organismId, **kwd):
+    def updateOrganismInfo(self, organismId, commonName, directory, blatdb=None, species=None, genus=None, public=False):
         data = {
             'id': organismId,
+            'commonName': commonName,
+            'directory': directory,
+            'publicMode': public,
         }
-        data.update(kwd)
-        # kwd keys: commonName, directory, publicMode, blatdb, genus, species
+
+        if blatdb is not None:
+            data['blatdb'] = blatdb
+        if genus is not None:
+            data['genus'] = genus
+        if species is not None:
+            data['species'] = species
+
         return self.request('updateOrganismInfo', data)
 
 
