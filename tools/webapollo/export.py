@@ -16,10 +16,6 @@ if __name__ == '__main__':
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
 
-    # {"type":"GFF3", "seqType":"genomic", "exportAllSequences":"false",
-     # "exportGff3Fasta":"true", "output":"file", "format":"gzip",
-     # "sequences":["Merlin"]}
-
     print wa.io.write(
         exportType='GFF3',
         seqType='genomic',
@@ -27,13 +23,5 @@ if __name__ == '__main__':
         exportGff3Fasta=True,
         output="text",
         exportFormat="text",
-        sequences=['Merlin']
+        sequences=args.commonName
     )
-
-
-
-    # print json.dumps(wa.organisms.getSequencesForOrganism(
-        # args.commonName
-    # ), indent=4)
-    # wa.annotations.setSequence("", "Bobbert")
-    # print wa.annotations.getSequence(args.commonName, type='FASTA')
