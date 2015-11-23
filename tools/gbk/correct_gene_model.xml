@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gbk.correct_gene_model" name="Genbank Gene Model Correction" version="1.0">
+  <description>adds genes when only CDSs are annotated</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python"><![CDATA[
+correct_gene_model.py
+$positional_1
+> $default]]></command>
+  <inputs>
+    <param label="Genbank file" name="positional_1" type="data"/>
+  </inputs>
+  <outputs>
+    <data format="data" hidden="false" name="default"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Adds missing genes to a cds-only genbank record. If other corrections are needed, PLEASE tell me! :)
+]]></help>
+</tool>
