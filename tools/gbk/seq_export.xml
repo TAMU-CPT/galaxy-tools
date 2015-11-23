@@ -7,9 +7,12 @@
   <version_command>python seq_export.py --version</version_command>
   <command interpreter="python"><![CDATA[seq_export.py
 $positional_1
+$use_name
 > $default]]></command>
   <inputs>
     <param label="Genbank file" name="positional_1" type="data"/>
+    <param label="Use name instead of record id" name="use_name" type="boolean" truevalue="--use_name" falsevalue=""
+        help="This allows you to remove the .1 and .2 like numbers from genbank/refseq entries which is required for JBrowse et. al to work nicely."/>
   </inputs>
   <outputs>
     <data format="fasta" hidden="false" name="default"/>
