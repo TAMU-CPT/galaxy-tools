@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 import json
 import argparse
 from webapollo import WebApolloInstance
@@ -10,6 +11,7 @@ if __name__ == '__main__':
     parser.add_argument('password', help='WA Password')
 
     parser.add_argument('organismId', help='Organism ID #')
+
     parser.add_argument('--commonName', help='Organism Common Name')
     parser.add_argument('--jbrowse', help='JBrowse Data Directory')
     parser.add_argument('--blatdb', help='BlatDB Directory')
@@ -20,12 +22,13 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
-    print json.dumps(wa.organisms.addOrganism(
+    json.dumps(wa.organisms.updateOrganismInfo(
         args.organismId,
-        cn=args.cn,
-        jbrowse=args.jbrowse,
+        args.commonName,
+        args.jbrowse,
+        # mandatory
         blatdb=args.blatdb,
         genus=args.genus,
         species=args.species,
         public=args.public
-    ), indent=4)
+    ), sys.stdout)
