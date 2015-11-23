@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.add_organism" name="WA2: Add Organism" version="1.1">
-  <description>registers a new genome with WebApollo</description>
+<tool id="edu.tamu.cpt2.webapollo.update_organism" name="WA2: Update Organism" version="1.1">
+  <description>updates an existing genome with WebApollo</description>
   <macros>
     <import>macros.xml</import>
   </macros>
