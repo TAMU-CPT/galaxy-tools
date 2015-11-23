@@ -16,7 +16,7 @@ $sequence
     #end for
 #end if
 
---codondb /home/galaxy/galaxy/tools/cpt2/galaxy-tools/tools/fasta/gbbct.spsum
+--codondb /galaxy/tools/cpt2/galaxy-tools/tools/fasta/gbbct.spsum
 --seed $seed
 > $output]]></command>
   <inputs>

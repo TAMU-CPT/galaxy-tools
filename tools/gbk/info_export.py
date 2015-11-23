@@ -40,24 +40,29 @@ def tabular_handler(comment, genome_id):
     return '%s\t%s' % (genome_id, comment)
 
 
+def length_handler(genome, genome_id):
+    return '%s\t%s' % (genome_id, str(len(genome.seq)))
+
+
 def extract_metadata(genbank_file, section):
-    with open(genbank_file, 'r') as handle:
-        for record in SeqIO.parse(handle, "genbank"):
-            output = ''
-            if section in record.annotations:
-                if section == 'references':
-                    output += references_handler(record.annotations[section],
-                                                 record.id)
-                elif section in ['comment']:
-                    output += comment_handler(record.annotations[section],
-                                              record.id)
-                elif section in ['source', 'taxonomy', 'date', 'organism']:
-                    output += tabular_handler(record.annotations[section],
-                                              record.id)
-                else:
-                    log.error("Cannot handle section type %s. "
-                              "Please submit a feature request", section)
-            yield output
+    for record in SeqIO.parse(genbank_file, "genbank"):
+        output = ''
+        if section == 'length':
+            output += length_handler(record, record.id)
+        elif section in record.annotations:
+            if section == 'references':
+                output += references_handler(record.annotations[section],
+                                             record.id)
+            elif section in ['comment']:
+                output += comment_handler(record.annotations[section],
+                                          record.id)
+            elif section in ['source', 'taxonomy', 'date', 'organism']:
+                output += tabular_handler(record.annotations[section],
+                                          record.id)
+            else:
+                log.error("Cannot handle section type %s. "
+                          "Please submit a feature request", section)
+        yield output
 
 
 if __name__ == '__main__':
