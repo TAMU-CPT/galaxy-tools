@@ -26,6 +26,7 @@ python $__tool_directory__/export.py
   <help><![CDATA[
 **What it does**
 
-Exports the combined GFF3/Fasta sequence from WebApollo
+Exports the combined GFF3/Fasta sequence from WebApollo. Currently only
+functions with the first sequence ID provided.
       ]]></help>
 </tool>

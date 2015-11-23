@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.gff3.splitGff" name="Split GFF3+Fasta into separate parts" version="1.2">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gff3_splitgff.py
+$input
+
+--gff $gff_out
+--fasta $fasta_out
+]]></command>
+  <inputs>
+    <param label="Combined GFF3/Fasta File" name="input" type="data" format="gff,gff3"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="gff_out"/>
+    <data format="fasta" name="fasta_out"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Splits apart the GFF3/Fasta data in a combined file.
+      ]]></help>
+</tool>
