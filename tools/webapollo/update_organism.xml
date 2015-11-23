@@ -6,14 +6,15 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
+cp -R ${jbrowse.extra_files_path}/JBrowse-1.11.6/data/ /opt/apollo/data/galaxy/${jbrowse.id};
+
 python $__tool_directory__/add_organism.py
 
 @AUTH@
-
 $organismId
 
 #if str($jbrowse) !="None":
-    --jbrowse $jbrowse.files_path/JBrowse-1.11.6/data/
+    --jbrowse "/opt/apollo/data/galaxy/${jbrowse.id}"
 #end if
 
 #if str($commonName) != "None":
@@ -33,6 +34,7 @@ $organismId
 #end if
 
 $public
+| json_pp
 
 > $output]]></command>
   <inputs>
@@ -48,7 +50,7 @@ $public
     <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
   </inputs>
   <outputs>
-    <data format="txt" name="output"/>
+    <data format="json" name="output"/>
   </outputs>
   <help><![CDATA[
 **What it does**
