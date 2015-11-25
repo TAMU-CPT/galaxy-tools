@@ -26,6 +26,8 @@ def correct_model(genbank_file):
                     strand=f.location.strand,
                     qualifiers={
                         'gene': f.qualifiers.get('gene', []),
+                        'product': f.qualifiers.get('product', []),
+                        'protein_id': f.qualifiers.get('protein_id', []),
                         'locus_tag': f.qualifiers.get('locus_tag', []),
                     }
                 )

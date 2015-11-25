@@ -7,9 +7,9 @@
     </requirements>
   </xml>
   <token name="@AUTH@">
---username galaxy@cpt.tamu.edu
---password \$GALAXY_WEBAPOLLO_PASSWORD
---apollo https://cpt.tamu.edu/apollo/
+https://cpt.tamu.edu/apollo
+galaxy@cpt.tamu.edu
+\$GALAXY_WEBAPOLLO_PASSWORD
   </token>
   <xml name="auth_file">
     <param label="Apollo Authentication File"

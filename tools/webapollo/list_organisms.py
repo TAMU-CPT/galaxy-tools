@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 import json
 import argparse
 from webapollo import WebApolloInstance
@@ -10,18 +11,8 @@ if __name__ == '__main__':
     parser.add_argument('username', help='WA Username')
     parser.add_argument('password', help='WA Password')
 
-    parser.add_argument('commonName', nargs='+', help='Sequence Unique Names')
-
     args = parser.parse_args()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
+    json.dump(wa.organisms.findAllOrganisms(), sys.stdout)
 
-    print wa.io.write(
-        exportType='GFF3',
-        seqType='genomic',
-        exportAllSequences=False,
-        exportGff3Fasta=True,
-        output="text",
-        exportFormat="text",
-        sequences=args.commonName
-    )

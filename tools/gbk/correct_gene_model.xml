@@ -12,7 +12,7 @@ $positional_1
     <param label="Genbank file" name="positional_1" type="data"/>
   </inputs>
   <outputs>
-    <data format="data" hidden="false" name="default"/>
+    <data format="genbank" hidden="false" name="default"/>
   </outputs>
   <help><![CDATA[
 **What it does**

@@ -1,34 +1,37 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.add_organism" name="WA2: Add Organism" version="1.1">
-  <description>registers a new genome with WebApollo</description>
+<tool id="edu.tamu.cpt2.webapollo.update_organism" name="WA2: Update Organism" version="1.2">
+  <description>updates an existing genome with WebApollo</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/add_organism.py
-
-@AUTH@
-
-$organismId
-
-#if str($jbrowse) !="None":
-    --jbrowse $jbrowse.files_path/JBrowse-1.11.6/data/
+#if str($jbrowse) != "None":
+    cp -R ${jbrowse.extra_files_path}/JBrowse-1.11.6/data/ /opt/apollo/data/galaxy/${jbrowse.id};
 #end if
 
-#if str($commonName) != "None":
+python $__tool_directory__/update_organism.py
+
+@AUTH@
+$id
+
+#if str($jbrowse) !="None":
+    --jbrowse "/opt/apollo/data/galaxy/${jbrowse.id}"
+#end if
+
+#if str($commonName) != "None" and str($commonName) != "":
     --commonName "$commonName"
 #end if
 
-#if str($blatdb) != "None":
+#if str($blatdb) != "None" and str($blatdb) != "":
     --blatdb "$blatdb"
 #end if
 
-#if str($genus) != "None":
+#if str($genus) != "None" and str($genus) != "":
     --genus "$genus"
 #end if
 
-#if str($species) != "None":
+#if str($species) != "None" and str($species) != "":
     --species "$species"
 #end if
 
