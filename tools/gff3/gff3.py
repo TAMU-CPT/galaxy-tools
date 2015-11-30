@@ -53,6 +53,10 @@ def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
                 yield x
 
 
+def feature_test_true(feature, **kwargs):
+    return True
+
+
 def feature_test_type(feature, **kwargs):
     return feature.type == kwargs['type']
 
