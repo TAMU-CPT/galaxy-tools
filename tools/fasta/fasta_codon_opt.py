@@ -171,10 +171,7 @@ class Mutator(object):
         ranges = []
         for key, group in groupby(enumerate(data), lambda (index, item): index - item):
             group = map(itemgetter(1), group)
-            if len(group) > 1:
-                ranges.append((group[0], group[-1] + 1))
-            else:
-                ranges.append(group[0])
+            ranges.append((group[0], group[-1] + 1))
         return ranges
 
     def _overlap(self, a, b):
