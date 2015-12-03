@@ -42,5 +42,5 @@ if __name__ == '__main__':
 
     args = vars(parser.parse_args())
     for record in find_lipoprotein(**args):
-        record.annotations = {}
+        record[0].annotations = {}
         GFF.write(record, sys.stdout)
