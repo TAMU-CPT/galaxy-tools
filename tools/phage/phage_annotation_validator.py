@@ -69,6 +69,8 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     good = 0
     bad = 0
     qc_features = []
+    from shinefind import NaiveSDCaller
+    sd_finder = NaiveSDCaller()
 
     for gene in coding_genes(record.features):
         # Check if there are RBSs, TODO: make this recursive. Each feature in
@@ -102,8 +104,19 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
                              type='domain')
             # Get the sequence
             seq = str(tmp.extract(record.seq))
-            gene.__upstream = seq
-            gene.__message = "No RBS"
+            # Set the default properties
+            gene.__upstream = seq.lower()
+            gene.__message = "No RBS annotated, None found"
+
+            # Try and do an automated shinefind call
+            log.info(seq)
+            sds = sd_finder.list_sds(seq)
+            log.info(len(sds))
+            if len(sds) > 0:
+                sd = sds[0]
+                gene.__upstream = sd_finder.highlight_sd(seq.lower(), sd['start'], sd['end'])
+                gene.__message = "Unannotated but valid RBS"
+
 
             qc_features.append(gen_qc_feature(start, end, 'Missing RBS', strand=gene.strand))
 
@@ -531,11 +544,11 @@ if __name__ == '__main__':
     parser.add_argument('--gff3', type=str, help='GFF3 Annotations', default='qc_annotations.gff3')
     parser.add_argument('--tbl', type=str, help='Table for noninteractive parsing', default='qc_results.json')
 
-    parser.add_argument('--sd_min', type=int, help='Minimum distance from gene start for an SD to be')
-    parser.add_argument('--sd_max', type=int, help='Maximum distance from gene start for an SD to be')
+    parser.add_argument('--sd_min', type=int, help='Minimum distance from gene start for an SD to be', default=5)
+    parser.add_argument('--sd_max', type=int, help='Maximum distance from gene start for an SD to be', default=15)
 
-    parser.add_argument('--gap_dist', type=int, help='Maximum distance from gene start for an SD to be')
-    parser.add_argument('--overlap_dist', type=int, help='Maximum distance from gene start for an SD to be')
+    parser.add_argument('--gap_dist', type=int, help='Maximum distance from gene start for an SD to be', default=30)
+    parser.add_argument('--overlap_dist', type=int, help='Maximum distance from gene start for an SD to be', default=30)
 
     parser.add_argument('--min_gene_length', type=int, help='Minimum length for a putative gene call (AAs)', default=30)
 

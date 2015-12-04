@@ -35,16 +35,12 @@ Miro	GenBank	CDS	900	3161	.	-	1	ID=Miro_2.CDS;Name=Miro_2;Parent=Miro_2;dbxref=I
 Miro	GenBank	Shine_Dalgarno_sequence	3171	3173	.	-	1	Alias=Miro_2;ID=Miro_2.RBS;Name=Miro_2.RBS;Parent=Miro_2
 Miro	feature	gene	3172	3417	.	-	.	ID=Miro_3
 Miro	GenBank	CDS	3172	3408	.	-	1	ID=Miro_3.CDS;Name=Miro_3;Parent=Miro_3;obsolete_name=Miro_161;product=hypothetical conserved;tmhelix=1 TMD %2812-34%29 N in%2C C out
-Miro	GenBank	Shine_Dalgarno_sequence	3414	3417	.	-	1	Alias=Miro_3;ID=Miro_3.RBS;Name=Miro_3.RBS;Parent=Miro_3
 Miro	feature	gene	3412	3979	.	-	.	ID=Miro_4
 Miro	GenBank	CDS	3412	3966	.	-	1	ID=Miro_4.CDS;Name=Miro_4;Note=contains SprT domain;Parent=Miro_4;dbxref=InterPro:IPR006640;obsolete_name=Miro_160;product=hypothetical conserved
-Miro	GenBank	Shine_Dalgarno_sequence	3975	3979	.	-	1	Alias=Miro_4;ID=Miro_4.RBS;Name=Miro_4.RBS;Parent=Miro_4
 Miro	feature	gene	4038	5334	.	-	.	ID=Miro_5
 Miro	GenBank	CDS	4038	5324	.	-	1	ID=Miro_5.CDS;Name=Miro_5;Note=T4 gp52-like;Parent=Miro_5;dbxref=GO:0003677,GO:0003918,GO:0005524,GO:0006259,GO:0006265,InterPro:IPR002205,InterPro:IPR013757,InterPro:IPR013758,InterPro:IPR013760,InterPro:IPR024946;obsolete_name=Miro_159;product=DNA topoisomerase II medium subunit
-Miro	GenBank	Shine_Dalgarno_sequence	5331	5334	.	-	1	Alias=Miro_5;ID=Miro_5.RBS;Name=Miro_5.RBS;Parent=Miro_5
 Miro	feature	gene	5324	7231	.	-	.	ID=Miro_6
 Miro	GenBank	CDS	5324	7222	.	-	1	ID=Miro_6.CDS;Name=Miro_6;Note=T4 gp39-like;Parent=Miro_6;dbxref=GO:0003677,GO:0003918,GO:0005524,GO:0006265,InterPro:IPR001241,InterPro:IPR003594,InterPro:IPR006171,InterPro:IPR013506,InterPro:IPR013759,InterPro:IPR013760,InterPro:IPR014721,InterPro:IPR018522,InterPro:IPR020568;obsolete_name=Miro_158;product=DNA topoisomerase II%2C large subunit
-Miro	GenBank	Shine_Dalgarno_sequence	7228	7231	.	-	1	Alias=Miro_6;ID=Miro_6.RBS;Name=Miro_6.RBS;Parent=Miro_6
 Miro	feature	gene	7290	7465	.	-	.	ID=Miro_7
 Miro	GenBank	CDS	7290	7454	.	-	1	ID=Miro_7.CDS;Name=Miro_7;Note=contains zinc ribbon domain;Parent=Miro_7;dbxref=InterPro:IPR013429;obsolete_name=Miro_157;product=hypothetical conserved
 Miro	GenBank	Shine_Dalgarno_sequence	7463	7465	.	-	1	Alias=Miro_7;ID=Miro_7.RBS;Name=Miro_7.RBS;Parent=Miro_7
