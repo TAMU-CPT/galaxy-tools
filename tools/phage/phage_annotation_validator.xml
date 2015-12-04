@@ -1,31 +1,44 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.phage.annotation_validator" name="Phage QC" version="1.0">
-  <description>validate phage annotations</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <expand macro="stdio"/>
-  <version_command>python phage_annotation_validator.py --version</version_command>
-  <command><![CDATA[
+    <description>validate phage annotations</description>
+    <macros>
+      <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <expand macro="stdio"/>
+    <version_command>python phage_annotation_validator.py --version</version_command>
+    <command><![CDATA[
 @GENOME_SELECTOR_PRE@
 
 python $__tool_directory__/phage_annotation_validator.py
 $gff3_data
 @GENOME_SELECTOR@
 
+--sd_min $sd_min
+--sd_max $sd_max
+--gap_dist $gap_dist
+--overlap_dist $overlap_dist
+--min_gene_length $min_gene
+
 --gff3 $gff3
 
 > $output]]></command>
-  <inputs>
-      <expand macro="gff3_input" />
-      <expand macro="genome_selector" />
-  </inputs>
-  <outputs>
-    <data format="html" name="output"/>
-    <data format="gff3" name="gff3" label="Phage QC annotation track"/>
-  </outputs>
-  <help><![CDATA[
+    <inputs>
+        <expand macro="gff3_input" />
+        <expand macro="genome_selector" />
+
+        <param label="Minimum distance for SDs (bp)" name="sd_min" type="integer" value="5" />
+        <param label="Maximum distance for SDs (bp)" name="sd_max" type="integer" value="15" />
+
+        <param label="Minimum distance to call a gap (bp)" name="gap_dist" type="integer" value="45" />
+        <param label="Maximum overlap distance to permit (bp)" name="overlap_dist" type="integer" value="15" />
+        <param label="Minimum length of naively called ORFs in gaps (in AAs)" name="min_gene" type="integer" value="25" />
+    </inputs>
+    <outputs>
+      <data format="html" name="output"/>
+      <data format="gff3" name="gff3" label="Phage QC annotation track"/>
+    </outputs>
+    <help><![CDATA[
 **What it does**
 
 Run CPT's Phage Annotation Validator validating the following properties:
@@ -35,5 +48,5 @@ Run CPT's Phage Annotation Validator validating the following properties:
 -  Excessive Overlaps
 -  Morons
 
-      ]]></help>
+        ]]></help>
 </tool>

@@ -172,7 +172,7 @@ def start_chop_and_trans(s, strict=True):
     return None, None, None
 
 
-def break_up_frame(s):
+def break_up_frame(s, min_len=10):
     """Returns offset, nuc, protein."""
     start = 0
     for match in re_stops.finditer(s):
@@ -182,39 +182,36 @@ def break_up_frame(s):
         n = s[start:index]
 
         offset, n, t = start_chop_and_trans(n)
-        if n and len(t) >= 10:
+        if n and len(t) >= min_len:
             yield start + offset, n, t
         start = index
 
 
-def get_peptides(nuc_seq):
+def putative_genes_in_sequence(nuc_seq, min_len=10):
     """Returns start, end, strand, nucleotides, protein.
     Co-ordinates are Python style zero-based.
     """
+    nuc_seq = nuc_seq.upper()
     # TODO - Refactor to use a generator function (in start order)
     # rather than making a list and sorting?
     answer = []
     full_len = len(nuc_seq)
 
     for frame in range(0, 3):
-        for offset, n, t in break_up_frame(nuc_seq[frame:]):
+        for offset, n, t in break_up_frame(nuc_seq[frame:], min_len=min_len):
             start = frame + offset  # zero based
             answer.append((start, start + len(n), +1, n, t))
 
     rc = reverse_complement(nuc_seq)
     for frame in range(0, 3):
-        for offset, n, t in break_up_frame(rc[frame:]):
+        for offset, n, t in break_up_frame(rc[frame:], min_len=min_len):
             start = full_len - frame - offset  # zero based
-            answer.append((start - len(n), start, -1, n, t))
+            answer.append((start, start - len(n), -1, n, t))
     answer.sort()
     return answer
 
 
-def putative_genes_in_sequence(sequence):
-    return get_peptides(sequence.upper())
-
-
-def excessive_gap(record, excess=10):
+def excessive_gap(record, excess=10, min_gene=30):
     """
     Identify excessive gaps between gene features.
 
@@ -269,23 +266,15 @@ def excessive_gap(record, excess=10):
     for (start, end) in results:
         f = gen_qc_feature(start, end, 'Excessive gap, %s bases' % abs(end-start))
         qc_features.append(f)
-        putative_genes = putative_genes_in_sequence(str(record[start:end].seq))
+        putative_genes = putative_genes_in_sequence(str(record[start:end].seq), min_len=min_gene)
         for putative_gene in putative_genes:
             # (0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF')
-            if putative_gene[2] > 0:
-                putative_genes_feature = gen_qc_feature(
-                    start + putative_gene[0],
-                    start + putative_gene[1],
-                    'Possible gene',
-                    strand=1
-                )
-            else:
-                putative_genes_feature = gen_qc_feature(
-                    end - putative_gene[1],
-                    end - putative_gene[0],
-                    'Possible gene',
-                    strand=-1
-                )
+            putative_genes_feature = gen_qc_feature(
+                start + putative_gene[0],
+                start + putative_gene[1],
+                'Possible gene',
+                strand=putative_gene[2],
+            )
             qc_features.append(putative_genes_feature)
 
         better_results.append((start, end, len(putative_genes)))
@@ -443,35 +432,35 @@ def missing_tags(record):
     return good, bad, results, qc_features
 
 
-def evaluate_and_report(annotations, genome, gff3=None, tbl=None):
+def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
+                        sd_max=15, gap_dist=45, overlap_dist=15, min_gene_length=30):
     """
     Generate our HTML evaluation of the genome
     """
     # Get features from GFF file
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
     # Get the first GFF3 record
+    # TODO: support multiple GFF3 files.
     record = list(GFF.parse(annotations, base_dict=seq_dict))[0]
 
     gff3_qc_record = SeqRecord(record.id, id=record.id)
     gff3_qc_record.features = []
     gff3_qc_features = []
-    upstream_min = 5
-    upstream_max = 15
 
     log.info("Locating missing RBSs")
     mb_good, mb_bad, mb_results, mb_annotations = missing_rbs(
         record,
-        lookahead_min=upstream_min,
-        lookahead_max=upstream_max
+        lookahead_min=sd_min,
+        lookahead_max=sd_max
     )
     gff3_qc_features += mb_annotations
 
     log.info("Locating excessive gaps")
-    eg_good, eg_bad, eg_results, eg_annotations = excessive_gap(record, excess=3 * upstream_max)
+    eg_good, eg_bad, eg_results, eg_annotations = excessive_gap(record, excess=gap_dist, min_gene=min_gene_length)
     gff3_qc_features += eg_annotations
 
     log.info("Locating excessive overlaps")
-    eo_good, eo_bad, eo_results, eo_annotations = excessive_overlap(record, excessive=15)
+    eo_good, eo_bad, eo_results, eo_annotations = excessive_overlap(record, excessive=overlap_dist)
     gff3_qc_features += eo_annotations
 
     log.info("Locating morons")
@@ -492,8 +481,8 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None):
 
     # This is data that will go into our HTML template
     kwargs = {
-        'upstream_min': upstream_min,
-        'upstream_max': upstream_max,
+        'upstream_min': sd_min,
+        'upstream_max': sd_max,
         'record_name': record.id,
 
         'score': score,
@@ -541,6 +530,15 @@ if __name__ == '__main__':
     parser.add_argument('genome', type=file, help='Genome Sequence')
     parser.add_argument('--gff3', type=str, help='GFF3 Annotations', default='qc_annotations.gff3')
     parser.add_argument('--tbl', type=str, help='Table for noninteractive parsing', default='qc_results.json')
+
+    parser.add_argument('--sd_min', type=int, help='Minimum distance from gene start for an SD to be')
+    parser.add_argument('--sd_max', type=int, help='Maximum distance from gene start for an SD to be')
+
+    parser.add_argument('--gap_dist', type=int, help='Maximum distance from gene start for an SD to be')
+    parser.add_argument('--overlap_dist', type=int, help='Maximum distance from gene start for an SD to be')
+
+    parser.add_argument('--min_gene_length', type=int, help='Minimum length for a putative gene call (AAs)', default=30)
+
     args = parser.parse_args()
 
     print evaluate_and_report(**vars(args))
