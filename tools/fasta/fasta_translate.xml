@@ -10,8 +10,8 @@ $fasta
 --target ${output.format_select}
 
 #if str($output.format_select) == "protein":
-    --table $table
-    $strip_stops
+    --table $output.table
+    $output.strip_stops
 #end if
 
 > $default]]></command>
@@ -20,7 +20,7 @@ $fasta
     <conditional name="output">
         <param label="Target output" type="select" name="format_select">
             <option value="rna">RNA</option>
-            <option value="protein" selected="True">Protein</option>
+            <option value="protein" selected="true">Protein</option>
         </param>
         <when value="rna" />
         <when value="protein">
@@ -45,7 +45,7 @@ $fasta
               <option value="24">[24] Pterobranchia Mitochondrial Code</option>
               <option value="25">[25] Candidate Division SR1 and Gracilibacteria Code</option>
             </param>
-            <param checked="false" label="Remove stop characters" name="strip_stops" type="boolean" truevalue="--strip_stops" falsevalue=""/>
+            <param label="Remove stop characters" name="strip_stops" type="boolean" truevalue="--strip_stops" falsevalue=""/>
         </when>
     </conditional>
   </inputs>
