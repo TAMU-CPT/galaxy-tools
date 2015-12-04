@@ -21,11 +21,6 @@ SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # Path to the HTML template for the report
 REPORT_TEMPLATE = Template(open(os.path.join(SCRIPT_PATH, 'phage_annotation_validator.html'), 'r').read())
 
-__author__ = "Eric Rasche"
-__version__ = "0.4.0"
-__maintainer__ = "Eric Rasche"
-__email__ = "esr@tamu.edu"
-
 ENCOURAGEMENT = (
     (100, 'Perfection itself!'),
     (90, 'Not too bad, a few minor things to fix...'),
