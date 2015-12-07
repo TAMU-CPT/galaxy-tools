@@ -9,7 +9,7 @@
   <command interpreter="python">fasta_proteininfo.py
 $sequence
 $is_protein
-$func
+--func $func
 > $output
 </command>
   <inputs>
