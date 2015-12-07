@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.add_organism" name="WA2: Add Organism" version="1.2">
+<tool id="edu.tamu.cpt2.webapollo.add_organism" name="WA2: Add Organism" version="1.3">
   <description>registers a new genome with WebApollo</description>
   <macros>
     <import>macros.xml</import>
@@ -21,7 +21,7 @@ python $__tool_directory__/add_organism.py
 $public
 
 #if $cn_source.source_select == "auto":
-    \$(cat $cn_source.cn_file | grep '^>' | head -n 1)
+    \$(cat $cn_source.cn_file | grep '^>' | head -n 1  | sed 's/ .*//g;s/>//g')
 #else
     "${cn_source.organism_cn}"
 #end if
