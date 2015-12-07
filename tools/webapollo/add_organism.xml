@@ -25,7 +25,7 @@ $public
 #else
     "${cn_source.organism_cn}"
 #end if
-"/opt/apollo/data/galaxy/${jbrowse.id}" | json_pp
+"/opt/apollo/data/galaxy/${jbrowse.id}"
 
 > $output]]></command>
   <inputs>
@@ -52,6 +52,11 @@ $public
     <data format="json" name="output"/>
   </outputs>
   <help><![CDATA[
+**NOTA BENE**
+
+All organism data is currently shared. By using this tool your annotation data will be visible to your fellow lab members.
+This will be fixed at a later date.
+
 **What it does**
 
 Adds an organism to the Apollo database. The tool takes the output of a

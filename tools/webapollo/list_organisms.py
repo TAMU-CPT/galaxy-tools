@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import sys
 import json
 import argparse
 from webapollo import WebApolloInstance
@@ -14,5 +13,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
-    json.dump(wa.organisms.findAllOrganisms(), sys.stdout)
+    print json.dumps(wa.organisms.findAllOrganisms(), indent=2)
 
