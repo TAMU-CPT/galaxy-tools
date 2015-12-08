@@ -27,4 +27,4 @@ if __name__ == '__main__':
         species=args.species,
         public=args.public
     )
-    print json.dumps([org for org in orgs if orgs['commonName'] == args.cn], indent=2)
+    print json.dumps([org for org in orgs if org['commonName'] == args.cn], indent=2)
