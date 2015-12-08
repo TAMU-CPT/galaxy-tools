@@ -1,0 +1,65 @@
+<tool id="blastxml_filter" name="Filter BlastXML" version="1.0">
+    <description></description>
+    <macros>
+      <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <expand macro="stdio"/>
+    <command interpreter="python"><![CDATA[
+        xsltproc $xsltfile $blastxml > $output
+    ]]></command>
+    <configfiles>
+        <configfile name="xsltfile"><![CDATA[<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <!-- Inspired by https://www.biostars.org/p/15658/ -->
+    <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
+
+    <xsl:template match="@*|node()">
+        <xsl:copy>
+            <xsl:apply-templates select="@*|node()"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="Iteration_hits/Hit">
+        <xsl:if test='Hit_hsps[Hsp[number(Hsp_evalue) &lt; $evalue and number(Hsp_num) &lt; $topN]]'>
+            <xsl:copy>
+                <xsl:apply-templates select="@*|node()"/>
+            </xsl:copy>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="Iteration_hits/Hit/Hit_hsps/Hsp">
+        <xsl:if test='self::*[number(Hsp_evalue) &lt; $evalue and number(Hsp_num) &lt; $topN]'>
+            <xsl:copy>
+                <xsl:apply-templates select="@*|node()"/>
+            </xsl:copy>
+        </xsl:if>
+    </xsl:template>
+
+</xsl:stylesheet>]]>
+        </configfile>
+    </configfiles>
+    <inputs>
+      <param label="Blast XML" name="blastxml" type="data" format="blastxml"/>
+
+      <param label="Below this e-value" name="evalue" type="float" value="1e-5"/>
+      <param label="Top N hits" name="topN" type="int" value="20"
+          help="Usually blast will return a maxmimum of 500 hits, so set to 500 to disable this check."/>
+    </inputs>
+    <outputs>
+      <data format="blastxml" name="output"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="blastxml" value="phi60C_blastn.xml"/>
+            <output name="default" file="phi60C_blastn_filter.xml"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+**What it does**
+
+Filter BlastXML data by e-value and HSP number
+]]></help>
+      <citations>
+      </citations>
+</tool>
+
