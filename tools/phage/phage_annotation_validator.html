@@ -228,6 +228,11 @@ h3:before {
           <h3 id="missing_rbs">Missing RBS <small>{{missing_rbs_good}} / {{missing_rbs_good + missing_rbs_bad}}</small></h3>
           <p>This section covers genes with missing or incorrectly chosen
           RBSs.</p>
+          {% if not rbss_annotated %}
+          <p>
+            Since you have not annotated any possible RBSs, this does not count off from your overall score.
+          </p>
+          {% endif %}
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>

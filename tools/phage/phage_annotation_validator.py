@@ -551,6 +551,7 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
         'score': score,
         'encouragement': get_encouragement(score),
 
+        'rbss_annotated': mb_any,
         'missing_rbs': mb_results,
         'missing_rbs_good': mb_good,
         'missing_rbs_bad': mb_bad,
