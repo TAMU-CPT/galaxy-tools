@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import json
+import math
 import argparse
 import itertools
 from gff3 import feature_lambda, feature_test_type, feature_test_quals
@@ -23,7 +24,8 @@ REPORT_TEMPLATE = Template(open(os.path.join(SCRIPT_PATH, 'phage_annotation_vali
 
 ENCOURAGEMENT = (
     (100, 'Perfection itself!'),
-    (90, 'Not too bad, a few minor things to fix...'),
+    (90, 'Amazing!'),
+    (80, 'Not too bad, a few minor things to fix...'),
     (70, 'Some issues to address'),
     (50, """Issues detected! </p><p class="text-muted">Have you heard of the
      <a href="https://cpt.tamu.edu">CPT</a>\'s Automated Phage Annotation
@@ -301,6 +303,30 @@ def excessive_gap(record, excess=10, min_gene=30):
     return good, bad, better_results, qc_features
 
 
+def coding_density(record, mean=92.5, sd=20):
+    """
+    Find coding density in the genome
+    """
+    feature_lengths = 0
+
+    for gene_a in coding_genes(record.features):
+        feature_lengths += sum([
+            len(x) for x in
+            genes(gene_a.sub_features, feature_type='CDS')
+        ])
+
+
+    def phi(x):
+        return math.exp(-1 * math.pi * x * x)
+
+    def f(x, mean=0, sd=1):
+        # Modified to multiply by SD. This means even at sd=5, f(x, mean) where x = mean => 1, rather than 1/5.
+        return (1 / float(sd)) * phi(float(x - mean) / float(sd)) * sd
+
+    avgFeatLen = float(feature_lengths) / float(len(record.seq))
+    return int(f(100 * avgFeatLen, mean=mean, sd=sd) * 100), int(avgFeatLen)
+
+
 def coding_genes(feature_list):
     for x in feature_lambda(feature_list, feature_test_type, {'type': 'gene'}, subfeatures=True):
         if len(list(feature_lambda(x.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))) > 0:
@@ -484,13 +510,23 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
     mt_good, mt_bad, mt_results, mt_annotations = missing_tags(record)
     gff3_qc_features += mt_annotations
 
-    score_good = float(sum((mb_good, eg_good, eo_good, mt_good)))
-    score_bad = float(sum((mb_bad, eg_bad, eo_bad, mt_bad)))
+    log.info("Determining coding density")
+    cd, cd_real = coding_density(record)
 
-    if score_bad + score_good == 0:
-        score = 0
-    else:
-        score = int(100 * score_good / (score_bad + score_good))
+
+    good_scores = (mb_good, eg_good, eo_good, mt_good)
+    bad_scores = (mb_bad, eg_bad, eo_bad, mt_bad)
+    subscores = []
+
+    for (g, b) in zip(good_scores, bad_scores):
+        if g + b == 0:
+            s = 0
+        else:
+            s = int(100 * float(g) / (float(b) + float(g)))
+        subscores.append(s)
+    subscores.append(cd)
+
+    score = int(float(sum(subscores)) / float(len(subscores)))
 
     # This is data that will go into our HTML template
     kwargs = {
@@ -520,6 +556,9 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
         'missing_tags': mt_results,
         'missing_tags_good': mt_good,
         'missing_tags_bad': mt_bad,
+
+        'coding_density': cd,
+        'coding_density_real': cd_real,
     }
 
     with open(tbl, 'w') as handle:

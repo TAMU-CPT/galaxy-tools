@@ -21,17 +21,12 @@ body {
   padding-top: 50px;
 }
 
-#bad_gene_starts:before,
-#missing_rbs:before,
-#excessive_gaps:before,
-#excessive_overlap:before,
-#antisense:before,
-#morons:before { 
-  display: block; 
-  content: " "; 
-  margin-top: -50px; 
-  height: 50px; 
-  visibility: hidden; 
+h3:before {
+  display: block;
+  content: " ";
+  margin-top: -50px;
+  height: 50px;
+  visibility: hidden;
 }
 
 /*
@@ -185,21 +180,48 @@ body {
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
+            <li><a href="#main"><b>Overview</b></a></li>
             <li><a href="#bad_gene_starts"><b>Bad Gene Starts</b></a></li>
             <li><a href="#missing_rbs"><small>Missing RBS</small></a></li>
             <li><a href="#excessive_gaps"><small>Excessive Gaps</small></a></li>
             <li><a href="#excessive_overlap"><small>Excessive Overlaps</small></a></li>
+            <li><a href="#coding_density"><small>Coding Density</small></a></li>
             <li><a href="#antisense"><b>Antisense Genes</b></a></li>
             <li><a href="#morons"><small>Possible Morons</small></a></li>
             <li><a href="#annotations"><b>Annotation Issues</b></a></li>
             <li><a href="#missing_product"><small>Missing Product Tags</small></a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main">
             <div class="jumbotron">
-                <h1>Phage {{record_name}}</h1>
-                <h2>Score: {{score}}/100</h2>
-                <p>{{encouragement}}</p>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <h1>Phage {{record_name}}</h1>
+                        <h2>Score: {{score}}/100</h2>
+                        <p>{{encouragement}}</p>
+                    </div>
+                    <div class="col-sm-5">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--
+                                :'<,'>s/<h3 id="[^"]*">\(.*\) <small>\(.*\)<\/small><\/h3>/<tr><td>\1<\/td><td>\2<\/td><\/tr>/
+                                    -->
+                                <tr><td>Missing RBS</td><td>{{ '%d' % (100 * missing_rbs_good / (missing_rbs_good + missing_rbs_bad))}}%</td></tr>
+                                <tr><td>Excessive Gaps</td><td>{{ '%d' % (100 * excessive_gap_good / (excessive_gap_good + excessive_gap_bad))}}%</td></tr>
+                                <tr><td>Excessive Overlap</td><td>{{ '%d' % (100 * excessive_overlap_good / (excessive_overlap_good + excessive_overlap_bad))}}%</td></tr>
+                                <tr><td>Coding Density Score</td><td>{{ coding_density }}%</td></tr>
+                                <tr><td>Possible Morons</td><td>{{ '%d' % (100 * morons_good / (morons_good + morons_bad))}}%</td></tr>
+                                <tr><td>Missing Product Tags</td><td>{{ '%d' % (100 * missing_tags_good / (missing_tags_good + missing_tags_bad))}}%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
           <h2 class="sub-header" id="bad_gene_starts">Gene Starts</h2>
@@ -285,6 +307,14 @@ body {
                 {% endfor %}
               </tbody>
             </table>
+          </div>
+          <h3 id="coding_density">Coding Density Issues <small>{{ coding_density }} / 100</small></h3>
+          <div class="table-responsive">
+            <p>
+            You have a coding density of {{ coding_density_real }} which scores
+            {{ coding_density }} / 100. Most genomes should be in the 90% to
+            100% coding density range
+            </p>
           </div>
 
           <h2 class="sub-header" id="antisense">Antisense Genes</h2>
