@@ -152,7 +152,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
             else:
                 good += 1
 
-    return good, bad, results, qc_features
+    return good, bad, results, qc_features, len(rbss) > 0
 
 # modified from get_orfs_or_cdss.py
 # -----------------------------------------------------------
@@ -302,6 +302,18 @@ def excessive_gap(record, excess=10, min_gene=30):
     # and bad is just gaps
     return good, bad, better_results, qc_features
 
+def phi(x):
+    """Standard phi function used in calculation of normal distribution"""
+    return math.exp(-1 * math.pi * x * x)
+
+def norm(x, mean=0, sd=1):
+    """
+    Normal distribution. Given an x position, a mean, and a standard
+    deviation, calculate the "y" value. Useful for score scaling
+
+    Modified to multiply by SD. This means even at sd=5, norm(x, mean) where x = mean => 1, rather than 1/5.
+    """
+    return (1 / float(sd)) * phi(float(x - mean) / float(sd)) * sd
 
 def coding_density(record, mean=92.5, sd=20):
     """
@@ -315,16 +327,8 @@ def coding_density(record, mean=92.5, sd=20):
             genes(gene_a.sub_features, feature_type='CDS')
         ])
 
-
-    def phi(x):
-        return math.exp(-1 * math.pi * x * x)
-
-    def f(x, mean=0, sd=1):
-        # Modified to multiply by SD. This means even at sd=5, f(x, mean) where x = mean => 1, rather than 1/5.
-        return (1 / float(sd)) * phi(float(x - mean) / float(sd)) * sd
-
     avgFeatLen = float(feature_lengths) / float(len(record.seq))
-    return int(f(100 * avgFeatLen, mean=mean, sd=sd) * 100), int(avgFeatLen)
+    return int(norm(100 * avgFeatLen, mean=mean, sd=sd) * 100), int(avgFeatLen)
 
 
 def coding_genes(feature_list):
@@ -383,7 +387,7 @@ def excessive_overlap(record, excessive=15):
         # overlapped
         ix = cas.intersection(cbs)
         if len(ix) >= excessive:
-            bad += 1
+            bad += float(len(ix)) / float(excessive)
             qc_features.append(gen_qc_feature(
                 min(ix),
                 max(ix),
@@ -393,7 +397,11 @@ def excessive_overlap(record, excessive=15):
 
     # Good isn't accurate here. It's a triangle number and just ugly, but we
     # don't care enough to fix it.
-    return len(list(coding_genes(record.features))), bad, results, qc_features
+    good = len(list(coding_genes(record.features)))
+    good = int(good - bad)
+    if good < 0:
+        good = 0
+    return good, int(bad), results, qc_features
 
 
 def get_encouragement(score):
@@ -487,7 +495,8 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
     gff3_qc_features = []
 
     log.info("Locating missing RBSs")
-    mb_good, mb_bad, mb_results, mb_annotations = missing_rbs(
+    #mb_any = "did they annotate ANY rbss? if so, take off from score."
+    mb_good, mb_bad, mb_results, mb_annotations, mb_any = missing_rbs(
         record,
         lookahead_min=sd_min,
         lookahead_max=sd_max
@@ -514,8 +523,13 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
     cd, cd_real = coding_density(record)
 
 
-    good_scores = (mb_good, eg_good, eo_good, mt_good)
-    bad_scores = (mb_bad, eg_bad, eo_bad, mt_bad)
+    good_scores = [eg_good, eo_good, mt_good]
+    bad_scores = [eg_bad, eo_bad, mt_bad]
+
+    # Only if they tried to annotate RBSs do we consider them.
+    if mb_any:
+        good_scores.append(mb_good)
+        bad_scores.append(mb_bad)
     subscores = []
 
     for (g, b) in zip(good_scores, bad_scores):
