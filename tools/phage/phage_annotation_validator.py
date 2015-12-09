@@ -245,7 +245,7 @@ def require_sd(data, record, chrom_start, sd_min, sd_max):
         seq = str(tmp.extract(record.seq))
         sds = sd_finder.list_sds(seq)
         if len(sds) > 0:
-            yield putative_gene
+            yield putative_gene + (start, end)
 
 
 def excessive_gap(record, excess=10, min_gene=30, slop=30, lookahead_min=5, lookahead_max=15):
@@ -306,14 +306,45 @@ def excessive_gap(record, excess=10, min_gene=30, slop=30, lookahead_min=5, look
         putative_genes = putative_genes_in_sequence(str(record[start - slop:end + slop].seq), min_len=min_gene)
         putative_genes = list(require_sd(putative_genes, record, start, lookahead_min, lookahead_max))
         for putative_gene in putative_genes:
-            # (0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF')
-            putative_genes_feature = gen_qc_feature(
-                start + putative_gene[0],
-                start + putative_gene[1],
-                'Possible gene',
-                strand=putative_gene[2],
+            # (0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF', 123123, 124324)
+            possible_gene_start = start + putative_gene[0]
+            possible_gene_end = start + putative_gene[1]
+
+            possible_cds = SeqFeature(
+                FeatureLocation(
+                    possible_gene_start, possible_gene_end,
+                    strand=putative_gene[2],
+                ),
+                type='CDS'
             )
-            qc_features.append(putative_genes_feature)
+
+            # Now we adjust our boundaries for the RBS that's required
+            # There are only two cases, the rbs is upstream of it, or downstream
+            if putative_gene[5] < possible_gene_start:
+                possible_gene_start = putative_gene[5]
+            else:
+                possible_gene_end = putative_gene[6]
+
+            possible_rbs = SeqFeature(
+                FeatureLocation(
+                    putative_gene[5], putative_gene[6],
+                    strand=putative_gene[2],
+                ),
+                type='Shine_Dalgarno_sequence'
+            )
+
+            possible_gene = SeqFeature(
+                FeatureLocation(
+                    possible_gene_start, possible_gene_end,
+                    strand=putative_gene[2],
+                ),
+                type='gene',
+                qualifiers={
+                    'note': ['Possible gene']
+                }
+            )
+            possible_gene.sub_features = [possible_rbs, possible_cds]
+            qc_features.append(possible_gene)
 
         better_results.append((start, end, len(putative_genes)))
 
