@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import re
 import argparse
 import sys
 import random
@@ -15,6 +16,48 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
 MAXTRIES = 10000
+
+
+class Enzyme(object):
+    # Ugly code re-use but we don't package things nicely enough to avoid it.
+
+    DNA_REGEX_TRANSLATIONS = {
+        'A': 'A',
+        'T': 'T',
+        'C': 'C',
+        'G': 'G',
+        'N': '.',
+        'M': '[AC]',
+        'R': '[AG]',
+        'W': '[AT]',
+        'Y': '[CT]',
+        'S': '[CG]',
+        'K': '[GT]',
+
+        'H': '[^G]',
+        'B': '[^A]',
+        'V': '[^T]',
+        'D': '[^C]',
+    }
+
+    def __init__(self, forward, reverse):
+        self.forward = forward
+        self.reverse = reverse
+
+    def get_regex(self):
+        """Generate the regular expression objects for forward+backward cuts"""
+        reg_f = self.iupac_to_regex(self.forward)
+        reg_r = self.iupac_to_regex(self.reverse)
+        rec_seq_f = re.compile(reg_f, re.IGNORECASE)
+        rec_seq_r = re.compile(reg_r, re.IGNORECASE)
+        print self.forward, self.reverse
+        return [rec_seq_f, rec_seq_r]
+
+    def iupac_to_regex(self, recognition_sequence):
+        """Replace IUPAC extended DNA alphabet characters with appropriate
+        regular experssions from Enzyme.DNA_REGEX_TRANSLATIONS"""
+        return ''.join([self.DNA_REGEX_TRANSLATIONS[x] for x in
+                        recognition_sequence])
 
 
 class Mutator(object):
@@ -36,7 +79,7 @@ class Mutator(object):
 
         for enzyme in rebaseTmp:
             if enzyme in avoidEnzyme:
-                self.avoidance += rebaseTmp[enzyme]['recognition_sequence']
+                self.avoidance += Enzyme(*rebaseTmp[enzyme]).get_regex()
 
         # Load target data from codondb
         header = None
@@ -111,7 +154,18 @@ class Mutator(object):
         return mutated_region
 
     def _badRegion(self, sequence):
-        return any([query.upper() in str(sequence.seq.upper()) for query in self.avoidance])
+        result = False
+        us = str(sequence.seq.upper())
+        for query in self.avoidance:
+            if isinstance(query, str):
+                result = query.upper() in us
+            else:
+                print query.findall(us)
+                result = len(query.findall(us)) > 0
+
+            if result:
+                return True
+        return False
 
     def _mutate(self, seq):
         fixed_seq = ''
