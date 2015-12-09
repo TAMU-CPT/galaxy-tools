@@ -5,6 +5,7 @@ import math
 import argparse
 import itertools
 from gff3 import feature_lambda, feature_test_type, feature_test_quals
+from shinefind import NaiveSDCaller
 from BCBio import GFF
 from Bio.Data import CodonTable
 from Bio import SeqIO
@@ -21,6 +22,7 @@ log = logging.getLogger(__name__)
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # Path to the HTML template for the report
 REPORT_TEMPLATE = Template(open(os.path.join(SCRIPT_PATH, 'phage_annotation_validator.html'), 'r').read())
+GENOME_TEMPLATE = Template(open(os.path.join(SCRIPT_PATH, 'phageqc_genomea_report.html'), 'r').read())
 
 ENCOURAGEMENT = (
     (100, 'Perfection itself!'),
@@ -71,7 +73,6 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     good = 0
     bad = 0
     qc_features = []
-    from shinefind import NaiveSDCaller
     sd_finder = NaiveSDCaller()
 
     for gene in coding_genes(record.features):
@@ -226,7 +227,28 @@ def putative_genes_in_sequence(nuc_seq, min_len=10):
     return answer
 
 
-def excessive_gap(record, excess=10, min_gene=30):
+def require_sd(data, record, chrom_start, sd_min, sd_max):
+    sd_finder = NaiveSDCaller()
+    for putative_gene in data:
+        if putative_gene[2] > 0:  # strand
+            start = chrom_start + putative_gene[0] - sd_max
+            end = chrom_start + putative_gene[0] - sd_min
+        else:
+            start = chrom_start + putative_gene[1] + sd_min
+            end = chrom_start + putative_gene[1] + sd_max
+
+        (start, end) = __ensure_location_in_bounds(start=start, end=end,
+                                                    parent_length=record.__len__)
+        tmp = SeqFeature(FeatureLocation(
+            start, end, strand=putative_gene[2]), type='domain')
+        # Get the sequence
+        seq = str(tmp.extract(record.seq))
+        sds = sd_finder.list_sds(seq)
+        if len(sds) > 0:
+            yield putative_gene
+
+
+def excessive_gap(record, excess=10, min_gene=30, slop=30, lookahead_min=5, lookahead_max=15):
     """
     Identify excessive gaps between gene features.
 
@@ -281,7 +303,8 @@ def excessive_gap(record, excess=10, min_gene=30):
     for (start, end) in results:
         f = gen_qc_feature(start, end, 'Excessive gap, %s bases' % abs(end-start))
         qc_features.append(f)
-        putative_genes = putative_genes_in_sequence(str(record[start:end].seq), min_len=min_gene)
+        putative_genes = putative_genes_in_sequence(str(record[start - slop:end + slop].seq), min_len=min_gene)
+        putative_genes = list(require_sd(putative_genes, record, start, lookahead_min, lookahead_max))
         for putative_gene in putative_genes:
             # (0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF')
             putative_genes_feature = gen_qc_feature(
@@ -328,7 +351,7 @@ def coding_density(record, mean=92.5, sd=20):
         ])
 
     avgFeatLen = float(feature_lengths) / float(len(record.seq))
-    return int(norm(100 * avgFeatLen, mean=mean, sd=sd) * 100), int(avgFeatLen)
+    return int(norm(100 * avgFeatLen, mean=mean, sd=sd) * 100), int(100 * avgFeatLen)
 
 
 def coding_genes(feature_list):
@@ -480,7 +503,8 @@ def missing_tags(record):
 
 
 def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
-                        sd_max=15, gap_dist=45, overlap_dist=15, min_gene_length=30):
+                        sd_max=15, gap_dist=45, overlap_dist=15,
+                        min_gene_length=30, genomeA=False):
     """
     Generate our HTML evaluation of the genome
     """
@@ -504,7 +528,9 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
     gff3_qc_features += mb_annotations
 
     log.info("Locating excessive gaps")
-    eg_good, eg_bad, eg_results, eg_annotations = excessive_gap(record, excess=gap_dist, min_gene=min_gene_length)
+    eg_good, eg_bad, eg_results, eg_annotations = excessive_gap(
+        record, excess=gap_dist, min_gene=min_gene_length,
+        slop=overlap_dist, lookahead_min=sd_min, lookahead_max=sd_max)
     gff3_qc_features += eg_annotations
 
     log.info("Locating excessive overlaps")
@@ -588,7 +614,11 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
         gff3_qc_record.annotations = {}
         GFF.write([gff3_qc_record], handle)
 
-    return REPORT_TEMPLATE.render(**kwargs)
+    # TODO: refactor
+    if genomeA:
+        return GENOME_TEMPLATE.render(**kwargs)
+    else:
+        return REPORT_TEMPLATE.render(**kwargs)
 
 
 if __name__ == '__main__':
@@ -605,6 +635,8 @@ if __name__ == '__main__':
     parser.add_argument('--overlap_dist', type=int, help='Maximum distance from gene start for an SD to be', default=30)
 
     parser.add_argument('--min_gene_length', type=int, help='Minimum length for a putative gene call (AAs)', default=30)
+
+    parser.add_argument('--genomeA', action='store_true', help='Simplified output for GenomeA reviews')
 
     args = parser.parse_args()
 

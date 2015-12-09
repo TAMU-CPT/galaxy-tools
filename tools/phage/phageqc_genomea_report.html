@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>[GenomeA] Phage QC on {{record_name}} - {{score}}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <style type="text/css">
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+h3:before {
+  display: block;
+  content: " ";
+  margin-top: -50px;
+  height: 50px;
+  visibility: hidden;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
+/* CUSTOM CSS */
+.spark {
+        position: relative;
+        margin:5px;
+}
+.spark span {
+        padding: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 5px;
+        position: relative;
+}
+.spark .plus {
+        top: -10px;
+        background: #aaaaff;
+}
+.spark .minus {
+        top: 10px;
+        background: #ffaaaa;
+}
+.plus-focus {
+        top: -10px;
+        background: blue;
+}
+.minus-focus {
+        top: 10px;
+        background: red;
+}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">[GenomeA] Phage QC on {{record_name}}</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="#bad_gene_starts"><b>Bad Gene Starts</b></a></li>
+            <li><a href="#missing_rbs"><small>Missing RBS</small></a></li>
+            <li><a href="#excessive_gaps"><small>Excessive Gaps</small></a></li>
+            <li><a href="#excessive_overlap"><small>Excessive Overlaps</small></a></li>
+            <li><a href="#coding_density"><small>Coding Density</small></a></li>
+            <li><a href="#annotations"><b>Annotation Issues</b></a></li>
+            <li><a href="#missing_product"><small>Missing Product Tags</small></a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main">
+          <h2 class="sub-header" id="bad_gene_starts">Gene Starts</h2>
+          <h3 id="missing_rbs">Missing RBS <small>{{missing_rbs_good}} / {{missing_rbs_good + missing_rbs_bad}}</small></h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature Type</th>
+                  <th>ID</th>
+                  <th>Location</th>
+                  <th>Error</th>
+                  <th>Upstream (-{{upstream_max}} .. -{{upstream_min}})</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in missing_rbs %}
+                {% if "None found" in row.__message %}
+                <tr>
+                    <td>{{row.type}}</td>
+                    <td>{{row.id}}</td>
+                    <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
+                    <td>None found</td>
+                    <td><span style="font-family:monospace">{{row.__upstream}}</span></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="excessive_gaps">Excessive Gaps <small>{{excessive_gap_good}} / {{excessive_gap_good + excessive_gap_bad}}</small></h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Region</th>
+                  <th>Size</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in excessive_gap %}
+                <tr>
+                    <td>{{row[0]}} .. {{row[1]}}</td>
+                    <td>{{row[1] - row[0]}}</td>
+                    <td>
+                        {% if row[2] == 0 %}
+                        {% else %}
+                        {{row[2]}} possible genes found in this region
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="excessive_overlap">Excessive Overlap <small>{{excessive_overlap_good}} / {{excessive_overlap_good + excessive_overlap_bad}}</small></h3>
+          <p>While large gaps are discouraged, large overlaps are likewise
+          discouraged, as it indicates possible misannotation.</p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature A</th>
+                  <th>Feature B</th>
+                  <th>Shared Region</th>
+                  <th>Overlap Length</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in excessive_overlap %}
+                <tr>
+                    <td>{{row[0].id}} ({{row[0].location}})</td>
+                    <td>{{row[1].id}} ({{row[1].location}})</td>
+                    <td>{{row[2]}}..{{row[3]}}</td>
+                    <td>{{row[3] - row[2]}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <h3 id="coding_density">Coding Density Issues <small>{{ coding_density }} / 100</small></h3>
+          <div class="table-responsive">
+            <p>
+            You have a coding density of {{ coding_density_real }} which scores
+            {{ coding_density }} / 100. Most genomes should be in the 90% to
+            100% coding density range
+            </p>
+          </div>
+
+          <h2 class="sub-header" id="annotations">Annotation Issues</h2>
+          <h3 id="missing_product">Missing Product Tags <small>{{missing_tags_good}} / {{missing_tags_good + missing_tags_bad}}</small></h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Qualifiers</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in missing_tags %}
+                <tr>
+                    <td>{{row.id}}</td>
+                    <td>
+                        {% for key in row.qualifiers %}
+                        {{ key }}
+                        <ul>
+                            {% for value in row.qualifiers[key] %}
+                            <li>{{value}}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </body>
+</html>
+
