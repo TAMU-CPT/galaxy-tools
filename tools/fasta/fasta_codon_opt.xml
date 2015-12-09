@@ -4958,7 +4958,7 @@ $sequence
     </param>
     <param label="Selected Regions" name="masks" type="data" format="bed" multiple="true" optional="true" help="Mark these regions as 'to-edit'. If no file is specified, the entire sequence will be optimized."/>
 
-    <repeat name="avoidEnzyme" label="Avoid Specific Enzyme Sequences">
+    <repeat name="avoidEnzyme" title="Avoid Specific Enzyme Sequences">
         <param name="enzyme" type="select" label="Enzyme">
             <option value="AaaI">AaaI</option>
             <option value="AagI">AagI</option>
@@ -6193,7 +6193,7 @@ $sequence
             <option value="Zsp2I">Zsp2I</option>
         </param>
     </repeat>
-    <repeat name="avoidCustom" label="Avoid Specific Sequences">
+    <repeat name="avoidCustom" title="Avoid Specific Sequences">
         <param name="custom" type="text" label="Sequence" />
     </repeat>
 
