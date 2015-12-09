@@ -4,7 +4,7 @@ import sys
 import random
 import itertools
 import bisect
-
+import yaml
 from collections import Sequence
 from Bio.Seq import Seq
 from Bio import SeqIO
@@ -14,25 +14,29 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
+MAXTRIES = 10000
+
 
 class Mutator(object):
 
-    def __init__(self, target, mask, table=11, codondb=None, seed=42, avoidCustom=None, avoidEnzyme=None, **kwargs):
+    def __init__(self, target, mask, table=11, codondb=None, seed=42,
+                 avoidCustom=None, avoidEnzyme=None, rebase=None, **kwargs):
+
         if seed > 0:
             random.seed(seed)
 
         self.masked_regions = self.parse_mask_files(mask)
         self.codon_table, self.translation_table = self.gen_opt_table(table=table)
 
-        if avoidCustom is None:
-            self.avoidCustom = []
-        else:
-            self.avoidCustom = avoidCustom
+        rebaseTmp = yaml.load(rebase)
+        self.avoidance = avoidCustom if avoidCustom is not None else []
 
         if avoidEnzyme is None:
-            self.avoidEnzyme = []
-        else:
-            self.avoidEnzyme = avoidEnzyme
+            avoidEnzyme = []
+
+        for enzyme in rebaseTmp:
+            if enzyme in avoidEnzyme:
+                self.avoidance += rebaseTmp[enzyme]['recognition_sequence']
 
         # Load target data from codondb
         header = None
@@ -80,16 +84,34 @@ class Mutator(object):
         final_seq = Seq('')
         regions = self.generate_evaluatable_regions(sequence)
         if len(regions) == 1:
-            final_seq += self._mutate(sequence)
+            final_seq += self._safeMutate(sequence)
         else:
             for (region_start, region_end, masked) in regions:
                 region = sequence[region_start:region_end]
                 if masked:
                     final_seq += region
                 else:
-                    final_seq += self._mutate(region)
+                    final_seq += self._safeMutate(region)
 
         return final_seq
+
+    def _safeMutate(self, region):
+        mutated_region = self._mutate(region)
+        runs = 0
+        while self._badRegion(mutated_region) and runs < MAXTRIES:
+            mutated_region = self._mutate(region)
+            runs += 1
+            if runs % 100 == 0:
+                log.info("... [%s] attempts", runs)
+            # log.info("... [%s] %s", runs, mutated_region.seq)
+
+        if runs >= MAXTRIES:
+            log.error("Tried %s different variations, failed to find one without target sequence.", MAXTRIES)
+
+        return mutated_region
+
+    def _badRegion(self, sequence):
+        return any([query.upper() in str(sequence.seq.upper()) for query in self.avoidance])
 
     def _mutate(self, seq):
         fixed_seq = ''
@@ -215,8 +237,9 @@ if __name__ == '__main__':
     parser.add_argument('sequence', type=file, help='sequence file')
     parser.add_argument('target', type=str, help='target organism')
     parser.add_argument('--table', type=int, help='Translation table #', default=1)
-    parser.add_argument('--mask', type=file, nargs='*', help='Regions to mask from mutations')
+    parser.add_argument('--mask', type=file, nargs='*', help='Regions to mask for mutations')
     parser.add_argument('--codondb', type=file, help='Average codon database')
+    parser.add_argument('--rebase', type=file, help='Rebase yaml file')
     parser.add_argument('--seed', type=int, help='Random seed. 0 means choose randomly at runtime', default=0)
     parser.add_argument('--avoidCustom', nargs='*', help='Sequences to avoid')
     parser.add_argument('--avoidEnzyme', nargs='*', help='Enzymes to avoid')
