@@ -8,7 +8,7 @@
   <command><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-$__tool_directory__/gff3_require_phage_start.py
+python $__tool_directory__/gff3_require_phage_start.py
 
 @GENOME_SELECTOR@
 $gff3_data
