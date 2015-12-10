@@ -6,8 +6,11 @@
       <yield/>
     </requirements>
   </xml>
-  <token name="@AUTH@">
+  <token name="@URL@">
 https://cpt.tamu.edu/apollo
+  </token>
+  <token name="@AUTH@">
+@URL@
 galaxy@cpt.tamu.edu
 \$GALAXY_WEBAPOLLO_PASSWORD
   </token>

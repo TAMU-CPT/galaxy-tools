@@ -8,7 +8,6 @@
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/list_organisms.py
 @AUTH@
-| json_pp
 > $output]]></command>
   <inputs>
   </inputs>

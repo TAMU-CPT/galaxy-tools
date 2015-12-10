@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.add_organism" name="WA2: Add Organism" version="1.2">
+<tool id="edu.tamu.cpt2.webapollo.add_organism" name="WA2: Add Organism" version="1.3">
   <description>registers a new genome with WebApollo</description>
   <macros>
     <import>macros.xml</import>
@@ -20,15 +20,30 @@ python $__tool_directory__/add_organism.py
 --species "$species"
 $public
 
-"$organism_cn"
-"/opt/apollo/data/galaxy/${jbrowse.id}" | json_pp
+#if $cn_source.source_select == "auto":
+    \$(cat $cn_source.cn_file | grep '^>' | head -n 1  | sed 's/ .*//g;s/>//g')
+#else
+    "${cn_source.organism_cn}"
+#end if
+"/opt/apollo/data/galaxy/${jbrowse.id}"
 
 > $output]]></command>
   <inputs>
     <param name="jbrowse" type="data" format="html" label="JBrowse HTML Output" />
     <param name="blatdb" type="data" label="Blat DB" optional="True" />
 
-    <param name="organism_cn" type="text" label="Organism Common Name" optional="True"/>
+    <conditional name="cn_source">
+        <param name="source_select" type="select" label="Organism Common Name Source">
+            <option value="auto">Autodetect from Fasta</option>
+            <option value="direct">Direct Entry</option>
+        </param>
+        <when value="auto">
+            <param name="cn_file" type="data" format="fasta" label="Organism Common Name" />
+        </when>
+        <when value="direct">
+            <param name="organism_cn" type="text" label="Organism Common Name" />
+        </when>
+    </conditional>
     <param name="genus" type="text" label="Host Bacteria" optional="True" />
     <param name="species" type="text" label="Phage Name" optional="True" />
     <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
@@ -37,6 +52,11 @@ $public
     <data format="json" name="output"/>
   </outputs>
   <help><![CDATA[
+**NOTA BENE**
+
+All organism data is currently shared. By using this tool your annotation data will be visible to your fellow lab members.
+This will be fixed at a later date.
+
 **What it does**
 
 Adds an organism to the Apollo database. The tool takes the output of a

@@ -5,3 +5,4 @@ svgwrite
 bcbio-gff
 pypng
 pygal
+jinja2

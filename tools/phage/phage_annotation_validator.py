@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 import os
 import json
+import math
 import argparse
 import itertools
 from gff3 import feature_lambda, feature_test_type, feature_test_quals
+from shinefind import NaiveSDCaller
 from BCBio import GFF
 from Bio.Data import CodonTable
 from Bio import SeqIO
@@ -20,15 +22,12 @@ log = logging.getLogger(__name__)
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # Path to the HTML template for the report
 REPORT_TEMPLATE = Template(open(os.path.join(SCRIPT_PATH, 'phage_annotation_validator.html'), 'r').read())
-
-__author__ = "Eric Rasche"
-__version__ = "0.4.0"
-__maintainer__ = "Eric Rasche"
-__email__ = "esr@tamu.edu"
+GENOME_TEMPLATE = Template(open(os.path.join(SCRIPT_PATH, 'phageqc_genomea_report.html'), 'r').read())
 
 ENCOURAGEMENT = (
     (100, 'Perfection itself!'),
-    (90, 'Not too bad, a few minor things to fix...'),
+    (90, 'Amazing!'),
+    (80, 'Not too bad, a few minor things to fix...'),
     (70, 'Some issues to address'),
     (50, """Issues detected! </p><p class="text-muted">Have you heard of the
      <a href="https://cpt.tamu.edu">CPT</a>\'s Automated Phage Annotation
@@ -74,6 +73,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     good = 0
     bad = 0
     qc_features = []
+    sd_finder = NaiveSDCaller()
 
     for gene in coding_genes(record.features):
         # Check if there are RBSs, TODO: make this recursive. Each feature in
@@ -107,8 +107,19 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
                              type='domain')
             # Get the sequence
             seq = str(tmp.extract(record.seq))
-            gene.__upstream = seq
-            gene.__message = "No RBS"
+            # Set the default properties
+            gene.__upstream = seq.lower()
+            gene.__message = "No RBS annotated, None found"
+
+            # Try and do an automated shinefind call
+            log.info(seq)
+            sds = sd_finder.list_sds(seq)
+            log.info(len(sds))
+            if len(sds) > 0:
+                sd = sds[0]
+                gene.__upstream = sd_finder.highlight_sd(seq.lower(), sd['start'], sd['end'])
+                gene.__message = "Unannotated but valid RBS"
+
 
             qc_features.append(gen_qc_feature(start, end, 'Missing RBS', strand=gene.strand))
 
@@ -142,7 +153,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
             else:
                 good += 1
 
-    return good, bad, results, qc_features
+    return good, bad, results, qc_features, len(rbss) > 0
 
 # modified from get_orfs_or_cdss.py
 # -----------------------------------------------------------
@@ -177,7 +188,7 @@ def start_chop_and_trans(s, strict=True):
     return None, None, None
 
 
-def break_up_frame(s):
+def break_up_frame(s, min_len=10):
     """Returns offset, nuc, protein."""
     start = 0
     for match in re_stops.finditer(s):
@@ -187,39 +198,57 @@ def break_up_frame(s):
         n = s[start:index]
 
         offset, n, t = start_chop_and_trans(n)
-        if n and len(t) >= 10:
+        if n and len(t) >= min_len:
             yield start + offset, n, t
         start = index
 
 
-def get_peptides(nuc_seq):
+def putative_genes_in_sequence(nuc_seq, min_len=10):
     """Returns start, end, strand, nucleotides, protein.
     Co-ordinates are Python style zero-based.
     """
+    nuc_seq = nuc_seq.upper()
     # TODO - Refactor to use a generator function (in start order)
     # rather than making a list and sorting?
     answer = []
     full_len = len(nuc_seq)
 
     for frame in range(0, 3):
-        for offset, n, t in break_up_frame(nuc_seq[frame:]):
+        for offset, n, t in break_up_frame(nuc_seq[frame:], min_len=min_len):
             start = frame + offset  # zero based
             answer.append((start, start + len(n), +1, n, t))
 
     rc = reverse_complement(nuc_seq)
     for frame in range(0, 3):
-        for offset, n, t in break_up_frame(rc[frame:]):
+        for offset, n, t in break_up_frame(rc[frame:], min_len=min_len):
             start = full_len - frame - offset  # zero based
-            answer.append((start - len(n), start, -1, n, t))
+            answer.append((start, start - len(n), -1, n, t))
     answer.sort()
     return answer
 
 
-def putative_genes_in_sequence(sequence):
-    return get_peptides(sequence.upper())
+def require_sd(data, record, chrom_start, sd_min, sd_max):
+    sd_finder = NaiveSDCaller()
+    for putative_gene in data:
+        if putative_gene[2] > 0:  # strand
+            start = chrom_start + putative_gene[0] - sd_max
+            end = chrom_start + putative_gene[0] - sd_min
+        else:
+            start = chrom_start + putative_gene[1] + sd_min
+            end = chrom_start + putative_gene[1] + sd_max
+
+        (start, end) = __ensure_location_in_bounds(start=start, end=end,
+                                                    parent_length=record.__len__)
+        tmp = SeqFeature(FeatureLocation(
+            start, end, strand=putative_gene[2]), type='domain')
+        # Get the sequence
+        seq = str(tmp.extract(record.seq))
+        sds = sd_finder.list_sds(seq)
+        if len(sds) > 0:
+            yield putative_gene + (start, end)
 
 
-def excessive_gap(record, excess=10):
+def excessive_gap(record, excess=10, min_gene=30, slop=30, lookahead_min=5, lookahead_max=15):
     """
     Identify excessive gaps between gene features.
 
@@ -274,24 +303,48 @@ def excessive_gap(record, excess=10):
     for (start, end) in results:
         f = gen_qc_feature(start, end, 'Excessive gap, %s bases' % abs(end-start))
         qc_features.append(f)
-        putative_genes = putative_genes_in_sequence(str(record[start:end].seq))
+        putative_genes = putative_genes_in_sequence(str(record[start - slop:end + slop].seq), min_len=min_gene)
+        putative_genes = list(require_sd(putative_genes, record, start, lookahead_min, lookahead_max))
         for putative_gene in putative_genes:
-            # (0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF')
-            if putative_gene[2] > 0:
-                putative_genes_feature = gen_qc_feature(
-                    start + putative_gene[0],
-                    start + putative_gene[1],
-                    'Possible gene',
-                    strand=1
-                )
+            # (0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF', 123123, 124324)
+            possible_gene_start = start + putative_gene[0]
+            possible_gene_end = start + putative_gene[1]
+
+            possible_cds = SeqFeature(
+                FeatureLocation(
+                    possible_gene_start, possible_gene_end,
+                    strand=putative_gene[2],
+                ),
+                type='CDS'
+            )
+
+            # Now we adjust our boundaries for the RBS that's required
+            # There are only two cases, the rbs is upstream of it, or downstream
+            if putative_gene[5] < possible_gene_start:
+                possible_gene_start = putative_gene[5]
             else:
-                putative_genes_feature = gen_qc_feature(
-                    end - putative_gene[1],
-                    end - putative_gene[0],
-                    'Possible gene',
-                    strand=-1
-                )
-            qc_features.append(putative_genes_feature)
+                possible_gene_end = putative_gene[6]
+
+            possible_rbs = SeqFeature(
+                FeatureLocation(
+                    putative_gene[5], putative_gene[6],
+                    strand=putative_gene[2],
+                ),
+                type='Shine_Dalgarno_sequence'
+            )
+
+            possible_gene = SeqFeature(
+                FeatureLocation(
+                    possible_gene_start, possible_gene_end,
+                    strand=putative_gene[2],
+                ),
+                type='gene',
+                qualifiers={
+                    'note': ['Possible gene']
+                }
+            )
+            possible_gene.sub_features = [possible_rbs, possible_cds]
+            qc_features.append(possible_gene)
 
         better_results.append((start, end, len(putative_genes)))
 
@@ -302,6 +355,34 @@ def excessive_gap(record, excess=10):
     good = len(sorted_genes) + 1 - bad
     # and bad is just gaps
     return good, bad, better_results, qc_features
+
+def phi(x):
+    """Standard phi function used in calculation of normal distribution"""
+    return math.exp(-1 * math.pi * x * x)
+
+def norm(x, mean=0, sd=1):
+    """
+    Normal distribution. Given an x position, a mean, and a standard
+    deviation, calculate the "y" value. Useful for score scaling
+
+    Modified to multiply by SD. This means even at sd=5, norm(x, mean) where x = mean => 1, rather than 1/5.
+    """
+    return (1 / float(sd)) * phi(float(x - mean) / float(sd)) * sd
+
+def coding_density(record, mean=92.5, sd=20):
+    """
+    Find coding density in the genome
+    """
+    feature_lengths = 0
+
+    for gene_a in coding_genes(record.features):
+        feature_lengths += sum([
+            len(x) for x in
+            genes(gene_a.sub_features, feature_type='CDS')
+        ])
+
+    avgFeatLen = float(feature_lengths) / float(len(record.seq))
+    return int(norm(100 * avgFeatLen, mean=mean, sd=sd) * 100), int(100 * avgFeatLen)
 
 
 def coding_genes(feature_list):
@@ -360,7 +441,7 @@ def excessive_overlap(record, excessive=15):
         # overlapped
         ix = cas.intersection(cbs)
         if len(ix) >= excessive:
-            bad += 1
+            bad += float(len(ix)) / float(excessive)
             qc_features.append(gen_qc_feature(
                 min(ix),
                 max(ix),
@@ -370,7 +451,11 @@ def excessive_overlap(record, excessive=15):
 
     # Good isn't accurate here. It's a triangle number and just ugly, but we
     # don't care enough to fix it.
-    return len(list(coding_genes(record.features))), bad, results, qc_features
+    good = len(list(coding_genes(record.features)))
+    good = int(good - bad)
+    if good < 0:
+        good = 0
+    return good, int(bad), results, qc_features
 
 
 def get_encouragement(score):
@@ -448,35 +533,39 @@ def missing_tags(record):
     return good, bad, results, qc_features
 
 
-def evaluate_and_report(annotations, genome, gff3=None, tbl=None):
+def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
+                        sd_max=15, gap_dist=45, overlap_dist=15,
+                        min_gene_length=30, genomeA=False):
     """
     Generate our HTML evaluation of the genome
     """
     # Get features from GFF file
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
     # Get the first GFF3 record
+    # TODO: support multiple GFF3 files.
     record = list(GFF.parse(annotations, base_dict=seq_dict))[0]
 
     gff3_qc_record = SeqRecord(record.id, id=record.id)
     gff3_qc_record.features = []
     gff3_qc_features = []
-    upstream_min = 5
-    upstream_max = 15
 
     log.info("Locating missing RBSs")
-    mb_good, mb_bad, mb_results, mb_annotations = missing_rbs(
+    #mb_any = "did they annotate ANY rbss? if so, take off from score."
+    mb_good, mb_bad, mb_results, mb_annotations, mb_any = missing_rbs(
         record,
-        lookahead_min=upstream_min,
-        lookahead_max=upstream_max
+        lookahead_min=sd_min,
+        lookahead_max=sd_max
     )
     gff3_qc_features += mb_annotations
 
     log.info("Locating excessive gaps")
-    eg_good, eg_bad, eg_results, eg_annotations = excessive_gap(record, excess=3 * upstream_max)
+    eg_good, eg_bad, eg_results, eg_annotations = excessive_gap(
+        record, excess=gap_dist, min_gene=min_gene_length,
+        slop=overlap_dist, lookahead_min=sd_min, lookahead_max=sd_max)
     gff3_qc_features += eg_annotations
 
     log.info("Locating excessive overlaps")
-    eo_good, eo_bad, eo_results, eo_annotations = excessive_overlap(record, excessive=15)
+    eo_good, eo_bad, eo_results, eo_annotations = excessive_overlap(record, excessive=overlap_dist)
     gff3_qc_features += eo_annotations
 
     log.info("Locating morons")
@@ -487,23 +576,39 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None):
     mt_good, mt_bad, mt_results, mt_annotations = missing_tags(record)
     gff3_qc_features += mt_annotations
 
-    score_good = float(sum((mb_good, eg_good, eo_good, mt_good)))
-    score_bad = float(sum((mb_bad, eg_bad, eo_bad, mt_bad)))
+    log.info("Determining coding density")
+    cd, cd_real = coding_density(record)
 
-    if score_bad + score_good == 0:
-        score = 0
-    else:
-        score = int(100 * score_good / (score_bad + score_good))
+
+    good_scores = [eg_good, eo_good, mt_good]
+    bad_scores = [eg_bad, eo_bad, mt_bad]
+
+    # Only if they tried to annotate RBSs do we consider them.
+    if mb_any:
+        good_scores.append(mb_good)
+        bad_scores.append(mb_bad)
+    subscores = []
+
+    for (g, b) in zip(good_scores, bad_scores):
+        if g + b == 0:
+            s = 0
+        else:
+            s = int(100 * float(g) / (float(b) + float(g)))
+        subscores.append(s)
+    subscores.append(cd)
+
+    score = int(float(sum(subscores)) / float(len(subscores)))
 
     # This is data that will go into our HTML template
     kwargs = {
-        'upstream_min': upstream_min,
-        'upstream_max': upstream_max,
+        'upstream_min': sd_min,
+        'upstream_max': sd_max,
         'record_name': record.id,
 
         'score': score,
         'encouragement': get_encouragement(score),
 
+        'rbss_annotated': mb_any,
         'missing_rbs': mb_results,
         'missing_rbs_good': mb_good,
         'missing_rbs_bad': mb_bad,
@@ -523,6 +628,9 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None):
         'missing_tags': mt_results,
         'missing_tags_good': mt_good,
         'missing_tags_bad': mt_bad,
+
+        'coding_density': cd,
+        'coding_density_real': cd_real,
     }
 
     with open(tbl, 'w') as handle:
@@ -537,7 +645,11 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None):
         gff3_qc_record.annotations = {}
         GFF.write([gff3_qc_record], handle)
 
-    return REPORT_TEMPLATE.render(**kwargs)
+    # TODO: refactor
+    if genomeA:
+        return GENOME_TEMPLATE.render(**kwargs)
+    else:
+        return REPORT_TEMPLATE.render(**kwargs)
 
 
 if __name__ == '__main__':
@@ -546,6 +658,17 @@ if __name__ == '__main__':
     parser.add_argument('genome', type=file, help='Genome Sequence')
     parser.add_argument('--gff3', type=str, help='GFF3 Annotations', default='qc_annotations.gff3')
     parser.add_argument('--tbl', type=str, help='Table for noninteractive parsing', default='qc_results.json')
+
+    parser.add_argument('--sd_min', type=int, help='Minimum distance from gene start for an SD to be', default=5)
+    parser.add_argument('--sd_max', type=int, help='Maximum distance from gene start for an SD to be', default=15)
+
+    parser.add_argument('--gap_dist', type=int, help='Maximum distance from gene start for an SD to be', default=30)
+    parser.add_argument('--overlap_dist', type=int, help='Maximum distance from gene start for an SD to be', default=30)
+
+    parser.add_argument('--min_gene_length', type=int, help='Minimum length for a putative gene call (AAs)', default=30)
+
+    parser.add_argument('--genomeA', action='store_true', help='Simplified output for GenomeA reviews')
+
     args = parser.parse_args()
 
     print evaluate_and_report(**vars(args))
