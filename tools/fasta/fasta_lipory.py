@@ -9,14 +9,15 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
-CASES = [
-    re.compile('[ILMFTV][^REKD][GAS]C'),
-    re.compile('AWAC'),
-]
 
 
-def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdist=30):
+def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdist=60):
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta_genome, "fasta"))
+
+    CASES = [
+        re.compile('^.{%s,%s}[ILMFTV][^REKD][GAS]C' % (lipobox_mindist, lipobox_maxdist)),
+        re.compile('^.{%s,%s}AWAC' % (lipobox_mindist, lipobox_maxdist)),
+    ]
 
     for record in GFF.parse(gff3_file, base_dict=seq_dict):
         good_features = []
