@@ -6,31 +6,28 @@ import logging
 logging.basicConfig(level=logging.INFO)
 from BCBio import GFF
 from Bio import SeqIO
-"""
-Merge GFF features into a GenBank File
-======================================
-
-Useful to add features from GFF producing analysis tools to a GenBank File.
-
-Currently only supports GenBank files with single records (i.e. you cannot
-export a GenBank DB, produce gff3 against many subfeatures, and then expect
-those to be merged correctly)
-
-"""
+from gff3 import feature_lambda, feature_test_true
 
 
 def extract_features(gff3_file):
-    if gff3_file is None:
-        raise ValueError("Must specify gff file")
-
     for rec in GFF.parse(gff3_file):
-        for feat in rec.features:
+        for feat in feature_lambda(
+            rec.features,
+            feature_test_true,
+            {},
+            subfeatures=False
+        ):
             if feat.type == 'remark':
                 continue
 
+            feat.qualifiers['color'] = ['255 0 0']
+            if feat.type == 'Shine_Dalgarno_sequence':
+                feat.type = 'RBS'
+                feat.qualifiers['color'] = ['180 0 0']
+
             if feat.type not in ('CDS', 'RBS', "gene", 'terminator'):
                 feat.type = 'CDS'
-            feat.qualifiers['color'] = ['255 0 0']
+
 
             # Remove keys with '-'
             quals = copy.deepcopy(feat.qualifiers)

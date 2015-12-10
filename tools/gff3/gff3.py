@@ -58,7 +58,11 @@ def feature_test_true(feature, **kwargs):
 
 
 def feature_test_type(feature, **kwargs):
-    return feature.type == kwargs['type']
+    if 'type' in kwargs:
+        return feature.type == kwargs['type']
+    elif 'types' in kwargs:
+        return feature.type in kwargs['types']
+    raise Exception("Incorrect feature_test_type call, need type or types")
 
 
 def feature_test_qual_value(feature, **kwargs):
