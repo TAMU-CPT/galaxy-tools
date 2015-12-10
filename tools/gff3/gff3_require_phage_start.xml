@@ -1,0 +1,44 @@
+<tool id="edu.tamu.cpt.gff3.require_phage_start" name="Gff3 Filter: Require Phage Start" version="1.0">
+  <description>ensures start is ATG, CTG, or TTG</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <command><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+$__tool_directory__/gff3_require_phage_start.py
+
+@GENOME_SELECTOR@
+$gff3_data
+
+> $stdout
+
+]]></command>
+  <inputs>
+    <expand macro="genome_selector" />
+    <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="stdout" label="$gff3_data.name filtered for start codon"/>
+  </outputs>
+  <tests>
+  <!--
+      <test>
+          <param name="genome_fasta" value="miro.fa" />
+          <param name="gff3_data" value="miro.gff3" />
+          <output name="gff3_output" file="shinefind.gff3" />
+      </test>
+      -->
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Ensures the start codon for the CDS is ATG, TTG, or GTG. It removes it otherwise.
+
+**WARNING** this tool will remove ANY non-CDS type feature. TODO: Eric will need to fix this at a later date.
+
+      ]]></help>
+</tool>
+

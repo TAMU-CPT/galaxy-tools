@@ -1,0 +1,44 @@
+<tool id="edu.tamu.cpt.gff3.require_sd" name="Gff3 Filter: Require SD" version="1.0">
+  <description>ensures CDSs have an SD</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <command><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+$__tool_directory__/gff3_require_phage_start.py
+
+@GENOME_SELECTOR@
+$gff3_data
+
+> $stdout
+
+]]></command>
+  <inputs>
+    <expand macro="genome_selector" />
+    <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="stdout" label="$gff3_data.name filtered for SD presence"/>
+  </outputs>
+  <tests>
+  <!--
+      <test>
+          <param name="genome_fasta" value="miro.fa" />
+          <param name="gff3_data" value="miro.gff3" />
+          <output name="gff3_output" file="shinefind.gff3" />
+      </test>
+      -->
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Ensures a CDS has an SD upstream of it.
+
+**WARNING** this tool will remove ANY non-CDS type feature. TODO: Eric will need to fix this at a later date.
+
+      ]]></help>
+</tool>
+
