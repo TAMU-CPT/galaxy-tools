@@ -9,7 +9,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
-LIPOBOX = re.compile('[ILMFTV][^REKD][GAS]C')
+LIPOBOX = re.compile('[AILMFTV][^REKD][GAS]C')
 
 
 def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdist=30):
