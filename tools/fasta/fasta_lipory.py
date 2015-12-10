@@ -9,7 +9,10 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
-LIPOBOX = re.compile('[ILMFTV][^REKD][GAS]C')
+CASES = [
+    re.compile('[ILMFTV][^REKD][GAS]C'),
+    re.compile('AWAC'),
+]
 
 
 def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdist=30):
@@ -22,8 +25,9 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
                 continue
 
             tmpseq = str(feature.extract(record.seq).translate(table=11)).replace("*", "")
-            if LIPOBOX.search(tmpseq):
-                good_features.append(feature)
+            for case in CASES:
+                if case.search(tmpseq):
+                    good_features.append(feature)
         record.features = good_features
         yield [record]
 
