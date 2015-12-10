@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.gff3.require_sd" name="Gff3 Filter: Require SD" version="1.0">
+<tool id="edu.tamu.cpt.gff3.require_sd" name="Gff3 Filter: Require SD" version="1.2">
   <description>ensures CDSs have an SD</description>
   <macros>
     <import>macros.xml</import>
@@ -8,7 +8,7 @@
   <command><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/gff3_require_phage_start.py
+python $__tool_directory__/gff3_require_sd.py
 
 @GENOME_SELECTOR@
 $gff3_data
