@@ -90,6 +90,32 @@ class NaiveSDCaller(object):
             results.append(tmp)
         return results
 
+    def testFeatureUpstream(self, feature, record, sd_min=5, sd_max=15):
+        # Strand information necessary to getting correct upstream sequence
+        # TODO: library?
+        strand = feature.location.strand
+        # n_bases_upstream
+        if strand > 0:
+            start = feature.location.start - sd_max
+            end = feature.location.start - sd_min
+        else:
+            start = feature.location.end + sd_min
+            end = feature.location.end + sd_max
+
+        (start, end) = ensure_location_in_bounds(start=start, end=end,
+                                                    parent_length=record.__len__)
+
+        # Create our temp feature used to obtain correct portion of
+        # genome
+        tmp = SeqFeature(FeatureLocation(start, end, strand=strand),
+                            type='domain')
+        seq = str(tmp.extract(record.seq))
+        return self.list_sds(seq), start, end, seq
+
+    def hasSd(self, feature, record, sd_min=5, sd_max=15):
+        sds, start, end, seq = self.testFeatureUpstream(feature, record, sd_min=sd_min, sd_max=sd_max)
+        return len(sds) > 0
+
 
 def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5, lookahead_max=15, top_only=False, add=False):
     table_output.write('\t'.join(['ID', 'Name', 'Terminus', 'Terminus', 'Strand',
@@ -142,31 +168,12 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
                 ignored_features.append(gene)
                 continue
 
-            # Strand information necessary to getting correct upstream sequence
-            # TODO: library?
-            strand = feature.location.strand
-            # n_bases_upstream
-            if strand > 0:
-                start = feature.location.start - lookahead_max
-                end = feature.location.start - lookahead_min
-            else:
-                start = feature.location.end + lookahead_min
-                end = feature.location.end + lookahead_max
-
-            (start, end) = ensure_location_in_bounds(start=start, end=end,
-                                                     parent_length=record.__len__)
-
-            # Create our temp feature used to obtain correct portion of
-            # genome
-            tmp = SeqFeature(FeatureLocation(start, end, strand=strand),
-                             type='domain')
-            seq = str(tmp.extract(record.seq))
-            sds = sd_finder.list_sds(seq)
+            sds, start, end, seq = sd_finder.testFeatureUpstream(feature, record, sd_min=lookahead_min, sd_max=lookahead_max)
 
             feature_id = get_id(feature)
-            sd_features = sd_finder.to_features(sds, strand, start, end, feature_id=feature.id)
+            sd_features = sd_finder.to_features(sds, feature.location.strand, start, end, feature_id=feature.id)
 
-            human_strand = '+' if strand == 1 else '-'
+            human_strand = '+' if feature.location.strand == 1 else '-'
 
             # http://book.pythontips.com/en/latest/for_-_else.html
             log.debug('Found %s SDs', len(sds))
