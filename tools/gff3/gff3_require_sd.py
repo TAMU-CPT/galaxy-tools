@@ -19,15 +19,15 @@ def require_shinefind(gff3, fasta):
         genes = list(feature_lambda(record.features, feature_test_type, {'type': 'CDS'}, subfeatures=True))
         good_genes = []
         for gene in genes:
-            sds, start, end, seq = self.testFeatureUpstream(feature, record, sd_min=5, sd_max=17)
+            sds, start, end, seq = sd_finder.testFeatureUpstream(gene, record, sd_min=5, sd_max=17)
             if len(sds) > 1:
                 # TODO
                 # Double plus yuck
-                sd_features = sd_finder.to_features(sds, feature.location.strand, start, end, feature_id=feature.id)
-                good_genes.append(
+                sd_features = sd_finder.to_features(sds, gene.location.strand, start, end, feature_id=gene.id)
+                gene.sub_features.append(
                     sd_features[0]
                 )
-            if sd_finder.hasSd(gene, record):
+
                 good_genes.append(gene)
 
         # Yuck!
