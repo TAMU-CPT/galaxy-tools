@@ -9,7 +9,6 @@ import yaml
 from collections import Sequence
 from Bio.Seq import Seq
 from Bio import SeqIO
-from operator import itemgetter
 from itertools import groupby
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -50,7 +49,6 @@ class Enzyme(object):
         reg_r = self.iupac_to_regex(self.reverse)
         rec_seq_f = re.compile(reg_f, re.IGNORECASE)
         rec_seq_r = re.compile(reg_r, re.IGNORECASE)
-        print self.forward, self.reverse
         return [rec_seq_f, rec_seq_r]
 
     def iupac_to_regex(self, recognition_sequence):
@@ -131,6 +129,7 @@ class Mutator(object):
         else:
             for (region_start, region_end, masked) in regions:
                 region = sequence[region_start:region_end]
+                log.info('[%s..%s %s] %s', region_start, region_end, masked, str(region.seq)[0:60])
                 if masked:
                     final_seq += region
                 else:
@@ -160,7 +159,6 @@ class Mutator(object):
             if isinstance(query, str):
                 result = query.upper() in us
             else:
-                print query.findall(us)
                 result = len(query.findall(us)) > 0
 
             if result:
@@ -222,47 +220,28 @@ class Mutator(object):
         return data, tntable
 
     def generate_evaluatable_regions(self, sequence):
-        regions = [(0, len(sequence), True)]
+        # Set of booleans representing masked/unmaksed regions
+        regions = [True for x in range(len(sequence))]
+        # for each masked in region
         for mask in self.masked_regions[sequence.id]:
-            # Figure out which regions are overlapped and must be split (There /should/only be 1 or 0)
-            overlapping = []
-            nonoverlapping = []
-            for region in regions:
-                if self._overlap(region, mask):
-                    overlapping.append(region)
-                else:
-                    nonoverlapping.append(region)
+            # Loop over all values in that mask
+            for i in range(mask[0], mask[1]):
+                # Set those regions to false.
+                regions[i] = False
 
-            # If there's an overlapping region, we split it.
-            splitregions = []
-            for region in overlapping:
-                intersection = self.contiguous(self._overlap(region, mask))[0]
-                ri = (intersection[0], intersection[1], False)
-                left = (region[0], intersection[0], True)
-                right = (intersection[1], region[1], True)
-
-                if left[1] - left[0] != 0:
-                    splitregions.append(left)
-
-                if right[1] - right[0] != 0:
-                    splitregions.append(right)
-
-                splitregions.append(ri)
-
-            # Finally we correct our existing region set with the non-overlapping regions, and our new split regions
-            regions = nonoverlapping + splitregions
-        return sorted(regions, key=lambda x: x[0])
-
-    def contiguous(self, data):
-        # http://stackoverflow.com/a/2154437
-        ranges = []
-        for key, group in groupby(enumerate(data), lambda (index, item): index - item):
-            group = map(itemgetter(1), group)
-            ranges.append((group[0], group[-1] + 1))
-        return ranges
-
-    def _overlap(self, a, b):
-        return set(range(*a[0:2])).intersection(range(*b[0:2]))
+        # now we do some post processing
+        realRegions = []
+        idx = 0
+        # Grouping the regions by runs of Trues/Falses
+        for (i, j) in groupby(regions):
+            # i = the group's value, j = the group itself
+            q = len(list(j))
+            # Taking the length of the list, we append (start, end, masked) to
+            # our realRegions
+            realRegions.append((idx, idx + q, i))
+            # And update our index.
+            idx += q
+        return realRegions
 
 
 class WeightedPopulation(Sequence):
