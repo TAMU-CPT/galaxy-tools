@@ -75,6 +75,8 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     qc_features = []
     sd_finder = NaiveSDCaller()
 
+    any_rbss = False
+
     for gene in coding_genes(record.features):
         # Check if there are RBSs, TODO: make this recursive. Each feature in
         # gene.sub_features can also have sub_features.
@@ -128,6 +130,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
         else:
             if len(rbss) > 1:
                 log.warn("%s RBSs found for gene %s", rbss[0].id, gene.id)
+            any_rbss = True
             # get first RBS/CDS
             cds = list(genes(gene.sub_features, feature_type='CDS'))[0]
             rbs = rbss[0]
@@ -153,7 +156,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
             else:
                 good += 1
 
-    return good, bad, results, qc_features, len(rbss) > 0
+    return good, bad, results, qc_features, any_rbss
 
 # modified from get_orfs_or_cdss.py
 # -----------------------------------------------------------
