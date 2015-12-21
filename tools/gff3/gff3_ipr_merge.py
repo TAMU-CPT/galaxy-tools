@@ -2,6 +2,7 @@
 import sys
 import logging
 import argparse
+from gff3 import feature_lambda, feature_test_true
 from BCBio import GFF
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -34,7 +35,7 @@ def merge_interpro(gff3, interpro):
                 del ipr_additions[rec.id][key]
 
     for rec in GFF.parse(gff3):
-        for feature in rec.features:
+        for feature in feature_lambda(rec.features, feature_test_true, None, subfeatures=True):
             if feature.id in ipr_additions:
                 for key in ipr_additions[feature.id]:
                     if key not in feature.qualifiers:

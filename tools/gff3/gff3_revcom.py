@@ -14,7 +14,7 @@ __email__ = "esr@tamu.edu"
 def gff_filter(gff3):
     for rec in GFF.parse(gff3):
         rec.annotations = {}
-        GFF.write([rec.reverse_complement(id=rec.id)], sys.stdout)
+        GFF.write([rec.reverse_complement(id=True, name=True, description=True, features=True, annotations=True, letter_annotations=True, dbxrefs=True)], sys.stdout)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='reverse and complement as set of GFF3 annotations')
