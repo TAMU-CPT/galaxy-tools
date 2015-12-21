@@ -17,13 +17,9 @@ $phages
   <inputs>
       <param label="Blast 25 Column Tabular Results" name="blast"
           type="data" format="tabular"/>
-      <param label="Restrict to phage results" name="phages"
-          type="boolean" truevalue="--only_phage" falsevalue="" checked="True"/>
   </inputs>
   <outputs>
-    <data format="txt" name="accession_list" label="Top accession #s from $blast.name">
-    </data>
-    <data format="tabular" name="report" label="Report on top blast hits">
+    <data format="tabular" name="accession_list" label="Top blast hits from $blast.name">
     </data>
   </outputs>
   <help>Find top related genomes
