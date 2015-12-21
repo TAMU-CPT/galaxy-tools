@@ -42,7 +42,7 @@
       <param label="Blast XML" name="blastxml" type="data" format="blastxml"/>
 
       <param label="Below this e-value" name="evalue" type="float" value="1e-5"/>
-      <param label="Top N hits" name="topN" type="int" value="20"
+      <param label="Top N hits" name="topN" type="integer" value="20"
           help="Usually blast will return a maxmimum of 500 hits, so set to 500 to disable this check."/>
     </inputs>
     <outputs>
