@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.update_organism" name="WA2: Update Organism" version="1.2">
+<tool id="edu.tamu.cpt2.webapollo.update_organism" name="WA2: Update Organism" version="1.3">
   <description>updates an existing genome with WebApollo</description>
   <macros>
     <import>macros.xml</import>
@@ -53,6 +53,13 @@ $public
     <data format="txt" name="output"/>
   </outputs>
   <help><![CDATA[
+**NOTA BENE**
+
+All organism data is currently shared. By using this tool your annotation data will be visible to your fellow lab members.
+This will be fixed at a later date.
+
+This only works with JBrowse v0.4 and above!
+
 **What it does**
 
 Adds an organism to the Apollo database. The tool takes the output of a
