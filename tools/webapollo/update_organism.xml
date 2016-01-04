@@ -7,7 +7,7 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 #if str($jbrowse) != "None":
-    cp -R ${jbrowse.extra_files_path}/JBrowse-1.11.6/data/ /opt/apollo/data/galaxy/${jbrowse.id};
+    cp -R ${jbrowse.extra_files_path}/data/ /opt/apollo/data/galaxy/${jbrowse.id};
 #end if
 
 python $__tool_directory__/update_organism.py
