@@ -19,6 +19,30 @@ galaxy@cpt.tamu.edu
     name="apolloCredentialsFile" type="data" format="json" />
   </xml>
 
+  <token name="@CN_OR_GUESS@">
+<![CDATA[
+#if $cn_source.source_select == "auto":
+    \$(cat $cn_source.cn_file | grep '^>' | head -n 1  | sed 's/ .*//g;s/>//g')
+#else
+    "${cn_source.organism_cn}"
+#end if
+]]>
+  </token>
+  <xml name="cn_or_guess">
+    <conditional name="cn_source">
+        <param name="source_select" type="select" label="Organism Common Name Source">
+            <option value="auto">Autodetect from Fasta</option>
+            <option value="direct">Direct Entry</option>
+        </param>
+        <when value="auto">
+            <param name="cn_file" type="data" format="fasta" label="Organism Common Name" />
+        </when>
+        <when value="direct">
+            <param name="organism_cn" type="text" label="Organism Common Name" />
+        </when>
+    </conditional>
+  </xml>
+
   <xml name="citations">
       <citations>
       </citations>

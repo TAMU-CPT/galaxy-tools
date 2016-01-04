@@ -10,15 +10,11 @@ python $__tool_directory__/export.py
 
 @AUTH@
 
-#for commonName in $commonNames:
-    "${commonName.commonName}"
-#end for
+@CN_OR_GUESS@
 
 > $output]]></command>
   <inputs>
-    <repeat min="1" name="commonNames" title="Organism Common Names">
-      <param label="Common Name" name="commonName" type="text"/>
-    </repeat>
+    <expand macro="cn_or_guess" />
   </inputs>
   <outputs>
     <data format="gff3" name="output"/>
@@ -26,7 +22,6 @@ python $__tool_directory__/export.py
   <help><![CDATA[
 **What it does**
 
-Exports the combined GFF3/Fasta sequence from WebApollo. Currently only
-functions with the first sequence ID provided.
+Exports the combined GFF3/Fasta sequence from WebApollo.
       ]]></help>
 </tool>

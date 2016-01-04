@@ -7,7 +7,7 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 #if str($jbrowse) != "None":
-    cp -R ${jbrowse.extra_files_path}/data/ /opt/apollo/data/galaxy/${jbrowse.id};
+    cp -R ${jbrowse.extra_files_path}/JBrowse-1.11.6/data/ /opt/apollo/data/galaxy/${jbrowse.id};
 #end if
 
 python $__tool_directory__/update_organism.py
@@ -19,9 +19,8 @@ $id
     --jbrowse "/opt/apollo/data/galaxy/${jbrowse.id}"
 #end if
 
-#if str($commonName) != "None" and str($commonName) != "":
-    --commonName "$commonName"
-#end if
+--commonName
+@CN_OR_GUESS
 
 #if str($blatdb) != "None" and str($blatdb) != "":
     --blatdb "$blatdb"
@@ -44,7 +43,7 @@ $public
 
     <param name="jbrowse" type="data" format="html" label="JBrowse Output" optional="True"/>
     <param name="blatdb" type="data" label="Blat DB"  optional="True"/>
-    <param name="commonName" type="text" label="Organism Common Name" optional="True"/>
+    <expand macro="cn_or_guess" />
     <param name="genus" type="text" label="Host Bacteria" optional="True" />
     <param name="species" type="text" label="Phage Name" optional="True" />
 
@@ -54,11 +53,6 @@ $public
     <data format="txt" name="output"/>
   </outputs>
   <help><![CDATA[
-**NOTA BENE**
-
-All organism data is currently shared. By using this tool your annotation data will be visible to your fellow lab members.
-This will be fixed at a later date.
-
 **What it does**
 
 Adds an organism to the Apollo database. The tool takes the output of a
