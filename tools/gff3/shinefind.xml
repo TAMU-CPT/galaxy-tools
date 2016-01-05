@@ -18,6 +18,7 @@ $gff3_data
 
 --lookahead_min $lookahead_min
 --lookahead_max $lookahead_max
+$add
 $top_only
 
 

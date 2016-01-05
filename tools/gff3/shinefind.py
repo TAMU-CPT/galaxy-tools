@@ -75,11 +75,12 @@ class NaiveSDCaller(object):
                 'source': 'CPT_ShineFind',
                 'ID': '%s.rbs-%s' % (feature_id, idx)
             }
+
             if strand > 0:
-                start = parent_end - hit['spacing'] - hit['len'] + 1
+                start = parent_end - hit['spacing'] - hit['len']
                 end = parent_end - hit['spacing']
             else:
-                start = parent_start + hit['spacing'] + 1
+                start = parent_start + hit['spacing']
                 end = parent_start + hit['spacing'] + hit['len']
 
             tmp = SeqFeature(
