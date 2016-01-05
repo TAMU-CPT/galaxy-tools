@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.genbank.shinefind" name="ShineFind v1.5" version="1.5">
+<tool id="edu.tamu.cpt.genbank.shinefind" name="ShineFind v1.5" version="1.6">
   <description>Identify shine-dalgarno sequences</description>
   <macros>
     <import>macros.xml</import>
