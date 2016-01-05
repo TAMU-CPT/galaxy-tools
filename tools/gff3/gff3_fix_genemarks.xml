@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.fix_genemarks" name="Correct GeneMarkS Gene Model" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <command><![CDATA[
+$__tool_directory__/gff3_fix_genemarks.py
+$gff3_data
+> $default]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="default"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+GeneMarkS starts by producing an ancient GFF format. That has to be corrected
+with Regex to load as GFF3. Once that's done, you'll notice that features are
+of type "CDS" but their IDs are "gene_*" and there are no parent gene features.
+
+This tool adds the parent gene feature and renames the features nicely.
+      ]]></help>
+</tool>
