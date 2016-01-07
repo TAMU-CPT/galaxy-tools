@@ -42,7 +42,7 @@ def ensure_location_in_bounds(start=0, end=0, parent_length=0):
 
 def extract_features(genbank_file=None, tag='CDS', translate=False,
                      n_bases_upstream=0, n_bases_downstream=0,
-                     strip_stops=False, translation_table_id=11):
+                     strip_stops=False, translation_table_id=11, informative=False):
 
     for record in SeqIO.parse(genbank_file, "genbank"):
         for feature in record.features:
@@ -86,14 +86,17 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                 else:
                     extracted_seqs = [x.extract(record.seq) for x in __seqs]
 
-                location = ' [start=%s,end=%s]' % (start, end)
+                if informative:
+                    defline  = ' %s [start=%s,end=%s]' % (','.join(feature.qualifiers.get('product', [])), start, end)
+                else:
+                    defline  = ' [start=%s,end=%s]' % (start, end)
 
                 extracted_seq = ''.join(map(str, extracted_seqs))
 
                 if strip_stops:
                     extracted_seq = extracted_seq.replace('*', '')
 
-                yield [SeqRecord(Seq(extracted_seq.strip()), id=get_id(feature), description=location)]
+                yield [SeqRecord(Seq(extracted_seq.strip()), id=get_id(feature), description=defline)]
 
 
 if __name__ == '__main__':
@@ -122,6 +125,7 @@ if __name__ == '__main__':
     parser.add_argument('--n_bases_upstream', type=int, help='Add N bases upstream to exported features', default=0)
     parser.add_argument('--n_bases_downstream', type=int, help='Add N bases downstream to exported features', default=0)
     parser.add_argument('--strip_stops', action='store_true', help='Remove stop codons')
+    parser.add_argument('--informative', action='store_true', help='More informative deflines')
 
     args = vars(parser.parse_args())
     for seq in extract_features(**args):
