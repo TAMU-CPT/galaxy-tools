@@ -18,6 +18,7 @@ $translate
 --n_bases_upstream $n_bases_upstream
 --n_bases_downstream $n_bases_downstream
 $strip_stops
+$informative
 
 > $default]]></command>
   <inputs>
@@ -96,6 +97,8 @@ $strip_stops
         name="n_bases_downstream" type="integer" value="0"/>
     <param selected="true" label="Remove stop codons" name="strip_stops"
         type="boolean" truevalue="--strip_stops" falsevalue=""/>
+    <param selected="true" label="Add product name to defline (for blast)" name="informative"
+        type="boolean" truevalue="--informative" falsevalue=""/>
   </inputs>
   <outputs>
     <data format="fasta" name="default" label="$positional_2 exported from $positional_1.name"/>
