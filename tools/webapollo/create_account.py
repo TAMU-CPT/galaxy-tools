@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 import json
+import random
 import argparse
 from webapollo import WebApolloInstance
 
 def pwgen(length):
     chars = list('qwrtpsdfghjklzxcvbnm')
-    return ''.join(choice(chars) for _ in range(length))
+    return ''.join(random.choice(chars) for _ in range(length))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an account via web services')
