@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.create_account" name="WA2: Register Account" version="1.5">
+  <description>registers a new account with WebApollo</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/create_account.py
+
+@AUTH@
+
+$__user_email__
+
+--first "$first"
+--last "$last"
+> $output]]></command>
+  <inputs>
+    <param name="first" type="text" label="First Name" />
+    <param name="last" type="text" label="Last Name" />
+  </inputs>
+  <outputs>
+    <data format="txt" name="output" label="WebApollo Credentials"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Registers a TAMU account with the CPT's WebApollo. Just click run, then view
+the output file for your password.
+      ]]></help>
+</tool>
