@@ -66,6 +66,8 @@ def validate(gff3, user_email):
         if os.path.exists(STUDENT_RESULTS_FILE):
             with open(STUDENT_RESULTS_FILE, 'a') as handle:
                 handle.write(user_email + '\n')
+    else:
+        print "You have not successfully completed this exercise. Please try again. No annotations owned by you were found"
 
 
 if __name__ == '__main__':
