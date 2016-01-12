@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.464.2016.verify_apollo" name="464 Apollo Exercise Verification" version="1.0">
+  <description></description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <version_command>python cpt_464_questions.py --version</version_command>
+  <command interpreter="python"><![CDATA[verify_apollo.py
+$gff3_data
+$__user_email__
+> $stdout]]></command>
+  <inputs>
+    <param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="stdout" label="Verification Receipt"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Verifies that students completed the Apollo/Galaxy joint exercise successfully.
+]]></help>
+</tool>
