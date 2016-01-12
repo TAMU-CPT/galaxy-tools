@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import json
 import random
 import argparse
 from webapollo import WebApolloInstance
@@ -23,4 +22,4 @@ if __name__ == '__main__':
 
     password = pwgen(12)
     wa.users.createUser(args.email, args.first, args.last, password, role='user')
-    print 'Username: %s\nEmail: %s' % (args.email, password)
+    print 'Username: %s\nPassword: %s' % (args.email, password)
