@@ -24,6 +24,8 @@ $public
 
 "/opt/apollo/data/galaxy/${jbrowse.id}"
 
+$__user_email__
+
 > $output]]></command>
   <inputs>
     <param name="jbrowse" type="data" format="html" label="JBrowse HTML Output" />

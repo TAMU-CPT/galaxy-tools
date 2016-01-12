@@ -6,10 +6,11 @@ from webapollo import WebApolloInstance
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
     parser.add_argument('apollo', help='Complete Apollo URL')
-    parser.add_argument('username', help='WA Username')
-    parser.add_argument('password', help='WA Password')
+    parser.add_argument('username', help='WA Admin Username')
+    parser.add_argument('password', help='WA Admin Password')
 
     parser.add_argument('organismId', help='Organism ID #')
+    parser.add_argument('email', help='User Email')
 
     parser.add_argument('--commonName', help='Organism Common Name')
     parser.add_argument('--jbrowse', help='JBrowse Data Directory')

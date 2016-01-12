@@ -1,14 +1,17 @@
 from webapollo import WebApolloInstance
-# from webapollo import UserObj
-import random
+import json
 
-wa = WebApolloInstance('http://localhost:8080/apollo',
-                       'hxr@tamu.edu', 'pass')
-r = random.randint(1, 1000)
+wa = WebApolloInstance('http://localhost:8080/apollo-2.0.2-SNAPSHOT',
+                       'hxr@tamu.edu', 'p')
 
-me = wa.users.loadUserById(15)
-# print me
-wa.users.updateUser(me, 'hxr@tamu.edu', 'Helena', 'Rasche', 'pass')
+
+wa.annotations.setSequence("Merlin", "0")
+print json.dumps(
+    wa.annotations.getFeatures(),
+    indent=2
+)
+
+print wa.annotations.getGff3(["303f5cab-4604-483a-a5a8-28fdfd17bfe3"])
 # wa.organisms._requestArgs = {'proxies': {'http': 'http://localhost:1000'}}
 
 # import pprint; pprint.pprint(

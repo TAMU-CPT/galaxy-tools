@@ -36,6 +36,8 @@ $id
 
 $public
 
+$__user_email__
+
 > $output]]></command>
   <inputs>
     <!--<expand macro="auth_file" />-->
