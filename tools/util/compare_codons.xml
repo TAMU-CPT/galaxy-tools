@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.tabular.compare_codons" name="Compare Codon Usage" version="1.0">
+<tool id="edu.tamu.cpt.tabular.compare_codons" name="Compare Codon Usage" version="1.1">
   <description>between two genomes</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
@@ -8,10 +8,18 @@
   <command interpreter="python"><![CDATA[compare_codons.py
 $positional_1
 $positional_2
+--sort_order $sort
+--ref_title $positional_1.name
+--cmp_title $positional_2.name
 > $default]]></command>
   <inputs>
-    <param label="Reference Data" name="positional_1" type="data" format="tabular"/>
-    <param label="Data to compare" name="positional_2" type="data" format="tabular"/>
+    <param label="Dataset A" name="positional_1" type="data" format="tabular"/>
+    <param label="Dataset B" name="positional_2" type="data" format="tabular"/>
+    <param label="Sort order" name="sort" type="select">
+        <option value="default">Default, A-Y sorting</option>
+        <option value="ref">Data A codon frequency</option>
+        <option value="comp">Data B codon frequency</option>
+    </param>
   </inputs>
   <outputs>
     <data format="svg" hidden="false" name="default"/>
@@ -27,5 +35,5 @@ Creates a bar chart comparing two codon frequency tables. The input tables shoul
 	GCG	94
 	GCT	50
 
-      ]]></help>
+Headers starting with a # are fine.]]></help>
 </tool>
