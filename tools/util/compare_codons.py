@@ -23,6 +23,23 @@ def tntable(table=11):
     return _table, translation
 
 
+def custom_sort(table, sort='default'):
+    if sort == 'default':
+        kv = []
+        for aa in table.keys():
+            for codon in table[aa].keys():
+                kv.append((aa, codon))
+        return kv
+    elif sort in ('ref', 'comp'):
+        kv = custom_sort(table, sort='default')
+
+        return sorted(kv, key=lambda x: \
+                      table.get(x[0], {})\
+                           .get(x[1], {})\
+                           .get(sort, 0)
+                      )
+
+
 def main(reference, comparison):
     ref_data = np.genfromtxt(reference, dtype=None, delimiter='\t', names=True)
     comp_data = np.genfromtxt(comparison, dtype=None, delimiter='\t', names=True)
@@ -43,8 +60,7 @@ def main(reference, comparison):
     keys = []
     ref_flat = []
     comp_flat = []
-    for x in sorted(table.keys()):
-        for y in sorted(table[x].keys()):
+    for (x, y) in custom_sort(table, sort='default'):
             keys.append('%s (%s)' % (x, y))
             ref_val = table.get(x, {}).get(y, {}).get('ref', None)
             comp_val = table.get(x, {}).get(y, {}).get('comp', None)
