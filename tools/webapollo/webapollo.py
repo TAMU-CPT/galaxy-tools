@@ -97,7 +97,12 @@ class Client(object):
 
         if r.status_code == 200:
             if isJson:
-                return r.json()
+                d = r.json()
+                if 'username' in d:
+                    del d['username']
+                if 'password' in d:
+                    del d['password']
+                return d
             else:
                 return r.text
 
@@ -112,7 +117,12 @@ class Client(object):
         r = requests.get(url, headers=headers, verify=self.__verify,
                          params=get_params, **self._requestArgs)
         if r.status_code == 200:
-            return r.json()
+            d = r.json()
+            if 'username' in d:
+                del d['username']
+            if 'password' in d:
+                del d['password']
+            return d
         # @see self.body for HTTP response body
         raise Exception("Unexpected response from apollo %s: %s" %
                         (r.status_code, r.text))
@@ -146,7 +156,29 @@ class AnnotationsClient(Client):
         data = self._update_data(data)
         return self.request('setDescription', data)
 
+    def setName(self, uniquename, name):
+        # TODO
+        data = {
+            'features': [
+                {
+                    'uniquename': uniquename,
+                    'name': name,
+                }
+            ],
+        }
+        data = self._update_data(data)
+        return self.request('setName', data)
+
+    def setNames(self, features):
+        # TODO
+        data = {
+            'features': features,
+        }
+        data = self._update_data(data)
+        return self.request('setName', data)
+
     def setStatus(self, statuses):
+        # TODO
         data = {
             'features': statuses,
         }
@@ -178,15 +210,19 @@ class AnnotationsClient(Client):
         data = self._update_data({})
         return self.request('getFeatures', data)
 
-    def getSequence(self, uniquenames):
-        assert isinstance(uniquenames, collections.Iterable)
+    def getFeaturesBiopython(self):
+        data = self._update_data({})
+        featureData = self.request('getFeatures', data)
+        return featureData
+
+    def getSequence(self, uniquename):
         data = {
             'features': [
-                {'uniquename': x} for x in uniquenames
+                {'uniquename': uniquename}
             ]
         }
         data = self._update_data(data)
-        return self.request('getSequences', data)
+        return self.request('getSequence', data)
 
     def addFeature(self, feature, trustme=False):
         if not trustme:
@@ -335,7 +371,7 @@ class AnnotationsClient(Client):
             ]
         }
         data = self._update_data(data)
-        return self.request('getGff3', data)
+        return self.request('getGff3', data, isJson=False)
 
 
 class GroupsClient(Client):
@@ -496,23 +532,21 @@ class UsersClient(Client):
 
     def getOrganismPermissionsForUser(self, user):
         data = {
-            'userId': user.userId
+            'userId': user.userId,
         }
-        data
-        # return self.request('getOrganismPermissionsForUser', data)
+        return self.request('getOrganismPermissionsForUser', data)
 
     def updateOrganismPermission(self, user, organism, administrate=False,
                                  write=False, export=False, read=False):
         data = {
             'userId': user.userId,
             'organism': organism,
-            'administrate': administrate,
-            'write': write,
-            'export': export,
-            'read': read,
+            'ADMINISTRATE': administrate,
+            'WRITE': write,
+            'EXPORT': export,
+            'READ': read,
         }
-        data
-       # return self.request('updateOrganismPermission', data)
+        return self.request('updateOrganismPermission', data)
 
     def loadUser(self, user):
         return self.loadUserById(user.userId)
@@ -525,16 +559,13 @@ class UsersClient(Client):
         else:
             return res
 
-    def loadUsers(self, userId=None):
-        data = {}
-        if userId is not None:
-            data['userId'] = userId
+    def loadUsers(self, email=None):
+        res = self.request('loadUsers', {})
+        data = [UserObj(**x) for x in res]
+        if email is not None:
+            data = [x for x in data if x.username == email]
 
-        res = self.request('loadUsers', data)
-        if isinstance(res, list):
-            return [UserObj(**x) for x in res]
-        else:
-            return res
+        return data
 
     def addUserToGroup(self, group, user):
         data = {'group': group.name, 'userId': user.userId}
@@ -569,3 +600,4 @@ class UsersClient(Client):
             'newPassword': newPassword,
         }
         return self.request('updateUser', data)
+
