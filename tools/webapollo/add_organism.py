@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import json
 import argparse
+import time
 from webapollo import WebApolloInstance
 
 if __name__ == '__main__':
@@ -19,7 +20,13 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+
     wa = WebApolloInstance(args.apollo, args.username, args.password)
+    # User must have an account
+    gx_user = wa.users.loadUsers(email=args.email)
+    if len(gx_user) == 0:
+        raise Exception("Unknown user. Please register first")
+
     orgs = wa.organisms.addOrganism(
         args.cn,
         args.jbrowse,
@@ -28,4 +35,14 @@ if __name__ == '__main__':
         species=args.species,
         public=args.public
     )
+
+    # Must sleep before we're ready to handle
+    time.sleep(1)
+    data = wa.users.updateOrganismPermission(
+        gx_user[0], args.cn,
+        write=True,
+        export=True,
+        read=True,
+    )
+
     print json.dumps([org for org in orgs if org['commonName'] == args.cn], indent=2)
