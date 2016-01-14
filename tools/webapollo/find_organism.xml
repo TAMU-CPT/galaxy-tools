@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.find_organism" name="WA2: Find Organism" version="1.0">
+  <description>finds an organism's details by common name</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/find_organism.py
+
+@AUTH@
+
+--commonName
+@CN_OR_GUESS@
+
+> $output]]></command>
+  <inputs>
+    <expand macro="cn_or_guess" />
+  </inputs>
+  <outputs>
+    <data format="json" name="output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Searches for an organism's information in the Apollo database.
+]]></help>
+</tool>
