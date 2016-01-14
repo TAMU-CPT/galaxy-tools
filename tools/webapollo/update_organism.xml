@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.update_organism" name="WA2: Update Organism" version="1.4">
+<tool id="edu.tamu.cpt2.webapollo.update_organism" name="WA2: Update Organism" version="1.5">
   <description>updates an existing genome with WebApollo</description>
   <macros>
     <import>macros.xml</import>
@@ -52,7 +52,7 @@ $__user_email__
     <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
   </inputs>
   <outputs>
-    <data format="txt" name="output"/>
+    <data format="json" name="output"/>
   </outputs>
   <help><![CDATA[
 **NOTA BENE**
