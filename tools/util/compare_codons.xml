@@ -9,8 +9,8 @@
 $positional_1
 $positional_2
 --sort_order $sort
---ref_title $positional_1.name
---cmp_title $positional_2.name
+--ref_title "$positional_1.name"
+--cmp_title "$positional_2.name"
 > $default]]></command>
   <inputs>
     <param label="Dataset A" name="positional_1" type="data" format="tabular"/>
