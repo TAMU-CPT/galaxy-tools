@@ -1,6 +1,10 @@
 #!/usr/bin/env python
+import StringIO
+import sys
 import json
 import argparse
+from Bio import SeqIO
+from BCBio import GFF
 from webapollo import WebApolloInstance
 
 if __name__ == '__main__':
@@ -12,11 +16,14 @@ if __name__ == '__main__':
 
     parser.add_argument('commonName', nargs='+', help='Sequence Unique Names')
 
+    parser.add_argument('--gff', type=argparse.FileType('w'))
+    parser.add_argument('--fasta', type=argparse.FileType('w'))
+
     args = parser.parse_args()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
 
-    print wa.io.write(
+    data = StringIO.StringIO(wa.io.write(
         exportType='GFF3',
         seqType='genomic',
         exportAllSequences=False,
@@ -24,4 +31,10 @@ if __name__ == '__main__':
         output="text",
         exportFormat="text",
         sequences=args.commonName
-    )
+    ))
+    data.seek(0)
+
+    for record in GFF.parse(data):
+        GFF.write([record], args.gff)
+        SeqIO.write([record], args.fasta, 'fasta')
+        sys.exit()

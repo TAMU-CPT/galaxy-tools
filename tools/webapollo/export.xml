@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.export" name="WA2: Retrieve/Export data" version="1.3">
+<tool id="edu.tamu.cpt2.webapollo.export" name="WA2: Retrieve/Export data" version="1.4">
   <description>from WebApollo into Galaxy</description>
   <macros>
     <import>macros.xml</import>
@@ -12,16 +12,20 @@ python $__tool_directory__/export.py
 
 @CN_OR_GUESS@
 
-> $output]]></command>
+--gff $gff_out
+--fasta $fasta_out
+
+]]></command>
   <inputs>
     <expand macro="cn_or_guess" />
   </inputs>
   <outputs>
-    <data format="gff3" name="output"/>
+    <data format="gff3" name="gff_out" />
+    <data format="fasta" name="fasta_out"/>
   </outputs>
   <help><![CDATA[
 **What it does**
 
-Exports the combined GFF3/Fasta sequence from WebApollo.
+Exports the GFF3/Fasta sequence from WebApollo.
       ]]></help>
 </tool>
