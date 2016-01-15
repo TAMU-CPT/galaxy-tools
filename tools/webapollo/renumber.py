@@ -23,8 +23,10 @@ if __name__ == '__main__':
     if len(gx_user) == 0:
         raise Exception("Unknown user. Please register first")
 
+    # Must find the organism
+    org = wa.organisms.findOrganismByCn(args.cn)
     # TODO: verify user has permissions on the organism
-    wa.annotations.setSequence(args.cn, 1)
+    wa.annotations.setSequence(args.cn, org['id'])
     raw_data =  wa.annotations.getFeatures()['features']
 
     data = sorted([
@@ -33,8 +35,9 @@ if __name__ == '__main__':
     ], key=lambda x: x[2])
 
     format_string = args.prefix + '%0' + args.leading + 'd'
+    format_string_mrna = format_string + '.mRNA'
     for i, feat in enumerate(data):
         idx = i + 1
         print 'Renaming %s to %s' % (feat[3], format_string % idx)
-        # wa.annotations.setName(feat[0], format_string % idx)
-        # wa.annotations.setName(feat[1], format_string + '.mRNA' % idx)
+        wa.annotations.setName(feat[0], format_string % idx)
+        wa.annotations.setName(feat[1], format_string_mrna % idx)

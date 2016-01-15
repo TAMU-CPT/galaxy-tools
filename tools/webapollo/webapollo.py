@@ -499,6 +499,14 @@ class OrganismsClient(Client):
     def findAllOrganisms(self):
         return self.request('findAllOrganisms', {})
 
+    def findOrganismByCn(self, cn):
+        orgs = self.findAllOrganisms()
+        orgs = [x for x in orgs if x['commonName'] == cn]
+        if len(orgs) == 0:
+            raise Exception("Unknown common name")
+        else:
+            return orgs[0]
+
     def deleteOrganism(self, organismId):
         return self.request('deleteOrganism', {'id': organismId})
 
