@@ -3,6 +3,10 @@ import json
 import copy
 import argparse
 from webapollo import WebApolloInstance
+import logging
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
@@ -44,7 +48,7 @@ if __name__ == '__main__':
 
     for i, feat in enumerate(data):
         idx = i + 1
-        print 'Renaming %s to %s' % (feat[3], format_string % idx)
+        log.info('Renaming %s to %s', feat[3], format_string % idx)
         outData['changes'].append((feat[0], format_string % idx))
         wa.annotations.setName(feat[0], format_string % idx)
         outData['changes'].append((feat[1], format_string_mrna % idx))
