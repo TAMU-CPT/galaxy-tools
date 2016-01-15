@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import json
+import copy
 import argparse
 from webapollo import WebApolloInstance
 
@@ -36,8 +38,16 @@ if __name__ == '__main__':
 
     format_string = args.prefix + '%0' + args.leading + 'd'
     format_string_mrna = format_string + '.mRNA'
+
+    outData = copy.copy(org)
+    outData['changes'] = []
+
     for i, feat in enumerate(data):
         idx = i + 1
         print 'Renaming %s to %s' % (feat[3], format_string % idx)
+        outData['changes'].append((feat[0], format_string % idx))
         wa.annotations.setName(feat[0], format_string % idx)
+        outData['changes'].append((feat[1], format_string_mrna % idx))
         wa.annotations.setName(feat[1], format_string_mrna % idx)
+
+    print json.dumps(outData, indent=2)

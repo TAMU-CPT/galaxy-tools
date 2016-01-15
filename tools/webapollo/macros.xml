@@ -23,6 +23,8 @@ galaxy@cpt.tamu.edu
 <![CDATA[
 #if $cn_source.source_select == "auto":
     \$(cat $cn_source.cn_file | grep '^>' | head -n 1  | sed 's/ .*//g;s/>//g')
+#elif $cn_source.source_select == "auto_json":
+    \$(cat $cn_source.cn_file | grep 'commonName' | head -n 1| sed 's/.*: "//g;s/".*//g')
 #else
     "${cn_source.organism_cn}"
 #end if
@@ -31,11 +33,15 @@ galaxy@cpt.tamu.edu
   <xml name="cn_or_guess">
     <conditional name="cn_source">
         <param name="source_select" type="select" label="Organism Common Name Source">
-            <option value="auto">Autodetect from Fasta</option>
+            <option value="auto_fasta">Autodetect from Fasta</option>
+            <option value="auto_json">Autodetect from Apollo JSON</option>
             <option value="direct">Direct Entry</option>
         </param>
         <when value="auto">
             <param name="cn_file" type="data" format="fasta" label="Organism Common Name" />
+        </when>
+        <when value="auto_json">
+            <param name="cn_file" type="data" format="json" label="Apollo Organism File" />
         </when>
         <when value="direct">
             <param name="organism_cn" type="text" label="Organism Common Name" />
