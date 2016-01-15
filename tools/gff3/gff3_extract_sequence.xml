@@ -27,5 +27,9 @@ $gff3_data
   <outputs>
     <data format="fasta" hidden="false" name="default"/>
   </outputs>
-  <help><![CDATA[]]></help>
+  <help><![CDATA[
+Extract sequences from a parent genome.
+
+*Hint*: Use "nice_cds" as the feature type for WebApollo generated features.
+      ]]></help>
 </tool>

@@ -106,11 +106,23 @@ def get_id(feature=None, parent_prefix=None):
         result += feature.qualifiers['locus_tag'][0]
     elif 'gene' in feature.qualifiers:
         result += feature.qualifiers['gene'][0]
+    elif 'Gene' in feature.qualifiers:
+        result += feature.qualifiers['Gene'][0]
     elif 'product' in feature.qualifiers:
         result += feature.qualifiers['product'][0]
+    elif 'Product' in feature.qualifiers:
+        result += feature.qualifiers['Product'][0]
+    elif 'Name' in feature.qualifiers:
+        result += feature.qualifiers['Name'][0]
     else:
-        result += '%s_%s_%s' % (feature.location.start, feature.location.end,
-                                feature.location.strand)
+        return feature.id
+        # Leaving in case bad things happen.
+        # result += '%s_%s_%s_%s' % (
+            # feature.id,
+            # feature.location.start,
+            # feature.location.end,
+            # feature.location.strand
+        # )
     return result
 
 
