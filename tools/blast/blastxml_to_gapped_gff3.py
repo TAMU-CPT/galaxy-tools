@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/perl
 import re
 import sys
 import copy
@@ -26,21 +26,24 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
     from Bio.SeqFeature import SeqFeature, FeatureLocation
 
     blast_records = NCBIXML.parse(blastxml)
+    records = []
     for record in blast_records:
-        recid = record.query
-        if ' ' in recid:
-            recid = recid[0:recid.index(' ')]
-        rec = SeqRecord(Seq("ACTG"), id=recid)
-        for hit_idx, hit in enumerate(record.alignments):
-            for hsp_idx, hsp in enumerate(hit.hsps):
+        # http://www.sequenceontology.org/browser/release_2.4/term/SO:0000343
+        match_type = {  # Currently we can only handle BLASTN, BLASTP
+            'BLASTN': 'nucleotide_match',
+            'BLASTP': 'protein_match',
+        }.get(record.application, 'match')
+
+        rec = SeqRecord(Seq("ACTG"), id=record.query)
+        for hit in record.alignments:
+            for hsp in hit.hsps:
                 qualifiers = {
                     "source": "blast",
                     "score": hsp.expect,
                     "accession": hit.accession,
                     "hit_id": hit.hit_id,
                     "length": hit.length,
-                    "hit_titles": hit.title.split(' >'),
-                    "ID": '%s.%s.%s' % (recid, hit_idx, hsp_idx),
+                    "hit_titles": hit.title.split(' >')
                 }
                 desc = hit.title.split(' >')[0]
                 qualifiers['description'] = desc[desc.index(' '):]
@@ -55,8 +58,6 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
                 # may be longer than the parent feature, so we use the supplied
                 # subject/hit length to calculate the real ending of the target
                 # protein.
-                # print hsp.align_length, hit.length
-                # parent_match_end = parent_match_start + hit.length
                 parent_match_end = hsp.query_start + hit.length + hsp.query.count('-')
 
                 # However, if the user requests that we trim the feature, then
@@ -72,10 +73,10 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
                     if parent_match_end > hsp.query_end:
                         parent_match_end = hsp.query_end + 1
 
-                # The ``protein_match`` feature will hold one or more ``match_part``s
+                # The ``match`` feature will hold one or more ``match_part``s
                 top_feature = SeqFeature(
                     FeatureLocation(parent_match_start, parent_match_end),
-                    type="protein_match", strand=0,
+                    type=match_type, strand=0,
                     qualifiers=qualifiers
                 )
 
@@ -92,7 +93,7 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
 
                     if trim:
                         # If trimming, then we start relative to the
-                        # protein_match's start
+                        # match's start
                         match_part_start = parent_match_start + start
                     else:
                         # Otherwise, we have to account for the subject start's location
@@ -113,7 +114,9 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
                     )
 
                 rec.features.append(top_feature)
-        yield rec
+        rec.annotations = {}
+        records.append(rec)
+    return records
 
 
 def __remove_query_gaps(query, match, subject):
@@ -215,6 +218,7 @@ def _qms_to_matches(query, match, subject, strict_m=True):
         else:
             log.warn("Bad data: \n\t%s\n\t%s\n\t%s\n" % (query, match, subject))
 
+
         if strict_m:
             if ret == '=' or ret == 'X':
                 ret = 'M'
@@ -254,6 +258,5 @@ if __name__ == '__main__':
     parser.add_argument('--trim_end', action='store_true', help='Cut blast results off at end of gene')
     args = parser.parse_args()
 
-    for record in blastxml2gff3(**vars(args)):
-        record.annotations = {}
-        GFF.write([record], sys.stdout)
+    result = blastxml2gff3(**vars(args))
+    GFF.write(result, sys.stdout)
