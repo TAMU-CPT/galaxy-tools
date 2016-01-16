@@ -1,6 +1,9 @@
 import requests
 import json
 import collections
+from datetime import datetime
+from BCBio import GFF
+import StringIO
 
 
 class WebApolloInstance(object):
@@ -16,6 +19,7 @@ class WebApolloInstance(object):
         self.organisms = OrganismsClient(self)
         self.users = UsersClient(self)
         self.metrics = MetricsClient(self)
+        self.bio = RemoteRecord(self)
 
     def __str__(self):
         return '<WebApolloInstance at %s>' % self.apollo_url
@@ -72,7 +76,7 @@ class UserObj(object):
 class Client(object):
 
     def __init__(self, webapolloinstance, **requestArgs):
-        self.__wa = webapolloinstance
+        self._wa = webapolloinstance
 
         self.__verify = requestArgs.get('verify', True)
         self._requestArgs = requestArgs
@@ -81,15 +85,15 @@ class Client(object):
             del self._requestArgs['verify']
 
     def request(self, clientMethod, data, post_params={}, isJson=True):
-        url = self.__wa.apollo_url + self.CLIENT_BASE + clientMethod
+        url = self._wa.apollo_url + self.CLIENT_BASE + clientMethod
 
         headers = {
             'Content-Type': 'application/json'
         }
 
         data.update({
-            'username': self.__wa.username,
-            'password': self.__wa.password,
+            'username': self._wa.username,
+            'password': self._wa.password,
         })
 
         r = requests.post(url, data=json.dumps(data), headers=headers,
@@ -111,7 +115,7 @@ class Client(object):
                         (r.status_code, r.text))
 
     def get(self, clientMethod, get_params):
-        url = self.__wa.apollo_url + self.CLIENT_BASE + clientMethod
+        url = self._wa.apollo_url + self.CLIENT_BASE + clientMethod
         headers = {}
 
         r = requests.get(url, headers=headers, verify=self.__verify,
@@ -209,11 +213,6 @@ class AnnotationsClient(Client):
     def getFeatures(self):
         data = self._update_data({})
         return self.request('getFeatures', data)
-
-    def getFeaturesBiopython(self):
-        data = self._update_data({})
-        featureData = self.request('getFeatures', data)
-        return featureData
 
     def getSequence(self, uniquename):
         data = {
@@ -516,7 +515,6 @@ class OrganismsClient(Client):
     def getSequencesForOrganism(self, commonName):
         return self.request('getSequencesForOrganism', {'organism': commonName})
 
-
     def updateOrganismInfo(self, organismId, commonName, directory, blatdb=None, species=None, genus=None, public=False):
         data = {
             'id': organismId,
@@ -609,3 +607,89 @@ class UsersClient(Client):
         }
         return self.request('updateUser', data)
 
+
+class RemoteRecord(Client):
+    CLIENT_BASE = None
+
+    def ParseRecord(self, cn):
+        org = self._wa.organisms.findOrganismByCn(cn)
+        self._wa.annotations.setSequence(org['commonName'], org['id'])
+
+        data = StringIO.StringIO(self._wa.io.write(
+            exportType='GFF3',
+            seqType='genomic',
+            exportAllSequences=False,
+            exportGff3Fasta=True,
+            output="text",
+            exportFormat="text",
+            sequences=cn,
+        ))
+        data.seek(0)
+
+        for record in GFF.parse(data):
+            yield WebApolloSeqRecord(record, self._wa)
+
+
+class WebApolloSeqRecord(object):
+    def __init__(self, sr, wa):
+        self._sr = sr
+        self._wa = wa
+
+    def __dir__(self):
+        return dir(self._sr)
+
+    def __getattr__(self, key):
+        if key in ('_sr', '_wa'):
+            print self.__dict__
+            return self.__dict__[key]
+        else:
+            if key == 'features':
+                return (WebApolloSeqFeature(x, self._wa)
+                        for x in self._sr.__dict__[key])
+            else:
+                return self._sr.__dict__[key]
+
+    def __setattr__(self, key, value):
+        if key in ('_sd', '_wa'):
+            self.__dict__[key] = value
+        else:
+            self._sr.__dict__[key] = value
+            # Methods acting on the SeqRecord object
+            print key, value
+
+
+class WebApolloSeqFeature(object):
+    def __init__(self, sf, wa):
+        self._sf = sf
+        self._wa = wa
+
+    def __dir__(self):
+        return dir(self._sf)
+
+    def __getattr__(self, key):
+        if key in ('_sf', '_wa'):
+            return self.__dict__[key]
+        else:
+            return self._sf.__dict__[key]
+
+    def __setattr__(self, key, value):
+        if key in ('_sf', '_wa'):
+            self.__dict__[key] = value
+        else:
+            # Methods acting on the SeqFeature object
+            if key == 'location':
+                if value.strand != self._sf.location.strand:
+                    self.wa.annotations.flipStrand(
+                        self._sf.qualifiers['ID'][0]
+                    )
+
+                self.wa.annotations.setBoundaries(
+                    self._sf.qualifiers['ID'][0],
+                    value.start,
+                    value.end,
+                )
+
+                self._sf.__dict__[key] = value
+            else:
+                self._sf.__dict__[key] = value
+                print key, value
