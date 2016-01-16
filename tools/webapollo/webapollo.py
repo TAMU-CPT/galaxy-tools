@@ -1,6 +1,11 @@
 import requests
 import json
 import collections
+from datetime import datetime
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+from Bio.SeqFeature import SeqFeature, FeatureLocation
+from Bio.Alphabet import IUPAC
 
 
 class WebApolloInstance(object):
@@ -16,6 +21,7 @@ class WebApolloInstance(object):
         self.organisms = OrganismsClient(self)
         self.users = UsersClient(self)
         self.metrics = MetricsClient(self)
+        self.bio = RemoteRecord(self)
 
     def __str__(self):
         return '<WebApolloInstance at %s>' % self.apollo_url
@@ -72,7 +78,7 @@ class UserObj(object):
 class Client(object):
 
     def __init__(self, webapolloinstance, **requestArgs):
-        self.__wa = webapolloinstance
+        self._wa = webapolloinstance
 
         self.__verify = requestArgs.get('verify', True)
         self._requestArgs = requestArgs
@@ -81,15 +87,15 @@ class Client(object):
             del self._requestArgs['verify']
 
     def request(self, clientMethod, data, post_params={}, isJson=True):
-        url = self.__wa.apollo_url + self.CLIENT_BASE + clientMethod
+        url = self._wa.apollo_url + self.CLIENT_BASE + clientMethod
 
         headers = {
             'Content-Type': 'application/json'
         }
 
         data.update({
-            'username': self.__wa.username,
-            'password': self.__wa.password,
+            'username': self._wa.username,
+            'password': self._wa.password,
         })
 
         r = requests.post(url, data=json.dumps(data), headers=headers,
@@ -111,7 +117,7 @@ class Client(object):
                         (r.status_code, r.text))
 
     def get(self, clientMethod, get_params):
-        url = self.__wa.apollo_url + self.CLIENT_BASE + clientMethod
+        url = self._wa.apollo_url + self.CLIENT_BASE + clientMethod
         headers = {}
 
         r = requests.get(url, headers=headers, verify=self.__verify,
@@ -209,11 +215,6 @@ class AnnotationsClient(Client):
     def getFeatures(self):
         data = self._update_data({})
         return self.request('getFeatures', data)
-
-    def getFeaturesBiopython(self):
-        data = self._update_data({})
-        featureData = self.request('getFeatures', data)
-        return featureData
 
     def getSequence(self, uniquename):
         data = {
@@ -516,7 +517,6 @@ class OrganismsClient(Client):
     def getSequencesForOrganism(self, commonName):
         return self.request('getSequencesForOrganism', {'organism': commonName})
 
-
     def updateOrganismInfo(self, organismId, commonName, directory, blatdb=None, species=None, genus=None, public=False):
         data = {
             'id': organismId,
@@ -609,3 +609,46 @@ class UsersClient(Client):
         }
         return self.request('updateUser', data)
 
+
+class RemoteRecord(Client):
+    CLIENT_BASE = None
+
+    def ParseRecord(self, cn):
+        oc = self._wa.organisms
+        ac = self._wa.annotations
+        org = oc.findOrganismByCn(cn)
+        ac.setSequence(org['commonName'], org['id'])
+
+        rec = SeqRecord(
+            Seq("ACTG", IUPAC.IUPACUnambiguousDNA),  # todo
+            id=str(org['id']),
+            name=org['commonName'],
+        )
+
+        feats = []
+        for feature in ac.getFeatures():
+            feats.append(self.parseFeature(feature))
+
+        return rec
+
+    def parseFeature(self, featData):
+        location = self.parseLocation(featData['location'])
+        feat = SeqFeature(
+            location,
+            id=featData['id'],
+            name=featData['name'],
+            type=featData['type']['name'],
+            qualifiers={
+                'owner': [featData['owner']],
+                'date_last_modified': [datetime.fromtimestamp(featData['date_last_modified'])],
+                'date_creation': [datetime.fromtimestamp(featData['date_creation'])],
+                'uniquename': [featData['uniquename']]
+            }
+        )
+
+    def parseLocation(self, locdata):
+        return FeatureLocation(
+            start=locadata['fmin'],
+            end=locdata['fmax'],
+            strand=locdata['strand']
+        )
