@@ -2,10 +2,8 @@ import requests
 import json
 import collections
 from datetime import datetime
-from Bio.Seq import Seq
-from Bio.SeqRecord import SeqRecord
-from Bio.SeqFeature import SeqFeature, FeatureLocation
-from Bio.Alphabet import IUPAC
+from BCBio import GFF
+import StringIO
 
 
 class WebApolloInstance(object):
@@ -614,41 +612,84 @@ class RemoteRecord(Client):
     CLIENT_BASE = None
 
     def ParseRecord(self, cn):
-        oc = self._wa.organisms
-        ac = self._wa.annotations
-        org = oc.findOrganismByCn(cn)
-        ac.setSequence(org['commonName'], org['id'])
+        org = self._wa.organisms.findOrganismByCn(cn)
+        self._wa.annotations.setSequence(org['commonName'], org['id'])
 
-        rec = SeqRecord(
-            Seq("ACTG", IUPAC.IUPACUnambiguousDNA),  # todo
-            id=str(org['id']),
-            name=org['commonName'],
-        )
+        data = StringIO.StringIO(self._wa.io.write(
+            exportType='GFF3',
+            seqType='genomic',
+            exportAllSequences=False,
+            exportGff3Fasta=True,
+            output="text",
+            exportFormat="text",
+            sequences=cn,
+        ))
+        data.seek(0)
 
-        feats = []
-        for feature in ac.getFeatures():
-            feats.append(self.parseFeature(feature))
+        for record in GFF.parse(data):
+            yield WebApolloSeqRecord(record, self._wa)
 
-        return rec
 
-    def parseFeature(self, featData):
-        location = self.parseLocation(featData['location'])
-        feat = SeqFeature(
-            location,
-            id=featData['id'],
-            name=featData['name'],
-            type=featData['type']['name'],
-            qualifiers={
-                'owner': [featData['owner']],
-                'date_last_modified': [datetime.fromtimestamp(featData['date_last_modified'])],
-                'date_creation': [datetime.fromtimestamp(featData['date_creation'])],
-                'uniquename': [featData['uniquename']]
-            }
-        )
+class WebApolloSeqRecord(object):
+    def __init__(self, sr, wa):
+        self._sr = sr
+        self._wa = wa
 
-    def parseLocation(self, locdata):
-        return FeatureLocation(
-            start=locadata['fmin'],
-            end=locdata['fmax'],
-            strand=locdata['strand']
-        )
+    def __dir__(self):
+        return dir(self._sr)
+
+    def __getattr__(self, key):
+        if key in ('_sr', '_wa'):
+            print self.__dict__
+            return self.__dict__[key]
+        else:
+            if key == 'features':
+                return (WebApolloSeqFeature(x, self._wa)
+                        for x in self._sr.__dict__[key])
+            else:
+                return self._sr.__dict__[key]
+
+    def __setattr__(self, key, value):
+        if key in ('_sd', '_wa'):
+            self.__dict__[key] = value
+        else:
+            self._sr.__dict__[key] = value
+            # Methods acting on the SeqRecord object
+            print key, value
+
+
+class WebApolloSeqFeature(object):
+    def __init__(self, sf, wa):
+        self._sf = sf
+        self._wa = wa
+
+    def __dir__(self):
+        return dir(self._sf)
+
+    def __getattr__(self, key):
+        if key in ('_sf', '_wa'):
+            return self.__dict__[key]
+        else:
+            return self._sf.__dict__[key]
+
+    def __setattr__(self, key, value):
+        if key in ('_sf', '_wa'):
+            self.__dict__[key] = value
+        else:
+            # Methods acting on the SeqFeature object
+            if key == 'location':
+                if value.strand != self._sf.location.strand:
+                    self.wa.annotations.flipStrand(
+                        self._sf.qualifiers['ID'][0]
+                    )
+
+                self.wa.annotations.setBoundaries(
+                    self._sf.qualifiers['ID'][0],
+                    value.start,
+                    value.end,
+                )
+
+                self._sf.__dict__[key] = value
+            else:
+                self._sf.__dict__[key] = value
+                print key, value
