@@ -1,4 +1,4 @@
-<tool id="gff3.rebase" name="Rebase GFF3 features" version="1.0">
+<tool id="gff3.rebase" name="Rebase GFF3 features" version="1.1">
   <description>against parent features</description>
   <macros>
     <import>macros.xml</import>
@@ -12,6 +12,7 @@ $child
 
 $interpro
 $protein2dna
+--map_by "$map_by"
 > $default]]></command>
   <inputs>
     <param label="Parent GFF3 annotations" name="parent" format="gff3" type="data"/>
@@ -19,6 +20,8 @@ $protein2dna
 
     <param label="Interpro specific modifications" name="interpro" type="boolean" truevalue="--interpro" falsevalue=""/>
     <param label="Map protein translated results to original DNA data" name="protein2dna" type="boolean" truevalue="--protein2dna" falsevalue=""/>
+
+    <param label="Mapping Key" name="map_by" type="text" value="ID" />
   </inputs>
   <outputs>
     <data format="gff3" name="default"/>

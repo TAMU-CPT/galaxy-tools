@@ -67,16 +67,17 @@ def __update_feature_location(feature, parent, protein2dna):
             __update_feature_location(subfeature, parent, protein2dna)
 
 
-def rebase(parent, child, interpro=False, protein2dna=False):
+def rebase(parent, child, interpro=False, protein2dna=False, map_by='ID'):
     child_features = __get_features(child, interpro=interpro)
 
     for rec in GFF.parse(parent):
         replacement_features = []
+        # Horrifically slow I believe
         for feature in feature_lambda(
                 rec.features,
                 feature_test_qual_value,
                 {
-                    'qualifier': 'ID',
+                    'qualifier': map_by,
                     'attribute_list': child_features.keys(),
                 },
                 subfeatures=False):
@@ -112,5 +113,6 @@ if __name__ == '__main__':
                         help='Interpro specific modifications')
     parser.add_argument('--protein2dna', action='store_true',
                         help='Map protein translated results to original DNA data')
+    parser.add_argument('--map_by', help='Map by key', default='ID')
     args = parser.parse_args()
     rebase(**vars(args))
