@@ -14,6 +14,7 @@ import logging
 FORMAT = "[%(levelname)s:%(filename)s:%(lineno)s:%(funcName)s()] %(message)s"
 logging.basicConfig(level=logging.INFO, format=FORMAT)
 log = logging.getLogger("mist")
+SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 MONTAGE_BORDER = 50
 IMAGE_BORDER = 2
@@ -108,7 +109,7 @@ class Subplot(object):
         destination_fn = self.safe('%s_vs_%s_orig' % (self.i.header, self.j.header)) + '.png'
         self.original_path = os.path.join(self.tmpdir, destination_fn)
 
-        cmd = ['java', '-jar', '/var/lib/gepard.jar',
+        cmd = ['java', '-jar', os.path.join(SCRIPT_DIR, 'gepard.jar'),
                '--seq1', self.j.temp_path,
                '--seq2', self.i.temp_path,
                '--matrix', matrix + '.mat',
