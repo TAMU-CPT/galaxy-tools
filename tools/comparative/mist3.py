@@ -88,7 +88,7 @@ class Subplot(object):
         destination_fn = self.safe('%s_vs_%s_[annotated]' % (self.i.header, self.j.header)) + '.png'
         destination = os.path.join(files_path, destination_fn)
         log.debug('cp %s %s', self.annotated_original_path, destination)
-        if self.annotated_original_path is not None and os.path.exists(self.annotated_original_path) and not os.path.exists(destination)):
+        if self.annotated_original_path is not None and os.path.exists(self.annotated_original_path) and not os.path.exists(destination):
             shutil.move(
                 self.annotated_original_path, destination
             )
