@@ -60,7 +60,7 @@ def total_similarity(xmfa_file, sequences=None, dice=False):
 
     # insert 1 for comparisons between the same sequence
     for i in range(len(label_convert)):
-        table[i][i] = 1
+        table[i][i] = 100
 
     # print table
     names = []
