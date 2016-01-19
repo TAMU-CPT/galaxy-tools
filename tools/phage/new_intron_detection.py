@@ -5,8 +5,11 @@ import itertools
 import argparse
 import hashlib
 import svgwrite
+import copy
 from BCBio import GFF
 from Bio.Blast import NCBIXML
+from Bio.SeqRecord import SeqRecord
+from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda
 from collections import OrderedDict
 import logging
@@ -67,7 +70,12 @@ def parse_gff(gff3):
             subfeatures = False
         ):
             if feat.type == 'CDS':
-                 gff_info[feat.id] = {'strand': feat.strand,'start': feat.location.start}
+                 gff_info[feat.id] = {
+                     'strand': feat.strand,
+                     'start': feat.location.start,
+                     'loc': feat.location,
+                     'feat': feat,
+                 }
 
     gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
     for i, feat_id in enumerate(gff_info):
@@ -252,12 +260,50 @@ class IntronFinder(object):
                 sbjct_y += 200
 
     def output_gff3(self, clusters):
+        print self.gff_id
         for cluster_id in clusters:
+            # Get the list of genes in this cluster
             associated_genes = set([x['name'] for x in clusters[cluster_id]])
-            print cluster_id, associated_genes
+            # Get the gene locations
+            assoc_gene_info = {x: self.gff_info[x]['loc'] for x in associated_genes}
+            # Now we construct a gene from the children as a "standard gene model" gene.
 
-    # def modify_gff3(?):
-    # """ merge 2 or more seq records into one """
+            # Get the minimum and maximum locations covered by all of the children genes
+            gene_min = min([min(x[1].start, x[1].end) for x in assoc_gene_info.iteritems()])
+            gene_max = max([max(x[1].start, x[1].end) for x in assoc_gene_info.iteritems()])
+
+            # With that we can create the top level gene
+            gene = SeqFeature(
+                location=FeatureLocation(gene_min, gene_max),
+                type='gene',
+                id=cluster_id,
+            )
+
+            # Below that we have an mRNA
+            mRNA = SeqFeature(
+                location=FeatureLocation(gene_min, gene_max),
+                type='mRNA',
+                id=cluster_id + '.mRNA',
+            )
+
+            # Now come the CDSs.
+            cdss = [copy.deepcopy(assoc_gene_info[x]['feat']) for x in associated_genes]
+
+            # And we attach the things properly.
+            mRNA.sub_features = cdss
+            gene.sub_features = [mRNA]
+
+
+# {'gi_nos': ['725948720',
+            # '670139495'],
+ # 'identity': 226,
+ # 'iter_num': 71,
+ # 'name': u'CPT_phageK_gp195a.p01',
+ # 'query_length': 229,
+ # 'query_range': (1, 229),
+ # 'sbjct_length': 496,
+ # 'sbjct_range': (267, 495)},
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Intron detection')
