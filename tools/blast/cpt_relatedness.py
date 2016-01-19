@@ -87,4 +87,4 @@ if __name__ == '__main__':
     parser.add_argument('blast', type=file, help='Blast 25 Column Results')
 
     args = parser.parse_args()
-    print '\n'.join(top_related(**vars(args)))
+    top_related(**vars(args))
