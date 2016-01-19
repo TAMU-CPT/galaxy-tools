@@ -61,17 +61,23 @@ def id_tn_dict(sequences, tmpfile=False):
     """
     label_convert = {}
     correct_chrom = None
-    for i, record in enumerate(SeqIO.parse(sequences, 'fasta')):
-        if correct_chrom is None:
-            correct_chrom = record.id
+    if not isinstance(sequences, list):
+        sequences = [sequences]
 
-        key = str(i + 1)
-        label_convert[key] = {
-            'record_id': record.id,
-            'len': len(record.seq),
-        }
+    i = 0
+    for sequence_file in sequences:
+        for record in SeqIO.parse(sequence_file, 'fasta'):
+            if correct_chrom is None:
+                correct_chrom = record.id
 
-        if tmpfile:
-            label_convert[key] = tempfile.NamedTemporaryFile(delete=False)
+            i += 1
+            key = str(i)
+            label_convert[key] = {
+                'record_id': record.id,
+                'len': len(record.seq),
+            }
+
+            if tmpfile:
+                label_convert[key] = tempfile.NamedTemporaryFile(delete=False)
 
     return label_convert

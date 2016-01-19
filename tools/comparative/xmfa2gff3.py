@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import sys
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -47,6 +48,7 @@ def generate_subfeatures(parent, window_size, other):
 
 def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
     label_convert = id_tn_dict(sequences)
+    import pprint; pprint.pprint(label_convert)
     lcbs = parse_xmfa(xmfa_file)
 
     parent_records = {
@@ -92,7 +94,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert XMFA alignments to gff3', prog='xmfa2gff3')
     parser.add_argument('xmfa_file', type=file, help='XMFA File')
     parser.add_argument('--window_size', type=int, help='Window size for analysis', default=1000)
-    parser.add_argument('--sequences', type=file,
+    parser.add_argument('--sequences', type=file, nargs='+',
                         help='Fasta files (in same order) passed to parent for reconstructing proper IDs')
     parser.add_argument('--version', action='version', version='%(prog)s 1.0')
 
@@ -103,5 +105,4 @@ if __name__ == '__main__':
     except:
         pass
     for result in convert_xmfa_to_gff3(**vars(args)):
-        with open(os.path.join('outdir', result.id + '.gff3'), 'w') as handle:
-            GFF.write([result], handle)
+        GFF.write([result], sys.stdout)
