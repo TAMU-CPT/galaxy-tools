@@ -24,7 +24,7 @@ def reduce_to_score(evalue_list):
 def __load_blast_data(blast):
     # Connect to kyoto db
     db = DB()
-    if not db.open("/opt/gene2accession/gene2accession.kch", DB.OWRITER | DB.OCREATE):
+    if not db.open("/opt/gene2accession/gene2accession.kch", DB.OREADER):
         raise Exception("Could not load gene2accession.kch: " + str(db.error()))
 
     hits = {}
