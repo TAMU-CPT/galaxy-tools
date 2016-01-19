@@ -1,0 +1,215 @@
+##gff-version 3
+##sequence-region NC_005880 1 148317
+NC_005880	annotation	remark	1	148317	.	.	.	gff-version=3;sequence-region=%28%27NC_005880%27%2C 0%2C 148317%29
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_0;Notes=CPT_phageK_gp195a.p01 had 100%25 identity to GI:394777531,CPT_phageK_gp195b.p01 had 100%25 identity to GI:394777531
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_0.mRNA;Parent=gp_0
+NC_005880	feature	CDS	34150	34839	1004	-	0	ID=gp_0.CDS.0;Parent=gp_0.mRNA
+NC_005880	feature	CDS	35716	36513	1000	-	0	ID=gp_0.CDS.1;Parent=gp_0.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_1;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:910025680%2C 910824375,CPT_phageK_gp195b.p01 had 57%25 identity to GI:910025680%2C 910824375
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_1.mRNA;Parent=gp_1
+NC_005880	feature	CDS	34150	34839	524	-	0	ID=gp_1.CDS.0;Parent=gp_1.mRNA
+NC_005880	feature	CDS	35716	36513	576	-	0	ID=gp_1.CDS.1;Parent=gp_1.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_2;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488415352%2C 374403500,CPT_phageK_gp195b.p01 had 60%25 identity to GI:488415352%2C 374403500
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_2.mRNA;Parent=gp_2
+NC_005880	feature	CDS	34150	34839	526	-	0	ID=gp_2.CDS.0;Parent=gp_2.mRNA
+NC_005880	feature	CDS	35716	36513	603	-	0	ID=gp_2.CDS.1;Parent=gp_2.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_3;Notes=CPT_phageK_gp195a.p01 had 100%25 identity to GI:561133139%2C 561133344%2C 558694966%2C 558695181,CPT_phageK_gp195b.p01 had 99%25 identity to GI:561133139%2C 561133344%2C 558694966%2C 558695181
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_3.mRNA;Parent=gp_3
+NC_005880	feature	CDS	34150	34839	1000	-	0	ID=gp_3.CDS.0;Parent=gp_3.mRNA
+NC_005880	feature	CDS	35716	36513	996	-	0	ID=gp_3.CDS.1;Parent=gp_3.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_4;Notes=CPT_phageK_gp195a.p01 had 99%25 identity to GI:418487983%2C 295656632%2C 380886361,CPT_phageK_gp195b.p01 had 99%25 identity to GI:418487983%2C 295656632%2C 380886361
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_4.mRNA;Parent=gp_4
+NC_005880	feature	CDS	34150	34839	995	-	0	ID=gp_4.CDS.0;Parent=gp_4.mRNA
+NC_005880	feature	CDS	35716	36513	996	-	0	ID=gp_4.CDS.1;Parent=gp_4.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_5;Notes=CPT_phageK_gp195a.p01 had 56%25 identity to GI:836647875%2C 831183378,CPT_phageK_gp195b.p01 had 61%25 identity to GI:836647875%2C 831183378
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_5.mRNA;Parent=gp_5
+NC_005880	feature	CDS	34150	34839	561	-	0	ID=gp_5.CDS.0;Parent=gp_5.mRNA
+NC_005880	feature	CDS	35716	36513	618	-	0	ID=gp_5.CDS.1;Parent=gp_5.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_6;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488429834%2C 394262704%2C 498675925%2C 694234160,CPT_phageK_gp195b.p01 had 58%25 identity to GI:488429834%2C 394262704%2C 498675925%2C 694234160
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_6.mRNA;Parent=gp_6
+NC_005880	feature	CDS	34150	34839	528	-	0	ID=gp_6.CDS.0;Parent=gp_6.mRNA
+NC_005880	feature	CDS	35716	36513	583	-	0	ID=gp_6.CDS.1;Parent=gp_6.mRNA
+NC_005880	feature	gene	103980	107410	.	.	.	ID=gp_7;Notes=CPT_phageK_gp125b.p01 had 97%25 identity to GI:712912493%2C 673940776,CPT_phageK_gp125c.p01 had 100%25 identity to GI:712912493%2C 673940776
+NC_005880	feature	mRNA	103980	107410	.	.	.	ID=gp_7.mRNA;Parent=gp_7
+NC_005880	feature	CDS	103980	105338	977	+	0	ID=gp_7.CDS.0;Parent=gp_7.mRNA
+NC_005880	feature	CDS	106421	107410	1000	+	0	ID=gp_7.CDS.1;Parent=gp_7.mRNA
+NC_005880	feature	gene	102312	107410	.	.	.	ID=gp_8;Notes=CPT_phageK_gp125a.p01 had 100%25 identity to GI:394776296%2C 394776558%2C 394776850%2C 394777602,CPT_phageK_gp125b.p01 had 100%25 identity to GI:394776296%2C 394776558%2C 394776850%2C 394777602,CPT_phageK_gp125c.p01 had 100%25 identity to GI:394776296%2C 394776558%2C 394776850%2C 394777602
+NC_005880	feature	mRNA	102312	107410	.	.	.	ID=gp_8.mRNA;Parent=gp_8
+NC_005880	feature	CDS	102312	103181	1003	+	0	ID=gp_8.CDS.0;Parent=gp_8.mRNA
+NC_005880	feature	CDS	103980	105338	1000	+	0	ID=gp_8.CDS.1;Parent=gp_8.mRNA
+NC_005880	feature	CDS	106421	107410	1003	+	0	ID=gp_8.CDS.2;Parent=gp_8.mRNA
+NC_005880	feature	gene	102312	107410	.	.	.	ID=gp_9;Notes=CPT_phageK_gp125a.p01 had 99%25 identity to GI:561133209%2C 561133413%2C 558695035%2C 558695251,CPT_phageK_gp125b.p01 had 99%25 identity to GI:561133209%2C 561133413%2C 558695035%2C 558695251,CPT_phageK_gp125c.p01 had 100%25 identity to GI:561133209%2C 561133413%2C 558695035%2C 558695251
+NC_005880	feature	mRNA	102312	107410	.	.	.	ID=gp_9.mRNA;Parent=gp_9
+NC_005880	feature	CDS	102312	103181	996	+	0	ID=gp_9.CDS.0;Parent=gp_9.mRNA
+NC_005880	feature	CDS	103980	105338	991	+	0	ID=gp_9.CDS.1;Parent=gp_9.mRNA
+NC_005880	feature	CDS	106421	107410	1000	+	0	ID=gp_9.CDS.2;Parent=gp_9.mRNA
+NC_005880	feature	gene	102312	105338	.	.	.	ID=gp_10;Notes=CPT_phageK_gp125a.p01 had 78%25 identity to GI:422935664%2C 398255654,CPT_phageK_gp125b.p01 had 65%25 identity to GI:422935664%2C 398255654
+NC_005880	feature	mRNA	102312	105338	.	.	.	ID=gp_10.mRNA;Parent=gp_10
+NC_005880	feature	CDS	102312	103181	784	+	0	ID=gp_10.CDS.0;Parent=gp_10.mRNA
+NC_005880	feature	CDS	103980	105338	651	+	0	ID=gp_10.CDS.1;Parent=gp_10.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_11;Notes=CPT_phageK_gp195a.p01 had 100%25 identity to GI:564292993%2C 119658102%2C 339461779,CPT_phageK_gp195b.p01 had 100%25 identity to GI:564292993%2C 119658102%2C 339461779
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_11.mRNA;Parent=gp_11
+NC_005880	feature	CDS	34150	34839	1004	-	0	ID=gp_11.CDS.0;Parent=gp_11.mRNA
+NC_005880	feature	CDS	35716	36513	1003	-	0	ID=gp_11.CDS.1;Parent=gp_11.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_12;Notes=CPT_phageK_gp195a.p01 had 99%25 identity to GI:725948720%2C 670139495,CPT_phageK_gp195b.p01 had 100%25 identity to GI:725948720%2C 670139495
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_12.mRNA;Parent=gp_12
+NC_005880	feature	CDS	34150	34839	991	-	0	ID=gp_12.CDS.0;Parent=gp_12.mRNA
+NC_005880	feature	CDS	35716	36513	1003	-	0	ID=gp_12.CDS.1;Parent=gp_12.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_13;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488400619%2C 341595734,CPT_phageK_gp195b.p01 had 62%25 identity to GI:488400619%2C 341595734
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_13.mRNA;Parent=gp_13
+NC_005880	feature	CDS	34150	34839	524	-	0	ID=gp_13.CDS.0;Parent=gp_13.mRNA
+NC_005880	feature	CDS	35716	36513	625	-	0	ID=gp_13.CDS.1;Parent=gp_13.mRNA
+NC_005880	feature	gene	102312	107410	.	.	.	ID=gp_14;Notes=CPT_phageK_gp125a.p01 had 98%25 identity to GI:418488053%2C 380886431,CPT_phageK_gp125b.p01 had 97%25 identity to GI:418488053%2C 380886431,CPT_phageK_gp125c.p01 had 100%25 identity to GI:418488053%2C 380886431
+NC_005880	feature	mRNA	102312	107410	.	.	.	ID=gp_14.mRNA;Parent=gp_14
+NC_005880	feature	CDS	102312	103181	989	+	0	ID=gp_14.CDS.0;Parent=gp_14.mRNA
+NC_005880	feature	CDS	103980	105338	977	+	0	ID=gp_14.CDS.1;Parent=gp_14.mRNA
+NC_005880	feature	CDS	106421	107410	1000	+	0	ID=gp_14.CDS.2;Parent=gp_14.mRNA
+NC_005880	feature	gene	102312	105338	.	.	.	ID=gp_15;Notes=CPT_phageK_gp125a.p01 had 98%25 identity to GI:712912492%2C 673940775,CPT_phageK_gp125b.p01 had 100%25 identity to GI:712912492%2C 673940775
+NC_005880	feature	mRNA	102312	105338	.	.	.	ID=gp_15.mRNA;Parent=gp_15
+NC_005880	feature	CDS	102312	103181	989	+	0	ID=gp_15.CDS.0;Parent=gp_15.mRNA
+NC_005880	feature	CDS	103980	105338	1000	+	0	ID=gp_15.CDS.1;Parent=gp_15.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_16;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:896434375,CPT_phageK_gp195b.p01 had 59%25 identity to GI:896434375
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_16.mRNA;Parent=gp_16
+NC_005880	feature	CDS	34150	34839	528	-	0	ID=gp_16.CDS.0;Parent=gp_16.mRNA
+NC_005880	feature	CDS	35716	36513	591	-	0	ID=gp_16.CDS.1;Parent=gp_16.mRNA
+NC_005880	feature	gene	102312	105338	.	.	.	ID=gp_17;Notes=CPT_phageK_gp125a.p01 had 70%25 identity to GI:735998507,CPT_phageK_gp125b.p01 had 59%25 identity to GI:735998507
+NC_005880	feature	mRNA	102312	105338	.	.	.	ID=gp_17.mRNA;Parent=gp_17
+NC_005880	feature	CDS	102312	103181	705	+	0	ID=gp_17.CDS.0;Parent=gp_17.mRNA
+NC_005880	feature	CDS	103980	105338	592	+	0	ID=gp_17.CDS.1;Parent=gp_17.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_18;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488387036%2C 291319651,CPT_phageK_gp195b.p01 had 58%25 identity to GI:488387036%2C 291319651
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_18.mRNA;Parent=gp_18
+NC_005880	feature	CDS	34150	34839	521	-	0	ID=gp_18.CDS.0;Parent=gp_18.mRNA
+NC_005880	feature	CDS	35716	36513	587	-	0	ID=gp_18.CDS.1;Parent=gp_18.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_19;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488432695%2C 394274002,CPT_phageK_gp195b.p01 had 59%25 identity to GI:488432695%2C 394274002
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_19.mRNA;Parent=gp_19
+NC_005880	feature	CDS	34150	34839	528	-	0	ID=gp_19.CDS.0;Parent=gp_19.mRNA
+NC_005880	feature	CDS	35716	36513	591	-	0	ID=gp_19.CDS.1;Parent=gp_19.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_20;Notes=CPT_phageK_gp195a.p01 had 100%25 identity to GI:589286715%2C 575096806,CPT_phageK_gp195b.p01 had 100%25 identity to GI:589286715%2C 575096806
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_20.mRNA;Parent=gp_20
+NC_005880	feature	CDS	34150	34839	1004	-	0	ID=gp_20.CDS.0;Parent=gp_20.mRNA
+NC_005880	feature	CDS	35716	36513	1000	-	0	ID=gp_20.CDS.1;Parent=gp_20.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_21;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488430700%2C 394264325,CPT_phageK_gp195b.p01 had 59%25 identity to GI:488430700%2C 394264325
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_21.mRNA;Parent=gp_21
+NC_005880	feature	CDS	34150	34839	521	-	0	ID=gp_21.CDS.0;Parent=gp_21.mRNA
+NC_005880	feature	CDS	35716	36513	591	-	0	ID=gp_21.CDS.1;Parent=gp_21.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_22;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488434101%2C 394280272,CPT_phageK_gp195b.p01 had 59%25 identity to GI:488434101%2C 394280272
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_22.mRNA;Parent=gp_22
+NC_005880	feature	CDS	34150	34839	528	-	0	ID=gp_22.CDS.0;Parent=gp_22.mRNA
+NC_005880	feature	CDS	35716	36513	591	-	0	ID=gp_22.CDS.1;Parent=gp_22.mRNA
+NC_005880	feature	gene	102312	107410	.	.	.	ID=gp_23;Notes=CPT_phageK_gp125a.p01 had 100%25 identity to GI:657184260%2C 394775789%2C 564271379%2C 594138673,CPT_phageK_gp125b.p01 had 100%25 identity to GI:657184260%2C 394775789%2C 564271379%2C 594138673,CPT_phageK_gp125c.p01 had 100%25 identity to GI:657184260%2C 394775789%2C 564271379%2C 594138673
+NC_005880	feature	mRNA	102312	107410	.	.	.	ID=gp_23.mRNA;Parent=gp_23
+NC_005880	feature	CDS	102312	103181	1003	+	0	ID=gp_23.CDS.0;Parent=gp_23.mRNA
+NC_005880	feature	CDS	103980	105338	1002	+	0	ID=gp_23.CDS.1;Parent=gp_23.mRNA
+NC_005880	feature	CDS	106421	107410	1003	+	0	ID=gp_23.CDS.2;Parent=gp_23.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_24;Notes=CPT_phageK_gp195a.p01 had 56%25 identity to GI:515409221,CPT_phageK_gp195b.p01 had 61%25 identity to GI:515409221
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_24.mRNA;Parent=gp_24
+NC_005880	feature	CDS	34150	34839	561	-	0	ID=gp_24.CDS.0;Parent=gp_24.mRNA
+NC_005880	feature	CDS	35716	36513	610	-	0	ID=gp_24.CDS.1;Parent=gp_24.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_25;Notes=CPT_phageK_gp195a.p01 had 54%25 identity to GI:739686679%2C 579932991,CPT_phageK_gp195b.p01 had 62%25 identity to GI:739686679%2C 579932991
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_25.mRNA;Parent=gp_25
+NC_005880	feature	CDS	34150	34839	546	-	0	ID=gp_25.CDS.0;Parent=gp_25.mRNA
+NC_005880	feature	CDS	35716	36513	623	-	0	ID=gp_25.CDS.1;Parent=gp_25.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_26;Notes=CPT_phageK_gp195a.p01 had 55%25 identity to GI:502755977%2C 289181077,CPT_phageK_gp195b.p01 had 60%25 identity to GI:502755977%2C 289181077
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_26.mRNA;Parent=gp_26
+NC_005880	feature	CDS	34150	34839	550	-	0	ID=gp_26.CDS.0;Parent=gp_26.mRNA
+NC_005880	feature	CDS	35716	36513	608	-	0	ID=gp_26.CDS.1;Parent=gp_26.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_27;Notes=CPT_phageK_gp195a.p01 had 100%25 identity to GI:712912639%2C 673940922,CPT_phageK_gp195b.p01 had 101%25 identity to GI:712912639%2C 673940922
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_27.mRNA;Parent=gp_27
+NC_005880	feature	CDS	34150	34839	1000	-	0	ID=gp_27.CDS.0;Parent=gp_27.mRNA
+NC_005880	feature	CDS	35716	36513	1015	-	0	ID=gp_27.CDS.1;Parent=gp_27.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_28;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488416431%2C 374405112,CPT_phageK_gp195b.p01 had 59%25 identity to GI:488416431%2C 374405112
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_28.mRNA;Parent=gp_28
+NC_005880	feature	CDS	34150	34839	528	-	0	ID=gp_28.CDS.0;Parent=gp_28.mRNA
+NC_005880	feature	CDS	35716	36513	599	-	0	ID=gp_28.CDS.1;Parent=gp_28.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_29;Notes=CPT_phageK_gp195a.p01 had 100%25 identity to GI:428783048%2C 657184190%2C 394775719%2C 394776225%2C 394776780%2C 394777168%2C 409994786%2C 564271309%2C 594138659,CPT_phageK_gp195b.p01 had 100%25 identity to GI:428783048%2C 657184190%2C 394775719%2C 394776225%2C 394776780%2C 394777168%2C 409994786%2C 564271309%2C 594138659
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_29.mRNA;Parent=gp_29
+NC_005880	feature	CDS	34150	34839	1004	-	0	ID=gp_29.CDS.0;Parent=gp_29.mRNA
+NC_005880	feature	CDS	35716	36513	1003	-	0	ID=gp_29.CDS.1;Parent=gp_29.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_30;Notes=CPT_phageK_gp195a.p01 had 54%25 identity to GI:488404872%2C 365225367,CPT_phageK_gp195b.p01 had 59%25 identity to GI:488404872%2C 365225367
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_30.mRNA;Parent=gp_30
+NC_005880	feature	CDS	34150	34839	547	-	0	ID=gp_30.CDS.0;Parent=gp_30.mRNA
+NC_005880	feature	CDS	35716	36513	595	-	0	ID=gp_30.CDS.1;Parent=gp_30.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_31;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:910034686%2C 910817296,CPT_phageK_gp195b.p01 had 61%25 identity to GI:910034686%2C 910817296
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_31.mRNA;Parent=gp_31
+NC_005880	feature	CDS	34150	34839	521	-	0	ID=gp_31.CDS.0;Parent=gp_31.mRNA
+NC_005880	feature	CDS	35716	36513	614	-	0	ID=gp_31.CDS.1;Parent=gp_31.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_32;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488428896%2C 394255027,CPT_phageK_gp195b.p01 had 58%25 identity to GI:488428896%2C 394255027
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_32.mRNA;Parent=gp_32
+NC_005880	feature	CDS	34150	34839	528	-	0	ID=gp_32.CDS.0;Parent=gp_32.mRNA
+NC_005880	feature	CDS	35716	36513	587	-	0	ID=gp_32.CDS.1;Parent=gp_32.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_33;Notes=CPT_phageK_gp195a.p01 had 54%25 identity to GI:488427685%2C 394245859%2C 394247017,CPT_phageK_gp195b.p01 had 59%25 identity to GI:488427685%2C 394245859%2C 394247017
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_33.mRNA;Parent=gp_33
+NC_005880	feature	CDS	34150	34839	547	-	0	ID=gp_33.CDS.0;Parent=gp_33.mRNA
+NC_005880	feature	CDS	35716	36513	595	-	0	ID=gp_33.CDS.1;Parent=gp_33.mRNA
+NC_005880	feature	gene	102312	107410	.	.	.	ID=gp_34;Notes=CPT_phageK_gp125a.p01 had 99%25 identity to GI:735998353,CPT_phageK_gp125b.p01 had 98%25 identity to GI:735998353,CPT_phageK_gp125c.p01 had 100%25 identity to GI:735998353
+NC_005880	feature	mRNA	102312	107410	.	.	.	ID=gp_34.mRNA;Parent=gp_34
+NC_005880	feature	CDS	102312	103181	993	+	0	ID=gp_34.CDS.0;Parent=gp_34.mRNA
+NC_005880	feature	CDS	103980	105338	980	+	0	ID=gp_34.CDS.1;Parent=gp_34.mRNA
+NC_005880	feature	CDS	106421	107410	1000	+	0	ID=gp_34.CDS.2;Parent=gp_34.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_35;Notes=CPT_phageK_gp195a.p01 had 53%25 identity to GI:872021518,CPT_phageK_gp195b.p01 had 61%25 identity to GI:872021518
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_35.mRNA;Parent=gp_35
+NC_005880	feature	CDS	34150	34839	533	-	0	ID=gp_35.CDS.0;Parent=gp_35.mRNA
+NC_005880	feature	CDS	35716	36513	618	-	0	ID=gp_35.CDS.1;Parent=gp_35.mRNA
+NC_005880	feature	gene	102312	107410	.	.	.	ID=gp_36;Notes=CPT_phageK_gp125a.p01 had 99%25 identity to GI:589286788%2C 575096879,CPT_phageK_gp125b.p01 had 99%25 identity to GI:589286788%2C 575096879,CPT_phageK_gp125c.p01 had 100%25 identity to GI:589286788%2C 575096879
+NC_005880	feature	mRNA	102312	107410	.	.	.	ID=gp_36.mRNA;Parent=gp_36
+NC_005880	feature	CDS	102312	103181	996	+	0	ID=gp_36.CDS.0;Parent=gp_36.mRNA
+NC_005880	feature	CDS	103980	105338	991	+	0	ID=gp_36.CDS.1;Parent=gp_36.mRNA
+NC_005880	feature	CDS	106421	107410	1000	+	0	ID=gp_36.CDS.2;Parent=gp_36.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_37;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488398774%2C 329726822,CPT_phageK_gp195b.p01 had 58%25 identity to GI:488398774%2C 329726822
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_37.mRNA;Parent=gp_37
+NC_005880	feature	CDS	34150	34839	524	-	0	ID=gp_37.CDS.0;Parent=gp_37.mRNA
+NC_005880	feature	CDS	35716	36513	587	-	0	ID=gp_37.CDS.1;Parent=gp_37.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_38;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488428234%2C 394249954,CPT_phageK_gp195b.p01 had 59%25 identity to GI:488428234%2C 394249954
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_38.mRNA;Parent=gp_38
+NC_005880	feature	CDS	34150	34839	528	-	0	ID=gp_38.CDS.0;Parent=gp_38.mRNA
+NC_005880	feature	CDS	35716	36513	591	-	0	ID=gp_38.CDS.1;Parent=gp_38.mRNA
+NC_005880	feature	gene	103980	107410	.	.	.	ID=gp_39;Notes=CPT_phageK_gp125b.p01 had 99%25 identity to GI:428783196%2C 409994934,CPT_phageK_gp125c.p01 had 100%25 identity to GI:428783196%2C 409994934
+NC_005880	feature	mRNA	103980	107410	.	.	.	ID=gp_39.mRNA;Parent=gp_39
+NC_005880	feature	CDS	103980	105338	991	+	0	ID=gp_39.CDS.0;Parent=gp_39.mRNA
+NC_005880	feature	CDS	106421	107410	1000	+	0	ID=gp_39.CDS.1;Parent=gp_39.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_40;Notes=CPT_phageK_gp195a.p01 had 97%25 identity to GI:735998282,CPT_phageK_gp195b.p01 had 99%25 identity to GI:735998282
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_40.mRNA;Parent=gp_40
+NC_005880	feature	CDS	34150	34839	978	-	0	ID=gp_40.CDS.0;Parent=gp_40.mRNA
+NC_005880	feature	CDS	35716	36513	996	-	0	ID=gp_40.CDS.1;Parent=gp_40.mRNA
+NC_005880	feature	gene	102312	107410	.	.	.	ID=gp_41;Notes=CPT_phageK_gp125a.p01 had 70%25 identity to GI:525336541,CPT_phageK_gp125b.p01 had 59%25 identity to GI:525336541,CPT_phageK_gp125c.p01 had 59%25 identity to GI:525336541
+NC_005880	feature	mRNA	102312	107410	.	.	.	ID=gp_41.mRNA;Parent=gp_41
+NC_005880	feature	CDS	102312	103181	705	+	0	ID=gp_41.CDS.0;Parent=gp_41.mRNA
+NC_005880	feature	CDS	103980	105338	592	+	0	ID=gp_41.CDS.1;Parent=gp_41.mRNA
+NC_005880	feature	CDS	106421	107410	597	+	0	ID=gp_41.CDS.2;Parent=gp_41.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_42;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:488384123%2C 313654091,CPT_phageK_gp195b.p01 had 59%25 identity to GI:488384123%2C 313654091
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_42.mRNA;Parent=gp_42
+NC_005880	feature	CDS	34150	34839	528	-	0	ID=gp_42.CDS.0;Parent=gp_42.mRNA
+NC_005880	feature	CDS	35716	36513	599	-	0	ID=gp_42.CDS.1;Parent=gp_42.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_43;Notes=CPT_phageK_gp195a.p01 had 100%25 identity to GI:645985816%2C 645985817%2C 645985818%2C 645985819,CPT_phageK_gp195b.p01 had 100%25 identity to GI:645985816%2C 645985817%2C 645985818%2C 645985819
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_43.mRNA;Parent=gp_43
+NC_005880	feature	CDS	34150	34839	1007	-	0	ID=gp_43.CDS.0;Parent=gp_43.mRNA
+NC_005880	feature	CDS	35716	36513	1009	-	0	ID=gp_43.CDS.1;Parent=gp_43.mRNA
+NC_005880	feature	gene	102312	105338	.	.	.	ID=gp_44;Notes=CPT_phageK_gp125a.p01 had 99%25 identity to GI:725948790%2C 670139565,CPT_phageK_gp125b.p01 had 98%25 identity to GI:725948790%2C 670139565
+NC_005880	feature	mRNA	102312	105338	.	.	.	ID=gp_44.mRNA;Parent=gp_44
+NC_005880	feature	CDS	102312	103181	993	+	0	ID=gp_44.CDS.0;Parent=gp_44.mRNA
+NC_005880	feature	CDS	103980	105338	984	+	0	ID=gp_44.CDS.1;Parent=gp_44.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_45;Notes=CPT_phageK_gp195a.p01 had 98%25 identity to GI:394776488,CPT_phageK_gp195b.p01 had 100%25 identity to GI:394776488
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_45.mRNA;Parent=gp_45
+NC_005880	feature	CDS	34150	34839	982	-	0	ID=gp_45.CDS.0;Parent=gp_45.mRNA
+NC_005880	feature	CDS	35716	36513	1003	-	0	ID=gp_45.CDS.1;Parent=gp_45.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_46;Notes=CPT_phageK_gp195a.p01 had 53%25 identity to GI:488367054%2C 222442276,CPT_phageK_gp195b.p01 had 59%25 identity to GI:488367054%2C 222442276
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_46.mRNA;Parent=gp_46
+NC_005880	feature	CDS	34150	34839	530	-	0	ID=gp_46.CDS.0;Parent=gp_46.mRNA
+NC_005880	feature	CDS	35716	36513	599	-	0	ID=gp_46.CDS.1;Parent=gp_46.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_47;Notes=CPT_phageK_gp195a.p01 had 56%25 identity to GI:753859594,CPT_phageK_gp195b.p01 had 61%25 identity to GI:753859594
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_47.mRNA;Parent=gp_47
+NC_005880	feature	CDS	34150	34839	563	-	0	ID=gp_47.CDS.0;Parent=gp_47.mRNA
+NC_005880	feature	CDS	35716	36513	619	-	0	ID=gp_47.CDS.1;Parent=gp_47.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_48;Notes=CPT_phageK_gp195a.p01 had 52%25 identity to GI:740613945%2C 672710868,CPT_phageK_gp195b.p01 had 58%25 identity to GI:740613945%2C 672710868
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_48.mRNA;Parent=gp_48
+NC_005880	feature	CDS	34150	34839	528	-	0	ID=gp_48.CDS.0;Parent=gp_48.mRNA
+NC_005880	feature	CDS	35716	36513	587	-	0	ID=gp_48.CDS.1;Parent=gp_48.mRNA
+NC_005880	feature	gene	34150	36513	.	.	.	ID=gp_49;Notes=CPT_phageK_gp195a.p01 had 51%25 identity to GI:695616241%2C 653234536,CPT_phageK_gp195b.p01 had 58%25 identity to GI:695616241%2C 653234536
+NC_005880	feature	mRNA	34150	36513	.	.	.	ID=gp_49.mRNA;Parent=gp_49
+NC_005880	feature	CDS	34150	34839	519	-	0	ID=gp_49.CDS.0;Parent=gp_49.mRNA
+NC_005880	feature	CDS	35716	36513	587	-	0	ID=gp_49.CDS.1;Parent=gp_49.mRNA
+NC_005880	feature	gene	102312	107410	.	.	.	ID=gp_50;Notes=CPT_phageK_gp125a.p01 had 100%25 identity to GI:394777239,CPT_phageK_gp125b.p01 had 99%25 identity to GI:394777239,CPT_phageK_gp125c.p01 had 100%25 identity to GI:394777239
+NC_005880	feature	mRNA	102312	107410	.	.	.	ID=gp_50.mRNA;Parent=gp_50
+NC_005880	feature	CDS	102312	103181	1003	+	0	ID=gp_50.CDS.0;Parent=gp_50.mRNA
+NC_005880	feature	CDS	103980	105338	997	+	0	ID=gp_50.CDS.1;Parent=gp_50.mRNA
+NC_005880	feature	CDS	106421	107410	1003	+	0	ID=gp_50.CDS.2;Parent=gp_50.mRNA
