@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# import sys
+import sys
 import re
 import itertools
 import argparse
@@ -260,8 +260,9 @@ class IntronFinder(object):
                 sbjct_y += 200
 
     def output_gff3(self, clusters):
-        print self.gff_id
-        for cluster_id in clusters:
+        rec = copy.deepcopy(self.rec)
+        rec.features = []
+        for cluster_idx, cluster_id in enumerate(clusters):
             # Get the list of genes in this cluster
             associated_genes = set([x['name'] for x in clusters[cluster_id]])
             # Get the gene locations
@@ -272,11 +273,25 @@ class IntronFinder(object):
             gene_min = min([min(x[1].start, x[1].end) for x in assoc_gene_info.iteritems()])
             gene_max = max([max(x[1].start, x[1].end) for x in assoc_gene_info.iteritems()])
 
+
+            evidence_notes = []
+            for cluster_elem in clusters[cluster_id]:
+                note = '{name} had {ident}% identity to GI:{pretty_gi}'.format(
+                    pretty_gi=', '.join(cluster_elem['gi_nos']),
+                    ident=int(100 * float(cluster_elem['identity']) / abs(cluster_elem['query_range'][1] - cluster_elem['query_range'][0])),
+                    **cluster_elem
+                )
+                evidence_notes.append(note)
+
             # With that we can create the top level gene
             gene = SeqFeature(
                 location=FeatureLocation(gene_min, gene_max),
                 type='gene',
                 id=cluster_id,
+                qualifiers={
+                    'ID': ['gp_%s' % cluster_idx],
+                    'Notes': evidence_notes,
+                }
             )
 
             # Below that we have an mRNA
@@ -284,25 +299,36 @@ class IntronFinder(object):
                 location=FeatureLocation(gene_min, gene_max),
                 type='mRNA',
                 id=cluster_id + '.mRNA',
+                qualifiers={
+                    'ID': ['gp_%s.mRNA' % cluster_idx]
+                }
             )
 
+
             # Now come the CDSs.
-            cdss = [copy.deepcopy(assoc_gene_info[x]['feat']) for x in associated_genes]
+            cdss = []
+            # We sort them just for kicks
+            for idx, gene_name in enumerate(sorted(associated_genes, key=lambda x: int(self.gff_info[x]['start']))):
+                # Copy the CDS so we don't muck up a good one
+                cds = copy.copy(self.gff_info[gene_name]['feat'])
+                # Get the associated cluster element (used in the Notes above)
+                cluster_elem = [x for x in clusters[cluster_id] if x['name'] == gene_name][0]
+                # Calculate %identity which we'll use to score
+                score = int(1000 * float(cluster_elem['identity']) / abs(cluster_elem['query_range'][1] - cluster_elem['query_range'][0]))
+                # Set the qualifiers appropriately
+                cds.qualifiers = {
+                    'ID': ['gp_%s.CDS.%s' % (cluster_idx, idx)],
+                    'score': score,
+                }
+                cdss.append(cds)
+
 
             # And we attach the things properly.
             mRNA.sub_features = cdss
             gene.sub_features = [mRNA]
-
-
-# {'gi_nos': ['725948720',
-            # '670139495'],
- # 'identity': 226,
- # 'iter_num': 71,
- # 'name': u'CPT_phageK_gp195a.p01',
- # 'query_length': 229,
- # 'query_range': (1, 229),
- # 'sbjct_length': 496,
- # 'sbjct_range': (267, 495)},
+            # And append to our record
+            rec.features.append(gene)
+        return rec
 
 
 if __name__ == '__main__':
@@ -320,6 +346,7 @@ if __name__ == '__main__':
 
     condensed_report = ifinder.cluster_report()
     ifinder.draw_genes('clusters.svg')
-    ifinder.output_gff3(ifinder.clusters)
+    rec = ifinder.output_gff3(ifinder.clusters)
+    GFF.write([rec], sys.stdout)
 
     # import pprint; pprint.pprint(ifinder.clusters)
