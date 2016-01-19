@@ -63,6 +63,7 @@ def parse_gff(gff3):
     _rec = None
     for rec in GFF.parse(gff3):
         _rec = rec
+        _rec.annotations = {}
         for feat in feature_lambda(
             rec.features,
             test_true,
