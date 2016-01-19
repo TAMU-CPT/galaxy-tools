@@ -599,7 +599,7 @@ class Misty(object):
         for i in range(len(self.matrix_data)):
             total_seqlen_i += self.matrix_data[i][0]['subplot'].i.length
         total_seqlen = max(total_seqlen_i, total_seqlen_j)
-        rescale = 100 * (700.0 / (float(total_seqlen) / self.zoom))
+        rescale = 200 * (700.0 / (float(total_seqlen) / self.zoom))
         rescale_p = '%s%%' % rescale
 
         # Generate gepard plots for each of the sub-images
