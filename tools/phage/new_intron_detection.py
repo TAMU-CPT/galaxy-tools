@@ -249,6 +249,11 @@ class IntronFinder(object):
             else:
                 sbjct_y += 200
 
+    def output_gff3(self, clusters):
+        for cluster_id in clusters:
+            associated_genes = set([x['name'] for x in clusters[cluster_id]])
+            print cluster_id, associated_genes
+
     # def modify_gff3(?):
     # """ merge 2 or more seq records into one """
 
@@ -267,5 +272,6 @@ if __name__ == '__main__':
 
     condensed_report = ifinder.cluster_report()
     ifinder.draw_genes('clusters.svg')
+    ifinder.output_gff3(ifinder.clusters)
 
-    import pprint; pprint.pprint(ifinder.clusters)
+    # import pprint; pprint.pprint(ifinder.clusters)
