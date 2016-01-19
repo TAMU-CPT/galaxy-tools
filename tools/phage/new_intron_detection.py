@@ -60,9 +60,9 @@ def parse_gff(gff3):
     """ Extracts strand and start location to be used in cluster filtering """
     log.debug("parse_gff3")
     gff_info = {}
-    rec_id = None
+    _rec = None
     for rec in GFF.parse(gff3):
-        rec_id = rec.id
+        _rec = rec
         for feat in feature_lambda(
             rec.features,
             test_true,
@@ -81,7 +81,7 @@ def parse_gff(gff3):
     for i, feat_id in enumerate(gff_info):
         gff_info[feat_id].update({'index': i})
 
-    return dict(gff_info), rec_id
+    return dict(gff_info), _rec
 
 def all_same(genes_list):
     """ Returns True if all gene names in cluster are identical """
@@ -105,7 +105,7 @@ class IntronFinder(object):
         self.clusters = {}
         self.gff_info = {}
 
-        (self.gff_info, self.gff_id) = parse_gff(gff3)
+        (self.gff_info, self.rec) = parse_gff(gff3)
         self.blast = parse_xml(blastp)
 
     def create_clusters(self):
