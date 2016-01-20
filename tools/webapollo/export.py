@@ -35,6 +35,7 @@ if __name__ == '__main__':
     data.seek(0)
 
     for record in GFF.parse(data):
+        record.annotations = {}
         GFF.write([record], args.gff)
         record.description = ""
         SeqIO.write([record], args.fasta, 'fasta')
