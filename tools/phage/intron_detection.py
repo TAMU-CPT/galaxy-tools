@@ -8,7 +8,6 @@ import svgwrite
 import copy
 from BCBio import GFF
 from Bio.Blast import NCBIXML
-from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda
 from collections import OrderedDict
