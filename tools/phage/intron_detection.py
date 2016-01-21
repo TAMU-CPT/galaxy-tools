@@ -29,13 +29,17 @@ def parse_xml(blastxml):
                 if x < .5:
                     discarded_records += 1
                     continue
+
+                nice_name = blast_record.query
+                if ' ' in nice_name:
+                    nice_name = nice_name[0:nice_name.index(' ')]
                 blast_gene.append({
                     'gi_nos' : gi_nos,
                     'sbjct_length': alignment.length,
                     'query_length': blast_record.query_length,
                     'sbjct_range' : (hsp.sbjct_start, hsp.sbjct_end),
                     'query_range' : (hsp.query_start, hsp.query_end),
-                    'name' : blast_record.query,
+                    'name' : nice_name,
                     'identity' : hsp.identities,
                     'iter_num' : iter_num
                 })
@@ -113,6 +117,9 @@ class IntronFinder(object):
         clusters = {}
         for gene in self.blast:
             for hit in gene:
+                if ' ' in hit:
+                    hit = hit[0:hit.index(' ')]
+
                 name = hashlib.md5(','.join(hit['gi_nos'])).hexdigest()
                 if name in clusters:
                     if hit not in clusters[name]:
