@@ -48,7 +48,6 @@ def generate_subfeatures(parent, window_size, other):
 
 def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
     label_convert = id_tn_dict(sequences)
-    import pprint; pprint.pprint(label_convert)
     lcbs = parse_xmfa(xmfa_file)
 
     parent_records = {
