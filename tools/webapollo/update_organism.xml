@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.update_organism" name="WA2: Update Organism" version="1.5.1">
+<tool id="edu.tamu.cpt2.webapollo.update_organism" name="WA2: Update Organism" version="1.6">
   <description>updates an existing genome with WebApollo</description>
   <macros>
     <import>macros.xml</import>
@@ -7,7 +7,7 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 #if str($jbrowse) != "None":
-    cp -R ${jbrowse.extra_files_path}/JBrowse-1.11.6/data/ /opt/apollo/data/galaxy/${jbrowse.id};
+    cp -R ${jbrowse.extra_files_path}/data/ /opt/apollo/data/galaxy/${jbrowse.id};
 #end if
 
 python $__tool_directory__/update_organism.py
