@@ -5,6 +5,7 @@ from datetime import date
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
+import random
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -85,9 +86,10 @@ CTTCAAGAGTTTCTGTGTCAAAAGTAGCCTTTA
 def generate_sequence(user_email):
     user_email = user_email[0:user_email.index('@')]
     today = date.today()
-    sequence_id = '464.{0}-{1}.c1.{2}'.format(
+    sequence_id = '464.{0}-{1}-{2}.c1.{3}'.format(
         today.year,
         today.month,
+        random.randint(1, 1000),
         user_email
     )
     return SeqRecord(
