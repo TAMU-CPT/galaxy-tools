@@ -3,6 +3,10 @@ import json
 import argparse
 import time
 from webapollo import WebApolloInstance
+import logging
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
@@ -27,6 +31,7 @@ if __name__ == '__main__':
     if len(gx_user) == 0:
         raise Exception("Unknown user. Please register first")
 
+    log.info("Adding Organism")
     orgs = wa.organisms.addOrganism(
         args.cn,
         args.jbrowse,
@@ -35,9 +40,11 @@ if __name__ == '__main__':
         species=args.species,
         public=args.public
     )
+    log.info("Success: %s", orgs[0]['id'])
 
     # Must sleep before we're ready to handle
     time.sleep(1)
+    log.info("Updating permissions for %s on %s", gx_user[0], args.cn)
     data = wa.users.updateOrganismPermission(
         gx_user[0], args.cn,
         write=True,
