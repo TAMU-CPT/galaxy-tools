@@ -31,7 +31,7 @@ if __name__ == '__main__':
         </style>
     </head>
     <body>
-         <iframe src="{base_url}/annotator/loadLink?loc={chrom}&organism={orgId}&tracks="></iframe>
+         <iframe src="{base_url}/annotator/loadLink?loc={chrom}&organism={orgId}&tracklist=1"></iframe>
     </body>
 </html>
     """
