@@ -7,7 +7,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-STUDENT_RESULTS_FILE = '/galaxy/database/files/078/dataset_78854.dat'
+STUDENT_RESULTS_FILE = '/opt/bich464/c0/results.txt'
 
 
 def validate(gff3, user_email):

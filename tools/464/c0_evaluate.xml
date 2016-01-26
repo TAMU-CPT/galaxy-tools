@@ -5,7 +5,7 @@
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <version_command>python cpt_464_questions.py --version</version_command>
-  <command interpreter="python"><![CDATA[verify_apollo.py
+  <command interpreter="python"><![CDATA[c0_evaluate.py
 $gff3_data
 $__user_email__
 > $stdout]]></command>
