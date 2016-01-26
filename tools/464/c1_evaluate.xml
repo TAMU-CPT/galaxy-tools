@@ -13,7 +13,7 @@ $gff3_data
 $__user_email__
 > $stdout;
 
-# Store a copy of their file, just for curiosity's sake
+## Store a copy of their file, just for curiosity's sake
 cp $gff3_data /opt/bich464/c1/${__user_email__}-\$(date "+%s").gff3
 ]]></command>
   <inputs>
