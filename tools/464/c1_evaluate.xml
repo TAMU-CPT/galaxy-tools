@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.464.2016.c01_evaluate" name="464 C01 - evaluate" version="1.0">
+  <description></description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python"><![CDATA[
+c1_evaluate.py
+
+/opt/bich464/c1/ogs.gff3
+$gff3_data
+
+$__user_email__
+> $stdout;
+
+# Store a copy of their file, just for curiosity's sake
+cp $gff3_data /opt/bich464/c1/$__user_email__.gff3
+]]></command>
+  <inputs>
+    <param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="stdout" label="Result Validation Report"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Validates and scores your result from the C01 exercise
+]]></help>
+</tool>

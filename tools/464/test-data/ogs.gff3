@@ -1,0 +1,47 @@
+##gff-version 3
+##sequence-region esr.phi29.1 1 19282
+NC_011048	GenBank	gene	265	360	.	-	1	Dbxref=GeneID:6446513;_Locus_tag=phi29_gp0.2;Name=0.2;ID=phi29_gp0.2
+NC_011048	GenBank	mRNA	265	360	.	-	1	ID=phi29_gp0.2.t01;Parent=phi29_gp0.2
+NC_011048	GenBank	CDS	265	360	.	-	1	_Translation=length.31;_Protein_id=YP_002004524.1;Note=similar to CAA24474.1 unnamed protein product Bacillus phage phi29;_Transl_table=11;_Locus_tag=phi29_gp0.2;ID=phi29_gp0.2.p01;_Product=hypothetical protein;_Codon_start=1;Name=0.2;Dbxref=GI:194186869,GeneID:6446513;Parent=phi29_gp0.2.t01
+NC_011048	GenBank	exon	265	360	.	-	1	Parent=phi29_gp0.2.t01
+###
+NC_011048	GenBank	gene	367	510	.	-	1	ID=phi29_gp0.4;Name=0.4;_Locus_tag=phi29_gp0.4;Dbxref=GeneID:6446500
+NC_011048	GenBank	mRNA	367	510	.	-	1	ID=phi29_gp0.4.t01;Parent=phi29_gp0.4
+NC_011048	GenBank	CDS	367	510	.	-	1	Dbxref=GI:194186870,GeneID:6446500;Name=0.4;_Codon_start=1;_Product=hypothetical protein;ID=phi29_gp0.4.p01;_Locus_tag=phi29_gp0.4;Note=similar to Bacillus phage PZA unknown protein product of ORF0 NP_040723;_Transl_table=11;_Protein_id=YP_002004525.1;_Translation=length.47;Parent=phi29_gp0.4.t01
+NC_011048	GenBank	exon	367	510	.	-	1	Parent=phi29_gp0.4.t01
+
+NC_011048	GenBank	gene	527	703	.	-	1	Name=0.6;_Locus_tag=phi29_gp0.6;Dbxref=GeneID:6446504;ID=phi29_gp0.6
+NC_011048	GenBank	mRNA	527	703	.	-	1	ID=phi29_gp0.6.t01;Parent=phi29_gp0.6
+NC_011048	GenBank	CDS	527	703	.	-	1	_Codon_start=1;Name=0.6;Dbxref=GI:194186871,GeneID:6446504;ID=phi29_gp0.6.p01;_Product=hypothetical protein;_Transl_table=11;Note=similar to NP_040722.1 gene 1A product Bacillus phage PZA;_Locus_tag=phi29_gp0.6;_Translation=length.58;_Protein_id=YP_002004526.1;Parent=phi29_gp0.6.t01
+NC_011048	GenBank	exon	527	703	.	-	1	Parent=phi29_gp0.6.t01
+###
+NC_011048	GenBank	gene	700	870	.	-	1	Dbxref=GeneID:6446503;_Locus_tag=phi29_gp0.8;Name=0.8;ID=phi29_gp0.8
+NC_011048	GenBank	mRNA	700	870	.	-	1	ID=phi29_gp0.8.t01;Parent=phi29_gp0.8
+NC_011048	GenBank	CDS	700	870	.	-	1	Note=similar to NP_040721.1 gene 1B product Bacillus phage PZA;_Transl_table=11;_Locus_tag=phi29_gp0.8;_Protein_id=YP_002004527.1;_Translation=length.56;_Codon_start=1;Name=0.8;Dbxref=GI:194186872,GeneID:6446503;ID=phi29_gp0.8.p01;_Product=hypothetical protein;Parent=phi29_gp0.8.t01
+NC_011048	GenBank	exon	700	870	.	-	1	Parent=phi29_gp0.8.t01
+
+NC_011048	GenBank	gene	857	1117	.	-	1	_Locus_tag=phi29_gp1;Name=1;Dbxref=GeneID:6446501;ID=phi29_gp1
+NC_011048	GenBank	mRNA	857	1117	.	-	1	ID=phi29_gp1.t01;Parent=phi29_gp1
+NC_011048	GenBank	CDS	857	1117	.	-	1	_Codon_start=1;Name=1;Dbxref=GI:194186873,GeneID:6446501;ID=phi29_gp1.p01;_Product=hypothetical protein;Note=similar to NP_040720.1 gene 1C product Bacillus phage PZA%3B partially dispensible;_Transl_table=11;_Locus_tag=phi29_gp1;_Protein_id=YP_002004528.1;_Function=involved in DNA replication;_Translation=length.86;Parent=phi29_gp1.t01
+NC_011048	GenBank	exon	857	1117	.	-	1	Parent=phi29_gp1.t01
+###
+NC_011048	GenBank	gene	1145	2863	.	-	1	Dbxref=GeneID:6446511;_Locus_tag=phi29_gp2;Name=2;ID=phi29_gp2
+NC_011048	GenBank	mRNA	1145	2863	.	-	1	ID=phi29_gp2.t01;Parent=phi29_gp2
+NC_011048	GenBank	CDS	1145	2863	.	-	1	_Locus_tag=phi29_gp2;Note=N-terminus contains 3'to 5' ssDNA exonuclease activity and C-terminus contains DNA polymerase activity%3B requires a protein (terminal protein) to prime DNA synthesis%3B belongs to the DNA polymerase type-B family.;_Transl_table=11;_Protein_id=YP_002004529.1;_Translation=length.572;Name=2;Dbxref=GI:194186874,GeneID:6446511;_Codon_start=1;_Product=DNA polymerase;ID=phi29_gp2.p01;Parent=phi29_gp2.t01
+NC_011048	GenBank	exon	1145	2863	.	-	1	Parent=phi29_gp2.t01
+
+NC_011048	GenBank	gene	2886	3686	.	-	1	Dbxref=GeneID:6446514;Name=3;_Locus_tag=phi29_gp3;ID=phi29_gp3
+NC_011048	GenBank	mRNA	2886	3686	.	-	1	ID=phi29_gp3.t01;Parent=phi29_gp3
+NC_011048	GenBank	CDS	2886	3686	.	-	1	_Transl_table=11;Note=The terminal protein of phi29-like viruses is linked to the linear genome termini and serves as a primer for the initiation of DNA replication. Other names: gp3%2C TP;_Locus_tag=phi29_gp3;_Protein_id=YP_002004530.1;_Translation=length.266;_Codon_start=1;Name=3;Dbxref=GI:194186875,GeneID:6446514;ID=phi29_gp3.p01;_Product=terminal protein;Parent=phi29_gp3.t01
+NC_011048	GenBank	exon	2886	3686	.	-	1	Parent=phi29_gp3.t01
+###
+NC_011048	GenBank	gene	3575	3952	.	-	1	ID=phi29_gp4;_Locus_tag=phi29_gp4;Name=4;Dbxref=GeneID:6446523
+NC_011048	GenBank	mRNA	3575	3952	.	-	1	ID=phi29_gp4.t01;Parent=phi29_gp4
+NC_011048	GenBank	CDS	3575	3952	.	-	1	Note=phi29 protein 4%2C together with protein 6%2C functions as a transcriptional activator for late promoter A3 and as a repressor for early promoters A2c and A2b. Therefore p4 and p6 regulate the switch from early to late expression. Other names: gp4%2C p4;_Transl_table=11;_Locus_tag=phi29_gp4;_Translation=length.125;_Protein_id=YP_002004531.1;_Codon_start=1;Dbxref=GI:194186876,GeneID:6446523;Name=4;ID=phi29_gp4.p01;_Product=transcriptional regulator;Parent=phi29_gp4.t01
+NC_011048	GenBank	exon	3575	3952	.	-	1	Parent=phi29_gp4.t01
+
+NC_011048	GenBank	gene	3971	4345	.	-	1	Name=5;_Locus_tag=phi29_gp5;Dbxref=GeneID:6446522;ID=phi29_gp5
+NC_011048	GenBank	mRNA	3971	4345	.	-	1	ID=phi29_gp5.t01;Parent=phi29_gp5
+NC_011048	GenBank	CDS	3971	4345	.	-	1	_Codon_start=1;Dbxref=GI:194186877,GeneID:6446522;Name=5;ID=phi29_gp5.p01;_Product=single stranded DNA-binding protein;Note=SSB%3B similar to NP_040716.1 gene 5A product Bacillus phage PZA%2C NP_690638.1 SSB Bacillus phage B103;_Transl_table=11;_Locus_tag=phi29_gp5;_Protein_id=YP_002004532.1;_Translation=length.124;Parent=phi29_gp5.t01
+NC_011048	GenBank	exon	3971	4345	.	-	1	Parent=phi29_gp5.t01
+###
