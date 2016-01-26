@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.464.2016.c01_evaluate" name="464 C01 - evaluate" version="1.0">
+<tool id="edu.tamu.cpt2.464.2016.c01_evaluate" name="464 C01 - evaluate" version="1.1">
   <description></description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
@@ -14,7 +14,7 @@ $__user_email__
 > $stdout;
 
 # Store a copy of their file, just for curiosity's sake
-cp $gff3_data /opt/bich464/c1/$__user_email__.gff3
+cp $gff3_data /opt/bich464/c1/${__user_email__}-\$(date "+%s").gff3
 ]]></command>
   <inputs>
     <param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
