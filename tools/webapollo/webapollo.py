@@ -518,7 +518,7 @@ class OrganismsClient(Client):
     def updateOrganismInfo(self, organismId, commonName, directory, blatdb=None, species=None, genus=None, public=False):
         data = {
             'id': organismId,
-            'commonName': commonName,
+            'name': commonName,
             'directory': directory,
             'publicMode': public,
         }
