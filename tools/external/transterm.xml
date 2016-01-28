@@ -1,0 +1,39 @@
+<tool id="TransTermHP" name="TransTermHP" version="1.0">
+    <description>predicts transcription terminators</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <command detect_errors="aggressive"><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+$__tool_directory__/transterm.py
+@GENOME_SELECTOR@
+$gff3_data
+
+> $output
+
+]]>
+    </command>
+    <inputs>
+        <expand macro="genome_selector" />
+        <expand macro="gff3_input" />
+    </inputs>
+    <outputs>
+        <data name="output" label="Terminators from ${gff3_data.name}" format="gff3" />
+    </outputs>
+    <help>
+*TransTermHP* finds rho-independent transcription terminators in bacterial
+genomes. Each terminator found by the program is assigned a confidence
+value that estimates its probability of being a true terminator.
+    </help>
+    <tests>
+        <test>
+            <param name="genome_fasta" value="miro.fa" />
+            <param name="gff3_data" value="miro.gff3" />
+            <output name="output" file="miro.terminators.gff3" />
+        </test>
+    </tests>
+    <citations>
+        <citation type="doi">10.1186/gb-2007-8-2-r22</citation>
+    </citations>
+</tool>
