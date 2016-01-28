@@ -22,7 +22,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
-    print json.dumps(wa.organisms.updateOrganismInfo(
+    data = wa.organisms.updateOrganismInfo(
         args.organismId,
         args.commonName,
         args.jbrowse,
@@ -31,4 +31,7 @@ if __name__ == '__main__':
         genus=args.genus,
         species=args.species,
         public=args.public
-    ), indent=2)
+    )
+    # Need to filter data
+    wanted_data = [x for x in data if str(data['id']) == str(args.organismId)]
+    print json.dumps(wanted_data, indent=2)
