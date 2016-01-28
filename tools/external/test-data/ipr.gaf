@@ -1,94 +1,94 @@
 !gaf-version: 2.0
-SUPERFAMILY	SSF53098	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR012337	B			protein	taxon:0	20160128	SUPERFAMILY		
-Pfam	PF03175	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR004868	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0003677	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR004868	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0003677	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0003677	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR004868	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR004868	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0008408	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR004868	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0008408	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-Pfam	PF03175	Unk		GO:0008408	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
-PRINTS	PR00106	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PRINTS	PR00106	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
-PIRSF	PIRSF004178	Unk		GO:0001882	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR014416	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004178	Unk		GO:0001882	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004178	Unk		GO:0001882	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004178	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR014416	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004178	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004178	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004178	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR014416	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004178	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004178	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
-SMART	SM00486	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
-SMART	SM00486	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
-SMART	SM00486	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
-SMART	SM00486	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
-SMART	SM00486	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
-SMART	SM00486	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
-SMART	SM00486	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
-SMART	SM00486	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
-SMART	SM00486	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
-ProSitePatterns	PS00116	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR017964	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
-ProSitePatterns	PS00116	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
-ProSitePatterns	PS00116	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
-ProSitePatterns	PS00116	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR017964	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
-ProSitePatterns	PS00116	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
-ProSitePatterns	PS00116	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
-ProSitePatterns	PS00116	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR017964	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
-ProSitePatterns	PS00116	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
-ProSitePatterns	PS00116	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
-Gene3D	G3DSA:3.30.420.10	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR012337	B			protein	taxon:0	20160128	Gene3D		
-Pfam	PF05464	Unk		GO:0003899	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	Phi-29-like late genes activator (early protein GP4)		protein	taxon:0	20160128	Pfam		
-Pfam	PF05464	Unk		GO:0006355	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	Phi-29-like late genes activator (early protein GP4)		protein	taxon:0	20160128	Pfam		
-Pfam	PF05464	Unk		GO:0016987	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	Phi-29-like late genes activator (early protein GP4)		protein	taxon:0	20160128	Pfam		
-ProDom	PD015892	Unk		GO:0003899	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	ACTIVATOR TRANSCRIPTION EARLY DNA-DIRECTED LATE GENES RNA TRANSFERASE POLYMERASE GP4		protein	taxon:0	20160128	ProDom		
-ProDom	PD015892	Unk		GO:0006355	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	ACTIVATOR TRANSCRIPTION EARLY DNA-DIRECTED LATE GENES RNA TRANSFERASE POLYMERASE GP4		protein	taxon:0	20160128	ProDom		
-ProDom	PD015892	Unk		GO:0016987	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	ACTIVATOR TRANSCRIPTION EARLY DNA-DIRECTED LATE GENES RNA TRANSFERASE POLYMERASE GP4		protein	taxon:0	20160128	ProDom		
-Gene3D	G3DSA:1.10.530.40	Unk		GO:0003796	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR023347	B			protein	taxon:0	20160128	Gene3D		
-Pfam	PF00959	Unk		GO:0003796	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR002196	B	Phage lysozyme		protein	taxon:0	20160128	Pfam		
-Pfam	PF00959	Unk		GO:0009253	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR002196	B	Phage lysozyme		protein	taxon:0	20160128	Pfam		
-Pfam	PF00959	Unk		GO:0016998	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR002196	B	Phage lysozyme		protein	taxon:0	20160128	Pfam		
-PIRSF	PIRSF004177	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR016408	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004177	Unk		GO:0016020	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR016408	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004177	Unk		GO:0016032	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR016408	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004179	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004179	Unk		GO:0006269	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B			protein	taxon:0	20160128	PIRSF		
-PIRSF	PIRSF004179	Unk		GO:0018142	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B			protein	taxon:0	20160128	PIRSF		
-ProDom	PD013906	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	DNA TERMINAL EARLY LINKAGE PROTEIN-DNA COVALENT REPLICATION GP3 TP		protein	taxon:0	20160128	ProDom		
-ProDom	PD013906	Unk		GO:0006269	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	DNA TERMINAL EARLY LINKAGE PROTEIN-DNA COVALENT REPLICATION GP3 TP		protein	taxon:0	20160128	ProDom		
-ProDom	PD013906	Unk		GO:0018142	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	DNA TERMINAL EARLY LINKAGE PROTEIN-DNA COVALENT REPLICATION GP3 TP		protein	taxon:0	20160128	ProDom		
-Pfam	PF05435	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	Phi-29 DNA terminal protein GP3		protein	taxon:0	20160128	Pfam		
-Pfam	PF05435	Unk		GO:0006269	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	Phi-29 DNA terminal protein GP3		protein	taxon:0	20160128	Pfam		
-Pfam	PF05435	Unk		GO:0018142	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	Phi-29 DNA terminal protein GP3		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR012337	B			protein	taxon:0	20160128	SUPERFAMILY		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR004868	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003677	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR004868	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003677	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003677	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR004868	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR004868	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0008408	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR004868	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0008408	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0008408	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type B		protein	taxon:0	20160128	Pfam		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA-directed DNA-polymerase family B signature		protein	taxon:0	20160128	PRINTS		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0001882	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR014416	B			protein	taxon:0	20160128	PIRSF		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0001882	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0001882	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR014416	B			protein	taxon:0	20160128	PIRSF		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR014416	B			protein	taxon:0	20160128	PIRSF		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B			protein	taxon:0	20160128	PIRSF		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR006172	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase type-B family		protein	taxon:0	20160128	SMART		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR017964	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0000166	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR017964	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR017964	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00230+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003887	GOA:interpro|GO_REF:0000002	IEA	KEGG:00240+2.7.7.7	B	DNA polymerase family B signature.		protein	taxon:0	20160128	ProSitePatterns		
+CPT	6fee47b6-f1dc-4282-a64d-105c3de4af7b	Unk		GO:0003676	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR012337	B			protein	taxon:0	20160128	Gene3D		
+CPT	78051d93-96da-47b3-80fd-0d1459dfd2e1	Unk		GO:0003899	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	Phi-29-like late genes activator (early protein GP4)		protein	taxon:0	20160128	Pfam		
+CPT	78051d93-96da-47b3-80fd-0d1459dfd2e1	Unk		GO:0006355	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	Phi-29-like late genes activator (early protein GP4)		protein	taxon:0	20160128	Pfam		
+CPT	78051d93-96da-47b3-80fd-0d1459dfd2e1	Unk		GO:0016987	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	Phi-29-like late genes activator (early protein GP4)		protein	taxon:0	20160128	Pfam		
+CPT	78051d93-96da-47b3-80fd-0d1459dfd2e1	Unk		GO:0003899	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	ACTIVATOR TRANSCRIPTION EARLY DNA-DIRECTED LATE GENES RNA TRANSFERASE POLYMERASE GP4		protein	taxon:0	20160128	ProDom		
+CPT	78051d93-96da-47b3-80fd-0d1459dfd2e1	Unk		GO:0006355	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	ACTIVATOR TRANSCRIPTION EARLY DNA-DIRECTED LATE GENES RNA TRANSFERASE POLYMERASE GP4		protein	taxon:0	20160128	ProDom		
+CPT	78051d93-96da-47b3-80fd-0d1459dfd2e1	Unk		GO:0016987	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008771	B	ACTIVATOR TRANSCRIPTION EARLY DNA-DIRECTED LATE GENES RNA TRANSFERASE POLYMERASE GP4		protein	taxon:0	20160128	ProDom		
+CPT	7a29ddcb-3fe8-4fb9-ac52-a6c5c3c01018	Unk		GO:0003796	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR023347	B			protein	taxon:0	20160128	Gene3D		
+CPT	7a29ddcb-3fe8-4fb9-ac52-a6c5c3c01018	Unk		GO:0003796	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR002196	B	Phage lysozyme		protein	taxon:0	20160128	Pfam		
+CPT	7a29ddcb-3fe8-4fb9-ac52-a6c5c3c01018	Unk		GO:0009253	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR002196	B	Phage lysozyme		protein	taxon:0	20160128	Pfam		
+CPT	7a29ddcb-3fe8-4fb9-ac52-a6c5c3c01018	Unk		GO:0016998	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR002196	B	Phage lysozyme		protein	taxon:0	20160128	Pfam		
+CPT	a6c1dd3a-26bf-49b6-b235-c199a53ca174	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR016408	B			protein	taxon:0	20160128	PIRSF		
+CPT	a6c1dd3a-26bf-49b6-b235-c199a53ca174	Unk		GO:0016020	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR016408	B			protein	taxon:0	20160128	PIRSF		
+CPT	a6c1dd3a-26bf-49b6-b235-c199a53ca174	Unk		GO:0016032	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR016408	B			protein	taxon:0	20160128	PIRSF		
+CPT	d0c27639-9485-4bac-9444-15787f2df825	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B			protein	taxon:0	20160128	PIRSF		
+CPT	d0c27639-9485-4bac-9444-15787f2df825	Unk		GO:0006269	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B			protein	taxon:0	20160128	PIRSF		
+CPT	d0c27639-9485-4bac-9444-15787f2df825	Unk		GO:0018142	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B			protein	taxon:0	20160128	PIRSF		
+CPT	d0c27639-9485-4bac-9444-15787f2df825	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	DNA TERMINAL EARLY LINKAGE PROTEIN-DNA COVALENT REPLICATION GP3 TP		protein	taxon:0	20160128	ProDom		
+CPT	d0c27639-9485-4bac-9444-15787f2df825	Unk		GO:0006269	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	DNA TERMINAL EARLY LINKAGE PROTEIN-DNA COVALENT REPLICATION GP3 TP		protein	taxon:0	20160128	ProDom		
+CPT	d0c27639-9485-4bac-9444-15787f2df825	Unk		GO:0018142	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	DNA TERMINAL EARLY LINKAGE PROTEIN-DNA COVALENT REPLICATION GP3 TP		protein	taxon:0	20160128	ProDom		
+CPT	d0c27639-9485-4bac-9444-15787f2df825	Unk		GO:0006260	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	Phi-29 DNA terminal protein GP3		protein	taxon:0	20160128	Pfam		
+CPT	d0c27639-9485-4bac-9444-15787f2df825	Unk		GO:0006269	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	Phi-29 DNA terminal protein GP3		protein	taxon:0	20160128	Pfam		
+CPT	d0c27639-9485-4bac-9444-15787f2df825	Unk		GO:0018142	GOA:interpro|GO_REF:0000002	IEA	InterPro:IPR008770	B	Phi-29 DNA terminal protein GP3		protein	taxon:0	20160128	Pfam		

@@ -18,8 +18,10 @@ def ipr2gaf(gff3):
             if feature.type != 'protein_match': continue
 
             base_columns = [
-                feature.qualifiers['source'][0],
-                feature.qualifiers['Name'][0],
+                # feature.qualifiers['source'][0],
+                # feature.qualifiers['Name'][0],
+                'CPT',
+                record.id,
                 'Unk',
                 '',
             ]
