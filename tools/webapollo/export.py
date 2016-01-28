@@ -30,6 +30,8 @@ if __name__ == '__main__':
         exportGff3Fasta=True,
         output="text",
         exportFormat="text",
+        # TODO: CPT specific convention!!!!!!!!
+        organism=args.commonName,
         sequences=args.commonName
     ))
     data.seek(0)
