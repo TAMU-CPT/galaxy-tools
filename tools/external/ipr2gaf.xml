@@ -1,0 +1,37 @@
+<tool id="ipr2gaf" name="InterProScan to Horribly Faked GAF" version="1.0">
+    <description></description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <command detect_errors="aggressive"><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+$__tool_directory__/ipr2gaf.py
+$gff3_data
+
+> $output
+
+]]>
+    </command>
+    <inputs>
+        <expand macro="gff3_input" />
+    </inputs>
+    <outputs>
+        <data name="output" label="GAF from ${gff3_data.name}" format="gff3" />
+    </outputs>
+    <help>
+*What it does*
+
+Tries to fake GAF from IPR output. The results are nothing short of awful, you
+should not expect real utility from this. GAF has more fields than we know what
+to do with, and Apollo supports like two for now.
+    </help>
+    <tests>
+        <test>
+            <param name="gff3_data" value="ipr.gff3" />
+            <output name="output" file="ipr.gaf" />
+        </test>
+    </tests>
+    <citations>
+    </citations>
+</tool>
