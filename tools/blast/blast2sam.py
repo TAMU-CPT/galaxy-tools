@@ -223,17 +223,27 @@ for k, v in references.items():
     print('@SQ\tSN:%s\tLN:%d' % (k, v))
 print('@PG\tID:%s\tVN:%s\tCL:%s' % (application, version, ' '.join(sys.argv)))
 
+counter = {}
 i = 0
 for record in blast_records_backup:
     for alignment in record.alignments:
         TC = len(alignment.hsps)  # SAM TC flag: segments in template
         for hsp in alignment.hsps:
             to_print = copy.copy(sam_line)
-            #to_print[0] = record.query
-            #to_print[2] = alignment.hit_def
-            to_print[0] = record.query + ':%s' % i
+
+            idx = 0
+            k = '|||'.join((record.query, alignment.hit_id))
+            if k in counter:
+                counter[k] += 1
+                idx = counter[k]
+            else:
+                counter[k] = 0
+
+            to_print[0] = alignment.hit_id + ':%s' % idx
             i += 1
             to_print[2] = record.query
+            #to_print[0] = record.query
+            #to_print[2] = alignment.hit_def
             to_print[3] = min(hsp.sbjct_start, hsp.sbjct_end)
 
             try:
