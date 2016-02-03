@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import os
 import argparse
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type
@@ -8,13 +7,7 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 from guanine import GuanineClient
-g = GuanineClient(
-    url='https://cpt.tamu.edu/gses/submit',
-    # admin api key
-    api_key='7b0634b429df48da9b81bfd8d54bece6',
-    # BICH 464 2016 Spring
-    id='faff993c-caaf-11e5-80c7-8b44f2907817'
-)
+g = GuanineClient()
 
 def validate(gff3, user_email):
     STUDENT_PASSES = False

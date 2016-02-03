@@ -4,8 +4,11 @@ import copy
 
 class GuanineClient(object):
 
-    def __init__(self, url='http://localhost:8000/gses/submit',
-                 username=None, password=None, api_key=None, id=None):
+    def __init__(self,
+                 url='https://cpt.tamu.edu/guanine/submit',
+                 username=None, password=None,
+                 api_key='b7c3db072bb74334bd450661c19c6a43',
+                 id='9bbd106949b742a5a3961387011e1d5f'):
         self.url = url
         self.default_data = {
             'id': id,
