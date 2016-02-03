@@ -85,7 +85,10 @@ def validate(ogs, user_gff3, user_email, offset=213):
     print
 
     # Submit score to GUANINE
-    g.submit(user_email, 'C1', float(float(score) / max_score))
+    final_score = float(float(score) / max_score)
+    if final_score < 0:
+        final_score = 0
+    g.submit(user_email, 'C1', final_score)
 
     for x in results:
         print 'Feature ending with stop codon: {stop}; Points: {points}; Message {message}'.format(**x)
