@@ -7,8 +7,14 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-STUDENT_RESULTS_FILE = '/opt/bich464/c0/results.txt'
-
+from guanine import GuanineClient
+g = GuanineClient(
+    url='https://cpt.tamu.edu/gses/submit',
+    # admin api key
+    api_key='7b0634b429df48da9b81bfd8d54bece6',
+    # BICH 464 2016 Spring
+    id='faff993c-caaf-11e5-80c7-8b44f2907817'
+)
 
 def validate(gff3, user_email):
     STUDENT_PASSES = False
@@ -63,9 +69,8 @@ def validate(gff3, user_email):
                 )
 
     if STUDENT_PASSES:
-        if os.path.exists(STUDENT_RESULTS_FILE):
-            with open(STUDENT_RESULTS_FILE, 'a') as handle:
-                handle.write(user_email + '\n')
+        # Submit score to GUANINE
+        g.submit(user_email, 'C0', 1.0)
     else:
         print "You have not successfully completed this exercise. Please try again. No annotations owned by you were found"
 

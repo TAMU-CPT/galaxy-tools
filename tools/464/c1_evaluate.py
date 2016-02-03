@@ -6,6 +6,16 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+from guanine import GuanineClient
+g = GuanineClient(
+    url='https://cpt.tamu.edu/gses/submit',
+    # admin api key
+    api_key='7b0634b429df48da9b81bfd8d54bece6',
+    # BICH 464 2016 Spring
+    id='faff993c-caaf-11e5-80c7-8b44f2907817'
+)
+
+
 
 def validate(ogs, user_gff3, user_email, offset=213):
     comp = {}
@@ -80,6 +90,9 @@ def validate(ogs, user_gff3, user_email, offset=213):
     score = sum(x['points'] for x in results)
     print 'Final score: %s / %s' % (score, max_score)
     print
+
+    # Submit score to GUANINE
+    g.submit(user_email, 'C1', float(float(score) / max_score))
 
     for x in results:
         print 'Feature ending with stop codon: {stop}; Points: {points}; Message {message}'.format(**x)
