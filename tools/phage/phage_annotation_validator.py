@@ -13,10 +13,10 @@ from Bio.SeqRecord import SeqRecord
 from Bio.Seq import reverse_complement, translate
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from jinja2 import Template
-import logging
 import re
-logging.basicConfig(level=logging.INFO)
-log = logging.getLogger(__name__)
+import logging
+logging.basicConfig(level=logging.WARN)
+log = logging.getLogger(name='pav')
 
 # Path to script, required because of Galaxy.
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -114,9 +114,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
             gene.__message = "No RBS annotated, None found"
 
             # Try and do an automated shinefind call
-            log.info(seq)
             sds = sd_finder.list_sds(seq)
-            log.info(len(sds))
             if len(sds) > 0:
                 sd = sds[0]
                 gene.__upstream = sd_finder.highlight_sd(seq.lower(), sd['start'], sd['end'])
@@ -600,6 +598,7 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
     # Get the first GFF3 record
     # TODO: support multiple GFF3 files.
     record = list(GFF.parse(annotations, base_dict=seq_dict))[0]
+    log = logging.getLogger(name='pav.%s' % record.id)
 
     gff3_qc_record = SeqRecord(record.id, id=record.id)
     gff3_qc_record.features = []
@@ -701,7 +700,7 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
     with open(tbl, 'w') as handle:
         kw_subset = {}
         for key in kwargs:
-            if key in ('score', 'record_name') or '_good' in key or '_bad' in key:
+            if key in ('score', 'record_name') or '_good' in key or '_bad' in key or '_overall' in key:
                 kw_subset[key] = kwargs[key]
         json.dump(kw_subset, handle)
 
