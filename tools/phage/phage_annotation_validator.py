@@ -598,7 +598,6 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
     # Get the first GFF3 record
     # TODO: support multiple GFF3 files.
     record = list(GFF.parse(annotations, base_dict=seq_dict))[0]
-    log = logging.getLogger(name='pav.%s' % record.id)
 
     gff3_qc_record = SeqRecord(record.id, id=record.id)
     gff3_qc_record.features = []
@@ -692,6 +691,7 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
         'weird_starts_good': ws_good,
         'weird_starts_bad': ws_bad,
         'weird_starts_overall': ws_overall,
+        'weird_starts_overall_sorted_keys': sorted(ws_overall, reverse=True, key=lambda x: ws_overall[x]),
 
         'coding_density': cd,
         'coding_density_real': cd_real,

@@ -259,7 +259,7 @@ h3:before {
             </table>
           </div>
 
-          <h3 id="weird_starts">Unusual Start Codons <small>{{weird_starts_good}} / {{weird_starts_good + weird_starts_bad}}</small></h3>
+          <h3 id="weird_starts">Unusual Start Codons <small>{{weird_starts_good}} / {{weird_starts_good + weird_starts_bad + 1}}</small></h3>
           <p>This section covers genes with unusual start codons</p>
           <div class="table-responsive">
             <table class="table table-striped">
@@ -270,8 +270,8 @@ h3:before {
                 </tr>
               </thead>
               <tbody>
-                  {% for codon in weird_starts_overall %}
-                  <tr><td>{{ codon }}</td><td>{{ weird_starts_overall[codon] }}</td></tr>
+                  {% for codon_key in weird_starts_overall_sorted_keys %}
+                  <tr><td>{{ codon_key }}</td><td>{{ weird_starts_overall[codon_key] }}</td></tr>
                   {% endfor %}
               </tbody>
             </table>
@@ -284,7 +284,6 @@ h3:before {
                   <th>Feature Type</th>
                   <th>ID</th>
                   <th>Location</th>
-                  <th>Start Codon</th>
                   <th>Error</th>
                 </tr>
               </thead>
@@ -294,7 +293,6 @@ h3:before {
                     <td>{{row.type}}</td>
                     <td>{{row.id}}</td>
                     <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
-                    <td>{{row.__start}}</td>
                     <td>{{row.__error}}</td>
                 </tr>
                 {% endfor %}
