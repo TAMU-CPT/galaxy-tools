@@ -504,6 +504,55 @@ def find_morons(record):
     return good, bad, results, []
 
 
+def weird_starts(record):
+    """Find features without product
+    """
+    results = []
+    good = 0
+    bad = 0
+    qc_features = []
+
+    for gene in coding_genes(record.features):
+        seq = [x for x in genes(gene.sub_features, feature_type='CDS')]
+        if len(seq) == 0:
+            log.warn("No CDS for gene %s", gene.id)
+            continue
+        else:
+            seq = seq[0]
+
+        seq_str = str(seq.extract(record.seq))
+        start_codon = seq_str[0:3]
+        stop_codon = seq_str[-3]
+        seq.__start = start_codon
+        seq.__stop = stop_codon
+
+
+        if start_codon not in ('ATG', 'TTG', 'CTG', 'GTG'):
+            log.warn("Weird start codon (%s) on %s", start_codon, seq.id)
+            seq.__error = 'Unusual start codon %s' % start_codon
+
+            s = 0
+            e = 0
+            if seq.strand > 0:
+                s = seq.location.start
+                e = seq.location.start + 3
+            else:
+                s = seq.location.end
+                e = seq.location.end - 3
+
+            qc_features.append(gen_qc_feature(
+                s, e,
+                'Weird start codon',
+                strand=seq.strand
+            ))
+            results.append(seq)
+            bad += 1
+        else:
+            good += 1
+
+    return good, bad, results, qc_features
+
+
 def missing_tags(record):
     """Find features without product
     """
@@ -582,9 +631,13 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
     log.info("Determining coding density")
     cd, cd_real = coding_density(record)
 
+    log.info("Locating weird starts")
+    ws_good, ws_bad, ws_results, ws_annotations = weird_starts(record)
+    gff3_qc_features += ws_annotations
 
-    good_scores = [eg_good, eo_good, mt_good]
-    bad_scores = [eg_bad, eo_bad, mt_bad]
+
+    good_scores = [eg_good, eo_good, mt_good, ws_good]
+    bad_scores = [eg_bad, eo_bad, mt_bad, ws_bad]
 
     # Only if they tried to annotate RBSs do we consider them.
     if mb_any:
@@ -631,6 +684,11 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
         'missing_tags': mt_results,
         'missing_tags_good': mt_good,
         'missing_tags_bad': mt_bad,
+
+        'weird_starts': ws_results,
+        'weird_starts_good': ws_good,
+        'weird_starts_bad': ws_bad,
+
 
         'coding_density': cd,
         'coding_density_real': cd_real,

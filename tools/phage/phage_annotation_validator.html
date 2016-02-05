@@ -183,6 +183,7 @@ h3:before {
             <li><a href="#main"><b>Overview</b></a></li>
             <li><a href="#bad_gene_starts"><b>Bad Gene Starts</b></a></li>
             <li><a href="#missing_rbs"><small>Missing RBS</small></a></li>
+            <li><a href="#weird_starts"><small>Unusual Start Codons</small></a></li>
             <li><a href="#excessive_gaps"><small>Excessive Gaps</small></a></li>
             <li><a href="#excessive_overlap"><small>Excessive Overlaps</small></a></li>
             <li><a href="#coding_density"><small>Coding Density</small></a></li>
@@ -252,6 +253,33 @@ h3:before {
                     <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
                     <td>{{row.__message}}</td>
                     <td><span style="font-family:monospace">{{row.__upstream}}</span></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="weird_starts">Unusual Start Codons <small>{{weird_starts_good}} / {{weird_starts_good + weird_starts_bad}}</small></h3>
+          <p>This section covers genes with unusual start codons</p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature Type</th>
+                  <th>ID</th>
+                  <th>Location</th>
+                  <th>Start Codon</th>
+                  <th>Error</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in weird_starts %}
+                <tr>
+                    <td>{{row.type}}</td>
+                    <td>{{row.id}}</td>
+                    <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
+                    <td>{{row.__start}}</td>
+                    <td>{{row.__error}}</td>
                 </tr>
                 {% endfor %}
               </tbody>
