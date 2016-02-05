@@ -265,6 +265,22 @@ h3:before {
             <table class="table table-striped">
               <thead>
                 <tr>
+                  <th>Start Codon</th>
+                  <th>Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for codon in weird_starts_overall %}
+                  <tr><td>{{ codon }}</td><td>{{ weird_starts_overall[codon] }}</td></tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
                   <th>Feature Type</th>
                   <th>ID</th>
                   <th>Location</th>

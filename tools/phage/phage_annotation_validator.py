@@ -512,6 +512,7 @@ def weird_starts(record):
     bad = 0
     qc_features = []
 
+    overall = {}
     for gene in coding_genes(record.features):
         seq = [x for x in genes(gene.sub_features, feature_type='CDS')]
         if len(seq) == 0:
@@ -525,9 +526,12 @@ def weird_starts(record):
         stop_codon = seq_str[-3]
         seq.__start = start_codon
         seq.__stop = stop_codon
+        if start_codon not in overall:
+            overall[start_codon] = 1
+        else:
+            overall[start_codon] += 1
 
-
-        if start_codon not in ('ATG', 'TTG', 'CTG', 'GTG'):
+        if start_codon not in ('ATG', 'TTG', 'GTG'):
             log.warn("Weird start codon (%s) on %s", start_codon, seq.id)
             seq.__error = 'Unusual start codon %s' % start_codon
 
@@ -550,7 +554,7 @@ def weird_starts(record):
         else:
             good += 1
 
-    return good, bad, results, qc_features
+    return good, bad, results, qc_features, overall
 
 
 def missing_tags(record):
@@ -632,7 +636,7 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
     cd, cd_real = coding_density(record)
 
     log.info("Locating weird starts")
-    ws_good, ws_bad, ws_results, ws_annotations = weird_starts(record)
+    ws_good, ws_bad, ws_results, ws_annotations, ws_overall = weird_starts(record)
     gff3_qc_features += ws_annotations
 
 
@@ -688,7 +692,7 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
         'weird_starts': ws_results,
         'weird_starts_good': ws_good,
         'weird_starts_bad': ws_bad,
-
+        'weird_starts_overall': ws_overall,
 
         'coding_density': cd,
         'coding_density_real': cd_real,
