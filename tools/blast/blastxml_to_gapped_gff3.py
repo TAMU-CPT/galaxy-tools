@@ -45,6 +45,15 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
                     "length": hit.length,
                     "hit_titles": hit.title.split(' >')
                 }
+                for prop in ('score', 'bits', 'identitie', 'positives',
+                          'gaps', 'align_length', 'strand', 'frame',
+                          'query_start', 'query_end', 'sbjct_start',
+                          'sbjct_end'):
+                    try:
+                        qualifiers['blast_' + prop] = getattr(hsp, prop, None)
+                    except Exception:
+                        pass
+
                 desc = hit.title.split(' >')[0]
                 qualifiers['description'] = desc[desc.index(' '):]
 
@@ -115,8 +124,7 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
 
                 rec.features.append(top_feature)
         rec.annotations = {}
-        records.append(rec)
-    return records
+        yield rec
 
 
 def __remove_query_gaps(query, match, subject):
@@ -258,5 +266,5 @@ if __name__ == '__main__':
     parser.add_argument('--trim_end', action='store_true', help='Cut blast results off at end of gene')
     args = parser.parse_args()
 
-    result = blastxml2gff3(**vars(args))
-    GFF.write(result, sys.stdout)
+    for rec in blastxml2gff3(**vars(args)):
+        GFF.write([rec], sys.stdout)
