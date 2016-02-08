@@ -33,5 +33,5 @@ if __name__ == '__main__':
         public=args.public
     )
     # Need to filter data
-    wanted_data = [x for x in data if str(data['id']) == str(args.organismId)]
+    wanted_data = [x for x in data if str(x['id']) == str(args.organismId)]
     print json.dumps(wanted_data, indent=2)
