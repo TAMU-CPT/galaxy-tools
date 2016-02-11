@@ -14,13 +14,21 @@ def require_shinefind(gff3, fasta):
     # Parse GFF3 records
     for record in GFF.parse(gff3, base_dict=seq_dict):
         # Reopen
-        cdss = list(feature_lambda(record.features, feature_test_type, {'type': 'CDS'}, subfeatures=True))
-        good_cdss = []
-        for cds in cdss:
-            if cds.extract(record).seq[0:3].upper() in ('GTG', 'ATG', 'TTG'):
-                good_cdss.append(cds)
+        genes = list(feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True))
+        good_genes = []
+        for gene in genes:
+            cdss = list(feature_lambda(genes.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))
+            if len(cdss) == 0:
+                continue
 
-        record.features = good_cdss
+            one_good_cds = False
+            for cds in cdss:
+                if cds.extract(record).seq[0:3].upper() in ('GTG', 'ATG', 'TTG'):
+                    one_good_cds = True
+
+            if one_good_cds:
+                good_genes.append(gene)
+        record.features = good_genes
         yield record
 
 if __name__ == '__main__':
