@@ -171,35 +171,35 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Get open reading frames')
     parser.add_argument('fasta_file', type=file, help='Fasta file')
 
-    parser.add_option('-f', '--format', dest='seq_format',
+    parser.add_argument('-f', '--format', dest='seq_format',
                     default='fasta', help='Sequence format (e.g. fasta, fastq, sff)')
-    parser.add_option('--table', dest='table',
-                    default=1, help='NCBI Translation table', type='int')
-    parser.add_option('-t', '--ftype', dest='ftype', type='choice',
+    parser.add_argument('--table', dest='table',
+                    default=1, help='NCBI Translation table', type=int)
+    parser.add_argument('-t', '--ftype', dest='ftype',
                     choices=('CDS', 'ORF'), default='ORF',
                     help='Find ORF or CDSs')
-    parser.add_option('-e', '--ends', dest='ends', type='choice',
+    parser.add_argument('-e', '--ends', dest='ends',
                     choices=('open', 'closed'), default='closed',
                     help='Open or closed. Closed ensures start/stop codons are present')
-    parser.add_option('-m', '--mode', dest='mode', type='choice',
+    parser.add_argument('-m', '--mode', dest='mode',
                     choices=('all', 'top', 'one'), default='all',
                     help='Output all ORFs/CDSs from sequence, all ORFs/CDSs '
                     'with max length, or first with maximum length')
-    parser.add_option('--min_len', dest='min_len',
-                    default=10, help='Minimum ORF/CDS length', type='int')
-    parser.add_option('-s', '--strand', dest='strand', type='choice',
+    parser.add_argument('--min_len', dest='min_len',
+                    default=10, help='Minimum ORF/CDS length', type=int)
+    parser.add_argument('-s', '--strand', dest='strand',
                     choices=('forward', 'reverse', 'both'), default='both',
                     help='Strand to search for features on')
 
-    parser.add_option('--on', dest='out_nuc_file',
+    parser.add_argument('--on', dest='out_nuc_file',
                     default='out.fna', help='Output nucleotide sequences')
-    parser.add_option('--op', dest='out_prot_file',
+    parser.add_argument('--op', dest='out_prot_file',
                     default='out.fa', help='Output protein sequences',)
-    parser.add_option('--ob', dest='out_bed_file',
+    parser.add_argument('--ob', dest='out_bed_file',
                     default='out.bed', help='Output BED file')
-    parser.add_option('--og', dest='out_gff3_file',
+    parser.add_argument('--og', dest='out_gff3_file',
                     default='out.gff3', help='Output GFF3 file')
-    parser.add_option('-v', action='version', version='0.3.0')
+    parser.add_argument('-v', action='version', version='0.3.0')
     args = parser.parse_args()
 
     process(**vars(args))
