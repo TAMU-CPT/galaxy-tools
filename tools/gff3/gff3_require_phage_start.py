@@ -17,7 +17,7 @@ def require_shinefind(gff3, fasta):
         genes = list(feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True))
         good_genes = []
         for gene in genes:
-            cdss = list(feature_lambda(genes.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))
+            cdss = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))
             if len(cdss) == 0:
                 continue
 
@@ -29,6 +29,7 @@ def require_shinefind(gff3, fasta):
             if one_good_cds:
                 good_genes.append(gene)
         record.features = good_genes
+        record.annotations = {}
         yield record
 
 if __name__ == '__main__':
