@@ -88,8 +88,7 @@ class OrfFinder(object):
                 else:
                     # Use when missing stop codon,
                     t = "M" + translate(n[3:], self.table, to_stop=True)
-                return start, n, t
-        return None, None, None
+                yield start, n, t
 
     def break_up_frame(self, s):
         """Returns offset, nuc, protein."""
@@ -100,13 +99,13 @@ class OrfFinder(object):
                 continue
             n = s[start:index]
             if self.ftype == "CDS":
-                offset, n, t = self.start_chop_and_trans(n)
+                for (offset, n, t) in self.start_chop_and_trans(n):
+                    if n and len(t) >= self.min_len:
+                        yield start + offset, n, t
+                start = index
             else:
                 offset = 0
                 t = translate(n, self.table, to_stop=True)
-            if n and len(t) >= self.min_len:
-                yield start + offset, n, t
-            start = index
         if self.ends == "open":
             # No stop codon, Biopython's strict CDS translate will fail
             n = s[start:]
@@ -132,19 +131,16 @@ class OrfFinder(object):
         """
         # TODO - Refactor to use a generator function (in start order)
         # rather than making a list and sorting?
-        answer = []
         full_len = len(nuc_seq)
         for frame in range(0, 3):
             for offset, n, t in self.break_up_frame(nuc_seq[frame:]):
                 start = frame + offset  # zero based
-                answer.append((start, start + len(n), +1, n, t))
+                yield (start, start + len(n), +1, n, t)
         rc = reverse_complement(nuc_seq)
         for frame in range(0, 3):
             for offset, n, t in self.break_up_frame(rc[frame:]):
                 start = full_len - frame - offset  # zero based
-                answer.append((start - len(n), start, -1, n, t))
-        answer.sort()
-        return answer
+                yield (start - len(n), start, -1, n, t)
 
     def get_top_peptides(self, nuc_seq):
         """Returns all peptides of max length."""
