@@ -1,4 +1,4 @@
-<tool id="get_orfs_or_cdss" name="Get open reading frames (ORFs) or coding sequences (CDSs)" version="0.1.1">
+<tool id="get_orfs_or_cdss" name="Get open reading frames (ORFs) or coding sequences (CDSs)" version="0.2.0">
     <description>e.g. to get peptides from ESTs</description>
     <requirements>
         <requirement type="package" version="1.65">biopython</requirement>
@@ -11,7 +11,7 @@
     </stdio>
     <version_command interpreter="python">get_orfs_or_cdss.py --version</version_command>
     <command interpreter="python">
-get_orfs_or_cdss.py -i $input_file -f $input_file.ext --table $table -t $ftype -e $ends -m $mode --min_len $min_len -s $strand --on $out_nuc_file --op $out_prot_file --ob $out_bed_file
+get_orfs_or_cdss.py -i $input_file -f $input_file.ext --table $table -t $ftype -e $ends -m $mode --min_len $min_len -s $strand --on $out_nuc_file --op $out_prot_file --ob $out_bed_file --og $out_gff3_file
     </command>
     <inputs>
         <param name="input_file" type="data" format="fasta,fastq,sff" label="Sequence file (nucleotides)" help="FASTA, FASTQ, or SFF format." />
@@ -46,92 +46,7 @@ get_orfs_or_cdss.py -i $input_file -f $input_file.ext --table $table -t $ftype -
         </param>
         <param name="mode" type="select" label="Selection criteria" help="Suppose a sequence has ORFs/CDSs of lengths 100, 102 and 102 -- which should be taken? These options would return 3, 2 or 1 ORF.">
             <option value="all">All ORFs/CDSs from each sequence</option>
-            <option value="top">All ORFs/CDSs from each sequence with the maximum length</option>
-            <option value="one">First ORF/CDS from each sequence with the maximum length</option>
-        </param>
-        <param name="min_len" type="integer" size="5" value="30" label="Minimum length ORF/CDS (in amino acids, e.g. 30 aa = 90 bp plus any stop codon)" />
-        <param name="strand" type="select" label="Strand to search" help="Use the forward only option if your sequence directionality is known (e.g. from poly-A tails, or strand specific RNA sequencing).">
-            <option value="both">Search both the forward and reverse strand</option>
-            <option value="forward">Only search the forward strand</option>
-            <option value="reverse">Only search the reverse strand</option>
-        </param>
-    </inputs>
-    <outputs>
-        <data name="out_nuc_file" format="fasta" label="${ftype.value}s (nucleotides)" />
-        <data name="out_prot_file" format="fasta" label="${ftype.value}s (amino acids)" />
-        <data name="out_bed_file" format="bed6" label="${ftype.value}s (bed)" />
-    </outputs>
-    <tests>
-        <test>
-            <param name="input_file" value="get_orf_input.fasta" />
-            <param name="table" value="1" />
-            <param name="ftype" value="CDS" />
-            <param name="ends" value="open" />
-            <param name="mode" value="all" />
-            <param name="min_len" value="10" />
-            <param name="strand" value="forward" />
-            <output name="out_nuc_file" file="get_orf_input.t1_nuc_out.fasta" />
-            <output name="out_prot_file" file="get_orf_input.t1_prot_out.fasta" />
-            <output name="out_bed_file" file="get_orf_input.t1_bed_out.bed" />
-        </test>
-        <test>
-            <param name="input_file" value="get_orf_input.fasta" />
-            <param name="table" value="11" />
-            <param name="ftype" value="CDS" />
-            <param name="ends" value="closed" />
-            <param name="mode" value="all" />
-            <param name="min_len" value="10" />
-            <param name="strand" value="forward" />
-            <output name="out_nuc_file" file="get_orf_input.t11_nuc_out.fasta" />
-            <output name="out_prot_file" file="get_orf_input.t11_prot_out.fasta" />
-            <output name="out_bed_file" file="get_orf_input.t11_bed_out.bed" />
-        </test>
-        <test>
-            <param name="input_file" value="get_orf_input.fasta" />
-            <param name="table" value="11" />
-            <param name="ftype" value="CDS" />
-            <param name="ends" value="open" />
-            <param name="mode" value="all" />
-            <param name="min_len" value="10" />
-            <param name="strand" value="forward" />
-            <output name="out_nuc_file" file="get_orf_input.t11_open_nuc_out.fasta" />
-            <output name="out_prot_file" file="get_orf_input.t11_open_prot_out.fasta" />
-            <output name="out_bed_file" file="get_orf_input.t11_open_bed_out.bed" />
-        </test>
-        <test>
-            <param name="input_file" value="Ssuis.fasta" />
-            <param name="table" value="11" />
-            <param name="ftype" value="ORF" />
-            <param name="ends" value="open" />
-            <param name="mode" value="all" />
-            <param name="min_len" value="100" />
-            <param name="strand" value="both" />
-            <output name="out_nuc_file" file="get_orf_input.Suis_ORF.nuc.fasta" />
-            <output name="out_prot_file" file="get_orf_input.Suis_ORF.prot.fasta" />
-            <output name="out_bed_file" file="get_orf_input.Suis_ORF.bed" />
-        </test>
-    </tests>
-    <help>
-**What it does**
-
-Takes an input file of nucleotide sequences (typically FASTA, but also FASTQ
-and Standard Flowgram Format (SFF) are supported), and searches each sequence
-for open reading frames (ORFs) or potential coding sequences (CDSs) of the
-given minimum length. These are returned as FASTA files of nucleotides and
-protein sequences.
-
-You can choose to have all the ORFs/CDSs above the minimum length for each
-sequence (similar to the EMBOSS getorf tool), those with the longest length
-equal, or the first ORF/CDS with the longest length (in the special case
-where a sequence encodes two or more long ORFs/CDSs of the same length). The
-last option is a reasonable choice when the input sequences represent EST or
-mRNA sequences, where only one ORF/CDS is expected.
-
-Note that if no ORFs/CDSs in a sequence match the criteria, there will be no
-output for that sequence.
-
-Also note that the ORFs/CDSs are assigned modified identifiers to distinguish
-them from the original full length sequences, by appending a suffix.
+           ginal full length sequences, by appending a suffix.
 
 The start and stop codons are taken from the `NCBI Genetic Codes
 &lt;http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi&gt;`_.
@@ -140,7 +55,7 @@ codon, and any start codons are ignored. When searching for CDSs, the first
 potential start codon will be used, giving the longest possible CDS within
 each ORF, and thus the longest possible protein sequence. This is useful
 for things like BLAST or domain searching, but since this may not be the
-correct start codon may not be appropriate for signal peptide detection
+correct start codon, it may not be appropriate for signal peptide detection
 etc.
 
 **Example Usage**
@@ -151,7 +66,7 @@ sequences should (barring sequencing, assembly errors, frame-shifts etc)
 encode one protein as a single ORF/CDS, which you wish to extract (and
 perhaps translate into amino acids).
 
-If your RNS-Seq data was strand specific, and assembled taking this into
+If your RNA-Seq data was strand specific, and assembled taking this into
 account, you should only search for ORFs/CDSs on the forward strand.
 
 **Citation**

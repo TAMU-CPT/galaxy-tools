@@ -1,114 +1,14 @@
 #!/usr/bin/env python
-"""Find ORFs in a nucleotide sequence file.
-
-For more details, see the help text and argument descriptions in the
-accompanying get_orfs_or_cdss.xml file which defines a Galaxy interface.
-
-This tool is a short Python script which requires Biopython. If you use
-this tool in scientific work leading to a publication, please cite the
-Biopython application note:
-
-Cock et al 2009. Biopython: freely available Python tools for computational
-molecular biology and bioinformatics. Bioinformatics 25(11) 1422-3.
-http://dx.doi.org/10.1093/bioinformatics/btp163 pmid:19304878.
-
-This script is copyright 2011-2013 by Peter Cock, The James Hutton Institute
-(formerly SCRI), Dundee, UK. All rights reserved.
-
-See accompanying text file for licence details (MIT licence).
-
-This is version 0.1.0 of the script.
-"""
 import sys
 import re
-from optparse import OptionParser
-
-
-def sys_exit(msg, err=1):
-    sys.stderr.write(msg.rstrip() + "\n")
-    sys.exit(err)
-
-usage = """Use as follows:
-
-$ python get_orfs_or_cdss.py -i genome.fa -f fasta --table 11 -t CDS -e open -m all -s both --on cds.nuc.fa --op cds.protein.fa --ob cds.bed
-"""
-
-try:
-    from Bio.Seq import Seq, reverse_complement, translate
-    from Bio.SeqRecord import SeqRecord
-    from Bio import SeqIO
-    from Bio.Data import CodonTable
-except ImportError:
-    sys_exit("Missing Biopython library")
-
-
-parser = OptionParser(usage=usage)
-parser.add_option('-i', '--input', dest='input_file',
-                  default=None, help='Input fasta file',
-                  metavar='FILE')
-parser.add_option('-f', '--format', dest='seq_format',
-                  default='fasta', help='Sequence format (e.g. fasta, fastq, sff)')
-parser.add_option('--table', dest='table',
-                  default=1, help='NCBI Translation table', type='int')
-parser.add_option('-t', '--ftype', dest='ftype', type='choice',
-                  choices=['CDS', 'ORF'], default='ORF',
-                  help='Find ORF or CDSs')
-parser.add_option('-e', '--ends', dest='ends', type='choice',
-                  choices=['open', 'closed'], default='closed',
-                  help='Open or closed. Closed ensures start/stop codons are present')
-parser.add_option('-m', '--mode', dest='mode', type='choice',
-                  choices=['all', 'top', 'one'], default='all',
-                  help='Output all ORFs/CDSs from sequence, all ORFs/CDSs '
-                  'with max length, or first with maximum length')
-parser.add_option('--min_len', dest='min_len',
-                  default=10, help='Minimum ORF/CDS length', type='int')
-parser.add_option('-s', '--strand', dest='strand', type='choice',
-                  choices=['forward', 'reverse', 'both'], default='both',
-                  help='Strand to search for features on')
-parser.add_option('--on', dest='out_nuc_file',
-                  default=None, help='Output nucleotide sequences, or - for STDOUT',
-                  metavar='FILE')
-parser.add_option('--op', dest='out_prot_file',
-                  default=None, help='Output protein sequences, or - for STDOUT',
-                  metavar='FILE')
-parser.add_option('--ob', dest='out_bed_file',
-                  default=None, help='Output BED file, or - for STDOUT',
-                  metavar='FILE')
-parser.add_option('-v', '--version', dest='version',
-                  default=False, action='store_true',
-                  help='Show version and quit')
-
-options, args = parser.parse_args()
-
-if options.version:
-    print "v0.1.0"
-    sys.exit(0)
-
-try:
-    table_obj = CodonTable.ambiguous_generic_by_id[options.table]
-except KeyError:
-    sys_exit("Unknown codon table %i" % options.table)
-
-if options.seq_format.lower() == "sff":
-    seq_format = "sff-trim"
-elif options.seq_format.lower() == "fasta":
-    seq_format = "fasta"
-elif options.seq_format.lower().startswith("fastq"):
-    seq_format = "fastq"
-else:
-    sys_exit("Unsupported file type %r" % options.seq_format)
-
-print "Genetic code table %i" % options.table
-print "Minimum length %i aa" % options.min_len
-
-starts = sorted(table_obj.start_codons)
-assert "NNN" not in starts
-re_starts = re.compile("|".join(starts))
-
-stops = sorted(table_obj.stop_codons)
-assert "NNN" not in stops
-re_stops = re.compile("|".join(stops))
-
+import argparse
+import logging
+logging.basicConfig()
+log = logging.getLogger()
+from Bio.Seq import Seq, reverse_complement, translate
+from Bio.SeqRecord import SeqRecord
+from Bio import SeqIO
+from Bio.Data import CodonTable
 
 def start_chop_and_trans(s, strict=True):
     """Returns offset, trimmed nuc, protein."""
@@ -122,10 +22,10 @@ def start_chop_and_trans(s, strict=True):
             n = s[start:]
             assert len(n) % 3 == 0, "%s is len %i" % (n, len(n))
             if strict:
-                t = translate(n, options.table, cds=True)
+                t = translate(n, table, cds=True)
             else:
                 # Use when missing stop codon,
-                t = "M" + translate(n[3:], options.table, to_stop=True)
+                t = "M" + translate(n[3:], table, to_stop=True)
             return start, n, t
     return None, None, None
 
@@ -138,15 +38,15 @@ def break_up_frame(s):
         if index % 3 != 0:
             continue
         n = s[start:index]
-        if options.ftype == "CDS":
+        if ftype == "CDS":
             offset, n, t = start_chop_and_trans(n)
         else:
             offset = 0
-            t = translate(n, options.table, to_stop=True)
-        if n and len(t) >= options.min_len:
+            t = translate(n, table, to_stop=True)
+        if n and len(t) >= min_len:
             yield start + offset, n, t
         start = index
-    if options.ends == "open":
+    if ends == "open":
         # No stop codon, Biopython's strict CDS translate will fail
         n = s[start:]
         # Ensure we have whole codons
@@ -156,12 +56,12 @@ def break_up_frame(s):
             n = n[:-1]
         if len(n) % 3:
             n = n[:-1]
-        if options.ftype == "CDS":
+        if ftype == "CDS":
             offset, n, t = start_chop_and_trans(n, strict=False)
         else:
             offset = 0
-            t = translate(n, options.table, to_stop=True)
-        if n and len(t) >= options.min_len:
+            t = translate(n, table, to_stop=True)
+        if n and len(t) >= min_len:
             yield start + offset, n, t
 
 
@@ -174,12 +74,12 @@ def get_all_peptides(nuc_seq):
     # rather than making a list and sorting?
     answer = []
     full_len = len(nuc_seq)
-    if options.strand != "reverse":
+    if strand != "reverse":
         for frame in range(0, 3):
             for offset, n, t in break_up_frame(nuc_seq[frame:]):
                 start = frame + offset  # zero based
                 answer.append((start, start + len(n), +1, n, t))
-    if options.strand != "forward":
+    if strand != "forward":
         rc = reverse_complement(nuc_seq)
         for frame in range(0, 3):
             for offset, n, t in break_up_frame(rc[frame:]):
@@ -207,51 +107,99 @@ def get_one_peptide(nuc_seq):
         raise StopIteration
     yield values[0]
 
-if options.mode == "all":
-    get_peptides = get_all_peptides
-elif options.mode == "top":
-    get_peptides = get_top_peptides
-elif options.mode == "one":
-    get_peptides = get_one_peptide
 
-in_count = 0
-out_count = 0
-if options.out_nuc_file == "-":
-    out_nuc = sys.stdout
-else:
-    out_nuc = open(options.out_nuc_file, "w")
+def process(fasta_file, seq_format, table, ftype, ends, mode, min_len,
+            strand, out_nuc_file, out_prot_file, out_bed_file,
+            out_gff3_file):
+    table_obj = CodonTable.ambiguous_generic_by_id[options.table]
 
-if options.out_prot_file == "-":
-    out_prot = sys.stdout
-else:
-    out_prot = open(options.out_prot_file, "w")
+    if seq_format.lower() == "sff":
+        seq_format = "sff-trim"
+    elif seq_format.lower() == "fasta":
+        seq_format = "fasta"
+    elif seq_format.lower().startswith("fastq"):
+        seq_format = "fastq"
 
-if options.out_bed_file == "-":
-    out_bed = sys.stdout
-else:
-    out_bed = open(options.out_bed_file, "w")
+    log.debug("Genetic code table %i" % table)
+    log.debug("Minimum length %i aa" % min_len)
 
-for record in SeqIO.parse(options.input_file, seq_format):
-    for i, (f_start, f_end, f_strand, n, t) in enumerate(get_peptides(str(record.seq).upper())):
-        out_count += 1
-        if f_strand == +1:
-            loc = "%i..%i" % (f_start+1, f_end)
-        else:
-            loc = "complement(%i..%i)" % (f_start+1, f_end)
-        descr = "length %i aa, %i bp, from %s of %s" \
-                % (len(t), len(n), loc, record.description)
-        fid = record.id + "|%s%i" % (options.ftype, i+1)
-        r = SeqRecord(Seq(n), id=fid, name="", description=descr)
-        t = SeqRecord(Seq(t), id=fid, name="", description=descr)
-        SeqIO.write(r, out_nuc, "fasta")
-        SeqIO.write(t, out_prot, "fasta")
-        out_bed.write('\t'.join(map(str, [record.id, f_start, f_end, fid, 0, '+' if f_strand == +1 else '-'])) + '\n')
-    in_count += 1
-if out_nuc is not sys.stdout:
-    out_nuc.close()
-if out_prot is not sys.stdout:
-    out_prot.close()
-if out_bed is not sys.stdout:
-    out_bed.close()
+    starts = sorted(table_obj.start_codons)
+    re_starts = re.compile("|".join(starts))
 
-print "Found %i %ss in %i sequences" % (out_count, options.ftype, in_count)
+    stops = sorted(table_obj.stop_codons)
+    re_stops = re.compile("|".join(stops))
+
+    if mode == "all":
+        get_peptides = get_all_peptides
+    elif mode == "top":
+        get_peptides = get_top_peptides
+    elif mode == "one":
+        get_peptides = get_one_peptide
+
+    out_count = 0
+
+    if out_gff3:
+        out_gff3.write('##gff-version 3\n')
+
+    for idx, record in enumerate(SeqIO.parse(input_file, seq_format)):
+        for i, (f_start, f_end, f_strand, n, t) in enumerate(get_peptides(str(record.seq).upper())):
+            out_count += 1
+
+            descr = "length %i aa, %i bp, from %s[%s] of %s" \
+                    % (len(t), len(n), loc, f_strand, record.description)
+            fid = record.id + "|%s%i" % (ftype, i + 1)
+
+            r = SeqRecord(Seq(n), id=fid, name="", description=descr)
+            t = SeqRecord(Seq(t), id=fid, name="", description=descr)
+
+            SeqIO.write(r, out_nuc, "fasta")
+            SeqIO.write(t, out_prot, "fasta")
+
+            nice_strand = '+' if f_strand == +1 else '-'
+
+            out_bed.write('\t'.join(map(str, [
+                record.id, f_start, f_end, fid, 0, nice_strand])) + '\n')
+
+            out_gff3.write('\t'.join(map(str, [
+                record.id, 'getOrfsOrCds', 'CDS', f_start + 1, f_end, '.',
+                nice_strand, 0, 'ID=%s%s' % (ftype, i + 1)])) + '\n')
+
+    print "Found %i %ss in %i sequences" % (out_count, ftype, idx)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Get open reading frames')
+    parser.add_argument('fasta_file', type=file, help='Fasta file')
+
+    parser.add_option('-f', '--format', dest='seq_format',
+                    default='fasta', help='Sequence format (e.g. fasta, fastq, sff)')
+    parser.add_option('--table', dest='table',
+                    default=1, help='NCBI Translation table', type='int')
+    parser.add_option('-t', '--ftype', dest='ftype', type='choice',
+                    choices=('CDS', 'ORF'), default='ORF',
+                    help='Find ORF or CDSs')
+    parser.add_option('-e', '--ends', dest='ends', type='choice',
+                    choices=('open', 'closed'), default='closed',
+                    help='Open or closed. Closed ensures start/stop codons are present')
+    parser.add_option('-m', '--mode', dest='mode', type='choice',
+                    choices=('all', 'top', 'one'), default='all',
+                    help='Output all ORFs/CDSs from sequence, all ORFs/CDSs '
+                    'with max length, or first with maximum length')
+    parser.add_option('--min_len', dest='min_len',
+                    default=10, help='Minimum ORF/CDS length', type='int')
+    parser.add_option('-s', '--strand', dest='strand', type='choice',
+                    choices=('forward', 'reverse', 'both'), default='both',
+                    help='Strand to search for features on')
+
+    parser.add_option('--on', dest='out_nuc_file',
+                    default='out.fna', help='Output nucleotide sequences')
+    parser.add_option('--op', dest='out_prot_file',
+                    default='out.fa', help='Output protein sequences',)
+    parser.add_option('--ob', dest='out_bed_file',
+                    default='out.bed', help='Output BED file')
+    parser.add_option('--og', dest='out_gff3_file',
+                    default='out.gff3', help='Output GFF3 file')
+    parser.add_option('-v', action='version', version='0.3.0')
+    args = parser.parse_args()
+
+    process(**vars(args))
