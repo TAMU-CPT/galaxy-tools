@@ -36,7 +36,7 @@ class NaiveSDCaller(object):
     )
 
     def __init__(self):
-        self.sd_reg = [re.compile(x) for x in self.SD_SEQUENCES]
+        self.sd_reg = [re.compile(x, re.IGNORECASE) for x in self.SD_SEQUENCES]
 
     def list_sds(self, sequence):
         hits = []
