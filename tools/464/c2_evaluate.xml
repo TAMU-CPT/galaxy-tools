@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.464.2016.c02_evaluate" name="464 C02 - evaluate" version="1.1">
+  <description></description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python"><![CDATA[
+python $__tool_directory__/c2_evaluate.py
+
+$__tool_directory__/test-data/c2.csv
+$csv_file
+$__user_email__
+> $stdout;
+]]></command>
+  <inputs>
+    <param label="Blast CSV Results" name="csv_file" type="data"
+        format="csv"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="stdout" label="Result Validation Report"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Validates and scores your result from the C02 exercise
+]]></help>
+</tool>
