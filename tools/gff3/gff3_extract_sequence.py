@@ -55,7 +55,17 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 if nodesc:
                     description = ''
                 else:
-                    description = '[Location={0.location};Name={0.qualifiers[Name][0]}]'.format(feat)
+                    important_data = {
+                        'Location': feat.location,
+                    }
+                    if 'Name' in feat.qualifiers:
+                        important_data['Name'] = feat.qualifiers.get('Name', [''])[0]
+
+                    description = '[{}]'.format(
+                        ';'.join([
+                            '{key}={value}'.format(key=k, value=v) for (k, v) in important_data.iteritems()
+                        ])
+                    )
 
                 yield [
                     SeqRecord(
