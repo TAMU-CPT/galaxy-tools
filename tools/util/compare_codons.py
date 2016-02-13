@@ -13,7 +13,7 @@ def tntable(table=11):
     _table = {}
     translation = {}
     for x in [''.join(y) for y in codons]:
-        aa = str(Seq(x, IUPAC.IUPACUnambiguousDNA()).translate(table=table))
+        aa = str(Seq(x, IUPAC.IUPACUnambiguousDNA()).translate(table=table)).upper()
         translation[x] = aa
 
         try:
@@ -52,13 +52,13 @@ def main(reference, comparison, sort_order='default', ref_title=None, cmp_title=
     for codon in ref_data:
         # AAA \t N
         # N -> AAA = 32
-        nt = codon[0]
+        nt = codon[0].upper()
         aa = translation[nt]
         table[aa][nt]['ref'] = float(codon[1]) / ref_sum
 
     comp_sum = sum(zip(*comp_data)[1])
     for codon in comp_data:
-        nt = codon[0]
+        nt = codon[0].upper()
         aa = translation[nt]
         table[aa][nt]['comp'] = float(codon[1]) / comp_sum
 
