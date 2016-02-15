@@ -4,7 +4,7 @@ import collections
 from BCBio import GFF
 import StringIO
 import logging
-logging.getLogger("bioblend").setLevel(logging.CRITICAL)
+logging.getLogger("requests").setLevel(logging.CRITICAL)
 
 
 
