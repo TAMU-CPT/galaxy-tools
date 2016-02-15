@@ -71,8 +71,8 @@ if __name__ == '__main__':
             read=True,
         )
 
-    if not isinstance(data, list):
-        data = [data]
+    import pprint
+    log.warn(pprint.pformat(data))
     data = [o for o in data if o['commonName'] == args.cn]
 
     print json.dumps(data, indent=2)
