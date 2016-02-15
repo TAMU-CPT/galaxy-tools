@@ -60,7 +60,6 @@ if __name__ == '__main__':
             species=args.species,
             public=args.public
         )
-        log.info("Success: %s", orgs[0]['id'])
 
         # Must sleep before we're ready to handle
         time.sleep(1)
@@ -71,6 +70,9 @@ if __name__ == '__main__':
             export=True,
             read=True,
         )
+
+    if not isinstance(data, list):
+        data = [data]
     data = [o for o in data if o['commonName'] == args.cn]
 
     print json.dumps(data, indent=2)
