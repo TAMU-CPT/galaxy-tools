@@ -1,9 +1,11 @@
 import requests
 import json
 import collections
-from datetime import datetime
 from BCBio import GFF
 import StringIO
+import logging
+logging.getLogger("bioblend").setLevel(logging.CRITICAL)
+
 
 
 class WebApolloInstance(object):
