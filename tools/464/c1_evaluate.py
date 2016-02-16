@@ -44,6 +44,7 @@ def validate(ogs, user_gff3, user_email, offset=213):
     results = []
 
     for user_annotation in sorted(user.keys()):
+        fid = user[user_annotation].qualifiers.get('Name', [user[user_annotation].id])[0]
         if user_annotation in comp:
             # User successfully annotated gene
             # print comp[user_annotation]
@@ -57,14 +58,14 @@ def validate(ogs, user_gff3, user_email, offset=213):
                     'points': 1,
                     'message': 'Correct',
                     'stop': user_annotation + offset,
-                    'id': usr_feature.id,
+                    'id': fid,
                 })
             else:
                 results.append({
                     'points': .5,
                     'message': 'Wrong start codon',
                     'stop': user_annotation + offset,
-                    'id': usr_feature.id,
+                    'id': fid,
                 })
             del comp[user_annotation]
         else:
@@ -73,7 +74,7 @@ def validate(ogs, user_gff3, user_email, offset=213):
                 'points': 0,
                 'message': 'Not an actual gene, according to the official gene set',
                 'stop': user_annotation + offset,
-                'id': usr_feature.id,
+                'id': fid,
             })
 
     for leftover in comp.keys():
