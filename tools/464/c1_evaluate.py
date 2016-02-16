@@ -56,13 +56,13 @@ def validate(ogs, user_gff3, user_email, offset=213):
                 results.append({
                     'points': 1,
                     'message': 'Correct',
-                    'stop': user_annotation,
+                    'stop': user_annotation + offset,
                 })
             else:
                 results.append({
                     'points': .5,
                     'message': 'Wrong start codon',
-                    'stop': user_annotation,
+                    'stop': user_annotation + offset,
                 })
             del comp[user_annotation]
         else:
@@ -70,7 +70,7 @@ def validate(ogs, user_gff3, user_email, offset=213):
             results.append({
                 'points': 0,
                 'message': 'Not an actual gene, according to the official gene set',
-                'stop': user_annotation,
+                'stop': user_annotation + offset,
             })
 
     for leftover in comp.keys():
