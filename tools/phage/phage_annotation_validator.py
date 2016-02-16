@@ -21,8 +21,6 @@ log = logging.getLogger(name='pav')
 # Path to script, required because of Galaxy.
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # Path to the HTML template for the report
-REPORT_TEMPLATE = Template(open(os.path.join(SCRIPT_PATH, 'phage_annotation_validator.html'), 'r').read())
-GENOME_TEMPLATE = Template(open(os.path.join(SCRIPT_PATH, 'phageqc_genomea_report.html'), 'r').read())
 
 ENCOURAGEMENT = (
     (100, 'Perfection itself!'),
@@ -589,7 +587,7 @@ def missing_tags(record):
 
 def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
                         sd_max=15, gap_dist=45, overlap_dist=15,
-                        min_gene_length=30, genomeA=False):
+                        min_gene_length=30, reportTemplateName='phage_annotation_validator.html'):
     """
     Generate our HTML evaluation of the genome
     """
@@ -709,11 +707,8 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
         gff3_qc_record.annotations = {}
         GFF.write([gff3_qc_record], handle)
 
-    # TODO: refactor
-    if genomeA:
-        return GENOME_TEMPLATE.render(**kwargs)
-    else:
-        return REPORT_TEMPLATE.render(**kwargs)
+    report_template = Template(open(os.path.join(SCRIPT_PATH, reportTemplateName), 'r').read())
+    return report_template.render(**kwargs)
 
 
 if __name__ == '__main__':
@@ -731,7 +726,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--min_gene_length', type=int, help='Minimum length for a putative gene call (AAs)', default=30)
 
-    parser.add_argument('--genomeA', action='store_true', help='Simplified output for GenomeA reviews')
+    parser.add_argument('--reportTemplateName', help='Report template file name')
 
     args = parser.parse_args()
 

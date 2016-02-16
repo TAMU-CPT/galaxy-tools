@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Phage QC on {{record_name}} - {{score}}</title>
+    <title>[BICH464] Phage QC on {{record_name}} - {{score}}</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
@@ -171,7 +171,7 @@ h3:before {
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Phage QC on {{record_name}}</a>
+          <a class="navbar-brand" href="#">[BICH464] Phage QC on {{record_name}}</a>
         </div>
       </div>
     </nav>
@@ -187,10 +187,6 @@ h3:before {
             <li><a href="#excessive_gaps"><small>Excessive Gaps</small></a></li>
             <li><a href="#excessive_overlap"><small>Excessive Overlaps</small></a></li>
             <li><a href="#coding_density"><small>Coding Density</small></a></li>
-            <li><a href="#antisense"><b>Antisense Genes</b></a></li>
-            <li><a href="#morons"><small>Possible Morons</small></a></li>
-            <li><a href="#annotations"><b>Annotation Issues</b></a></li>
-            <li><a href="#missing_product"><small>Missing Product Tags</small></a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main">
@@ -199,7 +195,6 @@ h3:before {
                     <div class="col-sm-7">
                         <h1>Phage {{record_name}}</h1>
                         <h2>Score: {{score}}/100</h2>
-                        <p>{{encouragement}}</p>
                     </div>
                     <div class="col-sm-5">
                         <table class="table table-striped">
@@ -217,8 +212,6 @@ h3:before {
                                 <tr><td>Excessive Gaps</td><td>{{ '%d' % (100 * excessive_gap_good / (excessive_gap_good + excessive_gap_bad))}}%</td></tr>
                                 <tr><td>Excessive Overlap</td><td>{{ '%d' % (100 * excessive_overlap_good / (excessive_overlap_good + excessive_overlap_bad))}}%</td></tr>
                                 <tr><td>Coding Density Score</td><td>{{ coding_density }}%</td></tr>
-                                <tr><td>Possible Morons</td><td>{{ '%d' % (100 * morons_good / (morons_good + morons_bad))}}%</td></tr>
-                                <tr><td>Missing Product Tags</td><td>{{ '%d' % (100 * missing_tags_good / (missing_tags_good + missing_tags_bad))}}%</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -247,13 +240,15 @@ h3:before {
               </thead>
               <tbody>
                 {% for row in missing_rbs %}
+                {% if "None found" in row.__message %}
                 <tr>
                     <td>{{row.type}}</td>
                     <td>{{row.id}}</td>
                     <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
-                    <td>{{row.__message}}</td>
+                    <td>None found</td>
                     <td><span style="font-family:monospace">{{row.__upstream}}</span></td>
                 </tr>
+                {% endif %}
                 {% endfor %}
               </tbody>
             </table>
@@ -364,80 +359,13 @@ h3:before {
             </p>
           </div>
 
-          <h2 class="sub-header" id="antisense">Antisense Genes</h2>
-          <h3 id="morons">Possible Morons <small>{{morons_good}} / {{morons_good + morons_bad}} (Doesn't count towards score)</small></h3>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th>RBS</th>
-                  <th>Surrounding Features</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for row in morons %}
-                <tr>
-                    <td>{{row[0].id}}</td>
-                    <td>{{row[3]}}</td>
-                    <td>
-                        <div class="spark">
-                            {% for x in row[1] %}
-                            <span class="{% if x.strand > 0 %}plus{% else %}minus{% endif %}"></span>
-                            {% endfor %}
-                            <span class="{% if row[0].strand > 0 %}plus-focus{% else %}minus-focus{% endif %}"></span>
-                            {% for x in row[2] %}
-                            <span class="{% if x.strand > 0 %}plus{% else %}minus{% endif %}"></span>
-                            {% endfor %}
-                        </div>
-                    </td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-
-
-          <h2 class="sub-header" id="annotations">Annotation Issues</h2>
-          <h3 id="missing_product">Missing Product Tags <small>{{missing_tags_good}} / {{missing_tags_good + missing_tags_bad}}</small></h3>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th>Qualifiers</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for row in missing_tags %}
-                <tr>
-                    <td>{{row.id}}</td>
-                    <td>
-                        {% for key in row.qualifiers %}
-                        {{ key }}
-                        <ul>
-                            {% for value in row.qualifiers[key] %}
-                            <li>{{value}}</li>
-                            {% endfor %}
-                        </ul>
-                        {% endfor %}
-                    </td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-
-
-
-
 
         </div>
       </div>
     </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   </body>
 </html>
 
