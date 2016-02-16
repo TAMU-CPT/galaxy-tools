@@ -81,13 +81,16 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
         rbs_rbs = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'RBS'}, subfeatures=False))
         rbs_sds = list(feature_lambda(gene.sub_features,
                                       feature_test_type, {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
+        apollo_exons = list(feature_lambda(gene.sub_features,
+                                      feature_test_type, {'type': 'exon'}, subfeatures=False))
+        apollo_exons = [x for x in apollo_exons if len(x) < 10]
         regulatory_elements = list(feature_lambda(gene.sub_features,
                                                   feature_test_type, {'type': 'regulatory'}, subfeatures=False))
         rbs_regulatory = list(feature_lambda(regulatory_elements,
                                              feature_test_quals, {'regulatory_class': ['ribosome_binding_site']},
                                              subfeatures=False))
 
-        rbss = rbs_rbs + rbs_sds + rbs_regulatory
+        rbss = rbs_rbs + rbs_sds + rbs_regulatory + apollo_exons
         # No RBS found
         if len(rbss) == 0:
             # Get the sequence lookahead_min to lookahead_max upstream
@@ -730,7 +733,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--min_gene_length', type=int, help='Minimum length for a putative gene call (AAs)', default=30)
 
-    parser.add_argument('--reportTemplateName', help='Report template file name')
+    parser.add_argument('--reportTemplateName', help='Report template file name', default='phage_annotation_validator.html')
     parser.add_argument('--user_email')
 
     args = parser.parse_args()
