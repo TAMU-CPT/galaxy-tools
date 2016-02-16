@@ -585,7 +585,7 @@ def missing_tags(record):
     return good, bad, results, qc_features
 
 
-def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
+def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd_min=5,
                         sd_max=15, gap_dist=45, overlap_dist=15,
                         min_gene_length=30, reportTemplateName='phage_annotation_validator.html'):
     """
@@ -654,6 +654,10 @@ def evaluate_and_report(annotations, genome, gff3=None, tbl=None, sd_min=5,
     subscores.append(cd)
 
     score = int(float(sum(subscores)) / float(len(subscores)))
+
+    from guanine import GuanineClient
+    g = GuanineClient()
+    g.submit(user_email, 'WfB-PhageQC', float(score) / 100)
 
     # This is data that will go into our HTML template
     kwargs = {
@@ -727,6 +731,7 @@ if __name__ == '__main__':
     parser.add_argument('--min_gene_length', type=int, help='Minimum length for a putative gene call (AAs)', default=30)
 
     parser.add_argument('--reportTemplateName', help='Report template file name')
+    parser.add_argument('--user_email')
 
     args = parser.parse_args()
 

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage.annotation_validator" name="Phage QC" version="1.3">
+<tool id="edu.tamu.cpt2.phage.annotation_validator" name="Phage QC" version="1.4">
     <description>validate phage annotations</description>
     <macros>
       <import>macros.xml</import>
@@ -21,6 +21,7 @@ $gff3_data
 --min_gene_length $min_gene
 --reportTemplateName $report_format
 --gff3 $gff3
+--user_email $__user_email__
 
 > $output]]></command>
     <inputs>
