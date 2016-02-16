@@ -4,6 +4,7 @@ from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type
 import logging
 logging.basicConfig(level=logging.INFO)
+logging.getLogger("requests").setLevel(logging.CRITICAL)
 log = logging.getLogger(__name__)
 
 from guanine import GuanineClient
@@ -57,14 +58,14 @@ def validate(ogs, user_gff3, user_email, offset=213):
                 results.append({
                     'points': 1,
                     'message': 'Correct',
-                    'stop': user_annotation + offset,
+                    'stop': user_annotation - offset,
                     'id': fid,
                 })
             else:
                 results.append({
                     'points': .5,
                     'message': 'Wrong start codon',
-                    'stop': user_annotation + offset,
+                    'stop': user_annotation - offset,
                     'id': fid,
                 })
             del comp[user_annotation]
@@ -73,7 +74,7 @@ def validate(ogs, user_gff3, user_email, offset=213):
             results.append({
                 'points': 0,
                 'message': 'Not an actual gene, according to the official gene set',
-                'stop': user_annotation + offset,
+                'stop': user_annotation - offset,
                 'id': fid,
             })
 
