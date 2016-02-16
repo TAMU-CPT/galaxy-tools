@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.464.2016.guanine_report" name="464 GUANINE Reporter" version="1.0">
+  <description></description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python"><![CDATA[
+guanine_report.py
+"$__user_email__"
+"$test_name"
+]]></command>
+  <inputs>
+    <param label="Assessment Name" name="test_name" type="text" />
+  </inputs>
+  <outputs>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Reports a single assessment back to guanine as a pass.
+]]></help>
+</tool>
