@@ -57,12 +57,14 @@ def validate(ogs, user_gff3, user_email, offset=213):
                     'points': 1,
                     'message': 'Correct',
                     'stop': user_annotation + offset,
+                    'id': usr_feature.id,
                 })
             else:
                 results.append({
                     'points': .5,
                     'message': 'Wrong start codon',
                     'stop': user_annotation + offset,
+                    'id': usr_feature.id,
                 })
             del comp[user_annotation]
         else:
@@ -71,6 +73,7 @@ def validate(ogs, user_gff3, user_email, offset=213):
                 'points': 0,
                 'message': 'Not an actual gene, according to the official gene set',
                 'stop': user_annotation + offset,
+                'id': usr_feature.id,
             })
 
     for leftover in comp.keys():
@@ -78,6 +81,7 @@ def validate(ogs, user_gff3, user_email, offset=213):
             'points': -.5,
             'message': 'Missed a gene in the official gene set',
             'stop': leftover,
+            'id': '---',
         })
 
     score = sum(x['points'] for x in results)
@@ -91,7 +95,7 @@ def validate(ogs, user_gff3, user_email, offset=213):
     g.submit(user_email, 'C1', final_score)
 
     for x in results:
-        print 'Feature ending with stop codon: {stop}; Points: {points}; Message {message}'.format(**x)
+        print 'Feature {id} ending with stop codon: {stop}; Points: {points}; Message {message}'.format(**x)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='verify against expectations')
