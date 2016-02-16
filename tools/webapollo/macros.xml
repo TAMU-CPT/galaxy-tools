@@ -22,7 +22,7 @@ galaxy@cpt.tamu.edu
   <token name="@CN_OR_GUESS@">
 <![CDATA[
 #if $cn_source.source_select == "auto":
-    \$(cat $cn_source.cn_file | grep '^>' | head -n 1  | sed 's/ .*//g;s/>//g')
+    \$(cat $cn_source.cn_file | grep '^>' | head -n 1  | sed 's/\s.*//g;s/>//g')
 #elif $cn_source.source_select == "auto_json":
     \$(cat $cn_source.cn_file | grep 'commonName' | head -n 1| sed 's/.*: "//g;s/".*//g')
 #else
