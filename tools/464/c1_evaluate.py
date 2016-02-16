@@ -33,14 +33,21 @@ def validate(ogs, user_gff3, user_email, offset=213):
         for feature in feature_lambda(
             rec.features,
             feature_test_type,
-            {'type': 'CDS'},
+            {'type': 'gene'},
             subfeatures=True,
         ):
-            if feature.strand > 0:
-                offset_end = int(feature.location.end) + offset
+            cdss = list(feature_lambda(feature.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=True))
+            if len(cdss) == 0:
+                continue
+
+            cds = cdss[0]
+            cds.qualifiers['Name'] = feature.qualifiers.get('Name', [])
+
+            if cds.strand > 0:
+                offset_end = int(cds.location.end) + offset
             else:
-                offset_end = int(feature.location.start) + offset
-            user[offset_end] = feature
+                offset_end = int(cds.location.start) + offset
+            user[offset_end] = cds
 
     results = []
 
