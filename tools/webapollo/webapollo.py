@@ -354,16 +354,6 @@ class AnnotationsClient(Client):
         data = self._update_data(data)
         return self.request('deleteFeature', data)
 
-    def deleteFeatures(self, uniquenames):
-        assert isinstance(uniquenames, collections.Iterable)
-        data = {
-            'features': [
-                {'uniquename': x} for x in uniquenames
-            ]
-        }
-        data = self._update_data(data)
-        return self.request('deleteFeature', data)
-
     # def deleteExon(): pass
 
     # def makeIntron(self, uniquename, ): pass
