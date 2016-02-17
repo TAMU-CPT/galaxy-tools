@@ -28,7 +28,75 @@ if __name__ == '__main__':
     import pprint; pprint.pprint( org )
 
     wa.annotations.setSequence(args.cn, org['id'])
-    from asdf import transcript, gene_transript
+    gene_transript = {
+            "location" : {
+                "strand" : -1,
+                "fmax" : 15450,
+                "fmin" : 15000
+            },
+            "name" : "orf00035",
+            "type" : {
+                "name" : "gene",
+                "cv" : {
+                "name" : "sequence"
+                }
+            },
+            "children": [{
+            "location" : {
+                "strand" : -1,
+                "fmax" : 15400,
+                "fmin" : 15050
+            },
+            "name" : "orf00035",
+            "type" : {
+                "name" : "mRNA",
+                "cv" : {
+                "name" : "sequence"
+                }
+            },
+            "children" : [
+                {
+                "type" : {
+                    "name" : "exon",
+                    "cv" : {
+                        "name" : "sequence"
+                    }
+                },
+                "location" : {
+                    "fmin" : 15357,
+                    "strand" : -1,
+                    "fmax" : 15362
+                }
+                },
+                {
+                "type" : {
+                    "name" : "CDS",
+                    "cv" : {
+                        "name" : "sequence"
+                    }
+                },
+                "location" : {
+                    "fmin" : 15131,
+                    "fmax" : 15350,
+                    "strand" : -1
+                }
+                },
+                {
+                "location" : {
+                    "fmin" : 15131,
+                    "strand" : -1,
+                    "fmax" : 15350
+                },
+                "type" : {
+                    "cv" : {
+                        "name" : "sequence"
+                    },
+                    "name" : "exon"
+                }
+                }
+            ]
+        }],
+    }
     wa.annotations.addFeature(
         {
             'features':[
