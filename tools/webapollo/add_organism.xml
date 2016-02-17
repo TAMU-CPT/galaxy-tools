@@ -13,7 +13,7 @@ python $__tool_directory__/add_organism.py
 @AUTH@
 
 #if str($blatdb) != "None":
-    --blastdb "$blatdb"
+    --blatdb "$blatdb"
 #end if
 
 --genus "$genus"
