@@ -241,7 +241,7 @@ class AnnotationsClient(Client):
         data = {}
         data.update(transcript)
         data = self._update_data(data)
-        return self.request('addFeature', data)
+        return self.request('addTranscript', data)
 
     # addExon, add/delete/updateComments, addTranscript skipped due to docs
 
