@@ -503,6 +503,35 @@ def find_morons(record):
     return good, bad, results, []
 
 
+def bad_gene_model(record):
+    """Find features without product
+    """
+    results = []
+    good = 0
+    qc_features = []
+
+    for gene in coding_genes(record.features):
+        exons = [x for x in genes(gene.sub_features, feature_type='exon') if len(x) > 10]
+        CDSs = [x for x in genes(gene.sub_features, feature_type='CDS')]
+
+        if len(exons) == 1 and len(CDSs) == 1:
+            exon = exons[0]
+            CDS = CDSs[0]
+            if len(exon) != len(CDS):
+                results.append((exon, CDS))
+                qc_features.append(gen_qc_feature(
+                    exon.location.start, exon.location.end,
+                    'CDS does not extend to full length of gene',
+                    strand=exon.strand
+                ))
+            else:
+                good += 1
+        else:
+            log.warn("Could not handle %s, %s", exons, CDSs)
+
+    return good, len(results), results, qc_features
+
+
 def weird_starts(record):
     """Find features without product
     """
@@ -638,9 +667,13 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd
     ws_good, ws_bad, ws_results, ws_annotations, ws_overall = weird_starts(record)
     gff3_qc_features += ws_annotations
 
+    log.info("Locating bad gene models")
+    gm_good, gm_bad, gm_results, gm_annotations = bad_gene_model(record)
 
-    good_scores = [eg_good, eo_good, mt_good, ws_good]
-    bad_scores = [eg_bad, eo_bad, mt_bad, ws_bad]
+
+
+    good_scores = [eg_good, eo_good, mt_good, ws_good, gm_good]
+    bad_scores = [eg_bad, eo_bad, mt_bad, ws_bad, gm_bad]
 
     # Only if they tried to annotate RBSs do we consider them.
     if mb_any:
@@ -658,9 +691,10 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd
 
     score = int(float(sum(subscores)) / float(len(subscores)))
 
-    from guanine import GuanineClient
-    g = GuanineClient()
-    g.submit(user_email, 'WfB-PhageQC', float(score) / 100)
+    if user_email is not None:
+        from guanine import GuanineClient
+        g = GuanineClient()
+        g.submit(user_email, 'WfB-PhageQC', float(score) / 100)
 
     # This is data that will go into our HTML template
     kwargs = {
@@ -675,31 +709,43 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd
         'missing_rbs': mb_results,
         'missing_rbs_good': mb_good,
         'missing_rbs_bad': mb_bad,
+        'missing_rbs_score': (100 * mb_good / (mb_good + mb_bad)),
 
         'excessive_gap': eg_results,
         'excessive_gap_good': eg_good,
         'excessive_gap_bad': eg_bad,
+        'excessive_gap_score': (100 * eo_good / (eo_good + eo_bad)),
 
         'excessive_overlap': eo_results,
         'excessive_overlap_good': eo_good,
         'excessive_overlap_bad': eo_bad,
+        'excessive_overlap_score': (100 * eo_good / (eo_good + eo_bad)),
 
         'morons': mo_results,
         'morons_good': mo_good,
         'morons_bad': mo_bad,
+        'morons_score': (100 * mo_good / (mo_good + mo_bad)),
 
         'missing_tags': mt_results,
         'missing_tags_good': mt_good,
         'missing_tags_bad': mt_bad,
+        'missing_tags': (100 * mt_good / (mt_good + mt_bad)),
 
         'weird_starts': ws_results,
         'weird_starts_good': ws_good,
         'weird_starts_bad': ws_bad,
         'weird_starts_overall': ws_overall,
         'weird_starts_overall_sorted_keys': sorted(ws_overall, reverse=True, key=lambda x: ws_overall[x]),
+        'weird_starts_score': (100 * ws_good / (ws_good + ws_bad)),
+
+        'gene_model': gm_results,
+        'gene_model_good': gm_good,
+        'gene_model_bad': gm_bad,
+        'gene_model_score': (100 * gm_good / (gm_good + gm_bad)),
 
         'coding_density': cd,
         'coding_density_real': cd_real,
+        'coding_density_score': cd,
     }
 
     with open(tbl, 'w') as handle:
