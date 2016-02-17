@@ -5,6 +5,7 @@ from BCBio import GFF
 import StringIO
 import logging
 logging.getLogger("requests").setLevel(logging.CRITICAL)
+log = logging.getLogger()
 
 
 
@@ -703,3 +704,42 @@ class WebApolloSeqFeature(object):
             else:
                 self._sf.__dict__[key] = value
                 print key, value
+
+def _tnType(feature):
+    if feature.type in ('gene', 'mRNA', 'exon', 'CDS'):
+        return feature.type
+    else:
+        return 'exon'
+
+def _yieldFeatData(features):
+    for f in features:
+        current = {
+            'location': {
+                'strand': f.strand,
+                'fmin': int(f.location.start),
+                'fmax': int(f.location.end),
+            },
+            'type': {
+                'name': _tnType(f),
+                'cv': {
+                    'name': 'sequence',
+                }
+            },
+        }
+        if f.type in ('gene', 'mRNA'):
+            current['name'] = f.qualifiers.get('Name', [f.id])[0]
+        if hasattr(f, 'sub_features') and len(f.sub_features) > 0:
+            current['children'] = [x for x in _yieldFeatData(f.sub_features)]
+
+        yield current
+
+def featuresToFeatureSchema(features):
+    compiled = []
+    for feature in features:
+        if feature.type != 'gene':
+            log.warn("Not able to handle %s features just yet...", feature.type)
+            continue
+
+        for x in _yieldFeatData([feature]):
+            compiled.append(x)
+    return compiled

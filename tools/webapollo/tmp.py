@@ -1,20 +1,24 @@
-from webapollo import WebApolloInstance
+from webapollo import WebApolloInstance, featuresToFeatureSchema
 import json
 from Bio.SeqFeature import FeatureLocation
+from BCBio import GFF
 
 wa = WebApolloInstance('https://cpt.tamu.edu/apollo',
                        'hxr@tamu.edu', 'P@55w0rd')
 
-fl1 = FeatureLocation(9544, 10484, strand=1)
-fl2 = FeatureLocation(9000, 10484, strand=1)
+# fl1 = FeatureLocation(9544, 10484, strand=1)
+# fl2 = FeatureLocation(9000, 10484, strand=1)
 
 
-for record in wa.bio.ParseRecord('esr.phi29.1'):
-    for feature in record.features:
-        if feature.location.start == 9544:
-            feature.location = fl1
-        elif feature.location.start == 9000:
-            feature.location = fl2
+# for record in wa.bio.ParseRecord('esr.phi29.1'):
+    # for feature in record.features:
+        # if feature.location.start == 9544:
+            # feature.location = fl1
+        # elif feature.location.start == 9000:
+            # feature.location = fl2
+
+for rec in GFF.parse(open('tmp.gff3', 'r')):
+    import pprint; pprint.pprint(featuresToFeatureSchema(rec.features))
 
 # 'annotations', 'dbxrefs', 'description', 'features', 'format', 'id',
 # 'letter_annotations', 'lower', 'name', 'reverse_complement', 'seq',

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import argparse
-from webapollo import WebApolloInstance
+from webapollo import WebApolloInstance, featuresToFeatureSchema
+from BCBio import GFF
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -14,6 +15,7 @@ if __name__ == '__main__':
 
     parser.add_argument('cn', help='Organism Common Name')
     parser.add_argument('email', help='User Email')
+    parser.add_argument('gff3', type=file, help='GFF3 file')
     args = parser.parse_args()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
@@ -25,86 +27,12 @@ if __name__ == '__main__':
     # TODO: Check user perms on org.
 
     org = wa.organisms.findOrganismByCn(args.cn)
-    import pprint; pprint.pprint( org )
-
     wa.annotations.setSequence(args.cn, org['id'])
-    gene_transript = {
-            "location" : {
-                "strand" : -1,
-                "fmax" : 15450,
-                "fmin" : 15000
-            },
-            "name" : "orf00035",
-            "type" : {
-                "name" : "gene",
-                "cv" : {
-                "name" : "sequence"
-                }
-            },
-            "children": [{
-            "location" : {
-                "strand" : -1,
-                "fmax" : 15400,
-                "fmin" : 15050
-            },
-            "name" : "orf00035",
-            "type" : {
-                "name" : "mRNA",
-                "cv" : {
-                "name" : "sequence"
-                }
-            },
-            "children" : [
-                {
-                "type" : {
-                    "name" : "exon",
-                    "cv" : {
-                        "name" : "sequence"
-                    }
-                },
-                "location" : {
-                    "fmin" : 15357,
-                    "strand" : -1,
-                    "fmax" : 15362
-                }
-                },
-                {
-                "type" : {
-                    "name" : "CDS",
-                    "cv" : {
-                        "name" : "sequence"
-                    }
-                },
-                "location" : {
-                    "fmin" : 15131,
-                    "fmax" : 15350,
-                    "strand" : -1
-                }
-                },
-                {
-                "location" : {
-                    "fmin" : 15131,
-                    "strand" : -1,
-                    "fmax" : 15350
-                },
-                "type" : {
-                    "cv" : {
-                        "name" : "sequence"
-                    },
-                    "name" : "exon"
-                }
-                }
-            ]
-        }],
-    }
-    wa.annotations.addFeature(
-        {
-            'features':[
-                gene_transript
-            ]
-        }, trustme=True
-    )
 
-    # wa.annotations.addTranscript(
-        # transcript, trustme=True
-    # )
+    for rec in GFF.parse(args.gff3):
+        featureData = featuresToFeatureSchema(rec.features)
+        wa.annotations.addFeature(
+            {
+                'features': featureData
+            }, trustme=True
+        )
