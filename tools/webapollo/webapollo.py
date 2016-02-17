@@ -229,9 +229,17 @@ class AnnotationsClient(Client):
         if not trustme:
             raise NotImplementedError("Waiting on better docs from project. If you know what you are doing, pass trustme=True to this function.")
 
-        data = {
-            'features': feature,
-        }
+        data = {}
+        data.update(feature)
+        data = self._update_data(data)
+        return self.request('addFeature', data)
+
+    def addTranscript(self, transcript, trustme=False):
+        if not trustme:
+            raise NotImplementedError("Waiting on better docs from project. If you know what you are doing, pass trustme=True to this function.")
+
+        data = {}
+        data.update(transcript)
         data = self._update_data(data)
         return self.request('addFeature', data)
 
@@ -335,6 +343,16 @@ class AnnotationsClient(Client):
         return self.request('mergeExons', data)
 
     # def splitExon(): pass
+
+    def deleteFeatures(self, uniquenames):
+        assert isinstance(uniquenames, collections.Iterable)
+        data = {
+            'features': [
+                {'uniquename': x} for x in uniquenames
+            ]
+        }
+        data = self._update_data(data)
+        return self.request('deleteFeature', data)
 
     def deleteFeatures(self, uniquenames):
         assert isinstance(uniquenames, collections.Iterable)

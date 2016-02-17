@@ -8,8 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>[BICH464] Phage QC on {{record_name}} - {{score}}</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
     <style type="text/css">
 /*
@@ -230,7 +230,6 @@ h3:before {
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Feature Type</th>
                   <th>ID</th>
                   <th>Location</th>
                   <th>Error</th>
@@ -241,8 +240,7 @@ h3:before {
                 {% for row in missing_rbs %}
                 {% if "None found" in row.__message %}
                 <tr>
-                    <td>{{row.type}}</td>
-                    <td>{{row.id}}</td>
+                    <td>{{row | nice_id}}</td>
                     <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
                     <td>None found</td>
                     <td><span style="font-family:monospace">{{row.__upstream}}</span></td>
@@ -275,7 +273,6 @@ h3:before {
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Feature Type</th>
                   <th>ID</th>
                   <th>Location</th>
                   <th>Error</th>
@@ -284,10 +281,9 @@ h3:before {
               <tbody>
                 {% for row in weird_starts %}
                 <tr>
-                    <td>{{row.type}}</td>
-                    <td>{{row.id}}</td>
+                    <td>{{row | nice_id}}</td>
                     <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
-                    <td>{{row.__error}}</td>
+                    <td>{{row.qualifiers['note'][0]}}</td>
                 </tr>
                 {% endfor %}
               </tbody>

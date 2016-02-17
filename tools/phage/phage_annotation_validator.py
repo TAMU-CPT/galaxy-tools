@@ -12,7 +12,7 @@ from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import reverse_complement, translate
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-from jinja2 import Template
+from jinja2 import Template, Environment, FileSystemLoader
 import re
 import logging
 logging.basicConfig(level=logging.WARN)
@@ -35,12 +35,22 @@ ENCOURAGEMENT = (
 )
 
 
-def gen_qc_feature(start, end, message, strand=0):
-    return SeqFeature(
-        FeatureLocation(start, end, strand=strand),
-        qualifiers={
+def get_id(gene):
+    return gene.qualifiers.get('Name', [gene.id])[0]
+
+def gen_qc_feature(start, end, message, strand=0, id_src=None):
+    kwargs = {
+        'qualifiers': {
             'note': [message]
         }
+    }
+    if id_src is not None:
+        kwargs['id'] = id_src.id
+        kwargs['qualifiers']['Name'] = id_src.qualifiers.get('Name', [])
+
+    return SeqFeature(
+        FeatureLocation(start, end, strand=strand),
+        **kwargs
     )
 
 
@@ -122,13 +132,13 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
                 gene.__message = "Unannotated but valid RBS"
 
 
-            qc_features.append(gen_qc_feature(start, end, 'Missing RBS', strand=gene.strand))
+            qc_features.append(gen_qc_feature(start, end, 'Missing RBS', strand=gene.strand, id_src=gene))
 
             bad += 1
             results.append(gene)
         else:
             if len(rbss) > 1:
-                log.warn("%s RBSs found for gene %s", rbss[0].id, gene.id)
+                log.warn("%s RBSs found for gene %s", rbss[0].id, get_id(gene))
             any_rbss = True
             # get first RBS/CDS
             cds = list(genes(gene.sub_features, feature_type='CDS'))[0]
@@ -148,7 +158,9 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
                     rbs.location.start,
                     rbs.location.end,
                     gene.__message,
-                    strand=gene.strand))
+                    strand=gene.strand,
+                    id_src=gene,
+                ))
 
                 bad += 1
                 results.append(gene)
@@ -423,11 +435,11 @@ def excessive_overlap(record, excessive=15):
         cds_b = [x for x in genes(gene_b.sub_features, feature_type='CDS')]
 
         if len(cds_a) == 0:
-            log.warn("Gene missing subfeatures; %s", gene_a.id)
+            log.warn("Gene missing subfeatures; %s", get_id(gene_a))
             continue
 
         if len(cds_b) == 0:
-            log.warn("Gene missing subfeatures; %s", gene_b.id)
+            log.warn("Gene missing subfeatures; %s", get_id(gene_b))
             continue
 
         cds_a = cds_a[0]
@@ -447,7 +459,8 @@ def excessive_overlap(record, excessive=15):
             qc_features.append(gen_qc_feature(
                 min(ix),
                 max(ix),
-                "Excessive Overlap")
+                "Excessive Overlap"),
+                id_src=gene_a
             )
             results.append((gene_a, gene_b, min(ix), max(ix)))
 
@@ -519,14 +532,15 @@ def bad_gene_model(record):
             CDS = CDSs[0]
             if len(exon) != len(CDS):
                 results.append((
-                    gene.qualifiers.get('Name', [gene.id])[0],
+                    get_id(gene),
                     exon,
                     CDS
                 ))
                 qc_features.append(gen_qc_feature(
                     exon.location.start, exon.location.end,
                     'CDS does not extend to full length of gene',
-                    strand=exon.strand
+                    strand=exon.strand,
+                    id_src=gene
                 ))
             else:
                 good += 1
@@ -548,7 +562,7 @@ def weird_starts(record):
     for gene in coding_genes(record.features):
         seq = [x for x in genes(gene.sub_features, feature_type='CDS')]
         if len(seq) == 0:
-            log.warn("No CDS for gene %s", gene.id)
+            log.warn("No CDS for gene %s", get_id(gene))
             continue
         else:
             seq = seq[0]
@@ -564,7 +578,7 @@ def weird_starts(record):
             overall[start_codon] += 1
 
         if start_codon not in ('ATG', 'TTG', 'GTG'):
-            log.warn("Weird start codon (%s) on %s", start_codon, seq.id)
+            log.warn("Weird start codon (%s) on %s", start_codon, get_id(gene))
             seq.__error = 'Unusual start codon %s' % start_codon
 
             s = 0
@@ -579,14 +593,14 @@ def weird_starts(record):
             qc_features.append(gen_qc_feature(
                 s, e,
                 'Weird start codon',
-                strand=seq.strand
+                strand=seq.strand,
+                id_src=gene
             ))
-            results.append(seq)
             bad += 1
         else:
             good += 1
 
-    return good, bad, results, qc_features, overall
+    return good, bad, qc_features, qc_features, overall
 
 
 def missing_tags(record):
@@ -600,13 +614,13 @@ def missing_tags(record):
     for gene in coding_genes(record.features):
         cds = [x for x in genes(gene.sub_features, feature_type='CDS')]
         if len(cds) == 0:
-            log.warn("Gene missing CDS subfeature %s", gene.id)
+            log.warn("Gene missing CDS subfeature %s", get_id(gene))
             continue
 
         cds = cds[0]
 
         if 'product' not in cds.qualifiers:
-            log.warn("Missing product tag on %s", cds.id)
+            log.warn("Missing product tag on %s", get_id(gene))
             qc_features.append(gen_qc_feature(
                 cds.location.start,
                 cds.location.end,
@@ -764,8 +778,11 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd
         gff3_qc_record.annotations = {}
         GFF.write([gff3_qc_record], handle)
 
-    report_template = Template(open(os.path.join(SCRIPT_PATH, reportTemplateName), 'r').read())
-    return report_template.render(**kwargs)
+
+    env = Environment(loader=FileSystemLoader(SCRIPT_PATH))
+    env.filters['nice_id'] = get_id
+    tpl = env.get_template(reportTemplateName)
+    return tpl.render(**kwargs)
 
 
 if __name__ == '__main__':
