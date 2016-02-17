@@ -194,7 +194,7 @@ h3:before {
                 <div class="row">
                     <div class="col-sm-7">
                         <h1>Phage {{record_name}}</h1>
-                        <h2>Score: {{ (coding_density + (100 * excessive_overlap_good / (excessive_overlap_good + excessive_overlap_bad)) +  (100 * excessive_gap_good / (excessive_gap_good + excessive_gap_bad)) + (100 * missing_rbs_good / (missing_rbs_good + missing_rbs_bad))) / 4}}</h2>
+                        <h2>Score: {{ '%d' % (coding_density + (100 * excessive_overlap_good / (excessive_overlap_good + excessive_overlap_bad)) +  (100 * excessive_gap_good / (excessive_gap_good + excessive_gap_bad)) + (100 * missing_rbs_good / (missing_rbs_good + missing_rbs_bad))) / 4}}</h2>
                     </div>
                     <div class="col-sm-5">
                         <table class="table table-striped">
