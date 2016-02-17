@@ -195,7 +195,7 @@ h3:before {
                 <div class="row">
                     <div class="col-sm-7">
                         <h1>Phage {{record_name}}</h1>
-                        <h2>Score: {{ '%d' % ((gene_model_score + coding_density + excessive_overlap_score +  excessive_overlap_score + missing_rbs_score / 5)}}</h2>
+                        <h2>Score: {{ '%d' % ((gene_model_score + coding_density + excessive_overlap_score +  excessive_overlap_score + missing_rbs_score) / 5)}}</h2>
                     </div>
                     <div class="col-sm-5">
                         <table class="table table-striped">
@@ -365,14 +365,16 @@ h3:before {
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Location</th>
+                  <th>Exon</th>
+                  <th>CDS</th>
                 </tr>
               </thead>
               <tbody>
                 {% for row in gene_model %}
                 <tr>
-                    <td>{{row.id}}</td>
-                    <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1].location}}</td>
+                    <td>{{row[2].location}}</td>
                 </tr>
                 {% endfor %}
               </tbody>

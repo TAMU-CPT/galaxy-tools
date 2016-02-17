@@ -205,15 +205,13 @@ h3:before {
               </thead>
               <tbody>
                 {% for row in missing_rbs %}
-                {% if "None found" in row.__message %}
-                <tr>
+               <tr>
                     <td>{{row.type}}</td>
                     <td>{{row.id}}</td>
                     <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
-                    <td>None found</td>
+                    <td>{{row.__message}}</td>
                     <td><span style="font-family:monospace">{{row.__upstream}}</span></td>
                 </tr>
-                {% endif %}
                 {% endfor %}
               </tbody>
             </table>
@@ -319,4 +317,3 @@ h3:before {
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   </body>
 </html>
-

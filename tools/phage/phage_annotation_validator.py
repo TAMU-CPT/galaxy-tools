@@ -518,7 +518,11 @@ def bad_gene_model(record):
             exon = exons[0]
             CDS = CDSs[0]
             if len(exon) != len(CDS):
-                results.append((exon, CDS))
+                results.append((
+                    gene.qualifiers.get('Name', [gene.id])[0],
+                    exon,
+                    CDS
+                ))
                 qc_features.append(gen_qc_feature(
                     exon.location.start, exon.location.end,
                     'CDS does not extend to full length of gene',
@@ -669,8 +673,8 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd
 
     log.info("Locating bad gene models")
     gm_good, gm_bad, gm_results, gm_annotations = bad_gene_model(record)
-
-
+    if gm_good + gm_bad == 0:
+        gm_bad = 1
 
     good_scores = [eg_good, eo_good, mt_good, ws_good, gm_good]
     bad_scores = [eg_bad, eo_bad, mt_bad, ws_bad, gm_bad]
@@ -729,7 +733,7 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd
         'missing_tags': mt_results,
         'missing_tags_good': mt_good,
         'missing_tags_bad': mt_bad,
-        'missing_tags': (100 * mt_good / (mt_good + mt_bad)),
+        'missing_tags_score': (100 * mt_good / (mt_good + mt_bad)),
 
         'weird_starts': ws_results,
         'weird_starts_good': ws_good,
