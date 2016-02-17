@@ -1,0 +1,7 @@
+##gff-version 3
+##sequence-region Maroon_JMcDermott 1 14805
+Maroon_JMcDermott	feature	gene	14488	14805	.	+	.	ID=707c88b7-36d1-44e3-93e6-d1d4f1219d57;Name=gene_26;date_creation=2016-02-17;date_last_modified=2016-02-17;owner=jmc_texas%40tamu.edu
+Maroon_JMcDermott	feature	mRNA	14488	14805	.	+	.	ID=8760695d-b88c-41c0-857b-540e6db81fe8;Name=gene_26-00001;Parent=707c88b7-36d1-44e3-93e6-d1d4f1219d57;date_creation=2016-02-17;date_last_modified=2016-02-17;owner=jmc_texas%40tamu.edu
+Maroon_JMcDermott	feature	CDS	14707	14805	.	+	0	ID=94abf796-4c8d-45f4-916b-4d279616565e;Name=94abf796-4c8d-45f4-916b-4d279616565e-CDS;Parent=8760695d-b88c-41c0-857b-540e6db81fe8
+Maroon_JMcDermott	feature	exon	14497	14805	.	+	.	ID=d2ebd8d0-6558-4674-a38f-346f88256340;Name=d2ebd8d0-6558-4674-a38f-346f88256340-exon;Parent=8760695d-b88c-41c0-857b-540e6db81fe8
+Maroon_JMcDermott	feature	Shine_Dalgarno_sequence	14488	14491	.	+	.	ID=2e4119f9-3220-4502-8ddd-4821c872e0d6;Name=2e4119f9-3220-4502-8ddd-4821c872e0d6-exon;Parent=8760695d-b88c-41c0-857b-540e6db81fe8

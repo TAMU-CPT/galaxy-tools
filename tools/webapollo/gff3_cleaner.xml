@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.fix_model" name="Fix Apollo Gene Model" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <command><![CDATA[
+$__tool_directory__/gff3_cleaner.py
+$gff3_data
+> $output]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="gff3_data" value="bad-model.gff3" />
+          <output name="output" file="good-model.gff3" />
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+This tool corrects the gene model to fix some issues with Apollo's model
+
+-  small "exons" are returned to their correct state of "Shine_Dalgarno_sequence"
+-  non_canonical_*_splice_sites are removed
+      ]]></help>
+</tool>
