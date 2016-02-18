@@ -14,7 +14,7 @@ $__user_email__
 ]]></command>
   <inputs>
     <param label="Blast CSV Results" name="csv_file" type="data"
-        format="csv"/>
+        format="data"/>
   </inputs>
   <outputs>
     <data format="txt" name="stdout" label="Result Validation Report"/>
