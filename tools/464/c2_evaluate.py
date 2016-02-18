@@ -15,10 +15,8 @@ def validate(official_data, user_data, user_email):
     ud = ud[0:32]
 
     if od == ud:
-        print 'CORRECT'
         g.submit(user_email, 'C2', 1)
     else:
-        print 'INCORRECT'
         g.submit(user_email, 'C2', 0)
 
 
