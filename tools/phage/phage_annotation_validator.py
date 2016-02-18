@@ -459,9 +459,9 @@ def excessive_overlap(record, excessive=15):
             qc_features.append(gen_qc_feature(
                 min(ix),
                 max(ix),
-                "Excessive Overlap"),
+                "Excessive Overlap",
                 id_src=gene_a
-            )
+            ))
             results.append((gene_a, gene_b, min(ix), max(ix)))
 
     # Good isn't accurate here. It's a triangle number and just ugly, but we
