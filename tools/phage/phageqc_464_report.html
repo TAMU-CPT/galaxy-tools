@@ -336,8 +336,8 @@ h3:before {
               <tbody>
                 {% for row in excessive_overlap %}
                 <tr>
-                    <td>{{row[0].id}} ({{row[0].location}})</td>
-                    <td>{{row[1].id}} ({{row[1].location}})</td>
+                    <td>{{row[0] | nice_id}} ({{row[0].location}})</td>
+                    <td>{{row[1] | nice_id}} ({{row[1].location}})</td>
                     <td>{{row[2]}}..{{row[3]}}</td>
                     <td>{{row[3] - row[2]}}</td>
                 </tr>

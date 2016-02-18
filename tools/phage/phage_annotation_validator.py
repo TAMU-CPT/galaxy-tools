@@ -546,6 +546,17 @@ def bad_gene_model(record):
                 good += 1
         else:
             log.warn("Could not handle %s, %s", exons, CDSs)
+            results.append((
+                get_id(gene),
+                exon,
+                CDS
+            ))
+            qc_features.append(gen_qc_feature(
+                exon.location.start, exon.location.end,
+                'Weird number of exons/CDSs for this gene',
+                strand=exon.strand,
+                id_src=gene
+            ))
 
     return good, len(results), results, qc_features
 
