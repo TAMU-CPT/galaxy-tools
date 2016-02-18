@@ -12,7 +12,7 @@ from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import reverse_complement, translate
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-from jinja2 import Template, Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader
 import re
 import logging
 logging.basicConfig(level=logging.WARN)
@@ -534,7 +534,8 @@ def bad_gene_model(record):
                 results.append((
                     get_id(gene),
                     exon,
-                    CDS
+                    CDS,
+                    'CDS does not extend to full length of gene',
                 ))
                 qc_features.append(gen_qc_feature(
                     exon.location.start, exon.location.end,
@@ -548,8 +549,9 @@ def bad_gene_model(record):
             log.warn("Could not handle %s, %s", exons, CDSs)
             results.append((
                 get_id(gene),
-                exon,
-                CDS
+                None,
+                None,
+                '{0} exons, {1} CDSs'.format(len(exons), len(CDSs))
             ))
             qc_features.append(gen_qc_feature(
                 exon.location.start, exon.location.end,
@@ -564,7 +566,6 @@ def bad_gene_model(record):
 def weird_starts(record):
     """Find features without product
     """
-    results = []
     good = 0
     bad = 0
     qc_features = []
