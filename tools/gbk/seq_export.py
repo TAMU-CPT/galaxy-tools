@@ -2,6 +2,7 @@
 import sys
 import argparse
 from Bio import SeqIO
+import cpt
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -11,11 +12,16 @@ log = logging.getLogger()
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Export sequences from Genbank files')
     parser.add_argument('genbank_files', nargs='+', type=file, help='Genbank file')
-    parser.add_argument('--use_name', action='store_true')
+    parser.add_argument('--name_src', choices=('id', 'name', 'phage_name'), default='id')
     args = parser.parse_args()
 
     for gbk in args.genbank_files:
         for seq in SeqIO.parse(gbk, 'genbank'):
-            if args.use_name:
+            if args.name_src == 'id':
+                pass
+            elif args.name_src == 'name':
                 seq.id = seq.name
+            elif args.name_src == 'phage_name':
+                (host, phage) = cpt.phage_name_parser(seq.description)
+                seq.id = phage
             SeqIO.write(seq, sys.stdout, 'fasta')
