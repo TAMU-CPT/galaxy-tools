@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage.annotation_validator" name="Phage QC" version="1.4">
+<tool id="edu.tamu.cpt2.phage.annotation_validator" name="Phage QC" version="1.5">
     <description>validate phage annotations</description>
     <macros>
       <import>macros.xml</import>
@@ -21,6 +21,9 @@ $gff3_data
 --min_gene_length $min_gene
 --reportTemplateName $report_format
 --gff3 $gff3
+
+--excessive_gap_dist $egd
+--excessive_gap_divergent_dist $egdd
 --user_email $__user_email__
 
 > $output]]></command>
@@ -34,6 +37,9 @@ $gff3_data
         <param label="Minimum distance to call a gap (bp)" name="gap_dist" type="integer" value="45" />
         <param label="Maximum overlap distance to permit (bp)" name="overlap_dist" type="integer" value="15" />
         <param label="Minimum length of naively called ORFs in gaps (in AAs)" name="min_gene" type="integer" value="25" />
+
+        <param label="Excessive gap distance (non-divergent, bp)" name="egd" type="integer" value="50" />
+        <param label="Excessive gap distance (divergent, bp)" name="egdd" type="integer" value="200" />
 
         <param label="Report Format" type="select" name="report_format">
             <option value="phage_annotation_validator.html" selected="True">Full Report</option>
