@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# vim: set fileencoding=utf-8
 import os
 import json
 import math
@@ -618,9 +619,11 @@ def missing_tags(record):
     return good, bad, results, qc_features
 
 
-def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd_min=5,
-                        sd_max=15, gap_dist=45, overlap_dist=15,
-                        min_gene_length=30, reportTemplateName='phage_annotation_validator.html'):
+def evaluate_and_report(annotations, genome, user_email, gff3=None,
+                        tbl=None, sd_min=5, sd_max=15, gap_dist=45,
+                        overlap_dist=15, min_gene_length=30,
+                        excessive_gap_dist=50, excessive_gap_divergent_dist=200,
+                        reportTemplateName='phage_annotation_validator.html'):
     """
     Generate our HTML evaluation of the genome
     """
@@ -645,8 +648,14 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd
 
     log.info("Locating excessive gaps")
     eg_good, eg_bad, eg_results, eg_annotations = excessive_gap(
-        record, excess=gap_dist, min_gene=min_gene_length,
-        slop=overlap_dist, lookahead_min=sd_min, lookahead_max=sd_max)
+        record,
+        excess=excessive_gap_dist,
+        excess_divergent=excessive_gap_divergent_dist,
+        min_gene=min_gene_length,
+        slop=overlap_dist,
+        lookahead_min=sd_min,
+        lookahead_max=sd_max
+    )
     gff3_qc_features += eg_annotations
 
     log.info("Locating excessive overlaps")
@@ -761,11 +770,17 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd
         gff3_qc_record.annotations = {}
         GFF.write([gff3_qc_record], handle)
 
+    def nice_strand(direction):
+        if direction > 0:
+            return '→'.decode('utf-8')
+        else:
+            return '←'.decode('utf-8')
 
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH))
     env.filters['nice_id'] = get_gff3_id
+    env.filters['nice_strand'] = nice_strand
     tpl = env.get_template(reportTemplateName)
-    return tpl.render(**kwargs)
+    return tpl.render(**kwargs).encode('utf-8')
 
 
 if __name__ == '__main__':
@@ -782,6 +797,9 @@ if __name__ == '__main__':
     parser.add_argument('--overlap_dist', type=int, help='Maximum distance from gene start for an SD to be', default=30)
 
     parser.add_argument('--min_gene_length', type=int, help='Minimum length for a putative gene call (AAs)', default=30)
+
+    parser.add_argument('--excessive_gap_dist', type=int, help='Maximum distance between two genes', default=40)
+    parser.add_argument('--excessive_gap_divergent_dist', type=int, help='Maximum distance between two divergent genes', default=200)
 
     parser.add_argument('--reportTemplateName', help='Report template file name', default='phage_annotation_validator.html')
     parser.add_argument('--user_email')

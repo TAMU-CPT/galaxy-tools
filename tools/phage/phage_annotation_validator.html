@@ -306,6 +306,7 @@ h3:before {
                 <tr>
                   <th>Region</th>
                   <th>Size</th>
+                  <th>Bounding Gene Transcription Direction</th>
                   <th>Message</th>
                 </tr>
               </thead>
@@ -314,8 +315,7 @@ h3:before {
                 <tr>
                     <td>{{row[0]}} .. {{row[1]}}</td>
                     <td>{{row[1] - row[0]}}</td>
-                    <td>{{row[2]}}</td>
-                    <td>{{row[3]}}</td>
+                    <td>{{row[2] | nice_strand}} {{row[3] | nice_strand}}</td>
                     <td>
                         {% if row[4] == 0 %}
                         {% else %}

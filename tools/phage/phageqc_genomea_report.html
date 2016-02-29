@@ -224,6 +224,7 @@ h3:before {
                 <tr>
                   <th>Region</th>
                   <th>Size</th>
+                  <th>Bounding Gene Transcription Direction</th>
                   <th>Message</th>
                 </tr>
               </thead>
@@ -232,10 +233,11 @@ h3:before {
                 <tr>
                     <td>{{row[0]}} .. {{row[1]}}</td>
                     <td>{{row[1] - row[0]}}</td>
+                    <td>{{row[2] | nice_strand}} {{row[3] | nice_strand}}</td>
                     <td>
-                        {% if row[2] == 0 %}
+                        {% if row[4] == 0 %}
                         {% else %}
-                        {{row[2]}} possible genes found in this region
+                        {{row[4]}} possible genes found in this region
                         {% endif %}
                     </td>
                 </tr>
