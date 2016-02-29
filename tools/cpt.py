@@ -37,22 +37,15 @@ def phage_name_parser(name):
 
 class OrfFinder(object):
 
-    def __init__(self, fasta_file, seq_format, table, ftype, ends, mode,
-                 min_len, out_nuc, out_prot, out_bed, out_gff3):
-
+    def __init__(self, table, ftype, ends, min_len):
         self.table = table
         self.table_obj = CodonTable.ambiguous_generic_by_id[table]
         self.ends = ends
         self.ftype = ftype
         self.min_len = min_len
 
-        if seq_format.lower() == "sff":
-            seq_format = "sff-trim"
-        elif seq_format.lower() == "fasta":
-            seq_format = "fasta"
-        elif seq_format.lower().startswith("fastq"):
-            seq_format = "fastq"
-
+    def locate(self, fasta_file, out_nuc, out_prot, out_bed, out_gff3)
+        seq_format = "fasta"
         log.debug("Genetic code table %i" % table)
         log.debug("Minimum length %i aa" % self.min_len)
 
@@ -61,19 +54,12 @@ class OrfFinder(object):
         self.re_starts = re.compile("|".join(self.starts))
         self.re_stops = re.compile("|".join(self.stops))
 
-        if mode == "all":
-            get_peptides = self.get_all_peptides
-        elif mode == "top":
-            get_peptides = self.get_top_peptides
-        elif mode == "one":
-            get_peptides = self.get_one_peptide
-
         out_count = 0
 
         out_gff3.write('##gff-version 3\n')
 
         for idx, record in enumerate(SeqIO.parse(fasta_file, seq_format)):
-            for i, (f_start, f_end, f_strand, n, t) in enumerate(get_peptides(str(record.seq).upper())):
+            for i, (f_start, f_end, f_strand, n, t) in enumerate(self.get_all_peptides(str(record.seq).upper())):
                 out_count += 1
 
                 descr = "length %i aa, %i bp, from %s..%s[%s] of %s" \
@@ -149,6 +135,29 @@ class OrfFinder(object):
             if n and len(t) >= self.min_len:
                 yield start + offset, n, t
 
+    def putative_genes_in_sequence(self, nuc_seq):
+        """Returns start, end, strand, nucleotides, protein.
+        Co-ordinates are Python style zero-based.
+        """
+        nuc_seq = nuc_seq.upper()
+        # TODO - Refactor to use a generator function (in start order)
+        # rather than making a list and sorting?
+        answer = []
+        full_len = len(nuc_seq)
+
+        for frame in range(0, 3):
+            for offset, n, t in break_up_frame(nuc_seq[frame:]):
+                start = frame + offset  # zero based
+                answer.append((start, start + len(n), +1, n, t))
+
+        rc = reverse_complement(nuc_seq)
+        for frame in range(0, 3):
+            for offset, n, t in break_up_frame(rc[frame:]):
+                start = full_len - frame - offset  # zero based
+                answer.append((start, start - len(n), -1, n, t))
+        answer.sort()
+        return answer
+
     def get_all_peptides(self, nuc_seq):
         """Returns start, end, strand, nucleotides, protein.
 
@@ -166,22 +175,3 @@ class OrfFinder(object):
             for offset, n, t in self.break_up_frame(rc[frame:]):
                 start = full_len - frame - offset  # zero based
                 yield (start - len(n), start, -1, n, t)
-
-    def get_top_peptides(self, nuc_seq):
-        """Returns all peptides of max length."""
-        values = list(get_all_peptides(nuc_seq))
-        if not values:
-            raise StopIteration
-        max_len = max(len(x[-1]) for x in values)
-        for x in values:
-            if len(x[-1]) == max_len:
-                yield x
-
-    def get_one_peptide(self, nuc_seq):
-        """Returns first (left most) peptide with max length."""
-        values = list(get_top_peptides(nuc_seq))
-        if not values:
-            raise StopIteration
-        yield values[0]
-
-

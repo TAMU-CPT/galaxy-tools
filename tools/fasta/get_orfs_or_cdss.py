@@ -43,4 +43,5 @@ if __name__ == '__main__':
     parser.add_argument('-v', action='version', version='0.3.0')
     args = parser.parse_args()
 
-    OrfFinder(**vars(args))
+    of = OrfFinder(args.table, argd.ftype, args.ends, args.min_len)
+    of.locate(args.fasta_file, args.out_nuc, args.out_prot, args.out_bed, args.out_gff3)

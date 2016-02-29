@@ -217,30 +217,6 @@ def break_up_frame(s, min_len=10):
         start = index
 
 
-def putative_genes_in_sequence(nuc_seq, min_len=10):
-    """Returns start, end, strand, nucleotides, protein.
-    Co-ordinates are Python style zero-based.
-    """
-    nuc_seq = nuc_seq.upper()
-    # TODO - Refactor to use a generator function (in start order)
-    # rather than making a list and sorting?
-    answer = []
-    full_len = len(nuc_seq)
-
-    for frame in range(0, 3):
-        for offset, n, t in break_up_frame(nuc_seq[frame:], min_len=min_len):
-            start = frame + offset  # zero based
-            answer.append((start, start + len(n), +1, n, t))
-
-    rc = reverse_complement(nuc_seq)
-    for frame in range(0, 3):
-        for offset, n, t in break_up_frame(rc[frame:], min_len=min_len):
-            start = full_len - frame - offset  # zero based
-            answer.append((start, start - len(n), -1, n, t))
-    answer.sort()
-    return answer
-
-
 def require_sd(data, record, chrom_start, sd_min, sd_max):
     sd_finder = NaiveSDCaller()
     for putative_gene in data:
@@ -314,10 +290,12 @@ def excessive_gap(record, excess=10, min_gene=30, slop=30, lookahead_min=5, look
 
     better_results = []
     qc_features = []
+    of = OrfFinder(11, 'CDS', 'closed', min_gene)
+
     for (start, end) in results:
         f = gen_qc_feature(start, end, 'Excessive gap, %s bases' % abs(end-start))
         qc_features.append(f)
-        putative_genes = putative_genes_in_sequence(str(record[start - slop:end + slop].seq), min_len=min_gene)
+        putative_genes = of.putative_genes_in_sequence(str(record[start - slop:end + slop].seq))
         putative_genes = list(require_sd(putative_genes, record, start, lookahead_min, lookahead_max))
         for putative_gene in putative_genes:
             # (0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF', 123123, 124324)
