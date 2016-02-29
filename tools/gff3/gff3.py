@@ -126,6 +126,10 @@ def get_id(feature=None, parent_prefix=None):
     return result
 
 
+def get_gff3_id(gene):
+    return gene.qualifiers.get('Name', [gene.id])[0]
+
+
 def ensure_location_in_bounds(start=0, end=0, parent_length=0):
     # This prevents frameshift errors
     while start < 0:
@@ -137,3 +141,20 @@ def ensure_location_in_bounds(start=0, end=0, parent_length=0):
     while end > parent_length:
         end -= 3
     return (start, end)
+
+
+def coding_genes(feature_list):
+    for x in feature_lambda(feature_list, feature_test_type, {'type': 'gene'}, subfeatures=True):
+        if len(list(feature_lambda(x.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))) > 0:
+            yield x
+
+
+def genes(feature_list, feature_type='gene'):
+    """
+    Simple filter to extract gene features from the feature set.
+    """
+
+    for x in feature_lambda(feature_list, feature_test_type,
+                            {'type': feature_type},
+                            subfeatures=True):
+        yield x

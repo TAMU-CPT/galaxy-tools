@@ -4,7 +4,7 @@ import json
 import math
 import argparse
 import itertools
-from gff3 import feature_lambda, feature_test_type, feature_test_quals
+from gff3 import feature_lambda, feature_test_type, feature_test_quals, coding_genes, genes, get_gff3_id
 from shinefind import NaiveSDCaller
 from BCBio import GFF
 from Bio.Data import CodonTable
@@ -34,9 +34,6 @@ ENCOURAGEMENT = (
      <a href="https://cpt.tamu.edu">CPT</a>\'s Automated Phage Annotation Pipeline"""),
 )
 
-
-def get_id(gene):
-    return gene.qualifiers.get('Name', [gene.id])[0]
 
 def gen_qc_feature(start, end, message, strand=0, id_src=None):
     kwargs = {
@@ -138,7 +135,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
             results.append(gene)
         else:
             if len(rbss) > 1:
-                log.warn("%s RBSs found for gene %s", rbss[0].id, get_id(gene))
+                log.warn("%s RBSs found for gene %s", rbss[0].id, get_gff3_id(gene))
             any_rbss = True
             # get first RBS/CDS
             cds = list(genes(gene.sub_features, feature_type='CDS'))[0]
@@ -377,23 +374,6 @@ def coding_density(record, mean=92.5, sd=20):
     return int(norm(100 * avgFeatLen, mean=mean, sd=sd) * 100), int(100 * avgFeatLen)
 
 
-def coding_genes(feature_list):
-    for x in feature_lambda(feature_list, feature_test_type, {'type': 'gene'}, subfeatures=True):
-        if len(list(feature_lambda(x.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))) > 0:
-            yield x
-
-
-def genes(feature_list, feature_type='gene'):
-    """
-    Simple filter to extract gene features from the feature set.
-    """
-
-    for x in feature_lambda(feature_list, feature_test_type,
-                            {'type': feature_type},
-                            subfeatures=True):
-        yield x
-
-
 def excessive_overlap(record, excessive=15):
     """
     Find excessive overlaps in the genome, where excessive is defined as 15
@@ -413,11 +393,11 @@ def excessive_overlap(record, excessive=15):
         cds_b = [x for x in genes(gene_b.sub_features, feature_type='CDS')]
 
         if len(cds_a) == 0:
-            log.warn("Gene missing subfeatures; %s", get_id(gene_a))
+            log.warn("Gene missing subfeatures; %s", get_gff3_id(gene_a))
             continue
 
         if len(cds_b) == 0:
-            log.warn("Gene missing subfeatures; %s", get_id(gene_b))
+            log.warn("Gene missing subfeatures; %s", get_gff3_id(gene_b))
             continue
 
         cds_a = cds_a[0]
@@ -510,7 +490,7 @@ def bad_gene_model(record):
             CDS = CDSs[0]
             if len(exon) != len(CDS):
                 results.append((
-                    get_id(gene),
+                    get_gff3_id(gene),
                     exon,
                     CDS,
                     'CDS does not extend to full length of gene',
@@ -526,7 +506,7 @@ def bad_gene_model(record):
         else:
             log.warn("Could not handle %s, %s", exons, CDSs)
             results.append((
-                get_id(gene),
+                get_gff3_id(gene),
                 None,
                 None,
                 '{0} exons, {1} CDSs'.format(len(exons), len(CDSs))
@@ -552,7 +532,7 @@ def weird_starts(record):
     for gene in coding_genes(record.features):
         seq = [x for x in genes(gene.sub_features, feature_type='CDS')]
         if len(seq) == 0:
-            log.warn("No CDS for gene %s", get_id(gene))
+            log.warn("No CDS for gene %s", get_gff3_id(gene))
             continue
         else:
             seq = seq[0]
@@ -568,7 +548,7 @@ def weird_starts(record):
             overall[start_codon] += 1
 
         if start_codon not in ('ATG', 'TTG', 'GTG'):
-            log.warn("Weird start codon (%s) on %s", start_codon, get_id(gene))
+            log.warn("Weird start codon (%s) on %s", start_codon, get_gff3_id(gene))
             seq.__error = 'Unusual start codon %s' % start_codon
 
             s = 0
@@ -604,13 +584,13 @@ def missing_tags(record):
     for gene in coding_genes(record.features):
         cds = [x for x in genes(gene.sub_features, feature_type='CDS')]
         if len(cds) == 0:
-            log.warn("Gene missing CDS subfeature %s", get_id(gene))
+            log.warn("Gene missing CDS subfeature %s", get_gff3_id(gene))
             continue
 
         cds = cds[0]
 
         if 'product' not in cds.qualifiers:
-            log.warn("Missing product tag on %s", get_id(gene))
+            log.warn("Missing product tag on %s", get_gff3_id(gene))
             qc_features.append(gen_qc_feature(
                 cds.location.start,
                 cds.location.end,
