@@ -1,4 +1,7 @@
 import copy
+import logging
+logging.basicConfig(level=logging.WARN)
+log = logging.getLogger()
 
 
 def feature_lambda(feature_list, test, test_kwargs, subfeatures=True):
@@ -75,6 +78,14 @@ def feature_test_qual_value(feature, **kwargs):
         if attribute_value in kwargs['attribute_list']:
             return True
     return False
+
+
+def feature_test_location(feature, **kwargs):
+    if 'strand' in kwargs:
+        if feature.location.strand != kwargs['strand']:
+            return False
+
+    return feature.location.start <= kwargs['loc'] <= feature.location.end
 
 
 def feature_test_quals(feature, **kwargs):

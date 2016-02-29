@@ -4,7 +4,8 @@ import json
 import math
 import argparse
 import itertools
-from gff3 import feature_lambda, feature_test_type, feature_test_quals, coding_genes, genes, get_gff3_id
+from gff3 import feature_lambda, feature_test_type, feature_test_quals, \
+    coding_genes, genes, get_gff3_id, feature_test_location
 from shinefind import NaiveSDCaller
 from BCBio import GFF
 from Bio.Data import CodonTable
@@ -13,6 +14,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio.Seq import reverse_complement, translate
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from jinja2 import Environment, FileSystemLoader
+from cpt import OrfFinder
 import re
 import logging
 logging.basicConfig(level=logging.WARN)
@@ -199,21 +201,6 @@ def start_chop_and_trans(s, strict=True):
     return None, None, None
 
 
-def break_up_frame(s, min_len=10):
-    """Returns offset, nuc, protein."""
-    start = 0
-    for match in re_stops.finditer(s):
-        index = match.start() + 3
-        if index % 3 != 0:
-            continue
-        n = s[start:index]
-
-        offset, n, t = start_chop_and_trans(n)
-        if n and len(t) >= min_len:
-            yield start + offset, n, t
-        start = index
-
-
 def require_sd(data, record, chrom_start, sd_min, sd_max):
     sd_finder = NaiveSDCaller()
     for putative_gene in data:
@@ -235,7 +222,7 @@ def require_sd(data, record, chrom_start, sd_min, sd_max):
             yield putative_gene + (start, end)
 
 
-def excessive_gap(record, excess=10, min_gene=30, slop=30, lookahead_min=5, lookahead_max=15):
+def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30, lookahead_min=5, lookahead_max=15):
     """
     Identify excessive gaps between gene features.
 
@@ -282,6 +269,7 @@ def excessive_gap(record, excess=10, min_gene=30, slop=30, lookahead_min=5, look
             a = contiguous_regions[i - 1]
             b = contiguous_regions[i]
 
+        log.debug('a %s b %s', a, b)
         if b[0] > a[1] + excess:
             results.append((a[1], b[0]))
 
@@ -510,12 +498,6 @@ def bad_gene_model(record):
                 None,
                 None,
                 '{0} exons, {1} CDSs'.format(len(exons), len(CDSs))
-            ))
-            qc_features.append(gen_qc_feature(
-                exon.location.start, exon.location.end,
-                'Weird number of exons/CDSs for this gene',
-                strand=exon.strand,
-                id_src=gene
             ))
 
     return good, len(results), results, qc_features
@@ -750,7 +732,7 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None, tbl=None, sd
 
 
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH))
-    env.filters['nice_id'] = get_id
+    env.filters['nice_id'] = get_gff3_id
     tpl = env.get_template(reportTemplateName)
     return tpl.render(**kwargs)
 

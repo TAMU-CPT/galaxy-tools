@@ -1,4 +1,13 @@
+import sys
 import re
+import argparse
+import logging
+logging.basicConfig()
+log = logging.getLogger()
+from Bio.Seq import Seq, reverse_complement, translate
+from Bio.SeqRecord import SeqRecord
+from Bio import SeqIO
+from Bio.Data import CodonTable
 
 PHAGE_IN_MIDDLE = re.compile('^(?P<host>.*)\s*phage (?P<phage>.*)$')
 BACTERIOPHAGE_IN_MIDDLE = re.compile('^(?P<host>.*)\s*bacteriophage (?P<phage>.*)$')
@@ -43,16 +52,15 @@ class OrfFinder(object):
         self.ends = ends
         self.ftype = ftype
         self.min_len = min_len
-
-    def locate(self, fasta_file, out_nuc, out_prot, out_bed, out_gff3)
-        seq_format = "fasta"
-        log.debug("Genetic code table %i" % table)
-        log.debug("Minimum length %i aa" % self.min_len)
-
         self.starts = sorted(self.table_obj.start_codons)
         self.stops = sorted(self.table_obj.stop_codons)
         self.re_starts = re.compile("|".join(self.starts))
         self.re_stops = re.compile("|".join(self.stops))
+
+    def locate(self, fasta_file, out_nuc, out_prot, out_bed, out_gff3):
+        seq_format = "fasta"
+        log.debug("Genetic code table %i" % table)
+        log.debug("Minimum length %i aa" % self.min_len)
 
         out_count = 0
 
@@ -146,13 +154,13 @@ class OrfFinder(object):
         full_len = len(nuc_seq)
 
         for frame in range(0, 3):
-            for offset, n, t in break_up_frame(nuc_seq[frame:]):
+            for offset, n, t in self.break_up_frame(nuc_seq[frame:]):
                 start = frame + offset  # zero based
                 answer.append((start, start + len(n), +1, n, t))
 
         rc = reverse_complement(nuc_seq)
         for frame in range(0, 3):
-            for offset, n, t in break_up_frame(rc[frame:]):
+            for offset, n, t in self.break_up_frame(rc[frame:]):
                 start = full_len - frame - offset  # zero based
                 answer.append((start, start - len(n), -1, n, t))
         answer.sort()
