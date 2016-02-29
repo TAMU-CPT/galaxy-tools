@@ -42,9 +42,9 @@ $gff3_data
         <param label="Excessive gap distance (divergent, bp)" name="egdd" type="integer" value="200" />
 
         <param label="Report Format" type="select" name="report_format">
-            <option value="phage_annotation_validator.html" selected="True">Full Report</option>
-            <option value="phageqc_genomea_report.html">GenomeA Report</option>
-            <option value="phageqc_464_report.html">464 Report</option>
+            <option value="phageqc_report_full.html" selected="True">Full Report</option>
+            <option value="phageqc_report_genomea.html">GenomeA Report</option>
+            <option value="phageqc_report_464.html">464 Report</option>
         </param>
     </inputs>
     <outputs>
