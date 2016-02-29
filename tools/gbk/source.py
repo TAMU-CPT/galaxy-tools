@@ -5,42 +5,7 @@ import re
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
-
-phage_in_middle = re.compile('^(?P<host>.*)\s*phage (?P<phage>.*)$')
-bacteriophage_in_middle = re.compile('^(?P<host>.*)\s*bacteriophage (?P<phage>.*)$')
-starts_with_phage = re.compile('^(bacterio|vibrio|Bacterio|Vibrio|)?[Pp]hage (?P<phage>.*)$')
-new_style_names = re.compile('(?P<phage>v[A-Z]_[A-Z][a-z]{2}_.*)')
-
-
-def name_parser(name):
-    host = None
-    phage = None
-    name = name.replace(', complete genome', '')
-
-    m = bacteriophage_in_middle.match(name)
-    if m:
-        host = m.group('host')
-        phage = m.group('phage')
-        return (host, phage)
-
-    m = phage_in_middle.match(name)
-    if m:
-        host = m.group('host')
-        phage = m.group('phage')
-        return (host, phage)
-
-    m = starts_with_phage.match(name)
-    if m:
-        phage = m.group('phage')
-        return (host, phage)
-
-    m = new_style_names.match(name)
-    if m:
-        phage = m.group('phage')
-        return (host, phage)
-
-    return (host, phage)
-
+import cpt
 
 def extract_host_info(host_string):
     source_host = host_string.split(' ')
@@ -74,7 +39,7 @@ def phage_source(genbank_files=None, **kwargs):
             source_feats = [x for x in record.features if x.type == 'source']
 
             # Provide a default value from a parsing attempt at the name
-            (host, phage) = name_parser(record.description)
+            (host, phage) = cpt.phage_name_parser(record.description)
             if host is not None:
                 ret = (id, host)
             else:
