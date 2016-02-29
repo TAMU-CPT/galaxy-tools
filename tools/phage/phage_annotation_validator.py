@@ -14,6 +14,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio.Seq import reverse_complement, translate
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from jinja2 import Environment, FileSystemLoader
+import itertools
 from cpt import OrfFinder
 import re
 import logging
@@ -269,15 +270,45 @@ def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30,
             a = contiguous_regions[i - 1]
             b = contiguous_regions[i]
 
-        log.debug('a %s b %s', a, b)
-        if b[0] > a[1] + excess:
-            results.append((a[1], b[0]))
+        gap_size = abs(b[0] - a[1])
+        if gap_size > min(excess, excess_divergent):
+            a_feat_l = itertools.islice(feature_lambda(sorted_genes, feature_test_location, {'loc': a[1]}, subfeatures=False), 1)
+            b_feat_l = itertools.islice(feature_lambda(sorted_genes, feature_test_location, {'loc': b[0]}, subfeatures=False), 1)
+
+            try:
+                a_feat = next(a_feat_l)
+            except StopIteration:
+                # Triggers on end of genome
+                a_feat = None
+            try:
+                b_feat = next(b_feat_l)
+            except StopIteration:
+                # Triggers on end of genome
+                b_feat = None
+
+            result_obj = [
+                a[1],
+                b[0],
+                None if not a_feat else a_feat.location.strand,
+                None if not b_feat else b_feat.location.strand
+            ]
+
+            if a_feat is None or b_feat is None:
+                if gap_size > excess_divergent:
+                    results.append(result_obj)
+            else:
+                if a_feat.location.strand == b_feat.location.strand and gap_size > excess:
+                    results.append(result_obj)
+                elif a_feat.location.strand != b_feat.location.strand and gap_size > excess_divergent:
+                    results.append(result_obj)
 
     better_results = []
     qc_features = []
     of = OrfFinder(11, 'CDS', 'closed', min_gene)
 
-    for (start, end) in results:
+    for result_obj in results:
+        start = result_obj[0]
+        end = result_obj[1]
         f = gen_qc_feature(start, end, 'Excessive gap, %s bases' % abs(end-start))
         qc_features.append(f)
         putative_genes = of.putative_genes_in_sequence(str(record[start - slop:end + slop].seq))
@@ -323,7 +354,7 @@ def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30,
             possible_gene.sub_features = [possible_rbs, possible_cds]
             qc_features.append(possible_gene)
 
-        better_results.append((start, end, len(putative_genes)))
+        better_results.append(result_obj + [len(putative_genes)])
 
     # Bad gaps are those with more than zero possible genes found
     bad = len([x for x in better_results if x[2] > 0])
