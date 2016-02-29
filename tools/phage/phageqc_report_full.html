@@ -125,40 +125,16 @@ h3:before {
   border-radius: 50%;
 }
 
-
-
-
-
-
-
-/* CUSTOM CSS */
-.spark {
-        position: relative;
-        margin:5px;
+td.moron {
+    font-size: 150%;
+    padding: 0px;
+    color: gray;
 }
-.spark span {
-        padding: 0px;
-        padding-left: 20px;
-        padding-right: 20px;
-        margin: 5px;
-        position: relative;
+.strand_emph {
+    text-decoration: underline;
+    color: black;
 }
-.spark .plus {
-        top: -10px;
-        background: #aaaaff;
-}
-.spark .minus {
-        top: 10px;
-        background: #ffaaaa;
-}
-.plus-focus {
-        top: -10px;
-        background: blue;
-}
-.minus-focus {
-        top: 10px;
-        background: red;
-}
+
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -378,15 +354,14 @@ h3:before {
                 <tr>
                     <td>{{row[0].id}}</td>
                     <td>{{row[3]}}</td>
-                    <td>
-                        <div class="spark">
-                            {% for x in row[1] %}
-                            <span class="{% if x.strand > 0 %}plus{% else %}minus{% endif %}"></span>
-                            {% endfor %}
-                            <span class="{% if row[0].strand > 0 %}plus-focus{% else %}minus-focus{% endif %}"></span>
-                            {% for x in row[2] %}
-                            <span class="{% if x.strand > 0 %}plus{% else %}minus{% endif %}"></span>
-                            {% endfor %}
+                    <td class="moron">
+                        {% for x in row[1] %}
+                            {{ x | nice_strand }}
+                        {% endfor %}
+                        <span class="strand_emph">{{ row[0].strand | nice_strand }}</span>
+                        {% for x in row[2] %}
+                            {{ x | nice_strand }}
+                        {% endfor %}
                         </div>
                     </td>
                 </tr>

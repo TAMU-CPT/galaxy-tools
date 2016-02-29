@@ -801,7 +801,7 @@ if __name__ == '__main__':
     parser.add_argument('--excessive_gap_dist', type=int, help='Maximum distance between two genes', default=40)
     parser.add_argument('--excessive_gap_divergent_dist', type=int, help='Maximum distance between two divergent genes', default=200)
 
-    parser.add_argument('--reportTemplateName', help='Report template file name', default='phage_annotation_validator.html')
+    parser.add_argument('--reportTemplateName', help='Report template file name', default='phageqc_report_full.html')
     parser.add_argument('--user_email')
 
     args = parser.parse_args()
