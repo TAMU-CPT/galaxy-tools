@@ -25,7 +25,7 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
             if feature.type == 'remark':
                 continue
 
-            tmpseq = str(feature.extract(record.seq).translate(table=11)).replace("*", "")
+            tmpseq = str(feature.extract(record.seq).translate(table=11, cds=True)).replace("*", "")
             for case in CASES:
                 if case.search(tmpseq):
                     good_features.append(feature)

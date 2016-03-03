@@ -173,35 +173,6 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 # modified from get_orfs_or_cdss.py
 # -----------------------------------------------------------
 
-# get stop codons
-table_obj = CodonTable.ambiguous_generic_by_id[11]
-
-starts = sorted(table_obj.start_codons)
-re_starts = re.compile("|".join(starts))
-
-stops = sorted(table_obj.stop_codons)
-re_stops = re.compile("|".join(stops))
-
-
-def start_chop_and_trans(s, strict=True):
-    """Returns offset, trimmed nuc, protein."""
-    if strict:
-        assert s[-3:] in stops, s
-    assert len(s) % 3 == 0
-    for match in re_starts.finditer(s):
-        # Must check the start is in frame
-        start = match.start()
-        if start % 3 == 0:
-            n = s[start:]
-            assert len(n) % 3 == 0, "%s is len %i" % (n, len(n))
-            if strict:
-                t = translate(n, 11, cds=True)
-            else:
-                # Use when missing stop codon,
-                t = "M" + translate(n[3:], 11, to_stop=True)
-            return start, n, t
-    return None, None, None
-
 
 def require_sd(data, record, chrom_start, sd_min, sd_max):
     sd_finder = NaiveSDCaller()

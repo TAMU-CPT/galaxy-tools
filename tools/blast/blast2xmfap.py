@@ -33,7 +33,7 @@ def parse_gff3(annotations, genome):
             data[feature.id] = {
                 'rec': record.id,
                 'loc': feature.location,
-                'seq': feature.extract(record).seq.translate(table=11)[0:-1],
+                'seq': feature.extract(record).seq.translate(table=11, cds=True)[0:-1],
             }
     return data
 

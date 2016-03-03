@@ -20,7 +20,7 @@ def _req_dna(f):
 def _translate(f):
     def new_f(*args, **kwargs):
         if kwargs['seqtype'] == 'dna':
-            args = args[0].seq.translate(table=kwargs.get('table', 11)),
+            args = args[0].seq.translate(table=kwargs.get('table', 11), cds=True),
             kwargs['seqtype'] = 'protein'
         return f(*args, **kwargs)
     return new_f

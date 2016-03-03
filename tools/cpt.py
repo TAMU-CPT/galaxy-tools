@@ -103,7 +103,7 @@ class OrfFinder(object):
                 n = s[start:]
                 assert len(n) % 3 == 0, "%s is len %i" % (n, len(n))
                 if strict:
-                    t = translate(n, self.table, cds=True)
+                    t = translate(n, self.table)
                 else:
                     # Use when missing stop codon,
                     t = "M" + translate(n[3:], self.table, to_stop=True)

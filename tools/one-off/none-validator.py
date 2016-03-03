@@ -157,7 +157,7 @@ def tag(feat, tag_name, tag_value):
 
 
 def putative_lipobox(record, feature):
-    tmpseq = str(feature.extract(record.seq).translate(table=11)).replace("*", "")
+    tmpseq = str(feature.extract(record.seq).translate(table=11, cds=True)).replace("*", "")
     return LIPOBOX.search(tmpseq)
 
 

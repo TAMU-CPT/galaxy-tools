@@ -16,7 +16,7 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
 
     for record in records:
         if target == 'protein':
-            tmpseq = record.seq.translate(table=table)
+            tmpseq = record.seq.translate(table=table, cds=True)
             if '*' in tmpseq:
                 tmpseq = tmpseq[0:str(tmpseq).index('*') - strip_stops_diff]
             record.seq = tmpseq
