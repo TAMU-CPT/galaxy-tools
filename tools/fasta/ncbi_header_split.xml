@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.fasta.split_ncbi" name="Split/Duplicate NCBI headers" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python fasta_concat.py --version</version_command>
+  <command interpreter="python" detect_errors="aggressive">ncbi_header_split.py
+$file
+> $output
+</command>
+  <inputs>
+    <param label="Fasta file to split by headers" name="file" type="data" format="fasta"/>
+  </inputs>
+  <outputs>
+    <data format="fasta" name="output" />
+  </outputs>
+  <tests>
+      <test>
+          <param name="file" value="ncbi-prot.fa" />
+          <output name="output" file="ncbi-prot-split.fa" />
+      </test>
+  </tests>
+  <help>
+Fasta Splitter
+==============
+
+Given a fasta sequence with multiple sequence descriptions in the header (e.g. NCBI) duplicate the sequences for each header.
+</help>
+    <expand macro="citations" />
+</tool>
