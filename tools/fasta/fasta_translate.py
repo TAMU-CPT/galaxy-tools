@@ -3,6 +3,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 import argparse
 from Bio import SeqIO
+from Bio.Data import CodonTable
 import StringIO
 
 
@@ -16,9 +17,18 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
 
     for record in records:
         if target == 'protein':
-            tmpseq = record.seq.translate(table=table, cds=True)
+            mod = len(record.seq) % 3
+            if mod != 0:
+                record.seq = record.seq[0:-mod]
+
+            try:
+                tmpseq = record.seq.translate(table=table, cds=True)
+            except CodonTable.TranslationError:
+                tmpseq = record.seq.translate(table=table, cds=False)
+
             if '*' in tmpseq:
                 tmpseq = tmpseq[0:str(tmpseq).index('*') - strip_stops_diff]
+
             record.seq = tmpseq
             if len(record.seq) > 0:
                 SeqIO.write(record, output, "fasta")
