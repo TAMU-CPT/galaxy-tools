@@ -19,10 +19,7 @@
       <citations>
       </citations>
   </xml>
-  <xml name="ldap_ref"
-    token_name="dn_ref"
-    token_label="Pick a DN"
-    token_fromfile="ldap_people.loc">
+  <xml name="ldap_ref">
         <repeat name="repeat_@NAME@" title="@LABEL@">
           <param name="@NAME@" label="Select a @LABEL@" type="select">
             <options from_file="@FROMFILE@">

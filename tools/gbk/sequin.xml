@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.ncbi.sequin" name="Sequin" version="2.0">
   <description>generates files which can be sent to NCBI for genome submission</description>
-  <import>macros.xml</import>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
   <command detect_errors="aggressive">
 <![CDATA[
     python $__tool_directory__/sequin.py
