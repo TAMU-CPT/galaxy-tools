@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.ncbi.sequin" name="Sequin" version="2.0">
+  <description>generates files which can be sent to NCBI for genome submission</description>
+  <import>macros.xml</import>
+  <command detect_errors="aggressive">
+<![CDATA[
+    python $__tool_directory__/sequin.py
+    --genbank_submission_title "${genbank_submission_title}"
+
+    #for $item in $repeat_genbank_record_author:
+    --genbank_record_author "${item.genbank_record_author.dn}"
+    #end for
+
+    #for $item in $repeat_genbank_record_contact:
+    --genbank_record_contact "${item.genbank_record_contact.dn}"
+    #end for
+
+    --genbank_record_affiliation "${genbank_record_affiliation.dn}"
+    --paper_submission_title "${paper_submission_title}"
+
+    #for $item in $repeat_paper_record_author:
+    --paper_record_author "${item.paper_record_author.dn}"
+    #end for
+
+    #for $item in $repeat_paper_record_contact:
+    --paper_record_contact "${item.paper_record_contact.dn}"
+    #end for
+
+    --paper_record_affiliation "${paper_record_affiliation.dn}"
+    --genbank_file "${genbank_file}"
+
+    --people $__tool_directory__/people.yaml
+    --tmpdir "${discrep.files_path}";
+
+## Cheaply copy from archive into folder
+cat ${discrep.files_path}/discrep > $discrep;
+]]>
+</command>
+  <inputs>
+    <param name="genbank_submission_title" help="Genbank Submission Title" label="genbank_submission_title" type="text"/>
+    <expand macro="ldap_ref" name="genbank_record_author" label="genbank record author" fromfile="ldap_people.loc"/>
+    <expand macro="ldap_ref" name="genbank_record_contact" label="genbank record contact" fromfile="ldap_people.loc"/>
+    <expand macro="ldap_ref" name="genbank_record_affiliation" label="genbank record affiliation" fromfile="ldap_orgs.loc"/>
+
+    <param name="paper_submission_title" help="Paper Submission Title" label="paper_submission_title" type="text"/>
+    <expand macro="ldap_ref" name="paper_record_author" label="paper record author" fromfile="ldap_people.loc"/>
+    <expand macro="ldap_ref" name="paper_record_contact" label="paper record contact" fromfile="ldap_people.loc"/>
+    <expand macro="ldap_ref" name="paper_record_affiliation" label="paper record affiliation" fromfile="ldap_orgs.loc"/>
+
+    <param name="genbank_file" help="Genbank File" label="genbank_file" type="data"/>
+  </inputs>
+  <outputs>
+    <data name="discrep" format="txt">
+    </data>
+  </outputs>
+  <help>WHY YOU CARE
+============
+
+Have you ever had to submit more than one GenBank file? Have you ever
+had to submit dozens? Do you worry that you might make mistakes? This
+tool avoids **ALL OF THAT** by letting you select the name from our
+directory, and have the person's information filled in correctly and
+automatically. This tool, on average, saves about 20-30 minutes of work
+due simply to how easy it is to fill out a couple text boxes, rather
+than the complex and *error prone* workflow normal to Sequin users.
+
+DESCRIPTION
+===========
+
+Generate Sequin/tbl2asn output for submission to genbank. Files are
+created as an archive, which can be downloaded and edited further. If
+the organisation is NOT the CPT, **PLEASE** submit your organisation's
+contact information and address and we will add it to the directory.
+</help>
+  <tests/>
+</tool>

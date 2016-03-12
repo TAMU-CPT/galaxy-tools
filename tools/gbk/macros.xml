@@ -19,4 +19,16 @@
       <citations>
       </citations>
   </xml>
+  <xml name="ldap_ref"
+    token_name="dn_ref"
+    token_label="Pick a DN"
+    token_fromfile="ldap_people.loc">
+        <repeat name="repeat_@NAME@" title="@LABEL@">
+          <param name="@NAME@" label="Select a @LABEL@" type="select" from_file="@FROMFILE@">
+            <column name="value" index="0"/>
+            <column name="name" index="1"/>
+            <column name="dn" index="2"/>
+          </param>
+        </repeat>
+    </xml>
 </macros>

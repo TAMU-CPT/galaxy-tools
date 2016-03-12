@@ -1,0 +1,883 @@
+---
+people:
+    cn=Lauren Lessor,ou=CPT,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Lauren Lessor
+        givenName: Lauren
+        mail: llessor@tamu.edu
+        sn: Lessor
+        initials: E
+    cn=Adriana Hernandez,ou=CPT,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Adriana Hernandez
+        givenName: Adriana
+        mail: adrianacarolina@gmail.com
+        sn: Hernandez
+        initials: C
+    cn=Kirtan Brahmbhatt,ou=CPT,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Kirtan Brahmbhatt
+        givenName: Kirtan
+        mail: brahmbhatt.kirtan@gmail.com
+        sn: Brahmbhatt
+    cn=Gabriel Kuty,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: active
+        givenName: Gabriel
+        mail: gabbykuty@tamu.edu
+        sn: Everett
+        cn: Gabriel Kuty
+        initials: F.K.
+    cn=Karthik Chamakura,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Karthik Chamakura
+        employeeType: active
+        givenName: Karthik
+        mail: krcham02@tamu.edu
+        sn: Chamakura
+        initials: R
+    cn=Yi Chen,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Yi Chen
+        employeeType: active
+        givenName: Yi
+        mail: ichichen@tamu.edu
+        sn: Chen
+    cn=Rohit Kongari,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Rohit Kongari
+        employeeType: active
+        givenName: Rohit
+        mail: rohit6855@tamu.edu
+        sn: Kongari
+    cn=Xixu Cai,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Xixu Cai
+        employeeType: tmp
+        givenName: Xixu
+        mail: xixucai@tamu.edu
+        sn: Cai
+    cn=Joel Berry,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Joel Berry
+        givenName: Joel
+        mail: beary.joel@gmail.com
+        sn: Berry
+    cn=Stephen Ahern,ou=Gonzalez,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Stephen Ahern
+        givenName: Stephen
+        mail: sahern@tamu.edu
+        sn: Ahern
+    cn=Mayukh Das,ou=Gonzalez,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Mayukh Das
+        givenName: Mayukh
+        mail: dasmayukh77@gmail.com
+        sn: Das
+    cn=Anthony Sperber,ou=Hermann,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Anthony Sperber
+        givenName: Anthony
+        mail: amsqp4@neo.tamu.edu
+        sn: Sperber
+    cn=Jacqueline Grimm,ou=Gill,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Jacqueline Grimm
+        givenName: Jacqueline
+        mail: jackiekgrimm@gmail.com
+        sn: Grimm
+    cn=Denish Piya,ou=Gill,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Denish Piya
+        givenName: Denish
+        mail: denish.piya@gmail.com
+        sn: Piya
+    cn=Sudath Dahanayaka,ou=Gill,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Sudath Dahanayaka
+        givenName: Sudath
+        mail: sudathd@gmail.com
+        sn: Dahanayaka
+    cn=Yicheng Xie,ou=Gill,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Yicheng Xie
+        givenName: Yicheng
+        mail: seasonxie@neo.tamu.edu
+        sn: Xie
+    cn=Jason Gill,ou=Gill,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Jason Gill
+        givenName: Jason
+        mail: jason.gill@tamu.edu
+        sn: Gill
+        telephoneNumber: 9794223019
+    cn=Sean Clark,ou=Staff,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Sean
+        sn: Clark
+        cn: Sean Clark
+    cn=Daisy Wilbert,ou=Staff,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Daisy Wilbert
+        givenName: Daisy
+        mail: daisy@tamu.edu
+        sn: Wilbert
+    cn=Jim Hu,ou=Hu,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Jim
+        mail: jimhu@tamu.edu
+        cn: Jim Hu
+        sn: Hu
+    cn=Carlos Ortiz,ou=Gonzalez,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Carlos Ortiz
+        mail: csortiz@neo.tamu.edu
+        sn: Ortiz
+        givenName: Carlos
+    cn=Ryland Young,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: active
+        cn: Ryland Young
+        givenName: Ryland
+        sn: Young
+        mail: ryland@tamu.edu
+    cn=Kenneth To,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: active
+        cn: Kenneth To
+        givenName: Kenneth
+        sn: To
+        mail: kennethto@gmail.com
+    cn=Katie Park,ou=CPT,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Katie Park
+        givenName: Katie
+        mail: parkkatie11@gmail.com
+        sn: Park
+    cn=Shabnam Eslamfam,ou=Hu,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Shabnam Eslamfam
+        givenName: Shabnam
+        sn: Eslamfam
+        mail: shabnam127@hotmail.com
+    cn=Guichun Wang,ou=Gonzalez,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Guichun
+        mail: guichunwng@tamu.edu
+        cn: Guichun Wang
+        sn: Wang
+    cn=Adrian Luna,ou=CPT,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Adrian Luna
+        mail: ajl2323@neo.tamu.edu
+        sn: Luna
+        initials: J
+        givenName: Adrian
+    cn=Sabyassachi Mandal,ou=McKnight,ou=biology,ou=People,dc=tamu,dc=edu:
+        cn: Sabyassachi Mandal
+        givenName: Sabyassachi
+        mail: smandal@bio.tamu.edu
+        sn: Mandal
+    cn=Wangming Ji,ou=McKnight,ou=biology,ou=People,dc=tamu,dc=edu:
+        sn: Wangming
+        mail: wji@bio.tamu.edu
+        cn: Wangming Ji
+        givenName: Ji
+    cn=Sarah Beagle,ou=Lockless,ou=biology,ou=People,dc=tamu,dc=edu:
+        cn: Sarah Beagle
+        givenName: Sarah
+        mail: sbeagle@bio.tamu.edu
+        sn: Beagle
+    cn=Steven Lockless,ou=Lockless,ou=biology,ou=People,dc=tamu,dc=edu:
+        cn: Steven Lockless
+        givenName: Steven
+        mail: lockless@bio.tamu.edu
+        sn: Steves
+    cn=Suzanne Aleksander,ou=Hu,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Suzanne
+        mail: suzialeksander@neo.tamu.edu
+        sn: Aleksander
+        cn: Suzanne Aleksander
+    cn=Nadisha Silva,ou=Aramayo,ou=biology,ou=People,dc=tamu,dc=edu:
+        cn: Nadisha Silva
+        givenName: Nadisha
+        sn: Silva
+        mail: nadishalc@gmail.com
+    cn=Chanda Bhat,ou=Zeng,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Chanda Bhat
+        sn: Bhat
+        givenName: Chanda
+        mail: chandabhat@neo.tamu.edu
+    cn=Deborah Siegele,ou=Siegele,ou=biology,ou=People,dc=tamu,dc=edu:
+        cn: Deborah Siegele
+        sn: Siegele
+        givenName: Deborah
+        mail: siegele@bio.tamu.edu
+    cn=Jesse Cahill,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Jesse
+        sn: Cahill
+        mail: jesse.cahill@tamu.edu
+        cn: Jesse Cahill
+    cn=Ryan Clanton,ou=Aramayo,ou=biology,ou=People,dc=tamu,dc=edu:
+        cn: Ryan Clanton
+        givenName: Ryan
+        mail: rc1025@neo.tamu.edu
+        sn: Clanton
+    cn=Gamal Akabani,ou=Aramayo,ou=biology,ou=People,dc=tamu,dc=edu:
+        cn: Gamal Akabani
+        givenName: Gamal
+        mail: akabani@tamu.edu
+        sn: Akabani
+    cn=Ken Hull,ou=Aramayo,ou=biology,ou=People,dc=tamu,dc=edu:
+        cn: Ken Hull
+        givenName: Ken
+        mail: ken.hull@mail.chem.tamu.edu
+        sn: Hull
+    cn=Daniel Romo,ou=Aramayo,ou=biology,ou=People,dc=tamu,dc=edu:
+        cn: Daniel Romo
+        givenName: Daniel
+        mail: romo@chem.tamu.edu
+        sn: Romo
+    cn=Thammajun Wood,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Thammajun Wood
+        sn: Wood
+        givenName: Thammajun
+        mail: root@cpt.tamu.edu
+        initials: L
+    cn=Bishnu Devkota,ou=Young,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Bishnu Devkota
+        sn: Devkota
+        givenName: Bishnu
+        mail: mail2mrajaure@gmail.com
+    cn=Stephen Crosby,ou=491,ou=CPT,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Stephen Crosby
+        sn: Crosby
+        givenName: Stephen
+        mail: stcrosby@gmail.com
+    cn=Mei Liu,ou=Gill,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Mei Liu
+        sn: Liu
+        givenName: Mei
+        mail: mei.liu.gill@gmail.com
+    cn=Abby Korn,ou=Gill,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Abby Korn
+        sn: Korn
+        givenName: Abby
+        mail: abbykorn@tamu.edu
+    cn=Eric Rasche,ou=CPT,ou=CPT,ou=People,dc=tamu,dc=edu:
+        displayName: Eric Rasche
+        preferredLanguage: en_us
+        givenName: Eric
+        departmentNumber: Biochemistry
+        cn: Eric Rasche
+        telephoneNumber: 4046922048
+        sn: Rasche
+        title: Programmer II
+        initials: S
+        mail: rasche.eric@gmail.com
+    cn=Victoria Berkowitz,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Victoria
+        mail: tberko@neo.tamu.edu
+        initials: E
+        cn: Victoria Berkowitz
+        sn: Berkowitz
+    cn=Ashley Brizendine,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Ashley
+        mail: ashleybrizendine@neo.tamu.edu
+        initials: M
+        cn: Ashley Brizendine
+        sn: Brizendine
+    cn=Joshua Cadungog,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Joshua
+        mail: joshuacadungog1993@neo.tamu.edu
+        initials: N
+        cn: Joshua Cadungog
+        sn: Cadungog
+    cn=Yi Chen,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Yi
+        mail: yichen2010@tamu.edu
+        cn: Yi Chen
+        sn: Chen
+    cn=Dung Doan,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Dung
+        mail: dpdoan143@neo.tamu.edu
+        initials: P
+        cn: Dung Doan
+        sn: Doan
+    cn=Garrett Edwards,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Garrett
+        mail: garrette0831@neo.tamu.edu
+        initials: B
+        cn: Garrett Edwards
+        sn: Edwards
+    cn=Alexander E Vega Gonzalez,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Alexander
+        mail: alexander231991@gmail.com
+        initials: E
+        cn: Alexander E Vega Gonzalez
+        sn: Vega Gonzalez
+    cn=Emily Hargrove,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Emily
+        mail: emily.hargrove@neo.tamu.edu
+        initials: C
+        cn: Emily Hargrove
+        sn: Hargrove
+    cn=Kyuwon Hwang,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Kyuwon
+        mail: hdennis@neo.tamu.edu
+        cn: Kyuwon Hwang
+        sn: Hwang
+    cn=Tsonyake Ladzekpo,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Tsonyake
+        mail: tladzekpo3@tamu.edu
+        initials: N
+        cn: Tsonyake Ladzekpo
+        sn: Ladzekpo
+    cn=Jacob Lancaster,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Jacob
+        mail: jcaster@tamu.edu
+        initials: C
+        cn: Jacob Lancaster
+        sn: Lancaster
+    cn=Simon Lee,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Simon
+        mail: sslee1015@gmail.com
+        initials: S
+        cn: Simon Lee
+        sn: Lee
+    cn=Quynh Nguyen,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Quynh
+        mail: whatever16@neo.tamu.edu
+        initials: T
+        cn: Quynh Nguyen
+        sn: Nguyen
+    cn=Roosheel Patel,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Roosheel
+        mail: rooshe@gmail.com
+        initials: S
+        cn: Roosheel Patel
+        sn: Patel
+    cn=Denish Piya,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Denish
+        mail: denish.piya@gmail.com
+        cn: Denish Piya
+        sn: Piya
+    cn=Justin Shaw,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Justin
+        mail: jpshaw@neo.tamu.edu
+        initials: P
+        cn: Justin Shaw
+        sn: Shaw
+    cn=Jeffrey Snowden,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Jeffrey
+        mail: jeffrey_snowden@neo.tamu.edu
+        initials: D
+        cn: Jeffrey Snowden
+        sn: Snowden
+    cn=Anthony Sperber,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Anthony
+        mail: amsqp4@neo.tamu.edu
+        initials: M
+        cn: Anthony Sperber
+        sn: Sperber
+    cn=Tamra Tolen,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Tamra
+        mail: ttolen84@neo.tamu.edu
+        cn: Tamra Tolen
+        sn: Tolen
+    cn=Yi Xie,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Yi
+        mail: seasonxie@neo.tamu.edu
+        cn: Yi Xie
+        sn: Xie
+    cn=Carlos Ortiz,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Carlos
+        mail: csortiz@tamu.edu
+        cn: Carlos Ortiz
+        sn: Ortiz
+    cn=Tram Le,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Tram
+        mail: tram.le5888@gmail.com
+        cn: Tram Le
+        sn: Le
+    cn=Karl Gorzelnik,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Karl
+        mail: karl.gorzelnik@gmail.com
+        cn: Karl Gorzelnik
+        sn: Gorzelnik
+    cn=Jackie Grimm,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        mail: jackie.grimm@ag.tamu.edu
+        cn: Jackie Grimm
+        sn: Grimm
+    cn=Sudath Dahanayaka,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Sudath
+        mail: sudathd@gmail.com
+        cn: Sudath Dahanayaka
+        sn: Dahanayaka
+    cn=Carlos Andres Aviles Medina,ou=spring,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Carlos
+        mail: ca.avilesmedina@outlook.com
+        cn: Carlos Andres Aviles Medina
+        initials: A
+        sn: Aviles Medina
+    cn=Kartik Eswara,ou=Summer,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Kartik
+        mail: karthik.eswara1993@gmail.com
+        cn: Kartik Eswara
+        sn: Eswara
+    cn=Sahitya Saka,ou=Summer,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Sahitya
+        mail: sahitya2912@gmail.com
+        cn: Sahitya Saka
+        sn: Saka
+    cn=Sailoosha Patchineelam,ou=Summer,ou=2014,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Sailoosha
+        mail: sailooshanitw@gmail.com
+        cn: Sailoosha Patchineelam
+        sn: Patchineelam
+    cn=Andrew Hawrylak,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Andrew
+        sn: Hawrylak
+        cn: Andrew Hawrylak
+    cn=Ashlyn Spring,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Ashlyn
+        sn: Spring
+        cn: Ashlyn Spring
+    cn=Bryan Johnson,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Bryan
+        sn: Johnson
+        cn: Bryan Johnson
+    cn=David Migl,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: David
+        sn: Migl
+        cn: David Migl
+    cn=Jared Fradette,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Jared
+        sn: Fradette
+        cn: Jared Fradette
+    cn=Joshua Tsau,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Joshua
+        sn: Tsau
+        cn: Joshua Tsau
+    cn=Justin Kaspar,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Justin
+        sn: Kaspar
+        cn: Justin Kaspar
+    cn=Kristen Thomas,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Kristen
+        sn: Thomas
+        cn: Kristen Thomas
+    cn=Misty Reynolds,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Misty
+        sn: Reynolds
+        cn: Misty Reynolds
+    cn=Rachel Gubbs,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Rachel
+        sn: Gubbs
+        cn: Rachel Gubbs
+    cn=Timothy Tidwell,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Timothy
+        sn: Tidwell
+        cn: Timothy Tidwell
+    cn=Alex Klattenhoff,ou=2010,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Alex
+        sn: Klattenhoff
+        cn: Alex Klattenhoff
+    cn=Kirtan Brahmbhatt,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        mail: brahmbhatt.kirtan@gmail.com
+        employeeType: student-deactivated
+        givenName: Kirtan
+        sn: Brahmbhatt
+        cn: Kirtan Brahmbhatt
+    cn=James Grover,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: James
+        initials: M
+        sn: Grover
+        cn: James Grover
+    cn=Emily Still,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        mail: emily.still@tamu.edu
+        employeeType: student-deactivated
+        givenName: Emily
+        sn: Still
+        cn: Emily Still
+    cn=Adrian Luna,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Adrian
+        initials: J
+        sn: Luna
+        cn: Adrian Luna
+    cn=Scott Mash,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Scott
+        sn: Mash
+        cn: Scott Mash
+    cn=Brontee Khatemi,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Brontee
+        initials: E
+        sn: Khatemi
+        cn: Brontee Khatemi
+    cn=Simon Rousseau,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Simon
+        sn: Rousseau
+        cn: Simon Rousseau
+    cn=Nicholas Farmer,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Nicholas
+        sn: Farmer
+        cn: Nicholas Farmer
+    cn=Morgan Ritz,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Morgan
+        sn: Rjtz
+        cn: Morgan Ritz
+    cn=Ian Mumm,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Ian
+        sn: Mumm
+        cn: Ian Mumm
+    cn=Justin Maroun,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Justin
+        initials: W
+        sn: Maroun
+        cn: Justin Maroun
+    cn=Drew Decrescenzo,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Andrew
+        initials: J
+        sn: Decrescenzo
+        cn: Drew Decrescenzo
+    cn=Waylon Hastings,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Waylon
+        sn: Hastings
+        cn: Waylon Hastings
+    cn=Jose Ting,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Jose
+        sn: Ting
+        cn: Jose Ting
+    cn=Katie Park,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Katie
+        sn: Park
+        cn: Katie Park
+    cn=Solomon Mathew,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Solomon
+        sn: Mathew
+        cn: Solomon Mathew
+    cn=Mary Hodde,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Mary
+        initials: K
+        sn: Hodde
+        cn: Mary Hodde
+    cn=Mariana Lopez,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Mariana
+        sn: Lopez
+        cn: Mariana Lopez
+    cn=Casey Tatsch,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Casey
+        sn: Tatsch
+        cn: Casey Tatsch
+    cn=Stan Miller,ou=spring,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Stan
+        sn: Miller
+        cn: Stan Miller
+    cn=Aditi Agarwal,ou=summer,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        mail: aditi23@tamu.edu
+        givenName: Aditi
+        sn: Agarwal
+        cn: Aditi Agarwal
+    cn=Shaik Waseem,ou=summer,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        mail: cool.waseem80@gmail.com
+        givenName: Shaik
+        sn: Waseem
+        cn: Shaik Waseem
+    cn=Deepti Reddy,ou=summer,ou=2013,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        mail: kundur.deepti.reddy@gmail.com
+        givenName: Deepti
+        sn: Reddy
+        cn: Deepti Reddy
+    cn=Adam Millard,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Adam
+        sn: Millard
+        employeeType: student-deactivated
+        mail: Adammillard18@gmail.com
+        cn: Adam Millard
+    cn=Adam Ramos,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Adam
+        sn: Ramos
+        employeeType: student-deactivated
+        mail: Jjbandsax1@neo.tamu.edu
+        cn: Adam Ramos
+    cn=Aneesha Kulkami,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Aneesha
+        sn: Kulkami
+        employeeType: student-deactivated
+        mail: Aneesha267@gmail.com
+        cn: Aneesha Kulkami
+    cn=Brittany Newsham,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Brittany
+        sn: Newsham
+        employeeType: student-deactivated
+        mail: b.newsh@gmail.com
+        cn: Brittany Newsham
+    cn=Christopher Chung On,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Christopher
+        sn: On
+        employeeType: student-deactivated
+        mail: ccchungon@gmail.com
+        cn: Christopher Chung On
+    cn=Eric Rasche,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Eric
+        sn: Rasche
+        employeeType: student-deactivated
+        mail: rasche.eric@yandex.ru
+        cn: Eric Rasche
+    cn=Francisco Barrios,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Francisco
+        sn: Barrios
+        employeeType: student-deactivated
+        mail: felix10271@neo.tamu.edu
+        cn: Francisco Barrios
+    cn=James Reedy,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: James
+        sn: Reedy
+        employeeType: student-deactivated
+        mail: bregg_reedy@neo.tamu.edu
+        cn: James Reedy
+    cn=Lauren Staffen,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Lauren
+        sn: Staffen
+        employeeType: student-deactivated
+        mail: lauren1210@neo.tamu.edu
+        cn: Lauren Staffen
+    cn=Matthew Ritter,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Matthew
+        sn: Ritter
+        employeeType: student-deactivated
+        mail: matthewr@grandecom.net
+        cn: Matthew Ritter
+    cn=Meagan Cummings,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Meagan
+        sn: Cummings
+        employeeType: student-deactivated
+        mail: m.michelle.cummings@gmail.com
+        cn: Meagan Cummings
+    cn=Oscar Herrera,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Oscar
+        sn: Herrera
+        employeeType: student-deactivated
+        mail: oscar777@neo.tamu.edu
+        cn: Oscar Herrera
+    cn=Sairah Zia,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Sairah
+        sn: Zia
+        employeeType: student-deactivated
+        mail: szia15@neo.tamu.edu
+        cn: Sairah Zia
+    cn=Shama Dhanani,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: Shama
+        sn: Dhanani
+        employeeType: student-deactivated
+        mail: Shama.dhanani@gmail.com
+        cn: Shama Dhanani
+    cn=William Evers,ou=2012,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        givenName: William
+        sn: Evers
+        employeeType: student-deactivated
+        mail: W_evers89@yahoo.com
+        cn: William Evers
+    cn=Celina Oropeza,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Celina
+        sn: Oropeza
+        cn: Celina Oropeza
+    cn=Damian Dominguez,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Damian
+        sn: Dominguez
+        cn: Damian Dominguez
+    cn=Daniel Hernandez,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Daniel
+        sn: Hernandez
+        cn: Daniel Hernandez
+    cn=Jennifer Keene,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Jennifer
+        sn: Keene
+        cn: Jennifer Keene
+    cn=Kevin White,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Kevin
+        sn: White
+        cn: Kevin White
+    cn=Lauren Lessor,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Lauren
+        sn: Lessor
+        cn: Lauren Lessor
+    cn=Matthew Maddox,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Matthew
+        sn: Maddox
+        cn: Matthew Maddox
+    cn=Michael Dachowski,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Michael
+        sn: Dachowski
+        cn: Michael Dachowski
+    cn=Rebecca Martin,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Rebecca
+        sn: Martin
+        cn: Rebecca Martin
+    cn=Sheba Mohan,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Sheba
+        sn: Mohan
+        cn: Sheba Mohan
+    cn=Ashley Kane,ou=2011,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student-deactivated
+        givenName: Ashley
+        sn: Kane
+        cn: Ashley Kane
+    cn=Tram Le,ou=Gonzalez,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Tram Le
+        sn: Le
+        givenName: Tram
+        mail: tram.le5888@gmail.com
+    cn=Chi Zeng,ou=Gill,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Chi Zeng
+        sn: Zeng
+        givenName: Chi
+        mail: 232881046@qq.com
+    cn=Jordan Sloan,ou=491,ou=CPT,ou=CPT,ou=People,dc=tamu,dc=edu:
+        cn: Jordan Sloan
+        sn: Sloan
+        givenName: Jordan
+        mail: sloanj1400@tamu.edu
+    cn=Roberto Burgos,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Roberto
+        mail: rwb03267@tamu.edu
+        cn: Roberto W. Burgos
+        cn: Roberto Burgos
+        initials: W.
+        sn: Burgos
+    cn=Marc Pitts,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Marc
+        mail: map112@tamu.edu
+        cn: Marc A. Pitts
+        cn: Marc Pitts
+        initials: A.
+        sn: Pitts
+    cn=Jonathan Solis,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Jonathan
+        mail: jas12192@tamu.edu
+        cn: Jonathan A. Solis
+        cn: Jonathan Solis
+        initials: A.
+        sn: Solis
+    cn=Dat Nguyen,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Dat
+        mail: nguyen1dat@tamu.edu
+        cn: Dat T. Nguyen
+        cn: Dat Nguyen
+        initials: T.
+        sn: Nguyen
+    cn=Kayla Lesage,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Kayla
+        mail: kayla.c.lesage@tamu.edu
+        cn: Kayla C. Lesage
+        cn: Kayla Lesage
+        initials: C.
+        sn: Lesage
+    cn=Eleni Mijalis,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Eleni
+        mail: elenimijalis@email.tamu.edu
+        cn: Eleni M. Mijalis
+        cn: Eleni Mijalis
+        initials: M.
+        sn: Mijalis
+    cn=Dain Yi,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Dain
+        mail: dain9325@email.tamu.edu
+        cn: Dain Yi
+        sn: Yi
+    cn=Joseph Wilder,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Joseph
+        mail: jwilder93@tamu.edu
+        cn: Joseph N. Wilder
+        cn: Joseph Wilder
+        initials: N.
+        sn: Wilder
+    cn=Christopher Bernal,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Christopher
+        mail: chrisb3@tamu.edu
+        cn: Christopher L. Bernal
+        cn: Christopher Bernal
+        initials: L.
+        sn: Bernal
+    cn=Roxann Lerma,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Roxann
+        mail: rlerma0269@gmail.com
+        cn: Roxann A. Lerma
+        cn: Roxann Lerma
+        initials: A.
+        sn: Lerma
+    cn=Leonardo Vara,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Leonardo
+        mail: lv96921@tamu.edu
+        cn: Leonardo Vara
+        sn: Vara
+    cn=Jordan Sloan,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Jordan
+        mail: sloanj1400@tamu.edu
+        cn: Jordan M. Sloan
+        cn: Jordan Sloan
+        initials: M.
+        sn: Sloan
+    cn=Vincent Provasek,ou=spring,ou=2015,ou=bich464,ou=CPT,ou=People,dc=tamu,dc=edu:
+        employeeType: student
+        givenName: Vincent
+        mail: vincentprovasek@tamu.edu
+        cn: Vincent E. Provasek
+        cn: Vincent Provasek
+        initials: E.
+        sn: Provasek
+orgs:
+    ou=CPT,ou=CPT,ou=People,dc=tamu,dc=edu:
+        l: College Station
+        ou: CPT
+        postalAddress: Center for Phage Technology$2128 TAMU$College Station, TX, USA
+        postalCode: 77843-2128
+        st: TX
+        street: 2128 TAMU
+        telephoneNumber: 9798456839
