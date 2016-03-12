@@ -35,7 +35,9 @@
     --tmpdir "${discrep.files_path}";
 
 ## Cheaply copy from archive into folder
-cat ${discrep.files_path}/discrep > $discrep;
+echo '<html><head></head><body>' >> $discpep;
+cat ${discrep.files_path}/discrep >> $discrep;
+echo '</body></html>' >> $discpep;
 ]]>
 </command>
   <inputs>
@@ -52,7 +54,7 @@ cat ${discrep.files_path}/discrep > $discrep;
     <param name="genbank_file" help="Genbank File" label="genbank_file" type="data"/>
   </inputs>
   <outputs>
-    <data name="discrep" format="txt">
+    <data name="discrep" format="html">
     </data>
   </outputs>
   <help>WHY YOU CARE
