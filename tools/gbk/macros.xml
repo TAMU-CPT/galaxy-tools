@@ -24,10 +24,11 @@
     token_label="Pick a DN"
     token_fromfile="ldap_people.loc">
         <repeat name="repeat_@NAME@" title="@LABEL@">
-          <param name="@NAME@" label="Select a @LABEL@" type="select" from_file="@FROMFILE@">
-            <column name="value" index="0"/>
-            <column name="name" index="1"/>
-            <column name="dn" index="2"/>
+          <param name="@NAME@" label="Select a @LABEL@" type="select">
+            <options from_file="@FROMFILE@">
+                <column name="name" index="0"/>
+                <column name="value" index="1"/>
+            </options>
           </param>
         </repeat>
     </xml>
