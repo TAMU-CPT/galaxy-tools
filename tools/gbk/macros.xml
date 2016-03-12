@@ -32,4 +32,15 @@
           </param>
         </repeat>
     </xml>
+  <xml name="ldap_ref_single"
+    token_name="dn_ref"
+    token_label="Pick a DN"
+    token_fromfile="ldap_people.loc">
+          <param name="@NAME@" label="Select a @LABEL@" type="select">
+            <options from_file="@FROMFILE@">
+                <column name="name" index="0"/>
+                <column name="value" index="1"/>
+            </options>
+          </param>
+    </xml>
 </macros>

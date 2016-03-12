@@ -42,12 +42,12 @@ cat ${discrep.files_path}/discrep > $discrep;
     <param name="genbank_submission_title" help="Genbank Submission Title" label="genbank_submission_title" type="text"/>
     <expand macro="ldap_ref" name="genbank_record_author" label="genbank record author" fromfile="ldap_people.loc"/>
     <expand macro="ldap_ref" name="genbank_record_contact" label="genbank record contact" fromfile="ldap_people.loc"/>
-    <expand macro="ldap_ref" name="genbank_record_affiliation" label="genbank record affiliation" fromfile="ldap_orgs.loc"/>
+    <expand macro="ldap_ref_single" name="genbank_record_affiliation" label="genbank record affiliation" fromfile="ldap_orgs.loc"/>
 
     <param name="paper_submission_title" help="Paper Submission Title" label="paper_submission_title" type="text"/>
     <expand macro="ldap_ref" name="paper_record_author" label="paper record author" fromfile="ldap_people.loc"/>
     <expand macro="ldap_ref" name="paper_record_contact" label="paper record contact" fromfile="ldap_people.loc"/>
-    <expand macro="ldap_ref" name="paper_record_affiliation" label="paper record affiliation" fromfile="ldap_orgs.loc"/>
+    <expand macro="ldap_ref_single" name="paper_record_affiliation" label="paper record affiliation" fromfile="ldap_orgs.loc"/>
 
     <param name="genbank_file" help="Genbank File" label="genbank_file" type="data"/>
   </inputs>
