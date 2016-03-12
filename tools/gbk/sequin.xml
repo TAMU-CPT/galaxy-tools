@@ -10,25 +10,25 @@
     --genbank_submission_title "${genbank_submission_title}"
 
     #for $item in $repeat_genbank_record_author:
-    --genbank_record_author "${item.genbank_record_author.dn}"
+    --genbank_record_author "${item.genbank_record_author}"
     #end for
 
     #for $item in $repeat_genbank_record_contact:
-    --genbank_record_contact "${item.genbank_record_contact.dn}"
+    --genbank_record_contact "${item.genbank_record_contact}"
     #end for
 
-    --genbank_record_affiliation "${genbank_record_affiliation.dn}"
+    --genbank_record_affiliation "${genbank_record_affiliation}"
     --paper_submission_title "${paper_submission_title}"
 
     #for $item in $repeat_paper_record_author:
-    --paper_record_author "${item.paper_record_author.dn}"
+    --paper_record_author "${item.paper_record_author}"
     #end for
 
     #for $item in $repeat_paper_record_contact:
-    --paper_record_contact "${item.paper_record_contact.dn}"
+    --paper_record_contact "${item.paper_record_contact}"
     #end for
 
-    --paper_record_affiliation "${paper_record_affiliation.dn}"
+    --paper_record_affiliation "${paper_record_affiliation}"
     --genbank_file "${genbank_file}"
 
     --people $__tool_directory__/people.yaml
