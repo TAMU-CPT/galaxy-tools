@@ -35,9 +35,9 @@
     --tmpdir "${discrep.files_path}";
 
 ## Cheaply copy from archive into folder
-echo '<html><head></head><body>' >> $discpep;
+echo '<html><head></head><body><pre>' >> $discpep;
 cat ${discrep.files_path}/discrep >> $discrep;
-echo '</body></html>' >> $discpep;
+echo '</pre></body></html>' >> $discpep;
 ]]>
 </command>
   <inputs>
