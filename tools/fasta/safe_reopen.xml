@@ -1,0 +1,39 @@
+<tool id="edu.tamu.cpt.fasta.safe_reopen" name="Auto-reopen Fasta" version="1.0">
+  <description>based on gene calls</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command><![CDATA[
+python $__tool_directory__/safe_reopen.py
+$fasta_file
+#for gff in $gff3_files:
+    $gff
+#end for
+> $output
+]]></command>
+  <inputs>
+    <param label="Fasta file" name="fasta_file" type="data" format="fasta"/>
+    <param lable="GFF3 gene calls" name="gff3_files" type="data" format="gff3" multiple="True" />
+  </inputs>
+  <outputs>
+    <data format="fasta" name="output"/>
+  </outputs>
+  <tests>
+    <test>
+        <param name="fasta_file" value="57.fa" />
+        <param name="gff3_files" value="57.1.gff3,57.2.gff3,57.3.gff3" />
+        <output name="output" file="57.new.fa" />
+    </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Given a set of gene calls and a fasta sequence, try and re-open that fasta
+sequence in between genes. Given that no genome annotation software really
+expects a randomly permuted genome, this can lead to issues when genes "wrap
+around" the end of the genome.
+
+Thus we can avoid that issue completely if we have a preliminary step wherein
+we reopen the sequence in between putative gene calls.
+]]></help>
+</tool>
