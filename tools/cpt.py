@@ -59,7 +59,7 @@ class OrfFinder(object):
 
     def locate(self, fasta_file, out_nuc, out_prot, out_bed, out_gff3):
         seq_format = "fasta"
-        log.debug("Genetic code table %i" % table)
+        log.debug("Genetic code table %i" % self.table)
         log.debug("Minimum length %i aa" % self.min_len)
 
         out_count = 0
@@ -117,31 +117,10 @@ class OrfFinder(object):
             if index % 3 != 0:
                 continue
             n = s[start:index]
-            if self.ftype == "CDS":
-                for (offset, n, t) in self.start_chop_and_trans(n):
-                    if n and len(t) >= self.min_len:
-                        yield start + offset, n, t
-                start = index
-            else:
-                offset = 0
-                t = translate(n, self.table, to_stop=True)
-        if self.ends == "open":
-            # No stop codon, Biopython's strict CDS translate will fail
-            n = s[start:]
-            # Ensure we have whole codons
-            # TODO - Try appending N instead?
-            # TODO - Do the next four lines more elegantly
-            if len(n) % 3:
-                n = n[:-1]
-            if len(n) % 3:
-                n = n[:-1]
-            if self.ftype == "CDS":
-                offset, n, t = self.start_chop_and_trans(n, strict=False)
-            else:
-                offset = 0
-                t = translate(n, self.table, to_stop=True)
-            if n and len(t) >= self.min_len:
-                yield start + offset, n, t
+            for (offset, n, t) in self.start_chop_and_trans(n):
+                if n and len(t) >= self.min_len:
+                    yield start + offset, n, t
+            start = index
 
     def putative_genes_in_sequence(self, nuc_seq):
         """Returns start, end, strand, nucleotides, protein.
