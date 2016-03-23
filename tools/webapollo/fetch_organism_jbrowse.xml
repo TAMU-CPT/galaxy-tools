@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.fetch_jbrowse" name="WA2: Fetch JBrowse" version="1.0">
+  <description>fetches JBrowse data for existing organisms</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+## cp -R ${jbrowse.extra_files_path}/data/ /opt/apollo/data/galaxy/${jbrowse.id};
+mkdir -p $jbrowse.files_path;
+
+cp -R $(
+python $__tool_directory__/fetch_organism_jbrowse.py
+@AUTH@
+@CN_OR_GUESS@
+$__user_email__
+)/. $jbrowse.files_path;
+
+cp $dummyIndex $jbrowse;
+
+]]></command>
+  <configfiles>
+      <configfile name="dummyIndex">
+      <![CDATA[
+      <html>
+          <head>
+          </head>
+          <body>
+              <h1>JBrowse Data Directory</h1>
+              <p>
+                Hi! This is not a full JBrowse instance. JBrowse v0.4(+?)
+                started shipping with the ability to produce just the
+                "data" directory from a JBrowse instance, rather than a
+                complete, standalone instance. This was intended to be used
+                with the in-development Apollo integration, but may have other
+                uses as well.
+              </p>
+              <p>
+                <u>This is not usable on its own</u>. The output dataset may be
+                used with Apollo, or may be passed through the "JBrowse -
+                Convert to Standalone" tool in Galaxy to "upgrade" to a full
+                JBrowse instance.
+              </p>
+          </body>
+      </html>
+          ]]>
+      </configfile>
+  </configfiles>
+  <inputs>
+    <param name="jbrowse" type="data" format="html" label="JBrowse HTML Output" />
+    <param name="blatdb" type="data" label="Blat DB" optional="True" />
+
+    <expand macro="cn_or_guess" />
+    <param name="genus" type="text" label="Host Bacteria" optional="True" />
+    <param name="species" type="text" label="Phage Name" optional="True" />
+    <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
+  </inputs>
+  <outputs>
+    <data format="html" name="jbrowse"/>
+  </outputs>
+  <help><![CDATA[
+**NOTA BENE**
+
+All organism data is currently shared. By using this tool your annotation data will be visible to your fellow lab members.
+This will be fixed at a later date.
+
+**What it does**
+
+Fetches the JBrowse directory from Apollo back into Galaxy.
+]]></help>
+</tool>
