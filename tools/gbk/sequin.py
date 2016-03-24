@@ -8,7 +8,7 @@ import os
 import yaml
 import re
 
-SBT_TPL = '''Submit-block ::= {
+SBT_TPL = '''Seq-submit ::= {
   contact {
     contact {
       name name {
