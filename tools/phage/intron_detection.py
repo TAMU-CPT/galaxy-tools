@@ -342,6 +342,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Intron detection')
     parser.add_argument('gff3', type=file, help='GFF3 gene calls')
     parser.add_argument('blastp', type=file, help='blast XML protein results')
+    parser.add_argument('--svg', help='Path to output svg file to', default='clusters.svg')
     args = parser.parse_args()
 
     # create new IntronFinder object based on user input
@@ -352,7 +353,7 @@ if __name__ == '__main__':
     ifinder.clusters = ifinder.check_seq_overlap()
 
     condensed_report = ifinder.cluster_report()
-    ifinder.draw_genes('clusters.svg')
+    ifinder.draw_genes(args.svg)
     rec = ifinder.output_gff3(ifinder.clusters)
     GFF.write([rec], sys.stdout)
 
