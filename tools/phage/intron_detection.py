@@ -346,7 +346,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # create new IntronFinder object based on user input
-    ifinder = IntronFinder(**vars(args))
+    ifinder = IntronFinder(args.gff3, args.blastp)
     ifinder.create_clusters()
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
