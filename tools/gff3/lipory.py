@@ -35,10 +35,17 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
 
             tmpseq = str(cds.extract(record.seq).translate(table=11, cds=True)).replace("*", "")
             for case in CASES:
-                if case.search(tmpseq):
+                m = case.search(tmpseq)
+                if m:
+                    if cds.location.strand > 0:
+                        start = cds.location.start + m.end() - 4
+                        end = cds.location.start + m.end()
+                    else:
+                        start = cds.location.end - m.end() + 4
+                        end = cds.location.end - m.end()
 
                     tmp = SeqFeature(
-                        FeatureLocation(start, end, strand=strand),
+                        FeatureLocation(start, end, strand=cds.location.strand),
                         type='Lipobox',
                         qualifiers={
                             'source': 'CPT_LipoRy',
