@@ -38,7 +38,7 @@ def convert_to_bigwig(wig_file, chr_sizes, bw_file):
         cl = ["wigToBigWig", wig_file, size_file, bw_file]
         subprocess.check_call(cl)
     finally:
-        os.remove(size_file)
+        os.unlink(size_file)
     return bw_file
 
 
