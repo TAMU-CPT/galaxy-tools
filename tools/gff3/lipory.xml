@@ -5,7 +5,7 @@
     <exit_code level="fatal" range="1:"/>
   </stdio>
   <version_command>python fasta_lipory.py --version</version_command>
-  <command interpreter="python"><![CDATA[fasta_lipory.py
+  <command interpreter="python"><![CDATA[lipory.py
 $positional_1
 $positional_2
 
