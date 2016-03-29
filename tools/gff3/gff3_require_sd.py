@@ -16,10 +16,17 @@ def require_shinefind(gff3, fasta):
     # Parse GFF3 records
     for record in GFF.parse(gff3, base_dict=seq_dict):
         # Reopen
-        genes = list(feature_lambda(record.features, feature_test_type, {'type': 'CDS'}, subfeatures=True))
+        genes = list(feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True))
         good_genes = []
         for gene in genes:
-            sds, start, end, seq = sd_finder.testFeatureUpstream(gene, record, sd_min=5, sd_max=17)
+            cdss = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))
+            if len(cdss) == 0:
+                continue
+
+            # Someday this will bite me in the arse.
+            cds = cdss[0]
+
+            sds, start, end, seq = sd_finder.testFeatureUpstream(cds, record, sd_min=5, sd_max=17)
             if len(sds) > 1:
                 # TODO
                 # Double plus yuck
