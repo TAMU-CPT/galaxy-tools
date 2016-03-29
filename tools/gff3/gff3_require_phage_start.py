@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import sys
-import logging
 import argparse
 from Bio import SeqIO
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type
+import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
