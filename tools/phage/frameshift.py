@@ -52,7 +52,8 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                 # or two codons are equal.
                 tn_codons = codons.seq.translate(table=table)
                 for wobble in range(slippage_max, 3):
-                    if wobble == 0:
+                    # Don't allow wobbling within frame
+                    if wobble % 3 == 0:
                         continue
 
                     cmp_codons = feat_seq[idx - 6 + wobble:idx+wobble]
