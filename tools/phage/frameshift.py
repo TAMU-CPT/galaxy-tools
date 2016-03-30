@@ -51,7 +51,10 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                 # Look from -10 to +5, and check under wobble rules, one
                 # or two codons are equal.
                 tn_codons = codons.seq.translate(table=table)
-                for wobble in range(slippage_max, 0):
+                for wobble in range(slippage_max, 3):
+                    if wobble == 0:
+                        continue
+
                     cmp_codons = feat_seq[idx - 6 + wobble:idx+wobble]
                     cmp_codons = cmp_codons.seq.translate(table=table)
 
@@ -98,8 +101,11 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     sys.stderr.write('>' + '\t'.join(map(str, (
                         score,
                         distance(str(tn_codons), str(cmp_codons)),
-                            feat.id, feat.location.strand,
-                            possible_frameshift_start, idx, wobble, codons.seq, tn_codons, cmp_codons, frameshift_to_end[0:6]
+                        feat.id,
+                        feat.location.strand,
+                        possible_frameshift_start, idx,
+                        wobble, codons.seq, tn_codons, cmp_codons,
+                        frameshift_to_end[0:6]
                     ))) + '\n')
 
                     # Ok, we need to add a new mRNA structure for this
