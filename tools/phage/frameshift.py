@@ -2,6 +2,7 @@
 import argparse
 import re
 import sys
+from collections import Counter
 from Levenshtein import distance
 from BCBio import GFF
 from Bio import SeqIO
@@ -12,6 +13,15 @@ from gff3 import feature_lambda, feature_test_type
 import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
+
+def slipperyScore(sequence):
+    a = Counter(str(sequence[0:3]).upper())
+    b = Counter(str(sequence[3:6]).upper())
+    # There are a couple of cases. 1) all three are the same, len(keys) == 1,
+    # one char is diff, so len(keys) == 2, and then all are diff. Long story
+    # short, can use keyset lengths here.
+    score = 4 + (1 - len(a.keys())) + (1 - len(b.keys()))
+    return score
 
 
 def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
@@ -79,7 +89,14 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     # if str(codons.seq)[0] != str(cmp_codons)[0]:
                         # continue
 
+                    # Scoring to help users filter out less likely results.
+                    # Start at 4 because they've already been identified at
+                    # some level as being a possible frameshift candidate.
+                    score = 4 + slipperyScore(frameshift_to_end[0:7])
+
+
                     sys.stderr.write('>' + '\t'.join(map(str, (
+                        score,
                         distance(str(tn_codons), str(cmp_codons)),
                             feat.id, feat.location.strand,
                             possible_frameshift_start, idx, wobble, codons.seq, tn_codons, cmp_codons, frameshift_to_end[0:6]
@@ -102,6 +119,7 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                         type='mRNA',
                         qualifiers={
                             'source': ['CPT_FSFinder'],
+                            'score': score * (1000 / 8),
                         }
                     )
                     exon = SeqFeature(
@@ -157,10 +175,11 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     )
 
                     mRNA.sub_features = [cds_a, cds_b, exon]
-                    gene.sub_features.append(mRNA)
+                    gene.sub_features = [mRNA]
                     putative_frameshift_genes.append(gene)
 
         rec.features = putative_frameshift_genes
+        rec.annotations = {}
         yield [rec]
 
 
