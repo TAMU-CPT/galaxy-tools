@@ -2,7 +2,6 @@
 import sys
 import argparse
 from Bio import SeqIO
-from Bio.SeqFeature import SeqFeature, FeatureLocation
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type, get_id, fetchParent
 import re
@@ -66,7 +65,6 @@ def writeGff3(data, handle, parentGff3):
                 subfeatures=False
             )
         )
-
         record.features = []
         for cds in cdss:
             if 'note' not in cds.qualifiers:
