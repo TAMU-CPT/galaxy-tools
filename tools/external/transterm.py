@@ -85,7 +85,7 @@ def parse_transterm(data):
                 strand=1 if pd['strand'] == '+' else -1,
                 qualifiers={
                     'score': pd['confidence'],
-                    'Source': 'TranstermHP',
+                    'source': 'TranstermHP',
                     'ID': ['terminator_%s' % idx],
                     'Note': [
                         '%s: %s' % (k, pd[k]) for k in COLS[6:]
