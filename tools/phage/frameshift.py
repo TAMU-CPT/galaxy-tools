@@ -2,10 +2,12 @@
 import argparse
 import re
 import sys
+from Levenshtein import distance
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda, feature_test_type
+
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -43,9 +45,6 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     cmp_codons = feat_seq[idx - 6 + wobble:idx+wobble]
                     cmp_codons = cmp_codons.seq.translate(table=table)
 
-                    if tn_codons != cmp_codons:
-                        continue
-
                     # Here we've found a feature which has a possible
                     # frame shift target. Now we need to check if there's
                     # a run of stop-codon free.
@@ -66,6 +65,25 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     # at least half as long as the parent.
                     if len(translated_seq) < len(feat) / (3 * 2):
                         continue
+
+                    # If both AAs are different, continue. This would be very strange.
+                    if distance(str(tn_codons), str(cmp_codons)) > 1:
+                        continue
+
+                    # If the edit distance between the amino acid sequences is > 4, remove it as it is unlikely.
+                    if distance(str(codons.seq), str(frameshift_to_end[0:6])) > 4:
+                        continue
+
+
+                    # Do not allow cases where the leading NT changes.
+                    # if str(codons.seq)[0] != str(cmp_codons)[0]:
+                        # continue
+
+                    sys.stderr.write('>' + '\t'.join(map(str, (
+                        distance(str(tn_codons), str(cmp_codons)),
+                            feat.id, feat.location.strand,
+                            possible_frameshift_start, idx, wobble, codons.seq, tn_codons, cmp_codons, frameshift_to_end[0:6]
+                    ))) + '\n')
 
                     # Ok, we need to add a new mRNA structure for this
                     if feat.location.strand > 0:
@@ -138,13 +156,8 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                         }
                     )
 
-                    print feat.id, feat.location.strand, \
-                            possible_frameshift_start, idx, wobble, codons.seq, tn_codons, cmp_codons, frameshift_to_end[0:6]
-                    print translated_seq
-
-                    exon.sub_features = [cds_a, cds_b]
-                    mRNA.sub_features = [exon]
-                    gene.sub_features = [mRNA]
+                    mRNA.sub_features = [cds_a, cds_b, exon]
+                    gene.sub_features.append(mRNA)
                     putative_frameshift_genes.append(gene)
 
         rec.features = putative_frameshift_genes
