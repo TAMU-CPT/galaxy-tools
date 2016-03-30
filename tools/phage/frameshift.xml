@@ -35,4 +35,22 @@ Finds:
 
 and returns those as a new set of features, scored by their similarity to the canonical slippery sequence (XXXYYYZ)
         ]]></help>
+        <citations>
+            <citation type="bibtex">
+                @article{Xu200411,
+                    title = "Conserved Translational Frameshift in dsDNA Bacteriophage Tail Assembly Genes ",
+                    journal = "Molecular Cell ",
+                    volume = "16",
+                    number = "1",
+                    pages = "11 - 21",
+                    year = "2004",
+                    note = "",
+                    issn = "1097-2765",
+                    doi = "http://dx.doi.org/10.1016/j.molcel.2004.09.006",
+                    url = "http://www.sciencedirect.com/science/article/pii/S1097276504005398",
+                    author = "Jun Xu and Roger W. Hendrix and Robert L. Duda",
+                    abstract = "A programmed translational frameshift similar to frameshifts in retroviral gag-pol genes and bacterial insertion elements was found to be strongly conserved in tail assembly genes of dsDNA phages and to be independent of sequence similarities. In bacteriophage λ, this frameshift controls production of two proteins with overlapping sequences, gpG and gpGT, that are required for tail assembly. We developed bioinformatic approaches to identify analogous −1 frameshifting sites and experimentally confirmed our predictions for five additional phages. Clear evidence was also found for an unusual but analogous −2 frameshift in phage Mu. Frameshifting sites could be identified for most phages with contractile or noncontractile tails whose length is controlled by a tape measure protein. Phages from a broad spectrum of hosts spanning Eubacteria and Archaea appear to conserve this frameshift as a fundamental component of their tail assembly mechanisms, supporting the idea that their tail genes share a common, distant ancestry. "
+                }
+            </citation>
+        </citations>
 </tool>
