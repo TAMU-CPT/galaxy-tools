@@ -1,9 +1,11 @@
 #!/usr/bin/env python
+import os
 import json
 import argparse
 import time
 from webapollo import WebApolloInstance
 import logging
+import subprocess
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -15,6 +17,7 @@ if __name__ == '__main__':
     parser.add_argument('password', help='WA Admin Password')
     parser.add_argument('cn', help='Organism Common Name')
     parser.add_argument('email', help='User Email')
+    parser.add_argument('target_dir', help='Target directory')
 
     args = parser.parse_args()
 
@@ -25,4 +28,10 @@ if __name__ == '__main__':
     if len(gx_user) == 0:
         raise Exception("Unknown user. Please register first")
     org = wa.organisms.findOrganismByCn(args.cn)
-    print org['directory']
+
+
+    subprocess.check_call([
+        'cp', '-R',
+        os.path.join(org['directory'], '.'),
+        args.target_dir
+    ])

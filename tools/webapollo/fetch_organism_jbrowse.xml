@@ -8,12 +8,11 @@
   <command detect_errors="aggressive"><![CDATA[
 mkdir -p $jbrowse.files_path;
 
-cp -R $(
 python $__tool_directory__/fetch_organism_jbrowse.py
 @AUTH@
 @CN_OR_GUESS@
 $__user_email__
-)/. $jbrowse.files_path;
+$jbrowse.files_path;
 
 cp $dummyIndex $jbrowse;
 
