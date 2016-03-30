@@ -23,7 +23,7 @@
       <conditional name="reference_genome">
           <param name="reference_genome_source" type="select" label="Reference Genome">
               <option value="cached">Locally Cached</option>
-              <option value="history">From History</option>
+              <option value="history" selected="True">From History</option>
           </param>
           <when value="cached">
             <param name="fasta_indexes" type="select" label="Source FASTA Sequence">
