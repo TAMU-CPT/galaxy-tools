@@ -30,6 +30,9 @@ if __name__ == '__main__':
     org = wa.organisms.findOrganismByCn(args.cn)
 
 
+    if not os.path.exists(args.target_dir):
+        os.makedirs(args.target_dir)
+
     subprocess.check_call([
         'cp', '-R',
         os.path.join(org['directory'], '.'),
