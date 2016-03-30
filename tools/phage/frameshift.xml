@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.phage.fsfinder" name="Phage Frame Shift Finder" version="1.0">
+    <description>finds possible frame shifts</description>
+    <macros>
+      <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <expand macro="stdio"/>
+    <command><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+python $__tool_directory__/frameshift.py
+$gff3_data
+@GENOME_SELECTOR@
+
+> $output]]></command>
+    <inputs>
+        <expand macro="gff3_input" />
+        <expand macro="genome_selector" />
+    </inputs>
+    <outputs>
+      <data format="gff3" name="gff3" label="Possible frame shifts in ${on_string}"/>
+    </outputs>
+    <help><![CDATA[
+**What it does**
+
+Finds:
+
+* locations near the end of a gene
+* scans the -3 to -1 reading frames for possible ORF starts which:
+
+  * have a reading frame at least half as long as the parent sequence
+  * have at least 1 AA the same
+  * have at least 4 nucleotides identical (this may be too opinionated)
+
+and returns those as a new set of features, scored by their similarity to the canonical slippery sequence (XXXYYYZ)
+        ]]></help>
+</tool>
