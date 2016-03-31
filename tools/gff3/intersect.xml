@@ -18,8 +18,8 @@ $gff3_data_b
     <param label="GFF3 Annotations B" name="gff3_data_b" type="data" format="gff3"/>
   </inputs>
   <outputs>
-    <data format="gff3" name="oa" label="GFF3 Annotations from ${gff3_data_a}.name in ${gff3_data_b}.name"/>
-    <data format="gff3" name="ob" label="GFF3 Annotations from ${gff3_data_b}.name in ${gff3_data_a}.name"/>
+    <data format="gff3" name="oa" label="GFF3 Annotations from ${gff3_data_a.name} in ${gff3_data_b.name}"/>
+    <data format="gff3" name="ob" label="GFF3 Annotations from ${gff3_data_b.name} in ${gff3_data_a.name}"/>
   </outputs>
   <help><![CDATA[
 
