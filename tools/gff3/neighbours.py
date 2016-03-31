@@ -78,8 +78,19 @@ def neighbours(a, b, within=1000, mode='unordered', **kwargs):
     rec_a = rec_a[0]
     rec_b = rec_b[0]
 
-    tree_f = IntervalTree(list(treeFeatures(rec_a.features, strand=1)), 1, len(rec_a))
-    tree_r = IntervalTree(list(treeFeatures(rec_a.features, strand=-1)), 1, len(rec_a))
+    feat_f = list(treeFeatures(rec_a.features, strand=1))
+    feat_r = list(treeFeatures(rec_a.features, strand=-1))
+
+    if len(feat_f) > 0:
+        tree_f = IntervalTree(feat_f, 1, len(rec_a))
+    else:
+        tree_f = None
+
+    if len(feat_r) > 0:
+        tree_r = IntervalTree(feat_r, 1, len(rec_a))
+    else:
+        tree_r = None
+
 
     rec_a_map = {f.id: f for f in rec_a.features}
     rec_b_map = {f.id: f for f in rec_b.features}
@@ -95,6 +106,8 @@ def neighbours(a, b, within=1000, mode='unordered', **kwargs):
             if mode != 'ordered':
                 end += within
 
+            if tree_f is None: continue
+
             hits = tree_f.find_range((start, end))
             if len(hits) == 0: continue
             print start, end, feature.location.strand, feature.id, hits
@@ -107,6 +120,8 @@ def neighbours(a, b, within=1000, mode='unordered', **kwargs):
             end += within
             if mode != 'ordered':
                 start -= within
+
+            if tree_r is None: continue
 
             hits = tree_r.find_range((start, end))
             if len(hits) == 0: continue
