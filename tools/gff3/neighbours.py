@@ -97,9 +97,12 @@ def neighbours(a, b, within=1000, mode='unordered', **kwargs):
 
             hits = tree_f.find_range((start, end))
             if len(hits) == 0: continue
-            # print start, end, feature.location.strand, hits, feature.id
+            print start, end, feature.location.strand, feature.id, hits
+
+            rec_b_hits_in_a.append(feature)
             for hit in hits:
-                rec_b_hits_in_a.append(rec_a_map[hit])
+                rec_a_hits_in_b.append(rec_a_map[hit])
+
         else:
             end += within
             if mode != 'ordered':
@@ -108,9 +111,11 @@ def neighbours(a, b, within=1000, mode='unordered', **kwargs):
             hits = tree_r.find_range((start, end))
             if len(hits) == 0: continue
 
-            # print start, end, feature.location.strand, hits, feature.id
+            print start, end, feature.location.strand, feature.id, hits
+            rec_b_hits_in_a.append(feature)
             for hit in hits:
-                rec_a_hits_in_b.append(rec_b_map[hit])
+                rec_a_hits_in_b.append(rec_a_map[hit])
+
 
     rec_a.features = rec_a_hits_in_b
     rec_b.features = rec_b_hits_in_a
@@ -126,7 +131,7 @@ if __name__ == '__main__':
     parser.add_argument('--ob', type=str, default='b_hits_in_a.gff')
     args = parser.parse_args()
 
-    b, a = neighbours(**vars(args))
+    a, b = neighbours(**vars(args))
 
     with open(args.oa, 'w') as handle:
         GFF.write([a], handle)
