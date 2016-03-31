@@ -1,0 +1,18 @@
+##gff-version 3
+##sequence-region Merlin 1 134853
+Merlin	annotation	remark	1	134853	.	.	.	gff-version=3;sequence-region=%28%27Merlin%27%2C 0%2C 172745%29
+Merlin	cpt.fixModel	gene	46533	46697	.	-	.	ID=CDS9363
+Merlin	cpt.fixModel	mRNA	46533	46697	.	-	.	ID=CDS9363.mRNA;Parent=CDS9363
+Merlin	getOrfsOrCds	CDS	46533	46697	.	-	0	ID=CDS9363.CDS;Parent=CDS9363.mRNA
+Merlin	CPT_ShineFind	Shine_Dalgarno_sequence	46708	46710	.	-	.	ID=CDS9363.rbs-0;Parent=CDS9363
+Merlin	CPT_LipoRy	Lipobox	46657	46660	.	-	.	ID=CDS9363.lipobox;Parent=CDS9363
+Merlin	cpt.fixModel	gene	105928	106209	.	+	.	ID=CDS1233
+Merlin	cpt.fixModel	mRNA	105928	106209	.	+	.	ID=CDS1233.mRNA;Parent=CDS1233
+Merlin	getOrfsOrCds	CDS	105928	106209	.	+	0	ID=CDS1233.CDS;Parent=CDS1233.mRNA
+Merlin	CPT_ShineFind	Shine_Dalgarno_sequence	105916	105919	.	+	.	ID=CDS1233.rbs-0;Parent=CDS1233
+Merlin	CPT_LipoRy	Lipobox	105939	105942	.	+	.	ID=CDS1233.lipobox;Parent=CDS1233
+Merlin	cpt.fixModel	gene	56276	56644	.	+	.	ID=CDS2869
+Merlin	cpt.fixModel	mRNA	56276	56644	.	+	.	ID=CDS2869.mRNA;Parent=CDS2869
+Merlin	getOrfsOrCds	CDS	56276	56644	.	+	0	ID=CDS2869.CDS;Parent=CDS2869.mRNA
+Merlin	CPT_ShineFind	Shine_Dalgarno_sequence	56264	56267	.	+	.	ID=CDS2869.rbs-0;Parent=CDS2869
+Merlin	CPT_LipoRy	Lipobox	56298	56301	.	+	.	ID=CDS2869.lipobox;Parent=CDS2869

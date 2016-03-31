@@ -1,0 +1,17 @@
+##gff-version 3
+##sequence-region Merlin 1 167935
+Merlin	annotation	remark	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Merlin%27%2C 0%2C 172788%29
+Merlin	feature	Chain	105904	106827	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_3;Note=Transmembrane protein - N in C out;Target=CDS1232
+Merlin	TMHMM	Topological domain	105901	105936	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_3;evidence=ECO:0000255
+Merlin	TMHMM	Transmembrane	105937	106005	.	+	.	Note=Helical;Parent=tmhmm_tmd_3;evidence=ECO:0000255
+Merlin	TMHMM	Topological domain	106006	106827	.	+	.	Parent=tmhmm_tmd_3;evidence=ECO:0000255
+Merlin	feature	Chain	56163	56519	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_6;Note=Transmembrane protein - N out C in;Target=CDS4824
+Merlin	TMHMM	Topological domain	56160	56186	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_6;evidence=ECO:0000255
+Merlin	TMHMM	Transmembrane	56187	56255	.	+	.	Note=Helical;Parent=tmhmm_tmd_6;evidence=ECO:0000255
+Merlin	TMHMM	Topological domain	56256	56519	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_6;evidence=ECO:0000255
+Merlin	feature	Chain	46414	46761	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_2;Note=Transmembrane protein - N in C out;Target=CDS382
+Merlin	TMHMM	Topological domain	46411	46446	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_2;evidence=ECO:0000255
+Merlin	TMHMM	Transmembrane	46447	46515	.	+	.	Note=Helical;Parent=tmhmm_tmd_2;evidence=ECO:0000255
+Merlin	TMHMM	Topological domain	46516	46527	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_2;evidence=ECO:0000255
+Merlin	TMHMM	Transmembrane	46528	46596	.	+	.	Note=Helical;Parent=tmhmm_tmd_2;evidence=ECO:0000255
+Merlin	TMHMM	Topological domain	46597	46761	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_2;evidence=ECO:0000255
