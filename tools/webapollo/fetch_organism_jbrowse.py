@@ -36,5 +36,5 @@ if __name__ == '__main__':
     subprocess.check_call([
         'cp', '-R',
         org['directory'],
-        args.target_dir
+        os.path.join(args.target_dir, 'data')
     ])
