@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gff3.intersect" name="Intersect" version="1.0">
-  <description>two gff3 files. Only top-level features/description>
+  <description>two gff3 files. Only top-level features</description>
   <macros>
     <import>macros.xml</import>
   </macros>
