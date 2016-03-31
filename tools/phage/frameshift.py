@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import argparse
+import copy
 import re
 import sys
 from collections import Counter
@@ -111,79 +112,56 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
 
                     # Ok, we need to add a new mRNA structure for this
                     if feat.location.strand > 0:
-                        mRNAstart = feat.location.start
-                        mRNAend = possible_frameshift_start + (len(translated_seq) * 3)
-                    else:
-                        mRNAend = feat.location.end
-                        mRNAstart = possible_frameshift_start - (len(translated_seq) * 3)
-
-                    mRNA = SeqFeature(
-                        FeatureLocation(
-                            mRNAstart,
-                            mRNAend,
-                            strand=feat.location.strand
-                        ),
-                        type='mRNA',
-                        qualifiers={
-                            'source': ['CPT_FSFinder'],
-                            'score': score * (1000 / 8),
-                        }
-                    )
-                    exon = SeqFeature(
-                        FeatureLocation(
-                            mRNAstart,
-                            mRNAend,
-                            strand=feat.location.strand
-                        ),
-                        type='exon',
-                        qualifiers={
-                            'source': ['CPT_FSFinder'],
-                        }
-                    )
-
-                    # CDSs are more complex/annoying
-                    if feat.location.strand > 0:
-                        cdsA_start = feat.location.start
-                        cdsA_end = feat.location.start + idx - 6
-                    else:
-                        cdsA_end = feat.location.end
-                        cdsA_start = feat.location.end - idx + 6
-                    cds_a = SeqFeature(
-                        FeatureLocation(
-                            cdsA_start,
-                            cdsA_end,
-                            strand=feat.location.strand
-                        ),
-                        type='CDS',
-                        qualifiers={
-                            'source': ['CPT_FSFinder'],
-                            'phase': [0],
-                        }
-                    )
-
-                    # CDS B = eww
-                    if feat.location.strand > 0:
                         cdsB_start = possible_frameshift_start
                         cdsB_end = possible_frameshift_start + (len(translated_seq) * 3)
                     else:
                         cdsB_end = possible_frameshift_start
                         cdsB_start = possible_frameshift_start - (len(translated_seq) * 3)
+
+                    frameshiftedFeatureLocation = FeatureLocation(
+                        cdsB_start,
+                        cdsB_end,
+                        strand=feat.location.strand
+                    )
+
+                    mRNA = SeqFeature(
+                        frameshiftedFeatureLocation,
+                        type='mRNA',
+                        qualifiers={
+                            'source': 'CPT_FSFinder',
+                            'score': score * (1000 / 8),
+                        }
+                    )
+                    exon = SeqFeature(
+                        frameshiftedFeatureLocation,
+                        type='exon',
+                        qualifiers={
+                            'source': 'CPT_FSFinder',
+                        }
+                    )
                     cds_b = SeqFeature(
-                        FeatureLocation(
-                            cdsB_start,
-                            cdsB_end,
-                            strand=feat.location.strand
-                        ),
+                        frameshiftedFeatureLocation,
                         type='CDS',
                         qualifiers={
-                            'source': ['CPT_FSFinder'],
-                            'phase': [wobble % 3], # WHO KNOWS
+                            'source': 'CPT_FSFinder',
+                            'phase': wobble % 3, # WHO KNOWS
                         }
                     )
 
-                    mRNA.sub_features = [cds_a, cds_b, exon]
-                    gene.sub_features = [mRNA]
-                    putative_frameshift_genes.append(gene)
+                    mRNA.sub_features = [cds_b, exon]
+
+                    gene2 = copy.deepcopy(gene)
+                    # Strip the ID
+                    del gene2.qualifiers['ID']
+                    gene2.id = None
+                    # Add more quals
+                    gene2.qualifiers.update({
+                        'source': 'CPT_FSFinder',
+                        'Name': 'Frameshifted ' + gene2.qualifiers.get('Name', [''])[0],
+                        'Note': ['Predicted frameshift region', 'Frameshift is ' + str(wobble)]
+                    })
+                    gene2.sub_features = [mRNA]
+                    putative_frameshift_genes.append(gene2)
 
         rec.features = putative_frameshift_genes
         rec.annotations = {}
