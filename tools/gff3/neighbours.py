@@ -89,13 +89,19 @@ def neighbours(a, b, within=1000, mode='unordered'):
             if mode != 'ordered':
                 end += within
 
-            print start, end, feature.location.strand, tree_f.find_range((start, end))
+            hits = tree_f.find_range((start, end))
+            if len(hits) == 0: continue
+
+            print start, end, feature.location.strand, hits, feature.id
         else:
             end += within
             if mode != 'ordered':
                 start -= within
 
-            print start, end, feature.location.strand, tree_r.find_range((start, end))
+            hits = tree_r.find_range((start, end))
+            if len(hits) == 0: continue
+
+            print start, end, feature.location.strand, hits, feature.id
 
 
 if __name__ == '__main__':
