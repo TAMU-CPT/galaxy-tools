@@ -6,7 +6,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-mkdir -p $jbrowse.files_path/data;
+mkdir -p $jbrowse.files_path/;
 
 python $__tool_directory__/fetch_organism_jbrowse.py
 @AUTH@
