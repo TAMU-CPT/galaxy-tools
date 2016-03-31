@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.remove_annots" name="Remove Annotation Feature" version="1.0">
+  <description>that's unused in our GFF tools</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <command><![CDATA[
+$__tool_directory__/remove_annotations.py
+$gff3_data
+> $default]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="default"/>
+  </outputs>
+  <help><![CDATA[
+Removes the remark/annotation features::
+
+    Miro	annotation	remark	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Merlin%27%2C 0%2C 172788%29
+      ]]></help>
+</tool>
