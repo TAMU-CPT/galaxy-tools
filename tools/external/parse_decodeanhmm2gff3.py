@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+import uuid
 import logging
 logging.basicConfig(level=logging.INFO)
 import argparse
@@ -60,7 +61,7 @@ def convert(data=None):
                 type="Chain",
                 strand=1,
                 qualifiers={
-                    'ID': 'tmhmm_tmd_%s' % count,
+                    'ID': 'tmhmm_tmd_%s-%s' % (count, str(uuid.uuid4())),
                     'Description': 'Transmembrane protein',
                     'Note': 'Transmembrane protein - N %s C %s' % (n_dir, c_dir),
                     'Target': header,
