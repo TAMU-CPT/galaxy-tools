@@ -33,8 +33,10 @@ if __name__ == '__main__':
     if not os.path.exists(args.target_dir):
         os.makedirs(args.target_dir)
 
-    subprocess.check_call([
+    cmd = [
         'cp', '-R',
         org['directory'],
         os.path.join(args.target_dir, 'data')
-    ])
+    ]
+    print ' '.join(cmd)
+    subprocess.check_call(cmd)
