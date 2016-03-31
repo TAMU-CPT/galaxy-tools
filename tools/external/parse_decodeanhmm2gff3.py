@@ -72,7 +72,7 @@ def convert(data=None):
                 (region_type, start, end) = region.strip().split(' ')
                 qualifiers = {
                     'source': 'TMHMM',
-                    'evidence': 'ECO:0000255',
+                    # 'evidence': 'ECO:0000255',
                 }
                 # Q7TNJ0  UniProtKB   Topological domain  1   33  .   .   .   Note=Cytoplasmic;evidence=ECO:0000255
                 # Q7TNJ0  UniProtKB   Transmembrane   34  54  .   .   .   Note=Helical;evidence=ECO:0000255
