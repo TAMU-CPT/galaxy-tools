@@ -158,7 +158,7 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     gene2.qualifiers.update({
                         'source': 'CPT_FSFinder',
                         'Name': 'Frameshifted ' + gene2.qualifiers.get('Name', [''])[0],
-                        'Note': ['Predicted frameshift region', 'Frameshift is ' + str(wobble)]
+                        'Note': ['Predicted frameshift region (%s)' % wobble]
                     })
                     gene2.sub_features = [mRNA]
                     putative_frameshift_genes.append(gene2)
