@@ -69,7 +69,7 @@ def treeFeatures(features, strand=0):
             yield (int(feat.location.start), int(feat.location.end), feat.id)
 
 
-def neighbours(a, b, within=1000, mode='unordered'):
+def neighbours(a, b, within=1000, mode='unordered', **kwargs):
     rec_a = list(GFF.parse(a))
     rec_b = list(GFF.parse(b))
     if len(rec_a) > 1 or len(rec_b) > 1:
@@ -81,6 +81,12 @@ def neighbours(a, b, within=1000, mode='unordered'):
     tree_f = IntervalTree(list(treeFeatures(rec_a.features, strand=1)), 1, len(rec_a))
     tree_r = IntervalTree(list(treeFeatures(rec_a.features, strand=-1)), 1, len(rec_a))
 
+    rec_a_map = {f.id: f for f in rec_a.features}
+    rec_b_map = {f.id: f for f in rec_b.features}
+
+    rec_a_hits_in_b = []
+    rec_b_hits_in_a = []
+
     for feature in rec_b.features:
         start = feature.location.start
         end = feature.location.end
@@ -91,8 +97,9 @@ def neighbours(a, b, within=1000, mode='unordered'):
 
             hits = tree_f.find_range((start, end))
             if len(hits) == 0: continue
-
-            print start, end, feature.location.strand, hits, feature.id
+            # print start, end, feature.location.strand, hits, feature.id
+            for hit in hits:
+                rec_b_hits_in_a.append(rec_a_map[hit])
         else:
             end += within
             if mode != 'ordered':
@@ -101,8 +108,13 @@ def neighbours(a, b, within=1000, mode='unordered'):
             hits = tree_r.find_range((start, end))
             if len(hits) == 0: continue
 
-            print start, end, feature.location.strand, hits, feature.id
+            # print start, end, feature.location.strand, hits, feature.id
+            for hit in hits:
+                rec_a_hits_in_b.append(rec_b_map[hit])
 
+    rec_a.features = rec_a_hits_in_b
+    rec_b.features = rec_b_hits_in_a
+    return rec_a, rec_b
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
@@ -110,6 +122,14 @@ if __name__ == '__main__':
     parser.add_argument('b', type=file)
     parser.add_argument('--within', type=int, default=1000)
     parser.add_argument('--mode', type=str, choices=('ordered', 'unordered'), default='unordered')
+    parser.add_argument('--oa', type=str, default='a_hits_in_b.gff')
+    parser.add_argument('--ob', type=str, default='b_hits_in_a.gff')
     args = parser.parse_args()
 
-    neighbours(**vars(args))
+    b, a = neighbours(**vars(args))
+
+    with open(args.oa, 'w') as handle:
+        GFF.write([a], handle)
+
+    with open(args.ob, 'w') as handle:
+        GFF.write([b], handle)

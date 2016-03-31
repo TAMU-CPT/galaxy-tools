@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.intersect" name="Nearby features" version="1.0">
+  <description>in two gff3 files</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <command><![CDATA[
+python $__tool_directory__/neighbours.py
+$gff3_data_a
+$gff3_data_b
+--within $within
+--mode $mode
+--oa $oa
+--ob $ob
+]]></command>
+  <inputs>
+    <param label="GFF3 Annotations A" name="gff3_data_a" type="data" format="gff3"/>
+    <param label="GFF3 Annotations B" name="gff3_data_b" type="data" format="gff3"/>
+    <param name="within" type="integer" value="500" label="Within N nucleotides" />
+    <param name="mode" type="select" label="Mode">
+      <option value="ordered">Ordered (A must be within N nts upstream of B)</option>
+      <option value="unordered">Unordered (A must be within N nts of B)</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="oa" label="GFF3 Annotations from ${gff3_data_a}.name nearby features in ${gff3_data_b}.name"/>
+    <data format="gff3" name="ob" label="GFF3 Annotations from ${gff3_data_b}.name nearby features in ${gff3_data_a}.name"/>
+  </outputs>
+  <help><![CDATA[
+
+Only top-level features
+]]></help>
+</tool>
