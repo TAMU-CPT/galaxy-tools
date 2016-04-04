@@ -114,7 +114,9 @@ def neighbours(a, b, within=1000, mode='unordered', **kwargs):
 
             rec_b_hits_in_a.append(feature)
             for hit in hits:
-                rec_a_hits_in_b.append(rec_a_map[hit])
+                feat_hit = rec_a_map[hit]
+                if feat_hit not in rec_a_hits_in_b:
+                    rec_a_hits_in_b.append(feat_hit)
 
         else:
             end += within
@@ -129,7 +131,9 @@ def neighbours(a, b, within=1000, mode='unordered', **kwargs):
             print start, end, feature.location.strand, feature.id, hits
             rec_b_hits_in_a.append(feature)
             for hit in hits:
-                rec_a_hits_in_b.append(rec_a_map[hit])
+                feat_hit = rec_a_map[hit]
+                if feat_hit not in rec_a_hits_in_b:
+                    rec_a_hits_in_b.append(feat_hit)
 
 
     rec_a.features = rec_a_hits_in_b

@@ -97,6 +97,7 @@ def convert(data=None):
                     qualifiers=qualifiers,
                 )
                 feature.sub_features.append(sub_feat)
+
             record.features.append(feature)
 
 
