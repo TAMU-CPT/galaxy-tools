@@ -75,6 +75,9 @@ def neighbours(a, b, within=1000, mode='unordered', **kwargs):
     if len(rec_a) > 1 or len(rec_b) > 1:
         raise Exception("Cannot handle multiple GFF3 records in a file, yet")
 
+    if len(rec_a) == 0 or len(rec_b) == 0:
+        return None, None
+
     rec_a = rec_a[0]
     rec_b = rec_b[0]
 
@@ -152,8 +155,9 @@ if __name__ == '__main__':
 
     a, b = neighbours(**vars(args))
 
-    with open(args.oa, 'w') as handle:
-        GFF.write([a], handle)
+    if a is not None and b is not None:
+        with open(args.oa, 'w') as handle:
+            GFF.write([a], handle)
 
-    with open(args.ob, 'w') as handle:
-        GFF.write([b], handle)
+        with open(args.ob, 'w') as handle:
+            GFF.write([b], handle)
