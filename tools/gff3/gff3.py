@@ -205,3 +205,17 @@ def genes(feature_list, feature_type='gene'):
                             {'type': feature_type},
                             subfeatures=True):
         yield x
+
+def wa_unified_product_name(feature):
+    """
+    Try and figure out a name. We gave conflicting instructions, so
+    this isn't as trivial as it should be. Sometimes it will be in
+    'product' or 'Product', othertimes in 'Name'
+    """
+    protein_product = feature.qualifiers.get('product', feature.qualifiers.get('Product', [None]))[0]
+
+    if protein_product is None:
+        if 'Name' in feature.qualifiers:
+            protein_product = feature.qualifiers['Name'][0]
+
+    return protein_product

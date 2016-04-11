@@ -4,7 +4,7 @@ import sys
 import logging
 import argparse
 from BCBio import GFF
-from gff3 import feature_lambda
+from gff3 import feature_lambda, wa_unified_product_name
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -309,7 +309,8 @@ class ColorScheme(object):
 
 
 def apply_color(feature, **kwargs):
-    color = kwargs['cs'].get_color(feature.qualifiers.get('product', []))
+    product = [wa_unified_product_name(feature)]
+    color = kwargs['cs'].get_color(product)
     if color is not None:
         feature.qualifiers['color'] = color
     return True

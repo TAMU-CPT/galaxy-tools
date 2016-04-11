@@ -10,7 +10,7 @@ import re
 from Bio import SeqIO
 from Bio.Alphabet import generic_dna
 from BCBio import GFF
-from gff3 import feature_lambda
+from gff3 import feature_lambda, wa_unified_product_name
 default_name = re.compile("^gene_(\d+)$")
 
 
@@ -101,13 +101,7 @@ def gff3_to_genbank(gff_file, fasta_file):
 
             # Try and figure out a name. We gave conflicting instructions, so
             # this isn't as trivial as it should be.
-            protein_product = flat_feat.qualifiers.get('product', flat_feat.qualifiers.get('Product', [None]))[0]
-            if 'Name' not in flat_feat.qualifiers:
-                protein_name = '__none__'
-            else:
-                protein_name = flat_feat.qualifiers['Name'][0]
-            if protein_product is None:
-                protein_product = protein_name
+            protein_product = wa_unified_product_name(flat_feat)
 
             # If the feature is an exon (there will be two (+?))
             if flat_feat.type == 'exon':
