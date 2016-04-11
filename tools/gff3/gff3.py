@@ -97,13 +97,41 @@ def feature_test_location(feature, **kwargs):
 
 
 def feature_test_quals(feature, **kwargs):
+    """
+    Example::
+
+        a = Feature(qualifiers={'Note': ['Some notes', 'Aasdf']})
+
+        # Check if a contains a Note
+        feature_test_quals(a, {'Note': None})  # Returns True
+        feature_test_quals(a, {'Product': None})  # Returns False
+
+        # Check if a contains a note with specific value
+        feature_test_quals(a, {'Note': ['ome']})  # Returns True
+
+        # Check if a contains a note with specific value
+        feature_test_quals(a, {'Note': ['other']})  # Returns False
+    """
     for key in kwargs:
         if key not in feature.qualifiers:
             return False
 
-        for value in kwargs[key]:
-            if value not in feature.qualifiers[key]:
-                return False
+        # Key is present, no value specified
+        if kwargs[key] is None:
+            return True
+
+        # Otherwise there is a key value we're looking for.
+        # so we make a list of matches
+        matches = []
+        # And check all of the feature qualifier valuse
+        for value in feature.qualifiers[key]:
+            # For that kwargs[key] value
+            matches.append(kwargs[key] in value)
+
+        # If none matched, then we return false.
+        if not any(matches):
+            return False
+
     return True
 
 
