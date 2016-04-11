@@ -16,6 +16,9 @@ default_name = re.compile("^gene_(\d+)$")
 
 def rename_key(ds, k_f, k_t):
     """Rename a key in a dictionary and return it, FP style"""
+    if k_f not in ds:
+        return ds
+
     ds[k_t] = ds[k_f]
     del ds[k_f]
     return ds
