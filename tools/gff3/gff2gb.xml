@@ -22,7 +22,7 @@ This is a LOSSY conversion.
 
 **What it does**:
 
-Convert gff(3) data to genbank.
+Convert gff3 data to genbank. There are may WebApollo specific conventions. A re-numbering is also done.
       ]]></help>
 </tool>
 
