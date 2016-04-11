@@ -81,6 +81,8 @@ color_scheme = {
         "members": [
             "Clamp",
             "DNA binding protein",
+            # Should we be testing versions with .replace(' ', '').replace('-', '')?
+            "DNA-binding protein",
             "DNA end Protector",
             "DNA ligase",
             "DexA",
@@ -247,9 +249,10 @@ class ColorScheme(object):
         self.custom_regex = {}
         for key in color_scheme:
             for member in color_scheme[key]['members']:
-                regex = re.compile(member)
+                regex = re.compile(member, re.IGNORECASE)
                 color = color_scheme[key]['color']
                 self.standard_regex[member] = {
+                    'str': member,
                     'regex': regex,
                     'color': color
                 }
@@ -264,21 +267,24 @@ class ColorScheme(object):
                     }
 
     def get_color(self, product_list):
+
         for product in product_list:
             matched = None
             for regex in self.standard_regex:
-                if re.match(self.standard_regex[regex]['regex'], product):
+
+                if re.search(self.standard_regex[regex]['regex'], product):
                     matched = self.standard_regex[regex]['color']
+
 
             for regex in self.custom_regex:
                 care = False
 
                 for re_is in self.custom_regex[regex]['is']:
-                    if re.match(re_is, product):
+                    if re.search(re_is, product):
                         care = True
 
                 for re_isnot in self.custom_regex[regex]['isnot']:
-                    if re.match(re_isnot, product):
+                    if re.search(re_isnot, product):
                         care = False
 
                 if care:
@@ -292,11 +298,11 @@ class ColorScheme(object):
                     # if we didn't specifically exclude items like the one we
                     # hit.
                     for re_is in self.custom_regex[regex]['is']:
-                        if not re.match(re_is, product):
+                        if not re.search(re_is, product):
                             is_ok = False
 
                     for re_isnot in self.custom_regex[regex]['isnot']:
-                        if re.match(re_isnot, product):
+                        if re.search(re_isnot, product):
                             ok_to_overwrite = False
                             is_ok = False
 
