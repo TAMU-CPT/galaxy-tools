@@ -79,11 +79,11 @@ def parse_transterm(data):
             pd = {k: v for (k, v) in zip(COLS, parsed_data)}
             #start , end  , strand , confidence , hp score , tail score , notes
             # , 5' tail         , 5'stem   , loop , 3' stem  , 3'loop
-            start = int(pd['start']) - 1
+            start = int(pd['start'])
             end = int(pd['end'])
 
             feature = SeqFeature(
-                FeatureLocation(min(start, end), max(start, end)),
+                FeatureLocation(min(start, end) - 1, max(start, end)),
                 type="terminator",
                 strand=1 if pd['strand'] == '+' else -1,
                 qualifiers={
