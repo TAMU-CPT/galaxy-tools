@@ -3,7 +3,7 @@
   <stdio>
     <exit_code level="fatal" range="1:"/>
   </stdio>
-  <command interpreter="python"><![CDATA[gff2gb.py
+  <command interpreter="python"><![CDATA[annotation_table.py
 $gff3
 $fasta
 > $default]]></command>
