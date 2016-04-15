@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GBK" version="1.0">
+<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GBK" version="1.1">
   <description>convert gff3 to gbk</description>
   <stdio>
     <exit_code level="fatal" range="1:"/>
@@ -18,7 +18,9 @@ $fasta
   <help><![CDATA[
 **WARNING**
 
-This is a LOSSY conversion.
+This is a LOSSY conversion. This tool **TRUNCATES** genbank file identifiers if
+they are too long. Your data may not "match up" after processing through this
+ool.
 
 **What it does**:
 

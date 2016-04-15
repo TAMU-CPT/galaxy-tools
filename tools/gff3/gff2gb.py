@@ -136,6 +136,8 @@ def gff3_to_genbank(gff_file, fasta_file):
 
         # Update our features
         record.features = full_feats
+        # Strip off record names that would cause crashes.
+        record.name = record.name[0:16]
         yield record
 
 if __name__ == '__main__':
