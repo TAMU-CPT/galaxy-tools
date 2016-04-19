@@ -120,6 +120,8 @@ def gff3_to_genbank(gff_file, fasta_file):
             for x in ('source', 'phase', 'Parent', 'ID', 'owner',
                     'date_creation', 'date_last_modified'):
                 if x in flat_feat.qualifiers:
+                    if x == 'ID':
+                        flat_feat._ID = flat_feat.qualifiers['ID']
                     del flat_feat.qualifiers[x]
 
             # Add product tag
