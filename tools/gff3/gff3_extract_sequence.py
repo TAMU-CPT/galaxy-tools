@@ -4,43 +4,37 @@ import argparse
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
-from gff3 import feature_lambda, feature_test_type, get_id
+from gff3 import feature_lambda, feature_test_type, get_id, fetchParent
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 def main(fasta, gff3, feature_filter=None, nodesc=False):
-    seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
 
     if feature_filter == 'nice_cds':
-        for rec in GFF.parse(gff3, base_dict=seq_dict):
-            for feat in feature_lambda(
-                rec.features,
-                feature_test_type,
-                {'type': 'gene'},
-                subfeatures=True
-            ):
-                cds = list(feature_lambda(feat.sub_features, feature_test_type, {'type': 'CDS'}))
-                if len(cds) == 0:
-                    log.warn("Gene %s had no CDS children", feat.id)
+        from gff2gb import gff3_to_genbank
+        for rec in gff3_to_genbank(gff3, fasta):
+            for feat in rec.features:
+                if feat.type != 'CDS':
                     continue
-                else:
-                    cds = cds[0]
 
                 if nodesc:
                     description = ''
                 else:
-                    description = '[Location={0.location};ID={0.qualifiers[ID][0]}]'.format(feat)
+                    feat.qualifiers['ID'] = [feat._ID]
+                    product = feat.qualifiers.get('product', '')
+                    description = '{1} [Location={0.location};ID={0.qualifiers[ID][0]}]'.format(feat, product)
 
                 yield [
                     SeqRecord(
-                        cds.extract(rec).seq,
-                        id=get_id(feat),
+                        feat.extract(rec).seq,
+                        id=feat.qualifiers.get('locus_tag', get_id(feat)),
                         description=description
                     )
                 ]
 
     else:
+        seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         for rec in GFF.parse(gff3, base_dict=seq_dict):
             for feat in feature_lambda(
                 rec.features,
