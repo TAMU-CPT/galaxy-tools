@@ -1,0 +1,38 @@
+<tool id="blasttab_to_gapped_gff3" name="BlastN TSV to gapped GFF3" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <expand macro="stdio"/>
+  <version_command>python blastxml_to_gapped_gff3.py --version</version_command>
+  <command interpreter="python"><![CDATA[
+blasttab_to_gapped_gff3.py
+$blastxml
+--min_gap $min_gap
+> $output]]></command>
+  <inputs>
+    <param label="Blast XML" name="blastxml" type="data" format="blastxml"/>
+    <param label="Maximum gap size before generating a new match_part" name="min_gap" type="integer" value="10"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+.. class:: warningmark
+
+This tool probably has MANY BlastN specific assumptions hardcoded inside.
+Please do not use on BlastP data. Additionally this tool was written hastily
+for BICH464 at the end of the year. It MUST be re-built before real use.
+Contact Eric if you need to use it.
+
+**What it does**
+
+Convert BlastN TSV results into GFF3 format.
+
+]]></help>
+    <citations>
+    </citations>
+</tool>
