@@ -1,18 +1,17 @@
-<tool id="blasttab_to_gapped_gff3" name="BlastN TSV to gapped GFF3" version="1.0">
+<tool id="blasttab_to_gapped_gff3" name="BlastN TSV to gapped GFF3" version="1.1">
   <description></description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <expand macro="stdio"/>
-  <version_command>python blastxml_to_gapped_gff3.py --version</version_command>
   <command interpreter="python"><![CDATA[
 blasttab_to_gapped_gff3.py
-$blastxml
+$blasttsv
 --min_gap $min_gap
 > $output]]></command>
   <inputs>
-    <param label="Blast XML" name="blastxml" type="data" format="blastxml"/>
+    <param label="Blast TSV" name="blasttsv" type="data" format="blasttsv"/>
     <param label="Maximum gap size before generating a new match_part" name="min_gap" type="integer" value="10"/>
   </inputs>
   <outputs>
