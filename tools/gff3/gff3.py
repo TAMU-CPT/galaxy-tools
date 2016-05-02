@@ -196,15 +196,20 @@ def coding_genes(feature_list):
             yield x
 
 
-def genes(feature_list, feature_type='gene'):
+def genes(feature_list, feature_type='gene', sort=False):
     """
     Simple filter to extract gene features from the feature set.
     """
 
-    for x in feature_lambda(feature_list, feature_test_type,
-                            {'type': feature_type},
-                            subfeatures=True):
-        yield x
+    if not sort:
+        for x in feature_lambda(feature_list, feature_test_type,
+                                {'type': feature_type},
+                                subfeatures=True):
+            yield x
+    else:
+        data = list(genes(feature_list, feature_type=feature_type, sort=False))
+        data = sorted(data, key=lambda feature: feature.location.start)
+        for x in data: yield x
 
 def wa_unified_product_name(feature):
     """
