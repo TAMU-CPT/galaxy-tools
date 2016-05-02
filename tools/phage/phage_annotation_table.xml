@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.phage.annotation_table" name="GFF3 Annotation Table" version="2.0">
+    <description>validate phage annotations</description>
+    <macros>
+      <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <expand macro="stdio"/>
+    <command><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+python $__tool_directory__/phage_annotation_validator.py
+$gff3_data
+@GENOME_SELECTOR@
+
+--reportTemplateName "phageqc_report_annotation_table.html"
+--gff3 $gff3
+--user_email $__user_email__
+--annotationTableCols "$cols"
+
+> $output]]></command>
+    <inputs>
+        <expand macro="gff3_input" />
+        <expand macro="genome_selector" />
+        <param label="Columns" type="select" name="cols" multiple="True">
+            <option value="id">ID</option>
+            <option value="name">Name</option>
+            <option value="location">Location</option>
+            <option value="notes">Notes</option>
+            <option value="date_created">Date created</option>
+            <option value="date_last_modified">Date last modified</option>
+            <option value="description">Description</option>
+            <option value="owner">Owner</option>
+            <option value="product">Product</option>
+            <option value="strand">Strand</option>
+            <option value="sd_seq">SD sequence</option>
+            <option value="start_codon">Start codon</option>
+            <option value="stop_codon">Stop codon</option>
+            <option value="dbxrefs">DBxrefs</option>
+            <option value="ig_dist">Distance to next upstream feature</option>
+        </param>
+    </inputs>
+    <outputs>
+      <data format="html" name="output"/>
+    </outputs>
+    <help><![CDATA[
+Generate an "annotation table" of a genome, with user-configurable data columns
+]]></help>
+</tool>

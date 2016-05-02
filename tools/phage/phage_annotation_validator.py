@@ -19,7 +19,7 @@ import itertools
 from cpt import OrfFinder
 import re
 import logging
-logging.basicConfig(level=logging.WARN)
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(name='pav')
 
 # Path to script, required because of Galaxy.
@@ -67,6 +67,18 @@ def __ensure_location_in_bounds(start=0, end=0, parent_length=0):
         end -= 3
     return (start, end)
 
+def get_rbs_from(gene):
+    # Normal RBS annotation types
+    rbs_rbs = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'RBS'}, subfeatures=False))
+    rbs_sds = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
+    # Fraking apollo
+    apollo_exons = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'exon'}, subfeatures=False))
+    apollo_exons = [x for x in apollo_exons if len(x) < 10]
+    # These are more NCBI's style
+    regulatory_elements = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'regulatory'}, subfeatures=False))
+    rbs_regulatory = list(feature_lambda(regulatory_elements, feature_test_quals, {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
+    # Here's hoping you find just one ;)
+    return rbs_rbs + rbs_sds + rbs_regulatory + apollo_exons
 
 def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     """
@@ -89,19 +101,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     for gene in coding_genes(record.features):
         # Check if there are RBSs, TODO: make this recursive. Each feature in
         # gene.sub_features can also have sub_features.
-        rbs_rbs = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'RBS'}, subfeatures=False))
-        rbs_sds = list(feature_lambda(gene.sub_features,
-                                      feature_test_type, {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
-        apollo_exons = list(feature_lambda(gene.sub_features,
-                                      feature_test_type, {'type': 'exon'}, subfeatures=False))
-        apollo_exons = [x for x in apollo_exons if len(x) < 10]
-        regulatory_elements = list(feature_lambda(gene.sub_features,
-                                                  feature_test_type, {'type': 'regulatory'}, subfeatures=False))
-        rbs_regulatory = list(feature_lambda(regulatory_elements,
-                                             feature_test_quals, {'regulatory_class': ['ribosome_binding_site']},
-                                             subfeatures=False))
-
-        rbss = rbs_rbs + rbs_sds + rbs_regulatory + apollo_exons
+        rbss = get_rbs_from(gene)
         # No RBS found
         if len(rbss) == 0:
             # Get the sequence lookahead_min to lookahead_max upstream
@@ -193,6 +193,152 @@ def require_sd(data, record, chrom_start, sd_min, sd_max):
         sds = sd_finder.list_sds(seq)
         if len(sds) > 0:
             yield putative_gene + (start, end)
+
+
+def annotation_table_report(record, wanted_cols):
+
+    def id(record, feature):
+        """ID
+        """
+        return feature.id
+
+    def name(record, feature):
+        """Name
+        """
+        return feature.qualifiers.get('Name', ['None'])[0]
+
+    def location(record, feature):
+        """Location
+        """
+        return '{0.start}..{0.end}'.format(feature.location)
+
+    def notes(record, feature):
+        """User entered Notes"""
+        return feature.qualifiers.get('Note', [])
+
+    def date_created(record, feature):
+        """Created"""
+        return feature.qualifiers.get('date_creation', ['None'])[0]
+
+    def date_last_modified(record, feature):
+        """Last Modified"""
+        return feature.qualifiers.get('date_last_modified', ['None'])[0]
+
+    def description(record, feature):
+        """Description"""
+        return feature.qualifiers.get('description', ['None'])[0]
+
+    def owner(record, feature):
+        """Owner
+
+        User who created the feature. In a 464 scenario this may be one of
+        the TAs."""
+        return feature.qualifiers.get('owner', ['None'])[0]
+
+    def product(record, feature):
+        """Product
+
+        User entered product qualifier (collects "Product" and "product"
+        entries)"""
+        return feature.qualifiers.get('product', feature.qualifiers.get('Product', ['None']))[0]
+
+    def strand(record, feature):
+        """Strand
+        """
+        return '+' if feature.location.strand > 0 else '-'
+
+    def sd_seq(record, feature):
+        """Shine-Dalgarno sequence
+        """
+        rbss = get_rbs_from(gene)
+        if len(rbss) == 0:
+            return 'None'
+        else:
+            resp = []
+            for rbs in rbss:
+                resp.append(rbs.extract(record).seq)
+            if len(resp) == 1:
+                return str(resp[0])
+            else:
+                return resp
+
+    def start_codon(record, feature):
+        """Start Codon
+        """
+        return str(feature.extract(record).seq[0:3])
+
+    def stop_codon(record, feature):
+        """Stop Codon
+        """
+        return str(feature.extract(record).seq[-3:])
+
+    def dbxrefs(record, feature):
+        """DBxrefs
+        """
+        return feature.qualifiers.get('Dbxref', [])
+
+    sorted_features = list(genes(record.features, sort=True))
+    def upstream_feature(record, feature):
+        upstream = None
+        if feature.strand > 0:
+            upstream_features = [x for x in sorted_features
+                    if x.location.start < feature.location.start
+                    and x.location.strand == feature.location.strand]
+            if len(upstream_features) > 0:
+                return upstream_features[-1]
+            else:
+                return None
+        else:
+            upstream_features = [x for x in sorted_features
+                    if x.location.end > feature.location.end
+                    and x.location.strand == feature.location.strand]
+
+            if len(upstream_features) > 0:
+                return upstream_features[0]
+            else:
+                return None
+
+    def ig_dist(record, feature):
+        """Distance to next feature on same strand"""
+        up = upstream_feature(record, feature)
+        # Strands will be equal
+        if up:
+            dist = None
+            if feature.strand > 0:
+                dist = feature.location.start - up.location.end
+            else:
+                dist = up.location.start - feature.location.end
+            return str(dist)
+        else:
+            return 'None'
+
+
+    cols = []
+    data = []
+    funcs = []
+    lcl = locals()
+    for x in [y.strip().lower() for y in wanted_cols.split(',')]:
+        if x in lcl:
+            funcs.append(lcl[x])
+            # Keep track of docs
+            func_doc = lcl[x].__doc__.strip().split('\n\n')
+            # If there's a double newline, assume following text is the
+            # "help" and the first part is the "name". Generate empty help
+            # if not provided
+            if len(func_doc) == 1:
+                func_doc += ['']
+            cols.append(func_doc)
+
+    for gene in genes(record.features, sort=True):
+        row = []
+        for func in funcs:
+            row.append(
+                func(record, gene)
+            )
+        # print row
+        data.append(row)
+
+    return data, cols
 
 
 def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30, lookahead_min=5, lookahead_max=15):
@@ -575,7 +721,7 @@ def missing_tags(record):
         cds = cds[0]
 
         if 'product' not in cds.qualifiers:
-            log.warn("Missing product tag on %s", get_gff3_id(gene))
+            log.info("Missing product tag on %s", get_gff3_id(gene))
             qc_features.append(gen_qc_feature(
                 cds.location.start,
                 cds.location.end,
@@ -594,7 +740,8 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
                         tbl=None, sd_min=5, sd_max=15, gap_dist=45,
                         overlap_dist=15, min_gene_length=30,
                         excessive_gap_dist=50, excessive_gap_divergent_dist=200,
-                        reportTemplateName='phage_annotation_validator.html'):
+                        reportTemplateName='phage_annotation_validator.html',
+                        annotationTableCols=''):
     """
     Generate our HTML evaluation of the genome
     """
@@ -648,6 +795,9 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
     ws_good, ws_bad, ws_results, ws_annotations, ws_overall = weird_starts(record)
     gff3_qc_features += ws_annotations
 
+    log.info("Producing an annotation table")
+    annotation_table_data, annotation_table_col_names = annotation_table_report(record, annotationTableCols)
+
     log.info("Locating bad gene models")
     gm_good, gm_bad, gm_results, gm_annotations = bad_gene_model(record)
     if gm_good + gm_bad == 0:
@@ -671,11 +821,6 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
     subscores.append(cd)
 
     score = int(float(sum(subscores)) / float(len(subscores)))
-
-    if user_email is not None:
-        from guanine import GuanineClient
-        g = GuanineClient()
-        g.submit(user_email, 'WfB-PhageQC', float(score) / 100)
 
     # This is data that will go into our HTML template
     kwargs = {
@@ -727,6 +872,9 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
         'coding_density': cd,
         'coding_density_real': cd_real,
         'coding_density_score': cd,
+
+        'annotation_table_data': annotation_table_data,
+        'annotation_table_col_names': annotation_table_col_names,
     }
 
     with open(tbl, 'w') as handle:
@@ -775,6 +923,9 @@ if __name__ == '__main__':
     parser.add_argument('--reportTemplateName', help='Report template file name', default='phageqc_report_full.html')
     parser.add_argument('--user_email')
 
+    parser.add_argument('--annotationTableCols', help='Select columns to report in the annotation table output format')
+
     args = parser.parse_args()
 
     print evaluate_and_report(**vars(args))
+    # evaluate_and_report(**vars(args))
