@@ -291,7 +291,17 @@ def annotation_table_report(record, wanted_cols):
     def start_codon(record, feature):
         """Start Codon
         """
-        return str(feature.extract(record).seq[0:3])
+        cdss = list(genes(feature.sub_features, feature_type='CDS', sort=True))
+        data = [x for x in cdss]
+        if len(data) == 1:
+            return str(data[0].extract(record).seq[0:3])
+        else:
+            return [
+                '{0} ({1.location.start}..{1.location.end}:{1.location.strand})'.format(
+                    x.extract(record).seq[0:3], x
+                )
+                for x in data
+            ]
 
     def stop_codon(record, feature):
         """Stop Codon
@@ -383,7 +393,12 @@ def annotation_table_report(record, wanted_cols):
                 # Otherwise just apply the lone function
                 value = func(record, gene)
 
-            row.append(value.decode('utf-8'))
+            if isinstance(value, list):
+                value = [x.decode('utf-8') for x in value]
+            else:
+                value = value.decode('utf-8')
+
+            row.append(value)
         # print row
         data.append(row)
 
