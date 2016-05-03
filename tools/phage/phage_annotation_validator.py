@@ -250,7 +250,7 @@ def annotation_table_report(record, wanted_cols):
         return '+' if feature.location.strand > 0 else '-'
 
     def sd_spacing(record, feature):
-        """Shine-Dalgarno sequence
+        """Shine-Dalgarno spacing
         """
         rbss = get_rbs_from(gene)
         if len(rbss) == 0:
@@ -262,10 +262,12 @@ def annotation_table_report(record, wanted_cols):
 
                 if rbs.location.strand > 0:
                     distance = min(cdss, key=lambda x: x.location.start - rbs.location.end)
-                    resp.append(str(distance.location.start - rbs.location.end))
+                    distance_val = str(distance.location.start - rbs.location.end)
+                    resp.append(distance_val)
                 else:
                     distance = min(cdss, key=lambda x: x.location.end - rbs.location.start)
-                    resp.append(str(distance.location.end - rbs.location.start))
+                    distance_val = str(rbs.location.start - distance.location.end)
+                    resp.append(distance_val)
 
             if len(resp) == 1:
                 return str(resp[0])
@@ -381,7 +383,7 @@ def annotation_table_report(record, wanted_cols):
                 # Otherwise just apply the lone function
                 value = func(record, gene)
 
-            row.append(value)
+            row.append(value.decode('utf-8'))
         # print row
         data.append(row)
 
