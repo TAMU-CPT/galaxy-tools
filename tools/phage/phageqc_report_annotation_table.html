@@ -10,7 +10,9 @@
     <title>Annotation Table for {{record_name}}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
     <style type="text/css">
 /*
  * Base structure
@@ -155,7 +157,7 @@ td.moron {
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 main" id="main">
-            <table class="table table-striped">
+            <table class="table table-striped" id="data">
                 <thead>
                     <tr>
                     {% for col in annotation_table_col_names %}
@@ -186,6 +188,10 @@ td.moron {
         </div>
       </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#data').DataTable();
+        });
+    </script>
   </body>
 </html>
