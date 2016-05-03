@@ -303,29 +303,35 @@ def annotation_table_report(record, wanted_cols):
 
     sorted_features = list(genes(record.features, sort=True))
     def upstream_feature(record, feature):
+        """Next feature upstream"""
         upstream = None
         if feature.strand > 0:
             upstream_features = [x for x in sorted_features
-                    if x.location.start < feature.location.start
-                    and x.location.strand == feature.location.strand]
+                    if x.location.start < feature.location.start]
             if len(upstream_features) > 0:
                 return upstream_features[-1]
             else:
                 return None
         else:
             upstream_features = [x for x in sorted_features
-                    if x.location.end > feature.location.end
-                    and x.location.strand == feature.location.strand]
+                    if x.location.end > feature.location.end]
 
             if len(upstream_features) > 0:
                 return upstream_features[0]
             else:
                 return None
 
+    def up_feat(record, feature):
+        """Next feature upstream"""
+        up = upstream_feature(record, feature)
+        if up:
+            return str(up)
+        return 'None'
+
+
     def ig_dist(record, feature):
         """Distance to next feature on same strand"""
         up = upstream_feature(record, feature)
-        # Strands will be equal
         if up:
             dist = None
             if feature.strand > 0:
@@ -352,13 +358,30 @@ def annotation_table_report(record, wanted_cols):
             if len(func_doc) == 1:
                 func_doc += ['']
             cols.append(func_doc)
+        elif '__' in x:
+           chosen_funcs = [lcl[y] for y in x.split('__')]
+           func_doc = [' of '.join([y.__doc__.strip().split('\n\n')[0] for y in chosen_funcs[::-1]])]
+           cols.append(func_doc)
+           funcs.append(chosen_funcs)
+
 
     for gene in genes(record.features, sort=True):
         row = []
         for func in funcs:
-            row.append(
-                func(record, gene)
-            )
+            if isinstance(func, list):
+                # If we have a list of functions, repeatedly apply them
+                value = gene
+                for f in func:
+                    if value is None:
+                        value = 'None'
+                        break
+
+                    value = f(record, value)
+            else:
+                # Otherwise just apply the lone function
+                value = func(record, gene)
+
+            row.append(value)
         # print row
         data.append(row)
 
