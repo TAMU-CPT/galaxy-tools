@@ -27,5 +27,7 @@ python $__tool_directory__/export.py
 **What it does**
 
 Exports the GFF3/Fasta sequence from WebApollo.
+
+@REFERENCES@
       ]]></help>
 </tool>

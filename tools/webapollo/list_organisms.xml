@@ -18,5 +18,7 @@ python $__tool_directory__/list_organisms.py
 **What it does**
 
 Lists organism in Apollo
+
+@REFERENCES@
       ]]></help>
 </tool>

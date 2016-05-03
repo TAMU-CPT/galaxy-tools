@@ -38,5 +38,7 @@ This only works with JBrowse v0.4 and above!
 Adds an organism to the Apollo database. The tool takes the output of a
 JBrowse run as that contains all of the necessary information for which
 tracks are appropriate for a given analysis.
+
+@REFERENCES@
       ]]></help>
 </tool>

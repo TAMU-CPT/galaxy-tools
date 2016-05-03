@@ -24,5 +24,7 @@ python $__tool_directory__/find_organism.py
 **What it does**
 
 Searches for an organism's information in the Apollo database.
+
+@REFERENCES@
 ]]></help>
 </tool>

@@ -21,5 +21,7 @@ $json_file
 
 Given a json file that's output by the Galaxy<->WebApollo bridge, this
 generates a nice little IFrame that you can use to access Apollo
+
+@REFERENCES@
       ]]></help>
 </tool>

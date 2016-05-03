@@ -25,7 +25,9 @@ $__user_email__
   <help><![CDATA[
 **What it does**
 
-Registers a TAMU account with the CPT's WebApollo. Just click run, then view
+Registers an account with WebApollo. Just click run, then view
 the output file for your password.
+
+@REFERENCES@
       ]]></help>
 </tool>
