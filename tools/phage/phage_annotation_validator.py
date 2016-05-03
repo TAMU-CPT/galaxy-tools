@@ -196,6 +196,8 @@ def require_sd(data, record, chrom_start, sd_min, sd_max):
 
 
 def annotation_table_report(record, wanted_cols):
+    if wanted_cols is None or len(wanted_cols.strip()) == 0:
+        return [], []
 
     def id(record, feature):
         """ID
@@ -246,6 +248,28 @@ def annotation_table_report(record, wanted_cols):
         """Strand
         """
         return '+' if feature.location.strand > 0 else '-'
+
+    def sd_spacing(record, feature):
+        """Shine-Dalgarno sequence
+        """
+        rbss = get_rbs_from(gene)
+        if len(rbss) == 0:
+            return 'None'
+        else:
+            resp = []
+            for rbs in rbss:
+                cdss = list(genes(feature.sub_features, feature_type='CDS', sort=True))
+
+                if rbs.location.strand > 0:
+                    distance = min(cdss, key=lambda x: x.location.start - rbs.location.end)
+                    resp.append(str(distance.location.start - rbs.location.end))
+                else:
+                    distance = min(cdss, key=lambda x: x.location.end - rbs.location.start)
+                    resp.append(str(distance.location.end - rbs.location.start))
+
+            if len(resp) == 1:
+                return str(resp[0])
+            return resp
 
     def sd_seq(record, feature):
         """Shine-Dalgarno sequence
