@@ -214,6 +214,12 @@ def annotation_table_report(record, wanted_cols):
         """
         return '{0.start}..{0.end}'.format(feature.location)
 
+    def length(record, feature):
+        """Length (AA)
+        """
+        cdss = list(genes(feature.sub_features, feature_type='CDS', sort=True))
+        return str(sum([len(cds) for cds in cdss]) / 3)
+
     def notes(record, feature):
         """User entered Notes"""
         return feature.qualifiers.get('Note', [])
