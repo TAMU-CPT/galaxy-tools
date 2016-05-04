@@ -965,7 +965,7 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
         else:
             return '←'.decode('utf-8')
 
-    env = Environment(loader=FileSystemLoader(SCRIPT_PATH))
+    env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
     env.filters['nice_id'] = get_gff3_id
     env.filters['nice_strand'] = nice_strand
     tpl = env.get_template(reportTemplateName)

@@ -169,17 +169,7 @@ td.moron {
                     {% for row in annotation_table_data %}
                         <tr>
                         {% for col in row %}
-                            <td>
-                                {% if col is not string %}
-                                <ul>
-                                    {% for val in col %}
-                                    <li>{{ val }}</li>
-                                    {% endfor %}
-                                </ul>
-                                {% else %}
-                                    {{ col }}
-                                {% endif %}
-                            </td>
+                        <td>{% if col is not string %}<ul>{% for val in col %}<li>{{ val }}</li>{% endfor %}</ul>{% else %}{{ col }}{% endif %}</td>
                         {% endfor %}
                         </tr>
                     {% endfor %}
