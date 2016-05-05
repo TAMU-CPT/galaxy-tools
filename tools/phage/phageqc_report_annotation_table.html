@@ -180,6 +180,34 @@ td.moron {
     </div>
     <script type="text/javascript">
         $(document).ready( function () {
+
+jQuery.fn.dataTable.ext.type.detect.unshift( function ( data ) {
+    if ( typeof data !== 'string' ) {
+        return null;
+    }
+
+    var matches = data.match(/^(\d+)\.\.(\d+)/);
+    return matches ? 'genomic' : null;
+} );
+
+
+
+jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+    "genomic-pre": function ( a ) {
+        var matches = a.match(/^(\d+)\.\.(\d+)/);
+        console.log(a + " " + matches[1]);
+        return parseInt(matches[1]);
+    },
+
+    "genomic-asc": function ( a, b ) {
+        return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+    },
+
+    "genomic-desc": function ( a, b ) {
+        return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+    }
+} );
+
             $('#data').DataTable();
         });
     </script>
