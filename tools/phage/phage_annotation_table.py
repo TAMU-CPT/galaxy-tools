@@ -45,6 +45,16 @@ def annotation_table_report(record, wanted_cols):
         """
         return feature.qualifiers.get('Name', ['None'])[0]
 
+    def start(record, feature):
+        """Start
+        """
+        return str(feature.location.start)
+
+    def end(record, feature):
+        """End
+        """
+        return str(feature.location.end)
+
     def location(record, feature):
         """Location
         """
