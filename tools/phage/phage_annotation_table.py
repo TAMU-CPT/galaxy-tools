@@ -20,7 +20,7 @@ from cpt import OrfFinder
 import re
 import logging
 logging.basicConfig(level=logging.DEBUG)
-log = logging.getLogger(name='pav')
+log = logging.getLogger(name='pat')
 
 # Path to script, required because of Galaxy.
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -29,6 +29,11 @@ SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 def annotation_table_report(record, wanted_cols):
     if wanted_cols is None or len(wanted_cols.strip()) == 0:
         return [], []
+
+    def rid(record, feature):
+        """Organism ID
+        """
+        return record.id
 
     def id(record, feature):
         """ID
@@ -251,14 +256,19 @@ def evaluate_and_report(annotations, genome,
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
     # Get the first GFF3 record
     # TODO: support multiple GFF3 files.
-    record = list(GFF.parse(annotations, base_dict=seq_dict))[0]
+    at_table_data = []
 
-    log.info("Producing an annotation table")
-    annotation_table_data, annotation_table_col_names = annotation_table_report(record, annotationTableCols)
+    for record in GFF.parse(annotations, base_dict=seq_dict):
+        log.info("Producing an annotation table for %s" % record.id)
+        annotation_table_data, annotation_table_col_names = annotation_table_report(record, annotationTableCols)
+        at_table_data.append((
+            record, annotation_table_data
+        ))
+        break
 
     # This is data that will go into our HTML template
     kwargs = {
-        'annotation_table_data': annotation_table_data,
+        'annotation_table_data': at_table_data,
         'annotation_table_col_names': annotation_table_col_names,
     }
 

@@ -1,6 +1,8 @@
 # {% for col in annotation_table_col_names %}{{ col[0] }}	{% endfor %}
-{% for row in annotation_table_data %}
+{% for (record, dataset) in annotation_table_data %}
+{% for row in dataset %}
 
 {% for col in row %}
 {% if col is not string %}{% for val in col %}"{{ val }}", {% endfor %}{% else %}{{ col }}{% endif %}	{% endfor %}
+{% endfor %}
 {% endfor %}
