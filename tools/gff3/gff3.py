@@ -224,3 +224,17 @@ def wa_unified_product_name(feature):
             protein_product = feature.qualifiers['Name'][0]
 
     return protein_product
+
+def get_rbs_from(gene):
+    # Normal RBS annotation types
+    rbs_rbs = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'RBS'}, subfeatures=False))
+    rbs_sds = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
+    # Fraking apollo
+    apollo_exons = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'exon'}, subfeatures=False))
+    apollo_exons = [x for x in apollo_exons if len(x) < 10]
+    # These are more NCBI's style
+    regulatory_elements = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'regulatory'}, subfeatures=False))
+    rbs_regulatory = list(feature_lambda(regulatory_elements, feature_test_quals, {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
+    # Here's hoping you find just one ;)
+    return rbs_rbs + rbs_sds + rbs_regulatory + apollo_exons
+

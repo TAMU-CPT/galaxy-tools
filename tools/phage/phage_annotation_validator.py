@@ -6,7 +6,7 @@ import math
 import argparse
 import itertools
 from gff3 import feature_lambda, feature_test_type, feature_test_quals, \
-    coding_genes, genes, get_gff3_id, feature_test_location
+    coding_genes, genes, get_gff3_id, feature_test_location, get_rbs_from
 from shinefind import NaiveSDCaller
 from BCBio import GFF
 from Bio.Data import CodonTable
@@ -66,19 +66,6 @@ def __ensure_location_in_bounds(start=0, end=0, parent_length=0):
     while end > parent_length:
         end -= 3
     return (start, end)
-
-def get_rbs_from(gene):
-    # Normal RBS annotation types
-    rbs_rbs = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'RBS'}, subfeatures=False))
-    rbs_sds = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
-    # Fraking apollo
-    apollo_exons = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'exon'}, subfeatures=False))
-    apollo_exons = [x for x in apollo_exons if len(x) < 10]
-    # These are more NCBI's style
-    regulatory_elements = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'regulatory'}, subfeatures=False))
-    rbs_regulatory = list(feature_lambda(regulatory_elements, feature_test_quals, {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
-    # Here's hoping you find just one ;)
-    return rbs_rbs + rbs_sds + rbs_regulatory + apollo_exons
 
 def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     """
