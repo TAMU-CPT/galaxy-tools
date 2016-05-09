@@ -7,11 +7,13 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Annotation Table for {{record_name}}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
+    <title>Annotation Table</title>
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
     <style type="text/css">
 /*
@@ -149,7 +151,7 @@ td.moron {
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Annotation Table for {{record_name}})</a>
+            <a class="navbar-brand" href="#">Annotation Table</a>
         </div>
       </div>
     </nav>
@@ -157,29 +159,43 @@ td.moron {
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 main" id="main">
-            <table class="table table-striped" id="data">
-                <thead>
-                    <tr>
-                    {% for col in annotation_table_col_names %}
-                        <th>{{ col[0] }}</th>
-                    {% endfor %}
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in annotation_table_data %}
-                        <tr>
-                        {% for col in row %}
-                        <td>{% if col is not string %}<ul>{% for val in col %}<li>{{ val }}</li>{% endfor %}</ul>{% else %}{{ col }}{% endif %}</td>
-                        {% endfor %}
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist" id="myTabs">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">..a</div>
+    <div role="tabpanel" class="tab-pane" id="profile">..b</div>
+    <div role="tabpanel" class="tab-pane" id="messages">.c.</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  </div>
+
+</div>
+
+
         </div>
       </div>
     </div>
+
     <script type="text/javascript">
         $(document).ready( function () {
+
+
+
+$('#myTabs a').click(function (e) {
+	e.preventDefault()
+	$(this).tab('show')
+})
+
+
 
 jQuery.fn.dataTable.ext.type.detect.unshift( function ( data ) {
     if ( typeof data !== 'string' ) {

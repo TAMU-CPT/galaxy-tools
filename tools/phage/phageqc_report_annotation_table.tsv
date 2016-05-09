@@ -1,5 +1,5 @@
-# {% for col in annotation_table_col_names %}{{ col[0] }}	{% endfor %}
 {% for (record, dataset) in annotation_table_data %}
+# {% for col in annotation_table_col_names %}{{ col[0] }}	{% endfor %}
 {% for row in dataset %}
 
 {% for col in row %}

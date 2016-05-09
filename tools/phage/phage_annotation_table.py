@@ -124,7 +124,7 @@ def annotation_table_report(record, wanted_cols):
         else:
             resp = []
             for rbs in rbss:
-                resp.append(rbs.extract(record).seq)
+                resp.append(str(rbs.extract(record).seq))
             if len(resp) == 1:
                 return str(resp[0])
             else:
@@ -264,7 +264,7 @@ def evaluate_and_report(annotations, genome,
         at_table_data.append((
             record, annotation_table_data
         ))
-        break
+        # break
 
     # This is data that will go into our HTML template
     kwargs = {
@@ -272,15 +272,8 @@ def evaluate_and_report(annotations, genome,
         'annotation_table_col_names': annotation_table_col_names,
     }
 
-    def nice_strand(direction):
-        if direction > 0:
-            return '→'.decode('utf-8')
-        else:
-            return '←'.decode('utf-8')
-
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
     env.filters['nice_id'] = get_gff3_id
-    env.filters['nice_strand'] = nice_strand
     tpl = env.get_template(reportTemplateName)
     return tpl.render(**kwargs).encode('utf-8')
 
