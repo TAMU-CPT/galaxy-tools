@@ -9,7 +9,7 @@
     <command><![CDATA[
 @GENOME_SELECTOR_PRE@
 
-python $__tool_directory__/phage_annotation_validator.py
+python $__tool_directory__/phage_annotation_table.py
 $gff3_data
 @GENOME_SELECTOR@
 
