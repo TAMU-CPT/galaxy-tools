@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage.annotation_table" name="GFF3 Annotation Table" version="2.6">
-    <description>validate phage annotations</description>
+<tool id="edu.tamu.cpt2.phage.annotation_table" name="Annotation Table" version="2.6">
+    <description>from gff3 formatted datasets</description>
     <macros>
       <import>macros.xml</import>
     </macros>
