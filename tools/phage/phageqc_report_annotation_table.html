@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Annotation Table</title>
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
@@ -159,28 +159,41 @@ td.moron {
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 main" id="main">
+            <ul class="nav nav-tabs" role="tablist" id="myTabs">
+                <li role="presentation" class="active"><a href="#overview" role="tab" data-toggle="tab">Overview</a></li>
+                {% for (record, data) in annotation_table_data %}
+                <li role="presentation"><a href="#{{ record.id }}" role="tab" data-toggle="tab">{{ record.id }}</a></li>
+                {% endfor %}
+            </ul>
 
-<div>
-
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist" id="myTabs">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">..a</div>
-    <div role="tabpanel" class="tab-pane" id="profile">..b</div>
-    <div role="tabpanel" class="tab-pane" id="messages">.c.</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
-  </div>
-
-</div>
-
-
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="overview">
+                    Data on each organism will be accessible from the tabs above.
+                </div>
+                {% for (record, data) in annotation_table_data %}
+                    <div role="tabpanel" class="tab-pane" id="{{ record.id }}">
+                        <table class="table table-striped" id="data">
+                            <thead>
+                                <tr>
+                                {% for col in annotation_table_col_names %}
+                                    <th>{{ col[0] }}</th>
+                                {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data %}
+                                    <tr>
+                                    {% for col in row %}
+                                    <td>{% if col is not string %}<ul>{% for val in col %}<li>{{ val }}</li>{% endfor %}</ul>{% else %}{{ col }}{% endif %}</td>
+                                    {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
       </div>
     </div>
@@ -224,7 +237,7 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     }
 } );
 
-            $('#data').DataTable();
+            $('table').DataTable();
         });
     </script>
   </body>
