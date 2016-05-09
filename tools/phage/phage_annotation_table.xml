@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage.annotation_table" name="Annotation Table" version="2.6">
+<tool id="edu.tamu.cpt2.phage.annotation_table" name="Annotation Table" version="2.6.1">
     <description>from gff3 formatted datasets</description>
     <macros>
       <import>macros.xml</import>
@@ -51,7 +51,11 @@ $gff3_data
         </param>
     </inputs>
     <outputs>
-      <data format="html" name="output"/>
+      <data format="html" name="output">
+          <change_format>
+            <when format="tabular" input="report_format" value="phageqc_report_annotation_table.tsv"/>
+          </change_format>
+      </data>
     </outputs>
     <help><![CDATA[
 Generate an "annotation table" of a genome, with user-configurable data columns
