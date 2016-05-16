@@ -4,7 +4,7 @@ logging.basicConfig(level=logging.WARN)
 log = logging.getLogger()
 
 
-def feature_lambda(feature_list, test, test_kwargs, subfeatures=True, parent=None):
+def feature_lambda(feature_list, test, test_kwargs, subfeatures=True, parent=None, invert=False):
     """Recursively search through features, testing each with a test function, yielding matches.
 
     GFF3 is a hierachical data structure, so we need to be able to recursively
@@ -38,13 +38,19 @@ def feature_lambda(feature_list, test, test_kwargs, subfeatures=True, parent=Non
                         return) the entire feature tree, such as applying a
                         qualifier to every single feature.
 
+    :type invert: boolean
+    :param invert: Negate/invert the result of the filter.
+
     :rtype: yielded list
     :return: Yields a list of matching features.
     """
     # Either the top level set of [features] or the subfeature attribute
     for feature in feature_list:
         feature._parent = parent
-        if test(feature, **test_kwargs):
+        test_result = test(feature, **test_kwargs)
+        # if (not invert and test_result) or (invert and not test_result):
+        # print feature.type, test_kwargs, test_result, invert ^ test_result
+        if invert ^ test_result:
             if not subfeatures:
                 feature_copy = copy.deepcopy(feature)
                 feature_copy.sub_features = []
@@ -53,7 +59,7 @@ def feature_lambda(feature_list, test, test_kwargs, subfeatures=True, parent=Non
                 yield feature
 
         if hasattr(feature, 'sub_features'):
-            for x in feature_lambda(feature.sub_features, test, test_kwargs, subfeatures=subfeatures, parent=feature):
+            for x in feature_lambda(feature.sub_features, test, test_kwargs, subfeatures=subfeatures, parent=feature, invert=invert):
                 yield x
 
 
