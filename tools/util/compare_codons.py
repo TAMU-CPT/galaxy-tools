@@ -59,8 +59,9 @@ def main(reference, comparison, sort_order='default', ref_title=None, cmp_title=
     comp_sum = sum(zip(*comp_data)[1])
     for codon in comp_data:
         nt = codon[0].upper()
-        aa = translation[nt]
-        table[aa][nt]['comp'] = float(codon[1]) / comp_sum
+        if 'nt' in translation:
+            aa = translation[nt]
+            table[aa][nt]['comp'] = float(codon[1]) / comp_sum
 
     keys = []
     ref_flat = []
