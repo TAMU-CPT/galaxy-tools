@@ -81,7 +81,7 @@ galaxy@gmod.org
             <param name="cn_file" type="data" format="fasta" label="Reference sequence(s)" optional="true"/>
         </when>
         <when value="direct">
-            <repeat name="refseqs">
+            <repeat name="refseqs" title="Reference Sequences" help="These are used to identify sequences within an organism that you wish to extract">
                 <param name="refseq" type="text" label="Reference sequence(s)" />
             </repeat>
         </when>
