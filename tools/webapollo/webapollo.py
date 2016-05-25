@@ -31,8 +31,11 @@ def GuessOrg(args):
         orgs = [x for x in orgs if x is not None]
         return orgs[0]
     elif args.org_raw:
-        orgs = [x.strip() for x in args.org_raw if len(x.strip()) > 0]
-        return orgs
+        org = args.org_raw.strip()
+        if len(org) > 0:
+            return org
+        else:
+            raise Exception("Organism Common Name not provided")
     else:
         raise Exception("Organism Common Name not provided")
 
