@@ -8,6 +8,11 @@ logging.getLogger("requests").setLevel(logging.CRITICAL)
 log = logging.getLogger()
 
 
+def WAAuth(parser):
+    parser.add_argument('apollo', help='Complete Apollo URL')
+    parser.add_argument('username', help='WA Username')
+    parser.add_argument('password', help='WA Password')
+    parser.add_argument('--remote_user', default='', help='If set, ignore password, set the header with the name supplied to this argument to the value of email')
 
 class WebApolloInstance(object):
 
@@ -651,7 +656,6 @@ class WebApolloSeqRecord(object):
 
     def __getattr__(self, key):
         if key in ('_sr', '_wa'):
-            print self.__dict__
             return self.__dict__[key]
         else:
             if key == 'features':
@@ -666,7 +670,6 @@ class WebApolloSeqRecord(object):
         else:
             self._sr.__dict__[key] = value
             # Methods acting on the SeqRecord object
-            print key, value
 
 
 class WebApolloSeqFeature(object):
@@ -703,7 +706,6 @@ class WebApolloSeqFeature(object):
                 self._sf.__dict__[key] = value
             else:
                 self._sf.__dict__[key] = value
-                print key, value
 
 def _tnType(feature):
     if feature.type in ('gene', 'mRNA', 'exon', 'CDS'):

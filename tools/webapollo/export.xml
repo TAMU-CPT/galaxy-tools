@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.export" name="WA2: Retrieve/Export data" version="1.4">
-  <description>from WebApollo into Galaxy</description>
+<tool id="edu.tamu.cpt2.webapollo.export" name="Retrieve Data" version="2.1">
+  <description>from Apollo into Galaxy</description>
   <macros>
     <import>macros.xml</import>
   </macros>
@@ -8,7 +8,7 @@
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/export.py
 
-@AUTH@
+@ADMIN_AUTH@
 
 @CN_OR_GUESS@
 
@@ -20,13 +20,13 @@ python $__tool_directory__/export.py
     <expand macro="cn_or_guess" />
   </inputs>
   <outputs>
-    <data format="gff3" name="gff_out" />
-    <data format="fasta" name="fasta_out"/>
+    <data format="gff3" name="gff_out" label="Retrieve annotations from ${cn_source.organism_cn} in Apollo"/>
+    <data format="fasta" name="fasta_out" label="Retrieve sequence(s) from ${cn_source.organism_cn} in Apollo"/>
   </outputs>
   <help><![CDATA[
 **What it does**
 
-Exports the GFF3/Fasta sequence from WebApollo.
+Exports the sequence data and annotations from Apollo.
 
 @REFERENCES@
       ]]></help>

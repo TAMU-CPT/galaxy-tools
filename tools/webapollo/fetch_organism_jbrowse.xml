@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.fetch_jbrowse" name="WA2: Fetch JBrowse" version="1.4">
-  <description>fetches JBrowse data for existing organisms</description>
+<tool id="edu.tamu.cpt2.webapollo.fetch_jbrowse" name="Retrieve JBrowse" version="2.0">
+  <description>for an organism, from Apollo</description>
   <macros>
     <import>macros.xml</import>
   </macros>
@@ -9,9 +9,9 @@
 mkdir -p $jbrowse.files_path/;
 
 python $__tool_directory__/fetch_organism_jbrowse.py
-@AUTH@
-@CN_OR_GUESS@
-$__user_email__
+@ADMIN_AUTH@
+
+@ORG_OR_GUESS@
 $jbrowse.files_path/;
 
 cp $dummyIndex $jbrowse;
@@ -45,7 +45,7 @@ cp $dummyIndex $jbrowse;
       </configfile>
   </configfiles>
   <inputs>
-    <expand macro="cn_or_guess" />
+    <expand macro="org_or_guess" />
   </inputs>
   <outputs>
     <data format="html" name="jbrowse"/>

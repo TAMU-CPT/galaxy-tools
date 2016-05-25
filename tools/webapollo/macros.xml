@@ -6,45 +6,85 @@
       <yield/>
     </requirements>
   </xml>
-  <token name="@URL@">
-https://cpt.tamu.edu/apollo
+  <token name="@DATA_DIR@">/apollo-data</token>
+  <token name="@EXT_URL@">
+\$GALAXY_WEBAPOLLO_EXT_URL
   </token>
-  <token name="@AUTH@">
-@URL@
-galaxy@cpt.tamu.edu
+  <token name="@URL@">
+\$GALAXY_WEBAPOLLO_URL
+  </token>
+  <token name="@USER_AUTH_REMOTE@">
+\$GALAXY_WEBAPOLLO_URL
+$__user_email__
+""
+--remote_user REMOTE_USER
+  </token>
+  <token name="@ADMIN_AUTH@">
+\$GALAXY_WEBAPOLLO_URL
+galaxy@gmod.org
 \$GALAXY_WEBAPOLLO_PASSWORD
   </token>
-  <xml name="auth_file">
-    <param label="Apollo Authentication File"
-    name="apolloCredentialsFile" type="data" format="json" />
-  </xml>
 
+  <token name="@ORG_OR_GUESS@">
+<![CDATA[
+#if $org_source.source_select == "auto_json":
+    \$(cat $org_source.org_file | grep 'commonName' | head -n 1| sed 's/.*: "//g;s/".*//g')
+#else
+    "${org_source.organism_cn}"
+#end if
+]]>
+  </token>
   <token name="@CN_OR_GUESS@">
 <![CDATA[
 #if $cn_source.source_select == "auto":
-    \$(cat $cn_source.cn_file | grep '^>' | head -n 1  | sed 's/\s.*//g;s/>//g')
+    "${cn_source.organism_cn}"
+    #if str($cn_source.cn_file) != "None":
+        \$(cat $cn_source.cn_file | grep '^>' | sed 's/\s.*//g;s/>//g')
+    #end if
 #elif $cn_source.source_select == "auto_json":
     \$(cat $cn_source.cn_file | grep 'commonName' | head -n 1| sed 's/.*: "//g;s/".*//g')
 #else
     "${cn_source.organism_cn}"
+    #for $item in $cn_source.refseqs:
+        "${item.refseq}"
+    #end for
 #end if
 ]]>
   </token>
+  <xml name="org_or_guess">
+    <conditional name="org_source">
+        <param name="source_select" type="select" label="Organism Common Name Source">
+            <option value="direct">Direct Entry</option>
+            <option value="auto_json">Autodetect from Apollo JSON</option>
+        </param>
+        <when value="direct">
+            <param name="organism_cn" type="text" label="Organism Common Name" />
+        </when>
+        <when value="auto_json">
+            <param name="cn_file" type="data" format="json" label="Apollo Organism File" help="Will only fetch first organism" />
+        </when>
+    </conditional>
+  </xml>
   <xml name="cn_or_guess">
     <conditional name="cn_source">
         <param name="source_select" type="select" label="Organism Common Name Source">
+            <option value="direct">Direct Entry</option>
             <option value="auto">Autodetect from Fasta</option>
             <option value="auto_json">Autodetect from Apollo JSON</option>
-            <option value="direct">Direct Entry</option>
         </param>
         <when value="auto">
-            <param name="cn_file" type="data" format="fasta" label="Organism Common Name" />
+            <param name="organism_cn" type="text" label="Organism Common Name" />
+            <param name="cn_file" type="data" format="fasta" label="Reference sequence(s)" optional="true"/>
         </when>
         <when value="auto_json">
-            <param name="cn_file" type="data" format="json" label="Apollo Organism File" />
+            <param name="cn_file" type="data" format="json" label="Apollo Organism File" help="Will only fetch first organism" />
         </when>
         <when value="direct">
             <param name="organism_cn" type="text" label="Organism Common Name" />
+
+            <repeat name="refseqs">
+                <param name="refseq" type="text" label="Reference sequence(s)" />
+            </repeat>
         </when>
     </conditional>
   </xml>
@@ -52,21 +92,6 @@ galaxy@cpt.tamu.edu
   <xml name="citations">
       <citations>
       </citations>
-  </xml>
-  <xml name="dummy">
-    <param label="Dummy Inputs" name="dummy" type="data" multiple="True" optional="True">
-        <help>
-            With workflows that contact remote databases, it is sometimes
-            necessary to have particular operations happen in a particular
-            order. I.e. you would not want to try and add data to an organism
-            if the organism did not yet exist in WebApollo.
-            Since few of the WebApollo2 toolsuite output files which are
-            used in a downstream task (e.g. the output adding an organism is
-            not used elsewhere), we provide this dummy option which lets you
-            select outputs to help provide context for when this task should
-            execute.
-        </help>
-    </param>
   </xml>
   <xml name="gff3_input">
     <param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>

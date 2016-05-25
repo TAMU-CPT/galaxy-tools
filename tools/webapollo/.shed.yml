@@ -1,0 +1,9 @@
+categories:
+- Web Services
+description: Access an Apollo instance from Galaxy
+long_description: |
+    Talk to a (local) apollo server from Galaxy
+name: apollo
+owner: eric-rasche
+remote_repository_url: https://github.com/TAMU-CPT/galaxy-webapollo
+type: unrestricted

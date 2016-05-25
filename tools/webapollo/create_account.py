@@ -2,7 +2,7 @@
 import random
 import argparse
 import time
-from webapollo import WebApolloInstance, GroupObj
+from webapollo import WAAuth, WebApolloInstance, GroupObj
 
 def pwgen(length):
     chars = list('qwrtpsdfghjklzxcvbnm')
@@ -10,12 +10,10 @@ def pwgen(length):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an account via web services')
-    parser.add_argument('apollo', help='Complete Apollo URL')
-    parser.add_argument('username', help='WA Admin Username')
-    parser.add_argument('password', help='WA Admin Password')
+    WAAuth(parser)
 
     parser.add_argument('email', help='User Email')
-    parser.add_argument('--first', help='First Name', default='J')
+    parser.add_argument('--first', help='First Name', default='Jane')
     parser.add_argument('--last', help='Last Name', default='Aggie')
     args = parser.parse_args()
 
@@ -27,11 +25,6 @@ if __name__ == '__main__':
     user = [u for u in wa.users.loadUsers()
             if u.username == args.email][0]
 
-    bich464 = GroupObj(name="bich464-2016-spring")
-
     # Update name, regen password if the user ran it again
     wa.users.updateUser(user, args.email, args.first, args.last, password)
-    # Add to bich464 group
-    wa.users.addUserToGroup(bich464, user)
-
     print 'Username: %s\nPassword: %s' % (args.email, password)

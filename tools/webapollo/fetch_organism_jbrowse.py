@@ -3,7 +3,7 @@ import os
 import json
 import argparse
 import time
-from webapollo import WebApolloInstance
+from webapollo import WAAuth, WebApolloInstance
 import logging
 import subprocess
 logging.basicConfig(level=logging.INFO)
@@ -12,11 +12,9 @@ log = logging.getLogger(__name__)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
-    parser.add_argument('apollo', help='Complete Apollo URL')
-    parser.add_argument('username', help='WA Admin Username')
-    parser.add_argument('password', help='WA Admin Password')
+    WAAuth(parser)
+
     parser.add_argument('cn', help='Organism Common Name')
-    parser.add_argument('email', help='User Email')
     parser.add_argument('target_dir', help='Target directory')
 
     args = parser.parse_args()
@@ -24,11 +22,7 @@ if __name__ == '__main__':
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
     # User must have an account
-    gx_user = wa.users.loadUsers(email=args.email)
-    if len(gx_user) == 0:
-        raise Exception("Unknown user. Please register first")
     org = wa.organisms.findOrganismByCn(args.cn)
-
 
     if not os.path.exists(args.target_dir):
         os.makedirs(args.target_dir)
@@ -38,5 +32,4 @@ if __name__ == '__main__':
         org['directory'],
         os.path.join(args.target_dir, 'data')
     ]
-    print ' '.join(cmd)
     subprocess.check_call(cmd)

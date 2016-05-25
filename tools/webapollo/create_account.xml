@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.create_account" name="WA2: Register Account" version="1.5">
-  <description>registers a new account with WebApollo</description>
+<tool id="edu.tamu.cpt2.webapollo.create_account" name="Register Account" version="2.0">
+  <description>with WebApollo</description>
   <macros>
     <import>macros.xml</import>
   </macros>
@@ -8,7 +8,7 @@
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/create_account.py
 
-@AUTH@
+@ADMIN_AUTH@
 
 $__user_email__
 

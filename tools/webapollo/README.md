@@ -1,12 +1,8 @@
-Tools:
+# galaxy-webapollo
 
-- [x] Add organism
-- [ ] Add gbk
+Galaxy tools to interface with WebApollo
+The webapollo.py file is also [separately available](https://github.com/erasche/python-apollo) as a pip-installable package.
 
-- [ ] Get organism (fasta)
-- [ ] Get features (gff3)
-- [ ] Do we need bigwig extraction support?
+## License
 
-- [ ] Display
-    - [ ] dynamic (html + iframe or just href)
-    - [ ] static (extract data dir + jbrowse-ify)
+All python scripts, wrappers, and the webapollo.py are licensed under MIT license.

@@ -1,39 +1,33 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.create_or_update" name="WA2: Create or Update Organism" version="1.5">
+<tool id="edu.tamu.cpt2.webapollo.create_or_update" name="Create or Update Organism" version="2.0">
   <description>will create the organism if it doesn't exist, and update otherwise</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-cp -R ${jbrowse.extra_files_path}/data/ /opt/apollo/data/galaxy/${jbrowse.id};
+cp -R ${jbrowse.extra_files_path}/data/ @DATA_DIR@/${jbrowse.id};
 
 python $__tool_directory__/create_or_update_organism.py
 
-@AUTH@
-
-#if str($blatdb) != "None":
-    --blatdb "$blatdb"
-#end if
+@ADMIN_AUTH@
 
 --genus "$genus"
 --species "$species"
 $public
 
-@CN_OR_GUESS@
+@ORG_OR_GUESS@
 
-"/opt/apollo/data/galaxy/${jbrowse.id}"
+"@DATA_DIR@/${jbrowse.id}"
 
 $__user_email__
 
 > $output]]></command>
   <inputs>
     <param name="jbrowse" type="data" format="html" label="JBrowse HTML Output" />
-    <param name="blatdb" type="data" label="Blat DB" optional="True" />
-
-    <expand macro="cn_or_guess" />
-    <param name="genus" type="text" label="Host Bacteria" optional="True" />
-    <param name="species" type="text" label="Phage Name" optional="True" />
+    <expand macro="org_or_guess" />
+    <param name="genus" type="text" label="Genus" optional="False" />
+    <param name="species" type="text" label="Species" optional="True" />
     <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
   </inputs>
   <outputs>
