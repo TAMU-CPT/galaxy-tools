@@ -22,6 +22,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     org_cn = GuessOrg(args)
+    if len(org_cn) > 1:
+        org_cn = org_cn[0]
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
     # User must have an account

@@ -30,6 +30,12 @@ python $__tool_directory__/export.py
 
 Exports the sequence data and annotations from Apollo.
 
+If you provide an Apollo JSON file as input to the Organism Common Name list,
+this will enable extracting multiple organism's data at once from Apollo.
+Beware that currently all gff3 and fasta responses are merged together. If you
+have two separate organisms with identically named reference sequences, it will
+not be possible to separate those out.
+
 @REFERENCES@
       ]]></help>
 </tool>

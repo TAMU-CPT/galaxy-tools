@@ -22,6 +22,8 @@ if __name__ == '__main__':
     wa = WebApolloInstance(args.apollo, args.username, args.password)
     # User must have an account
     org_cn = GuessOrg(args)
+    if len(org_cn) > 1:
+        org_cn = org_cn[0]
     org = wa.organisms.findOrganismByCn(org_cn)
 
     if not os.path.exists(args.target_dir):
