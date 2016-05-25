@@ -88,8 +88,7 @@ class OrfFinder(object):
                 out_gff3.write('\t'.join(map(str, [
                     record.id, 'getOrfsOrCds', 'CDS', f_start + 1, f_end, '.',
                     nice_strand, 0, 'ID=%s%s' % (self.ftype, i + 1)])) + '\n')
-
-        log.info("Found %i %ss in %i sequences", out_count, self.ftype, idx + 1)
+        log.info("Found %i %ss", out_count, self.ftype)
 
     def start_chop_and_trans(self, s, strict=True):
         """Returns offset, trimmed nuc, protein."""
