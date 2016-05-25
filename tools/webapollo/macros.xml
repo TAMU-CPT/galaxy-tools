@@ -28,26 +28,31 @@ galaxy@gmod.org
   <token name="@ORG_OR_GUESS@">
 <![CDATA[
 #if $org_source.source_select == "auto_json":
-    \$(cat $org_source.org_file | grep 'commonName' | head -n 1| sed 's/.*: "//g;s/".*//g')
+    --org_json "${org_source.org_raw}"
 #else
-    "${org_source.organism_cn}"
+    --org_raw "${org_source.org_raw}"
 #end if
 ]]>
   </token>
-  <token name="@CN_OR_GUESS@">
+  <token name="@ORG_CN_OR_GUESS@">
 <![CDATA[
-#if $cn_source.source_select == "auto":
-    "${cn_source.organism_cn}"
-    #if str($cn_source.cn_file) != "None":
-        \$(cat $cn_source.cn_file | grep '^>' | sed 's/\s.*//g;s/>//g')
-    #end if
-#elif $cn_source.source_select == "auto_json":
-    \$(cat $cn_source.cn_file | grep 'commonName' | head -n 1| sed 's/.*: "//g;s/".*//g')
+#if $org_source.source_select == "auto_json":
+    --org_json "${org_source.org_file}"
 #else
-    "${cn_source.organism_cn}"
-    #for $item in $cn_source.refseqs:
-        "${item.refseq}"
-    #end for
+    --org_raw "${org_source.org_raw}"
+#end if
+
+#if $cn_source.source_select == "auto":
+    #if str($cn_source.cn_file) != "None":
+        --seq_fasta $cn_source.cn_file
+    #end if
+#else
+    #if len($cn_source.refseqs) > 0:
+        --seq_raw
+        #for $item in $cn_source.refseqs:
+            "${item.refseq}"
+        #end for
+    #end if
 #end if
 ]]>
   </token>
@@ -58,30 +63,24 @@ galaxy@gmod.org
             <option value="auto_json">Autodetect from Apollo JSON</option>
         </param>
         <when value="direct">
-            <param name="organism_cn" type="text" label="Organism Common Name" />
+            <param name="org_raw" type="text" label="Organism Common Name" />
         </when>
         <when value="auto_json">
-            <param name="cn_file" type="data" format="json" label="Apollo Organism File" help="Will only fetch first organism" />
+            <param name="org_file" type="data" format="json" label="Apollo Organism File" help="Will only fetch first organism" />
         </when>
     </conditional>
   </xml>
   <xml name="cn_or_guess">
+    <expand macro="org_or_guess" />
     <conditional name="cn_source">
-        <param name="source_select" type="select" label="Organism Common Name Source">
+        <param name="source_select" type="select" label="Organism Sequence(s) Source">
             <option value="direct">Direct Entry</option>
             <option value="auto">Autodetect from Fasta</option>
-            <option value="auto_json">Autodetect from Apollo JSON</option>
         </param>
         <when value="auto">
-            <param name="organism_cn" type="text" label="Organism Common Name" />
             <param name="cn_file" type="data" format="fasta" label="Reference sequence(s)" optional="true"/>
         </when>
-        <when value="auto_json">
-            <param name="cn_file" type="data" format="json" label="Apollo Organism File" help="Will only fetch first organism" />
-        </when>
         <when value="direct">
-            <param name="organism_cn" type="text" label="Organism Common Name" />
-
             <repeat name="refseqs">
                 <param name="refseq" type="text" label="Reference sequence(s)" />
             </repeat>

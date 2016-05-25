@@ -2,6 +2,7 @@ import requests
 import json
 import collections
 from BCBio import GFF
+from Bio import SeqIO
 import StringIO
 import logging
 logging.getLogger("requests").setLevel(logging.CRITICAL)
@@ -13,6 +14,40 @@ def WAAuth(parser):
     parser.add_argument('username', help='WA Username')
     parser.add_argument('password', help='WA Password')
     parser.add_argument('--remote_user', default='', help='If set, ignore password, set the header with the name supplied to this argument to the value of email')
+
+def OrgOrGuess(parser):
+    parser.add_argument('--org_json', type=file, help='Apollo JSON output, source for common name')
+    parser.add_argument('--org_raw', help='Common Name')
+
+def CnOrGuess(parser):
+    OrgOrGuess(parser)
+    parser.add_argument('--seq_fasta', type=file, help='Fasta file, IDs used as sequence sources')
+    parser.add_argument('--seq_raw', nargs='*', help='Sequence Names')
+
+def GuessOrg(args):
+    if args.org_json:
+        orgs = [x.get('commonName', None)
+                for x in json.load(args.org_json)]
+        orgs = [x for x in orgs if x is not None]
+        return orgs[0]
+    elif args.org_raw:
+        orgs = args.org_raw
+        return orgs
+    else:
+        raise Exception("Organism Common Name not provided")
+
+def GuessCn(args):
+    org = GuessOrg(args)
+    seqs = []
+    if args.seq_fasta:
+        # If we have a fasta, pull all rec ids from that.
+        for rec in SeqIO.parse(args.seq_fasta, 'fasta'):
+            seqs.append(rec.id)
+    elif args.seq_raw:
+        # Otherwise raw list.
+        seqs = args.seq_raw
+
+    return org, seqs
 
 class WebApolloInstance(object):
 

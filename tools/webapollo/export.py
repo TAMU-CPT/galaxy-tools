@@ -5,22 +5,23 @@ import json
 import argparse
 from Bio import SeqIO
 from BCBio import GFF
-from webapollo import WAAuth, WebApolloInstance
+from webapollo import WAAuth, WebApolloInstance, CnOrGuess, GuessCn
 
 if __name__ == '__main__':
-    json
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
     WAAuth(parser)
-
-    parser.add_argument('commonName', help='Common Name')
-    parser.add_argument('refSeqs', nargs='*', help='SeqName(s)')
-
+    CnOrGuess(parser)
     parser.add_argument('--gff', type=argparse.FileType('w'))
     parser.add_argument('--fasta', type=argparse.FileType('w'))
+    parser.add_argument('--json', type=argparse.FileType('w'))
 
     args = parser.parse_args()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
+
+    org_cn, seqs = GuessCn(args)
+    org_data = wa.organisms.findOrganismByCn(org_cn)
+    args.json.write(json.dumps([org_data], indent=2))
 
     data = StringIO.StringIO()
 
@@ -30,13 +31,13 @@ if __name__ == '__main__':
         exportGff3Fasta=True,
         output="text",
         exportFormat="text",
-        organism=args.commonName,
+        organism=org_cn,
     )
 
-    for refSeq in args.refSeqs:
+    if len(seqs) > 0:
         data.write(wa.io.write(
             exportAllSequences=False,
-            sequences=refSeq,
+            sequences=seqs,
             **kwargs
         ))
     else:
@@ -51,6 +52,8 @@ if __name__ == '__main__':
 
     for record in GFF.parse(data):
         record.annotations = {}
-        GFF.write([record], args.gff)
+        if args.gff:
+            GFF.write([record], args.gff)
         record.description = ""
-        SeqIO.write([record], args.fasta, 'fasta')
+        if args.fasta:
+            SeqIO.write([record], args.fasta, 'fasta')

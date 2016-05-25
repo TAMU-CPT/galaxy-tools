@@ -3,7 +3,7 @@ import os
 import json
 import argparse
 import time
-from webapollo import WAAuth, WebApolloInstance
+from webapollo import WAAuth, WebApolloInstance, GuessOrg, OrgOrGuess
 import logging
 import subprocess
 logging.basicConfig(level=logging.INFO)
@@ -13,8 +13,7 @@ log = logging.getLogger(__name__)
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
     WAAuth(parser)
-
-    parser.add_argument('cn', help='Organism Common Name')
+    OrgOrGuess(parser)
     parser.add_argument('target_dir', help='Target directory')
 
     args = parser.parse_args()
@@ -22,7 +21,8 @@ if __name__ == '__main__':
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
     # User must have an account
-    org = wa.organisms.findOrganismByCn(args.cn)
+    org_cn = GuessOrg(args)
+    org = wa.organisms.findOrganismByCn(org_cn)
 
     if not os.path.exists(args.target_dir):
         os.makedirs(args.target_dir)

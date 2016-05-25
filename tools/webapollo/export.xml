@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.export" name="Retrieve Data" version="2.1">
+<tool id="edu.tamu.cpt2.webapollo.export" name="Retrieve Data" version="2.2">
   <description>from Apollo into Galaxy</description>
   <macros>
     <import>macros.xml</import>
@@ -10,18 +10,20 @@ python $__tool_directory__/export.py
 
 @ADMIN_AUTH@
 
-@CN_OR_GUESS@
+@ORG_CN_OR_GUESS@
 
---gff $gff_out
---fasta $fasta_out
+--gff "$gff_out"
+--fasta "$fasta_out"
+--json "$json_out"
 
 ]]></command>
   <inputs>
     <expand macro="cn_or_guess" />
   </inputs>
   <outputs>
-    <data format="gff3" name="gff_out" label="Retrieve annotations from ${cn_source.organism_cn} in Apollo"/>
-    <data format="fasta" name="fasta_out" label="Retrieve sequence(s) from ${cn_source.organism_cn} in Apollo"/>
+    <data format="gff3" name="gff_out" label="Annotations from Apollo"/>
+    <data format="fasta" name="fasta_out" label="Sequence(s) from Apollo"/>
+    <data format="json" name="json_out" label="Metadata from Apollo"/>
   </outputs>
   <help><![CDATA[
 **What it does**
