@@ -21,7 +21,7 @@ $__user_email__
   </token>
   <token name="@ADMIN_AUTH@">
 \$GALAXY_WEBAPOLLO_URL
-galaxy@gmod.org
+\$GALAXY_WEBAPOLLO_USER
 \$GALAXY_WEBAPOLLO_PASSWORD
   </token>
 
