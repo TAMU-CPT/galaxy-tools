@@ -29,11 +29,11 @@ def GuessOrg(args):
         orgs = [x.get('commonName', None)
                 for x in json.load(args.org_json)]
         orgs = [x for x in orgs if x is not None]
-        return orgs[0]
+        return orgs
     elif args.org_raw:
         org = args.org_raw.strip()
         if len(org) > 0:
-            return org
+            return [org]
         else:
             raise Exception("Organism Common Name not provided")
     else:
