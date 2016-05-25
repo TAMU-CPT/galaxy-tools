@@ -28,7 +28,7 @@ $__user_email__
   <token name="@ORG_OR_GUESS@">
 <![CDATA[
 #if $org_source.source_select == "auto_json":
-    --org_json "${org_source.org_raw}"
+    --org_json "${org_source.org_file}"
 #else
     --org_raw "${org_source.org_raw}"
 #end if
