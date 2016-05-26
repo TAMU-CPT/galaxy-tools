@@ -13,7 +13,7 @@ def glimmer3_to_gff3(glimmer, genome):
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
 
     current_record = None
-    for line in output:
+    for line in glimmer:
         if line.startswith('>'):
             chromId = line.strip().replace('>', '')
             if chromId in seq_dict:

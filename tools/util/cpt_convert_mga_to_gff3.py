@@ -13,7 +13,7 @@ def mga_to_gff3(mga_output, genome):
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
 
     current_record = None
-    for line in output:
+    for line in mga_output:
         if line.startswith('#'):
             if line.startswith('# gc = ') or line.startswith('# self:'):
                 continue
