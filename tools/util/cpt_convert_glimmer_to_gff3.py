@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def glimmer3_to_gff3(glimmer, genome):
-    for rec in SeqIO.parse(genome, 'fasta')
+    for rec in SeqIO.parse(genome, 'fasta'):
         for line in glimmer:
             if not line.startswith('>'):
                 (id, gstart, gend, phase, score) = line.strip().split()
