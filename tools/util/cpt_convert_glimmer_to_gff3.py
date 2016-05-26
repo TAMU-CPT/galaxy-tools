@@ -56,7 +56,7 @@ def glimmer3_to_gff3(glimmer, genome):
                 strand=strand,
                 qualifiers={
                     'source': 'glimmer',
-                    'ID': id,
+                    'ID': gene_id,
                 }
             )
             gene.sub_features = [cds_feat]
