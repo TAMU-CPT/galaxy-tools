@@ -12,22 +12,18 @@ logging.basicConfig(level=logging.INFO)
 def mga_to_gff3(mga_output, genome):
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
 
-    output_records = []
     current_record = None
-    for line in mga_output:
+    for line in output:
         if line.startswith('#'):
-            if line.startswith('# gc = '):
+            if line.startswith('# gc = ') or line.startswith('# self:'):
                 continue
-            elif line.startswith('# self:'):
-                continue
-
             chromId = line.strip().replace('# ', '')
             if chromId in seq_dict:
                 if current_record is not None:
                     yield current_record
                 current_record = seq_dict[chromId]
             else:
-                raise Exception("Found MGA results for sequence %s which was not in fasta file sequences (%s)" % (chromId, ', '.join(seq_dict.keys())))
+                raise Exception("Found results for sequence %s which was not in fasta file sequences (%s)" % (chromId, ', '.join(seq_dict.keys())))
 
         else:
             (gene_id, start, end, strand, phase, complete, score, model,
@@ -87,7 +83,6 @@ def mga_to_gff3(mga_output, genome):
             gene.sub_features = [cds_feat]
             if rbs_feat is not None:
                 gene.sub_features.append(rbs_feat)
-
             current_record.features.append(gene)
     yield current_record
 
