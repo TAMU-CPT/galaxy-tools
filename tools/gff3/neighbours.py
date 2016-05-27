@@ -69,18 +69,19 @@ def treeFeatures(features, strand=0):
             yield (int(feat.location.start), int(feat.location.end), feat.id)
 
 
+
 def neighbours(a, b, within=1000, mode='unordered', **kwargs):
     rec_a = list(GFF.parse(a))
     rec_b = list(GFF.parse(b))
-    if len(rec_a) > 1 or len(rec_b) > 1:
-        raise Exception("Cannot handle multiple GFF3 records in a file, yet")
 
-    if len(rec_a) == 0 or len(rec_b) == 0:
-        return None, None
+    # Maybe a, b are not identical sets.
+    for a in rec_a:
+        for b in rec_b:
+            if a.id == b.id:
+                yield neighbours_in_record(a, b, within=within, mode=mode, **kwargs)
 
-    rec_a = rec_a[0]
-    rec_b = rec_b[0]
 
+def neighbours_in_record(rec_a, rec_bb, within=1000, mode='unordered', **kwargs):
     feat_f = list(treeFeatures(rec_a.features, strand=1))
     feat_r = list(treeFeatures(rec_a.features, strand=-1))
 
@@ -153,9 +154,7 @@ if __name__ == '__main__':
     parser.add_argument('--ob', type=str, default='b_hits_in_a.gff')
     args = parser.parse_args()
 
-    a, b = neighbours(**vars(args))
-
-    if a is not None and b is not None:
+    for (a, b) in neighbours(**vars(args)):
         with open(args.oa, 'w') as handle:
             GFF.write([a], handle)
 
