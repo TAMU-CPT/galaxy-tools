@@ -22,7 +22,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     org_cn = GuessOrg(args)
-    if len(org_cn) > 1:
+    if isinstance(org_cn, list):
         org_cn = org_cn[0]
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
@@ -61,7 +61,7 @@ if __name__ == '__main__':
         )
 
         # Must sleep before we're ready to handle
-        time.sleep(1)
+        time.sleep(2)
         log.info("Updating permissions for %s on %s", gx_user[0], org_cn)
         wa.users.updateOrganismPermission(
             gx_user[0], org_cn,
