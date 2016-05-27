@@ -81,7 +81,7 @@ def neighbours(a, b, within=1000, mode='unordered', **kwargs):
                 yield neighbours_in_record(a, b, within=within, mode=mode, **kwargs)
 
 
-def neighbours_in_record(rec_a, rec_bb, within=1000, mode='unordered', **kwargs):
+def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
     feat_f = list(treeFeatures(rec_a.features, strand=1))
     feat_r = list(treeFeatures(rec_a.features, strand=-1))
 
