@@ -155,8 +155,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     for (a, b) in neighbours(**vars(args)):
-        with open(args.oa, 'w') as handle:
+        with open(args.oa, 'a') as handle:
             GFF.write([a], handle)
 
-        with open(args.ob, 'w') as handle:
+        with open(args.ob, 'a') as handle:
             GFF.write([b], handle)
