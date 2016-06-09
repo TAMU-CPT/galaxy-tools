@@ -269,6 +269,9 @@ class ColorScheme(object):
     def get_color(self, product_list):
 
         for product in product_list:
+            if product is None:
+                continue
+
             matched = None
             for regex in self.standard_regex:
 

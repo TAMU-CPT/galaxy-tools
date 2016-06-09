@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.phage.genome_map" name="Genome Mapper" version="3.0">
+    <description></description>
+    <macros>
+      <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <expand macro="stdio"/>
+    <command><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+python $__tool_directory__/genome_map.py
+$gff3_data
+@GENOME_SELECTOR@
+--rows $rows
+
+#if $subset.subset == 'True':
+    --subset ${subset.subset_a},${subset.subset_b}
+#end if
+
+> $output
+
+]]></command>
+    <inputs>
+        <expand macro="gff3_input" />
+        <expand macro="genome_selector" />
+
+        <param label="Desired # of Rows" name="rows" type="integer" value="2" />
+
+
+        <conditional name="subset">
+            <param name="subset" label="Plot a portion of the genome" type="boolean" truevalue="True" falsevalue=""/>
+            <when value="True">
+                <param label="Subset Start" name="subset_a" type="integer" value="0" help="Set to the desired location for start of the map. 0 implies plotting of whole genome"/>
+                <param label="Subset End"   name="subset_b" type="integer" value="0" help="Set to the desired location for end of the map. 0 implies plotting of whole genome"/>
+            </when>
+            <when value="" />
+        </conditional>
+    </inputs>
+    <outputs>
+      <data format="svg" name="output"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="gff3_data" value="miro.color.gff3" />
+            <param name="reference_genome.genome_fasta" value="miro.fa" />
+            <param name="rows" value="2" />
+            <output name="output" file="miro.svg" />
+        </test>
+    </tests>
+    <help><![CDATA[
+**Genome Mapper**
+
+Produces publication quality Genome Maps.
+        ]]></help>
+</tool>
