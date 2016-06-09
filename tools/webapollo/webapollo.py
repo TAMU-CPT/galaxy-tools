@@ -145,7 +145,7 @@ class Client(object):
         r = requests.post(url, data=json.dumps(data), headers=headers,
                           verify=self.__verify, params=post_params, allow_redirects=False, **self._requestArgs)
 
-        if r.status_code == 200:
+        if r.status_code == 200 or r.status_code == 302:
             if isJson:
                 d = r.json()
                 if 'username' in d:
