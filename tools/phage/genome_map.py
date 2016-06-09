@@ -181,8 +181,6 @@ class Plotter(object):
 
     def partitionLines(self, split_factor=1.05):
         avgRowLength = int(float(self.genome_length) / float(self.rows * split_factor))
-        calc_height = int(float(1 + self.rows) * self.ils)
-        calc_width = int(float(avgRowLength) / self.zoom)
 
         fake_count = 100
 
@@ -237,15 +235,20 @@ class Plotter(object):
             rowData[currentRow]['end'] - rowData[currentRow]['start']
         )
 
-        return rowData, avgRowLength, calc_height, calc_width, _internal_maxrowlength
+        return rowData, avgRowLength, _internal_maxrowlength
 
-    def createSvg(self, rowData):
-        self.calc_height = int((1 + max(rowData.keys())) * self.ils)
-        self.calc_width = int(float(self.avgRowLength) / self.zoom)
+    def createSvg(self, rowData, widthOverride=0):
+        height = int((1 + max(rowData.keys())) * self.ils)
+        width = int(float(self.avgRowLength) / self.zoom)
+
+        if widthOverride != 0:
+            width = widthOverride
+
+        self.calc_width = width
 
         self.svg = svgwrite.Drawing(
-            width=self.calc_width + 2 * (self.x_offset),
-            height=self.calc_height+ 2 * (self.y_offset),
+            width=width + 2 * (self.x_offset),
+            height=height+ 2 * (self.y_offset),
         )
 
         ui_group = self.svg.g(
@@ -306,17 +309,14 @@ class Plotter(object):
         bestFitness = 0
         for i in range(70, 130):
             s = float(i) / 100
-            rowData, avgRowLength, calc_height, calc_width, intMaxRowLength = \
-                    self.partitionLines(split_factor=s)
-            fitness = self.fitness(rowData, intMaxRowLength)
+            results = self.partitionLines(split_factor=s)
+            fitness = self.fitness(results[0], results[2])
             if fitness > bestFitness:
-                bestRowData = (rowData, avgRowLength, calc_height, calc_width, intMaxRowLength)
+                bestRowData = results
                 bestFitness = fitness
 
         self.avgRowLength = bestRowData[1]
-        self.calc_height = bestRowData[2]
-        self.calc_width = bestRowData[3]
-        self._internal_maxrowlength = bestRowData[4]
+        self._internal_maxrowlength = bestRowData[2]
         return bestRowData[0]
 
     def offsetPoint(self, x, y):
@@ -446,7 +446,7 @@ class Plotter(object):
         return g
 
 
-def parseFile(annotations, genome, subset=None, rows=2):
+def parseFile(annotations, genome, subset=None, rows=2, width=0):
     plotter = Plotter(rows=rows)
 
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
@@ -470,6 +470,7 @@ if __name__ == '__main__':
     parser.add_argument('genome', type=file, help='Genome Sequence')
     parser.add_argument('--subset', help="Subset location (E.g. --subset '100,400')")
     parser.add_argument('--rows', default=2, help="Number of rows")
+    parser.add_argument('--width', default=0, help='Width of plot')
     args = parser.parse_args()
 
     parseFile(**vars(args))

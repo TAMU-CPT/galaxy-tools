@@ -13,6 +13,7 @@ python $__tool_directory__/genome_map.py
 $gff3_data
 @GENOME_SELECTOR@
 --rows $rows
+--width $width
 
 #if $subset.subset == 'True':
     --subset ${subset.subset_a},${subset.subset_b}
@@ -25,6 +26,7 @@ $gff3_data
         <expand macro="gff3_input" />
         <expand macro="genome_selector" />
 
+        <param label="Width (px)" name="width" type="integer" value="0" help="Leave to the default value of zero for the mapper to choose an acceptable width for you" />
         <param label="Desired # of Rows" name="rows" type="integer" value="2" />
 
 
@@ -45,6 +47,7 @@ $gff3_data
             <param name="gff3_data" value="miro.color.gff3" />
             <param name="reference_genome.genome_fasta" value="miro.fa" />
             <param name="rows" value="2" />
+            <param name="width" value="0" />
             <output name="output" file="miro.svg" />
         </test>
     </tests>
