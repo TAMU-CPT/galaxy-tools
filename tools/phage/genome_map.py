@@ -72,22 +72,32 @@ class PlottedFeature(object):
         self.location = feature.location
         self.tag = feature.type
 
-        color = '#000000'
-        if 'color' in feature.qualifiers:
-            color = feature.qualifiers['color'][0]
-        elif 'colour' in feature.qualifiers:
-            color = feature.qualifiers['colour'][0]
-        elif feature.type in DEFAULT_COLOR_SCHEME:
+        def featureColor(feature):
+            if 'color' in feature.qualifiers:
+                color = feature.qualifiers['color'][0]
+            elif 'colour' in feature.qualifiers:
+                color = feature.qualifiers['colour'][0]
+            elif feature.type in DEFAULT_COLOR_SCHEME:
                 color = DEFAULT_COLOR_SCHEME[feature.type]['color']
+            else:
+                color = None
+            return color
 
-        self.color = color
+        cds_colors = [featureColor(x) for x in self.get_cdss()]
+        if len(cds_colors) > 0:
+            self.color = cds_colors[0]
+        else:
+            self.color = featureColor(feature) or '#000000'
+
+    def get_cdss(self):
+        return list(feature_lambda(self.feature.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))
 
     def get_label(self):
         if hasattr(self, 'label'):
             return self.label
 
         label = wa_unified_product_name(self.feature)
-        cdss = list(feature_lambda(self.feature.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))
+        cdss = self.get_cdss()
         labels = [wa_unified_product_name(cds) for cds in cdss]
         if len(labels) > 0:
             self.label = labels[0]
@@ -124,7 +134,7 @@ class Plotter(object):
         self.justified = True
         self.separate_strands = True
         self.double_line_for_overlap = True
-        self.opacity = 0.7
+        self.opacity = 1.0
 
         self.genome_length = 0
 
@@ -393,7 +403,7 @@ class Plotter(object):
             id=get_gff3_id(feature.feature),
             insert=(x, y),
             size=(w, h),
-            style="fill: %s" % feature.color,
+            style="fill:%s;stroke-width:0.5;" % feature.color,
         ), x, y, w, h
 
     def featureLabel(self, feature, rowData, class_group, row, label, x, y, w, h):
