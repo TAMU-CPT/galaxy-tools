@@ -138,9 +138,6 @@ class Plotter(object):
 
         self.genome_length = 0
 
-        self.avgRowLength = 0
-        self.calc_height = 0
-        self.calc_width = 0
         self.x_offset = 30
         self.y_offset = 30
         self.ils = 200
@@ -183,9 +180,10 @@ class Plotter(object):
             self.classes[feature.type].addObject(gene)
 
     def partitionLines(self, split_factor=1.05):
-        self.avgRowLength = int(float(self.genome_length) / float(self.rows * split_factor))
-        self.calc_height = int(float(1 + self.rows) * self.ils)
-        self.calc_width = int(float(self.avgRowLength) / self.zoom)
+        avgRowLength = int(float(self.genome_length) / float(self.rows * split_factor))
+        calc_height = int(float(1 + self.rows) * self.ils)
+        calc_width = int(float(avgRowLength) / self.zoom)
+
         fake_count = 100
 
         items = []
@@ -199,8 +197,9 @@ class Plotter(object):
 
 
         longest_last_object = 1
-        thisRowEnd = 1 + self.avgRowLength
+        thisRowEnd = 1 + avgRowLength
         currentRow = 1
+        _internal_maxrowlength = 0
 
         rowData = {
             1:  {
@@ -216,8 +215,8 @@ class Plotter(object):
                 else:
                     rowData[currentRow]['end'] = max(longest_last_object, item.start)
 
-                self._internal_maxrowlength = max(
-                    self._internal_maxrowlength,
+                _internal_maxrowlength = max(
+                    _internal_maxrowlength,
                     rowData[currentRow]['end'] - rowData[currentRow]['start']
                 )
 
@@ -229,15 +228,16 @@ class Plotter(object):
                 else:
                     rowData[currentRow]['start'] = rowData[currentRow - 1]['end'] + 1
 
-                thisRowEnd = self.avgRowLength + rowData[currentRow]['start']
+                thisRowEnd = avgRowLength + rowData[currentRow]['start']
 
         thisRowEnd = rowData[currentRow]['end'] = ExactPosition(self.genome_length + 1)
 
-        self._internal_maxrowlength = max(
-            self._internal_maxrowlength,
+        _internal_maxrowlength = max(
+            _internal_maxrowlength,
             rowData[currentRow]['end'] - rowData[currentRow]['start']
         )
-        return rowData
+
+        return rowData, avgRowLength, calc_height, calc_width, _internal_maxrowlength
 
     def createSvg(self, rowData):
         self.calc_height = int((1 + max(rowData.keys())) * self.ils)
@@ -291,13 +291,13 @@ class Plotter(object):
         self.svg.add(ui_group)
         return self.svg
 
-    def fitness(self, rowData):
+    def fitness(self, rowData, maxRowLength):
         score = 2
         score -= abs(len(rowData.keys()) - self.rows)
 
         lastRow = rowData[max(rowData.keys())]
         lastRow = float(lastRow['end'] - lastRow['start'])
-        lastRow /= self._internal_maxrowlength
+        lastRow /= maxRowLength
 
         return score + lastRow
 
@@ -306,13 +306,18 @@ class Plotter(object):
         bestFitness = 0
         for i in range(70, 130):
             s = float(i) / 100
-            rowData = self.partitionLines(split_factor=s)
-            fitness = self.fitness(rowData)
+            rowData, avgRowLength, calc_height, calc_width, intMaxRowLength = \
+                    self.partitionLines(split_factor=s)
+            fitness = self.fitness(rowData, intMaxRowLength)
             if fitness > bestFitness:
-                bestRowData = rowData
+                bestRowData = (rowData, avgRowLength, calc_height, calc_width, intMaxRowLength)
                 bestFitness = fitness
 
-        return bestRowData
+        self.avgRowLength = bestRowData[1]
+        self.calc_height = bestRowData[2]
+        self.calc_width = bestRowData[3]
+        self._internal_maxrowlength = bestRowData[4]
+        return bestRowData[0]
 
     def offsetPoint(self, x, y):
         return (x + self.x_offset, y + self.y_offset)
