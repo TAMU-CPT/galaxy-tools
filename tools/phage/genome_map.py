@@ -412,10 +412,10 @@ class Plotter(object):
             ly -= 70
 
         g = self.svg.g(
-            id="%s_g" % get_gff3_id(feature.feature),
+            id="%s_g" % base64.b32encode(get_gff3_id(feature.feature)),
         )
         g.add(self.svg.text(
-            id='label_text_%s' % get_gff3_id(feature.feature),
+            id='label_text_%s' % base64.b32encode(get_gff3_id(feature.feature)),
             text=label,
             x=[lx],
             y=[ly],
@@ -430,7 +430,7 @@ class Plotter(object):
             callout_end = (lxm, ly - h)
 
         g.add(self.svg.line(
-            id='label_callout_%s' % get_gff3_id(feature.feature),
+            id='label_callout_%s' % base64.b32encode(get_gff3_id(feature.feature)),
             start=callout_start,
             end=callout_end,
         ))
