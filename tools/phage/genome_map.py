@@ -235,7 +235,7 @@ class Plotter(object):
         return rowData, avgRowLength, _internal_maxrowlength
 
     def createSvg(self, rowData, widthOverride=0):
-        height = int((1 + max(rowData.keys())) * self.ils)
+        height = int((len(rowData.keys())) * self.ils)
         width = int(float(self.avgRowLength) / self.zoom)
 
         if widthOverride != 0:
@@ -244,8 +244,10 @@ class Plotter(object):
         self.calc_width = width
 
         self.svg = svgwrite.Drawing(
-            width=width + 2 * (self.x_offset),
-            height=height+ 2 * (self.y_offset),
+            size=(
+                width + 2 * (self.x_offset),
+                height+ 2 * (self.y_offset)
+            )
         )
 
         ui_group = self.svg.g(
