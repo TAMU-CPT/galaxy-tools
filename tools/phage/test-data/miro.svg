@@ -6,653 +6,653 @@
   <g id="group_repeat_region" style="stroke: black; fill: #b3ee3a; fill-opacity: 1.0"/>
   <g id="group_mRNA" style="stroke: black; fill: #ff0000; fill-opacity: 1.0"/>
   <g id="group_CDS" style="stroke: black; fill: #1c86ee; fill-opacity: 1.0">
-    <rect height="15" id="Miro_67" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="918" y="53"/>
-    <rect height="15" id="Miro_253" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="539" y="643"/>
-    <rect height="15" id="Miro_19" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="261" y="133"/>
+    <rect height="15" id="JVUXE327GY3Q====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="918" y="53"/>
+    <rect height="15" id="JVUXE327GI2TG===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="539" y="643"/>
+    <rect height="15" id="JVUXE327GE4Q====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="261" y="133"/>
   </g>
   <g id="group_regulatory" style="stroke: none; fill: #000000; fill-opacity: 1.0"/>
   <g id="group_gene" style="stroke: black; fill: #0086ee; fill-opacity: 1.0">
-    <rect height="15" id="Miro_8" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="180" y="133"/>
-    <rect height="15" id="Miro_9" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="190" y="143"/>
-    <rect height="15" id="Miro_206" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="734" y="453"/>
-    <rect height="15" id="Miro_117" style="fill:#1c86ee;stroke-width:0.5;" width="45" x="521" y="343"/>
-    <rect height="15" id="Miro_200" style="fill:#87CEFA;stroke-width:0.5;" width="20" x="581" y="463"/>
+    <rect height="15" id="JVUXE327HA======" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="180" y="133"/>
+    <rect height="15" id="JVUXE327HE======" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="190" y="143"/>
+    <rect height="15" id="JVUXE327GIYDM===" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="734" y="453"/>
+    <rect height="15" id="JVUXE327GEYTO===" style="fill:#1c86ee;stroke-width:0.5;" width="45" x="521" y="343"/>
+    <rect height="15" id="JVUXE327GIYDA===" style="fill:#87CEFA;stroke-width:0.5;" width="20" x="581" y="463"/>
     <g id="Miro_200_g">
       <text id="label_text_Miro_200" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="479" y="440">baseplate structural protein</text>
       <line id="label_callout_Miro_200" x1="591.0" x2="591.0" y1="463" y2="440"/>
     </g>
-    <rect height="15" id="Miro_201" style="fill:#87CEFA;stroke-width:0.5;" width="17" x="601" y="443"/>
+    <rect height="15" id="JVUXE327GIYDC===" style="fill:#87CEFA;stroke-width:0.5;" width="17" x="601" y="443"/>
     <g id="Miro_201_g">
       <text id="label_text_Miro_201" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="497" y="420">baseplate structural protein</text>
       <line id="label_callout_Miro_201" x1="609.5" x2="609.5" y1="443" y2="420"/>
     </g>
-    <rect height="15" id="Miro_202" style="fill:#87CEFA;stroke-width:0.5;" width="37" x="619" y="463"/>
+    <rect height="15" id="JVUXE327GIYDE===" style="fill:#87CEFA;stroke-width:0.5;" width="37" x="619" y="463"/>
     <g id="Miro_202_g">
       <text id="label_text_Miro_202" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="525" y="440">baseplate structural protein</text>
       <line id="label_callout_Miro_202" x1="637.5" x2="637.5" y1="463" y2="440"/>
     </g>
-    <rect height="15" id="Miro_203" style="fill:#87CEFA;stroke-width:0.5;" width="13" x="656" y="453"/>
+    <rect height="15" id="JVUXE327GIYDG===" style="fill:#87CEFA;stroke-width:0.5;" width="13" x="656" y="453"/>
     <g id="Miro_203_g">
       <text id="label_text_Miro_203" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="474" y="430">baseplate to short tail fiber connector protein</text>
       <line id="label_callout_Miro_203" x1="662.5" x2="662.5" y1="453" y2="430"/>
     </g>
-    <rect height="15" id="Miro_142" style="fill:#1c86ee;stroke-width:0.5;" width="2" x="791" y="323"/>
-    <rect height="15" id="Miro_1" style="fill:#C8FFC8;stroke-width:0.5;" width="18" x="29" y="123"/>
+    <rect height="15" id="JVUXE327GE2DE===" style="fill:#1c86ee;stroke-width:0.5;" width="2" x="791" y="323"/>
+    <rect height="15" id="JVUXE327GE======" style="fill:#C8FFC8;stroke-width:0.5;" width="18" x="29" y="123"/>
     <g id="Miro_1_g">
       <text id="label_text_Miro_1" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="22" y="170">rIIb</text>
       <line id="label_callout_Miro_1" x1="38.0" x2="38.0" y1="138" y2="155"/>
     </g>
-    <rect height="15" id="Miro_2" style="fill:#C8FFC8;stroke-width:0.5;" width="46" x="48" y="143"/>
+    <rect height="15" id="JVUXE327GI======" style="fill:#C8FFC8;stroke-width:0.5;" width="46" x="48" y="143"/>
     <g id="Miro_2_g">
       <text id="label_text_Miro_2" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="55" y="190">rIIa</text>
       <line id="label_callout_Miro_2" x1="71.0" x2="71.0" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_3" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="94" y="123"/>
-    <rect height="15" id="Miro_4" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="99" y="123"/>
-    <rect height="15" id="Miro_5" style="fill:#FFFF00;stroke-width:0.5;" width="26" x="111" y="143"/>
+    <rect height="15" id="JVUXE327GM======" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="94" y="123"/>
+    <rect height="15" id="JVUXE327GQ======" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="99" y="123"/>
+    <rect height="15" id="JVUXE327GU======" style="fill:#FFFF00;stroke-width:0.5;" width="26" x="111" y="143"/>
     <g id="Miro_5_g">
       <text id="label_text_Miro_5" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-16" y="190">DNA topoisomerase II medium subunit</text>
       <line id="label_callout_Miro_5" x1="124.0" x2="124.0" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_6" style="fill:#FFFF00;stroke-width:0.5;" width="38" x="137" y="133"/>
+    <rect height="15" id="JVUXE327GY======" style="fill:#FFFF00;stroke-width:0.5;" width="38" x="137" y="133"/>
     <g id="Miro_6_g">
       <text id="label_text_Miro_6" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="16" y="180">DNA topoisomerase II, large subunit</text>
       <line id="label_callout_Miro_6" x1="156.0" x2="156.0" y1="148" y2="165"/>
     </g>
-    <rect height="15" id="Miro_7" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="177" y="143"/>
-    <rect height="15" id="Miro_207" style="fill:#87CEFA;stroke-width:0.5;" width="15" x="753" y="453"/>
+    <rect height="15" id="JVUXE327G4======" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="177" y="143"/>
+    <rect height="15" id="JVUXE327GIYDO===" style="fill:#87CEFA;stroke-width:0.5;" width="15" x="753" y="453"/>
     <g id="Miro_207_g">
       <text id="label_text_Miro_207" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="712" y="430">neck protein</text>
       <line id="label_callout_Miro_207" x1="760.5" x2="760.5" y1="453" y2="430"/>
     </g>
-    <rect height="15" id="Miro_269" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="849" y="743"/>
-    <rect height="15" id="Miro_112" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="481" y="323"/>
-    <rect height="15" id="Miro_113" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="488" y="343"/>
-    <rect height="15" id="Miro_69" style="fill:#FFFF00;stroke-width:0.5;" width="23" x="36" y="263"/>
+    <rect height="15" id="JVUXE327GI3DS===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="849" y="743"/>
+    <rect height="15" id="JVUXE327GEYTE===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="481" y="323"/>
+    <rect height="15" id="JVUXE327GEYTG===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="488" y="343"/>
+    <rect height="15" id="JVUXE327GY4Q====" style="fill:#FFFF00;stroke-width:0.5;" width="23" x="36" y="263"/>
     <g id="Miro_69_g">
       <text id="label_text_Miro_69" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="7" y="240">RNA ligase</text>
       <line id="label_callout_Miro_69" x1="47.5" x2="47.5" y1="263" y2="240"/>
     </g>
-    <rect height="15" id="Miro_68" style="fill:#C89664;stroke-width:0.5;" width="7" x="30" y="243"/>
+    <rect height="15" id="JVUXE327GY4A====" style="fill:#C89664;stroke-width:0.5;" width="7" x="30" y="243"/>
     <g id="Miro_68_g">
       <text id="label_text_Miro_68" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-43" y="220">homing endonuclease</text>
       <line id="label_callout_Miro_68" x1="33.5" x2="33.5" y1="243" y2="220"/>
     </g>
-    <rect height="15" id="Miro_66" style="fill:#0000FF;stroke-width:0.5;" width="24" x="895" y="63"/>
+    <rect height="15" id="JVUXE327GY3A====" style="fill:#0000FF;stroke-width:0.5;" width="24" x="895" y="63"/>
     <g id="Miro_66_g">
       <text id="label_text_Miro_66" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="751" y="40">ribonucleotide reductase, small subunit</text>
       <line id="label_callout_Miro_66" x1="907.0" x2="907.0" y1="63" y2="40"/>
     </g>
-    <rect height="15" id="Miro_65" style="fill:#0000FF;stroke-width:0.5;" width="45" x="849" y="63"/>
+    <rect height="15" id="JVUXE327GY2Q====" style="fill:#0000FF;stroke-width:0.5;" width="45" x="849" y="63"/>
     <g id="Miro_65_g">
       <text id="label_text_Miro_65" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="715" y="40">ribonucleotide reductase, large subunit</text>
       <line id="label_callout_Miro_65" x1="871.5" x2="871.5" y1="63" y2="40"/>
     </g>
-    <rect height="15" id="Miro_64" style="fill:#0000FF;stroke-width:0.5;" width="17" x="830" y="43"/>
+    <rect height="15" id="JVUXE327GY2A====" style="fill:#0000FF;stroke-width:0.5;" width="17" x="830" y="43"/>
     <g id="Miro_64_g">
       <text id="label_text_Miro_64" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="758" y="20">thymidylate synthase</text>
       <line id="label_callout_Miro_64" x1="838.5" x2="838.5" y1="43" y2="20"/>
     </g>
-    <rect height="15" id="Miro_63" style="fill:#0000FF;stroke-width:0.5;" width="11" x="818" y="53"/>
+    <rect height="15" id="JVUXE327GYZQ====" style="fill:#0000FF;stroke-width:0.5;" width="11" x="818" y="53"/>
     <g id="Miro_63_g">
       <text id="label_text_Miro_63" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="731" y="30">dihydrofolate reductase</text>
       <line id="label_callout_Miro_63" x1="823.5" x2="823.5" y1="53" y2="30"/>
     </g>
-    <rect height="15" id="Miro_62" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="813" y="63"/>
-    <rect height="15" id="Miro_61" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="809" y="43"/>
-    <rect height="15" id="Miro_60" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="803" y="63"/>
-    <rect height="15" id="Miro_176" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="210" y="543"/>
-    <rect height="15" id="Miro_177" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="217" y="523"/>
-    <rect height="15" id="Miro_174" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="181" y="533"/>
-    <rect height="15" id="Miro_175" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="199" y="523"/>
-    <rect height="15" id="Miro_172" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="172" y="533"/>
-    <rect height="15" id="Miro_173" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="175" y="523"/>
-    <rect height="15" id="Miro_170" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="152" y="543"/>
-    <rect height="15" id="Miro_171" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="164" y="523"/>
-    <rect height="15" id="Miro_178" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="222" y="533"/>
-    <rect height="15" id="Miro_179" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="230" y="543"/>
+    <rect height="15" id="JVUXE327GYZA====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="813" y="63"/>
+    <rect height="15" id="JVUXE327GYYQ====" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="809" y="43"/>
+    <rect height="15" id="JVUXE327GYYA====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="803" y="63"/>
+    <rect height="15" id="JVUXE327GE3TM===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="210" y="543"/>
+    <rect height="15" id="JVUXE327GE3TO===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="217" y="523"/>
+    <rect height="15" id="JVUXE327GE3TI===" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="181" y="533"/>
+    <rect height="15" id="JVUXE327GE3TK===" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="199" y="523"/>
+    <rect height="15" id="JVUXE327GE3TE===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="172" y="533"/>
+    <rect height="15" id="JVUXE327GE3TG===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="175" y="523"/>
+    <rect height="15" id="JVUXE327GE3TA===" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="152" y="543"/>
+    <rect height="15" id="JVUXE327GE3TC===" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="164" y="523"/>
+    <rect height="15" id="JVUXE327GE3TQ===" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="222" y="533"/>
+    <rect height="15" id="JVUXE327GE3TS===" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="230" y="543"/>
     <g id="Miro_179_g">
       <text id="label_text_Miro_179" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="174" y="590">NUDIX hydrolase</text>
       <line id="label_callout_Miro_179" x1="234.0" x2="234.0" y1="558" y2="575"/>
     </g>
-    <rect height="15" id="Miro_194" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="378" y="523"/>
+    <rect height="15" id="JVUXE327GE4TI===" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="378" y="523"/>
     <g id="Miro_194_g">
       <text id="label_text_Miro_194" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="286" y="570">restriction endonuclease</text>
       <line id="label_callout_Miro_194" x1="382.5" x2="382.5" y1="538" y2="555"/>
     </g>
-    <rect height="15" id="Miro_195" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="388" y="453"/>
+    <rect height="15" id="JVUXE327GE4TK===" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="388" y="453"/>
     <g id="Miro_195_g">
       <text id="label_text_Miro_195" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="301" y="430">baseplate wedge protein</text>
       <line id="label_callout_Miro_195" x1="393.5" x2="393.5" y1="453" y2="430"/>
     </g>
-    <rect height="15" id="Miro_196" style="fill:#87CEFA;stroke-width:0.5;" width="36" x="400" y="443"/>
+    <rect height="15" id="JVUXE327GE4TM===" style="fill:#87CEFA;stroke-width:0.5;" width="36" x="400" y="443"/>
     <g id="Miro_196_g">
       <text id="label_text_Miro_196" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="218" y="420">baseplate hub structural protein and tail lysozyme</text>
       <line id="label_callout_Miro_196" x1="418.0" x2="418.0" y1="443" y2="420"/>
     </g>
-    <rect height="15" id="Miro_197" style="fill:#1c86ee;stroke-width:0.5;" width="42" x="436" y="443"/>
-    <rect height="15" id="Miro_190" style="fill:#87CEFA;stroke-width:0.5;" width="10" x="315" y="543"/>
+    <rect height="15" id="JVUXE327GE4TO===" style="fill:#1c86ee;stroke-width:0.5;" width="42" x="436" y="443"/>
+    <rect height="15" id="JVUXE327GE4TA===" style="fill:#87CEFA;stroke-width:0.5;" width="10" x="315" y="543"/>
     <g id="Miro_190_g">
       <text id="label_text_Miro_190" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="252" y="590">tail tube protein</text>
       <line id="label_callout_Miro_190" x1="320.0" x2="320.0" y1="558" y2="575"/>
     </g>
-    <rect height="15" id="Miro_191" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="333" y="453"/>
-    <rect height="15" id="Miro_192" style="fill:#C89664;stroke-width:0.5;" width="9" x="351" y="453"/>
+    <rect height="15" id="JVUXE327GE4TC===" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="333" y="453"/>
+    <rect height="15" id="JVUXE327GE4TE===" style="fill:#C89664;stroke-width:0.5;" width="9" x="351" y="453"/>
     <g id="Miro_192_g">
       <text id="label_text_Miro_192" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="279" y="430">homing endonuclease</text>
       <line id="label_callout_Miro_192" x1="355.5" x2="355.5" y1="453" y2="430"/>
     </g>
-    <rect height="15" id="Miro_124" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="619" y="333"/>
-    <rect height="15" id="Miro_208" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="769" y="443"/>
-    <rect height="15" id="Miro_198" style="fill:#1c86ee;stroke-width:0.5;" width="39" x="478" y="463"/>
-    <rect height="15" id="Miro_199" style="fill:#1c86ee;stroke-width:0.5;" width="62" x="519" y="463"/>
-    <rect height="15" id="Miro_219" style="fill:#C89664;stroke-width:0.5;" width="13" x="101" y="643"/>
+    <rect height="15" id="JVUXE327GEZDI===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="619" y="333"/>
+    <rect height="15" id="JVUXE327GIYDQ===" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="769" y="443"/>
+    <rect height="15" id="JVUXE327GE4TQ===" style="fill:#1c86ee;stroke-width:0.5;" width="39" x="478" y="463"/>
+    <rect height="15" id="JVUXE327GE4TS===" style="fill:#1c86ee;stroke-width:0.5;" width="62" x="519" y="463"/>
+    <rect height="15" id="JVUXE327GIYTS===" style="fill:#C89664;stroke-width:0.5;" width="13" x="101" y="643"/>
     <g id="Miro_219_g">
       <text id="label_text_Miro_219" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="31" y="620">homing endonuclease</text>
       <line id="label_callout_Miro_219" x1="107.5" x2="107.5" y1="643" y2="620"/>
     </g>
-    <rect height="15" id="Miro_209" style="fill:#00FFFF;stroke-width:0.5;" width="10" x="786" y="463"/>
+    <rect height="15" id="JVUXE327GIYDS===" style="fill:#00FFFF;stroke-width:0.5;" width="10" x="786" y="463"/>
     <g id="Miro_209_g">
       <text id="label_text_Miro_209" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="695" y="440">terminase, small subunit</text>
       <line id="label_callout_Miro_209" x1="791.0" x2="791.0" y1="463" y2="440"/>
     </g>
-    <rect height="15" id="Miro_169" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="139" y="543"/>
-    <rect height="15" id="Miro_168" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="133" y="523"/>
-    <rect height="15" id="Miro_78" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="122" y="263"/>
+    <rect height="15" id="JVUXE327GE3DS===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="139" y="543"/>
+    <rect height="15" id="JVUXE327GE3DQ===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="133" y="523"/>
+    <rect height="15" id="JVUXE327G44A====" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="122" y="263"/>
     <g id="Miro_78_g">
       <text id="label_text_Miro_78" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="71" y="240">dCMP deaminase</text>
       <line id="label_callout_Miro_78" x1="127.0" x2="127.0" y1="263" y2="240"/>
     </g>
-    <rect height="15" id="Miro_79" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="132" y="263"/>
+    <rect height="15" id="JVUXE327G44Q====" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="132" y="263"/>
     <g id="Miro_79_g">
       <text id="label_text_Miro_79" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="71" y="240">chaperonin-GroEL</text>
       <line id="label_callout_Miro_79" x1="135.5" x2="135.5" y1="263" y2="240"/>
     </g>
-    <rect height="15" id="Miro_204" style="fill:#87CEFA;stroke-width:0.5;" width="28" x="669" y="453"/>
+    <rect height="15" id="JVUXE327GIYDI===" style="fill:#87CEFA;stroke-width:0.5;" width="28" x="669" y="453"/>
     <g id="Miro_204_g">
       <text id="label_text_Miro_204" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="587" y="430">short tail fiber protein</text>
       <line id="label_callout_Miro_204" x1="683.0" x2="683.0" y1="453" y2="430"/>
     </g>
-    <rect height="15" id="Miro_74" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="86" y="243"/>
+    <rect height="15" id="JVUXE327G42A====" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="86" y="243"/>
     <g id="Miro_74_g">
       <text id="label_text_Miro_74" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-37" y="220">nucleoside triphosphate hydrolase</text>
       <line id="label_callout_Miro_74" x1="95.0" x2="95.0" y1="243" y2="220"/>
     </g>
-    <rect height="15" id="Miro_75" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="105" y="243"/>
-    <rect height="15" id="Miro_76" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="111" y="253"/>
-    <rect height="15" id="Miro_77" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="116" y="243"/>
-    <rect height="15" id="Miro_70" style="fill:#C89664;stroke-width:0.5;" width="11" x="60" y="263"/>
+    <rect height="15" id="JVUXE327G42Q====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="105" y="243"/>
+    <rect height="15" id="JVUXE327G43A====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="111" y="253"/>
+    <rect height="15" id="JVUXE327G43Q====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="116" y="243"/>
+    <rect height="15" id="JVUXE327G4YA====" style="fill:#C89664;stroke-width:0.5;" width="11" x="60" y="263"/>
     <g id="Miro_70_g">
       <text id="label_text_Miro_70" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-11" y="240">homing endonuclease</text>
       <line id="label_callout_Miro_70" x1="65.5" x2="65.5" y1="263" y2="240"/>
     </g>
-    <rect height="15" id="Miro_71" style="fill:#FF00FF;stroke-width:0.5;" width="7" x="70" y="253"/>
+    <rect height="15" id="JVUXE327G4YQ====" style="fill:#FF00FF;stroke-width:0.5;" width="7" x="70" y="253"/>
     <g id="Miro_71_g">
       <text id="label_text_Miro_71" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="41" y="230">i-spanin</text>
       <line id="label_callout_Miro_71" x1="73.5" x2="73.5" y1="253" y2="230"/>
     </g>
-    <rect height="15" id="Miro_72" style="fill:#FF00FF;stroke-width:0.5;" width="6" x="77" y="243"/>
+    <rect height="15" id="JVUXE327G4ZA====" style="fill:#FF00FF;stroke-width:0.5;" width="6" x="77" y="243"/>
     <g id="Miro_72_g">
       <text id="label_text_Miro_72" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="48" y="220">o-spanin</text>
       <line id="label_callout_Miro_72" x1="80.0" x2="80.0" y1="243" y2="220"/>
     </g>
-    <rect height="15" id="Miro_73" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="83" y="253"/>
-    <rect height="15" id="Miro_161" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="68" y="533"/>
-    <rect height="15" id="Miro_160" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="61" y="523"/>
-    <rect height="15" id="Miro_163" style="fill:#1c86ee;stroke-width:0.5;" width="23" x="81" y="533"/>
+    <rect height="15" id="JVUXE327G4ZQ====" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="83" y="253"/>
+    <rect height="15" id="JVUXE327GE3DC===" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="68" y="533"/>
+    <rect height="15" id="JVUXE327GE3DA===" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="61" y="523"/>
+    <rect height="15" id="JVUXE327GE3DG===" style="fill:#1c86ee;stroke-width:0.5;" width="23" x="81" y="533"/>
     <g id="Miro_163_g">
       <text id="label_text_Miro_163" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-32" y="580">radical SAM superfamily protein</text>
       <line id="label_callout_Miro_163" x1="92.5" x2="92.5" y1="548" y2="565"/>
     </g>
-    <rect height="15" id="Miro_187" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="281" y="533"/>
-    <rect height="15" id="Miro_186" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="270" y="523"/>
-    <rect height="15" id="Miro_185" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="266" y="533"/>
-    <rect height="15" id="Miro_162" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="75" y="543"/>
-    <rect height="15" id="Miro_183" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="254" y="533"/>
-    <rect height="15" id="Miro_182" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="249" y="543"/>
-    <rect height="15" id="Miro_181" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="244" y="533"/>
-    <rect height="15" id="Miro_180" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="239" y="543"/>
-    <rect height="15" id="Miro_165" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="120" y="543"/>
-    <rect height="15" id="Miro_189" style="fill:#1c86ee;stroke-width:0.5;" width="14" x="301" y="523"/>
-    <rect height="15" id="Miro_164" style="fill:#1c86ee;stroke-width:0.5;" width="14" x="105" y="463"/>
-    <rect height="15" id="Miro_167" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="130" y="533"/>
-    <rect height="15" id="Miro_205" style="fill:#87CEFA;stroke-width:0.5;" width="35" x="698" y="453"/>
+    <rect height="15" id="JVUXE327GE4DO===" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="281" y="533"/>
+    <rect height="15" id="JVUXE327GE4DM===" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="270" y="523"/>
+    <rect height="15" id="JVUXE327GE4DK===" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="266" y="533"/>
+    <rect height="15" id="JVUXE327GE3DE===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="75" y="543"/>
+    <rect height="15" id="JVUXE327GE4DG===" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="254" y="533"/>
+    <rect height="15" id="JVUXE327GE4DE===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="249" y="543"/>
+    <rect height="15" id="JVUXE327GE4DC===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="244" y="533"/>
+    <rect height="15" id="JVUXE327GE4DA===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="239" y="543"/>
+    <rect height="15" id="JVUXE327GE3DK===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="120" y="543"/>
+    <rect height="15" id="JVUXE327GE4DS===" style="fill:#1c86ee;stroke-width:0.5;" width="14" x="301" y="523"/>
+    <rect height="15" id="JVUXE327GE3DI===" style="fill:#1c86ee;stroke-width:0.5;" width="14" x="105" y="463"/>
+    <rect height="15" id="JVUXE327GE3DO===" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="130" y="533"/>
+    <rect height="15" id="JVUXE327GIYDK===" style="fill:#87CEFA;stroke-width:0.5;" width="35" x="698" y="453"/>
     <g id="Miro_205_g">
       <text id="label_text_Miro_205" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="635" y="430">neck whisker protein</text>
       <line id="label_callout_Miro_205" x1="715.5" x2="715.5" y1="453" y2="430"/>
     </g>
-    <rect height="15" id="Miro_166" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="126" y="543"/>
-    <rect height="15" id="Miro_49" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="643" y="143"/>
-    <rect height="15" id="Miro_48" style="fill:#FFFF00;stroke-width:0.5;" width="13" x="630" y="123"/>
+    <rect height="15" id="JVUXE327GE3DM===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="126" y="543"/>
+    <rect height="15" id="JVUXE327GQ4Q====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="643" y="143"/>
+    <rect height="15" id="JVUXE327GQ4A====" style="fill:#FFFF00;stroke-width:0.5;" width="13" x="630" y="123"/>
     <g id="Miro_48_g">
       <text id="label_text_Miro_48" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="536" y="170">helicase assembly protein</text>
       <line id="label_callout_Miro_48" x1="636.5" x2="636.5" y1="138" y2="155"/>
     </g>
-    <rect height="15" id="Miro_118" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="566" y="323"/>
-    <rect height="15" id="Miro_119" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="572" y="343"/>
-    <rect height="15" id="Miro_41" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="542" y="133"/>
-    <rect height="15" id="Miro_40" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="535" y="143"/>
-    <rect height="15" id="Miro_43" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="556" y="123"/>
-    <rect height="15" id="Miro_42" style="fill:#FFA500;stroke-width:0.5;" width="7" x="549" y="123"/>
+    <rect height="15" id="JVUXE327GEYTQ===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="566" y="323"/>
+    <rect height="15" id="JVUXE327GEYTS===" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="572" y="343"/>
+    <rect height="15" id="JVUXE327GQYQ====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="542" y="133"/>
+    <rect height="15" id="JVUXE327GQYA====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="535" y="143"/>
+    <rect height="15" id="JVUXE327GQZQ====" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="556" y="123"/>
+    <rect height="15" id="JVUXE327GQZA====" style="fill:#FFA500;stroke-width:0.5;" width="7" x="549" y="123"/>
     <g id="Miro_42_g">
       <text id="label_text_Miro_42" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="428" y="170">translational repressor protein</text>
       <line id="label_callout_Miro_42" x1="552.5" x2="552.5" y1="138" y2="155"/>
     </g>
-    <rect height="15" id="Miro_45" style="fill:#1c86ee;stroke-width:0.5;" width="13" x="589" y="123"/>
+    <rect height="15" id="JVUXE327GQ2Q====" style="fill:#1c86ee;stroke-width:0.5;" width="13" x="589" y="123"/>
     <g id="Miro_45_g">
       <text id="label_text_Miro_45" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="447" y="170">DNA polymerase processivity component</text>
       <line id="label_callout_Miro_45" x1="595.5" x2="595.5" y1="138" y2="155"/>
     </g>
-    <rect height="15" id="Miro_44" style="fill:#FFFF00;stroke-width:0.5;" width="20" x="568" y="143"/>
+    <rect height="15" id="JVUXE327GQ2A====" style="fill:#FFFF00;stroke-width:0.5;" width="20" x="568" y="143"/>
     <g id="Miro_44_g">
       <text id="label_text_Miro_44" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="466" y="190">sliding-clamp-loader subunit</text>
       <line id="label_callout_Miro_44" x1="578.0" x2="578.0" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_47" style="fill:#FFFF00;stroke-width:0.5;" width="19" x="610" y="123"/>
+    <rect height="15" id="JVUXE327GQ3Q====" style="fill:#FFFF00;stroke-width:0.5;" width="19" x="610" y="123"/>
     <g id="Miro_47_g">
       <text id="label_text_Miro_47" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="535" y="170">ssDNA-binding protein</text>
       <line id="label_callout_Miro_47" x1="619.5" x2="619.5" y1="138" y2="155"/>
     </g>
-    <rect height="15" id="Miro_46" style="fill:#FFA500;stroke-width:0.5;" width="5" x="603" y="143"/>
+    <rect height="15" id="JVUXE327GQ3A====" style="fill:#FFA500;stroke-width:0.5;" width="5" x="603" y="143"/>
     <g id="Miro_46_g">
       <text id="label_text_Miro_46" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="485" y="190">RNA polymerase binding protein</text>
       <line id="label_callout_Miro_46" x1="605.5" x2="605.5" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_258" style="fill:#1c86ee;stroke-width:0.5;" width="19" x="579" y="663"/>
-    <rect height="15" id="Miro_263" style="fill:#1c86ee;stroke-width:0.5;" width="22" x="701" y="663"/>
-    <rect height="15" id="Miro_210" style="fill:#00FFFF;stroke-width:0.5;" width="37" x="796" y="453"/>
+    <rect height="15" id="JVUXE327GI2TQ===" style="fill:#1c86ee;stroke-width:0.5;" width="19" x="579" y="663"/>
+    <rect height="15" id="JVUXE327GI3DG===" style="fill:#1c86ee;stroke-width:0.5;" width="22" x="701" y="663"/>
+    <rect height="15" id="JVUXE327GIYTA===" style="fill:#00FFFF;stroke-width:0.5;" width="37" x="796" y="453"/>
     <g id="Miro_210_g">
       <text id="label_text_Miro_210" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="718" y="430">terminase, large subunit</text>
       <line id="label_callout_Miro_210" x1="814.5" x2="814.5" y1="453" y2="430"/>
     </g>
-    <rect height="15" id="Miro_56" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="722" y="53"/>
-    <rect height="15" id="Miro_57" style="fill:#1c86ee;stroke-width:0.5;" width="34" x="727" y="63"/>
+    <rect height="15" id="JVUXE327GU3A====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="722" y="53"/>
+    <rect height="15" id="JVUXE327GU3Q====" style="fill:#1c86ee;stroke-width:0.5;" width="34" x="727" y="63"/>
     <g id="Miro_57_g">
       <text id="label_text_Miro_57" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="568" y="40">methyl methanesulphonate-sensitivity protein</text>
       <line id="label_callout_Miro_57" x1="744.0" x2="744.0" y1="63" y2="40"/>
     </g>
-    <rect height="15" id="Miro_54" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="693" y="63"/>
-    <rect height="15" id="Miro_55" style="fill:#1c86ee;stroke-width:0.5;" width="21" x="701" y="43"/>
+    <rect height="15" id="JVUXE327GU2A====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="693" y="63"/>
+    <rect height="15" id="JVUXE327GU2Q====" style="fill:#1c86ee;stroke-width:0.5;" width="21" x="701" y="43"/>
     <g id="Miro_55_g">
       <text id="label_text_Miro_55" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="667" y="20">exonuclease</text>
       <line id="label_callout_Miro_55" x1="711.5" x2="711.5" y1="43" y2="20"/>
     </g>
-    <rect height="15" id="Miro_52" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="679" y="63"/>
-    <rect height="15" id="Miro_53" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="689" y="43"/>
-    <rect height="15" id="Miro_50" style="fill:#FFFF00;stroke-width:0.5;" width="5" x="648" y="143"/>
+    <rect height="15" id="JVUXE327GUZA====" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="679" y="63"/>
+    <rect height="15" id="JVUXE327GUZQ====" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="689" y="43"/>
+    <rect height="15" id="JVUXE327GUYA====" style="fill:#FFFF00;stroke-width:0.5;" width="5" x="648" y="143"/>
     <g id="Miro_50_g">
       <text id="label_text_Miro_50" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="566" y="190">dsDNA-binding protein</text>
       <line id="label_callout_Miro_50" x1="650.5" x2="650.5" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_51" style="fill:#1c86ee;stroke-width:0.5;" width="19" x="654" y="143"/>
+    <rect height="15" id="JVUXE327GUYQ====" style="fill:#1c86ee;stroke-width:0.5;" width="19" x="654" y="143"/>
     <g id="Miro_51_g">
       <text id="label_text_Miro_51" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="595" y="190">5'-3' exonuclease</text>
       <line id="label_callout_Miro_51" x1="663.5" x2="663.5" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_58" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="762" y="53"/>
-    <rect height="15" id="Miro_59" style="fill:#1c86ee;stroke-width:0.5;" width="34" x="767" y="43"/>
-    <rect height="15" id="Miro_109" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="458" y="243"/>
+    <rect height="15" id="JVUXE327GU4A====" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="762" y="53"/>
+    <rect height="15" id="JVUXE327GU4Q====" style="fill:#1c86ee;stroke-width:0.5;" width="34" x="767" y="43"/>
+    <rect height="15" id="JVUXE327GEYDS===" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="458" y="243"/>
     <g id="Miro_109_g">
       <text id="label_text_Miro_109" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="410" y="220">tail lysozyme</text>
       <line id="label_callout_Miro_109" x1="462.0" x2="462.0" y1="243" y2="220"/>
     </g>
-    <rect height="15" id="Miro_108" style="fill:#87CEFA;stroke-width:0.5;" width="11" x="447" y="263"/>
+    <rect height="15" id="JVUXE327GEYDQ===" style="fill:#87CEFA;stroke-width:0.5;" width="11" x="447" y="263"/>
     <g id="Miro_108_g">
       <text id="label_text_Miro_108" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="340" y="240">baseplate structural protein</text>
       <line id="label_callout_Miro_108" x1="452.5" x2="452.5" y1="263" y2="240"/>
     </g>
-    <rect height="15" id="Miro_107" style="fill:#87CEFA;stroke-width:0.5;" width="15" x="432" y="243"/>
+    <rect height="15" id="JVUXE327GEYDO===" style="fill:#87CEFA;stroke-width:0.5;" width="15" x="432" y="243"/>
     <g id="Miro_107_g">
       <text id="label_text_Miro_107" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="327" y="220">baseplate structural protein</text>
       <line id="label_callout_Miro_107" x1="439.5" x2="439.5" y1="243" y2="220"/>
     </g>
-    <rect height="15" id="Miro_106" style="fill:#87CEFA;stroke-width:0.5;" width="17" x="414" y="253"/>
+    <rect height="15" id="JVUXE327GEYDM===" style="fill:#87CEFA;stroke-width:0.5;" width="17" x="414" y="253"/>
     <g id="Miro_106_g">
       <text id="label_text_Miro_106" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="354" y="230">tail tube protein</text>
       <line id="label_callout_Miro_106" x1="422.5" x2="422.5" y1="253" y2="230"/>
     </g>
-    <rect height="15" id="Miro_105" style="fill:#87CEFA;stroke-width:0.5;" width="21" x="392" y="243"/>
+    <rect height="15" id="JVUXE327GEYDK===" style="fill:#87CEFA;stroke-width:0.5;" width="21" x="392" y="243"/>
     <g id="Miro_105_g">
       <text id="label_text_Miro_105" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="298" y="220">tail tube assembly protein</text>
       <line id="label_callout_Miro_105" x1="402.5" x2="402.5" y1="243" y2="220"/>
     </g>
-    <rect height="15" id="Miro_104" style="fill:#1c86ee;stroke-width:0.5;" width="36" x="356" y="263"/>
-    <rect height="15" id="Miro_103" style="fill:#87CEFA;stroke-width:0.5;" width="11" x="344" y="263"/>
+    <rect height="15" id="JVUXE327GEYDI===" style="fill:#1c86ee;stroke-width:0.5;" width="36" x="356" y="263"/>
+    <rect height="15" id="JVUXE327GEYDG===" style="fill:#87CEFA;stroke-width:0.5;" width="11" x="344" y="263"/>
     <g id="Miro_103_g">
       <text id="label_text_Miro_103" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="237" y="240">baseplate structural protein</text>
       <line id="label_callout_Miro_103" x1="349.5" x2="349.5" y1="263" y2="240"/>
     </g>
-    <rect height="15" id="Miro_102" style="fill:#87CEFA;stroke-width:0.5;" width="22" x="321" y="323"/>
+    <rect height="15" id="JVUXE327GEYDE===" style="fill:#87CEFA;stroke-width:0.5;" width="22" x="321" y="323"/>
     <g id="Miro_102_g">
       <text id="label_text_Miro_102" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="220" y="370">baseplate structural protein</text>
       <line id="label_callout_Miro_102" x1="332.0" x2="332.0" y1="338" y2="355"/>
     </g>
-    <rect height="15" id="Miro_101" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="313" y="263"/>
-    <rect height="15" id="Miro_100" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="307" y="263"/>
-    <rect height="15" id="Miro_228" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="235" y="663"/>
-    <rect height="15" id="Miro_229" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="246" y="663"/>
-    <rect height="15" id="Miro_222" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="156" y="663"/>
-    <rect height="15" id="Miro_223" style="fill:#FFFF00;stroke-width:0.5;" width="4" x="165" y="723"/>
+    <rect height="15" id="JVUXE327GEYDC===" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="313" y="263"/>
+    <rect height="15" id="JVUXE327GEYDA===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="307" y="263"/>
+    <rect height="15" id="JVUXE327GIZDQ===" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="235" y="663"/>
+    <rect height="15" id="JVUXE327GIZDS===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="246" y="663"/>
+    <rect height="15" id="JVUXE327GIZDE===" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="156" y="663"/>
+    <rect height="15" id="JVUXE327GIZDG===" style="fill:#FFFF00;stroke-width:0.5;" width="4" x="165" y="723"/>
     <g id="Miro_223_g">
       <text id="label_text_Miro_223" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="63" y="770">ATP-dependent DNA helicase</text>
       <line id="label_callout_Miro_223" x1="167.0" x2="167.0" y1="738" y2="755"/>
     </g>
-    <rect height="15" id="Miro_220" style="fill:#87CEFA;stroke-width:0.5;" width="26" x="115" y="663"/>
+    <rect height="15" id="JVUXE327GIZDA===" style="fill:#87CEFA;stroke-width:0.5;" width="26" x="115" y="663"/>
     <g id="Miro_220_g">
       <text id="label_text_Miro_220" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="48" y="640">major capsid protein</text>
       <line id="label_callout_Miro_220" x1="128.0" x2="128.0" y1="663" y2="640"/>
     </g>
-    <rect height="15" id="Miro_221" style="fill:#FFFF00;stroke-width:0.5;" width="8" x="147" y="663"/>
+    <rect height="15" id="JVUXE327GIZDC===" style="fill:#FFFF00;stroke-width:0.5;" width="8" x="147" y="663"/>
     <g id="Miro_221_g">
       <text id="label_text_Miro_221" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="47" y="640">UvsY recombination protein</text>
       <line id="label_callout_Miro_221" x1="151.0" x2="151.0" y1="663" y2="640"/>
     </g>
-    <rect height="15" id="Miro_226" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="216" y="653"/>
-    <rect height="15" id="Miro_227" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="223" y="653"/>
-    <rect height="15" id="Miro_224" style="fill:#FFFF00;stroke-width:0.5;" width="30" x="170" y="743"/>
+    <rect height="15" id="JVUXE327GIZDM===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="216" y="653"/>
+    <rect height="15" id="JVUXE327GIZDO===" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="223" y="653"/>
+    <rect height="15" id="JVUXE327GIZDI===" style="fill:#FFFF00;stroke-width:0.5;" width="30" x="170" y="743"/>
     <g id="Miro_224_g">
       <text id="label_text_Miro_224" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="137" y="790">DNA helicase</text>
       <line id="label_callout_Miro_224" x1="185.0" x2="185.0" y1="758" y2="775"/>
     </g>
-    <rect height="15" id="Miro_225" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="202" y="643"/>
-    <rect height="15" id="Miro_248" style="fill:#FFFF00;stroke-width:0.5;" width="9" x="464" y="643"/>
+    <rect height="15" id="JVUXE327GIZDK===" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="202" y="643"/>
+    <rect height="15" id="JVUXE327GI2DQ===" style="fill:#FFFF00;stroke-width:0.5;" width="9" x="464" y="643"/>
     <g id="Miro_248_g">
       <text id="label_text_Miro_248" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="364" y="620">recombination endonuclease</text>
       <line id="label_callout_Miro_248" x1="468.5" x2="468.5" y1="643" y2="620"/>
     </g>
-    <rect height="15" id="Miro_249" style="fill:#AAAAAA;stroke-width:0.5;" width="6" x="473" y="653"/>
-    <rect height="15" id="Miro_240" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="366" y="653"/>
-    <rect height="15" id="Miro_241" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="378" y="643"/>
-    <rect height="15" id="Miro_242" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="390" y="663"/>
-    <rect height="15" id="Miro_243" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="396" y="653"/>
-    <rect height="15" id="Miro_244" style="fill:#1c86ee;stroke-width:0.5;" width="29" x="405" y="643"/>
+    <rect height="15" id="JVUXE327GI2DS===" style="fill:#AAAAAA;stroke-width:0.5;" width="6" x="473" y="653"/>
+    <rect height="15" id="JVUXE327GI2DA===" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="366" y="653"/>
+    <rect height="15" id="JVUXE327GI2DC===" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="378" y="643"/>
+    <rect height="15" id="JVUXE327GI2DE===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="390" y="663"/>
+    <rect height="15" id="JVUXE327GI2DG===" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="396" y="653"/>
+    <rect height="15" id="JVUXE327GI2DI===" style="fill:#1c86ee;stroke-width:0.5;" width="29" x="405" y="643"/>
     <g id="Miro_244_g">
       <text id="label_text_Miro_244" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="263" y="620">nicotinamide phosphoribosyl transferase</text>
       <line id="label_callout_Miro_244" x1="419.5" x2="419.5" y1="643" y2="620"/>
     </g>
-    <rect height="15" id="Miro_245" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="434" y="643"/>
-    <rect height="15" id="Miro_246" style="fill:#FFFF00;stroke-width:0.5;" width="14" x="443" y="663"/>
+    <rect height="15" id="JVUXE327GI2DK===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="434" y="643"/>
+    <rect height="15" id="JVUXE327GI2DM===" style="fill:#FFFF00;stroke-width:0.5;" width="14" x="443" y="663"/>
     <g id="Miro_246_g">
       <text id="label_text_Miro_246" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="366" y="640">DNA adenine methylase</text>
       <line id="label_callout_Miro_246" x1="450.0" x2="450.0" y1="663" y2="640"/>
     </g>
-    <rect height="15" id="Miro_247" style="fill:#0000FF;stroke-width:0.5;" width="5" x="457" y="653"/>
+    <rect height="15" id="JVUXE327GI2DO===" style="fill:#0000FF;stroke-width:0.5;" width="5" x="457" y="653"/>
     <g id="Miro_247_g">
       <text id="label_text_Miro_247" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="411" y="630">glutaredoxin</text>
       <line id="label_callout_Miro_247" x1="459.5" x2="459.5" y1="653" y2="630"/>
     </g>
-    <rect height="15" id="Miro_23" style="fill:#FFFF00;stroke-width:0.5;" width="27" x="287" y="143"/>
+    <rect height="15" id="JVUXE327GIZQ====" style="fill:#FFFF00;stroke-width:0.5;" width="27" x="287" y="143"/>
     <g id="Miro_23_g">
       <text id="label_text_Miro_23" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="252" y="190">DNA helicase</text>
       <line id="label_callout_Miro_23" x1="300.5" x2="300.5" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_22" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="280" y="143"/>
-    <rect height="15" id="Miro_21" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="275" y="143"/>
-    <rect height="15" id="Miro_20" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="267" y="123"/>
-    <rect height="15" id="Miro_27" style="fill:#FFFF00;stroke-width:0.5;" width="20" x="335" y="123"/>
+    <rect height="15" id="JVUXE327GIZA====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="280" y="143"/>
+    <rect height="15" id="JVUXE327GIYQ====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="275" y="143"/>
+    <rect height="15" id="JVUXE327GIYA====" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="267" y="123"/>
+    <rect height="15" id="JVUXE327GI3Q====" style="fill:#FFFF00;stroke-width:0.5;" width="20" x="335" y="123"/>
     <g id="Miro_27_g">
       <text id="label_text_Miro_27" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="301" y="170">DNA primase</text>
       <line id="label_callout_Miro_27" x1="345.0" x2="345.0" y1="138" y2="155"/>
     </g>
-    <rect height="15" id="Miro_26" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="324" y="143"/>
+    <rect height="15" id="JVUXE327GI3A====" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="324" y="143"/>
     <g id="Miro_26_g">
       <text id="label_text_Miro_26" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="249" y="190">dCTP pyrophosphatase</text>
       <line id="label_callout_Miro_26" x1="329.5" x2="329.5" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_25" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="320" y="123"/>
-    <rect height="15" id="Miro_24" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="314" y="133"/>
-    <rect height="15" id="Miro_29" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="362" y="133"/>
-    <rect height="15" id="Miro_28" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="355" y="123"/>
-    <rect height="15" id="Miro_132" style="fill:#1c86ee;stroke-width:0.5;" width="21" x="686" y="343"/>
+    <rect height="15" id="JVUXE327GI2Q====" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="320" y="123"/>
+    <rect height="15" id="JVUXE327GI2A====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="314" y="133"/>
+    <rect height="15" id="JVUXE327GI4Q====" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="362" y="133"/>
+    <rect height="15" id="JVUXE327GI4A====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="355" y="123"/>
+    <rect height="15" id="JVUXE327GEZTE===" style="fill:#1c86ee;stroke-width:0.5;" width="21" x="686" y="343"/>
     <g id="Miro_132_g">
       <text id="label_text_Miro_132" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="636" y="390">NUDIX hydrolase</text>
       <line id="label_callout_Miro_132" x1="696.5" x2="696.5" y1="358" y2="375"/>
     </g>
-    <rect height="15" id="Miro_133" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="711" y="333"/>
-    <rect height="15" id="Miro_130" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="673" y="333"/>
-    <rect height="15" id="Miro_131" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="679" y="323"/>
-    <rect height="15" id="Miro_136" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="747" y="343"/>
-    <rect height="15" id="Miro_137" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="755" y="323"/>
+    <rect height="15" id="JVUXE327GEZTG===" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="711" y="333"/>
+    <rect height="15" id="JVUXE327GEZTA===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="673" y="333"/>
+    <rect height="15" id="JVUXE327GEZTC===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="679" y="323"/>
+    <rect height="15" id="JVUXE327GEZTM===" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="747" y="343"/>
+    <rect height="15" id="JVUXE327GEZTO===" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="755" y="323"/>
     <g id="Miro_137_g">
       <text id="label_text_Miro_137" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="697" y="370">thymidine kinase</text>
       <line id="label_callout_Miro_137" x1="761.0" x2="761.0" y1="338" y2="355"/>
     </g>
-    <rect height="15" id="Miro_134" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="731" y="323"/>
-    <rect height="15" id="Miro_135" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="739" y="333"/>
-    <rect height="15" id="Miro_138" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="768" y="333"/>
-    <rect height="15" id="Miro_139" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="771" y="343"/>
-    <rect height="15" id="Miro_211" style="fill:#87CEFA;stroke-width:0.5;" width="40" x="833" y="443"/>
+    <rect height="15" id="JVUXE327GEZTI===" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="731" y="323"/>
+    <rect height="15" id="JVUXE327GEZTK===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="739" y="333"/>
+    <rect height="15" id="JVUXE327GEZTQ===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="768" y="333"/>
+    <rect height="15" id="JVUXE327GEZTS===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="771" y="343"/>
+    <rect height="15" id="JVUXE327GIYTC===" style="fill:#87CEFA;stroke-width:0.5;" width="40" x="833" y="443"/>
     <g id="Miro_211_g">
       <text id="label_text_Miro_211" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="777" y="420">tail sheath protein</text>
       <line id="label_callout_Miro_211" x1="853.0" x2="853.0" y1="443" y2="420"/>
     </g>
-    <rect height="15" id="Miro_239" style="fill:#FFFF00;stroke-width:0.5;" width="20" x="346" y="663"/>
+    <rect height="15" id="JVUXE327GIZTS===" style="fill:#FFFF00;stroke-width:0.5;" width="20" x="346" y="663"/>
     <g id="Miro_239_g">
       <text id="label_text_Miro_239" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="316" y="640">RNA ligase</text>
       <line id="label_callout_Miro_239" x1="356.0" x2="356.0" y1="663" y2="640"/>
     </g>
-    <rect height="15" id="Miro_184" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="261" y="543"/>
-    <rect height="15" id="Miro_235" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="318" y="663"/>
-    <rect height="15" id="Miro_234" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="311" y="663"/>
-    <rect height="15" id="Miro_237" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="328" y="663"/>
-    <rect height="15" id="Miro_236" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="321" y="663"/>
-    <rect height="15" id="Miro_231" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="264" y="723"/>
-    <rect height="15" id="Miro_230" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="252" y="653"/>
-    <rect height="15" id="Miro_233" style="fill:#1c86ee;stroke-width:0.5;" width="17" x="293" y="653"/>
-    <rect height="15" id="Miro_232" style="fill:#1c86ee;stroke-width:0.5;" width="17" x="274" y="733"/>
-    <rect height="15" id="Miro_259" style="fill:#1c86ee;stroke-width:0.5;" width="13" x="599" y="663"/>
-    <rect height="15" id="Miro_110" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="467" y="333"/>
-    <rect height="15" id="Miro_252" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="529" y="653"/>
-    <rect height="15" id="Miro_251" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="524" y="663"/>
-    <rect height="15" id="Miro_250" style="fill:#0000FF;stroke-width:0.5;" width="43" x="480" y="643"/>
+    <rect height="15" id="JVUXE327GE4DI===" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="261" y="543"/>
+    <rect height="15" id="JVUXE327GIZTK===" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="318" y="663"/>
+    <rect height="15" id="JVUXE327GIZTI===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="311" y="663"/>
+    <rect height="15" id="JVUXE327GIZTO===" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="328" y="663"/>
+    <rect height="15" id="JVUXE327GIZTM===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="321" y="663"/>
+    <rect height="15" id="JVUXE327GIZTC===" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="264" y="723"/>
+    <rect height="15" id="JVUXE327GIZTA===" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="252" y="653"/>
+    <rect height="15" id="JVUXE327GIZTG===" style="fill:#1c86ee;stroke-width:0.5;" width="17" x="293" y="653"/>
+    <rect height="15" id="JVUXE327GIZTE===" style="fill:#1c86ee;stroke-width:0.5;" width="17" x="274" y="733"/>
+    <rect height="15" id="JVUXE327GI2TS===" style="fill:#1c86ee;stroke-width:0.5;" width="13" x="599" y="663"/>
+    <rect height="15" id="JVUXE327GEYTA===" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="467" y="333"/>
+    <rect height="15" id="JVUXE327GI2TE===" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="529" y="653"/>
+    <rect height="15" id="JVUXE327GI2TC===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="524" y="663"/>
+    <rect height="15" id="JVUXE327GI2TA===" style="fill:#0000FF;stroke-width:0.5;" width="43" x="480" y="643"/>
     <g id="Miro_250_g">
       <text id="label_text_Miro_250" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="313" y="620">anaerobic ribonucleoside-triphosphate reductase</text>
       <line id="label_callout_Miro_250" x1="501.5" x2="501.5" y1="643" y2="620"/>
     </g>
-    <rect height="15" id="Miro_257" style="fill:#0000FF;stroke-width:0.5;" width="10" x="567" y="663"/>
+    <rect height="15" id="JVUXE327GI2TO===" style="fill:#0000FF;stroke-width:0.5;" width="10" x="567" y="663"/>
     <g id="Miro_257_g">
       <text id="label_text_Miro_257" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="348" y="640">ribonucleoside-triphosphate reductase activating protein</text>
       <line id="label_callout_Miro_257" x1="572.0" x2="572.0" y1="663" y2="640"/>
     </g>
-    <rect height="15" id="Miro_256" style="fill:#C89664;stroke-width:0.5;" width="13" x="554" y="643"/>
+    <rect height="15" id="JVUXE327GI2TM===" style="fill:#C89664;stroke-width:0.5;" width="13" x="554" y="643"/>
     <g id="Miro_256_g">
       <text id="label_text_Miro_256" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="484" y="620">homing endonuclease</text>
       <line id="label_callout_Miro_256" x1="560.5" x2="560.5" y1="643" y2="620"/>
     </g>
-    <rect height="15" id="Miro_255" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="550" y="643"/>
-    <rect height="15" id="Miro_254" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="544" y="643"/>
-    <rect height="15" id="Miro_30" style="fill:#87CEFA;stroke-width:0.5;" width="10" x="366" y="123"/>
+    <rect height="15" id="JVUXE327GI2TK===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="550" y="643"/>
+    <rect height="15" id="JVUXE327GI2TI===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="544" y="643"/>
+    <rect height="15" id="JVUXE327GMYA====" style="fill:#87CEFA;stroke-width:0.5;" width="10" x="366" y="123"/>
     <g id="Miro_30_g">
       <text id="label_text_Miro_30" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="291" y="170">major capsid protein</text>
       <line id="label_callout_Miro_30" x1="371.0" x2="371.0" y1="138" y2="155"/>
     </g>
-    <rect height="15" id="Miro_31" style="fill:#1c86ee;stroke-width:0.5;" width="14" x="376" y="143"/>
+    <rect height="15" id="JVUXE327GMYQ====" style="fill:#1c86ee;stroke-width:0.5;" width="14" x="376" y="143"/>
     <g id="Miro_31_g">
       <text id="label_text_Miro_31" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="307" y="190">radical SAM protein</text>
       <line id="label_callout_Miro_31" x1="383.0" x2="383.0" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_32" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="391" y="123"/>
-    <rect height="15" id="Miro_33" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="398" y="143"/>
-    <rect height="15" id="Miro_34" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="405" y="123"/>
-    <rect height="15" id="Miro_35" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="412" y="123"/>
-    <rect height="15" id="Miro_36" style="fill:#FFFF00;stroke-width:0.5;" width="29" x="418" y="133"/>
+    <rect height="15" id="JVUXE327GMZA====" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="391" y="123"/>
+    <rect height="15" id="JVUXE327GMZQ====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="398" y="143"/>
+    <rect height="15" id="JVUXE327GM2A====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="405" y="123"/>
+    <rect height="15" id="JVUXE327GM2Q====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="412" y="123"/>
+    <rect height="15" id="JVUXE327GM3A====" style="fill:#FFFF00;stroke-width:0.5;" width="29" x="418" y="133"/>
     <g id="Miro_36_g">
       <text id="label_text_Miro_36" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="384" y="180">DNA helicase</text>
       <line id="label_callout_Miro_36" x1="432.5" x2="432.5" y1="148" y2="165"/>
     </g>
-    <rect height="15" id="Miro_37" style="fill:#87CEFA;stroke-width:0.5;" width="6" x="447" y="133"/>
+    <rect height="15" id="JVUXE327GM3Q====" style="fill:#87CEFA;stroke-width:0.5;" width="6" x="447" y="133"/>
     <g id="Miro_37_g">
       <text id="label_text_Miro_37" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="362" y="180">head formation protein</text>
       <line id="label_callout_Miro_37" x1="450.0" x2="450.0" y1="148" y2="165"/>
     </g>
-    <rect height="15" id="Miro_38" style="fill:#FFFF00;stroke-width:0.5;" width="23" x="455" y="143"/>
+    <rect height="15" id="JVUXE327GM4A====" style="fill:#FFFF00;stroke-width:0.5;" width="23" x="455" y="143"/>
     <g id="Miro_38_g">
       <text id="label_text_Miro_38" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="322" y="190">DNA recombination and repair protein</text>
       <line id="label_callout_Miro_38" x1="466.5" x2="466.5" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_39" style="fill:#1c86ee;stroke-width:0.5;" width="55" x="480" y="133"/>
+    <rect height="15" id="JVUXE327GM4Q====" style="fill:#1c86ee;stroke-width:0.5;" width="55" x="480" y="133"/>
     <g id="Miro_39_g">
       <text id="label_text_Miro_39" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="451" y="180">DNA polymerase</text>
       <line id="label_callout_Miro_39" x1="507.5" x2="507.5" y1="148" y2="165"/>
     </g>
-    <rect height="15" id="Miro_188" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="295" y="533"/>
-    <rect height="15" id="Miro_125" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="624" y="323"/>
-    <rect height="15" id="Miro_111" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="477" y="343"/>
-    <rect height="15" id="Miro_127" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="649" y="333"/>
-    <rect height="15" id="Miro_126" style="fill:#1c86ee;stroke-width:0.5;" width="20" x="629" y="343"/>
+    <rect height="15" id="JVUXE327GE4DQ===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="295" y="533"/>
+    <rect height="15" id="JVUXE327GEZDK===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="624" y="323"/>
+    <rect height="15" id="JVUXE327GEYTC===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="477" y="343"/>
+    <rect height="15" id="JVUXE327GEZDO===" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="649" y="333"/>
+    <rect height="15" id="JVUXE327GEZDM===" style="fill:#1c86ee;stroke-width:0.5;" width="20" x="629" y="343"/>
     <g id="Miro_126_g">
       <text id="label_text_Miro_126" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="551" y="390">nucleotidyltransferase</text>
       <line id="label_callout_Miro_126" x1="639.0" x2="639.0" y1="358" y2="375"/>
     </g>
-    <rect height="15" id="Miro_121" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="589" y="333"/>
-    <rect height="15" id="Miro_120" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="583" y="343"/>
-    <rect height="15" id="Miro_123" style="fill:#FFFF00;stroke-width:0.5;" width="19" x="600" y="343"/>
+    <rect height="15" id="JVUXE327GEZDC===" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="589" y="333"/>
+    <rect height="15" id="JVUXE327GEZDA===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="583" y="343"/>
+    <rect height="15" id="JVUXE327GEZDG===" style="fill:#FFFF00;stroke-width:0.5;" width="19" x="600" y="343"/>
     <g id="Miro_123_g">
       <text id="label_text_Miro_123" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="469" y="390">cytosine-specific methyltransferase</text>
       <line id="label_callout_Miro_123" x1="609.5" x2="609.5" y1="358" y2="375"/>
     </g>
-    <rect height="15" id="Miro_122" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="593" y="333"/>
-    <rect height="15" id="Miro_129" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="661" y="343"/>
-    <rect height="15" id="Miro_128" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="657" y="323"/>
-    <rect height="15" id="Miro_217" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="51" y="653"/>
-    <rect height="15" id="Miro_268" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="843" y="723"/>
-    <rect height="15" id="Miro_216" style="fill:#87CEFA;stroke-width:0.5;" width="13" x="38" y="643"/>
+    <rect height="15" id="JVUXE327GEZDE===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="593" y="333"/>
+    <rect height="15" id="JVUXE327GEZDS===" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="661" y="343"/>
+    <rect height="15" id="JVUXE327GEZDQ===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="657" y="323"/>
+    <rect height="15" id="JVUXE327GIYTO===" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="51" y="653"/>
+    <rect height="15" id="JVUXE327GI3DQ===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="843" y="723"/>
+    <rect height="15" id="JVUXE327GIYTM===" style="fill:#87CEFA;stroke-width:0.5;" width="13" x="38" y="643"/>
     <g id="Miro_216_g">
       <text id="label_text_Miro_216" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-72" y="620">prohead core protein protease</text>
       <line id="label_callout_Miro_216" x1="44.5" x2="44.5" y1="643" y2="620"/>
     </g>
-    <rect height="15" id="Miro_266" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="817" y="663"/>
+    <rect height="15" id="JVUXE327GI3DM===" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="817" y="663"/>
     <g id="Miro_266_g">
       <text id="label_text_Miro_266" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="710" y="640">receptor-recognizing protein</text>
       <line id="label_callout_Miro_266" x1="822.0" x2="822.0" y1="663" y2="640"/>
     </g>
-    <rect height="15" id="Miro_267" style="fill:#FF00FF;stroke-width:0.5;" width="13" x="830" y="663"/>
+    <rect height="15" id="JVUXE327GI3DO===" style="fill:#FF00FF;stroke-width:0.5;" width="13" x="830" y="663"/>
     <g id="Miro_267_g">
       <text id="label_text_Miro_267" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="816" y="640">holin</text>
       <line id="label_callout_Miro_267" x1="836.5" x2="836.5" y1="663" y2="640"/>
     </g>
-    <rect height="15" id="Miro_264" style="fill:#87CEFA;stroke-width:0.5;" width="13" x="725" y="653"/>
+    <rect height="15" id="JVUXE327GI3DI===" style="fill:#87CEFA;stroke-width:0.5;" width="13" x="725" y="653"/>
     <g id="Miro_264_g">
       <text id="label_text_Miro_264" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="691" y="630">tail fiber</text>
       <line id="label_callout_Miro_264" x1="731.5" x2="731.5" y1="653" y2="630"/>
     </g>
-    <rect height="15" id="Miro_265" style="fill:#1c86ee;stroke-width:0.5;" width="77" x="739" y="643"/>
-    <rect height="15" id="Miro_262" style="fill:#1c86ee;stroke-width:0.5;" width="76" x="625" y="643"/>
-    <rect height="15" id="Miro_215" style="fill:#87CEFA;stroke-width:0.5;" width="8" x="30" y="643"/>
+    <rect height="15" id="JVUXE327GI3DK===" style="fill:#1c86ee;stroke-width:0.5;" width="77" x="739" y="643"/>
+    <rect height="15" id="JVUXE327GI3DE===" style="fill:#1c86ee;stroke-width:0.5;" width="76" x="625" y="643"/>
+    <rect height="15" id="JVUXE327GIYTK===" style="fill:#87CEFA;stroke-width:0.5;" width="8" x="30" y="643"/>
     <g id="Miro_215_g">
       <text id="label_text_Miro_215" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-46" y="620">prohead core protein</text>
       <line id="label_callout_Miro_215" x1="34.0" x2="34.0" y1="643" y2="620"/>
     </g>
-    <rect height="15" id="Miro_260" style="fill:#0000FF;stroke-width:0.5;" width="5" x="612" y="643"/>
+    <rect height="15" id="JVUXE327GI3DA===" style="fill:#0000FF;stroke-width:0.5;" width="5" x="612" y="643"/>
     <g id="Miro_260_g">
       <text id="label_text_Miro_260" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="566" y="620">glutaredoxin</text>
       <line id="label_callout_Miro_260" x1="614.5" x2="614.5" y1="643" y2="620"/>
     </g>
-    <rect height="15" id="Miro_261" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="617" y="643"/>
-    <rect height="15" id="Miro_214" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="917" y="443"/>
-    <rect height="15" id="Miro_213" style="fill:#87CEFA;stroke-width:0.5;" width="32" x="886" y="463"/>
+    <rect height="15" id="JVUXE327GI3DC===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="617" y="643"/>
+    <rect height="15" id="JVUXE327GIYTI===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="917" y="443"/>
+    <rect height="15" id="JVUXE327GIYTG===" style="fill:#87CEFA;stroke-width:0.5;" width="32" x="886" y="463"/>
     <g id="Miro_213_g">
       <text id="label_text_Miro_213" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="846" y="440">portal protein</text>
       <line id="label_callout_Miro_213" x1="902.0" x2="902.0" y1="463" y2="440"/>
     </g>
-    <rect height="15" id="Miro_238" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="335" y="643"/>
-    <rect height="15" id="Miro_212" style="fill:#87CEFA;stroke-width:0.5;" width="10" x="875" y="443"/>
+    <rect height="15" id="JVUXE327GIZTQ===" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="335" y="643"/>
+    <rect height="15" id="JVUXE327GIYTE===" style="fill:#87CEFA;stroke-width:0.5;" width="10" x="875" y="443"/>
     <g id="Miro_212_g">
       <text id="label_text_Miro_212" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="812" y="420">tail tube protein</text>
       <line id="label_callout_Miro_212" x1="880.0" x2="880.0" y1="443" y2="420"/>
     </g>
-    <rect height="15" id="Miro_85" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="185" y="263"/>
-    <rect height="15" id="Miro_84" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="178" y="253"/>
+    <rect height="15" id="JVUXE327HA2Q====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="185" y="263"/>
+    <rect height="15" id="JVUXE327HA2A====" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="178" y="253"/>
     <g id="Miro_84_g">
       <text id="label_text_Miro_84" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="45" y="230">autonomous glycyl radical cofactor</text>
       <line id="label_callout_Miro_84" x1="181.5" x2="181.5" y1="253" y2="230"/>
     </g>
-    <rect height="15" id="Miro_87" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="199" y="263"/>
-    <rect height="15" id="Miro_86" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="193" y="243"/>
-    <rect height="15" id="Miro_81" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="151" y="263"/>
-    <rect height="15" id="Miro_80" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="139" y="253"/>
-    <rect height="15" id="Miro_83" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="166" y="253"/>
-    <rect height="15" id="Miro_82" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="157" y="243"/>
-    <rect height="15" id="Miro_193" style="fill:#1c86ee;stroke-width:0.5;" width="17" x="361" y="523"/>
-    <rect height="15" id="Miro_89" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="207" y="253"/>
-    <rect height="15" id="Miro_88" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="203" y="253"/>
-    <rect height="15" id="Miro_150" style="fill:#1c86ee;stroke-width:0.5;" width="27" x="859" y="333"/>
+    <rect height="15" id="JVUXE327HA3Q====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="199" y="263"/>
+    <rect height="15" id="JVUXE327HA3A====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="193" y="243"/>
+    <rect height="15" id="JVUXE327HAYQ====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="151" y="263"/>
+    <rect height="15" id="JVUXE327HAYA====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="139" y="253"/>
+    <rect height="15" id="JVUXE327HAZQ====" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="166" y="253"/>
+    <rect height="15" id="JVUXE327HAZA====" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="157" y="243"/>
+    <rect height="15" id="JVUXE327GE4TG===" style="fill:#1c86ee;stroke-width:0.5;" width="17" x="361" y="523"/>
+    <rect height="15" id="JVUXE327HA4Q====" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="207" y="253"/>
+    <rect height="15" id="JVUXE327HA4A====" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="203" y="253"/>
+    <rect height="15" id="JVUXE327GE2TA===" style="fill:#1c86ee;stroke-width:0.5;" width="27" x="859" y="333"/>
     <g id="Miro_150_g">
       <text id="label_text_Miro_150" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="804" y="380">PhoH-like protein</text>
       <line id="label_callout_Miro_150" x1="872.5" x2="872.5" y1="348" y2="365"/>
     </g>
-    <rect height="15" id="Miro_151" style="fill:#C89664;stroke-width:0.5;" width="10" x="886" y="333"/>
+    <rect height="15" id="JVUXE327GE2TC===" style="fill:#C89664;stroke-width:0.5;" width="10" x="886" y="333"/>
     <g id="Miro_151_g">
       <text id="label_text_Miro_151" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="827" y="380">HNH endonuclease</text>
       <line id="label_callout_Miro_151" x1="891.0" x2="891.0" y1="348" y2="365"/>
     </g>
-    <rect height="15" id="Miro_152" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="897" y="323"/>
-    <rect height="15" id="Miro_153" style="fill:#FF00FF;stroke-width:0.5;" width="8" x="907" y="333"/>
+    <rect height="15" id="JVUXE327GE2TE===" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="897" y="323"/>
+    <rect height="15" id="JVUXE327GE2TG===" style="fill:#FF00FF;stroke-width:0.5;" width="8" x="907" y="333"/>
     <g id="Miro_153_g">
       <text id="label_text_Miro_153" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="875" y="380">endolysin</text>
       <line id="label_callout_Miro_153" x1="911.0" x2="911.0" y1="348" y2="365"/>
     </g>
-    <rect height="15" id="Miro_154" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="916" y="343"/>
-    <rect height="15" id="Miro_155" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="30" y="543"/>
-    <rect height="15" id="Miro_156" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="37" y="543"/>
-    <rect height="15" id="Miro_157" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="44" y="543"/>
-    <rect height="15" id="Miro_158" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="49" y="523"/>
-    <rect height="15" id="Miro_159" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="58" y="533"/>
-    <rect height="15" id="Miro_218" style="fill:#87CEFA;stroke-width:0.5;" width="32" x="68" y="643"/>
+    <rect height="15" id="JVUXE327GE2TI===" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="916" y="343"/>
+    <rect height="15" id="JVUXE327GE2TK===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="30" y="543"/>
+    <rect height="15" id="JVUXE327GE2TM===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="37" y="543"/>
+    <rect height="15" id="JVUXE327GE2TO===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="44" y="543"/>
+    <rect height="15" id="JVUXE327GE2TQ===" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="49" y="523"/>
+    <rect height="15" id="JVUXE327GE2TS===" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="58" y="533"/>
+    <rect height="15" id="JVUXE327GIYTQ===" style="fill:#87CEFA;stroke-width:0.5;" width="32" x="68" y="643"/>
     <g id="Miro_218_g">
       <text id="label_text_Miro_218" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="4" y="620">major capsid protein</text>
       <line id="label_callout_Miro_218" x1="84.0" x2="84.0" y1="643" y2="620"/>
     </g>
-    <rect height="15" id="Miro_271" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="872" y="723"/>
-    <rect height="15" id="Miro_270" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="854" y="733"/>
-    <rect height="15" id="Miro_273" style="fill:#1c86ee;stroke-width:0.5;" width="2" x="883" y="723"/>
-    <rect height="15" id="Miro_272" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="877" y="743"/>
-    <rect height="15" id="Miro_275" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="892" y="743"/>
-    <rect height="15" id="Miro_274" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="887" y="743"/>
-    <rect height="15" id="Miro_276" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="901" y="723"/>
-    <rect height="15" id="Miro_144" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="797" y="343"/>
-    <rect height="15" id="Miro_18" style="fill:#FF00FF;stroke-width:0.5;" width="5" x="256" y="143"/>
+    <rect height="15" id="JVUXE327GI3TC===" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="872" y="723"/>
+    <rect height="15" id="JVUXE327GI3TA===" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="854" y="733"/>
+    <rect height="15" id="JVUXE327GI3TG===" style="fill:#1c86ee;stroke-width:0.5;" width="2" x="883" y="723"/>
+    <rect height="15" id="JVUXE327GI3TE===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="877" y="743"/>
+    <rect height="15" id="JVUXE327GI3TK===" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="892" y="743"/>
+    <rect height="15" id="JVUXE327GI3TI===" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="887" y="743"/>
+    <rect height="15" id="JVUXE327GI3TM===" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="901" y="723"/>
+    <rect height="15" id="JVUXE327GE2DI===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="797" y="343"/>
+    <rect height="15" id="JVUXE327GE4A====" style="fill:#FF00FF;stroke-width:0.5;" width="5" x="256" y="143"/>
     <g id="Miro_18_g">
       <text id="label_text_Miro_18" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="142" y="190">peptidoglycan-binding protein</text>
       <line id="label_callout_Miro_18" x1="258.5" x2="258.5" y1="158" y2="175"/>
     </g>
-    <rect height="15" id="Miro_12" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="220" y="143"/>
-    <rect height="15" id="Miro_13" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="228" y="133"/>
-    <rect height="15" id="Miro_10" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="201" y="123"/>
-    <rect height="15" id="Miro_11" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="207" y="143"/>
-    <rect height="15" id="Miro_16" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="247" y="143"/>
-    <rect height="15" id="Miro_17" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="251" y="143"/>
-    <rect height="15" id="Miro_14" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="234" y="143"/>
-    <rect height="15" id="Miro_15" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="241" y="123"/>
-    <rect height="15" id="Miro_92" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="226" y="263"/>
-    <rect height="15" id="Miro_93" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="230" y="263"/>
-    <rect height="15" id="Miro_90" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="212" y="263"/>
-    <rect height="15" id="Miro_91" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="220" y="253"/>
-    <rect height="15" id="Miro_96" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="288" y="243"/>
-    <rect height="15" id="Miro_97" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="292" y="263"/>
-    <rect height="15" id="Miro_94" style="fill:#FFFF00;stroke-width:0.5;" width="31" x="242" y="253"/>
+    <rect height="15" id="JVUXE327GEZA====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="220" y="143"/>
+    <rect height="15" id="JVUXE327GEZQ====" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="228" y="133"/>
+    <rect height="15" id="JVUXE327GEYA====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="201" y="123"/>
+    <rect height="15" id="JVUXE327GEYQ====" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="207" y="143"/>
+    <rect height="15" id="JVUXE327GE3A====" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="247" y="143"/>
+    <rect height="15" id="JVUXE327GE3Q====" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="251" y="143"/>
+    <rect height="15" id="JVUXE327GE2A====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="234" y="143"/>
+    <rect height="15" id="JVUXE327GE2Q====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="241" y="123"/>
+    <rect height="15" id="JVUXE327HEZA====" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="226" y="263"/>
+    <rect height="15" id="JVUXE327HEZQ====" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="230" y="263"/>
+    <rect height="15" id="JVUXE327HEYA====" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="212" y="263"/>
+    <rect height="15" id="JVUXE327HEYQ====" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="220" y="253"/>
+    <rect height="15" id="JVUXE327HE3A====" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="288" y="243"/>
+    <rect height="15" id="JVUXE327HE3Q====" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="292" y="263"/>
+    <rect height="15" id="JVUXE327HE2A====" style="fill:#FFFF00;stroke-width:0.5;" width="31" x="242" y="253"/>
     <g id="Miro_94_g">
       <text id="label_text_Miro_94" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="217" y="230">DNA ligase</text>
       <line id="label_callout_Miro_94" x1="257.5" x2="257.5" y1="253" y2="230"/>
     </g>
-    <rect height="15" id="Miro_95" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="275" y="253"/>
-    <rect height="15" id="Miro_98" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="296" y="243"/>
-    <rect height="15" id="Miro_99" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="301" y="263"/>
-    <rect height="15" id="Miro_143" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="793" y="343"/>
-    <rect height="15" id="Miro_114" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="494" y="343"/>
-    <rect height="15" id="Miro_141" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="782" y="343"/>
-    <rect height="15" id="Miro_140" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="776" y="323"/>
-    <rect height="15" id="Miro_147" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="819" y="343"/>
-    <rect height="15" id="Miro_146" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="816" y="333"/>
-    <rect height="15" id="Miro_145" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="804" y="343"/>
-    <rect height="15" id="Miro_115" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="504" y="333"/>
-    <rect height="15" id="Miro_149" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="843" y="333"/>
-    <rect height="15" id="Miro_148" style="fill:#1c86ee;stroke-width:0.5;" width="13" x="829" y="323"/>
+    <rect height="15" id="JVUXE327HE2Q====" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="275" y="253"/>
+    <rect height="15" id="JVUXE327HE4A====" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="296" y="243"/>
+    <rect height="15" id="JVUXE327HE4Q====" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="301" y="263"/>
+    <rect height="15" id="JVUXE327GE2DG===" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="793" y="343"/>
+    <rect height="15" id="JVUXE327GEYTI===" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="494" y="343"/>
+    <rect height="15" id="JVUXE327GE2DC===" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="782" y="343"/>
+    <rect height="15" id="JVUXE327GE2DA===" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="776" y="323"/>
+    <rect height="15" id="JVUXE327GE2DO===" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="819" y="343"/>
+    <rect height="15" id="JVUXE327GE2DM===" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="816" y="333"/>
+    <rect height="15" id="JVUXE327GE2DK===" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="804" y="343"/>
+    <rect height="15" id="JVUXE327GEYTK===" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="504" y="333"/>
+    <rect height="15" id="JVUXE327GE2DS===" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="843" y="333"/>
+    <rect height="15" id="JVUXE327GE2DQ===" style="fill:#1c86ee;stroke-width:0.5;" width="13" x="829" y="323"/>
     <g id="Miro_148_g">
       <text id="label_text_Miro_148" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="771" y="370">endoribonuclease</text>
       <line id="label_callout_Miro_148" x1="835.5" x2="835.5" y1="338" y2="355"/>
     </g>
-    <rect height="15" id="Miro_116" style="fill:#1c86ee;stroke-width:0.5;" width="13" x="507" y="323"/>
+    <rect height="15" id="JVUXE327GEYTM===" style="fill:#1c86ee;stroke-width:0.5;" width="13" x="507" y="323"/>
     <g id="Miro_116_g">
       <text id="label_text_Miro_116" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="481" y="370">Miro_116</text>
       <line id="label_callout_Miro_116" x1="513.5" x2="513.5" y1="338" y2="355"/>

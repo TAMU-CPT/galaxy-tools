@@ -1,26 +1,15 @@
 #!/usr/bin/env python
 # vim: set fileencoding=utf-8
-import os
-import json
-import math
+import base64
 import argparse
-import itertools
-from gff3 import feature_lambda, feature_test_type, feature_test_quals, \
-    coding_genes, genes, get_gff3_id, feature_test_location, get_rbs_from, wa_unified_product_name
-from shinefind import NaiveSDCaller
+from gff3 import feature_lambda, feature_test_type, get_gff3_id, wa_unified_product_name
 from BCBio import GFF
-from Bio.Data import CodonTable
 from Bio import SeqIO
-from Bio.SeqRecord import SeqRecord
-from Bio.Seq import reverse_complement, translate
-from Bio.SeqFeature import SeqFeature, FeatureLocation, ExactPosition
-from jinja2 import Environment, FileSystemLoader
-import itertools
-from cpt import OrfFinder
-import re
+from Bio.SeqFeature import FeatureLocation, ExactPosition
 import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
+
 import svgwrite
 
 FONT_STYLE = "fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;"
@@ -408,7 +397,7 @@ class Plotter(object):
             10 * feature.location.strand
 
         return self.svg.rect(
-            id=get_gff3_id(feature.feature),
+            id=base64.b32encode(get_gff3_id(feature.feature)),
             insert=(x, y),
             size=(w, h),
             style="fill:%s;stroke-width:0.5;" % feature.color,
