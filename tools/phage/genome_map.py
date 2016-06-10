@@ -158,10 +158,7 @@ class Plotter(object):
                 included=True,
             )
 
-    def processSequence(self, seq, rows=2):
-        if rows != self.rows:
-            self.rows = rows
-
+    def processSequence(self, seq):
         self.genome_length = len(seq)
 
         if self.genome_length < 50000:
@@ -307,10 +304,11 @@ class Plotter(object):
     def optimizedPartition(self):
         bestRowData = None
         bestFitness = 0
-        for i in range(70, 130):
+        for i in range(70, 200):
             s = float(i) / 100
             results = self.partitionLines(split_factor=s)
             fitness = self.fitness(results[0], results[2])
+            # print s, fitness
             if fitness > bestFitness:
                 bestRowData = results
                 bestFitness = fitness
@@ -460,7 +458,7 @@ def parseFile(annotations, genome, subset=None, rows=2, width=0):
 
         plotter.processSequence(record)
         rowData = plotter.optimizedPartition()
-        svg = plotter.createSvg(rowData)
+        svg = plotter.createSvg(rowData, widthOverride=width)
         print svg.tostring()
 
 
@@ -469,8 +467,8 @@ if __name__ == '__main__':
     parser.add_argument('annotations', type=file, help='Parent GFF3 annotations')
     parser.add_argument('genome', type=file, help='Genome Sequence')
     parser.add_argument('--subset', help="Subset location (E.g. --subset '100,400')")
-    parser.add_argument('--rows', default=2, help="Number of rows")
-    parser.add_argument('--width', default=0, help='Width of plot')
+    parser.add_argument('--rows', default=2, type=int, help="Number of rows")
+    parser.add_argument('--width', default=0, type=int, help='Width of plot')
     args = parser.parse_args()
 
     parseFile(**vars(args))
