@@ -61,22 +61,22 @@ class PlottedFeature(object):
         self.location = feature.location
         self.tag = feature.type
 
-        def featureColor(feature):
+        def featureColor(feature, allow_default=True):
             if 'color' in feature.qualifiers:
                 color = feature.qualifiers['color'][0]
             elif 'colour' in feature.qualifiers:
                 color = feature.qualifiers['colour'][0]
-            elif feature.type in DEFAULT_COLOR_SCHEME:
+            elif allow_default and feature.type in DEFAULT_COLOR_SCHEME:
                 color = DEFAULT_COLOR_SCHEME[feature.type]['color']
             else:
                 color = None
             return color
 
-        cds_colors = [featureColor(x) for x in self.get_cdss()]
-        if len(cds_colors) > 0:
-            self.color = cds_colors[0]
+        non_default_cds_colors = [featureColor(x) for x in self.get_cdss() if featureColor(x, allow_default=False)]
+        if len(non_default_cds_colors) > 0:
+            self.color = non_default_cds_colors[0]
         else:
-            self.color = featureColor(feature) or '#000000'
+            self.color = featureColor(feature, allow_default=True) or '#000000'
 
     def get_cdss(self):
         return list(feature_lambda(self.feature.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))

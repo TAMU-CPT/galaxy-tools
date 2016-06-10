@@ -223,11 +223,15 @@ def wa_unified_product_name(feature):
     this isn't as trivial as it should be. Sometimes it will be in
     'product' or 'Product', othertimes in 'Name'
     """
+    # Manually applied tags.
     protein_product = feature.qualifiers.get('product', feature.qualifiers.get('Product', [None]))[0]
 
+    # If neither of those are available ...
     if protein_product is None:
+        # And there's a name...
         if 'Name' in feature.qualifiers:
-            protein_product = feature.qualifiers['Name'][0]
+            if feature.qualifiers['Name'][0].count('-') < 3:
+                protein_product = feature.qualifiers['Name'][0]
 
     return protein_product
 
