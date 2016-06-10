@@ -13,25 +13,9 @@
   <g id="group_regulatory" style="stroke: none; fill: #000000; fill-opacity: 1.0"/>
   <g id="group_gene" style="stroke: black; fill: #0086ee; fill-opacity: 1.0">
     <rect height="15" id="Miro_8" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="180" y="133"/>
-    <g id="Miro_8_g">
-      <text id="label_text_Miro_8" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="96" y="180">hypothetical conserved</text>
-      <line id="label_callout_Miro_8" x1="184.5" x2="184.5" y1="148" y2="165"/>
-    </g>
     <rect height="15" id="Miro_9" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="190" y="143"/>
-    <g id="Miro_9_g">
-      <text id="label_text_Miro_9" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="108" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_9" x1="196.0" x2="196.0" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_206" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="734" y="453"/>
-    <g id="Miro_206_g">
-      <text id="label_text_Miro_206" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="655" y="430">hypothetical conserved</text>
-      <line id="label_callout_Miro_206" x1="743.0" x2="743.0" y1="453" y2="430"/>
-    </g>
     <rect height="15" id="Miro_117" style="fill:#1c86ee;stroke-width:0.5;" width="45" x="521" y="343"/>
-    <g id="Miro_117_g">
-      <text id="label_text_Miro_117" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="455" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_117" x1="543.5" x2="543.5" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_200" style="fill:#87CEFA;stroke-width:0.5;" width="20" x="581" y="463"/>
     <g id="Miro_200_g">
       <text id="label_text_Miro_200" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="479" y="440">baseplate structural protein</text>
@@ -53,10 +37,6 @@
       <line id="label_callout_Miro_203" x1="662.5" x2="662.5" y1="453" y2="430"/>
     </g>
     <rect height="15" id="Miro_142" style="fill:#1c86ee;stroke-width:0.5;" width="2" x="791" y="323"/>
-    <g id="Miro_142_g">
-      <text id="label_text_Miro_142" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="704" y="370">hypothetical conserved</text>
-      <line id="label_callout_Miro_142" x1="792.0" x2="792.0" y1="338" y2="355"/>
-    </g>
     <rect height="15" id="Miro_1" style="fill:#C8FFC8;stroke-width:0.5;" width="18" x="29" y="123"/>
     <g id="Miro_1_g">
       <text id="label_text_Miro_1" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="22" y="170">rIIb</text>
@@ -68,15 +48,7 @@
       <line id="label_callout_Miro_2" x1="71.0" x2="71.0" y1="158" y2="175"/>
     </g>
     <rect height="15" id="Miro_3" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="94" y="123"/>
-    <g id="Miro_3_g">
-      <text id="label_text_Miro_3" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="8" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_3" x1="96.0" x2="96.0" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_4" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="99" y="123"/>
-    <g id="Miro_4_g">
-      <text id="label_text_Miro_4" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="16" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_4" x1="104.5" x2="104.5" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_5" style="fill:#FFFF00;stroke-width:0.5;" width="26" x="111" y="143"/>
     <g id="Miro_5_g">
       <text id="label_text_Miro_5" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-16" y="190">DNA topoisomerase II medium subunit</text>
@@ -88,30 +60,14 @@
       <line id="label_callout_Miro_6" x1="156.0" x2="156.0" y1="148" y2="165"/>
     </g>
     <rect height="15" id="Miro_7" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="177" y="143"/>
-    <g id="Miro_7_g">
-      <text id="label_text_Miro_7" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="90" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_7" x1="178.5" x2="178.5" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_207" style="fill:#87CEFA;stroke-width:0.5;" width="15" x="753" y="453"/>
     <g id="Miro_207_g">
       <text id="label_text_Miro_207" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="712" y="430">neck protein</text>
       <line id="label_callout_Miro_207" x1="760.5" x2="760.5" y1="453" y2="430"/>
     </g>
     <rect height="15" id="Miro_269" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="849" y="743"/>
-    <g id="Miro_269_g">
-      <text id="label_text_Miro_269" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="764" y="790">hypothetical conserved</text>
-      <line id="label_callout_Miro_269" x1="852.0" x2="852.0" y1="758" y2="775"/>
-    </g>
     <rect height="15" id="Miro_112" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="481" y="323"/>
-    <g id="Miro_112_g">
-      <text id="label_text_Miro_112" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="396" y="370">hypothetical conserved</text>
-      <line id="label_callout_Miro_112" x1="484.0" x2="484.0" y1="338" y2="355"/>
-    </g>
     <rect height="15" id="Miro_113" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="488" y="343"/>
-    <g id="Miro_113_g">
-      <text id="label_text_Miro_113" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="402" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_113" x1="490.5" x2="490.5" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_69" style="fill:#FFFF00;stroke-width:0.5;" width="23" x="36" y="263"/>
     <g id="Miro_69_g">
       <text id="label_text_Miro_69" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="7" y="240">RNA ligase</text>
@@ -143,65 +99,17 @@
       <line id="label_callout_Miro_63" x1="823.5" x2="823.5" y1="53" y2="30"/>
     </g>
     <rect height="15" id="Miro_62" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="813" y="63"/>
-    <g id="Miro_62_g">
-      <text id="label_text_Miro_62" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="727" y="40">hypothetical conserved</text>
-      <line id="label_callout_Miro_62" x1="815.5" x2="815.5" y1="63" y2="40"/>
-    </g>
     <rect height="15" id="Miro_61" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="809" y="43"/>
-    <g id="Miro_61_g">
-      <text id="label_text_Miro_61" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="723" y="20">hypothetical conserved</text>
-      <line id="label_callout_Miro_61" x1="811.0" x2="811.0" y1="43" y2="20"/>
-    </g>
     <rect height="15" id="Miro_60" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="803" y="63"/>
-    <g id="Miro_60_g">
-      <text id="label_text_Miro_60" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="718" y="40">hypothetical conserved</text>
-      <line id="label_callout_Miro_60" x1="806.0" x2="806.0" y1="63" y2="40"/>
-    </g>
     <rect height="15" id="Miro_176" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="210" y="543"/>
-    <g id="Miro_176_g">
-      <text id="label_text_Miro_176" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="125" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_176" x1="213.0" x2="213.0" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_177" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="217" y="523"/>
-    <g id="Miro_177_g">
-      <text id="label_text_Miro_177" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="131" y="570">hypothetical conserved</text>
-      <line id="label_callout_Miro_177" x1="219.5" x2="219.5" y1="538" y2="555"/>
-    </g>
     <rect height="15" id="Miro_174" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="181" y="533"/>
-    <g id="Miro_174_g">
-      <text id="label_text_Miro_174" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="102" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_174" x1="190.0" x2="190.0" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_175" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="199" y="523"/>
-    <g id="Miro_175_g">
-      <text id="label_text_Miro_175" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="116" y="570">hypothetical conserved</text>
-      <line id="label_callout_Miro_175" x1="204.0" x2="204.0" y1="538" y2="555"/>
-    </g>
     <rect height="15" id="Miro_172" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="172" y="533"/>
-    <g id="Miro_172_g">
-      <text id="label_text_Miro_172" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="86" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_172" x1="174.0" x2="174.0" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_173" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="175" y="523"/>
-    <g id="Miro_173_g">
-      <text id="label_text_Miro_173" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="89" y="570">hypothetical conserved</text>
-      <line id="label_callout_Miro_173" x1="177.0" x2="177.0" y1="538" y2="555"/>
-    </g>
     <rect height="15" id="Miro_170" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="152" y="543"/>
-    <g id="Miro_170_g">
-      <text id="label_text_Miro_170" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="69" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_170" x1="157.5" x2="157.5" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_171" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="164" y="523"/>
-    <g id="Miro_171_g">
-      <text id="label_text_Miro_171" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="80" y="570">hypothetical conserved</text>
-      <line id="label_callout_Miro_171" x1="168.0" x2="168.0" y1="538" y2="555"/>
-    </g>
     <rect height="15" id="Miro_178" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="222" y="533"/>
-    <g id="Miro_178_g">
-      <text id="label_text_Miro_178" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="138" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_178" x1="226.0" x2="226.0" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_179" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="230" y="543"/>
     <g id="Miro_179_g">
       <text id="label_text_Miro_179" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="174" y="590">NUDIX hydrolase</text>
@@ -223,45 +131,21 @@
       <line id="label_callout_Miro_196" x1="418.0" x2="418.0" y1="443" y2="420"/>
     </g>
     <rect height="15" id="Miro_197" style="fill:#1c86ee;stroke-width:0.5;" width="42" x="436" y="443"/>
-    <g id="Miro_197_g">
-      <text id="label_text_Miro_197" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="369" y="420">hypothetical conserved</text>
-      <line id="label_callout_Miro_197" x1="457.0" x2="457.0" y1="443" y2="420"/>
-    </g>
     <rect height="15" id="Miro_190" style="fill:#87CEFA;stroke-width:0.5;" width="10" x="315" y="543"/>
     <g id="Miro_190_g">
       <text id="label_text_Miro_190" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="252" y="590">tail tube protein</text>
       <line id="label_callout_Miro_190" x1="320.0" x2="320.0" y1="558" y2="575"/>
     </g>
     <rect height="15" id="Miro_191" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="333" y="453"/>
-    <g id="Miro_191_g">
-      <text id="label_text_Miro_191" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="253" y="430">hypothetical conserved</text>
-      <line id="label_callout_Miro_191" x1="341.0" x2="341.0" y1="453" y2="430"/>
-    </g>
     <rect height="15" id="Miro_192" style="fill:#C89664;stroke-width:0.5;" width="9" x="351" y="453"/>
     <g id="Miro_192_g">
       <text id="label_text_Miro_192" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="279" y="430">homing endonuclease</text>
       <line id="label_callout_Miro_192" x1="355.5" x2="355.5" y1="453" y2="430"/>
     </g>
     <rect height="15" id="Miro_124" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="619" y="333"/>
-    <g id="Miro_124_g">
-      <text id="label_text_Miro_124" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="533" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_124" x1="621.5" x2="621.5" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_208" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="769" y="443"/>
-    <g id="Miro_208_g">
-      <text id="label_text_Miro_208" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="689" y="420">hypothetical conserved</text>
-      <line id="label_callout_Miro_208" x1="777.0" x2="777.0" y1="443" y2="420"/>
-    </g>
     <rect height="15" id="Miro_198" style="fill:#1c86ee;stroke-width:0.5;" width="39" x="478" y="463"/>
-    <g id="Miro_198_g">
-      <text id="label_text_Miro_198" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="409" y="440">hypothetical conserved</text>
-      <line id="label_callout_Miro_198" x1="497.5" x2="497.5" y1="463" y2="440"/>
-    </g>
     <rect height="15" id="Miro_199" style="fill:#1c86ee;stroke-width:0.5;" width="62" x="519" y="463"/>
-    <g id="Miro_199_g">
-      <text id="label_text_Miro_199" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="462" y="440">hypothetical conserved</text>
-      <line id="label_callout_Miro_199" x1="550.0" x2="550.0" y1="463" y2="440"/>
-    </g>
     <rect height="15" id="Miro_219" style="fill:#C89664;stroke-width:0.5;" width="13" x="101" y="643"/>
     <g id="Miro_219_g">
       <text id="label_text_Miro_219" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="31" y="620">homing endonuclease</text>
@@ -273,15 +157,7 @@
       <line id="label_callout_Miro_209" x1="791.0" x2="791.0" y1="463" y2="440"/>
     </g>
     <rect height="15" id="Miro_169" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="139" y="543"/>
-    <g id="Miro_169_g">
-      <text id="label_text_Miro_169" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="53" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_169" x1="141.5" x2="141.5" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_168" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="133" y="523"/>
-    <g id="Miro_168_g">
-      <text id="label_text_Miro_168" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="47" y="570">hypothetical conserved</text>
-      <line id="label_callout_Miro_168" x1="135.5" x2="135.5" y1="538" y2="555"/>
-    </g>
     <rect height="15" id="Miro_78" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="122" y="263"/>
     <g id="Miro_78_g">
       <text id="label_text_Miro_78" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="71" y="240">dCMP deaminase</text>
@@ -303,20 +179,8 @@
       <line id="label_callout_Miro_74" x1="95.0" x2="95.0" y1="243" y2="220"/>
     </g>
     <rect height="15" id="Miro_75" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="105" y="243"/>
-    <g id="Miro_75_g">
-      <text id="label_text_Miro_75" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="20" y="220">hypothetical conserved</text>
-      <line id="label_callout_Miro_75" x1="108.0" x2="108.0" y1="243" y2="220"/>
-    </g>
     <rect height="15" id="Miro_76" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="111" y="253"/>
-    <g id="Miro_76_g">
-      <text id="label_text_Miro_76" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="25" y="230">hypothetical conserved</text>
-      <line id="label_callout_Miro_76" x1="113.5" x2="113.5" y1="253" y2="230"/>
-    </g>
     <rect height="15" id="Miro_77" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="116" y="243"/>
-    <g id="Miro_77_g">
-      <text id="label_text_Miro_77" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="31" y="220">hypothetical conserved</text>
-      <line id="label_callout_Miro_77" x1="119.0" x2="119.0" y1="243" y2="220"/>
-    </g>
     <rect height="15" id="Miro_70" style="fill:#C89664;stroke-width:0.5;" width="11" x="60" y="263"/>
     <g id="Miro_70_g">
       <text id="label_text_Miro_70" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-11" y="240">homing endonuclease</text>
@@ -333,130 +197,42 @@
       <line id="label_callout_Miro_72" x1="80.0" x2="80.0" y1="243" y2="220"/>
     </g>
     <rect height="15" id="Miro_73" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="83" y="253"/>
-    <g id="Miro_73_g">
-      <text id="label_text_Miro_73" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-4" y="230">hypothetical conserved</text>
-      <line id="label_callout_Miro_73" x1="84.5" x2="84.5" y1="253" y2="230"/>
-    </g>
     <rect height="15" id="Miro_161" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="68" y="533"/>
-    <g id="Miro_161_g">
-      <text id="label_text_Miro_161" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-17" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_161" x1="71.5" x2="71.5" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_160" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="61" y="523"/>
-    <g id="Miro_160_g">
-      <text id="label_text_Miro_160" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-24" y="570">hypothetical conserved</text>
-      <line id="label_callout_Miro_160" x1="64.5" x2="64.5" y1="538" y2="555"/>
-    </g>
     <rect height="15" id="Miro_163" style="fill:#1c86ee;stroke-width:0.5;" width="23" x="81" y="533"/>
     <g id="Miro_163_g">
       <text id="label_text_Miro_163" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-32" y="580">radical SAM superfamily protein</text>
       <line id="label_callout_Miro_163" x1="92.5" x2="92.5" y1="548" y2="565"/>
     </g>
     <rect height="15" id="Miro_187" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="281" y="533"/>
-    <g id="Miro_187_g">
-      <text id="label_text_Miro_187" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="199" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_187" x1="287.0" x2="287.0" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_186" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="270" y="523"/>
-    <g id="Miro_186_g">
-      <text id="label_text_Miro_186" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="187" y="570">hypothetical conserved</text>
-      <line id="label_callout_Miro_186" x1="275.5" x2="275.5" y1="538" y2="555"/>
-    </g>
     <rect height="15" id="Miro_185" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="266" y="533"/>
-    <g id="Miro_185_g">
-      <text id="label_text_Miro_185" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="179" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_185" x1="267.5" x2="267.5" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_162" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="75" y="543"/>
-    <g id="Miro_162_g">
-      <text id="label_text_Miro_162" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-10" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_162" x1="78.0" x2="78.0" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_183" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="254" y="533"/>
-    <g id="Miro_183_g">
-      <text id="label_text_Miro_183" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="169" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_183" x1="257.5" x2="257.5" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_182" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="249" y="543"/>
-    <g id="Miro_182_g">
-      <text id="label_text_Miro_182" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="164" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_182" x1="252.0" x2="252.0" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_181" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="244" y="533"/>
-    <g id="Miro_181_g">
-      <text id="label_text_Miro_181" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="158" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_181" x1="246.5" x2="246.5" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_180" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="239" y="543"/>
-    <g id="Miro_180_g">
-      <text id="label_text_Miro_180" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="153" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_180" x1="241.5" x2="241.5" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_165" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="120" y="543"/>
-    <g id="Miro_165_g">
-      <text id="label_text_Miro_165" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="34" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_165" x1="122.5" x2="122.5" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_189" style="fill:#1c86ee;stroke-width:0.5;" width="14" x="301" y="523"/>
-    <g id="Miro_189_g">
-      <text id="label_text_Miro_189" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="220" y="570">hypothetical conserved</text>
-      <line id="label_callout_Miro_189" x1="308.0" x2="308.0" y1="538" y2="555"/>
-    </g>
     <rect height="15" id="Miro_164" style="fill:#1c86ee;stroke-width:0.5;" width="14" x="105" y="463"/>
-    <g id="Miro_164_g">
-      <text id="label_text_Miro_164" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="24" y="440">hypothetical conserved</text>
-      <line id="label_callout_Miro_164" x1="112.0" x2="112.0" y1="463" y2="440"/>
-    </g>
     <rect height="15" id="Miro_167" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="130" y="533"/>
-    <g id="Miro_167_g">
-      <text id="label_text_Miro_167" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="43" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_167" x1="131.5" x2="131.5" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_205" style="fill:#87CEFA;stroke-width:0.5;" width="35" x="698" y="453"/>
     <g id="Miro_205_g">
       <text id="label_text_Miro_205" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="635" y="430">neck whisker protein</text>
       <line id="label_callout_Miro_205" x1="715.5" x2="715.5" y1="453" y2="430"/>
     </g>
     <rect height="15" id="Miro_166" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="126" y="543"/>
-    <g id="Miro_166_g">
-      <text id="label_text_Miro_166" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="40" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_166" x1="128.0" x2="128.0" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_49" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="643" y="143"/>
-    <g id="Miro_49_g">
-      <text id="label_text_Miro_49" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="557" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_49" x1="645.5" x2="645.5" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_48" style="fill:#FFFF00;stroke-width:0.5;" width="13" x="630" y="123"/>
     <g id="Miro_48_g">
       <text id="label_text_Miro_48" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="536" y="170">helicase assembly protein</text>
       <line id="label_callout_Miro_48" x1="636.5" x2="636.5" y1="138" y2="155"/>
     </g>
     <rect height="15" id="Miro_118" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="566" y="323"/>
-    <g id="Miro_118_g">
-      <text id="label_text_Miro_118" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="481" y="370">hypothetical conserved</text>
-      <line id="label_callout_Miro_118" x1="569.0" x2="569.0" y1="338" y2="355"/>
-    </g>
     <rect height="15" id="Miro_119" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="572" y="343"/>
-    <g id="Miro_119_g">
-      <text id="label_text_Miro_119" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="489" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_119" x1="577.0" x2="577.0" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_41" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="542" y="133"/>
-    <g id="Miro_41_g">
-      <text id="label_text_Miro_41" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="457" y="180">hypothetical conserved</text>
-      <line id="label_callout_Miro_41" x1="545.0" x2="545.0" y1="148" y2="165"/>
-    </g>
     <rect height="15" id="Miro_40" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="535" y="143"/>
-    <g id="Miro_40_g">
-      <text id="label_text_Miro_40" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="450" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_40" x1="538.0" x2="538.0" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_43" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="556" y="123"/>
-    <g id="Miro_43_g">
-      <text id="label_text_Miro_43" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="473" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_43" x1="561.5" x2="561.5" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_42" style="fill:#FFA500;stroke-width:0.5;" width="7" x="549" y="123"/>
     <g id="Miro_42_g">
       <text id="label_text_Miro_42" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="428" y="170">translational repressor protein</text>
@@ -483,50 +259,26 @@
       <line id="label_callout_Miro_46" x1="605.5" x2="605.5" y1="158" y2="175"/>
     </g>
     <rect height="15" id="Miro_258" style="fill:#1c86ee;stroke-width:0.5;" width="19" x="579" y="663"/>
-    <g id="Miro_258_g">
-      <text id="label_text_Miro_258" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="500" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_258" x1="588.5" x2="588.5" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_263" style="fill:#1c86ee;stroke-width:0.5;" width="22" x="701" y="663"/>
-    <g id="Miro_263_g">
-      <text id="label_text_Miro_263" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="624" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_263" x1="712.0" x2="712.0" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_210" style="fill:#00FFFF;stroke-width:0.5;" width="37" x="796" y="453"/>
     <g id="Miro_210_g">
       <text id="label_text_Miro_210" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="718" y="430">terminase, large subunit</text>
       <line id="label_callout_Miro_210" x1="814.5" x2="814.5" y1="453" y2="430"/>
     </g>
     <rect height="15" id="Miro_56" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="722" y="53"/>
-    <g id="Miro_56_g">
-      <text id="label_text_Miro_56" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="637" y="30">hypothetical conserved</text>
-      <line id="label_callout_Miro_56" x1="725.0" x2="725.0" y1="53" y2="30"/>
-    </g>
     <rect height="15" id="Miro_57" style="fill:#1c86ee;stroke-width:0.5;" width="34" x="727" y="63"/>
     <g id="Miro_57_g">
       <text id="label_text_Miro_57" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="568" y="40">methyl methanesulphonate-sensitivity protein</text>
       <line id="label_callout_Miro_57" x1="744.0" x2="744.0" y1="63" y2="40"/>
     </g>
     <rect height="15" id="Miro_54" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="693" y="63"/>
-    <g id="Miro_54_g">
-      <text id="label_text_Miro_54" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="608" y="40">hypothetical conserved</text>
-      <line id="label_callout_Miro_54" x1="696.0" x2="696.0" y1="63" y2="40"/>
-    </g>
     <rect height="15" id="Miro_55" style="fill:#1c86ee;stroke-width:0.5;" width="21" x="701" y="43"/>
     <g id="Miro_55_g">
       <text id="label_text_Miro_55" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="667" y="20">exonuclease</text>
       <line id="label_callout_Miro_55" x1="711.5" x2="711.5" y1="43" y2="20"/>
     </g>
     <rect height="15" id="Miro_52" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="679" y="63"/>
-    <g id="Miro_52_g">
-      <text id="label_text_Miro_52" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="596" y="40">hypothetical conserved</text>
-      <line id="label_callout_Miro_52" x1="684.0" x2="684.0" y1="63" y2="40"/>
-    </g>
     <rect height="15" id="Miro_53" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="689" y="43"/>
-    <g id="Miro_53_g">
-      <text id="label_text_Miro_53" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="603" y="20">hypothetical conserved</text>
-      <line id="label_callout_Miro_53" x1="691.0" x2="691.0" y1="43" y2="20"/>
-    </g>
     <rect height="15" id="Miro_50" style="fill:#FFFF00;stroke-width:0.5;" width="5" x="648" y="143"/>
     <g id="Miro_50_g">
       <text id="label_text_Miro_50" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="566" y="190">dsDNA-binding protein</text>
@@ -538,15 +290,7 @@
       <line id="label_callout_Miro_51" x1="663.5" x2="663.5" y1="158" y2="175"/>
     </g>
     <rect height="15" id="Miro_58" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="762" y="53"/>
-    <g id="Miro_58_g">
-      <text id="label_text_Miro_58" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="676" y="30">hypothetical conserved</text>
-      <line id="label_callout_Miro_58" x1="764.0" x2="764.0" y1="53" y2="30"/>
-    </g>
     <rect height="15" id="Miro_59" style="fill:#1c86ee;stroke-width:0.5;" width="34" x="767" y="43"/>
-    <g id="Miro_59_g">
-      <text id="label_text_Miro_59" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="696" y="20">hypothetical conserved</text>
-      <line id="label_callout_Miro_59" x1="784.0" x2="784.0" y1="43" y2="20"/>
-    </g>
     <rect height="15" id="Miro_109" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="458" y="243"/>
     <g id="Miro_109_g">
       <text id="label_text_Miro_109" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="410" y="220">tail lysozyme</text>
@@ -573,10 +317,6 @@
       <line id="label_callout_Miro_105" x1="402.5" x2="402.5" y1="243" y2="220"/>
     </g>
     <rect height="15" id="Miro_104" style="fill:#1c86ee;stroke-width:0.5;" width="36" x="356" y="263"/>
-    <g id="Miro_104_g">
-      <text id="label_text_Miro_104" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="286" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_104" x1="374.0" x2="374.0" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_103" style="fill:#87CEFA;stroke-width:0.5;" width="11" x="344" y="263"/>
     <g id="Miro_103_g">
       <text id="label_text_Miro_103" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="237" y="240">baseplate structural protein</text>
@@ -588,30 +328,10 @@
       <line id="label_callout_Miro_102" x1="332.0" x2="332.0" y1="338" y2="355"/>
     </g>
     <rect height="15" id="Miro_101" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="313" y="263"/>
-    <g id="Miro_101_g">
-      <text id="label_text_Miro_101" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="228" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_101" x1="316.5" x2="316.5" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_100" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="307" y="263"/>
-    <g id="Miro_100_g">
-      <text id="label_text_Miro_100" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="222" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_100" x1="310.0" x2="310.0" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_228" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="235" y="663"/>
-    <g id="Miro_228_g">
-      <text id="label_text_Miro_228" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="152" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_228" x1="240.5" x2="240.5" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_229" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="246" y="663"/>
-    <g id="Miro_229_g">
-      <text id="label_text_Miro_229" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="160" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_229" x1="248.5" x2="248.5" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_222" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="156" y="663"/>
-    <g id="Miro_222_g">
-      <text id="label_text_Miro_222" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="69" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_222" x1="157.5" x2="157.5" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_223" style="fill:#FFFF00;stroke-width:0.5;" width="4" x="165" y="723"/>
     <g id="Miro_223_g">
       <text id="label_text_Miro_223" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="63" y="770">ATP-dependent DNA helicase</text>
@@ -628,65 +348,29 @@
       <line id="label_callout_Miro_221" x1="151.0" x2="151.0" y1="663" y2="640"/>
     </g>
     <rect height="15" id="Miro_226" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="216" y="653"/>
-    <g id="Miro_226_g">
-      <text id="label_text_Miro_226" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="131" y="630">hypothetical conserved</text>
-      <line id="label_callout_Miro_226" x1="219.0" x2="219.0" y1="653" y2="630"/>
-    </g>
     <rect height="15" id="Miro_227" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="223" y="653"/>
-    <g id="Miro_227_g">
-      <text id="label_text_Miro_227" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="140" y="630">hypothetical conserved</text>
-      <line id="label_callout_Miro_227" x1="228.5" x2="228.5" y1="653" y2="630"/>
-    </g>
     <rect height="15" id="Miro_224" style="fill:#FFFF00;stroke-width:0.5;" width="30" x="170" y="743"/>
     <g id="Miro_224_g">
       <text id="label_text_Miro_224" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="137" y="790">DNA helicase</text>
       <line id="label_callout_Miro_224" x1="185.0" x2="185.0" y1="758" y2="775"/>
     </g>
     <rect height="15" id="Miro_225" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="202" y="643"/>
-    <g id="Miro_225_g">
-      <text id="label_text_Miro_225" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="120" y="620">hypothetical conserved</text>
-      <line id="label_callout_Miro_225" x1="208.0" x2="208.0" y1="643" y2="620"/>
-    </g>
     <rect height="15" id="Miro_248" style="fill:#FFFF00;stroke-width:0.5;" width="9" x="464" y="643"/>
     <g id="Miro_248_g">
       <text id="label_text_Miro_248" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="364" y="620">recombination endonuclease</text>
       <line id="label_callout_Miro_248" x1="468.5" x2="468.5" y1="643" y2="620"/>
     </g>
     <rect height="15" id="Miro_249" style="fill:#AAAAAA;stroke-width:0.5;" width="6" x="473" y="653"/>
-    <g id="Miro_249_g">
-      <text id="label_text_Miro_249" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="404" y="630">hypothetical novel</text>
-      <line id="label_callout_Miro_249" x1="476.0" x2="476.0" y1="653" y2="630"/>
-    </g>
     <rect height="15" id="Miro_240" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="366" y="653"/>
-    <g id="Miro_240_g">
-      <text id="label_text_Miro_240" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="284" y="630">hypothetical conserved</text>
-      <line id="label_callout_Miro_240" x1="372.0" x2="372.0" y1="653" y2="630"/>
-    </g>
     <rect height="15" id="Miro_241" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="378" y="643"/>
-    <g id="Miro_241_g">
-      <text id="label_text_Miro_241" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="295" y="620">hypothetical conserved</text>
-      <line id="label_callout_Miro_241" x1="383.0" x2="383.0" y1="643" y2="620"/>
-    </g>
     <rect height="15" id="Miro_242" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="390" y="663"/>
-    <g id="Miro_242_g">
-      <text id="label_text_Miro_242" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="304" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_242" x1="392.5" x2="392.5" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_243" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="396" y="653"/>
-    <g id="Miro_243_g">
-      <text id="label_text_Miro_243" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="312" y="630">hypothetical conserved</text>
-      <line id="label_callout_Miro_243" x1="400.5" x2="400.5" y1="653" y2="630"/>
-    </g>
     <rect height="15" id="Miro_244" style="fill:#1c86ee;stroke-width:0.5;" width="29" x="405" y="643"/>
     <g id="Miro_244_g">
       <text id="label_text_Miro_244" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="263" y="620">nicotinamide phosphoribosyl transferase</text>
       <line id="label_callout_Miro_244" x1="419.5" x2="419.5" y1="643" y2="620"/>
     </g>
     <rect height="15" id="Miro_245" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="434" y="643"/>
-    <g id="Miro_245_g">
-      <text id="label_text_Miro_245" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="349" y="620">hypothetical conserved</text>
-      <line id="label_callout_Miro_245" x1="437.0" x2="437.0" y1="643" y2="620"/>
-    </g>
     <rect height="15" id="Miro_246" style="fill:#FFFF00;stroke-width:0.5;" width="14" x="443" y="663"/>
     <g id="Miro_246_g">
       <text id="label_text_Miro_246" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="366" y="640">DNA adenine methylase</text>
@@ -703,20 +387,8 @@
       <line id="label_callout_Miro_23" x1="300.5" x2="300.5" y1="158" y2="175"/>
     </g>
     <rect height="15" id="Miro_22" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="280" y="143"/>
-    <g id="Miro_22_g">
-      <text id="label_text_Miro_22" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="195" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_22" x1="283.0" x2="283.0" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_21" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="275" y="143"/>
-    <g id="Miro_21_g">
-      <text id="label_text_Miro_21" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="190" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_21" x1="278.0" x2="278.0" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_20" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="267" y="123"/>
-    <g id="Miro_20_g">
-      <text id="label_text_Miro_20" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="183" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_20" x1="271.0" x2="271.0" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_27" style="fill:#FFFF00;stroke-width:0.5;" width="20" x="335" y="123"/>
     <g id="Miro_27_g">
       <text id="label_text_Miro_27" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="301" y="170">DNA primase</text>
@@ -728,75 +400,27 @@
       <line id="label_callout_Miro_26" x1="329.5" x2="329.5" y1="158" y2="175"/>
     </g>
     <rect height="15" id="Miro_25" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="320" y="123"/>
-    <g id="Miro_25_g">
-      <text id="label_text_Miro_25" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="234" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_25" x1="322.0" x2="322.0" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_24" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="314" y="133"/>
-    <g id="Miro_24_g">
-      <text id="label_text_Miro_24" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="229" y="180">hypothetical conserved</text>
-      <line id="label_callout_Miro_24" x1="317.0" x2="317.0" y1="148" y2="165"/>
-    </g>
     <rect height="15" id="Miro_29" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="362" y="133"/>
-    <g id="Miro_29_g">
-      <text id="label_text_Miro_29" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="276" y="180">hypothetical conserved</text>
-      <line id="label_callout_Miro_29" x1="364.0" x2="364.0" y1="148" y2="165"/>
-    </g>
     <rect height="15" id="Miro_28" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="355" y="123"/>
-    <g id="Miro_28_g">
-      <text id="label_text_Miro_28" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="269" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_28" x1="357.5" x2="357.5" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_132" style="fill:#1c86ee;stroke-width:0.5;" width="21" x="686" y="343"/>
     <g id="Miro_132_g">
       <text id="label_text_Miro_132" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="636" y="390">NUDIX hydrolase</text>
       <line id="label_callout_Miro_132" x1="696.5" x2="696.5" y1="358" y2="375"/>
     </g>
     <rect height="15" id="Miro_133" style="fill:#1c86ee;stroke-width:0.5;" width="18" x="711" y="333"/>
-    <g id="Miro_133_g">
-      <text id="label_text_Miro_133" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="632" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_133" x1="720.0" x2="720.0" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_130" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="673" y="333"/>
-    <g id="Miro_130_g">
-      <text id="label_text_Miro_130" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="587" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_130" x1="675.5" x2="675.5" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_131" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="679" y="323"/>
-    <g id="Miro_131_g">
-      <text id="label_text_Miro_131" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="593" y="370">hypothetical conserved</text>
-      <line id="label_callout_Miro_131" x1="681.0" x2="681.0" y1="338" y2="355"/>
-    </g>
     <rect height="15" id="Miro_136" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="747" y="343"/>
-    <g id="Miro_136_g">
-      <text id="label_text_Miro_136" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="663" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_136" x1="751.0" x2="751.0" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_137" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="755" y="323"/>
     <g id="Miro_137_g">
       <text id="label_text_Miro_137" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="697" y="370">thymidine kinase</text>
       <line id="label_callout_Miro_137" x1="761.0" x2="761.0" y1="338" y2="355"/>
     </g>
     <rect height="15" id="Miro_134" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="731" y="323"/>
-    <g id="Miro_134_g">
-      <text id="label_text_Miro_134" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="647" y="370">hypothetical conserved</text>
-      <line id="label_callout_Miro_134" x1="735.0" x2="735.0" y1="338" y2="355"/>
-    </g>
     <rect height="15" id="Miro_135" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="739" y="333"/>
-    <g id="Miro_135_g">
-      <text id="label_text_Miro_135" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="653" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_135" x1="741.5" x2="741.5" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_138" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="768" y="333"/>
-    <g id="Miro_138_g">
-      <text id="label_text_Miro_138" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="682" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_138" x1="770.0" x2="770.0" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_139" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="771" y="343"/>
-    <g id="Miro_139_g">
-      <text id="label_text_Miro_139" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="685" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_139" x1="773.0" x2="773.0" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_211" style="fill:#87CEFA;stroke-width:0.5;" width="40" x="833" y="443"/>
     <g id="Miro_211_g">
       <text id="label_text_Miro_211" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="777" y="420">tail sheath protein</text>
@@ -808,70 +432,18 @@
       <line id="label_callout_Miro_239" x1="356.0" x2="356.0" y1="663" y2="640"/>
     </g>
     <rect height="15" id="Miro_184" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="261" y="543"/>
-    <g id="Miro_184_g">
-      <text id="label_text_Miro_184" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="174" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_184" x1="262.5" x2="262.5" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_235" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="318" y="663"/>
-    <g id="Miro_235_g">
-      <text id="label_text_Miro_235" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="231" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_235" x1="319.5" x2="319.5" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_234" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="311" y="663"/>
-    <g id="Miro_234_g">
-      <text id="label_text_Miro_234" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="226" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_234" x1="314.0" x2="314.0" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_237" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="328" y="663"/>
-    <g id="Miro_237_g">
-      <text id="label_text_Miro_237" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="243" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_237" x1="331.5" x2="331.5" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_236" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="321" y="663"/>
-    <g id="Miro_236_g">
-      <text id="label_text_Miro_236" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="236" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_236" x1="324.0" x2="324.0" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_231" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="264" y="723"/>
-    <g id="Miro_231_g">
-      <text id="label_text_Miro_231" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="180" y="770">hypothetical conserved</text>
-      <line id="label_callout_Miro_231" x1="268.5" x2="268.5" y1="738" y2="755"/>
-    </g>
     <rect height="15" id="Miro_230" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="252" y="653"/>
-    <g id="Miro_230_g">
-      <text id="label_text_Miro_230" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="169" y="630">hypothetical conserved</text>
-      <line id="label_callout_Miro_230" x1="257.0" x2="257.0" y1="653" y2="630"/>
-    </g>
     <rect height="15" id="Miro_233" style="fill:#1c86ee;stroke-width:0.5;" width="17" x="293" y="653"/>
-    <g id="Miro_233_g">
-      <text id="label_text_Miro_233" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="213" y="630">hypothetical conserved</text>
-      <line id="label_callout_Miro_233" x1="301.5" x2="301.5" y1="653" y2="630"/>
-    </g>
     <rect height="15" id="Miro_232" style="fill:#1c86ee;stroke-width:0.5;" width="17" x="274" y="733"/>
-    <g id="Miro_232_g">
-      <text id="label_text_Miro_232" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="194" y="780">hypothetical conserved</text>
-      <line id="label_callout_Miro_232" x1="282.5" x2="282.5" y1="748" y2="765"/>
-    </g>
     <rect height="15" id="Miro_259" style="fill:#1c86ee;stroke-width:0.5;" width="13" x="599" y="663"/>
-    <g id="Miro_259_g">
-      <text id="label_text_Miro_259" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="517" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_259" x1="605.5" x2="605.5" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_110" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="467" y="333"/>
-    <g id="Miro_110_g">
-      <text id="label_text_Miro_110" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="383" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_110" x1="471.5" x2="471.5" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_252" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="529" y="653"/>
-    <g id="Miro_252_g">
-      <text id="label_text_Miro_252" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="446" y="630">hypothetical conserved</text>
-      <line id="label_callout_Miro_252" x1="534.0" x2="534.0" y1="653" y2="630"/>
-    </g>
     <rect height="15" id="Miro_251" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="524" y="663"/>
-    <g id="Miro_251_g">
-      <text id="label_text_Miro_251" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="438" y="640">hypothetical conserved</text>
-      <line id="label_callout_Miro_251" x1="526.5" x2="526.5" y1="663" y2="640"/>
-    </g>
     <rect height="15" id="Miro_250" style="fill:#0000FF;stroke-width:0.5;" width="43" x="480" y="643"/>
     <g id="Miro_250_g">
       <text id="label_text_Miro_250" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="313" y="620">anaerobic ribonucleoside-triphosphate reductase</text>
@@ -888,15 +460,7 @@
       <line id="label_callout_Miro_256" x1="560.5" x2="560.5" y1="643" y2="620"/>
     </g>
     <rect height="15" id="Miro_255" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="550" y="643"/>
-    <g id="Miro_255_g">
-      <text id="label_text_Miro_255" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="464" y="620">hypothetical conserved</text>
-      <line id="label_callout_Miro_255" x1="552.0" x2="552.0" y1="643" y2="620"/>
-    </g>
     <rect height="15" id="Miro_254" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="544" y="643"/>
-    <g id="Miro_254_g">
-      <text id="label_text_Miro_254" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="458" y="620">hypothetical conserved</text>
-      <line id="label_callout_Miro_254" x1="546.5" x2="546.5" y1="643" y2="620"/>
-    </g>
     <rect height="15" id="Miro_30" style="fill:#87CEFA;stroke-width:0.5;" width="10" x="366" y="123"/>
     <g id="Miro_30_g">
       <text id="label_text_Miro_30" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="291" y="170">major capsid protein</text>
@@ -908,25 +472,9 @@
       <line id="label_callout_Miro_31" x1="383.0" x2="383.0" y1="158" y2="175"/>
     </g>
     <rect height="15" id="Miro_32" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="391" y="123"/>
-    <g id="Miro_32_g">
-      <text id="label_text_Miro_32" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="307" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_32" x1="395.0" x2="395.0" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_33" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="398" y="143"/>
-    <g id="Miro_33_g">
-      <text id="label_text_Miro_33" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="312" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_33" x1="400.5" x2="400.5" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_34" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="405" y="123"/>
-    <g id="Miro_34_g">
-      <text id="label_text_Miro_34" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="319" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_34" x1="407.5" x2="407.5" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_35" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="412" y="123"/>
-    <g id="Miro_35_g">
-      <text id="label_text_Miro_35" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="326" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_35" x1="414.5" x2="414.5" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_36" style="fill:#FFFF00;stroke-width:0.5;" width="29" x="418" y="133"/>
     <g id="Miro_36_g">
       <text id="label_text_Miro_36" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="384" y="180">DNA helicase</text>
@@ -948,70 +496,26 @@
       <line id="label_callout_Miro_39" x1="507.5" x2="507.5" y1="148" y2="165"/>
     </g>
     <rect height="15" id="Miro_188" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="295" y="533"/>
-    <g id="Miro_188_g">
-      <text id="label_text_Miro_188" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="209" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_188" x1="297.5" x2="297.5" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_125" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="624" y="323"/>
-    <g id="Miro_125_g">
-      <text id="label_text_Miro_125" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="538" y="370">hypothetical conserved</text>
-      <line id="label_callout_Miro_125" x1="626.5" x2="626.5" y1="338" y2="355"/>
-    </g>
     <rect height="15" id="Miro_111" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="477" y="343"/>
-    <g id="Miro_111_g">
-      <text id="label_text_Miro_111" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="391" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_111" x1="479.0" x2="479.0" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_127" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="649" y="333"/>
-    <g id="Miro_127_g">
-      <text id="label_text_Miro_127" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="564" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_127" x1="652.5" x2="652.5" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_126" style="fill:#1c86ee;stroke-width:0.5;" width="20" x="629" y="343"/>
     <g id="Miro_126_g">
       <text id="label_text_Miro_126" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="551" y="390">nucleotidyltransferase</text>
       <line id="label_callout_Miro_126" x1="639.0" x2="639.0" y1="358" y2="375"/>
     </g>
     <rect height="15" id="Miro_121" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="589" y="333"/>
-    <g id="Miro_121_g">
-      <text id="label_text_Miro_121" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="502" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_121" x1="590.5" x2="590.5" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_120" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="583" y="343"/>
-    <g id="Miro_120_g">
-      <text id="label_text_Miro_120" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="497" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_120" x1="585.5" x2="585.5" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_123" style="fill:#FFFF00;stroke-width:0.5;" width="19" x="600" y="343"/>
     <g id="Miro_123_g">
       <text id="label_text_Miro_123" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="469" y="390">cytosine-specific methyltransferase</text>
       <line id="label_callout_Miro_123" x1="609.5" x2="609.5" y1="358" y2="375"/>
     </g>
     <rect height="15" id="Miro_122" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="593" y="333"/>
-    <g id="Miro_122_g">
-      <text id="label_text_Miro_122" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="507" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_122" x1="595.5" x2="595.5" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_129" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="661" y="343"/>
-    <g id="Miro_129_g">
-      <text id="label_text_Miro_129" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="579" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_129" x1="667.0" x2="667.0" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_128" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="657" y="323"/>
-    <g id="Miro_128_g">
-      <text id="label_text_Miro_128" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="571" y="370">hypothetical conserved</text>
-      <line id="label_callout_Miro_128" x1="659.0" x2="659.0" y1="338" y2="355"/>
-    </g>
     <rect height="15" id="Miro_217" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="51" y="653"/>
-    <g id="Miro_217_g">
-      <text id="label_text_Miro_217" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-29" y="630">hypothetical conserved</text>
-      <line id="label_callout_Miro_217" x1="59.0" x2="59.0" y1="653" y2="630"/>
-    </g>
     <rect height="15" id="Miro_268" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="843" y="723"/>
-    <g id="Miro_268_g">
-      <text id="label_text_Miro_268" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="757" y="770">hypothetical conserved</text>
-      <line id="label_callout_Miro_268" x1="845.5" x2="845.5" y1="738" y2="755"/>
-    </g>
     <rect height="15" id="Miro_216" style="fill:#87CEFA;stroke-width:0.5;" width="13" x="38" y="643"/>
     <g id="Miro_216_g">
       <text id="label_text_Miro_216" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-72" y="620">prohead core protein protease</text>
@@ -1033,15 +537,7 @@
       <line id="label_callout_Miro_264" x1="731.5" x2="731.5" y1="653" y2="630"/>
     </g>
     <rect height="15" id="Miro_265" style="fill:#1c86ee;stroke-width:0.5;" width="77" x="739" y="643"/>
-    <g id="Miro_265_g">
-      <text id="label_text_Miro_265" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="689" y="620">hypothetical conserved</text>
-      <line id="label_callout_Miro_265" x1="777.5" x2="777.5" y1="643" y2="620"/>
-    </g>
     <rect height="15" id="Miro_262" style="fill:#1c86ee;stroke-width:0.5;" width="76" x="625" y="643"/>
-    <g id="Miro_262_g">
-      <text id="label_text_Miro_262" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="575" y="620">hypothetical conserved</text>
-      <line id="label_callout_Miro_262" x1="663.0" x2="663.0" y1="643" y2="620"/>
-    </g>
     <rect height="15" id="Miro_215" style="fill:#87CEFA;stroke-width:0.5;" width="8" x="30" y="643"/>
     <g id="Miro_215_g">
       <text id="label_text_Miro_215" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-46" y="620">prohead core protein</text>
@@ -1053,85 +549,33 @@
       <line id="label_callout_Miro_260" x1="614.5" x2="614.5" y1="643" y2="620"/>
     </g>
     <rect height="15" id="Miro_261" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="617" y="643"/>
-    <g id="Miro_261_g">
-      <text id="label_text_Miro_261" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="532" y="620">hypothetical conserved</text>
-      <line id="label_callout_Miro_261" x1="620.0" x2="620.0" y1="643" y2="620"/>
-    </g>
     <rect height="15" id="Miro_214" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="917" y="443"/>
-    <g id="Miro_214_g">
-      <text id="label_text_Miro_214" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="831" y="420">hypothetical conserved</text>
-      <line id="label_callout_Miro_214" x1="919.5" x2="919.5" y1="443" y2="420"/>
-    </g>
     <rect height="15" id="Miro_213" style="fill:#87CEFA;stroke-width:0.5;" width="32" x="886" y="463"/>
     <g id="Miro_213_g">
       <text id="label_text_Miro_213" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="846" y="440">portal protein</text>
       <line id="label_callout_Miro_213" x1="902.0" x2="902.0" y1="463" y2="440"/>
     </g>
     <rect height="15" id="Miro_238" style="fill:#1c86ee;stroke-width:0.5;" width="10" x="335" y="643"/>
-    <g id="Miro_238_g">
-      <text id="label_text_Miro_238" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="252" y="620">hypothetical conserved</text>
-      <line id="label_callout_Miro_238" x1="340.0" x2="340.0" y1="643" y2="620"/>
-    </g>
     <rect height="15" id="Miro_212" style="fill:#87CEFA;stroke-width:0.5;" width="10" x="875" y="443"/>
     <g id="Miro_212_g">
       <text id="label_text_Miro_212" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="812" y="420">tail tube protein</text>
       <line id="label_callout_Miro_212" x1="880.0" x2="880.0" y1="443" y2="420"/>
     </g>
     <rect height="15" id="Miro_85" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="185" y="263"/>
-    <g id="Miro_85_g">
-      <text id="label_text_Miro_85" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="99" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_85" x1="187.5" x2="187.5" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_84" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="178" y="253"/>
     <g id="Miro_84_g">
       <text id="label_text_Miro_84" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="45" y="230">autonomous glycyl radical cofactor</text>
       <line id="label_callout_Miro_84" x1="181.5" x2="181.5" y1="253" y2="230"/>
     </g>
     <rect height="15" id="Miro_87" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="199" y="263"/>
-    <g id="Miro_87_g">
-      <text id="label_text_Miro_87" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="113" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_87" x1="201.5" x2="201.5" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_86" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="193" y="243"/>
-    <g id="Miro_86_g">
-      <text id="label_text_Miro_86" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="108" y="220">hypothetical conserved</text>
-      <line id="label_callout_Miro_86" x1="196.0" x2="196.0" y1="243" y2="220"/>
-    </g>
     <rect height="15" id="Miro_81" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="151" y="263"/>
-    <g id="Miro_81_g">
-      <text id="label_text_Miro_81" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="65" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_81" x1="153.5" x2="153.5" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_80" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="139" y="253"/>
-    <g id="Miro_80_g">
-      <text id="label_text_Miro_80" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="53" y="230">hypothetical conserved</text>
-      <line id="label_callout_Miro_80" x1="141.5" x2="141.5" y1="253" y2="230"/>
-    </g>
     <rect height="15" id="Miro_83" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="166" y="253"/>
-    <g id="Miro_83_g">
-      <text id="label_text_Miro_83" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="83" y="230">hypothetical conserved</text>
-      <line id="label_callout_Miro_83" x1="171.5" x2="171.5" y1="253" y2="230"/>
-    </g>
     <rect height="15" id="Miro_82" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="157" y="243"/>
-    <g id="Miro_82_g">
-      <text id="label_text_Miro_82" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="73" y="220">hypothetical conserved</text>
-      <line id="label_callout_Miro_82" x1="161.0" x2="161.0" y1="243" y2="220"/>
-    </g>
     <rect height="15" id="Miro_193" style="fill:#1c86ee;stroke-width:0.5;" width="17" x="361" y="523"/>
-    <g id="Miro_193_g">
-      <text id="label_text_Miro_193" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="281" y="570">hypothetical conserved</text>
-      <line id="label_callout_Miro_193" x1="369.5" x2="369.5" y1="538" y2="555"/>
-    </g>
     <rect height="15" id="Miro_89" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="207" y="253"/>
-    <g id="Miro_89_g">
-      <text id="label_text_Miro_89" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="120" y="230">hypothetical conserved</text>
-      <line id="label_callout_Miro_89" x1="208.5" x2="208.5" y1="253" y2="230"/>
-    </g>
     <rect height="15" id="Miro_88" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="203" y="253"/>
-    <g id="Miro_88_g">
-      <text id="label_text_Miro_88" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="116" y="230">hypothetical conserved</text>
-      <line id="label_callout_Miro_88" x1="204.5" x2="204.5" y1="253" y2="230"/>
-    </g>
     <rect height="15" id="Miro_150" style="fill:#1c86ee;stroke-width:0.5;" width="27" x="859" y="333"/>
     <g id="Miro_150_g">
       <text id="label_text_Miro_150" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="804" y="380">PhoH-like protein</text>
@@ -1143,230 +587,66 @@
       <line id="label_callout_Miro_151" x1="891.0" x2="891.0" y1="348" y2="365"/>
     </g>
     <rect height="15" id="Miro_152" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="897" y="323"/>
-    <g id="Miro_152_g">
-      <text id="label_text_Miro_152" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="813" y="370">hypothetical conserved</text>
-      <line id="label_callout_Miro_152" x1="901.5" x2="901.5" y1="338" y2="355"/>
-    </g>
     <rect height="15" id="Miro_153" style="fill:#FF00FF;stroke-width:0.5;" width="8" x="907" y="333"/>
     <g id="Miro_153_g">
       <text id="label_text_Miro_153" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="875" y="380">endolysin</text>
       <line id="label_callout_Miro_153" x1="911.0" x2="911.0" y1="348" y2="365"/>
     </g>
     <rect height="15" id="Miro_154" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="916" y="343"/>
-    <g id="Miro_154_g">
-      <text id="label_text_Miro_154" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="832" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_154" x1="920.0" x2="920.0" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_155" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="30" y="543"/>
-    <g id="Miro_155_g">
-      <text id="label_text_Miro_155" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-55" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_155" x1="33.0" x2="33.0" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_156" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="37" y="543"/>
-    <g id="Miro_156_g">
-      <text id="label_text_Miro_156" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-49" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_156" x1="39.5" x2="39.5" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_157" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="44" y="543"/>
-    <g id="Miro_157_g">
-      <text id="label_text_Miro_157" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-42" y="590">hypothetical conserved</text>
-      <line id="label_callout_Miro_157" x1="46.5" x2="46.5" y1="558" y2="575"/>
-    </g>
     <rect height="15" id="Miro_158" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="49" y="523"/>
-    <g id="Miro_158_g">
-      <text id="label_text_Miro_158" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-35" y="570">hypothetical conserved</text>
-      <line id="label_callout_Miro_158" x1="53.0" x2="53.0" y1="538" y2="555"/>
-    </g>
     <rect height="15" id="Miro_159" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="58" y="533"/>
-    <g id="Miro_159_g">
-      <text id="label_text_Miro_159" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="-29" y="580">hypothetical conserved</text>
-      <line id="label_callout_Miro_159" x1="59.5" x2="59.5" y1="548" y2="565"/>
-    </g>
     <rect height="15" id="Miro_218" style="fill:#87CEFA;stroke-width:0.5;" width="32" x="68" y="643"/>
     <g id="Miro_218_g">
       <text id="label_text_Miro_218" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="4" y="620">major capsid protein</text>
       <line id="label_callout_Miro_218" x1="84.0" x2="84.0" y1="643" y2="620"/>
     </g>
     <rect height="15" id="Miro_271" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="872" y="723"/>
-    <g id="Miro_271_g">
-      <text id="label_text_Miro_271" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="786" y="770">hypothetical conserved</text>
-      <line id="label_callout_Miro_271" x1="874.0" x2="874.0" y1="738" y2="755"/>
-    </g>
     <rect height="15" id="Miro_270" style="fill:#1c86ee;stroke-width:0.5;" width="16" x="854" y="733"/>
-    <g id="Miro_270_g">
-      <text id="label_text_Miro_270" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="774" y="780">hypothetical conserved</text>
-      <line id="label_callout_Miro_270" x1="862.0" x2="862.0" y1="748" y2="765"/>
-    </g>
     <rect height="15" id="Miro_273" style="fill:#1c86ee;stroke-width:0.5;" width="2" x="883" y="723"/>
-    <g id="Miro_273_g">
-      <text id="label_text_Miro_273" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="796" y="770">hypothetical conserved</text>
-      <line id="label_callout_Miro_273" x1="884.0" x2="884.0" y1="738" y2="755"/>
-    </g>
     <rect height="15" id="Miro_272" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="877" y="743"/>
-    <g id="Miro_272_g">
-      <text id="label_text_Miro_272" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="792" y="790">hypothetical conserved</text>
-      <line id="label_callout_Miro_272" x1="880.0" x2="880.0" y1="758" y2="775"/>
-    </g>
     <rect height="15" id="Miro_275" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="892" y="743"/>
-    <g id="Miro_275_g">
-      <text id="label_text_Miro_275" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="808" y="790">hypothetical conserved</text>
-      <line id="label_callout_Miro_275" x1="896.5" x2="896.5" y1="758" y2="775"/>
-    </g>
     <rect height="15" id="Miro_274" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="887" y="743"/>
-    <g id="Miro_274_g">
-      <text id="label_text_Miro_274" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="801" y="790">hypothetical conserved</text>
-      <line id="label_callout_Miro_274" x1="889.5" x2="889.5" y1="758" y2="775"/>
-    </g>
     <rect height="15" id="Miro_276" style="fill:#1c86ee;stroke-width:0.5;" width="7" x="901" y="723"/>
-    <g id="Miro_276_g">
-      <text id="label_text_Miro_276" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="816" y="770">hypothetical conserved</text>
-      <line id="label_callout_Miro_276" x1="904.5" x2="904.5" y1="738" y2="755"/>
-    </g>
     <rect height="15" id="Miro_144" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="797" y="343"/>
-    <g id="Miro_144_g">
-      <text id="label_text_Miro_144" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="712" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_144" x1="800.0" x2="800.0" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_18" style="fill:#FF00FF;stroke-width:0.5;" width="5" x="256" y="143"/>
     <g id="Miro_18_g">
       <text id="label_text_Miro_18" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="142" y="190">peptidoglycan-binding protein</text>
       <line id="label_callout_Miro_18" x1="258.5" x2="258.5" y1="158" y2="175"/>
     </g>
     <rect height="15" id="Miro_12" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="220" y="143"/>
-    <g id="Miro_12_g">
-      <text id="label_text_Miro_12" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="135" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_12" x1="223.0" x2="223.0" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_13" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="228" y="133"/>
-    <g id="Miro_13_g">
-      <text id="label_text_Miro_13" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="142" y="180">hypothetical conserved</text>
-      <line id="label_callout_Miro_13" x1="230.0" x2="230.0" y1="148" y2="165"/>
-    </g>
     <rect height="15" id="Miro_10" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="201" y="123"/>
-    <g id="Miro_10_g">
-      <text id="label_text_Miro_10" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="115" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_10" x1="203.5" x2="203.5" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_11" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="207" y="143"/>
-    <g id="Miro_11_g">
-      <text id="label_text_Miro_11" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="125" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_11" x1="213.0" x2="213.0" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_16" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="247" y="143"/>
-    <g id="Miro_16_g">
-      <text id="label_text_Miro_16" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="161" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_16" x1="249.0" x2="249.0" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_17" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="251" y="143"/>
-    <g id="Miro_17_g">
-      <text id="label_text_Miro_17" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="164" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_17" x1="252.5" x2="252.5" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_14" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="234" y="143"/>
-    <g id="Miro_14_g">
-      <text id="label_text_Miro_14" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="148" y="190">hypothetical conserved</text>
-      <line id="label_callout_Miro_14" x1="236.5" x2="236.5" y1="158" y2="175"/>
-    </g>
     <rect height="15" id="Miro_15" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="241" y="123"/>
-    <g id="Miro_15_g">
-      <text id="label_text_Miro_15" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="156" y="170">hypothetical conserved</text>
-      <line id="label_callout_Miro_15" x1="244.0" x2="244.0" y1="138" y2="155"/>
-    </g>
     <rect height="15" id="Miro_92" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="226" y="263"/>
-    <g id="Miro_92_g">
-      <text id="label_text_Miro_92" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="140" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_92" x1="228.0" x2="228.0" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_93" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="230" y="263"/>
-    <g id="Miro_93_g">
-      <text id="label_text_Miro_93" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="148" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_93" x1="236.0" x2="236.0" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_90" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="212" y="263"/>
-    <g id="Miro_90_g">
-      <text id="label_text_Miro_90" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="128" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_90" x1="216.5" x2="216.5" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_91" style="fill:#1c86ee;stroke-width:0.5;" width="5" x="220" y="253"/>
-    <g id="Miro_91_g">
-      <text id="label_text_Miro_91" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="134" y="230">hypothetical conserved</text>
-      <line id="label_callout_Miro_91" x1="222.5" x2="222.5" y1="253" y2="230"/>
-    </g>
     <rect height="15" id="Miro_96" style="fill:#1c86ee;stroke-width:0.5;" width="4" x="288" y="243"/>
-    <g id="Miro_96_g">
-      <text id="label_text_Miro_96" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="202" y="220">hypothetical conserved</text>
-      <line id="label_callout_Miro_96" x1="290.0" x2="290.0" y1="243" y2="220"/>
-    </g>
     <rect height="15" id="Miro_97" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="292" y="263"/>
-    <g id="Miro_97_g">
-      <text id="label_text_Miro_97" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="205" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_97" x1="293.5" x2="293.5" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_94" style="fill:#FFFF00;stroke-width:0.5;" width="31" x="242" y="253"/>
     <g id="Miro_94_g">
       <text id="label_text_Miro_94" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="217" y="230">DNA ligase</text>
       <line id="label_callout_Miro_94" x1="257.5" x2="257.5" y1="253" y2="230"/>
     </g>
     <rect height="15" id="Miro_95" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="275" y="253"/>
-    <g id="Miro_95_g">
-      <text id="label_text_Miro_95" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="192" y="230">hypothetical conserved</text>
-      <line id="label_callout_Miro_95" x1="280.5" x2="280.5" y1="253" y2="230"/>
-    </g>
     <rect height="15" id="Miro_98" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="296" y="243"/>
-    <g id="Miro_98_g">
-      <text id="label_text_Miro_98" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="209" y="220">hypothetical conserved</text>
-      <line id="label_callout_Miro_98" x1="297.5" x2="297.5" y1="243" y2="220"/>
-    </g>
     <rect height="15" id="Miro_99" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="301" y="263"/>
-    <g id="Miro_99_g">
-      <text id="label_text_Miro_99" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="216" y="240">hypothetical conserved</text>
-      <line id="label_callout_Miro_99" x1="304.0" x2="304.0" y1="263" y2="240"/>
-    </g>
     <rect height="15" id="Miro_143" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="793" y="343"/>
-    <g id="Miro_143_g">
-      <text id="label_text_Miro_143" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="706" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_143" x1="794.5" x2="794.5" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_114" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="494" y="343"/>
-    <g id="Miro_114_g">
-      <text id="label_text_Miro_114" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="410" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_114" x1="498.5" x2="498.5" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_141" style="fill:#1c86ee;stroke-width:0.5;" width="9" x="782" y="343"/>
-    <g id="Miro_141_g">
-      <text id="label_text_Miro_141" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="698" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_141" x1="786.5" x2="786.5" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_140" style="fill:#1c86ee;stroke-width:0.5;" width="6" x="776" y="323"/>
-    <g id="Miro_140_g">
-      <text id="label_text_Miro_140" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="691" y="370">hypothetical conserved</text>
-      <line id="label_callout_Miro_140" x1="779.0" x2="779.0" y1="338" y2="355"/>
-    </g>
     <rect height="15" id="Miro_147" style="fill:#1c86ee;stroke-width:0.5;" width="8" x="819" y="343"/>
-    <g id="Miro_147_g">
-      <text id="label_text_Miro_147" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="735" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_147" x1="823.0" x2="823.0" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_146" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="816" y="333"/>
-    <g id="Miro_146_g">
-      <text id="label_text_Miro_146" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="729" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_146" x1="817.5" x2="817.5" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_145" style="fill:#1c86ee;stroke-width:0.5;" width="12" x="804" y="343"/>
-    <g id="Miro_145_g">
-      <text id="label_text_Miro_145" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="722" y="390">hypothetical conserved</text>
-      <line id="label_callout_Miro_145" x1="810.0" x2="810.0" y1="358" y2="375"/>
-    </g>
     <rect height="15" id="Miro_115" style="fill:#1c86ee;stroke-width:0.5;" width="3" x="504" y="333"/>
-    <g id="Miro_115_g">
-      <text id="label_text_Miro_115" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="417" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_115" x1="505.5" x2="505.5" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_149" style="fill:#1c86ee;stroke-width:0.5;" width="11" x="843" y="333"/>
-    <g id="Miro_149_g">
-      <text id="label_text_Miro_149" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="760" y="380">hypothetical conserved</text>
-      <line id="label_callout_Miro_149" x1="848.5" x2="848.5" y1="348" y2="365"/>
-    </g>
     <rect height="15" id="Miro_148" style="fill:#1c86ee;stroke-width:0.5;" width="13" x="829" y="323"/>
     <g id="Miro_148_g">
       <text id="label_text_Miro_148" style="fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;" x="771" y="370">endoribonuclease</text>

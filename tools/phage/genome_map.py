@@ -127,7 +127,7 @@ class GeneClass(object):
 
 class Plotter(object):
 
-    def __init__(self, rows=2):
+    def __init__(self, rows=2, hypo=False):
         self.line_Count = 1
         self._ft_count = 0
 
@@ -135,6 +135,8 @@ class Plotter(object):
         self.separate_strands = True
         self.double_line_for_overlap = True
         self.opacity = 1.0
+
+        self.label_hypo = hypo
 
         self.genome_length = 0
 
@@ -278,13 +280,16 @@ class Plotter(object):
                 class_group.add(svgFeature)
 
                 if gene.get_label():
-                    svgFeatureLabel = self.featureLabel(
-                        gene, rowData, class_group,
-                        self.calculateRow(gene, rowData),
-                        gene.get_label(),
-                        x, y, w, h
-                    )
-                    class_group.add(svgFeatureLabel)
+                    if self.label_hypo or (not self.label_hypo and 'ypothetical' not in gene.get_label()):
+                    # print self.label_hypo, (self.label_hypo and 'ypothetical' not in gene.get_label()), 'ypothetical' not in gene.get_label(), gene.get_label()
+                    # if not self.label_hypo or (self.label_hypo and 'ypothetical' not in gene.get_label()):
+                        svgFeatureLabel = self.featureLabel(
+                            gene, rowData, class_group,
+                            self.calculateRow(gene, rowData),
+                            gene.get_label(),
+                            x, y, w, h
+                        )
+                        class_group.add(svgFeatureLabel)
 
             self.svg.add(class_group)
 
@@ -444,8 +449,8 @@ class Plotter(object):
         return g
 
 
-def parseFile(annotations, genome, subset=None, rows=2, width=0):
-    plotter = Plotter(rows=rows)
+def parseFile(annotations, genome, subset=None, rows=2, width=0, hypo=False):
+    plotter = Plotter(rows=rows, hypo=hypo)
 
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
     for record in GFF.parse(annotations, base_dict=seq_dict):
@@ -469,6 +474,7 @@ if __name__ == '__main__':
     parser.add_argument('--subset', help="Subset location (E.g. --subset '100,400')")
     parser.add_argument('--rows', default=2, type=int, help="Number of rows")
     parser.add_argument('--width', default=0, type=int, help='Width of plot')
+    parser.add_argument('--hypo', action='store_true', help='Label hypotheticals')
     args = parser.parse_args()
 
     parseFile(**vars(args))

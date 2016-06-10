@@ -14,6 +14,7 @@ $gff3_data
 @GENOME_SELECTOR@
 --rows $rows
 --width $width
+$hypo
 
 #if $subset.subset == 'True':
     --subset ${subset.subset_a},${subset.subset_b}
@@ -28,6 +29,7 @@ $gff3_data
 
         <param label="Width (px)" name="width" type="integer" value="0" help="Leave to the default value of zero for the mapper to choose an acceptable width for you" />
         <param label="Desired # of Rows" name="rows" type="integer" value="2" />
+        <param name="hypo" label="Show label for hypothetical novel/conserved genes" type="boolean" truevalue="--hypo" falsevalue=""/>
 
 
         <conditional name="subset">
