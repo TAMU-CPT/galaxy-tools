@@ -86,11 +86,20 @@ class PlottedFeature(object):
             return self.label
 
         label = wa_unified_product_name(self.feature)
+        # Best option, the gene has a product
+        if 'product' in self.feature.qualifiers or 'Product' in self.feature.qualifiers:
+            self.label = label
+            return self.label
+
+        # Otherwise, fail over the the CDSs
         cdss = self.get_cdss()
         labels = [wa_unified_product_name(cds) for cds in cdss]
+
+        # If the CDSs have a label, use that.
         if len(labels) > 0:
             self.label = labels[0]
         else:
+            # Or fail over to empty
             self.label = None
 
         return self.label
