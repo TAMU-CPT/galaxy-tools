@@ -139,7 +139,7 @@ class Plotter(object):
         self.genome_length = 0
 
         self.x_offset = 30
-        self.y_offset = 30
+        self.y_offset = 90
         self.ils = 200
         self.zoom = 80
         self.rows = rows
