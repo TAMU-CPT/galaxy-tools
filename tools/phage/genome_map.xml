@@ -46,8 +46,8 @@ $gff3_data
         <test>
             <param name="gff3_data" value="miro.color.gff3" />
             <param name="reference_genome.genome_fasta" value="miro.fa" />
-            <param name="rows" value="2" />
-            <param name="width" value="0" />
+            <param name="rows" value="4" />
+            <param name="width" value="900" />
             <output name="output" file="miro.svg" />
         </test>
     </tests>
