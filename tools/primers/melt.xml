@@ -22,7 +22,7 @@ $csalt.salt_select
         </param>
         <when value="nosalt" />
         <when value="salt">
-          <param name="salt" type="float" label="Concentration of [Na+] in mM" default="50.0"/>
+          <param name="salt" type="float" label="Concentration of [Na+] in mM" value="50.0"/>
         </when>
     </conditional>
   </inputs>
