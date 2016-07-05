@@ -6,6 +6,14 @@
       <yield/>
     </requirements>
   </xml>
+  <xml name="stdio">
+    <stdio>
+      <exit_code range="1:"/>
+      <exit_code range=":-1"/>
+      <regex match="Error:"/>
+      <regex match="Exception:"/>
+    </stdio>
+  </xml>
   <token name="@DATA_DIR@">\$GALAXY_SHARED_DIR</token>
   <token name="@EXT_URL@">
 \$GALAXY_WEBAPOLLO_EXT_URL
