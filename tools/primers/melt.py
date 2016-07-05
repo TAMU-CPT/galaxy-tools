@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import argparse
+from math import log10
 import logging
 from Bio import SeqIO
 logging.basicConfig(level=logging.INFO)
@@ -8,29 +9,36 @@ log = logging.getLogger(name='melt')
 
 def counts(sequence):
     return {
-        'A': sequence.count('A'),
-        'T': sequence.count('T'),
-        'C': sequence.count('C'),
-        'G': sequence.count('G'),
+        'a': sequence.count('A'),
+        't': sequence.count('T'),
+        'c': sequence.count('C'),
+        'g': sequence.count('G'),
     }
 
 
 def nosalt(sequence, na=0.050):
     if len(sequence) < 14:
-        tm_func = "({A} + {T}) * 2 + ({G} + {C}) * 4"
+        def tm_func(a, c, t, g):
+            return (a + t) * 2 + (g + c) * 4
     else:
-        tm_func = "64.9 + 41 * ({G} + {C} - 16.4)/({A} + {T} + {C} + {G})"
+        def tm_func(a, c, t, g):
+            return 64.9 + 41 * (g + c - 16.4) / (a + c + t + g)
 
-    return eval(tm_func.format(**counts(sequence)))
+    return tm_func(**counts(sequence))
 
 
 def salt(sequence, na=0.050):
     if len(sequence) < 14:
-        tm_func = '({A}+{T})*2 + ({G}+{C})*4 - 16.6*log10(0.050) + 16.6*log10({na})'
+        def tm_func(a, c, t, g, na):
+            return (a + t) * 2 + (g + c) * 4 - 16.6 * log10(0.050) + 16.6 * log10(na)
     else:
-        tm_func = '100.5 + (41 * ({G}+{C})/({A}+{T}+{G}+{C})) - (820/({A}+{T}+{G}+{C})) + 16.6*log10({na})'
+        def tm_func(a, c, t, g, na):
+            return 100.5 + (41 * (g + c) / (a + t + g + c)) - (820 / (a + t + g + c)) + 16.6 * log10(na)
 
-    return eval(tm_func.format(na=na, **counts(sequence)))
+    kw = counts(sequence)
+    kw['na'] = na
+
+    return tm_func(**kw)
 
 
 if __name__ == '__main__':
