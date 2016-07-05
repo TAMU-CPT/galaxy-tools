@@ -4,7 +4,9 @@
   <macros>
     <import>macros.xml</import>
   </macros>
-  <expand macro="requirements"/>
+  <expand macro="requirements">
+      <requirement type="package" version="3.11">pyyaml</requirement>
+  </expand>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_codon_opt.py
 
 $sequence
