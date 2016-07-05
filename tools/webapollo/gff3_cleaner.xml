@@ -5,9 +5,8 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
-  <command><![CDATA[
-$__tool_directory__/gff3_cleaner.py
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gff3_cleaner.py
 $gff3_data
 > $output]]></command>
   <inputs>
