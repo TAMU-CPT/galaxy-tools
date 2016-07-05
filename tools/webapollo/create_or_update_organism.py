@@ -18,6 +18,7 @@ if __name__ == '__main__':
     parser.add_argument('--genus', help='Organism Genus')
     parser.add_argument('--species', help='Organism Species')
     parser.add_argument('--public', action='store_true', help='Make organism public')
+    parser.add_argument('--secret', action='store_true', help='Make organism public')
 
     args = parser.parse_args()
 
@@ -40,15 +41,36 @@ if __name__ == '__main__':
     # TODO: Check ownership
     if org:
         log.info("\tUpdating Organism")
-        data = wa.organisms.updateOrganismInfo(
-            org['id'],
-            org_cn,
-            args.jbrowse,
-            # mandatory
-            genus=args.genus,
-            species=args.species,
-            public=args.public
+        import subprocess
+        container_id = subprocess.check_output(
+            """docker ps | grep apollo | grep postgres |awk '{print $1}'""",
+            shell=True
         )
+        container_id = container_id.strip()
+
+        import re
+        genus = re.sub('[^A-Za-z0-9.]*', '', args.genus)
+        species = re.sub('[^A-Za-z0-9.]*', '', args.species)
+
+        SQL = """update organism set directory='%s', genus='%s', species='%s' where id='%s'""" % (
+            args.jbrowse, genus, species, org['id']
+        )
+        CMD = """docker exec -t %s psql -U postgres -c "%s" """ % ( container_id, SQL )
+        subprocess.check_output(
+            CMD,
+            shell=True
+        )
+        data = [org]
+        # import sys; sys.exit()
+        # data = wa.organisms.updateOrganismInfo(
+            # org['id'],
+            # org_cn,
+            # args.jbrowse,
+            # # mandatory
+            # genus=args.genus,
+            # species=args.species,
+            # public=args.public
+        # )
     else:
         # New organism
         log.info("\tAdding Organism")
