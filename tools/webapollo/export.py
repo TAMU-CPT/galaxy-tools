@@ -27,13 +27,13 @@ def export(org_cn, seqs):
             exportAllSequences=False,
             sequences=seqs,
             **kwargs
-        ))
+        ).encode('utf-8'))
     else:
         data.write(wa.io.write(
             exportAllSequences=True,
             sequences=[],
             **kwargs
-        ))
+        ).encode('utf-8'))
 
     # Seek back to start
     data.seek(0)
