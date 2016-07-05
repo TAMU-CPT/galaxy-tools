@@ -3,10 +3,7 @@
     <macros>
         <import>macros.xml</import>
     </macros>
-    <stdio>
-        <exit_code level="fatal" range="1:"/>
-    </stdio>
-    <command interpreter="python"><![CDATA[
+    <command interpreter="python" detect_errors="aggressive"><![CDATA[
 post-process-extract-chromosome.py $gff > $default
 ]]></command>
     <inputs>

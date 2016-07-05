@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <tool id="org.krumsiek.gepard" name="Gepard" version="0.1">
   <description>dot plotter</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command>java -jar gepard.jar
+  <command detect_errors="aggressive">java -jar gepard.jar
 
 --seq1 $seq1
 --seq2 $seq2

@@ -2,10 +2,7 @@
 <tool id="edu.tamu.cpt.pause2.analysis" name="PAUSE2 Analaysis" version="0.1">
   <description>run PAUSE analysis</description>
   <version_command>python pause_analysis.py --version</version_command>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python">pause_analysis.py
+  <command interpreter="python" detect_errors="aggressive">pause_analysis.py
 --galaxy
 --outfile_supporting $__new_file_path__
 --genome "${genome}"

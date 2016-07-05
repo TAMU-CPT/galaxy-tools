@@ -3,11 +3,8 @@
     <macros>
         <import>macros.xml</import>
     </macros>
-    <stdio>
-        <exit_code level="fatal" range="1:"/>
-    </stdio>
     <version_command>python process-fasta.py --version</version_command>
-    <command interpreter="python"><![CDATA[process-fasta.py $fasta > $default]]></command>
+    <command interpreter="python" detect_errors="aggressive"><![CDATA[process-fasta.py $fasta > $default]]></command>
     <inputs>
         <param label="Fasta file to process" name="fasta" type="data"/>
     </inputs>

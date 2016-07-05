@@ -1,11 +1,8 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.genbank.authorship" name="Extract Authorship from Genbank File" version="0.1">
   <description></description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python authorship.py --version</version_command>
-  <command interpreter="python"><![CDATA[
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[
 authorship.py
 #set files = '" "'.join( [ str( $file ) for $file in $positional_1 ] )
 "$files"

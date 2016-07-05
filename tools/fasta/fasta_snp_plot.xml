@@ -1,10 +1,7 @@
 <tool id="edu.tamu.cpt.plot.snp" name="SNP Plot" version="1.0">
   <description>simple plot of generated snps against a reference sequence</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python fasta_snp_plot.py --version</version_command>
-  <command interpreter="python"><![CDATA[fasta_snp_plot.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_snp_plot.py
 $positional_1
 $positional_2
 

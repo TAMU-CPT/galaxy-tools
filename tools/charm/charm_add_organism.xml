@@ -2,10 +2,7 @@
     <description>creates new organism record in the Chado Database.</description>
     <requirements>
     </requirements>
-    <stdio>
-        <exit_code range="3:" />
-    </stdio>
-    <command><![CDATA[
+    <command detect_errors="aggressive"><![CDATA[
 #if $source.source_select == "table":
     cat "$source.table" |
     awk -v db="${dbprofile}"

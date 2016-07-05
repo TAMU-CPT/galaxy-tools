@@ -2,10 +2,7 @@
     <description>into the Chado Database.</description>
     <requirements>
     </requirements>
-    <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command><![CDATA[
+    <command detect_errors="aggressive"><![CDATA[
 gmod_bulk_load_gff3.pl
 --gfffile $gfffile
 

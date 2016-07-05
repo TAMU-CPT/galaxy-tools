@@ -1,9 +1,6 @@
 <tool id="edu.tamu.cpt.fasta.safe_reopen" name="Auto-reopen Fasta" version="1.0">
   <description>based on gene calls</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command><![CDATA[
+  <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/safe_reopen.py
 $fasta_file
 #for gff in $gff3_files:

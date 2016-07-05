@@ -5,9 +5,8 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
   <version_command>python gff3_filter.py --version</version_command>
-  <command><![CDATA[
+  <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_filter.py
 $gff3_data
 $filter_data

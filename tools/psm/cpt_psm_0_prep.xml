@@ -2,10 +2,7 @@
 <tool id="PSM.Prep" name="PSM Prep" version="1.94.2">
   <description>prepares data for the PSM Plotter</description>
   <version_command>perl cpt_psm_0_prep.pl --version</version_command>
-  <stdio>
-    <exit_code range="1:" level="fatal"/>
-  </stdio>
-  <command interpreter="perl">cpt_psm_0_prep.pl
+  <command interpreter="perl" detect_errors="aggressive">cpt_psm_0_prep.pl
 --galaxy
 --outfile_supporting $__new_file_path__
 #for $item in $repeat_file:

@@ -8,12 +8,4 @@
       <yield/>
     </requirements>
   </xml>
-  <xml name="stdio">
-    <stdio>
-      <exit_code range="1:"/>
-      <exit_code range=":-1"/>
-      <regex match="Error:"/>
-      <regex match="Exception:"/>
-    </stdio>
-  </xml>
 </macros>

@@ -1,10 +1,7 @@
 <tool id="edu.tamu.cpt.oneoff.none-validator" name="NONE Validator" version="1.0">
   <description></description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python none-validator.py --version</version_command>
-  <command interpreter="python"><![CDATA[none-validator.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[none-validator.py
 $positional_1
 --problematic $problematic
 > $default]]></command>

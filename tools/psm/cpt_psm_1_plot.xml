@@ -2,10 +2,7 @@
 <tool id="PSM.Plot" name="PSM Plotter" version="1.94.2">
   <description>plots data from PSM Prep</description>
   <version_command>perl cpt_psm_1_plot.pl --version</version_command>
-  <stdio>
-    <exit_code range="1:" level="fatal"/>
-  </stdio>
-  <command interpreter="perl">cpt_psm_1_plot.pl
+  <command interpreter="perl" detect_errors="aggressive">cpt_psm_1_plot.pl
 --galaxy
 --outfile_supporting $__new_file_path__
 --file "${file}"

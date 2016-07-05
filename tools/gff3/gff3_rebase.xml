@@ -4,9 +4,8 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
   <version_command>python gff3_rebase.py --version</version_command>
-  <command interpreter="python"><![CDATA[gff3_rebase.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[gff3_rebase.py
 $parent
 $child
 

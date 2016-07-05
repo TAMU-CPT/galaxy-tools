@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.pause2.repeat_adder" name="PAUSE2 Repeat Adder" version="0.1">
   <description>reopen+copy region based on a PAUSE result</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python">pause_copy_region.py
+  <command interpreter="python" detect_errors="aggressive">pause_copy_region.py
 --galaxy
 --genome "${genome}"
 #if $genomic_region and $genomic_region is not "None":

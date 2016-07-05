@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.notify_me" name="Notify Me" version="1.0">
   <description>send notification email</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command>
+  <command detect_errors="aggressive">
       echo "Jobs Done" | mail -s $subject $__user_email__
 </command>
   <inputs>

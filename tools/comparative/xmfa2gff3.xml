@@ -5,9 +5,8 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
   <version_command>python xmfa2gff3.py --version</version_command>
-  <command interpreter="python"><![CDATA[
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[
 xmfa2gff3.py
 $xmfa
 --window_size $window_size

@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.remove_desc" name="Remove Description" version="1.0">
   <description>from fasta file</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python">fasta_remove_id.py
+  <command interpreter="python" detect_errors="aggressive">fasta_remove_id.py
 $fasta
 > $out
 </command>

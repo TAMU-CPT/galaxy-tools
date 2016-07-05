@@ -1,10 +1,7 @@
 <tool id="edu.tamu.cpt.phantasm.data_transform" name="PHAnTASM Data Transformation" version="0.1">
     <description>apply simple mathematical operations to datasets</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python phantasm_data_transformation.py --version</version_command>
-  <command interpreter="python"><![CDATA[phantasm_data_transformation.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_data_transformation.py
 $positional_1
 
 #set repeat_var_2 = '" "'.join([ str($var.operation) for $var in $repeat_2 ])

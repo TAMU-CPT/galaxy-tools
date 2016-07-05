@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.text.cat" name="Concatentate multiple files" version="1.0">
   <description>into a single file</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command>
+  <command detect_errors="aggressive">
 #set f = '" "'.join([str($var) for $var in $files])
 cat "$f" > $output
 

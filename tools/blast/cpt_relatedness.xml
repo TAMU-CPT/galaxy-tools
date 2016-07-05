@@ -3,10 +3,7 @@
   <description>finds top related sequences from blast results</description>
   <version_command>python cpt_relatedness.py --version</version_command>
 
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python">cpt_relatedness.py
+  <command interpreter="python" detect_errors="aggressive">cpt_relatedness.py
 $blast
 > $accession_list
 

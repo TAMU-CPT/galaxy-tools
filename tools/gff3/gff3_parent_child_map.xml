@@ -4,9 +4,8 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
   <version_command>python gff3_parent_child_map.py --version</version_command>
-  <command><![CDATA[
+  <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_parent_child_map.py
 $gff3_data
 > $default]]></command>

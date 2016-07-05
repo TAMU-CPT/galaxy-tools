@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gbk.correct_gene_model" name="Genbank Gene Model Correction" version="1.0">
   <description>adds genes when only CDSs are annotated</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python"><![CDATA[
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[
 correct_gene_model.py
 $positional_1
 > $default]]></command>

@@ -2,10 +2,7 @@
 <tool id="edu.tamu.cpt.generic.GramAnnotator" name="Annotate Gram Stain for Bacteria list" version="1.94">
   <description>compares bacteria strain name against a database and attempts to guess gram stain</description>
   <version_command>python cpt_gram_stain_db_lookup.py --version</version_command>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python">cpt_gram_stain_db_lookup.py
+  <command interpreter="python" detect_errors="aggressive">cpt_gram_stain_db_lookup.py
 "${file}"
 > $output
 

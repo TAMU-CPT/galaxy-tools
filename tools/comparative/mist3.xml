@@ -2,10 +2,7 @@
 <tool id="edu.tamu.cpt.mist3" name="MIST v3" version="3.0">
   <description>Multiple Interrelated Sequence doT plotter.</description>
   <version_command>python mist3.py --version</version_command>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python">mist3.py
+  <command interpreter="python" detect_errors="aggressive">mist3.py
 #set repeat_var_1 = '" "'.join([ str($var) for $var in $fasta_files ])
 --window "${window}"
 --zoom "${zoom}"

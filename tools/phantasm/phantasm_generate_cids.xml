@@ -1,10 +1,7 @@
 <tool id="edu.tamu.cpt.phantasm.cid_generator" name="PHAnTASM CID Generator" version="0.2">
   <description>generates Cassette IDs for a set of genomes</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python phantasm_generate_cids.py --version</version_command>
-  <command interpreter="python"><![CDATA[phantasm_generate_cids.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_generate_cids.py
 $positional_1 > $default]]></command>
   <inputs>
     <param label="GenBank File" name="positional_1" type="data" file_format="txt,genbank,data"/>

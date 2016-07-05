@@ -4,9 +4,8 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
   <version_command>python blastxml_to_gapped_gff3.py --version</version_command>
-  <command interpreter="python"><![CDATA[blastxml_to_gapped_gff3.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[blastxml_to_gapped_gff3.py
 $blastxml
 
 --min_gap $min_gap

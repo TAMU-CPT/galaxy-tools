@@ -2,10 +2,7 @@
 <tool id="edu.tamu.cpt.tools.charges" name="Charges" version="1.0">
   <description>colour sequences based on rules</description>
   <version_command>python fasta_charges.py --version</version_command>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python">fasta_charges.py
+  <command interpreter="python" detect_errors="aggressive">fasta_charges.py
 $fasta
 --cs $cs
 --width $width

@@ -1,10 +1,7 @@
 <tool id="edu.tamu.cpt.fasta.codonstats" name="Fasta Codon Stats" version="0.1">
   <description>Calculate Codon frequencies in sequences</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python fasta_codonstats.py --version</version_command>
-  <command interpreter="python"><![CDATA[fasta_codonstats.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_codonstats.py
 $positional_1
 > $default]]></command>
   <inputs>

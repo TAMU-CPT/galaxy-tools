@@ -1,9 +1,6 @@
 <tool id="edu.tamu.cpt.genbank.gff3_adder" name="Merge GFF3 into GenBank" version="1.0">
   <description>Merge GFF3 data into a Genbank file</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python"><![CDATA[cpt_add_gff_to_gbk.py $positional_1
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_add_gff_to_gbk.py $positional_1
 $positional_2
 > $default]]></command>
   <inputs>

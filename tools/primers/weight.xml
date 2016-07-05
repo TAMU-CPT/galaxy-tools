@@ -5,9 +5,8 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
   <version_command>python weight.py --version</version_command>
-  <command interpreter="python"><![CDATA[weight.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[weight.py
 $fasta
 > $output]]></command>
   <inputs>

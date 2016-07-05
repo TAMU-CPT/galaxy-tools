@@ -2,10 +2,7 @@
 <tool id="edu.tamu.cpt.genbank.Split" name="Split Genbank File" version="1.0">
   <description>splits into individual records.</description>
   <version_command>python split.py --version</version_command>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python">
+  <command interpreter="python" detect_errors="aggressive">
 #set gbk_files = '" "'.join([str($var) for $var in $genbank])
 
 split.py

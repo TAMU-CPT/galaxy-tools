@@ -1,9 +1,6 @@
 <tool id="edu.tamu.cpt.fasta.bin-post" name="Bin Fasta Sequences - Postprocess" version="1.0">
   <description>into separate collections</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python"><![CDATA[
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[
 fasta_bin_post.py
 $table
 $fasta

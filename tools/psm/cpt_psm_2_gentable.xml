@@ -2,10 +2,7 @@
 <tool id="PSM.Comp" name="PSM Comparison Table" version="1.94">
   <description>aligns and lists data from PSM Prep</description>
   <version_command>perl cpt_psm_2_gentable.pl --version</version_command>
-  <stdio>
-    <exit_code range="1:" level="fatal"/>
-  </stdio>
-  <command interpreter="perl">cpt_psm_2_gentable.pl
+  <command interpreter="perl" detect_errors="aggressive">cpt_psm_2_gentable.pl
 --galaxy
 --outfile_supporting $__new_file_path__
 --file "${file}"

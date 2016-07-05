@@ -5,9 +5,8 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
   <version_command>python featuresvg.py --version</version_command>
-  <command interpreter="python">featuresvg.py
+  <command interpreter="python" detect_errors="aggressive">featuresvg.py
 "${gbk}
 --box_size $box_size
 > $plot

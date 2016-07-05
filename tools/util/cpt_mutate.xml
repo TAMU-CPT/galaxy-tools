@@ -1,10 +1,7 @@
 <tool id="edu.tamu.cpt.fasta.mutate" name="Generate all possible SNPs" version="1.0">
   <description>in fasta files</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python cpt_mutate.py --version</version_command>
-  <command interpreter="python"><![CDATA[cpt_mutate.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_mutate.py
 $positional_1
 $positional_2
 > $default]]></command>

@@ -1,11 +1,8 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.abif.info" name="ABIF Info" version="1.0">
   <description>Dump information about AB1 file</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python cpt_abif_info.py --version</version_command>
-  <command interpreter="python"><![CDATA[cpt_abif_info.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_abif_info.py
 $positional_1
 > $default]]></command>
   <inputs>

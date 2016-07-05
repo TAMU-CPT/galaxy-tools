@@ -5,9 +5,8 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
   <version_command>python extract_by_acc.py --version</version_command>
-  <command interpreter="python">extract_by_acc.py
+  <command interpreter="python" detect_errors="aggressive">extract_by_acc.py
 $strict
 $db_gbk
 $accession_list

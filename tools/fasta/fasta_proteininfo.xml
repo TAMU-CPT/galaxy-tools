@@ -5,8 +5,7 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
-  <command interpreter="python">fasta_proteininfo.py
+  <command interpreter="python" detect_errors="aggressive">fasta_proteininfo.py
 $sequence
 $is_protein
 --func $func

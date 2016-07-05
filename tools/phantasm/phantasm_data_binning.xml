@@ -1,10 +1,7 @@
 <tool id="edu.tamu.cpt.phantasm.data_binning" name="PHAnTASM Data Binning" version="0.2">
   <description>partition data into sensible bins</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python phantasm_data_binning.py --version</version_command>
-  <command interpreter="python"><![CDATA[phantasm_data_binning.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_data_binning.py
 $positional_1
 $method.positional_2
 

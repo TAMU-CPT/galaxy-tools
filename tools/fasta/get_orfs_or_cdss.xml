@@ -4,13 +4,8 @@
         <requirement type="package" version="1.65">biopython</requirement>
         <requirement type="python-module">Bio</requirement>
     </requirements>
-    <stdio>
-        <!-- Anything other than zero is an error -->
-        <exit_code range="1:" />
-        <exit_code range=":-1" />
-    </stdio>
     <version_command interpreter="python">get_orfs_or_cdss.py --version</version_command>
-    <command interpreter="python">
+    <command interpreter="python" detect_errors="aggressive">
 get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e $ends -m $mode --min_len $min_len --on $out_nuc_file --op $out_prot_file --ob $out_bed_file --og $out_gff3_file
     </command>
     <inputs>

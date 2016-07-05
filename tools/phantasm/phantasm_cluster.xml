@@ -1,9 +1,6 @@
 <tool id="edu.tamu.cpt.phantasm.cluster" name="PHAnTASM Hierarchical Clustering Tool" version="0.2">
   <description>clusters compmaps with hclust</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="RScript"><![CDATA[phantasm_cluster.R
+  <command interpreter="RScript" detect_errors="aggressive"><![CDATA[phantasm_cluster.R
       $input_file
       $output_hist
       $output_newick

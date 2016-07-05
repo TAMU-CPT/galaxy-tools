@@ -4,9 +4,8 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <expand macro="stdio"/>
   <version_command>python source.py --version</version_command>
-  <command interpreter="python"><![CDATA[source.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[source.py
 #set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])
 "$repeat_var_1"
 

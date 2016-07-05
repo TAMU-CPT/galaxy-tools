@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.464.2016.c01_generate" name="464 C01 - Generate Sequence" version="1.0">
   <description></description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interpreter="python"><![CDATA[
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[
 c1_generate_segment.py
 $__user_email__
 > $stdout]]></command>

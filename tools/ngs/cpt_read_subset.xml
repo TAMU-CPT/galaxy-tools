@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.assembly.coverage_calc" name="FastQ Subset" version="1.1">
   <description>reduce results for X-fold coverage</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
-  <command interperter="bash"><![CDATA[cpt_read_subset.sh
+  <command interperter="bash" detect_errors="aggressive"><![CDATA[cpt_read_subset.sh
 "${file}"
 ${length}
 ${coverage} > $fastq

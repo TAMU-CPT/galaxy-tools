@@ -2,10 +2,7 @@
 <tool id="CircularDNAPlotter" name="Circos based DNAPlotter" version="1.94.1">
   <description>plots genomes similar to Artemis's DNAPlotter</description>
   <version_command>perl cpt_dnaplotter.pl --version</version_command>
-  <stdio>
-    <regex match="Exception" source="stderr" level="fatal" description="Tool exception"/>
-  </stdio>
-  <command interpreter="perl">cpt_dnaplotter.pl
+  <command interpreter="perl" detect_errors="aggressive">cpt_dnaplotter.pl
 --galaxy
 --outfile_supporting $__new_file_path__
 #if $file is not "None":

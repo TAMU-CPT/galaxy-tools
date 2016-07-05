@@ -1,10 +1,7 @@
 <tool id="edu.tamu.cpt.util.extract_ref_codons" name="Bacterial Codon Frequencies Database" version="1.2">
   <description>spits out a list of codon frequencies from the CPT's bacterial codon frequency database</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python fasta_codon_opt.py --version</version_command>
-  <command interpreter="python"><![CDATA[
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[
 extract_ref_codons.py
 --codondb /galaxy/tools/cpt2/galaxy-tools/tools/fasta/gbbct.spsum
 "$host"

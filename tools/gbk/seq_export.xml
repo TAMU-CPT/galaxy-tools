@@ -1,11 +1,8 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gbk.seq_export" name="Genbank Genome Sequence Export" version="1.1">
   <description>export sequence from Genbank files as fasta</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python seq_export.py --version</version_command>
-  <command interpreter="python"><![CDATA[seq_export.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[seq_export.py
 $positional_1
 --name_src $nmsrc
 > $default]]></command>

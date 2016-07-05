@@ -1,11 +1,8 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.hacks.blast_filter" name="Filter top N blast results" version="1.0">
   <description></description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python cpt_blast_filter.py --version</version_command>
-  <command interpreter="python"><![CDATA[cpt_blast_filter.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_blast_filter.py
 $positional_1
 $positional_2
 

@@ -1,10 +1,7 @@
 <tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GBK" version="1.1">
   <description>convert gff3 to gbk</description>
-  <stdio>
-    <exit_code level="fatal" range="1:"/>
-  </stdio>
   <version_command>python gff2gb.py --version</version_command>
-  <command interpreter="python"><![CDATA[gff2gb.py
+  <command interpreter="python" detect_errors="aggressive"><![CDATA[gff2gb.py
 $gff3
 $fasta
 > $default]]></command>
