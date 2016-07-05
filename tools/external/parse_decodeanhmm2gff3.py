@@ -3,18 +3,12 @@ import sys
 import uuid
 import logging
 logging.basicConfig(level=logging.INFO)
-import argparse
 from BCBio import GFF
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.Alphabet import IUPAC
 log = logging.getLogger(__name__)
-
-__author__ = "Eric Rasche"
-__version__ = "0.4.0"
-__maintainer__ = "Eric Rasche"
-__email__ = "esr@tamu.edu"
 
 
 def convert(data=None):
@@ -51,10 +45,14 @@ def convert(data=None):
 
             if regions[0].startswith('i'):
                 n_dir = 'in'
-                c_dir = 'out'
             else:
                 n_dir = 'out'
+
+            if regions[-1].startswith('i'):
                 c_dir = 'in'
+            else:
+                c_dir = 'out'
+
             # Q7TNJ0  UniProtKB   Chain   1   470 .   .   .   ID=PRO_0000072585;Note=Dendritic cell-specific transmembrane protein
             feature = SeqFeature(
                 FeatureLocation(1, length),
