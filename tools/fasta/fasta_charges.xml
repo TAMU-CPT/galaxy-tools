@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.tools.charges" name="Charges" version="1.0">
   <description>colour sequences based on rules</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <version_command>python fasta_charges.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive">fasta_charges.py
 $fasta

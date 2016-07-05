@@ -1,5 +1,9 @@
 <tool id="edu.tamu.cpt.fasta.stats" name="Fasta AA Stats" version="0.1">
   <description>Calculate AA frequencies in sequences</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <version_command>python fasta_aastats.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_aastats.py
 $positional_1

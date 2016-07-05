@@ -1,5 +1,9 @@
 <tool id="edu.tamu.cpt.fasta.bin-post" name="Bin Fasta Sequences - Postprocess" version="1.0">
   <description>into separate collections</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[
 fasta_bin_post.py
 $table

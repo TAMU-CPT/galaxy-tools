@@ -1,6 +1,10 @@
 <tool id="edu.tamu.cpt.fasta.codonopt" name="Fasta Codon Optimiser" version="1.2">
   <description>optimizes codons for a particular host bacteria</description>
   <version_command>python fasta_codon_opt.py --version</version_command>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_codon_opt.py
 
 $sequence

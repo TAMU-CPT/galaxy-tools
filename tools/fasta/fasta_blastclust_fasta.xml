@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.blastclust" name="BlastClust Fasta Separator" version="1.0">
   <description>separated clusters into individual fasta files</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <version_command>python fasta_blastclust_fasta.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_blastclust_fasta.py
 $positional_1

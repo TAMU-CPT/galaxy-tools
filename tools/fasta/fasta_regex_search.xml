@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.regex" name="FASTA Regex Search" version="1.0">
   <description>Filter sequences based on regular expressions</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <version_command>python fasta_regex_search.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_regex_search.py
 $positional_1

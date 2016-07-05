@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.remove_desc" name="Remove Description" version="1.0">
   <description>from fasta file</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <command interpreter="python" detect_errors="aggressive">fasta_remove_id.py
 $fasta
 > $out

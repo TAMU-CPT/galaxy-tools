@@ -1,5 +1,9 @@
 <tool id="edu.tamu.cpt.fasta.dedup" name="Fasta Deduplicator" version="1.0">
   <description>remove duplicate sequences in a fasta file</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <version_command>python fasta_dedup.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_dedup.py
 $positional_1

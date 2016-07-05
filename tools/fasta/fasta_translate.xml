@@ -1,5 +1,9 @@
 <tool id="edu.tamu.cpt.fasta.seq_trans" name="Fasta Translate" version="1.2">
   <description>Translate fasta file</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <version_command>python fasta_translate.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_translate.py
 $fasta

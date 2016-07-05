@@ -1,5 +1,9 @@
 <tool id="edu.tamu.cpt.fasta.safe_reopen" name="Auto-reopen Fasta" version="1.0">
   <description>based on gene calls</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/safe_reopen.py
 $fasta_file

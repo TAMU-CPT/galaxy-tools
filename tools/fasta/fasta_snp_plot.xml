@@ -1,5 +1,9 @@
 <tool id="edu.tamu.cpt.plot.snp" name="SNP Plot" version="1.0">
   <description>simple plot of generated snps against a reference sequence</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <version_command>python fasta_snp_plot.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_snp_plot.py
 $positional_1
