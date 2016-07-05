@@ -1,3 +1,4 @@
+import json
 import re
 from bs4 import BeautifulSoup
 with open('./feature_table.html') as handle:
@@ -8,6 +9,7 @@ appendicies = content[content.rindex('Feature keys reference'):]
 feature_key_section = appendicies[0:appendicies.index('Summary of qualifiers')]
 qualifiers_section = appendicies[appendicies.index('Summary of qualifiers'):]
 qualifiers_section = qualifiers_section[0:qualifiers_section.index('Controlled vocabularies')]
+
 
 def parse_data(fksl, section_key):
     fksd = {}
@@ -61,7 +63,6 @@ for k1 in fksd:
             fksd[k1][k2] = kd2r
 
 
-import json
 with open('feature_table.json', 'w') as handle:
     json.dump(fksd, handle)
 with open('qualifier_table.json', 'w') as handle:
