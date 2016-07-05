@@ -27,8 +27,8 @@ $sequence
     #end for
 #end if
 
---rebase /galaxy/tools/cpt2/galaxy-tools/tools/fasta/rebase_recog.yaml
---codondb /galaxy/tools/cpt2/galaxy-tools/tools/fasta/gbbct.spsum
+--rebase $__tool_directory__/rebase_recog.yaml
+--codondb $__tool_directory__/gbbct.spsum
 --seed $seed
 > $output]]></command>
   <inputs>
