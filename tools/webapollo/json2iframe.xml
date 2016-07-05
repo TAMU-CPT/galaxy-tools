@@ -12,7 +12,7 @@ $json_file
 @EXT_URL@
 > $output]]></command>
   <inputs>
-    <param name="json_file" type="data" format="json" label="WebApollo Organism Listing" />
+    <param name="json_file" type="data" format="json" label="Apollo Organism Listing" />
   </inputs>
   <outputs>
     <data format="html" name="output"/>
@@ -20,7 +20,7 @@ $json_file
   <help><![CDATA[
 **What it does**
 
-Given a json file that's output by the Galaxy<->WebApollo bridge, this
+Given a json file that's output by the Galaxy<->Apollo bridge, this
 generates a nice little IFrame that you can use to access Apollo
 
 @REFERENCES@
