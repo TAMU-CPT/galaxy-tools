@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import argparse
 import copy
-import re
 import sys
 from collections import Counter
 from Levenshtein import distance
@@ -85,8 +84,8 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     if distance(str(tn_codons), str(cmp_codons)) > 1:
                         continue
 
-                    # If the edit distance between the amino acid sequences is > 4, remove it as it is unlikely.
-                    if distance(str(codons.seq), str(frameshift_to_end[0:6])) > 4:
+                    # If the edit distance between the amino acid sequences is > 5, remove it as it is unlikely.
+                    if distance(str(codons.seq), str(frameshift_to_end[0:6])) > 5:
                         continue
 
 
