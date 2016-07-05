@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<macros>
+  <xml name="requirements">
+    <requirements>
+      <requirement type="package" version="2.7">python</requirement>
+      <requirement type="package" version="1.65">biopython</requirement>
+      <requirement type="package" version="0.6.2">bcbiogff</requirement>
+      <yield/>
+    </requirements>
+  </xml>
+  <xml name="citations">
+      <citations>
+      </citations>
+  </xml>
+  <xml name="genome_selector">
+      <conditional name="reference_genome">
+          <param name="reference_genome_source" type="select" label="Reference Genome">
+              <option value="cached">Locally Cached</option>
+              <option value="history">From History</option>
+          </param>
+          <when value="cached">
+            <param name="fasta_indexes" type="select" label="Source FASTA Sequence">
+                <options from_data_table="all_fasta"/>
+            </param>
+        </when>
+        <when value="history">
+            <param name="genome_fasta" type="data" format="fasta" label="Source FASTA Sequence"/>
+        </when>
+    </conditional>
+  </xml>
+  <xml name="gff3_input">
+    <param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
+  </xml>
+  <token name="@GENOME_SELECTOR_PRE@">
+#if $reference_genome.reference_genome_source == 'history':
+    ln -s $reference_genome.genome_fasta genomeref.fa;
+#end if
+  </token>
+  <token name="@GENOME_SELECTOR@">
+#if str($reference_genome.reference_genome_source) == 'cached':
+    "${reference_genome.fasta_indexes.fields.path}"
+#else if str($reference_genome.reference_genome_source) == 'history':
+    genomeref.fa
+#end if
+  </token>
+</macros>

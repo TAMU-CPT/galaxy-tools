@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.rename" name="Fasta Sequence Renamer" workflow_compatible="true">
+<tool id="edu.tamu.cpt.fasta.rename" name="Fasta Sequence Renamer" version="1.0.0">
   <description>rename fasta sequences</description>
   <macros>
     <import>macros.xml</import>

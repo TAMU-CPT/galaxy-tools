@@ -18,7 +18,7 @@ $accession_list
       <param label="Multi-record Genbank file to subset" name="db_gbk"
           type="data"/>
       <param help="List of Accessions to extract from Genbank file, one per line" label="Accession list"
-          name="accession_list" format="txt,tabular"/>
+          name="accession_list" format="txt,tabular" type="data"/>
       <param falsevalue="" help="Accession numbers have versions, setting strict indicates an exact version match is required"
           label="Strict ID comparisons" name="strict" truevalue="--strict" type="boolean"/>
   </inputs>
