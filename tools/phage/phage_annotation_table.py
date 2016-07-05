@@ -1,23 +1,11 @@
 #!/usr/bin/env python
 # vim: set fileencoding=utf-8
 import os
-import json
-import math
 import argparse
-import itertools
-from gff3 import feature_lambda, feature_test_type, feature_test_quals, \
-    coding_genes, genes, get_gff3_id, feature_test_location, get_rbs_from
-from shinefind import NaiveSDCaller
+from gff3 import genes, get_gff3_id, get_rbs_from
 from BCBio import GFF
-from Bio.Data import CodonTable
 from Bio import SeqIO
-from Bio.SeqRecord import SeqRecord
-from Bio.Seq import reverse_complement, translate
-from Bio.SeqFeature import SeqFeature, FeatureLocation
 from jinja2 import Environment, FileSystemLoader
-import itertools
-from cpt import OrfFinder
-import re
 import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(name='pat')
@@ -46,12 +34,12 @@ def annotation_table_report(record, wanted_cols):
         return feature.qualifiers.get('Name', ['None'])[0]
 
     def start(record, feature):
-        """Start
+        """Boundary
         """
         return str(feature.location.start)
 
     def end(record, feature):
-        """End
+        """Boundary
         """
         return str(feature.location.end)
 
@@ -168,7 +156,6 @@ def annotation_table_report(record, wanted_cols):
     sorted_features = list(genes(record.features, sort=True))
     def upstream_feature(record, feature):
         """Next feature upstream"""
-        upstream = None
         if feature.strand > 0:
             upstream_features = [x for x in sorted_features
                     if x.location.start < feature.location.start]
