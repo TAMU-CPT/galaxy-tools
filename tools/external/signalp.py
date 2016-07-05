@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from Bio import SeqIO
-from BCBio import GFF
-from gff3 import feature_lambda, feature_test_type, get_id, fetchParent
 import re
-
 import logging
+from BCBio import GFF
+from gff3 import feature_lambda, get_id, fetchParent
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 NAME = re.compile('^# Name=(.*)\tLength=')
 DATALINE = re.compile('^\s*(\d+)\s+(.)\s+([0-9.]+)\s+([0-9.]+)\s+([0-9.]+)$')
 CLEAVAGE = re.compile('^Name=(.*)\tSP=\'YES\' Cleavage site between pos. (\d+) and (\d+)')
+
 
 def process(signalp):
     data = {}
@@ -44,8 +44,10 @@ def process(signalp):
 
     return data
 
+
 def bigwig_add_header(bw_handle, identifier):
     bw_handle.write("track type=wiggle_0 name=SignalP-%s visibility=full\n" % identifier)
+
 
 def bigwig_store(bw_handle, chrom, data):
     bw_handle.write("variableStep chrom=%s span=1\n" % chrom)
@@ -56,15 +58,15 @@ def bigwig_store(bw_handle, chrom, data):
 def feature_test_id(feature, **kwargs):
     return get_id(feature) in kwargs['id']
 
+
 def writeGff3(data, handle, parentGff3):
     for record in GFF.parse(parentGff3):
         cdss = list(feature_lambda(
-                record.features,
-                feature_test_id,
-                {'id': data.keys()},
-                subfeatures=False
-            )
-        )
+            record.features,
+            feature_test_id,
+            {'id': data.keys()},
+            subfeatures=False
+        ))
         record.features = []
         for cds in cdss:
             if 'note' not in cds.qualifiers:

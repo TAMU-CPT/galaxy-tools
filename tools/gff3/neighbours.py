@@ -1,13 +1,10 @@
 #!/usr/bin/env python
-import sys
-import copy
 import logging
-from interval_tree import IntervalTree
-logging.basicConfig(level=logging.INFO)
 import argparse
-from gff3 import feature_lambda, feature_test_type
+from interval_tree import IntervalTree
 from BCBio import GFF
 from Bio.SeqFeature import FeatureLocation
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
@@ -63,11 +60,11 @@ def __update_feature_location(feature, parent, protein2dna):
         for subfeature in feature.sub_features:
             __update_feature_location(subfeature, parent, protein2dna)
 
+
 def treeFeatures(features, strand=0):
     for feat in features:
         if feat.location.strand == strand:
             yield (int(feat.location.start), int(feat.location.end), feat.id)
-
 
 
 def neighbours(a, b, within=1000, mode='unordered', **kwargs):
@@ -95,9 +92,8 @@ def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
     else:
         tree_r = None
 
-
     rec_a_map = {f.id: f for f in rec_a.features}
-    rec_b_map = {f.id: f for f in rec_b.features}
+    # rec_b_map = {f.id: f for f in rec_b.features}
 
     rec_a_hits_in_b = []
     rec_b_hits_in_a = []
@@ -110,10 +106,12 @@ def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
             if mode != 'ordered':
                 end += within
 
-            if tree_f is None: continue
+            if tree_f is None:
+                continue
 
             hits = tree_f.find_range((start, end))
-            if len(hits) == 0: continue
+            if len(hits) == 0:
+                continue
             print start, end, feature.location.strand, feature.id, hits
 
             rec_b_hits_in_a.append(feature)
@@ -127,10 +125,12 @@ def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
             if mode != 'ordered':
                 start -= within
 
-            if tree_r is None: continue
+            if tree_r is None:
+                continue
 
             hits = tree_r.find_range((start, end))
-            if len(hits) == 0: continue
+            if len(hits) == 0:
+                continue
 
             print start, end, feature.location.strand, feature.id, hits
             rec_b_hits_in_a.append(feature)
@@ -138,7 +138,6 @@ def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
                 feat_hit = rec_a_map[hit]
                 if feat_hit not in rec_a_hits_in_b:
                     rec_a_hits_in_b.append(feat_hit)
-
 
     rec_a.features = rec_a_hits_in_b
     rec_b.features = rec_b_hits_in_a

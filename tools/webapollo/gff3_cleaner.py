@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 import sys
 import argparse
+import logging
 from gff3 import feature_lambda, feature_test_type
 from BCBio import GFF
-import logging
 logging.basicConfig(level=logging.WARN)
 log = logging.getLogger(name='pav')
+
 
 def coding_genes(feature_list):
     for x in feature_lambda(feature_list, feature_test_type, {'type': 'gene'}, subfeatures=True):

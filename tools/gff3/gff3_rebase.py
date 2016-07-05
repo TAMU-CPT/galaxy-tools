@@ -1,17 +1,12 @@
 #!/usr/bin/env python
 import sys
 import logging
-logging.basicConfig(level=logging.INFO)
 import argparse
 from gff3 import feature_lambda, feature_test_qual_value
 from BCBio import GFF
 from Bio.SeqFeature import FeatureLocation
 log = logging.getLogger(__name__)
-
-__author__ = "Eric Rasche"
-__version__ = "0.4.0"
-__maintainer__ = "Eric Rasche"
-__email__ = "esr@tamu.edu"
+logging.basicConfig(level=logging.INFO)
 
 
 def __get_features(child, interpro=False):

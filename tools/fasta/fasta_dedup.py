@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 import logging
 import copy
-logging.basicConfig(level=logging.INFO)
 import argparse
-from Bio import SeqIO
 import StringIO
 import hashlib
+from Bio import SeqIO
+logging.basicConfig(level=logging.INFO)
 
 
 def dedup(fasta_file, mutation='mutate'):

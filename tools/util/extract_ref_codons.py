@@ -1,8 +1,10 @@
 #!/usr/bin/env python
+import sys
 import argparse
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
+
 
 def extractCodonsFromDb(target, codondb):
     # Load target data from codondb
@@ -20,14 +22,13 @@ def extractCodonsFromDb(target, codondb):
 
     if header is None:
         print "Not found"
-        import sys
         sys.exit(1)
 
     spsum_label = ('CGA CGC CGG CGU AGA AGG CUA CUC CUG CUU UUA UUG UCA UCC '
-                    'UCG UCU AGC AGU ACA ACC ACG ACU CCA CCC CCG CCU GCA GCC '
-                    'GCG GCU GGA GGC GGG GGU GUA GUC GUG GUU AAA AAG AAC AAU '
-                    'CAA CAG CAC CAU GAA GAG GAC GAU UAC UAU UGC UGU UUC UUU '
-                    'AUA AUC AUU AUG UGG UAA UAG UGA')
+                   'UCG UCU AGC AGU ACA ACC ACG ACU CCA CCC CCG CCU GCA GCC '
+                   'GCG GCU GGA GGC GGG GGU GUA GUC GUG GUU AAA AAG AAC AAU '
+                   'CAA CAG CAC CAU GAA GAG GAC GAU UAC UAU UGC UGU UUC UUU '
+                   'AUA AUC AUU AUG UGG UAA UAG UGA')
     spsum = spsum_label.replace('U', 'T').split(' ')
     organism_codon_usage = {k: int(v) for (k, v) in zip(spsum, line.strip().split(' '))}
     return organism_codon_usage

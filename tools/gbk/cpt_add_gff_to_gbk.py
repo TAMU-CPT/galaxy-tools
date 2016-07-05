@@ -3,10 +3,10 @@ import sys
 import argparse
 import copy
 import logging
-logging.basicConfig(level=logging.INFO)
 from BCBio import GFF
 from Bio import SeqIO
 from gff3 import feature_lambda, feature_test_true
+logging.basicConfig(level=logging.INFO)
 
 
 def extract_features(gff3_file):
@@ -27,7 +27,6 @@ def extract_features(gff3_file):
 
             if feat.type not in ('CDS', 'RBS', "gene", 'terminator'):
                 feat.type = 'CDS'
-
 
             # Remove keys with '-'
             quals = copy.deepcopy(feat.qualifiers)

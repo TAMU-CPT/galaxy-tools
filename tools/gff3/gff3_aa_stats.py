@@ -15,9 +15,9 @@ def main(fasta, gff3):
             seq = str(feat.extract(rec).seq)
             for x in range(0, len(seq), 3):
                 try:
-                    codon_usage[seq[x:x+3]] += 1
+                    codon_usage[seq[x:x + 3]] += 1
                 except KeyError:
-                    codon_usage[seq[x:x+3]] = 1
+                    codon_usage[seq[x:x + 3]] = 1
 
     # TODO: print all actg combinations? Or just ones that are there
     print '# Codon\tCount'

@@ -63,13 +63,13 @@ if __name__ == '__main__':
         data = [org]
         # import sys; sys.exit()
         # data = wa.organisms.updateOrganismInfo(
-            # org['id'],
-            # org_cn,
-            # args.jbrowse,
-            # # mandatory
-            # genus=args.genus,
-            # species=args.species,
-            # public=args.public
+        # org['id'],
+        # org_cn,
+        # args.jbrowse,
+        # # mandatory
+        # genus=args.genus,
+        # species=args.species,
+        # public=args.public
         # )
     else:
         # New organism

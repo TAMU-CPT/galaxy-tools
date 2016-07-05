@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import logging
-logging.basicConfig(level=logging.INFO)
 import argparse
-from Bio import SeqIO
 import string
+from Bio import SeqIO
+logging.basicConfig(level=logging.INFO)
 
 
 def aa_stats(fasta_file, **kwargs):
@@ -31,7 +31,7 @@ def aa_stats(fasta_file, **kwargs):
             else:
                 numbers.append(0)
 
-        numbers = [float(x)/sum(numbers) for x in numbers]
+        numbers = [float(x) / sum(numbers) for x in numbers]
         yield row + numbers
 
 

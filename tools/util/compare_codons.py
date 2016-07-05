@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import argparse
-from Bio.Seq import Seq
-from Bio.Alphabet import IUPAC
 import numpy as np
 import itertools
 import pygal
+from Bio.Seq import Seq
+from Bio.Alphabet import IUPAC
 from pygal.style import LightSolarizedStyle
 
 
@@ -26,25 +26,27 @@ def tntable(table=11):
 def custom_sort(table, sort='default'):
     if sort == 'default':
         kv = []
+
         # Like a normal sort, except send * to end
-        protein_sort = lambda x: 1000 if x == '*' else ord(x)
+        def protein_sort(x):
+            return 1000 if x == '*' else ord(x)
+
         for aa in sorted(table.keys(), key=protein_sort):
             for codon in sorted(table[aa].keys()):
                 kv.append((aa, codon))
         return kv
     elif sort in ('ref', 'comp'):
         kv = custom_sort(table, sort='default')
-        return sorted(kv, key=lambda x: \
-                     -table.get(x[0], {})\
-                           .get(x[1], {})\
-                           .get(sort, 0)
-                      )
+
+        def protein_sort(x):
+            -1 * table.get(x[0], {}).get(x[1], {}).get(sort, 0)
+
+        return sorted(kv, key=protein_sort)
 
 
 def main(reference, comparison, sort_order='default', ref_title=None, cmp_title=None):
     ref_data = np.genfromtxt(reference, dtype=None, delimiter='\t', names=True)
     comp_data = np.genfromtxt(comparison, dtype=None, delimiter='\t', names=True)
-
 
     table, translation = tntable()
 

@@ -2,10 +2,8 @@
 import sys
 import copy
 import argparse
-from Bio import SeqIO
-from Bio.SeqRecord import SeqRecord
-
 import logging
+from Bio import SeqIO
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 

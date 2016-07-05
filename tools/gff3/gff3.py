@@ -171,10 +171,10 @@ def get_id(feature=None, parent_prefix=None):
         return feature.id
         # Leaving in case bad things happen.
         # result += '%s_%s_%s_%s' % (
-            # feature.id,
-            # feature.location.start,
-            # feature.location.end,
-            # feature.location.strand
+        # feature.id,
+        # feature.location.start,
+        # feature.location.end,
+        # feature.location.strand
         # )
     return result
 
@@ -215,7 +215,9 @@ def genes(feature_list, feature_type='gene', sort=False):
     else:
         data = list(genes(feature_list, feature_type=feature_type, sort=False))
         data = sorted(data, key=lambda feature: feature.location.start)
-        for x in data: yield x
+        for x in data:
+            yield x
+
 
 def wa_unified_product_name(feature):
     """
@@ -235,6 +237,7 @@ def wa_unified_product_name(feature):
 
     return protein_product
 
+
 def get_rbs_from(gene):
     # Normal RBS annotation types
     rbs_rbs = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'RBS'}, subfeatures=False))
@@ -247,4 +250,3 @@ def get_rbs_from(gene):
     rbs_regulatory = list(feature_lambda(regulatory_elements, feature_test_quals, {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
     # Here's hoping you find just one ;)
     return rbs_rbs + rbs_sds + rbs_regulatory + apollo_exons
-

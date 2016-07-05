@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from Bio import SeqIO
-from Bio.SeqRecord import SeqRecord
-from BCBio import GFF
 import logging
+from Bio import SeqIO
+from BCBio import GFF
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
@@ -49,6 +48,7 @@ def gap_in_region(query, track):
         if region[0] <= query <= region[1]:
             return False
     return True
+
 
 def gap_in_data(data, record_length):
     # We'll pick the 0th track just for our reference.

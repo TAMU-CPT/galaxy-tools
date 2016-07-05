@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import StringIO
-import sys
 import json
 import argparse
 from Bio import SeqIO

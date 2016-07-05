@@ -24,7 +24,7 @@ if __name__ == '__main__':
             if b not in result_map[a]:
                 result_map[a][b] = 0
 
-            result_map[a][b] += (float(score) * m/weight_sums)
+            result_map[a][b] += (float(score) * m / weight_sums)
 
     keys = sorted(result_map.keys())
     # Header

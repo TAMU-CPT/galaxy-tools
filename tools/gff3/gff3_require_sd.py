@@ -9,6 +9,7 @@ from shinefind import NaiveSDCaller
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+
 def require_shinefind(gff3, fasta):
     sd_finder = NaiveSDCaller()
     # Load up sequence(s) for GFF3 data

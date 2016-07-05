@@ -4,16 +4,16 @@ import sys
 import argparse
 import subprocess
 import tempfile
+import re
+import logging
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type
-import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
-import re
 
 REGEX_TERM = re.compile('  TERM \d+ \s* (\d+) - (\d+)\s*(\+|-) [^ ]* \s* (\d+)\s* ([0-9.-]+)\s* -([0-9.]+)\s*\|\s*(.*)')
 PARTS_TERM = re.compile('  ([^ ]*)\s+([^ ]*)\s+([^ ]*)\s+([^ ]*)\s+([^ ]*)')
@@ -23,6 +23,7 @@ COLS = ("start", "end", "strand", "confidence", "hp score", "tail score",
 
 def build_expterm():
     pass
+
 
 def generate_annotation_file(gff3):
     # TODO: cleanup
@@ -40,16 +41,19 @@ def generate_annotation_file(gff3):
     t.close()
     return name
 
+
 def run_transterm(expterm, fasta, annotations):
     output = subprocess.check_output([
         'transterm', '-p', expterm, '--all-context', fasta, annotations
     ])
     return output
 
+
 def pairwise(it):
     it = iter(it)
     while True:
         yield next(it), next(it)
+
 
 def parse_transterm(data):
     data = data.split('SEQUENCE')[1:]
@@ -77,7 +81,7 @@ def parse_transterm(data):
                 PARTS_TERM.match(b).groups()
 
             pd = {k: v for (k, v) in zip(COLS, parsed_data)}
-            #start , end  , strand , confidence , hp score , tail score , notes
+            # start , end  , strand , confidence , hp score , tail score , notes
             # , 5' tail         , 5'stem   , loop , 3' stem  , 3'loop
             start = int(pd['start'])
             end = int(pd['end'])
@@ -98,6 +102,7 @@ def parse_transterm(data):
             record.features.append(feature)
 
         yield record
+
 
 def main(fasta, gff3, existing_expterm='', **kwargs):
     coords_file = generate_annotation_file(gff3)

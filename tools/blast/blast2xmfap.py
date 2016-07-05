@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import os
-import sys
 import argparse
 from BCBio import GFF
 from Bio import SeqIO
@@ -158,7 +157,6 @@ def blast2xmfap(blast, fasta, gff3):
                 log.warning("Could not find this feature %s", element)
                 continue
 
-
             eloc = locations[element]
             print HEADER_TPL.format(
                 seqnum=recids.index(eloc['rec']) + 1,
@@ -173,7 +171,6 @@ def blast2xmfap(blast, fasta, gff3):
                 print line
 
         print '='
-
 
 
 if __name__ == '__main__':

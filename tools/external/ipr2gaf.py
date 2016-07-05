@@ -1,21 +1,24 @@
 #!/usr/bin/env python
 import os
 import argparse
-from BCBio import GFF
 import logging
+from BCBio import GFF
+from datetime import date
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
-from datetime import date
 today = date.today()
+
 
 def ipr2gaf(gff3):
     for record in GFF.parse(gff3):
         # Only want real features, not the fasta IPR sticks at the end
-        if record.id.startswith('match$'): continue
+        if record.id.startswith('match$'):
+            continue
         for feature in record.features:
             # Only want protein matches
-            if feature.type != 'protein_match': continue
+            if feature.type != 'protein_match':
+                continue
 
             base_columns = [
                 # feature.qualifiers['source'][0],

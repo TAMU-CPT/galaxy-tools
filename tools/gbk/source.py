@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 import argparse
-from Bio import SeqIO
-import re
 import logging
+import cpt
+from Bio import SeqIO
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
-import cpt
+
 
 def extract_host_info(host_string):
     source_host = host_string.split(' ')

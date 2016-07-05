@@ -14,6 +14,7 @@ log = logging.getLogger(name='pat')
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # Path to the HTML template for the report
 
+
 def annotation_table_report(record, wanted_cols):
     if wanted_cols is None or len(wanted_cols.strip()) == 0:
         return [], []
@@ -154,18 +155,19 @@ def annotation_table_report(record, wanted_cols):
         return feature.qualifiers.get('Dbxref', [])
 
     sorted_features = list(genes(record.features, sort=True))
+
     def upstream_feature(record, feature):
         """Next feature upstream"""
         if feature.strand > 0:
             upstream_features = [x for x in sorted_features
-                    if x.location.start < feature.location.start]
+                                 if x.location.start < feature.location.start]
             if len(upstream_features) > 0:
                 return upstream_features[-1]
             else:
                 return None
         else:
             upstream_features = [x for x in sorted_features
-                    if x.location.end > feature.location.end]
+                                 if x.location.end > feature.location.end]
 
             if len(upstream_features) > 0:
                 return upstream_features[0]
@@ -179,7 +181,6 @@ def annotation_table_report(record, wanted_cols):
             return str(up)
         return 'None'
 
-
     def ig_dist(record, feature):
         """Distance to next feature on same strand"""
         up = upstream_feature(record, feature)
@@ -192,7 +193,6 @@ def annotation_table_report(record, wanted_cols):
             return str(dist)
         else:
             return 'None'
-
 
     cols = []
     data = []
@@ -210,11 +210,10 @@ def annotation_table_report(record, wanted_cols):
                 func_doc += ['']
             cols.append(func_doc)
         elif '__' in x:
-           chosen_funcs = [lcl[y] for y in x.split('__')]
-           func_doc = [' of '.join([y.__doc__.strip().split('\n\n')[0] for y in chosen_funcs[::-1]])]
-           cols.append(func_doc)
-           funcs.append(chosen_funcs)
-
+            chosen_funcs = [lcl[y] for y in x.split('__')]
+            func_doc = [' of '.join([y.__doc__.strip().split('\n\n')[0] for y in chosen_funcs[::-1]])]
+            cols.append(func_doc)
+            funcs.append(chosen_funcs)
 
     for gene in genes(record.features, sort=True):
         row = []
@@ -243,9 +242,9 @@ def annotation_table_report(record, wanted_cols):
 
     return data, cols
 
-def evaluate_and_report(annotations, genome,
-        reportTemplateName='phage_annotation_validator.html',
-        annotationTableCols=''):
+
+def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotation_validator.html',
+                        annotationTableCols=''):
     """
     Generate our HTML evaluation of the genome
     """

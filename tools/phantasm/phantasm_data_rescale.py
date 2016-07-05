@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import argparse
 import logging
-logging.basicConfig(level=logging.INFO)
 from phantasm import Utils, Transforms
+logging.basicConfig(level=logging.INFO)
 
 
 if __name__ == '__main__':

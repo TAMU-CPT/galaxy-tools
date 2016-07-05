@@ -2,12 +2,13 @@
 import argparse
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type
+from guanine import GuanineClient
 import logging
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
-
-from guanine import GuanineClient
 g = GuanineClient()
+
 
 def validate(gff3, user_email):
     STUDENT_PASSES = False

@@ -1,13 +1,13 @@
 #!/usr/bin/env python
+import logging
 import argparse
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type
-import logging
+from guanine import GuanineClient
+
 logging.basicConfig(level=logging.INFO)
 logging.getLogger("requests").setLevel(logging.CRITICAL)
 log = logging.getLogger(__name__)
-
-from guanine import GuanineClient
 g = GuanineClient()
 
 

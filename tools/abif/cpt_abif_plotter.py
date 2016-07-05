@@ -58,9 +58,9 @@ class ABIFParser(object):
         sn = {}
         for i, char in enumerate(list(self.abif['FWO_1'])):
             sn[char] = {
-                'wavelength': self.abif['DyeW' + str(i+1)],
+                'wavelength': self.abif['DyeW' + str(i + 1)],
                 'correction': self.abif['S/N%1'][i],
-                'data': numpy.array(self.abif['DATA' + str(i+9)]).astype(numpy.float)
+                'data': numpy.array(self.abif['DATA' + str(i + 9)]).astype(numpy.float)
             }
         print list(map(ord, self.abif['PCON2']))
         print len(sn['A']['data'])

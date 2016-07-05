@@ -1,5 +1,4 @@
 #!/usr/bin/env python3.4
-
 ''' Parse Blast output in XML with Biopython and converts to SAM (v1).
 Tested with Biopython 1.64 and BLASTN 2.2.30+ command
 
@@ -118,7 +117,6 @@ SAM alignment mandatory fields
 
 import sys
 import copy
-# from pprint import pprint
 from itertools import tee
 from math import log10
 from Bio.Blast import NCBIXML
@@ -193,7 +191,7 @@ def cigar(subject, query, queryStart, queryEnd, querySize):
 
     # Tail clipping
     if queryEnd < length:
-#        print(query, querySize, queryEnd, file=sys.stderr)
+        # print(query, querySize, queryEnd, file=sys.stderr)
         cigar_str.append('%dH' % (length - queryEnd))
 
     assert cigarsum == length, '%s: cigar:%s\tcigarsum=%d,length=%d' % \
@@ -242,8 +240,8 @@ for record in blast_records_backup:
             to_print[0] = alignment.hit_id + ':%s' % idx
             i += 1
             to_print[2] = record.query
-            #to_print[0] = record.query
-            #to_print[2] = alignment.hit_def
+            # to_print[0] = record.query
+            # to_print[2] = alignment.hit_def
             to_print[3] = min(hsp.sbjct_start, hsp.sbjct_end)
 
             try:

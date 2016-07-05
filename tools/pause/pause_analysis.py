@@ -70,8 +70,8 @@ def identify_regions(peak_f, peak_r, data_f, data_r, cov_f, cov_r, gl=0):
     coverage_data = {}
     for i in range(len(breaks) - 1):
         region_start = breaks[i]
-        region_end = breaks[i+1]
-        (acov_f, acov_r, acov_avg) = get_coverage(cov_f, cov_r, breaks[i], breaks[i+1])
+        region_end = breaks[i + 1]
+        (acov_f, acov_r, acov_avg) = get_coverage(cov_f, cov_r, breaks[i], breaks[i + 1])
         coverage_data['%s-%s' % (region_start, region_end)] = acov_avg
 
     report = [
@@ -100,7 +100,7 @@ def identify_regions(peak_f, peak_r, data_f, data_r, cov_f, cov_r, gl=0):
             # * (moving right from pf, possibly wrapping around end of genome
             # to get to pr),
 
-            if (pf < pr and pr-pf < (.5 * gl)) or \
+            if (pf < pr and pr - pf < (.5 * gl)) or \
                     (pf > pr and (breaks[-1] - pf + pr) < (.5 * gl)):
                 report.append('- %s..%s' % (pf, pr))
                 if pf < pr:
@@ -146,7 +146,7 @@ def get_coverage_for_region(coverage_data, breaks, start, end):
     for i in range(idx_s, idx_e):
         # Grab the relevant regions
         # But multiply by length of region to get back ~appx total area
-        value += coverage_data['%s-%s' % (breaks[i], breaks[i+1])] * (breaks[i+1] - breaks[i])
+        value += coverage_data['%s-%s' % (breaks[i], breaks[i + 1])] * (breaks[i + 1] - breaks[i])
     # Which will then be re-averaged down by total region requested
     return value / (end - start)
 
@@ -154,7 +154,7 @@ def get_coverage_for_region(coverage_data, breaks, start, end):
 def get_coverage(data_f, data_r, start, end):
     f_cov = numpy.mean(data_f[start:end], axis=0)[1]
     r_cov = numpy.mean(data_r[start:end], axis=0)[1]
-    return (f_cov, r_cov, (f_cov+r_cov)/2)
+    return (f_cov, r_cov, (f_cov + r_cov) / 2)
 
 
 def peakdet(v, delta, x=None):
@@ -215,13 +215,13 @@ def peakdet(v, delta, x=None):
             mnpos = x[i]
 
         if lookformax:
-            if this < mx-delta:
+            if this < mx - delta:
                 maxtab.append((mxpos, mx))
                 mn = this
                 mnpos = x[i]
                 lookformax = False
         else:
-            if this > mn+delta:
+            if this > mn + delta:
                 mintab.append((mnpos, mn))
                 mx = this
                 mxpos = x[i]

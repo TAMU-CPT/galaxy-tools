@@ -10,6 +10,7 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 
+
 def run_reprof(query_path, modeldir):
     outtmp = tempfile.NamedTemporaryFile(delete=False)
     cmd = [
@@ -24,6 +25,7 @@ def run_reprof(query_path, modeldir):
     outtmp.close()
     os.unlink(outtmp.name)
     return data
+
 
 def process_reprof_report(data):
     KEYS = ['idx', 'AA', 'PHEL', 'RI_S', 'pH', 'pE', 'pL', 'PACC', 'PREL', 'P10', 'RI_A', 'Pbe', 'Pbie']
@@ -41,11 +43,13 @@ def process_reprof_report(data):
             data_tracks[key].append(value)
     return data_tracks
 
+
 def storeWigData(idx, data, id, path):
     with open(path, 'a') as handle:
         handle.write('variableStep chrom=%s\n' % id)
         for (pos, val) in zip(idx, data):
             handle.write('%s %s\n' % (pos, val))
+
 
 def storeGff3Data(path, id, positions, values, decodeMap):
     merged = ''.join(values)
@@ -74,6 +78,7 @@ def storeGff3Data(path, id, positions, values, decodeMap):
 
     with open(path, 'a') as handle:
         GFF.write([rec], handle)
+
 
 def main(fasta, modeldir):
     for record in SeqIO.parse(fasta, 'fasta'):

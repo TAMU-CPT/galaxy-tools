@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import logging
 import svgwrite
-logging.basicConfig(level=logging.INFO)
 import argparse
 from Bio import SeqIO
+logging.basicConfig(level=logging.INFO)
 
 
 def plot_snps(reference, mutated):
@@ -68,13 +68,13 @@ def plot_snps(reference, mutated):
         'A': color_ref['o'][1], 'I': color_ref['o'][1], 'L': color_ref['o'][1], 'F': color_ref['o'][1],
         'V': color_ref['o'][1], 'P': color_ref['o'][1], 'G': color_ref['o'][1],
     }
-    yrange = range(len(reference)/width)
+    yrange = range(len(reference) / width)
     if len(yrange) == 0:
         yrange = [0]
 
     for i in yrange:
         start = i * width
-        end = (i+1) * width
+        end = (i + 1) * width
         max_height = max([0] + [
             len(diffs[x])
             for x in diffs.keys()

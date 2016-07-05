@@ -2,7 +2,8 @@
 import random
 import argparse
 import time
-from webapollo import WAAuth, WebApolloInstance, GroupObj
+from webapollo import WAAuth, WebApolloInstance
+
 
 def pwgen(length):
     chars = list('qwrtpsdfghjklzxcvbnm')

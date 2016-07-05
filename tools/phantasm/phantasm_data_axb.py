@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import argparse
 import logging
-logging.basicConfig(level=logging.INFO)
 import numpy
+logging.basicConfig(level=logging.INFO)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Transform data')
@@ -15,7 +15,7 @@ if __name__ == '__main__':
     data = numpy.genfromtxt(args.tabular_data, delimiter='\t', dtype=None, names=('id1', 'id2', 'data'))
     (id_col, data_col) = (data['id'], data['data'])
 
-    data_col = (data_col*args.m) + args.b
+    data_col = (data_col * args.m) + args.b
 
     print "# ID\tData"
     for (id_val, data_val) in zip(id_col, data_col):

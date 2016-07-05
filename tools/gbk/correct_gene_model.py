@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from Bio import SeqIO
-# from Bio.Seq import Seq
-# from Bio.SeqRecord import SeqRecord
-from Bio.SeqFeature import SeqFeature, FeatureLocation
-
 import logging
+from Bio import SeqIO
+from Bio.SeqFeature import SeqFeature, FeatureLocation
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
@@ -15,12 +12,11 @@ def nearbyRbss(cds, rbss):
     for r in rbss:
         if cds.strand > 0:
             return [r for r in rbss if
-                    abs(r.location.end - cds.location.start) < 20
-                    and r.location.strand == cds.location.strand]
+                    abs(r.location.end - cds.location.start) < 20 and r.location.strand == cds.location.strand]
         else:
             return [r for r in rbss if
-                    abs(r.location.start - cds.location.end) < 20
-                    and r.location.strand == cds.location.strand]
+                    abs(r.location.start - cds.location.end) < 20 and r.location.strand == cds.location.strand]
+
 
 def unionLoc(a, b):
     return FeatureLocation(
@@ -28,6 +24,7 @@ def unionLoc(a, b):
         end=max(a.end, b.end),
         strand=a.strand
     )
+
 
 def correct_model(genbank_file):
     for record in SeqIO.parse(genbank_file, "genbank"):

@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from Bio import SeqIO
 import logging
+from Bio import SeqIO
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
+
 
 def drop_id(fasta_file=None, id="drop_idd"):
     for rec in SeqIO.parse(fasta_file, "fasta"):

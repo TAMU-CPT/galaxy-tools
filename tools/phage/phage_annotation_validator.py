@@ -5,20 +5,16 @@ import json
 import math
 import argparse
 import itertools
-from gff3 import feature_lambda, feature_test_type, feature_test_quals, \
+import logging
+from gff3 import feature_lambda, \
     coding_genes, genes, get_gff3_id, feature_test_location, get_rbs_from
 from shinefind import NaiveSDCaller
 from BCBio import GFF
-from Bio.Data import CodonTable
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
-from Bio.Seq import reverse_complement, translate
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from jinja2 import Environment, FileSystemLoader
-import itertools
 from cpt import OrfFinder
-import re
-import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(name='pav')
 
@@ -66,6 +62,7 @@ def __ensure_location_in_bounds(start=0, end=0, parent_length=0):
     while end > parent_length:
         end -= 3
     return (start, end)
+
 
 def missing_rbs(record, lookahead_min=5, lookahead_max=15):
     """
@@ -119,7 +116,6 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
                 gene.__upstream = sd_finder.highlight_sd(seq.lower(), sd['start'], sd['end'])
                 gene.__message = "Unannotated but valid RBS"
 
-
             qc_features.append(gen_qc_feature(start, end, 'Missing RBS', strand=gene.strand, id_src=gene))
 
             bad += 1
@@ -172,7 +168,7 @@ def require_sd(data, record, chrom_start, sd_min, sd_max):
             end = chrom_start + putative_gene[1] + sd_max
 
         (start, end) = __ensure_location_in_bounds(start=start, end=end,
-                                                    parent_length=record.__len__)
+                                                   parent_length=record.__len__)
         tmp = SeqFeature(FeatureLocation(
             start, end, strand=putative_gene[2]), type='domain')
         # Get the sequence
@@ -268,7 +264,7 @@ def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30,
     for result_obj in results:
         start = result_obj[0]
         end = result_obj[1]
-        f = gen_qc_feature(start, end, 'Excessive gap, %s bases' % abs(end-start))
+        f = gen_qc_feature(start, end, 'Excessive gap, %s bases' % abs(end - start))
         qc_features.append(f)
         putative_genes = of.putative_genes_in_sequence(str(record[start - slop:end + slop].seq))
         putative_genes = list(require_sd(putative_genes, record, start, lookahead_min, lookahead_max))
@@ -323,9 +319,11 @@ def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30,
     # and bad is just gaps
     return good, bad, better_results, qc_features
 
+
 def phi(x):
     """Standard phi function used in calculation of normal distribution"""
     return math.exp(-1 * math.pi * x * x)
+
 
 def norm(x, mean=0, sd=1):
     """
@@ -335,6 +333,7 @@ def norm(x, mean=0, sd=1):
     Modified to multiply by SD. This means even at sd=5, norm(x, mean) where x = mean => 1, rather than 1/5.
     """
     return (1 / float(sd)) * phi(float(x - mean) / float(sd)) * sd
+
 
 def coding_density(record, mean=92.5, sd=20):
     """
@@ -596,7 +595,7 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
     gff3_qc_features = []
 
     log.info("Locating missing RBSs")
-    #mb_any = "did they annotate ANY rbss? if so, take off from score."
+    # mb_any = "did they annotate ANY rbss? if so, take off from score."
     mb_good, mb_bad, mb_results, mb_annotations, mb_any = missing_rbs(
         record,
         lookahead_min=sd_min,

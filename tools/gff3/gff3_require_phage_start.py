@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 import sys
 import argparse
+import logging
 from Bio import SeqIO
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type
-import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
+
 
 def require_shinefind(gff3, fasta):
     # Load up sequence(s) for GFF3 data

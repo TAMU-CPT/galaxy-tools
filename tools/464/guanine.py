@@ -2,6 +2,7 @@ import requests
 import json
 import copy
 
+
 class GuanineClient(object):
 
     def __init__(self,

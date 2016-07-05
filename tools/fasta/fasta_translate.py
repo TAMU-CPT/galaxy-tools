@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import logging
-logging.basicConfig(level=logging.INFO)
 import argparse
+import StringIO
 from Bio import SeqIO
 from Bio.Data import CodonTable
-import StringIO
+logging.basicConfig(level=logging.INFO)
 
 
 def translate(fasta_file, target='protein', table=11, strip_stops=False):

@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 import argparse
 import sys
-from Bio import SeqIO
-
 import logging
+from Bio import SeqIO
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
@@ -29,7 +28,6 @@ def findById(genbank_files, feature_type=None, tag_type=None, tag_match=None):
                         # is in that qualifier, match that.
                         if tag_match is not None and tag_match not in value:
                             continue
-
 
                         good_features.append(feature)
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import logging
-logging.basicConfig(level=logging.INFO)
 import argparse
+logging.basicConfig(level=logging.INFO)
 
 
 def rename_fasta_sequences(fasta_file, new_name):

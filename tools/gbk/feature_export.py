@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 import sys
 import argparse
+import logging
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-
-import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
@@ -87,9 +86,9 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                     extracted_seqs = [x.extract(record.seq) for x in __seqs]
 
                 if informative:
-                    defline  = ' %s [start=%s,end=%s]' % (','.join(feature.qualifiers.get('product', [])), start, end)
+                    defline = ' %s [start=%s,end=%s]' % (','.join(feature.qualifiers.get('product', [])), start, end)
                 else:
-                    defline  = ' [start=%s,end=%s]' % (start, end)
+                    defline = ' [start=%s,end=%s]' % (start, end)
 
                 extracted_seq = ''.join(map(str, extracted_seqs))
 

@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 import os
 import sys
+import argparse
+import logging
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.Alphabet import IUPAC
-import argparse
 from BCBio import GFF
-import logging
+from xmfa import parse_xmfa, percent_identity, id_tn_dict
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
-from xmfa import parse_xmfa, percent_identity, id_tn_dict
 
 
 def generate_subfeatures(parent, window_size, other):
@@ -22,9 +22,6 @@ def generate_subfeatures(parent, window_size, other):
         real_end = real_start + real_window_size - block_seq.count('-')
 
         log.debug("  I: %s, BS: %s, RWS: %s, RS: %s, RE: %s", i, block_seq, real_window_size, real_start, real_end)
-
-        # if (real_end - real_start) < 10:
-            # continue
 
         if parent['start'] < 0:
             strand = -1

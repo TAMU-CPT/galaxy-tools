@@ -8,6 +8,7 @@ from gff3 import feature_lambda, feature_test_type
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+
 def fixed_feature(rec):
     for feature in feature_lambda(
         rec.features,
@@ -38,6 +39,7 @@ def fixed_feature(rec):
         mRNA.sub_features = [feature]
         gene.sub_features = [mRNA]
         yield gene
+
 
 def gff_filter(gff3):
     for rec in GFF.parse(gff3):

@@ -3,7 +3,6 @@ import argparse
 import logging
 logging.basicConfig(level=logging.INFO)
 
-
 __doc__ = """
 Detect Gram Stain
 =================
@@ -399,7 +398,7 @@ class GramStainDetector(object):
                 'Stenotrophomonas',
                 'Stenotrophomonas nitritireducens',
                 'Thermotoga neapolitana',
-                #'Trimeric autotransporter adhesin',
+                # 'Trimeric autotransporter adhesin',
                 'Vampirococcus',
                 'Verminephrobacter',
                 'Vibrio adaptatus',
@@ -408,7 +407,7 @@ class GramStainDetector(object):
                 'Vibrio cholerae',
                 'Vitreoscilla',
                 'Wolbachia',
-                #'YadA bacterial adhesin protein domain',
+                # 'YadA bacterial adhesin protein domain',
                 'Zymophilus',
 
                 # http://www.nmpdr.org/FIG/wiki/view.cgi/FIG/GramStain

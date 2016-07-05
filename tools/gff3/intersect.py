@@ -1,13 +1,9 @@
 #!/usr/bin/env python
-import sys
-import copy
 import logging
-from interval_tree import IntervalTree
-logging.basicConfig(level=logging.INFO)
 import argparse
-from gff3 import feature_lambda, feature_test_type
+from interval_tree import IntervalTree
 from BCBio import GFF
-from Bio.SeqFeature import FeatureLocation
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 

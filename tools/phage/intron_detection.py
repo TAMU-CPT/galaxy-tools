@@ -15,6 +15,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
+
 def parse_xml(blastxml):
     """ Parses xml file to get desired info (genes, hits, etc) """
     blast = []
@@ -23,7 +24,7 @@ def parse_xml(blastxml):
         blast_gene = []
         for alignment in blast_record.alignments:
             hit_gis = alignment.hit_id + alignment.hit_def
-            gi_nos =  [str(gi) for gi in re.findall('(?<=gi\|)\d{9}', hit_gis)]
+            gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9}', hit_gis)]
             for hsp in alignment.hsps:
                 x = float(hsp.identities) / (hsp.query_end - hsp.query_start)
                 if x < .5:
@@ -34,18 +35,19 @@ def parse_xml(blastxml):
                 if ' ' in nice_name:
                     nice_name = nice_name[0:nice_name.index(' ')]
                 blast_gene.append({
-                    'gi_nos' : gi_nos,
+                    'gi_nos': gi_nos,
                     'sbjct_length': alignment.length,
                     'query_length': blast_record.query_length,
-                    'sbjct_range' : (hsp.sbjct_start, hsp.sbjct_end),
-                    'query_range' : (hsp.query_start, hsp.query_end),
-                    'name' : nice_name,
-                    'identity' : hsp.identities,
-                    'iter_num' : iter_num
+                    'sbjct_range': (hsp.sbjct_start, hsp.sbjct_end),
+                    'query_range': (hsp.query_start, hsp.query_end),
+                    'name': nice_name,
+                    'identity': hsp.identities,
+                    'iter_num': iter_num
                 })
         blast.append(blast_gene)
     log.debug("parse_blastxml %s -> %s", len(blast) + discarded_records, len(blast))
     return blast
+
 
 def filter_lone_clusters(clusters):
     """ Removes all clusters with only one member and those with no hits """
@@ -56,8 +58,10 @@ def filter_lone_clusters(clusters):
     log.debug("filter_lone_clusters %s -> %s", len(clusters), len(filtered_clusters))
     return filtered_clusters
 
+
 def test_true(feature, **kwargs):
     return True
+
 
 def parse_gff(gff3):
     """ Extracts strand and start location to be used in cluster filtering """
@@ -71,15 +75,15 @@ def parse_gff(gff3):
             rec.features,
             test_true,
             {},
-            subfeatures = False
+            subfeatures=False
         ):
             if feat.type == 'CDS':
-                 gff_info[feat.id] = {
-                     'strand': feat.strand,
-                     'start': feat.location.start,
-                     'loc': feat.location,
-                     'feat': feat,
-                 }
+                gff_info[feat.id] = {
+                    'strand': feat.strand,
+                    'start': feat.location.start,
+                    'loc': feat.location,
+                    'feat': feat,
+                }
 
     gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
     for i, feat_id in enumerate(gff_info):
@@ -87,9 +91,11 @@ def parse_gff(gff3):
 
     return dict(gff_info), _rec
 
+
 def all_same(genes_list):
     """ Returns True if all gene names in cluster are identical """
     return all(gene['name'] == genes_list[0]['name'] for gene in genes_list[1:])
+
 
 def remove_duplicates(clusters):
     """ Removes clusters with multiple members but only one gene name """
@@ -102,8 +108,10 @@ def remove_duplicates(clusters):
     log.debug("remove_duplicates %s -> %s", len(clusters), len(filtered_clusters))
     return filtered_clusters
 
+
 class IntronFinder(object):
     """ IntronFinder objects are lists that contain a list of hits for every gene """
+
     def __init__(self, gff3, blastp):
         self.blast = []
         self.clusters = {}
@@ -143,9 +151,9 @@ class IntronFinder(object):
                 filtered_clusters[key] = self.clusters[key]
             else:
                 if len(pos_strand) > 1:
-                    filtered_clusters[key+'_+1'] = pos_strand
+                    filtered_clusters[key + '_+1'] = pos_strand
                 if len(neg_strand) > 1:
-                    filtered_clusters[key+'_-1'] = neg_strand
+                    filtered_clusters[key + '_-1'] = neg_strand
         return filtered_clusters
 
     def check_gene_gap(self):
@@ -165,9 +173,9 @@ class IntronFinder(object):
 
             for i, hits in enumerate(hits_lists):
                 if len(hits) >= 2:
-                    filtered_clusters[key+'_'+str(i)] = hits
+                    filtered_clusters[key + '_' + str(i)] = hits
         log.debug("check_gene_gap %s -> %s", len(self.clusters), len(filtered_clusters))
-        return remove_duplicates(filtered_clusters) # call remove_duplicates somewhere else?
+        return remove_duplicates(filtered_clusters)  # call remove_duplicates somewhere else?
 
     # maybe figure out how to merge with check_gene_gap?
     # def check_seq_gap():
@@ -184,8 +192,8 @@ class IntronFinder(object):
             combinations = list(itertools.combinations(sbjct_ranges, 2))
 
             for pair in combinations:
-                if len(set(range(pair[0][0],pair[0][1])) &
-                       set(range(pair[1][0],pair[1][1]))) > 0:
+                if len(set(range(pair[0][0], pair[0][1])) &
+                       set(range(pair[1][0], pair[1][1]))) > 0:
                     add_cluster = False
                     break
             if add_cluster:
@@ -245,19 +253,22 @@ class IntronFinder(object):
                 if j == 0:
                     genes.add(dwg.rect(insert=(10, sbjct_y), size=(gene['sbjct_length'], 20), fill='blue'))
 
-                genes.add(dwg.rect(insert=(query_x, sbjct_y+80), size=(gene['query_length'], 20),
-                                   fill='green'))
-                genes.add(dwg.text(gene['name'], insert=(query_x, sbjct_y+95)))
+                genes.add(dwg.rect(
+                    insert=(query_x, sbjct_y + 80),
+                    size=(gene['query_length'], 20),
+                    fill='green'
+                ))
+                genes.add(dwg.text(gene['name'], insert=(query_x, sbjct_y + 95)))
 
                 p1 = (gene['sbjct_range'][0] + 10, sbjct_y + 20)
                 p2 = (gene['sbjct_range'][1] + 10, sbjct_y + 20)
                 p3 = (gene['query_range'][1] + query_x, sbjct_y + 80)
                 p4 = (gene['query_range'][0] + query_x, sbjct_y + 80)
-                identity = float(gene['identity'])/gene['sbjct_length']
+                identity = float(gene['identity']) / gene['sbjct_length']
                 genes.add(dwg.polyline([p1, p2, p3, p4], fill='red', opacity='%s' % identity))
 
                 dwg.save()
-                query_x += (gene['query_length']+10)
+                query_x += (gene['query_length'] + 10)
 
             query_x = 10
 
@@ -279,7 +290,6 @@ class IntronFinder(object):
             # Get the minimum and maximum locations covered by all of the children genes
             gene_min = min([min(x[1].start, x[1].end) for x in assoc_gene_info.iteritems()])
             gene_max = max([max(x[1].start, x[1].end) for x in assoc_gene_info.iteritems()])
-
 
             evidence_notes = []
             for cluster_elem in clusters[cluster_id]:
@@ -311,7 +321,6 @@ class IntronFinder(object):
                 }
             )
 
-
             # Now come the CDSs.
             cdss = []
             # We sort them just for kicks
@@ -328,7 +337,6 @@ class IntronFinder(object):
                     'score': score,
                 }
                 cdss.append(cds)
-
 
             # And we attach the things properly.
             mRNA.sub_features = cdss

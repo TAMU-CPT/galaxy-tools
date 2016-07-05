@@ -2,10 +2,11 @@
 import argparse
 import subprocess
 import logging
+from guanine import GuanineClient
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
-from guanine import GuanineClient
 g = GuanineClient()
+
 
 def validate(official_data, user_data, user_email):
     od = subprocess.check_output(['md5sum', official_data])

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-import logging
-logging.basicConfig(level=logging.INFO)
 import argparse
+import logging
 from Bio import SeqIO, Seq
+logging.basicConfig(level=logging.INFO)
 
 
 def codon_stats(fasta_file, **kwargs):
@@ -13,7 +13,7 @@ def codon_stats(fasta_file, **kwargs):
     for b1 in ('A', 'C', 'T', 'G'):
         for b2 in ('A', 'C', 'T', 'G'):
             for b3 in ('A', 'C', 'T', 'G'):
-                codons[b1+b2+b3] = str(Seq.Seq(b1+b2+b3).translate(table=1))
+                codons[b1 + b2 + b3] = str(Seq.Seq(b1 + b2 + b3).translate(table=1))
 
     tn_table_keys = sorted(codons.keys())
 
@@ -24,7 +24,7 @@ def codon_stats(fasta_file, **kwargs):
         seq = str(record.seq)
         codon_counts = {}
 
-        for tri_nt in [seq[i:i+3] for i in range(0, len(seq), 3)]:
+        for tri_nt in [seq[i:i + 3] for i in range(0, len(seq), 3)]:
             try:
                 codon_counts[tri_nt] += 1
             except:
@@ -38,7 +38,7 @@ def codon_stats(fasta_file, **kwargs):
             else:
                 numbers.append(0)
 
-        numbers = [float(x)/sum(numbers) for x in numbers]
+        numbers = [float(x) / sum(numbers) for x in numbers]
         yield row + numbers
 
 

@@ -4,6 +4,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+
 def guanine_pass(user_email, test_name):
     from guanine import GuanineClient
     g = GuanineClient()

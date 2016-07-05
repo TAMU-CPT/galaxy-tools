@@ -1,10 +1,10 @@
 import requests
 import json
 import collections
-from BCBio import GFF
-from Bio import SeqIO
 import StringIO
 import logging
+from BCBio import GFF
+from Bio import SeqIO
 logging.getLogger("requests").setLevel(logging.CRITICAL)
 log = logging.getLogger()
 
@@ -15,14 +15,17 @@ def WAAuth(parser):
     parser.add_argument('password', help='WA Password')
     parser.add_argument('--remote_user', default='', help='If set, ignore password, set the header with the name supplied to this argument to the value of email')
 
+
 def OrgOrGuess(parser):
     parser.add_argument('--org_json', type=file, help='Apollo JSON output, source for common name')
     parser.add_argument('--org_raw', help='Common Name')
+
 
 def CnOrGuess(parser):
     OrgOrGuess(parser)
     parser.add_argument('--seq_fasta', type=file, help='Fasta file, IDs used as sequence sources')
     parser.add_argument('--seq_raw', nargs='*', help='Sequence Names')
+
 
 def GuessOrg(args):
     if args.org_json:
@@ -39,6 +42,7 @@ def GuessOrg(args):
     else:
         raise Exception("Organism Common Name not provided")
 
+
 def GuessCn(args):
     org = GuessOrg(args)
     seqs = []
@@ -51,6 +55,7 @@ def GuessCn(args):
         seqs = [x.strip() for x in args.seq_raw if len(x.strip()) > 0]
 
     return org, seqs
+
 
 class WebApolloInstance(object):
 
@@ -95,7 +100,6 @@ class UserObj(object):
             self.groups = groups
 
         self.__props = kwargs.keys()
-
 
     def isAdmin(self):
         if hasattr(self, 'role'):
@@ -189,7 +193,9 @@ class AnnotationsClient(Client):
     CLIENT_BASE = '/annotationEditor/'
 
     def _update_data(self, data):
-        if not hasattr(self, '_extra_data'): raise Exception("Please call setSequence first")
+        if not hasattr(self, '_extra_data'):
+            raise Exception("Please call setSequence first")
+
         data.update(self._extra_data)
         return data
 
@@ -442,7 +448,7 @@ class GroupsClient(Client):
         return self.request('getOrganismPermissionsForGroup', data)
 
     def loadGroups(self, group=None):
-        data ={}
+        data = {}
         if group is not None:
             data['groupId'] = group.groupId
 
@@ -745,11 +751,13 @@ class WebApolloSeqFeature(object):
             else:
                 self._sf.__dict__[key] = value
 
+
 def _tnType(feature):
     if feature.type in ('gene', 'mRNA', 'exon', 'CDS'):
         return feature.type
     else:
         return 'exon'
+
 
 def _yieldFeatData(features):
     for f in features:
@@ -772,6 +780,7 @@ def _yieldFeatData(features):
             current['children'] = [x for x in _yieldFeatData(f.sub_features)]
 
         yield current
+
 
 def featuresToFeatureSchema(features):
     compiled = []

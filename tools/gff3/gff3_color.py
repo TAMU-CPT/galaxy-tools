@@ -278,7 +278,6 @@ class ColorScheme(object):
                 if re.search(self.standard_regex[regex]['regex'], product):
                     matched = self.standard_regex[regex]['color']
 
-
             for regex in self.custom_regex:
                 care = False
 

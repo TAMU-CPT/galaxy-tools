@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import time
-import json
 import argparse
 from webapollo import WebApolloInstance
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')

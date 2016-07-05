@@ -27,8 +27,8 @@ if __name__ == '__main__':
     elif args.partition_type == 'simple':
         dataset_min = numpy.min(data_col)
         dataset_max = numpy.max(data_col)
-        break_size = (dataset_max-dataset_min) / args.percentage_breakpoints
-        break_points = range(dataset_min, dataset_max+break_size, break_size)
+        break_size = (dataset_max - dataset_min) / args.percentage_breakpoints
+        break_points = range(dataset_min, dataset_max + break_size, break_size)
         print dataset_min
         print dataset_max
         print break_points

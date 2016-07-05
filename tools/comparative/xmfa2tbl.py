@@ -54,9 +54,9 @@ def total_similarity(xmfa_file, sequences=None, dice=False):
     for i in range(len(label_convert)):
         for j in range(len(label_convert)):
             if dice:
-                table[i][j] = 2 * table[i][j] / (label_convert[str(i+1)]['len'] + label_convert[str(j+1)]['len'])
+                table[i][j] = 2 * table[i][j] / (label_convert[str(i + 1)]['len'] + label_convert[str(j + 1)]['len'])
             else:
-                table[i][j] = table[i][j] / label_convert[str(i+1)]['len']
+                table[i][j] = table[i][j] / label_convert[str(i + 1)]['len']
 
     # insert 1 for comparisons between the same sequence
     for i in range(len(label_convert)):

@@ -35,7 +35,7 @@ def compare_values(a, b, method, undef_value):
     elif method == 'dist':
         return abs(a - b)
     elif method == 'pdiff':
-        return abs(a-b)/(a+b)
+        return abs(a - b) / (a + b)
     elif method == 'bit_diff':
         a = abs(int(a))
         b = abs(int(b))

@@ -2,11 +2,11 @@
 import re
 import sys
 import argparse
+import logging
 from Bio import SeqIO
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type, get_id
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -23,7 +23,6 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
         good_features = []
 
         genes = list(feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True))
-        good_genes = []
         for gene in genes:
             cdss = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))
             if len(cdss) == 0:
@@ -31,7 +30,6 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
 
             # Someday this will bite me in the arse.
             cds = cdss[0]
-
 
             tmpseq = str(cds.extract(record.seq).translate(table=11, cds=True)).replace("*", "")
             for case in CASES:

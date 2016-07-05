@@ -2,14 +2,13 @@
 import re
 import sys
 import argparse
+import logging
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda, feature_test_type, feature_test_quals, get_id, \
     ensure_location_in_bounds
-
-import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
@@ -104,12 +103,12 @@ class NaiveSDCaller(object):
             end = feature.location.end + sd_max
 
         (start, end) = ensure_location_in_bounds(start=start, end=end,
-                                                    parent_length=record.__len__)
+                                                 parent_length=record.__len__)
 
         # Create our temp feature used to obtain correct portion of
         # genome
         tmp = SeqFeature(FeatureLocation(start, end, strand=strand),
-                            type='domain')
+                         type='domain')
         seq = str(tmp.extract(record.seq))
         return self.list_sds(seq), start, end, seq
 

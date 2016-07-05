@@ -2,6 +2,7 @@
 import argparse
 import copy
 import sys
+import logging
 from collections import Counter
 from Levenshtein import distance
 from BCBio import GFF
@@ -9,10 +10,9 @@ from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda, feature_test_type
 
-
-import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
+
 
 def slipperyScore(sequence):
     a = Counter(str(sequence[0:3]).upper())
@@ -29,8 +29,7 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
     for rec in GFF.parse(gff3, base_dict=seq_dict):
         putative_frameshift_genes = []
 
-        for gene in feature_lambda(rec.features, feature_test_type,
-                {'type': 'gene'}):
+        for gene in feature_lambda(rec.features, feature_test_type, {'type': 'gene'}):
             feats = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}))
             if len(feats) == 0:
                 continue
@@ -56,7 +55,7 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     if wobble % 3 == 0:
                         continue
 
-                    cmp_codons = feat_seq[idx - 6 + wobble:idx+wobble]
+                    cmp_codons = feat_seq[idx - 6 + wobble:idx + wobble]
                     cmp_codons = cmp_codons.seq.translate(table=table)
 
                     # Here we've found a feature which has a possible
@@ -88,16 +87,14 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     if distance(str(codons.seq), str(frameshift_to_end[0:6])) > 5:
                         continue
 
-
                     # Do not allow cases where the leading NT changes.
                     # if str(codons.seq)[0] != str(cmp_codons)[0]:
-                        # continue
+                    # continue
 
                     # Scoring to help users filter out less likely results.
                     # Start at 4 because they've already been identified at
                     # some level as being a possible frameshift candidate.
                     score = 4 + slipperyScore(frameshift_to_end[0:7])
-
 
                     sys.stderr.write('>' + '\t'.join(map(str, (
                         score,
@@ -143,7 +140,7 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                         type='CDS',
                         qualifiers={
                             'source': 'CPT_FSFinder',
-                            'phase': wobble % 3, # WHO KNOWS
+                            'phase': wobble % 3,  # WHO KNOWS
                         }
                     )
 
@@ -165,7 +162,6 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
         rec.features = putative_frameshift_genes
         rec.annotations = {}
         yield [rec]
-
 
 
 if __name__ == '__main__':

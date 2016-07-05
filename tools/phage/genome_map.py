@@ -2,56 +2,53 @@
 # vim: set fileencoding=utf-8
 import base64
 import argparse
+import svgwrite
+import logging
 from gff3 import feature_lambda, feature_test_type, get_gff3_id, wa_unified_product_name
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqFeature import FeatureLocation, ExactPosition
-import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
-import svgwrite
-
 FONT_STYLE = "fill: #000033; stroke:none;font-family: 'monospace';font-size:9px;"
-
 DEFAULT_COLOR_SCHEME = {
-    "tRNA":{
+    "tRNA": {
         "color": "#ee0000",
         "border": 0,
         "plot": 1
     },
-    "gene":{
+    "gene": {
         "color": "#0086ee",
         "border": 1,
         "plot": 1
     },
-    "CDS":{
+    "CDS": {
         "color": "#1c86ee",
         "border": 1,
         "plot": 1
     },
-    "mRNA":{
+    "mRNA": {
         "color": "#ff0000",
         "border": 1,
         "plot": 1
     },
-    "regulatory":{
+    "regulatory": {
         "color": "#000000",
         "border": 0,
         "plot": 1
     },
-    "repeat_region":{
+    "repeat_region": {
         "color": "#b3ee3a",
         "border": 1,
         "plot": 1
     },
-    "mat_peptide":{
+    "mat_peptide": {
         "color": "#b23aee",
         "border": 1,
         "plot": 1
     }
 }
-
 
 
 class PlottedFeature(object):
@@ -103,6 +100,7 @@ class PlottedFeature(object):
             self.label = None
 
         return self.label
+
 
 class GeneClass(object):
 
@@ -190,14 +188,13 @@ class Plotter(object):
             if self.classes[x].included:
                 items += [y.location for y in self.classes[x].objects]
 
-
         longest_last_object = 1
         thisRowEnd = 1 + avgRowLength
         currentRow = 1
         _internal_maxrowlength = 0
 
         rowData = {
-            1:  {
+            1: {
                 'start': ExactPosition(1)
             }
         }
@@ -246,7 +243,7 @@ class Plotter(object):
         self.svg = svgwrite.Drawing(
             size=(
                 width + 2 * (self.x_offset),
-                height+ 2 * (self.y_offset)
+                height + 2 * (self.y_offset)
             )
         )
 
@@ -281,8 +278,8 @@ class Plotter(object):
 
                 if gene.get_label():
                     if self.label_hypo or (not self.label_hypo and 'ypothetical' not in gene.get_label()):
-                    # print self.label_hypo, (self.label_hypo and 'ypothetical' not in gene.get_label()), 'ypothetical' not in gene.get_label(), gene.get_label()
-                    # if not self.label_hypo or (self.label_hypo and 'ypothetical' not in gene.get_label()):
+                        # print self.label_hypo, (self.label_hypo and 'ypothetical' not in gene.get_label()), 'ypothetical' not in gene.get_label(), gene.get_label()
+                        # if not self.label_hypo or (self.label_hypo and 'ypothetical' not in gene.get_label()):
                         svgFeatureLabel = self.featureLabel(
                             gene, rowData, class_group,
                             self.calculateRow(gene, rowData),
@@ -326,7 +323,7 @@ class Plotter(object):
         return (x + self.x_offset, y + self.y_offset)
 
     def addRuler(self, row, ui_group, rowData):
-        y_fix = self.ils * (row -1)
+        y_fix = self.ils * (row - 1)
 
         line_width = self.calc_width * (rowData[row]['end'] - rowData[row]['start']) / self._internal_maxrowlength
 
@@ -348,7 +345,7 @@ class Plotter(object):
                             0,
                             y_fix - 5
                         ),
-                        end = self.offsetPoint(
+                        end=self.offsetPoint(
                             line_length,
                             y_fix - 5
                         )
@@ -371,7 +368,7 @@ class Plotter(object):
                 ui_group.add(self.svg.line(
                     id='ruler_vert_%s' % idx,
                     start=self.offsetPoint(current_location, y_fix),
-                    end = self.offsetPoint(current_location, y_fix + line_height),
+                    end=self.offsetPoint(current_location, y_fix + line_height),
                 ))
 
                 if idx % 10000 == 0:
@@ -386,7 +383,7 @@ class Plotter(object):
     def calculateRow(self, obj, rowData):
         for i in rowData.keys():
             if rowData[i]['start'] - 1 <= obj.location.start < rowData[i]['end'] and \
-                    rowData[i]['start'] - 1<= obj.location.end < rowData[i]['end']:
+                    rowData[i]['start'] - 1 <= obj.location.end < rowData[i]['end']:
                 return i
         raise Exception("Cannot place feature")
 
@@ -434,10 +431,10 @@ class Plotter(object):
         ))
 
         if feature.location.strand > 0:
-            callout_start=(lxm, y)
+            callout_start = (lxm, y)
             callout_end = (lxm, ly)
         else:
-            callout_start=(lxm, y + h)
+            callout_start = (lxm, y + h)
             callout_end = (lxm, ly - h)
 
         g.add(self.svg.line(

@@ -1,18 +1,18 @@
-import sys
+#!/usr/bin/env python
 import re
-import argparse
-import logging
-logging.basicConfig()
-log = logging.getLogger()
 from Bio.Seq import Seq, reverse_complement, translate
 from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
 from Bio.Data import CodonTable
+import logging
+logging.basicConfig()
+log = logging.getLogger()
 
 PHAGE_IN_MIDDLE = re.compile('^(?P<host>.*)\s*phage (?P<phage>.*)$')
 BACTERIOPHAGE_IN_MIDDLE = re.compile('^(?P<host>.*)\s*bacteriophage (?P<phage>.*)$')
 STARTS_WITH_PHAGE = re.compile('^(bacterio|vibrio|Bacterio|Vibrio|)?[Pp]hage (?P<phage>.*)$')
 NEW_STYLE_NAMES = re.compile('(?P<phage>v[A-Z]_[A-Z][a-z]{2}_.*)')
+
 
 def phage_name_parser(name):
     host = None
@@ -43,6 +43,7 @@ def phage_name_parser(name):
         return (host, phage)
 
     return (host, phage)
+
 
 class OrfFinder(object):
 

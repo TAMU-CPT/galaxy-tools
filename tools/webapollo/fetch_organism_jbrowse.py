@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 import os
-import json
 import argparse
-import time
 from webapollo import WAAuth, WebApolloInstance, GuessOrg, OrgOrGuess
 import logging
 import subprocess
@@ -17,7 +15,6 @@ if __name__ == '__main__':
     parser.add_argument('target_dir', help='Target directory')
 
     args = parser.parse_args()
-
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
     # User must have an account

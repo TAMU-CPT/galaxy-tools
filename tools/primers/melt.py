@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 import argparse
-from Bio import SeqIO
-import sys
-from math import log10
-
 import logging
+from Bio import SeqIO
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(name='melt')
+
 
 def counts(sequence):
     return {
@@ -16,6 +14,7 @@ def counts(sequence):
         'G': sequence.count('G'),
     }
 
+
 def nosalt(sequence, na=0.050):
     if len(sequence) < 14:
         tm_func = "({A} + {T}) * 2 + ({G} + {C}) * 4"
@@ -23,6 +22,7 @@ def nosalt(sequence, na=0.050):
         tm_func = "64.9 + 41 * ({G} + {C} - 16.4)/({A} + {T} + {C} + {G})"
 
     return eval(tm_func.format(**counts(sequence)))
+
 
 def salt(sequence, na=0.050):
     if len(sequence) < 14:
@@ -47,4 +47,4 @@ if __name__ == '__main__':
 
     print '#Sequence\tTm'
     for record in SeqIO.parse(args.fasta, "fasta"):
-        print tm_calculation(str(record.seq).upper(), na=args.na/1000)
+        print tm_calculation(str(record.seq).upper(), na=args.na / 1000)

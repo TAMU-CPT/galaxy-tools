@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 import sys
 import argparse
+import logging
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
-from gff3 import feature_lambda, feature_test_type, get_id, fetchParent
-import logging
+from gff3 import feature_lambda, feature_test_type, get_id
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
+
 
 def main(fasta, gff3, feature_filter=None, nodesc=False):
 

@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 import sys
 import argparse
+import random
+import logging
 from datetime import date
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
-import random
-
-import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
+
 
 sequence = Seq("""
 GTGCACTTTTGCCATGATTGACAACCAATCAACAAAGTATGTGGGCTGAACTCAATCAGG
@@ -82,6 +82,7 @@ CGTATGTATCGGACACTTGCTTATATTGAGCAATGGCGTTGGCTTCTATAATTGTTCCAT
 CTGGAAGGTTTTTAAAAGATTGTCCGCCGCCTGTCTGAGCATTAAAGATTTTGATTTGTC
 CTTCAAGAGTTTCTGTGTCAAAAGTAGCCTTTA
 """.replace('\n', ''))
+
 
 def generate_sequence(user_email):
     user_email = user_email[0:user_email.index('@')]

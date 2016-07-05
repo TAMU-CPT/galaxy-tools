@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """Convert a GFF and associated FASTA file into GenBank format.
 
 Usage:
@@ -6,7 +7,6 @@ gff_to_genbank.py <GFF annotation file> <FASTA sequence file>
 import argparse
 import sys
 import re
-
 from Bio import SeqIO
 from Bio.Alphabet import generic_dna
 from BCBio import GFF
@@ -58,9 +58,10 @@ def gff3_to_genbank(gff_file, fasta_file):
         fid = 0
         # Renumbering requires sorting
         for feat in sorted(
-                feature_lambda(features, test_true, {}, subfeatures=True),
-                # Based on feature location
-                key=lambda x:int(x.location.start)):
+            feature_lambda(features, test_true, {}, subfeatures=True),
+            # Based on feature location
+            key=lambda x: int(x.location.start)
+        ):
 
             # Our modifications only involve genes
             if feat.type == 'gene':
@@ -118,7 +119,7 @@ def gff3_to_genbank(gff_file, fasta_file):
                 # flat_feat.qualifiers['locus_tag'] = flat_feat.qualifiers['ID']
 
             for x in ('source', 'phase', 'Parent', 'ID', 'owner',
-                    'date_creation', 'date_last_modified'):
+                      'date_creation', 'date_last_modified'):
                 if x in flat_feat.qualifiers:
                     if x == 'ID':
                         flat_feat._ID = flat_feat.qualifiers['ID']

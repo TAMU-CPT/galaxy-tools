@@ -3,15 +3,10 @@ import re
 import sys
 import copy
 import argparse
-from BCBio import GFF
 import logging
+from BCBio import GFF
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(name='blastxml2gff3')
-
-__author__ = "Eric Rasche"
-__version__ = "0.4.0"
-__maintainer__ = "Eric Rasche"
-__email__ = "esr@tamu.edu"
 
 __doc__ = """
 BlastXML files, when transformed to GFF3, do not normally show gaps in the
@@ -26,7 +21,6 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
     from Bio.SeqFeature import SeqFeature, FeatureLocation
 
     blast_records = NCBIXML.parse(blastxml)
-    records = []
     for record in blast_records:
         # http://www.sequenceontology.org/browser/release_2.4/term/SO:0000343
         match_type = {  # Currently we can only handle BLASTN, BLASTP
@@ -46,9 +40,9 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
                     "hit_titles": hit.title.split(' >')
                 }
                 for prop in ('score', 'bits', 'identitie', 'positives',
-                          'gaps', 'align_length', 'strand', 'frame',
-                          'query_start', 'query_end', 'sbjct_start',
-                          'sbjct_end'):
+                             'gaps', 'align_length', 'strand', 'frame',
+                             'query_start', 'query_end', 'sbjct_start',
+                             'sbjct_end'):
                     try:
                         qualifiers['blast_' + prop] = getattr(hsp, prop, None)
                     except Exception:
@@ -225,7 +219,6 @@ def _qms_to_matches(query, match, subject, strict_m=True):
                 ret = 'X'
         else:
             log.warn("Bad data: \n\t%s\n\t%s\n\t%s\n" % (query, match, subject))
-
 
         if strict_m:
             if ret == '=' or ret == 'X':

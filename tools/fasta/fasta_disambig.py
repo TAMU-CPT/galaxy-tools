@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import logging
 import random
-logging.basicConfig(level=logging.INFO)
 import argparse
-from Bio import SeqIO, Seq
 import StringIO
+from Bio import SeqIO, Seq
+logging.basicConfig(level=logging.INFO)
 
 
 def disambiguate(fasta_file, seed=42, tbl_out=None):

@@ -26,31 +26,31 @@ def blasttsv2gff3(blasttsv, min_gap=3, trim_start=False, trim_end=False, type='n
     }.get(type, 'match')
 
     columns = [
-        'qseqid',     # 01 Query Seq-id (ID of your sequence)
-        'sseqid',     # 02 Subject Seq-id (ID of the database hit)
-        'pident',     # 03 Percentage of identical matches
-        'length',     # 04 Alignment length
-        'mismatch',   # 05 Number of mismatches
-        'gapopen',    # 06 Number of gap openings
-        'qstart',     # 07 Start of alignment in query
-        'qend',       # 08 End of alignment in query
-        'sstart',     # 09 Start of alignment in subject (database hit)
-        'send',       # 10 End of alignment in subject (database hit)
-        'evalue',     # 11 Expectation value (E-value)
-        'bitscore',   # 12 Bit score
-        'sallseqid',  # 13 All subject Seq-id(s), separated by a ';'
-        'score',      # 14 Raw score
-        'nident',     # 15 Number of identical matches
-        'positive',   # 16 Number of positive-scoring matches
-        'gaps',       # 17 Total number of gaps
-        'ppos',       # 18 Percentage of positive-scoring matches
-        'qframe',     # 19 Query frame
-        'sframe',     # 20 Subject frame
-        'qseq',       # 21 Aligned part of query sequence
-        'sseq',       # 22 Aligned part of subject sequence
-        'qlen',       # 23 Query sequence length
-        'slen',       # 24 Subject sequence length
-        'salltitles', # 25 All subject title(s), separated by a '<>'
+        'qseqid',      # 01 Query Seq-id (ID of your sequence)
+        'sseqid',      # 02 Subject Seq-id (ID of the database hit)
+        'pident',      # 03 Percentage of identical matches
+        'length',      # 04 Alignment length
+        'mismatch',    # 05 Number of mismatches
+        'gapopen',     # 06 Number of gap openings
+        'qstart',      # 07 Start of alignment in query
+        'qend',        # 08 End of alignment in query
+        'sstart',      # 09 Start of alignment in subject (database hit)
+        'send',        # 10 End of alignment in subject (database hit)
+        'evalue',      # 11 Expectation value (E-value)
+        'bitscore',    # 12 Bit score
+        'sallseqid',   # 13 All subject Seq-id(s), separated by a ';'
+        'score',       # 14 Raw score
+        'nident',      # 15 Number of identical matches
+        'positive',    # 16 Number of positive-scoring matches
+        'gaps',        # 17 Total number of gaps
+        'ppos',        # 18 Percentage of positive-scoring matches
+        'qframe',      # 19 Query frame
+        'sframe',      # 20 Subject frame
+        'qseq',        # 21 Aligned part of query sequence
+        'sseq',        # 22 Aligned part of subject sequence
+        'qlen',        # 23 Query sequence length
+        'slen',        # 24 Subject sequence length
+        'salltitles',  # 25 All subject title(s), separated by a '<>'
     ]
 
     for record_idx, record in enumerate(blasttsv):
@@ -81,13 +81,11 @@ def blasttsv2gff3(blasttsv, min_gap=3, trim_start=False, trim_end=False, type='n
                 continue
             qualifiers['blast_%s' % key] = dc[key]
 
-
         for integer_numerical_key in 'gapopen gaps length mismatch nident positive qend qframe qlen qstart score send sframe slen sstart'.split(' '):
             dc[integer_numerical_key] = int(dc[integer_numerical_key])
 
         for float_numerical_key in 'bitscore evalue pident ppos'.split(' '):
             dc[float_numerical_key] = float(dc[float_numerical_key])
-
 
         # This required a fair bit of sketching out/match to figure out
         # the first time.
@@ -127,7 +125,6 @@ def blasttsv2gff3(blasttsv, min_gap=3, trim_start=False, trim_end=False, type='n
                 dc.get('mseq', None),
                 dc['sseq'],
                 ignore_under=min_gap):
-
 
             part_qualifiers['Gap'] = cigar
             part_qualifiers['ID'] = dc['sseqid']
@@ -190,6 +187,7 @@ def __remove_query_gaps(query, match, subject):
     fs += subject[prev:]
 
     return (fq, None if match is None else fm, fs)
+
 
 def _none_safe_match_iterator(match):
     if match is None:
@@ -265,7 +263,6 @@ def _qms_to_matches(query, match, subject, strict_m=True):
                 ret = 'X'
         else:
             log.warn("Bad data: \n\t%s\n\t%s\n\t%s\n" % (query, match, subject))
-
 
         if strict_m:
             if ret == '=' or ret == 'X':

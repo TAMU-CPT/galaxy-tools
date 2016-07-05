@@ -70,7 +70,6 @@ def _id_tn_dict(sequences):
                                      'temp': tempfile.NamedTemporaryFile(delete=False)}
 
         label_convert[str(i + 1)]['temp'].write("variableStep chrom=%s\n" % (correct_chrom or record.id, ))
-    import pprint; pprint.pprint(label_convert)
     return label_convert
 
 
@@ -148,8 +147,11 @@ def convert_xmfa_to_gff3(xmfa_file, fasta_genomes, window_size=3, relative_to='1
             for other in others:
                 left_bound = max(0, i - window_size)
                 right_bound = i + window_size
-                point_pid = percent_identity(parent['corrected'][left_bound:right_bound],
-                                              other['corrected'][left_bound:right_bound])
+                point_pid = percent_identity(
+                    parent['corrected'][left_bound:right_bound],
+                    other['corrected'][left_bound:right_bound]
+                )
+
                 label_convert[other['id']]['temp'].write("%s\t%s\n" % (
                     abs(parent['start']) + i,
                     point_pid

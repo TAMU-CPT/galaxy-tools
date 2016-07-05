@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 import subprocess
 import argparse
-import logging
-from Bio import SeqIO
-import tempfile
 import os
 import yaml
 import re
+from Bio import SeqIO
+
 
 SBT_TPL = '''Seq-submit ::= {
   contact {
@@ -53,6 +52,7 @@ Seqdesc ::= pub {
 }
 '''
 
+
 def create_contact_string(offset, author_dn_list, people):
     output = []
     for dn in author_dn_list:
@@ -78,6 +78,7 @@ def create_contact_string(offset, author_dn_list, people):
         output.append('\n'.join(data_str))
     return ',\n'.join(output)
 
+
 def create_affil_string(offset, dn, people):
     org = people['orgs'][dn]
     affil_info = {
@@ -102,6 +103,7 @@ def create_affil_string(offset, dn, people):
 
     ]
     return '\n'.join(data)
+
 
 def create_string(length, data, keys):
     data = [
@@ -139,7 +141,7 @@ if __name__ == '__main__':
         handle.write(">{0} [organism=Phage {0}]\n".format(args.genbank_submission_title))
         seq = str(record.seq)
         for i in range(0, len(seq), 80):
-            handle.write(seq[i:i+80] + '\n')
+            handle.write(seq[i:i + 80] + '\n')
 
     # Feature table
     with open(basename + '.tbl', 'w') as handle:
@@ -167,14 +169,13 @@ if __name__ == '__main__':
                         continue
                     handle.write('\t\t\t%s\t%s\n' % (qualifier, value))
 
-
     # SBT
     with open(basename + '.sbt', 'w') as handle:
         contact_string = create_contact_string(4, args.genbank_record_contact, directory)
-        affil_string  = create_affil_string(4, args.genbank_record_affiliation, directory)
+        affil_string = create_affil_string(4, args.genbank_record_affiliation, directory)
         affil_string2 = create_affil_string(5, args.paper_record_affiliation, directory)
-        record_author_str = create_contact_string(4,args.genbank_record_author, directory)
-        paper_author_str  = create_contact_string(6,args.paper_record_author, directory)
+        record_author_str = create_contact_string(4, args.genbank_record_author, directory)
+        paper_author_str = create_contact_string(6, args.paper_record_author, directory)
 
         publication_status = 'unpublished'
         publication_title = args.paper_submission_title

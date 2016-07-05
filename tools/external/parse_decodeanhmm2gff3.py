@@ -2,12 +2,12 @@
 import sys
 import uuid
 import logging
-logging.basicConfig(level=logging.INFO)
 from BCBio import GFF
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.Alphabet import IUPAC
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
