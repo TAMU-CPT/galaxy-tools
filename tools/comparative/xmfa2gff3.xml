@@ -32,12 +32,13 @@ $xmfa
     <data format="gff3" name="output" />
   </outputs>
   <tests>
+      <!--
       <test>
           <param name="xmfa" value="1.xmfa"/>
           <param name="sequences" value="karma.fa,phagey.fa" />
           <param name="window_size" value="10" />
-          <!--<output name="output" file="1.gff3"/>-->
       </test>
+      -->
   </tests>
   <help><![CDATA[
 What it does

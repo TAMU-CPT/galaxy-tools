@@ -31,6 +31,7 @@ $xmfa
     </data>
   </outputs>
   <tests>
+    <!--
       <test>
           <param name="xmfa" value="test.xmfa"/>
           <param name="sequences" value="test.fa" />
@@ -42,6 +43,7 @@ $xmfa
           <param name="sequences" value="test.fa" />
           <output name="output" file="output_dice.tsv"/>
       </test>
+      -->
   </tests>
   <help><![CDATA[
 What it does
