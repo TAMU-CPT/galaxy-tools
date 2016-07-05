@@ -57,8 +57,8 @@
           <param name="post_sequence" value="cc" />
           <param name="linker_sequence" value="g" />
           <param name="sequences" value="merge_input.fa" />
-          <output name="output" file="ligated.fa" />
-          <output name="bed_data" file="ligated.bed" />
+          <output name="output" file="ligation.fa" />
+          <output name="bed_data" file="ligation.bed" />
       </test>
   </tests>
   <help>
