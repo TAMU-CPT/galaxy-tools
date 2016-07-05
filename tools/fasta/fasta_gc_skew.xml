@@ -6,7 +6,8 @@
   </macros>
   <expand macro="requirements"/>
   <version_command>python fasta_gc_skew.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_gc_skew.py
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/fasta_gc_skew.py
 $positional_1
 --window $window
 --step_size $step_size
