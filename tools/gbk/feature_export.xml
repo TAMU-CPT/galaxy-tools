@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.feature_export" name="Genbank Feature Export" version="1.1">
+<tool id="edu.tamu.cpt.gbk.feature_export" name="Genbank Feature Export" version="1.2">
   <description>Export a subset of features from a Genbank file</description>
   <macros>
     <import>macros.xml</import>
