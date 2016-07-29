@@ -81,7 +81,13 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                                              type='domain'))
 
                 if translate:
-                    extracted_seqs = [x.extract(record.seq).translate(table=translation_table_id, cds=True) for x in __seqs]
+                    extracted_seqs = []
+                    for x in __seqs:
+                        try:
+                            y = x.extract(record.seq).translate(table=translation_table_id, cds=True)
+                            extracted_seqs.append(y)
+                        except Exception, bdct:
+                            log.warn("ERROR %s", bdct)
                 else:
                     extracted_seqs = [x.extract(record.seq) for x in __seqs]
 
