@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage.annotation_validator" name="Phage QC" version="1.5">
+<tool id="edu.tamu.cpt2.phage.annotation_validator" name="Phage QC" version="1.7">
     <description>validate phage annotations</description>
     <macros>
       <import>macros.xml</import>
@@ -25,7 +25,14 @@ $gff3_data
 --excessive_gap_divergent_dist $egdd
 --user_email $__user_email__
 
-> $output]]></command>
+> $output;
+
+#if ".tex" in str($report_format):
+    mv $output tmp.tex;
+    docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v $PWD:/data blang/latex pdflatex tmp.tex &&
+    mv tmp.pdf $output;
+#end if
+]]></command>
     <inputs>
         <expand macro="gff3_input" />
         <expand macro="genome_selector" />
@@ -42,8 +49,9 @@ $gff3_data
 
         <param label="Report Format" type="select" name="report_format">
             <option value="phageqc_report_full.html" selected="True">Full Report</option>
-            <option value="phageqc_report_genomea.html">GenomeA Report</option>
             <option value="phageqc_report_464.html">464 Report</option>
+            <option value="phageqc_report_genomea.tex">GenomeA PDF Report</option>
+            <option value="phageqc_report_genomea.html">GenomeA HTML Report</option>
         </param>
     </inputs>
     <outputs>
@@ -56,6 +64,7 @@ $gff3_data
 Run CPT's Phage Annotation Validator validating the following properties:
 
 -  Missing RBSs
+-  Missing Gene Features
 -  Excessive Gaps
 -  Excessive Overlaps
 -  Morons

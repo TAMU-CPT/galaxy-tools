@@ -498,6 +498,7 @@ def weird_starts(record):
     good = 0
     bad = 0
     qc_features = []
+    results = []
 
     overall = {}
     for gene in coding_genes(record.features):
@@ -531,6 +532,8 @@ def weird_starts(record):
                 s = seq.location.end
                 e = seq.location.end - 3
 
+            results.append(seq)
+
             qc_features.append(gen_qc_feature(
                 s, e,
                 'Weird start codon',
@@ -541,7 +544,7 @@ def weird_starts(record):
         else:
             good += 1
 
-    return good, bad, qc_features, qc_features, overall
+    return good, bad, results, qc_features, overall
 
 
 def missing_genes(record):

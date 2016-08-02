@@ -1,0 +1,166 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{GenomeA Compliance Report}
+\chead{}
+\rhead{ {{record_name}} }
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+
+
+
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\date{Compiled \today}
+\title{GenomeA Compliance Report for {{record_name}}}
+
+\begin{document}
+%\pagestyle{plain}
+\maketitle
+This report details issues with your submitted genome annotations. Your
+genome received a score of 94
+
+\section{Required Changes}
+
+The changes detailed in this section are required for acceptance of your
+submission.
+
+\subsection{Missing Gene Features}
+
+These coding sequences (``CDS'' in your GenBank file) are missing the
+associated gene feature (``gene''). This is required for validation by NCBI's
+rules which are encoded in the sequin and tbl2asn programs.
+
+\begin{longtable}[]{ll}
+Feature ID & Location\\ \midrule
+\endhead
+{% for row in missing_genes %}
+    {{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
+{% endfor %}
+\end{longtable}
+
+\subsection{Missing Product Tags}\label{missing-product-tags}
+
+{{missing_tags_good}} out of {{missing_tags_good + missing_tags_bad}} features have product tags (\texttt{/product="..."}).
+{% if missing_tags.__len__ > 0 %}
+The following features are missing product tags
+\begin{longtable}[]{ll}
+Feature & Location \\ \midrule
+\endhead
+{% for row in missing_tags %}
+    {{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
+{% endfor %}
+\end{longtable}
+{% endif %}
+
+\section{Suggested Changes}\label{suggested-changes}
+
+These changes are not required, but are strongly encouraged in order to
+provide a uniform genome annotation within the phage community.
+
+\subsection{Start Codons}\label{start-codons}
+You have {{ weird_starts_bad }} unusual start codons. The start codon distribution is as follows:
+
+\begin{longtable}[]{lll}
+Start Codon & Count\\ \midrule
+\endhead
+{% for codon_key in weird_starts_overall_sorted_keys %}
+{{ codon_key }} & {{ weird_starts_overall[codon_key] }} \\
+{% endfor %}
+\end{longtable}
+
+{% if weird_starts_bad != 0 %}
+You may wish to investigate the following starts individually and verify their correctness.
+
+\begin{longtable}[]{lll}
+Feature ID & Location & Start Codon\\ \midrule
+\endhead
+{% for row in weird_starts %}
+{{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}} & {{row.__start}} \\
+{% endfor %}
+\end{longtable}
+
+{% endif %}
+
+\subsection{Unannotated RBSs}\label{unannotated-rbss}
+
+The following CDSs either do not have a detectable ribosome binding site (RBS;
+Shine-Dalgarno sequence), in which case there is a strong possibility that
+this is not the correct start, or there is one but it is not annotated.
+Annotating the RBS as part of the gene feature is the best practice.
+
+\begin{longtable}[]{lllll}
+ID & Location & Error & Upstream (-{{upstream_max}} .. -{{upstream_min}})\\ \midrule
+\endhead
+{% for row in missing_rbs %}
+{% if 'Unannotated' not in row.__message%}
+{{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}} & {{row.__message}} & \texttt{{'{'}}{{row.__upstream}}{{'}'}} \\
+{% endif %}
+{% endfor %}
+{% for row in missing_rbs %}
+{% if 'Unannotated' in row.__message%}
+{{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}} & {{row.__message}} & \texttt{{'{'}}{{row.__upstream}}{{'}'}} \\
+{% endif %}
+{% endfor %}
+\end{longtable}
+
+\section{Notes}\label{notes}
+
+These areas may be indicative of a problem, or may simply be
+informational. You should examine the areas mentioned in detail.
+
+\subsection{Excessive Gaps}\label{excessive-gaps}
+
+\begin{longtable}[]{llll}
+Region & Size & Surroundings & Messages\\ \midrule
+\endhead
+{% for row in excessive_gap %}
+\texttt{{'{'}}{{row[0]}}..{{row[1]}}{{'}'}} & {{row[1] - row[0]}} & {{row[2] | nice_strand_tex}} {{row[3] | nice_strand_tex}} &  {% if row[4] != 0 %}{{row[4]}} possible genes found in this region{% endif %} \\
+
+{% endfor %}
+\end{longtable}
+
+\subsection{Excessive Overlaps}\label{excessive-overlaps}
+
+\begin{longtable}[]{llllll}
+Feature A & A Location & Feature B & B Location & Shared Region & Overlap Length\\ \midrule
+\endhead
+{% for row in excessive_overlap %}
+    {{row[0].id}} & \texttt{{'{'}}{{row[0].location}}{{'}'}} & {{row[1].id}} & \texttt{{'{'}}{{row[1].location}}{{'}'}} & {{row[2]}}..{{row[3]}} & {{row[3] - row[2]}} \\
+{% endfor %}
+\end{longtable}
+
+\subsection{Coding Density}\label{coding-density}
+
+You have a coding density of {{ coding_density_real }}\% which scores 
+{{ coding_density }} / 100 on our scale. Most genomes should be in the 90\% to 100\%
+coding density range
+
+
+
+
+
+
+
+
+\end{document}
