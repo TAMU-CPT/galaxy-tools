@@ -53,11 +53,13 @@ def correct_model(genbank_file):
                     'cpt_source': ['CPT_GENE_MODEL_CORRECTION'],
                     'gene': f.qualifiers.get('gene', []),
                     'product': f.qualifiers.get('product', []),
-                    'locus_tag': f.qualifiers.get('locus_tag', []),
+                    'locus_tag': f.qualifiers.get('locus_tag', [get_id(c)]),
                     'ID': 'gene.' + get_id(c),
                 }
                 if 'gene' not in c.qualifiers:
                     c.qualifiers['gene'] = quals['ID']
+                if 'locus_tag' not in c.qualifiers:
+                    c.qualifiers['locus_tag'] = get_id(c)
 
                 if len(rbss) > 0:
                     extra_feats = []
