@@ -8,6 +8,20 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
 
+def get_id(feature=None, parent_prefix=None):
+    result = ""
+    if parent_prefix is not None:
+        result += parent_prefix + '|'
+
+    for x in ('locus_tag', 'protein_id', 'gene'):
+        if x in feature.qualifiers:
+            result += feature.qualifiers[x][0]
+            break
+    else:
+        return feature.id
+    return result
+
+
 def nearbyRbss(cds, rbss):
     for r in rbss:
         if cds.strand > 0:
@@ -34,55 +48,49 @@ def correct_model(genbank_file):
 
         # No genes at all
         if len(genes) == 0:
-            if len(rbss) > 0:
-                extra_feats = []
-                for c in cds:
+            for c in cds:
+                quals = {
+                    'cpt_source': ['CPT_GENE_MODEL_CORRECTION'],
+                    'gene': f.qualifiers.get('gene', []),
+                    'product': f.qualifiers.get('product', []),
+                    'locus_tag': f.qualifiers.get('locus_tag', []),
+                    'ID': 'gene.' + get_id(c),
+                }
+                if 'gene' not in c.qualifiers:
+                    c.qualifiers['gene'] = quals['ID']
+
+                if len(rbss) > 0:
+                    extra_feats = []
                     r = nearbyRbss(c, rbss)
-                    print r
                     if len(r) == 1:
                         extra_feats.append(SeqFeature(
                             unionLoc(c.location, r[0].location),
                             type="gene",
-                            qualifiers={
-                                'gene': f.qualifiers.get('gene', []),
-                                'product': f.qualifiers.get('product', []),
-                                'protein_id': f.qualifiers.get('protein_id', []),
-                                'locus_tag': f.qualifiers.get('locus_tag', []),
-                            }
+                            qualifiers=quals
                         ))
                     else:
                         extra_feats.append(SeqFeature(
                             c.location,
                             type="gene",
-                            qualifiers={
-                                'gene': f.qualifiers.get('gene', []),
-                                'product': f.qualifiers.get('product', []),
-                                'protein_id': f.qualifiers.get('protein_id', []),
-                                'locus_tag': f.qualifiers.get('locus_tag', []),
-                            }
+                            qualifiers=quals
                         ))
-                record.features.extend(extra_feats)
-            else:
-                genes = [
-                    SeqFeature(
-                        f.location,
-                        type="gene",
-                        strand=f.location.strand,
-                        qualifiers={
-                            'gene': f.qualifiers.get('gene', []),
-                            'product': f.qualifiers.get('product', []),
-                            'protein_id': f.qualifiers.get('protein_id', []),
-                            'locus_tag': f.qualifiers.get('locus_tag', []),
-                        }
+                    record.features.extend(extra_feats)
+                else:
+                    record.features.append(
+                        SeqFeature(
+                            c.location,
+                            type="gene",
+                            strand=c.location.strand,
+                            qualifiers=quals
+                        )
                     )
-                    for f in cds
-                ]
+
             # print genes
             record.features += genes
         elif len(genes) != len(cds):
             log.error("Different number of CDSs and genes. I don't know how to handle this case (yet)")
 
-        record.features = sorted(record.features, key=lambda x: x.location.start)
+        record.features = sorted(record.features, key=lambda x: int(x.location.start) - (1 if x.type == 'gene' else 0))
         yield [record]
 
 
