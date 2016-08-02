@@ -29,7 +29,7 @@ $gff3_data
 
 #if ".tex" in str($report_format):
     mv $output tmp.tex;
-    docker run --rm -i --user="\$(id -u):\$(id -g)" --net=none -v \$PWD:/data blang/latex pdflatex tmp.tex &&
+    docker run --rm -i --user="1002:1002" --net=none -v \$PWD:/data blang/latex pdflatex tmp.tex &&
     mv tmp.pdf $output;
 #end if
 ]]></command>
