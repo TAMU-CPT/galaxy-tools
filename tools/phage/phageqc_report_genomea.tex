@@ -55,7 +55,7 @@ rules which are encoded in the sequin and tbl2asn programs.
 Feature ID & Location\\ \midrule
 \endhead
 {% for row in missing_genes %}
-    {{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
+{{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
 {% endfor %}
 \end{longtable}
 
@@ -68,7 +68,7 @@ The following features are missing product tags
 Feature & Location \\ \midrule
 \endhead
 {% for row in missing_tags %}
-    {{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
+{{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
 {% endfor %}
 \end{longtable}
 {% endif %}
