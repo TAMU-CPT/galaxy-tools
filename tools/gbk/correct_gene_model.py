@@ -54,7 +54,7 @@ def correct_model(genbank_file):
                     'gene': c.qualifiers.get('gene', []),
                     'product': c.qualifiers.get('product', []),
                     'locus_tag': c.qualifiers.get('locus_tag', [get_id(c)]),
-                    'ID': 'gene.' + get_id(c),
+                    'ID': get_id(c),
                 }
                 if 'gene' not in c.qualifiers:
                     c.qualifiers['gene'] = quals['ID']

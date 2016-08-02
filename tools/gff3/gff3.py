@@ -197,7 +197,7 @@ def ensure_location_in_bounds(start=0, end=0, parent_length=0):
 
 
 def coding_genes(feature_list):
-    for x in feature_lambda(feature_list, feature_test_type, {'type': 'gene'}, subfeatures=True):
+    for x in genes(feature_list):
         if len(list(feature_lambda(x.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))) > 0:
             yield x
 

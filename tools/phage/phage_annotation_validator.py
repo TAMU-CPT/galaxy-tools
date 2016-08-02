@@ -544,6 +544,25 @@ def weird_starts(record):
     return good, bad, qc_features, qc_features, overall
 
 
+def missing_genes(record):
+    """Find features without product
+    """
+    results = []
+    good = 0
+    bad = 0
+    qc_features = []
+
+    for gene in coding_genes(record.features):
+        if gene.qualifiers.get('cpt_source', [None])[0] == 'CPT_GENE_MODEL_CORRECTION':
+            results.append(gene)
+            bad += 1
+        else:
+            good += 1
+
+    return good, bad, results, qc_features
+
+
+
 def missing_tags(record):
     """Find features without product
     """
@@ -627,6 +646,10 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
     mt_good, mt_bad, mt_results, mt_annotations = missing_tags(record)
     gff3_qc_features += mt_annotations
 
+    log.info("Locating missing gene features")
+    mg_good, mg_bad, mg_results, mg_annotations = missing_genes(record)
+    gff3_qc_features += mg_annotations
+
     log.info("Determining coding density")
     cd, cd_real = coding_density(record)
 
@@ -671,39 +694,44 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
         'missing_rbs': mb_results,
         'missing_rbs_good': mb_good,
         'missing_rbs_bad': mb_bad,
-        'missing_rbs_score': (100 * mb_good / (mb_good + mb_bad)),
+        'missing_rbs_score': 0 if mb_good + mb_bad == 0 else (100 * mb_good / (mb_good + mb_bad)),
 
         'excessive_gap': eg_results,
         'excessive_gap_good': eg_good,
         'excessive_gap_bad': eg_bad,
-        'excessive_gap_score': (100 * eo_good / (eo_good + eo_bad)),
+        'excessive_gap_score': 0 if eo_good + eo_bad == 0 else (100 * eo_good / (eo_good + eo_bad)),
 
         'excessive_overlap': eo_results,
         'excessive_overlap_good': eo_good,
         'excessive_overlap_bad': eo_bad,
-        'excessive_overlap_score': (100 * eo_good / (eo_good + eo_bad)),
+        'excessive_overlap_score': 0 if eo_good + eo_bad == 0 else (100 * eo_good / (eo_good + eo_bad)),
 
         'morons': mo_results,
         'morons_good': mo_good,
         'morons_bad': mo_bad,
-        'morons_score': (100 * mo_good / (mo_good + mo_bad)),
+        'morons_score': 0 if mo_good + mo_bad == 0 else (100 * mo_good / (mo_good + mo_bad)),
 
         'missing_tags': mt_results,
         'missing_tags_good': mt_good,
         'missing_tags_bad': mt_bad,
-        'missing_tags_score': (100 * mt_good / (mt_good + mt_bad)),
+        'missing_tags_score': 0 if mt_good + mt_bad == 0 else (100 * mt_good / (mt_good + mt_bad)),
+
+        'missing_genes': mg_results,
+        'missing_genes_good': mg_good,
+        'missing_genes_bad': mg_bad,
+        'missing_genes_score': 0 if mg_good + mg_bad == 0 else (100 * mg_good / (mg_good + mg_bad)),
 
         'weird_starts': ws_results,
         'weird_starts_good': ws_good,
         'weird_starts_bad': ws_bad,
         'weird_starts_overall': ws_overall,
         'weird_starts_overall_sorted_keys': sorted(ws_overall, reverse=True, key=lambda x: ws_overall[x]),
-        'weird_starts_score': (100 * ws_good / (ws_good + ws_bad)),
+        'weird_starts_score': 0 if ws_good + ws_bad == 0 else (100 * ws_good / (ws_good + ws_bad)),
 
         'gene_model': gm_results,
         'gene_model_good': gm_good,
         'gene_model_bad': gm_bad,
-        'gene_model_score': (100 * gm_good / (gm_good + gm_bad)),
+        'gene_model_score': 0 if gm_good + gm_bad == 0 else (100 * gm_good / (gm_good + gm_bad)),
 
         'coding_density': cd,
         'coding_density_real': cd_real,
@@ -728,9 +756,16 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
         else:
             return '←'.decode('utf-8')
 
+    def nice_strand_tex(direction):
+        if direction > 0:
+            return '$\\rightarrow$'
+        else:
+            return '$\\leftarrow$'
+
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
     env.filters['nice_id'] = get_gff3_id
     env.filters['nice_strand'] = nice_strand
+    env.filters['nice_strand_tex'] = nice_strand_tex
     tpl = env.get_template(reportTemplateName)
     return tpl.render(**kwargs).encode('utf-8')
 
