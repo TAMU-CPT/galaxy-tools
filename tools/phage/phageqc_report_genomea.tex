@@ -62,7 +62,7 @@ Feature ID & Location\\ \midrule
 \subsection{Missing Product Tags}\label{missing-product-tags}
 
 {{missing_tags_good}} out of {{missing_tags_good + missing_tags_bad}} features have product tags (\texttt{/product="..."}).
-{% if missing_tags.__len__ > 0 %}
+{% if missing_tags_bad > 0 %}
 The following features are missing product tags
 \begin{longtable}[]{ll}
 Feature & Location \\ \midrule
