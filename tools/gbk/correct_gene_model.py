@@ -51,9 +51,9 @@ def correct_model(genbank_file):
             for c in cds:
                 quals = {
                     'cpt_source': ['CPT_GENE_MODEL_CORRECTION'],
-                    'gene': f.qualifiers.get('gene', []),
-                    'product': f.qualifiers.get('product', []),
-                    'locus_tag': f.qualifiers.get('locus_tag', [get_id(c)]),
+                    'gene': c.qualifiers.get('gene', []),
+                    'product': c.qualifiers.get('product', []),
+                    'locus_tag': c.qualifiers.get('locus_tag', [get_id(c)]),
                     'ID': 'gene.' + get_id(c),
                 }
                 if 'gene' not in c.qualifiers:
