@@ -188,4 +188,8 @@
       <tool file="cpt/galaxy-tools/TeX/pdfimages.xml" />
       <tool file="cpt/galaxy-tools/TeX/pdftotext.xml" />
   </section>
+
+  <section id="data_summ" name="Data Summarization and Reporting">
+    <tool file="cpt2/tools-iuc/tools/jbrowse/jbrowse.xml" />
+  </section>
 </toolbox>
