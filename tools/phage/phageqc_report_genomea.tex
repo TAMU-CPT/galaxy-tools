@@ -79,7 +79,9 @@ These changes are not required, but are strongly encouraged in order to
 provide a uniform genome annotation within the phage community.
 
 \subsection{Start Codons}\label{start-codons}
-You have {{ weird_starts_bad }} unusual start codons. The start codon distribution is as follows:
+Nearly all phage genes use ATG, GTG or TTG as start codons. The start codon distribution is as
+follows:
+
 
 \begin{longtable}[]{lll}
 Start Codon & Count\\ \midrule
@@ -90,7 +92,9 @@ Start Codon & Count\\ \midrule
 \end{longtable}
 
 {% if weird_starts_bad != 0 %}
-You may wish to investigate the following starts individually and verify their correctness.
+There are {{weird_starts_bad }} unusual start codons in the genome, these
+should be carefully justified. If there is evidence for these starts, the
+GenomeA text should note this.
 
 \begin{longtable}[]{lll}
 Feature ID & Location & Start Codon\\ \midrule
