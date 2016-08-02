@@ -43,6 +43,7 @@ def unionLoc(a, b):
 def correct_model(genbank_file):
     for record in SeqIO.parse(genbank_file, "genbank"):
         cds = [f for f in record.features if f.type == 'CDS']
+        trna = [f for f in record.features if f.type == 'tRNA']
         genes = [f for f in record.features if f.type == 'gene']
         rbss = [f for f in record.features if f.type == 'RBS']
 
@@ -90,7 +91,20 @@ def correct_model(genbank_file):
             # print genes
             record.features += genes
         elif len(genes) != len(cds):
-            log.error("Different number of CDSs and genes. I don't know how to handle this case (yet)")
+            for g in genes:
+                associated_cds = [x for x in cds if x.location.end == g.location.end]
+                if len(associated_cds) == 1:
+                    pass
+                elif len(associated_cds) == 0:
+                    associated_trna = [x for x in trna if x.location.end == g.location.end]
+                    if len(associated_trna) == 1:
+                        pass
+                    else:
+                        log.warn("Could not find a child feature for gene %s", get_id(g))
+                else:
+                    log.warn("Could not find a child feature for gene %s", get_id(g))
+
+            log.info("Different number of CDSs and genes. There may be bugs in this process (genes=%s != cds=%s)", len(genes), len(cds))
 
         record.features = sorted(record.features, key=lambda x: int(x.location.start) - (1 if x.type == 'gene' else 0))
         yield [record]
