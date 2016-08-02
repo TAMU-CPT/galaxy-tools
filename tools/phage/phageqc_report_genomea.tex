@@ -55,7 +55,7 @@ rules which are encoded in the sequin and tbl2asn programs.
 Feature ID & Location\\ \midrule
 \endhead
 {% for row in missing_genes %}
-{{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
+{{ row.id | texify }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
 {% endfor %}
 \end{longtable}
 
@@ -68,7 +68,7 @@ The following features are missing product tags
 Feature & Location \\ \midrule
 \endhead
 {% for row in missing_tags %}
-{{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
+{{ row.id | texify }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
 {% endfor %}
 \end{longtable}
 {% endif %}
@@ -100,7 +100,7 @@ GenomeA text should note this.
 Feature ID & Location & Start Codon\\ \midrule
 \endhead
 {% for row in weird_starts %}
-{{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}} & {{row.__start}} \\
+{{ row.id | texify }} & \texttt{{'{'}}{{row.location}}{{'}'}} & {{row.__start}} \\
 {% endfor %}
 \end{longtable}
 
@@ -118,12 +118,12 @@ ID & Location & Error & Upstream (-{{upstream_max}} .. -{{upstream_min}})\\ \mid
 \endhead
 {% for row in missing_rbs %}
 {% if 'Unannotated' not in row.__message%}
-{{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}} & {{row.__message}} & \texttt{{'{'}}{{row.__upstream}}{{'}'}} \\
+{{ row.id | texify }} & \texttt{{'{'}}{{row.location}}{{'}'}} & {{row.__message | texify}} & \texttt{{'{'}}{{row.__upstream}}{{'}'}} \\
 {% endif %}
 {% endfor %}
 {% for row in missing_rbs %}
 {% if 'Unannotated' in row.__message%}
-{{ row.id }} & \texttt{{'{'}}{{row.location}}{{'}'}} & {{row.__message}} & \texttt{{'{'}}{{row.__upstream}}{{'}'}} \\
+{{ row.id | texify }} & \texttt{{'{'}}{{row.location}}{{'}'}} & {{row.__message | texify}} & \texttt{{'{'}}{{row.__upstream}}{{'}'}} \\
 {% endif %}
 {% endfor %}
 \end{longtable}
@@ -150,7 +150,7 @@ Region & Size & Surroundings & Messages\\ \midrule
 Feature A & A Location & Feature B & B Location & Shared Region & Overlap Length\\ \midrule
 \endhead
 {% for row in excessive_overlap %}
-    {{row[0].id}} & \texttt{{'{'}}{{row[0].location}}{{'}'}} & {{row[1].id}} & \texttt{{'{'}}{{row[1].location}}{{'}'}} & {{row[2]}}..{{row[3]}} & {{row[3] - row[2]}} \\
+    {{row[0].id | texify}} & \texttt{{'{'}}{{row[0].location}}{{'}'}} & {{row[1].id | texify}} & \texttt{{'{'}}{{row[1].location}}{{'}'}} & {{row[2]}}..{{row[3]}} & {{row[3] - row[2]}} \\
 {% endfor %}
 \end{longtable}
 
