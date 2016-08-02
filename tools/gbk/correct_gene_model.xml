@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.correct_gene_model" name="Genbank Gene Model Correction" version="1.0">
+<tool id="edu.tamu.cpt.gbk.correct_gene_model" name="Genbank Gene Model Correction" version="1.3">
   <description>adds genes when only CDSs are annotated</description>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[
 correct_gene_model.py
