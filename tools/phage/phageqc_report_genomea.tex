@@ -50,6 +50,10 @@ submission.
 These coding sequences (``CDS'' in your GenBank file) are missing the
 associated gene feature (``gene''). This is required for validation by NCBI's
 rules which are encoded in the sequin and tbl2asn programs.
+{%if missing_genes_bad > 0 %}
+
+{{ missing_genes_bad }} out of {{ missing_genes_good + missing_genes_bad
+}} features are lacking their associated gene feature.
 
 \begin{longtable}[]{ll}
 Feature ID & Location\\ \midrule
@@ -58,6 +62,9 @@ Feature ID & Location\\ \midrule
 {{ row.id | texify }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
 {% endfor %}
 \end{longtable}
+{% else %}
+You are not missing any gene features
+{% endif %}
 
 \subsection{Missing Product Tags}\label{missing-product-tags}
 
@@ -150,7 +157,7 @@ Region & Size & Surroundings & Messages\\ \midrule
 Feature A & A Location & Feature B & B Location & Shared Region & Overlap Length\\ \midrule
 \endhead
 {% for row in excessive_overlap %}
-    {{row[0].id | texify}} & \texttt{{'{'}}{{row[0].location}}{{'}'}} & {{row[1].id | texify}} & \texttt{{'{'}}{{row[1].location}}{{'}'}} & {{row[2]}}..{{row[3]}} & {{row[3] - row[2]}} \\
+{{row[0].id | texify}} & \texttt{{'{'}}{{row[0].location}}{{'}'}} & {{row[1].id | texify}} & \texttt{{'{'}}{{row[1].location}}{{'}'}} & {{row[2]}}..{{row[3]}} & {{row[3] - row[2]}} \\
 {% endfor %}
 \end{longtable}
 

@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <toolbox>
   <section id="getext_ncbi" name="Get Data: NCBI">
+    <tool hidden="True" file="data_source/upload.xml" />
     <tool file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/ecitmatch.xml" />
     <tool file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/efetch.xml" />
     <tool file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/egquery.xml" />
