@@ -158,7 +158,7 @@ Region & Size & Surroundings & Messages\\
 \hline
 \endhead
 {% for row in excessive_gap %}
-\texttt{{'{'}}{{row[0]}}..{{row[1]}}{{'}'}} & {{row[1] - row[0]}} & {{row[2] | nice_strand_tex}} {{row[3] | nice_strand_tex}} &  {% if row[4] != 0 %}{{row[4]}} possible genes found in this region{% endif %} \\
+\texttt{{'{'}}{{row[0]}}..{{row[1]}}{{'}'}} & {{row[1] - row[0]}} & {{row[2] | nice_strand_tex}} {{row[3] | nice_strand_tex}} &  {% if row[4] != 0 %}{{row[4]}} ORFs found in this region{% endif %} \\
 
 {% endfor %}
 \end{longtable}
