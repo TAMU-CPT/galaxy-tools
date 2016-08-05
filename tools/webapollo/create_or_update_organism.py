@@ -1,8 +1,9 @@
 #!/usr/bin/env python
+import sys
 import json
 import argparse
 import time
-from webapollo import WAAuth, WebApolloInstance, OrgOrGuess, GuessOrg
+from webapollo import WAAuth, WebApolloInstance, OrgOrGuess, GuessOrg, AssertUser
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -28,9 +29,7 @@ if __name__ == '__main__':
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
     # User must have an account
-    gx_user = wa.users.loadUsers(email=args.email)
-    if len(gx_user) == 0:
-        raise Exception("Unknown user. Please register first")
+    gx_user = AssertUser(wa.users.loadUsers(email=args.email))
 
     log.info("Determining if add or update required")
     try:
@@ -38,8 +37,17 @@ if __name__ == '__main__':
     except Exception:
         org = None
 
-    # TODO: Check ownership
     if org:
+        has_perms = False
+        for user_owned_organism in gx_user.organismPermissions:
+            if 'WRITE' in user_owned_organism['permissions']:
+                has_perms = True
+                break
+
+        if not has_perms:
+            print "Naming Conflict. You do not have permissions to access this organism. Either request permission from the owner, or choose a different name for your organism."
+            sys.exit(2)
+
         log.info("\tUpdating Organism")
         import subprocess
         container_id = subprocess.check_output(
@@ -84,9 +92,9 @@ if __name__ == '__main__':
 
         # Must sleep before we're ready to handle
         time.sleep(2)
-        log.info("Updating permissions for %s on %s", gx_user[0], org_cn)
+        log.info("Updating permissions for %s on %s", gx_user, org_cn)
         wa.users.updateOrganismPermission(
-            gx_user[0], org_cn,
+            gx_user, org_cn,
             write=True,
             export=True,
             read=True,

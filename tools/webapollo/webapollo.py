@@ -57,6 +57,13 @@ def GuessCn(args):
     return org, seqs
 
 
+def AssertUser(user_list):
+    if len(user_list) == 0:
+        raise Exception("Unknown user. Please register first")
+    else:
+        return user_list[0]
+
+
 class WebApolloInstance(object):
 
     def __init__(self, url, username, password):
@@ -596,11 +603,16 @@ class OrganismsClient(Client):
 class UsersClient(Client):
     CLIENT_BASE = '/user/'
 
+    # Real one
+    # def getOrganismPermissionsForUser(self, user):
+        # data = {
+            # 'userId': user.userId,
+        # }
+        # return self.request('getOrganismPermissionsForUser', data)
+
+    # Utter frigging hack
     def getOrganismPermissionsForUser(self, user):
-        data = {
-            'userId': user.userId,
-        }
-        return self.request('getOrganismPermissionsForUser', data)
+        return self.loadUser(user).organismPermissions
 
     def updateOrganismPermission(self, user, organism, administrate=False,
                                  write=False, export=False, read=False):
