@@ -55,8 +55,10 @@ rules which are encoded in the sequin and tbl2asn programs.
 {{ missing_genes_bad }} out of {{ missing_genes_good + missing_genes_bad
 }} features are lacking their associated gene feature.
 
-\begin{longtable}[]{ll}
-Feature ID & Location\\ \midrule
+\begin{longtable}{ll}
+\hline
+Feature ID & Location\\
+\hline
 \endhead
 {% for row in missing_genes %}
 {{ row.id | texify }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
@@ -71,8 +73,10 @@ You are not missing any gene features
 {{missing_tags_good}} out of {{missing_tags_good + missing_tags_bad}} features have product tags (\texttt{/product="..."}).
 {% if missing_tags_bad > 0 %}
 The following features are missing product tags
-\begin{longtable}[]{ll}
-Feature & Location \\ \midrule
+\begin{longtable}{ll}
+\hline
+Feature & Location\\
+\hline
 \endhead
 {% for row in missing_tags %}
 {{ row.id | texify }} & \texttt{{'{'}}{{row.location}}{{'}'}}\tabularnewline
@@ -90,8 +94,10 @@ Nearly all phage genes use ATG, GTG or TTG as start codons. The start codon dist
 follows:
 
 
-\begin{longtable}[]{lll}
-Start Codon & Count\\ \midrule
+\begin{longtable}{lll}
+\hline
+Start Codon & Count\\
+\hline
 \endhead
 {% for codon_key in weird_starts_overall_sorted_keys %}
 {{ codon_key }} & {{ weird_starts_overall[codon_key] }} \\
@@ -103,8 +109,10 @@ There are {{weird_starts_bad }} unusual start codons in the genome, these
 should be carefully justified. If there is evidence for these starts, the
 GenomeA text should note this.
 
-\begin{longtable}[]{lll}
-Feature ID & Location & Start Codon\\ \midrule
+\begin{longtable}{lll}
+\hline
+Feature ID & Location & Start Codon\\
+\hline
 \endhead
 {% for row in weird_starts %}
 {{ row.id | texify }} & \texttt{{'{'}}{{row.location}}{{'}'}} & {{row.__start}} \\
@@ -120,8 +128,10 @@ Shine-Dalgarno sequence), in which case there is a strong possibility that
 this is not the correct start, or there is one but it is not annotated.
 Annotating the RBS as part of the gene feature is the best practice.
 
-\begin{longtable}[]{lllll}
-ID & Location & Error & Upstream (-{{upstream_max}} .. -{{upstream_min}})\\ \midrule
+\begin{longtable}{lllll}
+\hline
+ID & Location & Error & Upstream (-{{upstream_max}} .. -{{upstream_min}})\\
+\hline
 \endhead
 {% for row in missing_rbs %}
 {% if 'Unannotated' not in row.__message%}
@@ -142,8 +152,10 @@ informational. You should examine the areas mentioned in detail.
 
 \subsection{Excessive Gaps}\label{excessive-gaps}
 
-\begin{longtable}[]{llll}
-Region & Size & Surroundings & Messages\\ \midrule
+\begin{longtable}{llll}
+\hline
+Region & Size & Surroundings & Messages\\
+\hline
 \endhead
 {% for row in excessive_gap %}
 \texttt{{'{'}}{{row[0]}}..{{row[1]}}{{'}'}} & {{row[1] - row[0]}} & {{row[2] | nice_strand_tex}} {{row[3] | nice_strand_tex}} &  {% if row[4] != 0 %}{{row[4]}} possible genes found in this region{% endif %} \\
@@ -153,8 +165,10 @@ Region & Size & Surroundings & Messages\\ \midrule
 
 \subsection{Excessive Overlaps}\label{excessive-overlaps}
 
-\begin{longtable}[]{llllll}
-Feature A & A Location & Feature B & B Location & Shared Region & Overlap Length\\ \midrule
+\begin{longtable}{llllll}
+\hline
+Feature A & A Location & Feature B & B Location & Shared Region & Overlap Length\\
+\hline
 \endhead
 {% for row in excessive_overlap %}
 {{row[0].id | texify}} & \texttt{{'{'}}{{row[0].location}}{{'}'}} & {{row[1].id | texify}} & \texttt{{'{'}}{{row[1].location}}{{'}'}} & {{row[2]}}..{{row[3]}} & {{row[3] - row[2]}} \\
