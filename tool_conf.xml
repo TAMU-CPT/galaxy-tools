@@ -88,6 +88,7 @@
     <tool file="cpt2/galaxy-tools/tools/gbk/cpt_add_gff_to_gbk.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_reformat.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_rebase.xml" />
+    <tool file="cpt2/galaxy-tools/tools/gff3/gff3_reopen.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/start_stats.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/stop_stats.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/shinefind.xml" />
