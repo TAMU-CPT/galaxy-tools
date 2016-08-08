@@ -767,7 +767,7 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
 
 
     def texify(data):
-        return data.replace('_', '\\_')
+        return data.replace('_', '\\_').replace('$', '\\$')
 
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
     env.filters['nice_id'] = get_gff3_id
