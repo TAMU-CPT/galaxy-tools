@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.tabular.intersect" name="Intersect Tabular Files" version="1.0">
+<tool id="edu.tamu.cpt.tabular.intersect" name="Intersect Tabular Files" version="1.1">
   <description>based on a shared column (Inner Join)</description>
   <command detect_errors="aggressive">
-  python $__tool_dir__/intersect.py
+  python $__tool_directory__/intersect.py
   $file_a
   $col_a
   $file_b
