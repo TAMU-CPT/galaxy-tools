@@ -22,4 +22,4 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     for seq in reopen_contig(**vars(args)):
-        print SeqIO.write(seq, sys.stdout, 'fasta')
+        SeqIO.write(seq, sys.stdout, 'fasta')
