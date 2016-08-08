@@ -40,7 +40,7 @@ DEFAULT_COLOR_SCHEME = {
     },
     "repeat_region": {
         "color": "#b3ee3a",
-        "border": 1,
+        "border": 0,
         "plot": 1
     },
     "mat_peptide": {
@@ -56,6 +56,9 @@ class PlottedFeature(object):
     def __init__(self, feature):
         self.feature = feature
         self.location = feature.location
+        if not feature.location.strand:
+            self.location.strand = 0
+
         self.tag = feature.type
 
         def featureColor(feature, allow_default=True):
@@ -169,10 +172,10 @@ class Plotter(object):
         self.ruler_offset = seq.subset
 
     def processFeature(self, feature):
-        gene = PlottedFeature(feature)
+        obj = PlottedFeature(feature)
 
         if feature.type in self.classes:
-            self.classes[feature.type].addObject(gene)
+            self.classes[feature.type].addObject(obj)
 
     def partitionLines(self, split_factor=1.05):
         avgRowLength = int(float(self.genome_length) / float(self.rows * split_factor))
@@ -394,7 +397,7 @@ class Plotter(object):
         h = 15
         y = (row - 1) * self.ils + self.y_offset - h / 2
 
-        w = self.calc_width * len(feature.location) / self._internal_maxrowlength
+        w = float(self.calc_width * abs(feature.location.end - feature.location.start)) / self._internal_maxrowlength
 
         if self.separate_strands:
             y += -30 * feature.location.strand
