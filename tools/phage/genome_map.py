@@ -84,7 +84,7 @@ class PlottedFeature(object):
 
         label = wa_unified_product_name(self.feature)
         # Best option, the gene has a product
-        if 'product' in self.feature.qualifiers or 'Product' in self.feature.qualifiers:
+        if label:
             self.label = label
             return self.label
 
