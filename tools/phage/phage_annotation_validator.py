@@ -195,19 +195,27 @@ def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30,
         log.warn("NO GENES FOUND")
         return good, bad, results, []
 
-    current_gene = [
-        int(sorted_genes[0].location.start),
-        int(sorted_genes[0].location.end)
-    ]
-    for gene in sorted_genes[1:]:
+    current_gene = None
+    for gene in sorted_genes:
         # If the gene's start is contiguous to the "current_gene", then we
         # extend current_gene
-        if gene.location.start <= current_gene[1] + excess:
-            current_gene[1] = int(gene.location.end)
-        else:
-            # If it's discontiguous, we append the region and clear.
-            contiguous_regions.append(current_gene)
-            current_gene = [int(gene.location.start), int(gene.location.end)]
+        log.debug('gene.id', gene.id)
+        for cds in genes(gene.sub_features, feature_type='CDS'):
+            log.debug('\t%s %s', cds.id, cds.location)
+            if current_gene is None:
+                current_gene = [
+                    int(cds.location.start),
+                    int(cds.location.end)
+                ]
+
+            if cds.location.start <= current_gene[1] + excess:
+                # Don't want to decrease size
+                if int(cds.location.end) >= current_gene[1]:
+                    current_gene[1] = int(cds.location.end)
+            else:
+                # If it's discontiguous, we append the region and clear.
+                contiguous_regions.append(current_gene)
+                current_gene = [int(cds.location.start), int(cds.location.end)]
 
     # This generally expected that annotations would NOT continue unto the end
     # of the genome, however that's a bug, and we can make it here with an
@@ -456,30 +464,46 @@ def bad_gene_model(record):
     """
     results = []
     good = 0
+    bad = 0
     qc_features = []
 
     for gene in coding_genes(record.features):
         exons = [x for x in genes(gene.sub_features, feature_type='exon') if len(x) > 10]
         CDSs = [x for x in genes(gene.sub_features, feature_type='CDS')]
 
-        if len(exons) == 1 and len(CDSs) == 1:
-            exon = exons[0]
-            CDS = CDSs[0]
-            if len(exon) != len(CDS):
+        if len(exons) >= 1 and len(CDSs) >= 1:
+            if len(exons) != len(CDSs):
                 results.append((
                     get_gff3_id(gene),
-                    exon,
-                    CDS,
-                    'CDS does not extend to full length of gene',
+                    None,
+                    None,
+                    'Mismatched number of exons and CDSs in gff3 representation',
                 ))
                 qc_features.append(gen_qc_feature(
-                    exon.location.start, exon.location.end,
-                    'CDS does not extend to full length of gene',
-                    strand=exon.strand,
+                    gene.location.start, gene.location.end,
+                    'Mismatched number of exons and CDSs in gff3 representation',
+                    strand=gene.strand,
                     id_src=gene
                 ))
+                bad += 1
             else:
-                good += 1
+                for (exon, cds) in zip(exons, CDSs):
+                    if len(exon) != len(cds):
+                        results.append((
+                            get_gff3_id(gene),
+                            exon,
+                            cds,
+                            'CDS does not extend to full length of gene',
+                        ))
+                        qc_features.append(gen_qc_feature(
+                            exon.location.start, exon.location.end,
+                            'CDS does not extend to full length of gene',
+                            strand=exon.strand,
+                            id_src=gene
+                        ))
+                        bad += 1
+                    else:
+                        good += 1
         else:
             log.warn("Could not handle %s, %s", exons, CDSs)
             results.append((
@@ -489,7 +513,7 @@ def bad_gene_model(record):
                 '{0} exons, {1} CDSs'.format(len(exons), len(CDSs))
             ))
 
-    return good, len(results), results, qc_features
+    return good, len(results) + bad, results, qc_features
 
 
 def weird_starts(record):
