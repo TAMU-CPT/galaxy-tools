@@ -14,7 +14,7 @@ from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from jinja2 import Environment, FileSystemLoader
-from cpt import OrfFinder
+from cpt import MGAFinder
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(name='pav')
 
@@ -267,7 +267,8 @@ def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30,
 
     better_results = []
     qc_features = []
-    of = OrfFinder(11, 'CDS', 'closed', min_gene)
+    of = MGAFinder(11, 'CDS', 'closed', min_gene)
+    # of = OrfFinder(11, 'CDS', 'closed', min_gene)
 
     for result_obj in results:
         start = result_obj[0]
@@ -589,7 +590,6 @@ def missing_genes(record):
     return good, bad, results, qc_features
 
 
-
 def missing_tags(record):
     """Find features without product
     """
@@ -788,7 +788,6 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
             return '$\\rightarrow$'
         else:
             return '$\\leftarrow$'
-
 
     def texify(data):
         return data.replace('_', '\\_').replace('$', '\\$')
