@@ -223,11 +223,12 @@ class Mutator(object):
         # Set of booleans representing masked/unmaksed regions
         regions = [True for x in range(len(sequence))]
         # for each masked in region
-        for mask in self.masked_regions[sequence.id]:
-            # Loop over all values in that mask
-            for i in range(mask[0], mask[1]):
-                # Set those regions to false.
-                regions[i] = False
+        if sequence.id in self.masked_regions:
+            for mask in self.masked_regions[sequence.id]:
+                # Loop over all values in that mask
+                for i in range(mask[0], mask[1]):
+                    # Set those regions to false.
+                    regions[i] = False
 
         # now we do some post processing
         realRegions = []
