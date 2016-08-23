@@ -7,7 +7,7 @@ import argparse
 import itertools
 import logging
 from gff3 import feature_lambda, \
-    coding_genes, genes, get_gff3_id, feature_test_location, get_rbs_from
+    coding_genes, genes, get_gff3_id, feature_test_location, get_rbs_from, nice_name
 from shinefind import NaiveSDCaller
 from BCBio import GFF
 from Bio import SeqIO
@@ -713,6 +713,7 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
         'upstream_min': sd_min,
         'upstream_max': sd_max,
         'record_name': record.id,
+        'record_nice_name': nice_name(record),
 
         'score': score,
         'encouragement': get_encouragement(score),
