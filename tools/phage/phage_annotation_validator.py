@@ -7,14 +7,14 @@ import argparse
 import itertools
 import logging
 from gff3 import feature_lambda, \
-    coding_genes, genes, get_gff3_id, feature_test_location, get_rbs_from
+    coding_genes, genes, get_gff3_id, feature_test_location, get_rbs_from, nice_name
 from shinefind import NaiveSDCaller
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from jinja2 import Environment, FileSystemLoader
-from cpt import OrfFinder
+from cpt import MGAFinder
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(name='pav')
 
@@ -267,7 +267,8 @@ def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30,
 
     better_results = []
     qc_features = []
-    of = OrfFinder(11, 'CDS', 'closed', min_gene)
+    of = MGAFinder(11, 'CDS', 'closed', min_gene)
+    # of = OrfFinder(11, 'CDS', 'closed', min_gene)
 
     for result_obj in results:
         start = result_obj[0]
@@ -589,7 +590,6 @@ def missing_genes(record):
     return good, bad, results, qc_features
 
 
-
 def missing_tags(record):
     """Find features without product
     """
@@ -713,6 +713,7 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
         'upstream_min': sd_min,
         'upstream_max': sd_max,
         'record_name': record.id,
+        'record_nice_name': nice_name(record),
 
         'score': score,
         'encouragement': get_encouragement(score),
@@ -788,7 +789,6 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
             return '$\\rightarrow$'
         else:
             return '$\\leftarrow$'
-
 
     def texify(data):
         return data.replace('_', '\\_').replace('$', '\\$')

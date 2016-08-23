@@ -250,3 +250,14 @@ def get_rbs_from(gene):
     rbs_regulatory = list(feature_lambda(regulatory_elements, feature_test_quals, {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
     # Here's hoping you find just one ;)
     return rbs_rbs + rbs_sds + rbs_regulatory + apollo_exons
+
+
+def nice_name(record):
+    """
+    get the real name rather than NCBI IDs and so on. If fails, will return record.id
+    """
+    name = record.id
+    likely_parental_contig = list(genes(record.features, feature_type='contig'))
+    if len(likely_parental_contig) == 1:
+        name = likely_parental_contig[0].qualifiers.get('organism', [name])[0]
+    return name

@@ -22,7 +22,7 @@ $positional_1
   </outputs>
   <tests>
       <test>
-          <param name="fasta_file" value="random.fa" />
+          <param name="positional_1" value="random.fa" />
           <param name="window" value="10" />
           <param name="step_size" value="10" />
           <output name="default" file="random.10.wig" />

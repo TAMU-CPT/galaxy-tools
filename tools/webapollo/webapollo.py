@@ -605,10 +605,10 @@ class UsersClient(Client):
 
     # Real one
     # def getOrganismPermissionsForUser(self, user):
-        # data = {
-            # 'userId': user.userId,
-        # }
-        # return self.request('getOrganismPermissionsForUser', data)
+    # data = {
+    # 'userId': user.userId,
+    # }
+    # return self.request('getOrganismPermissionsForUser', data)
 
     # Utter frigging hack
     def getOrganismPermissionsForUser(self, user):
