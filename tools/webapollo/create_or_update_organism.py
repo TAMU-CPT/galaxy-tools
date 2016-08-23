@@ -51,7 +51,7 @@ if __name__ == '__main__':
         log.info("\tUpdating Organism")
         import subprocess
         container_id = subprocess.check_output(
-            """docker ps | grep apollo | grep postgres |awk '{print $1}'""",
+            """docker ps | grep webapollo2_db |awk '{print $1}'""",
             shell=True
         )
         container_id = container_id.strip()
