@@ -360,10 +360,10 @@ def coding_density(record, mean=92.5, sd=20):
     return int(norm(100 * avgFeatLen, mean=mean, sd=sd) * 100), int(100 * avgFeatLen)
 
 
-def excessive_overlap(record, excessive=15):
+def excessive_overlap(record, excess=15, excess_divergent=30):
     """
     Find excessive overlaps in the genome, where excessive is defined as 15
-    bases.
+    bases for same strand, and 30 for divergent translation.
 
     Does a product of all the top-level features in the genome, and calculates
     gaps.
@@ -398,8 +398,10 @@ def excessive_overlap(record, excessive=15):
         # if it's larger than our excessive size, we know that they're
         # overlapped
         ix = cas.intersection(cbs)
-        if len(ix) >= excessive:
-            bad += float(len(ix)) / float(excessive)
+
+        if (cds_a.location.strand == cds_b.location.strand and len(ix) >= excess) or \
+                (cds_a.location.strand != cds_b.location.strand and len(ix) >= excess_divergent):
+            bad += float(len(ix)) / float(min(excess, excess_divergent))
             qc_features.append(gen_qc_feature(
                 min(ix),
                 max(ix),
@@ -730,10 +732,10 @@ def missing_tags(record):
     return good, bad, results, qc_features
 
 
-def evaluate_and_report(annotations, genome, user_email, gff3=None,
-                        tbl=None, sd_min=5, sd_max=15, gap_dist=45,
-                        overlap_dist=15, min_gene_length=30,
+def evaluate_and_report(annotations, genome, gff3=None,
+                        tbl=None, sd_min=5, sd_max=15, min_gene_length=30,
                         excessive_gap_dist=50, excessive_gap_divergent_dist=200,
+                        excessive_overlap_dist=25, excessive_overlap_divergent_dist=50,
                         reportTemplateName='phage_annotation_validator.html'):
     """
     Generate our HTML evaluation of the genome
@@ -763,14 +765,18 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
         excess=excessive_gap_dist,
         excess_divergent=excessive_gap_divergent_dist,
         min_gene=min_gene_length,
-        slop=overlap_dist,
+        slop=excessive_overlap_dist,
         lookahead_min=sd_min,
         lookahead_max=sd_max
     )
     gff3_qc_features += eg_annotations
 
     log.info("Locating excessive overlaps")
-    eo_good, eo_bad, eo_results, eo_annotations = excessive_overlap(record, excessive=overlap_dist)
+    eo_good, eo_bad, eo_results, eo_annotations = excessive_overlap(
+        record,
+        excess=excessive_overlap_dist,
+        excess_divergent=excessive_overlap_divergent_dist
+    )
     gff3_qc_features += eo_annotations
 
     log.info("Locating morons")
@@ -827,7 +833,15 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
         'upstream_max': sd_max,
         'record_name': record.id,
         'record_nice_name': nice_name(record),
-
+        'params': {
+            'sd_min': sd_min,
+            'sd_max': sd_max,
+            'min_gene_length': min_gene_length,
+            'excessive_gap_dist': excessive_gap_dist,
+            'excessive_gap_divergent_dist': excessive_gap_divergent_dist,
+            'excessive_overlap_dist': excessive_overlap_dist,
+            'excessive_overlap_divergent_dist': excessive_overlap_divergent_dist,
+        },
         'score': score,
         'encouragement': get_encouragement(score),
 
@@ -930,16 +944,15 @@ if __name__ == '__main__':
     parser.add_argument('--sd_min', type=int, help='Minimum distance from gene start for an SD to be', default=5)
     parser.add_argument('--sd_max', type=int, help='Maximum distance from gene start for an SD to be', default=15)
 
-    parser.add_argument('--gap_dist', type=int, help='Maximum distance from gene start for an SD to be', default=30)
-    parser.add_argument('--overlap_dist', type=int, help='Maximum distance from gene start for an SD to be', default=30)
-
     parser.add_argument('--min_gene_length', type=int, help='Minimum length for a putative gene call (AAs)', default=30)
+
+    parser.add_argument('--excessive_overlap_dist', type=int, help='Excessive overlap for genes in same direction', default=25)
+    parser.add_argument('--excessive_overlap_divergent_dist', type=int, help='Excessive overlap for genes in diff directions', default=50)
 
     parser.add_argument('--excessive_gap_dist', type=int, help='Maximum distance between two genes', default=40)
     parser.add_argument('--excessive_gap_divergent_dist', type=int, help='Maximum distance between two divergent genes', default=200)
 
     parser.add_argument('--reportTemplateName', help='Report template file name', default='phageqc_report_full.html')
-    parser.add_argument('--user_email')
 
     args = parser.parse_args()
 

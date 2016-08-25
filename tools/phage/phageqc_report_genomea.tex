@@ -161,12 +161,26 @@ ID & Location & Error & Upstream (-{{upstream_max}} .. -{{upstream_min}})\\
 {% endfor %}
 \end{longtable}
 
-\section{Notes}\label{notes}
+\section{Areas for Further Examination}\label{notes}
 
 These areas may be indicative of a problem, or may simply be
-informational. You should examine the areas mentioned in detail.
+informational. You should examine the areas mentioned in detail to ensure
+that the annotations are valid and that no genes are missed.
+
+
+
+
 
 \subsection{Unusual Gaps}\label{excessive-gaps}
+
+{% if excessive_gap_good == 0 %}
+No gaps over {{ params['excessive_gap_dist'] }} nt (for genes on the same
+strand) or {{ params['excessive_gap_divergent_dist'] }} (for genes on
+opposite strands) were found.
+{% else %}
+Gaps over {{ params['excessive_gap_dist'] }} nt (for genes on the same
+strand) or {{ params['excessive_gap_divergent_dist'] }} (for genes on
+opposite strands) were found.
 
 \begin{longtable}{llll}
 \hline
@@ -178,9 +192,21 @@ Region & Size & Surroundings & Messages\\
 
 {% endfor %}
 \end{longtable}
+{% endif %}
+
+
+
 
 \subsection{Unusual Overlaps}\label{excessive-overlaps}
 
+{% if excessive_overlap_good == 0 %}
+No overlaps over {{ params['excessive_overlap_dist'] }} nt (for genes on the same
+strand) or {{ params['excessive_overlap_divergent_dist'] }} (for genes on
+opposite strands) were found.
+{% else %}
+Overlaps over {{ params['excessive_overlap_dist'] }} nt (for genes on the same
+strand) or {{ params['excessive_overlap_divergent_dist'] }} (for genes on
+opposite strands) were found.
 \begin{longtable}{llllll}
 \hline
 \multicolumn{2}{l}{Feature A} & \multicolumn{2}{l}{Feature B} & & \\
@@ -191,6 +217,7 @@ ID & Location & ID & Location & Region & Length\\
 {{row[0].id | texify}} & \texttt{{'{'}}{{row[0].location}}{{'}'}} & {{row[1].id | texify}} & \texttt{{'{'}}{{row[1].location}}{{'}'}} & {{row[2]}}..{{row[3]}} & {{row[3] - row[2]}} \\
 {% endfor %}
 \end{longtable}
+{% endif %}
 
 \subsection{Coding Density}\label{coding-density}
 
