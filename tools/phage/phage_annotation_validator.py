@@ -925,11 +925,17 @@ def evaluate_and_report(annotations, genome, gff3=None,
     def texify(data):
         return data.replace('_', '\\_').replace('$', '\\$')
 
+    def length(data):
+        return len(data)
+
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
-    env.filters['nice_id'] = get_gff3_id
-    env.filters['nice_strand'] = nice_strand
-    env.filters['nice_strand_tex'] = nice_strand_tex
-    env.filters['texify'] = texify
+    env.filters.update({
+        'nice_id': get_gff3_id,
+        'nice_strand': nice_strand,
+        'nice_strand_tex': nice_strand_tex,
+        'texify': texify,
+        'length': length,
+    })
     tpl = env.get_template(reportTemplateName)
     return tpl.render(**kwargs).encode('utf-8')
 
