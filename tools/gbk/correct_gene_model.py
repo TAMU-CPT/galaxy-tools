@@ -25,10 +25,14 @@ def get_id(feature=None, parent_prefix=None):
 
 
 def same_end(query, target):
-    return [
-        x for x in target
-        if x.location.end == query.location.end and x.location.strand == query.location.strand
-    ]
+    results = []
+    for x in target:
+        if x.location.strand == query.location.strand:
+            if x.location.strand > 0 and x.location.end == query.location.end:
+                results.append(x)
+            elif x.location.strand < 0 and x.location.start == query.location.start:
+                results.append(x)
+    return results
 
 
 def nearbyRbss(cds, rbss):
