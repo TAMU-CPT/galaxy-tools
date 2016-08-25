@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 import sys
+import random
 import argparse
 import logging
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
+random.seed(42)
 
 
 def get_id(feature=None, parent_prefix=None):
@@ -38,6 +40,30 @@ def unionLoc(a, b):
         end=max(a.end, b.end),
         strand=a.strand
     )
+
+
+def fix_locus(g, cds):
+    gene_locus = g.qualifiers.get('locus_tag', [None])[0]
+    cds_locus = cds.qualifiers.get('locus_tag', [None])[0]
+    if gene_locus and cds_locus:
+        if gene_locus == cds_locus:
+            pass
+        else:
+            cds.qualifiers['CPT_GMC'] = ['Different locus tag from associated gene.']
+            cds.qualifiers['CPT_GMC_locus'] = cds.qualifiers['locus_tag']
+            cds.qualifiers['locus_tag'] = [gene_locus]
+    elif gene_locus and not cds_locus:
+        cds.qualifiers['CPT_GMC'] = ['Missing Locus Tag']
+        cds.qualifiers['locus_tag'] = [gene_locus]
+    elif not gene_locus and cds_locus:
+        g.qualifiers['CPT_GMC'] = ['Missing Locus Tag']
+        g.qualifiers['locus_tag'] = [cds_locus]
+    else:
+        locus_tag = 'cpt_orf_%s' % random.randint(100000)
+        g.qualifiers['CPT_GMC'] = ['BOTH Missing Locus Tag']
+        g.qualifiers['locus_tag'] = [locus_tag]
+        cds.qualifiers['CPT_GMC'] = ['BOTH Missing Locus Tag']
+        cds.qualifiers['locus_tag'] = [locus_tag]
 
 
 def correct_model(genbank_file):
@@ -94,7 +120,8 @@ def correct_model(genbank_file):
             for g in genes:
                 associated_cds = [x for x in cds if x.location.end == g.location.end]
                 if len(associated_cds) == 1:
-                    pass
+                    # Ensure matching locus tags
+                    fix_locus(g, associated_cds[0])
                 elif len(associated_cds) == 0:
                     associated_trna = [x for x in trna if x.location.end == g.location.end]
                     if len(associated_trna) == 1:
@@ -105,6 +132,21 @@ def correct_model(genbank_file):
                     log.warn("Could not find a child feature for gene %s", get_id(g))
 
             log.info("Different number of CDSs and genes. There may be bugs in this process (genes=%s != cds=%s)", len(genes), len(cds))
+        elif len(genes) == len(cds):
+            for g in genes:
+                associated_cds = [x for x in cds if x.location.end == g.location.end]
+                if len(associated_cds) == 1:
+                    # Ensure matching locus tags
+                    fix_locus(g, associated_cds[0])
+                elif len(associated_cds) == 0:
+                    associated_trna = [x for x in trna if x.location.end == g.location.end]
+                    if len(associated_trna) == 1:
+                        pass
+                    else:
+                        log.warn("Could not find a child feature for gene %s", get_id(g))
+                else:
+                    log.warn("Could not find a child feature for gene %s", get_id(g))
+
 
         record.features = sorted(record.features, key=lambda x: int(x.location.start) - (1 if x.type == 'gene' else 0))
         yield [record]
