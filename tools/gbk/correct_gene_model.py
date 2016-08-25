@@ -24,6 +24,13 @@ def get_id(feature=None, parent_prefix=None):
     return result
 
 
+def same_end(query, target):
+    return [
+        x for x in target
+        if x.location.end == query.location.end and x.location.strand == query.location.strand
+    ]
+
+
 def nearbyRbss(cds, rbss):
     for r in rbss:
         if cds.strand > 0:
@@ -49,20 +56,20 @@ def fix_locus(g, cds):
         if gene_locus == cds_locus:
             pass
         else:
-            cds.qualifiers['CPT_GMC'] = ['Different locus tag from associated gene.']
-            cds.qualifiers['CPT_GMC_locus'] = cds.qualifiers['locus_tag']
+            cds.qualifiers['cpt_gmc'] = ['Different locus tag from associated gene.']
+            cds.qualifiers['cpt_gmc_locus'] = cds.qualifiers['locus_tag']
             cds.qualifiers['locus_tag'] = [gene_locus]
     elif gene_locus and not cds_locus:
-        cds.qualifiers['CPT_GMC'] = ['Missing Locus Tag']
+        cds.qualifiers['cpt_gmc'] = ['Missing Locus Tag']
         cds.qualifiers['locus_tag'] = [gene_locus]
     elif not gene_locus and cds_locus:
-        g.qualifiers['CPT_GMC'] = ['Missing Locus Tag']
+        g.qualifiers['cpt_gmc'] = ['Missing Locus Tag']
         g.qualifiers['locus_tag'] = [cds_locus]
     else:
         locus_tag = 'cpt_orf_%s' % random.randint(100000)
-        g.qualifiers['CPT_GMC'] = ['BOTH Missing Locus Tag']
+        g.qualifiers['cpt_gmc'] = ['BOTH Missing Locus Tag']
         g.qualifiers['locus_tag'] = [locus_tag]
-        cds.qualifiers['CPT_GMC'] = ['BOTH Missing Locus Tag']
+        cds.qualifiers['cpt_gmc'] = ['BOTH Missing Locus Tag']
         cds.qualifiers['locus_tag'] = [locus_tag]
 
 
@@ -118,12 +125,12 @@ def correct_model(genbank_file):
             record.features += genes
         elif len(genes) != len(cds):
             for g in genes:
-                associated_cds = [x for x in cds if x.location.end == g.location.end]
+                associated_cds = same_end(g, cds)
                 if len(associated_cds) == 1:
                     # Ensure matching locus tags
                     fix_locus(g, associated_cds[0])
                 elif len(associated_cds) == 0:
-                    associated_trna = [x for x in trna if x.location.end == g.location.end]
+                    associated_trna = same_end(g, trna)
                     if len(associated_trna) == 1:
                         pass
                     else:
@@ -134,12 +141,12 @@ def correct_model(genbank_file):
             log.info("Different number of CDSs and genes. There may be bugs in this process (genes=%s != cds=%s)", len(genes), len(cds))
         elif len(genes) == len(cds):
             for g in genes:
-                associated_cds = [x for x in cds if x.location.end == g.location.end]
+                associated_cds = same_end(g, cds)
                 if len(associated_cds) == 1:
                     # Ensure matching locus tags
                     fix_locus(g, associated_cds[0])
                 elif len(associated_cds) == 0:
-                    associated_trna = [x for x in trna if x.location.end == g.location.end]
+                    associated_trna = same_end(g, trna)
                     if len(associated_trna) == 1:
                         pass
                     else:
