@@ -590,6 +590,114 @@ def missing_genes(record):
     return good, bad, results, qc_features
 
 
+def gene_model_correction_issues(record):
+    """Find features that have issues from the gene model correction step.
+    These have qualifiers beginning with CPT_GMS
+    """
+    results = []
+    good = 0
+    bad = 0
+    qc_features = []
+
+    # For each gene
+    for gene in coding_genes(record.features):
+        # Get the list of child CDSs
+        cdss = [x for x in genes(gene.sub_features, feature_type='CDS')]
+        # And our matching qualifiers
+        gene_data = [(k, v) for (k, v) in gene.qualifiers.items() if k == 'cpt_gmc']
+        # If there are problems with ONLY the parent, let's complain
+        local_results = []
+        local_qc_features = []
+        for x in gene_data:
+            if 'Missing Locus Tag' in x[1]:
+                # Missing locus tag is an either or thing, if it hits here
+                # there shouldn't be anything else wrong with it.
+
+                # Obviously missing so we remove it
+                gene.qualifiers['locus_tag'] = [""]
+                # Translation from bp_genbank2gff3.py
+                cdss[0].qualifiers['locus_tag'] = cdss[0].qualifiers['Name']
+                # Append our results
+                local_results.append((
+                    gene,
+                    cdss[0],
+                    'Gene is missing a locus_tag'
+                ))
+                local_qc_features.append(gen_qc_feature(
+                    gene.location.start,
+                    gene.location.end,
+                    'Gene is missing a locus_tag',
+                    strand=gene.strand
+                ))
+
+        # We need to alert on any child issues as well.
+        for cds in cdss:
+            cds_data = [(k, v[0]) for (k, v) in cds.qualifiers.items() if k == 'cpt_gmc']
+            if len(gene_data) == 0 and len(cds_data) == 0:
+                # Alles gut
+                pass
+            else:
+                for _, problem in cds_data:
+                    if problem == 'BOTH Missing Locus Tag':
+                        gene.qualifiers['locus_tag'] = ['']
+                        cds.qualifiers['locus_tag'] = ['']
+                        local_results.append((
+                            gene, cds,
+                            'Both gene and CDS are missing locus tags'
+                        ))
+                        local_qc_features.append(gen_qc_feature(
+                            cds.location.start,
+                            cds.location.end,
+                            'CDS is missing a locus_tag',
+                            strand=cds.strand
+                        ))
+                        local_qc_features.append(gen_qc_feature(
+                            gene.location.start,
+                            gene.location.end,
+                            'Gene is missing a locus_tag',
+                            strand=gene.strand
+                        ))
+                    elif problem == 'Different locus tag from associated gene.':
+                        gene.qualifiers['locus_tag'] = gene.qualifiers['Name']
+                        cds.qualifiers['locus_tag'] = cds.qualifiers['cpt_gmc_locus']
+                        local_results.append((
+                            gene, cds,
+                            'Gene and CDS have differing locus tags',
+                        ))
+                        local_qc_features.append(gen_qc_feature(
+                            gene.location.start,
+                            gene.location.end,
+                            'Gene and CDS have differing locus tags',
+                            strand=gene.strand
+                        ))
+                    elif problem == 'Missing Locus Tag':
+                        # Copy this over
+                        gene.qualifiers['locus_tag'] = gene.qualifiers['Name']
+                        # This one is missing
+                        cds.qualifiers['locus_tag'] = ['']
+                        local_results.append((
+                            gene, cds,
+                            'CDS is missing a locus_tag',
+                        ))
+                        local_qc_features.append(gen_qc_feature(
+                            cds.location.start,
+                            cds.location.end,
+                            'CDS is missing a locus_tag',
+                            strand=cds.strand
+                        ))
+                    else:
+                        log.warn("Cannot handle %s", problem)
+
+        if len(local_results) > 0:
+            bad += 1
+        else:
+            good += 1
+
+        qc_features.extend(local_qc_features)
+        results.extend(local_results)
+    return good, bad, results, qc_features
+
+
 def missing_tags(record):
     """Find features without product
     """
@@ -689,8 +797,13 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
     if gm_good + gm_bad == 0:
         gm_bad = 1
 
-    good_scores = [eg_good, eo_good, mt_good, ws_good, gm_good]
-    bad_scores = [eg_bad, eo_bad, mt_bad, ws_bad, gm_bad]
+    log.info("Locating more bad gene models")
+    gmc_good, gmc_bad, gmc_results, gmc_annotations = gene_model_correction_issues(record)
+    if gmc_good + gmc_bad == 0:
+        gmc_bad = 1
+
+    good_scores = [eg_good, eo_good, mt_good, ws_good, gm_good, gmc_good]
+    bad_scores = [eg_bad, eo_bad, mt_bad, ws_bad, gm_bad, gmc_bad]
 
     # Only if they tried to annotate RBSs do we consider them.
     if mb_any:
@@ -760,6 +873,11 @@ def evaluate_and_report(annotations, genome, user_email, gff3=None,
         'gene_model_good': gm_good,
         'gene_model_bad': gm_bad,
         'gene_model_score': 0 if gm_good + gm_bad == 0 else (100 * gm_good / (gm_good + gm_bad)),
+
+        'gene_model_correction': gmc_results,
+        'gene_model_correction_good': gmc_good,
+        'gene_model_correction_bad': gmc_bad,
+        'gene_model_correction_score': 0 if gmc_good + gmc_bad == 0 else (100 * gmc_good / (gmc_good + gmc_bad)),
 
         'coding_density': cd,
         'coding_density_real': cd_real,

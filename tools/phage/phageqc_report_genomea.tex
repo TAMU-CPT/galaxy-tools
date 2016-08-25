@@ -83,6 +83,23 @@ Feature & Location\\
 \end{longtable}
 {% endif %}
 
+\subsection{Missing Locus Tags}\label{missing-locus-tags}
+
+{{gene_model_correction_good}} out of {{gene_model_correction_good + gene_model_correction_bad}} features have valid locus tags (\texttt{/locus\_tag="..."}).
+{% if gene_model_correction_bad > 0 %}
+The following features have issues with their locus tags
+\begin{longtable}{lllll}
+\hline
+ID & Location & Gene Locus Tag & CDS Locus Tag & Issue \\
+\hline
+\endhead
+{% for row in gene_model_correction %}
+{{ row[0].id | texify }} & \texttt{{'{'}}{{row[1].location}}{{'}'}} & {{ row[0].qualifiers['locus_tag'][0] | texify }} & {{ row[1].qualifiers['locus_tag'][0] | texify }} & {{ row[2] | texify }}\tabularnewline
+{% endfor %}
+\end{longtable}
+{% endif %}
+
+
 \section{Suggested Changes}\label{suggested-changes}
 
 These changes are not required, but are strongly encouraged in order to

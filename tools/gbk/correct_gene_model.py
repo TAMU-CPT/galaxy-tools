@@ -70,7 +70,7 @@ def fix_locus(g, cds):
         g.qualifiers['cpt_gmc'] = ['Missing Locus Tag']
         g.qualifiers['locus_tag'] = [cds_locus]
     else:
-        locus_tag = 'cpt_orf_%s' % random.randint(100000)
+        locus_tag = 'cpt_orf_%s' % random.randint(0, 100000)
         g.qualifiers['cpt_gmc'] = ['BOTH Missing Locus Tag']
         g.qualifiers['locus_tag'] = [locus_tag]
         cds.qualifiers['cpt_gmc'] = ['BOTH Missing Locus Tag']
