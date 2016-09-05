@@ -101,6 +101,7 @@
     <tool file="cpt2/galaxy-tools/tools/gff3/gff2gb.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_color.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_filter.xml" />
+    <tool file="cpt2/galaxy-tools/tools/gff3/gff3_location_filter.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/filter_type.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_ipr_merge.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_parent_child_map.xml" />

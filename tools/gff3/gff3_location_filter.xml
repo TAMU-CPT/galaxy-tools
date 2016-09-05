@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.location_filter" name="GFF3 Location Filter" version="1.0.0">
+  <description>filter gff3 features based on location</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <version_command>python gff3_location_filter.py --version</version_command>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/gff3_location_filter.py
+$gff3_data
+$id_start_end_data
+> $default]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+      <param name="id_start_end_data" label="table with record ids, start locations, and end locations" type="data" format="tabular" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="default"/>
+  </outputs>
+  <help><![CDATA[]]></help>
+</tool>
