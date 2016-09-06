@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.seq_export" name="Genbank Genome Sequence Export" version="1.1">
+<tool id="edu.tamu.cpt.gbk.seq_export" name="Genbank Genome Sequence Export" version="1.2">
   <description>export sequence from Genbank files as fasta</description>
   <version_command>python seq_export.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[seq_export.py
@@ -13,9 +13,6 @@ $positional_1
         <option selected="True" value="name">Record Name</option>
         <option value="phage_name">Extracted Phage Name</option>
     </param>
-
-    <param label="Use name instead of record id" name="use_name" type="boolean" truevalue="--use_name" falsevalue=""
-        help="This allows you to remove the .1 and .2 like numbers from genbank/refseq entries which is required for JBrowse et. al to work nicely."/>
   </inputs>
   <outputs>
     <data format="fasta" hidden="false" name="default"/>
