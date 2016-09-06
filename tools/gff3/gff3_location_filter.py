@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from BCBio import GFF
 import argparse
 import sys
