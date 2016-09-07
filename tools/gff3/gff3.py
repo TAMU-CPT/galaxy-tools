@@ -88,9 +88,15 @@ def feature_test_qual_value(feature, **kwargs):
     For every feature, check that at least one value in
     feature.quailfiers(kwargs['qualifier']) is in kwargs['attribute_list']
     """
-    for attribute_value in feature.qualifiers.get(kwargs['qualifier'], []):
-        if attribute_value in kwargs['attribute_list']:
-            return True
+    if isinstance(kwargs['qualifier'], list):
+        for qualifier in kwargs['qualifier']:
+            for attribute_value in feature.qualifiers.get(qualifier, []):
+                if attribute_value in kwargs['attribute_list']:
+                    return True
+    else:
+        for attribute_value in feature.qualifiers.get(kwargs['qualifier'], []):
+            if attribute_value in kwargs['attribute_list']:
+                return True
     return False
 
 
