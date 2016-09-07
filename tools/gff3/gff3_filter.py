@@ -13,6 +13,7 @@ __email__ = "esr@tamu.edu"
 
 
 def gff_filter(gff3, id_list=None, id='', attribute_field='ID', subfeatures=True):
+    attribute_field = attribute_field.split('__cn__')
     if id_list:
         filter_strings = [line.strip() for line in id_list]
     else:

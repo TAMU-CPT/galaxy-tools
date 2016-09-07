@@ -28,10 +28,10 @@ $subfeatures
             <param label="ID List" name="id_file" type="data" format="tabular,txt"/>
         </when>
         <when value="id_list">
-            <param label="ID List" name="id_list" type="text" area="true" help="Newline/Comma separated list of IDs"/>
+            <param label="ID List" name="id_list" type="text" area="true" help="Newline separated list of IDs"/>
         </when>
         </conditional>
-        <param name="attribute_field" label="Attribute field such as ID or Name to filter on" type="text" default="ID" />
+        <param name="attribute_field" label="Newline separated attribute fields such as ID or Name to filter on" type="text" area="true" default="ID" />
         <param name="subfeatures" label="If a feature is matched, shold subfeatures be included" type="boolean" truevalue="--subfeatures" falsevalue="" checked="True" />
     </inputs>
   <outputs>
