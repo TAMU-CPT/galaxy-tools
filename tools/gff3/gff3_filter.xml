@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.1"?>
 <tool id="edu.tamu.cpt.gff3.filter" name="GFF3 Filter" version="1.0.0">
   <description>filter gff3 features based on qualifier value</description>
   <macros>
