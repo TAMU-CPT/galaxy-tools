@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.text.uniq" name="Deduplicate file" version="1.1">
+  <description>Removes duplicate lines</description>
+  <command detect_errors="aggressive">
+  cat "$file" | sort -u > $output
+</command>
+  <inputs>
+    <param label="file" name="file" type="data"/>
+  </inputs>
+  <outputs>
+    <data format_source="file" name="output" />
+  </outputs>
+  <help>Makes each line unique</help>
+  <citations/>
+</tool>

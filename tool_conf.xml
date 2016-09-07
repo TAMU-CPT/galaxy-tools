@@ -42,6 +42,7 @@
     <tool file="cpt2/galaxy-tools/tools/util/cpt_convert_glimmer_to_gff3.xml" />
     <tool file="cpt2/galaxy-tools/tools/util/cpt_convert_mga_to_gff3.xml" />
     <tool file="cpt2/galaxy-tools/tools/text/cat.xml" />
+    <tool file="cpt2/galaxy-tools/tools/text/uniq.xml" />
     <tool file="cpt2/galaxy-tools/tools/text/intersect.xml" />
   </section>
 
