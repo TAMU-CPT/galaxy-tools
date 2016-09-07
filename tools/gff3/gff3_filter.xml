@@ -9,16 +9,37 @@
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_filter.py
 $gff3_data
-$filter_data
+#if $filter_data.qss == "history":
+    --history_file $filter_data.history_file
+#else if $filter_data.qss == "id_file":
+    --id_list $filter_data.id_file
+#else if $filter_data.qss == "id_list":
+    --id $filter_data.id_list
+#end if
 --attribute_field "$attribute_field"
 $subfeatures
 > $default]]></command>
-  <inputs>
-      <expand macro="gff3_input" />
-      <param name="filter_data" label="Table of qualifier values that are deemed acceptable" type="data" format="tabular,txt" />
-      <param name="attribute_field" label="Attribute field such as ID or Name to filter on" type="text" default="ID" />
-      <param name="subfeatures" label="If a feature is matched, shold subfeatures be included" type="boolean" truevalue="--subfeatures" falsevalue="" checked="True" />
-  </inputs>
+    <inputs>
+        <expand macro="gff3_input" />
+        <conditional name="filter_data">
+        <param name="qss" type="select" label="Select source for IDs">
+            <option value="history">History</option>
+            <option value="id_file">File containing IDs (one per line)</option>
+            <option value="id_list">Direct Entry</option>
+        </param>
+        <when value="history">
+            <param label="History File" name="history_file" type="data" format="json"/>
+        </when>
+        <when value="id_file">
+            <param label="ID List" name="id_file" type="data" format="tabular,txt"/>
+        </when>
+        <when value="id_list">
+            <param label="ID List" name="id_list" type="text" area="true" help="Newline/Comma separated list of IDs"/>
+        </when>
+        </conditional>
+        <param name="attribute_field" label="Attribute field such as ID or Name to filter on" type="text" default="ID" />
+        <param name="subfeatures" label="If a feature is matched, shold subfeatures be included" type="boolean" truevalue="--subfeatures" falsevalue="" checked="True" />
+    </inputs>
   <outputs>
     <data format="gff3" name="default"/>
   </outputs>
