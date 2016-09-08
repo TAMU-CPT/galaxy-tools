@@ -16,11 +16,10 @@ def parse_gff(id_start_end, gff3):
         locs = ids[rec.id]
         feats = []
         for feat in rec.features:
-            if feat.type == 'gene':
-                f_loc = (feat.location.start, feat.location.end)
-                for loc in locs:
-                    if (min(f_loc) <= max(loc)) and (max(f_loc) >= min(loc)):
-                        feats.append(feat)
+            f_loc = (feat.location.start, feat.location.end)
+            for loc in locs:
+                if (min(f_loc) <= max(loc)) and (max(f_loc) >= min(loc)):
+                    feats.append(feat)
 
         rec.features = feats
         GFF.write([rec], sys.stdout)
