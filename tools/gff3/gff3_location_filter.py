@@ -16,10 +16,10 @@ def parse_gff(id_start_end, gff3):
         locs = ids[rec.id]
         feats = []
         for feat in rec.features:
-            if feat.type == 'CDS':
+            if feat.type == 'gene':
                 f_loc = (feat.location.start, feat.location.end)
                 for loc in locs:
-                    if list(set(range(min(loc), max(loc))) & set(range(min(f_loc), max(f_loc)))):
+                    if (min(f_loc) <= max(loc)) and (max(f_loc) >= min(loc)):
                         feats.append(feat)
 
         rec.features = feats
