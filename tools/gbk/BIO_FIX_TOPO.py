@@ -1,5 +1,6 @@
 import Bio.GenBank
 
+
 def record_end(self, content):
     """Clean up when we've finished the record.
     """
@@ -9,8 +10,7 @@ def record_end(self, content):
 
     # Try and append the version number to the accession for the full id
     if not self.data.id:
-        assert 'accessions' not in self.data.annotations, \
-                self.data.annotations['accessions']
+        assert 'accessions' not in self.data.annotations, self.data.annotations['accessions']
         self.data.id = self.data.name  # Good fall back?
     elif self.data.id.count('.') == 0:
         try:
@@ -27,14 +27,12 @@ def record_end(self, content):
     # now set the sequence
     sequence = "".join(self._seq_data)
 
-    if self._expected_size is not None \
-    and len(sequence) != 0 \
-    and self._expected_size != len(sequence):
+    if self._expected_size is not None and len(sequence) != 0 and self._expected_size != len(sequence):
         import warnings
         from Bio import BiopythonParserWarning
-        warnings.warn("Expected sequence length %i, found %i (%s)."
-                        % (self._expected_size, len(sequence), self.data.id),
-                        BiopythonParserWarning)
+        warnings.warn("Expected sequence length %i, found %i (%s)." %
+                      (self._expected_size, len(sequence), self.data.id),
+                      BiopythonParserWarning)
 
     if self._seq_type:
         # mRNA is really also DNA, since it is actually cDNA
@@ -48,8 +46,7 @@ def record_end(self, content):
                 seq_alphabet = IUPAC.ambiguous_dna
             else:
                 seq_alphabet = IUPAC.ambiguous_rna
-        elif 'PROTEIN' in self._seq_type.upper() \
-        or self._seq_type == "PRT":  # PRT is used in EMBL-bank for patents
+        elif 'PROTEIN' in self._seq_type.upper() or self._seq_type == "PRT":  # PRT is used in EMBL-bank for patents
             seq_alphabet = IUPAC.protein  # or extended protein?
         # work around ugly GenBank records which have circular or
         # linear but no indication of sequence type
@@ -57,8 +54,7 @@ def record_end(self, content):
             pass
         # we have a bug if we get here
         else:
-            raise ValueError("Could not determine alphabet for seq_type %s"
-                                % self._seq_type)
+            raise ValueError("Could not determine alphabet for seq_type %s" % self._seq_type)
 
         # Also save the chomosome layout
         if 'circular' in self._seq_type.lower():

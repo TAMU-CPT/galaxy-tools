@@ -159,7 +159,6 @@ def correct_model(genbank_file):
                 else:
                     log.warn("Could not find a child feature for gene %s", get_id(g))
 
-
         record.features = sorted(record.features, key=lambda x: int(x.location.start) - (1 if x.type == 'gene' else 0))
         yield [record]
 

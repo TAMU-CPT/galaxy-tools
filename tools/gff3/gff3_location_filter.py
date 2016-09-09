@@ -3,6 +3,7 @@ from BCBio import GFF
 import argparse
 import sys
 
+
 def parse_gff(id_start_end, gff3):
     ids = {}
     for line in id_start_end:
