@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import BIO_FIX_TOPO  # NOQA
 from Bio import SeqIO
 import re
 import argparse

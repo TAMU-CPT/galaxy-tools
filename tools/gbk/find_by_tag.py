@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import BIO_FIX_TOPO  # NOQA
 import argparse
 import sys
 import logging
