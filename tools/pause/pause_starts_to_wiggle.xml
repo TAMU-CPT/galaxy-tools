@@ -19,4 +19,7 @@ ${bam_file}
   </outputs>
   <help>Extract read start from BAM files</help>
   <tests/>
+  <citations>
+    <citation type="doi">10.5281/zenodo.154119</citation>
+  </citations>
 </tool>
