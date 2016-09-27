@@ -20,6 +20,7 @@ def WAAuth(parser):
 def OrgOrGuess(parser):
     parser.add_argument('--org_json', type=file, help='Apollo JSON output, source for common name')
     parser.add_argument('--org_raw', help='Common Name')
+    parser.add_argument('--org_id', help='Organism ID')
 
 
 def CnOrGuess(parser):
@@ -28,7 +29,7 @@ def CnOrGuess(parser):
     parser.add_argument('--seq_raw', nargs='*', help='Sequence Names')
 
 
-def GuessOrg(args):
+def GuessOrg(args, wa):
     if args.org_json:
         orgs = [x.get('commonName', None)
                 for x in json.load(args.org_json)]
@@ -40,12 +41,14 @@ def GuessOrg(args):
             return [org]
         else:
             raise Exception("Organism Common Name not provided")
+    elif args.org_id:
+        return [wa.organism.findOrganismById(args.org_id)]
     else:
         raise Exception("Organism Common Name not provided")
 
 
-def GuessCn(args):
-    org = GuessOrg(args)
+def GuessCn(args, wa):
+    org = GuessOrg(args, wa)
     seqs = []
     if args.seq_fasta:
         # If we have a fasta, pull all rec ids from that.
@@ -63,6 +66,13 @@ def AssertUser(user_list):
         raise Exception("Unknown user. Please register first")
     else:
         return user_list[0]
+
+
+def AssertAdmin(user):
+    if user.role == 'ADMIN':
+        return True
+    else:
+        raise Exception("User is not an administrator. Permission denied")
 
 
 class WebApolloInstance(object):
@@ -571,6 +581,14 @@ class OrganismsClient(Client):
         orgs = [x for x in orgs if x['commonName'] == cn]
         if len(orgs) == 0:
             raise Exception("Unknown common name")
+        else:
+            return orgs[0]
+
+    def findOrganismById(self, id_number):
+        orgs = self.findAllOrganisms()
+        orgs = [x for x in orgs if x['id'] == id_number]
+        if len(orgs) == 0:
+            raise Exception("Unknown ID")
         else:
             return orgs[0]
 
