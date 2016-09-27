@@ -134,6 +134,9 @@ def gff3_to_genbank(gff_file, fasta_file):
             # In genbank format, note is lower case.
             flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'Note', 'note')
 
+            # Dbxref is db_xref
+            flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'Dbxref', 'db_xref')
+
             # Append the feature
             full_feats.append(flat_feat)
 
