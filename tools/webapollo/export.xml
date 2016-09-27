@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.export" name="Retrieve Data" version="2.3">
+<tool id="edu.tamu.cpt2.webapollo.export" name="Retrieve Data" version="3.0">
   <description>from Apollo into Galaxy</description>
   <macros>
     <import>macros.xml</import>
   </macros>
+  <code file="webapollo.py"/>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/export.py

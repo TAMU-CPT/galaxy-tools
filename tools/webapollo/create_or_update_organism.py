@@ -22,12 +22,12 @@ if __name__ == '__main__':
     parser.add_argument('--secret', action='store_true', help='Make organism public')
 
     args = parser.parse_args()
+    wa = WebApolloInstance(args.apollo, args.username, args.password)
 
-    org_cn = GuessOrg(args)
+    org_cn = GuessOrg(args, wa)
     if isinstance(org_cn, list):
         org_cn = org_cn[0]
 
-    wa = WebApolloInstance(args.apollo, args.username, args.password)
     # User must have an account
     gx_user = AssertUser(wa.users.loadUsers(email=args.email))
 

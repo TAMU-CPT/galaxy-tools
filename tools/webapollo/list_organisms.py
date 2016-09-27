@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import json
 import argparse
-from webapollo import WAAuth, WebApolloInstance, AssertUser
+from webapollo import WAAuth, WebApolloInstance, AssertUser, accessible_organisms
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
@@ -10,19 +10,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
-    # User must have an account
-    gx_user = AssertUser(wa.users.loadUsers(email=args.email))
-    # {u'organism': u'lso_phage_2', u'permissions': u'[]', u'userId': 142792},
-    permissionMap = {
-        x['organism']: x['permissions']
-        for x in gx_user.organismPermissions
-        if 'WRITE' in x['permissions'] or 'READ' in x['permissions']
-    }
 
-    orgs = wa.organisms.findAllOrganisms()
-    orgs = [
-        org for org in orgs
-        if org['commonName'] in permissionMap
-    ]
+    gx_user = AssertUser(wa.users.loadUsers(email=args.email))
+    all_orgs = wa.organisms.findAllOrganisms()
+
+    orgs = accessible_organisms(gx_user, all_orgs)
 
     print json.dumps(orgs, indent=2)

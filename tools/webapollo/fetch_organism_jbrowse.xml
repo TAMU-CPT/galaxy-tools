@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.fetch_jbrowse" name="Retrieve JBrowse" version="2.1">
+<tool id="edu.tamu.cpt2.webapollo.fetch_jbrowse" name="Retrieve JBrowse" version="3.0">
   <description>for an organism, from Apollo</description>
   <macros>
     <import>macros.xml</import>
   </macros>
+  <code file="webapollo.py"/>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 mkdir -p $jbrowse.files_path/;

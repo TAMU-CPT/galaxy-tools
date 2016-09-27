@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import time
 import argparse
-from webapollo import WebApolloInstance
+from webapollo import WebApolloInstance, AssertAdmin, AssertUser
 
 
 if __name__ == '__main__':
@@ -9,10 +9,15 @@ if __name__ == '__main__':
     parser.add_argument('apollo', help='Complete Apollo URL')
     parser.add_argument('username', help='WA Admin Username')
     parser.add_argument('password', help='WA Admin Password')
+    parser.add_argument('email', help='User Email')
 
     parser.add_argument('--commonName', help='Common Name')
 
     args = parser.parse_args()
+    wa = WebApolloInstance(args.apollo, args.username, args.password)
+
+    gx_user = AssertAdmin(AssertUser(wa.users.loadUsers(email=args.email)))
+
     s464 = [
         42217,
         4637,
@@ -32,7 +37,6 @@ if __name__ == '__main__':
         5427,
     ]
 
-    wa = WebApolloInstance(args.apollo, args.username, args.password)
     orgs = wa.organisms.findAllOrganisms()
     for org in orgs:
         for user in wa.users.loadUsers():

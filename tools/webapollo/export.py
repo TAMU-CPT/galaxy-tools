@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
 
-    org_cn_list, seqs = GuessCn(args)
+    org_cn_list, seqs = GuessCn(args, wa)
 
     org_data = []
     for org_cn in org_cn_list:
