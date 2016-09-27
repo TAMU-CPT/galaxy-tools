@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 import collections
 import StringIO
 import logging
@@ -804,3 +805,37 @@ def featuresToFeatureSchema(features):
         for x in _yieldFeatData([feature]):
             compiled.append(x)
     return compiled
+
+
+def accessible_organisms(user, orgs):
+    permissionMap = {
+        x['organism']: x['permissions']
+        for x in user.organismPermissions
+        if 'WRITE' in x['permissions'] \
+        or 'READ' in x['permissions'] \
+        or 'ADMINISTRATE' in x['permissions'] \
+        or user.role == 'ADMIN'
+    }
+    return  [
+        (org['commonName'], org['id'], False)
+        for org in sorted(orgs, key=lambda x: x['commonName'])
+        if org['commonName'] in permissionMap
+    ]
+
+
+
+def galaxy_list_orgs(trans, *args, **kwargs):
+    email = trans.get_user().email
+
+    wa = WebApolloInstance(
+        os.environ.get('GALAXY_WEBAPOLLO_URL', 'https://example.com'),
+        os.environ.get('GALAXY_WEBAPOLLO_USER', 'admin'),
+        os.environ.get('GALAXY_WEBAPOLLO_PASSWORD', 'admin')
+    )
+
+    gx_user = AssertUser(wa.users.loadUsers(email=email))
+    all_orgs = wa.organisms.findAllOrganisms()
+
+    orgs = accessible_organisms(gx_user, all_orgs)
+
+    return orgs
