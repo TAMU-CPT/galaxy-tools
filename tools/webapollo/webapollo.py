@@ -42,7 +42,7 @@ def GuessOrg(args, wa):
         else:
             raise Exception("Organism Common Name not provided")
     elif args.org_id:
-        return [wa.organism.findOrganismById(args.org_id)]
+        return [wa.organisms.findOrganismById(args.org_id).get('commonName', None)]
     else:
         raise Exception("Organism Common Name not provided")
 
@@ -586,7 +586,7 @@ class OrganismsClient(Client):
 
     def findOrganismById(self, id_number):
         orgs = self.findAllOrganisms()
-        orgs = [x for x in orgs if x['id'] == id_number]
+        orgs = [x for x in orgs if str(x['id']) == str(id_number)]
         if len(orgs) == 0:
             raise Exception("Unknown ID")
         else:
@@ -829,17 +829,16 @@ def accessible_organisms(user, orgs):
     permissionMap = {
         x['organism']: x['permissions']
         for x in user.organismPermissions
-        if 'WRITE' in x['permissions'] \
-        or 'READ' in x['permissions'] \
-        or 'ADMINISTRATE' in x['permissions'] \
-        or user.role == 'ADMIN'
+        if 'WRITE' in x['permissions'] or
+        'READ' in x['permissions'] or
+        'ADMINISTRATE' in x['permissions'] or
+        user.role == 'ADMIN'
     }
-    return  [
+    return [
         (org['commonName'], org['id'], False)
         for org in sorted(orgs, key=lambda x: x['commonName'])
         if org['commonName'] in permissionMap
     ]
-
 
 
 def galaxy_list_orgs(trans, *args, **kwargs):
