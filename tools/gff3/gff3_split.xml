@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.gff3.splitGff" name="Split GFF3+Fasta into separate parts" version="1.2">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+mkdir -p out &&
+python $__tool_directory__/gff3_split.py
+--joiner "$joiner"
+$input
+#echo ' '.join(str($unique_keys).split(','))
+]]></command>
+  <inputs>
+    <param label="GFF3 File" name="input" type="data" format="gff3"/>
+    <param label="Properties to consider for uniqueness" name="unique_keys" type="select" multiple="True">
+        <option value="record_id">Record ID</option>
+        <option value="source">Source</option>
+        <option value="target">Target</option>
+    </param>
+    <param label="File name joiner" name="joiner" type="text" value=" vs "/>
+  </inputs>
+  <outputs>
+    <collection name="gff3-tracks" type="list">
+      <discover_datasets pattern="__designation_and_ext__" directory="out" />
+    </collection>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Splits apart the GFF3 into separate files in a Galaxy Dataset Collection>
+
+**Why**
+
+This tool is useful when you have a workflow step which has produced a single
+GFF3 file containing a bunch of different analyses together. If displayed in
+JBrowse these would show up all mixed together.
+
+This tool lets you define some uniqueness criteria, such as the record id.
+Everything with a given record id will be moved into a separate file.
+
+This tool is useful in combination with the xmfa2gff3 tool which produces GFF3
+that contains multiple records in a single file. By selecting "Record ID" and
+"Target", we will be able to separate into files like "A vs B" and "B vs A".
+
+
+      ]]></help>
+</tool>

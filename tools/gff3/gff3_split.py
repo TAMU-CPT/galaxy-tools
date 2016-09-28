@@ -37,8 +37,7 @@ if __name__ == '__main__':
             propkey = '|'.join(map(str, props))
 
             if propkey not in file_handles:
-                joiner = ' %s ' % args.joiner
-                filename = joiner.join(props)
+                filename = args.joiner.join(props)
                 path = os.path.join('out', filename + '.gff3')
                 logging.info("Opening %s", path)
                 file_handles[propkey] = open(path, 'a')
