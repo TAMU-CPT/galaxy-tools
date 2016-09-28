@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.blast.blast2xmfap" name="Blast TSV to Protein XMFA" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/blast2xmfap.py
+$blast_tsv
+$fasta
+$gff3
+$output
+]]></command>
+  <inputs>
+    <param label="Blast Tabular" name="blast_tsv" type="data" format="tabular" />
+    <param label="Genome Sequences" name="fasta" type="data" format="fasta" />
+    <param label="Genome Annotations" name="gff3" type="data" format="gff3" />
+  </inputs>
+  <outputs>
+    <data format="xmfa" name="output"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="blast_tsv" value="results.tsv"/>
+          <param name="fasta" value="related.fa"/>
+          <param name="gff3" value="related.gbk.gff"/>
+          <output name="output" file="cbk.xmfa"/>
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Transform protein blast results, via clustering, into XMFA format. This
+allows displaying clusters of proteins in downstream tools which support the
+XMFA format such as JBrowse.
+]]></help>
+    <citations>
+    </citations>
+</tool>
+
