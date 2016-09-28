@@ -74,7 +74,7 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
                         'source': 'progressiveMauve',
                         'target': label_convert[other['id']]['record_id'],
                         'ID': 'm_%s_%s_%s' % (lcb_idx, o_idx, label_convert[other['id']]['record_id']),
-                        'description': other['comment'],
+                        'Name': other['comment'],
                     }
                 )
 
