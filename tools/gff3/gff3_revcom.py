@@ -6,10 +6,6 @@ from BCBio import GFF
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-__author__ = "Eric Rasche"
-__maintainer__ = "Eric Rasche"
-__email__ = "esr@tamu.edu"
-
 
 def gff_filter(gff3):
     for rec in GFF.parse(gff3):

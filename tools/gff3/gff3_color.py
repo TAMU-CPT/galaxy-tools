@@ -8,9 +8,6 @@ from gff3 import feature_lambda, wa_unified_product_name
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-__author__ = "Eric Rasche"
-__maintainer__ = "Eric Rasche"
-__email__ = "esr@tamu.edu"
 
 color_scheme = {
     "defense": {

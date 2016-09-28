@@ -7,10 +7,6 @@ from BCBio import GFF
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-__author__ = "Eric Rasche"
-__maintainer__ = "Eric Rasche"
-__email__ = "esr@tamu.edu"
-
 
 def merge_interpro(gff3, interpro):
     ipr_additions = {}

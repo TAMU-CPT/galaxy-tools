@@ -7,10 +7,6 @@ from gff3 import feature_lambda, feature_test_qual_value
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-__author__ = "Eric Rasche"
-__maintainer__ = "Eric Rasche"
-__email__ = "esr@tamu.edu"
-
 
 def gff_filter(gff3, id_list=None, id='', attribute_field='ID', subfeatures=True):
     attribute_field = attribute_field.split('__cn__')

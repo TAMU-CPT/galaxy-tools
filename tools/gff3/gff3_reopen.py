@@ -7,10 +7,6 @@ from gff3 import feature_lambda, feature_test_contains
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-__author__ = "Eric Rasche"
-__maintainer__ = "Eric Rasche"
-__email__ = "esr@tamu.edu"
-
 
 def gff_reopen(gff3, index=1):
     for rec in GFF.parse(gff3):
