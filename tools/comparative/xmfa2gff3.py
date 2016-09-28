@@ -114,8 +114,8 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000, protein=Fa
                     type="match", strand=parent['strand'],
                     qualifiers={
                         'source': 'progressiveMauve',
-                        'target': label_convert[other['id']]['record_id'],
-                        'target_protein': other['comment'],
+                        'Target': label_convert[other['id']]['record_id'],
+                        'Target_protein': other['comment'],
                         'ID': 'm_%s_%s_%s_%s' % (
                             lcb_idx, o_idx,
                             label_convert[parent['id']]['record_id'],
