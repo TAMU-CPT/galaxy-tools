@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.blast.blast2xmfap" name="Blast TSV to Protein XMFA" version="1.0">
+<tool id="edu.tamu.cpt.blast.blast2pxmfa" name="Blast TSV to Protein XMFA" version="1.0">
   <description></description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/blast2xmfap.py
+$__tool_directory__/blast2pxmfa.py
 $blast_tsv
 $fasta
 $gff3

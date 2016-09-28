@@ -127,7 +127,7 @@ def smaller_than_3n(x, it):
             log.warn("Cluster with %s (>%s) members, seems excessive", len(item), THRESH)
 
 
-def blast2xmfap(blast, fasta, gff3, output):
+def blast2pxmfa(blast, fasta, gff3, output):
     logging.info("Parsing sequence")
     locations = parse_gff3(gff3, fasta)
     logging.info("Parsed locations, clustering")
@@ -186,11 +186,11 @@ def blast2xmfap(blast, fasta, gff3, output):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Convert Blast TSV to XMFAp', epilog='')
+    parser = argparse.ArgumentParser(description='Convert Blast TSV to protein XMFA', epilog='')
     parser.add_argument('blast', type=file, help='Blast TSV Output')
     parser.add_argument('fasta', type=file, help='Blast Input Fasta')
     parser.add_argument('gff3', type=file, help='GFF3 Gene Calls')
     parser.add_argument('output', type=argparse.FileType('w'), help='Output file or - for stdout')
     args = parser.parse_args()
 
-    blast2xmfap(**vars(args))
+    blast2pxmfa(**vars(args))
