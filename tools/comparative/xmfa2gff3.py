@@ -18,12 +18,12 @@ def generate_subfeatures(parent, window_size, other, protein=False):
     for i in range(0, len(parent['seq']), window_size):
         block_seq = parent['seq'][i:i + window_size]
         real_window_size = len(block_seq)
-        real_start = abs(parent['start']) - (3 * (parent['seq'][0:i].count('-') + i))  - 1
-        real_end = real_start + 3 * (real_window_size - block_seq.count('-'))
+        real_start = abs(parent['start'])
+        indexed_start = 3 * (parent['seq'][0:i].count('-') + i)
 
-        log.debug("  I: %s, BS: %s, RWS: %s, RS: %s, RE: %s, RSE: %s", i,
-                  block_seq, real_window_size, real_start, real_end, real_end -
-                  real_start)
+        # log.debug("  I: %s, BS: %s, RWS: %s, RS: %s, RE: %s, RSE: %s", i,
+                  # block_seq, real_window_size, real_start, real_end, real_end -
+                  # real_start)
 
         if parent['start'] < 0:
             strand = -1
@@ -36,7 +36,10 @@ def generate_subfeatures(parent, window_size, other, protein=False):
             continue
 
         yield SeqFeature(
-            FeatureLocation(real_start, real_end),
+            FeatureLocation(
+                real_start + indexed_start,
+                real_start + indexed_start + 3 * real_window_size
+            ),
             type="match_part", strand=strand,
             qualifiers={
                 "source": "progressiveMauve",
@@ -57,8 +60,9 @@ def reduce_subfeatures(subfeatures):
             # print prev_feature.location, feature.location, prev_feature.location.end, feature.location.start
             # pass
         else:
-            yield feature
+            yield prev_feature
             prev_feature = feature
+    yield feature
 
 
 
