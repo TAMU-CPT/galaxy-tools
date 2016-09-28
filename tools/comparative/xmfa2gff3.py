@@ -15,15 +15,31 @@ log = logging.getLogger(__name__)
 
 def generate_subfeatures(parent, window_size, other, protein=False):
     log.debug("Generating subfeatures for %s %s %s", parent, window_size, other)
-    for i in range(0, len(parent['seq']), window_size):
-        block_seq = parent['seq'][i:i + window_size]
+    # We strip off trailing mismatches, and add a stop codon.
+    #
+    # The trailing mismatches cause blocks to run past the end where we don't
+    # want them (and violate the gff3 spec).
+    #
+    # The stop codon will never match (and will slightly decrease %ident) but
+    # it makes the last block the same length as the others which looks nicer.
+    ps = parent['seq'].rstrip('-') + '*'
+    for i in range(0, len(ps), window_size):
+        block_seq = ps[i:i + window_size]
         real_window_size = len(block_seq)
         real_start = abs(parent['start'])
-        indexed_start = 3 * (parent['seq'][0:i].count('-') + i)
+        # This is the index against the parent feature start/end region where our current comparison block is
+        #
+        # In order to handle cases where the parent sequence has a bunch of
+        # ----- leading, we want to find the "real" start of the current block.
+        # So we take the current block start (i), and subtract the number of -s
+        #
+        # Then convert to nucl.
+        nucl2prot = 3
+        indexed_start = nucl2prot * (i - ps[0:i].count('-'))
 
-        # log.debug("  I: %s, BS: %s, RWS: %s, RS: %s, RE: %s, RSE: %s", i,
-                  # block_seq, real_window_size, real_start, real_end, real_end -
-                  # real_start)
+        log.debug("  I: %s, BS: %s, RWS: %s, RS: %s, IS: %s, C: %s", i,
+                  block_seq, real_window_size, real_start, indexed_start,
+                  ps[0:i].count('-'))
 
         if parent['start'] < 0:
             strand = -1
@@ -38,12 +54,15 @@ def generate_subfeatures(parent, window_size, other, protein=False):
         yield SeqFeature(
             FeatureLocation(
                 real_start + indexed_start,
-                real_start + indexed_start + 3 * real_window_size
+                real_start + indexed_start + nucl2prot * real_window_size
             ),
             type="match_part", strand=strand,
             qualifiers={
                 "source": "progressiveMauve",
-                'score': pid
+                'score': pid,
+                # 'alignment': block_seq + '<br/>' + other['seq'][i:i + real_window_size],
+                'qseq': block_seq,
+                'sseq': other['seq'][i:i + real_window_size],
             }
         )
 
@@ -96,7 +115,12 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000, protein=Fa
                     qualifiers={
                         'source': 'progressiveMauve',
                         'target': label_convert[other['id']]['record_id'],
-                        'ID': 'm_%s_%s_%s' % (lcb_idx, o_idx, label_convert[other['id']]['record_id']),
+                        'target_protein': other['comment'],
+                        'ID': 'm_%s_%s_%s_%s' % (
+                            lcb_idx, o_idx,
+                            label_convert[parent['id']]['record_id'],
+                            label_convert[other['id']]['record_id']
+                        ),
                         'Name': other['comment'],
                     }
                 )
