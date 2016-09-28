@@ -24,6 +24,8 @@ def parse_xmfa(xmfa):
                     current_lcb.append(current_seq)
                     current_seq = {}
                 data = line.strip().split()
+                # 0 1           2 3      4 5
+                # > 1:5986-6406 + CbK.fa # CbK_gp011
                 id, loc = data[1].split(':')
                 start, end = loc.split('-')
                 current_seq = {
@@ -32,8 +34,11 @@ def parse_xmfa(xmfa):
                     'start': int(start),
                     'end': int(end),
                     'strand': 1 if data[2] == '+' else -1,
-                    'seq': ''
+                    'seq': '',
+                    'comment': '',
                 }
+                if len(data) > 5:
+                    current_seq['comment'] = ' '.join(data[5:])
             else:
                 current_seq['seq'] += line.strip()
 
