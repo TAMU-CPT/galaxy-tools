@@ -57,7 +57,7 @@ def percent_identity(a, b):
             mismatch += 1
 
     if match + mismatch == 0:
-        return 0
+        return 0.0
     return 100 * float(match) / (match + mismatch)
 
 

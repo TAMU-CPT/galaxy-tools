@@ -13,15 +13,17 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
-def generate_subfeatures(parent, window_size, other):
+def generate_subfeatures(parent, window_size, other, protein=False):
     log.debug("Generating subfeatures for %s %s %s", parent, window_size, other)
     for i in range(0, len(parent['seq']), window_size):
         block_seq = parent['seq'][i:i + window_size]
         real_window_size = len(block_seq)
-        real_start = abs(parent['start']) - parent['seq'][0:i].count('-') + i - 1
-        real_end = real_start + real_window_size - block_seq.count('-')
+        real_start = abs(parent['start']) - (3 * (parent['seq'][0:i].count('-') + i))  - 1
+        real_end = real_start + 3 * (real_window_size - block_seq.count('-'))
 
-        log.debug("  I: %s, BS: %s, RWS: %s, RS: %s, RE: %s", i, block_seq, real_window_size, real_start, real_end)
+        log.debug("  I: %s, BS: %s, RWS: %s, RS: %s, RE: %s, RSE: %s", i,
+                  block_seq, real_window_size, real_start, real_end, real_end -
+                  real_start)
 
         if parent['start'] < 0:
             strand = -1
@@ -43,7 +45,24 @@ def generate_subfeatures(parent, window_size, other):
         )
 
 
-def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
+def reduce_subfeatures(subfeatures):
+    prev_feature = None
+    for feature in subfeatures:
+        if prev_feature is None:
+            prev_feature = feature
+            continue
+
+        if feature.location.start == prev_feature.location.end and prev_feature.qualifiers['score'] == feature.qualifiers['score']:
+            prev_feature.location._end = feature.location.end
+            # print prev_feature.location, feature.location, prev_feature.location.end, feature.location.start
+            # pass
+        else:
+            yield feature
+            prev_feature = feature
+
+
+
+def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000, protein=False):
     label_convert = id_tn_dict(sequences)
     lcbs = parse_xmfa(xmfa_file)
 
@@ -68,7 +87,7 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
             for o_idx, other in enumerate(others):
                 # A feature representing a region of synteny between parent and the given other
                 other_feature = SeqFeature(
-                    FeatureLocation(parent['start'] - 1, parent['end']),
+                    FeatureLocation(parent['start'], parent['end']),
                     type="match", strand=parent['strand'],
                     qualifiers={
                         'source': 'progressiveMauve',
@@ -78,7 +97,8 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
                     }
                 )
 
-                for subfeature in generate_subfeatures(parent, window_size, other):
+                subs = generate_subfeatures(parent, window_size, other, protein=protein)
+                for subfeature in reduce_subfeatures(sorted(subs, key=lambda x: x.location.start)):
                     other_feature.sub_features.append(subfeature)
 
                 parent_records[parent['id']].features.append(other_feature)
@@ -91,6 +111,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert XMFA alignments to gff3', prog='xmfa2gff3')
     parser.add_argument('xmfa_file', type=file, help='XMFA File')
     parser.add_argument('--window_size', type=int, help='Window size for analysis', default=1000)
+    parser.add_argument('--protein', action='store_true', help='Protein XMFA file')
     parser.add_argument('--sequences', type=file, nargs='+',
                         help='Fasta files (in same order) passed to parent for reconstructing proper IDs')
     parser.add_argument('--version', action='version', version='%(prog)s 1.0')
