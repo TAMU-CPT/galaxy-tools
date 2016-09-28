@@ -117,11 +117,14 @@ def larger_than_one(it):
         if len(item) > 1:
             yield item
 
-def smaller_than_2n(x, it):
-    for item in it:
-        if len(item) < 2 * x:
-            yield item
 
+def smaller_than_3n(x, it):
+    THRESH = 3 * x
+    for item in it:
+        if len(item) <= THRESH:
+            yield item
+        else:
+            log.warn("Cluster with %s (>%s) members, seems excessive", len(item), THRESH)
 
 
 def blast2xmfap(blast, fasta, gff3, output):
@@ -132,7 +135,7 @@ def blast2xmfap(blast, fasta, gff3, output):
     logging.info("Found %s records in fasta", len(recids))
 
     # First let's generate some blastclust style clusters.
-    clusters = list(smaller_than_2n(len(recids), larger_than_one(cluster_relationships(gen_relationships(blast)))))
+    clusters = list(smaller_than_3n(len(recids), larger_than_one(cluster_relationships(gen_relationships(blast)))))
     logging.debug("%s clusters generated", len(clusters))
 
     output.write("#FormatVersion Mauve1\n")
