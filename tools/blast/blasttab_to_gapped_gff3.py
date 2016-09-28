@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env python
 import re
 import sys
 import copy
