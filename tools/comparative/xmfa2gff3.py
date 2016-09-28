@@ -71,9 +71,10 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000):
                     FeatureLocation(parent['start'] - 1, parent['end']),
                     type="match", strand=parent['strand'],
                     qualifiers={
-                        "source": "progressiveMauve",
-                        "target": label_convert[other['id']]['record_id'],
-                        "ID": 'm_%s_%s_%s' % (lcb_idx, o_idx, label_convert[other['id']]['record_id'])
+                        'source': 'progressiveMauve',
+                        'target': label_convert[other['id']]['record_id'],
+                        'ID': 'm_%s_%s_%s' % (lcb_idx, o_idx, label_convert[other['id']]['record_id']),
+                        'description': other['comment'],
                     }
                 )
 
