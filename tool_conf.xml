@@ -52,6 +52,7 @@
   <section id="cpt2_blast" name="CPT2: Blast">
       <tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3.xml" />
       <tool file="cpt2/galaxy-tools/tools/blast/blasttab_to_gapped_gff3.xml" />
+      <tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml" />
       <tool file="cpt2/galaxy-tools/tools/blast/cpt_blast_filter.xml" />
       <tool file="cpt2/galaxy-tools/tools/blast/cpt_relatedness.xml" />
       <tool file="cpt2/galaxy-tools/tools/blast/blastxml_filter.xml" />
@@ -142,6 +143,7 @@
     <tool file="cpt2/galaxy-tools/tools/comparative/xmfa2bigwig.xml" />
     <tool file="cpt2/galaxy-tools/tools/comparative/xmfa2tbl.xml" />
     <tool file="cpt2/galaxy-tools/tools/comparative/cpt_mauve_graph.xml" />
+    <tool file="cpt2/galaxy-tools/tools/blast/blast2pxmfa.xml" />
   </section>
   <section id="cpt2_phage" name="CPT2: Phage Analysis Tools">
     <tool file="cpt2/galaxy-tools/tools/phage/virtual_suppressor_strain.xml" />
