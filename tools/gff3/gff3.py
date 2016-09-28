@@ -1,7 +1,7 @@
 import copy
 import logging
-logging.basicConfig(level=logging.WARN)
 log = logging.getLogger()
+log.setLevel(logging.WARN)
 
 
 def feature_lambda(feature_list, test, test_kwargs, subfeatures=True, parent=None, invert=False):
