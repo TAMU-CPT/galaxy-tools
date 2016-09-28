@@ -9,11 +9,10 @@ from Bio.Align.Applications import ClustalwCommandline
 from Bio import AlignIO
 import tempfile
 import logging
-logging.basicConfig(level=logging.DEBUG)
-log = logging.getLogger(name='blast2xmfap')
+log = logging.getLogger()
+log.setLevel(logging.DEBUG)
 
-
-HEADER_TPL = '> {seqnum}:{start}-{end} {strand} {file} # {realname}'
+HEADER_TPL = '> {seqnum}:{start}-{end} {strand} {file} # {realname}\n'
 
 
 def parse_gff3(annotations, genome):
@@ -32,7 +31,7 @@ def parse_gff3(annotations, genome):
             data[feature.id] = {
                 'rec': record.id,
                 'loc': feature.location,
-                'seq': feature.extract(record).seq.translate(table=11, cds=True)[0:-1],
+                'seq': feature.extract(record).seq.translate(table=11, cds=False)[0:-1],
             }
     return data
 
@@ -89,6 +88,7 @@ def align_sequences(SequenceList):
 
     # Build clustal CLI
     d = ClustalwCommandline(infile=t_fa.name, outfile=t_aln.name)
+    logging.debug(d)
     # Call clustal
     d()
     # Get our alignment back
@@ -99,7 +99,7 @@ def align_sequences(SequenceList):
         os.unlink(t_aln.name)
         return aln
     except Exception, e:
-        log.error("%s, %s", e, t_fa.name)
+        logging.error("%s, %s", e, t_fa.name)
         os.unlink(t_aln.name)
         return None
 
@@ -117,24 +117,32 @@ def larger_than_one(it):
         if len(item) > 1:
             yield item
 
+def smaller_than_2n(x, it):
+    for item in it:
+        if len(item) < 2 * x:
+            yield item
 
-def blast2xmfap(blast, fasta, gff3):
+
+
+def blast2xmfap(blast, fasta, gff3, output):
+    logging.info("Parsing sequence")
     locations = parse_gff3(gff3, fasta)
-    log.debug("Parsed locations, clustering")
+    logging.info("Parsed locations, clustering")
     recids = sorted(get_seqids(fasta))
-    log.debug("Found %s records in fasta", len(recids))
+    logging.info("Found %s records in fasta", len(recids))
 
     # First let's generate some blastclust style clusters.
-    clusters = list(larger_than_one(cluster_relationships(gen_relationships(blast))))
-    log.debug("%s clusters generated", len(clusters))
+    clusters = list(smaller_than_2n(len(recids), larger_than_one(cluster_relationships(gen_relationships(blast)))))
+    logging.debug("%s clusters generated", len(clusters))
 
-    print "#FormatVersion Mauve1"
-    for cluster in clusters:
+    output.write("#FormatVersion Mauve1\n")
+    for idx, cluster in enumerate(clusters):
+        logging.debug('Cluster %s/%s, size=%s', idx + 1, len(clusters), len(cluster))
         # We're considering 1 LCB :: 1 cluster
         seqs = []
         for element in cluster:
             if element not in locations:
-                log.warning("Could not find this feature %s", element)
+                logging.warning("Could not find this feature %s", element)
                 continue
 
             sr = SeqRecord(
@@ -146,7 +154,7 @@ def blast2xmfap(blast, fasta, gff3):
 
         aligned_seqs = align_sequences(seqs)
         if aligned_seqs is None:
-            log.error("Error aligning cluster [%s]", ''.join(cluster))
+            logging.error("Error aligning cluster [%s]", ''.join(cluster))
             continue
 
         for element, aligned_seq in zip(sorted(cluster), sorted(aligned_seqs, key=lambda x: x.id)):
@@ -154,30 +162,32 @@ def blast2xmfap(blast, fasta, gff3):
             assert element == aligned_seq.id
 
             if element not in locations:
-                log.warning("Could not find this feature %s", element)
+                logging.warning("Could not find this feature %s", element)
                 continue
 
             eloc = locations[element]
-            print HEADER_TPL.format(
+            output.write(HEADER_TPL.format(
                 seqnum=recids.index(eloc['rec']) + 1,
                 start=eloc['loc'].start,
                 end=eloc['loc'].end,
                 strand='+' if eloc['loc'].strand == 1 else '-',
                 file=eloc['rec'] + '.fa',
                 realname=element,
-            )
+            ))
 
-            for line in split_by_n(str(aligned_seq.seq), 80):
-                print line
+            # for line in split_by_n(str(aligned_seq.seq), 80):
+                # output.write(line + '\n')
+            output.write(str(aligned_seq.seq) + '\n')
 
-        print '='
+        output.write('=\n')
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Convert Blast 25 column TSV to XMFAp', epilog='')
+    parser = argparse.ArgumentParser(description='Convert Blast TSV to XMFAp', epilog='')
     parser.add_argument('blast', type=file, help='Blast TSV Output')
     parser.add_argument('fasta', type=file, help='Blast Input Fasta')
     parser.add_argument('gff3', type=file, help='GFF3 Gene Calls')
+    parser.add_argument('output', type=argparse.FileType('w'), help='Output file or - for stdout')
     args = parser.parse_args()
 
     blast2xmfap(**vars(args))
