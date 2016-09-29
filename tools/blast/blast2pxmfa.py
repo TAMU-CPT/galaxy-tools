@@ -12,8 +12,6 @@ import logging
 log = logging.getLogger()
 log.setLevel(logging.DEBUG)
 
-HEADER_TPL = '> {seqnum}:{start}-{end} {strand} {file} # {realname}\n'
-
 
 def parse_gff3(annotations, genome):
     annotations.seek(0)
@@ -127,18 +125,44 @@ def smaller_than_3n(x, it):
             log.warn("Cluster with %s (>%s) members, seems excessive", len(item), THRESH)
 
 
-def blast2pxmfa(blast, fasta, gff3, output):
+class XmfaWriter(object):
+    HEADER_TPL = '> {seqnum}:{start}-{end} {strand} {file} # {realname}\n'
+
+    def __init__(self, handle):
+        self.output = handle
+        self.output.write("#FormatVersion Mauve1\n")
+
+    def write(self, seqnum, start, end, strand, file, realname, sequence):
+        self.output.write(self.HEADER_TPL.format(
+            seqnum=seqnum,
+            start=start,
+            end=end,
+            strand=strand,
+            file=file,
+            realname=realname,
+        ))
+
+        for line in split_by_n(sequence, 80):
+            self.output.write(line + '\n')
+
+
+    def end(self):
+        self.output.write('=\n')
+
+
+def blast2pxmfa(blast, fasta, gff3, output, genomic=False):
     logging.info("Parsing sequence")
     locations = parse_gff3(gff3, fasta)
     logging.info("Parsed locations, clustering")
     recids = sorted(get_seqids(fasta))
     logging.info("Found %s records in fasta", len(recids))
 
+    xmw = XmfaWriter(output)
+
     # First let's generate some blastclust style clusters.
     clusters = list(smaller_than_3n(len(recids), larger_than_one(cluster_relationships(gen_relationships(blast)))))
     logging.debug("%s clusters generated", len(clusters))
 
-    output.write("#FormatVersion Mauve1\n")
     for idx, cluster in enumerate(clusters):
         logging.debug('Cluster %s/%s, size=%s', idx + 1, len(clusters), len(cluster))
         # We're considering 1 LCB :: 1 cluster
@@ -169,20 +193,16 @@ def blast2pxmfa(blast, fasta, gff3, output):
                 continue
 
             eloc = locations[element]
-            output.write(HEADER_TPL.format(
+            xmw.write(
                 seqnum=recids.index(eloc['rec']) + 1,
                 start=eloc['loc'].start,
                 end=eloc['loc'].end,
                 strand='+' if eloc['loc'].strand == 1 else '-',
                 file=eloc['rec'] + '.fa',
                 realname=element,
-            ))
-
-            # for line in split_by_n(str(aligned_seq.seq), 80):
-                # output.write(line + '\n')
-            output.write(str(aligned_seq.seq) + '\n')
-
-        output.write('=\n')
+                sequence=str(aligned_seq.seq),
+            )
+        xmw.end()
 
 
 if __name__ == '__main__':
@@ -190,6 +210,7 @@ if __name__ == '__main__':
     parser.add_argument('blast', type=file, help='Blast TSV Output')
     parser.add_argument('fasta', type=file, help='Blast Input Fasta')
     parser.add_argument('gff3', type=file, help='GFF3 Gene Calls')
+    parser.add_argument('--genomic', action='store_true', help='Further reduce protein results into genomic-level results.')
     parser.add_argument('output', type=argparse.FileType('w'), help='Output file or - for stdout')
     args = parser.parse_args()
 
