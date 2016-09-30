@@ -124,6 +124,7 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000, protein=Fa
                         'Name': other['comment'],
                     }
                 )
+                other_feature.sub_features = []
 
                 subs = generate_subfeatures(parent, window_size, other, protein=protein)
                 for subfeature in reduce_subfeatures(sorted(subs, key=lambda x: x.location.start)):
