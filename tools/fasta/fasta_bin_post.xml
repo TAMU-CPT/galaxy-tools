@@ -1,24 +1,25 @@
+<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.bin-post" name="Bin Fasta Sequences - Postprocess" version="1.0">
-  <description>into separate collections</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[
-fasta_bin_post.py
+	<description>into separate collections</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_bin_post.py
 $table
 $fasta
 ]]></command>
-  <inputs>
-    <param label="Fasta Bin Table" name="table" type="data" format="tabular"/>
-    <param label="Sequence File" name="fasta" type="data" format="fasta"/>
-  </inputs>
-  <outputs>
-    <collection name="binned-fasta-sequences" type="list">
-      <discover_datasets pattern="__designation_and_ext__" directory="output" />
-    </collection>
-  </outputs>
-  <help><![CDATA[
+	<inputs>
+		<param label="Fasta Bin Table" name="table" type="data" format="tabular"/>
+		<param label="Sequence File" name="fasta" type="data" format="fasta"/>
+	</inputs>
+	<outputs>
+		<collection name="binned-fasta-sequences" type="list">
+			<discover_datasets pattern="__designation_and_ext__" directory="output" />
+		</collection>
+	</outputs>
+	<help><![CDATA[
 **What it does**
 
 Given a binned set of fasta data from the associated "Bin Fasta Sequences"
@@ -45,4 +46,3 @@ The output will be a Dataset Collection with individual fasta files:
 
 ]]></help>
 </tool>
-

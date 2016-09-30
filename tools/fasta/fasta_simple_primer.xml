@@ -1,47 +1,47 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.simpleprimer" name="Simple Primer Generator" version="1.0">
-  <description/>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python fasta_simple_primer.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive">fasta_simple_primer.py
-${fasta_file}
+	<description/>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+$__tool_directory__/fasta_simple_primer.py
+@SEQUENCE@
 --end_overlap ${end_overlap}
 > $output
 </command>
-  <inputs>
-    <param label="Fasta file" name="fasta_file" type="data" format="fasta"/>
-    <param label="End overlap" name="end_overlap" type="integer" value="500"/>
-  </inputs>
-  <outputs>
-    <data format="fasta" name="output">
-    </data>
-  </outputs>
-  <tests>
-      <test>
-          <param name="fasta_file" value="random.fa" />
-          <param name="end_overlap" value="5" />
-          <output name="output" file="primers.fa" />
-      </test>
-  </tests>
-  <help>Simple Primer Tool
-==================
+	<inputs>
+		<expand macro="input/fasta" />
+		<param label="End overlap" name="end_overlap" type="integer" value="500"/>
+	</inputs>
+	<outputs>
+		<data format="fasta" name="output" />
+	</outputs>
+	<tests>
+		<test>
+			<param name="fasta_file" value="random.fa" />
+			<param name="end_overlap" value="5" />
+			<output name="output" file="primers.fa" />
+		</test>
+	</tests>
+	<help><![CDATA[
+**What it does**
 
 For the example contig:
 
 ::
 
-    &gt;test
+    >test
     aaaaaNNNNNNNNNNNNccccc
 
 Requesting a primer with a 5 base end overlap, you would get
 
 ::
 
-    &gt;test
+    >test
     ccccc[ccc]aaaaa
+	]]>
 </help>
-    <expand macro="citations" />
+	<expand macro="citations" />
 </tool>

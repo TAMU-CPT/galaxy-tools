@@ -1,27 +1,51 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.remove_desc" name="Remove Description" version="1.0">
-  <description>from fasta file</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command interpreter="python" detect_errors="aggressive">fasta_remove_id.py
-$fasta
+	<description>from fasta file</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+$__tool_directory__/fasta_remove_id.py
+@SEQUENCE@
 > $out
 </command>
-  <inputs>
-    <param label="Fasta file" name="fasta" format="fasta" type="data"/>
-  </inputs>
-  <outputs>
-    <data format="fasta" name="out">
-    </data>
-  </outputs>
-  <tests>
-      <test>
-          <param name="fasta" value="regex.a3.fa"/>
-          <output name="out" file="regex.a3.clean.fa" />
-      </test>
-  </tests>
-  <help>Clears fasta descline from problematic sequences.
-</help>
+	<inputs>
+		<expand macro="input/fasta" />
+	</inputs>
+	<outputs>
+		<data format="fasta" name="out" />
+	</outputs>
+	<tests>
+		<test>
+			<param name="fasta" value="regex.a3.fa"/>
+			<output name="out" file="regex.a3.clean.fa" />
+		</test>
+	</tests>
+	<help>
+**What it does**
+
+Removes the "description" from fasta sequences. Some tools (glimmer/genemarks)
+do not behave correctly regarding these descriptions, so this tool strips that
+data out with no way to re-add it.
+
+The fasta ID is everything from the ``>`` to the first space, the description
+is everything after the first space.
+
+**Example Input/Outputs**
+
+For an input sequence like::
+
+	>1|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 288 bp
+	acttacgcggagagatgagaccaacgctcgcctaggggcacgcttgtaattgacttatct
+	>2|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 232 bp
+	gttggggacccacctatcagggagtgtagtagtataagactgtccaataccccccaacat
+
+This tool will remove the descriptions and leave you with just the Fasta IDs::
+
+	>1|random
+	acttacgcggagagatgagaccaacgctcgcctaggggcacgcttgtaattgacttatct
+	>2|random
+	gttggggacccacctatcagggagtgtagtagtataagactgtccaataccccccaacat
+	</help>
 </tool>

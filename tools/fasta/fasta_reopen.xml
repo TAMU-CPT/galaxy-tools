@@ -1,33 +1,32 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.reopen" name="Reopen Fasta Sequences" version="1.0">
-  <description>at specific location</description>
-  <version_command>python fasta_reopen.py --version</version_command>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command interpreter="python" detect_errors="aggressive">fasta_reopen.py
+	<description>at specific location</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+$__tool_directory__/fasta_reopen.py
 $fasta_file
 $after
 > $default
-
 </command>
-  <inputs>
-      <param label="Fasta file to reopen" name="fasta_file" type="data" format="fasta" />
-      <param label="Reopen contig after this base" help="1-indexed" name="after" type="integer" value="1000"/>
-  </inputs>
-  <outputs>
-    <data format="fasta" name="default" label="$fasta_file.name reopened at $after">
-    </data>
-  </outputs>
-  <tests>
-      <test>
-          <param name="fasta_file" value="random.fa" />
-          <param name="after" value="10" />
-          <output name="output" file="random.reopened.fa" />
-      </test>
-  </tests>
-  <help>
+	<inputs>
+			<param label="Fasta file to reopen" name="fasta_file" type="data" format="fasta" />
+			<param label="Reopen contig after this base" help="1-indexed" name="after" type="integer" value="1000"/>
+	</inputs>
+	<outputs>
+		<data format="fasta" name="default" label="$fasta_file.name reopened at $after">
+		</data>
+	</outputs>
+	<tests>
+			<test>
+					<param name="fasta_file" value="random.fa" />
+					<param name="after" value="10" />
+					<output name="output" file="random.reopened.fa" />
+			</test>
+	</tests>
+	<help><![CDATA[
 Reopen Fasta Contigs
 ====================
 
@@ -37,15 +36,16 @@ For the example contig:
 
 ::
 
-    &gt;test
+    >test
     aaaaaccccc
 
 Reopening with 5, implying that we should reopen after the fifth base, we see:
 
 ::
 
-    &gt;test
+    >test
     cccccaaaaa
+]]>
 </help>
     <expand macro="citations" />
 </tool>

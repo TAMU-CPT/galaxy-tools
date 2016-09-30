@@ -1,20 +1,20 @@
 <tool id="edu.tamu.cpt.fasta.dedup" name="Fasta Deduplicator" version="1.0">
-  <description>remove duplicate sequences in a fasta file</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python fasta_dedup.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_dedup.py
-$positional_1
+	<description>removes duplicate sequences from a fasta file</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_dedup.py
+@SEQUENCE@
 > $default]]></command>
-  <inputs>
-    <param label="Fasta file" name="positional_1" type="data"/>
-  </inputs>
-  <outputs>
-    <data format="fasta" hidden="false" name="default" label="Unique sequences in $positional_1.name"/>
-  </outputs>
-  <help><![CDATA[
+	<inputs>
+		<expand macro="input/fasta" />
+	</inputs>
+	<outputs>
+		<data format="fasta" name="default" label="Unique sequences in $positional_1.name"/>
+	</outputs>
+	<help><![CDATA[
 **What it does**
 
 Say you generated a bunch of SNPs and then translated that data, and found a
@@ -41,4 +41,3 @@ will be reduced to
 
 ]]></help>
 </tool>
-

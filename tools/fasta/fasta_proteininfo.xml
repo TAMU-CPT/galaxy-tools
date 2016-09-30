@@ -1,39 +1,59 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.protein_info" name="Fasta Sequence Calculator" version="1.0">
-  <description>calculates commonly used sequence properties like GC skew, hydrophilicity, etc</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command interpreter="python" detect_errors="aggressive">fasta_proteininfo.py
+	<description>calculates commonly used sequence properties like GC skew, hydrophilicity, etc</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command interpreter="python" detect_errors="aggressive">fasta_proteininfo.py
 $sequence
 $is_protein
 --func $func
 > $output
 </command>
-  <inputs>
-      <param name="sequence" type="data" format="fasta"
-          label="Fasta Sequence" help="protein or DNA"/>
-      <param name="is_protein" type="boolean" truevalue="--protein" falsevalue="" label="Is the sequence translated?"/>
-      <param name="func" type="select" label="Property to Calculate">
-          <option value="gc">GC</option>
-          <option value="gc_skew">GC Skew</option>
-          <option value="start_codon">Start Codon</option>
-          <option value="stop_codon">Stop Codon</option>
-          <option value="aromaticity">Aromaticity</option>
-          <option value="iep">IEP</option>
-          <option value="length">Length</option>
-          <option value="stop_codon">Stop Codon</option>
-          <option value="mw">Molecular Weight</option>
-          <option value="instability">Instability</option>
-      </param>
-  </inputs>
-  <outputs>
-    <data format="tabular" name="output" />
-  </outputs>
-  <tests>
-  </tests>
-  <help>
-</help>
-    <expand macro="citations" />
+	<inputs>
+		<param name="sequence" type="data" format="fasta"
+			label="Fasta Sequence" help="protein or DNA"/>
+		<param name="is_protein" type="boolean" truevalue="--protein" falsevalue="" label="Is the sequence translated?"/>
+		<param name="func" type="select" label="Property to Calculate">
+			<option value="gc">GC</option>
+			<option value="gc_skew">GC Skew</option>
+			<option value="start_codon">Start Codon</option>
+			<option value="stop_codon">Stop Codon</option>
+			<option value="aromaticity">Aromaticity</option>
+			<option value="iep">IEP</option>
+			<option value="length">Length</option>
+			<option value="stop_codon">Stop Codon</option>
+			<option value="mw">Molecular Weight</option>
+			<option value="instability">Instability</option>
+		</param>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="output" />
+	</outputs>
+	<tests>
+		<test>
+			<param name="sequence" value="prot.fa"/>
+			<param name="is_protein" value="--protein" />
+			<param name="func" value="mw" />
+			<output name="output" file="prot.mw.tab" />
+		</test>
+	</tests>
+	<help>
+**What it does**
+
+Calculates properties about proteins and returns the data in an easy-to-use
+tabular format. E.g. if we wished to calculate the molecular weight of a set of
+proteins, we would get back::
+
+    # ID         value
+    lambdap01    20440.8439
+    lambdap02    73268.8242
+    lambdap03    7612.6467
+    lambdap04    59465.0664
+    lambdap05    45907.2052
+    ...
+
+	</help>
+	<expand macro="citations" />
 </tool>

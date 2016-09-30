@@ -1,35 +1,35 @@
 <tool id="edu.tamu.cpt.fasta.join" name="Fasta Sequence Joiner" version="1.1">
-    <description>find sequences in common</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
-    <expand macro="requirements"/>
-    <command interpreter="python"  detect_errors="aggressive"><![CDATA[
-fasta_join.py
-$left
-$right
+	<description>find sequences in common</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_join.py
+"$left"
+"$right"
 ]]></command>
-    <inputs>
-        <param label="Left sequence" name="left" type="data" format="fasta"/>
-        <param label="Right sequence" name="right" type="data" format="fasta"/>
-    </inputs>
-    <outputs>
-        <data format="fasta" name="a" from_work_dir="both_left.fa" label="Common Sequences from $left.name and $right.name, left sequence"/>
-        <data format="fasta" name="b" from_work_dir="both_right.fa" label="Common Sequences from $left.name and $right.name, right sequence"/>
-        <data format="fasta" name="c" from_work_dir="right_missing.fa" label="Sequences from $left.name not in $right.name" />
-        <data format="fasta" name="d" from_work_dir="left_missing.fa" label="Sequences from $right.name not in $left.name" />
-    </outputs>
-    <tests>
-            <test>
-                <param name="left" value="left.fa" />
-                <param name="right" value="right.fa" />
-                <output name="a" file="both_left.fa" />
-                <output name="b" file="both_right.fa" />
-                <output name="c" file="right_missing.fa" />
-                <output name="d" file="left_missing.fa" />
-            </test>
-    </tests>
-    <help><![CDATA[
+	<inputs>
+		<param label="Left sequence" name="left" type="data" format="fasta"/>
+		<param label="Right sequence" name="right" type="data" format="fasta"/>
+	</inputs>
+	<outputs>
+		<data format="fasta" name="a" from_work_dir="both_left.fa" label="Common Sequences from $left.name and $right.name, left sequence"/>
+		<data format="fasta" name="b" from_work_dir="both_right.fa" label="Common Sequences from $left.name and $right.name, right sequence"/>
+		<data format="fasta" name="c" from_work_dir="right_missing.fa" label="Sequences from $left.name not in $right.name" />
+		<data format="fasta" name="d" from_work_dir="left_missing.fa" label="Sequences from $right.name not in $left.name" />
+	</outputs>
+	<tests>
+		<test>
+			<param name="left" value="left.fa" />
+			<param name="right" value="right.fa" />
+			<output name="a" file="both_left.fa" />
+			<output name="b" file="both_right.fa" />
+			<output name="c" file="right_missing.fa" />
+			<output name="d" file="left_missing.fa" />
+		</test>
+	</tests>
+	<help><![CDATA[
 **What it does**
 
 Finds sequences in common between two fasta files, based on header ID.
@@ -63,4 +63,3 @@ You could expect the following outputs:
 +------------------------+----------+
     ]]></help>
 </tool>
-

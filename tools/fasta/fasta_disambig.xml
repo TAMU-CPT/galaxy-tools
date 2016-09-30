@@ -1,33 +1,31 @@
 <tool id="edu.tamu.cpt.fasta.disambig" name="Disambiguate ambiguous sequences" version="1.0">
-  <description>given a fasta file with ambiguities, replace them randomly</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python fasta_disambig.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[
-fasta_disambig.py
-
-$positional_1
+	<description>produces random, unambiguous variants of ambiguous sequences</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<version_command>python fasta_disambig.py --version</version_command>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_disambig.py
+@SEQUENCE@
 --tbl_out $tbl_out
 --seed $seed
 
 > $default]]></command>
-  <inputs>
-    <param label="Fasta file" format="fasta" name="positional_1" type="data"/>
-    <param label="Seed for reproducible analysis" help="(--seed)" name="seed" type="integer" value="42"/>
-  </inputs>
-  <outputs>
-    <data format="tabular" name="tbl_out" label="Ambiguities" />
-    <data format="txt" name="default" label="Disambiguated $positional_1.name"/>
-  </outputs>
-  <help><![CDATA[
+	<inputs>
+		<expand macro="input/fasta" />
+		<param label="Seed for reproducible analysis" help="(--seed)" name="seed" type="integer" value="42"/>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="tbl_out" label="Ambiguities in $sequences.name" />
+		<data format="fasta" name="default" label="Disambiguated $sequences.name"/>
+	</outputs>
+	<help><![CDATA[
 **What it does**
 
 Sometimes fasta files have ambiguous bases in them. Many downstream tools
 dislike, or outright don't tolerate ambiguous bases. Thus, those have to be
 removed. The easiest way to do that is to randomly replace them.
-
 
 ::
 

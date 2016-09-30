@@ -1,63 +1,62 @@
 <tool id="edu.tamu.cpt.fasta.seq_trans" name="Fasta Translate" version="1.2">
-  <description>Translate fasta file</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python fasta_translate.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_translate.py
-$fasta
+	<description>Translate fasta file</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<version_command>python fasta_translate.py --version</version_command>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_translate.py
+@SEQUENCE@
 
 --target ${output.format_select}
 
 #if str($output.format_select) == "protein":
-    --table $output.table
-    $output.strip_stops
+		--table $output.table
+		$output.strip_stops
 #end if
 
 > $default]]></command>
-  <inputs>
-    <param label="Fasta file" name="fasta" type="data" format="fasta"/>
-    <conditional name="output">
-        <param label="Target output" type="select" name="format_select">
-            <option value="rna">RNA</option>
-            <option value="protein" selected="true">Protein</option>
-        </param>
-        <when value="rna" />
-        <when value="protein">
-            <param label="Translation table to use" name="table" type="select">
-              <option value="1">[1] The Standard Code</option>
-              <option value="2">[2] The Vertebrate Mitochondrial Code</option>
-              <option value="3">[3] The Yeast Mitochondrial Code</option>
-              <option value="4">[4] The Mold, Protozoan, and Coelenterate Mitochondrial Code and the Mycoplasma/Spiroplasma Code</option>
-              <option value="5">[5] The Invertebrate Mitochondrial Code </option>
-              <option value="6">[6] The Ciliate, Dasycladacean and Hexamita Nuclear Code</option>
-              <option value="9">[9] The Echinoderm and Flatworm Mitochondrial Code</option>
-              <option value="10">[10] The Euplotid Nuclear Code</option>
-              <option value="11" selected="true">[11] The Bacterial, Archaeal and Plant Plastid Code</option>
-              <option value="12">[12] The Alternative Yeast Nuclear Code</option>
-              <option value="13">[13] The Ascidian Mitochondrial Code</option>
-              <option value="14">[14] The Alternative Flatworm Mitochondrial Code</option>
-              <option value="15">[15] Blepharisma Nuclear Code</option>
-              <option value="16">[16] Chlorophycean Mitochondrial Code</option>
-              <option value="21">[21] Trematode Mitochondrial Code</option>
-              <option value="22">[22] Scenedesmus Obliquus Mitochondrial Code</option>
-              <option value="23">[23] Thraustochytrium Mitochondrial Code</option>
-              <option value="24">[24] Pterobranchia Mitochondrial Code</option>
-              <option value="25">[25] Candidate Division SR1 and Gracilibacteria Code</option>
-            </param>
-            <param label="Remove stop characters" name="strip_stops" type="boolean" truevalue="--strip_stops" falsevalue=""/>
-        </when>
-    </conditional>
-  </inputs>
-  <outputs>
-    <data format="fasta" hidden="false" name="default"/>
-  </outputs>
-  <help><![CDATA[
+	<inputs>
+		<expand macro="input/fasta" />
+		<conditional name="output">
+			<param label="Target output" type="select" name="format_select">
+				<option value="rna">RNA</option>
+				<option value="protein" selected="true">Protein</option>
+			</param>
+			<when value="rna" />
+			<when value="protein">
+				<param label="Translation table to use" name="table" type="select">
+					<option value="1">[1] The Standard Code</option>
+					<option value="2">[2] The Vertebrate Mitochondrial Code</option>
+					<option value="3">[3] The Yeast Mitochondrial Code</option>
+					<option value="4">[4] The Mold, Protozoan, and Coelenterate Mitochondrial Code and the Mycoplasma/Spiroplasma Code</option>
+					<option value="5">[5] The Invertebrate Mitochondrial Code </option>
+					<option value="6">[6] The Ciliate, Dasycladacean and Hexamita Nuclear Code</option>
+					<option value="9">[9] The Echinoderm and Flatworm Mitochondrial Code</option>
+					<option value="10">[10] The Euplotid Nuclear Code</option>
+					<option value="11" selected="true">[11] The Bacterial, Archaeal and Plant Plastid Code</option>
+					<option value="12">[12] The Alternative Yeast Nuclear Code</option>
+					<option value="13">[13] The Ascidian Mitochondrial Code</option>
+					<option value="14">[14] The Alternative Flatworm Mitochondrial Code</option>
+					<option value="15">[15] Blepharisma Nuclear Code</option>
+					<option value="16">[16] Chlorophycean Mitochondrial Code</option>
+					<option value="21">[21] Trematode Mitochondrial Code</option>
+					<option value="22">[22] Scenedesmus Obliquus Mitochondrial Code</option>
+					<option value="23">[23] Thraustochytrium Mitochondrial Code</option>
+					<option value="24">[24] Pterobranchia Mitochondrial Code</option>
+					<option value="25">[25] Candidate Division SR1 and Gracilibacteria Code</option>
+				</param>
+				<param label="Remove stop characters" name="strip_stops" type="boolean" truevalue="--strip_stops" falsevalue=""/>
+			</when>
+		</conditional>
+	</inputs>
+	<outputs>
+		<data format="fasta" hidden="false" name="default"/>
+	</outputs>
+	<help><![CDATA[
 **What it does**
 
 Translate DNA sequences to protein sequences
-
 ]]></help>
 </tool>
-

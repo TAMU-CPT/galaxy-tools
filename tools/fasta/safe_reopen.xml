@@ -1,32 +1,32 @@
 <tool id="edu.tamu.cpt.fasta.safe_reopen" name="Auto-reopen Fasta" version="1.0">
-  <description>based on gene calls</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive"><![CDATA[
+	<description>based on gene calls</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/safe_reopen.py
-$fasta_file
+@SEQUENCE@
 #for gff in $gff3_files:
-    $gff
+		$gff
 #end for
 > $output
 ]]></command>
-  <inputs>
-    <param label="Fasta file" name="fasta_file" type="data" format="fasta"/>
-    <param lable="GFF3 gene calls" name="gff3_files" type="data" format="gff3" multiple="True" />
-  </inputs>
-  <outputs>
-    <data format="fasta" name="output"/>
-  </outputs>
-  <tests>
-    <test>
-        <param name="fasta_file" value="57.fa" />
-        <param name="gff3_files" value="57.1.gff3,57.2.gff3,57.3.gff3" />
-        <output name="output" file="57.new.fa" />
-    </test>
-  </tests>
-  <help><![CDATA[
+	<inputs>
+		<expand macro="input/fasta" />
+		<param lable="GFF3 gene calls" name="gff3_files" type="data" format="gff3" multiple="True" />
+	</inputs>
+	<outputs>
+		<data format="fasta" name="output"/>
+	</outputs>
+	<tests>
+		<test>
+			<param name="fasta_file" value="57.fa" />
+			<param name="gff3_files" value="57.1.gff3,57.2.gff3,57.3.gff3" />
+			<output name="output" file="57.new.fa" />
+		</test>
+	</tests>
+	<help><![CDATA[
 **What it does**
 
 Given a set of gene calls and a fasta sequence, try and re-open that fasta

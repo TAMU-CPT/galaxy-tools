@@ -1,19 +1,47 @@
 <tool id="edu.tamu.cpt.fasta.rename" name="Fasta Sequence Renamer" version="1.0.0">
-  <description>rename fasta sequences</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_rename.py $positional_1
-$positional_2
-> $default]]></command>
-  <inputs>
-    <param label="Input sequence" name="positional_1" type="data" format="fasta"/>
-    <param label="New name for the fasta sequence" name="positional_2" type="text"/>
-  </inputs>
-  <outputs>
-    <data format="fasta" hidden="false" name="default" label="$positional_2"/>
-  </outputs>
-  <help><![CDATA[TODO: Bug @erasche until he fixes it or make a PR]]></help>
-</tool>
+	<description>rename fasta sequences</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_rename.py
+@SEQUENCE@
+"$new_name"
+> $output]]></command>
+	<inputs>
+		<expand macro="input/fasta" />
+		<param label="New name for the fasta sequence" name="new_name" type="text"/>
+	</inputs>
+	<outputs>
+		<data format="fasta" name="output" label="$new_name"/>
+	</outputs>
+	<tests>
+		<test>
+			<param name="fasta" value="rename.fa"/>
+			<param name="new_name" value="renamed" />
+			<output name="out" file="renamed.fa" />
+		</test>
+	</tests>
+	<help><![CDATA[
+**What it does**
 
+Allows re-naming a sequence with a new ID.
+
+.. class:: warningmark
+
+This tool will error if there is more than one sequence in your file!
+
+**Example Inputs/Outputs**
+
+For an input sequence::
+
+    >some-long-description and more useless information
+    ACTG
+
+This tool would let you rename the sequence something sensible like "phage_bob"::
+
+    >renamed  [Orig=some-long-description]
+    ACTG
+]]></help>
+</tool>

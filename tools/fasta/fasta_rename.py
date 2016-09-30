@@ -1,26 +1,21 @@
 #!/usr/bin/env python
+import sys
 import logging
+from Bio import SeqIO
 import argparse
 logging.basicConfig(level=logging.INFO)
 
 
 def rename_fasta_sequences(fasta_file, new_name):
-    from Bio import SeqIO
-    import StringIO
-    output = StringIO.StringIO()
+    for idx, record in enumerate(SeqIO.parse(fasta_file, "fasta")):
+        if idx > 1:
+            raise Exception("Too many sequences")
 
-    records = list(SeqIO.parse(fasta_file, "fasta"))
-    if len(records) > 1:
-        raise Exception("Too many sequences")
-    elif len(records) == 0:
-        raise Exception("Too few sequences")
+        orig = record.id
+        record.id = new_name
+        record.description = " [Orig=%s]" % orig
 
-    orig = records[0].id
-    records[0].id = new_name
-    records[0].description = " [Orig=%s]" % orig
-    fasta_file.close()
-    SeqIO.write(records, output, "fasta")
-    return output.getvalue()
+        SeqIO.write([record], sys.stdout, "fasta")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rename fasta sequences')
@@ -29,4 +24,4 @@ if __name__ == '__main__':
     parser.add_argument('new_name', nargs='?', help='New name for the fasta sequence')
     args = parser.parse_args()
 
-    print rename_fasta_sequences(**vars(args))
+    rename_fasta_sequences(**vars(args))

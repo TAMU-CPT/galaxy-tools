@@ -1,20 +1,20 @@
 <tool id="edu.tamu.cpt.fasta.codonstats" name="Fasta Codon Stats" version="0.1">
-  <description>Calculate Codon frequencies in sequences</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python fasta_codonstats.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_codonstats.py
-$positional_1
+	<description>calculates codon frequencies in sequences</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_codonstats.py
+@SEQUENCE@
 > $default]]></command>
-  <inputs>
-    <param label="Fasta file" name="positional_1" type="data"/>
-  </inputs>
-  <outputs>
-    <data format="tabular" hidden="false" name="default" label="Codon usage in $positional_1.name"/>
-  </outputs>
-  <help><![CDATA[
+	<inputs>
+		<expand macro="input/fasta" />
+	</inputs>
+	<outputs>
+		<data format="tabular" hidden="false" name="default" label="Codon usage in $positional_1.name"/>
+	</outputs>
+	<help><![CDATA[
 **What it does**
 
 Given an DNA fasta file like:
@@ -43,4 +43,3 @@ Values are normalized for easier use in downstream analysis
 
 ]]></help>
 </tool>
-

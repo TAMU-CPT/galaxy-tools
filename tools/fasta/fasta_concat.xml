@@ -1,36 +1,34 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.genbank.fasta-merge" name="Concatenate Fasta Sequences" version="1.94">
-  <description>merge into single long sequence</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python fasta_concat.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive">fasta_concat.py
-$file
+	<description>merge into single long sequence</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+$__tool_directory__/fasta_concat.py
+"$file"
 --id "${id}"
 > $output
 </command>
-  <inputs>
-    <param label="Fasta file to merge" name="file" type="data" format="fasta"/>
-    <param label="New fasta identifier for merged sequences" name="id"
-        type="text" value="merged"/>
-  </inputs>
-  <outputs>
-    <data format="fasta" name="output">
-    </data>
-  </outputs>
-  <tests>
-      <test>
-          <param name="file" value="merge_input.fa" />
-          <output name="output" file="concated.fa" />
-      </test>
-  </tests>
-  <help>
-Fasta Concatentation
-====================
+	<inputs>
+		<param label="Fasta file to merge" name="file" type="data" format="fasta"/>
+		<param label="New fasta identifier for merged sequences" name="id" type="text" value="merged"/>
+	</inputs>
+	<outputs>
+		<data format="fasta" name="output" />
+	</outputs>
+	<tests>
+		<test>
+			<param name="file" value="merge_input.fa" />
+			<output name="output" file="concated.fa" />
+		</test>
+	</tests>
+	<help>
+**What it does**
 
-Merge all fasta sequences into a single one. Useful for preparing data for use in MIST
+Merges all sequences in a file, into a single sequence. Useful for preparing data for use in MIST
 </help>
-    <expand macro="citations" />
+	<citations>
+	</citations>
 </tool>

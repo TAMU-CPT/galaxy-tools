@@ -68,7 +68,6 @@
       <tool file="cpt2/galaxy-tools/tools/fasta/fasta_concat.xml" />
       <tool file="cpt2/galaxy-tools/tools/fasta/fasta_dedup.xml" />
       <tool file="cpt2/galaxy-tools/tools/fasta/fasta_disambig.xml" />
-      <tool file="cpt2/galaxy-tools/tools/fasta/fasta_gc_skew.xml" />
       <tool file="cpt2/galaxy-tools/tools/fasta/fasta_join.xml" />
       <tool file="cpt2/galaxy-tools/tools/fasta/fasta_ligate.xml" />
       <tool file="cpt2/galaxy-tools/tools/fasta/fasta_proteininfo.xml" />

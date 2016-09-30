@@ -1,20 +1,20 @@
 <tool id="edu.tamu.cpt.fasta.stats" name="Fasta AA Stats" version="0.1">
-  <description>Calculate AA frequencies in sequences</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python fasta_aastats.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_aastats.py
-$positional_1
+	<description>Calculate AA frequencies in sequences</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_aastats.py
+@SEQUENCE@
 > $default]]></command>
-  <inputs>
-    <param label="Fasta file" name="positional_1" type="data"/>
-  </inputs>
-  <outputs>
-    <data format="tabular" hidden="false" name="default" label="Amino Acid usage in $positional_1.name"/>
-  </outputs>
-  <help><![CDATA[
+	<inputs>
+		<expand macro="input/fasta" />
+	</inputs>
+	<outputs>
+		<data format="tabular" hidden="false" name="default" label="Amino Acid usage in $sequence.name"/>
+	</outputs>
+	<help><![CDATA[
 **What it does**
 
 Given a translated fasta file like:
@@ -36,4 +36,3 @@ The entire alphabet is used for simplicity, and the values are normalized for ea
 
 ]]></help>
 </tool>
-

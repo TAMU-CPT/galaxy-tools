@@ -1,41 +1,40 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.tools.charges" name="Charges" version="1.0">
-  <description>colour sequences based on rules</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python fasta_charges.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive">fasta_charges.py
+	<description>colour sequences based on rules</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+$__tool_directory__/fasta_charges.py
+@SEQUENCE@
 $fasta
 --cs $cs
 --width $width
 
 > $html
 </command>
-  <inputs>
-    <param label="Fasta protein file" name="fasta" format="fasta" type="data"/>
-    <param label="Colour scheme" name="cs" type="select">
-      <option value="default">Deafult hyrophobic/polar/charged</option>
-    </param>
-    <param label="Plot width" name="width" type="integer" value="120" />
-  </inputs>
-  <outputs>
-    <data format="html" name="html">
-    </data>
-  </outputs>
-  <tests>
-      <test>
-          <param name="fasta" value="prot.fa"/>
-          <param name="cs" value="default" />
-          <param name="width" value="120" />
-          <output name="html" file="charges.html" />
-      </test>
-  </tests>
-  <help>Charges
-=======
+	<inputs>
+		<expand macro="input/fasta/protein" />
+		<param label="Colour scheme" name="cs" type="select">
+			<option value="default">Deafult hyrophobic/polar/charged</option>
+		</param>
+		<param label="Plot width" name="width" type="integer" value="120" />
+	</inputs>
+	<outputs>
+		<data format="html" name="html" />
+	</outputs>
+	<tests>
+		<test>
+			<param name="fasta" value="prot.fa"/>
+			<param name="cs" value="default" />
+			<param name="width" value="120" />
+			<output name="html" file="charges.html" />
+		</test>
+	</tests>
+	<help>
+**What it does**
 
-Colour sequences based on rules. Email esr@tamu.edu to request new colour schemes
-
+Colors sequences based on rules and outputs for display
 </help>
 </tool>

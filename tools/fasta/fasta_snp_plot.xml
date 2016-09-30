@@ -1,23 +1,25 @@
 <tool id="edu.tamu.cpt.plot.snp" name="SNP Plot" version="1.0">
-  <description>simple plot of generated snps against a reference sequence</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python fasta_snp_plot.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_snp_plot.py
+	<description>simple plot of generated snps against a reference sequence</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_snp_plot.py
 $positional_1
 $positional_2
 
 > $default]]></command>
-  <inputs>
-    <param label="Reference sequence" help="only 1 fasta sequence allowed" name="positional_1" type="data"/>
-    <param label="Fasta file of SNPs" name="positional_2" type="data"/>
-  </inputs>
-  <outputs>
-    <data format="svg" name="default" label="SNPs from $positional_2.name against $positional_1.name"/>
-  </outputs>
-  <help><![CDATA[
+	<inputs>
+		<param label="Reference sequence" help="only 1 fasta sequence allowed" name="positional_1" type="data"/>
+		<param label="Fasta file of SNPs" name="positional_2" type="data"/>
+	</inputs>
+	<outputs>
+		<data format="svg" name="default" label="SNPs from $positional_2.name against $positional_1.name"/>
+	</outputs>
+	<tests>
+	</tests>
+	<help><![CDATA[
 **What it does**
 
 Given a reference sequence
@@ -50,4 +52,3 @@ a simple plot will be generated:
 
 ]]></help>
 </tool>
-

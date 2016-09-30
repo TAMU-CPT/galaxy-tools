@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.blastclust" name="BlastClust Fasta Separator" version="1.0">
-  <description>separated clusters into individual fasta files</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python fasta_blastclust_fasta.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_blastclust_fasta.py
+	<description>separated clusters into individual fasta files</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<version_command>python fasta_blastclust_fasta.py --version</version_command>
+	<command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_blastclust_fasta.py
 $positional_1
 $positional_2
-
-#if $ignore and $ignore is not None:
 --ignore $ignore
-#end if
 ]]></command>
-  <inputs>
-    <param label="Blastclust fasta input" name="positional_1" format="fasta" type="data"/>
-    <param label="Blastclust Output" name="positional_2" type="data"/>
-    <param label="Clusters smaller than this threshold will be ignored" name="ignore" type="integer" value="0"/>
-  </inputs>
-  <outputs>
-    <data format="txt" name="data">
-        <discover_datasets pattern="__designation_and_ext__" directory="gbk_out" visible="true" />
-    </data>
-  </outputs>
-  <help><![CDATA[
+	<inputs>
+		<param label="Blastclust Fasta Input" name="positional_1" format="fasta" type="data"/>
+		<param label="Blastclust Output" name="positional_2" type="data"/>
+		<param label="Minimum Cluster Size" help="Clusters smaller than this threshold will be ignored" name="ignore" type="integer" value="0"/>
+	</inputs>
+	<outputs>
+		<data format="txt" name="data">
+			<discover_datasets pattern="__designation_and_ext__" directory="gbk_out" visible="true" />
+		</data>
+	</outputs>
+	<help><![CDATA[
+**What it does**
+
+This tool outputs separate fasta files, one for each cluster in a blastclust report.
 ]]></help>
 </tool>

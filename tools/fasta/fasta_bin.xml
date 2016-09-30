@@ -1,7 +1,8 @@
+<?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.bin" name="Bin Fasta Sequences" version="1.0">
-  <description>to reach a target length</description>
-  <command detect_errors="aggressive"><![CDATA[
-      $__tool_directory__/fasta_bin
+	<description>to reach a target length</description>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_bin
 -batchSize=$batchSize
 -lengthTable=$lengthTable
 -maxBins=$maxBins
@@ -10,26 +11,26 @@
 -targetLength=$targetLength
 > $output
 ]]></command>
-  <inputs>
-    <param label="Fasta Length Table" name="lengthTable" type="data" format="tabular"/>
-    <param label="Target Length" name="targetLength" value="2000" type="integer" min="100" />
-    <param label="Slop" name="slop" help="How close to target length should we be?" type="integer" value="100" min="10"/>
+	<inputs>
+		<param label="Fasta Length Table" name="lengthTable" type="data" format="tabular"/>
+		<param label="Target Length" name="targetLength" value="2000" type="integer" min="100" />
+		<param label="Slop" name="slop" help="How close to target length should we be?" type="integer" value="100" min="10"/>
 
-    <param label="Batch size" name="batchSize" type="integer" min="10" max="80" value="40"/>
-    <param label="Maximum number of bins per batch" name="maxBins" type="integer" min="1" max="30" value="10" />
-    <param label="Your patience level" type="select" name="patience">
-        <option value="0">Impatient</option>
-        <option value="1">Mildly impatient</option>
-        <option value="2">Somewhat patient</option>
-        <option value="3">Quite patient</option>
-        <option value="4">Incredibly patient</option>
-        <option value="5">I'm doing this before my lunch break</option>
-    </param>
-  </inputs>
-  <outputs>
-    <data format="tabular" name="output"/>
-  </outputs>
-  <help><![CDATA[
+		<param label="Batch size" name="batchSize" type="integer" min="10" max="80" value="40"/>
+		<param label="Maximum number of bins per batch" name="maxBins" type="integer" min="1" max="30" value="10" />
+		<param label="Your patience level" type="select" name="patience">
+			<option value="0">Impatient</option>
+			<option value="1">Mildly impatient</option>
+			<option value="2">Somewhat patient</option>
+			<option value="3">Quite patient</option>
+			<option value="4">Incredibly patient</option>
+			<option value="5">I'm doing this before my lunch break</option>
+		</param>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="output"/>
+	</outputs>
+	<help><![CDATA[
 **What it does**
 
 Given a set of fasta sequence lengths, e.g.
@@ -67,4 +68,3 @@ result.
 
 ]]></help>
 </tool>
-
