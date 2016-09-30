@@ -1,23 +1,62 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.comp.xmfa.graph" name="Mauve Alignment Graph" version="1.0">
-  <description>Graph of XMFA backbone</description>
-  <version_command>python cpt_mauve_graph.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_mauve_graph.py
-$positional_1;
+  <description>from XMFA backbone</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/cpt_mauve_graph.py
+"$backbone";
 
-mv xmfa.gv.pdf $default;
-rm -f xmfa.gv;
-
+mv xmfa.gv.pdf "$default";
+mv xmfa.gv "$gv";
 ]]></command>
   <inputs>
-    <param label="XMFA Backbone" name="positional_1" type="data" format="tabular"/>
+    <param label="XMFA Backbone" name="backbone" type="data" format="tabular"/>
   </inputs>
   <outputs>
     <data format="pdf" hidden="false" name="default"/>
+    <data format="graphviz" hidden="true" name="gv"/>
   </outputs>
   <help><![CDATA[
 **What it does**
 
-Create a graph from an XMFA alignment backbone
+Create a graph from an XMFA alignment backbone. This is only interesting in an
+academic fashion, to see exactly how the alignment proceeded.
+
+**Example Output**
+
+The normal output is a PDF file, but a snippet of the graph has been rendered
+below as ASCII Art. Blocks represent a set of sequence which is shared amongst
+one or more genomes. The lines represent the paths individual genomes take. The first block contains just genomes 2 and 3, as does the second block. The third block also references genomes 0, and 1::
+
+
+       +----------------------------------------------------------+
+    +--| Alignment Start                                          |
+    |  +----------------------------------------------------------+
+    |    |                                            |     |
+    |    | 2                                          | 3   |
+    |    v                                            |     |
+    |  +-------------------------------------------+  |     |
+    |  | Seq 2: 135417-135419 Seq 3: 135192-135194 | <+     |
+    |  +-------------------------------------------+        |
+    |    |                                                  |
+    |    | 2, 3                                             |
+    |    v                                                  |
+    |  +-------------------------------------------+        |
+    |  | Seq 2: 124592-124595 Seq 3: 124367-124370 | -+     |
+    |  +-------------------------------------------+  |     |
+    |    |                                            |     |
+    |    | 2                                          | 3   | 0, 1
+    |    v                                            v     v
+    |  +----------------------------------------------------------+
+    |  | Seq 0: 3-14 Seq 1: 142-153 Seq 2: 158-169 Seq 3: 122-133 |
+    |  +----------------------------------------------------------+
+
+
       ]]></help>
+  <citations>
+    <expand macro="citation/progressive_mauve" />
+  </citations>
 </tool>

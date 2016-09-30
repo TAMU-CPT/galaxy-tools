@@ -140,8 +140,7 @@ if __name__ == '__main__':
     parser.add_argument('xmfa_file', type=file, help='XMFA File')
     parser.add_argument('--window_size', type=int, help='Window size for analysis', default=1000)
     parser.add_argument('--protein', action='store_true', help='Protein XMFA file')
-    parser.add_argument('--sequences', type=file, nargs='+',
-                        help='Fasta files (in same order) passed to parent for reconstructing proper IDs')
+    parser.add_argument('--sequences', type=file, help='Fasta file (in same order) passed to parent for reconstructing proper IDs')
     parser.add_argument('--version', action='version', version='%(prog)s 1.0')
 
     args = parser.parse_args()

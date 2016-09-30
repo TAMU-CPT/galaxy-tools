@@ -1,53 +1,42 @@
 <?xml version="1.0"?>
 <tool id="xmfa2gff3" name="Convert XMFA to gapped GFF3" version="@WRAPPER_VERSION@.2">
-  <description></description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <version_command>python xmfa2gff3.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[
-xmfa2gff3.py
-$xmfa
+	<description></description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/xmfa2gff3.py
+@XMFA_INPUT@
 --window_size $window_size
---sequences
-#for file in $sequences:
-    "${file}"
-#end for
+--sequences @XMFA_FA_INPUT@
+
 #if $xmfa.ext == "pxmfa":
 	--protein
 #end if
 
 > $output
 ]]></command>
-  <inputs>
-      <param type="data" format="xmfa,pxmfa" name="xmfa"
-          label="XMFA MSA" />
+	<inputs>
+		<expand macro="xmfa_input" formats="xmfa,pxmfa" />
+		<expand macro="xmfa_fa_input" />
 
-      <param type="data" format="fasta" name="sequences" multiple="True"
-          label="Select sequences used in progressiveMauve alignment"
-          help="Should be provided in the same order as in original progressiveMauve run"/>
-
-      <param type="integer" label="Window Size" value="100" name="window_size"
-          help="maximum length of a match_part feature. Lower number = larger GFF output" />
-  </inputs>
-  <outputs>
-    <data format="gff3" name="output" />
-  </outputs>
-  <tests>
-      <!--
-      <test>
-          <param name="xmfa" value="1.xmfa"/>
-          <param name="sequences" value="karma.fa,phagey.fa" />
-          <param name="window_size" value="10" />
-      </test>
-      -->
-  </tests>
-  <help><![CDATA[
-What it does
-============
-
-XMFA Alignments are great, but now you need a way to visualize this data!
+		<param type="integer" label="Window Size" value="100" name="window_size"
+			help="maximum length of a match_part feature. Lower number = larger GFF output" />
+	</inputs>
+	<outputs>
+		<data format="gff3" name="output" />
+	</outputs>
+	<tests>
+		<test>
+			<param name="xmfa" value="1.xmfa"/>
+			<param name="sequences" value="kp.fa" />
+			<param name="window_size" value="10" />
+			<output name="output" file="kp.gff3"/>
+		</test>
+	</tests>
+	<help><![CDATA[
+**What it does**
 
 This tool provides a conversion step to GFF3 formatted output consiting of
 ``match``es and ``match_part``s with scores indicating percent identity over
@@ -58,6 +47,6 @@ A rendering of the output GFF3 file in JBrowse is shown below:
 .. image:: $PATH_TO_IMAGES/xmfa2gff3.png
 
 ]]></help>
-  <citations>
-  </citations>
+	<citations>
+	</citations>
 </tool>
