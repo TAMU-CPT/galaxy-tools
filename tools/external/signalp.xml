@@ -1,10 +1,10 @@
 <tool id="edu.tamu.cpt.external.signalp" name="SignalP to GFF3" version="1.0">
-  <description>converts txt formatted SignalP to gff3 results</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive"><![CDATA[
+	<description>converts txt formatted SignalP to gff3 results</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/signalp.py
 
 "$parentGff3"
@@ -16,17 +16,19 @@ python $__tool_directory__/signalp.py
 > $stdout
 
 ]]></command>
-  <inputs>
-    <param name="parentGff3" type="data" format="gff3" label="Parent GFF3 annotations"/>
-    <param name="signalp_output" type="data" format="txt" label="SignalP Output"/>
-  </inputs>
-  <outputs>
-    <data format="gff3" name="stdout" label="SignalP as GFF3"/>
-    <data format="wig" name="bw_c" label="SignalP $on_string C signal"/>
-    <data format="wig" name="bw_s" label="SignalP $on_string S signal"/>
-    <data format="wig" name="bw_y" label="SignalP $on_string Y signal"/>
-  </outputs>
-  <help><![CDATA[
+	<inputs>
+		<param name="parentGff3" type="data" format="gff3" label="Parent GFF3 annotations"/>
+		<param name="signalp_output" type="data" format="txt" label="SignalP Output"/>
+	</inputs>
+	<outputs>
+		<data format="gff3" name="stdout" label="SignalP as GFF3"/>
+		<data format="wig" name="bw_c" label="SignalP $on_string C signal"/>
+		<data format="wig" name="bw_s" label="SignalP $on_string S signal"/>
+		<data format="wig" name="bw_y" label="SignalP $on_string Y signal"/>
+	</outputs>
+	<help><![CDATA[
+**What it does**
+
 Process the SignalP output into a GFF3 formatted dataset and wig datasets.
 ]]></help>
 </tool>
