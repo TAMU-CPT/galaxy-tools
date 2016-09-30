@@ -9,7 +9,11 @@ def plot(abif_file):
     records = list(SeqIO.parse(abif_file, "abi"))
     for record in records:
         for key in sorted(record.annotations['abif_raw'].keys()):
-            print "%s\t%s" % (key, record.annotations['abif_raw'][key])
+            if 'PCON' in key:
+                x = map(ord, record.annotations['abif_raw'][key])
+                print '%s\t%s' % (key, x)
+            else:
+                print "%s\t%s" % (key, record.annotations['abif_raw'][key])
 
 
 if __name__ == '__main__':

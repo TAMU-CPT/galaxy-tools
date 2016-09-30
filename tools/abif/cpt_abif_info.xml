@@ -14,7 +14,45 @@ $positional_1
   <help><![CDATA[
 **What it does**
 
-Dumps all information available from an ABIF/AB1 file.
+Dumps all information available from an ABIF/AB1 file. Currently this is not
+very extensive or useful in any downstream analyses, but the tool is made
+available in case it is helpful to anyone.
 
+Example output::
+
+	RPrN1	Eton_BDX_longseq50-POP7
+	RPrV1	1
+	RUND1	2012-04-27
+	RUND2	2012-04-27
+	RUND3	2012-04-27
+	RUND4	2012-04-27
+	RUNT1	13:56:21
+	RUNT2	16:08:23
+	RUNT3	14:36:32
+	RUNT4	16:08:11
+	Rate1	None
+	RunN1	Run_ABI3730_2012-04-27_13-56_0059
+	S/N%1	(131, 145, 158, 181)
+	SCAN1	18293
+	SMED1	Dec 07, 2011
+	SMLt1	0904371
+	SMPL1	CA-2-2rev
+	SPAC1	15.2104177475
+	SPAC2	KB.bcp
+	SPAC3	15.2104177475
+	SVER1	3.0
+	SVER2	KB 1.2
+	SVER3	6258050-03 6258002-04 6258003-03 6258005-00
+	Scal1	2.0
+	Scan1	18293
+	TUBE1	D1
+	Tmpr1	60
+	User1	Tony
+	phAR1	-1.0
+	phCH1	term
+	phDY1	big
+	phQL1	99
+	phTR1	(-1, -1)
+	phTR2	-1.0
       ]]></help>
 </tool>
