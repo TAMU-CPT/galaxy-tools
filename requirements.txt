@@ -1,4 +1,4 @@
-biopython>=1.66
+biopython==1.67
 pyyaml
 numpy
 svgwrite
