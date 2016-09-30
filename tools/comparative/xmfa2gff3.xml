@@ -14,11 +14,14 @@ $xmfa
 #for file in $sequences:
     "${file}"
 #end for
+#if $xmfa.ext == "pxmfa":
+	--protein
+#end if
 
 > $output
 ]]></command>
   <inputs>
-      <param type="data" format="xmfa" name="xmfa"
+      <param type="data" format="xmfa,pxmfa" name="xmfa"
           label="XMFA MSA" />
 
       <param type="data" format="fasta" name="sequences" multiple="True"

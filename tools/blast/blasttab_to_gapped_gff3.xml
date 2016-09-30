@@ -1,17 +1,18 @@
 <tool id="blasttab_to_gapped_gff3" name="BlastN TSV to gapped GFF3" version="1.2">
-  <description></description>
+  <description>converts tabular blast results to a JBrowse-compatible file</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[
-blasttab_to_gapped_gff3.py
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/blasttab_to_gapped_gff3.py
+@BLAST_TSV@
 $blasttsv
 --min_gap $min_gap
 > $output]]></command>
   <inputs>
-    <param label="Blast TSV" name="blasttsv" type="data" format="tabular"/>
-    <param label="Maximum gap size before generating a new match_part" name="min_gap" type="integer" value="10"/>
+    <expand macro="blast_tsv" />
+    <param label="Gap Size" help="Maximum gap in blast alignment, before a new match_part is generated" name="min_gap" type="integer" value="10"/>
   </inputs>
   <outputs>
     <data format="gff3" name="output"/>

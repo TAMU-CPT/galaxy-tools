@@ -7,18 +7,17 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/blast2pxmfa.py
-$blast_tsv
+@BLAST_TSV@
 $fasta
 $gff3
 $output
 ]]></command>
   <inputs>
-    <param label="Blast Tabular" name="blast_tsv" type="data" format="tabular" />
-    <param label="Genome Sequences" name="fasta" type="data" format="fasta" />
-    <param label="Genome Annotations" name="gff3" type="data" format="gff3" />
+    <expand macro="blast_tsv" />
+    <expand macro="gff3_with_fasta" />
   </inputs>
   <outputs>
-    <data format="xmfa" name="output"/>
+    <data format="pxmfa" name="output"/>
   </outputs>
   <tests>
       <test>
@@ -29,13 +28,26 @@ $output
       </test>
   </tests>
   <help><![CDATA[
+.. class:: warningmark
+
+Be sure to filter your data first using the "Blast Tabular Dice Filter"
+tool available in the CPT Galaxy.
+
 **What it does**
 
-Transform protein blast results, via clustering, into XMFA format. This
-allows displaying clusters of proteins in downstream tools which support the
-XMFA format such as JBrowse.
+This tool processes BLAST Tabular results into a protein XMFA file. This
+permits displaying them downstream with tools that support XMFA such as
+JBrowse.
+
+**How it works**
+
+The tool works by:
+
+- taking the set of blast results
+- clustering them according to relationships detected by blast
+- running ClustalW to generate a set of alignments for each cluster
+- outputting those clusters in the XMFA format
 ]]></help>
     <citations>
     </citations>
 </tool>
-

@@ -1,22 +1,22 @@
 <tool id="blastxml_to_gapped_gff3" name="BlastXML to gapped GFF3" version="1.0">
-  <description></description>
+  <description>converts blast results to a JBrowse-compatible file</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python blastxml_to_gapped_gff3.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[blastxml_to_gapped_gff3.py
-$blastxml
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/blastxml_to_gapped_gff3.py
+@BLAST_XML@
 
 --min_gap $min_gap
 $trim
 > $output]]></command>
   <inputs>
-    <param label="Blast XML" name="blastxml" type="data" format="blastxml"/>
-    <param label="Maximum gap size before generating a new match_part" name="min_gap" type="integer" value="3"/>
+    <expand macro="blast_xml" />
+    <param label="Gap Size" help="Maximum gap in blast alignment, before a new match_part is generated" name="min_gap" type="integer" value="10"/>
 
     <param type="select" label="Trim sides of blast hits" name="trim">
-        <option value="">None</option>
+        <option value="">Neither</option>
         <option value="--trim">Trim start and end</option>
         <option value="--trim_end" selected="true">Trim only end</option>
     </param>

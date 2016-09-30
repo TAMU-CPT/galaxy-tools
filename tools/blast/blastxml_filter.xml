@@ -1,14 +1,16 @@
-<tool id="blastxml_filter" name="Filter BlastXML" version="1.0">
-    <description></description>
+<tool id="blastxml_filter" name="Filter BlastXML" version="0.2">
+    <description>based on e-value and hit position</description>
     <macros>
       <import>macros.xml</import>
     </macros>
     <expand macro="requirements"/>
-    <command interpreter="python" detect_errors="aggressive"><![CDATA[
-        xsltproc $xsltfile $blastxml > $output
+    <command interpreter="bash" detect_errors="aggressive"><![CDATA[
+xsltproc $xsltfile @BLAST_XML@ > $output
     ]]></command>
     <configfiles>
-        <configfile name="xsltfile"><![CDATA[<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+        <configfile name="xsltfile"><![CDATA[
+
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <!-- Inspired by https://www.biostars.org/p/15658/ -->
     <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
 
@@ -38,9 +40,9 @@
         </configfile>
     </configfiles>
     <inputs>
-      <param label="Blast XML" name="blastxml" type="data" format="blastxml"/>
+      <expand macro="blast_xml" />
 
-      <param label="Below this e-value" name="evalue" type="float" value="1e-5"/>
+      <param label="E-value threshold" help="Values below this e-value will be removed" name="evalue" type="float" value="1e-5"/>
       <param label="Top N hits" name="topN" type="integer" value="20"
           help="Usually blast will return a maxmimum of 500 hits, so set to 500 to disable this check."/>
     </inputs>
@@ -56,9 +58,8 @@
     <help><![CDATA[
 **What it does**
 
-Filter BlastXML data by e-value and HSP number
+Filter BlastXML data by e-value and HSP number which is generally an indicator of best results.
 ]]></help>
       <citations>
       </citations>
 </tool>
-

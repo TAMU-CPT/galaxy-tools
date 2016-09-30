@@ -1,26 +1,39 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.genbank.relatedness" name="Top Related Genomes" version="1.1">
-  <description>finds top related sequences from blast results</description>
-  <version_command>python cpt_relatedness.py --version</version_command>
-
-  <command interpreter="python" detect_errors="aggressive">cpt_relatedness.py
-$blast
+	<description>based on protein blast results</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+$__tool_directory__/cpt_relatedness.py
+@BLAST_TSV@
 > $accession_list
 
 </command>
-  <inputs>
-      <param label="Blast 25 Column Tabular Results" name="blast"
-          type="data" format="tabular"/>
-  </inputs>
-  <outputs>
-    <data format="tabular" name="accession_list" label="Top blast hits from $blast.name">
-    </data>
-  </outputs>
-  <help>Find top related genomes
-========================
+	<inputs>
+	<expand macro="blast_tsv" />
+	</inputs>
+	<outputs>
+		<data format="tabular" name="accession_list" label="Top blast hits from $blast.name" />
+	</outputs>
+	<help>
+**What it does**
 
-Phage genomes share a huge percentage similarity, this tool makes the process
-for figuring out top related genomes signifcantly easier
+This tool attempts to filter a set of blast results and return the top
+related genomes based on number (and score) of protein-protein matches.
+
+**How it works**
+
+The blast results are read in, the gene ID numbers are parsed out (and
+their accession numbers are automatically determined), and then these are
+clustered based on the organism that the blast hit is to.
+
+Once this is done, we look at each organism's set of hits and calculate a
+score based on the number of hits and their e-values.
+
+These scores are ranked, and a list of top-related organisms is output at
+the end.
 </help>
-  <tests/>
+	<tests/>
 </tool>
