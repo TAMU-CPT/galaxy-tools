@@ -84,7 +84,6 @@ def reduce_subfeatures(subfeatures):
     yield feature
 
 
-
 def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000, protein=False):
     label_convert = id_tn_dict(sequences)
     lcbs = parse_xmfa(xmfa_file)

@@ -145,7 +145,6 @@ class XmfaWriter(object):
         for line in split_by_n(sequence, 80):
             self.output.write(line + '\n')
 
-
     def end(self):
         self.output.write('=\n')
 

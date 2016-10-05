@@ -2,9 +2,10 @@
 import os
 import copy
 import argparse
+from BCBio import GFF
 import logging
 logging.basicConfig(level=logging.INFO)
-from BCBio import GFF
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
