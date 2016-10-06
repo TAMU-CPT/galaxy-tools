@@ -28,7 +28,7 @@ $informative
       <option value="3'UTR">3'UTR</option>
       <option value="5'UTR">5'UTR</option>
       <option value="CAAT_signal">CAAT_signal</option>
-      <option checked="true" value="CDS">CDS</option>
+      <option selected="true" value="CDS">CDS</option>
       <option value="C_region">C_region</option>
       <option value="D-loop">D-loop</option>
       <option value="D_segment">D_segment</option>
