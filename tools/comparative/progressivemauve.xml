@@ -436,5 +436,7 @@ the command line, you'll need to pass these flags with their "default" values.
 
 @ATTRIBUTION@
 ]]></help>
-  <expand macro="citation" />
+  <citations>
+    <expand macro="citation/progressive_mauve" />
+  </citations>
 </tool>

@@ -92,6 +92,6 @@ Gepard Dot Plotter
 This tool produces dot plots between two sequences.
 	</help>
 	<citations>
-		<expand macro="citations/gepard" />
+		<expand macro="citation/gepard" />
 	</citations>
 </tool>
