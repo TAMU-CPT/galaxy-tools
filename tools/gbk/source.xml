@@ -5,13 +5,12 @@
   </macros>
   <expand macro="requirements"/>
   <version_command>python source.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[source.py
-#set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])
-"$repeat_var_1"
-
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/source.py
+"$positional_1"
 > $default]]></command>
   <inputs>
-    <param label="Genbank files" name="positional_1" type="data" multiple="True"/>
+    <param label="Genbank file" name="positional_1" type="data" multiple="True"/>
   </inputs>
   <outputs>
     <data format="tabular" name="default"/>

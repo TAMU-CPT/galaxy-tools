@@ -43,6 +43,7 @@ $top_only
   <tests>
       <test>
           <param name="genome_fasta" value="miro.fa" />
+		  <param name="reference_genome_source" value="history" />
           <param name="gff3_data" value="miro.gff3" />
           <param name="lookahead_max" value="15" />
           <param name="lookahead_min" value="5" />
