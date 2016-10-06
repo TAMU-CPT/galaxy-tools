@@ -4,9 +4,7 @@
 		<import>macros.xml</import>
 	</macros>
 	<command detect_errors="aggressive"><![CDATA[
-@GENOME_SELECTOR_PRE@
-
-$__tool_directory__/ipr2gaf.py
+python $__tool_directory__/ipr2gaf.py
 $gff3_data
 
 > $output
@@ -20,7 +18,7 @@ $gff3_data
 		<data name="output" label="GAF from ${gff3_data.name}" format="gff3" />
 	</outputs>
 	<help>
-*What it does*
+**What it does**
 
 Tries to fake GAF from IPR output. The results are nothing short of awful, you
 should not expect real utility from this. GAF has more fields than we know what

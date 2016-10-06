@@ -1,5 +1,8 @@
 <tool id="TMHMM_to_gff3" name="TMHMM (GFF3)" version="1.1.0">
 	<description>predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms.</description>
+	<requirements>
+		<requirement type="package" version="0.6.2">bcbiogff</requirement>
+	</requirements>
 	<command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/tmhmm-2.0c/bin/decodeanhmm.Linux_x86_64
 
