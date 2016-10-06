@@ -12,7 +12,7 @@
 > $default]]></command>
   <inputs>
     <repeat min="1" name="repeat_1" title="Analysis File">
-      <param label="Input Two-Way Comparison" name="positional_1" type="data" file_format="tabular">
+      <param label="Input Two-Way Comparison" name="positional_1" type="data" format="tabular">
           <help>
             Should be a three-column file with column 1 and 2 being a from/to name of a
             node. Column 3 should be the edge weight between the  nodes. For bi-directional

@@ -42,7 +42,7 @@ java -jar $__tool_directory__/gepard.jar
 
 		<conditional name="seq_subset">
 			<param name="use_subset" type="select" label="Sequence subsection">
-				<option value="complete" checked="True">Use the complete sequences</option>
+				<option value="complete" selected="True">Use the complete sequences</option>
 				<option value="subset">Use a portion of the sequences</option>
 			</param>
 			<when value="complete" />
@@ -57,18 +57,18 @@ java -jar $__tool_directory__/gepard.jar
 		<param name="matrix" type="select" label="Sequence Comparison Matrix">
 			<option value="ednaorig">Extended DNA Original</option>
 			<option value="pam250">Pam 250</option>
-			<option value="edna" checked="True">Extended DNA</option>
+			<option value="edna" selected="True">Extended DNA</option>
 			<option value="protidentity">Protein Identity</option>
 			<option value="blosum62">Blosum62</option>
 		</param>
 
 		<conditional name="plot_size">
 			<param name="use_zoom" type="select" label="Plot size">
-				<option value="zoom" checked="True">Specify bases/pixel</option>
+				<option value="zoom" selected="True">Specify bases/pixel</option>
 				<option value="width_height">Specify maximum width/height</option>
 			</param>
 			<when value="zoom">
-				<param label="Bases per pixel" name="zoom" type="integer" value="100" minimum="20"/>
+				<param label="Bases per pixel" name="zoom" type="integer" value="100" min="20"/>
 			</when>
 			<when value="width_height">
 				<param label="Maximum width" name="maxwidth" type="integer" value="1000" />
@@ -76,11 +76,11 @@ java -jar $__tool_directory__/gepard.jar
 			</when>
 		</conditional>
 
-		<param label="Lower limit for dot intensity" help="(in %)" type="integer" minimum="0" maximum="100" name="lower" value="0" />
-		<param label="Upper limit for dot intensity" help="(in %)" type="integer" minimum="0" maximum="100" name="upper" value="100" />
+		<param label="Lower limit for dot intensity" help="(in %)" type="integer" min="0" max="100" name="lower" value="0" />
+		<param label="Upper limit for dot intensity" help="(in %)" type="integer" min="0" max="100" name="upper" value="100" />
 
 		<!-- Correlates with memory usage/runtime, so force a minimum -->
-		<param label="Word length" name="word" type="integer" minimum="5" value="10" />
+		<param label="Word length" name="word" type="integer" min="5" value="10" />
 	</inputs>
 	<outputs>
 		<data format="png" name="output" label="Dotplot of $seq1.name and $seq2.name" />

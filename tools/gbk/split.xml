@@ -12,7 +12,7 @@ $allow_dupes
 </command>
   <inputs>
     <param label="Genbank files to split" name="genbank" type="data" multiple="True"/>
-    <param label="Allow duplicate files" type="boolean" selected="true"
+    <param label="Allow duplicate files" type="boolean" checked="true"
         name="allow_dupes" truevalue="--allow_dupes" falsevalue="" />
   </inputs>
   <outputs>

@@ -14,8 +14,8 @@ $dice
 > $output
 ]]></command>
 	<inputs>
-		<epxand macro="xmfa_input" />
-		<epxand macro="xmfa_fa_input" />
+		<expand macro="xmfa_input" />
+		<expand macro="xmfa_fa_input" />
 		<param type="boolean" label="use dice method in percent similarity calculation"
 			truevalue="--dice" falsevalue="" name="dice" help="The dice method alters the total similarity calculation to reflect the length of both sequences. The default for this option is true."/>
 	</inputs>

@@ -25,9 +25,9 @@ $__tool_directory__/mist3.py
 			<option value="2up">[2up] Compare two genomes (see help)</option>
 		</param>
 
-		<param help="How zoomed in the image is" label="zoom" name="zoom" type="integer" value="50" minimum="5"/>
+		<param help="How zoomed in the image is" label="zoom" name="zoom" type="integer" value="50" min="5"/>
 
-		<param help="Window Size" label="window" name="window" type="integer" value="10" minimum="5"/>
+		<param help="Window Size" label="window" name="window" type="integer" value="10" min="5"/>
 
 		<param label="Comparison Matrix" name="matrix" type="select">
 			<option value="blosum62">Blosum62</option>

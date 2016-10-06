@@ -4,7 +4,7 @@
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_generate_cids.py
 $positional_1 > $default]]></command>
   <inputs>
-    <param label="GenBank File" name="positional_1" type="data" file_format="txt,genbank,data"/>
+    <param label="GenBank File" name="positional_1" type="data" format="txt,genbank,data"/>
   </inputs>
   <outputs>
     <data format="tabular" name="default" label="Cassette IDs for $positional_1.name"/>

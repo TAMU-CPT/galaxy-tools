@@ -14,7 +14,7 @@ python $__tool_directory__/safe_reopen.py
 ]]></command>
 	<inputs>
 		<expand macro="input/fasta" />
-		<param lable="GFF3 gene calls" name="gff3_files" type="data" format="gff3" multiple="True" />
+		<param label="GFF3 gene calls" name="gff3_files" type="data" format="gff3" multiple="True" />
 	</inputs>
 	<outputs>
 		<data format="fasta" name="output"/>

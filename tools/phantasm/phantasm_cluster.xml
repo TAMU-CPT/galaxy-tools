@@ -6,7 +6,7 @@
       $output_newick
 ]]></command>
   <inputs>
-      <param label="Input Comparison Map" name="input_file" type="data" file_format="tabular"/>
+      <param label="Input Comparison Map" name="input_file" type="data" format="tabular"/>
   </inputs>
   <outputs>
     <data format="png" name="output_hist" label="PHAnTASM Cladogram"/>

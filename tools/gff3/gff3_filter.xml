@@ -31,7 +31,7 @@ $subfeatures
             <param label="ID List" name="id_list" type="text" area="true" help="Newline separated list of IDs"/>
         </when>
         </conditional>
-        <param name="attribute_field" label="Newline separated attribute fields such as ID or Name to filter on" type="text" area="true" default="ID" />
+        <param name="attribute_field" label="Newline separated attribute fields such as ID or Name to filter on" type="text" area="true" value="ID" />
         <param name="subfeatures" label="If a feature is matched, shold subfeatures be included" type="boolean" truevalue="--subfeatures" falsevalue="" checked="True" />
     </inputs>
   <outputs>

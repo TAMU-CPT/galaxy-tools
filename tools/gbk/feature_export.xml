@@ -28,7 +28,7 @@ $informative
       <option value="3'UTR">3'UTR</option>
       <option value="5'UTR">5'UTR</option>
       <option value="CAAT_signal">CAAT_signal</option>
-      <option selected="true" value="CDS">CDS</option>
+      <option checked="true" value="CDS">CDS</option>
       <option value="C_region">C_region</option>
       <option value="D-loop">D-loop</option>
       <option value="D_segment">D_segment</option>
@@ -88,15 +88,15 @@ $informative
     </param>
     <param label="Translate sequence" name="translate" type="boolean"
         truevalue="--translate" falsevalue=""/>
-    <param default="11" label="Translation table ID"
+    <param label="Translation table ID"
         name="translation_table_id" type="integer" value="11" />
     <param label="Add N bases upstream to exported features" name="n_bases_upstream"
         type="integer" value="0"/>
     <param label="Add N bases downstream to exported features"
         name="n_bases_downstream" type="integer" value="0"/>
-    <param selected="true" label="Remove stop codons" name="strip_stops"
+    <param checked="true" label="Remove stop codons" name="strip_stops"
         type="boolean" truevalue="--strip_stops" falsevalue=""/>
-    <param selected="true" label="Add product name to defline (for blast)" name="informative"
+    <param checked="true" label="Add product name to defline (for blast)" name="informative"
         type="boolean" truevalue="--informative" falsevalue=""/>
   </inputs>
   <outputs>

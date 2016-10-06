@@ -118,7 +118,7 @@
         <option value="f">Forward</option>
       </param>
     </repeat>
-    <param name="enable_gc_skew_plot" falsevalue="False" optional="True" truevalue="True" checked="" help="Enable/Disable calculation of GC Skew Plot" type="boolean" label="enable_gc_skew_plot"/>
+    <param name="enable_gc_skew_plot" falsevalue="False" optional="True" truevalue="True" checked="True" help="Enable/Disable calculation of GC Skew Plot" type="boolean" label="enable_gc_skew_plot"/>
     <param min="1000" value="10000" name="gc_skew_plot_window_size" help="Window size for calculation of GC Skew" optional="True" label="gc_skew_plot_window_size" type="integer"/>
     <param min="200" value="200" name="gc_skew_plot_step_size" help="Step size for calculation of GC Skew" optional="True" label="gc_skew_plot_step_size" type="integer"/>
     <param name="output_circos_confs_format" help="Circos Configuration Files" optional="False" label="Format of output_circos_confs" type="select">
