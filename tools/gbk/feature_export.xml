@@ -22,70 +22,7 @@ $informative
 > $default]]></command>
   <inputs>
     <param label="Genbank file" name="positional_1" type="data"/>
-    <param label="tags to export" multiple="True" name="positional_2" type="select">
-      <option value="-10_signal">-10_signal</option>
-      <option value="-35_signal">-35_signal</option>
-      <option value="3'UTR">3'UTR</option>
-      <option value="5'UTR">5'UTR</option>
-      <option value="CAAT_signal">CAAT_signal</option>
-      <option selected="true" value="CDS">CDS</option>
-      <option value="C_region">C_region</option>
-      <option value="D-loop">D-loop</option>
-      <option value="D_segment">D_segment</option>
-      <option value="GC_signal">GC_signal</option>
-      <option value="J_segment">J_segment</option>
-      <option value="LTR">LTR</option>
-      <option value="N_region">N_region</option>
-      <option value="RBS">RBS</option>
-      <option value="STS">STS</option>
-      <option value="S_region">S_region</option>
-      <option value="TATA_signal">TATA_signal</option>
-      <option value="V_region">V_region</option>
-      <option value="V_segment">V_segment</option>
-      <option value="all">all</option>
-      <option value="assembly_gap">assembly_gap</option>
-      <option value="attenuator">attenuator</option>
-      <option value="enhancer">enhancer</option>
-      <option value="exon">exon</option>
-      <option value="gap">gap</option>
-      <option value="gene">gene</option>
-      <option value="iDNA">iDNA</option>
-      <option value="intron">intron</option>
-      <option value="mRNA">mRNA</option>
-      <option value="mat_peptide">mat_peptide</option>
-      <option value="misc_RNA">misc_RNA</option>
-      <option value="misc_binding">misc_binding</option>
-      <option value="misc_difference">misc_difference</option>
-      <option value="misc_feature">misc_feature</option>
-      <option value="misc_recomb">misc_recomb</option>
-      <option value="misc_signal">misc_signal</option>
-      <option value="misc_structure">misc_structure</option>
-      <option value="mobile_element">mobile_element</option>
-      <option value="modified_base">modified_base</option>
-      <option value="ncRNA">ncRNA</option>
-      <option value="old_sequence">old_sequence</option>
-      <option value="operon">operon</option>
-      <option value="oriT">oriT</option>
-      <option value="polyA_signal">polyA_signal</option>
-      <option value="polyA_site">polyA_site</option>
-      <option value="precursor_RNA">precursor_RNA</option>
-      <option value="prim_transcript">prim_transcript</option>
-      <option value="primer_bind">primer_bind</option>
-      <option value="promoter">promoter</option>
-      <option value="protein_bind">protein_bind</option>
-      <option value="rRNA">rRNA</option>
-      <option value="rep_origin">rep_origin</option>
-      <option value="repeat_region">repeat_region</option>
-      <option value="sig_peptide">sig_peptide</option>
-      <option value="source">source</option>
-      <option value="stem_loop">stem_loop</option>
-      <option value="tRNA">tRNA</option>
-      <option value="terminator">terminator</option>
-      <option value="tmRNA">tmRNA</option>
-      <option value="transit_peptide">transit_peptide</option>
-      <option value="unsure">unsure</option>
-      <option value="variation">variation</option>
-    </param>
+	<expand macro="gbk_feature_type" label="Tags to export" />
     <param label="Translate sequence" name="translate" type="boolean"
         truevalue="--translate" falsevalue=""/>
     <param label="Translation table ID"
