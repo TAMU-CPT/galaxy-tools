@@ -1,3 +1,6 @@
 [submodule "viz/xmfa/d3-parsets"]
 	path = viz/xmfa/d3-parsets
 	url = https://github.com/jasondavies/d3-parsets
+[submodule "tools/one_snp_away"]
+	path = tools/one_snp_away
+	url = https://github.com/TAMU-CPT/one_snp_away
