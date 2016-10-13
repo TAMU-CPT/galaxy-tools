@@ -1,0 +1,79 @@
+<tool id="blastclust" name="blastclust" version="0.0.1">
+    <description>Cluster proteins with blast</description>
+<command>
+blastclust
+#if $db_opts.db_opts_selector == "fasta":
+    -i "$db_opts.file"
+#elif $db_opts.db_opts_selector == "user_db":
+    -d "$db_opts.db"
+#end if
+-o $output1
+-L $length_coverage_threshold
+-S $score_coverage_threshold
+-b $require_coverage_on_both_neighbours
+## -s $file_to_save_all_neighbours
+-p $proteins_input
+-e $enable_id_parsing_in_db_format
+    </command>
+    <inputs>
+        <conditional name="db_opts">
+            <param name="db_opts_selector" type="select" label="Subject database/sequences">
+              <option value="user_db">BLAST Database in your History</option>
+              <option value="fasta">FASTA file</option>
+            </param>
+            <when value="user_db">
+                <param name="db" type="data" format="blastdbp" label="Blast DB" />
+            </when>
+            <when value="fasta">
+                <param name="file" type="data" format="fasta" label="FASTA file to use as database"/>
+            </when>
+        </conditional>
+        <param name="length_coverage_threshold" type="float" size="15" value="0.9" label="Length coverage threshold" />
+        <param name="score_coverage_threshold" type="float" size="15" value="0.9" label="Score coverage threshold (bit score / length if &lt;3.0, percentage of identities otherwise)" help="    if &lt;3 then the threshold is set as a BLAST score density (0.0 to 3.0; default = 1.75). if &gt;=3 then the threshold is set as a percent of identical residues (3 to 100)"/>
+        <param name="require_coverage_on_both_neighbours" type="boolean" label="Require coverage on both neighbours?" truevalue="TRUE" falsevalue="FALSE" checked="false" />
+        <param name="proteins_input" type="boolean" label="Is input proteins?" truevalue="TRUE" falsevalue="FALSE" checked="true" />
+        <param name="enable_id_parsing_in_db_format" type="boolean" label="Should the query and subject defline(s) be parsed?" truevalue="TRUE" falsevalue="FALSE" checked="false" help="This is only advised if your FASTA file follows the NCBI naming conventions using pipe '|' symbols"/>
+    </inputs>
+    <outputs>
+        <data name="output1" format="txt" label="blastclust on ${on_string}" />
+    </outputs>
+    <requirements>
+        <requirement type="binary">blastclust</requirement>
+    </requirements>
+     <stdio>
+        <regex match="WARNING: Cannot add sequence number .* because it has zero-length." source="both" level="warning" description="One or more of your sequences has no length. Probably mis-formatted Fasta file!" />
+    </stdio>
+    <help>
+
+.. class:: warningmark
+
+**Note**. Database searches may take a substantial amount of time.
+For large input datasets it is advisable to allow overnight processing.
+
+-----
+
+**What it does**
+
+BLASTCLUST automatically and systematically clusters protein or DNA sequences based on pairwise matches found using the BLAST algorithm in case of proteins or Mega BLAST algorithm for DNA. In the latter case a single Mega BLAST search is performed for all the sequences combined against a database created from the same sequences. BLASTCLUST finds pairs of sequences that have statistically significant matches and clusters them using single-linkage clustering.
+
+BLASTCLUST uses the default values for the BLAST and Mega BLAST parameters. For protein sequences these are: matrix BLOSUM62; gap opening cost 11; gap extension cost 1; no low-complexity filtering. For DNA sequences: match reward 1, mismatch penalty -3, non-affine gapping costs (see README.mbl document for explanation), wordsize 28. In both cases e-value threshold is set to 1e-6. For each pair of sequences the top-scoring alignment is evaluated according to the following criteria:
+
+
+-----
+
+**Output format**
+
+BLASTCLUST prints out clusters of sequence IDs, sorted from largest to smallest cluster (alphabetically by ID of the first sequence if of the same size), separating clusters by a newline character. Sequence identifiers within a cluster are space-separated and sorted from longest to shortest sequence (alphabetically by IDs if of the same length).
+
+-------
+
+**Credits and complaints**
+
+Ilya Dondoshansky (dondosha@ncbi.nlm.nih.gov) Yuri Wolf (wolf@ncbi.nlm.nih.gov)
+
+05 August, 2000
+
+
+
+    </help>
+</tool>
