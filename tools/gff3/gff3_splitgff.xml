@@ -19,9 +19,16 @@ $input
     <data format="gff3" name="gff_out"/>
     <data format="fasta" name="fasta_out"/>
   </outputs>
+  <tests>
+		<test>
+			<param name="input" value="miro.gff3" />
+			<output name="gff" file="miro.gff3" />
+			<output name="fasta" file="miro.fasta" />
+		</test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
-Splits apart the GFF3/Fasta data in a combined file.
+Splits apart the GFF3/Fasta data in a combined file into separate fasta and gff3 files.
       ]]></help>
 </tool>

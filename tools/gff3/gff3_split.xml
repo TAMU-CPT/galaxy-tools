@@ -43,7 +43,5 @@ Everything with a given record id will be moved into a separate file.
 This tool is useful in combination with the xmfa2gff3 tool which produces GFF3
 that contains multiple records in a single file. By selecting "Record ID" and
 "Target", we will be able to separate into files like "A vs B" and "B vs A".
-
-
       ]]></help>
 </tool>

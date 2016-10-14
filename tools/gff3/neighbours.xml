@@ -27,6 +27,15 @@ $gff3_data_b
     <data format="gff3" name="oa" label="GFF3 Annotations from ${gff3_data_a.name} nearby features in ${gff3_data_b.name}"/>
     <data format="gff3" name="ob" label="GFF3 Annotations from ${gff3_data_b.name} nearby features in ${gff3_data_a.name}"/>
   </outputs>
+  <tests>
+		<test>
+			<param name="gff3_data_a" value="a.gff3" />
+			<param name="gff3_data_a" value="b.gff3" />
+
+			<output name="oa" file="a_hits_in_b.gff3" />
+			<output name="ob" file="b_hits_in_a.gff3" />
+		</test>
+  </tests>
   <help><![CDATA[
 
 Only top-level features
