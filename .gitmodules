@@ -4,3 +4,6 @@
 [submodule "tools/external/tmhmm-2.0c"]
 	path = tools/external/tmhmm-2.0c
 	url = git@github.tamu.edu:CPT/tmhmm-2.0c.git
+[submodule "tools/one_snp_away"]
+	path = tools/one_snp_away
+	url = https://github.com/TAMU-CPT/one_snp_away
