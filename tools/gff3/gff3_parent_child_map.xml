@@ -1,23 +1,30 @@
-<tool id="edut.tamu.cpt.gff3.treemap" name="GFF3 Parent Child Feature Map" version="1.0">
+<tool id="edu.tamu.cpt.gff3.treemap" name="GFF3 Parent Child Feature Map" version="1.0">
   <description></description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python gff3_parent_child_map.py --version</version_command>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_parent_child_map.py
-$gff3_data
+@INPUT_GFF@
 > $default]]></command>
   <inputs>
-    <param label="Parent GFF3 annotations" name="parent" format="gff3" type="data"/>
+	<expand macro="gff3_input" />
   </inputs>
   <outputs>
-    <data format="gff3" name="default"/>
+    <data format="txt" name="default"/>
   </outputs>
   <help><![CDATA[
+This tool produces a tree that maps which features are relative to which other
+features. Here we see a CDS an Shine_Dalgarno_sequence as children to the gene
+type feature.
+
+::
+
+	  {('feature', 'gene'): [('GenBank', 'CDS'),
+	                         ('GenBank', 'Shine_Dalgarno_sequence')]}
+
 ]]></help>
 	<citations>
 	</citations>
 </tool>
-

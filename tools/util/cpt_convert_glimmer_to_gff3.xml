@@ -25,7 +25,7 @@ $glimmer
   <tests>
       <test>
           <param name="reference_genome_source" value="history" />
-          <param name="genome_fasta" value="mga.fa" />
+          <param name="genome_fasta" value="miro.fa" />
           <param name="glimmer" value="glimmer.out" />
           <output name="data" file="glimmer.gff3" />
       </test>

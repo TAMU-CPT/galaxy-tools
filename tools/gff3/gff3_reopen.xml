@@ -5,10 +5,9 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python gff3_reopen.py --version</version_command>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_reopen.py
-$gff3_data
+@INPUT_GFF@
 $index
 > $default]]></command>
   <inputs>
@@ -25,5 +24,10 @@ $index
           <output name="default" file="mga.reopen.gff3" />
       </test>
   </tests>
-  <help><![CDATA[]]></help>
+  <help><![CDATA[
+**What it does**
+
+Re-open a genome with a new start coordinate. All annotations are shifted accordingly.
+
+]]></help>
 </tool>
