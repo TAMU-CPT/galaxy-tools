@@ -1,6 +1,10 @@
 <tool id="edu.tamu.cpt.fasta.mutate" name="Generate all possible SNPs" version="1.0">
   <description>in fasta files</description>
-  <version_command>python cpt_mutate.py --version</version_command>
+    <requirements>
+      <requirement type="package" version="2.7">python</requirement>
+      <requirement type="package" version="1.65">biopython</requirement>
+      <yield/>
+    </requirements>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_mutate.py
 $positional_1
 $positional_2
