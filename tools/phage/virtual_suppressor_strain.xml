@@ -32,6 +32,7 @@ $gff3_data
   <tests>
       <test>
           <param name="gff3_data" value="miro.gff3" />
+		  <param name="reference_genome_source" value="history" />
           <param name="genome_fasta" value="miro.fa" />
           <param name="stop_codon" value="TAG" />
           <output name="output" file="suppress.tag.gff3" />
