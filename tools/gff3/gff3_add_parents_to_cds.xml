@@ -1,23 +1,35 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gff3.cdsParents" name="GFF3 Add Gene to CDS" version="1.0">
-  <description>One step of fixing a gene model--adding parent gene features to CDSs</description>
+  <description>is one step of fixing a gene model--adding parent gene features to CDSs</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_add_parents_to_cds.py
-$gff3_data
-> $default]]></command>
+@INPUT_GFF@
+> $output]]></command>
   <inputs>
       <expand macro="gff3_input" />
   </inputs>
   <outputs>
-    <data format="gff3" name="default"/>
+    <data format="gff3" name="output"/>
   </outputs>
+  <tests>
+		<test>
+			<param name="gff3_data" value="miro.gff3" />
+			<output name="output" file="miro.full.gff3" />
+		</test>
+		<test>
+			<param name="gff3_data" value="miro.cds.gff3" />
+			<output name="output" file="miro.full.gff3" />
+		</test>
+  </tests>
   <help><![CDATA[
-*NB*: This tool is incredibly naive. It does not think. It will find ALL CDSs
+..class:: warningmark
+
+This tool is incredibly naive. It does not think. It will find ALL CDSs
 (nothing else), wipe out the existing set of genes, and add replace with a
-gene-mRNA-cds model
+gene-mRNA-cds model. This is **probably** not what you want to do
       ]]></help>
 </tool>

@@ -43,7 +43,7 @@ def fixed_feature(rec):
 
 def gff_filter(gff3):
     for rec in GFF.parse(gff3):
-        rec.features = list(fixed_feature(rec))
+        rec.features = sorted(list(fixed_feature(rec)), key=lambda x: x.location.start)
         rec.annotations = {}
         GFF.write([rec], sys.stdout)
 

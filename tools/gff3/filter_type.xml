@@ -9,7 +9,7 @@
 #set repeat_data = '" "'.join([ str($var.type) for $var in $repeat_0 ])
 
 python $__tool_directory__/filter_type.py
-$gff3_data
+@INPUT_GFF@
 "$repeat_data"
 $invert
 > $output]]></command>
@@ -23,7 +23,24 @@ $invert
   <outputs>
     <data format="gff3" name="output"/>
   </outputs>
+  <tests>
+		<test>
+			<param name="gff3_data" value="miro.gff3" />
+			<param name="repeat_0_0|type" value="CDS" />
+			<output name="output" file="miro.cds.gff3" />
+		</test>
+		<test>
+			<param name="gff3_data" value="miro.gff3" />
+			<param name="repeat_0_0|type" value="CDS" />
+			<param name="invert" value="--invert" />
+			<output name="output" file="miro.nocds.gff3" />
+		</test>
+  </tests>
   <help><![CDATA[
-Allows you to emit **just** ``Shine_Dalgarno_sequence`` type features, or, inverting that, emit everything but ``Shine_Dalgarno_sequence`` type features.
+**What it does**
+
+Allows you to emit **just** ``Shine_Dalgarno_sequence`` type features, or,
+inverting that, emit everything but ``Shine_Dalgarno_sequence`` type features.
+
       ]]></help>
 </tool>

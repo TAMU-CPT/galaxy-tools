@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gff3.color" name="GFF3 Color" version="1.0.0">
-  <description>color gff3 features based on product tags</description>
+  <description>colors gff3 features based on product tags</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python gff3_color.py --version</version_command>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_color.py
-$gff3_data
+@INPUT_GFF@
 > $default]]></command>
   <inputs>
       <expand macro="gff3_input" />
@@ -19,8 +18,39 @@ $gff3_data
   <tests>
       <test>
           <param name="gff3_data" value="miro.gff3" />
-          <output name="default" value="miro.colored.gff3" />
+          <output name="default" value="miro.color.gff3" />
       </test>
   </tests>
-  <help><![CDATA[]]></help>
+  <help><![CDATA[
+**What it does**
+
+This tool looks through every feature in your input gff3 file, and then based
+on annotations on that feature (product, notes, etc) coloring rules will
+determine the color of that feature and add a ``color`` qualifier.
+
+Certain of our tools can handle this data (e.g. genome mapper) and will display
+your genes with color coding.
+
+.. raw:: html
+
+	<style type="text/css">
+	.color{ width:60px; }
+	tr:nth-of-type(odd) {background-color: #f9f9f9;}
+	table { font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+	td { border-top: 1px solid #ddd; padding: 8px; }
+	</style>
+	<table>
+		<tr><td>Biosynthesis</td><td>"Deoxynucleoside", "Deoxyribonucleotidase", "Deoxyuridine", "Ribonucleoside-diphoshate reductase", "Serine kinase", "threonine kinase", "cytidine deaminase", "dUTPase", "dUTPase", "deoxynucleotide", "dihydrofolate reductase", "glutaredoxin", "guanylate kinase", "reductase", "ribonucleotide reductase", "thioredoxin", "thymidylate"</td><td class="color" style="background-color:rgb(0,0,255)"></td></tr>
+		<tr><td>Defense</td><td>"rII", "rIIA", "rIIB", "rex", "rexA", "rexB", "ocr", "dar", "darA", "darB"</td><td class="color" style="background-color:rgb(200,255,200)"></td></tr>
+		<tr><td>DNA Packaging</td><td>"terminase"</td><td class="color" style="background-color:rgb(0,255,255)"></td></tr>
+		<tr><td>DNA Replication/Recombination</td><td>"polymerase" (but not "rna polymerase" or "polymerase sigma factor"), "nuclease" (but not "HNH" or "homing endonuclease"), "Clamp", "DNA binding protein", "DNA end Protector", "DNA ligase", "DexA", "DnaA", "DnaB", "DnaQ", "Helicase", "RNA ligase", "RNaseH", "RecA", "RecF", "Recombination", "RuvC", "UvsW", "UvsY", "helicase", "holliday junction", "phosphoesterase", "primase", "recombinase", "recombination", "repair", "single strand annealing", "topoisomerase", "whisker", "sliding", "methylase", "methyltransferase", "mom", "glucosyl\s*transferase", "glycosyl\s*transferase", "integrase"</td><td class="color" style="background-color:rgb(255,255,0)"></td></tr>
+		<tr><td>HNH/Homing/GIY-YIG</td><td>"HNH", "homing endonuclease", "GIY-YIG"</td><td class="color" style="background-color:rgb(200,150,100)"></td></tr>
+		<tr><td>Lysis</td><td>"lysozyme" (but not "lysozyme baseplate" or "tail lysozyme"), "antiholin", "holin", "endolysin", "spanin", "peptidoglycan", "amidase", "transglycosylase", "carboxypeptidase"</td><td class="color" style="background-color:rgb(255,0,255)"></td></tr>
+		<tr><td>Morphogenesis</td><td>"tail spike", "tail" (but not "tail lysozyme"), "baseplate" (but not "lysozyme baseplate"), "fiber", "neck", "sheath", "tube", "pectin", "prohead", "scaffold", "capsid", "head", "head-to-tail joining", "pre-neck", "Tape", "tailspike", "structural", "morphogenesis", "assembly", "chaperone", "joining", "decoration", "protease", "frameshift", "portal"</td><td class="color" style="background-color:rgb(135,206,250)"></td></tr>
+		<tr><td>Novel</td><td>"Novel"</td><td class="color" style="background-color:rgb(170,170,170)"></td></tr>
+		<tr><td>Regulation</td><td>"Translational repressor", "RegA", "RegB", "regulatory", "regulator", "transcriptional repressor", "anti-repressor", "rna", "rna polymerase", "Sigma Factor"</td><td class="color" style="background-color:rgb(255,165,0)"></td></tr>
+		<tr><td>terminator</td><td>"terminator"</td><td class="color" style="background-color:rgb(0,255,0)"><span ></span></td></tr>
+		<tr><td>tRNAs</td><td>"tRNA"</td><td class="color" style="background-color:rgb(113,188,120)"></td></tr>    </body>
+	</table>
+]]></help>
 </tool>

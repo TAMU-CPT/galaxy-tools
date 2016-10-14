@@ -1,19 +1,33 @@
-<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GBK" version="1.1">
-  <description>convert gff3 to gbk</description>
-  <version_command>python gff2gb.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[gff2gb.py
-$gff3
-$fasta
-> $default]]></command>
+<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GenBank" version="1.1">
+  <description>convert gff3 to GenBank</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+python $__tool_directory__/gff2gb.py
+@INPUT_GFF@
+@INPUT_FASTA@
+
+> $output]]></command>
   <inputs>
-    <param label="GFF3 file" name="gff3" type="data" format="gff,gff3"/>
-    <param label="Fasta Input" name="fasta" type="data" format="fasta"/>
+	<expand macro="input/gff3+fasta" />
   </inputs>
   <outputs>
-    <data format="txt" hidden="false" name="default" label="${gff3.name} as GenBank"/>
+    <data format="genbank" hidden="false" name="output" label="${gff3_data.name} as GenBank"/>
   </outputs>
+  <tests>
+		<test>
+			<param name="reference_genome_source" value="history" />
+			<param name="genome_fasta" value="miro.fa" />
+			<param name="gff3_data" value="miro.gff3" />
+			<output name="output" file="miro.gbk" />
+		</test>
+  </tests>
   <help><![CDATA[
-**WARNING**
+.. class:: warningmark
 
 This is a LOSSY conversion. This tool **TRUNCATES** genbank file identifiers if
 they are too long. Your data may not "match up" after processing through this

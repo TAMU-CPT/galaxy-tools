@@ -7,7 +7,7 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_fix_genemarks.py
-$gff3_data
+@INPUT_GFF@
 > $default]]></command>
   <inputs>
       <expand macro="gff3_input" />

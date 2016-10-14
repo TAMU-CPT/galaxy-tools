@@ -5,10 +5,9 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python gff3_filter.py --version</version_command>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_filter.py
-$gff3_data
+@INPUT_GFF@
 #if $filter_data.qss == "id_file":
     --id_list "$filter_data.id_file"
 #else if $filter_data.qss == "id_list":
@@ -31,8 +30,8 @@ $subfeatures
             <param label="ID List" name="id_list" type="text" area="true" help="Newline separated list of IDs"/>
         </when>
         </conditional>
-        <param name="attribute_field" label="Newline separated attribute fields such as ID or Name to filter on" type="text" area="true" value="ID" />
-        <param name="subfeatures" label="If a feature is matched, shold subfeatures be included" type="boolean" truevalue="--subfeatures" falsevalue="" checked="True" />
+        <param name="attribute_field" label="Attribute Field" help="Newline separated attribute fields such as ID or Name to filter on" type="text" area="true" value="ID" />
+        <param name="subfeatures" label="Include subfeatures" help="If a feature is matched, shold subfeatures be included" type="boolean" truevalue="--subfeatures" falsevalue="" checked="True" />
     </inputs>
   <outputs>
     <data format="gff3" name="default"/>
@@ -53,5 +52,9 @@ $subfeatures
           <output name="default" file="filtered_features.subfeatures.gff3" />
       </test>
   </tests>
-  <help><![CDATA[]]></help>
+  <help><![CDATA[
+**What it does**
+
+Allows you to filter GFF3 files based on attributes and their values.
+]]></help>
 </tool>

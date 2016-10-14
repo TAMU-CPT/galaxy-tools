@@ -31,6 +31,20 @@
 	<xml name="gff3_input">
 		<param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
 	</xml>
+	<xml name="input/gff3+fasta">
+		<expand macro="gff3_input" />
+		<expand macro="genome_selector" />
+	</xml>
+	<token name="@INPUT_GFF@">
+	"$gff3_data"
+	</token>
+	<token name="@INPUT_FASTA@">
+#if str($reference_genome.reference_genome_source) == 'cached':
+		"${reference_genome.fasta_indexes.fields.path}"
+#else if str($reference_genome.reference_genome_source) == 'history':
+		genomeref.fa
+#end if
+	</token>
 	<token name="@GENOME_SELECTOR_PRE@">
 #if $reference_genome.reference_genome_source == 'history':
 		ln -s $reference_genome.genome_fasta genomeref.fa;
