@@ -51,8 +51,8 @@ xsltproc $xsltfile @BLAST_XML@ > $output
     </outputs>
     <tests>
         <test>
-            <param name="blastxml" value="phi60C_blastn.xml"/>
-            <output name="default" file="phi60C_blastn_filter.xml"/>
+            <param name="blastxml" value="phi60C_blastn.xml" ftype="blastxml"/>
+            <output name="default" file="phi60C_blastn_filter.xml" ftype="blastxml"/>
         </test>
     </tests>
     <help><![CDATA[
