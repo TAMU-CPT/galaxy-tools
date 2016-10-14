@@ -5,7 +5,6 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python start_stats.py --version</version_command>
   <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 

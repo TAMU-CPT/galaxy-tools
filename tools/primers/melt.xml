@@ -5,7 +5,6 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python melt.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[melt.py
 $fasta
 $csalt.salt_select

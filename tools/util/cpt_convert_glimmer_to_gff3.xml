@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.util.glimmer3_to_gff3" name="Glimmer3 to GFF3" version="1.1">
   <description>convert formats</description>
-  <version_command>python cpt_convert_glimmer_to_gff3.py --version</version_command>
   <macros>
     <import>macros.xml</import>
   </macros>

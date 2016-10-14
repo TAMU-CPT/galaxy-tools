@@ -5,7 +5,6 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>progressiveMauve --version</version_command>
   <command detect_errors="aggressive"><![CDATA[
 ## Symlink files in with correct extensions
 #for $file in $sequences:

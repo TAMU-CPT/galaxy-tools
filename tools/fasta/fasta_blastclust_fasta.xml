@@ -5,7 +5,6 @@
 		<import>macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
-	<version_command>python fasta_blastclust_fasta.py --version</version_command>
 	<command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_blastclust_fasta.py
 $positional_1
 $positional_2

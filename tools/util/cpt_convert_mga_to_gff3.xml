@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.util.mga_to_gff3" name="MGA to GFF3" version="1.1">
   <description></description>
-  <version_command>python cpt_convert_mga_to_gff3.py --version</version_command>
   <macros>
     <import>macros.xml</import>
   </macros>

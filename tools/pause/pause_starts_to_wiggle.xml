@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.pause3.starts_to_wiggle" name="PAUSE BAM to Starts Wiggle" version="3.0">
   <description>create wiggle file from starts information</description>
-  <version_command>python pause_starts_to_wiggle.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive">pause_starts_to_wiggle.py
 ${bam_file}
 

@@ -5,7 +5,6 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python intron_detection.py --version</version_command>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/intron_detection.py
 

@@ -1,6 +1,5 @@
 <tool id="edu.tamu.cpt.oneoff.none-validator" name="NONE Validator" version="1.0">
   <description></description>
-  <version_command>python none-validator.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[none-validator.py
 $positional_1
 --problematic $problematic

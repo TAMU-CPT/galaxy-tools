@@ -7,7 +7,6 @@
     <expand macro="requirements">
       <requirement type="package">metageneannotator</requirement>
     </expand>
-    <version_command>python phage_annotation_validator.py --version</version_command>
     <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 

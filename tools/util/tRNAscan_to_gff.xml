@@ -5,7 +5,6 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python tRNAscan_to_gff.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[
 tRNAscan_to_gff.py
 < $trnascan

@@ -49,4 +49,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     for rec in require_shinefind(**vars(args)):
+        rec.annotations = {}
         GFF.write([rec], sys.stdout)

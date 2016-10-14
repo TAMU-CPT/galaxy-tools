@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.generic.TMHMM_merger" name="Reformat TMHMM results" version="1.94">
   <description>convert to easily parseable tabular format</description>
-  <version_command>python cpt_convert_tmhmmfasta_merge.py --version</version_command>
 
   <command interpreter="python" detect_errors="aggressive">cpt_convert_tmhmmfasta_merge.py
 --galaxy

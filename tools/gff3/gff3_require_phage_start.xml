@@ -23,21 +23,22 @@ $gff3_data
     <data format="gff3" name="stdout" label="$gff3_data.name filtered for start codon"/>
   </outputs>
   <tests>
-  <!--
       <test>
-          <param name="genome_fasta" value="miro.fa" />
-          <param name="gff3_data" value="miro.gff3" />
-          <output name="gff3_output" file="shinefind.gff3" />
+			<param name="reference_genome_source" value="history" />
+			<param name="genome_fasta" value="miro.fa" />
+			<param name="gff3_data" value="miro.gff3" />
+
+          <output name="stdout" file="miro.phage_start.gff3" />
       </test>
-      -->
   </tests>
   <help><![CDATA[
 **What it does**
 
 Ensures the start codon for the CDS is ATG, TTG, or GTG. It removes it otherwise.
 
-**WARNING** this tool will remove ANY non-CDS type feature. TODO: Eric will need to fix this at a later date.
+..class:: warningmark
 
+This tool will remove ANY non-CDS type feature.
       ]]></help>
 </tool>
 

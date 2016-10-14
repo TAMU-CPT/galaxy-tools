@@ -1,6 +1,5 @@
 <tool id="edu.tamu.cpt.phantasm.data_comp" name="PHAnTASM Data Comparison" version="0.1">
   <description>Generate comparisons between two PHAnTASM datasets</description>
-  <version_command>python phantasm_data_comparison.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_data_comparison.py
 $positional_1
 $positional_2

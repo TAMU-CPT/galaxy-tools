@@ -5,7 +5,6 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python gff3_ipr_merge.py --version</version_command>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_ipr_merge.py
 $gff3_data

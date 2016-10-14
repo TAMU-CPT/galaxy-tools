@@ -1,6 +1,5 @@
 <tool id="edu.tamu.cpt.phantasm.data_transform" name="PHAnTASM Data Transformation" version="0.1">
     <description>apply simple mathematical operations to datasets</description>
-  <version_command>python phantasm_data_transformation.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_data_transformation.py
 $positional_1
 

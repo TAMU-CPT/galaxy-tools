@@ -1,6 +1,5 @@
 <tool id="edu.tamu.cpt.phantasm.compare" name="PHAnTASM Comparison Mapper" version="0.2">
   <description>PHAnTASM Comparison Mapper</description>
-  <version_command>python phantasm_compare.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_compare.py
 
 #set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])

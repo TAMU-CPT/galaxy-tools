@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <tool id="PSM.Plot" name="PSM Plotter" version="1.94.2">
   <description>plots data from PSM Prep</description>
-  <version_command>perl cpt_psm_1_plot.pl --version</version_command>
   <command interpreter="perl" detect_errors="aggressive">cpt_psm_1_plot.pl
 --galaxy
 --outfile_supporting $__new_file_path__

@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.tabular.overlap" name="Authorship Overlap" version="0.1">
   <description>Determine overlaps in column data</description>
-  <version_command>python cpt_author_overlap.py --version</version_command>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_author_overlap.py
 $positional_1
 > $default]]></command>

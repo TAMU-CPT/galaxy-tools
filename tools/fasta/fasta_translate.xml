@@ -4,7 +4,6 @@
 		<import>macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
-	<version_command>python fasta_translate.py --version</version_command>
 	<command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/fasta_translate.py
 @SEQUENCE@
