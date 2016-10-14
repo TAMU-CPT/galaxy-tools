@@ -6,7 +6,7 @@
   <package name="biopython" version="1.65">
     <repository name="package_biopython_1_65" owner="biopython"/>
   </package>
-  <package name="bcbiogff" version="0.6.2">
+  <package name="bcbiogff" version="0.6.4">
     <repository name="package_python_2_7_bcbiogff_0_6_2" owner="iuc"/>
   </package>
 </tool_dependency>

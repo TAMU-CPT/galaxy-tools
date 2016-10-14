@@ -1,0 +1,194 @@
+// XMFA
+digraph {
+	start [label="Alignment Start"]
+	gen_1 [label="Seq 2: 135417-135419
+Seq 3: 135192-135194
+"]
+	gen_2 [label="Seq 2: 124592-124595
+Seq 3: 124367-124370
+"]
+	gen_3 [label="Seq 0: 3-14
+Seq 1: 142-153
+Seq 2: 158-169
+Seq 3: 122-133
+"]
+	gen_4 [label="Seq 1: 3-141
+Seq 2: 32-157
+Seq 3: 3-121
+"]
+	gen_5 [label="Seq 1: 1-2
+Seq 3: 1-2
+"]
+	gen_6 [label="Seq 0: 4627-4650
+Seq 1: 4766-4789
+"]
+	gen_7 [label="Seq 0: 15-4626
+Seq 1: 154-4765
+Seq 2: 170-4769
+Seq 3: 134-4733
+Seq 4: 3-4610
+"]
+	gen_8 [label="Seq 2: 4770-4775
+Seq 3: 4734-4739
+Seq 4: 4611-4616
+"]
+	gen_9 [label="Seq 0: 4651-39845
+Seq 1: 4790-39984
+Seq 2: 4776-39970
+Seq 3: 4740-39934
+Seq 4: 4617-39813
+"]
+	gen_10 [label="Seq 0: 39846-40038
+Seq 1: 39985-40177
+Seq 2: 39971-40163
+Seq 4: 39814-40006
+"]
+	gen_11 [label="Seq 0: 40039-46800
+Seq 1: 40178-46939
+Seq 2: 40164-46924
+Seq 3: 39939-46699
+Seq 4: 40007-46768
+"]
+	gen_12 [label="Seq 0: 46801-46804
+Seq 1: 46940-46943
+Seq 4: 46769-46772
+"]
+	gen_13 [label="Seq 1: 46944-46945
+Seq 2: 46925-46925
+Seq 3: 46700-46700
+Seq 4: 46773-46774
+"]
+	gen_14 [label="Seq 0: 46857-124520
+Seq 1: 46946-124609
+Seq 2: 46926-124591
+Seq 3: 46701-124366
+Seq 4: 46775-124438
+"]
+	gen_15 [label="Seq 0: 124521-124653
+Seq 1: 124610-124742
+Seq 4: 124439-124571
+"]
+	gen_16 [label="Seq 0: 124654-135474
+Seq 1: 124743-135563
+Seq 2: 124596-135416
+Seq 3: 124371-135191
+Seq 4: 124572-135392
+"]
+	gen_17 [label="Seq 0: 135475-135501
+Seq 1: 135564-135590
+Seq 4: 135393-135419
+"]
+	gen_18 [label="Seq 0: 135502-137918
+Seq 1: 135591-138007
+Seq 2: 135420-137839
+Seq 3: 135195-137614
+Seq 4: 135420-137839
+"]
+	gen_19 [label="Seq 1: 138008-138043
+Seq 2: 137840-137875
+Seq 3: 137615-137650
+Seq 4: 137840-137881
+"]
+	gen_20 [label="Seq 1: 138044-138081
+Seq 4: 137882-137919
+"]
+	gen_21 [label="Seq 1: 138082-138102
+Seq 3: 137670-137688
+Seq 4: 137920-137940
+"]
+	gen_22 [label="Seq 1: 138103-138134
+Seq 2: 137879-137911
+Seq 3: 137689-137721
+Seq 4: 137941-137972
+"]
+	gen_23 [label="Seq 0: 46805-46856
+"]
+	gen_24 [label="Seq 2: 1-31
+"]
+	end [label="Alignment End"]
+		start -> gen_1 [label=2]
+		start -> gen_1 [label=3]
+		gen_1 -> gen_2 [label=2]
+		gen_1 -> gen_2 [label=3]
+		start -> gen_3 [label=0]
+		start -> gen_3 [label=1]
+		gen_2 -> gen_3 [label=2]
+		gen_2 -> gen_3 [label=3]
+		gen_3 -> gen_4 [label=1]
+		gen_3 -> gen_4 [label=2]
+		gen_3 -> gen_4 [label=3]
+		gen_4 -> gen_5 [label=1]
+		gen_4 -> gen_5 [label=3]
+		gen_3 -> gen_6 [label=0]
+		gen_5 -> gen_6 [label=1]
+		gen_6 -> gen_7 [label=0]
+		gen_6 -> gen_7 [label=1]
+		gen_4 -> gen_7 [label=2]
+		gen_5 -> gen_7 [label=3]
+		start -> gen_7 [label=4]
+		gen_7 -> gen_8 [label=2]
+		gen_7 -> gen_8 [label=3]
+		gen_7 -> gen_8 [label=4]
+		gen_7 -> gen_9 [label=0]
+		gen_7 -> gen_9 [label=1]
+		gen_8 -> gen_9 [label=2]
+		gen_8 -> gen_9 [label=3]
+		gen_8 -> gen_9 [label=4]
+		gen_9 -> gen_10 [label=0]
+		gen_9 -> gen_10 [label=1]
+		gen_9 -> gen_10 [label=2]
+		gen_9 -> gen_10 [label=4]
+		gen_10 -> gen_11 [label=0]
+		gen_10 -> gen_11 [label=1]
+		gen_10 -> gen_11 [label=2]
+		gen_9 -> gen_11 [label=3]
+		gen_10 -> gen_11 [label=4]
+		gen_11 -> gen_12 [label=0]
+		gen_11 -> gen_12 [label=1]
+		gen_11 -> gen_12 [label=4]
+		gen_12 -> gen_13 [label=1]
+		gen_11 -> gen_13 [label=2]
+		gen_11 -> gen_13 [label=3]
+		gen_12 -> gen_13 [label=4]
+		gen_12 -> gen_14 [label=0]
+		gen_13 -> gen_14 [label=1]
+		gen_13 -> gen_14 [label=2]
+		gen_13 -> gen_14 [label=3]
+		gen_13 -> gen_14 [label=4]
+		gen_14 -> gen_15 [label=0]
+		gen_14 -> gen_15 [label=1]
+		gen_14 -> gen_15 [label=4]
+		gen_15 -> gen_16 [label=0]
+		gen_15 -> gen_16 [label=1]
+		gen_14 -> gen_16 [label=2]
+		gen_14 -> gen_16 [label=3]
+		gen_15 -> gen_16 [label=4]
+		gen_16 -> gen_17 [label=0]
+		gen_16 -> gen_17 [label=1]
+		gen_16 -> gen_17 [label=4]
+		gen_17 -> gen_18 [label=0]
+		gen_17 -> gen_18 [label=1]
+		gen_16 -> gen_18 [label=2]
+		gen_16 -> gen_18 [label=3]
+		gen_17 -> gen_18 [label=4]
+		gen_18 -> gen_19 [label=1]
+		gen_18 -> gen_19 [label=2]
+		gen_18 -> gen_19 [label=3]
+		gen_18 -> gen_19 [label=4]
+		gen_19 -> gen_20 [label=1]
+		gen_19 -> gen_20 [label=4]
+		gen_20 -> gen_21 [label=1]
+		gen_19 -> gen_21 [label=3]
+		gen_20 -> gen_21 [label=4]
+		gen_21 -> gen_22 [label=1]
+		gen_19 -> gen_22 [label=2]
+		gen_21 -> gen_22 [label=3]
+		gen_21 -> gen_22 [label=4]
+		gen_18 -> gen_23 [label=0]
+		gen_22 -> gen_24 [label=2]
+		gen_23 -> end [label=0]
+		gen_22 -> end [label=1]
+		gen_24 -> end [label=2]
+		gen_22 -> end [label=3]
+		gen_22 -> end [label=4]
+}
