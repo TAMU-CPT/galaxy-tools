@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.feature_export" name="Genbank Feature Export" version="1.2">
-  <description>Export a subset of features from a Genbank file</description>
+<tool id="edu.tamu.cpt.gbk.feature_export" name="GenBank Feature Export" version="1.2">
+  <description>Export a subset of features from a GenBank file</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python feature_export.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[feature_export.py
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/feature_export.py
 $positional_1
 
 #set repeat_var_2 = ' '.join(str($positional_2).split(','))
@@ -21,7 +21,7 @@ $informative
 
 > $default]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1" type="data"/>
+    <param label="GenBank file" name="positional_1" type="data" format="genbank"/>
 	<expand macro="gbk_feature_type" label="Tags to export" />
     <param label="Translate sequence" name="translate" type="boolean"
         truevalue="--translate" falsevalue=""/>
@@ -50,6 +50,6 @@ $informative
   <help><![CDATA[
 **What it does**
 
-Exports features from a genbank file
+Exports features from a GenBank file.
       ]]></help>
 </tool>

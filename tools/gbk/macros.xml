@@ -39,8 +39,9 @@
 	<xml name="gbk_feature_type"
 		token_label="Feature type to remove"
 		token_multiple="True"
+		token_optional="False"
 		token_name="positional_2">
-    <param label="@LABEL@" multiple="@MULTIPLE@" name="@POSITIONAL@" type="select">
+    <param label="@LABEL@" optional="@TOKEN_OPTIONAL" multiple="@MULTIPLE@" name="@POSITIONAL@" type="select">
       <option value="-10_signal">-10_signal</option>
       <option value="-35_signal">-35_signal</option>
       <option value="3'UTR">3'UTR</option>

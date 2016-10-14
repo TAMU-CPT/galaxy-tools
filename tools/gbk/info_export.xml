@@ -1,20 +1,19 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.MetadataExport" name="Genbank Metadata Export" version="0.2">
-  <description>exports metadata about genbank files (citations, taxonomy, etc)</description>
+<tool id="edu.tamu.cpt.genbank.MetadataExport" name="GenBank Metadata Export" version="0.2">
+  <description>exports metadata about GenBank files (citations, taxonomy, etc)</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python info_export.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive">info_export.py
-#set gbk_files = '" "'.join([str($var) for $var in $file])
-"$gbk_files"
+  <command detect_errors="aggressive">
+python $__tool_directory__/info_export.py
+"$file"
 
 --section ${section}
 > $data
 </command>
   <inputs>
-    <param label="Genbank file"  name="file" type="data" multiple="true"/>
+    <param label="GenBank file"  name="file" type="data" format="genbank"/>
     <param label="Metadata elements to extract" name="section" type="select">
       <option value="comment">User entered genome comments (assembly data)</option>
       <option value="date">Date</option>
@@ -68,10 +67,10 @@
       </test>
   </tests>
   <help>
-Genbank Metadata Export
+GenBank Metadata Export
 =======================
 
-Export metadata from genbank files like taxonomy, citations, etc.
+Export metadata from GenBank files like taxonomy, citations, etc.
 </help>
 <citations />
 </tool>

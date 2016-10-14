@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.seq_export" name="Genbank Genome Sequence Export" version="1.2">
-  <description>export sequence from Genbank files as fasta</description>
-  <version_command>python seq_export.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[seq_export.py
-$positional_1
+<tool id="edu.tamu.cpt.gbk.seq_export" name="GenBank Genome Sequence Export" version="1.2">
+  <description>export sequence from GenBank files as fasta</description>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/seq_export.py
+"$input"
 --name_src $nmsrc
-> $default]]></command>
+> $output]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1" type="data"/>
+    <param label="GenBank file" name="input" type="data" format="genbank"/>
     <param label="Name source" name="nmsrc" type="select">
         <option value="id">Record ID</option>
         <option selected="True" value="name">Record Name</option>
@@ -15,12 +15,12 @@ $positional_1
     </param>
   </inputs>
   <outputs>
-    <data format="fasta" hidden="false" name="default"/>
+    <data format="fasta" hidden="false" name="output"/>
   </outputs>
   <help><![CDATA[
 **What it does**
 
-Exports genomes from Genbank files
+Exports genomes from GenBank files
 
 **Name Source**
 

@@ -1,13 +1,12 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.find_by_tag" name="Filter Genbank Features" version="0.2">
-    <description>based on specific tags/qualifiers from a Genbank file</description>
+<tool id="edu.tamu.cpt.gbk.find_by_tag" name="Filter GenBank Features" version="0.2">
+  <description>based on specific tags/qualifiers from a GenBank file</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python remove_tag.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[
-find_by_tag.py
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/find_by_tag.py
 #set gbk_files = '" "'.join([str($var) for $var in $positional_1])
 "$gbk_files"
 
@@ -24,81 +23,18 @@ find_by_tag.py
 #end if
 > $default]]></command>
   <inputs>
-    <param label="Genbank files" name="positional_1" type="data" multiple="True"/>
-    <param label="Feature type to remove" name="feature_type" type="select" optional="True">
-      <option value="-10_signal">-10_signal</option>
-      <option value="-35_signal">-35_signal</option>
-      <option value="3'UTR">3'UTR</option>
-      <option value="5'UTR">5'UTR</option>
-      <option value="CAAT_signal">CAAT_signal</option>
-      <option selected="true" value="CDS">CDS</option>
-      <option value="C_region">C_region</option>
-      <option value="D-loop">D-loop</option>
-      <option value="D_segment">D_segment</option>
-      <option value="GC_signal">GC_signal</option>
-      <option value="J_segment">J_segment</option>
-      <option value="LTR">LTR</option>
-      <option value="N_region">N_region</option>
-      <option value="RBS">RBS</option>
-      <option value="STS">STS</option>
-      <option value="S_region">S_region</option>
-      <option value="TATA_signal">TATA_signal</option>
-      <option value="V_region">V_region</option>
-      <option value="V_segment">V_segment</option>
-      <option value="all">all</option>
-      <option value="assembly_gap">assembly_gap</option>
-      <option value="attenuator">attenuator</option>
-      <option value="enhancer">enhancer</option>
-      <option value="exon">exon</option>
-      <option value="gap">gap</option>
-      <option value="gene">gene</option>
-      <option value="iDNA">iDNA</option>
-      <option value="intron">intron</option>
-      <option value="mRNA">mRNA</option>
-      <option value="mat_peptide">mat_peptide</option>
-      <option value="misc_RNA">misc_RNA</option>
-      <option value="misc_binding">misc_binding</option>
-      <option value="misc_difference">misc_difference</option>
-      <option value="misc_feature">misc_feature</option>
-      <option value="misc_recomb">misc_recomb</option>
-      <option value="misc_signal">misc_signal</option>
-      <option value="misc_structure">misc_structure</option>
-      <option value="mobile_element">mobile_element</option>
-      <option value="modified_base">modified_base</option>
-      <option value="ncRNA">ncRNA</option>
-      <option value="old_sequence">old_sequence</option>
-      <option value="operon">operon</option>
-      <option value="oriT">oriT</option>
-      <option value="polyA_signal">polyA_signal</option>
-      <option value="polyA_site">polyA_site</option>
-      <option value="precursor_RNA">precursor_RNA</option>
-      <option value="prim_transcript">prim_transcript</option>
-      <option value="primer_bind">primer_bind</option>
-      <option value="promoter">promoter</option>
-      <option value="protein_bind">protein_bind</option>
-      <option value="rRNA">rRNA</option>
-      <option value="rep_origin">rep_origin</option>
-      <option value="repeat_region">repeat_region</option>
-      <option value="sig_peptide">sig_peptide</option>
-      <option value="source">source</option>
-      <option value="stem_loop">stem_loop</option>
-      <option value="tRNA">tRNA</option>
-      <option value="terminator">terminator</option>
-      <option value="tmRNA">tmRNA</option>
-      <option value="transit_peptide">transit_peptide</option>
-      <option value="unsure">unsure</option>
-      <option value="variation">variation</option>
-    </param>
+    <param label="GenBank files" name="positional_1" type="data" multiple="True" format="genbank"/>
+	<expand macro="gbk_feature_type" label="Feature type to remove"
+		name="feature_type" optional="True" multiple="False" />
     <param label="Tag type to remove" name="tag_type" type="text"/>
     <param label="String in tag to match" name="tag_match" type="text"/>
   </inputs>
   <outputs>
-    <data format="txt" name="default" label="Files without selected feature tags"/>
+    <data format="genbank" name="default" label="Files without selected feature tags"/>
   </outputs>
   <help><![CDATA[
 **What it does**
 
-Filters genbank files for selected qualifiers from a genbank file.
-
+Filters GenBank files for features matching the selected qualifiers.
 ]]></help>
 </tool>

@@ -1,13 +1,12 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.remove_feature" name="Remove Genbank Features" version="0.2">
-  <description>removes specific features from a Genbank file</description>
+<tool id="edu.tamu.cpt.gbk.remove_feature" name="Remove GenBank Features" version="0.2">
+  <description>removes specific features from a GenBank file</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python remove_feature.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[remove_feature.py
-#set gbk_files = '" "'.join([str($var) for $var in $positional_1])
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/remove_feature.py
 "$gbk_files"
 
 #set repeat_var_2 = '" "'.join(str($positional_2).split(','))
@@ -15,15 +14,15 @@
 
 > $default]]></command>
   <inputs>
-    <param label="Genbank files" name="positional_1" type="data" multiple="True"/>
+    <param label="GenBank files" name="gbk_files" type="data" format="genbank"/>
 	<expand macro="gbk_feature_type" />
   </inputs>
   <outputs>
-	<data format="txt" hidden="false" name="default" label="${positional_1.name} without $positional_2"/>
+	<data format="genbank" hidden="false" name="default" label="${gbk_files.name} without $positional_2"/>
   </outputs>
   <tests>
       <test>
-          <param name="positional_1" value="related.gbk" />
+          <param name="gbk_files" value="related.gbk" />
           <param name="positional_2" value="CDS,gene" />
           <output name="default" file="related.nocdsgene.gbk" />
       </test>
@@ -31,6 +30,6 @@
   <help><![CDATA[
 **What it does**
 
-Removes selected features from genbank file
+Removes selected features from GenBank file
 ]]></help>
 </tool>

@@ -6,7 +6,7 @@
   </macros>
   <command detect_errors="aggressive">
 <![CDATA[
-    python $__tool_directory__/sequin.py
+python $__tool_directory__/sequin.py
     --genbank_submission_title "${genbank_submission_title}"
 
     #for $item in $repeat_genbank_record_author:
@@ -41,7 +41,7 @@ echo '</pre></body></html>' >> $discrep;
 ]]>
 </command>
   <inputs>
-    <param name="genbank_submission_title" help="Genbank Submission Title" label="genbank_submission_title" type="text"/>
+    <param name="genbank_submission_title" help="GenBank Submission Title" label="genbank_submission_title" type="text"/>
     <expand macro="ldap_ref" name="genbank_record_author" label="genbank record author" fromfile="ldap_people.loc"/>
     <expand macro="ldap_ref" name="genbank_record_contact" label="genbank record contact" fromfile="ldap_people.loc"/>
     <expand macro="ldap_ref_single" name="genbank_record_affiliation" label="genbank record affiliation" fromfile="ldap_orgs.loc"/>
@@ -51,7 +51,7 @@ echo '</pre></body></html>' >> $discrep;
     <expand macro="ldap_ref" name="paper_record_contact" label="paper record contact" fromfile="ldap_people.loc"/>
     <expand macro="ldap_ref_single" name="paper_record_affiliation" label="paper record affiliation" fromfile="ldap_orgs.loc"/>
 
-    <param name="genbank_file" help="Genbank File" label="genbank_file" type="data"/>
+    <param name="genbank_file" help="GenBank File" label="genbank_file" type="data" format="genbank"/>
   </inputs>
   <outputs>
     <data name="discrep" format="html">

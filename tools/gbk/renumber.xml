@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.RelabelTags" name="Renumber Genbank Genes" version="0.4">
-    <description>relabels/renumbers genbank tags according to rules</description>
+<tool id="edu.tamu.cpt.genbank.RelabelTags" name="Renumber GenBank Genes" version="0.4">
+    <description>relabels/renumbers GenBank tags according to rules</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python renumber.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive">renumber.py
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/renumber.py
   $file
 --tag_to_update "${tag_to_update}"
 --string_prefix "${string_prefix}"
 --leading_zeros "${leading_zeros}"
 --change_table $change_table
 
-> $genbank
+> $output
 
-</command>
+]]></command>
   <inputs>
-    <param label="Genbank files" name="file" type="data"/>
+    <param label="GenBank file" name="file" type="data" format="genbank" />
     <param help="Which tag is used to store gene numbers" label="Tag to update"
         name="tag_to_update" type="text" value="locus_tag"/>
     <param help="A string to use as a prefix for the numbering. Will be used as XXXXXXNNN where XXXXXX is the string and NNN is a numerical identifier. Using &quot;display_id&quot; has special meaning, it will use the genome's name/accession number"
@@ -26,7 +26,7 @@
         type="integer" value="3"/>
   </inputs>
   <outputs>
-    <data format="txt" name="genbank">
+    <data format="genbank" name="output">
     </data>
     <data format="tabular" name="change_table">
     </data>

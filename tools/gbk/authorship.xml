@@ -1,15 +1,13 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.authorship" name="Extract Authorship from Genbank File" version="0.1">
+<tool id="edu.tamu.cpt.genbank.authorship" name="Extract Authorship from GenBank File" version="0.1">
   <description></description>
-  <version_command>python authorship.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[
-authorship.py
-#set files = '" "'.join( [ str( $file ) for $file in $positional_1 ] )
-"$files"
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/authorship.py
+"$file"
 $first
 > $default]]></command>
   <inputs>
-    <param label="Genbank files" multiple="True" name="positional_1" type="data"/>
+    <param label="GenBank file" name="file" type="data" format="genbank"/>
     <param label="Only pick out first reference" name="first" type="boolean" truevalue="--first" falsevalue=""/>
   </inputs>
   <outputs>
@@ -18,7 +16,7 @@ $first
   <help><![CDATA[
 **What it does**
 
-Extract authorship/references from genbank files.
+Extract authorship/references from GenBank files.
 
 The ``--first`` flag lets you
 select only the first reference, likely to be the paper published about the

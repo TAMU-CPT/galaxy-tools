@@ -4,16 +4,15 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python source.py --version</version_command>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/source.py
-"$positional_1"
-> $default]]></command>
+"$input"
+> "$output"]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1" type="data" multiple="True"/>
+    <param label="GenBank file" name="input" type="data" format="genbank"/>
   </inputs>
   <outputs>
-    <data format="tabular" name="default"/>
+    <data format="tabular" name="output"/>
   </outputs>
   <tests>
       <test>

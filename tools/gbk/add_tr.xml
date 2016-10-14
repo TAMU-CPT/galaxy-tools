@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gbk.add_tr" name="Add Terminal Repeats" version="1.0">
-  <description>to a Genbank file with one or more genomes</description>
+  <description>to a GenBank file with one or more genomes</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python addtr.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive">addtr.py
+  <command detect_errors="aggressive">
+python $__tool_directory__/addtr.py
 $gbk_file
 
 #if $source.source_select!="file":
@@ -15,11 +15,11 @@ $gbk_file
 > $gbk
 </command>
   <inputs>
-    <param label="Gebank File" name="gbk_file" type="data"/>
+    <param label="GenBank File" name="gbk_file" type="data" format="genbank"/>
 
     <conditional name="source">
         <param name="source_select" type="select" label="Location of TR Information">
-            <option value="file">TR already added to Genbank File</option>
+            <option value="file">TR already added to GenBank File</option>
             <option value="text">Direct Entry</option>
         </param>
         <when value="file">
@@ -32,13 +32,15 @@ $gbk_file
     </conditional>
   </inputs>
   <outputs>
-    <data format="txt" name="gbk">
+    <data format="genbank" name="gbk">
     </data>
   </outputs>
-  <help>TR Addition
+  <help>
+<![CDATA[
+TR Addition
 ===========
 
-This tools adds TR regions to a Genbank file.
+This tools adds TR regions to a GenBank file.
 
 The region you supply duplicated and added to the end of the genome. The
 features from that region are likewise duplicated, and "\_rep" added to
@@ -53,8 +55,7 @@ Your genomes MUST be opened such that the start of the terminal repeat
 is the first base! This is unfortunately non-negotiable. If the
 repeat\_region is in the middle of the genome, it will be duplicated
 as-is, and appended to the end. This feature can be abused, but you
-**must** be aware of it. See the section `"Feature
-Abuse" &lt;#feature-abuse&gt;`__
+**must** be aware of it. See the section `"Feature Abuse" <#feature-abuse>`__
 
 You may specify repeats in one of the following ways:
 
@@ -85,6 +86,7 @@ Then, when the tool is run, this subset of the (true) repeat region will
 be duplicated and features added to the end. After that, you will need
 to fix the location of both repeat regions to reflect the true repeat
 region
+]]>
 </help>
     <expand macro="citations" />
 </tool>

@@ -1,29 +1,27 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.extract_accessions" name="Subset Genbank File by Accessions" version="0.2">
-  <description>given an accession list, extract a subset of the genbank records into a new file.</description>
+<tool id="edu.tamu.cpt.genbank.extract_accessions" name="Subset GenBank File by Accessions" version="0.2">
+  <description>given an accession list, extract a subset of the GenBank records into a new file.</description>
   <macros>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <version_command>python extract_by_acc.py --version</version_command>
-  <command interpreter="python" detect_errors="aggressive">extract_by_acc.py
+  <command detect_errors="aggressive">
+python $__tool_directory__/extract_by_acc.py
 $strict
 $db_gbk
 $accession_list
-
 > $extracted
 
 </command>
   <inputs>
-      <param label="Multi-record Genbank file to subset" name="db_gbk"
-          type="data"/>
-      <param help="List of Accessions to extract from Genbank file, one per line" label="Accession list"
+      <param label="GenBank file to subset" name="db_gbk" type="data" format="genbank"/>
+      <param help="List of Accessions to extract from GenBank file, one per line" label="Accession list"
           name="accession_list" format="txt,tabular" type="data"/>
       <param falsevalue="" help="Accession numbers have versions, setting strict indicates an exact version match is required"
           label="Strict ID comparisons" name="strict" truevalue="--strict" type="boolean"/>
   </inputs>
   <outputs>
-    <data format="txt" name="extracted">
+    <data format="genbank" name="extracted">
     </data>
   </outputs>
   <tests>
@@ -34,10 +32,10 @@ $accession_list
       </test>
   </tests>
   <help>
-Extract Subset of Genbank File by Accessions
+Extract Subset of GenBank File by Accessions
 ============================================
 
-Sometimes you have a "master" database of genbank records, a single huge file
+Sometimes you have a "master" database of GenBank records, a single huge file
 containing all of your genomes, then you do somet analysis which generates a
 list of accession numbers, and you need to extract those from the main file for
 downstream analysis.
@@ -47,7 +45,7 @@ Please ensure that your accession list contains one accession number per line
 Strict
 ------
 
-Sometimes you'll download a genbank file from NCBI and it will have IDs like:
+Sometimes you'll download a GenBank file from NCBI and it will have IDs like:
 
 -  NC_005824.1
 -  NC_005829.1

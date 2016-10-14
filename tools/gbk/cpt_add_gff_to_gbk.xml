@@ -1,14 +1,16 @@
 <tool id="edu.tamu.cpt.genbank.gff3_adder" name="Merge GFF3 into GenBank" version="1.0">
-  <description>Merge GFF3 data into a Genbank file</description>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_add_gff_to_gbk.py $positional_1
-$positional_2
-> $default]]></command>
+  <description>Merge GFF3 data into a GenBank file</description>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/cpt_add_gff_to_gbk.py "$gbk"
+"$gff3"
+> $output
+]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1"  type="data"/>
-    <param label="GFF3 Input" name="positional_2"  type="data" format="gff3"/>
+    <param label="GenBank file" name="gbk"  type="data" format="genbank"/>
+    <param label="GFF3 Input" name="gff3"  type="data" format="gff3"/>
   </inputs>
   <outputs>
-    <data format="txt" hidden="false" name="default"/>
+    <data format="genbank" hidden="false" name="output"/>
   </outputs>
   <help><![CDATA[
 Merge GFF features into a GenBank File
@@ -27,4 +29,3 @@ Known Bugs
 
 ]]></help>
 </tool>
-
