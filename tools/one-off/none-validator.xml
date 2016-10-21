@@ -5,7 +5,7 @@ $positional_1
 --problematic $problematic
 > $default]]></command>
   <inputs>
-    <param label="Genbank file" name="positional_1" type="data"/>
+    <param label="Genbank file" name="positional_1" type="data" format="genbank"/>
   </inputs>
   <outputs>
     <data format="txt" name="default" label="Annotated"/>
@@ -29,8 +29,6 @@ makes a lysis cluster.
     2.   Then look for all possible Lipoboxes within x= 2kb of the endolysin
          CDS. Let x and 'endolysin' be default but assignable.
     3.   Then manually inspect each lipobox possibility ....
-
-
 
 ]]></help>
 </tool>
