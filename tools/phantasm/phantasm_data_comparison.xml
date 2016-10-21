@@ -76,4 +76,3 @@ multiplication method would produce the following:
   1 for identical, 0 for non-identical. Empty/"None" default to undefined value
       ]]></help>
 </tool>
-
