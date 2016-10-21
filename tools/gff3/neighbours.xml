@@ -37,7 +37,11 @@ $gff3_data_b
 		</test>
   </tests>
   <help><![CDATA[
+**What it does**
 
-Only top-level features
+This tool behaves a lot like the location filter tool. Features in A that are
+close to features in B (any features) will be output in one file. Likewise,
+features in B that were found to be nearby features in A will be output in
+another file.
 ]]></help>
 </tool>

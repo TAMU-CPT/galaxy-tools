@@ -20,6 +20,6 @@ $remark
   <help><![CDATA[
 Removes the remark/annotation features::
 
-    Miro	annotation	remark	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Merlin%27%2C 0%2C 172788%29
+    Miro	annotation	remark	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Miro%27%2C 0%2C 172788%29
       ]]></help>
 </tool>

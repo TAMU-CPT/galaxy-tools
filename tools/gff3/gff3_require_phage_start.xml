@@ -41,4 +41,3 @@ Ensures the start codon for the CDS is ATG, TTG, or GTG. It removes it otherwise
 This tool will remove ANY non-CDS type feature.
       ]]></help>
 </tool>
-
