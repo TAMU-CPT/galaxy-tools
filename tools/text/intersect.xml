@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.tabular.intersect" name="Intersect Tabular Files" version="1.1">
-  <description>based on a shared column (Inner Join)</description>
-  <command detect_errors="aggressive">
-  python $__tool_directory__/intersect.py
-  $file_a
-  $col_a
-  $file_b
-  $col_b
-    > $output
-  </command>
-  <inputs>
-    <param label="File A" name="file_a" type="data" format="tabular"/>
-    <param label="Column A" name="col_a" type="integer" value="1" help="1 indexed columns." />
-    <param label="File B" name="file_b" type="data" format="tabular"/>
-    <param label="Column B" name="col_b" type="integer" value="1" help="1 indexed columns." />
-  </inputs>
-  <outputs>
-    <data format="tabular" name="output" />
-  </outputs>
-  <help>
+	<description>based on a shared column (Inner Join)</description>
+	<command detect_errors="aggressive">
+python $__tool_directory__/intersect.py
+$file_a
+$col_a
+$file_b
+$col_b
+> $output
+	</command>
+	<inputs>
+		<param label="File A" name="file_a" type="data" format="tabular"/>
+		<param label="Column A" name="col_a" type="integer" value="1" help="1 indexed columns." />
+		<param label="File B" name="file_b" type="data" format="tabular"/>
+		<param label="Column B" name="col_b" type="integer" value="1" help="1 indexed columns." />
+	</inputs>
+	<outputs>
+		<data format="tabular" name="output" />
+	</outputs>
+	<help>
 Given two files, file A::
 
     0ca428d3,Alice,32,Austin
@@ -39,15 +39,15 @@ would get the following output:
     0ca428d3,Alice,32,Austin,Alice,Skiing
     b64994a8,Carol,94,College Station,Carol,Knitting
 
-  </help>
-  <tests>
-    <test>
-      <param name="file_a" value="intersect_a.tab" />
-      <param name="file_b" value="intersect_b.tab" />
-      <param name="col_a" value="2" />
-      <param name="col_b" value="1" />
-      <output name="output" file="intersect.out" />
-    </test>
-  </tests>
-  <citations/>
+	</help>
+	<tests>
+		<test>
+			<param name="file_a" value="intersect_a.tab" />
+			<param name="file_b" value="intersect_b.tab" />
+			<param name="col_a" value="2" />
+			<param name="col_b" value="1" />
+			<output name="output" file="intersect.out" />
+		</test>
+	</tests>
+	<citations/>
 </tool>

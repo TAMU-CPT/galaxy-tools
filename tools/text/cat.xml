@@ -1,17 +1,16 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.text.cat" name="Concatentate multiple files" version="1.0">
-  <description>into a single file</description>
-  <command detect_errors="aggressive">
+	<description>into a single file</description>
+	<command detect_errors="aggressive">
 #set f = '" "'.join([str($var) for $var in $files])
 cat "$f" > $output
-
 </command>
-  <inputs>
-    <param label="Files to merge" name="files" type="data" multiple="True"/>
-  </inputs>
-  <outputs>
-    <data format_source="files" name="output" />
-  </outputs>
-  <help>Merge files</help>
-  <citations/>
+	<inputs>
+		<param label="Files to merge" name="files" type="data" multiple="True"/>
+	</inputs>
+	<outputs>
+		<data format_source="files" name="output" />
+	</outputs>
+	<help>Merge files, possibly taking advantage of Galaxy's Dataset Collections.</help>
+	<citations/>
 </tool>
