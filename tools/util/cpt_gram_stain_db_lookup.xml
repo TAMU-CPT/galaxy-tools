@@ -1,23 +1,24 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.generic.GramAnnotator" name="Annotate Gram Stain for Bacteria list" version="1.94">
-  <description>compares bacteria strain name against a database and attempts to guess gram stain</description>
-  <command interpreter="python" detect_errors="aggressive">cpt_gram_stain_db_lookup.py
+	<description>compares bacteria strain name against a database and attempts to guess gram stain</description>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/cpt_gram_stain_db_lookup.py
 "${file}"
 > $output
 
-</command>
-  <inputs>
-    <param help="Single column list of bacterial strains" label="file" name="file" optional="False" type="data"/>
-  </inputs>
-  <outputs>
-    <data format="tabular" name="output">
-    </data>
-  </outputs>
-  <help>Detect Gram Stain
+]]></command>
+	<inputs>
+		<param help="Single column list of bacterial strains" label="file" name="file" optional="False" type="data"/>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="output" />
+	</outputs>
+	<help>
+Detect Gram Stain
 =================
 
 Given a single-column list of bacterial names to query for, attempt to detect
 gram stain based on a lookup table.
 </help>
-  <tests/>
+	<tests/>
 </tool>

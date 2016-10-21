@@ -1,35 +1,35 @@
 <?xml version="1.0"?>
 <tool id="tRNAscan_to_gff" name="Convert tRNAscan table to gff format" version="@WRAPPER_VERSION@.0">
-  <description></description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[
-tRNAscan_to_gff.py
+	<description></description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/tRNAscan_to_gff.py
 < $trnascan
 > $output
 ]]></command>
-  <inputs>
-      <param format="tabular" type="data" name="trnascan" label="tRNAscan table" />
-  </inputs>
-  <outputs>
-    <data format="gff3" name="output">
-    </data>
-  </outputs>
-  <tests>
-      <test>
-          <param name="trnascan" value="trnascan.tsv"/>
-          <output name="output" file="trnascan_with_id.gff"/>
-      </test>
-  </tests>
-  <help><![CDATA[
+	<inputs>
+			<param format="tabular" type="data" name="trnascan" label="tRNAscan table" />
+	</inputs>
+	<outputs>
+		<data format="gff3" name="output">
+		</data>
+	</outputs>
+	<tests>
+		<test>
+			<param name="trnascan" value="trnascan.tsv"/>
+			<output name="output" file="trnascan_with_id.gff"/>
+		</test>
+	</tests>
+	<help><![CDATA[
 What it does
 ============
 
 converts tRNAscan table to gff format
 
 ]]></help>
-  <citations>
-  </citations>
+	<citations>
+	</citations>
 </tool>

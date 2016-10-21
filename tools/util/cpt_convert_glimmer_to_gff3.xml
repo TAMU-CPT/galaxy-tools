@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.util.glimmer3_to_gff3" name="Glimmer3 to GFF3" version="1.1">
-  <description>convert formats</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive">
+	<description>convert formats</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
 @GENOME_SELECTOR_PRE@
 
 python $__tool_directory__/cpt_convert_glimmer_to_gff3.py
@@ -13,25 +13,25 @@ $glimmer
 @GENOME_SELECTOR@
 > $data
 </command>
-  <inputs>
-    <param label="Glimmer Output" name="glimmer" type="data" format="tabular,txt"/>
-    <expand macro="genome_selector" />
-  </inputs>
-  <outputs>
-    <data format="gff3" name="data">
-    </data>
-  </outputs>
-  <tests>
-      <test>
-          <param name="reference_genome_source" value="history" />
-          <param name="genome_fasta" value="miro.fa" />
-          <param name="glimmer" value="glimmer.out" />
-          <output name="data" file="glimmer.gff3" />
-      </test>
-  </tests>
-  <help>
+	<inputs>
+		<param label="Glimmer Output" name="glimmer" type="data" format="tabular,txt"/>
+		<expand macro="genome_selector" />
+	</inputs>
+	<outputs>
+		<data format="gff3" name="data">
+		</data>
+	</outputs>
+	<tests>
+		<test>
+			<param name="reference_genome_source" value="history" />
+			<param name="genome_fasta" value="miro.fa" />
+			<param name="glimmer" value="glimmer.out" />
+			<output name="data" file="glimmer.gff3" />
+		</test>
+	</tests>
+	<help>
 **What it does**
 
 Converts Glimmer3 table to GFF3
-</help>
+	</help>
 </tool>

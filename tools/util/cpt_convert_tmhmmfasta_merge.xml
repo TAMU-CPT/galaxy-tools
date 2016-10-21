@@ -2,7 +2,8 @@
 <tool id="edu.tamu.cpt.generic.TMHMM_merger" name="Reformat TMHMM results" version="1.94">
   <description>convert to easily parseable tabular format</description>
 
-  <command interpreter="python" detect_errors="aggressive">cpt_convert_tmhmmfasta_merge.py
+  <command detect_errors="aggressive">
+python $__tool_directory__/cpt_convert_tmhmmfasta_merge.py
 --galaxy
 --outfile_supporting $__new_file_path__
 --fasta "${fasta}"

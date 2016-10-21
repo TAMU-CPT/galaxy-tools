@@ -1,16 +1,21 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.tabular.overlap" name="Authorship Overlap" version="0.1">
-  <description>Determine overlaps in column data</description>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_author_overlap.py
-$positional_1
-> $default]]></command>
-  <inputs>
-    <param label="2 column table" name="positional_1" format="tabular" type="data"/>
-  </inputs>
-  <outputs>
-    <data format="tabular" hidden="false" name="default"/>
-  </outputs>
-  <help><![CDATA[
+	<description>Determine overlaps in column data</description>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/cpt_author_overlap.py
+"$data"
+> "$output"]]></command>
+	<inputs>
+		<param label="2 column table" name="data" format="tabular" type="data"/>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="output"/>
+	</outputs>
+	<tests>
+		<param name="data" value="authors.tsv" />
+		<output name="output" file="authors.overlap.tsv" />
+	</tests>
+	<help><![CDATA[
 NOTE: **MUST BE TWO COLUMN DATA**: Sequence ID and author list.
 
 **What it does**
@@ -31,9 +36,15 @@ Here the first sequence is an obvious outlier. Sequences JQ965700 and JQ965702
 should be classed together. JQ965701 shares at least three authors with the
 other two, and should likely be placed in a category together.
 
+This will produce an output file like::
+
+	JQ957925
+	JQ965700        JQ965701        JQ965702
+
+Where each line contains a cluster of entries.
+
 This is a VERY simple tool to produce quick and dirty answers. There are much
 more interesting questions to answer about sequences and authorship that
-require deeper graph information. That will be added in a later tool. Ping
-esr@tamu.edu if you need that.
+require deeper graph information.
 ]]></help>
 </tool>

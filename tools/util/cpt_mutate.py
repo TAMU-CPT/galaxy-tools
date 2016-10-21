@@ -22,7 +22,7 @@ def delete(char):
     return [""]
 
 
-def snp(fasta_file, mutation='mutate'):
+def snp(fasta_file, mutation='mutate', translate=False):
 
     methodToCall = globals()[mutation]
 
@@ -50,18 +50,28 @@ def snp(fasta_file, mutation='mutate'):
                     ids.append('_%s%s%s' % (mutation[0], i + 1, mutated))
 
             if results is not None:
+                seen = {}
                 for (result, message, id_add) in zip(results, messages, ids):
                     rec_copy = copy.deepcopy(record)
-                    rec_copy.seq = Seq(result)
+                    if translate:
+                        rec_copy.seq = Seq(result).translate(table=11)
+                        y = str(rec_copy.seq)
+                        if y in seen:
+                            continue
+                        else:
+                            seen[y] = None
+                    else:
+                        rec_copy.seq = Seq(result)
                     rec_copy.description += message
                     rec_copy.id += id_add
                     yield [rec_copy]
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate ALL possible SNPs in fasta sequences')
-    parser.add_argument('fasta_file', type=file, help='Fasta file')
+    parser.add_argument('fasta_file', type=argparse.FileType('r'), help='Fasta file')
     parser.add_argument('mutation', type=str, help='Type of mutation to make',
                         default='mutate', choices=['mutate', 'insert', 'delete'])
+    parser.add_argument('--translate', action='store_true')
 
     args = parser.parse_args()
     for record in snp(**vars(args)):

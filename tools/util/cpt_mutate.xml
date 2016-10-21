@@ -1,37 +1,46 @@
 <tool id="edu.tamu.cpt.fasta.mutate" name="Generate all possible SNPs" version="1.0">
-  <description>in fasta files</description>
-    <requirements>
-      <requirement type="package" version="2.7">python</requirement>
-      <requirement type="package" version="1.65">biopython</requirement>
-    </requirements>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_mutate.py
+	<description>in fasta files</description>
+		<requirements>
+			<requirement type="package" version="2.7">python</requirement>
+			<requirement type="package" version="1.65">biopython</requirement>
+		</requirements>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/cpt_mutate.py
 $positional_1
 $positional_2
+$translate
 > $default]]></command>
-  <inputs>
-    <param label="Fasta file" format="fasta" name="positional_1" type="data"/>
-    <param label="Type of mutation to make" name="positional_2" type="select">
-      <option selected="true" value="mutate">mutate</option>
-      <option value="insert">insert</option>
-      <option value="delete">delete</option>
-    </param>
-  </inputs>
-  <outputs>
-    <data format="fasta" name="default" label="Mutated $positional_1.name"/>
-  </outputs>
-  <tests>
-      <test>
-          <param name="positional_1" value="random.fa"/>
-          <param name="positional_2" value="delete"/>
-          <output name="default" value="random.delete.fa"/>
-      </test>
-  </tests>
-  <help><![CDATA[
+	<inputs>
+		<param label="Fasta file" format="fasta" name="positional_1" type="data"/>
+		<param label="Type of mutation to make" name="positional_2" type="select">
+			<option selected="true" value="mutate">mutate</option>
+			<option value="insert">insert</option>
+			<option value="delete">delete</option>
+		</param>
+		<param name="translate" label="Translate" help="If this is selected, the output sequence will be translated to protein and only emitted if it is unique"
+			type="boolean" truevalue="--translate" falsevalue=""/>
+	</inputs>
+	<outputs>
+		<data format="fasta" name="default" label="Mutated $positional_1.name"/>
+	</outputs>
+	<tests>
+		<test>
+			<param name="positional_1" value="random.fa"/>
+			<param name="positional_2" value="delete"/>
+			<output name="default" value="random.delete.fa"/>
+		</test>
+		<test>
+			<param name="positional_1" value="random.fa"/>
+			<param name="positional_2" value="mutate"/>
+			<param name="translate" value="--translate" />
+			<output name="default" value="random.mut.fa"/>
+		</test>
+	</tests>
+	<help><![CDATA[
 **What it does**
 
 Generate **ALL POSSIBLE SNPs** in a fasta file.
 
 Be **CAREFUL** with large/many sequences.
-
 ]]></help>
 </tool>
