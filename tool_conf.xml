@@ -10,7 +10,6 @@
     <tool file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/epost.xml" />
     <tool file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/esearch.xml" />
     <tool file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/esummary.xml" />
-    <tool hidden="True" file="cpt/new-py/bin/cpt_ncbi_efetch_gbk.xml" />
   </section>
   <label id="l_cpt" text="CPT Tools" />
 
