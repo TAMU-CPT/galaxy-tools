@@ -17,7 +17,8 @@ ${coverage} > $fastq
   <outputs>
       <data format="fastq" name="fastq" label="$file.name at $coverage fold coverage" />
   </outputs>
-  <help><![CDATA[Subset FastQ file
+  <help><![CDATA[
+Subset FastQ file
 =================
 
 Reduce a FastQ file to a specific fold coverage. In phage genomics, we've

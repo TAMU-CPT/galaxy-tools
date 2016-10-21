@@ -21,7 +21,7 @@ for row in sys.stdin:
     dsum = int(rowdata[1])
     dsumsq = int(rowdata[2])
 
-    avg = dsum / dlen
-    stdev = math.sqrt(dsumsq / dlen - math.pow((dsum / dlen), 2))
+    avg = dsum / float(dlen)
+    stdev = math.sqrt(dsumsq / float(dlen) - float(math.pow((dsum / dlen), 2)))
 
     print '\t'.join(map(str, (rowdata[0], avg, stdev, dlen)))

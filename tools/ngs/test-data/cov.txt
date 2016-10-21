@@ -1,0 +1,2 @@
+# Contig ID	Average Coverage	Stdev	Contig Length
+AbauRCB_40431nt	0.85119047619	0.92259984619	168
