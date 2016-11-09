@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# import sys
+import sys
 import argparse
 from BCBio import GFF
 from Bio import SeqIO
@@ -12,6 +12,16 @@ def taper_list(gff3, fasta):
 
     find_tmembrane(records)
 
+def hydrophobicity(seq):
+    """ analyzes hydrophobicity of a sequence """
+    # neutral amino acids
+    aas = ['F', 'I', 'W', 'L', 'V', 'M', 'Y', 'C', 'A', 'T', 'G', 'S']
+
+    for s in seq:
+        if s in aas:
+            return False
+
+    return True
 
 def find_tmembrane(records):
     """ identify transmembrane domains based on the following rules:
@@ -19,9 +29,10 @@ def find_tmembrane(records):
             (2) if (1) is not met, allow for lysine (K) residues at locations n to n+2 and/or n+13 to n+15
     """
 
-    return
+    for rec in records:
+        records[rec].seq[:50]
 
-
+        sys.exit()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='find phage transmembrane domains')
