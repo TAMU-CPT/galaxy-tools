@@ -35,19 +35,25 @@ def ranges(i):
         b = list(b)
         yield b[0][1], b[-1][1]
 
-def print_seq(locations, seq):
+def print_seq(locations, record):
     """ prints output """
 
-    print seq
     annotate = ""
-    for i in range(len(seq)):
+    for i in range(len(record.seq)):
         if i in locations:
             annotate += '*'
         else:
             annotate += '-'
-    print annotate
-    print list(ranges(locations))
-    print '\n'
+
+    if '*' in annotate:
+        print record.id
+        print record.seq
+        print annotate
+        for r in list(ranges(locations)):
+            print r[0], '-', r[1]
+        print '\n'
+    else:
+        return record.id
 
 def find_tmembrane(records):
     """ identify transmembrane domains based on the following rules:
@@ -55,15 +61,17 @@ def find_tmembrane(records):
             (2) if (1) is not met, allow for lysine (K) residues at locations n to n+2 and/or n+13 to n+15
     """
 
+    no_tmembrane_domains = []
     for rec in records:
         locations = [] # indices of hydrophobic domains
-        seq = records[rec].seq
-        for i in range(3, len(seq)-12):
-            if hydrophobicity(seq[i-3:i], seq[i:i+10], seq[i+10:i+13]):
+        for i in range(3, len(records[rec].seq)-12):
+            if hydrophobicity(records[rec].seq[i-3:i], records[rec].seq[i:i+10], records[rec].seq[i+10:i+13]):
                 locations += [loc for loc in range(i-3, i+13) if loc not in locations]
 
-        print rec
-        print_seq(locations, seq)
+        no_tmembrane_domains += [rec_id for rec_id in [print_seq(locations, records[rec])] if rec_id]
+
+    print "Records with no found transmembrane domains:"
+    print '\n'.join(no_tmembrane_domains)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='find phage transmembrane domains')
