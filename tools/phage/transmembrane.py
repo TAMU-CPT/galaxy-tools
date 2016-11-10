@@ -1,13 +1,12 @@
 #!/usr/bin/env python
-import sys
 import argparse
 from BCBio import GFF
 from Bio import SeqIO
-
-num_caught = 0
+import itertools
 
 def taper_list(gff3, fasta):
-    """ delete records that already have identified transmembrane domains """
+    """ deletes records that already have identified transmembrane domains """
+
     records = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
     for rec in GFF.parse(gff3):
         del records[rec.id]
@@ -16,6 +15,7 @@ def taper_list(gff3, fasta):
 
 def hydrophobicity(beg, mid, end):
     """ analyzes hydrophobicity of a sequence """
+
     # neutral amino acids
     aas = ['F', 'I', 'W', 'L', 'V', 'M', 'Y', 'C', 'A', 'T', 'G', 'S']
 
@@ -28,20 +28,26 @@ def hydrophobicity(beg, mid, end):
                     return False
     return True
 
-def print_seq(plot, seq):
+def ranges(i):
+    """ makes a range out of a list of indices """
+
+    for a, b in itertools.groupby(enumerate(i), lambda (x, y): y - x):
+        b = list(b)
+        yield b[0][1], b[-1][1]
+
+def print_seq(locations, seq):
+    """ prints output """
+
     print seq
     annotate = ""
     for i in range(len(seq)):
-        if i in plot:
+        if i in locations:
             annotate += '*'
         else:
             annotate += '-'
     print annotate
+    print list(ranges(locations))
     print '\n'
-    if '*' in annotate:
-        return 1
-    else:
-        return 0
 
 def find_tmembrane(records):
     """ identify transmembrane domains based on the following rules:
@@ -49,18 +55,15 @@ def find_tmembrane(records):
             (2) if (1) is not met, allow for lysine (K) residues at locations n to n+2 and/or n+13 to n+15
     """
 
-    num_caught = 0
     for rec in records:
-        plot = []
+        locations = [] # indices of hydrophobic domains
         seq = records[rec].seq
         for i in range(3, len(seq)-12):
             if hydrophobicity(seq[i-3:i], seq[i:i+10], seq[i+10:i+13]):
-                plot += range(i-3, i+13)
+                locations += [loc for loc in range(i-3, i+13) if loc not in locations]
 
         print rec
-        num_caught += print_seq(plot, seq)
-    print num_caught
-    print len(records)
+        print_seq(locations, seq)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='find phage transmembrane domains')
