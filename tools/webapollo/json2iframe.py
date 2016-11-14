@@ -20,7 +20,7 @@ if __name__ == '__main__':
     eXBlPSJ0ZXh0L2NzcyI+Ym9keSB7e21hcmdpbjogMDt9fSBpZnJhbWUge3tib3JkZXI6IDA7d2lk
     dGg6IDEwMCU7aGVpZ2h0OiAxMDAlfX08L3N0eWxlPjwvaGVhZD48Ym9keT48aWZyYW1lIHNyYz0i
     e2Jhc2VfdXJsfS9hbm5vdGF0b3IvbG9hZExpbms/bG9jPXtjaHJvbX0mb3JnYW5pc209e29yZ0lk
-    fSZ0cmFja2xpc3Q9MSI+PC9pZnJhbWU+PC9ib2R5PjwvaHRtbD4K
+    fSZ0cmFja2xpc3Q9dHJ1ZSI+PC9pZnJhbWU+PC9ib2R5PjwvaHRtbD4K
     """
     HTML_TPL = base64.b64decode(HTML_TPL.replace('\n', ''))
 
