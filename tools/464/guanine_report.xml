@@ -1,17 +1,18 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.464.2016.guanine_report" name="464 GUANINE Reporter" version="1.1">
+<tool id="edu.tamu.cpt2.464.2017.guanine_report" name="464 GUANINE Reporter" version="1.1">
   <description></description>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[
 guanine_report.py
+"/galaxy/guanine_creds.json"
 "$__user_email__"
-"$test_name"
+1
+1
+> $output_file
 ]]></command>
   <inputs>
-    <param label="Assessment Name" name="test_name" type="text" />
-    <param label="Data File" name="input_file" type="data"/>
   </inputs>
   <outputs>
-    <data format_source="input_file" name="output_file" label="$input_file.name"/>
+    <data format="txt" name="output_file"/>
   </outputs>
   <help><![CDATA[
 **What it does**
