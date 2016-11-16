@@ -53,7 +53,7 @@ def print_seq(locations, record):
             print r[0], '-', r[1]
         print '\n'
     else:
-        return record.id
+        return (record.id, record.seq)
 
 def find_tmembrane(records):
     """ identify transmembrane domains based on the following rules:
@@ -71,7 +71,10 @@ def find_tmembrane(records):
         no_tmembrane_domains += [rec_id for rec_id in [print_seq(locations, records[rec])] if rec_id]
 
     print "Records with no found transmembrane domains:"
-    print '\n'.join(no_tmembrane_domains)
+    for i in no_tmembrane_domains:
+        print i[0]
+        print i[1]
+        print '\n'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='find phage transmembrane domains')
