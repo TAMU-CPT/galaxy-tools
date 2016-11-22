@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.sequencing.basespace" name="BaseSpace Downloader" version="1.0.0">
+  <description>fetches dataset for Galaxy</description>
+  <xml name="requirements">
+    <requirements>
+      <requirement type="package" version="2.7">python</requirement>
+    </requirements>
+  </xml>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/BaseSpaceRunDownloader_v2.py
+"$RunID"
+> $default]]></command>
+  <inputs>
+    <input type="text" name="RunID" label="Run ID" />
+  </inputs>
+  <outputs>
+    <data format="json" name="default"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+**How it works**
+
+This tool uses API keys from illumina in order to access data. Illumina
+restricts the api key access to my (Eric Rasche <esr@tamu.edu>) account, so you
+will need to share data with me, and then it will be available to this tool.
+
+We will figure out an easier method in the future.
+]]></help>
+</tool>
