@@ -47,7 +47,7 @@ def blasttsv2gff3(blasttsv, min_dice=50):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert Blast TSV to gapped GFF3')
     parser.add_argument('blasttsv', type=file, help='Blast TSV Output')
-    parser.add_argument('--min_dice', type=int, help='Minimum dice score', default=0.5)
+    parser.add_argument('--min_dice', type=float, help='Minimum dice score', default=0.5)
     args = parser.parse_args()
 
     for line in blasttsv2gff3(**vars(args)):
