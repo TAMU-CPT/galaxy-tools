@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <toolbox>
+  <section id="getext" name="Get Data" version="">
+	<tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunDownloader_v2.xml" />
+  </section>
   <section id="getext_ncbi" name="Get Data: NCBI">
     <tool hidden="True" file="data_source/upload.xml" />
     <tool file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/ecitmatch.xml" />
