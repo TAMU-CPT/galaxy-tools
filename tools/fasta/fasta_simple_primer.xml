@@ -20,7 +20,7 @@ $__tool_directory__/fasta_simple_primer.py
 	</outputs>
 	<tests>
 		<test>
-			<param name="fasta_file" value="random.fa" />
+			<param name="sequences" value="random.fa" />
 			<param name="end_overlap" value="5" />
 			<output name="output" file="primers.fa" />
 		</test>

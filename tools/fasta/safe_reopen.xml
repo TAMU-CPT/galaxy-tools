@@ -21,7 +21,7 @@ python $__tool_directory__/safe_reopen.py
 	</outputs>
 	<tests>
 		<test>
-			<param name="fasta_file" value="57.fa" />
+			<param name="sequences" value="57.fa" />
 			<param name="gff3_files" value="57.1.gff3,57.2.gff3,57.3.gff3" />
 			<output name="output" file="57.new.fa" />
 		</test>

@@ -18,7 +18,7 @@ $__tool_directory__/fasta_remove_id.py
 	</outputs>
 	<tests>
 		<test>
-			<param name="fasta" value="regex.a3.fa"/>
+			<param name="sequences" value="regex.a3.fa"/>
 			<output name="out" file="regex.a3.clean.fa" />
 		</test>
 	</tests>

@@ -18,7 +18,7 @@ $__tool_directory__/ncbi_header_split.py
 	</outputs>
 	<tests>
 		<test>
-			<param name="file" value="ncbi-prot.fa" />
+			<param name="sequences" value="ncbi-prot.fa" />
 			<output name="output" file="ncbi-prot-split.fa" />
 		</test>
 	</tests>

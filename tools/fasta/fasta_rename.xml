@@ -18,9 +18,9 @@ $__tool_directory__/fasta_rename.py
 	</outputs>
 	<tests>
 		<test>
-			<param name="fasta" value="rename.fa"/>
+			<param name="sequences" value="rename.fa"/>
 			<param name="new_name" value="renamed" />
-			<output name="out" file="renamed.fa" />
+			<output name="output" file="renamed.fa" />
 		</test>
 	</tests>
 	<help><![CDATA[
