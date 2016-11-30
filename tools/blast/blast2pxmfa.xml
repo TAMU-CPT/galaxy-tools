@@ -5,7 +5,7 @@
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements">
-    <requirement type="package" version="2.1">clustal</requirement>
+    <requirement type="package" version="2.1">clustalw</requirement>
   </expand>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/blast2pxmfa.py
