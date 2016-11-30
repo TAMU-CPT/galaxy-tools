@@ -1,11 +1,6 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.sequencing.basespace" name="BaseSpace Downloader" version="1.0.0">
   <description>fetches dataset for Galaxy</description>
-  <xml name="requirements">
-    <requirements>
-      <requirement type="package" version="2.7">python</requirement>
-    </requirements>
-  </xml>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/BaseSpaceRunDownloader_v2.py
 "$RunID"

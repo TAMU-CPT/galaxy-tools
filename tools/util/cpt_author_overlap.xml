@@ -12,8 +12,10 @@ python $__tool_directory__/cpt_author_overlap.py
 		<data format="tabular" name="output"/>
 	</outputs>
 	<tests>
-		<param name="data" value="authors.tsv" />
-		<output name="output" file="authors.overlap.tsv" />
+		<test>
+			<param name="data" value="authors.tsv" />
+			<output name="output" file="authors.overlap.tsv" />
+		</test>
 	</tests>
 	<help><![CDATA[
 NOTE: **MUST BE TWO COLUMN DATA**: Sequence ID and author list.
