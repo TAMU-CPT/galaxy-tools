@@ -48,7 +48,7 @@ python $__tool_directory__/subsection.py
       </test>
       <test>
           <param name="gbk_files" value="related.gbk" />
-          <param name="source_select" value="table" />
+          <param name="source_select" value="file" />
           <param name="table" value="related.subsection.tsv" />
           <output name="default" value="karma.1-2000.gbk" />
       </test>
