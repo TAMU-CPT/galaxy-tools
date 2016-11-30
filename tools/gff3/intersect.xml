@@ -22,9 +22,8 @@ $__tool_directory__/intersect.py
   </outputs>
   <tests>
 		<test>
-			<param name="gff3_data" value="a.gff3" />
-			<param name="gff3_data" value="b.gff3" />
-
+			<param name="gff3_data_a" value="a.gff3" />
+			<param name="gff3_data_b" value="b.gff3" />
 			<output name="oa" file="a_hits_in_b.gff" />
 			<output name="ob" file="b_hits_in_a.gff" />
 		</test>
