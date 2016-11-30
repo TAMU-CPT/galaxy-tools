@@ -16,8 +16,8 @@ python $__tool_directory__/source.py
   </outputs>
   <tests>
       <test>
-          <param name="positional_1" value="related.gbk" />
-          <output name="default" file="related.source.txt" />
+          <param name="input" value="related.gbk" />
+          <output name="output" file="related.source.txt" />
       </test>
   </tests>
   <help><![CDATA[
