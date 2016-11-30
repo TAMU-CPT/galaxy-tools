@@ -18,10 +18,6 @@ REFERENCE   2  (bases 1 to 215710)
             Spring,A. and Young,R.F.
   TITLE     Direct Submission University, 2128 TAMU, College Station, TX 77843,
             USA
-COMMENT     ##Assembly-Data-START##
-            Assembly Method       :: Newbler v. 2.5.3
-            Sequencing Technology :: Sanger dideoxy sequencing; 454
-            ##Assembly-Data-END##
 FEATURES             Location/Qualifiers
      source          1..215710
                      /host="Caulobacter crescentus"
@@ -5468,10 +5464,6 @@ REFERENCE   2  (bases 1 to 279967)
   AUTHORS   asdf,asdf.
   TITLE     Direct Submission
   JOURNAL   Submitted (27-APR-2012) sdf, sdf, adf, fs, dffd df, df
-COMMENT     ##Assembly-Data-START##
-            Assembly Method       :: sdf v. sdf
-            Sequencing Technology :: Sanger dideoxy sequencing; 454
-            ##Assembly-Data-END##
 FEATURES             Location/Qualifiers
      source          1..279967
                      /mol_type="genomic DNA"
@@ -12559,10 +12551,6 @@ REFERENCE   2  (bases 1 to 221828)
   AUTHORS   sd,ssdf.
   TITLE     Direct Submission
   JOURNAL   Submitted (28-APR-2012) df, sdf, sd, sdf, sdf sdf, sdf
-COMMENT     ##Assembly-Data-START##
-            Assembly Method       :: dsf v. f
-            Sequencing Technology :: 454
-            ##Assembly-Data-END##
 FEATURES             Location/Qualifiers
      source          1..221828
                      /mol_type="genomic DNA"
@@ -18206,10 +18194,6 @@ REFERENCE   2  (bases 1 to 218929)
   TITLE     Direct Submission
   JOURNAL   Submitted (09-APR-2012) Center for Phage Technology, Texas A&M
             University, 2128 TAMU, College Station, TX 77843, USA
-COMMENT     ##Assembly-Data-START##
-            Assembly Method       :: Newbler v. 2.5.3
-            Sequencing Technology :: Sanger dideoxy sequencing; 454
-            ##Assembly-Data-END##
 FEATURES             Location/Qualifiers
      source          1..218929
                      /collection_date="02/2010"
@@ -23719,10 +23703,6 @@ REFERENCE   2  (bases 1 to 223720)
   AUTHORS   hvgv,jjhg.
   TITLE     Direct Submission
   JOURNAL   Submitted (28-APR-2012) gff, jhg, a, a, a a, a
-COMMENT     ##Assembly-Data-START##
-            Assembly Method       :: j v. hj
-            Sequencing Technology :: 454
-            ##Assembly-Data-END##
 FEATURES             Location/Qualifiers
      source          1..223720
                      /mol_type="genomic DNA"
@@ -29289,10 +29269,6 @@ REFERENCE   2  (bases 1 to 219216)
   AUTHORS   sdf,ssdf.
   TITLE     Direct Submission
   JOURNAL   Submitted (28-APR-2012) sdf, sdf, sdf, sdfsdf, sdfsdf sdfsdf, sdfsdf
-COMMENT     ##Assembly-Data-START##
-            Assembly Method       :: khjg v. gjh
-            Sequencing Technology :: 454
-            ##Assembly-Data-END##
 FEATURES             Location/Qualifiers
      source          1..219216
                      /mol_type="genomic DNA"

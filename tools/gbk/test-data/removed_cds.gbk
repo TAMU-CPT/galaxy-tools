@@ -13,8 +13,6 @@ REFERENCE   2  (bases 1 to 221828)
   AUTHORS   sd,ssdf.
   TITLE     Direct Submission
   JOURNAL   Submitted (28-APR-2012) df, sdf, sd, sdf, sdf sdf, sdf
-COMMENT     ##Assembly-Data-START## Assembly Method :: dsf v. f Sequencing
-            Technology :: 454 ##Assembly-Data-END##
 FEATURES             Location/Qualifiers
      source          1..221828
                      /mol_type="genomic DNA"
