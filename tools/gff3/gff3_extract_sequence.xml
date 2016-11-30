@@ -35,7 +35,7 @@ $nodesc
 			<param name="gff3_data" value="miro.gff3" />
 
 			<param name="feature_filter" value="CDS" />
-			<output name="output" file="miro.cds.fa" />
+			<output name="output" file="miro.cda.fa" />
 		</test>
 		<test>
 			<param name="reference_genome_source" value="history" />
@@ -44,7 +44,7 @@ $nodesc
 
 			<param name="feature_filter" value="CDS" />
 			<param name="nodesc" value="--nodesc" />
-			<output name="output" file="miro.cds-nodesc.fa" />
+			<output name="output" file="miro.cda-nodesc.fa" />
 		</test>
   </tests>
   <help><![CDATA[
