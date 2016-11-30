@@ -56,6 +56,7 @@ def overlap(table):
         ids.append([x.id for x in group])
     return ids
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Determine overlaps in CSV in colum data')
     parser.add_argument('table', type=file, help='2 column table')

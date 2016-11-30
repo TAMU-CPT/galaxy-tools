@@ -99,6 +99,7 @@ def generate_sequence(user_email):
         description='',
     )
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='verify against expectations')
     parser.add_argument('user_email', help='User email')

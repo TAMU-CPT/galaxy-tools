@@ -129,6 +129,7 @@ def plot_snps(reference, mutated):
 
     print dwg.tostring()
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='simple plot of generated snps against a reference sequence')
     parser.add_argument('reference', type=file, help='Reference sequence (only 1 fasta sequence allowed)')

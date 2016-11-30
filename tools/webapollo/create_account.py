@@ -9,6 +9,7 @@ def pwgen(length):
     chars = list('qwrtpsdfghjklzxcvbnm')
     return ''.join(random.choice(chars) for _ in range(length))
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an account via web services')
     WAAuth(parser)

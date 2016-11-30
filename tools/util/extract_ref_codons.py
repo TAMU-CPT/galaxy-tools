@@ -33,6 +33,7 @@ def extractCodonsFromDb(target, codondb):
     organism_codon_usage = {k: int(v) for (k, v) in zip(spsum, line.strip().split(' '))}
     return organism_codon_usage
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('target', type=str, help='target organism')

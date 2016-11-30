@@ -11,6 +11,7 @@ def reformat(data):
         record.annotations = {}
         GFF.write([record], sys.stdout)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reformat GFF files')
     parser.add_argument('data', type=file, help='Input annotations')

@@ -122,6 +122,7 @@ def main(fasta, func, protein):
             fn(record, seqtype='protein' if protein else 'dna')
         )
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sequence Properties')
 

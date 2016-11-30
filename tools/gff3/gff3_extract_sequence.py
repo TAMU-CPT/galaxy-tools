@@ -70,6 +70,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     )
                 ]
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Export corresponding sequence in genome from GFF3', epilog="")
     parser.add_argument('fasta', type=file, help='Fasta Genome')

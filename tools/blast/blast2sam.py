@@ -199,6 +199,7 @@ def cigar(subject, query, queryStart, queryEnd, querySize):
     # Join segments into a string
     return ''.join(cigar_str)
 
+
 # use itertools.tee() because we need the list twice
 blast_records, blast_records_backup = tee(NCBIXML.parse(open(filein)))
 

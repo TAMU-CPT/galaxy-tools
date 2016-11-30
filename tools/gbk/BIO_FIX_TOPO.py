@@ -67,4 +67,5 @@ def record_end(self, content):
     else:
         self.data.seq = Seq(sequence, seq_alphabet)
 
+
 Bio.GenBank._FeatureConsumer.record_end = record_end

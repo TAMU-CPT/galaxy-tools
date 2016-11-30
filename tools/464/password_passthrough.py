@@ -12,6 +12,7 @@ def check_pw(password, user_email):
         import sys
         sys.exit(1)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='verify against expectations')
     parser.add_argument('user_email', help='User email')

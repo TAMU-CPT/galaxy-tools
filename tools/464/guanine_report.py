@@ -17,6 +17,7 @@ def post_result(student_id, points_earned, points_possible, token):
               'points_earned': points_earned,
               'points_possible': points_possible}
     r = requests.post(url, data=values, headers=headers)
+    return r
 
 
 def student_id(email):
@@ -24,6 +25,7 @@ def student_id(email):
     url = "http://localhost:8000/students/?email=" + email
     r = requests.get(url)
     return r.json()['results'][0]['id']
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='post an assessment result')

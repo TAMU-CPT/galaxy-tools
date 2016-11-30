@@ -63,6 +63,7 @@ def glimmer3_to_gff3(glimmer, genome):
             current_record.features.append(gene)
     yield current_record
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert Glimmer to GFF3')
     parser.add_argument('glimmer', type=file, help='Glimmer3 Output')

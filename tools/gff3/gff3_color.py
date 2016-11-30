@@ -334,6 +334,7 @@ def gff_filter(gff3):
         rec.annotations = {}
         GFF.write([rec], sys.stdout)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='add color qualifiers based on product qualifiers')
     parser.add_argument('gff3', type=file, help='GFF3 annotations')

@@ -61,6 +61,7 @@ def suppress(genome, annotations, suppress=None):
         record.annotations = {}
         GFF.write([record], sys.stdout)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='generates a genome with specified stop codons suppressed')
     parser.add_argument('genome', type=file, help='Genome Sequence')

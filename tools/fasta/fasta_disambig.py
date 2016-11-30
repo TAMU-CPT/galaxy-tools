@@ -53,6 +53,7 @@ def disambiguate(fasta_file, seed=42, tbl_out=None):
 
     print output.getvalue()
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Replace ambiguous bases')
     parser.add_argument('fasta_file', type=file, help='Fasta file')

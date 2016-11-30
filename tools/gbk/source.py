@@ -62,6 +62,7 @@ def phage_source(genbank_files=None, **kwargs):
                     ret = extract_host_info(source_feats[0].qualifiers['host'][0])
                 yield ret
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract lineage information from genbank files')
     parser.add_argument('genbank_files', type=file, nargs='+', help='Genbank file')

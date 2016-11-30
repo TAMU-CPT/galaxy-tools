@@ -191,6 +191,7 @@ def renumber_genes(gbk_files, problematic=None):
 
                 SeqIO.write([record], sys.stdout, 'genbank')
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Renumber genbank files')
     parser.add_argument('gbk_files', type=file, nargs='+', help='Genbank files')

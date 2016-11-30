@@ -146,6 +146,7 @@ def gff3_to_genbank(gff_file, fasta_file):
         record.name = record.name[0:16]
         yield record
 
+
 if __name__ == '__main__':
     # Grab all of the filters from our plugin loader
     parser = argparse.ArgumentParser(description='Convert gff3 to gbk')

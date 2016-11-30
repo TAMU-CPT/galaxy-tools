@@ -5,7 +5,6 @@ import hashlib
 import json
 import sys
 import os
-import json
 import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()

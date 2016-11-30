@@ -81,6 +81,7 @@ def find_tmembrane(records):
         print i[1]
         print '\n'
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='find phage transmembrane domains')
     parser.add_argument('gff3', type=file, help='GFF3 output of TMHMM')

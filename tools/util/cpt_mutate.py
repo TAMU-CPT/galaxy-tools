@@ -66,6 +66,7 @@ def snp(fasta_file, mutation='mutate', translate=False):
                     rec_copy.id += id_add
                     yield [rec_copy]
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate ALL possible SNPs in fasta sequences')
     parser.add_argument('fasta_file', type=argparse.FileType('r'), help='Fasta file')

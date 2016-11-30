@@ -38,6 +38,7 @@ def search(fasta, regex, stats_file=None):
             record.seq = Seq(newseq)
             yield [record]
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Filter sequences based on regular expressions')
     parser.add_argument('fasta', type=file, help='Fasta Sequence')

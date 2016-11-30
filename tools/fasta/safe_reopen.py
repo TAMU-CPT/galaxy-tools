@@ -84,6 +84,7 @@ def safe_reopen(fasta_file=None, gff3_files=None):
         record.seq = seq[after:] + seq[0:after]
         yield record
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
     parser.add_argument('fasta_file', type=file)

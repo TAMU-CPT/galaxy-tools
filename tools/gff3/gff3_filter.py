@@ -24,6 +24,7 @@ def gff_filter(gff3, id_list=None, id='', attribute_field='ID', subfeatures=True
         rec.annotations = {}
         GFF.write([rec], sys.stdout)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='extract features from a GFF3 file based on ID/qualifiers')
     parser.add_argument('gff3', type=file, help='GFF3 annotations')

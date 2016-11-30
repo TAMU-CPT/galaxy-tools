@@ -113,6 +113,7 @@ def create_string(length, data, keys):
     return ",\n".join(data)
     # return join(",\n",map { '  ' x $length . $_ . ' "' . ($hash{$_} ) . '"' } @arr);
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--genbank_submission_title')

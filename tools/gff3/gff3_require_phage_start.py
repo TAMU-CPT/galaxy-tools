@@ -33,6 +33,7 @@ def require_shinefind(gff3, fasta):
         record.annotations = {}
         yield record
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Require specific start codons')
     parser.add_argument('fasta', type=file, help='Fasta Genome')

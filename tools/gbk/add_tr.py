@@ -56,6 +56,7 @@ def add_tr(genbank_file, end=None):
     # Return
     return [record]
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Add Terminal Repeats to a genbank file')
     parser.add_argument('genbank_file', type=file, help='Genbank file')

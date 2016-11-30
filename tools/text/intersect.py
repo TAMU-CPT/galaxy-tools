@@ -8,6 +8,7 @@ log = logging.getLogger()
 def joinStripRow(row):
     return '\t'.join(row).strip()
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('a', type=file)

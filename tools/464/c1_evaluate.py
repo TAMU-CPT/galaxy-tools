@@ -106,6 +106,7 @@ def validate(ogs, user_gff3, user_email, offset=213):
     for x in results:
         print 'Feature {id} ending with stop codon: {stop}; Points: {points}; Message {message}'.format(**x)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='verify against expectations')
     parser.add_argument('ogs', type=file, help='GFF3 annotations')

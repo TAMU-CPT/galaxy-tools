@@ -53,6 +53,7 @@ def export(org_cn, seqs):
 
     return org_data
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
     WAAuth(parser)

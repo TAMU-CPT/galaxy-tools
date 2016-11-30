@@ -22,6 +22,7 @@ def fix_genemarks(gff3):
         rec.features = new_features
         GFF.write([rec], sys.stdout)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='correct their terrible GFF data')
     parser.add_argument('gff3', type=file, help='GFF3 annotations')

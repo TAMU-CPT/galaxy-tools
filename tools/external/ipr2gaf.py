@@ -47,6 +47,7 @@ def ipr2gaf(gff3):
                     ]
                     yield '\t'.join(c)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='IPR2GAF')
     parser.add_argument('gff3', help='GFF3 File')

@@ -45,6 +45,7 @@ def fix_apollo_issues(annotations, user_email):
                                     'non_canonical_three_prime_splice_site')]
         yield rec
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
     parser.add_argument('annotations', type=file, help='Parent GFF3 annotations')

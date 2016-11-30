@@ -70,6 +70,7 @@ def total_similarity(xmfa_file, sequences=None, dice=False):
     for row in table:
         print names[table.index(row)] + '\t' + '\t'.join(map(str, row))
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert XMFA alignments to gff3', prog='xmfa2gff3')
     parser.add_argument('xmfa_file', type=file, help='XMFA File')

@@ -25,6 +25,7 @@ def lineage(genbank_files=None, first=False):
                         yield [id] + ['' if not hasattr(ref, x) else
                                       getattr(ref, x) for x in REF_KEYS]
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract authorship '
                                      'information from genbank file')

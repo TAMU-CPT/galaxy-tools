@@ -29,6 +29,7 @@ def main(fasta, gff3):
     for key in sorted(codon_usage):
         print '\t'.join((names.get(key.upper(), 'None'), key, str(codon_usage[key])))
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Summarise stop codon usage', epilog="")
     parser.add_argument('fasta', type=file, help='Fasta Genome')

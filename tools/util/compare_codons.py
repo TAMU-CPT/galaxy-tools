@@ -82,6 +82,7 @@ def main(reference, comparison, sort_order='default', ref_title=None, cmp_title=
     bar_chart.add(cmp_title, comp_flat)
     print bar_chart.render()
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Plot comparison of codon usage', epilog="")
     parser.add_argument('reference', type=file, help='Reference Data')

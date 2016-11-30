@@ -17,6 +17,7 @@ def rename_fasta_sequences(fasta_file, new_name):
 
         SeqIO.write([record], sys.stdout, "fasta")
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rename fasta sequences')
     parser.add_argument('fasta_file', metavar='N', type=file, nargs='?',

@@ -19,6 +19,7 @@ def gff_reopen(gff3, index=1):
         log.debug(rec.annotations)
         yield rec
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reopen a set of GFF3 annotations')
     parser.add_argument('gff3', type=file, help='GFF3 annotations')

@@ -42,6 +42,7 @@ def require_shinefind(gff3, fasta):
         record.features = good_genes
         yield record
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
     parser.add_argument('fasta', type=file, help='Fasta Genome')

@@ -79,6 +79,7 @@ def writeGff3(data, handle, parentGff3):
 
         GFF.write([record], handle)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
     parser.add_argument('parentGff3', type=file)

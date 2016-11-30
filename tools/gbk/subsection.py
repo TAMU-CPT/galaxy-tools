@@ -62,6 +62,7 @@ def genbank_subsection(genbank_files, table=None, coordinates=None, include_unli
                 record.features = [gen_annotation(record, start - 1, end)] + record.features
                 yield [record[start - 1:end]]
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract subsets of genbank files', epilog='')
     parser.add_argument('genbank_files', nargs='+', type=file, help='Genbank files')

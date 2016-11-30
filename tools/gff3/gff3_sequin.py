@@ -46,6 +46,7 @@ class SequinReportParser(object):
                                 # print m.group('ID')
                                 pass
 
+
 if __name__ == '__main__':
     import sys
     srp = SequinReportParser()
