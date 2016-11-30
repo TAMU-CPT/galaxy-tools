@@ -1,4 +1,4 @@
-LOCUS       CbK                     2000 bp    DNA              UNK 01-JAN-1980
+LOCUS       CbK                     2000 bp    DNA     linear   UNK 09-APR-2012
 DEFINITION  Bacteriophage phiCbK.
 ACCESSION   CbK
 VERSION     CbK
@@ -68,7 +68,7 @@ ORIGIN
      1921 ttagggttaa cgccggccgc cgagccctgg ggcgatttac caccaccgcg ttaacctaac
      1981 gcctgttaac ctatcggttg
 //
-LOCUS       Colossus                2000 bp    DNA              UNK 01-JAN-1980
+LOCUS       Colossus                2000 bp    DNA     linear   UNK 27-APR-2012
 DEFINITION  Phage Colossus.
 ACCESSION   Colossus
 VERSION     Colossus

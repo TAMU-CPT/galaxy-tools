@@ -1,4 +1,4 @@
-LOCUS       CbK                   215710 bp    DNA              UNK 09-APR-2012
+LOCUS       CbK                   215710 bp    DNA     linear   UNK 09-APR-2012
 DEFINITION  Bacteriophage phiCbK.
 ACCESSION   CbK
 VERSION     CbK
@@ -3757,7 +3757,7 @@ ORIGIN
    215641 cacctagtat cttttttgat tcggagggac ccaaaggccc cctacgttaa ccatttttgg
    215701 cggcgccccc
 //
-LOCUS       Colossus              279967 bp    DNA              UNK 27-APR-2012
+LOCUS       Colossus              279967 bp    DNA     linear   UNK 27-APR-2012
 DEFINITION  Phage Colossus.
 ACCESSION   Colossus
 VERSION     Colossus
