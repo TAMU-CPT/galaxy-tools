@@ -31,10 +31,10 @@ $__tool_directory__/fasta_regex_search.py
 	</outputs>
 	<tests>
 		<test>
-			<param name="positional_1" value="random.fa" />
-			<param name="positional_2" value="A{3}" />
+			<param name="sequences" value="random.fa" />
+			<param name="regex" value="A{3}" />
 			<output name="default" file="regex.a3.fa" />
-			<output name="positional_3" file="stats.tsv" />
+			<output name="stats" file="stats.tsv" />
 		</test>
 	</tests>
 	<help><![CDATA[
