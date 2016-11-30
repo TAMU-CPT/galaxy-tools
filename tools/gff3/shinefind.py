@@ -232,8 +232,8 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
-    parser.add_argument('fasta', type=file, help='Fasta Genome')
-    parser.add_argument('gff3', type=file, help='GFF3 annotations')
+    parser.add_argument('fasta', type=argparse.FileType('r'), help='Fasta Genome')
+    parser.add_argument('gff3', type=argparse.FileType('r'), help='GFF3 annotations')
 
     parser.add_argument('--gff3_output', type=argparse.FileType('w'), help='GFF3 Output', default='shinefind.gff3')
     parser.add_argument('--table_output', type=argparse.FileType('w'), help='Tabular Output', default='shinefind.tbl')
