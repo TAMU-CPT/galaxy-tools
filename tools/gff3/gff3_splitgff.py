@@ -13,5 +13,6 @@ if __name__ == '__main__':
 
     for record in GFF.parse(args.data):
         GFF.write([record], args.gff)
+        record.description = ""
         SeqIO.write([record], args.fasta, 'fasta')
         sys.exit()

@@ -21,9 +21,9 @@ $input
   </outputs>
   <tests>
 		<test>
-			<param name="input" value="miro.gff3" />
+			<param name="input" value="to_split.gff3" />
 			<output name="gff" file="miro.gff3" />
-			<output name="fasta" file="miro.fasta" />
+			<output name="fasta" file="miro.fa" />
 		</test>
   </tests>
   <help><![CDATA[
