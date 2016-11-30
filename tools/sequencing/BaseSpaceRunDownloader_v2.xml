@@ -6,7 +6,7 @@ $__tool_directory__/BaseSpaceRunDownloader_v2.py
 "$RunID"
 > $default]]></command>
   <inputs>
-    <input type="text" name="RunID" label="Run ID" />
+    <param type="text" name="RunID" label="Run ID" />
   </inputs>
   <outputs>
     <data format="json" name="default"/>
