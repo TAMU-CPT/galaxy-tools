@@ -4,6 +4,7 @@ from BCBio import GFF
 from Bio import SeqIO
 import itertools
 
+
 def taper_list(gff3, fasta):
     """ deletes records that already have identified transmembrane domains """
 
@@ -12,6 +13,7 @@ def taper_list(gff3, fasta):
         del records[rec.id]
 
     find_tmembrane(records)
+
 
 def hydrophobicity(beg, mid, end):
     """ analyzes hydrophobicity of a sequence """
@@ -23,10 +25,11 @@ def hydrophobicity(beg, mid, end):
         if i not in aas:
             return False
         else:
-            for j in beg+end:
+            for j in beg + end:
                 if j not in aas and j != 'K':
                     return False
     return True
+
 
 def ranges(i):
     """ makes a range out of a list of indices """
@@ -34,6 +37,7 @@ def ranges(i):
     for a, b in itertools.groupby(enumerate(i), lambda (x, y): y - x):
         b = list(b)
         yield b[0][1], b[-1][1]
+
 
 def print_seq(locations, record):
     """ prints output """
@@ -55,6 +59,7 @@ def print_seq(locations, record):
     else:
         return (record.id, record.seq)
 
+
 def find_tmembrane(records):
     """ identify transmembrane domains based on the following rules:
             (1) domain must either have 16 consecutive neutrally-charged residues or
@@ -63,10 +68,10 @@ def find_tmembrane(records):
 
     no_tmembrane_domains = []
     for rec in records:
-        locations = [] # indices of hydrophobic domains
-        for i in range(3, len(records[rec].seq)-12):
-            if hydrophobicity(records[rec].seq[i-3:i], records[rec].seq[i:i+10], records[rec].seq[i+10:i+13]):
-                locations += [loc for loc in range(i-3, i+13) if loc not in locations]
+        locations = []  # indices of hydrophobic domains
+        for i in range(3, len(records[rec].seq) - 12):
+            if hydrophobicity(records[rec].seq[i - 3:i], records[rec].seq[i:i + 10], records[rec].seq[i + 10:i + 13]):
+                locations += [loc for loc in range(i - 3, i + 13) if loc not in locations]
 
         no_tmembrane_domains += [rec_id for rec_id in [print_seq(locations, records[rec])] if rec_id]
 

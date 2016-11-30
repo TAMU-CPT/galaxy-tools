@@ -5,6 +5,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 class Paper(object):
+
     def __init__(self, id, authors):
         self.id = id
         self.authors = self.process(authors)

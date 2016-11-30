@@ -56,8 +56,8 @@ def genbank_subsection(genbank_files, table=None, coordinates=None, include_unli
                         yield [record[start - 1:end]]
                 # if want unlisted, print
                 elif include_unlisted:
-                        record.features = [gen_annotation(record, start - 1, end)] + record.features
-                        yield [record]
+                    record.features = [gen_annotation(record, start - 1, end)] + record.features
+                    yield [record]
             else:
                 record.features = [gen_annotation(record, start - 1, end)] + record.features
                 yield [record[start - 1:end]]

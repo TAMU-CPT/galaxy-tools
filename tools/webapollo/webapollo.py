@@ -95,6 +95,7 @@ class WebApolloInstance(object):
 
 
 class GroupObj(object):
+
     def __init__(self, **kwargs):
         self.name = kwargs['name']
 
@@ -722,6 +723,7 @@ class RemoteRecord(Client):
 
 
 class WebApolloSeqRecord(object):
+
     def __init__(self, sr, wa):
         self._sr = sr
         self._wa = wa
@@ -748,6 +750,7 @@ class WebApolloSeqRecord(object):
 
 
 class WebApolloSeqFeature(object):
+
     def __init__(self, sf, wa):
         self._sf = sf
         self._wa = wa

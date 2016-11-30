@@ -22,6 +22,7 @@ with open('/galaxy/creds.json', 'r') as handle:
 API_BASE = 'https://api.basespace.illumina.com/'
 ACCESS_TOKEN = '?access_token=%s' % AccessToken
 
+
 def restrequest(rawrequest):
     rawrequest = API_BASE + rawrequest + ACCESS_TOKEN
     log.debug('Req: ' + rawrequest.replace(AccessToken, '*' * len(AccessToken)))

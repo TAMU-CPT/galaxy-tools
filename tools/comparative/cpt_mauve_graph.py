@@ -42,12 +42,12 @@ def xmfa_graph(xmfa_backbone):
     nodes.append({'id': 'end', 'text': 'Alignment End'})
 
     for i in range(len(parsed) / 2):
-            edges.append({
-                'from': node_genome_last_seen[i],
-                'to': 'end',
-                'txt': '%s' % i,
-            })
-            node_genome_last_seen[i] = 'end'
+        edges.append({
+            'from': node_genome_last_seen[i],
+            'to': 'end',
+            'txt': '%s' % i,
+        })
+        node_genome_last_seen[i] = 'end'
 
     # Create dot plot
     for node in nodes:

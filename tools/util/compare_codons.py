@@ -69,11 +69,11 @@ def main(reference, comparison, sort_order='default', ref_title=None, cmp_title=
     ref_flat = []
     comp_flat = []
     for (x, y) in custom_sort(table, sort=sort_order):
-            keys.append('%s (%s)' % (x, y))
-            ref_val = table.get(x, {}).get(y, {}).get('ref', None)
-            comp_val = table.get(x, {}).get(y, {}).get('comp', None)
-            ref_flat.append({'value': ref_val, 'label': str(ref_val)})
-            comp_flat.append({'value': comp_val, 'label': str(comp_val)})
+        keys.append('%s (%s)' % (x, y))
+        ref_val = table.get(x, {}).get(y, {}).get('ref', None)
+        comp_val = table.get(x, {}).get(y, {}).get('comp', None)
+        ref_flat.append({'value': ref_val, 'label': str(ref_val)})
+        comp_flat.append({'value': comp_val, 'label': str(comp_val)})
 
     bar_chart = pygal.Bar(width=1500, height=400, x_label_rotation=90, style=LightSolarizedStyle, delete=False)
     bar_chart.title = 'Codon Usage Frequency Comparison'

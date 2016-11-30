@@ -249,6 +249,7 @@ class WeightedPopulation(Sequence):
     """
     http://stackoverflow.com/questions/13047806/weighted-random-sample-in-python
     """
+
     def __init__(self, population_weights):
         self.population = population_weights.keys()
         self.cumweights = []
