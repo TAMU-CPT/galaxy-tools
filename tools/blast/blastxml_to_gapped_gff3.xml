@@ -27,7 +27,7 @@ $trim
   <tests>
       <test>
           <param name="blastxml" value="input.xml"/>
-          <output name="output" file="blast.xml"/>
+          <output name="output" file="blast.gff"/>
       </test>
   </tests>
   <help><![CDATA[
