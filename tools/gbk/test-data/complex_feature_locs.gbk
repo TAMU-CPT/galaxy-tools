@@ -1,0 +1,38 @@
+LOCUS       contig00077            22956 bp    DNA     linear       15-MAR-2010
+DEFINITION  '[length=22956]'   '[numreads=4517 from AU1189;454 Data]'.
+ACCESSION
+VERSION
+KEYWORDS    .
+SOURCE      AU1189
+  ORGANISM  AU1189
+            Unclassified.
+REFERENCE   1  (bases 1 to 22956)
+  AUTHORS   Duarte,I.
+  TITLE     contig77
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 22956)
+  AUTHORS   Duarte,I.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-MAR-2010) PLPM, Texas A&M University, 2132 TAMU,
+            College Station, TX 77840, USA
+FEATURES             Location/Qualifiers
+     source          1..22956
+                     /organism="AU1189"
+                     /mol_type="genomic DNA"
+     CDS             complement(join(11159..11327,11327..11652))
+                     /note="tapemeasure frameshift chaperone"
+                     /product="P2 E' tapemeasure frameshift chaperone"
+                     /translation="MNPIQSDAAAPDLQADAAAIATPAQDDPATHTLDTPLVRGTQTITSITLRKPKSGELRGV
+                     SLSDLVSLDVVALSKVLPRISSPMLTEADVASIDPADLVQLGGIFAGFFDAEGREIPTGL
+                     PDRVEDPMADIATVFGWTPPVMDAFSLAELMDWRERARVRAGAQ"
+                     /gene="gp14"
+     CDS             complement(join(11409..11600,11600..11900))
+     RBS             complement(11905..11910)
+BASE COUNT     3240 a   7606 c   8254 g   3856 t
+ORIGIN
+        1 agccgggcgc gccaagcctg atcaggctct cagcggtttc ctcccatcgt cgtgcagtac
+       61 cgttgcagct aaattgcagc cggaatcggc gcgggctcgg ccgtcagcgg cgcgacccat
+      121 tgcgccagat gcgcggccga cagatgcgcg taccgctgca ccatttccat cgtctcccag
+      181 ccgcccagct ccttcagcac ctgcagcggc gtgccgcgtt ggacgtgcca gctcgcccag
+      241 gtgtggcgca ggtcgtgcca gcggaaatcg tgcaggccgg cgcgccgcag cgccttggcc
+//
