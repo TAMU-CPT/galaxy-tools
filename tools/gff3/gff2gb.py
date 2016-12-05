@@ -91,13 +91,16 @@ def gff3_to_genbank(gff_file, fasta_file):
         # Meat of our modifications
         for flat_feat in feature_lambda(
                 features, test_true, {}, subfeatures=True):
+            # if flat_feat.type == 'CDS':
+                # print(flat_feat.type, flat_feat.location, flat_feat.extract(record).seq.translate(table=11))
+
 
             # We use the full GO term, but it should be less than that.
             if flat_feat.type == 'Shine_Dalgarno_sequence':
                 flat_feat.type = 'RBS'
 
             # Drop mRNAs, apollo crap, useless CDSs
-            if flat_feat.type in ('mRNA', 'non_canonical_three_prime_splice_site', 'non_canonical_five_prime_splice_site', 'CDS'):
+            if flat_feat.type in ('mRNA', 'non_canonical_three_prime_splice_site', 'non_canonical_five_prime_splice_site'):
                 continue
 
             # Try and figure out a name. We gave conflicting instructions, so

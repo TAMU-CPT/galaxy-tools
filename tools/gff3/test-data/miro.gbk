@@ -9,18 +9,34 @@ SOURCE      .
 FEATURES             Location/Qualifiers
      gene            complement(1..910)
                      /locus_tag="gene_001"
+     CDS             complement(1..900)
+                     /Name="Miro_1"
+                     /obsolete_name="Miro_163"
+                     /product="r"
      RBS             complement(908..910)
                      /Alias="Miro_1"
                      /Name="Miro_1"
+     CDS             complement(1..900)
+                     /Name="Miro_1"
+                     /obsolete_name="Miro_163"
+                     /product="r"
      DNA             1..176055
                      /Alias="Miro"
                      /Name="Miro"
                      /date="01-JAN-1980"
      gene            complement(900..3173)
                      /locus_tag="gene_002"
+     CDS             complement(900..3161)
+                     /Name="Miro_2"
+                     /obsolete_name="Miro_162"
+                     /product="r"
      RBS             complement(3171..3173)
                      /Alias="Miro_2"
                      /Name="Miro_2"
+     CDS             complement(900..3161)
+                     /Name="Miro_2"
+                     /obsolete_name="Miro_162"
+                     /product="r"
      RBS             complement(908..910)
                      /Alias="Miro_1"
                      /Name="Miro_1"
@@ -29,14 +45,34 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_2"
      gene            complement(3172..3417)
                      /locus_tag="gene_003"
+     CDS             complement(3172..3408)
+                     /Name="Miro_3"
+                     /obsolete_name="Miro_161"
+                     /product="h"
+                     /tmhelix="1 TMD (12-34) N in, C out"
      RBS             complement(3414..3417)
                      /Alias="Miro_3"
                      /Name="Miro_3"
+     CDS             complement(3172..3408)
+                     /Name="Miro_3"
+                     /obsolete_name="Miro_161"
+                     /product="h"
+                     /tmhelix="1 TMD (12-34) N in, C out"
      gene            complement(3412..3979)
                      /locus_tag="gene_004"
+     CDS             complement(3412..3966)
+                     /Name="Miro_4"
+                     /note="contains SprT domain"
+                     /obsolete_name="Miro_160"
+                     /product="h"
      RBS             complement(3975..3979)
                      /Alias="Miro_4"
                      /Name="Miro_4"
+     CDS             complement(3412..3966)
+                     /Name="Miro_4"
+                     /note="contains SprT domain"
+                     /obsolete_name="Miro_160"
+                     /product="h"
      RBS             complement(3414..3417)
                      /Alias="Miro_3"
                      /Name="Miro_3"
@@ -45,14 +81,34 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_4"
      gene            complement(4038..5334)
                      /locus_tag="gene_005"
+     CDS             complement(4038..5324)
+                     /Name="Miro_5"
+                     /note="T4 gp52-like"
+                     /obsolete_name="Miro_159"
+                     /product="D"
      RBS             complement(5331..5334)
                      /Alias="Miro_5"
                      /Name="Miro_5"
+     CDS             complement(4038..5324)
+                     /Name="Miro_5"
+                     /note="T4 gp52-like"
+                     /obsolete_name="Miro_159"
+                     /product="D"
      gene            complement(5324..7231)
                      /locus_tag="gene_006"
+     CDS             complement(5324..7222)
+                     /Name="Miro_6"
+                     /note="T4 gp39-like"
+                     /obsolete_name="Miro_158"
+                     /product="D"
      RBS             complement(7228..7231)
                      /Alias="Miro_6"
                      /Name="Miro_6"
+     CDS             complement(5324..7222)
+                     /Name="Miro_6"
+                     /note="T4 gp39-like"
+                     /obsolete_name="Miro_158"
+                     /product="D"
      RBS             complement(5331..5334)
                      /Alias="Miro_5"
                      /Name="Miro_5"
@@ -61,14 +117,32 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_6"
      gene            complement(7290..7465)
                      /locus_tag="gene_007"
+     CDS             complement(7290..7454)
+                     /Name="Miro_7"
+                     /note="contains zinc ribbon domain"
+                     /obsolete_name="Miro_157"
+                     /product="h"
      RBS             complement(7463..7465)
                      /Alias="Miro_7"
                      /Name="Miro_7"
+     CDS             complement(7290..7454)
+                     /Name="Miro_7"
+                     /note="contains zinc ribbon domain"
+                     /obsolete_name="Miro_157"
+                     /product="h"
      gene            complement(7454..7906)
                      /locus_tag="gene_008"
+     CDS             complement(7454..7894)
+                     /Name="Miro_8"
+                     /obsolete_name="Miro_156"
+                     /product="h"
      RBS             complement(7903..7906)
                      /Alias="Miro_8"
                      /Name="Miro_8"
+     CDS             complement(7454..7894)
+                     /Name="Miro_8"
+                     /obsolete_name="Miro_156"
+                     /product="h"
      RBS             complement(7463..7465)
                      /Alias="Miro_7"
                      /Name="Miro_7"
@@ -77,22 +151,48 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_8"
      gene            complement(7917..8512)
                      /locus_tag="gene_009"
+     CDS             complement(7917..8501)
+                     /Name="Miro_9"
+                     /obsolete_name="Miro_155"
+                     /product="h"
      RBS             complement(8509..8512)
                      /Alias="Miro_9"
                      /Name="Miro_9"
+     CDS             complement(7917..8501)
+                     /Name="Miro_9"
+                     /obsolete_name="Miro_155"
+                     /product="h"
      gene            complement(8488..8779)
                      /locus_tag="gene_010"
+     CDS             complement(8488..8766)
+                     /Name="Miro_10"
+                     /obsolete_name="Miro_154"
+                     /product="h"
      RBS             complement(8776..8779)
                      /Alias="Miro_10"
                      /Name="Miro_10"
+     CDS             complement(8488..8766)
+                     /Name="Miro_10"
+                     /obsolete_name="Miro_154"
+                     /product="h"
      RBS             complement(8509..8512)
                      /Alias="Miro_9"
                      /Name="Miro_9"
      gene            complement(8763..9370)
                      /locus_tag="gene_011"
+     CDS             complement(8763..9359)
+                     /Name="Miro_11"
+                     /obsolete_name="Miro_153"
+                     /product="h"
+                     /tmhelix="1 TMD (10-29) N out, C in"
      RBS             complement(9367..9370)
                      /Alias="Miro_11"
                      /Name="Miro_11"
+     CDS             complement(8763..9359)
+                     /Name="Miro_11"
+                     /obsolete_name="Miro_153"
+                     /product="h"
+                     /tmhelix="1 TMD (10-29) N out, C in"
      RBS             complement(8776..8779)
                      /Alias="Miro_10"
                      /Name="Miro_10"
@@ -101,46 +201,98 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_11"
      gene            complement(9399..9740)
                      /locus_tag="gene_012"
+     CDS             complement(9399..9728)
+                     /Name="Miro_12"
+                     /obsolete_name="Miro_152"
+                     /product="h"
      RBS             complement(9736..9740)
                      /Alias="Miro_12"
                      /Name="Miro_12"
+     CDS             complement(9399..9728)
+                     /Name="Miro_12"
+                     /obsolete_name="Miro_152"
+                     /product="h"
      RBS             complement(9736..9740)
                      /Alias="Miro_12"
                      /Name="Miro_12"
      gene            complement(9788..10025)
                      /locus_tag="gene_013"
+     CDS             complement(9788..10012)
+                     /Name="Miro_13"
+                     /obsolete_name="Miro_151"
+                     /product="h"
      RBS             complement(10021..10025)
                      /Alias="Miro_13"
                      /Name="Miro_13"
+     CDS             complement(9788..10012)
+                     /Name="Miro_13"
+                     /obsolete_name="Miro_151"
+                     /product="h"
      RBS             complement(10021..10025)
                      /Alias="Miro_13"
                      /Name="Miro_13"
      gene            complement(10086..10361)
                      /locus_tag="gene_014"
+     CDS             complement(10086..10349)
+                     /Name="Miro_14"
+                     /obsolete_name="Miro_150"
+                     /product="h"
      RBS             complement(10358..10361)
                      /Alias="Miro_14"
                      /Name="Miro_14"
+     CDS             complement(10086..10349)
+                     /Name="Miro_14"
+                     /obsolete_name="Miro_150"
+                     /product="h"
      RBS             complement(10358..10361)
                      /Alias="Miro_14"
                      /Name="Miro_14"
      gene            complement(10438..10746)
                      /locus_tag="gene_015"
+     CDS             complement(10438..10737)
+                     /Name="Miro_15"
+                     /obsolete_name="Miro_149"
+                     /product="h"
+                     /tmhelix="1 TMD (4-21) N out, C in"
      RBS             complement(10743..10746)
                      /Alias="Miro_15"
                      /Name="Miro_15"
+     CDS             complement(10438..10737)
+                     /Name="Miro_15"
+                     /obsolete_name="Miro_149"
+                     /product="h"
+                     /tmhelix="1 TMD (4-21) N out, C in"
      gene            complement(10737..10970)
                      /locus_tag="gene_016"
+     CDS             complement(10737..10961)
+                     /Name="Miro_16"
+                     /obsolete_name="Miro_148"
+                     /product="h"
      RBS             complement(10967..10970)
                      /Alias="Miro_16"
                      /Name="Miro_16"
+     CDS             complement(10737..10961)
+                     /Name="Miro_16"
+                     /obsolete_name="Miro_148"
+                     /product="h"
      RBS             complement(10743..10746)
                      /Alias="Miro_15"
                      /Name="Miro_15"
      gene            complement(10965..11125)
                      /locus_tag="gene_017"
+     CDS             complement(10965..11114)
+                     /Name="Miro_17"
+                     /obsolete_name="Miro_147"
+                     /product="h"
+                     /tmhelix="1 TMD (10-32) N out, C in"
      RBS             complement(11121..11125)
                      /Alias="Miro_17"
                      /Name="Miro_17"
+     CDS             complement(10965..11114)
+                     /Name="Miro_17"
+                     /obsolete_name="Miro_147"
+                     /product="h"
+                     /tmhelix="1 TMD (10-32) N out, C in"
      RBS             complement(10967..10970)
                      /Alias="Miro_16"
                      /Name="Miro_16"
@@ -149,30 +301,68 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_17"
      gene            complement(11178..11471)
                      /locus_tag="gene_018"
+     CDS             complement(11178..11459)
+                     /Name="Miro_18"
+                     /note="contains LysM domain"
+                     /obsolete_name="Miro_146"
+                     /product="p"
      RBS             complement(11468..11471)
                      /Alias="Miro_18"
                      /Name="Miro_18"
+     CDS             complement(11178..11459)
+                     /Name="Miro_18"
+                     /note="contains LysM domain"
+                     /obsolete_name="Miro_146"
+                     /product="p"
+     CDS             complement(11456..11731)
+                     /Name="Miro_19"
+                     /obsolete_name="Miro_145"
+                     /product="hypothetical conserved"
      RBS             complement(11468..11471)
                      /Alias="Miro_18"
                      /Name="Miro_18"
      gene            complement(11728..12126)
                      /locus_tag="gene_019"
+     CDS             complement(11728..12117)
+                     /Name="Miro_20"
+                     /obsolete_name="Miro_144"
+                     /product="h"
      RBS             complement(12123..12126)
                      /Alias="Miro_20"
                      /Name="Miro_20"
+     CDS             complement(11728..12117)
+                     /Name="Miro_20"
+                     /obsolete_name="Miro_144"
+                     /product="h"
      gene            complement(12114..12410)
                      /locus_tag="gene_020"
+     CDS             complement(12114..12398)
+                     /Name="Miro_21"
+                     /obsolete_name="Miro_143"
+                     /product="h"
      RBS             complement(12407..12410)
                      /Alias="Miro_21"
                      /Name="Miro_21"
+     CDS             complement(12114..12398)
+                     /Name="Miro_21"
+                     /obsolete_name="Miro_143"
+                     /product="h"
      RBS             complement(12123..12126)
                      /Alias="Miro_20"
                      /Name="Miro_20"
      gene            complement(12399..12716)
                      /locus_tag="gene_021"
+     CDS             complement(12399..12707)
+                     /Name="Miro_22"
+                     /obsolete_name="Miro_142"
+                     /product="h"
      RBS             complement(12713..12716)
                      /Alias="Miro_22"
                      /Name="Miro_22"
+     CDS             complement(12399..12707)
+                     /Name="Miro_22"
+                     /obsolete_name="Miro_142"
+                     /product="h"
      RBS             complement(12407..12410)
                      /Alias="Miro_21"
                      /Name="Miro_21"
@@ -181,30 +371,68 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_22"
      gene            complement(12732..14075)
                      /locus_tag="gene_022"
+     CDS             complement(12732..14060)
+                     /Name="Miro_23"
+                     /note="contains P-loop containing nucleoside triphosphate
+                     hydrolase domain"
+                     /obsolete_name="Miro_141"
+                     /product="D"
      RBS             complement(14073..14075)
                      /Alias="Miro_23"
                      /Name="Miro_23"
+     CDS             complement(12732..14060)
+                     /Name="Miro_23"
+                     /note="contains P-loop containing nucleoside triphosphate
+                     hydrolase domain"
+                     /obsolete_name="Miro_141"
+                     /product="D"
      gene            complement(14057..14358)
                      /locus_tag="gene_023"
+     CDS             complement(14057..14347)
+                     /Name="Miro_24"
+                     /obsolete_name="Miro_140"
+                     /product="h"
      RBS             complement(14355..14358)
                      /Alias="Miro_24"
                      /Name="Miro_24"
+     CDS             complement(14057..14347)
+                     /Name="Miro_24"
+                     /obsolete_name="Miro_140"
+                     /product="h"
      RBS             complement(14073..14075)
                      /Alias="Miro_23"
                      /Name="Miro_23"
      gene            complement(14344..14545)
                      /locus_tag="gene_024"
+     CDS             complement(14344..14529)
+                     /Name="Miro_25"
+                     /obsolete_name="Miro_139"
+                     /product="h"
+                     /tmhelix="2TMDs (7-29, 39-57) N in, C in"
      RBS             complement(14543..14545)
                      /Alias="Miro_25"
                      /Name="Miro_25"
+     CDS             complement(14344..14529)
+                     /Name="Miro_25"
+                     /obsolete_name="Miro_139"
+                     /product="h"
+                     /tmhelix="2TMDs (7-29, 39-57) N in, C in"
      RBS             complement(14355..14358)
                      /Alias="Miro_24"
                      /Name="Miro_24"
      gene            complement(14529..15074)
                      /locus_tag="gene_025"
+     CDS             complement(14529..15065)
+                     /Name="Miro_26"
+                     /obsolete_name="Miro_138"
+                     /product="d"
      RBS             complement(15072..15074)
                      /Alias="Miro_26"
                      /Name="Miro_26"
+     CDS             complement(14529..15065)
+                     /Name="Miro_26"
+                     /obsolete_name="Miro_138"
+                     /product="d"
      RBS             complement(14543..14545)
                      /Alias="Miro_25"
                      /Name="Miro_25"
@@ -213,14 +441,34 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_26"
      gene            complement(15073..16108)
                      /locus_tag="gene_026"
+     CDS             complement(15073..16098)
+                     /Name="Miro_27"
+                     /note="T4-like"
+                     /obsolete_name="Miro_137"
+                     /product="D"
      RBS             complement(16104..16108)
                      /Alias="Miro_27"
                      /Name="Miro_27"
+     CDS             complement(15073..16098)
+                     /Name="Miro_27"
+                     /note="T4-like"
+                     /obsolete_name="Miro_137"
+                     /product="D"
      gene            complement(16102..16375)
                      /locus_tag="gene_027"
+     CDS             complement(16102..16362)
+                     /Name="Miro_28"
+                     /note="contains zinc finger domain"
+                     /obsolete_name="Miro_136"
+                     /product="h"
      RBS             complement(16370..16375)
                      /Alias="Miro_28"
                      /Name="Miro_28"
+     CDS             complement(16102..16362)
+                     /Name="Miro_28"
+                     /note="contains zinc finger domain"
+                     /obsolete_name="Miro_136"
+                     /product="h"
      RBS             complement(16104..16108)
                      /Alias="Miro_27"
                      /Name="Miro_27"
@@ -229,22 +477,52 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_28"
      gene            complement(16418..16647)
                      /locus_tag="gene_028"
+     CDS             complement(16418..16636)
+                     /Name="Miro_29"
+                     /obsolete_name="Miro_135"
+                     /product="h"
      RBS             complement(16644..16647)
                      /Alias="Miro_29"
                      /Name="Miro_29"
+     CDS             complement(16418..16636)
+                     /Name="Miro_29"
+                     /obsolete_name="Miro_135"
+                     /product="h"
      gene            complement(16633..17132)
                      /locus_tag="gene_029"
+     CDS             complement(16633..17121)
+                     /Name="Miro_30"
+                     /note="T4 gp23/gp24-like"
+                     /obsolete_name="Miro_134"
+                     /product="m"
      RBS             complement(17130..17132)
                      /Alias="Miro_30"
                      /Name="Miro_30"
+     CDS             complement(16633..17121)
+                     /Name="Miro_30"
+                     /note="T4 gp23/gp24-like"
+                     /obsolete_name="Miro_134"
+                     /product="m"
      RBS             complement(16644..16647)
                      /Alias="Miro_29"
                      /Name="Miro_29"
      gene            complement(17127..17819)
                      /locus_tag="gene_030"
+     CDS             complement(17127..17813)
+                     /Name="Miro_31"
+                     /note="contains N-6 adenine-specific DNA methylase
+                     conserved site"
+                     /obsolete_name="Miro_133"
+                     /product="r"
      RBS             complement(17817..17819)
                      /Alias="Miro_31"
                      /Name="Miro_31"
+     CDS             complement(17127..17813)
+                     /Name="Miro_31"
+                     /note="contains N-6 adenine-specific DNA methylase
+                     conserved site"
+                     /obsolete_name="Miro_133"
+                     /product="r"
      RBS             complement(17130..17132)
                      /Alias="Miro_30"
                      /Name="Miro_30"
@@ -253,14 +531,32 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_31"
      gene            complement(17839..18240)
                      /locus_tag="gene_031"
+     CDS             complement(17839..18231)
+                     /Name="Miro_32"
+                     /obsolete_name="Miro_132"
+                     /product="h"
      RBS             complement(18237..18240)
                      /Alias="Miro_32"
                      /Name="Miro_32"
+     CDS             complement(17839..18231)
+                     /Name="Miro_32"
+                     /obsolete_name="Miro_132"
+                     /product="h"
      gene            complement(18228..18475)
                      /locus_tag="gene_032"
+     CDS             complement(18228..18464)
+                     /Name="Miro_33"
+                     /obsolete_name="Miro_131"
+                     /product="h"
+                     /tmhelix="2TMDs (5-27, 38-60) N in, C in"
      RBS             complement(18470..18475)
                      /Alias="Miro_33"
                      /Name="Miro_33"
+     CDS             complement(18228..18464)
+                     /Name="Miro_33"
+                     /obsolete_name="Miro_131"
+                     /product="h"
+                     /tmhelix="2TMDs (5-27, 38-60) N in, C in"
      RBS             complement(18237..18240)
                      /Alias="Miro_32"
                      /Name="Miro_32"
@@ -269,62 +565,138 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_33"
      gene            complement(18556..18822)
                      /locus_tag="gene_033"
+     CDS             complement(18556..18810)
+                     /Name="Miro_34"
+                     /obsolete_name="Miro_130"
+                     /product="h"
      RBS             complement(18818..18822)
                      /Alias="Miro_34"
                      /Name="Miro_34"
+     CDS             complement(18556..18810)
+                     /Name="Miro_34"
+                     /obsolete_name="Miro_130"
+                     /product="h"
      RBS             complement(18818..18822)
                      /Alias="Miro_34"
                      /Name="Miro_34"
      gene            complement(18889..19168)
                      /locus_tag="gene_034"
+     CDS             complement(18889..19158)
+                     /Name="Miro_35"
+                     /obsolete_name="Miro_129"
+                     /product="h"
+                     /tmhelix="2TMDs (7-29, 44-66) N in, C in"
      RBS             complement(19165..19168)
                      /Alias="Miro_35"
                      /Name="Miro_35"
+     CDS             complement(18889..19158)
+                     /Name="Miro_35"
+                     /obsolete_name="Miro_129"
+                     /product="h"
+                     /tmhelix="2TMDs (7-29, 44-66) N in, C in"
      RBS             complement(19165..19168)
                      /Alias="Miro_35"
                      /Name="Miro_35"
      gene            complement(19202..20648)
                      /locus_tag="gene_035"
+     CDS             complement(19202..20638)
+                     /Name="Miro_36"
+                     /note="T4 gp41-like"
+                     /obsolete_name="Miro_128"
+                     /product="D"
      RBS             complement(20646..20648)
                      /Alias="Miro_36"
                      /Name="Miro_36"
+     CDS             complement(19202..20638)
+                     /Name="Miro_36"
+                     /note="T4 gp41-like"
+                     /obsolete_name="Miro_128"
+                     /product="D"
      RBS             complement(20646..20648)
                      /Alias="Miro_36"
                      /Name="Miro_36"
      gene            complement(20648..20978)
                      /locus_tag="gene_036"
+     CDS             complement(20648..20968)
+                     /Name="Miro_37"
+                     /note="T4 gp40-like"
+                     /obsolete_name="Miro_127"
+                     /product="h"
      RBS             complement(20975..20978)
                      /Alias="Miro_37"
                      /Name="Miro_37"
+     CDS             complement(20648..20968)
+                     /Name="Miro_37"
+                     /note="T4 gp40-like"
+                     /obsolete_name="Miro_127"
+                     /product="h"
      RBS             complement(20975..20978)
                      /Alias="Miro_37"
                      /Name="Miro_37"
      gene            complement(21006..22174)
                      /locus_tag="gene_037"
+     CDS             complement(21006..22163)
+                     /Name="Miro_38"
+                     /note="T4 RecA-like"
+                     /obsolete_name="Miro_126"
+                     /product="D"
+                     /tmhelix="1 TMD (40-62) N in, C out"
      RBS             complement(22172..22174)
                      /Alias="Miro_38"
                      /Name="Miro_38"
+     CDS             complement(21006..22163)
+                     /Name="Miro_38"
+                     /note="T4 RecA-like"
+                     /obsolete_name="Miro_126"
+                     /product="D"
+                     /tmhelix="1 TMD (40-62) N in, C out"
      RBS             complement(22172..22174)
                      /Alias="Miro_38"
                      /Name="Miro_38"
      gene            complement(22238..24954)
                      /locus_tag="gene_038"
+     CDS             complement(22238..24937)
+                     /Name="Miro_39"
+                     /note="T4 gp43-like"
+                     /obsolete_name="Miro_125"
+                     /product="D"
      RBS             complement(24951..24954)
                      /Alias="Miro_39"
                      /Name="Miro_39"
+     CDS             complement(22238..24937)
+                     /Name="Miro_39"
+                     /note="T4 gp43-like"
+                     /obsolete_name="Miro_125"
+                     /product="D"
      RBS             complement(24951..24954)
                      /Alias="Miro_39"
                      /Name="Miro_39"
      gene            complement(24984..25325)
                      /locus_tag="gene_039"
+     CDS             complement(24984..25313)
+                     /Name="Miro_40"
+                     /obsolete_name="Miro_124"
+                     /product="h"
      RBS             complement(25321..25325)
                      /Alias="Miro_40"
                      /Name="Miro_40"
+     CDS             complement(24984..25313)
+                     /Name="Miro_40"
+                     /obsolete_name="Miro_124"
+                     /product="h"
      gene            complement(25310..25609)
                      /locus_tag="gene_040"
+     CDS             complement(25310..25597)
+                     /Name="Miro_41"
+                     /obsolete_name="Miro_123"
+                     /product="h"
      RBS             complement(25606..25609)
                      /Alias="Miro_41"
                      /Name="Miro_41"
+     CDS             complement(25310..25597)
+                     /Name="Miro_41"
+                     /obsolete_name="Miro_123"
+                     /product="h"
      RBS             complement(25321..25325)
                      /Alias="Miro_40"
                      /Name="Miro_40"
@@ -333,22 +705,50 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_41"
      gene            complement(25666..26036)
                      /locus_tag="gene_041"
+     CDS             complement(25666..26028)
+                     /Name="Miro_42"
+                     /note="T4 RegA-like"
+                     /obsolete_name="Miro_122"
+                     /product="t"
      RBS             complement(26034..26036)
                      /Alias="Miro_42"
                      /Name="Miro_42"
+     CDS             complement(25666..26028)
+                     /Name="Miro_42"
+                     /note="T4 RegA-like"
+                     /obsolete_name="Miro_122"
+                     /product="t"
      gene            complement(26032..26607)
                      /locus_tag="gene_042"
+     CDS             complement(26032..26595)
+                     /Name="Miro_43"
+                     /obsolete_name="Miro_121"
+                     /product="h"
      RBS             complement(26603..26607)
                      /Alias="Miro_43"
                      /Name="Miro_43"
+     CDS             complement(26032..26595)
+                     /Name="Miro_43"
+                     /obsolete_name="Miro_121"
+                     /product="h"
      RBS             complement(26034..26036)
                      /Alias="Miro_42"
                      /Name="Miro_42"
      gene            complement(26598..27605)
                      /locus_tag="gene_043"
+     CDS             complement(26598..27596)
+                     /Name="Miro_44"
+                     /note="T4 gp44-like"
+                     /obsolete_name="Miro_120"
+                     /product="s"
      RBS             complement(27602..27605)
                      /Alias="Miro_44"
                      /Name="Miro_44"
+     CDS             complement(26598..27596)
+                     /Name="Miro_44"
+                     /note="T4 gp44-like"
+                     /obsolete_name="Miro_120"
+                     /product="s"
      RBS             complement(26603..26607)
                      /Alias="Miro_43"
                      /Name="Miro_43"
@@ -357,46 +757,104 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_44"
      gene            complement(27655..28329)
                      /locus_tag="gene_044"
+     CDS             complement(27655..28320)
+                     /Name="Miro_45"
+                     /note="T4-like"
+                     /obsolete_name="Miro_119"
+                     /product="D"
      RBS             complement(28327..28329)
                      /Alias="Miro_45"
                      /Name="Miro_45"
+     CDS             complement(27655..28320)
+                     /Name="Miro_45"
+                     /note="T4-like"
+                     /obsolete_name="Miro_119"
+                     /product="D"
      RBS             complement(28327..28329)
                      /Alias="Miro_45"
                      /Name="Miro_45"
      gene            complement(28347..28628)
                      /locus_tag="gene_045"
+     CDS             complement(28347..28616)
+                     /Name="Miro_46"
+                     /note="T4-like"
+                     /obsolete_name="Miro_118"
+                     /product="R"
      RBS             complement(28626..28628)
                      /Alias="Miro_46"
                      /Name="Miro_46"
+     CDS             complement(28347..28616)
+                     /Name="Miro_46"
+                     /note="T4-like"
+                     /obsolete_name="Miro_118"
+                     /product="R"
      RBS             complement(28626..28628)
                      /Alias="Miro_46"
                      /Name="Miro_46"
      gene            complement(28672..29656)
                      /locus_tag="gene_046"
+     CDS             complement(28672..29643)
+                     /Name="Miro_47"
+                     /note="T4 gp32-like"
+                     /obsolete_name="Miro_117"
+                     /product="s"
      RBS             complement(29654..29656)
                      /Alias="Miro_47"
                      /Name="Miro_47"
+     CDS             complement(28672..29643)
+                     /Name="Miro_47"
+                     /note="T4 gp32-like"
+                     /obsolete_name="Miro_117"
+                     /product="s"
      RBS             complement(29654..29656)
                      /Alias="Miro_47"
                      /Name="Miro_47"
      gene            complement(29659..30330)
                      /locus_tag="gene_047"
+     CDS             complement(29659..30318)
+                     /Name="Miro_48"
+                     /note="T4 gp59-like"
+                     /obsolete_name="Miro_116"
+                     /product="h"
      RBS             complement(30328..30330)
                      /Alias="Miro_48"
                      /Name="Miro_48"
+     CDS             complement(29659..30318)
+                     /Name="Miro_48"
+                     /note="T4 gp59-like"
+                     /obsolete_name="Miro_116"
+                     /product="h"
      gene            complement(30315..30571)
                      /locus_tag="gene_048"
+     CDS             complement(30315..30560)
+                     /Name="Miro_49"
+                     /obsolete_name="Miro_115"
+                     /product="h"
      RBS             complement(30569..30571)
                      /Alias="Miro_49"
                      /Name="Miro_49"
+     CDS             complement(30315..30560)
+                     /Name="Miro_49"
+                     /obsolete_name="Miro_115"
+                     /product="h"
      RBS             complement(30328..30330)
                      /Alias="Miro_48"
                      /Name="Miro_48"
      gene            complement(30564..30838)
                      /locus_tag="gene_049"
+     CDS             complement(30564..30827)
+                     /Name="Miro_50"
+                     /note="T4-like"
+                     /obsolete_name="Miro_114"
+                     /product="d"
      RBS             complement(30834..30838)
                      /Alias="Miro_50"
                      /Name="Miro_50"
+     CDS             complement(30564..30827)
+                     /Name="Miro_50"
+                     /note="T4-like"
+                     /obsolete_name="Miro_114"
+                     /product="d"
      RBS             complement(30569..30571)
                      /Alias="Miro_49"
                      /Name="Miro_49"
@@ -405,374 +863,1040 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_50"
      gene            complement(30837..31781)
                      /locus_tag="gene_050"
+     CDS             complement(30837..31772)
+                     /Name="Miro_51"
+                     /note="T4 RNase H-like"
+                     /obsolete_name="Miro_113"
+                     /product="5"
      RBS             complement(31778..31781)
                      /Alias="Miro_51"
                      /Name="Miro_51"
+     CDS             complement(30837..31772)
+                     /Name="Miro_51"
+                     /note="T4 RNase H-like"
+                     /obsolete_name="Miro_113"
+                     /product="5"
      RBS             complement(31778..31781)
                      /Alias="Miro_51"
                      /Name="Miro_51"
      gene            32068..32603
                      /locus_tag="gene_051"
+     CDS             32076..32603
+                     /Alias="Miro_52"
+                     /Name="Miro_52"
+                     /obsolete_name="Miro_112"
+                     /product="h"
      RBS             32068..32070
                      /Name="Miro_52"
      RBS             32068..32070
                      /Name="Miro_52"
+     CDS             32076..32603
+                     /Alias="Miro_52"
+                     /Name="Miro_52"
+                     /obsolete_name="Miro_112"
+                     /product="h"
      gene            32588..32815
                      /locus_tag="gene_052"
+     CDS             32600..32815
+                     /Alias="Miro_53"
+                     /Name="Miro_53"
+                     /obsolete_name="Miro_111"
+                     /product="h"
      RBS             32588..32590
                      /Name="Miro_53"
      RBS             32588..32590
                      /Name="Miro_53"
+     CDS             32600..32815
+                     /Alias="Miro_53"
+                     /Name="Miro_53"
+                     /obsolete_name="Miro_111"
+                     /product="h"
      gene            32797..33134
                      /locus_tag="gene_053"
+     CDS             32808..33134
+                     /Alias="Miro_54"
+                     /Name="Miro_54"
+                     /obsolete_name="Miro_110"
+                     /product="h"
      RBS             32797..32800
                      /Name="Miro_54"
      RBS             32797..32800
                      /Name="Miro_54"
+     CDS             32808..33134
+                     /Alias="Miro_54"
+                     /Name="Miro_54"
+                     /obsolete_name="Miro_110"
+                     /product="h"
      gene            33173..34217
                      /locus_tag="gene_054"
+     CDS             33186..34217
+                     /Alias="Miro_55"
+                     /Name="Miro_55"
+                     /note="T4 exonuclease subunit 1-like"
+                     /obsolete_name="Miro_109"
+                     /product="e"
      RBS             33173..33175
                      /Name="Miro_55"
      RBS             33173..33175
                      /Name="Miro_55"
+     CDS             33186..34217
+                     /Alias="Miro_55"
+                     /Name="Miro_55"
+                     /note="T4 exonuclease subunit 1-like"
+                     /obsolete_name="Miro_109"
+                     /product="e"
      gene            34191..34491
                      /locus_tag="gene_055"
+     CDS             34204..34491
+                     /Alias="Miro_56"
+                     /Name="Miro_56"
+                     /obsolete_name="Miro_108"
+                     /product="h"
      RBS             34191..34195
                      /Name="Miro_56"
      RBS             34191..34195
                      /Name="Miro_56"
+     CDS             34204..34491
+                     /Alias="Miro_56"
+                     /Name="Miro_56"
+                     /obsolete_name="Miro_108"
+                     /product="h"
      gene            34465..36172
                      /locus_tag="gene_056"
+     CDS             34475..36172
+                     /Alias="Miro_57"
+                     /Name="Miro_57"
+                     /obsolete_name="Miro_107"
+                     /product="m"
      RBS             34465..34468
                      /Name="Miro_57"
      RBS             34465..34468
                      /Name="Miro_57"
+     CDS             34475..36172
+                     /Alias="Miro_57"
+                     /Name="Miro_57"
+                     /obsolete_name="Miro_107"
+                     /product="m"
      gene            36162..36363
                      /locus_tag="gene_057"
+     CDS             36172..36363
+                     /Alias="Miro_58"
+                     /Name="Miro_58"
+                     /obsolete_name="Miro_106"
+                     /product="h"
      RBS             36162..36166
                      /Name="Miro_58"
      RBS             36162..36166
                      /Name="Miro_58"
+     CDS             36172..36363
+                     /Alias="Miro_58"
+                     /Name="Miro_58"
+                     /obsolete_name="Miro_106"
+                     /product="h"
      gene            36425..38146
                      /locus_tag="gene_058"
+     CDS             36437..38146
+                     /Alias="Miro_59"
+                     /Name="Miro_59"
+                     /note="contains DNAJ domain"
+                     /obsolete_name="Miro_105"
+                     /product="h"
      RBS             36425..36428
                      /Name="Miro_59"
      RBS             36425..36428
                      /Name="Miro_59"
+     CDS             36437..38146
+                     /Alias="Miro_59"
+                     /Name="Miro_59"
+                     /note="contains DNAJ domain"
+                     /obsolete_name="Miro_105"
+                     /product="h"
      gene            38194..38496
                      /locus_tag="gene_059"
+     CDS             38206..38496
+                     /Alias="Miro_60"
+                     /Name="Miro_60"
+                     /obsolete_name="Miro_104"
+                     /product="h"
      RBS             38194..38197
                      /Name="Miro_60"
      RBS             38194..38197
                      /Name="Miro_60"
+     CDS             38206..38496
+                     /Alias="Miro_60"
+                     /Name="Miro_60"
+                     /obsolete_name="Miro_104"
+                     /product="h"
      gene            38483..38723
                      /locus_tag="gene_060"
+     CDS             38493..38723
+                     /Alias="Miro_61"
+                     /Name="Miro_61"
+                     /obsolete_name="Miro_103"
+                     /product="h"
      RBS             38483..38486
                      /Name="Miro_61"
      RBS             38483..38486
                      /Name="Miro_61"
+     CDS             38493..38723
+                     /Alias="Miro_61"
+                     /Name="Miro_61"
+                     /obsolete_name="Miro_103"
+                     /product="h"
      gene            38710..38977
                      /locus_tag="gene_061"
+     CDS             38720..38977
+                     /Alias="Miro_62"
+                     /Name="Miro_62"
+                     /obsolete_name="Miro_102"
+                     /product="h"
      RBS             38710..38713
                      /Name="Miro_62"
      RBS             38710..38713
                      /Name="Miro_62"
+     CDS             38720..38977
+                     /Alias="Miro_62"
+                     /Name="Miro_62"
+                     /obsolete_name="Miro_102"
+                     /product="h"
      gene            38964..39552
                      /locus_tag="gene_062"
+     CDS             38974..39552
+                     /Alias="Miro_63"
+                     /Name="Miro_63"
+                     /note="T4-like"
+                     /obsolete_name="Miro_101"
+                     /product="d"
      RBS             38964..38966
                      /Name="Miro_63"
      RBS             38964..38966
                      /Name="Miro_63"
+     CDS             38974..39552
+                     /Alias="Miro_63"
+                     /Name="Miro_63"
+                     /note="T4-like"
+                     /obsolete_name="Miro_101"
+                     /product="d"
      gene            39545..40429
                      /locus_tag="gene_063"
+     CDS             39554..40429
+                     /Alias="Miro_64"
+                     /Name="Miro_64"
+                     /note="T4-like"
+                     /obsolete_name="Miro_100"
+                     /product="t"
      RBS             39545..39548
                      /Name="Miro_64"
      RBS             39545..39548
                      /Name="Miro_64"
+     CDS             39554..40429
+                     /Alias="Miro_64"
+                     /Name="Miro_64"
+                     /note="T4-like"
+                     /obsolete_name="Miro_100"
+                     /product="t"
      gene            40459..42721
                      /locus_tag="gene_064"
+     CDS             40469..42721
+                     /Alias="Miro_65"
+                     /Name="Miro_65"
+                     /note="T4 NrdA-like; E-val 0"
+                     /obsolete_name="Miro_099"
+                     /product="r"
      RBS             40459..40462
                      /Name="Miro_65"
      RBS             40459..40462
                      /Name="Miro_65"
+     CDS             40469..42721
+                     /Alias="Miro_65"
+                     /Name="Miro_65"
+                     /note="T4 NrdA-like; E-val 0"
+                     /obsolete_name="Miro_099"
+                     /product="r"
      gene            42748..43933
                      /locus_tag="gene_065"
+     CDS             42758..43933
+                     /Alias="Miro_66"
+                     /Name="Miro_66"
+                     /note="T4 NrdB-like"
+                     /obsolete_name="Miro_098"
+                     /product="r"
      RBS             42748..42751
                      /Name="Miro_66"
      RBS             42748..42751
                      /Name="Miro_66"
+     CDS             42758..43933
+                     /Alias="Miro_66"
+                     /Name="Miro_66"
+                     /note="T4 NrdB-like"
+                     /obsolete_name="Miro_098"
+                     /product="r"
+     CDS             43905..44225
+                     /Name="Miro_67"
+                     /obsolete_name="Miro_097"
+                     /product="hypothetical conserved"
      gene            44216..44594
                      /locus_tag="gene_066"
+     CDS             44229..44594
+                     /Alias="Miro_68"
+                     /Name="Miro_68"
+                     /note="contains GIY-YIG domain"
+                     /obsolete_name="Miro_096"
+                     /product="h"
      RBS             44216..44218
                      /Name="Miro_68"
      RBS             44216..44218
                      /Name="Miro_68"
+     CDS             44229..44594
+                     /Alias="Miro_68"
+                     /Name="Miro_68"
+                     /note="contains GIY-YIG domain"
+                     /obsolete_name="Miro_096"
+                     /product="h"
      gene            44560..45732
                      /locus_tag="gene_067"
+     CDS             44575..45732
+                     /Alias="Miro_69"
+                     /Name="Miro_69"
+                     /note="T4 RNA ligase 1-like"
+                     /obsolete_name="Miro_095"
+                     /product="R"
      RBS             44560..44562
                      /Name="Miro_69"
      RBS             44560..44562
                      /Name="Miro_69"
+     CDS             44575..45732
+                     /Alias="Miro_69"
+                     /Name="Miro_69"
+                     /note="T4 RNA ligase 1-like"
+                     /obsolete_name="Miro_095"
+                     /product="R"
      gene            45718..46265
                      /locus_tag="gene_068"
+     CDS             45729..46265
+                     /Alias="Miro_70"
+                     /Name="Miro_70"
+                     /note="contains AP2/ERF domain"
+                     /obsolete_name="Miro_094"
+                     /product="h"
      RBS             45718..45721
                      /Name="Miro_70"
      RBS             45718..45721
                      /Name="Miro_70"
+     CDS             45729..46265
+                     /Alias="Miro_70"
+                     /Name="Miro_70"
+                     /note="contains AP2/ERF domain"
+                     /obsolete_name="Miro_094"
+                     /product="h"
      gene            46221..46569
                      /locus_tag="gene_069"
+     CDS             46234..46569
+                     /Alias="Miro_71"
+                     /Name="Miro_71"
+                     /note="T4 PseT.3-like"
+                     /obsolete_name="Miro_093"
+                     /product="i"
+                     /tmhelix="1 TMD (15-33) N out, C in"
      RBS             46221..46224
                      /Name="Miro_71"
      RBS             46221..46224
                      /Name="Miro_71"
+     CDS             46234..46569
+                     /Alias="Miro_71"
+                     /Name="Miro_71"
+                     /note="T4 PseT.3-like"
+                     /obsolete_name="Miro_093"
+                     /product="i"
+                     /tmhelix="1 TMD (15-33) N out, C in"
      gene            46553..46883
                      /locus_tag="gene_070"
+     CDS             46566..46883
+                     /Alias="Miro_72"
+                     /Name="Miro_72"
+                     /note="T4 PseT.2-like"
+                     /obsolete_name="Miro_092"
+                     /product="o"
+                     /signal="signal peptidase II cleavage site 16-17"
      RBS             46553..46556
                      /Name="Miro_72"
      RBS             46553..46556
                      /Name="Miro_72"
+     CDS             46566..46883
+                     /Alias="Miro_72"
+                     /Name="Miro_72"
+                     /note="T4 PseT.2-like"
+                     /obsolete_name="Miro_092"
+                     /product="o"
+                     /signal="signal peptidase II cleavage site 16-17"
      gene            46854..47035
                      /locus_tag="gene_071"
+     CDS             46868..47035
+                     /Alias="Miro_73"
+                     /Name="Miro_73"
+                     /obsolete_name="Miro_091"
+                     /product="h"
      RBS             46854..46856
                      /Name="Miro_73"
      RBS             46854..46856
                      /Name="Miro_73"
+     CDS             46868..47035
+                     /Alias="Miro_73"
+                     /Name="Miro_73"
+                     /obsolete_name="Miro_091"
+                     /product="h"
      gene            47021..47916
                      /locus_tag="gene_072"
+     CDS             47032..47916
+                     /Alias="Miro_74"
+                     /Name="Miro_74"
+                     /note="contains HAD-like domain"
+                     /obsolete_name="Miro_090"
+                     /product="n"
      RBS             47021..47023
                      /Name="Miro_74"
      RBS             47021..47023
                      /Name="Miro_74"
+     CDS             47032..47916
+                     /Alias="Miro_74"
+                     /Name="Miro_74"
+                     /note="contains HAD-like domain"
+                     /obsolete_name="Miro_090"
+                     /product="n"
      gene            47957..48256
                      /locus_tag="gene_073"
+     CDS             47969..48256
+                     /Alias="Miro_75"
+                     /Name="Miro_75"
+                     /obsolete_name="Miro_089"
+                     /product="h"
      RBS             47957..47960
                      /Name="Miro_75"
      RBS             47957..47960
                      /Name="Miro_75"
+     CDS             47969..48256
+                     /Alias="Miro_75"
+                     /Name="Miro_75"
+                     /obsolete_name="Miro_089"
+                     /product="h"
      gene            48240..48504
                      /locus_tag="gene_074"
+     CDS             48253..48504
+                     /Alias="Miro_76"
+                     /Name="Miro_76"
+                     /obsolete_name="Miro_088"
+                     /product="h"
      RBS             48240..48242
                      /Name="Miro_76"
      RBS             48240..48242
                      /Name="Miro_76"
+     CDS             48253..48504
+                     /Alias="Miro_76"
+                     /Name="Miro_76"
+                     /obsolete_name="Miro_088"
+                     /product="h"
      gene            48485..48781
                      /locus_tag="gene_075"
+     CDS             48497..48781
+                     /Alias="Miro_77"
+                     /Name="Miro_77"
+                     /obsolete_name="Miro_087"
+                     /product="h"
      RBS             48485..48488
                      /Name="Miro_77"
      RBS             48485..48488
                      /Name="Miro_77"
+     CDS             48497..48781
+                     /Alias="Miro_77"
+                     /Name="Miro_77"
+                     /obsolete_name="Miro_087"
+                     /product="h"
      gene            48763..49277
                      /locus_tag="gene_076"
+     CDS             48771..49277
+                     /Alias="Miro_78"
+                     /Name="Miro_78"
+                     /note="T4-like"
+                     /obsolete_name="Miro_086"
+                     /product="d"
      RBS             48763..48765
                      /Name="Miro_78"
      RBS             48763..48765
                      /Name="Miro_78"
+     CDS             48771..49277
+                     /Alias="Miro_78"
+                     /Name="Miro_78"
+                     /note="T4-like"
+                     /obsolete_name="Miro_086"
+                     /product="d"
      gene            49267..49634
                      /locus_tag="gene_077"
+     CDS             49281..49634
+                     /Alias="Miro_79"
+                     /Name="Miro_79"
+                     /note="T4 gp31-like"
+                     /obsolete_name="Miro_085"
+                     /product="c"
      RBS             49267..49269
                      /Name="Miro_79"
      RBS             49267..49269
                      /Name="Miro_79"
+     CDS             49281..49634
+                     /Alias="Miro_79"
+                     /Name="Miro_79"
+                     /note="T4 gp31-like"
+                     /obsolete_name="Miro_085"
+                     /product="c"
      gene            49635..49896
                      /locus_tag="gene_078"
+     CDS             49645..49896
+                     /Alias="Miro_80"
+                     /Name="Miro_80"
+                     /obsolete_name="Miro_084"
+                     /product="h"
      RBS             49635..49637
                      /Name="Miro_80"
      RBS             49635..49637
                      /Name="Miro_80"
+     CDS             49645..49896
+                     /Alias="Miro_80"
+                     /Name="Miro_80"
+                     /obsolete_name="Miro_084"
+                     /product="h"
      gene            50203..50493
                      /locus_tag="gene_079"
+     CDS             50212..50493
+                     /Alias="Miro_81"
+                     /Name="Miro_81"
+                     /obsolete_name="Miro_083"
+                     /product="h"
      RBS             50203..50206
                      /Name="Miro_81"
      RBS             50203..50206
                      /Name="Miro_81"
+     CDS             50212..50493
+                     /Alias="Miro_81"
+                     /Name="Miro_81"
+                     /obsolete_name="Miro_083"
+                     /product="h"
      gene            50495..50922
                      /locus_tag="gene_080"
+     CDS             50503..50922
+                     /Alias="Miro_82"
+                     /Name="Miro_82"
+                     /obsolete_name="Miro_082"
+                     /product="h"
      RBS             50495..50497
                      /Name="Miro_82"
      RBS             50495..50497
                      /Name="Miro_82"
+     CDS             50503..50922
+                     /Alias="Miro_82"
+                     /Name="Miro_82"
+                     /obsolete_name="Miro_082"
+                     /product="h"
      gene            50955..51530
                      /locus_tag="gene_081"
+     CDS             50964..51530
+                     /Alias="Miro_83"
+                     /Name="Miro_83"
+                     /obsolete_name="Miro_081"
+                     /product="h"
+                     /tmhelix="1 TMD (9-31) N in, C out"
      RBS             50955..50958
                      /Name="Miro_83"
      RBS             50955..50958
                      /Name="Miro_83"
+     CDS             50964..51530
+                     /Alias="Miro_83"
+                     /Name="Miro_83"
+                     /obsolete_name="Miro_081"
+                     /product="h"
+                     /tmhelix="1 TMD (9-31) N in, C out"
      gene            51531..51903
                      /locus_tag="gene_082"
+     CDS             51541..51903
+                     /Alias="Miro_84"
+                     /Name="Miro_84"
+                     /note="T4-like; contains glycine radical domain"
+                     /obsolete_name="Miro_080"
+                     /product="a"
      RBS             51531..51534
                      /Name="Miro_84"
      RBS             51531..51534
                      /Name="Miro_84"
+     CDS             51541..51903
+                     /Alias="Miro_84"
+                     /Name="Miro_84"
+                     /note="T4-like; contains glycine radical domain"
+                     /obsolete_name="Miro_080"
+                     /product="a"
      gene            51892..52172
                      /locus_tag="gene_083"
+     CDS             51903..52172
+                     /Alias="Miro_85"
+                     /Name="Miro_85"
+                     /obsolete_name="Miro_079"
+                     /product="h"
      RBS             51892..51894
                      /Name="Miro_85"
      RBS             51892..51894
                      /Name="Miro_85"
+     CDS             51903..52172
+                     /Alias="Miro_85"
+                     /Name="Miro_85"
+                     /obsolete_name="Miro_079"
+                     /product="h"
      gene            52286..52591
                      /locus_tag="gene_084"
+     CDS             52298..52591
+                     /Alias="Miro_86"
+                     /Name="Miro_86"
+                     /obsolete_name="Miro_078"
+                     /product="h"
      RBS             52286..52289
                      /Name="Miro_86"
      RBS             52286..52289
                      /Name="Miro_86"
+     CDS             52298..52591
+                     /Alias="Miro_86"
+                     /Name="Miro_86"
+                     /obsolete_name="Miro_078"
+                     /product="h"
      gene            52585..52833
                      /locus_tag="gene_085"
+     CDS             52594..52833
+                     /Alias="Miro_87"
+                     /Name="Miro_87"
+                     /obsolete_name="Miro_077"
+                     /product="h"
      RBS             52585..52588
                      /Name="Miro_87"
      RBS             52585..52588
                      /Name="Miro_87"
+     CDS             52594..52833
+                     /Alias="Miro_87"
+                     /Name="Miro_87"
+                     /obsolete_name="Miro_077"
+                     /product="h"
      gene            52806..52988
                      /locus_tag="gene_086"
+     CDS             52818..52988
+                     /Alias="Miro_88"
+                     /Name="Miro_88"
+                     /obsolete_name="Miro_076"
+                     /product="h"
      RBS             52806..52809
                      /Name="Miro_88"
      RBS             52806..52809
                      /Name="Miro_88"
+     CDS             52818..52988
+                     /Alias="Miro_88"
+                     /Name="Miro_88"
+                     /obsolete_name="Miro_076"
+                     /product="h"
      gene            52974..53137
                      /locus_tag="gene_087"
+     CDS             52985..53137
+                     /Alias="Miro_89"
+                     /Name="Miro_89"
+                     /obsolete_name="Miro_075"
+                     /product="h"
      RBS             52974..52978
                      /Name="Miro_89"
      RBS             52974..52978
                      /Name="Miro_89"
+     CDS             52985..53137
+                     /Alias="Miro_89"
+                     /Name="Miro_89"
+                     /obsolete_name="Miro_075"
+                     /product="h"
      gene            53212..53661
                      /locus_tag="gene_088"
+     CDS             53221..53661
+                     /Alias="Miro_90"
+                     /Name="Miro_90"
+                     /note="T4 Y12G-like"
+                     /obsolete_name="Miro_074"
+                     /product="h"
      RBS             53212..53215
                      /Name="Miro_90"
      RBS             53212..53215
                      /Name="Miro_90"
+     CDS             53221..53661
+                     /Alias="Miro_90"
+                     /Name="Miro_90"
+                     /note="T4 Y12G-like"
+                     /obsolete_name="Miro_074"
+                     /product="h"
      gene            53646..53921
                      /locus_tag="gene_089"
+     CDS             53658..53921
+                     /Alias="Miro_91"
+                     /Name="Miro_91"
+                     /obsolete_name="Miro_073"
+                     /product="h"
      RBS             53646..53648
                      /Name="Miro_91"
      RBS             53646..53648
                      /Name="Miro_91"
+     CDS             53658..53921
+                     /Alias="Miro_91"
+                     /Name="Miro_91"
+                     /obsolete_name="Miro_073"
+                     /product="h"
      gene            53914..54144
                      /locus_tag="gene_090"
+     CDS             53923..54144
+                     /Alias="Miro_92"
+                     /Name="Miro_92"
+                     /obsolete_name="Miro_072"
+                     /product="h"
      RBS             53914..53916
                      /Name="Miro_92"
      RBS             53914..53916
                      /Name="Miro_92"
+     CDS             53923..54144
+                     /Alias="Miro_92"
+                     /Name="Miro_92"
+                     /obsolete_name="Miro_072"
+                     /product="h"
      gene            54130..54755
                      /locus_tag="gene_091"
+     CDS             54141..54755
+                     /Alias="Miro_93"
+                     /Name="Miro_93"
+                     /note="contains haloacid dehydrogenase (HAD)-like domain"
+                     /obsolete_name="Miro_071"
+                     /product="h"
      RBS             54130..54134
                      /Name="Miro_93"
      RBS             54130..54134
                      /Name="Miro_93"
+     CDS             54141..54755
+                     /Alias="Miro_93"
+                     /Name="Miro_93"
+                     /note="contains haloacid dehydrogenase (HAD)-like domain"
+                     /obsolete_name="Miro_071"
+                     /product="h"
      gene            54726..56265
                      /locus_tag="gene_092"
+     CDS             54736..56265
+                     /Alias="Miro_94"
+                     /Name="Miro_94"
+                     /note="T4-like"
+                     /obsolete_name="Miro_070"
+                     /product="D"
      RBS             54726..54728
                      /Name="Miro_94"
      RBS             54726..54728
                      /Name="Miro_94"
+     CDS             54736..56265
+                     /Alias="Miro_94"
+                     /Name="Miro_94"
+                     /note="T4-like"
+                     /obsolete_name="Miro_070"
+                     /product="D"
      gene            56331..56911
                      /locus_tag="gene_093"
+     CDS             56342..56911
+                     /Alias="Miro_95"
+                     /Name="Miro_95"
+                     /obsolete_name="Miro_069"
+                     /product="h"
      RBS             56331..56333
                      /Name="Miro_95"
      RBS             56331..56333
                      /Name="Miro_95"
+     CDS             56342..56911
+                     /Alias="Miro_95"
+                     /Name="Miro_95"
+                     /obsolete_name="Miro_069"
+                     /product="h"
      gene            56987..57203
                      /locus_tag="gene_094"
+     CDS             57000..57203
+                     /Alias="Miro_96"
+                     /Name="Miro_96"
+                     /obsolete_name="Miro_068"
+                     /product="h"
      RBS             56987..56990
                      /Name="Miro_96"
      RBS             56987..56990
                      /Name="Miro_96"
+     CDS             57000..57203
+                     /Alias="Miro_96"
+                     /Name="Miro_96"
+                     /obsolete_name="Miro_068"
+                     /product="h"
      gene            57193..57382
                      /locus_tag="gene_095"
+     CDS             57206..57382
+                     /Alias="Miro_97"
+                     /Name="Miro_97"
+                     /obsolete_name="Miro_067"
+                     /product="h"
      RBS             57193..57195
                      /Name="Miro_97"
      RBS             57193..57195
                      /Name="Miro_97"
+     CDS             57206..57382
+                     /Alias="Miro_97"
+                     /Name="Miro_97"
+                     /obsolete_name="Miro_067"
+                     /product="h"
      gene            57368..57543
                      /locus_tag="gene_096"
+     CDS             57379..57543
+                     /Alias="Miro_98"
+                     /Name="Miro_98"
+                     /obsolete_name="Miro_066"
+                     /product="h"
+                     /tmhelix="2TMDs (7-26, 31-53) N in, C in"
      RBS             57368..57372
                      /Name="Miro_98"
      RBS             57368..57372
                      /Name="Miro_98"
+     CDS             57379..57543
+                     /Alias="Miro_98"
+                     /Name="Miro_98"
+                     /obsolete_name="Miro_066"
+                     /product="h"
+                     /tmhelix="2TMDs (7-26, 31-53) N in, C in"
      gene            57613..57914
                      /locus_tag="gene_097"
+     CDS             57624..57914
+                     /Alias="Miro_99"
+                     /Name="Miro_99"
+                     /obsolete_name="Miro_065"
+                     /product="h"
      RBS             57613..57616
                      /Name="Miro_99"
      RBS             57613..57616
                      /Name="Miro_99"
+     CDS             57624..57914
+                     /Alias="Miro_99"
+                     /Name="Miro_99"
+                     /obsolete_name="Miro_065"
+                     /product="h"
      gene            57934..58236
                      /locus_tag="gene_098"
+     CDS             57946..58236
+                     /Alias="Miro_100"
+                     /Name="Miro_100"
+                     /obsolete_name="Miro_064"
+                     /product="h"
      RBS             57934..57936
                      /Name="Miro_100"
      RBS             57934..57936
                      /Name="Miro_100"
+     CDS             57946..58236
+                     /Alias="Miro_100"
+                     /Name="Miro_100"
+                     /obsolete_name="Miro_064"
+                     /product="h"
      gene            58210..58600
                      /locus_tag="gene_099"
+     CDS             58223..58600
+                     /Alias="Miro_101"
+                     /Name="Miro_101"
+                     /obsolete_name="Miro_063"
+                     /product="h"
      RBS             58210..58213
                      /Name="Miro_101"
      RBS             58210..58213
                      /Name="Miro_101"
+     CDS             58223..58600
+                     /Alias="Miro_101"
+                     /Name="Miro_101"
+                     /obsolete_name="Miro_063"
+                     /product="h"
      gene            complement(58597..59719)
                      /locus_tag="gene_100"
+     CDS             complement(58597..59706)
+                     /Name="Miro_102"
+                     /note="T4 gp27-like"
+                     /obsolete_name="Miro_062"
+                     /product="b"
      RBS             complement(59714..59719)
                      /Alias="Miro_102"
                      /Name="Miro_102"
+     CDS             complement(58597..59706)
+                     /Name="Miro_102"
+                     /note="T4 gp27-like"
+                     /obsolete_name="Miro_062"
+                     /product="b"
      RBS             complement(59714..59719)
                      /Alias="Miro_102"
                      /Name="Miro_102"
      gene            59767..60351
                      /locus_tag="gene_101"
+     CDS             59776..60351
+                     /Alias="Miro_103"
+                     /Name="Miro_103"
+                     /note="T4 gp28-like"
+                     /obsolete_name="Miro_061"
+                     /product="b"
      RBS             59767..59770
                      /Name="Miro_103"
      RBS             59767..59770
                      /Name="Miro_103"
+     CDS             59776..60351
+                     /Alias="Miro_103"
+                     /Name="Miro_103"
+                     /note="T4 gp28-like"
+                     /obsolete_name="Miro_061"
+                     /product="b"
      gene            60343..62126
                      /locus_tag="gene_102"
+     CDS             60354..62126
+                     /Alias="Miro_104"
+                     /Name="Miro_104"
+                     /obsolete_name="Miro_060"
+                     /product="h"
      RBS             60343..60345
                      /Name="Miro_104"
      RBS             60343..60345
                      /Name="Miro_104"
+     CDS             60354..62126
+                     /Alias="Miro_104"
+                     /Name="Miro_104"
+                     /obsolete_name="Miro_060"
+                     /product="h"
      gene            62126..63210
                      /locus_tag="gene_103"
+     CDS             62137..63210
+                     /Alias="Miro_105"
+                     /Name="Miro_105"
+                     /note="T4 gp48-like"
+                     /obsolete_name="Miro_059"
+                     /product="t"
      RBS             62126..62129
                      /Name="Miro_105"
      RBS             62126..62129
                      /Name="Miro_105"
+     CDS             62137..63210
+                     /Alias="Miro_105"
+                     /Name="Miro_105"
+                     /note="T4 gp48-like"
+                     /obsolete_name="Miro_059"
+                     /product="t"
      gene            63210..64083
                      /locus_tag="gene_104"
+     CDS             63220..64083
+                     /Alias="Miro_106"
+                     /Name="Miro_106"
+                     /note="T4 gp19-like"
+                     /obsolete_name="Miro_058"
+                     /product="t"
      RBS             63210..63214
                      /Name="Miro_106"
      RBS             63210..63214
                      /Name="Miro_106"
+     CDS             63220..64083
+                     /Alias="Miro_106"
+                     /Name="Miro_106"
+                     /note="T4 gp19-like"
+                     /obsolete_name="Miro_058"
+                     /product="t"
      gene            64103..64855
                      /locus_tag="gene_105"
+     CDS             64112..64855
+                     /Alias="Miro_107"
+                     /Name="Miro_107"
+                     /note="T4 gp26/gp51-like"
+                     /obsolete_name="Miro_057"
+                     /product="b"
      RBS             64103..64106
                      /Name="Miro_107"
      RBS             64103..64106
                      /Name="Miro_107"
+     CDS             64112..64855
+                     /Alias="Miro_107"
+                     /Name="Miro_107"
+                     /note="T4 gp26/gp51-like"
+                     /obsolete_name="Miro_057"
+                     /product="b"
      gene            64840..65406
                      /locus_tag="gene_106"
+     CDS             64852..65406
+                     /Alias="Miro_108"
+                     /Name="Miro_108"
+                     /note="T4 gp26/gp51-like"
+                     /obsolete_name="Miro_056"
+                     /product="b"
      RBS             64840..64843
                      /Name="Miro_108"
      RBS             64840..64843
                      /Name="Miro_108"
+     CDS             64852..65406
+                     /Alias="Miro_108"
+                     /Name="Miro_108"
+                     /note="T4 gp26/gp51-like"
+                     /obsolete_name="Miro_056"
+                     /product="b"
      gene            65396..65799
                      /locus_tag="gene_107"
+     CDS             65407..65799
+                     /Alias="Miro_109"
+                     /Name="Miro_109"
+                     /note="T4-like"
+                     /obsolete_name="Miro_055"
+                     /product="t"
      RBS             65396..65399
                      /Name="Miro_109"
      RBS             65396..65399
                      /Name="Miro_109"
+     CDS             65407..65799
+                     /Alias="Miro_109"
+                     /Name="Miro_109"
+                     /note="T4-like"
+                     /obsolete_name="Miro_055"
+                     /product="t"
      gene            complement(65834..66298)
                      /locus_tag="gene_108"
+     CDS             complement(65834..66289)
+                     /Name="Miro_110"
+                     /obsolete_name="Miro_054"
+                     /product="h"
      RBS             complement(66295..66298)
                      /Alias="Miro_110"
                      /Name="Miro_110"
+     CDS             complement(65834..66289)
+                     /Name="Miro_110"
+                     /obsolete_name="Miro_054"
+                     /product="h"
      RBS             complement(66295..66298)
                      /Alias="Miro_110"
                      /Name="Miro_110"
      gene            complement(66297..66533)
                      /locus_tag="gene_109"
+     CDS             complement(66297..66521)
+                     /Name="Miro_111"
+                     /obsolete_name="Miro_053"
+                     /product="h"
      RBS             complement(66530..66533)
                      /Alias="Miro_111"
                      /Name="Miro_111"
+     CDS             complement(66297..66521)
+                     /Name="Miro_111"
+                     /obsolete_name="Miro_053"
+                     /product="h"
      gene            complement(66523..66819)
                      /locus_tag="gene_110"
+     CDS             complement(66523..66807)
+                     /Name="Miro_112"
+                     /obsolete_name="Miro_052"
+                     /product="h"
+                     /signal="signal peptidase I cleavage site 17-18"
      RBS             complement(66816..66819)
                      /Alias="Miro_112"
                      /Name="Miro_112"
+     CDS             complement(66523..66807)
+                     /Name="Miro_112"
+                     /obsolete_name="Miro_052"
+                     /product="h"
+                     /signal="signal peptidase I cleavage site 17-18"
      RBS             complement(66530..66533)
                      /Alias="Miro_111"
                      /Name="Miro_111"
@@ -781,30 +1905,64 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_112"
      gene            complement(66879..67172)
                      /locus_tag="gene_111"
+     CDS             complement(66879..67163)
+                     /Name="Miro_113"
+                     /obsolete_name="Miro_051"
+                     /product="h"
      RBS             complement(67169..67172)
                      /Alias="Miro_113"
                      /Name="Miro_113"
+     CDS             complement(66879..67163)
+                     /Name="Miro_113"
+                     /obsolete_name="Miro_051"
+                     /product="h"
      RBS             complement(67169..67172)
                      /Alias="Miro_113"
                      /Name="Miro_113"
      gene            complement(67179..67658)
                      /locus_tag="gene_112"
+     CDS             complement(67179..67649)
+                     /Name="Miro_114"
+                     /obsolete_name="Miro_050"
+                     /product="h"
      RBS             complement(67656..67658)
                      /Alias="Miro_114"
                      /Name="Miro_114"
+     CDS             complement(67179..67649)
+                     /Name="Miro_114"
+                     /obsolete_name="Miro_050"
+                     /product="h"
      gene            complement(67646..67816)
                      /locus_tag="gene_113"
+     CDS             complement(67646..67804)
+                     /Name="Miro_115"
+                     /obsolete_name="Miro_049"
+                     /product="h"
+                     /tmhelix="2TMDs (2-21, 31-50) N in, C in"
      RBS             complement(67814..67816)
                      /Alias="Miro_115"
                      /Name="Miro_115"
+     CDS             complement(67646..67804)
+                     /Name="Miro_115"
+                     /obsolete_name="Miro_049"
+                     /product="h"
+                     /tmhelix="2TMDs (2-21, 31-50) N in, C in"
      RBS             complement(67656..67658)
                      /Alias="Miro_114"
                      /Name="Miro_114"
      gene            complement(67801..68461)
                      /locus_tag="gene_114"
+     CDS             complement(67801..68451)
+                     /Name="Miro_116"
+                     /obsolete_name="Miro_048"
+                     /product="h"
      RBS             complement(68457..68461)
                      /Alias="Miro_116"
                      /Name="Miro_116"
+     CDS             complement(67801..68451)
+                     /Name="Miro_116"
+                     /obsolete_name="Miro_048"
+                     /product="h"
      RBS             complement(67814..67816)
                      /Alias="Miro_115"
                      /Name="Miro_115"
@@ -813,22 +1971,48 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_116"
      gene            complement(68490..70715)
                      /locus_tag="gene_115"
+     CDS             complement(68490..70706)
+                     /Name="Miro_117"
+                     /note="contains von Willebrand factor, type A"
+                     /obsolete_name="Miro_047"
+                     /product="h"
      RBS             complement(70713..70715)
                      /Alias="Miro_117"
                      /Name="Miro_117"
+     CDS             complement(68490..70706)
+                     /Name="Miro_117"
+                     /note="contains von Willebrand factor, type A"
+                     /obsolete_name="Miro_047"
+                     /product="h"
      RBS             complement(70713..70715)
                      /Alias="Miro_117"
                      /Name="Miro_117"
      gene            complement(70714..71046)
                      /locus_tag="gene_116"
+     CDS             complement(70714..71034)
+                     /Name="Miro_118"
+                     /obsolete_name="Miro_046"
+                     /product="h"
      RBS             complement(71044..71046)
                      /Alias="Miro_118"
                      /Name="Miro_118"
+     CDS             complement(70714..71034)
+                     /Name="Miro_118"
+                     /obsolete_name="Miro_046"
+                     /product="h"
      gene            complement(71034..71561)
                      /locus_tag="gene_117"
+     CDS             complement(71034..71549)
+                     /Name="Miro_119"
+                     /obsolete_name="Miro_045"
+                     /product="h"
      RBS             complement(71558..71561)
                      /Alias="Miro_119"
                      /Name="Miro_119"
+     CDS             complement(71034..71549)
+                     /Name="Miro_119"
+                     /obsolete_name="Miro_045"
+                     /product="h"
      RBS             complement(71044..71046)
                      /Alias="Miro_118"
                      /Name="Miro_118"
@@ -837,14 +2021,32 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_119"
      gene            complement(71577..71871)
                      /locus_tag="gene_118"
+     CDS             complement(71577..71861)
+                     /Name="Miro_120"
+                     /obsolete_name="Miro_044"
+                     /product="h"
      RBS             complement(71868..71871)
                      /Alias="Miro_120"
                      /Name="Miro_120"
+     CDS             complement(71577..71861)
+                     /Name="Miro_120"
+                     /obsolete_name="Miro_044"
+                     /product="h"
      gene            complement(71861..72037)
                      /locus_tag="gene_119"
+     CDS             complement(71861..72028)
+                     /Name="Miro_121"
+                     /obsolete_name="Miro_043"
+                     /product="h"
+                     /tmhelix="2TMDs (9-26, 30-52) N in, C in"
      RBS             complement(72034..72037)
                      /Alias="Miro_121"
                      /Name="Miro_121"
+     CDS             complement(71861..72028)
+                     /Name="Miro_121"
+                     /obsolete_name="Miro_043"
+                     /product="h"
+                     /tmhelix="2TMDs (9-26, 30-52) N in, C in"
      RBS             complement(71868..71871)
                      /Alias="Miro_120"
                      /Name="Miro_120"
@@ -853,78 +2055,162 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_121"
      gene            complement(72068..72357)
                      /locus_tag="gene_120"
+     CDS             complement(72068..72346)
+                     /Name="Miro_122"
+                     /obsolete_name="Miro_042"
+                     /product="h"
      RBS             complement(72354..72357)
                      /Alias="Miro_122"
                      /Name="Miro_122"
+     CDS             complement(72068..72346)
+                     /Name="Miro_122"
+                     /obsolete_name="Miro_042"
+                     /product="h"
      RBS             complement(72354..72357)
                      /Alias="Miro_122"
                      /Name="Miro_122"
      gene            complement(72390..73331)
                      /locus_tag="gene_121"
+     CDS             complement(72390..73316)
+                     /Name="Miro_123"
+                     /note="C-5 cytosine-specific active site"
+                     /obsolete_name="Miro_041"
+                     /product="c"
      RBS             complement(73329..73331)
                      /Alias="Miro_123"
                      /Name="Miro_123"
+     CDS             complement(72390..73316)
+                     /Name="Miro_123"
+                     /note="C-5 cytosine-specific active site"
+                     /obsolete_name="Miro_041"
+                     /product="c"
      gene            complement(73313..73582)
                      /locus_tag="gene_122"
+     CDS             complement(73313..73570)
+                     /Name="Miro_124"
+                     /obsolete_name="Miro_040"
+                     /product="h"
      RBS             complement(73579..73582)
                      /Alias="Miro_124"
                      /Name="Miro_124"
+     CDS             complement(73313..73570)
+                     /Name="Miro_124"
+                     /obsolete_name="Miro_040"
+                     /product="h"
      RBS             complement(73329..73331)
                      /Alias="Miro_123"
                      /Name="Miro_123"
      gene            complement(73570..73827)
                      /locus_tag="gene_123"
+     CDS             complement(73570..73815)
+                     /Name="Miro_125"
+                     /obsolete_name="Miro_039"
+                     /product="h"
      RBS             complement(73823..73827)
                      /Alias="Miro_125"
                      /Name="Miro_125"
+     CDS             complement(73570..73815)
+                     /Name="Miro_125"
+                     /obsolete_name="Miro_039"
+                     /product="h"
      RBS             complement(73579..73582)
                      /Alias="Miro_124"
                      /Name="Miro_124"
      gene            complement(73812..74832)
                      /locus_tag="gene_124"
+     CDS             complement(73812..74819)
+                     /Name="Miro_126"
+                     /note="T4 nrdC.11-like"
+                     /obsolete_name="Miro_038"
+                     /product="n"
      RBS             complement(74829..74832)
                      /Alias="Miro_126"
                      /Name="Miro_126"
+     CDS             complement(73812..74819)
+                     /Name="Miro_126"
+                     /note="T4 nrdC.11-like"
+                     /obsolete_name="Miro_038"
+                     /product="n"
      RBS             complement(73823..73827)
                      /Alias="Miro_125"
                      /Name="Miro_125"
      gene            complement(74819..75206)
                      /locus_tag="gene_125"
+     CDS             complement(74819..75196)
+                     /Name="Miro_127"
+                     /obsolete_name="Miro_037"
+                     /product="h"
      RBS             complement(75203..75206)
                      /Alias="Miro_127"
                      /Name="Miro_127"
+     CDS             complement(74819..75196)
+                     /Name="Miro_127"
+                     /obsolete_name="Miro_037"
+                     /product="h"
      RBS             complement(74829..74832)
                      /Alias="Miro_126"
                      /Name="Miro_126"
      gene            complement(75193..75434)
                      /locus_tag="gene_126"
+     CDS             complement(75193..75420)
+                     /Name="Miro_128"
+                     /obsolete_name="Miro_036"
+                     /product="h"
      RBS             complement(75430..75434)
                      /Alias="Miro_128"
                      /Name="Miro_128"
+     CDS             complement(75193..75420)
+                     /Name="Miro_128"
+                     /obsolete_name="Miro_036"
+                     /product="h"
      RBS             complement(75203..75206)
                      /Alias="Miro_127"
                      /Name="Miro_127"
      gene            complement(75417..76034)
                      /locus_tag="gene_127"
+     CDS             complement(75417..76022)
+                     /Name="Miro_129"
+                     /obsolete_name="Miro_035"
+                     /product="h"
      RBS             complement(76031..76034)
                      /Alias="Miro_129"
                      /Name="Miro_129"
+     CDS             complement(75417..76022)
+                     /Name="Miro_129"
+                     /obsolete_name="Miro_035"
+                     /product="h"
      RBS             complement(75430..75434)
                      /Alias="Miro_128"
                      /Name="Miro_128"
      gene            complement(76025..76309)
                      /locus_tag="gene_128"
+     CDS             complement(76025..76297)
+                     /Name="Miro_130"
+                     /obsolete_name="Miro_034"
+                     /product="h"
      RBS             complement(76307..76309)
                      /Alias="Miro_130"
                      /Name="Miro_130"
+     CDS             complement(76025..76297)
+                     /Name="Miro_130"
+                     /obsolete_name="Miro_034"
+                     /product="h"
      RBS             complement(76031..76034)
                      /Alias="Miro_129"
                      /Name="Miro_129"
      gene            complement(76294..76498)
                      /locus_tag="gene_129"
+     CDS             complement(76294..76488)
+                     /Name="Miro_131"
+                     /obsolete_name="Miro_033"
+                     /product="h"
      RBS             complement(76495..76498)
                      /Alias="Miro_131"
                      /Name="Miro_131"
+     CDS             complement(76294..76488)
+                     /Name="Miro_131"
+                     /obsolete_name="Miro_033"
+                     /product="h"
      RBS             complement(76307..76309)
                      /Alias="Miro_130"
                      /Name="Miro_130"
@@ -933,30 +2219,66 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_131"
      gene            complement(76662..77733)
                      /locus_tag="gene_130"
+     CDS             complement(76662..77723)
+                     /Name="Miro_132"
+                     /obsolete_name="Miro_032"
+                     /product="N"
      RBS             complement(77730..77733)
                      /Alias="Miro_132"
                      /Name="Miro_132"
+     CDS             complement(76662..77723)
+                     /Name="Miro_132"
+                     /obsolete_name="Miro_032"
+                     /product="N"
      RBS             complement(77730..77733)
                      /Alias="Miro_132"
                      /Name="Miro_132"
      gene            complement(77900..78824)
                      /locus_tag="gene_131"
+     CDS             complement(77900..78814)
+                     /Name="Miro_133"
+                     /obsolete_name="Miro_031"
+                     /product="h"
+                     /signal="signal peptidase I cleavage site 34-35"
      RBS             complement(78822..78824)
                      /Alias="Miro_133"
                      /Name="Miro_133"
+     CDS             complement(77900..78814)
+                     /Name="Miro_133"
+                     /obsolete_name="Miro_031"
+                     /product="h"
+                     /signal="signal peptidase I cleavage site 34-35"
      RBS             complement(78822..78824)
                      /Alias="Miro_133"
                      /Name="Miro_133"
      gene            complement(78886..79317)
                      /locus_tag="gene_132"
+     CDS             complement(78886..79308)
+                     /Name="Miro_134"
+                     /obsolete_name="Miro_030"
+                     /product="h"
      RBS             complement(79314..79317)
                      /Alias="Miro_134"
                      /Name="Miro_134"
+     CDS             complement(78886..79308)
+                     /Name="Miro_134"
+                     /obsolete_name="Miro_030"
+                     /product="h"
      gene            complement(79280..79572)
                      /locus_tag="gene_133"
+     CDS             complement(79280..79561)
+                     /Name="Miro_135"
+                     /obsolete_name="Miro_029"
+                     /product="h"
+                     /tmhelix="2TMDs (7-24, 39-61) N out, C in"
      RBS             complement(79570..79572)
                      /Alias="Miro_135"
                      /Name="Miro_135"
+     CDS             complement(79280..79561)
+                     /Name="Miro_135"
+                     /obsolete_name="Miro_029"
+                     /product="h"
+                     /tmhelix="2TMDs (7-24, 39-61) N out, C in"
      RBS             complement(79314..79317)
                      /Alias="Miro_134"
                      /Name="Miro_134"
@@ -965,62 +2287,136 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_135"
      gene            complement(79668..80071)
                      /locus_tag="gene_134"
+     CDS             complement(79668..80060)
+                     /Name="Miro_136"
+                     /obsolete_name="Miro_028"
+                     /product="h"
      RBS             complement(80067..80071)
                      /Alias="Miro_136"
                      /Name="Miro_136"
+     CDS             complement(79668..80060)
+                     /Name="Miro_136"
+                     /obsolete_name="Miro_028"
+                     /product="h"
      RBS             complement(80067..80071)
                      /Alias="Miro_136"
                      /Name="Miro_136"
      gene            complement(80077..80695)
                      /locus_tag="gene_135"
+     CDS             complement(80077..80685)
+                     /Name="Miro_137"
+                     /note="contains P-loop containing nucleoside triphosphate
+                     hydrolase"
+                     /obsolete_name="Miro_027"
+                     /product="t"
      RBS             complement(80693..80695)
                      /Alias="Miro_137"
                      /Name="Miro_137"
+     CDS             complement(80077..80685)
+                     /Name="Miro_137"
+                     /note="contains P-loop containing nucleoside triphosphate
+                     hydrolase"
+                     /obsolete_name="Miro_027"
+                     /product="t"
      gene            complement(80678..80889)
                      /locus_tag="gene_136"
+     CDS             complement(80678..80875)
+                     /Name="Miro_138"
+                     /obsolete_name="Miro_026"
+                     /product="h"
      RBS             complement(80886..80889)
                      /Alias="Miro_138"
                      /Name="Miro_138"
+     CDS             complement(80678..80875)
+                     /Name="Miro_138"
+                     /obsolete_name="Miro_026"
+                     /product="h"
      RBS             complement(80693..80695)
                      /Alias="Miro_137"
                      /Name="Miro_137"
      gene            complement(80868..81097)
                      /locus_tag="gene_137"
+     CDS             complement(80868..81083)
+                     /Name="Miro_139"
+                     /obsolete_name="Miro_025"
+                     /product="h"
      RBS             complement(81095..81097)
                      /Alias="Miro_139"
                      /Name="Miro_139"
+     CDS             complement(80868..81083)
+                     /Name="Miro_139"
+                     /obsolete_name="Miro_025"
+                     /product="h"
      RBS             complement(80886..80889)
                      /Alias="Miro_138"
                      /Name="Miro_138"
      gene            complement(81076..81376)
                      /locus_tag="gene_138"
+     CDS             complement(81076..81363)
+                     /Name="Miro_140"
+                     /obsolete_name="Miro_024"
+                     /product="h"
      RBS             complement(81374..81376)
                      /Alias="Miro_140"
                      /Name="Miro_140"
+     CDS             complement(81076..81363)
+                     /Name="Miro_140"
+                     /obsolete_name="Miro_024"
+                     /product="h"
      RBS             complement(81095..81097)
                      /Alias="Miro_139"
                      /Name="Miro_139"
      gene            complement(81366..81851)
                      /locus_tag="gene_139"
+     CDS             complement(81366..81839)
+                     /Name="Miro_141"
+                     /note="contains macro domain"
+                     /obsolete_name="Miro_023"
+                     /product="h"
      RBS             complement(81849..81851)
                      /Alias="Miro_141"
                      /Name="Miro_141"
+     CDS             complement(81366..81839)
+                     /Name="Miro_141"
+                     /note="contains macro domain"
+                     /obsolete_name="Miro_023"
+                     /product="h"
      RBS             complement(81374..81376)
                      /Alias="Miro_140"
                      /Name="Miro_140"
      gene            complement(81829..81940)
                      /locus_tag="gene_140"
+     CDS             complement(81829..81927)
+                     /Name="Miro_142"
+                     /obsolete_name="Miro_022"
+                     /product="h"
+                     /tmhelix="1 TMD (4-26) N out, C in"
      RBS             complement(81938..81940)
                      /Alias="Miro_142"
                      /Name="Miro_142"
+     CDS             complement(81829..81927)
+                     /Name="Miro_142"
+                     /obsolete_name="Miro_022"
+                     /product="h"
+                     /tmhelix="1 TMD (4-26) N out, C in"
      RBS             complement(81849..81851)
                      /Alias="Miro_141"
                      /Name="Miro_141"
      gene            complement(81924..82086)
                      /locus_tag="gene_141"
+     CDS             complement(81924..82079)
+                     /Name="Miro_143"
+                     /obsolete_name="Miro_021"
+                     /product="h"
+                     /tmhelix="1 TMD (15-37) N out, C in"
      RBS             complement(82084..82086)
                      /Alias="Miro_143"
                      /Name="Miro_143"
+     CDS             complement(81924..82079)
+                     /Name="Miro_143"
+                     /obsolete_name="Miro_021"
+                     /product="h"
+                     /tmhelix="1 TMD (15-37) N out, C in"
      RBS             complement(81938..81940)
                      /Alias="Miro_142"
                      /Name="Miro_142"
@@ -1029,22 +2425,48 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_143"
      gene            complement(82146..82479)
                      /locus_tag="gene_142"
+     CDS             complement(82146..82469)
+                     /Name="Miro_144"
+                     /obsolete_name="Miro_020"
+                     /product="h"
+                     /signal="signal peptidase I cleavage site 17-18"
      RBS             complement(82476..82479)
                      /Alias="Miro_144"
                      /Name="Miro_144"
+     CDS             complement(82146..82469)
+                     /Name="Miro_144"
+                     /obsolete_name="Miro_020"
+                     /product="h"
+                     /signal="signal peptidase I cleavage site 17-18"
      RBS             complement(82476..82479)
                      /Alias="Miro_144"
                      /Name="Miro_144"
      gene            complement(82479..83083)
                      /locus_tag="gene_143"
+     CDS             complement(82479..83069)
+                     /Name="Miro_145"
+                     /obsolete_name="Miro_019"
+                     /product="h"
      RBS             complement(83080..83083)
                      /Alias="Miro_145"
                      /Name="Miro_145"
+     CDS             complement(82479..83069)
+                     /Name="Miro_145"
+                     /obsolete_name="Miro_019"
+                     /product="h"
      gene            complement(83066..83224)
                      /locus_tag="gene_144"
+     CDS             complement(83066..83212)
+                     /Name="Miro_146"
+                     /obsolete_name="Miro_018"
+                     /product="h"
      RBS             complement(83221..83224)
                      /Alias="Miro_146"
                      /Name="Miro_146"
+     CDS             complement(83066..83212)
+                     /Name="Miro_146"
+                     /obsolete_name="Miro_018"
+                     /product="h"
      RBS             complement(83080..83083)
                      /Alias="Miro_145"
                      /Name="Miro_145"
@@ -1053,46 +2475,104 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_146"
      gene            complement(83223..83630)
                      /locus_tag="gene_145"
+     CDS             complement(83223..83618)
+                     /Name="Miro_147"
+                     /obsolete_name="Miro_017"
+                     /product="h"
      RBS             complement(83627..83630)
                      /Alias="Miro_147"
                      /Name="Miro_147"
+     CDS             complement(83223..83618)
+                     /Name="Miro_147"
+                     /obsolete_name="Miro_017"
+                     /product="h"
      RBS             complement(83627..83630)
                      /Alias="Miro_147"
                      /Name="Miro_147"
      gene            complement(83686..84337)
                      /locus_tag="gene_146"
+     CDS             complement(83686..84327)
+                     /Name="Miro_148"
+                     /note="T4 RegB-like"
+                     /obsolete_name="Miro_016"
+                     /product="e"
+                     /signal="signal peptidase II cleavage site 12-13"
      RBS             complement(84334..84337)
                      /Alias="Miro_148"
                      /Name="Miro_148"
+     CDS             complement(83686..84327)
+                     /Name="Miro_148"
+                     /note="T4 RegB-like"
+                     /obsolete_name="Miro_016"
+                     /product="e"
+                     /signal="signal peptidase II cleavage site 12-13"
      RBS             complement(84334..84337)
                      /Alias="Miro_148"
                      /Name="Miro_148"
      gene            complement(84392..84959)
                      /locus_tag="gene_147"
+     CDS             complement(84392..84946)
+                     /Name="Miro_149"
+                     /obsolete_name="Miro_015"
+                     /product="h"
      RBS             complement(84955..84959)
                      /Alias="Miro_149"
                      /Name="Miro_149"
+     CDS             complement(84392..84946)
+                     /Name="Miro_149"
+                     /obsolete_name="Miro_015"
+                     /product="h"
      RBS             complement(84955..84959)
                      /Alias="Miro_149"
                      /Name="Miro_149"
      gene            complement(85193..86549)
                      /locus_tag="gene_148"
+     CDS             complement(85193..86539)
+                     /Name="Miro_150"
+                     /note="contains PIN domain and P-loop containing nucleoside
+                     triphosphate hydrolase"
+                     /obsolete_name="Miro_014"
+                     /product="P"
      RBS             complement(86546..86549)
                      /Alias="Miro_150"
                      /Name="Miro_150"
+     CDS             complement(85193..86539)
+                     /Name="Miro_150"
+                     /note="contains PIN domain and P-loop containing nucleoside
+                     triphosphate hydrolase"
+                     /obsolete_name="Miro_014"
+                     /product="P"
      RBS             complement(86546..86549)
                      /Alias="Miro_150"
                      /Name="Miro_150"
      gene            complement(86549..87082)
                      /locus_tag="gene_149"
+     CDS             complement(86549..87073)
+                     /Name="Miro_151"
+                     /note="contains AP2/ERF domain"
+                     /obsolete_name="Miro_013"
+                     /product="H"
      RBS             complement(87079..87082)
                      /Alias="Miro_151"
                      /Name="Miro_151"
+     CDS             complement(86549..87073)
+                     /Name="Miro_151"
+                     /note="contains AP2/ERF domain"
+                     /obsolete_name="Miro_013"
+                     /product="H"
      gene            complement(87073..87540)
                      /locus_tag="gene_150"
+     CDS             complement(87073..87531)
+                     /Name="Miro_152"
+                     /obsolete_name="Miro_012"
+                     /product="h"
      RBS             complement(87537..87540)
                      /Alias="Miro_152"
                      /Name="Miro_152"
+     CDS             complement(87073..87531)
+                     /Name="Miro_152"
+                     /obsolete_name="Miro_012"
+                     /product="h"
      RBS             complement(87079..87082)
                      /Alias="Miro_151"
                      /Name="Miro_151"
@@ -1101,46 +2581,98 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_152"
      gene            complement(87563..87968)
                      /locus_tag="gene_151"
+     CDS             complement(87563..87958)
+                     /Name="Miro_153"
+                     /note="D-alanyl-D-alanine carboxypeptidase"
+                     /obsolete_name="Miro_011"
+                     /product="e"
      RBS             complement(87964..87968)
                      /Alias="Miro_153"
                      /Name="Miro_153"
+     CDS             complement(87563..87958)
+                     /Name="Miro_153"
+                     /note="D-alanyl-D-alanine carboxypeptidase"
+                     /obsolete_name="Miro_011"
+                     /product="e"
      RBS             complement(87964..87968)
                      /Alias="Miro_153"
                      /Name="Miro_153"
      gene            complement(88026..88439)
                      /locus_tag="gene_152"
+     CDS             complement(88026..88427)
+                     /Name="Miro_154"
+                     /obsolete_name="Miro_010"
+                     /product="h"
      RBS             complement(88436..88439)
                      /Alias="Miro_154"
                      /Name="Miro_154"
+     CDS             complement(88026..88427)
+                     /Name="Miro_154"
+                     /obsolete_name="Miro_010"
+                     /product="h"
      RBS             complement(88436..88439)
                      /Alias="Miro_154"
                      /Name="Miro_154"
      gene            complement(88482..88815)
                      /locus_tag="gene_153"
+     CDS             complement(88482..88805)
+                     /Name="Miro_155"
+                     /obsolete_name="Miro_009"
+                     /product="h"
      RBS             complement(88812..88815)
                      /Alias="Miro_155"
                      /Name="Miro_155"
+     CDS             complement(88482..88805)
+                     /Name="Miro_155"
+                     /obsolete_name="Miro_009"
+                     /product="h"
      RBS             complement(88812..88815)
                      /Alias="Miro_155"
                      /Name="Miro_155"
      gene            complement(88845..89119)
                      /locus_tag="gene_154"
+     CDS             complement(88845..89108)
+                     /Name="Miro_156"
+                     /obsolete_name="Miro_008"
+                     /product="h"
      RBS             complement(89115..89119)
                      /Alias="Miro_156"
                      /Name="Miro_156"
+     CDS             complement(88845..89108)
+                     /Name="Miro_156"
+                     /obsolete_name="Miro_008"
+                     /product="h"
      RBS             complement(89115..89119)
                      /Alias="Miro_156"
                      /Name="Miro_156"
      gene            complement(89178..89447)
                      /locus_tag="gene_155"
+     CDS             complement(89178..89438)
+                     /Name="Miro_157"
+                     /obsolete_name="Miro_007"
+                     /product="h"
+                     /signal="signal peptidase II cleavage site 19-20"
      RBS             complement(89445..89447)
                      /Alias="Miro_157"
                      /Name="Miro_157"
+     CDS             complement(89178..89438)
+                     /Name="Miro_157"
+                     /obsolete_name="Miro_007"
+                     /product="h"
+                     /signal="signal peptidase II cleavage site 19-20"
      gene            complement(89440..89880)
                      /locus_tag="gene_156"
+     CDS             complement(89440..89871)
+                     /Name="Miro_158"
+                     /obsolete_name="Miro_006"
+                     /product="h"
      RBS             complement(89878..89880)
                      /Alias="Miro_158"
                      /Name="Miro_158"
+     CDS             complement(89440..89871)
+                     /Name="Miro_158"
+                     /obsolete_name="Miro_006"
+                     /product="h"
      RBS             complement(89445..89447)
                      /Alias="Miro_157"
                      /Name="Miro_157"
@@ -1149,38 +2681,80 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_158"
      gene            complement(89882..90064)
                      /locus_tag="gene_157"
+     CDS             complement(89882..90055)
+                     /Name="Miro_159"
+                     /obsolete_name="Miro_005"
+                     /product="h"
      RBS             complement(90061..90064)
                      /Alias="Miro_159"
                      /Name="Miro_159"
+     CDS             complement(89882..90055)
+                     /Name="Miro_159"
+                     /obsolete_name="Miro_005"
+                     /product="h"
      gene            complement(90052..90410)
                      /locus_tag="gene_158"
+     CDS             complement(90052..90399)
+                     /Name="Miro_160"
+                     /obsolete_name="Miro_004"
+                     /product="h"
      RBS             complement(90406..90410)
                      /Alias="Miro_160"
                      /Name="Miro_160"
+     CDS             complement(90052..90399)
+                     /Name="Miro_160"
+                     /obsolete_name="Miro_004"
+                     /product="h"
      RBS             complement(90061..90064)
                      /Alias="Miro_159"
                      /Name="Miro_159"
      gene            complement(90380..90770)
                      /locus_tag="gene_159"
+     CDS             complement(90380..90760)
+                     /Name="Miro_161"
+                     /obsolete_name="Miro_003"
+                     /product="h"
      RBS             complement(90767..90770)
                      /Alias="Miro_161"
                      /Name="Miro_161"
+     CDS             complement(90380..90760)
+                     /Name="Miro_161"
+                     /obsolete_name="Miro_003"
+                     /product="h"
      RBS             complement(90406..90410)
                      /Alias="Miro_160"
                      /Name="Miro_160"
      gene            complement(90744..91055)
                      /locus_tag="gene_160"
+     CDS             complement(90744..91046)
+                     /Name="Miro_162"
+                     /obsolete_name="Miro_002"
+                     /product="h"
      RBS             complement(91053..91055)
                      /Alias="Miro_162"
                      /Name="Miro_162"
+     CDS             complement(90744..91046)
+                     /Name="Miro_162"
+                     /obsolete_name="Miro_002"
+                     /product="h"
      RBS             complement(90767..90770)
                      /Alias="Miro_161"
                      /Name="Miro_161"
      gene            complement(91043..92201)
                      /locus_tag="gene_161"
+     CDS             complement(91043..92197)
+                     /Name="Miro_163"
+                     /note="contains 4Fe4S-binding SPASM domain"
+                     /obsolete_name="Miro_001"
+                     /product="r"
      RBS             92198..92201
                      /Alias="Miro_163"
                      /Name="Miro_163"
+     CDS             complement(91043..92197)
+                     /Name="Miro_163"
+                     /note="contains 4Fe4S-binding SPASM domain"
+                     /obsolete_name="Miro_001"
+                     /product="r"
      RBS             complement(91053..91055)
                      /Alias="Miro_162"
                      /Name="Miro_162"
@@ -1189,36 +2763,78 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_163"
      gene            92203..92938
                      /locus_tag="gene_162"
+     CDS             92210..92938
+                     /Alias="Miro_164"
+                     /Name="Miro_164"
+                     /obsolete_name="Miro_276"
+                     /product="h"
      RBS             complement(92203..92206)
                      /Name="Miro_164"
      RBS             complement(92203..92206)
                      /Name="Miro_164"
+     CDS             92210..92938
+                     /Alias="Miro_164"
+                     /Name="Miro_164"
+                     /obsolete_name="Miro_276"
+                     /product="h"
      gene            complement(92931..93195)
                      /locus_tag="gene_163"
+     CDS             complement(92931..93185)
+                     /Name="Miro_165"
+                     /obsolete_name="Miro_275"
+                     /product="h"
      RBS             complement(93192..93195)
                      /Alias="Miro_165"
                      /Name="Miro_165"
+     CDS             complement(92931..93185)
+                     /Name="Miro_165"
+                     /obsolete_name="Miro_275"
+                     /product="h"
      RBS             complement(93192..93195)
                      /Alias="Miro_165"
                      /Name="Miro_165"
      gene            complement(93252..93463)
                      /locus_tag="gene_164"
+     CDS             complement(93252..93452)
+                     /Name="Miro_166"
+                     /obsolete_name="Miro_274"
+                     /product="h"
      RBS             complement(93461..93463)
                      /Alias="Miro_166"
                      /Name="Miro_166"
+     CDS             complement(93252..93452)
+                     /Name="Miro_166"
+                     /obsolete_name="Miro_274"
+                     /product="h"
      gene            complement(93449..93607)
                      /locus_tag="gene_165"
+     CDS             complement(93449..93595)
+                     /Name="Miro_167"
+                     /obsolete_name="Miro_273"
+                     /product="h"
      RBS             complement(93605..93607)
                      /Alias="Miro_167"
                      /Name="Miro_167"
+     CDS             complement(93449..93595)
+                     /Name="Miro_167"
+                     /obsolete_name="Miro_273"
+                     /product="h"
      RBS             complement(93461..93463)
                      /Alias="Miro_166"
                      /Name="Miro_166"
      gene            complement(93592..93854)
                      /locus_tag="gene_166"
+     CDS             complement(93592..93843)
+                     /Name="Miro_168"
+                     /obsolete_name="Miro_272"
+                     /product="h"
      RBS             complement(93849..93854)
                      /Alias="Miro_168"
                      /Name="Miro_168"
+     CDS             complement(93592..93843)
+                     /Name="Miro_168"
+                     /obsolete_name="Miro_272"
+                     /product="h"
      RBS             complement(93605..93607)
                      /Alias="Miro_167"
                      /Name="Miro_167"
@@ -1227,38 +2843,80 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_168"
      gene            complement(93915..94204)
                      /locus_tag="gene_167"
+     CDS             complement(93915..94193)
+                     /Name="Miro_169"
+                     /obsolete_name="Miro_271"
+                     /product="h"
      RBS             complement(94201..94204)
                      /Alias="Miro_169"
                      /Name="Miro_169"
+     CDS             complement(93915..94193)
+                     /Name="Miro_169"
+                     /obsolete_name="Miro_271"
+                     /product="h"
      RBS             complement(94201..94204)
                      /Alias="Miro_169"
                      /Name="Miro_169"
      gene            complement(94533..95117)
                      /locus_tag="gene_168"
+     CDS             complement(94533..95108)
+                     /Name="Miro_170"
+                     /obsolete_name="Miro_270"
+                     /product="h"
      RBS             complement(95114..95117)
                      /Alias="Miro_170"
                      /Name="Miro_170"
+     CDS             complement(94533..95108)
+                     /Name="Miro_170"
+                     /obsolete_name="Miro_270"
+                     /product="h"
      RBS             complement(95114..95117)
                      /Alias="Miro_170"
                      /Name="Miro_170"
      gene            complement(95116..95524)
                      /locus_tag="gene_169"
+     CDS             complement(95116..95514)
+                     /Name="Miro_171"
+                     /obsolete_name="Miro_269"
+                     /product="h"
      RBS             complement(95520..95524)
                      /Alias="Miro_171"
                      /Name="Miro_171"
+     CDS             complement(95116..95514)
+                     /Name="Miro_171"
+                     /obsolete_name="Miro_269"
+                     /product="h"
      gene            complement(95498..95705)
                      /locus_tag="gene_170"
+     CDS             complement(95498..95692)
+                     /Name="Miro_172"
+                     /note="heat shock protein DnaJ, cysteine-rich domain"
+                     /obsolete_name="Miro_268"
+                     /product="h"
      RBS             complement(95702..95705)
                      /Alias="Miro_172"
                      /Name="Miro_172"
+     CDS             complement(95498..95692)
+                     /Name="Miro_172"
+                     /note="heat shock protein DnaJ, cysteine-rich domain"
+                     /obsolete_name="Miro_268"
+                     /product="h"
      RBS             complement(95520..95524)
                      /Alias="Miro_171"
                      /Name="Miro_171"
      gene            complement(95689..95900)
                      /locus_tag="gene_171"
+     CDS             complement(95689..95889)
+                     /Name="Miro_173"
+                     /obsolete_name="Miro_267"
+                     /product="h"
      RBS             complement(95897..95900)
                      /Alias="Miro_173"
                      /Name="Miro_173"
+     CDS             complement(95689..95889)
+                     /Name="Miro_173"
+                     /obsolete_name="Miro_267"
+                     /product="h"
      RBS             complement(95702..95705)
                      /Alias="Miro_172"
                      /Name="Miro_172"
@@ -1267,22 +2925,48 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_173"
      gene            complement(95966..96891)
                      /locus_tag="gene_172"
+     CDS             complement(95966..96880)
+                     /Name="Miro_174"
+                     /obsolete_name="Miro_266"
+                     /product="h"
      RBS             complement(96889..96891)
                      /Alias="Miro_174"
                      /Name="Miro_174"
+     CDS             complement(95966..96880)
+                     /Name="Miro_174"
+                     /obsolete_name="Miro_266"
+                     /product="h"
      gene            complement(96877..97416)
                      /locus_tag="gene_173"
+     CDS             complement(96877..97404)
+                     /Name="Miro_175"
+                     /obsolete_name="Miro_265"
+                     /product="h"
      RBS             complement(97414..97416)
                      /Alias="Miro_175"
                      /Name="Miro_175"
+     CDS             complement(96877..97404)
+                     /Name="Miro_175"
+                     /obsolete_name="Miro_265"
+                     /product="h"
      RBS             complement(96889..96891)
                      /Alias="Miro_174"
                      /Name="Miro_174"
      gene            complement(97404..97739)
                      /locus_tag="gene_174"
+     CDS             complement(97404..97727)
+                     /Name="Miro_176"
+                     /obsolete_name="Miro_264"
+                     /product="h"
+                     /tmhelix="1 TMD (84-106) N in, C out"
      RBS             complement(97736..97739)
                      /Alias="Miro_176"
                      /Name="Miro_176"
+     CDS             complement(97404..97727)
+                     /Name="Miro_176"
+                     /obsolete_name="Miro_264"
+                     /product="h"
+                     /tmhelix="1 TMD (84-106) N in, C out"
      RBS             complement(97414..97416)
                      /Alias="Miro_175"
                      /Name="Miro_175"
@@ -1291,14 +2975,30 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_176"
      gene            complement(97756..98022)
                      /locus_tag="gene_175"
+     CDS             complement(97756..98013)
+                     /Name="Miro_177"
+                     /obsolete_name="Miro_263"
+                     /product="h"
      RBS             complement(98020..98022)
                      /Alias="Miro_177"
                      /Name="Miro_177"
+     CDS             complement(97756..98013)
+                     /Name="Miro_177"
+                     /obsolete_name="Miro_263"
+                     /product="h"
      gene            complement(98015..98410)
                      /locus_tag="gene_176"
+     CDS             complement(98015..98398)
+                     /Name="Miro_178"
+                     /obsolete_name="Miro_262"
+                     /product="h"
      RBS             complement(98408..98410)
                      /Alias="Miro_178"
                      /Name="Miro_178"
+     CDS             complement(98015..98398)
+                     /Name="Miro_178"
+                     /obsolete_name="Miro_262"
+                     /product="h"
      RBS             complement(98020..98022)
                      /Alias="Miro_177"
                      /Name="Miro_177"
@@ -1307,38 +3007,82 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_178"
      gene            complement(98409..98826)
                      /locus_tag="gene_177"
+     CDS             complement(98409..98816)
+                     /Name="Miro_179"
+                     /obsolete_name="Miro_261"
+                     /product="N"
      RBS             complement(98823..98826)
                      /Alias="Miro_179"
                      /Name="Miro_179"
+     CDS             complement(98409..98816)
+                     /Name="Miro_179"
+                     /obsolete_name="Miro_261"
+                     /product="N"
      gene            complement(98817..99074)
                      /locus_tag="gene_178"
+     CDS             complement(98817..99062)
+                     /Name="Miro_180"
+                     /obsolete_name="Miro_260"
+                     /product="h"
      RBS             complement(99072..99074)
                      /Alias="Miro_180"
                      /Name="Miro_180"
+     CDS             complement(98817..99062)
+                     /Name="Miro_180"
+                     /obsolete_name="Miro_260"
+                     /product="h"
      RBS             complement(98823..98826)
                      /Alias="Miro_179"
                      /Name="Miro_179"
      gene            complement(99059..99328)
                      /locus_tag="gene_179"
+     CDS             complement(99059..99310)
+                     /Name="Miro_181"
+                     /obsolete_name="Miro_259"
+                     /product="h"
      RBS             complement(99325..99328)
                      /Alias="Miro_181"
                      /Name="Miro_181"
+     CDS             complement(99059..99310)
+                     /Name="Miro_181"
+                     /obsolete_name="Miro_259"
+                     /product="h"
      RBS             complement(99072..99074)
                      /Alias="Miro_180"
                      /Name="Miro_180"
      gene            complement(99303..99611)
                      /locus_tag="gene_180"
+     CDS             complement(99303..99596)
+                     /Name="Miro_182"
+                     /obsolete_name="Miro_258"
+                     /product="h"
      RBS             complement(99609..99611)
                      /Alias="Miro_182"
                      /Name="Miro_182"
+     CDS             complement(99303..99596)
+                     /Name="Miro_182"
+                     /obsolete_name="Miro_258"
+                     /product="h"
      RBS             complement(99325..99328)
                      /Alias="Miro_181"
                      /Name="Miro_181"
      gene            complement(99593..99940)
                      /locus_tag="gene_181"
+     CDS             complement(99593..99928)
+                     /Name="Miro_183"
+                     /note="contains heat shock protein DnaJ, cysteine-rich
+                     domain"
+                     /obsolete_name="Miro_257"
+                     /product="h"
      RBS             complement(99938..99940)
                      /Alias="Miro_183"
                      /Name="Miro_183"
+     CDS             complement(99593..99928)
+                     /Name="Miro_183"
+                     /note="contains heat shock protein DnaJ, cysteine-rich
+                     domain"
+                     /obsolete_name="Miro_257"
+                     /product="h"
      RBS             complement(99609..99611)
                      /Alias="Miro_182"
                      /Name="Miro_182"
@@ -1347,54 +3091,116 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_183"
      gene            complement(99939..100090)
                      /locus_tag="gene_182"
+     CDS             complement(99939..100079)
+                     /Name="Miro_184"
+                     /obsolete_name="Miro_256"
+                     /product="h"
+                     /tmhelix="1 TMD (19-41) N in, C out"
      RBS             complement(100085..100090)
                      /Alias="Miro_184"
                      /Name="Miro_184"
+     CDS             complement(99939..100079)
+                     /Name="Miro_184"
+                     /obsolete_name="Miro_256"
+                     /product="h"
+                     /tmhelix="1 TMD (19-41) N in, C out"
      RBS             complement(100085..100090)
                      /Alias="Miro_184"
                      /Name="Miro_184"
      gene            complement(100169..100320)
                      /locus_tag="gene_183"
+     CDS             complement(100169..100309)
+                     /Name="Miro_185"
+                     /obsolete_name="Miro_255"
+                     /product="h"
      RBS             complement(100315..100320)
                      /Alias="Miro_185"
                      /Name="Miro_185"
+     CDS             complement(100169..100309)
+                     /Name="Miro_185"
+                     /obsolete_name="Miro_255"
+                     /product="h"
      RBS             complement(100315..100320)
                      /Alias="Miro_185"
                      /Name="Miro_185"
      gene            complement(100375..100923)
                      /locus_tag="gene_184"
+     CDS             complement(100375..100914)
+                     /Name="Miro_186"
+                     /obsolete_name="Miro_254"
+                     /product="h"
      RBS             complement(100920..100923)
                      /Alias="Miro_186"
                      /Name="Miro_186"
+     CDS             complement(100375..100914)
+                     /Name="Miro_186"
+                     /obsolete_name="Miro_254"
+                     /product="h"
      RBS             complement(100920..100923)
                      /Alias="Miro_186"
                      /Name="Miro_186"
      gene            complement(100922..101554)
                      /locus_tag="gene_185"
+     CDS             complement(100922..101545)
+                     /Name="Miro_187"
+                     /obsolete_name="Miro_253"
+                     /product="h"
      RBS             complement(101551..101554)
                      /Alias="Miro_187"
                      /Name="Miro_187"
+     CDS             complement(100922..101545)
+                     /Name="Miro_187"
+                     /obsolete_name="Miro_253"
+                     /product="h"
      RBS             complement(101551..101554)
                      /Alias="Miro_187"
                      /Name="Miro_187"
      gene            complement(101597..101867)
                      /locus_tag="gene_186"
+     CDS             complement(101597..101857)
+                     /Name="Miro_188"
+                     /obsolete_name="Miro_252"
+                     /product="h"
      RBS             complement(101864..101867)
                      /Alias="Miro_188"
                      /Name="Miro_188"
+     CDS             complement(101597..101857)
+                     /Name="Miro_188"
+                     /obsolete_name="Miro_252"
+                     /product="h"
      RBS             complement(101864..101867)
                      /Alias="Miro_188"
                      /Name="Miro_188"
      gene            complement(101872..102579)
                      /locus_tag="gene_187"
+     CDS             complement(101872..102567)
+                     /Name="Miro_189"
+                     /note="contains P-loop NTPase domain"
+                     /obsolete_name="Miro_251"
+                     /product="h"
      RBS             complement(102577..102579)
                      /Alias="Miro_189"
                      /Name="Miro_189"
+     CDS             complement(101872..102567)
+                     /Name="Miro_189"
+                     /note="contains P-loop NTPase domain"
+                     /obsolete_name="Miro_251"
+                     /product="h"
      gene            complement(102567..103107)
                      /locus_tag="gene_188"
+     CDS             complement(102567..103097)
+                     /Name="Miro_190"
+                     /note="T4 gp19-like"
+                     /obsolete_name="Miro_250"
+                     /product="t"
      RBS             complement(103103..103107)
                      /Alias="Miro_190"
                      /Name="Miro_190"
+     CDS             complement(102567..103097)
+                     /Name="Miro_190"
+                     /note="T4 gp19-like"
+                     /obsolete_name="Miro_250"
+                     /product="t"
      RBS             complement(102577..102579)
                      /Alias="Miro_189"
                      /Name="Miro_189"
@@ -1403,490 +3209,1354 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_190"
      gene            103455..104255
                      /locus_tag="gene_189"
+     CDS             103467..104255
+                     /Alias="Miro_191"
+                     /Name="Miro_191"
+                     /obsolete_name="Miro_249"
+                     /product="h"
      RBS             103455..103458
                      /Name="Miro_191"
      RBS             103455..103458
                      /Name="Miro_191"
+     CDS             103467..104255
+                     /Alias="Miro_191"
+                     /Name="Miro_191"
+                     /obsolete_name="Miro_249"
+                     /product="h"
      gene            104349..104819
                      /locus_tag="gene_190"
+     CDS             104361..104819
+                     /Alias="Miro_192"
+                     /Name="Miro_192"
+                     /note="contains AP2/ERF domain"
+                     /obsolete_name="Miro_248"
+                     /product="h"
      RBS             104349..104351
                      /Name="Miro_192"
      RBS             104349..104351
                      /Name="Miro_192"
+     CDS             104361..104819
+                     /Alias="Miro_192"
+                     /Name="Miro_192"
+                     /note="contains AP2/ERF domain"
+                     /obsolete_name="Miro_248"
+                     /product="h"
      gene            complement(104839..105703)
                      /locus_tag="gene_191"
+     CDS             complement(104839..105693)
+                     /Name="Miro_193"
+                     /obsolete_name="Miro_247"
+                     /product="h"
      RBS             complement(105699..105703)
                      /Alias="Miro_193"
                      /Name="Miro_193"
+     CDS             complement(104839..105693)
+                     /Name="Miro_193"
+                     /obsolete_name="Miro_247"
+                     /product="h"
      RBS             complement(105699..105703)
                      /Alias="Miro_193"
                      /Name="Miro_193"
      gene            complement(105709..106188)
                      /locus_tag="gene_192"
+     CDS             complement(105709..106176)
+                     /Name="Miro_194"
+                     /obsolete_name="Miro_246"
+                     /product="r"
      RBS             complement(106185..106188)
                      /Alias="Miro_194"
                      /Name="Miro_194"
+     CDS             complement(105709..106176)
+                     /Name="Miro_194"
+                     /obsolete_name="Miro_246"
+                     /product="r"
      RBS             complement(106185..106188)
                      /Alias="Miro_194"
                      /Name="Miro_194"
      gene            106215..106781
                      /locus_tag="gene_193"
+     CDS             106227..106781
+                     /Alias="Miro_195"
+                     /Name="Miro_195"
+                     /note="T4 gp53-like"
+                     /obsolete_name="Miro_245"
+                     /product="b"
      RBS             106215..106218
                      /Name="Miro_195"
      RBS             106215..106218
                      /Name="Miro_195"
+     CDS             106227..106781
+                     /Alias="Miro_195"
+                     /Name="Miro_195"
+                     /note="T4 gp53-like"
+                     /obsolete_name="Miro_245"
+                     /product="b"
      gene            106763..108547
                      /locus_tag="gene_194"
+     CDS             106778..108547
+                     /Alias="Miro_196"
+                     /Name="Miro_196"
+                     /note="T4 gp5-like"
+                     /obsolete_name="Miro_244"
+                     /product="b"
      RBS             106763..106765
                      /Name="Miro_196"
      RBS             106763..106765
                      /Name="Miro_196"
+     CDS             106778..108547
+                     /Alias="Miro_196"
+                     /Name="Miro_196"
+                     /note="T4 gp5-like"
+                     /obsolete_name="Miro_244"
+                     /product="b"
      gene            108542..110618
                      /locus_tag="gene_195"
+     CDS             108552..110618
+                     /Alias="Miro_197"
+                     /Name="Miro_197"
+                     /obsolete_name="Miro_243"
+                     /product="h"
      RBS             108542..108545
                      /Name="Miro_197"
      RBS             108542..108545
                      /Name="Miro_197"
+     CDS             108552..110618
+                     /Alias="Miro_197"
+                     /Name="Miro_197"
+                     /obsolete_name="Miro_243"
+                     /product="h"
      gene            110635..112575
                      /locus_tag="gene_196"
+     CDS             110650..112575
+                     /Alias="Miro_198"
+                     /Name="Miro_198"
+                     /obsolete_name="Miro_242"
+                     /product="h"
      RBS             110635..110638
                      /Name="Miro_198"
      RBS             110635..110638
                      /Name="Miro_198"
+     CDS             110650..112575
+                     /Alias="Miro_198"
+                     /Name="Miro_198"
+                     /obsolete_name="Miro_242"
+                     /product="h"
      gene            112645..115742
                      /locus_tag="gene_197"
+     CDS             112656..115742
+                     /Alias="Miro_199"
+                     /Name="Miro_199"
+                     /obsolete_name="Miro_241"
+                     /product="h"
      RBS             112645..112648
                      /Name="Miro_199"
      RBS             112645..112648
                      /Name="Miro_199"
+     CDS             112656..115742
+                     /Alias="Miro_199"
+                     /Name="Miro_199"
+                     /obsolete_name="Miro_241"
+                     /product="h"
      gene            115729..116735
                      /locus_tag="gene_198"
+     CDS             115743..116735
+                     /Alias="Miro_200"
+                     /Name="Miro_200"
+                     /note="T4 gp6-like"
+                     /obsolete_name="Miro_240"
+                     /product="b"
      RBS             115729..115732
                      /Name="Miro_200"
      RBS             115729..115732
                      /Name="Miro_200"
+     CDS             115743..116735
+                     /Alias="Miro_200"
+                     /Name="Miro_200"
+                     /note="T4 gp6-like"
+                     /obsolete_name="Miro_240"
+                     /product="b"
      gene            116735..117608
                      /locus_tag="gene_199"
+     CDS             116745..117608
+                     /Alias="Miro_201"
+                     /Name="Miro_201"
+                     /note="T4 gp9/gp10-like"
+                     /obsolete_name="Miro_239"
+                     /product="b"
      RBS             116735..116738
                      /Name="Miro_201"
      RBS             116735..116738
                      /Name="Miro_201"
+     CDS             116745..117608
+                     /Alias="Miro_201"
+                     /Name="Miro_201"
+                     /note="T4 gp9/gp10-like"
+                     /obsolete_name="Miro_239"
+                     /product="b"
      gene            117595..119422
                      /locus_tag="gene_200"
+     CDS             117605..119422
+                     /Alias="Miro_202"
+                     /Name="Miro_202"
+                     /note="T4 gp9/gp10-like"
+                     /obsolete_name="Miro_238"
+                     /product="b"
      RBS             117595..117597
                      /Name="Miro_202"
      RBS             117595..117597
                      /Name="Miro_202"
+     CDS             117605..119422
+                     /Alias="Miro_202"
+                     /Name="Miro_202"
+                     /note="T4 gp9/gp10-like"
+                     /obsolete_name="Miro_238"
+                     /product="b"
      gene            119412..120090
                      /locus_tag="gene_201"
+     CDS             119422..120090
+                     /Alias="Miro_203"
+                     /Name="Miro_203"
+                     /note="T4 gp11-like"
+                     /obsolete_name="Miro_237"
+                     /product="b"
      RBS             119412..119415
                      /Name="Miro_203"
      RBS             119412..119415
                      /Name="Miro_203"
+     CDS             119422..120090
+                     /Alias="Miro_203"
+                     /Name="Miro_203"
+                     /note="T4 gp11-like"
+                     /obsolete_name="Miro_237"
+                     /product="b"
      gene            120090..121485
                      /locus_tag="gene_202"
+     CDS             120100..121485
+                     /Alias="Miro_204"
+                     /Name="Miro_204"
+                     /note="T4 gp12-like"
+                     /obsolete_name="Miro_236"
+                     /product="s"
      RBS             120090..120093
                      /Name="Miro_204"
      RBS             120090..120093
                      /Name="Miro_204"
+     CDS             120100..121485
+                     /Alias="Miro_204"
+                     /Name="Miro_204"
+                     /note="T4 gp12-like"
+                     /obsolete_name="Miro_236"
+                     /product="s"
      gene            121485..123247
                      /locus_tag="gene_203"
+     CDS             121496..123247
+                     /Alias="Miro_205"
+                     /Name="Miro_205"
+                     /note="T4 fibritin-like"
+                     /obsolete_name="Miro_235"
+                     /product="n"
      RBS             121485..121489
                      /Name="Miro_205"
      RBS             121485..121489
                      /Name="Miro_205"
+     CDS             121496..123247
+                     /Alias="Miro_205"
+                     /Name="Miro_205"
+                     /note="T4 fibritin-like"
+                     /obsolete_name="Miro_235"
+                     /product="n"
      gene            123276..124212
                      /locus_tag="gene_204"
+     CDS             123286..124212
+                     /Alias="Miro_206"
+                     /Name="Miro_206"
+                     /obsolete_name="Miro_234"
+                     /product="h"
      RBS             123276..123279
                      /Name="Miro_206"
      RBS             123276..123279
                      /Name="Miro_206"
+     CDS             123286..124212
+                     /Alias="Miro_206"
+                     /Name="Miro_206"
+                     /obsolete_name="Miro_234"
+                     /product="h"
      gene            124212..124968
                      /locus_tag="gene_205"
+     CDS             124222..124968
+                     /Alias="Miro_207"
+                     /Name="Miro_207"
+                     /note="T4 gp14-like"
+                     /obsolete_name="Miro_233"
+                     /product="n"
      RBS             124212..124216
                      /Name="Miro_207"
      RBS             124212..124216
                      /Name="Miro_207"
+     CDS             124222..124968
+                     /Alias="Miro_207"
+                     /Name="Miro_207"
+                     /note="T4 gp14-like"
+                     /obsolete_name="Miro_233"
+                     /product="n"
      gene            125036..125872
                      /locus_tag="gene_206"
+     CDS             125048..125872
+                     /Alias="Miro_208"
+                     /Name="Miro_208"
+                     /obsolete_name="Miro_232"
+                     /product="h"
      RBS             125036..125039
                      /Name="Miro_208"
      RBS             125036..125039
                      /Name="Miro_208"
+     CDS             125048..125872
+                     /Alias="Miro_208"
+                     /Name="Miro_208"
+                     /obsolete_name="Miro_232"
+                     /product="h"
      gene            125860..126369
                      /locus_tag="gene_207"
+     CDS             125872..126369
+                     /Alias="Miro_209"
+                     /Name="Miro_209"
+                     /note="T4 gp16-like"
+                     /obsolete_name="Miro_231"
+                     /product="t"
      RBS             125860..125863
                      /Name="Miro_209"
      RBS             125860..125863
                      /Name="Miro_209"
+     CDS             125872..126369
+                     /Alias="Miro_209"
+                     /Name="Miro_209"
+                     /note="T4 gp16-like"
+                     /obsolete_name="Miro_231"
+                     /product="t"
      gene            126351..128186
                      /locus_tag="gene_208"
+     CDS             126366..128186
+                     /Alias="Miro_210"
+                     /Name="Miro_210"
+                     /note="T4 gp17-like"
+                     /obsolete_name="Miro_230"
+                     /product="t"
      RBS             126351..126353
                      /Name="Miro_210"
      RBS             126351..126353
                      /Name="Miro_210"
+     CDS             126366..128186
+                     /Alias="Miro_210"
+                     /Name="Miro_210"
+                     /note="T4 gp17-like"
+                     /obsolete_name="Miro_230"
+                     /product="t"
      gene            128192..130197
                      /locus_tag="gene_209"
+     CDS             128206..130197
+                     /Alias="Miro_211"
+                     /Name="Miro_211"
+                     /note="T4 gp18-like"
+                     /obsolete_name="Miro_229"
+                     /product="t"
      RBS             128192..128195
                      /Name="Miro_211"
      RBS             128192..128195
                      /Name="Miro_211"
+     CDS             128206..130197
+                     /Alias="Miro_211"
+                     /Name="Miro_211"
+                     /note="T4 gp18-like"
+                     /obsolete_name="Miro_229"
+                     /product="t"
      gene            130235..130731
                      /locus_tag="gene_210"
+     CDS             130246..130731
+                     /Alias="Miro_212"
+                     /Name="Miro_212"
+                     /note="T4 gp19-like"
+                     /obsolete_name="Miro_228"
+                     /product="t"
      RBS             130235..130239
                      /Name="Miro_212"
      RBS             130235..130239
                      /Name="Miro_212"
+     CDS             130246..130731
+                     /Alias="Miro_212"
+                     /Name="Miro_212"
+                     /note="T4 gp19-like"
+                     /obsolete_name="Miro_228"
+                     /product="t"
      gene            130777..132361
                      /locus_tag="gene_211"
+     CDS             130787..132361
+                     /Alias="Miro_213"
+                     /Name="Miro_213"
+                     /note="T4 gp20-like"
+                     /obsolete_name="Miro_227"
+                     /product="p"
      RBS             130777..130780
                      /Name="Miro_213"
      RBS             130777..130780
                      /Name="Miro_213"
+     CDS             130787..132361
+                     /Alias="Miro_213"
+                     /Name="Miro_213"
+                     /note="T4 gp20-like"
+                     /obsolete_name="Miro_227"
+                     /product="p"
      gene            132347..132603
                      /locus_tag="gene_212"
+     CDS             132361..132603
+                     /Alias="Miro_214"
+                     /Name="Miro_214"
+                     /obsolete_name="Miro_226"
+                     /product="h"
      RBS             132347..132350
                      /Name="Miro_214"
      RBS             132347..132350
                      /Name="Miro_214"
+     CDS             132361..132603
+                     /Alias="Miro_214"
+                     /Name="Miro_214"
+                     /obsolete_name="Miro_226"
+                     /product="h"
      gene            132602..133016
                      /locus_tag="gene_213"
+     CDS             132612..133016
+                     /Alias="Miro_215"
+                     /Name="Miro_215"
+                     /note="T4 gp68-like"
+                     /obsolete_name="Miro_225"
+                     /product="p"
      RBS             132602..132606
                      /Name="Miro_215"
      RBS             132602..132606
                      /Name="Miro_215"
+     CDS             132612..133016
+                     /Alias="Miro_215"
+                     /Name="Miro_215"
+                     /note="T4 gp68-like"
+                     /obsolete_name="Miro_225"
+                     /product="p"
      gene            133007..133666
                      /locus_tag="gene_214"
+     CDS             133019..133666
+                     /Alias="Miro_216"
+                     /Name="Miro_216"
+                     /note="T4 gp21-like"
+                     /obsolete_name="Miro_224"
+                     /product="p"
      RBS             133007..133010
                      /Name="Miro_216"
      RBS             133007..133010
                      /Name="Miro_216"
+     CDS             133019..133666
+                     /Alias="Miro_216"
+                     /Name="Miro_216"
+                     /note="T4 gp21-like"
+                     /obsolete_name="Miro_224"
+                     /product="p"
      gene            133686..134487
                      /locus_tag="gene_215"
+     CDS             133699..134487
+                     /Alias="Miro_217"
+                     /Name="Miro_217"
+                     /obsolete_name="Miro_223"
+                     /product="h"
      RBS             133686..133689
                      /Name="Miro_217"
      RBS             133686..133689
                      /Name="Miro_217"
+     CDS             133699..134487
+                     /Alias="Miro_217"
+                     /Name="Miro_217"
+                     /obsolete_name="Miro_223"
+                     /product="h"
      gene            134495..136075
                      /locus_tag="gene_216"
+     CDS             134507..136075
+                     /Alias="Miro_218"
+                     /Name="Miro_218"
+                     /note="T4 gp23/gp24-like"
+                     /obsolete_name="Miro_222"
+                     /product="m"
      RBS             134495..134498
                      /Name="Miro_218"
      RBS             134495..134498
                      /Name="Miro_218"
+     CDS             134507..136075
+                     /Alias="Miro_218"
+                     /Name="Miro_218"
+                     /note="T4 gp23/gp24-like"
+                     /obsolete_name="Miro_222"
+                     /product="m"
      gene            136157..136806
                      /locus_tag="gene_217"
+     CDS             136168..136806
+                     /Alias="Miro_219"
+                     /Name="Miro_219"
+                     /note="contains GIY-YIG domain"
+                     /obsolete_name="Miro_221"
+                     /product="h"
      RBS             136157..136160
                      /Name="Miro_219"
      RBS             136157..136160
                      /Name="Miro_219"
+     CDS             136168..136806
+                     /Alias="Miro_219"
+                     /Name="Miro_219"
+                     /note="contains GIY-YIG domain"
+                     /obsolete_name="Miro_221"
+                     /product="h"
      gene            136828..138128
                      /locus_tag="gene_218"
+     CDS             136839..138128
+                     /Alias="Miro_220"
+                     /Name="Miro_220"
+                     /note="T4 gp23/gp24-like"
+                     /obsolete_name="Miro_220"
+                     /product="m"
      RBS             136828..136831
                      /Name="Miro_220"
      RBS             136828..136831
                      /Name="Miro_220"
+     CDS             136839..138128
+                     /Alias="Miro_220"
+                     /Name="Miro_220"
+                     /note="T4 gp23/gp24-like"
+                     /obsolete_name="Miro_220"
+                     /product="m"
      gene            138424..138852
                      /locus_tag="gene_219"
+     CDS             138433..138852
+                     /Alias="Miro_221"
+                     /Name="Miro_221"
+                     /obsolete_name="Miro_219"
+                     /product="U"
      RBS             138424..138426
                      /Name="Miro_221"
      RBS             138424..138426
                      /Name="Miro_221"
+     CDS             138433..138852
+                     /Alias="Miro_221"
+                     /Name="Miro_221"
+                     /obsolete_name="Miro_219"
+                     /product="U"
      gene            138844..139028
                      /locus_tag="gene_220"
+     CDS             138852..139028
+                     /Alias="Miro_222"
+                     /Name="Miro_222"
+                     /obsolete_name="Miro_218"
+                     /product="h"
      RBS             138844..138846
                      /Name="Miro_222"
      RBS             138844..138846
                      /Name="Miro_222"
+     CDS             138852..139028
+                     /Alias="Miro_222"
+                     /Name="Miro_222"
+                     /obsolete_name="Miro_218"
+                     /product="h"
      gene            complement(139303..139545)
                      /locus_tag="gene_221"
+     CDS             complement(139303..139536)
+                     /Name="Miro_223"
+                     /note="T4 UvsW-like"
+                     /obsolete_name="Miro_217"
+                     /product="A"
      RBS             complement(139542..139545)
                      /Alias="Miro_223"
                      /Name="Miro_223"
+     CDS             complement(139303..139536)
+                     /Name="Miro_223"
+                     /note="T4 UvsW-like"
+                     /obsolete_name="Miro_217"
+                     /product="A"
      RBS             complement(139542..139545)
                      /Alias="Miro_223"
                      /Name="Miro_223"
      gene            complement(139545..141056)
                      /locus_tag="gene_222"
+     CDS             complement(139545..141044)
+                     /Name="Miro_224"
+                     /note="contains helicase superfamily and ATP-binding
+                     domains"
+                     /obsolete_name="Miro_216"
+                     /product="D"
      RBS             complement(141053..141056)
                      /Alias="Miro_224"
                      /Name="Miro_224"
+     CDS             complement(139545..141044)
+                     /Name="Miro_224"
+                     /note="contains helicase superfamily and ATP-binding
+                     domains"
+                     /obsolete_name="Miro_216"
+                     /product="D"
      RBS             complement(141053..141056)
                      /Alias="Miro_224"
                      /Name="Miro_224"
      gene            141104..141738
                      /locus_tag="gene_223"
+     CDS             141115..141738
+                     /Alias="Miro_225"
+                     /Name="Miro_225"
+                     /obsolete_name="Miro_215"
+                     /product="h"
      RBS             141104..141107
                      /Name="Miro_225"
      RBS             141104..141107
                      /Name="Miro_225"
+     CDS             141115..141738
+                     /Alias="Miro_225"
+                     /Name="Miro_225"
+                     /obsolete_name="Miro_215"
+                     /product="h"
      gene            141819..142142
                      /locus_tag="gene_224"
+     CDS             141831..142142
+                     /Alias="Miro_226"
+                     /Name="Miro_226"
+                     /obsolete_name="Miro_214"
+                     /product="h"
      RBS             141819..141822
                      /Name="Miro_226"
      RBS             141819..141822
                      /Name="Miro_226"
+     CDS             141831..142142
+                     /Alias="Miro_226"
+                     /Name="Miro_226"
+                     /obsolete_name="Miro_214"
+                     /product="h"
      gene            142173..142751
                      /locus_tag="gene_225"
+     CDS             142182..142751
+                     /Alias="Miro_227"
+                     /Name="Miro_227"
+                     /note="contains heat shock protein DNAJ domain"
+                     /obsolete_name="Miro_213"
+                     /product="h"
      RBS             142173..142176
                      /Name="Miro_227"
      RBS             142173..142176
                      /Name="Miro_227"
+     CDS             142182..142751
+                     /Alias="Miro_227"
+                     /Name="Miro_227"
+                     /note="contains heat shock protein DNAJ domain"
+                     /obsolete_name="Miro_213"
+                     /product="h"
      gene            142768..143313
                      /locus_tag="gene_226"
+     CDS             142780..143313
+                     /Alias="Miro_228"
+                     /Name="Miro_228"
+                     /note="contains Ig-like fold"
+                     /obsolete_name="Miro_212"
+                     /product="h"
      RBS             142768..142772
                      /Name="Miro_228"
      RBS             142768..142772
                      /Name="Miro_228"
+     CDS             142780..143313
+                     /Alias="Miro_228"
+                     /Name="Miro_228"
+                     /note="contains Ig-like fold"
+                     /obsolete_name="Miro_212"
+                     /product="h"
      gene            143314..143599
                      /locus_tag="gene_227"
+     CDS             143324..143599
+                     /Alias="Miro_229"
+                     /Name="Miro_229"
+                     /obsolete_name="Miro_211"
+                     /product="h"
      RBS             143314..143317
                      /Name="Miro_229"
      RBS             143314..143317
                      /Name="Miro_229"
+     CDS             143324..143599
+                     /Alias="Miro_229"
+                     /Name="Miro_229"
+                     /obsolete_name="Miro_211"
+                     /product="h"
      gene            143604..144131
                      /locus_tag="gene_228"
+     CDS             143613..144131
+                     /Alias="Miro_230"
+                     /Name="Miro_230"
+                     /obsolete_name="Miro_210"
+                     /product="h"
      RBS             143604..143606
                      /Name="Miro_230"
      RBS             143604..143606
                      /Name="Miro_230"
+     CDS             143613..144131
+                     /Alias="Miro_230"
+                     /Name="Miro_230"
+                     /obsolete_name="Miro_210"
+                     /product="h"
      gene            complement(144163..144638)
                      /locus_tag="gene_229"
+     CDS             complement(144163..144627)
+                     /Name="Miro_231"
+                     /note="contains HAD-like domain"
+                     /obsolete_name="Miro_209"
+                     /product="h"
      RBS             complement(144635..144638)
                      /Alias="Miro_231"
                      /Name="Miro_231"
+     CDS             complement(144163..144627)
+                     /Name="Miro_231"
+                     /note="contains HAD-like domain"
+                     /obsolete_name="Miro_209"
+                     /product="h"
      RBS             complement(144635..144638)
                      /Alias="Miro_231"
                      /Name="Miro_231"
      gene            complement(144677..145528)
                      /locus_tag="gene_230"
+     CDS             complement(144677..145516)
+                     /Name="Miro_232"
+                     /note="contains P-loop NTPase and zeta toxin domains"
+                     /obsolete_name="Miro_208"
+                     /product="h"
      RBS             complement(145525..145528)
                      /Alias="Miro_232"
                      /Name="Miro_232"
+     CDS             complement(144677..145516)
+                     /Name="Miro_232"
+                     /note="contains P-loop NTPase and zeta toxin domains"
+                     /obsolete_name="Miro_208"
+                     /product="h"
      RBS             complement(145525..145528)
                      /Alias="Miro_232"
                      /Name="Miro_232"
      gene            145620..146506
                      /locus_tag="gene_231"
+     CDS             145631..146506
+                     /Alias="Miro_233"
+                     /Name="Miro_233"
+                     /obsolete_name="Miro_207"
+                     /product="h"
      RBS             145620..145623
                      /Name="Miro_233"
      RBS             145620..145623
                      /Name="Miro_233"
+     CDS             145631..146506
+                     /Alias="Miro_233"
+                     /Name="Miro_233"
+                     /obsolete_name="Miro_207"
+                     /product="h"
      gene            146530..146856
                      /locus_tag="gene_232"
+     CDS             146539..146856
+                     /Alias="Miro_234"
+                     /Name="Miro_234"
+                     /obsolete_name="Miro_206"
+                     /product="h"
      RBS             146530..146533
                      /Name="Miro_234"
      RBS             146530..146533
                      /Name="Miro_234"
+     CDS             146539..146856
+                     /Alias="Miro_234"
+                     /Name="Miro_234"
+                     /obsolete_name="Miro_206"
+                     /product="h"
      gene            146845..147029
                      /locus_tag="gene_233"
+     CDS             146853..147029
+                     /Alias="Miro_235"
+                     /Name="Miro_235"
+                     /obsolete_name="Miro_205"
+                     /product="h"
+                     /tmhelix="2TMDs (5-27, 31-50) N in, C in"
      RBS             146845..146847
                      /Name="Miro_235"
      RBS             146845..146847
                      /Name="Miro_235"
+     CDS             146853..147029
+                     /Alias="Miro_235"
+                     /Name="Miro_235"
+                     /obsolete_name="Miro_205"
+                     /product="h"
+                     /tmhelix="2TMDs (5-27, 31-50) N in, C in"
      gene            147016..147352
                      /locus_tag="gene_234"
+     CDS             147026..147352
+                     /Alias="Miro_236"
+                     /Name="Miro_236"
+                     /obsolete_name="Miro_204"
+                     /product="h"
      RBS             147016..147019
                      /Name="Miro_236"
      RBS             147016..147019
                      /Name="Miro_236"
+     CDS             147026..147352
+                     /Alias="Miro_236"
+                     /Name="Miro_236"
+                     /obsolete_name="Miro_204"
+                     /product="h"
      gene            147343..147710
                      /locus_tag="gene_235"
+     CDS             147354..147710
+                     /Alias="Miro_237"
+                     /Name="Miro_237"
+                     /obsolete_name="Miro_203"
+                     /product="h"
      RBS             147343..147346
                      /Name="Miro_237"
      RBS             147343..147346
                      /Name="Miro_237"
+     CDS             147354..147710
+                     /Alias="Miro_237"
+                     /Name="Miro_237"
+                     /obsolete_name="Miro_203"
+                     /product="h"
      gene            147698..148234
                      /locus_tag="gene_236"
+     CDS             147710..148234
+                     /Alias="Miro_238"
+                     /Name="Miro_238"
+                     /obsolete_name="Miro_202"
+                     /product="h"
      RBS             147698..147701
                      /Name="Miro_238"
      RBS             147698..147701
                      /Name="Miro_238"
+     CDS             147710..148234
+                     /Alias="Miro_238"
+                     /Name="Miro_238"
+                     /obsolete_name="Miro_202"
+                     /product="h"
      gene            148228..149257
                      /locus_tag="gene_237"
+     CDS             148238..149257
+                     /Alias="Miro_239"
+                     /Name="Miro_239"
+                     /note="T4 Rnl2-like"
+                     /obsolete_name="Miro_201"
+                     /product="R"
      RBS             148228..148231
                      /Name="Miro_239"
      RBS             148228..148231
                      /Name="Miro_239"
+     CDS             148238..149257
+                     /Alias="Miro_239"
+                     /Name="Miro_239"
+                     /note="T4 Rnl2-like"
+                     /obsolete_name="Miro_201"
+                     /product="R"
      gene            149229..149828
                      /locus_tag="gene_238"
+     CDS             149247..149828
+                     /Alias="Miro_240"
+                     /Name="Miro_240"
+                     /obsolete_name="Miro_200"
+                     /product="h"
      RBS             149229..149232
                      /Name="Miro_240"
      RBS             149229..149232
                      /Name="Miro_240"
+     CDS             149247..149828
+                     /Alias="Miro_240"
+                     /Name="Miro_240"
+                     /obsolete_name="Miro_200"
+                     /product="h"
      gene            149813..150346
                      /locus_tag="gene_239"
+     CDS             149822..150346
+                     /Alias="Miro_241"
+                     /Name="Miro_241"
+                     /obsolete_name="Miro_199"
+                     /product="h"
      RBS             149813..149815
                      /Name="Miro_241"
      RBS             149813..149815
                      /Name="Miro_241"
+     CDS             149822..150346
+                     /Alias="Miro_241"
+                     /Name="Miro_241"
+                     /obsolete_name="Miro_199"
+                     /product="h"
      gene            150412..150684
                      /locus_tag="gene_240"
+     CDS             150424..150684
+                     /Alias="Miro_242"
+                     /Name="Miro_242"
+                     /obsolete_name="Miro_198"
+                     /product="h"
      RBS             150412..150415
                      /Name="Miro_242"
      RBS             150412..150415
                      /Name="Miro_242"
+     CDS             150424..150684
+                     /Alias="Miro_242"
+                     /Name="Miro_242"
+                     /obsolete_name="Miro_198"
+                     /product="h"
      gene            150684..151143
                      /locus_tag="gene_241"
+     CDS             150694..151143
+                     /Alias="Miro_243"
+                     /Name="Miro_243"
+                     /obsolete_name="Miro_197"
+                     /product="h"
      RBS             150684..150687
                      /Name="Miro_243"
      RBS             150684..150687
                      /Name="Miro_243"
+     CDS             150694..151143
+                     /Alias="Miro_243"
+                     /Name="Miro_243"
+                     /obsolete_name="Miro_197"
+                     /product="h"
      gene            151160..152604
                      /locus_tag="gene_242"
+     CDS             151171..152604
+                     /Alias="Miro_244"
+                     /Name="Miro_244"
+                     /note="contains quinolinate phosphoribosyl transferase
+                     domain"
+                     /obsolete_name="Miro_196"
+                     /product="n"
      RBS             151160..151163
                      /Name="Miro_244"
      RBS             151160..151163
                      /Name="Miro_244"
+     CDS             151171..152604
+                     /Alias="Miro_244"
+                     /Name="Miro_244"
+                     /note="contains quinolinate phosphoribosyl transferase
+                     domain"
+                     /obsolete_name="Miro_196"
+                     /product="n"
      gene            152576..152893
                      /locus_tag="gene_243"
+     CDS             152591..152893
+                     /Alias="Miro_245"
+                     /Name="Miro_245"
+                     /obsolete_name="Miro_195"
+                     /product="h"
      RBS             152576..152579
                      /Name="Miro_245"
      RBS             152576..152579
                      /Name="Miro_245"
+     CDS             152591..152893
+                     /Alias="Miro_245"
+                     /Name="Miro_245"
+                     /obsolete_name="Miro_195"
+                     /product="h"
      gene            153004..153741
                      /locus_tag="gene_244"
+     CDS             153016..153741
+                     /Alias="Miro_246"
+                     /Name="Miro_246"
+                     /note="T4-like"
+                     /obsolete_name="Miro_194"
+                     /product="D"
      RBS             153004..153006
                      /Name="Miro_246"
      RBS             153004..153006
                      /Name="Miro_246"
+     CDS             153016..153741
+                     /Alias="Miro_246"
+                     /Name="Miro_246"
+                     /note="T4-like"
+                     /obsolete_name="Miro_194"
+                     /product="D"
      gene            153741..154019
                      /locus_tag="gene_245"
+     CDS             153750..154019
+                     /Alias="Miro_247"
+                     /Name="Miro_247"
+                     /note="T4 NrdC-like"
+                     /obsolete_name="Miro_193"
+                     /product="g"
      RBS             153741..153744
                      /Name="Miro_247"
      RBS             153741..153744
                      /Name="Miro_247"
+     CDS             153750..154019
+                     /Alias="Miro_247"
+                     /Name="Miro_247"
+                     /note="T4 NrdC-like"
+                     /obsolete_name="Miro_193"
+                     /product="g"
      gene            154043..154534
                      /locus_tag="gene_246"
+     CDS             154052..154534
+                     /Alias="Miro_248"
+                     /Name="Miro_248"
+                     /note="T4 gp49-like"
+                     /obsolete_name="Miro_192"
+                     /product="r"
      RBS             154043..154045
                      /Name="Miro_248"
      RBS             154043..154045
                      /Name="Miro_248"
+     CDS             154052..154534
+                     /Alias="Miro_248"
+                     /Name="Miro_248"
+                     /note="T4 gp49-like"
+                     /obsolete_name="Miro_192"
+                     /product="r"
      gene            154521..154857
                      /locus_tag="gene_247"
+     CDS             154531..154857
+                     /Alias="Miro_249"
+                     /Name="Miro_249"
+                     /obsolete_name="Miro_191"
+                     /product="h"
      RBS             154521..154523
                      /Name="Miro_249"
      RBS             154521..154523
                      /Name="Miro_249"
+     CDS             154531..154857
+                     /Alias="Miro_249"
+                     /Name="Miro_249"
+                     /obsolete_name="Miro_191"
+                     /product="h"
      gene            154844..156977
                      /locus_tag="gene_248"
+     CDS             154854..156977
+                     /Alias="Miro_250"
+                     /Name="Miro_250"
+                     /note="T4-like; contains glycine radical domain"
+                     /obsolete_name="Miro_190"
+                     /product="a"
      RBS             154844..154846
                      /Name="Miro_250"
      RBS             154844..154846
                      /Name="Miro_250"
+     CDS             154854..156977
+                     /Alias="Miro_250"
+                     /Name="Miro_250"
+                     /note="T4-like; contains glycine radical domain"
+                     /obsolete_name="Miro_190"
+                     /product="a"
      gene            157033..157287
                      /locus_tag="gene_249"
+     CDS             157045..157287
+                     /Alias="Miro_251"
+                     /Name="Miro_251"
+                     /obsolete_name="Miro_189"
+                     /product="h"
      RBS             157033..157037
                      /Name="Miro_251"
      RBS             157033..157037
                      /Name="Miro_251"
+     CDS             157045..157287
+                     /Alias="Miro_251"
+                     /Name="Miro_251"
+                     /obsolete_name="Miro_189"
+                     /product="h"
      gene            157275..157781
                      /locus_tag="gene_250"
+     CDS             157287..157781
+                     /Alias="Miro_252"
+                     /Name="Miro_252"
+                     /obsolete_name="Miro_188"
+                     /product="h"
      RBS             157275..157278
                      /Name="Miro_252"
      RBS             157275..157278
                      /Name="Miro_252"
+     CDS             157287..157781
+                     /Alias="Miro_252"
+                     /Name="Miro_252"
+                     /obsolete_name="Miro_188"
+                     /product="h"
+     CDS             157781..157987
+                     /Name="Miro_253"
+                     /obsolete_name="Miro_187"
+                     /product="hypothetical conserved"
      gene            157997..158259
                      /locus_tag="gene_251"
+     CDS             158008..158259
+                     /Alias="Miro_254"
+                     /Name="Miro_254"
+                     /obsolete_name="Miro_186"
+                     /product="h"
      RBS             157997..158000
                      /Name="Miro_254"
      RBS             157997..158000
                      /Name="Miro_254"
+     CDS             158008..158259
+                     /Alias="Miro_254"
+                     /Name="Miro_254"
+                     /obsolete_name="Miro_186"
+                     /product="h"
      gene            158309..158511
                      /locus_tag="gene_252"
+     CDS             158320..158511
+                     /Alias="Miro_255"
+                     /Name="Miro_255"
+                     /obsolete_name="Miro_185"
+                     /product="h"
      RBS             158309..158314
                      /Name="Miro_255"
      RBS             158309..158314
                      /Name="Miro_255"
+     CDS             158320..158511
+                     /Alias="Miro_255"
+                     /Name="Miro_255"
+                     /obsolete_name="Miro_185"
+                     /product="h"
      gene            158528..159179
                      /locus_tag="gene_253"
+     CDS             158538..159179
+                     /Alias="Miro_256"
+                     /Name="Miro_256"
+                     /note="contains nuclease associated modular 3 and winged
+                     helix-turn-helix DNA-binding domains"
+                     /obsolete_name="Miro_184"
+                     /product="h"
      RBS             158528..158530
                      /Name="Miro_256"
      RBS             158528..158530
                      /Name="Miro_256"
+     CDS             158538..159179
+                     /Alias="Miro_256"
+                     /Name="Miro_256"
+                     /note="contains nuclease associated modular 3 and winged
+                     helix-turn-helix DNA-binding domains"
+                     /obsolete_name="Miro_184"
+                     /product="h"
      gene            159166..159667
                      /locus_tag="gene_254"
+     CDS             159176..159667
+                     /Alias="Miro_257"
+                     /Name="Miro_257"
+                     /note="T4 NrdG-like"
+                     /obsolete_name="Miro_183"
+                     /product="r"
      RBS             159166..159169
                      /Name="Miro_257"
      RBS             159166..159169
                      /Name="Miro_257"
+     CDS             159176..159667
+                     /Alias="Miro_257"
+                     /Name="Miro_257"
+                     /note="T4 NrdG-like"
+                     /obsolete_name="Miro_183"
+                     /product="r"
      gene            159724..160702
                      /locus_tag="gene_255"
+     CDS             159737..160702
+                     /Alias="Miro_258"
+                     /Name="Miro_258"
+                     /obsolete_name="Miro_182"
+                     /product="h"
      RBS             159724..159726
                      /Name="Miro_258"
      RBS             159724..159726
                      /Name="Miro_258"
+     CDS             159737..160702
+                     /Alias="Miro_258"
+                     /Name="Miro_258"
+                     /obsolete_name="Miro_182"
+                     /product="h"
      gene            160735..161413
                      /locus_tag="gene_256"
+     CDS             160745..161413
+                     /Alias="Miro_259"
+                     /Name="Miro_259"
+                     /obsolete_name="Miro_181"
+                     /product="h"
      RBS             160735..160739
                      /Name="Miro_259"
      RBS             160735..160739
                      /Name="Miro_259"
+     CDS             160745..161413
+                     /Alias="Miro_259"
+                     /Name="Miro_259"
+                     /obsolete_name="Miro_181"
+                     /product="h"
      gene            161360..161654
                      /locus_tag="gene_257"
+     CDS             161373..161654
+                     /Alias="Miro_260"
+                     /Name="Miro_260"
+                     /note="T4 NrdC-like"
+                     /obsolete_name="Miro_180"
+                     /product="g"
      RBS             161360..161363
                      /Name="Miro_260"
      RBS             161360..161363
                      /Name="Miro_260"
+     CDS             161373..161654
+                     /Alias="Miro_260"
+                     /Name="Miro_260"
+                     /note="T4 NrdC-like"
+                     /obsolete_name="Miro_180"
+                     /product="g"
      gene            161642..161950
                      /locus_tag="gene_258"
+     CDS             161651..161950
+                     /Alias="Miro_261"
+                     /Name="Miro_261"
+                     /note="T4 gp55.2-like"
+                     /obsolete_name="Miro_179"
+                     /product="h"
      RBS             161642..161645
                      /Name="Miro_261"
      RBS             161642..161645
                      /Name="Miro_261"
+     CDS             161651..161950
+                     /Alias="Miro_261"
+                     /Name="Miro_261"
+                     /note="T4 gp55.2-like"
+                     /obsolete_name="Miro_179"
+                     /product="h"
      gene            162017..165803
                      /locus_tag="gene_259"
+     CDS             162030..165803
+                     /Alias="Miro_262"
+                     /Name="Miro_262"
+                     /obsolete_name="Miro_178"
+                     /product="h"
      RBS             162017..162020
                      /Name="Miro_262"
      RBS             162017..162020
                      /Name="Miro_262"
+     CDS             162030..165803
+                     /Alias="Miro_262"
+                     /Name="Miro_262"
+                     /obsolete_name="Miro_178"
+                     /product="h"
      gene            165793..166927
                      /locus_tag="gene_260"
+     CDS             165803..166927
+                     /Alias="Miro_263"
+                     /Name="Miro_263"
+                     /obsolete_name="Miro_177"
+                     /product="h"
      RBS             165793..165796
                      /Name="Miro_263"
      RBS             165793..165796
                      /Name="Miro_263"
+     CDS             165803..166927
+                     /Alias="Miro_263"
+                     /Name="Miro_263"
+                     /obsolete_name="Miro_177"
+                     /product="h"
      gene            166968..167645
                      /locus_tag="gene_261"
+     CDS             166977..167645
+                     /Alias="Miro_264"
+                     /Name="Miro_264"
+                     /note="T4 gp36-like"
+                     /obsolete_name="Miro_176"
+                     /product="t"
      RBS             166968..166971
                      /Name="Miro_264"
      RBS             166968..166971
                      /Name="Miro_264"
+     CDS             166977..167645
+                     /Alias="Miro_264"
+                     /Name="Miro_264"
+                     /note="T4 gp36-like"
+                     /obsolete_name="Miro_176"
+                     /product="t"
      gene            167645..171466
                      /locus_tag="gene_262"
+     CDS             167654..171466
+                     /Alias="Miro_265"
+                     /Name="Miro_265"
+                     /obsolete_name="Miro_175"
+                     /product="h"
      RBS             167645..167648
                      /Name="Miro_265"
      RBS             167645..167648
                      /Name="Miro_265"
+     CDS             167654..171466
+                     /Alias="Miro_265"
+                     /Name="Miro_265"
+                     /obsolete_name="Miro_175"
+                     /product="h"
      gene            171490..172030
                      /locus_tag="gene_263"
+     CDS             171503..172030
+                     /Alias="Miro_266"
+                     /Name="Miro_266"
+                     /note="T2 gp38-like"
+                     /obsolete_name="Miro_174"
+                     /product="r"
      RBS             171490..171494
                      /Name="Miro_266"
      RBS             171490..171494
                      /Name="Miro_266"
+     CDS             171503..172030
+                     /Alias="Miro_266"
+                     /Name="Miro_266"
+                     /note="T2 gp38-like"
+                     /obsolete_name="Miro_174"
+                     /product="r"
      gene            172135..172794
                      /locus_tag="gene_264"
+     CDS             172147..172794
+                     /Alias="Miro_267"
+                     /Name="Miro_267"
+                     /note="T4 gpT-like"
+                     /obsolete_name="Miro_173"
+                     /product="h"
+                     /tmhelix="1 TMD (29-47) N in, C out"
      RBS             172135..172137
                      /Name="Miro_267"
      RBS             172135..172137
                      /Name="Miro_267"
+     CDS             172147..172794
+                     /Alias="Miro_267"
+                     /Name="Miro_267"
+                     /note="T4 gpT-like"
+                     /obsolete_name="Miro_173"
+                     /product="h"
+                     /tmhelix="1 TMD (29-47) N in, C out"
      gene            complement(172795..173074)
                      /locus_tag="gene_265"
+     CDS             complement(172795..173064)
+                     /Name="Miro_268"
+                     /obsolete_name="Miro_172"
+                     /product="h"
      RBS             complement(173071..173074)
                      /Alias="Miro_268"
                      /Name="Miro_268"
+     CDS             complement(172795..173064)
+                     /Name="Miro_268"
+                     /obsolete_name="Miro_172"
+                     /product="h"
      gene            complement(173061..173361)
                      /locus_tag="gene_266"
+     CDS             complement(173061..173351)
+                     /Name="Miro_269"
+                     /obsolete_name="Miro_171"
+                     /product="h"
      RBS             complement(173358..173361)
                      /Alias="Miro_269"
                      /Name="Miro_269"
+     CDS             complement(173061..173351)
+                     /Name="Miro_269"
+                     /obsolete_name="Miro_171"
+                     /product="h"
      RBS             complement(173071..173074)
                      /Alias="Miro_268"
                      /Name="Miro_268"
      gene            complement(173351..174160)
                      /locus_tag="gene_267"
+     CDS             complement(173351..174148)
+                     /Name="Miro_270"
+                     /obsolete_name="Miro_170"
+                     /product="h"
      RBS             complement(174156..174160)
                      /Alias="Miro_270"
                      /Name="Miro_270"
+     CDS             complement(173351..174148)
+                     /Name="Miro_270"
+                     /obsolete_name="Miro_170"
+                     /product="h"
      RBS             complement(173358..173361)
                      /Alias="Miro_269"
                      /Name="Miro_269"
@@ -1895,22 +4565,46 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_270"
      gene            complement(174229..174467)
                      /locus_tag="gene_268"
+     CDS             complement(174229..174456)
+                     /Name="Miro_271"
+                     /obsolete_name="Miro_169"
+                     /product="h"
      RBS             complement(174464..174467)
                      /Alias="Miro_271"
                      /Name="Miro_271"
+     CDS             complement(174229..174456)
+                     /Name="Miro_271"
+                     /obsolete_name="Miro_169"
+                     /product="h"
      gene            complement(174453..174796)
                      /locus_tag="gene_269"
+     CDS             complement(174453..174785)
+                     /Name="Miro_272"
+                     /obsolete_name="Miro_168"
+                     /product="h"
      RBS             complement(174793..174796)
                      /Alias="Miro_272"
                      /Name="Miro_272"
+     CDS             complement(174453..174785)
+                     /Name="Miro_272"
+                     /obsolete_name="Miro_168"
+                     /product="h"
      RBS             complement(174464..174467)
                      /Alias="Miro_271"
                      /Name="Miro_271"
      gene            complement(174760..174903)
                      /locus_tag="gene_270"
+     CDS             complement(174760..174894)
+                     /Name="Miro_273"
+                     /obsolete_name="Miro_167"
+                     /product="h"
      RBS             complement(174900..174903)
                      /Alias="Miro_273"
                      /Name="Miro_273"
+     CDS             complement(174760..174894)
+                     /Name="Miro_273"
+                     /obsolete_name="Miro_167"
+                     /product="h"
      RBS             complement(174793..174796)
                      /Alias="Miro_272"
                      /Name="Miro_272"
@@ -1919,22 +4613,50 @@ FEATURES             Location/Qualifiers
                      /Name="Miro_273"
      gene            complement(174939..175197)
                      /locus_tag="gene_271"
+     CDS             complement(174939..175187)
+                     /Name="Miro_274"
+                     /note="contains FCH and colicin domains"
+                     /obsolete_name="Miro_166"
+                     /product="h"
      RBS             complement(175195..175197)
                      /Alias="Miro_274"
                      /Name="Miro_274"
+     CDS             complement(174939..175187)
+                     /Name="Miro_274"
+                     /note="contains FCH and colicin domains"
+                     /obsolete_name="Miro_166"
+                     /product="h"
      RBS             complement(175195..175197)
                      /Alias="Miro_274"
                      /Name="Miro_274"
      gene            complement(175224..175675)
                      /locus_tag="gene_272"
+     CDS             complement(175224..175661)
+                     /Name="Miro_275"
+                     /obsolete_name="Miro_165"
+                     /product="h"
      RBS             complement(175673..175675)
                      /Alias="Miro_275"
                      /Name="Miro_275"
+     CDS             complement(175224..175661)
+                     /Name="Miro_275"
+                     /obsolete_name="Miro_165"
+                     /product="h"
      gene            complement(175636..176021)
                      /locus_tag="gene_273"
+     CDS             complement(175636..176010)
+                     /Name="Miro_276"
+                     /obsolete_name="Miro_164"
+                     /product="h"
+                     /tmhelix="2TMDs (44-66, 76-98) N in, C in"
      RBS             complement(176017..176021)
                      /Alias="Miro_276"
                      /Name="Miro_276"
+     CDS             complement(175636..176010)
+                     /Name="Miro_276"
+                     /obsolete_name="Miro_164"
+                     /product="h"
+                     /tmhelix="2TMDs (44-66, 76-98) N in, C in"
      RBS             complement(175673..175675)
                      /Alias="Miro_275"
                      /Name="Miro_275"
