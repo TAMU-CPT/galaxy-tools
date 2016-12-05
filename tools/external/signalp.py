@@ -82,8 +82,8 @@ def writeGff3(data, handle, parentGff3):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
-    parser.add_argument('parentGff3', type=file)
-    parser.add_argument('signalp', type=file)
+    parser.add_argument('parentGff3', type=argparse.FileType("r"))
+    parser.add_argument('signalp', type=argparse.FileType("r"))
     parser.add_argument('--bw_c', default='signalp_c.wig')
     parser.add_argument('--bw_s', default='signalp_s.wig')
     parser.add_argument('--bw_y', default='signalp_y.wig')

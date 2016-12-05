@@ -59,7 +59,7 @@ def overlap(table):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Determine overlaps in CSV in colum data')
-    parser.add_argument('table', type=file, help='2 column table')
+    parser.add_argument('table', type=argparse.FileType("r"), help='2 column table')
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
 

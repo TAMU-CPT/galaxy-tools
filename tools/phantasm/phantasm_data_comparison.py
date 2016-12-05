@@ -79,8 +79,8 @@ def compare_files(file_a, file_b, comparison_method, undef_value, **kwargs):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate comparisons between two PHAnTASM datasets')
-    parser.add_argument('file_a', type=file, help='First Tabular Dataset')
-    parser.add_argument('file_b', type=file, help='Second Tabular Dataset')
+    parser.add_argument('file_a', type=argparse.FileType("r"), help='First Tabular Dataset')
+    parser.add_argument('file_b', type=argparse.FileType("r"), help='Second Tabular Dataset')
     choices = ['pdiff', 'bit_diff', 'add', 'sub', 'mult', 'div', 'dist', 'phantasm_cids',
                'levenshtein', 'texteq', 'numeq']
     parser.add_argument('comparison_method', choices=choices,

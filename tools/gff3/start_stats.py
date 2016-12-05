@@ -26,7 +26,7 @@ def main(fasta, gff3):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Summarise start codon usage', epilog="")
-    parser.add_argument('fasta', type=file, help='Fasta Genome')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='Fasta Genome')
     parser.add_argument('gff3', help='GFF3 File')
     args = parser.parse_args()
     main(**vars(args))

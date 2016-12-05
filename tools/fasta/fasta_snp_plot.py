@@ -132,8 +132,8 @@ def plot_snps(reference, mutated):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='simple plot of generated snps against a reference sequence')
-    parser.add_argument('reference', type=file, help='Reference sequence (only 1 fasta sequence allowed)')
-    parser.add_argument('mutated', type=file, help='Fasta file of SNPs')
+    parser.add_argument('reference', type=argparse.FileType("r"), help='Reference sequence (only 1 fasta sequence allowed)')
+    parser.add_argument('mutated', type=argparse.FileType("r"), help='Fasta file of SNPs')
 
     args = parser.parse_args()
     plot_snps(**vars(args))

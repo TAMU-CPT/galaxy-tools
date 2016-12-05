@@ -37,7 +37,7 @@ def extractCodonsFromDb(target, codondb):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('target', type=str, help='target organism')
-    parser.add_argument('--codondb', type=file, help='Average codon database')
+    parser.add_argument('--codondb', type=argparse.FileType("r"), help='Average codon database')
     args = parser.parse_args()
 
     ocu = extractCodonsFromDb(**vars(args))

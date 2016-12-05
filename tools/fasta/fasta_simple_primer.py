@@ -22,7 +22,7 @@ def generate_primers(fasta_file, end_overlap=500):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Simple primer generator')
-    parser.add_argument('fasta_file', type=file, help='Fasta file')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Fasta file')
     parser.add_argument('--end_overlap', type=int, help='End overlap', default=500)
 
     args = parser.parse_args()

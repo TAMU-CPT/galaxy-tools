@@ -29,7 +29,7 @@ def student_id(email):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='post an assessment result')
-    parser.add_argument('creds', type=file, help='json file with username/password')
+    parser.add_argument('creds', type=argparse.FileType("r"), help='json file with username/password')
     parser.add_argument('student_email', help='email of the student receiving result')
     parser.add_argument('points_earned', type=int, help='how many points the student earned')
     parser.add_argument('points_possible', type=int, help='how many points were possible in the assessment')

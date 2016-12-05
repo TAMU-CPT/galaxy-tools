@@ -105,8 +105,8 @@ def get_features_from_gbk(gbk_file=None, feature_type='CDS'):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Compare two genbank files')
-    parser.add_argument('gbk1', type=file, help='First Genbank file')
-    parser.add_argument('gbk2', type=file, help='Second Genbank file')
+    parser.add_argument('gbk1', type=argparse.FileType("r"), help='First Genbank file')
+    parser.add_argument('gbk2', type=argparse.FileType("r"), help='Second Genbank file')
 
     args = parser.parse_args()
 

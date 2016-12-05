@@ -29,7 +29,7 @@ def lineage(genbank_files=None, first=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract authorship '
                                      'information from genbank file')
-    parser.add_argument('genbank_files', type=file, nargs='+',
+    parser.add_argument('genbank_files', type=argparse.FileType("r"), nargs='+',
                         help='Genbank file')
     parser.add_argument('--first', action='store_true',
                         help='Only pick out first reference')

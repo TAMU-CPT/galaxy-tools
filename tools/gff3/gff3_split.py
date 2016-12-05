@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('data', type=file, help='GFF3 File')
+    parser.add_argument('data', type=argparse.FileType("r"), help='GFF3 File')
     parser.add_argument('keys', type=str, nargs='+', help='Unique properties.')
     parser.add_argument('--joiner', help='String to use in joining properties for output file names.')
 

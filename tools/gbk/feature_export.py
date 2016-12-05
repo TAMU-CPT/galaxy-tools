@@ -125,7 +125,7 @@ if __name__ == '__main__':
                 "tmRNA", "transit_peptide", "unsure", "variation"]
 
     parser = argparse.ArgumentParser(description='Export a subset of features from a Genbank file', epilog="")
-    parser.add_argument('genbank_file', type=file, help='Genbank file')
+    parser.add_argument('genbank_file', type=argparse.FileType("r"), help='Genbank file')
     parser.add_argument('tag', nargs='+', type=str, choices=gbk_tags, help='tags to export')
 
     parser.add_argument('--translate', action='store_true', help='Translate sequence')

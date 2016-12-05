@@ -38,7 +38,7 @@ def dedup(fasta_file, mutation='mutate'):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='remove duplicate sequences in a fasta file')
-    parser.add_argument('fasta_file', type=file, help='Fasta file')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Fasta file')
 
     args = parser.parse_args()
     dedup(**vars(args))

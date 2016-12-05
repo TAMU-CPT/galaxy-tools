@@ -64,8 +64,8 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Filter out lipoproteins', epilog="")
-    parser.add_argument('gff3_file', type=file, help='Naive ORF Calls')
-    parser.add_argument('fasta_genome', type=file, help='Fasta genome sequence')
+    parser.add_argument('gff3_file', type=argparse.FileType("r"), help='Naive ORF Calls')
+    parser.add_argument('fasta_genome', type=argparse.FileType("r"), help='Fasta genome sequence')
 
     parser.add_argument('--lipobox_mindist', type=int,
                         help='Minimum distance in codons to start of lipobox', default=10)

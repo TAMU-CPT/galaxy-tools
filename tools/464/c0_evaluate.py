@@ -71,7 +71,7 @@ def validate(gff3, user_email):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='verify against expectations')
-    parser.add_argument('gff3', type=file, help='GFF3 annotations')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 annotations')
     parser.add_argument('user_email', help='User email')
     args = parser.parse_args()
     validate(**vars(args))

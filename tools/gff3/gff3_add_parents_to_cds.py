@@ -50,6 +50,6 @@ def gff_filter(gff3):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='add parent gene features to CDSs')
-    parser.add_argument('gff3', type=file, help='GFF3 annotations')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 annotations')
     args = parser.parse_args()
     gff_filter(**vars(args))

@@ -4,6 +4,7 @@ import os
 import collections
 import StringIO
 import logging
+import argparse
 from BCBio import GFF
 from Bio import SeqIO
 logging.getLogger("requests").setLevel(logging.CRITICAL)
@@ -18,14 +19,14 @@ def WAAuth(parser):
 
 
 def OrgOrGuess(parser):
-    parser.add_argument('--org_json', type=file, help='Apollo JSON output, source for common name')
+    parser.add_argument('--org_json', type=argparse.FileType("r"), help='Apollo JSON output, source for common name')
     parser.add_argument('--org_raw', help='Common Name')
     parser.add_argument('--org_id', help='Organism ID')
 
 
 def CnOrGuess(parser):
     OrgOrGuess(parser)
-    parser.add_argument('--seq_fasta', type=file, help='Fasta file, IDs used as sequence sources')
+    parser.add_argument('--seq_fasta', type=argparse.FileType("r"), help='Fasta file, IDs used as sequence sources')
     parser.add_argument('--seq_raw', nargs='*', help='Sequence Names')
 
 
@@ -165,7 +166,7 @@ class Client(object):
             'password': self._wa.password,
         })
 
-        r = requests.post(url, data=json.dumps(data), headers=headers,
+        r = requests.pist(url, data=json.dumps(data), headers=headers,
                           verify=self.__verify, params=post_params, allow_redirects=False, **self._requestArgs)
 
         if r.status_code == 200 or r.status_code == 302:

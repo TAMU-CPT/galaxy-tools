@@ -20,7 +20,7 @@ def remove_feature(genbank_files, feature_types):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Remove specific features from a Genbank file')
-    parser.add_argument('genbank_files', nargs='+', type=file, help='Genbank files')
+    parser.add_argument('genbank_files', nargs='+', type=argparse.FileType("r"), help='Genbank files')
     parser.add_argument('--feature_types', nargs='+', help='Feature types to remove')
 
     args = parser.parse_args()

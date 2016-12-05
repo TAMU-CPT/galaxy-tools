@@ -65,8 +65,8 @@ def genbank_subsection(genbank_files, table=None, coordinates=None, include_unli
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract subsets of genbank files', epilog='')
-    parser.add_argument('genbank_files', nargs='+', type=file, help='Genbank files')
-    parser.add_argument('--table', type=file, help='Table of coordinates to cut')
+    parser.add_argument('genbank_files', nargs='+', type=argparse.FileType("r"), help='Genbank files')
+    parser.add_argument('--table', type=argparse.FileType("r"), help='Table of coordinates to cut')
     parser.add_argument('--coordinates', help='Manually entered coordinates')
     parser.add_argument('--include_unlisted', action='store_true',
                         help='If coordinates aren\'t listed in the '

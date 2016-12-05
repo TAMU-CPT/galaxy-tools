@@ -17,7 +17,7 @@ def reopen_contig(fasta_file, after):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reopen contig')
-    parser.add_argument('fasta_file', type=file, help='Fasta file')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Fasta file')
     parser.add_argument('after', type=int, help='Reopen contig after this base (1-indexed)')
 
     args = parser.parse_args()

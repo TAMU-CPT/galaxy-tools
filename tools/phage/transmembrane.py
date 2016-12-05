@@ -84,7 +84,7 @@ def find_tmembrane(records):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='find phage transmembrane domains')
-    parser.add_argument('gff3', type=file, help='GFF3 output of TMHMM')
-    parser.add_argument('fasta', type=file, help='fasta file of protein(s)')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 output of TMHMM')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='fasta file of protein(s)')
     args = parser.parse_args()
     taper_list(**vars(args))

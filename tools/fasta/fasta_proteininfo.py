@@ -129,7 +129,7 @@ if __name__ == '__main__':
     funcs = [x for x in locals().keys()
              if not x[0].upper() == x[0] and x[0] != '_' and x not in ('log', 'main', 'argparse', 'logging', 'parser')]
 
-    parser.add_argument('fasta', type=file, help='Fasta file')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='Fasta file')
     parser.add_argument('--protein', action='store_true', help='The sequence is protein')
     parser.add_argument('--func', choices=funcs)
     args = parser.parse_args()

@@ -679,7 +679,7 @@ def mist_wrapper(files, window=10, zoom=50, matrix='edna', plot_type='complete',
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='MIST v3', epilog='')
-    parser.add_argument('files', nargs='+', type=file, help='Fasta sequences')
+    parser.add_argument('files', nargs='+', type=argparse.FileType("r"), help='Fasta sequences')
 
     parser.add_argument('--zoom', type=int, help='# bases / pixel', default=50)
     parser.add_argument('--window', type=int, help='Window size', default=10)

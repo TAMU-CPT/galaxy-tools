@@ -73,7 +73,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Export corresponding sequence in genome from GFF3', epilog="")
-    parser.add_argument('fasta', type=file, help='Fasta Genome')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='Fasta Genome')
     parser.add_argument('gff3', help='GFF3 File')
     parser.add_argument('--feature_filter', default=None, help='Filter for specific feature types')
     parser.add_argument('--nodesc', action='store_true', help='Strip description field off')

@@ -12,7 +12,7 @@ log = logging.getLogger()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Export sequences from Genbank files')
-    parser.add_argument('genbank_files', nargs='+', type=file, help='Genbank file')
+    parser.add_argument('genbank_files', nargs='+', type=argparse.FileType("r"), help='Genbank file')
     parser.add_argument('--name_src', choices=('id', 'name', 'phage_name'), default='id')
     args = parser.parse_args()
 

@@ -206,9 +206,9 @@ def blast2pxmfa(blast, fasta, gff3, output, genomic=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert Blast TSV to protein XMFA', epilog='')
-    parser.add_argument('blast', type=file, help='Blast TSV Output')
-    parser.add_argument('fasta', type=file, help='Blast Input Fasta')
-    parser.add_argument('gff3', type=file, help='GFF3 Gene Calls')
+    parser.add_argument('blast', type=argparse.FileType("r"), help='Blast TSV Output')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='Blast Input Fasta')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 Gene Calls')
     parser.add_argument('--genomic', action='store_true', help='Further reduce protein results into genomic-level results.')
     parser.add_argument('output', type=argparse.FileType('w'), help='Output file or - for stdout')
     args = parser.parse_args()

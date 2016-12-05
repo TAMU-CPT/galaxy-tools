@@ -166,7 +166,7 @@ def correct_model(genbank_file):
 if __name__ == '__main__':
     # Grab all of the filters from our plugin loader
     parser = argparse.ArgumentParser(description='Export a subset of features from a Genbank file', epilog="")
-    parser.add_argument('genbank_file', type=file, help='Genbank file')
+    parser.add_argument('genbank_file', type=argparse.FileType("r"), help='Genbank file')
 
     args = vars(parser.parse_args())
     for seq in correct_model(**args):

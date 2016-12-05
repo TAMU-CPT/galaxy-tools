@@ -65,7 +65,7 @@ def phage_source(genbank_files=None, **kwargs):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract lineage information from genbank files')
-    parser.add_argument('genbank_files', type=file, nargs='+', help='Genbank file')
+    parser.add_argument('genbank_files', type=argparse.FileType("r"), nargs='+', help='Genbank file')
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
     print '\t'.join(['# ID', 'Host Genus', 'Host Species', 'Host Strain', 'Other'])

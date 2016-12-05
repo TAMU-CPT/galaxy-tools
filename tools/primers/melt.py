@@ -43,7 +43,7 @@ def salt(sequence, na=0.050):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='DNA melting point calculations')
-    parser.add_argument('fasta', type=file, help='Fasta protein file')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='Fasta protein file')
     parser.add_argument('mode', choices=(
         'nosalt',
         'salt',

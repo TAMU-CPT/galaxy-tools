@@ -13,7 +13,7 @@ if __name__ == '__main__':
     parser.add_argument('password', help='WA Admin Password')
 
     parser.add_argument('cn', help='Organism Common Name')
-    parser.add_argument('gaf_file', type=file, help='GAF file')
+    parser.add_argument('gaf_file', type=argparse.FileType("r"), help='GAF file')
 
     parser.add_argument('--email')
 

@@ -22,7 +22,7 @@ def gff_reopen(gff3, index=1):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reopen a set of GFF3 annotations')
-    parser.add_argument('gff3', type=file, help='GFF3 annotations')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 annotations')
     parser.add_argument('index', type=int, help='Index to reopen genome at')
     args = parser.parse_args()
 

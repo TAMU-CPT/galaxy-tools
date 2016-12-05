@@ -132,7 +132,7 @@ def main(fasta, modeldir):
 if __name__ == '__main__':
     # Grab all of the filters from our plugin loader
     parser = argparse.ArgumentParser(description='Wrapper for reprof')
-    parser.add_argument('fasta', type=file, help='Fasta Input')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='Fasta Input')
     parser.add_argument('modeldir')
     args = parser.parse_args()
 

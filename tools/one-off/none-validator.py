@@ -194,7 +194,7 @@ def renumber_genes(gbk_files, problematic=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Renumber genbank files')
-    parser.add_argument('gbk_files', type=file, nargs='+', help='Genbank files')
+    parser.add_argument('gbk_files', type=argparse.FileType("r"), nargs='+', help='Genbank files')
     parser.add_argument('--problematic', type=argparse.FileType('w'),
                         help='Problematic genomes')
 

@@ -4,7 +4,7 @@ import argparse
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='PHAnTASM Comparison Mapper')
-    parser.add_argument('--files', type=file, nargs="+", help='Input Two-Way Comparison')
+    parser.add_argument('--files', type=argparse.FileType("r"), nargs="+", help='Input Two-Way Comparison')
     parser.add_argument('--weights', type=float, nargs="+", help="Metric Weighting")
     parser.add_argument('--version', action='version', version='0.2')
     args = parser.parse_args()

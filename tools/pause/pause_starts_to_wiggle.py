@@ -108,7 +108,7 @@ def start_data(bam_file, starts_f=None, starts_r=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Extract starts from BAM as BigWig')
-    parser.add_argument('bam_file', type=file, help='Bam file')
+    parser.add_argument('bam_file', type=argparse.FileType("r"), help='Bam file')
     parser.add_argument('--starts_f', type=argparse.FileType('wb'), default='starts.f.bw', help='Sense Starts File')
     parser.add_argument('--starts_r', type=argparse.FileType('wb'), default='starts.r.bw', help='Antisense Starts File')
     parser.add_argument('--version', action='version', version='0.1')

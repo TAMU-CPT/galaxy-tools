@@ -14,6 +14,6 @@ def reformat(data):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reformat GFF files')
-    parser.add_argument('data', type=file, help='Input annotations')
+    parser.add_argument('data', type=argparse.FileType("r"), help='Input annotations')
     args = parser.parse_args()
     reformat(**vars(args))

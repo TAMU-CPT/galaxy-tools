@@ -37,7 +37,7 @@ def aa_stats(fasta_file, **kwargs):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Calculate AA frequencies in sequences')
-    parser.add_argument('fasta_file', type=file, help='Fasta file')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Fasta file')
     parser.add_argument('--version', action='version', version='0.1')
     args = parser.parse_args()
 

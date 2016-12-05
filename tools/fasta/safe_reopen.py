@@ -87,8 +87,8 @@ def safe_reopen(fasta_file=None, gff3_files=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
-    parser.add_argument('fasta_file', type=file)
-    parser.add_argument('gff3_files', type=file, nargs='+')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"))
+    parser.add_argument('gff3_files', type=argparse.FileType("r"), nargs='+')
 
     args = parser.parse_args()
     for rec in safe_reopen(**vars(args)):

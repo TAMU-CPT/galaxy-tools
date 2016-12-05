@@ -44,7 +44,7 @@ def merge_interpro(gff3, interpro):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='extract features from a GFF3 file based on ID/qualifiers')
-    parser.add_argument('gff3', type=file, help='GFF3 annotations')
-    parser.add_argument('interpro', type=file, help='GFF3 annotations')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 annotations')
+    parser.add_argument('interpro', type=argparse.FileType("r"), help='GFF3 annotations')
     args = parser.parse_args()
     merge_interpro(**vars(args))

@@ -92,7 +92,7 @@ def charges_html(fasta, cs='default', width=120):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Top related genomes')
-    parser.add_argument('fasta', type=file, help='Fasta protein file')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='Fasta protein file')
     parser.add_argument('--cs', help='Colour scheme', default='default')
     parser.add_argument('--width', type=int, help='Plot width', default=120)
     args = parser.parse_args()

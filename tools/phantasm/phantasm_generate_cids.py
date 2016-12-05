@@ -8,7 +8,7 @@ from phantasm import Cassettes
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate Cassette IDs for a set of genomes')
-    parser.add_argument('genbank_file', type=file, help='GenBank File')
+    parser.add_argument('genbank_file', type=argparse.FileType("r"), help='GenBank File')
     parser.add_argument('--version', action='version', version='0.2')
     args = parser.parse_args()
     cassette_model = Cassettes.get_clustering_data()

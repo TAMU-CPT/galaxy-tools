@@ -36,8 +36,8 @@ def require_shinefind(gff3, fasta):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Require specific start codons')
-    parser.add_argument('fasta', type=file, help='Fasta Genome')
-    parser.add_argument('gff3', type=file, help='GFF3 annotations')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='Fasta Genome')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 annotations')
     args = parser.parse_args()
 
     for rec in require_shinefind(**vars(args)):

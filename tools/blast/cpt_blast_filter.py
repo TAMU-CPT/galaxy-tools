@@ -20,7 +20,7 @@ def filter_blast(blast_results, top_n=5):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Filter blast results')
-    parser.add_argument('blast_results', type=file, help='Tabular Blast Results')
+    parser.add_argument('blast_results', type=argparse.FileType("r"), help='Tabular Blast Results')
     parser.add_argument('top_n', type=int, help='Top N hits')
 
     args = parser.parse_args()

@@ -41,7 +41,7 @@ def search(fasta, regex, stats_file=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Filter sequences based on regular expressions')
-    parser.add_argument('fasta', type=file, help='Fasta Sequence')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='Fasta Sequence')
     parser.add_argument('regex', help='Regular Expression (use upper case sequences)')
     parser.add_argument('stats_file', type=argparse.FileType('w'), help='Output statistics')
 

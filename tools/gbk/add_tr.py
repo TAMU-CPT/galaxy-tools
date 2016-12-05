@@ -59,7 +59,7 @@ def add_tr(genbank_file, end=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Add Terminal Repeats to a genbank file')
-    parser.add_argument('genbank_file', type=file, help='Genbank file')
+    parser.add_argument('genbank_file', type=argparse.FileType("r"), help='Genbank file')
     parser.add_argument('--end', type=str, help='End of Terminal Repeat Region. READ THE DIRECTIONS BELOW')
 
     args = parser.parse_args()

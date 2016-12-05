@@ -56,7 +56,7 @@ def disambiguate(fasta_file, seed=42, tbl_out=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Replace ambiguous bases')
-    parser.add_argument('fasta_file', type=file, help='Fasta file')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Fasta file')
     parser.add_argument('--tbl_out', type=str, help='Table output', default='ambiguities.tsv')
     parser.add_argument('--seed', type=int, help='Seed for reproducible analysis', default=42)
 

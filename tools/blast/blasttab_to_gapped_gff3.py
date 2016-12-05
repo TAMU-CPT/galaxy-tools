@@ -297,7 +297,7 @@ def cigar_from_string(query, match, subject, strict_m=True):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert Blast TSV to gapped GFF3')
-    parser.add_argument('blasttsv', type=file, help='Blast TSV Output')
+    parser.add_argument('blasttsv', type=argparse.FileType("r"), help='Blast TSV Output')
     parser.add_argument('--min_gap', type=int, help='Maximum gap size before generating a new match_part', default=3)
     parser.add_argument('--trim_start', action='store_true', help='Trim blast hits to be only as long as the parent feature')
     parser.add_argument('--trim_end', action='store_true', help='Cut blast results off at end of gene')

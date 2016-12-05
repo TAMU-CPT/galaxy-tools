@@ -348,8 +348,8 @@ class IntronFinder(object):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Intron detection')
-    parser.add_argument('gff3', type=file, help='GFF3 gene calls')
-    parser.add_argument('blastp', type=file, help='blast XML protein results')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
+    parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
     parser.add_argument('--svg', help='Path to output svg file to', default='clusters.svg')
     args = parser.parse_args()
 

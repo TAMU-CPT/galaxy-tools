@@ -66,8 +66,8 @@ def glimmer3_to_gff3(glimmer, genome):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert Glimmer to GFF3')
-    parser.add_argument('glimmer', type=file, help='Glimmer3 Output')
-    parser.add_argument('genome', type=file, help='Fasta Genome')
+    parser.add_argument('glimmer', type=argparse.FileType("r"), help='Glimmer3 Output')
+    parser.add_argument('genome', type=argparse.FileType("r"), help='Fasta Genome')
     args = parser.parse_args()
 
     for result in glimmer3_to_gff3(**vars(args)):

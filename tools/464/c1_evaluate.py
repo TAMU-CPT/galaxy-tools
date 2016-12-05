@@ -109,8 +109,8 @@ def validate(ogs, user_gff3, user_email, offset=213):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='verify against expectations')
-    parser.add_argument('ogs', type=file, help='GFF3 annotations')
-    parser.add_argument('user_gff3', type=file, help='GFF3 annotations')
+    parser.add_argument('ogs', type=argparse.FileType("r"), help='GFF3 annotations')
+    parser.add_argument('user_gff3', type=argparse.FileType("r"), help='GFF3 annotations')
     parser.add_argument('user_email', help='User email')
     args = parser.parse_args()
     validate(**vars(args))

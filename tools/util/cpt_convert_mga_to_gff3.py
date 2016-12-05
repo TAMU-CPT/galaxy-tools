@@ -89,8 +89,8 @@ def mga_to_gff3(mga_output, genome):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert MGA to GFF3', epilog="")
-    parser.add_argument('mga_output', type=file, help='MetaGeneAnnotator Output')
-    parser.add_argument('genome', type=file, help='Fasta Genome')
+    parser.add_argument('mga_output', type=argparse.FileType("r"), help='MetaGeneAnnotator Output')
+    parser.add_argument('genome', type=argparse.FileType("r"), help='Fasta Genome')
     args = parser.parse_args()
 
     for result in mga_to_gff3(**vars(args)):

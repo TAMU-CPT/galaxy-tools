@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
-    parser.add_argument('fasta_file', type=file, help='Blastclust fasta input')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Blastclust fasta input')
     parser.add_argument('blastclust', help='Blastclust Output')
     parser.add_argument('--ignore', type=int, help="Clusters smaller than this threshold will be ignored")
     args = parser.parse_args()

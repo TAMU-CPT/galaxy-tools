@@ -851,7 +851,7 @@ class GramStainDetector(object):
 if __name__ == '__main__':
     # Grab all of the filters from our plugin loader
     parser = argparse.ArgumentParser(description='Attempt to determine gram stain')
-    parser.add_argument('table', type=file, help='Single column list of bacterial strains')
+    parser.add_argument('table', type=argparse.FileType("r"), help='Single column list of bacterial strains')
     args = parser.parse_args()
 
     gsd = GramStainDetector()

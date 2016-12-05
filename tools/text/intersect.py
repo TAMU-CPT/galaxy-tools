@@ -11,9 +11,9 @@ def joinStripRow(row):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('a', type=file)
+    parser.add_argument('a', type=argparse.FileType("r"))
     parser.add_argument('a_col', type=int, default=1)
-    parser.add_argument('b', type=file)
+    parser.add_argument('b', type=argparse.FileType("r"))
     parser.add_argument('b_col', type=int, default=1)
     args = parser.parse_args()
 

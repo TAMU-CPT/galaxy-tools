@@ -49,7 +49,7 @@ def fix(gff):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Fix converted files')
-    parser.add_argument('gff', type=file, help='bp_gbk2gff3 output')
+    parser.add_argument('gff', type=argparse.FileType("r"), help='bp_gbk2gff3 output')
     args = parser.parse_args()
 
     for record in fix(**vars(args)):

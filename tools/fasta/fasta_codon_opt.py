@@ -269,12 +269,12 @@ class WeightedPopulation(Sequence):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('sequence', type=file, help='sequence file')
+    parser.add_argument('sequence', type=argparse.FileType("r"), help='sequence file')
     parser.add_argument('target', type=str, help='target organism')
     parser.add_argument('--table', type=int, help='Translation table #', default=1)
-    parser.add_argument('--mask', type=file, nargs='*', help='Regions to mask for mutations')
-    parser.add_argument('--codondb', type=file, help='Average codon database')
-    parser.add_argument('--rebase', type=file, help='Rebase yaml file')
+    parser.add_argument('--mask', type=argparse.FileType("r"), nargs='*', help='Regions to mask for mutations')
+    parser.add_argument('--codondb', type=argparse.FileType("r"), help='Average codon database')
+    parser.add_argument('--rebase', type=argparse.FileType("r"), help='Rebase yaml file')
     parser.add_argument('--seed', type=int, help='Random seed. 0 means choose randomly at runtime', default=0)
     parser.add_argument('--avoidCustom', nargs='*', help='Sequences to avoid')
     parser.add_argument('--avoidEnzyme', nargs='*', help='Enzymes to avoid')

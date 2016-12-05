@@ -942,8 +942,8 @@ def evaluate_and_report(annotations, genome, gff3=None,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
-    parser.add_argument('annotations', type=file, help='Parent GFF3 annotations')
-    parser.add_argument('genome', type=file, help='Genome Sequence')
+    parser.add_argument('annotations', type=argparse.FileType("r"), help='Parent GFF3 annotations')
+    parser.add_argument('genome', type=argparse.FileType("r"), help='Genome Sequence')
     parser.add_argument('--gff3', type=str, help='GFF3 Annotations', default='qc_annotations.gff3')
     parser.add_argument('--tbl', type=str, help='Table for noninteractive parsing', default='qc_results.json')
 

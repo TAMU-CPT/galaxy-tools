@@ -19,7 +19,7 @@ def split(fasta_file=None, id="merged"):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('fasta_file', type=file)
+    parser.add_argument('fasta_file', type=argparse.FileType("r"))
 
     args = parser.parse_args()
     for seq in split(**vars(args)):

@@ -38,8 +38,8 @@ def fasta_join(left, right):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('left', type=file, help='For all sequences in LEFT')
-    parser.add_argument('right', type=file, help='Find matches in RIGHT')
+    parser.add_argument('left', type=argparse.FileType("r"), help='For all sequences in LEFT')
+    parser.add_argument('right', type=argparse.FileType("r"), help='Find matches in RIGHT')
 
     args = parser.parse_args()
     fasta_join(**vars(args))

@@ -28,8 +28,8 @@ def extract_by_acc(parent=None, acc=None, strict=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Subset a genbank file')
-    parser.add_argument('parent', type=file, help='Multi-record Genbank file')
-    parser.add_argument('acc', type=file, help='Accession list')
+    parser.add_argument('parent', type=argparse.FileType("r"), help='Multi-record Genbank file')
+    parser.add_argument('acc', type=argparse.FileType("r"), help='Accession list')
     parser.add_argument('--strict', action='store_true', help='Accession numbers '
                         'have versions, setting strict indicates that an exact '
                         'match is required')

@@ -276,8 +276,8 @@ def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotatio
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
-    parser.add_argument('annotations', type=file, help='Parent GFF3 annotations')
-    parser.add_argument('genome', type=file, help='Genome Sequence')
+    parser.add_argument('annotations', type=argparse.FileType("r"), help='Parent GFF3 annotations')
+    parser.add_argument('genome', type=argparse.FileType("r"), help='Genome Sequence')
 
     parser.add_argument('--reportTemplateName', help='Report template file name', default='phageqc_report_full.html')
     parser.add_argument('--annotationTableCols', help='Select columns to report in the annotation table output format')

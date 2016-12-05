@@ -68,7 +68,7 @@ def extract_metadata(genbank_file, section):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Genbank Metadata Export')
-    parser.add_argument('genbank_files', nargs='+', type=file, help='Genbank file')
+    parser.add_argument('genbank_files', nargs='+', type=argparse.FileType("r"), help='Genbank file')
     parser.add_argument('--section', type=str, help='Section to export', default='taxonomy')
 
     args = parser.parse_args()

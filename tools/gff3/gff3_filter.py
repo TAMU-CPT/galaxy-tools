@@ -27,8 +27,8 @@ def gff_filter(gff3, id_list=None, id='', attribute_field='ID', subfeatures=True
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='extract features from a GFF3 file based on ID/qualifiers')
-    parser.add_argument('gff3', type=file, help='GFF3 annotations')
-    parser.add_argument('--id_list', type=file)
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 annotations')
+    parser.add_argument('--id_list', type=argparse.FileType("r"))
     parser.add_argument('--id', type=str)
     parser.add_argument('--attribute_field', type=str, help='Column 9 Field to search against', default='ID')
     parser.add_argument('--subfeatures', action='store_true', help='Retain subfeature tree of matched features')

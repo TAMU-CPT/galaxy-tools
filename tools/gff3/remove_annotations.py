@@ -5,7 +5,7 @@ from BCBio import GFF
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('gff3', type=file, help='GFF3 annotations')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 annotations')
     parser.add_argument('--remark', action='store_true', help='Remove remark features')
     args = parser.parse_args()
 

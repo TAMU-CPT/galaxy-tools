@@ -87,7 +87,7 @@ def delta_old(feature, tag_to_update):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Renumber genbank files')
-    parser.add_argument('gbk_files', type=file, nargs='+', help='Genbank files')
+    parser.add_argument('gbk_files', type=argparse.FileType("r"), nargs='+', help='Genbank files')
     parser.add_argument('--tag_to_update', type=str, help='Tag to update', default='locus_tag')
     parser.add_argument('--string_prefix', type=str, help='Prefix string', default='display_id')
     parser.add_argument('--leading_zeros', type=int, help='# of leading zeroes', default=3)

@@ -51,7 +51,7 @@ if __name__ == '__main__':
     parser.add_argument('--link', help='Linker sequence')
     parser.add_argument('--bed', help='Output bed data')
 
-    parser.add_argument('sequences', type=file, nargs="+", help='Fasta sequences (1 or more per file)')
+    parser.add_argument('sequences', type=argparse.FileType("r"), nargs="+", help='Fasta sequences (1 or more per file)')
 
     args = parser.parse_args()
     SeqIO.write(merge(**vars(args)), sys.stdout, "fasta")

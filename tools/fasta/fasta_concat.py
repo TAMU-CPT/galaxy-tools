@@ -24,7 +24,7 @@ def merge(fasta_file=None, id="merged"):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
-    parser.add_argument('fasta_file', type=file, help='Genbank file')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Genbank file')
     parser.add_argument('--id', help='New fasta identifier for merged sequences', default='merged')
 
     args = parser.parse_args()

@@ -85,8 +85,8 @@ def main(reference, comparison, sort_order='default', ref_title=None, cmp_title=
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Plot comparison of codon usage', epilog="")
-    parser.add_argument('reference', type=file, help='Reference Data')
-    parser.add_argument('comparison', type=file, help='Data to compare')
+    parser.add_argument('reference', type=argparse.FileType("r"), help='Reference Data')
+    parser.add_argument('comparison', type=argparse.FileType("r"), help='Data to compare')
     parser.add_argument('--sort_order', choices=['default', 'comp', 'ref'],
                         help='Sort order for final plot', default='default')
     parser.add_argument('--ref_title', help='Reference title')

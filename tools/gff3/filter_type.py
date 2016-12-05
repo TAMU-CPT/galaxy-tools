@@ -6,7 +6,7 @@ from gff3 import feature_lambda, feature_test_type
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('gff3', type=file, help='GFF3 annotations')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 annotations')
     parser.add_argument('types', type=str, nargs='+', help='Feature type to filter on')
     parser.add_argument('--invert', action='store_true')
     args = parser.parse_args()

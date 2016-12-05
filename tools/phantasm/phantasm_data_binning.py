@@ -5,7 +5,7 @@ from phantasm import Utils, Clustering
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Columnar Data Rescale and Partitioning')
-    parser.add_argument('tabular_data', type=file, help='Tabular Dataset')
+    parser.add_argument('tabular_data', type=argparse.FileType("r"), help='Tabular Dataset')
 
     choices = ['MeanShift', 'user', 'simple']
     parser.add_argument('partition_type', choices=choices, help='Partitioning Method')

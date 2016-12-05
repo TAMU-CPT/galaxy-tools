@@ -11,7 +11,7 @@ log = logging.getLogger()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='RevCom genbank files')
-    parser.add_argument('gbk_files', type=file, nargs='+', help='Genbank files')
+    parser.add_argument('gbk_files', type=argparse.FileType("r"), nargs='+', help='Genbank files')
 
     args = parser.parse_args()
     for gbk_file in args.gbk_files:

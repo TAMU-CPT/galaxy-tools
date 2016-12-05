@@ -150,8 +150,8 @@ def gff3_to_genbank(gff_file, fasta_file):
 if __name__ == '__main__':
     # Grab all of the filters from our plugin loader
     parser = argparse.ArgumentParser(description='Convert gff3 to gbk')
-    parser.add_argument('gff_file', type=file, help='GFF3 file')
-    parser.add_argument('fasta_file', type=file, help='Fasta Input')
+    parser.add_argument('gff_file', type=argparse.FileType("r"), help='GFF3 file')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Fasta Input')
     args = parser.parse_args()
 
     for record in gff3_to_genbank(**vars(args)):

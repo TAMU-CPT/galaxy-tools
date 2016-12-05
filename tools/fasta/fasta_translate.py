@@ -41,7 +41,7 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Translate fasta file')
-    parser.add_argument('fasta_file', type=file, help='Fasta file')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Fasta file')
     parser.add_argument('--target', choices=['protein', 'rna'])
     parser.add_argument('--table', type=int, default=11,
                         help='Translation table to use', choices=range(1, 23))

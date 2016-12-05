@@ -146,8 +146,8 @@ def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
-    parser.add_argument('a', type=file)
-    parser.add_argument('b', type=file)
+    parser.add_argument('a', type=argparse.FileType("r"))
+    parser.add_argument('b', type=argparse.FileType("r"))
     parser.add_argument('--within', type=int, default=1000)
     parser.add_argument('--mode', type=str, choices=('ordered', 'unordered'), default='unordered')
     parser.add_argument('--oa', type=str, default='a_hits_in_b.gff')

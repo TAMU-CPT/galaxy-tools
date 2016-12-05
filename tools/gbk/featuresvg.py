@@ -84,7 +84,7 @@ def plot_boxes(parent=None, box_size=20):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Genbank Feature Array Plot')
-    parser.add_argument('parent', type=file, help='Genbank file')
+    parser.add_argument('parent', type=argparse.FileType("r"), help='Genbank file')
     parser.add_argument('--box_size', type=int, help='Box size', default=20)
 
     args = parser.parse_args()

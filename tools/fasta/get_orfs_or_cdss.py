@@ -8,7 +8,7 @@ log = logging.getLogger()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Get open reading frames')
-    parser.add_argument('fasta_file', type=file, help='Fasta file')
+    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Fasta file')
 
     parser.add_argument('-f', '--format', dest='seq_format', default='fasta',
                         help='Sequence format (e.g. fasta, fastq, sff)')

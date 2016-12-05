@@ -6,7 +6,7 @@ import argparse
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
     parser.add_argument('apollo', help='Complete Apollo URL')
-    parser.add_argument('json', type=file, help='JSON Data')
+    parser.add_argument('json', type=argparse.FileType("r"), help='JSON Data')
     parser.add_argument('external_apollo_url')
 
     args = parser.parse_args()

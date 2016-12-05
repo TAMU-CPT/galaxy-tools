@@ -47,8 +47,8 @@ def intersect(a, b):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
-    parser.add_argument('a', type=file)
-    parser.add_argument('b', type=file)
+    parser.add_argument('a', type=argparse.FileType("r"))
+    parser.add_argument('b', type=argparse.FileType("r"))
     parser.add_argument('--oa', type=str, default='a_hits_in_b.gff')
     parser.add_argument('--ob', type=str, default='b_hits_in_a.gff')
     args = parser.parse_args()

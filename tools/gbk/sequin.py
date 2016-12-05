@@ -124,8 +124,8 @@ if __name__ == '__main__':
     parser.add_argument('--paper_record_author', nargs='+')
     parser.add_argument('--paper_record_contact', nargs='+')
     parser.add_argument('--paper_record_affiliation')
-    parser.add_argument('--genbank_file', type=file)
-    parser.add_argument('--people', type=file)
+    parser.add_argument('--genbank_file', type=argparse.FileType("r"))
+    parser.add_argument('--people', type=argparse.FileType("r"))
     parser.add_argument('--tmpdir')
 
     args = parser.parse_args()

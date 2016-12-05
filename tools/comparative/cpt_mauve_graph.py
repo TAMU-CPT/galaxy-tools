@@ -61,7 +61,7 @@ def xmfa_graph(xmfa_backbone):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Graph of XMFA backbone')
-    parser.add_argument('xmfa_backbone', type=file, help='XMFA Backbone')
+    parser.add_argument('xmfa_backbone', type=argparse.FileType("r"), help='XMFA Backbone')
 
     args = parser.parse_args()
     xmfa_graph(**vars(args))

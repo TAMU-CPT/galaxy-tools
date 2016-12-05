@@ -166,8 +166,8 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('gff3', type=file, help='GFF3 gene calls')
-    parser.add_argument('fasta', type=file, help='FASTA genome calls')
+    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='FASTA genome calls')
     parser.add_argument('--max_overlap', type=int, default=60)
     parser.add_argument('--table', type=int, default=11)
 

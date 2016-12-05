@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Rescale data')
-    parser.add_argument('tabular_data', type=file, help='Tabular Dataset')
+    parser.add_argument('tabular_data', type=argparse.FileType("r"), help='Tabular Dataset')
     parser.add_argument('--min', type=float, help='New Minimum', default=0.0)
     parser.add_argument('--max', type=float, help='New Maximum', default=1.0)
 

@@ -73,8 +73,8 @@ def total_similarity(xmfa_file, sequences=None, dice=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert XMFA alignments to gff3', prog='xmfa2gff3')
-    parser.add_argument('xmfa_file', type=file, help='XMFA File')
-    parser.add_argument('sequences', type=file, nargs='+',
+    parser.add_argument('xmfa_file', type=argparse.FileType("r"), help='XMFA File')
+    parser.add_argument('sequences', type=argparse.FileType("r"), nargs='+',
                         help='Fasta files (in same order) passed to parent for reconstructing proper IDs')
     parser.add_argument('--dice', action='store_true', help='Use dice method for calculating % identity')
     parser.add_argument('--version', action='version', version='%(prog)s 1.0')
