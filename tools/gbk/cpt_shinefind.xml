@@ -1,0 +1,64 @@
+<tool id="edu.tamu.cpt.genbank.shinefind" name="ShineFind v1.5" version="1.5">
+	<description>Identify shine-dalgarno sequences</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<expand macro="stdio"/>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/cpt_shinefind.py $genbank
+--lookahead_min $lookahead_min
+--lookahead_max $lookahead_max
+
+--top_only --add
+
+$default_output
+
+> $gbk_output
+
+]]></command>
+	<inputs>
+		<param label="Genbank file" name="genbank" type="data"/>
+		<param label="Number of bases upstream of CDSs to end search (--lookahead_min)" name="lookahead_min" type="integer" value="5"/>
+		<param label="Number of bases upstream of CDSs to begin search (--lookahead_max)" name="lookahead_max" type="integer" value="15"/>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="default_output" label="ShineFind RBS list from $genbank.name"/>
+		<data format="genbank" name="gbk_output" label="$genbank.name with RBSs"/>
+	</outputs>
+	<tests>
+		<test>
+			<param name="genbank" value="miro2.gbk" />
+			<param name="gbk_output" value="miro3.gbk" />
+			<param name="lookahead_max" value="15" />
+			<param name="lookahead_min" value="5" />
+		</test>
+	</tests>
+	<help><![CDATA[
+**What it does**
+
+Generates a list of possible Shine Dalgarno sites in a Genbank file. It looks for CDS type features with upstream sequences containing a shinefind from the approved list:
+
+-  AGGAGGT
+-  GGAGGT
+-  AGGAGG
+-  AGGAG
+-  GAGGT
+-  GGAGG
+-  AGGT
+-  GGGT
+-  GAGG
+-  GGGG
+-  AGGA
+-  GGAG
+-  GGA
+-  GAG
+-  AGG
+-  GGT
+
+
+..class: infomark github-link
+
+    Have improvements to the documentation? `Click here <https://github.tamu.edu/CPT/Galaxy-Tools/edit/master/tools/gff3/shinefind.py>`__ to edit this file.
+]]></help>
+</tool>
