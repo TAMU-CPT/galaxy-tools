@@ -1,0 +1,7 @@
+##gff-version 3
+##sequence-region Miro 1 176055
+Miro	feature	gene	7454	7906	.	-	.	ID=Miro_8
+Miro	GenBank	mRNA	7454	7894	.	-	1	ID=Miro_8.mRNA;Parent=Miro_8
+Miro	GenBank	CDS	7454	7894	.	-	1	ID=Miro_8.t01;Name=Miro_8;Parent=Miro_8.mRNA;obsolete_name=Miro_156;product=hypothetical conserved
+Miro	GenBank	exon	7454	7894	.	-	1	ID=Miro_8.mRNA;Parent=Miro_8.mRNA
+Miro	GenBank	Shine_Dalgarno_sequence	7903	7906	.	-	1	Alias=Miro_8;ID=Miro_8.RBS;Name=Miro_8;Parent=Miro_8
