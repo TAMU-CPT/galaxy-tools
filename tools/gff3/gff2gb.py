@@ -92,7 +92,6 @@ def gff3_to_genbank(gff_file, fasta_file):
         for flat_feat in feature_lambda(
                 features, test_true, {}, subfeatures=True):
 
-
             # We use the full GO term, but it should be less than that.
             if flat_feat.type == 'Shine_Dalgarno_sequence':
                 flat_feat.type = 'RBS'

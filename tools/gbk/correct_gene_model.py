@@ -110,7 +110,7 @@ def correct_model(genbank_file):
                 if len(rbss) > 0:
                     r = nearbyRbss(c, rbss)
                     if len(r) == 1:
-                        gene_location=unionLoc(c.location, r[0].location)
+                        gene_location = unionLoc(c.location, r[0].location)
                         r[0].qualifiers['locus_tag'] = c.qualifiers['locus_tag']
                     else:
                         gene_location = FeatureLocation(c.location.start, c.location.end, c.location.strand)
