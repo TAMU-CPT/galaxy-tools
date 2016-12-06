@@ -36,6 +36,15 @@ def same_end(query, target):
     return results
 
 
+def sortOrder(feature):
+    # if 'locus_tag' in feature.qualifiers:
+        # so = feature.qualifiers['locus_tag'][0] + '__' + "%010d" % feature.location.start
+    # else:
+        # so = "%010d" % feature.location.start
+
+    return feature.location.start
+
+
 def nearbyRbss(cds, rbss):
     for r in rbss:
         if cds.strand > 0:
@@ -93,38 +102,28 @@ def correct_model(genbank_file):
                     'gene': c.qualifiers.get('gene', []),
                     'product': c.qualifiers.get('product', []),
                     'locus_tag': c.qualifiers.get('locus_tag', [get_id(c)]),
-                    'ID': get_id(c),
                 }
-                if 'gene' not in c.qualifiers:
-                    c.qualifiers['gene'] = quals['ID']
                 if 'locus_tag' not in c.qualifiers:
-                    c.qualifiers['locus_tag'] = get_id(c)
+                    c.qualifiers['locus_tag'] = [get_id(c)]
 
+                gene_location = None
                 if len(rbss) > 0:
-                    extra_feats = []
                     r = nearbyRbss(c, rbss)
                     if len(r) == 1:
-                        extra_feats.append(SeqFeature(
-                            unionLoc(c.location, r[0].location),
-                            type="gene",
-                            qualifiers=quals
-                        ))
+                        gene_location=unionLoc(c.location, r[0].location)
+                        r[0].qualifiers['locus_tag'] = c.qualifiers['locus_tag']
                     else:
-                        extra_feats.append(SeqFeature(
-                            FeatureLocation(c.location.start, c.location.end, c.location.strand),
-                            type="gene",
-                            qualifiers=quals
-                        ))
-                    record.features.extend(extra_feats)
+                        gene_location = FeatureLocation(c.location.start, c.location.end, c.location.strand)
                 else:
-                    record.features.append(
-                        SeqFeature(
-                            FeatureLocation(c.location.start, c.location.end, c.location.strand),
-                            type="gene",
-                            strand=c.location.strand,
-                            qualifiers=quals
-                        )
+                    gene_location = FeatureLocation(c.location.start, c.location.end, c.location.strand)
+
+                record.features.append(
+                    SeqFeature(
+                        location=gene_location,
+                        type="gene",
+                        qualifiers=quals
                     )
+                )
 
             # print genes
             record.features += genes
@@ -159,7 +158,7 @@ def correct_model(genbank_file):
                 else:
                     log.warn("Could not find a child feature for gene %s", get_id(g))
 
-        record.features = sorted(record.features, key=lambda x: int(x.location.start) - (1 if x.type == 'gene' else 0))
+        record.features = sorted(record.features, key=lambda x: sortOrder(x))
         yield [record]
 
 
