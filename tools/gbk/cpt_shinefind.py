@@ -123,12 +123,20 @@ def shinefind(genbank_file, gff3_output=None, table_output=None, lookahead_min=5
     sd_finder = NaiveSDCaller()
     # Parse GFF3 records
     for record in list(SeqIO.parse(genbank_file, "genbank")):
+        # Sometimes you have a case where TWO CDS features have the same start. Only handle ONE.
+        seen = {}
         # Shinefind's "gff3_output".
         gff3_output_record = SeqRecord(record.seq, record.id)
         # Loop over all CDS features
         for feature in record.features:
             if feature.type != 'CDS':
                 continue
+
+            seen_loc = feature.location.start if feature.strand > 0 else feature.location.end
+            if seen_loc in seen:
+                continue
+            else:
+                seen[seen_loc] = True
 
             sds, start, end, seq = sd_finder.testFeatureUpstream(
                 feature, record, sd_min=lookahead_min, sd_max=lookahead_max)
