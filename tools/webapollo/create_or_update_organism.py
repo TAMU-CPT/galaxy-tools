@@ -45,40 +45,19 @@ if __name__ == '__main__':
                 break
 
         if not has_perms:
-            print "Naming Conflict. You do not have permissions to access this organism. Either request permission from the owner, or choose a different name for your organism."
+            print("Naming Conflict. You do not have permissions to access this organism. Either request permission from the owner, or choose a different name for your organism.")
             sys.exit(2)
 
         log.info("\tUpdating Organism")
-        import subprocess
-        container_id = subprocess.check_output(
-            """docker ps | grep webapollo2_db |awk '{print $1}'""",
-            shell=True
+        data = wa.organisms.updateOrganismInfo(
+            org['id'],
+            org_cn,
+            args.jbrowse,
+            # mandatory
+            genus=args.genus,
+            species=args.species,
+            public=args.public
         )
-        container_id = container_id.strip()
-
-        import re
-        genus = re.sub('[^A-Za-z0-9.]*', '', args.genus)
-        species = re.sub('[^A-Za-z0-9.]*', '', args.species)
-
-        SQL = """update organism set directory='%s', genus='%s', species='%s' where id='%s'""" % (
-            args.jbrowse, genus, species, org['id']
-        )
-        CMD = """docker exec -t %s psql -U postgres -c "%s" """ % ( container_id, SQL )
-        subprocess.check_output(
-            CMD,
-            shell=True
-        )
-        data = [org]
-        # import sys; sys.exit()
-        # data = wa.organisms.updateOrganismInfo(
-        # org['id'],
-        # org_cn,
-        # args.jbrowse,
-        # # mandatory
-        # genus=args.genus,
-        # species=args.species,
-        # public=args.public
-        # )
     else:
         # New organism
         log.info("\tAdding Organism")
@@ -101,4 +80,4 @@ if __name__ == '__main__':
         )
 
     data = [o for o in data if o['commonName'] == org_cn]
-    print json.dumps(data, indent=2)
+    print(json.dumps(data, indent=2))
