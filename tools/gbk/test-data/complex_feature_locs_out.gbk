@@ -1,0 +1,51 @@
+LOCUS       contig00077              300 bp    DNA              UNK 15-MAR-2010
+DEFINITION  '[length=22956]'   '[numreads=4517 from AU1189;454 Data]'.
+ACCESSION   contig00077
+VERSION     contig00077
+KEYWORDS    .
+SOURCE      AU1189
+  ORGANISM  AU1189 Unclassified.
+            .
+REFERENCE   1  (bases 1 to 22956)
+  AUTHORS   Duarte,I.
+  TITLE     contig77
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 22956)
+  AUTHORS   Duarte,I.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-MAR-2010) PLPM, Texas A&M University, 2132 TAMU,
+            College Station, TX 77840, USA
+FEATURES             Location/Qualifiers
+     source          1..22956
+                     /mol_type="genomic DNA"
+                     /organism="AU1189"
+     gene            complement(11159..11652)
+                     /ID="gp14"
+                     /cpt_source="CPT_GENE_MODEL_CORRECTION"
+                     /gene="gp14"
+                     /locus_tag="gp14"
+                     /product="P2 E' tapemeasure frameshift chaperone"
+     CDS             complement(join(11159..11327,11327..11652))
+                     /gene="gp14"
+                     /locus_tag="gp14"
+                     /note="tapemeasure frameshift chaperone"
+                     /product="P2 E' tapemeasure frameshift chaperone"
+                     /translation="MNPIQSDAAAPDLQADAAAIATPAQDDPATHTLDTPLVRGTQTIT
+                     SITLRKPKSGELRGVSLSDLVSLDVVALSKVLPRISSPMLTEADVASIDPADLVQLGGI
+                     FAGFFDAEGREIPTGLPDRVEDPMADIATVFGWTPPVMDAFSLAELMDWRERARVRAGA
+                     Q"
+     gene            complement(11409..11910)
+                     /ID="<unknown id>"
+                     /cpt_source="CPT_GENE_MODEL_CORRECTION"
+                     /locus_tag="<unknown id>"
+     CDS             complement(join(11409..11600,11600..11900))
+                     /gene="<unknown id>"
+                     /locus_tag="<"
+     RBS             complement(11905..11910)
+ORIGIN
+        1 agccgggcgc gccaagcctg atcaggctct cagcggtttc ctcccatcgt cgtgcagtac
+       61 cgttgcagct aaattgcagc cggaatcggc gcgggctcgg ccgtcagcgg cgcgacccat
+      121 tgcgccagat gcgcggccga cagatgcgcg taccgctgca ccatttccat cgtctcccag
+      181 ccgcccagct ccttcagcac ctgcagcggc gtgccgcgtt ggacgtgcca gctcgcccag
+      241 gtgtggcgca ggtcgtgcca gcggaaatcg tgcaggccgg cgcgccgcag cgccttggcc
+//

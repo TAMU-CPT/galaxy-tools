@@ -111,7 +111,7 @@ def correct_model(genbank_file):
                         ))
                     else:
                         extra_feats.append(SeqFeature(
-                            c.location,
+                            FeatureLocation(c.location.start, c.location.end, c.location.strand),
                             type="gene",
                             qualifiers=quals
                         ))
@@ -119,7 +119,7 @@ def correct_model(genbank_file):
                 else:
                     record.features.append(
                         SeqFeature(
-                            c.location,
+                            FeatureLocation(c.location.start, c.location.end, c.location.strand),
                             type="gene",
                             strand=c.location.strand,
                             qualifiers=quals
