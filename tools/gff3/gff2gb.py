@@ -91,8 +91,6 @@ def gff3_to_genbank(gff_file, fasta_file):
         # Meat of our modifications
         for flat_feat in feature_lambda(
                 features, test_true, {}, subfeatures=True):
-            # if flat_feat.type == 'CDS':
-                # print(flat_feat.type, flat_feat.location, flat_feat.extract(record).seq.translate(table=11))
 
 
             # We use the full GO term, but it should be less than that.
