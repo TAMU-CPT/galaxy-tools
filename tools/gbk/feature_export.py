@@ -87,7 +87,7 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                         try:
                             y = x.extract(record.seq).translate(table=translation_table_id, cds=True)
                             extracted_seqs.append(y)
-                        except Exception, bdct:
+                        except Exception as bdct:
                             y = x.extract(record.seq).translate(table=translation_table_id, cds=False)
                             extracted_seqs.append(y)
                             log.warn("ERROR %s %s", get_id(x), bdct)

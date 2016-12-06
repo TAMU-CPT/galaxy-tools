@@ -9,6 +9,7 @@
 python $__tool_directory__/remove_feature.py
 "$gbk_files"
 
+--feature_types
 #set repeat_var_2 = '" "'.join(str($positional_2).split(','))
 "$repeat_var_2"
 
