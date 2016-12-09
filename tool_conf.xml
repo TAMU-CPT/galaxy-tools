@@ -4,6 +4,7 @@
 	<tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunDownloader_v2.xml" />
   </section>
   <section id="getext_ncbi" name="Get Data: NCBI">
+    <tool file="cpt2/galaxy-tools/tools/util/efetch.xml" />
     <tool hidden="True" file="data_source/upload.xml" />
     <tool file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/ecitmatch.xml" />
     <tool file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/efetch.xml" />
