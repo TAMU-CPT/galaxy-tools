@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.blast.split" name="Split col 25 BLAST results" version="1.1">
+	<description>to create a unique entry per subject title</description>
+	<command detect_errors="aggressive">
+python $__tool_directory__/split_blast.py
+$blast
+> $output
+	</command>
+	<inputs>
+		<param label="blast" name="blast" type="data" format="tabular"/>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="output" />
+	</outputs>
+	<help>
+Some BLAST hits are grouped on identical proteins so that the 25th column looks like:
+
+terminal repeat-encoded protein [Staphylococcus phage phiSA012]&lt;&gt;terminal repeat-encoded protein [Staphylococcus phage phiSA012]
+
+This tool creates separate entries for each of the listed organisms in this column.
+	</help>
+	<tests>
+		<test>
+			<param name="blast" value="split_blast.tabular" />
+			<output name="output" file="split_blast.out" />
+		</test>
+	</tests>
+	<citations/>
+</tool>

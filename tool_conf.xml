@@ -59,6 +59,7 @@
       <tool file="cpt2/galaxy-tools/tools/blast/cpt_blast_filter.xml" />
       <tool file="cpt2/galaxy-tools/tools/blast/cpt_relatedness.xml" />
       <tool file="cpt2/galaxy-tools/tools/blast/blastxml_filter.xml" labels="experimental"/>
+      <tool file="cpt2/galaxy-tools/tools/blast/split_blast.xml" labels="new" />
   </section>
   <section id="cpt2_fasta" name="CPT2: Fasta Tools" >
       <tool file="cpt2/galaxy-tools/tools/fasta/fasta_aastats.xml" />
