@@ -6,7 +6,6 @@ if __name__ == '__main__':
     parser.add_argument('blast', type=argparse.FileType("r"))
     args = parser.parse_args()
 
-
     blast = [
         x.split('\t')
         for x in args.blast.readlines()
