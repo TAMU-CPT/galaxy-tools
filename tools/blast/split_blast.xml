@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.blast.split" name="Split col 25 BLAST results" version="1.1">
 	<description>to create a unique entry per subject title</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
 python $__tool_directory__/split_blast.py
 $blast
