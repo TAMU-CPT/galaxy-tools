@@ -7,16 +7,31 @@ $file_a
 $col_a
 $file_b
 $col_b
-> $output
+$invert
+#if str($invert) == '--invert':
+    --output_a $output_a
+    --output_b $output_b
+#else:
+    --output_ab $output_ab
+#end if
 	</command>
 	<inputs>
 		<param label="File A" name="file_a" type="data" format="tabular"/>
 		<param label="Column A" name="col_a" type="integer" value="1" help="1 indexed columns." />
 		<param label="File B" name="file_b" type="data" format="tabular"/>
 		<param label="Column B" name="col_b" type="integer" value="1" help="1 indexed columns." />
+		<param label="invert" name="invert" type="boolean" truevalue="--invert" falsevalue="" help="invert to give sets of non-intersected data." />
 	</inputs>
 	<outputs>
-		<data format="tabular" name="output" />
+        <data format="tabular" name="output_ab" label="lines that intersect">
+            <filter>not invert</filter>
+        </data>
+        <data format="tabular" name="output_a" label="lines only in ${file_a.name}">
+            <filter>invert</filter>
+        </data>
+        <data format="tabular" name="output_b" label="lines only in ${file_b.name}">
+            <filter>invert</filter>
+        </data>
 	</outputs>
 	<help>
 Given two files, file A::
@@ -33,7 +48,7 @@ and a file B::
 
 You might be interested in finding the intersection of these two files. For
 these inputs and selecting column 2 from file A and column 1 from file B, you
-would get the following output:
+would get the following output::
 
     0ca428d3,Alice,32,Austin,Alice,Wakeboarding
     0ca428d3,Alice,32,Austin,Alice,Skiing
@@ -46,7 +61,17 @@ would get the following output:
 			<param name="file_b" value="intersect_b.tab" />
 			<param name="col_a" value="2" />
 			<param name="col_b" value="1" />
-			<output name="output" file="intersect.out" />
+			<param name="invert" value="" />
+			<output name="output_ab" file="out_ab.tab" />
+		</test>
+		<test>
+			<param name="file_a" value="intersect_a.tab" />
+			<param name="file_b" value="intersect_b.tab" />
+			<param name="col_a" value="2" />
+			<param name="col_b" value="1" />
+			<param name="invert" value="--invert" />
+			<output name="output_a" file="out_a.tab" />
+			<output name="output_b" file="out_b.tab" />
 		</test>
 	</tests>
 	<citations/>
