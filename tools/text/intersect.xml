@@ -33,6 +33,25 @@ $invert
             <filter>invert</filter>
         </data>
 	</outputs>
+	<tests>
+		<test>
+			<param name="file_a" value="intersect_a.tab" />
+			<param name="file_b" value="intersect_b.tab" />
+			<param name="col_a" value="2" />
+			<param name="col_b" value="1" />
+			<param name="invert" value="" />
+			<output name="output_ab" file="out_ab.tab" />
+		</test>
+		<test>
+			<param name="file_a" value="intersect_a.tab" />
+			<param name="file_b" value="intersect_b.tab" />
+			<param name="col_a" value="2" />
+			<param name="col_b" value="1" />
+			<param name="invert" value="--invert" />
+			<output name="output_a" file="out_a.tab" />
+			<output name="output_b" file="out_b.tab" />
+		</test>
+	</tests>
 	<help>
 Given two files, file A::
 
@@ -55,24 +74,5 @@ would get the following output::
     b64994a8,Carol,94,College Station,Carol,Knitting
 
 	</help>
-	<tests>
-		<test>
-			<param name="file_a" value="intersect_a.tab" />
-			<param name="file_b" value="intersect_b.tab" />
-			<param name="col_a" value="2" />
-			<param name="col_b" value="1" />
-			<param name="invert" value="" />
-			<output name="output_ab" file="out_ab.tab" />
-		</test>
-		<test>
-			<param name="file_a" value="intersect_a.tab" />
-			<param name="file_b" value="intersect_b.tab" />
-			<param name="col_a" value="2" />
-			<param name="col_b" value="1" />
-			<param name="invert" value="--invert" />
-			<output name="output_a" file="out_a.tab" />
-			<output name="output_b" file="out_b.tab" />
-		</test>
-	</tests>
 	<citations/>
 </tool>
