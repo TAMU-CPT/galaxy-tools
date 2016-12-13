@@ -32,8 +32,10 @@ $gff3_data
 	<help><![CDATA[
 ..class:: warningmark
 
-This tool is being deprecated and will soon be replaced by a tool that
-processes fasta sequences, making it much more generic.
+This tool is deprecated. Please use `the new fasta-only tool <root?tool_id=edu.tamu.cpt.fasta.stop_codons>`__.
+This change was made to make the tools less complicated and more obvious in
+their functionality. Currently this tool makes **assumptions** about your data
+which **may be wrong**.
 
 **What it does**
 
