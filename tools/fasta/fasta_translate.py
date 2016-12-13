@@ -1,7 +1,7 @@
 #!/usr/bin/env python
+import sys
 import logging
 import argparse
-import StringIO
 from Bio import SeqIO
 from Bio.Data import CodonTable
 logging.basicConfig(level=logging.INFO)
@@ -9,7 +9,6 @@ logging.basicConfig(level=logging.INFO)
 
 def translate(fasta_file, target='protein', table=11, strip_stops=False):
     records = list(SeqIO.parse(fasta_file, "fasta"))
-    output = StringIO.StringIO()
 
     # If we strip stops, then OK as is, otherwise add the extra char that the
     # [0:] would've missed
@@ -31,12 +30,10 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
 
             record.seq = tmpseq
             if len(record.seq) > 0:
-                SeqIO.write(record, output, "fasta")
+                SeqIO.write(record, sys.stdout, "fasta")
         else:
             record.seq = record.seq.transcribe()
-            SeqIO.write(record, output, "fasta")
-
-    print output.getvalue()
+            SeqIO.write(record, sys.stdout, "fasta")
 
 
 if __name__ == '__main__':

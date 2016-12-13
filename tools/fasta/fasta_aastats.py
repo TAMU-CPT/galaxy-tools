@@ -42,4 +42,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     for row in aa_stats(**vars(args)):
-        print '\t'.join(map(str, row))
+        print('\t'.join(map(str, row)))

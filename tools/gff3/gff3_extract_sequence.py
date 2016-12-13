@@ -58,7 +58,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
 
                     description = '[{}]'.format(
                         ';'.join([
-                            '{key}={value}'.format(key=k, value=v) for (k, v) in important_data.iteritems()
+                            '{key}={value}'.format(key=k, value=v) for (k, v) in important_data.items()
                         ])
                     )
 
