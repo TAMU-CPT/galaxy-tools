@@ -86,6 +86,9 @@
       <tool file="cpt2/galaxy-tools/tools/fasta/safe_reopen.xml" />
       <tool file="cpt2/galaxy-tools/tools/fasta/get_orfs_or_cdss.xml" />
       <tool file="cpt2/galaxy-tools/tools/util/extract_ref_codons.xml" />
+
+      <tool file="cpt2/galaxy-tools/tools/fasta/stop_stats.xml" labels="new"/>
+      <tool file="cpt2/galaxy-tools/tools/fasta/start_stats.xml" labels="new"/>
   </section>
   <section id="cpt2_gff3" name="CPT2: GFF3">
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_aa_stats.xml" />
