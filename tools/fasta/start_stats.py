@@ -2,6 +2,7 @@
 import argparse
 from Bio import SeqIO
 
+
 def extract_starts(fasta):
     codon_usage = {}
     for record in SeqIO.parse(fasta, 'fasta'):
