@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
             if not args.invert:
                 for i in data_a_indexed[row_id]:
-                    args.output_ab.write(joinStripRow(i) + ' ' + joinStripRow(row) + '\n')
+                    args.output_ab.write(joinStripRow(i) + '\t' + joinStripRow(row) + '\n')
 
     if args.invert:
         for i in data_a_indexed:
