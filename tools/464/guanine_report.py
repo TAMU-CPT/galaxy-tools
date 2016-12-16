@@ -15,7 +15,6 @@ def post_result(student_id, points_earned, points_possible, token, url, assessme
               'points_earned': points_earned,
               'points_possible': points_possible}
     r = requests.post(url + 'results/', data=values, headers=headers)
-    print(r.json())
     return r
 
 
