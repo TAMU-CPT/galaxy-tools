@@ -4,7 +4,7 @@ import json
 
 
 def auth(creds, url):
-    r = requests.post(url, data=json.load(creds))
+    r = requests.post(url + 'api-token-auth/', data=json.load(creds))
     return 'JWT ' + r.json()['token']
 
 
@@ -14,14 +14,15 @@ def post_result(student_id, points_earned, points_possible, token, url, assessme
               'assessment': assessment_id,
               'points_earned': points_earned,
               'points_possible': points_possible}
-    r = requests.post(url, data=values, headers=headers)
+    r = requests.post(url + 'results/', data=values, headers=headers)
+    print(r.json())
     return r
 
 
 def student_id(email, url):
     email = email.replace('@', '%40')
-    url = "http://localhost:8000/students/?email=" + email
-    r = requests.get(url)
+    student_url = url + 'students/?email=' + email
+    r = requests.get(student_url)
     return r.json()['results'][0]['id']
 
 
