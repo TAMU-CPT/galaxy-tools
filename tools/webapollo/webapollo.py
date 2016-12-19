@@ -2,11 +2,7 @@ import requests
 import json
 import os
 import collections
-try:
-    import StringIO as io
-except:
-    import io
-
+import StringIO
 import logging
 import argparse
 from BCBio import GFF
@@ -712,7 +708,7 @@ class RemoteRecord(Client):
         org = self._wa.organisms.findOrganismByCn(cn)
         self._wa.annotations.setSequence(org['commonName'], org['id'])
 
-        data = io.StringIO(self._wa.io.write(
+        data = StringIO.StringIO(self._wa.io.write(
             exportType='GFF3',
             seqType='genomic',
             exportAllSequences=False,
@@ -841,7 +837,7 @@ def accessible_organisms(user, orgs):
     }
 
     for org in sorted(orgs, key=lambda x: x.get('commonName', '')):
-        if org['commonName'] in permissionMap:
+        if org.get('commonName', None) in permissionMap:
             yield org
 
 
