@@ -56,11 +56,11 @@ cp $dummyIndex $jbrowse;
 
 Fetches the JBrowse directory from Apollo back into Galaxy.
 
-**WARNINGS**
+.. class:: warningmark
 
-- If you provide an Apollo JSON file, only the first organism block will
-  be used in Common Name determination, as it is improbable you wish to
-  apply a single JBrowse instance to multiple organisms.
+If you provide an Apollo JSON file, only the first organism block will be used
+in Common Name determination, as it is improbable you wish to apply a single
+JBrowse instance to multiple organisms.
 
 @REFERENCES@
 ]]></help>
