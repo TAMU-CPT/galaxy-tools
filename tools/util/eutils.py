@@ -1,6 +1,11 @@
 import os
+import re
 import json
-import StringIO
+try:
+    import StringIO as io
+except:
+    import io
+
 from Bio import Entrez
 Entrez.tool = "GalaxyEutils_1_0"
 BATCH_SIZE = 200
@@ -44,7 +49,8 @@ class Client(object):
         return json.dumps(Entrez.read(Entrez.epost(database, **payload)), indent=4)
 
     def fetch(self, db, ftype=None, **payload):
-        os.makedirs("downloads")
+        if not os.path.exists('downloads'):
+            os.makedirs("downloads")
 
         if 'id' in payload:
             summary = self.id_summary(db, payload['id'])
@@ -86,7 +92,7 @@ class Client(object):
         return Entrez.elink(**payload).read()
 
     def extract_history(self, xml_data):
-        parsed_data = Entrez.read(StringIO.StringIO(xml_data))
+        parsed_data = Entrez.read(io.StringIO(xml_data))
         history = {}
         for key in ('QueryKey', 'WebEnv'):
             if key in parsed_data:
@@ -112,7 +118,11 @@ class Client(object):
         """
         merged_ids = []
         if id is not None:
-            for pid in id.replace('__cn__', ',').replace('\n', ',').replace(' ', ',').split(','):
+            # Remove all whitespace / etc.
+            pids = re.sub(r'(__cn__|\n|\s)+', ',', id)
+            # Remove multiple commas
+            pids = re.sub(r'(,{2,})', ',', pids)
+            for pid in pids.split(','):
                 if pid is not None and len(pid) > 0:
                     merged_ids.append(pid)
 

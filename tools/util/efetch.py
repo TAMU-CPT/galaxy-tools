@@ -21,7 +21,6 @@ if __name__ == '__main__':
 
     c = eutils.Client(history_file=args.history_file, user_email=args.user_email, admin_email=args.admin_email)
     merged_ids = c.parse_ids(args.id_list, args.id, args.history_file)
-    merged_ids = [x[0:x.rindex('.')] for x in merged_ids]
 
     payload = {}
     if args.history_file is not None:
