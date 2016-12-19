@@ -2,11 +2,7 @@ import requests
 import json
 import os
 import collections
-try:
-    import StringIO as io
-except:
-    import io
-
+import StringIO
 import logging
 import argparse
 from BCBio import GFF
@@ -170,7 +166,7 @@ class Client(object):
             'password': self._wa.password,
         })
 
-        r = requests.post(url, data=json.dumps(data), headers=headers,
+        r = requests.pist(url, data=json.dumps(data), headers=headers,
                           verify=self.__verify, params=post_params, allow_redirects=False, **self._requestArgs)
 
         if r.status_code == 200 or r.status_code == 302:
@@ -712,7 +708,7 @@ class RemoteRecord(Client):
         org = self._wa.organisms.findOrganismByCn(cn)
         self._wa.annotations.setSequence(org['commonName'], org['id'])
 
-        data = io.StringIO(self._wa.io.write(
+        data = StringIO.StringIO(self._wa.io.write(
             exportType='GFF3',
             seqType='genomic',
             exportAllSequences=False,
@@ -839,10 +835,11 @@ def accessible_organisms(user, orgs):
         for x in user.organismPermissions
         if user.isAdmin() or any(PERM in x['permissions'] for PERM in ('WRITE', 'READ', 'ADMINISTRATE'))
     }
-
-    for org in sorted(orgs, key=lambda x: x.get('commonName', '')):
-        if org['commonName'] in permissionMap:
-            yield org
+    return [
+        (org['commonName'], org['id'], False)
+        for org in sorted(orgs, key=lambda x: x.get('commonName', ''))
+        if org.get('commonName', None) in permissionMap
+    ]
 
 
 def galaxy_list_orgs(trans, *args, **kwargs):
@@ -861,11 +858,32 @@ def galaxy_list_orgs(trans, *args, **kwargs):
     # And then filter by those which the user has permissions on.
     orgs = accessible_organisms(gx_user, all_orgs)
 
-    response = []
-    for org in orgs:
-        if 'genus' in org and org['genus']:
-            response.append(("{commonName} ({genus} {species})".format(**org), org['id'], False))
-        else:
-            response.append(("{commonName}".format(**org), org['id'], False))
-    print(response)
-    return response
+    return orgs
+
+
+
+
+# def galaxy_list_orgs(trans, *args, **kwargs):
+    # email = trans.get_user().email
+
+    # wa = WebApolloInstance(
+        # os.environ.get('GALAXY_WEBAPOLLO_URL', 'https://example.com'),
+        # os.environ.get('GALAXY_WEBAPOLLO_USER', 'admin'),
+        # os.environ.get('GALAXY_WEBAPOLLO_PASSWORD', 'admin')
+    # )
+
+    # # Get the user
+    # gx_user = AssertUser(wa.users.loadUsers(email=email))
+    # # Find ALL organisms
+    # all_orgs = wa.organisms.findAllOrganisms()
+    # # And then filter by those which the user has permissions on.
+    # orgs = accessible_organisms(gx_user, all_orgs)
+
+    # response = []
+    # for org in orgs:
+        # if 'genus' in org and org['genus']:
+            # response.append(("{commonName} ({genus} {species})".format(**org), org['id'], False))
+        # else:
+            # response.append(("{commonName}".format(**org), org['id'], False))
+    # print(response)
+    # return response
