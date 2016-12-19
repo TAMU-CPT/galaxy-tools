@@ -857,11 +857,7 @@ def galaxy_list_orgs(trans, *args, **kwargs):
     # And then filter by those which the user has permissions on.
     orgs = accessible_organisms(gx_user, all_orgs)
 
-    response = []
-    for org in orgs:
-        if 'genus' in org and org['genus']:
-            response.append(("{commonName} ({genus} {species})".format(**org), org['id'], False))
-        else:
-            response.append(("{commonName}".format(**org), org['id'], False))
-    print(response)
-    return response
+    return [
+        (org['commonName'], org['id'], False)
+        for org in orgs
+    ]
