@@ -833,12 +833,16 @@ def accessible_organisms(user, orgs):
     permissionMap = {
         x['organism']: x['permissions']
         for x in user.organismPermissions
-        if user.isAdmin() or any(PERM in x['permissions'] for PERM in ('WRITE', 'READ', 'ADMINISTRATE'))
+        if 'WRITE' in x['permissions'] or
+        'READ' in x['permissions'] or
+        'ADMINISTRATE' in x['permissions'] or
+        user.role == 'ADMIN'
     }
-
-    for org in sorted(orgs, key=lambda x: x.get('commonName', '')):
-        if org.get('commonName', None) in permissionMap:
-            yield org
+    return [
+        (org['commonName'], org['id'], False)
+        for org in sorted(orgs, key=lambda x: x['commonName'])
+        if org['commonName'] in permissionMap
+    ]
 
 
 def galaxy_list_orgs(trans, *args, **kwargs):
@@ -850,14 +854,9 @@ def galaxy_list_orgs(trans, *args, **kwargs):
         os.environ.get('GALAXY_WEBAPOLLO_PASSWORD', 'admin')
     )
 
-    # Get the user
     gx_user = AssertUser(wa.users.loadUsers(email=email))
-    # Find ALL organisms
     all_orgs = wa.organisms.findAllOrganisms()
-    # And then filter by those which the user has permissions on.
+
     orgs = accessible_organisms(gx_user, all_orgs)
 
-    return [
-        (org['commonName'], org['id'], False)
-        for org in orgs
-    ]
+    return orgs
