@@ -833,13 +833,13 @@ def accessible_organisms(user, orgs):
     permissionMap = {
         x['organism']: x['permissions']
         for x in user.organismPermissions
-        if 'WRITE' in x['permissions'] or
-        'READ' in x['permissions'] or
-        'ADMINISTRATE' in x['permissions'] or
-        user.role == 'ADMIN'
+
+        if any(PERM in x['permissions'] for PERM in ('WRITE', 'READ', 'ADMINISTRATE'))
+        or user.role == 'ADMIN'
     }
+
     return [
-        (org['commonName'], org['id'], False)
+        ("{genus} {species} ({commonName})".format(org), org['id'], False)
         for org in sorted(orgs, key=lambda x: x['commonName'])
         if org['commonName'] in permissionMap
     ]
