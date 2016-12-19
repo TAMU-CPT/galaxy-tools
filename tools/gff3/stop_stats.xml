@@ -30,7 +30,7 @@ $gff3_data
 		</test>
 	</tests>
 	<help><![CDATA[
-..class:: warningmark
+.. class:: warningmark
 
 This tool is deprecated. Please use `the new fasta-only tool <root?tool_id=edu.tamu.cpt.fasta.stop_codons>`__.
 This change was made to make the tools less complicated and more obvious in
