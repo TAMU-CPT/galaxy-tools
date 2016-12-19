@@ -2,7 +2,11 @@ import requests
 import json
 import os
 import collections
-import StringIO
+try:
+    import StringIO as io
+except:
+    import io
+
 import logging
 import argparse
 from BCBio import GFF
@@ -708,7 +712,7 @@ class RemoteRecord(Client):
         org = self._wa.organisms.findOrganismByCn(cn)
         self._wa.annotations.setSequence(org['commonName'], org['id'])
 
-        data = StringIO.StringIO(self._wa.io.write(
+        data = io.StringIO(self._wa.io.write(
             exportType='GFF3',
             seqType='genomic',
             exportAllSequences=False,
@@ -833,16 +837,12 @@ def accessible_organisms(user, orgs):
     permissionMap = {
         x['organism']: x['permissions']
         for x in user.organismPermissions
-
-        if any(PERM in x['permissions'] for PERM in ('WRITE', 'READ', 'ADMINISTRATE'))
-        or user.role == 'ADMIN'
+        if user.isAdmin() or any(PERM in x['permissions'] for PERM in ('WRITE', 'READ', 'ADMINISTRATE'))
     }
 
-    return [
-        ("{genus} {species} ({commonName})".format(org), org['id'], False)
-        for org in sorted(orgs, key=lambda x: x['commonName'])
-        if org['commonName'] in permissionMap
-    ]
+    for org in sorted(orgs, key=lambda x: x.get('commonName', '')):
+        if org['commonName'] in permissionMap:
+            yield org
 
 
 def galaxy_list_orgs(trans, *args, **kwargs):
@@ -861,9 +861,7 @@ def galaxy_list_orgs(trans, *args, **kwargs):
     # And then filter by those which the user has permissions on.
     orgs = accessible_organisms(gx_user, all_orgs)
 
-    with open('/tmp/gxtest', 'w') as handle:
-        handle.write(str(gx_user) + '\n\n')
-        handle.write(pprint.pformat(all_orgs) + '\n\n')
-        handle.write(pprint.pformat(orgs) + '\n\n')
-
-    return orgs
+    return [
+        ("{commonName} ({genus} {species})".format(**org), org['id'], False)
+        for org in orgs
+    ]
