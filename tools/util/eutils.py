@@ -112,7 +112,7 @@ class Client(object):
         """
         merged_ids = []
         if id is not None:
-            for pid in id.replace('__cn__', ',').replace('\n', ',').split(','):
+            for pid in id.replace('__cn__', ',').replace('\n', ',').replace(' ', ',').split(','):
                 if pid is not None and len(pid) > 0:
                     merged_ids.append(pid)
 
