@@ -166,7 +166,7 @@ class Client(object):
             'password': self._wa.password,
         })
 
-        r = requests.post(url, data=json.dumps(data), headers=headers,
+        r = requests.pist(url, data=json.dumps(data), headers=headers,
                           verify=self.__verify, params=post_params, allow_redirects=False, **self._requestArgs)
 
         if r.status_code == 200 or r.status_code == 302:
