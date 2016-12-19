@@ -854,9 +854,16 @@ def galaxy_list_orgs(trans, *args, **kwargs):
         os.environ.get('GALAXY_WEBAPOLLO_PASSWORD', 'admin')
     )
 
+    # Get the user
     gx_user = AssertUser(wa.users.loadUsers(email=email))
+    # Find ALL organisms
     all_orgs = wa.organisms.findAllOrganisms()
-
+    # And then filter by those which the user has permissions on.
     orgs = accessible_organisms(gx_user, all_orgs)
+
+    with open('/tmp/gxtest', 'w') as handle:
+        handle.write(str(gx_user) + '\n\n')
+        handle.write(pprint.pformat(all_orgs) + '\n\n')
+        handle.write(pprint.pformat(orgs) + '\n\n')
 
     return orgs
