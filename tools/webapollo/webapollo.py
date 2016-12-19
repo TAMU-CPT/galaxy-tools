@@ -867,4 +867,5 @@ def galaxy_list_orgs(trans, *args, **kwargs):
             response.append(("{commonName} ({genus} {species})".format(**org), org['id'], False))
         else:
             response.append(("{commonName}".format(**org), org['id'], False))
+    print(response)
     return response
