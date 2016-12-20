@@ -28,7 +28,11 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
             'BLASTP': 'protein_match',
         }.get(record.application, 'match')
 
-        rec = SeqRecord(Seq("ACTG"), id=record.query)
+        recid = record.query
+        if ' ' in recid:
+            recid = recid[0:recid.index(' ')]
+
+        rec = SeqRecord(Seq("ACTG"), id=recid)
         for hit in record.alignments:
             for hsp in hit.hsps:
                 qualifiers = {
