@@ -9,31 +9,60 @@ log = logging.getLogger(__name__)
 
 
 def gff3_diff(gff3_1, gff3_2):
-    recs1 = {}
-    recs2 = {}
+    feats1 = {}
+    feats2 = {}
     for rec1 in GFF.parse(gff3_1):
         for feat in feature_lambda(rec1.features, feature_test_type, {'type': 'gene'}, subfeatures=True):
             if feat.location.strand == 1:
-                recs1[feat.location.start] = feat
+                feats1[feat.location.start] = feat
             else:
-                recs1[feat.location.end] = feat
+                feats1[feat.location.end] = feat
 
     for rec2 in GFF.parse(gff3_2):
         for feat in feature_lambda(rec2.features, feature_test_type, {'type': 'gene'}, subfeatures=True):
             if feat.location.strand == 1:
-                recs2[feat.location.start] = feat
+                feats2[feat.location.start] = feat
             else:
-                recs2[feat.location.end] = feat
+                feats2[feat.location.end] = feat
 
 
-    print len(recs1)
-    print len(recs2)
-    for i in recs1:
-        a = recs1[i]
+    no_match = []
+    flags_list = {}
+    for i in feats1:
+        flags = {'strand': False, 'start': False, 'id': False, 'qualifiers': False}
+        a = feats1[i]
+        problem = False
         try:
-            b = recs2[i]
+            b = feats2[i]
+
+            if a.id != b.id:
+                flags['id'] = True
+                problem = True
+
+            if a.qualifiers != b.qualifiers:
+                flags['qualifiers'] = True
+                problem = True
+
+            if a.location.strand == b.location.strand:
+                if a.location.strand == 1:
+                    if a.location.start != b.location.start:
+                        flags['start'] = True
+                        problem = True
+                else:
+                    if a.location.end != b.location.end:
+                        flags['start'] = True
+                        problem = True
+            else:
+                flags['strand'] = True
+                problem = True
+
+            if problem:
+                flags_list[i] = flags
         except:
-            print recs1[i]
+            no_match.append(feats1[i])
+
+    print flags_list
+    print no_match
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reports differences between two gff3 files')
