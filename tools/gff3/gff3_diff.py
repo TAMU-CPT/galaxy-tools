@@ -56,13 +56,17 @@ def gff3_diff(gff3_1, gff3_2):
                 flags['strand'] = True
                 problem = True
 
+            del feats2[i]
             if problem:
                 flags_list[i] = flags
         except:
             no_match.append(feats1[i])
 
     print flags_list
-    print no_match
+    for nm in no_match:
+        print nm
+    for f in feats2:
+        print feats2[f]
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reports differences between two gff3 files')
