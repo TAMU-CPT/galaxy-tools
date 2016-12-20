@@ -1,4 +1,4 @@
-<tool id="blasttab_to_gapped_gff3" name="BlastN TSV to gapped GFF3" version="1.2.1">
+<tool id="blasttab_to_gapped_gff3" name="BlastN TSV to gapped GFF3" version="1.2-2">
   <description>converts tabular blast results to a JBrowse-compatible file</description>
   <macros>
     <import>macros.xml</import>
@@ -7,7 +7,6 @@
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/blasttab_to_gapped_gff3.py
 @BLAST_TSV@
-"$blast_tsv"
 --min_gap $min_gap
 > $output]]></command>
   <inputs>
