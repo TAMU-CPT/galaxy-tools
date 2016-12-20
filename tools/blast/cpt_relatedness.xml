@@ -15,7 +15,7 @@ $__tool_directory__/cpt_relatedness.py
 	<expand macro="blast_tsv" />
 	</inputs>
 	<outputs>
-		<data format="tabular" name="accession_list" label="Top blast hits from ${blast_tsv}.name" />
+		<data format="tabular" name="accession_list" label="Top blast hits" />
 	</outputs>
 	<help>
 **What it does**
