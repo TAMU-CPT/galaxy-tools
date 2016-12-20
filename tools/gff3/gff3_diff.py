@@ -8,6 +8,27 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
+def find_differences(a, b):
+    flags = {'strand': False, 'start': False, 'id': False, 'qualifiers': False}
+    if a.id != b.id:
+        flags['id'] = True
+
+    if a.qualifiers != b.qualifiers:
+        flags['qualifiers'] = True
+
+    if a.location.strand == b.location.strand:
+        if a.location.strand == 1:
+            if a.location.start != b.location.start:
+                flags['start'] = True
+        else:
+            if a.location.end != b.location.end:
+                flags['start'] = True
+    else:
+        flags['strand'] = True
+
+    return flags
+
+
 def gff3_diff(gff3_1, gff3_2):
     feats1 = {}
     feats2 = {}
@@ -25,40 +46,16 @@ def gff3_diff(gff3_1, gff3_2):
             else:
                 feats2[feat.location.end] = feat
 
-
     no_match = []
     flags_list = {}
     for i in feats1:
-        flags = {'strand': False, 'start': False, 'id': False, 'qualifiers': False}
-        a = feats1[i]
-        problem = False
         try:
-            b = feats2[i]
-
-            if a.id != b.id:
-                flags['id'] = True
-                problem = True
-
-            if a.qualifiers != b.qualifiers:
-                flags['qualifiers'] = True
-                problem = True
-
-            if a.location.strand == b.location.strand:
-                if a.location.strand == 1:
-                    if a.location.start != b.location.start:
-                        flags['start'] = True
-                        problem = True
-                else:
-                    if a.location.end != b.location.end:
-                        flags['start'] = True
-                        problem = True
-            else:
-                flags['strand'] = True
-                problem = True
-
+            diffs = find_differences(feats1[i], feats2[i])
             del feats2[i]
-            if problem:
-                flags_list[i] = flags
+            for d in diffs:
+                if diffs[d] == True:
+                    flags_list[i] = flags
+                    break
         except:
             no_match.append(feats1[i])
 
