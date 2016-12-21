@@ -50,7 +50,7 @@ mv ${output_gff3}.gff3 ${output_gff3}
                 <option value="SignalP-GRAM_NEGATIVE" selected="false">SignalP Gram Negative Bacteria</option>
                 <option value="SignalP-EUK" selected="true">SignalP Eukaryotic Bacteria</option>
                 <option value="Phobius" selected="true">Phobius: combined transmembrane topology and signal peptide predictor</option>
-                <option value="TMHMM" selected="true">TMHMM: Prediction of transmembrane helices in proteins</option>
+                <!--<option value="TMHMM" selected="true">TMHMM: Prediction of transmembrane helices in proteins</option>-->
             </param>
         </inputs>
     <outputs>
