@@ -181,8 +181,10 @@
   <section id="cpt_blast" name="CPT:Blast">
     <tool file="cpt2/blast/blastclust.xml" />
   </section>
-  <section id="cptexternal" name="CPT:External Software">
+  <section id="cptexternal" name="CPT:External Software Wrappers">
     <tool file="cpt2/galaxy-tools/tools/external/tmhmm.xml" />
+	<tool file="cpt2/galaxy-tools/tools/external/gmsn.pl.xml" />
+    <tool file="cpt2/galaxy-tools/tools/external/interproscan.xml" />
   </section>
   <section id="cptspecialsnowflakes" name="CPT:Oneoff/Custom">
     <tool file="cpt2/galaxy-tools/tools/one-off/none-validator.xml" />
