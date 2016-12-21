@@ -1,0 +1,34 @@
+<tool id="genemarks" name="GeneMarkS" version="1.0.0">
+<description>GeneMarkS</description>
+	<command>
+gmsn.pl --output $outfile
+--clean --format ${format_flag}
+$options
+$file
+	</command>
+	<inputs>
+	<param value="" name="file" optional="False" type="data" format="fasta" label="Input FASTA sequence" />
+	<param value="" name="format_flag" type="select" label="Output format">
+		<option value="GFF">GFF2</option>
+		<option value="LST">LST</option>
+	</param>
+	<param value="" name="options" type="select" label="Genome">
+		<option value="--prok">Prokaryote</option>
+		<option value="--euk">Eukaryote</option>
+		<option value="--virus">Eukaryotic viral genome</option>
+		<option value="--phage">Phage</option>
+	</param>
+
+	</inputs>
+	<outputs>
+<data name="outfile">
+	<change_format>
+		<when input="format_flag" value="GFF" format="gff"/>
+		<when input="format_flag" value="LST" format="txt"/>
+	</change_format>
+</data>
+	</outputs>
+	<help>
+		TODO: Write me!
+	</help>
+</tool>
