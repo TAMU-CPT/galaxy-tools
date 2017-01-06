@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.plot.snp" name="SNP Plot" version="1.0">
+<tool id="edu.tamu.cpt.plot.snp" name="SNP Plot" version="1.1">
 	<description>simple plot of generated snps against a reference sequence</description>
 	<macros>
 		<import>macros.xml</import>
@@ -6,16 +6,16 @@
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/fasta_snp_plot.py
-$positional_1
-$positional_2
+$ref
+$cmp
 
 > $default]]></command>
 	<inputs>
-		<param label="Reference sequence" help="only 1 fasta sequence allowed" name="positional_1" type="data"/>
-		<param label="Fasta file of SNPs" name="positional_2" type="data"/>
+		<param label="Reference sequence" name="ref" type="data" format="fasta"/>
+		<param label="Fasta file of SNPs" name="cmp" type="data" format="fasta"/>
 	</inputs>
 	<outputs>
-		<data format="svg" name="default" label="SNPs from $positional_2.name against $positional_1.name"/>
+		<data format="svg" name="default" label="SNPs from $cmp.name against $ref.name"/>
 	</outputs>
 	<tests>
 	</tests>
