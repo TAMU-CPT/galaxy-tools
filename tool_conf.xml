@@ -181,7 +181,7 @@
     <tool file="tabular_to_fasta/tabular_to_fasta.xml" />
   </section>
   <section id="cpt_blast" name="CPT:Blast">
-    <tool file="cpt2/blast/blastclust.xml" />
+	<tool file="cpt2/galaxy-tools/tools/blast/blastclust.xml" />
   </section>
   <section id="cptexternal" name="CPT:External Software Wrappers">
     <tool file="cpt2/galaxy-tools/tools/external/tmhmm.xml" />
