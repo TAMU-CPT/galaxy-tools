@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+import sys
 import requests
 import argparse
 import json
@@ -22,7 +24,11 @@ def student_id(email, url):
     email = email.replace('@', '%40')
     student_url = url + 'students/?email=' + email
     r = requests.get(student_url)
-    return r.json()['results'][0]['id']
+    try:
+        return r.json()['results'][0]['id']
+    except:
+        print("Unknown student")
+        sys.exit(1)
 
 
 if __name__ == '__main__':
