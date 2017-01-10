@@ -43,4 +43,9 @@ if __name__ == '__main__':
 
     token = auth(args.creds, args.guanine_url)
     student_id = student_id(args.student_email, args.guanine_url)
-    post_result(student_id, args.points_earned, args.points_possible, token, args.guanine_url, args.assessment_id)
+    r = post_result(student_id, args.points_earned, args.points_possible, token, args.guanine_url, args.assessment_id)
+    if r.status_code in (200, 201):
+        print("Success")
+    else:
+        print("Failure: %s" % r.status_code)
+        sys.exit(1)
