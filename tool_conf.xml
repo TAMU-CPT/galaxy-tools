@@ -23,9 +23,9 @@
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_evaluate.xml" />
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c2_evaluate.xml" />
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/password_passthrough.xml" />
-      <tool file="cpt2/galaxy-tools/tools/464/guanine_test.xml" />
+      <tool file="cpt2/galaxy-tools/tools/464/guanine_test.xml" labels="464-2017"/>
       <label id="l_4cacao" text="CACAO" />
-      <tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml" />
+      <tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml" labels="464-2017"/>
   </section>
 
   <section id="webapollo2" name="CPT2: Apollo">
