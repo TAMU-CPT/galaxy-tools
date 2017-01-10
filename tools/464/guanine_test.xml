@@ -6,7 +6,7 @@ guanine_report.py
 "https://cpt.tamu.edu/guanine-backend/"
 "/galaxy/creds.json"
 "e1a3d7d8-83e2-40f9-a952-f4b403c85378"
-$__user_email__"
+$__user_email__
 #if str($q1)=="4"
     1
 #else
