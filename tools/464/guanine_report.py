@@ -30,8 +30,7 @@ def student_id(email, url):
         print("Unknown student")
         sys.exit(1)
 
-
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description='post an assessment result')
     parser.add_argument('guanine_url', help='GUANINE Backend URL')
     parser.add_argument('creds', type=argparse.FileType("r"), help='json file with username/password')
@@ -49,3 +48,6 @@ if __name__ == '__main__':
     else:
         print("Failure: %s" % r.status_code)
         sys.exit(1)
+
+if __name__ == '__main__':
+    main()
