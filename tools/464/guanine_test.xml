@@ -7,11 +7,11 @@ guanine_report.py
 "/galaxy/creds.json"
 "e1a3d7d8-83e2-40f9-a952-f4b403c85378"
 $__user_email__"
-#if str(q1)=="4":
+#if str($q1)=="4"
     1
-#else:
+#else
     0
-#endif
+#end if
 1
 > $output_file
 ]]></command>
