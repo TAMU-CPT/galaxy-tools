@@ -4,7 +4,7 @@ import json
 
 
 def auth(creds, url):
-    r = requests.post(url + 'api-token-auth/', data=json.load(creds))
+    r = requests.post(url + 'api-token-auth/', data=json.load(creds)['guanine'])
     return 'JWT ' + r.json()['token']
 
 
