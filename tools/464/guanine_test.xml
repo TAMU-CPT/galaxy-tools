@@ -1,15 +1,22 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.464.2017.guanine_report" name="464 GUANINE Reporter" version="1.1">
+<tool id="edu.tamu.cpt2.464.2017.guanine_test" name="464 GUANINE Reporter" version="1.1">
   <description></description>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[
 guanine_report.py
-"/galaxy/guanine_creds.json"
-"$__user_email__"
-1
+"https://cpt.tamu.edu/guanine-backend/"
+"/galaxy/creds.json"
+"e1a3d7d8-83e2-40f9-a952-f4b403c85378"
+$__user_email__
+#if str($q1)=="4"
+    1
+#else
+    0
+#end if
 1
 > $output_file
 ]]></command>
   <inputs>
+    <param label="What is 2+2?" name="q1" type="text" value=""/>
   </inputs>
   <outputs>
     <data format="txt" name="output_file"/>
@@ -17,6 +24,5 @@ guanine_report.py
   <help><![CDATA[
 **What it does**
 
-Reports a single assessment back to guanine as a pass.
 ]]></help>
 </tool>
