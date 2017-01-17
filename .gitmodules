@@ -7,3 +7,6 @@
 [submodule "tools/one_snp_away"]
 	path = tools/one_snp_away
 	url = https://github.com/TAMU-CPT/one_snp_away
+[submodule "tools/464/quizzes"]
+	path = tools/464/quizzes
+	url = https://github.tamu.edu/CPT/BICH464-Guanine-Quizzes/
