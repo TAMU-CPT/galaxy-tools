@@ -5,6 +5,7 @@ import collections
 import StringIO
 import logging
 import argparse
+import sys
 from BCBio import GFF
 from Bio import SeqIO
 logging.getLogger("requests").setLevel(logging.CRITICAL)
@@ -860,3 +861,20 @@ def galaxy_list_orgs(trans, *args, **kwargs):
     orgs = accessible_organisms(gx_user, all_orgs)
 
     return orgs
+
+
+class obj(object): pass
+
+class fakeTrans(object):
+    def __init__(self, username):
+        self.un = username
+
+    def get_user(self):
+        o = obj()
+        o.email = self.un
+        return o
+
+if __name__ == '__main__':
+    trans = fakeTrans(sys.argv[1])
+    for f in galaxy_list_orgs(trans):
+        print(f)
