@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+import sys
 import requests
 import argparse
 import json
@@ -22,10 +24,13 @@ def student_id(email, url):
     email = email.replace('@', '%40')
     student_url = url + 'students/?email=' + email
     r = requests.get(student_url)
-    return r.json()['results'][0]['id']
+    try:
+        return r.json()['results'][0]['id']
+    except:
+        print("Unknown student")
+        sys.exit(1)
 
-
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description='post an assessment result')
     parser.add_argument('guanine_url', help='GUANINE Backend URL')
     parser.add_argument('creds', type=argparse.FileType("r"), help='json file with username/password')
@@ -37,4 +42,12 @@ if __name__ == '__main__':
 
     token = auth(args.creds, args.guanine_url)
     student_id = student_id(args.student_email, args.guanine_url)
-    post_result(student_id, args.points_earned, args.points_possible, token, args.guanine_url, args.assessment_id)
+    r = post_result(student_id, args.points_earned, args.points_possible, token, args.guanine_url, args.assessment_id)
+    if r.status_code in (200, 201):
+        print("Success")
+    else:
+        print("Failure: %s" % r.status_code)
+        sys.exit(1)
+
+if __name__ == '__main__':
+    main()

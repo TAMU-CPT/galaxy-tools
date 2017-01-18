@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.cacao.add_org" name="Register Annotation Set" version="1.0">
+  <description>registers an organism and gene call set with CACAO for annotation.</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+python $__tool_directory__/add_org.py
+
+https://cpt.tamu.edu/cacao-backend/
+/galaxy/creds.json
+--organism_name "$org_name"
+--taxon "$taxon_id"
+--ebi_id "$ebi_id"
+"$gff3_data"
+@GENOME_SELECTOR@
+
+> $log]]></command>
+  <inputs>
+    <expand macro="input/gff3+fasta" />
+    <param name="oragnism_name" type="text" label="Organism Name" optional="False" />
+    <param name="taxon" type="text" label="Taxon ID (if available)" optional="True" value="NA"/>
+    <param name="ebi_id" type="text" label="EBI ID (if available)" optional="True" value="NA"/>
+  </inputs>
+  <outputs>
+    <data format="text" name="log"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Adds an organism to the CACAO database.
+
+@REFERENCES@
+      ]]></help>
+</tool>
