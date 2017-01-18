@@ -30,8 +30,6 @@
       <!-- BEGIN GUANINE -->
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_1_over_Module_1.xml" />
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_Template.xml" />
-      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_1_over_Module_1.xml" />
-      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_Template.xml" />
       <!-- END GUANINE -->
   </section>
 
