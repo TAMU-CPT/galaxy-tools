@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage.annotation_table" name="Annotation Table" version="2.7">
+<tool id="edu.tamu.cpt2.phage.annotation_table" name="Annotation Table" version="3.0">
     <description>from gff3 formatted datasets</description>
     <macros>
       <import>macros.xml</import>
@@ -13,7 +13,6 @@ $gff3_data
 @GENOME_SELECTOR@
 
 --reportTemplateName "$report_format"
---user_email $__user_email__
 --annotationTableCols "$cols"
 
 > $output]]></command>
@@ -21,35 +20,35 @@ $gff3_data
         <expand macro="gff3_input" />
         <expand macro="genome_selector" />
         <param label="Columns" type="select" name="cols" multiple="True">
-            <option value="rid">Record ID</option>
-            <option value="id">ID</option>
-            <option value="name">Name</option>
+            <option value="rid" selected="true">Record ID</option>
+            <option value="id" selected="true">ID</option>
+            <option value="name" selected="true">Name</option>
 
-            <option value="location">Location</option>
-            <option value="start">Feature Start</option>
-            <option value="end">Feature End</option>
-            <option value="strand">Strand</option>
-            <option value="length">Length</option>
+            <option value="location" selected="true">Location</option>
+            <option value="start" selected="true">Feature Start</option>
+            <option value="end" selected="true">Feature End</option>
+            <option value="strand" selected="true">Strand</option>
+            <option value="length" selected="true">Length</option>
 
-            <option value="sd_seq">SD sequence</option>
-            <option value="sd_spacing">SD spacing</option>
-            <option value="start_codon">Start codon</option>
-            <option value="stop_codon">Stop codon</option>
+            <option value="sd_seq" selected="true">SD sequence</option>
+            <option value="sd_spacing" selected="true">SD spacing</option>
+            <option value="start_codon" selected="true">Start codon</option>
+            <option value="stop_codon" selected="true">Stop codon</option>
 
-            <option value="ig_dist">Distance to next upstream feature</option>
-            <option value="upstream_feature__name">Name of upstream feature</option>
+            <option value="ig_dist" selected="true">Distance to next upstream feature</option>
+            <option value="upstream_feature__name" selected="true">Name of upstream feature</option>
 
-            <option value="owner">Owner</option>
-            <option value="date_created">Date created</option>
-            <option value="date_last_modified">Date last modified</option>
+            <option value="owner" selected="true">Owner</option>
+            <option value="date_created" selected="true">Date created</option>
+            <option value="date_last_modified" selected="true">Date last modified</option>
 
-            <option value="notes">Notes</option>
-            <option value="description">Description</option>
-            <option value="product">Product</option>
-            <option value="dbxrefs">DBxrefs</option>
+            <option value="notes" selected="true">Notes</option>
+            <option value="description" selected="true">Description</option>
+            <option value="product" selected="true">Product</option>
+            <option value="dbxrefs" selected="true">DBxrefs</option>
         </param>
         <param label="Report Format" type="select" name="report_format">
-            <option value="phageqc_report_annotation_table.html" selected="True">HTML Table</option>
+            <option value="phageqc_report_annotation_table.html" selected="true">HTML Table</option>
             <option value="phageqc_report_annotation_table.tsv">Tabular (Excel Compatible) Table</option>
         </param>
     </inputs>
