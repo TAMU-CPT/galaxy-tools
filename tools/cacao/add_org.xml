@@ -12,7 +12,7 @@ python $__tool_directory__/add_org.py
 
 https://cpt.tamu.edu/cacao-backend/
 /galaxy/creds.json
---organism_name "$org_name"
+--organism_file "$org_file"
 --taxon "$taxon"
 --ebi_id "$ebi_id"
 "$gff3_data"
@@ -21,7 +21,7 @@ https://cpt.tamu.edu/cacao-backend/
 > $log]]></command>
   <inputs>
     <expand macro="input/gff3+fasta" />
-    <param name="org_name" type="text" label="Organism Name" optional="False" />
+    <param name="org_file" type="data" format="json" label="Apollo Organism File" help="Used as source of truth for organism common name" />
     <param name="taxon" type="text" label="Taxon ID (if available)" optional="True" value="NA"/>
     <param name="ebi_id" type="text" label="EBI ID (if available)" optional="True" value="NA"/>
   </inputs>
