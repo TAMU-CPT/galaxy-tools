@@ -51,6 +51,7 @@ def gff3_diff(gff3_1, gff3_2):
     for i in feats1:
         try:
             diffs = find_differences(feats1[i], feats2[i])
+            # need to somehow check for subfeatures
             del feats2[i]
             for d in diffs:
                 if diffs[d] == True:
