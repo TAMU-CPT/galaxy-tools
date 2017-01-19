@@ -1,9 +1,5 @@
 #!/usr/bin/env python
-import re
-import sys
 import argparse
-from BCBio import GFF
-from gff3 import feature_lambda
 from gff2gb import gff3_to_genbank
 
 import logging

@@ -27,9 +27,10 @@
       <label id="l_4cacao" text="CACAO" />
       <tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml" labels="464-2017"/>
 
-      <!-- THESE ARE SUPPOSED TO BE HIDDEN -->
-	  <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_1_over_Module_1.tsv.xml" />
-      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_Template.tsv.xml" />
+      <!-- BEGIN GUANINE -->
+      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_1_over_Module_1.xml" />
+      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_Template.xml" />
+      <!-- END GUANINE -->
   </section>
 
   <section id="webapollo2" name="CPT2: Apollo">

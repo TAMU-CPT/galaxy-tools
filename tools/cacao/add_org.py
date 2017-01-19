@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import json
 import requests
 import argparse
@@ -10,21 +11,23 @@ def auth(creds, url):
     r = requests.post(url + 'api-token-auth/', data=data)
     return 'JWT ' + r.json()['token']
 
+
 def post(token, url, data):
     q = requests.post(
         url,
         data=data,
-        headers = {'Authorization': token}
+        headers={'Authorization': token}
     ).json()
     print(q)
     return q
+
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('url', help='Backend URL. Include trailing slash.')
     parser.add_argument('creds', type=argparse.FileType("r"), help='json file with username/password')
 
-    parser.add_argument('--organism_name', type=str)
+    parser.add_argument('--organism_file', type=argparse.FileType('r'))
     parser.add_argument('--taxon', type=str, default='NA')
     parser.add_argument('--ebi_id', type=str, default='NA')
     parser.add_argument('gff3', type=argparse.FileType('r'))
@@ -34,15 +37,17 @@ def main():
 
     token = auth(args.creds, args.url)
 
+    organism_name = json.load(args.organism_file)[0]['common_name']
+
     organism = post(token, args.url + 'organisms/', dict(
-        common_name=args.organism_name,
+        common_name=organism_name,
         taxon=args.taxon,
         ebi_id=args.ebi_id
     ))
 
     refseqs = {}
     for record in SeqIO.parse(args.fasta, "fasta"):
-        refseq = post(token, args.url + 'refseq/', dict( # noqa
+        refseq = post(token, args.url + 'refseq/', dict(  # noqa
             name=record.id,
             length=len(record.seq),
             organism=organism['id'],
