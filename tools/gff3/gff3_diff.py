@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import sys
 import logging
 import argparse
 from BCBio import GFF
@@ -53,8 +52,8 @@ def gff3_diff(gff3_1, gff3_2):
             diffs = find_differences(feats1[i], feats2[i])
             del feats2[i]
             for d in diffs:
-                if diffs[d] == True:
-                    flags_list[i] = flags
+                if diffs[d]:
+                    flags_list[i] = flags  # noqa HXR: Commented out for linting, please remove when ready.
                     break
         except:
             no_match.append(feats1[i])
