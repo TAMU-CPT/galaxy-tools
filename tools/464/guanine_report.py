@@ -30,6 +30,7 @@ def student_id(email, url):
         print("Unknown student")
         sys.exit(1)
 
+
 def main():
     parser = argparse.ArgumentParser(description='post an assessment result')
     parser.add_argument('guanine_url', help='GUANINE Backend URL')

@@ -10,14 +10,16 @@ def auth(creds, url):
     r = requests.post(url + 'api-token-auth/', data=data)
     return 'JWT ' + r.json()['token']
 
+
 def post(token, url, data):
     q = requests.post(
         url,
         data=data,
-        headers = {'Authorization': token}
+        headers={'Authorization': token}
     ).json()
     print(q)
     return q
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -42,7 +44,7 @@ def main():
 
     refseqs = {}
     for record in SeqIO.parse(args.fasta, "fasta"):
-        refseq = post(token, args.url + 'refseq/', dict( # noqa
+        refseq = post(token, args.url + 'refseq/', dict(  # noqa
             name=record.id,
             length=len(record.seq),
             organism=organism['id'],

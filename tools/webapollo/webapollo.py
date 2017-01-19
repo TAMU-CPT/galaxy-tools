@@ -863,9 +863,12 @@ def galaxy_list_orgs(trans, *args, **kwargs):
     return orgs
 
 
-class obj(object): pass
+class obj(object):
+    pass
+
 
 class fakeTrans(object):
+
     def __init__(self, username):
         self.un = username
 
