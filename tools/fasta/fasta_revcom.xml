@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.fasta.revcom" name="Reverse and Complement Fasta Files" version="1.0">
+    <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/revcom.py
+$file
+> $output
+]]></command>
+  <inputs>
+    <param label="Fasta file" name="file" type="data" format="fasta"/>
+  </inputs>
+  <outputs>
+    <data format="fasta" name="output">
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <param name="fasta" value="revcom.in.fa"/>
+      <output name="output" file="revcom.out.fa" />
+    </test>
+  </tests>
+  <help>
+**What it does**
+
+Reverses and complements all sequences in a fasta file
+</help>
+<citations />
+</tool>
