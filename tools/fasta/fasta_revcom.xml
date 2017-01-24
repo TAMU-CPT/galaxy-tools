@@ -6,7 +6,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/revcom.py
+python $__tool_directory__/fasta_revcom.py
 $file
 > $output
 ]]></command>
