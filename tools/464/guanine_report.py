@@ -21,10 +21,11 @@ def post_result(student_id, points_earned, points_possible, token, url, assessme
     return r
 
 
-def student_id(email, url):
+def student_id(email, url, token):
+    headers = {'Authorization': token}
     email = email.replace('@', '%40')
     student_url = url + 'students/?email=' + email
-    r = requests.get(student_url)
+    r = requests.get(student_url, headers=headers)
     try:
         return r.json()['results'][0]['id']
     except:
@@ -47,7 +48,7 @@ def main():
     args = parser.parse_args()
 
     token = auth(args.creds, args.guanine_url)
-    sid = student_id(args.student_email, args.guanine_url)
+    sid = student_id(args.student_email, args.guanine_url, token)
     r = post_result(sid, args.points_earned, args.points_possible,
                     token, args.guanine_url, args.assessment_id)
     if r.status_code in (200, 201):
