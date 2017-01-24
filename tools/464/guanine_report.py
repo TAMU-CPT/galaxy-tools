@@ -36,15 +36,11 @@ def student_id(email, url, token):
 def main():
     parser = argparse.ArgumentParser(description='post an assessment result')
     parser.add_argument('guanine_url', help='GUANINE Backend URL')
-    parser.add_argument('creds', type=argparse.FileType(
-        "r"), help='json file with username/password')
+    parser.add_argument('creds', type=argparse.FileType("r"), help='json file with username/password')
     parser.add_argument('assessment_id', help='GUANINE Assessment ID')
-    parser.add_argument(
-        'student_email', help='email of the student receiving result')
-    parser.add_argument('points_earned', type=int,
-                        help='how many points the student earned')
-    parser.add_argument('points_possible', type=int,
-                        help='how many points were possible in the assessment')
+    parser.add_argument('student_email', help='email of the student receiving result')
+    parser.add_argument('points_earned', type=int, help='how many points the student earned')
+    parser.add_argument('points_possible', type=int, help='how many points were possible in the assessment')
     args = parser.parse_args()
 
     token = auth(args.creds, args.guanine_url)
