@@ -24,7 +24,7 @@ if __name__ == '__main__':
     else:
         it = SeqIO.parse(args.data, args.filetype)
 
-    for i, it in enumerate(it):
+    for idx, record in enumerate(it):
         # Can only handle a single name
         if idx > 1:
             raise Exception("Too many sequences")
