@@ -152,7 +152,7 @@
   </section>
   <section id="cpt2_comparative" name="CPT2: Comparative Genomics">
     <tool file="cpt2/galaxy-tools/tools/comparative/mist3.xml" />
-    <tool file="cpt2/galaxy-tools/tools/comparative/gepard.xml" />
+    <tool file="cpt2/galaxy-tools/tools/comparative/gepard.xml" hidden="True"/>
     <tool file="cpt2/galaxy-tools/tools/comparative/progressivemauve.xml" />
     <tool file="cpt2/galaxy-tools/tools/comparative/xmfa2gff3.xml" />
     <tool file="cpt2/galaxy-tools/tools/comparative/xmfa2bigwig.xml" />
