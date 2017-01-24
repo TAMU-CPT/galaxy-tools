@@ -89,11 +89,13 @@
       <tool file="cpt2/galaxy-tools/tools/fasta/fasta_snp_plot.xml" />
       <tool file="cpt2/galaxy-tools/tools/fasta/fasta_remove_id.xml" />
       <tool file="cpt2/galaxy-tools/tools/fasta/fasta_translate.xml" />
+      <tool file="cpt2/galaxy-tools/tools/fasta/fasta_revcom.xml" labels="new"/>
       <tool file="cpt2/galaxy-tools/tools/fasta/ncbi_header_split.xml" />
       <tool file="cpt2/galaxy-tools/tools/fasta/safe_reopen.xml" />
       <tool file="cpt2/galaxy-tools/tools/fasta/get_orfs_or_cdss.xml" />
       <tool file="cpt2/galaxy-tools/tools/util/extract_ref_codons.xml" />
       <tool file="cpt2/galaxy-tools/tools/util/cpt_mutate.xml" />
+      <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="new,experimental"/>
 
       <tool file="cpt2/galaxy-tools/tools/fasta/stop_stats.xml" labels="new"/>
       <tool file="cpt2/galaxy-tools/tools/fasta/start_stats.xml" labels="new"/>
@@ -127,6 +129,7 @@
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_genemarks.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_require_sd.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_add_parents_to_cds.xml" />
+      <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="new,experimental"/>
     <tool file="cpt2/tools-iuc/tools/bioperl/bp_genbank2gff3.xml" />
     <tool file="cpt2/galaxy-tools/tools/gff3/annotation_table.xml" />
   </section>
@@ -149,6 +152,7 @@
     <tool file="cpt2/galaxy-tools/tools/gbk/split.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/subsection.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml" />
+    <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="new,experimental"/>
   </section>
   <section id="cpt2_comparative" name="CPT2: Comparative Genomics">
     <tool file="cpt2/galaxy-tools/tools/comparative/mist3.xml" />

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.seq.rename" name="Rename Sequence" version="1.0">
+  <description>allows you to change ID in genbank, gff3, and fasta files.</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/rename.py
+$data
+--filetype $data.ext
+--new_name "$new_name"
+> $output]]></command>
+  <inputs>
+    <param label="Sequence file to Rename" name="data" type="data" format="genbank,gff3,fasta"/>
+    <param label="New name for the sequence" name="new_name" type="text"/>
+  </inputs>
+  <outputs>
+    <data format="fasta" name="default" label="$new_name"/>
+    <data format="txt" name="output">
+      <change_format>
+        <when format="gff3" input="data.ext" value="gff3"/>
+        <when format="fasta" input="data.ext" value="fasta"/>
+        <when format="genbank" input="data.ext" value="genbank"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Rename (gff3, gbk, fasta) sequences
+
+      ]]></help>
+</tool>
