@@ -11,12 +11,15 @@ def auth(creds, url):
     return 'JWT ' + r.json()['token']
 
 
-def post_result(student_id, points_earned, points_possible, token, url, assessment_id):
+def post_result(student_id, points_earned, points_possible, token, url, assessment_id, notes):
     headers = {'Authorization': token}
-    values = {'student': student_id,
-              'assessment': assessment_id,
-              'points_earned': points_earned,
-              'points_possible': points_possible}
+    values = {
+        'student': student_id,
+        'assessment': assessment_id,
+        'points_earned': points_earned,
+        'points_possible': points_possible,
+        'notes': notes,
+    }
     r = requests.post(url + 'results/', data=values, headers=headers)
     return r
 
@@ -41,12 +44,15 @@ def main():
     parser.add_argument('student_email', help='email of the student receiving result')
     parser.add_argument('points_earned', type=int, help='how many points the student earned')
     parser.add_argument('points_possible', type=int, help='how many points were possible in the assessment')
+    parser.add_argument('--notes', type=argparse.FileType('r'), help='Notes / metadata file')
     args = parser.parse_args()
 
     token = auth(args.creds, args.guanine_url)
     sid = student_id(args.student_email, args.guanine_url, token)
-    r = post_result(sid, args.points_earned, args.points_possible,
-                    token, args.guanine_url, args.assessment_id)
+    r = post_result(
+        sid, args.points_earned, args.points_possible, token, args.guanine_url,
+        args.assessment_id, args.notes.read() if args.notes else ''
+    )
     if r.status_code in (200, 201):
         print("Success")
     else:
