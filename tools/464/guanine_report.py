@@ -32,7 +32,7 @@ def student_id(email, url, token):
     try:
         return r.json()['results'][0]['id']
     except:
-        print("Unknown student")
+        sys.stderr.write("Unknown student\n")
         sys.exit(1)
 
 
@@ -56,8 +56,8 @@ def main():
     if r.status_code in (200, 201):
         print("Success")
     else:
-        print("Failure: %s" % r.status_code)
-        sys.exit(1)
+        sys.stderr.write("Failure: %s\n" % r.text)
+        sys.exit(0)
 
 
 if __name__ == '__main__':
