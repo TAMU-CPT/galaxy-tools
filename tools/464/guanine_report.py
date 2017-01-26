@@ -57,7 +57,7 @@ def main():
         print("Success")
     else:
         sys.stderr.write("Failure: %s\n" % r.text)
-        sys.exit(0)
+        sys.exit(1)
 
 
 if __name__ == '__main__':
