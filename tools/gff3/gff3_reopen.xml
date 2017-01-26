@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gff3.reopen" name="GFF3 Reopen" version="1.0.0">
-  <description>reopens a gff3 file at a specific location</description>
+<tool id="edu.tamu.cpt.gff3.reopen" name="GFF3 Reopen" version="1.1.0">
+  <description>reopens a gff3 file (and optional fasta file) at a specific location</description>
   <macros>
     <import>macros.xml</import>
   </macros>
@@ -8,14 +8,18 @@
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_reopen.py
 @INPUT_GFF@
+--fasta "$fasta"
+--fasta_output "$fasta_output"
 $index
-> $default]]></command>
+> "$default"]]></command>
   <inputs>
       <expand macro="gff3_input" />
+      <param name="fasta" type="data" format="fasta" label="Source FASTA Sequence" optional="True"/>
       <param name="index" type="integer" value="1" label="Index to reopen annotations at" />
   </inputs>
   <outputs>
     <data format="gff3" name="default"/>
+    <data format="fasta" name="fasta_output"/>
   </outputs>
   <tests>
       <test>
