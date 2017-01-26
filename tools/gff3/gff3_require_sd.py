@@ -27,7 +27,7 @@ def require_shinefind(gff3, fasta):
             # Someday this will bite me in the arse.
             cds = cdss[0]
 
-            sds, start, end, seq = sd_finder.testFeatureUpstream(cds, record, sd_min=5, sd_max=17)
+            sds, start, end, seq = sd_finder.testFeatureUpstream(cds, record, sd_min=5, sd_max=15)
             if len(sds) >= 1:
                 # TODO
                 # Double plus yuck
