@@ -27,8 +27,8 @@ def require_shinefind(gff3, fasta):
             # Someday this will bite me in the arse.
             cds = cdss[0]
 
-            sds, start, end, seq = sd_finder.testFeatureUpstream(cds, record, sd_min=5, sd_max=17)
-            if len(sds) > 1:
+            sds, start, end, seq = sd_finder.testFeatureUpstream(cds, record, sd_min=5, sd_max=15)
+            if len(sds) >= 1:
                 # TODO
                 # Double plus yuck
                 sd_features = sd_finder.to_features(sds, gene.location.strand, start, end, feature_id=gene.id)
