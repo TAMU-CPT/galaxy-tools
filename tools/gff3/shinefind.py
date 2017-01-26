@@ -32,6 +32,7 @@ class NaiveSDCaller(object):
         'GAG',
         'AGG',
         'GGT',
+        'GGG',
     )
 
     def __init__(self):
