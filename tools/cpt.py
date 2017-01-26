@@ -153,20 +153,22 @@ class OrfFinder(object):
         # TODO - Refactor to use a generator function (in start order)
         # rather than making a list and sorting?
         full_len = len(nuc_seq)
-        for frame in range(0, 3):
-            for offset, n, t in self.break_up_frame(nuc_seq[frame:]):
-                start = frame + offset  # zero based
-                yield (start, start + len(n), +1, n, t)
-        rc = reverse_complement(nuc_seq)
-        for frame in range(0, 3):
-            for offset, n, t in self.break_up_frame(rc[frame:]):
-                start = full_len - frame - offset  # zero based
-                yield (start - len(n), start, -1, n, t)
+        if self.strand != "reverse":
+            for frame in range(0, 3):
+                for offset, n, t in self.break_up_frame(nuc_seq[frame:]):
+                    start = frame + offset  # zero based
+                    yield (start, start + len(n), +1, n, t)
+        if self.strand != "forward":
+            rc = reverse_complement(nuc_seq)
+            for frame in range(0, 3):
+                for offset, n, t in self.break_up_frame(rc[frame:]):
+                    start = full_len - frame - offset  # zero based
+                    yield (start - len(n), start, -1, n, t)
 
 
 class MGAFinder(object):
 
-    def __init__(self, table, ftype, ends, min_len):
+    def __init__(self, table, ftype, ends, min_len, strand):
         self.table = table
         self.table_obj = CodonTable.ambiguous_generic_by_id[table]
         self.ends = ends
@@ -176,6 +178,7 @@ class MGAFinder(object):
         self.stops = sorted(self.table_obj.stop_codons)
         self.re_starts = re.compile("|".join(self.starts))
         self.re_stops = re.compile("|".join(self.stops))
+        self.strand = strand
 
     def locate(self, fasta_file, out_nuc, out_prot, out_bed, out_gff3):
         seq_format = "fasta"

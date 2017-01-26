@@ -21,6 +21,7 @@ if __name__ == '__main__':
                         help='Output all ORFs/CDSs from sequence, all ORFs/CDSs '
                         'with max length, or first with maximum length')
     parser.add_argument('--min_len', dest='min_len', default=10, help='Minimum ORF/CDS length', type=int)
+    parser.add_argument('--strand', dest='strand', choices=('both', 'forward', 'reverse'), default='both', help='select strand')
 
     parser.add_argument('--on', dest='out_nuc', type=argparse.FileType('w'), default='out.fna', help='Output nucleotide sequences')
     parser.add_argument('--op', dest='out_prot', type=argparse.FileType('w'), default='out.fa', help='Output protein sequences')
