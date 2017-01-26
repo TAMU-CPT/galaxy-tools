@@ -27,8 +27,8 @@ def gff_reopen(gff3, index=1, fasta=None, fasta_output=None):
         log.debug(rec.annotations)
 
         if fasta:
-            seq = record.seq
-            record.seq = seq[index:] + seq[0:index]
+            seq = rec.seq
+            rec.seq = seq[index:] + seq[0:index]
 
         yield rec
 
@@ -43,5 +43,5 @@ if __name__ == '__main__':
 
     for rec in gff_reopen(**vars(args)):
         GFF.write([rec], sys.stdout)
-        if fasta:
+        if args.fasta:
             SeqIO.write([rec], args.fasta_output, 'fasta')
