@@ -47,7 +47,7 @@ def phage_name_parser(name):
 
 class OrfFinder(object):
 
-    def __init__(self, table, ftype, ends, min_len):
+    def __init__(self, table, ftype, ends, min_len, strand):
         self.table = table
         self.table_obj = CodonTable.ambiguous_generic_by_id[table]
         self.ends = ends
@@ -57,6 +57,7 @@ class OrfFinder(object):
         self.stops = sorted(self.table_obj.stop_codons)
         self.re_starts = re.compile("|".join(self.starts))
         self.re_stops = re.compile("|".join(self.stops))
+        self.strand = strand
 
     def locate(self, fasta_file, out_nuc, out_prot, out_bed, out_gff3):
         seq_format = "fasta"
@@ -168,7 +169,7 @@ class OrfFinder(object):
 
 class MGAFinder(object):
 
-    def __init__(self, table, ftype, ends, min_len, strand):
+    def __init__(self, table, ftype, ends, min_len):
         self.table = table
         self.table_obj = CodonTable.ambiguous_generic_by_id[table]
         self.ends = ends
@@ -178,7 +179,6 @@ class MGAFinder(object):
         self.stops = sorted(self.table_obj.stop_codons)
         self.re_starts = re.compile("|".join(self.starts))
         self.re_stops = re.compile("|".join(self.stops))
-        self.strand = strand
 
     def locate(self, fasta_file, out_nuc, out_prot, out_bed, out_gff3):
         seq_format = "fasta"
