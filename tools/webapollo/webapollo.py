@@ -2,7 +2,10 @@ import requests
 import json
 import os
 import collections
-import StringIO
+try:
+    import StringIO as io
+except:
+    import io
 import logging
 import argparse
 import sys
@@ -709,7 +712,7 @@ class RemoteRecord(Client):
         org = self._wa.organisms.findOrganismByCn(cn)
         self._wa.annotations.setSequence(org['commonName'], org['id'])
 
-        data = StringIO.StringIO(self._wa.io.write(
+        data = io.StringIO(self._wa.io.write(
             exportType='GFF3',
             seqType='genomic',
             exportAllSequences=False,
@@ -821,9 +824,9 @@ def _yieldFeatData(features):
 def featuresToFeatureSchema(features):
     compiled = []
     for feature in features:
-        if feature.type != 'gene':
-            log.warn("Not able to handle %s features just yet...", feature.type)
-            continue
+        # if feature.type != 'gene':
+            # log.warn("Not able to handle %s features just yet...", feature.type)
+            # continue
 
         for x in _yieldFeatData([feature]):
             compiled.append(x)
