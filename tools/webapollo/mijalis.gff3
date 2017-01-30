@@ -1,0 +1,7 @@
+##gff-version 3
+##sequence-region Mijalis 1 87962
+Mijalis	CPT	gene	4923	5400	.	+	.	ID=1e8b9523-be87-4cf0-adda-a9e799d55da3;Name=gene_135;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	4923	5400	.	+	.	ID=00851ce2-6224-4ce4-a88b-21b36006bdf9;Name=Hypothetical Protein;Parent=1e8b9523-be87-4cf0-adda-a9e799d55da3;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	4936	5400	.	+	0	ID=f0f8b19c-0e12-4873-9fd9-fe88f76d9f39;Name=f0f8b19c-0e12-4873-9fd9-fe88f76d9f39-CDS;Parent=00851ce2-6224-4ce4-a88b-21b36006bdf9
+Mijalis	CPT	exon	4936	5400	.	+	.	ID=82572c3c-ef71-4124-a437-f6975ef4c545;Name=82572c3c-ef71-4124-a437-f6975ef4c545-exon;Parent=00851ce2-6224-4ce4-a88b-21b36006bdf9
+Mijalis	CPT	exon	4923	4925	.	+	.	ID=a75bc2ab-5d79-4501-8211-a463029b6110;Name=a75bc2ab-5d79-4501-8211-a463029b6110-exon;Parent=00851ce2-6224-4ce4-a88b-21b36006bdf9
