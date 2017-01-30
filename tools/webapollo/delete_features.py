@@ -8,7 +8,7 @@ log = logging.getLogger(__name__)
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
+    parser = argparse.ArgumentParser(description='Sample script to delete all features from an organism')
     WAAuth(parser)
     parser.add_argument('email', help='User Email')
     OrgOrGuess(parser)
