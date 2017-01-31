@@ -11,21 +11,23 @@ def find_hydrophobic_seq(seq):
     start = 0
     end = 0
     domain = ''
+    seq = seq + 'X'  # add a final non hydrophobic residue so loop will finish
     for num, s in enumerate(seq):
         if s in hydrophobic_residues:
             if not count:
                 start = num
             count += 1
-        else:
-            print '***'
-            print count
-            end = num
+            end = num + 1
             domain = seq[start:end]
-            print {'start': start, 'end': end, 'domain': domain}
-            print '***'
+        else:
+            if count >= 10:
+                if domain.endswith('LS'):
+                    yield {'start': start, 'end': end, 'domain': domain}
+                elif 'LS' in domain and len(domain.split('LS')[0]) >= 8:
+                    domain = domain.split('LS')[0] + 'LS'
+                    end = start + len(domain)
+                    yield {'start': start, 'end': end, 'domain': domain}
             count = 0
-    sys.exit()
-
 
 def find_l_like_proteins(fasta):
     """ Returns proteins that have:
@@ -36,7 +38,12 @@ def find_l_like_proteins(fasta):
     records = list(SeqIO.parse(fasta, "fasta"))
 
     for record in records:
-        find_hydrophobic_seq(record.seq)
+        print '*****'
+        for a in find_hydrophobic_seq(record.seq):
+            print a
+            # if 'LS' in a['domain']:
+                # print a['domain'].split('LS')
+        print '*****'
 
 
 if __name__ == '__main__':
