@@ -32,11 +32,10 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
 
             record.seq = tmpseq
             if len(record.seq) > 0:
-                pass
-                # SeqIO.write(record, sys.stdout, "fasta")
+                SeqIO.write(record, sys.stdout, "fasta")
         else:
             record.seq = record.seq.transcribe()
-            # SeqIO.write(record, sys.stdout, "fasta")
+            SeqIO.write(record, sys.stdout, "fasta")
 
 
 if __name__ == '__main__':
