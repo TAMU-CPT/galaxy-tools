@@ -46,7 +46,7 @@ $__tool_directory__/fasta_translate.py
 					<option value="24">[24] Pterobranchia Mitochondrial Code</option>
 					<option value="25">[25] Candidate Division SR1 and Gracilibacteria Code</option>
 				</param>
-				<param label="Remove stop characters" name="strip_stops" type="boolean" checked="true", truevalue="--strip_stops" falsevalue=""/>
+				<param label="Remove stop characters" name="strip_stops" type="boolean" checked="true" truevalue="--strip_stops" falsevalue=""/>
 			</when>
 		</conditional>
 	</inputs>
