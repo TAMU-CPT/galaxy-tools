@@ -12,7 +12,7 @@
         ## Nope, still don't trust them to not be dumb (or malicious), so we backup first.
         python $__tool_directory__/export.py
         @ADMIN_AUTH@
-        @ORG_CN_OR_GUESS@
+        @ORG_OR_GUESS@
         --gff "$gff_out"
         --fasta "$fasta_out"
         --json "$json_out";
