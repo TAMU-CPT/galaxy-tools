@@ -23,8 +23,8 @@ def find_hydrophobic_seq(seq):
             if count >= 10:
                 if domain.endswith('LS'):
                     yield {'start': start, 'end': end, 'domain': domain}
-                elif 'LS' in domain and len(domain.split('LS')[0]) >= 8:
-                    domain = domain.split('LS')[0] + 'LS'
+                elif 'LS' in domain and len(domain.rsplit('LS',1)[0]) >= 8:
+                    domain = domain.rsplit('LS',1)[0] + 'LS'
                     end = start + len(domain)
                     yield {'start': start, 'end': end, 'domain': domain}
             count = 0
@@ -39,8 +39,10 @@ def find_l_like_proteins(fasta):
 
     for record in records:
         print '*****'
+        print record.name
         for a in find_hydrophobic_seq(record.seq):
             print a
+            print record.seq[0:a['start']]
             # if 'LS' in a['domain']:
                 # print a['domain'].split('LS')
         print '*****'
