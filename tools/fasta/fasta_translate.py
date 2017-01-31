@@ -5,6 +5,7 @@ import argparse
 from Bio import SeqIO
 from Bio.Data import CodonTable
 logging.basicConfig(level=logging.INFO)
+log = logging.getLogger()
 
 
 def translate(fasta_file, target='protein', table=11, strip_stops=False):
@@ -26,7 +27,9 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
                 tmpseq = record.seq.translate(table=table, cds=False)
 
             if '*' in tmpseq:
-                tmpseq = tmpseq[0:str(tmpseq).index('*') - strip_stops_diff]
+                idx = str(tmpseq).index('*') - strip_stops_diff
+                log.warn("Trimming %s from %s to %s due to stop codons", record.id, len(tmpseq), idx)
+                tmpseq = tmpseq[0:idx]
 
             record.seq = tmpseq
             if len(record.seq) > 0:
