@@ -22,15 +22,21 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
             except CodonTable.TranslationError:
                 tmpseq = record.seq.translate(table=table, cds=False)
 
+            # check if stop in middle of protein
+            if '*' in tmpseq:
+                log.warn("Trimming %s from %s to %s due to stop codons", record.id, len(tmpseq), idx)
+
+            # add stop to end if strip_stops=False
             if not strip_stops:
                 tmpseq = tmpseq + '*'
 
             record.seq = tmpseq
             if len(record.seq) > 0:
-                SeqIO.write(record, sys.stdout, "fasta")
+                pass
+                # SeqIO.write(record, sys.stdout, "fasta")
         else:
             record.seq = record.seq.transcribe()
-            SeqIO.write(record, sys.stdout, "fasta")
+            # SeqIO.write(record, sys.stdout, "fasta")
 
 
 if __name__ == '__main__':
