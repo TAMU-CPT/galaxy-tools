@@ -30,8 +30,6 @@ def gff_reopen(gff3, index=1, fasta=None, fasta_output=None):
         if fasta:
             if len(rec.seq) == rec.seq.count("?"):
                 log.error("ERROR: You have provided a fasta file but the sequence ID in the fasta file DID NOT MATCH THE GFF. THIS IS BAD.")
-            seq = rec.seq
-            rec.seq = seq[index:] + seq[0:index]
 
         yield rec
 
