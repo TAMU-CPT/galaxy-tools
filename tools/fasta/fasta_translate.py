@@ -11,10 +11,6 @@ log = logging.getLogger()
 def translate(fasta_file, target='protein', table=11, strip_stops=False):
     records = list(SeqIO.parse(fasta_file, "fasta"))
 
-    # If we strip stops, then OK as is, otherwise add the extra char that the
-    # [0:] would've missed
-    strip_stops_diff = 0 if strip_stops else -1
-
     for record in records:
         if target == 'protein':
             mod = len(record.seq) % 3
@@ -26,10 +22,13 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
             except CodonTable.TranslationError:
                 tmpseq = record.seq.translate(table=table, cds=False)
 
+            # check if stop in middle of protein
             if '*' in tmpseq:
-                idx = str(tmpseq).index('*') - strip_stops_diff
                 log.warn("Trimming %s from %s to %s due to stop codons", record.id, len(tmpseq), idx)
-                tmpseq = tmpseq[0:idx]
+
+            # add stop to end if strip_stops=False
+            if not strip_stops:
+                tmpseq = tmpseq + '*'
 
             record.seq = tmpseq
             if len(record.seq) > 0:
