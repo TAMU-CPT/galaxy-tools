@@ -16,4 +16,4 @@ if __name__ == '__main__':
 
     orgs = accessible_organisms(gx_user, all_orgs)
 
-    print json.dumps(orgs, indent=2)
+    print(json.dumps(orgs, indent=2))
