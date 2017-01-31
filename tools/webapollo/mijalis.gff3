@@ -5,3 +5,686 @@ Mijalis	CPT	mRNA	4923	5400	.	+	.	ID=00851ce2-6224-4ce4-a88b-21b36006bdf9;Name=Hy
 Mijalis	CPT	CDS	4936	5400	.	+	0	ID=f0f8b19c-0e12-4873-9fd9-fe88f76d9f39;Name=f0f8b19c-0e12-4873-9fd9-fe88f76d9f39-CDS;Parent=00851ce2-6224-4ce4-a88b-21b36006bdf9
 Mijalis	CPT	exon	4936	5400	.	+	.	ID=82572c3c-ef71-4124-a437-f6975ef4c545;Name=82572c3c-ef71-4124-a437-f6975ef4c545-exon;Parent=00851ce2-6224-4ce4-a88b-21b36006bdf9
 Mijalis	CPT	exon	4923	4925	.	+	.	ID=a75bc2ab-5d79-4501-8211-a463029b6110;Name=a75bc2ab-5d79-4501-8211-a463029b6110-exon;Parent=00851ce2-6224-4ce4-a88b-21b36006bdf9
+Mijalis	CPT	gene	9464	9772	.	+	.	ID=e33b8462-aec1-494d-9950-aa649d527f42;Name=gene_148;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	9464	9772	.	+	.	ID=ab404a7a-e788-47ab-ac0d-503933115d95;Name=Hypothetical Protein;Parent=e33b8462-aec1-494d-9950-aa649d527f42;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	9464	9467	.	+	.	ID=5f86c828-431f-4dd3-a135-aec01f9a2450;Name=5f86c828-431f-4dd3-a135-aec01f9a2450-exon;Parent=ab404a7a-e788-47ab-ac0d-503933115d95
+Mijalis	CPT	CDS	9476	9772	.	+	0	ID=ca98f700-b50b-4cf8-82ea-ea047686adae;Name=ca98f700-b50b-4cf8-82ea-ea047686adae-CDS;Parent=ab404a7a-e788-47ab-ac0d-503933115d95
+Mijalis	CPT	exon	9476	9772	.	+	.	ID=be0ab2d2-9bc0-4339-b30c-d88745b8726e;Name=be0ab2d2-9bc0-4339-b30c-d88745b8726e-exon;Parent=ab404a7a-e788-47ab-ac0d-503933115d95
+Mijalis	CPT	gene	8613	8785	.	+	.	ID=2477edc4-7b35-42fa-a080-a88452bb0ffc;Name=gene_146;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	8613	8785	.	+	.	ID=0316d33a-c446-43ff-8471-cf4beab20b3b;Name=Hypothetical Protein;Parent=2477edc4-7b35-42fa-a080-a88452bb0ffc;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	8624	8785	.	+	0	ID=995d363a-1042-4b1c-baf0-a22a13afc258;Name=995d363a-1042-4b1c-baf0-a22a13afc258-CDS;Parent=0316d33a-c446-43ff-8471-cf4beab20b3b
+Mijalis	CPT	exon	8613	8616	.	+	.	ID=d398e3ec-0cf4-4e61-9745-581d267f1358;Name=d398e3ec-0cf4-4e61-9745-581d267f1358-exon;Parent=0316d33a-c446-43ff-8471-cf4beab20b3b
+Mijalis	CPT	exon	8624	8785	.	+	.	ID=cadf3951-af0f-4558-86ff-546e834b5405;Name=cadf3951-af0f-4558-86ff-546e834b5405-exon;Parent=0316d33a-c446-43ff-8471-cf4beab20b3b
+Mijalis	CPT	gene	8416	8611	.	+	.	ID=02650a85-1059-4f3c-bbc0-b15807ab224d;Name=gene_145;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	8416	8611	.	+	.	ID=3276efcc-d875-4af2-a819-d360810d2749;Name=Hypothetical Protein;Parent=02650a85-1059-4f3c-bbc0-b15807ab224d;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	8426	8611	.	+	.	ID=5053b029-b9d0-40a1-a932-786c2680e271;Name=5053b029-b9d0-40a1-a932-786c2680e271-exon;Parent=3276efcc-d875-4af2-a819-d360810d2749
+Mijalis	CPT	exon	8416	8420	.	+	.	ID=ece8f7eb-997a-48ab-a463-9155a0aad6df;Name=ece8f7eb-997a-48ab-a463-9155a0aad6df-exon;Parent=3276efcc-d875-4af2-a819-d360810d2749
+Mijalis	CPT	CDS	8426	8611	.	+	0	ID=006dc839-df25-478b-b22b-f54c7cd7e77c;Name=006dc839-df25-478b-b22b-f54c7cd7e77c-CDS;Parent=3276efcc-d875-4af2-a819-d360810d2749
+Mijalis	CPT	gene	5947	6229	.	+	.	ID=0f3b20d5-83d6-4146-a2dd-63c569cc840b;Name=gene_138;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	5947	6229	.	+	.	ID=414865cf-169a-43b7-abe9-1b9d70cc03c3;Name=Hypothetical Protein;Parent=0f3b20d5-83d6-4146-a2dd-63c569cc840b;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	5960	6229	.	+	0	ID=e812a0d0-a535-4aab-9140-3dd931bc1eab;Name=e812a0d0-a535-4aab-9140-3dd931bc1eab-CDS;Parent=414865cf-169a-43b7-abe9-1b9d70cc03c3
+Mijalis	CPT	exon	5947	5949	.	+	.	ID=c65e3f0c-e717-41fb-a90a-667fb4a283f3;Name=c65e3f0c-e717-41fb-a90a-667fb4a283f3-exon;Parent=414865cf-169a-43b7-abe9-1b9d70cc03c3
+Mijalis	CPT	exon	5960	6229	.	+	.	ID=233301a7-f50a-4b86-8959-e73dce0a7a7b;Name=233301a7-f50a-4b86-8959-e73dce0a7a7b-exon;Parent=414865cf-169a-43b7-abe9-1b9d70cc03c3
+Mijalis	CPT	gene	4220	4924	.	+	.	ID=32b66e1d-eb42-4229-9c88-ed48a917f390;Name=gene_134;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Polynucleotide Kinase
+Mijalis	CPT	mRNA	4220	4924	.	+	.	ID=41a9963b-6a8e-4b29-944f-d3efaaefe9ae;Name=Polynucleotide Kinase;Parent=32b66e1d-eb42-4229-9c88-ed48a917f390;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	4229	4924	.	+	0	ID=7cf01494-32e8-40bd-992f-fa57b7df789d;Name=7cf01494-32e8-40bd-992f-fa57b7df789d-CDS;Parent=41a9963b-6a8e-4b29-944f-d3efaaefe9ae
+Mijalis	CPT	exon	4229	4924	.	+	.	ID=b41e4d88-a73d-405c-92b6-beb19795bb1d;Name=b41e4d88-a73d-405c-92b6-beb19795bb1d-exon;Parent=41a9963b-6a8e-4b29-944f-d3efaaefe9ae
+Mijalis	CPT	exon	4220	4223	.	+	.	ID=779aaeba-e556-480f-82c8-9e36b0570a39;Name=779aaeba-e556-480f-82c8-9e36b0570a39-exon;Parent=41a9963b-6a8e-4b29-944f-d3efaaefe9ae
+Mijalis	CPT	gene	16	2401	.	+	.	ID=20f78373-e70b-4715-99ff-31258ccbc2ab;Name=gene_131;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=rIIA Protein
+Mijalis	CPT	mRNA	16	2401	.	+	.	ID=7c0b9ef6-80de-4aeb-bf6f-aa971b7d430d;Name=rIIA Protein;Parent=20f78373-e70b-4715-99ff-31258ccbc2ab;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	16	20	.	+	.	ID=985e458f-cd28-4fdd-a9aa-2514d19831de;Name=985e458f-cd28-4fdd-a9aa-2514d19831de-exon;Parent=7c0b9ef6-80de-4aeb-bf6f-aa971b7d430d
+Mijalis	CPT	CDS	29	2401	.	+	0	ID=17187dcc-ee81-4a9f-b870-37f758ed5701;Name=17187dcc-ee81-4a9f-b870-37f758ed5701-CDS;Parent=7c0b9ef6-80de-4aeb-bf6f-aa971b7d430d
+Mijalis	CPT	exon	29	2401	.	+	.	ID=494c15c5-f354-45b7-9873-4343adba42e1;Name=494c15c5-f354-45b7-9873-4343adba42e1-exon;Parent=7c0b9ef6-80de-4aeb-bf6f-aa971b7d430d
+Mijalis	CPT	gene	6678	6908	.	+	.	ID=d70ba05e-8ee7-4ded-a302-11c9d0d7a002;Name=gene_141;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	6678	6908	.	+	.	ID=83eb18aa-b4c1-4a75-a02e-1a7b3f6350cd;Name=Hypothetical Protein;Parent=d70ba05e-8ee7-4ded-a302-11c9d0d7a002;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	6687	6908	.	+	0	ID=e4153188-76ab-4cfd-ad7a-46bc4beb395e;Name=e4153188-76ab-4cfd-ad7a-46bc4beb395e-CDS;Parent=83eb18aa-b4c1-4a75-a02e-1a7b3f6350cd
+Mijalis	CPT	exon	6678	6681	.	+	.	ID=3be6ed57-b877-475a-a62a-30a489d6766a;Name=3be6ed57-b877-475a-a62a-30a489d6766a-exon;Parent=83eb18aa-b4c1-4a75-a02e-1a7b3f6350cd
+Mijalis	CPT	exon	6687	6908	.	+	.	ID=ac6d6156-1d10-4f9c-a154-12e7565fd697;Name=ac6d6156-1d10-4f9c-a154-12e7565fd697-exon;Parent=83eb18aa-b4c1-4a75-a02e-1a7b3f6350cd
+Mijalis	CPT	gene	8862	9385	.	+	.	ID=272e30d3-8b59-40f0-a692-473954e89532;Name=gene_147;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	8862	9385	.	+	.	ID=e20ad3a9-e2ca-45a0-94b5-506182b1fbb1;Name=Hypothetical Protein;Parent=272e30d3-8b59-40f0-a692-473954e89532;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	8873	9385	.	+	.	ID=6d6e9a7d-afb2-4f9e-a8e8-51cf88c205cb;Name=6d6e9a7d-afb2-4f9e-a8e8-51cf88c205cb-exon;Parent=e20ad3a9-e2ca-45a0-94b5-506182b1fbb1
+Mijalis	CPT	exon	8862	8865	.	+	.	ID=d546bf91-103e-457f-b8e7-0aa9af77ba12;Name=d546bf91-103e-457f-b8e7-0aa9af77ba12-exon;Parent=e20ad3a9-e2ca-45a0-94b5-506182b1fbb1
+Mijalis	CPT	CDS	8873	9385	.	+	0	ID=52baae8e-7f9b-4369-b779-505d436888f3;Name=52baae8e-7f9b-4369-b779-505d436888f3-CDS;Parent=e20ad3a9-e2ca-45a0-94b5-506182b1fbb1
+Mijalis	CPT	gene	8065	8301	.	-	.	ID=0a210ed3-a51f-48e7-9ed7-0ac668e3a55a;Name=gene_144;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	8065	8301	.	-	.	ID=84614253-3b43-4bbe-933b-9ef442cf51b2;Name=Hypothetical Protein;Parent=0a210ed3-a51f-48e7-9ed7-0ac668e3a55a;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	8065	8289	.	-	0	ID=13c19b29-2b01-4d9c-877a-4ec23b83bc8c;Name=13c19b29-2b01-4d9c-877a-4ec23b83bc8c-CDS;Parent=84614253-3b43-4bbe-933b-9ef442cf51b2
+Mijalis	CPT	exon	8065	8289	.	-	.	ID=899c1ece-1019-4c1d-9b47-7952ad5569ad;Name=899c1ece-1019-4c1d-9b47-7952ad5569ad-exon;Parent=84614253-3b43-4bbe-933b-9ef442cf51b2
+Mijalis	CPT	exon	8299	8301	.	-	.	ID=45b0ae75-486f-4198-90e9-7d65652becc1;Name=45b0ae75-486f-4198-90e9-7d65652becc1-exon;Parent=84614253-3b43-4bbe-933b-9ef442cf51b2
+
+Mijalis	CPT	gene	8611	8785	.	+	.	ID=ca258629-8d3a-4c96-b9b9-b180757afdeb;Name=ca258629-8d3a-4c96-b9b9-b180757afdeb-genea;date_creation=2016-02-18;date_last_modified=2016-02-18;owner=sparvata%40tamu.edu
+Mijalis	CPT	mRNA	8611	8785	.	+	.	ID=2a4f81ae-c8e3-4310-9950-8db4862ce2ce;Name=2a4f81ae-c8e3-4310-9950-8db4862ce2ce;date_creation=2016-02-18;date_last_modified=2016-02-18;Parent=ca258629-8d3a-4c96-b9b9-b180757afdeb
+Mijalis	CPT	exon	8611	8615	.	+	.	ID=7f005988-8453-490b-b2e0-5e69a09ecb51;Name=7f005988-8453-490b-b2e0-5e69a09ecb51-exon;Parent=2a4f81ae-c8e3-4310-9950-8db4862ce2ce
+Mijalis	CPT	CDS	8624	8785	.	+	.	ID=04f9b170-97ec-4789-9a03-18ce862fcadb;Name=34f9b170-97ec-4789-9a03-18ce862fcadb-CDS;Parent=2a4f81ae-c8e3-4310-9950-8db4862ce2ce
+Mijalis	CPT	exon	8624	8785	.	+	.	ID=34f9b170-97ec-4789-9a03-18ce862fcadb;Name=34f9b170-97ec-4789-9a03-18ce862fcadb-exon;Parent=2a4f81ae-c8e3-4310-9950-8db4862ce2ce
+
+Mijalis	CPT	gene	5441	5800	.	+	.	ID=c88ea1fe-0f2e-457b-a1f5-e595572c8bce;Name=gene_136;Note=100%25 Match on blastp with I-Spanin;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=I-Spanin
+Mijalis	CPT	mRNA	5441	5800	.	+	.	ID=fbb17e54-a295-40ac-8c60-ec84e1162b9a;Name=I-Spanin;Parent=c88ea1fe-0f2e-457b-a1f5-e595572c8bce;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	5453	5800	.	+	.	ID=f6b1ae2f-d6ec-44a9-a229-ddf3097bedf1;Name=f6b1ae2f-d6ec-44a9-a229-ddf3097bedf1-exon;Parent=fbb17e54-a295-40ac-8c60-ec84e1162b9a
+Mijalis	CPT	exon	5441	5445	.	+	.	ID=0dd5fb88-f0ec-4b6b-aa93-973a5287bd8d;Name=0dd5fb88-f0ec-4b6b-aa93-973a5287bd8d-exon;Parent=fbb17e54-a295-40ac-8c60-ec84e1162b9a
+Mijalis	CPT	CDS	5453	5800	.	+	0	ID=adc60404-7081-46f0-ac43-941f9bf04d6c;Name=adc60404-7081-46f0-ac43-941f9bf04d6c-CDS;Parent=fbb17e54-a295-40ac-8c60-ec84e1162b9a
+Mijalis	CPT	gene	9754	10113	.	+	.	ID=7d7fedc7-71cd-4c19-8d3d-1d4822223ad8;Name=gene_149;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	9754	10113	.	+	.	ID=432bf4a4-4707-4d15-a24b-6960bb514b02;Name=Hypothetical Protein;Parent=7d7fedc7-71cd-4c19-8d3d-1d4822223ad8;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	9754	9758	.	+	.	ID=d982f301-dce4-4ab1-8270-03b75633ac42;Name=d982f301-dce4-4ab1-8270-03b75633ac42-exon;Parent=432bf4a4-4707-4d15-a24b-6960bb514b02
+Mijalis	CPT	exon	9766	10113	.	+	.	ID=c01a798a-3667-421f-b29d-f8e3097b081f;Name=c01a798a-3667-421f-b29d-f8e3097b081f-exon;Parent=432bf4a4-4707-4d15-a24b-6960bb514b02
+Mijalis	CPT	CDS	9766	10113	.	+	0	ID=ade651ee-985a-4f25-ae23-c4c798fe0a10;Name=ade651ee-985a-4f25-ae23-c4c798fe0a10-CDS;Parent=432bf4a4-4707-4d15-a24b-6960bb514b02
+Mijalis	CPT	gene	5766	5963	.	+	.	ID=17c56509-abaf-404a-af51-8170125b67d2;Name=gene_137;Note=100%25 Identity with Citrobacter Phage Moogle O-Spanin in BlastP;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=O-Spanin
+Mijalis	CPT	mRNA	5766	5963	.	+	.	ID=5769c9b9-30be-441b-a8da-e1dbb78431b0;Name=O-Spanin;Parent=17c56509-abaf-404a-af51-8170125b67d2;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	5766	5963	.	+	.	ID=c7e26df0-e1e1-4106-96dd-cb61dc5e1460;Name=c7e26df0-e1e1-4106-96dd-cb61dc5e1460-exon;Parent=5769c9b9-30be-441b-a8da-e1dbb78431b0
+Mijalis	CPT	CDS	5766	5963	.	+	0	ID=ece86452-8c01-421d-b33c-7a4f41703d02;Name=ece86452-8c01-421d-b33c-7a4f41703d02-CDS;Parent=5769c9b9-30be-441b-a8da-e1dbb78431b0
+Mijalis	CPT	gene	6888	7101	.	+	.	ID=0e0204b5-d958-4acb-9162-6cbec7280bce;Name=gene_142;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	6888	7101	.	+	.	ID=af2fe7a4-dcc5-4e2d-a40e-ce55e4d016b7;Name=Hypothetical Protein;Parent=0e0204b5-d958-4acb-9162-6cbec7280bce;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	6901	7101	.	+	0	ID=4111ea04-a339-4de6-b7de-5d3aec7a2588;Name=4111ea04-a339-4de6-b7de-5d3aec7a2588-CDS;Parent=af2fe7a4-dcc5-4e2d-a40e-ce55e4d016b7
+Mijalis	CPT	exon	6901	7101	.	+	.	ID=dffdd7de-cede-4f29-a2e2-a55e167754b6;Name=dffdd7de-cede-4f29-a2e2-a55e167754b6-exon;Parent=af2fe7a4-dcc5-4e2d-a40e-ce55e4d016b7
+Mijalis	CPT	exon	6888	6892	.	+	.	ID=3bbafaf6-c184-4131-92db-adb27682a033;Name=3bbafaf6-c184-4131-92db-adb27682a033-exon;Parent=af2fe7a4-dcc5-4e2d-a40e-ce55e4d016b7
+Mijalis	CPT	gene	7089	7897	.	+	.	ID=b05ed566-2a89-4b20-8a2c-c395c2d60779;Name=gene_143;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	7089	7897	.	+	.	ID=b98ea138-ffdc-4775-beda-a8358dd3e58c;Name=Hypothetical Protein;Parent=b05ed566-2a89-4b20-8a2c-c395c2d60779;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	7103	7897	.	+	0	ID=9baa036b-a3ad-4a66-9793-58341f14b005;Name=9baa036b-a3ad-4a66-9793-58341f14b005-CDS;Parent=b98ea138-ffdc-4775-beda-a8358dd3e58c
+Mijalis	CPT	exon	7103	7897	.	+	.	ID=f9e0031e-f537-4c8b-a702-f52c61a79a8c;Name=f9e0031e-f537-4c8b-a702-f52c61a79a8c-exon;Parent=b98ea138-ffdc-4775-beda-a8358dd3e58c
+Mijalis	CPT	exon	7089	7092	.	+	.	ID=d1d4035e-63d9-41d3-a092-6121ed57179f;Name=d1d4035e-63d9-41d3-a092-6121ed57179f-exon;Parent=b98ea138-ffdc-4775-beda-a8358dd3e58c
+Mijalis	CPT	gene	3693	4251	.	+	.	ID=dc9477a0-9a87-46f7-8e9e-c1d62b915961;Name=gene_133;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	3693	4251	.	+	.	ID=80c22759-4780-4a68-8ffb-9d8be0bb7b95;Name=Hypothetical Protein;Parent=dc9477a0-9a87-46f7-8e9e-c1d62b915961;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	3703	4251	.	+	0	ID=84f35ebf-38b5-4439-b7d8-f43f78a86fd8;Name=84f35ebf-38b5-4439-b7d8-f43f78a86fd8-CDS;Parent=80c22759-4780-4a68-8ffb-9d8be0bb7b95
+Mijalis	CPT	exon	3703	4251	.	+	.	ID=e72830ef-92c5-4b0b-a889-7153f288e0eb;Name=e72830ef-92c5-4b0b-a889-7153f288e0eb-exon;Parent=80c22759-4780-4a68-8ffb-9d8be0bb7b95
+Mijalis	CPT	exon	3693	3697	.	+	.	ID=de3d1b19-7647-493d-9c2d-e4a5bb29055f;Name=de3d1b19-7647-493d-9c2d-e4a5bb29055f-exon;Parent=80c22759-4780-4a68-8ffb-9d8be0bb7b95
+Mijalis	CPT	gene	2468	3602	.	+	.	ID=b79dde49-64e7-4458-b46c-afbe1bb1e118;Name=gene_132;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=rIIB Protein
+Mijalis	CPT	mRNA	2468	3602	.	+	.	ID=e9e36a5c-5e8a-4479-bfe7-74b23529e815;Name=rIIB Protein;Parent=b79dde49-64e7-4458-b46c-afbe1bb1e118;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	2481	3602	.	+	0	ID=9347ac28-d312-487c-a18c-6aa023b043b4;Name=9347ac28-d312-487c-a18c-6aa023b043b4-CDS;Parent=e9e36a5c-5e8a-4479-bfe7-74b23529e815
+Mijalis	CPT	exon	2481	3602	.	+	.	ID=0c50027d-928d-493a-9788-07020bd6d21b;Name=0c50027d-928d-493a-9788-07020bd6d21b-exon;Parent=e9e36a5c-5e8a-4479-bfe7-74b23529e815
+Mijalis	CPT	exon	2468	2470	.	+	.	ID=58b50312-6fed-4b44-8707-a523b07c64b3;Name=58b50312-6fed-4b44-8707-a523b07c64b3-exon;Parent=e9e36a5c-5e8a-4479-bfe7-74b23529e815
+Mijalis	CPT	gene	6373	6712	.	+	.	ID=2a8c7740-812a-4ee2-8abb-cd68fe8bdc3c;Name=gene_140;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	6373	6712	.	+	.	ID=5f676dfc-9355-48fb-874a-0c3d828ffb12;Name=Hypothetical Protein;Parent=2a8c7740-812a-4ee2-8abb-cd68fe8bdc3c;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	6386	6712	.	+	0	ID=089231f4-ce0d-41b9-855a-70c1b58416d8;Name=089231f4-ce0d-41b9-855a-70c1b58416d8-CDS;Parent=5f676dfc-9355-48fb-874a-0c3d828ffb12
+Mijalis	CPT	exon	6373	6377	.	+	.	ID=adb7e418-21a9-4f88-8886-9462a47597b8;Name=adb7e418-21a9-4f88-8886-9462a47597b8-exon;Parent=5f676dfc-9355-48fb-874a-0c3d828ffb12
+Mijalis	CPT	exon	6386	6712	.	+	.	ID=002ebc9d-9bec-4d73-b4d5-da0d80100c72;Name=002ebc9d-9bec-4d73-b4d5-da0d80100c72-exon;Parent=5f676dfc-9355-48fb-874a-0c3d828ffb12
+Mijalis	CPT	gene	6226	6396	.	+	.	ID=6c4c9ed5-b242-4bd3-90c3-47da6e64aa15;Name=gene_139;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	6226	6396	.	+	.	ID=2ce60673-c7fe-4c20-8ab5-96080e574c63;Name=Hypothetical Protein;Parent=6c4c9ed5-b242-4bd3-90c3-47da6e64aa15;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	6226	6396	.	+	0	ID=62f2334f-a76b-4458-8f30-e4cf6767e17c;Name=62f2334f-a76b-4458-8f30-e4cf6767e17c-CDS;Parent=2ce60673-c7fe-4c20-8ab5-96080e574c63
+Mijalis	CPT	exon	6226	6396	.	+	.	ID=c685c22f-cfd3-4718-9992-b1cbb38763cb;Name=c685c22f-cfd3-4718-9992-b1cbb38763cb-exon;Parent=2ce60673-c7fe-4c20-8ab5-96080e574c63
+Mijalis	CPT	gene	82207	82539	.	+	.	ID=bf9bbf4b-4c43-43a5-8f28-2baff12c49dc;Name=gene_120;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	82207	82539	.	+	.	ID=2ac31809-4bdc-4249-813f-3034c712c3fc;Name=Hypothetical Protein;Parent=bf9bbf4b-4c43-43a5-8f28-2baff12c49dc;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	82207	82210	.	+	.	ID=140dc0a0-84f2-43c1-8cf0-979ffa30cf9b;Name=140dc0a0-84f2-43c1-8cf0-979ffa30cf9b-exon;Parent=2ac31809-4bdc-4249-813f-3034c712c3fc
+Mijalis	CPT	CDS	82219	82539	.	+	0	ID=2cf6a6b9-bc22-43aa-8863-1a7da2fab2ed;Name=2cf6a6b9-bc22-43aa-8863-1a7da2fab2ed-CDS;Parent=2ac31809-4bdc-4249-813f-3034c712c3fc
+Mijalis	CPT	exon	82219	82539	.	+	.	ID=3b9f3693-6ee0-4971-8c3f-5e2e09e133be;Name=3b9f3693-6ee0-4971-8c3f-5e2e09e133be-exon;Parent=2ac31809-4bdc-4249-813f-3034c712c3fc
+Mijalis	CPT	gene	62715	65426	.	-	.	ID=340c2445-aa71-42dd-976f-e622d1914c56;Name=Putative DNA Polymerase;Note=E-value was 0;date_creation=2016-02-18;date_last_modified=2016-04-07;owner=sparvata%40tamu.edu;product=DNA polymerase
+Mijalis	CPT	mRNA	62715	65426	.	-	.	ID=924bab0d-cd48-4273-8ff1-065fc8633e21;Name=DNA Polymerase;Parent=340c2445-aa71-42dd-976f-e622d1914c56;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	62715	65414	.	-	0	ID=e911256b-ce64-47f3-8d08-149ebd9e20eb;Name=e911256b-ce64-47f3-8d08-149ebd9e20eb-CDS;Parent=924bab0d-cd48-4273-8ff1-065fc8633e21
+Mijalis	CPT	exon	62715	65414	.	-	.	ID=4fdd1b3b-a8e6-49c3-a647-9620fd5e2d2b;Name=4fdd1b3b-a8e6-49c3-a647-9620fd5e2d2b-exon;Parent=924bab0d-cd48-4273-8ff1-065fc8633e21
+Mijalis	CPT	exon	65423	65426	.	-	.	ID=9bdfae3f-b029-4426-8bff-b043d19ecd97;Name=9bdfae3f-b029-4426-8bff-b043d19ecd97-exon;Parent=924bab0d-cd48-4273-8ff1-065fc8633e21
+Mijalis	CPT	gene	30512	32122	.	+	.	ID=b5eb4af2-defa-4dd9-8817-34108e193a18;Name=gene_047;Note=Blasted Manually.;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu;product=Terminase Large Subunit
+Mijalis	CPT	mRNA	30512	32122	.	+	.	ID=d3620d4f-bbfc-4595-8f3c-653788f80ced;Name=Terminase Large Subunit;Parent=b5eb4af2-defa-4dd9-8817-34108e193a18;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	30512	30515	.	+	.	ID=149763f1-9ad7-4c7c-92be-e98779ef4989;Name=149763f1-9ad7-4c7c-92be-e98779ef4989-exon;Parent=d3620d4f-bbfc-4595-8f3c-653788f80ced
+Mijalis	CPT	CDS	30521	32122	.	+	0	ID=2f2b3cda-a7c7-427b-8d08-f106a2f8f843;Name=2f2b3cda-a7c7-427b-8d08-f106a2f8f843-CDS;Parent=d3620d4f-bbfc-4595-8f3c-653788f80ced
+Mijalis	CPT	exon	30521	32122	.	+	.	ID=605bf053-1753-42b5-a2b7-068ba7cea3b0;Name=605bf053-1753-42b5-a2b7-068ba7cea3b0-exon;Parent=d3620d4f-bbfc-4595-8f3c-653788f80ced
+Mijalis	CPT	gene	67691	67893	.	+	.	ID=15e9079f-9910-4a1b-bdad-303bbdd2c208;Name=gene_100;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	67691	67893	.	+	.	ID=f725ec71-aa32-4541-9207-63930b5a8b53;Name=Hypothetical Protein;Parent=15e9079f-9910-4a1b-bdad-303bbdd2c208;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	67691	67694	.	+	.	ID=5335c3f7-f77a-4775-9dea-f9edeff15c67;Name=5335c3f7-f77a-4775-9dea-f9edeff15c67-exon;Parent=f725ec71-aa32-4541-9207-63930b5a8b53
+Mijalis	CPT	exon	67702	67893	.	+	.	ID=c596f24a-05ba-46a0-8517-5cd370de4720;Name=c596f24a-05ba-46a0-8517-5cd370de4720-exon;Parent=f725ec71-aa32-4541-9207-63930b5a8b53
+Mijalis	CPT	CDS	67702	67893	.	+	0	ID=9a3ec725-972f-4627-81ba-a0ae26e75b64;Name=9a3ec725-972f-4627-81ba-a0ae26e75b64-CDS;Parent=f725ec71-aa32-4541-9207-63930b5a8b53
+Mijalis	CPT	gene	37329	37791	.	+	.	ID=8f155751-7078-4faa-a3f9-3aff2b193584;Name=gene_054;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=hypothetical protein
+Mijalis	CPT	mRNA	37329	37791	.	+	.	ID=b6f9c75a-8d45-4fd6-b387-76beffa8cd62;Name=hypothetical protein;Parent=8f155751-7078-4faa-a3f9-3aff2b193584;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	37329	37334	.	+	.	ID=7f0946a0-95d0-4852-ac5d-d417bc15a9ce;Name=7f0946a0-95d0-4852-ac5d-d417bc15a9ce-exon;Parent=b6f9c75a-8d45-4fd6-b387-76beffa8cd62
+Mijalis	CPT	CDS	37342	37791	.	+	0	ID=f693430d-7a6f-46e7-a157-5ee39503218e;Name=f693430d-7a6f-46e7-a157-5ee39503218e-CDS;Parent=b6f9c75a-8d45-4fd6-b387-76beffa8cd62
+Mijalis	CPT	exon	37342	37791	.	+	.	ID=7e32a0ea-d067-4353-bdf7-94d79cf70e8f;Name=7e32a0ea-d067-4353-bdf7-94d79cf70e8f-exon;Parent=b6f9c75a-8d45-4fd6-b387-76beffa8cd62
+Mijalis	CPT	gene	72786	73300	.	+	.	ID=a4398c59-323e-4dde-84a4-8ffc574f7e83;Name=gene_107;Note=100%25 to Citrobacter Phage Moogle;date_creation=2016-02-18;date_last_modified=2016-05-08;owner=sparvata%40tamu.edu;product=GIY-YIG Homing Endonuclease
+Mijalis	CPT	mRNA	72786	73300	.	+	.	ID=13bb5026-9d95-4366-864a-79ecb4d01984;Name=GIY-YIG Homing Endonuclease;Parent=a4398c59-323e-4dde-84a4-8ffc574f7e83;date_creation=2016-02-18;date_last_modified=2016-05-08;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	72800	73300	.	+	0	ID=2f5b5779-dfb9-4b3c-bab8-b84082df02b8;Name=2f5b5779-dfb9-4b3c-bab8-b84082df02b8-CDS;Parent=13bb5026-9d95-4366-864a-79ecb4d01984
+Mijalis	CPT	exon	72786	72789	.	+	.	ID=ccb68b69-3c3e-4a91-9da4-cf7d999e1d45;Name=ccb68b69-3c3e-4a91-9da4-cf7d999e1d45-exon;Parent=13bb5026-9d95-4366-864a-79ecb4d01984
+Mijalis	CPT	exon	72800	73300	.	+	.	ID=749b3e4f-efdb-4048-bcf4-caf7af6a250b;Name=749b3e4f-efdb-4048-bcf4-caf7af6a250b-exon;Parent=13bb5026-9d95-4366-864a-79ecb4d01984
+Mijalis	CPT	gene	36203	37319	.	+	.	ID=b11027d1-ee95-48db-8c34-711a6f797ee1;Name=gene_053;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Major Capsid Protein
+Mijalis	CPT	mRNA	36203	37319	.	+	.	ID=f9029255-9999-4648-ab0c-e4d6f54774a4;Name=Major Capsid Protein;Parent=b11027d1-ee95-48db-8c34-711a6f797ee1;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	36216	37319	.	+	.	ID=a03aa545-bff5-4ae5-b7a9-e8cbac419ff8;Name=a03aa545-bff5-4ae5-b7a9-e8cbac419ff8-exon;Parent=f9029255-9999-4648-ab0c-e4d6f54774a4
+Mijalis	CPT	CDS	36216	37319	.	+	0	ID=bd6e15dc-84d8-497d-8976-8c8d984c3d5d;Name=bd6e15dc-84d8-497d-8976-8c8d984c3d5d-CDS;Parent=f9029255-9999-4648-ab0c-e4d6f54774a4
+Mijalis	CPT	exon	36203	36206	.	+	.	ID=b289e842-35de-409a-bbe2-4907dad78712;Name=b289e842-35de-409a-bbe2-4907dad78712-exon;Parent=f9029255-9999-4648-ab0c-e4d6f54774a4
+Mijalis	CPT	gene	71269	72325	.	+	.	ID=283c6a30-bcf7-48d1-9be6-aa1a0ee80663;Name=gene_105;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Exodeoxyribonuclease
+Mijalis	CPT	mRNA	71269	72325	.	+	.	ID=8d26da09-8390-4fb8-a3d4-2b16b7e0d7eb;Name=Exodeoxyribonuclease;Parent=283c6a30-bcf7-48d1-9be6-aa1a0ee80663;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	71279	72325	.	+	0	ID=a697ace6-3401-43e7-bd3f-193f3714ade6;Name=a697ace6-3401-43e7-bd3f-193f3714ade6-CDS;Parent=8d26da09-8390-4fb8-a3d4-2b16b7e0d7eb
+Mijalis	CPT	exon	71269	71272	.	+	.	ID=e9c11eb6-deb0-45c6-a23c-52a0425962d8;Name=e9c11eb6-deb0-45c6-a23c-52a0425962d8-exon;Parent=8d26da09-8390-4fb8-a3d4-2b16b7e0d7eb
+Mijalis	CPT	exon	71279	72325	.	+	.	ID=7aae08bd-70a3-49bb-9d64-83577cff74a0;Name=7aae08bd-70a3-49bb-9d64-83577cff74a0-exon;Parent=8d26da09-8390-4fb8-a3d4-2b16b7e0d7eb
+Mijalis	CPT	gene	16831	17351	.	-	.	ID=37441c7c-f223-43df-81cc-d9bc993fba2c;Name=gene_017;Note=InterPro Scan shows various cytoplasmic%2C transmembrane%2C and non-cytoplasmic sequences.,TMHMM Shows TMD;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Membrane Protein
+Mijalis	CPT	mRNA	16831	17351	.	-	.	ID=c4c5eac5-0157-4228-95fd-649d1b768268;Name=Transmembrane Protein;Parent=37441c7c-f223-43df-81cc-d9bc993fba2c;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	16831	17337	.	-	.	ID=11be2f69-21a2-43db-b019-236a55a0a2e3;Name=11be2f69-21a2-43db-b019-236a55a0a2e3-exon;Parent=c4c5eac5-0157-4228-95fd-649d1b768268
+Mijalis	CPT	exon	17347	17351	.	-	.	ID=cccf9be5-0895-4caf-920a-7448e2cfc05f;Name=cccf9be5-0895-4caf-920a-7448e2cfc05f-exon;Parent=c4c5eac5-0157-4228-95fd-649d1b768268
+Mijalis	CPT	CDS	16831	17337	.	-	0	ID=e3c37581-79ff-417b-b424-a7e55675e850;Name=e3c37581-79ff-417b-b424-a7e55675e850-CDS;Parent=c4c5eac5-0157-4228-95fd-649d1b768268
+Mijalis	CPT	gene	62247	62469	.	-	.	ID=37c68fbc-8b0e-4062-9989-e1069f87dc63;Name=gene_094;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	62247	62469	.	-	.	ID=914464a5-ef13-47e0-a237-9ba91c68637d;Name=Hypothetical Protein;Parent=37c68fbc-8b0e-4062-9989-e1069f87dc63;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	62247	62456	.	-	0	ID=f14664ce-4057-40f3-822b-3e748bcd19ff;Name=f14664ce-4057-40f3-822b-3e748bcd19ff-CDS;Parent=914464a5-ef13-47e0-a237-9ba91c68637d
+Mijalis	CPT	exon	62465	62469	.	-	.	ID=387e3dc6-eb7c-4713-a155-152f921a574c;Name=387e3dc6-eb7c-4713-a155-152f921a574c-exon;Parent=914464a5-ef13-47e0-a237-9ba91c68637d
+Mijalis	CPT	exon	62247	62456	.	-	.	ID=4be816c1-6c62-48ad-9350-0661ae50e28f;Name=4be816c1-6c62-48ad-9350-0661ae50e28f-exon;Parent=914464a5-ef13-47e0-a237-9ba91c68637d
+Mijalis	CPT	gene	44802	45155	.	+	.	ID=636e4b8a-f243-4bc5-8c3e-f97b7dd9fae5;Name=gene_064;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=hypothetical protein
+Mijalis	CPT	mRNA	44802	45155	.	+	.	ID=546cc1af-eec7-4a35-bb28-7132dfecf632;Name=hypothetical protein;Parent=636e4b8a-f243-4bc5-8c3e-f97b7dd9fae5;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	44814	45155	.	+	0	ID=e5a34946-4c7d-480a-836e-6a48ccbb51db;Name=e5a34946-4c7d-480a-836e-6a48ccbb51db-CDS;Parent=546cc1af-eec7-4a35-bb28-7132dfecf632
+Mijalis	CPT	exon	44802	44806	.	+	.	ID=e9996c2f-ace5-4759-9d77-abd8b4f103de;Name=e9996c2f-ace5-4759-9d77-abd8b4f103de-exon;Parent=546cc1af-eec7-4a35-bb28-7132dfecf632
+Mijalis	CPT	exon	44814	45155	.	+	.	ID=0aeb6091-1997-45f3-9c39-d88778597b92;Name=0aeb6091-1997-45f3-9c39-d88778597b92-exon;Parent=546cc1af-eec7-4a35-bb28-7132dfecf632
+Mijalis	CPT	gene	56008	56487	.	-	.	ID=da46e934-633e-47bd-9dff-2796d389cb85;Name=gene_079;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	56008	56487	.	-	.	ID=36d38c99-b6b6-47fd-b7a1-91ac0197e5d4;Name=Hypothetical Protein;Parent=da46e934-633e-47bd-9dff-2796d389cb85;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	56008	56472	.	-	0	ID=15e3ad98-7868-4677-ab84-0440130f9e9c;Name=15e3ad98-7868-4677-ab84-0440130f9e9c-CDS;Parent=36d38c99-b6b6-47fd-b7a1-91ac0197e5d4
+Mijalis	CPT	exon	56485	56487	.	-	.	ID=a3d7a6a1-0422-44dc-af98-69c918c0ef9e;Name=a3d7a6a1-0422-44dc-af98-69c918c0ef9e-exon;Parent=36d38c99-b6b6-47fd-b7a1-91ac0197e5d4
+Mijalis	CPT	exon	56008	56472	.	-	.	ID=0cac26da-25f8-4e2f-8aa5-f83f48ffe202;Name=0cac26da-25f8-4e2f-8aa5-f83f48ffe202-exon;Parent=36d38c99-b6b6-47fd-b7a1-91ac0197e5d4
+Mijalis	CPT	gene	74946	77193	.	+	.	ID=9c050f8a-e9de-46d5-aac1-25e6fcf28a15;Name=Ribonucleoside Triphosphate Reductase%2C alpha chain;Note=blastp run showed nrdA conserved domain;date_creation=2016-02-18;date_last_modified=2016-04-07;owner=sparvata%40tamu.edu;product=Ribonucleoside triphosphate reductase%2C alpha chain
+Mijalis	CPT	mRNA	74946	77193	.	+	.	ID=8bf4867f-8428-48b0-8f96-8c40ca2c84dc;Name=Ribonucleoside triphosphate reductase%2C alpha chain %28nrdA Conserved domain%29;Parent=9c050f8a-e9de-46d5-aac1-25e6fcf28a15;date_creation=2016-02-18;date_last_modified=2016-05-09;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	74959	77193	.	+	0	ID=7a6971bd-96d3-4533-be07-537747143f76;Name=7a6971bd-96d3-4533-be07-537747143f76-CDS;Parent=8bf4867f-8428-48b0-8f96-8c40ca2c84dc
+Mijalis	CPT	exon	74946	74949	.	+	.	ID=633158db-672f-479d-b35c-8814f31bc442;Name=633158db-672f-479d-b35c-8814f31bc442-exon;Parent=8bf4867f-8428-48b0-8f96-8c40ca2c84dc
+Mijalis	CPT	exon	74959	77193	.	+	.	ID=9f2732e7-b722-4d12-a9c3-53105116d79d;Name=9f2732e7-b722-4d12-a9c3-53105116d79d-exon;Parent=8bf4867f-8428-48b0-8f96-8c40ca2c84dc
+Mijalis	CPT	gene	81368	81771	.	+	.	ID=c4b47788-844e-40c9-9942-5a431a4e3806;Name=gene_118;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	81368	81771	.	+	.	ID=598e04cd-7466-4e99-b82b-5164d8323ad7;Name=Hypothetical Protein;Parent=c4b47788-844e-40c9-9942-5a431a4e3806;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	81379	81771	.	+	.	ID=44ed783d-0137-43da-8811-4080aa3e1bcd;Name=44ed783d-0137-43da-8811-4080aa3e1bcd-exon;Parent=598e04cd-7466-4e99-b82b-5164d8323ad7
+Mijalis	CPT	CDS	81379	81771	.	+	0	ID=a668b6bd-805d-42f9-a754-70b4aeb4dcb9;Name=a668b6bd-805d-42f9-a754-70b4aeb4dcb9-CDS;Parent=598e04cd-7466-4e99-b82b-5164d8323ad7
+Mijalis	CPT	exon	81368	81371	.	+	.	ID=d0fadf7c-ccdb-4876-b3b2-d3d65dcd9175;Name=d0fadf7c-ccdb-4876-b3b2-d3d65dcd9175-exon;Parent=598e04cd-7466-4e99-b82b-5164d8323ad7
+Mijalis	CPT	gene	78583	78836	.	+	.	ID=e0ae9877-495c-4fb0-93c2-5ec30d92b7ce;Name=gene_115;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Glutaredoxin
+Mijalis	CPT	mRNA	78583	78836	.	+	.	ID=fa907022-9fce-4770-84c6-4db50fb6ad24;Name=Glutaredoxin;Parent=e0ae9877-495c-4fb0-93c2-5ec30d92b7ce;date_creation=2016-02-18;date_last_modified=2016-05-08;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	78594	78836	.	+	.	ID=e81f5abd-c903-4e01-bde6-866566e4a324;Name=e81f5abd-c903-4e01-bde6-866566e4a324-exon;Parent=fa907022-9fce-4770-84c6-4db50fb6ad24
+Mijalis	CPT	exon	78583	78587	.	+	.	ID=b64e6e47-ad18-4185-8617-29895060342c;Name=b64e6e47-ad18-4185-8617-29895060342c-exon;Parent=fa907022-9fce-4770-84c6-4db50fb6ad24
+Mijalis	CPT	CDS	78594	78836	.	+	0	ID=ac69ba51-c5fe-4744-a2a9-59cf1bb21efe;Name=ac69ba51-c5fe-4744-a2a9-59cf1bb21efe-CDS;Parent=fa907022-9fce-4770-84c6-4db50fb6ad24
+Mijalis	CPT	gene	57872	58264	.	-	.	ID=e47213ea-5d46-4b80-ad48-db3a8bf2889c;Name=gene_084;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	57872	58264	.	-	.	ID=0c6ac0c2-ac90-40bf-8db5-33c8a26a4f4a;Name=Hypothetical Protein;Parent=e47213ea-5d46-4b80-ad48-db3a8bf2889c;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	58260	58264	.	-	.	ID=0e112ff2-4e76-4815-a17a-f7f285c94205;Name=0e112ff2-4e76-4815-a17a-f7f285c94205-exon;Parent=0c6ac0c2-ac90-40bf-8db5-33c8a26a4f4a
+Mijalis	CPT	exon	57872	58252	.	-	.	ID=c9af6ba5-2c21-40b0-b1ff-5402131436aa;Name=c9af6ba5-2c21-40b0-b1ff-5402131436aa-exon;Parent=0c6ac0c2-ac90-40bf-8db5-33c8a26a4f4a
+Mijalis	CPT	CDS	57872	58252	.	-	0	ID=45baaab4-1bff-404a-8409-a8a9ecad6175;Name=45baaab4-1bff-404a-8409-a8a9ecad6175-CDS;Parent=0c6ac0c2-ac90-40bf-8db5-33c8a26a4f4a
+Mijalis	CPT	gene	11016	11585	.	+	.	ID=b298c48c-65f8-4b41-9984-1a0f785bea0f;Name=gene_004;date_creation=2016-02-18;date_last_modified=2016-04-14;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	11016	11585	.	+	.	ID=bcfd97c5-6d3f-45d9-966d-f6df8421d275;Name=Hypothetical Protein;Parent=b298c48c-65f8-4b41-9984-1a0f785bea0f;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	11028	11585	.	+	0	ID=94a67640-69f7-42b0-8581-c89c1ed9c403;Name=94a67640-69f7-42b0-8581-c89c1ed9c403-CDS;Parent=bcfd97c5-6d3f-45d9-966d-f6df8421d275
+Mijalis	CPT	exon	11028	11585	.	+	.	ID=4da49509-3086-4855-82cb-78743409ab7d;Name=4da49509-3086-4855-82cb-78743409ab7d-exon;Parent=bcfd97c5-6d3f-45d9-966d-f6df8421d275
+Mijalis	CPT	exon	11016	11019	.	+	.	ID=b226c6bf-782b-4398-bc29-adc1c0c30db4;Name=b226c6bf-782b-4398-bc29-adc1c0c30db4-exon;Parent=bcfd97c5-6d3f-45d9-966d-f6df8421d275
+Mijalis	CPT	gene	23795	25224	.	+	.	ID=fa80fab0-2c46-47c5-b459-c18e0ed830b5;Name=gene_032;date_creation=2016-02-18;date_last_modified=2016-04-21;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	23795	25224	.	+	.	ID=131c19a2-d270-47fa-91d5-2259dd8bbaa7;Name=Hypothetical Protein;Parent=fa80fab0-2c46-47c5-b459-c18e0ed830b5;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	23809	25224	.	+	0	ID=a66c1e6d-2a99-4743-bfda-45e06dcaa072;Name=a66c1e6d-2a99-4743-bfda-45e06dcaa072-CDS;Parent=131c19a2-d270-47fa-91d5-2259dd8bbaa7
+Mijalis	CPT	exon	23809	25224	.	+	.	ID=01e4efa9-b146-4ef0-8e0f-2ef2ba854357;Name=01e4efa9-b146-4ef0-8e0f-2ef2ba854357-exon;Parent=131c19a2-d270-47fa-91d5-2259dd8bbaa7
+Mijalis	CPT	exon	23795	23797	.	+	.	ID=31b51898-0808-4c71-bd7d-900a9a204a0d;Name=31b51898-0808-4c71-bd7d-900a9a204a0d-exon;Parent=131c19a2-d270-47fa-91d5-2259dd8bbaa7
+Mijalis	CPT	gene	15408	16083	.	-	.	ID=ffd1dd82-44a1-4f59-a166-6d68bb69d89f;Name=gene_013;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	15408	16083	.	-	.	ID=adec988f-621f-4c2a-bb66-c6f017a879a4;Name=Hypothetical Protein;Parent=ffd1dd82-44a1-4f59-a166-6d68bb69d89f;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	16081	16083	.	-	.	ID=327b3478-2b82-49a3-8deb-be801413e591;Name=327b3478-2b82-49a3-8deb-be801413e591-exon;Parent=adec988f-621f-4c2a-bb66-c6f017a879a4
+Mijalis	CPT	CDS	15408	16073	.	-	0	ID=65b44a6f-1adf-4f04-a027-44a938b72647;Name=65b44a6f-1adf-4f04-a027-44a938b72647-CDS;Parent=adec988f-621f-4c2a-bb66-c6f017a879a4
+Mijalis	CPT	exon	15408	16073	.	-	.	ID=39f94eff-7eb9-4259-86ed-8e773de528f1;Name=39f94eff-7eb9-4259-86ed-8e773de528f1-exon;Parent=adec988f-621f-4c2a-bb66-c6f017a879a4
+Mijalis	CPT	gene	81760	82256	.	+	.	ID=057eb9f4-5e1d-4d01-b8bf-657ce10170b2;Name=gene_119;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Anaerobic NTP Reductase%2C small subunit
+Mijalis	CPT	mRNA	81760	82256	.	+	.	ID=b7036c06-b65f-4a31-8e87-7ecdb369291d;Name=Anaerobic NTP Reductase%2C small subunit;Parent=057eb9f4-5e1d-4d01-b8bf-657ce10170b2;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	81771	82256	.	+	0	ID=ed745108-53bc-41db-b904-36ec20c39816;Name=ed745108-53bc-41db-b904-36ec20c39816-CDS;Parent=b7036c06-b65f-4a31-8e87-7ecdb369291d
+Mijalis	CPT	exon	81760	81764	.	+	.	ID=a8e00001-e4ba-402e-8051-8859cda5e48a;Name=a8e00001-e4ba-402e-8051-8859cda5e48a-exon;Parent=b7036c06-b65f-4a31-8e87-7ecdb369291d
+Mijalis	CPT	exon	81771	82256	.	+	.	ID=ca135834-5860-48af-9737-ea4ed514d972;Name=ca135834-5860-48af-9737-ea4ed514d972-exon;Parent=b7036c06-b65f-4a31-8e87-7ecdb369291d
+Mijalis	CPT	gene	61796	62047	.	-	.	ID=9568b104-438b-4a91-a50a-46a981e1fa5a;Name=gene_092;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	61796	62047	.	-	.	ID=0d575727-20fa-425f-8bd1-bc89512975df;Name=Hypothetical Protein;Parent=9568b104-438b-4a91-a50a-46a981e1fa5a;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	61796	62032	.	-	.	ID=2439d9b4-b425-495c-a6b0-c572884efefe;Name=2439d9b4-b425-495c-a6b0-c572884efefe-exon;Parent=0d575727-20fa-425f-8bd1-bc89512975df
+Mijalis	CPT	CDS	61796	62032	.	-	0	ID=f3114b82-a5a5-4547-8fbc-7c9895374600;Name=f3114b82-a5a5-4547-8fbc-7c9895374600-CDS;Parent=0d575727-20fa-425f-8bd1-bc89512975df
+Mijalis	CPT	exon	62043	62047	.	-	.	ID=d5598f0a-c1ed-4643-9a0b-f6c7b1a26251;Name=d5598f0a-c1ed-4643-9a0b-f6c7b1a26251-exon;Parent=0d575727-20fa-425f-8bd1-bc89512975df
+Mijalis	CPT	gene	56525	57039	.	-	.	ID=0110d938-363e-4024-a052-ae98f6569235;Name=gene_080;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	56525	57039	.	-	.	ID=65497d88-331f-45dc-9fa7-97e4973150ec;Name=Hypothetical Protein;Parent=0110d938-363e-4024-a052-ae98f6569235;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	57036	57039	.	-	.	ID=06c0ee3b-78d4-4f25-b447-7ba0093772d6;Name=06c0ee3b-78d4-4f25-b447-7ba0093772d6-exon;Parent=65497d88-331f-45dc-9fa7-97e4973150ec
+Mijalis	CPT	CDS	56525	57028	.	-	0	ID=5a8e4f53-5eb4-42ac-98e6-8d8bcccee9a2;Name=5a8e4f53-5eb4-42ac-98e6-8d8bcccee9a2-CDS;Parent=65497d88-331f-45dc-9fa7-97e4973150ec
+Mijalis	CPT	exon	56525	57028	.	-	.	ID=b9578732-a813-428e-850f-ad319ce51612;Name=b9578732-a813-428e-850f-ad319ce51612-exon;Parent=65497d88-331f-45dc-9fa7-97e4973150ec
+Mijalis	CPT	gene	47172	48655	.	+	.	ID=dce2252e-c076-4caa-9256-0574fc22a55c;Name=gene_068;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical  Protein
+Mijalis	CPT	mRNA	47172	48655	.	+	.	ID=ca7624e9-e79e-49c8-9929-de692d56c4f9;Name=Hypothetical Protein;Parent=dce2252e-c076-4caa-9256-0574fc22a55c;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	47186	48655	.	+	0	ID=7e78e744-cedb-4407-af5a-42aabe4c91ac;Name=7e78e744-cedb-4407-af5a-42aabe4c91ac-CDS;Parent=ca7624e9-e79e-49c8-9929-de692d56c4f9
+Mijalis	CPT	exon	47186	48655	.	+	.	ID=15202831-0db7-4576-92a2-ffa8d269d77a;Name=15202831-0db7-4576-92a2-ffa8d269d77a-exon;Parent=ca7624e9-e79e-49c8-9929-de692d56c4f9
+Mijalis	CPT	exon	47172	47176	.	+	.	ID=1464cd4d-1692-415c-81b0-8b8a323aaac1;Name=1464cd4d-1692-415c-81b0-8b8a323aaac1-exon;Parent=ca7624e9-e79e-49c8-9929-de692d56c4f9
+Mijalis	CPT	gene	45143	46132	.	+	.	ID=0a30c454-fabb-42cc-9efa-66855c73c875;Name=gene_065;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	45143	46132	.	+	.	ID=f0296868-5f93-442a-a104-03041661f17f;Name=hypothetical protein;Parent=0a30c454-fabb-42cc-9efa-66855c73c875;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	45143	45146	.	+	.	ID=dfb93aec-b2f3-42b3-bfa8-f28c22b774a8;Name=dfb93aec-b2f3-42b3-bfa8-f28c22b774a8-exon;Parent=f0296868-5f93-442a-a104-03041661f17f
+Mijalis	CPT	CDS	45155	46132	.	+	0	ID=1517f12f-e5d9-421a-8a02-81a446d8906e;Name=1517f12f-e5d9-421a-8a02-81a446d8906e-CDS;Parent=f0296868-5f93-442a-a104-03041661f17f
+Mijalis	CPT	exon	45155	46132	.	+	.	ID=217703c2-8ae4-4051-b53b-b4239073a72e;Name=217703c2-8ae4-4051-b53b-b4239073a72e-exon;Parent=f0296868-5f93-442a-a104-03041661f17f
+Mijalis	CPT	gene	84866	85367	.	+	.	ID=34530dc9-41f7-4c3b-b2f7-72e351cd65d9;Name=gene_126;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=HNH Endonuclease
+Mijalis	CPT	mRNA	84866	85367	.	+	.	ID=7ed67339-6ff2-4304-a5d9-29a8d01a7140;Name=HNH Endonuclease;Parent=34530dc9-41f7-4c3b-b2f7-72e351cd65d9;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	84876	85367	.	+	0	ID=f047fde5-8ac8-4a2c-a141-32e597904d23;Name=f047fde5-8ac8-4a2c-a141-32e597904d23-CDS;Parent=7ed67339-6ff2-4304-a5d9-29a8d01a7140
+Mijalis	CPT	exon	84876	85367	.	+	.	ID=37830267-df7d-4a08-b57c-5cc979fe4f91;Name=37830267-df7d-4a08-b57c-5cc979fe4f91-exon;Parent=7ed67339-6ff2-4304-a5d9-29a8d01a7140
+Mijalis	CPT	exon	84866	84869	.	+	.	ID=c2819829-6ba8-4fa3-a7d4-af64f03ebdad;Name=c2819829-6ba8-4fa3-a7d4-af64f03ebdad-exon;Parent=7ed67339-6ff2-4304-a5d9-29a8d01a7140
+Mijalis	CPT	gene	83684	83975	.	+	.	ID=e888f981-2bfd-470b-add6-1b85ec7aafa0;Name=gene_124;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	83684	83975	.	+	.	ID=4aa40866-1a4d-4ff4-949d-54da67aa9804;Name=Hypothetical Protein;Parent=e888f981-2bfd-470b-add6-1b85ec7aafa0;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	83684	83687	.	+	.	ID=22caf614-28f1-4c1d-8461-b16a5afaa454;Name=22caf614-28f1-4c1d-8461-b16a5afaa454-exon;Parent=4aa40866-1a4d-4ff4-949d-54da67aa9804
+Mijalis	CPT	exon	83697	83975	.	+	.	ID=411139f4-d44a-415e-adcc-f352f6ed5813;Name=411139f4-d44a-415e-adcc-f352f6ed5813-exon;Parent=4aa40866-1a4d-4ff4-949d-54da67aa9804
+Mijalis	CPT	CDS	83697	83975	.	+	0	ID=c41fb464-4932-448d-9fa5-028b003f9755;Name=c41fb464-4932-448d-9fa5-028b003f9755-CDS;Parent=4aa40866-1a4d-4ff4-949d-54da67aa9804
+Mijalis	CPT	gene	39233	40598	.	+	.	ID=81f9ca0a-0ed4-4ad5-9f83-a4e8488d84bb;Name=gene_058;Note=DUF3383 Conserved Protein Domain,According to InterPro%27s prediction%2C and protein match%2C this Mijalis protein could be a signal peptide chain.;date_creation=2016-02-18;date_last_modified=2016-05-09;owner=sparvata%40tamu.edu;product=Hypothetical Phage Conserved Structural Protein
+Mijalis	CPT	mRNA	39233	40598	.	+	.	ID=2d27b401-1f69-4abb-8984-99498f648abc;Name=Hypothetical Structural Protein;Parent=81f9ca0a-0ed4-4ad5-9f83-a4e8488d84bb;date_creation=2016-02-18;date_last_modified=2016-05-08;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	39246	40598	.	+	0	ID=9e6d8fe7-7b32-4bc7-ad56-bcd4b9f3e7fa;Name=9e6d8fe7-7b32-4bc7-ad56-bcd4b9f3e7fa-CDS;Parent=2d27b401-1f69-4abb-8984-99498f648abc
+Mijalis	CPT	exon	39233	39237	.	+	.	ID=7a7e2b50-97c3-41ca-bd97-a7b4ed5571ea;Name=7a7e2b50-97c3-41ca-bd97-a7b4ed5571ea-exon;Parent=2d27b401-1f69-4abb-8984-99498f648abc
+Mijalis	CPT	exon	39246	40598	.	+	.	ID=041cb5a7-0d50-496d-b08e-52dd9660fd0c;Name=041cb5a7-0d50-496d-b08e-52dd9660fd0c-exon;Parent=2d27b401-1f69-4abb-8984-99498f648abc
+Mijalis	CPT	gene	33588	34101	.	+	.	ID=0927b61b-fde4-456d-9082-231bf5115878;Name=gene_049;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=hypothetical protein
+Mijalis	CPT	mRNA	33588	34101	.	+	.	ID=67742b92-faf3-4547-a85d-655ac1500071;Name=Hypothetical Protein;Parent=0927b61b-fde4-456d-9082-231bf5115878;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	33588	33590	.	+	.	ID=69f54c59-905c-481f-8da0-7fcf9c13843e;Name=69f54c59-905c-481f-8da0-7fcf9c13843e-exon;Parent=67742b92-faf3-4547-a85d-655ac1500071
+Mijalis	CPT	CDS	33601	34101	.	+	0	ID=e9c5a044-c439-43f7-927a-a26903cd8ef5;Name=e9c5a044-c439-43f7-927a-a26903cd8ef5-CDS;Parent=67742b92-faf3-4547-a85d-655ac1500071
+Mijalis	CPT	exon	33601	34101	.	+	.	ID=e6468968-b5eb-47ea-8a40-0ae144b6bf3e;Name=e6468968-b5eb-47ea-8a40-0ae144b6bf3e-exon;Parent=67742b92-faf3-4547-a85d-655ac1500071
+Mijalis	CPT	gene	38631	39245	.	+	.	ID=183fba67-5feb-4fee-9efe-09ef6f954af3;Name=gene_057;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=hypothetical protein
+Mijalis	CPT	mRNA	38631	39245	.	+	.	ID=e69b3024-3d86-4124-b890-98d0bf4dde6b;Name=hypothetical protein;Parent=183fba67-5feb-4fee-9efe-09ef6f954af3;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	38646	39245	.	+	.	ID=a023d695-c410-47dd-a47c-20b752095eda;Name=a023d695-c410-47dd-a47c-20b752095eda-exon;Parent=e69b3024-3d86-4124-b890-98d0bf4dde6b
+Mijalis	CPT	exon	38631	38635	.	+	.	ID=0df48371-691a-4b72-92ae-e508f2576e21;Name=0df48371-691a-4b72-92ae-e508f2576e21-exon;Parent=e69b3024-3d86-4124-b890-98d0bf4dde6b
+Mijalis	CPT	CDS	38646	39245	.	+	0	ID=5bb4d6d8-7180-4087-a325-34dc93b93be0;Name=5bb4d6d8-7180-4087-a325-34dc93b93be0-CDS;Parent=e69b3024-3d86-4124-b890-98d0bf4dde6b
+Mijalis	CPT	gene	58452	58567	.	-	.	ID=c8b50a38-8749-465c-bfec-11fc2ba83323;Name=gene_085;Note=No blastp hits of any kind;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Novel Protein
+Mijalis	CPT	mRNA	58452	58567	.	-	.	ID=d35caad4-2a8b-421e-b81b-a0337424154c;Name=Hypothetical Novel Protein;Parent=c8b50a38-8749-465c-bfec-11fc2ba83323;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	58452	58553	.	-	.	ID=7c4a182c-40b6-4980-b713-610e5c89a3dd;Name=7c4a182c-40b6-4980-b713-610e5c89a3dd-exon;Parent=d35caad4-2a8b-421e-b81b-a0337424154c
+Mijalis	CPT	CDS	58452	58553	.	-	0	ID=d35caad4-2a8b-421e-b81b-a0337424154c-CDS;Name=d35caad4-2a8b-421e-b81b-a0337424154c-CDS;Parent=d35caad4-2a8b-421e-b81b-a0337424154c
+Mijalis	CPT	exon	58565	58567	.	-	.	ID=b3d4b228-f864-43c7-865a-72a07b955881;Name=b3d4b228-f864-43c7-865a-72a07b955881-exon;Parent=d35caad4-2a8b-421e-b81b-a0337424154c
+Mijalis	CPT	gene	73507	74272	.	+	.	ID=04792ab7-4100-43b4-b828-148b297abf90;Name=gene_109;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	73507	74272	.	+	.	ID=ba0d6db1-3659-42fe-9783-da9a688dc005;Name=Hypothetical Protein;Parent=04792ab7-4100-43b4-b828-148b297abf90;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	73517	74272	.	+	.	ID=08197115-f793-4f0b-92c5-dcdd06c56b28;Name=08197115-f793-4f0b-92c5-dcdd06c56b28-exon;Parent=ba0d6db1-3659-42fe-9783-da9a688dc005
+Mijalis	CPT	CDS	73517	74272	.	+	0	ID=abf708bf-de9c-4595-a001-bbafe30421a4;Name=abf708bf-de9c-4595-a001-bbafe30421a4-CDS;Parent=ba0d6db1-3659-42fe-9783-da9a688dc005
+Mijalis	CPT	exon	73507	73511	.	+	.	ID=15841816-abe8-4d0d-8b53-7e214a20f34b;Name=15841816-abe8-4d0d-8b53-7e214a20f34b-exon;Parent=ba0d6db1-3659-42fe-9783-da9a688dc005
+Mijalis	CPT	gene	57374	57683	.	-	.	ID=6e611e64-a7c0-4895-b874-27001aaeff0c;Name=gene_082;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Transcriptional Regulatory Protein
+Mijalis	CPT	mRNA	57374	57683	.	-	.	ID=5eeda063-968b-4640-9eaa-fc6a4e344bbf;Name=Transcriptional Regulatory Protein;Parent=6e611e64-a7c0-4895-b874-27001aaeff0c;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	57374	57673	.	-	0	ID=f10a0fbf-ec56-472e-9103-fb946020302e;Name=f10a0fbf-ec56-472e-9103-fb946020302e-CDS;Parent=5eeda063-968b-4640-9eaa-fc6a4e344bbf
+Mijalis	CPT	exon	57679	57683	.	-	.	ID=5754821e-8cd3-4d84-bc54-ef7593b825b8;Name=5754821e-8cd3-4d84-bc54-ef7593b825b8-exon;Parent=5eeda063-968b-4640-9eaa-fc6a4e344bbf
+Mijalis	CPT	exon	57374	57673	.	-	.	ID=05b6c11b-040e-4a74-9f9c-8f2dee38e930;Name=05b6c11b-040e-4a74-9f9c-8f2dee38e930-exon;Parent=5eeda063-968b-4640-9eaa-fc6a4e344bbf
+Mijalis	CPT	gene	77238	77524	.	+	.	ID=907fca58-eb2a-4a15-bf8e-559a44932997;Name=gene_113;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	77238	77524	.	+	.	ID=ada10901-0ef3-46a5-89e1-7520210f5443;Name=Hypothetical Protein;Parent=907fca58-eb2a-4a15-bf8e-559a44932997;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	77249	77524	.	+	.	ID=560840d3-85ab-4851-bd65-27a09074b1d3;Name=560840d3-85ab-4851-bd65-27a09074b1d3-exon;Parent=ada10901-0ef3-46a5-89e1-7520210f5443
+Mijalis	CPT	CDS	77249	77524	.	+	0	ID=1e40ee2f-5cdf-46ce-98d9-7e8dd3588c3f;Name=1e40ee2f-5cdf-46ce-98d9-7e8dd3588c3f-CDS;Parent=ada10901-0ef3-46a5-89e1-7520210f5443
+Mijalis	CPT	exon	77238	77242	.	+	.	ID=23560d0b-411b-40d7-ae24-136ba3c7236e;Name=23560d0b-411b-40d7-ae24-136ba3c7236e-exon;Parent=ada10901-0ef3-46a5-89e1-7520210f5443
+Mijalis	CPT	gene	29155	29898	.	+	.	ID=02ba6e34-cbfb-4d55-861b-05cb0ab90320;Name=gene_043;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=hypothetical novel protein
+Mijalis	CPT	mRNA	29155	29898	.	+	.	ID=bad53476-3130-4052-bf18-7e44ccec6906;Name=Hypothetical Novel Protein;Parent=02ba6e34-cbfb-4d55-861b-05cb0ab90320;date_creation=2016-02-18;date_last_modified=2016-05-08;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	29164	29898	.	+	0	ID=dd78c530-ce94-423c-9ba5-188bb1d4952b;Name=dd78c530-ce94-423c-9ba5-188bb1d4952b-CDS;Parent=bad53476-3130-4052-bf18-7e44ccec6906
+Mijalis	CPT	exon	29164	29898	.	+	.	ID=c9421013-423a-4d3c-b90b-8dec760e5a07;Name=c9421013-423a-4d3c-b90b-8dec760e5a07-exon;Parent=bad53476-3130-4052-bf18-7e44ccec6906
+Mijalis	CPT	exon	29155	29158	.	+	.	ID=30733974-8726-4b92-9cde-8cac24b01a79;Name=30733974-8726-4b92-9cde-8cac24b01a79-exon;Parent=bad53476-3130-4052-bf18-7e44ccec6906
+Mijalis	CPT	gene	35794	36184	.	+	.	ID=0b23e9cf-ce06-49dc-b93e-1db87a04b188;Name=gene_052;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	35794	36184	.	+	.	ID=d004e3bd-c7d2-4a1e-ae30-3c88bcd5d75e;Name=hypothetical protein;Parent=0b23e9cf-ce06-49dc-b93e-1db87a04b188;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	35807	36184	.	+	.	ID=d4c03d80-e64e-4051-9285-3caf3ec2d689;Name=d4c03d80-e64e-4051-9285-3caf3ec2d689-exon;Parent=d004e3bd-c7d2-4a1e-ae30-3c88bcd5d75e
+Mijalis	CPT	exon	35794	35797	.	+	.	ID=498ce956-1c41-41ef-8e36-1aab4d860aad;Name=498ce956-1c41-41ef-8e36-1aab4d860aad-exon;Parent=d004e3bd-c7d2-4a1e-ae30-3c88bcd5d75e
+Mijalis	CPT	CDS	35807	36184	.	+	0	ID=127a7989-fc8c-4cef-95d3-f6de27d42cc8;Name=127a7989-fc8c-4cef-95d3-f6de27d42cc8-CDS;Parent=d004e3bd-c7d2-4a1e-ae30-3c88bcd5d75e
+Mijalis	CPT	gene	17549	18285	.	-	.	ID=844ecb33-c983-459d-90e6-d6fbbd5cdb66;Name=gene_019;Note=InterPro Shows Coil Region;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	17549	18285	.	-	.	ID=05ad655d-1339-4ab2-9c85-9c4e539a37da;Name=Hypothetical Protein;Parent=844ecb33-c983-459d-90e6-d6fbbd5cdb66;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	17549	18274	.	-	.	ID=7b795b9d-1689-4931-9ced-2a083ffb8c75;Name=7b795b9d-1689-4931-9ced-2a083ffb8c75-exon;Parent=05ad655d-1339-4ab2-9c85-9c4e539a37da
+Mijalis	CPT	CDS	17549	18274	.	-	0	ID=8be85f10-16fe-4cc6-910e-ea029da6bba4;Name=8be85f10-16fe-4cc6-910e-ea029da6bba4-CDS;Parent=05ad655d-1339-4ab2-9c85-9c4e539a37da
+Mijalis	CPT	exon	18282	18285	.	-	.	ID=e9b76919-4819-42f5-bba4-e182e07f6bcc;Name=e9b76919-4819-42f5-bba4-e182e07f6bcc-exon;Parent=05ad655d-1339-4ab2-9c85-9c4e539a37da
+Mijalis	CPT	gene	60388	61501	.	-	.	ID=ff14c367-59dc-4669-896d-a6d3556626dd;Name=gene_090;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=DNA Ligase
+Mijalis	CPT	mRNA	60388	61501	.	-	.	ID=3af2abd9-1d71-44dd-902f-a1df9db143ad;Name=DNA Ligase;Parent=ff14c367-59dc-4669-896d-a6d3556626dd;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	61498	61501	.	-	.	ID=20670e64-e785-46c0-86e4-7a796b804325;Name=20670e64-e785-46c0-86e4-7a796b804325-exon;Parent=3af2abd9-1d71-44dd-902f-a1df9db143ad
+Mijalis	CPT	CDS	60388	61488	.	-	0	ID=2fa9c761-20ee-420b-ada7-26eb44b26201;Name=2fa9c761-20ee-420b-ada7-26eb44b26201-CDS;Parent=3af2abd9-1d71-44dd-902f-a1df9db143ad
+Mijalis	CPT	exon	60388	61488	.	-	.	ID=0f9570d5-aa4b-4c39-b013-966720ba0bd4;Name=0f9570d5-aa4b-4c39-b013-966720ba0bd4-exon;Parent=3af2abd9-1d71-44dd-902f-a1df9db143ad
+Mijalis	CPT	gene	21738	22116	.	-	.	ID=24df1fde-2734-42a9-bc11-aab77a7c3ff6;Name=gene_027;date_creation=2016-02-18;date_last_modified=2016-04-21;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	21738	22116	.	-	.	ID=03bd003d-9232-4284-b127-f5d90fa616cf;Name=Hypothetical Protein;Parent=24df1fde-2734-42a9-bc11-aab77a7c3ff6;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	21738	22106	.	-	.	ID=685e5491-82ac-475a-a901-5027363dd064;Name=685e5491-82ac-475a-a901-5027363dd064-exon;Parent=03bd003d-9232-4284-b127-f5d90fa616cf
+Mijalis	CPT	CDS	21738	22106	.	-	0	ID=58febb4c-7219-4e92-b11a-04d18f5d591f;Name=58febb4c-7219-4e92-b11a-04d18f5d591f-CDS;Parent=03bd003d-9232-4284-b127-f5d90fa616cf
+Mijalis	CPT	exon	22113	22116	.	-	.	ID=e185968b-9bc9-4f3a-babb-52f94f71560e;Name=e185968b-9bc9-4f3a-babb-52f94f71560e-exon;Parent=03bd003d-9232-4284-b127-f5d90fa616cf
+Mijalis	CPT	gene	34433	35794	.	+	.	ID=8fd68b25-2a75-463e-b158-2a198fc16153;Name=gene_051;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Head Maturation Protease
+Mijalis	CPT	mRNA	34433	35794	.	+	.	ID=3fb6f439-d9c2-43f3-9984-4e3c6582d065;Name=Head Maturation Protease;Parent=8fd68b25-2a75-463e-b158-2a198fc16153;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	34445	35794	.	+	0	ID=8dbef81c-f6c5-4a18-94a9-7371f7443441;Name=8dbef81c-f6c5-4a18-94a9-7371f7443441-CDS;Parent=3fb6f439-d9c2-43f3-9984-4e3c6582d065
+Mijalis	CPT	exon	34445	35794	.	+	.	ID=080d37c7-bdaf-4f41-bd60-dfe4b363b2c8;Name=080d37c7-bdaf-4f41-bd60-dfe4b363b2c8-exon;Parent=3fb6f439-d9c2-43f3-9984-4e3c6582d065
+Mijalis	CPT	exon	34433	34436	.	+	.	ID=075df147-81f2-47c6-ac72-e1c590f7298b;Name=075df147-81f2-47c6-ac72-e1c590f7298b-exon;Parent=3fb6f439-d9c2-43f3-9984-4e3c6582d065
+Mijalis	CPT	gene	82812	83135	.	+	.	ID=3cd8efdb-b283-4560-9f80-21ed0fd3b3ba;Name=gene_122;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	82812	83135	.	+	.	ID=f43a50dd-c851-477d-84ea-fd0d2f4c8546;Name=Hypothetical Protein;Parent=3cd8efdb-b283-4560-9f80-21ed0fd3b3ba;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	82824	83135	.	+	0	ID=9c419364-85e1-4e10-bb66-77730af7d28e;Name=9c419364-85e1-4e10-bb66-77730af7d28e-CDS;Parent=f43a50dd-c851-477d-84ea-fd0d2f4c8546
+Mijalis	CPT	exon	82812	82815	.	+	.	ID=746501bf-2c0f-4fcb-b3bb-21f8cd83be1c;Name=746501bf-2c0f-4fcb-b3bb-21f8cd83be1c-exon;Parent=f43a50dd-c851-477d-84ea-fd0d2f4c8546
+Mijalis	CPT	exon	82824	83135	.	+	.	ID=2b14092a-4644-4a36-9231-030927062729;Name=2b14092a-4644-4a36-9231-030927062729-exon;Parent=f43a50dd-c851-477d-84ea-fd0d2f4c8546
+Mijalis	CPT	gene	20391	20866	.	-	.	ID=5e9a3a56-94c0-494a-be5b-09e7bb98ae7e;Name=gene_025;Note=InterPro: G3DSA:1.10.530.40;date_creation=2016-02-18;date_last_modified=2016-04-21;owner=sparvata%40tamu.edu;product=Soluble Endolysin %28Lysozyme%29
+Mijalis	CPT	mRNA	20391	20866	.	-	.	ID=370be33e-7273-4f0a-ac4b-22aaad46d536;Name=Soluble Endolysin %28Lysozyme%29;Parent=5e9a3a56-94c0-494a-be5b-09e7bb98ae7e;date_creation=2016-02-18;date_last_modified=2016-05-09;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	20862	20866	.	-	.	ID=305473db-7711-4eef-bc27-13be66321be1;Name=305473db-7711-4eef-bc27-13be66321be1-exon;Parent=370be33e-7273-4f0a-ac4b-22aaad46d536
+Mijalis	CPT	exon	20391	20855	.	-	.	ID=85247ddb-81ae-485f-bf53-2dc2d6e3280a;Name=85247ddb-81ae-485f-bf53-2dc2d6e3280a-exon;Parent=370be33e-7273-4f0a-ac4b-22aaad46d536
+Mijalis	CPT	CDS	20391	20855	.	-	0	ID=048b4992-5103-42af-a82b-daa1d8e80542;Name=048b4992-5103-42af-a82b-daa1d8e80542-CDS;Parent=370be33e-7273-4f0a-ac4b-22aaad46d536
+Mijalis	CPT	gene	61993	62265	.	-	.	ID=3858c3c9-2f7f-4164-9da3-785f50dc8e0b;Name=gene_093;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	61993	62265	.	-	.	ID=04a324a5-5082-435d-a62b-b9d8dad5c315;Name=Hypothetical Protein;Parent=3858c3c9-2f7f-4164-9da3-785f50dc8e0b;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	61993	62250	.	-	0	ID=572df4b2-1309-4f3d-9306-07d791aea184;Name=572df4b2-1309-4f3d-9306-07d791aea184-CDS;Parent=04a324a5-5082-435d-a62b-b9d8dad5c315
+Mijalis	CPT	exon	61993	62250	.	-	.	ID=5f803d22-b912-4c6d-8301-ddba85a033c3;Name=5f803d22-b912-4c6d-8301-ddba85a033c3-exon;Parent=04a324a5-5082-435d-a62b-b9d8dad5c315
+Mijalis	CPT	exon	62261	62265	.	-	.	ID=b78b0339-0bb4-4ee5-ac82-299d92824551;Name=b78b0339-0bb4-4ee5-ac82-299d92824551-exon;Parent=04a324a5-5082-435d-a62b-b9d8dad5c315
+Mijalis	CPT	gene	62453	62665	.	-	.	ID=dca51f2b-65ab-4fea-a555-be4320f75b1c;Name=gene_095;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	62453	62665	.	-	.	ID=25e4b380-2498-4e7b-a1db-fc92267aaf8a;Name=Hypothetical Protein;Parent=dca51f2b-65ab-4fea-a555-be4320f75b1c;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	62453	62653	.	-	.	ID=79ddfd68-0e34-4afd-b51c-3d39d48978a3;Name=79ddfd68-0e34-4afd-b51c-3d39d48978a3-exon;Parent=25e4b380-2498-4e7b-a1db-fc92267aaf8a
+Mijalis	CPT	exon	62661	62665	.	-	.	ID=f6b00384-b38a-4e3c-a24b-a28b26dd6951;Name=f6b00384-b38a-4e3c-a24b-a28b26dd6951-exon;Parent=25e4b380-2498-4e7b-a1db-fc92267aaf8a
+Mijalis	CPT	CDS	62453	62653	.	-	0	ID=baf3eca8-fd2f-4e58-9e23-126069d4fb44;Name=baf3eca8-fd2f-4e58-9e23-126069d4fb44-CDS;Parent=25e4b380-2498-4e7b-a1db-fc92267aaf8a
+Mijalis	CPT	gene	55199	55540	.	-	.	ID=db74c701-66b0-4133-9d4f-16714952c21c;Name=gene_076;Note=Conserved Domain: DHFR Superfamily;date_creation=2016-02-18;date_last_modified=2016-05-09;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	55199	55540	.	-	.	ID=6a22322b-90ff-4071-80eb-4743dbce2062;Name=Hypothetical Protein;Parent=db74c701-66b0-4133-9d4f-16714952c21c;date_creation=2016-02-18;date_last_modified=2016-05-09;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	55199	55540	.	-	0	ID=6e22253d-b866-4fe0-990a-a83507b5917a;Name=6e22253d-b866-4fe0-990a-a83507b5917a-CDS;Parent=6a22322b-90ff-4071-80eb-4743dbce2062
+Mijalis	CPT	exon	55199	55540	.	-	.	ID=de03ee02-600d-4941-b533-557e918b5483;Name=de03ee02-600d-4941-b533-557e918b5483-exon;Parent=6a22322b-90ff-4071-80eb-4743dbce2062
+Mijalis	CPT	gene	59856	60002	.	-	.	ID=f985f6fa-cd7e-46e3-b66f-e68c970fb2f5;Name=gene_088;Note=No blastp hits of any kind;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Novel Protein
+Mijalis	CPT	mRNA	59856	60002	.	-	.	ID=30a08492-bde6-4591-a34a-3d122ea93d41;Name=Hypothetical Novel Protein;Parent=f985f6fa-cd7e-46e3-b66f-e68c970fb2f5;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	59856	59990	.	-	0	ID=466030b2-0ede-450c-9ee3-47134ed52239;Name=466030b2-0ede-450c-9ee3-47134ed52239-CDS;Parent=30a08492-bde6-4591-a34a-3d122ea93d41
+Mijalis	CPT	exon	59999	60002	.	-	.	ID=47f708c2-dd41-4fdc-9c9b-3e3aeec11c09;Name=47f708c2-dd41-4fdc-9c9b-3e3aeec11c09-exon;Parent=30a08492-bde6-4591-a34a-3d122ea93d41
+Mijalis	CPT	exon	59856	59990	.	-	.	ID=52aeaad0-4de1-4a4a-80e5-be96d0f8f394;Name=52aeaad0-4de1-4a4a-80e5-be96d0f8f394-exon;Parent=30a08492-bde6-4591-a34a-3d122ea93d41
+Mijalis	CPT	gene	79069	81220	.	+	.	ID=b8e0019d-c54c-45b7-b46d-10a480aff352;Name=gene_117;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Anaerobic Ribonucleoside Diphosphate Reductase
+Mijalis	CPT	mRNA	79069	81220	.	+	.	ID=7b2d8a9a-49de-48a8-a207-a9e7cb399b97;Name=Anaerobic Ribonucleoside Diphosphate Reductase;Parent=b8e0019d-c54c-45b7-b46d-10a480aff352;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	79079	81220	.	+	0	ID=90764d52-b8a9-4519-97ce-a8e66ab12fe3;Name=90764d52-b8a9-4519-97ce-a8e66ab12fe3-CDS;Parent=7b2d8a9a-49de-48a8-a207-a9e7cb399b97
+Mijalis	CPT	exon	79079	81220	.	+	.	ID=346c4c29-6d36-4840-b9b9-2da4f513a8bb;Name=346c4c29-6d36-4840-b9b9-2da4f513a8bb-exon;Parent=7b2d8a9a-49de-48a8-a207-a9e7cb399b97
+Mijalis	CPT	exon	79069	79073	.	+	.	ID=d336abee-9133-4211-825f-c31a3179b0ef;Name=d336abee-9133-4211-825f-c31a3179b0ef-exon;Parent=7b2d8a9a-49de-48a8-a207-a9e7cb399b97
+Mijalis	CPT	gene	78819	79029	.	+	.	ID=6106f923-67d9-46b2-87e8-1b85211261e6;Name=gene_116;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Membrane Protein
+Mijalis	CPT	mRNA	78819	79029	.	+	.	ID=bd5a4e9a-4751-4861-b5f6-074158212f0f;Name=Membrane Protein;Parent=6106f923-67d9-46b2-87e8-1b85211261e6;date_creation=2016-02-25;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	78829	79029	.	+	.	ID=4eaccff8-1bc1-4edb-8ed1-e63c886a869f;Name=4eaccff8-1bc1-4edb-8ed1-e63c886a869f-exon;Parent=bd5a4e9a-4751-4861-b5f6-074158212f0f
+Mijalis	CPT	exon	78819	78823	.	+	.	ID=7b3a4b0e-743f-4615-b214-c44cf0db34c9;Name=7b3a4b0e-743f-4615-b214-c44cf0db34c9-exon;Parent=bd5a4e9a-4751-4861-b5f6-074158212f0f
+Mijalis	CPT	CDS	78829	79029	.	+	0	ID=de174cd6-8f2a-44c9-8c94-6f055ff839d2;Name=de174cd6-8f2a-44c9-8c94-6f055ff839d2-CDS;Parent=bd5a4e9a-4751-4861-b5f6-074158212f0f
+Mijalis	CPT	gene	34090	34433	.	+	.	ID=9fe372d3-b412-4957-9c9d-fc799c3952a5;Name=gene_050;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=hypothetical protein
+Mijalis	CPT	mRNA	34090	34433	.	+	.	ID=7baf8113-3022-415f-8cf5-e9771a48ad44;Name=hypothetical protein;Parent=9fe372d3-b412-4957-9c9d-fc799c3952a5;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	34101	34433	.	+	0	ID=16d8591b-50ee-4d13-be96-c7cb61fee0a0;Name=16d8591b-50ee-4d13-be96-c7cb61fee0a0-CDS;Parent=7baf8113-3022-415f-8cf5-e9771a48ad44
+Mijalis	CPT	exon	34101	34433	.	+	.	ID=b9c30a61-be12-4b81-8122-6f29de58b6d2;Name=b9c30a61-be12-4b81-8122-6f29de58b6d2-exon;Parent=7baf8113-3022-415f-8cf5-e9771a48ad44
+Mijalis	CPT	exon	34090	34093	.	+	.	ID=25a20598-788e-4f7b-a4e6-c296a615e8ff;Name=25a20598-788e-4f7b-a4e6-c296a615e8ff-exon;Parent=7baf8113-3022-415f-8cf5-e9771a48ad44
+Mijalis	CPT	gene	51059	53602	.	+	.	ID=d4ff1202-3393-40af-860d-2360ec307f23;Name=gene_072;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Tail Fiber Protein
+Mijalis	CPT	mRNA	51059	53602	.	+	.	ID=c4b39ca2-4be9-4871-a031-706192f8dbc7;Name=Tail Fiber Protein;Parent=d4ff1202-3393-40af-860d-2360ec307f23;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	51071	53602	.	+	.	ID=5920c5d0-c8c9-4609-aa3a-7777f7c070bb;Name=5920c5d0-c8c9-4609-aa3a-7777f7c070bb-exon;Parent=c4b39ca2-4be9-4871-a031-706192f8dbc7
+Mijalis	CPT	CDS	51071	53602	.	+	0	ID=154dc76b-7b56-4263-9d62-c98ec2fef7e9;Name=154dc76b-7b56-4263-9d62-c98ec2fef7e9-CDS;Parent=c4b39ca2-4be9-4871-a031-706192f8dbc7
+Mijalis	CPT	exon	51059	51062	.	+	.	ID=44394bf8-3009-423f-93a3-6cbbe1709e6c;Name=44394bf8-3009-423f-93a3-6cbbe1709e6c-exon;Parent=c4b39ca2-4be9-4871-a031-706192f8dbc7
+Mijalis	CPT	gene	22151	22756	.	-	.	ID=f9294681-bf93-4d3a-8591-5b2458203f3f;Name=gene_028;date_creation=2016-02-18;date_last_modified=2016-04-21;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	22151	22756	.	-	.	ID=24b8cddd-2d6c-40e6-9b68-a455672d981d;Name=Hypothetical Protein;Parent=f9294681-bf93-4d3a-8591-5b2458203f3f;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	22151	22741	.	-	.	ID=c1fbc63b-8186-4e5e-b83e-497c25fdcc16;Name=c1fbc63b-8186-4e5e-b83e-497c25fdcc16-exon;Parent=24b8cddd-2d6c-40e6-9b68-a455672d981d
+Mijalis	CPT	CDS	22151	22741	.	-	0	ID=636fdccf-3024-4f93-8efb-f7abe737e307;Name=636fdccf-3024-4f93-8efb-f7abe737e307-CDS;Parent=24b8cddd-2d6c-40e6-9b68-a455672d981d
+Mijalis	CPT	exon	22752	22756	.	-	.	ID=25ed3b17-96dc-4d11-979e-01b5546278a6;Name=25ed3b17-96dc-4d11-979e-01b5546278a6-exon;Parent=24b8cddd-2d6c-40e6-9b68-a455672d981d
+Mijalis	CPT	gene	53679	53883	.	+	.	ID=514287d0-a861-4cd7-ab14-6848d4a97c8f;Name=gene_073;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	53679	53883	.	+	.	ID=66fb35c2-964e-4345-8fff-60422428743d;Name=Hypothetical Protein;Parent=514287d0-a861-4cd7-ab14-6848d4a97c8f;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	53689	53883	.	+	.	ID=4f800c23-ee2e-44e2-b2d3-cadf49b03d0f;Name=4f800c23-ee2e-44e2-b2d3-cadf49b03d0f-exon;Parent=66fb35c2-964e-4345-8fff-60422428743d
+Mijalis	CPT	exon	53679	53682	.	+	.	ID=c6bc7361-2420-4a15-88f3-81a47c0dbf6d;Name=c6bc7361-2420-4a15-88f3-81a47c0dbf6d-exon;Parent=66fb35c2-964e-4345-8fff-60422428743d
+Mijalis	CPT	CDS	53689	53883	.	+	0	ID=05687125-454f-4261-9ae0-3647ab837bdb;Name=05687125-454f-4261-9ae0-3647ab837bdb-CDS;Parent=66fb35c2-964e-4345-8fff-60422428743d
+Mijalis	CPT	gene	82542	82812	.	+	.	ID=df129610-8f97-40ed-b99e-2f42f6f9b847;Name=gene_121;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	82542	82812	.	+	.	ID=336e05ba-5469-44ee-a852-e02bba870c23;Name=Hypothetical Protein;Parent=df129610-8f97-40ed-b99e-2f42f6f9b847;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	82555	82812	.	+	0	ID=c40502fe-7cb9-4d9a-818a-cad0cfd52131;Name=c40502fe-7cb9-4d9a-818a-cad0cfd52131-CDS;Parent=336e05ba-5469-44ee-a852-e02bba870c23
+Mijalis	CPT	exon	82542	82544	.	+	.	ID=db917988-bd93-4c02-ae89-62af425875aa;Name=db917988-bd93-4c02-ae89-62af425875aa-exon;Parent=336e05ba-5469-44ee-a852-e02bba870c23
+Mijalis	CPT	exon	82555	82812	.	+	.	ID=221911be-4b3c-4669-a69b-fb2c53197f13;Name=221911be-4b3c-4669-a69b-fb2c53197f13-exon;Parent=336e05ba-5469-44ee-a852-e02bba870c23
+Mijalis	CPT	gene	16757	16863	.	-	.	ID=92ca07cd-80d2-4915-adc0-cab2bd4c37b8;Name=gene_016;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	16757	16863	.	-	.	ID=a151f7c5-8f27-4abf-8924-b5b2ed0e9134;Name=Hypothetical Protein;Parent=92ca07cd-80d2-4915-adc0-cab2bd4c37b8;date_creation=2016-02-18;date_last_modified=2016-05-06;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	16859	16863	.	-	.	ID=b89798a8-c016-4969-98fa-836e458bde2a;Name=b89798a8-c016-4969-98fa-836e458bde2a-exon;Parent=a151f7c5-8f27-4abf-8924-b5b2ed0e9134
+Mijalis	CPT	CDS	16757	16849	.	-	0	ID=a441c67a-57b6-4f45-8517-32d654c4beee;Name=a441c67a-57b6-4f45-8517-32d654c4beee-CDS;Parent=a151f7c5-8f27-4abf-8924-b5b2ed0e9134
+Mijalis	CPT	exon	16757	16849	.	-	.	ID=cba02320-e41f-402f-a302-1cf99240fb31;Name=cba02320-e41f-402f-a302-1cf99240fb31-exon;Parent=a151f7c5-8f27-4abf-8924-b5b2ed0e9134
+Mijalis	CPT	gene	11637	11879	.	+	.	ID=838b2f30-7678-4fbc-b918-22b778b8da04;Name=gene_005;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	11637	11879	.	+	.	ID=6d880e11-de92-4a06-9081-03e66f554225;Name=Hypothetical Protein;Parent=838b2f30-7678-4fbc-b918-22b778b8da04;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	11637	11640	.	+	.	ID=3a39ef3d-8a03-4245-847b-6ac9e991289a;Name=3a39ef3d-8a03-4245-847b-6ac9e991289a-exon;Parent=6d880e11-de92-4a06-9081-03e66f554225
+Mijalis	CPT	CDS	11649	11879	.	+	0	ID=651b36d2-43bd-4d67-b081-d58e5756a599;Name=651b36d2-43bd-4d67-b081-d58e5756a599-CDS;Parent=6d880e11-de92-4a06-9081-03e66f554225
+Mijalis	CPT	exon	11649	11879	.	+	.	ID=e449ca3e-a66d-498f-94d3-27d53d6d48d1;Name=e449ca3e-a66d-498f-94d3-27d53d6d48d1-exon;Parent=6d880e11-de92-4a06-9081-03e66f554225
+Mijalis	CPT	gene	73287	73517	.	+	.	ID=c1453552-ccaa-4c59-b3c1-d8717e6ec86c;Name=gene_108;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	73287	73517	.	+	.	ID=1ce6fe0f-51ed-48e7-95d4-886c4fc32052;Name=Hypothetical Protein;Parent=c1453552-ccaa-4c59-b3c1-d8717e6ec86c;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	73287	73517	.	+	.	ID=e3ae3031-bbf9-445a-80f3-9ee03b2d7e5d;Name=e3ae3031-bbf9-445a-80f3-9ee03b2d7e5d-exon;Parent=1ce6fe0f-51ed-48e7-95d4-886c4fc32052
+Mijalis	CPT	CDS	73287	73517	.	+	0	ID=6ba8a15c-4fa8-45b6-8f21-ad78117e3820;Name=6ba8a15c-4fa8-45b6-8f21-ad78117e3820-CDS;Parent=1ce6fe0f-51ed-48e7-95d4-886c4fc32052
+Mijalis	CPT	gene	14720	14836	.	+	.	ID=1056b0f3-7ddb-4e24-aea8-b6a6a6f014bc;Name=gene_012;date_creation=2016-02-25;date_last_modified=2016-05-06;owner=sparvata%40tamu.edu;product=Hypothetical Novel Protein
+Mijalis	CPT	mRNA	14720	14836	.	+	.	ID=d40cd2ca-0e2a-4ec1-8c08-222e539cb435;Name=Hypothetical Novel Protein;Parent=1056b0f3-7ddb-4e24-aea8-b6a6a6f014bc;date_creation=2016-02-25;date_last_modified=2016-05-06;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	14720	14836	.	+	.	ID=7b8a179c-aff5-4487-902e-a7a0875cebe5;Name=7b8a179c-aff5-4487-902e-a7a0875cebe5-exon;Parent=d40cd2ca-0e2a-4ec1-8c08-222e539cb435
+Mijalis	CPT	CDS	14720	14836	.	+	0	ID=d40cd2ca-0e2a-4ec1-8c08-222e539cb435-CDS;Name=d40cd2ca-0e2a-4ec1-8c08-222e539cb435-CDS;Parent=d40cd2ca-0e2a-4ec1-8c08-222e539cb435
+Mijalis	CPT	gene	83974	84867	.	+	.	ID=01edf222-c903-4d2a-be68-b936511496da;Name=gene_125;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Ribose-phosphate Ribophosphokinase
+Mijalis	CPT	mRNA	83974	84867	.	+	.	ID=0be39f91-d848-4379-8f9c-07fb6f8cefc0;Name=Ribose-phosphate Ribophosphokinase;Parent=01edf222-c903-4d2a-be68-b936511496da;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	83974	83976	.	+	.	ID=df9c659c-ea5c-4b7f-8f7e-42405095da8c;Name=df9c659c-ea5c-4b7f-8f7e-42405095da8c-exon;Parent=0be39f91-d848-4379-8f9c-07fb6f8cefc0
+Mijalis	CPT	exon	83986	84867	.	+	.	ID=3a3742e0-8fcd-4613-8092-295350b01858;Name=3a3742e0-8fcd-4613-8092-295350b01858-exon;Parent=0be39f91-d848-4379-8f9c-07fb6f8cefc0
+Mijalis	CPT	CDS	83986	84867	.	+	0	ID=8f229f78-df3e-45bf-8e13-94bbb91a5909;Name=8f229f78-df3e-45bf-8e13-94bbb91a5909-CDS;Parent=0be39f91-d848-4379-8f9c-07fb6f8cefc0
+Mijalis	CPT	gene	19942	20352	.	-	.	ID=b6d5fbc7-8b96-4127-be0d-a29befd17fdb;Name=gene_024;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	19942	20352	.	-	.	ID=752f8516-a824-4b31-bab8-36beecf60b6e;Name=Hypothetical Protein;Parent=b6d5fbc7-8b96-4127-be0d-a29befd17fdb;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	19942	20340	.	-	.	ID=688c82b5-b8ac-4cbf-82f6-1c9e152ad765;Name=688c82b5-b8ac-4cbf-82f6-1c9e152ad765-exon;Parent=752f8516-a824-4b31-bab8-36beecf60b6e
+Mijalis	CPT	exon	20348	20352	.	-	.	ID=5e98beec-931a-49ee-a6cd-6cafd3ff47bb;Name=5e98beec-931a-49ee-a6cd-6cafd3ff47bb-exon;Parent=752f8516-a824-4b31-bab8-36beecf60b6e
+Mijalis	CPT	CDS	19942	20340	.	-	0	ID=efa1d2db-bb35-4ca0-8524-5997efef71a8;Name=efa1d2db-bb35-4ca0-8524-5997efef71a8-CDS;Parent=752f8516-a824-4b31-bab8-36beecf60b6e
+Mijalis	CPT	gene	60230	60388	.	-	.	ID=c9a41741-3ca9-40c4-aaaf-0f3fc34fccf2;Name=gene_089;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	60230	60388	.	-	.	ID=32f4b7c5-e732-4b5f-b2a1-059c0792a84a;Name=Hypothetical Protein;Parent=c9a41741-3ca9-40c4-aaaf-0f3fc34fccf2;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	60384	60388	.	-	.	ID=b67ca847-006d-412d-87eb-16e53cbcaaa5;Name=b67ca847-006d-412d-87eb-16e53cbcaaa5-exon;Parent=32f4b7c5-e732-4b5f-b2a1-059c0792a84a
+Mijalis	CPT	CDS	60230	60379	.	-	0	ID=462a95a1-87d0-4b68-b882-48631d866a38;Name=462a95a1-87d0-4b68-b882-48631d866a38-CDS;Parent=32f4b7c5-e732-4b5f-b2a1-059c0792a84a
+Mijalis	CPT	exon	60230	60379	.	-	.	ID=d0b4d89b-9d5e-42f0-897a-384a592ca771;Name=d0b4d89b-9d5e-42f0-897a-384a592ca771-exon;Parent=32f4b7c5-e732-4b5f-b2a1-059c0792a84a
+Mijalis	CPT	gene	10932	11052	.	-	.	ID=63cb824f-d002-499d-a488-246bae886002;Name=gene_003;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu;product=Hypothesized Protein
+Mijalis	CPT	mRNA	10932	11052	.	-	.	ID=09ae9585-92b0-4c78-b703-d7a5831e9039;Name=Hypothesized Protein;Parent=63cb824f-d002-499d-a488-246bae886002;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	11050	11052	.	-	.	ID=4e3b616e-d1d1-468c-8f43-05c6e43302b6;Name=4e3b616e-d1d1-468c-8f43-05c6e43302b6-exon;Parent=09ae9585-92b0-4c78-b703-d7a5831e9039
+Mijalis	CPT	CDS	10932	11042	.	-	0	ID=09ae9585-92b0-4c78-b703-d7a5831e9039-CDS;Name=09ae9585-92b0-4c78-b703-d7a5831e9039-CDS;Parent=09ae9585-92b0-4c78-b703-d7a5831e9039
+Mijalis	CPT	exon	10932	11042	.	-	.	ID=68ea5d1d-8bde-455a-a4c7-3bc33e3f7bca;Name=68ea5d1d-8bde-455a-a4c7-3bc33e3f7bca-exon;Parent=09ae9585-92b0-4c78-b703-d7a5831e9039
+Mijalis	CPT	gene	66084	66892	.	+	.	ID=ace6fa19-c101-4318-b76a-8960c7c7690e;Name=gene_098;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	66084	66892	.	+	.	ID=a9d25077-b3f2-417d-b271-916d82a78c7d;Name=Hypothetical Protein;Parent=ace6fa19-c101-4318-b76a-8960c7c7690e;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	66084	66086	.	+	.	ID=7da41d66-5c72-4043-b594-f0a48b52b41e;Name=7da41d66-5c72-4043-b594-f0a48b52b41e-exon;Parent=a9d25077-b3f2-417d-b271-916d82a78c7d
+Mijalis	CPT	CDS	66098	66892	.	+	0	ID=766b826a-4f30-43e6-bd07-a320004ece34;Name=766b826a-4f30-43e6-bd07-a320004ece34-CDS;Parent=a9d25077-b3f2-417d-b271-916d82a78c7d
+Mijalis	CPT	exon	66098	66892	.	+	.	ID=865afd97-f709-4386-9833-e271e6581115;Name=865afd97-f709-4386-9833-e271e6581115-exon;Parent=a9d25077-b3f2-417d-b271-916d82a78c7d
+Mijalis	CPT	gene	49806	51025	.	+	.	ID=b4168f2c-9417-4479-a035-8193cb632582;Name=gene_071;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Tail Fiber Protein GP 37
+Mijalis	CPT	mRNA	49806	51025	.	+	.	ID=b06c82c7-6898-4221-b4fb-ff3f24a98da7;Name=Tail Fiber Protein;Parent=b4168f2c-9417-4479-a035-8193cb632582;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	49817	51025	.	+	.	ID=947ce48d-edba-4278-a104-27141ae1a8ca;Name=947ce48d-edba-4278-a104-27141ae1a8ca-exon;Parent=b06c82c7-6898-4221-b4fb-ff3f24a98da7
+Mijalis	CPT	exon	49806	49810	.	+	.	ID=c2aa9629-7bd3-41e4-a358-b93cc2c8764a;Name=c2aa9629-7bd3-41e4-a358-b93cc2c8764a-exon;Parent=b06c82c7-6898-4221-b4fb-ff3f24a98da7
+Mijalis	CPT	CDS	49817	51025	.	+	0	ID=083d32fc-fa4c-4174-9fd7-aac5cff7ee78;Name=083d32fc-fa4c-4174-9fd7-aac5cff7ee78-CDS;Parent=b06c82c7-6898-4221-b4fb-ff3f24a98da7
+Mijalis	CPT	gene	43997	44814	.	+	.	ID=172580e2-3973-4b69-9fc4-3f96dbe4e696;Name=gene_063;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	43997	44814	.	+	.	ID=e3770226-fe3a-404d-b86e-5b0cee89e559;Name=Hypothetical Protein;Parent=172580e2-3973-4b69-9fc4-3f96dbe4e696;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	44008	44814	.	+	0	ID=4f114a2d-93ae-448f-8d62-6e8dd733c7de;Name=4f114a2d-93ae-448f-8d62-6e8dd733c7de-CDS;Parent=e3770226-fe3a-404d-b86e-5b0cee89e559
+Mijalis	CPT	exon	43997	44000	.	+	.	ID=4276f951-bfeb-43ae-8793-ccce64a7e475;Name=4276f951-bfeb-43ae-8793-ccce64a7e475-exon;Parent=e3770226-fe3a-404d-b86e-5b0cee89e559
+Mijalis	CPT	exon	44008	44814	.	+	.	ID=b0237f9e-f45e-4c16-8c34-9a36bfeea0b6;Name=b0237f9e-f45e-4c16-8c34-9a36bfeea0b6-exon;Parent=e3770226-fe3a-404d-b86e-5b0cee89e559
+Mijalis	CPT	gene	17334	17561	.	-	.	ID=0adb3bc9-e9e9-4afd-bf0b-29ee61c897ee;Name=gene_018;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	17334	17561	.	-	.	ID=d6f014d2-e17c-4ca5-934d-4cfb0b35afef;Name=Hypothetical Protein;Parent=0adb3bc9-e9e9-4afd-bf0b-29ee61c897ee;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	17334	17552	.	-	0	ID=6b540b72-b4a6-4e15-8db6-0eeb7ab3d9bd;Name=6b540b72-b4a6-4e15-8db6-0eeb7ab3d9bd-CDS;Parent=d6f014d2-e17c-4ca5-934d-4cfb0b35afef
+Mijalis	CPT	exon	17334	17552	.	-	.	ID=63f803db-a80b-45a6-8b53-a085de2cd2ec;Name=63f803db-a80b-45a6-8b53-a085de2cd2ec-exon;Parent=d6f014d2-e17c-4ca5-934d-4cfb0b35afef
+Mijalis	CPT	exon	17559	17561	.	-	.	ID=2a01b963-1365-4c0d-a54c-78693ed4c1e3;Name=2a01b963-1365-4c0d-a54c-78693ed4c1e3-exon;Parent=d6f014d2-e17c-4ca5-934d-4cfb0b35afef
+Mijalis	CPT	gene	16076	16520	.	-	.	ID=c5bacbe1-ad4f-42a5-bad5-cc82e386d852;Name=gene_014;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	16076	16520	.	-	.	ID=b78c9c6e-01b1-414b-9d12-d67695bfa71b;Name=Hypothetical Protein;Parent=c5bacbe1-ad4f-42a5-bad5-cc82e386d852;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	16076	16507	.	-	.	ID=2c3c7abc-81db-4196-a94b-a03223c286de;Name=2c3c7abc-81db-4196-a94b-a03223c286de-exon;Parent=b78c9c6e-01b1-414b-9d12-d67695bfa71b
+Mijalis	CPT	exon	16516	16520	.	-	.	ID=0c289cb9-6c6a-4383-b1c0-9a1ca05f334d;Name=0c289cb9-6c6a-4383-b1c0-9a1ca05f334d-exon;Parent=b78c9c6e-01b1-414b-9d12-d67695bfa71b
+Mijalis	CPT	CDS	16076	16507	.	-	0	ID=6bb1e9df-f289-44d2-8bf3-fd6b1634b144;Name=6bb1e9df-f289-44d2-8bf3-fd6b1634b144-CDS;Parent=b78c9c6e-01b1-414b-9d12-d67695bfa71b
+Mijalis	CPT	gene	77506	78594	.	+	.	ID=0e6ee327-1cbc-440e-bb4d-6033e0c243f3;Name=Ribonucleoside Triphosphate Reductase%2C Beta Chain;Note=E-value is 0.;date_creation=2016-02-18;date_last_modified=2016-04-07;owner=sparvata%40tamu.edu;product=Ribonucleoside Triphosphate Reductase%2C Beta Chain
+Mijalis	CPT	mRNA	77506	78594	.	+	.	ID=930b436e-51a4-4a13-ad11-98ac8dfb2f36;Name=Ribonucleoside Triphosphate Reductase%2C Beta Chain;Parent=0e6ee327-1cbc-440e-bb4d-6033e0c243f3;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	77506	77509	.	+	.	ID=0573cbc8-0c3c-4460-9fb9-49db56a80f86;Name=0573cbc8-0c3c-4460-9fb9-49db56a80f86-exon;Parent=930b436e-51a4-4a13-ad11-98ac8dfb2f36
+Mijalis	CPT	CDS	77521	78594	.	+	0	ID=24095f7d-f571-4967-9eb6-27e8cfe8e915;Name=24095f7d-f571-4967-9eb6-27e8cfe8e915-CDS;Parent=930b436e-51a4-4a13-ad11-98ac8dfb2f36
+Mijalis	CPT	exon	77521	78594	.	+	.	ID=b61d5a46-edcb-4178-8eda-14269405a176;Name=b61d5a46-edcb-4178-8eda-14269405a176-exon;Parent=930b436e-51a4-4a13-ad11-98ac8dfb2f36
+Mijalis	CPT	gene	49505	49814	.	+	.	ID=66895d3a-8d47-48fc-af59-c3679f750949;Name=gene_070;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	49505	49814	.	+	.	ID=d67ecebb-59da-4254-b62f-443fdfc1a9f4;Name=hypothetical protein;Parent=66895d3a-8d47-48fc-af59-c3679f750949;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	49505	49508	.	+	.	ID=5049d440-6f8f-4644-a2b2-93f28254a882;Name=5049d440-6f8f-4644-a2b2-93f28254a882-exon;Parent=d67ecebb-59da-4254-b62f-443fdfc1a9f4
+Mijalis	CPT	exon	49515	49814	.	+	.	ID=50207fa5-94f8-4b40-acf2-a0362d9b9a4c;Name=50207fa5-94f8-4b40-acf2-a0362d9b9a4c-exon;Parent=d67ecebb-59da-4254-b62f-443fdfc1a9f4
+Mijalis	CPT	CDS	49515	49814	.	+	0	ID=6f2548be-73f8-4d2f-a467-5672d7213d3b;Name=6f2548be-73f8-4d2f-a467-5672d7213d3b-CDS;Parent=d67ecebb-59da-4254-b62f-443fdfc1a9f4
+Mijalis	CPT	gene	12489	13028	.	+	.	ID=f09a96dc-8dd2-4d0f-a74a-891098667087;Name=gene_008;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	12489	13028	.	+	.	ID=0ed13bca-5138-476d-a42d-22c8a644092c;Name=Hypothetical Protein;Parent=f09a96dc-8dd2-4d0f-a74a-891098667087;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	12501	13028	.	+	.	ID=0761c567-9aee-401b-b4c8-e8138104f453;Name=0761c567-9aee-401b-b4c8-e8138104f453-exon;Parent=0ed13bca-5138-476d-a42d-22c8a644092c
+Mijalis	CPT	exon	12489	12492	.	+	.	ID=86cd6f8e-4f22-4173-b1fb-dd024b8956d4;Name=86cd6f8e-4f22-4173-b1fb-dd024b8956d4-exon;Parent=0ed13bca-5138-476d-a42d-22c8a644092c
+Mijalis	CPT	CDS	12501	13028	.	+	0	ID=d4c666e6-327b-4053-96ec-d1b82455b50e;Name=d4c666e6-327b-4053-96ec-d1b82455b50e-CDS;Parent=0ed13bca-5138-476d-a42d-22c8a644092c
+Mijalis	CPT	gene	19274	19579	.	-	.	ID=e8006590-270a-4861-9299-839a012d1ec6;Name=gene_022;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	19274	19579	.	-	.	ID=3d11fcc5-d5f6-4e0f-a25e-5a24a2798de6;Name=Hypothetical Protein;Parent=e8006590-270a-4861-9299-839a012d1ec6;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	19575	19579	.	-	.	ID=ab311645-1dfb-4b1c-ae84-ba4910204526;Name=ab311645-1dfb-4b1c-ae84-ba4910204526-exon;Parent=3d11fcc5-d5f6-4e0f-a25e-5a24a2798de6
+Mijalis	CPT	exon	19274	19567	.	-	.	ID=fde387da-e8d2-4792-8655-c3773a4e62e3;Name=fde387da-e8d2-4792-8655-c3773a4e62e3-exon;Parent=3d11fcc5-d5f6-4e0f-a25e-5a24a2798de6
+Mijalis	CPT	CDS	19274	19567	.	-	0	ID=186517e7-ed64-4340-b2cf-ab1916ccc64e;Name=186517e7-ed64-4340-b2cf-ab1916ccc64e-CDS;Parent=3d11fcc5-d5f6-4e0f-a25e-5a24a2798de6
+Mijalis	CPT	gene	65665	66114	.	+	.	ID=7a74c333-4c08-4207-8695-95c6d6eb3ac2;Name=gene_097;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	65665	66114	.	+	.	ID=4c2fa133-aff0-43a5-b4ef-9fe44fad84a8;Name=Hypothetical Protein;Parent=7a74c333-4c08-4207-8695-95c6d6eb3ac2;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	65674	66114	.	+	0	ID=fe6db531-addd-45cc-82ca-c6be13ac7e0b;Name=fe6db531-addd-45cc-82ca-c6be13ac7e0b-CDS;Parent=4c2fa133-aff0-43a5-b4ef-9fe44fad84a8
+Mijalis	CPT	exon	65674	66114	.	+	.	ID=c17e3f88-a567-49ca-8e5a-083055963f61;Name=c17e3f88-a567-49ca-8e5a-083055963f61-exon;Parent=4c2fa133-aff0-43a5-b4ef-9fe44fad84a8
+Mijalis	CPT	exon	65665	65668	.	+	.	ID=8ff1025d-2bb7-4087-a793-2d4deefeca77;Name=8ff1025d-2bb7-4087-a793-2d4deefeca77-exon;Parent=4c2fa133-aff0-43a5-b4ef-9fe44fad84a8
+Mijalis	CPT	gene	53871	54257	.	+	.	ID=f30c7fb5-cadb-4ca3-b661-94399b0d0ddf;Name=gene_074;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	53871	54257	.	+	.	ID=ae2bdec3-e33c-495c-adde-753e7c048986;Name=Hypothetical Protein;Parent=f30c7fb5-cadb-4ca3-b661-94399b0d0ddf;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	53871	53874	.	+	.	ID=092fdcf3-85a7-430c-bde2-2e243330b151;Name=092fdcf3-85a7-430c-bde2-2e243330b151-exon;Parent=ae2bdec3-e33c-495c-adde-753e7c048986
+Mijalis	CPT	exon	53883	54257	.	+	.	ID=b5a869f3-11aa-4ec3-b6bf-a5ba980f4da3;Name=b5a869f3-11aa-4ec3-b6bf-a5ba980f4da3-exon;Parent=ae2bdec3-e33c-495c-adde-753e7c048986
+Mijalis	CPT	CDS	53883	54257	.	+	0	ID=82543f16-a43f-4409-a5e3-c8979e78b35f;Name=82543f16-a43f-4409-a5e3-c8979e78b35f-CDS;Parent=ae2bdec3-e33c-495c-adde-753e7c048986
+Mijalis	CPT	gene	30169	30306	.	+	.	ID=e97b5974-24bb-4f27-adb5-0b77b0509c90;Name=gene_045;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu;product=Hypothetical Novel Protein
+Mijalis	CPT	mRNA	30169	30306	.	+	.	ID=9f26c796-1fe9-431b-91d1-6041d52ea0b5;Name=Hypothetical Novel Protein;Parent=e97b5974-24bb-4f27-adb5-0b77b0509c90;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	30181	30306	.	+	.	ID=ef7b6ee3-9e68-4370-ac29-5477e4ffb71d;Name=ef7b6ee3-9e68-4370-ac29-5477e4ffb71d-exon;Parent=9f26c796-1fe9-431b-91d1-6041d52ea0b5
+Mijalis	CPT	exon	30169	30171	.	+	.	ID=81795a7e-eb50-4c78-98af-c0bc275cb2be;Name=81795a7e-eb50-4c78-98af-c0bc275cb2be-exon;Parent=9f26c796-1fe9-431b-91d1-6041d52ea0b5
+Mijalis	CPT	CDS	30181	30306	.	+	0	ID=9f26c796-1fe9-431b-91d1-6041d52ea0b5-CDS;Name=9f26c796-1fe9-431b-91d1-6041d52ea0b5-CDS;Parent=9f26c796-1fe9-431b-91d1-6041d52ea0b5
+Mijalis	CPT	gene	55518	55754	.	-	.	ID=ca743279-0512-48c7-a1a5-20cce96be4f1;Name=gene_077;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Dihydrofolate Reductase
+Mijalis	CPT	mRNA	55518	55754	.	-	.	ID=92aa9b03-d6ed-4833-9cdc-d2ba276fd2f3;Name=Dihydrofolate Reductase;Parent=ca743279-0512-48c7-a1a5-20cce96be4f1;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	55518	55742	.	-	0	ID=108cb66f-7eab-47f2-97e2-1e8a412c5066;Name=108cb66f-7eab-47f2-97e2-1e8a412c5066-CDS;Parent=92aa9b03-d6ed-4833-9cdc-d2ba276fd2f3
+Mijalis	CPT	exon	55518	55742	.	-	.	ID=6bf36c0a-75ad-4fd4-8672-41c81402dc0a;Name=6bf36c0a-75ad-4fd4-8672-41c81402dc0a-exon;Parent=92aa9b03-d6ed-4833-9cdc-d2ba276fd2f3
+Mijalis	CPT	exon	55751	55754	.	-	.	ID=9fff0479-21f7-4592-a32a-5670b8829a65;Name=9fff0479-21f7-4592-a32a-5670b8829a65-exon;Parent=92aa9b03-d6ed-4833-9cdc-d2ba276fd2f3
+Mijalis	CPT	gene	13041	13350	.	+	.	ID=91ddd5da-486c-4f99-8373-91f572766c8a;Name=gene_009;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	13041	13350	.	+	.	ID=d9a42713-6e15-4e9e-96f1-c8699d752e41;Name=Hypothetical Protein;Parent=91ddd5da-486c-4f99-8373-91f572766c8a;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	13041	13045	.	+	.	ID=9397ade2-a8f5-440a-b22b-0bf282dcab90;Name=9397ade2-a8f5-440a-b22b-0bf282dcab90-exon;Parent=d9a42713-6e15-4e9e-96f1-c8699d752e41
+Mijalis	CPT	exon	13051	13350	.	+	.	ID=55bba8f7-c6f1-4872-9e92-3d0496429524;Name=55bba8f7-c6f1-4872-9e92-3d0496429524-exon;Parent=d9a42713-6e15-4e9e-96f1-c8699d752e41
+Mijalis	CPT	CDS	13051	13350	.	+	0	ID=a84cbf49-2842-4be0-90d0-09a080205a3a;Name=a84cbf49-2842-4be0-90d0-09a080205a3a-CDS;Parent=d9a42713-6e15-4e9e-96f1-c8699d752e41
+Mijalis	CPT	gene	14279	14434	.	+	.	ID=0ed238cd-5728-428b-bd03-8ea783c85eae;Name=gene_011;date_creation=2016-02-18;date_last_modified=2016-05-06;owner=sparvata%40tamu.edu;product=Hypothetical Novel Protein
+Mijalis	CPT	mRNA	14279	14434	.	+	.	ID=d8dd4fbf-9412-4431-ab9b-89d008c524de;Name=Hypothetical Novel Protein;Parent=0ed238cd-5728-428b-bd03-8ea783c85eae;date_creation=2016-02-18;date_last_modified=2016-05-06;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	14279	14282	.	+	.	ID=02ffb522-47bd-49a6-a782-0f76d02bd4e5;Name=02ffb522-47bd-49a6-a782-0f76d02bd4e5-exon;Parent=d8dd4fbf-9412-4431-ab9b-89d008c524de
+Mijalis	CPT	CDS	14294	14434	.	+	0	ID=d8dd4fbf-9412-4431-ab9b-89d008c524de-CDS;Name=d8dd4fbf-9412-4431-ab9b-89d008c524de-CDS;Parent=d8dd4fbf-9412-4431-ab9b-89d008c524de
+Mijalis	CPT	exon	14294	14434	.	+	.	ID=6ed8e4dd-89cb-4934-afe7-ddcc95112672;Name=6ed8e4dd-89cb-4934-afe7-ddcc95112672-exon;Parent=d8dd4fbf-9412-4431-ab9b-89d008c524de
+Mijalis	CPT	gene	74561	74907	.	+	.	ID=b87feb1b-1e34-4e9e-9606-df2b8219de4d;Name=gene_111;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	74561	74907	.	+	.	ID=76ce879f-00e2-46c0-8309-e6c3c9063c88;Name=Hypothetical Protein;Parent=b87feb1b-1e34-4e9e-9606-df2b8219de4d;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	74572	74907	.	+	.	ID=a926dc70-19a0-4854-840d-60253e22ab15;Name=a926dc70-19a0-4854-840d-60253e22ab15-exon;Parent=76ce879f-00e2-46c0-8309-e6c3c9063c88
+Mijalis	CPT	CDS	74572	74907	.	+	0	ID=fb26e6cd-ac75-441e-8d25-b87c3818890c;Name=fb26e6cd-ac75-441e-8d25-b87c3818890c-CDS;Parent=76ce879f-00e2-46c0-8309-e6c3c9063c88
+Mijalis	CPT	exon	74561	74563	.	+	.	ID=26905e69-2058-4d47-a1ac-e02d01c70204;Name=26905e69-2058-4d47-a1ac-e02d01c70204-exon;Parent=76ce879f-00e2-46c0-8309-e6c3c9063c88
+Mijalis	CPT	gene	18937	19293	.	-	.	ID=29f596e0-9701-4609-9745-ce19d4d8c08e;Name=gene_021;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	18937	19293	.	-	.	ID=a57150ef-04a3-4de9-b274-6861a02f984d;Name=Hypothetical Protein;Parent=29f596e0-9701-4609-9745-ce19d4d8c08e;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	18937	19281	.	-	0	ID=fc97a4eb-cc51-46a5-a9e1-33f07820d2f9;Name=fc97a4eb-cc51-46a5-a9e1-33f07820d2f9-CDS;Parent=a57150ef-04a3-4de9-b274-6861a02f984d
+Mijalis	CPT	exon	18937	19281	.	-	.	ID=241a05d8-9ccd-4c20-8155-bb7643a3154f;Name=241a05d8-9ccd-4c20-8155-bb7643a3154f-exon;Parent=a57150ef-04a3-4de9-b274-6861a02f984d
+Mijalis	CPT	exon	19291	19293	.	-	.	ID=adc54a5d-7b49-42a7-936f-5f5a14044316;Name=adc54a5d-7b49-42a7-936f-5f5a14044316-exon;Parent=a57150ef-04a3-4de9-b274-6861a02f984d
+Mijalis	CPT	gene	23350	23732	.	+	.	ID=c1566428-175b-43fd-b023-bb4a7c0e8fcf;Name=gene_031;date_creation=2016-02-18;date_last_modified=2016-04-21;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	23350	23732	.	+	.	ID=dfcbfc96-d913-4419-8c9c-9425557b67db;Name=Hypothetical Protein;Parent=c1566428-175b-43fd-b023-bb4a7c0e8fcf;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	23361	23732	.	+	.	ID=1678b69f-494a-4e76-a45d-38dccb36bb29;Name=1678b69f-494a-4e76-a45d-38dccb36bb29-exon;Parent=dfcbfc96-d913-4419-8c9c-9425557b67db
+Mijalis	CPT	CDS	23361	23732	.	+	0	ID=0d8bff6b-4a86-4b14-944d-67a489731ceb;Name=0d8bff6b-4a86-4b14-944d-67a489731ceb-CDS;Parent=dfcbfc96-d913-4419-8c9c-9425557b67db
+Mijalis	CPT	exon	23350	23354	.	+	.	ID=540dfbd7-b6cd-434d-abeb-54c97c3c92ea;Name=540dfbd7-b6cd-434d-abeb-54c97c3c92ea-exon;Parent=dfcbfc96-d913-4419-8c9c-9425557b67db
+Mijalis	CPT	gene	46117	46770	.	+	.	ID=bb020c85-b86f-4437-ad29-022ccf2af2b7;Name=gene_066;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Baseplate Protein
+Mijalis	CPT	mRNA	46117	46770	.	+	.	ID=91342b50-507b-4579-85a4-d73752ee1950;Name=Baseplate Protein;Parent=bb020c85-b86f-4437-ad29-022ccf2af2b7;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	46129	46770	.	+	.	ID=6bd4c959-b8ba-4e72-ad31-f35b63cd16a3;Name=6bd4c959-b8ba-4e72-ad31-f35b63cd16a3-exon;Parent=91342b50-507b-4579-85a4-d73752ee1950
+Mijalis	CPT	exon	46117	46120	.	+	.	ID=fe115f0f-fe28-4166-9bb0-83c281b7c02b;Name=fe115f0f-fe28-4166-9bb0-83c281b7c02b-exon;Parent=91342b50-507b-4579-85a4-d73752ee1950
+Mijalis	CPT	CDS	46129	46770	.	+	0	ID=83fd1d03-f652-4e04-9909-be3e0c2113c8;Name=83fd1d03-f652-4e04-9909-be3e0c2113c8-CDS;Parent=91342b50-507b-4579-85a4-d73752ee1950
+Mijalis	CPT	gene	48648	49515	.	+	.	ID=2fd787fc-a1b6-44fb-b387-d3fa4fd8ed6a;Name=gene_069;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	48648	49515	.	+	.	ID=db90adb1-04f3-4c3c-b4c6-58a55f90aa99;Name=Hypothetical Protein;Parent=2fd787fc-a1b6-44fb-b387-d3fa4fd8ed6a;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	48658	49515	.	+	.	ID=dccfaca1-4252-455d-b9fa-5418412f9f54;Name=dccfaca1-4252-455d-b9fa-5418412f9f54-exon;Parent=db90adb1-04f3-4c3c-b4c6-58a55f90aa99
+Mijalis	CPT	exon	48648	48652	.	+	.	ID=6e94bacf-4e0a-4cb8-93ca-f554343785f1;Name=6e94bacf-4e0a-4cb8-93ca-f554343785f1-exon;Parent=db90adb1-04f3-4c3c-b4c6-58a55f90aa99
+Mijalis	CPT	CDS	48658	49515	.	+	0	ID=4e87cd37-ab95-4229-af67-0c1e6c795369;Name=4e87cd37-ab95-4229-af67-0c1e6c795369-CDS;Parent=db90adb1-04f3-4c3c-b4c6-58a55f90aa99
+Mijalis	CPT	gene	38258	38671	.	+	.	ID=365a83a8-dfc1-472c-90c8-367a5975615a;Name=gene_056;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=hypothetical protein
+Mijalis	CPT	mRNA	38258	38671	.	+	.	ID=2ed75a74-15b8-43e3-ae76-7a0fd7fa998b;Name=hypothetical protein;Parent=365a83a8-dfc1-472c-90c8-367a5975615a;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	38270	38671	.	+	.	ID=d0e7b9ec-518b-4611-9561-4ab90242e0d9;Name=d0e7b9ec-518b-4611-9561-4ab90242e0d9-exon;Parent=2ed75a74-15b8-43e3-ae76-7a0fd7fa998b
+Mijalis	CPT	CDS	38270	38671	.	+	0	ID=006ce447-371b-41f9-9672-14d188dab664;Name=006ce447-371b-41f9-9672-14d188dab664-CDS;Parent=2ed75a74-15b8-43e3-ae76-7a0fd7fa998b
+Mijalis	CPT	exon	38258	38261	.	+	.	ID=e5c3aa03-2f4b-484f-9389-d79bdd50beef;Name=e5c3aa03-2f4b-484f-9389-d79bdd50beef-exon;Parent=2ed75a74-15b8-43e3-ae76-7a0fd7fa998b
+Mijalis	CPT	gene	57666	57881	.	-	.	ID=6106f646-77e1-4193-bcdf-1d69b2d86667;Name=gene_083;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	57666	57881	.	-	.	ID=9c2a61d7-6a24-4640-b4ba-ffda21308b95;Name=Hypothetical Protein;Parent=6106f646-77e1-4193-bcdf-1d69b2d86667;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	57878	57881	.	-	.	ID=33f4ac9c-7f37-409a-a929-0ab0f99f61cd;Name=33f4ac9c-7f37-409a-a929-0ab0f99f61cd-exon;Parent=9c2a61d7-6a24-4640-b4ba-ffda21308b95
+Mijalis	CPT	CDS	57666	57869	.	-	0	ID=af0651c9-4c1a-45c2-97fe-d548d3e24f90;Name=af0651c9-4c1a-45c2-97fe-d548d3e24f90-CDS;Parent=9c2a61d7-6a24-4640-b4ba-ffda21308b95
+Mijalis	CPT	exon	57666	57869	.	-	.	ID=ce6ce49a-2317-46a1-9cc3-873da2422a51;Name=ce6ce49a-2317-46a1-9cc3-873da2422a51-exon;Parent=9c2a61d7-6a24-4640-b4ba-ffda21308b95
+
+Mijalis	CPT	gene	58796	59249	.	-	.	ID=ec20e7e9-a4b5-4bca-95e4-d2e3231485ca;Name=gene_086;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	58796	59249	.	-	.	ID=645ec493-6743-4dc3-ae3f-988b108e6c64;Name=Hypothetical Protein;Parent=ec20e7e9-a4b5-4bca-95e4-d2e3231485ca;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	58796	59236	.	-	0	ID=e7b9e252-67b5-403c-b9a9-2aa9928cc66b;Name=e7b9e252-67b5-403c-b9a9-2aa9928cc66b-CDS;Parent=645ec493-6743-4dc3-ae3f-988b108e6c64
+Mijalis	CPT	exon	59245	59249	.	-	.	ID=b438e26c-8d75-40d6-9471-ddbfcef3bdd6;Name=b438e26c-8d75-40d6-9471-ddbfcef3bdd6-exon;Parent=645ec493-6743-4dc3-ae3f-988b108e6c64
+Mijalis	CPT	exon	58796	59236	.	-	.	ID=d34e9418-304c-4e3e-8a41-e23bf5ef3e0c;Name=d34e9418-304c-4e3e-8a41-e23bf5ef3e0c-exon;Parent=645ec493-6743-4dc3-ae3f-988b108e6c64
+
+Mijalis	CPT	gene	37782	38273	.	+	.	ID=87dbcb40-4d28-4702-b4b0-650a45d66459;Name=gene_055;date_creation=2016-02-25;date_last_modified=2016-05-08;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	37782	38273	.	+	.	ID=69e02366-a72f-45a7-a81d-67c1d54cbdc5;Name=Hypothetical Protein;Parent=87dbcb40-4d28-4702-b4b0-650a45d66459;date_creation=2016-02-25;date_last_modified=2016-05-08;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	37784	37786	.	+	0	ID=e92cb6f5-4ded-40a6-a8e7-06df66c37670;Name=d92cb6f5-4ded-40a6-a8e7-06df66c37670-CDS;Parent=69e02366-a72f-45a7-a81d-67c1d54cbdc5
+Mijalis	CPT	CDS	37791	38273	.	+	0	ID=d92cb6f5-4ded-40a6-a8e7-06df66c37670;Name=d92cb6f5-4ded-40a6-a8e7-06df66c37670-CDS;Parent=69e02366-a72f-45a7-a81d-67c1d54cbdc5
+Mijalis	CPT	exon	37782	37786	.	+	.	ID=f4b2dd6c-3c7e-45f6-aaf7-f39f993bc08a;Name=f4b2dd6c-3c7e-45f6-aaf7-f39f993bc08a-exon;Parent=69e02366-a72f-45a7-a81d-67c1d54cbdc5
+Mijalis	CPT	exon	37791	38273	.	+	.	ID=47873f1d-006e-4da5-86f7-b22028460980;Name=47873f1d-006e-4da5-86f7-b22028460980-exon;Parent=69e02366-a72f-45a7-a81d-67c1d54cbdc5
+Mijalis	CPT	gene	41126	41538	.	+	.	ID=e5832fb4-5057-4c59-9f7a-05feed2ae39e;Name=gene_060;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Tape Measure Chaperone
+Mijalis	CPT	mRNA	41126	41538	.	+	.	ID=5d4deb2d-13b1-4b23-9ffd-615de67cd0e3;Name=Tape Measure Chaperone;Parent=e5832fb4-5057-4c59-9f7a-05feed2ae39e;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	41137	41538	.	+	0	ID=e2904b0c-500e-49df-aaf7-d7f355ed2259;Name=e2904b0c-500e-49df-aaf7-d7f355ed2259-CDS;Parent=5d4deb2d-13b1-4b23-9ffd-615de67cd0e3
+Mijalis	CPT	exon	41126	41130	.	+	.	ID=ba41099a-8a3b-4883-8926-4831fb68451b;Name=ba41099a-8a3b-4883-8926-4831fb68451b-exon;Parent=5d4deb2d-13b1-4b23-9ffd-615de67cd0e3
+Mijalis	CPT	exon	41137	41538	.	+	.	ID=2ad899ec-896c-4454-af1b-c357d9edd3cf;Name=2ad899ec-896c-4454-af1b-c357d9edd3cf-exon;Parent=5d4deb2d-13b1-4b23-9ffd-615de67cd0e3
+Mijalis	CPT	gene	61579	61797	.	-	.	ID=40a63b94-4da0-43c5-b694-6971a8aee3c1;Name=gene_091;date_creation=2016-02-25;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	61579	61797	.	-	.	ID=3682c258-792c-487d-97f3-8746ea3e0407;Name=Hypothetical Protein;Parent=40a63b94-4da0-43c5-b694-6971a8aee3c1;date_creation=2016-02-25;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	61794	61797	.	-	.	ID=83e93f70-8d38-4d5a-8f47-95b0f4d526f9;Name=83e93f70-8d38-4d5a-8f47-95b0f4d526f9-exon;Parent=3682c258-792c-487d-97f3-8746ea3e0407
+Mijalis	CPT	CDS	61579	61785	.	-	0	ID=3fe88baa-1fcc-4cc6-b5d9-d3a63a87fdd7;Name=3fe88baa-1fcc-4cc6-b5d9-d3a63a87fdd7-CDS;Parent=3682c258-792c-487d-97f3-8746ea3e0407
+Mijalis	CPT	exon	61579	61785	.	-	.	ID=05087d73-fc3c-408a-bc4b-b075c10ee313;Name=05087d73-fc3c-408a-bc4b-b075c10ee313-exon;Parent=3682c258-792c-487d-97f3-8746ea3e0407
+Mijalis	CPT	gene	87247	87476	.	+	.	ID=948ab557-9fd7-459a-b948-5fec921ed327;Name=gene_128;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	87247	87476	.	+	.	ID=6ed5efa5-1540-4107-b940-5c14aaf1beca;Name=Hypothetical Protein;Parent=948ab557-9fd7-459a-b948-5fec921ed327;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	87247	87251	.	+	.	ID=5dbd73dc-b027-403d-8a9d-85f43001cade;Name=5dbd73dc-b027-403d-8a9d-85f43001cade-exon;Parent=6ed5efa5-1540-4107-b940-5c14aaf1beca
+Mijalis	CPT	CDS	87255	87476	.	+	0	ID=63fff348-ef7a-495a-a68a-306215c11b24;Name=63fff348-ef7a-495a-a68a-306215c11b24-CDS;Parent=6ed5efa5-1540-4107-b940-5c14aaf1beca
+Mijalis	CPT	exon	87255	87476	.	+	.	ID=23468136-fd5d-462c-9b66-0ef06966ff43;Name=23468136-fd5d-462c-9b66-0ef06966ff43-exon;Parent=6ed5efa5-1540-4107-b940-5c14aaf1beca
+Mijalis	CPT	gene	12292	12483	.	-	.	ID=040df0c3-ea1d-4e71-848e-0d9fb2af915c;Name=gene_007;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	12292	12483	.	-	.	ID=44c64926-b112-4df5-9ba9-468eefbe48bc;Name=Hypothetical Protein;Parent=040df0c3-ea1d-4e71-848e-0d9fb2af915c;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	12480	12483	.	-	.	ID=b9b5b4a9-3e7d-4e7e-889e-aa732f28c627;Name=b9b5b4a9-3e7d-4e7e-889e-aa732f28c627-exon;Parent=44c64926-b112-4df5-9ba9-468eefbe48bc
+Mijalis	CPT	exon	12292	12468	.	-	.	ID=e8afeccb-7a81-45ea-b857-211ba7407226;Name=e8afeccb-7a81-45ea-b857-211ba7407226-exon;Parent=44c64926-b112-4df5-9ba9-468eefbe48bc
+Mijalis	CPT	CDS	12292	12468	.	-	0	ID=44c64926-b112-4df5-9ba9-468eefbe48bc-CDS;Name=44c64926-b112-4df5-9ba9-468eefbe48bc-CDS;Parent=44c64926-b112-4df5-9ba9-468eefbe48bc
+Mijalis	CPT	gene	10529	10947	.	+	.	ID=67385422-baad-47ee-8668-26c2b1b8769f;Name=gene_002;date_creation=2016-02-18;date_last_modified=2016-04-14;owner=sparvata%40tamu.edu;product=Felix01p041 Hypothetical Protein
+Mijalis	CPT	mRNA	10529	10947	.	+	.	ID=10ceba15-0659-4470-9ed7-9a98141b7d7e;Name=Hypothetical Protein;Parent=67385422-baad-47ee-8668-26c2b1b8769f;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	10540	10947	.	+	.	ID=571e1792-4aff-4e69-856e-a0fbe14293f4;Name=571e1792-4aff-4e69-856e-a0fbe14293f4-exon;Parent=10ceba15-0659-4470-9ed7-9a98141b7d7e
+Mijalis	CPT	exon	10529	10532	.	+	.	ID=a5ca86ef-e99f-42bd-8e9c-332923cfe046;Name=a5ca86ef-e99f-42bd-8e9c-332923cfe046-exon;Parent=10ceba15-0659-4470-9ed7-9a98141b7d7e
+Mijalis	CPT	CDS	10540	10947	.	+	0	ID=5c7004da-a7e0-4158-be42-e0ffd66d651e;Name=5c7004da-a7e0-4158-be42-e0ffd66d651e-CDS;Parent=10ceba15-0659-4470-9ed7-9a98141b7d7e
+Mijalis	CPT	gene	18345	18952	.	-	.	ID=ce470604-b939-4ba1-8961-cb4d8aec29c3;Name=gene_020;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	18345	18949	.	-	.	ID=615d3c65-ff90-4020-877d-ff8456494e64;Name=Hypothetical Protein;Parent=ce470604-b939-4ba1-8961-cb4d8aec29c3;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	18345	18935	.	-	.	ID=af806c3c-f6e0-4c52-94c5-b0ca4c9c0c30;Name=af806c3c-f6e0-4c52-94c5-b0ca4c9c0c30-exon;Parent=615d3c65-ff90-4020-877d-ff8456494e64
+Mijalis	CPT	exon	18946	18949	.	-	.	ID=bdf43e6a-beff-44a4-b2ca-0bf054f6c47e;Name=bdf43e6a-beff-44a4-b2ca-0bf054f6c47e-exon;Parent=615d3c65-ff90-4020-877d-ff8456494e64
+Mijalis	CPT	CDS	18345	18935	.	-	0	ID=e87a1a94-fe27-4f73-be5f-77e61e0dd6ef;Name=e87a1a94-fe27-4f73-be5f-77e61e0dd6ef-CDS;Parent=615d3c65-ff90-4020-877d-ff8456494e64
+Mijalis	CPT	gene	72452	72803	.	+	.	ID=419f0815-c730-44bd-b713-da41478d598f;Name=gene_106;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=HNH Endonuclease
+Mijalis	CPT	mRNA	72452	72803	.	+	.	ID=a8223fb8-800b-48e0-9029-c86c60ee427e;Name=HNH Endonuclease;Parent=419f0815-c730-44bd-b713-da41478d598f;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	72465	72803	.	+	.	ID=c11972c5-89c8-4eb6-bccc-54ccc247de75;Name=c11972c5-89c8-4eb6-bccc-54ccc247de75-exon;Parent=a8223fb8-800b-48e0-9029-c86c60ee427e
+Mijalis	CPT	CDS	72465	72803	.	+	0	ID=9439cabc-8fb2-4ee6-a7e9-0828b71aea26;Name=9439cabc-8fb2-4ee6-a7e9-0828b71aea26-CDS;Parent=a8223fb8-800b-48e0-9029-c86c60ee427e
+Mijalis	CPT	exon	72452	72454	.	+	.	ID=c1f17794-636d-4e91-aea0-4fe4423966a5;Name=c1f17794-636d-4e91-aea0-4fe4423966a5-exon;Parent=a8223fb8-800b-48e0-9029-c86c60ee427e
+Mijalis	CPT	gene	41762	44008	.	+	.	ID=fba5b588-e282-405a-960f-61860e453b73;Name=gene_062;Note=Found;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Tape Measure Protein
+Mijalis	CPT	mRNA	41762	44008	.	+	.	ID=b43fb51c-8566-4825-8739-ff178f045d5a;Name=Tape Measure Protein;Parent=fba5b588-e282-405a-960f-61860e453b73;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	41762	41765	.	+	.	ID=734dc25a-9f71-49b1-a9c7-ece7c4b0f1ab;Name=734dc25a-9f71-49b1-a9c7-ece7c4b0f1ab-exon;Parent=b43fb51c-8566-4825-8739-ff178f045d5a
+Mijalis	CPT	CDS	41774	44008	.	+	0	ID=ab27175b-74f2-4158-b151-25e71803d007;Name=ab27175b-74f2-4158-b151-25e71803d007-CDS;Parent=b43fb51c-8566-4825-8739-ff178f045d5a
+Mijalis	CPT	exon	41774	44008	.	+	.	ID=3ed40050-debc-4d97-9f7e-994acd3229a7;Name=3ed40050-debc-4d97-9f7e-994acd3229a7-exon;Parent=b43fb51c-8566-4825-8739-ff178f045d5a
+Mijalis	CPT	gene	11949	12302	.	+	.	ID=64c2427f-685d-467c-8487-76d934115bf2;Name=gene_006;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	11949	12302	.	+	.	ID=729fde5c-ac31-4781-b6b0-2c1e47110124;Name=Hypothetical Protein;Parent=64c2427f-685d-467c-8487-76d934115bf2;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	11961	12302	.	+	0	ID=dbf450da-9341-4ab3-8c9a-337b9afbe866;Name=dbf450da-9341-4ab3-8c9a-337b9afbe866-CDS;Parent=729fde5c-ac31-4781-b6b0-2c1e47110124
+Mijalis	CPT	exon	11961	12302	.	+	.	ID=ffda0f16-e5c1-4957-9154-02e332422eef;Name=ffda0f16-e5c1-4957-9154-02e332422eef-exon;Parent=729fde5c-ac31-4781-b6b0-2c1e47110124
+Mijalis	CPT	exon	11949	11952	.	+	.	ID=b11538f3-28ea-483f-b37b-c87de514188a;Name=b11538f3-28ea-483f-b37b-c87de514188a-exon;Parent=729fde5c-ac31-4781-b6b0-2c1e47110124
+Mijalis	CPT	gene	22950	23122	.	-	.	ID=2c8c7c47-8e3b-4dbb-8b4a-4dd289e5f818;Name=gene_030;date_creation=2016-02-18;date_last_modified=2016-04-21;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	22950	23122	.	-	.	ID=f024540e-b495-465f-aaad-309a1d797b53;Name=Hypothetical Protein;Parent=2c8c7c47-8e3b-4dbb-8b4a-4dd289e5f818;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	23118	23122	.	-	.	ID=b780368c-3275-49f7-92b7-20ef4637e5bc;Name=b780368c-3275-49f7-92b7-20ef4637e5bc-exon;Parent=f024540e-b495-465f-aaad-309a1d797b53
+Mijalis	CPT	CDS	22950	23111	.	-	0	ID=8d90ea0a-4d37-4819-8d9b-d8e4825e490f;Name=8d90ea0a-4d37-4819-8d9b-d8e4825e490f-CDS;Parent=f024540e-b495-465f-aaad-309a1d797b53
+Mijalis	CPT	exon	22950	23111	.	-	.	ID=fd1c9fd0-5ec8-4222-bcf1-554f5187ebcc;Name=fd1c9fd0-5ec8-4222-bcf1-554f5187ebcc-exon;Parent=f024540e-b495-465f-aaad-309a1d797b53
+Mijalis	CPT	gene	13400	13664	.	+	.	ID=457b809d-3a5a-43b5-ac2e-02fdd2445bef;Name=gene_010;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	13400	13664	.	+	.	ID=8554ae76-b9db-4f45-be9e-38141ca17e84;Name=Hypothetical Protein;Parent=457b809d-3a5a-43b5-ac2e-02fdd2445bef;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	13413	13664	.	+	0	ID=d6fd79f6-4127-486a-8e03-8d3f83be5a6c;Name=d6fd79f6-4127-486a-8e03-8d3f83be5a6c-CDS;Parent=8554ae76-b9db-4f45-be9e-38141ca17e84
+Mijalis	CPT	exon	13400	13403	.	+	.	ID=33bbd557-76fb-4bee-aeda-33229094113e;Name=33bbd557-76fb-4bee-aeda-33229094113e-exon;Parent=8554ae76-b9db-4f45-be9e-38141ca17e84
+Mijalis	CPT	exon	13413	13664	.	+	.	ID=78e096a2-5f9d-4ce5-96de-cfc7384df890;Name=78e096a2-5f9d-4ce5-96de-cfc7384df890-exon;Parent=8554ae76-b9db-4f45-be9e-38141ca17e84
+Mijalis	CPT	gene	83180	83704	.	+	.	ID=7bb04f66-374e-47c0-952b-4e902620e25e;Name=gene_123;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	83180	83704	.	+	.	ID=32e9cc4d-6d73-4d2d-b134-57154d5fa2db;Name=Hypothetical Protein;Parent=7bb04f66-374e-47c0-952b-4e902620e25e;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	83189	83704	.	+	0	ID=a2f46797-2b2d-4f8b-af47-c1b7f5f69580;Name=a2f46797-2b2d-4f8b-af47-c1b7f5f69580-CDS;Parent=32e9cc4d-6d73-4d2d-b134-57154d5fa2db
+Mijalis	CPT	exon	83189	83704	.	+	.	ID=65eaed12-0236-4ae0-9cb0-4cedc715502f;Name=65eaed12-0236-4ae0-9cb0-4cedc715502f-exon;Parent=32e9cc4d-6d73-4d2d-b134-57154d5fa2db
+Mijalis	CPT	exon	83180	83183	.	+	.	ID=9f8cf6e5-313a-4bc7-ae30-9b4ed6a8a279;Name=9f8cf6e5-313a-4bc7-ae30-9b4ed6a8a279-exon;Parent=32e9cc4d-6d73-4d2d-b134-57154d5fa2db
+Mijalis	CPT	gene	40600	41060	.	+	.	ID=4c1dd3bc-946e-457d-9322-b963f3841689;Name=gene_059;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	40600	41060	.	+	.	ID=741cddc7-ff00-4d20-b940-6a99d394f34d;Name=Hypothetical Protein;Parent=4c1dd3bc-946e-457d-9322-b963f3841689;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	40614	41060	.	+	.	ID=db35ceaf-3a8e-4332-8c53-e2aace1bf890;Name=db35ceaf-3a8e-4332-8c53-e2aace1bf890-exon;Parent=741cddc7-ff00-4d20-b940-6a99d394f34d
+Mijalis	CPT	CDS	40614	41060	.	+	0	ID=0635cad1-3cff-445f-bdb7-df8ae57cb074;Name=0635cad1-3cff-445f-bdb7-df8ae57cb074-CDS;Parent=741cddc7-ff00-4d20-b940-6a99d394f34d
+Mijalis	CPT	exon	40600	40604	.	+	.	ID=af61f8e2-2139-4f29-9d41-b3b53673ab8a;Name=af61f8e2-2139-4f29-9d41-b3b53673ab8a-exon;Parent=741cddc7-ff00-4d20-b940-6a99d394f34d
+Mijalis	CPT	gene	66938	67689	.	+	.	ID=97ee6449-ae7d-49c7-9ebc-5fbed778fea0;Name=gene_099;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Deoxynucleotide Monophosphate Kinase
+Mijalis	CPT	mRNA	66938	67689	.	+	.	ID=f6eb3136-b6bd-42a0-bc76-537dd5630bd8;Name=Deoxynucleotide Monophosphate Kinase;Parent=97ee6449-ae7d-49c7-9ebc-5fbed778fea0;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	66938	66941	.	+	.	ID=ea621f07-f2ee-4338-a87d-83a03c960419;Name=ea621f07-f2ee-4338-a87d-83a03c960419-exon;Parent=f6eb3136-b6bd-42a0-bc76-537dd5630bd8
+Mijalis	CPT	CDS	66949	67689	.	+	0	ID=71fec3ad-2f49-4173-8e79-b274ed7d389d;Name=71fec3ad-2f49-4173-8e79-b274ed7d389d-CDS;Parent=f6eb3136-b6bd-42a0-bc76-537dd5630bd8
+Mijalis	CPT	exon	66949	67689	.	+	.	ID=3aa25ec9-0aa8-470e-88ee-33d65a993f25;Name=3aa25ec9-0aa8-470e-88ee-33d65a993f25-exon;Parent=f6eb3136-b6bd-42a0-bc76-537dd5630bd8
+Mijalis	CPT	gene	70341	71215	.	+	.	ID=9343fb59-e522-4c6f-bc26-24524cd8b3e8;Name=gene_104;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	70341	71215	.	+	.	ID=b02761be-c969-4786-96db-d6124dcd07b5;Name=Hypothetical Protein;Parent=9343fb59-e522-4c6f-bc26-24524cd8b3e8;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	70341	70345	.	+	.	ID=8151c943-57a7-4c8b-8baf-db36262779f9;Name=8151c943-57a7-4c8b-8baf-db36262779f9-exon;Parent=b02761be-c969-4786-96db-d6124dcd07b5
+Mijalis	CPT	CDS	70352	71215	.	+	0	ID=02343514-aec7-4ee7-81d6-39d9c069bbb8;Name=02343514-aec7-4ee7-81d6-39d9c069bbb8-CDS;Parent=b02761be-c969-4786-96db-d6124dcd07b5
+Mijalis	CPT	exon	70352	71215	.	+	.	ID=b4206ac0-acd1-4c67-b240-2ee99591bb87;Name=b4206ac0-acd1-4c67-b240-2ee99591bb87-exon;Parent=b02761be-c969-4786-96db-d6124dcd07b5
+Mijalis	CPT	gene	59239	59839	.	-	.	ID=4c85d22c-3839-446e-966d-1edddaa93e42;Name=gene_087;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	59239	59839	.	-	.	ID=de922bfb-e636-4301-a6ea-3d6da3e647a1;Name=Hypothetical Protein;Parent=4c85d22c-3839-446e-966d-1edddaa93e42;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	59835	59839	.	-	.	ID=4d4f6df9-4b2e-449b-aeab-5f0fbba63c8c;Name=4d4f6df9-4b2e-449b-aeab-5f0fbba63c8c-exon;Parent=de922bfb-e636-4301-a6ea-3d6da3e647a1
+Mijalis	CPT	CDS	59239	59826	.	-	0	ID=5f8afddd-8d18-4626-ab59-55a597a6ebcc;Name=5f8afddd-8d18-4626-ab59-55a597a6ebcc-CDS;Parent=de922bfb-e636-4301-a6ea-3d6da3e647a1
+Mijalis	CPT	exon	59239	59826	.	-	.	ID=5a37787d-72be-46fb-be3e-0fa577a0ecba;Name=5a37787d-72be-46fb-be3e-0fa577a0ecba-exon;Parent=de922bfb-e636-4301-a6ea-3d6da3e647a1
+Mijalis	CPT	gene	70116	70264	.	+	.	ID=65f26efa-33bf-4caa-b04d-9d535f853882;Name=gene_103;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	70116	70264	.	+	.	ID=66440770-ee11-4704-88fd-9d27be68b9cc;Name=Hypothetical Protein;Parent=65f26efa-33bf-4caa-b04d-9d535f853882;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	70127	70264	.	+	0	ID=e4a131ad-914b-407b-bbe8-d44e62f4386b;Name=e4a131ad-914b-407b-bbe8-d44e62f4386b-CDS;Parent=66440770-ee11-4704-88fd-9d27be68b9cc
+Mijalis	CPT	exon	70127	70264	.	+	.	ID=62210266-acf6-4d23-b28f-6218f1665afb;Name=62210266-acf6-4d23-b28f-6218f1665afb-exon;Parent=66440770-ee11-4704-88fd-9d27be68b9cc
+Mijalis	CPT	exon	70116	70120	.	+	.	ID=37e70a80-607b-4d1b-8091-11bbc693cb1f;Name=37e70a80-607b-4d1b-8091-11bbc693cb1f-exon;Parent=66440770-ee11-4704-88fd-9d27be68b9cc
+Mijalis	CPT	gene	41529	41774	.	+	.	ID=d829c74b-2026-4d0a-a0dc-7ae4cdb1706f;Name=gene_061;Note=Possible Frameshift at bp31041,Has Good Start Seqeunce/ SG on its own too;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Tape Measure Chaperone Frameshifted Product
+Mijalis	CPT	mRNA	41529	41774	.	+	.	ID=d1490098-fb85-47bb-b43c-e40b7c645dc8;Name=Tape Measure Chaperone Frameshifted Product;Parent=d829c74b-2026-4d0a-a0dc-7ae4cdb1706f;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	41547	41774	.	+	0	ID=b6c7cf14-6cbf-47d1-b63e-8ae3da19a038;Name=b6c7cf14-6cbf-47d1-b63e-8ae3da19a038-CDS;Parent=d1490098-fb85-47bb-b43c-e40b7c645dc8
+Mijalis	CPT	exon	41547	41774	.	+	.	ID=00f78515-6b2c-4680-8a6e-bb9a2da30331;Name=00f78515-6b2c-4680-8a6e-bb9a2da30331-exon;Parent=d1490098-fb85-47bb-b43c-e40b7c645dc8
+Mijalis	CPT	exon	41529	41533	.	+	.	ID=9cdad493-a651-4284-87a6-67f498abf172;Name=9cdad493-a651-4284-87a6-67f498abf172-exon;Parent=d1490098-fb85-47bb-b43c-e40b7c645dc8
+Mijalis	CPT	gene	74239	74579	.	+	.	ID=bc2a57b4-5782-4c42-8952-4442f2be0842;Name=gene_110;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	74239	74579	.	+	.	ID=d3a138e4-3d8f-4ca5-bdfb-5b5f75871277;Name=Hypothetical Protein;Parent=bc2a57b4-5782-4c42-8952-4442f2be0842;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	74253	74579	.	+	.	ID=71994ce4-cdd4-4d43-8148-89b5da902548;Name=71994ce4-cdd4-4d43-8148-89b5da902548-exon;Parent=d3a138e4-3d8f-4ca5-bdfb-5b5f75871277
+Mijalis	CPT	CDS	74253	74579	.	+	0	ID=8ad09e7d-f73e-45f4-8f91-316d8eda1242;Name=8ad09e7d-f73e-45f4-8f91-316d8eda1242-CDS;Parent=d3a138e4-3d8f-4ca5-bdfb-5b5f75871277
+Mijalis	CPT	exon	74239	74243	.	+	.	ID=3d557784-3a73-46b7-83b7-b4d0289aace3;Name=3d557784-3a73-46b7-83b7-b4d0289aace3-exon;Parent=d3a138e4-3d8f-4ca5-bdfb-5b5f75871277
+Mijalis	CPT	gene	46759	47186	.	+	.	ID=3fc299c2-adf2-455e-918e-98646b03028d;Name=gene_067;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	46759	47186	.	+	.	ID=d30d8c09-1d0a-4cb4-90c0-d35c4d8e1538;Name=Hypothetical Protein;Parent=3fc299c2-adf2-455e-918e-98646b03028d;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	46770	47186	.	+	0	ID=9083f9b9-44dc-408a-887a-52f4c455c59b;Name=9083f9b9-44dc-408a-887a-52f4c455c59b-CDS;Parent=d30d8c09-1d0a-4cb4-90c0-d35c4d8e1538
+Mijalis	CPT	exon	46770	47186	.	+	.	ID=5ab99639-d888-45fa-b1a2-de9f87cecdda;Name=5ab99639-d888-45fa-b1a2-de9f87cecdda-exon;Parent=d30d8c09-1d0a-4cb4-90c0-d35c4d8e1538
+Mijalis	CPT	exon	46759	46762	.	+	.	ID=97b8383a-7830-4228-a3f8-c1c1ceb4431c;Name=97b8383a-7830-4228-a3f8-c1c1ceb4431c-exon;Parent=d30d8c09-1d0a-4cb4-90c0-d35c4d8e1538
+Mijalis	CPT	gene	69840	70130	.	+	.	ID=de6ea566-0f5d-4590-8a07-583736e0c760;Name=gene_102;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	69840	70130	.	+	.	ID=1f817248-671a-46cb-8078-dac6be528ad9;Name=Hypothetical Protein;Parent=de6ea566-0f5d-4590-8a07-583736e0c760;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	69852	70130	.	+	.	ID=6d1d2bcc-9473-4dcb-8c8d-1ea5451f2724;Name=6d1d2bcc-9473-4dcb-8c8d-1ea5451f2724-exon;Parent=1f817248-671a-46cb-8078-dac6be528ad9
+Mijalis	CPT	exon	69840	69844	.	+	.	ID=3ecc32be-ea64-4d72-ad8b-38a175e2258b;Name=3ecc32be-ea64-4d72-ad8b-38a175e2258b-exon;Parent=1f817248-671a-46cb-8078-dac6be528ad9
+Mijalis	CPT	CDS	69852	70130	.	+	0	ID=7c7d0f9c-1758-4540-9f54-34039c6d646d;Name=7c7d0f9c-1758-4540-9f54-34039c6d646d-CDS;Parent=1f817248-671a-46cb-8078-dac6be528ad9
+Mijalis	CPT	gene	22735	22979	.	-	.	ID=59949790-99f9-410a-85e4-2f6f8dfe450f;Name=gene_029;date_creation=2016-02-18;date_last_modified=2016-04-21;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	22735	22979	.	-	.	ID=cc815ec0-9797-4bb5-8c6b-076b6a8e819f;Name=Hypothetical Protein;Parent=59949790-99f9-410a-85e4-2f6f8dfe450f;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	22735	22968	.	-	0	ID=e1fad8b2-2149-4fa0-b372-038d74bb5719;Name=e1fad8b2-2149-4fa0-b372-038d74bb5719-CDS;Parent=cc815ec0-9797-4bb5-8c6b-076b6a8e819f
+Mijalis	CPT	exon	22735	22968	.	-	.	ID=c39b84d1-b07e-44ea-b9c3-fec84fb70e19;Name=c39b84d1-b07e-44ea-b9c3-fec84fb70e19-exon;Parent=cc815ec0-9797-4bb5-8c6b-076b6a8e819f
+Mijalis	CPT	exon	22976	22979	.	-	.	ID=63c3b74b-5086-4917-b8dd-18d298c24a8c;Name=63c3b74b-5086-4917-b8dd-18d298c24a8c-exon;Parent=cc815ec0-9797-4bb5-8c6b-076b6a8e819f
+Mijalis	CPT	gene	30282	30499	.	+	.	ID=425d28c8-ff8f-48e3-b853-5a0b82b131c0;Name=gene_046;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=hypothetical protein
+Mijalis	CPT	mRNA	30282	30499	.	+	.	ID=7fe3275c-76eb-49c0-9cad-8fe1f4659494;Name=Hypothetical Protein;Parent=425d28c8-ff8f-48e3-b853-5a0b82b131c0;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	30293	30499	.	+	0	ID=0f9b3df8-c3f8-4a28-9168-805196dcdb98;Name=0f9b3df8-c3f8-4a28-9168-805196dcdb98-CDS;Parent=7fe3275c-76eb-49c0-9cad-8fe1f4659494
+Mijalis	CPT	exon	30282	30285	.	+	.	ID=2276e17e-bff8-4c69-b85f-6998e35dac3b;Name=2276e17e-bff8-4c69-b85f-6998e35dac3b-exon;Parent=7fe3275c-76eb-49c0-9cad-8fe1f4659494
+Mijalis	CPT	exon	30293	30499	.	+	.	ID=fc1b99ad-5e5c-41a5-8894-8ff0b14c2ef6;Name=fc1b99ad-5e5c-41a5-8894-8ff0b14c2ef6-exon;Parent=7fe3275c-76eb-49c0-9cad-8fe1f4659494
+Mijalis	CPT	gene	85370	87201	.	+	.	ID=3ceb9796-2dbe-41df-a0f1-62ec8572e33d;Name=gene_127;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Nicotinate Phosphoribosyltransferase
+Mijalis	CPT	mRNA	85370	87201	.	+	.	ID=fedbfdc5-c704-449a-8370-a294232b4c18;Name=Nicotinate Phosphoribosyltransferase;Parent=3ceb9796-2dbe-41df-a0f1-62ec8572e33d;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	85384	87201	.	+	.	ID=4f38aee9-9468-4d93-8ad5-e69b96a4a1af;Name=4f38aee9-9468-4d93-8ad5-e69b96a4a1af-exon;Parent=fedbfdc5-c704-449a-8370-a294232b4c18
+Mijalis	CPT	exon	85370	85372	.	+	.	ID=67e40316-5e0f-4d83-a640-66e03b513c0d;Name=67e40316-5e0f-4d83-a640-66e03b513c0d-exon;Parent=fedbfdc5-c704-449a-8370-a294232b4c18
+Mijalis	CPT	CDS	85384	87201	.	+	0	ID=5918a8c3-7736-443f-b1d3-3cb59263c74e;Name=5918a8c3-7736-443f-b1d3-3cb59263c74e-CDS;Parent=fedbfdc5-c704-449a-8370-a294232b4c18
+Mijalis	CPT	gene	87771	87962	.	+	.	ID=21900432-987e-4352-a7d3-6f44ce050824;Name=gene_130;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Membrane Protein
+Mijalis	CPT	mRNA	87771	87962	.	+	.	ID=9672c831-9c36-4473-be27-e779ccd8e61f;Name=Membrane Protein;Parent=21900432-987e-4352-a7d3-6f44ce050824;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	87783	87962	.	+	.	ID=58756ca2-6485-468f-bea5-a711102911d7;Name=58756ca2-6485-468f-bea5-a711102911d7-exon;Parent=9672c831-9c36-4473-be27-e779ccd8e61f
+Mijalis	CPT	exon	87771	87775	.	+	.	ID=41ef2430-7eac-410f-a2f8-47ccb6eec9f1;Name=41ef2430-7eac-410f-a2f8-47ccb6eec9f1-exon;Parent=9672c831-9c36-4473-be27-e779ccd8e61f
+Mijalis	CPT	CDS	87783	87962	.	+	0	ID=10a5edbe-7e98-4c8f-b499-35bc9fb05fe7;Name=10a5edbe-7e98-4c8f-b499-35bc9fb05fe7-CDS;Parent=9672c831-9c36-4473-be27-e779ccd8e61f
+Mijalis	CPT	gene	87451	87801	.	+	.	ID=cf811759-01d5-4a13-ad9c-6acfe07eac4e;Name=gene_129;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	87451	87801	.	+	.	ID=4d432e02-541a-4cae-8fc6-5ded5805c133;Name=Hypothetical Protein;Parent=cf811759-01d5-4a13-ad9c-6acfe07eac4e;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	87466	87801	.	+	0	ID=0f21b6d0-2459-4311-9523-690fedb07af8;Name=0f21b6d0-2459-4311-9523-690fedb07af8-CDS;Parent=4d432e02-541a-4cae-8fc6-5ded5805c133
+Mijalis	CPT	exon	87466	87801	.	+	.	ID=f19b668c-e1ae-4e7c-94d0-19c3c6e09d1c;Name=f19b668c-e1ae-4e7c-94d0-19c3c6e09d1c-exon;Parent=4d432e02-541a-4cae-8fc6-5ded5805c133
+Mijalis	CPT	exon	87451	87455	.	+	.	ID=207e42ae-3d70-47c5-aaea-201286f612db;Name=207e42ae-3d70-47c5-aaea-201286f612db-exon;Parent=4d432e02-541a-4cae-8fc6-5ded5805c133
+Mijalis	CPT	gene	32124	33601	.	+	.	ID=fa083f80-e396-422f-9e41-93c8a116d0fd;Name=gene_048;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	32124	33601	.	+	.	ID=a82e0ab1-bb36-4f31-8118-7076166811b5;Name=Hypothetical Protein;Parent=fa083f80-e396-422f-9e41-93c8a116d0fd;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	32135	33601	.	+	0	ID=60215d8c-5406-4a21-bb17-edec4c739a7d;Name=60215d8c-5406-4a21-bb17-edec4c739a7d-CDS;Parent=a82e0ab1-bb36-4f31-8118-7076166811b5
+Mijalis	CPT	exon	32135	33601	.	+	.	ID=430604c4-314e-417a-a513-40c9917c2507;Name=430604c4-314e-417a-a513-40c9917c2507-exon;Parent=a82e0ab1-bb36-4f31-8118-7076166811b5
+Mijalis	CPT	exon	32124	32127	.	+	.	ID=360252be-3f6c-4c15-ac20-810e35800ef9;Name=360252be-3f6c-4c15-ac20-810e35800ef9-exon;Parent=a82e0ab1-bb36-4f31-8118-7076166811b5
+Mijalis	CPT	gene	16551	16769	.	-	.	ID=19fd6e8e-c610-4257-b913-120ab1d0b1ba;Name=gene_015;Note=khgil;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	16551	16769	.	-	.	ID=57e37065-568e-434c-a6b2-b3717b8a804b;Name=Hypothetical Protein;Parent=19fd6e8e-c610-4257-b913-120ab1d0b1ba;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	16551	16760	.	-	.	ID=d65791bb-0f19-41d8-b5aa-92ce30f43be3;Name=d65791bb-0f19-41d8-b5aa-92ce30f43be3-exon;Parent=57e37065-568e-434c-a6b2-b3717b8a804b
+Mijalis	CPT	exon	16766	16769	.	-	.	ID=ba6f1f1b-3902-4e4a-a332-043f8cca4b37;Name=ba6f1f1b-3902-4e4a-a332-043f8cca4b37-exon;Parent=57e37065-568e-434c-a6b2-b3717b8a804b
+Mijalis	CPT	CDS	16551	16760	.	-	0	ID=c9395b7e-6b9a-42f2-af3a-ea0d7ae897a3;Name=c9395b7e-6b9a-42f2-af3a-ea0d7ae897a3-CDS;Parent=57e37065-568e-434c-a6b2-b3717b8a804b
+Mijalis	CPT	gene	54298	55212	.	-	.	ID=c6a44468-c002-44d7-b0bd-104341149490;Name=gene_075;Note=CACAO Annotation Made;date_creation=2016-02-18;date_last_modified=2016-05-11;owner=sparvata%40tamu.edu;product=Thymidylate Synthase
+Mijalis	CPT	mRNA	54298	55212	.	-	.	ID=a3e0e246-e537-4374-865d-4c86c4e1a552;Name=Thymidylate Synthase;Parent=c6a44468-c002-44d7-b0bd-104341149490;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	55208	55212	.	-	.	ID=6a3a733a-25a1-45a7-a5bd-263cf799bba8;Name=6a3a733a-25a1-45a7-a5bd-263cf799bba8-exon;Parent=a3e0e246-e537-4374-865d-4c86c4e1a552
+Mijalis	CPT	exon	54298	55197	.	-	.	ID=f64f4810-b966-402e-b153-e71e4033af43;Name=f64f4810-b966-402e-b153-e71e4033af43-exon;Parent=a3e0e246-e537-4374-865d-4c86c4e1a552
+Mijalis	CPT	CDS	54298	55197	.	-	0	ID=21be5834-442d-4ff2-99f5-a8c8c2c58a33;Name=21be5834-442d-4ff2-99f5-a8c8c2c58a33-CDS;Parent=a3e0e246-e537-4374-865d-4c86c4e1a552
+Mijalis	CPT	gene	20857	21752	.	-	.	ID=2f95bc95-4a03-41fb-9ba7-bad285c16a7f;Name=gene_026;Note=80%25 identity in Blastp to Putative Tail Protein%2C Same IG Conserved Domains.;date_creation=2016-02-18;date_last_modified=2016-05-08;owner=sparvata%40tamu.edu;product=Tail Protein
+Mijalis	CPT	mRNA	20857	21752	.	-	.	ID=5b842c8f-9112-4f45-9178-1645fa806526;Name=Tail Protein;Parent=2f95bc95-4a03-41fb-9ba7-bad285c16a7f;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	20857	21741	.	-	0	ID=39970ace-a8f4-4bd8-a6a2-3ced77d535c8;Name=39970ace-a8f4-4bd8-a6a2-3ced77d535c8-CDS;Parent=5b842c8f-9112-4f45-9178-1645fa806526
+Mijalis	CPT	exon	20857	21741	.	-	.	ID=885dfe19-46c1-4863-b9ef-ee10cf69389c;Name=885dfe19-46c1-4863-b9ef-ee10cf69389c-exon;Parent=5b842c8f-9112-4f45-9178-1645fa806526
+Mijalis	CPT	exon	21749	21752	.	-	.	ID=7cf395d6-d23f-4f4d-a59d-a44e2182e1f2;Name=7cf395d6-d23f-4f4d-a59d-a44e2182e1f2-exon;Parent=5b842c8f-9112-4f45-9178-1645fa806526
+Mijalis	CPT	gene	67877	69877	.	+	.	ID=a364b691-202c-452f-bc90-29e6c9d8e208;Name=gene_101;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Phage DNA Primase/Helicase
+Mijalis	CPT	mRNA	67877	69877	.	+	.	ID=7b6b261e-a056-4a66-82fe-db5e65fe9b88;Name=Phage DNA Primase/Helicase;Parent=a364b691-202c-452f-bc90-29e6c9d8e208;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	exon	67886	69877	.	+	.	ID=1c29a959-4ab3-4808-9450-e38d93310149;Name=1c29a959-4ab3-4808-9450-e38d93310149-exon;Parent=7b6b261e-a056-4a66-82fe-db5e65fe9b88
+Mijalis	CPT	exon	67877	67880	.	+	.	ID=453dcabc-9f0e-4f54-8d31-62277c5ef6ca;Name=453dcabc-9f0e-4f54-8d31-62277c5ef6ca-exon;Parent=7b6b261e-a056-4a66-82fe-db5e65fe9b88
+Mijalis	CPT	CDS	67886	69877	.	+	0	ID=4847eeb0-b73d-451c-8259-f3758489b0f5;Name=4847eeb0-b73d-451c-8259-f3758489b0f5-CDS;Parent=7b6b261e-a056-4a66-82fe-db5e65fe9b88
+Mijalis	CPT	gene	19569	19958	.	-	.	ID=110d0a28-8922-40b2-8f01-ee58f98c5513;Name=gene_023;date_creation=2016-02-18;date_last_modified=2016-04-19;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	19569	19958	.	-	.	ID=e3718ede-9a31-4821-b851-63ec620654c8;Name=Hypothetical Protein;Parent=110d0a28-8922-40b2-8f01-ee58f98c5513;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	19569	19949	.	-	0	ID=bb43dc04-df02-4f74-a58e-109f08d0ba85;Name=bb43dc04-df02-4f74-a58e-109f08d0ba85-CDS;Parent=e3718ede-9a31-4821-b851-63ec620654c8
+Mijalis	CPT	exon	19954	19958	.	-	.	ID=db3c4d3a-7e47-4c93-b824-f6f59fca8980;Name=db3c4d3a-7e47-4c93-b824-f6f59fca8980-exon;Parent=e3718ede-9a31-4821-b851-63ec620654c8
+Mijalis	CPT	exon	19569	19949	.	-	.	ID=6fd89c92-6953-4b39-9ae6-42ae970c49c9;Name=6fd89c92-6953-4b39-9ae6-42ae970c49c9-exon;Parent=e3718ede-9a31-4821-b851-63ec620654c8
+Mijalis	CPT	gene	57013	57372	.	-	.	ID=e219ed71-5228-44b6-8d86-34dede61b389;Name=gene_081;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	57013	57372	.	-	.	ID=4c354890-bb21-4995-8143-1360e5a12d1e;Name=Hypothetical Protein;Parent=e219ed71-5228-44b6-8d86-34dede61b389;date_creation=2016-02-18;date_last_modified=2016-04-28;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	57013	57372	.	-	0	ID=565eb283-4f54-4256-bae1-f42a39b90b1e;Name=565eb283-4f54-4256-bae1-f42a39b90b1e-CDS;Parent=4c354890-bb21-4995-8143-1360e5a12d1e
+Mijalis	CPT	exon	57013	57372	.	-	.	ID=8f8137f9-1168-491d-a034-b4c33e0abc19;Name=8f8137f9-1168-491d-a034-b4c33e0abc19-exon;Parent=4c354890-bb21-4995-8143-1360e5a12d1e
+Mijalis	CPT	gene	55739	55978	.	-	.	ID=1150bd6f-9e6b-4e1d-980b-e050fdf9dd7d;Name=gene_078;date_creation=2016-02-18;date_last_modified=2016-04-26;owner=sparvata%40tamu.edu;product=Hypothetical Protein
+Mijalis	CPT	mRNA	55739	55978	.	-	.	ID=6ee28277-60bc-43f1-8cb3-bc33b774932f;Name=Hypothetical Protein;Parent=1150bd6f-9e6b-4e1d-980b-e050fdf9dd7d;date_creation=2016-02-18;date_last_modified=2016-05-09;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	55739	55978	.	-	0	ID=cdda566d-7f2d-437e-ab8c-cd913be21040;Name=cdda566d-7f2d-437e-ab8c-cd913be21040-CDS;Parent=6ee28277-60bc-43f1-8cb3-bc33b774932f
+Mijalis	CPT	exon	55739	55978	.	-	.	ID=a9ed8ccc-156d-4d9f-8f59-0d553d91be15;Name=a9ed8ccc-156d-4d9f-8f59-0d553d91be15-exon;Parent=6ee28277-60bc-43f1-8cb3-bc33b774932f

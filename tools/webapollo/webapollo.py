@@ -272,9 +272,22 @@ class AnnotationsClient(Client):
         data.update(self._extra_data)
         return self.request('setSymbol', data)
 
-    def getComments(self, features):
+    def getComments(self, feature_id):
         data = {
-            'features': features,
+            'features': [{'uniquename': feature_id}],
+        }
+        data = self._update_data(data)
+        return self.request('getComments', data)
+
+    def addComments(self, feature_id, comment):
+        #TODO: This is probably not great and will delete comments, if I had to guess...
+        data = {
+            'features': [
+                {
+                    'uniquename': feature_id,
+                    'comments': [comment]
+                }
+            ],
         }
         data = self._update_data(data)
         return self.request('getComments', data)
@@ -803,7 +816,7 @@ def _yieldFeatData(features):
         current = {
             'location': {
                 'strand': f.strand,
-                'fmin': int(f.location.start),
+                'fmin': int(f.location.start) - 0,
                 'fmax': int(f.location.end),
             },
             'type': {
