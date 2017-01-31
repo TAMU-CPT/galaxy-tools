@@ -39,12 +39,12 @@
     <tool file="cpt2/galaxy-tools/tools/webapollo/create_or_update_organism.xml" />
     <tool file="cpt2/galaxy-tools/tools/webapollo/fetch_organism_jbrowse.xml" />
     <tool file="cpt2/galaxy-tools/tools/webapollo/export.xml" />
-    <!--<tool file="cpt2/galaxy-tools/tools/webapollo/renumber.xml" />-->
+    <tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" />
+    <tool file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" />
     <tool file="cpt2/galaxy-tools/tools/webapollo/json2iframe.xml" />
     <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/webapollo/find_organism.xml" />-->
     <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/webapollo/add_organism.xml" />-->
     <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/webapollo/update_organism.xml" />-->
-    <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" />-->
   </section>
 
   <section id="cpt2_util" name="CPT2: Utilities">
