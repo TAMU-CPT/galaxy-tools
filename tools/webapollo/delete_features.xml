@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.delete_features" name="Delete all annotations from an Apollo record" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <code file="webapollo.py"/>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+#if str($ask_one) == "yes":
+    #if str($ask_two) == "yes":
+        ## Nope, still don't trust them to not be dumb (or malicious), so we backup first.
+        python $__tool_directory__/export.py
+        @ADMIN_AUTH@
+        @ORG_CN_OR_GUESS@
+        --gff "$gff_out"
+        --fasta "$fasta_out"
+        --json "$json_out";
+
+        ## Now we delete
+        python $__tool_directory__/delete_features.py
+        @ADMIN_AUTH@
+        @ORG_OR_GUESS@
+        "$__user_email__"
+        > $output;
+    #end if
+#end if
+    ]]></command>
+  <inputs>
+    <expand macro="org_or_guess" />
+    <param name="ask_one" type="boolean" truevalue="yes" falsevalue="" label="Are you SURE you want to do this?" help="It will PERMANENTLY delete all of the features on this organism."/>
+    <param name="ask_two" type="boolean" truevalue="yes" falsevalue="" label="Are you really, really SURE you want to do this?" help="There's NO coming back from this."/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output" label="Process and Error Log"/>
+
+    <data format="gff3" name="gff_out" label="Annotations from Apollo" hidden="true"/>
+    <data format="fasta" name="fasta_out" label="Sequence(s) from Apollo" hidden="true"/>
+    <data format="json" name="json_out" label="Metadata from Apollo" hidden="true"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Deletes every single one of the annotations on an organism. Intentionally.
+
+**Why?**
+
+There are legitimate uses for this tool, generally re-opened genomes is a good
+one. Needing to transfer annotations from one build of an organism to another
+(with the same refseq name).
+
+
+@REFERENCES@
+]]></help>
+</tool>
