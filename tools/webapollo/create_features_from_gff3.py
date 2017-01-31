@@ -43,15 +43,15 @@ if __name__ == '__main__':
         for feature in rec.features:
             # featureData = featuresToFeatureSchema([feature])
 
-            mRNA_data = featuresToFeatureSchema([feature.sub_features[0]])
-            resp = wa.annotations.addTranscript(
-                {
-                    'features': mRNA_data
-                }, trustme=True
-            )
+            try:
+                mRNA_data = featuresToFeatureSchema([feature.sub_features[0]])
+                resp = wa.annotations.addTranscript(
+                    {
+                        'features': mRNA_data
+                    }, trustme=True
+                )
 
             # Get the unique ID back from apollo
-            try:
                 mRNA_uniq = resp['features'][0]['uniquename']
                 # Mapping table
                 sys.stdout.write('\t'.join([
@@ -60,12 +60,12 @@ if __name__ == '__main__':
                     'success',
                     "Dropped qualifiers: %s" % (json.dumps({k: v for (k, v) in feature.qualifiers.items() if k not in bad_quals})),
                 ]))
-            except:
+            except Exception as e:
                 sys.stdout.write('\t'.join([
                     feature.id,
                     '',
                     'UNKNOWN ERROR',
-                    ''
+                    str(e)
                 ]))
 
             sys.stdout.write('\n')
