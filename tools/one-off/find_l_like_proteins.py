@@ -5,7 +5,10 @@ from Bio import SeqIO
 
 
 def find_hydrophobic_seq(seq):
-    hydrophobic_residues = 'A G V L I P F H S T Y C M W Q N'.split()  # allowed hydrophobic amino acids
+    """
+        Accomplishes #1 and #2 from find_l_like_proteins function
+    """
+    hydrophobic_residues = 'AGVLIPFHSTYCMWQN'  # allowed hydrophobic amino acids
 
     count = 0  # count for number of hydrophobic residues in a row
     start = 0
@@ -23,27 +26,47 @@ def find_hydrophobic_seq(seq):
             if count >= 10:
                 if domain.endswith('LS'):
                     yield {'start': start, 'end': end, 'domain': domain}
-                elif 'LS' in domain and len(domain.split('LS')[0]) >= 8:
-                    domain = domain.split('LS')[0] + 'LS'
+                elif 'LS' in domain and len(domain.rsplit('LS', 1)[0]) >= 8:
+                    domain = domain.rsplit('LS', 1)[0] + 'LS'
                     end = start + len(domain)
                     yield {'start': start, 'end': end, 'domain': domain}
             count = 0
 
+
+def n_terminus_charge(seq):
+    """
+        Accomplishes #3 from find_l_like_proteins function
+    """
+
+    positive_residues = 'RK'
+    negative_residues = 'DE'
+
+    charge = 0
+    for letter in seq:
+        if letter in positive_residues:
+            charge += 1
+        if letter in negative_residues:
+            charge -= 1
+    if charge >= 2:
+        return True
+
+
 def find_l_like_proteins(fasta):
     """ Returns proteins that have:
-            >= 10 hydrophobic aa's in a row (AGVLIPFHSTYCMWQN) TODO: QN pref at the ends
-            'LS' right after that domain
-            minimum net charge of +2 for N terminus
+            1. >= 10 hydrophobic aa's in a row (AGVLIPFHSTYCMWQN) TODO: QN pref at the ends
+            2. 'LS' right after that domain
+            3. minimum net charge of +2 for N terminus
     """
     records = list(SeqIO.parse(fasta, "fasta"))
 
     for record in records:
-        print '*****'
         for a in find_hydrophobic_seq(record.seq):
-            print a
-            # if 'LS' in a['domain']:
-                # print a['domain'].split('LS')
-        print '*****'
+            if n_terminus_charge(record.seq[0:a['start']]):
+                print '*****'
+                print record.name
+                print a
+                print record.seq
+                print '*****'
 
 
 if __name__ == '__main__':
