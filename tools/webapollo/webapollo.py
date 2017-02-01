@@ -400,7 +400,6 @@ def WAAuth(parser):
     parser.add_argument('apollo', help='Complete Apollo URL')
     parser.add_argument('username', help='WA Username')
     parser.add_argument('password', help='WA Password')
-    parser.add_argument('--remote_user', default='', help='If set, ignore password, set the header with the name supplied to this argument to the value of email')
 
 
 def OrgOrGuess(parser):

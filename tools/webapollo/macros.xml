@@ -16,12 +16,6 @@
   <token name="@URL@">
 \$GALAXY_WEBAPOLLO_URL
   </token>
-  <token name="@USER_AUTH_REMOTE@">
-\$GALAXY_WEBAPOLLO_URL
-$__user_email__
-""
---remote_user REMOTE_USER
-  </token>
   <token name="@ADMIN_AUTH@">
 \$GALAXY_WEBAPOLLO_URL
 \$GALAXY_WEBAPOLLO_USER
