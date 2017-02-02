@@ -28,7 +28,8 @@
       <tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml" labels="464-2017"/>
 
       <!-- BEGIN GUANINE -->
-      <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_1_over_Module_1.xml" />-->
+      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_1_over_Module_1.xml" />
+      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_2_over_Modules_2_and_3.xml" />
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_Template.xml" />
       <!-- END GUANINE -->
   </section>
