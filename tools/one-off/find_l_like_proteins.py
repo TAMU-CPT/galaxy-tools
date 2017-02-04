@@ -62,12 +62,7 @@ def find_l_like_proteins(fasta):
     for record in records:
         for a in find_hydrophobic_seq(record.seq):
             if n_terminus_charge(record.seq[0:a['start']]):
-                print '*****'
-                print record.name
-                print a
-                print record.seq
-                print '*****'
-
+                print record.name[:-4]
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Finds L-like proteins')
