@@ -1,12 +1,16 @@
 #!/usr/bin/env python
 import argparse
 from Bio import SeqIO
+from zipfile import ZipFile
 
 
 def spl(genbank):
-    for record in SeqIO.parse(genbank, 'genbank'):
-        with open('gbks/' + record.id + '.gbk', 'w') as handle:
-            SeqIO.write([record], handle, 'genbank')
+    with ZipFile('out.zip', 'w') as zipfile:
+        for record in SeqIO.parse(genbank, 'genbank'):
+            filename = record.id + '.gbk'
+            with open(filename, 'w') as handle:
+                SeqIO.write([record], handle, 'genbank')
+            zipfile.write(filename)
 
 
 if __name__ == '__main__':
