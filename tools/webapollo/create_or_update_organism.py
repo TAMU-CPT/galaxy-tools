@@ -58,6 +58,8 @@ if __name__ == '__main__':
             species=args.species,
             public=args.public
         )
+        time.sleep(2)
+        data = [wa.organisms.findOrganismById(org['id'])]
     else:
         # New organism
         log.info("\tAdding Organism")
