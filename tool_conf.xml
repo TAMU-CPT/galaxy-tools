@@ -150,7 +150,7 @@
     <tool file="cpt2/galaxy-tools/tools/gbk/revcom.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/sequin.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/source.xml" />
-    <tool file="cpt2/galaxy-tools/tools/gbk/split.xml" />
+    <tool file="cpt2/galaxy-tools/tools/gbk/split-gbks.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/subsection.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="new,experimental"/>
