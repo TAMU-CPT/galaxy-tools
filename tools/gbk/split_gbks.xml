@@ -8,7 +8,7 @@ $multi-genbank
         <param label="Genbank file" name="multi-genbank" type="data" format="genbank"/>
 	</inputs>
 	<outputs>
-		<data format="zip" from_work_dir="out.zip" label="zip file of gbks"/>
+		<data format="zip" from_work_dir="out.zip" label="zip file of gbks" name="zip-gbks" />
 	</outputs>
 	<help>
 **What it does**
