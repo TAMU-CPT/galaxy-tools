@@ -203,6 +203,7 @@
   </section>
   <section id="cptspecialsnowflakes" name="CPT:Oneoff/Custom">
     <tool file="cpt2/galaxy-tools/tools/one-off/none-validator.xml" />
+    <tool file="cpt2/galaxy-tools/tools/one-off/find_l_like_proteins.xml" />
   </section>
   <section id="cpt_phantasm2" name="CPT:PHAnTASM v2">
     <tool file="cpt/PHAnTASM/bin/phantasm_cluster.xml" />
