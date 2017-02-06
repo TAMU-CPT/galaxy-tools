@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.tools.find-l-like-proteins" name="Find L-like proteins" version="1.0">
+<tool id="edu.tamu.cpt.tools.find-l-like-proteins" name="Find L-like proteins" version="1.1">
 	<description>Finds L-like proteins in fasta file</description>
 	<macros>
 		<import>macros.xml</import>
@@ -26,6 +26,6 @@ python $__tool_directory__/find_l_like_proteins.py
 	<help>
 **What it does**
 
-Finds L-like proteins in SSRNA phages
+Finds L-like proteins (SSRNA phages) and outputs a list of fasta ids.
 </help>
 </tool>
