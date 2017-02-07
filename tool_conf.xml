@@ -17,6 +17,9 @@
   </section>
   <label id="l_cpt" text="CPT Tools" />
 
+  <section id="cpt2_464" name="CPT2: 464 Admin Tools">
+      <tool file="cpt2/galaxy-tools/tools/464/prep_test_organism.xml" labels="464,464-Admin"/>
+  </section>
   <section id="cpt2_464" name="CPT2: 464 Tools">
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_generate_segment.xml" />
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c0_evaluate.xml" />
