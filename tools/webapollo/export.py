@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 import sys
-import StringIO
+try:
+    import StringIO as io
+except ImportError:
+    import io
+
 import json
 import argparse
 from Bio import SeqIO
@@ -11,7 +15,7 @@ from webapollo import WAAuth, WebApolloInstance, CnOrGuess, GuessCn
 def export(org_cn, seqs):
     org_data = wa.organisms.findOrganismByCn(org_cn)
 
-    data = StringIO.StringIO()
+    data = io.StringIO()
 
     kwargs = dict(
         exportType='GFF3',
@@ -40,7 +44,7 @@ def export(org_cn, seqs):
 
     records = list(GFF.parse(data))
     if len(records) == 0:
-        print "Could not find any sequences or annotations for this organism + reference sequence"
+        print("Could not find any sequences or annotations for this organism + reference sequence")
         sys.exit(2)
     else:
         for record in records:
