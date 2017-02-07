@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.tools.split-gbks" name="Split Genbank File" version="1.1">
+	<description>Splits a multi-genbank file into separate genbank files</description>
+    <command interpreter="python" detect_errors="aggressive"><![CDATA[split_gbks.py
+$multi_genbank
+]]></command>
+	<inputs>
+        <param label="Genbank file" name="multi_genbank" type="data" format="genbank"/>
+	</inputs>
+	<outputs>
+		<data format="zip" from_work_dir="out.zip" label="zip file of gbks" name="zip-gbks" />
+	</outputs>
+	<help>
+**What it does**
+
+Splits a genbank file that contains multiple records into separate genbank files.
+Output is a zip file.
+</help>
+</tool>

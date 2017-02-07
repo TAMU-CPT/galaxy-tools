@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.tools.find-l-like-proteins" name="Find L-like proteins" version="1.1">
+	<description>Finds L-like proteins in fasta file</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+python $__tool_directory__/find_l_like_proteins.py
+@SEQUENCE@
+
+> $ids
+</command>
+	<inputs>
+		<expand macro="input/fasta/protein" />
+	</inputs>
+	<outputs>
+		<data format="txt" name="ids" />
+	</outputs>
+	<tests>
+		<test>
+			<param name="sequences" value="l_ptns.fa"/>
+			<output name="ids" file="l_ptns_ids.txt" />
+		</test>
+	</tests>
+	<help>
+**What it does**
+
+Finds L-like proteins (SSRNA phages) and outputs a list of fasta ids.
+</help>
+</tool>

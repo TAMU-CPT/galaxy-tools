@@ -150,7 +150,8 @@
     <tool file="cpt2/galaxy-tools/tools/gbk/revcom.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/sequin.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/source.xml" />
-    <tool file="cpt2/galaxy-tools/tools/gbk/split.xml" />
+    <!--<tool file="cpt2/galaxy-tools/tools/gbk/split.xml" />-->
+    <tool file="cpt2/galaxy-tools/tools/gbk/split_gbks.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/subsection.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml" />
     <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="new,experimental"/>
@@ -202,6 +203,7 @@
   </section>
   <section id="cptspecialsnowflakes" name="CPT:Oneoff/Custom">
     <tool file="cpt2/galaxy-tools/tools/one-off/none-validator.xml" />
+    <tool file="cpt2/galaxy-tools/tools/one-off/find_l_like_proteins.xml" />
   </section>
   <section id="cpt_phantasm2" name="CPT:PHAnTASM v2">
     <tool file="cpt/PHAnTASM/bin/phantasm_cluster.xml" />

@@ -9,7 +9,7 @@ $positional_1
   </inputs>
   <outputs>
     <data format="txt" name="default" label="Annotated"/>
-    <data format="txt" name="default" label="Problematic"/>
+    <data format="txt" name="problematic" label="Problematic"/>
   </outputs>
   <help><![CDATA[
 **NEW**
