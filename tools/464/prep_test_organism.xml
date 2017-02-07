@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.464.2017.generate_test_organism" name="Generate Assessment 1 Organism" version="1.1">
+<tool id="edu.tamu.cpt2.464.2017.generate_test_organism" name="Generate Assessment 1 Organism" version="1.2">
   <description></description>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[
-cat $__tool_directory__/test-data/test-organism.fa > $output
+  <command detect_errors="aggressive"><![CDATA[
+cat $__tool_directory__/test-data/test-organism.fa | sed 's/xxyyzz/$seqid/g' > $output
 ]]></command>
   <inputs>
+    <param label="Sequence ID" name="seqid" value="464_2017_assesment1" type="text"/>
   </inputs>
   <outputs>
-    <data format="fasta" name="output" label="Test Organism"/>
+	<data format="fasta" name="output" label="${seqid}.fa"/>
   </outputs>
   <help><![CDATA[
 **What it does**
