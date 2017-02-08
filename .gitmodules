@@ -10,3 +10,6 @@
 [submodule "tools/464/quizzes"]
 	path = tools/464/quizzes
 	url = git@github.tamu.edu:CPT/BICH464-Guanine-Quizzes.git
+[submodule "tools/external/phageterm"]
+	path = tools/external/phageterm
+	url = git@github.tamu.edu:CPT/PhageTerm.git
