@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.remove_tag" name="Remove GenBank Tags" version="0.3">
+<tool id="edu.tamu.cpt.gbk.remove_tag" name="Remove GenBank Tags" version="1.0">
     <description>removes specific tags/qualifiers from a GenBank file</description>
   <macros>
     <import>macros.xml</import>
@@ -23,7 +23,7 @@ $gbk_files
 > $default]]></command>
   <inputs>
     <param label="GenBank file" name="gbk_files" type="data" format="genbank"/>
-    <param label="Tags to Remove" name="tag_type" type="select">
+    <param label="Tags to Remove" name="feature_type" type="select">
       <option value="-10_signal">-10_signal</option>
       <option value="-35_signal">-35_signal</option>
       <option value="3'UTR">3'UTR</option>
