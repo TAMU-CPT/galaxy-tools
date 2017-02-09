@@ -23,7 +23,7 @@ $gbk_files
 > $default]]></command>
   <inputs>
     <param label="GenBank file" name="gbk_files" type="data" format="genbank"/>
-    <param label="Tags to Remove" name="feature_type" type="select">
+    <param label="Tags to Remove" name="feature_type" type="select" optional="true">
       <option value="-10_signal">-10_signal</option>
       <option value="-35_signal">-35_signal</option>
       <option value="3'UTR">3'UTR</option>

@@ -16,7 +16,7 @@ $data
     <param label="New name for the sequence" name="new_name" type="text"/>
   </inputs>
   <outputs>
-    <data format="fasta" name="output" label="$new_name">
+	<data format="fasta" name="output" label="${new_name}.${data.ext}">
       <change_format>
         <when format="gff3" input="data.ext" value="gff3"/>
         <when format="fasta" input="data.ext" value="fasta"/>
