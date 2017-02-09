@@ -10,6 +10,8 @@ log = logging.getLogger(__name__)
 
 
 def gff_reopen(gff3, index=1, fasta=None, fasta_output=None):
+    # Convert to zero-based
+    index -= 1
     it = None
     if fasta:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))

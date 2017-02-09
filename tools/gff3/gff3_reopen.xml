@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gff3.reopen" name="GFF3 Reopen" version="1.1.0">
+<tool id="edu.tamu.cpt.gff3.reopen" name="GFF3 Reopen" version="1.2">
   <description>reopens a gff3 file (and optional fasta file) at a specific location</description>
   <macros>
     <import>macros.xml</import>
@@ -15,7 +15,7 @@ $index
   <inputs>
       <expand macro="gff3_input" />
       <param name="fasta" type="data" format="fasta" label="Source FASTA Sequence" optional="True"/>
-      <param name="index" type="integer" value="1" label="Index to reopen annotations at" />
+      <param name="index" type="integer" value="1" label="Index to reopen annotations (1-based counting)" />
   </inputs>
   <outputs>
 	<data format="gff3" name="default" label="${gff3_data.name} Reopened at ${index}"/>
