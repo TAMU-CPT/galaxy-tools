@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.464.2017.assessment1-admin" name="Update Assessment 1 Results" version="1.2">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+## Run the export tool to fetch the organism
+python $__tool_directory__/export.py
+@ADMIN_AUTH@
+--org_raw "464_2017_assessment1"
+--gff out.gff
+--fasta out.fa
+--json out.json;
+
+## Process that with a GUANINE reporting script
+python $__tool_directory__/assessment1-admin.py out.gff;
+
+]]></command>
+  <inputs>
+  </inputs>
+  <outputs>
+    <data format="txt" name="output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+This tool updates the student's progress in GUANINE.
+
+It is exposed to everyone because there is no possible harm in this tool being
+run, it will only re-update the assessment results in GUANINE.
+
+@REFERENCES@
+      ]]></help>
+</tool>

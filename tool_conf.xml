@@ -19,8 +19,11 @@
 
   <section id="cpt2_464" name="CPT2: 464 Admin Tools">
       <tool file="cpt2/galaxy-tools/tools/464/prep_test_organism.xml" labels="464,464-Admin"/>
+	  <tool file="cpt2/galaxy-tools/tools/464/assessment1-admin.xml" />
   </section>
   <section id="cpt2_464" name="CPT2: 464 Tools">
+	  <tool file="cpt2/galaxy-tools/tools/464/assessment1-student.xml" />
+
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_generate_segment.xml" />
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c0_evaluate.xml" />
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_evaluate.xml" />
@@ -31,9 +34,7 @@
       <tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml" labels="464-2017"/>
 
       <!-- BEGIN GUANINE -->
-      <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_1_over_Module_1.xml" />-->
-      <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_2_over_Modules_2_and_3.xml" />-->
-      <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_Template.xml" />-->
+      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_3_over_Modules_4_and_5.xml" />
       <!-- END GUANINE -->
   </section>
 
