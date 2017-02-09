@@ -13,7 +13,7 @@ python $__tool_directory__/assessment1-student.py
 $__user_email__;
 
 ## Then pop the iframe
-cp test-data/assessment1.html $output;
+cp $__tool_directory__/test-data/assessment1.html $output;
 ]]></command>
   <inputs>
   </inputs>
