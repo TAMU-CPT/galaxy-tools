@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 import argparse
+import json
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type
+from guanine_report import auth, post_result, student_id
 # from guanine import GuanineClient
-
+guanine_url = 'https://cpt.tamu.edu/guanine-backend/'
 
 def validate(gff3):
     results = {}
@@ -15,33 +17,48 @@ def validate(gff3):
             subfeatures=True,
         ):
             checks = []
+            graded = []
             # dbxrefs
-            checks.append((
-                'dbxrefs',
-                'CPT:283675' in feature.qualifiers.get('Dbxref', [])
-            ))
+            if 'CPT:283675' in feature.qualifiers.get('Dbxref', []):
+                checks.append(True)
+                graded.append({})
+            else:
+                checks.append(False)
+                graded.append({'q1': '0'}) #???
 
             # Notes
-            checks.append((
-                'Note',
-                'Howdy!' in feature.qualifiers.get('Note', [])
-            ))
+            if 'Howdy!' in feature.qualifiers.get('Note', []):
+                checks.append(True)
+                graded.append({})
+            else:
+                checks.append(False)
+                graded.append({'q2': '0'}) #???
 
             owner = feature.qualifiers.get('owner', ['unknown'])[0]
             results[owner] = {
                 'checks': checks,
-                'score': 0,
+                'graded': graded,
+                'score': checks.count(True),
             }
 
-            # This gene passes
-            results[owner]['score'] = [x[1] for x in checks].count(True)
-
-    guanien_url = 'https://cpt.tamu.edu/guanine-backend/'
-    token = auth('/galaxy/creds.json', guanine_url)
+    # Process all students at once
+    token = auth(open('/galaxy/creds.json', 'r'), guanine_url)
     for email, result in results.items():
-        print(student, result)
         sid = student_id(email, guanine_url, token)
-    # print(results)
+        r = post_result(
+            sid,
+            result['score'],
+            2, token, guanine_url,
+            'a59a5001-57e7-4776-8807-63b544735f3f',
+            json.dumps({
+                "raw": result,
+                "graded": result['graded']
+            }),
+        )
+        if r.status_code in (200, 201):
+            print("Success")
+        else:
+            print("[Error] user=%s msg=%s" % (email, r.text))
 
 
 if __name__ == '__main__':
