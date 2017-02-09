@@ -17,18 +17,17 @@
   </section>
   <label id="l_cpt" text="CPT Tools" />
 
-  <section id="cpt2_464" name="CPT2: 464 Admin Tools">
+  <section id="cpt2_464" name="CPT2: BICH464">
+      <label id="l_4cacao" text="Student Tools" />
+	  <tool file="cpt2/galaxy-tools/tools/464/assessment1-student.xml" />
+      <label id="l_4cacao" text="Admin Tools" />
       <tool file="cpt2/galaxy-tools/tools/464/prep_test_organism.xml" labels="464,464-Admin"/>
 	  <tool file="cpt2/galaxy-tools/tools/464/assessment1-admin.xml" />
-  </section>
-  <section id="cpt2_464" name="CPT2: 464 Tools">
-	  <tool file="cpt2/galaxy-tools/tools/464/assessment1-student.xml" />
-
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_generate_segment.xml" />
-      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c0_evaluate.xml" />
-      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_evaluate.xml" />
-      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c2_evaluate.xml" />
-      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/password_passthrough.xml" />
+      <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/c0_evaluate.xml" />-->
+      <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_evaluate.xml" />-->
+      <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/c2_evaluate.xml" />-->
+      <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/password_passthrough.xml" />-->
       <tool file="cpt2/galaxy-tools/tools/464/guanine_test.xml" labels="464-2017"/>
       <label id="l_4cacao" text="CACAO" />
       <tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml" labels="464-2017"/>
@@ -136,7 +135,7 @@
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_add_parents_to_cds.xml" />
       <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="new,experimental"/>
     <tool file="cpt2/tools-iuc/tools/bioperl/bp_genbank2gff3.xml" />
-    <tool file="cpt2/galaxy-tools/tools/gff3/annotation_table.xml" />
+    <!--<tool file="cpt2/galaxy-tools/tools/gff3/annotation_table.xml" />-->
   </section>
   <section id="cpt2_gbk" name="CPT2: Genbank Tools">
     <tool file="cpt2/galaxy-tools/tools/gbk/add_tr.xml" />
