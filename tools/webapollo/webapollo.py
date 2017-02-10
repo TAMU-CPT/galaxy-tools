@@ -714,8 +714,9 @@ class AnnotationsClient(Client):
         if not trustme:
             raise NotImplementedError("Waiting on better docs from project. If you know what you are doing, pass trustme=True to this function.")
 
-        data = {}
-        data.update(feature)
+        data = {
+            'features': feature,
+        }
         data = self._update_data(data)
         return self.request('addFeature', data)
 

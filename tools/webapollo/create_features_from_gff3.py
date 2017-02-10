@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import json
+import time
 import argparse
 from webapollo import WebApolloInstance, featuresToFeatureSchema
 from webapollo import WAAuth, OrgOrGuess, GuessOrg, AssertUser
@@ -41,31 +42,54 @@ if __name__ == '__main__':
     # print(wa.annotations.getFeatures())
     for rec in GFF.parse(args.gff3):
         for feature in rec.features:
-            # featureData = featuresToFeatureSchema([feature])
+            featureData = featuresToFeatureSchema([feature])
 
             try:
-                mRNA_data = featuresToFeatureSchema([feature.sub_features[0]])
-                resp = wa.annotations.addTranscript(
-                    {
-                        'features': mRNA_data
-                    }, trustme=True
-                )
+                print '****'
+                print featureData
+                print '****'
+                CDS = featureData[0]['children'][0]['children']
+                CDS = [x for x in CDS if x['type']['name'] == 'CDS'][0]['location']
+                newfeature = wa.annotations.addFeature(featureData, trustme=True)
+                print '------'
+                print 'worked'
+                print '------'
+                gene_id = newfeature['features'][0]['uniquename']
+                time.sleep(1)
+                # Strand stuff
+                if CDS['strand'] == 1:
+                    wa.annotations.setTranslationStart(gene_id, min(CDS['fmin'], CDS['fmax']))
+                else:
+                    wa.annotations.setTranslationStart(gene_id, max(CDS['fmin'], CDS['fmax']) - 1)
 
-            # Get the unique ID back from apollo
-                mRNA_uniq = resp['features'][0]['uniquename']
-                # Mapping table
-                sys.stdout.write('\t'.join([
-                    feature.id,
-                    mRNA_uniq,
-                    'success',
-                    "Dropped qualifiers: %s" % (json.dumps({k: v for (k, v) in feature.qualifiers.items() if k not in bad_quals})),
-                ]))
-            except Exception as e:
-                sys.stdout.write('\t'.join([
-                    feature.id,
-                    '',
-                    'UNKNOWN ERROR',
-                    str(e)
-                ]))
+                wa.annotations.setName(gene_id, feature.qualifiers.get('product', ["Unknown"])[0])
+            except:
+                pass
+            # sys.exit()
 
-            sys.stdout.write('\n')
+            # try:
+                # mRNA_data = featuresToFeatureSchema([feature.sub_features[0]])
+                # resp = wa.annotations.addTranscript(
+                    # {
+                        # 'features': mRNA_data
+                    # }, trustme=True
+                # )
+
+            # # Get the unique ID back from apollo
+                # mRNA_uniq = resp['features'][0]['uniquename']
+                # # Mapping table
+                # sys.stdout.write('\t'.join([
+                    # feature.id,
+                    # mRNA_uniq,
+                    # 'success',
+                    # "Dropped qualifiers: %s" % (json.dumps({k: v for (k, v) in feature.qualifiers.items() if k not in bad_quals})),
+                # ]))
+            # except Exception as e:
+                # sys.stdout.write('\t'.join([
+                    # feature.id,
+                    # '',
+                    # 'UNKNOWN ERROR',
+                    # str(e)
+                # ]))
+
+            # sys.stdout.write('\n')
