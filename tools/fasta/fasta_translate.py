@@ -24,7 +24,7 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
 
             # check if stop in middle of protein
             if '*' in tmpseq:
-                log.warn("Trimming %s from %s to %s due to stop codons", record.id, len(tmpseq), idx)
+                log.warn("Trimming %s from %s to %s due to stop codons", record.id, len(record.seq), len(tmpseq))
 
             # add stop to end if strip_stops=False
             if not strip_stops:
