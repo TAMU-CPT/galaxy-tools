@@ -1,0 +1,12 @@
+##gff-version 3
+##sequence-region Mijalis 1 30364
+Mijalis	CPT	gene	10990	11110	.	-	.	ID=63cb824f-d002-499d-a488-246bae886002;Name=gene_003;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu;product=Hypothesized Protein
+Mijalis	CPT	mRNA	10990	11110	.	-	.	ID=09ae9585-92b0-4c78-b703-d7a5831e9039;Name=Hypothesized Protein;Parent=63cb824f-d002-499d-a488-246bae886002;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	10990	11100	.	-	0	ID=09ae9585-92b0-4c78-b703-d7a5831e9039-CDS;Name=09ae9585-92b0-4c78-b703-d7a5831e9039-CDS;Parent=09ae9585-92b0-4c78-b703-d7a5831e9039;date_creation=2016-02-18;date_last_modified=2016-02-18
+Mijalis	CPT	Shine_Dalgarno_sequence	11108	11110	.	-	.	ID=4e3b616e-d1d1-468c-8f43-05c6e43302b6;Name=4e3b616e-d1d1-468c-8f43-05c6e43302b6-exon;Parent=09ae9585-92b0-4c78-b703-d7a5831e9039;date_creation=2016-02-18;date_last_modified=2016-02-18
+Mijalis	CPT	exon	10990	11100	.	-	.	ID=68ea5d1d-8bde-455a-a4c7-3bc33e3f7bca;Name=68ea5d1d-8bde-455a-a4c7-3bc33e3f7bca-exon;Parent=09ae9585-92b0-4c78-b703-d7a5831e9039;date_creation=2016-02-18;date_last_modified=2016-02-18
+Mijalis	CPT	gene	30227	30364	.	+	.	ID=e97b5974-24bb-4f27-adb5-0b77b0509c90;Name=gene_045;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu;product=Hypothetical Novel Protein
+Mijalis	CPT	mRNA	30227	30364	.	+	.	ID=9f26c796-1fe9-431b-91d1-6041d52ea0b5;Name=Hypothetical Novel Protein;Parent=e97b5974-24bb-4f27-adb5-0b77b0509c90;date_creation=2016-02-18;date_last_modified=2016-05-02;owner=sparvata%40tamu.edu
+Mijalis	CPT	CDS	30239	30364	.	+	0	ID=9f26c796-1fe9-431b-91d1-6041d52ea0b5-CDS;Name=9f26c796-1fe9-431b-91d1-6041d52ea0b5-CDS;Parent=9f26c796-1fe9-431b-91d1-6041d52ea0b5;date_creation=2016-02-18;date_last_modified=2016-02-18
+Mijalis	CPT	exon	30239	30364	.	+	.	ID=ef7b6ee3-9e68-4370-ac29-5477e4ffb71d;Name=ef7b6ee3-9e68-4370-ac29-5477e4ffb71d-exon;Parent=9f26c796-1fe9-431b-91d1-6041d52ea0b5;date_creation=2016-02-18;date_last_modified=2016-02-18
+Mijalis	CPT	Shine_Dalgarno_sequence	30227	30229	.	+	.	ID=81795a7e-eb50-4c78-98af-c0bc275cb2be;Name=81795a7e-eb50-4c78-98af-c0bc275cb2be-exon;Parent=9f26c796-1fe9-431b-91d1-6041d52ea0b5;date_creation=2016-02-18;date_last_modified=2016-02-18

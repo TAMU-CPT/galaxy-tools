@@ -1,0 +1,30 @@
+<tool id="edu.tamu.cpt.gff3.apollo-fix-exon" name="Correct Apollo exons to SD" version="1.2">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gff3_fix_apollo_sd.py
+@INPUT_GFF@
+> $stdout
+
+]]></command>
+  <inputs>
+    <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="stdout" label="$gff3_data.name [corrected]"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="gff3_data" value="apollo-exon.gff3" />
+          <output name="stdout" file="apollo-exon.fixed.gff3" />
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Changes the feature type of short exons to Shine_Dalgarno_sequence
+      ]]></help>
+</tool>
