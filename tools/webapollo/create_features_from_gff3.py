@@ -42,51 +42,55 @@ if __name__ == '__main__':
     # print(wa.annotations.getFeatures())
     for rec in GFF.parse(args.gff3):
         for feature in rec.features:
+            # Convert the feature into a presentation that Apollo will accept
             featureData = featuresToFeatureSchema([feature])
 
             try:
+                # We're experiencing a (transient?) problem where gene_001 to
+                # gene_025 will be rejected. Thus, hardcode to a known working
+                # gene name and update later.
                 featureData[0]['name'] = 'gene_000'
+                # Extract CDS feature from the feature data, this will be used
+                # to set the CDS location correctly (apollo currently screwing
+                # this up (2.0.6))
                 CDS = featureData[0]['children'][0]['children']
                 CDS = [x for x in CDS if x['type']['name'] == 'CDS'][0]['location']
+                # Create the new feature
                 newfeature = wa.annotations.addFeature(featureData, trustme=True)
+                # Extract the UUIDs that apollo returns to us
                 mrna_id = newfeature['features'][0]['uniquename']
                 gene_id = newfeature['features'][0]['parent_id']
+                # Sleep to give it time to actually persist the feature. Apollo
+                # is terrible about writing + immediately reading back written
+                # data.
                 time.sleep(1)
-                # Strand stuff
+                # Correct the translation start, but with strand specific log
                 if CDS['strand'] == 1:
                     wa.annotations.setTranslationStart(mrna_id, min(CDS['fmin'], CDS['fmax']))
                 else:
                     wa.annotations.setTranslationStart(mrna_id, max(CDS['fmin'], CDS['fmax']) - 1)
 
+                # Finally we set the name, this should be correct.
                 wa.annotations.setName(mrna_id, feature.qualifiers.get('product', ["Unknown"])[0])
                 wa.annotations.setName(gene_id, feature.qualifiers.get('product', ["Unknown"])[0])
-            except Exception:
-                print failed, feature.id
-            # sys.exit()
 
-            # try:
-                # mRNA_data = featuresToFeatureSchema([feature.sub_features[0]])
-                # resp = wa.annotations.addTranscript(
-                    # {
-                        # 'features': mRNA_data
-                    # }, trustme=True
-                # )
+                for (k, v) in feature.qualifiers.items():
+                    if k not in bad_quals:
+                        # set qualifier
+                        pass
 
-            # # Get the unique ID back from apollo
-                # mRNA_uniq = resp['features'][0]['uniquename']
-                # # Mapping table
-                # sys.stdout.write('\t'.join([
-                    # feature.id,
-                    # mRNA_uniq,
-                    # 'success',
-                    # "Dropped qualifiers: %s" % (json.dumps({k: v for (k, v) in feature.qualifiers.items() if k not in bad_quals})),
-                # ]))
-            # except Exception as e:
-                # sys.stdout.write('\t'.join([
-                    # feature.id,
-                    # '',
-                    # 'UNKNOWN ERROR',
-                    # str(e)
-                # ]))
+                sys.stdout.write('\t'.join([
+                    feature.id,
+                    gene_id,
+                    'success',
+                    "Dropped qualifiers: %s" % (json.dumps({k: v for (k, v) in feature.qualifiers.items() if k not in bad_quals})),
+                ]))
+            except Exception as e:
+                sys.stdout.write('\t'.join([
+                    feature.id,
+                    '',
+                    'ERROR',
+                    str(e)
+                ]))
 
-            # sys.stdout.write('\n')
+            sys.stdout.write('\n')
