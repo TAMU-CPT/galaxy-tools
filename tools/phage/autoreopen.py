@@ -14,6 +14,13 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 # TODO: This tool depends on PY2K ONLY TOOLS. THIS WILL(MAY?) NOT FUNCTINO UNDER PY3.
 
 
+class Evidence(Enum):
+    None = 0
+    Assumption = 1
+    BLAST = 2
+    PhageTerm = 3
+
+
 class PhageType(Enum):
     ShortTR= 1
     LongTR = 2
@@ -144,7 +151,7 @@ class PhageReopener:
 
         # reduce to set
         blast_result = list(set(blast_result))
-        ph_type = PhageType.Unknown
+        ph_type = None
         # Handle results
         if len(blast_result) == 1:
             blast_type, protein_name = blast_result[0]
@@ -163,36 +170,37 @@ class PhageReopener:
                 ph_type = PhageType.T4Headful
             else:
                 log.warning("PhageType %s??", blast_type)
-                return ph_type, None
+                return None
 
             return ph_type, self._safeOpeningLocationForFeature(self.featureDict[protein_name])
         else:
             log.warning("%s blast results for this protein", len(blast_results))
-            return ph_type, None
+            return None
 
     def detectType(self):
         # Naive annotation, we run these NO MATTER WHAT.
         self.protein_fasta = self._orfCalls()
-        self.blast_result = self._blast(self.protein_fasta)
+        (blast_type, blast_reopen_location) = self._blast(self.protein_fasta)
 
         # Try their tool
         results = self._runPhageTerm()
-        good_result = False
+        # Currently assuming it will fail since don't know how to interpret the
+        # results.
+        if False:
+            return (PhageType.Unknown, None, Evidence.PhageTerm)
 
-        if good_result:
-            return "TR/COS + Location"
+        # Next we failover to blast results.
+        if blast_type:
+            # This will give us a tuple, (PhageType, locationToReopen)
+            return (blast_type, blast_reopen_location, Evidence.BLAST)
 
-        if self.blast_result:
-            print(self.blast_result)
-        else:
-            # No results or multiple results (not useful in any case)
-            pass
-
-        # If closed
+        # Failing that, if the genome is closed
         if self.closed:
-            return "ASSUMING PAC"
+            # we assume it is headful
+            return (PhageType.PacHeadful, None, Evidence.Assumption)
         else:
-            return "UNKNOWN: AS_IS"
+            # Otherwise we truly have no clue
+            return (PhageType.Unknown, None, Evidence.None)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Automatic re-opening tool')
