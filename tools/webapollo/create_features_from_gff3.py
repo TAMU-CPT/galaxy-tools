@@ -45,22 +45,26 @@ if __name__ == '__main__':
             featureData = featuresToFeatureSchema([feature])
 
             try:
+                print '****'
+                print featureData
+                print '****'
                 CDS = featureData[0]['children'][0]['children']
                 CDS = [x for x in CDS if x['type']['name'] == 'CDS'][0]['location']
-                asdf = wa.annotations.addFeature(featureData, trustme=True)
-                # print(asdf)
-                gene_id = asdf['features'][0]['uniquename']
+                newfeature = wa.annotations.addFeature(featureData, trustme=True)
+                print '------'
+                print 'worked'
+                print '------'
+                gene_id = newfeature['features'][0]['uniquename']
                 time.sleep(1)
-                # Strand stuff???
+                # Strand stuff
                 if CDS['strand'] == 1:
                     wa.annotations.setTranslationStart(gene_id, min(CDS['fmin'], CDS['fmax']))
                 else:
-                    pass
-                    # wa.annotations.setTranslationStart(gene_id, max(CDS['fmin'], CDS['fmax']))
+                    wa.annotations.setTranslationStart(gene_id, max(CDS['fmin'], CDS['fmax']) - 1)
 
                 wa.annotations.setName(gene_id, feature.qualifiers.get('product', ["Unknown"])[0])
             except:
-                print(featureData)
+                pass
             # sys.exit()
 
             # try:
