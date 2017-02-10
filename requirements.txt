@@ -9,3 +9,5 @@ jinja2
 graphviz
 future
 requests
+enum34
+intervaltree

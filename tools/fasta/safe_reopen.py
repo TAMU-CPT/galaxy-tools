@@ -2,6 +2,7 @@
 import sys
 import argparse
 import logging
+from intervaltree import IntervalTree
 from Bio import SeqIO
 from BCBio import GFF
 logging.basicConfig(level=logging.INFO)
@@ -10,78 +11,40 @@ log = logging.getLogger()
 
 def extract_gff3_regions(gff3_files):
     data = {}
-    for idx, file in enumerate(gff3_files):
+    for file in gff3_files:
         for record in GFF.parse(file):
             if record.id not in data:
-                data[record.id] = {}
+                data[record.id] = IntervalTree()
 
-            if idx not in data[record.id]:
-                data[record.id][idx] = []
+            for gene in record.features:
+                if gene.type in ('remark', 'DNA', 'annotation'):
+                    continue
 
-            sorted_genes = sorted(record.features, key=lambda feature: feature.location.start)
-            if len(sorted_genes) == 0:
-                continue
-
-            current_gene = [
-                int(sorted_genes[0].location.start),
-                int(sorted_genes[0].location.end)
-            ]
-            for gene in sorted_genes[1:]:
-                # If the gene's start is contiguous to the "current_gene", then we
-                # extend current_gene
-                if gene.location.start <= current_gene[1] + 10:
-                    current_gene[1] = int(gene.location.end)
-                else:
-                    # If it's discontiguous, we append the region and clear.
-                    data[record.id][idx].append(current_gene)
-                    current_gene = [int(gene.location.start), int(gene.location.end)]
-
-            # This generally expected that annotations would NOT continue unto the end
-            # of the genome, however that's a bug, and we can make it here with an
-            # empty contiguous_regions list
-            data[record.id][idx].append(current_gene)
+                data[record.id][int(gene.location.start):int(gene.location.end)] = True
+    # Merge overlapping intervals
+    for key in data:
+        data[key].merge_overlaps()
     return data
 
 
-def gap_in_region(query, track):
-    for region in track:
-        if region[0] <= query <= region[1]:
-            return False
-    return True
-
-
-def gap_in_data(data, record_length):
-    # We'll pick the 0th track just for our reference.
-    # We'll also skip the first couple because...yeah.
-    for i in range(2, len(data[0]) + 1):
-        if i == 0:
-            a = (1, 1)
-            b = data[0][i]
-        elif i >= len(data[0]):
-            a = data[0][i - 1]
-            b = (record_length, None)
-        else:
-            a = data[0][i - 1]
-            b = data[0][i]
-
-        if abs(b[0] - a[1]) > 30:
-            mid = float(b[0] + a[1]) / 2
-            if len(data.keys()) == 1:
-                return mid
-            else:
-                if all([
-                    gap_in_region(mid, data[j]) for j in range(1, len(data.keys()))
-                ]):
-                    return int(mid)
-    raise Exception("Could not find acceptable gap")
+def gaps(interval):
+    sinterval = list(sorted(interval.items()))
+    for i in range(len(sinterval) - 1):
+        # Do we really care if we don't yield the wrap around one?
+        yield (sinterval[i].end, sinterval[i + 1].begin)
 
 
 def safe_reopen(fasta_file=None, gff3_files=None):
-    gff3_pos = extract_gff3_regions(gff3_files)
+    occupied_regions = extract_gff3_regions(gff3_files)
+
     for record in SeqIO.parse(fasta_file, 'fasta'):
-        after = gap_in_data(gff3_pos[record.id], len(record))
-        seq = record.seq
-        record.seq = seq[after:] + seq[0:after]
+        # Get our list of gaps for this record
+        gaps_in_data = gaps(occupied_regions[record.id])
+        # Arbitrarily choose the first one
+        after = next(gaps_in_data)
+        # Midpoint
+        after = sum(after) / 2
+        record = record[after:] + record[0:after]
         yield record
 
 
