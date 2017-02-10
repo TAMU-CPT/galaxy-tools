@@ -132,6 +132,7 @@ docs/_build/
 target/
 
 .venv
+.venv2
 cpt
 
 
