@@ -1,0 +1,48 @@
+<tool id="SignalP" name="SignalP" version="1.0.3">
+	<description>predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms.</description>
+	<command>
+		cat $infile |
+		signalp -x -T "$html_file.files_path"
+		-t "$organism_group"
+		-M $min_pred_sig_pep_len
+		-c $truncation
+		-f long -k
+        $use_html
+        -g png > $html_file
+	</command>
+	<inputs>
+		<param value="" name="infile" optional="False" type="data" label="Input Fasta File" />
+		<param value="" name="organism_group" optional="False" type="select" label="Organism Group">
+			<option value="euk">Eukaryotes</option>
+			<option value="gram+">Gram-positive bacteria</option>
+			<option value="gram-">Gram-negative bacteria</option>
+		</param>
+		<param name="d_cutoff_defaults" optional="False" type="select" label="D-cutoff values">
+			<option value="Default">Default (optimized for correlation)</option>
+			<!-- <option value="Sensitive">Sensitive (reproduce SignalP 3.0's sensitivity)</option> -->
+			<option value="User">User Defined (set below)</option>
+		</param>
+		<param value="0.45" name="d_cutoff_notm" type="float" label="D-cutoff for SignalP-noTM networks"/>
+		<param value="0.50" name="d_cutoff_tm" type="float" label="D-cutoff for SignalP-TM networks"/>
+		<param value="10" name="min_pred_sig_pep_len" type="float" label="Minimal predicted signal peptide length"/>
+		<param value="70" name="truncation" type="integer" label="N-terminal truncation of input sequence (0 means no truncation)."/>
+		<param value="" name="use_html" type="boolean" truevalue="-w" falsevalue="" label="HTML Output" />
+	</inputs>
+	<outputs>
+		<data format="html" name="html_file" label="SignalP Output" >
+	<change_format>
+		<when input="use_html" value="" format="txt"/>
+		<when input="use_html" value="-w" format="HTML"/>
+	</change_format>
+        </data>
+	</outputs>
+    <stdio>
+        <regex match="Exception" source="stderr" level="fatal" description="Tool exception"/>
+    </stdio>
+	<help>
+
+	</help>
+    <citations>
+        <citation type="doi">10.1038/nmeth.1701</citation>
+    </citations>
+</tool>

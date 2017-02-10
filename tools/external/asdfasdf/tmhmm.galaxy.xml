@@ -1,0 +1,24 @@
+<tool id="TMHMM" name="TMHMM" version="1.0.2">
+	<description>predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms.</description>
+	<command>
+		cat $infile | 
+		tmhmm.pl -workdir "$html_file.files_path"  
+		$use_html $reportempty -galaxy -plot > $html_file
+	</command>
+	<inputs>
+		<param value="" name="infile" optional="False" type="data" format="fasta" label="Input Fasta File" />
+		<param value="" name="use_html" type="boolean" truevalue="-html" falsevalue="" label="HTML Output" />
+		<param value="" name="reportempty" type="boolean" truevalue="-reportempty" falsevalue="" label="Report empty results (those without TMDs)" />
+	</inputs>
+	<outputs>
+<data name="html_file" label="TMHMM Output">
+	<change_format>
+		<when input="use_html" value="" format="txt"/>
+		<when input="use_html" value="-html" format="HTML"/>
+	</change_format>
+</data>
+	</outputs>
+	<help>
+
+	</help>
+</tool>
