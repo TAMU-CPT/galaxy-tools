@@ -7,3 +7,5 @@ pypng
 pygal
 jinja2
 graphviz
+future
+requests
