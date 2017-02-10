@@ -46,6 +46,7 @@
     <tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" labels="new,danger"/>
     <tool file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" labels="new,experimental"/>
     <tool file="cpt2/galaxy-tools/tools/webapollo/json2iframe.xml" />
+    <tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_apollo_sd.xml" labels="new"/>
     <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/webapollo/find_organism.xml" />-->
     <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/webapollo/add_organism.xml" />-->
     <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/webapollo/update_organism.xml" />-->
