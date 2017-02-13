@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
 
-    password = pwgen(12)
+    password = pwgen(24)
     time.sleep(1)
     users = wa.users.loadUsers()
     user = [u for u in users
