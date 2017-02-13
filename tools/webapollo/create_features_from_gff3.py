@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     # TODO: Check user perms on org.
     org = wa.organisms.findOrganismByCn(org_cn)
-    wa.annotations.setSequence(org['commonName'], org['id'])
+    wa.annotations.setSequence('Mijalis', org['id'])
 
     bad_quals = ['date_creation', 'source', 'owner', 'date_last_modified', 'Name', 'ID']
 
@@ -43,25 +43,26 @@ if __name__ == '__main__':
     for rec in GFF.parse(args.gff3):
         for feature in rec.features:
             featureData = featuresToFeatureSchema([feature])
+            print featureData
 
-            try:
-                featureData[0]['name'] = 'gene_000'
-                CDS = featureData[0]['children'][0]['children']
-                CDS = [x for x in CDS if x['type']['name'] == 'CDS'][0]['location']
-                newfeature = wa.annotations.addFeature(featureData, trustme=True)
-                mrna_id = newfeature['features'][0]['uniquename']
-                gene_id = newfeature['features'][0]['parent_id']
-                time.sleep(1)
-                # Strand stuff
-                if CDS['strand'] == 1:
-                    wa.annotations.setTranslationStart(mrna_id, min(CDS['fmin'], CDS['fmax']))
-                else:
-                    wa.annotations.setTranslationStart(mrna_id, max(CDS['fmin'], CDS['fmax']) - 1)
+            # try:
+            featureData[0]['name'] = 'gene_000'
+            CDS = featureData[0]['children'][0]['children']
+            CDS = [x for x in CDS if x['type']['name'] == 'CDS'][0]['location']
+            newfeature = wa.annotations.addFeature(featureData, trustme=True)
+            mrna_id = newfeature['features'][0]['uniquename']
+            gene_id = newfeature['features'][0]['parent_id']
+            time.sleep(1)
+            # Strand stuff
+            if CDS['strand'] == 1:
+                wa.annotations.setTranslationStart(mrna_id, min(CDS['fmin'], CDS['fmax']))
+            else:
+                wa.annotations.setTranslationStart(mrna_id, max(CDS['fmin'], CDS['fmax']) - 1)
 
-                wa.annotations.setName(mrna_id, feature.qualifiers.get('product', ["Unknown"])[0])
-                wa.annotations.setName(gene_id, feature.qualifiers.get('product', ["Unknown"])[0])
-            except Exception:
-                print failed, feature.id
+            wa.annotations.setName(mrna_id, feature.qualifiers.get('product', ["Unknown"])[0])
+            wa.annotations.setName(gene_id, feature.qualifiers.get('product', ["Unknown"])[0])
+            # except Exception as e:
+                # print e, feature.id
             # sys.exit()
 
             # try:
