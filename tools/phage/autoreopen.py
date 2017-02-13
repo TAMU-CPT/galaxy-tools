@@ -11,11 +11,12 @@ from gff3 import feature_lambda, \
     coding_genes, genes, get_gff3_id, feature_test_location, get_rbs_from, nice_name
 from safe_reopen import extract_gff3_regions, gaps
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+DATA_DIR = os.path.join(SCRIPT_DIR, 'reopen-data')
 # TODO: This tool depends on PY2K ONLY TOOLS. THIS WILL(MAY?) NOT FUNCTINO UNDER PY3.
 
 
 class Evidence(Enum):
-    None = 0
+    NONE = 0
     Assumption = 1
     BLAST = 2
     PhageTerm = 3
@@ -45,7 +46,7 @@ class PhageReopener:
         self.fq2 = fastq2
 
     def _orfCalls(self):
-        fnmga = str(self.fasta.id) + '.mga'
+        fnmga = os.path.join(DATA_DIR, str(self.fasta.id) + '.mga')
         if not os.path.exists(fnmga):
             # Run MGA
             subprocess.check_call([
@@ -85,7 +86,7 @@ class PhageReopener:
         return fnpfa
 
     def _runPhageTerm(self):
-        fn = str(self.fasta.id) + '.json'
+        fn = os.path.join(DATA_DIR, str(self.fasta.id) + '.json')
         if not os.path.exists(fn):
             subprocess.check_call([
                 'python2', os.path.join(os.pardir, 'external', 'phageterm', 'PhageTerm.py'),
@@ -200,7 +201,7 @@ class PhageReopener:
             return (PhageType.PacHeadful, None, Evidence.Assumption)
         else:
             # Otherwise we truly have no clue
-            return (PhageType.Unknown, None, Evidence.None)
+            return (PhageType.Unknown, None, Evidence.NONE)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Automatic re-opening tool')
