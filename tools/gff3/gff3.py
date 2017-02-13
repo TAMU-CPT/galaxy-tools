@@ -232,19 +232,20 @@ def wa_unified_product_name(feature):
     'product' or 'Product', othertimes in 'Name'
     """
     # Manually applied tags.
-    try:
-        protein_product = feature.qualifiers.get('product', feature.qualifiers.get('Product', [None]))[0]
-    except:
-        protein_product = None
+    protein_product = feature.qualifiers.get('product', feature.qualifiers.get('Product', [None]))[0]
 
     # If neither of those are available ...
     if protein_product is None:
         # And there's a name...
         if 'Name' in feature.qualifiers:
-            if feature.qualifiers['Name'][0].count('-') < 3:
+            if not is_uuid(feature.qualifiers['Name'][0]):
                 protein_product = feature.qualifiers['Name'][0]
 
     return protein_product
+
+
+def is_uuid(name):
+    return name.count('-') == 4 and len(name) == 36
 
 
 def get_rbs_from(gene):

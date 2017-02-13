@@ -10,16 +10,25 @@ import re
 from Bio import SeqIO
 from Bio.Alphabet import generic_dna
 from BCBio import GFF
-from gff3 import feature_lambda, wa_unified_product_name
+from gff3 import feature_lambda, wa_unified_product_name, is_uuid
 default_name = re.compile("^gene_(\d+)$")
 
 
 def rename_key(ds, k_f, k_t):
     """Rename a key in a dictionary and return it, FP style"""
+    # If they key is not in the dictionary, just return immediately
     if k_f not in ds:
         return ds
 
-    ds[k_t] = ds[k_f]
+    # Otherwise, we check if the target key is in there
+    if k_t in ds:
+        # If it is, we need to append
+        ds[k_t] += ds[k_f]
+    else:
+        # if not, we can just set.
+        ds[k_t] = ds[k_f]
+
+    # Remove source
     del ds[k_f]
     return ds
 
@@ -33,8 +42,7 @@ def gff3_to_genbank(gff_file, fasta_file):
 
     for record in gff_iter:
         full_feats = []
-        features = record.features
-        for feature in features:
+        for feature in record.features:
             if feature.type == 'region' and 'source' in feature.qualifiers and \
                     'GenBank' in feature.qualifiers['source']:
                 feature.type = 'source'
@@ -56,41 +64,47 @@ def gff3_to_genbank(gff_file, fasta_file):
         replacement_feats = []
         # We'll re-do gene numbering while we're at it
         fid = 0
+
         # Renumbering requires sorting
-        for feat in sorted(
-            feature_lambda(features, test_true, {}, subfeatures=True),
-            # Based on feature location
-            key=lambda x: int(x.location.start)
-        ):
+        for feature in sorted(feature_lambda(record.features, lambda x: x.type == 'gene', {}, subfeatures=True),
+                              key=lambda x: int(x.location.start)):
 
             # Our modifications only involve genes
-            if feat.type == 'gene':
-                fid += 1
-                # Which have mRNAs we'll drop later
-                for mRNA in feat.sub_features:
-                    # And some exons below that
-                    for sf in mRNA.sub_features:
-                        # We set a locus_tag
-                        sf.qualifiers['locus_tag'] = 'gene_%03d' % fid
-                        # and if it is the CDS (not the RBS)
-                        if sf.type == 'exon' and len(sf) > 15:
-                            # We copy over the parent gene's data. Argh, apollo.
-                            sf.qualifiers.update(feat.qualifiers)
-                # Wipe out the parent gene's data, leaving only a locus_tag
-                feat.qualifiers = {
-                    'locus_tag': 'gene_%03d' % fid,
-                }
-            elif feat.type in ('mRNA', 'exon'):
-                # already been handled. EWW.
-                continue
+            fid += 1
+            # Which have mRNAs we'll drop later
+            for mRNA in feature.sub_features:
+                # And some exons below that
+                sf_replacement = []
+                for sf in mRNA.sub_features:
+                    # We set a locus_tag on ALL sub features
+                    sf.qualifiers['locus_tag'] = 'gene_%03d' % fid
+                    # Remove Names which are UUIDs
+                    if is_uuid(sf.qualifiers['Name'][0]):
+                        del sf.qualifiers['Name']
+
+                    # If it is the RBS exon (mis-labelled by apollo as 'exon')
+                    if sf.type == 'exon' and len(sf) < 10:
+                        sf.type = 'Shine_Dalgarno_sequence'
+                        sf_replacement.append(sf)
+                    # and if it is the CDS
+                    elif sf.type == 'CDS':
+                        # Update CDS qualifiers with all info that was on parent
+                        sf.qualifiers.update(feature.qualifiers)
+                        sf_replacement.append(sf)
+
+                # Replace the subfeatures on the mRNA
+                mRNA.sub_features = sf_replacement
+            # Wipe out the parent gene's data, leaving only a locus_tag
+            feature.qualifiers = {
+                'locus_tag': 'gene_%03d' % fid,
+            }
 
             # Patch our features back in (even if they're non-gene features)
-            replacement_feats.append(feat)
-        features = replacement_feats
+            replacement_feats.append(feature)
 
         # Meat of our modifications
         for flat_feat in feature_lambda(
-                features, test_true, {}, subfeatures=True):
+                replacement_feats, test_true, {}, subfeatures=True):
 
             # We use the full GO term, but it should be less than that.
             if flat_feat.type == 'Shine_Dalgarno_sequence':
@@ -100,23 +114,13 @@ def gff3_to_genbank(gff_file, fasta_file):
             if flat_feat.type in ('mRNA', 'non_canonical_three_prime_splice_site', 'non_canonical_five_prime_splice_site'):
                 continue
 
+            if flat_feat.type == 'CDS' and len(flat_feat) < 10:
+                # Another RBS mistake
+                continue
+
             # Try and figure out a name. We gave conflicting instructions, so
             # this isn't as trivial as it should be.
             protein_product = wa_unified_product_name(flat_feat)
-
-            # If the feature is an exon (there will be two (+?))
-            if flat_feat.type == 'exon':
-                # If the exon is SHORT that means it's the
-                # Shine_Dalgarno_sequence, otherwise it's the CDS
-                if len(flat_feat) <= 15:
-                    flat_feat.type = 'RBS'
-                else:
-                    flat_feat.type = 'CDS'
-
-                if 'Name' in flat_feat.qualifiers:
-                    del flat_feat.qualifiers['Name']
-            # if 'ID' in flat_feat.qualifiers:
-                # flat_feat.qualifiers['locus_tag'] = flat_feat.qualifiers['ID']
 
             for x in ('source', 'phase', 'Parent', 'ID', 'owner',
                       'date_creation', 'date_last_modified'):
@@ -133,9 +137,11 @@ def gff3_to_genbank(gff_file, fasta_file):
 
             # In genbank format, note is lower case.
             flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'Note', 'note')
-
-            # Dbxref is db_xref
+            flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'description', 'note')
+            flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'protein', 'note')
             flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'Dbxref', 'db_xref')
+            if 'Name' in flat_feat.qualifiers:
+                del flat_feat.qualifiers['Name']
 
             # Append the feature
             full_feats.append(flat_feat)
