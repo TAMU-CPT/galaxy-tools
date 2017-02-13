@@ -232,7 +232,10 @@ def wa_unified_product_name(feature):
     'product' or 'Product', othertimes in 'Name'
     """
     # Manually applied tags.
-    protein_product = feature.qualifiers.get('product', feature.qualifiers.get('Product', [None]))[0]
+    try:
+        protein_product = feature.qualifiers.get('product', feature.qualifiers.get('Product', [None]))[0]
+    except:
+        protein_product = None
 
     # If neither of those are available ...
     if protein_product is None:
