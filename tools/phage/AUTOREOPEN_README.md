@@ -18,7 +18,9 @@ This tool does *awful* things, so you'll want to be running under python2.
 
 ## Ready to run
 
+```
 python autoreopen.py reopen-data/mis.fa reopen-data/r1.fq reopen-data/r2.fq
+```
 
 
 # Outline
@@ -60,7 +62,5 @@ def alignToCanonical():
 	- reopen there
 	- if the alignment was to T1, then we rev-com the genome after re-opening relative to parent.
 - else:
-	- if TR: tell user to manually look at sequencing data
-	- if Cos: assume it is opened in the correct location
 	- if closed (i.e. Pac): tell the user "Unknown Pac headful", no idea where to re-open
 	- else (unclosed): tell the user "Completely Unknown"
