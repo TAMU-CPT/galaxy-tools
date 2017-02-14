@@ -7,12 +7,14 @@ from enum import Enum
 from Bio import SeqIO
 from BCBio import GFF
 from cpt_convert_mga_to_gff3 import mga_to_gff3
-from gff3 import feature_lambda, \
-    coding_genes, genes, get_gff3_id, feature_test_location, get_rbs_from, nice_name
+from gff3 import feature_lambda
 from safe_reopen import extract_gff3_regions, gaps
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, 'reopen-data')
 # TODO: This tool depends on PY2K ONLY TOOLS. THIS WILL(MAY?) NOT FUNCTINO UNDER PY3.
+import logging
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger('autoreopen')
 
 
 class Evidence(Enum):
@@ -27,10 +29,10 @@ class PhageType(Enum):
     LongTR = 2
     Prime3Cos = 3
     Prime5Cos = 4
-    Cos = 5
     PacHeadful = 6
     T4Headful = 7
-    Unknown = 8
+    MuLike = 8
+    Unknown = 9
 
 
 class PhageReopener:
@@ -100,6 +102,32 @@ class PhageReopener:
 
         with open(fn, 'r') as handle:
             return json.load(handle)
+
+    def _analysePhageTerm(self, results):
+        phtype = None
+        opening = None
+
+        if results['P_class'] == "COS (3')":
+            phtype = PhageType.Prime3Cos
+        elif results['P_class'] == "COS (5')":
+            phtype = PhageType.Prime5Cos
+        elif results['P_class'] == 'DTR (long)':
+            phtype = PhageType.LongTR
+        elif results['P_class'] == 'DTR (short)':
+            phtype = PhageType.ShortTR
+        elif results['P_class'] == 'Headful (pac)':
+            phtype = PhageType.PacHeadful
+            if results['ArtOrient'] == 'Forward':
+                opening = results['picOUT_norm_forw'][0][1]
+            elif results['ArtOrient'] == 'Forward':
+                opening = results['picOUT_norm_rev'][0][1]
+            else:
+                log.warning("Unknown opening from PhageTerm")
+        elif results['P_class'] == 'Mu-like':
+            phtype = PhageType.MuLike
+
+
+        return (phtype, opening, Evidence.PhageTerm)
 
     def _safeOpeningLocationForFeature(self, feature):
         """Given a feature, find a 'safe' location to re-open the genome.
@@ -187,8 +215,8 @@ class PhageReopener:
         results = self._runPhageTerm()
         # Currently assuming it will fail since don't know how to interpret the
         # results.
-        if False:
-            return (PhageType.Unknown, None, Evidence.PhageTerm)
+        if results:
+            return self._analysePhageTerm(results)
 
         # Next we failover to blast results.
         if blast_type:
