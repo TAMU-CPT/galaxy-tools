@@ -27,7 +27,11 @@
             <h1>PhageTerm</h1>
           </div>
           <h4>Packaging strategy: <span style="font-weight: bold">{{PhageTerm.type}}</span></h4>
-          <h4>Proposed location to open: <span style="font-weight: bold">{{PhageTerm.location[1]}} on the {{PhageTerm.location[0]}} strand</span></h4>
+          {% if PhageTerm.location == ['Unknown'] %}
+          <h4>Proposed location to open: <span style="font-weight: bold">Unknown</span></h4>
+          {% else %}
+          <h4>Proposed location to open: <span style="font-weight: bold">{{PhageTerm.location[1]}} on the {{PhageTerm.location[0].lower()}} strand</span></h4>
+          {% endif %}
         </div>
       </div>
 

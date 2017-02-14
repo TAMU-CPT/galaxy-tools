@@ -126,6 +126,9 @@ class PhageReopener:
         else:
             phtype = PhageType.Unknown
 
+        if phtype == PhageType.Unknown:
+            opening = ['Unknown']
+
         return (phtype, opening, Evidence.PhageTerm)
 
     def _safeOpeningLocationForFeature(self, feature):
@@ -204,7 +207,7 @@ class PhageReopener:
             return blast_results, ph_type, ['forward' if f.strand > 0 else 'reverse', self._safeOpeningLocationForFeature(f)]
         else:
             log.warning("%s blast results for this protein", len(blast_results))
-            return blast_results, ph_type, ['Unknown',  'Unknown']
+            return blast_results, ph_type, ['Unknown']
 
     def giveEvidence(self):
         kwargs = {}
