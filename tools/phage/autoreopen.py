@@ -17,6 +17,11 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger('autoreopen')
 
 
+class AutoreopenException(Exception):
+    """Class to base exceptions off of. This allows us to catch normal program
+    exceptions without catching worse things as well."""
+    pass
+
 class Evidence(Enum):
     NONE = 0
     Assumption = 1
@@ -31,18 +36,14 @@ class PhageType(Enum):
     Prime5Cos = 4
     PacHeadful = 6
     T4Headful = 7
-    MuLike = 8
-    Unknown = 9
+    Unknown = 8
 
 
 class PhageReopener:
 
     def __init__(self, fasta, fastq1, fastq2, closed=False):
         self.rec_file = fasta
-        recs = list(SeqIO.parse(fasta, 'fasta'))
-        if len(recs) > 1:
-            raise Exception("Cannot process files with >1 sequence")
-        self.fasta = recs[0]
+        self.fasta = SeqIO.read(fasta, 'fasta')[0]
         self.closed = closed
         self.fq1 = fastq1
         self.fq2 = fastq2
@@ -109,22 +110,38 @@ class PhageReopener:
 
         if results['P_class'] == "COS (3')":
             phtype = PhageType.Prime3Cos
+            if results['T_left'] == 'fixed' and results['T_right'] == 'fixed':
+                opening = (results['picOUT_norm_forw'][0][1] + 1, results['picOUT_norm_rev'][0][1] + 1)
+            else:
+                raise AutoreopenException("Cannot interpret this automatically, yet.")
         elif results['P_class'] == "COS (5')":
             phtype = PhageType.Prime5Cos
+            if results['T_left'] == 'fixed' and results['T_right'] == 'fixed':
+                opening = (results['picOUT_norm_forw'][0][1] + 1, results['picOUT_norm_rev'][0][1] + 1)
+            else:
+                raise AutoreopenException("Cannot interpret this automatically, yet.")
         elif results['P_class'] == 'DTR (long)':
             phtype = PhageType.LongTR
+            if results['T_left'] == 'fixed' and results['T_right'] == 'fixed':
+                opening = (results['picOUT_norm_forw'][0][1] + 1, results['picOUT_norm_rev'][0][1] + 1)
+            else:
+                raise AutoreopenException("Cannot interpret this automatically, yet.")
         elif results['P_class'] == 'DTR (short)':
             phtype = PhageType.ShortTR
+            if results['T_left'] == 'fixed' and results['T_right'] == 'fixed':
+                opening = (results['picOUT_norm_forw'][0][1] + 1, results['picOUT_norm_rev'][0][1] + 1)
+            else:
+                raise AutoreopenException("Cannot interpret this automatically, yet.")
         elif results['P_class'] == 'Headful (pac)':
             phtype = PhageType.PacHeadful
             if results['ArtOrient'] == 'Forward':
-                opening = results['picOUT_norm_forw'][0][1]
+                opening = results['picOUT_norm_forw'][0][1] + 1
             elif results['ArtOrient'] == 'Forward':
-                opening = results['picOUT_norm_rev'][0][1]
+                opening = results['picOUT_norm_rev'][0][1] + 1
             else:
-                log.warning("Unknown opening from PhageTerm")
-        elif results['P_class'] == 'Mu-like':
-            phtype = PhageType.MuLike
+                raise AutoreopenException("Unknown opening from PhageTerm")
+        else:
+            raise AutoreopenException("Cannot interpret this automatically, yet.")
 
 
         return (phtype, opening, Evidence.PhageTerm)
