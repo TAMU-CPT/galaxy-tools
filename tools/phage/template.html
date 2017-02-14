@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Phage Reopening</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <style>
+        .page-header {
+            padding-bottom: 9px;
+            margin: 40px 0 20px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+          <div class="page-header">
+            <h1>PhageTerm</h1>
+          </div>
+          <h4>Packaging strategy: <span style="font-weight: bold">{{PhageTerm.type}}</span></h4>
+          <h4>Proposed location to open: <span style="font-weight: bold">{{PhageTerm.location[1]}} on the {{PhageTerm.location[0]}} strand</span></h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+          <div class="page-header">
+            <h1>Terminase BLAST</h1>
+          </div>
+          <h4>Packaging strategy: <span style="font-weight: bold">{{BLAST.type}}</span></h4>
+          <h4>Proposed location to open: <span style="font-weight: bold">{{BLAST.location[1]}} on the {{BLAST.location[0]}} strand*</span></h4>
+          <h5>*Note: This suggestion is based on a location immediately upstream of the found terminase.</h5>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th>Query</th>
+                    <th>Subject</th>
+                    <th>E value</th>
+                    <th>% identical matches</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for result in BLAST.results %}
+                <tr>
+                    <td>{{result[3]}}</td>
+                    <td>{{result[0].split('|')[1]}}</td>
+                    <td>{{result[1]}}</td>
+                    <td>{{result[2]}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+          <div class="page-header">
+            <h1>Canonical Phage BLAST</h1>
+          </div>
+          <h4>Packaging strategy: <span style="font-weight: bold"></span></h4>
+          <h4>Proposed location to open: <span style="font-weight: bold">[loc] on the [strand] strand*</span></h4>
+          <h5>*Note: This suggestion is based on genome synteny</h5>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
+

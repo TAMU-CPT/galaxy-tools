@@ -9,6 +9,7 @@ from BCBio import GFF
 from cpt_convert_mga_to_gff3 import mga_to_gff3
 from gff3 import feature_lambda
 from safe_reopen import extract_gff3_regions, gaps
+from jinja2 import Environment, FileSystemLoader
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, 'reopen-data')
 # TODO: This tool depends on PY2K ONLY TOOLS. THIS WILL(MAY?) NOT FUNCTINO UNDER PY3.
@@ -16,6 +17,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger('autoreopen')
 
+SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 
 class AutoreopenException(Exception):
     """Class to base exceptions off of. This allows us to catch normal program
@@ -122,7 +124,7 @@ class PhageReopener:
         elif results['P_class'] == 'Mu-like':
             phtype = PhageType.MuLike
         else:
-            raise AutoreopenException("Cannot interpret this automatically, yet.")
+            phtype = PhageType.Unknown
 
         return (phtype, opening, Evidence.PhageTerm)
 
@@ -177,7 +179,7 @@ class PhageReopener:
 
         # reduce to set
         blast_result = list(set(blast_result))
-        ph_type = None
+        ph_type = PhageType.Unknown
         # Handle results
         if len(blast_result) == 1:
             blast_type, protein_name = blast_result[0]
@@ -195,42 +197,51 @@ class PhageReopener:
             elif blast_type == 't4-headful':
                 ph_type = PhageType.T4Headful
             else:
-                log.warning("PhageType %s??", blast_type)
-                return None
+                # log.warning("PhageType %s??", blast_type)
+                ph_type = PhageType.Unknown
 
             f = self.featureDict[protein_name]
-            return ph_type, ('Forward' if f.strand > 0 else 'Reverse', self._safeOpeningLocationForFeature(f))
+            return blast_results, ph_type, ['forward' if f.strand > 0 else 'reverse', self._safeOpeningLocationForFeature(f)]
         else:
             log.warning("%s blast results for this protein", len(blast_results))
-            return None
+            return blast_results, ph_type, ['Unknown',  'Unknown']
 
-    def detectType(self):
+    def giveEvidence(self):
+        kwargs = {}
         # Naive annotation, we run these NO MATTER WHAT.
         self.protein_fasta = self._orfCalls()
-        (blast_type, blast_reopen_location) = self._blast(self.protein_fasta)
+        (blast_results, blast_type, blast_reopen_location) = self._blast(self.protein_fasta)
 
         # Try their tool
-        try:
-            results = self._runPhageTerm()
-            (phageterm_type, phageterm_location) = self._analysePhageTerm(results)
-            return (phageterm_type, phageterm_location, Evidence.PhageType)
-        except AutoreopenException:
-            # Here we've failed to get a useful result from Phage Term, so
-            # continue on.
-            pass
+        results = self._runPhageTerm()
+        (phageterm_type, phageterm_location, phageterm_evidence) = self._analysePhageTerm(results)
+        phageterm = {'type': phageterm_type.name,
+                     'location': phageterm_location}
+        kwargs['PhageTerm'] = phageterm
 
-        # Next we failover to blast results.
-        if blast_type:
-            # This will give us a tuple, (PhageType, locationToReopen)
-            return (blast_type, blast_reopen_location, Evidence.BLAST)
+        # Next we failover to blast results of terminases.
+        blast = {'type': blast_type.name,
+                 'location': blast_reopen_location,
+                 'results': [x.split() for x in blast_results]}
+        kwargs['BLAST'] = blast
 
         # Failing that, if the genome is closed
         if self.closed:
             # we assume it is headful
-            return (PhageType.PacHeadful, None, Evidence.Assumption)
+            # yield (PhageType.PacHeadful, None, Evidence.Assumption)
+            pass
         else:
             # Otherwise we truly have no clue
-            return (PhageType.Unknown, None, Evidence.NONE)
+            # yield (PhageType.Unknown, None, Evidence.NONE)
+            pass
+
+        env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
+        tpl = env.get_template('template.html')
+        with open('report.html', 'w') as html:
+            html.write(tpl.render(**kwargs).encode('utf-8'))
+
+    def detectType(self):
+        pass
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Automatic re-opening tool')
@@ -242,4 +253,5 @@ if __name__ == '__main__':
 
     # create new IntronFinder object based on user input
     pr = PhageReopener(**vars(args))
-    print(pr.detectType())
+    pr.giveEvidence()
+    # pr.detectType()
