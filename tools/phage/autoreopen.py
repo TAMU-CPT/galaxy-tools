@@ -36,7 +36,8 @@ class PhageType(Enum):
     Prime5Cos = 4
     PacHeadful = 6
     T4Headful = 7
-    Unknown = 8
+    MuLike = 8
+    Unknown = 9
 
 
 class PhageReopener:
@@ -106,43 +107,22 @@ class PhageReopener:
 
     def _analysePhageTerm(self, results):
         phtype = None
-        opening = None
+        opening = results['reopening']
 
         if results['P_class'] == "COS (3')":
             phtype = PhageType.Prime3Cos
-            if results['T_left'] == 'fixed' and results['T_right'] == 'fixed':
-                opening = (results['picOUT_norm_forw'][0][1] + 1, results['picOUT_norm_rev'][0][1] + 1)
-            else:
-                raise AutoreopenException("Cannot interpret this automatically, yet.")
         elif results['P_class'] == "COS (5')":
             phtype = PhageType.Prime5Cos
-            if results['T_left'] == 'fixed' and results['T_right'] == 'fixed':
-                opening = (results['picOUT_norm_forw'][0][1] + 1, results['picOUT_norm_rev'][0][1] + 1)
-            else:
-                raise AutoreopenException("Cannot interpret this automatically, yet.")
         elif results['P_class'] == 'DTR (long)':
             phtype = PhageType.LongTR
-            if results['T_left'] == 'fixed' and results['T_right'] == 'fixed':
-                opening = (results['picOUT_norm_forw'][0][1] + 1, results['picOUT_norm_rev'][0][1] + 1)
-            else:
-                raise AutoreopenException("Cannot interpret this automatically, yet.")
         elif results['P_class'] == 'DTR (short)':
             phtype = PhageType.ShortTR
-            if results['T_left'] == 'fixed' and results['T_right'] == 'fixed':
-                opening = (results['picOUT_norm_forw'][0][1] + 1, results['picOUT_norm_rev'][0][1] + 1)
-            else:
-                raise AutoreopenException("Cannot interpret this automatically, yet.")
         elif results['P_class'] == 'Headful (pac)':
             phtype = PhageType.PacHeadful
-            if results['ArtOrient'] == 'Forward':
-                opening = results['picOUT_norm_forw'][0][1] + 1
-            elif results['ArtOrient'] == 'Forward':
-                opening = results['picOUT_norm_rev'][0][1] + 1
-            else:
-                raise AutoreopenException("Unknown opening from PhageTerm")
+        elif results['P_class'] == 'Mu-like':
+            phtype = PhageType.MuLike
         else:
             raise AutoreopenException("Cannot interpret this automatically, yet.")
-
 
         return (phtype, opening, Evidence.PhageTerm)
 
@@ -218,7 +198,8 @@ class PhageReopener:
                 log.warning("PhageType %s??", blast_type)
                 return None
 
-            return ph_type, self._safeOpeningLocationForFeature(self.featureDict[protein_name])
+            f = self.featureDict[protein_name]
+            return ph_type, ('Forward' if f.strand > 0 else 'Reverse', self._safeOpeningLocationForFeature(f))
         else:
             log.warning("%s blast results for this protein", len(blast_results))
             return None
@@ -229,11 +210,14 @@ class PhageReopener:
         (blast_type, blast_reopen_location) = self._blast(self.protein_fasta)
 
         # Try their tool
-        results = self._runPhageTerm()
-        # Currently assuming it will fail since don't know how to interpret the
-        # results.
-        if results:
-            return self._analysePhageTerm(results)
+        try:
+            results = self._runPhageTerm()
+            (phageterm_type, phageterm_location) = self._analysePhageTerm(results)
+            return (phageterm_type, phageterm_location, Evidence.PhageType)
+        except AutoreopenException:
+            # Here we've failed to get a useful result from Phage Term, so
+            # continue on.
+            pass
 
         # Next we failover to blast results.
         if blast_type:
@@ -258,4 +242,4 @@ if __name__ == '__main__':
 
     # create new IntronFinder object based on user input
     pr = PhageReopener(**vars(args))
-    pr.detectType()
+    print(pr.detectType())
