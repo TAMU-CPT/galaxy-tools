@@ -43,7 +43,7 @@ class PhageReopener:
 
     def __init__(self, fasta, fastq1, fastq2, closed=False):
         self.rec_file = fasta
-        self.fasta = SeqIO.read(fasta, 'fasta')[0]
+        self.fasta = SeqIO.read(fasta, 'fasta')
         self.closed = closed
         self.fq1 = fastq1
         self.fq2 = fastq2

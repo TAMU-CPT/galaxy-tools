@@ -1,7 +1,8 @@
 #!/usr/bin/env python
+import sys
+import time
 import random
 import argparse
-import time
 from webapollo import WAAuth, WebApolloInstance
 
 
@@ -15,8 +16,6 @@ if __name__ == '__main__':
     WAAuth(parser)
 
     parser.add_argument('email', help='User Email')
-    parser.add_argument('--first', help='First Name', default='Jane')
-    parser.add_argument('--last', help='Last Name', default='Aggie')
     args = parser.parse_args()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
@@ -27,13 +26,23 @@ if __name__ == '__main__':
     user = [u for u in users
             if u.username == args.email]
 
+    uargs = [
+        'bot+' + args.email.replace('@', '_') + '@cpt.tamu.edu',
+        "BOT ACCOUNT",
+        args.email,
+        password
+    ]
+
     if len(user) == 1:
         # Update name, regen password if the user ran it again
         userObj = user[0]
-        returnData = wa.users.updateUser(userObj, args.email, args.first, args.last, password)
-        print 'Updated User\nUsername: %s\nPassword: %s' % (args.email, password)
+        email = args.email
+        q = [userObj] + uargs
+        returnData = wa.users.updateUser(*q)
+        sys.stdout.write('Updated User\n')
     else:
-        returnData = wa.users.createUser(args.email, args.first, args.last, password, role='user')
-        print 'Created User\nUsername: %s\nPassword: %s' % (args.email, password)
+        returnData = wa.users.createUser(*uargs)
+        sys.stdout.write('Created User\n')
 
-    print "Return data: " + str(returnData)
+    print('Updated User\nUsername: %s\nPassword: %s' % (uargs[0], uargs[-1]))
+    print("Return data: " + str(returnData))
