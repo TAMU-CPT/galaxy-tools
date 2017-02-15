@@ -39,12 +39,13 @@ def safe_reopen(fasta_file=None, gff3_files=None):
 
     for record in SeqIO.parse(fasta_file, 'fasta'):
         # Get our list of gaps for this record
-        gaps_in_data = gaps(occupied_regions[record.id])
-        # Arbitrarily choose the first one
-        after = next(gaps_in_data)
+        gaps_in_data = list(gaps(occupied_regions[record.id]))
+        # Arbitrarily choose the last one, so we re-open a bit upstream
+        after = gaps_in_data[-1]
         # Midpoint
         after = sum(after) / 2
         record = record[after:] + record[0:after]
+        record.description += ' [SafelyReopend=%s,%s bases upstream to avoid features]' % (after, after - len(record))
         yield record
 
 

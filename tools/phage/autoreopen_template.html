@@ -50,7 +50,9 @@
             <h1>Terminase BLAST</h1>
           </div>
           <h3>TerL Identification</h3>
+		  {% if BLAST.TerL %}
           <h4>Identified putative TerL: {{ BLAST.TerL.qualifiers['ID'][0] }} (Location: <code>{{BLAST.TerL.location}}</code>)</h4>
+		  {% endif %}
           <h4>Packaging strategy: <span style="font-weight: bold">{{BLAST.type}}</span></h4>
           <h4>Proposed location to open: <span style="font-weight: bold">{{BLAST.location[1]}} on the {{BLAST.location[0]}} strand*</span></h4>
           <h5>*Note: This suggestion is based on a location immediately upstream of the found terminase.</h5>

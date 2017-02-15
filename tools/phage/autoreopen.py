@@ -53,7 +53,8 @@ class PhageType(Enum):
 class BlastBasedReopening(object):
     """Re-open genomes based on blast"""
 
-    def __init__(self, db='test-data/canonical_nucl', genome=None, genome_real=None, protein=False, data_dir=None):
+    def __init__(self, db='test-data/canonical_nucl', genome=None, genome_real=None, protein=False, data_dir=None, reopen_blastN=None):
+        self.reopen_blastN = reopen_blastN
         self.data_dir = data_dir
         self.genome = genome
         self.genome_nucleotide_real = genome_real
@@ -212,6 +213,12 @@ class BlastBasedReopening(object):
                 rec = genome_seq[loc:] + genome_seq[0:loc]
                 rec.description += ' autoreopen.reopen(%s)' % loc
                 SeqIO.write([rec], handle, 'fasta')
+                # copy the first time only.
+                if not os.path.exists(self.reopen_blastN):
+                    shutil.copy(
+                        os.path.join(new_genome_file_reopened),
+                        os.path.join(self.reopen_blastN)
+                    )
 
             updated_blast_results = self.getBlastN(new_genome_file_reopened)
             self.blast2Xmfa(updated_blast_results, 'nucl2')
@@ -226,10 +233,10 @@ class BlastBasedReopening(object):
 
     def getBlastN(self, path):
         blast_results = subprocess.check_output([
-            'blastn', '-db', self.db,
+            'blastn', '-db', self.db, '-num_threads', '4',
             '-query', path, '-outfmt', '6 sseqid evalue pident qstart qend sstart send'
         ]).strip().split('\n')
-        blast_results = [x.split('\t') for x in blast_results]
+        blast_results = [x.split('\t') for x in blast_results if len(x.strip()) > 0]
         if len(blast_results) == 0:
             log.warning("Empty blastN")
             return []
@@ -255,10 +262,11 @@ class BlastBasedReopening(object):
 
     def getBlastP(self, path):
         cmd = [
-            'blastp', '-db', self.db,
+            'blastp', '-db', self.db, '-num_threads', '4',
             '-query', path, '-outfmt', '6 qseqid sseqid evalue pident qstart qend sstart send'
         ]
         blast_results = subprocess.check_output(cmd).strip().split('\n')
+        blast_results = [x for x in blast_results if len(x.strip()) > 0]
 
         if len(blast_results) == 0:
             log.warning("Empty blastP")
@@ -370,7 +378,7 @@ class BlastBasedReopening(object):
 
 class PhageReopener:
 
-    def __init__(self, fasta, fastq1, fastq2, closed=False, data_dir=None, html=None):
+    def __init__(self, fasta, fastq1, fastq2, closed=False, data_dir=None, html=None, reopen_phageTerm=None, reopen_TerL=None, reopen_blastN=None):
         # fasta, fastq1, fastq2 are all file handles
         self.base_name = os.path.join(
             data_dir,
@@ -383,6 +391,10 @@ class PhageReopener:
         self.fq1 = fastq1
         self.fq2 = fastq2
         self.closed = closed
+
+        self.reopen_phageTerm = reopen_phageTerm
+        self.reopen_TerL = reopen_TerL
+        self.reopen_blastN = reopen_blastN
 
     def _orfCalls(self):
         fnmga = self.base_name + '.mga'
@@ -451,6 +463,28 @@ class PhageReopener:
                 os.path.join(self.data_dir, self.fasta.id + '_PhageTerm_report.pdf'),
                 os.path.join(self.data_dir, 'report.pdf')
             )
+
+        # Take the sequence, need to SAFELY re-open it.
+        # This requires generating gene calls
+        input_seq= os.path.join(self.data_dir, self.fasta.id + '_sequence.fasta')
+        tmpfile = os.path.join(self.data_dir, self.fasta.id + '_sequence.mga')
+        subprocess.check_call([
+            'mga_linux_x64', '-s', input_seq
+        ], stdout=open(tmpfile, 'w'))
+        # Ok, with gene calls done, we can now convert to gff3
+
+        tmpfile2 = os.path.join(self.data_dir, self.fasta.id + '_sequence.mga.gff3')
+        with open(tmpfile, 'r') as handle, open(tmpfile2, 'w') as output:
+            for result in mga_to_gff3(handle, open(input_seq, 'r')):
+                # Store gFF3 data in self in order to access later.
+                self.mga_rec = result
+                GFF.write([result], output)
+
+        # Now with GFF3 + fasta, we can safe_reopen
+        subprocess.check_call([
+            'python2', os.path.join(SCRIPT_DIR, 'safe_reopen.py'),
+            input_seq, tmpfile2
+        ], stdout=open(self.reopen_phageTerm, 'w'))
 
         with open(fn, 'r') as handle:
             return json.load(handle)
@@ -551,7 +585,12 @@ class PhageReopener:
         blast_result = []
         for hit in blast_results:
             (sseqid, evalue, pident, qseqid) = hit.split('\t')
-            blast_result.append((sseqid[:sseqid.index('_')], qseqid))
+            nseqid = sseqid
+            if '_' in nseqid:
+                nseqid = nseqid[:nseqid.index('_')]
+            if '|' in nseqid:
+                nseqid = nseqid[:nseqid.index('|')]
+            blast_result.append((nseqid, qseqid))
 
         # reduce to set
         blast_result = list(set(blast_result))
@@ -577,8 +616,16 @@ class PhageReopener:
                 ph_type = PhageType.Unknown
 
             f = self.featureDict[protein_name]
+            safeLoc = self._safeOpeningLocationForFeature(f)
+
+            # now to re-open there.
+            if not os.path.exists(self.reopen_TerL):
+                rec = self.fasta[safeLoc:] + self.fasta[0:safeLoc]
+                rec.description += ' blast.terL.reopen(%s)' % safeLoc
+                SeqIO.write([rec], self.reopen_TerL, 'fasta')
+
             return blast_results, ph_type, ['forward' if f.strand > 0 else 'reverse',
-                                            self._safeOpeningLocationForFeature(f)], f, self._upstreamFeatures(f)
+                                            safeLoc], f, self._upstreamFeatures(f)
         else:
             log.warning("%s blast results for this protein", len(blast_results))
             return blast_results, ph_type, ['Unknown', 'Unknown'], None, None
@@ -609,6 +656,7 @@ class PhageReopener:
         # Naive annotation, we run these NO MATTER WHAT.
         self.protein_fasta = self._orfCalls()
         (blast_results, blast_type, blast_reopen_location, blast_feature, blast_upstraem) = self._blast(self.protein_fasta)
+        # Cannot guess terS because bad bad
         terS = self._guessTerS(blast_upstraem)
 
         # Try their tool
@@ -628,7 +676,11 @@ class PhageReopener:
         kwargs['BLAST'] = blast
 
         # Then we do alignment relative to canonical
-        bbr_nucl = BlastBasedReopening(genome=self.rec_file.name, db=os.path.join(SCRIPT_DIR, 'test-data/canonical_nucl'), protein=False, data_dir=self.data_dir)
+        bbr_nucl = BlastBasedReopening(genome=self.rec_file.name,
+                                       db=os.path.join(SCRIPT_DIR,
+                                                       'test-data/canonical_nucl'),
+                                       protein=False, data_dir=self.data_dir,
+                                       reopen_blastN=self.reopen_blastN)
         kwargs['canonical_nucl'] = bbr_nucl.evaluate()
         blastp_genome = kwargs['canonical_nucl']['reopened_file']
 
@@ -670,6 +722,10 @@ def main():
     parser.add_argument('--closed', action='store_true')
     parser.add_argument('--data_dir', help='Directory for HTML files to go.')
     parser.add_argument('--html', type=argparse.FileType('w'))
+
+    parser.add_argument('--reopen_phageTerm', default='asdf')
+    parser.add_argument('--reopen_TerL', default='bsdf')
+    parser.add_argument('--reopen_blastN', default='csdf')
     args = parser.parse_args()
 
     # create new IntronFinder object based on user input
