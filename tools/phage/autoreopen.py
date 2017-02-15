@@ -230,6 +230,10 @@ class BlastBasedReopening(object):
             '-query', path, '-outfmt', '6 sseqid evalue pident qstart qend sstart send'
         ]).strip().split('\n')
         blast_results = [x.split('\t') for x in blast_results]
+        if len(blast_results) == 0:
+            log.warning("Empty blastN")
+            return []
+
         blast_results = [
             {
                 'sseqid': self.canonical_map[sseqid],
@@ -255,6 +259,11 @@ class BlastBasedReopening(object):
             '-query', path, '-outfmt', '6 qseqid sseqid evalue pident qstart qend sstart send'
         ]
         blast_results = subprocess.check_output(cmd).strip().split('\n')
+
+        if len(blast_results) == 0:
+            log.warning("Empty blastP")
+            return []
+
         blastp_locmap = open(os.path.join(SCRIPT_DIR, 'test-data', 'merged.pfa.idmap'), 'r').read().strip().split('\n')
 
         def extremes(data):
