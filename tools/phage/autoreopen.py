@@ -11,6 +11,7 @@ import numpy as np
 from enum import Enum
 from Bio import SeqIO
 from BCBio import GFF
+from Bio.SeqRecord import SeqRecord
 from cpt_convert_mga_to_gff3 import mga_to_gff3
 from gff3 import feature_lambda
 from safe_reopen import extract_gff3_regions, gaps
@@ -472,20 +473,45 @@ class PhageReopener:
         gaps_in_data = gaps(occupied_regions[self.fasta.id])
 
         best = None
-        for gap in gaps_in_data:
+
+        for gap in sorted(gaps_in_data, key=lambda x: x[0]):
             if feature.location.strand > 0:
                 # If the end of the gap is upstream
                 if gap[1] < feature.location.start:
-                    best = gap
+                    if not best:
+                        best = gap
+
+                    if feature.location.start - gap[1] < feature.location.start - best[1]:
+                        best = gap
             else:
                 # if beginning of gap is upstream
                 if gap[0] > feature.location.end:
-                    best = gap
+                    if not best:
+                        best = gap
+
+                    if gap[0] - feature.location.end < best[0] - feature.location.end:
+                        best = gap
         # Ok, we /should/ have a 'best' gap (But I think I'm missing an edge
         # case since this isn't a circular data structure...)
         # Next, get midpoint
         mid = sum(best) / 2
         return mid
+
+    def _upstreamFeatures(self, feature, distance=2000):
+        features = sorted(self.mga_rec.features, key=lambda x: x.location.start)
+        # 2 kb. I like 2.
+        if feature.location.strand > 0:
+            wantedFeatures = [
+                x for x in features
+                if feature.location.start - distance < x.location.start <= feature.location.start
+            ]
+        else:
+            wantedFeatures = [
+                x for x in features
+                if feature.location.end < x.location.end <= feature.location.end + distance
+            ]
+
+        return wantedFeatures
 
     def _blast(self, pfa):
         blast_results = subprocess.check_output([
@@ -534,16 +560,37 @@ class PhageReopener:
                 ph_type = PhageType.Unknown
 
             f = self.featureDict[protein_name]
-            return blast_results, ph_type, ['forward' if f.strand > 0 else 'reverse', self._safeOpeningLocationForFeature(f)]
+            return blast_results, ph_type, ['forward' if f.strand > 0 else 'reverse',
+                                            self._safeOpeningLocationForFeature(f)], f, self._upstreamFeatures(f)
         else:
             log.warning("%s blast results for this protein", len(blast_results))
-            return blast_results, ph_type, ['Unknown']
+            return blast_results, ph_type, ['Unknown', 'Unknown'], None, None
+
+    def _guessTerS(self, upstreamFeatures):
+        # Given a TerL feature and the features upstream of that, let's take a
+        # stab at the TerS by interpro scan searching the three genes upstream
+        # for a DNA Binding domain
+        tmpfile = os.path.join(self.data_dir, 'ters.pfa')
+        # Write out our features
+        with open(tmpfile, 'w') as handle:
+            recs = []
+            for feature in upstreamFeatures:
+                rec = SeqRecord(
+                    feature.extract(self.fasta).seq,
+                    id=feature.qualifiers['ID'][0],
+                )
+                rec.seq = rec.seq.translate(table=11)
+                recs.append(rec)
+
+            SeqIO.write(recs, tmpfile, 'fasta')
+        #sys.exit()
 
     def giveEvidence(self):
         kwargs = {}
         # Naive annotation, we run these NO MATTER WHAT.
         self.protein_fasta = self._orfCalls()
-        (blast_results, blast_type, blast_reopen_location) = self._blast(self.protein_fasta)
+        (blast_results, blast_type, blast_reopen_location, blast_feature, blast_upstraem) = self._blast(self.protein_fasta)
+        terS = self._guessTerS(blast_upstraem)
 
         # Try their tool
         results = self._runPhageTerm()
@@ -556,6 +603,8 @@ class PhageReopener:
         # Next we failover to blast results of terminases.
         blast = {'type': blast_type.name,
                  'location': blast_reopen_location,
+                 'TerL': blast_feature,
+                 'TerS': None,
                  'results': [x.split() for x in blast_results]}
         kwargs['BLAST'] = blast
 

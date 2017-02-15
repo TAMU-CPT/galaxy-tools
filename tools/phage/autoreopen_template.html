@@ -32,7 +32,7 @@
       <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
           <div class="page-header">
-            <h2>PhageTerm</h2>
+            <h1>PhageTerm</h1>
           </div>
           <h4>Packaging strategy: <span style="font-weight: bold">{{PhageTerm.type}}</span></h4>
           <h4><a href="report.pdf">See full report</a></h4>
@@ -49,11 +49,13 @@
           <div class="page-header">
             <h1>Terminase BLAST</h1>
           </div>
+          <h3>TerL Identification</h3>
+          <h4>Identified putative TerL: {{ BLAST.TerL.qualifiers['ID'][0] }} (Location: <code>{{BLAST.TerL.location}}</code>)</h4>
           <h4>Packaging strategy: <span style="font-weight: bold">{{BLAST.type}}</span></h4>
           <h4>Proposed location to open: <span style="font-weight: bold">{{BLAST.location[1]}} on the {{BLAST.location[0]}} strand*</span></h4>
           <h5>*Note: This suggestion is based on a location immediately upstream of the found terminase.</h5>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-datatable">
               <thead>
                 <tr>
                     <th>Query</th>
@@ -74,13 +76,15 @@
               </tbody>
             </table>
           </div>
+          <h3>TerS Identification</h3>
+          <p>Not currently available</p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
           <div class="page-header">
-            <h2>Canonical Phage BLAST</h2>
+            <h1>Canonical Phage BLAST</h1>
           </div>
           <h4>Packaging strategy: <span style="font-weight: bold"></span></h4>
           <h4>Proposed location to open (Nucleotide Results): <span style="font-weight: bold">{{ canonical_nucl.location }} on the {{ canonical_nucl.orientation }} strand*</span></h4>
@@ -93,7 +97,7 @@
           <h4>After automated re-opening (and/or reverse + complementing)</h4>
           <iframe src="nucl2.html" style="width: 100%; height: 200px; border: 0px" scrolling="no"></iframe>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-datatable">
               <thead>
                 <tr>
                     <th>Subject ID</th>
@@ -126,7 +130,7 @@
           <iframe src="prot2.html" style="width: 100%; height: 200px; border: 0px" scrolling="no"></iframe>
           -->
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-datatable">
               <thead>
                 <tr>
                     <th>Gene #</th>
@@ -160,7 +164,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-    $('table').DataTable({'pageLength': 6});
+    $('.table-datatable').DataTable({'pageLength': 6});
 });
 </script>
 </html>
