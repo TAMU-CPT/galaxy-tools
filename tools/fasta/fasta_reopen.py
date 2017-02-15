@@ -11,7 +11,7 @@ log = logging.getLogger()
 def reopen_contig(fasta_file, after):
     for record in SeqIO.parse(fasta_file, "fasta"):
         seq = record.seq
-        record.seq = seq[after:] + seq[0:after]
+        record.seq = seq[after - 1:] + seq[0:after - 1]
         yield [record]
 
 

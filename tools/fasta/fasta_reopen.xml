@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.fasta.reopen" name="Reopen Fasta Sequences" version="1.0">
+<tool id="edu.tamu.cpt.fasta.reopen" name="Reopen Fasta Sequences" version="2.0">
 	<description>at specific location</description>
 	<macros>
 		<import>macros.xml</import>
@@ -22,7 +22,7 @@ $after
 	<tests>
 			<test>
 					<param name="fasta_file" value="random.fa" />
-					<param name="after" value="10" />
+					<param name="after" value="11" />
 					<output name="output" file="random.reopened.fa" />
 			</test>
 	</tests>
@@ -39,7 +39,7 @@ For the example contig:
     >test
     aaaaaccccc
 
-Reopening with 5, implying that we should reopen after the fifth base, we see:
+Reopening with 6, implying that we should open at the 6th base (the 6th, 1-indexed base will be the new base-1 of our sequence), we see:
 
 ::
 
