@@ -86,7 +86,7 @@
           <div class="page-header">
             <h1>Canonical Phage BLAST</h1>
           </div>
-          <h4>Packaging strategy: <span style="font-weight: bold"></span></h4>
+          {% if canonical_nucl.location %}
           <h4>Proposed location to open (Nucleotide Results): <span style="font-weight: bold">{{ canonical_nucl.location }} on the {{ canonical_nucl.orientation }} strand*</span></h4>
           <h5>*Note: This suggestion is based on genome synteny</h5>
           <p>*Note: This suggestion is based on genome synteny</p>
@@ -122,6 +122,9 @@
               </tbody>
             </table>
           </div>
+          {% else %}
+          <b>NO BLASTN hits to Canonical Phage Database</b>
+          {% endif %}
           <h3>Protein Blast Results</h3>
           <!--
           <h4>Before automated re-opening</h4>
@@ -129,6 +132,7 @@
           <h4>After automated re-opening / revCom</h4>
           <iframe src="prot2.html" style="width: 100%; height: 200px; border: 0px" scrolling="no"></iframe>
           -->
+          {% if canonical_prot.location %}
           <div class="table-responsive">
             <table class="table table-striped table-datatable">
               <thead>
@@ -157,6 +161,9 @@
               </tbody>
             </table>
           </div>
+          {% else %}
+          <b>NO BLASTP hits to Canonical Phage Database</b>
+          {% endif %}
         </div>
       </div>
     </div>
