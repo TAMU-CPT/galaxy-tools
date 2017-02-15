@@ -96,12 +96,12 @@ class BlastBasedReopening(object):
                     {
                         "path": "n.a",
                         "name": "SubjectGenome",
-                        "length": max([max(x['sstart'], x['send']) for x in blast_results]),
+                        "length": 200000,
                     },
                     {
                         "path": "n.a",
                         "name": "QueryGenome",
-                        "length": max([max(x['qend'], x['qstart']) for x in blast_results]),
+                        "length": 200000,
                     }
                 ],
                 "gff3": ["n.a", "n.a"]
