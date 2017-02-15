@@ -7,7 +7,7 @@ python $__tool_directory__/autoreopen.py
 "$fastq1"
 "$fastq2"
 --data_dir "$report.files_path"
-> $report
+> "$report"
 ]]>
   </command>
   <inputs>
