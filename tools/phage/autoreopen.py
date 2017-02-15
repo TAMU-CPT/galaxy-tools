@@ -578,6 +578,9 @@ class PhageReopener:
         # Given a TerL feature and the features upstream of that, let's take a
         # stab at the TerS by interpro scan searching the three genes upstream
         # for a DNA Binding domain
+        if not upstreamFeatures:
+            return
+
         tmpfile = os.path.join(self.data_dir, 'ters.pfa')
         # Write out our features
         with open(tmpfile, 'w') as handle:
@@ -590,8 +593,7 @@ class PhageReopener:
                 rec.seq = rec.seq.translate(table=11)
                 recs.append(rec)
 
-            SeqIO.write(recs, tmpfile, 'fasta')
-        #sys.exit()
+            SeqIO.write(recs, handle, 'fasta')
 
     def giveEvidence(self):
         kwargs = {}
