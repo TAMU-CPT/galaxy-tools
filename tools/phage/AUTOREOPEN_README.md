@@ -19,7 +19,10 @@ This tool does *awful* things, so you'll want to be running under python2.
 ## Ready to run
 
 ```
-python autoreopen.py reopen-data/mis.fa reopen-data/r1.fq reopen-data/r2.fq
+# Make output directory if it doesn't exist (something galaxy will do automatically)
+mkdir -p reopen-output
+# Then run
+python autoreopen.py reopen-in/mis.fa reopen-in/r1.fq reopen-in/r2.fq --data_dir `pwd`/reopen-output > reopen-output/index.html
 ```
 
 
