@@ -560,12 +560,12 @@ class PhageReopener:
         kwargs['BLAST'] = blast
 
         # Then we do alignment relative to canonical
-        bbr_nucl = BlastBasedReopening(genome=self.rec_file.name, db='test-data/canonical_nucl', protein=False, data_dir=self.data_dir)
+        bbr_nucl = BlastBasedReopening(genome=self.rec_file.name, db=os.path.join(SCRIPT_DIR, 'test-data/canonical_nucl'), protein=False, data_dir=self.data_dir)
         kwargs['canonical_nucl'] = bbr_nucl.evaluate()
         kwargs['canonical_nucl']['location'] = kwargs['canonical_nucl']['location'][0]
         ## location, results, orientation
 
-        bbr_prot = BlastBasedReopening(genome=self.fnpfa, db='test-data/canonical_prot', protein=True,
+        bbr_prot = BlastBasedReopening(genome=self.fnpfa, db=os.path.join(SCRIPT_DIR, 'test-data/canonical_prot'), protein=True,
                                        genome_real=kwargs['canonical_nucl']['reopened_file'], data_dir=self.data_dir)
         kwargs['canonical_prot'] = bbr_prot.evaluate()
         # if we reversed in canonical nucl, we'll reverse the protein results
