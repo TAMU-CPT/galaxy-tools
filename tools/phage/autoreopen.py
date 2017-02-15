@@ -361,6 +361,7 @@ class PhageReopener:
     def _orfCalls(self):
         fnmga = self.base_name + '.mga'
         if not os.path.exists(fnmga):
+            log.info("%s does not exist, calling genes in %s", fnmga, self.rec_file.name)
             # Run MGA
             subprocess.check_call([
                 'mga_linux_x64', '-s', self.rec_file.name
