@@ -468,23 +468,25 @@ class PhageReopener:
         # This requires generating gene calls
         input_seq= os.path.join(self.data_dir, self.fasta.id + '_sequence.fasta')
         tmpfile = os.path.join(self.data_dir, self.fasta.id + '_sequence.mga')
-        subprocess.check_call([
-            'mga_linux_x64', '-s', input_seq
-        ], stdout=open(tmpfile, 'w'))
-        # Ok, with gene calls done, we can now convert to gff3
 
-        tmpfile2 = os.path.join(self.data_dir, self.fasta.id + '_sequence.mga.gff3')
-        with open(tmpfile, 'r') as handle, open(tmpfile2, 'w') as output:
-            for result in mga_to_gff3(handle, open(input_seq, 'r')):
-                # Store gFF3 data in self in order to access later.
-                self.mga_rec = result
-                GFF.write([result], output)
+        if os.path.exists(input_seq):
+            subprocess.check_call([
+                'mga_linux_x64', '-s', input_seq
+            ], stdout=open(tmpfile, 'w'))
+            # Ok, with gene calls done, we can now convert to gff3
 
-        # Now with GFF3 + fasta, we can safe_reopen
-        subprocess.check_call([
-            'python2', os.path.join(SCRIPT_DIR, 'safe_reopen.py'),
-            input_seq, tmpfile2
-        ], stdout=open(self.reopen_phageTerm, 'w'))
+            tmpfile2 = os.path.join(self.data_dir, self.fasta.id + '_sequence.mga.gff3')
+            with open(tmpfile, 'r') as handle, open(tmpfile2, 'w') as output:
+                for result in mga_to_gff3(handle, open(input_seq, 'r')):
+                    # Store gFF3 data in self in order to access later.
+                    self.mga_rec = result
+                    GFF.write([result], output)
+
+            # Now with GFF3 + fasta, we can safe_reopen
+            subprocess.check_call([
+                'python2', os.path.join(SCRIPT_DIR, 'safe_reopen.py'),
+                input_seq, tmpfile2
+            ], stdout=open(self.reopen_phageTerm, 'w'))
 
         with open(fn, 'r') as handle:
             return json.load(handle)
