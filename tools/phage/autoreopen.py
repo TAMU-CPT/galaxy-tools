@@ -422,7 +422,7 @@ class PhageReopener:
 
             shutil.copy(
                 os.path.join(self.data_dir, self.fasta.id + '_PhageTerm_report.pdf'),
-                self.base_name + '.json'
+                os.path.join(self.data_dir, 'report.pdf')
             )
 
         with open(fn, 'r') as handle:
