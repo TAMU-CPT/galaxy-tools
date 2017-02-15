@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.phage.autoreopen" name="Auto-reopen" version="0.0.1">
+<tool id="edu.tamu.cpt.phage.autoreopen" name="Auto-reopen" version="0.0.3">
   <description>attempts to automatically re-open phage genomes based on various heuristics.</description>
   <command detect_errors="aggressive">
   <![CDATA[
@@ -8,7 +8,7 @@ python $__tool_directory__/autoreopen.py
 "$fastq1"
 "$fastq2"
 --data_dir "$report.files_path"
-> "$report"
+--html "$report"
 ]]>
   </command>
   <inputs>

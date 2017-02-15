@@ -352,12 +352,13 @@ class BlastBasedReopening(object):
 
 class PhageReopener:
 
-    def __init__(self, fasta, fastq1, fastq2, closed=False, data_dir=None):
+    def __init__(self, fasta, fastq1, fastq2, closed=False, data_dir=None, html=None):
         # fasta, fastq1, fastq2 are all file handles
         self.base_name = os.path.join(
             data_dir,
             os.path.basename(fasta).replace('.fa', '')
         )
+        self.html = html
         self.rec_file = open(fasta, 'r')
         self.data_dir = data_dir
         self.fasta = SeqIO.read(fasta, 'fasta')
@@ -584,7 +585,7 @@ class PhageReopener:
             pass
 
         tpl = env.get_template('autoreopen_template.html')
-        sys.stdout.write(tpl.render(**kwargs).encode('utf-8'))
+        self.html.write(tpl.render(**kwargs).encode('utf-8'))
 
         shutil.copy(
             os.path.join(SCRIPT_DIR, 'autoreopen_mauved3.js'),
@@ -599,6 +600,7 @@ def main():
     parser.add_argument('fastq2', type=argparse.FileType("r"))
     parser.add_argument('--closed', action='store_true')
     parser.add_argument('--data_dir', help='Directory for HTML files to go.')
+    parser.add_argument('--html', type=argparse.FileType('w'))
     args = parser.parse_args()
 
     # create new IntronFinder object based on user input
