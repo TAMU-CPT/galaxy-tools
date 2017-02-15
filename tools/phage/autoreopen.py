@@ -19,8 +19,9 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, 'reopen-data')
 # TODO: This tool depends on PY2K ONLY TOOLS. THIS WILL(MAY?) NOT FUNCTINO UNDER PY3.
 import logging
-logging.basicConfig(level=logging.INFO)
-log = logging.getLogger('autoreopen')
+logging.basicConfig(level=logging.DEBUG)
+log = logging.getLogger(name='autoreopen')
+
 env = Environment(loader=FileSystemLoader(SCRIPT_DIR), trim_blocks=True, lstrip_blocks=True)
 
 
@@ -367,7 +368,7 @@ class PhageReopener:
     def _orfCalls(self):
         fnmga = self.base_name + '.mga'
         if not os.path.exists(fnmga):
-            log.info("%s does not exist, calling genes in %s", fnmga, self.rec_file.name)
+            log.warn("%s does not exist, calling genes in %s", fnmga, self.rec_file.name)
             # Run MGA
             subprocess.check_call([
                 'mga_linux_x64', '-s', self.rec_file.name
