@@ -151,7 +151,10 @@ class BlastBasedReopening(object):
             # If more than half the hits are 'backwards'
             if self.shouldReverse(blast_results) > 0.5:
                 orientation = '-'
-                new_genome_file = self.genome.replace('.fa', '.revcom.fa')
+                new_genome_file = os.path.join(
+                    self.data_dir,
+                    os.path.basename(self.genome).replace('.fa', '.revcom.fa')
+                )
                 rec = genome_seq.reverse_complement(id=True, description=True)
                 rec.description += ' autoreopen.revcom'
                 SeqIO.write([rec],
@@ -190,7 +193,10 @@ class BlastBasedReopening(object):
             self.blast2Xmfa(updated_blast_results, 'prot2')
         else:
             genome_seq = SeqIO.read(current_genome_file, 'fasta')
-            new_genome_file_reopened = self.genome.replace('.fa', '.reopened.fa')
+            new_genome_file_reopened = os.path.join(
+                self.data_dir,
+                os.path.basename(self.genome).replace('.fa', '.reopened.fa')
+            )
             with open(new_genome_file_reopened, 'w') as handle:
                 loc = totalData[0][0]
                 rec = genome_seq[loc:] + genome_seq[0:loc]
