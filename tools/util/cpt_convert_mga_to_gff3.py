@@ -18,6 +18,10 @@ def mga_to_gff3(mga_output, genome):
             if line.startswith('# gc = ') or line.startswith('# self:'):
                 continue
             chromId = line.strip().replace('# ', '')
+
+            if ' ' in chromId:
+                chromId = chromId[0:chromId.index(' ')]
+
             if chromId in seq_dict:
                 if current_record is not None:
                     yield current_record
