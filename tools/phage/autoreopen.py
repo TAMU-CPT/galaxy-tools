@@ -195,11 +195,12 @@ class BlastBasedReopening(object):
             # and then re-call genes / export to pfa / re-blast. This is SUPER
             # ugly and SUPER hacky.
             new_genome_file_reopened = self.genome_nucleotide_real
-            customPhageReopener = PhageReopener(self.genome_nucleotide_real, None, None, data_dir=self.data_dir)
-            protein_fasta = customPhageReopener._orfCalls()
-            # This gets a new protein_fasta file, which we can re-blast and re-analyse
-            updated_blast_results = self.getBlastP(protein_fasta)
-            self.blast2Xmfa(updated_blast_results, 'prot2')
+            if self.genome_nucleotide_real:
+                customPhageReopener = PhageReopener(self.genome_nucleotide_real, None, None, data_dir=self.data_dir)
+                protein_fasta = customPhageReopener._orfCalls()
+                # This gets a new protein_fasta file, which we can re-blast and re-analyse
+                updated_blast_results = self.getBlastP(protein_fasta)
+                self.blast2Xmfa(updated_blast_results, 'prot2')
         else:
             genome_seq = SeqIO.read(current_genome_file, 'fasta')
             new_genome_file_reopened = os.path.join(
