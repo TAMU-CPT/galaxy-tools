@@ -171,7 +171,7 @@
     <tool file="cpt2/galaxy-tools/tools/blast/blast2pxmfa.xml" label="new"/>
   </section>
   <section id="cpt2_phage" name="CPT2: Phage Analysis Tools">
-    <tool file="cpt2/galaxy-tools/tools/phage/autoreopen.xml" />
+    <tool file="cpt2/galaxy-tools/tools/phage/autoreopen.xml" labels="experimental" />
     <tool file="cpt2/galaxy-tools/tools/phage/virtual_suppressor_strain.xml" />
     <tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_validator.xml" />
     <tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_table.xml" />
