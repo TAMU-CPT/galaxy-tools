@@ -36,27 +36,23 @@
             <h2>PhageTerm</h2>
           </div>
           <h4>Packaging strategy: <span style="font-weight: bold">{{PhageTerm.type}}</span></h4>
-          <ul>
-              <li><a href="report.pdf">See full report</a></li>
+          <h4><a href="report.pdf">See full report</a></h4>
           {% if PhageTerm.location == ['Unknown'] %}
-          <li>Proposed location to open: <span style="font-weight: bold">Unknown</span></li>
+          <h4>Proposed location to open: <span style="font-weight: bold">Unknown</span></h4>
           {% else %}
-          <li>Proposed location to open: <span style="font-weight: bold">{{PhageTerm.location[1]}} on the {{PhageTerm.location[0].lower()}} strand</span></li>
+          <h4>Proposed location to open: <span style="font-weight: bold">{{PhageTerm.location[1]}} on the {{PhageTerm.location[0].lower()}} strand</span></h4>
           {% endif %}
-          </ul>
         </div>
       </div>
 
       <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
           <div class="page-header">
-            <h2>Terminase BLAST</h2>
+            <h1>Terminase BLAST</h1>
           </div>
-          <ul>
-          <li>Packaging strategy: <span style="font-weight: bold">{{BLAST.type}}</span></li>
-          <li>Proposed location to open: <span style="font-weight: bold">{{BLAST.location[1]}} on the {{BLAST.location[0]}} strand*</span></li>
-          </ul>
-          <p>*Note: This suggestion is based on a location immediately upstream of the found terminase.</p>
+          <h4>Packaging strategy: <span style="font-weight: bold">{{BLAST.type}}</span></h4>
+          <h4>Proposed location to open: <span style="font-weight: bold">{{BLAST.location[1]}} on the {{BLAST.location[0]}} strand*</span></h4>
+          <h5>*Note: This suggestion is based on a location immediately upstream of the found terminase.</h5>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -87,12 +83,9 @@
           <div class="page-header">
             <h2>Canonical Phage BLAST</h2>
           </div>
-          <ul>
-              <li>Proposed location to open (Nucleotide Results): <span style="font-weight: bold">{{ canonical_nucl.location }} on the {{ canonical_nucl.orientation }} strand*</span></li>
-          <!--
-              <li>Proposed location to open (Protein Results): <span style="font-weight: bold">{{ canonical_prot.location }} on the {{ canonical_prot.orientation }} strand*</span></li>
-              -->
-          </ul>
+          <h4>Packaging strategy: <span style="font-weight: bold"></span></h4>
+          <h4>Proposed location to open (Nucleotide Results): <span style="font-weight: bold">{{ canonical_nucl.location }} on the {{ canonical_nucl.orientation }} strand*</span></h4>
+          <h5>*Note: This suggestion is based on genome synteny</h5>
           <p>*Note: This suggestion is based on genome synteny</p>
 
           <h3>Nucleotide Blast Results</h3>
