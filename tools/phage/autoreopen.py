@@ -393,7 +393,7 @@ class PhageReopener:
         fnfa = self.base_name + '.mga.fa'
         self.fnfa = fnfa
         subprocess.check_call([
-            'python2', os.path.join(os.pardir, 'gff3', 'gff3_extract_sequence.py'),
+            'python2', os.path.join(SCRIPT_DIR, os.pardir, 'gff3', 'gff3_extract_sequence.py'),
             '--feature_filter', 'CDS',
             self.rec_file.name, fn,
         ], stdout=open(fnfa, 'w'))
@@ -402,7 +402,7 @@ class PhageReopener:
         fnpfa = self.base_name +  '.mga.pfa'
         self.fnpfa = fnpfa
         subprocess.check_call([
-            'python2', os.path.join(os.pardir, 'fasta', 'fasta_translate.py'),
+            'python2', os.path.join(SCRIPT_DIR, os.pardir, 'fasta', 'fasta_translate.py'),
             '--table', '11', '--strip_stops', '--target', 'protein',
             fnfa
         ], stdout=open(fnpfa, 'w'))
@@ -412,7 +412,7 @@ class PhageReopener:
         fn = self.base_name + '.json'
         if not os.path.exists(fn):
             subprocess.check_call([
-                'python2', os.path.join(os.pardir, 'external', 'phageterm', 'PhageTerm.py'),
+                'python2', os.path.join(SCRIPT_DIR, os.pardir, 'external', 'phageterm', 'PhageTerm.py'),
                 '-c', '6',
                 '-f', self.fq1.name,
                 '-n', self.fasta.id,
