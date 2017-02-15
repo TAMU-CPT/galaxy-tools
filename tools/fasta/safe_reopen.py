@@ -34,16 +34,31 @@ def gaps(interval):
         yield (sinterval[i].end, sinterval[i + 1].begin)
 
 
-def safe_reopen(fasta_file=None, gff3_files=None):
+def nearest_gap(gaps, position):
+    if position == -1:
+        after = gaps[-1]
+        return sum(after) / 2
+    else:
+        best = None
+        for gap in sorted(gaps, key=lambda x: x[0]):
+            if gap[1] < position:
+                if not best:
+                    best = gap
+
+                if position - gap[1] < position - best[1]:
+                    best = gap
+        return sum(best) / 2
+
+
+def safe_reopen(fasta_file=None, gff3_files=None, position=-1):
     occupied_regions = extract_gff3_regions(gff3_files)
 
     for record in SeqIO.parse(fasta_file, 'fasta'):
         # Get our list of gaps for this record
         gaps_in_data = list(gaps(occupied_regions[record.id]))
         # Arbitrarily choose the last one, so we re-open a bit upstream
-        after = gaps_in_data[-1]
+        after = nearest_gap(gaps_in_data, position)
         # Midpoint
-        after = sum(after) / 2
         record = record[after:] + record[0:after]
         record.description += ' [SafelyReopend=%s,%s bases upstream to avoid features]' % (after, after - len(record))
         yield record
@@ -53,6 +68,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
     parser.add_argument('fasta_file', type=argparse.FileType("r"))
     parser.add_argument('gff3_files', type=argparse.FileType("r"), nargs='+')
+    parser.add_argument('--loc', type=int, default=-1)
 
     args = parser.parse_args()
     for rec in safe_reopen(**vars(args)):

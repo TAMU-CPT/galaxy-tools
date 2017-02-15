@@ -1,5 +1,9 @@
 # Running 
 
+# notes
+- tr, cos: open precisely there. DO not safe re-open
+- use TerL database instead of canonical for BlastN
+
 ## Prep
 
 First copy r1.fq and r2.fq from the CPT server

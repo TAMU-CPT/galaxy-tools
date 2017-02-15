@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.safe_reopen" name="Auto-reopen Fasta" version="3.0">
+<tool id="edu.tamu.cpt.fasta.safe_reopen" name="Auto-reopen Fasta" version="3.1">
 	<description>based on gene calls</description>
 	<macros>
 		<import>macros.xml</import>
@@ -27,6 +27,11 @@ python $__tool_directory__/safe_reopen.py
 		</test>
 	</tests>
 	<help><![CDATA[
+**WARNING**
+
+This tool assumse your data is opened CORRECTLY. This tool will NOT handle rev-com properly, please do that first.
+
+
 **What it does**
 
 Given a set of gene calls and a fasta sequence, try and re-open that fasta
