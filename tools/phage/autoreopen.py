@@ -662,12 +662,18 @@ class PhageReopener:
         terS = self._guessTerS(blast_upstraem)
 
         # Try their tool
-        results = self._runPhageTerm()
-        (phage_name, phageterm_type, phageterm_location, phageterm_evidence) = self._analysePhageTerm(results)
-        phageterm = {'type': phageterm_type.name,
-                     'location': phageterm_location}
-        kwargs['PhageTerm'] = phageterm
-        kwargs['Name'] = phage_name
+        try:
+            results = self._runPhageTerm()
+            (phage_name, phageterm_type, phageterm_location, phageterm_evidence) = self._analysePhageTerm(results)
+            phageterm = {'type': phageterm_type.name,
+                        'location': phageterm_location}
+            kwargs['PhageTerm'] = phageterm
+            kwargs['Name'] = phage_name
+        except Exception:
+            phageterm = {'type': 'PHAGETERM FAILED',
+                        'location': ['Unknown']}
+            kwargs['PhageTerm'] = phageterm
+            kwargs['Name'] = "Unknown"
 
         # Next we failover to blast results of terminases.
         blast = {'type': blast_type.name,
