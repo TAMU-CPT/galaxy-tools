@@ -36,7 +36,7 @@ def gaps(interval):
 
 def nearest_gap(gaps, position):
     if position == -1:
-        after = gaps[-1]
+        after = gaps[0]
         return sum(after) / 2
     else:
         best = None
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
     parser.add_argument('fasta_file', type=argparse.FileType("r"))
     parser.add_argument('gff3_files', type=argparse.FileType("r"), nargs='+')
-    parser.add_argument('--loc', type=int, default=-1)
+    parser.add_argument('--position', type=int, default=-1)
 
     args = parser.parse_args()
     for rec in safe_reopen(**vars(args)):
