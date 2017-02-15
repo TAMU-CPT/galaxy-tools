@@ -2,6 +2,7 @@
   <description>attempts to automatically re-open phage genomes based on various heuristics.</description>
   <command detect_errors="aggressive">
   <![CDATA[
+mkdir -p "$report.files_path";
 python $__tool_directory__/autoreopen.py
 "$reference"
 "$fastq1"
