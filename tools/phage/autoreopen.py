@@ -445,7 +445,7 @@ class PhageReopener:
         if phtype == PhageType.Unknown:
             opening = ['Unknown']
 
-        return (phtype, opening, Evidence.PhageTerm)
+        return (results['phagename'], phtype, opening, Evidence.PhageTerm)
 
     def _safeOpeningLocationForFeature(self, feature):
         """Given a feature, find a 'safe' location to re-open the genome.
@@ -533,10 +533,11 @@ class PhageReopener:
 
         # Try their tool
         results = self._runPhageTerm()
-        (phageterm_type, phageterm_location, phageterm_evidence) = self._analysePhageTerm(results)
+        (phage_name, phageterm_type, phageterm_location, phageterm_evidence) = self._analysePhageTerm(results)
         phageterm = {'type': phageterm_type.name,
                      'location': phageterm_location}
         kwargs['PhageTerm'] = phageterm
+        kwargs['Name'] = phage_name
 
         # Next we failover to blast results of terminases.
         blast = {'type': blast_type.name,
