@@ -7,8 +7,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Phage Reopening</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha256-ZT4HPpdCOt2lvDkXokHuhJfdOKSPFLzeAJik5U/Q+l4=" crossorigin="anonymous" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/js/jquery.dataTables.min.js" integrity="sha256-yWA356lDhruy1J8jGncaMWKAPYDbK47OKb0uT/aELLc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/js/dataTables.bootstrap.min.js" integrity="sha256-X/58s5WblGMAw9SpDtqnV8dLRNCawsyGwNqnZD0Je/s=" crossorigin="anonymous"></script>
+    <script src="mauved3.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/css/dataTables.bootstrap.min.css" integrity="sha256-tfbRRzRYttG6KTqyNS1b7TRUCCqxBqFf+VFr/LV3UU0=" crossorigin="anonymous" />
 
     <style>
         .page-header {
@@ -21,28 +27,34 @@
   <body>
 
     <div class="container-fluid">
+        <h1>Phage Re-opening</h1>
       <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
+        <div class="col-xs-10 col-xs-offset-1">
           <div class="page-header">
-            <h1>PhageTerm</h1>
+            <h2>PhageTerm</h2>
           </div>
           <h4>Packaging strategy: <span style="font-weight: bold">{{PhageTerm.type}}</span></h4>
+          <ul>
+              <li><a href="report.pdf">See full report</a></li>
           {% if PhageTerm.location == ['Unknown'] %}
-          <h4>Proposed location to open: <span style="font-weight: bold">Unknown</span></h4>
+          <li>Proposed location to open: <span style="font-weight: bold">Unknown</span></li>
           {% else %}
-          <h4>Proposed location to open: <span style="font-weight: bold">{{PhageTerm.location[1]}} on the {{PhageTerm.location[0].lower()}} strand</span></h4>
+          <li>Proposed location to open: <span style="font-weight: bold">{{PhageTerm.location[1]}} on the {{PhageTerm.location[0].lower()}} strand</span></li>
           {% endif %}
+          </ul>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
+        <div class="col-xs-10 col-xs-offset-1">
           <div class="page-header">
-            <h1>Terminase BLAST</h1>
+            <h2>Terminase BLAST</h2>
           </div>
-          <h4>Packaging strategy: <span style="font-weight: bold">{{BLAST.type}}</span></h4>
-          <h4>Proposed location to open: <span style="font-weight: bold">{{BLAST.location[1]}} on the {{BLAST.location[0]}} strand*</span></h4>
-          <h5>*Note: This suggestion is based on a location immediately upstream of the found terminase.</h5>
+          <ul>
+          <li>Packaging strategy: <span style="font-weight: bold">{{BLAST.type}}</span></li>
+          <li>Proposed location to open: <span style="font-weight: bold">{{BLAST.location[1]}} on the {{BLAST.location[0]}} strand*</span></li>
+          </ul>
+          <p>*Note: This suggestion is based on a location immediately upstream of the found terminase.</p>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -69,17 +81,93 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
+        <div class="col-xs-10 col-xs-offset-1">
           <div class="page-header">
-            <h1>Canonical Phage BLAST</h1>
+            <h2>Canonical Phage BLAST</h2>
           </div>
-          <h4>Packaging strategy: <span style="font-weight: bold"></span></h4>
-          <h4>Proposed location to open: <span style="font-weight: bold">[loc] on the [strand] strand*</span></h4>
-          <h5>*Note: This suggestion is based on genome synteny</h5>
+          <ul>
+              <li>Proposed location to open (Nucleotide Results): <span style="font-weight: bold">{{ canonical_nucl.location }} on the {{ canonical_nucl.orientation }} strand*</span></li>
+          <!--
+              <li>Proposed location to open (Protein Results): <span style="font-weight: bold">{{ canonical_prot.location }} on the {{ canonical_prot.orientation }} strand*</span></li>
+              -->
+          </ul>
+          <p>*Note: This suggestion is based on genome synteny</p>
+
+          <h3>Nucleotide Blast Results</h3>
+          <h4>Before automated re-opening</h4>
+          <iframe src="nucl.html" style="width: 100%; height: 200px; border: 0px" scrolling="no"></iframe>
+          <h4>After automated re-opening (and/or reverse + complementing)</h4>
+          <iframe src="nucl2.html" style="width: 100%; height: 200px; border: 0px" scrolling="no"></iframe>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th>Subject ID</th>
+                    <th>Query Start</th>
+                    <th>Query End</th>
+                    <th>Subject Start</th>
+                    <th>Subject End</th>
+                    <th>E-value</th>
+                    <th>% identity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for result in canonical_nucl.results %}
+                <tr>
+                  <td>{{ result.sseqid }}</td>
+                  <td>{{ result.qstart }}</td><td>{{ result.qend }}</td>
+                  <td>{{ result.sstart }}</td><td>{{ result.send }}</td>
+                  <td>{{ result.evalue }}</td>
+                  <td>{{ result.pident }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <h3>Protein Blast Results</h3>
+          <!--
+          <h4>Before automated re-opening</h4>
+          <iframe src="prot.html" style="width: 100%; height: 200px; border: 0px" scrolling="no"></iframe>
+          <h4>After automated re-opening / revCom</h4>
+          <iframe src="prot2.html" style="width: 100%; height: 200px; border: 0px" scrolling="no"></iframe>
+          -->
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th>Gene #</th>
+                    <th>Query Start</th>
+                    <th>Query End</th>
+                    <th>Subject ID</th>
+                    <th>Subject Start</th>
+                    <th>Subject End</th>
+                    <th>E-value</th>
+                    <th>% identity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for result in canonical_prot.results %}
+                <tr>
+                  <td>{{ result.qseqid }}</td>
+                  <td>{{ result.qstart }}</td><td>{{ result.qend }}</td>
+                  <td>{{ result.sseqid }}</td>
+                  <td>{{ result.sstart }}</td><td>{{ result.send }}</td>
+                  <td>{{ result.evalue }}</td>
+                  <td>{{ result.pident }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </body>
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $('table').DataTable({'pageLength': 6});
+});
+</script>
 </html>
 

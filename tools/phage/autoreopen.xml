@@ -1,0 +1,31 @@
+<tool id="edu.tamu.cpt.phage.autoreopen" name="Auto-reopen" version="0.0.1">
+  <description>attempts to automatically re-open phage genomes based on various heuristics.</description>
+  <command detect_errors="aggressive">
+python $__tool_directory__/autoreopen.py
+"$reference"
+"$fastq1"
+"$fastq2"
+--data_dir "$report.files_path"
+  </command>
+  <inputs>
+    <param format="fasta" name="reference" type="data" label="Phage Genome" help="Must provide a phage reference genome in fasta format, as a unique contig. Multi-fasta not accepted."/>
+    <param format="fastq" name="fastq1" type="data" label="FASTQ file r1" help="Must provide a file containing sequencing reads in fasta format, from Illumina TruSeq Technology or other randomly sheared DNA preparation method."/>
+    <param format="fastq" name="fastq2" type="data" label="FASTQ file r2"/>
+  </inputs>
+  <outputs>
+    <data name="report" format="html"  label="Auto Re-Open report"/>
+  </outputs>
+  <help>
+This software relies on PhageTerm:
+
+    PhageTerm software is a tool to determine phage termini and packaging mode from
+    high throughput sequences that rely on the random fragmentation of DNA (e.g.
+    Illumina TruSeq). Phage sequencing reads from a fastq file are aligned to the
+    phage reference genome in order to calculate two types of coverage values
+    (whole genome coverage and the starting position coverage). The starting
+    position coverage is used to perform a detailed termini analysis. If the user
+    provides the host sequence, reads that does not match the phage genome are
+    tested on the host using the same mapping function. Source:
+    https://sourceforge.net/projects/phageterm/.
+  </help>
+</tool>
