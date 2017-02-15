@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.phage.autoreopen" name="Auto-reopen" version="0.0.4">
+<tool id="edu.tamu.cpt.phage.autoreopen" name="Auto-reopen" version="0.0.5">
   <description>attempts to automatically re-open phage genomes based on various heuristics.</description>
   <command detect_errors="aggressive">
   <![CDATA[
@@ -9,6 +9,9 @@ python $__tool_directory__/autoreopen.py
 "$fastq2"
 --data_dir "$report.files_path"
 --html "$report"
+--reopen_phageTerm "$a"
+--reopen_blastN "$b"
+--reopen_TerL "$c"
 ]]>
   </command>
   <inputs>
@@ -18,6 +21,10 @@ python $__tool_directory__/autoreopen.py
   </inputs>
   <outputs>
 	<data name="report" format="html"  label="Auto Re-Open report (${reference.name})"/>
+
+	<data name="a" format="fasta"  label="Auto Re-Open genome (${reference.name}) [PhageTerm]"/>
+	<data name="b" format="fasta"  label="Auto Re-Open genome (${reference.name}) [BlastN]"/>
+	<data name="c" format="fasta"  label="Auto Re-Open genome (${reference.name}) [TerL]"/>
   </outputs>
   <help>
 This software relies on PhageTerm:
