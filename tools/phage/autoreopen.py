@@ -141,6 +141,13 @@ class BlastBasedReopening(object):
             blast_results = self.getBlastN(self.genome)
             self.blast2Xmfa(blast_results, 'nucl')
 
+        if len(blast_results) == 0:
+            return {
+                'location': None,
+                'orientation': None,
+                'results': [],
+                'reopened_file': None,
+            }
 
         orientation = '+'
         current_genome_file = None
@@ -316,7 +323,7 @@ class BlastBasedReopening(object):
             if (qdir > 0 and sdir < 0) or (qdir < 0 and sdir > 0):
                 should_reverse += 1
 
-        return float(should_reverse) / total
+        return float(should_reverse) / (total + 1)
 
     @classmethod
     def rotate(cls, data, index):
@@ -611,17 +618,18 @@ class PhageReopener:
         # Then we do alignment relative to canonical
         bbr_nucl = BlastBasedReopening(genome=self.rec_file.name, db=os.path.join(SCRIPT_DIR, 'test-data/canonical_nucl'), protein=False, data_dir=self.data_dir)
         kwargs['canonical_nucl'] = bbr_nucl.evaluate()
-        kwargs['canonical_nucl']['location'] = kwargs['canonical_nucl']['location'][0]
-        ## location, results, orientation
+        blastp_genome = kwargs['canonical_nucl']['reopened_file']
+
+        # If no location because no blastN hits.
+        if kwargs['canonical_nucl']['location']:
+            kwargs['canonical_nucl']['location'] = kwargs['canonical_nucl']['location'][0]
+        else:
+            blastp_genome = self.rec_file.name
+
 
         bbr_prot = BlastBasedReopening(genome=self.fnpfa, db=os.path.join(SCRIPT_DIR, 'test-data/canonical_prot'), protein=True,
                                        genome_real=kwargs['canonical_nucl']['reopened_file'], data_dir=self.data_dir)
         kwargs['canonical_prot'] = bbr_prot.evaluate()
-        # if we reversed in canonical nucl, we'll reverse the protein results
-        # as well to make them match up better.
-        if kwargs['canonical_nucl']['orientation'] == '-':
-            kwargs['canonical_prot']['orientation'] = '-'
-            kwargs['canonical_prot']['location'] = kwargs['canonical_prot']['location'][1]
 
         # Failing that, if the genome is closed
         if self.closed:
