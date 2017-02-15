@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 import os
 import re
+import sys
 import json
+import glob
 import shutil
 import argparse
 import subprocess
@@ -49,7 +51,8 @@ class PhageType(Enum):
 class BlastBasedReopening(object):
     """Re-open genomes based on blast"""
 
-    def __init__(self, db='test-data/canonical_nucl', genome=None, genome_real=None, protein=False):
+    def __init__(self, db='test-data/canonical_nucl', genome=None, genome_real=None, protein=False, data_dir=None):
+        self.data_dir = data_dir
         self.genome = genome
         self.genome_nucleotide_real = genome_real
         self.protein = protein
@@ -80,11 +83,11 @@ class BlastBasedReopening(object):
         }
 
     def blast2Xmfa(self, blast_results, name='nucl'):
-        tpl = env.get_template('plot_template.html')
-        with open('%s.html' % name, 'w') as html:
+        tpl = env.get_template('autoreopen_template_plot.html')
+        with open(os.path.join(self.data_dir, '%s.html' % name), 'w') as html:
             html.write(tpl.render(filename='%s.json' % name).encode('utf-8'))
 
-        with open('%s.json' % name, 'w') as handle:
+        with open(os.path.join(self.data_dir, '%s.json' % name), 'w') as handle:
             json.dump({
                 "xmfa": "%s_regions.json" % name,
                 "fasta": [
@@ -102,7 +105,7 @@ class BlastBasedReopening(object):
                 "gff3": ["n.a", "n.a"]
             }, handle, sort_keys=True, indent=2)
 
-        with open('%s_regions.json' % name, 'w') as handle:
+        with open(os.path.join(self.data_dir, '%s_regions.json' % name), 'w') as handle:
             region_data = []
             for hit in blast_results:
                 region_data.append([
@@ -180,7 +183,7 @@ class BlastBasedReopening(object):
             # and then re-call genes / export to pfa / re-blast. This is SUPER
             # ugly and SUPER hacky.
             new_genome_file_reopened = self.genome_nucleotide_real
-            customPhageReopener = PhageReopener(open(self.genome_nucleotide_real, 'r'), None, None)
+            customPhageReopener = PhageReopener(self.genome_nucleotide_real, None, None, data_dir=self.data_dir)
             protein_fasta = customPhageReopener._orfCalls()
             # This gets a new protein_fasta file, which we can re-blast and re-analyse
             updated_blast_results = self.getBlastP(protein_fasta)
@@ -231,12 +234,10 @@ class BlastBasedReopening(object):
         return blast_results
 
     def getBlastP(self, path):
-        print('getBlastP', path)
         cmd = [
             'blastp', '-db', self.db,
             '-query', path, '-outfmt', '6 qseqid sseqid evalue pident qstart qend sstart send'
         ]
-        print(' '.join(cmd))
         blast_results = subprocess.check_output(cmd).strip().split('\n')
         blastp_locmap = open(os.path.join(SCRIPT_DIR, 'test-data', 'merged.pfa.idmap'), 'r').read().strip().split('\n')
 
@@ -259,7 +260,6 @@ class BlastBasedReopening(object):
         for x in blastp_locmap:
             (key, value) = x.split('\t')
             (mi, ma) = extremes([y for y in re.split('[^0-9]+', value) if len(y) > 0])
-            #print([y for y in re.split('[^0-9]+', value) if len(y) > 0])
             if 'complement' in value:
                 blastp_locmap2[key] = (ma, mi)
             else:
@@ -347,8 +347,11 @@ class PhageReopener:
 
     def __init__(self, fasta, fastq1, fastq2, closed=False, data_dir=None):
         # fasta, fastq1, fastq2 are all file handles
-        self.base_name = fasta.name.replace('.fa', '')
-        self.rec_file = fasta
+        self.base_name = os.path.join(
+            data_dir,
+            os.path.basename(fasta).replace('.fa', '')
+        )
+        self.rec_file = open(fasta, 'r')
         self.data_dir = data_dir
         self.fasta = SeqIO.read(fasta, 'fasta')
         self.fq1 = fastq1
@@ -357,7 +360,6 @@ class PhageReopener:
 
     def _orfCalls(self):
         fnmga = self.base_name + '.mga'
-        print(fnmga)
         if not os.path.exists(fnmga):
             # Run MGA
             subprocess.check_call([
@@ -369,7 +371,6 @@ class PhageReopener:
         self.mga_gff3 = fn
         with open(fnmga, 'r') as handle, open(fn, 'w') as output:
             self.rec_file.seek(0)
-            print(self.rec_file.name)
             for result in mga_to_gff3(handle, self.rec_file):
                 # Store gFF3 data in self in order to access later.
                 self.mga_rec = result
@@ -400,7 +401,7 @@ class PhageReopener:
         return fnpfa
 
     def _runPhageTerm(self):
-        fn = os.path.join(DATA_DIR, str(self.fasta.id) + '.json')
+        fn = self.base_name + '.json'
         if not os.path.exists(fn):
             subprocess.check_call([
                 'python2', os.path.join(os.pardir, 'external', 'phageterm', 'PhageTerm.py'),
@@ -411,6 +412,13 @@ class PhageReopener:
                 '-p', self.fq2.name,
                 '-s', '30'
             ])
+            for f in glob.glob(self.fasta.id + '*'):
+                shutil.move(f, self.data_dir)
+
+            shutil.move(
+                os.path.join(self.data_dir, self.fasta.id + '.json'),
+                self.base_name + '.json'
+            )
 
         with open(fn, 'r') as handle:
             return json.load(handle)
@@ -537,13 +545,13 @@ class PhageReopener:
         kwargs['BLAST'] = blast
 
         # Then we do alignment relative to canonical
-        bbr_nucl = BlastBasedReopening(genome=self.rec_file.name, db='test-data/canonical_nucl', protein=False)
+        bbr_nucl = BlastBasedReopening(genome=self.rec_file.name, db='test-data/canonical_nucl', protein=False, data_dir=self.data_dir)
         kwargs['canonical_nucl'] = bbr_nucl.evaluate()
         kwargs['canonical_nucl']['location'] = kwargs['canonical_nucl']['location'][0]
         ## location, results, orientation
 
         bbr_prot = BlastBasedReopening(genome=self.fnpfa, db='test-data/canonical_prot', protein=True,
-                                       genome_real=kwargs['canonical_nucl']['reopened_file'])
+                                       genome_real=kwargs['canonical_nucl']['reopened_file'], data_dir=self.data_dir)
         kwargs['canonical_prot'] = bbr_prot.evaluate()
         # if we reversed in canonical nucl, we'll reverse the protein results
         # as well to make them match up better.
@@ -561,9 +569,13 @@ class PhageReopener:
             # yield (PhageType.Unknown, None, Evidence.NONE)
             pass
 
-        tpl = env.get_template('template.html')
-        with open('report.html', 'w') as html:
-            html.write(tpl.render(**kwargs).encode('utf-8'))
+        tpl = env.get_template('autoreopen_template.html')
+        sys.stdout.write(tpl.render(**kwargs).encode('utf-8'))
+
+        shutil.copy(
+            os.path.join(SCRIPT_DIR, 'autoreopen_mauved3.js'),
+            os.path.join(self.data_dir, 'mauved3.js'),
+        )
 
 
 def main():
@@ -576,7 +588,9 @@ def main():
     args = parser.parse_args()
 
     # create new IntronFinder object based on user input
-    pr = PhageReopener(**vars(args))
+    kwargs = vars(args)
+    kwargs['fasta'] = args.fasta.name
+    pr = PhageReopener(**kwargs)
     pr.giveEvidence()
 
 

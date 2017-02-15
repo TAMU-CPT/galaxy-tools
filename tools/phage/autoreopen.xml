@@ -1,11 +1,14 @@
 <tool id="edu.tamu.cpt.phage.autoreopen" name="Auto-reopen" version="0.0.1">
   <description>attempts to automatically re-open phage genomes based on various heuristics.</description>
   <command detect_errors="aggressive">
+  <![CDATA[
 python $__tool_directory__/autoreopen.py
 "$reference"
 "$fastq1"
 "$fastq2"
 --data_dir "$report.files_path"
+> $report
+]]>
   </command>
   <inputs>
     <param format="fasta" name="reference" type="data" label="Phage Genome" help="Must provide a phage reference genome in fasta format, as a unique contig. Multi-fasta not accepted."/>
