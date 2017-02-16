@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.safe_reopen" name="Safely Reopen Fasta" version="3.2">
+<tool id="edu.tamu.cpt.fasta.safe_reopen" name="Safely Reopen Fasta" version="4.0">
 	<description>based on gene calls</description>
 	<macros>
 		<import>macros.xml</import>
@@ -10,13 +10,31 @@ python $__tool_directory__/safe_reopen.py
 #for gff in $gff3_files:
 		$gff
 #end for
---position $position
+
+#if str($position.reopen_select) == "manual":
+	--position $position.position
+	--strand $position.strand
+#end if
+
 > $output
 ]]></command>
 	<inputs>
 		<expand macro="input/fasta" />
 		<param label="GFF3 gene calls" name="gff3_files" type="data" format="gff3" multiple="True" />
-		<param label="Position Hint" name="position" type="integer" value="-1"/>
+		<conditional name="position">
+			<param label="Re-open Location" type="select" name="reopen_select">
+				<option value="automatic">Automatically Re-open at First Gap</option>
+				<option value="manual">Re-open Upstream of Specified Position</option>
+			</param>
+			<when value="automatic" />
+			<when value="manual">
+				<param label="Position Hint" name="position" type="integer" value="-1" help="Hint to the tool at where you would like the genome reopened upstream of. If the default value (-1) is used, then the tool will open at the first available gap. However, if a position is supplied, the tool will re-open at the first open gap upstream of the specified position. E.g. if you know where rIIa is your T4-like phage, you can supply the first base of that, and this tool will open at the first intergenic region upstream."/>
+				<param label="Strand" type="select" name="strand">
+					<option value="1">Forward / Plus / Sense / Watson</option>
+					<option value="-1">Reverse / Minus / Anti-sense / Crick</option>
+				</param>
+			</when>
+		</conditional>
 	</inputs>
 	<outputs>
 		<data format="fasta" name="output"/>
@@ -29,11 +47,6 @@ python $__tool_directory__/safe_reopen.py
 		</test>
 	</tests>
 	<help><![CDATA[
-**WARNING**
-
-This tool assumse your data is opened CORRECTLY. This tool will NOT handle rev-com properly, please do that first.
-
-
 **What it does**
 
 Given a set of gene calls and a fasta sequence, try and re-open that fasta
