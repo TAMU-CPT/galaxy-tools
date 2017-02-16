@@ -48,6 +48,9 @@ def nearest_gap(gaps, position, strand):
 
                     if position - gap[1] < position - best[1]:
                         best = gap
+                elif gap[0] < position < gap[1]:
+                    best = gap
+                    break
         else:
             for gap in sorted(gaps, key=lambda x: -x[0]):
                 if gap[0] > position:
@@ -56,6 +59,10 @@ def nearest_gap(gaps, position, strand):
 
                     if gap[0] - position < best[0] - position:
                         best = gap
+
+                elif gap[0] < position < gap[1]:
+                    best = gap
+                    break
         return sum(best) / 2
 
 
