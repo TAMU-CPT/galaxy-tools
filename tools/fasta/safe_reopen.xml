@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.safe_reopen" name="Auto-reopen Fasta" version="3.1">
+<tool id="edu.tamu.cpt.fasta.safe_reopen" name="Auto-reopen Fasta" version="3.2">
 	<description>based on gene calls</description>
 	<macros>
 		<import>macros.xml</import>
@@ -10,11 +10,13 @@ python $__tool_directory__/safe_reopen.py
 #for gff in $gff3_files:
 		$gff
 #end for
+--position $position
 > $output
 ]]></command>
 	<inputs>
 		<expand macro="input/fasta" />
 		<param label="GFF3 gene calls" name="gff3_files" type="data" format="gff3" multiple="True" />
+		<param label="Position Hint" name="position" type="integer" value="-1"/>
 	</inputs>
 	<outputs>
 		<data format="fasta" name="output"/>
