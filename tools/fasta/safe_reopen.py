@@ -60,7 +60,7 @@ def safe_reopen(fasta_file=None, gff3_files=None, position=-1):
         after = nearest_gap(gaps_in_data, position)
         # Midpoint
         record = record[after:] + record[0:after]
-        record.description += ' [SafelyReopened=%s,%s bases to avoid features]' % (after, after - len(record))
+        record.description += ' [SafelyReopened=%s,%s bases from end]' % (after, len(record) - after)
         yield record
 
 
