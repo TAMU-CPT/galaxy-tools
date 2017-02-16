@@ -22,9 +22,9 @@
 	  <tool file="cpt2/galaxy-tools/tools/464/assessment1-student.xml" />
 	  <tool file="cpt2/galaxy-tools/tools/464/assessment2-student.xml" />
       <label id="l_4cacaz" text="Admin Tools" />
-      <tool file="cpt2/galaxy-tools/tools/464/prep_test_organism.xml" labels="464,464-Admin"/>
 	  <tool file="cpt2/galaxy-tools/tools/464/assessment1-admin.xml" />
 	  <tool file="cpt2/galaxy-tools/tools/464/assessment2-admin.xml" />
+      <tool file="cpt2/galaxy-tools/tools/464/prep_test_organism.xml"/>
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_generate_segment.xml" />
       <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/c0_evaluate.xml" />-->
       <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_evaluate.xml" />-->
