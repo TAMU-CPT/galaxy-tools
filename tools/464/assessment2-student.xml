@@ -1,18 +1,27 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.464.2016.c01_generate" name="464 C01 - Generate Sequence" version="1.0">
-  <description></description>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[
-c1_generate_segment.py
+<tool id="edu.tamu.cpt2.464.2017.assessment2-student" name="Access Assessment 2 Organism" version="1.0">
+  <description>via IFrame to Apollo</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/assessment2-student.py
+@ADMIN_AUTH@
 $__user_email__
+"@DATA_DIR@"
+
 > $stdout]]></command>
   <inputs>
   </inputs>
   <outputs>
-    <data format="fasta" name="stdout" label="DNA Fragment"/>
+    <data format="html" name="output"/>
   </outputs>
   <help><![CDATA[
 **What it does**
 
-Generates a specially named fragment of DNA for use in the C01 exercise.
+Generates a special fragment of DNA for use in BICH464 Assessment #2
+
+@REFERENCES@
 ]]></help>
 </tool>
