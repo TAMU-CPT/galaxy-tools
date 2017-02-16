@@ -35,7 +35,11 @@ def gaps(interval):
 
 
 def nearest_gap(gaps, position, strand):
-    if position == -1:
+    # TODO: Cannot handle starting at base 1 and looking upstream
+    if position == -2:
+        after = gaps[-1]
+        return sum(after) / 2
+    elif position == -1:
         after = gaps[0]
         return sum(after) / 2
     else:

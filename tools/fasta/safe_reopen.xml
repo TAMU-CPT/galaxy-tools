@@ -56,5 +56,12 @@ around" the end of the genome.
 
 Thus we can avoid that issue completely if we have a preliminary step wherein
 we reopen the sequence in between putative gene calls.
+
+**Parameters**
+
+There are two special values of "Position Hint":
+
+- -1 will find the first open gap downstream
+- -2 will find the first open gap upstream
 ]]></help>
 </tool>
