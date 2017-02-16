@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.safe_reopen" name="Auto-reopen Fasta" version="3.2">
+<tool id="edu.tamu.cpt.fasta.safe_reopen" name="Safely Reopen Fasta" version="3.2">
 	<description>based on gene calls</description>
 	<macros>
 		<import>macros.xml</import>
