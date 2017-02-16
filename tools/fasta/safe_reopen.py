@@ -21,6 +21,9 @@ def extract_gff3_regions(gff3_files):
                     continue
 
                 data[record.id][int(gene.location.start):int(gene.location.end)] = True
+
+            # Mark off the end of the genome as not available.
+            data[record.id][len(record):len(record+1)] = True
     # Merge overlapping intervals
     for key in data:
         data[key].merge_overlaps()
