@@ -72,6 +72,7 @@ def safe_reopen(fasta_file=None, gff3_files=None, position=-1, strand=0):
         # If it's a minus strand, auto-revcom
         if strand == -1:
             record.seq = record.seq.reverse_complement()
+            record.description += ' [SafeReopenRevCom=True]'
 
         record.description += ' [SafelyReopened=%s,%s bases from end]' % (after, len(record) - after)
         yield record
