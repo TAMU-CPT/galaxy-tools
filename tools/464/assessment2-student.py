@@ -35,7 +35,7 @@ if __name__ == '__main__':
     ])
     # Copy the data directory over
     subprocess.check_call([
-        'tar', 'xvfz', os.path.join(SCRIPT_DIR, 'test-data', 'assessment-1.tgz'),
+        'tar', 'xfz', os.path.join(SCRIPT_DIR, 'test-data', 'assessment-1.tgz'),
         '--strip-components', '1', '-C', outdir
     ])
     # Now finally ready to create the organism
