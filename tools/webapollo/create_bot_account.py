@@ -23,11 +23,13 @@ if __name__ == '__main__':
     password = pwgen(24)
     time.sleep(1)
     users = wa.users.loadUsers()
+
+    bot_email = 'bot+' + args.email.replace('@', '_') + '@cpt.tamu.edu'
     user = [u for u in users
-            if u.username == args.email]
+            if u.username == bot_email]
 
     uargs = [
-        'bot+' + args.email.replace('@', '_') + '@cpt.tamu.edu',
+        bot_email,
         "BOT ACCOUNT",
         args.email,
         password
@@ -44,5 +46,5 @@ if __name__ == '__main__':
         returnData = wa.users.createUser(*uargs)
         sys.stdout.write('Created User\n')
 
-    print('Updated User\nUsername: %s\nPassword: %s' % (uargs[0], uargs[-1]))
+    print('Username: %s\nPassword: %s' % (uargs[0], uargs[-1]))
     print("Return data: " + str(returnData))
