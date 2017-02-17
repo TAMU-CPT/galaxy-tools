@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import re
+import regex as re
 from Bio.Seq import Seq, reverse_complement, translate
 from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
@@ -97,7 +97,7 @@ class OrfFinder(object):
         if strict:
             assert s[-3:] in self.stops, s
         assert len(s) % 3 == 0
-        for match in self.re_starts.finditer(s):
+        for match in self.re_starts.finditer(s, overlapped=True):
             # Must check the start is in frame
             start = match.start()
             if start % 3 == 0:
@@ -113,7 +113,7 @@ class OrfFinder(object):
     def break_up_frame(self, s):
         """Returns offset, nuc, protein."""
         start = 0
-        for match in self.re_stops.finditer(s):
+        for match in self.re_stops.finditer(s, overlapped=True):
             index = match.start() + 3
             if index % 3 != 0:
                 continue
@@ -218,7 +218,7 @@ class MGAFinder(object):
         if strict:
             assert s[-3:] in self.stops, s
         assert len(s) % 3 == 0
-        for match in self.re_starts.finditer(s):
+        for match in self.re_starts.finditer(s, overlapped=True):
             # Must check the start is in frame
             start = match.start()
             if start % 3 == 0:
@@ -234,7 +234,7 @@ class MGAFinder(object):
     def break_up_frame(self, s):
         """Returns offset, nuc, protein."""
         start = 0
-        for match in self.re_stops.finditer(s):
+        for match in self.re_stops.finditer(s, overlapped=True):
             index = match.start() + 3
             if index % 3 != 0:
                 continue
