@@ -1,7 +1,7 @@
-<tool id="interproscan.2" name="Interproscan functional predictions of ORFs" version="1.3.0">
+<tool id="interproscan-5.22" name="[5.22-61.0] Interproscan functional predictions of ORFs" version="5.22-61.0">
     <description>Interproscan functional predictions of ORFs</description>
     <command>
-/opt/interpro/$version/interproscan.sh
+/opt/interpro/interproscan-5.22-61.0/interproscan.sh
     #if $appl is not None:
     --applications "$appl"
     #end if
@@ -16,10 +16,6 @@ mv ${output_gff3}.gff3 ${output_gff3}
 
     </command>
         <inputs>
-            <param name="version" type="select" label="InterproScan Version">
-                <option value="interproscan-5.22-61.0" selected="true">interproscan-5.22-61.0</option>
-                <option value="interproscan-5.15-54.0">interproscan-5.15-54.0</option>
-            </param>
             <param name="input" type="data" label="Fasta File"/>
             <param name="goterms" truevalue="--goterms" type="boolean" falsevalue="" label="Switch on lookup of corresponding GO annotation" checked="true"/>
             <param name="iprlookup" truevalue="--iprlookup" falsevalue="" type="boolean" label="Switch on lookup of correspoding InterPro annotation" checked="true"/>

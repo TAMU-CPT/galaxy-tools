@@ -1,4 +1,4 @@
-<tool id="interproscan" name="Interproscan functional predictions of ORFs"  version="1.2.2">
+<tool id="interproscan" name="[5.15-54.0] Interproscan functional predictions of ORFs"  version="5.15-54.0">
     <description>Interproscan functional predictions of ORFs</description>
     <command>
 /opt/iprscan_v5/interproscan-5.15-54.0/interproscan.sh

@@ -207,7 +207,7 @@
     <tool file="cpt2/galaxy-tools/tools/external/tmhmm.xml" />
 	<tool file="cpt2/galaxy-tools/tools/external/gmsn.pl.xml" />
     <tool file="cpt2/galaxy-tools/tools/external/interproscan.xml" />
-    <tool file="cpt2/galaxy-tools/tools/external/interproscan-2.xml" hidden="true" />
+    <tool file="cpt2/galaxy-tools/tools/external/interproscan-5.22.xml" hidden="true" />
 	<tool hidden="True" file="cpt2/galaxy-tools/tools/external/phageterm/PhageTerm.xml" />
   </section>
   <section id="cptspecialsnowflakes" name="CPT:Oneoff/Custom">
