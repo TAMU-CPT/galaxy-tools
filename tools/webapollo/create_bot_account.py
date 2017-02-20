@@ -24,7 +24,7 @@ if __name__ == '__main__':
     time.sleep(1)
     users = wa.users.loadUsers()
 
-    bot_email = 'bot+' + args.email.replace('@', '_') + '@cpt.tamu.edu'
+    bot_email = 'bot-' + args.email.replace('@', '_') + '@cpt.tamu.edu'
     user = [u for u in users
             if u.username == bot_email]
 
