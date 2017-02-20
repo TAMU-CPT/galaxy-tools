@@ -11,3 +11,4 @@ future
 requests
 enum34
 intervaltree
+regex
