@@ -16,7 +16,7 @@ mv ${output_gff3}.gff3 ${output_gff3}
 
     </command>
         <inputs>
-            <param name="input" type="data" label="Fasta File"/>
+            <param name="input" type="data" label="Fasta File" format="fasta"/>
             <param name="goterms" truevalue="--goterms" type="boolean" falsevalue="" label="Switch on lookup of corresponding GO annotation" checked="true"/>
             <param name="iprlookup" truevalue="--iprlookup" falsevalue="" type="boolean" label="Switch on lookup of correspoding InterPro annotation" checked="true"/>
             <param name="pathways" truevalue="--pathways" falsevalue="" type="boolean" label="Switch on lookup of correspoding Pathway annotation" checked="true"/>
