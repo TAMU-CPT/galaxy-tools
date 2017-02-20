@@ -231,4 +231,9 @@
   <section id="data_summ" name="Data Summarization and Reporting">
     <tool file="cpt2/tools-iuc/tools/jbrowse/jbrowse.xml" />
   </section>
+
+  <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/success.xml" />
+  <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/error.xml" />
+  <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/env.xml" />
+  <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/hostname.xml" />
 </toolbox>
