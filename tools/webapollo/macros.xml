@@ -62,7 +62,7 @@
             <param name="org_select" type="select" dynamic_options="galaxy_list_orgs(__trans__)" label="Organism" />
         </when>
         <when value="direct">
-            <param name="org_raw" type="text" label="Organism Common Name" />
+            <param name="org_raw" type="text" label="Organism Common Name" optional="False" />
         </when>
         <when value="auto_json">
             <param name="org_file" type="data" format="json" label="Apollo Organism File" help="Will only fetch first organism" />

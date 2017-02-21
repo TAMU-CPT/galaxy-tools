@@ -1,0 +1,22 @@
+<tool id="edu.tamu.cpt.gff3.fix_ncbi" name="GFF3 Fix NCBI gff for Apollo" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fix_ncbi.py
+@INPUT_GFF@
+> $default]]></command>
+  <inputs>
+	<expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="default"/>
+  </outputs>
+  <help><![CDATA[
+This tool corrects some issues in NCBI gff data which causes poor display in Apollo.
+]]></help>
+	<citations>
+	</citations>
+</tool>

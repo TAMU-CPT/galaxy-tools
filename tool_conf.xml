@@ -113,6 +113,7 @@
     <tool file="cpt2/galaxy-tools/tools/gff3/stop_stats.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/shinefind.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/lipory.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/gff3/fix_ncbi.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/intersect.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/neighbours.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/remove_annotations.xml"/>
