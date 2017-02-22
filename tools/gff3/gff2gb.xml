@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GenBank" version="2.0">
+<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GenBank" version="3.0">
   <description>convert gff3 to GenBank</description>
   <macros>
     <import>macros.xml</import>
@@ -31,11 +31,18 @@ python $__tool_directory__/gff2gb.py
 
 This is a LOSSY conversion. This tool **TRUNCATES** genbank file identifiers if
 they are too long. Your data may not "match up" after processing through this
-ool.
+tool.
 
 **What it does**:
 
 Convert gff3 data to genbank. There are may WebApollo specific conventions. A re-numbering is also done.
+
+**Supported / Expected Data**
+
+- gene / mRNA / (CDS, Exon)
+- gene / tRNA
+- terminator
+
       ]]></help>
 </tool>
 
