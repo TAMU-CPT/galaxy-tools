@@ -1,4 +1,4 @@
-<tool id="TransTermHP" name="TransTermHP" version="1.0">
+<tool id="TransTermHP" name="TransTermHP" version="2.09+galaxy2">
 	<description>predicts transcription terminators</description>
 	<macros>
 		<import>macros.xml</import>

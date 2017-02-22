@@ -18,7 +18,7 @@ SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 REGEX_TERM = re.compile('  TERM \d+ \s* (\d+) - (\d+)\s*(\+|-) [^ ]* \s* (\d+)\s* ([0-9.-]+)\s* -([0-9.]+)\s*\|\s*(.*)')
 PARTS_TERM = re.compile('  ([^ ]*)\s+([^ ]*)\s+([^ ]*)\s+([^ ]*)\s+([^ ]*)')
 COLS = ("start", "end", "strand", "confidence", "hp score", "tail score",
-        "notes", "5' tail", "5' stem", "loop", "3' stem", "3' loop")
+        "notes", "5' tail", "5' stem", "loop", "3' stem", "3' tail")
 
 
 def build_expterm():
@@ -86,18 +86,71 @@ def parse_transterm(data):
             start = int(pd['start'])
             end = int(pd['end'])
 
+            notes = {k: pd[k] for k in COLS[6:]}
+            notes2 = {}
+            # However, if on - strand, we need to swap 5', 3':
+            if pd['strand'] == '-':
+                # Also need to flip the data
+                notes2 = {
+                    "[1] 5' stem": str(Seq(notes["3' stem"]).reverse_complement()),
+                    "[2] loop": str(Seq(notes["loop"]).reverse_complement()),
+                    "[3] 3' stem": str(Seq(notes["5' stem"]).reverse_complement()),
+                    "[4] 3' tail": str(Seq(notes["5' tail"]).reverse_complement()),
+                }
+            else:
+                notes2 = {
+                    "[1] 5' stem": notes["5' stem"],
+                    "[2] loop": notes["loop"],
+                    "[3] 3' stem": notes["3' stem"],
+                    "[4] 3' tail": notes["3' tail"],
+                }
+
+            qualifiers = {
+                'score': pd['confidence'],
+                'source': 'TranstermHP',
+                'ID': ['terminator_%s' % idx],
+            }
+            current_start = min(start, end) - 1
+            current_end = max(start, end)
+
+            if pd['strand'] == '+':
+                # Let's extend the current_end to include any Ts we find.
+                # Take the 3' tail, and check to see how many Ts we can strip:
+                #
+                # Updated algo: take as many chars as possible until >1 is non-T
+                # If the non-T is last, strip.
+                # Otherwise (internal), leave it.
+                addition = ""
+                prime3tail = notes["3' tail"]
+                for idx in range(len(prime3tail)):
+                    addition += prime3tail[idx]
+                    if addition.count('A') + addition.count('C') + addition.count('G') > 1:
+                        break
+
+                if addition[-1] != 'T':
+                    addition = addition[0:-1]
+
+                current_end += len(addition)
+            else:
+                addition = ""
+                prime5tail = notes["5' tail"][::-1]
+                for idx in range(len(prime5tail)):
+                    addition += prime5tail[idx]
+                    if addition.count('T') + addition.count('C') + addition.count('G') > 1:
+                        break
+
+                if addition[-1] != 'A':
+                    addition = addition[0:-1]
+
+                current_start -= len(addition)
+
+
+            qualifiers.update(notes2)
             feature = SeqFeature(
-                FeatureLocation(min(start, end) - 1, max(start, end)),
+                FeatureLocation(current_start, current_end),
                 type="terminator",
                 strand=1 if pd['strand'] == '+' else -1,
-                qualifiers={
-                    'score': pd['confidence'],
-                    'source': 'TranstermHP',
-                    'ID': ['terminator_%s' % idx],
-                    'Note': [
-                        '%s: %s' % (k, pd[k]) for k in COLS[6:]
-                    ]
-                }
+                qualifiers=qualifiers,
             )
             record.features.append(feature)
 
