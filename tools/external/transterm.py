@@ -123,9 +123,10 @@ def parse_transterm(data):
                 addition = ""
                 prime3tail = notes["3' tail"]
                 for idx in range(len(prime3tail)):
-                    addition += prime3tail[idx]
-                    if addition.count('A') + addition.count('C') + addition.count('G') > 1:
+                    if prime3tail[idx] != 'T' and addition.count('A') + addition.count('C') + addition.count('G') == 1:
                         break
+
+                    addition += prime3tail[idx]
 
                 if addition[-1] != 'T':
                     addition = addition[0:-1]
@@ -135,15 +136,15 @@ def parse_transterm(data):
                 addition = ""
                 prime5tail = notes["5' tail"][::-1]
                 for idx in range(len(prime5tail)):
-                    addition += prime5tail[idx]
-                    if addition.count('T') + addition.count('C') + addition.count('G') > 1:
+                    if prime5tail[idx] != 'A' and addition.count('T') + addition.count('C') + addition.count('G') == 1:
                         break
+
+                    addition += prime5tail[idx]
 
                 if addition[-1] != 'A':
                     addition = addition[0:-1]
 
                 current_start -= len(addition)
-
 
             qualifiers.update(notes2)
             feature = SeqFeature(
