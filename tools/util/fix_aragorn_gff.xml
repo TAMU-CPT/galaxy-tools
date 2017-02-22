@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.util.fix_aragorn" name="Fix aragorn GFF3" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/fix_aragorn_gff.py
+@INPUT_GFF@
+> $output]]></command>
+  <inputs>
+    <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Fixes Aragorn's GFF3 output to be more standards compliant.
+      ]]></help>
+</tool>
