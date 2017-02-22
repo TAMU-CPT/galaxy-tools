@@ -31,7 +31,6 @@ if __name__ == '__main__':
 
     # TODO: Check user perms on org.
     org = wa.organisms.findOrganismByCn(org_cn)
-    wa.annotations.setSequence(org['commonName'], org['id'])
 
     bad_quals = ['date_creation', 'source', 'owner', 'date_last_modified', 'Name', 'ID']
 
@@ -41,7 +40,11 @@ if __name__ == '__main__':
 
     # print(wa.annotations.getFeatures())
     for rec in GFF.parse(args.gff3):
+        wa.annotations.setSequence(rec.id, org['id'])
         for feature in rec.features:
+            # We can only handle genes right now
+            if feature.type != 'gene':
+                continue
             # Convert the feature into a presentation that Apollo will accept
             featureData = featuresToFeatureSchema([feature])
 
