@@ -10,7 +10,7 @@ import re
 from Bio import SeqIO
 from Bio.Alphabet import generic_dna
 from BCBio import GFF
-from gff3 import feature_lambda, wa_unified_product_name, is_uuid
+from gff3 import feature_lambda, wa_unified_product_name, is_uuid, feature_test_type
 default_name = re.compile("^gene_(\d+)$")
 
 
@@ -37,9 +37,6 @@ def gff3_to_genbank(gff_file, fasta_file):
     fasta_input = SeqIO.to_dict(SeqIO.parse(fasta_file, "fasta", generic_dna))
     gff_iter = GFF.parse(gff_file, fasta_input)
 
-    def test_true(feature, **kwargs):
-        return True
-
     for record in gff_iter:
         full_feats = []
         for feature in record.features:
@@ -65,10 +62,14 @@ def gff3_to_genbank(gff_file, fasta_file):
         # We'll re-do gene numbering while we're at it
         fid = 0
 
-        # Renumbering requires sorting
-        for feature in sorted(feature_lambda(record.features, lambda x: x.type == 'gene', {}, subfeatures=True),
-                              key=lambda x: int(x.location.start)):
+        # These are NON-GENE features (maybe terminators? etc?)
+        for feature in feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=False, invert=True, recurse=False):
+            if feature.type == 'terminator':
+                replacement_feats.append(feature)
 
+        # Renumbering requires sorting
+        for feature in sorted(feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True),
+                              key=lambda x: int(x.location.start)):
             # Our modifications only involve genes
             fid += 1
             # Which have mRNAs we'll drop later
@@ -91,6 +92,9 @@ def gff3_to_genbank(gff_file, fasta_file):
                         # Update CDS qualifiers with all info that was on parent
                         sf.qualifiers.update(feature.qualifiers)
                         sf_replacement.append(sf)
+                    elif sf.type == 'tRNA':
+                        sf.qualifiers.update(feature.qualifiers)
+                        sf_replacement.append(sf)
 
                 # Replace the subfeatures on the mRNA
                 mRNA.sub_features = sf_replacement
@@ -104,7 +108,7 @@ def gff3_to_genbank(gff_file, fasta_file):
 
         # Meat of our modifications
         for flat_feat in feature_lambda(
-                replacement_feats, test_true, {}, subfeatures=True):
+                replacement_feats, lambda x: True, {}, subfeatures=True):
 
             # We use the full GO term, but it should be less than that.
             if flat_feat.type == 'Shine_Dalgarno_sequence':
@@ -134,6 +138,12 @@ def gff3_to_genbank(gff_file, fasta_file):
                 flat_feat.qualifiers['Product'] = protein_product
                 # Wipes out any 'product' key
                 flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'Product', 'product')
+
+            elif flat_feat.type == 'terminator':
+                flat_feat.type = 'regulatory'
+                flat_feat.qualifiers = {
+                    'regulatory_class': 'terminator',
+                }
 
             # In genbank format, note is lower case.
             flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'Note', 'note')
