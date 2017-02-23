@@ -42,8 +42,8 @@
     <tool file="cpt2/galaxy-tools/tools/webapollo/create_or_update_organism.xml"/>
     <tool file="cpt2/galaxy-tools/tools/webapollo/fetch_organism_jbrowse.xml"/>
     <tool file="cpt2/galaxy-tools/tools/webapollo/export.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" labels="new,danger"/>
-    <tool file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" labels="new,experimental"/>
+    <tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" labels="danger"/>
+    <tool file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" labels="experimental"/>
     <tool file="cpt2/galaxy-tools/tools/webapollo/json2iframe.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_apollo_sd.xml" labels="new"/>
     <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/webapollo/find_organism.xml" />-->
@@ -65,11 +65,11 @@
   <section id="cpt2_blast" name="CPT2: Blast">
     <tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/blasttab_to_gapped_gff3.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml" labels="new"/>
+    <tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/cpt_blast_filter.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/cpt_relatedness.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/blastxml_filter.xml" labels="experimental"/>
-    <tool file="cpt2/galaxy-tools/tools/blast/split_blast.xml" labels="new"/>
+    <tool file="cpt2/galaxy-tools/tools/blast/split_blast.xml"/>
   </section>
   <section id="cpt2_fasta" name="CPT2: Fasta Tools">
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_aastats.xml"/>
@@ -92,15 +92,15 @@
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_snp_plot.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_remove_id.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_translate.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/fasta/fasta_revcom.xml" labels="new"/>
+    <tool file="cpt2/galaxy-tools/tools/fasta/fasta_revcom.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/ncbi_header_split.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/safe_reopen.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/get_orfs_or_cdss.xml"/>
     <tool file="cpt2/galaxy-tools/tools/util/extract_ref_codons.xml"/>
     <tool file="cpt2/galaxy-tools/tools/util/cpt_mutate.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="new,experimental"/>
-    <tool file="cpt2/galaxy-tools/tools/fasta/stop_stats.xml" labels="new"/>
-    <tool file="cpt2/galaxy-tools/tools/fasta/start_stats.xml" labels="new"/>
+    <tool file="cpt2/galaxy-tools/tools/fasta/stop_stats.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/fasta/start_stats.xml"/>
   </section>
   <section id="cpt2_gff3" name="CPT2: GFF3">
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_aa_stats.xml"/>

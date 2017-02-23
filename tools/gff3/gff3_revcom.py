@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
-def gff_filter(gff3, fasta=None):
+def gff_filter(gff3, fasta=None, fasta_output=None):
     if fasta:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         it = GFF.parse(gff3, base_dict=seq_dict)
@@ -30,6 +30,5 @@ if __name__ == '__main__':
 
     for rec in gff_filter(**vars(args)):
         GFF.write([rec], sys.stdout)
-
         if args.fasta:
             SeqIO.write([rec], args.fasta_output, 'fasta')
