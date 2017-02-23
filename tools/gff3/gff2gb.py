@@ -157,7 +157,7 @@ def gff3_to_genbank(gff_file, fasta_file):
             full_feats.append(flat_feat)
 
         # Update our features
-        record.features = full_feats
+        record.features = sorted(full_feats, key=lambda x:x.location.start)
         # Strip off record names that would cause crashes.
         record.name = record.name[0:16]
         yield record
