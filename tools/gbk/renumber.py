@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import BIO_FIX_TOPO  # NOQA
 import argparse
-import sys
+import sys  # noqa
 from Bio import SeqIO
 
 import logging
@@ -28,28 +28,32 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
             f_care_about = []
 
             # Make sure we've hit every RBS and gene
-            h_rbs = {}
-            h_gene = {}
             for cds in f_cds:
                 # If there's an associated gene feature, it will share a stop codon
-                associated_genes = [f for f in f_gene if f.location.end ==
-                                    cds.location.end]
+                if cds.location.strand > 0:
+                    associated_genes = [f for f in f_gene if f.location.end ==
+                                        cds.location.end]
+                else:
+                    associated_genes = [f for f in f_gene if f.location.start ==
+                                        cds.location.start]
+
                 # If there's an RBS it'll be upstream a bit.
                 if cds.location.strand > 0:
                     associated_rbss = [f for f in f_rbs if f.location.end <
                                        cds.location.start and f.location.end >
-                                       cds.location.start - 30]
+                                       cds.location.start - 24]
                 else:
                     associated_rbss = [f for f in f_rbs if f.location.start >
                                        cds.location.end and f.location.start <
-                                       cds.location.end + 30]
+                                       cds.location.end + 24]
                 tmp_result = [cds]
                 if len(associated_genes) > 0:
-                    h_gene[f_gene.index(associated_genes[0])] = True
                     tmp_result.append(associated_genes[0])
-                if len(associated_rbss) > 0:
-                    h_rbs[f_rbs.index(associated_rbss[0])] = True
+
+                if len(associated_rbss) == 1:
                     tmp_result.append(associated_rbss[0])
+                else:
+                    log.warning("%s RBSs found for %s", len(associated_rbss), cds.location)
                 # We choose to append to f_other as that has all features not
                 # already accessed. It may mean that some gene/RBS features are
                 # missed if they aren't detected here, which we'll need to handle.

@@ -51,6 +51,7 @@ $gbk_files
       <option value="gap">gap</option>
       <option value="gene">gene</option>
       <option value="iDNA">iDNA</option>
+      <option value="tRNA">tRNA</option>
       <option value="intron">intron</option>
       <option value="mRNA">mRNA</option>
       <option value="mat_peptide">mat_peptide</option>
