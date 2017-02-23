@@ -37,12 +37,12 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
     else:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         for rec in GFF.parse(gff3, base_dict=seq_dict):
-            for feat in feature_lambda(
+            for feat in sorted(feature_lambda(
                 rec.features,
                 feature_test_type,
                 {'type': feature_filter},
                 subfeatures=False
-            ):
+            ), key=lambda f: f.location.start):
                 id = feat.id
                 if len(id) == 0:
                     id = get_id(feat)
