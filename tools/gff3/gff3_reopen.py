@@ -24,10 +24,9 @@ def gff_reopen(gff3, index=1, fasta=None, fasta_output=None):
         # Reopen
         if len(list(feature_lambda(rec.features, feature_test_contains, {'index': index}, subfeatures=False))) > 0:
             log.warn("WARNING: Index chosen is in the middle of a feature. This feature will disappear from the output")
-        log.debug(rec.annotations)
         # TODO: This call removes metadata!
         rec = rec[index:] + rec[0:index]
-        log.debug(rec.annotations)
+        rec.features = sorted(rec.features, key=lambda x: x.location.start)
 
         if fasta:
             if len(rec.seq) == rec.seq.count("?"):

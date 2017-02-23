@@ -72,6 +72,23 @@ def gff3_to_genbank(gff_file, fasta_file):
                               key=lambda x: int(x.location.start)):
             # Our modifications only involve genes
             fid += 1
+
+            # There is a pants-on-head retarded bug in apollo whereby we have
+            # created gene features which are LARGER than expected, but we
+            # cannot see this. We only see a perfect sized gene + great SD
+            # together.
+            #
+            # So, we have this awful hack to clamp the location of the gene
+            # feature to the contained mRNAs. This is good enough for now.
+            mRNA_min = min([min(x.location.start, x.location.end) for x in feature.sub_features])
+            mRNA_max = max([max(x.location.start, x.location.end) for x in feature.sub_features])
+            if feature.location.strand > 0:
+                feature.location._start = mRNA_min
+                feature.location._end = mRNA_max
+            else:
+                feature.location._start = mRNA_max
+                feature.location._end = mRNA_min
+
             # Which have mRNAs we'll drop later
             for mRNA in feature.sub_features:
                 # And some exons below that
@@ -152,6 +169,10 @@ def gff3_to_genbank(gff_file, fasta_file):
             flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'Dbxref', 'db_xref')
             if 'Name' in flat_feat.qualifiers:
                 del flat_feat.qualifiers['Name']
+
+            # more apollo nonsense
+            if 'Manually set translation start' in flat_feat.qualifiers.get('note', []):
+                flat_feat.qualifiers['note'].remove('Manually set translation start')
 
             # Append the feature
             full_feats.append(flat_feat)

@@ -49,6 +49,7 @@ def export(org_cn, seqs):
     else:
         for record in records:
             record.annotations = {}
+            record.features = sorted(record.features, key=lambda x: x.location.start)
             if args.gff:
                 GFF.write([record], args.gff)
             record.description = ""

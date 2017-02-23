@@ -12,19 +12,33 @@ log = logging.getLogger()
 def renumber_genes(gbk_files, tag_to_update="locus_tag",
                    string_prefix="display_id", leading_zeros=3,
                    change_table=None):
+    tRNA_count = 1
 
     for gbk_file in gbk_files:
         for record in SeqIO.parse(gbk_file, "genbank"):
             if string_prefix == 'display_id':
                 format_string = record.id + '_%0' + str(leading_zeros) + 'd'
+                format_string_t = record.id + '_gt%0' + str(leading_zeros) + 'd'
             else:
                 format_string = string_prefix + '%0' + str(leading_zeros) + 'd'
+                format_string_t = string_prefix + '.gt%0' + str(leading_zeros) + 'd'
 
             f_cds = [f for f in record.features if f.type == 'CDS']
             f_rbs = [f for f in record.features if f.type == 'RBS']
             f_gene = [f for f in record.features if f.type == 'gene']
             f_oth = [f for f in record.features if f.type not in ['CDS', 'RBS',
                                                                   'gene']]
+            # Apparently we're numbering tRNAs now, thanks for telling me.
+            f_oth2 = []
+            for q in sorted(f_oth, key=lambda x: x.location.start):
+                if q.type == 'tRNA':
+                    q.qualifiers['locus_tag'] = format_string_t % tRNA_count
+                    tRNA_count += 1
+                    f_oth2.append(q)
+                else:
+                    f_oth2.append(q)
+            f_oth = f_oth2
+
             f_care_about = []
 
             # Make sure we've hit every RBS and gene
