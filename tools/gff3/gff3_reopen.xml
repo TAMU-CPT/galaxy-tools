@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gff3.reopen" name="GFF3 Reopen" version="1.2">
-  <description>reopens a gff3 file (and optional fasta file) at a specific location</description>
+<tool id="edu.tamu.cpt.gff3.reopen" name="Reopen" version="1.2">
+  <description>a gff3 file (and optional fasta file) at a specific location</description>
   <macros>
     <import>macros.xml</import>
   </macros>
@@ -32,6 +32,5 @@ $index
 **What it does**
 
 Re-open a genome with a new start coordinate. All annotations are shifted accordingly.
-
 ]]></help>
 </tool>

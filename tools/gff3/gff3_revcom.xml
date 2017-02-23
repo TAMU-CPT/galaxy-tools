@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gff3.revcom" name="GFF3 Reverse and Complement" version="1.0.0">
-  <description>reverses and complements the entire set of features</description>
+<tool id="edu.tamu.cpt.gff3.revcom" name="Reverse and Complement" version="2.0">
+  <description>a gff3 file (and optional fasta file)</description>
   <macros>
     <import>macros.xml</import>
   </macros>
@@ -8,12 +8,18 @@
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gff3_revcom.py
 @INPUT_GFF@
-> $default]]></command>
+--fasta "$fasta"
+--fasta_output "$fasta_output"
+$index
+> "$default"]]></command>
   <inputs>
       <expand macro="gff3_input" />
+      <param name="fasta" type="data" format="fasta" label="Source FASTA Sequence" optional="True"/>
+      <param name="index" type="integer" value="1" label="Index to reopen annotations (1-based counting)" />
   </inputs>
   <outputs>
-    <data format="gff3" name="default"/>
+	<data format="gff3" name="default" label="RevCom(${gff3_data.name})"/>
+    <data format="fasta" name="fasta_output" label="RevCom(${gff3_data.name})"/>
   </outputs>
   <tests>
       <test>
@@ -24,6 +30,6 @@ $__tool_directory__/gff3_revcom.py
   <help><![CDATA[
 **What it does**
 
-Reverses and complements a genbank file and all contained features.
+Re-open a genome reversed and complemented. All annotations are shifted accordingly.
 ]]></help>
 </tool>
