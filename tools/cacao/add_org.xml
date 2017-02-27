@@ -12,11 +12,11 @@ python $__tool_directory__/add_org.py
 
 https://cpt.tamu.edu/cacao-backend/
 /galaxy/creds.json
---organism_file "$org_file"
 --taxon "$taxon"
 --ebi_id "$ebi_id"
 "$gff3_data"
 @GENOME_SELECTOR@
+"$org_file"
 
 > $log]]></command>
   <inputs>
