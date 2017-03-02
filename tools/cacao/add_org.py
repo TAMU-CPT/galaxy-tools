@@ -13,23 +13,19 @@ def auth(creds, url):
 
 
 def get(token, url):
-    print('>', url)
     q = requests.get(
         url,
         headers={'Authorization': token}
     ).json()
-    print('<', q)
     return q
 
 
 def post(token, url, data):
-    print('>', data)
     q = requests.post(
         url,
         data=data,
         headers={'Authorization': token}
     ).json()
-    print('<', q)
     return q
 
 
@@ -63,6 +59,9 @@ def main():
     ))
     if organism.get('common_name', [None])[0] == 'organism with this common name already exists.':
         organism = get(token, args.url + 'organisms/?common_name=' + organism_name)['results'][0]
+        print("Organism[%s]: Pre-existing" % organism_name)
+    else:
+        print("Organism[%s]: Registered" % organism_name)
 
     refseqs = {}
     for record in SeqIO.parse(args.fasta, "fasta"):
@@ -73,6 +72,9 @@ def main():
         ))
         if refseq.get('non_field_errors', [None])[0] == 'The fields name, organism must make a unique set.':
             refseq = get(token, args.url + 'refseq/?name=%s&%s' % (record.id, organism['id']))['results'][0]
+        print("\tRefSeq[%s]: Pre-existing" % record.id)
+    else:
+        print("\tRefSeq[%s]: Registered" % record.id)
 
         refseqs[record.id] = refseq
 
@@ -96,6 +98,7 @@ def main():
                 "db_object_type": "protein",
                 "gene_product_id": "",
             })
+            print("\tFeature[%s]: Updated" % feat.id)
 
 if __name__ == '__main__':
     main()
