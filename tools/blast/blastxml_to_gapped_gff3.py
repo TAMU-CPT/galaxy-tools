@@ -14,14 +14,14 @@ blast hits. This tool aims to fill that "gap".
 """
 
 
-def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
+def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False, include_seq=False):
     from Bio.Blast import NCBIXML
     from Bio.Seq import Seq
     from Bio.SeqRecord import SeqRecord
     from Bio.SeqFeature import SeqFeature, FeatureLocation
 
     blast_records = NCBIXML.parse(blastxml)
-    for record in blast_records:
+    for idx_record, record in enumerate(blast_records):
         # http://www.sequenceontology.org/browser/release_2.4/term/SO:0000343
         match_type = {  # Currently we can only handle BLASTN, BLASTP
             'BLASTN': 'nucleotide_match',
@@ -33,24 +33,29 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
             recid = recid[0:recid.index(' ')]
 
         rec = SeqRecord(Seq("ACTG"), id=recid)
-        for hit in record.alignments:
-            for hsp in hit.hsps:
+        for idx_hit, hit in enumerate(record.alignments):
+            for idx_hsp, hsp in enumerate(hit.hsps):
                 qualifiers = {
+                    "ID": 'b2g.%s.%s.%s' % (idx_record, idx_hit, idx_hsp),
                     "source": "blast",
                     "score": hsp.expect,
                     "accession": hit.accession,
                     "hit_id": hit.hit_id,
                     "length": hit.length,
-                    "hit_titles": hit.title.split(' >')
+                    "hit_titles": hit.title.split(' >'),
                 }
-                for prop in ('score', 'bits', 'identitie', 'positives',
+                if include_seq:
+                    qualifiers.update({
+                        'blast_qseq': hsp.query,
+                        'blast_sseq': hsp.sbjct,
+                        'blast_mseq': hsp.match,
+                    })
+
+                for prop in ('score', 'bits', 'identities', 'positives',
                              'gaps', 'align_length', 'strand', 'frame',
                              'query_start', 'query_end', 'sbjct_start',
                              'sbjct_end'):
-                    try:
-                        qualifiers['blast_' + prop] = getattr(hsp, prop, None)
-                    except Exception:
-                        pass
+                    qualifiers['blast_' + prop] = getattr(hsp, prop, None)
 
                 desc = hit.title.split(' >')[0]
                 qualifiers['description'] = desc[desc.index(' '):]
@@ -92,11 +97,12 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False):
                     "source": "blast",
                 }
                 top_feature.sub_features = []
-                for start, end, cigar in generate_parts(hsp.query, hsp.match,
-                                                        hsp.sbjct,
-                                                        ignore_under=min_gap):
+                for idx_part, (start, end, cigar) in \
+                        enumerate(generate_parts(hsp.query, hsp.match,
+                                         hsp.sbjct,
+                                         ignore_under=min_gap)):
                     part_qualifiers['Gap'] = cigar
-                    part_qualifiers['ID'] = hit.hit_id
+                    part_qualifiers['ID'] = qualifiers['ID'] + ('.%s' % idx_part)
 
                     if trim:
                         # If trimming, then we start relative to the
@@ -261,7 +267,9 @@ if __name__ == '__main__':
     parser.add_argument('--min_gap', type=int, help='Maximum gap size before generating a new match_part', default=3)
     parser.add_argument('--trim', action='store_true', help='Trim blast hits to be only as long as the parent feature')
     parser.add_argument('--trim_end', action='store_true', help='Cut blast results off at end of gene')
+    parser.add_argument('--include_seq', action='store_true', help='Include sequence')
     args = parser.parse_args()
 
     for rec in blastxml2gff3(**vars(args)):
-        GFF.write([rec], sys.stdout)
+        if len(rec.features):
+            GFF.write([rec], sys.stdout)
