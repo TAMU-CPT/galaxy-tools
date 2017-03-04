@@ -1,1 +1,1 @@
-../gff3_rebase/gff3_rebase.py
+../gff3/gff3_rebase.py
