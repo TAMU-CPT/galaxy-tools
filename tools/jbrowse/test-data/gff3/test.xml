@@ -32,8 +32,11 @@
                     <description>feature</description>
                     <label>name,id</label>
                     <height>100px</height>
+                    <overridePlugins>True</overridePlugins>
+                    <overrideDraggable>True</overrideDraggable>
                 </style>
                 <gff>
+				<trackType>BlastView/View/Track/CanvasFeatures</trackType>
                 </gff>
                 <scaling>
                     <method>ignore</method>
