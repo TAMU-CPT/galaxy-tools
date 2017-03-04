@@ -186,6 +186,7 @@
   </section>
   <section id="cpt2_jbrowse" name="CPT2: JBrowse">
     <tool file="cpt2/tools-iuc/tools/jbrowse/jbrowse.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/jbrowse/jbrowse.xml"/>
   </section>
   <section id="cpt" name="CPT:Scripts and Analysis">
     <tool file="cpt/new-py/bin/cpt_convert_tmhmmfasta_merge.xml"/>
