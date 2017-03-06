@@ -1,4 +1,4 @@
-<tool id="blastxml_to_gapped_gff3" name="BlastXML to gapped GFF3" version="1.0">
+<tool id="blastxml_to_gapped_gff3" name="BlastXML to gapped GFF3" version="1.1">
   <description>converts blast results to a JBrowse-compatible file</description>
   <macros>
     <import>macros.xml</import>
@@ -10,6 +10,7 @@ $__tool_directory__/blastxml_to_gapped_gff3.py
 
 --min_gap $min_gap
 $trim
+$include_seq
 > $output]]></command>
   <inputs>
     <expand macro="blast_xml" />
@@ -20,6 +21,8 @@ $trim
         <option value="--trim">Trim start and end</option>
         <option value="--trim_end" selected="true">Trim only end</option>
     </param>
+
+	<param name="include_seq" type="boolean" label="Include protein alignment in Blast view in Apollo/JBrowse" truevalue="--include_seq" falsevalue="" checked="" />
   </inputs>
   <outputs>
     <data format="gff3" name="output"/>
