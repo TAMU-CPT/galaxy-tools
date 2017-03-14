@@ -4,6 +4,7 @@ import copy
 import argparse
 import subprocess
 import hashlib
+import binascii
 import struct
 import datetime
 import tempfile
@@ -127,7 +128,7 @@ class ColorScaling(object):
 
     def rgb_from_hex(self, hexstr):
         # http://stackoverflow.com/questions/4296249/how-do-i-convert-a-hex-triplet-to-an-rgb-tuple-and-back
-        return struct.unpack('BBB', hexstr.decode('hex'))
+        return struct.unpack('BBB', binascii.unhexlify(hexstr))
 
     def min_max_gff(self, gff_file):
         min_val = None
@@ -383,7 +384,7 @@ class JbrowseConnector(object):
                '--key', trackData['key'],
                '--clientConfig', json.dumps(clientConfig),
                '--config', json.dumps(config),
-               '--trackType', 'JBrowse/View/Track/CanvasFeatures'
+               '--trackType', 'BlastView/View/Track/CanvasFeatures'
                ]
 
         self.subprocess_check_call(cmd)
@@ -480,6 +481,8 @@ class JbrowseConnector(object):
             cmd += [
                 '--trackType', gffOpts['trackType']
             ]
+            if gffOpts['trackType'] == 'BlastView/View/Track/CanvasFeatures':
+                config['glyph'] = 'JBrowse/View/FeatureGlyph/Segments'
         else:
             cmd += [
                 '--trackType', 'JBrowse/View/Track/CanvasFeatures'
