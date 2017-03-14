@@ -15,7 +15,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
     if feature_filter == 'nice_cds':
         from gff2gb import gff3_to_genbank
         for rec in gff3_to_genbank(gff3, fasta):
-            for feat in rec.features:
+            for feat in sorted(rec.features, key=lambda x: x.location.start):
                 if feat.type != 'CDS':
                     continue
 

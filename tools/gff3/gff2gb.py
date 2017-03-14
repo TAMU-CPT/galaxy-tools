@@ -10,7 +10,7 @@ import re
 from Bio import SeqIO
 from Bio.Alphabet import generic_dna
 from BCBio import GFF
-from gff3 import feature_lambda, wa_unified_product_name, is_uuid, feature_test_type
+from gff3 import feature_lambda, wa_unified_product_name, is_uuid, feature_test_type, fsort
 default_name = re.compile("^gene_(\d+)$")
 
 
@@ -39,7 +39,7 @@ def gff3_to_genbank(gff_file, fasta_file):
 
     for record in gff_iter:
         full_feats = []
-        for feature in record.features:
+        for feature in fsort(record.features):
             if feature.type == 'region' and 'source' in feature.qualifiers and \
                     'GenBank' in feature.qualifiers['source']:
                 feature.type = 'source'
@@ -68,8 +68,7 @@ def gff3_to_genbank(gff_file, fasta_file):
                 replacement_feats.append(feature)
 
         # Renumbering requires sorting
-        for feature in sorted(feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True),
-                              key=lambda x: int(x.location.start)):
+        for feature in fsort(feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True)):
             # Our modifications only involve genes
             fid += 1
 
@@ -178,7 +177,7 @@ def gff3_to_genbank(gff_file, fasta_file):
             full_feats.append(flat_feat)
 
         # Update our features
-        record.features = sorted(full_feats, key=lambda x:x.location.start)
+        record.features = fsort(full_feats)
         # Strip off record names that would cause crashes.
         record.name = record.name[0:16]
         yield record

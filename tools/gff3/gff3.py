@@ -271,3 +271,8 @@ def nice_name(record):
     if len(likely_parental_contig) == 1:
         name = likely_parental_contig[0].qualifiers.get('organism', [name])[0]
     return name
+
+
+def fsort(it):
+    for i in sorted(it, key=lambda x: int(x.location.start)):
+        yield i
