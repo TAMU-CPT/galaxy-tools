@@ -97,6 +97,7 @@ def convert(data=None):
                 feature.sub_features.append(sub_feat)
 
             record.features.append(feature)
+    yield [record]
 
 
 if __name__ == '__main__':
