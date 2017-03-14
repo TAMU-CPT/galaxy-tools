@@ -72,22 +72,20 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False, include_seq=F
                 # protein.
                 parent_match_end = hsp.query_start + hit.length + hsp.query.count('-')
 
-                # However, if the user requests that we trim the feature, then
-                # we need to cut the ``match`` start to 0 to match the parent feature.
-                # We'll also need to cut the end to match the query's end. It (maybe)
-                # should be the feature end? But we don't have access to that data, so
-                # We settle for this.
+                # If we trim the left end, we need to trim without losing information.
+                used_parent_match_start = parent_match_start
                 if trim:
                     if parent_match_start < 1:
-                        parent_match_start = 0
+                        used_parent_match_start = 0
 
                 if trim or trim_end:
                     if parent_match_end > hsp.query_end:
+                        print('match_part', 'ONE')
                         parent_match_end = hsp.query_end + 1
 
                 # The ``match`` feature will hold one or more ``match_part``s
                 top_feature = SeqFeature(
-                    FeatureLocation(parent_match_start, parent_match_end),
+                    FeatureLocation(used_parent_match_start, parent_match_end),
                     type=match_type, strand=0,
                     qualifiers=qualifiers
                 )
@@ -104,13 +102,8 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False, include_seq=F
                     part_qualifiers['Gap'] = cigar
                     part_qualifiers['ID'] = qualifiers['ID'] + ('.%s' % idx_part)
 
-                    if trim:
-                        # If trimming, then we start relative to the
-                        # match's start
-                        match_part_start = parent_match_start + start
-                    else:
-                        # Otherwise, we have to account for the subject start's location
-                        match_part_start = parent_match_start + hsp.sbjct_start + start - 1
+                    # Otherwise, we have to account for the subject start's location
+                    match_part_start = parent_match_start + hsp.sbjct_start + start - 1
 
                     # We used to use hsp.align_length here, but that includes
                     # gaps in the parent sequence
