@@ -19,7 +19,7 @@ if __name__ == '__main__':
     parser.add_argument('--genus', help='Organism Genus')
     parser.add_argument('--species', help='Organism Species')
     parser.add_argument('--public', action='store_true', help='Make organism public')
-    parser.add_argument('--group', help='Give access to a user group')
+    # parser.add_argument('--group', help='Give access to a user group')
 
     args = parser.parse_args()
     wa = WebApolloInstance(args.apollo, args.username, args.password)
@@ -82,11 +82,11 @@ if __name__ == '__main__':
         )
 
         # Group access
-        if args.group:
-            group = wa.groups.loadGroupByName(name=args.group)
-            res = wa.groups.updateOrganismPermission(group, org_cn,
-                                             administrate=False, write=True, read=True,
-                                             export=True)
+        # if args.group:
+            # group = wa.groups.loadGroupByName(name=args.group)
+            # res = wa.groups.updateOrganismPermission(group, org_cn,
+                                             # administrate=False, write=True, read=True,
+                                             # export=True)
 
     data = [o for o in data if o['commonName'] == org_cn]
     print(json.dumps(data, indent=2))
