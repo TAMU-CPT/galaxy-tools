@@ -115,6 +115,7 @@ $trackxml &&
                     <description>${track.data_format.jbstyle.style_description}</description>
                     <label>${track.data_format.jbstyle.style_label}</label>
                     <height>${track.data_format.jbstyle.style_height}</height>
+                    <maxHeight>${track.data_format.jbstyle.max_height}</maxHeight>
                 </style>
                 <scaling>
                   #if str($track.data_format.jbcolor_scale.color_score.color_score_select) == "none":

@@ -31,7 +31,8 @@
                     <className>feature</className>
                     <description>feature</description>
                     <label>name,id</label>
-                    <height>100px</height>
+                    <height>100</height>
+                    <maxHeight>6000</maxHeight>
                     <overridePlugins>True</overridePlugins>
                     <overrideDraggable>True</overrideDraggable>
                 </style>

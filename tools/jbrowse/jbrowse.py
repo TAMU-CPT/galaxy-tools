@@ -240,11 +240,11 @@ def etree_to_dict(t):
     if children:
         dd = defaultdict(list)
         for dc in map(etree_to_dict, children):
-            for k, v in dc.iteritems():
+            for k, v in dc.items():
                 dd[k].append(v)
-        d = {t.tag: {k: v[0] if len(v) == 1 else v for k, v in dd.iteritems()}}
+        d = {t.tag: {k: v[0] if len(v) == 1 else v for k, v in dd.items()}}
     if t.attrib:
-        d[t.tag].update(('@' + k, v) for k, v in t.attrib.iteritems())
+        d[t.tag].update(('@' + k, v) for k, v in t.attrib.items())
     if t.text:
         text = t.text.strip()
         if children or t.attrib:
@@ -513,6 +513,7 @@ class JbrowseConnector(object):
                 'description': track['style'].get('description', ''),
                 'overridePlugins': track['style'].get('overridePlugins', False) == 'True',
                 'overrideDraggable': track['style'].get('overrideDraggable', False) == 'True',
+                'maxHeight': track['style'].get('maxHeight', '600'),
             },
             'category': category,
         }
@@ -531,7 +532,8 @@ class JbrowseConnector(object):
             # will not generate different hashes and make comparison of outputs
             # much simpler.
             hashData = [dataset_path, track_human_label, track['category'], rest_url]
-            outputTrackConfig['label'] = hashlib.md5('|'.join(hashData)).hexdigest() + '_%s' % i
+            hashData = '|'.join(hashData).encode('utf-8')
+            outputTrackConfig['label'] = hashlib.md5(hashData).hexdigest() + '_%s' % i
 
             # Colour parsing is complex due to different track types having
             # different colour options.
@@ -627,7 +629,7 @@ class JbrowseConnector(object):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="", epilog="")
-    parser.add_argument('xml', type=file, help='Track Configuration')
+    parser.add_argument('xml', type=argparse.FileType('r'), help='Track Configuration')
 
     parser.add_argument('--jbrowse', help='Folder containing a jbrowse release')
     parser.add_argument('--outdir', help='Output directory', default='out')
@@ -676,7 +678,7 @@ if __name__ == '__main__':
         try:
             # Only pertains to gff3 + blastxml. TODO?
             track_conf['style'] = {t.tag: t.text for t in track.find('options/style')}
-        except TypeError, te:
+        except TypeError as te:
             track_conf['style'] = {}
             pass
         track_conf['conf'] = etree_to_dict(track.find('options'))

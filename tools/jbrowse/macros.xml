@@ -267,7 +267,8 @@ This Galaxy tool relies on the JBrowse, maintained by the GMOD Community. The Ga
        token_classname="feature"
        token_label="prodcut,name,id"
        token_description="note"
-       token_height="100px">
+       token_height="10"
+       token_maxheight="600">
     <section name="jbstyle" title="JBrowse Styling Options [Advanced]" expanded="false">
         <param label="JBrowse style.className" type="text"
                name="style_classname"
@@ -288,6 +289,11 @@ This Galaxy tool relies on the JBrowse, maintained by the GMOD Community. The Ga
                name="style_height"
                value="@HEIGHT@"
                help="Height in pixels of glyphs. Default value varies from glyph to glyph. Note that the 'compact' displayMode uses style->height * 0.35 so changing style height can adjust the compact visualization."/>
+        <param label="JBrowse maxHeight"
+               type="text"
+               name="max_height"
+               value="@MAXHEIGHT@"
+               help="Maximum height that the track is permitted to reach in pixels."/>
     </section>
   </xml>
 
