@@ -8,8 +8,9 @@
   <version_command>python jbrowse.py --version</version_command>
   <command><![CDATA[
 
-mkdir -p $output.files_path &&
-#if $action.action_select != "create":
+#if $action.action_select == "create":
+    mkdir -p $output.files_path &&
+#else:
     cp -R $action.update_jbrowse.extra_files_path $output.files_path &&
 #end if
 
