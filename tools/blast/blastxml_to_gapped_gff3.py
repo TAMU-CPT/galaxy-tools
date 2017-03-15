@@ -80,7 +80,6 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False, include_seq=F
 
                 if trim or trim_end:
                     if parent_match_end > hsp.query_end:
-                        print('match_part', 'ONE')
                         parent_match_end = hsp.query_end + 1
 
                 # The ``match`` feature will hold one or more ``match_part``s
