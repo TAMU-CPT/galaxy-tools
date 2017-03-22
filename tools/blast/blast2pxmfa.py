@@ -172,6 +172,12 @@ def blast2pxmfa(blast, fasta, gff3, output, genomic=False):
     clusters = list(smaller_than_3n(len(recids), larger_than_one(cluster_relationships(gen_relationships(blast)))))
     logging.debug("%s clusters generated", len(clusters))
 
+    def sortIndexForFeatId(element):
+        # Will not work correctly if genome length is >1mb
+        general = recids.index(locations[element]['rec']) * 1000000
+        specific = locations[element]['loc'].start
+        return general + specific
+
     for idx, cluster in enumerate(clusters):
         logging.debug('Cluster %s/%s, size=%s', idx + 1, len(clusters), len(cluster))
         # We're considering 1 LCB :: 1 cluster
@@ -193,7 +199,11 @@ def blast2pxmfa(blast, fasta, gff3, output, genomic=False):
             logging.error("Error aligning cluster [%s]", ''.join(cluster))
             continue
 
-        for element, aligned_seq in zip(sorted(cluster), sorted(aligned_seqs, key=lambda x: x.id)):
+        sortedCluster = sorted(cluster, key=lambda x: sortIndexForFeatId(x))
+        sortedAligned = sorted(aligned_seqs, key=lambda x: sortIndexForFeatId(x.id))
+        # print(sortedCluster, [x.id for x in sortedAligned])
+        # print(aligned_seqs)
+        for element, aligned_seq in zip(sortedCluster, sortedAligned):
             # Must be the same or we have big problems
             assert element == aligned_seq.id
 
