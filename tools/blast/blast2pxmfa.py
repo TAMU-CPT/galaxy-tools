@@ -75,6 +75,13 @@ def align_sequences(SequenceList):
     if len(SequenceList) < 2:
         return None
 
+    # Clustal mangles IDs. Fricking Clustal. Specifically it truncates them
+    # meaning we have to RE-ID every single sequence that goes into it. Lovely.
+    id_map = {}
+    for idx, seq in enumerate(SequenceList):
+        id_map[str(idx)] = seq.id
+        seq.id = str(idx)
+
     t_fa = tempfile.NamedTemporaryFile(prefix='blastxmfa.', delete=False)
     t_aln = tempfile.NamedTemporaryFile(prefix='blastxmfa.', delete=False)
     # Write fasta to file
@@ -92,11 +99,14 @@ def align_sequences(SequenceList):
     # Get our alignment back
     try:
         aln = AlignIO.read(t_aln.name, 'clustal')
+        # Now we replace the IDs with the correct, full length ones
+        for a in aln:
+            a.id = id_map[a.id]
         # Cleanup
         os.unlink(t_fa.name)
         os.unlink(t_aln.name)
         return aln
-    except Exception, e:
+    except Exception as e:
         logging.error("%s, %s", e, t_fa.name)
         os.unlink(t_aln.name)
         return None
