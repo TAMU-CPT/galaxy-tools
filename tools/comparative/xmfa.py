@@ -26,6 +26,7 @@
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from Bio import SeqIO
 import tempfile
+import sys
 
 
 def parse_xmfa(xmfa):
@@ -60,6 +61,7 @@ def parse_xmfa(xmfa):
                     'start': int(start),
                     'end': int(end),
                     'strand': 1 if data[2] == '+' else -1,
+                    'file': data[3],
                     'seq': '',
                     'comment': '',
                 }
@@ -67,6 +69,35 @@ def parse_xmfa(xmfa):
                     current_seq['comment'] = ' '.join(data[5:])
             else:
                 current_seq['seq'] += line.strip()
+
+
+HEADER_TPL = '> {id}:{start}-{end} {strand} {file} # {comment}\n'
+
+
+def split_by_n(seq, n):
+    """A generator to divide a sequence into chunks of n units."""
+    # http://stackoverflow.com/questions/9475241/split-python-string-every-nth-character
+    while seq:
+        yield seq[:n]
+        seq = seq[n:]
+
+
+def to_xmfa(lcbs, handle=sys.stdout):
+    handle.write("#FormatVersion Mauve1\n")
+    for lcb in lcbs:
+        for aln in lcb:
+            handle.write(HEADER_TPL.format(
+                id=aln['id'],
+                start=aln['start'],
+                end=aln['end'],
+                strand='+' if aln['strand'] > 0 else '-',
+                file=aln['file'],
+                comment=aln['comment'],
+            ))
+
+            for line in split_by_n(aln['seq'], 80):
+                handle.write(line + '\n')
+        handle.write('=\n')
 
 
 def percent_identity(a, b):
