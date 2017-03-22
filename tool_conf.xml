@@ -167,6 +167,7 @@
     <tool file="cpt2/galaxy-tools/tools/comparative/xmfa2tbl.xml"/>
     <tool file="cpt2/galaxy-tools/tools/comparative/cpt_mauve_graph.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/blast2pxmfa.xml" label="new"/>
+    <tool file="cpt2/galaxy-tools/tools/comparative/lcb_split.xml" label="new,experimental"/>
   </section>
   <section id="cpt2_phage" name="CPT2: Phage Analysis Tools">
     <tool file="cpt2/galaxy-tools/tools/phage/autoreopen.xml" labels="experimental"/>
