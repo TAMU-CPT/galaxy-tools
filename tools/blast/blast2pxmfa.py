@@ -163,7 +163,7 @@ def blast2pxmfa(blast, fasta, gff3, output, genomic=False):
     logging.info("Parsing sequence")
     locations = parse_gff3(gff3, fasta)
     logging.info("Parsed locations, clustering")
-    recids = sorted(get_seqids(fasta))
+    recids = get_seqids(fasta)
     logging.info("Found %s records in fasta", len(recids))
 
     xmw = XmfaWriter(output)
