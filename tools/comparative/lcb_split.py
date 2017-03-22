@@ -66,7 +66,7 @@ if __name__ == '__main__':
     parser.add_argument('xmfa_file', type=argparse.FileType("r"), help='XMFA File')
 
     parser.add_argument('--window_size', type=int, help='Window size for analysis', default=10)
-    parser.add_argument('--percent', type=float, help='All genomes must meet N percent similarity', default=70)
+    parser.add_argument('--threshold', type=float, help='All genomes must meet N percent similarity', default=0.7)
 
     args = parser.parse_args()
 
@@ -78,6 +78,5 @@ if __name__ == '__main__':
             xmfa.parse_xmfa(args.xmfa_file),
             window_size=args.window_size,
             threshold=args.percent /float(100),
-        ),
-        handle=open('out.xmfa', 'w')
+        )
     )

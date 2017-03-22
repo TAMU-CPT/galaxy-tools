@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.xmfa.split" name="Split LCBs into smaller LCBs" version="@WRAPPER_VERSION@.0">
+	<description></description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/lcb_split.py
+@XMFA_INPUT@
+--window_size $window_size
+--threshold $threshold
+> $output
+]]></command>
+	<inputs>
+		<expand macro="xmfa_input" />
+		<param type="integer" name="window_size" value="10" label="Default window size generating smaller LCBs" />
+		<param type="float" name="threshold" value="0.7" minimum="0" maximum="1" label="Threshold at which a given genome is part of the new small LCBs" />
+	</inputs>
+	<outputs>
+		<data format="xmfa" name="output" />
+	</outputs>
+	<help><![CDATA[
+**What it does**
+
+Helps reduce large and non-sensical protein LCBs into real protein alignments.
+
+]]></help>
+	<citations>
+	</citations>
+</tool>
