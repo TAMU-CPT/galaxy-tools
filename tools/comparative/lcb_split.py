@@ -44,8 +44,8 @@ def split_lcb(lcb, window_size=10, threshold=0.7):
         for member in members:
             tmp_member = copy.deepcopy(lcb[member])
             tmp_member['seq'] = tmp_member['seq'][window_size * position:window_size * (position + count)]
-            tmp_member['start'] = tmp_member['start'] + (window_size * position)
-            tmp_member['end'] = tmp_member['start'] + (window_size * count)
+            tmp_member['start'] = tmp_member['start'] + (3 * window_size * position)
+            tmp_member['end'] = tmp_member['start'] + (3 * window_size * count)
             local_members.append(tmp_member)
         if len(local_members) > 0:
             new_lcbs.append(local_members)
