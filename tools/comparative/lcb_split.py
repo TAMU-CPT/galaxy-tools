@@ -77,6 +77,6 @@ if __name__ == '__main__':
             # Parse
             xmfa.parse_xmfa(args.xmfa_file),
             window_size=args.window_size,
-            threshold=args.percent /float(100),
+            threshold=args.threshold,
         )
     )
