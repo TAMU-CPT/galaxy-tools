@@ -33,7 +33,7 @@ if __name__ == '__main__':
         org['directory'],
         os.path.join(args.target_dir, 'data')
     ]
-    subprocess.check_call(cmd)
+    print(subprocess.check_output(cmd))
 
     if not os.path.exists(os.path.join(args.target_dir, 'data', 'seq')):
         raise Exception("Missing seq directory AFTER copy")
