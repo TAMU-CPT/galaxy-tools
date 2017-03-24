@@ -29,6 +29,38 @@ $file
 </data>
 	</outputs>
 	<help>
-		TODO: Write me!
+**What it does**
+
+Gene predictor. Use `the conversion tool <root?tool_id=edu.tamu.cpt.gff3.reformat>`__ to convert to gff3.
+
+**Abstract**
+
+Improving the accuracy of prediction of gene starts is one of a few remaining
+open problems in computer prediction of prokaryotic genes. Its difficulty is
+caused by the absence of relatively strong sequence patterns identifying true
+translation initiation sites. In the current paper we show that the accuracy of
+gene start prediction can be improved by combining models of protein-coding and
+non-coding regions and models of regulatory sites near gene start within an
+iterative Hidden Markov model based algorithm. The new gene prediction method,
+called GeneMarkS, utilizes a non-supervised training procedure and can be used
+for a newly sequenced prokaryotic genome with no prior knowledge of any protein
+or rRNA genes. The GeneMarkS implementation uses an improved version of the
+gene finding program GeneMark.hmm, heuristic Markov models of coding and
+non-coding regions and the Gibbs sampling multiple alignment program. GeneMarkS
+predicted precisely 83.2% of the translation starts of GenBank annotated
+Bacillus subtilis genes and 94.4% of translation starts in an experimentally
+validated set of Escherichia coli genes. We have also observed that GeneMarkS
+detects prokaryotic genes, in terms of identifying open reading frames
+containing real genes, with an accuracy matching the level of the best
+currently used gene detection methods. Accurate translation start prediction,
+in addition to the refinement of protein sequence N-terminal data, provides the
+benefit of precise positioning of the sequence region situated upstream to a
+gene start. Therefore, sequence motifs related to transcription and translation
+regulatory sites can be revealed and analyzed with higher precision. These
+motifs were shown to possess a significant variability, the functional and
+evolutionary connections of which are discussed.
 	</help>
+	<citations>
+		<citation type="doi">10.1093/nar/29.12.2607</citation>
+	</citations>
 </tool>

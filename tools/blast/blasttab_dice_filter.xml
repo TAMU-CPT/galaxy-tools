@@ -36,6 +36,6 @@ The tool processes blast results line by line, each line calculating the dice sc
 	2 * number of identical matches / (query sequence length + subject sequence length)
 
 ]]></help>
-		<citations>
-		</citations>
+	<citations>
+	</citations>
 </tool>

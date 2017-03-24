@@ -36,7 +36,7 @@ $include_seq
   <help><![CDATA[
 **What it does**
 
-Convert BlastXML results into GFF3 format.
+Convert BlastXML results into gapped GFF3 format.
 
 **Options**
 

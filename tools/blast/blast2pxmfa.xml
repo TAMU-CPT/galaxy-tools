@@ -32,14 +32,13 @@ $output
   <help><![CDATA[
 .. class:: warningmark
 
-Be sure to filter your data first using the "Blast Tabular Dice Filter"
-tool available in the CPT Galaxy.
+You likely should first filter your data first using the `Blast Tabular Dice
+Filter tool <root?tool_id=edu.tamu.cpt.blast.blasttab_dice_filter>`__.
 
 **What it does**
 
-This tool processes BLAST Tabular results into a protein XMFA file. This
-permits displaying them downstream with tools that support XMFA such as
-JBrowse.
+This tool processes BLAST Tabular results into a *protein* XMFA file. This
+permits visualizing the data with CPT developed XMFA based tooling.
 
 **How it works**
 
