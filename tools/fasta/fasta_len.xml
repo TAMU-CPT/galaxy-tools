@@ -1,0 +1,23 @@
+<tool id="edu.tamu.cpt.fasta.length" name="Fasta Length Table" version="0.1">
+	<description>calculates sequence lengths</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_len.py
+@SEQUENCE@
+> $default]]></command>
+	<inputs>
+		<expand macro="input/fasta" />
+	</inputs>
+	<outputs>
+		<data format="tabular" name="default"/>
+	</outputs>
+	<help><![CDATA[
+**What it does**
+
+Prints out lengths of sequences in a tab-separated table.
+
+]]></help>
+</tool>

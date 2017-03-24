@@ -58,6 +58,7 @@
     <tool file="cpt2/galaxy-tools/tools/text/cat.xml"/>
     <tool file="cpt2/galaxy-tools/tools/text/uniq.xml"/>
     <tool file="cpt2/galaxy-tools/tools/text/intersect.xml"/>
+	<tool file="cpt2/galaxy-tools/tools/external/wigToBigWig.xml"/>
   </section>
   <section id="cpt2_abif" name="CPT2: ABIF/AB1">
     <tool file="cpt2/galaxy-tools/tools/abif/cpt_abif_info.xml"/>
@@ -84,6 +85,7 @@
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_disambig.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_join.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_ligate.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/fasta/fasta_len.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_proteininfo.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_regex_search.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_rename.xml"/>
