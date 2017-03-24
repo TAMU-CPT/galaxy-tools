@@ -16,7 +16,7 @@ wigToBigWig -clip stdin chrom.len '$bigwig'
 			help="File containing fasta sequences referenced by wig file"/>
 	</inputs>
 	<outputs>
-		<data format="bigwig" name="bw" />
+		<data format="bigwig" name="bigwig" />
 	</outputs>
 	<help><![CDATA[
 **What it does**
