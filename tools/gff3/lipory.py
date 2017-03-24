@@ -39,7 +39,7 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
                         start = cds.location.start + (3 * (m.end() - 4))
                         end = cds.location.start + (3 * m.end())
                     else:
-                        start = cds.location.end - (3 * (m.end() + 4))
+                        start = cds.location.end - (3 * (m.end() - 4))
                         end = cds.location.end - (3 * m.end())
 
                     tmp = SeqFeature(
@@ -51,9 +51,10 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
                         type='Lipobox',
                         qualifiers={
                             'source': 'CPT_LipoRy',
-                            'ID': '%s.lipobox' % get_id(gene)
+                            'ID': '%s.lipobox' % get_id(gene),
                         }
                     )
+                    tmp.qualifiers['sequence'] = str(tmp.extract(record).seq.translate())
 
                     gene.sub_features.append(tmp)
                     good_features.append(gene)
