@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gff3.extract_intron" name="GFF3 Extract Introns" version="1.0">
+<tool id="edu.tamu.cpt.gff3.extract_introns" name="GFF3 Extract Introns" version="1.0">
   <description>Extracts intron features from genes with multiple CDSs</description>
   <macros>
     <import>macros.xml</import>
