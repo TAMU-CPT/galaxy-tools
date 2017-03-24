@@ -26,9 +26,14 @@ if __name__ == '__main__':
     if not os.path.exists(args.target_dir):
         os.makedirs(args.target_dir)
 
+    if not os.path.exists(os.path.join(org['directory'], 'seq')):
+        raise Exception("Missing seq directory BEFORE copy")
     cmd = [
-        'cp', '-R',
+        'cp', '-Rv',
         org['directory'],
         os.path.join(args.target_dir, 'data')
     ]
     subprocess.check_call(cmd)
+
+    if not os.path.exists(os.path.join(args.target_dir, 'data', 'seq')):
+        raise Exception("Missing seq directory AFTER copy")
