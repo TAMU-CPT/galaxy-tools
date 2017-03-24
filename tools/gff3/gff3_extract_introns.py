@@ -23,6 +23,7 @@ def find_introns(gff3, fasta):
                     intron += rec[intron_start:intron_end].seq
                 print '>' + rec.id
                 print intron
+                print '\n'
 
 
 if __name__ == '__main__':
