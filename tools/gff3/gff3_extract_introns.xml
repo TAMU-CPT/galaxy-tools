@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.extract_introns" name="GFF3 Extract Introns" version="1.0">
+  <description>Extracts intron features from genes with multiple CDSs</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/gff3_extract_introns.py
+@INPUT_GFF@
+@GENOME_SELECTOR@
+> $default]]></command>
+  <inputs>
+    <expand macro="gff3_input" />
+    <expand macro="genome_selector" />
+  </inputs>
+  <outputs>
+    <data format="fasta" name="default"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Outputs a fasta file containing the introns in a genome.
+]]></help>
+</tool>
