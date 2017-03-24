@@ -515,9 +515,9 @@ class JbrowseConnector(object):
                 'label': track['style'].get('label', 'description'),
                 'className': track['style'].get('className', 'feature'),
                 'description': track['style'].get('description', ''),
-                'overridePlugins': track['style'].get('overridePlugins', False) == 'True',
-                'overrideDraggable': track['style'].get('overrideDraggable', False) == 'True',
             },
+            'overridePlugins': track['style'].get('overridePlugins', False) == 'True',
+            'overrideDraggable': track['style'].get('overrideDraggable', False) == 'True',
             'maxHeight': track['style'].get('maxHeight', '600'),
             'category': category,
         }
