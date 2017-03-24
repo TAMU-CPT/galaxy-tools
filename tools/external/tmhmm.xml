@@ -11,7 +11,11 @@ $__tool_directory__/tmhmm-2.0c/lib/TMHMM2.0.model
 -plp
 < $infile
 
-| python $__tool_directory__/parse_decodeanhmm2gff3.py > $output
+| python $__tool_directory__/parse_decodeanhmm2gff3.py
+--bw_i $bw_i
+--bw_o $bw_o
+--bw_m $bw_m
+> $output
 ]]>
 	</command>
 	<inputs>
@@ -19,14 +23,22 @@ $__tool_directory__/tmhmm-2.0c/lib/TMHMM2.0.model
 	</inputs>
 	<outputs>
 		<data name="output" label="TMHMM on ${on_string}" format="gff3" />
+		<data format="wig" name="bw_i" label="TMHMM $on_string Inside-prob"/>
+		<data format="wig" name="bw_o" label="TMHMM $on_string Outside-prob"/>
+		<data format="wig" name="bw_m" label="TMHMM $on_string Membrane-prob"/>
 	</outputs>
 	<help>
-Run TMHMM and generate GFF3 formatted results.
+**What it does**
+
+Runs TMHMM and outputs the GFF3 formatted results, as well as the normal plots in the form of Wig files.
 	</help>
 	<tests>
 		<test>
 			<param name="infile" value="tmp.fa" />
 			<output name="output" file="tmhmm.gff3" />
+			<output name="bw_i" file="tmhmm_i.wig" />
+			<output name="bw_o" file="tmhmm_o.wig" />
+			<output name="bw_m" file="tmhmm_m.wig" />
 		</test>
 	</tests>
 </tool>
