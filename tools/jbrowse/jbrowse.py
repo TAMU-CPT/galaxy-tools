@@ -82,7 +82,7 @@ class ColorScaling(object):
         """,
         'blast': """
             var opacity = 0;
-            if(score == 0.0) {{
+            if(score == 0.0 || score === undefined) {{
                 opacity = 1;
             }} else {{
                 opacity = (20 - Math.log10(score)) / 180;
