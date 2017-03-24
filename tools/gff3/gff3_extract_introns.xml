@@ -6,6 +6,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
+@GENOME_SELECTOR_PRE@
 $__tool_directory__/gff3_extract_introns.py
 @INPUT_GFF@
 @GENOME_SELECTOR@
