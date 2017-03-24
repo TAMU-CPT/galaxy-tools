@@ -1,0 +1,11 @@
+##gff-version 3
+##sequence-region K7 1 141446
+K7	CPT	gene	34627	36038	.	+	.	owner=amandalanier@tamu.edu;Note=YP_009195903.1,interrupted by intron ending at 35200;ID=92091183-a407-401f-9463-1cc3dce2d474;date_last_modified=2017-03-09;Name=Terminase Large Subunit;date_creation=2017-02-20
+K7	CPT	mRNA	34627	36038	.	+	.	owner=amandalanier@tamu.edu;Parent=92091183-a407-401f-9463-1cc3dce2d474;ID=949be8da-4118-441d-8ca1-84ec205df49b;date_last_modified=2017-03-23;Name=Terminase Large Subunit;date_creation=2017-02-20
+K7	CPT	exon	34627	34632	.	+	.	Parent=949be8da-4118-441d-8ca1-84ec205df49b;ID=04d01e6c-0d3f-41a8-99a6-38408f48b798;date_last_modified=2017-02-20;Name=04d01e6c-0d3f-41a8-99a6-38408f48b798;date_creation=2017-02-20
+K7	CPT	exon	34639	34851	.	+	.	Parent=949be8da-4118-441d-8ca1-84ec205df49b;ID=79800ec4-8c30-4749-9784-3489f67b5c8b;date_last_modified=2017-02-20;Name=79800ec4-8c30-4749-9784-3489f67b5c8b;date_creation=2017-02-20
+K7	CPT	exon	35259	36038	.	+	.	Parent=949be8da-4118-441d-8ca1-84ec205df49b;ID=7de63078-1624-4581-8019-d23e035f3af0;date_last_modified=2017-03-23;Name=7de63078-1624-4581-8019-d23e035f3af0;date_creation=2017-02-20
+K7	CPT	CDS	34639	34851	.	+	0	Parent=949be8da-4118-441d-8ca1-84ec205df49b;Note=Manually set translation start;ID=6db4fb71-4553-44a1-942b-96750a61d9ea;date_last_modified=2017-03-23;Name=6db4fb71-4553-44a1-942b-96750a61d9ea;date_creation=2017-02-20
+K7	CPT	CDS	35259	36038	.	+	0	Parent=949be8da-4118-441d-8ca1-84ec205df49b;Note=Manually set translation start;ID=6db4fb71-4553-44a1-942b-96750a61d9ea;date_last_modified=2017-03-23;Name=6db4fb71-4553-44a1-942b-96750a61d9ea;date_creation=2017-02-20
+###
+
