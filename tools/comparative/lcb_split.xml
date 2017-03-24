@@ -26,9 +26,11 @@ python $__tool_directory__/lcb_split.py
 Helps reduce large and non-sensical protein LCBs into real protein alignments.
 
 **WARNING**
+
 Probably does not work if you have - strand genes. Need to test.
 
 ]]></help>
+<!-- TODO -->
 	<citations>
 	</citations>
 </tool>

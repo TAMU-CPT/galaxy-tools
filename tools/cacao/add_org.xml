@@ -31,7 +31,7 @@ https://cpt.tamu.edu/cacao-backend/
   <help><![CDATA[
 **What it does**
 
-Adds an organism to the CACAO database.
+Adds an organism to the CPT GO Service Database. We run this automatically so it is unlikely that you need to run this manually.
 
 @REFERENCES@
       ]]></help>

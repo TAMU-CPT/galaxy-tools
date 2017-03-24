@@ -5,6 +5,7 @@ import re
 import logging
 from BCBio import GFF
 from gff3 import feature_lambda, get_id, fetchParent
+from bigwig import bigwig_add_header, bigwig_store
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -43,16 +44,6 @@ def process(signalp):
             continue
 
     return data
-
-
-def bigwig_add_header(bw_handle, identifier):
-    bw_handle.write("track type=wiggle_0 name=SignalP-%s visibility=full\n" % identifier)
-
-
-def bigwig_store(bw_handle, chrom, data):
-    bw_handle.write("variableStep chrom=%s span=1\n" % chrom)
-    for position, value in enumerate(data):
-        bw_handle.write('%s %.3f\n' % (position + 1, value))
 
 
 def feature_test_id(feature, **kwargs):

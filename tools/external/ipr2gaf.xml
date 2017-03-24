@@ -30,6 +30,4 @@ to do with, and Apollo supports like two for now.
 			<output name="output" file="ipr.gaf" />
 		</test>
 	</tests>
-	<citations>
-	</citations>
 </tool>

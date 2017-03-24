@@ -70,7 +70,6 @@ should be lowered appropriately. For a value of 50, 50 bases would be
 considered a single pixel in the output image. For 1Mbp of genomes totaly
 (say 5 x 200 kb phages), this would result in a 20,000 pixel image.
 
-
 </help>
 	<tests/>
 	<citations>

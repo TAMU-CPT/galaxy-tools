@@ -25,9 +25,10 @@ $__tool_directory__/xmfa2bigwig.py
 	<help><![CDATA[
 **What it does**
 
-XMFA Alignments are great, but now you need a way to visualize this data!
-
-This tool provides a conversion step to BigWig data, which is easy to view in JBrowse.
+This tool provides a conversion step to BigWig files which can be loaded in
+JBrowse. They function approximately the same as a BlastN alignment track,
+albeit less informative. They produce a pleasant visualisation though of %
+similarity across regions.
 ]]></help>
 	<citations>
 	</citations>

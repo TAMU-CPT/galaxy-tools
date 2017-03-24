@@ -58,6 +58,7 @@
     <tool file="cpt2/galaxy-tools/tools/text/cat.xml"/>
     <tool file="cpt2/galaxy-tools/tools/text/uniq.xml"/>
     <tool file="cpt2/galaxy-tools/tools/text/intersect.xml"/>
+	<tool file="cpt2/galaxy-tools/tools/external/wigToBigWig.xml"/>
   </section>
   <section id="cpt2_abif" name="CPT2: ABIF/AB1">
     <tool file="cpt2/galaxy-tools/tools/abif/cpt_abif_info.xml"/>
@@ -84,6 +85,7 @@
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_disambig.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_join.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_ligate.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/fasta/fasta_len.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_proteininfo.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_regex_search.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_rename.xml"/>
@@ -119,7 +121,6 @@
     <tool file="cpt2/galaxy-tools/tools/gff3/intersect.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/neighbours.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/remove_annotations.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/external/signalp.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/gff2gb.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_color.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_filter.xml"/>
@@ -203,6 +204,8 @@
   </section>
   <section id="cptexternal" name="CPT:External Software Wrappers">
     <tool file="cpt2/galaxy-tools/tools/external/tmhmm.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/external/signalp.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/external/wig_rebase.xml"/>
     <tool file="cpt2/galaxy-tools/tools/external/gmsn.pl.xml"/>
     <tool file="cpt2/galaxy-tools/tools/external/interproscan.xml"/>
     <tool file="cpt2/galaxy-tools/tools/external/interproscan-5.22.xml"/>

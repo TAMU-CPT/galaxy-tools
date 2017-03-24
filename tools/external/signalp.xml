@@ -11,7 +11,7 @@ python $__tool_directory__/signalp.py
 "$signalp_output"
 --bw_c $bw_c
 --bw_s $bw_s
---bw_s $bw_y
+--bw_y $bw_y
 
 > $stdout
 

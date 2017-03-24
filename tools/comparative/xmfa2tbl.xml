@@ -38,7 +38,9 @@ $dice
 	<help><![CDATA[
 **What it does**
 
-This tool compares N sequences and outputs a table reflecting the total similarity between every sequence pair. Total similarity is based on regions of similarity called locally collinear blocks, or LCBs.
+This tool compares N sequences and outputs a table reflecting the total
+similarity between every sequence pair. Total similarity is based on regions of
+similarity called locally collinear blocks, or LCBs.
 
 ]]></help>
 	<citations>
