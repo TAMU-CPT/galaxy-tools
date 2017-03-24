@@ -63,6 +63,7 @@ class ColorScaling(object):
         var color = ({user_spec_color} || search_up(feature, 'color') || search_down(feature, 'color') || {auto_gen_color});
         var score = (search_up(feature, 'score') || search_down(feature, 'score'));
         {opacity}
+        if(score === undefined){{ opacity = 1; }}
         var result = /^#?([a-f\d]{{2}})([a-f\d]{{2}})([a-f\d]{{2}})$/i.exec(color);
         var red = parseInt(result[1], 16);
         var green = parseInt(result[2], 16);
