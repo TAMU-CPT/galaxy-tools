@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import sys
 import argparse
 from webapollo import WAAuth, WebApolloInstance, GuessOrg, OrgOrGuess
 import logging
@@ -27,13 +28,16 @@ if __name__ == '__main__':
         os.makedirs(args.target_dir)
 
     if not os.path.exists(os.path.join(org['directory'], 'seq')):
-        raise Exception("Missing seq directory BEFORE copy")
+        sys.stderr.write("Missing seq directory BEFORE copy")
+        sys.exit(1)
+
     cmd = [
         'cp', '-Rv',
         org['directory'],
         os.path.join(args.target_dir, 'data')
     ]
-    print(subprocess.check_output(cmd))
+    sys.stderr.write(subprocess.check_output(cmd))
 
     if not os.path.exists(os.path.join(args.target_dir, 'data', 'seq')):
-        raise Exception("Missing seq directory AFTER copy")
+        sys.stderr.write("Missing seq directory AFTER copy")
+        sys.exit(1)
