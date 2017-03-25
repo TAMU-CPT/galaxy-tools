@@ -54,7 +54,7 @@ def rebase_wig(parent, wigData, protein2dna=False, map_by='ID'):
     current_ft = None
     # We have to store in a giant array so we can overwrite safely and don't
     # emit multiple values. UCSC tools are sucky.
-    values = numpy.zeros(len(rec) + 10)
+    values = numpy.zeros(500000)
     for line in wigData:
         if line.startswith('track'):
             # pass through
