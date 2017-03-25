@@ -32,9 +32,9 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                 bigwig_store(bw_m, record.id, m_data)
                 yield record
                 # Reset
-                i_data = []
-                o_data = []
-                m_data = []
+            i_data = []
+            o_data = []
+            m_data = []
 
             header = line.split(' ')[0].strip()[1:]
             record = SeqRecord(
