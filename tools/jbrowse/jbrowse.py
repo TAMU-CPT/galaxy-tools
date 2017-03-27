@@ -288,6 +288,12 @@ class JbrowseConnector(object):
                 # Ignore if the folder exists
                 pass
 
+            try:
+                os.makedirs(os.path.join(self.outdir, 'data', 'raw'))
+            except OSError:
+                # Ignore if the folder exists
+                pass
+
         self.process_genomes()
         self.update_gencode()
 
