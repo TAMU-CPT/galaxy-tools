@@ -1,11 +1,16 @@
 language: python
 python: 2.7
 
+git:
+    submodules: false
+
 before_install:
   - export GALAXY_REPO=https://github.com/galaxyproject/galaxy
   - export GALAXY_RELEASE=release_17.01
   - export PLANEMO_CONDA_PREFIX="$HOME/conda"
   - unset JAVA_HOME
+  - git submodule init
+  - git submodule update tools/one_snp_away
 
 install:
   - pip install flake8 flake8-import-order planemo==0.39
