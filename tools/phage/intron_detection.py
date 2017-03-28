@@ -164,7 +164,7 @@ class IntronFinder(object):
             for gene in self.clusters[key]:
                 for hits in hits_lists:
                     for hit in hits:
-                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) == 2:
+                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) == 1:
                             hits.append(gene)
                             gene_added = True
                             break
