@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Phage QC on {{record_name}} - {{score}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <style type="text/css">
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+h3:before {
+  display: block;
+  content: " ";
+  margin-top: -50px;
+  height: 50px;
+  visibility: hidden;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+td.moron {
+    font-size: 150%;
+    padding: 0px;
+    color: gray;
+}
+.strand_emph {
+    text-decoration: underline;
+    color: black;
+}
+
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Phage QC on {{record_name}}</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="#main"><b>Overview</b></a></li>
+            <li><a href="#coding_density"><small>Coding Density</small></a></li>
+            <li><a href="#bad_gene_starts"><b>Bad Gene Starts</b></a></li>
+            <li><a href="#missing_rbs"><small>Missing RBS</small></a></li>
+            <li><a href="#weird_starts"><small>Unusual Start Codons</small></a></li>
+            <li><a href="#excessive_gaps"><small>Excessive Gaps</small></a></li>
+            <li><a href="#excessive_overlap"><small>Excessive Overlaps</small></a></li>
+            <li><a href="#antisense"><b>Antisense Genes</b></a></li>
+            <li><a href="#morons"><small>Possible Morons</small></a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <h1>Phage {{record_name}}</h1>
+                        <h2>Score: {{score}}/100</h2>
+                    </div>
+                    <div class="col-sm-5">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Missing RBS</td><td>{{ '%d' % missing_rbs_score }}%</td></tr>
+                                <tr><td>Excessive Gaps</td><td>{{ '%d' % excessive_gap_score }}%</td></tr>
+                                <tr><td>Excessive Overlap</td><td>{{ '%d' % excessive_overlap_score }}%</td></tr>
+                                <tr><td>Coding Density Score</td><td>{{ '%d' % coding_density }}%</td></tr>
+                                <tr><td>Possible Morons</td><td>{{ '%d' % (100 * morons_good / (morons_good + morons_bad + 1))}}%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+          <h2 class="sub-header" id="bad_gene_starts">Gene Starts</h2>
+          <h3 id="coding_density">Coding Density Issues <small>{{ coding_density }} / 100</small></h3>
+          <div class="table-responsive">
+            <p>
+            You have a coding density of {{ coding_density_real }} which scores
+            {{ coding_density }} / 100. Most genomes should be in the 90% to
+            100% coding density range
+            </p>
+          </div>
+
+          <h3 id="missing_rbs">Missing RBS <small>{{missing_rbs_good}} / {{missing_rbs_good + missing_rbs_bad}}</small></h3>
+          <p>This section covers genes with missing or incorrectly chosen
+          RBSs.</p>
+          {% if not rbss_annotated %}
+          <p>
+            Since you have not annotated any possible RBSs, this does not count off from your overall score.
+          </p>
+          {% endif %}
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature Type</th>
+                  <th>ID</th>
+                  <th>Location</th>
+                  <th>Error</th>
+                  <th>Upstream (-{{upstream_max}} .. -{{upstream_min}})</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in missing_rbs %}
+                <tr>
+                    <td>{{row.type}}</td>
+                    <td>{{row.id}}</td>
+                    <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
+                    <td>{{row.__message}}</td>
+                    <td><span style="font-family:monospace">{{row.__upstream}}</span></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="weird_starts">Unusual Start Codons <small>{{weird_starts_good}} / {{weird_starts_good + weird_starts_bad + 1}}</small></h3>
+          <p>This section covers genes with unusual start codons</p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Start Codon</th>
+                  <th>Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for codon_key in weird_starts_overall_sorted_keys %}
+                  <tr><td>{{ codon_key }}</td><td>{{ weird_starts_overall[codon_key] }}</td></tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature Type</th>
+                  <th>ID</th>
+                  <th>Location</th>
+                  <th>Error</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in weird_starts %}
+                <tr>
+                    <td>{{row.type}}</td>
+                    <td>{{row.id}}</td>
+                    <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
+                    <td>{{row.__error}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="excessive_gaps">Excessive Gaps <small>{{excessive_gap_good}} / {{excessive_gap_good + excessive_gap_bad}}</small></h3>
+          <p>Phage genomes are under selection pressures for high coding
+          densities. Large gaps are a sign of poorly chosen starts, or
+          unannotated regions.</p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Region</th>
+                  <th>Size</th>
+                  <th>Bounding Gene Transcription Direction</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in excessive_gap %}
+                <tr>
+                    <td>{{row[0]}} .. {{row[1]}}</td>
+                    <td>{{row[1] - row[0]}}</td>
+                    <td>{{row[2] | nice_strand}} {{row[3] | nice_strand}}</td>
+                    <td>
+                        {% if row[4] == 0 %}
+                        {% else %}
+                        {{row[4]}} ORFs found in this region
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="excessive_overlap">Excessive Overlap <small>{{excessive_overlap_good}} / {{excessive_overlap_good + excessive_overlap_bad}}</small></h3>
+          <p>While large gaps are discouraged, large overlaps are likewise
+          discouraged, as it indicates possible misannotation.</p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature A</th>
+                  <th>Feature B</th>
+                  <th>Shared Region</th>
+                  <th>Overlap Length</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in excessive_overlap %}
+                <tr>
+                    <td>{{row[0].id}} ({{row[0].location}})</td>
+                    <td>{{row[1].id}} ({{row[1].location}})</td>
+                    <td>{{row[2]}}..{{row[3]}}</td>
+                    <td>{{row[3] - row[2]}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <h2 class="sub-header" id="antisense">Antisense Genes</h2>
+          <h3 id="morons">Possible Morons <small>{{morons_good}} / {{morons_good + morons_bad}}</small></h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>RBS</th>
+                  <th>Surrounding Features</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in morons %}
+                <tr>
+                    <td>{{row[0].id}}</td>
+                    <td>{{row[3]}}</td>
+                    <td class="moron">
+                        {% for x in row[1] %}
+                            {{ x | nice_strand }}
+                        {% endfor %}
+                        <span class="strand_emph">{{ row[0].strand | nice_strand }}</span>
+                        {% for x in row[2] %}
+                            {{ x | nice_strand }}
+                        {% endfor %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </body>
+</html>
+
