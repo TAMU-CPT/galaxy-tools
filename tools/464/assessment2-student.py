@@ -14,7 +14,6 @@ log = logging.getLogger(__name__)
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an account via web services')
     WAAuth(parser)

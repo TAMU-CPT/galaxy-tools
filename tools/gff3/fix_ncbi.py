@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import sys
-import copy
 import logging
 import argparse
 from gff3 import feature_lambda, feature_test_type

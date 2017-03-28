@@ -21,7 +21,7 @@ def split_lcb(lcb, window_size=10, threshold=0.7):
 
     count_groups = []
     for i in range(0, len(lines), window_size):
-        current_lines = lines[i:i+window_size]
+        current_lines = lines[i:i + window_size]
         flat_list = [a for b in current_lines for a in b]
         counts = []
         for i in range(len(lcb)):

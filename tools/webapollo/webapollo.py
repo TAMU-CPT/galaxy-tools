@@ -17,7 +17,7 @@ log = logging.getLogger()
 
 
 #############################################
-###### BEGIN IMPORT OF CACHING LIBRARY ######
+#      BEGIN IMPORT OF CACHING LIBRARY      #
 #############################################
 # This code is licensed under the MIT       #
 # License and is a copy of code publicly    #
@@ -25,6 +25,7 @@ log = logging.getLogger()
 # e27332bc82f4e327aedaec17c9b656ae719322ed  #
 # of https://github.com/tkem/cachetools/    #
 #############################################
+
 class DefaultMapping(collections.MutableMapping):
 
     __slots__ = ()
@@ -64,6 +65,7 @@ class DefaultMapping(collections.MutableMapping):
         else:
             self[key] = value = default
         return value
+
 
 DefaultMapping.register(dict)
 
@@ -381,20 +383,23 @@ class TTLCache(Cache):
 
 
 #############################################
-######  END IMPORT OF CACHING LIBRARY  ######
+#       END IMPORT OF CACHING LIBRARY       #
 #############################################
 
+
 cache = TTLCache(
-    100, # Up to 100 items
-    5 * 60 # 5 minute cache life
+    100,  # Up to 100 items
+    5 * 60  # 5 minute cache life
 )
 userCache = TTLCache(
-    2, # Up to 2 items
-    60 # 1 minute cache life
+    2,  # Up to 2 items
+    60  # 1 minute cache life
 )
+
 
 class UnknownUserException(Exception):
     pass
+
 
 def WAAuth(parser):
     parser.add_argument('apollo', help='Complete Apollo URL')
@@ -678,7 +683,7 @@ class AnnotationsClient(Client):
         return self.request('getComments', data)
 
     def addComments(self, feature_id, comment):
-        #TODO: This is probably not great and will delete comments, if I had to guess...
+        # TODO: This is probably not great and will delete comments, if I had to guess...
         data = {
             'features': [
                 {
@@ -1365,8 +1370,8 @@ def _galaxy_list_orgs(wa, gx_user, *args, **kwargs):
     # Return org list
     return orgs
 
-## This is all for implementing the command line interface for testing.
 
+# This is all for implementing the command line interface for testing.
 class obj(object):
     pass
 
@@ -1380,6 +1385,7 @@ class fakeTrans(object):
         o = obj()
         o.email = self.un
         return o
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Test access to apollo server')

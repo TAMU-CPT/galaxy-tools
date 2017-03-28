@@ -5,9 +5,7 @@ import logging
 import argparse
 import numpy
 from gff3 import feature_lambda, feature_test_true
-from bigwig import bigwig_add_header, bigwig_store
 from BCBio import GFF
-from Bio.SeqFeature import FeatureLocation
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 

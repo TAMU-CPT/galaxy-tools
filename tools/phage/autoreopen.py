@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import os
 import re
-import sys
 import json
 import glob
 import shutil
@@ -16,13 +15,13 @@ from cpt_convert_mga_to_gff3 import mga_to_gff3
 from gff3 import feature_lambda
 from safe_reopen import extract_gff3_regions, gaps
 from jinja2 import Environment, FileSystemLoader
-SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
-DATA_DIR = os.path.join(SCRIPT_DIR, 'reopen-data')
-# TODO: This tool depends on PY2K ONLY TOOLS. THIS WILL(MAY?) NOT FUNCTINO UNDER PY3.
 import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(name='autoreopen')
 
+# TODO: This tool depends on PY2K ONLY TOOLS. THIS WILL(MAY?) NOT FUNCTINO UNDER PY3.
+SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+DATA_DIR = os.path.join(SCRIPT_DIR, 'reopen-data')
 env = Environment(loader=FileSystemLoader(SCRIPT_DIR), trim_blocks=True, lstrip_blocks=True)
 
 
@@ -40,7 +39,7 @@ class Evidence(Enum):
 
 
 class PhageType(Enum):
-    ShortTR= 1
+    ShortTR = 1
     LongTR = 2
     Prime3Cos = 3
     Prime5Cos = 4
@@ -59,30 +58,30 @@ class BlastBasedReopening(object):
         self.genome = genome
         self.genome_nucleotide_real = genome_real
         self.protein = protein
-        self.db = db # 'test-data/canonical_nucl'
+        self.db = db  # 'test-data/canonical_nucl'
         self.canonical_map = {
-        'NC_025442.1': 'Chi',
-        'NC_005880.2': 'Phage K',
-        'NC_008720.1': 'N4',
-        'NC_004775.1': 'epsilon15',
-        'NC_005282.1': 'Felix01',
-        'NC_001416.1': 'lambda',
-        'NC_000929.1': 'Mu',
-        'NC_001901.1': 'N15',
-        'NC_005856.1': 'P1',
-        'NC_002371.2': 'P22',
-        'NC_001895.1': 'P2',
-        'NC_001609.1': 'P4',
-        'NC_011048.1': 'phi29',
-        'NC_005045.1': 'phiKMV',
-        'NC_004831.2': 'SP6',
-        'NC_011421.1': 'SPO1',
-        'NC_004166.2': 'SPP1',
-        'NC_005833.1': 'T1',
-        'NC_003298.1': 'T3',
-        'NC_000866.4': 'T4',
-        'NC_005859.1': 'T5',
-        'NC_001604.1': 'T7',
+            'NC_025442.1': 'Chi',
+            'NC_005880.2': 'Phage K',
+            'NC_008720.1': 'N4',
+            'NC_004775.1': 'epsilon15',
+            'NC_005282.1': 'Felix01',
+            'NC_001416.1': 'lambda',
+            'NC_000929.1': 'Mu',
+            'NC_001901.1': 'N15',
+            'NC_005856.1': 'P1',
+            'NC_002371.2': 'P22',
+            'NC_001895.1': 'P2',
+            'NC_001609.1': 'P4',
+            'NC_011048.1': 'phi29',
+            'NC_005045.1': 'phiKMV',
+            'NC_004831.2': 'SP6',
+            'NC_011421.1': 'SPO1',
+            'NC_004166.2': 'SPP1',
+            'NC_005833.1': 'T1',
+            'NC_003298.1': 'T3',
+            'NC_000866.4': 'T4',
+            'NC_005859.1': 'T5',
+            'NC_001604.1': 'T7',
         }
 
     def blast2Xmfa(self, blast_results, name='nucl'):
@@ -113,22 +112,22 @@ class BlastBasedReopening(object):
             for hit in blast_results:
                 region_data.append([
                     {
-                        "rid" : "1:fake",
-                        "comment" : "",
-                        "start" : hit['qstart'],
-                        "seq" : "",
-                        "id" : "1",
-                        "strand" : 1 if hit['sstart'] > hit['send'] else -1,
-                        "end" : hit['send']
+                        "rid": "1:fake",
+                        "comment": "",
+                        "start": hit['qstart'],
+                        "seq": "",
+                        "id": "1",
+                        "strand": 1 if hit['sstart'] > hit['send'] else -1,
+                        "end": hit['send']
                     },
                     {
-                        "rid" : "2:fake",
-                        "comment" : "",
-                        "start" : hit['qstart'],
-                        "seq" : "",
-                        "id" : "2",
-                        "strand" : 1 if hit['qstart'] > hit['qend'] else -1,
-                        "end" : hit['send']
+                        "rid": "2:fake",
+                        "comment": "",
+                        "start": hit['qstart'],
+                        "seq": "",
+                        "id": "2",
+                        "strand": 1 if hit['qstart'] > hit['qend'] else -1,
+                        "end": hit['send']
                     },
                 ])
 
@@ -177,10 +176,10 @@ class BlastBasedReopening(object):
 
         # ref_genome_hits = [self.avg(hit['sstart'], hit['send']) for hit in blast_results]
         # our_genome_hits = [self.avg(hit['qstart'], hit['qend']) for hit in blast_results]
-        # # Now we sort relative to ref genome
+        # Now we sort relative to ref genome
         # hits = zip(our_genome_hits, ref_genome_hits)
         # hits = sorted(hits, key=lambda x: x[1])
-        # # Then we re-construct *_genome_hits from the sorted/zipped version
+        # Then we re-construct *_genome_hits from the sorted/zipped version
         # ref_genome_hits = [x[1] for x in hits]
         # our_genome_hits = [x[0] for x in hits]
         # These are now two independent lists, sorted relative to ref genome. We
@@ -222,7 +221,6 @@ class BlastBasedReopening(object):
 
             updated_blast_results = self.getBlastN(new_genome_file_reopened)
             self.blast2Xmfa(updated_blast_results, 'nucl2')
-
 
         return {
             'location': totalData[0],
@@ -298,7 +296,6 @@ class BlastBasedReopening(object):
             else:
                 blastp_locmap2[key] = (mi, ma)
 
-        #import sys; sys.exit()
         input_locmap = {}
         for tmprec in SeqIO.parse(path, 'fasta'):
             desc = tmprec.description
@@ -430,7 +427,7 @@ class PhageReopener:
         ], stdout=open(fnfa, 'w'))
 
         # Translate
-        fnpfa = self.base_name +  '.mga.pfa'
+        fnpfa = self.base_name + '.mga.pfa'
         self.fnpfa = fnpfa
         subprocess.check_call([
             'python2', os.path.join(SCRIPT_DIR, os.pardir, 'fasta', 'fasta_translate.py'),
@@ -466,7 +463,7 @@ class PhageReopener:
 
         # Take the sequence, need to SAFELY re-open it.
         # This requires generating gene calls
-        input_seq= os.path.join(self.data_dir, self.fasta.id + '_sequence.fasta')
+        input_seq = os.path.join(self.data_dir, self.fasta.id + '_sequence.fasta')
         tmpfile = os.path.join(self.data_dir, self.fasta.id + '_sequence.mga')
 
         if os.path.exists(input_seq):
@@ -659,19 +656,19 @@ class PhageReopener:
         self.protein_fasta = self._orfCalls()
         (blast_results, blast_type, blast_reopen_location, blast_feature, blast_upstraem) = self._blast(self.protein_fasta)
         # Cannot guess terS because bad bad
-        terS = self._guessTerS(blast_upstraem)
+        # terS = self._guessTerS(blast_upstraem)
 
         # Try their tool
         try:
             results = self._runPhageTerm()
             (phage_name, phageterm_type, phageterm_location, phageterm_evidence) = self._analysePhageTerm(results)
             phageterm = {'type': phageterm_type.name,
-                        'location': phageterm_location}
+                         'location': phageterm_location}
             kwargs['PhageTerm'] = phageterm
             kwargs['Name'] = phage_name
         except Exception:
             phageterm = {'type': 'PHAGETERM FAILED',
-                        'location': ['Unknown']}
+                         'location': ['Unknown']}
             kwargs['PhageTerm'] = phageterm
             kwargs['Name'] = "Unknown"
 
@@ -696,8 +693,7 @@ class PhageReopener:
         if kwargs['canonical_nucl']['location']:
             kwargs['canonical_nucl']['location'] = kwargs['canonical_nucl']['location'][0]
         else:
-            blastp_genome = self.rec_file.name
-
+            blastp_genome = self.rec_file.name # noqa
 
         bbr_prot = BlastBasedReopening(genome=self.fnpfa, db=os.path.join(SCRIPT_DIR, 'test-data/canonical_prot'), protein=True,
                                        genome_real=kwargs['canonical_nucl']['reopened_file'], data_dir=self.data_dir)

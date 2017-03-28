@@ -170,7 +170,6 @@ class ColorScaling(object):
                 trackConfig['style']['neg_color'] = self.hex_from_rgb(*self._get_colours())
                 trackConfig['style']['pos_color'] = self.hex_from_rgb(*self._get_colours())
 
-
             # Wiggle tracks can change colour at a specified place
             bc_pivot = track['wiggle']['bicolor_pivot']
             if bc_pivot not in ('mean', 'zero'):
@@ -500,7 +499,7 @@ class JbrowseConnector(object):
         self.subprocess_check_call(cmd)
 
     def add_rest(self, url, trackData):
-        data ={
+        data = {
             "label": trackData['label'],
             "key": trackData['key'],
             "category": trackData['category'],
@@ -512,7 +511,6 @@ class JbrowseConnector(object):
             }
         }
         self._add_track_json(data)
-
 
     def process_annotations(self, track):
         category = track['category'].replace('__pd__date__pd__', TODAY)

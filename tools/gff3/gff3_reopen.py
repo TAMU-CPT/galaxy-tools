@@ -19,7 +19,6 @@ def gff_reopen(gff3, index=1, fasta=None, fasta_output=None):
     else:
         it = GFF.parse(gff3)
 
-
     for rec in it:
         # Reopen
         if len(list(feature_lambda(rec.features, feature_test_contains, {'index': index}, subfeatures=False))) > 0:

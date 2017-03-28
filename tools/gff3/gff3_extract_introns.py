@@ -19,11 +19,10 @@ def find_introns(gff3, fasta):
                 intron = ''
                 for i in range(len(cdss) - 1):  # find pairs of cdss with introns in between
                     intron_start = cdss[i].location.end
-                    intron_end = cdss[i+1].location.start
+                    intron_end = cdss[i + 1].location.start
                     intron += rec[intron_start:intron_end].seq
-                print '>' + rec.id
-                print intron
-                print '\n'
+                sys.stdout.write('>' + rec.id + '\n')
+                sys.stdout.write(intron + '\n')
 
 
 if __name__ == '__main__':

@@ -96,8 +96,8 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False, include_seq=F
                 top_feature.sub_features = []
                 for idx_part, (start, end, cigar) in \
                         enumerate(generate_parts(hsp.query, hsp.match,
-                                         hsp.sbjct,
-                                         ignore_under=min_gap)):
+                                                 hsp.sbjct,
+                                                 ignore_under=min_gap)):
                     part_qualifiers['Gap'] = cigar
                     part_qualifiers['ID'] = qualifiers['ID'] + ('.%s' % idx_part)
 

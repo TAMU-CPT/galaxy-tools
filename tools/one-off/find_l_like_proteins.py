@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import sys
 import argparse
 from Bio import SeqIO
 
@@ -66,6 +65,7 @@ def find_l_like_proteins(fasta):
                     print record.name[:-4]
                 else:
                     print record.name
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Finds L-like proteins')

@@ -65,6 +65,7 @@ def gff3_diff(gff3_1, gff3_2):
     for f in feats2:
         print feats2[f]
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reports differences between two gff3 files')
     parser.add_argument('gff3_1', type=argparse.FileType("r"), help='first gff3 file')
