@@ -164,7 +164,7 @@ class IntronFinder(object):
             for gene in self.clusters[key]:
                 for hits in hits_lists:
                     for hit in hits:
-                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) == 1:
+                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10:
                             hits.append(gene)
                             gene_added = True
                             break
@@ -357,7 +357,7 @@ if __name__ == '__main__':
     ifinder = IntronFinder(args.gff3, args.blastp)
     ifinder.create_clusters()
     ifinder.clusters = ifinder.check_strand()
-    # ifinder.clusters = ifinder.check_gene_gap()
+    ifinder.clusters = ifinder.check_gene_gap()
     # ifinder.clusters = ifinder.check_seq_overlap()
 
     condensed_report = ifinder.cluster_report()
