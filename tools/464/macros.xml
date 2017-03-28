@@ -92,6 +92,13 @@
 
   <xml name="citations">
       <citations>
+            <citation type="bibtex">@unpublished{galaxyTools,
+            author = {E. Mijalis, E. Rasche},
+            title = {CPT Galaxy Tools},
+            year = {2013-2017},
+            note = {http://ww.ncbi.nlm.nih.gov/books/NBK25500/}
+            }
+            </citation>
       </citations>
   </xml>
   <xml name="gff3_input">
@@ -116,7 +123,7 @@
 **Citation**
 
 If you use this tool in Galaxy, please cite:
-Eric Rasche (2016), `Galaxy wrapper <https://github.com/TAMU-CPT/galaxy-webapollo>`_
+Eleni Mijalis, Eric Rasche (2016-7), `Galaxy wrapper <https://github.com/TAMU-CPT/galaxy-webapollo>`_
 ]]>
     </token>
 </macros>

@@ -33,4 +33,5 @@ run, it will only re-update the assessment results in GUANINE.
 
 @REFERENCES@
       ]]></help>
+  <expand macro="citations" />
 </tool>

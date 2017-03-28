@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.464.2016.c02_evaluate" name="464 C02 - evaluate" version="1.2">
   <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/c2_evaluate.py
 
@@ -21,4 +25,5 @@ $__user_email__
 
 Validates and scores your result from the C02 exercise
 ]]></help>
+  <expand macro="citations" />
 </tool>

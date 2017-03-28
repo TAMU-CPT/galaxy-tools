@@ -24,4 +24,5 @@ Generates a special fragment of DNA for use in BICH464 Assessment #2
 
 @REFERENCES@
 ]]></help>
+  <expand macro="citations" />
 </tool>

@@ -24,4 +24,5 @@ cp $gff3_data /opt/bich464/c1/${__user_email__}-\$(date "+%s").gff3
 
 Validates and scores your result from the C01 exercise
 ]]></help>
+  <expand macro="citations" />
 </tool>

@@ -92,4 +92,5 @@
   <help><![CDATA[Fill out questions, run as many times as you need!
 
 These questions are intended to reinforce key concepts that should be part of your GenomeA papers.]]></help>
+  <expand macro="citations" />
 </tool>

@@ -27,4 +27,5 @@ This tool opens Apollo inside of Galaxy to the correct organism for Assesment #1
 
 @REFERENCES@
       ]]></help>
+  <expand macro="citations" />
 </tool>

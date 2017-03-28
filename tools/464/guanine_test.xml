@@ -25,4 +25,5 @@ $__user_email__
 **What it does**
 
 ]]></help>
+  <expand macro="citations" />
 </tool>

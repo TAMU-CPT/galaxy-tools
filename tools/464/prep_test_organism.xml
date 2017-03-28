@@ -15,4 +15,5 @@ cat $__tool_directory__/test-data/test-organism.fa | sed 's/xxyyzz/$seqid/g' > $
 
 Returns a fasta sequence to be used in the first Assessment, "Calling your first Gene"
 ]]></help>
+  <expand macro="citations" />
 </tool>
