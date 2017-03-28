@@ -22,7 +22,7 @@ $include_seq
         <option value="--trim_end" selected="true">Trim only end</option>
     </param>
 
-	<param name="include_seq" type="boolean" label="Include protein alignment in Blast view in Apollo/JBrowse" truevalue="--include_seq" falsevalue="" checked="" />
+	<param name="include_seq" type="boolean" label="Include protein alignment in Blast view in Apollo/JBrowse" truevalue="--include_seq" falsevalue="" />
   </inputs>
   <outputs>
     <data format="gff3" name="output"/>

@@ -15,7 +15,7 @@ python $__tool_directory__/lcb_split.py
 	<inputs>
 		<expand macro="xmfa_input" />
 		<param type="integer" name="window_size" value="10" label="Default window size generating smaller LCBs" />
-		<param type="float" name="threshold" value="0.7" minimum="0" maximum="1" label="Threshold at which a given genome is part of the new small LCBs" />
+		<param type="float" name="threshold" value="0.7" min="0" max="1" label="Threshold at which a given genome is part of the new small LCBs" />
 	</inputs>
 	<outputs>
 		<data format="xmfa" name="output" />
