@@ -357,7 +357,7 @@ if __name__ == '__main__':
     ifinder = IntronFinder(args.gff3, args.blastp)
     ifinder.create_clusters()
     ifinder.clusters = ifinder.check_strand()
-    ifinder.clusters = ifinder.check_gene_gap()
+    # ifinder.clusters = ifinder.check_gene_gap()
     # ifinder.clusters = ifinder.check_seq_overlap()
 
     condensed_report = ifinder.cluster_report()
