@@ -181,7 +181,7 @@ class IntronFinder(object):
     # def check_seq_gap():
 
     # also need a check for gap in sequence coverage?
-    def check_seq_overlap(self):
+    def check_seq_overlap(self, threshold=10):
         filtered_clusters = {}
         for key in self.clusters:
             add_cluster = True
@@ -193,7 +193,7 @@ class IntronFinder(object):
 
             for pair in combinations:
                 if len(set(range(pair[0][0], pair[0][1])) &
-                       set(range(pair[1][0], pair[1][1]))) > 0:
+                       set(range(pair[1][0], pair[1][1]))) > threshold:
                     add_cluster = False
                     break
             if add_cluster:
@@ -317,7 +317,8 @@ class IntronFinder(object):
                 type='mRNA',
                 id=cluster_id + '.mRNA',
                 qualifiers={
-                    'ID': ['gp_%s.mRNA' % cluster_idx]
+                    'ID': ['gp_%s.mRNA' % cluster_idx],
+                    'note': evidence_notes,
                 }
             )
 
@@ -350,6 +351,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Intron detection')
     parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
     parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
+    parser.add_argument('--overlap_threshold', type=int, help='Overlap Threshold', default=10)
     parser.add_argument('--svg', help='Path to output svg file to', default='clusters.svg')
     args = parser.parse_args()
 
@@ -358,7 +360,7 @@ if __name__ == '__main__':
     ifinder.create_clusters()
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
-    ifinder.clusters = ifinder.check_seq_overlap()
+    ifinder.clusters = ifinder.check_seq_overlap(threshold=args.overlap_threshold)
 
     condensed_report = ifinder.cluster_report()
     ifinder.draw_genes(args.svg)
