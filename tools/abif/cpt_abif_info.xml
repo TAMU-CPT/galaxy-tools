@@ -1,7 +1,12 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.abif.info" name="ABIF Info" version="1.0">
   <description>Dump information about AB1 file</description>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_abif_info.py
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/cpt_abif_info.py
 $positional_1
 > $default]]></command>
   <inputs>
@@ -54,4 +59,5 @@ Example output::
 	phTR1	(-1, -1)
 	phTR2	-1.0
       ]]></help>
+	<expand macro="citations" />
 </tool>
