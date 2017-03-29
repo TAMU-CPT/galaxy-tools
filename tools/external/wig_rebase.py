@@ -52,17 +52,22 @@ def rebase_wig(parent, wigData, protein2dna=False, map_by='ID'):
     current_ft = None
     # We have to store in a giant array so we can overwrite safely and don't
     # emit multiple values. UCSC tools are sucky.
-    values = numpy.zeros(500000)
+    values = numpy.empty(1000000)
+
+    maxFtLoc = 0
     for line in wigData:
         if line.startswith('track'):
             # pass through
             sys.stdout.write(line)
-            sys.stdout.write('variableStep chrom=%s span=%s\n' % (rec.id, 1 if not protein2dna else 3))
+            sys.stdout.write('variableStep chrom=%s span=1\n' % rec.id)
             continue
         if line.startswith('variableStep'):
             # No passthrough
             current_id = re.findall('chrom=([^ ]+)', line)[0]
             current_ft = locations[current_id]
+            # Update max value
+            if current_ft.end > maxFtLoc:
+                maxFtLoc = current_ft.end
         else:
             (pos, val) = line.strip().split()
             pos = int(pos)
@@ -70,10 +75,11 @@ def rebase_wig(parent, wigData, protein2dna=False, map_by='ID'):
 
             npos = __update_feature_location(pos, current_ft, protein2dna=protein2dna)
             values[npos] = val
+            values[npos + 1] = val
+            values[npos + 2] = val
 
-    for i in range(len(values)):
-        if values[i] != 0:
-            sys.stdout.write('%s %s\n' % (i, values[i]))
+    for i in range(maxFtLoc):
+        sys.stdout.write('%s %s\n' % (i, values[i]))
 
 
 if __name__ == '__main__':
