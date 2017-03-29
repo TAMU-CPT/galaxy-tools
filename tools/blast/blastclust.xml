@@ -1,5 +1,9 @@
 <tool id="blastclust" name="blastclust" version="0.0.1">
     <description>Cluster proteins with blast</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
 <command>
 blastclust
 #if $db_opts.db_opts_selector == "fasta":
@@ -76,4 +80,5 @@ Ilya Dondoshansky (dondosha@ncbi.nlm.nih.gov) Yuri Wolf (wolf@ncbi.nlm.nih.gov)
 
 
     </help>
+	<expand macro="citatiosn" />
 </tool>

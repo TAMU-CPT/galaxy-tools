@@ -1,7 +1,8 @@
 <tool id="blastxml_to_gapped_gff3" name="BlastXML to gapped GFF3" version="1.1">
   <description>converts blast results to a JBrowse-compatible file</description>
   <macros>
-    <import>macros.xml</import>
+	<import>macros.xml</import>
+	<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -67,7 +68,6 @@ So, to the end of useful functionality, this options is controllable:
 -  you can trim just the end of the sequence, as upstream is generally more
    interesting, and having long tails can result in poor visualizations.
 ]]></help>
-    <citations>
-    </citations>
+	<expand macro="citatiosn" />
 </tool>
 

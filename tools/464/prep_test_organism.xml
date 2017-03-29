@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.464.2017.generate_test_organism" name="Generate Assessment 1 Organism" version="1.2">
   <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
   <command detect_errors="aggressive"><![CDATA[
 cat $__tool_directory__/test-data/test-organism.fa | sed 's/xxyyzz/$seqid/g' > $output
 ]]></command>

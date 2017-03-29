@@ -3,6 +3,7 @@
   <description></description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -23,4 +24,5 @@ $positional_2
 
 Extract top N results for each blast hit by query id
 ]]></help>
+	<expand macro="citatiosn" />
 </tool>

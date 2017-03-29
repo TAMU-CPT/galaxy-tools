@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.464.2016.c01_evaluate" name="464 C01 - evaluate" version="1.1">
   <description></description>
-  <command interpreter="python" detect_errors="aggressive"><![CDATA[
-c1_evaluate.py
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/c1_evaluate.py
 
 /opt/bich464/c1/ogs.gff3
 $gff3_data

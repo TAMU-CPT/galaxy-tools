@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.464.questionnaire" name="464 Questionnaire" version="1.0">
   <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[cpt_464_questions.py
 --name "$name"
 --seq_cov "$seq_cov"

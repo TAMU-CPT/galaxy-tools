@@ -3,6 +3,7 @@
 	<description>to create a unique entry per subject title</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
@@ -34,5 +35,5 @@ This tool duplicates blast results to create a separate entry for each of the
 values in the 25th column. I.e. for the above, the output would contain two identical
 blast results with the last column being different.
 	</help>
-	<citations/>
+	<expand macro="citatiosn" />
 </tool>

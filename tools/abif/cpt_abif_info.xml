@@ -2,7 +2,7 @@
 <tool id="edu.tamu.cpt.abif.info" name="ABIF Info" version="1.0">
   <description>Dump information about AB1 file</description>
   <macros>
-    <import>macros.xml</import>
+    <import>cpt_macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[

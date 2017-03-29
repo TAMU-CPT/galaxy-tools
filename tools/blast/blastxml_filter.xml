@@ -2,6 +2,7 @@
     <description>based on e-value and hit position</description>
     <macros>
       <import>macros.xml</import>
+      <import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements"/>
     <command interpreter="bash" detect_errors="aggressive"><![CDATA[
@@ -60,6 +61,5 @@ xsltproc $xsltfile @BLAST_XML@ > $output
 
 Filter BlastXML data by e-value and HSP number which is generally an indicator of best results.
 ]]></help>
-      <citations>
-      </citations>
+	<expand macro="citatiosn" />
 </tool>

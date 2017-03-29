@@ -2,6 +2,7 @@
 	<description>converts tabular blast results to a JBrowse-compatible file</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -31,6 +32,5 @@ Contact Eric if you need to use it.
 Convert BlastN TSV results into GFF3 format.
 
 ]]></help>
-		<citations>
-		</citations>
+	<expand macro="citatiosn" />
 </tool>

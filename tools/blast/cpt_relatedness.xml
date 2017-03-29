@@ -3,6 +3,7 @@
 	<description>based on protein blast results</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
@@ -36,4 +37,5 @@ These scores are ranked, and a list of top-related organisms is output at
 the end.
 </help>
 	<tests/>
+	<expand macro="citatiosn" />
 </tool>

@@ -2,6 +2,7 @@
 	<description>removes low-dice blast results</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -36,6 +37,5 @@ The tool processes blast results line by line, each line calculating the dice sc
 	2 * number of identical matches / (query sequence length + subject sequence length)
 
 ]]></help>
-	<citations>
-	</citations>
+	<expand macro="citatiosn" />
 </tool>
