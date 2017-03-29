@@ -35,5 +35,5 @@ This tool duplicates blast results to create a separate entry for each of the
 values in the 25th column. I.e. for the above, the output would contain two identical
 blast results with the last column being different.
 	</help>
-	<expand macro="citatiosn" />
+	<expand macro="citations" />
 </tool>

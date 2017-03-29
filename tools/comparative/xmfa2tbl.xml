@@ -3,6 +3,7 @@
 	<description></description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -43,6 +44,5 @@ similarity between every sequence pair. Total similarity is based on regions of
 similarity called locally collinear blocks, or LCBs.
 
 ]]></help>
-	<citations>
-	</citations>
+		<expand macro="citations" />
 </tool>

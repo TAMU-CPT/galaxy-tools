@@ -61,5 +61,5 @@ xsltproc $xsltfile @BLAST_XML@ > $output
 
 Filter BlastXML data by e-value and HSP number which is generally an indicator of best results.
 ]]></help>
-	<expand macro="citatiosn" />
+	<expand macro="citations" />
 </tool>

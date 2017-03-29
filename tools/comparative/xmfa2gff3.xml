@@ -3,6 +3,7 @@
 	<description></description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -48,6 +49,5 @@ A rendering of the output GFF3 file in JBrowse is shown below:
 .. image:: $PATH_TO_IMAGES/xmfa2gff3.png
 
 ]]></help>
-	<citations>
-	</citations>
+		<expand macro="citations" />
 </tool>

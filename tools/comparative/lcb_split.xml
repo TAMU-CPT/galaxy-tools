@@ -3,6 +3,7 @@
 	<description></description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -31,6 +32,5 @@ Probably does not work if you have - strand genes. Need to test.
 
 ]]></help>
 <!-- TODO -->
-	<citations>
-	</citations>
+		<expand macro="citations" />
 </tool>

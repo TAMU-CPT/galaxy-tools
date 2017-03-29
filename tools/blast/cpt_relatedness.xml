@@ -37,5 +37,5 @@ These scores are ranked, and a list of top-related organisms is output at
 the end.
 </help>
 	<tests/>
-	<expand macro="citatiosn" />
+	<expand macro="citations" />
 </tool>

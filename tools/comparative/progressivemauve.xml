@@ -3,6 +3,7 @@
   <description>constructs multiple genome alignments</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -437,5 +438,6 @@ the command line, you'll need to pass these flags with their "default" values.
 ]]></help>
   <citations>
     <expand macro="citation/progressive_mauve" />
+	<expand macro="citation/mijalisrasche" />
   </citations>
 </tool>

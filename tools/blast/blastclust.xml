@@ -80,5 +80,5 @@ Ilya Dondoshansky (dondosha@ncbi.nlm.nih.gov) Yuri Wolf (wolf@ncbi.nlm.nih.gov)
 
 
     </help>
-	<expand macro="citatiosn" />
+	<expand macro="citations" />
 </tool>

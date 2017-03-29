@@ -36,5 +36,5 @@ Adds an organism to the CPT GO Service Database. We run this automatically so it
 
 @REFERENCES@
       ]]></help>
-	<expand macro="citatiosn" />
+	<expand macro="citations" />
 </tool>

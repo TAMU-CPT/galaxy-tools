@@ -3,6 +3,7 @@
   <description>from XMFA backbone</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -58,5 +59,6 @@ one or more genomes. The lines represent the paths individual genomes take. The 
       ]]></help>
   <citations>
     <expand macro="citation/progressive_mauve" />
+	<expand macro="citation/mijalisrasche" />
   </citations>
 </tool>

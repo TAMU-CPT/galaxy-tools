@@ -3,6 +3,7 @@
 	<description>Multiple Interrelated Sequence doT plotter.</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<command detect_errors="aggressive">
 $__tool_directory__/mist3.py
@@ -74,5 +75,6 @@ considered a single pixel in the output image. For 1Mbp of genomes totaly
 	<tests/>
 	<citations>
 		<expand macro="citation/gepard" />
+		<expand macro="citation/mijalisrasche" />
 	</citations>
 </tool>

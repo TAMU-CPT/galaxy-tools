@@ -3,6 +3,7 @@
 	<description></description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -30,6 +31,5 @@ JBrowse. They function approximately the same as a BlastN alignment track,
 albeit less informative. They produce a pleasant visualisation though of %
 similarity across regions.
 ]]></help>
-	<citations>
-	</citations>
+		<expand macro="citations" />
 </tool>

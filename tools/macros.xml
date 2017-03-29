@@ -8,6 +8,15 @@
       <yield/>
     </requirements>
   </xml>
+  <xml name="citation/mijalisrasche">
+		<citation type="bibtex">@unpublished{galaxyTools,
+		author = {E. Mijalis, E. Rasche},
+		title = {CPT Galaxy Tools},
+		year = {2013-2017},
+		note = {http://ww.ncbi.nlm.nih.gov/books/NBK25500/}
+		}
+		</citation>
+  </xml>
   <xml name="citations">
       <citations>
             <citation type="bibtex">@unpublished{galaxyTools,

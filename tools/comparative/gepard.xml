@@ -3,6 +3,7 @@
 	<description>dot plotter</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<requirements>
 	<requirement type="package" version="7.0.91">java-jdk</requirement>
@@ -93,5 +94,6 @@ This tool produces dot plots between two sequences.
 	</help>
 	<citations>
 		<expand macro="citation/gepard" />
+		<expand macro="citation/mijalisrasche" />
 	</citations>
 </tool>
