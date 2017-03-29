@@ -3,6 +3,7 @@
   <description>summarise codon usage from a GFF3 annotation of a genome</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -26,4 +27,5 @@ $gff3_data
 
 Codon Usage statistics
 ]]></help>
+		<expand macro="citations" />
 </tool>

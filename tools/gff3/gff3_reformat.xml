@@ -3,6 +3,7 @@
   <description>by passing it through biopython</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -26,4 +27,5 @@ $__tool_directory__/gff3_reformat.py
 
 Helps correct issues with poorly formatted input data/gff2 data.
       ]]></help>
+		<expand macro="citations" />
 </tool>

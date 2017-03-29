@@ -3,6 +3,7 @@
   <description>two gff3 files. Only top-level features</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -35,4 +36,5 @@ Given two input files, this tool computes the intersection of those files,
 and then produces two outputs, the members of the intersection in A and in
 B.
 ]]></help>
+		<expand macro="citations" />
 </tool>

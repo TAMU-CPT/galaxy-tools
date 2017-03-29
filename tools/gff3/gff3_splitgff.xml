@@ -3,6 +3,7 @@
   <description></description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -31,4 +32,5 @@ $input
 
 Splits apart the GFF3/Fasta data in a combined file into separate fasta and gff3 files.
       ]]></help>
+		<expand macro="citations" />
 </tool>

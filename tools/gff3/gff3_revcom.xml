@@ -3,6 +3,7 @@
   <description>a gff3 file (and optional fasta file)</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -30,4 +31,5 @@ $__tool_directory__/gff3_revcom.py
 
 Re-open a genome reversed and complemented. All annotations are shifted accordingly.
 ]]></help>
+		<expand macro="citations" />
 </tool>

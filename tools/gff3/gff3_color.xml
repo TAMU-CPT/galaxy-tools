@@ -3,6 +3,7 @@
   <description>colors gff3 features based on product tags</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -53,4 +54,5 @@ your genes with color coding.
 		<tr><td>tRNAs</td><td>"tRNA"</td><td class="color" style="background-color:rgb(113,188,120)"></td></tr>    </body>
 	</table>
 ]]></help>
+		<expand macro="citations" />
 </tool>

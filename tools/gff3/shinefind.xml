@@ -2,6 +2,7 @@
 	<description>Identify shine-dalgarno sequences</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -57,4 +58,5 @@ $top_only
 
 Generates a list of possible Shine Dalgarno sites from a set of Gene Calls
 			]]></help>
+		<expand macro="citations" />
 </tool>

@@ -3,6 +3,7 @@
   <description></description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -26,4 +27,5 @@ of type "CDS" but their IDs are "gene_*" and there are no parent gene features.
 
 This tool adds the parent gene feature and renames the features nicely.
       ]]></help>
+		<expand macro="citations" />
 </tool>

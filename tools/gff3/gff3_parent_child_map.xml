@@ -2,6 +2,7 @@
   <description></description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -25,6 +26,5 @@ type feature.
 	                         ('GenBank', 'Shine_Dalgarno_sequence')]}
 
 ]]></help>
-	<citations>
-	</citations>
+		<expand macro="citations" />
 </tool>

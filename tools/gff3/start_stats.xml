@@ -3,6 +3,7 @@
 	<description>Summarise start codon usage</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -42,4 +43,5 @@ which **may be wrong**.
 This tool looks for CDS features and outputs summarizes the frequencies
 of their start codons.
 ]]></help>
+		<expand macro="citations" />
 </tool>

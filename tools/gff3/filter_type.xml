@@ -3,6 +3,7 @@
   <description>selects features from a gff3 file based on feature type</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -43,4 +44,5 @@ Allows you to emit **just** ``Shine_Dalgarno_sequence`` type features, or,
 inverting that, emit everything but ``Shine_Dalgarno_sequence`` type features.
 
       ]]></help>
+		<expand macro="citations" />
 </tool>

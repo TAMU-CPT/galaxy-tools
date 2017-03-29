@@ -3,6 +3,7 @@
   <description>that's unused in our GFF tools</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -22,4 +23,5 @@ Removes the remark/annotation features::
 
     Miro	annotation	remark	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Miro%27%2C 0%2C 172788%29
       ]]></help>
+		<expand macro="citations" />
 </tool>

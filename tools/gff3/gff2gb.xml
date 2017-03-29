@@ -2,6 +2,7 @@
   <description>convert gff3 to GenBank</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -44,5 +45,6 @@ Convert gff3 data to genbank. There are may WebApollo specific conventions. A re
 - terminator
 
       ]]></help>
+		<expand macro="citations" />
 </tool>
 

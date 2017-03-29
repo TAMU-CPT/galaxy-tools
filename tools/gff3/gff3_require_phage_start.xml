@@ -2,6 +2,7 @@
   <description>ensures start is ATG, TTG, or GTG</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -40,4 +41,5 @@ Ensures the start codon for the CDS is ATG, TTG, or GTG. It removes it otherwise
 
 This tool will remove ANY non-CDS type feature.
       ]]></help>
+		<expand macro="citations" />
 </tool>

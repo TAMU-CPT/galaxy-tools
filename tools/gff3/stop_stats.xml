@@ -3,6 +3,7 @@
 	<description>Summarise stop codon usage</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -48,4 +49,5 @@ of their stop codons::
 	Amber  TAG   10
 	Opal   TGA   111
 ]]></help>
+		<expand macro="citations" />
 </tool>

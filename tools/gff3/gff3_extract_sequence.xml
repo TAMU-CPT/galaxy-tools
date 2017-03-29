@@ -3,6 +3,7 @@
   <description>Export corresponding sequence in genome from GFF3</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -52,4 +53,5 @@ $nodesc
 
 Extract fasta sequences from a parent genome.
       ]]></help>
+		<expand macro="citations" />
 </tool>

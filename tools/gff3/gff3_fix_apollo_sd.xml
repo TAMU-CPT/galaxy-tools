@@ -2,6 +2,7 @@
   <description></description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -27,4 +28,5 @@ python $__tool_directory__/gff3_fix_apollo_sd.py
 
 Changes the feature type of short exons to Shine_Dalgarno_sequence
       ]]></help>
+		<expand macro="citations" />
 </tool>

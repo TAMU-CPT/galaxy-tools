@@ -3,6 +3,7 @@
   <description>a gff3 file (and optional fasta file) at a specific location</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -33,4 +34,5 @@ $index
 
 Re-open a genome with a new start coordinate. All annotations are shifted accordingly.
 ]]></help>
+		<expand macro="citations" />
 </tool>

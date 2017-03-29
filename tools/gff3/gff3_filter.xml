@@ -3,6 +3,7 @@
   <description>filter gff3 features based on qualifier value</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -57,4 +58,5 @@ $subfeatures
 
 Allows you to filter GFF3 files based on attributes and their values.
 ]]></help>
+		<expand macro="citations" />
 </tool>

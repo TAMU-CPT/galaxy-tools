@@ -3,6 +3,7 @@
 	<description>filter gff3 features based on location</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -25,4 +26,5 @@ Filters gff3 features based on locality. The tool accepts a table (bed3) file
 with record ID, start, and end locations. If a given feature overlaps a feature
 in the table, it will be output, otherwise it will be removed.
 ]]></help>
+		<import>cpt-macros.xml</import>
 </tool>

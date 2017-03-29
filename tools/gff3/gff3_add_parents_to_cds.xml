@@ -3,6 +3,7 @@
   <description>is one step of fixing a gene model--adding parent gene features to CDSs</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -32,4 +33,5 @@ This tool is incredibly naive. It does not think. It will find ALL CDSs
 (nothing else), wipe out the existing set of genes, and add replace with a
 gene-mRNA-cds model. This is **probably** not what you want to do
       ]]></help>
+		<expand macro="citations" />
 </tool>

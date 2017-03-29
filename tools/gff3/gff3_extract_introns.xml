@@ -3,6 +3,7 @@
   <description>Extracts intron features from genes with multiple CDSs</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -23,4 +24,5 @@ $__tool_directory__/gff3_extract_introns.py
 
 Outputs a fasta file containing the introns in a genome.
 ]]></help>
+		<expand macro="citations" />
 </tool>

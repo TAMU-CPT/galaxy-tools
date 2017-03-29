@@ -3,6 +3,7 @@
   <description>in two gff3 files</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -44,4 +45,5 @@ close to features in B (any features) will be output in one file. Likewise,
 features in B that were found to be nearby features in A will be output in
 another file.
 ]]></help>
+		<expand macro="citations" />
 </tool>

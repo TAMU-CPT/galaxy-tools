@@ -2,6 +2,7 @@
   <description>against parent features</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[gff3_rebase.py
@@ -92,6 +93,5 @@ genomic export process, analysing protein sequences. This indicates to the
 software that the bases should be multiplied by three to obtain the correct DNA
 locations.
 ]]></help>
-	<citations>
-	</citations>
+		<expand macro="citations" />
 </tool>

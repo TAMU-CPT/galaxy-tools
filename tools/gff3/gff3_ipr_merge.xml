@@ -3,6 +3,7 @@
   <description>into an annotation set</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -21,4 +22,5 @@ $ipr_data
   </tests>
   <help><![CDATA[
 ]]></help>
+		<expand macro="citations" />
 </tool>

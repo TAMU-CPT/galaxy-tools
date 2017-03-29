@@ -2,6 +2,7 @@
   <description></description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -17,6 +18,5 @@ $__tool_directory__/fix_ncbi.py
   <help><![CDATA[
 This tool corrects some issues in NCBI gff data which causes poor display in Apollo.
 ]]></help>
-	<citations>
-	</citations>
+		<expand macro="citations" />
 </tool>

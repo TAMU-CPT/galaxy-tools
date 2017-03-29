@@ -2,6 +2,7 @@
   <description>ensures CDSs have an SD</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -39,4 +40,5 @@ Ensures a CDS has an SD upstream of it.
 **WARNING** this tool will remove ANY non-CDS type feature. TODO: Eric will need to fix this at a later date.
 
       ]]></help>
+		<expand macro="citations" />
 </tool>
