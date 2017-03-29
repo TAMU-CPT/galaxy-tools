@@ -3,6 +3,7 @@
   <description>to a GenBank file with one or more genomes</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive">

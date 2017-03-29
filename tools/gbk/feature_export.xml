@@ -3,6 +3,7 @@
   <description>Export a subset of features from a GenBank file</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -115,4 +116,5 @@ $informative
 
 Exports features from a GenBank file.
       ]]></help>
+		<expand macro="citations" />
 </tool>

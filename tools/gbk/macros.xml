@@ -8,10 +8,6 @@
       <yield/>
     </requirements>
   </xml>
-  <xml name="citations">
-      <citations>
-      </citations>
-  </xml>
   <xml name="ldap_ref"
     token_name="dn_ref"
     token_label="Pick a DN"

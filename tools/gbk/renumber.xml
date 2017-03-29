@@ -3,6 +3,7 @@
     <description>relabels/renumbers GenBank tags according to rules</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -45,5 +46,5 @@ Gene Renumbering Tool
 
 Renumber genes in a genome
 </help>
-<citations />
+		<expand macro="citations" />
 </tool>

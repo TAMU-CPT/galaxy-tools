@@ -3,6 +3,7 @@
   <description>generates files which can be sent to NCBI for genome submission</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <command detect_errors="aggressive">
 <![CDATA[
@@ -77,4 +78,5 @@ the organisation is NOT the CPT, **PLEASE** submit your organisation's
 contact information and address and we will add it to the directory.
 </help>
   <tests/>
+		<expand macro="citations" />
 </tool>

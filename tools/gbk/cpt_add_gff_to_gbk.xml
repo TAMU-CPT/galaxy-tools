@@ -1,5 +1,9 @@
 <tool id="edu.tamu.cpt.genbank.gff3_adder" name="Merge GFF3 into GenBank" version="1.0">
   <description>Merge GFF3 data into a GenBank file</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/cpt_add_gff_to_gbk.py "$gbk"
 "$gff3"
@@ -28,4 +32,5 @@ Known Bugs
 - Fasta file is ignored
 
 ]]></help>
+		<expand macro="citations" />
 </tool>

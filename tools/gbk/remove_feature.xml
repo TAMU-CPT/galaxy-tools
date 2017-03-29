@@ -3,6 +3,7 @@
   <description>removes specific features from a GenBank file</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -96,4 +97,5 @@ python $__tool_directory__/remove_feature.py
 
 Removes selected features from GenBank file
 ]]></help>
+		<expand macro="citations" />
 </tool>

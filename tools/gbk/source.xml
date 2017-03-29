@@ -2,6 +2,7 @@
   <description>Extract host genus &amp; species from GenBank files</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -50,5 +51,5 @@ detecting it from the genome name and less information will be available:
 
 
       ]]></help>
-  <citations />
+		<expand macro="citations" />
 </tool>

@@ -3,6 +3,7 @@
   <description>plots features as an array of colored boxes</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command interpreter="python" detect_errors="aggressive">featuresvg.py
@@ -25,4 +26,5 @@ Davidson Plot
 Each gene is printed as a small coloured box in order to help identify regions
 of shared functionality (even if they do not share dna/protein homology)
 </help>
+		<expand macro="citations" />
 </tool>

@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.genbank.Split" name="Split GenBank File" version="1.0">
   <description>splits into individual records.</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/split.py
 $allow_dupes
@@ -23,5 +27,5 @@ $allow_dupes
 
 Splits Multi-record GenBank Files into individual files, as programs like Artemis can only open single-record GenBank files
 </help>
-  <citations/>
+		<expand macro="citations" />
 </tool>

@@ -3,6 +3,7 @@
     <description></description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -22,5 +23,5 @@ python $__tool_directory__/revcom.py
 
 Reverses and complements a genbank file and all contained features.
 </help>
-<citations />
+		<expand macro="citations" />
 </tool>

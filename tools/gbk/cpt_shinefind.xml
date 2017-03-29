@@ -2,6 +2,7 @@
 	<description>Identify shine-dalgarno sequences</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -60,4 +61,5 @@ Generates a list of possible Shine Dalgarno sites in a Genbank file. It looks fo
 
     Have improvements to the documentation? `Click here <https://github.tamu.edu/CPT/Galaxy-Tools/edit/master/tools/gff3/shinefind.py>`__ to edit this file.
 ]]></help>
+		<expand macro="citations" />
 </tool>

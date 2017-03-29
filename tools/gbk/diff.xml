@@ -3,6 +3,7 @@
  <description>compare feature locations</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive">
@@ -25,5 +26,5 @@ Compare two GenBank Files
 =========================
 
 </help>
-    <citations />
+		<expand macro="citations" />
 </tool>

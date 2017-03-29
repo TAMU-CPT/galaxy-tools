@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.tools.split-gbks" name="Split Genbank File" version="1.1">
 	<description>Splits a multi-genbank file into separate genbank files</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
     <command interpreter="python" detect_errors="aggressive"><![CDATA[split_gbks.py
 $multi_genbank
 ]]></command>
@@ -16,4 +20,5 @@ $multi_genbank
 Splits a genbank file that contains multiple records into separate genbank files.
 Output is a zip file.
 </help>
+		<expand macro="citations" />
 </tool>

@@ -3,6 +3,7 @@
   <description>given an accession list, extract a subset of the GenBank records into a new file.</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive">
@@ -57,4 +58,5 @@ and your accession list will look like:
 
 In that case, turn strict off as it enforces exact matches of IDs.
 </help>
+		<expand macro="citations" />
 </tool>

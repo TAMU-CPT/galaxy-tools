@@ -3,6 +3,7 @@
   <description>allows you to change ID in genbank, gff3, and fasta files.</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -32,4 +33,5 @@ $data
 Rename (gff3, gbk, fasta) sequences
 
       ]]></help>
+		<expand macro="citations" />
 </tool>

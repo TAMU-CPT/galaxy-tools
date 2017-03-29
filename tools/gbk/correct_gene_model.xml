@@ -3,6 +3,7 @@
   <description>adds genes when only CDSs are annotated</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -26,4 +27,5 @@ python $__tool_directory__/correct_gene_model.py
 
 Adds missing genes to a cds-only GenBank record.
 ]]></help>
+		<expand macro="citations" />
 </tool>

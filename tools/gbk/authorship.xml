@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.genbank.authorship" name="Extract Authorship from GenBank File" version="0.1">
   <description></description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/authorship.py
 "$file"
@@ -22,4 +26,5 @@ The ``--first`` flag lets you
 select only the first reference, likely to be the paper published about the
 sequence, rather than one simply citing it.
 ]]></help>
+		<expand macro="citations" />
 </tool>

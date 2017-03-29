@@ -3,6 +3,7 @@
   <description>based on specific tags/qualifiers from a GenBank file</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -37,4 +38,5 @@ python $__tool_directory__/find_by_tag.py
 
 Filters GenBank files for features matching the selected qualifiers.
 ]]></help>
+		<expand macro="citations" />
 </tool>

@@ -3,6 +3,7 @@
   <description>exports metadata about GenBank files (citations, taxonomy, etc)</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive">
@@ -72,5 +73,5 @@ GenBank Metadata Export
 
 Export metadata from GenBank files like taxonomy, citations, etc.
 </help>
-<citations />
+		<expand macro="citations" />
 </tool>

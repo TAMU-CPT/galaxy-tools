@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.gbk.seq_export" name="GenBank Genome Sequence Export" version="1.2">
   <description>export sequence from GenBank files as fasta</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/seq_export.py
 "$input"
@@ -33,4 +37,5 @@ Use this parameter to select an appropriate name source.
    attempt to extract the phage name from the full genome name (e.g. "Bcep
    phage Alice, complete genome." becomes, simply "Alice")
 ]]></help>
+		<import>cpt-macros.xml</import>
 </tool>

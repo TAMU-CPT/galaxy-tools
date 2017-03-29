@@ -3,6 +3,7 @@
     <description>removes specific tags/qualifiers from a GenBank file</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -105,4 +106,5 @@ Setting the tag type lets you filter based on feature tags like ``/product`` or
 Setting the "String in tag to match" lets you match specific text strings like
 "Hypothetical" and so on.
 ]]></help>
+		<expand macro="citations" />
 </tool>

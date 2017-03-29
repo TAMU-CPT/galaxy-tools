@@ -3,6 +3,7 @@
     <description>allows you to extract range/subsection/segment/subset from GenBank files</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -70,4 +71,5 @@ If multiple regions are provided, they will be extracted as separate GenBank
 files. Overlapped regions should be collapsed with mergeBed.
 
 ]]></help>
+		<expand macro="citations" />
 </tool>
