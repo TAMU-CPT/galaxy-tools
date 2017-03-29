@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <tool id="CircularDNAPlotter" name="Circos based DNAPlotter" version="1.94.1">
   <description>plots genomes similar to Artemis's DNAPlotter</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command interpreter="perl" detect_errors="aggressive">cpt_dnaplotter.pl
 --galaxy
 --outfile_supporting $__new_file_path__
@@ -180,4 +183,5 @@ suggested that these are generally left alone, as they can quickly
 increase runtime.
 </help>
   <tests/>
+		<expand macro="citations" />
 </tool>

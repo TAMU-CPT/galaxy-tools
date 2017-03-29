@@ -3,6 +3,7 @@
     <description></description>
     <macros>
       <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
@@ -59,4 +60,5 @@ $hypo
 
 Produces publication quality Genome Maps.
         ]]></help>
+		<expand macro="citations" />
 </tool>

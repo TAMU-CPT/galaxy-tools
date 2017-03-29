@@ -1,5 +1,8 @@
 <tool id="edu.tamu.cpt.phantasm.cid_generator" name="PHAnTASM CID Generator" version="0.2">
   <description>generates Cassette IDs for a set of genomes</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_generate_cids.py
 $positional_1 > $default]]></command>
   <inputs>
@@ -125,4 +128,5 @@ can be used to compare the genomic layout of two phages.
 |                |        | - darB                                |
 +----------------+--------+---------------------------------------+
 ]]></help>
+		<expand macro="citations" />
 </tool>

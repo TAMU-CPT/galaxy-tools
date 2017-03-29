@@ -1,5 +1,10 @@
 <tool id="edu.tamu.cpt.phage.autoreopen" name="Auto-reopen" version="0.0.5">
   <description>attempts to automatically re-open phage genomes based on various heuristics.</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements" />
   <command detect_errors="aggressive">
   <![CDATA[
 mkdir -p "$report.files_path";
@@ -39,4 +44,5 @@ This software relies on PhageTerm:
     tested on the host using the same mapping function. Source:
     https://sourceforge.net/projects/phageterm/.
   </help>
+	<expand macro="citations" />
 </tool>

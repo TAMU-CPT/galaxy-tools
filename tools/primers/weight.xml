@@ -3,6 +3,7 @@
   <description></description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[weight.py

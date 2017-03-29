@@ -2,6 +2,7 @@
 <tool id="edu.tamu.cpt2.util.mga_to_gff3" name="MGA to GFF3" version="1.1">
 	<description></description>
 	<macros>
+		<import>cpt-macros.xml</import>
 		<import>macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
@@ -35,4 +36,5 @@ $mga
 
 Converts MetaGeneAnnotator table to GFF3
 </help>
+		<expand macro="citations" />
 </tool>

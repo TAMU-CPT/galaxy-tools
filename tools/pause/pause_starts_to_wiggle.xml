@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.pause3.starts_to_wiggle" name="PAUSE BAM to Starts Wiggle" version="3.0">
 	<description>create wiggle file from starts information</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
 	<command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/pause_starts_to_wiggle.py
 ${bam_file}
@@ -21,5 +24,6 @@ ${bam_file}
 	<tests/>
 	<citations>
 		<citation type="doi">10.5281/zenodo.154119</citation>
+		<expand macro="citation/mijalisrasche" />
 	</citations>
 </tool>

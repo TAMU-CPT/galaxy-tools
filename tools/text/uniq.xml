@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.text.uniq" name="Deduplicate file" version="1.1">
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
 	<description>Removes duplicate lines</description>
 	<command detect_errors="aggressive">
 	cat "$file" | sort -u > $output
@@ -15,5 +18,5 @@ Sort a file and remove duplicate lines. Useful with the
 FASTA-to-Tabular and Tabular-to-FASTA tools to remove duplicates from fasta
 files.
 	</help>
-	<citations/>
+		<expand macro="citations" />
 </tool>

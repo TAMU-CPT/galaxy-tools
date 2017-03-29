@@ -1,5 +1,8 @@
 <tool id="edu.tamu.cpt.phantasm.cluster" name="PHAnTASM Hierarchical Clustering Tool" version="0.2">
   <description>clusters compmaps with hclust</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command interpreter="RScript" detect_errors="aggressive"><![CDATA[phantasm_cluster.R
       $input_file
       $output_hist
@@ -27,5 +30,5 @@ Given a "comparison map" like:
 This tool will run R's `hclust` and generate a cladogram
 
 ]]></help>
+		<expand macro="citations" />
 </tool>
-

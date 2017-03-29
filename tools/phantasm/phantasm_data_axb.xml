@@ -1,5 +1,8 @@
 <tool id="edu.tamu.cpt.phantasm.data_mxb" name="PHAnTASM Data MxB" version="0.1">
     <description>apply linear transform to datasets</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_data_axb.py
 $positional_1
 $m
@@ -17,4 +20,5 @@ $b
 PHAnTASM Data Linear Transform tool will allows application of a simple linear
 transform to all data.
 ]]></help>
+		<expand macro="citations" />
 </tool>

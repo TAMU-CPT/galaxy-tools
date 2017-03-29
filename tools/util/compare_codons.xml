@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.tabular.compare_codons" name="Compare Codon Usage" version="1.1">
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <description>between two genomes</description>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/compare_codons.py
@@ -32,4 +35,5 @@ Creates a bar chart comparing two codon frequency tables. The input tables shoul
 	GCT	50
 
 Headers starting with a # are fine.]]></help>
+		<expand macro="citations" />
 </tool>

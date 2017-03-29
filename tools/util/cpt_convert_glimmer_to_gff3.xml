@@ -2,6 +2,7 @@
 <tool id="edu.tamu.cpt2.util.glimmer3_to_gff3" name="Glimmer3 to GFF3" version="1.1">
 	<description>convert formats</description>
 	<macros>
+		<import>cpt-macros.xml</import>
 		<import>macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
@@ -34,4 +35,5 @@ $glimmer
 
 Converts Glimmer3 table to GFF3
 	</help>
+		<expand macro="citations" />
 </tool>

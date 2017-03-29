@@ -3,6 +3,7 @@
     <description>from gff3 formatted datasets</description>
     <macros>
       <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
@@ -62,4 +63,5 @@ $gff3_data
     <help><![CDATA[
 Generate an "annotation table" of a genome, with user-configurable data columns
 ]]></help>
+		<expand macro="citations" />
 </tool>

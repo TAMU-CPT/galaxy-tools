@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <tool id="PSM.Plot" name="PSM Plotter" version="1.94.2">
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <description>plots data from PSM Prep</description>
   <command interpreter="perl" detect_errors="aggressive">cpt_psm_1_plot.pl
 --galaxy
@@ -151,4 +154,5 @@ amongst the other 8-class qualitative color sets, please file a bug
 report and let me know.
 </help>
   <tests/>
+		<expand macro="citations" />
 </tool>

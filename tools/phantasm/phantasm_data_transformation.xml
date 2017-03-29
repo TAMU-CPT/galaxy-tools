@@ -1,5 +1,8 @@
 <tool id="edu.tamu.cpt.phantasm.data_transform" name="PHAnTASM Data Transformation" version="0.1">
     <description>apply simple mathematical operations to datasets</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_data_transformation.py
 $positional_1
 
@@ -28,4 +31,5 @@ PHAnTASM Data Transformation tool will apply simple mathematical transforms to
 your data. Additionally, this tool allows for chaining transforms. They will be
 applied sequentially, in the order that they are specified.
 ]]></help>
+		<expand macro="citations" />
 </tool>

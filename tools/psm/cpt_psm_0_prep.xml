@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <tool id="PSM.Prep" name="PSM Prep" version="1.94.2">
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <description>prepares data for the PSM Plotter</description>
   <command interpreter="perl" detect_errors="aggressive">cpt_psm_0_prep.pl
 --galaxy
@@ -48,4 +51,5 @@ structures for use in the companion tool: PSM Plotter. Select as many
 you can select any subset of those to plot then.
 </help>
   <tests/>
+		<expand macro="citations" />
 </tool>

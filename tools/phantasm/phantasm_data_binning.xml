@@ -1,5 +1,8 @@
 <tool id="edu.tamu.cpt.phantasm.data_binning" name="PHAnTASM Data Binning" version="0.2">
   <description>partition data into sensible bins</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_data_binning.py
 $positional_1
 $method.positional_2
@@ -83,4 +86,5 @@ binned accordingly.
 where N is the number of data points you have and K is the number of clusters
 you wish to have.
 ]]></help>
+		<expand macro="citations" />
 </tool>

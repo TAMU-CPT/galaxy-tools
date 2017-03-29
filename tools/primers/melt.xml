@@ -2,6 +2,7 @@
 <tool id="edu.tamu.cpt.primers.tm" name="Melting Point Calculator" version="1.0.0">
   <description></description>
   <macros>
+		<import>cpt-macros.xml</import>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
@@ -67,5 +68,6 @@ eprint = {http://www.jbc.org/content/254/11/4876.full.pdf+html},
 journal = {Journal of Biological Chemistry}
 }
         </citation>
+		<expand macro="citation/mijalisrasche" />
     </citations>
 </tool>

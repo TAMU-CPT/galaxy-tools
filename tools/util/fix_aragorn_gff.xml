@@ -2,6 +2,7 @@
 <tool id="edu.tamu.cpt.util.fix_aragorn" name="Fix aragorn GFF3" version="1.0">
   <description></description>
   <macros>
+		<import>cpt-macros.xml</import>
     <import>macros.xml</import>
   </macros>
   <expand macro="requirements"/>
@@ -20,4 +21,5 @@ python $__tool_directory__/fix_aragorn_gff.py
 
 Fixes Aragorn's GFF3 output to be more standards compliant.
       ]]></help>
+		<expand macro="citations" />
 </tool>

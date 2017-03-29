@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.assembly.coverage_calc" name="FastQ Subset" version="1.1">
   <description>reduce results for X-fold coverage</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command detect_errors="aggressive"><![CDATA[
 bash $__tool_directory__/cpt_read_subset.sh
 "${file}"
@@ -27,4 +30,5 @@ to be leading to poor assemblies and mis-assemblies. We've found that reducing
 the coverage to ~100X produce better assemblies.
 ]]>
 </help>
+		<expand macro="citations" />
 </tool>

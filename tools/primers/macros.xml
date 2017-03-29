@@ -8,8 +8,4 @@
       <yield/>
     </requirements>
   </xml>
-  <xml name="citations">
-      <citations>
-      </citations>
-  </xml>
 </macros>

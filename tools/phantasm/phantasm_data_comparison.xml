@@ -1,5 +1,8 @@
 <tool id="edu.tamu.cpt.phantasm.data_comp" name="PHAnTASM Data Comparison" version="0.1">
   <description>Generate comparisons between two PHAnTASM datasets</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_data_comparison.py
 $positional_1
 $positional_2
@@ -75,4 +78,5 @@ multiplication method would produce the following:
 (texteq) Text equality
   1 for identical, 0 for non-identical. Empty/"None" default to undefined value
       ]]></help>
+		<expand macro="citations" />
 </tool>

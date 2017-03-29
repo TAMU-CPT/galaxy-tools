@@ -3,6 +3,7 @@
 	<description>Finds L-like proteins in fasta file</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
@@ -28,4 +29,5 @@ python $__tool_directory__/find_l_like_proteins.py
 
 Finds L-like proteins (SSRNA phages) and outputs a list of fasta ids.
 </help>
+		<expand macro="citations" />
 </tool>

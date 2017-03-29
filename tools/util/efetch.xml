@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <tool id="cpt_efetch_simplified" name="NCBI GenBank File Downloader" version="1.2">
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <description></description>
   <requirements>
     <requirement type="package" version="2.7">python</requirement>
@@ -117,5 +120,6 @@ permissions.
           publisher = {National Center for Biotechnology Information, Bethesda, Maryland},
           note = {http://ww.ncbi.nlm.nih.gov/books/NBK25500/}
       }</citation>
+		<expand macro="citation/mijalisrasche" />
     </citations>
 </tool>

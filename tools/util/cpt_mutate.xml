@@ -1,4 +1,7 @@
 <tool id="edu.tamu.cpt.fasta.mutate" name="Generate all possible SNPs" version="1.0">
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
 	<description>in fasta files</description>
 		<requirements>
 			<requirement type="package" version="2.7">python</requirement>
@@ -43,4 +46,5 @@ Generate **ALL POSSIBLE SNPs** in a fasta file.
 
 Be **CAREFUL** with large/many sequences.
 ]]></help>
+		<expand macro="citations" />
 </tool>

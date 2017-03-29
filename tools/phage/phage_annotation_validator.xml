@@ -3,6 +3,7 @@
     <description>validate phage annotations</description>
     <macros>
       <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements">
       <requirement type="package">metageneannotator</requirement>
@@ -82,4 +83,5 @@ Run CPT's Phage Annotation Validator validating the following properties:
 -  Incorrect gene model (when used with our Genbank Gene Model correction tool)
 
         ]]></help>
+		<expand macro="citations" />
 </tool>

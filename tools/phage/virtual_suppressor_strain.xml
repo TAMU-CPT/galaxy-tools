@@ -3,6 +3,7 @@
   <description>suppresses stop codons</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -50,4 +51,5 @@ annotation set.
 
 This tool was developed with significant input from Dr. Jason Gill @ TAMU
       ]]></help>
+		<expand macro="citations" />
 </tool>

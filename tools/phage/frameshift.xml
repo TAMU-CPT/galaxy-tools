@@ -3,6 +3,7 @@
     <description>finds possible frame shifts</description>
     <macros>
       <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
@@ -51,5 +52,6 @@ and returns those as a new set of features, scored by their similarity to the ca
                     abstract = "A programmed translational frameshift similar to frameshifts in retroviral gag-pol genes and bacterial insertion elements was found to be strongly conserved in tail assembly genes of dsDNA phages and to be independent of sequence similarities. In bacteriophage λ, this frameshift controls production of two proteins with overlapping sequences, gpG and gpGT, that are required for tail assembly. We developed bioinformatic approaches to identify analogous −1 frameshifting sites and experimentally confirmed our predictions for five additional phages. Clear evidence was also found for an unusual but analogous −2 frameshift in phage Mu. Frameshifting sites could be identified for most phages with contractile or noncontractile tails whose length is controlled by a tape measure protein. Phages from a broad spectrum of hosts spanning Eubacteria and Archaea appear to conserve this frameshift as a fundamental component of their tail assembly mechanisms, supporting the idea that their tail genes share a common, distant ancestry. "
                 }
             </citation>
+		<expand macro="citation/mijalisrasche" />
         </citations>
 </tool>

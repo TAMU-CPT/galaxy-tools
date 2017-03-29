@@ -1,5 +1,8 @@
 <tool id="edu.tamu.cpt.util.extract_ref_codons" name="Bacterial Codon Frequencies Database" version="1.2">
   <description>spits out a list of codon frequencies from the CPT's bacterial codon frequency database</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/extract_ref_codons.py
 --codondb /galaxy/tools/cpt2/galaxy-tools/tools/fasta/gbbct.spsum
@@ -4937,4 +4940,5 @@ Extract the codon frequencies from a built-in bacterial codon frequency database
 
 This tool is useful for input to the "Compare Codon Usage" tool
 ]]></help>
+		<expand macro="citations" />
 </tool>

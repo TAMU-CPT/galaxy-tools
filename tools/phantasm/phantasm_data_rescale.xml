@@ -1,5 +1,8 @@
 <tool id="edu.tamu.cpt.phantasm.data_rescale" name="PHAnTASM Data Rescale" version="0.1">
   <description>rescales data to fit in a user specified range</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_data_rescale.py
 $positional_1
 
@@ -51,4 +54,5 @@ we set min = 1 and max = 10, we would see the following results:
 
 Very easy!
 ]]></help>
+		<expand macro="citations" />
 </tool>

@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <tool id="PSM.Comp" name="PSM Comparison Table" version="1.94">
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <description>aligns and lists data from PSM Prep</description>
   <command interpreter="perl" detect_errors="aggressive">cpt_psm_2_gentable.pl
 --galaxy
@@ -77,4 +80,5 @@ IMPORTANT PARAMETERS
 
 </help>
   <tests/>
+		<expand macro="citations" />
 </tool>

@@ -1,5 +1,9 @@
 <tool id="edu.tamu.cpt.oneoff.none-validator" name="NONE Validator" version="1.0">
   <description></description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[none-validator.py
 $positional_1
 --problematic $problematic
@@ -31,5 +35,5 @@ makes a lysis cluster.
     3.   Then manually inspect each lipobox possibility ....
 
 ]]></help>
+		<expand macro="citations" />
 </tool>
-

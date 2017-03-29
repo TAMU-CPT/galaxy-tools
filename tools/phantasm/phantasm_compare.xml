@@ -1,5 +1,8 @@
 <tool id="edu.tamu.cpt.phantasm.compare" name="PHAnTASM Comparison Mapper" version="0.2">
   <description>PHAnTASM Comparison Mapper</description>
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[phantasm_compare.py
 
 #set repeat_var_1 = '" "'.join([ str($var.positional_1) for $var in $repeat_1 ])
@@ -61,4 +64,5 @@ If you have 3 files and you  specify the numbers 2, 1, 1, then dataset 1 will
 have a 50%  weight and the other two will have a 25% weighting.
 
       ]]></help>
+		<expand macro="citations" />
 </tool>

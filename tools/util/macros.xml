@@ -8,10 +8,6 @@
       <yield/>
     </requirements>
   </xml>
-  <xml name="citations">
-      <citations>
-      </citations>
-  </xml>
   <xml name="genome_selector">
       <conditional name="reference_genome">
           <param name="reference_genome_source" type="select" label="Reference Genome">
