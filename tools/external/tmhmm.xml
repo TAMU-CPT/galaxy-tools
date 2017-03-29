@@ -1,6 +1,11 @@
 <tool id="TMHMM_to_gff3" name="TMHMM (GFF3)" version="1.2.0">
 	<description>predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms.</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
 	<requirements>
+		<requirement type="package" version="2.7">python</requirement>
 		<requirement type="package" version="0.6.4">bcbiogff</requirement>
 	</requirements>
 	<command detect_errors="aggressive"><![CDATA[
@@ -41,4 +46,5 @@ Runs TMHMM and outputs the GFF3 formatted results, as well as the normal plots i
 			<output name="bw_m" file="tmhmm_m.wig" />
 		</test>
 	</tests>
+		<expand macro="citations" />
 </tool>

@@ -2,6 +2,7 @@
   <description>against parent features</description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -47,6 +48,5 @@ E.g. Given
 
 The data would be re-mapped and you would receive a wig file with data from 2000-2200.
 ]]></help>
-	<citations>
-	</citations>
+		<expand macro="citations" />
 </tool>

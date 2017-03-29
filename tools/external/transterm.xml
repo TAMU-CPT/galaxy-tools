@@ -2,6 +2,7 @@
 	<description>predicts transcription terminators</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@

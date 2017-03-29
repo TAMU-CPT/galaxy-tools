@@ -2,6 +2,7 @@
 	<description></description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/ipr2gaf.py
@@ -30,4 +31,5 @@ to do with, and Apollo supports like two for now.
 			<output name="output" file="ipr.gaf" />
 		</test>
 	</tests>
+		<expand macro="citations" />
 </tool>

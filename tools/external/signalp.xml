@@ -2,6 +2,7 @@
 	<description>converts txt formatted SignalP to gff3 results</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -31,4 +32,5 @@ python $__tool_directory__/signalp.py
 
 Process the SignalP output into a GFF3 formatted dataset and wig datasets.
 ]]></help>
+	<expand macro="citations" />
 </tool>

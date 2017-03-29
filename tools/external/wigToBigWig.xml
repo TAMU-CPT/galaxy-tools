@@ -2,6 +2,7 @@
 	<description>CPT version accepts fasta input for genome lengths.</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -23,4 +24,5 @@ wigToBigWig -clip stdin chrom.len '$bigwig'
 
 Convert wig to bigWig
 ]]></help>
+		<expand macro="citations" />
 </tool>
