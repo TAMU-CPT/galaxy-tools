@@ -26,5 +26,5 @@ Filters gff3 features based on locality. The tool accepts a table (bed3) file
 with record ID, start, and end locations. If a given feature overlaps a feature
 in the table, it will be output, otherwise it will be removed.
 ]]></help>
-		<import>cpt-macros.xml</import>
+		<expand macro="citations" />
 </tool>

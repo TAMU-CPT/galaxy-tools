@@ -37,5 +37,5 @@ Use this parameter to select an appropriate name source.
    attempt to extract the phage name from the full genome name (e.g. "Bcep
    phage Alice, complete genome." becomes, simply "Alice")
 ]]></help>
-		<import>cpt-macros.xml</import>
+		<expand macro="citations" />
 </tool>

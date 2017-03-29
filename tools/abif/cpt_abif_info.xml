@@ -4,7 +4,7 @@
   <macros>
     <import>cpt_macros.xml</import>
   </macros>
-  <expand macro="requirements"/>
+  <expand macro="gff_requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/cpt_abif_info.py
 $positional_1

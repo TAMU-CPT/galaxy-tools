@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.fasta.bin" name="Bin Fasta Sequences" version="1.0">
 	<description>to reach a target length</description>
-  <macros>
-    <import>macros.xml</import>
-    <import>cpt-macros.xml</import>
-  </macros>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
 	<command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/fasta_bin
 -batchSize=$batchSize
@@ -71,5 +71,5 @@ running time that you might have if you were requesting the globally optimal
 result.
 
 ]]></help>
-		<import>cpt-macros.xml</import>
+		<expand macro="citations" />
 </tool>
