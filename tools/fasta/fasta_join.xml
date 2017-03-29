@@ -2,6 +2,7 @@
 	<description>find sequences in common</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -62,4 +63,5 @@ You could expect the following outputs:
 | Right not in left      | >seq2 G  |
 +------------------------+----------+
     ]]></help>
+		<expand macro="citations" />
 </tool>

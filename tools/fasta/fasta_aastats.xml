@@ -2,6 +2,7 @@
 	<description>Calculate AA frequencies in sequences</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -35,4 +36,5 @@ The tool will print out useful statistics on AA frequencies.
 The entire alphabet is used for simplicity, and the values are normalized for easier use in downstream analysis
 
 ]]></help>
+		<expand macro="citations" />
 </tool>

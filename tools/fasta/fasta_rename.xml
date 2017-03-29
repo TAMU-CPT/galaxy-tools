@@ -2,6 +2,7 @@
 	<description>rename fasta sequences</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -44,4 +45,5 @@ This tool would let you rename the sequence something sensible like "phage_bob":
     >renamed  [Orig=some-long-description]
     ACTG
 ]]></help>
+		<expand macro="citations" />
 </tool>

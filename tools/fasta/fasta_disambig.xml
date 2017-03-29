@@ -2,6 +2,7 @@
 	<description>produces random, unambiguous variants of ambiguous sequences</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -56,5 +57,6 @@ and also produce a table of the changes:
     14	V	A
     15	N	T
       ]]></help>
+		<expand macro="citations" />
 </tool>
 

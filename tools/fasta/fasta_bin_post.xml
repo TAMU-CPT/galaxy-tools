@@ -3,6 +3,7 @@
 	<description>into separate collections</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -45,4 +46,5 @@ The output will be a Dataset Collection with individual fasta files:
     ...
 
 ]]></help>
+		<expand macro="citations" />
 </tool>

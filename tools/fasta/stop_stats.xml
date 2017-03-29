@@ -3,6 +3,7 @@
 	<description>Summarise stop codon usage</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -33,4 +34,5 @@ the stop, and calculates the stop codon distribution for the whole fasta file::
 	Amber  TAG   10
 	Opal   TGA   111
 ]]></help>
+		<expand macro="citations" />
 </tool>

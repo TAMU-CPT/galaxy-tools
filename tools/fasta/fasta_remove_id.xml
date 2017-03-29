@@ -3,6 +3,7 @@
 	<description>from fasta file</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
@@ -48,4 +49,5 @@ This tool will remove the descriptions and leave you with just the Fasta IDs::
 	>2|random
 	gttggggacccacctatcagggagtgtagtagtataagactgtccaataccccccaacat
 	</help>
+		<expand macro="citations" />
 </tool>

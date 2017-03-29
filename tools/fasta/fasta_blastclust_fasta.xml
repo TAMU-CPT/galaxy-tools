@@ -3,6 +3,7 @@
 	<description>separated clusters into individual fasta files</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command interpreter="python" detect_errors="aggressive"><![CDATA[fasta_blastclust_fasta.py
@@ -25,4 +26,5 @@ $positional_2
 
 This tool outputs separate fasta files, one for each cluster in a blastclust report.
 ]]></help>
+		<expand macro="citations" />
 </tool>

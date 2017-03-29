@@ -2,6 +2,7 @@
 	<description>removes duplicate sequences from a fasta file</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -40,4 +41,5 @@ will be reduced to
     AAAA
 
 ]]></help>
+		<expand macro="citations" />
 </tool>

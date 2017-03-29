@@ -3,6 +3,7 @@
 	<description>calculates commonly used sequence properties like GC skew, hydrophilicity, etc</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command interpreter="python" detect_errors="aggressive">fasta_proteininfo.py

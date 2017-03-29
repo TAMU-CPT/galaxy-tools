@@ -3,6 +3,7 @@
 	<description>colour sequences based on rules</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
@@ -36,4 +37,5 @@ $__tool_directory__/fasta_charges.py
 
 Colors sequences based on rules and outputs for display
 </help>
+		<expand macro="citations" />
 </tool>

@@ -8,10 +8,6 @@
 			<yield/>
 		</requirements>
 	</xml>
-	<xml name="citations">
-		<citations>
-		</citations>
-	</xml>
 	<xml name="input/fasta">
 		<param label="Fasta file" name="sequences" type="data" format="fasta"/>
 	</xml>

@@ -3,6 +3,7 @@
 	<description>with common and custom adapter sequences</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">

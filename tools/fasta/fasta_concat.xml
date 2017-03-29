@@ -3,6 +3,7 @@
 	<description>merge into single long sequence</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
@@ -29,6 +30,5 @@ $__tool_directory__/fasta_concat.py
 
 Merges all sequences in a file, into a single sequence. Useful for preparing data for use in MIST
 </help>
-	<citations>
-	</citations>
+		<expand macro="citations" />
 </tool>

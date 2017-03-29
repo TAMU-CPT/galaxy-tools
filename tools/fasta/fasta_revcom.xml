@@ -3,6 +3,7 @@
     <description></description>
   <macros>
     <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -28,5 +29,5 @@ $file
 
 Reverses and complements all sequences in a fasta file
 </help>
-<citations />
+		<expand macro="citations" />
 </tool>

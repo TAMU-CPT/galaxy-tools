@@ -3,6 +3,7 @@
 	<description>Summarise start codon usage</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -38,4 +39,5 @@ start, and calculates the start codon distribution for the whole fasta file::
 	GGT   G     14
 	TCC   S     1
 ]]></help>
+		<expand macro="citations" />
 </tool>

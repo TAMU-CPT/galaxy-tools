@@ -2,6 +2,7 @@
 	<description>calculates sequence lengths</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -20,4 +21,5 @@ $__tool_directory__/fasta_len.py
 Prints out lengths of sequences in a tab-separated table.
 
 ]]></help>
+		<expand macro="citations" />
 </tool>

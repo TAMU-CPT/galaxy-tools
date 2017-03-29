@@ -2,6 +2,7 @@
 	<description>calculates codon frequencies in sequences</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -42,4 +43,5 @@ The tool will print out useful statistics on Codon frequencies.
 Values are normalized for easier use in downstream analysis
 
 ]]></help>
+		<expand macro="citations" />
 </tool>

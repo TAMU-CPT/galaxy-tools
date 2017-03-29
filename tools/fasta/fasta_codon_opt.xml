@@ -2,6 +2,7 @@
 	<description>optimizes codons for a particular host bacteria</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements">
 		<requirement type="package" version="3.11">pyyaml</requirement>
@@ -6250,4 +6251,5 @@ The process for actually doing the mutations are as follows:
 3. For all of the mutable regions, we look at every amino acid, and randomly replace the codons used with the codons from the host, according to the frequencies used by the host. E.g if the host uses TCT 90% of the time, and TCG 10% of the time, when the tool optimises that codon, 9/10 times it will	replace it with a TCT, and only 1/10 times it will be replaced with a TCG.
 
 ]]></help>
+		<expand macro="citations" />
 </tool>

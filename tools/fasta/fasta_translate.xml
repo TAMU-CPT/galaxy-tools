@@ -2,6 +2,7 @@
 	<description>Translate fasta file</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -58,4 +59,5 @@ $__tool_directory__/fasta_translate.py
 
 Translate DNA sequences to protein sequences
 ]]></help>
+		<expand macro="citations" />
 </tool>

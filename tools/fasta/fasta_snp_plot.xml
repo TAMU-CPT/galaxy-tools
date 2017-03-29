@@ -2,6 +2,7 @@
 	<description>simple plot of generated snps against a reference sequence</description>
 	<macros>
 		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
@@ -51,4 +52,5 @@ a simple plot will be generated:
 
 
 ]]></help>
+		<expand macro="citations" />
 </tool>
