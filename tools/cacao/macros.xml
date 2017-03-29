@@ -8,10 +8,6 @@
       <yield/>
     </requirements>
   </xml>
-  <xml name="citations">
-      <citations>
-      </citations>
-  </xml>
 	<xml name="genome_selector">
 		<conditional name="reference_genome">
 			<param name="reference_genome_source" type="select" label="Reference Genome">
@@ -47,14 +43,4 @@
     genomeref.fa
 #end if
   </token>
-<token name="@REFERENCES@">
-<![CDATA[
-------
-
-**Citation**
-
-If you use this tool in Galaxy, please cite:
-Eric Rasche, Eleni Mijalis (2016), `Galaxy wrapper <https://github.com/TAMU-CPT/galaxy-webapollo>`_
-]]>
-    </token>
 </macros>
