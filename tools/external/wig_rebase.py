@@ -13,7 +13,9 @@ logging.basicConfig(level=logging.INFO)
 def __update_feature_location(pos, parent, protein2dna):
     if protein2dna:
         pos *= 3
-        # Move back so the "span" is correct.
+        # Move back so location is correct.
+        if parent.strand > 0:
+            pos -= 3
 
     # print(start, end, parent.location.start, parent.location.end)
     if parent.strand >= 0:
@@ -79,7 +81,7 @@ def rebase_wig(parent, wigData, protein2dna=False, map_by='ID'):
             values[npos + 2] = val
 
     for i in range(maxFtLoc):
-        sys.stdout.write('%s %s\n' % (i, values[i]))
+        sys.stdout.write('%s %s\n' % (i + 1, values[i]))
 
 
 if __name__ == '__main__':
