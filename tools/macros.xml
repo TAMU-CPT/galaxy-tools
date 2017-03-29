@@ -13,7 +13,7 @@
 		author = {E. Mijalis, E. Rasche},
 		title = {CPT Galaxy Tools},
 		year = {2013-2017},
-		note = {http://ww.ncbi.nlm.nih.gov/books/NBK25500/}
+		note = {https://github.com/tamu-cpt/galaxy-tools/}
 		}
 		</citation>
   </xml>
@@ -23,7 +23,7 @@
             author = {E. Mijalis, E. Rasche},
             title = {CPT Galaxy Tools},
             year = {2013-2017},
-            note = {http://ww.ncbi.nlm.nih.gov/books/NBK25500/}
+			note = {https://github.com/tamu-cpt/galaxy-tools/}
             }
             </citation>
       </citations>
