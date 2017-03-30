@@ -33,7 +33,7 @@
     <label id="l_4cacao" text="CACAO"/>
     <tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml" labels="464-2017"/>
     <!-- BEGIN GUANINE -->
-    <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_3_over_Modules_4_and_5.xml"/>
+      <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_4_over_Minitopic_1-2.xml" />
     <!-- END GUANINE -->
   </section>
   <section id="webapollo2" name="CPT2: Apollo">
