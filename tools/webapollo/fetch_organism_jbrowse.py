@@ -33,8 +33,8 @@ if __name__ == '__main__':
 
     cmd = [
         'rsync', '-avr',
-        org['directory'].rstrip('/'),
-        os.path.join(args.target_dir, 'data')
+        org['directory'].rstrip('/') + '/',
+        os.path.join(args.target_dir, 'data', '')
     ]
     sys.stderr.write(' '.join(cmd))
     sys.stderr.write('\n')
