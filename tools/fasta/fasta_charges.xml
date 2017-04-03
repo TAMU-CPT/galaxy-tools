@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.tools.charges" name="Charges" version="1.1">
+<tool id="edu.tamu.cpt.tools.charges" name="Charges" version="2.0">
 	<description>colour sequences based on rules</description>
 	<macros>
 		<import>macros.xml</import>
@@ -9,16 +9,47 @@
 	<command detect_errors="aggressive">
 $__tool_directory__/fasta_charges.py
 @SEQUENCE@
---cs $cs
+
 --width $width
+
+#if $scheme.cs == "default":
+--aa HSQTNCY AVILMPFWG ERDK
+--fgColor "#000000" "#000000" "#ffffff"
+--bgColor "#ffffff" "#999999" "#000000"
+#else:
+	--aa
+	#for group in $scheme.groups:
+		"$group.aminoAcids"
+	#end for
+	--fgColor
+	#for group in $scheme.groups:
+		"$group.fgColour"
+	#end for
+	--bgColor
+	#for group in $scheme.groups:
+		"$group.bgColour"
+	#end for
+#end if
 
 > $html
 </command>
 	<inputs>
 		<expand macro="input/fasta/protein" />
-		<param label="Colour scheme" name="cs" type="select">
-			<option value="default">Deafult hyrophobic/polar/charged</option>
-		</param>
+		<conditional name="scheme">
+			<param label="Colour scheme" name="cs" type="select">
+				<option value="default">Deafult hyrophobic/polar/charged</option>
+				<option value="custom">Custom Colour Scheme</option>
+			</param>
+			<when value="default" />
+			<when value="custom">
+				<repeat name="groups" title="Colour Group">
+					<param name="aminoAcids" type="text" label="Amino Acids"
+						help="Amino acids to colour a specific colour"/>
+					<param name="fgColour" type="color" label="Foreground Color"/>
+					<param name="bgColour" type="color" label="Background Color"/>
+				</repeat>
+			</when>
+		</conditional>
 		<param label="Plot width" name="width" type="integer" value="120" />
 	</inputs>
 	<outputs>
@@ -35,7 +66,7 @@ $__tool_directory__/fasta_charges.py
 	<help>
 **What it does**
 
-Colors sequences based on rules and outputs for display
+Colors fasta (protein) sequences based on rules, and displays outputs as HTML.
 </help>
 		<expand macro="citations" />
 </tool>
