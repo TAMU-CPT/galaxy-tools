@@ -51,5 +51,5 @@ if __name__ == '__main__':
     sys.stderr.write(subprocess.check_output(cmd))
 
     if not os.path.exists(os.path.join(args.target_dir, 'data', 'seq')):
-        sys.stderr.write("Missing seq directory AFTER copy")
+        sys.stderr.write("ERROR: Missing seq directory AFTER copy")
         sys.exit(1)
