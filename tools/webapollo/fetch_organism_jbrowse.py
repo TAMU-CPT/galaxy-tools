@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
+import time
 import argparse
 from webapollo import WAAuth, WebApolloInstance, GuessOrg, OrgOrGuess
 import logging
@@ -36,14 +37,22 @@ if __name__ == '__main__':
         org['directory'].rstrip('/') + '/',
         os.path.join(args.target_dir, 'data', '')
     ]
+    # We run this OBSESSIVELY because my org had a hiccup where the origin
+    # (silent) cp -R failed at one point. This caused MANY HEADACHES.
+    #
+    # Our response is to run this 3 times (in case the issue is temporary),
+    # with delays in between. And ensure that we have the correct number of
+    # files / folders before and after.
     sys.stderr.write(' '.join(cmd))
     sys.stderr.write('\n')
     sys.stderr.write(subprocess.check_output(cmd))
+    time.sleep(5)
     sys.stderr.write('\n')
     sys.stderr.write('\n')
     sys.stderr.write(' '.join(cmd))
     sys.stderr.write('\n')
     sys.stderr.write(subprocess.check_output(cmd))
+    time.sleep(5)
     sys.stderr.write('\n')
     sys.stderr.write('\n')
     sys.stderr.write(' '.join(cmd))
