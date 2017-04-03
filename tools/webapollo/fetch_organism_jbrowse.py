@@ -11,6 +11,7 @@ from webapollo import WAAuth, WebApolloInstance, GuessOrg, OrgOrGuess
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+
 def are_dir_trees_equal(dir1, dir2):
     """
     Compare two directories recursively. Files in each directory are
@@ -27,15 +28,15 @@ def are_dir_trees_equal(dir1, dir2):
     """
 
     dirs_cmp = filecmp.dircmp(dir1, dir2)
-    if len(dirs_cmp.left_only)>0 or len(dirs_cmp.right_only)>0 or \
-        len(dirs_cmp.funny_files)>0:
+    if len(dirs_cmp.left_only) > 0 or len(dirs_cmp.right_only) > 0 or \
+            len(dirs_cmp.funny_files) > 0:
         print('LEFT', dirs_cmp.left_only)
         print('RIGHT', dirs_cmp.right_only)
         print('FUNNY', dirs_cmp.funny_files)
         return False
-    (_, mismatch, errors) =  filecmp.cmpfiles(
+    (_, mismatch, errors) = filecmp.cmpfiles(
         dir1, dir2, dirs_cmp.common_files, shallow=False)
-    if len(mismatch)>0 or len(errors)>0:
+    if len(mismatch) > 0 or len(errors) > 0:
         print(mismatch)
         print(errors)
         return False
