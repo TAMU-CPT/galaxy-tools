@@ -32,10 +32,15 @@ if __name__ == '__main__':
         sys.exit(1)
 
     cmd = [
-        'cp', '-Rv',
-        org['directory'],
+        'rsync', '-avr',
+        org['directory'].rstrip('/'),
         os.path.join(args.target_dir, 'data')
     ]
+    sys.stderr.write(' '.join(cmd))
+    sys.stderr.write(subprocess.check_output(cmd))
+    sys.stderr.write(' '.join(cmd))
+    sys.stderr.write(subprocess.check_output(cmd))
+    sys.stderr.write(' '.join(cmd))
     sys.stderr.write(subprocess.check_output(cmd))
 
     if not os.path.exists(os.path.join(args.target_dir, 'data', 'seq')):
