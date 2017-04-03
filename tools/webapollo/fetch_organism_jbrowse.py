@@ -37,10 +37,17 @@ if __name__ == '__main__':
         os.path.join(args.target_dir, 'data')
     ]
     sys.stderr.write(' '.join(cmd))
+    sys.stderr.write('\n')
     sys.stderr.write(subprocess.check_output(cmd))
+    sys.stderr.write('\n')
+    sys.stderr.write('\n')
     sys.stderr.write(' '.join(cmd))
+    sys.stderr.write('\n')
     sys.stderr.write(subprocess.check_output(cmd))
+    sys.stderr.write('\n')
+    sys.stderr.write('\n')
     sys.stderr.write(' '.join(cmd))
+    sys.stderr.write('\n')
     sys.stderr.write(subprocess.check_output(cmd))
 
     if not os.path.exists(os.path.join(args.target_dir, 'data', 'seq')):
