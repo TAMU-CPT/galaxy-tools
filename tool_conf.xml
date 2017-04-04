@@ -67,6 +67,7 @@
     <tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/blasttab_to_gapped_gff3.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/blast/blasttab_add_dice_column.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/cpt_blast_filter.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/cpt_relatedness.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/blastxml_filter.xml" labels="experimental"/>
