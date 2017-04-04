@@ -1,0 +1,37 @@
+<tool id="edu.tamu.cpt.blast.lasttab_add_dice_column" name="Blast Tabular Add Dice" version="1.0">
+	<description>adds dice score to last column</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/blasttab_add_dice_column.py
+@BLAST_TSV@
+> $output]]></command>
+	<inputs>
+		<expand macro="blast_tsv" />
+	</inputs>
+	<outputs>
+		<data format="tabular" name="output"/>
+	</outputs>
+	<tests>
+			<test>
+					<param name="blast_tsv" value="results.tsv"/>
+					<output name="output" file="results.diced2.tsv"/>
+			</test>
+	</tests>
+	<help><![CDATA[
+**What it does**
+
+Adds the dice score to the last column.
+
+**How it works**
+
+The tool processes blast results line by line, each line calculating the dice score. The equation for the dice score is as follows::
+
+	2 * number of identical matches / (query sequence length + subject sequence length)
+
+]]></help>
+	<expand macro="citations" />
+</tool>
