@@ -162,7 +162,6 @@ if __name__ == '__main__':
     # m.add_relationship('2', 'y')
     # m.add_relationship('2', 'z')
 
-
     # m.align_list(list('abcdef'))
     # m.align_list(list('12345'))
     # for row in m.merger:
@@ -170,4 +169,3 @@ if __name__ == '__main__':
 
     # print
     # m.align_list(list('uvwxyz'))
-
