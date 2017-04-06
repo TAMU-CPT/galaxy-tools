@@ -4,6 +4,7 @@ import os
 import sys
 import json
 import math
+import numpy
 import argparse
 import itertools
 import logging
@@ -359,6 +360,20 @@ def coding_density(record, mean=92.5, sd=20):
 
     avgFeatLen = float(feature_lengths) / float(len(record.seq))
     return int(norm(100 * avgFeatLen, mean=mean, sd=sd) * 100), int(100 * avgFeatLen)
+
+
+def exact_coding_density(record, mean=92.5, sd=20):
+    """
+    Find exact coding density in the genome
+    """
+    data = numpy.zeros(len(record.seq))
+
+    for gene_a in coding_genes(record.features):
+        for cds in genes(gene_a.sub_features, feature_type='CDS'):
+            for i in range(cds.location.start, cds.location.end + 1):
+                data[i] = 1
+
+    return float(sum(data)) / len(data)
 
 
 def excessive_overlap(record, excess=15, excess_divergent=30):
@@ -940,6 +955,7 @@ def evaluate_and_report(annotations, genome, gff3=None,
         'gene_model_correction_score': 0 if gmc_good + gmc_bad == 0 else (100 * gmc_good / (gmc_good + gmc_bad)),
 
         'coding_density': cd,
+        'coding_density_exact': exact_coding_density(record),
         'coding_density_real': cd_real,
         'coding_density_score': cd,
     }
@@ -978,7 +994,8 @@ def evaluate_and_report(annotations, genome, gff3=None,
         return str(data).encode('utf-8')
 
     def my_decode(data):
-        return str(data).decode('utf-8')
+        # This feels wrong.
+        return str(data.encode('utf-8')).decode('utf-8')
 
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
     env.filters.update({
