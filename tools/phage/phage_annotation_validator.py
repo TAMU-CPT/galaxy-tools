@@ -994,7 +994,9 @@ def evaluate_and_report(annotations, genome, gff3=None,
         return str(data).encode('utf-8')
 
     def my_decode(data):
-        # This feels wrong.
+        # For production
+        return str(data).decode('utf-8')
+        # For local testing. No, I do not understand.
         return str(data.encode('utf-8')).decode('utf-8')
 
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
