@@ -85,6 +85,12 @@ def annotation_table_report(record, wanted_cols):
         entries)"""
         return feature.qualifiers.get('product', feature.qualifiers.get('Product', ['None']))[0]
 
+    def note(record, feature):
+        """Note
+
+        User entered Note qualifier(s)"""
+        return feature.qualifiers.get('Note', [])
+
     def strand(record, feature):
         """Strand
         """

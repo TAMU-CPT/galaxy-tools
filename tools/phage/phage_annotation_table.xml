@@ -47,6 +47,7 @@ $gff3_data
             <option value="description" selected="true">Description</option>
             <option value="product" selected="true">Product</option>
             <option value="dbxrefs" selected="true">DBxrefs</option>
+            <option value="qualifiers" selected="true">Qualifiers</option>
         </param>
         <param label="Report Format" type="select" name="report_format">
             <option value="phageqc_report_annotation_table.html" selected="true">HTML Table</option>
