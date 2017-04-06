@@ -215,6 +215,35 @@ h3:before {
                         </table>
                     </div>
                 </div>
+                <div class="row">
+                    <h3>Genome Overview</h3>
+                    <h4>Genes</h4>
+                    <ul>
+                        <li>Count: {{ genome_overview.genes.count }}</li>
+                        <li>Bases: {{ genome_overview.genes.bases }}</li>
+                        <li>Average Length: {{ genome_overview.genes.avg_len }}</li>
+                        <li>Composition
+                            <ul>
+                                <li>A {{ genome_overview.genes.comp.A }}</li>
+                                <li>C {{ genome_overview.genes.comp.C }}</li>
+                                <li>T {{ genome_overview.genes.comp.T }}</li>
+                                <li>G {{ genome_overview.genes.comp.G }}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h4>Overall</h4>
+                    <ul>
+                        <li>%GC: {{ genome_overview.overall.gc }}</li>
+                        <li>Composition
+                            <ul>
+                                <li>A {{ genome_overview.overall.comp.A }}</li>
+                                <li>C {{ genome_overview.overall.comp.C }}</li>
+                                <li>T {{ genome_overview.overall.comp.T }}</li>
+                                <li>G {{ genome_overview.overall.comp.G }}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
           <h2 class="sub-header" id="bad_gene_starts">Gene Starts</h2>

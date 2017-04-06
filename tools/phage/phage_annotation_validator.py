@@ -428,6 +428,48 @@ def get_encouragement(score):
     return ENCOURAGEMENT[-1][1]
 
 
+def genome_overview(record):
+    """Genome overview
+    """
+    data = {
+        'genes': {
+            'count': 0,
+            'bases': 0,
+            'density': 0,  # genes / kb
+            'avg_len': [],
+            'comp': {
+                'A': 0,
+                'C': 0,
+                'G': 0,
+                'T': 0,
+            }
+        },
+        'overall': {
+            'comp': {
+                'A': record.seq.count('A'),
+                'C': record.seq.count('C'),
+                'G': record.seq.count('G'),
+                'T': record.seq.count('T'),
+            },
+            'gc': 0,
+        }
+    }
+    gene_features = list(coding_genes(record.features))
+    data['genes']['count'] = len(gene_features)
+
+    for feat in gene_features:
+        data['genes']['comp']['A'] += feat.extract(record).seq.count('A')
+        data['genes']['comp']['C'] += feat.extract(record).seq.count('C')
+        data['genes']['comp']['T'] += feat.extract(record).seq.count('T')
+        data['genes']['comp']['G'] += feat.extract(record).seq.count('G')
+        data['genes']['bases'] += len(feat)
+        data['genes']['avg_len'].append(len(feat))
+
+    data['genes']['avg_len'] = float(sum(data['genes']['avg_len'])) / len(gene_features)
+    data['overall']['gc'] = float(data['overall']['comp']['G'] + data['overall']['comp']['C']) / len(record.seq)
+    return data
+
+
 def find_morons(record):
     """Locate morons in the genome
 
@@ -750,6 +792,8 @@ def evaluate_and_report(annotations, genome, gff3=None,
     gff3_qc_record.features = []
     gff3_qc_features = []
 
+
+
     log.info("Locating missing RBSs")
     # mb_any = "did they annotate ANY rbss? if so, take off from score."
     mb_good, mb_bad, mb_results, mb_annotations, mb_any = missing_rbs(
@@ -844,6 +888,7 @@ def evaluate_and_report(annotations, genome, gff3=None,
         },
         'score': score,
         'encouragement': get_encouragement(score),
+        'genome_overview' : genome_overview(record),
 
         'rbss_annotated': mb_any,
         'missing_rbs': mb_results,
