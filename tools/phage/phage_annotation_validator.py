@@ -974,6 +974,12 @@ def evaluate_and_report(annotations, genome, gff3=None,
     def length(data):
         return len(data)
 
+    def my_encode(data):
+        return str(data).encode('utf-8')
+
+    def my_decode(data):
+        return str(data).decode('utf-8')
+
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
     env.filters.update({
         'nice_id': get_gff3_id,
@@ -981,6 +987,8 @@ def evaluate_and_report(annotations, genome, gff3=None,
         'nice_strand_tex': nice_strand_tex,
         'texify': texify,
         'length': length,
+        'encode': my_encode,
+        'decode': my_decode,
     })
     tpl = env.get_template(reportTemplateName)
     return tpl.render(**kwargs).encode('utf-8')
