@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # vim: set fileencoding=utf-8
 import os
+import sys
 import json
 import math
 import argparse
@@ -982,7 +983,7 @@ def evaluate_and_report(annotations, genome, gff3=None,
         'length': length,
     })
     tpl = env.get_template(reportTemplateName)
-    return tpl.render(**kwargs)
+    return tpl.render(**kwargs).encode('utf-8')
 
 
 if __name__ == '__main__':
@@ -1007,5 +1008,4 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    print evaluate_and_report(**vars(args))
-    # evaluate_and_report(**vars(args))
+    sys.stdout.write(evaluate_and_report(**vars(args)))

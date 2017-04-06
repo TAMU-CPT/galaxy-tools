@@ -312,7 +312,7 @@ h3:before {
                 <tr>
                     <td>{{row | nice_id}}</td>
                     <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
-                    <td>{{row.qualifiers}}</td>
+                    <td>{{row.qualifiers['note'][0]}}</td>
                 </tr>
                 {% endfor %}
               </tbody>
