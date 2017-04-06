@@ -982,7 +982,7 @@ def evaluate_and_report(annotations, genome, gff3=None,
         'length': length,
     })
     tpl = env.get_template(reportTemplateName)
-    return tpl.render(**kwargs).encode('utf-8')
+    return tpl.render(**kwargs)
 
 
 if __name__ == '__main__':
