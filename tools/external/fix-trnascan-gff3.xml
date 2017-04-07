@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.external.aragorn-gff3" name="Fix Aragorn tRNA model" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fix-trnascan-gff3.py
+@INPUT_GFF@
+> $default]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="default"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Adds gene/exon feature to the tRNA model to allow creation of proper
+tRNA features in Apollo.
+      ]]></help>
+		<expand macro="citations" />
+</tool>
