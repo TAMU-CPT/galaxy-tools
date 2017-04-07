@@ -1,0 +1,27 @@
+<tool id="blastxml_to_gapped_gff3" name="BlastXML NT to gapped GFF3" version="1.1">
+  <description>converts nucleotide blast results to a JBrowse-compatible file</description>
+  <macros>
+	<import>macros.xml</import>
+	<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/blastxml_to_gapped_gff3-nt.py
+@BLAST_XML@
+> $output]]></command>
+  <inputs>
+    <expand macro="blast_xml" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Convert Nucleotide BlastXML results into gapped GFF3 format.
+]]></help>
+	<expand macro="citations" />
+</tool>
+
