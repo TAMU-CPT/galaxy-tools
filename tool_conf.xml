@@ -212,6 +212,7 @@
     <tool file="cpt2/galaxy-tools/tools/external/interproscan.xml"/>
     <tool file="cpt2/galaxy-tools/tools/external/interproscan-5.22.xml"/>
     <tool file="cpt2/galaxy-tools/tools/external/phageterm/PhageTerm.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/external/fix-trnascan-gff3.xml"/>
   </section>
   <section id="cptspecialsnowflakes" name="CPT:Oneoff/Custom">
     <tool file="cpt2/galaxy-tools/tools/one-off/none-validator.xml"/>
