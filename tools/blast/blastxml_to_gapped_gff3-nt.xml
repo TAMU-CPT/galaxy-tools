@@ -1,4 +1,4 @@
-<tool id="blastxml_to_gapped_gff3" name="BlastXML NT to gapped GFF3" version="1.1">
+<tool id="blastnxml_to_gapped_gff3" name="BlastXML NT to gapped GFF3" version="1.1">
   <description>converts nucleotide blast results to a JBrowse-compatible file</description>
   <macros>
 	<import>macros.xml</import>
