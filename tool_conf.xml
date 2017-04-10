@@ -235,6 +235,7 @@
   </section>
   <section id="cdhit" name="CD-HIT">
     <tool file="cpt2/galaxy-tools/tools/comparative/cdhit-reformat.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/comparative/cdhit-clustsize.xml"/>
   </section>
   <section id="data_summ" name="Data Summarization and Reporting">
     <tool file="cpt2/tools-iuc/tools/jbrowse/jbrowse.xml"/>
