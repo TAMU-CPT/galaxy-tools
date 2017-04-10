@@ -234,7 +234,7 @@
     <tool file="cpt/galaxy-tools/TeX/pdftotext.xml"/>
   </section>
   <section id="cdhit" name="CD-HIT">
-    <tool file="cpt2/alaxy-tools/tools/comparative/cdhit-reformat.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/comparative/cdhit-reformat.xml"/>
   </section>
   <section id="data_summ" name="Data Summarization and Reporting">
     <tool file="cpt2/tools-iuc/tools/jbrowse/jbrowse.xml"/>
