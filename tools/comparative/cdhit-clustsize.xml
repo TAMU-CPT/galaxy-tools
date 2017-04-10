@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.cd-hit-clustsize" name="Extract CD-HIT Clusters Sizes" version="0.2">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/cdhit-reformat.py
+"$input"
+| awk '{print $2}' | sort -n | uniq -c | sort -n -k2 -r | awk 'BEGIN{ print "# Count\tSize" }{print $1"\t"$2}'
+> $output
+  ]]></command>
+  <inputs>
+    <param label="CD-HIT Clusters" name="input" type="data" format="txt"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Extracts clusters from CD-HIT output into a table of cluster sizes
+      ]]></help>
+  <citations>
+    <expand macro="citation/mijalisrasche" />
+  </citations>
+</tool>
