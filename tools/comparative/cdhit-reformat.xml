@@ -12,7 +12,8 @@ $__tool_directory__/cdhit-reformat.py
 "$input"
 "$fasta"
 output/
---min_size $min_cluster_size
+--min_size $min_cluster_size > $log;
+
   ]]></command>
   <inputs>
     <param label="CD-HIT Clusters" name="input" type="data" format="txt"/>
@@ -20,8 +21,9 @@ output/
     <param name="min_cluster_size" type="integer" label="Minimum number of proteins in cluster" value="1" help="Clusters with fewer than this number of proteins will not be output."/>
   </inputs>
   <outputs>
+    <data format="txt" name="log" label="Protein Cluster Extraction Log"/>
     <collection name="list_output" type="list" label="Clustered Protein Set">
-      <discover_datasets pattern="__name__" directory="outputs" format="fata"/>
+      <discover_datasets pattern="__name__" directory="output" format="fasta"/>
     </collection>
   </outputs>
   <help><![CDATA[
