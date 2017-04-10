@@ -1,4 +1,4 @@
-<tool id="blastclust" name="blastclust" version="0.0.1">
+<tool id="blastclust" name="blastclust" version="0.0.2">
     <description>Cluster proteins with blast</description>
   <macros>
     <import>macros.xml</import>
@@ -11,6 +11,7 @@ blastclust
 #elif $db_opts.db_opts_selector == "user_db":
     -d "$db_opts.db"
 #end if
+-a \${GALAXY_SLOTS}
 -o $output1
 -L $length_coverage_threshold
 -S $score_coverage_threshold
