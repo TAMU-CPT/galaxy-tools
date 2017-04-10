@@ -32,8 +32,7 @@ sequences using different models as follows:
 
 homogeneous ("global") models (applied to the whole genome/chromosome):
 
--  rndb: simple bernoulli model (independently drawn letters with
-         nonuniform probabilities)
+-  rndb: simple bernoulli model (independently drawn letters with nonuniform probabilities)
 -  rndm1: first order Markov (reproducing dinucleotide frequencies)
 -  rndm3: third order Markov (reproducing tetranucleotide frequencies)
 -  rndm5: fifth order Markov (reproducing hexanucleotide frequencies)
@@ -46,8 +45,7 @@ heterogeneous ("local") models (each gene/orf/exon and each intergenic region ra
 -  rndm1m1p: as previous but separating different codon positions
 -  rmdm1c: Markov for intergenic, whole codons for genes
 -  rndm1c1: Markov for intergenic, codons dependent on preceding nucleotide for genes
--  rndm3m3p: third order Markov for intergenic, position-dependent third order Markov for genes;
-             pseudocounts are added equal to mononucleotide frequencies.
+-  rndm3m3p: third order Markov for intergenic, position-dependent third order Markov for genes; pseudocounts are added equal to mononucleotide frequencies.
 
 For all Markov models, if a transition probability is not defined due to small sample size,
 the non-Markov probabilities are used instead.
