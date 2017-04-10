@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gbk.genrand" name="Genome Randomizer" version="1.1">
+	<description></description>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/genrand
+"$input"
+output.
+$randomSeed
+]]></command>
+	<inputs>
+		<param label="Genbank file" name="input" type="data" format="genbank" />
+		<param label="Random Seed" name="randomSeed" type="integer" value="42" />
+	</inputs>
+	<outputs>
+		<data name="output1" format="genbank" from_work_dir="output.rndb" label="Homogenous: Simple bernoulli model"/>
+		<data name="output2" format="genbank" from_work_dir="output.rndm1" label="Homogenous: first order Markov"/>
+		<data name="output3" format="genbank" from_work_dir="output.rndm3" label="Homogenous: third order Markov"/>
+		<data name="output4" format="genbank" from_work_dir="output.rndm5" label="Homogenous: fifth order Markov"/>
+		<data name="output5" format="genbank" from_work_dir="output.rndbb"    label="Heterogenous: Bernoulli model for both coding and noncoding"/>
+		<data name="output6" format="genbank" from_work_dir="output.rndbbp"   label="Heterogenous: Bernoulli model for both coding and noncoding with separate codon positions"/>
+		<data name="output7" format="genbank" from_work_dir="output.rndm1m1"  label="Heterogenous: first order Markov for both coding and noncoding"/>
+		<data name="output8" format="genbank" from_work_dir="output.rndm1m1p" label="Heterogenous: first order Markov for both coding and noncoding with separate codon positions"/>
+		<data name="output9" format="genbank" from_work_dir="output.rndm1c"   label="Heterogenous: Markov for intergenic, whole codons for genes" />
+		<data name="output10" format="genbank" from_work_dir="output.rndm1c1"  label="Heterogenous: Markov for intergenic, codons dependent on preceding nucleotide for genes"/>
+		<data name="output11" format="genbank" from_work_dir="output.rndm3c3p"  label="Heterogenous: third order Markov for intergenic, position-dependent third order Markov for genes; pseudocounts are added equal to mononucleotide frequencies."/>
+	</outputs>
+	<help>
+**What it does**
+
+Reads a sequence and annotation in GenBank format and generates 11 random
+sequences using different models as follows:
+
+homogeneous ("global") models (applied to the whole genome/chromosome):
+
+-  rndb: simple bernoulli model (independently drawn letters with
+         nonuniform probabilities)
+-  rndm1: first order Markov (reproducing dinucleotide frequencies)
+-  rndm3: third order Markov (reproducing tetranucleotide frequencies)
+-  rndm5: fifth order Markov (reproducing hexanucleotide frequencies)
+
+heterogeneous ("local") models (each gene/orf/exon and each intergenic region randomized separately):
+
+-  rndbb: Bernoulli model for both coding and noncoding
+-  rndbbp: as previous but separating different codon positions
+-  rndm1m1: first order Markov for both coding and noncoding
+-  rndm1m1p: as previous but separating different codon positions
+-  rmdm1c: Markov for intergenic, whole codons for genes
+-  rndm1c1: Markov for intergenic, codons dependent on preceding nucleotide for genes
+-  rndm3m3p: third order Markov for intergenic, position-dependent third order Markov for genes;
+             pseudocounts are added equal to mononucleotide frequencies.
+
+For all Markov models, if a transition probability is not defined due to small sample size,
+the non-Markov probabilities are used instead.
+
+Note: This program is intended for use with prokaryotic genomes. It can also be
+applied to eukaryotic genomes with short introns and intergenic sequences. The
+heterogeneous models used in this program don't make much sense for genomes
+where some of the segments (exons, introns or intergenic regions) are very
+large.
+</help>
+		<expand macro="citations" />
+	<citations>
+		<citation type="doi">10.1093/molbev/msk023</citation>
+	</citations>
+</tool>
