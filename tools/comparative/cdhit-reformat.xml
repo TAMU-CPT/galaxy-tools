@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.cd-hit-reformat" name="Extract CD-HIT clusters into Dataset Collection" version="0.1">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+mkdir -p output &&
+$__tool_directory__/cdhit-reformat.py
+"$input"
+output/
+--min_size $min_cluster_size
+  ]]></command>
+  <inputs>
+    <param name="min_cluster_size" type="integer" label="Minimum number of proteins in cluster" value="1" help="Clusters with fewer than this number of proteins will not be output."/>
+  </inputs>
+  <outputs>
+    <collection name="list_output" type="list" label="Clustered Protein Set">
+      <discover_datasets pattern="__name__" directory="outputs" format="fata"/>
+    </collection>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Extracts clusters from CD-HIT output into separate fasta files for further processing.
+
+      ]]></help>
+  <citations>
+    <expand macro="citation/mijalisrasche" />
+  </citations>
+</tool>
