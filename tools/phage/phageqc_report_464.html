@@ -270,10 +270,10 @@ h3:before {
                 {% for row in missing_rbs %}
                 {% if "None found" in row.__message %}
                 <tr>
-                    <td>{{row | nice_id}}</td>
+                    <td>{{row | nice_id | decode}}</td>
                     <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
                     <td>None found</td>
-                    <td><span style="font-family:monospace">{{row.__upstream}}</span></td>
+                    <td><span style="font-family:monospace">{{row.__upstream }}</span></td>
                 </tr>
                 {% endif %}
                 {% endfor %}
@@ -311,7 +311,7 @@ h3:before {
               <tbody>
                 {% for row in weird_starts %}
                 <tr>
-                    <td>{{row | nice_id}}</td>
+                    <td>{{row | nice_id| decode}}</td>
                     <td>{{row.location.start}}..{{row.location.end}} [{{row.strand}}]</td>
                     <td>{{row.qualifiers.get('note', [])}}</td>
                 </tr>
