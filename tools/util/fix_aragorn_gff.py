@@ -14,15 +14,18 @@ def fixed_feature(rec):
         feature.qualifiers = {
             'ID': ['biopy-%s' % idx],
             'product': ['tRNA-' + feature.qualifiers['Codon'][0]],
+            'Name': ['tRNA-' + feature.qualifiers['Codon'][0]],
             'note': ['anticodon: %s' % old_quals['Anticodon'][0].upper()],
             'experiment': old_quals['source'],
         }
 
         gene = copy.deepcopy(feature)
-        gene.qualifiers = {}
+        gene.qualifiers = {
+            'Name': ['tRNA-' + feature.qualifiers['Codon'][0]],
+            'ID': 'gene-%s' % idx,
+            'source': 'aragorn'
+        }
         gene.type = 'gene'
-        gene.qualifiers['ID'] = 'gene-%s' % idx
-        gene.qualifiers['source'] = 'aragorn'
 
         gene.sub_features = [feature]
         yield gene
