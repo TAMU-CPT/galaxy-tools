@@ -19,7 +19,8 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
 
             try:
                 tmpseq = record.seq.translate(table=table, cds=True)
-            except CodonTable.TranslationError:
+            except CodonTable.TranslationError as cte:
+                log.warn("Translation error: %s", cte)
                 tmpseq = record.seq.translate(table=table, cds=False)
 
             # check if stop in middle of protein
