@@ -2,6 +2,7 @@
 import sys
 import argparse
 import logging
+import uuid
 from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
@@ -34,6 +35,43 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     )
                 ]
 
+    elif feature_filter == 'unique_cds':
+        seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
+        seen_ids = {}
+        for rec in GFF.parse(gff3, base_dict=seq_dict):
+            for feat in sorted(feature_lambda(
+                rec.features,
+                feature_test_type,
+                {'type': 'CDS'},
+                subfeatures=False
+            ), key=lambda f: f.location.start):
+                id = rec.id + '____' + feat.id
+                if id in seen_ids:
+                    id = id + '__' + uuid.uuid4().hex
+                seen_ids[id] = True
+
+                if nodesc:
+                    description = ''
+                else:
+                    important_data = {
+                        'Location': feat.location,
+                    }
+                    if 'Name' in feat.qualifiers:
+                        important_data['Name'] = feat.qualifiers.get('Name', [''])[0]
+
+                    description = '[{}]'.format(
+                        ';'.join([
+                            '{key}={value}'.format(key=k, value=v) for (k, v) in important_data.items()
+                        ])
+                    )
+
+                yield [
+                    SeqRecord(
+                        feat.extract(rec).seq,
+                        id=id,
+                        description=description
+                    )
+                ]
     else:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         for rec in GFF.parse(gff3, base_dict=seq_dict):
