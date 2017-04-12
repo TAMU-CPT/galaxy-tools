@@ -2,7 +2,7 @@
 <tool id="tmp.efetch" name="EFetch" version="0.1">
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/edirect/efetch
--id \$(cat "$id_list" | paste -s ',' -d)
+-id \$(cat "$id_list" | paste -d ',' -s)
 -db nucleotide
 -format gbwithparts > "$output"
 ]]></command>
