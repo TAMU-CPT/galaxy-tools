@@ -33,4 +33,49 @@
 			help="These sequences should be the SAME DATASET that was used in the progressiveMauve run. Failing that, they should be provided in the same order as in original progressiveMauve run"/>
 
 	</xml>
+	<xml name="genome_selector">
+		<conditional name="reference_genome">
+			<param name="reference_genome_source" type="select" label="Reference Genome">
+				<option value="history" selected="True">From History</option>
+				<option value="cached">Locally Cached</option>
+			</param>
+			<when value="cached">
+				<param name="fasta_indexes" type="select" label="Source FASTA Sequence">
+					<options from_data_table="all_fasta"/>
+				</param>
+			</when>
+			<when value="history">
+				<param name="genome_fasta" type="data" format="fasta" label="Source FASTA Sequence"/>
+			</when>
+		</conditional>
+	</xml>
+	<xml name="gff3_input">
+		<param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
+	</xml>
+	<xml name="input/gff3+fasta">
+		<expand macro="gff3_input" />
+		<expand macro="genome_selector" />
+	</xml>
+	<token name="@INPUT_GFF@">
+	"$gff3_data"
+	</token>
+	<token name="@INPUT_FASTA@">
+#if str($reference_genome.reference_genome_source) == 'cached':
+		"${reference_genome.fasta_indexes.fields.path}"
+#else if str($reference_genome.reference_genome_source) == 'history':
+		genomeref.fa
+#end if
+	</token>
+	<token name="@GENOME_SELECTOR_PRE@">
+#if $reference_genome.reference_genome_source == 'history':
+		ln -s $reference_genome.genome_fasta genomeref.fa;
+#end if
+	</token>
+	<token name="@GENOME_SELECTOR@">
+#if str($reference_genome.reference_genome_source) == 'cached':
+		"${reference_genome.fasta_indexes.fields.path}"
+#else if str($reference_genome.reference_genome_source) == 'history':
+		genomeref.fa
+#end if
+	</token>
 </macros>

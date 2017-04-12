@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.comparative.mauve" name="Mauve" version="0.9">
+	<description>from XMFA file</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<configfiles>
+		<configfile name="index">
+		<![CDATA[
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mauve D3">
+    <title>Mauve D3</title>
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+    <script src="mauve.js"></script>
+</body>
+</html>
+		]]>
+		</configfile>
+	</configfiles>
+	<command detect_errors="aggressive"><![CDATA[
+@GENOME_SELECTOR_PRE@
+mkdir -p "$output.files_path";
+
+python $__tool_directory__/xmfa_process.py
+@INPUT_GFF@
+@INPUT_FASTA@
+@XMFA_INPUT@
+"out" > "$output.files_path/data.json";
+mv out "$output.files_path/";
+
+cp $__tool_directory__/mauve.js $output.files_path/;
+cp $index "$output"
+]]></command>
+	<inputs>
+		<expand macro="input/gff3+fasta" />
+		<expand macro="xmfa_input" />
+	</inputs>
+	<outputs>
+		<data format="html" name="output" />
+	</outputs>
+	<help>
+	</help>
+	<tests/>
+</tool>
