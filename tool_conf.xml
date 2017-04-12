@@ -76,6 +76,7 @@
     <tool file="cpt2/galaxy-tools/tools/blast/split_blast.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/nuc_relate.xml" label="new"/>
     <tool file="cpt2/galaxy-tools/tools/blast/prot_relate.xml" label="new"/>
+    <tool file="cpt2/galaxy-tools/tools/edirect/efetch.xml" label="dev-only"/>
   </section>
   <section id="cpt2_fasta" name="CPT2: Fasta Tools">
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_aastats.xml"/>

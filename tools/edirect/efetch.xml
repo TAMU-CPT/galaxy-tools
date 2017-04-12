@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<tool id="tmp.efetch" name="EFetch" version="0.1">
+  <macros>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <description></description>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/edirect/efetch
+-id \$(cat "$id_list" | paste -s ',' -d)
+-db nucleotide
+-format gbwithparts > "$output"
+]]></command>
+  <inputs>
+    <param label="ID File" name="id_list" type="data" format="tabular" help="NEWLINE separated list of IDs to fetch from NUCLEOTIDE as GENBANK"/>
+  </inputs>
+  <outputs>
+    <data format="genbank" name="output" label="NCBI GenBank File Downloader">
+    </data>
+  </outputs>
+  <help><![CDATA[
+DO NOT USE THIS. It is not user friendly / configurable at all. DO NOT BUILD ON THIS. Use IUC tools.
+      ]]></help>
+</tool>
