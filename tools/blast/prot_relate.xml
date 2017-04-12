@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.blast.relatedness.nuc" name="Related Genomes" version="1.2">
+	<description>based on protein blast results</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+$__tool_directory__/prot_relate.py
+@BLAST_TSV@
+> $accession_list
+</command>
+	<inputs>
+	<expand macro="blast_tsv" />
+	</inputs>
+	<outputs>
+		<data format="tabular" name="accession_list" label="Top BlastP Hits" />
+	</outputs>
+	<help>
+**What it does**
+
+This tool attempts to filter a set of blast results and return the top
+related genomes based on number (and score) of protein-protein matches.
+</help>
+	<tests/>
+	<expand macro="citations" />
+</tool>
