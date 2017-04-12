@@ -7,8 +7,10 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
-$__tool_directory__/prot_relate.py
+$__tool_directory__/relatedness.py
 @BLAST_TSV@
+$__tool_directory__/db.json
+--protein
 > $accession_list
 </command>
 	<inputs>
