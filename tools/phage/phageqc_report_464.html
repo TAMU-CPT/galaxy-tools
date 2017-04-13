@@ -210,6 +210,7 @@ h3:before {
                                 <tr><td>Excessive Gaps</td><td>{{ '%d' % excessive_gap_score }}%</td></tr>
                                 <tr><td>Excessive Overlap</td><td>{{ '%d' % excessive_overlap_score }}%</td></tr>
                                 <tr><td>Coding Density Score</td><td>{{ '%d' % coding_density }}%</td></tr>
+                                <tr><td>Coding Density Real</td><td>{{ '%0.2f' % (100 * coding_density_exact) }}%</td></tr>
                                 <tr><td>Gene Model Issues</td><td>{{ '%d' % gene_model_score }}%</td></tr>
                             </tbody>
                         </table>

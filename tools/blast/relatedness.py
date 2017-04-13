@@ -147,7 +147,7 @@ if __name__ == '__main__':
     data = filter_phage(data, phageNameLookup)
 
     scores, counts = scoreMap(data)
-    sys.stdout.write('# ID\tName\tScore\n')
+    sys.stdout.write('# ID\tName\tScore\tProtein Count\n')
     for idx, ((name, pid), score) in enumerate(sorted(scores.items(), key=lambda (x, y): -y)):
         if idx > 4:
             break
