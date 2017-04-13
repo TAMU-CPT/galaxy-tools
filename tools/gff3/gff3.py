@@ -47,6 +47,9 @@ def feature_lambda(feature_list, test, test_kwargs, subfeatures=True, parent=Non
     # Either the top level set of [features] or the subfeature attribute
     for feature in feature_list:
         feature._parent = parent
+        if not parent:
+            # Set to self so we cannot go above root.
+            feature._parent = feature
         test_result = test(feature, **test_kwargs)
         # if (not invert and test_result) or (invert and not test_result):
         # print feature.type, test_kwargs, test_result, invert ^ test_result

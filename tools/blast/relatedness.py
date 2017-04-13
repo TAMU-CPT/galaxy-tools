@@ -53,7 +53,6 @@ def split_identifiers_phage(par, ident):
 
 
 def important_only(blast, split_identifiers):
-    # Connect to kyoto db
     for data in blast:
         yield [
             # 01 Query Seq-id (ID of your sequence)
