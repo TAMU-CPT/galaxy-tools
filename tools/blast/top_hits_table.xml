@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.blast.top_hits_table" name="Top Hits Table" version="1.2">
+	<description>based on blast tabular files</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+#for blast in $blast_tsv:
+	ln -s $blast "$blast.name";
+#end for
+
+$__tool_directory__/top_hits_table.py
+"$gff3"
+#for blast in $blast_tsv:
+	"$blast.name"
+#end for
+> $output
+</command>
+	<inputs>
+		<param label="Genome Annotations" name="gff3" type="data" format="gff3" />
+		<param label="Blast Results" help="TSV/tabular (25 Column)"
+			name="blast_tsv" type="data" format="tabular" multiple="True"/>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="output" label="Best Blast Hits" />
+	</outputs>
+	<help>
+**What it does**
+
+Prints out a table showing the best hit name / evalue / dice for each input query sequence across a range of blast results.
+</help>
+	<tests/>
+	<expand macro="citations" />
+</tool>
