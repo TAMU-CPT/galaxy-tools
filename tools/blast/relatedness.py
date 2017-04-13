@@ -102,12 +102,15 @@ def filter_phage(blast, phageNameLookup):
 
 def scoreMap(blast):
     m = {}
+    c = {}
     for (evalue, name, id, dice) in blast:
         if (name, id) not in m:
             m[(name, id)] = 0
+            c[(name, id)] = 0
 
         m[(name, id)] += 1 * dice
-    return m
+        c[(name, id)] += 1
+    return m, c
 
 
 if __name__ == '__main__':
@@ -133,10 +136,10 @@ if __name__ == '__main__':
     data = deform_scores(data)
     data = filter_phage(data, phageNameLookup)
 
-    scores = scoreMap(data)
+    scores, counts = scoreMap(data)
     sys.stdout.write('# ID\tName\tScore\n')
     for idx, ((name, pid), score) in enumerate(sorted(scores.items(), key=lambda (x, y): -y)):
         if idx > 4:
             break
 
-        sys.stdout.write('%s\t%s\t%05.3f\n' % (pid, name, score))
+        sys.stdout.write('%s\t%s\t%05.3f\t%d\n' % (pid, name, score, counts[(name, pid)]))
