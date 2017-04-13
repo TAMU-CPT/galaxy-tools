@@ -202,11 +202,15 @@ def blast2pxmfa(blast, fasta, gff3, output, genomic=False):
         sortedCluster = sorted(cluster, key=lambda x: sortIndexForFeatId(x))
         sortedAligned = sorted(aligned_seqs, key=lambda x: sortIndexForFeatId(x.id))
         # print(sortedCluster, [x.id for x in sortedAligned])
+
+        #Pre-check the asserts.
+        goodToGo = all([element == aligned_seq.id for (element, aligned_seq) in zip(sortedCluster, sortedAligned)])
+        if not goodToGo:
+            logging.info("Skipping one grouping: %s != %s", ','.join(sortedCluster), ','.join([x.id for x in sortedAligned]))
+            # Skip this look
+            continue
         # print(aligned_seqs)
         for element, aligned_seq in zip(sortedCluster, sortedAligned):
-            # Must be the same or we have big problems
-            assert element == aligned_seq.id
-
             if element not in locations:
                 logging.warning("Could not find this feature %s", element)
                 continue
