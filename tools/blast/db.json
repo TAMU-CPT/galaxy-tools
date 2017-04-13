@@ -33400,5 +33400,173 @@
     "id": "AF109874.2", 
     "name": "AF109874", 
     "desc": "Bacteriophage Tuc2009, complete genome."
+  },
+  {
+    "desc": "Chi",
+    "id": "NC_025442.1",
+    "name": "NC_025442.1",
+    "source": "Chi"
+  },
+  {
+    "desc": "Phage K",
+    "id": "NC_005880.2",
+    "name": "NC_005880.2",
+    "source": "Phage K"
+  },
+  {
+    "desc": "N4",
+    "id": "NC_008720.1",
+    "name": "NC_008720.1",
+    "source": "N4"
+  },
+  {
+    "desc": "epsilon15",
+    "id": "NC_004775.1",
+    "name": "NC_004775.1",
+    "source": "epsilon15"
+  },
+  {
+    "desc": "Felix01",
+    "id": "NC_005282.1",
+    "name": "NC_005282.1",
+    "source": "Felix01"
+  },
+  {
+    "desc": "lambda",
+    "id": "NC_001416.1",
+    "name": "NC_001416.1",
+    "source": "lambda"
+  },
+  {
+    "desc": "Mu",
+    "id": "NC_000929.1",
+    "name": "NC_000929.1",
+    "source": "Mu"
+  },
+  {
+    "desc": "N15",
+    "id": "NC_001901.1",
+    "name": "NC_001901.1",
+    "source": "N15"
+  },
+  {
+    "desc": "P1",
+    "id": "NC_005856.1",
+    "name": "NC_005856.1",
+    "source": "P1"
+  },
+  {
+    "desc": "P22",
+    "id": "NC_002371.2",
+    "name": "NC_002371.2",
+    "source": "P22"
+  },
+  {
+    "desc": "P2",
+    "id": "NC_001895.1",
+    "name": "NC_001895.1",
+    "source": "P2"
+  },
+  {
+    "desc": "P4",
+    "id": "NC_001609.1",
+    "name": "NC_001609.1",
+    "source": "P4"
+  },
+  {
+    "desc": "phi29",
+    "id": "NC_011048.1",
+    "name": "NC_011048.1",
+    "source": "phi29"
+  },
+  {
+    "desc": "phiKMV",
+    "id": "NC_005045.1",
+    "name": "NC_005045.1",
+    "source": "phiKMV"
+  },
+  {
+    "desc": "SP6",
+    "id": "NC_004831.2",
+    "name": "NC_004831.2",
+    "source": "SP6"
+  },
+  {
+    "desc": "SPO1",
+    "id": "NC_011421.1",
+    "name": "NC_011421.1",
+    "source": "SPO1"
+  },
+  {
+    "desc": "SPP1",
+    "id": "NC_004166.2",
+    "name": "NC_004166.2",
+    "source": "SPP1"
+  },
+  {
+    "desc": "T1",
+    "id": "NC_005833.1",
+    "name": "NC_005833.1",
+    "source": "T1"
+  },
+  {
+    "desc": "T3",
+    "id": "NC_003298.1",
+    "name": "NC_003298.1",
+    "source": "T3"
+  },
+  {
+    "desc": "T4",
+    "id": "NC_000866.4",
+    "name": "NC_000866.4",
+    "source": "T4"
+  },
+  {
+    "desc": "T5",
+    "id": "NC_005859.1",
+    "name": "NC_005859.1",
+    "source": "T5"
+  },
+  {
+    "desc": "T7",
+    "id": "NC_001604.1",
+    "name": "NC_001604.1",
+    "source": "T7"
+  },
+  {
+    "desc": "PRD1",
+    "id": "NC_001421.2",
+    "name": "NC_001421.2",
+    "source": "PRD1"
+  },
+  {
+    "desc": "P68",
+    "id": "NC_004679",
+    "name": "NC_004679",
+    "source": "P68"
+  },
+  {
+    "desc": "9NA",
+    "id": "NC_025443",
+    "name": "NC_025443",
+    "source": "9NA"
+  },
+  {
+    "desc": "Vi01",
+    "id": "NC_015296.1",
+    "name": "NC_015296.1",
+    "source": "Vi01"
+  },
+  {
+    "desc": "phi92",
+    "id": "NC_023693",
+    "name": "NC_023693",
+    "source": "phi92"
+  },
+  {
+    "desc": "phiETA",
+    "id": "NC_003288.1",
+    "name": "NC_003288.1",
+    "source": "phiETA"
   }
 ]

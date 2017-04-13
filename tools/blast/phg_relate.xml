@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.blast.relatedness.phg" name="Related Genomes" version="1.2">
+	<description>based on PHAGE blast results</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+$__tool_directory__/relatedness.py
+@BLAST_TSV@
+$__tool_directory__/db.json
+--canonical
+> $accession_list
+</command>
+	<inputs>
+	<expand macro="blast_tsv" />
+	</inputs>
+	<outputs>
+		<data format="tabular" name="accession_list" label="Top Phage Blast Hits" />
+	</outputs>
+	<help>
+**What it does**
+
+This tool attempts to filter a set of blast results and return the top
+related genomes based on number (and score) of blastp matches to phages.
+</help>
+	<tests/>
+	<expand macro="citations" />
+</tool>

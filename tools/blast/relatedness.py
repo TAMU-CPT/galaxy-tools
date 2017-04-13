@@ -25,7 +25,7 @@ def filter_dice(blast, threshold=0.5):
             yield data
 
 
-def split_identifiers_nucl(ident):
+def split_identifiers_nucl(_, ident):
     if '<>' in ident:
         idents = ident.split('<>')
     else:
@@ -33,7 +33,7 @@ def split_identifiers_nucl(ident):
     return idents
 
 
-def split_identifiers_prot(ident):
+def split_identifiers_prot(_, ident):
     if '<>' in ident:
         idents = ident.split('<>')
     else:
@@ -44,6 +44,12 @@ def split_identifiers_prot(ident):
         # MULTISPECIES: recombination-associated protein RdgC [Enterobacteriaceae]<>RecName: Full=Recombination-associated protein RdgC<>putative exonuclease, RdgC [Enterobacter sp. 638]
         if '[' in x and ']' in x
     ]
+
+
+def split_identifiers_phage(par, ident):
+    par = par.replace('lcl|', '')
+    par = par[0:par.index('_prot_')]
+    return [par]
 
 
 def important_only(blast, split_identifiers):
@@ -74,7 +80,7 @@ def important_only(blast, split_identifiers):
             # 22 Aligned part of subject sequence
             # 23 Query sequence length
             # 24 Subject sequence length
-            split_identifiers(data[24]), # 25 All subject title(s), separated by a '<>'
+            split_identifiers(data[1], data[24]), # 25 All subject title(s), separated by a '<>'
             data[25] # 26 dice
         ]
 
@@ -118,12 +124,16 @@ if __name__ == '__main__':
     parser.add_argument('blast', type=argparse.FileType("r"), help='Blast 25 Column Results')
     parser.add_argument('phagedb', type=argparse.FileType("r"))
     parser.add_argument('--protein', action='store_true')
+    parser.add_argument('--canonical', action='store_true')
 
     args = parser.parse_args()
 
     phageDb = json.load(args.phagedb)
     if args.protein:
         splitId = split_identifiers_prot
+        phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
+    elif args.canonical:
+        splitId = split_identifiers_phage
         phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
     else:
         splitId = split_identifiers_nucl
