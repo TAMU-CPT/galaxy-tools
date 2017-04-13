@@ -70,14 +70,14 @@
     <tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/blasttab_add_dice_column.xml"/>
     <tool file="cpt2/galaxy-tools/tools/blast/cpt_blast_filter.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/blast/cpt_relatedness.xml" label="deprecated"/>
+    <tool file="cpt2/galaxy-tools/tools/blast/cpt_relatedness.xml" labels="deprecated"/>
     <tool file="cpt2/galaxy-tools/tools/blast/blastxml_filter.xml" labels="experimental"/>
     <tool file="cpt2/galaxy-tools/tools/blast/split_blast.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/blast/nuc_relate.xml" label="new"/>
-    <tool file="cpt2/galaxy-tools/tools/blast/phg_relate.xml" label="new"/>
-    <tool file="cpt2/galaxy-tools/tools/blast/prot_relate.xml" label="new"/>
-    <tool file="cpt2/galaxy-tools/tools/blast/top_hits_table.xml" label="new"/>
-    <tool file="cpt2/galaxy-tools/tools/edirect/efetch.xml" label="dev-only"/>
+    <tool file="cpt2/galaxy-tools/tools/blast/nuc_relate.xml" labels="new"/>
+    <tool file="cpt2/galaxy-tools/tools/blast/phg_relate.xml" labels="new"/>
+    <tool file="cpt2/galaxy-tools/tools/blast/prot_relate.xml" labels="new"/>
+    <tool file="cpt2/galaxy-tools/tools/blast/top_hits_table.xml" labels="new"/>
+    <tool file="cpt2/galaxy-tools/tools/edirect/efetch.xml" labels="dev-only"/>
   </section>
   <section id="cpt2_fasta" name="CPT2: Fasta Tools">
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_aastats.xml"/>
@@ -176,9 +176,9 @@
     <tool file="cpt2/galaxy-tools/tools/comparative/xmfa2bigwig.xml"/>
     <tool file="cpt2/galaxy-tools/tools/comparative/xmfa2tbl.xml"/>
     <tool file="cpt2/galaxy-tools/tools/comparative/cpt_mauve_graph.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/comparative/mauve.xml" label="experimental"/>
+    <tool file="cpt2/galaxy-tools/tools/comparative/mauve.xml" labels="experimental"/>
     <tool file="cpt2/galaxy-tools/tools/blast/blast2pxmfa.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/comparative/lcb_split.xml" label="experimental"/>
+    <tool file="cpt2/galaxy-tools/tools/comparative/lcb_split.xml" labels="experimental"/>
   </section>
   <section id="cpt2_phage" name="CPT2: Phage Analysis Tools">
     <tool file="cpt2/galaxy-tools/tools/phage/autoreopen.xml" labels="experimental"/>
