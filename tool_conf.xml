@@ -114,6 +114,7 @@
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_aa_stats.xml"/>
     <tool file="cpt2/galaxy-tools/tools/util/compare_codons.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_sequence.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_sequence2.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_introns.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/cpt_add_gff_to_gbk.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_reformat.xml"/>

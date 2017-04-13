@@ -39,16 +39,19 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         seen_ids = {}
         for rec in GFF.parse(gff3, base_dict=seq_dict):
+            newfeats = []
             for feat in sorted(feature_lambda(
                 rec.features,
                 feature_test_type,
                 {'type': 'CDS'},
                 subfeatures=False
             ), key=lambda f: f.location.start):
-                id = rec.id + '____' + feat.id
-                if id in seen_ids:
-                    id = id + '__' + uuid.uuid4().hex
-                seen_ids[id] = True
+                nid = rec.id + '____' + feat.id
+                if nid in seen_ids:
+                    nid = nid + '__' + uuid.uuid4().hex
+                feat.qualifiers['ID'] = nid
+                newfeats.append(feat)
+                seen_ids[nid] = True
 
                 if nodesc:
                     description = ''
@@ -68,10 +71,13 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 yield [
                     SeqRecord(
                         feat.extract(rec).seq,
-                        id=id,
+                        id=nid,
                         description=description
                     )
                 ]
+            rec.features = newfeats
+            rec.annotations = {}
+            GFF.write([rec], sys.stderr)
     else:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         for rec in GFF.parse(gff3, base_dict=seq_dict):

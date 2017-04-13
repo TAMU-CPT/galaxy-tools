@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.export_seq" name="Feature Sequence Export Unique" version="1.2">
+  <description>specially modified for sending CDSs to blast</description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+@GENOME_SELECTOR_PRE@
+
+$__tool_directory__/gff3_extract_sequence.py
+@GENOME_SELECTOR@
+
+@INPUT_GFF@
+
+--feature_filter unique_cds
+$nodesc
+> $default
+2> $gff3
+]]></command>
+  <inputs>
+    <expand macro="genome_selector" />
+    <expand macro="gff3_input" />
+    <param label="Remove description (use if blasting)" name="nodesc" type="boolean" truevalue="--nodesc" falsevalue=""/>
+  </inputs>
+  <outputs>
+    <data format="fasta" hidden="false" name="default"/>
+    <data format="gff3" hidden="false" name="gff3"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Extract fasta sequences from a parent genome.
+      ]]></help>
+		<expand macro="citations" />
+</tool>
