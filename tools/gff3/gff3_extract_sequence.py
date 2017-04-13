@@ -30,7 +30,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 yield [
                     SeqRecord(
                         feat.extract(rec).seq,
-                        id=feat.qualifiers.get('locus_tag', get_id(feat)),
+                        id=feat.qualifiers.get('locus_tag', get_id(feat)).replace(' ', '-'),
                         description=description
                     )
                 ]
@@ -71,7 +71,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 yield [
                     SeqRecord(
                         feat.extract(rec).seq,
-                        id=nid,
+                        id=nid.replace(' ', '-'),
                         description=description
                     )
                 ]
@@ -109,7 +109,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 yield [
                     SeqRecord(
                         feat.extract(rec).seq,
-                        id=id,
+                        id=id.replace(' ', '-'),
                         description=description
                     )
                 ]
