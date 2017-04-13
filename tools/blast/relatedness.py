@@ -131,7 +131,7 @@ if __name__ == '__main__':
 
     data = parse_blast(args.blast)
     data = with_dice(data)
-    data = filter_dice(data, threshold=0.3)
+    data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
     data = deform_scores(data)
     data = filter_phage(data, phageNameLookup)
