@@ -5,14 +5,15 @@
     #if $appl is not None:
     --applications "$appl"
     #end if
-    --formats GFF3
+    --formats GFF3,HTML
     $goterms $iprlookup $pathways
     -i $input
     --output-file-base ${output_gff3}
     -t 'p'
 ;
 
-mv ${output_gff3}.gff3 ${output_gff3}
+mv ${output_gff3}.gff3 ${output_gff3};
+mv ${output_gff3}.html ${output_html};
 
     </command>
         <inputs>
@@ -43,6 +44,7 @@ mv ${output_gff3}.gff3 ${output_gff3}
         </inputs>
     <outputs>
         <data format="gff3" name="output_gff3" label="Interproscan GFF3 output on ${on_string}"/>
+        <data format="html" name="output_html" label="Interproscan HTML output on ${on_string}"/>
     </outputs>
     <requirements>
     </requirements>
