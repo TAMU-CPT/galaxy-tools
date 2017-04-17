@@ -13,7 +13,7 @@
 ;
 
 mv ${output_gff3}.gff3 ${output_gff3};
-mv ${output_gff3}.html ${output_html};
+mv ${output_gff3}.html.tar.gz ${output_html};
 
     </command>
         <inputs>
@@ -44,7 +44,7 @@ mv ${output_gff3}.html ${output_html};
         </inputs>
     <outputs>
         <data format="gff3" name="output_gff3" label="Interproscan GFF3 output on ${on_string}"/>
-        <data format="html" name="output_html" label="Interproscan HTML output on ${on_string}"/>
+        <data format="tar.gz" name="output_html" label="Interproscan HTML output on ${on_string} (.tar.gz)"/>
     </outputs>
     <requirements>
     </requirements>
