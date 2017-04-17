@@ -1,0 +1,88 @@
+##sequence-region EU771092.1 1 19282
+EU771092.1	Genbank	gene	265	375	.	-	.	ID=gene0;Name=0.2;gbkey=Gene;gene=0.2;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	265	360	.	-	0	Dbxref=NCBI_GP:ACE96018.1;ID=cds0;Name=ACE96018.1;Note=similar to CAA24474.1 unnamed protein product Bacillus phage phi29;Parent=gene0;gbkey=CDS;gene=0.2;product=hypothetical protein;protein_id=ACE96018.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	373	375	.	-	.	ID=cds0.rbs-0;Parent=gene0
+EU771092.1	Genbank	promoter	328	356	.	-	.	ID=id2;Note=promoter A1%3B early transcription;gbkey=promoter;gene=0.2
+EU771092.1	Genbank	gene	367	524	.	-	.	ID=gene1;Name=0.4;gbkey=Gene;gene=0.4;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	367	510	.	-	0	Dbxref=NCBI_GP:ACE96019.1;ID=cds1;Name=ACE96019.1;Note=similar to Bacillus phage PZA unknown protein product of ORF0 NP_040723;Parent=gene1;gbkey=CDS;gene=0.4;product=hypothetical protein;protein_id=ACE96019.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	519	524	.	-	.	ID=cds1.rbs-0;Parent=gene1
+EU771092.1	Genbank	gene	527	715	.	-	.	ID=gene2;Name=0.6;gbkey=Gene;gene=0.6;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	527	703	.	-	0	Dbxref=NCBI_GP:ACE96020.1;ID=cds2;Name=ACE96020.1;Note=similar to NP_040722.1 gene 1A product Bacillus phage PZA;Parent=gene2;gbkey=CDS;gene=0.6;product=hypothetical protein;protein_id=ACE96020.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	713	715	.	-	.	ID=cds2.rbs-0;Parent=gene2
+EU771092.1	Genbank	gene	700	883	.	-	.	ID=gene3;Name=0.8;gbkey=Gene;gene=0.8;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	700	870	.	-	0	Dbxref=NCBI_GP:ACE96021.1;ID=cds3;Name=ACE96021.1;Note=similar to NP_040721.1 gene 1B product Bacillus phage PZA;Parent=gene3;gbkey=CDS;gene=0.8;product=hypothetical protein;protein_id=ACE96021.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	878	883	.	-	.	ID=cds3.rbs-0;Parent=gene3
+EU771092.1	Genbank	gene	857	1131	.	-	.	ID=gene4;Name=1;gbkey=Gene;gene=1;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	857	1117	.	-	0	Dbxref=NCBI_GP:ACE96022.1;ID=cds4;Name=ACE96022.1;Note=similar to NP_040720.1 gene 1C product Bacillus phage PZA%3B partially dispensible;Parent=gene4;gbkey=CDS;gene=1;product=hypothetical protein;protein_id=ACE96022.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	1127	1131	.	-	.	ID=cds4.rbs-0;Parent=gene4
+EU771092.1	Genbank	gene	1145	2875	.	-	.	ID=gene5;Name=2;gbkey=Gene;gene=2;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	1145	2863	.	-	0	Dbxref=NCBI_GP:ACE96023.1;ID=cds5;Name=ACE96023.1;Note=similar to NP_040719.1 gene 2 product Bacillus phage PZA%3B NP_690635.1 DNA polymerase Bacillus phage B103%2C NP_073685.1 DNA polymerase Bacillus phage GA-1;Parent=gene5;gbkey=CDS;gene=2;product=DNA polymerase;protein_id=ACE96023.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	2872	2875	.	-	.	ID=cds5.rbs-0;Parent=gene5
+EU771092.1	Genbank	gene	2886	3701	.	-	.	ID=gene6;Name=3;gbkey=Gene;gene=3;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	2886	3686	.	-	0	Dbxref=NCBI_GP:ACE96024.1;ID=cds6;Name=ACE96024.1;Note=similar to NP_040718.1 gene 3 product Bacillus phage PZA%2C NP_690636.1 terminal protein Bacillus phage B103;Parent=gene6;gbkey=CDS;gene=3;product=terminal protein;protein_id=ACE96024.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	3697	3701	.	-	.	ID=cds6.rbs-0;Parent=gene6
+EU771092.1	Genbank	gene	3575	3967	.	-	.	ID=gene7;Name=4;gbkey=Gene;gene=4;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	3575	3952	.	-	0	Dbxref=NCBI_GP:ACE96025.1;ID=cds7;Name=ACE96025.1;Note=similar to NP_040717.1 gene 4 product Bacillus phage PZA%2C NP_690637.1 late genes activator Bacillus phage B103;Parent=gene7;gbkey=CDS;gene=4;product=late gene transcriptional activator;protein_id=ACE96025.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	3962	3967	.	-	.	ID=cds7.rbs-0;Parent=gene7
+EU771092.1	Genbank	gene	3971	4358	.	-	.	ID=gene8;Name=5;gbkey=Gene;gene=5;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	3971	4345	.	-	0	Dbxref=NCBI_GP:ACE96026.1;ID=cds8;Name=ACE96026.1;Note=SSB%3B similar to NP_040716.1 gene 5A product Bacillus phage PZA%2C NP_690638.1 SSB Bacillus phage B103;Parent=gene8;gbkey=CDS;gene=5;product=single stranded DNA-binding protein;protein_id=ACE96026.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	4355	4358	.	-	.	ID=cds8.rbs-0;Parent=gene8
+EU771092.1	Genbank	gene	4410	4620	.	-	.	ID=gene9;Name=5.5;gbkey=Gene;gene=5.5;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	4410	4610	.	-	0	Dbxref=NCBI_GP:ACE96027.1;ID=cds9;Name=ACE96027.1;Note=similar to NP_040715.1 unknown protein Bacillus phage PZA;Parent=gene9;gbkey=CDS;gene=5.5;product=hypothetical protein;protein_id=ACE96027.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	4617	4620	.	-	.	ID=cds9.rbs-0;Parent=gene9
+EU771092.1	Genbank	gene	4607	4931	.	-	.	ID=gene10;Name=6;gbkey=Gene;gene=6;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	4607	4921	.	-	0	Dbxref=NCBI_GP:ACE96028.1;ID=cds10;Name=ACE96028.1;Note=similar to NP_040714.1 gene 6 product Bacillus phage PZA;Parent=gene10;gbkey=CDS;gene=6;product=double-stranded DNA-binding protein p6;protein_id=ACE96028.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	4929	4931	.	-	.	ID=cds10.rbs-0;Parent=gene10
+EU771092.1	Genbank	promoter	4978	5006	.	-	.	ID=id3;Note=promoter A2c%3B early transcription;gbkey=promoter
+EU771092.1	Genbank	protein_binding_site	5095	5121	.	+	.	ID=id4;Note=activates transcription of late genes from A3 promoter%3B represses transcription fom early promoter A2c;gbkey=protein_bind
+EU771092.1	Genbank	gene	5210	5518	.	+	.	ID=gene11;Name=7;gbkey=Gene;gene=7;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	5222	5518	.	+	0	Dbxref=NCBI_GP:ACE96029.1;ID=cds11;Name=ACE96029.1;Note=similar to NP_040724.1 head morphogenesis protein Bacillus phage PZA%2C NP_690640.1 head morphogenesis protein Bacillus phage B103;Parent=gene11;gbkey=CDS;gene=7;product=scaffolding protein;protein_id=ACE96029.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	5210	5214	.	+	.	ID=cds11.rbs-0;Parent=gene11
+EU771092.1	Genbank	gene	5535	6895	.	+	.	ID=gene12;Name=8;gbkey=Gene;gene=8;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	5549	6895	.	+	0	Dbxref=NCBI_GP:ACE96030.1;ID=cds12;Name=ACE96030.1;Note=similar to NP_040725.1 major head protein Bacillus phage PZA%2C NP_690641.1 major head protein Bacillus phage B103;Parent=gene12;gbkey=CDS;gene=8;product=major head protein;protein_id=ACE96030.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	5535	5539	.	+	.	ID=cds12.rbs-0;Parent=gene12
+EU771092.1	Genbank	gene	6880	7737	.	+	.	ID=gene13;Name=8.5;gbkey=Gene;gene=8.5;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	6895	7737	.	+	0	Dbxref=NCBI_GP:ACE96031.1;ID=cds13;Name=ACE96031.1;Note=similar to NP_040726.1 head fiber protein Bacillus phage PZA;Parent=gene13;gbkey=CDS;gene=8.5;product=head fiber protein;protein_id=ACE96031.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	6880	6883	.	+	.	ID=cds13.rbs-0;Parent=gene13
+EU771092.1	Genbank	gene	7737	9550	.	+	.	ID=gene14;Name=9;gbkey=Gene;gene=9;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	7751	9550	.	+	0	Dbxref=NCBI_GP:ACE96032.1;ID=cds14;Name=ACE96032.1;Note=similar to NP_040727.1 tail protein Bacillus phage PZA 7%2C NP_690643.1 tail protein Bacillus phage B103;Parent=gene14;gbkey=CDS;gene=9;product=tail protein;protein_id=ACE96032.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	7737	7740	.	+	.	ID=cds14.rbs-0;Parent=gene14
+EU771092.1	Genbank	gene	9544	10484	.	+	.	ID=gene15;Name=10;gbkey=Gene;gene=10;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	9555	10484	.	+	0	Dbxref=NCBI_GP:ACE96033.1;ID=cds15;Name=ACE96033.1;Note=similar to NP_040728.1 upper collar protein Bacillus phage PZA%2C NP_690644.1 upper collar protein Bacillus phage B103;Parent=gene15;gbkey=CDS;gene=10;product=connector;protein_id=ACE96033.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	9544	9548	.	+	.	ID=cds15.rbs-0;Parent=gene15
+EU771092.1	Genbank	gene	10463	11358	.	+	.	ID=gene16;Name=11;gbkey=Gene;gene=11;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	10477	11358	.	+	0	Dbxref=NCBI_GP:ACE96034.1;ID=cds16;Name=ACE96034.1;Note=similar to NP_040729.1 lower collar protein Bacillus phage PZA%2C NP_690645.1 lower collar protein Bacillus phage B103;Parent=gene16;gbkey=CDS;gene=11;product=lower collar protein;protein_id=ACE96034.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	10463	10465	.	+	.	ID=cds16.rbs-0;Parent=gene16
+EU771092.1	Genbank	gene	11358	13935	.	+	.	ID=gene17;Name=12;gbkey=Gene;gene=12;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	11371	13935	.	+	0	Dbxref=NCBI_GP:ACE96035.1;ID=cds17;Name=ACE96035.1;Note=similar to NP_040730.1 pre-neck appendage protein Bacillus phage PZA%2C NP_690646.1 pre-neck appendage protein Bacillus phage B103;Parent=gene17;gbkey=CDS;gene=12;product=preneck appendage protein;protein_id=ACE96035.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	11358	11363	.	+	.	ID=cds17.rbs-0;Parent=gene17
+EU771092.1	Genbank	gene	13934	15041	.	+	.	ID=gene18;Name=13;gbkey=Gene;gene=13;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	13947	15041	.	+	0	Dbxref=NCBI_GP:ACE96036.1;ID=cds18;Name=ACE96036.1;Note=similar to NP_040731.1 morphogenesis protein A Bacillus phage PZA%2C NP_690647.1 morphogenesis protein Bacillus phage B103;Parent=gene18;gbkey=CDS;gene=13;product=morphogenesis protein;protein_id=ACE96036.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	13934	13938	.	+	.	ID=cds18.rbs-0;Parent=gene18
+EU771092.1	Genbank	gene	15045	15455	.	+	.	ID=gene19;Name=14;gbkey=Gene;gene=14;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	15060	15455	.	+	0	Dbxref=NCBI_GP:ACE96037.1;ID=cds19;Name=ACE96037.1;Note=similar to NP_040732.1 lysis protein Bacillus phage PZA%3B putative dual start motif;Parent=gene19;gbkey=CDS;gene=14;product=holin;protein_id=ACE96037.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	15045	15049	.	+	.	ID=cds19.rbs-0;Parent=gene19
+EU771092.1	Genbank	gene	15442	16233	.	+	.	ID=gene20;Name=15;gbkey=Gene;gene=15;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	15457	16233	.	+	0	Dbxref=NCBI_GP:ACE96038.1;ID=cds20;Name=ACE96038.1;Note=similar to NP_040733.1 morphogenesis protein B Bacillus phage PZA%2C AAK40280.1 endolysin Bacillus amyloliquefaciens phage Morita2001%2C NP_690649.1 morphogenesis protein Bacillus phage B103%3B pfam00959%2C phage_lysozyme;Parent=gene20;gbkey=CDS;gene=15;product=peptidoglycan hydrolase;protein_id=ACE96038.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	15442	15447	.	+	.	ID=cds20.rbs-0;Parent=gene20
+EU771092.1	Genbank	gene	16232	17242	.	+	.	ID=gene21;Name=16;gbkey=Gene;gene=16;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	16244	17242	.	+	0	Dbxref=NCBI_GP:ACE96039.1;ID=cds21;Name=ACE96039.1;Note=similar to NP_040734.1 morphogenesis protein C Bacillus phage PZA%2C NP_690650.1 encapsidation protein Bacillus phage B103%3B pfam05894%2C Podovirus_Gp16%2C podovirus DNA encapsidation protein %28Gp16%29;Parent=gene21;gbkey=CDS;gene=16;product=ATPase%2C DNA encapsidation protein;protein_id=ACE96039.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	16232	16236	.	+	.	ID=cds21.rbs-0;Parent=gene21
+EU771092.1	Genbank	terminator	17262	17295	.	-	.	ID=id5;Note=Rho-independent terminator;gbkey=terminator
+EU771092.1	Genbank	terminator	17271	17301	.	+	.	ID=id6;Note=Rho-independent terminator;gbkey=terminator
+EU771092.1	Genbank	gene	17383	17558	.	-	.	ID=gene22;Name=16.6;gbkey=Gene;gene=16.6;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	17383	17547	.	-	0	Dbxref=NCBI_GP:ACE96040.1;ID=cds22;Name=ACE96040.1;Note=similar to NP_040736.1 gene 16.6 product Bacillus phage PZA;Parent=gene22;gbkey=CDS;gene=16.6;product=hypothetical early protein;protein_id=ACE96040.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	17555	17558	.	-	.	ID=cds22.rbs-0;Parent=gene22
+EU771092.1	Genbank	gene	17544	17946	.	-	.	ID=gene23;Name=16.7;gbkey=Gene;gene=16.7;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	17544	17936	.	-	0	Dbxref=NCBI_GP:ACE96041.1;ID=cds23;Name=ACE96041.1;Note=similar to NP_040737.1 putative replication organizer protein P16.7 Bacillus phage PZA;Parent=gene23;gbkey=CDS;gene=16.7;product=hypothetical early protein;protein_id=ACE96041.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	17942	17946	.	-	.	ID=cds23.rbs-0;Parent=gene23
+EU771092.1	Genbank	gene	17938	18255	.	-	.	ID=gene24;Name=16.8;gbkey=Gene;gene=16.8;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	17938	18255	.	-	0	Dbxref=NCBI_GP:ACE96042.1;ID=cds24;Name=ACE96042.1;Note=similar to NP_040738.1 unknown protein Bacillus phage PZA;Parent=gene24;gbkey=CDS;gene=16.8;product=hypothetical early protein;protein_id=ACE96042.1;transl_table=11
+EU771092.1	Genbank	gene	18252	18593	.	-	.	ID=gene25;Name=16.9;gbkey=Gene;gene=16.9;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	18252	18578	.	-	0	Dbxref=NCBI_GP:ACE96043.1;ID=cds25;Name=ACE96043.1;Note=similar to NP_040739.1 gene 16.9 product Bacillus phage PZA;Parent=gene25;gbkey=CDS;gene=16.9;product=hypothetical early protein;protein_id=ACE96043.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	18589	18593	.	-	.	ID=cds25.rbs-0;Parent=gene25
+EU771092.1	Genbank	gene	18580	19094	.	-	.	ID=gene26;Name=17;gbkey=Gene;gene=17;gene_biotype=protein_coding
+EU771092.1	Genbank	CDS	18580	19080	.	-	0	Dbxref=NCBI_GP:ACE96044.1;ID=cds26;Name=ACE96044.1;Note=similar to NP_040740.1 gene 17 product Bacillus phage PZA%2C VG17_BPPH5 early protein GP17 Bacillus phage phi15;Parent=gene26;gbkey=CDS;gene=17;product=hypothetical early protein;protein_id=ACE96044.1;transl_table=11
+EU771092.1	CPT_ShineFind	Shine_Dalgarno_sequence	19089	19094	.	-	.	ID=cds26.rbs-0;Parent=gene26
+EU771092.1	Genbank	promoter	19124	19158	.	-	.	ID=id7;Note=early promoter C2%3B activity repressed by protein p6;gbkey=promoter
+EU771092.1	Genbank	long_terminal_repeat	19277	19282	.	-	.	ID=id8;Note=right terminal inverted repeat unit;gbkey=LTR
