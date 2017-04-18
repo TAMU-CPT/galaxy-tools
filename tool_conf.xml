@@ -251,4 +251,5 @@
   <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/error.xml"/>
   <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/env.xml"/>
   <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/hostname.xml"/>
+  <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/test.xml"/>
 </toolbox>
