@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.admin.metadataFetch" name="Metadata" version="1.0">
+  <description></description>
+  <command detect_errors="aggressive"><![CDATA[
+
+echo "==tags==" >> $output;
+#for tag in $input.tags:
+	echo "${tag.user_tname}" >> $output;
+#end for
+
+echo "==meta1==" >> $output;
+echo "id: ${input.id}" >> $output;
+echo "hid: ${input.hid}" >> $output;
+echo "history_id: ${input.history_id}" >> $output;
+echo "size = ${input.get_size(nice_size=True)}" >> $output;
+echo "datatype.edam_format = ${input.datatype.edam_format}" >> $output;
+echo "datatype.fileext = ${input.datatype.file_ext}" >> $output;
+echo "==meta2==" >> $output;
+#for (key, value) in $input.get_metadata().items():
+	echo "${key} = ${value}" >> $output;
+#end for
+
+echo "==history==" >> $output;
+echo "history.user = ${input.history.user.email}" >> $output;
+echo "history.user_id = ${input.history.user_id}" >> $output;
+echo "history.get_display_name = ${input.history.get_display_name()}" >> $output;
+
+echo "==tool==" >> $output;
+echo "tool_id = ${input.creating_job.tool_id}" >> $output;
+echo "tool_version = ${input.creating_job.tool_version}" >> $output;
+echo "job_runner_name = ${input.creating_job.job_runner_name}" >> $output;
+echo "handler = ${input.creating_job.handler}" >> $output;
+
+echo "==trans==" >> $output;
+#for prop in dir(trans):
+echo "${prop}" >> output;
+#end for
+
+]]></command>
+  <inputs>
+		<param label="Data" name="input" type="data" />
+  </inputs>
+  <outputs>
+    <data format="txt" name="output"/>
+  </outputs>
+    <citations>
+    </citations>
+</tool>

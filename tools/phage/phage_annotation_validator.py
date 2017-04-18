@@ -101,7 +101,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
             # be trying to access a location outside of the length of the
             # genome, which would be bad.
             (start, end) = __ensure_location_in_bounds(start=start, end=end,
-                                                       parent_length=record.__len__)
+                                                       parent_length=len(record))
             # Temporary feature to extract sequence
             tmp = SeqFeature(FeatureLocation(start, end, strand=gene.strand),
                              type='domain')
@@ -170,7 +170,7 @@ def require_sd(data, record, chrom_start, sd_min, sd_max):
             end = chrom_start + putative_gene[1] + sd_max
 
         (start, end) = __ensure_location_in_bounds(start=start, end=end,
-                                                   parent_length=record.__len__)
+                                                   parent_length=len(record))
         tmp = SeqFeature(FeatureLocation(
             start, end, strand=putative_gene[2]), type='domain')
         # Get the sequence
