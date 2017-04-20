@@ -15,7 +15,7 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta_genome, "fasta"))
 
     CASES = [
-        re.compile('^.{%s,%s}[ILMFTV][^REKD][GAS]C' % (lipobox_mindist, lipobox_maxdist)),
+        re.compile('^.{%s,%s}[ACGSILMFTV][^REKD][GASNL]C' % (lipobox_mindist, lipobox_maxdist)),
         re.compile('^.{%s,%s}AWAC' % (lipobox_mindist, lipobox_maxdist)),
     ]
 
@@ -31,7 +31,11 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
             # Someday this will bite me in the arse.
             cds = cdss[0]
 
-            tmpseq = str(cds.extract(record.seq).translate(table=11, cds=True)).replace("*", "")
+            try:
+                tmpseq = str(cds.extract(record.seq).translate(table=11, cds=True)).replace("*", "")
+            except:
+                continue
+
             for case in CASES:
                 m = case.search(tmpseq)
                 if m:
