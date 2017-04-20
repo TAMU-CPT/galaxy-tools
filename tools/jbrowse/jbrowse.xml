@@ -1,4 +1,4 @@
-<tool id="jbrowse-cpt" name="JBrowse 0.6.2+cpt" version="0.6.2+cpt">
+<tool id="jbrowse-cpt" name="JBrowse 0.6.3+cpt" version="0.6.3+cpt">
   <description>genome browser</description>
   <macros>
     <import>macros.xml</import>
@@ -74,7 +74,29 @@ $trackxml &&
         <genomes>
             #if str($action.genomes) != "None":
             #for $genome in $action.genomes:
-                <genome>$genome</genome>
+                <genome path="$genome">
+                  <metadata>
+                    <dataset id="${__app__.security.encode_id($genome.id)}" hid="${genome.hid}"
+                        size="${genome.get_size(nice_size=True)}"
+                        edam_format="${genome.datatype.edam_format}"
+                        file_ext="${genome.datatype.file_ext}" />
+                    <history id="${__app__.security.encode_id($genome.history_id)}"
+                        user_email="${genome.history.user.email}"
+                        user_id="${genome.history.user_id}"
+                        display_name="${genome.history.get_display_name()}"/>
+                    <metadata
+                        #for (key, value) in $genome.get_metadata().items():
+                        #if "_types" not in $key:
+                        ${key}="${value}"
+                        #end if
+                        #end for
+                        />
+                    <tool
+                        tool_id="${genome.creating_job.tool_id}"
+                        tool_version="${genome.creating_job.tool_version}"
+                        />
+                  </metadata>
+                </genome>
             #end for
             #end if
         </genomes>
@@ -102,7 +124,29 @@ $trackxml &&
         <track cat="${tg.category}" format="${track.data_format.data_format_select}" visibility="${track.data_format.track_visibility}">
             <files>
               #for $dataset in $track.data_format.annotation:
-              <trackFile path="${dataset}" ext="${dataset.ext}" label="${dataset.element_identifier}" />
+              <trackFile path="${dataset}" ext="${dataset.ext}" label="${dataset.element_identifier}">
+                <metadata>
+                  <dataset id="${__app__.security.encode_id($dataset.id)}" hid="${dataset.hid}"
+                      size="${dataset.get_size(nice_size=True)}"
+                      edam_format="${dataset.datatype.edam_format}"
+                      file_ext="${dataset.datatype.file_ext}" />
+                  <history id="${__app__.security.encode_id($dataset.history_id)}"
+                      user_email="${dataset.history.user.email}"
+                      user_id="${dataset.history.user_id}"
+                      display_name="${dataset.history.get_display_name()}"/>
+                  <metadata
+                    #for (key, value) in $dataset.get_metadata().items():
+                    #if "_types" not in $key:
+                      ${key}="${value}"
+                    #end if
+                    #end for
+                      />
+                  <tool
+                      tool_id="${dataset.creating_job.tool_id}"
+                      tool_version="${dataset.creating_job.tool_version}"
+                      />
+                </metadata>
+              </trackFile>
               #end for
             </files>
 
@@ -223,6 +267,12 @@ $trackxml &&
         #end for
         #end for
     </tracks>
+    <plugins
+        ComboTrackSelector="${plugins.ComboTrackSelector}"
+        Bookmarks="${plugins.Bookmarks}"
+        GCContent="${plugins.GCContent}"
+        theme="${plugins.theme}"
+        />
 </root>
 ]]>
       </configfile>
@@ -277,7 +327,6 @@ $trackxml &&
       <option value="24">24. Pterobranchia Mitochondrial Code</option>
       <option value="25">25. Candidate Division SR1 and Gracilibacteria Code</option>
    </param>
-
     <repeat name="track_groups" title="Track Group">
         <param label="Track Category"
                name="category"
@@ -422,6 +471,25 @@ $trackxml &&
     </repeat>
 
     <expand macro="general_options" />
+    <section name="plugins" title="Plugins" expanded="false">
+        <param
+            label="Combo Track Selector" name="ComboTrackSelector" truevalue="True" falsevalue="" type="boolean"
+            help="ComboTrackSelector is a plugin to allow the co-existence of the Hierarchical and Faceted Track selectors in JBrowse, built for/by the Arabidopsis Information Portal (Araport) project" />
+        <param
+            label="Bookmarks" name="Bookmarks" truevalue="True" falsevalue="" type="boolean"
+            help="JBrowse plugin allowing users to manage a persistent list of bookmarks kept in localstorage" />
+
+        <param
+            label="GC Content" name="GCContent" truevalue="True" falsevalue="" type="boolean"
+            help="A JBrowse plugin for plotting GC Content and GC Skew. The plugin consists of a storeClass that automatically calculates the percentage of G/C bases in a region, a track type that derives from the Wiggle XY or density types, and a dialog box to adjust the sliding window size, window step size, and the calculation mode (content or skew)." />
+
+        <param type="select" label="JBrowse Theme" name="theme">
+            <option value="" selected="True">Default</option>
+            <option value="Minimalist">Minimalist</option>
+            <option value="Dark">Dark</option>
+        </param>
+    </section>
+
     <param type="hidden" name="uglyTestingHack" value="" />
   </inputs>
   <outputs>
