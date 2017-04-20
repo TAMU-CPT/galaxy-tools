@@ -65,7 +65,6 @@ if __name__ == '__main__':
             if evalue <= top_hits[qseq][fn][0] and dice >= top_hits[qseq][fn][2]:
                 top_hits[qseq][fn] = (evalue, sseq, dice)
 
-
     sys.stdout.write('# Query Feature\tLocation\t')
     sys.stdout.write('\t'.join(['%s\tevalue\tdice' % x for x in blast_names]))
     sys.stdout.write('\n')
