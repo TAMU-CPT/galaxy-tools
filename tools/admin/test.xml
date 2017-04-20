@@ -9,9 +9,9 @@ echo "==tags==" >> $output;
 #end for
 
 echo "==meta1==" >> $output;
-echo "id: ${input.id}" >> $output;
+echo "id: ${__app__.security.encode_id($input.id)}" >> $output;
 echo "hid: ${input.hid}" >> $output;
-echo "history_id: ${input.history_id}" >> $output;
+echo "history_id: ${__app__.security.encode_id($input.history_id)}" >> $output;
 echo "size = ${input.get_size(nice_size=True)}" >> $output;
 echo "datatype.edam_format = ${input.datatype.edam_format}" >> $output;
 echo "datatype.fileext = ${input.datatype.file_ext}" >> $output;
@@ -32,9 +32,16 @@ echo "job_runner_name = ${input.creating_job.job_runner_name}" >> $output;
 echo "handler = ${input.creating_job.handler}" >> $output;
 
 echo "==trans==" >> $output;
-#for prop in dir(trans):
-echo "${prop}" >> output;
-#end for
+echo "Infra URL: ${__app__.config.galaxy_infrastructure_url}"
+echo "==builtin==" >> $output;
+echo "__tool_directory__ = ${__tool_directory__}" >> $output;
+echo "__new_file_path__ = ${__new_file_path__}" >> $output;
+echo "__tool_data_path__ = ${__tool_data_path__}" >> $output;
+echo "__root_dir__ = ${__root_dir__}" >> $output;
+echo "__datatypes_config__ = ${__datatypes_config__}" >> $output;
+echo "__user_id__ = ${__user_id__}" >> $output;
+echo "__user_email__ = ${__user_email__}" >> $output;
+echo "__app__ = ${__app__}" >> $output;
 
 ]]></command>
   <inputs>
