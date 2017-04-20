@@ -795,6 +795,7 @@ if __name__ == '__main__':
         extra_data['plugins_python'].append('ComboTrackSelector')
         extra_data['plugins'].append({
             'location': 'https://cdn.rawgit.com/TAMU-CPT/ComboTrackSelector/07f4a2d3434e7c8fd1c4cfa24c93b1e07c03029f/',
+            'icon' : 'https://pbs.twimg.com/profile_images/580742252043100161/x64IwBFv_normal.png',
             'name': 'ComboTrackSelector'
         })
 
