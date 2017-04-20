@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from Bio import SeqIO
+import sys
 from xmfa import parse_xmfa, percent_identity
 import argparse
 import logging
@@ -33,7 +34,7 @@ def total_similarity(xmfa_file, sequences=None, dice=False):
     lcbs = parse_xmfa(xmfa_file)
 
     # make a matrix based on number of sequences
-    table = [[0 for x in range(len(label_convert))] for y in range(len(label_convert))]
+    table = {}
 
     for lcb in lcbs:
         # ignore LCBs containing only one sequence
@@ -45,30 +46,47 @@ def total_similarity(xmfa_file, sequences=None, dice=False):
         for permutation in compare_seqs:
             (i, j) = permutation
             similarity = percent_identity(lcb[i]['seq'], lcb[j]['seq'])
+
+            i_name = label_convert[lcb[i]['id']]['id']
+            j_name = label_convert[lcb[j]['id']]['id']
             # find length of sequence in LCB
             length_seq_lcb = lcb[i]['end'] - (lcb[i]['start'] - 1)
             # populate table with normalized similarity value based on length_seq_lcb
-            table[int(lcb[i]['id']) - 1][int(lcb[j]['id']) - 1] += length_seq_lcb * similarity
+            if (i_name, j_name) not in table:
+                table[(i_name, j_name)] = 0
+            table[(i_name, j_name)] += length_seq_lcb * similarity
 
     # finalize total percent similarity by dividing by length of parent sequence
-    for i in range(len(label_convert)):
-        for j in range(len(label_convert)):
-            if dice:
-                table[i][j] = 2 * table[i][j] / (label_convert[str(i + 1)]['len'] + label_convert[str(j + 1)]['len'])
+    for i in label_convert.keys():
+        for j in label_convert.keys():
+            i_name = label_convert[i]['id']
+            j_name = label_convert[j]['id']
+            if (i_name, j_name) in table:
+                if dice:
+                    table[(i_name, j_name)] = 2 * table[(i_name, j_name)] / (label_convert[i]['len'] + label_convert[j]['len'])
+                else:
+                    table[(i_name, j_name)] = table[(i_name, j_name)] / label_convert[i]['len']
             else:
-                table[i][j] = table[i][j] / label_convert[str(i + 1)]['len']
+                table[(i_name, j_name)] = 0
 
-    # insert 1 for comparisons between the same sequence
-    for i in range(len(label_convert)):
-        table[i][i] = 100
+            if i_name == j_name:
+                table[(i_name, j_name)] = 100
 
     # print table
     names = []
-    for i in range(len(label_convert)):
-        names.append(sorted(label_convert.values())[i]['id'])
-    print '\t' + '\t'.join(names)
-    for row in table:
-        print names[table.index(row)] + '\t' + '\t'.join(map(str, row))
+    table_keys = sorted(label_convert.keys())
+
+    for i in table_keys:
+        names.append(label_convert[i]['id'])
+
+    sys.stdout.write('\t' + '\t'.join(names) + '\n')
+    for j in table_keys:
+        j_key = label_convert[j]['id']
+        sys.stdout.write(j_key)
+        for i in table_keys:
+            i_key = label_convert[i]['id']
+            sys.stdout.write('\t%0.2f' % table[(i_key, j_key)])
+        sys.stdout.write('\n')
 
 
 if __name__ == '__main__':
