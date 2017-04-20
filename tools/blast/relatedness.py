@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import sys
 import argparse
-import re
 import json
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -65,7 +64,7 @@ def important_only(blast, split_identifiers):
             # 08 End of alignment in query
             # 09 Start of alignment in subject (database hit)
             # 10 End of alignment in subject (database hit)
-            data[10], # 11 Expectation value (E-value)
+            data[10],  # 11 Expectation value (E-value)
             # 12 Bit score
             # 13 All subject Seq-id(s), separated by a ';'
             # 14 Raw score
@@ -79,8 +78,8 @@ def important_only(blast, split_identifiers):
             # 22 Aligned part of subject sequence
             # 23 Query sequence length
             # 24 Subject sequence length
-            split_identifiers(data[1], data[24]), # 25 All subject title(s), separated by a '<>'
-            data[25] # 26 dice
+            split_identifiers(data[1], data[24]),  # 25 All subject title(s), separated by a '<>'
+            data[25]  # 26 dice
         ]
 
 

@@ -808,8 +808,6 @@ def evaluate_and_report(annotations, genome, gff3=None,
     gff3_qc_record.features = []
     gff3_qc_features = []
 
-
-
     log.info("Locating missing RBSs")
     # mb_any = "did they annotate ANY rbss? if so, take off from score."
     mb_good, mb_bad, mb_results, mb_annotations, mb_any = missing_rbs(
@@ -904,7 +902,7 @@ def evaluate_and_report(annotations, genome, gff3=None,
         },
         'score': score,
         'encouragement': get_encouragement(score),
-        'genome_overview' : genome_overview(record),
+        'genome_overview': genome_overview(record),
 
         'rbss_annotated': mb_any,
         'missing_rbs': mb_results,

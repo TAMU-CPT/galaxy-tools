@@ -10,7 +10,7 @@ from relatedness import parse_blast, with_dice
 def important_only(blast):
     for data in blast:
         yield [
-            data[0], # 01 Query Seq-id (ID of your sequence)
+            data[0],  # 01 Query Seq-id (ID of your sequence)
             # 02 Subject Seq-id (ID of the database hit)
             # 03 Percentage of identical matches
             # 04 Alignment length
@@ -20,7 +20,7 @@ def important_only(blast):
             # 08 End of alignment in query
             # 09 Start of alignment in subject (database hit)
             # 10 End of alignment in subject (database hit)
-            float(data[10]), # 11 Expectation value (E-value)
+            float(data[10]),  # 11 Expectation value (E-value)
             # 12 Bit score
             # 13 All subject Seq-id(s), separated by a ';'
             zip(
@@ -39,7 +39,7 @@ def important_only(blast):
             # 23 Query sequence length
             # 24 Subject sequence length
             # 25 All subject title(s), separated by a '<>'
-            data[25] # 26 dice
+            data[25]  # 26 dice
         ]
 
 

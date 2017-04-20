@@ -45,7 +45,7 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False, include_seq=F
                 "hit_titles": hit.title.split(' >'),
             }
             top_feature = SeqFeature(
-                FeatureLocation(1, 1000000000), # TODO.
+                FeatureLocation(1, 1000000000),  # TODO.
                 type='match', strand=0,
                 qualifiers=qualifiers,
             )

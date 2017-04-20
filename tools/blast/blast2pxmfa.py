@@ -203,7 +203,7 @@ def blast2pxmfa(blast, fasta, gff3, output, genomic=False):
         sortedAligned = sorted(aligned_seqs, key=lambda x: sortIndexForFeatId(x.id))
         # print(sortedCluster, [x.id for x in sortedAligned])
 
-        #Pre-check the asserts.
+        # Pre-check the asserts.
         goodToGo = all([element == aligned_seq.id for (element, aligned_seq) in zip(sortedCluster, sortedAligned)])
         if not goodToGo:
             logging.info("Skipping one grouping: %s != %s", ','.join(sortedCluster), ','.join([x.id for x in sortedAligned]))

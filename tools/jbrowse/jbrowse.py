@@ -658,10 +658,10 @@ class JbrowseConnector(object):
 
         if 'GCContent' in data['plugins_python']:
             self._add_track_json({
-                "storeClass" : "JBrowse/Store/SeqFeature/SequenceChunks",
+                "storeClass": "JBrowse/Store/SeqFeature/SequenceChunks",
                 "type": "GCContent/View/Track/GCContentXY",
-                "label" : "GCContentXY",
-                "urlTemplate" : "seq/{refseq_dirpath}/{refseq}-",
+                "label": "GCContentXY",
+                "urlTemplate": "seq/{refseq_dirpath}/{refseq}-",
                 "bicolor_pivot": 0.5
                 # TODO: Expose params for everyone.
             })
@@ -670,8 +670,8 @@ class JbrowseConnector(object):
             with open(os.path.join(self.outdir, 'data', 'trackList.json'), 'r') as handle:
                 trackListJson = json.load(handle)
                 trackListJson.update({
-                    "trackSelector" : {
-                        "renameFacets" : {
+                    "trackSelector": {
+                        "renameFacets": {
                             "tool_tool": "Tool ID",
                             "tool_tool_id": "Tool ID",
                             "tool_tool_version": "Tool Version",
@@ -681,7 +681,7 @@ class JbrowseConnector(object):
                             "history_user_email": "Owner",
                             "metadata_dbkey": "Dbkey",
                         },
-                        "displayColumns" : [
+                        "displayColumns": [
                             "key",
                             "tool_tool",
                             "tool_tool_version",
@@ -691,12 +691,12 @@ class JbrowseConnector(object):
                             "history_user_email",
                             "metadata_dbkey",
                         ],
-                        "type" : "Faceted",
+                        "type": "Faceted",
                         "title": ["Galaxy Metadata"],
-                        "escapeHTMLInData" : False
+                        "escapeHTMLInData": False
                     },
-                    "trackMetadata" : {
-                        "indexFacets" : [
+                    "trackMetadata": {
+                        "indexFacets": [
                             "category",
                             "key",
                             "tool_tool_id",
@@ -795,7 +795,7 @@ if __name__ == '__main__':
         extra_data['plugins_python'].append('ComboTrackSelector')
         extra_data['plugins'].append({
             'location': 'https://cdn.rawgit.com/TAMU-CPT/ComboTrackSelector/07f4a2d3434e7c8fd1c4cfa24c93b1e07c03029f/',
-            'icon' : 'https://pbs.twimg.com/profile_images/580742252043100161/x64IwBFv_normal.png',
+            'icon': 'https://pbs.twimg.com/profile_images/580742252043100161/x64IwBFv_normal.png',
             'name': 'ComboTrackSelector'
         })
 

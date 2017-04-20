@@ -1,5 +1,4 @@
 from Bio import SeqIO
-import tempfile
 import argparse
 import json
 import os
@@ -72,6 +71,7 @@ def get_fasta_ids(sequences):
     for seq in SeqIO.parse(sequences, 'fasta'):
         ids.append(seq.id)
     return ids
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='parse xmfa file')
