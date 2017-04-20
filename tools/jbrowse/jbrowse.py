@@ -810,7 +810,8 @@ if __name__ == '__main__':
             'name': 'DarkTheme'
         })
 
-    GALAXY_INFRASTRUCTURE_URL = root.find('metadata/galaxyUrl').text
+    # GALAXY_INFRASTRUCTURE_URL = root.find('metadata/galaxyUrl').text
+    GALAXY_INFRASTRUCTURE_URL = 'https://cpt.tamu.edu/galaxy/'
     for track in root.findall('tracks/track'):
         track_conf = {}
         track_conf['trackfiles'] = []
