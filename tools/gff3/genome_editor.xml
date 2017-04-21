@@ -28,8 +28,8 @@ python $__tool_directory__/genome_editor.py
       <expand macro="input/gff3+fasta" />
       <param label="New ID" name="new_id" type="text" help="New ID for the sequence to uniquely identify it from the previous build of the sequence. E.g. append Miro could become Miro.2 or Miro.v2 "/>
       <repeat name="changes" title="Sequence Component Selections">
-        <param label="Start" name="start" type="int" minimum="0"/>
-        <param label="End" name="end" type="int" minimum="0"/>
+        <param label="Start" name="start" type="integer" min="0"/>
+        <param label="End" name="end" type="integer" min="0"/>
         <param label="Reverse + Complement" name="revcom" type="boolean" truevalue="-" falsevalue="+" />
       </repeat>
   </inputs>
