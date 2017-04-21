@@ -53,6 +53,7 @@ def mutate(gff3, fasta, changes, new_id):
         new_record.features += tmp_req.features
     yield new_record, chain
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('gff3', type=argparse.FileType("r"), help='Annotations')
