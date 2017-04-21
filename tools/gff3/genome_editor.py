@@ -29,7 +29,7 @@ def mutate(gff3, fasta, changes, new_id):
     chain = []
     for change in changes:
         (start, end, strand) = change.split(',')
-        start = int(start)
+        start = int(start) - 1
         end = int(end)
         if strand == '+':
             tmp_req = rec[start:end]

@@ -43,7 +43,31 @@ python $__tool_directory__/genome_editor.py
   <help><![CDATA[
 **What it does**
 
-Allows for "editing" of a genome. Selecting regions of a genome and stitching them together.
+Allows for "editing" of a genome. Selecting regions of a genome and stitching them together. E.g. for an input sequence like:
+
+	>Miro
+	TTAGT AATGG CTAAA
+
+We could enter sequence component selections like:
+
+- start: 1, end: 10, strand: +
+- start: 6, end: 10, strand: +
+
+and we would see:
+
+	>Miro.v2
+	TTAGT AATGG AATGG
+
+(Spaces added for clarity.)
+
+Or, if we chose to reverse + complement the last section:
+
+- start: 1, end: 10, strand: +
+- start: 6, end: 10, strand: -
+
+	>Miro.v2
+	TTAGT AATGG CCATT
+
 ]]></help>
   <expand macro="citations" />
 </tool>

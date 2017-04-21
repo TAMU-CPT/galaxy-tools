@@ -142,7 +142,8 @@
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_genemarks.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_require_sd.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_add_parents_to_cds.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="experimental"/>
+    <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/gff3/genome_editor.xml" labels="experimental"/>
     <tool file="cpt2/tools-iuc/tools/bioperl/bp_genbank2gff3.xml"/>
     <!--<tool file="cpt2/galaxy-tools/tools/gff3/annotation_table.xml" />-->
   </section>
