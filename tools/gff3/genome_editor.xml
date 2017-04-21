@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.genome_editor" name="Genome Editor" version="2.1">
+  <description>allows you to re-arrange a genome</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+@GENOME_SELECTOR_PRE@
+python $__tool_directory__/genome_editor.py
+
+@GENOME_SELECTOR@
+@INPUT_GFF@
+"$new_id"
+
+--out_fasta "$out_fasta"
+--out_gff3 "$out_gff3"
+--out_simpleChain "$out_chain"
+--changes
+#for change in $changes:
+	${change.start},${change.end},${change.revcom}
+#end for
+
+
+]]></command>
+  <inputs>
+      <expand macro="input/gff3+fasta" />
+      <param label="New ID" name="new_id" type="text" help="New ID for the sequence to uniquely identify it from the previous build of the sequence. E.g. append Miro could become Miro.2 or Miro.v2 "/>
+      <repeat name="changes" title="Sequence Component Selections">
+        <param label="Start" name="start" type="int" minimum="0"/>
+        <param label="End" name="end" type="int" minimum="0"/>
+        <param label="Reverse + Complement" name="revcom" type="boolean" truevalue="-" falsevalue="+" />
+      </repeat>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="out_gff3"/>
+    <data format="fasta" name="out_fasta"/>
+    <data format="tabular" name="out_chain"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Allows for "editing" of a genome. Selecting regions of a genome and stitching them together.
+]]></help>
+  <expand macro="citations" />
+</tool>
