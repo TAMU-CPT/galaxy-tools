@@ -17,20 +17,48 @@ python $__tool_directory__/genome_editor.py
 --out_fasta "$out_fasta"
 --out_gff3 "$out_gff3"
 --out_simpleChain "$out_chain"
+--customSeqs "$custom_seqs"
 --changes
-#for change in $changes:
-	${change.start},${change.end},${change.revcom}
+#for $idx, $change in enumerate($changes):
+	#if $change.input_type.input_type_select == "region":
+		${change.input_type.start},${change.input_type.end},${change.input_type.revcom}
+	#else
+		custom${idx}
+	#end if
 #end for
 
 
 ]]></command>
+	<configfiles>
+		<configfile name="custom_seqs">
+		<![CDATA[
+#for $idx, $change in enumerate($changes):
+	#if $change.input_type.input_type_select == "custom":
+>custom${idx}
+${change.input_type.seq}
+	#end if
+#end for
+		]]>
+		</configfile>
+	</configfiles>
   <inputs>
       <expand macro="input/gff3+fasta" />
       <param label="New ID" name="new_id" type="text" help="New ID for the sequence to uniquely identify it from the previous build of the sequence. E.g. append Miro could become Miro.2 or Miro.v2 "/>
       <repeat name="changes" title="Sequence Component Selections">
-        <param label="Start" name="start" type="integer" min="0"/>
-        <param label="End" name="end" type="integer" min="0"/>
-        <param label="Reverse + Complement" name="revcom" type="boolean" truevalue="-" falsevalue="+" />
+		<conditional name="input_type">
+			<param name="input_type_select" type="select" label="Data Source">
+				<option value="region" selected="True">Region from FASTA file</option>
+				<option value="custom">Custom Additional Sequence</option>
+			</param>
+			<when value="region">
+				<param label="Start" name="start" type="integer" min="1" value="1"/>
+				<param label="End" name="end" type="integer" min="1" value="1"/>
+				<param label="Reverse + Complement" name="revcom" type="boolean" truevalue="-" falsevalue="+" />
+			</when>
+			<when value="custom">
+				<param label="Custom Sequence" name="seq" type="text" help="Enter the sequence, e.g. 'ACTG'. No FASTA definition line."/>
+			</when>
+		</conditional>
       </repeat>
   </inputs>
   <outputs>
