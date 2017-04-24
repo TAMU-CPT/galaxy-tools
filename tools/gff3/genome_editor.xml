@@ -62,9 +62,9 @@ ${change.input_type.seq}
       </repeat>
   </inputs>
   <outputs>
-    <data format="gff3" name="out_gff3"/>
-    <data format="fasta" name="out_fasta"/>
-    <data format="tabular" name="out_chain"/>
+	<data format="gff3" name="out_gff3" label="${new_id} Features"/>
+    <data format="fasta" name="out_fasta" label="${new_id}"/>
+    <data format="tabular" name="out_chain" label="${new_id} Change Table"/>
   </outputs>
   <tests>
   </tests>
