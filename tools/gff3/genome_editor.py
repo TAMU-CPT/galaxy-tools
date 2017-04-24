@@ -6,6 +6,7 @@ import tsv
 from Bio import SeqIO
 from Bio.Seq import Seq
 from BCBio import GFF
+from gff3 import feature_lambda, feature_test_contains
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -40,6 +41,14 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
                 tmp_req = rec[start:end]
             else:
                 tmp_req = rec[start:end].reverse_complement(id=True, name=True, description=True, features=True, annotations=True, letter_annotations=True, dbxrefs=True)
+
+            broken_feature_start = list(feature_lambda(rec.features, feature_test_contains, {'index': start}, subfeatures=False))
+            if len(broken_feature_start) > 0:
+                log.warn("WARNING: Start index chosen (%s) is in the middle of a feature (%s %s). This feature will disappear from the output", start, broken_feature_start[0].id, broken_feature_start[0].location)
+
+            broken_feature_end = list(feature_lambda(rec.features, feature_test_contains, {'index': end}, subfeatures=False))
+            if len(broken_feature_end) > 0:
+                log.warn("WARNING: End index chosen (%s) is in the middle of a feature (%s %s). This feature will disappear from the output", end, broken_feature_end[0].id, broken_feature_end[0].location)
 
             chain.append([
                 rec.id,

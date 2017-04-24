@@ -6,7 +6,7 @@
     <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
-  <command detect_errors="aggressive"><![CDATA[
+  <command><![CDATA[
 @GENOME_SELECTOR_PRE@
 python $__tool_directory__/genome_editor.py
 
@@ -51,8 +51,8 @@ ${change.input_type.seq}
 				<option value="custom">Custom Additional Sequence</option>
 			</param>
 			<when value="region">
-				<param label="Start" name="start" type="integer" min="1" value="1"/>
-				<param label="End" name="end" type="integer" min="1" value="1"/>
+				<param label="Start" name="start" type="integer" min="1" value="1" help="Inclusive range, 1-indexed genome. (I.e. specifying 1-2000 will include base number 1)"/>
+				<param label="End" name="end" type="integer" min="1" value="1" help="Inclusive range. (I.e. specifying 1-2000 will include base number 2000)"/>
 				<param label="Reverse + Complement" name="revcom" type="boolean" truevalue="-" falsevalue="+" />
 			</when>
 			<when value="custom">
