@@ -93,6 +93,8 @@ Or, if we chose to reverse + complement the last section:
 - start: 1, end: 10, strand: +
 - start: 6, end: 10, strand: -
 
+And this outputs the following:
+
 	>Miro.v2
 	TTAGT AATGG CCATT
 
