@@ -12,6 +12,7 @@ def spl(genbank):
             filename = os.path.join('gbk_out', record.id + '.gbk')
             with open(filename, 'w') as handle:
                 SeqIO.write([record], handle, 'genbank')
+                print "record.id"
             zipfile.write(filename)
 
 
