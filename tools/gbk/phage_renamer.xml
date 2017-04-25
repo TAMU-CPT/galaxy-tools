@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.rename" name="Rename GenBank Files" version="1.0">
-  <description>based on their record names and CPT Regex Rules.</description>
+<tool id="edu.tamu.cpt.genbank.rename" name="Phage Renamer" version="1.0">
+  <description>renames genbank files based on their record names and CPT Regex Rules.</description>
   <macros>
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
@@ -13,7 +13,7 @@ python $__tool_directory__/phage_renamer.py
 
 ]]></command>
   <inputs>
-    <param label="GenBank files to rename" name="genbank" type="data" format="genbank" multiple="True"/>
+    <param label="GenBank files to rename" name="genbanks" type="data" format="genbank" multiple="True"/>
   </inputs>
   <outputs>
     <data format="genbank" name="data">
