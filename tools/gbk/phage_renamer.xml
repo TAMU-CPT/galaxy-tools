@@ -17,7 +17,7 @@ python $__tool_directory__/phage_renamer.py
   </inputs>
   <outputs>
     <data format="genbank" name="data">
-        <discover_datasets pattern="__designation__" ext="genbank" directory="gbk_out" visible="true" />
+        <discover_datasets pattern="__name__" ext="genbank" directory="gbk_out" visible="true" />
     </data>
   </outputs>
   <help>
