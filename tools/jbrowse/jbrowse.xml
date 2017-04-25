@@ -112,7 +112,7 @@ $trackxml &&
             <show_menu>${jbgen.show_menu}</show_menu>
             <hideGenomeOptions>${jbgen.hideGenomeOptions}</hideGenomeOptions>
         </general>
-        <galaxyUrl><![CDATA[http://localhost:9090/]]></galaxyUrl>
+        <galaxyUrl>http://localhost:9090/</galaxyUrl>
     </metadata>
     <tracks>
         #for $tg in $track_groups:
