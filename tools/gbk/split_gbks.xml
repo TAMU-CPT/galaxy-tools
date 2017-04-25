@@ -1,4 +1,4 @@
-<?xml version="1.1"?>
+<?xml version="1.2"?>
 <tool id="edu.tamu.cpt.tools.split-gbks" name="Split Genbank File" version="1.1">
 	<description>Splits a multi-genbank file into separate genbank files</description>
   <macros>
@@ -11,18 +11,17 @@ $multi_genbank
 	<inputs>
         <param label="Genbank file" name="multi_genbank" type="data" format="genbank"/>
         <param label="Output Format" name="outputFormat" type="select">
-            <option value="separateFiles">Separate History Items</option>
-            <option value="zipFile">Zipped file</option>
+            <option value="sep">Separate History Items</option>
+            <option value="zip">Zipped file</option>
         </param>
 	</inputs>
 	<outputs>
-        <data format="txt" name="data">
-            <filter>outputFormat == 'separateFiles'</filter>
-            <discover_datasets pattern="__name__" ext="genbank"
-                directory="gbk_out" visible="true" />
+        <data format="txt" name="sep-gbks">
+            <filter>outputFormat == 'sep'</filter>
+            <discover_datasets pattern="__name__" ext="genbank" directory="gbk_out" visible="true" />
         </data>
 		<data format="zip" from_work_dir="out.zip" label="zip file of gbks" name="zip-gbks">
-            <filter>outputFormat == 'zipFile'</filter>
+            <filter>outputFormat == 'zip'</filter>
         </data>
 	</outputs>
 	<help>
