@@ -531,7 +531,6 @@ def bad_gene_model(record):
     for gene in coding_genes(record.features):
         exons = [x for x in genes(gene.sub_features, feature_type='exon') if len(x) > 10]
         CDSs = [x for x in genes(gene.sub_features, feature_type='CDS')]
-
         if len(exons) >= 1 and len(CDSs) >= 1:
             if len(exons) != len(CDSs):
                 results.append((
@@ -548,7 +547,7 @@ def bad_gene_model(record):
                 ))
                 bad += 1
             else:
-                for (exon, cds) in zip(exons, CDSs):
+                for (exon, cds) in zip(sorted(exons, key=lambda x: x.location.start), sorted(CDSs, key=lambda x: x.location.start)):
                     if len(exon) != len(cds):
                         results.append((
                             get_gff3_id(gene),

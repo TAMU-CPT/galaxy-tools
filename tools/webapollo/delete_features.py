@@ -35,4 +35,8 @@ if __name__ == '__main__':
     for feature in features['features']:
         # We see that deleteFeatures wants a uniqueName, and so we pass
         # is the uniquename field in the feature.
-        print(wa.annotations.deleteFeatures([feature['uniquename']]))
+        try:
+            wa.annotations.deleteFeatures([feature['uniquename']])
+            print('Deleted %s' % feature['uniquename'])
+        except:
+            print('Error %s' % feature['uniquename'])
