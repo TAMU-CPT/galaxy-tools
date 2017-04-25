@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.rename" name="Rename GenBank Files" version="1.0">
+  <description>based on their record names and CPT Regex Rules.</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/phage_renamer.py
+#for file in $genbanks:
+"$file"
+#end for
+
+]]></command>
+  <inputs>
+    <param label="GenBank files to rename" name="genbank" type="data" format="genbank" multiple="True"/>
+  </inputs>
+  <outputs>
+    <data format="genbank" name="data">
+        <discover_datasets pattern="__designation__" ext="genbank" directory="gbk_out" visible="true" />
+    </data>
+  </outputs>
+  <help>
+**What it does**
+
+Renames GenBank Files based on their phage name.
+</help>
+		<expand macro="citations" />
+</tool>

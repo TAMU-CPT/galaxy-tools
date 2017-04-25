@@ -159,6 +159,7 @@
     <tool file="cpt2/galaxy-tools/tools/gbk/info_export.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/remove_feature.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/remove_tag.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/gbk/phage_renamer.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/renumber.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/revcom.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/sequin.xml"/>
