@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.1"?>
 <tool id="edu.tamu.cpt.tools.split-gbks" name="Split Genbank File" version="1.1">
 	<description>Splits a multi-genbank file into separate genbank files</description>
   <macros>
