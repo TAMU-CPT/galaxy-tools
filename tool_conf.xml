@@ -164,7 +164,7 @@
     <tool file="cpt2/galaxy-tools/tools/gbk/revcom.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/sequin.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/source.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/gbk/split.xml" />
+    <!--<tool file="cpt2/galaxy-tools/tools/gbk/split.xml" />-->
     <tool file="cpt2/galaxy-tools/tools/gbk/split_gbks.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/subsection.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml"/>
