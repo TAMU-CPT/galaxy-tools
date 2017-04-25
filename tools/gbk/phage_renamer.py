@@ -2,7 +2,6 @@
 import re
 import BIO_FIX_TOPO  # NOQA
 import os
-import random
 import argparse
 from Bio import SeqIO
 
