@@ -8,7 +8,6 @@
   <expand macro="requirements"/>
   <command><![CDATA[
 @GENOME_SELECTOR_PRE@
-pip freeze;
 python $__tool_directory__/genome_editor.py
 
 @GENOME_SELECTOR@
