@@ -1,0 +1,6 @@
+##gff-version 3
+##sequence-region test2 1 14
+test2	feature	gene	1	4	.	+	.	ID=1
+test2	GenBank	CDS	1	4	.	+	1	ID=1.cds
+test2	feature	gene	11	14	.	+	.	ID=2
+test2	GenBank	CDS	11	14	.	+	1	ID=2.cds

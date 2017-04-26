@@ -37,26 +37,44 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
             (start, end, strand) = change.split(',')
             start = int(start) - 1
             end = int(end)
+
+            # Make any complaints
+            broken_feature_start = list(feature_lambda(rec.features, feature_test_contains, {'index': start}, subfeatures=False))
+            if len(broken_feature_start) > 0:
+                pass
+                # log.info("DANGER: Start index chosen (%s) is in the middle of a feature (%s %s). This feature will disappear from the output", start, broken_feature_start[0].id, broken_feature_start[0].location)
+            broken_feature_end = list(feature_lambda(rec.features, feature_test_contains, {'index': end}, subfeatures=False))
+            if len(broken_feature_end) > 0:
+                pass
+                # log.info("DANGER: End index chosen (%s) is in the middle of a feature (%s %s). This feature will disappear from the output", end, broken_feature_end[0].id, broken_feature_end[0].location)
+
+            # Ok, fetch features
             if strand == '+':
                 tmp_req = rec[start:end]
             else:
-                tmp_req = rec[start:end].reverse_complement(id=True, name=True, description=True, features=True, annotations=True, letter_annotations=True, dbxrefs=True)
+                tmp_req = rec[start:end].reverse_complement(
+                    id=True, name=True, description=True, features=True,
+                    annotations=True, letter_annotations=True, dbxrefs=True
+                )
 
-            broken_feature_start = list(feature_lambda(rec.features, feature_test_contains, {'index': start}, subfeatures=False))
-            if len(broken_feature_start) > 0:
-                log.warn("WARNING: Start index chosen (%s) is in the middle of a feature (%s %s). This feature will disappear from the output", start, broken_feature_start[0].id, broken_feature_start[0].location)
+            def update_location(feature):
+                feature.location._start += len(new_record)
+                feature.location._end += len(new_record)
 
-            broken_feature_end = list(feature_lambda(rec.features, feature_test_contains, {'index': end}, subfeatures=False))
-            if len(broken_feature_end) > 0:
-                log.warn("WARNING: End index chosen (%s) is in the middle of a feature (%s %s). This feature will disappear from the output", end, broken_feature_end[0].id, broken_feature_end[0].location)
+                if hasattr(feature, 'sub_features'):
+                    for sf in feature.sub_features:
+                        update_location(sf)
+
+            for feature in tmp_req.features:
+                update_location(feature)
 
             chain.append([
                 rec.id,
-                start,
+                start + 1,
                 end,
                 strand,
                 new_record.id,
-                len(new_record),
+                len(new_record) + 1,
                 len(new_record) + (end - start),
                 '+'
             ])

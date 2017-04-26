@@ -1,0 +1,12 @@
+##gff-version 3
+##sequence-region Miro.v2 1 1297
+Miro.v2	CPT	gene	1	910	.	-	.	ID=8861dd01-d426-40d4-96b5-f8e4b81c93d2;Name=Miro.gene_1;date_creation=2016-09-27;date_last_modified=2016-09-27;owner=elenimijalis%40tamu.edu
+Miro.v2	CPT	mRNA	1	910	.	-	.	ID=1d8680f9-d6bc-4ef1-a535-83fe555cd097;Name=Miro.gene_1-00001;Parent=8861dd01-d426-40d4-96b5-f8e4b81c93d2;date_creation=2016-09-27;date_last_modified=2016-09-27;owner=elenimijalis%40tamu.edu
+Miro.v2	CPT	CDS	1	900	.	-	0	ID=cd13f44c-b958-4dcc-a6b1-b901ad465268;Name=cd13f44c-b958-4dcc-a6b1-b901ad465268-CDS;Parent=1d8680f9-d6bc-4ef1-a535-83fe555cd097;date_creation=2016-09-27;date_last_modified=2016-09-27
+Miro.v2	CPT	exon	908	910	.	-	.	ID=532024dc-47d1-40e1-9255-9ec5ee018cc0;Name=532024dc-47d1-40e1-9255-9ec5ee018cc0-exon;Parent=1d8680f9-d6bc-4ef1-a535-83fe555cd097;date_creation=2016-09-27;date_last_modified=2016-09-27
+Miro.v2	CPT	exon	1	900	.	-	.	ID=c85f1713-7e6e-4cf9-8d09-1f9ffc943c93;Name=c85f1713-7e6e-4cf9-8d09-1f9ffc943c93-exon;Parent=1d8680f9-d6bc-4ef1-a535-83fe555cd097;date_creation=2016-09-27;date_last_modified=2016-09-27
+Miro.v2	CPT	gene	1019	1264	.	-	.	ID=b8da12d7-fe5c-42bd-b020-6a8ab205a133;Name=Miroa;date_creation=2016-09-27;date_last_modified=2016-09-27;owner=elenimijalis%40tamu.edu
+Miro.v2	CPT	mRNA	1019	1264	.	-	.	ID=fc89ee6f-ce7d-49e1-b6a1-765a60e80825;Name=Miroa-00001;Parent=b8da12d7-fe5c-42bd-b020-6a8ab205a133;date_creation=2016-09-27;date_last_modified=2016-09-27;owner=elenimijalis%40tamu.edu
+Miro.v2	CPT	exon	1261	1264	.	-	.	ID=6bc4ea79-a43e-43e2-90fe-6af95e31e214;Name=6bc4ea79-a43e-43e2-90fe-6af95e31e214-exon;Parent=fc89ee6f-ce7d-49e1-b6a1-765a60e80825;date_creation=2016-09-27;date_last_modified=2016-09-27
+Miro.v2	CPT	exon	1019	1255	.	-	.	ID=27847554-35ea-48a8-b5cd-11e64a233d41;Name=27847554-35ea-48a8-b5cd-11e64a233d41-exon;Parent=fc89ee6f-ce7d-49e1-b6a1-765a60e80825;date_creation=2016-09-27;date_last_modified=2016-09-27
+Miro.v2	CPT	CDS	1019	1255	.	-	0	ID=a508e82a-5e35-4ac5-8082-e52d06b2edad;Name=a508e82a-5e35-4ac5-8082-e52d06b2edad-CDS;Parent=fc89ee6f-ce7d-49e1-b6a1-765a60e80825;date_creation=2016-09-27;date_last_modified=2016-09-27

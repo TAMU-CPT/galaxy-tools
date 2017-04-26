@@ -8,6 +8,7 @@
   <expand macro="requirements"/>
   <command><![CDATA[
 @GENOME_SELECTOR_PRE@
+pip freeze;
 python $__tool_directory__/genome_editor.py
 
 @GENOME_SELECTOR@
@@ -26,8 +27,6 @@ python $__tool_directory__/genome_editor.py
 		custom${idx}
 	#end if
 #end for
-
-
 ]]></command>
 	<configfiles>
 		<configfile name="custom_seqs">
@@ -67,6 +66,69 @@ ${change.input_type.seq}
     <data format="tabular" name="out_chain" label="${new_id} Change Table"/>
   </outputs>
   <tests>
+      <test>
+			<param name="reference_genome_source" value="history" />
+			<param name="genome_fasta" value="genome_editor.simple.fa" />
+			<param name="gff3_data" value="genome_editor.simple.gff3" />
+			<param name="new_id" value="test2" />
+			<repeat name="changes">
+				<conditional name="input_type">
+					<param name="input_type_select" value="region" />
+					<param name="start" value="1"/>
+					<param name="end" value="4"/>
+					<param name="revcom" value="+"/>
+				</conditional>
+			</repeat>
+			<repeat name="changes">
+				<conditional name="input_type">
+					<param name="input_type_select" value="custom" />
+					<param name="seq" value="cccggg"/>
+				</conditional>
+			</repeat>
+			<repeat name="changes">
+				<conditional name="input_type">
+					<param name="input_type_select" value="region" />
+					<param name="start" value="5"/>
+					<param name="end" value="8"/>
+					<param name="revcom" value="-"/>
+				</conditional>
+			</repeat>
+			<output name="out_gff3" file="genome_editor.simple.out.gff3" />
+			<output name="out_fasta" file="genome_editor.simple.out.fa" />
+			<output name="out_chain" file="genome_editor.simple.out.chain" />
+      </test>
+      <test>
+
+			<param name="reference_genome_source" value="history" />
+			<param name="genome_fasta" value="miro.fa" />
+			<param name="gff3_data" value="miro.2.gff3" />
+			<param name="new_id" value="Miro.v2" />
+			<repeat name="changes">
+				<conditional name="input_type">
+					<param name="input_type_select" value="region" />
+					<param name="start" value="1"/>
+					<param name="end" value="950"/>
+					<param name="revcom" value="+"/>
+				</conditional>
+			</repeat>
+			<repeat name="changes">
+				<conditional name="input_type">
+					<param name="input_type_select" value="custom" />
+					<param name="seq" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+				</conditional>
+			</repeat>
+			<repeat name="changes">
+				<conditional name="input_type">
+					<param name="input_type_select" value="region" />
+					<param name="start" value="3170"/>
+					<param name="end" value="3450"/>
+					<param name="revcom" value="+"/>
+				</conditional>
+			</repeat>
+			<output name="out_gff3" file="genome_editor.mirov2.gff3" />
+			<output name="out_fasta" file="genome_editor.mirov2.fa" />
+			<output name="out_chain" file="genome_editor.mirov2.chain" />
+      </test>
   </tests>
   <help><![CDATA[
 **What it does**
