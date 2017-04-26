@@ -26,10 +26,12 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
 
     for idx, line in enumerate(data):
         if line.startswith('>'):
-            if record is not None and len(record.features) > 0:
+            if record is not None:
                 bigwig_store(bw_i, record.id, i_data)
                 bigwig_store(bw_o, record.id, o_data)
                 bigwig_store(bw_m, record.id, m_data)
+
+            if record is not None and len(record.features) > 0:
                 yield record
                 # Reset
             i_data = []
