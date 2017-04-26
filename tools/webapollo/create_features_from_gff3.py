@@ -89,11 +89,14 @@ if __name__ == '__main__':
                     "Dropped qualifiers: %s" % (json.dumps({k: v for (k, v) in feature.qualifiers.items() if k not in bad_quals})),
                 ]))
             except Exception as e:
+                msg = str(e)
+                if '\n' in msg:
+                    msg = msg[0:msg.index('\n')]
                 sys.stdout.write('\t'.join([
                     feature.id,
                     '',
                     'ERROR',
-                    str(e)
+                    msg
                 ]))
 
             sys.stdout.write('\n')
