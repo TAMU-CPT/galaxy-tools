@@ -126,8 +126,6 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                 o_data.append(float(parts[3]))
                 m_data.append(float(parts[4]))
 
-                # print record.id, parts
-                # print record.id, line,
     bigwig_store(bw_i, record.id, i_data)
     bigwig_store(bw_o, record.id, o_data)
     bigwig_store(bw_m, record.id, m_data)
@@ -150,8 +148,7 @@ if __name__ == '__main__':
     bigwig_add_header(bw_m, 'm', name='TMHMM')
 
     for sequence in convert(None, bw_i, bw_o, bw_m):
-        pass
-        # GFF.write([sequence], sys.stdout)
+        GFF.write([sequence], sys.stdout)
 
     bw_i.close()
     bw_o.close()
