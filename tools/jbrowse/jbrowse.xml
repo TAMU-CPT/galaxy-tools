@@ -79,7 +79,7 @@ $trackxml &&
                     <dataset id="${__app__.security.encode_id($genome.id)}" hid="${genome.hid}"
                         size="${genome.get_size(nice_size=True)}"
                         edam_format="${genome.datatype.edam_format}"
-                        file_ext="${genome.datatype.file_ext}" />
+                        file_ext="${genome.ext}" />
                     <history id="${__app__.security.encode_id($genome.history_id)}"
                         user_email="${genome.history.user.email}"
                         user_id="${genome.history.user_id}"
@@ -130,7 +130,7 @@ $trackxml &&
                   <dataset id="${__app__.security.encode_id($dataset.id)}" hid="${dataset.hid}"
                       size="${dataset.get_size(nice_size=True)}"
                       edam_format="${dataset.datatype.edam_format}"
-                      file_ext="${dataset.datatype.file_ext}" />
+                      file_ext="${dataset.ext}" />
                   <history id="${__app__.security.encode_id($dataset.history_id)}"
                       user_email="${dataset.history.user.email}"
                       user_id="${dataset.history.user_id}"

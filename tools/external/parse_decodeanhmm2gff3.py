@@ -148,7 +148,8 @@ if __name__ == '__main__':
     bigwig_add_header(bw_m, 'm', name='TMHMM')
 
     for sequence in convert(None, bw_i, bw_o, bw_m):
-        GFF.write([sequence], sys.stdout)
+        pass
+        # GFF.write([sequence], sys.stdout)
 
     bw_i.close()
     bw_o.close()
