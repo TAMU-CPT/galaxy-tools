@@ -131,7 +131,9 @@ def gff3_to_genbank(gff_file, fasta_file):
                 flat_feat.type = 'RBS'
 
             # Drop mRNAs, apollo crap, useless CDSs
-            if flat_feat.type in ('mRNA', 'non_canonical_three_prime_splice_site', 'non_canonical_five_prime_splice_site'):
+            if flat_feat.type in ('non_canonical_three_prime_splice_site',
+                                  'non_canonical_five_prime_splice_site',
+                                  'stop_codon_read_through', 'mRNA'):
                 continue
 
             if flat_feat.type == 'CDS' and len(flat_feat) < 10:
