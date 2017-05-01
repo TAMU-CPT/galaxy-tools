@@ -30,7 +30,7 @@ $__tool_directory__/edirect/epost
                 <param label="ID File" name="file_of_ids" type="data" format="tabular" help="NEWLINE separated list of IDs to fetch from NUCLEOTIDE as GENBANK"/>
             </when>
             <when value="paste_ids">
-                <param label="NCBI ID List" name="pasted_ids" type="text" area="true" help="Newline/Comma separated list of IDs"/>
+                <param label="ID List" name="pasted_ids" type="text" area="true" help="Comma separated list of IDs"/>
             </when>
         </conditional>
     </inputs>
