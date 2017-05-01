@@ -2,7 +2,7 @@
 <tool id="tmp.efetch" name="EFetch" version="0.2">
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/edirect/epost
--db nucleotide
+-db nuccore
 -input $id_list |
 $__tool_directory__/edirect/efetch
 -format gbwithparts > "$output"
