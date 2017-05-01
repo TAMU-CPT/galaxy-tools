@@ -3,17 +3,46 @@
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/edirect/epost
 -db nuccore
--input $id_list |
-$__tool_directory__/edirect/efetch
+#if $input_type.input_type_selector == "ids_file":
+    -input "$input_type.ids_file"
+#elif $input_type.input_type_selector == "paste_ids":
+    -id "$db_opts.db"
+| $__tool_directory__/edirect/efetch
 -format gbwithparts > "$output"
 ]]></command>
   <inputs>
-    <param label="ID File" name="id_list" type="data" format="tabular" help="NEWLINE separated list of IDs to fetch from NUCLEOTIDE as GENBANK"/>
+      <conditional name="input_type">
+    <param name="db_opts_selector" type="select" label="Subject database/sequences">
+        <option value="user_db">BLAST Database in your History</option>
+        <option value="fasta">FASTA file</option>
+        <param label="ID File" name="id_list" type="data" format="tabular" help="NEWLINE separated list of IDs to fetch from NUCLEOTIDE as GENBANK"/>
+        <param label="NCBI ID List" name="id_list" type="text" area="true" help="Newline/Comma separated list of IDs"/>
+    </param>
+
   </inputs>
-  <outputs>
-	<data format="genbank" name="output" label="NCBI GenBank File Downloader" />
-  </outputs>
-  <help><![CDATA[
+    <inputs>
+        <conditional name="input_type">
+            <param name="input_type_selector" type="select" label="Input Type">
+              <option value="ids_file">choose file containing newline separated list of ids</option>
+              <option value="paste_ids">paste a newline separated list of ids</option>
+            </param>
+            <when value="ids_file">
+                <param label="ID File" name="file_of_ids" type="data" format="tabular" help="NEWLINE separated list of IDs to fetch from NUCLEOTIDE as GENBANK"/>
+            </when>
+            <when value="paste_ids">
+                <param label="NCBI ID List" name="pasted_ids" type="text" area="true" help="Newline/Comma separated list of IDs"/>
+            </when>
+        </conditional>
+        <param name="length_coverage_threshold" type="float" size="15" value="0.9" label="Length coverage threshold" />
+        <param name="score_coverage_threshold" type="float" size="15" value="0.9" label="Score coverage threshold (bit score / length if &lt;3.0, percentage of identities otherwise)" help="    if &lt;3 then the threshold is set as a BLAST score density (0.0 to 3.0; default = 1.75). if &gt;=3 then the threshold is set as a percent of identical residues (3 to 100)"/>
+        <param name="require_coverage_on_both_neighbours" type="boolean" label="Require coverage on both neighbours?" truevalue="TRUE" falsevalue="FALSE" checked="false" />
+        <param name="proteins_input" type="boolean" label="Is input proteins?" truevalue="TRUE" falsevalue="FALSE" checked="true" />
+        <param name="enable_id_parsing_in_db_format" type="boolean" label="Should the query and subject defline(s) be parsed?" truevalue="TRUE" falsevalue="FALSE" checked="false" help="This is only advised if your FASTA file follows the NCBI naming conventions using pipe '|' symbols"/>
+    </inputs>
+    <outputs>
+        <data format="genbank" name="output" label="NCBI GenBank File Downloader" />
+    </outputs>
+    <help><![CDATA[
 DO NOT USE THIS. It is not user friendly / configurable at all. DO NOT BUILD ON THIS. Use IUC tools.
       ]]></help>
 </tool>
