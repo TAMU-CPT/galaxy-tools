@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="tmp.efetch" name="EFetch" version="1.04">
+<tool id="tmp.efetch" name="EFetch" version="1.05">
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/edirect/epost
 -db nuccore
@@ -9,15 +9,15 @@ $__tool_directory__/edirect/epost
     -id "$input_type.pasted_ids"
 #end if
 | $__tool_directory__/edirect/efetch
-#if $format.format_selector == "gbwithparts":
+#if $format_selector == "gbwithparts":
     -format gbwithparts
-#elif $format.format_selector == "gb":
+#elif $format_selector == "gb":
     -format gb
-#elif $format.format_selector == "fasta":
+#elif $format_selector == "fasta":
     -format fasta
-#elif $format.format_selector == "fasta_cds_aa":
+#elif $format_selector == "fasta_cds_aa":
     -format fasta_cds_aa
-#elif $format.format_selector == "fasta_cds_na":
+#elif $format_selector == "fasta_cds_na":
     -format fasta_cds_na
 #end if
 > "$output"
