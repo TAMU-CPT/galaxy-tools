@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.1"?>
 <tool id="tmp.efetch" name="EFetch" version="0.2">
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/edirect/epost
@@ -7,6 +7,7 @@ $__tool_directory__/edirect/epost
     -input \$(cat "$input_type.ids_file" | paste -d ',' -s)
 #elif $input_type.input_type_selector == "paste_ids":
     -id "$input_type.pasted_ids"
+#end if
 | $__tool_directory__/edirect/efetch
 -format gbwithparts > "$output"
 ]]></command>
