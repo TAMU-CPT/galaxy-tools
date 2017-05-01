@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <tool id="tmp.efetch" name="EFetch" version="0.2">
   <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/edirect/epost
+-db nuccore
+-input $id_list |
 $__tool_directory__/edirect/efetch
--id \$(cat "$id_list" | paste -d ',' -s)
--db nucleotide
 -format gbwithparts > "$output"
 ]]></command>
   <inputs>
