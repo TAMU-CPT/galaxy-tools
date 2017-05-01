@@ -49,7 +49,7 @@ $__tool_directory__/edirect/epost
                 <when input="format_selector" value="gbwithparts" format="genbank"/>
                 <when input="format_selector" value="gb" format="genbank"/>
             </change_format>
-        <data>
+        </data>
     </outputs>
     <help><![CDATA[
 DO NOT USE THIS. It is not user friendly / configurable at all. DO NOT BUILD ON THIS. Use IUC tools.
