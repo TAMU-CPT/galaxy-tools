@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="tmp.efetch" name="EFetch" version="1.03">
+<tool id="tmp.efetch" name="EFetch" version="1.04">
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/edirect/epost
 -db nuccore
@@ -9,19 +9,37 @@ $__tool_directory__/edirect/epost
     -id "$input_type.pasted_ids"
 #end if
 | $__tool_directory__/edirect/efetch
--format gbwithparts > "$output"
+#if $format.format_selector == "gbwithparts":
+    -format gbwithparts
+#elif $format.format_selector == "gb":
+    -format gb
+#elif $format.format_selector == "fasta":
+    -format fasta
+#elif $format.format_selector == "fasta_cds_aa":
+    -format fasta_cds_aa
+#elif $format.format_selector == "fasta_cds_na":
+    -format fasta_cds_na
+#end if
+> "$output"
 ]]></command>
     <inputs>
+        <param name="format_selector" type="select" label="Format">
+          <option value="gbwithparts">GenBank with Contig Sequences</option>
+          <option value="gb">GenBank Flatfile</option>
+          <option value="fasta">FASTA</option>
+          <option value="fasta_cds_aa">FASTA of CDS Products</option>
+          <option value="fasta_cds_na">FASTA of Coding Regions</option>
+        </param>
         <conditional name="input_type">
             <param name="input_type_selector" type="select" label="Input Type">
-              <option value="ids_file">choose file containing newline separated list of ids</option>
-              <option value="paste_ids">paste a newline separated list of ids</option>
+              <option value="ids_file">file containing a newline-separated list of IDs</option>
+              <option value="paste_ids">pasted list of IDs separated by a newline</option>
             </param>
             <when value="ids_file">
-                <param label="ID File" name="file_of_ids" type="data" format="tabular" help="NEWLINE separated list of IDs to fetch from NUCLEOTIDE as GENBANK"/>
+                <param label="ID File" name="file_of_ids" type="data" format="tabular" help="Newline-separated list of IDs"/>
             </when>
             <when value="paste_ids">
-                <param label="ID List" name="pasted_ids" type="text" area="true" help="Newline separated list of IDs"/>
+                <param label="ID List" name="pasted_ids" type="text" area="true" help="Newline-separated list of IDs"/>
             </when>
         </conditional>
     </inputs>
