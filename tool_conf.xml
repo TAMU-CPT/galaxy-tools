@@ -4,7 +4,8 @@
     <tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunDownloader_v2.xml"/>
   </section>
   <section id="getext_ncbi" name="Get Data: NCBI">
-    <tool file="cpt2/galaxy-tools/tools/util/efetch.xml" labels="experimental"/>
+    <tool file="cpt2/galaxy-tools/tools/edirect/efetch.xml" labels="dev-only"/>
+    <tool hidden="True" file="cpt2/galaxy-tools/tools/util/efetch.xml" labels="experimental"/>
     <tool hidden="True" file="data_source/upload.xml"/>
     <tool hidden="True" file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/ecitmatch.xml"/>
     <tool hidden="True" file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/efetch.xml"/>
@@ -77,7 +78,6 @@
     <tool file="cpt2/galaxy-tools/tools/blast/phg_relate.xml" labels="new"/>
     <tool file="cpt2/galaxy-tools/tools/blast/prot_relate.xml" labels="new"/>
     <tool file="cpt2/galaxy-tools/tools/blast/top_hits_table.xml" labels="new"/>
-    <tool file="cpt2/galaxy-tools/tools/edirect/efetch.xml" labels="dev-only"/>
   </section>
   <section id="cpt2_fasta" name="CPT2: Fasta Tools">
     <tool file="cpt2/galaxy-tools/tools/fasta/fasta_aastats.xml"/>
