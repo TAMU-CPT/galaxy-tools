@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<tool id="tmp.efetch" name="EFetch" version="1.1">
+<tool id="tmp.efetch" name="EFetch" version="1.11">
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/edirect/epost
 -db nuccore
 #if $input_type.input_type_selector == "ids_file":
-    -input "$input_type.file_of_ids"
+    -input $input_type.file_of_ids
 #elif $input_type.input_type_selector == "paste_ids":
     -id "$input_type.pasted_ids"
 #end if
