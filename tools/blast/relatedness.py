@@ -54,7 +54,7 @@ def split_identifiers_phage(par, ident):
 def important_only(blast, split_identifiers):
     for data in blast:
         yield [
-            # 01 Query Seq-id (ID of your sequence)
+            data[0],  # 01 Query Seq-id (ID of your sequence)
             # 02 Subject Seq-id (ID of the database hit)
             # 03 Percentage of identical matches
             # 04 Alignment length
@@ -85,29 +85,46 @@ def important_only(blast, split_identifiers):
 
 def deform_scores(blast):
     for data in blast:
-        for org in data[1]:
+        for org in data[2]:
             yield [
                 data[0],
+                data[1],
                 org,
-                data[2]
+                data[3]
             ]
 
 
 def filter_phage(blast, phageNameLookup):
     for data in blast:
-        if data[1] in phageNameLookup:
+        if data[2] in phageNameLookup:
             yield [
                 data[0],
                 data[1],
-                phageNameLookup[data[1]],
-                data[2]
+                data[2],
+                phageNameLookup[data[2]],
+                data[3]
             ]
+
+
+def remove_dupes(data):
+    has_seen = {}
+    for row in data:
+        # qseqid, sseqid
+        key = (row[0], row[2])
+        # If we've seen the key before, we can exit
+        if key in has_seen:
+            continue
+
+        # Otherwise, continue on
+        has_seen[key] = True
+        # Pretty simple
+        yield row
 
 
 def scoreMap(blast):
     m = {}
     c = {}
-    for (evalue, name, id, dice) in blast:
+    for (qseq, evalue, name, id, dice) in blast:
         if (name, id) not in m:
             m[(name, id)] = 0
             c[(name, id)] = 0
@@ -143,9 +160,14 @@ if __name__ == '__main__':
     data = important_only(data, splitId)
     data = deform_scores(data)
     data = filter_phage(data, phageNameLookup)
+    if args.protein or args.canonical:
+        data = remove_dupes(data)
+        count_label = "Similar Unique Proteins"
+    else:
+        count_label = "Nucleotide Hits"
 
     scores, counts = scoreMap(data)
-    sys.stdout.write('# ID\tName\tScore\tProtein Count\n')
+    sys.stdout.write('# ID\tName\tScore\t%s\n' % count_label)
     for idx, ((name, pid), score) in enumerate(sorted(scores.items(), key=lambda (x, y): -y)):
         if idx > 4:
             break
