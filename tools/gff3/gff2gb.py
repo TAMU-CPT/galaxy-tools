@@ -128,7 +128,8 @@ def fix_frameshifted(features):
     cdss2 = []
     # Copy genes + clean out subfeatures. We'll re-use these constructs.
     fixed_features = copy.deepcopy(genes)
-    for f in fixed_features: f.sub_features = []
+    for f in fixed_features:
+        f.sub_features = []
     # Copy / empty out mRNAs
     fixed_mrnas = copy.deepcopy(mRNAs)
     for f in fixed_mrnas:
@@ -146,7 +147,6 @@ def fix_frameshifted(features):
         else:
             cdss2.append(cds)
     # Ok, now have cdss2 to deal with.
-    matching = []
     other = []
     # Find the two with least value for distance between end / start (strand aware).
     # For every possible pair, we'll check their distance
@@ -302,8 +302,8 @@ def handle_record(record):
         # this isn't as trivial as it should be.
         protein_product = wa_unified_product_name(flat_feat)
 
-        for x in ('source', 'phase', 'Parent', 'ID', 'owner',
-                    'date_creation', 'date_last_modified'):
+        for x in ('source', 'phase', 'Parent', 'ID', 'owner', 'date_creation',
+                  'date_last_modified'):
             if x in flat_feat.qualifiers:
                 if x == 'ID':
                     flat_feat._ID = flat_feat.qualifiers['ID']
