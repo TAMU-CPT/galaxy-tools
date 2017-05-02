@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<tool id="tmp.efetch" name="EFetch" version="1.14">
+<tool id="tmp.efetch" name="EFetch" version="1.15">
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/edirect/epost
 -db nuccore
 #if $input_type.input_type_selector == "ids_file":
     -input "$input_type.file_of_ids"
 #elif $input_type.input_type_selector == "paste_ids":
-    -id \$(echo $input_type.pasted_ids | sed 's/__cn__/,/g')
+    -id \$(echo $input_type.pasted_ids | sed 's/__cn__/,/g' | sed 's/\s/,/g')
 #end if
 | $__tool_directory__/edirect/efetch
 #if $format_selector == "gbwithparts":
