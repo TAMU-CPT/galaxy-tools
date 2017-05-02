@@ -682,22 +682,36 @@ class AnnotationsClient(Client):
         data = self._update_data(data)
         return self.request('getComments', data)
 
-    def addComments(self, feature_id, comment):
+    def addComments(self, feature_id, comments):
         # TODO: This is probably not great and will delete comments, if I had to guess...
         data = {
             'features': [
                 {
                     'uniquename': feature_id,
-                    'comments': [comment]
+                    'comments': comments
                 }
             ],
         }
+        print(data)
         data = self._update_data(data)
-        return self.request('getComments', data)
+        return self.request('addComments', data)
 
-    def addAttribute(self, features):
+    def addAttributes(self, feature_id, attributes):
+        nrps = []
+        for (key, values) in attributes.items():
+            for value in values:
+                nrps.append({
+                    'tag': key,
+                    'value': value
+                })
+
         data = {
-            'features': features,
+            'features': [
+                {
+                    'uniquename': feature_id,
+                    'non_reserved_properties': nrps
+                }
+            ]
         }
         data = self._update_data(data)
         return self.request('addAttribute', data)
@@ -1385,6 +1399,40 @@ class fakeTrans(object):
         o = obj()
         o.email = self.un
         return o
+
+def retry(closure, sleep=1, limit=10):
+    """
+    Apollo has the bad habit of returning 500 errors if you call APIs
+    too quickly, largely because of the unholy things that happen in
+    grails.
+
+    To deal with the fact that we cannot send an addComments call too
+    quickly after a createFeature call, we have this function that will
+    keep calling a closure until it bloody works.
+
+    <rant>
+    This is insane. It is absolutely unacceptable that calling an
+    API to create a feature (which returns information about the
+    feature as part of the network response) and then calling the API to set attributes about that
+    feature (**AFTER** we have received the aforementioned response from
+    the server) would fail due to it not knowing that feature exists
+    yet. That's ... sigh.
+    </rant>
+    """
+    count = 0
+    while True:
+        count += 1
+
+        if count >= limit:
+            break
+        try:
+            # Try calling it
+            closure()
+            # If successful, exit
+            break
+        except Exception as e:
+            log.info(str(e)[0:100])
+            time.sleep(sleep)
 
 
 if __name__ == '__main__':

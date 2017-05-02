@@ -4,7 +4,7 @@ import json
 import time
 import argparse
 from webapollo import WebApolloInstance, featuresToFeatureSchema
-from webapollo import WAAuth, OrgOrGuess, GuessOrg, AssertUser
+from webapollo import WAAuth, OrgOrGuess, GuessOrg, AssertUser, retry
 from BCBio import GFF
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -74,19 +74,34 @@ if __name__ == '__main__':
                     wa.annotations.setTranslationStart(mrna_id, max(CDS['fmin'], CDS['fmax']) - 1)
 
                 # Finally we set the name, this should be correct.
-                wa.annotations.setName(mrna_id, feature.qualifiers.get('product', ["Unknown"])[0])
-                wa.annotations.setName(gene_id, feature.qualifiers.get('product', ["Unknown"])[0])
+                time.sleep(0.5)
+                wa.annotations.setName(mrna_id, feature.qualifiers.get('product', feature.qualifiers.get('Name', ["Unknown"]))[0])
+                time.sleep(0.5)
 
-                for (k, v) in feature.qualifiers.items():
-                    if k not in bad_quals:
-                        # set qualifier
-                        pass
+                def func():
+                    wa.annotations.setName(gene_id, feature.qualifiers.get('product', feature.qualifiers.get('Name', ["Unknown"]))[0])
+                retry(func)
+
+                extra_attr = {}
+                for (key, values) in feature.qualifiers.items():
+                    if key in bad_quals:
+                        continue
+
+                    if key == 'Note':
+                        def func2():
+                            wa.annotations.addComments(gene_id, values)
+                        retry(func2)
+                    else:
+                        extra_attr[key] = values
+
+                def func3():
+                    wa.annotations.addAttributes(gene_id, extra_attr)
+                retry(func3)
 
                 sys.stdout.write('\t'.join([
                     feature.id,
                     gene_id,
                     'success',
-                    "Dropped qualifiers: %s" % (json.dumps({k: v for (k, v) in feature.qualifiers.items() if k not in bad_quals})),
                 ]))
             except Exception as e:
                 msg = str(e)
