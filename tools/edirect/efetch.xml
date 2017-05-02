@@ -1,43 +1,135 @@
 <?xml version="1.0"?>
-<tool id="tmp.efetch" name="EFetch" version="0.2">
+<tool id="tmp.efetch" name="EFetch" version="1.1">
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/edirect/epost
 -db nuccore
 #if $input_type.input_type_selector == "ids_file":
-    -input \$(cat "$input_type.ids_file" | paste -d ',' -s)
+    -input "$input_type.file_of_ids"
 #elif $input_type.input_type_selector == "paste_ids":
     -id "$input_type.pasted_ids"
+#end if
 | $__tool_directory__/edirect/efetch
--format gbwithparts > "$output"
+#if $format_selector == "gbwithparts":
+    -format gbwithparts
+#elif $format_selector == "gb":
+    -format gb
+#elif $format_selector == "fasta":
+    -format fasta
+#elif $format_selector == "fasta_cds_aa":
+    -format fasta_cds_aa
+#elif $format_selector == "fasta_cds_na":
+    -format fasta_cds_na
+#end if
+> "$output"
 ]]></command>
-  <!--<inputs>-->
-      <!--<conditional name="input_type">-->
-    <!--<param name="db_opts_selector" type="select" label="Subject database/sequences">-->
-        <!--<option value="user_db">BLAST Database in your History</option>-->
-        <!--<option value="fasta">FASTA file</option>-->
-        <!--<param label="ID File" name="id_list" type="data" format="tabular" help="NEWLINE separated list of IDs to fetch from NUCLEOTIDE as GENBANK"/>-->
-        <!--<param label="NCBI ID List" name="id_list" type="text" area="true" help="Newline/Comma separated list of IDs"/>-->
-    <!--</param>-->
-
-  <!--</inputs>-->
     <inputs>
+        <param name="format_selector" type="select" label="Format">
+          <option value="gbwithparts">GenBank with Contig Sequences</option>
+          <option value="gb">GenBank Flatfile</option>
+          <option value="fasta">FASTA</option>
+          <option value="fasta_cds_aa">FASTA of CDS Products</option>
+          <option value="fasta_cds_na">FASTA of Coding Regions</option>
+        </param>
         <conditional name="input_type">
             <param name="input_type_selector" type="select" label="Input Type">
-              <option value="ids_file">choose file containing newline separated list of ids</option>
-              <option value="paste_ids">paste a newline separated list of ids</option>
+              <option value="ids_file">file containing a newline-separated list of IDs</option>
+              <option value="paste_ids">pasted list of IDs separated by a newline</option>
             </param>
             <when value="ids_file">
-                <param label="ID File" name="file_of_ids" type="data" format="tabular" help="NEWLINE separated list of IDs to fetch from NUCLEOTIDE as GENBANK"/>
+                <param label="ID File" name="file_of_ids" type="data" format="tabular,txt" help="Newline-separated list of IDs"/>
             </when>
             <when value="paste_ids">
-                <param label="NCBI ID List" name="pasted_ids" type="text" area="true" help="Newline/Comma separated list of IDs"/>
+                <param label="ID List" name="pasted_ids" type="text" area="true" help="Newline-separated list of IDs"/>
             </when>
         </conditional>
     </inputs>
     <outputs>
-        <data format="genbank" name="output" label="NCBI GenBank File Downloader" />
+        <data format="fasta" name="output">
+            <change_format>
+                <when input="format_selector" value="gbwithparts" format="genbank"/>
+                <when input="format_selector" value="gb" format="genbank"/>
+            </change_format>
+        </data>
     </outputs>
     <help><![CDATA[
-DO NOT USE THIS. It is not user friendly / configurable at all. DO NOT BUILD ON THIS. Use IUC tools.
+NCBI File Downloader
+============================
+
+This tool is a reduced version of the NCBI EDirect suite. Output is a single history item.
+
+Usage Guidelines and Requirements
+=================================
+
+Frequency, Timing, and Registration of E-utility URL Requests
+-------------------------------------------------------------
+
+In order not to overload the E-utility servers, NCBI recommends that users
+limit large jobs to either weekends or between 9:00 PM and 5:00 AM Eastern time
+during weekdays. Failure to comply with this policy may result in an IP address
+being blocked from accessing NCBI.
+
+Minimizing the Number of Requests
+---------------------------------
+
+If a task requires searching for and/or downloading a large number of
+records, it is much more efficient to use the Entrez History to upload
+and/or retrieve these records in batches rather than using separate
+requests for each record. Please refer to Application 3 in Chapter 3
+for an example. Many thousands of IDs can be uploaded using a single
+EPost request, and several hundred records can be downloaded using one
+EFetch request.
+
+
+Disclaimer and Copyright Issues
+-------------------------------
+
+In accordance with requirements of NCBI's E-Utilities, we must provide
+the following disclaimer:
+
+Please note that abstracts in PubMed may incorporate material that may
+be protected by U.S. and foreign copyright laws. All persons
+reproducing, redistributing, or making commercial use of this
+information are expected to adhere to the terms and conditions asserted
+by the copyright holder. Transmission or reproduction of protected
+items beyond that allowed by fair use (PDF) as defined in the copyright
+laws requires the written permission of the copyright owners. NLM
+provides no legal advice concerning distribution of copyrighted
+materials. Please consult your legal counsel. If you wish to do a large
+data mining project on PubMed data, you can enter into a licensing
+agreement and lease the data for free from NLM. For more information on
+this please see `http://www.nlm.nih.gov/databases/leased.html <http://www.nlm.nih.gov/databases/leased.html>`__
+
+The `full disclaimer <http://www.ncbi.nlm.nih.gov/About/disclaimer.html>`__ is available on
+their website
+
+Liability
+~~~~~~~~~
+
+For documents and software available from this server, the
+U.S. Government does not warrant or assume any legal liability or
+responsibility for the accuracy, completeness, or usefulness of any
+information, apparatus, product, or process disclosed.
+
+Endorsement
+~~~~~~~~~~~
+
+NCBI does not endorse or recommend any commercial
+products, processes, or services. The views and opinions of authors
+expressed on NCBI's Web sites do not necessarily state or reflect those
+of the U.S. Government, and they may not be used for advertising or
+product endorsement purposes.
+
+External Links
+~~~~~~~~~~~~~~
+
+Some NCBI Web pages may provide links to other Internet
+sites for the convenience of users. NCBI is not responsible for the
+availability or content of these external sites, nor does NCBI endorse,
+warrant, or guarantee the products, services, or information described
+or offered at these other Internet sites. Users cannot assume that the
+external sites will abide by the same Privacy Policy to which NCBI
+adheres. It is the responsibility of the user to examine the copyright
+and licensing restrictions of linked pages and to secure all necessary
+permissions.
       ]]></help>
 </tool>
