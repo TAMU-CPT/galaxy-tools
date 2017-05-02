@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import sys
-import json
 import time
 import argparse
 from webapollo import WebApolloInstance, featuresToFeatureSchema
