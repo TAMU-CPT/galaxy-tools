@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.gff3.gff3_split_into_frames" name="Splits GFF3 file into 6 files according to gene reading frames" version="1.0">
-  <description></description>
+<tool id="edu.tamu.cpt2.gff3.gff3_split_into_frames" name="Split GFF3 into reading frames" version="1.2">
+  <description>Splits GFF3 file into 6 files according to gene reading frames</description>
   <macros>
     <import>macros.xml</import>
 		<import>cpt-macros.xml</import>
@@ -13,6 +13,14 @@ $input
   <inputs>
     <param label="GFF3" name="input" type="data" format="gff,gff3"/>
   </inputs>
+  <outputs>
+        <data name="output1" format="gff3" from_work_dir="rf1.gff3" label="Reading Frame 1"/>
+        <data name="output2" format="gff3" from_work_dir="rf2.gff3" label="Reading Frame 2"/>
+        <data name="output3" format="gff3" from_work_dir="rf3.gff3" label="Reading Frame 3"/>
+        <data name="output4" format="gff3" from_work_dir="rf4.gff3" label="Reading Frame 4"/>
+        <data name="output5" format="gff3" from_work_dir="rf5.gff3" label="Reading Frame 5"/>
+        <data name="output6" format="gff3" from_work_dir="rf6.gff3" label="Reading Frame 6"/>
+  </outputs>
   <help><![CDATA[
 **What it does**
 
