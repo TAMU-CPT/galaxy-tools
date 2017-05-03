@@ -33,7 +33,7 @@ $top_only
 		<param label="Number of bases upstream of CDSs to begin search (--lookahead_max)" name="lookahead_max" type="integer" value="15"/>
 		<param checked="true" label="Automatically add RBSs to input GFF3" name="add"
 				type="boolean" truevalue="--add" falsevalue="" />
-		<param checked="false" label="Only report best hits (--top_only)"
+		<param checked="true" label="Only report best hits (--top_only)"
 				name="top_only" type="boolean" falsevalue="" truevalue="--top_only"/>
 	</inputs>
 	<outputs>
