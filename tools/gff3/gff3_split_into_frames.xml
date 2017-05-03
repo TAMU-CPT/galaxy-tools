@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.gff3.gff3_split_into_frames" name="Splits GFF3 file into 6 files according to gene reading frames" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gff3_split_into_frames.py
+$input
+]]></command>
+  <inputs>
+    <param label="GFF3" name="input" type="data" format="gff,gff3"/>
+  </inputs>
+  <help><![CDATA[
+**What it does**
+
+Splits one GFF3 file into 6 GFF3 files (one for each reading frame). Each file contains genes within that reading frame.
+      ]]></help>
+		<expand macro="citations" />
+</tool>
