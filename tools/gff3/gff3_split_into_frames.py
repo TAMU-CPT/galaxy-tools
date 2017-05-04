@@ -23,9 +23,9 @@ def split_into_frames(gff3):
             subfeatures=True
         ):
             if gene.location.strand == 1:
-                frame = str(((gene.location.start - 1) % 3) + 1)
+                frame = str(((gene.location.start) % 3) + 1)
             else:
-                frame = str((-gene.location.start % 3) + 4)
+                frame = str((-(gene.location.start - 1) % 3) + 4)
             locals()['rf'+frame].append(gene)
 
         for i in range(6):
