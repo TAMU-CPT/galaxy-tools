@@ -692,7 +692,6 @@ class AnnotationsClient(Client):
                 }
             ],
         }
-        print(data)
         data = self._update_data(data)
         return self.request('addComments', data)
 
