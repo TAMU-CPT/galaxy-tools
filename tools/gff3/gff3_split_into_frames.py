@@ -30,7 +30,7 @@ def split_into_frames(gff3):
 
         for i in range(6):
             dummy_rec.features = locals()['rf'+str(i+1)]
-            with open('rf'+str(i+1)+'.gff3', 'w') as outfile:
+            with open('rf'+str(i+1)+'.gff3', 'a') as outfile:
                 GFF.write([dummy_rec], outfile)
 
 
