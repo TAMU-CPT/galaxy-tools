@@ -154,5 +154,5 @@ if __name__ == '__main__':
                         'ERROR',
                         msg
                     ]))
-                sys.stdout.write('\n')
-                sys.stdout.flush()
+            sys.stdout.write('\n')
+            sys.stdout.flush()
