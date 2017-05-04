@@ -1241,7 +1241,7 @@ class WebApolloSeqFeature(object):
 
 
 def _tnType(feature):
-    if feature.type in ('gene', 'mRNA', 'exon', 'CDS'):
+    if feature.type in ('gene', 'mRNA', 'exon', 'CDS', 'terminator', 'tRNA'):
         return feature.type
     else:
         return 'exon'
@@ -1401,7 +1401,7 @@ class fakeTrans(object):
         return o
 
 
-def retry(closure, sleep=1, limit=10):
+def retry(closure, sleep=1, limit=5):
     """
     Apollo has the bad habit of returning 500 errors if you call APIs
     too quickly, largely because of the unholy things that happen in
@@ -1425,12 +1425,12 @@ def retry(closure, sleep=1, limit=10):
         count += 1
 
         if count >= limit:
-            break
+            return False
         try:
             # Try calling it
             closure()
             # If successful, exit
-            break
+            return True
         except Exception as e:
             log.info(str(e)[0:100])
             time.sleep(sleep)

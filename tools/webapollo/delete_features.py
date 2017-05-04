@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import argparse
+import random
 from webapollo import WebApolloInstance
-from webapollo import WAAuth, OrgOrGuess, GuessOrg, AssertUser
+from webapollo import WAAuth, OrgOrGuess, GuessOrg, AssertUser, retry
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -32,11 +33,12 @@ if __name__ == '__main__':
     # Then get a list of features.
     features = wa.annotations.getFeatures()
     # For each feature in the features
-    for feature in features['features']:
+    for feature in sorted(features['features'], key=lambda x: random.random()):
         # We see that deleteFeatures wants a uniqueName, and so we pass
         # is the uniquename field in the feature.
-        try:
+        def fn():
             wa.annotations.deleteFeatures([feature['uniquename']])
             print('Deleted %s' % feature['uniquename'])
-        except:
+
+        if not retry(fn, limit=3):
             print('Error %s' % feature['uniquename'])
