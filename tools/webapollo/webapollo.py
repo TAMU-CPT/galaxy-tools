@@ -692,7 +692,6 @@ class AnnotationsClient(Client):
                 }
             ],
         }
-        print(data)
         data = self._update_data(data)
         return self.request('addComments', data)
 
@@ -716,6 +715,19 @@ class AnnotationsClient(Client):
         data = self._update_data(data)
         return self.request('addAttribute', data)
 
+    def deleteAttribute(self, feature_id, key, value):
+        data = {
+            'features': [
+                {
+                    'uniquename': feature_id,
+                    'non_reserved_properties': [
+                        {'tag': key, 'value': value}
+                    ]
+                }
+            ]
+        }
+        data = self._update_data(data)
+        return self.request('addAttribute', data)
     def getFeatures(self):
         data = self._update_data({})
         return self.request('getFeatures', data)

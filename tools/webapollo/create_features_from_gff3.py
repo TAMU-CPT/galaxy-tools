@@ -33,9 +33,9 @@ if __name__ == '__main__':
 
     bad_quals = ['date_creation', 'source', 'owner', 'date_last_modified', 'Name', 'ID']
 
-    # sys.stdout.write('# ')
-    # sys.stdout.write('\t'.join(['Feature ID', 'Apollo ID', 'Success', 'Messages']))
-    # sys.stdout.write('\n')
+    sys.stdout.write('# ')
+    sys.stdout.write('\t'.join(['Feature ID', 'Apollo ID', 'Success', 'Messages']))
+    sys.stdout.write('\n')
     tRNA_idx = 0
     terminator_idx = 0
     # print(wa.annotations.getFeatures())
@@ -154,5 +154,5 @@ if __name__ == '__main__':
                         'ERROR',
                         msg
                     ]))
-                sys.stdout.write('\n')
-                sys.stdout.flush()
+            sys.stdout.write('\n')
+            sys.stdout.flush()
