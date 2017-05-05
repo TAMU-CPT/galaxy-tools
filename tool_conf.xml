@@ -32,7 +32,8 @@
     <!--<tool hidden="True" file="cpt2/galaxy-tools/tools/464/password_passthrough.xml" />-->
     <tool file="cpt2/galaxy-tools/tools/464/guanine_test.xml" labels="464-2017"/>
     <label id="l_4cacao" text="CACAO"/>
-    <tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml" labels="464-2017"/>
+    <tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/cacao/fetch_report.xml"/>
     <!-- BEGIN GUANINE -->
       <tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_6_over_Minitopics_7_and_8.xml" />
     <!-- END GUANINE -->

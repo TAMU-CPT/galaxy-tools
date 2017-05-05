@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.export2" name="Retrieve Data" version="3.0">
+  <description>from Apollo into Galaxy</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <code file="webapollo.py"/>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/export.py
+
+@ADMIN_AUTH@
+
+@ORG_CN_OR_GUESS@
+
+--gff "$gff_out"
+--fasta "$fasta_out"
+--json "$json_out"
+
+]]></command>
+  <inputs>
+    <expand macro="cn_or_guess" />
+  </inputs>
+  <outputs>
+	<data format="gff3" name="gff_out" label="${org_source.org_select}${org_source.org_raw} Annotations from Apollo"/>
+    <data format="fasta" name="fasta_out" label="${org_source.org_select}${org_source.org_raw} Sequence(s) from Apollo"/>
+    <data format="json" name="json_out" label="${org_source.org_select}${org_source.org_raw} Metadata from Apollo"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Exports the sequence data and annotations from Apollo.
+
+If you provide an Apollo JSON file as input to the Organism Common Name list,
+this will enable extracting multiple organism's data at once from Apollo.
+Beware that currently all gff3 and fasta responses are merged together. If you
+have two separate organisms with identically named reference sequences, it will
+not be possible to separate those out.
+
+@REFERENCES@
+      ]]></help>
+</tool>
