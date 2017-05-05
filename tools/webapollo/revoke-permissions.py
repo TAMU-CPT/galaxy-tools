@@ -11,37 +11,27 @@ if __name__ == '__main__':
     parser.add_argument('password', help='WA Admin Password')
     parser.add_argument('email', help='User Email')
 
-    parser.add_argument('--commonName', help='Common Name')
+    parser.add_argument('idList', type=argparse.FileType('r'), help='List of User IDs')
+    parser.add_argument('--dry_run', action='store_true')
 
     args = parser.parse_args()
     wa = WebApolloInstance(args.apollo, args.username, args.password)
 
     gx_user = AssertAdmin(AssertUser(wa.users.loadUsers(email=args.email)))
 
-    s464 = [
-        42217,
-        4637,
-        4673,
-        4793,
-        4869,
-        4904,
-        4931,
-        4958,
-        4961,
-        5036,
-        5089,
-        5092,
-        5094,
-        5116,
-        5301,
-        5427,
-    ]
+    s464 = [x.strip() for x in args.idList.readlines()]
+
+    print('# User ID\tEmail\tAction\tOrganism ID\tOrganism Name')
+    users = wa.users.loadUsers()
 
     orgs = wa.organisms.findAllOrganisms()
-    for org in orgs:
-        for user in wa.users.loadUsers():
-            if user.userId in s464:
-                # interscetion of org + user
-                print 'Revoking %s on %s' % (user, org['commonName'])
-                wa.users.updateOrganismPermission(user, org['commonName'])
-                time.sleep(.5)
+    for user in users:
+        if str(user.userId) in s464:
+            for org in user.orgPerms():
+                print('%s\t%s\t%s\t%s\t%s' % (user.userId, user.username, 'revoke', org['id'], org['organism']))
+                if not args.dry_run:
+                    wa.users.updateOrganismPermission(user, org['organism'],
+                                                      administrate=False,
+                                                      write=False, read=False,
+                                                      export=False)
+                    time.sleep(.5)
