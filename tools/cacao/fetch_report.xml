@@ -17,7 +17,7 @@ https://cpt.tamu.edu/cacao-backend/
     <param name="org_file" type="data" format="json" label="Apollo Organism File" help="Will only fetch first organism" />
   </inputs>
   <outputs>
-	<data format="tabular" name="log" label="CPT GO Annotations for ${org_file}"/>
+	<data format="tabular" name="log" label="CPT GO Annotations for ${org_file.name}"/>
   </outputs>
   <help><![CDATA[
 **What it does**

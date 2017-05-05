@@ -55,7 +55,6 @@ def main():
     organism = get(token, args.url + 'organisms/', dict(
         common_name=organism_name,
     ))['results'][0]
-    print(organism)
 
     refseqs = get(token, args.url + 'refseq/', dict(
         organism__common_name=organism_name,
