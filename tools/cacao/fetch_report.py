@@ -78,8 +78,11 @@ def main():
         page += 1
 
     def get_go_term(id):
-        r = requests.get('https://cpt.tamu.edu/onto_api/%s.json' % id)
-        return r.json()
+        if id.startswith('CPT:') or id.startswith('GO:'):
+            r = requests.get('https://cpt.tamu.edu/onto_api/%s.json' % id)
+            return r.json()['name']
+        else:
+            return id
 
     fields = [
         'owner',
@@ -110,7 +113,7 @@ def main():
     sys.stdout.write('\tGO Term\n')
     for gaf in gaf_data:
         fixed_fields = [fix_field(gaf, f) for f in fields]
-        fixed_fields.append(get_go_term(gaf['go_id'])['name'])
+        fixed_fields.append(get_go_term(gaf['go_id']))
         sys.stdout.write('\t'.join(fixed_fields))
         sys.stdout.write('\n')
 
