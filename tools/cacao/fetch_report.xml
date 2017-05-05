@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.cacao.fetch_report" name="Fetch Annotation Set" version="1.2">
+  <description>for an organism from CACAO</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/fetch_report.py
+https://cpt.tamu.edu/cacao-backend/
+/galaxy/creds.json
+"$org_file"
+
+> $log]]></command>
+  <inputs>
+    <param name="org_file" type="data" format="json" label="Apollo Organism File" help="Will only fetch first organism" />
+  </inputs>
+  <outputs>
+	<data format="tabular" name="log" label="CPT GO Annotations for ${org_file}"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Adds an organism to the CPT GO Service Database. We run this automatically so it is unlikely that you need to run this manually.
+
+@REFERENCES@
+      ]]></help>
+	<expand macro="citations" />
+</tool>
