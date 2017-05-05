@@ -79,8 +79,11 @@ def main():
 
     def get_go_term(id):
         if id.startswith('CPT:') or id.startswith('GO:'):
-            r = requests.get('https://cpt.tamu.edu/onto_api/%s.json' % id)
-            return r.json()['name']
+            try:
+                r = requests.get('https://cpt.tamu.edu/onto_api/%s.json' % id)
+                return r.json()['name']
+            except:
+                return id
         else:
             return id
 
