@@ -66,8 +66,8 @@ def main():
     page = 1
     while True:
         gafs = get(token, args.url +'gafs/', dict(
-            # gene__refseq_id=refseq['id'],
-            gene__refseq_id='df8baca3-3af4-4d72-8045-6de08072be77',
+            gene__refseq_id=refseq['id'],
+            # gene__refseq_id='df8baca3-3af4-4d72-8045-6de08072be77',
             page=page
         ))
         if 'detail' in gafs and gafs['detail'] == 'Invalid page.':
