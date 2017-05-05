@@ -44,7 +44,6 @@
     <tool file="cpt2/galaxy-tools/tools/webapollo/create_or_update_organism.xml"/>
     <tool file="cpt2/galaxy-tools/tools/webapollo/fetch_organism_jbrowse.xml"/>
     <tool file="cpt2/galaxy-tools/tools/webapollo/export.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/webapollo/export2.xml" hidden="True"/>
     <tool file="cpt2/galaxy-tools/tools/webapollo/renumber_features.xml" labels="new"/>
     <tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" labels="danger"/>
     <tool file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" labels="experimental"/>
