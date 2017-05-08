@@ -202,7 +202,7 @@ def annotation_table_report(record, wanted_cols, gaf_data):
     def _main_gaf_func(record, feature, gaf_data, attr):
         if feature.id in gaf_data:
             return [x[attr] for x in gaf_data[feature.id]]
-        return ['None']
+        return []
 
     def gaf_annotation_extension(record, feature, gaf_data):
         """GAF Annotation Extension
@@ -285,6 +285,9 @@ def annotation_table_report(record, wanted_cols, gaf_data):
     funcs = []
     lcl = locals()
     for x in [y.strip().lower() for y in wanted_cols.split(',')]:
+        if not x:
+            continue
+
         if x in lcl:
             funcs.append(lcl[x])
             # Keep track of docs

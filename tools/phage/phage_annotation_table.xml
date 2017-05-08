@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage.annotation_table" name="Annotation Table" version="3.1">
+<tool id="edu.tamu.cpt2.phage.annotation_table" name="Annotation Table" version="4.0">
     <description>from gff3 formatted datasets</description>
     <macros>
       <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+        <import>cpt-macros.xml</import>
     </macros>
-    <expand macro="requirements">
-      <requirement type="package" version="2.9.5">jinja2</requirement>
-	</expand>
+    <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
@@ -16,7 +14,7 @@ $gff3_data
 @GENOME_SELECTOR@
 
 --reportTemplateName "$report_format"
---annotationTableCols "$cols"
+--annotationTableCols "$cols,$gaf_cols"
 #if $gaf_data:
 --gafData "$gaf_data"
 #end if
@@ -25,7 +23,6 @@ $gff3_data
     <inputs>
         <expand macro="gff3_input" />
         <expand macro="genome_selector" />
-        <param label="GAF Data" name="gaf_data" type="data" format="tabular" optional="True" help="Optional GAF Data Table. This usually comes from the CPT CACAO GAF Data Export tool."/>
         <param label="Columns" type="select" name="cols" multiple="True">
             <option value="rid" selected="true">Record ID</option>
             <option value="id" selected="true">ID</option>
@@ -54,6 +51,11 @@ $gff3_data
             <option value="product" selected="true">Product</option>
             <option value="dbxrefs" selected="true">DBxrefs</option>
             <option value="qualifiers" selected="true">Qualifiers</option>
+        </param>
+
+        <param label="GAF Data" name="gaf_data" type="data" format="tabular" optional="True"
+            help="Optional GAF Data Table. This usually comes from the CPT CACAO GAF Data Export tool. The [GAF] Columns below are ONLY available when this data is populated."/>
+        <param label="GAF Columns" type="select" name="gaf_cols" multiple="True">
             <!-- GAF Specific Fields -->
             <option value="gaf_annotation_extension" selected="true">GAF Annotation Extension</option>
             <option value="gaf_aspect" selected="true">GAF Aspect</option>
