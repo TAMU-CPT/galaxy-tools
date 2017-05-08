@@ -3,6 +3,6 @@
 {% for row in dataset %}
 
 {% for col in row %}
-{% if col is not string %}{% for val in col %}"{{ val }}", {% endfor %}{% else %}{{ col }}{% endif %}	{% endfor %}
+{% if col is not string %}"{{ col | join }}"{% else %}{{ col }}{% endif %}	{% endfor %}
 {% endfor %}
 {% endfor %}

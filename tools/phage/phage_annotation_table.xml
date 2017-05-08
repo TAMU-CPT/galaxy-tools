@@ -5,7 +5,9 @@
       <import>macros.xml</import>
 		<import>cpt-macros.xml</import>
     </macros>
-    <expand macro="requirements"/>
+    <expand macro="requirements">
+      <requirement type="package" version="2.9.5">jinja2</requirement>
+	</expand>
     <command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
@@ -15,11 +17,15 @@ $gff3_data
 
 --reportTemplateName "$report_format"
 --annotationTableCols "$cols"
+#if $gaf_data:
+--gafData "$gaf_data"
+#end if
 
 > $output]]></command>
     <inputs>
         <expand macro="gff3_input" />
         <expand macro="genome_selector" />
+        <param label="GAF Data" name="gaf_data" type="data" format="tabular" optional="True" help="Optional GAF Data Table. This usually comes from the CPT CACAO GAF Data Export tool."/>
         <param label="Columns" type="select" name="cols" multiple="True">
             <option value="rid" selected="true">Record ID</option>
             <option value="id" selected="true">ID</option>
@@ -48,6 +54,21 @@ $gff3_data
             <option value="product" selected="true">Product</option>
             <option value="dbxrefs" selected="true">DBxrefs</option>
             <option value="qualifiers" selected="true">Qualifiers</option>
+            <!-- GAF Specific Fields -->
+            <option value="gaf_annotation_extension" selected="true">GAF Annotation Extension</option>
+            <option value="gaf_aspect" selected="true">GAF Aspect</option>
+            <option value="gaf_assigned_by" selected="true">GAF Assigned By</option>
+            <option value="gaf_date" selected="true">GAF Date</option>
+            <option value="gaf_db" selected="true">GAF DB</option>
+            <option value="gaf_db_reference" selected="true">GAF DB Reference</option>
+            <option value="gaf_evidence_code" selected="true">GAF Evidence Code</option>
+            <option value="gaf_gene" selected="true">GAF Gene</option>
+            <option value="gaf_go_id" selected="true">GAF GO ID</option>
+            <option value="gaf_go_term" selected="true">GAF GO Term</option>
+            <option value="gaf_id" selected="true">GAF ID</option>
+            <option value="gaf_notes" selected="true">GAF Notes</option>
+            <option value="gaf_owner" selected="true">GAF Owner</option>
+            <option value="gaf_with_or_from" selected="true">GAF with_or_from</option>
         </param>
         <param label="Report Format" type="select" name="report_format">
             <option value="phageqc_report_annotation_table.html" selected="true">HTML Table</option>
@@ -64,5 +85,5 @@ $gff3_data
     <help><![CDATA[
 Generate an "annotation table" of a genome, with user-configurable data columns
 ]]></help>
-		<expand macro="citations" />
+    <expand macro="citations" />
 </tool>
