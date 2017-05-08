@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import json
 import sys
 import requests
@@ -111,14 +112,22 @@ def main():
         else:
             return gaf[f]
 
-    sys.stdout.write('# ')
-    sys.stdout.write('\t'.join(fields))
-    sys.stdout.write('\tGO Term\n')
+    header = '# ' + ('\t'.join(fields)) + '\tGO Term'
+    print(header)
+    import codecs
+    UTF8Writer = codecs.getwriter('utf8')
+    sys.stdout = UTF8Writer(sys.stdout)
+
+    reload(sys)
+    sys.setdefaultencoding('utf8')
+
+
+
     for gaf in gaf_data:
-        fixed_fields = [fix_field(gaf, f) for f in fields]
+        fixed_fields = [fix_field(gaf, f).encode('utf-8') for f in fields]
         fixed_fields.append(get_go_term(gaf['go_id']))
-        sys.stdout.write('\t'.join(fixed_fields))
-        sys.stdout.write('\n')
+        ff = '\t'.join(fixed_fields)
+        print(unicode(ff).encode('utf-8'))
 
 
 if __name__ == '__main__':
