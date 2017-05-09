@@ -544,6 +544,12 @@ class UserObj(object):
             data[prop] = getattr(self, prop)
         return data
 
+    def orgPerms(self):
+        for orgPer in self.organismPermissions:
+            if len(orgPer['permissions']) > 2:
+                orgPer['permissions'] = json.loads(orgPer['permissions'])
+                yield orgPer
+
     def __str__(self):
         return '<User %s: %s %s <%s>>' % (self.userId, self.firstName,
                                           self.lastName, self.username)

@@ -15,7 +15,8 @@ SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # Path to the HTML template for the report
 
 
-def annotation_table_report(record, wanted_cols):
+def annotation_table_report(record, wanted_cols, gaf_data):
+    sorted_features = list(genes(record.features, sort=True))
     if wanted_cols is None or len(wanted_cols.strip()) == 0:
         return [], []
 
@@ -160,8 +161,6 @@ def annotation_table_report(record, wanted_cols):
         """
         return feature.qualifiers.get('Dbxref', [])
 
-    sorted_features = list(genes(record.features, sort=True))
-
     def upstream_feature(record, feature):
         """Next feature upstream"""
         if feature.strand > 0:
@@ -200,11 +199,95 @@ def annotation_table_report(record, wanted_cols):
         else:
             return 'None'
 
+    def _main_gaf_func(record, feature, gaf_data, attr):
+        if feature.id in gaf_data:
+            return [x[attr] for x in gaf_data[feature.id]]
+        return []
+
+    def gaf_annotation_extension(record, feature, gaf_data):
+        """GAF Annotation Extension
+
+        Contains cross references to other ontologies that can be used
+        to qualify or enhance the annotation. The cross-reference is
+        prefaced by an appropriate GO relationship; references to
+        multiple ontologies can be entered. For example, if a gene
+        product is localized to the mitochondria of lymphocytes, the GO
+        ID (column 5) would be mitochondrion ; GO:0005439, and the
+        annotation extension column would contain a cross-reference to
+        the term lymphocyte from the Cell Type Ontology.
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'annotation_extension')
+
+    def gaf_aspect(record, feature, gaf_data):
+        """GAF Aspect code
+
+        E.g. P (biological process), F (molecular function) or C (cellular component)
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'aspect')
+
+    def gaf_assigned_by(record, feature, gaf_data):
+        """GAF Creating Organisation
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'assigned_by')
+
+    def gaf_date(record, feature, gaf_data):
+        """GAF Creation Date
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'date')
+
+    def gaf_db(record, feature, gaf_data):
+        """GAF DB
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'db')
+
+    def gaf_db_reference(record, feature, gaf_data):
+        """GAF DB Reference
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'db_reference')
+
+    def gaf_evidence_code(record, feature, gaf_data):
+        """GAF Evidence Code
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'evidence_code')
+
+    def gaf_go_id(record, feature, gaf_data):
+        """GAF GO ID
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'go_id')
+
+    def gaf_go_term(record, feature, gaf_data):
+        """GAF GO Term
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'go_term')
+
+    def gaf_id(record, feature, gaf_data):
+        """GAF ID
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'id')
+
+    def gaf_notes(record, feature, gaf_data):
+        """GAF Notes
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'notes')
+
+    def gaf_owner(record, feature, gaf_data):
+        """GAF Creator
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'owner')
+
+    def gaf_with_or_from(record, feature, gaf_data):
+        """GAF With/From
+        """
+        return _main_gaf_func(record, feature, gaf_data, 'with_or_from')
+
     cols = []
     data = []
     funcs = []
     lcl = locals()
     for x in [y.strip().lower() for y in wanted_cols.split(',')]:
+        if not x:
+            continue
+
         if x in lcl:
             funcs.append(lcl[x])
             # Keep track of docs
@@ -235,22 +318,57 @@ def annotation_table_report(record, wanted_cols):
                     value = f(record, value)
             else:
                 # Otherwise just apply the lone function
-                value = func(record, gene)
+                if func.func_name.startswith('gaf_'):
+                    value = func(record, gene, gaf_data)
+                else:
+                    value = func(record, gene)
 
             if isinstance(value, list):
-                value = [x.decode('utf-8') for x in value]
+                value = [str(x).decode('utf-8') for x in value]
             else:
-                value = value.decode('utf-8')
+                value = str(value).decode('utf-8')
 
             row.append(value)
         # print row
         data.append(row)
-
     return data, cols
 
 
+def parseGafData(file):
+    cols = []
+    data = {}
+    # '10d04a01-5ed8-49c8-b724-d6aa4df5a98d': {
+        # 'annotation_extension': '',
+        # 'aspect': '',
+        # 'assigned_by': 'CPT',
+        # 'date': '2017-05-04T16:25:22.161916Z',
+        # 'db': 'UniProtKB',
+        # 'db_reference': 'GO_REF:0000100',
+        # 'evidence_code': 'ISA',
+        # 'gene': '0d307196-833d-46e8-90e9-d80f7a041d88',
+        # 'go_id': 'GO:0039660',
+        # 'go_term': 'structural constituent of virion',
+        # 'id': '10d04a01-5ed8-49c8-b724-d6aa4df5a98d',
+        # 'notes': 'hit was putative minor structural protein',
+        # 'owner': 'amarc1@tamu.edu',
+        # 'with_or_from': 'UNIREF90:B2ZYZ7'
+    # },
+    for row in file:
+        if row.startswith('#'):
+            # Header
+            cols = row.strip().replace('# ', '').replace('GO Term', 'go_term').split('\t')
+        else:
+            line = row.strip().split('\t')
+            tmp = dict(zip(cols, line))
+            if tmp['gene'] not in data:
+                data[tmp['gene']] = []
+
+            data[tmp['gene']].append(tmp)
+    return data
+
+
 def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotation_validator.html',
-                        annotationTableCols=''):
+                        annotationTableCols='', gafData=None):
     """
     Generate our HTML evaluation of the genome
     """
@@ -259,10 +377,14 @@ def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotatio
     # Get the first GFF3 record
     # TODO: support multiple GFF3 files.
     at_table_data = []
+    gaf = {}
+    if gafData:
+        gaf = parseGafData(gafData)
+
 
     for record in GFF.parse(annotations, base_dict=seq_dict):
         log.info("Producing an annotation table for %s" % record.id)
-        annotation_table_data, annotation_table_col_names = annotation_table_report(record, annotationTableCols)
+        annotation_table_data, annotation_table_col_names = annotation_table_report(record, annotationTableCols, gaf)
         at_table_data.append((
             record, annotation_table_data
         ))
@@ -276,6 +398,13 @@ def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotatio
 
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
     env.filters['nice_id'] = get_gff3_id
+
+    def join(listy):
+        return '\n'.join(listy)
+
+    env.filters.update({
+        'join': join
+    })
     tpl = env.get_template(reportTemplateName)
     return tpl.render(**kwargs).encode('utf-8')
 
@@ -287,7 +416,8 @@ if __name__ == '__main__':
 
     parser.add_argument('--reportTemplateName', help='Report template file name', default='phageqc_report_full.html')
     parser.add_argument('--annotationTableCols', help='Select columns to report in the annotation table output format')
+    parser.add_argument('--gafData', help='CPT GAF-like table', type=argparse.FileType('r'))
 
     args = parser.parse_args()
 
-    print evaluate_and_report(**vars(args))
+    print(evaluate_and_report(**vars(args)))

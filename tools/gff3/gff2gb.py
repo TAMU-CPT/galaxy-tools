@@ -12,7 +12,7 @@ import itertools
 import logging
 from Bio import SeqIO
 from Bio.Alphabet import generic_dna
-from Bio.SeqFeature import CompoundLocation
+from Bio.SeqFeature import CompoundLocation, FeatureLocation
 from BCBio import GFF
 from gff3 import feature_lambda, wa_unified_product_name, is_uuid, \
     feature_test_type, fsort, feature_test_true, feature_test_quals
@@ -77,11 +77,9 @@ def fix_gene_boundaries(feature):
     # feature to the contained mRNAs. This is good enough for now.
     fmin, fmax = fminmax(feature)
     if feature.location.strand > 0:
-        feature.location._start = fmin
-        feature.location._end = fmax
+        feature.location = FeatureLocation(fmin, fmax, strand=1)
     else:
-        feature.location._start = fmax
-        feature.location._end = fmin
+        feature.location = FeatureLocation(fmin, fmax, strand=-1)
     return feature
 
 
