@@ -1,0 +1,31 @@
+
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.tools.starts-sds-scrubber" name="Start and SD scrubber" version="1.0">
+	<description>Breaks starts and SDs when possible</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+python $__tool_directory__/starts-sds-scrubber.py
+@SEQUENCE@
+@INPUT_GFF@
+> $scrubbed
+</command>
+	<inputs>
+		<expand macro="input/fasta" />
+		<expand macro="gff3_input" />
+	</inputs>
+	<outputs>
+		<data format="fasta" name="scrubbed" label="Scrubbed" />
+	</outputs>
+	<tests>
+	</tests>
+	<help>
+**What it does**
+
+Changes start codon or SD sequence while keeping the same overall amino acid sequence.
+</help>
+		<expand macro="citations" />
+</tool>
