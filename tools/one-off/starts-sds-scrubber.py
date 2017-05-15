@@ -131,8 +131,7 @@ def repair(fasta, gff3):
 
         seqs.append(seq)
 
-    # with open('out.fa', 'w') as seqfile:
-    SeqIO.write(seqs, seqfile, 'fasta')
+    SeqIO.write(seqs, sys.stdout, 'fasta')
 
 
 if __name__ == '__main__':
