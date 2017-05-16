@@ -67,6 +67,9 @@ def break_start(seq):
     elif seq == 'TTG':  # if leucine, return TTA (still leucine)
         return 'TTA'
 
+def changed_letters(a, b):
+    return sum(a[i] != b[i] for i in range(len(a)))
+
 def break_sd(sd):
     """
         if possible, change the SD sequence
@@ -75,6 +78,8 @@ def break_sd(sd):
     cdns = []
     for c in sd.translate(table=table):  # find all possible combinations of codons w/ same translation
         cdns.append(aa_codes[c])
+
+    poss_changes = []  # changes that keep same aa sequence
     for i in list(itertools.product(*cdns)):  # if a combo has no shine, return
         check = ''.join(i)
         no_sd = True
@@ -82,8 +87,16 @@ def break_sd(sd):
             if s in check:
                 no_sd = False
         if no_sd:
-            return Seq(check, IUPAC.unambiguous_dna)
-    return sd
+            poss_changes.append(check)
+
+    num_changes = 100
+    best_replacement = sd
+    for p in poss_changes:  # return the aa seq with fewest changes
+        if changed_letters(p, str(sd)) < num_changes:
+            num_changes = changed_letters(p, str(sd))
+            best_replacement = Seq(p, IUPAC.unambiguous_dna)
+
+    return best_replacement
 
 def next_first_frame(start, mod_pos):
     """ return position of next nucleotide in frame 1 """
