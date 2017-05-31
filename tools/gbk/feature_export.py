@@ -5,6 +5,7 @@ import argparse
 import logging
 from Bio import SeqIO
 from Bio.Seq import Seq
+from Bio.Data import CodonTable
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 logging.basicConfig(level=logging.INFO)
@@ -44,6 +45,7 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                      n_bases_upstream=0, n_bases_downstream=0,
                      strip_stops=False, translation_table_id=11, informative=False):
 
+    codon_table = CodonTable.unambiguous_dna_by_id[11]
     for record in SeqIO.parse(genbank_file, "genbank"):
         for feature in record.features:
             if feature.type in tag:
@@ -102,7 +104,8 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                 extracted_seq = ''.join(map(str, extracted_seqs))
 
                 if strip_stops:
-                    extracted_seq = extracted_seq.replace('*', '')
+                    if extracted_seq[-3:] in codon_table.stop_codons:
+                        extracted_seq = extracted_seq[:-3]
 
                 yield [SeqRecord(Seq(extracted_seq.strip()), id=get_id(feature), description=defline)]
 
