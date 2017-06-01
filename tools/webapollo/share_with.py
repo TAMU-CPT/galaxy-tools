@@ -34,7 +34,6 @@ if __name__ == '__main__':
 
     # This user MUST be allowed to access an organism before they can
     # modify permissions on it.
-    print(orgs, org_cn)
     assert org_cn in orgs
 
     org = wa.organisms.findOrganismByCn(org_cn)
