@@ -1446,7 +1446,7 @@ def _galaxy_list_users(wa, gx_user, *args, **kwargs):
     user_data = []
     for user in wa.users.loadUsers():
         # Reformat
-        user_data.append((user.username, user.userId, False))
+        user_data.append((user.username, user.username, False))
     return user_data
 
 # This is all for implementing the command line interface for testing.
