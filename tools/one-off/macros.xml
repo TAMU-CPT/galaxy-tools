@@ -15,6 +15,15 @@
 	<token name="@SEQUENCE@">
 		"$sequences"
 	</token>
+
+	<xml name="gff3_input">
+		<param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
+	</xml>
+
+	<token name="@INPUT_GFF@">
+	"$gff3_data"
+	</token>
+
 	<xml name="input/fasta/protein">
 		<param label="Protein fasta file" name="sequences" type="data" format="fasta"/>
 	</xml>

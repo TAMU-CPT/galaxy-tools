@@ -112,6 +112,7 @@
     <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="new,experimental"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/stop_stats.xml"/>
     <tool file="cpt2/galaxy-tools/tools/fasta/start_stats.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/one-off/starts-sds-scrubber.xml"/>
   </section>
   <section id="cpt2_gff3" name="CPT2: GFF3">
     <tool file="cpt2/galaxy-tools/tools/gff3/gff3_aa_stats.xml"/>
