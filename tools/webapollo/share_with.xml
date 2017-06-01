@@ -4,6 +4,7 @@
   <macros>
     <import>macros.xml</import>
   </macros>
+  <code file="webapollo.py"/>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/share_with.py
