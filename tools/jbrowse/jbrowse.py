@@ -264,9 +264,12 @@ INSTALLED_TO = os.path.dirname(os.path.realpath(__file__))
 
 def metadata_from_node(node):
     metadata = {}
-    if len(node.findall('dataset')) != 1:
-        # exit early
-        return metadata
+    try:
+        if len(node.findall('dataset')) != 1:
+            # exit early
+            return metadata
+    except:
+        return {}
 
     for (key, value) in node.findall('dataset')[0].attrib.items():
         metadata['dataset_%s' % key] = value
