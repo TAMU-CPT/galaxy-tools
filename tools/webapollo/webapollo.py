@@ -1403,6 +1403,52 @@ def _galaxy_list_orgs(wa, gx_user, *args, **kwargs):
     return orgs
 
 
+def galaxy_list_users(trans, *args, **kwargs):
+    email = trans.get_user().email
+    wa = WebApolloInstance(
+        os.environ['GALAXY_WEBAPOLLO_URL'],
+        os.environ['GALAXY_WEBAPOLLO_USER'],
+        os.environ['GALAXY_WEBAPOLLO_PASSWORD']
+    )
+    # Assert that the email exists in apollo
+    try:
+        gx_user = wa.requireUser(email)
+    except UnknownUserException:
+        return []
+
+    # Key for cached data
+    cacheKey = 'users-' + email
+    # We don't want to trust "if key in cache" because between asking and fetch
+    # it might through key error.
+    if cacheKey not in cache:
+        # However if it ISN'T there, we know we're safe to fetch + put in
+        # there.
+        data = _galaxy_list_users(wa, gx_user, *args, **kwargs)
+        cache[cacheKey] = data
+        return data
+    try:
+        # The cache key may or may not be in the cache at this point, it
+        # /likely/ is. However we take no chances that it wasn't evicted between
+        # when we checked above and now, so we reference the object from the
+        # cache in preparation to return.
+        data = cache[cacheKey]
+        return data
+    except KeyError:
+        # If access fails due to eviction, we will fail over and can ensure that
+        # data is inserted.
+        data = _galaxy_list_users(wa, gx_user, *args, **kwargs)
+        cache[cacheKey] = data
+        return data
+
+
+def _galaxy_list_users(wa, gx_user, *args, **kwargs):
+    # Fetch the users.
+    user_data = []
+    for user in wa.users.loadUsers():
+        # Reformat
+        user_data.append((user.username, user.userId, False))
+    return user_data
+
 # This is all for implementing the command line interface for testing.
 class obj(object):
     pass
@@ -1457,13 +1503,16 @@ def retry(closure, sleep=1, limit=5):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Test access to apollo server')
     parser.add_argument('email', help='Email of user to test')
-    parser.add_argument('--action', choices=['org', 'group'], default='org', help='Data set to test, fetch a list of groups or users known to the requesting user.')
+    parser.add_argument('--action', choices=['org', 'group', 'users'], default='org', help='Data set to test, fetch a list of groups or users known to the requesting user.')
     args = parser.parse_args()
 
     trans = fakeTrans(args.email)
     if args.action == 'org':
         for f in galaxy_list_orgs(trans):
             print(f)
-    else:
+    elif args.action == 'group':
         for f in galaxy_list_groups(trans):
+            print(f)
+    else:
+        for f in galaxy_list_users(trans):
             print(f)
