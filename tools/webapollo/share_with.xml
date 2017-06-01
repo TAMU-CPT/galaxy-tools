@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.share_with" name="Share Organism With User" version="1.1">
+<tool id="edu.tamu.cpt2.webapollo.share_with" name="Share Organism With User" version="1.2">
   <description>in Apollo</description>
   <macros>
     <import>macros.xml</import>
