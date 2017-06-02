@@ -7,6 +7,7 @@
   <code file="webapollo.py"/>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
+@APOLLO_ENSURE_USER_EXISTS@
 python $__tool_directory__/create_features_from_gff3.py
 @ADMIN_AUTH@
 @ORG_OR_GUESS@

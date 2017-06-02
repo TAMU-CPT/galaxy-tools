@@ -7,6 +7,7 @@
   <code file="webapollo.py"/>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
+@APOLLO_ENSURE_USER_EXISTS@
 ## Now we delete
 python $__tool_directory__/rename_features.py
 @ADMIN_AUTH@

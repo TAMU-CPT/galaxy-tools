@@ -9,6 +9,9 @@
       <yield/>
     </requirements>
   </xml>
+  <token name="@APOLLO_ENSURE_USER_EXISTS@">
+$__tool_directory__/ensure_exists.sh "$__user_email__";
+  </token>
   <token name="@DATA_DIR@">\$GALAXY_SHARED_DIR</token>
   <token name="@EXT_URL@">
 \$GALAXY_WEBAPOLLO_EXT_URL

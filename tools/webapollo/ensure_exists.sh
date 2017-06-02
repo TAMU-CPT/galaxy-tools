@@ -1,3 +1,4 @@
+#!/bin/bash
 curl \
 	-H 'Connection: close' \
 	-H "REMOTE_USER: $1" \

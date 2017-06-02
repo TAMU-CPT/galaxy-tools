@@ -6,6 +6,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
+@APOLLO_ENSURE_USER_EXISTS@
 python $__tool_directory__/json2iframe.py
 @URL@
 $json_file

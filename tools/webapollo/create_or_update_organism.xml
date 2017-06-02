@@ -7,6 +7,7 @@
   <code file="webapollo.py"/>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
+@APOLLO_ENSURE_USER_EXISTS@
 cp -R ${jbrowse.extra_files_path}/data/ @DATA_DIR@/${jbrowse.id};
 
 python $__tool_directory__/create_or_update_organism.py

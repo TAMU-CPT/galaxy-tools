@@ -6,6 +6,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
+@APOLLO_ENSURE_USER_EXISTS@
 python $__tool_directory__/create_bot_account.py
 
 @ADMIN_AUTH@
