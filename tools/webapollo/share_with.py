@@ -39,7 +39,7 @@ if __name__ == '__main__':
     org = wa.organisms.findOrganismByCn(org_cn)
 
     # The other person must already be an apollo user
-    other_user = AssertUser(wa.users.loadUsers(email=args.share_with))
+    other_user = AssertUser(wa.users.loadUsers(email=args.share_with.replace("__at__", "@")))
 
     wa.users.updateOrganismPermission(
         other_user,
