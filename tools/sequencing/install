@@ -1,0 +1,158 @@
+#!/bin/bash
+###############################################################################
+#
+# Illumina BaseMount Installer
+# Copyright 2016
+# Script Version 0.2.2
+#
+###############################################################################
+#
+# BaseMount setup script
+
+set -e
+
+INV="\033[7m"
+BRN="\033[33m"
+RED="\033[31m"
+END="\033[0m\033[27m"
+
+function prf() {
+    printf "$1$END\n"
+}
+
+function on_error() {
+    printf "$RED
+It looks like you had an issue trying to install BaseMount.
+Troubleshooting and basic usage information for BaseMount are available at:
+    https://basemount.basespace.illumina.com
+$END"
+}
+trap on_error ERR
+
+
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
+
+if [ -z "$1" ]
+then
+    #echo "Using production bintray repo"
+    credential=""
+    repoPrefix=""
+else
+    echo "INFO: Using test bintray repo"
+    credential="basespace-devs:$1@"
+    repoPrefix="Test-"
+fi
+
+bsfs_deb_repo_url="http://${credential}dl.bintray.com/basespace/${repoPrefix}BaseSpaceFS-DEB"
+basemount_deb_repo_url="http://${credential}dl.bintray.com/basespace/${repoPrefix}BaseMount-DEB"
+
+bsfs_rpm_repo_url="http://${credential}dl.bintray.com/basespace/${repoPrefix}BaseSpaceFS-RPM"
+basemount_rpm_repo_url="http://${credential}dl.bintray.com/basespace/${repoPrefix}BaseMount-RPM"
+
+
+# OS/Distro Detection
+if [ -f /etc/debian_version ]; then
+    OS=Debian
+elif [ -f /etc/redhat-release ]; then
+    OS=RedHat
+elif [ -f /etc/system-release ]; then
+    OS=`cut -d " " -f 1 /etc/system-release`
+elif [ -f /etc/lsb-release ]; then
+    . /etc/lsb-release
+    OS=$DISTRIB_ID
+else
+    OS=$(uname -s)
+fi
+
+
+prf ""
+prf "Welcome to BaseMount setup for $OS"
+prf ""
+sleep 2
+
+
+if [ $OS = Debian ]; then
+
+    prf ""
+    prf "* Adding BaseMount repository"
+    echo "# Packages by Illumina BaseSpace" | tee /etc/apt/sources.list.d/basemount.list
+    echo "deb ${basemount_deb_repo_url} saucy main" | tee -a /etc/apt/sources.list.d/basemount.list
+
+    prf ""
+    prf "* Adding BSFS plugin repository"
+    echo "# Packages by Illumina BaseSpace" | tee /etc/apt/sources.list.d/basespacefs.list
+    echo "deb ${bsfs_deb_repo_url} saucy main" | tee -a /etc/apt/sources.list.d/basespacefs.list
+
+    prf ""
+    prf "* Adding BaseSpace GPG key"
+    curl "https://bintray.com/user/downloadSubjectPublicKey?username=basespace" | apt-key add -
+
+    prf ""
+    prf "* Updating apt sources"
+    apt-get update || echo "Warning: apt-get update had a few warnings"
+
+    prf ""
+    prf "* Installing BaseMount"
+    apt-get install basemount -y
+
+    prf ""
+    prf "* Installing BSFS plugin"
+    ( apt-get -o DPkg::options::=--force-confmiss install bsfs -y > /dev/null 2> /dev/null || echo "INFO: We didn't manage to install the BSFS plugin, but BaseMount works really well without it anyway. If you need the plugin, please see the documentation \"Appendix 1 - BSFS\" for a manual installation" )
+
+elif [ $OS = RedHat -o $OS = Amazon ]; then
+    prf ""
+    prf "* Adding Yum repositories to /etc/yum.repos.d/"
+
+    echo "# Packages by Illumina BaseSpace" > /etc/yum.repos.d/bintray-basespace-BaseSpaceFS-RPM.repo
+    echo "[bintraybintray-basespace-BaseSpaceFS-RPM]" >> /etc/yum.repos.d/bintray-basespace-BaseSpaceFS-RPM.repo
+    echo "name=bintray-basespace-BaseSpaceFS-RPM" >> /etc/yum.repos.d/bintray-basespace-BaseSpaceFS-RPM.repo
+    echo "baseurl=${bsfs_rpm_repo_url}" >> /etc/yum.repos.d/bintray-basespace-BaseSpaceFS-RPM.repo
+    echo "gpgcheck=1" >> /etc/yum.repos.d/bintray-basespace-BaseSpaceFS-RPM.repo
+    echo "enabled=1" >> /etc/yum.repos.d/bintray-basespace-BaseSpaceFS-RPM.repo
+
+    echo "# Packages by Illumina BaseSpace" > /etc/yum.repos.d/bintray-basespace-BaseMount-RPM.repo
+    echo "[bintraybintray-basespace-BaseMount-RPM]" >> /etc/yum.repos.d/bintray-basespace-BaseMount-RPM.repo
+    echo "name=bintray-basespace-BaseMount-RPM" >> /etc/yum.repos.d/bintray-basespace-BaseMount-RPM.repo
+    echo "baseurl=${basemount_rpm_repo_url}" >> /etc/yum.repos.d/bintray-basespace-BaseMount-RPM.repo
+    echo "gpgcheck=1" >> /etc/yum.repos.d/bintray-basespace-BaseMount-RPM.repo
+    echo "enabled=1" >> /etc/yum.repos.d/bintray-basespace-BaseMount-RPM.repo
+  
+    prf ""
+    prf "* Importing BaseSpace's public key"
+    rpm --import https://bintray.com/user/downloadSubjectPublicKey?username=basespace
+ 
+    prf ""
+    prf "* Checking bash-completion package"
+    if ! yum -y install bash-completion ; then
+        curl -o /tmp/bash-completion-20060301-1.noarch.rpm http://s3.amazonaws.com/basemount-early-access/bash-completion-20060301-1.noarch.rpm
+        rpm -ivh /tmp/bash-completion-20060301-1.noarch.rpm
+        rm -f /tmp/bash-completion-20060301-1.noarch.rpm
+    fi
+
+    prf ""
+    prf "* Installing BaseMount"
+    yum -y install basemount
+
+    prf ""
+    prf "* Installing BSFS plugin"
+    ( yum -y install bsfs > /dev/null 2> /dev/null || echo "INFO: We didn't manage to install the BSFS plugin, but BaseMount works really well without it anyway. If you really want it, please see the documentation \"Appendix 1 - BSFS\" for a manual installation" )
+
+else
+
+    prf "* Sorry, BaseMount does not currently support this linux distribution: $OS"
+    exit 1
+
+fi
+
+prf ""
+prf "=== BaseMount successfully installed ==="
+prf ""
+prf "Optional: Refresh bash auto-completion for current user with \"exec bash\" (or log out and back in)"
+prf ""
+prf "* You are now ready to use BaseMount. Please run \"basemount <mount point>\""
+prf "* Type \"/usr/local/bin/basemount --help\" for help."
+prf ""

@@ -10,6 +10,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
+CWD = os.getcwd()
 
 CHUNK_SIZE = 128 * 1024
 RunID = sys.argv[1]
@@ -66,6 +67,7 @@ for item in json_obj['Response']['Properties']['Items']:
         for file in files_obj['Response']['Items']:
             potential_filename = file['Name']
             safe_filename = re.sub('[^A-Za-z0-9._-]', '', potential_filename)
+            safe_filename = os.path.join(CWD, 'output', safe_filename)
             fastq_url = file['HrefContent']
 
             response = urlopen(API_BASE + fastq_url + ACCESS_TOKEN, timeout=1200)
@@ -89,4 +91,4 @@ for item in json_obj['Response']['Properties']['Items']:
                         break
                     handle.write(chunk)
 
-print(json.dumps(json_obj))
+print(json.dumps(json_obj, indent=2))

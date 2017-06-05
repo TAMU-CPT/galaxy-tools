@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.sequencing.basespace" name="BaseSpace Downloader" version="1.0.0">
+<tool id="edu.tamu.cpt.sequencing.basespace" name="BaseSpace Downloader" version="2.0.0">
   <description>fetches dataset for Galaxy</description>
   <command detect_errors="aggressive"><![CDATA[
+mkdir output;
 $__tool_directory__/BaseSpaceRunDownloader_v2.py
 "$RunID"
 > $default]]></command>
@@ -10,6 +11,7 @@ $__tool_directory__/BaseSpaceRunDownloader_v2.py
   </inputs>
   <outputs>
     <data format="json" name="default"/>
+    <discover_datasets pattern="__designation__" ext="fastqsanger" directory="output" visible="true" />
   </outputs>
   <tests>
   </tests>
