@@ -210,8 +210,6 @@
     <tool file="cpt2/galaxy-tools/tools/jbrowse/jbrowse.xml"/>
   </section>
   <section id="cpt" name="CPT:Scripts and Analysis">
-    <tool file="cpt/new-py/bin/cpt_convert_tmhmmfasta_merge.xml"/>
-    <tool file="cpt/new-py/bin/cpt_add_iprscan_to_gbk.xml"/>
     <tool file="cpt2/Restriction-Digest-Tool/bin/digest_dna.xml"/>
     <tool file="cpt2/Restriction-Digest-Tool/bin/graphic_drawer.xml"/>
     <tool file="fasta_to_tabular/fasta_to_tabular.xml"/>
@@ -235,20 +233,6 @@
     <tool file="cpt2/galaxy-tools/tools/one-off/none-validator.xml"/>
     <tool file="cpt2/galaxy-tools/tools/one-off/find_l_like_proteins.xml"/>
   </section>
-  <section id="cpt_phantasm2" name="CPT:PHAnTASM v2">
-    <tool file="cpt/PHAnTASM/bin/phantasm_cluster.xml"/>
-    <tool file="cpt/PHAnTASM/bin/phantasm_compare.xml"/>
-    <tool file="cpt/PHAnTASM/bin/phantasm_data_axb.xml"/>
-    <tool file="cpt/PHAnTASM/bin/phantasm_data_binning.xml"/>
-    <tool file="cpt/PHAnTASM/bin/phantasm_data_comparison.xml"/>
-    <tool file="cpt/PHAnTASM/bin/phantasm_data_rescale.xml"/>
-    <tool file="cpt/PHAnTASM/bin/phantasm_data_transformation.xml"/>
-    <tool file="cpt/PHAnTASM/bin/phantasm_generate_cids.xml"/>
-  </section>
-  <section id="pdf" name="PDF Tools">
-    <tool file="cpt/galaxy-tools/TeX/pdfimages.xml"/>
-    <tool file="cpt/galaxy-tools/TeX/pdftotext.xml"/>
-  </section>
   <section id="cdhit" name="CD-HIT">
     <tool file="cpt2/galaxy-tools/tools/comparative/cdhit-reformat.xml"/>
     <tool file="cpt2/galaxy-tools/tools/comparative/cdhit-clustsize.xml"/>
@@ -261,4 +245,7 @@
   <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/env.xml"/>
   <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/hostname.xml"/>
   <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/test.xml"/>
+  <section id="muts" name="Mutation Analysis Tools">
+      <tool file="cpt2/galaxy-tools/tools/one_snp_away/script.xml" />
+  </section>
 </toolbox>
