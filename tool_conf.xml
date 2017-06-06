@@ -260,6 +260,6 @@
   <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/hostname.xml"/>
   <tool hidden="True" file="cpt2/galaxy-tools/tools/admin/test.xml"/>
   <section id="muts" name="Mutation Analysis Tools">
-      <tool file="cpt2/one_snp_away/script.xml" />
+      <tool file="cpt2/galaxy-tools/tools/one_snp_away/script.xml" />
   </section>
 </toolbox>
