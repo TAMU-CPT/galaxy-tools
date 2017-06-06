@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.sequencing.basespace-auth-2" name="BaseSpace Auth Part 2" version="1.1">
+<tool id="edu.tamu.cpt.sequencing.basespace-auth-2" name="BaseSpace Auth Part 2" version="1.2">
   <description></description>
   <command detect_errors="aggressive"><![CDATA[
 CLIENT=`cat /galaxy/creds.json | jq .illumina_basespace.client_id -r`;
 SECRET=`cat /galaxy/creds.json | jq .illumina_basespace.secret_id -r`;
-DEVICE_CODE=`cat $device_code_file`;
+DEVICE_CODE=`cat $device_code_file | jq .device_code -r`;
 
 TOKEN=`curl
 	--silent
@@ -16,19 +16,21 @@ TOKEN=`curl
 	-d"grant_type=device"
 	https://api.basespace.illumina.com/v1pre3/oauthv2/token | jq .token -r`;
 
+#set user_email = str($__user_email__).replace('@', '__at__')
+
 TMPFILE=`mktemp`;
 cat /galaxy/creds.basespace.json |
-	jq ".basespace.$__user_email__ = \$TOKEN" > \$TMPFILE;
+	jq ".basespace.$user_email = \$TOKEN" > \$TMPFILE;
 
 mv \$TMPFILE /galaxy/creds.basespace.json;
 
-echo "$__user_email__ = \$TOKEN" > $output;
+jq ".basespace.$user_email = \$TOKEN" > $output;
 ]]></command>
   <inputs>
-    <param type="data" format="txt" name="device_code_file" label="Device Code File" />
+    <param type="data" format="json" name="device_code_file" label="Device Code File" />
   </inputs>
   <outputs>
-    <data format="txt" name="output" label="Device Code" />
+    <data format="json" name="output" label="Auth Token" />
   </outputs>
   <tests>
   </tests>
