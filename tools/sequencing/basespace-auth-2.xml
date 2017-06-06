@@ -7,8 +7,9 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-CLIENT=`cat /galaxy/creds.json | jq .illumina_basespace.client_id -r`;
-SECRET=`cat /galaxy/creds.json | jq .illumina_basespace.secret_id -r`;
+@CLIENT_ID@
+@SECRET_ID@
+
 DEVICE_CODE=`cat $device_code_file | jq .device_code -r`;
 
 TOKEN=`curl
