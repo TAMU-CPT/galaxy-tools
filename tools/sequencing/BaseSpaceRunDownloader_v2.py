@@ -2,6 +2,7 @@
 from urllib2 import Request, urlopen, URLError
 from os.path import expanduser
 import re
+import subprocess
 import hashlib
 import json
 import sys
@@ -12,7 +13,7 @@ log = logging.getLogger()
 
 CWD = os.getcwd()
 
-CHUNK_SIZE = 128 * 1024
+CHUNK_SIZE = 1024 * 1024
 RunID = sys.argv[1]
 
 
@@ -69,6 +70,7 @@ for item in json_obj['Response']['Properties']['Items']:
             safe_filename = re.sub('[^A-Za-z0-9._-]', '', potential_filename)
             safe_filename = os.path.join(CWD, 'output', safe_filename)
             fastq_url = file['HrefContent']
+            log.info("Downloading %s", safe_filename)
 
             response = urlopen(API_BASE + fastq_url + ACCESS_TOKEN, timeout=1200)
 
@@ -90,5 +92,7 @@ for item in json_obj['Response']['Properties']['Items']:
                     if not chunk:
                         break
                     handle.write(chunk)
+            log.info("Unzipping %s", safe_filename)
+            subprocess.check_call(['gunzip', safe_filename])
 
 print(json.dumps(json_obj, indent=2))
