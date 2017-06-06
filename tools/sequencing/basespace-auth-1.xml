@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.sequencing.basespace-auth-1" name="BaseSpace Auth Part 1" version="1.7">
-  <description></description>
-  <command detect_errors="aggressive"><![CDATA[
+	<description></description>
+	<command detect_errors="aggressive"><![CDATA[
 CLIENT=\$(cat /galaxy/creds.json | jq .illumina_basespace.client_id -r);
 
 RESPONSE=\$(curl
@@ -25,15 +25,15 @@ printf '<p>Once that is done, run the second part of the auth tool with the "Dev
 printf '</body></html>' >> $html_out;
 
 ]]></command>
-  <inputs>
-  </inputs>
-  <outputs>
-    <data format="json" name="device_code" label="Device Code" />
-    <data format="html" name="html_out" label="Authentication Page (Open Me)" />
-  </outputs>
-  <tests>
-  </tests>
-  <help><![CDATA[
+	<inputs>
+	</inputs>
+	<outputs>
+		<data format="json" name="device_code" label="Device Code" />
+		<data format="html" name="html_out" label="Authentication Page (Open Me)" />
+	</outputs>
+	<tests>
+	</tests>
+	<help><![CDATA[
 **How it works**
 
 This tool generates a URL that you must access in order to grant permissions to
@@ -46,5 +46,5 @@ Workflow:
 - Run the second tool (BaseSpace Auth Part 2) with "Device Code" as input.
 
 ]]></help>
-  <expand macro="citations" />
+	<expand macro="citations" />
 </tool>

@@ -1,24 +1,29 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.sequencing.basespace" name="BaseSpace: Sample Downloader" version="2.2.0">
-  <description></description>
-  <command detect_errors="aggressive"><![CDATA[
-USER_EMAIL_HASH=`echo -n "$__user_email__" | md5sum | sed 's/ .*//'`;
-ACCESS_TOKEN=`/galaxy/creds.basespace.json | jq ".basespace.\"\$USER_EMAIL_HASH\"" -r`
+	<description></description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+@USER_KEY@
+@USER_ACCESS_TOKEN@
 
 mkdir output;
 $__tool_directory__/BaseSpaceRunDownloader_v2.py \$ACCESS_TOKEN "$run_id"
 > $default]]></command>
-  <inputs>
-    <param type="text" name="run_id" label="Run ID" />
-  </inputs>
-  <outputs>
-    <data format="json" name="default">
-        <discover_datasets pattern="__designation__" format="fastqsanger" directory="output" visible="true" />
-    </data>
-  </outputs>
-  <tests>
-  </tests>
-  <help><![CDATA[
+	<inputs>
+		<param type="text" name="run_id" label="Run ID" />
+	</inputs>
+	<outputs>
+		<data format="json" name="default">
+				<discover_datasets pattern="__designation__" format="fastqsanger" directory="output" visible="true" />
+		</data>
+	</outputs>
+	<tests>
+	</tests>
+	<help><![CDATA[
 **How it works**
 
 This tool sequentially downloads and decompresses all FastQ files in a
