@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.sequencing.basespace-auth-2" name="BaseSpace Auth Part 2" version="1.0">
+<tool id="edu.tamu.cpt.sequencing.basespace-auth-2" name="BaseSpace Auth Part 2" version="1.1">
   <description></description>
   <command detect_errors="aggressive"><![CDATA[
-CLIENT=`cat /galaxy/creds.json | jq .illumina_basespace.client_id -r`
-SECRET=`cat /galaxy/creds.json | jq .illumina_basespace.secret_id -r`
-DEVICE_CODE=`cat $device_code_file`
+CLIENT=`cat /galaxy/creds.json | jq .illumina_basespace.client_id -r`;
+SECRET=`cat /galaxy/creds.json | jq .illumina_basespace.secret_id -r`;
+DEVICE_CODE=`cat $device_code_file`;
 
 TOKEN=`curl
 	--silent
 	-X POST
 	-d"response_type=device_code"
-	-d"client_id=$CLIENT"
-	-d"client_secret=$SECRET"
-	-d"code=$DEVICE_CODE"
+	-d"client_id=\$CLIENT"
+	-d"client_secret=\$SECRET"
+	-d"code=\$DEVICE_CODE"
 	-d"grant_type=device"
 	https://api.basespace.illumina.com/v1pre3/oauthv2/token | jq .token -r`;
 
