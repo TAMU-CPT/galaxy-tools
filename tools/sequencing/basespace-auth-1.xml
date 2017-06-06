@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.sequencing.basespace-auth-1" name="BaseSpace Auth Part 1" version="1.1">
+<tool id="edu.tamu.cpt.sequencing.basespace-auth-1" name="BaseSpace Auth Part 1" version="1.2">
   <description></description>
   <command detect_errors="aggressive"><![CDATA[
-CLIENT=\$(cat /galaxy/creds.json | jq .illumina_basespace.client_id -r)
+CLIENT=\$(cat /galaxy/creds.json | jq .illumina_basespace.client_id -r);
 
 RESPONSE=\$(curl
 	--silent
@@ -10,11 +10,11 @@ RESPONSE=\$(curl
 	-d "response_type=device_code"
 	-d "client_id=\$CLIENT"
 	-d "scope=Create Global, Browse Global"
-	https://api.basespace.illumina.com/v1pre3/oauthv2/deviceauthorization)
+	https://api.basespace.illumina.com/v1pre3/oauthv2/deviceauthorization);
 
-DEVICE_CODE=\$(echo \$RESPONSE | jq .device_code -r)
-TOKEN_URL=\$(echo \$RESPONSE | jq .verification_with_code_uri -r)
-EXPIRES_IN=\$(echo \$RESPONSE | jq .expires_in -r)
+DEVICE_CODE=\$(echo \$RESPONSE | jq .device_code -r);
+TOKEN_URL=\$(echo \$RESPONSE | jq .verification_with_code_uri -r);
+EXPIRES_IN=\$(echo \$RESPONSE | jq .expires_in -r);
 
 echo \$DEVICE_CODE > $device_code;
 printf "<html><head></head><body><h1>BaseSpace Auth</h1>" > $html_out;
