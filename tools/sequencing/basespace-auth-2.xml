@@ -24,7 +24,7 @@ cat /galaxy/creds.basespace.json |
 
 mv \$TMPFILE /galaxy/creds.basespace.json;
 
-jq ".basespace.$user_email = \$TOKEN" > $output;
+jq ".basespace.$user_email = \\"\$TOKEN\\"" > $output;
 ]]></command>
   <inputs>
     <param type="data" format="json" name="device_code_file" label="Device Code File" />
