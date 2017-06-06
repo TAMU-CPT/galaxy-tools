@@ -12,7 +12,7 @@ def rename_fasta_sequences(fasta_file, new_name):
             raise Exception("Too many sequences")
 
         orig = record.id
-        record.id = new_name
+        record.id = new_name.strip()
         record.description = " [Orig=%s]" % orig
 
         SeqIO.write([record], sys.stdout, "fasta")
