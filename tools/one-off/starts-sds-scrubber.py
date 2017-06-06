@@ -40,6 +40,7 @@ sds = (  # all possible SD sequences
     'GGG',
 )
 
+
 def get_CDS_and_SD(feat):
     """
         return the CDS and SD feature in gene
@@ -54,6 +55,7 @@ def get_CDS_and_SD(feat):
 
     return cds, sd
 
+
 def break_start(seq):
     """
         if possible, change the start sequence
@@ -67,8 +69,10 @@ def break_start(seq):
     elif seq == 'TTG':  # if leucine, return TTA (still leucine)
         return 'TTA'
 
+
 def changed_letters(a, b):
     return sum(a[i] != b[i] for i in range(len(a)))
+
 
 def break_sd(sd):
     """
@@ -98,12 +102,14 @@ def break_sd(sd):
 
     return best_replacement
 
+
 def next_first_frame(start, mod_pos):
     """ return position of next nucleotide in frame 1 """
     mod = mod_pos
     while ((start - mod) % 3) + 1 != 1:
         mod += mod_pos
     return mod
+
 
 def repair(fasta, gff3):
     recs = {}
@@ -123,11 +129,11 @@ def repair(fasta, gff3):
                 continue
 
             cds, sd = get_CDS_and_SD(feat)
-            cds_start = seq.seq[cds.location.start:cds.location.start+3]
+            cds_start = seq.seq[cds.location.start:cds.location.start + 3]
             broken_start = break_start(cds_start)
 
             if cds_start != broken_start:  # try to break start sequence while keeping amino acid the same
-                seq.seq = seq.seq[0:cds.location.start] + broken_start + seq.seq[cds.location.start+3:]
+                seq.seq = seq.seq[0:cds.location.start] + broken_start + seq.seq[cds.location.start + 3:]
 
             else:  # if couldn't change start, must break SD
                 mod_sd_start = 0
@@ -137,10 +143,10 @@ def repair(fasta, gff3):
                 if (sd.location.end % 3) + 1 != 1:
                     mod_sd_end = next_first_frame(sd.location.end, -1)
 
-                sd_seq = seq.seq[sd.location.start-mod_sd_start:sd.location.end-mod_sd_end]
+                sd_seq = seq.seq[sd.location.start - mod_sd_start:sd.location.end - mod_sd_end]
                 broken_sd = break_sd(sd_seq)
                 if sd_seq != broken_sd:
-                    seq.seq = seq.seq[0:(sd.location.start-mod_sd_start)] + broken_sd + seq.seq[(sd.location.end-mod_sd_end):]
+                    seq.seq = seq.seq[0:(sd.location.start - mod_sd_start)] + broken_sd + seq.seq[(sd.location.end - mod_sd_end):]
 
         seqs.append(seq)
 
