@@ -4,6 +4,8 @@
     <tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunDownloader_v2.xml"/>
     <tool file="cpt2/galaxy-tools/tools/sequencing/basespace-auth-1.xml"/>
     <tool file="cpt2/galaxy-tools/tools/sequencing/basespace-auth-2.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunList.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunSampleList.xml"/>
   </section>
   <section id="getext_ncbi" name="Get Data: NCBI">
     <tool file="cpt2/galaxy-tools/tools/edirect/efetch.xml" labels="dev-only"/>
