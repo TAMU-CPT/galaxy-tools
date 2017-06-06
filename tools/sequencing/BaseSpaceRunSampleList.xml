@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.sequencing.basespace.sample-list" name="BaseSpace: List Samples" version="1.0">
+	<description></description>
+	<command detect_errors="aggressive"><![CDATA[
+USER_EMAIL_HASH=`echo -n "$__user_email__" | md5sum | sed 's/ .*//'`;
+ACCESS_TOKEN=`/galaxy/creds.basespace.json | jq ".basespace.\"\$USER_EMAIL_HASH\"" -r`
+
+#set col_titles='\t'.join(str($cols).split(','))
+echo '# $col_titles' > $output;
+
+python BaseSpaceRunSampleList.py \$ACCESS_TOKEN $run_id |
+	jq '.Response.Properties.Items[].Items[] | [$cols] | @tsv'
+	> $output;
+
+]]></command>
+	<inputs>
+		<param type="text" name="run_id" label="Run ID" />
+		<param label="Columns" type="select" name="cols" multiple="True">
+			<option value="Id" selected="true">Sample ID (E.g. "48705743")</option>
+			<option value="DateCreated" selected="false">DateCreated (E.g. "2017-06-01T18:08:30.0000000")</option>
+			<option value="ExperimentName" selected="true">ExperimentName (E.g. "May2017BICH464Etc")</option>
+			<option value="IsMerged" selected="false">IsMerged (E.g. false)</option>
+			<option value="IsPairedEnd" selected="false">IsPairedEnd (E.g. true)</option>
+			<option value="Name" selected="true">Name (E.g. "TRUSEQ12")</option>
+			<option value="NumReadsPF" selected="false">NumReadsPF (E.g. 467515)</option>
+			<option value="NumReadsRaw" selected="false">NumReadsRaw (E.g. 467515)</option>
+			<option value="Read1" selected="false">Read1 (E.g. 251)</option>
+			<option value="Read2" selected="false">Read2 (E.g. 251)</option>
+			<option value="SampleId" selected="true">SampleId (E.g. "12")</option>
+			<option value="Status" selected="false">Status (E.g. "Complete")</option>
+			<option value="StatusSummary" selected="false">StatusSummary (E.g. "Application completed successfully")</option>
+			<option value="TotalClustersPF" selected="false">TotalClustersPF (E.g. 467515)</option>
+			<option value="TotalClustersRaw" selected="false">TotalClustersRaw (E.g. 467515)</option>
+			<option value="TotalReadsPF" selected="false">TotalReadsPF (E.g. 935030)</option>
+			<option value="TotalReadsRaw" selected="false">TotalReadsRaw (E.g. 935030)</option>
+			<option value="TotalSize" selected="false">TotalSize (E.g. 179401706)</option>
+			<option value="UserOwnedBy.Id" selected="false">UserOwnedBy.Id (E.g. "8211203")</option>
+			<option value="UserOwnedBy.Name" selected="false">UserOwnedBy.Name (E.g. "E. Rasche")</option>
+		</param>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="output" label="Sample List" />
+	</outputs>
+	<tests>
+	</tests>
+	<help><![CDATA[
+**How it works**
+
+This tool fetches the list of samples available in BaseSpace, in a given run.
+]]></help>
+	<expand macro="citations" />
+</tool>

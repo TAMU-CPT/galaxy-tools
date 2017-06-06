@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.sequencing.basespace.run-list" name="BaseSpace: List Runs" version="1.0">
+	<description></description>
+	<command detect_errors="aggressive"><![CDATA[
+USER_EMAIL_HASH=`echo -n "$__user_email__" | md5sum | sed 's/ .*//'`;
+ACCESS_TOKEN=`/galaxy/creds.basespace.json | jq ".basespace.\"\$USER_EMAIL_HASH\"" -r`
+
+#set col_titles='\t'.join(str($cols).split(','))
+echo '# $col_titles' > $output;
+python BaseSpaceRunList.py \$ACCESS_TOKEN |
+	jq '.Response.Items[] | [$cols] | @tsv'
+	> $output;
+]]></command>
+	<inputs>
+		<param label="Columns" type="select" name="cols" multiple="True">
+			<option value="Id" selected="true">Run Id (E.g. "27521503")</option>
+			<option value="Status" selected="true">Status (E.g. "Complete")</option>
+			<option value="NumCyclesRead1" selected="false">NumCyclesRead1 (E.g. 0)</option>
+			<option value="Workflow" selected="false">Workflow (E.g. "Generate FASTQ")</option>
+			<option value="LaneAndQcStatus" selected="false">LaneAndQcStatus (E.g. "QcPassed")</option>
+			<option value="DateModified" selected="true">DateModified (E.g. "2017-06-05T16:27:53.0000000")</option>
+			<option value="InstrumentName" selected="true">InstrumentName (E.g. "M03367")</option>
+			<option value="Name" selected="false">Name (E.g. "170530_M03367_0007_000000000-B8237")</option>
+			<option value="FlowcellBarcode" selected="false">FlowcellBarcode (E.g. "000000000-B8237")</option>
+			<option value="TotalSize" selected="true">TotalSize (E.g. 11161136750)</option>
+			<option value="NumCyclesIndex2" selected="false">NumCyclesIndex2 (E.g. 0)</option>
+			<option value="NumCyclesIndex1" selected="false">NumCyclesIndex1 (E.g. 0)</option>
+			<option value="PlatformName" selected="true">PlatformName (E.g. "MiSeq")</option>
+			<option value="InstrumentType" selected="false">InstrumentType (E.g. "MiSeq")</option>
+			<option value="ExperimentName" selected="true">ExperimentName (E.g. "May2017BICH464Etc")</option>
+			<option value="ReagentBarcode" selected="false">ReagentBarcode (E.g. "MS5185132-500V2")</option>
+			<option value="UserOwnedBy.Name" selected="true">UserOwnedBy.Name (E.g. "E Rasche")</option>
+			<option value="UserOwnedBy.Id" selected="false">UserOwnedBy.Id (E.g. "7514530")</option>
+			<option value="NumCyclesRead2" selected="false">NumCyclesRead2 (E.g. 0)</option>
+			<option value="Number" selected="false">Number (E.g. 7)</option>
+			<option value="DateCreated" selected="false">DateCreated (E.g. "2017-05-30T22:18:33.0000000")</option>
+			<option value="SequencingStats.NonIndexedPercentAligned" selected="false">SequencingStats.NonIndexedPercentAligned (E.g. 5.19051e-05)</option>
+			<option value="SequencingStats.ReadsTotal" selected="true">SequencingStats.ReadsTotal (E.g. 51524772)</option>
+			<option value="SequencingStats.YieldTotal" selected="false">SequencingStats.YieldTotal (E.g. 7.81805)</option>
+			<option value="SequencingStats.NumReads" selected="false">SequencingStats.NumReads (E.g. 3)</option>
+			<option value="SequencingStats.PercentGtQ30" selected="false">SequencingStats.PercentGtQ30 (E.g. 83.6202)</option>
+			<option value="SequencingStats.ReadsPfTotal" selected="false">SequencingStats.ReadsPfTotal (E.g. 46443870)</option>
+			<option value="SequencingStats.NumLanes" selected="false">SequencingStats.NumLanes (E.g. 1)</option>
+			<option value="SequencingStats.PhasingR2" selected="false">SequencingStats.PhasingR2 (E.g. 0)</option>
+			<option value="SequencingStats.PhasingR1" selected="false">SequencingStats.PhasingR1 (E.g. 0.0718516)</option>
+			<option value="SequencingStats.Chemistry" selected="false">SequencingStats.Chemistry (E.g. "Default")</option>
+			<option value="SequencingStats.PercentGtQ30R2" selected="false">SequencingStats.PercentGtQ30R2 (E.g. 0)</option>
+			<option value="SequencingStats.NumCyclesRead2" selected="false">SequencingStats.NumCyclesRead2 (E.g. 251)</option>
+			<option value="SequencingStats.ErrorRateR1" selected="false">SequencingStats.ErrorRateR1 (E.g. 0)</option>
+			<option value="SequencingStats.PrePhasingR2" selected="false">SequencingStats.PrePhasingR2 (E.g. 0)</option>
+			<option value="SequencingStats.PrePhasingR1" selected="false">SequencingStats.PrePhasingR1 (E.g. 0.103235)</option>
+			<option value="SequencingStats.ErrorRateR2" selected="false">SequencingStats.ErrorRateR2 (E.g. 0)</option>
+			<option value="SequencingStats.NumSwathsPerLane" selected="false">SequencingStats.NumSwathsPerLane (E.g. 1)</option>
+			<option value="SequencingStats.PercentPf" selected="false">SequencingStats.PercentPf (E.g. 0.901389)</option>
+			<option value="SequencingStats.NonIndexedIntensityCycle1" selected="false">SequencingStats.NonIndexedIntensityCycle1 (E.g. 167.268)</option>
+			<option value="SequencingStats.NonIndexedErrorRate" selected="false">SequencingStats.NonIndexedErrorRate (E.g. 0)</option>
+			<option value="SequencingStats.MaxCycleExtracted" selected="false">SequencingStats.MaxCycleExtracted (E.g. 508)</option>
+			<option value="SequencingStats.IsIndexed" selected="false">SequencingStats.IsIndexed (E.g. true)</option>
+			<option value="SequencingStats.NumCyclesIndex2" selected="false">SequencingStats.NumCyclesIndex2 (E.g. 0)</option>
+			<option value="SequencingStats.NumCyclesIndex1" selected="false">SequencingStats.NumCyclesIndex1 (E.g. 6)</option>
+			<option value="SequencingStats.NonIndexedPercentGtQ30" selected="false">SequencingStats.NonIndexedPercentGtQ30 (E.g. 83.4994)</option>
+			<option value="SequencingStats.NumCyclesRead1" selected="false">SequencingStats.NumCyclesRead1 (E.g. 251)</option>
+			<option value="SequencingStats.NumTilesPerSwath" selected="false">SequencingStats.NumTilesPerSwath (E.g. 14)</option>
+			<option value="SequencingStats.MaxCycleCalled" selected="false">SequencingStats.MaxCycleCalled (E.g. 508)</option>
+			<option value="SequencingStats.PercentAligned" selected="false">SequencingStats.PercentAligned (E.g. 5.19051e-05)</option>
+			<option value="SequencingStats.MaxCycleScored" selected="false">SequencingStats.MaxCycleScored (E.g. 508)</option>
+			<option value="SequencingStats.ProjectedTotalYield" selected="false">SequencingStats.ProjectedTotalYield (E.g. 7.81805)</option>
+			<option value="SequencingStats.PercentGtQ30R1" selected="false">SequencingStats.PercentGtQ30R1 (E.g. 92.2733)</option>
+			<option value="SequencingStats.NonIndexedYieldTotal" selected="false">SequencingStats.NonIndexedYieldTotal (E.g. 7.74064)</option>
+			<option value="SequencingStats.PercentResynthesis" selected="false">SequencingStats.PercentResynthesis (E.g. 71.3685)</option>
+			<option value="SequencingStats.NumSurfaces" selected="false">SequencingStats.NumSurfaces (E.g. 2)</option>
+			<option value="SequencingStats.NonIndexedProjectedTotalYield" selected="false">SequencingStats.NonIndexedProjectedTotalYield (E.g. 7.74064)</option>
+			<option value="SequencingStats.IntensityCycle1" selected="false">SequencingStats.IntensityCycle1 (E.g. 359.298)</option>
+			<option value="SequencingStats.ErrorRate" selected="false">SequencingStats.ErrorRate (E.g. 0)</option>
+		</param>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="output" label="Run List" />
+	</outputs>
+	<tests>
+	</tests>
+	<help><![CDATA[
+**How it works**
+
+This tool fetches the list of runs available in BaseSpace and can output a customized table.
+]]></help>
+	<expand macro="citations" />
+</tool>

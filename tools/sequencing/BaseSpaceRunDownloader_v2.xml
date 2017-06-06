@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.sequencing.basespace" name="BaseSpace Downloader" version="2.2.0">
-  <description>fetches dataset for Galaxy</description>
+<tool id="edu.tamu.cpt.sequencing.basespace" name="BaseSpace: Sample Downloader" version="2.2.0">
+  <description></description>
   <command detect_errors="aggressive"><![CDATA[
+USER_EMAIL_HASH=`echo -n "$__user_email__" | md5sum | sed 's/ .*//'`;
+ACCESS_TOKEN=`/galaxy/creds.basespace.json | jq ".basespace.\"\$USER_EMAIL_HASH\"" -r`
+
 mkdir output;
-$__tool_directory__/BaseSpaceRunDownloader_v2.py
-"$RunID"
+$__tool_directory__/BaseSpaceRunDownloader_v2.py \$ACCESS_TOKEN "$run_id"
 > $default]]></command>
   <inputs>
-    <param type="text" name="RunID" label="Run ID" />
+    <param type="text" name="run_id" label="Run ID" />
   </inputs>
   <outputs>
     <data format="json" name="default">
@@ -19,10 +21,7 @@ $__tool_directory__/BaseSpaceRunDownloader_v2.py
   <help><![CDATA[
 **How it works**
 
-This tool uses API keys from illumina in order to access data. Illumina
-restricts the api key access to my (Eric Rasche <esr@tamu.edu>) account, so you
-will need to share data with me, and then it will be available to this tool.
-
-We will figure out an easier method in the future.
+This tool sequentially downloads and decompresses all FastQ files in a
+given run.
 ]]></help>
 </tool>

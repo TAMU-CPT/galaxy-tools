@@ -9,16 +9,10 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
-
 CHUNK_SIZE = 128 * 1024
-RUN_ID = sys.argv[1]
-
-
-with open('/galaxy/creds.json', 'r') as handle:
-    data = json.load(handle)
-    AccessToken = data['BaseSpace']
-
+RUN_ID = sys.argv[2]
 API_BASE = 'https://api.basespace.illumina.com/'
+AccessToken = sys.argv[1]
 ACCESS_TOKEN = '?access_token=%s' % AccessToken
 
 
@@ -55,9 +49,4 @@ def restrequest(rawrequest):
 
 
 json_obj = restrequest('v1pre3/runs/%s' % RUN_ID)
-
-for item in json_obj['Response']['Properties']['Items']:
-    cols = ['Id', 'TotalReadsRaw', 'Name', 'SampleId']
-    for item2 in item['Items']:
-        data = map(str, [item2[y] for y in cols])
-        print('\t'.join(data))
+print(json.dumps(json_obj))
