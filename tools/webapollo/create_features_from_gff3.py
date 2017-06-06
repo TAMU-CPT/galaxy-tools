@@ -76,6 +76,7 @@ if __name__ == '__main__':
                 newfeature = wa.annotations.addFeature(featureData, trustme=True)
 
                 terminator_idx += 1
+
                 def func0():
                     wa.annotations.setName(
                         newfeature['features'][0]['uniquename'],

@@ -51,7 +51,7 @@ def main():
     else:
         raise Exception("Bad input organism data")
 
-    organism = get(token, args.url + 'organisms/', dict(
+    get(token, args.url + 'organisms/', dict(
         common_name=organism_name,
     ))['results'][0]
 
