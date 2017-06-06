@@ -734,6 +734,7 @@ class AnnotationsClient(Client):
         }
         data = self._update_data(data)
         return self.request('addAttribute', data)
+
     def getFeatures(self):
         data = self._update_data({})
         return self.request('getFeatures', data)
@@ -1448,6 +1449,7 @@ def _galaxy_list_users(wa, gx_user, *args, **kwargs):
         # Reformat
         user_data.append((user.username, user.username, False))
     return user_data
+
 
 # This is all for implementing the command line interface for testing.
 class obj(object):

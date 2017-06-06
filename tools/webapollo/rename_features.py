@@ -54,6 +54,7 @@ if __name__ == '__main__':
                     feature['parent_id'],
                     new_name
                 )
+
             def fn1():
                 wa.annotations.setName(
                     feature['uniquename'],

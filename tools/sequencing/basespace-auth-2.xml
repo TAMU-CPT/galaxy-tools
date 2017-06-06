@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.sequencing.basespace-auth-2" name="BaseSpace Auth Part 2" version="1.7.2">
+<tool id="edu.tamu.cpt.sequencing.basespace-auth-2" name="BaseSpace Auth Part 2" version="1.7.3">
   <description></description>
   <command detect_errors="aggressive"><![CDATA[
 CLIENT=`cat /galaxy/creds.json | jq .illumina_basespace.client_id -r`;
@@ -16,7 +16,7 @@ TOKEN=`curl
 	-d"grant_type=device"
 	https://api.basespace.illumina.com/v1pre3/oauthv2/token | jq .access_token -r`;
 
-USER_EMAIL_HASH=`echo -n "$__user_email__" | md5sum`;
+USER_EMAIL_HASH=`echo -n "$__user_email__" | md5sum | sed 's/ .*//'`;
 
 TMPFILE=`mktemp`;
 cat /galaxy/creds.basespace.json |
