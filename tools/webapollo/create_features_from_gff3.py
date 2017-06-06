@@ -81,6 +81,7 @@ if __name__ == '__main__':
                         newfeature['features'][0]['uniquename'],
                         'terminator-%03d' % terminator_idx,
                     )
+
                 retry(func0)
 
                 sys.stdout.write('\t'.join([

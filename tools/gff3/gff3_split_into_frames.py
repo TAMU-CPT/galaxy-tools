@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import sys
 import argparse
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type
@@ -26,11 +25,11 @@ def split_into_frames(gff3):
                 frame = str(((gene.location.start) % 3) + 1)
             else:
                 frame = str((-(gene.location.start - 1) % 3) + 4)
-            locals()['rf'+frame].append(gene)
+            locals()['rf' + frame].append(gene)
 
         for i in range(6):
-            dummy_rec.features = locals()['rf'+str(i+1)]
-            with open('rf'+str(i+1)+'.gff3', 'a') as outfile:
+            dummy_rec.features = locals()['rf' + str(i + 1)]
+            with open('rf' + str(i + 1) + '.gff3', 'a') as outfile:
                 GFF.write([dummy_rec], outfile)
 
 

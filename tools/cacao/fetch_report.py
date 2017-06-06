@@ -4,8 +4,6 @@ import json
 import sys
 import requests
 import argparse
-from Bio import SeqIO
-from BCBio import GFF
 
 
 def auth(creds, url):

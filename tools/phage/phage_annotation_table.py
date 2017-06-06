@@ -338,20 +338,20 @@ def parseGafData(file):
     cols = []
     data = {}
     # '10d04a01-5ed8-49c8-b724-d6aa4df5a98d': {
-        # 'annotation_extension': '',
-        # 'aspect': '',
-        # 'assigned_by': 'CPT',
-        # 'date': '2017-05-04T16:25:22.161916Z',
-        # 'db': 'UniProtKB',
-        # 'db_reference': 'GO_REF:0000100',
-        # 'evidence_code': 'ISA',
-        # 'gene': '0d307196-833d-46e8-90e9-d80f7a041d88',
-        # 'go_id': 'GO:0039660',
-        # 'go_term': 'structural constituent of virion',
-        # 'id': '10d04a01-5ed8-49c8-b724-d6aa4df5a98d',
-        # 'notes': 'hit was putative minor structural protein',
-        # 'owner': 'amarc1@tamu.edu',
-        # 'with_or_from': 'UNIREF90:B2ZYZ7'
+    # 'annotation_extension': '',
+    # 'aspect': '',
+    # 'assigned_by': 'CPT',
+    # 'date': '2017-05-04T16:25:22.161916Z',
+    # 'db': 'UniProtKB',
+    # 'db_reference': 'GO_REF:0000100',
+    # 'evidence_code': 'ISA',
+    # 'gene': '0d307196-833d-46e8-90e9-d80f7a041d88',
+    # 'go_id': 'GO:0039660',
+    # 'go_term': 'structural constituent of virion',
+    # 'id': '10d04a01-5ed8-49c8-b724-d6aa4df5a98d',
+    # 'notes': 'hit was putative minor structural protein',
+    # 'owner': 'amarc1@tamu.edu',
+    # 'with_or_from': 'UNIREF90:B2ZYZ7'
     # },
     for row in file:
         if row.startswith('#'):
@@ -380,7 +380,6 @@ def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotatio
     gaf = {}
     if gafData:
         gaf = parseGafData(gafData)
-
 
     for record in GFF.parse(annotations, base_dict=seq_dict):
         log.info("Producing an annotation table for %s" % record.id)

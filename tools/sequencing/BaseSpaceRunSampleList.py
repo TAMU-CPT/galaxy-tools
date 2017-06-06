@@ -1,8 +1,6 @@
-
-
+#!/usr/bin/env python
 from urllib2 import Request, urlopen, URLError
 from os.path import expanduser
-import re
 import hashlib
 import json
 import sys
