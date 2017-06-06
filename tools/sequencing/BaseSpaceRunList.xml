@@ -14,9 +14,9 @@
 #set fixed_cols=',.'.join(str($cols).split(','))
 
 echo '# $col_titles' > $output;
-python BaseSpaceRunList.py \$ACCESS_TOKEN |
+python $__tool_directory__/BaseSpaceRunList.py \$ACCESS_TOKEN |
 	jq -S '.Response.Items[] | [.$fixed_cols] | @tsv'
-	> $output;
+	>> $output;
 ]]></command>
 	<inputs>
 		<param label="Columns" type="select" name="cols" multiple="True">
