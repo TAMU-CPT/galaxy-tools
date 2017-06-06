@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt.sequencing.basespace-auth-1" name="BaseSpace Auth Part 1" version="1.7">
 	<description></description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
 CLIENT=\$(cat /galaxy/creds.json | jq .illumina_basespace.client_id -r);
 
