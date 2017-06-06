@@ -11,10 +11,11 @@
 @USER_ACCESS_TOKEN@
 
 #set col_titles='\t'.join(str($cols).split(','))
+#set fixed_cols=',.'.join(str($cols).split(','))
 echo '# $col_titles' > $output;
 
 python BaseSpaceRunSampleList.py \$ACCESS_TOKEN $run_id |
-	jq '.Response.Properties.Items[].Items[] | [$cols] | @tsv'
+	jq '.Response.Properties.Items[].Items[] | [.$fixed_cols] | @tsv'
 	> $output;
 
 ]]></command>

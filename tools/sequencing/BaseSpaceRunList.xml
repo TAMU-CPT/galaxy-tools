@@ -11,9 +11,11 @@
 @USER_ACCESS_TOKEN@
 
 #set col_titles='\t'.join(str($cols).split(','))
+#set fixed_cols=',.'.join(str($cols).split(','))
+
 echo '# $col_titles' > $output;
 python BaseSpaceRunList.py \$ACCESS_TOKEN |
-	jq '.Response.Items[] | [$cols] | @tsv'
+	jq '.Response.Items[] | [.$fixed_cols] | @tsv'
 	> $output;
 ]]></command>
 	<inputs>
