@@ -7,7 +7,7 @@
 			<yield/>
 		</requirements>
 	</xml>
-	<token name="@VERSION@">1.10</token>
+	<token name="@VERSION@">1.11</token>
 	<token name="@APOLLO_ENSURE_USER_EXISTS@">
 $__tool_directory__/ensure_exists.sh "$__user_email__";
 	</token>
@@ -15,7 +15,10 @@ $__tool_directory__/ensure_exists.sh "$__user_email__";
 USER_EMAIL_HASH=`echo -n "$__user_email__" | md5sum | sed 's/ .*//'`;
 	</token>
 	<token name="@USER_ACCESS_TOKEN@">
-ACCESS_TOKEN=`cat /galaxy/creds.basespace.json | jq ".basespace.\"\$USER_EMAIL_HASH\"" -r`
+ACCESS_TOKEN=`cat /galaxy/creds.basespace.json | jq ".basespace.\"\$USER_EMAIL_HASH\"" -r`;
+	</token>
+	<token name="@USER_ACCESS_TOKEN_INLINE@">
+\$(cat /galaxy/creds.basespace.json | jq ".basespace.\"\$USER_EMAIL_HASH\"" -r)
 	</token>
 	<token name="@CLIENT_ID@">
 CLIENT=\$(cat /galaxy/creds.json | jq .illumina_basespace.client_id -r);
