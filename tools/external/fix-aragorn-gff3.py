@@ -25,6 +25,7 @@ def fixed_feature(rec):
                 'source': ['aragorn'],
             }
         )
+        feature.qualifiers['Name'] = ['tRNA-' + feature.qualifiers['Codon'][0]]
         # Below that we have an mRNA
         exon = SeqFeature(
             location=feature.location,
