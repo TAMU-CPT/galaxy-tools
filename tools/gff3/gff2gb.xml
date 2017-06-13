@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GenBank" version="3.0">
+<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GenBank" version="4.0">
   <description>convert gff3 to GenBank</description>
   <macros>
     <import>macros.xml</import>
