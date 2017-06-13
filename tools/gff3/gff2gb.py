@@ -85,6 +85,7 @@ def fix_gene_boundaries(feature):
 
 def fix_gene_qualifiers(name, feature, fid):
     for mRNA in feature.sub_features:
+        mRNA.qualifiers['locus_tag'] = 'CPT_%s_%03d' % (name, fid)
         # And some exons below that
         sf_replacement = []
         for sf in mRNA.sub_features:
@@ -103,9 +104,9 @@ def fix_gene_qualifiers(name, feature, fid):
                 # Update CDS qualifiers with all info that was on parent
                 sf.qualifiers.update(feature.qualifiers)
                 sf_replacement.append(sf)
-            elif sf.type == 'tRNA':
-                sf.qualifiers.update(feature.qualifiers)
-                sf_replacement.append(sf)
+
+        if mRNA.type == 'tRNA':
+            mRNA.qualifiers['product'] = mRNA.qualifiers['Name']
 
         # Handle multiple child CDS features by merging them.
         # Replace the subfeatures on the mRNA
