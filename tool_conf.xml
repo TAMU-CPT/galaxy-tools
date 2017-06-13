@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <toolbox>
-	<section id="getext" name="CPT: Get Data">
+
+	<label id="=====1" text="Input"/>
+	<section id="8a843907-df36-4d82-a1ab-2bde1b4ce827" name="CPT: Get Data">
 		<label id="getext_1" text="Apollo"/>
 		<tool file="cpt2/galaxy-tools/tools/webapollo/export.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/webapollo/fetch_organism_jbrowse.xml"/>
-
 		<label id="getext_2" text="BaseSpace"/>
 		<tool file="cpt2/galaxy-tools/tools/sequencing/basespace-auth-1.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/sequencing/basespace-auth-2.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunList.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunSampleList.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunDownloader_v2.xml"/>
-
-		<label id="getext_2" text="NCBI"/>
+		<label id="getext_3" text="NCBI"/>
 		<tool file="cpt2/galaxy-tools/tools/edirect/efetch.xml" labels="dev-only"/>
 		<tool hidden="True" file="cpt2/galaxy-tools/tools/util/efetch.xml" labels="experimental"/>
 		<tool hidden="True" file="data_source/upload.xml"/>
@@ -25,110 +25,57 @@
 		<tool hidden="True" file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/esearch.xml"/>
 		<tool hidden="True" file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/esummary.xml"/>
 	</section>
-
-	<section id="cpt2_ngs" name="CPT: Sequencing">
+	<section id="34f35d9e-195b-4a7e-9ebc-da841227cd46" name="CPT: Sequencing">
 		<tool file="cpt2/galaxy-tools/tools/ngs/cpt_read_subset.xml" labels="ngs"/>
 		<tool file="cpt2/galaxy-tools/tools/ngs/contig_coverage.xml" labels="ngs"/>
 		<tool file="cpt2/galaxy-tools/tools/pause/pause_starts_to_wiggle.xml" labels="PAUSE"/>
 	</section>
+	<section id="bdbd7544-a780-43bf-ac5d-a2fe4caba67b" name="CPT: ABIF/AB1 Visualization">
+		<tool file="cpt2/galaxy-tools/tools/abif/cpt_abif_info.xml"/>
+	</section>
 
-	<section id="cpt2_conversion" name="CPT: Format Conversion Scripts">
+	<label id="=====2" text="Utilities"/>
+	<section id="91690aa2-eb96-4f56-b4b4-e7e4e6f9fc6f" name="CPT: Format Conversion Scripts">
 		<tool file="cpt2/galaxy-tools/tools/util/cpt_convert_glimmer_to_gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/util/cpt_convert_mga_to_gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/wigToBigWig.xml"/>
-
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_reformat.xml" labels="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff2gb.xml" labels="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/fix_ncbi.xml" labels="gff3,apollo" />
-
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_genemarks.xml" labels="gff3" />
 		<tool file="cpt2/tools-iuc/tools/bioperl/bp_genbank2gff3.xml" labels="genbank" />
 	</section>
-
-	<section id="cpt2_text_util" name="CPT: Text Utilities">
+	<section id="6dbd8994-74d6-4a9e-834b-131d9cd99526" name="CPT: Text Utilities">
 		<tool file="cpt2/galaxy-tools/tools/text/cat.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/text/uniq.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/text/intersect.xml"/>
 	</section>
 
-	<section id="webapollo2" name="CPT: Apollo">
-		<tool file="cpt2/galaxy-tools/tools/webapollo/create_account.xml" labels="apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/list_organisms.xml" labels="apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/create_or_update_organism.xml" labels="apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/renumber_features.xml" labels="new,apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" labels="danger,apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" labels="experimental,apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/json2iframe.xml" labels="apollo" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_apollo_sd.xml" labels="apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/share_with.xml" labels="apollo" />
+	<label id="=====3" text="Structural"/>
+	<section id="f35d75d6-af7c-4f59-9594-571cd39d5ef7" name="CPT: Structural Prediction">
+		<tool file="cpt2/galaxy-tools/tools/one-off/find_l_like_proteins.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/fasta/get_orfs_or_cdss.xml" labels="fasta" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/shinefind.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/lipory.xml" labels="gff3" />
+		<label id="cpt2_gene_call_1" text="External / NON-CPT Tools"/>
+		<tool file="cpt2/galaxy-tools/tools/external/gmsn.pl.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/external/phageterm/PhageTerm.xml"/>
 	</section>
-
-	<section id="cpt2_abif" name="CPT2: ABIF/AB1 Visualization">
-		<tool file="cpt2/galaxy-tools/tools/abif/cpt_abif_info.xml"/>
-	</section>
-
-	<section id="cpt2_blast" name="CPT: Blast Analysis / Filtering">
-		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_add_dice_column.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/blast/cpt_blast_filter.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_filter.xml" labels="experimental"/>
-
-		<tool file="cpt2/galaxy-tools/tools/blast/split_blast.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/blast/nuc_relate.xml" labels="new"/>
-		<tool file="cpt2/galaxy-tools/tools/blast/phg_relate.xml" labels="new"/>
-		<tool file="cpt2/galaxy-tools/tools/blast/prot_relate.xml" labels="new"/>
-		<tool file="cpt2/galaxy-tools/tools/blast/top_hits_table.xml" labels="new"/>
-	</section>
-
-	<section id="cpt2_blast_viz" name="CPT: Blast Visualization">
-		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3-nt.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_to_gapped_gff3.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml"/>
-	</section>
-
-
-
-
-
-	<section id="cpt2_464" name="CPT2: BICH464">
-		<label id="l_4cacao" text="Student Tools"/>
-		<tool file="cpt2/galaxy-tools/tools/464/assessment1-student.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/464/assessment2-student.xml"/>
-
-		<label id="l_4cacaz" text="Admin Tools"/>
-		<tool file="cpt2/galaxy-tools/tools/464/assessment1-admin.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/464/assessment2-admin.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/464/prep_test_organism.xml"/>
-		<tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_generate_segment.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/464/guanine_test.xml" labels="464-2017"/>
-
-		<label id="l_4cacao" text="CACAO"/>
-		<tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/cacao/fetch_report.xml"/>
-		<!-- BEGIN GUANINE -->
-			<tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_6_over_Minitopics_7_and_8.xml" />
-		<!-- END GUANINE -->
-	</section>
-
-
-	<section id="cpt2_genomic_overview" name="CPT: Genomic Overview">
+	<section id="7374d429-f8a9-4f83-8dbc-8b5cd6a90f4b" name="CPT: Genomic Overview">
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_aastats.xml" labels="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_charges.xml" labels="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_codonstats.xml" labels="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_proteininfo.xml" labels="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_len.xml" labels="fasta" />
-
 		<tool file="cpt2/galaxy-tools/tools/fasta/stop_stats.xml" labels="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/start_stats.xml" labels="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/gff3/start_stats.xml" labels="deprecated,gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/stop_stats.xml" labels="deprecated,gff3" />
-
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_aa_stats.xml" labels="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/one-off/starts-sds-scrubber.xml" labels="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/util/compare_codons.xml" labels="gff3" />
 	</section>
-
-	<section id="cpt2_genomic_edit" name="CPT: Genomic Data Editing">
+	<section id="3e66d481-56c7-471f-8de2-7d496977c5eb" name="CPT: Genomic Data Editing">
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_concat.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_join.xml" labels="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_ligate.xml" labels="fasta"/>
@@ -146,24 +93,90 @@
 		<tool file="cpt2/galaxy-tools/tools/gbk/split_gbks.xml" labels="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/subsection.xml" labels="genbank" />
 	</section>
-
-	<section id="cpt2_phage" name="CPT: Phage">
-		<tool file="cpt2/galaxy-tools/tools/gbk/phage_renamer.xml" labels="genbank" />
-		<tool file="cpt2/galaxy-tools/tools/phage/autoreopen.xml" labels="experimental"/>
-		<tool file="cpt2/galaxy-tools/tools/phage/virtual_suppressor_strain.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/phage/intron_detection.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/phage/frameshift.xml"/>
+	<section id="809339a2-8926-4a73-8690-e3aa2ce89756" name="CPT: Genomic Metadata">
+		<tool file="cpt2/galaxy-tools/tools/gbk/authorship.xml" labels="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/diff.xml" labels="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/info_export.xml" labels="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/source.xml" labels="genbank" />
+	</section>
+	<section id="e78edd9c-6464-4a0d-8adb-8f207d9d04f2" name="CPT: Genomic Features and Data">
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_add_parents_to_cds.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_introns.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_sequence.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_sequence2.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_split_into_frames.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_splitgff.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/remove_annotations.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/feature_export.xml" labels="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml" labels="genbank" />
+	</section>
+	<section id="b581a70c-94e3-4121-824d-e6b1ae487b68" name="CPT: Translation / RevCom / Change Sequence IDs">
+		<tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="genbank,fasta,gff3,experimental"/>
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_rename.xml" labels="fasta" />
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_remove_id.xml" labels="fasta" />
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_translate.xml" labels="fasta" />
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_revcom.xml" labels="fasta" />
 	</section>
 
-	<section id="cpt2_polish_pub" name="CPT: Polishing and Publication">
-		<tool file="cpt2/galaxy-tools/tools/gbk/sequin.xml" labels="genbank" />
-		<tool file="cpt2/galaxy-tools/tools/gbk/gbk_to_five_col.xml" labels="genbank" />
-		<tool file="cpt2/galaxy-tools/tools/gbk/phage_renamer.xml" labels="genbank" />
-		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_validator.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_table.xml"/>
+	<label id="=====4" text="Functional"/>
+	<section id="9075ed2e-6360-4825-9271-a1ddd5dcbcb1" name="CPT: Functional Prediction">
+		<tool file="cpt2/galaxy-tools/tools/external/tmhmm.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/external/signalp.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/external/interproscan.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/external/interproscan-5.22.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/external/fix-aragorn-gff3.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/one-off/genrand.xml"/>
+	</section>
+	<section id="5477aa4e-90ce-4672-85d1-41b08f506097" name="CPT: Sequence Search">
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_regex_search.xml" labels="fasta" />
+	</section>
+	<section id="b751a1c4-9cb9-4a41-8f3d-68c2b440088f" name="CPT: Blast Analysis / Filtering">
+		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_add_dice_column.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/cpt_blast_filter.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_filter.xml" labels="experimental"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/split_blast.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/nuc_relate.xml" labels="new"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/phg_relate.xml" labels="new"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/prot_relate.xml" labels="new"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/top_hits_table.xml" labels="new"/>
+	</section>
+	<section id="ac0a250f-94d2-4bdc-b3bc-8943fab4aa66" name="CPT: Blast Visualization">
+		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3-nt.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_to_gapped_gff3.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml"/>
+	</section>
+	<section id="7045e32e-90c8-4e20-b4ac-a6cb070d40c3" name="CPT: Filter Features">
+		<tool file="cpt2/galaxy-tools/tools/gff3/filter_type.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_filter.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_location_filter.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_require_phage_start.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_require_sd.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/intersect.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/neighbours.xml" labels="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/find_by_tag.xml" labels="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/remove_feature.xml" labels="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/remove_tag.xml" labels="genbank" />
+	</section>
+	<section id="808bfe42-0d41-4457-bd8d-fad422035947" name="CPT: Phage / Host Relationships">
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_codon_opt.xml" labels="fasta"/>
+	</section>
+	<section id="ee8ae399-6fae-435b-b6e1-80c4ad4a7a4a" name="CPT: Mutation Analysis Tools">
+		<tool file="cpt2/galaxy-tools/tools/one_snp_away/script.xml" />
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_disambig.xml" labels="fasta" />
 	</section>
 
-	<section id="cpt2_comparative" name="CPT: Comparative Genomics">
+	<label id="=====5" text="Comparative"/>
+	<section id="87cf84cb-479a-43ff-be2d-a894da9463fb" name="CPT: Clustering">
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_bin.xml" labels="fasta"/>
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_bin_post.xml" labels="fasta"/>
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_blastclust_fasta.xml" labels="fasta"/>
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_dedup.xml" labels="fasta" />
+		<tool file="cpt2/galaxy-tools/tools/blast/blastclust.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/comparative/cdhit-reformat.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/comparative/cdhit-clustsize.xml"/>
+	</section>
+	<section id="b3065028-2363-4c7a-922b-a054cfce8cc8" name="CPT: Comparative Genomics">
 		<tool file="cpt2/galaxy-tools/tools/comparative/mist3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/gepard.xml" hidden="True"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/progressivemauve.xml"/>
@@ -177,102 +190,65 @@
 		<tool file="cpt2/galaxy-tools/tools/gbk/diff.xml" labels="genbank" />
 	</section>
 
-	<section id="cpt2_genomic_meta" name="CPT: Genomic MetadataExtract Features and Data">
-		<tool file="cpt2/galaxy-tools/tools/gbk/authorship.xml" labels="genbank" />
-		<tool file="cpt2/galaxy-tools/tools/gbk/diff.xml" labels="genbank" />
-		<tool file="cpt2/galaxy-tools/tools/gbk/info_export.xml" labels="genbank" />
-		<tool file="cpt2/galaxy-tools/tools/gbk/source.xml" labels="genbank" />
+	<label id="=====6" text="Apollo"/>
+	<section id="b5a6a8ce-50ff-459b-b4d9-da42c103b104" name="CPT: Remap Analysis Results">
+		<tool file="cpt2/galaxy-tools/tools/external/wig_rebase.xml"/>
 	</section>
-	<section id="cpt2_genomic_extract" name="CPT: Extract Features and Data">
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_add_parents_to_cds.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_introns.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_sequence.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_sequence2.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_split_into_frames.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_splitgff.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/remove_annotations.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gbk/feature_export.xml" labels="genbank" />
-		<tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml" labels="genbank" />
+	<section id="a95d708c-8d91-47c6-8a59-98b337b47b5a" name="CPT: BICH464">
+		<label id="l_4cacao" text="Student Tools"/>
+		<tool file="cpt2/galaxy-tools/tools/464/assessment1-student.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/464/assessment2-student.xml"/>
+		<label id="l_4cacaz" text="Admin Tools"/>
+		<tool file="cpt2/galaxy-tools/tools/464/assessment1-admin.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/464/assessment2-admin.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/464/prep_test_organism.xml"/>
+		<tool hidden="True" file="cpt2/galaxy-tools/tools/464/c1_generate_segment.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/464/guanine_test.xml" labels="464-2017"/>
+		<label id="l_4cacao" text="CACAO"/>
+		<tool file="cpt2/galaxy-tools/tools/cacao/add_org.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/cacao/fetch_report.xml"/>
+		<!-- BEGIN GUANINE -->
+			<tool hidden="True" file="cpt2/galaxy-tools/tools/464/quizzes/Quiz_6_over_Minitopics_7_and_8.xml" />
+		<!-- END GUANINE -->
 	</section>
-
-	<section id="cpt2_genomic_extract" name="CPT: Filter Features">
-		<tool file="cpt2/galaxy-tools/tools/gff3/filter_type.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_filter.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_location_filter.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_require_phage_start.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_require_sd.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/intersect.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/neighbours.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gbk/find_by_tag.xml" labels="genbank" />
-		<tool file="cpt2/galaxy-tools/tools/gbk/remove_feature.xml" labels="genbank" />
-		<tool file="cpt2/galaxy-tools/tools/gbk/remove_tag.xml" labels="genbank" />
-	</section>
-	<section id="cpt_genome_viz" name="CPT: Genomic Viz">
+	<section id="6b26a975-a24a-4b05-b082-2286e1693fef" name="CPT: Genomic Viz">
 		<tool file="cpt2/galaxy-tools/tools/gbk/featuresvg.xml" labels="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/phage/genome_map.xml"/>
 		<tool file="cpt2/tools-iuc/tools/jbrowse/jbrowse.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/jbrowse/jbrowse.xml"/>
-
 		<tool file="cpt2/Restriction-Digest-Tool/bin/digest_dna.xml"/>
 		<tool file="cpt2/Restriction-Digest-Tool/bin/graphic_drawer.xml"/>
 	</section>
-
-	<section id="cpt2_genomic_edit2" name="CPT: Translation / RevCom / Change Sequence IDs">
-		<tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="genbank,fasta,gff3,experimental"/>
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_rename.xml" labels="fasta" />
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_remove_id.xml" labels="fasta" />
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_translate.xml" labels="fasta" />
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_revcom.xml" labels="fasta" />
+	<section id="8dee2684-f833-4dd9-b50d-abfdbb78f0be" name="CPT: Apollo">
+		<tool file="cpt2/galaxy-tools/tools/webapollo/create_account.xml" labels="apollo" />
+		<tool file="cpt2/galaxy-tools/tools/webapollo/list_organisms.xml" labels="apollo" />
+		<tool file="cpt2/galaxy-tools/tools/webapollo/create_or_update_organism.xml" labels="apollo" />
+		<tool file="cpt2/galaxy-tools/tools/webapollo/renumber_features.xml" labels="new,apollo" />
+		<tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" labels="danger,apollo" />
+		<tool file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" labels="experimental,apollo" />
+		<tool file="cpt2/galaxy-tools/tools/webapollo/json2iframe.xml" labels="apollo" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_apollo_sd.xml" labels="apollo" />
+		<tool file="cpt2/galaxy-tools/tools/webapollo/share_with.xml" labels="apollo" />
+	</section>
+	<section id="42fc75d5-cae2-4d29-8794-9a8d2f390032" name="CPT: Phage">
+		<tool file="cpt2/galaxy-tools/tools/gbk/phage_renamer.xml" labels="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/phage/autoreopen.xml" labels="experimental"/>
+		<tool file="cpt2/galaxy-tools/tools/phage/virtual_suppressor_strain.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/phage/intron_detection.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/phage/frameshift.xml"/>
 	</section>
 
-	<section id="cpt2_clustering" name="CPT: Clustering">
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_bin.xml" labels="fasta"/>
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_bin_post.xml" labels="fasta"/>
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_blastclust_fasta.xml" labels="fasta"/>
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_dedup.xml" labels="fasta" />
-		<tool file="cpt2/galaxy-tools/tools/blast/blastclust.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/comparative/cdhit-reformat.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/comparative/cdhit-clustsize.xml"/>
+	<label id="=====7" text="Finishing"/>
+	<section id="e9289ba2-37fe-4d68-9460-084e7e4e5cc8" name="CPT: Polishing and Publication">
+		<tool file="cpt2/galaxy-tools/tools/gbk/sequin.xml" labels="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/gbk_to_five_col.xml" labels="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/phage_renamer.xml" labels="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_validator.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_table.xml"/>
 	</section>
 
-	<section id="cpt2_phage-host" name="CPT: Phage / Host Relationships">
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_codon_opt.xml" labels="fasta"/>
-	</section>
 
-	<section id="cpt2_seq_searc" name="CPT: Sequence Search">
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_regex_search.xml" labels="fasta" />
-		<tool file="cpt2/galaxy-tools/tools/one-off/find_l_like_proteins.xml"/>
-	</section>
-
-	<section id="cpt2_rebase" name="CPT: Remap Analysis Results">
-		<tool file="cpt2/galaxy-tools/tools/external/wig_rebase.xml"/>
-	</section>
-
-	<section id="cpt2_gene_call" name="CPT: Structural Prediction">
-		<tool file="cpt2/galaxy-tools/tools/fasta/get_orfs_or_cdss.xml" labels="fasta" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/shinefind.xml" labels="gff3" />
-		<tool file="cpt2/galaxy-tools/tools/gff3/lipory.xml" labels="gff3" />
-
-		<label id="cpt2_gene_call_1" text="External / NON-CPT Tools"/>
-		<tool file="cpt2/galaxy-tools/tools/external/gmsn.pl.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/external/phageterm/PhageTerm.xml"/>
-	</section>
-
-	<section id="cpt2_func_pred" name="CPT: Functional Prediction">
-		<tool file="cpt2/galaxy-tools/tools/external/tmhmm.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/external/signalp.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/external/interproscan.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/external/interproscan-5.22.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/external/fix-aragorn-gff3.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/one-off/genrand.xml"/>
-	</section>
-
-	<section id="cpt_muts" name="CPT: Mutation Analysis Tools">
-		<tool file="cpt2/galaxy-tools/tools/one_snp_away/script.xml" />
-		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_disambig.xml" labels="fasta" />
-	</section>
-
-	<section id="cpt2_other" name="CPT: OTHER">
+	<section id="11f06d20-4da2-45c6-aa9a-141cd22d2aae" name="CPT: OTHER">
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_color.xml" labels="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_parent_child_map.xml" labels="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_simple_primer.xml" labels="fasta" />
@@ -284,18 +260,11 @@
 		<tool file="tabular_to_fasta/tabular_to_fasta.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/one-off/none-validator.xml"/>
 	</section>
-
-
-
-
-
-
 	<!-- deprecated -->
 	<tool file="cpt2/galaxy-tools/tools/gff3/gff3_ipr_merge.xml" labels="deprecated" hidden="True" />
 	<tool file="cpt2/galaxy-tools/tools/gbk/cpt_add_gff_to_gbk.xml" labels="deprecated" hidden="True" />
 	<tool file="cpt2/galaxy-tools/tools/blast/cpt_relatedness.xml" labels="deprecated" hidden="True"/>
 	<tool file="cpt2/galaxy-tools/tools/blast/cpt_relatedness.xml" labels="deprecated"/>
-
 	<!-- admin -->
 	<tool hidden="True" file="cpt2/galaxy-tools/tools/admin/success.xml"/>
 	<tool hidden="True" file="cpt2/galaxy-tools/tools/admin/error.xml"/>
