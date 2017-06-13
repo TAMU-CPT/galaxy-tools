@@ -51,15 +51,19 @@ if __name__ == '__main__':
                 # We're experiencing a (transient?) problem where gene_001 to
                 # gene_025 will be rejected. Thus, hardcode to a known working
                 # gene name and update later.
+
                 featureData[0]['name'] = 'tRNA_000'
+                tRNA_sf = [child for child in feature.sub_features if child.type == 'tRNA'][0]
+                tRNA_type = tRNA_sf.qualifiers.get('Codon', ["Unk"])[0]
+                # import json
+                # print(json.dumps(featureData, indent=2))
                 newfeature = wa.annotations.addFeature(featureData, trustme=True)
-                tRNA_idx += 1
 
                 def func0():
-                    wa.annotations.setName(
+                    print(wa.annotations.setName(
                         newfeature['features'][0]['uniquename'],
-                        'tRNA-%03d' % tRNA_idx,
-                    )
+                        'tRNA-%s' % tRNA_type,
+                    ))
                 retry(func0)
 
                 sys.stdout.write('\t'.join([
