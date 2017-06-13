@@ -83,13 +83,13 @@ def fix_gene_boundaries(feature):
     return feature
 
 
-def fix_gene_qualifiers(feature, fid):
+def fix_gene_qualifiers(name, feature, fid):
     for mRNA in feature.sub_features:
         # And some exons below that
         sf_replacement = []
         for sf in mRNA.sub_features:
             # We set a locus_tag on ALL sub features
-            sf.qualifiers['locus_tag'] = 'gene_%03d' % fid
+            sf.qualifiers['locus_tag'] = 'CPT_%s_%03d' % (name, fid)
             # Remove Names which are UUIDs
             if is_uuid(sf.qualifiers['Name'][0]):
                 del sf.qualifiers['Name']
@@ -279,11 +279,11 @@ def handle_record(record):
 
         feature = fix_gene_boundaries(feature)
         # Which have mRNAs we'll drop later
-        feature = fix_gene_qualifiers(feature, fid)
+        feature = fix_gene_qualifiers(record.id, feature, fid)
 
         # Wipe out the parent gene's data, leaving only a locus_tag
         feature.qualifiers = {
-            'locus_tag': 'gene_%03d' % fid,
+            'locus_tag': 'CPT_%s_%03d' % (record.id, fid),
         }
 
         # Patch our features back in (even if they're non-gene features)
@@ -309,9 +309,9 @@ def handle_record(record):
 
         # Add product tag
         if flat_feat.type == 'CDS':
-            flat_feat.qualifiers['Product'] = protein_product
-            # Wipes out any 'product' key
-            flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'Product', 'product')
+            flat_feat.qualifiers['product'] = [protein_product]
+            if 'Product' in flat_feat.qualifiers:
+                del flat_feat.qualifiers['Product']
 
         elif flat_feat.type == 'terminator':
             flat_feat.type = 'regulatory'
