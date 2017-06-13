@@ -1,11 +1,11 @@
-<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GenBank" version="3.0">
-  <description>convert gff3 to GenBank</description>
-  <macros>
-    <import>macros.xml</import>
+<tool id="edu.tamu.cpt.gff.gff2gb" name="GFF3 to GenBank" version="4.0">
+	<description>convert gff3 to GenBank</description>
+	<macros>
+		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
-  </macros>
-  <expand macro="requirements"/>
-  <command detect_errors="aggressive"><![CDATA[
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
 python $__tool_directory__/gff2gb.py
@@ -13,21 +13,21 @@ python $__tool_directory__/gff2gb.py
 @INPUT_FASTA@
 
 > $output]]></command>
-  <inputs>
+	<inputs>
 	<expand macro="input/gff3+fasta" />
-  </inputs>
-  <outputs>
-    <data format="genbank" hidden="false" name="output" label="${gff3_data.name} as GenBank"/>
-  </outputs>
-  <tests>
+	</inputs>
+	<outputs>
+		<data format="genbank" hidden="false" name="output" label="${gff3_data.name} as GenBank"/>
+	</outputs>
+	<tests>
 		<test>
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="miro.fa" />
 			<param name="gff3_data" value="miro.gff3" />
 			<output name="output" file="miro.gbk" />
 		</test>
-  </tests>
-  <help><![CDATA[
+	</tests>
+	<help><![CDATA[
 .. class:: warningmark
 
 This is a LOSSY conversion. This tool **TRUNCATES** genbank file identifiers if
@@ -44,7 +44,6 @@ Convert gff3 data to genbank. There are may WebApollo specific conventions. A re
 - gene / tRNA
 - terminator
 
-      ]]></help>
-		<expand macro="citations" />
+]]></help>
+	<expand macro="citations" />
 </tool>
-

@@ -64,7 +64,7 @@ def main():
     gaf_data = []
     page = 1
     while True:
-        gafs = get(token, args.url +'gafs/', dict(
+        gafs = get(token, args.url + 'gafs/', dict(
             gene__refseq_id=refseq['id'],
             # gene__refseq_id='df8baca3-3af4-4d72-8045-6de08072be77',
             page=page
@@ -118,8 +118,6 @@ def main():
 
     reload(sys)
     sys.setdefaultencoding('utf8')
-
-
 
     for gaf in gaf_data:
         fixed_fields = [fix_field(gaf, f).encode('utf-8') for f in fields]

@@ -62,7 +62,6 @@
     <tool hidden="True" file="cpt2/galaxy-tools/tools/util/notify_me.xml"/>
     <tool file="cpt2/galaxy-tools/tools/util/cpt_convert_glimmer_to_gff3.xml"/>
     <tool file="cpt2/galaxy-tools/tools/util/cpt_convert_mga_to_gff3.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/util/fix_aragorn_gff.xml"/>
     <tool file="cpt2/galaxy-tools/tools/text/cat.xml"/>
     <tool file="cpt2/galaxy-tools/tools/text/uniq.xml"/>
     <tool file="cpt2/galaxy-tools/tools/text/intersect.xml"/>
@@ -229,7 +228,7 @@
     <tool file="cpt2/galaxy-tools/tools/external/interproscan.xml"/>
     <tool file="cpt2/galaxy-tools/tools/external/interproscan-5.22.xml"/>
     <tool file="cpt2/galaxy-tools/tools/external/phageterm/PhageTerm.xml"/>
-    <tool file="cpt2/galaxy-tools/tools/external/fix-trnascan-gff3.xml"/>
+    <tool file="cpt2/galaxy-tools/tools/external/fix-aragorn-gff3.xml"/>
     <tool file="cpt2/galaxy-tools/tools/one-off/genrand.xml"/>
   </section>
   <section id="cptspecialsnowflakes" name="CPT:Oneoff/Custom">
