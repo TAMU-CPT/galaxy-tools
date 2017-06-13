@@ -178,6 +178,7 @@
     <tool file="cpt2/galaxy-tools/tools/gbk/subsection.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml"/>
     <tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" labels="experimental"/>
+    <tool file="cpt2/galaxy-tools/tools/gbk/gbk_to_five_col.xml"/>
   </section>
   <section id="cpt2_comparative" name="CPT2: Comparative Genomics">
     <tool file="cpt2/galaxy-tools/tools/comparative/mist3.xml"/>

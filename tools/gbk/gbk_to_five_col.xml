@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.GBKtoFiveCol" name="Genbank to Five Column Format" version="1.0">
+    <description></description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gbk_to_five_col.py
+  "$file"
+
+> "$output"
+
+]]></command>
+  <inputs>
+    <param label="GenBank file" name="file" type="data" format="genbank" />
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output">
+    </data>
+  </outputs>
+  <tests>
+      <test>
+          <param name="file" value="complex_feature_locs.gbk" />
+          <output name="output" value="gbkto5col.tsv" />
+      </test>
+  </tests>
+  <help>
+Genbank Format to Five Column Format
+====================================
+
+Output format is:
+
+>Feature ID
+Line 1
+- Column 1: Start location (first nucleotide) of a feature
+- Column 2: Stop location (last nucleotide) of a feature
+- Column 3: Feature name (for example, 'CDS' or 'mRNA' or 'rRNA' or 'gene' or 'exon')
+
+Line2:
+- Column 4: Qualifier name (for example, 'product' or 'number' or 'gene' or 'note')
+- Column 5: Qualifier value
+
+Example Output::
+
+    >Feature contig00077
+    0	22956	source
+    			mol_type	genomic DNA
+    			organism	AU1189
+    11652	11326	CDS
+    11327	11158
+    			note	tapemeasure frameshift chaperone
+    			product	P2 E' tapemeasure frameshift chaperone
+    			gene	gp14
+    			translation	MNPIQSDAAAPDLQADAAAIATPAQDDPATHTLDTPLVRGTQTITSITLRKPKSGELRGVSLSDLVSLDVVALSKVLPRISSPMLTEADVASIDPADLVQLGGIFAGFFDAEGREIPTGLPDRVEDPMADIATVFGWTPPVMDAFSLAELMDWRERARVRAGAQ
+    11900	11599	CDS
+    11600	11408
+    11910	11904	RBS
+
+</help>
+		<expand macro="citations" />
+</tool>
