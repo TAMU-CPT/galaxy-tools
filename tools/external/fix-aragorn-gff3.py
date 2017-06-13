@@ -36,7 +36,9 @@ def fixed_feature(rec):
         )
         feature.qualifiers['ID'] = [fid]
 
-        gene.sub_features = [exon, feature]
+        # gene -> trna -> exon
+        feature.sub_features = [exon]
+        gene.sub_features = [feature]
         yield gene
 
 
