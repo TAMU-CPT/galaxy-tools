@@ -1,14 +1,19 @@
 <?xml version="1.0"?>
 <macros>
-  <xml name="gff_requirements">
-    <requirements>
-      <requirement type="package" version="2.7">python</requirement>
-      <requirement type="package" version="1.65">biopython</requirement>
-      <requirement type="package" version="2.12.1">requests</requirement>
-      <yield/>
-    </requirements>
-  </xml>
-  <xml name="citation/mijalisrasche">
+	<xml name="gff_requirements">
+		<requirements>
+			<requirement type="package" version="2.7">python</requirement>
+			<requirement type="package" version="1.65">biopython</requirement>
+			<requirement type="package" version="2.12.1">requests</requirement>
+			<yield/>
+		</requirements>
+		<version_command>
+		<![CDATA[
+			cd $__tool_directory__ && git rev-parse HEAD
+		]]>
+		</version_command>
+	</xml>
+	<xml name="citation/mijalisrasche">
 		<citation type="bibtex">@unpublished{galaxyTools,
 		author = {E. Mijalis, E. Rasche},
 		title = {CPT Galaxy Tools},
@@ -16,16 +21,17 @@
 		note = {https://github.com/tamu-cpt/galaxy-tools/}
 		}
 		</citation>
-  </xml>
-  <xml name="citations">
-      <citations>
-            <citation type="bibtex">@unpublished{galaxyTools,
-            author = {E. Mijalis, E. Rasche},
-            title = {CPT Galaxy Tools},
-            year = {2013-2017},
-			note = {https://github.com/tamu-cpt/galaxy-tools/}
-            }
-            </citation>
-      </citations>
-  </xml>
+	</xml>
+	<xml name="citations">
+		<citations>
+			<citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {E. Mijalis, E. Rasche},
+				title = {CPT Galaxy Tools},
+				year = {2013-2017},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+		</citations>
+	</xml>
 </macros>

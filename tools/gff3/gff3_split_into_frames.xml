@@ -3,7 +3,7 @@
   <description>Splits GFF3 file into 6 files according to gene reading frames</description>
   <macros>
     <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+    <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -26,5 +26,5 @@ $input
 
 Splits one GFF3 file into 6 GFF3 files (one for each reading frame). Each file contains genes within that reading frame.
       ]]></help>
-		<expand macro="citations" />
+  <expand macro="citations" />
 </tool>
