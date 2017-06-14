@@ -483,6 +483,7 @@ class WebApolloInstance(object):
         self.users = UsersClient(self)
         self.metrics = MetricsClient(self)
         self.bio = RemoteRecord(self)
+        self.aes = AnnotationsEditorServiceClient(self)
 
     def __str__(self):
         return '<WebApolloInstance at %s>' % self.apollo_url
@@ -581,6 +582,7 @@ class Client(object):
 
         r = requests.post(url, data=json.dumps(data), headers=headers,
                           verify=self.__verify, params=post_params, allow_redirects=False, **self._requestArgs)
+        print(r.text)
 
         if r.status_code == 200 or r.status_code == 302:
             if isJson:
@@ -620,6 +622,17 @@ class MetricsClient(Client):
 
     def getServerMetrics(self):
         return self.get('metrics', {})
+
+class AnnotationsEditorServiceClient(Client):
+    CLIENT_BASE = '/20457947319319240381721642717/AnnotationEditorService'
+
+    def getFeature(self, featureID):
+        data = {
+            'features': [{"uniquename": str(featureID)}],
+            'operation': "get_annotation_info_editor_data",
+            'track': "Merlin"
+        }
+        return self.request('', data)
 
 
 class AnnotationsClient(Client):
