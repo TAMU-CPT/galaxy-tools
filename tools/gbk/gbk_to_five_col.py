@@ -28,21 +28,24 @@ def gbk_to_5col(genbank):
     for record in SeqIO.parse(genbank, 'genbank'):
         print('>Feature %s' % record.id)
         for feature in record.features:
-            for index, part in enumerate(feature.location.parts):
-                if part.strand > 0:
-                    start = int(part.start)
-                    end = int(part.end)
-                else:
-                    start = int(part.end)
-                    end = int(part.start)
-                if index == 0:
-                    name = feature.type
-                    print("%d\t%d\t%s" % (start, end, name))
-                else:
-                    print("%d\t%d" % (start, end))
-            for (qualifier, values) in feature.qualifiers.items():
-                for value in values:
-                    print("\t\t\t%s\t%s" % (qualifier, value))
+            if feature.type == "source":
+                continue
+            else:
+                for index, part in enumerate(feature.location.parts):
+                    if part.strand > 0:
+                        start = int(part.start)+1
+                        end = int(part.end)
+                    else:
+                        start = int(part.end)
+                        end = int(part.start)+1
+                    if index == 0:
+                        name = feature.type
+                        print("%d\t%d\t%s" % (start, end, name))
+                    else:
+                        print("%d\t%d" % (start, end))
+                for (qualifier, values) in feature.qualifiers.items():
+                    for value in values:
+                        print("\t\t\t%s\t%s" % (qualifier, value))
 
 
 if __name__ == '__main__':
