@@ -76,7 +76,6 @@ if __name__ == '__main__':
                 # gene_025 will be rejected. Thus, hardcode to a known working
                 # gene name and update later.
                 featureData[0]['name'] = 'terminator_000'
-                featureData[0]['location']['strand'] = 0
                 newfeature = wa.annotations.addFeature(featureData, trustme=True)
 
                 terminator_idx += 1
