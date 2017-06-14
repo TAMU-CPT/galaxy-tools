@@ -8,7 +8,9 @@
 			<yield/>
 		</requirements>
 		<version_command>
-			cd $__tool_directory__; git rev-parse HEAD
+		<![CDATA[
+			cd $__tool_directory__ && git rev-parse HEAD
+		]]>
 		</version_command>
 	</xml>
 	<xml name="citation/mijalisrasche">
