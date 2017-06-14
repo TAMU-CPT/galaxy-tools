@@ -6,6 +6,7 @@ from Bio import SeqIO
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
+
 # Read in Genbank file and parse features
 # Output features into Five Column format
 
@@ -23,6 +24,7 @@ Repeat for each feature in a seq
 Repeat Line 2 for each qualifier in a feature
 """
 
+
 def gbk_to_5col(genbank):
     """Converts genbank to BankIt five column format"""
     for record in SeqIO.parse(genbank, 'genbank'):
@@ -33,11 +35,11 @@ def gbk_to_5col(genbank):
             else:
                 for index, part in enumerate(feature.location.parts):
                     if part.strand > 0:
-                        start = int(part.start)+1
+                        start = int(part.start) + 1
                         end = int(part.end)
                     else:
                         start = int(part.end)
-                        end = int(part.start)+1
+                        end = int(part.start) + 1
                     if index == 0:
                         name = feature.type
                         print("%d\t%d\t%s" % (start, end, name))
