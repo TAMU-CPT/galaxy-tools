@@ -15,7 +15,7 @@ python $__tool_directory__/rename_from_table.py
 "$__user_email__"
 
 --set "$where.set_choice"
-#if where.set_choice == "qualifier"
+#if $where.set_choice == "qualifier"
 	--qualifier_name "$where.qualifier"
 #end if
 $table
