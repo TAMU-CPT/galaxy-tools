@@ -3,7 +3,7 @@
   <description>Extract feature qualifier values into table</description>
   <macros>
     <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+	<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -11,17 +11,17 @@ $__tool_directory__/extract_qualifiers.py
 @INPUT_GFF@
 $qualifier
 > $output]]></command>
-    <inputs>
-        <expand macro="gff3_input" />
-        <param label="Qualifer to Extract" name="qualifier" format="text" help="e.g. Product or Notes"/>
-    </inputs>
+  <inputs>
+    <expand macro="gff3_input" />
+    <param label="Qualifer to Extract" name="qualifier" type="text" help="e.g. Product or Notes" />
+  </inputs>
   <outputs>
-    <data format="tabular" name="output"/>
+    <data format="tabular" name="output" />
   </outputs>
   <tests>
       <test>
           <param name="gff3_data" value="miro.gff3" />
-          <param name="qualifier" value="product"/>
+          <param name="qualifier" value="product" />
           <output name="output" file="miro_product.tsv" />
       </test>
   </tests>
