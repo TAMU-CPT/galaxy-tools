@@ -157,6 +157,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gbk/find_by_tag.xml" labels="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/remove_feature.xml" labels="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/remove_tag.xml" labels="genbank" />
+        <tool file="cpt2/galaxy-tools/tools/gff3/extract_qualifiers.xml" labels="new,apollo" />
 	</section>
 	<section id="808bfe42-0d41-4457-bd8d-fad422035947" name="CPT: Phage / Host Relationships">
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_codon_opt.xml" labels="fasta"/>
@@ -226,6 +227,7 @@
 		<tool file="cpt2/galaxy-tools/tools/webapollo/renumber_features.xml" labels="new,apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" labels="danger,apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" labels="experimental,apollo" />
+        <tool file="cpt2/galaxy-tools/tools/webapollo/rename_from_table.xml" labels="new,apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/json2iframe.xml" labels="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_apollo_sd.xml" labels="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/share_with.xml" labels="apollo" />
