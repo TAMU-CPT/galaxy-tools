@@ -24,7 +24,7 @@ $table
   <inputs>
     <expand macro="org_or_guess" />
 	<conditional name="where">
-		<param argument="--set" label="Which attribute to set." name="set" optional="true" type="select">
+		<param argument="--set" label="Which attribute to set." name="set_choice" optional="true" type="select">
 			<option value="name">name</option>
 			<option value="qualifier">qualifier</option>
 		</param>
