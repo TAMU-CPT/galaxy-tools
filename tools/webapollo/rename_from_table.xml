@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.rename_from_table" name="Rename features in Apollo" version="1.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <code file="webapollo.py"/>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+@APOLLO_ENSURE_USER_EXISTS@
+## Now we delete
+python $__tool_directory__/rename_from_table.py
+@ADMIN_AUTH@
+@ORG_OR_GUESS@
+"$__user_email__"
+
+--set "$where.set_choice"
+#if where.set_choice == "qualifier"
+	--qualifier_name "$where.qualifier"
+#end if
+$table
+> $output;
+    ]]></command>
+  <inputs>
+    <expand macro="org_or_guess" />
+	<conditional name="where">
+		<param argument="--set" label="Which attribute to set." name="set" optional="true" type="select">
+			<option value="name">name</option>
+			<option value="qualifier">qualifier</option>
+		</param>
+		<when value="name">
+		</when>
+		<when value="qualifier">
+			<param argument="--qualifier_name" label="Qualifier Name" name="qualname" type="text" value="locus_tag"/>
+		</when>
+	</conditional>
+    <param label="Tabular Input" name="table" type="data" format="tabular"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output" label="Rename Table"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Rename features in an Apollo record from a table input. Can optionally apply the new name
+to a feature qualifier. If used to update previously renamed records, it
+will currently just append another value rather than replacing the
+existing qualifier.
+
+@REFERENCES@
+]]></help>
+</tool>
