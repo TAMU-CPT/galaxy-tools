@@ -7,7 +7,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/extract_qualifiers.py
+python $__tool_directory__/extract_qualifiers.py
 @INPUT_GFF@
 $qualifier
 > $output]]></command>
