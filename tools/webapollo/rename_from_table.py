@@ -46,13 +46,20 @@ if __name__ == '__main__':
     sys.stdout.write("# Feature ID\tNew Name\n")
     for feature in sorted(features['features'], key=lambda x: x['location']['fmin']):
         new_name = None
-        if feature['parent_id'] in data:
-            new_name = data[feature['parent_id']]
-        elif feature['uniquename'] in data:
-            new_name = data[feature['uniquename']]
+        if 'parent_id' in feature:
+            if feature['parent_id'] in data:
+                new_name = data[feature['parent_id']]
+            elif feature['uniquename'] in data:
+                new_name = data[feature['uniquename']]
+            else:
+                sys.stdout.write("%s\tNot Found\n" % feature['uniquename'])
+                continue
         else:
-            sys.stdout.write("%s\tNot Found\n" % feature['uniquename'])
-            continue
+            if feature['uniquename'] in data:
+                new_name = data[feature['uniquename']]
+            else:
+                sys.stdout.write("%s\tNot Found\n" % feature['uniquename'])
+                continue
         if args.set == 'name':
             def fn0():
                 wa.annotations.setName(
