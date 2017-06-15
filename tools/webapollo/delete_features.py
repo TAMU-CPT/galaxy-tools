@@ -28,17 +28,20 @@ if __name__ == '__main__':
     # TODO: Check user perms on org.
     org = wa.organisms.findOrganismByCn(org_cn)
 
-    # Call setSequence to tell apollo which organism we're working with
-    wa.annotations.setSequence(org['commonName'], org['id'])
-    # Then get a list of features.
-    features = wa.annotations.getFeatures()
-    # For each feature in the features
-    for feature in sorted(features['features'], key=lambda x: random.random()):
-        # We see that deleteFeatures wants a uniqueName, and so we pass
-        # is the uniquename field in the feature.
-        def fn():
-            wa.annotations.deleteFeatures([feature['uniquename']])
-            print('Deleted %s' % feature['uniquename'])
+    sequences = wa.organisms.getSequencesForOrganism(org['id'])
+    for sequence in sequences['sequences']:
+        log.info("Processing %s %s", org['commonName'], sequence['name'])
+        # Call setSequence to tell apollo which organism we're working with
+        wa.annotations.setSequence(sequence['name'], org['id'])
+        # Then get a list of features.
+        features = wa.annotations.getFeatures()
+        # For each feature in the features
+        for feature in sorted(features['features'], key=lambda x: random.random()):
+            # We see that deleteFeatures wants a uniqueName, and so we pass
+            # is the uniquename field in the feature.
+            def fn():
+                wa.annotations.deleteFeatures([feature['uniquename']])
+                print('Deleted %s' % feature['uniquename'])
 
-        if not retry(fn, limit=3):
-            print('Error %s' % feature['uniquename'])
+            if not retry(fn, limit=3):
+                print('Error %s' % feature['uniquename'])
