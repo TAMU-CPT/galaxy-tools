@@ -17,22 +17,25 @@ def fixed_feature(rec):
         subfeatures=True
     )):
         fid = 'tRNA-%03d' % (1 + idx)
+        name = ['tRNA-' + feature.qualifiers['Codon'][0]]
         gene = SeqFeature(
             location=feature.location,
             type='gene',
             qualifiers={
                 'ID': [fid + '.gene'],
                 'source': ['aragorn'],
+                'Name': name,
             }
         )
-        feature.qualifiers['Name'] = ['tRNA-' + feature.qualifiers['Codon'][0]]
+        feature.qualifiers['Name'] = name
         # Below that we have an mRNA
         exon = SeqFeature(
             location=feature.location,
             type='exon',
             qualifiers={
                 'source': ['aragorn'],
-                'ID': ['%s.exon' % fid]
+                'ID': ['%s.exon' % fid],
+                'Name': name,
             }
         )
         feature.qualifiers['ID'] = [fid]
