@@ -7,7 +7,7 @@ from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-from gff3 import feature_lambda, feature_test_type, feature_test_quals, get_id, \
+from gff3 import feature_lambda, feature_test_type, feature_test_true, feature_test_quals, get_id, \
     ensure_location_in_bounds
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
@@ -147,6 +147,7 @@ def fix_gene_boundaries(feature):
     else:
         feature.location = FeatureLocation(fmin, fmax, strand=-1)
     return feature
+
 
 def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5, lookahead_max=15, top_only=False, add=False):
     table_output.write('\t'.join(['ID', 'Name', 'Terminus', 'Terminus', 'Strand',
