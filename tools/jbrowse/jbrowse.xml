@@ -1,4 +1,4 @@
-<tool id="jbrowse-cpt" name="JBrowse 0.6.4+cpt" version="0.6.4+cpt">
+<tool id="jbrowse-cpt" name="JBrowse 0.6.3+cpt" version="0.6.3+cpt">
   <description>genome browser</description>
   <macros>
     <import>macros.xml</import>
@@ -11,7 +11,7 @@
 #if $action.action_select == "create":
     mkdir -p $output.files_path &&
 #else:
-	ssh microscope@192.168.0.3 cp -R $action.update_jbrowse.extra_files_path $output.files_path &&
+    cp -R $action.update_jbrowse.extra_files_path $output.files_path &&
 #end if
 
 ## Copy the XML file into the directory, mostly for debugging
