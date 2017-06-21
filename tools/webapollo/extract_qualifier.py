@@ -2,7 +2,7 @@
 import argparse
 import random
 from webapollo import WebApolloInstance
-from webapollo import WAAuth, OrgOrGuess, GuessOrg, AssertUser, retry
+from webapollo import WAAuth, OrgOrGuess, GuessOrg, AssertUser
 import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
