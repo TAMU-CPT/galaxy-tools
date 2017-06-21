@@ -36,3 +36,4 @@ if __name__ == '__main__':
     for feature in sorted(features['features'], key=lambda x: random.random()):
         # We see that deleteFeatures wants a uniqueName, and so we pass
         # is the uniquename field in the feature.
+        pass
