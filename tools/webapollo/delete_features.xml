@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.delete_features" name="Delete all annotations from an Apollo record" version="1.2">
+<tool id="edu.tamu.cpt2.webapollo.delete_features" name="Delete all annotations from an Apollo record" version="1.3">
   <description></description>
   <macros>
     <import>macros.xml</import>
@@ -9,32 +9,38 @@
   <command detect_errors="aggressive"><![CDATA[
 @APOLLO_ENSURE_USER_EXISTS@
 #if str($ask_one) == "yes":
-    #if str($ask_two) == "yes":
-        ## Nope, still don't trust them to not be dumb (or malicious), so we backup first.
-        python $__tool_directory__/export.py
-        @ADMIN_AUTH@
-        @ORG_OR_GUESS@
-        --gff "$gff_out"
-        --fasta "$fasta_out"
-        --json "$json_out";
+	## Nope, still don't trust them to not be dumb (or malicious), so we backup first.
+	python $__tool_directory__/export.py
+	@ADMIN_AUTH@
+	@ORG_OR_GUESS@
+	--gff "$gff_out"
+	--fasta "$fasta_out"
+	--json "$json_out"
+	#if str($filter) != "all"
+		--type $filter
+	#end if
+	;
 
-        ## Now we delete
-        python $__tool_directory__/delete_features.py
-        @ADMIN_AUTH@
-        @ORG_OR_GUESS@
-        "$__user_email__"
-        > $output;
-    #else
-        echo "Nothing to do" > $output;
-    #end if
+
+	## Now we delete
+	python $__tool_directory__/delete_features.py
+	@ADMIN_AUTH@
+	@ORG_OR_GUESS@
+	"$__user_email__"
+	> $output;
 #else
     echo "Nothing to do" > $output;
 #end if
     ]]></command>
   <inputs>
     <expand macro="org_or_guess" />
+    <param name="filter" type="select" label="Feature Type Filter">
+        <option value="all">All</option>
+        <option value="mRNA">Genes</option>
+        <option value="terminator">Terminators</option>
+        <option value="tRNA">tRNAs</option>
+    </param>
     <param name="ask_one" type="boolean" truevalue="yes" falsevalue="" label="Are you SURE you want to do this?" help="It will PERMANENTLY delete all of the features on this organism."/>
-    <param name="ask_two" type="boolean" truevalue="yes" falsevalue="" label="Are you really, really SURE you want to do this?" help="There's NO coming back from this."/>
   </inputs>
   <outputs>
     <data format="tabular" name="output" label="Process and Error Log"/>
