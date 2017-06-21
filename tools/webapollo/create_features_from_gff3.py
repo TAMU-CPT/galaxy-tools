@@ -60,10 +60,10 @@ if __name__ == '__main__':
                 newfeature = wa.annotations.addFeature(featureData, trustme=True)
 
                 def func0():
-                    print(wa.annotations.setName(
+                    wa.annotations.setName(
                         newfeature['features'][0]['uniquename'],
                         'tRNA-%s' % tRNA_type,
-                    ))
+                    )
                 retry(func0)
 
                 sys.stdout.write('\t'.join([
