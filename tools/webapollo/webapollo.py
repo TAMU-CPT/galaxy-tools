@@ -622,6 +622,7 @@ class MetricsClient(Client):
     def getServerMetrics(self):
         return self.get('metrics', {})
 
+
 class AnnotationsEditorServiceClient(Client):
     CLIENT_BASE = '/20457947319319240381721642717/AnnotationEditorService'
 

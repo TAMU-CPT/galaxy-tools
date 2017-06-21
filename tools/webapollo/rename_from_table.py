@@ -20,7 +20,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     with open(args.table, 'r') as f:
-        #reads table into data dict ID: Value
+        # reads table into data dict ID: Value
         data = {}
         for line in f:
             (key, val) = line.split('\t')
