@@ -41,7 +41,7 @@ ${change.input_type.seq}
 	</configfiles>
   <inputs>
       <expand macro="input/gff3+fasta" />
-      <param label="New ID" name="new_id" type="text" help="New ID for the sequence to uniquely identify it from the previous build of the sequence. E.g. append Miro could become Miro.2 or Miro.v2 "/>
+      <param label="New ID (DO NOT LEAVE BLANK)" name="new_id" type="text" help="New ID for the sequence to uniquely identify it from the previous build of the sequence. E.g. append Miro could become Miro.2 or Miro.v2 "/>
       <repeat name="changes" title="Sequence Component Selections">
 		<conditional name="input_type">
 			<param name="input_type_select" type="select" label="Data Source">
