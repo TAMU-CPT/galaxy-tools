@@ -120,6 +120,34 @@ class NaiveSDCaller(object):
         return len(sds) > 0
 
 
+def fminmax(feature):
+    fmin = None
+    fmax = None
+    for sf in feature_lambda([feature], feature_test_true, {}, subfeatures=True):
+        if fmin is None:
+            fmin = sf.location.start
+            fmax = sf.location.end
+        if sf.location.start < fmin:
+            fmin = sf.location.start
+        if sf.location.end > fmax:
+            fmax = sf.location.end
+    return fmin, fmax
+
+
+def fix_gene_boundaries(feature):
+    # There is a frustrating bug in apollo whereby we have created gene
+    # features which are LARGER than expected, but we cannot see this.
+    # We only see a perfect sized gene + great SD together.
+    #
+    # So, we have this awful hack to clamp the location of the gene
+    # feature to the contained mRNAs. This is good enough for now.
+    fmin, fmax = fminmax(feature)
+    if feature.location.strand > 0:
+        feature.location = FeatureLocation(fmin, fmax, strand=1)
+    else:
+        feature.location = FeatureLocation(fmin, fmax, strand=-1)
+    return feature
+
 def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5, lookahead_max=15, top_only=False, add=False):
     table_output.write('\t'.join(['ID', 'Name', 'Terminus', 'Terminus', 'Strand',
                                   'Upstream Sequence', 'SD', 'Spacing']) +
@@ -205,6 +233,7 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
                     gene.location._start = min(locations)
                     gene.location._end = max(locations)
                 # Also register the feature with the separate GFF3 output
+                sd_feature = fix_gene_boundaries(sd_feature)
                 gff3_output_record.features.append(sd_feature)
 
                 if top_only:
