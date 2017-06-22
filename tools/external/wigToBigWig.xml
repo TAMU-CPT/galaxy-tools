@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.util.wigToBigWig" name="Wig to BigWig" version="1.0">
+<tool id="edu.tamu.cpt.util.wigToBigWig" name="Wig to BigWig" version="1.0" profile="16.04">
 	<description>CPT version accepts fasta input for genome lengths.</description>
 	<macros>
 		<import>macros.xml</import>

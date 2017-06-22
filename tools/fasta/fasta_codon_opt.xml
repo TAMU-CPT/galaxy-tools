@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.fasta.codonopt" name="Fasta Codon Optimiser" version="1.2">
+<tool id="edu.tamu.cpt.fasta.codonopt" name="Fasta Codon Optimiser" version="1.2" profile="16.04">
 	<description>optimizes codons for a particular host bacteria</description>
 	<macros>
 		<import>macros.xml</import>

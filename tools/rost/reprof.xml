@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="rost_reprof" name="reprof" version="1.0.1">
+<tool id="rost_reprof" name="reprof" version="1.0.1" profile="16.04">
   <description>protein secondary structure and accessibility prediction</description>
   <macros>
     <import>macros.xml</import>

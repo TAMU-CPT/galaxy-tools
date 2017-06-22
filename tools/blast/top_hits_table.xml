@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.blast.top_hits_table" name="Top Hits Table" version="1.2">
+<tool id="edu.tamu.cpt.blast.top_hits_table" name="Top Hits Table" version="1.2" profile="16.04">
 	<description>based on blast tabular files</description>
 	<macros>
 		<import>macros.xml</import>

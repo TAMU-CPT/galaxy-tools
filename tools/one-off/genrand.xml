@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.genrand" name="Genome Randomizer" version="1.1">
+<tool id="edu.tamu.cpt.gbk.genrand" name="Genome Randomizer" version="1.1" profile="16.04">
 	<description></description>
 	<command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/genrand

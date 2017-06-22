@@ -1,4 +1,4 @@
-<tool id="blastclust" name="blastclust" version="0.0.2">
+<tool id="blastclust" name="blastclust" version="0.0.2" profile="16.04">
     <description>Cluster proteins with blast</description>
   <macros>
     <import>macros.xml</import>

@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.gbk.source" name="GenBank Source Extractor" version="0.1">
+<tool id="edu.tamu.cpt.gbk.source" name="GenBank Source Extractor" version="0.1" profile="16.04">
   <description>Extract host genus &amp; species from GenBank files</description>
   <macros>
     <import>macros.xml</import>

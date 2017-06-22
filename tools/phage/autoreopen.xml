@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.phage.autoreopen" name="Auto-reopen" version="0.0.5">
+<tool id="edu.tamu.cpt.phage.autoreopen" name="Auto-reopen" version="0.0.5" profile="16.04">
   <description>attempts to automatically re-open phage genomes based on various heuristics.</description>
   <macros>
     <import>macros.xml</import>
