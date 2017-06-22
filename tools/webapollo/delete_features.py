@@ -58,7 +58,7 @@ if __name__ == '__main__':
             # is the uniquename field in the feature.
             def fn():
                 wa.annotations.deleteFeatures([feature['uniquename']])
-                print('Deleted %s' % feature['uniquename'])
+                print('Deleted %s [type=%s]' % (feature['uniquename'], feature['type']['name']))
 
             if not retry(fn, limit=3):
                 print('Error %s' % feature['uniquename'])
