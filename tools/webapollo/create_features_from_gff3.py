@@ -36,8 +36,6 @@ if __name__ == '__main__':
     sys.stdout.write('# ')
     sys.stdout.write('\t'.join(['Feature ID', 'Apollo ID', 'Success', 'Messages']))
     sys.stdout.write('\n')
-    tRNA_idx = 0
-    terminator_idx = 0
     # print(wa.annotations.getFeatures())
     for rec in GFF.parse(args.gff3):
         wa.annotations.setSequence(rec.id, org['id'])
@@ -54,15 +52,18 @@ if __name__ == '__main__':
 
                 featureData[0]['name'] = 'tRNA_000'
                 tRNA_sf = [child for child in feature.sub_features if child.type == 'tRNA'][0]
-                tRNA_type = tRNA_sf.qualifiers.get('Codon', ["Unk"])[0]
-                # import json
-                # print(json.dumps(featureData, indent=2))
+                tRNA_type = 'tRNA-' + tRNA_sf.qualifiers.get('Codon', ["Unk"])[0]
+
+                if 'Name' in feature.qualifiers:
+                    if feature.qualifiers['Name'][0].startswith('tRNA-'):
+                        tRNA_type = feature.qualifiers['Name'][0]
+
                 newfeature = wa.annotations.addFeature(featureData, trustme=True)
 
                 def func0():
                     wa.annotations.setName(
                         newfeature['features'][0]['uniquename'],
-                        'tRNA-%s' % tRNA_type,
+                        tRNA_type,
                     )
                 retry(func0)
 
@@ -78,12 +79,10 @@ if __name__ == '__main__':
                 featureData[0]['name'] = 'terminator_000'
                 newfeature = wa.annotations.addFeature(featureData, trustme=True)
 
-                terminator_idx += 1
-
                 def func0():
                     wa.annotations.setName(
                         newfeature['features'][0]['uniquename'],
-                        'terminator-%03d' % terminator_idx,
+                        'terminator'
                     )
 
                 retry(func0)
