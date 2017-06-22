@@ -16,6 +16,9 @@ python $__tool_directory__/create_or_update_organism.py
 
 --genus "$genus"
 --species "$species"
+#if str($group) != "None":
+--group '${group}'
+#end if
 $public
 
 @ORG_OR_GUESS@
@@ -31,6 +34,7 @@ $__user_email__
     <param name="genus" type="text" label="Genus" optional="False" />
     <param name="species" type="text" label="Species" optional="True" />
     <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
+    <param name="group" type="select" dynamic_options="galaxy_list_groups(__trans__)" label="Grant access to a user group" optional="True" />
   </inputs>
   <outputs>
     <data format="json" name="output"/>

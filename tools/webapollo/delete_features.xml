@@ -15,8 +15,7 @@
 	@ORG_OR_GUESS@
 	--gff "$gff_out"
 	--fasta "$fasta_out"
-	--json "$json_out"
-
+	--json "$json_out";
 
 	## Now we delete
 	python $__tool_directory__/delete_features.py
