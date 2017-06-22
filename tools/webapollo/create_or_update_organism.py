@@ -85,8 +85,9 @@ if __name__ == '__main__':
         if args.group:
             group = wa.groups.loadGroupByName(name=args.group)
             res = wa.groups.updateOrganismPermission(group, org_cn,
-                                             administrate=False, write=True, read=True,
-                                             export=True)
+                                                     administrate=False,
+                                                     write=True, read=True,
+                                                     export=True)
 
     data = [o for o in data if o['commonName'] == org_cn]
     print(json.dumps(data, indent=2))
