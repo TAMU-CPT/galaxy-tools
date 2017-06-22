@@ -14,6 +14,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
     WAAuth(parser)
     parser.add_argument('email', help='User Email')
+    parser.add_argument('--source', help='URL where the input dataset can be found.')
     OrgOrGuess(parser)
 
     parser.add_argument('gff3', type=argparse.FileType('r'), help='GFF3 file')
@@ -67,6 +68,13 @@ if __name__ == '__main__':
                     )
                 retry(func0)
 
+
+                if args.source:
+                    gene_id = newfeature['features'][0]['parent_id']
+                    def setSource():
+                        wa.annotations.addAttributes(gene_id, {'DatasetSource': [args.source]})
+                    retry(setSource)
+
                 sys.stdout.write('\t'.join([
                     feature.id,
                     newfeature['features'][0]['uniquename'],
@@ -86,6 +94,12 @@ if __name__ == '__main__':
                     )
 
                 retry(func0)
+
+                if args.source:
+                    gene_id = newfeature['features'][0]['parent_id']
+                    def setSource():
+                        wa.annotations.addAttributes(gene_id, {'DatasetSource': [args.source]})
+                    retry(setSource)
 
                 sys.stdout.write('\t'.join([
                     feature.id,
@@ -127,6 +141,11 @@ if __name__ == '__main__':
                         wa.annotations.setName(gene_id, feature.qualifiers.get('product', feature.qualifiers.get('Name', ["Unknown"]))[0])
                     retry(func)
 
+                    if args.source:
+                        gene_id = newfeature['features'][0]['parent_id']
+                        def setSource():
+                            wa.annotations.addAttributes(gene_id, {'DatasetSource': [args.source]})
+                        retry(setSource)
                     extra_attr = {}
                     for (key, values) in feature.qualifiers.items():
                         if key in bad_quals:

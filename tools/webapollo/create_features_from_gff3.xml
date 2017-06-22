@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.feat_from_gff3" name="GFF3 to Apollo Annotations" version="0.9">
+<tool id="edu.tamu.cpt2.webapollo.feat_from_gff3" name="GFF3 to Apollo Annotations" version="1.0">
   <description></description>
   <macros>
     <import>macros.xml</import>
@@ -14,6 +14,8 @@ python $__tool_directory__/create_features_from_gff3.py
 
 "$__user_email__"
 $gff3_data
+--source "${__app__.config.galaxy_infrastructure_url}history/view/${__app__.security.encode_id($input.history_id)}"
+
 > $output]]></command>
   <inputs>
     <expand macro="org_or_guess" />
