@@ -24,7 +24,7 @@ if __name__ == '__main__':
         data = {}
         for line in f:
             (key, val) = line.split('\t')
-            data[key] = val
+            data[key] = val.strip()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
     # User must have an account
