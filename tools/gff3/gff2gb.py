@@ -158,7 +158,7 @@ def fix_frameshifted(features):
             match_data[(a, b)] = a.location.start - b.location.end
 
     # Now we'll find the features which are closest in terms of start/end
-    ((merge_a, merge_b), value) = max(match_data.items(), key=lambda (k, v): v)
+    ((merge_a, merge_b), value) = max(match_data.items(), key=lambda kv: kv[1])
     # And get the non-matching features into other
     for f in cdss2:
         if f != merge_a and f != merge_b:
