@@ -93,6 +93,65 @@ $__tool_directory__/ensure_exists.sh "$__user_email__";
     </conditional>
   </xml>
 
+  <xml name="user_select">
+    <conditional name="user">
+        <param name="source_select" type="select" label="User Source">
+            <option value="select">Select</option>
+            <option value="direct">Direct Entry</option>
+        </param>
+        <when value="select">
+            <param name="user_select" type="select" dynamic_options="galaxy_list_users(__trans__)" label="Grant access to a user" optional="True" />
+        </when>
+        <when value="direct">
+            <param name="user_raw" type="text" label="Grant access to a user" optional="True" />
+        </when>
+    </conditional>
+  </xml>
+
+  <xml name="group_select">
+    <conditional name="group">
+        <param name="source_select" type="select" label="Group Source">
+            <option value="select">Select</option>
+            <option value="direct">Direct Entry</option>
+        </param>
+        <when value="select">
+            <param name="group_select" type="select" dynamic_options="galaxy_list_groups(__trans__)" label="Grant access to a group" optional="True" />
+        </when>
+        <when value="direct">
+            <param name="group_raw" type="text" label="Grant access to a group" optional="True" />
+        </when>
+    </conditional>
+  </xml>
+
+  <xml name="sharing">
+    <expand macro="user_select" />
+    <expand macro="group_select" />
+  </xml>
+
+  <token name="@SHARING@">
+--group
+#if $group.source_select == "select":
+    #if str($group.group_select) != "None":
+        $group.group_select
+    #end if
+#else
+    #if str($group.group_raw) != "None":
+        $group.group_raw
+    #end if
+#end if
+
+--user
+#if $user.source_select == "select":
+    #if str($user.user_select) != "None":
+        $user.user_select
+    #end if
+#else
+    #if str($user.user_raw) != "None":
+        $user.user_raw
+    #end if
+#end if
+  </token>
+
   <xml name="citations">
       <citations>
       </citations>

@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.create_or_update" name="Create or Update Organism" version="3.2" profile="16.04">
+<tool id="edu.tamu.cpt2.webapollo.create_or_update" name="Create or Update Organism" version="3.3" profile="16.04">
   <description>will create the organism if it doesn't exist, and update otherwise</description>
   <macros>
     <import>macros.xml</import>
   </macros>
-  <code file="webapollo.py"/>
   <expand macro="requirements"/>
+  <code file="webapollo.py"/>
   <command detect_errors="aggressive"><![CDATA[
 @APOLLO_ENSURE_USER_EXISTS@
 cp -R ${jbrowse.extra_files_path}/data/ @DATA_DIR@/${jbrowse.id};
@@ -16,9 +16,9 @@ python $__tool_directory__/create_or_update_organism.py
 
 --genus "$genus"
 --species "$species"
-#if str($group) != "None":
---group '${group}'
-#end if
+
+@SHARING@
+
 $public
 
 @ORG_OR_GUESS@
@@ -34,7 +34,7 @@ $__user_email__
     <param name="genus" type="text" label="Genus" optional="False" />
     <param name="species" type="text" label="Species" optional="True" />
     <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
-    <param name="group" type="select" dynamic_options="galaxy_list_groups(__trans__)" label="Grant access to a user group" optional="True" />
+    <expand macro="sharing" />
   </inputs>
   <outputs>
     <data format="json" name="output"/>
