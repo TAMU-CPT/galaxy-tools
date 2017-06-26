@@ -239,8 +239,8 @@ def merge_multi_cds(mRNA_sf):
     if len(cdss) <= 1:
         return non_cdss + cdss
     else:
-        # Grab all locations
-        locations = [x.location for x in cdss]
+        # Grab all locations, and sort them so we can work with them rationally.
+        locations = sorted([x.location for x in cdss], key=lambda x: x.location.start)
         # Pick randomly a main CDS
         main_cds = cdss[0]
         # We'll merge the other CDSs into this one.
