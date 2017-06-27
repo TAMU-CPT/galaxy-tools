@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import json
-import base64
 import argparse
 
 if __name__ == '__main__':
@@ -14,7 +13,6 @@ if __name__ == '__main__':
     # https://fqdn/apollo/annotator/loadLink?loc=NC_005880:0..148317&organism=326&tracks=
     data = json.load(args.json)
 
-    # This is base64 encoded to get past the toolshed's filters.
     HTML_TPL = """
         <html>
             <head>
