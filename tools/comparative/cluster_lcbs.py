@@ -131,13 +131,23 @@ def filter_lcbs_for_seq(xmfa):
 
         for g in i:
             cluster_name += g['id'] + strand_info[str(g['strand'])]
+        # allow clusters with all opposite strands to be together (alt name is opposite strand of orig)
+        alt_name = cluster_name.replace('+', '*').replace('-', '+').replace('*', '-')
 
-        if cluster_name not in clusters:
+        orig_not_in_clusters = cluster_name not in clusters
+        alt_not_in_clusters = alt_name not in clusters
+
+        if orig_not_in_clusters and alt_not_in_clusters:
+        # if original or alternate names not already in clusters
             clusters[cluster_name] = [i]
         else:
-            clusters[cluster_name].append(i)
+            if not orig_not_in_clusters:  # if original name is already in clusters
+                clusters[cluster_name].append(i)
+            if not alt_not_in_clusters:   # if alt name is already in clusters
+                clusters[alt_name].append(i)
 
     return clusters
+
 
     # to_xmfa(clusters['123456'])
 
