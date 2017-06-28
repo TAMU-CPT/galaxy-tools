@@ -123,13 +123,14 @@ def id_tn_dict(sequences, tmpfile=False):
 
 def filter_lcbs_for_seq(xmfa):
     """ clusters lcbs based on which sequences they involve """
+    strand_info = {'1': '+', '-1': '-'}
     clusters = {}
 
     for i in list(parse_xmfa(xmfa)):
         cluster_name = ''
 
         for g in i:
-            cluster_name += g['id']
+            cluster_name += g['id'] + strand_info[str(g['strand'])]
 
         if cluster_name not in clusters:
             clusters[cluster_name] = [i]
@@ -142,7 +143,8 @@ def filter_lcbs_for_seq(xmfa):
 
 def merge_lcbs(lcb1, lcb2):
     for num, i in enumerate(lcb1):
-        i['end'] = lcb2[num]['end']
+        i['start'] = min([i['start'], lcb2[num]['start']])
+        i['end'] = max([i['end'], lcb2[num]['end']])
         i['seq'] += lcb2[num]['seq']
 
     return lcb1
