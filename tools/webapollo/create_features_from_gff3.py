@@ -97,7 +97,7 @@ if __name__ == '__main__':
                 retry(func0)
 
                 if args.source:
-                    gene_id = newfeature['features'][0]['parent_id']
+                    gene_id = newfeature['features'][0]['uniquename']
 
                     def setSource():
                         wa.annotations.addAttributes(gene_id, {'DatasetSource': [args.source]})
