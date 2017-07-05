@@ -26,7 +26,7 @@ TOKEN=`curl
 
 TMPFILE=`mktemp`;
 cat /galaxy/creds.basespace.json |
-	jq ".basespace.\"\$USER_EMAIL_HASH\" = \"\$TOKEN\"" > \$TMPFILE;
+	jq ".basespace._\$USER_EMAIL_HASH = \"\$TOKEN\"" > \$TMPFILE;
 
 mv \$TMPFILE /galaxy/creds.basespace.json;
 
