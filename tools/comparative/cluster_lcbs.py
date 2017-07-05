@@ -201,7 +201,7 @@ def cluster_lcbs(lcbs, threshold):
 
             close = True
             for num, k in enumerate(compare_against):
-            # for num, k in enumerate(i):
+                # for num, k in enumerate(i):
                 if j[num]['start'] - k['end'] > threshold:
                     close = False
 
