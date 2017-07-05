@@ -15,10 +15,10 @@ $__tool_directory__/ensure_exists.sh "$__user_email__";
 USER_EMAIL_HASH=`echo -n "$__user_email__" | md5sum | sed 's/ .*//'`;
 	</token>
 	<token name="@USER_ACCESS_TOKEN@">
-ACCESS_TOKEN=`cat /galaxy/creds.basespace.json | jq ".basespace.\"\$USER_EMAIL_HASH\"" -r`;
+ACCESS_TOKEN=`cat /galaxy/creds.basespace.json | jq ".basespace._\$USER_EMAIL_HASH" -r`;
 	</token>
 	<token name="@USER_ACCESS_TOKEN_INLINE@">
-\$(cat /galaxy/creds.basespace.json | jq ".basespace.\"\$USER_EMAIL_HASH\"" -r)
+\$(cat /galaxy/creds.basespace.json | jq ".basespace._\$USER_EMAIL_HASH\" -r)
 	</token>
 	<token name="@CLIENT_ID@">
 CLIENT=\$(cat /galaxy/creds.json | jq .illumina_basespace.client_id -r);
