@@ -1,10 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+import argparse
+import copy
+import logging
 import re
 import sys
-import copy
-import argparse
 from BCBio import GFF
-import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(name='blastxml2gff3')
 

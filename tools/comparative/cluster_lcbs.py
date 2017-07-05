@@ -3,7 +3,6 @@ from Bio import SeqIO
 import tempfile
 import sys
 import argparse
-import operator
 
 
 def parse_xmfa(xmfa):
@@ -121,6 +120,7 @@ def id_tn_dict(sequences, tmpfile=False):
 
     return label_convert
 
+
 def filter_lcbs_for_seq(xmfa):
     """ clusters lcbs based on which sequences they involve """
     strand_info = {'1': '+', '-1': '-'}
@@ -138,7 +138,7 @@ def filter_lcbs_for_seq(xmfa):
         alt_not_in_clusters = alt_name not in clusters
 
         if orig_not_in_clusters and alt_not_in_clusters:
-        # if original or alternate names not already in clusters
+            # if original or alternate names not already in clusters
             clusters[cluster_name] = [i]
         else:
             if not orig_not_in_clusters:  # if original name is already in clusters
@@ -147,9 +147,8 @@ def filter_lcbs_for_seq(xmfa):
                 clusters[alt_name].append(i)
 
     return clusters
-
-
     # to_xmfa(clusters['123456'])
+
 
 def merge_lcbs(lcb1, lcb2):
     for num, i in enumerate(lcb1):
@@ -158,6 +157,7 @@ def merge_lcbs(lcb1, lcb2):
         i['seq'] += lcb2[num]['seq']
 
     return lcb1
+
 
 def resolve_clusters(clusters):
     merged = []
@@ -172,12 +172,14 @@ def resolve_clusters(clusters):
 
     return merged
 
+
 def new(clusters, lcb):
     new = True
     for c in clusters:
         if lcb in c:
             new = False
     return new
+
 
 def cluster_lcbs(lcbs, threshold):
     """ clusters lcbs based on how far apart they are"""
@@ -199,7 +201,7 @@ def cluster_lcbs(lcbs, threshold):
 
             close = True
             for num, k in enumerate(compare_against):
-            # for num, k in enumerate(i):
+                # for num, k in enumerate(i):
                 if j[num]['start'] - k['end'] > threshold:
                     close = False
 
@@ -208,8 +210,8 @@ def cluster_lcbs(lcbs, threshold):
                 compare_against = j
 
         clusters.append(cluster)
-
     return resolve_clusters(clusters)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='process XMFA')
