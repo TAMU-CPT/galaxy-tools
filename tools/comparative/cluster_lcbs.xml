@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.cluster_lcbs" name="Merge LCBs within a given threshold distance" version="@WRAPPER_VERSION@.0">
+	<description></description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/cluster_lcbs.py
+@XMFA_INPUT@
+$threshold
+> $output
+]]></command>
+	<inputs>
+		<expand macro="xmfa_input" />
+		<param type="integer" name="threshold" value="50" label="maximum number of nucleotides between LCBs in a cluster"/>
+	</inputs>
+	<outputs>
+		<data format="xmfa" name="output" />
+	</outputs>
+	<help><![CDATA[
+**What it does**
+
+Merges LCBs near each other into one LCB. Helps with cluttered-looking data due to multiple LCBs.
+
+**WARNING**
+
+Might not work if you have - strand genes. Need to test.
+
+]]></help>
+<!-- TODO -->
+		<expand macro="citations" />
+</tool>

@@ -188,6 +188,7 @@
 		<tool file="cpt2/galaxy-tools/tools/comparative/mauve.xml" labels="experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blast2pxmfa.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/lcb_split.xml" labels="experimental"/>
+		<tool file="cpt2/galaxy-tools/tools/comparative/cluster_lcbs.xml" labels="experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/gbk/diff.xml" labels="genbank" />
 	</section>
 

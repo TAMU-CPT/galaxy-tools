@@ -158,7 +158,7 @@ def fix_frameshifted(features):
             match_data[(a, b)] = a.location.start - b.location.end
 
     # Now we'll find the features which are closest in terms of start/end
-    ((merge_a, merge_b), value) = max(match_data.items(), key=lambda (k, v): v)
+    ((merge_a, merge_b), value) = max(match_data.items(), key=lambda kv: kv[1])
     # And get the non-matching features into other
     for f in cdss2:
         if f != merge_a and f != merge_b:
@@ -239,8 +239,8 @@ def merge_multi_cds(mRNA_sf):
     if len(cdss) <= 1:
         return non_cdss + cdss
     else:
-        # Grab all locations
-        locations = [x.location for x in cdss]
+        # Grab all locations, and sort them so we can work with them rationally.
+        locations = sorted([x.location for x in cdss], key=lambda x: x.location.start)
         # Pick randomly a main CDS
         main_cds = cdss[0]
         # We'll merge the other CDSs into this one.
