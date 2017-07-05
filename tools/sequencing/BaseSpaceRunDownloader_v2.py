@@ -18,6 +18,12 @@ RUN_ID = sys.argv[2]
 API_BASE = 'https://api.basespace.illumina.com/'
 AccessToken = sys.argv[1]
 ACCESS_TOKEN = '?access_token=%s' % AccessToken
+SampleListFilter = None
+SampleListFilterEnabled = False
+if len(sys.argv) > 3:
+    with open(sys.argv[3], 'r') as handle:
+        SampleListFilter = [x.strip() for x in handle.readlines()]
+        SampleListFilterEnabled = True
 
 
 def restrequest(rawrequest):
@@ -57,6 +63,9 @@ json_obj = restrequest('v1pre3/runs/%s' % RUN_ID)
 for item in json_obj['Response']['Properties']['Items']:
     for item2 in item['Items']:
         sample_json_obj = restrequest(item2['Href'])
+
+        if SampleListFilterEnabled and item2['Id'] not in SampleListFilter:
+            continue
 
         files_obj = restrequest(sample_json_obj['Response']['HrefFiles'])
 

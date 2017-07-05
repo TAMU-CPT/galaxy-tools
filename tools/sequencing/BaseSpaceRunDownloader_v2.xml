@@ -11,10 +11,15 @@
 @USER_ACCESS_TOKEN@
 
 mkdir output;
-python $__tool_directory__/BaseSpaceRunDownloader_v2.py \$ACCESS_TOKEN "$run_id" | jq -S '.'
+python $__tool_directory__/BaseSpaceRunDownloader_v2.py \$ACCESS_TOKEN "$run_id"
+#if str($ids) != "None":
+	'$ids'
+#end if
+| jq -S '.'
 > $default]]></command>
 	<inputs>
 		<param type="text" name="run_id" label="Run ID" />
+		<param label="Sample IDs" name="ids" type="data" format="tabular" help="Newline-separated list of IDs"/>
 	</inputs>
 	<outputs>
 		<data format="json" name="default">

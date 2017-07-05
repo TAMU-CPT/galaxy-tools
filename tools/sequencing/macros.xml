@@ -7,7 +7,7 @@
 			<yield/>
 		</requirements>
 	</xml>
-	<token name="@VERSION@">1.11</token>
+	<token name="@VERSION@">2.0</token>
 	<token name="@APOLLO_ENSURE_USER_EXISTS@">
 $__tool_directory__/ensure_exists.sh "$__user_email__";
 	</token>
