@@ -15,7 +15,7 @@
 echo '# $col_titles' > $output;
 
 python $__tool_directory__/BaseSpaceRunSampleList.py \$ACCESS_TOKEN $run_id |
-	jq -r -S '.Response.Properties.Items[].Items[] | [.$fixed_cols] | @tsv'
+	jq -r -S '.Response.Items[] | .Content[] | [.$fixed_cols] | @tsv'
 	>> $output;
 
 ]]></command>
