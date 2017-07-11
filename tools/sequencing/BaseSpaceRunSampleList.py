@@ -6,6 +6,7 @@ import json
 import sys
 import os
 import logging
+from BaseSpaceRunDownloader_v2 import restquery
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
@@ -48,5 +49,5 @@ def restrequest(rawrequest):
     return json_obj
 
 
-json_obj = restrequest('v1pre3/runs/%s' % RUN_ID)
+json_obj = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % RUN_ID, {'Limit': 1024})
 print(json.dumps(json_obj))
