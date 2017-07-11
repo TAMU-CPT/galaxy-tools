@@ -14,7 +14,7 @@ RESPONSE=\$(curl
 	-X POST
 	-d "response_type=device_code"
 	-d "client_id=\$CLIENT"
-	-d "scope=Create Global, Browse Global"
+	-d "scope=Create Global, Browse Global, Read Global, Create Projects, Start Applications, Movetotrash Global"
 	https://api.basespace.illumina.com/v1pre3/oauthv2/deviceauthorization);
 
 DEVICE_CODE=\$(echo \$RESPONSE | jq .device_code -r);

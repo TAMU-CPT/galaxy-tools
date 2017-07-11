@@ -17,7 +17,7 @@ def fixed_feature(rec):
         subfeatures=True
     ):
         import random
-        fid = feature.qualifiers['ID'][0]+'_'+str(random.random())
+        fid = feature.qualifiers['ID'][0] + '_' + str(random.random())
         gene = SeqFeature(
             location=feature.location,
             type='gene',
