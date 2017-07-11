@@ -62,7 +62,7 @@ def restquery(rawrequest, parameters):
     # Parameters is a dict example: {'Limit': 50, 'SortDir': 'Asc'}
     # can be any of https://developer.basespace.illumina.com/docs/content/documentation/rest-api/api-reference#ResourceCollectionRequests
     rawrequest = API_BASE + rawrequest + ACCESS_TOKEN
-    for query, value in parameters:
+    for query, value in parameters.items():
         rawrequest+= '&' + query + '=' + str(value)
 
     log.info('Req: ' + rawrequest.replace(AccessToken, '*' * len(AccessToken)))
