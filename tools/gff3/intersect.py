@@ -40,8 +40,8 @@ def intersect(a, b):
         for hit in hits:
             rec_b_hits_in_a.append(rec_a_map[hit])
 
-    rec_a.features = rec_a_hits_in_b
-    rec_b.features = rec_b_hits_in_a
+    rec_a.features = set(rec_a_hits_in_b)
+    rec_b.features = set(rec_b_hits_in_a)
     return rec_a, rec_b
 
 
