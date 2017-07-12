@@ -104,14 +104,13 @@ def rundownload(access_token, runid, ids=None, limit=1024, offset=0, sortby='Id'
     responses = [json_obj]
 
     if json_obj['Response']['TotalCount'] > limit:
-        newoffset = json_obj['Response']['TotalCount'] - limit
-        parameters['Offset'] = newoffset
+        parameters['Offset'] = limit
         json_obj2 = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % runid, access_token, parameters)
         responses.append(json_obj2)
 
     ACCESS_TOKEN = '?access_token=%s' % access_token
 
-    test_count = 0
+    # test_count = 0
     for response in responses:
         for item in response['Response']['Items']:
             if SampleListFilterEnabled:
@@ -153,11 +152,11 @@ def rundownload(access_token, runid, ids=None, limit=1024, offset=0, sortby='Id'
                 log.info("Unzipping %s", safe_filename)
                 subprocess.check_call(['gunzip', safe_filename])
             # Limit to 4 samples for testing
-            test_count += 1
-            if test_count > 4:
-                break
+            # test_count += 1
+            # if test_count > 4:
+            #    break
 
-    print(json.dumps(obj, indent=2) for obj in responses)
+    print(json.dumps(responses, indent=2))
 
 
 if __name__ == '__main__':
