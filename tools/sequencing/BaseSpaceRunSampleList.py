@@ -93,4 +93,4 @@ if json_obj['Response']['TotalCount'] > 1024:
     json_obj2 = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % RUN_ID, {'Limit': 1024, 'Offset': newoffset})
     responses.append(json_obj2)
 
-print(json.dumps(obj) for obj in responses)
+print(json.dumps(responses))
