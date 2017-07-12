@@ -11,7 +11,7 @@
 @USER_ACCESS_TOKEN@
 
 mkdir output;
-python $__tool_directory__/BaseSpaceRunDownloader_v2.py \$ACCESS_TOKEN "$sample_id"
+python $__tool_directory__/BaseSpaceSampleDownloader.py \$ACCESS_TOKEN "$sample_id"
 | jq -S '.'
 > $default]]></command>
 	<inputs>
