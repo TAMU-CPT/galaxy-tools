@@ -95,10 +95,9 @@ def rundownload(access_token, runid, ids=None, limit=1024, offset=0, sortby='Id'
     parameters = {'Limit': limit, 'Offset': offset, 'SortBy': sortby, 'SortDir': sortdir}
 
     if ids:
-        with open(ids, 'r') as handle:
-            # Grab just the first column, expects at least line separated IDs and tab separated if there are additional cols
-            SampleListFilter = [x.strip().split('\t')[0] for x in handle.readlines()]
-            SampleListFilterEnabled = True
+        # Grab just the first column, expects at least line separated IDs and tab separated if there are additional cols
+        SampleListFilter = [x.strip().split('\t')[0] for x in ids.readlines()]
+        SampleListFilterEnabled = True
 
     json_obj = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % runid, access_token, parameters)
     responses = [json_obj]
