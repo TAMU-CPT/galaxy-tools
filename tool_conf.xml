@@ -12,6 +12,7 @@
 		<tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunList.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunSampleList.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceRunDownloader_v2.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/sequencing/BaseSpaceSampleDownloader.xml"/>
 		<label id="getext_3" text="NCBI"/>
 		<tool file="cpt2/galaxy-tools/tools/edirect/efetch.xml" label="dev-only"/>
 		<tool hidden="True" file="cpt2/galaxy-tools/tools/util/efetch.xml" label="experimental"/>

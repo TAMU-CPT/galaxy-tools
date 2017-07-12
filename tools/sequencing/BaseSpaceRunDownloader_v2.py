@@ -20,6 +20,8 @@ AccessToken = sys.argv[1]
 ACCESS_TOKEN = '?access_token=%s' % AccessToken
 SampleListFilter = None
 SampleListFilterEnabled = False
+PARAMETERS = {'Limit': 1024, 'SortDir': 'Desc', 'SortBy': 'DateCreated'}
+
 if len(sys.argv) > 3:
     with open(sys.argv[3], 'r') as handle:
         # Grab just the first column, expects at least line separated IDs and tab separated if there are additional cols
@@ -96,7 +98,7 @@ def restquery(rawrequest, parameters):
 
 
 # Provides access to a resource query that allows for limits and sorting parameters
-json_obj = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % RUN_ID, {'Limit': 3, 'SortDir': 'Asc'})
+json_obj = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % RUN_ID, PARAMETERS)
 
 for item in json_obj['Response']['Items']:
     if SampleListFilterEnabled and item['Content']['Id'] not in SampleListFilter:
