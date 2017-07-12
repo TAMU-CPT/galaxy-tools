@@ -89,8 +89,7 @@ json_obj = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % RUN_ID, 
 responses = [json_obj]
 
 if json_obj['Response']['TotalCount'] > 1024:
-    newoffset = json_obj['Response']['TotalCount'] - 1024
-    json_obj2 = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % RUN_ID, {'Limit': 1024, 'Offset': newoffset})
+    json_obj2 = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % RUN_ID, {'Limit': 1024, 'Offset': 1024})
     responses.append(json_obj2)
 
 print(json.dumps(responses, indent=2))
