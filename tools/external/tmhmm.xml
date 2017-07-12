@@ -1,5 +1,5 @@
 <tool id="TMHMM_to_gff3" name="TMHMM (GFF3)" version="1.2.0">
-	<description>predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms.</description>
+	<description>for prediction of transmembrane helices in proteins</description>
   <macros>
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
