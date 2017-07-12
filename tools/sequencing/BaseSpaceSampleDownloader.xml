@@ -12,7 +12,7 @@
 
 mkdir output;
 python $__tool_directory__/BaseSpaceSampleDownloader.py \$ACCESS_TOKEN "$sample_id"
-| jq -S '.'
+| jq '.'
 > $default]]></command>
 	<inputs>
 		<param type="text" name="sample_id" label="Internal Sample ID" />
