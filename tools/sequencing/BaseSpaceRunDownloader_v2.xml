@@ -13,9 +13,9 @@
 mkdir output;
 python $__tool_directory__/BaseSpaceRunDownloader_v2.py \$ACCESS_TOKEN "$run_id"
 #if str($ids) != "None":
-	'$ids'
+	--ids '$ids'
 #end if
-| jq -S '.'
+| jq '.'
 > $default]]></command>
 	<inputs>
 		<param type="text" name="run_id" label="Run ID" />
