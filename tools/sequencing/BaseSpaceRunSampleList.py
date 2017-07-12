@@ -53,7 +53,7 @@ def restquery(rawrequest, parameters):
     # can be any of https://developer.basespace.illumina.com/docs/content/documentation/rest-api/api-reference#ResourceCollectionRequests
     rawrequest = API_BASE + rawrequest + ACCESS_TOKEN
     for query, value in parameters.items():
-        rawrequest+= '&' + query + '=' + str(value)
+        rawrequest += '&' + query + '=' + str(value)
 
     log.info('Req: ' + rawrequest.replace(AccessToken, '*' * len(AccessToken)))
 
@@ -84,5 +84,13 @@ def restquery(rawrequest, parameters):
 
     return json_obj
 
+
 json_obj = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % RUN_ID, {'Limit': 1024})
-print(json.dumps(json_obj))
+responses = [json_obj]
+
+if json_obj['Response']['TotalCount'] > 1024:
+    newoffset = json_obj['Response']['TotalCount'] - 1024
+    json_obj2 = restquery('v1pre3/runs/%s/properties/Output.Samples/items' % RUN_ID, {'Limit': 1024, 'Offset': newoffset})
+    responses.append(json_obj2)
+
+print(json.dumps(obj) for obj in responses)
