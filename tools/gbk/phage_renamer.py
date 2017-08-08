@@ -18,6 +18,7 @@ NEW_STYLE_NAMES = re.compile('^(?P<phage>v[A-Z]_[A-Z][a-z]{2}[A-Z]_.*)$')
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Split GBK file')
     parser.add_argument('genbank_files', type=argparse.FileType("r"), nargs='+', help='Genbank files')
+    parser.add_argument('--style', type=str, choices=["host-first", "phage-first"], default="host-first", help='Set style format of new name. host-first or phage-first.')
     args = parser.parse_args()
 
     outdir = os.path.join(os.getcwd(), 'gbk_out')
@@ -49,10 +50,16 @@ if __name__ == '__main__':
             if host and phage:
                 host = host.strip()
                 phage = phage.strip()
-                name = os.path.join(outdir, '%s phage %s.gbk' % (host, phage))
+                if args.style is "host-first":
+                    name = os.path.join(outdir, '%s phage %s.gbk' % (host, phage))
+                else:
+                    name = os.path.join(outdir, '%s %s phage.gbk' % (phage, host))
             elif phage:
                 phage = phage.strip()
-                name = os.path.join(outdir, 'Phage %s.gbk' % phage)
+                if args.style is "host-first":
+                    name = os.path.join(outdir, 'Phage %s.gbk' % phage)
+                else:
+                    name = os.path.join(outdir, '%s.gbk' % phage)
             else:
                 log.info("Could not determine name from %s. Contact IT.", pn)
                 name = os.path.join(outdir, '%s.gbk' % record.id)

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.genbank.rename" name="Phage Renamer" version="1.0">
+<tool id="edu.tamu.cpt.genbank.rename" name="Phage Renamer" version="2.0">
   <description>renames genbank files based on their record names and CPT Regex Rules.</description>
   <macros>
     <import>macros.xml</import>
@@ -10,20 +10,27 @@ python $__tool_directory__/phage_renamer.py
 #for file in $genbanks:
 "$file"
 #end for
-
+--style $style
 ]]></command>
   <inputs>
     <param label="GenBank files to rename" name="genbanks" type="data" format="genbank" multiple="True"/>
+    <param label="Style Format" name="style" type="select">
+        <option value="host-first" selected="true">Host Name First</option>
+        <option value="phage-first">Phage Name First</option>
+    </param>
   </inputs>
   <outputs>
     <data format="genbank" name="data">
         <discover_datasets pattern="__name__" ext="genbank" directory="gbk_out" visible="true" />
     </data>
   </outputs>
-  <help>
+  <help>![CDATA[
 **What it does**
 
 Renames GenBank Files based on their phage name.
+
+For the style option, Host Name First produces a file with a name in the format of "{Host name} phage {Phage name}.gbk" while Phage Name First produces the reverse, "{Phage name} {Host Name} phage.gbk"
+]]
 </help>
 		<expand macro="citations" />
 </tool>
