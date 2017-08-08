@@ -50,13 +50,13 @@ if __name__ == '__main__':
             if host and phage:
                 host = host.strip()
                 phage = phage.strip()
-                if args.style is "host-first":
+                if args.style == "host-first":
                     name = os.path.join(outdir, '%s phage %s.gbk' % (host, phage))
                 else:
                     name = os.path.join(outdir, '%s %s phage.gbk' % (phage, host))
             elif phage:
                 phage = phage.strip()
-                if args.style is "host-first":
+                if args.style == "host-first":
                     name = os.path.join(outdir, 'Phage %s.gbk' % phage)
                 else:
                     name = os.path.join(outdir, '%s.gbk' % phage)
