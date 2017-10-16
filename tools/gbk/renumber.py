@@ -80,7 +80,8 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
             for index, feature_list in enumerate(sorted(f_care_about, key=lambda x: x[0].location.start)):
                 for f in feature_list:
                     original_tag_value = delta_old(f, tag_to_update)
-                    new_tag_value = format_string % index
+                    # Add 1 to index for 1-indexed counting for happy scientists
+                    new_tag_value = format_string % (index+1)
                     f.qualifiers[tag_to_update] = [new_tag_value]
                     clean_features.append(f)
                     delta.append('\t'.join((record.id, original_tag_value, new_tag_value)))
