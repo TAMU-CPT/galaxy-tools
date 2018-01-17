@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
     print(wa.users.updateOrganismPermission(
         user[0],
-        '464_2017_assessment1',
+        '464_2018_assessment1',
         write=True,
         read=True,
         export=True
