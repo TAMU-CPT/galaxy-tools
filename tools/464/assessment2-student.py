@@ -24,7 +24,7 @@ if __name__ == '__main__':
     # Login to Apollo
     wa = WebApolloInstance(args.apollo, args.username, args.password)
     # We'll name our organism something easily deleteable.
-    org_cn = '464-assessment-2-%s' % args.email
+    org_cn = '464-2018-assessment-2-%s' % args.email
     # Assert that they have an account (they just need to visit now)
     gx_user = AssertUser(wa.users.loadUsers(email=args.email))
     outdir = os.path.join(args.dataset_dir, uuid.uuid4().hex)
