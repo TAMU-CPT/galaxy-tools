@@ -58,7 +58,7 @@ if __name__ == '__main__':
             species=args.species,
             public=args.public
         )
-        time.sleep(2)
+        time.sleep(20)
         data = [wa.organisms.findOrganismById(org['id'])]
     else:
         # New organism
@@ -72,7 +72,7 @@ if __name__ == '__main__':
         )
 
         # Must sleep before we're ready to handle
-        time.sleep(2)
+        time.sleep(20)
         log.info("Updating permissions for %s on %s", gx_user, org_cn)
         wa.users.updateOrganismPermission(
             gx_user, org_cn,
