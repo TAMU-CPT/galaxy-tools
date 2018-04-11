@@ -371,7 +371,7 @@ def exact_coding_density(record, mean=92.5, sd=20):
     for gene_a in coding_genes(record.features):
         for cds in genes(gene_a.sub_features, feature_type='CDS'):
             for i in range(cds.location.start, cds.location.end + 1):
-                data[i] = 1
+                data[i-1] = 1
 
     return float(sum(data)) / len(data)
 
