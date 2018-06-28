@@ -151,6 +151,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gff3/filter_type.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_filter.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_location_filter.xml" label="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_contains_location.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_require_phage_start.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_require_sd.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/intersect.xml" label="gff3" />

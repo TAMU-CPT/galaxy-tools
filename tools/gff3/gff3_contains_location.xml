@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.contains_location" name="GFF3 Contained Location Filter" version="1.0">
+	<description>Extract gff3 features which contain one or more locations</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gff3_contains_location.py
+$locations
+$gff3_data
+> $default]]></command>
+	<inputs>
+		<param name="locations" label="Requested Locations"
+			help="table of newline separated base locations" type="data" format="tabular" />
+		<expand macro="gff3_input" />
+	</inputs>
+	<outputs>
+		<data format="gff3" name="default"/>
+	</outputs>
+	<help><![CDATA[
+**What it does**
+
+Filters gff3 data to only features which contain one or more provided single base locations within the feature's boundary.
+]]></help>
+		<expand macro="citations" />
+</tool>
