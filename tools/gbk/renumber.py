@@ -23,68 +23,112 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
                 format_string = string_prefix + '%0' + str(leading_zeros) + 'd'
                 format_string_t = string_prefix + '.gt%0' + str(leading_zeros) + 'd'
 
-            f_cds = [f for f in record.features if f.type == 'CDS']
-            f_rbs = [f for f in record.features if f.type == 'RBS']
-            f_gene = [f for f in record.features if f.type == 'gene']
-            f_oth = [f for f in record.features if f.type not in ['CDS', 'RBS',
-                                                                  'gene']]
+            # f_cds = [f for f in record.features if f.type == 'CDS']
+            # f_rbs = [f for f in record.features if f.type == 'RBS']
+            # f_gene = [f for f in record.features if f.type == 'gene']
+            # f_intron = [f for f in record.features if f.type == 'intron']
+            # f_trna = [f for f in record.features if f.type == 'tRNA']
+            # f_pep = [f for f in record.features if f.type == 'mat_peptide']
+            # f_oth = [f for f in record.features if f.type not in ['CDS', 'RBS',
+            #                                                      'gene', 'intron',
+            #                                                      'tRNA', 'mat_peptide']]
             # Apparently we're numbering tRNAs now, thanks for telling me.
-            f_oth2 = []
-            for q in sorted(f_oth, key=lambda x: x.location.start):
-                if q.type == 'tRNA':
-                    q.qualifiers['locus_tag'] = format_string_t % tRNA_count
-                    tRNA_count += 1
-                    f_oth2.append(q)
-                else:
-                    f_oth2.append(q)
-            f_oth = f_oth2
+            # f_oth2 = []
+            # for q in sorted(f_oth, key=lambda x: x.location.start):
+            #    if q.type == 'tRNA':
+            #        q.qualifiers['locus_tag'] = format_string_t % tRNA_count
+            #        tRNA_count += 1
+            #        f_oth2.append(q)
+            #    else:
+            #        f_oth2.append(q)
+            # f_oth = f_oth2
 
-            f_care_about = []
+            # f_care_about = []
 
             # Make sure we've hit every RBS and gene
-            for cds in f_cds:
+            # for cds in f_cds:
                 # If there's an associated gene feature, it will share a stop codon
-                if cds.location.strand > 0:
-                    associated_genes = [f for f in f_gene if f.location.end ==
-                                        cds.location.end]
-                else:
-                    associated_genes = [f for f in f_gene if f.location.start ==
-                                        cds.location.start]
+            #    if cds.location.strand > 0:
+            #        associated_genes = [f for f in f_gene if f.location.end ==
+            #                            cds.location.end]
+            #    else:
+            #        associated_genes = [f for f in f_gene if f.location.start ==
+            #                            cds.location.start]
 
-                # If there's an RBS it'll be upstream a bit.
-                if cds.location.strand > 0:
-                    associated_rbss = [f for f in f_rbs if f.location.end <
-                                       cds.location.start and f.location.end >
-                                       cds.location.start - 24]
-                else:
-                    associated_rbss = [f for f in f_rbs if f.location.start >
-                                       cds.location.end and f.location.start <
-                                       cds.location.end + 24]
-                tmp_result = [cds]
-                if len(associated_genes) > 0:
-                    tmp_result.append(associated_genes[0])
+            #    # If there's an RBS it'll be upstream a bit.
+            #    if cds.location.strand > 0:
+            #        associated_rbss = [f for f in f_rbs if f.location.end <
+            #                           cds.location.start and f.location.end >
+            #                           cds.location.start - 24]
+            #    else:
+            #        associated_rbss = [f for f in f_rbs if f.location.start >
+            #                           cds.location.end and f.location.start <
+            #                           cds.location.end + 24]
+            #    tmp_result = [cds]
+            #    if len(associated_genes) > 0:
+            #        tmp_result.append(associated_genes[0])
 
-                if len(associated_rbss) == 1:
-                    tmp_result.append(associated_rbss[0])
-                else:
-                    log.warning("%s RBSs found for %s", len(associated_rbss), cds.location)
+             #   if len(associated_rbss) == 1:
+             #       tmp_result.append(associated_rbss[0])
+             #   else:
+             #       log.warning("%s RBSs found for %s", len(associated_rbss), cds.location)
                 # We choose to append to f_other as that has all features not
                 # already accessed. It may mean that some gene/RBS features are
                 # missed if they aren't detected here, which we'll need to handle.
-                f_care_about.append(tmp_result)
+            #    f_care_about.append(tmp_result)
+
+#####-----------------------------------------------------------------------------------------------------------#####
+            # Build list of genes, then iterate over non-gene features and sort into containing genes.
+            # tags are assigned based on genes, so start the lists with the gene features
+            f_gene = sorted([f for f in record.features if f.type == 'gene'], key=lambda x: x.location.start)
+            f_tag = list()
+            f_sorted = sorted([f for f in record.features if f.type not in ['gene', 'regulatory']], key=lambda x: x.location.start)
+            # regulatory features are not included into locus tags. List used in case future features are excluded from tags
+            # as they don't need processing they're automatically considered clean and ready for output
+            clean_features = sorted([f for f in record.features if f.type in ['regulatory']], key=lambda x: x.location.start)
+
+            for gene in f_gene:
+                tag = [gene]
+                for feature in f_sorted:
+                    # If the feature is within the gene boundaries (genes are the first entry in tag list),
+                    # add it to the same locus tag group
+                    # This will cause problems for overlapping genes/features such as frameshift
+                    if is_within(feature, gene):
+                        tag.append(feature)
+                    elif feature.location.start > gene.location.end:
+                        # because the features are sorted by coordinates,
+                        # no features further down  on the list will be in this gene
+                        break;
+                f_tag.append(tag)
+
+            # Process for frameshifts and mat_peptides (inteins)
+
+                # check for overlapped genes
+            # at this point, relevant features are put into tag buckets along with the containing gene
+            # matin the form of [gene, feature1, feature2, ...]
+            tag_index = 1
+            delta = []
+            for tag in f_tag: #each tag list is one 'bucket'
+                new_tag_value = format_string % tag_index
+                for feature in tag:
+                    original_tag_value = delta_old(feature, tag_to_update)
+                    feature.qualifiers[tag_to_update] = [new_tag_value]
+                    clean_features.append(feature)
+                    delta.append('\t'.join((record.id, original_tag_value, new_tag_value)))
+                tag_index += 1
 
             # Why must these people start at 1
             # Because we have to modify the array we work on a separate one
-            clean_features = f_oth
-            delta = []
-            for index, feature_list in enumerate(sorted(f_care_about, key=lambda x: x[0].location.start)):
-                for f in feature_list:
-                    original_tag_value = delta_old(f, tag_to_update)
-                    # Add 1 to index for 1-indexed counting for happy scientists
-                    new_tag_value = format_string % (index+1)
-                    f.qualifiers[tag_to_update] = [new_tag_value]
-                    clean_features.append(f)
-                    delta.append('\t'.join((record.id, original_tag_value, new_tag_value)))
+            # clean_features = f_oth
+            # delta = []
+            # for index, feature_list in enumerate(sorted(f_care_about, key=lambda x: x[0].location.start)):
+            #    for f in feature_list:
+            #        original_tag_value = delta_old(f, tag_to_update)
+            #        # Add 1 to index for 1-indexed counting for happy scientists
+            #        new_tag_value = format_string % (index+1)
+            #        f.qualifiers[tag_to_update] = [new_tag_value]
+            #        clean_features.append(f)
+            #        delta.append('\t'.join((record.id, original_tag_value, new_tag_value)))
 
             # Update all features
             record.features = sorted(clean_features, key=lambda x: x.location.start)
@@ -102,6 +146,28 @@ def delta_old(feature, tag_to_update):
     else:
         return '%s %s %s' % (feature.location.start, feature.location.end,
                              feature.location.strand,)
+
+
+def is_within(query, feature):
+    # checks if the query item is within the bounds of the given feature
+    if feature.location.start <= query.location.start and feature.location.end >= query.location.end:
+        return True;
+    else:
+        return False;
+
+
+def fix_frameshift(a, b):
+    #checks if gene a and gene b are a frameshifted gene (either shares a start or an end and an RBS)
+    if a[0].location.start == b[0].location.start or a[0].location.end == b[0].location.end:
+        # It is likely a frameshift. Treat is as such. Find shared RBS, determine which CDS is which
+        big_gene = a if (a[0].location.end - a[0].location.start) > (b[0].location.end - b[0].location.start) else b
+        small_gene = a if big_gene==b else b
+        rbs = [f for f in a if f.type == 'RBS']
+        # In the way that the tag lists are generated, the larger gene should contain both CDS features.
+        # Retrieve and dermine big/small CDS
+        cdss = [f for f in big_gene if f.type == 'CDS']
+        big_cds = cdss[0] if (cds[0].location.end - cdss[0].location.start) > (cdss[1].location.end - cdss[1].location.start) else cdss[1]
+        small_cds = cdss[0] if big_cds==cdss[1] else cdss[1]
 
 
 if __name__ == '__main__':
