@@ -87,14 +87,16 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
             # as they don't need processing they're automatically considered clean and ready for output
             clean_features = sorted([f for f in record.features if f.type in ['regulatory']], key=lambda x: x.location.start)
 
+            f_processed = []
             for gene in f_gene:
                 tag = [gene]
-                for feature in f_sorted:
+                for feature in [f for f in f_sorted if f not in f_processed]:
                     # If the feature is within the gene boundaries (genes are the first entry in tag list),
                     # add it to the same locus tag group
                     # This will cause problems for overlapping genes/features such as frameshift
                     if is_within(feature, gene):
                         tag.append(feature)
+                        f_processed.append(feature)
                     elif feature.location.start > gene.location.end:
                         # because the features are sorted by coordinates,
                         # no features further down  on the list will be in this gene
