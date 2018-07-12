@@ -226,6 +226,7 @@
 	<section id="8dee2684-f833-4dd9-b50d-abfdbb78f0be" name="CPT: Apollo">
 		<tool file="cpt2/galaxy-tools/tools/webapollo/create_account.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/list_organisms.xml" label="apollo" />
+		<tool file="cpt2/galaxy-tools/tools/webapollo/list_organism_data.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/create_or_update_organism.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/renumber_features.xml" label="new,apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" label="danger,apollo" />
