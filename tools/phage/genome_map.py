@@ -464,7 +464,8 @@ def parseFile(annotations, genome, subset=None, rows=2, width=0, hypo=False):
         plotter.processSequence(record)
         rowData = plotter.optimizedPartition()
         svg = plotter.createSvg(rowData, widthOverride=width)
-        print svg.tostring()
+	
+        print (svg.tostring()).encode('utf-8')
 
 
 if __name__ == '__main__':

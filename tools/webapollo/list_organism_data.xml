@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.list_organism_data" name="List Organism Data" version="1.0">
+  <description>from Apollo</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+@APOLLO_ENSURE_USER_EXISTS@
+python $__tool_directory__/list_organism_data.py
+@ADMIN_AUTH@
+$__user_email__
+> $output]]></command>
+  <inputs>
+  </inputs>
+  <outputs>
+    <data format="json" name="output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Lists organism common name, internal id, annotation count, and sequence count from the Apollo database.
+
+@REFERENCES@
+      ]]></help>
+</tool>
