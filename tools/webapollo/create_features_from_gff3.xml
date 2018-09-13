@@ -23,7 +23,7 @@ $gff3_data
     <conditional name="where">
 	<param argument="--name" label="Which qualifier to set as the feature name." name="name_choice" optional="true" type="select">
 		<option value="product">product</option>
-		<option value="name">name</option>
+		<option value="Name">name</option>
 	</param>
 	<when value="product"></when>
 	<when value="name"></when>
