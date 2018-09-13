@@ -15,6 +15,7 @@ if __name__ == '__main__':
     WAAuth(parser)
     parser.add_argument('email', help='User Email')
     parser.add_argument('--source', help='URL where the input dataset can be found.')
+    parser.add_argument('--name', default='product', help='Qualifer to use for the name of the added feature, default is \'product\'')
     OrgOrGuess(parser)
 
     parser.add_argument('gff3', type=argparse.FileType('r'), help='GFF3 file')
@@ -87,6 +88,7 @@ if __name__ == '__main__':
                 # gene name and update later.
                 featureData[0]['name'] = 'terminator_000'
                 newfeature = wa.annotations.addFeature(featureData, trustme=True)
+                newfeature = wa.annotations.addFeature(featureData, trustme=True)
 
                 def func0():
                     wa.annotations.setName(
@@ -142,7 +144,7 @@ if __name__ == '__main__':
                     time.sleep(0.5)
 
                     def func():
-                        wa.annotations.setName(gene_id, feature.qualifiers.get('product', feature.qualifiers.get('Name', ["Unknown"]))[0])
+                        wa.annotations.setName(gene_id, feature.qualifiers.get(args.name, feature.qualifiers.get('product', feature.qualifiers.get('Name', ["Unknown"])))[0])
                     retry(func)
 
                     if args.source:
@@ -184,4 +186,3 @@ if __name__ == '__main__':
                         msg
                     ]))
             sys.stdout.write('\n')
-            sys.stdout.flush()

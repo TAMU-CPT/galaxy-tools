@@ -15,11 +15,19 @@ python $__tool_directory__/create_features_from_gff3.py
 "$__user_email__"
 $gff3_data
 --source "${__app__.config.galaxy_infrastructure_url}history/view/${__app__.security.encode_id($gff3_data.history_id)}"
-
+--name "$where.name_choice"
 > $output]]></command>
   <inputs>
     <expand macro="org_or_guess" />
     <expand macro="gff3_input" />
+    <conditional name="where">
+	<param argument="--name" label="Which qualifier to set as the feature name." name="name_choice" optional="true" type="select">
+		<option value="product">product</option>
+		<option value="name">name</option>
+	</param>
+	<when value="product"></when>
+	<when value="name"></when>
+    </conditional>
   </inputs>
   <outputs>
 	<data format="tabular" name="output" label="Process and Error Log"/>
