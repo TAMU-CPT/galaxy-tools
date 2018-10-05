@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
             def fn():
                 # Commenting the actual deletion for testing
-                # wa.organisms.deleteOrganism(org['id'])
+                wa.organisms.deleteOrganism(org['id'])
                 print("%s\t%s\t%s" % (org['id'], org['commonName'], "Deleted"))
 
             if not retry(fn, limit=3):
