@@ -81,8 +81,9 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
             # Build list of genes, then iterate over non-gene features and sort into containing genes.
             # tags are assigned based on genes, so start the lists with the gene features
             f_gene = sorted([f for f in record.features if f.type == 'gene'], key=lambda x: x.location.start)
+            f_rbs = sorted([f for f in record.features if f.type == 'RBS'], key=lambda x: x.location.start)
             f_tag = list()
-            f_sorted = sorted([f for f in record.features if f.type not in ['gene', 'regulatory']], key=lambda x: x.location.start)
+            f_sorted = sorted([f for f in record.features if f.type not in ['gene', 'regulatory', 'RBS']], key=lambda x: x.location.start)
             # regulatory features are not included into locus tags. List used in case future features are excluded from tags
             # as they don't need processing they're automatically considered clean and ready for output
             clean_features = sorted([f for f in record.features if f.type in ['regulatory']], key=lambda x: x.location.start)
@@ -90,10 +91,16 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
             f_processed = []
             for gene in f_gene:
                 tag = [gene]
+                #find the gene's RBS feature
+                for rbs in [f for f in f_rbs if f not in f_processed]:
+                    if is_within(rbs, gene):
+                        tag.append(rbs)
+                        f_processed.append(rbs)
+                        break
+                #find all other non-RBS features
                 for feature in [f for f in f_sorted if f not in f_processed]:
                     # If the feature is within the gene boundaries (genes are the first entry in tag list),
-                    # add it to the same locus tag group
-                    # This will cause problems for overlapping genes/features such as frameshift
+                    # add it to the same locus tag group, does not process RBS
                     if is_within(feature, gene):
                         tag.append(feature)
                         f_processed.append(feature)
@@ -168,7 +175,7 @@ def fix_frameshift(a, b):
         # In the way that the tag lists are generated, the larger gene should contain both CDS features.
         # Retrieve and dermine big/small CDS
         cdss = [f for f in big_gene if f.type == 'CDS']
-        big_cds = cdss[0] if (cds[0].location.end - cdss[0].location.start) > (cdss[1].location.end - cdss[1].location.start) else cdss[1]
+        big_cds = cdss[0] if (cdss[0].location.end - cdss[0].location.start) > (cdss[1].location.end - cdss[1].location.start) else cdss[1]
         small_cds = cdss[0] if big_cds==cdss[1] else cdss[1]
 
 
