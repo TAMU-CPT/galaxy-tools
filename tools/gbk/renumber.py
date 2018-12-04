@@ -102,8 +102,14 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
                     # If the feature is within the gene boundaries (genes are the first entry in tag list),
                     # add it to the same locus tag group, does not process RBS
                     if is_within(feature, gene):
-                        tag.append(feature)
-                        f_processed.append(feature)
+                        #catches genes and CDS feature that are intron-contained.
+                        if feature.type == 'CDS':
+                            if feature.location.start == gene.location.start or feature.location.end == gene.location.end:
+                                tag.append(feature)
+                                f_processed.append(feature)
+                        else:
+                            tag.append(feature)
+                            f_processed.append(feature)
                     elif feature.location.start > gene.location.end:
                         # because the features are sorted by coordinates,
                         # no features further down  on the list will be in this gene
