@@ -18,12 +18,11 @@ $__tool_directory__/fasta_rename_nodesc.py
 		<data format="fasta" name="output" label="$new_name"/>
 	</outputs>
 	<tests>
-        <!-- TODO: Remake tool tests for the nodesc
-             <test>
+        <test>
 			<param name="sequences" value="rename.fa"/>
-			<param name="new_name" value="renamed" />
-			<output name="output" file="renamed.fa" />
-        </test>-->
+			<param name="new_name" value="nodesc" />
+			<output name="output" file="rename-nodesc.fa" />
+        </test>
 	</tests>
 	<help><![CDATA[
 **What it does**
