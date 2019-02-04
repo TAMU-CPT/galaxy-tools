@@ -27,6 +27,7 @@ def fixed_feature(rec):
             subfeatures=True,
             invert=True
         ):
+            sf.qualifiers['Parent'] = gene.qualifiers['ID']
             sub_features.append(sf)
         # override original subfeatures with our filtered list
         gene.sub_features = sub_features
