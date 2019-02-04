@@ -44,6 +44,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff2gb.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/fix_ncbi.xml" label="gff3,apollo" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_genemarks.xml" label="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_sixpack.xml" label="gff3" />
 		<tool file="cpt2/tools-iuc/tools/bioperl/bp_genbank2gff3.xml" label="genbank" />
 	</section>
 	<section id="6dbd8994-74d6-4a9e-834b-131d9cd99526" name="CPT: Text Utilities">

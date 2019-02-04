@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.fixsixpack" name="GFF3 Add Gene to CDS for Sixpack" version="1.0">
+  <description>Properly formats naive ORF caller output for Apollo</description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/gff3_fix_sixpack.py
+@INPUT_GFF@
+> $output]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <tests>
+      <!--<test>
+			<param name="gff3_data" value="miro.gff3" />
+			<output name="output" file="miro.6pfix.gff3" />
+		</test>
+		<test>
+			<param name="gff3_data" value="miro.cds.gff3" />
+			<output name="output" file="miro.cds6pfix.gff3" />
+        </test>-->
+  </tests>
+  <help><![CDATA[
+..class:: warningmark
+
+This tool is incredibly naive. It does not think. It will remove each mRNA feature from the gff3
+and leave all other features with the gene parent. This is used to fix the naive ORF caller Sixpack
+output for entering into Apollo via jBrowse.
+      ]]></help>
+		<expand macro="citations" />
+</tool>
