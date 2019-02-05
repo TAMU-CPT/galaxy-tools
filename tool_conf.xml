@@ -115,6 +115,7 @@
 	<section id="b581a70c-94e3-4121-824d-e6b1ae487b68" name="CPT: Translation / RevCom / Change Sequence IDs">
 		<tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" label="genbank,fasta,gff3,experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_rename.xml" label="fasta" />
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_rename_nodesc.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_remove_id.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_translate.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_revcom.xml" label="fasta" />
