@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.phage." name="Disruptin Finder" version="1.0">
+    <description>finds proteins with size and charge criteria</description>
+    <macros>
+      <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/disruptin_finder.py
+$fasta_file
+--thresh_charge $thresh_charge
+--thresh_length $thresh_length
+
+> $output]]></command>
+    <inputs>
+        <expand macro="gff3_input" />
+        <expand macro="genome_selector" />
+		<param label="Minimum Net Charge" name="thresh_charge" type="integer" value="4" />
+        <param label="Maximum Length" name="thresh_length" type="integer" value="80" />
+    </inputs>
+    <outputs>
+      <data format="tabular" name="output"/>
+	  </data>
+    </outputs>
+    <help><![CDATA[
+**What it does**
+Finds:
+* Proteins with 
+		* net charge greater than the threshold 
+		* length less than the threshold 
+and returns those in a tabular format including name of the gene, the net charge, length, total
+charged residues, and the charge to size ratio for each product. 
+
+Example Output:
+Gene Name	Net Charge	Length	Number of Charged Residues	Charge to Size Ratio
+F402_gp28	7	        56	    15	                        0.268
+
+        ]]></help>
+		<expand macro="citations" />
+</tool>
