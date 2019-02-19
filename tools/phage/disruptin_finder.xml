@@ -14,13 +14,13 @@ $fasta_file
 
 > $output]]></command>
     <inputs>
-        <expand macro="gff3_input" />
-        <expand macro="genome_selector" />
+        <param label="Fasta" name="fasta_file" type="data" format="fasta" />
 		<param label="Minimum Net Charge" name="thresh_charge" type="integer" value="4" />
         <param label="Maximum Length" name="thresh_length" type="integer" value="80" />
     </inputs>
     <outputs>
-      <data format="tabular" name="output"/>
+      <data format="tabular" name="table output"/>
+	  <data format="fasta" name="output"/>
 	  </data>
     </outputs>
     <help><![CDATA[
@@ -29,8 +29,8 @@ Finds:
 * Proteins with 
 		* net charge greater than the threshold 
 		* length less than the threshold 
-and returns those in a tabular format including name of the gene, the net charge, length, total
-charged residues, and the charge to size ratio for each product. 
+and returns those in both a fasta and tabular format including name of the gene, the net charge, 
+length, total charged residues, and the charge to size ratio for each product. 
 
 Example Output:
 Gene Name	Net Charge	Length	Number of Charged Residues	Charge to Size Ratio
