@@ -2,8 +2,8 @@
 <tool id="edu.tamu.cpt2.phage." name="Disruptin Finder" version="1.0">
     <description>finds proteins with size and charge criteria</description>
     <macros>
-      <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+      	<import>macros.xml</import>
+	<import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
@@ -15,13 +15,12 @@ $fasta_file
 > $output]]></command>
     <inputs>
         <param label="Fasta" name="fasta_file" type="data" format="fasta" />
-		<param label="Minimum Net Charge" name="thresh_charge" type="integer" value="4" />
+	<param label="Minimum Net Charge" name="thresh_charge" type="integer" value="4" />
         <param label="Maximum Length" name="thresh_length" type="integer" value="80" />
     </inputs>
     <outputs>
-      <data format="tabular" name="table output"/>
-	  <data format="fasta" name="output"/>
-	  </data>
+        <data format="tabular" name="table output"/>
+	<data format="fasta" name="output"/>
     </outputs>
     <help><![CDATA[
 **What it does**
