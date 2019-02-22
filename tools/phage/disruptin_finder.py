@@ -14,10 +14,10 @@ Gene Name	Net Charge	Length	Number of Charged Residues	Charge to Size Ratio
 F402_gp28	7	        56	    15	                        0.268
 
 '''
-import argparse
+import argparse, sys
 from Bio import SeqIO
 
-def disruptin_finder(fasta_file, thresh_charge, thresh_size):
+def disruptin_finder(fasta_file, thresh_charge, thresh_size, outfile):
     # Creating output files - in tabular format
     print('Gene Name\tNet Charge\tLength\tNumber of Charged Residues\tCharge to Size Ratio')
 
@@ -31,7 +31,6 @@ def disruptin_finder(fasta_file, thresh_charge, thresh_size):
     for rec in SeqIO.parse(fasta_file,"fasta"):
         # Stores the name and sequence of each record
         Name, Sequence = rec.id, str(rec.seq)
-
 
 
 
@@ -71,7 +70,8 @@ if __name__ == '__main__':
     parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Multi-FASTA Input')
     parser.add_argument('--thresh_charge', type=int, default=4)
     parser.add_argument('--thresh_size', type=int, default=80)
+    parser.add_argument('--outfile', type=argparse.FileType('w'), help ='Output FASTA file', default='disruptins.fasta')
     args = parser.parse_args()
 
     for seq in disruptin_finder(**vars(args)):
-        SeqIO.write(seq, sys.stdout, "fasta")
+        SeqIO.write(seq, args.outfile, "fasta")
