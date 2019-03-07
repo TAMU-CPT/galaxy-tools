@@ -302,7 +302,7 @@ def handle_record(record):
         protein_product = wa_unified_product_name(flat_feat)
 
         for x in ('source', 'phase', 'Parent', 'ID', 'owner', 'date_creation',
-                  'date_last_modified'):
+                  'date_last_modified', 'datasetSource'):
             if x in flat_feat.qualifiers:
                 if x == 'ID':
                     flat_feat._ID = flat_feat.qualifiers['ID']
