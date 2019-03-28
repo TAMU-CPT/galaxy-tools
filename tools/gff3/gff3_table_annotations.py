@@ -11,7 +11,23 @@ import argparse
 def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
 
     # CSV parse tabular
-    idDict = csv.DictReader(tabularIn, delimiter = '\t', fieldnames = ['OrgID', 'ID', 'Name', 'BoundS', 'BoundE', 'Strand', 'Note'])
+    header = csv.DictReader(tabularIn, delimiter = '\t')
+
+    if("Boundary" in header.fieldnames):
+      header.fieldnames[header.fieldnames.index("Boundary")] = "BoundS"
+    
+    if("Boundary" in header.fieldnames):
+      header.fieldnames[header.fieldnames.index("Boundary")] = "BoundE"
+    #Else error
+
+    if("# Organism ID" in header.fieldnames):
+      header.fieldnames[header.fieldnames.index("# Organism ID")] = "OrgID"
+    
+    if("User entered Notes" in header.fieldnames):
+      header.fieldnames[header.fieldnames.index("User entered Notes")] = "Note"
+    
+    
+    idDict = csv.DictReader(tabularIn, delimiter = '\t', fieldnames = header.fieldnames)
 
     # BioPython parse GFF
     recG = list(GFF.parse(gff3In, SeqIO.to_dict(SeqIO.parse(fastaIn, "fasta"))))[0]
@@ -35,40 +51,48 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
           nameC = False
           noteC = False
           
-          if row["Strand"] == '+':
-            row["Strand"] = +1
-          else:
-            row["Strand"] = -1
+          if "Strand" in row:
+            if row["Strand"] == '+':
+              row["Strand"] = +1
+            else:
+              row["Strand"] = -1
 
           Found = True
-          Attr = False
 
-          if (row["Name"] != i.qualifiers["Name"][0]):
+          # if "OrgID" in row and (row["OrgID"] != i.qualifiers["Name"][0]):
+          # OrgID Seemingly not used aside from GFF Header
+         
+          if "Name" in row and (row["Name"] != i.qualifiers["Name"][0]):
             i.qualifiers["Name"][0] = row["Name"]  
             nameC = True
          
-          if i.location.start != int(row["BoundS"]):
+          # Location object needs to be rebuilt, can't individually set start/end
+          if "BoundS" in row and i.location.start != int(row["BoundS"]):
             startC = True
+            i.location = FeatureLocation(int(row["BoundS"]), i.location.end, i.location.strand)
           
-          if i.location.end != int(row["BoundE"]):
+          if "BoundE" in row and i.location.end != int(row["BoundE"]):
             endC = True
+            i.location = FeatureLocation(i.location.start, int(row["BoundE"]), i.location.strand)
  
-          if i.strand != row["Strand"]:
+          if "Strand" in row and i.strand != row["Strand"]:
             strandC = True
-
-          if startC or endC or strandC: # Location object needs to be rebuilt, can't individually set start/end
-            i.location = FeatureLocation(int(row["BoundS"]), int(row["BoundE"]), strand = row["Strand"] )
-
-          if ("Note" in i.qualifiers) and row["Note"] != "": # Set to not override with blank notes currently
-            row["Note"] = (row["Note"]).split(',') # Turn note into a list
-            if i.qualifiers["Note"] != row["Note"]:
-              i.qualifiers["Note"] = row["Note"]
-              noteC = True
-          elif row["Note"] != "":
-            row["Note"] = (row["Note"]).split(',')
-            i.qualifiers["Note"] = row["Note"]
-            noteC = True
+            i.location = FeatureLocation(i.location.start, i.location.end, row["Strand"])          
           
+
+          if ("Note" in row and row["Note"]): #Check for empty string
+            row["Note"] = (row["Note"]).split(',') # Turn note into a list
+          
+          if (("Note" in i.qualifiers) and row["Note"] != i.qualifiers["Note"]):  
+            if isinstance(row["Note"], str): # Empty note
+              i.qualifiers.pop("Note", None)
+            else:
+              i.qualifiers["Note"] = row["Note"] # Changed note
+            noteC = True
+          elif not isinstance(row["Note"], str) and not("Note" in i.qualifiers):
+            i.qualifiers["Note"] = row["Note"] # New note
+            noteC = True
+
           changeList = ""
           if nameC:
             changeList += "Name"
@@ -102,6 +126,8 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
 
     if anyChange:
       #out_handle = open("test-data/snoke-edit.gff3", "a")
+      #print ((recG.features))#[0].type)
+      recG.annotations = {}
       recG.features = [x for x in recG.features if x.type != 'remark']
       GFF.write([recG], out_gff3)
     else:
