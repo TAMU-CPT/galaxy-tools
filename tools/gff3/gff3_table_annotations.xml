@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.gff3.gff3_table_annotations" name="Update GFF3 from table" version="1.0">
+  <description>Updates given GFF3 file with changes from the given tabular file. Requires an equivalent FASTA file as well to ensure correct reconstruction of the GFF3</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gff3_table_annotations.py
+$gff3In 
+$tabularIn
+$fastaIn$
+--out_gff3 "$GFF3_Out"
+--out_changelog "Changelog"
+]]></command>
+  <inputs>
+    <param label="GFF3" name="gff3In" type="data" format="gff3"/>
+    <param label="Table" name="tabularIn" type="data" format="tabular"/>
+    <param label="Fasta" name="fastaIn" type="data" format="fasta"/>
+  </inputs>
+  <outputs>
+        <data name="GFF3_Out" format="gff3" label="Gff3 Output"/>
+        <data name="Changelog" format="tsv" label="Changelog"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Reads through a given tabular file and compares it against the given GFF3 file. If there are any differences, it 
+updates the GFF3 file with the changes from the tabular file. The FASTA file is used to ensure correct reconstruction 
+of the GFF3 after changes are made.
+      ]]></help>
+  <expand macro="citations" />
+</tool>
