@@ -12,7 +12,7 @@ python $__tool_directory__/gff3_table_annotations.py
 "$tabularIn"
 "$fastaIn"
 --out_gff3 "$GFF3_Out"
---out_changelog "Changelog"
+--out_changelog "$Changelog"
 ]]></command>
   <inputs>
     <param label="GFF3" name="gff3In" type="data" format="gff3"/>
@@ -26,9 +26,11 @@ python $__tool_directory__/gff3_table_annotations.py
   <help><![CDATA[
 **What it does**
 
-Reads through a given tabular file and compares it against the given GFF3 file. If there are any differences, it
-updates the GFF3 file with the changes from the tabular file. The FASTA file is used to ensure correct reconstruction
-of the GFF3 after changes are made.
+Reads through a given tabular file and compares it against the given GFF3 file. If there are any differences, it updates the GFF3 file with the changes from the tabular file. The FASTA file is used to ensure correct reconstruction of the GFF3 after changes are made. Supplying an empty field in the User Defined Notes column of the table will remove all notes from the feature.
+
+You can generate this table by hand or use the Annotation Table tool here: https://cpt.tamu.edu/galaxy/root?tool_id=edu.tamu.cpt2.phage.annotation_table
+
+You must supply the Record ID and ID columns and may supply any of the following: 'Name', 'Feature Start' and 'Feature End' (both must be provided if one is), 'Strand', and 'Notes'.
       ]]></help>
   <expand macro="citations" />
 </tool>
