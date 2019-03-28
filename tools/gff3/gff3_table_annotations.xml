@@ -8,9 +8,9 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/gff3_table_annotations.py
-$gff3In 
-$tabularIn
-$fastaIn$
+"$gff3In"
+"$tabularIn"
+"$fastaIn$"
 --out_gff3 "$GFF3_Out"
 --out_changelog "Changelog"
 ]]></command>
@@ -26,8 +26,8 @@ $fastaIn$
   <help><![CDATA[
 **What it does**
 
-Reads through a given tabular file and compares it against the given GFF3 file. If there are any differences, it 
-updates the GFF3 file with the changes from the tabular file. The FASTA file is used to ensure correct reconstruction 
+Reads through a given tabular file and compares it against the given GFF3 file. If there are any differences, it
+updates the GFF3 file with the changes from the tabular file. The FASTA file is used to ensure correct reconstruction
 of the GFF3 after changes are made.
       ]]></help>
   <expand macro="citations" />
