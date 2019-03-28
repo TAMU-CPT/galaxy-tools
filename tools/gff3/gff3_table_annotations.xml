@@ -10,7 +10,7 @@
 python $__tool_directory__/gff3_table_annotations.py
 "$gff3In"
 "$tabularIn"
-"$fastaIn$"
+"$fastaIn"
 --out_gff3 "$GFF3_Out"
 --out_changelog "Changelog"
 ]]></command>
