@@ -8,20 +8,20 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
+# gene and RBS features are also included in the tagged features list, but are dealt with specifically elsewhere.
+# This is used to filter out just valid "in gene" features
+TAGGED_FEATURES = ['CDS', 'tRNA', 'intron', 'mat_peptide']
 
 def renumber_genes(gbk_files, tag_to_update="locus_tag",
                    string_prefix="display_id", leading_zeros=3,
                    change_table=None):
-    tRNA_count = 1
 
     for gbk_file in gbk_files:
         for record in SeqIO.parse(gbk_file, "genbank"):
             if string_prefix == 'display_id':
                 format_string = record.id + '_%0' + str(leading_zeros) + 'd'
-                format_string_t = record.id + '_gt%0' + str(leading_zeros) + 'd'
             else:
                 format_string = string_prefix + '%0' + str(leading_zeros) + 'd'
-                format_string_t = string_prefix + '.gt%0' + str(leading_zeros) + 'd'
 
             # f_cds = [f for f in record.features if f.type == 'CDS']
             # f_rbs = [f for f in record.features if f.type == 'RBS']
@@ -83,10 +83,9 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
             f_gene = sorted([f for f in record.features if f.type == 'gene'], key=lambda x: x.location.start)
             f_rbs = sorted([f for f in record.features if f.type == 'RBS'], key=lambda x: x.location.start)
             f_tag = list()
-            f_sorted = sorted([f for f in record.features if f.type not in ['gene', 'regulatory', 'RBS']], key=lambda x: x.location.start)
-            # regulatory features are not included into locus tags. List used in case future features are excluded from tags
-            # as they don't need processing they're automatically considered clean and ready for output
-            clean_features = sorted([f for f in record.features if f.type in ['regulatory']], key=lambda x: x.location.start)
+            f_sorted = sorted([f for f in record.features if f.type in TAGGED_FEATURES], key=lambda x: x.location.start)
+            # genes not in the TAGGED_FEATURES list are exluded from the processing and assumed to already be clean
+            clean_features = sorted([f for f in record.features if f.type not in TAGGED_FEATURES], key=lambda x: x.location.start)
 
             f_processed = []
             for gene in f_gene:
@@ -128,6 +127,7 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
                 for feature in tag:
                     original_tag_value = delta_old(feature, tag_to_update)
                     feature.qualifiers[tag_to_update] = [new_tag_value]
+                    # Once the tag is renumbered, it's added to the clean list for later output
                     clean_features.append(feature)
                     delta.append('\t'.join((record.id, original_tag_value, new_tag_value)))
                 tag_index += 1
@@ -171,18 +171,18 @@ def is_within(query, feature):
         return False;
 
 
-def fix_frameshift(a, b):
-    #checks if gene a and gene b are a frameshifted gene (either shares a start or an end and an RBS)
-    if a[0].location.start == b[0].location.start or a[0].location.end == b[0].location.end:
-        # It is likely a frameshift. Treat is as such. Find shared RBS, determine which CDS is which
-        big_gene = a if (a[0].location.end - a[0].location.start) > (b[0].location.end - b[0].location.start) else b
-        small_gene = a if big_gene==b else b
-        rbs = [f for f in a if f.type == 'RBS']
-        # In the way that the tag lists are generated, the larger gene should contain both CDS features.
-        # Retrieve and dermine big/small CDS
-        cdss = [f for f in big_gene if f.type == 'CDS']
-        big_cds = cdss[0] if (cdss[0].location.end - cdss[0].location.start) > (cdss[1].location.end - cdss[1].location.start) else cdss[1]
-        small_cds = cdss[0] if big_cds==cdss[1] else cdss[1]
+#def fix_frameshift(a, b):
+#    #checks if gene a and gene b are a frameshifted gene (either shares a start or an end and an RBS)
+#    if a[0].location.start == b[0].location.start or a[0].location.end == b[0].location.end:
+#        # It is likely a frameshift. Treat is as such. Find shared RBS, determine which CDS is which
+#        big_gene = a if (a[0].location.end - a[0].location.start) > (b[0].location.end - b[0].location.start) else b
+#        small_gene = a if big_gene==b else b
+#        rbs = [f for f in a if f.type == 'RBS']
+#        # In the way that the tag lists are generated, the larger gene should contain both CDS features.
+#        # Retrieve and dermine big/small CDS
+#        cdss = [f for f in big_gene if f.type == 'CDS']
+#        big_cds = cdss[0] if (cdss[0].location.end - cdss[0].location.start) > (cdss[1].location.end - cdss[1].location.start) else cdss[1]
+#        small_cds = cdss[0] if big_cds==cdss[1] else cdss[1]
 
 
 if __name__ == '__main__':

@@ -120,6 +120,8 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
             # No changes detected
             out_changelog.write("%s\tNone\tNo Change\n" % i.id)
 
+          break
+
       if Found == False:
         # No such ID
         out_changelog.write("%s\tNone\tID not Found\n" % row["ID"])
