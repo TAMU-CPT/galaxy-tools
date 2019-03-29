@@ -85,7 +85,7 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
             f_tag = list()
             f_sorted = sorted([f for f in record.features if f.type in TAGGED_FEATURES], key=lambda x: x.location.start)
             # genes not in the TAGGED_FEATURES list are exluded from the processing and assumed to already be clean
-            clean_features = sorted([f for f in record.features if f.type not in TAGGED_FEATURES], key=lambda x: x.location.start)
+            clean_features = sorted([f for f in record.features if f.type not in TAGGED_FEATURES and f.type not in ['gene', 'RBS']], key=lambda x: x.location.start)
 
             f_processed = []
             for gene in f_gene:
