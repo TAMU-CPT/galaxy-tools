@@ -95,6 +95,7 @@ def table_annotations(gff3In, out_errorlog):
             CDS = 0
             shines = 0
             cdsList = []
+            exonList = []
 
             for featLvl3 in featLvl2.sub_features:
 
@@ -113,7 +114,8 @@ def table_annotations(gff3In, out_errorlog):
                       errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl3.type, featLvl3.id, str(notes), j, problem))
                       numWarningr += 1  
 
-              cdsList = []
+              #cdsList = []
+              #exonList = []
 
               dupCheck = containsHash.get((featLvl3.type + str(featLvl3.location.start) + str(featLvl3.location.end)), -1)
               if dupCheck != -1:
@@ -125,6 +127,7 @@ def table_annotations(gff3In, out_errorlog):
 
               if(featLvl3.type == "exon"):
                 exons += 1
+                exonList.append(featLvl3)
                 if(featLvl3.location.start < featLvl2.location.start or featLvl3.location.start > featLvl2.location.end):
                   errorMessage += ("Error: Exon start falls outside the boundary of parent mRNA\n  %s mRNA Start: %d  -- End: %d\n  %s Exon Start: %d\n\n" % (featLvl2.id, featLvl2.location.start, featLvl2.location.end, featLvl3.id, featLvl3.location.start))
                   numError += 1
@@ -170,6 +173,7 @@ def table_annotations(gff3In, out_errorlog):
                 if match == False:
                   errorMessage = ("Error: Multiple CDS in mRNA %s, but none match expected start/end boundary\n\n" % (featLvl2.id)) + errorMessage
                   numError += 1
+
             else:
               errorMessage = ("Warning: %s mRNA has no CDS features\n\n" % (featLvl2.id)) + errorMessage
               numWarning += 1
@@ -177,6 +181,10 @@ def table_annotations(gff3In, out_errorlog):
             if(exons > 2):
               errorMessage = ("Error: %s mRNA has %d exons, expected no more than 2\n\n" % (featLvl2.id, exons)) + errorMessage
               numError += 1
+            elif(exons > 1 and len(exonList) > 1):
+              if not (exonList[0].location.start > exonList[1].location.end or exonList[1].location.start > exonList[0].location.end):
+                errorMessage = ("Error: mRNA has 2 exons, and they don't match the expected start/end boundaries\n  mRNA %s Start: %d -- End: %d\n  Exon %s Start: %d -- End: %d\n  Exon %s Start: %d -- End: %d\n  Expected one exon's start to match the mRNA's start, the other to match its end, and neither to overlap.\n\n" % (featLvl2.id, featLvl2.location.start, featLvl2.location.end, exonList[0].id, exonList[0].location.start, exonList[0].location.end, exonList[1].id, exonList[1].location.start, exonList[1].location.end)) + errorMessage
+                numError += 1
             elif(exons == 0):
               errorMessage = ("Warning: %s mRNA has no exons\n\n" % (featLvl2.id)) + errorMessage
               numWarning += 1
