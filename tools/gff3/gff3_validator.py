@@ -228,8 +228,11 @@ def table_annotations(gff3In, out_errorlog):
       else:
         allowOver = 60
 
-    while(j < len(locations) and locations[i].location.end - locations[j].location.start >= allowOver):
-      errorMessage = ("Error: %s %s overlaps %s %s by %d or more bases\n  %s %s Start: %d -- End: %d\n  %s %s Start: %d -- End: %d\n\n" % (locations[i].type, locations[i].id, locations[j].type, locations[j].id, allowOver, locations[i].type, locations[i].id, locations[i].location.start, locations[i].location.end, locations[j].type, locations[j].id, locations[j].location.start, locations[j].location.end)) + errorMessage
+    while(j < len(locations)):
+      if abs(locations[i].location.end - locations[j].location.start) >= allowOver:
+        errorMessage = ("Error: %s %s overlaps %s %s by %d or more bases\n  %s %s Start: %d -- End: %d\n  %s %s Start: %d -- End: %d\n\n" % (locations[i].type, locations[i].id, locations[j].type, locations[j].id, allowOver, locations[i].type, locations[i].id, locations[i].location.start, locations[i].location.end, locations[j].type, locations[j].id, locations[j].location.start, locations[j].location.end)) + errorMessage
+      elif abs(locations[i].location.end - locations[j].location.start) > 0 and allowOver == 10:
+        errorMessage = ("Warning: %s %s overlaps %s %s, may wish to verify\n  %s %s Start: %d -- End: %d\n  %s %s Start: %d -- End: %d\n\n" % (locations[i].type, locations[i].id, locations[j].type, locations[j].id, locations[i].type, locations[i].id, locations[i].location.start, locations[i].location.end, locations[j].type, locations[j].id, locations[j].location.start, locations[j].location.end))
       j += 1
       numError += 1
     i += 1
