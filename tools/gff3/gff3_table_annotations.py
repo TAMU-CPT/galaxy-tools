@@ -30,24 +30,28 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
     sourceG = list(GFF.parse(gff3In, SeqIO.to_dict(SeqIO.parse(fastaIn, "fasta"))))
     recG = []   
     
-    parentDict = {}
+    recTest = []
 
-    topCount = 0
-    
-    for i in sourceG:
-      topCount += 1
-      if i.features:
-        recG.extend(i.features) # Adds Genes
-        for j in i.features: # For each gene
-          sub1 = j.sub_features #sub1 = mRNA
-          if sub1:
-            parentDict[j.id] = j
-          recG.extend(sub1)
-          for k in j.sub_features:
-            if k.sub_features: 
-              parentDict[k.id] = k
-              recG.extend(k.sub_features)            
- 
+    sumFeatures = 0
+    numOrgs = 0
+    while numOrgs < len(sourceG): # Should be directly editable
+      topFeat = 0
+      while topFeat < len(sourceG[numOrgs].features):
+        subFeat1 = 0
+        recG.append(sourceG[numOrgs].features[topFeat])
+        sumFeatures += 1
+        while subFeat1 < len(sourceG[numOrgs].features[topFeat].sub_features):
+          subFeat2 = 0
+          recG.append(sourceG[numOrgs].features[topFeat].sub_features[subFeat1])
+          sumFeatures += 1
+          while subFeat2 < len(sourceG[numOrgs].features[topFeat].sub_features[subFeat1].sub_features):
+            recG.append(sourceG[numOrgs].features[topFeat].sub_features[subFeat1].sub_features[subFeat2])
+            sumFeatures += 1
+            subFeat2 +=1
+          subFeat1 += 1
+        topFeat+= 1
+      numOrgs += 1
+  
     # Get a changelog ready
     out_changelog.write("ID\tChanges\tStatus\n")
 
@@ -66,49 +70,6 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
 
         if row["ID"] == i.id:
 
-          numLevels = 0
-          treeTraverse = ["", "", ""]     
-          tree = i     
-          topGene = ""
-          while "Parent" in tree.qualifiers:
-            treeTraverse[numLevels] = tree 
-            numLevels += 1
-            tree = parentDict[tree.qualifiers["Parent"]]
-            
-          treeTraverse[numLevels] = tree
- 
-          change = sourceG[0]
-
-          if numLevels == 2:
-            for find in change.features:
-              if treeTraverse[2].id == find.id:
-                change = find
-                break
-            for find in change.sub_features:
-              if treeTraverse[1].id == find.id:
-                change = find
-                break
-            for find in change.sub_features:
-              if treeTraverse[0].id == find.id:
-                change = find
-                break
-
-          elif numLevels == 1:
-            for find in change.features:
-              if treeTraverse[1].id == find.id:
-                change = find
-                break
-            for find in change.sub_features:
-              if treeTraverse[0].id == find.id:
-                change = find 
-                break     
-
-          if numLevels == 0:
-            for find in change.features:
-              if treeTraverse[0].id == find.id:
-                change = find
-                break
-
           strandC = False
           startC = False
           endC = False
@@ -118,9 +79,7 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
           aliasC = False
           parentC = False
 
-          Found = True
-
-          
+          Found = True          
 
           for qual in row:
             if qual == "ID":
@@ -132,56 +91,56 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
               else:
                 row["Strand"] = -1
             
-            if qual == "Name" and row["Name"] != change.qualifiers["Name"][0]:
-              change.qualifiers["Name"][0] = row["Name"]
+            if qual == "Name" and row["Name"] != i.qualifiers["Name"][0]:
+              i.qualifiers["Name"][0] = row["Name"]
               nameC = True
 
-            elif qual == "Alias" and row["Alias"] != change.qualifiers["Alias"]:
-              change.qualifiers["Alias"][0] = row["Alias"]
+            elif qual == "Alias" and row["Alias"] != i.qualifiers["Alias"]:
+              i.qualifiers["Alias"][0] = row["Alias"]
               aliasC = True
 
-            elif qual == "Parent" and row["Parent"] != change.qualifiers["Parent"][0]:
-              change.qualifiers["Parent"][0] = row["Parent"]
+            elif qual == "Parent" and row["Parent"] != i.qualifiers["Parent"][0]:
+              i.qualifiers["Parent"][0] = row["Parent"]
               parentC = true
 
            # elif qual == "Note":
 
-            elif qual == "Strand" and change.strand != row["Strand"]:
+            elif qual == "Strand" and i.strand != row["Strand"]:
               strandC = True
-              change.location = FeatureLocation(change.location.start, change.location.end, row["Strand"])
+              i.location = FeatureLocation(i.location.start, i.location.end, row["Strand"])
           
 
-            elif qual == "bound_s" and change.location.start != int(row["bound_s"]):
+            elif qual == "bound_s" and i.location.start != int(row["bound_s"]):
               startC = True
-              change.location = FeatureLocation(int(row["bound_s"]), change.location.end, change.location.strand)
+              i.location = FeatureLocation(int(row["bound_s"]), i.location.end, i.location.strand)
 
-            elif qual == "bound_e" and change.location.end != int(row["bound_e"]):
+            elif qual == "bound_e" and i.location.end != int(row["bound_e"]):
               endC = True
-              change.location = FeatureLocation(change.location.start, int(row["bound_e"]), change.location.strand)
+              i.location = FeatureLocation(i.location.start, int(row["bound_e"]), i.location.strand)
             
             elif qual == "Note":
               temp = [str(row["Note"])]
-              if ("Note" in change.qualifiers) and change.qualifiers["Note"] != temp:
+              if ("Note" in i.qualifiers) and i.qualifiers["Note"] != temp:
                 if temp:
-                  change.qualifiers["Note"] = temp
+                  i.qualifiers["Note"] = temp
                 else:
-                  change.qualifiers.pop("Note", None)
+                  i.qualifiers.pop("Note", None)
                 noteC = True
-              elif temp != [''] and not ("Note" in change.qualifiers):
-                change.qualifiers["Note"] = temp
+              elif temp != [''] and not ("Note" in i.qualifiers):
+                i.qualifiers["Note"] = temp
                 noteC = True
 
             elif not (qual in ['Target', 'Gap', 'Dbxref', 'Ontology_term', 'Is_circular', 'Derives_from', 'bound_s', 'bound_e', 'org_id', 'Strand', 'Name', 'Note']):
               temp = qual.lower().replace(' ', '_')
-              if temp in change.qualifiers: # Edit
+              if temp in i.qualifiers: # Edit
                 if type(row[qual]) == type(None):
-                  change.qualifiers.pop(temp, None)
+                  i.qualifiers.pop(temp, None)
                   qualC = True
-                elif change.qualifiers[temp] != [str(row[qual])]:
-                  change.qualifiers[temp] = [str(row[qual])]
+                elif i.qualifiers[temp] != [str(row[qual])]:
+                  i.qualifiers[temp] = [str(row[qual])]
                   qualC = True
               elif type(row[qual]) != type(None): # Create
-                change.qualifiers[temp] = [str(row[qual])]
+                i.qualifiers[temp] = [str(row[qual])]
                 qualC = True
             
             #print(i)
@@ -223,11 +182,11 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
             changeList += "Other Qualifiers"
 
           if changeList != "": # On success, write out replaced attributes and success
-            out_changelog.write("%s\t%s\tSuccess\n" % (change.id, changeList))
+            out_changelog.write("%s\t%s\tSuccess\n" % (i.id, changeList))
             anyChange = True
           else: # On fail, write out table line and why
             # No changes detected
-            out_changelog.write("%s\tNone\tNo Change\n" % change.id)
+            out_changelog.write("%s\tNone\tNo Change\n" % i.id)
 
           break
 
@@ -254,4 +213,4 @@ if __name__ == '__main__':
     parser.add_argument('--out_gff3', type=argparse.FileType("w"), help='Output gff3', default='out.gff3')
     parser.add_argument('--out_changelog', type=argparse.FileType("w"), help='Output changelog', default='out.tsv')
     args = parser.parse_args()
-    table_annotations(**vars(args))
+    table_annotations(**vars(args)) #283
