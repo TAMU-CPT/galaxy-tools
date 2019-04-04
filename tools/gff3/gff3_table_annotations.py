@@ -4,7 +4,6 @@ from BCBio import GFF
 from Bio.SeqFeature import FeatureLocation
 from Bio import SeqIO
 from Bio.Seq import Seq
-from gff3 import feature_lambda, feature_test_true
 import csv
 import argparse
 
