@@ -1,5 +1,5 @@
 <?xml version="1.1"?>
-<tool id="edu.tamu.cpt2.gff3.gff3_table_annotations" name="Update GFF3 from table" version="1.0">
+<tool id="edu.tamu.cpt2.gff3.gff3_table_annotations" name="Update GFF3 from table" version="1.1">
   <description>Updates given GFF3 file with changes from the given tabular file. Requires an equivalent FASTA file as well to ensure correct reconstruction of the GFF3</description>
   <macros>
     <import>macros.xml</import>
