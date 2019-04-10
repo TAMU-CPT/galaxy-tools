@@ -140,6 +140,7 @@ if __name__ == '__main__':
     parser.add_argument('phagedb', type=argparse.FileType("r"))
     parser.add_argument('--protein', action='store_true')
     parser.add_argument('--canonical', action='store_true')
+    parser.add_argument('--hits', type = int, default = 5)
 
     args = parser.parse_args()
 
@@ -169,7 +170,7 @@ if __name__ == '__main__':
     scores, counts = scoreMap(data)
     sys.stdout.write('# ID\tName\tScore\t%s\n' % count_label)
     for idx, ((name, pid), score) in enumerate(sorted(scores.items(), key=lambda (x, y): -y)):
-        if idx > 4:
+        if idx > args.hits - 1:
             break
 
         sys.stdout.write('%s\t%s\t%05.3f\t%d\n' % (pid, name, score, counts[(name, pid)]))
