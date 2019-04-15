@@ -44,7 +44,6 @@ if __name__ == '__main__':
     features = wa.annotations.getFeatures()
     # For each feature in the features
     sys.stdout.write("# Feature ID\tNew Name\n")
-    print(features)
     for feature in sorted(features['features'], key=lambda x: x['location']['fmin']):
         new_name = None
         if 'parent_id' in feature:
