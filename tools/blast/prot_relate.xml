@@ -10,9 +10,9 @@
 $__tool_directory__/relatedness.py
 @BLAST_TSV@
 $__tool_directory__/db.json
+--hits $hits
 --protein
 > $accession_list
---hits $hits
 </command>
 	<inputs>
 	<expand macro="blast_tsv" />
