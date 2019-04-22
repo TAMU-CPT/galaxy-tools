@@ -26,23 +26,23 @@ $__tool_directory__/fasta_remove_id.py
 	<help>
 **What it does**
 
-Removes the "description" from fasta sequences. Some tools (glimmer/genemarks)
-do not behave correctly regarding these descriptions, so this tool strips that
-data out with no way to re-add it.
+From an input FASTA file, removes the "description" field (all characters after
+the first space in the top line until a return) after the FASTA ID (from the > 
+to the first space).
+		
+This is a permanent removal of the description. It is useful for tools that 
+behave in unexpected ways if it is present, e.g. Glimmer/GeneMarkS.
 
-The fasta ID is everything from the ``>`` to the first space, the description
-is everything after the first space.
+**Example Input/Output**
 
-**Example Input/Outputs**
-
-For an input sequence like::
+For an input FASTA file::
 
 	>1|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 288 bp
 	acttacgcggagagatgagaccaacgctcgcctaggggcacgcttgtaattgacttatct
 	>2|random sequence|A: 0.25|C: 0.25|G: 0.25|T: 0.25|length: 232 bp
 	gttggggacccacctatcagggagtgtagtagtataagactgtccaataccccccaacat
 
-This tool will remove the descriptions and leave you with just the Fasta IDs::
+The resulting FASTA will contain only IDs without a description::
 
 	>1|random
 	acttacgcggagagatgagaccaacgctcgcctaggggcacgcttgtaattgacttatct
