@@ -382,6 +382,8 @@ def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotatio
         gaf = parseGafData(gafData)
 
     for record in GFF.parse(annotations, base_dict=seq_dict):
+        #if reportTemplateName.endswith('.html'):
+        #    record.id = record.id.replace(".", "-")
         log.info("Producing an annotation table for %s" % record.id)
         annotation_table_data, annotation_table_col_names = annotation_table_report(record, annotationTableCols, gaf)
         at_table_data.append((
@@ -396,7 +398,10 @@ def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotatio
     }
 
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
-    env.filters['nice_id'] = get_gff3_id
+    if reportTemplateName.endswith('.html'):
+        env.filters['nice_id'] = get_gff3_id.replace(".", "-")
+    else:
+        env.filters['nice_id'] = get_gff3_id
 
     def join(listy):
         return '\n'.join(listy)
