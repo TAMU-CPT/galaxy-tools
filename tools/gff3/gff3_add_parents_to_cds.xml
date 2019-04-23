@@ -27,11 +27,12 @@ $__tool_directory__/gff3_add_parents_to_cds.py
 		</test>
   </tests>
   <help><![CDATA[
-..class:: warningmark
+This tool updates the gene model in a GFF3, useful when a nonstandard gene model 
+has been applied. It finds all CDS features, **strips their parent features**, 
+then applies a gene-mRNA-CDS model, compatible with standard NCBI gene model. 
 
-This tool is incredibly naive. It does not think. It will find ALL CDSs
-(nothing else), wipe out the existing set of genes, and add replace with a
-gene-mRNA-cds model. This is **probably** not what you want to do
+class:: warningmark Use this tool only when it is absolutely necessary to fix a gene model. 
+
       ]]></help>
 		<expand macro="citations" />
 </tool>
