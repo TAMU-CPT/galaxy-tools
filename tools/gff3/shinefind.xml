@@ -56,7 +56,30 @@ $top_only
 	<help><![CDATA[
 **What it does**
 
-Generates a list of possible Shine Dalgarno sites from a set of Gene Calls
+From an input GFF3 and FASTA file, the upstream sequence within user-specified bounds is 
+extracted for all CDS features. Input CDS features with an RBS are not re-analyzed. For 
+the remaining CDS features, the upstream sequence is searched against the following 
+possible Shine-Dalgarno sequences: 
+- AGGAGGT
+- GGAGGT
+- AGGAGG
+- AGGAG
+- GAGGT
+- GGAGG
+- AGGT
+- GGGT
+- GAGG
+- GGGG
+- AGGA
+- GGAG
+- GGA
+- GAG
+- AGG
+- GGT
+
+By default, only the first (closest to consensus) hit to the list is returned to the GFF3. 
+By selecting ‘No’ for ‘Only report best hits’, **all hits** to the possible SD list will 
+be added to the GFF3 file. 
 			]]></help>
 		<expand macro="citations" />
 </tool>
