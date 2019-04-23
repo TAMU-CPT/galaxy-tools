@@ -399,7 +399,7 @@ def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotatio
 
     env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
     if reportTemplateName.endswith('.html'):
-        env.filters['nice_id'] = get_gff3_id.replace(".", "-")
+        env.filters['nice_id'] = str(get_gff3_id).replace(".", "-")
     else:
         env.filters['nice_id'] = get_gff3_id
 
