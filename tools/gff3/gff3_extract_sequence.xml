@@ -51,7 +51,8 @@ $nodesc
   <help><![CDATA[
 **What it does**
 
-Extract fasta sequences from a parent genome.
+From the FASTA sequence for a genome, extracts the *nucleotide* sequence for 
+all CDSs in an input GFF3 and outputs them as a multi-FASTA formatted file.
       ]]></help>
 		<expand macro="citations" />
 </tool>
