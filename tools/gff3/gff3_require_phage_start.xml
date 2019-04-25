@@ -37,7 +37,7 @@ $gff3_data
 
 Ensures the start codon for the CDS is ATG, TTG, or GTG. It removes it otherwise.
 
-..class:: warningmark
+.. class:: warningmark
 
 This tool will remove ANY non-CDS type feature.
       ]]></help>
