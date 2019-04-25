@@ -21,8 +21,9 @@ $__tool_directory__/fix-aragorn-gff3.py
   <help><![CDATA[
 **What it does**
 
-Adds gene/exon feature to the tRNA model to allow creation of proper
-tRNA features in Apollo.
+For an input GFF3 file with tRNAs from the Aragorn tool, this tool modifies 
+the gene model to reflect a gene-tRNA-exon hierarchy. That change is needed 
+to allow for creation of proper tRNA features in Apollo.
       ]]></help>
 		<expand macro="citations" />
 </tool>
