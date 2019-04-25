@@ -27,7 +27,7 @@ $__tool_directory__/gff3_add_parents_to_cds.py
 		</test>
   </tests>
   <help><![CDATA[
-..class:: warningmark
+.. class:: warningmark
 
 This tool is incredibly naive. It does not think. It will find ALL CDSs
 (nothing else), wipe out the existing set of genes, and add replace with a
