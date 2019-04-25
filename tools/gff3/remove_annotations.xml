@@ -19,9 +19,16 @@ $remark
     <data format="gff3" name="default"/>
   </outputs>
   <help><![CDATA[
-Removes the remark/annotation features::
+**What it does**
 
+For an input GFF3, this tool specifically removes the remark/annotation features as needed for compatibility with certain tools.
+
+Example input::
     Miro	annotation	remark	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Miro%27%2C 0%2C 172788%29
+
+Example output::
+    Miro	.	.	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Miro%27%2C 0%2C 172788%29
+
       ]]></help>
 		<expand macro="citations" />
 </tool>
