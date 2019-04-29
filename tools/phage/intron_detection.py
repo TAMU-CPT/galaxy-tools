@@ -25,15 +25,18 @@ def parse_xml(blastxml):
         for alignment in blast_record.alignments:
             hit_gis = alignment.hit_id + alignment.hit_def
             gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9}', hit_gis)]
+            
             for hsp in alignment.hsps:
                 x = float(hsp.identities) / (hsp.query_end - hsp.query_start)
                 if x < .5:
                     discarded_records += 1
                     continue
 
-                nice_name = blast_record.query
+                nice_name = blast_record.query 
+                                             
                 if ' ' in nice_name:
                     nice_name = nice_name[0:nice_name.index(' ')]
+
                 blast_gene.append({
                     'gi_nos': gi_nos,
                     'sbjct_length': alignment.length,
@@ -42,7 +45,8 @@ def parse_xml(blastxml):
                     'query_range': (hsp.query_start, hsp.query_end),
                     'name': nice_name,
                     'identity': hsp.identities,
-                    'iter_num': iter_num
+                    'iter_num': iter_num,
+                    'match_id': alignment.title.partition(">")[0]
                 })
         blast.append(blast_gene)
     log.debug("parse_blastxml %s -> %s", len(blast) + discarded_records, len(blast))
@@ -85,9 +89,11 @@ def parse_gff(gff3):
                     'feat': feat,
                 }
 
+   
     gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
     for i, feat_id in enumerate(gff_info):
         gff_info[feat_id].update({'index': i})
+    
 
     return dict(gff_info), _rec
 
@@ -128,7 +134,7 @@ class IntronFinder(object):
                 if ' ' in hit:
                     hit = hit[0:hit.index(' ')]
 
-                name = hashlib.md5(','.join(hit['gi_nos'])).hexdigest()
+                name = hashlib.md5((','.join(hit['gi_nos'])).encode()).hexdigest()
                 if name in clusters:
                     if hit not in clusters[name]:
                         clusters[name].append(hit)
@@ -164,7 +170,7 @@ class IntronFinder(object):
             for gene in self.clusters[key]:
                 for hits in hits_lists:
                     for hit in hits:
-                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10:
+                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10:# and abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) >= minDist: 
                             hits.append(gene)
                             gene_added = True
                             break
@@ -181,7 +187,7 @@ class IntronFinder(object):
     # def check_seq_gap():
 
     # also need a check for gap in sequence coverage?
-    def check_seq_overlap(self, threshold=10):
+    def check_seq_overlap(self, minimum = 0):
         filtered_clusters = {}
         for key in self.clusters:
             add_cluster = True
@@ -192,8 +198,13 @@ class IntronFinder(object):
             combinations = list(itertools.combinations(sbjct_ranges, 2))
 
             for pair in combinations:
-                if len(set(range(pair[0][0], pair[0][1])) &
-                       set(range(pair[1][0], pair[1][1]))) > threshold:
+                if minimum < 0 and len(set(range(pair[0][0], pair[0][1])) & set(range(pair[1][0], pair[1][1]))) > minimum * -1:
+                    add_cluster = False
+                    break
+                elif minimum == 0 and len(set(range(pair[0][0], pair[0][1])) & set(range(pair[1][0], pair[1][1]))) > 0:
+                    add_cluster = False
+                    break
+                elif (pair[0][0] > pair[1][1] and len(set(range(pair[1][1], pair[0][0]))) < minimum) or (pair[1][0] > pair[0][1] and len(set(range(pair[0][1], pair[1][0]))) < minimum):
                     add_cluster = False
                     break
             if add_cluster:
@@ -252,6 +263,7 @@ class IntronFinder(object):
                                             reverse=True)):
                 if j == 0:
                     genes.add(dwg.rect(insert=(10, sbjct_y), size=(gene['sbjct_length'], 20), fill='blue'))
+                    genes.add(dwg.text(gene['match_id'], insert=(15, sbjct_y + 18)))
 
                 genes.add(dwg.rect(
                     insert=(query_x, sbjct_y + 80),
@@ -286,10 +298,9 @@ class IntronFinder(object):
             # Get the gene locations
             assoc_gene_info = {x: self.gff_info[x]['loc'] for x in associated_genes}
             # Now we construct a gene from the children as a "standard gene model" gene.
-
             # Get the minimum and maximum locations covered by all of the children genes
-            gene_min = min([min(x[1].start, x[1].end) for x in assoc_gene_info.iteritems()])
-            gene_max = max([max(x[1].start, x[1].end) for x in assoc_gene_info.iteritems()])
+            gene_min = min([min(x[1].start, x[1].end) for x in assoc_gene_info.items()])
+            gene_max = max([max(x[1].start, x[1].end) for x in assoc_gene_info.items()])
 
             evidence_notes = []
             for cluster_elem in clusters[cluster_id]:
@@ -351,7 +362,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Intron detection')
     parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
     parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
-    parser.add_argument('--overlap_threshold', type=int, help='Overlap Threshold', default=10)
+    parser.add_argument('--minimum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 0)
     parser.add_argument('--svg', help='Path to output svg file to', default='clusters.svg')
     args = parser.parse_args()
 
@@ -360,11 +371,12 @@ if __name__ == '__main__':
     ifinder.create_clusters()
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
-    ifinder.clusters = ifinder.check_seq_overlap(threshold=args.overlap_threshold)
+    ifinder.clusters = ifinder.check_seq_overlap(minimum=args.minimum)
 
     condensed_report = ifinder.cluster_report()
     ifinder.draw_genes(args.svg)
     rec = ifinder.output_gff3(ifinder.clusters)
     GFF.write([rec], sys.stdout)
+    
 
     # import pprint; pprint.pprint(ifinder.clusters)
