@@ -324,7 +324,8 @@ def annotation_table_report(record, wanted_cols, gaf_data):
                     value = func(record, gene)
 
             if isinstance(value, list):
-                value = [str(x).decode('utf-8') for x in value]
+                collapsed_value = ', '.join(value)
+                value = [str(collapsed_value).decode('utf-8')]
             else:
                 value = str(value).decode('utf-8')
 
