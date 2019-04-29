@@ -40,8 +40,10 @@ $invert
   <help><![CDATA[
 **What it does**
 
-Allows you to emit **just** ``Shine_Dalgarno_sequence`` type features, or,
-inverting that, emit everything but ``Shine_Dalgarno_sequence`` type features.
+The tool finds the specified feature type(s) in an input GFF3 and will output 
+**only** the specified feature type. By selecting the inversion, **everything except** 
+the specified feature type(s) will be included in the output GFF3.
+
 
       ]]></help>
 		<expand macro="citations" />
