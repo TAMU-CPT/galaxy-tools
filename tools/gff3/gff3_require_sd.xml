@@ -35,9 +35,9 @@ python $__tool_directory__/gff3_require_sd.py
   <help><![CDATA[
 **What it does**
 
-Ensures a CDS has an SD upstream of it.
+Ensures every CDS has an upstream Shine-Dalgarno site defined. ShineFind is used to add SD subfeatures to CDSs without one.
 
-**WARNING** this tool will remove ANY non-CDS type feature. TODO: Eric will need to fix this at a later date.
+.. class:: warningmark This tool removes non-CDS type features, and CDS features without an SD site. 
 
       ]]></help>
 		<expand macro="citations" />
