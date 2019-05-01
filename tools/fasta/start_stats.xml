@@ -25,10 +25,9 @@ python $__tool_directory__/start_stats.py
 	<help><![CDATA[
 **What it does**
 
-This tool processes a **DNA Fasta File** containing the sequences of all of
-your features. For each sequence in your fasta file, the tool extracts the
-start, and calculates the start codon distribution for the whole fasta file::
-
+This tool processes a **DNA multi-FASTA file** containing feature sequences. For each 
+sequence in your FASTA file the tool extracts the start codon, then it calculates the 
+codon distribution. 
 
 	# DNA Codon Count
 	AGG   R     90
@@ -38,6 +37,7 @@ start, and calculates the start codon distribution for the whole fasta file::
 	GGG   G     32
 	GGT   G     14
 	TCC   S     1
+
 ]]></help>
 		<expand macro="citations" />
 </tool>
