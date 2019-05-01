@@ -51,8 +51,13 @@ $nodesc
   <help><![CDATA[
 **What it does**
 
-From the FASTA sequence for a genome, extracts the *nucleotide* sequence for 
+From the FASTA sequence for a genome, extracts the *nucleotide* sequences for 
 all CDSs in an input GFF3 and outputs them as a multi-FASTA formatted file.
+
+The filter for specific feature types was designed for data retrieved from Apollo. 
+Using ‘unique_cds’ extracts the sequence for all CDS. Using ‘nice_cds’ will extract 
+the sequence only for CDS features with a start codon (recommended). 
+
       ]]></help>
 		<expand macro="citations" />
 </tool>
