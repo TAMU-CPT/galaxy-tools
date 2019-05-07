@@ -7,7 +7,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/easyfig_cpt.py
+python $__tool_directory__/Easyfig.py
 "$gbkIn"
 -o "$SVG_Out"
 ]]></command>
