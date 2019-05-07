@@ -12,7 +12,7 @@ python $__tool_directory__/easyfig_cpt.py
 -o "$SVG_Out"
 ]]></command>
   <inputs>
-    <param label="GFF3" name="gff3In" type="data" multiple="true" format="genbank"/>
+    <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
   </inputs>
   <outputs>
         <data name="SVG_Out" format="svg" label="SVG Output"/>
