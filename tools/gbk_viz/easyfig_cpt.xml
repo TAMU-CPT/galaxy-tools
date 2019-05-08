@@ -9,7 +9,11 @@
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/Easyfig.py
 -o "$SVG_Out"
-$gbkIn
+
+#for $file in $gbkIn:
+    $file
+#end for
+
 ]]></command>
   <inputs>
     <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
