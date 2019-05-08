@@ -19,7 +19,7 @@ python $__tool_directory__/Easyfig.py
     <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
   </inputs>
   <outputs>
-        <data name="SVG_Out" format="svg" label="SVG Output"/>
+        <data format="svg" name="SVG_Out" label="SVG Output"/>
   </outputs>
   <help><![CDATA[
 **What it does**
