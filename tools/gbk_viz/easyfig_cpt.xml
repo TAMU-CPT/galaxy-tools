@@ -7,8 +7,8 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-out = ".svg";
-fileOut = "$SVG_Out$out";
+$out = ".svg";
+$fileOut = "$SVG_Out$out";
 ln -s $SVG_Out $fileOut;
 python $__tool_directory__/Easyfig.py
 -o $fileOut
