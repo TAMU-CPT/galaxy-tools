@@ -8,7 +8,7 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/Easyfig.py
--o "$SVG_Out"
+-o $SVG_Out
 
 #for $file in $gbkIn:
     $file
