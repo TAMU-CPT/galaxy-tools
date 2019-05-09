@@ -17,7 +17,6 @@ $tagseq_file
     </inputs>
     <outputs>
 		<data format="csv" name="output"/>
-		</data>
     </outputs>
     <help><![CDATA[
 **What it does**
