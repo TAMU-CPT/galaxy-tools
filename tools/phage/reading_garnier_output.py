@@ -16,11 +16,14 @@ def garnier_sequences(file):
     # respectively. Then add sequence names and lengths to the proper lists
     for line in f:
         words = line.split()
-        if 'Sequence:' in line:
-            if words[1] == 'Sequence:':
-                sequence += [words[2]]
-            if words[5] == 'to:':
-                lengths += [int(words[6])]
+        if line.startswith('# Sequence:'):
+        #if 'Sequence:' in line:
+            #if words[1] == 'Sequence:':
+            sequence += [words[words.index('Sequence:') + 1]]
+            #if words[5] == 'to:':
+            #    lengths += [int(words[6])]
+            if words.index('to:'):
+                lengths += [int(words[words.index('to:') + 1])]
     # return the sequence names and lengths
     return sequence, lengths
 
