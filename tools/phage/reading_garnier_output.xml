@@ -7,7 +7,7 @@
     </macros>
     <expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/disruptin_finder.py
+python $__tool_directory__/reading_garnier_output.py
 $tagseq_file
 
 
