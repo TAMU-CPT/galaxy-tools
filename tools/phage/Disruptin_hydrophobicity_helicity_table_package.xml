@@ -7,9 +7,11 @@
     </macros>
     <expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/disruptin_finder.py
+python $__tool_directory__/Disruptin_hydrophobicity_helicity_table_package.py
 $garnier_file
 $fasta_file
+
+
 
 >$output]]></command>
     <inputs>
@@ -18,7 +20,6 @@ $fasta_file
     </inputs>
     <outputs>
 		<data format="csv" name="output"/>
-		</data>
     </outputs>
     <help><![CDATA[
 **What it does**
