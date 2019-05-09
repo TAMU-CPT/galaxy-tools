@@ -44,6 +44,8 @@
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff2gb.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/fix_ncbi.xml" label="gff3,apollo" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_genemarks.xml" label="gff3" />
+                <tool file="cpt2/galaxy-tools/tools/gff3/gff3_validator.xml" label="gff3"/>
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_sixpack.xml" label="gff3" />
 		<tool file="cpt2/tools-iuc/tools/bioperl/bp_genbank2gff3.xml" label="genbank" />
 	</section>
 	<section id="6dbd8994-74d6-4a9e-834b-131d9cd99526" name="CPT: Text Utilities">
@@ -58,6 +60,7 @@
 		<tool file="cpt2/galaxy-tools/tools/fasta/get_orfs_or_cdss.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/shinefind.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/lipory.xml" label="gff3" />
+        <tool file="cpt2/galaxy-tools/tools/phage/disruptin_finder.xml" label="fasta" />
 		<label id="cpt2_gene_call_1" text="External / NON-CPT Tools"/>
 		<tool file="cpt2/galaxy-tools/tools/external/gmsn.pl.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/phageterm/PhageTerm.xml"/>
@@ -108,12 +111,14 @@
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_split_into_frames.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_splitgff.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/remove_annotations.xml" label="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_table_annotations.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/feature_export.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml" label="genbank" />
 	</section>
 	<section id="b581a70c-94e3-4121-824d-e6b1ae487b68" name="CPT: Translation / RevCom / Change Sequence IDs">
 		<tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" label="genbank,fasta,gff3,experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_rename.xml" label="fasta" />
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_rename_nodesc.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_remove_id.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_translate.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_revcom.xml" label="fasta" />
@@ -123,8 +128,9 @@
 	<section id="9075ed2e-6360-4825-9271-a1ddd5dcbcb1" name="CPT: Functional Prediction">
 		<tool file="cpt2/galaxy-tools/tools/external/tmhmm.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/signalp.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/external/interproscan.xml"/>
+        <!--<tool file="cpt2/galaxy-tools/tools/external/interproscan.xml"/>-->
 		<tool file="cpt2/galaxy-tools/tools/external/interproscan-5.22.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/external/interproscan-5.33.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/fix-aragorn-gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/one-off/genrand.xml"/>
 	</section>
@@ -265,6 +271,7 @@
 		<tool file="fasta_to_tabular/fasta_to_tabular.xml"/>
 		<tool file="tabular_to_fasta/tabular_to_fasta.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/one-off/none-validator.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/gbk_viz/easyfig_cpt.xml"/>
 	</section>
 	<!-- deprecated -->
 	<tool file="cpt2/galaxy-tools/tools/gff3/gff3_ipr_merge.xml" label="deprecated" hidden="True" />

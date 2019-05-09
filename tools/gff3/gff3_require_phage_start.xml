@@ -35,7 +35,7 @@ $gff3_data
   <help><![CDATA[
 **What it does**
 
-Ensures the start codon for the CDS is ATG, TTG, or GTG. It removes it otherwise.
+Removes any CDS from the GFF3 whose start codon is **not** ATG, TTG, or GTG.
 
 ..class:: warningmark
 

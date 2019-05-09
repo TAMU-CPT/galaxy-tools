@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.gff3.gff3_validator" name="Validate GFF3" version="1.0">
+  <description>Validates that a GFF3 file is structured correctly, and details any sections which are not.</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gff3_validator.py
+"$gff3In"
+--out_errorlog "$Errorlog"
+]]></command>
+  <inputs>
+    <param label="GFF3" name="gff3In" type="data" format="gff3"/>
+  </inputs>
+  <outputs>
+        <data name="Errorlog" format="txt" label="Errorlog"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Reads through the GFF3 file in search of errors that may make results inaccurate or nonsensical. Outputs an error log as a .txt file listing the sort of error found, the type and ID of the feature which caused it, and any other relevant information such as location, and finally ends with the number of errors and warnings found. 
+
+Will log an error on: 
+  Duplicated features- A gene has the same type, start, and end base as another feature in the GFF3 file. Will output the types, IDs, and locations of both features. 
+  Incorrect number of features- If an mRNA has more than two exons, an error will be raised with the mRNA feature's ID and its total number of exons. The same will occur if a gene has more than one mRNA feature. This function can be expanded to other feature types with set maximums.
+  Incorrect start/end boundary: If an object has nonsensical location data, an error is raised. The criteria for this is detailed in a later section.
+  Excessive overlap: If a feature overlaps another feature by too much, an error is raised with the ID's and locations of both. The current overlap allowances are 10 bases if one of the features is a tRNA object, and 59 bases if both are genes.
+  Incorrect parenting: If exons or CDS subfeatures are parented directly to the gene rather than the gene's mRNA feature, an error is raised with the IDs of the gene and subfeatures.
+
+Additionally, the program will raise a warning if:
+  No subfeatures: If a gene has no mRNA object, or an mRNA object has no exons or CDS features, a warning with the empty object's ID is raised.
+  Unencoded character in qualifiers: The '%', '&', '=' ,',', ';', tab, and return characters are not supposed to appear in the qualifiers of a GFF3 entry (ie, extra fields such as date created or notes), as they serve a programming function, and this warning is raised when unencoded characters appear in the GFF3 file. Although this won't necessarily break the data, it can cause notes to fail to save properly and may create extra fields of junk data. The warning will include the feature ID, the problematic field, and the unencoded character. Note that this doesn't mean you can't use commas or equals signs in your notes; programs like Apollo should know how to properly encode your data and allow you to use any character. This warning most likely means someone opened the GFF3 file and edited it by hand, but without knowing how to properly format/ sanitize the fields. 
+
+**Boundary Start/End Rules**
+
+All features must fall within the location start/end of their parent object.
+mRNA features must have the same location data as their parent gene object.
+Exons must have the same start and/or end as their parent mRNA. If there are two, one must have the same start as the mRNA, the other must have the same end, and they may not overlap.
+At least one CDS feature must have either the same start or end as the mRNA parent.
+
+**Additional Notes on Duplicate Entry Error**
+
+If you are having trouble solving a duplicated feature error, read this. GFF3 requires all features to have a unique ID. If the parser detects that two entries have the same ID, it automatically gives the second one a temporary random ID, which is what's being output to the errorlog. If you are getting a duplicate entry error, but cannot find one of the error IDs in your GFF3 file, it most likely means there are two of the other ID in your file (ie, in addition to having the same type and location, the feature also has the same ID). This will most likely have been caused by someone copy/pasting sections of the GFF3 by hand and accidentally creating duplicates, and can be resolved by deleting the second entry.
+   
+      ]]></help>
+  <expand macro="citations" />
+</tool>

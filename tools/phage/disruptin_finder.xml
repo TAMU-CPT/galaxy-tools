@@ -1,9 +1,11 @@
+
 <?xml version="1.1"?>
 <tool id="edu.tamu.cpt2.phage." name="Disruptin Finder" version="1.1">
     <description>finds proteins with size and charge criteria</description>
     <macros>
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
+
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[

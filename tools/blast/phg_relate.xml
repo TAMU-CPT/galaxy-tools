@@ -10,11 +10,13 @@
 $__tool_directory__/relatedness.py
 @BLAST_TSV@
 $__tool_directory__/db.json
+--hits $hits
 --canonical
 > $accession_list
 </command>
 	<inputs>
 	<expand macro="blast_tsv" />
+                <param label = 'Number of results to return' name="hits" type="integer" size="15" value="5"/>
 	</inputs>
 	<outputs>
 		<data format="tabular" name="accession_list" label="Top Phage Blast Hits" />

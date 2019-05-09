@@ -85,6 +85,7 @@ def top_related(blast, report=None):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Top related genomes')
     parser.add_argument('blast', type=argparse.FileType("r"), help='Blast 25 Column Results')
+    parser.add_argument('--hits', type = int, default = 5)
 
     args = parser.parse_args()
     top_related(**vars(args))

@@ -1,0 +1,48 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.gff3.gff3_table_annotations" name="Update GFF3 from table" version="1.1">
+  <description>Updates given GFF3 file with changes from the given tabular file. Requires an equivalent FASTA file as well to ensure correct reconstruction of the GFF3</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gff3_table_annotations.py
+"$gff3In"
+"$tabularIn"
+"$fastaIn"
+--out_gff3 "$GFF3_Out"
+--out_changelog "$Changelog"
+]]></command>
+  <inputs>
+    <param label="GFF3" name="gff3In" type="data" format="gff3"/>
+    <param label="Table" name="tabularIn" type="data" format="tabular"/>
+    <param label="Fasta" name="fastaIn" type="data" format="fasta"/>
+  </inputs>
+  <outputs>
+        <data name="GFF3_Out" format="gff3" label="Gff3 Output"/>
+        <data name="Changelog" format="tsv" label="Changelog"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Reads through a given tabular file of feature data and compares it against the given GFF3 file. If there are any differences, it updates the GFF3 file with the changes from the tabular file. The FASTA file is used to ensure correct reconstruction of the GFF3 after changes are made. Outputs your edited GFF3 and a logfile with what changes were made.
+
+You can generate the table by hand or use the Annotation Table tool here: https://cpt.tamu.edu/galaxy/root?tool_id=edu.tamu.cpt2.phage.annotation_table
+
+In order for the changes to apply, you must supply a column labeled ID where each entry has the randomly generated unique ID of the feature. For example, a tabular file that looks like
+
+Organism ID	ID	Boundary	Boundary	Strand	User entered Notes
+Snoke	153e7758-d519-402c-b385-f63a2118e90a	0	2534	+	Adding a test note, with a comma
+Snoke	2f7e2751-0b4e-44e0-9931-4b3e58dda2d3	2535	4925	+	Adding a node and changed boundary from 4919 to 4925
+Snoke	d9fb4b39-622b-4f1c-9eb6-7eb9c654662f	4949	5096	-	
+Snoke	8bd9b132-70f9-4246-a1ed-0052150f3ce9	5083	5279	-	
+
+will search for the gene features 153e7758-d519-402c-b385-f63a2118e90a, 2f7e2751-0b4e-44e0-9931-4b3e58dda2d3, and so on, and make the appropriate changes. For instance the first feature in this example will have a note added to it, and the second feature (assuming its end base previously not 4925) will have its end base changed to 4925 and have a note added to it.
+
+Note that if a field is left blank, it will delete any data that may have been there. For example, if d9fb4b39-622b-4f1c-9eb6-7eb9c654662f had a note, it would not after running the above tabular file. This will not affect fields that aren't listed, for example Date Creation or Name fields will not be wiped because that column is not in the tabular file at all. It will also only affect the features listed, ie this file will only edit those four features from the GFF3 file and any others will remain untouched.
+
+Finally, this can also be used to add new fields to features. When using this tool to create new fields, keep in mind that some field names, such as ID, Name, or Parent are reserved by GFF3 for its own use. See https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md for a complete list.
+      ]]></help>
+  <expand macro="citations" />
+</tool>

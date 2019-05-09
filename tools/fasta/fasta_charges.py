@@ -10,7 +10,7 @@ HTML_FOOTER = '</body></html>'
 
 
 def charges_html(fasta, aa, fgColor, bgColor, width=120):
-    colour_scheme = zip([x.upper() for x in aa], fgColor, bgColor)
+    colour_scheme = zip([x.upper() for x in aa], bgColor, fgColor)
 
     # CSS and header styling
     css = """<style type="text/css">

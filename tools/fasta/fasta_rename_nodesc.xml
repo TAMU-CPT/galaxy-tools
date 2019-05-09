@@ -1,0 +1,49 @@
+<tool id="edu.tamu.cpt.fasta.rename_nodesc" name="Fasta Renamer No Description" version="1.0.0">
+	<description>Rename fasta sequences and remove description</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/fasta_rename_nodesc.py
+@SEQUENCE@
+"$new_name"
+> $output]]></command>
+	<inputs>
+		<expand macro="input/fasta" />
+		<param label="New name for the fasta sequence" name="new_name" type="text"/>
+	</inputs>
+	<outputs>
+		<data format="fasta" name="output" label="$new_name"/>
+	</outputs>
+	<tests>
+        <test>
+			<param name="sequences" value="rename.fa"/>
+			<param name="new_name" value="nodesc" />
+			<output name="output" file="rename-nodesc.fa" />
+        </test>
+	</tests>
+	<help><![CDATA[
+**What it does**
+
+Allows re-naming a sequence with a new ID.
+
+.. class:: warningmark
+
+This tool will error if there is more than one sequence in your file!
+
+**Example Inputs/Outputs**
+
+For an input sequence::
+
+    >some-long-description and more useless information
+    ACTG
+
+This tool would let you rename the sequence something sensible like "phage_bob"::
+
+    >phage_bob
+    ACTG
+]]></help>
+		<expand macro="citations" />
+</tool>

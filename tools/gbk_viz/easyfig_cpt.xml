@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.gbk_viz.easyfig" name="Output Gbk Visualization" version="Alpha.1">
+  <description>Prototype - Not Yet for General Use: Easyfig toole wrapper for galaxy</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/Easyfig.py
+-o $SVG_Out
+-svg
+#for $file in $gbkIn:
+    $file
+#end for
+
+]]></command>
+  <inputs>
+    <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
+  </inputs>
+  <outputs>
+        <data format="svg" name="SVG_Out" label="SVG Output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+Paste from tool --help
+      ]]></help>
+  <expand macro="citations" />
+</tool>

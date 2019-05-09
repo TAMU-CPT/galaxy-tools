@@ -453,7 +453,21 @@ def parseFile(annotations, genome, subset=None, rows=2, width=0, hypo=False):
     plotter = Plotter(rows=rows, hypo=hypo)
 
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
-    for record in GFF.parse(annotations, base_dict=seq_dict):
+
+    gffIn = []
+    f = annotations.readline()
+    while f:
+        if not f.startswith('##'):
+          gffIn.append(f)
+        f = annotations.readline()
+
+    with open('temp', 'w') as f:
+      for line in gffIn:
+        print >> f, line
+
+    tempGff = open('temp', 'r')
+
+    for record in GFF.parse(tempGff, base_dict=seq_dict):
         if subset is not None:
             (a, b) = map(int, subset.split(','))
             record = record[a:b]
