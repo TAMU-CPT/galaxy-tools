@@ -11,7 +11,7 @@ python $__tool_directory__/intron_detection.py
 
 "$gff3_data"
 "$blast"
---overlap_minimum $minimum
+--minimum $minimum
 --svg "$svg"
 
 > $output]]></command>

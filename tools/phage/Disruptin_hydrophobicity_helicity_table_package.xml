@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage." name="Disruptin Table Output" version="1.0">
+<tool id="edu.tamu.cpt2.phage.disruptin_table" name="Disruptin Table Output" version="1.0">
     <description>makes table of disruptin candidates</description>
     <macros>
 		<import>macros.xml</import>
@@ -24,10 +24,10 @@ $fasta_file
     <help><![CDATA[
 **What it does**
 This program takes the parsed output from the garnier tool and the fasta file with disruptin candidate sequences
-and compiles information on each of the sequences into a table format. The table is printed on the screen and 
+and compiles information on each of the sequences into a table format. The table is printed on the screen and
 added into a .csv file for further manipulation. The table included the sequence and the position for each residue
 as well as the charge, hydrophobicity (based on the Kyte Doolittle scale), and secondary structure prediction from
-the garnier tool. 
+the garnier tool.
 
         ]]></help>
 		<expand macro="citations" />
