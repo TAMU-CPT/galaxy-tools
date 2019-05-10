@@ -3,7 +3,7 @@ Method for reading the output of garnier files. The secondary structure predicti
 the .taqseq file and output to the screen and as a table in .csv format.
 """
 import csv
-
+import argparse
 
 # This function reads through the tagseq file and outputs a list of sequence names and the lengths of each sequence.
 def garnier_sequences(file):
