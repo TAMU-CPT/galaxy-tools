@@ -23,6 +23,7 @@ The output fasta file includes records for all the sequences meeting the size an
 
 from Bio import SeqIO
 import argparse
+import sys
 
 
 def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_ratio, selection_criteria):
