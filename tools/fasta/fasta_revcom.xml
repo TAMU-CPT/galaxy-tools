@@ -12,7 +12,7 @@ $file
 > $output
 ]]></command>
   <inputs>
-    <param label="Fasta file" name="file" type="data" format="fasta"/>
+    <param label="Fasta file" name="file" type="data" multiple="true" format="fasta, txt"/>
   </inputs>
   <outputs>
     <data format="fasta" name="output">
@@ -27,7 +27,7 @@ $file
   <help>
 **What it does**
 
-Reverses and complements all sequences in a fasta file
+Reverses and complements all sequences in a fasta or txt file
 </help>
 		<expand macro="citations" />
 </tool>
