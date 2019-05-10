@@ -78,7 +78,6 @@ if __name__ == '__main__':
     parser.add_argument('--thresh_net_charge', type=int, default=4)
     parser.add_argument('--thresh_size', type=int, default=100)
     parser.add_argument('--thresh_charge_ratio', type=float, default=0.25)
-    parser.add_argument('--thresh_charge_ratio', type=float, default=0.25)
     parser.add_argument('--selection_criteria', action='store_true')
     args = parser.parse_args()
 
