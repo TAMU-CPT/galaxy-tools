@@ -4,7 +4,6 @@
     <macros>
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
-
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
@@ -22,7 +21,7 @@ $selection_criteria
         <param label="Maximum Length" name="thresh_size" type="integer" value="100" />
 	<param label="Minimum Charge to Length Ratio" name="thresh_charge_ratio" type="float" value="0.25" />
 		
-	<param type="select" label="Type of selection criteria" name="selction_criteria">
+	<param type="select" label="Type of selection criteria" name="selection_criteria">
 		<option value="net">Net charge</option>
 		<option value="--ratio">Ratio of charged residues to sequence length</option>
 		<option value="--both" selected="true">Both net charge and ratio</option>

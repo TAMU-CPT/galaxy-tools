@@ -5,6 +5,7 @@ from Bio import SeqIO
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from Bio.SeqUtils import ProtParamData
 import csv
+import argparse
 
 
 def disruptin_table(garnier_file, fasta_file):
