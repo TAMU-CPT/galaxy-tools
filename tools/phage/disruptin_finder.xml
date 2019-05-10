@@ -1,6 +1,6 @@
 
-<?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage." name="Disruptin Finder" version="1.0">
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.phage." name="Disruptin Finder" version="1.1">
     <description>finds proteins with size and charge criteria</description>
     <macros>
 		<import>macros.xml</import>
@@ -18,15 +18,15 @@ $selection_criteria
 > $output]]></command>
     <inputs>
         <param label="Fasta" name="fasta_file" type="data" format="fasta" />
-		<param label="Minimum Net Charge" name="thresh_net_charge" type="integer" value="4" />
+	<param label="Minimum Net Charge" name="thresh_net_charge" type="integer" value="4" />
         <param label="Maximum Length" name="thresh_size" type="integer" value="100" />
-		<param label="Minimum Charge to Length Ratio" name="thresh_charge_ratio" type="float" value="0.25" />
+	<param label="Minimum Charge to Length Ratio" name="thresh_charge_ratio" type="float" value="0.25" />
 		
-		<param type="select" label="Type of selection criteria" name="selection_criteria">
-			<option value="net">Net charge</option>
-			<option value="--ratio">Ratio of charged residues to sequence length</option>
-			<option value="--both" selected="true">Both net charge and ratio</option>
-		</param>
+	<param type="select" label="Type of selection criteria" name="selection_criteria">
+		<option value="net">Net charge</option>
+		<option value="--ratio">Ratio of charged residues to sequence length</option>
+		<option value="--both" selected="true">Both net charge and ratio</option>
+	</param>
 
     </inputs>
     <outputs>
