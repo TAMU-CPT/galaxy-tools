@@ -100,7 +100,7 @@ def single_prediction(helix, sheet, turns, coil):
 
 if __name__ == '__main__':
     # Grab all of the filters from our plugin loader
-    parser = argparse.ArgumentParser(description='Garnier tagseq reader')
+    parser = argparse.ArgumentParser(description='Read Garnier Secondary Structure Prediction')
     parser.add_argument('tagseq_file', type=argparse.FileType("r"), help='Tagseq file input')
     args = parser.parse_args()
 
