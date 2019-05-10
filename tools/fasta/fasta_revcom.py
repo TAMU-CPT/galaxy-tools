@@ -22,12 +22,15 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     i = 1
-
+    
     for fa_file in args.fa_files:
-        if '.fa' in fa_file.name.lower(): # Change to endswith and encompass other fasta formats 
+        #print(dir(fa_file))
+        if fa_file.readline().startswith(">"): # Determine if fasta
+          fa_file.seek(0) # Reset input buffer to start (Undo our readline)
           for record in SeqIO.parse(fa_file, 'fasta'):
               SeqIO.write(record.reverse_complement(**kwargs), sys.stdout, 'fasta')
-        elif '.txt' in fa_file.name.lower():
+        else:
+          fa_file.seek(0)
           name = "Txt_File_Input_" + str(i)
           i += 1
           tempSeq = Seq("") 
