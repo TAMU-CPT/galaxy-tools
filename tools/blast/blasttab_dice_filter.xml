@@ -28,11 +28,11 @@ $__tool_directory__/blasttab_dice_filter.py
 	<help><![CDATA[
 **What it does**
 
-Filters your tabular blast results based on a dice score thresholding process.
+Filters your tabular BLAST results based on a dice score thresholding process.
 
 **How it works**
 
-The tool processes blast results line by line, each line calculating the dice score. The equation for the dice score is as follows::
+The tool processes BLAST results line by line, each line calculating the dice score. The equation for the dice score is as follows::
 
 	2 * number of identical matches / (query sequence length + subject sequence length)
 
