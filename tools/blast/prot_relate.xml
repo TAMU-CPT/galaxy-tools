@@ -24,7 +24,7 @@ $__tool_directory__/db.json
 	<help>
 **What it does**
 
-This tool attempts to filter a set of blast results and return the top
+This tool filters a set of BLAST results and return the top
 related genomes based on number (and score) of protein-protein matches.
 </help>
 	<tests/>
