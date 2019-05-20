@@ -324,7 +324,7 @@ the genomes under study. progressiveMauve employs a different algorithmic
 approach to scoring alignments that allows alignment of segments conserved
 among subsets of taxa. The progressiveMauve algorithm has been described in
 Aaron Darling's Ph.D. Thesis, and is also the subject of a manuscript published
-in PLoS ONE. A brief overview is given here.
+in PLoS ONE (1). A brief overview is given here.
 
 Finding initial local multiple alignments
 -----------------------------------------
@@ -334,7 +334,7 @@ multiple alignments. Instead of using a single seed pattern for match
 filtration, progressiveMauve uses a combination of three seed patterns for
 improved sensitivity. The palindromic seed patterns have been described in
 Darling et al. 2006 "Procrastination leads to efficient filtration for local
-multiple alignment"
+multiple alignment".
 
 Seed matches which represent a unique subsequence shared by two or more input
 genomes are subjected to ungapped extension until the seed pattern no longer
