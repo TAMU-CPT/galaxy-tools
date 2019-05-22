@@ -46,6 +46,7 @@ def highlight_residues(amino_acid, sequence):
     count = 0
     buff = ""
     endLine = 0
+    print("Analysis for codons one SNP away from " + amino_acid + "\n")
     for i in range(0, len(dna), 3): 
         current_nts = dna[i:i + 3]
         current_aas = str(current_nts.translate())
