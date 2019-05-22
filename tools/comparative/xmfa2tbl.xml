@@ -39,9 +39,14 @@ $dice
 	<help><![CDATA[
 **What it does**
 
-This tool compares N sequences and outputs a table reflecting the total
-similarity between every sequence pair. Total similarity is based on regions of
-similarity called locally collinear blocks, or LCBs.
+This tool compares N sequences within an input XMFA file and outputs a table reflecting 
+the percent nucleotide identity between every sequence pair. Total similarity is based on 
+regions of similarity called locally collinear blocks, or LCBs. There is no penalty for gaps.
+
+**Options**
+The dice method uses the following formula to normalize considering both sequences in the pairwise comparison::
+
+	2 * number of identical matches / (query sequence length + subject sequence length)
 
 ]]></help>
 		<expand macro="citations" />
