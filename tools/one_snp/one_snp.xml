@@ -32,6 +32,6 @@ Given a DNA FASTA sequence and a one letter amino acid code, this tool will outp
 the translated sequence and denote the residues that are one single nucleotide
 polymorphism (SNP) away from the input amino acid. 
 
-To check polymorphisms to Stop codons, input Stop in the Amino Acid field.
+To check SNPs to Stop codons, input Stop in the Amino Acid field.
 ]]></help>
 </tool>
