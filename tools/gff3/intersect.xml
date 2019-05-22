@@ -32,9 +32,14 @@ $__tool_directory__/intersect.py
   <help><![CDATA[
 **What it does**
 
-Given two input files, this tool computes the intersection of those files,
-and then produces two outputs, the members of the intersection in A and in
-B.
+Given two input GFF3 files, this tool computes the intersection of those files, and then produces 
+two outputs, the members of the intersection in A and in B. 
+
+**How it works**
+For each top-level entry in the GFF3 A file, input GFF3 B is searched for features that map to an 
+embedded or overlapped position in the genome by coordinates. Those features in A with matches in 
+B are output to a new GFF3. The same occurs in the opposite direction.
+
 ]]></help>
 		<expand macro="citations" />
 </tool>
