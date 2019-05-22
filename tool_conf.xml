@@ -173,7 +173,7 @@
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_codon_opt.xml" label="fasta"/>
 	</section>
 	<section id="ee8ae399-6fae-435b-b6e1-80c4ad4a7a4a" name="CPT: Mutation Analysis Tools">
-		<tool file="cpt2/galaxy-tools/tools/one_snp_away/script.xml" />
+		<tool file="cpt2/galaxy-tools/tools/one_snp_away/one_snp.xml" />
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_disambig.xml" label="fasta" />
 	</section>
 
