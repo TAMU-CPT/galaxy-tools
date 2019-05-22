@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.one_snp_away" name="One SNP Away" version="1.2">
+  <description>Finds residues that are one SNP away from input amino acid</description>
+  <requirements>
+    <requirement type="package" version="2.7">python</requirement>
+    <requirement type="package" version="1.67">biopython</requirement>
+  </requirements>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/one_snp.py
+$sequence
+$aa_code
+> $output]]></command>
+  <inputs>
+    <param label="DNA FASTA file" name="sequence" type="data" format="fasta" />
+    <param label="amino acid one letter code" name="aa_code" type="text" value="P"/>  
+  </inputs>
+  <outputs>
+    <data format="txt" name="output"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="sequence" value="seq.fa" />
+          <param name="aa_code" value="P" />
+          <output name="output" file="output.txt" />
+      </test>
+  </tests>
+  <help><![CDATA[
+One SNP Away
+============
+
+Given a DNA FASTA sequence and a one letter amino acid code, this tool will output
+the translated sequence and denote the residues that are one single nucleotide
+polymorphism (SNP) away from the input amino acid. 
+
+To check polymorphisms to Stop codons, input Stop in the Amino Acid field.
+]]></help>
+</tool>
