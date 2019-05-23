@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.intersect_and_adjacent" name="Intersect and Adjacent" version="1.0">
+  <description>Outputs nearby top-level GFF features from two GFF3 files</description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/intersect_and_adjacent.py
+"$gff3_data_a"
+"$gff3_data_b"
+window
+--oa $oa
+--ob $ob
+]]></command>
+  <inputs>
+    <param label="GFF3 Annotations A" name="gff3_data_a" type="data" format="gff3"/>
+    <param label="GFF3 Annotations B" name="gff3_data_b" type="data" format="gff3"/>
+    <param label="Adjacency Window Size" name="window" type="integer" value = "50"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="oa" label="GFF3 Annotations from ${gff3_data_a.name} in ${gff3_data_b.name}"/>
+    <data format="gff3" name="ob" label="GFF3 Annotations from ${gff3_data_b.name} in ${gff3_data_a.name}"/>
+  </outputs>
+  <tests>
+		<test>
+			<param name="gff3_data_a" value="a.gff3" />
+			<param name="gff3_data_b" value="b.gff3" />
+                        <param name="window" value= "50" />
+			<output name="oa" file="a_hits_in_b.gff" />
+			<output name="ob" file="b_hits_in_a.gff" />
+		</test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Given two input files, this tool computes the members of A that are within 
+"Window" nucleotides of a member of B, and vice versa. It then produces 
+two gff3 outputs, one being the features of GFF A that pass this check, 
+and the other being the features of GFF B that pass. 
+]]></help>
+		<expand macro="citations" />
+</tool>
