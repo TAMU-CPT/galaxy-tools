@@ -53,12 +53,13 @@ Plot Types
 
 There are three main plot types:
 
-- **complete** does a normal N x N plot of each genome versus each other genome.
-- **1vN** The first genome encountered is compared to all of the rest
+- **complete** does an N x N plot of each genome versus every other genome
+- **1vN** The first genome in the list is compared to each other genome
 - **2up** two-genome comparison
 
-	- If you provide TWO files and are using a protein comparison matrix, then the invidual protein sequences of both files will be compared in a "complete" style plot.
-	- Otherwise the first two genomes encountered will be compared.
+	- If you provide TWO files and are using a protein comparison matrix, then the invidual 
+		protein sequences of both files will be compared in a "complete" style plot.
+	- Otherwise, the first two genomes encountered will be compared.
 
 Options
 -------
@@ -68,8 +69,8 @@ Options
 Be careful with this option. It represents the number of bases to plot in
 a single pixel. For large genomes, this can mean very large images, and
 should be lowered appropriately. For a value of 50, 50 bases would be
-considered a single pixel in the output image. For 1Mbp of genomes totaly
-(say 5 x 200 kb phages), this would result in a 20,000 pixel image.
+considered a single pixel in the output image. For a 1 Mbp genome comparison
+(say 5 x 200-kb phages), this would result in a 20,000 pixel image.
 
 </help>
 	<tests/>

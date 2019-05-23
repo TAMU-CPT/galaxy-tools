@@ -37,36 +37,42 @@ $include_seq
   <help><![CDATA[
 **What it does**
 
-Convert BlastXML results into gapped GFF3 format.
+Convert BLAST XML results into gapped GFF3 format with flexible options 
+for visualization within JBrowse. This is critical for displaying the 
+position of high-scoring pairs of the Target aligned against the Query.
 
-**Options**
 
-The trimming option captures an important feature provided in this tool that
-isn't provided in most other BlastXML visualization tools: the fact that blast
-captures complete alignment location information.
+TThe trimming option represents a unique feature among BLAST XML visualization 
+tools allowing the user to view the complete alignment location information 
+captured in the analysis.
 
-This means that when most blast visualization tools produce output which looks
-like this:
+When common BLAST visualization tools produce output like this::
 
 .. image:: $PATH_TO_IMAGES/blast2html.png
 
-This tool produces output which shows where the real subject sequence starts and ends relative to your sequence:
+This tool produces output which showing the true Subject sequence boundaries 
+(start and end position) relative to your Query sequence::
 
 .. image:: $PATH_TO_IMAGES/blast-extended.png
 
-This can be a useful feature for examining alternate start locations that are
-used by sequences found from your blast query.
+This can be useful for evaluating alternate start locations for your Query by 
+allowing comparison with the Subject sequences found in the BLAST query.
 
-The green bars on the very top row of the picture indicate start sites, as you
-can see the blast hits and the genome in the visualization share an upstream
-start site. You don't lose the information present in your blastxml data.
+In this example, the green bars on the top row of the JBrowse image indicate 
+start codons. The BLAST hits and gene in the genome share an upstream start site. 
+Here, the option to retain (not trim) the Subject sequence ends from the BLAST XML 
+data allows that conclusion to be easily made. 
 
-So, to the end of useful functionality, this options is controllable:
+**Options::**
 
--  you can trim neither end, see where the real protein alignments are.
--  you can trim both ends, like blasts HTML reports
--  you can trim just the end of the sequence, as upstream is generally more
-   interesting, and having long tails can result in poor visualizations.
+- **Neither** will not perform any trimming, therefore showing the entire protein alignment
+- **Trim start and end** where both ends are trimmed, as in the standard BLAST HTML reports
+- **Trim only end** removes the right end overhanging sequence, under the assumption that 
+upstream sequence is more interesting, and since long tails result in poor visualization
+
+By selecting **Include protein alignment…**, the actual sequence alignment will be displayed 
+in the pop-up BLAST view in Apollo/JBrowse.
+
 ]]></help>
 	<expand macro="citations" />
 </tool>

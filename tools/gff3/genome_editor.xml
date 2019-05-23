@@ -134,32 +134,35 @@ ${change.input_type.seq}
   <help><![CDATA[
 **What it does**
 
-Allows for "editing" of a genome. Selecting regions of a genome and stitching them together. E.g. for an input sequence like:
+Allows for re-arranging a FASTA genomic sequence, and remaps the associated features 
+from a gff3 file with the new coordinates. Segments of the genome are moved around 
+and stitched back together according to user-specified positions. 
 
+**Example FASTA input** (spaces added for clarity)::
 	>Miro
-	TTAGT AATGG CTAAA
+	TTA GTA ATG GCT AAA
 
-We could enter sequence component selections like:
+With user-specified *sequence component selections*:
 
 - start: 1, end: 10, strand: +
 - start: 6, end: 10, strand: +
 
-and we would see:
+the first ten bases will be listed, followed by a duplication of bases 6-10. 
+Bases 11-15 are not part of the sequence component selection parameters and 
+are therefore not in the output:: 
 
 	>Miro.v2
-	TTAGT AATGG AATGG
+	TTA GTA ATG GAA TGG
 
-(Spaces added for clarity.)
-
-Or, if we chose to reverse + complement the last section:
+Alternatively, with user-specified *sequence component selections*::
 
 - start: 1, end: 10, strand: +
 - start: 6, end: 10, strand: -
 
-And this outputs the following:
+the last section with be reverse-complemented and give the following output::
 
 	>Miro.v2
-	TTAGT AATGG CCATT
+	TTA GTA ATG GCC ATT
 
 ]]></help>
   <expand macro="citations" />

@@ -20,16 +20,11 @@ $__tool_directory__/blasttab_to_gapped_gff3.py
 	<tests>
 	</tests>
 	<help><![CDATA[
-.. class:: warningmark
-
-This tool probably has MANY BlastN specific assumptions hardcoded inside.
-Please do not use on BlastP data. Additionally this tool was written hastily
-for BICH464 at the end of the 2016. It MUST be re-built before real use.
-Contact Eric if you need to use it.
-
 **What it does**
 
-Convert BlastN TSV results into GFF3 format.
+Convert BLASTn TSV results into GFF3 format.
+
+This tool assumes BLASTn input and is therefore NOT suitable for BLASTp data.
 
 ]]></help>
 	<expand macro="citations" />

@@ -33,7 +33,7 @@ $glimmer
 	<help>
 **What it does**
 
-Converts Glimmer3 table to GFF3
+Converts an input Glimmer3 table to the GFF3 format.	
 	</help>
 		<expand macro="citations" />
 </tool>

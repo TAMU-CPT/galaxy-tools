@@ -25,7 +25,10 @@ $__tool_directory__/gff3_reformat.py
   <help><![CDATA[
 **What it does**
 
-Helps correct issues with poorly formatted input data/gff2 data.
-      ]]></help>
+Uses the biopython tools to clean up poorly formatted input GFF3 or GFF2 data. 
+This includes reformatting the GFF3 file header and properly displaying special 
+characters.      
+	
+	]]></help>
 		<expand macro="citations" />
 </tool>

@@ -34,7 +34,7 @@ $mga
 	<help>
 **What it does**
 
-Converts MetaGeneAnnotator table to GFF3
-</help>
+Converts an input MetaGeneAnnotator table to the GFF3 format.
+	</help>
 		<expand macro="citations" />
 </tool>

@@ -306,7 +306,7 @@ $trackxml &&
         </when>
     </conditional>
 
-    <param name="standalone" label="Produce Standalone Instance" type="boolean" truevalue="Complete" falsevalue="Data Directory" help="Produce a full, working JBrowse instance or just the data directory. Data dir mode is experimental and intended to be used with Apollo" checked="True"/>
+    <param name="standalone" label="Produce Standalone Instance" type="boolean" truevalue="Complete" falsevalue="Data Directory" help="Produce a full, working JBrowse instance or just the data directory. Data dir mode is intended to be used with Apollo ONLY." checked="True"/>
 
     <param label="Genetic Code" name="gencode" type="select">
       <option value="1">1. The Standard Code</option>
@@ -613,7 +613,7 @@ options need to be supplied and where. Additionally it comes with many
 javascript functions to handle colouring of features which would be
 nearly impossible to write without the assistance of this tool.
 
-The JBrowse-in-Galaxy tool is maintained by `Eric
+The JBrowse-in-Galaxy tool is maintained by `Helena
 Rasche <mailto:esr+jig@tamu.edu>`__, who you can contact if you
 encounter missing features or bugs.
 

@@ -34,7 +34,7 @@ echo '</ul></body></html>' >> $jbrowse;
                 started shipping with the ability to produce just the
                 "data" directory from a JBrowse instance, rather than a
                 complete, standalone instance. This was intended to be used
-                with the in-development Apollo integration, but may have other
+                with the Apollo integration, but may have other
                 uses as well.
               </p>
               <p>
@@ -64,9 +64,9 @@ Fetches the JBrowse directory from Apollo back into Galaxy.
 
 .. class:: warningmark
 
-If you provide an Apollo JSON file, only the first organism block will be used
-in Common Name determination, as it is improbable you wish to apply a single
-JBrowse instance to multiple organisms.
+If you provide an Apollo JSON file, only the first organism block (where more 
+than one exists) will be used in Common Name determination, so that only a 
+single JBrowse instance is applied to an organism. 
 
 @REFERENCES@
 ]]></help>
