@@ -112,7 +112,7 @@ def table_annotations(gff3In, out_errorlog):
                       else:
                         problem = i
                       errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl3.type, featLvl3.id, str(notes), j, problem))
-                      numWarningr += 1  
+                      numWarning += 1  
 
               #cdsList = []
               #exonList = []

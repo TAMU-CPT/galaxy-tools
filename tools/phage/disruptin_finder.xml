@@ -1,58 +1,44 @@
-<?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage.disruptin" name="Disruptin Finder" version="1.0">
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.phage.disruptin_finder" name="Disruptin Finder" version="1.1">
     <description>finds proteins with size and charge criteria</description>
     <macros>
-        <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/disruptin_finder.py
 $fasta_file
---thresh_charge $thresh_charge
---thresh_size $thresh_length
---outfile '$output'
-> $table_output]]></command>
+--thresh_net_charge $thresh_net_charge
+--thresh_size $thresh_size
+--thresh_charge_ratio $thresh_charge_ratio
+$selection_criteria
+
+> $output]]></command>
     <inputs>
         <param label="Fasta" name="fasta_file" type="data" format="fasta" />
-        <param label="Minimum Net Charge" name="thresh_charge" type="integer" value="4" />
-        <param label="Maximum Length" name="thresh_length" type="integer" value="80" />
+	<param label="Minimum Net Charge" name="thresh_net_charge" type="integer" value="4" />
+        <param label="Maximum Length" name="thresh_size" type="integer" value="100" />
+	<param label="Minimum Charge to Length Ratio" name="thresh_charge_ratio" type="float" value="0.25" />
+		
+	<param type="select" label="Type of selection criteria" name="selection_criteria">
+		<option value="net">Net charge</option>
+		<option value="--ratio">Ratio of charged residues to sequence length</option>
+		<option value="--both" selected="true">Both net charge and ratio</option>
+	</param>
+
     </inputs>
     <outputs>
-        <data format="tabular" name="table_output" label='Disruptin Candidate Table'/>
-        <data format="fasta" name="output" label='Disruptin Candidate Sequences'/>
+		<data format="fasta" name="output"/>
     </outputs>
-    <tests>
-        <test>
-            <param name='fasta_file' value='test-data/amino_acids_Petty.fasta' />
-            <param name='thresh_charge' value='4'/>
-            <param name='thresh_length' value='80'/>
-            <output name='output' file='test-data/disruptins.fasta' />
-            <output name='table_output' file='test-data/disruptins.tab' />
-        </test>
-    </tests>
     <help><![CDATA[
 **What it does**
-Finds:
-* Proteins with
-* net charge greater than the threshold
-* length less than the threshold
-and returns those in both a fasta and tabular format including name of the gene, the net charge,
-length, total charged residues, and the charge to size ratio for each product.
+This program finds proteins sequences based on given selection criteria: net charge, sequence length, 
+and/or number of charged residues per amino acid. Inputs include a multi fasta file of protein sequences,
+thresholds for size, charge, and charge-to-size ratio criteria.
 
-Example Output:
-Gene Name	Net Charge	Length	Number of Charged Residues	Charge to Size Ratio
-F402_gp28	7	        56	    15	                        0.268
+This tool returns the selected sequences in a fasta format.
 
-    ]]></help>
-    <citations>
-        <citation type="bibtex">
-            @unpublished{galaxyTools,
-            author = {A. Holt},
-            title = {CPT Disruptin Finder},
-            year = {2019},
-            note = {https://github.com/tamu-cpt/galaxy-tools/phage/disruptin-finder.py}
-            }
-        </citation>
-    </citations>
+        ]]></help>
+		<expand macro="citations" />
 </tool>

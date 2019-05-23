@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.phage.read_garnier" name="Read Garnier Secondary Structure Prediction" version="1.0">
+    <description>read garnier tool output</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/reading_garnier_output.py
+$tagseq_file
+
+
+>$output]]></command>
+    <inputs>
+        <param label="Tagseq" name="tagseq_file" type="data" format="tagseq" />
+    </inputs>
+    <outputs>
+		<data format="csv" name="output"/>
+    </outputs>
+    <help><![CDATA[
+**What it does**
+This program takes output from the garnier tool (as a tagseq file) and converts it into structural predictions for each 
+sequence analyzed by the garnier tool. 
+
+        ]]></help>
+		<expand macro="citations" />
+</tool>

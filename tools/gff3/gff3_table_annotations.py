@@ -81,7 +81,7 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
           Found = True          
 
           for qual in row:
-            if qual == "ID":
+            if qual == "ID" or qual == "":
               continue
 
             if qual == "Strand":
@@ -94,7 +94,7 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
               i.qualifiers["Name"][0] = row["Name"]
               nameC = True
 
-            elif qual == "Alias" and row["Alias"] != i.qualifiers["Alias"]:
+            elif qual == "Alias" and row["Alias"] != i.qualifiers["Alias"][0]:
               i.qualifiers["Alias"][0] = row["Alias"]
               aliasC = True
 

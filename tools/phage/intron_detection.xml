@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.1"?>
 <tool id="edu.tamu.cpt2.phage.intron_detection" name="Intron Detection" version="2.2">
   <description>based on nearby protein blast results</description>
   <macros>
@@ -11,15 +11,15 @@ python $__tool_directory__/intron_detection.py
 
 "$gff3_data"
 "$blast"
+--minimum $minimum
 --svg "$svg"
---overlap_threshold $threshold
 
 > $output]]></command>
   <inputs>
     <expand macro="gff3_input" />
     <param label="Blastp Results" name="blast" type="data" format="blastxml"/>
-    <param label="Overlap Threshold" name="threshold" type="integer" min="1" max="100" value="10"
-        help="Maximum permissible overlap for blast results. I.e. two features, blasted against a protein, with greater overlap than this value will be removed."/>
+    <param label="Separation Minimum" name="minimum" type="integer" value="0"
+        help="Minimum distance a CDS pair must be separated by to detect an intron. Set to a negative number to instead allow CDS to overlap by up to that many bases."/>
   </inputs>
   <outputs>
     <data format="gff3" name="output" label="Putative introns"/>
