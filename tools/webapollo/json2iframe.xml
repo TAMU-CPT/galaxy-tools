@@ -21,8 +21,8 @@ $json_file
   <help><![CDATA[
 **What it does**
 
-Given a json file that's output by the Galaxy<->Apollo bridge, this
-generates a nice little IFrame that you can use to access Apollo
+Given a json file output by the Galaxy<->Apollo bridge, this tool
+generates an IFrame used to access Apollo directly.
 
 @REFERENCES@
       ]]></help>

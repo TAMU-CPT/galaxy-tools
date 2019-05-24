@@ -57,7 +57,7 @@ $__tool_directory__/fasta_translate.py
 	<help><![CDATA[
 **What it does**
 
-Translate DNA sequences to protein sequences
+Translate DNA sequences from an input FASTA or multi-FASTA file to protein or RNA sequences, as selected. 
 ]]></help>
 		<expand macro="citations" />
 </tool>

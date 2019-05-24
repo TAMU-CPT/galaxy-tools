@@ -38,13 +38,20 @@ $__user_email__
   <help><![CDATA[
 **What it does**
 
-Adds an organism to the Apollo database. The tool takes the output of a
-JBrowse run as that contains all of the necessary information for which
-tracks are appropriate for a given analysis.
+Using a Jbrowse HTML Output, the tool will::
+- **Update** an existing Apollo organism if ‘Select’ is toggled in the 
+  Organism Common Name Source field and an Organism is chosen from the 
+  resultant drop-down menu.
+- **Create** an Apollo organism if ‘Direct Entry’ is toggled in the 
+  Organism Common Name Source field. A unique name should be entered 
+  in the Organism field.
+
+Appropriate evidence tracks are generated according to the Jbrowse input.
 
 **WARNINGS**
 
-- Do not use names which conflict with other users.
+- Do not use organism names which conflict with other users/organisms 
+  already existing in the database.
 - If you provide an Apollo JSON file, only the first organism block will
   be used in Common Name determination, as it is improbable you wish to
   apply a single JBrowse instance to multiple organisms.

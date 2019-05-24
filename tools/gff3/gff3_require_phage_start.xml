@@ -37,9 +37,9 @@ $gff3_data
 
 Removes any CDS from the GFF3 whose start codon is **not** ATG, TTG, or GTG.
 
-..class:: warningmark
+.. class:: warningmark
 
-This tool will remove ANY non-CDS type feature.
+The tool only retains *gene* and *CDS* features that pass this filter. 
       ]]></help>
 		<expand macro="citations" />
 </tool>

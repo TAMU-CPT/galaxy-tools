@@ -28,8 +28,9 @@ python $__tool_directory__/intron_detection.py
   <help><![CDATA[
 **What it does**
 
-This tool attempts to identify putative intron regions by identifying nearby
-proteins which blast to the same results.
+This tool parses BLAST XML results and returns potential intron regions by 
+identifying query proteins (within 10 genes of each other in the genome) with 
+BLAST hits to the same target protein. The list of hits is returned as a gff3.
 
       ]]></help>
 		<expand macro="citations" />
