@@ -1,0 +1,52 @@
+<tool id="edu.tamu.cpt.gff3.lipoP_to_gff3" name= "LipoP to GFF3" version="0.1">
+  <description>Adds LipoP results to GFF3</description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/lipoP_to_gff3.py
+
+"$lipoIn"
+"$gff3In"
+
+> $stdout
+
+]]></command>
+  <inputs>
+    <param label="LipoP Output" name="lipoIn" type="data" format="txt"/>
+    <param label="GFF3 for Rebasing" name="gff3In" type="data" format="gff3"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="stdout"/>
+  </outputs>
+  <tests>
+      
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Adds the cleavage sites from a LipoP run to a GFF3 file's feature list. Must 
+use the .txt output of LipoP (ensure .html is turned off). In order for the 
+cleavage sites to be added, the name of the sequences in the fasta file given 
+to LipoP must have an equivalently ID'd gene feature from the given GFF3. Ie, 
+if the fasta file has a sequence 
+
+>K7
+TAGGACTTTTTTGTCTGTTCTATTCGTTGTCTTGACCTGTTTTGACGTTACCTGTTTACT
+ATAATTTATTTATATTACTACTACAATATACTTAAACATTAAATTACTATTGTATACAAC
+
+then the GFF3 file must have a gene like
+
+OrgID	CPT	gene	34627	36038	.	+	.
+owner=amandalanier@tamu.edu;date_last_modified=2017-03-09;Name=Terminase;ID=K7;
+
+Note that this name is different from the first field, the organism ID. Most of
+the test fasta files are labeled with the organism however. In order for this 
+tool to be useful, we may need another tool that first breaks up the GFF3/FASTA 
+into a multifasta file based on gene features, run that file through LipoP, then 
+run this tool with that output and the original GFF3.
+      ]]></help>
+		<expand macro="citations" />
+</tool>

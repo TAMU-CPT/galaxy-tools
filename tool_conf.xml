@@ -110,6 +110,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_introns.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_sequence.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_sequence2.xml" label="gff3" />
+                <tool file="cpt2/galaxy-tools/tools/gff3/lipoP_to_gff3.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_split_into_frames.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_splitgff.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/remove_annotations.xml" label="gff3" />
