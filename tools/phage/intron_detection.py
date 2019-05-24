@@ -22,11 +22,14 @@ def parse_xml(blastxml):
     discarded_records = 0
     for iter_num, blast_record in enumerate(NCBIXML.parse(blastxml), 1):
         blast_gene = []
+        align_num = 0
         for alignment in blast_record.alignments:
+            align_num += 1
             hit_gis = alignment.hit_id + alignment.hit_def
-            gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9}', hit_gis)]
+            gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9,10}', hit_gis)]
             
             for hsp in alignment.hsps:
+                #print(dir(hsp))
                 x = float(hsp.identities) / (hsp.query_end - hsp.query_start)
                 if x < .5:
                     discarded_records += 1
@@ -45,6 +48,7 @@ def parse_xml(blastxml):
                     'query_range': (hsp.query_start, hsp.query_end),
                     'name': nice_name,
                     'identity': hsp.identities,
+                    'hit_num': align_num,
                     'iter_num': iter_num,
                     'match_id': alignment.title.partition(">")[0]
                 })
@@ -295,6 +299,7 @@ class IntronFinder(object):
         for cluster_idx, cluster_id in enumerate(clusters):
             # Get the list of genes in this cluster
             associated_genes = set([x['name'] for x in clusters[cluster_id]])
+            # print(associated_genes)
             # Get the gene locations
             assoc_gene_info = {x: self.gff_info[x]['loc'] for x in associated_genes}
             # Now we construct a gene from the children as a "standard gene model" gene.
@@ -357,6 +362,24 @@ class IntronFinder(object):
             rec.features.append(gene)
         return rec
 
+    def output_xml(self, clusters):
+        threeLevel = {}
+        #print((clusters.viewkeys()))
+        print(type(enumerate(clusters)))
+        print(type(clusters))
+        for cluster_idx, cluster_id in enumerate(clusters):
+            #print(type(cluster_id))
+            #print(type(cluster_idx)) 
+            #print(type(clusters[cluster_id][0]['hit_num']))
+            if not (clusters[cluster_id][0]['iter_num'] in threeLevel.keys):
+                threeLevel[clusters[cluster_id][0]['iter_num']] = {}
+        #for cluster_idx, cluster_id in enumerate(clusters):
+        #    print(type(clusters[cluster_id]))
+        #    b = {clusters[cluster_id][i]: clusters[cluster_id][i+1] for i in range(0, len(clusters[cluster_id]), 2)}
+        #    print(type(b))#['name']))
+        #for hspList in clusters:
+        #for x, idx in (enumerate(clusters)):#for hsp in hspList:
+        #    print("In X")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Intron detection')
@@ -372,11 +395,15 @@ if __name__ == '__main__':
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
     ifinder.clusters = ifinder.check_seq_overlap(minimum=args.minimum)
+    #ifinder.output_xml(ifinder.clusters)
+    #for x, idx in (enumerate(ifinder.clusters)):
+    #print(ifinder.blast)
 
     condensed_report = ifinder.cluster_report()
     ifinder.draw_genes(args.svg)
     rec = ifinder.output_gff3(ifinder.clusters)
     GFF.write([rec], sys.stdout)
     
+    
 
-    # import pprint; pprint.pprint(ifinder.clusters)
+    #import pprint; pprint.pprint(ifinder.clusters)
