@@ -18,7 +18,7 @@ $positional_2
     <param label="Genome" name="positional_2" type="data" format="fasta"/>
 
     <param label="Minimum distance in codons to start of lipobox" name="lipobox_mindist" type="integer" value="10"/>
-    <param label="Maximum distance in codons to start of lipobox" name="lipobox_maxdist" type="integer" value="60"/>
+    <param label="Maximum distance in codons to start of lipobox" name="lipobox_maxdist" type="integer" value="40"/>
   </inputs>
   <outputs>
       <data format="gff3" name="default" label="Lipoboxes from ${on_string}"/>

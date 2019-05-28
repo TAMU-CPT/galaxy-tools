@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
-def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdist=60):
+def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdist=40):
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta_genome, "fasta"))
 
     CASES = [
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     parser.add_argument('--lipobox_mindist', type=int,
                         help='Minimum distance in codons to start of lipobox', default=10)
     parser.add_argument('--lipobox_maxdist', type=int,
-                        help='Maximum distance in codons to start of lipobox', default=33)
+                        help='Maximum distance in codons to start of lipobox', default=40)
 
     args = parser.parse_args()
 
