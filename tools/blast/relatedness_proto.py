@@ -193,4 +193,4 @@ if __name__ == '__main__':
         if idx > args.hits - 1:
             break
 
-        sys.stdout.write('%s\t%s\t%05.3f\t%d\t%5.25f\t%5.25f\t%5.5f\t%5.5f\n' % (pid, name, score, counts[(name, pid)], lowEs[(name, pid)], highEs[(name, pid)], lowBs[(name, pid)], highBs[(name, pid)]))
+        sys.stdout.write('%s\t%s\t%05.3f\t%d\t%4.25E\t%4.25E\t%5.2f\t%5.2f\n' % (pid, name, score, counts[(name, pid)], lowEs[(name, pid)], highEs[(name, pid)], lowBs[(name, pid)], highBs[(name, pid)]))
