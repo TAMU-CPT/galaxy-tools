@@ -104,7 +104,7 @@ def filter_phage(blast, phageNameLookup):
                 data[2],
                 data[3],
                 phageNameLookup[data[3]],
-                data[3]
+                data[4]
             ]
 
 
