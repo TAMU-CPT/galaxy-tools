@@ -148,6 +148,7 @@
 		<tool file="cpt2/galaxy-tools/tools/blast/nuc_relate.xml" label="new"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/phg_relate.xml" label="new"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/prot_relate.xml" label="new"/>
+                <tool file="cpt2/galaxy-tools/tools/blast/prototype_relate.xml" label="new"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/top_hits_table.xml" label="new"/>
 	</section>
 	<section id="ac0a250f-94d2-4bdc-b3bc-8943fab4aa66" name="CPT: Blast Visualization">
