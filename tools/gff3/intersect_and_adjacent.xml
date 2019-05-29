@@ -10,7 +10,7 @@
 $__tool_directory__/intersect_and_adjacent.py
 "$gff3_data_a"
 "$gff3_data_b"
-window
+$window
 --oa $oa
 --ob $ob
 ]]></command>
