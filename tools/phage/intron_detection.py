@@ -86,11 +86,16 @@ def parse_gff(gff3):
             subfeatures=False
         ):
             if feat.type == 'CDS':
+                if 'Name' in feat.qualifiers.keys():
+                    CDSname = feat.qualifiers['Name']
+                else:
+                    CDSname = feat.qualifiers['ID']
                 gff_info[feat.id] = {
                     'strand': feat.strand,
                     'start': feat.location.start,
                     'loc': feat.location,
                     'feat': feat,
+                    'name': CDSname,
                 }
 
    
@@ -352,6 +357,7 @@ class IntronFinder(object):
                 cds.qualifiers = {
                     'ID': ['gp_%s.CDS.%s' % (cluster_idx, idx)],
                     'score': score,
+                    'Name': self.gff_info[gene_name]['name'],
                 }
                 cdss.append(cds)
 
