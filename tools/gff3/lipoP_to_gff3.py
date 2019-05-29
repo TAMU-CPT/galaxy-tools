@@ -6,6 +6,7 @@ from BCBio import GFF
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
+from gff3 import feature_lambda, feature_test_type, get_id
 
 def lipoP_gff(lipoIn, gff3In):
 
@@ -25,17 +26,21 @@ def lipoP_gff(lipoIn, gff3In):
        if not (orgID in orgIDs.keys()): 
            orgIDs[orgID] = []
 
-       if rowElem[2] == "CleavII": 
+       if rowElem[2] == "CleavI": 
            orgIDs[orgID].append(int(rowElem[3]))#, int(rowElem[4])))
 
     # Rebase
     for gff in GFF.parse(gff3In):
-        for xRec in gff.features: 
+        keepSeq = []
+        for xRec in gff.features:
+            cdss = list(feature_lambda(xRec.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))
             findCleave = ""
-            for cleID in orgIDs.keys():
-                if cleID == xRec.id:
-                    findCleave = cleID
+            cdsOff = 0
+            for cds in cdss:
+                if cds.id in orgIDs:
+                    findCleave = cds.id
                     break
+                cdsOff += 1
             if findCleave == "":
                 continue
 
@@ -44,8 +49,11 @@ def lipoP_gff(lipoIn, gff3In):
                 tempQuals = xRec.qualifiers.copy()
                 i += 1
                 tempQuals['ID'] = xRec.id + "_cleavage_" + str(i)
-                xRec.sub_features.append(SeqFeature(FeatureLocation(xRec.location.start + cleaveBase, xRec.location.start + cleaveBase + 1), type="cleavage_site",  strand = xRec.location.strand, qualifiers = tempQuals))
-            
+                
+                xRec.sub_features.append(SeqFeature(FeatureLocation(cdss[cdsOff].location.start + cleaveBase, cdss[cdsOff].location.start + cleaveBase + 2), type="cleavage_site",  strand = xRec.location.strand, qualifiers = tempQuals))
+            keepSeq.append(xRec)
+
+        gff.features = keepSeq    
         GFF.write([gff], sys.stdout)
 
 if __name__ == '__main__':
