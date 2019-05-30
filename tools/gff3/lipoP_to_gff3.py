@@ -26,7 +26,7 @@ def lipoP_gff(lipoIn, gff3In):
        if not (orgID in orgIDs.keys()): 
            orgIDs[orgID] = []
 
-       if rowElem[2] == "CleavI": 
+       if rowElem[2] == "CleavII": 
            orgIDs[orgID].append(int(rowElem[3]))#, int(rowElem[4])))
 
     # Rebase
