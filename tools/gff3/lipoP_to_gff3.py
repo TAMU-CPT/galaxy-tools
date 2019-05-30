@@ -50,7 +50,7 @@ def lipoP_gff(lipoIn, gff3In):
                 i += 1
                 tempQuals['ID'] = xRec.id + "_cleavage_" + str(i)
                 
-                xRec.sub_features.append(SeqFeature(FeatureLocation(cdss[cdsOff].location.start + cleaveBase, cdss[cdsOff].location.start + cleaveBase + 2), type="cleavage_site",  strand = xRec.location.strand, qualifiers = tempQuals))
+                xRec.sub_features.append(SeqFeature(FeatureLocation(cdss[cdsOff].location.start + (cleaveBase * 3), cdss[cdsOff].location.start + (cleaveBase * 3) + 2), type="cleavage_site",  strand = xRec.location.strand, qualifiers = tempQuals))
             keepSeq.append(xRec)
 
         gff.features = keepSeq    
