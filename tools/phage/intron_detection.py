@@ -179,9 +179,9 @@ class IntronFinder(object):
             for gene in self.clusters[key]:
                 for hits in hits_lists:
                     for hit in hits:
-                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10:# and abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) >= minDist: 
-                            hits.append(gene)
-                            gene_added = True
+                        if (abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10) or ((len(self.gff_info) - (abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']))) <= 10): # Checks that they are within 10 array indices
+                            hits.append(gene)  # of each other, including wrap around at the
+                            gene_added = True  # end of the array.
                             break
                 if not gene_added:
                     hits_lists.append([gene])
@@ -189,6 +189,9 @@ class IntronFinder(object):
             for i, hits in enumerate(hits_lists):
                 if len(hits) >= 2:
                     filtered_clusters[key + '_' + str(i)] = hits
+        #for i in filtered_clusters:
+         #   print(i)
+          #  print(filtered_clusters[i])
         log.debug("check_gene_gap %s -> %s", len(self.clusters), len(filtered_clusters))
         return remove_duplicates(filtered_clusters)  # call remove_duplicates somewhere else?
 
@@ -391,7 +394,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Intron detection')
     parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
     parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
-    parser.add_argument('--minimum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 0)
+    parser.add_argument('--minimum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 0, type = int)
     parser.add_argument('--svg', help='Path to output svg file to', default='clusters.svg')
     args = parser.parse_args()
 
