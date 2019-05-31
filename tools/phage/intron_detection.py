@@ -100,11 +100,14 @@ def parse_gff(gff3):
 
    
     gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
+    endBase = 0
     for i, feat_id in enumerate(gff_info):
         gff_info[feat_id].update({'index': i})
+        if gff_info[feat_id]['loc'].end > endBase:
+            endBase = gff_info[feat_id]['loc'].end 
     
 
-    return dict(gff_info), _rec
+    return dict(gff_info), _rec, endBase
 
 
 def all_same(genes_list):
@@ -131,8 +134,10 @@ class IntronFinder(object):
         self.blast = []
         self.clusters = {}
         self.gff_info = {}
+        self.length = 0
 
-        (self.gff_info, self.rec) = parse_gff(gff3)
+        (self.gff_info, self.rec, self.length) = parse_gff(gff3)
+        print(self.length)
         self.blast = parse_xml(blastp)
 
     def create_clusters(self):
@@ -217,6 +222,9 @@ class IntronFinder(object):
                     add_cluster = False
                     break
                 elif (pair[0][0] > pair[1][1] and len(set(range(pair[1][1], pair[0][0]))) < minimum) or (pair[1][0] > pair[0][1] and len(set(range(pair[0][1], pair[1][0]))) < minimum):
+                    add_cluster = False
+                    break
+                elif (self.length - abs(pair[0][1] - pair[1][0]) < minimum) or (self.length - abs(pair[1][1] - pair[0][0]) < minimum):
                     add_cluster = False
                     break
             if add_cluster:
