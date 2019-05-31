@@ -23,10 +23,10 @@ def lipoP_gff(lipoIn, gff3In):
        rowElem = row.split('\t')
 
        orgID = rowElem[0]
-       if not (orgID in orgIDs.keys()): 
-           orgIDs[orgID] = []
 
-       if rowElem[2] == "CleavII": 
+       if rowElem[2] == "CleavII":
+           if not (orgID in orgIDs.keys()): 
+               orgIDs[orgID] = [] 
            orgIDs[orgID].append(int(rowElem[3]))#, int(rowElem[4])))
 
     # Rebase
@@ -43,6 +43,8 @@ def lipoP_gff(lipoIn, gff3In):
                 cdsOff += 1
             if findCleave == "":
                 continue
+
+            xRec.sub_features = []
 
             i = 0
             for cleaveBase in orgIDs[findCleave]:
