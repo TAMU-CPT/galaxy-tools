@@ -100,11 +100,14 @@ def parse_gff(gff3):
 
    
     gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
+    endBase = 0
     for i, feat_id in enumerate(gff_info):
         gff_info[feat_id].update({'index': i})
+        if gff_info[feat_id]['loc'].end > endBase:
+            endBase = gff_info[feat_id]['loc'].end 
     
 
-    return dict(gff_info), _rec
+    return dict(gff_info), _rec, endBase
 
 
 def all_same(genes_list):
@@ -131,8 +134,10 @@ class IntronFinder(object):
         self.blast = []
         self.clusters = {}
         self.gff_info = {}
+        self.length = 0
 
-        (self.gff_info, self.rec) = parse_gff(gff3)
+        (self.gff_info, self.rec, self.length) = parse_gff(gff3)
+        print(self.length)
         self.blast = parse_xml(blastp)
 
     def create_clusters(self):
@@ -179,9 +184,9 @@ class IntronFinder(object):
             for gene in self.clusters[key]:
                 for hits in hits_lists:
                     for hit in hits:
-                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10:# and abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) >= minDist: 
-                            hits.append(gene)
-                            gene_added = True
+                        if (abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10) or ((len(self.gff_info) - (abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']))) <= 10): # Checks that they are within 10 array indices
+                            hits.append(gene)  # of each other, including wrap around at the
+                            gene_added = True  # end of the array.
                             break
                 if not gene_added:
                     hits_lists.append([gene])
@@ -189,6 +194,9 @@ class IntronFinder(object):
             for i, hits in enumerate(hits_lists):
                 if len(hits) >= 2:
                     filtered_clusters[key + '_' + str(i)] = hits
+        #for i in filtered_clusters:
+         #   print(i)
+          #  print(filtered_clusters[i])
         log.debug("check_gene_gap %s -> %s", len(self.clusters), len(filtered_clusters))
         return remove_duplicates(filtered_clusters)  # call remove_duplicates somewhere else?
 
@@ -214,6 +222,9 @@ class IntronFinder(object):
                     add_cluster = False
                     break
                 elif (pair[0][0] > pair[1][1] and len(set(range(pair[1][1], pair[0][0]))) < minimum) or (pair[1][0] > pair[0][1] and len(set(range(pair[0][1], pair[1][0]))) < minimum):
+                    add_cluster = False
+                    break
+                elif (self.length - abs(pair[0][1] - pair[1][0]) < minimum) or (self.length - abs(pair[1][1] - pair[0][0]) < minimum):
                     add_cluster = False
                     break
             if add_cluster:
@@ -391,7 +402,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Intron detection')
     parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
     parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
-    parser.add_argument('--minimum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 0)
+    parser.add_argument('--minimum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 0, type = int)
     parser.add_argument('--svg', help='Path to output svg file to', default='clusters.svg')
     args = parser.parse_args()
 
