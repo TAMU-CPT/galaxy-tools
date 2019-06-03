@@ -1,8 +1,8 @@
-<tool id="edu.tamu.cpt.gff3.lipoP_to_gff3" name= "LipoP to GFF3" version="0.1">
+<tool id="edu.tamu.cpt.gff3.lipoP_to_gff3" name= "LipoP to GFF3" version="1.0">
   <description>Adds LipoP results to GFF3</description>
   <macros>
     <import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+    <import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
@@ -10,13 +10,14 @@ python $__tool_directory__/lipoP_to_gff3.py
 
 "$lipoIn"
 "$gff3In"
-
+--jBrowseOut "$jBrowseOut"
 > $stdout
 
 ]]></command>
   <inputs>
     <param label="LipoP Output" name="lipoIn" type="data" format="txt"/>
     <param label="GFF3 for Rebasing" name="gff3In" type="data" format="gff3"/>
+    <param label="Output to jBrowse" name="jBrowseOut" type="boolean" truevalue="True" falsevalue="" help="Strip non-cleavage features from GFF3 (for viewing in Apollo)"/>
   </inputs>
   <outputs>
     <data format="gff3" name="stdout"/>
@@ -27,26 +28,19 @@ python $__tool_directory__/lipoP_to_gff3.py
   <help><![CDATA[
 **What it does**
 
-Adds the cleavage sites from a LipoP run to a GFF3 file's feature list. Must 
-use the .txt output of LipoP (ensure .html is turned off). In order for the 
-cleavage sites to be added, the name of the sequences in the fasta file given 
-to LipoP must have an equivalently ID'd gene feature from the given GFF3. Ie, 
-if the fasta file has a sequence 
+Adds the cleavage sites from a LipoP run to a GFF3 file's feature list. Must use
+the .txt output of LipoP (ensure .html is turned off). The most common way this
+tool will be utilized is to take a GFF3, use the GFF3 Feature Sequence Export
+tool (https://cpt.tamu.edu/galaxy/root?tool_id=edu.tamu.cpt.gff3.export_seq) to 
+get a multi-FASTA of the CDSs, run that multi-FASTA through LipoP, and then
+recombine the LipoP results with the original GFF3 file with this tool.
 
->K7
-TAGGACTTTTTTGTCTGTTCTATTCGTTGTCTTGACCTGTTTTGACGTTACCTGTTTACT
-ATAATTTATTTATATTACTACTACAATATACTTAAACATTAAATTACTATTGTATACAAC
+Currently, only CleavII results will be added with this tool.
 
-then the GFF3 file must have a gene like
-
-OrgID	CPT	gene	34627	36038	.	+	.
-owner=amandalanier@tamu.edu;date_last_modified=2017-03-09;Name=Terminase;ID=K7;
-
-Note that this name is different from the first field, the organism ID. Most of
-the test fasta files are labeled with the organism however. In order for this 
-tool to be useful, we may need another tool that first breaks up the GFF3/FASTA 
-into a multifasta file based on gene features, run that file through LipoP, then 
-run this tool with that output and the original GFF3.
+"Output to jBrowse" will remove all gene features that do not have a CleavII 
+result from the LipoP, and remove all sub features of the gene except for the 
+cleavage sites. This is useful for viewing in Apollo, but should most likely 
+not be used if you plan to run this output through more tools.
       ]]></help>
 		<expand macro="citations" />
 </tool>

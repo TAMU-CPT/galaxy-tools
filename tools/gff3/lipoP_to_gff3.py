@@ -8,7 +8,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda, feature_test_type, get_id
 
-def lipoP_gff(lipoIn, gff3In):
+def lipoP_gff(lipoIn, gff3In, jBrowseOut):
 
     orgIDs = {}
     orgID = ""
@@ -29,6 +29,8 @@ def lipoP_gff(lipoIn, gff3In):
                orgIDs[orgID] = [] 
            orgIDs[orgID].append(int(rowElem[3]))#, int(rowElem[4])))
 
+    print(jBrowseOut)
+
     # Rebase
     for gff in GFF.parse(gff3In):
         keepSeq = []
@@ -42,9 +44,12 @@ def lipoP_gff(lipoIn, gff3In):
                     break
                 cdsOff += 1
             if findCleave == "":
+                if not jBrowseOut:
+                    keepSeq.append(xRec)
                 continue
 
-            xRec.sub_features = []
+            if jBrowseOut:
+                xRec.sub_features = []
 
             i = 0
             for cleaveBase in orgIDs[findCleave]:
@@ -62,5 +67,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='add parent gene features to CDSs')
     parser.add_argument('lipoIn', type=argparse.FileType("r"), help='LipoP tool\'s .txt output')
     parser.add_argument('gff3In', type=argparse.FileType("r"), help='GFF3 to rebase LipoP results')
+    parser.add_argument('--jBrowseOut', type=bool, default = False, help='Prepare Output for jBrowse instance')
     args = parser.parse_args()
     lipoP_gff(**vars(args))
