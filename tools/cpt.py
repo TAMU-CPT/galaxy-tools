@@ -108,7 +108,7 @@ class OrfFinder(object):
                 else:
                     # Use when missing stop codon,
                     t = "M" + translate(n[3:], self.table, to_stop=True)
-                yield start, n, t
+                yield start, n, t  # Edited by CPT to be a generator
 
     def break_up_frame(self, s):
         """Returns offset, nuc, protein."""
