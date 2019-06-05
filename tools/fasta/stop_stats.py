@@ -28,7 +28,7 @@ def extract_stops(fasta):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Summarise stop codon usage', epilog="")
-    parser.add_argument('fasta', type=argparse.FileType("r"), help='CDS Sequence (DNA + stop (obviously))')
+    parser.add_argument('fasta', type=argparse.FileType("r"), help='CDS Sequence (DNA + stop)')
     args = parser.parse_args()
     print('# Name\tCodon\tCount')
     for (name, key, value) in extract_stops(**vars(args)):
