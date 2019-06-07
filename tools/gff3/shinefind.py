@@ -15,6 +15,7 @@ log = logging.getLogger()
 
 class NaiveSDCaller(object):
 
+    # TODO May make switch for different sequence sets
     SD_SEQUENCES = (
         'AGGAGGT',
         'GGAGGT',
@@ -95,8 +96,8 @@ class NaiveSDCaller(object):
 
     def testFeatureUpstream(self, feature, record, sd_min=5, sd_max=15):
         # Strand information necessary to getting correct upstream sequence
-        # TODO: library?
         strand = feature.location.strand
+       
         # n_bases_upstream
         if strand > 0:
             start = feature.location.start - sd_max
@@ -106,7 +107,7 @@ class NaiveSDCaller(object):
             end = feature.location.end + sd_max
 
         (start, end) = ensure_location_in_bounds(start=start, end=end,
-                                                 parent_length=record.__len__)
+                                                 parent_length=len(record))
 
         # Create our temp feature used to obtain correct portion of
         # genome
@@ -119,7 +120,9 @@ class NaiveSDCaller(object):
         sds, start, end, seq = self.testFeatureUpstream(feature, record, sd_min=sd_min, sd_max=sd_max)
         return len(sds) > 0
 
-
+# Cycle through subfeatures, set feature's location to be equal 
+# to the smallest start and largest end.
+# Remove pending bugfix for feature display in Apollo
 def fminmax(feature):
     fmin = None
     fmax = None
@@ -135,12 +138,12 @@ def fminmax(feature):
 
 
 def fix_gene_boundaries(feature):
-    # There is a frustrating bug in apollo whereby we have created gene
-    # features which are LARGER than expected, but we cannot see this.
-    # We only see a perfect sized gene + great SD together.
+    # There is a bug in Apollo whereby we have created gene
+    # features which are larger than expected, but we cannot see this.
+    # We only see a perfect sized gene + SD together.
     #
-    # So, we have this awful hack to clamp the location of the gene
-    # feature to the contained mRNAs. This is good enough for now.
+    # So, we clamp the location of the gene feature to the
+    # contained mRNAs. Will remove pending Apollo upgrade.
     fmin, fmax = fminmax(feature)
     if feature.location.strand > 0:
         feature.location = FeatureLocation(fmin, fmax, strand=1)
@@ -159,7 +162,7 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
     # Parse GFF3 records
     for record in GFF.parse(gff3, base_dict=seq_dict):
-        # Shinefind's "gff3_output".
+        # Shinefind's gff3_output.
         gff3_output_record = SeqRecord(record.seq, record.id)
         # Filter out just coding sequences
         ignored_features = []
@@ -174,14 +177,14 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
         for gene in feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True):
 
             # Get the CDS from this gene.
-            feature = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=True))
+            feature = sorted(list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=True)), key=lambda x: x.location.start)
             # If no CDSs are in this gene feature, then quit
             if len(feature) == 0:
                 # We've already caught these above in our ignored_features
                 # list, so we skip out on the rest of this for loop
                 continue
             else:
-                # Otherwise pull the first (bad?) We don't expect >1 CDS/gene
+                # Otherwise pull the first on the strand. 
                 feature = feature[0]
 
             # Three different ways RBSs can be stored that we expect.
@@ -194,7 +197,7 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
                                                  {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
             rbss = rbs_rbs + rbs_sds + rbs_regulatory
 
-            # If someone has already annotated an RBS, we quit
+            # If someone has already annotated an RBS, we move to the next gene
             if len(rbss) > 0:
                 log.debug("Has %s RBSs", len(rbss))
                 ignored_features.append(gene)
@@ -237,13 +240,11 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
                 sd_feature = fix_gene_boundaries(sd_feature)
                 gff3_output_record.features.append(sd_feature)
 
-                if top_only:
+                print((sds[-1]))
+
+                if top_only or sd == (sds[-1]):
                     break
             else:
-                if len(sds) != 0:
-                    log.debug('Should not reach here if %s', len(sds) != 0)
-                    # Somehow this is triggerring, and I don't feel like figuring out why. Someone else's problem.
-                    continue
                 table_output.write('\t'.join(map(str, [
                     feature.id,
                     feature_id,
