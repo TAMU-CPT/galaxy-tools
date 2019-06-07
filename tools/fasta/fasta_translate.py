@@ -17,6 +17,12 @@ def translate(fasta_file, target='protein', table=11, strip_stops=False):
             if mod != 0:
                 record.seq = record.seq[0:-mod]
 
+            # Read http://biopython.org/DIST/docs/api/Bio.Seq.Seq-class.html#transcribe
+            # for valid CDS conditions.
+
+            # Will first try to translate sequence as a CDS, 
+            # then just as a sequence if this fails.
+
             try:
                 tmpseq = record.seq.translate(table=table, cds=True)
             except CodonTable.TranslationError as cte:

@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
 
-def drop_id(fasta_file=None, id="drop_idd"):
+def drop_id(fasta_file=None):
     for rec in SeqIO.parse(fasta_file, "fasta"):
         rec.description = ''
         yield rec
