@@ -20,17 +20,14 @@ def require_shinefind(gff3, fasta):
         genes = list(feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True))
         good_genes = []
         for gene in genes:
-            cdss = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))
+            cdss = sorted(list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False)), key=lambda x: x.location.start)
             if len(cdss) == 0:
                 continue
 
-            # Someday this will bite me in the arse.
             cds = cdss[0]
 
             sds, start, end, seq = sd_finder.testFeatureUpstream(cds, record, sd_min=5, sd_max=15)
             if len(sds) >= 1:
-                # TODO
-                # Double plus yuck
                 sd_features = sd_finder.to_features(sds, gene.location.strand, start, end, feature_id=gene.id)
                 gene.sub_features.append(
                     sd_features[0]
@@ -38,7 +35,6 @@ def require_shinefind(gff3, fasta):
 
                 good_genes.append(gene)
 
-        # Yuck!
         record.features = good_genes
         yield record
 
