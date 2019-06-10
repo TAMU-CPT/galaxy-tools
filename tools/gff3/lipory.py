@@ -16,7 +16,7 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
 
     CASES = [
         re.compile('^.{%s,%s}[ACGSILMFTV][^REKD][GASNL]C' % (lipobox_mindist, lipobox_maxdist)),
-        # re.compile('^.{%s,%s}AWAC' % (lipobox_mindist, lipobox_maxdist)),
+        
         # Make sure to not have multiple cases that share matches, will introduce duplicate features into gff3 file
     ]
 
@@ -29,8 +29,6 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
             if len(cdss) == 0:
                 continue
 
-            # Someday this will bite me in the arse.
-            cds = cdss[0]
 
             try:
                 tmpseq = str(cds.extract(record.seq).translate(table=11, cds=True)).replace("*", "")

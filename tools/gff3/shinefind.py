@@ -240,7 +240,6 @@ def shinefind(fasta, gff3, gff3_output=None, table_output=None, lookahead_min=5,
                 sd_feature = fix_gene_boundaries(sd_feature)
                 gff3_output_record.features.append(sd_feature)
 
-                print((sds[-1]))
 
                 if top_only or sd == (sds[-1]):
                     break
