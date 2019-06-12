@@ -6,7 +6,7 @@ import logging
 from BCBio import GFF
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
-from Bio.SeqFeature import SeqFeature, FeatureLocation, CompoundLocation
+from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.Alphabet import IUPAC
 from bigwig import bigwig_add_header, bigwig_store
 logging.basicConfig(level=logging.INFO)
@@ -53,7 +53,7 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
             # %pred NB(0): i 1 8, M 9 28, o 29 44
             regions = pred.split(', ')
 
-            tempFeat = []
+            tempSub = []
 
             # Ignore regions that are boring
             if len(regions) == 1:
@@ -99,9 +99,9 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                     strand=1,
                     qualifiers=qualifiers,
                 )
-                tempFeat.append(sub_feat)
+                tempSub.append(sub_feat)
 
-            tempTop = SeqFeature(
+            feature = SeqFeature(
                 FeatureLocation(1, length),
                 type="Chain",
                 strand=1,
@@ -111,9 +111,8 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                     'Note': 'Transmembrane protein - N %s C %s' % (n_dir, c_dir),
                     'Target': header,
                 },
+                sub_features = tempSub
             )
-            tempFeat.append(tempTop)
-            feature = CompoundLocation([tempFeat])
             count += 1
             
 
