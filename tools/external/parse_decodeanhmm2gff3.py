@@ -121,7 +121,7 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
             
 
             record.features.append(feature)
-            record.features.extent(tempSub)
+            record.features.extend(tempSub)
         else:
             if record:
                 parts = line.split()
