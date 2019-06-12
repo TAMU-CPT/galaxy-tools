@@ -95,7 +95,7 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
 
                 pID = 'tmhmm_tmd_%s-%s' % (count, str(uuid.uuid4()))
                 qualifiers.update({
-                        'Parent': pID),
+                        'Parent': pID,
                 })
 
                 sub_feat = SeqFeature(
