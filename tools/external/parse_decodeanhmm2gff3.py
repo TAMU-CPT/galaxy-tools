@@ -71,6 +71,8 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
 
             # Q7TNJ0  UniProtKB   Chain   1   470 .   .   .   ID=PRO_0000072585;Note=Dendritic cell-specific transmembrane protein
 
+            pID = 'tmhmm_tmd_%s-%s' % (count, str(uuid.uuid4()))
+
             for region in regions:
                 (region_type, start, end) = region.strip().split(' ')
                 qualifiers = {
@@ -93,7 +95,6 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                         'Note': 'Extracellular',
                     })
 
-                pID = 'tmhmm_tmd_%s-%s' % (count, str(uuid.uuid4()))
                 qualifiers.update({
                         'Parent': pID,
                 })
