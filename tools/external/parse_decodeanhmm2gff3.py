@@ -93,6 +93,11 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                         'Note': 'Extracellular',
                     })
 
+                pID = 'tmhmm_tmd_%s-%s' % (count, str(uuid.uuid4()))
+                qualifiers.update({
+                        'Parent': pID),
+                })
+
                 sub_feat = SeqFeature(
                     FeatureLocation(int(start) - 1, int(end)),
                     type="Transmembrane" if region_type == 'M' else "Topological domain",
@@ -106,17 +111,17 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                 type="Chain",
                 strand=1,
                 qualifiers={
-                    'ID': 'tmhmm_tmd_%s-%s' % (count, str(uuid.uuid4())),
+                    'ID': pID,
                     'Description': 'Transmembrane protein',
                     'Note': 'Transmembrane protein - N %s C %s' % (n_dir, c_dir),
                     'Target': header,
-                },
-                sub_features = tempSub
+                }
             )
             count += 1
             
 
             record.features.append(feature)
+            record.features.extent(tempSub)
         else:
             if record:
                 parts = line.split()
