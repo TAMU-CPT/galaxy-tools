@@ -53,6 +53,8 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
             # %pred NB(0): i 1 8, M 9 28, o 29 44
             regions = pred.split(', ')
 
+            tempSub = []
+
             # Ignore regions that are boring
             if len(regions) == 1:
                 continue
@@ -68,18 +70,7 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                 c_dir = 'out'
 
             # Q7TNJ0  UniProtKB   Chain   1   470 .   .   .   ID=PRO_0000072585;Note=Dendritic cell-specific transmembrane protein
-            feature = SeqFeature(
-                FeatureLocation(1, length),
-                type="Chain",
-                strand=1,
-                qualifiers={
-                    'ID': 'tmhmm_tmd_%s-%s' % (count, str(uuid.uuid4())),
-                    'Description': 'Transmembrane protein',
-                    'Note': 'Transmembrane protein - N %s C %s' % (n_dir, c_dir),
-                    'Target': header,
-                }
-            )
-            count += 1
+
             for region in regions:
                 (region_type, start, end) = region.strip().split(' ')
                 qualifiers = {
@@ -108,7 +99,22 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                     strand=1,
                     qualifiers=qualifiers,
                 )
-                feature.sub_features.append(sub_feat)
+                tempSub.append(sub_feat)
+
+            feature = SeqFeature(
+                FeatureLocation(1, length),
+                type="Chain",
+                strand=1,
+                qualifiers={
+                    'ID': 'tmhmm_tmd_%s-%s' % (count, str(uuid.uuid4())),
+                    'Description': 'Transmembrane protein',
+                    'Note': 'Transmembrane protein - N %s C %s' % (n_dir, c_dir),
+                    'Target': header,
+                },
+                sub_features = tempSub
+            )
+            count += 1
+            
 
             record.features.append(feature)
         else:
