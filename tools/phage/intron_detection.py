@@ -4,7 +4,6 @@ import re
 import itertools
 import argparse
 import hashlib
-import svgwrite
 import copy
 from BCBio import GFF
 from Bio.Blast import NCBIXML
@@ -269,46 +268,7 @@ class IntronFinder(object):
                 condensed_report[', '.join(gene_names)] = [gi_nos]
         return condensed_report
 
-    def draw_genes(self, name):
-        height = 200 * len(self.clusters)
-        dwg = svgwrite.Drawing(filename=name, size=("1500px", "%spx" % height), debug=True)
-        genes = dwg.add(dwg.g(id='genes', fill='white'))
-
-        sbjct_y = 10
-        query_x = 10
-        for i, key in enumerate(self.clusters):
-            log.info('Done with %s', i)
-            for j, gene in enumerate(sorted(self.clusters[key],
-                                            key=lambda k: self.gff_info[k['name']]['start'],
-                                            reverse=True)):
-                if j == 0:
-                    genes.add(dwg.rect(insert=(10, sbjct_y), size=(gene['sbjct_length'], 20), fill='blue'))
-                    genes.add(dwg.text(gene['match_id'], insert=(15, sbjct_y + 18)))
-
-                genes.add(dwg.rect(
-                    insert=(query_x, sbjct_y + 80),
-                    size=(gene['query_length'], 20),
-                    fill='green'
-                ))
-                genes.add(dwg.text(gene['name'], insert=(query_x, sbjct_y + 95)))
-
-                p1 = (gene['sbjct_range'][0] + 10, sbjct_y + 20)
-                p2 = (gene['sbjct_range'][1] + 10, sbjct_y + 20)
-                p3 = (gene['query_range'][1] + query_x, sbjct_y + 80)
-                p4 = (gene['query_range'][0] + query_x, sbjct_y + 80)
-                identity = float(gene['identity']) / gene['sbjct_length']
-                genes.add(dwg.polyline([p1, p2, p3, p4], fill='red', opacity='%s' % identity))
-
-                dwg.save()
-                query_x += (gene['query_length'] + 10)
-
-            query_x = 10
-
-            if i == 0:
-                sbjct_y += 190
-            else:
-                sbjct_y += 200
-
+    
     def output_gff3(self, clusters):
         rec = copy.deepcopy(self.rec)
         rec.features = []
@@ -417,7 +377,6 @@ if __name__ == '__main__':
     #print(ifinder.blast)
 
     condensed_report = ifinder.cluster_report()
-    ifinder.draw_genes(args.svg)
     rec = ifinder.output_gff3(ifinder.clusters)
     GFF.write([rec], sys.stdout)
     
