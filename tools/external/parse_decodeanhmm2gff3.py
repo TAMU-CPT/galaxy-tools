@@ -113,7 +113,7 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                 },
             )
             tempFeat.append(tempTop)
-            feature = CompoundLocation(tempFeat)
+            feature = CompoundLocation([tempFeat])
             count += 1
             
 
