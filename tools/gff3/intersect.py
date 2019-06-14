@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import logging
 import argparse
-from interval_tree import IntervalTree
+from intervaltree import IntervalTree, Interval
 from BCBio import GFF
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -9,7 +9,8 @@ log = logging.getLogger(__name__)
 
 def treeFeatures(features):
     for feat in features:
-        yield (int(feat.location.start), int(feat.location.end), feat.id)
+        # Interval(begin, end, data)
+        yield Interval(int(feat.location.start), int(feat.location.end), feat.id)
 
 
 def intersect(a, b):
@@ -21,9 +22,11 @@ def intersect(a, b):
     rec_a = rec_a[0]
     rec_b = rec_b[0]
 
-    tree_a = IntervalTree(list(treeFeatures(rec_a.features)), 1, len(rec_a))
-    tree_b = IntervalTree(list(treeFeatures(rec_b.features)), 1, len(rec_b))
+    #builds interval tree from Interval objects of form (start, end, id) for each feature
+    tree_a = IntervalTree(list(treeFeatures(rec_a.features)))
+    tree_b = IntervalTree(list(treeFeatures(rec_b.features)))
 
+    #Used to map ids back to features later
     rec_a_map = {f.id: f for f in rec_a.features}
     rec_b_map = {f.id: f for f in rec_b.features}
 
@@ -31,15 +34,22 @@ def intersect(a, b):
     rec_b_hits_in_a = []
 
     for feature in rec_a.features:
-        hits = tree_b.find_range((int(feature.location.start), int(feature.location.end)))
+        #Save each feature in rec_a that overlaps a feature in rec_b
+        #hits = tree_b.find_range((int(feature.location.start), int(feature.location.end)))
+        hits = tree_b[int(feature.location.start):int(feature.location.end)]
+        #feature id is saved in interval result.data, use map to get full feature
         for hit in hits:
-            rec_a_hits_in_b.append(rec_b_map[hit])
+            rec_a_hits_in_b.append(rec_b_map[hit.data])
 
     for feature in rec_b.features:
-        hits = tree_a.find_range((int(feature.location.start), int(feature.location.end)))
+        #Save each feature in rec_a that overlaps a feature in rec_b
+        #hits = tree_a.find_range((int(feature.location.start), int(feature.location.end)))
+        hits = tree_a[int(feature.location.start):int(feature.location.end)]
+        #feature id is saved in interval result.data, use map to get full feature
         for hit in hits:
-            rec_b_hits_in_a.append(rec_a_map[hit])
+            rec_b_hits_in_a.append(rec_a_map[hit.data])
 
+    #Remove duplicate features using sets
     rec_a.features = set(rec_a_hits_in_b)
     rec_b.features = set(rec_b_hits_in_a)
     return rec_a, rec_b
