@@ -6,7 +6,7 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command interpreter="python" detect_errors="aggressive">
-get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e $ends -m $mode --min_len $min_len --strand $strand --on $out_nuc_file --op $out_prot_file --ob $out_bed_file --og $out_gff3_file
+get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e "closed" -m "all" --min_len $min_len --strand $strand --on $out_nuc_file --op $out_prot_file --ob $out_bed_file --og $out_gff3_file
 	</command>
 	<inputs>
 		<param name="input_file" type="data" format="fasta,fastq,sff" label="Sequence file (nucleotides)" help="FASTA, FASTQ, or SFF format." />
@@ -33,16 +33,6 @@ get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e $
 		<param name="ftype" type="select" value="True" label="Look for ORFs or CDSs">
 			<option value="ORF">Look for ORFs (check for stop codons only, ignore start codons)</option>
 			<option value="CDS">Look for CDSs (with start and stop codons)</option>
-		</param>
-		<param name="ends" type="select" value="open" label="Sequence end treatment">
-			<option value="open">Open ended (will allow missing start/stop codons at the ends)</option>
-			<option value="closed">Complete (will check for start/stop codons at the ends)</option>
-			<!-- TODO? Circular, for using this on finished bacteria etc -->
-		</param>
-		<param name="mode" type="select" label="Selection criteria" help="Suppose a sequence has ORFs/CDSs of lengths 100, 102 and 102 -- which should be taken? These options would return 3, 2 or 1 ORF.">
-			<option value="all">All ORFs/CDSs from each sequence</option>
-			<option value="top">All ORFs/CDSs from each sequence with the maximum length</option>
-			<option value="one">First ORF/CDS from each sequence with the maximum length</option>
 		</param>
 		<param name="min_len" type="integer" size="5" value="30" label="Minimum length ORF/CDS (in amino acids, e.g. 30 aa = 90 bp plus any stop codon)" />
 		<param name="strand" type="select" label="Strand to search" help="Use the forward only option if your sequence directionality is known (e.g. from poly-A tails, or strand specific RNA sequencing).">
