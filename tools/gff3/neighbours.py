@@ -112,7 +112,7 @@ def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
             hits = tree_f.find_range((start, end))
             if len(hits) == 0:
                 continue
-            print start, end, feature.location.strand, feature.id, hits
+            print(start, end, feature.location.strand, feature.id, hits)
 
             rec_b_hits_in_a.append(feature)
             for hit in hits:
@@ -132,7 +132,7 @@ def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
             if len(hits) == 0:
                 continue
 
-            print start, end, feature.location.strand, feature.id, hits
+            print(start, end, feature.location.strand, feature.id, hits)
             rec_b_hits_in_a.append(feature)
             for hit in hits:
                 feat_hit = rec_a_map[hit]
