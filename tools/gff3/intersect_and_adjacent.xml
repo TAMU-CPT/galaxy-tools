@@ -5,7 +5,9 @@
     <import>macros.xml</import>
 		<import>cpt-macros.xml</import>
   </macros>
-  <expand macro="requirements"/>
+  <expand macro="requirements">
+      <requirement type="package" version="3.0.2">intervaltree</requirement>
+  </expand>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/intersect_and_adjacent.py
 "$gff3_data_a"
@@ -35,10 +37,10 @@ $window
   <help><![CDATA[
 **What it does**
 
-Given two input files, this tool computes the members of A that are within 
-"Window" nucleotides of a member of B, and vice versa. It then produces 
-two gff3 outputs, one being the features of GFF A that pass this check, 
-and the other being the features of GFF B that pass. 
+Given two input files, this tool computes the members of A that are within
+"Window" nucleotides of a member of B, and vice versa. It then produces
+two gff3 outputs, one being the features of GFF A that pass this check,
+and the other being the features of GFF B that pass.
 ]]></help>
 		<expand macro="citations" />
 </tool>
