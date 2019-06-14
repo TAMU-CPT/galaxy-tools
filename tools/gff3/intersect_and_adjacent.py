@@ -59,7 +59,7 @@ def intersect(a, b, window):
 
     else:
         #If one input is empty, output two empty result files.
-        rec_a = SeqRecord(Seq(''), "none")]
+        rec_a = SeqRecord(Seq(''), "none")
         rec_b = SeqRecord(Seq(''), "none")
     return rec_a, rec_b
 
