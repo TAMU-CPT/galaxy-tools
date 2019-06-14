@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.genbank.shinefind" name="ShineFind v1.5" version="1.6">
+<tool id="edu.tamu.cpt.genbank.shinefind" name="Shine Find" version="1.0.0">
 	<description>Identify shine-dalgarno sequences</description>
 	<macros>
 		<import>macros.xml</import>
@@ -83,3 +83,4 @@ be added to the GFF3 file.
 			]]></help>
 		<expand macro="citations" />
 </tool>
+
