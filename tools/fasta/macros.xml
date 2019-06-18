@@ -5,7 +5,7 @@
 			<requirement type="package" version="2.7">python</requirement>
 			<requirement type="package" version="1.65">biopython</requirement>
 			<requirement type="package" version="0.6.4">bcbiogff</requirement>
-			<requirement type="package" >regex</requirement>
+			<requirement type="package" version="2019.06.08">regex</requirement>
 			<yield/>
 		</requirements>
 	</xml>
