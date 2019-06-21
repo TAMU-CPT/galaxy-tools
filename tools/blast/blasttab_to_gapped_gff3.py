@@ -62,8 +62,8 @@ def blasttsv2gff3(blasttsv, min_gap=3, trim_start=False, trim_end=False, type='n
         rec = SeqRecord(Seq("ACTG"), id=dc['qseqid'])
 
         feature_id = "blast.%s.%s.%s" % (record_idx, dc['qseqid'], dc['sseqid'])
-        feature_id = re.sub('\|', '_', feature_id)
-        feature_id = re.sub('[^A-Za-z0-9_.-]', '', feature_id)
+        feature_id = re.sub('\|', '_', feature_id) # Replace any \ or | with _
+        feature_id = re.sub('[^A-Za-z0-9_.-]', '', feature_id) # Remove any non-alphanumeric or _.- chars
         qualifiers = {
             "ID": feature_id,
             "Name": dc['salltitles'].split('<>')[0],
@@ -79,8 +79,10 @@ def blasttsv2gff3(blasttsv, min_gap=3, trim_start=False, trim_end=False, type='n
         for key in dc.keys():
             if key in ('salltitles', 'sallseqid', 'score', 'sseqid', 'qseqid', 'qseq', 'sseq'):
                 continue
-            qualifiers['blast_%s' % key] = dc[key]
+            qualifiers['blast_%s' % key] = dc[key] # Add the remaining BLAST info to the GFF qualifiers
 
+
+        # Below numbers stored as strings, convert to proper form
         for integer_numerical_key in 'gapopen gaps length mismatch nident positive qend qframe qlen qstart score send sframe slen sstart'.split(' '):
             dc[integer_numerical_key] = int(dc[integer_numerical_key])
 
@@ -91,7 +93,7 @@ def blasttsv2gff3(blasttsv, min_gap=3, trim_start=False, trim_end=False, type='n
         # the first time.
         #
         # the match_start location must account for queries and
-        # subjecst that start at locations other than 1
+        # subjects that start at locations other than 1
         parent_match_start = dc['qstart']
         # The end is the start + hit.length because the match itself
         # may be longer than the parent feature, so we use the supplied
@@ -137,8 +139,7 @@ def blasttsv2gff3(blasttsv, min_gap=3, trim_start=False, trim_end=False, type='n
             # Furthermore align_length will give calculation errors in weird places
             # So we just use (end-start) for simplicity
             match_part_end = match_part_start + (end - start)
-            # print start, end, cigar, parent_match_start, parent_match_end, match_part_start, match_part_end, dc['qstart'], dc['qend'], dc['qframe'], dc['sstart'], dc['send'], dc['sframe'], dc['length'], dc['qseq'].count('-')
-
+           
             top_feature.sub_features.append(
                 SeqFeature(
                     FeatureLocation(
@@ -211,13 +212,13 @@ def generate_parts(query, match, subject, ignore_under=3):
     for i, (q, m, s) in enumerate(zip(query, _none_safe_match_iterator(match), subject)):
 
         # If we have a match
-        if (m is None and q == s) or (m is not None and (m != ' ' or m == '+')):
+        if (m is None and q == s) or (m is not None and (m != ' ' or m == '+')): # Trivial 2nd if clause?
             if region_start == -1:
                 region_start = i
                 # It's a new region, we need to reset or it's pre-seeded with
                 # spaces
                 region_q = []
-                region_m = []
+                region_m = [] 
                 region_s = []
             region_end = i
             mismatch_count = 0
