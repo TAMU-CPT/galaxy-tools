@@ -65,7 +65,7 @@ def important_only(blast, split_identifiers):
             # 09 Start of alignment in subject (database hit)
             # 10 End of alignment in subject (database hit)
             data[10],  # 11 Expectation value (E-value)
-            # 12 Bit score
+            data[11],  # 12 Bit score
             # 13 All subject Seq-id(s), separated by a ';'
             # 14 Raw score
             # 15 Number of identical matches
