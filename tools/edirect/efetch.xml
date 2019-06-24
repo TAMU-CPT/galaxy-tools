@@ -9,7 +9,6 @@ $__tool_directory__/edirect/epost
     -id \$(echo $input_type.pasted_ids | sed 's/__cn__/,/g' | sed 's/\s/,/g')
 #end if
 | $__tool_directory__/edirect/efetch
--db nuccore
 #if $format_selector == "gbwithparts":
     -format gbwithparts
 #elif $format_selector == "gb":
