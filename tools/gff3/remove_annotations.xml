@@ -21,13 +21,16 @@ $remark
   <help><![CDATA[
 **What it does**
 
-For an input GFF3, this tool specifically removes the remark/annotation features as needed for compatibility with certain tools.
+For an input GFF3, this tool specifically removes the feature entry with remark type (column 3) as needed for compatibility 
+with certain tools. The remark feature typically encompasses the entire length of the sequence upon which the GFF3 is based.
 
 Example input::
     Miro	annotation	remark	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Miro%27%2C 0%2C 172788%29
+    Miro	cpt		gene	1231	5436	.	.	.	ID=CDS1;
 
 Example output::
-    Miro	.	.	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Miro%27%2C 0%2C 172788%29
+    Miro	cpt		gene	1231	5436	.	.	.	ID=CDS1;
+
 
       ]]></help>
 		<expand macro="citations" />
