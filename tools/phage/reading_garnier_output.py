@@ -106,8 +106,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # opens the tagseq file and prepares for writing csv
-    f = open(sys.stdout, 'w', newline='')
-    writer = csv.writer(f)
+    #f = open(sys.stdout, 'w', newline='')
+    # writer = csv.writer(f)
 
     # reads tagseq file for helix, turn, coil, and sheet sequences as well as for names and lengths of the sequences
     # summarized in the tagseq file
@@ -124,7 +124,7 @@ if __name__ == '__main__':
     # prediction in csv format and to the screen
     for i in range(len(Helix)):
         Final = single_prediction(Helix[i], Sheet[i], Turns[i], Coil[i])
-        writer.writerow(['Sequence: '] + [names[i]])
-        writer.writerow(Final)
-        print('Sequence Name:' + names[i])
-        print(''.join(Final))
+        csv.writerow(['Sequence: '] + [names[i]])
+        csv.writerow(Final)
+        #print('Sequence Name:' + names[i])
+        #print(''.join(Final))
