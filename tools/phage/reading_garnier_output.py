@@ -52,7 +52,7 @@ def garnier_secondary_struct(tagseq_file = None):
                 turns += str(line[6:]).rstrip('\n')
             elif words[0] in 'coil':
                 coil += str(line[6:]).rstrip('\n')
-    f.close()
+    # f.close()
     # returns the four structural prediction strings
     return helix, turns, coil, sheet
 
