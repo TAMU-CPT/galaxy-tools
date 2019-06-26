@@ -9,7 +9,7 @@ import sys
 # This function reads through the tagseq file and outputs a list of sequence names and the lengths of each sequence.
 def garnier_sequences(tagseq_file = None):
     # open the file and create blank lists
-    f = open(file, 'r')
+    f = open(tagseq_file, 'r')
     sequence = []
     lengths = []
 
@@ -31,9 +31,9 @@ def garnier_sequences(tagseq_file = None):
 
 # This function extracts the helix, sheet, turn, and coil predictions from the file. The predictions for each type of
 # secondary structure are joined together in one string.
-def garnier_secondary_struct(taqseq_file = None):
+def garnier_secondary_struct(tagseq_file = None):
     # opens the file and sets variables for the structural predictions
-    f = open(file, 'r')
+    f = open(tagseq_file, 'r')
     helix = ''
     turns = ''
     coil = ''
