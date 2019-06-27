@@ -11205,6 +11205,8 @@ if len(sys.argv) >= 2 and sys.argv[1] != '--help' and sys.argv[1] != '-h' and sy
                     t1, t2, t3, t4, t5, t6 = 30, 144, 255, 25, 25, 112
                 elif sys.argv[i+1] == 'red':
                     t1, t2, t3, t4, t5, t6 = 200, 100, 0, 255, 0, 0
+                elif sys.argv[i+1] == 'grey':
+                    t1, t2, t3, t4, t5, t6 = 20, 20, 20, 175, 175, 175
             minblastc = (t1, t2, t3)
             maxblastc = (t4, t5, t6)
         elif sys.argv[i] == '-blast_col_inv':
