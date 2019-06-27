@@ -29,8 +29,6 @@ def lipoP_gff(lipoIn, gff3In, jBrowseOut):
                orgIDs[orgID] = [] 
            orgIDs[orgID].append(int(rowElem[3]))#, int(rowElem[4])))
 
-    print(jBrowseOut)
-
     # Rebase
     for gff in GFF.parse(gff3In):
         keepSeq = []
