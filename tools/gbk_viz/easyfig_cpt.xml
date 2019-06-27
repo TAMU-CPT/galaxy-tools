@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.gbk_viz.easyfig" name="Output Gbk Visualization" version="Alpha.1">
+<tool id="edu.tamu.cpt2.gbk_viz.easyfig" name="Output Gbk Visualization" version="Alpha.2">
   <description>Prototype - Not Yet for General Use: Easyfig toole wrapper for galaxy</description>
   <macros>
     <import>macros.xml</import>
@@ -24,11 +24,6 @@ python $__tool_directory__/Easyfig.py
 ]]></command>
   <inputs>
     <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
-    <param name="blastSelect" type="select" label="Select source for IDs">
-            <option value="Auto">Automatically run BLAST</option>
-            <option value="Manual">Enter BLAST results manually</option>
-    </param>
-    <param label="Manual Blast Entries" name="blastIn" type="data" multiple="true" format="blast"/>
     <param label="Minimum E Value" name="eVal" type="float" value="0.001"/>
     <param label="Customize location of gene name" name="leg" type="select">
             <option value="single">Single</option>
