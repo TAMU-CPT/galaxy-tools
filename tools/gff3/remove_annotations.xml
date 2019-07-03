@@ -26,6 +26,7 @@ with certain tools. The remark feature typically encompasses the entire length o
 
 Example input::
     Miro	annotation	remark	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Miro%27%2C 0%2C 172788%29
+
     Miro	cpt		gene	1231	5436	.	.	.	ID=CDS1;
 
 Example output::
