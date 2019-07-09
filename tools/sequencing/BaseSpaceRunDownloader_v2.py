@@ -81,7 +81,7 @@ def restquery(rawrequest, access_token, parameters):
         json_string = response.read()
         json_obj = json.loads(json_string)
     except URLError as e:
-        log.debug("Excepting: " + e)
+        log.debug("Excepting")
         print('Got an error code:', e)
         sys.exit()
     log.debug("Passed Except")
