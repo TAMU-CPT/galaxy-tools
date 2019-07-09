@@ -55,7 +55,7 @@ def restrequest(rawrequest, access_token):
 def restquery(rawrequest, access_token, parameters):
     # Parameters is a dict example: {'Limit': 50, 'SortDir': 'Asc'}
     # can be any of https://developer.basespace.illumina.com/docs/content/documentation/rest-api/api-reference#ResourceCollectionRequests
-    ACCESS_TOKEN = '?access_token=%s' % access_token
+    ACCESS_TOKEN = '?access_token="%s"' % access_token
     rawrequest = API_BASE + rawrequest + ACCESS_TOKEN
     for query, value in parameters.items():
         rawrequest += '&' + query + '="' + str(value) + '"'
