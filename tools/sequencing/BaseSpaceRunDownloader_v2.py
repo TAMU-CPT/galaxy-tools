@@ -58,7 +58,7 @@ def restquery(rawrequest, access_token, parameters):
     ACCESS_TOKEN = '?access_token=%s' % access_token
     rawrequest = API_BASE + rawrequest + ACCESS_TOKEN
     for query, value in parameters.items():
-        rawrequest += '&' + query + '=' + str(value)
+        rawrequest += '&' + query + '="' + str(value) + '"'
 
     log.info('Req: ' + rawrequest.replace(access_token, '*' * len(access_token)))
 
