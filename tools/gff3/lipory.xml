@@ -43,8 +43,11 @@ Bacteriol.* 188(8):2761-2773 and **Kongari** *et al.* 2018 *BMC Bioinformatics*.
 amino acids allowed here are relaxed to allow for the diversity of amino acids known to occur in lipoboxes.
 
 Position 1: ACGSILMFTV
+
 Position 2: any residue except REKD
+
 Position 3: GASNL
+
 Position 4: C
 
       ]]></help>
