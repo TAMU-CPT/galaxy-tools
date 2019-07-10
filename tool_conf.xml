@@ -141,6 +141,7 @@
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_regex_search.xml" label="fasta" />
 	</section>
 	<section id="b751a1c4-9cb9-4a41-8f3d-68c2b440088f" name="CPT: Blast Analysis / Filtering">
+		<tool file="cpt2/galaxy-tools/tools/blast/list_taxids.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_add_dice_column.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/cpt_blast_filter.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_filter.xml" label="experimental"/>
