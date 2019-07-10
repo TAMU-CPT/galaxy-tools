@@ -6,7 +6,6 @@
 	</macros>
 	<requirements>
 			<requirement type="package" version="2.9.0">blast</requirement>
-			<yield/>
         </requirements>
 	<command detect_errors="aggressive"><![CDATA[
 /bin/get_species_taxids.sh
