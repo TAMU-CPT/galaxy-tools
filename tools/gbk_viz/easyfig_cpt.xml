@@ -15,6 +15,7 @@ python $__tool_directory__/Easyfig.py
 #if $gc != "":
     -G $gc 
 #end if
+-tblastx
 -o $SVG_Out 
 -svg 
 #for $file in $gbkIn:
