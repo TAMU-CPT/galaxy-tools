@@ -122,7 +122,7 @@ if __name__ == '__main__':
                     # to set the CDS location correctly (apollo currently screwing
                     # this up (2.0.6))
                     CDS = featureData[0]['children'][0]['children']
-                    CDS = [x for x in CDS if x['type']['name'] == 'CDS'][0]['location']
+                    CDS = [x for x in CDS if x['type']['name'] in ['CDS', 'RBS', 'exon']][0]['location']
                     # Create the new feature
                     newfeature = wa.annotations.addFeature(featureData, trustme=True)
                     # Extract the UUIDs that apollo returns to us
