@@ -22,11 +22,7 @@ def __get_features(child, interpro=False):
                 # Then we ignore polypeptide features as they're useless
                 if feature.type == 'polypeptide':
                     continue
-                # If there's an underscore, we strip up to that underscore?
-                # I do not know the rationale for this, removing.
-                # if '_' in parent_feature_id:
-                    # parent_feature_id = parent_feature_id[parent_feature_id.index('_') + 1:]
-
+               
             try:
                 child_features[parent_feature_id].append(feature)
             except KeyError:
@@ -42,7 +38,6 @@ def __update_feature_location(feature, parent, protein2dna):
         start *= 3
         end *= 3
 
-    # print(start, end, parent.location.start, parent.location.end)
     if parent.location.strand >= 0:
         ns = parent.location.start + start
         ne = parent.location.start + end
@@ -51,14 +46,12 @@ def __update_feature_location(feature, parent, protein2dna):
         ns = parent.location.end - end
         ne = parent.location.end - start
         st = -1
-    # print(start, end, ns, ne, st)
-
-    # Don't let start/stops be less than zero. It's technically valid for them
-    # to be (at least in the model I'm working with) but it causes numerous
-    # issues.
+   
+    # Don't let start/stops be less than zero.
     #
     # Instead, we'll replace with %3 to try and keep it in the same reading
     # frame that it should be in.
+
     if ns < 0:
         ns %= 3
     if ne < 0:
@@ -92,7 +85,7 @@ def rebase(parent, child, interpro=False, protein2dna=False, map_by='ID'):
 
             # Features which will be re-mapped
             to_remap = child_features[feature.id]
-            # TODO: update starts
+            
             fixed_features = []
             for x in to_remap:
                 # Then update the location of the actual feature

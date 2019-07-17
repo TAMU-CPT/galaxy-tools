@@ -24,16 +24,23 @@ $gff3_data
     <help><![CDATA[
 **What it does**
 
-Finds:
+For the CDS features from an input GFF3, this tool looks for the duplicate amino acid hallmarks 
+of canonical frameshifting sites and returns the possible frameshifted products as new features. 
 
-* locations near the end of a gene
-* scans the -3 to -1 reading frames for possible ORF starts which:
+**How it works**
 
-  * have a reading frame at least half as long as the parent sequence
-  * have at least 1 AA the same
-  * have at least 4 nucleotides identical (this may be too opinionated)
+The tool iteratively checks within the last 20 amino acids of the CDS for possible ORF starts in 
+the -2, -1, +1, and +2 reading frames. Each possible ORF must have::
 
-and returns those as a new set of features, scored by their similarity to the canonical slippery sequence (XXXYYYZ)
+- a continuous reading frame at least half as long as the parent sequence.
+- at least one amino acid the same as the two amino acids surrounding it in the zero-reading frame.
+- at least five identical nucleotides in both the zero- and frameshifted- reading frame.
+
+Possible frameshift sites are scored by their similarity to the canonical slippery sequence (XXXYYYZ).
+
+.. class:: warningmark
+This tool is noisy. Filter the results with care.
+
         ]]></help>
         <citations>
             <citation type="bibtex">

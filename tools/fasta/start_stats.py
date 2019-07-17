@@ -8,9 +8,9 @@ def extract_starts(fasta):
     for record in SeqIO.parse(fasta, 'fasta'):
         seq = record.seq[0:3]
         sseq = str(seq)
-        try:
+        try: # If key exists, count += 1
             codon_usage[sseq] = (codon_usage[sseq][0] + 1, seq)
-        except KeyError:
+        except KeyError: # Else, create tuple (count, sequence)
             codon_usage[sseq] = (1, seq)
 
     for (sseq, (count, seq)) in sorted(codon_usage.items()):

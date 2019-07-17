@@ -15,13 +15,13 @@ def treeFeatures(features):
         yield Interval(int(feat.location.start), int(feat.location.end), feat.id)
 
 
-def intersect(a, b):
+def intersect(a, b, window):
     rec_a = list(GFF.parse(a))
     rec_b = list(GFF.parse(b))
     if len(rec_a) > 0 and len(rec_b) > 0:
 
         if len(rec_a) > 1 or len(rec_b) > 1:
-            raise Exception("Cannot handle multiple GFF3 records in a file, yet")
+                raise Exception("Cannot handle multiple GFF3 records in a file, yet")
 
         rec_a = rec_a[0]
         rec_b = rec_b[0]
@@ -58,7 +58,7 @@ def intersect(a, b):
         rec_b.features = set(rec_b_hits_in_a)
 
     else:
-        #If one input is empty, output two empty result files
+        #If one input is empty, output two empty result files.
         rec_a = SeqRecord(Seq(''), "none")
         rec_b = SeqRecord(Seq(''), "none")
     return rec_a, rec_b
@@ -68,11 +68,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
     parser.add_argument('a', type=argparse.FileType("r"))
     parser.add_argument('b', type=argparse.FileType("r"))
-    parser.add_argument('--oa', type=str, default='a_hits_in_b.gff')
-    parser.add_argument('--ob', type=str, default='b_hits_in_a.gff')
+    parser.add_argument('window', type=int, default = 50, help = "Allows features this far away to still be considered 'adjacent'")
+    parser.add_argument('--oa', type=str, default='a_hits_near_b.gff')
+    parser.add_argument('--ob', type=str, default='b_hits_near_a.gff')
     args = parser.parse_args()
 
-    b, a = intersect(args.a, args.b)
+    b, a = intersect(args.a, args.b, args.window)
 
     with open(args.oa, 'w') as handle:
         GFF.write([a], handle)

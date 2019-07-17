@@ -1,15 +1,14 @@
-"""
-Method for reading the output of garnier files. The secondary structure prediction for each sequence is extracted from
-the .taqseq file and output to the screen and as a table in .csv format.
-"""
+#!/usr/bin/env python
+
 import csv
 import argparse
-import sys
+#import sys
 
 # This function reads through the tagseq file and outputs a list of sequence names and the lengths of each sequence.
-def garnier_sequences(file):
+def garnier_sequences(tagseq_file = None):
     # open the file and create blank lists
-    f = open(file, 'r')
+    f = tagseq_file #open(tagseq_file, 'r')
+    f.seek(0)
     sequence = []
     lengths = []
 
@@ -31,9 +30,9 @@ def garnier_sequences(file):
 
 # This function extracts the helix, sheet, turn, and coil predictions from the file. The predictions for each type of
 # secondary structure are joined together in one string.
-def garnier_secondary_struct(file):
+def garnier_secondary_struct(tagseq_file = None):
     # opens the file and sets variables for the structural predictions
-    f = open(file, 'r')
+    f = tagseq_file #open(tagseq_file, 'r')
     helix = ''
     turns = ''
     coil = ''
@@ -52,7 +51,7 @@ def garnier_secondary_struct(file):
                 turns += str(line[6:]).rstrip('\n')
             elif words[0] in 'coil':
                 coil += str(line[6:]).rstrip('\n')
-    f.close()
+    # f.close()
     # returns the four structural prediction strings
     return helix, turns, coil, sheet
 
@@ -106,11 +105,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # opens the tagseq file and prepares for writing csv
-    f = open(sys.stdout, 'w', newline='')
-    writer = csv.writer(f)
+    #f = open(sys.stdout, 'w', newline='')
+    # writer = csv.writer(f)
 
     # reads tagseq file for helix, turn, coil, and sheet sequences as well as for names and lengths of the sequences
-    # summarized in the tagseq file
+    # summarized in the tagseq file#!/usr/bin/env python\r
     Hel, Tur, Coi, She = garnier_secondary_struct(**vars(args))
     names, gives = garnier_sequences(**vars(args))
 
@@ -124,7 +123,7 @@ if __name__ == '__main__':
     # prediction in csv format and to the screen
     for i in range(len(Helix)):
         Final = single_prediction(Helix[i], Sheet[i], Turns[i], Coil[i])
-        writer.writerow(['Sequence: '] + [names[i]])
-        writer.writerow(Final)
-        print('Sequence Name:' + names[i])
+        #csv.writerow(['Sequence: '] + [names[i]])
+        #csv.writerow(Final)
+        print('Sequence Name: ' + names[i])
         print(''.join(Final))

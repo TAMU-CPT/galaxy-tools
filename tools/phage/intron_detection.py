@@ -4,7 +4,6 @@ import re
 import itertools
 import argparse
 import hashlib
-import svgwrite
 import copy
 from BCBio import GFF
 from Bio.Blast import NCBIXML
@@ -22,11 +21,14 @@ def parse_xml(blastxml):
     discarded_records = 0
     for iter_num, blast_record in enumerate(NCBIXML.parse(blastxml), 1):
         blast_gene = []
+        align_num = 0
         for alignment in blast_record.alignments:
+            align_num += 1
             hit_gis = alignment.hit_id + alignment.hit_def
-            gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9}', hit_gis)]
+            gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9,10}', hit_gis)]
             
             for hsp in alignment.hsps:
+                #print(dir(hsp))
                 x = float(hsp.identities) / (hsp.query_end - hsp.query_start)
                 if x < .5:
                     discarded_records += 1
@@ -45,6 +47,7 @@ def parse_xml(blastxml):
                     'query_range': (hsp.query_start, hsp.query_end),
                     'name': nice_name,
                     'identity': hsp.identities,
+                    'hit_num': align_num,
                     'iter_num': iter_num,
                     'match_id': alignment.title.partition(">")[0]
                 })
@@ -82,20 +85,28 @@ def parse_gff(gff3):
             subfeatures=False
         ):
             if feat.type == 'CDS':
+                if 'Name' in feat.qualifiers.keys():
+                    CDSname = feat.qualifiers['Name']
+                else:
+                    CDSname = feat.qualifiers['ID']
                 gff_info[feat.id] = {
                     'strand': feat.strand,
                     'start': feat.location.start,
                     'loc': feat.location,
                     'feat': feat,
+                    'name': CDSname,
                 }
 
    
     gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
+    endBase = 0
     for i, feat_id in enumerate(gff_info):
         gff_info[feat_id].update({'index': i})
+        if gff_info[feat_id]['loc'].end > endBase:
+            endBase = gff_info[feat_id]['loc'].end 
     
 
-    return dict(gff_info), _rec
+    return dict(gff_info), _rec, endBase
 
 
 def all_same(genes_list):
@@ -122,8 +133,10 @@ class IntronFinder(object):
         self.blast = []
         self.clusters = {}
         self.gff_info = {}
+        self.length = 0
 
-        (self.gff_info, self.rec) = parse_gff(gff3)
+        (self.gff_info, self.rec, self.length) = parse_gff(gff3)
+        print(self.length)
         self.blast = parse_xml(blastp)
 
     def create_clusters(self):
@@ -170,9 +183,9 @@ class IntronFinder(object):
             for gene in self.clusters[key]:
                 for hits in hits_lists:
                     for hit in hits:
-                        if abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10:# and abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) >= minDist: 
-                            hits.append(gene)
-                            gene_added = True
+                        if (abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10) or ((len(self.gff_info) - (abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']))) <= 10): # Checks that they are within 10 array indices
+                            hits.append(gene)  # of each other, including wrap around at the
+                            gene_added = True  # end of the array.
                             break
                 if not gene_added:
                     hits_lists.append([gene])
@@ -180,6 +193,9 @@ class IntronFinder(object):
             for i, hits in enumerate(hits_lists):
                 if len(hits) >= 2:
                     filtered_clusters[key + '_' + str(i)] = hits
+        #for i in filtered_clusters:
+         #   print(i)
+          #  print(filtered_clusters[i])
         log.debug("check_gene_gap %s -> %s", len(self.clusters), len(filtered_clusters))
         return remove_duplicates(filtered_clusters)  # call remove_duplicates somewhere else?
 
@@ -205,6 +221,9 @@ class IntronFinder(object):
                     add_cluster = False
                     break
                 elif (pair[0][0] > pair[1][1] and len(set(range(pair[1][1], pair[0][0]))) < minimum) or (pair[1][0] > pair[0][1] and len(set(range(pair[0][1], pair[1][0]))) < minimum):
+                    add_cluster = False
+                    break
+                elif (self.length - abs(pair[0][1] - pair[1][0]) < minimum) or (self.length - abs(pair[1][1] - pair[0][0]) < minimum):
                     add_cluster = False
                     break
             if add_cluster:
@@ -249,52 +268,14 @@ class IntronFinder(object):
                 condensed_report[', '.join(gene_names)] = [gi_nos]
         return condensed_report
 
-    def draw_genes(self, name):
-        height = 200 * len(self.clusters)
-        dwg = svgwrite.Drawing(filename=name, size=("1500px", "%spx" % height), debug=True)
-        genes = dwg.add(dwg.g(id='genes', fill='white'))
-
-        sbjct_y = 10
-        query_x = 10
-        for i, key in enumerate(self.clusters):
-            log.info('Done with %s', i)
-            for j, gene in enumerate(sorted(self.clusters[key],
-                                            key=lambda k: self.gff_info[k['name']]['start'],
-                                            reverse=True)):
-                if j == 0:
-                    genes.add(dwg.rect(insert=(10, sbjct_y), size=(gene['sbjct_length'], 20), fill='blue'))
-                    genes.add(dwg.text(gene['match_id'], insert=(15, sbjct_y + 18)))
-
-                genes.add(dwg.rect(
-                    insert=(query_x, sbjct_y + 80),
-                    size=(gene['query_length'], 20),
-                    fill='green'
-                ))
-                genes.add(dwg.text(gene['name'], insert=(query_x, sbjct_y + 95)))
-
-                p1 = (gene['sbjct_range'][0] + 10, sbjct_y + 20)
-                p2 = (gene['sbjct_range'][1] + 10, sbjct_y + 20)
-                p3 = (gene['query_range'][1] + query_x, sbjct_y + 80)
-                p4 = (gene['query_range'][0] + query_x, sbjct_y + 80)
-                identity = float(gene['identity']) / gene['sbjct_length']
-                genes.add(dwg.polyline([p1, p2, p3, p4], fill='red', opacity='%s' % identity))
-
-                dwg.save()
-                query_x += (gene['query_length'] + 10)
-
-            query_x = 10
-
-            if i == 0:
-                sbjct_y += 190
-            else:
-                sbjct_y += 200
-
+    
     def output_gff3(self, clusters):
         rec = copy.deepcopy(self.rec)
         rec.features = []
         for cluster_idx, cluster_id in enumerate(clusters):
             # Get the list of genes in this cluster
             associated_genes = set([x['name'] for x in clusters[cluster_id]])
+            # print(associated_genes)
             # Get the gene locations
             assoc_gene_info = {x: self.gff_info[x]['loc'] for x in associated_genes}
             # Now we construct a gene from the children as a "standard gene model" gene.
@@ -347,6 +328,7 @@ class IntronFinder(object):
                 cds.qualifiers = {
                     'ID': ['gp_%s.CDS.%s' % (cluster_idx, idx)],
                     'score': score,
+                    'Name': self.gff_info[gene_name]['name'],
                 }
                 cdss.append(cds)
 
@@ -357,12 +339,30 @@ class IntronFinder(object):
             rec.features.append(gene)
         return rec
 
+    def output_xml(self, clusters):
+        threeLevel = {}
+        #print((clusters.viewkeys()))
+        print(type(enumerate(clusters)))
+        print(type(clusters))
+        for cluster_idx, cluster_id in enumerate(clusters):
+            #print(type(cluster_id))
+            #print(type(cluster_idx)) 
+            #print(type(clusters[cluster_id][0]['hit_num']))
+            if not (clusters[cluster_id][0]['iter_num'] in threeLevel.keys):
+                threeLevel[clusters[cluster_id][0]['iter_num']] = {}
+        #for cluster_idx, cluster_id in enumerate(clusters):
+        #    print(type(clusters[cluster_id]))
+        #    b = {clusters[cluster_id][i]: clusters[cluster_id][i+1] for i in range(0, len(clusters[cluster_id]), 2)}
+        #    print(type(b))#['name']))
+        #for hspList in clusters:
+        #for x, idx in (enumerate(clusters)):#for hsp in hspList:
+        #    print("In X")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Intron detection')
     parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
     parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
-    parser.add_argument('--minimum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 0)
+    parser.add_argument('--minimum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 0, type = int)
     parser.add_argument('--svg', help='Path to output svg file to', default='clusters.svg')
     args = parser.parse_args()
 
@@ -372,11 +372,14 @@ if __name__ == '__main__':
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
     ifinder.clusters = ifinder.check_seq_overlap(minimum=args.minimum)
+    #ifinder.output_xml(ifinder.clusters)
+    #for x, idx in (enumerate(ifinder.clusters)):
+    #print(ifinder.blast)
 
     condensed_report = ifinder.cluster_report()
-    ifinder.draw_genes(args.svg)
     rec = ifinder.output_gff3(ifinder.clusters)
     GFF.write([rec], sys.stdout)
     
+    
 
-    # import pprint; pprint.pprint(ifinder.clusters)
+    #import pprint; pprint.pprint(ifinder.clusters)

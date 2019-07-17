@@ -18,7 +18,7 @@ $positional_2
     <param label="Genome" name="positional_2" type="data" format="fasta"/>
 
     <param label="Minimum distance in codons to start of lipobox" name="lipobox_mindist" type="integer" value="10"/>
-    <param label="Maximum distance in codons to start of lipobox" name="lipobox_maxdist" type="integer" value="60"/>
+    <param label="Maximum distance in codons to start of lipobox" name="lipobox_maxdist" type="integer" value="40"/>
   </inputs>
   <outputs>
       <data format="gff3" name="default" label="Lipoboxes from ${on_string}"/>
@@ -33,7 +33,23 @@ $positional_2
   <help><![CDATA[
 **What it does**
 
-Identifies possible LipoBoxes based on regular expressions
+Identifies possible LipoBoxes from an input GFF3 and FASTA.
+
+**How it works**
+
+Searches in the first 10-40 amino acids of an input protein sequence using regular expressions 
+for a 4-amino acid motif based on the consensus sequences described in (**Babu** et al. 2006. *J 
+Bacteriol.* 188(8):2761-2773 and **Kongari** *et al.* 2018 *BMC Bioinformatics*. 19:326). The 
+amino acids allowed here are relaxed to allow for the diversity of amino acids known to occur in lipoboxes.
+
+Position 1: ACGSILMFTV
+
+Position 2: any residue except REKD
+
+Position 3: GASNL
+
+Position 4: C
+
       ]]></help>
 		<expand macro="citations" />
 </tool>

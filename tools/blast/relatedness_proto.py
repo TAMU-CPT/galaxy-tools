@@ -64,8 +64,8 @@ def important_only(blast, split_identifiers):
             # 08 End of alignment in query
             # 09 Start of alignment in subject (database hit)
             # 10 End of alignment in subject (database hit)
-            data[10],  # 11 Expectation value (E-value)
-            # data[11],  # 12 Bit score
+            float(data[10]),  # 11 Expectation value (E-value)
+            float(data[11]),  # 12 Bit score
             # 13 All subject Seq-id(s), separated by a ';'
             # 14 Raw score
             # 15 Number of identical matches
@@ -85,24 +85,26 @@ def important_only(blast, split_identifiers):
 
 def deform_scores(blast):
     for data in blast:
-        for org in data[2]:
+        for org in data[3]:
             yield [
                 data[0],
                 data[1],
+                data[2],
                 org,
-                data[3]
+                data[4]
             ]
 
 
 def filter_phage(blast, phageNameLookup):
     for data in blast:
-        if data[2] in phageNameLookup:
+        if data[3] in phageNameLookup:
             yield [
                 data[0],
                 data[1],
                 data[2],
-                phageNameLookup[data[2]],
-                data[3]
+                data[3],
+                phageNameLookup[data[3]],
+                data[4]
             ]
 
 
@@ -110,7 +112,7 @@ def remove_dupes(data):
     has_seen = {}
     for row in data:
         # qseqid, sseqid
-        key = (row[0], row[2])
+        key = (row[0], row[3])
         # If we've seen the key before, we can exit
         if key in has_seen:
             continue
@@ -124,14 +126,32 @@ def remove_dupes(data):
 def scoreMap(blast):
     m = {}
     c = {}
-    for (qseq, evalue, name, id, dice) in blast:
+    lowE = {}
+    highE = {}
+    lowB = {}
+    highB = {}
+    for (qseq, evalue, bvalue, name, id, dice) in blast:
         if (name, id) not in m:
             m[(name, id)] = 0
             c[(name, id)] = 0
+            lowE[(name, id)] = evalue
+            highE[(name, id)] = evalue
+            lowB[(name, id)] = bvalue
+            highB[(name, id)] = bvalue
+
+        if evalue < lowE[(name, id)]:
+            lowE[(name, id)] = evalue
+        elif evalue > highE[(name, id)]:
+            highE[(name, id)] = evalue
+        
+        if bvalue < lowB[(name, id)]:
+            lowB[(name, id)] = bvalue
+        elif bvalue > highB[(name, id)]:
+            highB[(name, id)] = bvalue
 
         m[(name, id)] += 1 * dice
         c[(name, id)] += 1
-    return m, c
+    return m, c, lowE, highE, lowB, highB
 
 
 if __name__ == '__main__':
@@ -167,10 +187,10 @@ if __name__ == '__main__':
     else:
         count_label = "Nucleotide Hits"
 
-    scores, counts = scoreMap(data)
-    sys.stdout.write('# ID\tName\tScore\t%s\n' % count_label)
+    scores, counts, lowEs, highEs, lowBs, highBs = scoreMap(data)
+    sys.stdout.write('# ID\tName\tScore\t%s\tLowest E-Value\tHighest E-Value\tLowest Bit Value\tHighest Bit Value\n' % count_label)
     for idx, ((name, pid), score) in enumerate(sorted(scores.items(), key=lambda (x, y): -y)):
         if idx > args.hits - 1:
             break
 
-        sys.stdout.write('%s\t%s\t%05.3f\t%d\n' % (pid, name, score, counts[(name, pid)]))
+        sys.stdout.write('%s\t%s\t%05.3f\t%d\t%4.3E\t%4.3E\t%5.2f\t%5.2f\n' % (pid, name, score, counts[(name, pid)], lowEs[(name, pid)], highEs[(name, pid)], lowBs[(name, pid)], highBs[(name, pid)]))

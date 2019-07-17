@@ -108,7 +108,7 @@ class OrfFinder(object):
                 else:
                     # Use when missing stop codon,
                     t = "M" + translate(n[3:], self.table, to_stop=True)
-                yield start, n, t
+                yield start, n, t  # Edited by CPT to be a generator
 
     def break_up_frame(self, s):
         """Returns offset, nuc, protein."""
@@ -151,8 +151,7 @@ class OrfFinder(object):
 
         Co-ordinates are Python style zero-based.
         """
-        # TODO - Refactor to use a generator function (in start order)
-        # rather than making a list and sorting?
+        # Refactored into generator by CPT
         full_len = len(nuc_seq)
         if self.strand != "reverse":
             for frame in range(0, 3):
@@ -272,8 +271,8 @@ class MGAFinder(object):
 
         Co-ordinates are Python style zero-based.
         """
-        # TODO - Refactor to use a generator function (in start order)
-        # rather than making a list and sorting?
+        # Refactored into generator by CPT
+
         full_len = len(nuc_seq)
         for frame in range(0, 3):
             for offset, n, t in self.break_up_frame(nuc_seq[frame:]):

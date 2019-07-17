@@ -14,7 +14,8 @@ def table_annotations(gff3In, out_errorlog):
   numWarning = 0
   containsHash = {}
   locations = []
-  disallowedChars = ['\t', '\n', '\r', '%', ';', '=', '&',',']
+  #disallowedChars = ['\t', '\n', '\r', '%', ';', '=', '&',',']
+  disallowedChars = ['\"']
   
   # For each record in gff3 parse
   for record in list(GFF.parse(gff3In)):
@@ -40,7 +41,8 @@ def table_annotations(gff3In, out_errorlog):
                 problem = "Carriage return"
               else:
                 problem = i
-              errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl1.type, featLvl1.id, str(notes), j, problem))
+              #errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl1.type, featLvl1.id, str(notes), j, problem))
+              errorMessage = errorMessage + ("Warning: Character '\"' in qualifiers of %s %s, will not be able to convert to Genbank\n Problem qualifier: %s: %s\n\n" % (featLvl1.type, featLvl1.id, str(notes), j))
               numWarning += 1 
 
       dupCheck = containsHash.get((featLvl1.type + str(featLvl1.location.start) + str(featLvl1.location.end)), -1)
@@ -70,7 +72,8 @@ def table_annotations(gff3In, out_errorlog):
                     problem = "Carriage return"
                   else:
                     problem = i
-                  errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl2.type, featLvl2.id, str(notes), j, problem))
+                  #errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl2.type, featLvl2.id, str(notes), j, problem))
+                  errorMessage = errorMessage + ("Warning: Character '\"' in qualifiers of %s %s, will not be able to convert to Genbank\n Problem qualifier: %s: %s\n\n" % (featLvl1.type, featLvl1.id, str(notes), j))
                   numWarning += 1 
 
           dupCheck = containsHash.get((featLvl2.type + str(featLvl2.location.start) + str(featLvl2.location.end)), -1)
@@ -111,7 +114,8 @@ def table_annotations(gff3In, out_errorlog):
                         problem = "Carriage return"
                       else:
                         problem = i
-                      errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl3.type, featLvl3.id, str(notes), j, problem))
+                      #errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl3.type, featLvl3.id, str(notes), j, problem))
+                      errorMessage = errorMessage + ("Warning: Character '\"' in qualifiers of %s %s, will not be able to convert to Genbank\n Problem qualifier: %s: %s\n\n" % (featLvl1.type, featLvl1.id, str(notes), j))
                       numWarning += 1  
 
               #cdsList = []
@@ -218,7 +222,6 @@ def table_annotations(gff3In, out_errorlog):
   
   i = 0
   allowOver = 60
-
   while (locations and i < len(locations) - 1):
     j = i + 1
     # To-Do: Check if i/j is tRNA and change below to allow flexibility
@@ -229,12 +232,14 @@ def table_annotations(gff3In, out_errorlog):
         allowOver = 60
 
     while(j < len(locations)):
-      if abs(locations[i].location.end - locations[j].location.start) >= allowOver:
+      if (locations[i].location.end - locations[j].location.start) >= allowOver:
         errorMessage = ("Error: %s %s overlaps %s %s by %d or more bases\n  %s %s Start: %d -- End: %d\n  %s %s Start: %d -- End: %d\n\n" % (locations[i].type, locations[i].id, locations[j].type, locations[j].id, allowOver, locations[i].type, locations[i].id, locations[i].location.start, locations[i].location.end, locations[j].type, locations[j].id, locations[j].location.start, locations[j].location.end)) + errorMessage
-      elif abs(locations[i].location.end - locations[j].location.start) > 0 and allowOver == 10:
+        numError += 1
+      elif (locations[i].location.end - locations[j].location.start) > 0 and allowOver == 10:
         errorMessage = ("Warning: %s %s overlaps %s %s, may wish to verify\n  %s %s Start: %d -- End: %d\n  %s %s Start: %d -- End: %d\n\n" % (locations[i].type, locations[i].id, locations[j].type, locations[j].id, locations[i].type, locations[i].id, locations[i].location.start, locations[i].location.end, locations[j].type, locations[j].id, locations[j].location.start, locations[j].location.end))
+        numWarning += 1
       j += 1
-      numError += 1
+      
     i += 1
 
   if errorMessage:

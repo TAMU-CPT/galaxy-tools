@@ -25,9 +25,11 @@ python $__tool_directory__/stop_stats.py
 	<help><![CDATA[
 **What it does**
 
-This tool processes a DNA Fasta File containing the sequences of all of your
-features of interest. For each sequence in your fasta file, the tool extracts
-the stop, and calculates the stop codon distribution for the whole fasta file::
+This tool processes a **DNA multi-FASTA file** containing feature sequences. For each 
+sequence in your FASTA file the tool extracts the stop codon, then it calculates the 
+codon distribution. 
+
+**Example Output**
 
 	# Name Codon Count
 	Ochre  TAA   155

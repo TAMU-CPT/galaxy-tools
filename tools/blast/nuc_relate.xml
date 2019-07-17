@@ -23,8 +23,8 @@ $__tool_directory__/db.json
 	<help>
 **What it does**
 
-This tool attempts to filter a set of blast results and return the top
-related genomes based on number (and score) of blastn matches.
+This tool filters a set of BLASTn results and return the top
+related genomes based on number (and score) of BLASTn matches.
 </help>
 	<tests/>
 	<expand macro="citations" />

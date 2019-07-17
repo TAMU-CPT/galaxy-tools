@@ -27,11 +27,15 @@ $__tool_directory__/gff3_fix_sixpack.py
         </test>-->
   </tests>
   <help><![CDATA[
-..class:: warningmark
+**What it does**
 
-This tool is incredibly naive. It does not think. It will remove each mRNA feature from the gff3
-and leave all other features with the gene parent. This is used to fix the naive ORF caller Sixpack
-output for entering into Apollo via jBrowse.
+This tool **strips ALL the mRNA features** in a GFF3 file. It specifically formats 
+the output of the naïve ORF call Sixpack such that it will be compatible with 
+Apollo via JBrowse.
+
+.. class:: warningmark While CDS and gene features are retained, mRNA features are 
+**not** present in the output GFF3 file.
+
       ]]></help>
 		<expand macro="citations" />
 </tool>

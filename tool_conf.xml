@@ -60,10 +60,12 @@
 		<tool file="cpt2/galaxy-tools/tools/fasta/get_orfs_or_cdss.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/shinefind.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/lipory.xml" label="gff3" />
-        <tool file="cpt2/galaxy-tools/tools/phage/disruptin_finder.xml" label="fasta" />
+	        <tool file="cpt2/galaxy-tools/tools/phage/disruptin_finder.xml" label="fasta" />
+		<tool file="cpt2/galaxy-tools/tools/phage/Disruptin_hydrophobicity_helicity_table_package.xml" label="fasta" />
+		<tool file="cpt2/galaxy-tools/tools/phage/reading_garnier_output.xml"/>
 		<label id="cpt2_gene_call_1" text="External / NON-CPT Tools"/>
 		<tool file="cpt2/galaxy-tools/tools/external/gmsn.pl.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/external/phageterm/PhageTerm.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/external/phageterm/PhageTerm.xml" hidden="True"/>
 	</section>
 	<section id="7374d429-f8a9-4f83-8dbc-8b5cd6a90f4b" name="CPT: Genomic Overview">
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_aastats.xml" label="fasta"/>
@@ -108,6 +110,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_introns.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_sequence.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_extract_sequence2.xml" label="gff3" />
+                <tool file="cpt2/galaxy-tools/tools/gff3/lipoP_to_gff3.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_split_into_frames.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_splitgff.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/remove_annotations.xml" label="gff3" />
@@ -138,6 +141,7 @@
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_regex_search.xml" label="fasta" />
 	</section>
 	<section id="b751a1c4-9cb9-4a41-8f3d-68c2b440088f" name="CPT: Blast Analysis / Filtering">
+		<tool file="cpt2/galaxy-tools/tools/blast/list_taxids.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_add_dice_column.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/cpt_blast_filter.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_filter.xml" label="experimental"/>
@@ -145,6 +149,7 @@
 		<tool file="cpt2/galaxy-tools/tools/blast/nuc_relate.xml" label="new"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/phg_relate.xml" label="new"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/prot_relate.xml" label="new"/>
+                <tool file="cpt2/galaxy-tools/tools/blast/prototype_relate.xml" label="new"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/top_hits_table.xml" label="new"/>
 	</section>
 	<section id="ac0a250f-94d2-4bdc-b3bc-8943fab4aa66" name="CPT: Blast Visualization">
@@ -161,6 +166,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_require_phage_start.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_require_sd.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/intersect.xml" label="gff3" />
+                <tool file="cpt2/galaxy-tools/tools/gff3/intersect_and_adjacent.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/neighbours.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/find_by_tag.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/remove_feature.xml" label="genbank" />
@@ -171,7 +177,7 @@
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_codon_opt.xml" label="fasta"/>
 	</section>
 	<section id="ee8ae399-6fae-435b-b6e1-80c4ad4a7a4a" name="CPT: Mutation Analysis Tools">
-		<tool file="cpt2/galaxy-tools/tools/one_snp_away/script.xml" />
+		<tool file="cpt2/galaxy-tools/tools/one_snp/one_snp.xml" />
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_disambig.xml" label="fasta" />
 	</section>
 
@@ -188,7 +194,7 @@
 	<section id="b3065028-2363-4c7a-922b-a054cfce8cc8" name="CPT: Comparative Genomics">
 		<tool file="cpt2/galaxy-tools/tools/comparative/mist3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/gepard.xml" hidden="True"/>
-		<tool file="cpt2/galaxy-tools/tools/comparative/progressivemauve.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/comparative/progressivemauve.xml" hidden="True"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/xmfa2gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/xmfa2bigwig.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/xmfa2tbl.xml"/>

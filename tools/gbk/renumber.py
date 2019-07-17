@@ -90,9 +90,13 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
             f_processed = []
             for gene in f_gene:
                 tag = [gene]
+                if gene.location.strand == 1: # Be strict on where to find starting RBS
+                    geneComp = gene.location.start
+                else:
+                    geneComp = gene.location.end
                 #find the gene's RBS feature
                 for rbs in [f for f in f_rbs if f not in f_processed]:
-                    if is_within(rbs, gene):
+                    if is_within(rbs, gene) and (rbs.location.start == geneComp or rbs.location.end == geneComp):
                         tag.append(rbs)
                         f_processed.append(rbs)
                         break
