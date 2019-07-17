@@ -7,6 +7,7 @@
       <requirement type="package" version="0.6.4">bcbiogff</requirement>
       <requirement type="package" version="0.12.0">python-levenshtein</requirement>
       <requirement type="package" version="2019.06.08">regex</requirement>
+      <requirement type="package">jinja2</requirement>
       <yield/>
     </requirements>
   </xml>
