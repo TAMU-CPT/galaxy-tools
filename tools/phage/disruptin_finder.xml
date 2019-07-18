@@ -40,5 +40,4 @@ thresholds for size, charge, and charge-to-size ratio criteria.
 This tool returns the selected sequences in a fasta format.
 
         ]]></help>
-		<expand macro="citations" />
 </tool>
