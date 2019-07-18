@@ -12,7 +12,7 @@ $fasta_file
 --thresh_net_charge $thresh_net_charge
 --thresh_size $thresh_size
 --thresh_charge_ratio $thresh_charge_ratio
-$selection_criteria
+--selection_criteria $selection_criteria
 
 > $output]]></command>
     <inputs>
@@ -23,8 +23,8 @@ $selection_criteria
 		
 	<param type="select" label="Type of selection criteria" name="selection_criteria">
 		<option value="net">Net charge</option>
-		<option value="--ratio">Ratio of charged residues to sequence length</option>
-		<option value="--both" selected="true">Both net charge and ratio</option>
+		<option value="ratio">Ratio of charged residues to sequence length</option>
+		<option value="both" selected="true">Both net charge and ratio</option>
 	</param>
 
     </inputs>
