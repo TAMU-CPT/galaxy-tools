@@ -125,5 +125,5 @@ if __name__ == '__main__':
         Final = single_prediction(Helix[i], Sheet[i], Turns[i], Coil[i])
         #csv.writerow(['Sequence: '] + [names[i]])
         #csv.writerow(Final)
-        print('Sequence Name: ' + names[i])
-        print(''.join(Final))
+        print('Sequence Name: ' + '\t' + names[i])
+        print('\t'.join(Final))
