@@ -4,6 +4,10 @@
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
 	</macros>
+        <requirements>
+		<requirement type="package" version="2.09">transtermhp</requirement>
+		<yield/>
+	</requirements>
 	<command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
