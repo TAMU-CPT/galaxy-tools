@@ -51,7 +51,7 @@ def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_r
 
             # Charge (total charged residues) to size ratio is calculated
             Length = len(sequence)
-            charge_ratio = charge_res/Length
+            charge_ratio = float(charge_res)/float(Length)
 
             # Based on the user-specified selection criteria a list of records is compiled
             if selection_criteria == 'net':

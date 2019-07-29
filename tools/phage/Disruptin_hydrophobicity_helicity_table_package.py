@@ -27,6 +27,7 @@ def disruptin_table(garnier_file, fasta_file):
         if row[0] == 'Sequence: ':
             names += [row[1]]
         elif row[0] in 'HETC':
+	    row = row.split('\t')
             sec_struct += [''.join(row)]
 			
     record = []
@@ -111,4 +112,4 @@ if __name__ == '__main__':
         print('Residue \t' + '\t'.join(residue[i]))
         print('Charge \t' + '\t'.join(charge[i]))
         print('Hydrophobicity \t' + '\t'.join(format(x, ".3f") for x in hydro[i]))
-        print('Secondary Structure \t' + ''.join(struct[i]))
+        print('Secondary Structure \t' + '\t'.join(struct[i]))
