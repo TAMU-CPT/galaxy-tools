@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.wig.rebase" name="Rebase Wig Analysis Results" version="1.0">
+<tool id="edu.tamu.cpt.wig.rebase" name="Rebase Wig Analysis Results" version="19.1.0.0">
   <description>against parent features</description>
   <macros>
     <import>macros.xml</import>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gff3.export_seq" name="GFF3 Feature Sequence Export" version="1.2">
+<tool id="edu.tamu.cpt.gff3.export_seq" name="GFF3 Feature Sequence Export" version="19.1.0.0">
   <description>Export corresponding sequence in genome from GFF3</description>
   <macros>
     <import>macros.xml</import>
