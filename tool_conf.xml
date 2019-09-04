@@ -117,6 +117,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_table_annotations.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/feature_export.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml" label="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/adjacent_features.xml" label="genbank" />
 	</section>
 	<section id="b581a70c-94e3-4121-824d-e6b1ae487b68" name="CPT: Translation / RevCom / Change Sequence IDs">
 		<tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" label="genbank,fasta,gff3,experimental"/>
