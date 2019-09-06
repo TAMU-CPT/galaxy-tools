@@ -23,10 +23,7 @@ def important_only(blast):
             float(data[10]),  # 11 Expectation value (E-value)
             # 12 Bit score
             # 13 All subject Seq-id(s), separated by a ';'
-            zip(
-                data[12].split(';'),
-                data[24].split('<>')
-            ),
+            zip(data[12].split(";"), data[24].split("<>")),
             # 14 Raw score
             # 15 Number of identical matches
             # 16 Number of positive-scoring matches
@@ -39,14 +36,18 @@ def important_only(blast):
             # 23 Query sequence length
             # 24 Subject sequence length
             # 25 All subject title(s), separated by a '<>'
-            data[25]  # 26 dice
+            data[25],  # 26 dice
         ]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('gff3', type=argparse.FileType("r"), help='Query Genome Features')
-    parser.add_argument('blasttsv', type=argparse.FileType("r"), nargs='+', help='Blast TSV Output')
+    parser.add_argument(
+        "gff3", type=argparse.FileType("r"), help="Query Genome Features"
+    )
+    parser.add_argument(
+        "blasttsv", type=argparse.FileType("r"), nargs="+", help="Blast TSV Output"
+    )
     args = parser.parse_args()
 
     top_hits = {}
@@ -65,37 +66,40 @@ if __name__ == '__main__':
             if evalue <= top_hits[qseq][fn][0] and dice >= top_hits[qseq][fn][2]:
                 top_hits[qseq][fn] = (evalue, sseq, dice)
 
-    sys.stdout.write('# Query Feature\tLocation\t')
-    sys.stdout.write('\t'.join(['%s\tevalue\tdice' % x for x in blast_names]))
-    sys.stdout.write('\n')
+    sys.stdout.write("# Query Feature\tLocation\t")
+    sys.stdout.write("\t".join(["%s\tevalue\tdice" % x for x in blast_names]))
+    sys.stdout.write("\n")
     for rec in GFF.parse(args.gff3):
-        for feat in fsort(feature_lambda(
-            rec.features,
-            feature_test_type,
-            {'types': 'CDS'},
-            subfeatures=False,
-        )):
-            sys.stdout.write(feat._parent._parent.qualifiers['Name'][0])
-            sys.stdout.write('\t')
+        for feat in fsort(
+            feature_lambda(
+                rec.features, feature_test_type, {"types": "CDS"}, subfeatures=False
+            )
+        ):
+            sys.stdout.write(feat._parent._parent.qualifiers["Name"][0])
+            sys.stdout.write("\t")
             sys.stdout.write(str(feat.location))
 
             for db in blast_names:
                 fid = get_id(feat)
                 if fid in top_hits:
                     if fn in top_hits[fid]:
-                        sys.stdout.write('\t')
-                        sys.stdout.write(';'.join(['%s %s' % (x, y) for (x, y) in top_hits[fid][fn][1]]))
-                        sys.stdout.write('\t')
+                        sys.stdout.write("\t")
+                        sys.stdout.write(
+                            ";".join(
+                                ["%s %s" % (x, y) for (x, y) in top_hits[fid][fn][1]]
+                            )
+                        )
+                        sys.stdout.write("\t")
                         sys.stdout.write(str(top_hits[fid][fn][0]))
-                        sys.stdout.write('\t')
+                        sys.stdout.write("\t")
                         sys.stdout.write(str(top_hits[fid][fn][2]))
                     else:
-                        sys.stdout.write('\tNone')
-                        sys.stdout.write('\tNone')
-                        sys.stdout.write('\tNone')
+                        sys.stdout.write("\tNone")
+                        sys.stdout.write("\tNone")
+                        sys.stdout.write("\tNone")
                 else:
-                    sys.stdout.write('\tNone')
-                    sys.stdout.write('\tNone')
-                    sys.stdout.write('\tNone')
+                    sys.stdout.write("\tNone")
+                    sys.stdout.write("\tNone")
+                    sys.stdout.write("\tNone")
 
-            sys.stdout.write('\n')
+            sys.stdout.write("\n")

@@ -4,6 +4,7 @@ import argparse
 from interval_tree import IntervalTree
 from BCBio import GFF
 from Bio.SeqFeature import FeatureLocation
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -15,10 +16,12 @@ def __get_features(child, interpro=False):
         for feature in rec.features:
             parent_feature_id = rec.id
             if interpro:
-                if feature.type == 'polypeptide':
+                if feature.type == "polypeptide":
                     continue
-                if '_' in parent_feature_id:
-                    parent_feature_id = parent_feature_id[parent_feature_id.index('_') + 1:]
+                if "_" in parent_feature_id:
+                    parent_feature_id = parent_feature_id[
+                        parent_feature_id.index("_") + 1 :
+                    ]
 
             try:
                 child_features[parent_feature_id].append(feature)
@@ -56,7 +59,7 @@ def __update_feature_location(feature, parent, protein2dna):
 
     feature.location = FeatureLocation(ns, ne, strand=st)
 
-    if hasattr(feature, 'sub_features'):
+    if hasattr(feature, "sub_features"):
         for subfeature in feature.sub_features:
             __update_feature_location(subfeature, parent, protein2dna)
 
@@ -67,7 +70,7 @@ def treeFeatures(features, strand=0):
             yield (int(feat.location.start), int(feat.location.end), feat.id)
 
 
-def neighbours(a, b, within=1000, mode='unordered', **kwargs):
+def neighbours(a, b, within=1000, mode="unordered", **kwargs):
     rec_a = list(GFF.parse(a))
     rec_b = list(GFF.parse(b))
 
@@ -78,7 +81,7 @@ def neighbours(a, b, within=1000, mode='unordered', **kwargs):
                 yield neighbours_in_record(a, b, within=within, mode=mode, **kwargs)
 
 
-def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
+def neighbours_in_record(rec_a, rec_b, within=1000, mode="unordered", **kwargs):
     feat_f = list(treeFeatures(rec_a.features, strand=1))
     feat_r = list(treeFeatures(rec_a.features, strand=-1))
 
@@ -103,7 +106,7 @@ def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
         end = feature.location.end
         if feature.location.strand > 0:
             start -= within
-            if mode != 'ordered':
+            if mode != "ordered":
                 end += within
 
             if tree_f is None:
@@ -122,7 +125,7 @@ def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
 
         else:
             end += within
-            if mode != 'ordered':
+            if mode != "ordered":
                 start -= within
 
             if tree_r is None:
@@ -144,19 +147,23 @@ def neighbours_in_record(rec_a, rec_b, within=1000, mode='unordered', **kwargs):
     return rec_a, rec_b
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
-    parser.add_argument('a', type=argparse.FileType("r"))
-    parser.add_argument('b', type=argparse.FileType("r"))
-    parser.add_argument('--within', type=int, default=1000)
-    parser.add_argument('--mode', type=str, choices=('ordered', 'unordered'), default='unordered')
-    parser.add_argument('--oa', type=str, default='a_hits_in_b.gff')
-    parser.add_argument('--ob', type=str, default='b_hits_in_a.gff')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="rebase gff3 features against parent locations", epilog=""
+    )
+    parser.add_argument("a", type=argparse.FileType("r"))
+    parser.add_argument("b", type=argparse.FileType("r"))
+    parser.add_argument("--within", type=int, default=1000)
+    parser.add_argument(
+        "--mode", type=str, choices=("ordered", "unordered"), default="unordered"
+    )
+    parser.add_argument("--oa", type=str, default="a_hits_in_b.gff")
+    parser.add_argument("--ob", type=str, default="b_hits_in_a.gff")
     args = parser.parse_args()
 
     for (a, b) in neighbours(**vars(args)):
-        with open(args.oa, 'a') as handle:
+        with open(args.oa, "a") as handle:
             GFF.write([a], handle)
 
-        with open(args.ob, 'a') as handle:
+        with open(args.ob, "a") as handle:
             GFF.write([b], handle)

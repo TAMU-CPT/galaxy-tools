@@ -5,6 +5,7 @@ import logging
 from intervaltree import IntervalTree
 from Bio import SeqIO
 from BCBio import GFF
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
@@ -17,13 +18,15 @@ def extract_gff3_regions(gff3_files):
                 data[record.id] = IntervalTree()
 
             for gene in record.features:
-                if gene.type in ('remark', 'DNA', 'annotation'):
+                if gene.type in ("remark", "DNA", "annotation"):
                     continue
 
-                data[record.id][int(gene.location.start):int(gene.location.end)] = True
+                data[record.id][
+                    int(gene.location.start) : int(gene.location.end)
+                ] = True
 
             # Mark off the end of the genome as not available.
-            data[record.id][len(record):(len(record) + 1)] = True
+            data[record.id][len(record) : (len(record) + 1)] = True
     # Merge overlapping intervals
     for key in data:
         data[key].merge_overlaps()
@@ -76,7 +79,7 @@ def nearest_gap(gaps, position, strand):
 def safe_reopen(fasta_file=None, gff3_files=None, position=-1, strand=0):
     occupied_regions = extract_gff3_regions(gff3_files)
 
-    for record in SeqIO.parse(fasta_file, 'fasta'):
+    for record in SeqIO.parse(fasta_file, "fasta"):
         # Get our list of gaps for this record
         gaps_in_data = list(gaps(occupied_regions[record.id]))
         # Arbitrarily choose the last one, so we re-open a bit upstream
@@ -86,18 +89,21 @@ def safe_reopen(fasta_file=None, gff3_files=None, position=-1, strand=0):
         # If it's a minus strand, auto-revcom
         if strand == -1:
             record.seq = record.seq.reverse_complement()
-            record.description += ' [SafeReopenRevCom=True]'
+            record.description += " [SafeReopenRevCom=True]"
 
-        record.description += ' [SafelyReopened=%s,%s bases from end]' % (after, len(record) - after)
+        record.description += " [SafelyReopened=%s,%s bases from end]" % (
+            after,
+            len(record) - after,
+        )
         yield record
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Identify shine-dalgarno sequences')
-    parser.add_argument('fasta_file', type=argparse.FileType("r"))
-    parser.add_argument('gff3_files', type=argparse.FileType("r"), nargs='+')
-    parser.add_argument('--position', type=int, default=-1)
-    parser.add_argument('--strand', type=int, default=1)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Identify shine-dalgarno sequences")
+    parser.add_argument("fasta_file", type=argparse.FileType("r"))
+    parser.add_argument("gff3_files", type=argparse.FileType("r"), nargs="+")
+    parser.add_argument("--position", type=int, default=-1)
+    parser.add_argument("--strand", type=int, default=1)
 
     args = parser.parse_args()
     for rec in safe_reopen(**vars(args)):

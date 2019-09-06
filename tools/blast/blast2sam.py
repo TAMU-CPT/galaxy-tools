@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.4
-''' Parse Blast output in XML with Biopython and converts to SAM (v1).
+""" Parse Blast output in XML with Biopython and converts to SAM (v1).
 Tested with Biopython 1.64 and BLASTN 2.2.30+ command
 
     blastn -task blastn -subject ref.fasta -query reads.fasta -outfmt 5 \
@@ -113,7 +113,7 @@ SAM alignment mandatory fields
 9 TLEN Int [-2^31 + 1, 2^31 - 1] observed Template LENgth
 10 SEQ String \*|[A-Za-z=.]+ segment SEQuence
 11 QUAL String [!-~]+ ASCII of Phred-scaled base QUALity + 33
-'''
+"""
 
 import sys
 import copy
@@ -122,7 +122,7 @@ from math import log10
 from Bio.Blast import NCBIXML
 
 NOMAPQ = False
-def_qual = 'I'
+def_qual = "I"
 
 # Usage
 try:
@@ -131,11 +131,11 @@ except KeyError:
     sys.exit("Usage: blast2sam2.py <in+blastn>\n")
 
 
-sam_line = ['', 0, None, 0, 0, None, '*', 0, 0, '*', '*']
+sam_line = ["", 0, None, 0, 0, None, "*", 0, 0, "*", "*"]
 
 
 def cigar(subject, query, queryStart, queryEnd, querySize):
-    '''Build CIGAR representation from an HSP
+    """Build CIGAR representation from an HSP
 
     GTCCATGCAATTTTAAGACTTGAACCCCCTTGACTGATTACAGTCAGT   original sequence: 48 bp
 
@@ -143,13 +143,13 @@ def cigar(subject, query, queryStart, queryEnd, querySize):
     GTCCATGCAATTTTAAGACTTG--------------AACCCCCTTGACTGATTACAGTCAGT  query
     ||||||||||||||||||||||              ||||||||||||||||||||||||||  midline
     GTCCATGCAATTTTAAGACTTGAACCTGTGATCTGAAACCCCCTTGACTGATTACAGTCAGT  subject
-    '''
+    """
 
     # To store CIGAR representation
     cigar_str = []
     # Head clipping
     if queryStart > 1:
-        cigar_str.append('%dH' % (queryStart - 1))
+        cigar_str.append("%dH" % (queryStart - 1))
 
     # Evaluate alignment position by position (always begin with a match)
     curType = "="
@@ -158,19 +158,19 @@ def cigar(subject, query, queryStart, queryEnd, querySize):
     cigarsum = 0
 
     assert len(query) == querySize
-    length = len(query.replace('-', ''))
+    length = len(query.replace("-", ""))
 
     # this loops over the alignment positions
     for i in range(querySize):
         # Current position type (deletion, insertion, match or mismatch)
-        if query[i] == '-':
-            curType = 'D'
-        elif subject[i] == '-':
-            curType = 'I'
+        if query[i] == "-":
+            curType = "D"
+        elif subject[i] == "-":
+            curType = "I"
         elif query[i] == subject[i]:
-            curType = '='
+            curType = "="
         else:
-            curType = 'X'
+            curType = "X"
 
         if curType == prevType:
             # Enlarge current segment
@@ -178,26 +178,30 @@ def cigar(subject, query, queryStart, queryEnd, querySize):
             count += 1
         else:
             # Write current segment and start a new one
-            cigar_str.append('%d%s' % (count, prevType))
-            if prevType in ['I', '=', 'X']:
+            cigar_str.append("%d%s" % (count, prevType))
+            if prevType in ["I", "=", "X"]:
                 cigarsum += count
             prevType = curType
             count = 1
 
     # Write last group
-    cigar_str.append('%d%s' % (count, curType))
-    if curType in ['I', '=', 'X']:
+    cigar_str.append("%d%s" % (count, curType))
+    if curType in ["I", "=", "X"]:
         cigarsum += count
 
     # Tail clipping
     if queryEnd < length:
         # print(query, querySize, queryEnd, file=sys.stderr)
-        cigar_str.append('%dH' % (length - queryEnd))
+        cigar_str.append("%dH" % (length - queryEnd))
 
-    assert cigarsum == length, '%s: cigar:%s\tcigarsum=%d,length=%d' % \
-        (query, ''.join(cigar_str), cigarsum, length)
+    assert cigarsum == length, "%s: cigar:%s\tcigarsum=%d,length=%d" % (
+        query,
+        "".join(cigar_str),
+        cigarsum,
+        length,
+    )
     # Join segments into a string
-    return ''.join(cigar_str)
+    return "".join(cigar_str)
 
 
 # use itertools.tee() because we need the list twice
@@ -217,10 +221,10 @@ for record in blast_records:
         references[record.query] = alignment.length
 
 # print header
-print('@HD\tVN:1.0\tSO:unsorted')
+print("@HD\tVN:1.0\tSO:unsorted")
 for k, v in references.items():
-    print('@SQ\tSN:%s\tLN:%d' % (k, v))
-print('@PG\tID:%s\tVN:%s\tCL:%s' % (application, version, ' '.join(sys.argv)))
+    print("@SQ\tSN:%s\tLN:%d" % (k, v))
+print("@PG\tID:%s\tVN:%s\tCL:%s" % (application, version, " ".join(sys.argv)))
 
 counter = {}
 i = 0
@@ -231,14 +235,14 @@ for record in blast_records_backup:
             to_print = copy.copy(sam_line)
 
             idx = 0
-            k = '|||'.join((record.query, alignment.hit_id))
+            k = "|||".join((record.query, alignment.hit_id))
             if k in counter:
                 counter[k] += 1
                 idx = counter[k]
             else:
                 counter[k] = 0
 
-            to_print[0] = alignment.hit_id + ':%s' % idx
+            to_print[0] = alignment.hit_id + ":%s" % idx
             i += 1
             to_print[2] = record.query
             # to_print[0] = record.query
@@ -267,10 +271,11 @@ for record in blast_records_backup:
                 # Handle in sam_rebase script
                 pass
 
-            to_print[5] = cigar(hsp.sbjct, hsp.query, hsp.query_start,
-                                hsp.query_end, hsp.align_length)
+            to_print[5] = cigar(
+                hsp.sbjct, hsp.query, hsp.query_start, hsp.query_end, hsp.align_length
+            )
 
-            to_print[9] = hsp.query.replace('-', '')
+            to_print[9] = hsp.query.replace("-", "")
             to_print[10] = def_qual * len(to_print[9])
             to_print = [str(t) for t in to_print]
-            print('\t'.join(to_print))
+            print("\t".join(to_print))

@@ -7,6 +7,7 @@ from Bio import SeqIO
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type, get_id
 from Bio.SeqFeature import SeqFeature, FeatureLocation
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -15,23 +16,36 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta_genome, "fasta"))
 
     CASES = [
-        re.compile('^.{%s,%s}[ACGSILMFTV][^REKD][GASNL]C' % (lipobox_mindist, lipobox_maxdist)),
-        
+        re.compile(
+            "^.{%s,%s}[ACGSILMFTV][^REKD][GASNL]C" % (lipobox_mindist, lipobox_maxdist)
+        ),
         # Make sure to not have multiple cases that share matches, will introduce duplicate features into gff3 file
     ]
 
     for record in GFF.parse(gff3_file, base_dict=seq_dict):
         good_features = []
 
-        genes = list(feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True))
+        genes = list(
+            feature_lambda(
+                record.features, feature_test_type, {"type": "gene"}, subfeatures=True
+            )
+        )
         for gene in genes:
-            cdss = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))
+            cdss = list(
+                feature_lambda(
+                    gene.sub_features,
+                    feature_test_type,
+                    {"type": "CDS"},
+                    subfeatures=False,
+                )
+            )
             if len(cdss) == 0:
                 continue
 
-
             try:
-                tmpseq = str(cds.extract(record.seq).translate(table=11, cds=True)).replace("*", "")
+                tmpseq = str(
+                    cds.extract(record.seq).translate(table=11, cds=True)
+                ).replace("*", "")
             except:
                 continue
 
@@ -47,17 +61,17 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
 
                     tmp = SeqFeature(
                         FeatureLocation(
-                            min(start, end),
-                            max(start, end),
-                            strand=cds.location.strand
+                            min(start, end), max(start, end), strand=cds.location.strand
                         ),
-                        type='Lipobox',
+                        type="Lipobox",
                         qualifiers={
-                            'source': 'CPT_LipoRy',
-                            'ID': '%s.lipobox' % get_id(gene),
-                        }
+                            "source": "CPT_LipoRy",
+                            "ID": "%s.lipobox" % get_id(gene),
+                        },
                     )
-                    tmp.qualifiers['sequence'] = str(tmp.extract(record).seq.translate())
+                    tmp.qualifiers["sequence"] = str(
+                        tmp.extract(record).seq.translate()
+                    )
 
                     gene.sub_features.append(tmp)
                     good_features.append(gene)
@@ -66,15 +80,27 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
         yield [record]
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Filter out lipoproteins', epilog="")
-    parser.add_argument('gff3_file', type=argparse.FileType("r"), help='Naive ORF Calls')
-    parser.add_argument('fasta_genome', type=argparse.FileType("r"), help='Fasta genome sequence')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Filter out lipoproteins", epilog="")
+    parser.add_argument(
+        "gff3_file", type=argparse.FileType("r"), help="Naive ORF Calls"
+    )
+    parser.add_argument(
+        "fasta_genome", type=argparse.FileType("r"), help="Fasta genome sequence"
+    )
 
-    parser.add_argument('--lipobox_mindist', type=int,
-                        help='Minimum distance in codons to start of lipobox', default=10)
-    parser.add_argument('--lipobox_maxdist', type=int,
-                        help='Maximum distance in codons to start of lipobox', default=40)
+    parser.add_argument(
+        "--lipobox_mindist",
+        type=int,
+        help="Minimum distance in codons to start of lipobox",
+        default=10,
+    )
+    parser.add_argument(
+        "--lipobox_maxdist",
+        type=int,
+        help="Maximum distance in codons to start of lipobox",
+        default=40,
+    )
 
     args = parser.parse_args()
 

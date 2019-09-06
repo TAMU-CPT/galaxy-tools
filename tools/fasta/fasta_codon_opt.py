@@ -11,6 +11,7 @@ from Bio.Seq import Seq
 from Bio import SeqIO
 from itertools import groupby
 import logging
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
@@ -21,22 +22,21 @@ class Enzyme(object):
     # Ugly code re-use but we don't package things nicely enough to avoid it.
 
     DNA_REGEX_TRANSLATIONS = {
-        'A': 'A',
-        'T': 'T',
-        'C': 'C',
-        'G': 'G',
-        'N': '.',
-        'M': '[AC]',
-        'R': '[AG]',
-        'W': '[AT]',
-        'Y': '[CT]',
-        'S': '[CG]',
-        'K': '[GT]',
-
-        'H': '[^G]',
-        'B': '[^A]',
-        'V': '[^T]',
-        'D': '[^C]',
+        "A": "A",
+        "T": "T",
+        "C": "C",
+        "G": "G",
+        "N": ".",
+        "M": "[AC]",
+        "R": "[AG]",
+        "W": "[AT]",
+        "Y": "[CT]",
+        "S": "[CG]",
+        "K": "[GT]",
+        "H": "[^G]",
+        "B": "[^A]",
+        "V": "[^T]",
+        "D": "[^C]",
     }
 
     def __init__(self, forward, reverse):
@@ -54,14 +54,22 @@ class Enzyme(object):
     def iupac_to_regex(self, recognition_sequence):
         """Replace IUPAC extended DNA alphabet characters with appropriate
         regular experssions from Enzyme.DNA_REGEX_TRANSLATIONS"""
-        return ''.join([self.DNA_REGEX_TRANSLATIONS[x] for x in
-                        recognition_sequence])
+        return "".join([self.DNA_REGEX_TRANSLATIONS[x] for x in recognition_sequence])
 
 
 class Mutator(object):
-
-    def __init__(self, target, mask, table=11, codondb=None, seed=42,
-                 avoidCustom=None, avoidEnzyme=None, rebase=None, **kwargs):
+    def __init__(
+        self,
+        target,
+        mask,
+        table=11,
+        codondb=None,
+        seed=42,
+        avoidCustom=None,
+        avoidEnzyme=None,
+        rebase=None,
+        **kwargs
+    ):
 
         if seed > 0:
             random.seed(seed)
@@ -82,7 +90,7 @@ class Mutator(object):
         # Load target data from codondb
         header = None
         lastline = False
-        real_target = ':%s:' % target
+        real_target = ":%s:" % target
         for line in codondb:
             if real_target in line:
                 header = "" + line
@@ -92,19 +100,19 @@ class Mutator(object):
             if lastline:
                 break
 
-        self.target_table = self.parse_codondb(
-            header,
-            line.strip().split(' '))
+        self.target_table = self.parse_codondb(header, line.strip().split(" "))
 
     def parse_codondb(self, header, data):
         log.info("Found match: %s", header.strip())
         # Hardcoding beacuse lazy
-        spsum_label = ('CGA CGC CGG CGU AGA AGG CUA CUC CUG CUU UUA UUG UCA UCC '
-                       'UCG UCU AGC AGU ACA ACC ACG ACU CCA CCC CCG CCU GCA GCC '
-                       'GCG GCU GGA GGC GGG GGU GUA GUC GUG GUU AAA AAG AAC AAU '
-                       'CAA CAG CAC CAU GAA GAG GAC GAU UAC UAU UGC UGU UUC UUU '
-                       'AUA AUC AUU AUG UGG UAA UAG UGA')
-        spsum = spsum_label.replace('U', 'T').split(' ')
+        spsum_label = (
+            "CGA CGC CGG CGU AGA AGG CUA CUC CUG CUU UUA UUG UCA UCC "
+            "UCG UCU AGC AGU ACA ACC ACG ACU CCA CCC CCG CCU GCA GCC "
+            "GCG GCU GGA GGC GGG GGU GUA GUC GUG GUU AAA AAG AAC AAU "
+            "CAA CAG CAC CAU GAA GAG GAC GAU UAC UAU UGC UGU UUC UUU "
+            "AUA AUC AUU AUG UGG UAA UAG UGA"
+        )
+        spsum = spsum_label.replace("U", "T").split(" ")
         # Parse codondb/spsum
         organism_codon_usage = {k: int(v) for (k, v) in zip(spsum, data)}
 
@@ -122,14 +130,20 @@ class Mutator(object):
         return target_codon_table
 
     def mutate(self, sequence):
-        final_seq = Seq('')
+        final_seq = Seq("")
         regions = self.generate_evaluatable_regions(sequence)
         if len(regions) == 1:
             final_seq += self._safeMutate(sequence)
         else:
             for (region_start, region_end, masked) in regions:
                 region = sequence[region_start:region_end]
-                log.info('[%s..%s %s] %s', region_start, region_end, masked, str(region.seq)[0:60])
+                log.info(
+                    "[%s..%s %s] %s",
+                    region_start,
+                    region_end,
+                    masked,
+                    str(region.seq)[0:60],
+                )
                 if masked:
                     final_seq += region
                 else:
@@ -148,7 +162,10 @@ class Mutator(object):
             # log.info("... [%s] %s", runs, mutated_region.seq)
 
         if runs >= MAXTRIES:
-            log.error("Tried %s different variations, failed to find one without target sequence.", MAXTRIES)
+            log.error(
+                "Tried %s different variations, failed to find one without target sequence.",
+                MAXTRIES,
+            )
 
         return mutated_region
 
@@ -166,22 +183,33 @@ class Mutator(object):
         return False
 
     def _mutate(self, seq):
-        fixed_seq = ''
+        fixed_seq = ""
         for i in range(0, len(seq), 3):
-            codon = str(seq[i:i + 3].seq.upper())
+            codon = str(seq[i : i + 3].seq.upper())
             if len(codon) != 3:
                 fixed_seq += codon
                 log.warn("Feature was not of length % 3")
                 continue
 
             codon_aa = self.translation_table[codon]
-            possible_alternates = {k: v for (k, v) in self.target_table[codon_aa].iteritems() if v > 0.1}
+            possible_alternates = {
+                k: v for (k, v) in self.target_table[codon_aa].iteritems() if v > 0.1
+            }
             if len(possible_alternates) == 0:
-                raise Exception(("This should NEVER occur. It should be mathematically impossible unless "
-                                 "your translation table specifies 11 possible translations for a single amino acid."))
+                raise Exception(
+                    (
+                        "This should NEVER occur. It should be mathematically impossible unless "
+                        "your translation table specifies 11 possible translations for a single amino acid."
+                    )
+                )
             replacement = self.weighted_sample(possible_alternates)[0]
-            log.debug('Codon: %s translates to %s, target table offers following frequencies: %s and we chose %s',
-                      codon, codon_aa, possible_alternates, replacement)
+            log.debug(
+                "Codon: %s translates to %s, target table offers following frequencies: %s and we chose %s",
+                codon,
+                codon_aa,
+                possible_alternates,
+                replacement,
+            )
             fixed_seq += replacement
         seq.seq = fixed_seq
         return seq
@@ -196,7 +224,7 @@ class Mutator(object):
         regions = {}
         for x in bedfiles:
             for line in x:
-                bedline = line.strip().split('\t')
+                bedline = line.strip().split("\t")
                 chrId = bedline[0]
                 if chrId not in regions:
                     regions[chrId] = []
@@ -208,8 +236,8 @@ class Mutator(object):
     def gen_opt_table(self, table=11):
         data = {}
         tntable = {}
-        for codons in itertools.product('ACTG', repeat=3):
-            key = ''.join(codons)
+        for codons in itertools.product("ACTG", repeat=3):
+            key = "".join(codons)
             seq = Seq(key)
             res = str(seq.translate(table=table))
             if res in data:
@@ -267,20 +295,34 @@ class WeightedPopulation(Sequence):
         return self.population[bisect.bisect(self.cumweights, i)]
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('sequence', type=argparse.FileType("r"), help='sequence file')
-    parser.add_argument('target', type=str, help='target organism')
-    parser.add_argument('--table', type=int, help='Translation table #', default=1)
-    parser.add_argument('--mask', type=argparse.FileType("r"), nargs='*', help='Regions to mask for mutations')
-    parser.add_argument('--codondb', type=argparse.FileType("r"), help='Average codon database')
-    parser.add_argument('--rebase', type=argparse.FileType("r"), help='Rebase yaml file')
-    parser.add_argument('--seed', type=int, help='Random seed. 0 means choose randomly at runtime', default=0)
-    parser.add_argument('--avoidCustom', nargs='*', help='Sequences to avoid')
-    parser.add_argument('--avoidEnzyme', nargs='*', help='Enzymes to avoid')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Process some integers.")
+    parser.add_argument("sequence", type=argparse.FileType("r"), help="sequence file")
+    parser.add_argument("target", type=str, help="target organism")
+    parser.add_argument("--table", type=int, help="Translation table #", default=1)
+    parser.add_argument(
+        "--mask",
+        type=argparse.FileType("r"),
+        nargs="*",
+        help="Regions to mask for mutations",
+    )
+    parser.add_argument(
+        "--codondb", type=argparse.FileType("r"), help="Average codon database"
+    )
+    parser.add_argument(
+        "--rebase", type=argparse.FileType("r"), help="Rebase yaml file"
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        help="Random seed. 0 means choose randomly at runtime",
+        default=0,
+    )
+    parser.add_argument("--avoidCustom", nargs="*", help="Sequences to avoid")
+    parser.add_argument("--avoidEnzyme", nargs="*", help="Enzymes to avoid")
 
     args = parser.parse_args()
     m = Mutator(**vars(args))
 
-    for sequence in SeqIO.parse(args.sequence, 'fasta'):
-        SeqIO.write(m.mutate(sequence), sys.stdout, 'fasta')
+    for sequence in SeqIO.parse(args.sequence, "fasta"):
+        SeqIO.write(m.mutate(sequence), sys.stdout, "fasta")
