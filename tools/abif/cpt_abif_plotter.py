@@ -62,13 +62,13 @@ class ABIFParser(object):
                 'correction': self.abif['S/N%1'][i],
                 'data': numpy.array(self.abif['DATA' + str(i + 9)]).astype(numpy.float)
             }
-        print list(map(ord, self.abif['PCON2']))
-        print len(sn['A']['data'])
+        print(list(map(ord, self.abif['PCON2'])))
+        print(len(sn['A']['data']))
 
         spacing = self.abif['SPAC1']
         if spacing < 0:
             spacing = float(self.basepos[-1] - self.basepos[0]) / (len(self.basepos) - 1)
-        print spacing
+        print(spacing)
 
 
 if __name__ == '__main__':
