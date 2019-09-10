@@ -8,19 +8,19 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/adjacent_features.py
-$gbkIn
-$fastaIn
-$upstreamOut
-$downstreamOut
+-genbankFiles $gbkIn
+-fastaFiles $fastaIn
+-upOut $upstreamOut
+-downOut $downstreamOut
 $mode
---numAhead $ahead
---numBack $back
+--forward $ahead
+--behind $back
 ]]></command>
   <inputs>
-    <param label="Genbank file" name="gbkIn" type="data" format="genbank"/>
-    <param label="Fasta file" name="fastaIn" type="data" format="fasta"/>
-    <param label="Number of features upstream to return" name="ahead" type="integer" value="2"/>
-    <param label="Number of features downstream to return" name="back" type="integer" value="2"/>
+    <param label="Genbank file" name="gbkIn" type="data" format="genbank" multiple="True"/>
+    <param label="Fasta file" name="fastaIn" type="data" format="fasta" multiple="True"/>
+    <param label="Number of features upstream to return" name="ahead" type="integer" value="1"/>
+    <param label="Number of features downstream to return" name="back" type="integer" value="1"/>
     <param name="mode" type="select" label="Mode">
       <option value="--genesOnly">Search only Gene-type features</option>
       <option value="--cdsOnly">Search only CDS-type features</option>
