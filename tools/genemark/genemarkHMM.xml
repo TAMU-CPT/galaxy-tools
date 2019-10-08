@@ -9,9 +9,9 @@
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gmhmme3
 #if $input_type.input_type_selector == "predef_file":
-  -m $model_predef 
+  -m $input_type.model_predef 
 #elif $input_type.input_type_selector == "hist_item":
-  -m $model_hist
+  -m $input_type.model_hist
 #end if
 $nuc
 $prot
