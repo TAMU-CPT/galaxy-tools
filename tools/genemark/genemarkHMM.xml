@@ -12,7 +12,7 @@ $__tool_directory__/gmhmme3
   -m $model_predef 
 #elif $input_type.input_type_selector == "hist_item":
   -m $model_hist
-#endif
+#end if
 $nuc
 $prot
 -f $format
