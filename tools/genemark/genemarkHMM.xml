@@ -9,13 +9,13 @@
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/gmhmme3
 #if $input_type.input_type_selector == "predef_file":
-  -m ./mod/$model_predef 
+  -m $model_predef 
 #elif $input_type.input_type_selector == "hist_item":
   -m $model_hist
 #endif
 $nuc
 $prot
-$format
+-f $format
 -o $outName
 
 $fastaSeq
@@ -31,20 +31,20 @@ $fastaSeq
         </param>
       <when value="predef_file">
         <param name="model_predef" type="select" label="Included Models:">
-            <option value="a_gambiae.mod">Gambiae</option>
-            <option value="a_thaliana.mod">Thaliana</option>
-            <option value="c_briggsae.mod">Briggsae</option>
-            <option value="c_elegans.mod">Elegans</option>
-            <option value="c_intestinalis.mod">Intestinalis</option>
-            <option value="c_reinhardtii.mod">Reinhardt II</option>
-            <option value="c_remanei.mod">Remanei</option>
-            <option value="d_melanogaster.mod">Melanogaster</option>
-            <option value="m_truncatula.mod">Truncatula</option>
-            <option value="o_sativa.mod">Sativa</option>                  
+            <option value="./mod/a_gambiae.mod">Gambiae</option>
+            <option value="./mod/a_thaliana.mod">Thaliana</option>
+            <option value="./mod/c_briggsae.mod">Briggsae</option>
+            <option value="./mod/c_elegans.mod">Elegans</option>
+            <option value="./mod/c_intestinalis.mod">Intestinalis</option>
+            <option value="./mod/c_reinhardtii.mod">Reinhardt II</option>
+            <option value="./mod/c_remanei.mod">Remanei</option>
+            <option value="./mod/d_melanogaster.mod">Melanogaster</option>
+            <option value="./mod/m_truncatula.mod">Truncatula</option>
+            <option value="./mod/o_sativa.mod">Sativa</option>                  
         </param>               
       </when>
       <when value="hist_item">
-        <param label="Mod File from History" name="model_hist" type="text" area="true" help="Newline-separated list of IDs"/>
+        <param label="Mod File from History" name="model_hist" type="data"/>
       </when>
     </conditional>
 
@@ -53,9 +53,9 @@ $fastaSeq
     <param checked="false" label="Output Nucleotide Sequence" name="nuc" type="boolean" falsevalue="" truevalue="-n"/>
     <param checked="false" label="Output Protein Translation" name="prot" type="boolean" falsevalue="" truevalue="-p"/>
     <param name="format" type="select" label="Output Format">
-              <option value="-f lst">LST</option>
-              <option value="-f gff3">GFF3</option>
-              <option value="-f gtf">GTF</option>
+              <option value="lst">LST</option>
+              <option value="gff3">GFF3</option>
+              <option value="gtf">GTF</option>
     </param>
   </inputs>
   <outputs>
