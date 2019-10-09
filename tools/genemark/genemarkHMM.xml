@@ -7,7 +7,21 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-echo 'ACTAAGGTACGTACAGTCCGATGTTTTTTTTTTTTTTTTCCGATCGGCCATCGTGTAGGACATTCCAGCTTGAAGTACGT' >> $__tool_directory__/.gm_key_64 && echo '521146385' >> $__tool_directory__/.gm_key_64 
+$__tool_directory__/KeyGen.py &&
+$__tool_directory__/gmhmme3
+#if $input_type.input_type_selector == "predef_file":
+  -m $input_type.model_predef 
+#elif $input_type.input_type_selector == "hist_item":
+  -m $input_type.model_hist
+#end if
+$nuc
+$prot
+-f $format
+-o $outName
+
+$fastaSeq
+
+
 
 ]]></command>
   <inputs>
