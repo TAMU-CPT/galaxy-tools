@@ -7,7 +7,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/KeyGen.py &&
+$__tool_directory__/KeyGen.py $__tool_directory__/.gm_key_64 &&
 $__tool_directory__/gmhmme3
 #if $input_type.input_type_selector == "predef_file":
   -m $input_type.model_predef 
