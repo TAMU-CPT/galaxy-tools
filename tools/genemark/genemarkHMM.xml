@@ -6,15 +6,10 @@
     <import>cpt-macros.xml</import>
   </macros>
 <requirements>
-      <requirement type="package" version="2.7">python</requirement>
-      <requirement type="package" version="1.65">biopython</requirement>
-      <requirement type="package" version="0.6.4">bcbiogff</requirement>
-      
       <requirement type="package">genemarkhmm</requirement>
       <yield/>
     </requirements>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/KeyGen.py $__tool_directory__/.gm_key_64 &&
 $__tool_directory__/gmhmme3
 #if $input_type.input_type_selector == "predef_file":
   -m $input_type.model_predef 
