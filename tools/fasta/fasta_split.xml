@@ -18,7 +18,7 @@ $splitLen
     <param label="Bases per sub-sequence" name="splitLen" type="integer" value="120" />
   </inputs>
   <outputs> 
-    <data format="fasta" name="output">
+    <data format="fasta" name="output"/>
   </outputs>
   <tests>
   </tests>
