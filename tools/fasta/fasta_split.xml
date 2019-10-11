@@ -16,7 +16,8 @@ $splitLen
     <param label="Fasta file" name="seqIn" type="data" format="fasta, txt"/> 
     <param label="Bases per sub-sequence" name="splitLen" type="integer" value="120" />
   </inputs>
-  <outputs>
+  <outputs> 
+    <data format="fasta" name="Split Fasta">
   </outputs>
   <tests>
   </tests>
