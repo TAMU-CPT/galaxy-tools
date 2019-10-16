@@ -2,7 +2,7 @@
 <macros>
 	<xml name="requirements">
 		<requirements>
-			<requirement type="package" version="2.4.0">progressivemauve</requirement>
+			<requirement type="package">progressivemauve</requirement>
 			<requirement type="package" version="2.7">python</requirement>
 			<requirement type="package" version="1.65">biopython</requirement>
 			<requirement type="package" version="0.6.4">bcbiogff</requirement>
