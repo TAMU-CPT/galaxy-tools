@@ -6,7 +6,7 @@
     <import>cpt-macros.xml</import>
   </macros>
 <requirements>
-      <requirement type="package">genemarkhmm</requirement>
+      <requirement type="package" version="1.2.0">genemarkhmm</requirement>
       <yield/>
     </requirements>
   <command detect_errors="aggressive"><![CDATA[
