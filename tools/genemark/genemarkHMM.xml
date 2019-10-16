@@ -10,6 +10,7 @@
       <yield/>
     </requirements>
   <command detect_errors="aggressive"><![CDATA[
+ls -a ||
 gmhmme3
 #if $input_type.input_type_selector == "predef_file":
   -m $input_type.model_predef 
