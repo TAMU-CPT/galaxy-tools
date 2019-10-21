@@ -75,15 +75,16 @@ def restquery(rawrequest, access_token, parameters):
 
     log.debug("Cache miss")
     request = Request(rawrequest)
-
+    log.debug("About to Except")
     try:
         response = urlopen(request)
         json_string = response.read()
         json_obj = json.loads(json_string)
     except URLError as e:
+        log.debug("Excepting: " + e.read())
         print('Got an error code:', e)
         sys.exit()
-
+    log.debug("Passed Except")
     with open(cache_path, 'w') as handle:
         json.dump(json_obj, handle)
 

@@ -16,7 +16,7 @@ $tagseq_file
         <param label="Tagseq" name="tagseq_file" type="data" format="tagseq" />
     </inputs>
     <outputs>
-		<data format="csv" name="output"/>
+		<data format="tabular" name="output"/>
     </outputs>
     <help><![CDATA[
 **What it does**

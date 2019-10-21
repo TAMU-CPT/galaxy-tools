@@ -20,9 +20,11 @@ if __name__ == '__main__':
         for seq in SeqIO.parse(gbk, 'genbank'):
             if args.name_src == 'id':
                 pass
-            elif args.name_src == 'name':
-                seq.id = seq.name
             elif args.name_src == 'phage_name':
                 (host, phage) = cpt.phage_name_parser(seq.description)
                 seq.id = phage
+            if args.name_src == 'name' or phage == None:
+                seq.id = seq.name
+            
+                
             SeqIO.write(seq, sys.stdout, 'fasta')

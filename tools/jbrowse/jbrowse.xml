@@ -1,4 +1,4 @@
-<tool id="jbrowse-cpt" name="JBrowse 0.6.3+cpt" version="0.6.3+cpt"> profile="16.04"
+<tool id="jbrowse-cpt" name="JBrowse 0.6.3+cpt" version="19.1.0.0"> profile="16.04"
   <description>genome browser</description>
   <macros>
     <import>macros.xml</import>

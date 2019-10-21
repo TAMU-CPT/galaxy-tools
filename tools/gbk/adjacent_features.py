@@ -1,0 +1,113 @@
+#!/usr/bin/env python
+from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.Data import CodonTable
+from Bio.SeqRecord import SeqRecord
+from Bio.SeqFeature import SeqFeature, FeatureLocation
+from Bio.Alphabet import generic_dna, generic_protein
+import argparse
+import logging
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger()
+
+def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downOut = None, genesOnly = False, cdsOnly = True, forward = 2, behind = 2):
+
+    genList = []
+    fastaList = []
+    
+    for fileX in genbankFiles:        
+        opener = SeqIO.parse(fileX, "genbank")
+        for openRec in opener: # To turn the generator into objects (or else we end up with a list of generators)
+            genList.append(openRec)
+
+    for fileX in fastaFiles:
+        opener = SeqIO.parse(fileX, "fasta")
+        for openRec in opener: # Technically flattens multifastas too
+            fastaList.append(openRec)
+    
+
+    for seqMatch in fastaList:
+        longOut = seqMatch.description
+        protID = seqMatch.id
+        fSeq = seqMatch.seq
+        
+        for gbk in genList:
+            sourceOut = gbk.id
+            num = -1
+            for feat in gbk.features:
+                num += 1
+            
+                if (genesOnly and feat.type != 'gene') or (cdsOnly and feat.type != 'CDS'):
+                    continue
+
+                temp = gbk.seq[feat.location.start : feat.location.end]
+                if feat.location.strand == -1:
+                    temp = temp.reverse_complement()
+                try:
+                    gSeq = temp.translate(table = 11, cds = True)
+                except CodonTable.TranslationError as cte:
+                    log.info("Translation issue at %s", cte)
+                    gSeq = temp.translate(table=11, cds=False)
+
+                if not('protein_id' in feat.qualifiers):
+                    feat.qualifiers['protein_id'] = ["++++++++"] # Junk value for genesOnly flag
+
+                if (gSeq == fSeq) or (protID == feat.qualifiers['protein_id'][0]): 
+                    goBack = num - 1
+                    goAhead = num + 1
+                    numBack = behind
+                    numAhead = forward
+                    backList = []
+                    aheadList = []
+
+                    while (numBack != 0 and goBack >= 0):
+                        if (genesOnly and gbk.features[goBack].type != 'gene') or (cdsOnly and gbk.features[goBack].type != 'CDS'):
+                            goBack -= 1
+                            continue
+                        backList.append(gbk.features[goBack])
+                        numBack -= 1
+                        goBack -= 1
+
+                    while (numAhead != 0 and goAhead < len(gbk.features)):
+                        if (genesOnly and gbk.features[goAhead].type != 'gene') or (cdsOnly and gbk.features[goAhead].type != 'CDS'):
+                            goAhead += 1
+                            continue
+                        aheadList.append(gbk.features[goAhead])
+                        numAhead -= 1
+                        goAhead += 1
+
+                    
+                    backList.reverse()
+                
+                    for item in backList:
+                        if 'protein_id' in item.qualifiers:
+                            upOut.write(">" + (item.qualifiers['protein_id'][0]) + " (5' of " + longOut + ' found within ' + sourceOut + ')\n')
+                        else:
+                            upOut.write(">" + (item.qualifiers['locus_tag'][0]) + " (5' of " + longOut + ' found within ' + sourceOut + ')\n')
+                        upOut.write(str(gbk.seq[item.location.start : item.location.end]) + '\n\n')
+
+                    for item in aheadList:
+                        if 'protein_id' in item.qualifiers:
+                            downOut.write(">" + (item.qualifiers['protein_id'][0]) + " (3' of " + longOut + ' found within ' + sourceOut + ')\n')
+                        else:
+                            downOut.write(">" + (item.qualifiers['locus_tag'][0]) + " (3' of " + longOut + ' found within ' + sourceOut + ')\n')
+                        downOut.write(str(gbk.seq[item.location.start : item.location.end]) + '\n\n')
+    
+    return
+
+    
+                    
+ 
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Export a subset of features from a Genbank file', epilog="")
+    parser.add_argument('-genbankFiles', nargs='+', type=argparse.FileType("r"), help='Genbank file')
+    parser.add_argument('-fastaFiles', nargs='+', type=argparse.FileType("r"), help='Fasta file to match against')
+    parser.add_argument('-upOut', type=argparse.FileType("w"), help='Upstream Fasta output', default='test-data/upOut.fa')
+    parser.add_argument('-downOut', type=argparse.FileType("w"), help='Downstream Fasta output', default='test-data/downOut.fa')
+    parser.add_argument('--genesOnly', action='store_true', help='Search and return only Gene type features')
+    parser.add_argument('--cdsOnly', action='store_true',  help='Search and return only CDS type features')
+    parser.add_argument('--forward', type=int, default=1, help='Number of features upstream from the hit to return')
+    parser.add_argument('--behind', type=int, default=1, help='Number of features downstream from the hit to return')
+    args = parser.parse_args()
+    extract_features(**vars(args))
+    

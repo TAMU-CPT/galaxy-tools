@@ -1,4 +1,4 @@
-"""
+'''
 This program is intended to find gene products that would be acceptable disruptin candidates.
 
 The criteria can be toggled between selecting for proteins with:
@@ -19,10 +19,11 @@ Input a multi fasta file with all of the predicted protein sequences from the ge
 sequence length, net charge, and charge residue to length ratio. The program outputs another fasta file.
 The output fasta file includes records for all the sequences meeting the size and charge criteria.
 
-"""
+'''
 
 from Bio import SeqIO
 import argparse
+import sys
 
 
 def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_ratio, selection_criteria):
@@ -50,7 +51,7 @@ def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_r
 
             # Charge (total charged residues) to size ratio is calculated
             Length = len(sequence)
-            charge_ratio = charge_res/Length
+            charge_ratio = float(charge_res)/float(Length)
 
             # Based on the user-specified selection criteria a list of records is compiled
             if selection_criteria == 'net':
@@ -78,8 +79,7 @@ if __name__ == '__main__':
     parser.add_argument('--thresh_net_charge', type=int, default=4)
     parser.add_argument('--thresh_size', type=int, default=100)
     parser.add_argument('--thresh_charge_ratio', type=float, default=0.25)
-    parser.add_argument('--thresh_charge_ratio', type=float, default=0.25)
-    parser.add_argument('--selection_criteria', action='store_true')
+    parser.add_argument('--selection_criteria', action='store')
     args = parser.parse_args()
 
     for seq in disruptin_finder(**vars(args)):

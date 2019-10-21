@@ -1,0 +1,39 @@
+<tool id="edu.tamu.cpt.blast.list_taxids" name="List BLAST TaxIDs" version="1.0">
+	<description>Creates a list of NCBI BLAST TaxIDs</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<requirements>
+			<requirement type="package" version="2.9.0">blast</requirement>
+        </requirements>
+	<command detect_errors="aggressive"><![CDATA[
+get_species_taxids.sh
+  $searchType $taxIn
+> $output
+]]></command>
+	<inputs>
+            <param label="Input is a common name (Select no if directly searching by TaxID)" name="searchType" type="boolean" truevalue="-n" falsevalue="-t"/>
+            <param label="Name or TaxID to retrieve related NCBI TaxIDs of" name="taxIn" type="text" value=""/>
+	</inputs>
+	<outputs>
+		<data format="txt" name="output"/>
+	</outputs>
+	<tests>
+	</tests>
+	<help><![CDATA[
+Note: Experimental, cannot currently be used with our existing BLAST tools.
+
+**What it does**
+
+Finds all the  related BLAST Taxonomy IDs for a given name or TaxID.
+
+**How it works**
+
+The tool runs NCBI's script for finding the Taxonomy IDs in order to narrow down future BLAST queries. 
+If you wish to search by Latin or common name, select True on the toggle. Otherwise, if you already know 
+the NCBI TaxID number of the organisms you'd like to find filter by, input the number and select False. 
+
+]]></help>
+	<expand macro="citations" />
+</tool>

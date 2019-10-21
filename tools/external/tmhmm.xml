@@ -1,4 +1,4 @@
-<tool id="TMHMM_to_gff3" name="TMHMM (GFF3)" version="1.2.0">
+<tool id="TMHMM_to_gff3" name="TMHMM (GFF3)" version="19.1.0.0">
 	<description>for prediction of transmembrane helices in proteins</description>
   <macros>
     <import>macros.xml</import>
