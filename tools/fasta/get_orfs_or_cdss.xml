@@ -4,7 +4,9 @@
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
 	</macros>
-	<expand macro="requirements"/>
+	<expand macro="requirements">
+            <requirement type="package" version="2019.06.08">regex</requirement>
+        <expand/>
 	<command interpreter="python" detect_errors="aggressive">
 get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e "closed" -m "all" --min_len $min_len --strand $strand --on $out_nuc_file --op $out_prot_file --ob $out_bed_file --og $out_gff3_file
 	</command>
