@@ -7,7 +7,7 @@
   </macros>
   <expand macro="requirements"/>
   <command interpreter="python" detect_errors="aggressive">featuresvg.py
-"${gbk}
+"${gbk}"
 --box_size $box_size
 > $plot
 </command>
