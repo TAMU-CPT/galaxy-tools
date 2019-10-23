@@ -5,8 +5,9 @@
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
   </macros>
-  <expand macro="requirements"/>
+  <expand macro="requirements">
       <requirement type="package" version="3.0.2">intervaltree</requirement>
+  </expand>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/neighbours.py
 $gff3_data_a
