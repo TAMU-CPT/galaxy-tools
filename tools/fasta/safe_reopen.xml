@@ -5,7 +5,7 @@
 		<import>cpt-macros.xml</import>
 	</macros>
         <expand macro="requirements">
-			<requirement type="package" version="0.6.4">bcbiogff</requirement>
+			<requirement type="package" version="0.6.6">bcbiogff</requirement>
 			<requirement type="package" version="3.0.2">intervaltree</requirement>
         </expand>
 	<command detect_errors="aggressive"><![CDATA[
