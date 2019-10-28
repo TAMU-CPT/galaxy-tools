@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO)
 
 def __get_features(child, interpro=False):
     child_features = {}
-    for rec in GFF.parse(child, base_dict=None):
+    for rec in GFF.parse(child):
         log.info("Parsing %s", rec.id)
         # Only top level
         for feature in rec.features:
