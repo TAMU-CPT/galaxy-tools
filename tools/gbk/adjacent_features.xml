@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.gbk.adjacent_features" name="Find adjacent Genbank features" version="RC1">
+<tool id="edu.tamu.cpt2.gbk.adjacent_features" name="Find adjacent Genbank features" version="RC2">
   <description>Searches a Genbank file for a given FASTA sequence, then outputs a file with adjacent upstream features, and another with adjacent downstream features.</description>
   <macros>
     <import>macros.xml</import>
@@ -12,6 +12,7 @@ python $__tool_directory__/adjacent_features.py
 -fastaFiles $fastaIn
 -upOut $upstreamOut
 -downOut $downstreamOut
+$translate
 $mode
 --forward $ahead
 --behind $back
@@ -21,6 +22,7 @@ $mode
     <param label="Fasta file" name="fastaIn" type="data" format="fasta" multiple="True"/>
     <param label="Number of features upstream to return" name="ahead" type="integer" value="1"/>
     <param label="Number of features downstream to return" name="back" type="integer" value="1"/>
+    <param label="Translate output to protein sequence" name="translate" type="boolean" truevalue="--outProt" falsevalue=""/>
     <param name="mode" type="select" label="Mode">
       <option value="--genesOnly">Search only Gene-type features</option>
       <option value="--cdsOnly">Search only CDS-type features</option>

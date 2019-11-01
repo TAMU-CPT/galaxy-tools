@@ -10,7 +10,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
-def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downOut = None, genesOnly = False, cdsOnly = True, forward = 2, behind = 2):
+def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downOut = None, genesOnly = False, cdsOnly = True, forward = 1, behind = 1, outProt = True):
 
     genList = []
     fastaList = []
@@ -24,7 +24,7 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
         opener = SeqIO.parse(fileX, "fasta")
         for openRec in opener: # Technically flattens multifastas too
             fastaList.append(openRec)
-    
+
 
     for seqMatch in fastaList:
         longOut = seqMatch.description
@@ -46,7 +46,7 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                 try:
                     gSeq = temp.translate(table = 11, cds = True)
                 except CodonTable.TranslationError as cte:
-                    log.info("Translation issue at %s", cte)
+                    #log.info("Translation issue at %s", cte)
                     gSeq = temp.translate(table=11, cds=False)
 
                 if not('protein_id' in feat.qualifiers):
@@ -84,14 +84,41 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                             upOut.write(">" + (item.qualifiers['protein_id'][0]) + " (5' of " + longOut + ' found within ' + sourceOut + ')\n')
                         else:
                             upOut.write(">" + (item.qualifiers['locus_tag'][0]) + " (5' of " + longOut + ' found within ' + sourceOut + ')\n')
-                        upOut.write(str(gbk.seq[item.location.start : item.location.end]) + '\n\n')
+
+                        if outProt == True:
+                            if 'translation' in item.qualifiers:
+                                upOut.write(str(item.qualifiers['translation'][0]) + '\n\n')
+                            else:
+                                seqHold = gbk.seq[item.location.start : item.location.end]
+                                if item.location.strand == -1:
+                                  seqHold = seqHold.reverse_complement()
+                                if cdsOnly:
+                                    upOut.write(str(seqHold.translate(table=11, cds=True)) + '\n\n')
+                                else:
+                                    upOut.write(str(seqHold.translate(table=11, cds=False)) + '\n\n')
+                        else:
+                            upOut.write(str(gbk.seq[item.location.start : item.location.end]) + '\n\n')
 
                     for item in aheadList:
                         if 'protein_id' in item.qualifiers:
-                            downOut.write(">" + (item.qualifiers['protein_id'][0]) + " (3' of " + longOut + ' found within ' + sourceOut + ')\n')
+                            downOut.write(">" + (item.qualifiers['protein_id'][0]) + " (5' of " + longOut + ' found within ' + sourceOut + ')\n')
                         else:
-                            downOut.write(">" + (item.qualifiers['locus_tag'][0]) + " (3' of " + longOut + ' found within ' + sourceOut + ')\n')
-                        downOut.write(str(gbk.seq[item.location.start : item.location.end]) + '\n\n')
+                            downOut.write(">" + (item.qualifiers['locus_tag'][0]) + " (5' of " + longOut + ' found within ' + sourceOut + ')\n')
+
+                        if outProt == True:
+                            if 'translation' in item.qualifiers:
+                                downOut.write(str(item.qualifiers['translation'][0]) + '\n\n')
+                            else:
+                                seqHold = gbk.seq[item.location.start : item.location.end]
+                                if item.location.strand == -1:
+                                  seqHold = seqHold.reverse_complement()
+                                if cdsOnly:
+                                    downOut.write(str(seqHold.translate(table=11, cds=True)) + '\n\n')
+                                else:
+                                    downOut.write(str(seqHold.translate(table=11, cds=False)) + '\n\n')
+                        else:
+                            downOut.write(str(gbk.seq[item.location.start : item.location.end]) + '\n\n')
+            #print(longOut)
     
     return
 
@@ -106,6 +133,7 @@ if __name__ == '__main__':
     parser.add_argument('-downOut', type=argparse.FileType("w"), help='Downstream Fasta output', default='test-data/downOut.fa')
     parser.add_argument('--genesOnly', action='store_true', help='Search and return only Gene type features')
     parser.add_argument('--cdsOnly', action='store_true',  help='Search and return only CDS type features')
+    parser.add_argument('--outProt', action='store_true',  help='Output the translated sequence')
     parser.add_argument('--forward', type=int, default=1, help='Number of features upstream from the hit to return')
     parser.add_argument('--behind', type=int, default=1, help='Number of features downstream from the hit to return')
     args = parser.parse_args()
