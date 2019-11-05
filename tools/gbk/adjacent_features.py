@@ -101,9 +101,9 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
 
                     for item in aheadList:
                         if 'protein_id' in item.qualifiers:
-                            downOut.write(">" + (item.qualifiers['protein_id'][0]) + " (5' of " + longOut + ' found within ' + sourceOut + ')\n')
+                            downOut.write(">" + (item.qualifiers['protein_id'][0]) + " (3' of " + longOut + ' found within ' + sourceOut + ')\n')
                         else:
-                            downOut.write(">" + (item.qualifiers['locus_tag'][0]) + " (5' of " + longOut + ' found within ' + sourceOut + ')\n')
+                            downOut.write(">" + (item.qualifiers['locus_tag'][0]) + " (3' of " + longOut + ' found within ' + sourceOut + ')\n')
 
                         if outProt == True:
                             if 'translation' in item.qualifiers:
