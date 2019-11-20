@@ -35,13 +35,13 @@ In order for the changes to apply, you must supply a column labeled ID where eac
 +----------+------------------------------------+--------+--------+------+----------------------------------------------------+
 |OrganismID| ID                                 |Boundary|Boundary|Strand|User entered Notes                                  |
 +----------+------------------------------------+--------+--------+------+----------------------------------------------------+
-|Snoke	   |153e7758-d519-402c-b385-f63a2118e90a|0       |2534    | +    |Adding a test note, with a comma                    |
+|Snoke	   |153e7758-d519-402c-b385-f63a2118e90a|0       |2534    | ``+``|Adding a test note, with a comma                    |
 +----------+------------------------------------+--------+--------+------+----------------------------------------------------+
-|Snoke     |2f7e2751-0b4e-44e0-9931-4b3e58dda2d3|2535    |4925    | +    |Adding a note and changed boundary from 4919 to 4925|
+|Snoke     |2f7e2751-0b4e-44e0-9931-4b3e58dda2d3|2535    |4925    | ``+``|Adding a note and changed boundary from 4919 to 4925|
 +----------+------------------------------------+--------+--------+------+----------------------------------------------------+
-|Snoke     |d9fb4b39-622b-4f1c-9eb6-7eb9c654662f|4949    |5096    | -    |                                                    |
+|Snoke     |d9fb4b39-622b-4f1c-9eb6-7eb9c654662f|4949    |5096    | ``-``|                                                    |
 +----------+------------------------------------+--------+--------+------+----------------------------------------------------+
-|Snoke     |8bd9b132-70f9-4246-a1ed-0052150f3ce9|5083    |5279    | -    |                                                    |
+|Snoke     |8bd9b132-70f9-4246-a1ed-0052150f3ce9|5083    |5279    | ``-``|                                                    |
 +----------+------------------------------------+--------+--------+------+----------------------------------------------------+
 
 will search for the gene features 153e7758-d519-402c-b385-f63a2118e90a, 2f7e2751-0b4e-44e0-9931-4b3e58dda2d3, and so on, and make the appropriate changes. For instance the first feature in this example will have a note added to it, and the second feature (assuming its end base previously not 4925) will have its end base changed to 4925 and have a note added to it.
