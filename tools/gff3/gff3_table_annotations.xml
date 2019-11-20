@@ -32,7 +32,7 @@ You can generate the table by hand or use the Annotation Table tool here: https:
 
 In order for the changes to apply, you must supply a column labeled ID where each entry has the randomly generated unique ID of the feature. For example, a tabular file that looks like
 
-Organism ID	ID	Boundary	Boundary	Strand	User entered Notes
+Organism\tID\tID\tBoundary\tBoundary\tStrand\tUser entered Notes\n
 Snoke	153e7758-d519-402c-b385-f63a2118e90a	0	2534	+	Adding a test note, with a comma
 Snoke	2f7e2751-0b4e-44e0-9931-4b3e58dda2d3	2535	4925	+	Adding a node and changed boundary from 4919 to 4925
 Snoke	d9fb4b39-622b-4f1c-9eb6-7eb9c654662f	4949	5096	-	
