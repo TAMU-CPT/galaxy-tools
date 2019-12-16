@@ -4,8 +4,8 @@
   <macros>
     <import>macros.xml</import>
   </macros>
-  <code file="webapollo.py"/>
   <expand macro="requirements"/>
+  <code file="webapollo.py"/>
   <command detect_errors="aggressive"><![CDATA[
 @APOLLO_ENSURE_USER_EXISTS@
 cp -R ${jbrowse.extra_files_path}/data/ @DATA_DIR@/${jbrowse.id};
