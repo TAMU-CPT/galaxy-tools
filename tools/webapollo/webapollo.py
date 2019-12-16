@@ -10,8 +10,8 @@ import logging
 import time
 import argparse
 from abc import abstractmethod
-from BCBio import GFF
-from Bio import SeqIO
+#from BCBio import GFF
+#from Bio import SeqIO
 logging.getLogger("requests").setLevel(logging.CRITICAL)
 log = logging.getLogger()
 
