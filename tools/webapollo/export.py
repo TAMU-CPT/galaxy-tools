@@ -42,6 +42,9 @@ def export(org_cn, seqs):
     # Seek back to start
     data.seek(0)
 
+    print(data)
+    sys.exit(3)
+
     records = list(GFF.parse(data))
     if len(records) == 0:
         print("Could not find any sequences or annotations for this organism + reference sequence")
