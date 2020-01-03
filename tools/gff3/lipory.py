@@ -63,7 +63,7 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
                       good_features.append(gene)
 
             record.features = good_features
-            yield [record]
+        yield [record]
 
 
 if __name__ == '__main__':
