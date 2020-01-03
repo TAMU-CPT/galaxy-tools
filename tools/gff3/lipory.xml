@@ -5,6 +5,7 @@
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
   </macros>
+  <expand macro="requirements"/>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[lipory.py
 $positional_1
 $positional_2
