@@ -136,7 +136,6 @@ class IntronFinder(object):
         self.length = 0
 
         (self.gff_info, self.rec, self.length) = parse_gff(gff3)
-        print(self.length)
         self.blast = parse_xml(blastp)
 
     def create_clusters(self):
@@ -324,12 +323,18 @@ class IntronFinder(object):
                 cluster_elem = [x for x in clusters[cluster_id] if x['name'] == gene_name][0]
                 # Calculate %identity which we'll use to score
                 score = int(1000 * float(cluster_elem['identity']) / abs(cluster_elem['query_range'][1] - cluster_elem['query_range'][0]))
+
+                tempLoc = FeatureLocation(cds.location.start + (3 * (cluster_elem['query_range'][0] - 1)),
+                                          cds.location.start + (3 * (cluster_elem['query_range'][1])),
+                                          cds.location.strand)
+                cds.location = tempLoc
                 # Set the qualifiers appropriately
                 cds.qualifiers = {
                     'ID': ['gp_%s.CDS.%s' % (cluster_idx, idx)],
                     'score': score,
                     'Name': self.gff_info[gene_name]['name'],
                 }
+                #cds.location.start = cds.location.start +
                 cdss.append(cds)
 
             # And we attach the things properly.
@@ -342,8 +347,8 @@ class IntronFinder(object):
     def output_xml(self, clusters):
         threeLevel = {}
         #print((clusters.viewkeys()))
-        print(type(enumerate(clusters)))
-        print(type(clusters))
+        #print(type(enumerate(clusters)))
+        #print(type(clusters))
         for cluster_idx, cluster_id in enumerate(clusters):
             #print(type(cluster_id))
             #print(type(cluster_idx)) 
