@@ -12,7 +12,6 @@ python $__tool_directory__/intron_detection.py
 "$gff3_data"
 "$blast"
 --minimum $minimum
---svg "$svg"
 
 > $output]]></command>
   <inputs>
@@ -23,7 +22,6 @@ python $__tool_directory__/intron_detection.py
   </inputs>
   <outputs>
     <data format="gff3" name="output" label="Putative introns"/>
-    <data format="svg" name="svg" label="Putative introns (SVG)"/>
   </outputs>
   <help><![CDATA[
 **What it does**

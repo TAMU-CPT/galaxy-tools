@@ -46,7 +46,9 @@ def parse_xml(blastxml):
                     'sbjct_range': (hsp.sbjct_start, hsp.sbjct_end),
                     'query_range': (hsp.query_start, hsp.query_end),
                     'name': nice_name,
+                    'evalue': hsp.expect,
                     'identity': hsp.identities,
+                    'identity_percent': x,
                     'hit_num': align_num,
                     'iter_num': iter_num,
                     'match_id': alignment.title.partition(">")[0]
@@ -321,6 +323,7 @@ class IntronFinder(object):
                 cds = copy.copy(self.gff_info[gene_name]['feat'])
                 # Get the associated cluster element (used in the Notes above)
                 cluster_elem = [x for x in clusters[cluster_id] if x['name'] == gene_name][0]
+                
                 # Calculate %identity which we'll use to score
                 score = int(1000 * float(cluster_elem['identity']) / abs(cluster_elem['query_range'][1] - cluster_elem['query_range'][0]))
 
@@ -333,6 +336,8 @@ class IntronFinder(object):
                     'ID': ['gp_%s.CDS.%s' % (cluster_idx, idx)],
                     'score': score,
                     'Name': self.gff_info[gene_name]['name'],
+                    'evalue': cluster_elem['evalue'],
+                    'Identity': cluster_elem['identity_percent'] * 100,
                 }
                 #cds.location.start = cds.location.start +
                 cdss.append(cds)
@@ -368,7 +373,6 @@ if __name__ == '__main__':
     parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
     parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
     parser.add_argument('--minimum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 0, type = int)
-    parser.add_argument('--svg', help='Path to output svg file to', default='clusters.svg')
     args = parser.parse_args()
 
     # create new IntronFinder object based on user input
