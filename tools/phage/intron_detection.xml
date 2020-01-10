@@ -5,7 +5,11 @@
     <import>macros.xml</import>
 		<import>cpt-macros.xml</import>
   </macros>
-  <expand macro="requirements"/>
+  <requirements>
+        <requirement type="package" version="2.7">python</requirement>
+	<requirement type="package" version="1.74">biopython</requirement>
+	<requirement type="package" version="0.6.4">bcbiogff</requirement>
+  </requirements>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/intron_detection.py
 
