@@ -54,32 +54,11 @@ def split_identifiers_phage(par, ident):
 def important_only(blast, split_identifiers):
     for data in blast:
         yield [
-            data[0],  # 01 Query Seq-id (ID of your sequence)
-            # 02 Subject Seq-id (ID of the database hit)
-            # 03 Percentage of identical matches
-            # 04 Alignment length
-            # 05 Number of mismatches
-            # 06 Number of gap openings
-            # 07 Start of alignment in query
-            # 08 End of alignment in query
-            # 09 Start of alignment in subject (database hit)
-            # 10 End of alignment in subject (database hit)
-            data[10],  # 11 Expectation value (E-value)
-            # data[11],  # 12 Bit score
-            # 13 All subject Seq-id(s), separated by a ';'
-            # 14 Raw score
-            # 15 Number of identical matches
-            # 16 Number of positive-scoring matches
-            # 17 Total number of gaps
-            # 18 Percentage of positive-scoring matches
-            # 19 Query frame
-            # 20 Subject frame
-            # 21 Aligned part of query sequence
-            # 22 Aligned part of subject sequence
-            # 23 Query sequence length
-            # 24 Subject sequence length
-            split_identifiers(data[1], data[24]),  # 25 All subject title(s), separated by a '<>'
-            data[25]  # 26 dice
+            data[0], # 01 Query Seq-id (ID of your sequence)
+            data[1], # 13 All subject Seq-id(s), separated by a ';'
+            split_identifiers(data[1], data[2]),  # 25 All subject title(s), separated by a '<>'
+            data[3].split(";"), # Extra: All Subject Accessions
+            data[4].split(";") # Extra: All TaxIDs
         ]
 
 
@@ -90,19 +69,44 @@ def deform_scores(blast):
                 data[0],
                 data[1],
                 org,
-                data[3]
+                data[3],
+                data[4]
             ]
 
-
-def filter_phage(blast, phageNameLookup):
+def expand_taxIDs(blast):
     for data in blast:
-        if data[2] in phageNameLookup:
+        #if(len(data[4]) > 0):
+        #  print(data[0])
+        for ID in data[4]:
             yield [
                 data[0],
                 data[1],
                 data[2],
-                phageNameLookup[data[2]],
-                data[3]
+                data[3],
+                int(ID)
+            ]
+
+def expand_titles(blast):
+    for data in blast:
+        for title in data[2]:
+            yield [
+                data[0],
+                data[1],
+                title,
+                data[3],
+                data[4]
+            ]
+
+
+def filter_phage(blast, phageTaxLookup):
+    for data in blast:
+        if (data[4]) in phageTaxLookup:
+            yield [
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                data[4]
             ]
 
 
@@ -110,7 +114,7 @@ def remove_dupes(data):
     has_seen = {}
     for row in data:
         # qseqid, sseqid
-        key = (row[0], row[2])
+        key = (row[0], row[2], row[4])
         # If we've seen the key before, we can exit
         if key in has_seen:
             continue
@@ -122,55 +126,73 @@ def remove_dupes(data):
 
 
 def scoreMap(blast):
-    m = {}
     c = {}
-    for (qseq, evalue, name, id, dice) in blast:
-        if (name, id) not in m:
-            m[(name, id)] = 0
-            c[(name, id)] = 0
+    m = {}
+    for (qseq, subID, subTitle, access, ID) in blast:
+        if (subTitle, ID) not in c:
+            m[(subTitle, ID)] = access
+            c[(subTitle, ID)] = 0
 
-        m[(name, id)] += 1 * dice
-        c[(name, id)] += 1
-    return m, c
+        c[(subTitle, ID)] += 1
+    return c, m
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Top related genomes')
     parser.add_argument('blast', type=argparse.FileType("r"), help='Blast 25 Column Results')
     parser.add_argument('phagedb', type=argparse.FileType("r"))
+    parser.add_argument('--access', action='store_true')
     parser.add_argument('--protein', action='store_true')
     parser.add_argument('--canonical', action='store_true')
     parser.add_argument('--hits', type = int, default = 5)
 
     args = parser.parse_args()
 
-    phageDb = json.load(args.phagedb)
+    phageDb = args.phagedb
+    phageTaxLookup =[]
+    line = phageDb.readline()
+    while line:
+      phageTaxLookup.append(int(line))
+      line = phageDb.readline()
+    
     if args.protein:
         splitId = split_identifiers_prot
-        phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
+        #phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
     elif args.canonical:
         splitId = split_identifiers_phage
-        phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
+        #phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
     else:
         splitId = split_identifiers_nucl
-        phageNameLookup = {k['desc'].rstrip('.'): k['id'] for k in phageDb}
+        #phageNameLookup = {k['desc'].rstrip('.'): k['id'] for k in phageDb}
 
     data = parse_blast(args.blast)
-    data = with_dice(data)
-    data = filter_dice(data, threshold=0.0)
+    #data = with_dice(data)
+    #data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
-    data = deform_scores(data)
-    data = filter_phage(data, phageNameLookup)
+    
+    data = expand_taxIDs(data)
+    #data = deform_scores(data)
+    data = filter_phage(data, phageTaxLookup)
+    data = expand_titles(data)
+
     if args.protein or args.canonical:
         data = remove_dupes(data)
         count_label = "Similar Unique Proteins"
     else:
         count_label = "Nucleotide Hits"
 
-    scores, counts = scoreMap(data)
-    sys.stdout.write('# ID\tName\tScore\t%s\n' % count_label)
-    for idx, ((name, pid), score) in enumerate(sorted(scores.items(), key=lambda (x, y): -y)):
+    counts, accessions = scoreMap(data)
+    if args.access:
+      sys.stdout.write('# TaxID\tName\tAccessions\t%s\n' % count_label)
+      for idx, ((name, ID), num) in enumerate(sorted(counts.items(), key=lambda item: -item[1])):
         if idx > args.hits - 1:
             break
 
-        sys.stdout.write('%s\t%s\t%05.3f\t%d\n' % (pid, name, score, counts[(name, pid)]))
+        sys.stdout.write('%s\t%s\t%s\t%d\n' % (ID, name, str(accessions[(name, ID)])[1:-1], num))
+    else:
+      sys.stdout.write('# TaxID\tName\t%s\n' % count_label)
+      for idx, ((name, ID), num) in enumerate(sorted(counts.items(), key=lambda item: -item[1])):
+        if idx > args.hits - 1:
+            break
+
+        sys.stdout.write('%s\t%s\t%d\n' % (ID, name, num))
