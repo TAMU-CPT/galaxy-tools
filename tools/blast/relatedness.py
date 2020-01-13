@@ -188,7 +188,7 @@ if __name__ == '__main__':
         if idx > args.hits - 1:
             break
 
-        sys.stdout.write('%s\t%s\t%s\t%d\n' % (ID, name, str(accessions[(name, ID)])[1:-1], num))
+        sys.stdout.write('%s\t%s\t%s\t%d\n' % (ID, name, str(accessions[(name, ID)])[2:-2], num))
     else:
       sys.stdout.write('# TaxID\tName\t%s\n' % count_label)
       for idx, ((name, ID), num) in enumerate(sorted(counts.items(), key=lambda item: -item[1])):

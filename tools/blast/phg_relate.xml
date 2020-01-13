@@ -10,7 +10,6 @@
 $__tool_directory__/relatedness.py
 @BLAST_TSV@
 $__tool_directory__/TaxID_List.txt
-$access
 --hits $hits
 --canonical
 > $accession_list
@@ -18,7 +17,6 @@ $access
 	<inputs>
 	<expand macro="blast_tsv" />
                 <param label = 'Number of results to return' name="hits" type="integer" size="15" value="5"/>
-                <param name="access" type="boolean" truevalue="--access" falsevalue="" label="Return Accession Numbers"/>
 	</inputs>
 	<outputs>
 		<data format="tabular" name="accession_list" label="Top Phage Blast Hits" />
@@ -27,7 +25,7 @@ $access
 **What it does**
 
 This tool attempts to filter a set of blast results and return the top
-related genomes based on number (and score) of blastp matches to phages.
+related genomes based on number of blastp matches to phages.
 </help>
 	<tests/>
 	<expand macro="citations" />

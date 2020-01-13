@@ -26,7 +26,7 @@ $access
 **What it does**
 
 This tool filters a set of BLASTn results and return the top
-related genomes based on number (and score) of BLASTn matches.
+related genomes based on number of BLASTn matches.
 </help>
 	<tests/>
 	<expand macro="citations" />
