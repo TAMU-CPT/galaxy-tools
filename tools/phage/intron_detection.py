@@ -143,12 +143,13 @@ class IntronFinder(object):
     def create_clusters(self):
         """ Finds 2 or more genes with matching hits """
         clusters = {}
+        print(len(self.blast))
         for gene in self.blast:
             for hit in gene:
-                if ' ' in hit:
+                if ' ' in hit['gi_nos']:
                     hit = hit[0:hit.index(' ')]
-
                 name = hashlib.md5((','.join(hit['gi_nos'])).encode()).hexdigest()
+                
                 if name in clusters:
                     if hit not in clusters[name]:
                         clusters[name].append(hit)
@@ -174,6 +175,8 @@ class IntronFinder(object):
                     filtered_clusters[key + '_+1'] = pos_strand
                 if len(neg_strand) > 1:
                     filtered_clusters[key + '_-1'] = neg_strand
+                    
+        print(len(filtered_clusters))
         return filtered_clusters
 
     def check_gene_gap(self):
@@ -204,7 +207,7 @@ class IntronFinder(object):
     # def check_seq_gap():
 
     # also need a check for gap in sequence coverage?
-    def check_seq_overlap(self, minimum = 0):
+    def check_seq_overlap(self, minimum = 0, maximum = 1000):
         filtered_clusters = {}
         for key in self.clusters:
             add_cluster = True
@@ -213,22 +216,45 @@ class IntronFinder(object):
                 sbjct_ranges.append(gene['sbjct_range'])
 
             combinations = list(itertools.combinations(sbjct_ranges, 2))
-
+            
             for pair in combinations:
-                if minimum < 0 and len(set(range(pair[0][0], pair[0][1])) & set(range(pair[1][0], pair[1][1]))) > minimum * -1:
+                overlap = len(set(range(pair[0][0], pair[0][1])) & set(range(pair[1][0], pair[1][1])))
+                minPair = pair[0]
+                maxPair = pair[1]
+                
+                if minPair[0] > maxPair[0]:                
+                  minPair = pair[1]
+                  maxPair = pair[0]
+                elif minPair[0] == maxPair[0] and minPair[1] > maxPair[1]:
+                  minPair = pair[1]
+                  maxPair = pair[0]
+                if overlap > 0:
+                  dist1 = maxPair[0] - minPair[0]
+                  dist2 = max(maxPair[1], minPair[1]) - min(maxPair[1], minPair[1])
+                else:  
+                  dist1 = abs(maxPair[0] - minPair[1])
+                  dist2 = (self.length - maxPair[1]) + minPair[0]  # Wraparound distance
+                if minimum < 0:
+                  if overlap > (minimum * -1):
                     add_cluster = False
-                    break
-                elif minimum == 0 and len(set(range(pair[0][0], pair[0][1])) & set(range(pair[1][0], pair[1][1]))) > 0:
+                elif minimum == 0:
+                  if overlap > 0:
                     add_cluster = False
-                    break
-                elif (pair[0][0] > pair[1][1] and len(set(range(pair[1][1], pair[0][0]))) < minimum) or (pair[1][0] > pair[0][1] and len(set(range(pair[0][1], pair[1][0]))) < minimum):
+                elif overlap > 0:
+                  add_cluster = False
+
+                if maximum < 0:
+                  if overlap < (maximum * -1):
                     add_cluster = False
-                    break
-                elif (self.length - abs(pair[0][1] - pair[1][0]) < minimum) or (self.length - abs(pair[1][1] - pair[0][0]) < minimum):
+                elif maximum == 0:
+                  if overlap == 0:
                     add_cluster = False
-                    break
+
+                if (dist1 > maximum or dist1 < minimum) and (dist2 > maximum or dist2 < minimum):
+                  add_cluster = False
             if add_cluster:
                 filtered_clusters[key] = self.clusters[key]
+            
         log.debug("check_seq_overlap %s -> %s", len(self.clusters), len(filtered_clusters))
         return filtered_clusters
 
@@ -292,7 +318,8 @@ class IntronFinder(object):
                     **cluster_elem
                 )
                 evidence_notes.append(note)
-
+            if gene_max - gene_min > .8 * float(self.length):
+              evidence_notes.append("Intron is over 80% of the total length of the genome, possible wraparound scenario")
             # With that we can create the top level gene
             gene = SeqFeature(
                 location=FeatureLocation(gene_min, gene_max),
@@ -327,7 +354,7 @@ class IntronFinder(object):
                 # Calculate %identity which we'll use to score
                 score = int(1000 * float(cluster_elem['identity']) / abs(cluster_elem['query_range'][1] - cluster_elem['query_range'][0]))
 
-                tempLoc = FeatureLocation(cds.location.start + (3 * (cluster_elem['query_range'][0] - 1)),
+                tempLoc = FeatureLocation(cds.location.start + (3 * (cluster_elem['query_range'][0])),
                                           cds.location.start + (3 * (cluster_elem['query_range'][1])),
                                           cds.location.strand)
                 cds.location = tempLoc
@@ -373,6 +400,7 @@ if __name__ == '__main__':
     parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
     parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
     parser.add_argument('--minimum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 0, type = int)
+    parser.add_argument('--maximum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 1000, type = int)
     args = parser.parse_args()
 
     # create new IntronFinder object based on user input
@@ -380,7 +408,7 @@ if __name__ == '__main__':
     ifinder.create_clusters()
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap()
-    ifinder.clusters = ifinder.check_seq_overlap(minimum=args.minimum)
+    ifinder.clusters = ifinder.check_seq_overlap(minimum=args.minimum, maximum=args.maximum)
     #ifinder.output_xml(ifinder.clusters)
     #for x, idx in (enumerate(ifinder.clusters)):
     #print(ifinder.blast)

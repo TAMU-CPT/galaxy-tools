@@ -16,13 +16,15 @@ python $__tool_directory__/intron_detection.py
 "$gff3_data"
 "$blast"
 --minimum $minimum
-
+--maximum $maximum
 > $output]]></command>
   <inputs>
     <expand macro="gff3_input" />
     <param label="Blastp Results" name="blast" type="data" format="blastxml"/>
     <param label="Separation Minimum" name="minimum" type="integer" value="0"
-        help="Minimum distance a CDS pair must be separated by to detect an intron. Set to a negative number to instead allow CDS to overlap by up to that many bases."/>
+        help="Minimum number of bases a CDS pair may be separated by to detect an intron. Set to a negative number to instead allow CDS to overlap by up to that many bases."/>
+    <param label="Separation Maximum" name="maximum" type="integer" value="2000"
+        help="Maximum number of bases a CDS pair may be separated by to detect an intron. Set to a negative number to instead require CDS to overlap by at least that many bases."/>
   </inputs>
   <outputs>
     <data format="gff3" name="output" label="Putative introns"/>
@@ -33,6 +35,8 @@ python $__tool_directory__/intron_detection.py
 This tool parses BLAST XML results and returns potential intron regions by 
 identifying query proteins (within 10 genes of each other in the genome) with 
 BLAST hits to the same target protein. The list of hits is returned as a gff3.
+
+The maximum option must be set larger than the minimum option. If using a negative number for maximum (ie requiring X amount of overlap) be sure to set an appropraitely low minimum value as well, eg min = -170 and max = -20 for a result that overlaps by at least 20 bases, but no more than 170.
 
       ]]></help>
 		<expand macro="citations" />
