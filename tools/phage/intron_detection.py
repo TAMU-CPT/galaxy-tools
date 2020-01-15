@@ -143,7 +143,6 @@ class IntronFinder(object):
     def create_clusters(self):
         """ Finds 2 or more genes with matching hits """
         clusters = {}
-        print(len(self.blast))
         for gene in self.blast:
             for hit in gene:
                 if ' ' in hit['gi_nos']:
@@ -176,7 +175,6 @@ class IntronFinder(object):
                 if len(neg_strand) > 1:
                     filtered_clusters[key + '_-1'] = neg_strand
                     
-        print(len(filtered_clusters))
         return filtered_clusters
 
     def check_gene_gap(self):
