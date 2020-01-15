@@ -326,6 +326,7 @@ class IntronFinder(object):
                 qualifiers={
                     'ID': ['gp_%s' % cluster_idx],
                     'Notes': evidence_notes,
+                    'intron_info': clusters[cluster_id][cluster_idx]['match_id'],
                 }
             )
              
@@ -363,7 +364,7 @@ class IntronFinder(object):
                     'Name': self.gff_info[gene_name]['name'],
                     'evalue': cluster_elem['evalue'],
                     'Identity': cluster_elem['identity_percent'] * 100,
-                    'intron_info': cluster_elem['match_id'], #'|'.join(cluster_elem['gi_nos']) + "| title goes here."
+                     #'|'.join(cluster_elem['gi_nos']) + "| title goes here."
                 }
                 #cds.location.start = cds.location.start +
                 cdss.append(cds)
