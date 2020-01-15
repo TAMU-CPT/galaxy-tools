@@ -330,7 +330,7 @@ class IntronFinder(object):
                     'Notes': evidence_notes,
                 }
             )
-
+             
             # Below that we have an mRNA
             mRNA = SeqFeature(
                 location=FeatureLocation(gene_min, gene_max),
@@ -365,6 +365,7 @@ class IntronFinder(object):
                     'Name': self.gff_info[gene_name]['name'],
                     'evalue': cluster_elem['evalue'],
                     'Identity': cluster_elem['identity_percent'] * 100,
+                    'intron_info': cluster_elem['match_id'], #'|'.join(cluster_elem['gi_nos']) + "| title goes here."
                 }
                 #cds.location.start = cds.location.start +
                 cdss.append(cds)
