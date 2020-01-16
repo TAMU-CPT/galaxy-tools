@@ -26,6 +26,9 @@ $__tool_directory__/TaxID_List.txt
 
 This tool attempts to filter a set of blast results and return the top
 related genomes based on number of blastp matches to phages.
+
+The input must be a BLASTp tabular file with the qseqID, 
+sallseqID, salltitles, sallacc, staxIDs fields selected.
 </help>
 	<tests/>
 	<expand macro="citations" />
