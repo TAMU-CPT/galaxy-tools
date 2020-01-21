@@ -39,6 +39,7 @@ def parse_xml(blastxml):
                 if ' ' in nice_name:
                     nice_name = nice_name[0:nice_name.index(' ')]
 
+                
                 blast_gene.append({
                     'gi_nos': gi_nos,
                     'sbjct_length': alignment.length,
@@ -326,7 +327,7 @@ class IntronFinder(object):
                 qualifiers={
                     'ID': ['gp_%s' % cluster_idx],
                     'Notes': evidence_notes,
-                    'intron_info': clusters[cluster_id][cluster_idx]['match_id'],
+                    'intron_info': clusters[cluster_id][0]['match_id'],
                 }
             )
              
