@@ -53,6 +53,7 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                 start = int(feature.location.start)
                 end = int(feature.location.end)
                 strand = feature.location.strand
+                
                 if n_bases_downstream != 0:
                     # If we want extra on the end we cannot listen to
                     # stop_stripping requests
@@ -102,11 +103,12 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                     defline = ' [start=%s,end=%s]' % (start, end)
 
                 extracted_seq = ''.join(map(str, extracted_seqs))
-
                 if strip_stops:
                     if extracted_seq[-3:] in codon_table.stop_codons:
                         extracted_seq = extracted_seq[:-3]
-
+                    elif extracted_seq[-1:] in '*':
+                        extracted_seq = extracted_seq[:-1]
+                
                 yield [SeqRecord(Seq(extracted_seq.strip()), id=get_id(feature), description=defline)]
 
 
