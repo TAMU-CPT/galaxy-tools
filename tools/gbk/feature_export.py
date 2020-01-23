@@ -83,26 +83,52 @@ def extract_features(genbank_file=None, tag='CDS', translate=False,
                                                              end,
                                                              strand=strand),
                                              type='domain'))
+                
+                rangeS = __seqs[0].location.start
+                rangeE = __seqs[0].location.end
+                for s in __seqs:
+                  if rangeS > s.location.start:
+                    rangeS = s.location.start
+                  if rangeE > s.location.end:
+                    rangeE = s.location.end
+
+                if 'codon_start' in feature.qualifiers:
+                  if strand > 0:
+                    rangeS += int(feature.qualifiers['codon_start'][0]) - 1
+                  else:
+                    rangeE -= int(feature.qualifiers['codon_start'][0]) - 1
 
                 if translate:
-                    extracted_seqs = []
-                    for x in __seqs:
-                        try:
-                            y = x.extract(record.seq).translate(table=translation_table_id, cds=True)
-                            extracted_seqs.append(y)
-                        except Exception as bdct:
-                            y = x.extract(record.seq).translate(table=translation_table_id, cds=False)
-                            extracted_seqs.append(y)
-                            log.warn("ERROR %s %s", get_id(x), bdct)
+                    try:
+                      if strand > 0:
+                        retSeq = (record.seq[rangeS:rangeE]).translate(table=translation_table_id, cds=True)
+                      else:
+                        retSeq = (record.seq[rangeS:rangeE]).reverse_complement().translate(table=translation_table_id, cds=True)
+                    except Exception as bdct:
+                      if strand > 0:
+                        retSeq = (record.seq[rangeS:rangeE]).translate(table=translation_table_id, cds=False)
+                      else:
+                        retSeq = (record.seq[rangeS:rangeE]).reverse_complement().translate(table=translation_table_id, cds=False)
+                        log.warn("ERROR %s %s", get_id(feature), bdct)
+                    #extracted_seqs = []
+                    #for x in __seqs:
+                    #    try:
+                    #        y = x.extract(record.seq).translate(table=translation_table_id, cds=True)
+                    #        extracted_seqs.append(y)
+                    #    except Exception as bdct:
+                    #        y = x.extract(record.seq).translate(table=translation_table_id, cds=False)
+                    #        extracted_seqs.append(y)
+                    #        log.warn("ERROR %s %s", get_id(x), bdct)
                 else:
-                    extracted_seqs = [x.extract(record.seq) for x in __seqs]
+                    retSeq = (record.seq[rangeS:rangeE])
+                    #extracted_seqs = [x.extract(record.seq) for x in __seqs]
 
                 if informative:
-                    defline = ' %s [start=%s,end=%s]' % (','.join(feature.qualifiers.get('product', [])), start, end)
+                    defline = (' %s [start=%s,end=%s]' % (','.join(feature.qualifiers.get('product', [])), start, end))
                 else:
                     defline = ' [start=%s,end=%s]' % (start, end)
 
-                extracted_seq = ''.join(map(str, extracted_seqs))
+                extracted_seq = str(retSeq)
                 if strip_stops:
                     if extracted_seq[-3:] in codon_table.stop_codons:
                         extracted_seq = extracted_seq[:-3]
