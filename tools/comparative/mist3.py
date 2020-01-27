@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 import argparse
 import time
 import tempfile
@@ -693,4 +693,4 @@ if __name__ == '__main__':
     parser.add_argument('--files_path', type=str, help='Image directory', default='mist_images')
 
     args = parser.parse_args()
-    print mist_wrapper(**vars(args))
+    print (mist_wrapper(**vars(args)))
