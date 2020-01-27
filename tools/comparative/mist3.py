@@ -32,7 +32,7 @@ TICK_LENGTH = (.2 * MONTAGE_BORDER)
 
 CREDITS = (
     "CPT's MISTv3\n"
-    "GPLv3 (C) 2015 Eric Rasche <esr\@tamu.edu>\n"
+    "GPLv3 (C) 2015 Helena Rasche <esr\@tamu.edu>\n"
     "Dot plots by Gepard Dot Plotter by Dr. Jan Krumsiek"
 )
 
