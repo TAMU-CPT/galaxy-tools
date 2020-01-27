@@ -27,7 +27,7 @@ def _id_tn_dict(sequences):
     id_dupes = Counter(list(x['id'] for x in label_convert.values()))
     for dupe in id_dupes:
         if id_dupes[dupe] > 1:
-            print("Duplicate FASTA ID Found: %s\n"% (dupe))
+            log.debug("Duplicate FASTA ID Found: %s\n"% (dupe))
             for xmfaid in label_convert.keys():
                 # Change the duplicate labels to have the XMFA identifer
                 # as a prefix so not to break the table generation later

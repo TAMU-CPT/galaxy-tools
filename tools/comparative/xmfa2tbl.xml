@@ -49,5 +49,5 @@ The dice method uses the following formula to normalize considering both sequenc
 	2 * number of identical matches / (query sequence length + subject sequence length)
 
 ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>

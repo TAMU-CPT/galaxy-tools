@@ -45,5 +45,14 @@ It is currently recommended to select either the Gene only or CDS only options f
 Pending work: Better handling of sub-features to resolve above, and making more informed decisions on when and how to translate the NT sequence in genbank files to match protein Fastas.
 
 ]]></help>
-		<expand macro="citations" />
+		<citations>
+                        <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+		</citations>
 </tool>

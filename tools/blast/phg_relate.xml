@@ -31,5 +31,5 @@ The input must be a BLASTp tabular file with the qseqID,
 sallseqID, salltitles, sallacc, staxIDs fields selected.
 </help>
 	<tests/>
-	<expand macro="citations" />
+	<expand macro="citations-2020" />
 </tool>

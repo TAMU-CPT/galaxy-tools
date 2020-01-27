@@ -54,5 +54,5 @@ Position 3: GASNL
 Position 4: C
 
       ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>
