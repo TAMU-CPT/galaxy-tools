@@ -44,6 +44,8 @@ def intersect(a, b, window, stranding):
             else:
               b_neg.append(Interval(int(feat.location.start) - int(window), int(feat.location.end) + int(window), feat.id))
 
+
+        
         
         if stranding == False:        
         #builds interval tree from Interval objects of form (start, end, id) for each feature
@@ -78,12 +80,14 @@ def intersect(a, b, window, stranding):
                 rec_a_hits_in_b.append(rec_b_map[hit.data])
       
             else:
-              hits_pos = tree_b_pos[int(feature.location.start):int(feature.location.end)]
-              hits_neg = tree_b_neg[int(feature.location.start):int(feature.location.end)]
-              for hit in hits_pos:
-                rec_a_hits_in_b.append(rec_b_map[hit.data])
-              for hit in hits_neg:
-                rec_a_hits_in_b.append(rec_b_map[hit.data])
+              if feature.strand > 0:
+                hits_pos = tree_b_pos[int(feature.location.start):int(feature.location.end)]
+                for hit in hits_pos:
+                  rec_a_hits_in_b.append(rec_b_map[hit.data])
+              else:
+                hits_neg = tree_b_neg[int(feature.location.start):int(feature.location.end)]        
+                for hit in hits_neg:
+                  rec_a_hits_in_b.append(rec_b_map[hit.data])
 
         for feature in rec_b.features:
             if stranding == False:
@@ -94,12 +98,14 @@ def intersect(a, b, window, stranding):
                 rec_b_hits_in_a.append(rec_a_map[hit.data])
       
             else:
-              hits_pos = tree_a_pos[int(feature.location.start):int(feature.location.end)]
-              hits_neg = tree_a_neg[int(feature.location.start):int(feature.location.end)]
-              for hit in hits_pos:
-                rec_b_hits_in_a.append(rec_a_map[hit.data])
-              for hit in hits_neg:
-                rec_b_hits_in_a.append(rec_a_map[hit.data])
+              if feature.strand > 0:
+                hits_pos = tree_a_pos[int(feature.location.start):int(feature.location.end)]
+                for hit in hits_pos:
+                  rec_b_hits_in_a.append(rec_a_map[hit.data])
+              else:
+                hits_neg = tree_a_neg[int(feature.location.start):int(feature.location.end)]
+                for hit in hits_neg:
+                  rec_b_hits_in_a.append(rec_a_map[hit.data])
 
 
         #Remove duplicate features using sets
