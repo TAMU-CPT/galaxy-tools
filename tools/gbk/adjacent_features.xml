@@ -22,9 +22,6 @@ $mode
   <inputs>
     <param label="Genbank file" name="gbkIn" type="data" format="genbank" multiple="True"/>
     <param label="Fasta file" name="fastaIn" type="data" format="fasta" multiple="True"/>
-    <param label="Number of features upstream to return" name="ahead" type="integer" value="1"/>
-    <param label="Number of features downstream to return" name="back" type="integer" value="1"/>
-    <param label="Translate output to protein sequence" name="translate" type="boolean" truevalue="--outProt" falsevalue=""/>
     <param label="Translation table to use on Fasta input:" name="fTable" type="select">
       <option value="0" selected="true">[0] Do not translate/ Fasta already translated</option>
       <option value="1">[1] The Standard Code</option>
@@ -69,6 +66,9 @@ $mode
       <option value="24">[24] Pterobranchia Mitochondrial Code</option>
       <option value="25">[25] Candidate Division SR1 and Gracilibacteria Code</option>
     </param>
+    <param label="Number of features upstream to return" name="ahead" type="integer" value="1"/>
+    <param label="Number of features downstream to return" name="back" type="integer" value="1"/>
+    <param label="Translate output to protein sequence" name="translate" type="boolean" truevalue="--outProt" falsevalue=""/>
     <param name="mode" type="select" label="Mode">
       <option value="--genesOnly">Search only Gene-type features</option>
       <option value="--cdsOnly">Search only CDS-type features</option>
