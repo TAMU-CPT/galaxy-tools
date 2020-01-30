@@ -10,7 +10,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
-def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downOut = None, genesOnly = False, cdsOnly = True, forward = 1, behind = 1, outProt = True):
+def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downOut = None, genesOnly = False, cdsOnly = True, forward = 1, behind = 1, outProt = True, tTable = 11, fTable = 11):
 
     genList = []
     fastaList = []
@@ -29,7 +29,10 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
     for seqMatch in fastaList:
         longOut = seqMatch.description
         protID = seqMatch.id
-        fSeq = seqMatch.seq
+        if(fTable != 0):
+          fSeq = seqMatch.seq.translate(table = fTable, cds=False)
+        else:
+          fSeq = seqMatch.seq
         
         for gbk in genList:
             sourceOut = gbk.id
@@ -43,11 +46,15 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                 temp = gbk.seq[feat.location.start : feat.location.end]
                 if feat.location.strand == -1:
                     temp = temp.reverse_complement()
-                try:
-                    gSeq = temp.translate(table = 11, cds = True)
-                except CodonTable.TranslationError as cte:
+
+                if tTable != 0:
+                  try:
+                    gSeq = temp.translate(table = tTable, cds = True)
+                  except CodonTable.TranslationError as cte:
                     #log.info("Translation issue at %s", cte)
-                    gSeq = temp.translate(table=11, cds=False)
+                    gSeq = temp.translate(table=tTable, cds=False)
+                else:
+                  gSeq = temp
 
                 if not('protein_id' in feat.qualifiers):
                     feat.qualifiers['protein_id'] = ["++++++++"] # Junk value for genesOnly flag
@@ -93,9 +100,15 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                                 if item.location.strand == -1:
                                   seqHold = seqHold.reverse_complement()
                                 if cdsOnly:
-                                    upOut.write(str(seqHold.translate(table=11, cds=True)) + '\n\n')
+                                  if tTable != 0:
+                                    upOut.write(str(seqHold.translate(table=tTable, cds=True)) + '\n\n')
+                                  else:
+                                    upOut.write(str(seqHold) + '\n\n')
                                 else:
-                                    upOut.write(str(seqHold.translate(table=11, cds=False)) + '\n\n')
+                                  if tTable != 0:
+                                    upOut.write(str(seqHold.translate(table=tTable, cds=False)) + '\n\n')
+                                  else:
+                                    upOut.write(str(seqHold) + '\n\n')
                         else:
                             upOut.write(str(gbk.seq[item.location.start : item.location.end]) + '\n\n')
 
@@ -113,9 +126,15 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                                 if item.location.strand == -1:
                                   seqHold = seqHold.reverse_complement()
                                 if cdsOnly:
-                                    downOut.write(str(seqHold.translate(table=11, cds=True)) + '\n\n')
+                                  if tTable != 0:
+                                    downOut.write(str(seqHold.translate(table=tTable, cds=True)) + '\n\n')
+                                  else:
+                                    downOut.write(str(seqHold) + '\n\n')
                                 else:
-                                    downOut.write(str(seqHold.translate(table=11, cds=False)) + '\n\n')
+                                  if tTable != 0:
+                                    downOut.write(str(seqHold.translate(table=tTable, cds=False)) + '\n\n')
+                                  else:
+                                    downOut.write(str(seqHold) + '\n\n')
                         else:
                             downOut.write(str(gbk.seq[item.location.start : item.location.end]) + '\n\n')
             #print(longOut)
@@ -129,6 +148,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Export a subset of features from a Genbank file', epilog="")
     parser.add_argument('-genbankFiles', nargs='+', type=argparse.FileType("r"), help='Genbank file')
     parser.add_argument('-fastaFiles', nargs='+', type=argparse.FileType("r"), help='Fasta file to match against')
+    parser.add_argument('-tTable', type=int, default=11, help='Translation table to use', choices=range(0, 23))
+    parser.add_argument('-fTable', type=int, default=11, help='Translation table to use', choices=range(0, 23))
     parser.add_argument('-upOut', type=argparse.FileType("w"), help='Upstream Fasta output', default='test-data/upOut.fa')
     parser.add_argument('-downOut', type=argparse.FileType("w"), help='Downstream Fasta output', default='test-data/downOut.fa')
     parser.add_argument('--genesOnly', action='store_true', help='Search and return only Gene type features')
