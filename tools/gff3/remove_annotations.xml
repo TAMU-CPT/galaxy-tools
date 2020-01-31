@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gff3.remove_annots" name="Remove Annotation Feature" version="19.1.0.0" profile="16.04">
+<tool id="edu.tamu.cpt.gff3.remove_annots" name="Remove Annotation Feature" version="19.1.0.1" profile="16.04">
   <description>that's unused in our GFF tools</description>
   <macros>
     <import>macros.xml</import>
@@ -10,10 +10,12 @@
 python $__tool_directory__/remove_annotations.py
 $gff3_data
 $remark
+$region
 > $default]]></command>
   <inputs>
       <expand macro="gff3_input" />
-      <param checked="true" label="Remove remark features" name="remark" type="boolean" truevalue="--remark" falsevalue="" />
+      <param checked="true" label="Remove 'remark' features" name="remark" type="boolean" truevalue="--remark" falsevalue="" />
+      <param checked="true" label="Remove 'region' features" name="region" type="boolean" truevalue="--region" falsevalue="" />
   </inputs>
   <outputs>
     <data format="gff3" name="default"/>
@@ -21,8 +23,8 @@ $remark
   <help><![CDATA[
 **What it does**
 
-For an input GFF3, this tool specifically removes the feature entry with remark type (column 3) as needed for compatibility 
-with certain tools. The remark feature typically encompasses the entire length of the sequence upon which the GFF3 is based.
+For an input GFF3, this tool specifically removes the feature entry with remark and/or region type (column 3) as needed for compatibility 
+with certain tools. These feature typically encompasses the entire length of the sequence upon which the GFF3 is based.
 
 Example input::
     Miro	annotation	remark	1	167935	.	.	.	gff-version=3;sequence-region=%28%27Miro%27%2C 0%2C 172788%29
