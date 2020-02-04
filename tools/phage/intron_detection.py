@@ -14,7 +14,6 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
-
 def parse_xml(blastxml):
     """ Parses xml file to get desired info (genes, hits, etc) """
     blast = []
@@ -27,8 +26,8 @@ def parse_xml(blastxml):
             hit_gis = alignment.hit_id + alignment.hit_def
             gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9,10}', hit_gis)]
             
+            
             for hsp in alignment.hsps:
-                #print(dir(hsp))
                 x = float(hsp.identities) / (hsp.query_end - hsp.query_start)
                 if x < .5:
                     discarded_records += 1
@@ -54,6 +53,8 @@ def parse_xml(blastxml):
                     'iter_num': iter_num,
                     'match_id': alignment.title.partition(">")[0]
                 })
+                
+                
         blast.append(blast_gene)
     log.debug("parse_blastxml %s -> %s", len(blast) + discarded_records, len(blast))
     return blast
@@ -147,15 +148,25 @@ class IntronFinder(object):
         for gene in self.blast:
             for hit in gene:
                 if ' ' in hit['gi_nos']:
-                    hit = hit[0:hit.index(' ')]
-                name = hashlib.md5((','.join(hit['gi_nos'])).encode()).hexdigest()
+                    hit['gi_nos'] = hit['gi_nos'][0:hit['gi_nos'].index(' ')]
                 
+                nameCheck = ','.join(hit['gi_nos'])
+                if nameCheck == "":
+                  #print(hit['gi_nos'])
+                  continue
+                name = hashlib.md5((nameCheck).encode()).hexdigest()
+                                
+
                 if name in clusters:
+                    #print("Appending to cluster " + str(','.join(hit['gi_nos'])))
                     if hit not in clusters[name]:
                         clusters[name].append(hit)
                 else:
+                    #print("Creating cluster " + str(','.join(hit['gi_nos'])))
                     clusters[name] = [hit]
+        log.debug("create_clusters %s -> %s", len(self.blast), len(clusters))
         self.clusters = filter_lone_clusters(clusters)
+        #exit()
 
     def check_strand(self):
         """ filters clusters for genes on the same strand """
@@ -200,6 +211,7 @@ class IntronFinder(object):
          #   print(i)
           #  print(filtered_clusters[i])
         log.debug("check_gene_gap %s -> %s", len(self.clusters), len(filtered_clusters))
+        
         return remove_duplicates(filtered_clusters)  # call remove_duplicates somewhere else?
 
     # maybe figure out how to merge with check_gene_gap?
@@ -211,8 +223,10 @@ class IntronFinder(object):
         for key in self.clusters:
             add_cluster = True
             sbjct_ranges = []
-            for gene in self.clusters[key]:
+            query_ranges = []
+            for gene in self.clusters[key]:               
                 sbjct_ranges.append(gene['sbjct_range'])
+                query_ranges.append(gene['query_range'])
 
             combinations = list(itertools.combinations(sbjct_ranges, 2))
             
@@ -229,32 +243,32 @@ class IntronFinder(object):
                   maxPair = pair[0]
                 if overlap > 0:
                   dist1 = maxPair[0] - minPair[0]
-                  dist2 = max(maxPair[1], minPair[1]) - min(maxPair[1], minPair[1])
                 else:  
                   dist1 = abs(maxPair[0] - minPair[1])
-                  dist2 = (self.length - maxPair[1]) + minPair[0]  # Wraparound distance
+                
                 if minimum < 0:
                   if overlap > (minimum * -1):
+                    #print("Rejcting: Neg min but too much overlap: " + str(pair))
                     add_cluster = False
                 elif minimum == 0:
                   if overlap > 0:
+                    #print("Rejcting: 0 min and overlap: " + str(pair))
                     add_cluster = False
                 elif overlap > 0:
+                  #print("Rejcting: Pos min and overlap: " + str(pair))
                   add_cluster = False
 
-                if maximum < 0:
-                  if overlap < (maximum * -1):
-                    add_cluster = False
-                elif maximum == 0:
-                  if overlap == 0:
-                    add_cluster = False
-
-                if (dist1 > maximum or dist1 < minimum) and (dist2 > maximum or dist2 < minimum):
+                if (dist1 < minimum) and (minimum >= 0):
+                  #print("Rejcting: Dist failure: " + str(pair) + " D1: " + dist1)
                   add_cluster = False
+                #if add_cluster:
+                  #print("Accepted: " + str(pair) + " D1: " + str(dist1) + " Ov: " + str(overlap))
             if add_cluster:
+                
                 filtered_clusters[key] = self.clusters[key]
             
         log.debug("check_seq_overlap %s -> %s", len(self.clusters), len(filtered_clusters))
+        #print(self.clusters)
         return filtered_clusters
 
     def cluster_report(self):
