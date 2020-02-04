@@ -23,7 +23,7 @@ python $__tool_directory__/intron_detection.py
     <param label="Blastp Results" name="blast" type="data" format="blastxml"/>
     <param label="Separation Minimum" name="minimum" type="integer" value="-1"
         help="Minimum number of amino acids a CDS pair may be separated by to detect an intron. Set to a negative number to instead allow CDS to overlap by up to that many bases."/>
-    <param label="Separation Maximum" name="maximum" type="integer" value="2000"
+    <param label="Separation Maximum" name="maximum" type="integer" value="10000"
         help="Maximum number of bases a CDS pair may be separated by to detect an intron."/>
   </inputs>
   <outputs>
