@@ -82,6 +82,8 @@ def parse_gff(gff3):
     gff_info = {}
     _rec = None
     for rec in GFF.parse(gff3):
+        endBase = len(rec.seq)
+        
         _rec = rec
         _rec.annotations = {}
         for feat in feature_lambda(
@@ -106,7 +108,7 @@ def parse_gff(gff3):
 
    
     gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
-    endBase = 0
+    #endBase = 0
     for i, feat_id in enumerate(gff_info):
         gff_info[feat_id].update({'index': i})
         if gff_info[feat_id]['loc'].end > endBase:
@@ -197,8 +199,10 @@ class IntronFinder(object):
                 for hits in hits_lists:
                     for hit in hits:
                         lastStart = max(self.gff_info[gene['name']]['start'], self.gff_info[hit['name']]['start'])
+                        lastEnd = max(self.gff_info[gene['name']]['end'], self.gff_info[hit['name']]['end'])
                         firstEnd = min(self.gff_info[gene['name']]['end'], self.gff_info[hit['name']]['end'])
-                        if (lastStart - firstEnd <= maximum): 
+                        firstStart = min(self.gff_info[gene['name']]['start'], self.gff_info[hit['name']]['start'])
+                        if (lastStart - firstEnd <= maximum or self.length - lastEnd + firstStart <= maximum): 
                             hits.append(gene)  
                             gene_added = True  
                             break
