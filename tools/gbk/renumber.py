@@ -151,7 +151,13 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
 
             # Update all features
             record.features = sorted(clean_features, key=lambda x: x.location.start)
-
+            for rbs in [f for f in f_rbs if f not in f_processed]:
+              change_table.write(record.id + "\t" + rbs.type + ":" + (rbs.qualifiers['locus_tag'][0]) + "\t[Removed: RBS not within boundary of gene or did not share a boundary with a gene]\n")
+            for feature in [f for f in f_sorted if f not in f_processed]:
+              if (feature.type == 'CDS'):
+                change_table.write(record.id + "\t" + feature.type + ":" + (feature.qualifiers['locus_tag'][0]) + "\t[Removed: CDS not within boundary of gene or did not share a boundary with a gene]\n")
+              else:
+                change_table.write(record.id + "\t" + feature.type + ":" + (feature.qualifiers['locus_tag'][0]) + "\t[Removed: Feature not within boundary of gene]\n")
             change_table.write('\n'.join(delta) + '\n')
 
             # Output
