@@ -14,7 +14,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
-def parse_xml(blastxml):
+def parse_xml(blastxml, thresh):
     """ Parses xml file to get desired info (genes, hits, etc) """
     blast = []
     discarded_records = 0
@@ -30,7 +30,7 @@ def parse_xml(blastxml):
             
             for hsp in alignment.hsps:
                 x = float(hsp.identities) / (hsp.query_end - hsp.query_start)
-                if x < .5:
+                if x < thresh:
                     discarded_records += 1
                     continue
 
@@ -138,14 +138,14 @@ def remove_duplicates(clusters):
 class IntronFinder(object):
     """ IntronFinder objects are lists that contain a list of hits for every gene """
 
-    def __init__(self, gff3, blastp):
+    def __init__(self, gff3, blastp, thresh):
         self.blast = []
         self.clusters = {}
         self.gff_info = {}
         self.length = 0
 
         (self.gff_info, self.rec, self.length) = parse_gff(gff3)
-        self.blast = parse_xml(blastp)
+        self.blast = parse_xml(blastp, thresh)
 
     def create_clusters(self):
         """ Finds 2 or more genes with matching hits """
@@ -373,7 +373,7 @@ class IntronFinder(object):
                 # Calculate %identity which we'll use to score
                 score = int(1000 * float(cluster_elem['identity']) / abs(cluster_elem['query_range'][1] - cluster_elem['query_range'][0]))
 
-                tempLoc = FeatureLocation(cds.location.start + (3 * (cluster_elem['query_range'][0])),
+                tempLoc = FeatureLocation(cds.location.start + (3 * (cluster_elem['query_range'][0] - 1)),
                                           cds.location.start + (3 * (cluster_elem['query_range'][1])),
                                           cds.location.strand)
                 cds.location = tempLoc
@@ -421,10 +421,18 @@ if __name__ == '__main__':
     parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
     parser.add_argument('--minimum', help='Gap minimum (Default -1, set to a negative number to allow overlap)', default = -1, type = int)
     parser.add_argument('--maximum', help='Gap maximum in genome (Default 10000)', default = 10000, type = int)
+    parser.add_argument('--idThresh', help='ID Percent Threshold', default = .4, type = float)
+    
     args = parser.parse_args()
+    
+    threshCap = args.idThresh
+    if threshCap > 1.00:
+      threshCap = 1.00
+    if threshCap < 0:
+      threshCap = 0
 
     # create new IntronFinder object based on user input
-    ifinder = IntronFinder(args.gff3, args.blastp)
+    ifinder = IntronFinder(args.gff3, args.blastp, threshCap)
     ifinder.create_clusters()
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap(maximum=args.maximum)
