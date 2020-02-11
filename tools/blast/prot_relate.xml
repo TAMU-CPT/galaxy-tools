@@ -28,7 +28,8 @@ This tool filters a set of BLASTp results and return the top
 related genomes based on number of protein-protein matches.
 
 The input must be a BLASTp tabular file with the qseqID, 
-sallseqID, salltitles, sallacc, staxIDs fields selected.
+length, nident, qlen, slen, salltitles, sallacc, 
+and staxIDs fields selected.
 </help>
 	<tests/>
 	<expand macro="citations-2020" />
