@@ -26,7 +26,7 @@ python $__tool_directory__/intron_detection.py
         help="Minimum number of amino acids a CDS pair must be separated by to detect an intron. Set to a negative number to instead allow CDS to overlap by up to that many AAs."/>
     <param label="Separation Maximum" name="maximum" type="integer" value="10000"
         help="Maximum number of bases a CDS pair may be separated by to detect an intron."/>
-    <param label="Percent Identity Threshold" name="idThresh" type="float" value=".40"
+    <param label="Percent Identity Threshold" name="idThresh" type="float" value=".30"
         help="Minimum Identity Percentage for HSP to be considered for intron comparison (0.00 to 1.00)"/>
   </inputs>
   <outputs>
