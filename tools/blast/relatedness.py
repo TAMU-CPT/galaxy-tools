@@ -21,6 +21,14 @@ def add_dice(blast):
         res.append(data + [dice])
     return res
 
+    
+
+def make_num(blast):
+    res = []
+    for data in blast:
+        res.append([data[0], int(data[1]), int(data[2]), int(data[3]), int(data[4]), data[5], data[6], int(data[7])])
+    return res
+
 def bundle_dice(blast):
     res = []
     ind = 0
@@ -194,18 +202,15 @@ if __name__ == '__main__':
     data = [] # Reformatting to list rather than generator
 
     data = parse_blast(args.blast)
-    print(len(data))
+    data = make_num(data)
     data = add_dice(data)
-    print(len(data))
     data = bundle_dice(data)
-    print(len(data))
     #data = filter_dice(data, threshold=0.0)
     #data = important_only(data, splitId)
     
     #data = expand_taxIDs(data)
     #data = deform_scores(data)
     data = filter_phage(data, phageTaxLookup)
-    print(len(data))
     #data = expand_titles(data)
 
     if args.protein or args.canonical:
@@ -216,6 +221,7 @@ if __name__ == '__main__':
     #data = with_dice(data)
     data.sort(key = lambda data: -data[8])
     #counts, accessions = scoreMap(data)
+    sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\t\n' % (args.hits, data[0][0]))
     if args.access:
       sys.stdout.write('TaxID\tName\tAccessions\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n')
       ind = 0
@@ -223,7 +229,7 @@ if __name__ == '__main__':
         if ind >= args.hits:
             break
         ind += 1
-        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\t%s\n' % (out[7], out[5], out[6], out[4], out[9], out[1], out[8]))
+        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\t%s\n' % (out[7], out[5], out[6], out[4], out[9], out[2], out[8]))
     else:
       sys.stdout.write('TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score')
       ind = 0
