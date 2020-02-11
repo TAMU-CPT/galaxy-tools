@@ -1,0 +1,43 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.phage." name="Identifying Possible Lysis Genes" version="1.1">
+    <description>identifies lysis gene candidates close to genes encoding endolysin domains and genes encoding transmembrane domains</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macros="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/possible_lysis_genes.py
+$lgc
+$tmhmm
+$ipro
+$genome_fasta
+$window
+$enzyme
+--oa $oa
+--ob $ob
+--oc $oc
+--od $od
+
+> $output]]></command>
+    <inputs>
+        <param label="Lysis Gene Candidates" name="lgc" type="data" format="fasta" />
+	    <param label="TMHMM Results" name="tmhmm" type="data" format="gff3" />
+        <param label="InterProScan Results" name="ipro" type="data" format="gff3" />
+	    <param label="Protein Coding Sequences from the Genome" name="genome_fasta" type="data" format="fasta" />
+        <param label="Adjacency Window Size" name="window" type="integer" value="100" />
+        <param label="Enzyme Domain List" name="enzyme" type="data" format="tabular" />
+    </inputs>
+    <outputs>
+		<data format="fasta" name="oa" label="Protein with endolysin-associated domain and adjacent to lysis gene candidate"/>
+        <data format="fasta" name="ob" label="Lysis gene candidates near possible endolysin"/>
+        <data format="fasta" name="oc" label="Protein with transmembrane domain and adjacent to lysis gene candidate"/>
+        <data format="fasta" name="od" label="Lysis gene candidates near TMD-containing protein"/>
+    </outputs>
+    <help><![CDATA[
+**What it does**
+This program is intended to identify protein coding sequences within a certain window (number of base pairs) of genes encoding recognized endolysin domains and others encoding transmembrane domains.
+The goal is to identify possible lysis genes.
+
+        ]]></help>
+</tool>
