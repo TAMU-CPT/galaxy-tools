@@ -36,7 +36,9 @@ python $__tool_directory__/intron_detection.py
 **What it does**
 
 This tool parses BLAST XML results and returns potential intron regions by 
-identifying query proteins with BLAST hits to the same target protein. The list of hits is returned as a gff3.
+identifying query proteins with BLAST hits to the same target protein within 
+the maximum number of bases set above. This distance will also wraparound the 
+ends of the genome. The list of hits is returned as a gff3.
 
       ]]></help>
 		<expand macro="citations-2020" />
