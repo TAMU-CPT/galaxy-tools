@@ -29,9 +29,9 @@ class Synonyms:
         l = []
         if self.delims == '\n':
             with self.read as f:
-                for item in f.readlines():
-                    item = item.split()[0]
-                    l.append(item)
+                for line in f.readlines():
+                    line = item.split()[0]
+                    l.append(line)
             return l
         else:
             print("I can't parse this yet...")
