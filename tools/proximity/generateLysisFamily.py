@@ -1,9 +1,8 @@
-##### Script will format a txt file that will be tab delimited separated family members
+##### Script will format a json that will house family members
 
 import sys
 import os
-import csv
-from itertools import zip_longest
+import json
 
 
 endolysins = ['lysozyme',
@@ -101,12 +100,8 @@ CBDs_accro = ['PG-3',
             'SPOR',
             'SLAP']
 
-lysisFamily = [endolysins,holins,ECDs, ECDs_accro, CBDs, CBDs_accro]
-lysisCombo = zip_longest(*lysisFamily, fillvalue = '')
-print(os.getcwd())
-with open('tools/proximity/data/lysisSynonyms.txt','w',newline='') as f:
-    wr = csv.writer((f), delimiter='\t')
-    wr.writerow(('endolysins','holins','ECDs','ECDs-acronyms','CBDs','CBDs-acronyms'))
-    wr.writerow((lysisCombo))
-f.close()
-print('...file saved...')
+lysisCombo = {'endolysins':endolysins,'holins':holins,'ECDs':ECDs,'ECDs_accro':ECDs_accro,'CBDs':CBDs,'CBDs_accro':CBDs_accro}
+
+filename = 'lysis-family.json'
+with open('tools/proximity/data/'+filename, 'w') as j:
+    json.dump(lysisCombo, j, indent='\t')
