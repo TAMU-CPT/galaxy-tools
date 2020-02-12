@@ -186,8 +186,8 @@ if __name__ == '__main__':
       listify.append(x)
     counts, accessions = scoreMap(listify)
     
-    sys.stdout.write('Top %d matches for BLASTp results of %s\t\t\t\t\t\t\n' % (args.hits, listify[0][0]))
     if args.access:
+      sys.stdout.write('Top %d matches for BLASTp results of %s\t\t\t\n' % (args.hits, listify[0][0]))
       sys.stdout.write('# TaxID\tName\tAccessions\t%s\n' % count_label)
       for idx, ((name, ID), num) in enumerate(sorted(counts.items(), key=lambda item: -item[1])):
         if idx > args.hits - 1:
@@ -195,6 +195,7 @@ if __name__ == '__main__':
 
         sys.stdout.write('%s\t%s\t%s\t%d\n' % (ID, name, str(accessions[(name, ID)][0]), num))
     else:
+      sys.stdout.write('Top %d matches for BLASTp results of %s\t\t\n' % (args.hits, listify[0][0]))
       sys.stdout.write('# TaxID\tName\t%s\n' % count_label)
       for idx, ((name, ID), num) in enumerate(sorted(counts.items(), key=lambda item: -item[1])):
         if idx > args.hits - 1:
