@@ -12,25 +12,29 @@ class Synonyms:
         self.file = file
         self.delims = delims
         self.comments = comments
-        self.read = open(file, 'r')
 
     def parse_it(self):
         """
         iterates and prints the contents
         """
-        with self.read as f:
-            for item in f:
-                print(item)
+        self.read = open(self.file, 'r')
+        if self.delims == '\n':
+            with self.read as f:
+                for item in f:
+                    print(item)
+        else:
+            print("I can't parse this yet...")
     
     def store_it(self):
         """
         stores items in a list
         """
+        self.read = open(self.file, 'r')
         l = []
         if self.delims == '\n':
             with self.read as f:
                 for line in f.readlines():
-                    line = item.split()[0]
+                    line = line.split()[0]
                     l.append(line)
             return l
         else:
@@ -39,7 +43,7 @@ class Synonyms:
 if __name__ == "__main__":
     filename = 'tools/proximity/test-data/iterate.txt'
     p = Synonyms(filename,delims='\n')
-    #p.parse_it()
+    p.parse_it()
     print('=====================================')
     l = p.store_it()
     print(l)
