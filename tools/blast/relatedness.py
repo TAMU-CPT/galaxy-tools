@@ -221,8 +221,9 @@ if __name__ == '__main__':
     #data = with_dice(data)
     data.sort(key = lambda data: -data[8])
     #counts, accessions = scoreMap(data)
-    sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\t\n' % (args.hits, data[0][0]))
+    
     if args.access:
+      sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\t\n' % (args.hits, data[0][0]))
       sys.stdout.write('TaxID\tName\tAccessions\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n')
       ind = 0
       for out in data:
@@ -231,6 +232,7 @@ if __name__ == '__main__':
         ind += 1
         sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\t%s\n' % (out[7], out[5], out[6], out[4], out[9], out[2], out[8]))
     else:
+      sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\n' % (args.hits, data[0][0]))
       sys.stdout.write('TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score')
       ind = 0
       for out in data:
