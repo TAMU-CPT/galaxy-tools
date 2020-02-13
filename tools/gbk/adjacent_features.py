@@ -99,7 +99,7 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                                 modS = 0
                                 modE = 0
                                 if 'codon_start' in item.qualifiers:
-                                  if strand > 0:
+                                  if item.location.strand > 0:
                                     modS = int(item.qualifiers['codon_start'][0]) - 1
                                   else:
                                     modE = int(item.qualifiers['codon_start'][0]) - 1
@@ -132,7 +132,7 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                                 modS = 0
                                 modE = 0
                                 if 'codon_start' in item.qualifiers:
-                                  if strand > 0:
+                                  if item.location.strand > 0:
                                     modS = int(item.qualifiers['codon_start'][0]) - 1
                                   else:
                                     modE = int(item.qualifiers['codon_start'][0]) - 1
