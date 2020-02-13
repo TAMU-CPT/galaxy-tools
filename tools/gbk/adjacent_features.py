@@ -98,12 +98,12 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                             else:
                                 modS = 0
                                 modE = 0
-                                if 'codon_start' in feature.qualifiers:
+                                if 'codon_start' in item.qualifiers:
                                   if strand > 0:
-                                    modS = int(feature.qualifiers['codon_start'][0]) - 1
+                                    modS = int(item.qualifiers['codon_start'][0]) - 1
                                   else:
-                                    modE = int(feature.qualifiers['codon_start'][0]) - 1
-                                seqHold = gbk.seq[item.location.start + modS: item.location.end + modE]
+                                    modE = int(item.qualifiers['codon_start'][0]) - 1
+                                seqHold = gbk.seq[item.location.start + modS: item.location.end - modE]
                                 if item.location.strand == -1:
                                   seqHold = seqHold.reverse_complement()
                                 if cdsOnly:
@@ -131,12 +131,12 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                             else:
                                 modS = 0
                                 modE = 0
-                                if 'codon_start' in feature.qualifiers:
+                                if 'codon_start' in item.qualifiers:
                                   if strand > 0:
-                                    modS = int(feature.qualifiers['codon_start'][0]) - 1
+                                    modS = int(item.qualifiers['codon_start'][0]) - 1
                                   else:
-                                    modE = int(feature.qualifiers['codon_start'][0]) - 1
-                                seqHold = gbk.seq[item.location.start + modS: item.location.end + modE]
+                                    modE = int(item.qualifiers['codon_start'][0]) - 1
+                                seqHold = gbk.seq[item.location.start + modS: item.location.end - modE]
                                 if item.location.strand == -1:
                                   seqHold = seqHold.reverse_complement()
                                 if cdsOnly:
