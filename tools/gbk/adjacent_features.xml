@@ -8,10 +8,10 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/adjacent_features.py
--genbankFiles
 #set repeat_var_1 = '" "'.join([ str($var) for $var in $gbkIn ])
--fastaFiles 
 #set repeat_var_2 = '" "'.join([ str($var) for $var in $fastaIn ])
+-genbankFiles "$repeat_var_1"
+-fastaFiles "$repeat_var_2"
 -tTable $tTable
 -fTable $fTable
 -upOut $upstreamOut
