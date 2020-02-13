@@ -96,7 +96,14 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                             if 'translation' in item.qualifiers:
                                 upOut.write(str(item.qualifiers['translation'][0]) + '\n\n')
                             else:
-                                seqHold = gbk.seq[item.location.start : item.location.end]
+                                modS = 0
+                                modE = 0
+                                if 'codon_start' in feature.qualifiers:
+                                  if strand > 0:
+                                    modS = int(feature.qualifiers['codon_start'][0]) - 1
+                                  else:
+                                    modE = int(feature.qualifiers['codon_start'][0]) - 1
+                                seqHold = gbk.seq[item.location.start + modS: item.location.end + modE]
                                 if item.location.strand == -1:
                                   seqHold = seqHold.reverse_complement()
                                 if cdsOnly:
@@ -122,7 +129,14 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                             if 'translation' in item.qualifiers:
                                 downOut.write(str(item.qualifiers['translation'][0]) + '\n\n')
                             else:
-                                seqHold = gbk.seq[item.location.start : item.location.end]
+                                modS = 0
+                                modE = 0
+                                if 'codon_start' in feature.qualifiers:
+                                  if strand > 0:
+                                    modS = int(feature.qualifiers['codon_start'][0]) - 1
+                                  else:
+                                    modE = int(feature.qualifiers['codon_start'][0]) - 1
+                                seqHold = gbk.seq[item.location.start + modS: item.location.end + modE]
                                 if item.location.strand == -1:
                                   seqHold = seqHold.reverse_complement()
                                 if cdsOnly:
