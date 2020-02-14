@@ -5,13 +5,12 @@
 ## Requirements:
 
 ## To-dos:
-[ ] - Determine Methodology for ORF function in CPT.py
-[ ] - User input 
-    * FASTA (preferred) ; not entire .gb file. We only want the sequence
-    * What else...
-[ ] - Mimic Calls from `findSpanin.pl` 
+[x] - Determine Methodology for ORF function in CPT.py
+[x] - User input 
+    * FASTA (<s>preferred</s>done) ; <s>not entire .gb file. We only want the sequence</s>
+[ ] - Output putative .fasta files 
+[ ] - Mimic returns from `findSpanin.pl` / Best candidate file (?) 
     * These include:
         * Overlap spanins
         * Covered spanins
         * Next-to spanins
-[ ] - Output putative .txt files with best candidate file.
