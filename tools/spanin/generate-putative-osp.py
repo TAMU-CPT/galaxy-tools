@@ -46,9 +46,9 @@ if __name__ == '__main__':
     parser.add_argument('--osp_op', dest='out_osp_prot', type=argparse.FileType('w'), default='out_osp.fa', help='Output protein sequences, FASTA')
     parser.add_argument('--osp_ob', dest='out_osp_bed', type=argparse.FileType('w'), default='out_osp.bed', help='Output BED file')
     parser.add_argument('--osp_og', dest='out_osp_gff3', type=argparse.FileType('w'), default='out_osp.gff3', help='Output GFF3 file')
-    parser.add_argument('--osp_min_dist', dest='osp_min_dist', default=10, help='Minimal distance to first AA of TMD, measured in AA', type=int)
-    parser.add_argument('--osp_max_dist', dest='osp_max_dist', default=50, help='Maximum distance to first AA of TMD, measured in AA', type=int)
-    parser.add_argument('--putative_osp', dest='putative_osp_fa', type=argparse.FileType('w'), default='putative_osp.fa', help='Output of putative GFF3 file')
+    parser.add_argument('--osp_min_dist', dest='osp_min_dist', default=10, help='Minimal distance to first AA of lipobox, measured in AA', type=int)
+    parser.add_argument('--osp_max_dist', dest='osp_max_dist', default=30, help='Maximum distance to first AA of lipobox, measured in AA', type=int)
+    parser.add_argument('--putative_osp', dest='putative_osp_fa', type=argparse.FileType('w'), default='putative_osp.fa', help='Output of putative FASTA file')
 
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
