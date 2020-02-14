@@ -4,6 +4,7 @@ from Bio import SeqIO
 from Bio import Seq
 from BCBio import GFF
 from lipory import find_lipoprotein
+import re
 import os
 import sys
 
@@ -46,8 +47,8 @@ if __name__ == '__main__':
     parser.add_argument('--osp_ob', dest='out_osp_bed', type=argparse.FileType('w'), default='out_osp.bed', help='Output BED file')
     parser.add_argument('--osp_og', dest='out_osp_gff3', type=argparse.FileType('w'), default='out_osp.gff3', help='Output GFF3 file')
     parser.add_argument('--osp_min_dist', dest='osp_min_dist', default=10, help='Minimal distance to first AA of TMD, measured in AA', type=int)
-    parser.add_argument('--osp_max_dist', dest='osp_max_dist', default=30, help='Maximum distance to first AA of TMD, measured in AA', type=int)
-    parser.add_argument('--putative_osp', dest='putative_osp_gff3', type=argparse.FileType('w'), default='putative_osp.gff3', help='Output of putative GFF3 file')
+    parser.add_argument('--osp_max_dist', dest='osp_max_dist', default=50, help='Maximum distance to first AA of TMD, measured in AA', type=int)
+    #parser.add_argument('--putative_osp', dest='putative_osp_gff3', type=argparse.FileType('w'), #default='putative_osp.gff3', help='Output of putative GFF3 file')
 
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
@@ -57,19 +58,59 @@ if __name__ == '__main__':
     osps = OrfFinder(args.table, args.ftype, args.ends, args.osp_min_len, args.strand)
     osps.locate(args.fasta_file, args.out_osp_nuc, args.out_osp_prot, args.out_osp_bed, args.out_osp_gff3)
 
-    print('++++name++++')
-    print(args.fasta_file.name)
-    print('^^^^name^^^^')
-    for k, v in the_args.items():
-        print(k+' : '+str(v))
+    '''
+    ### For Control: Use T7 ; 
+    o-spanin
+    18,7-------------------------------------------------LIPO----------------------------------
+    >T7_EOS MSTLRELRLRRALKEQSVRYLLSIKKTLPRWKGALIGLFLICVATISGCASESKLPESPMVSVDSSLMVEPNLTTEMLNVFSQ
+    '''
+    fa = SeqIO.parse(args.out_osp_prot.name, 'fasta')
+    aa = []
+    bb = []
+    for r in fa:
+        #print(r.seq)
+        #print('\n')
+        a = (r.description)
+        b = (r.seq)
+        aa.append(a)
+        bb.append(b)
     
-    slimwithlipo = find_lipoprotein(args.out_osp_gff3.name, 
-                                    args.fasta_file.name, 
+    k = zip(aa,bb)
+    winner = []
+    regggie = '[ACGSILMFTV][^REKD][GASNL]C'
+    reggie = '[ILMFTV][^REXD][GAS]C' # more strict
+
+    for the_tupe in k:
+        s = str(the_tupe[1])
+        if re.search((reggie), s[args.osp_min_dist:args.osp_max_dist]): # figure out if we include WITHIN max, or after
+            winner.append(the_tupe)
+        else:
+            continue
+    print('\n')
+    tupes = { k:v for k,v in winner}
+    for a,b in tupes.items():
+        print(str(a))
+        print(str(b))
+
+    '''
+    ## Cannot get lipory to perform the way I would expect...
+    ## I do NOT know why this is the case. I truly thought this was going to be the easiest part of the gig.
+    # slimwithlipo will be the object that houses the parse for 
+    slimwithlipo = find_lipoprotein(gff3_file=args.out_osp_gff3.name, 
+                                    fasta_genome=args.fasta_file.name, 
                                     lipobox_mindist=args.osp_min_dist, 
                                     lipobox_maxdist=args.osp_max_dist, 
                                     spanin=True) # Chopping overall noise with LipoRy
 
     for record in slimwithlipo:
-        record[0].annotations = {}
         #print(record)
+        #print(record.description)
+        record[0].annotations = {}
+        #print(record[0])
+        #print(record[0].annotations)
+        #for i in record:
+        #    print(i)
         GFF.write(record, sys.stdout)
+        #print(record[0])
+    '''
+
