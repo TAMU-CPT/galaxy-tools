@@ -5,6 +5,8 @@ import argparse
 from cpt import OrfFinder
 from Bio import SeqIO
 from Bio import Seq
+import re
+from spaninFuncs import find_tmd, tuple_fasta
 import os
 
 #if __name__ == '__main__':
@@ -25,7 +27,7 @@ if __name__ == '__main__':
     parser.add_argument('--strand', dest='strand', choices=('both', 'forward', 'reverse'), default='both', 
                         help='select strand') # Selection of +, -, or both strands
 
-    parser.add_argument('--table', dest='table', default=1, 
+    parser.add_argument('--table', dest='table', default=11, 
                         help='NCBI Translation table',type=int) # Uses "default" NCBI codon table. This should always (afaik) be what we want...
 
     parser.add_argument('-t', '--ftype', dest='ftype', choices=('CDS', 'ORF'), default='ORF', 
@@ -43,7 +45,10 @@ if __name__ == '__main__':
     parser.add_argument('--isp_op', dest='out_isp_prot', type=argparse.FileType('w'), default='out_isp.fa', help='Output protein sequences, FASTA')
     parser.add_argument('--isp_ob', dest='out_isp_bed', type=argparse.FileType('w'), default='out_isp.bed', help='Output BED file')
     parser.add_argument('--isp_og', dest='out_isp_gff3', type=argparse.FileType('w'), default='out_isp.gff3', help='Output GFF3 file')
-
+    parser.add_argument('--osp_min_dist', dest='isp_min_dist', default=10, help='Minimal distance to first AA of TMD, measured in AA', type=int)
+    parser.add_argument('--osp_max_dist', dest='isp_max_dist', default=30, help='Maximum distance to first AA of TMD, measured in AA', type=int)
+    parser.add_argument('--putative_isp', dest='putative_isp_fa', type=argparse.FileType('w'), default='putative_isp.fa', help='Output of putative FASTA file')
+    
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
     the_args = vars(parser.parse_args())
@@ -52,11 +57,30 @@ if __name__ == '__main__':
     isps = OrfFinder(args.table, args.ftype, args.ends, args.isp_min_len, args.strand)
     isps.locate(args.fasta_file, args.out_isp_nuc, args.out_isp_prot, args.out_isp_bed, args.out_isp_gff3)
 
-    print('++++name++++')
-    print(args.fasta_file.name)
-    print('^^^^name^^^^')
-    for k, v in the_args.items():
-        print(k+' : '+str(v))
-    
+    ### read in robust ORF from OrfFinder/locate output
+    #fasta = SeqIO.parse(args.out_isp_prot.name, 'fasta')
+    '''
+    descriptions = []
+    sequences = []
+    for r in fasta: # iterates and stores each description and sequence
+        description = (r.description) 
+        sequence = (r.seq)
+        descriptions.append(description)
+        sequences.append(sequence)
+    '''
+    pairs = tuple_fasta(fasta_file=args.out_isp_prot.name)
+    #pairs = zip(descriptions,sequences) # combine the descriptions with their corresponding sequence from the two list
 
+    candidates = [] # empty candidates list to be passed through the user input criteria
+    for each_pair in pairs: # grab transmembrane domains based off of the spaninFuncts module; which follows loosely off transmembrane.py
+        candidates += find_tmd(pair=each_pair, start=args.isp_min_dist, stop=args.isp_max_dist,tmsize=11)
+    
+    candidate_dict = { k:v for k,v in candidates}
+    with open(args.putative_isp_fa.name, 'w') as f:
+        for desc,s in candidate_dict.items(): # description / sequence
+            f.write('> '+str(desc))
+            f.write('\n'+str(s)+'\n')
+
+
+    '''https://docs.python.org/3.4/library/subprocess.html'''
     '''https://github.tamu.edu/CPT/Galaxy-Tools/blob/f0bf4a4b8e5124d4f3082d21b738dfaa8e1a3cf6/tools/phage/transmembrane.py'''
