@@ -57,3 +57,6 @@ if __name__ == '__main__':
     print('^^^^name^^^^')
     for k, v in the_args.items():
         print(k+' : '+str(v))
+    
+
+    '''https://github.tamu.edu/CPT/Galaxy-Tools/blob/f0bf4a4b8e5124d4f3082d21b738dfaa8e1a3cf6/tools/phage/transmembrane.py'''
