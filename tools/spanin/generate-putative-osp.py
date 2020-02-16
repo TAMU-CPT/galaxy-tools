@@ -60,7 +60,8 @@ if __name__ == '__main__':
     osps.locate(args.fasta_file, args.out_osp_nuc, args.out_osp_prot, args.out_osp_bed, args.out_osp_gff3)
 
     '''
-    ### For Control: Use T7 ; 
+    ### For Control: Use T7 and lambda; 
+    # Note the distance from start codon to lipobox region for t7
     o-spanin
     18,7-------------------------------------------------LIPO----------------------------------
     >T7_EOS MSTLRELRLRRALKEQSVRYLLSIKKTLPRWKGALIGLFLICVATISGCASESKLPESPMVSVDSSLMVEPNLTTEMLNVFSQ

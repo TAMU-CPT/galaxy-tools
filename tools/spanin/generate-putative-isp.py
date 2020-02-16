@@ -56,29 +56,21 @@ if __name__ == '__main__':
     ### isp output, naive ORF finding:
     isps = OrfFinder(args.table, args.ftype, args.ends, args.isp_min_len, args.strand)
     isps.locate(args.fasta_file, args.out_isp_nuc, args.out_isp_prot, args.out_isp_bed, args.out_isp_gff3)
-
-    ### read in robust ORF from OrfFinder/locate output
-    #fasta = SeqIO.parse(args.out_isp_prot.name, 'fasta')
     '''
-    descriptions = []
-    sequences = []
-    for r in fasta: # iterates and stores each description and sequence
-        description = (r.description) 
-        sequence = (r.seq)
-        descriptions.append(description)
-        sequences.append(sequence)
+    >T7_EIS MLEFLRKLIPWVLVGMLFGLGWHLGSDSMDAKWKQEVHNEYVKRVEAAKSTQRAIGAVSAKYQEDLAALEGSTDRIISDLRSDNKRLRVRVKTTGISDGQCGFEPDGRAELDDRDAKRILAVTQKGDAWIRALQDTIRELQRK
+
+    >lambda_EIS MSRVTAIISALVICIIVCLSWAVNHYRDNAITYKAQRDKNARELKLANAAITDMQMRQRDVAALDAKYTKELADAKAENDALRDDVAAGRRRLHIKAVCQSVREATTASGVDNAASPRLADTAERDYFTLRERLITMQKQLEGTQKYINEQCR
     '''
     pairs = tuple_fasta(fasta_file=args.out_isp_prot.name)
-    #pairs = zip(descriptions,sequences) # combine the descriptions with their corresponding sequence from the two list
 
-    candidates = [] # empty candidates list to be passed through the user input criteria
-    for each_pair in pairs: # grab transmembrane domains based off of the spaninFuncts module; which follows loosely off transmembrane.py
+    have_tmd = [] # empty candidates list to be passed through the user input criteria
+    for each_pair in pairs: # grab transmembrane domains from spaninFuncts (queries for lysin snorkels # and a range of hydrophobic regions that could be TMDs)
         try:
-            candidates += find_tmd(pair=each_pair, minimum=args.isp_min_dist, maximum=args.isp_max_dist)
+            have_tmd += find_tmd(pair=each_pair, minimum=args.isp_min_dist, maximum=args.isp_max_dist)
         except TypeError:
             continue
     
-    candidate_dict = { k:v for k,v in candidates}
+    candidate_dict = { k:v for k,v in have_tmd}
     with open(args.putative_isp_fa.name, 'w') as f:
         for desc,s in candidate_dict.items(): # description / sequence
             f.write('> '+str(desc))
