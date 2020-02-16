@@ -3,6 +3,7 @@ from cpt import OrfFinder
 from Bio import SeqIO
 from Bio import Seq
 from BCBio import GFF
+from spaninFuncs import tuple_fasta, find_lipobox
 import re
 import os
 import sys
@@ -47,7 +48,7 @@ if __name__ == '__main__':
     parser.add_argument('--osp_ob', dest='out_osp_bed', type=argparse.FileType('w'), default='out_osp.bed', help='Output BED file')
     parser.add_argument('--osp_og', dest='out_osp_gff3', type=argparse.FileType('w'), default='out_osp.gff3', help='Output GFF3 file')
     parser.add_argument('--osp_min_dist', dest='osp_min_dist', default=10, help='Minimal distance to first AA of lipobox, measured in AA', type=int)
-    parser.add_argument('--osp_max_dist', dest='osp_max_dist', default=30, help='Maximum distance to first AA of lipobox, measured in AA', type=int)
+    parser.add_argument('--osp_max_dist', dest='osp_max_dist', default=60, help='Maximum distance to first AA of lipobox, measured in AA', type=int)
     parser.add_argument('--putative_osp', dest='putative_osp_fa', type=argparse.FileType('w'), default='putative_osp.fa', help='Output of putative FASTA file')
 
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
@@ -63,31 +64,20 @@ if __name__ == '__main__':
     o-spanin
     18,7-------------------------------------------------LIPO----------------------------------
     >T7_EOS MSTLRELRLRRALKEQSVRYLLSIKKTLPRWKGALIGLFLICVATISGCASESKLPESPMVSVDSSLMVEPNLTTEMLNVFSQ
+    -----------------------------LIPO----------------------------------------
+    > lambda_EOS MLKLKMMLCVMMLPLVVVGCTSKQSVSQCVKPPPPPAWIMQPPPDWQTPLNGIISPSERG
     '''
-    fasta = SeqIO.parse(args.out_osp_prot.name, 'fasta')
-    descriptions = []
-    sequences = []
-    for r in fasta: # iterates and stores each description and sequence
-        description = (r.description) 
-        sequence = (r.seq)
-        descriptions.append(description)
-        sequences.append(sequence)
-    
-    pairs = zip(descriptions,sequences) # combine the descriptions with their corresponding sequence from the two list
-    candidates = [] # empty candidates list to be passed through the user input criteria
-    regggie = '[ACGSILMFTV][^REKD][GASNL]C' # regex for Lipobox from LipoRy
-    reggie = '[ILMFTV][^REXD][GAS]C' # regex for Lipobox from findSpanin.pl
+    pairs = tuple_fasta(fasta_file=args.out_osp_prot.name)
+    have_lipo = [] # empty candidates list to be passed through the user input 
 
     for each_pair in pairs:
-        s = str(each_pair[1])
-        if (re.search((reggie), s[args.osp_min_dist:args.osp_max_dist]) and s[0] != 'I'):
-            # searches the sequence with the input RegEx AND omits if start sequence begins with I
-            candidates.append(each_pair)
-        else:
+        try:
+            have_lipo += find_lipobox(pair=each_pair, minimum=args.osp_min_dist, maximum=args.osp_max_dist, regex=1)
+        except (IndexError, TypeError):
             continue
     
     # export results in fasta format
-    candidate_dict = { k:v for k,v in candidates}
+    candidate_dict = { k:v for k,v in have_lipo}
     with open(args.putative_osp_fa.name, 'w') as f:
         for desc,s in candidate_dict.items(): # description / sequence
             f.write('> '+str(desc))

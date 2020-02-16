@@ -73,7 +73,10 @@ if __name__ == '__main__':
 
     candidates = [] # empty candidates list to be passed through the user input criteria
     for each_pair in pairs: # grab transmembrane domains based off of the spaninFuncts module; which follows loosely off transmembrane.py
-        candidates += find_tmd(pair=each_pair, start=args.isp_min_dist, stop=args.isp_max_dist,tmsize=11)
+        try:
+            candidates += find_tmd(pair=each_pair, minimum=args.isp_min_dist, maximum=args.isp_max_dist)
+        except TypeError:
+            continue
     
     candidate_dict = { k:v for k,v in candidates}
     with open(args.putative_isp_fa.name, 'w') as f:
