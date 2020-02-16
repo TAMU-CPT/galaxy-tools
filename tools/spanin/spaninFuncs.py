@@ -41,11 +41,10 @@ def check_back_end_snorkels(seq, tmsize):
 
 def find_tmd(pair,minimum=10,maximum=30,TMDmin=10,TMDmax=20):
     """ 
-        Function that takes a string input AA sequence and searches for TMDs:
-        ---> seq : Input of tuple with description and AA sequence (str)
+        Function that searches for lysine snorkels and then for a spanning hydrophobic region that indicates a potential TMD
+        ---> pair : Input of tuple with description and AA sequence (str)
         ---> minimum : How close from the initial start codon a TMD can be within
         ---> maximum : How far from the initial start codon a TMD can be within
-        Function that searches for lysine snorkels and then for a spanning hydrophobic region that indicates a potential TMD
         ---> TMDmin : The minimum size that a transmembrane can be (default = 10)
         ---> TMDmax : The maximum size tha ta transmembrane can be (default = 20)
     """
@@ -79,10 +78,10 @@ def find_tmd(pair,minimum=10,maximum=30,TMDmin=10,TMDmax=20):
 
 def find_lipobox(pair,minimum=10,maximum=30,regex=1):
     """
-        #### Function that takes an input tuple, and will return pairs of sequences to their description that have a lipoobox
-        ####### minimum - min distance from start codon to first AA of lipobox
-        ####### maximum - max distance from start codon to first AA of lipobox
-        ####### regex - option 1 (default) => more strict regular expression ; option 2 => looser selection, imported from LipoRy
+        Function that takes an input tuple, and will return pairs of sequences to their description that have a lipoobox
+        ---> minimum - min distance from start codon to first AA of lipobox
+        ---> maximum - max distance from start codon to first AA of lipobox
+        ---> regex - option 1 (default) => more strict regular expression ; option 2 => looser selection, imported from LipoRy
         
     """
     if regex == 1:
@@ -94,16 +93,16 @@ def find_lipobox(pair,minimum=10,maximum=30,regex=1):
     s = str(pair[1])
     #print(s) # trouble shooting
     search_region = s[minimum:maximum+1]
-    print(search_region) # trouble shooting
+    #print(search_region) # trouble shooting
     #for each_pair in pair:
-    print(s)
+    #print(s)
     if re.search((pattern), search_region): # lipobox must be WITHIN the range...
         # searches the sequence with the input RegEx AND omits if start sequence begins with I
         candidates.append(pair)
-        print('passed') # trouble shooting
+        #print('passed') # trouble shooting
         return candidates
     else:
-        print('didnotpass') # trouble shooting
+        #print('didnotpass') # trouble shooting
         pass
 
 def tuple_fasta(fasta_file):
