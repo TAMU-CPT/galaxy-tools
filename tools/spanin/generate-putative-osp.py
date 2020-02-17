@@ -49,7 +49,7 @@ if __name__ == '__main__':
     parser.add_argument('--osp_og', dest='out_osp_gff3', type=argparse.FileType('w'), default='out_osp.gff3', help='Output GFF3 file')
     parser.add_argument('--osp_min_dist', dest='osp_min_dist', default=10, help='Minimal distance to first AA of lipobox, measured in AA', type=int)
     parser.add_argument('--osp_max_dist', dest='osp_max_dist', default=60, help='Maximum distance to first AA of lipobox, measured in AA', type=int)
-    parser.add_argument('--regexPattern', dest='pattern', default=1, help='Regex Pattern to use. 1 for more strict, 2 for LipoRy pattern.',type=int)
+    parser.add_argument('--regex_pattern', dest='pattern', default=1, help='Regex Pattern to use. 1 for more strict, 2 for LipoRy pattern.',type=int)
     parser.add_argument('--putative_osp', dest='putative_osp_fa', type=argparse.FileType('w'), default='putative_osp.fa', help='Output of putative FASTA file')
 
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
