@@ -74,6 +74,8 @@ def find_tmd(pair,minimum=10,maximum=30,TMDmin=10,TMDmax=20):
         else:
             continue
 
+        print("TMD of " +str(pair))
+        print(tmd)
         return tmd
 
 def find_lipobox(pair,minimum=10,maximum=30,regex=1):
