@@ -3,7 +3,7 @@ from cpt import OrfFinder
 from Bio import SeqIO
 from Bio import Seq
 from BCBio import GFF
-from spaninFuncs import tuple_fasta, find_lipobox
+from spaninFuncs import tuple_fasta, find_lipobox, lineWrapper
 import re
 import os
 import sys
@@ -83,6 +83,6 @@ if __name__ == '__main__':
     with open(args.putative_osp_fa.name, 'w') as f:
         for desc,s in candidate_dict.items(): # description / sequence
             f.write('> '+str(desc))
-            f.write('\n'+str(s)+'\n')
+            f.write('\n'+lineWrapper(str(s))+'\n')
 
 

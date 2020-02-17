@@ -6,7 +6,7 @@ from cpt import OrfFinder
 from Bio import SeqIO
 from Bio import Seq
 import re
-from spaninFuncs import find_tmd, tuple_fasta
+from spaninFuncs import find_tmd, tuple_fasta, lineWrapper
 import os
 
 #if __name__ == '__main__':
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     with open(args.putative_isp_fa.name, 'w') as f:
         for desc,s in candidate_dict.items(): # description / sequence
             f.write('> '+str(desc))
-            f.write('\n'+str(s)+'\n')
+            f.write('\n'+lineWrapper(str(s))+'\n')
 
 
     '''https://docs.python.org/3.4/library/subprocess.html'''

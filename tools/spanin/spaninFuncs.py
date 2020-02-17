@@ -124,7 +124,17 @@ def tuple_fasta(fasta_file):
             continue
     
     return zip(descriptions, sequences)
-    
+
+def lineWrapper(text, charactersize=60):
+
+    if len(text) <= charactersize:
+        return text
+    else:
+        return text[:charactersize] + '\n' + lineWrapper(text[charactersize:], charactersize)
+
+def spaninProximity(osp,isp):
+    pass
+
 
 ####################################################################################################################################
 if __name__ == "__main__":
