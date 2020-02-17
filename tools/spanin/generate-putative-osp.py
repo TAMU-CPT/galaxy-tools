@@ -71,6 +71,10 @@ if __name__ == '__main__':
     -----------------------------LIPO----------------------------------------
     > lambda_EOS MLKLKMMLCVMMLPLVVVGCTSKQSVSQCVKPPPPPAWIMQPPPDWQTPLNGIISPSERG
     '''
+
+    args.out_osp_prot.close()
+    args.out_osp_prot = open(args.out_osp_prot, 'r')
+
     pairs = tuple_fasta(fasta_file=args.out_osp_prot.name)
     have_lipo = [] # empty candidates list to be passed through the user input 
 
