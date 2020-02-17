@@ -1,1 +1,2 @@
 I used t7 to find the OSP and ISP as my control. Download from NCBI Nucleotidedb : NC_001604
+Lambda is also a good choice. Download from NCBI Nucleotidedb : NC_001416.1
