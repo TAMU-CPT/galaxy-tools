@@ -33,11 +33,11 @@ $fasta_file
 
     </inputs>
     <outputs>   
+                <data format="fasta" name="osp_on" label="NucSequences.fa" hidden = "true"/>
+		<data format="fasta" name="osp_op" label="ProtSequences.fa" hidden = "true"/>
+                <data format="bed" name="osp_ob" label="BED_Output.bed" hidden = "true"/>
+                <data format="gff3" name="osp_og" label="GFF_Output.gff" hidden = "true"/>
                 <data format="fasta" name="putative_osp" label="putative_osp.fa"/>
-                <data format="fasta" name="osp_on" label="NucSequences.fa"/>
-		<data format="fasta" name="osp_op" label="ProtSequences.fa"/>
-                <data format="bed" name="osp_ob" label="BED_Output.bed"/>
-                <data format="gff3" name="osp_og" label="GFF_Output.gff"/>
     </outputs>
     <help><![CDATA[
 **What it does**
