@@ -65,6 +65,10 @@ if __name__ == '__main__':
 
     >lambda_EIS MSRVTAIISALVICIIVCLSWAVNHYRDNAITYKAQRDKNARELKLANAAITDMQMRQRDVAALDAKYTKELADAKAENDALRDDVAAGRRRLHIKAVCQSVREATTASGVDNAASPRLADTAERDYFTLRERLITMQKQLEGTQKYINEQCR
     '''
+
+    args.out_osp_prot.close()
+    args.out_osp_prot = open(args.out_osp_prot.name, 'r')
+
     pairs = tuple_fasta(fasta_file=args.out_isp_prot)
 
     have_tmd = [] # empty candidates list to be passed through the user input criteria
