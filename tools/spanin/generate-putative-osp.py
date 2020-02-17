@@ -73,9 +73,9 @@ if __name__ == '__main__':
     '''
 
     args.out_osp_prot.close()
-    args.out_osp_prot = open(args.out_osp_prot, 'r')
+    args.out_osp_prot = open(args.out_osp_prot.name, 'r')
 
-    pairs = tuple_fasta(fasta_file=args.out_osp_prot.name)
+    pairs = tuple_fasta(fasta_file=args.out_osp_prot)
     have_lipo = [] # empty candidates list to be passed through the user input 
 
     for each_pair in pairs:
