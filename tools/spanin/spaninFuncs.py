@@ -58,8 +58,8 @@ def find_tmd(pair,minimum=10,maximum=30,TMDmin=10,TMDmax=20):
     #print(search_region) # for trouble shooting
     
     print(search_region)
-    print(TMDmin)
-    print(TMDmax)
+    print(type(TMDmin))
+    print(type(TMDmax))
     print("Doing TMSIZE")
     for tmsize in range(TMDmin, TMDmax+1, 1):
         print(tmsize)
