@@ -32,3 +32,4 @@ if __name__ == '__main__':
 
     of = OrfFinder(args.table, args.ftype, args.ends, args.min_len, args.strand)
     of.locate(args.fasta_file, args.out_nuc, args.out_prot, args.out_bed, args.out_gff3)
+    
