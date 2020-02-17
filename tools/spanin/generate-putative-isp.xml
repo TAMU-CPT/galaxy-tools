@@ -9,7 +9,7 @@
       <requirement type="package" version="2019.06.08">regex</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/generate-putative-isp.py
+python $__tool_directory__/generate-putative-isp.py
 $fasta_file
 --isp_on $isp_on
 --isp_op $isp_op
