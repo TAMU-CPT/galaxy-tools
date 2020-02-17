@@ -16,7 +16,7 @@
     * cpt.py
 
 ## Script Descriptions / Methodologies:
-* `generate-putative-isp.py`
+* `generate-putative-osp.py`
     * INPUT : Genomic FASTA
     * METHODOLOGY 
         * Uses the `OrfFinder` object and locates __ALL__ potential start sequences, based on `ttg` / `atg` / `gtg`
@@ -26,16 +26,14 @@
             * Max distance from start codon to lipobox
         * Within that range, a regular expression (RegEx) is used to determine if a lipobox is found.
     * OUTPUT : All matching description/sequence pairs are stored, and returned as a `putative_osp.fa` file.
-* `generate-putative-osp.py`
+* `generate-putative-isp.py`
     * INPUT : Genomic FASTA
     * METHODOLOGY
     * Uses the `OrfFinder` object and locates __ALL__ potential start sequences, based on `ttg` / `atg` / `gtg`
     * This generates a set of output files consisting of FASTA / BED / GFF3 
     * With the aaFASTA, we read in each potential sequence and determine if it has a TMD based off of:
-        * A min, max range from the start codon (<user_input>).
-        * Finding a RegEx of Hydrophobic AAs consecutively next to each other, a total of a <user_input> consecutively together.
-            * For instance, if the TMD wanted to be queried for a 12 member hydrophoic region, `-tmdRange = 12`
-        * If this fails, it queries to find if there is a Lysine triplet region at the beginning of the desired min range, or at the end (n to n+2 and tmsize-6 to tmsize-2) 
+        * Searches for Lysine snorkels (see `find_tmd`)
+        * Searches for large spanning hydrophobic regions (see `find_tmd`)
     * OUTPUT : All matching description/sequence pairs are stored, and returned as a `putative_isp.fa` file.
 * `spaninFuncs.py`
     * func `find_lipobox`
