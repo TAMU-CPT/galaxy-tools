@@ -45,9 +45,11 @@ if __name__ == '__main__':
     parser.add_argument('--isp_op', dest='out_isp_prot', type=argparse.FileType('w'), default='out_isp.fa', help='Output protein sequences, FASTA')
     parser.add_argument('--isp_ob', dest='out_isp_bed', type=argparse.FileType('w'), default='out_isp.bed', help='Output BED file')
     parser.add_argument('--isp_og', dest='out_isp_gff3', type=argparse.FileType('w'), default='out_isp.gff3', help='Output GFF3 file')
-    parser.add_argument('--osp_min_dist', dest='isp_min_dist', default=10, help='Minimal distance to first AA of TMD, measured in AA', type=int)
-    parser.add_argument('--osp_max_dist', dest='isp_max_dist', default=30, help='Maximum distance to first AA of TMD, measured in AA', type=int)
+    parser.add_argument('--isp_min_dist', dest='isp_min_dist', default=10, help='Minimal distance to first AA of TMD, measured in AA', type=int)
+    parser.add_argument('--isp_max_dist', dest='isp_max_dist', default=30, help='Maximum distance to first AA of TMD, measured in AA', type=int)
     parser.add_argument('--putative_isp', dest='putative_isp_fa', type=argparse.FileType('w'), default='putative_isp.fa', help='Output of putative FASTA file')
+    parser.add_argument('--min_tmd_size', dest='min_tmd_size', default = 10, help='Minimal size of the TMD domain')
+    parser.add_argument('--max_tmd_size', dest='max_tmd_size', default = 20, help='Maximum size of the TMD domain')
     
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
@@ -66,7 +68,7 @@ if __name__ == '__main__':
     have_tmd = [] # empty candidates list to be passed through the user input criteria
     for each_pair in pairs: # grab transmembrane domains from spaninFuncts (queries for lysin snorkels # and a range of hydrophobic regions that could be TMDs)
         try:
-            have_tmd += find_tmd(pair=each_pair, minimum=args.isp_min_dist, maximum=args.isp_max_dist)
+            have_tmd += find_tmd(pair=each_pair, minimum=args.isp_min_dist, maximum=args.isp_max_dist, TMDmin=args.min_tmd_size, TMDmax=args.max_tmd_size)
         except TypeError:
             continue
     
