@@ -132,7 +132,30 @@ def lineWrapper(text, charactersize=60):
     else:
         return text[:charactersize] + '\n' + lineWrapper(text[charactersize:], charactersize)
 
-def spaninProximity(osp,isp):
+def getDescriptions(fasta):
+    """
+    Takes an output FASTA file, and parses retrieves the description headers. These headers contain information needed
+    for finding locations of a potential i-spanin and o-spanin proximity to one another.
+    """
+    desc = []
+    with open(fasta, 'r') as f:
+        for line in f:
+            if line.startswith('>'):
+                desc.append(line)
+    return desc
+
+def grabLocs(text):
+    """
+    Grabs the locations of the spanin based on NT location (seen from ORF). Grabs the ORF name, as per named from the ORF class/module
+    from cpt.py
+    """
+    pass
+
+def spaninProximity(osp,isp,max_dist=30):
+    """
+    Compares the locations of i-spanins and o-spanins. max_dist is the distance in NT measurement from i-spanin END site
+    to o-spanin START. The user will be inputting AA distance, so a conversion will be necessary (<user_input> * 3)
+    """
     pass
 
 
