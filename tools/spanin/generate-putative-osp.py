@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import argparse
 from cpt import OrfFinder
 from Bio import SeqIO
@@ -54,6 +55,7 @@ if __name__ == '__main__':
 
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
+    
     the_args = vars(parser.parse_args())
     
     ### osp output, naive ORF finding:
@@ -80,7 +82,7 @@ if __name__ == '__main__':
     
     # export results in fasta format
     candidate_dict = { k:v for k,v in have_lipo}
-    with open(args.putative_osp_fa.name, 'w') as f:
+    with args.putative_osp_fa as f:
         for desc,s in candidate_dict.items(): # description / sequence
             f.write('> '+str(desc))
             f.write('\n'+lineWrapper(str(s))+'\n')
