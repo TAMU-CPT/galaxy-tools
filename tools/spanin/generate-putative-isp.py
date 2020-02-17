@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     >lambda_EIS MSRVTAIISALVICIIVCLSWAVNHYRDNAITYKAQRDKNARELKLANAAITDMQMRQRDVAALDAKYTKELADAKAENDALRDDVAAGRRRLHIKAVCQSVREATTASGVDNAASPRLADTAERDYFTLRERLITMQKQLEGTQKYINEQCR
     '''
-    pairs = tuple_fasta(fasta_file=args.out_isp_pro)
+    pairs = tuple_fasta(fasta_file=args.out_isp_prot)
 
     have_tmd = [] # empty candidates list to be passed through the user input criteria
     for each_pair in pairs: # grab transmembrane domains from spaninFuncts (queries for lysin snorkels # and a range of hydrophobic regions that could be TMDs)
