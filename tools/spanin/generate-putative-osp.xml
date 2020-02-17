@@ -28,7 +28,7 @@ $fasta_file
 
     </inputs>
     <outputs>
-		<data format="fasta" name="putative_osp.fa"/>
+		<data format="fasta" name="putative_osp" label="putative_osp.fa"/>
     </outputs>
     <help><![CDATA[
 **What it does**
@@ -48,4 +48,5 @@ Within that minimum and maximum range, a regular expression (RegEx) is used to d
 
 OUTPUT : putative_osp.fa (FASTA) file.
         ]]></help>
+        <expand macro="citations-2020" />
 </tool>
