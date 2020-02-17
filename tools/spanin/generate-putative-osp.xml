@@ -9,7 +9,7 @@
       <requirement type="package" version="2019.06.08">regex</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/generate-putative-osp.py
+$__tool_directory__/generate-putative-osp.py
 $fasta_file
 --osp_on $osp_on
 --osp_op $osp_op
