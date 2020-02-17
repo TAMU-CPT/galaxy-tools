@@ -66,8 +66,8 @@ if __name__ == '__main__':
     >lambda_EIS MSRVTAIISALVICIIVCLSWAVNHYRDNAITYKAQRDKNARELKLANAAITDMQMRQRDVAALDAKYTKELADAKAENDALRDDVAAGRRRLHIKAVCQSVREATTASGVDNAASPRLADTAERDYFTLRERLITMQKQLEGTQKYINEQCR
     '''
 
-    args.out_osp_prot.close()
-    args.out_osp_prot = open(args.out_osp_prot.name, 'r')
+    args.out_isp_prot.close()
+    args.out_isp_prot = open(args.out_isp_prot.name, 'r')
 
     pairs = tuple_fasta(fasta_file=args.out_isp_prot)
 
