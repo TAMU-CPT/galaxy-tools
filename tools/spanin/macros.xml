@@ -3,18 +3,54 @@
 	<xml name="requirements">
 		<requirements>
 			<requirement type="package" version="2.7">python</requirement>
-			<requirement type="package" version="1.74">biopython</requirement>
+			<requirement type="package" version="1.67">biopython</requirement>
+			<requirement type="package" version="0.6.4">bcbiogff</requirement>
 			<yield/>
 		</requirements>
 	</xml>
-	<xml name="input/fasta">
-		<param label="Fasta file" name="sequences" type="data" format="fasta"/>
+	<xml name="genome_selector">
+		<conditional name="reference_genome">
+			<param name="reference_genome_source" type="select" label="Reference Genome">
+				<option value="history" selected="True">From History</option>
+				<option value="cached">Locally Cached</option>
+			</param>
+			<when value="cached">
+				<param name="fasta_indexes" type="select" label="Source FASTA Sequence">
+					<options from_data_table="all_fasta"/>
+				</param>
+			</when>
+			<when value="history">
+				<param name="genome_fasta" type="data" format="fasta" label="Source FASTA Sequence"/>
+			</when>
+		</conditional>
 	</xml>
-
-	<token name="@SEQUENCE@">
-		"$sequences"
+	<xml name="gff3_input">
+		<param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
+	</xml>
+	<xml name="input/gff3+fasta">
+		<expand macro="gff3_input" />
+		<expand macro="genome_selector" />
+	</xml>
+	<token name="@INPUT_GFF@">
+	"$gff3_data"
 	</token>
-	<xml name="input/fasta/protein">
-		<param label="Protein fasta file" name="sequences" type="data" format="fasta"/>
-	</xml>
+	<token name="@INPUT_FASTA@">
+#if str($reference_genome.reference_genome_source) == 'cached':
+		"${reference_genome.fasta_indexes.fields.path}"
+#else if str($reference_genome.reference_genome_source) == 'history':
+		genomeref.fa
+#end if
+	</token>
+	<token name="@GENOME_SELECTOR_PRE@">
+#if $reference_genome.reference_genome_source == 'history':
+		ln -s $reference_genome.genome_fasta genomeref.fa;
+#end if
+	</token>
+	<token name="@GENOME_SELECTOR@">
+#if str($reference_genome.reference_genome_source) == 'cached':
+		"${reference_genome.fasta_indexes.fields.path}"
+#else if str($reference_genome.reference_genome_source) == 'history':
+		genomeref.fa
+#end if
+	</token>
 </macros>
