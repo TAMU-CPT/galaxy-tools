@@ -52,9 +52,12 @@ def find_tmd(pair,minimum=10,maximum=30,TMDmin=10,TMDmax=20):
     print("Entering TMD")
     tmd = []
     s = str(pair[1]) # sequence being analyzed
+    print(s)
     #print(s) # for trouble shooting
     search_region = s[minimum-1:maximum+1]
     #print(search_region) # for trouble shooting
+    
+    print(search_region)
     print("Doing TMSIZE of bounds " + str(TMDmin) + " to " + str(TMDmax+1))
     for tmsize in range(TMDmin, TMDmax+1, 1):
         #print('==============='+str(tmsize)+'================') # print for troubleshooting
