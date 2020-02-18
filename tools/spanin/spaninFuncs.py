@@ -54,6 +54,7 @@ def find_tmd(pair,minimum=10,maximum=30,TMDmin=10,TMDmax=20):
     #print(s) # for trouble shooting
     search_region = s[minimum-1:maximum+1]
     #print(search_region) # for trouble shooting
+    
     for tmsize in range(TMDmin, TMDmax+1, 1):
         #print('==============='+str(tmsize)+'================') # print for troubleshooting
         pattern = "['FIWLVMYCATGS']{"+str(tmsize)+"}" # searches for these hydrophobic residues tmsize total times

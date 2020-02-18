@@ -87,55 +87,115 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                     backList.reverse()
                 
                     for item in backList:
+                        addition = ""
+                        header = ""
+                        if "product" in item.qualifiers:
+                            addition = " -" + str(item.qualifiers['product'][0]) + "-"
                         if 'protein_id' in item.qualifiers:
-                            upOut.write(">" + (item.qualifiers['protein_id'][0]) + " (5' of " + longOut + ' found within ' + sourceOut + ')\n')
+                            header = ">" + (item.qualifiers['protein_id'][0]) + addition + " (5' of " + longOut + ' found within ' + sourceOut + ')\n'
                         else:
-                            upOut.write(">" + (item.qualifiers['locus_tag'][0]) + " (5' of " + longOut + ' found within ' + sourceOut + ')\n')
-
+                            header = ">" + (item.qualifiers['locus_tag'][0]) + addition + " (5' of " + longOut + ' found within ' + sourceOut + ')\n'
                         if outProt == True:
                             if 'translation' in item.qualifiers:
+                                upOut.write(header)
                                 upOut.write(str(item.qualifiers['translation'][0]) + '\n\n')
                             else:
-                                seqHold = gbk.seq[item.location.start : item.location.end]
+                                modS = 0
+                                modE = 0
+                                if 'codon_start' in item.qualifiers:
+                                  if item.location.strand > 0:
+                                    modS = int(item.qualifiers['codon_start'][0]) - 1
+                                  else:
+                                    modE = int(item.qualifiers['codon_start'][0]) - 1
+                                
+                                seqHold = gbk.seq[item.location.start + modS: item.location.end - modE]
                                 if item.location.strand == -1:
                                   seqHold = seqHold.reverse_complement()
                                 if cdsOnly:
-                                  if tTable != 0:
-                                    upOut.write(str(seqHold.translate(table=tTable, cds=True)) + '\n\n')
-                                  else:
-                                    upOut.write(str(seqHold) + '\n\n')
+                                  try:
+                                    finalSeq = ""
+                                    if tTable != 0:
+                                      finalSeq = str(seqHold.translate(table=tTable, cds=True)) + '\n\n'
+                                    else:
+                                      finalSeq = str(seqHold) + '\n\n'
+                                    upOut.write(header)
+                                    upOut.write(finalSeq)
+                                  except Exception as bdct:
+                                    log.warn("ERROR %s %s", item.qualifiers['locus_tag'][0], bdct)
+                                    finalSeq = ""
+                                    if tTable != 0:
+                                      finalSeq = str(seqHold.translate(table=tTable, cds=False)) + '\n\n'
+                                    else:
+                                      finalSeq = str(seqHold) + '\n\n'
+                                    header = ">" + (item.qualifiers['locus_tag'][0]) + addition + " [INCOMPLETE] (5' of " + longOut + ' found within ' + sourceOut + ')\n'
+                                    upOut.write(header)
+                                    upOut.write(finalSeq)
                                 else:
+                                  
                                   if tTable != 0:
+                                    upOut.write(header)
                                     upOut.write(str(seqHold.translate(table=tTable, cds=False)) + '\n\n')
                                   else:
+                                    upOut.write(header)
                                     upOut.write(str(seqHold) + '\n\n')
                         else:
+                            upOut.write(header)
                             upOut.write(str(gbk.seq[item.location.start : item.location.end]) + '\n\n')
 
                     for item in aheadList:
+                        addition = ""
+                        header = ""
+                        if "product" in item.qualifiers:
+                            addition = " -" + str(item.qualifiers['product'][0]) + "-"
                         if 'protein_id' in item.qualifiers:
-                            downOut.write(">" + (item.qualifiers['protein_id'][0]) + " (3' of " + longOut + ' found within ' + sourceOut + ')\n')
+                            header = ">" + (item.qualifiers['protein_id'][0]) + addition + " (3' of " + longOut + ' found within ' + sourceOut + ')\n'
                         else:
-                            downOut.write(">" + (item.qualifiers['locus_tag'][0]) + " (3' of " + longOut + ' found within ' + sourceOut + ')\n')
-
+                            header = ">" + (item.qualifiers['locus_tag'][0]) + addition + " (3' of " + longOut + ' found within ' + sourceOut + ')\n'
                         if outProt == True:
                             if 'translation' in item.qualifiers:
+                                downOut.write(header)
                                 downOut.write(str(item.qualifiers['translation'][0]) + '\n\n')
                             else:
-                                seqHold = gbk.seq[item.location.start : item.location.end]
+                                modS = 0
+                                modE = 0
+                                if 'codon_start' in item.qualifiers:
+                                  if item.location.strand > 0:
+                                    modS = int(item.qualifiers['codon_start'][0]) - 1
+                                  else:
+                                    modE = int(item.qualifiers['codon_start'][0]) - 1
+                                
+                                seqHold = gbk.seq[item.location.start + modS: item.location.end - modE]
                                 if item.location.strand == -1:
                                   seqHold = seqHold.reverse_complement()
                                 if cdsOnly:
-                                  if tTable != 0:
-                                    downOut.write(str(seqHold.translate(table=tTable, cds=True)) + '\n\n')
-                                  else:
-                                    downOut.write(str(seqHold) + '\n\n')
+                                  try:
+                                    finalSeq = ""
+                                    if tTable != 0:
+                                      finalSeq = str(seqHold.translate(table=tTable, cds=True)) + '\n\n'
+                                    else:
+                                      finalSeq = str(seqHold) + '\n\n'
+                                    downOut.write(header)
+                                    downOut.write(finalSeq)
+                                  except Exception as bdct:
+                                    log.warn("ERROR %s %s", item.qualifiers['locus_tag'][0], bdct)
+                                    finalSeq = ""
+                                    if tTable != 0:
+                                      finalSeq = str(seqHold.translate(table=tTable, cds=False)) + '\n\n'
+                                    else:
+                                      finalSeq = str(seqHold) + '\n\n'
+                                    header = ">" + (item.qualifiers['locus_tag'][0]) + addition + " [INCOMPLETE] (3' of " + longOut + ' found within ' + sourceOut + ')\n'
+                                    downOut.write(header)
+                                    downOut.write(finalSeq)
                                 else:
+                                  
                                   if tTable != 0:
+                                    downOut.write(header)
                                     downOut.write(str(seqHold.translate(table=tTable, cds=False)) + '\n\n')
                                   else:
+                                    downOut.write(header)
                                     downOut.write(str(seqHold) + '\n\n')
                         else:
+                            downOut.write(header)
                             downOut.write(str(gbk.seq[item.location.start : item.location.end]) + '\n\n')
             #print(longOut)
     

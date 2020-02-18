@@ -22,6 +22,7 @@ $fasta_file
 --max_tmd_size $max_tmd_size
 --putative_isp $putative_isp
 --summary_isp_txt $summary_isp
+
 ]]></command>
     <inputs>
         <param label="FASTA" name="fasta_file" type="data" format="fasta" />
@@ -42,12 +43,14 @@ $fasta_file
     <help><![CDATA[
 **What it does**
 INPUT : Genomic FASTA
+
 METHODOLOGY
 Initially uses the OrfFinder module from CPT.py and locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA(NT and AA) / BED / GFF3. These are currently hidden.
 With the aaFASTA, we read in each potential sequence and determine if it has a TMD based off of:
 1. Ciphs through looking for Lysine snorkels and neighboring hydrophobic residues.
 2. Looks for a repeated hydrophobic region within the sequence, based on a range of user inputs.
 OUTPUT : putative_isp.fa (FASTA) file and basic summary statistics as summary_isp.txt.
+
 ]]></help>
         <expand macro="citations-2020" />
 </tool>

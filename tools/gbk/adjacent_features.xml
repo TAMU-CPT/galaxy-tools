@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.gbk.adjacent_features" name="Find adjacent Genbank features" version="RC3">
+<tool id="edu.tamu.cpt2.gbk.adjacent_features" name="Find adjacent Genbank features" version="RC4">
   <description>Searches a Genbank file for a given FASTA sequence, then outputs a file with adjacent upstream features, and another with adjacent downstream features.</description>
   <macros>
     <import>macros.xml</import>
@@ -8,8 +8,10 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/adjacent_features.py
--genbankFiles $gbkIn
--fastaFiles $fastaIn
+#set repeat_var_1 = '" "'.join([ str($var) for $var in $gbkIn ])
+#set repeat_var_2 = '" "'.join([ str($var) for $var in $fastaIn ])
+-genbankFiles "$repeat_var_1"
+-fastaFiles "$repeat_var_2"
 -tTable $tTable
 -fTable $fTable
 -upOut $upstreamOut

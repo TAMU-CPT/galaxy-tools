@@ -55,7 +55,7 @@ if __name__ == '__main__':
     parser.add_argument('--max_tmd_size', dest='max_tmd_size', default = 20, help='Maximum size of the TMD domain', type=int)
     parser.add_argument('--summary_isp_txt', dest='summary_isp_txt', type=argparse.FileType('w'),
     default='summary_isp.txt', help='Summary statistics on putative i-spanins')
-    
+
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
     the_args = vars(parser.parse_args())
