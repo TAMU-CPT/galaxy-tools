@@ -9,7 +9,7 @@
       <requirement type="package" version="2019.06.08">regex</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/generate-putative-isp.py
+python $__tool_directory__/findSpanin.py
 $putative_isp_fasta_file
 $putative_osp_fasta_file
 --max_isp_osp_distance $max_isp_osp_distance
