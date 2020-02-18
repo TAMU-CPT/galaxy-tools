@@ -29,10 +29,10 @@ $putative_osp_fasta_file
         </param>
     </inputs>
     <outputs>
-          <data format="text" name="summary_txt" label="FindSpanin_summary.txt"/>
-          <data format="text" name="embedded_txt" label="embedded_results.txt"/>
-          <data format="text" name="overlap_txt" label="label_results.txt"/>
-          <data format="text" name="separate_txt" label="separate_results.txt"/>
+          <data format="txt" name="summary_txt" label="FindSpanin_summary.txt"/>
+          <data format="txt" name="embedded_txt" label="embedded_results.txt"/>
+          <data format="txt" name="overlap_txt" label="label_results.txt"/>
+          <data format="txt" name="separate_txt" label="separate_results.txt"/>
     </outputs>
     <help><![CDATA[
 * ALERT *

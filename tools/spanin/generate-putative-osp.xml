@@ -21,6 +21,7 @@ $fasta_file
 --regex_pattern $regex_pattern
 --putative_osp $putative_osp
 --summary_osp_txt $summary_osp
+--putative_osp_gff $putative_osp_gff
 ]]></command>
     <inputs>
         <param label="FASTA" name="fasta_file" type="data" format="fasta" />
@@ -39,7 +40,8 @@ $fasta_file
                 <data format="bed" name="osp_ob" label="BED_Output.bed" hidden = "true"/>
                 <data format="gff3" name="osp_og" label="GFF_Output.gff" hidden = "true"/>
                 <data format="fasta" name="putative_osp" label="putative_osp.fa"/>
-        <data format="text" name="summary_osp" label="summary_osp.txt"/>
+        <data format="txt" name="summary_osp" label="summary_osp.txt"/>
+                <data format="gff3" name="putative_osp_gff" label="putative_osp.gff3"/>
     </outputs>
     <help><![CDATA[
 **What it does**
@@ -50,7 +52,7 @@ With the aaFASTA, this tool reads in each potential sequence and determines if i
 >    Min distance from start codon to lipobox
 >    Max distance from start codon to lipobox
 Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found. If so, it is added to a candidate list, and eventually ported to a file in the output.
-OUTPUT : putative_osp.fa (FASTA) file and basic summary statistics file as sumamry_osp.txt
+OUTPUT : putative_osp.fa (FASTA) file, putative_osp.gff3, and basic summary statistics file as sumamry_osp.txt
 ]]></help>
         <expand macro="citations-2020" />
 </tool>
