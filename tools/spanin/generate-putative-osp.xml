@@ -39,7 +39,7 @@ $fasta_file
                 <data format="bed" name="osp_ob" label="BED_Output.bed" hidden = "true"/>
                 <data format="gff3" name="osp_og" label="GFF_Output.gff" hidden = "true"/>
                 <data format="fasta" name="putative_osp" label="putative_osp.fa"/>
-        <data format="text" name="summary_osp" label="summary_osp.txt"/>
+        <data format="txt" name="summary_osp" label="summary_osp.txt"/>
     </outputs>
     <help><![CDATA[
 **What it does**
