@@ -56,10 +56,10 @@ def prep_a_gff3(fa, spanin_type):
         end = re.search(('\.\.[\d]+'),a_pair[0]).group(0).split('..')[1] # column 5
         orfid = re.search(('(ORF)[\d]+'),a_pair[0]).group(0) # column 1
         if spanin_type == 'isp':
-            methodtype = 'experimental_feature' # column 3
+            methodtype = 'CDS' # column 3
             spanin = 'isp'
         elif spanin_type == 'osp':
-            methodtype = 'experimental_feature' # column 3
+            methodtype = 'CDS' # column 3
             spanin = 'osp'
         else:
             print('need to input spanin type')
