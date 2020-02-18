@@ -103,7 +103,7 @@ if __name__ == '__main__':
 
     with args.embedded_txt as f:
         f.write('================ Embedded Spanin Candidates =================\n')
-        f.write('isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end')
+        f.write('isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n')
         if embedded != {}:
             for pisp, posp in embedded.items():
                 f.write(pisp+'\n')
@@ -113,7 +113,7 @@ if __name__ == '__main__':
             f.write('nothing found')
     with args.overlap_txt as f:
         f.write('================ Overlap Spanin Candidates =================\n')
-        f.write('isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end')
+        f.write('isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n')
         if overlap != {}:
             for pisp, posp in overlap.items():
                 f.write(pisp+'\n')
@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
     with args.separate_txt as f:
         f.write('================ Separate Spanin Candidates =================\n')
-        f.write('isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end')
+        f.write('isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n')
         if separate != {}:
             for pisp, posp in separate.items():
                 f.write(pisp+'\n')
