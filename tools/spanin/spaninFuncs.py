@@ -57,14 +57,19 @@ def find_tmd(pair,minimum=10,maximum=30,TMDmin=10,TMDmax=20):
     for tmsize in range(TMDmin, TMDmax+1, 1):
         #print('==============='+str(tmsize)+'================') # print for troubleshooting
         pattern = "['FIWLVMYCATGS']{"+str(tmsize)+"}" # searches for these hydrophobic residues tmsize total times
-        if re.search(('[K]'), search_region[0:7]):
-            try:
-                backend = check_back_end_snorkels(search_region,tmsize)
-                if backend == 'match':
-                    tmd.append(pair)
-                else:
+        if re.search(('[K]'), search_region[1:8]): # grabbing one below with search region, so I want to grab one ahead here when I query.
+            store_search = re.search(('[K]'), search_region[1:8]) # storing regex object
+            where_we_are = store_search.start() # finding where we got the hit
+            if (re.search(('[FIWLVMYCATGS]'), search_region[where_we_are+1]) and re.search(('[FIWLVMYCATGS]'), search_region[where_we_are-1])): # hydrophobic neighbor
+                try:
+                    backend = check_back_end_snorkels(search_region,tmsize)
+                    if backend == 'match':
+                        tmd.append(pair)
+                    else:
+                        continue
+                except (IndexError,TypeError):
                     continue
-            except (IndexError,TypeError):
+            else:
                 continue
         elif re.search((pattern), search_region):
             try:
@@ -97,7 +102,7 @@ def find_lipobox(pair,minimum=10,maximum=30,regex=1):
     #for each_pair in pair:
     #print(s)
     if re.search((pattern), search_region): # lipobox must be WITHIN the range...
-        # searches the sequence with the input RegEx AND omits if start sequence begins with I
+        # searches the sequence with the input RegEx AND omits if 
         candidates.append(pair)
         #print('passed') # trouble shooting
         return candidates
@@ -138,19 +143,19 @@ def getDescriptions(fasta):
     for finding locations of a potential i-spanin and o-spanin proximity to one another.
     """
     desc = []
-    with open(fasta, 'r') as f:
+    with fasta as f:
         for line in f:
             if line.startswith('>'):
                 desc.append(line)
     return desc
 
-def splitStrands(text, desired_strand='+'):
+def splitStrands(text, strand='+'):
     #positive_strands = []
     #negative_strands = []
-    if desired_strand == '+':
+    if strand == '+':
         if re.search(('(\[1\])'), text):
             return text
-    elif desired_strand == '-':
+    elif strand == '-':
         if re.search(('(\[-1\])'), text):
             return text
     #return positive_strands, negative_strands
@@ -183,33 +188,39 @@ def spaninProximity(isp,osp,max_dist=30):
     Compares the locations of i-spanins and o-spanins. max_dist is the distance in NT measurement from i-spanin END site
     to o-spanin START. The user will be inputting AA distance, so a conversion will be necessary (<user_input> * 3)
     INPUT: list of OSP and ISP candidates
-    OUTPUT: Return (improved) candidates for overlapping, embedded, and upstream list
+    OUTPUT: Return (improved) candidates for overlapping, embedded, and separate list
     """
-    embedded = []
-    overlap = []
-    upstream = []
+    embedded = {}
+    overlap = {}
+    separate = {}
     for iseq in isp:
+        embedded[iseq[2]] = []
+        overlap[iseq[2]] = []
+        separate[iseq[2]] = []
         #print(iseq)
         for oseq in osp:
             #print(oseq)
             if (iseq[0] < oseq[0] < iseq[1] and oseq[1] < iseq[1]):
                 ### EMBEDDED ###
-                print(iseq[2]+oseq[2])
-                pair = zip(iseq, oseq)
-               #embedded.append(pair)
-                embedded += pair
+                combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]] # ordering a return for dic
+                #pair = zip(iseq, oseq)
+            #embedded.append(pair)
+                embedded[iseq[2]] += [combo]
             elif (iseq[0] < oseq[0] <= iseq[1] and oseq[1] > iseq[1]):
-                pair = zip(iseq, oseq)
+                combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
                 #overlap.append(pair)
-                overlap += pair
+                overlap[iseq[2]] += [combo]
             elif (iseq[1] <= oseq[0] <= iseq[1] + max_dist):
-                pair = zip(iseq, oseq)
+                combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
                 #upstream.append(pair)
-                upstream += pair
+                separate[iseq[2]] += [combo]
             else:
                 continue
 
-    return embedded, overlap, upstream
+    embedded = {k:embedded[k] for k in embedded if embedded[k]}
+    overlap = {k:overlap[k] for k in overlap if overlap[k]}
+    separate = {k:separate[k] for k in separate if separate[k]}
+    return embedded, overlap, separate
 
 
 
@@ -270,7 +281,7 @@ if __name__ == "__main__":
 
     storage = []
     for item in o:
-        s = splitStrands(item,desired_strand=strand)
+        s = splitStrands(item,strand=strand)
         storage.append(s)
     
     print(storage)

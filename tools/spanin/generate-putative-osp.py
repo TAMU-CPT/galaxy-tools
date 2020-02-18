@@ -1,8 +1,10 @@
+#!/usr/bin/env python
 import argparse
 from cpt import OrfFinder
 from Bio import SeqIO
 from Bio import Seq
 from BCBio import GFF
+from statistics import median
 from spaninFuncs import tuple_fasta, find_lipobox, lineWrapper
 import re
 import os
@@ -49,11 +51,14 @@ if __name__ == '__main__':
     parser.add_argument('--osp_og', dest='out_osp_gff3', type=argparse.FileType('w'), default='out_osp.gff3', help='Output GFF3 file')
     parser.add_argument('--osp_min_dist', dest='osp_min_dist', default=10, help='Minimal distance to first AA of lipobox, measured in AA', type=int)
     parser.add_argument('--osp_max_dist', dest='osp_max_dist', default=60, help='Maximum distance to first AA of lipobox, measured in AA', type=int)
-    parser.add_argument('--regexPattern', dest='pattern', default=1, help='Regex Pattern to use. 1 for more strict, 2 for LipoRy pattern.',type=int)
+    parser.add_argument('--regex_pattern', dest='pattern', default=1, help='Regex Pattern to use. 1 for more strict, 2 for LipoRy pattern.',type=int)
     parser.add_argument('--putative_osp', dest='putative_osp_fa', type=argparse.FileType('w'), default='putative_osp.fa', help='Output of putative FASTA file')
+    parser.add_argument('--summary_osp_txt', dest='summary_osp_txt', type=argparse.FileType('w'),
+    default='summary_osp.txt', help='Summary statistics on putative o-spanins')
 
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
+    
     the_args = vars(parser.parse_args())
     
     ### osp output, naive ORF finding:
@@ -69,8 +74,14 @@ if __name__ == '__main__':
     -----------------------------LIPO----------------------------------------
     > lambda_EOS MLKLKMMLCVMMLPLVVVGCTSKQSVSQCVKPPPPPAWIMQPPPDWQTPLNGIISPSERG
     '''
-    pairs = tuple_fasta(fasta_file=args.out_osp_prot.name)
+
+    args.out_osp_prot.close()
+    args.out_osp_prot = open(args.out_osp_prot.name, 'r')
+
+    pairs = tuple_fasta(fasta_file=args.out_osp_prot)
     have_lipo = [] # empty candidates list to be passed through the user input 
+
+    
 
     for each_pair in pairs:
         try:
@@ -78,11 +89,32 @@ if __name__ == '__main__':
         except (IndexError, TypeError):
             continue
     
+    total_osp = len(have_lipo)
+
     # export results in fasta format
+    ORF = []
+    length = [] # grabbing length of the sequences
     candidate_dict = { k:v for k,v in have_lipo}
-    with open(args.putative_osp_fa.name, 'w') as f:
+    with args.putative_osp_fa as f:
         for desc,s in candidate_dict.items(): # description / sequence
-            f.write('> '+str(desc))
+            f.write('>'+str(desc))
             f.write('\n'+lineWrapper(str(s))+'\n')
+            length.append(len(s))
+            ORF.append(desc)
+
+    bot_size = min(length)
+    top_size = max(length)
+    avg = (sum(length))/total_osp
+    med = median(length)
 
 
+    with args.summary_osp_txt as f:
+        f.write('total potential o-spanins: '+str(total_osp)+'\n')
+        f.write('average length (AA): '+str(avg)+'\n')
+        f.write('median length (AA): '+str(med)+'\n')
+        f.write('maximum orf in size (AA): '+str(top_size)+'\n')
+        f.write('minimum orf in size (AA): '+str(bot_size))
+    #print(candidate_dict.values())
+    #print(length)
+    #print(top_size)
+    #print(avg)

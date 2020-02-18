@@ -5,48 +5,52 @@
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
     </macros>
-    <expand macro="requirements"/>
+    <expand macro="requirements">
+      <requirement type="package" version="2019.06.08">regex</requirement>
+    </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/generate-putative-osp.py
+$__tool_directory__/generate-putative-osp.py
 $fasta_file
+--osp_on $osp_on
+--osp_op $osp_op
+--osp_ob $osp_ob
+--osp_og $osp_og
 --osp_min_len $osp_min_len
 --osp_min_dist $osp_min_dist
 --osp_max_dist $osp_max_dist
 --regex_pattern $regex_pattern
 --putative_osp $putative_osp
-
-> $output]]></command>
+--summary_osp_txt $summary_osp
+]]></command>
     <inputs>
         <param label="FASTA" name="fasta_file" type="data" format="fasta" />
 	<param label="o-spanin minimal length" name="osp_min_len" type="integer" value="30" />
         <param label="Lipobox minimal distance from start codon" name="osp_min_dist" type="integer" value="10" />
 	<param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" />
         <param type="select" label="Regular Expression choice" name="regex_pattern">
-            <option value=1>findSpanin.pl Criteria (More Strict)</option>
-            <option value=2>LipoRy Criteria</option>
+            <option value="1">[ILMFTV][^REXD][GAS]C</option>
+            <option value="2">[ACGSILMFTV][^REKD][GASNL]C</option>
         </param>
 
     </inputs>
-    <outputs>
-		<data format="fasta" name="putative_osp" label="putative_osp.fa"/>
+    <outputs>   
+                <data format="fasta" name="osp_on" label="NucSequences.fa" hidden = "true"/>
+		<data format="fasta" name="osp_op" label="ProtSequences.fa" hidden = "true"/>
+                <data format="bed" name="osp_ob" label="BED_Output.bed" hidden = "true"/>
+                <data format="gff3" name="osp_og" label="GFF_Output.gff" hidden = "true"/>
+                <data format="fasta" name="putative_osp" label="putative_osp.fa"/>
+        <data format="text" name="summary_osp" label="summary_osp.txt"/>
     </outputs>
     <help><![CDATA[
 **What it does**
 INPUT : Genomic FASTA
-
 METHODOLOGY
-Initially uses the OrfFinder module from CPT.py and locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V)
-
-This generates a set of output files consisting of FASTA / BED / GFF3
+Initially uses the OrfFinder module from CPT.py and locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA(NT and AA) / BED / GFF3. These are currently hidden.
 With the aaFASTA, this tool reads in each potential sequence and determines if it has a lipobox based off of:
-
 >    Min distance from start codon to lipobox
-
 >    Max distance from start codon to lipobox
-
 Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found. If so, it is added to a candidate list, and eventually ported to a file in the output.
-
-OUTPUT : putative_osp.fa (FASTA) file.
-        ]]></help>
+OUTPUT : putative_osp.fa (FASTA) file and basic summary statistics file as sumamry_osp.txt
+]]></help>
         <expand macro="citations-2020" />
 </tool>

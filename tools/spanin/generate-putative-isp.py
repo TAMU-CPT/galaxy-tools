@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 ##### findSpanin.pl --> findSpanin.py
 ######### Incooperated from the findSpanin.pl script, but better and more snakey.
 
@@ -6,6 +8,7 @@ from cpt import OrfFinder
 from Bio import SeqIO
 from Bio import Seq
 import re
+from statistics import median
 from spaninFuncs import find_tmd, tuple_fasta, lineWrapper
 import os
 
@@ -50,6 +53,8 @@ if __name__ == '__main__':
     parser.add_argument('--putative_isp', dest='putative_isp_fa', type=argparse.FileType('w'), default='putative_isp.fa', help='Output of putative FASTA file')
     parser.add_argument('--min_tmd_size', dest='min_tmd_size', default = 10, help='Minimal size of the TMD domain', type=int)
     parser.add_argument('--max_tmd_size', dest='max_tmd_size', default = 20, help='Maximum size of the TMD domain', type=int)
+    parser.add_argument('--summary_isp_txt', dest='summary_isp_txt', type=argparse.FileType('w'),
+    default='summary_isp.txt', help='Summary statistics on putative i-spanins')
     
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
@@ -60,10 +65,15 @@ if __name__ == '__main__':
     isps.locate(args.fasta_file, args.out_isp_nuc, args.out_isp_prot, args.out_isp_bed, args.out_isp_gff3)
     '''
     >T7_EIS MLEFLRKLIPWVLVGMLFGLGWHLGSDSMDAKWKQEVHNEYVKRVEAAKSTQRAIGAVSAKYQEDLAALEGSTDRIISDLRSDNKRLRVRVKTTGISDGQCGFEPDGRAELDDRDAKRILAVTQKGDAWIRALQDTIRELQRK
-
     >lambda_EIS MSRVTAIISALVICIIVCLSWAVNHYRDNAITYKAQRDKNARELKLANAAITDMQMRQRDVAALDAKYTKELADAKAENDALRDDVAAGRRRLHIKAVCQSVREATTASGVDNAASPRLADTAERDYFTLRERLITMQKQLEGTQKYINEQCR
     '''
-    pairs = tuple_fasta(fasta_file=args.out_isp_prot.name)
+
+    args.out_isp_prot.close()
+    args.out_isp_prot = open(args.out_isp_prot.name, 'r')
+
+    pairs = tuple_fasta(fasta_file=args.out_isp_prot)
+
+   # print(pairs)
 
     have_tmd = [] # empty candidates list to be passed through the user input criteria
     for each_pair in pairs: # grab transmembrane domains from spaninFuncts (queries for lysin snorkels # and a range of hydrophobic regions that could be TMDs)
@@ -72,12 +82,29 @@ if __name__ == '__main__':
         except TypeError:
             continue
     
-    candidate_dict = { k:v for k,v in have_tmd}
-    with open(args.putative_isp_fa.name, 'w') as f:
-        for desc,s in candidate_dict.items(): # description / sequence
-            f.write('> '+str(desc))
-            f.write('\n'+lineWrapper(str(s))+'\n')
+    total_isp = len(have_tmd)
 
+    #ORF = [] # mightttttttttttt use eventually
+    length = [] # grabbing length of the sequences
+    candidate_dict = { k:v for k,v in have_tmd}
+    with args.putative_isp_fa as f:
+        for desc,s in candidate_dict.items(): # description / sequence
+            f.write('>'+str(desc))
+            f.write('\n'+lineWrapper(str(s))+'\n')
+            length.append(len(s))
+            #ORF.append(desc)
+
+    bot_size = min(length)
+    top_size = max(length)
+    avg = (sum(length))/total_isp
+    med = median(length)
+
+    with args.summary_isp_txt as f:
+        f.write('total potential o-spanins: '+str(total_isp)+'\n')
+        f.write('average length (AA): '+str(avg)+'\n')
+        f.write('median length (AA): '+str(med)+'\n')
+        f.write('maximum orf in size (AA): '+str(top_size)+'\n')
+        f.write('minimum orf in size (AA): '+str(bot_size))
 
     '''https://docs.python.org/3.4/library/subprocess.html'''
     '''https://github.tamu.edu/CPT/Galaxy-Tools/blob/f0bf4a4b8e5124d4f3082d21b738dfaa8e1a3cf6/tools/phage/transmembrane.py'''
