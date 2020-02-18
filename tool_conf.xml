@@ -287,8 +287,9 @@
 		<tool file="cpt2/galaxy-tools/tools/one-off/none-validator.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/gbk_viz/easyfig_cpt.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/genemark/genemarkHMM.xml"/>
-                <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-isp.xml" label="fasta" />
-                <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-osp.xml" label="fasta" />
+                <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-isp.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-osp.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/spanin/findSpanin.xml"/>
 	</section>
 	<!-- deprecated -->
 	<tool file="cpt2/galaxy-tools/tools/gff3/gff3_ipr_merge.xml" label="deprecated" hidden="True" />
