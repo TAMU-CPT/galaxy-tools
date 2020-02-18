@@ -1,135 +1,135 @@
 ##### findSpanin.pl --> findSpanin.py
-######### Incooperated from the findSpanin.pl script, but better and more snakey.
+######### Much of this code is very "blocked", in the sense that one thing happens...then a function happens on the return...then another function...etc...etc...
 
 import argparse
-from cpt import OrfFinder
-from Bio import SeqIO
-from Bio import Seq
-#from lipory import find_lipoprotein
 import os
+from spaninFuncs import getDescriptions, grabLocs, spaninProximity, splitStrands
 
 ### Requirement Inputs
 #### INPUT : Genomic FASTA
 #### PARAMETERS :
-######## strand : +, -, both
-######## start codons: ATG, GTG and TTG
-######## isp_min: minimal length of the ORF, measured in AAs
-######## isp_nterm_mindist: minimal distance to first AA of TMD, measured in AA
-######## isp_nterm_maxdist: maximum distance to first AA of TMD, measured in AA
-######## osp_min: minimal length of the ORF, measured in AAs
-######## osp_signal_mindist: minimal distance to first AA of Lipobox, measured in AA
-######## osp_signal_maxdist: maximum distance to first AA of Lipobox, measured in AA
-######## Use LipoRy (?)
-######## max_isp_osp_distance: maximum distance between the END of the isp, 
-########                       and the beginning of the osp, measured in AA
 
-###############################################################################
-############:::::::::::::        PART I           :::::::::::::################
-###############::::: Parse the FASTA for potential ORFs :::::::################
-###############################################################################
-
-###############################################################################
-############:::::::::::::        PART II           :::::::::::::###############
-###############:::::::        Find best candidate       :::::::################
-###############################################################################
-
-###############################################################################
-############:::::::::::::        PART III           :::::::::::::##############
-###############::::: Output FASTA files, and best candidate :::::::############
-###############################################################################
-
-#if __name__ == '__main__':
-    #pass
 ###############################################################################
 
 if __name__ == '__main__':
 
     # Common parameters for both ISP / OSP portion of script
 
-    parser = argparse.ArgumentParser(description='Get putative protein candidates for spanins')
+    parser = argparse.ArgumentParser(description='Trim the putative protein candidates and find potential i-spanin / o-spanin pairs')
 
-    parser.add_argument('fasta_file', type=argparse.FileType("r"), 
-                        help='Fasta file') # the "input" argument
+    parser.add_argument('putative_isp_fasta_file', type=argparse.FileType("r"), 
+                        help='Putative i-spanin FASTA file, output of "generate-putative-isp"') # the "input" argument
 
-    #parser.add_argument('fasta_file_2', type=argparse.FileType("r"), 
-    #                    help='Fasta file 2') # duplicate to make sure I understand this
+    parser.add_argument('putative_osp_fasta_file', type=argparse.FileType("r"), 
+                        help='Putative o-spanin FASTA file, output of "generate-putative-osp"')
 
-    parser.add_argument('-f', '--format', dest='seq_format', default='fasta',
-                        help='Sequence format (e.g. fasta, fastq, sff)') # optional formats for input, currently just going to do ntFASTA
+    parser.add_argument('--max_isp_osp_distance', dest='max_isp_osp_distance', default=10, type=int, help='max distance from end of i-spanin to start of o-spanin, measured in AAs')
 
-    parser.add_argument('--strand', dest='strand', choices=('both', 'forward', 'reverse'), default='both', 
-                        help='select strand') # Selection of +, -, or both strands
-
-    parser.add_argument('--table', dest='table', default=1, 
-                        help='NCBI Translation table',type=int) # Uses "default" NCBI codon table. This should always (afaik) be what we want...
-
-    parser.add_argument('-t', '--ftype', dest='ftype', choices=('CDS', 'ORF'), default='ORF', 
-                        help='Find ORF or CDSs') # "functional type(?)" --> Finds ORF or CDS, for this we want just the ORF
-
-    parser.add_argument('-e', '--ends', dest='ends', choices=('open', 'closed'), default='closed',
-                        help='Open or closed. Closed ensures start/stop codons are present') # includes the start and stop codon
-
-    parser.add_argument('-m', '--mode', dest='mode', choices=('all', 'top', 'one'), default='all', # I think we want this to JUST be all...nearly always
-                        help='Output all ORFs/CDSs from sequence, all ORFs/CDSs with max length, or first with maximum length')
-
-    #parser.add_arugment('--max_isp_osp', dest='max_isp_osp', default=10, help='Maximum distance between the end of the i-spanin and start of the o-spanin. This is done after the putative list of proteins is built.', type=int)
-    
-    # isp parameters
-    parser.add_argument('--isp_min_len', dest='isp_min_len', default=60, help='Minimum ORF length, measured in codons', type=int)
-    parser.add_argument('--isp_on', dest='out_isp_nuc', type=argparse.FileType('w'), default='out_isp.fna', help='Output nucleotide sequences, FASTA')
-    parser.add_argument('--isp_op', dest='out_isp_prot', type=argparse.FileType('w'), default='out_isp.fa', help='Output protein sequences, FASTA')
-    parser.add_argument('--isp_ob', dest='out_isp_bed', type=argparse.FileType('w'), default='out_isp.bed', help='Output BED file')
-    parser.add_argument('--isp_og', dest='out_isp_gff3', type=argparse.FileType('w'), default='out_isp.gff3', help='Output GFF3 file')
-
-    # osp parameters
-    parser.add_argument('--osp_min_len', dest='osp_min_len', default=30, help='Minimum ORF length, measured in codons', type=int)
-    parser.add_argument('--osp_on', dest='out_osp_nuc', type=argparse.FileType('w'), default='out_osp.fna', help='Output nucleotide sequences, FASTA')
-    parser.add_argument('--osp_op', dest='out_osp_prot', type=argparse.FileType('w'), default='out_osp.fa', help='Output protein sequences, FASTA')
-    parser.add_argument('--osp_ob', dest='out_osp_bed', type=argparse.FileType('w'), default='out_osp.bed', help='Output BED file')
-    parser.add_argument('--osp_og', dest='out_osp_gff3', type=argparse.FileType('w'), default='out_osp.gff3', help='Output GFF3 file')
-    
+    parser.add_argument('--strand', dest='strand', default='+', help='strand to investigate matches, + or -')
+    parser.add_argument('--embedded_txt', dest='embedded_txt', type=argparse.FileType('w'),
+    default='embedded_results.txt', help='Results of potential embedded spanins')
+    parser.add_argument('--overlap_txt', dest='overlap_txt', type=argparse.FileType('w'),
+    default='overlap_results.txt', help='Results of potential overlapping spanins')
+    parser.add_argument('--separate_txt', dest='separate_txt', type=argparse.FileType('w'),
+    default='separated_results.txt', help='Results of potential separated spanins')
+    parser.add_argument('--summary_txt', dest='summary_txt', type=argparse.FileType('w'),
+    default='findSpanin_summary.txt', help='Results of potential spanin pairs')
     parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
 
-    ### isp output, naive ORF finding:
+    isp = getDescriptions(args.putative_isp_fasta_file)
+    #print(len(isp))
+    osp = getDescriptions(args.putative_osp_fasta_file)
     
-    isps = OrfFinder(args.table, args.ftype, args.ends, args.isp_min_len, args.strand)
-    isps.locate(args.fasta_file, args.out_isp_nuc, args.out_isp_prot, args.out_isp_bed, args.out_isp_gff3)
+    strand_isp = []
+    strand_osp = []
+    for desc in isp: # will retrieve only + or - strand for analysis
+        text = splitStrands(desc,args.strand)
+        strand_isp.append(text)
+    for desc in osp:
+        text = splitStrands(desc,args.strand)
+        strand_osp.append(text)
 
-    ### osp output, naive ORF finding:
-    osps = OrfFinder(args.table, args.ftype, args.ends, args.osp_min_len, args.strand)
-    osps.locate(args.fasta_file, args.out_osp_nuc, args.out_osp_prot, args.out_osp_bed, args.out_osp_gff3)
-    '''
-    ### Putative isp output file
-    ##### With the naive ORF finding's gff3 output, test to see if there is a TMD within the input parameters
-    parser.add_argument('--isp_min_dist', dest='isp_min_dist', default=10, help='Minimal distance to first AA of TMD, measured in AA', type=int)
-    parser.add_argument('--isp_max_dist', dest='isp_max_dist', default=30, help='Maximum distance to first AA of TMD, measured in AA', type=int)
-    parser.add_argument('gff3_file', type=argparse.FileType("r"), help='Naive ORF Calls')
-    parser.add_argument('fasta_genome', type=argparse.FileType("r"), help='Fasta genome sequence')
+    strand_isp = [i for i in strand_isp if i] # filtering out Nones
+    strand_osp = [ii for ii in strand_osp if ii] # filtering out Nones
 
-    ### Putative osp output file
-    ##### With the naive ORF finding's gff3 output, test to see if there is a lipobox within the input parameters
-    parser.add_argument('--osp_min_dist', dest='osp_min_dist', default=10, help='Minimal distance to first AA of TMD, measured in AA', type=int)
-    parser.add_argument('--osp_max_dist', dest='osp_max_dist', default=30, help='Maximum distance to first AA of TMD, measured in AA', type=int)
-    '''
+    data_isp = []
+    data_osp = []
+    for desc in strand_isp:
+        d = grabLocs(desc)
+        data_isp.append(d)
+    
+    for desc in strand_osp:
+        d = grabLocs(desc)
+        data_osp.append(d)
+    
+    ###### The above steps probablt __SHOULD__ be wrapped into a little function. But, not necessary atm.
 
-######## strand : +, -, both
-######## start codons: ATG, GTG and TTG
-######## isp_min: minimal length of the ORF, measured in AAs
-######## isp_nterm_mindist: minimal distance to first AA of TMD, measured in AA
-######## isp_nterm_maxdist: maximum distance to first AA of TMD, measured in AA
-######## osp_min: minimal length of the ORF, measured in AAs
-######## osp_signal_mindist: minimal distance to first AA of Lipobox, measured in AA
-######## osp_signal_maxdist: maximum distance to first AA of Lipobox, measured in AA
-######## Use LipoRy (?)
-######## max_isp_osp_distance: maximum distance between the END of the isp, 
-########                       and the beginning of the osp, measured in AA
+    # constructs list where we must multiply user input of AA by 3 to correspond to triplet codons
+    embedded, overlap, separate = spaninProximity(data_isp,
+                                                    data_osp, 
+                                                    max_dist=args.max_isp_osp_distance*3) 
+    s = 0
+    for v in embedded.values():
+        s += len(v)
+    amt_embedded = s
+    amt_unique_embedded = len(embedded.keys()) 
+    s = 0
+    for v in overlap.values():
+        s += len(v)
+    amt_overlap = s
+    amt_unique_overlap = len(overlap.keys())
+    s = 0
+    for v in separate.values():
+        s += len(v)
+    amt_separate = s
+    amt_unique_separate = len(separate.keys())
 
+################################### OUTPUTS #################################################
 
+    with args.summary_txt as f:
+        f.write('++++++++++ Embedded Spanin Candidate Statistics +++++++++\n')
+        f.writelines('Total Candidates = '+str(amt_embedded)+'\n')
+        f.writelines('Unique ORF i-spanin = '+str(amt_unique_embedded))
+        f.write('\n++++++++++ Overlap Spanin Candidate Statistics +++++++++\n')
+        f.writelines('Total Candidates = '+str(amt_overlap)+'\n')
+        f.writelines('Unique ORF i-spanin = '+str(amt_unique_overlap))
+        f.write('\n++++++++++ Separate Spanin Candidate Statistics +++++++++\n')
+        f.writelines('Total Candidates = '+str(amt_separate)+'\n')
+        f.writelines('Unique ORF i-spanin = '+str(amt_unique_separate))
+        f.write('\n++++++++++++++++++++++++ Totals +++++++++++++++++++++++++\n')
+        f.writelines('Total Candidates = '+str(amt_embedded+amt_overlap+amt_separate))
+        #f.writeline('Unique ORF i-spanin = '+str(amt_unique_embedded))
 
+    with args.embedded_txt as f:
+        f.write('================ Embedded Spanin Candidates =================\n')
+        f.write('isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end')
+        if embedded != {}:
+            for pisp, posp in embedded.items():
+                f.write(pisp+'\n')
+                for each_posp in posp:
+                    f.write('\t{}\t{}\t{}\t{}\t{}\n'.format(each_posp[0],each_posp[1],each_posp[2],each_posp[3],each_posp[4]))
+        else:
+            f.write('nothing found')
+    with args.overlap_txt as f:
+        f.write('================ Overlap Spanin Candidates =================\n')
+        f.write('isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end')
+        if overlap != {}:
+            for pisp, posp in overlap.items():
+                f.write(pisp+'\n')
+                for each_posp in posp:
+                    f.write('\t{}\t{}\t{}\t{}\t{}\n'.format(each_posp[0],each_posp[1],each_posp[2],each_posp[3],each_posp[4]))
+        else:
+            f.write('nothing found')
 
-
-
-
-
-
+    with args.separate_txt as f:
+        f.write('================ Separate Spanin Candidates =================\n')
+        f.write('isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end')
+        if separate != {}:
+            for pisp, posp in separate.items():
+                f.write(pisp+'\n')
+                for each_posp in posp:
+                    f.write('\t{}\t{}\t{}\t{}\t{}\n'.format(each_posp[0],each_posp[1],each_posp[2],each_posp[3],each_posp[4]))
+        else:
+            f.write('nothing found')
+    
