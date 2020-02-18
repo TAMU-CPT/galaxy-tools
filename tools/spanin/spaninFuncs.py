@@ -57,14 +57,19 @@ def find_tmd(pair,minimum=10,maximum=30,TMDmin=10,TMDmax=20):
     for tmsize in range(TMDmin, TMDmax+1, 1):
         #print('==============='+str(tmsize)+'================') # print for troubleshooting
         pattern = "['FIWLVMYCATGS']{"+str(tmsize)+"}" # searches for these hydrophobic residues tmsize total times
-        if re.search(('[K]'), search_region[0:7]):
-            try:
-                backend = check_back_end_snorkels(search_region,tmsize)
-                if backend == 'match':
-                    tmd.append(pair)
-                else:
+        if re.search(('[K]'), search_region[1:8]): # grabbing one below with search region, so I want to grab one ahead here when I query.
+            store_search = re.search(('[K]'), search_region[1:8]) # storing regex object
+            where_we_are = store_search.start() # finding where we got the hit
+            if (re.search(('[FIWLVMYCATGS]'), search_region[where_we_are+1]) and re.search(('[FIWLVMYCATGS]'), search_region[where_we_are-1])): # hydrophobic neighbor
+                try:
+                    backend = check_back_end_snorkels(search_region,tmsize)
+                    if backend == 'match':
+                        tmd.append(pair)
+                    else:
+                        continue
+                except (IndexError,TypeError):
                     continue
-            except (IndexError,TypeError):
+            else:
                 continue
         elif re.search((pattern), search_region):
             try:
@@ -97,7 +102,7 @@ def find_lipobox(pair,minimum=10,maximum=30,regex=1):
     #for each_pair in pair:
     #print(s)
     if re.search((pattern), search_region): # lipobox must be WITHIN the range...
-        # searches the sequence with the input RegEx AND omits if start sequence begins with I
+        # searches the sequence with the input RegEx AND omits if 
         candidates.append(pair)
         #print('passed') # trouble shooting
         return candidates
@@ -138,25 +143,86 @@ def getDescriptions(fasta):
     for finding locations of a potential i-spanin and o-spanin proximity to one another.
     """
     desc = []
-    with open(fasta, 'r') as f:
+    with fasta as f:
         for line in f:
             if line.startswith('>'):
                 desc.append(line)
     return desc
+
+def splitStrands(text, strand='+'):
+    #positive_strands = []
+    #negative_strands = []
+    if strand == '+':
+        if re.search(('(\[1\])'), text):
+            return text
+    elif strand == '-':
+        if re.search(('(\[-1\])'), text):
+            return text
+    #return positive_strands, negative_strands
+
 
 def grabLocs(text):
     """
     Grabs the locations of the spanin based on NT location (seen from ORF). Grabs the ORF name, as per named from the ORF class/module
     from cpt.py
     """
-    pass
+    start = re.search(('[\d]+\.\.'),text).group(0) # Start of the sequence ; looks for [numbers]..
+    end = re.search(('\.\.[\d]+'),text).group(0) # End of the sequence ; Looks for ..[numbers]
+    orf = re.search(('(ORF)[\d]+'),text).group(0) # Looks for ORF and the numbers that are after it
 
-def spaninProximity(osp,isp,max_dist=30):
+    start = int(start.split('..')[0])
+    end = int(end.split('..')[1])
+
+    vals = [start,end,orf]
+
+    '''
+    store_vals = []
+    for r in vals:
+        if r is not None:
+            store_vals.append(r.group(0))
+    '''
+    return vals
+
+def spaninProximity(isp,osp,max_dist=30):
     """
     Compares the locations of i-spanins and o-spanins. max_dist is the distance in NT measurement from i-spanin END site
     to o-spanin START. The user will be inputting AA distance, so a conversion will be necessary (<user_input> * 3)
+    INPUT: list of OSP and ISP candidates
+    OUTPUT: Return (improved) candidates for overlapping, embedded, and separate list
     """
-    pass
+    embedded = {}
+    overlap = {}
+    separate = {}
+    for iseq in isp:
+        embedded[iseq[2]] = []
+        overlap[iseq[2]] = []
+        separate[iseq[2]] = []
+        #print(iseq)
+        for oseq in osp:
+            #print(oseq)
+            if (iseq[0] < oseq[0] < iseq[1] and oseq[1] < iseq[1]):
+                ### EMBEDDED ###
+                combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]] # ordering a return for dic
+                #pair = zip(iseq, oseq)
+            #embedded.append(pair)
+                embedded[iseq[2]] += [combo]
+            elif (iseq[0] < oseq[0] <= iseq[1] and oseq[1] > iseq[1]):
+                combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
+                #overlap.append(pair)
+                overlap[iseq[2]] += [combo]
+            elif (iseq[1] <= oseq[0] <= iseq[1] + max_dist):
+                combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
+                #upstream.append(pair)
+                separate[iseq[2]] += [combo]
+            else:
+                continue
+
+    embedded = {k:embedded[k] for k in embedded if embedded[k]}
+    overlap = {k:overlap[k] for k in overlap if overlap[k]}
+    separate = {k:separate[k] for k in separate if separate[k]}
+    return embedded, overlap, separate
+
+
 
 
 ####################################################################################################################################
@@ -207,3 +273,22 @@ if __name__ == "__main__":
     print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
     print(lipo)
     print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
+
+
+    filename = 'putative_osp.fa'
+    strand = '+'
+    o = getDescriptions(filename)
+
+    storage = []
+    for item in o:
+        s = splitStrands(item,strand=strand)
+        storage.append(s)
+    
+    print(storage)
+
+    ret = []
+    for i in storage:
+        if i != None:
+            ret.append(i)
+    print('\n+++++++++++++++++++++++++++++++++++\n')
+    print(ret)
