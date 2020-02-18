@@ -7,9 +7,10 @@
     </macros>
     <expand macro="requirements">
       <requirement type="package" version="2019.06.08">regex</requirement>
+      <requirement type="package" version="1.0.3.5">statistics</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/generate-putative-isp.py
+python $__tool_directory__/findSpanin.py
 $putative_isp_fasta_file
 $putative_osp_fasta_file
 --max_isp_osp_distance $max_isp_osp_distance
@@ -29,10 +30,10 @@ $putative_osp_fasta_file
         </param>
     </inputs>
     <outputs>
-          <data format="text" name="summary_txt" label="FindSpanin_summary.txt"/>
-          <data format="text" name="embedded_txt" label="embedded_results.txt"/>
-          <data format="text" name="overlap_txt" label="label_results.txt"/>
-          <data format="text" name="separate_txt" label="separate_results.txt"/>
+          <data format="txt" name="summary_txt" label="FindSpanin_summary.txt"/>
+          <data format="txt" name="embedded_txt" label="embedded_results.txt"/>
+          <data format="txt" name="overlap_txt" label="label_results.txt"/>
+          <data format="txt" name="separate_txt" label="separate_results.txt"/>
     </outputs>
     <help><![CDATA[
 * ALERT *

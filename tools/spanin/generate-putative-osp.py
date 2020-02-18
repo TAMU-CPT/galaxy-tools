@@ -5,7 +5,7 @@ from Bio import SeqIO
 from Bio import Seq
 from BCBio import GFF
 from statistics import median
-from spaninFuncs import tuple_fasta, find_lipobox, lineWrapper
+from spaninFuncs import *
 import re
 import os
 import sys
@@ -55,8 +55,10 @@ if __name__ == '__main__':
     parser.add_argument('--putative_osp', dest='putative_osp_fa', type=argparse.FileType('w'), default='putative_osp.fa', help='Output of putative FASTA file')
     parser.add_argument('--summary_osp_txt', dest='summary_osp_txt', type=argparse.FileType('w'),
     default='summary_osp.txt', help='Summary statistics on putative o-spanins')
+    parser.add_argument('--putative_osp_gff', dest='putative_osp_gff', type=argparse.FileType('w'),
+    default='putative_osp.gff3', help='gff3 output for putative o-spanins')
 
-    parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
+    #parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
     
     the_args = vars(parser.parse_args())
@@ -77,10 +79,11 @@ if __name__ == '__main__':
 
     args.out_osp_prot.close()
     args.out_osp_prot = open(args.out_osp_prot.name, 'r')
+    
 
     pairs = tuple_fasta(fasta_file=args.out_osp_prot)
     have_lipo = [] # empty candidates list to be passed through the user input 
-
+    
     
 
     for each_pair in pairs:
@@ -114,7 +117,9 @@ if __name__ == '__main__':
         f.write('median length (AA): '+str(med)+'\n')
         f.write('maximum orf in size (AA): '+str(top_size)+'\n')
         f.write('minimum orf in size (AA): '+str(bot_size))
-    #print(candidate_dict.values())
-    #print(length)
-    #print(top_size)
-    #print(avg)
+    
+    # Output the putative list in gff3 format:
+    #args.putative_osp_fa.close()
+    args.putative_osp_fa = open(args.putative_osp_fa.name, 'r')
+    gff_data = prep_a_gff3(fa=args.putative_osp_fa,spanin_type = 'osp')
+    write_gff3(data=gff_data,output=args.putative_osp_gff)
