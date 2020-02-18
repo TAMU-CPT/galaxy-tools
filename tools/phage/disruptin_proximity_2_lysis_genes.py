@@ -1,8 +1,10 @@
+#!/usr/bin/env python
 '''
 This program is intended to identify protein coding sequences within a certain window (number of base pairs) of genes encoding recognized endolysin domains and genes encoding transmembrane domains. The goal is narrow a list of disruptin candidates by identifying the sequences close to the other lysis genes in the phage genome.
 Inputs for this program include a .fasta file with protein sequences of lysis gene candidates from the phage genome, a .gff3 file with the tmhmm results from the genome, a .gff3 file with the results from interproscan of the genome, a .gff3 file of the genome, window size in number of base pairs, a tab separated list of endolysin domains, and optional names of output files.
 The program outputs lists of lysis gene candidates that are close to protein codings sequences with endolysin domains or to sequences with transmembrane domains and lists of the proteins in proximity to the lysis gene candidates (one list for proteins with endolysin domains and one list for TMD-containing proteins). 
 '''
+
 from Bio import SeqIO
 import argparse
 import sys
