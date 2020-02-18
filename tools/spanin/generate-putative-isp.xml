@@ -21,6 +21,8 @@ $fasta_file
 --min_tmd_size $min_tmd_size
 --max_tmd_size $max_tmd_size
 --putative_isp $putative_isp
+--summary_isp_txt $summary_isp
+
 ]]></command>
     <inputs>
         <param label="FASTA" name="fasta_file" type="data" format="fasta" />
@@ -36,25 +38,19 @@ $fasta_file
                 <data format="bed" name="isp_ob" label="BED_Output.bed" hidden = "true"/>
                 <data format="gff3" name="isp_og" label="GFF_Output.gff" hidden = "true"/>
 		<data format="fasta" name="putative_isp" label="putative_isp.fa"/>
+                <data format="txt" name="summary_isp" label="summary_isp.txt"/>
     </outputs>
     <help><![CDATA[
 **What it does**
 INPUT : Genomic FASTA
 
 METHODOLOGY
-Uses the `OrfFinder` object and locates __ALL__ potential start sequences, based on `ttg` / `atg` / `gtg` 
-This generates a set of output files consisting of FASTA / BED / GFF3 
+Initially uses the OrfFinder module from CPT.py and locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA(NT and AA) / BED / GFF3. These are currently hidden.
 With the aaFASTA, we read in each potential sequence and determine if it has a TMD based off of:
-1. Ciphs through looking for Lysine snorkels, of a range 1 - 7 upstream of the selected sequence (the minimal 
-distance / max distance from start codon). If it finds a lysine, it looks to see if there is a hydrophobic neighbor, 
-and then looks upstream for a range of transmembrane size - 6 to transmembrane size - 1, and verifies if there 
-is another snorkeling lysine with a hydrophobic neighbor. This is intended to cast a large net. If this passes, 
-the description/sequence is saved.
-2. Looks for a repeated hydrophobic region within the sequence, based on a range of user inputs (example, 
-transmembrane size 6 - 20, will look for [hydrophobic-AAs]x6 through [hydrophobic-AAs]x20). If this passes, the 
-description/sequence is saved.
+1. Ciphs through looking for Lysine snorkels and neighboring hydrophobic residues.
+2. Looks for a repeated hydrophobic region within the sequence, based on a range of user inputs.
+OUTPUT : putative_isp.fa (FASTA) file and basic summary statistics as summary_isp.txt.
 
-OUTPUT : putative_isp.fa (FASTA) file.
 ]]></help>
         <expand macro="citations-2020" />
 </tool>

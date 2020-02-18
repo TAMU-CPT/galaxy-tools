@@ -2,18 +2,18 @@
 
 ## The goal of this(these) tool(s) is to take putative protein sequences and determine if any of them are quality candidates for a potential spanin pair (OSP/ISP). 
 ### Current Scripts:
-    * `generate-putative-isp.py`
-        * INPUT : Genomic FASTA 
-        * OUTPUT : Putative candidates for isp
-    * `generate-putative-osp.py`
-        * INPUT : Genomic FASTA
-        * OUTPUT : Putative candidates for osp
-    * `spaninFuncs.py`
-        * Functions that drive the scripts within this directory
+* `generate-putative-isp.py`
+    * INPUT : Genomic FASTA 
+    * OUTPUT : Putative candidates for isp
+* `generate-putative-osp.py`
+    * INPUT : Genomic FASTA
+    * OUTPUT : Putative candidates for osp
+* `spaninFuncs.py`
+    * Functions that drive the scripts within this directory
 
 ## Requirements:
-    * regex
-    * cpt.py
+* regex (as of 2.17.2020 not needed...)
+* cpt.py
 
 ## Script Descriptions / Methodologies:
 * `generate-putative-osp.py`

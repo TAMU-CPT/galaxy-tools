@@ -1,0 +1,47 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.spanin.findSpanin" name="Find Spanin" version="1.0">
+    <description>With the outputs from ISP and OSP candidates, cull the list down to (hopefully) more accurate candidate pairs</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+      <requirement type="package" version="2019.06.08">regex</requirement>
+    </expand>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/generate-putative-isp.py
+$putative_isp_fasta_file
+$putative_osp_fasta_file
+--max_isp_osp_distance $max_isp_osp_distance
+--strand $strand
+--embedded_txt $embedded_txt
+--overlap_txt $overlap_txt
+--separate_txt $separate_txt
+--summary_txt $summary_txt
+]]></command>
+    <inputs>
+        <param label="(putative) i-spanin FASTA file" name="putative_isp_fasta_file" type="data" format="fasta"/>
+        <param label="(putative) o-spanin FASTA file" name="putative_osp_fasta_file" type="data" format="fasta"/>
+        <param label="max distance from end of i-spanin to beginning of o-spanin (measured in AAs)" name="max_isp_osp_distance" type="integer" value="10" />
+        <param type="select" label="strand" name="strand">
+            <option value="+">Positive Sense Strand</option>
+            <option value="-">Negative Sense Strand</option>
+        </param>
+    </inputs>
+    <outputs>
+          <data format="text" name="summary_txt" label="FindSpanin_summary.txt"/>
+          <data format="text" name="embedded_txt" label="embedded_results.txt"/>
+          <data format="text" name="overlap_txt" label="label_results.txt"/>
+          <data format="text" name="separate_txt" label="separate_results.txt"/>
+    </outputs>
+    <help><![CDATA[
+* ALERT *
+Currently, only (+) sense strand works. Bug is being addressed (02.18.2020)
+**What it does**
+INPUT : Putative i-spanin and o-spanin FASTAs (generated from the ISP/OSP Candidate Tool). 
+METHODOLOGY : Does a pairwise comparison between candidate i-spanins to o-spanins based on their location. Results are either identified as embedded, overlapping, separated, or NOT a potential pair.
+OUTPUT : File for each potential type of candidates (eg overlap_results.txt). Additionally, a basic summary statistics file (findSpanin_summary.txt). 
+
+]]></help>
+        <expand macro="citations-2020" />
+</tool>
