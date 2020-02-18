@@ -144,19 +144,74 @@ def getDescriptions(fasta):
                 desc.append(line)
     return desc
 
+def splitStrands(text, desired_strand='+'):
+    #positive_strands = []
+    #negative_strands = []
+    if desired_strand == '+':
+        if re.search(('(\[1\])'), text):
+            return text
+    elif desired_strand == '-':
+        if re.search(('(\[-1\])'), text):
+            return text
+    #return positive_strands, negative_strands
+
+
 def grabLocs(text):
     """
     Grabs the locations of the spanin based on NT location (seen from ORF). Grabs the ORF name, as per named from the ORF class/module
     from cpt.py
     """
-    pass
+    start = re.search(('[\d]+\.\.'),text).group(0) # Start of the sequence ; looks for [numbers]..
+    end = re.search(('\.\.[\d]+'),text).group(0) # End of the sequence ; Looks for ..[numbers]
+    orf = re.search(('(ORF)[\d]+'),text).group(0) # Looks for ORF and the numbers that are after it
 
-def spaninProximity(osp,isp,max_dist=30):
+    start = int(start.split('..')[0])
+    end = int(end.split('..')[1])
+
+    vals = [start,end,orf]
+
+    '''
+    store_vals = []
+    for r in vals:
+        if r is not None:
+            store_vals.append(r.group(0))
+    '''
+    return vals
+
+def spaninProximity(isp,osp,max_dist=30):
     """
     Compares the locations of i-spanins and o-spanins. max_dist is the distance in NT measurement from i-spanin END site
     to o-spanin START. The user will be inputting AA distance, so a conversion will be necessary (<user_input> * 3)
+    INPUT: list of OSP and ISP candidates
+    OUTPUT: Return (improved) candidates for overlapping, embedded, and upstream list
     """
-    pass
+    embedded = []
+    overlap = []
+    upstream = []
+    for iseq in isp:
+        #print(iseq)
+        for oseq in osp:
+            #print(oseq)
+            if (iseq[0] < oseq[0] < iseq[1] and oseq[1] < iseq[1]):
+                ### EMBEDDED ###
+                print(iseq[2]+oseq[2])
+                pair = zip(iseq, oseq)
+               #embedded.append(pair)
+                embedded += pair
+            elif (iseq[0] < oseq[0] <= iseq[1] and oseq[1] > iseq[1]):
+                pair = zip(iseq, oseq)
+                #overlap.append(pair)
+                overlap += pair
+            elif (iseq[1] <= oseq[0] <= iseq[1] + max_dist):
+                pair = zip(iseq, oseq)
+                #upstream.append(pair)
+                upstream += pair
+            else:
+                continue
+
+    return embedded, overlap, upstream
+
+
 
 
 ####################################################################################################################################
@@ -207,3 +262,22 @@ if __name__ == "__main__":
     print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
     print(lipo)
     print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
+
+
+    filename = 'putative_osp.fa'
+    strand = '+'
+    o = getDescriptions(filename)
+
+    storage = []
+    for item in o:
+        s = splitStrands(item,desired_strand=strand)
+        storage.append(s)
+    
+    print(storage)
+
+    ret = []
+    for i in storage:
+        if i != None:
+            ret.append(i)
+    print('\n+++++++++++++++++++++++++++++++++++\n')
+    print(ret)
