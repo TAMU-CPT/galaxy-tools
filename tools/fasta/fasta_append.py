@@ -6,7 +6,6 @@
 '''
 FASTA_a + FASTA_b -->  Header_1a+Header_1b | sequence_1a + sequence_1b ==> FASTA_1c
 '''
-import re
 from Bio import SeqIO
 from Bio import Seq
 import argparse
