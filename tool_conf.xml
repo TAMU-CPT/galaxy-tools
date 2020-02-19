@@ -202,6 +202,7 @@
 	</section>
 	<section id="b3065028-2363-4c7a-922b-a054cfce8cc8" name="CPT: Comparative Genomics">
 		<tool file="cpt2/galaxy-tools/tools/comparative/mist3.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/PHANOTATE/phanotate.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/gepard.xml" hidden="True"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/progressivemauve.xml" hidden="True"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/xmfa2gff3.xml"/>
