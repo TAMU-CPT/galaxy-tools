@@ -1,5 +1,5 @@
 <?xml version="1.1"?>
-<tool id="edu.tamu.cpt2.fasta.fasta_append" name="ISP candidates" version="1.0">
+<tool id="edu.tamu.cpt2.fasta.fasta_append" name="FASTA merge files pairwise" version="1.0">
     <description>Pairwise append "down" two FASTAs</description>
     <macros>
 		<import>macros.xml</import>
@@ -25,9 +25,20 @@ $fa_2
 **What it does**
 INPUT : Two FASTA Files
 
-METHOD : between each fasta file, the headers for sequence 1 and sequence 2 are joined, and separated by a _ ; where as the sequences are joined together.
+METHOD : for each fasta file, the headers for sequence 1 and sequence 2 are joined, separated by a _ ; and the sequences are merged together.
 
-For example ==> FASTA_a + FASTA_b -->  Header_1a+Header_1b | sequence_1a + sequence_1b ==> FASTA_1c ... etc ..
+for example ==>
+
+Header-a
+ABC
+
+Header-b
+DEF
+
+will result in:
+
+Header-a_Header-b
+ABCDEF
 
 OUTPUT : A pairwise appended FASTA file
 ]]></help>
