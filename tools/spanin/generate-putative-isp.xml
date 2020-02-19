@@ -11,6 +11,7 @@
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/generate-putative-isp.py
 $fasta_file
+--strand $strand
 --isp_on $isp_on
 --isp_op $isp_op
 --isp_ob $isp_ob
@@ -26,8 +27,14 @@ $fasta_file
 
 ]]></command>
     <inputs>
+    <param type="select" label="Strand Choice" name="strand">
+        <option value="both">both</option>
+        <option value="forward">+</option>
+        <option value="reverse">-</option>
+    </param>
         <param label="FASTA" name="fasta_file" type="data" format="fasta" />
 	<param label="i-spanin minimal length" name="isp_min_len" type="integer" value="60" />
+    <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by colons (eg. 1000:2000)" name="switch" value="all" />
         <param label="TMD minimal distance from start codon" name="isp_min_dist" type="integer" value="10" />
 	<param label="TMD maximum distance from start codon" name="isp_max_dist" type="integer" value="30" />
         <param label="TMD minimal size" name="min_tmd_size" type="integer" value="10" />
@@ -44,13 +51,16 @@ $fasta_file
     </outputs>
     <help><![CDATA[
 **What it does**
+
 INPUT : Genomic FASTA
 
 METHODOLOGY
 Initially uses the OrfFinder module from CPT.py and locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA(NT and AA) / BED / GFF3. These are currently hidden.
+
 With the aaFASTA, we read in each potential sequence and determine if it has a TMD based off of:
-1. Ciphs through looking for Lysine snorkels and neighboring hydrophobic residues.
-2. Looks for a repeated hydrophobic region within the sequence, based on a range of user inputs.
+    1. Ciphs through looking for Lysine snorkels and neighboring hydrophobic residues.
+    2. Looks for a repeated hydrophobic region within the sequence, based on a range of user inputs.
+
 OUTPUT : putative_isp.fa (FASTA) file, putative_isp.gff3, and basic summary statistics as summary_isp.txt.
 
 ]]></help>
