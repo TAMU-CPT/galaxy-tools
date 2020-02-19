@@ -1,0 +1,35 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.fasta.fasta_append" name="ISP candidates" version="1.0">
+    <description>Pairwise append "down" two FASTAs</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+        <requirement></requirement>
+    </expand>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/fasta_append.py
+$fa_1
+$fa_2
+--appended_fa $appended_fa'
+]]></command>
+    <inputs>
+        <param label="fa_1" name="fa_1" type="data" format="fasta" />
+        <param label="fa_2" name="fa_2" type="data" format="fasta" />
+    </inputs>
+    <outputs>
+        <data format="fasta" name="appended_fa" label="appended.fa" />
+    </outputs>
+    <help><![CDATA[
+**What it does**
+INPUT : Two FASTA Files
+
+METHOD : between each fasta file, the headers for sequence 1 and sequence 2 are joined, and separated by a _ ; where as the sequences are joined together.
+
+For example ==> FASTA_a + FASTA_b -->  Header_1a+Header_1b | sequence_1a + sequence_1b ==> FASTA_1c ... etc ..
+
+OUTPUT : A pairwise appended FASTA file
+]]></help>
+        <expand macro="citations-2020" />
+</tool>
