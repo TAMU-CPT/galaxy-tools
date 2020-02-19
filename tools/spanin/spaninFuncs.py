@@ -211,6 +211,31 @@ def splitStrands(text, strand='+'):
             return text
     #return positive_strands, negative_strands
 
+def parse_a_range(pair,start, end):
+    """
+        Takes an input data tuple from a fasta tuple pair and keeps only those within the input sequence range
+        ---> data : fasta tuple data
+        ---> start : start range to keep
+        ---> end : end range to keep (will need to + 1)
+    """
+    matches = []
+    for each_pair in pair:
+
+        s = re.search(('[\d]+\.\.'),each_pair[0]).group(0) # Start of the sequence
+        s = int(s.split('..')[0])
+        e = re.search(('\.\.[\d]+'),each_pair[0]).group(0)
+        e = int(e.split('..')[1])
+        if (start-1 <= s and e <= end+1):
+            matches.append(each_pair)
+        else:
+            continue
+    #else:
+        #continue
+    #if matches != []:    
+    return matches
+    #else:
+        #print('no candidates within selected range')
+
 def grabLocs(text):
     """
     Grabs the locations of the spanin based on NT location (seen from ORF). Grabs the ORF name, as per named from the ORF class/module
@@ -254,37 +279,42 @@ def spaninProximity(isp,osp,max_dist=30, strand='+'):
                 if (iseq[0] < oseq[0] < iseq[1] and oseq[1] < iseq[1]):
                     ### EMBEDDED ###
                     combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]] # ordering a return for dic
-                    #pair = zip(iseq, oseq)
-                #embedded.append(pair)
                     embedded[iseq[2]] += [combo]
                 elif (iseq[0] < oseq[0] <= iseq[1] and oseq[1] > iseq[1]):
-                    combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
-                    #overlap.append(pair)
-                    overlap[iseq[2]] += [combo]
+                    ### OVERLAP / SEPARATE ###
+                    if (iseq[1] - oseq[0]) < 6:
+                        combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
+                        separate[iseq[2]] += [combo]
+                    else:
+                        combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
+                        overlap[iseq[2]] += [combo]
                 elif (iseq[1] <= oseq[0] <= iseq[1] + max_dist):
                     combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
-                    #upstream.append(pair)
                     separate[iseq[2]] += [combo]
                 else:
                     continue
     elif strand == '-':
+        embedded = {}
+        overlap = {}
+        separate = {}
         for iseq in isp:
             embedded[iseq[2]] = []
             overlap[iseq[2]] = []
             separate[iseq[2]] = []
             for oseq in osp:
-                if (iseq[1] > oseq[1] > iseq[0] and oseq[0] > iseq[0]):
+                if (iseq[0] <= oseq[1] <= iseq[1] and oseq[0] > iseq[0]):
                     ### EMBEDDED ###
-                    combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]] # ordering a return for dic
-                    #pair = zip(iseq, oseq)
+                    combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]] # ordering a return for dict
                     embedded[iseq[2]] += [combo]
-                elif (iseq[1] > oseq[1] >= iseq[0] and oseq[0] < iseq[0]):
+                elif (iseq[0] <= oseq[1] <= iseq[1] and oseq[0] < iseq[0]):
+                    if (oseq[1] - iseq[0]) < 6:
+                        combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
+                        separate[iseq[2]] += [combo]
+                    else:
+                        combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
+                        overlap[iseq[2]] += [combo]
+                elif (iseq[0]-10 < oseq[1] < iseq[0]):
                     combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
-                    #overlap.append(pair)
-                    overlap[iseq[2]] += [combo]
-                elif (iseq[1] >= oseq[1] >= iseq[0] - max_dist):
-                    combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
-                    #upstream.append(pair)
                     separate[iseq[2]] += [combo]
                 else:
                     continue
