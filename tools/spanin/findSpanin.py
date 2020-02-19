@@ -68,7 +68,8 @@ if __name__ == '__main__':
     # constructs list where we must multiply user input of AA by 3 to correspond to triplet codons
     embedded, overlap, separate = spaninProximity(data_isp,
                                                     data_osp, 
-                                                    max_dist=args.max_isp_osp_distance*3) 
+                                                    max_dist=args.max_isp_osp_distance*3,
+                                                    strand=args.strand) 
     s = 0
     for v in embedded.values():
         s += len(v)

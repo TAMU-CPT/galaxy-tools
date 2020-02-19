@@ -36,12 +36,13 @@ $putative_osp_fasta_file
           <data format="txt" name="separate_txt" label="separate_results.txt"/>
     </outputs>
     <help><![CDATA[
-* ALERT *
-Currently, only (+) sense strand works. Bug is being addressed (02.18.2020)
 **What it does**
+
 INPUT : Putative i-spanin and o-spanin FASTAs (generated from the ISP/OSP Candidate Tool). 
+
 METHODOLOGY : Does a pairwise comparison between candidate i-spanins to o-spanins based on their location. Results are either identified as embedded, overlapping, separated, or NOT a potential pair.
-OUTPUT : File for each potential type of candidates (eg overlap_results.txt). Additionally, a basic summary statistics file (findSpanin_summary.txt). 
+
+OUTPUT : File for each potential type of candidates (eg. overlap_results.txt). Additionally, a basic summary statistics file (findSpanin_summary.txt). 
 
 ]]></help>
         <expand macro="citations-2020" />
