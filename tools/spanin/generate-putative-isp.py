@@ -42,6 +42,7 @@ if __name__ == '__main__':
     parser.add_argument('-m', '--mode', dest='mode', choices=('all', 'top', 'one'), default='all', # I think we want this to JUST be all...nearly always
                         help='Output all ORFs/CDSs from sequence, all ORFs/CDSs with max length, or first with maximum length')
 
+    parser.add_argument('--switch', dest='switch', default='all', help='switch between ALL putative osps, or a range. If not all, insert a range of two integers separated by a colon (:). Eg: 1234:4321')
     # isp parameters
     parser.add_argument('--isp_min_len', dest='isp_min_len', default=60, help='Minimum ORF length, measured in codons', type=int)
     parser.add_argument('--isp_on', dest='out_isp_nuc', type=argparse.FileType('w'), default='out_isp.fna', help='Output nucleotide sequences, FASTA')
@@ -83,6 +84,16 @@ if __name__ == '__main__':
             have_tmd += find_tmd(pair=each_pair, minimum=args.isp_min_dist, maximum=args.isp_max_dist, TMDmin=args.min_tmd_size, TMDmax=args.max_tmd_size)
         except TypeError:
             continue
+    
+    if args.switch == 'all':
+        pass
+    else:
+        #for each_pair in have_lipo:
+        range_of = args.switch
+        range_of = re.search(('[\d]+:[\d]+'),range_of).group(0)
+        start = int(range_of.split(':')[0])
+        end = int(range_of.split(':')[1])
+        have_tmd = parse_a_range(pair=have_tmd, start=start, end=end)
     
     total_isp = len(have_tmd)
 
