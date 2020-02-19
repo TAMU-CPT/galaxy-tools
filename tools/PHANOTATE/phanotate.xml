@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.phanotate" name="PHANOTATE Analysis" version="RC1">
+  <description>Performs PHANOTATE annotations on a given sequence</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/phanotate.py
+$fastaIn
+$outfmt
+> $output]]></command>
+  <inputs>
+    <param label="Fasta file" name="fastaIn" type="data" format="fasta"/>
+    <param name="outfmt" type="select" label="Output type">
+      <option value="">Tab-separated (.tsv) output</option>
+      <option value="-f genbank">Genbank (.gbk) output</option>
+      <option value="-f fasta">Fasta (.fa) output</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output" label="PhanotateAnalysis">
+        <change_format>
+            <when input="outfmt" value="-f genbank" format="genbank" />
+            <when input="outfmt" value="-f fasta" format="fasta" />
+        </change_format>
+    </data>
+  </outputs>
+  <help><![CDATA[
+Currently Experimental: Uploaded for review purposes
+
+**What it does**
+
+For a given Fasta file, performs PHANOTATE analysis on the sequence.
+]]></help>
+</tool>
