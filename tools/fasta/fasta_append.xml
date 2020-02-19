@@ -5,14 +5,12 @@
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
     </macros>
-    <expand macro="requirements">
-        <requirement></requirement>
-    </expand>
+    <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/fasta_append.py
 $fa_1
 $fa_2
---appended_fa $appended_fa'
+--appended_fa $appended_fa
 ]]></command>
     <inputs>
         <param label="fa_1" name="fa_1" type="data" format="fasta" />
