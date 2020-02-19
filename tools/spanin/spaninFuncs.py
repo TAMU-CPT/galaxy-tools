@@ -233,39 +233,64 @@ def grabLocs(text):
     '''
     return vals
 
-def spaninProximity(isp,osp,max_dist=30):
+def spaninProximity(isp,osp,max_dist=30, strand='+'):
     """
     Compares the locations of i-spanins and o-spanins. max_dist is the distance in NT measurement from i-spanin END site
     to o-spanin START. The user will be inputting AA distance, so a conversion will be necessary (<user_input> * 3)
     INPUT: list of OSP and ISP candidates
     OUTPUT: Return (improved) candidates for overlapping, embedded, and separate list
     """
-    embedded = {}
-    overlap = {}
-    separate = {}
-    for iseq in isp:
-        embedded[iseq[2]] = []
-        overlap[iseq[2]] = []
-        separate[iseq[2]] = []
-        #print(iseq)
-        for oseq in osp:
-            #print(oseq)
-            if (iseq[0] < oseq[0] < iseq[1] and oseq[1] < iseq[1]):
-                ### EMBEDDED ###
-                combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]] # ordering a return for dic
-                #pair = zip(iseq, oseq)
-            #embedded.append(pair)
-                embedded[iseq[2]] += [combo]
-            elif (iseq[0] < oseq[0] <= iseq[1] and oseq[1] > iseq[1]):
-                combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
-                #overlap.append(pair)
-                overlap[iseq[2]] += [combo]
-            elif (iseq[1] <= oseq[0] <= iseq[1] + max_dist):
-                combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
-                #upstream.append(pair)
-                separate[iseq[2]] += [combo]
-            else:
-                continue
+    if strand == '+':
+        embedded = {}
+        overlap = {}
+        separate = {}
+        for iseq in isp:
+            embedded[iseq[2]] = []
+            overlap[iseq[2]] = []
+            separate[iseq[2]] = []
+            #print(iseq)
+            for oseq in osp:
+                #print(oseq)
+                if (iseq[0] < oseq[0] < iseq[1] and oseq[1] < iseq[1]):
+                    ### EMBEDDED ###
+                    combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]] # ordering a return for dic
+                    #pair = zip(iseq, oseq)
+                #embedded.append(pair)
+                    embedded[iseq[2]] += [combo]
+                elif (iseq[0] < oseq[0] <= iseq[1] and oseq[1] > iseq[1]):
+                    combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
+                    #overlap.append(pair)
+                    overlap[iseq[2]] += [combo]
+                elif (iseq[1] <= oseq[0] <= iseq[1] + max_dist):
+                    combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
+                    #upstream.append(pair)
+                    separate[iseq[2]] += [combo]
+                else:
+                    continue
+    elif strand == '-':
+        for iseq in isp:
+            embedded[iseq[2]] = []
+            overlap[iseq[2]] = []
+            separate[iseq[2]] = []
+            for oseq in osp:
+                if (iseq[1] > oseq[1] > iseq[0] and oseq[0] > iseq[0]):
+                    ### EMBEDDED ###
+                    combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]] # ordering a return for dic
+                    #pair = zip(iseq, oseq)
+                    embedded[iseq[2]] += [combo]
+                elif (iseq[1] > oseq[1] >= iseq[0] and oseq[0] < iseq[0]):
+                    combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
+                    #overlap.append(pair)
+                    overlap[iseq[2]] += [combo]
+                elif (iseq[1] >= oseq[1] >= iseq[0] - max_dist):
+                    combo = [iseq[0],iseq[1],oseq[2],oseq[0],oseq[1]]
+                    #upstream.append(pair)
+                    separate[iseq[2]] += [combo]
+                else:
+                    continue
+    else:
+        print('please insert a strand')
+        pass
 
     embedded = {k:embedded[k] for k in embedded if embedded[k]}
     overlap = {k:overlap[k] for k in overlap if overlap[k]}
