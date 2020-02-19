@@ -33,7 +33,7 @@ $fasta_file
     </param>
         <param label="FASTA" name="fasta_file" type="data" format="fasta" />
 	<param label="o-spanin minimal length" name="osp_min_len" type="integer" value="30" />
-    <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by colons (eg. 1234:4321)" name="switch" value="all" />
+    <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1234:4321)" name="switch" value="all" />
         <param label="Lipobox minimal distance from start codon" name="osp_min_dist" type="integer" value="10" />
 	<param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" />
         <param type="select" label="Regular Expression choice" name="regex_pattern">
