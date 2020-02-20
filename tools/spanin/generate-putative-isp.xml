@@ -60,6 +60,7 @@ METHODOLOGY
 Initially uses the OrfFinder module from CPT.py and locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA(NT and AA) / BED / GFF3. These are currently hidden.
 
 With the aaFASTA, we read in each potential sequence and determine if it has a TMD based off of:
+
     1. Ciphs through looking for Lysine snorkels and neighboring hydrophobic residues.
     2. Looks for a repeated hydrophobic region within the sequence, based on a range of user inputs.
 

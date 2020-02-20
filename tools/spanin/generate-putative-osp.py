@@ -84,7 +84,7 @@ if __name__ == '__main__':
     
 
     pairs = tuple_fasta(fasta_file=args.out_osp_prot)
-    have_lipo = [] # empty candidates list to be passed through the user input 
+    have_lipo = [] # empty candidates list to be passed through the user input
     
 
     for each_pair in pairs:
