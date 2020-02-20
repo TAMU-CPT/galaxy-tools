@@ -58,13 +58,13 @@ def export(org_cn, seqs):
 
     line = data.readline()
     while line:
-      if line[0:2] == '..':
+      if line[0:7] == '##FASTA':
         if args.fasta:
           mode = 1
         else:
           return org_data
         line = data.readline()
-        args.fasta.write('>' + line + '\n')
+        args.fasta.write(line + '\n')
         line = data.readline()
       elif (line [0:3] == '###'):
         line = data.readline() # continue
