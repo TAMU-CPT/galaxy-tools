@@ -87,6 +87,7 @@
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_join.xml" label="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_ligate.xml" label="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_reopen.xml" label="fasta" />
+                <tool file="cpt2/galaxy-tools/tools/fasta/fasta_chop.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/safe_reopen.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" label="genbank,fasta,gff3,experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/gff3/genome_editor.xml" label="experimental,gff3" />
