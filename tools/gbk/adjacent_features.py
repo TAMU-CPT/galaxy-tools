@@ -118,8 +118,8 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                                       finalSeq = str(seqHold.translate(table=tTable, cds=True)) + '\n\n'
                                     else:
                                       finalSeq = str(seqHold) + '\n\n'
-                                    upOut.write(header)
-                                    upOut.write(finalSeq)
+                                    #upOut.write(header)
+                                    #upOut.write(finalSeq)
                                   except Exception as bdct:
                                     log.warn("ERROR %s %s", item.qualifiers['locus_tag'][0], bdct)
                                     finalSeq = ""
@@ -128,8 +128,8 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                                     else:
                                       finalSeq = str(seqHold) + '\n\n'
                                     header = ">" + (item.qualifiers['locus_tag'][0]) + addition + " [INCOMPLETE] (5' of " + longOut + ' found within ' + sourceOut + ')\n'
-                                    upOut.write(header)
-                                    upOut.write(finalSeq)
+                                  upOut.write(header)
+                                  upOut.write(finalSeq)
                                 else:
                                   
                                   if tTable != 0:
@@ -174,8 +174,8 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                                       finalSeq = str(seqHold.translate(table=tTable, cds=True)) + '\n\n'
                                     else:
                                       finalSeq = str(seqHold) + '\n\n'
-                                    downOut.write(header)
-                                    downOut.write(finalSeq)
+                                    #downOut.write(header)
+                                    #downOut.write(finalSeq)
                                   except Exception as bdct:
                                     log.warn("ERROR %s %s", item.qualifiers['locus_tag'][0], bdct)
                                     finalSeq = ""
@@ -184,8 +184,8 @@ def extract_features(genbankFiles = None, fastaFiles = None, upOut = None, downO
                                     else:
                                       finalSeq = str(seqHold) + '\n\n'
                                     header = ">" + (item.qualifiers['locus_tag'][0]) + addition + " [INCOMPLETE] (3' of " + longOut + ' found within ' + sourceOut + ')\n'
-                                    downOut.write(header)
-                                    downOut.write(finalSeq)
+                                  downOut.write(header)
+                                  downOut.write(finalSeq)
                                 else:
                                   
                                   if tTable != 0:
