@@ -37,7 +37,57 @@ def check_back_end_snorkels(seq, tmsize):
         found = 'NOTmatch'
         return found
 
+def prep_a_gff3(fa, spanin_type):
+    """
+        Function parses an input detailed 'fa' file and outputs a 'gff3' file
+        ---> fa = input .fa file
+        ---> output = output a returned list of data, easily portable to a gff3 next
+        ---> spanin_type = 'isp' or 'osp'
+    """
+    fa_zip = tuple_fasta(fa)
+    data = []
+    for a_pair in fa_zip:
+        #print(a_pair)
+        if re.search(('(\[1\])'), a_pair[0]):
+            strand = '+'
+        elif re.search(('(\[-1\])'), a_pair[0]):
+            strand = '-' # column 7
+        start = re.search(('[\d]+\.\.'),a_pair[0]).group(0).split('..')[0] # column 4
+        end = re.search(('\.\.[\d]+'),a_pair[0]).group(0).split('..')[1] # column 5
+        orfid = re.search(('(ORF)[\d]+'),a_pair[0]).group(0) # column 1
+        if spanin_type == 'isp':
+            methodtype = 'CDS' # column 3
+            spanin = 'isp'
+        elif spanin_type == 'osp':
+            methodtype = 'CDS' # column 3
+            spanin = 'osp'
+        else:
+            print('need to input spanin type')
+            break
+        source = 'cpt.py|putative-*.py' # column 2
+        score = '.' # column 6
+        phase = '.' # column 8
+        seq = a_pair[1]+';Alias='+spanin # column 9
+        sequence = [[orfid, source, methodtype, start, end, score, strand, phase, seq]]
+        data += sequence
+    return data
 
+def write_gff3(data,output='results.gff3'):
+    """
+        Parses results from prep_a_gff3 into a gff3 file
+        ---> input : list from prep_a_gff3
+        ---> output : gff3 file
+    """
+    data = data
+    filename = output
+    with filename as f:
+        f.write('#gff-version 3\n')
+        for value in data:
+            f.write('{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n'.format(value[0],value[1],value[2],value[3],value[4],
+                                                                        value[5],value[6],value[7],value[8]))
+    f.close()
+
+    
 
 def find_tmd(pair,minimum=10,maximum=30,TMDmin=10,TMDmax=20):
     """ 
@@ -161,7 +211,6 @@ def splitStrands(text, strand='+'):
             return text
     #return positive_strands, negative_strands
 
-
 def grabLocs(text):
     """
     Grabs the locations of the spanin based on NT location (seen from ORF). Grabs the ORF name, as per named from the ORF class/module
@@ -224,8 +273,7 @@ def spaninProximity(isp,osp,max_dist=30):
     return embedded, overlap, separate
 
 
-
-
+############################################### TEST RANGE #########################################################################
 ####################################################################################################################################
 if __name__ == "__main__":
 
@@ -237,16 +285,16 @@ if __name__ == "__main__":
     pairs = zip(test_desc, test_seq)
     tmd = []
     for each_pair in pairs:
-        print(each_pair)
+        #print(each_pair)
         try:
             tmd += find_tmd(pair=each_pair)
         except (IndexError,TypeError):
             continue
         #try:s = each_pair[1]
         #tmd += find_tmd(seq=s, tmsize=15)
-    print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
-    print(tmd)
-    print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
+    #print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
+    #print(tmd)
+    #print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
     
     
 
@@ -271,25 +319,8 @@ if __name__ == "__main__":
             continue
         #except:
             #continue
-    print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
-    print(lipo)
-    print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
-
-
-    filename = 'putative_osp.fa'
-    strand = '+'
-    o = getDescriptions(filename)
-
-    storage = []
-    for item in o:
-        s = splitStrands(item,strand=strand)
-        storage.append(s)
-    
-    print(storage)
-
-    ret = []
-    for i in storage:
-        if i != None:
-            ret.append(i)
-    print('\n+++++++++++++++++++++++++++++++++++\n')
-    print(ret)
+    #print('\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
+    #############################3
+    #g = prep_a_gff3(fa='putative_isp.fa', spanin_type='isp')
+    #print(g)
+    #write_gff3(data=g)

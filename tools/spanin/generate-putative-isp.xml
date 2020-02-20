@@ -7,6 +7,7 @@
     </macros>
     <expand macro="requirements">
       <requirement type="package" version="2019.06.08">regex</requirement>
+      <requirement type="package" version="1.0.3.5">statistics</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/generate-putative-isp.py
@@ -22,6 +23,7 @@ $fasta_file
 --max_tmd_size $max_tmd_size
 --putative_isp $putative_isp
 --summary_isp_txt $summary_isp
+--putative_isp_gff $putative_isp_gff
 
 ]]></command>
     <inputs>
@@ -39,6 +41,7 @@ $fasta_file
                 <data format="gff3" name="isp_og" label="GFF_Output.gff" hidden = "true"/>
 		<data format="fasta" name="putative_isp" label="putative_isp.fa"/>
                 <data format="txt" name="summary_isp" label="summary_isp.txt"/>
+        <data format="gff3" name="putative_isp_gff" label="putative_isp.gff3"/>
     </outputs>
     <help><![CDATA[
 **What it does**
@@ -49,7 +52,7 @@ Initially uses the OrfFinder module from CPT.py and locates ALL potential start 
 With the aaFASTA, we read in each potential sequence and determine if it has a TMD based off of:
 1. Ciphs through looking for Lysine snorkels and neighboring hydrophobic residues.
 2. Looks for a repeated hydrophobic region within the sequence, based on a range of user inputs.
-OUTPUT : putative_isp.fa (FASTA) file and basic summary statistics as summary_isp.txt.
+OUTPUT : putative_isp.fa (FASTA) file, putative_isp.gff3, and basic summary statistics as summary_isp.txt.
 
 ]]></help>
         <expand macro="citations-2020" />

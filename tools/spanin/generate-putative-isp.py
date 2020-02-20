@@ -9,7 +9,7 @@ from Bio import SeqIO
 from Bio import Seq
 import re
 from statistics import median
-from spaninFuncs import find_tmd, tuple_fasta, lineWrapper
+from spaninFuncs import *
 import os
 
 #if __name__ == '__main__':
@@ -55,8 +55,10 @@ if __name__ == '__main__':
     parser.add_argument('--max_tmd_size', dest='max_tmd_size', default = 20, help='Maximum size of the TMD domain', type=int)
     parser.add_argument('--summary_isp_txt', dest='summary_isp_txt', type=argparse.FileType('w'),
     default='summary_isp.txt', help='Summary statistics on putative i-spanins')
-
-    parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
+    parser.add_argument('--putative_isp_gff', dest='putative_isp_gff', type=argparse.FileType('w'),
+    default='putative_isp.gff3', help='gff3 output for putative i-spanins')
+    
+    #parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
     the_args = vars(parser.parse_args())
     
@@ -105,6 +107,11 @@ if __name__ == '__main__':
         f.write('median length (AA): '+str(med)+'\n')
         f.write('maximum orf in size (AA): '+str(top_size)+'\n')
         f.write('minimum orf in size (AA): '+str(bot_size))
+    
+    # Output the putative list in gff3 format
+    args.putative_isp_fa = open(args.putative_isp_fa.name, 'r')
+    gff_data = prep_a_gff3(fa=args.putative_isp_fa,spanin_type = 'isp')
+    write_gff3(data=gff_data,output=args.putative_isp_gff)
 
     '''https://docs.python.org/3.4/library/subprocess.html'''
     '''https://github.tamu.edu/CPT/Galaxy-Tools/blob/f0bf4a4b8e5124d4f3082d21b738dfaa8e1a3cf6/tools/phage/transmembrane.py'''
