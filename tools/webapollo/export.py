@@ -44,7 +44,9 @@ def export(org_cn, seqs):
 
     # Seek back to start
     data.seek(0)
-    print(data)
+    print(type(data))
+    print(dir(data))
+    print(data.getvalue())
     exit()
 
     #records = list(GFF.parse(data))
@@ -86,8 +88,6 @@ if __name__ == '__main__':
     org_cn_list, seqs = GuessCn(args, wa)
 
     org_data = []
-    print(seqs)
-    print("-------------")
     for org_cn in org_cn_list:
         indiv_org_data = export(org_cn, seqs)
         org_data.append(indiv_org_data)
