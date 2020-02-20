@@ -44,10 +44,39 @@ def export(org_cn, seqs):
 
     # Seek back to start
     data.seek(0)
-    print(type(data))
-    print(dir(data))
-    print(data.getvalue())
-    exit()
+    #print(type(data))
+    #print(dir(data))
+    #print(data.getvalue())
+    #exit()
+
+    if args.gff:
+      mode = 0
+    else if args.fasta:
+      mode = -1
+    else:
+      return org_data
+
+    line = data.readline()
+    while line:
+      if line[0:2] == '..':
+        if args.fasta:
+          mode = 1
+        else:
+          return org_data
+        line = data.readline()
+        args.fasta.write('>' + line + '\n')
+        line.readLine()
+      else if (line [0:3] == '###'):
+        line.readLine() # continue
+      else if mode == 0:          
+        args.gff.write(line + '\n')
+        line.readLine()
+      else if mode == 1:
+        args.fasta.write(line + '\n')
+        line.readLine()
+      else if mode == -1:
+        line.readLine()
+        
 
     #records = list(GFF.parse(data))
 ##    db = gffutils.create_db(data, dbfn='temp.db', force=True, keep_order=True,merge_strategy='merge', sort_attribute_values=True)
