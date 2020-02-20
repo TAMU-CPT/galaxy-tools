@@ -12,6 +12,8 @@
     <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/generate-putative-osp.py
 $fasta_file
+--strand $strand
+--switch $switch
 --osp_on $osp_on
 --osp_op $osp_op
 --osp_ob $osp_ob
@@ -25,8 +27,14 @@ $fasta_file
 --putative_osp_gff $putative_osp_gff
 ]]></command>
     <inputs>
+    <param type="select" label="Strand Choice" name="strand">
+        <option value="both">both</option>
+        <option value="forward">+</option>
+        <option value="reverse">-</option>
+    </param>
         <param label="FASTA" name="fasta_file" type="data" format="fasta" />
 	<param label="o-spanin minimal length" name="osp_min_len" type="integer" value="30" />
+    <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1234:4321)" type="text" name="switch" value="all" />
         <param label="Lipobox minimal distance from start codon" name="osp_min_dist" type="integer" value="10" />
 	<param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" />
         <param type="select" label="Regular Expression choice" name="regex_pattern">
@@ -46,13 +54,19 @@ $fasta_file
     </outputs>
     <help><![CDATA[
 **What it does**
+
 INPUT : Genomic FASTA
+
 METHODOLOGY
 Initially uses the OrfFinder module from CPT.py and locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA(NT and AA) / BED / GFF3. These are currently hidden.
 With the aaFASTA, this tool reads in each potential sequence and determines if it has a lipobox based off of:
+
 >    Min distance from start codon to lipobox
+
 >    Max distance from start codon to lipobox
+
 Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found. If so, it is added to a candidate list, and eventually ported to a file in the output.
+
 OUTPUT : putative_osp.fa (FASTA) file, putative_osp.gff3, and basic summary statistics file as sumamry_osp.txt
 ]]></help>
         <expand macro="citations-2020" />

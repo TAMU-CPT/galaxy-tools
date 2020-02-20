@@ -43,6 +43,8 @@ if __name__ == '__main__':
     parser.add_argument('-m', '--mode', dest='mode', choices=('all', 'top', 'one'), default='all', # I think we want this to JUST be all...nearly always
                         help='Output all ORFs/CDSs from sequence, all ORFs/CDSs with max length, or first with maximum length')
     
+    parser.add_argument('--switch', dest='switch', default='all', help='switch between ALL putative osps, or a range. If not all, insert a range of two integers separated by a colon (:). Eg: 1234:4321')
+
     # osp parameters
     parser.add_argument('--osp_min_len', dest='osp_min_len', default=30, help='Minimum ORF length, measured in codons', type=int)
     parser.add_argument('--osp_on', dest='out_osp_nuc', type=argparse.FileType('w'), default='out_osp.fna', help='Output nucleotide sequences, FASTA')
@@ -82,8 +84,7 @@ if __name__ == '__main__':
     
 
     pairs = tuple_fasta(fasta_file=args.out_osp_prot)
-    have_lipo = [] # empty candidates list to be passed through the user input 
-    
+    have_lipo = [] # empty candidates list to be passed through the user input
     
 
     for each_pair in pairs:
@@ -91,8 +92,29 @@ if __name__ == '__main__':
             have_lipo += find_lipobox(pair=each_pair, minimum=args.osp_min_dist, maximum=args.osp_max_dist, regex=args.pattern)
         except (IndexError, TypeError):
             continue
+
+    if args.switch == 'all':
+        pass
+    else:
+        #for each_pair in have_lipo:
+        range_of = args.switch
+        range_of = re.search(('[\d]+:[\d]+'),range_of).group(0)
+        start = int(range_of.split(':')[0])
+        end = int(range_of.split(':')[1])
+        have_lipo = parse_a_range(pair=have_lipo, start=start, end=end)
+        #print(have_lipo)
+        #matches
     
+    #have_lipo = []
+    #have_lipo = matches
     total_osp = len(have_lipo)
+    #print(have_lipo)
+    #print(total_osp)
+
+    #print(type(have_lipo))
+
+    #for i in have_lipo:
+    #    print(i)
 
     # export results in fasta format
     ORF = []
