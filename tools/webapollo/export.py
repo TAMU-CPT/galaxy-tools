@@ -9,7 +9,7 @@ import json
 import argparse
 from Bio import SeqIO
 from BCBio import GFF
-import gffutils
+##import gffutils
 from webapollo import WAAuth, WebApolloInstance, CnOrGuess, GuessCn
 
 
@@ -86,6 +86,8 @@ if __name__ == '__main__':
     org_cn_list, seqs = GuessCn(args, wa)
 
     org_data = []
+    print(seqs)
+    print("-------------")
     for org_cn in org_cn_list:
         indiv_org_data = export(org_cn, seqs)
         org_data.append(indiv_org_data)
