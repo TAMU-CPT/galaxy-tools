@@ -7,7 +7,7 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
-$__tool_directory__/relatedness.py
+$__tool_directory__/relatedness_prot.py
 @BLAST_TSV@
 $__tool_directory__/TaxID_List.txt
 --hits $hits
@@ -28,7 +28,7 @@ This tool filters a set of BLASTp results and return the top
 related genomes based on number of protein-protein matches.
 
 The input must be a BLASTp tabular file with the qseqID, 
-sallseqID, salltitles, sallacc, staxIDs fields selected.
+sallseqid, salltitles, sallacc, and staxIDs fields selected.
 </help>
 	<tests/>
 	<expand macro="citations-2020" />

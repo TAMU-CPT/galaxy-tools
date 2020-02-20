@@ -1,0 +1,34 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.fasta.fasta_chop" name="FASTA Chop" version="1.0">
+    <description>Chop FASTA sequence(s) to a specified size</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/fasta_chop.py
+$fasta
+--chop_amt $chop_amt
+--chopped_fa $chopped_fa
+
+]]></command>
+    <inputs>
+        <param label="FASTA" name="fasta" type="data" format="fasta" />
+        <param label="Chopped Sequence Size" name="chop_amt" type="integer" value="30" help="How large the sequence size will be" />
+    </inputs>
+    <outputs>
+        <data format="fasta" name="chopped_fa" label="chopped.fa" />
+    </outputs>
+    <help><![CDATA[
+**What it does**
+INPUT : FASTA file (single or multi)
+
+METHOD : FASTA sequence is chopped by a user selected amount. Default is set to 30. If a sequence is not as long as the selection, it will chop to the sequence's full length.
+
+Eg. Sequence of input = MTYCEVVVP (chop amt = 5 ) ==> MTYCE
+
+OUTPUT : Chopped FASTA file.
+]]></help>
+        <expand macro="citations-2020" />
+</tool>

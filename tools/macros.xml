@@ -51,6 +51,14 @@
 				year = {2019-2020},
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
+                        </citation>
+                        <citation type="bibtex">
+            @unpublished{galaxyTools,
+                author = {C. Ross},
+                title = {CPT Galaxy Tools},
+                year = {2020-},
+                note = {https://github.com/tamu-cpt/galaxy-tools/}
+            }
 			</citation>
 		</citations>
 	</xml>

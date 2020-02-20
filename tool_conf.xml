@@ -83,9 +83,11 @@
 	</section>
 	<section id="3e66d481-56c7-471f-8de2-7d496977c5eb" name="CPT: Genomic Data Editing">
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_concat.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/fasta/fasta_append.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_join.xml" label="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_ligate.xml" label="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_reopen.xml" label="fasta" />
+                <tool file="cpt2/galaxy-tools/tools/fasta/fasta_chop.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/safe_reopen.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" label="genbank,fasta,gff3,experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/gff3/genome_editor.xml" label="experimental,gff3" />
@@ -201,6 +203,7 @@
 	</section>
 	<section id="b3065028-2363-4c7a-922b-a054cfce8cc8" name="CPT: Comparative Genomics">
 		<tool file="cpt2/galaxy-tools/tools/comparative/mist3.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/PHANOTATE/phanotate.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/gepard.xml" hidden="True"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/progressivemauve.xml" hidden="True"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/xmfa2gff3.xml"/>
@@ -287,6 +290,9 @@
 		<tool file="cpt2/galaxy-tools/tools/one-off/none-validator.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/gbk_viz/easyfig_cpt.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/genemark/genemarkHMM.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-isp.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-osp.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/spanin/findSpanin.xml"/>
 	</section>
 	<!-- deprecated -->
 	<tool file="cpt2/galaxy-tools/tools/gff3/gff3_ipr_merge.xml" label="deprecated" hidden="True" />

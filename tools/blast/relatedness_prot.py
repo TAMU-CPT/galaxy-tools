@@ -8,43 +8,15 @@ log = logging.getLogger()
 
 
 def parse_blast(blast):
-    res = []
     for line in blast:
-        res.append(line.strip('\n').split('\t'))
-    return res
+        yield line.strip('\n').split('\t')
 
 
-def add_dice(blast):
-    res = []
+def with_dice(blast):
     for data in blast:
-        dice = 2 * int(data[2]) / (float(data[3]) + float(data[4]))
-        res.append(data + [dice])
-    return res
+        dice = 2 * int(data[14]) / (float(data[22]) + float(data[23]))
+        yield data + [dice]
 
-    
-
-def make_num(blast):
-    res = []
-    for data in blast:
-        res.append([data[0], int(data[1]), int(data[2]), int(data[3]), int(data[4]), data[5], data[6], int(data[7])])
-    return res
-
-def bundle_dice(blast):
-    res = []
-    ind = 0
-    seen = {}
-    for x in blast:
-      if (x[0] + x[5]) in seen.keys():
-        res[seen[(x[0] + x[5])]][1] += x[1]
-        res[seen[(x[0] + x[5])]][2] += x[2]
-        res[seen[(x[0] + x[5])]][8] += x[8]
-        res[seen[(x[0] + x[5])]][9] += 1 # Num HSPs
-      else:
-        seen[(x[0] + x[5])] = ind
-        res.append(x + [1])
-        ind += 1
-    return res
-        
 
 def filter_dice(blast, threshold=0.5):
     for data in blast:
@@ -86,7 +58,7 @@ def important_only(blast, split_identifiers):
             data[1], # 13 All subject Seq-id(s), separated by a ';'
             split_identifiers(data[1], data[2]),  # 25 All subject title(s), separated by a '<>'
             data[3].split(";"), # Extra: All Subject Accessions
-            data[4].split(";"), # Extra: All TaxIDs
+            data[4].split(";") # Extra: All TaxIDs
         ]
 
 
@@ -105,49 +77,44 @@ def expand_taxIDs(blast):
     for data in blast:
         #if(len(data[4]) > 0):
         #  print(data[0])
-        for ID in data[7]:
+        for ID in data[4]:
             yield [
                 data[0],
                 data[1],
                 data[2],
                 data[3],
-                data[4],
-                data[5],
-                data[6],
-                int(ID),
-                data[8]
+                int(ID)
             ]
 
 def expand_titles(blast):
     for data in blast:
-        for title in data[5]:
+        for title in data[2]:
+            yield [
+                data[0],
+                data[1],
+                title,
+                data[3],
+                data[4]
+            ]
+
+
+def filter_phage(blast, phageTaxLookup):
+    for data in blast:
+        if (data[4]) in phageTaxLookup:
             yield [
                 data[0],
                 data[1],
                 data[2],
                 data[3],
-                data[4],
-                title,
-                data[6],
-                data[7],
-                data[8]
+                data[4]
             ]
-
-
-def filter_phage(blast, phageTaxLookup):
-    res = []
-    for data in blast:
-        if int(data[7]) in phageTaxLookup:
-            res.append(data)
-    return res
 
 
 def remove_dupes(data):
     has_seen = {}
-    res = []
     for row in data:
         # qseqid, sseqid
-        key = (row[0], row[5])
+        key = (row[0], row[2], row[4])
         # If we've seen the key before, we can exit
         if key in has_seen:
             continue
@@ -155,8 +122,7 @@ def remove_dupes(data):
         # Otherwise, continue on
         has_seen[key] = True
         # Pretty simple
-        res.append(row)
-    return res
+        yield row
 
 
 def scoreMap(blast):
@@ -199,45 +165,40 @@ if __name__ == '__main__':
         splitId = split_identifiers_nucl
         #phageNameLookup = {k['desc'].rstrip('.'): k['id'] for k in phageDb}
 
-    data = [] # Reformatting to list rather than generator
-
     data = parse_blast(args.blast)
-    data = make_num(data)
-    data = add_dice(data)
-    data = bundle_dice(data)
+    #data = with_dice(data)
     #data = filter_dice(data, threshold=0.0)
-    #data = important_only(data, splitId)
+    data = important_only(data, splitId)
     
-    #data = expand_taxIDs(data)
+    data = expand_taxIDs(data)
     #data = deform_scores(data)
     data = filter_phage(data, phageTaxLookup)
-    #data = expand_titles(data)
+    data = expand_titles(data)
 
     if args.protein or args.canonical:
-        data = remove_dupes(data)  # Probably obsolete, bundle dice should do this
+        data = remove_dupes(data)
         count_label = "Similar Unique Proteins"
     else:
         count_label = "Nucleotide Hits"
-    #data = with_dice(data)
-    data.sort(key = lambda data: -data[8])
-    #counts, accessions = scoreMap(data)
+
+    listify = []
+    for x in data:
+      listify.append(x)
+    counts, accessions = scoreMap(listify)
     
     if args.access:
-      sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\t\n' % (args.hits, data[0][0]))
-      sys.stdout.write('TaxID\tName\tAccessions\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n')
-      ind = 0
-      for out in data:
-        if ind >= args.hits:
+      sys.stdout.write('Top %d matches for BLASTp results of %s\t\t\t\n' % (args.hits, listify[0][0]))
+      sys.stdout.write('# TaxID\tName\tAccessions\t%s\n' % count_label)
+      for idx, ((name, ID), num) in enumerate(sorted(counts.items(), key=lambda item: -item[1])):
+        if idx > args.hits - 1:
             break
-        ind += 1
-        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\t%s\n' % (out[7], out[5], out[6], out[4], out[9], out[2], out[8]))
+
+        sys.stdout.write('%s\t%s\t%s\t%d\n' % (ID, name, str(accessions[(name, ID)][0]), num))
     else:
-      sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\n' % (args.hits, data[0][0]))
-      sys.stdout.write('TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score')
-      ind = 0
-      for out in data:
-        if ind >= args.hits:
+      sys.stdout.write('Top %d matches for BLASTp results of %s\t\t\n' % (args.hits, listify[0][0]))
+      sys.stdout.write('# TaxID\tName\t%s\n' % count_label)
+      for idx, ((name, ID), num) in enumerate(sorted(counts.items(), key=lambda item: -item[1])):
+        if idx > args.hits - 1:
             break
-        ind += 1
-        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (out[7], out[5], out[4], out[9], out[1], out[8]))
-    
+
+        sys.stdout.write('%s\t%s\t%d\n' % (ID, name, num))

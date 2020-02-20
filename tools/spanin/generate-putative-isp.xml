@@ -1,0 +1,71 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.spanin.generate-putative-isp" name="ISP candidates" version="1.0">
+    <description>constructs a putative list of potential i-spanin from an input genomic FASTA</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+      <requirement type="package" version="2019.06.08">regex</requirement>
+      <requirement type="package" version="1.0.3.5">statistics</requirement>
+    </expand>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/generate-putative-isp.py
+$fasta_file
+--strand $strand
+--switch $switch
+--isp_on $isp_on
+--isp_op $isp_op
+--isp_ob $isp_ob
+--isp_og $isp_og
+--isp_min_len $isp_min_len
+--isp_min_dist $isp_min_dist
+--isp_max_dist $isp_max_dist
+--min_tmd_size $min_tmd_size
+--max_tmd_size $max_tmd_size
+--putative_isp $putative_isp
+--summary_isp_txt $summary_isp
+--putative_isp_gff $putative_isp_gff
+
+]]></command>
+    <inputs>
+    <param type="select" label="Strand Choice" name="strand">
+        <option value="both">both</option>
+        <option value="forward">+</option>
+        <option value="reverse">-</option>
+    </param>
+        <param label="FASTA" name="fasta_file" type="data" format="fasta" />
+	<param label="i-spanin minimal length" name="isp_min_len" type="integer" value="60" />
+    <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1000:2000)" type="text" name="switch" value="all" />
+        <param label="TMD minimal distance from start codon" name="isp_min_dist" type="integer" value="10" />
+	<param label="TMD maximum distance from start codon" name="isp_max_dist" type="integer" value="30" />
+        <param label="TMD minimal size" name="min_tmd_size" type="integer" value="10" />
+        <param label="TMD maximum size" name="max_tmd_size" type="integer" value="20" />
+    </inputs>
+    <outputs>
+                <data format="fasta" name="isp_on" label="NucSequences.fa" hidden = "true"/>
+		<data format="fasta" name="isp_op" label="ProtSequences.fa" hidden = "true"/>
+                <data format="bed" name="isp_ob" label="BED_Output.bed" hidden = "true"/>
+                <data format="gff3" name="isp_og" label="GFF_Output.gff" hidden = "true"/>
+		<data format="fasta" name="putative_isp" label="putative_isp.fa"/>
+                <data format="txt" name="summary_isp" label="summary_isp.txt"/>
+        <data format="gff3" name="putative_isp_gff" label="putative_isp.gff3"/>
+    </outputs>
+    <help><![CDATA[
+**What it does**
+
+INPUT : Genomic FASTA
+
+METHODOLOGY
+Initially uses the OrfFinder module from CPT.py and locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA(NT and AA) / BED / GFF3. These are currently hidden.
+
+With the aaFASTA, we read in each potential sequence and determine if it has a TMD based off of:
+
+    1. Ciphs through looking for Lysine snorkels and neighboring hydrophobic residues.
+    2. Looks for a repeated hydrophobic region within the sequence, based on a range of user inputs.
+
+OUTPUT : putative_isp.fa (FASTA) file, putative_isp.gff3, and basic summary statistics as summary_isp.txt.
+
+]]></help>
+        <expand macro="citations-2020" />
+</tool>

@@ -1,0 +1,44 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.fasta.fasta_append" name="FASTA merge files pairwise" version="1.0">
+    <description>Pairwise append "down" two FASTAs</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/fasta_append.py
+$fa_1
+$fa_2
+--appended_fa $appended_fa
+]]></command>
+    <inputs>
+        <param label="fa_1" name="fa_1" type="data" format="fasta" />
+        <param label="fa_2" name="fa_2" type="data" format="fasta" />
+    </inputs>
+    <outputs>
+        <data format="fasta" name="appended_fa" label="appended.fa" />
+    </outputs>
+    <help><![CDATA[
+**What it does**
+INPUT : Two FASTA Files
+
+METHOD : for each fasta file, the headers for sequence 1 and sequence 2 are joined, separated by a _ ; and the sequences are merged together.
+
+for example ==>
+
+Header-a
+ABC
+
+Header-b
+DEF
+
+will result in:
+
+Header-a_Header-b
+ABCDEF
+
+OUTPUT : A pairwise appended FASTA file
+]]></help>
+        <expand macro="citations-2020" />
+</tool>

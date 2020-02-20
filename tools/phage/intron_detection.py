@@ -14,22 +14,23 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
-def parse_xml(blastxml):
+def parse_xml(blastxml, thresh):
     """ Parses xml file to get desired info (genes, hits, etc) """
     blast = []
     discarded_records = 0
+    totLen = 0
     for iter_num, blast_record in enumerate(NCBIXML.parse(blastxml), 1):
         blast_gene = []
         align_num = 0
         for alignment in blast_record.alignments:
             align_num += 1
-            hit_gis = alignment.hit_id + alignment.hit_def
-            gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9,10}', hit_gis)]
-            
+            #hit_gis = alignment.hit_id + alignment.hit_def
+            #gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9,10}', hit_gis)]
+            gi_nos = str(alignment.accession)
             
             for hsp in alignment.hsps:
                 x = float(hsp.identities) / (hsp.query_end - hsp.query_start)
-                if x < .5:
+                if x < thresh:
                     discarded_records += 1
                     continue
 
@@ -56,7 +57,8 @@ def parse_xml(blastxml):
                 
                 
         blast.append(blast_gene)
-    log.debug("parse_blastxml %s -> %s", len(blast) + discarded_records, len(blast))
+        totLen += len(blast_gene)
+    log.debug("parse_blastxml %s -> %s", totLen + discarded_records, totLen)
     return blast
 
 
@@ -80,6 +82,8 @@ def parse_gff(gff3):
     gff_info = {}
     _rec = None
     for rec in GFF.parse(gff3):
+        endBase = len(rec.seq)
+        
         _rec = rec
         _rec.annotations = {}
         for feat in feature_lambda(
@@ -96,6 +100,7 @@ def parse_gff(gff3):
                 gff_info[feat.id] = {
                     'strand': feat.strand,
                     'start': feat.location.start,
+                    'end': feat.location.end,
                     'loc': feat.location,
                     'feat': feat,
                     'name': CDSname,
@@ -103,7 +108,7 @@ def parse_gff(gff3):
 
    
     gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
-    endBase = 0
+    #endBase = 0
     for i, feat_id in enumerate(gff_info):
         gff_info[feat_id].update({'index': i})
         if gff_info[feat_id]['loc'].end > endBase:
@@ -133,14 +138,14 @@ def remove_duplicates(clusters):
 class IntronFinder(object):
     """ IntronFinder objects are lists that contain a list of hits for every gene """
 
-    def __init__(self, gff3, blastp):
+    def __init__(self, gff3, blastp, thresh):
         self.blast = []
         self.clusters = {}
         self.gff_info = {}
         self.length = 0
 
         (self.gff_info, self.rec, self.length) = parse_gff(gff3)
-        self.blast = parse_xml(blastp)
+        self.blast = parse_xml(blastp, thresh)
 
     def create_clusters(self):
         """ Finds 2 or more genes with matching hits """
@@ -150,24 +155,20 @@ class IntronFinder(object):
                 if ' ' in hit['gi_nos']:
                     hit['gi_nos'] = hit['gi_nos'][0:hit['gi_nos'].index(' ')]
                 
-                nameCheck = ','.join(hit['gi_nos'])
+                nameCheck = hit['gi_nos']
                 if nameCheck == "":
-                  #print(hit['gi_nos'])
                   continue
                 name = hashlib.md5((nameCheck).encode()).hexdigest()
                                 
 
                 if name in clusters:
-                    #print("Appending to cluster " + str(','.join(hit['gi_nos'])))
                     if hit not in clusters[name]:
                         clusters[name].append(hit)
                 else:
-                    #print("Creating cluster " + str(','.join(hit['gi_nos'])))
                     clusters[name] = [hit]
         log.debug("create_clusters %s -> %s", len(self.blast), len(clusters))
         self.clusters = filter_lone_clusters(clusters)
-        #exit()
-
+        
     def check_strand(self):
         """ filters clusters for genes on the same strand """
         filtered_clusters = {}
@@ -189,7 +190,7 @@ class IntronFinder(object):
                     
         return filtered_clusters
 
-    def check_gene_gap(self):
+    def check_gene_gap(self, maximum = 10000):
         filtered_clusters = {}
         for key in self.clusters:
             hits_lists = []
@@ -197,9 +198,13 @@ class IntronFinder(object):
             for gene in self.clusters[key]:
                 for hits in hits_lists:
                     for hit in hits:
-                        if (abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']) <= 10) or ((len(self.gff_info) - (abs(self.gff_info[gene['name']]['index'] - self.gff_info[hit['name']]['index']))) <= 10): # Checks that they are within 10 array indices
-                            hits.append(gene)  # of each other, including wrap around at the
-                            gene_added = True  # end of the array.
+                        lastStart = max(self.gff_info[gene['name']]['start'], self.gff_info[hit['name']]['start'])
+                        lastEnd = max(self.gff_info[gene['name']]['end'], self.gff_info[hit['name']]['end'])
+                        firstEnd = min(self.gff_info[gene['name']]['end'], self.gff_info[hit['name']]['end'])
+                        firstStart = min(self.gff_info[gene['name']]['start'], self.gff_info[hit['name']]['start'])
+                        if (lastStart - firstEnd <= maximum or self.length - lastEnd + firstStart <= maximum): 
+                            hits.append(gene)  
+                            gene_added = True  
                             break
                 if not gene_added:
                     hits_lists.append([gene])
@@ -218,7 +223,7 @@ class IntronFinder(object):
     # def check_seq_gap():
 
     # also need a check for gap in sequence coverage?
-    def check_seq_overlap(self, minimum = 0, maximum = 1000):
+    def check_seq_overlap(self, minimum = -1):
         filtered_clusters = {}
         for key in self.clusters:
             add_cluster = True
@@ -325,8 +330,8 @@ class IntronFinder(object):
 
             evidence_notes = []
             for cluster_elem in clusters[cluster_id]:
-                note = '{name} had {ident}% identity to GI:{pretty_gi}'.format(
-                    pretty_gi=', '.join(cluster_elem['gi_nos']),
+                note = '{name} had {ident}% identity to NCBI Protein ID {pretty_gi}'.format(
+                    pretty_gi=(cluster_elem['gi_nos']),
                     ident=int(100 * float(cluster_elem['identity']) / abs(cluster_elem['query_range'][1] - cluster_elem['query_range'][0])),
                     **cluster_elem
                 )
@@ -368,7 +373,7 @@ class IntronFinder(object):
                 # Calculate %identity which we'll use to score
                 score = int(1000 * float(cluster_elem['identity']) / abs(cluster_elem['query_range'][1] - cluster_elem['query_range'][0]))
 
-                tempLoc = FeatureLocation(cds.location.start + (3 * (cluster_elem['query_range'][0])),
+                tempLoc = FeatureLocation(cds.location.start + (3 * (cluster_elem['query_range'][0] - 1)),
                                           cds.location.start + (3 * (cluster_elem['query_range'][1])),
                                           cds.location.strand)
                 cds.location = tempLoc
@@ -414,16 +419,24 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Intron detection')
     parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
     parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
-    parser.add_argument('--minimum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 0, type = int)
-    parser.add_argument('--maximum', help='Gap minimum (Default 0, set to a negative number to allow overlap)', default = 1000, type = int)
+    parser.add_argument('--minimum', help='Gap minimum (Default -1, set to a negative number to allow overlap)', default = -1, type = int)
+    parser.add_argument('--maximum', help='Gap maximum in genome (Default 10000)', default = 10000, type = int)
+    parser.add_argument('--idThresh', help='ID Percent Threshold', default = .4, type = float)
+    
     args = parser.parse_args()
+    
+    threshCap = args.idThresh
+    if threshCap > 1.00:
+      threshCap = 1.00
+    if threshCap < 0:
+      threshCap = 0
 
     # create new IntronFinder object based on user input
-    ifinder = IntronFinder(args.gff3, args.blastp)
+    ifinder = IntronFinder(args.gff3, args.blastp, threshCap)
     ifinder.create_clusters()
     ifinder.clusters = ifinder.check_strand()
-    ifinder.clusters = ifinder.check_gene_gap()
-    ifinder.clusters = ifinder.check_seq_overlap(minimum=args.minimum, maximum=args.maximum)
+    ifinder.clusters = ifinder.check_gene_gap(maximum=args.maximum)
+    ifinder.clusters = ifinder.check_seq_overlap(minimum=args.minimum)
     #ifinder.output_xml(ifinder.clusters)
     #for x, idx in (enumerate(ifinder.clusters)):
     #print(ifinder.blast)
