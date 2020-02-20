@@ -5,14 +5,12 @@
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
     </macros>
-    <expand macro="requirements">
-        <requirement></requirement>
-    </expand>
+    <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/fasta_append.py
 $fasta
 --chop_amt $chop_amt
---chopped_fa $fchopped_fa
+--chopped_fa $chopped_fa
 
 ]]></command>
     <inputs>
