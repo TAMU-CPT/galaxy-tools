@@ -51,7 +51,7 @@ def export(org_cn, seqs):
 
     if args.gff:
       mode = 0
-    else if args.fasta:
+    elif args.fasta:
       mode = -1
     else:
       return org_data
