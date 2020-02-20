@@ -65,17 +65,17 @@ def export(org_cn, seqs):
           return org_data
         line = data.readline()
         args.fasta.write('>' + line + '\n')
-        line.readLine()
+        line = data.readLine()
       else if (line [0:3] == '###'):
-        line.readLine() # continue
+        line = data.readLine() # continue
       else if mode == 0:          
         args.gff.write(line + '\n')
-        line.readLine()
+        line = data.readLine()
       else if mode == 1:
         args.fasta.write(line + '\n')
-        line.readLine()
+        line = data.readLine()
       else if mode == -1:
-        line.readLine()
+        line = data.readLine()
         
 
     #records = list(GFF.parse(data))
