@@ -9,6 +9,7 @@ import json
 import argparse
 from Bio import SeqIO
 from BCBio import GFF
+import gffutils
 from webapollo import WAAuth, WebApolloInstance, CnOrGuess, GuessCn
 
 
@@ -39,22 +40,33 @@ def export(org_cn, seqs):
             **kwargs
         ).encode('utf-8'))
 
+    
+
     # Seek back to start
     data.seek(0)
+    print(data)
+    exit()
 
-    records = list(GFF.parse(data))
-    if len(records) == 0:
+    #records = list(GFF.parse(data))
+##    db = gffutils.create_db(data, dbfn='temp.db', force=True, keep_order=True,merge_strategy='merge', sort_attribute_values=True)
+##    db2 = gffutils.FeatureDB('temp.db', keep_order=True)
+    if False == True:
         print("Could not find any sequences or annotations for this organism + reference sequence")
         sys.exit(2)
-    else:
-        for record in records:
-            record.annotations = {}
-            record.features = sorted(record.features, key=lambda x: x.location.start)
-            if args.gff:
-                GFF.write([record], args.gff)
-            record.description = ""
-            if args.fasta:
-                SeqIO.write([record], args.fasta, 'fasta')
+##    else:
+        #for record in records:
+        #    record.annotations = {}
+        #    record.features = sorted(record.features, key=lambda x: x.location.start)
+##            if args.gff:
+##              for y in db2.directives:
+##                args.gff.write('##' + y +'\n')
+##              for x in db2.all_features():
+##                args.gff.write(x + '\n')
+                #args.gff.writeGFF.write([record], args.gff)
+            #record.description = ""
+##            if args.fasta:
+                
+##                args.fasta.write([record], args.fasta, 'fasta')
 
     return org_data
 
