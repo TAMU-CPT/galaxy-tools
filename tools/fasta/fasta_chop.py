@@ -3,7 +3,6 @@
 ################################################################################
 ################## Use chop.fa for a control to test. (fasta/test-data/chop.fa)
 
-import re
 from Bio import SeqIO
 from Bio import Seq
 import argparse
