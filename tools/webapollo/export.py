@@ -66,17 +66,19 @@ def export(org_cn, seqs):
         line = data.readline()
         args.fasta.write('>' + line + '\n')
         line = data.readLine()
-      else if (line [0:3] == '###'):
+      elif (line [0:3] == '###'):
         line = data.readLine() # continue
-      else if mode == 0:          
+      elif mode == 0:          
         args.gff.write(line + '\n')
         line = data.readLine()
-      else if mode == 1:
+      elif mode == 1:
         args.fasta.write(line + '\n')
         line = data.readLine()
-      else if mode == -1:
+      elif mode == -1:
         line = data.readLine()
-        
+      else:
+        print("Unaccounted for line: " + line)
+        line = data.readLine()
 
     #records = list(GFF.parse(data))
 ##    db = gffutils.create_db(data, dbfn='temp.db', force=True, keep_order=True,merge_strategy='merge', sort_attribute_values=True)
