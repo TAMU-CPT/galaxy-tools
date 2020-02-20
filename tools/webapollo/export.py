@@ -65,20 +65,20 @@ def export(org_cn, seqs):
           return org_data
         line = data.readline()
         args.fasta.write('>' + line + '\n')
-        line = data.readLine()
+        line = data.readline()
       elif (line [0:3] == '###'):
-        line = data.readLine() # continue
+        line = data.readline() # continue
       elif mode == 0:          
         args.gff.write(line + '\n')
-        line = data.readLine()
+        line = data.readline()
       elif mode == 1:
         args.fasta.write(line + '\n')
-        line = data.readLine()
+        line = data.readline()
       elif mode == -1:
-        line = data.readLine()
+        line = data.readline()
       else:
         print("Unaccounted for line: " + line)
-        line = data.readLine()
+        line = data.readline()
 
     #records = list(GFF.parse(data))
 ##    db = gffutils.create_db(data, dbfn='temp.db', force=True, keep_order=True,merge_strategy='merge', sort_attribute_values=True)
