@@ -61,6 +61,7 @@ class GOQ:
                             if each_syn['type'] == 'exact':
                                 go_data[go_term]['synonyms'] = [each_syn['name']]
                             else:
+                                go_data[go_term]['synonyms'] = ['none to report']
                                 continue
                         #print(go_term_return)
                         #print('==========')
