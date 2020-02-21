@@ -12,7 +12,7 @@ endolysins = ['lysozyme',
               'muramidase',
               'muraminidase',
               'glycosidase',
-              'endopeptidase'
+              'endopeptidase',
               'muralytic',
               'glycosylase',
               'chitinase']
@@ -103,5 +103,5 @@ CBDs_accro = ['PG-3',
 lysisCombo = {'endolysins':endolysins,'holins':holins,'ECDs':ECDs,'ECDs_accro':ECDs_accro,'CBDs':CBDs,'CBDs_accro':CBDs_accro}
 
 filename = 'lysis-family.json'
-with open('tools/proximity/data/'+filename, 'w') as j:
+with open('data/'+filename, 'w') as j:
     json.dump(lysisCombo, j, indent='\t')
