@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # vim: set fileencoding=utf-8
 import os
 import sys
@@ -47,10 +48,16 @@ def gen_qc_feature(start, end, message, strand=0, id_src=None):
         kwargs['id'] = id_src.id
         kwargs['qualifiers']['Name'] = id_src.qualifiers.get('Name', [])
 
-    return SeqFeature(
+    if end >= start:
+      return SeqFeature(
         FeatureLocation(start, end, strand=strand),
         **kwargs
-    )
+      )
+    else:
+      return SeqFeature(
+        FeatureLocation(end, start, strand=strand),
+        **kwargs
+      )
 
 
 def __ensure_location_in_bounds(start=0, end=0, parent_length=0):
@@ -617,7 +624,6 @@ def weird_starts(record):
                 e = seq.location.end - 3
 
             results.append(seq)
-
             qc_features.append(gen_qc_feature(
                 s, e,
                 'Weird start codon',
