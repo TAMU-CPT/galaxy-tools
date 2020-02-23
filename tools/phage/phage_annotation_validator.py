@@ -290,14 +290,24 @@ def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30,
             # (0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF', 123123, 124324)
             possible_gene_start = start + putative_gene[0]
             possible_gene_end = start + putative_gene[1]
-
-            possible_cds = SeqFeature(
+            
+            
+            if possible_gene_start <= possible_gene_end:
+              possible_cds = SeqFeature(
                 FeatureLocation(
                     possible_gene_start, possible_gene_end,
                     strand=putative_gene[2],
                 ),
                 type='CDS'
-            )
+              )
+            else:
+              possible_cds = SeqFeature(
+                FeatureLocation(
+                    possible_gene_end, possible_gene_start,
+                    strand=putative_gene[2],
+                ),
+                type='CDS'
+              )
 
             # Now we adjust our boundaries for the RBS that's required
             # There are only two cases, the rbs is upstream of it, or downstream
@@ -306,15 +316,25 @@ def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30,
             else:
                 possible_gene_end = putative_gene[6]
 
-            possible_rbs = SeqFeature(
+            if putative_gene[5] <= putative_gene[6]:
+              possible_rbs = SeqFeature(
                 FeatureLocation(
                     putative_gene[5], putative_gene[6],
                     strand=putative_gene[2],
                 ),
                 type='Shine_Dalgarno_sequence'
-            )
+              )
+            else:
+              possible_rbs = SeqFeature(
+                FeatureLocation(
+                    putative_gene[6], putative_gene[5],
+                    strand=putative_gene[2],
+                ),
+                type='Shine_Dalgarno_sequence'
+              )
 
-            possible_gene = SeqFeature(
+            if possible_gene_start <= possible_gene_end:
+              possible_gene = SeqFeature(
                 FeatureLocation(
                     possible_gene_start, possible_gene_end,
                     strand=putative_gene[2],
@@ -323,7 +343,18 @@ def excessive_gap(record, excess=50, excess_divergent=200, min_gene=30, slop=30,
                 qualifiers={
                     'note': ['Possible gene']
                 }
-            )
+              )
+            else:
+              possible_gene = SeqFeature(
+                FeatureLocation(
+                    possible_gene_end, possible_gene_start,
+                    strand=putative_gene[2],
+                ),
+                type='gene',
+                qualifiers={
+                    'note': ['Possible gene']
+                }
+              )
             possible_gene.sub_features = [possible_rbs, possible_cds]
             qc_features.append(possible_gene)
 
