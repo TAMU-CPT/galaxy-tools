@@ -107,6 +107,8 @@ def intersect(rec_a, rec_b, window):
 def find_endolysins(ipro, enzyme_domain_ids, enzyme_domain_names):
     rec_ipro = list(GFF.parse(ipro))
     
+    #print(rec_ipro)
+    
     if len(rec_ipro) > 0:
         endo_rec_names = []
         endo_rec_domain_ids = []
@@ -117,6 +119,7 @@ def find_endolysins(ipro, enzyme_domain_ids, enzyme_domain_names):
             for i in range(len(seq.features)):
                 f = seq.features[i]
                 if f.type == 'protein_match':
+                    #print(f)
                     unwanted = ['TRANS', 'SIGNAL', 'CYTO', 'Coil', 'Signal']
                     # Ignores feature with unwanted key words in the feature name
                     if all(x not in f.qualifiers['Name'][0] for x in unwanted):
@@ -131,7 +134,7 @@ def find_endolysins(ipro, enzyme_domain_ids, enzyme_domain_names):
                             target = target.split(' ')
                             protein_name = target[0]
                             endo_rec_names += [protein_name]
-    
+        
         return endo_rec_names, endo_rec_domain_ids, rec_domain_name
 
 
@@ -171,22 +174,30 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
         #print(tmhmm_protein_names)
         #print(endo_names)
         #print(lgc_names)
+        #print(rec_genome)
         
         for feat in rec_genome.features:
-            
+            #print(feat)
             # searches for synonyms and 
             if feat.type == 'CDS':
                 
-                if str(feat.qualifiers['locus_tag'][0]) in lgc_names:
-                    lgc_seqrec += [feat]
+                feat_names = [str(feat.qualifiers['locus_tag'][0]), str(feat.qualifiers['Name'][0])]
+                #print(str(feat_names[1]))
+                
+                #print(str(feat.qualifiers))
+                for i in range(len(feat_names)):
+                    if str(feat_names[i]) in str(lgc_names):
+                        lgc_seqrec += [feat]
                     
                 # check if gene annotated as holin using key words/synonyms 
                 holin_annotations = ['holin']
                 if any(x for x in holin_annotations if(x in str(feat.qualifiers['product']))):
                     tm_seqrec += [feat]
                 # if not annotated as holin, check if protein contains a TMD
-                elif str(feat.qualifiers['locus_tag'][0]) in tmhmm_protein_names:
-                    tm_seqrec += [feat]
+                else: 
+                    for i in range(len(feat_names)):
+                        if str(feat_names[i]) in str(tmhmm_protein_names):
+                            tm_seqrec += [feat]
                     
                 # check if gene annotated as endolysin using key words/synonyms 
                 endolysin_annotations = ['lysin', 'lysozyme']
@@ -194,8 +205,12 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                 if any(x for x in endolysin_annotations if(x in str(feat.qualifiers['product']))):
                     endolysin_seqrec += [feat]
                 # if not annotated as endolysin, check if protein contains an endolysin-associated domain
-                elif str(feat.qualifiers['locus_tag'][0]) in endo_names:
-                    endolysin_seqrec += [feat]
+                else: 
+                    for i in range(len(feat_names)):
+                        if str(feat_names[i]) in str(endo_names):
+                            endolysin_seqrec += [feat]
+        
+        print(endolysin_seqrec, tm_seqrec, lgc_seqrec)
         
         # find possible endolysins that are adjacent to (or within window length away from) the lysis gene, or disruptin, candidates 
         # if len(endolysin_seqrec) > 0:
