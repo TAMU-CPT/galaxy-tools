@@ -210,7 +210,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                         if str(feat_names[i]) in str(endo_names):
                             endolysin_seqrec += [feat]
         
-        print(endolysin_seqrec, tm_seqrec, lgc_seqrec)
+        #print(endolysin_seqrec, tm_seqrec, lgc_seqrec)
         
         # find possible endolysins that are adjacent to (or within window length away from) the lysis gene, or disruptin, candidates 
         # if len(endolysin_seqrec) > 0:
