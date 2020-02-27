@@ -104,8 +104,7 @@ def intersect(rec_a, rec_b, window):
 
     
 # Function to identify enzyme domains associated with endolysin function from the interproscan results file
-def find_endolysins(ipro, enzyme_domain_ids, enzyme_domain_names):
-    rec_ipro = list(GFF.parse(ipro))
+def find_endolysins(rec_ipro, enzyme_domain_ids, enzyme_domain_names):
     
     #print(rec_ipro)
     
@@ -141,6 +140,7 @@ def find_endolysins(ipro, enzyme_domain_ids, enzyme_domain_names):
 def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
     rec_lgc = list(SeqIO.parse(lgc, "fasta"))
     rec_tmhmm = list(GFF.parse(tmhmm))
+    rec_ipro = list(GFF.parse(ipro))
     rec_genome = list(GFF.parse(genome, limit_info = dict(gff_type = ['CDS'])))
     
     #genome.seek(0)
@@ -152,7 +152,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
     if len(rec_lgc) > 0 and len(rec_tmhmm) > 0 and len(rec_genome) > 0:
         
         # find names of the proteins containing endolysin associated domains 
-        endo_names , endo_domain_ids, endo_domain_names = find_endolysins(ipro, list(enzyme_domain_ids), list(ed_names))
+        endo_names , endo_domain_ids, endo_domain_names = find_endolysins(rec_ipro, list(enzyme_domain_ids), list(ed_names))
         
         
         #find names of proteins containing transmembrane domains 
