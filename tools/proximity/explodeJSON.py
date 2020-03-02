@@ -14,11 +14,11 @@ class explodeJSON:
 
 if __name__ == "__main__":
     query = []
-    filepath = 'tools/proximity/test-data/'
+    filepath = 'test-data/'
     filename = 'test.json'
     e = explodeJSON(file=filepath+filename)
     data = e.readjson()
     print(data)
     for k, v in data.items():
         for term in v:
-            print(k+ ':' +term)
+            print(k+ ':' +term) # print global term to synonym / children terms.
