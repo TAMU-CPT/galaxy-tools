@@ -83,7 +83,7 @@ class GOQ:
         
         query_dict = self.store_queries()
         with filename as f:
-            f.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format('query_term','go_id','name','go_definition','usage','synonyms'))
+            #f.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format('query_term','go_id','name','go_definition','usage','synonyms'))
             for search_item, matches in query_dict.items():
                 for data in matches.values():
                     f.write('{}\t{}\t{}\t{}\t{}\t'.format(search_item, data['id'],data['name'],data['definition'],data['usage']))
