@@ -10,7 +10,15 @@ log = logging.getLogger()
 def parse_blast(blast):
     res = []
     for line in blast:
-        res.append(line.strip('\n').split('\t'))
+        taxSplit = []
+        preTaxSplit = line.strip('\n').split('\t')
+        for tax in preTaxSplit[-1].split(';'):
+          taxSplit.append(preTaxSplit)
+          taxSplit[-1][-1] = tax
+        for access in taxSplit[-1][6].split(';'):
+          for line in taxSplit:
+            line[6] = access
+            res.append(line)
     return res
 
 
@@ -233,7 +241,7 @@ if __name__ == '__main__':
         sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\t%s\n' % (out[7], out[5], out[6], out[4], out[9], out[2], out[8]))
     else:
       sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\n' % (args.hits, data[0][0]))
-      sys.stdout.write('TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score')
+      sys.stdout.write('TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n')
       ind = 0
       for out in data:
         if ind >= args.hits:
