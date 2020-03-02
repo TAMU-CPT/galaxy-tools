@@ -7,8 +7,16 @@
 		"muramidase",
 		"muraminidase",
 		"glycosidase",
-		"endopeptidasemuralytic",
+		"endopeptidase",
+		"muralytic",
 		"glycosylase",
 		"chitinase"
-    ]
+	],
+	"holins": [
+		"holin",
+		"antiholin",
+		"hole",
+		"pinholin",
+		"lysis"
+	]
 }
