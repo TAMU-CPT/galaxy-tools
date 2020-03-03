@@ -9,16 +9,19 @@ log = logging.getLogger()
 
 def parse_blast(blast):
     res = []
+    finalRes = []
     for line in blast:
         taxSplit = []
         preTaxSplit = line.strip('\n').split('\t')
         for tax in preTaxSplit[-1].split(';'):
           taxSplit.append(preTaxSplit)
           taxSplit[-1][-1] = tax
-        for access in taxSplit[-1][6].split(';'):
-          for line in taxSplit:
-            line[6] = access
-            res.append(line)
+          res.append(taxSplit[-1])
+    for line in res:
+        shallowCopy = line
+        for access in line[6].split(';'):
+          shallowCopy[6] = access
+          finalRes.append(shallowCopy)  
     return res
 
 
@@ -42,17 +45,32 @@ def bundle_dice(blast):
     ind = 0
     seen = {}
     for x in blast:
-      if (x[0] + x[5]) in seen.keys():
-        res[seen[(x[0] + x[5])]][1] += x[1]
-        res[seen[(x[0] + x[5])]][2] += x[2]
-        res[seen[(x[0] + x[5])]][8] += x[8]
-        res[seen[(x[0] + x[5])]][9] += 1 # Num HSPs
+      if (x[0] + x[6]) in seen.keys():
+        res[seen[(x[0] + x[6])]][1] += x[1]
+        res[seen[(x[0] + x[6])]][2] += x[2]
+        res[seen[(x[0] + x[6])]][8] += x[8]
+        res[seen[(x[0] + x[6])]][9] += 1 # Num HSPs
       else:
-        seen[(x[0] + x[5])] = ind
+        seen[(x[0] + x[6])] = ind
         res.append(x + [1])
         ind += 1
     return res
         
+"""def bundle_dice(blast):
+    res = []
+    ind = 0
+    seen = {}
+    for x in blast:
+      if ((x[0] + x[5])) in seen.keys():
+        res[seen[(x[0] + x[5])]][1] += x[1]
+        res[seen[(x[0] + x[5])]][2] += x[2]
+        res[seen[(x[0] + x[5])]][9] += 1 # Num HSPs
+        res[seen[(x[0] + x[5])]][8] = ((res[seen[(x[0] + x[5])]][8] * (res[seen[(x[0] + x[5])]][9] - 1)) + x[8]) / res[seen[(x[0] + x[5])]][9] 
+      else:
+        seen[(x[0] + x[5])] = ind
+        res.append(x + [1])
+        ind += 1
+    return res """
 
 def filter_dice(blast, threshold=0.5):
     for data in blast:
@@ -238,7 +256,7 @@ if __name__ == '__main__':
         if ind >= args.hits:
             break
         ind += 1
-        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\t%s\n' % (out[7], out[5], out[6], out[4], out[9], out[2], out[8]))
+        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\t.4f\n' % (out[7], out[5], out[6], out[4], out[9], out[2], out[8]))
     else:
       sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\n' % (args.hits, data[0][0]))
       sys.stdout.write('TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n')
@@ -247,5 +265,5 @@ if __name__ == '__main__':
         if ind >= args.hits:
             break
         ind += 1
-        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (out[7], out[5], out[4], out[9], out[1], out[8]))
+        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%.4f\n' % (out[7], out[5], out[4], out[9], out[1], out[8]))
     
