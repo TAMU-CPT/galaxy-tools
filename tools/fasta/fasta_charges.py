@@ -10,6 +10,8 @@ HTML_FOOTER = '</body></html>'
 
 SVG_HEADER = '<svg width=\"%i\" height=\"%i\" xmlns=\"http://www.w3.org/2000/svg\">\n' # % (calcWidth, calcHeight)
 SVG_FOOTER = '</svg>'
+
+FULL_AA = ['H','S','Q','T','N','C','Y','A','V','I','L','M','P','F','W','G','E','R','D','K']
  
 def charges_html(svg, fasta, aa, fgColor, bgColor, width=120):
     colour_scheme = zip([x.upper() for x in aa], bgColor, fgColor)
@@ -78,12 +80,27 @@ def charges_svg(svg, fasta, aa, fgColor, bgColor, width=120):
     classList = []
     classes = "<style type=\"text/css\">\n<![CDATA[\n"
     
+    defClass = ""
+    for x in FULL_AA:
+      addAA = True
+      for y in aa:
+        if x in y:
+          addAA = False
+      if addAA:
+        defClass += x
+
+    defBox = "#ffffff"
+    defText = "#000000"
+
     for group in colour_scheme:
         classList.append(group[0])
-        classes += "text.text_%s{fill: %s;}\n" % (group[0], group[1])
-        classes += "rect.rect_%s{fill: %s; stroke: %s;}\n" % (group[0], group[2], group[2])
+        classes += "text.text_%s{fill: %s;}\n" % (group[0], group[2])
+        classes += "rect.rect_%s{fill: %s; stroke: %s;}\n" % (group[0], group[1], group[1])
         #info += '<li><span class="%s" style="padding:5px">%s</span></li>\n' % (group[0], group[0])
-
+    if defClass != "":
+      classes += "text.text_%s{fill: %s;}\n" % (defClass, defText)
+      classes += "rect.rect_%s{fill: %s; stroke: %s;}\n" % (defClass, defBox, defBox)
+      classList.append(defClass)
     classes += "text.info_text{white-space: pre;}\n"
     classes += "rect.rEven{fill: #fdfdfd; stroke: #fbfbfb;}\n"
     classes += "rect.rOdd{fill: #f2f2fc; stroke: #fbfbfb;}\n"
@@ -99,6 +116,7 @@ def charges_svg(svg, fasta, aa, fgColor, bgColor, width=120):
     title = ''
 
     
+    
     yInd = 60
     yInc = 15
     seqIndent = 35
@@ -111,9 +129,9 @@ def charges_svg(svg, fasta, aa, fgColor, bgColor, width=120):
     title += '<text x=\"' + str(idIndent) + '\" y=\"' + str(yInd) + '\" style=\"font-size:18px\">Legend:</text>\n'
     yInd += 2 * yInc
 
-    for i in range(len(aa)):
-      title += '<rect x=\"' + str(seqIndent) + '\" y=\"' + str(yInd - yInc + 2) + '\" width=\"' + str(len(aa[i]) * letterLen) + '\" height=\"' + str(yInc) + '\" class=\"rect_%s\"/>\n' % classList[i]
-      title += '<text x=\"' + str(seqIndent) + '\" y=\"' + str(yInd) + '\" class=\"text_%s\" font-family=\"monospace\" font-size=\"14\">%s</text>\n' % (classList[i], aa[i])
+    for i in range(len(classList)):
+      title += '<rect x=\"' + str(seqIndent) + '\" y=\"' + str(yInd - yInc + 2) + '\" width=\"' + str(len(classList[i]) * letterLen) + '\" height=\"' + str(yInc) + '\" class=\"rect_%s\"/>\n' % classList[i]
+      title += '<text x=\"' + str(seqIndent) + '\" y=\"' + str(yInd) + '\" class=\"text_%s\" font-family=\"monospace\" font-size=\"14\">%s</text>\n' % (classList[i], classList[i])
       yInd += yInc + 3
     yInd += yInc * 1.5
       
