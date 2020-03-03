@@ -36,7 +36,7 @@
 	</section>
 
 	<label id="=====2" text="Utilities"/>
-	<section id="91690aa2-eb96-4f56-b4b4-e7e4e6f9fc6f" name="CPT: Format Conversion Scripts">
+	<section id="91690aa2-eb96-4f56-b4b4-e7e4e6f9fc6f" name="CPT: Format Conversion">
 		<tool file="cpt2/galaxy-tools/tools/util/cpt_convert_glimmer_to_gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/util/cpt_convert_mga_to_gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/wigToBigWig.xml"/>
