@@ -3,13 +3,14 @@ import sys
 import argparse
 import json
 import logging
+
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
 
 def parse_blast(blast):
     for line in blast:
-        yield line.strip('\n').split('\t')
+        yield line.strip("\n").split("\t")
 
 
 def with_dice(blast):
@@ -25,29 +26,29 @@ def filter_dice(blast, threshold=0.5):
 
 
 def split_identifiers_nucl(_, ident):
-    if '<>' in ident:
-        idents = ident.split('<>')
+    if "<>" in ident:
+        idents = ident.split("<>")
     else:
         idents = [ident]
     return idents
 
 
 def split_identifiers_prot(_, ident):
-    if '<>' in ident:
-        idents = ident.split('<>')
+    if "<>" in ident:
+        idents = ident.split("<>")
     else:
         idents = [ident]
     return [
-        x[x.index('[') + 1:x.rindex(']')]
+        x[x.index("[") + 1 : x.rindex("]")]
         for x in idents
         # MULTISPECIES: recombination-associated protein RdgC [Enterobacteriaceae]<>RecName: Full=Recombination-associated protein RdgC<>putative exonuclease, RdgC [Enterobacter sp. 638]
-        if '[' in x and ']' in x
+        if "[" in x and "]" in x
     ]
 
 
 def split_identifiers_phage(par, ident):
-    par = par.replace('lcl|', '')
-    par = par[0:par.index('_prot_')]
+    par = par.replace("lcl|", "")
+    par = par[0 : par.index("_prot_")]
     return [par]
 
 
@@ -78,32 +79,23 @@ def important_only(blast, split_identifiers):
             # 22 Aligned part of subject sequence
             # 23 Query sequence length
             # 24 Subject sequence length
-            split_identifiers(data[1], data[24]),  # 25 All subject title(s), separated by a '<>'
-            data[25]  # 26 dice
+            split_identifiers(
+                data[1], data[24]
+            ),  # 25 All subject title(s), separated by a '<>'
+            data[25],  # 26 dice
         ]
 
 
 def deform_scores(blast):
     for data in blast:
         for org in data[2]:
-            yield [
-                data[0],
-                data[1],
-                org,
-                data[3]
-            ]
+            yield [data[0], data[1], org, data[3]]
 
 
 def filter_phage(blast, phageNameLookup):
     for data in blast:
         if data[2] in phageNameLookup:
-            yield [
-                data[0],
-                data[1],
-                data[2],
-                phageNameLookup[data[2]],
-                data[3]
-            ]
+            yield [data[0], data[1], data[2], phageNameLookup[data[2]], data[3]]
 
 
 def remove_dupes(data):
@@ -134,26 +126,28 @@ def scoreMap(blast):
     return m, c
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Top related genomes')
-    parser.add_argument('blast', type=argparse.FileType("r"), help='Blast 25 Column Results')
-    parser.add_argument('phagedb', type=argparse.FileType("r"))
-    parser.add_argument('--protein', action='store_true')
-    parser.add_argument('--canonical', action='store_true')
-    parser.add_argument('--hits', type = int, default = 5)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Top related genomes")
+    parser.add_argument(
+        "blast", type=argparse.FileType("r"), help="Blast 25 Column Results"
+    )
+    parser.add_argument("phagedb", type=argparse.FileType("r"))
+    parser.add_argument("--protein", action="store_true")
+    parser.add_argument("--canonical", action="store_true")
+    parser.add_argument("--hits", type=int, default=5)
 
     args = parser.parse_args()
 
     phageDb = json.load(args.phagedb)
     if args.protein:
         splitId = split_identifiers_prot
-        phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
+        phageNameLookup = {k["source"].rstrip("."): k["id"] for k in phageDb}
     elif args.canonical:
         splitId = split_identifiers_phage
-        phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
+        phageNameLookup = {k["source"].rstrip("."): k["id"] for k in phageDb}
     else:
         splitId = split_identifiers_nucl
-        phageNameLookup = {k['desc'].rstrip('.'): k['id'] for k in phageDb}
+        phageNameLookup = {k["desc"].rstrip("."): k["id"] for k in phageDb}
 
     data = parse_blast(args.blast)
     data = with_dice(data)
@@ -168,9 +162,13 @@ if __name__ == '__main__':
         count_label = "Nucleotide Hits"
 
     scores, counts = scoreMap(data)
-    sys.stdout.write('# ID\tName\tScore\t%s\n' % count_label)
-    for idx, ((name, pid), score) in enumerate(sorted(scores.items(), key=lambda (x, y): -y)):
+    sys.stdout.write("# ID\tName\tScore\t%s\n" % count_label)
+    for idx, ((name, pid), score) in enumerate(
+        sorted(scores.items(), key=lambda (x, y): -y)
+    ):
         if idx > args.hits - 1:
             break
 
-        sys.stdout.write('%s\t%s\t%05.3f\t%d\n' % (pid, name, score, counts[(name, pid)]))
+        sys.stdout.write(
+            "%s\t%s\t%05.3f\t%d\n" % (pid, name, score, counts[(name, pid)])
+        )
