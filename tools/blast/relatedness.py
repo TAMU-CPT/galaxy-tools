@@ -256,7 +256,7 @@ if __name__ == '__main__':
         if ind >= args.hits:
             break
         ind += 1
-        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\t.4f\n' % (out[7], out[5], out[6], out[4], out[9], out[2], out[8]))
+        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\t%.4f\n' % (out[7], out[5], out[6], out[4], out[9], out[2], out[8]))
     else:
       sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\n' % (args.hits, data[0][0]))
       sys.stdout.write('TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n')
