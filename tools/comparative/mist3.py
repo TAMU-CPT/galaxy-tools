@@ -778,4 +778,4 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    print (mist_wrapper(**vars(args)))
+    print(mist_wrapper(**vars(args)))

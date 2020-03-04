@@ -2,13 +2,14 @@
 
 ##### Should have a check and see if the file is "large"
 
+
 class Synonyms:
 
     """
     This class reads a flat file as an object and parses it, based on input delimiters.
     """
-    
-    def __init__(self, file, delims='\n', comments='#'):
+
+    def __init__(self, file, delims="\n", comments="#"):
         self.file = file
         self.delims = delims
         self.comments = comments
@@ -17,21 +18,21 @@ class Synonyms:
         """
         iterates and prints the contents
         """
-        self.read = open(self.file, 'r')
-        if self.delims == '\n':
+        self.read = open(self.file, "r")
+        if self.delims == "\n":
             with self.read as f:
                 for item in f:
                     print(item)
         else:
             print("I can't parse this yet...")
-    
+
     def store_it(self):
         """
         stores items in a list
         """
-        self.read = open(self.file, 'r')
+        self.read = open(self.file, "r")
         l = []
-        if self.delims == '\n':
+        if self.delims == "\n":
             with self.read as f:
                 for line in f.readlines():
                     line = line.split()[0]
@@ -40,14 +41,13 @@ class Synonyms:
         else:
             print("I can't parse this yet...")
 
+
 if __name__ == "__main__":
-    filename = 'tools/proximity/test-data/iterate.txt'
-    p = Synonyms(filename,delims='\n')
+    filename = "tools/proximity/test-data/iterate.txt"
+    p = Synonyms(filename, delims="\n")
     p.parse_it()
-    print('=====================================')
+    print("=====================================")
     l = p.store_it()
     print(l)
     for i in l:
         print(i)
-
-    

@@ -59,15 +59,9 @@ def gen_qc_feature(start, end, message, strand=0, id_src=None):
         kwargs["qualifiers"]["Name"] = id_src.qualifiers.get("Name", [])
 
     if end >= start:
-      return SeqFeature(
-        FeatureLocation(start, end, strand=strand),
-        **kwargs
-      )
+        return SeqFeature(FeatureLocation(start, end, strand=strand), **kwargs)
     else:
-      return SeqFeature(
-        FeatureLocation(end, start, strand=strand),
-        **kwargs
-      )
+        return SeqFeature(FeatureLocation(end, start, strand=strand), **kwargs)
 
 
 def __ensure_location_in_bounds(start=0, end=0, parent_length=0):
@@ -346,23 +340,21 @@ def excessive_gap(
             # (0, 33, 1, 'ATTATTTTATCAAAACGCTTTACAATCTTTTAG', 'MILSKRFTIF', 123123, 124324)
             possible_gene_start = start + putative_gene[0]
             possible_gene_end = start + putative_gene[1]
-            
-            
+
             if possible_gene_start <= possible_gene_end:
-              possible_cds = SeqFeature(
-                FeatureLocation(
-                    possible_gene_start, possible_gene_end, strand=putative_gene[2]
-                ),
-                type='CDS'
-              )
+                possible_cds = SeqFeature(
+                    FeatureLocation(
+                        possible_gene_start, possible_gene_end, strand=putative_gene[2]
+                    ),
+                    type="CDS",
+                )
             else:
-              possible_cds = SeqFeature(
-                FeatureLocation(
-                    possible_gene_end, possible_gene_start,
-                    strand=putative_gene[2],
-                ),
-                type='CDS'
-              )
+                possible_cds = SeqFeature(
+                    FeatureLocation(
+                        possible_gene_end, possible_gene_start, strand=putative_gene[2],
+                    ),
+                    type="CDS",
+                )
 
             # Now we adjust our boundaries for the RBS that's required
             # There are only two cases, the rbs is upstream of it, or downstream
@@ -372,42 +364,36 @@ def excessive_gap(
                 possible_gene_end = putative_gene[6]
 
             if putative_gene[5] <= putative_gene[6]:
-              possible_rbs = SeqFeature(
-                FeatureLocation(
-                    putative_gene[5], putative_gene[6], strand=putative_gene[2]
-                ),
-                type='Shine_Dalgarno_sequence'
-              )
+                possible_rbs = SeqFeature(
+                    FeatureLocation(
+                        putative_gene[5], putative_gene[6], strand=putative_gene[2]
+                    ),
+                    type="Shine_Dalgarno_sequence",
+                )
             else:
-              possible_rbs = SeqFeature(
-                FeatureLocation(
-                    putative_gene[6], putative_gene[5],
-                    strand=putative_gene[2],
-                ),
-                type='Shine_Dalgarno_sequence'
-              )
+                possible_rbs = SeqFeature(
+                    FeatureLocation(
+                        putative_gene[6], putative_gene[5], strand=putative_gene[2],
+                    ),
+                    type="Shine_Dalgarno_sequence",
+                )
 
             if possible_gene_start <= possible_gene_end:
-              possible_gene = SeqFeature(
-                FeatureLocation(
-                    possible_gene_start, possible_gene_end, strand=putative_gene[2]
-                ),
-                type='gene',
-                qualifiers={
-                    'note': ['Possible gene']
-                }
-              )
+                possible_gene = SeqFeature(
+                    FeatureLocation(
+                        possible_gene_start, possible_gene_end, strand=putative_gene[2]
+                    ),
+                    type="gene",
+                    qualifiers={"note": ["Possible gene"]},
+                )
             else:
-              possible_gene = SeqFeature(
-                FeatureLocation(
-                    possible_gene_end, possible_gene_start,
-                    strand=putative_gene[2],
-                ),
-                type='gene',
-                qualifiers={
-                    'note': ['Possible gene']
-                }
-              )
+                possible_gene = SeqFeature(
+                    FeatureLocation(
+                        possible_gene_end, possible_gene_start, strand=putative_gene[2],
+                    ),
+                    type="gene",
+                    qualifiers={"note": ["Possible gene"]},
+                )
             possible_gene.sub_features = [possible_rbs, possible_cds]
             qc_features.append(possible_gene)
 
@@ -720,12 +706,11 @@ def weird_starts(record):
                 e = seq.location.end - 3
 
             results.append(seq)
-            qc_features.append(gen_qc_feature(
-                s, e,
-                'Weird start codon',
-                strand=seq.strand,
-                id_src=gene
-            ))
+            qc_features.append(
+                gen_qc_feature(
+                    s, e, "Weird start codon", strand=seq.strand, id_src=gene
+                )
+            )
             bad += 1
         else:
             good += 1

@@ -15,6 +15,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
+
 def parse_xml(blastxml, thresh):
     """ Parses xml file to get desired info (genes, hits, etc) """
     blast = []
@@ -25,38 +26,38 @@ def parse_xml(blastxml, thresh):
         align_num = 0
         for alignment in blast_record.alignments:
             align_num += 1
-            #hit_gis = alignment.hit_id + alignment.hit_def
-            #gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9,10}', hit_gis)]
+            # hit_gis = alignment.hit_id + alignment.hit_def
+            # gi_nos = [str(gi) for gi in re.findall('(?<=gi\|)\d{9,10}', hit_gis)]
             gi_nos = str(alignment.accession)
-            
+
             for hsp in alignment.hsps:
                 x = float(hsp.identities) / (hsp.query_end - hsp.query_start)
                 if x < thresh:
                     discarded_records += 1
                     continue
 
-                nice_name = blast_record.query 
-                                             
-                if ' ' in nice_name:
-                    nice_name = nice_name[0:nice_name.index(' ')]
+                nice_name = blast_record.query
 
-                
-                blast_gene.append({
-                    'gi_nos': gi_nos,
-                    'sbjct_length': alignment.length,
-                    'query_length': blast_record.query_length,
-                    'sbjct_range': (hsp.sbjct_start, hsp.sbjct_end),
-                    'query_range': (hsp.query_start, hsp.query_end),
-                    'name': nice_name,
-                    'evalue': hsp.expect,
-                    'identity': hsp.identities,
-                    'identity_percent': x,
-                    'hit_num': align_num,
-                    'iter_num': iter_num,
-                    'match_id': alignment.title.partition(">")[0]
-                })
-                
-                
+                if " " in nice_name:
+                    nice_name = nice_name[0 : nice_name.index(" ")]
+
+                blast_gene.append(
+                    {
+                        "gi_nos": gi_nos,
+                        "sbjct_length": alignment.length,
+                        "query_length": blast_record.query_length,
+                        "sbjct_range": (hsp.sbjct_start, hsp.sbjct_end),
+                        "query_range": (hsp.query_start, hsp.query_end),
+                        "name": nice_name,
+                        "evalue": hsp.expect,
+                        "identity": hsp.identities,
+                        "identity_percent": x,
+                        "hit_num": align_num,
+                        "iter_num": iter_num,
+                        "match_id": alignment.title.partition(">")[0],
+                    }
+                )
+
         blast.append(blast_gene)
         totLen += len(blast_gene)
     log.debug("parse_blastxml %s -> %s", totLen + discarded_records, totLen)
@@ -84,7 +85,7 @@ def parse_gff(gff3):
     _rec = None
     for rec in GFF.parse(gff3):
         endBase = len(rec.seq)
-        
+
         _rec = rec
         _rec.annotations = {}
         for feat in feature_lambda(rec.features, test_true, {}, subfeatures=False):
@@ -94,17 +95,16 @@ def parse_gff(gff3):
                 else:
                     CDSname = feat.qualifiers["ID"]
                 gff_info[feat.id] = {
-                    'strand': feat.strand,
-                    'start': feat.location.start,
-                    'end': feat.location.end,
-                    'loc': feat.location,
-                    'feat': feat,
-                    'name': CDSname,
+                    "strand": feat.strand,
+                    "start": feat.location.start,
+                    "end": feat.location.end,
+                    "loc": feat.location,
+                    "feat": feat,
+                    "name": CDSname,
                 }
 
-   
-    gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
-    #endBase = 0
+    gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]["start"]))
+    # endBase = 0
     for i, feat_id in enumerate(gff_info):
         gff_info[feat_id].update({"index": i})
         if gff_info[feat_id]["loc"].end > endBase:
@@ -147,14 +147,13 @@ class IntronFinder(object):
         clusters = {}
         for gene in self.blast:
             for hit in gene:
-                if ' ' in hit['gi_nos']:
-                    hit['gi_nos'] = hit['gi_nos'][0:hit['gi_nos'].index(' ')]
-                
-                nameCheck = hit['gi_nos']
+                if " " in hit["gi_nos"]:
+                    hit["gi_nos"] = hit["gi_nos"][0 : hit["gi_nos"].index(" ")]
+
+                nameCheck = hit["gi_nos"]
                 if nameCheck == "":
-                  continue
+                    continue
                 name = hashlib.md5((nameCheck).encode()).hexdigest()
-                                
 
                 if name in clusters:
                     if hit not in clusters[name]:
@@ -163,7 +162,7 @@ class IntronFinder(object):
                     clusters[name] = [hit]
         log.debug("create_clusters %s -> %s", len(self.blast), len(clusters))
         self.clusters = filter_lone_clusters(clusters)
-        
+
     def check_strand(self):
         """ filters clusters for genes on the same strand """
         filtered_clusters = {}
@@ -181,11 +180,11 @@ class IntronFinder(object):
                 if len(pos_strand) > 1:
                     filtered_clusters[key + "_+1"] = pos_strand
                 if len(neg_strand) > 1:
-                    filtered_clusters[key + '_-1'] = neg_strand
-                    
+                    filtered_clusters[key + "_-1"] = neg_strand
+
         return filtered_clusters
 
-    def check_gene_gap(self, maximum = 10000):
+    def check_gene_gap(self, maximum=10000):
         filtered_clusters = {}
         for key in self.clusters:
             hits_lists = []
@@ -193,13 +192,28 @@ class IntronFinder(object):
             for gene in self.clusters[key]:
                 for hits in hits_lists:
                     for hit in hits:
-                        lastStart = max(self.gff_info[gene['name']]['start'], self.gff_info[hit['name']]['start'])
-                        lastEnd = max(self.gff_info[gene['name']]['end'], self.gff_info[hit['name']]['end'])
-                        firstEnd = min(self.gff_info[gene['name']]['end'], self.gff_info[hit['name']]['end'])
-                        firstStart = min(self.gff_info[gene['name']]['start'], self.gff_info[hit['name']]['start'])
-                        if (lastStart - firstEnd <= maximum or self.length - lastEnd + firstStart <= maximum): 
-                            hits.append(gene)  
-                            gene_added = True  
+                        lastStart = max(
+                            self.gff_info[gene["name"]]["start"],
+                            self.gff_info[hit["name"]]["start"],
+                        )
+                        lastEnd = max(
+                            self.gff_info[gene["name"]]["end"],
+                            self.gff_info[hit["name"]]["end"],
+                        )
+                        firstEnd = min(
+                            self.gff_info[gene["name"]]["end"],
+                            self.gff_info[hit["name"]]["end"],
+                        )
+                        firstStart = min(
+                            self.gff_info[gene["name"]]["start"],
+                            self.gff_info[hit["name"]]["start"],
+                        )
+                        if (
+                            lastStart - firstEnd <= maximum
+                            or self.length - lastEnd + firstStart <= maximum
+                        ):
+                            hits.append(gene)
+                            gene_added = True
                             break
                 if not gene_added:
                     hits_lists.append([gene])
@@ -211,64 +225,71 @@ class IntronFinder(object):
         #   print(i)
         #  print(filtered_clusters[i])
         log.debug("check_gene_gap %s -> %s", len(self.clusters), len(filtered_clusters))
-        
-        return remove_duplicates(filtered_clusters)  # call remove_duplicates somewhere else?
+
+        return remove_duplicates(
+            filtered_clusters
+        )  # call remove_duplicates somewhere else?
 
     # maybe figure out how to merge with check_gene_gap?
     # def check_seq_gap():
 
     # also need a check for gap in sequence coverage?
-    def check_seq_overlap(self, minimum = -1):
+    def check_seq_overlap(self, minimum=-1):
         filtered_clusters = {}
         for key in self.clusters:
             add_cluster = True
             sbjct_ranges = []
             query_ranges = []
-            for gene in self.clusters[key]:               
-                sbjct_ranges.append(gene['sbjct_range'])
-                query_ranges.append(gene['query_range'])
+            for gene in self.clusters[key]:
+                sbjct_ranges.append(gene["sbjct_range"])
+                query_ranges.append(gene["query_range"])
 
             combinations = list(itertools.combinations(sbjct_ranges, 2))
-            
+
             for pair in combinations:
-                overlap = len(set(range(pair[0][0], pair[0][1])) & set(range(pair[1][0], pair[1][1])))
+                overlap = len(
+                    set(range(pair[0][0], pair[0][1]))
+                    & set(range(pair[1][0], pair[1][1]))
+                )
                 minPair = pair[0]
                 maxPair = pair[1]
-                
-                if minPair[0] > maxPair[0]:                
-                  minPair = pair[1]
-                  maxPair = pair[0]
+
+                if minPair[0] > maxPair[0]:
+                    minPair = pair[1]
+                    maxPair = pair[0]
                 elif minPair[0] == maxPair[0] and minPair[1] > maxPair[1]:
-                  minPair = pair[1]
-                  maxPair = pair[0]
+                    minPair = pair[1]
+                    maxPair = pair[0]
                 if overlap > 0:
-                  dist1 = maxPair[0] - minPair[0]
-                else:  
-                  dist1 = abs(maxPair[0] - minPair[1])
-                
+                    dist1 = maxPair[0] - minPair[0]
+                else:
+                    dist1 = abs(maxPair[0] - minPair[1])
+
                 if minimum < 0:
-                  if overlap > (minimum * -1):
-                    #print("Rejcting: Neg min but too much overlap: " + str(pair))
-                    add_cluster = False
+                    if overlap > (minimum * -1):
+                        # print("Rejcting: Neg min but too much overlap: " + str(pair))
+                        add_cluster = False
                 elif minimum == 0:
-                  if overlap > 0:
-                    #print("Rejcting: 0 min and overlap: " + str(pair))
-                    add_cluster = False
+                    if overlap > 0:
+                        # print("Rejcting: 0 min and overlap: " + str(pair))
+                        add_cluster = False
                 elif overlap > 0:
-                  #print("Rejcting: Pos min and overlap: " + str(pair))
-                  add_cluster = False
+                    # print("Rejcting: Pos min and overlap: " + str(pair))
+                    add_cluster = False
 
                 if (dist1 < minimum) and (minimum >= 0):
-                  #print("Rejcting: Dist failure: " + str(pair) + " D1: " + dist1)
-                  add_cluster = False
-                #if add_cluster:
-                  #print("Accepted: " + str(pair) + " D1: " + str(dist1) + " Ov: " + str(overlap))
+                    # print("Rejcting: Dist failure: " + str(pair) + " D1: " + dist1)
+                    add_cluster = False
+                # if add_cluster:
+                # print("Accepted: " + str(pair) + " D1: " + str(dist1) + " Ov: " + str(overlap))
             if add_cluster:
-                
+
                 filtered_clusters[key] = self.clusters[key]
-            
-        log.debug("check_seq_overlap %s -> %s", len(self.clusters), len(filtered_clusters))
-        #print(self.clusters)
+
+        log.debug(
+            "check_seq_overlap %s -> %s", len(self.clusters), len(filtered_clusters)
+        )
+        # print(self.clusters)
         return filtered_clusters
 
     def cluster_report(self):
@@ -324,26 +345,35 @@ class IntronFinder(object):
 
             evidence_notes = []
             for cluster_elem in clusters[cluster_id]:
-                note = '{name} had {ident}% identity to NCBI Protein ID {pretty_gi}'.format(
-                    pretty_gi=(cluster_elem['gi_nos']),
-                    ident=int(100 * float(cluster_elem['identity']) / abs(cluster_elem['query_range'][1] - cluster_elem['query_range'][0])),
+                note = "{name} had {ident}% identity to NCBI Protein ID {pretty_gi}".format(
+                    pretty_gi=(cluster_elem["gi_nos"]),
+                    ident=int(
+                        100
+                        * float(cluster_elem["identity"])
+                        / abs(
+                            cluster_elem["query_range"][1]
+                            - cluster_elem["query_range"][0]
+                        )
+                    ),
                     **cluster_elem
                 )
                 evidence_notes.append(note)
-            if gene_max - gene_min > .8 * float(self.length):
-              evidence_notes.append("Intron is over 80% of the total length of the genome, possible wraparound scenario")
+            if gene_max - gene_min > 0.8 * float(self.length):
+                evidence_notes.append(
+                    "Intron is over 80% of the total length of the genome, possible wraparound scenario"
+                )
             # With that we can create the top level gene
             gene = SeqFeature(
                 location=FeatureLocation(gene_min, gene_max),
                 type="gene",
                 id=cluster_id,
                 qualifiers={
-                    'ID': ['gp_%s' % cluster_idx],
-                    'Notes': evidence_notes,
-                    'intron_info': clusters[cluster_id][0]['match_id'],
-                }
+                    "ID": ["gp_%s" % cluster_idx],
+                    "Notes": evidence_notes,
+                    "intron_info": clusters[cluster_id][0]["match_id"],
+                },
             )
-             
+
             # Below that we have an mRNA
             mRNA = SeqFeature(
                 location=FeatureLocation(gene_min, gene_max),
@@ -361,25 +391,35 @@ class IntronFinder(object):
                 # Copy the CDS so we don't muck up a good one
                 cds = copy.copy(self.gff_info[gene_name]["feat"])
                 # Get the associated cluster element (used in the Notes above)
-                cluster_elem = [x for x in clusters[cluster_id] if x['name'] == gene_name][0]
-                
-                # Calculate %identity which we'll use to score
-                score = int(1000 * float(cluster_elem['identity']) / abs(cluster_elem['query_range'][1] - cluster_elem['query_range'][0]))
+                cluster_elem = [
+                    x for x in clusters[cluster_id] if x["name"] == gene_name
+                ][0]
 
-                tempLoc = FeatureLocation(cds.location.start + (3 * (cluster_elem['query_range'][0] - 1)),
-                                          cds.location.start + (3 * (cluster_elem['query_range'][1])),
-                                          cds.location.strand)
+                # Calculate %identity which we'll use to score
+                score = int(
+                    1000
+                    * float(cluster_elem["identity"])
+                    / abs(
+                        cluster_elem["query_range"][1] - cluster_elem["query_range"][0]
+                    )
+                )
+
+                tempLoc = FeatureLocation(
+                    cds.location.start + (3 * (cluster_elem["query_range"][0] - 1)),
+                    cds.location.start + (3 * (cluster_elem["query_range"][1])),
+                    cds.location.strand,
+                )
                 cds.location = tempLoc
                 # Set the qualifiers appropriately
                 cds.qualifiers = {
-                    'ID': ['gp_%s.CDS.%s' % (cluster_idx, idx)],
-                    'score': score,
-                    'Name': self.gff_info[gene_name]['name'],
-                    'evalue': cluster_elem['evalue'],
-                    'Identity': cluster_elem['identity_percent'] * 100,
-                     #'|'.join(cluster_elem['gi_nos']) + "| title goes here."
+                    "ID": ["gp_%s.CDS.%s" % (cluster_idx, idx)],
+                    "score": score,
+                    "Name": self.gff_info[gene_name]["name"],
+                    "evalue": cluster_elem["evalue"],
+                    "Identity": cluster_elem["identity_percent"] * 100,
+                    #'|'.join(cluster_elem['gi_nos']) + "| title goes here."
                 }
-                #cds.location.start = cds.location.start +
+                # cds.location.start = cds.location.start +
                 cdss.append(cds)
 
             # And we attach the things properly.
@@ -391,9 +431,9 @@ class IntronFinder(object):
 
     def output_xml(self, clusters):
         threeLevel = {}
-        #print((clusters.viewkeys()))
-        #print(type(enumerate(clusters)))
-        #print(type(clusters))
+        # print((clusters.viewkeys()))
+        # print(type(enumerate(clusters)))
+        # print(type(clusters))
         for cluster_idx, cluster_id in enumerate(clusters):
             # print(type(cluster_id))
             # print(type(cluster_idx))
@@ -408,21 +448,36 @@ class IntronFinder(object):
         # for x, idx in (enumerate(clusters)):#for hsp in hspList:
         #    print("In X")
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Intron detection')
-    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
-    parser.add_argument('blastp', type=argparse.FileType("r"), help='blast XML protein results')
-    parser.add_argument('--minimum', help='Gap minimum (Default -1, set to a negative number to allow overlap)', default = -1, type = int)
-    parser.add_argument('--maximum', help='Gap maximum in genome (Default 10000)', default = 10000, type = int)
-    parser.add_argument('--idThresh', help='ID Percent Threshold', default = .4, type = float)
-    
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Intron detection")
+    parser.add_argument("gff3", type=argparse.FileType("r"), help="GFF3 gene calls")
+    parser.add_argument(
+        "blastp", type=argparse.FileType("r"), help="blast XML protein results"
+    )
+    parser.add_argument(
+        "--minimum",
+        help="Gap minimum (Default -1, set to a negative number to allow overlap)",
+        default=-1,
+        type=int,
+    )
+    parser.add_argument(
+        "--maximum",
+        help="Gap maximum in genome (Default 10000)",
+        default=10000,
+        type=int,
+    )
+    parser.add_argument(
+        "--idThresh", help="ID Percent Threshold", default=0.4, type=float
+    )
+
     args = parser.parse_args()
-    
+
     threshCap = args.idThresh
     if threshCap > 1.00:
-      threshCap = 1.00
+        threshCap = 1.00
     if threshCap < 0:
-      threshCap = 0
+        threshCap = 0
 
     # create new IntronFinder object based on user input
     ifinder = IntronFinder(args.gff3, args.blastp, threshCap)

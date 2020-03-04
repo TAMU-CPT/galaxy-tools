@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+
 class Edge:
     def __init__(self, source, target, weight):
         """Load up a directed edge instance.
@@ -17,10 +18,11 @@ class Edge:
     def __repr__(self):
         """Compute the string representation of the edge."""
         return "%s(%s, %s, %s)" % (
-                self.__class__.__name__,
-                repr(self.source),
-                repr(self.target),
-                repr(self.weight))
+            self.__class__.__name__,
+            repr(self.source),
+            repr(self.target),
+            repr(self.weight),
+        )
 
     def __cmp__(self, other):
         """Comparing of edges (the weight first)."""

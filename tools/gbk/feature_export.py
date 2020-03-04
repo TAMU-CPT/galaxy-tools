@@ -64,7 +64,7 @@ def extract_features(
                 start = int(feature.location.start)
                 end = int(feature.location.end)
                 strand = feature.location.strand
-                
+
                 if n_bases_downstream != 0:
                     # If we want extra on the end we cannot listen to
                     # stop_stripping requests
@@ -94,39 +94,55 @@ def extract_features(
                 __seqs.append(feature)
                 # Downstream addition
                 if n_bases_downstream > 0:
-                    __seqs.append(SeqFeature(FeatureLocation(int(feature.location.end),
-                                                             end,
-                                                             strand=strand),
-                                             type='domain'))
-                
+                    __seqs.append(
+                        SeqFeature(
+                            FeatureLocation(
+                                int(feature.location.end), end, strand=strand
+                            ),
+                            type="domain",
+                        )
+                    )
+
                 rangeS = __seqs[0].location.start
                 rangeE = __seqs[0].location.end
                 for s in __seqs:
-                  if rangeS > s.location.start:
-                    rangeS = s.location.start
-                  if rangeE > s.location.end:
-                    rangeE = s.location.end
+                    if rangeS > s.location.start:
+                        rangeS = s.location.start
+                    if rangeE > s.location.end:
+                        rangeE = s.location.end
 
-                if 'codon_start' in feature.qualifiers:
-                  if strand > 0:
-                    rangeS += int(feature.qualifiers['codon_start'][0]) - 1
-                  else:
-                    rangeE -= int(feature.qualifiers['codon_start'][0]) - 1
+                if "codon_start" in feature.qualifiers:
+                    if strand > 0:
+                        rangeS += int(feature.qualifiers["codon_start"][0]) - 1
+                    else:
+                        rangeE -= int(feature.qualifiers["codon_start"][0]) - 1
 
                 if translate:
                     try:
-                      if strand > 0:
-                        retSeq = (record.seq[rangeS:rangeE]).translate(table=translation_table_id, cds=True)
-                      else:
-                        retSeq = (record.seq[rangeS:rangeE]).reverse_complement().translate(table=translation_table_id, cds=True)
+                        if strand > 0:
+                            retSeq = (record.seq[rangeS:rangeE]).translate(
+                                table=translation_table_id, cds=True
+                            )
+                        else:
+                            retSeq = (
+                                (record.seq[rangeS:rangeE])
+                                .reverse_complement()
+                                .translate(table=translation_table_id, cds=True)
+                            )
                     except Exception as bdct:
-                      if strand > 0:
-                        retSeq = (record.seq[rangeS:rangeE]).translate(table=translation_table_id, cds=False)
-                      else:
-                        retSeq = (record.seq[rangeS:rangeE]).reverse_complement().translate(table=translation_table_id, cds=False)
-                        log.warn("ERROR %s %s", get_id(feature), bdct)
-                    #extracted_seqs = []
-                    #for x in __seqs:
+                        if strand > 0:
+                            retSeq = (record.seq[rangeS:rangeE]).translate(
+                                table=translation_table_id, cds=False
+                            )
+                        else:
+                            retSeq = (
+                                (record.seq[rangeS:rangeE])
+                                .reverse_complement()
+                                .translate(table=translation_table_id, cds=False)
+                            )
+                            log.warn("ERROR %s %s", get_id(feature), bdct)
+                    # extracted_seqs = []
+                    # for x in __seqs:
                     #    try:
                     #        y = x.extract(record.seq).translate(table=translation_table_id, cds=True)
                     #        extracted_seqs.append(y)
@@ -135,11 +151,15 @@ def extract_features(
                     #        extracted_seqs.append(y)
                     #        log.warn("ERROR %s %s", get_id(x), bdct)
                 else:
-                    retSeq = (record.seq[rangeS:rangeE])
-                    #extracted_seqs = [x.extract(record.seq) for x in __seqs]
+                    retSeq = record.seq[rangeS:rangeE]
+                    # extracted_seqs = [x.extract(record.seq) for x in __seqs]
 
                 if informative:
-                    defline = (' %s [start=%s,end=%s]' % (','.join(feature.qualifiers.get('product', [])), start, end))
+                    defline = " %s [start=%s,end=%s]" % (
+                        ",".join(feature.qualifiers.get("product", [])),
+                        start,
+                        end,
+                    )
                 else:
                     defline = " [start=%s,end=%s]" % (start, end)
 
@@ -147,10 +167,16 @@ def extract_features(
                 if strip_stops:
                     if extracted_seq[-3:] in codon_table.stop_codons:
                         extracted_seq = extracted_seq[:-3]
-                    elif extracted_seq[-1:] in '*':
+                    elif extracted_seq[-1:] in "*":
                         extracted_seq = extracted_seq[:-1]
-                
-                yield [SeqRecord(Seq(extracted_seq.strip()), id=get_id(feature), description=defline)]
+
+                yield [
+                    SeqRecord(
+                        Seq(extracted_seq.strip()),
+                        id=get_id(feature),
+                        description=defline,
+                    )
+                ]
 
 
 if __name__ == "__main__":

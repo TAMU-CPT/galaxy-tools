@@ -25,7 +25,7 @@ def __update_feature_location(pos, parent, protein2dna):
 
     # print(start, end, ns, ne, st)
 
-    # Don't let start/stops be less than zero. 
+    # Don't let start/stops be less than zero.
     # Instead, we'll replace with %3 to try and keep it in the same reading
     # frame that it should be in.
     if new_pos < 0:
@@ -50,7 +50,7 @@ def rebase_wig(parent, wigData, protein2dna=False, map_by="ID"):
     current_id = None
     current_ft = None
     # We have to store in a giant array so we can overwrite safely and don't
-    # emit multiple values. 
+    # emit multiple values.
     values = numpy.empty(1000000)
 
     maxFtLoc = 0

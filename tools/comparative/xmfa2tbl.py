@@ -6,6 +6,7 @@ import argparse
 import logging
 import itertools
 from collections import Counter
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -24,18 +25,17 @@ def _id_tn_dict(sequences):
                     label_convert[str(i + 1)] = {"id": record.id, "len": len(record)}
                     continue
     # check for repeated sequence IDs
-    id_dupes = Counter(list(x['id'] for x in label_convert.values()))
+    id_dupes = Counter(list(x["id"] for x in label_convert.values()))
     for dupe in id_dupes:
         if id_dupes[dupe] > 1:
-            log.debug("Duplicate FASTA ID Found: %s\n"% (dupe))
+            log.debug("Duplicate FASTA ID Found: %s\n" % (dupe))
             for xmfaid in label_convert.keys():
                 # Change the duplicate labels to have the XMFA identifer
                 # as a prefix so not to break the table generation later
-                if label_convert[xmfaid]['id'] == dupe:
-                    label_convert[xmfaid]['id'] = "%s_%s" % (xmfaid, dupe)
+                if label_convert[xmfaid]["id"] == dupe:
+                    label_convert[xmfaid]["id"] = "%s_%s" % (xmfaid, dupe)
 
     return label_convert
-
 
 
 def total_similarity(xmfa_file, sequences=None, dice=False):

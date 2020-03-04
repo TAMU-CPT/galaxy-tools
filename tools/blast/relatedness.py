@@ -13,23 +13,23 @@ def parse_blast(blast):
     finalRes = []
     for line in blast:
         taxSplit = []
-        preTaxSplit = line.strip('\n').split('\t')
-        for tax in preTaxSplit[-1].split(';'):
-          shallowCopy = []
-          for x in range(len(preTaxSplit)):
-            shallowCopy.append(preTaxSplit[x])
-          shallowCopy[-1] = (tax)
-          res.append(shallowCopy)
+        preTaxSplit = line.strip("\n").split("\t")
+        for tax in preTaxSplit[-1].split(";"):
+            shallowCopy = []
+            for x in range(len(preTaxSplit)):
+                shallowCopy.append(preTaxSplit[x])
+            shallowCopy[-1] = tax
+            res.append(shallowCopy)
     for line in res:
-        for access in line[6].split(';'):
-          shallowCopy = []
-          for x in range(len(line)):
-            shallowCopy.append(line[x])
-          shallowCopy[6] = access
-          finalRes.append(shallowCopy)
-    #for x in finalRes:
+        for access in line[6].split(";"):
+            shallowCopy = []
+            for x in range(len(line)):
+                shallowCopy.append(line[x])
+            shallowCopy[6] = access
+            finalRes.append(shallowCopy)
+    # for x in finalRes:
     #  print(x)
-    #exit()  
+    # exit()
     return finalRes
 
 
@@ -40,43 +40,55 @@ def add_dice(blast):
         res.append(data + [dice])
     return res
 
-    
 
 def make_num(blast):
     res = []
     for data in blast:
-        res.append([data[0], int(data[1]), int(data[2]), int(data[3]), int(data[4]), data[5], data[6], (data[7])])
+        res.append(
+            [
+                data[0],
+                int(data[1]),
+                int(data[2]),
+                int(data[3]),
+                int(data[4]),
+                data[5],
+                data[6],
+                (data[7]),
+            ]
+        )
     return res
+
 
 def bundle_dice(blast):
     res = []
     ind = 0
     seen = {}
-    
+
     for x in blast:
-      if (x[6] + '_' + (x[7])) in seen.keys():
-        res[seen[(x[6] + '_' + (x[7]))]][1] += x[1]
-        res[seen[(x[6] + '_' + (x[7]))]][2] += x[2]
-        res[seen[(x[6] + '_' + (x[7]))]][8] += x[8]
-        res[seen[(x[6] + '_' + (x[7]))]][9] += 1 # Num HSPs
-      else:
-        seen[(x[6] + '_' + (x[7]))] = ind
-        shallowCopy = []
-        for i in range(len(x)):
-          shallowCopy.append(x[i])
-        shallowCopy.append(1)
-        #print(shallowCopy)
-        res.append(shallowCopy)
-        ind += 1
-    #print(seen)
-    #stop = 0
-    #for i in res:
+        if (x[6] + "_" + (x[7])) in seen.keys():
+            res[seen[(x[6] + "_" + (x[7]))]][1] += x[1]
+            res[seen[(x[6] + "_" + (x[7]))]][2] += x[2]
+            res[seen[(x[6] + "_" + (x[7]))]][8] += x[8]
+            res[seen[(x[6] + "_" + (x[7]))]][9] += 1  # Num HSPs
+        else:
+            seen[(x[6] + "_" + (x[7]))] = ind
+            shallowCopy = []
+            for i in range(len(x)):
+                shallowCopy.append(x[i])
+            shallowCopy.append(1)
+            # print(shallowCopy)
+            res.append(shallowCopy)
+            ind += 1
+    # print(seen)
+    # stop = 0
+    # for i in res:
     #  print(i)
     #  stop += 1
     #  if stop > 7:
     #    exit()
     return res
-        
+
+
 """def bundle_dice(blast):
     res = []
     ind = 0
@@ -92,6 +104,7 @@ def bundle_dice(blast):
         res.append(x + [1])
         ind += 1
     return res """
+
 
 def filter_dice(blast, threshold=0.5):
     for data in blast:
@@ -129,28 +142,25 @@ def split_identifiers_phage(par, ident):
 def important_only(blast, split_identifiers):
     for data in blast:
         yield [
-            data[0], # 01 Query Seq-id (ID of your sequence)
-            data[1], # 13 All subject Seq-id(s), separated by a ';'
-            split_identifiers(data[1], data[2]),  # 25 All subject title(s), separated by a '<>'
-            data[3].split(";"), # Extra: All Subject Accessions
-            data[4].split(";"), # Extra: All TaxIDs
+            data[0],  # 01 Query Seq-id (ID of your sequence)
+            data[1],  # 13 All subject Seq-id(s), separated by a ';'
+            split_identifiers(
+                data[1], data[2]
+            ),  # 25 All subject title(s), separated by a '<>'
+            data[3].split(";"),  # Extra: All Subject Accessions
+            data[4].split(";"),  # Extra: All TaxIDs
         ]
 
 
 def deform_scores(blast):
     for data in blast:
         for org in data[2]:
-            yield [
-                data[0],
-                data[1],
-                org,
-                data[3],
-                data[4]
-            ]
+            yield [data[0], data[1], org, data[3], data[4]]
+
 
 def expand_taxIDs(blast):
     for data in blast:
-        #if(len(data[4]) > 0):
+        # if(len(data[4]) > 0):
         #  print(data[0])
         for ID in data[7]:
             yield [
@@ -162,8 +172,9 @@ def expand_taxIDs(blast):
                 data[5],
                 data[6],
                 int(ID),
-                data[8]
+                data[8],
             ]
+
 
 def expand_titles(blast):
     for data in blast:
@@ -177,7 +188,7 @@ def expand_titles(blast):
                 title,
                 data[6],
                 data[7],
-                data[8]
+                data[8],
             ]
 
 
@@ -218,73 +229,90 @@ def scoreMap(blast):
     return c, m
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Top related genomes')
-    parser.add_argument('blast', type=argparse.FileType("r"), help='Blast 25 Column Results')
-    parser.add_argument('phagedb', type=argparse.FileType("r"))
-    parser.add_argument('--access', action='store_true')
-    parser.add_argument('--protein', action='store_true')
-    parser.add_argument('--canonical', action='store_true')
-    parser.add_argument('--hits', type = int, default = 5)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Top related genomes")
+    parser.add_argument(
+        "blast", type=argparse.FileType("r"), help="Blast 25 Column Results"
+    )
+    parser.add_argument("phagedb", type=argparse.FileType("r"))
+    parser.add_argument("--access", action="store_true")
+    parser.add_argument("--protein", action="store_true")
+    parser.add_argument("--canonical", action="store_true")
+    parser.add_argument("--hits", type=int, default=5)
 
     args = parser.parse_args()
 
     phageDb = args.phagedb
-    phageTaxLookup =[]
+    phageTaxLookup = []
     line = phageDb.readline()
     while line:
-      phageTaxLookup.append(int(line))
-      line = phageDb.readline()
-    
+        phageTaxLookup.append(int(line))
+        line = phageDb.readline()
+
     if args.protein:
         splitId = split_identifiers_prot
-        #phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
+        # phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
     elif args.canonical:
         splitId = split_identifiers_phage
-        #phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
+        # phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
     else:
         splitId = split_identifiers_nucl
-        #phageNameLookup = {k['desc'].rstrip('.'): k['id'] for k in phageDb}
+        # phageNameLookup = {k['desc'].rstrip('.'): k['id'] for k in phageDb}
 
-    data = [] # Reformatting to list rather than generator
+    data = []  # Reformatting to list rather than generator
 
     data = parse_blast(args.blast)
     data = make_num(data)
     data = add_dice(data)
     data = bundle_dice(data)
-    #data = filter_dice(data, threshold=0.0)
-    #data = important_only(data, splitId)
-    
-    #data = expand_taxIDs(data)
-    #data = deform_scores(data)
+    # data = filter_dice(data, threshold=0.0)
+    # data = important_only(data, splitId)
+
+    # data = expand_taxIDs(data)
+    # data = deform_scores(data)
     data = filter_phage(data, phageTaxLookup)
-    #data = expand_titles(data)
+    # data = expand_titles(data)
 
     if args.protein or args.canonical:
         data = remove_dupes(data)  # Probably obsolete, bundle dice should do this
         count_label = "Similar Unique Proteins"
     else:
         count_label = "Nucleotide Hits"
-    #data = with_dice(data)
-    data.sort(key = lambda data: -data[8])
-    #counts, accessions = scoreMap(data)
-    
+    # data = with_dice(data)
+    data.sort(key=lambda data: -data[8])
+    # counts, accessions = scoreMap(data)
+
     if args.access:
-      sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\t\n' % (args.hits, data[0][0]))
-      sys.stdout.write('TaxID\tName\tAccessions\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n')
-      ind = 0
-      for out in data:
-        if ind >= args.hits:
-            break
-        ind += 1
-        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%s\t%.4f\n' % (out[7], out[5], out[6], out[4], out[9], out[2], out[8]))
+        sys.stdout.write(
+            "Top %d matches for BLASTn results of %s\t\t\t\t\t\t\n"
+            % (args.hits, data[0][0])
+        )
+        sys.stdout.write(
+            "TaxID\tName\tAccessions\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"
+        )
+        ind = 0
+        for out in data:
+            if ind >= args.hits:
+                break
+            ind += 1
+            sys.stdout.write(
+                "%s\t%s\t%s\t%s\t%s\t%s\t%.4f\n"
+                % (out[7], out[5], out[6], out[4], out[9], out[2], out[8])
+            )
     else:
-      sys.stdout.write('Top %d matches for BLASTn results of %s\t\t\t\t\t\n' % (args.hits, data[0][0]))
-      sys.stdout.write('TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n')
-      ind = 0
-      for out in data:
-        if ind >= args.hits:
-            break
-        ind += 1
-        sys.stdout.write('%s\t%s\t%s\t%s\t%s\t%.4f\n' % (out[7], out[5], out[4], out[9], out[1], out[8]))
-    
+        sys.stdout.write(
+            "Top %d matches for BLASTn results of %s\t\t\t\t\t\n"
+            % (args.hits, data[0][0])
+        )
+        sys.stdout.write(
+            "TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"
+        )
+        ind = 0
+        for out in data:
+            if ind >= args.hits:
+                break
+            ind += 1
+            sys.stdout.write(
+                "%s\t%s\t%s\t%s\t%s\t%.4f\n"
+                % (out[7], out[5], out[4], out[9], out[1], out[8])
+            )

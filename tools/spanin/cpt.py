@@ -5,48 +5,50 @@ from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
 from Bio.Data import CodonTable
 import logging
+
 logging.basicConfig()
 log = logging.getLogger()
 
-PHAGE_IN_MIDDLE = re.compile('^(?P<host>.*)\s*phage (?P<phage>.*)$')
-BACTERIOPHAGE_IN_MIDDLE = re.compile('^(?P<host>.*)\s*bacteriophage (?P<phage>.*)$')
-STARTS_WITH_PHAGE = re.compile('^(bacterio|vibrio|Bacterio|Vibrio|)?[Pp]hage (?P<phage>.*)$')
-NEW_STYLE_NAMES = re.compile('(?P<phage>v[A-Z]_[A-Z][a-z]{2}_.*)')
+PHAGE_IN_MIDDLE = re.compile("^(?P<host>.*)\s*phage (?P<phage>.*)$")
+BACTERIOPHAGE_IN_MIDDLE = re.compile("^(?P<host>.*)\s*bacteriophage (?P<phage>.*)$")
+STARTS_WITH_PHAGE = re.compile(
+    "^(bacterio|vibrio|Bacterio|Vibrio|)?[Pp]hage (?P<phage>.*)$"
+)
+NEW_STYLE_NAMES = re.compile("(?P<phage>v[A-Z]_[A-Z][a-z]{2}_.*)")
 
 
 def phage_name_parser(name):
     host = None
     phage = None
-    name = name.replace(', complete genome.', '')
-    name = name.replace(', complete genome', '')
+    name = name.replace(", complete genome.", "")
+    name = name.replace(", complete genome", "")
 
     m = BACTERIOPHAGE_IN_MIDDLE.match(name)
     if m:
-        host = m.group('host')
-        phage = m.group('phage')
+        host = m.group("host")
+        phage = m.group("phage")
         return (host, phage)
 
     m = PHAGE_IN_MIDDLE.match(name)
     if m:
-        host = m.group('host')
-        phage = m.group('phage')
+        host = m.group("host")
+        phage = m.group("phage")
         return (host, phage)
 
     m = STARTS_WITH_PHAGE.match(name)
     if m:
-        phage = m.group('phage')
+        phage = m.group("phage")
         return (host, phage)
 
     m = NEW_STYLE_NAMES.match(name)
     if m:
-        phage = m.group('phage')
+        phage = m.group("phage")
         return (host, phage)
 
     return (host, phage)
 
 
 class OrfFinder(object):
-
     def __init__(self, table, ftype, ends, min_len, strand):
         self.table = table
         self.table_obj = CodonTable.ambiguous_generic_by_id[table]
@@ -66,14 +68,22 @@ class OrfFinder(object):
 
         out_count = 0
 
-        out_gff3.write('##gff-version 3\n')
+        out_gff3.write("##gff-version 3\n")
 
         for idx, record in enumerate(SeqIO.parse(fasta_file, seq_format)):
-            for i, (f_start, f_end, f_strand, n, t) in enumerate(self.get_all_peptides(str(record.seq).upper())):
+            for i, (f_start, f_end, f_strand, n, t) in enumerate(
+                self.get_all_peptides(str(record.seq).upper())
+            ):
                 out_count += 1
 
-                descr = "length %i aa, %i bp, from %s..%s[%s] of %s" \
-                        % (len(t), len(n), f_start, f_end, f_strand, record.description)
+                descr = "length %i aa, %i bp, from %s..%s[%s] of %s" % (
+                    len(t),
+                    len(n),
+                    f_start,
+                    f_end,
+                    f_strand,
+                    record.description,
+                )
                 fid = record.id + "|%s%i" % (self.ftype, i + 1)
 
                 r = SeqRecord(Seq(n), id=fid, name="", description=descr)
@@ -82,14 +92,34 @@ class OrfFinder(object):
                 SeqIO.write(r, out_nuc, "fasta")
                 SeqIO.write(t, out_prot, "fasta")
 
-                nice_strand = '+' if f_strand == +1 else '-'
+                nice_strand = "+" if f_strand == +1 else "-"
 
-                out_bed.write('\t'.join(map(str, [
-                    record.id, f_start, f_end, fid, 0, nice_strand])) + '\n')
+                out_bed.write(
+                    "\t".join(
+                        map(str, [record.id, f_start, f_end, fid, 0, nice_strand])
+                    )
+                    + "\n"
+                )
 
-                out_gff3.write('\t'.join(map(str, [
-                    record.id, 'getOrfsOrCds', 'CDS', f_start + 1, f_end, '.',
-                    nice_strand, 0, 'ID=%s.%s.%s' % (self.ftype, idx, i + 1)])) + '\n')
+                out_gff3.write(
+                    "\t".join(
+                        map(
+                            str,
+                            [
+                                record.id,
+                                "getOrfsOrCds",
+                                "CDS",
+                                f_start + 1,
+                                f_end,
+                                ".",
+                                nice_strand,
+                                0,
+                                "ID=%s.%s.%s" % (self.ftype, idx, i + 1),
+                            ],
+                        )
+                    )
+                    + "\n"
+                )
         log.info("Found %i %ss", out_count, self.ftype)
 
     def start_chop_and_trans(self, s, strict=True):
@@ -167,7 +197,6 @@ class OrfFinder(object):
 
 
 class MGAFinder(object):
-
     def __init__(self, table, ftype, ends, min_len):
         self.table = table
         self.table_obj = CodonTable.ambiguous_generic_by_id[table]
@@ -186,14 +215,22 @@ class MGAFinder(object):
 
         out_count = 0
 
-        out_gff3.write('##gff-version 3\n')
+        out_gff3.write("##gff-version 3\n")
 
         for idx, record in enumerate(SeqIO.parse(fasta_file, seq_format)):
-            for i, (f_start, f_end, f_strand, n, t) in enumerate(self.get_all_peptides(str(record.seq).upper())):
+            for i, (f_start, f_end, f_strand, n, t) in enumerate(
+                self.get_all_peptides(str(record.seq).upper())
+            ):
                 out_count += 1
 
-                descr = "length %i aa, %i bp, from %s..%s[%s] of %s" \
-                        % (len(t), len(n), f_start, f_end, f_strand, record.description)
+                descr = "length %i aa, %i bp, from %s..%s[%s] of %s" % (
+                    len(t),
+                    len(n),
+                    f_start,
+                    f_end,
+                    f_strand,
+                    record.description,
+                )
                 fid = record.id + "|%s%i" % (self.ftype, i + 1)
 
                 r = SeqRecord(Seq(n), id=fid, name="", description=descr)
@@ -202,14 +239,34 @@ class MGAFinder(object):
                 SeqIO.write(r, out_nuc, "fasta")
                 SeqIO.write(t, out_prot, "fasta")
 
-                nice_strand = '+' if f_strand == +1 else '-'
+                nice_strand = "+" if f_strand == +1 else "-"
 
-                out_bed.write('\t'.join(map(str, [
-                    record.id, f_start, f_end, fid, 0, nice_strand])) + '\n')
+                out_bed.write(
+                    "\t".join(
+                        map(str, [record.id, f_start, f_end, fid, 0, nice_strand])
+                    )
+                    + "\n"
+                )
 
-                out_gff3.write('\t'.join(map(str, [
-                    record.id, 'getOrfsOrCds', 'CDS', f_start + 1, f_end, '.',
-                    nice_strand, 0, 'ID=%s.%s.%s' % (self.ftype, idx, i + 1)])) + '\n')
+                out_gff3.write(
+                    "\t".join(
+                        map(
+                            str,
+                            [
+                                record.id,
+                                "getOrfsOrCds",
+                                "CDS",
+                                f_start + 1,
+                                f_end,
+                                ".",
+                                nice_strand,
+                                0,
+                                "ID=%s.%s.%s" % (self.ftype, idx, i + 1),
+                            ],
+                        )
+                    )
+                    + "\n"
+                )
         log.info("Found %i %ss", out_count, self.ftype)
 
     def start_chop_and_trans(self, s, strict=True):

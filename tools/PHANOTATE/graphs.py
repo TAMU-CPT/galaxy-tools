@@ -41,7 +41,7 @@ class Graph(dict):
     def e(self):
         """Return the number of edges in O(V) time."""
         edges = sum(len(self[node]) for node in self)
-        return (edges if self.is_directed() else edges / 2)
+        return edges if self.is_directed() else edges / 2
 
     def add_node(self, node):
         """Add a node to the graph."""
@@ -51,7 +51,7 @@ class Graph(dict):
     def has_node(self, node):
         """Test if a node exists."""
         return node in self
-    
+
     def del_node(self, node):
         """Remove a node from the graph (with edges)."""
         # The dictionary changes size during iteration.
@@ -65,7 +65,9 @@ class Graph(dict):
     def add_edge(self, edge):
         """Add an edge to the graph (missing nodes are created)."""
         if edge.source == edge.target:
-            raise ValueError("loops are forbidden:"+str(edge.source)+" "+str(edge.target))
+            raise ValueError(
+                "loops are forbidden:" + str(edge.source) + " " + str(edge.target)
+            )
         self.add_node(edge.source)
         self.add_node(edge.target)
         if edge.target not in self[edge.source]:
@@ -110,7 +112,7 @@ class Graph(dict):
 
     def iterinedges(self, source):
         """Generate the inedges from the graph on demand."""
-        if self.is_directed():   # O(V) time
+        if self.is_directed():  # O(V) time
             for target in self.iternodes():
                 if source in self[target]:
                     yield self[target][source]
@@ -128,7 +130,9 @@ class Graph(dict):
     def show(self):
         """The graph presentation."""
         for source in self.iternodes():
-            print(source, ":",)
+            print(
+                source, ":",
+            )
             for edge in self.iteroutedges(source):
                 if edge.weight == 1:
                     print(edge.target,)
@@ -164,33 +168,33 @@ class Graph(dict):
 
     def indegree(self, source):
         """Return the indegree of the node."""
-        if self.is_directed():   # O(V) time
+        if self.is_directed():  # O(V) time
             counter = 0
             for target in self.iternodes():
                 if source in self[target]:
                     counter = counter + 1
             return counter
-        else:                   # O(1) time
+        else:  # O(1) time
             return len(self[source])
 
     def __eq__(self, other):
         """Test if the graphs are equal."""
         if self.is_directed() is not other.is_directed():
-            #print "directed and undirected graphs"
+            # print "directed and undirected graphs"
             return False
         if self.v() != other.v():
-            #print "|V1| != |V2|"
+            # print "|V1| != |V2|"
             return False
-        for node in self.iternodes():   # O(V) time
+        for node in self.iternodes():  # O(V) time
             if not other.has_node(node):
-                #print "V1 != V2"
+                # print "V1 != V2"
                 return False
-        if self.e() != other.e():   # inefficient, O(E) time
-            #print "|E1| != |E2|"
+        if self.e() != other.e():  # inefficient, O(E) time
+            # print "|E1| != |E2|"
             return False
-        for edge in self.iteredges():   # O(E) time
+        for edge in self.iteredges():  # O(E) time
             if not other.has_edge(edge):
-                #print "E1 != E2"
+                # print "E1 != E2"
                 return False
             if edge.weight != other.weight(edge):
                 return False
@@ -239,11 +243,11 @@ class Graph(dict):
                     is_directed = True
                 elif "# V=" in line:
                     n = int(line[4:-1])
-                else:   # ignore other
+                else:  # ignore other
                     graph = cls(n, is_directed)
             else:
-                #alist = [int(x) for x in line.split()]
-                #alist = [eval(x) for x in line.split()]
+                # alist = [int(x) for x in line.split()]
+                # alist = [eval(x) for x in line.split()]
                 alist = line.split()
                 if len(alist) == 3:
                     alist[-1] = eval(alist[-1])
@@ -276,5 +280,6 @@ class Graph(dict):
                 elif edge.source < edge.target:
                     afile.write("%s %s\n" % (edge.target, edge.weight))
         afile.close()
+
 
 # EOF

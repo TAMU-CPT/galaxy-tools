@@ -112,13 +112,15 @@ def renumber_genes(
             f_processed = []
             for gene in f_gene:
                 tag = [gene]
-                if gene.location.strand == 1: # Be strict on where to find starting RBS
+                if gene.location.strand == 1:  # Be strict on where to find starting RBS
                     geneComp = gene.location.start
                 else:
                     geneComp = gene.location.end
-                #find the gene's RBS feature
+                # find the gene's RBS feature
                 for rbs in [f for f in f_rbs if f not in f_processed]:
-                    if is_within(rbs, gene) and (rbs.location.start == geneComp or rbs.location.end == geneComp):
+                    if is_within(rbs, gene) and (
+                        rbs.location.start == geneComp or rbs.location.end == geneComp
+                    ):
                         tag.append(rbs)
                         f_processed.append(rbs)
                         break
@@ -179,13 +181,34 @@ def renumber_genes(
             # Update all features
             record.features = sorted(clean_features, key=lambda x: x.location.start)
             for rbs in [f for f in f_rbs if f not in f_processed]:
-              change_table.write(record.id + "\t" + rbs.type + ":" + (rbs.qualifiers['locus_tag'][0]) + "\t[Removed: RBS not within boundary of gene or did not share a boundary with a gene]\n")
+                change_table.write(
+                    record.id
+                    + "\t"
+                    + rbs.type
+                    + ":"
+                    + (rbs.qualifiers["locus_tag"][0])
+                    + "\t[Removed: RBS not within boundary of gene or did not share a boundary with a gene]\n"
+                )
             for feature in [f for f in f_sorted if f not in f_processed]:
-              if (feature.type == 'CDS'):
-                change_table.write(record.id + "\t" + feature.type + ":" + (feature.qualifiers['locus_tag'][0]) + "\t[Removed: CDS not within boundary of gene or did not share a boundary with a gene]\n")
-              else:
-                change_table.write(record.id + "\t" + feature.type + ":" + (feature.qualifiers['locus_tag'][0]) + "\t[Removed: Feature not within boundary of gene]\n")
-            change_table.write('\n'.join(delta) + '\n')
+                if feature.type == "CDS":
+                    change_table.write(
+                        record.id
+                        + "\t"
+                        + feature.type
+                        + ":"
+                        + (feature.qualifiers["locus_tag"][0])
+                        + "\t[Removed: CDS not within boundary of gene or did not share a boundary with a gene]\n"
+                    )
+                else:
+                    change_table.write(
+                        record.id
+                        + "\t"
+                        + feature.type
+                        + ":"
+                        + (feature.qualifiers["locus_tag"][0])
+                        + "\t[Removed: Feature not within boundary of gene]\n"
+                    )
+            change_table.write("\n".join(delta) + "\n")
 
             # Output
             yield record

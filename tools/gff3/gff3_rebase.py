@@ -106,14 +106,26 @@ def rebase(parent, child, interpro=False, protein2dna=False, map_by="ID"):
         GFF.write([rec], sys.stdout)
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
-    parser.add_argument('parent', type=argparse.FileType("r"), help='Parent GFF3 annotations')
-    parser.add_argument('child', type=argparse.FileType("r"), help='Child GFF3 annotations to rebase against parent')
-    parser.add_argument('--interpro', action='store_true',
-                        help='Interpro specific modifications')
-    parser.add_argument('--protein2dna', action='store_true',
-                        help='Map protein translated results to original DNA data')
-    parser.add_argument('--map_by', help='Map by key', default='ID')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="rebase gff3 features against parent locations", epilog=""
+    )
+    parser.add_argument(
+        "parent", type=argparse.FileType("r"), help="Parent GFF3 annotations"
+    )
+    parser.add_argument(
+        "child",
+        type=argparse.FileType("r"),
+        help="Child GFF3 annotations to rebase against parent",
+    )
+    parser.add_argument(
+        "--interpro", action="store_true", help="Interpro specific modifications"
+    )
+    parser.add_argument(
+        "--protein2dna",
+        action="store_true",
+        help="Map protein translated results to original DNA data",
+    )
+    parser.add_argument("--map_by", help="Map by key", default="ID")
     args = parser.parse_args()
     rebase(**vars(args))
