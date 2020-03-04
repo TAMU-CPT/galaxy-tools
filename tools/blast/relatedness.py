@@ -14,15 +14,22 @@ def parse_blast(blast):
         taxSplit = []
         preTaxSplit = line.strip('\n').split('\t')
         for tax in preTaxSplit[-1].split(';'):
-          taxSplit.append(preTaxSplit)
-          taxSplit[-1][-1] = tax
-          res.append(taxSplit[-1])
+          shallowCopy = []
+          for x in range(len(preTaxSplit)):
+            shallowCopy.append(preTaxSplit[x])
+          shallowCopy[-1] = (tax)
+          res.append(shallowCopy)
     for line in res:
-        shallowCopy = line
         for access in line[6].split(';'):
+          shallowCopy = []
+          for x in range(len(line)):
+            shallowCopy.append(line[x])
           shallowCopy[6] = access
-          finalRes.append(shallowCopy)  
-    return res
+          finalRes.append(shallowCopy)
+    #for x in finalRes:
+    #  print(x)
+    #exit()  
+    return finalRes
 
 
 def add_dice(blast):
@@ -37,23 +44,36 @@ def add_dice(blast):
 def make_num(blast):
     res = []
     for data in blast:
-        res.append([data[0], int(data[1]), int(data[2]), int(data[3]), int(data[4]), data[5], data[6], int(data[7])])
+        res.append([data[0], int(data[1]), int(data[2]), int(data[3]), int(data[4]), data[5], data[6], (data[7])])
     return res
 
 def bundle_dice(blast):
     res = []
     ind = 0
     seen = {}
+    
     for x in blast:
-      if (x[0] + x[6]) in seen.keys():
-        res[seen[(x[0] + x[6])]][1] += x[1]
-        res[seen[(x[0] + x[6])]][2] += x[2]
-        res[seen[(x[0] + x[6])]][8] += x[8]
-        res[seen[(x[0] + x[6])]][9] += 1 # Num HSPs
+      if (x[6] + '_' + (x[7])) in seen.keys():
+        res[seen[(x[6] + '_' + (x[7]))]][1] += x[1]
+        res[seen[(x[6] + '_' + (x[7]))]][2] += x[2]
+        res[seen[(x[6] + '_' + (x[7]))]][8] += x[8]
+        res[seen[(x[6] + '_' + (x[7]))]][9] += 1 # Num HSPs
       else:
-        seen[(x[0] + x[6])] = ind
-        res.append(x + [1])
+        seen[(x[6] + '_' + (x[7]))] = ind
+        shallowCopy = []
+        for i in range(len(x)):
+          shallowCopy.append(x[i])
+        shallowCopy.append(1)
+        #print(shallowCopy)
+        res.append(shallowCopy)
         ind += 1
+    #print(seen)
+    #stop = 0
+    #for i in res:
+    #  print(i)
+    #  stop += 1
+    #  if stop > 7:
+    #    exit()
     return res
         
 """def bundle_dice(blast):
@@ -173,7 +193,7 @@ def remove_dupes(data):
     res = []
     for row in data:
         # qseqid, sseqid
-        key = (row[0], row[5])
+        key = (row[0], row[6], row[7])
         # If we've seen the key before, we can exit
         if key in has_seen:
             continue
