@@ -10,6 +10,7 @@ import json
 import argparse
 from Bio import SeqIO
 from BCBio import GFF
+##import gffutils
 from webapollo import WAAuth, WebApolloInstance, CnOrGuess, GuessCn
 
 
@@ -38,24 +39,66 @@ def export(org_cn, seqs):
             wa.io.write(exportAllSequences=True, sequences=[], **kwargs).encode("utf-8")
         )
 
+    
+
     # Seek back to start
     data.seek(0)
+    #print(type(data))
+    #print(dir(data))
+    #print(data.getvalue())
+    #exit()
 
-    records = list(GFF.parse(data))
-    if len(records) == 0:
-        print(
-            "Could not find any sequences or annotations for this organism + reference sequence"
-        )
-        sys.exit(2)
+    if args.gff:
+      mode = 0
+    elif args.fasta:
+      mode = -1
     else:
-        for record in records:
-            record.annotations = {}
-            record.features = sorted(record.features, key=lambda x: x.location.start)
-            if args.gff:
-                GFF.write([record], args.gff)
-            record.description = ""
-            if args.fasta:
-                SeqIO.write([record], args.fasta, "fasta")
+      return org_data
+
+    line = data.readline()
+    while line:
+      if line[0:7] == '##FASTA':
+        if args.fasta:
+          mode = 1
+        else:
+          return org_data
+        line = data.readline()
+        args.fasta.write(line + '\n')
+        line = data.readline()
+      elif (line [0:3] == '###'):
+        line = data.readline() # continue
+      elif mode == 0:          
+        args.gff.write(line + '\n')
+        line = data.readline()
+      elif mode == 1:
+        args.fasta.write(line + '\n')
+        line = data.readline()
+      elif mode == -1:
+        line = data.readline()
+      else:
+        print("Unaccounted for line: " + line)
+        line = data.readline()
+
+    #records = list(GFF.parse(data))
+##    db = gffutils.create_db(data, dbfn='temp.db', force=True, keep_order=True,merge_strategy='merge', sort_attribute_values=True)
+##    db2 = gffutils.FeatureDB('temp.db', keep_order=True)
+    if False == True:
+        print("Could not find any sequences or annotations for this organism + reference sequence")
+        sys.exit(2)
+##    else:
+        #for record in records:
+        #    record.annotations = {}
+        #    record.features = sorted(record.features, key=lambda x: x.location.start)
+##            if args.gff:
+##              for y in db2.directives:
+##                args.gff.write('##' + y +'\n')
+##              for x in db2.all_features():
+##                args.gff.write(x + '\n')
+                #args.gff.writeGFF.write([record], args.gff)
+            #record.description = ""
+##            if args.fasta:
+                
+##                args.fasta.write([record], args.fasta, 'fasta')
 
     return org_data
 

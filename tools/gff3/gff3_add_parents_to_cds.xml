@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gff3.cdsParents" name="GFF3 Add Gene to CDS" version="1.0">
+<tool id="edu.tamu.cpt.gff3.cdsParents" name="GFF3 Add Gene to CDS" version="19.1.0.0">
   <description>is one step of fixing a gene model--adding parent gene features to CDSs</description>
   <macros>
     <import>macros.xml</import>

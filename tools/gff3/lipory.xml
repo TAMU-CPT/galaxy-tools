@@ -1,10 +1,13 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.fasta.lipory" name="Identify Lipoboxes" version="1.1">
+<tool id="edu.tamu.cpt.fasta.lipory" name="Identify Lipoboxes" version="19.1.0.0">
   <description> in protein sequences</description>
   <macros>
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
   </macros>
+  <expand macro="requirements">
+    <requirement type="package" version="2019.06.08">regex</requirement>
+  </expand>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[lipory.py
 $positional_1
 $positional_2
@@ -37,16 +40,19 @@ Identifies possible LipoBoxes from an input GFF3 and FASTA.
 
 **How it works**
 
-Searches in the first 10-60 amino acids of an input protein sequence using regular expressions 
+Searches in the first 10-40 amino acids of an input protein sequence using regular expressions 
 for a 4-amino acid motif based on the consensus sequences described in (**Babu** et al. 2006. *J 
 Bacteriol.* 188(8):2761-2773 and **Kongari** *et al.* 2018 *BMC Bioinformatics*. 19:326). The 
 amino acids allowed here are relaxed to allow for the diversity of amino acids known to occur in lipoboxes.
 
 Position 1: ACGSILMFTV
+
 Position 2: any residue except REKD
+
 Position 3: GASNL
+
 Position 4: C
 
       ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>

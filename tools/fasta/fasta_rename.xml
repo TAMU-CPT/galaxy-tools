@@ -45,5 +45,5 @@ This tool would let you rename the sequence something sensible like "phage_bob":
     >renamed  [Orig=some-long-description]
     ACTG
 ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>

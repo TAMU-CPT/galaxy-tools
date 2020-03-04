@@ -2,7 +2,7 @@
 import sys
 import argparse
 import logging
-from intervaltree import IntervalTree
+from intervaltree import IntervalTree, Interval
 from Bio import SeqIO
 from BCBio import GFF
 

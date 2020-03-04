@@ -1,37 +1,45 @@
 <?xml version="1.1"?>
-<tool id="edu.tamu.cpt2.phage.intron_detection" name="Intron Detection" version="2.2">
+<tool id="edu.tamu.cpt2.phage.intron_detection" name="Intron Detection" version="19.1.0.0">
   <description>based on nearby protein blast results</description>
   <macros>
     <import>macros.xml</import>
 		<import>cpt-macros.xml</import>
   </macros>
-  <expand macro="requirements"/>
+  <requirements>
+        <requirement type="package" version="2.7">python</requirement>
+	<requirement type="package" version="1.74">biopython</requirement>
+	<requirement type="package" version="0.6.4">bcbiogff</requirement>
+  </requirements>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/intron_detection.py
 
 "$gff3_data"
 "$blast"
 --minimum $minimum
---svg "$svg"
-
+--maximum $maximum
+--idThresh $idThresh
 > $output]]></command>
   <inputs>
     <expand macro="gff3_input" />
     <param label="Blastp Results" name="blast" type="data" format="blastxml"/>
-    <param label="Separation Minimum" name="minimum" type="integer" value="0"
-        help="Minimum distance a CDS pair must be separated by to detect an intron. Set to a negative number to instead allow CDS to overlap by up to that many bases."/>
+    <param label="Separation Minimum" name="minimum" type="text" value="-1"
+        help="Minimum number of amino acids a CDS pair must be separated by to detect an intron. Set to a negative number to instead allow CDS to overlap by up to that many AAs."/>
+    <param label="Separation Maximum" name="maximum" type="integer" value="10000"
+        help="Maximum number of bases a CDS pair may be separated by to detect an intron (eg, distance from end of 1 cds to the start of another)."/>
+    <param label="Percent Identity Threshold" name="idThresh" type="float" value=".30"
+        help="Minimum Identity Percentage for HSP to be considered for intron comparison (0.00 to 1.00)"/>
   </inputs>
   <outputs>
     <data format="gff3" name="output" label="Putative introns"/>
-    <data format="svg" name="svg" label="Putative introns (SVG)"/>
   </outputs>
   <help><![CDATA[
 **What it does**
 
 This tool parses BLAST XML results and returns potential intron regions by 
-identifying query proteins (within 10 genes of each other in the genome) with 
-BLAST hits to the same target protein. The list of hits is returned as a gff3.
+identifying query proteins with BLAST hits to the same target protein within 
+the maximum number of bases set above. This distance will also wraparound the 
+ends of the genome. The list of hits is returned as a gff3.
 
       ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>

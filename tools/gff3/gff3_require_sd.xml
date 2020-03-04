@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.gff3.require_sd" name="Gff3 Filter: Require SD" version="1.2">
+<tool id="edu.tamu.cpt.gff3.require_sd" name="Gff3 Filter: Require SD" version="19.1.0.0">
   <description>ensures CDSs have an SD</description>
   <macros>
     <import>macros.xml</import>

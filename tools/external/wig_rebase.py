@@ -18,7 +18,6 @@ def __update_feature_location(pos, parent, protein2dna):
         if parent.strand > 0:
             pos -= 3
 
-    # print(start, end, parent.location.start, parent.location.end)
     if parent.strand >= 0:
         new_pos = parent.start + pos
     else:
@@ -26,10 +25,7 @@ def __update_feature_location(pos, parent, protein2dna):
 
     # print(start, end, ns, ne, st)
 
-    # Don't let start/stops be less than zero. It's technically valid for them
-    # to be (at least in the model I'm working with) but it causes numerous
-    # issues.
-    #
+    # Don't let start/stops be less than zero. 
     # Instead, we'll replace with %3 to try and keep it in the same reading
     # frame that it should be in.
     if new_pos < 0:
@@ -54,7 +50,7 @@ def rebase_wig(parent, wigData, protein2dna=False, map_by="ID"):
     current_id = None
     current_ft = None
     # We have to store in a giant array so we can overwrite safely and don't
-    # emit multiple values. UCSC tools are sucky.
+    # emit multiple values. 
     values = numpy.empty(1000000)
 
     maxFtLoc = 0

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 import argparse
 import time
 import tempfile
@@ -33,7 +33,7 @@ TICK_LENGTH = 0.2 * MONTAGE_BORDER
 
 CREDITS = (
     "CPT's MISTv3\n"
-    "GPLv3 (C) 2015 Eric Rasche <esr\@tamu.edu>\n"
+    "GPLv3 (C) 2015 Helena Rasche <esr\@tamu.edu>\n"
     "Dot plots by Gepard Dot Plotter by Dr. Jan Krumsiek"
 )
 
@@ -778,4 +778,4 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    print mist_wrapper(**vars(args))
+    print (mist_wrapper(**vars(args)))

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.gbk_viz.easyfig" name="Output Gbk Visualization" version="Alpha.1">
+<tool id="edu.tamu.cpt2.gbk_viz.easyfig" name="Output Gbk Visualization" version="Alpha.2">
   <description>Prototype - Not Yet for General Use: Easyfig toole wrapper for galaxy</description>
   <macros>
     <import>macros.xml</import>
@@ -8,15 +8,48 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/Easyfig.py
--o $SVG_Out
--svg
+-e $eVal 
+-aln $align 
+-legend $leg 
+-blast_col $color 
+#if $gc != "":
+    -G $gc 
+#end if
+-tblastx
+-o $SVG_Out 
+-svg 
 #for $file in $gbkIn:
-    $file
+    $file 
 #end for
 
 ]]></command>
   <inputs>
     <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
+    <param label="Minimum E Value" name="eVal" type="float" value="0.001"/>
+    <param label="Customize location of gene name" name="leg" type="select">
+            <option value="single">Single</option>
+            <option value="double">Double</option>
+            <option value="top">Top</option>
+            <option value="bottom">Bottom</option>
+            <option value="both">Both</option>
+            <option value="None">None</option>
+    </param>
+    <param label="Customize alignment for Blast hits" name="align" type="select">
+            <option value="best">Best</option>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+            <option value="centre">Center</option>
+    </param>
+    <param label="Customize color for Blast hits" name="color" type="select">
+            <option value="gray">Gray</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+    </param>
+    <param label="Select GC Content plot" name="gc" type="select">
+            <option value="">No GC</option>
+            <option value="GCContent">GC Content</option>
+            <option value="GCSkew">GC Skew</option>
+    </param>
   </inputs>
   <outputs>
         <data format="svg" name="SVG_Out" label="SVG Output"/>
@@ -25,5 +58,10 @@ python $__tool_directory__/Easyfig.py
 **What it does**
 Paste from tool --help
       ]]></help>
-  <expand macro="citations" />
+  @unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
 </tool>

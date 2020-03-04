@@ -1,4 +1,4 @@
-<tool id="blasttab_to_gapped_gff3" name="BlastN TSV to gapped GFF3" version="1.2-2">
+<tool id="blasttab_to_gapped_gff3" name="BlastN TSV to gapped GFF3" version="19.1.0.0">
 	<description>converts tabular blast results to a JBrowse-compatible file</description>
 	<macros>
 		<import>macros.xml</import>

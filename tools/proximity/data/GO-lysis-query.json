@@ -1,0 +1,46 @@
+{
+	"endolysins": [
+		"lysozyme",
+		"endolysin",
+		"lysin",
+		"amidase",
+		"muramidase",
+		"muraminidase",
+		"glycosidase",
+		"endopeptidase",
+		"muralytic",
+		"glycosylase",
+		"chitinase"
+	],
+	"holins": [
+		"holin",
+		"antiholin",
+		"hole",
+		"pinholin",
+		"lysis (protein)"
+	],
+	"ECDs": [
+		"Glyco_hydro_19",
+		"Glyco_hydro_25",
+		"Glyco_hydro_108",
+		"Chitinase",
+		"soluble lytic transglycosylase",
+		"Transglycosylase",
+		"Glucosaminidase",
+		"Amidase02_C",
+		"Amidase_5",
+		"Amidase_3",
+		"Amidase_2",
+		"NlpD",
+		"VanY",
+		"Peptidase_U40",
+		"Peptidase_M15_3",
+		"Peptidase_M15_4",
+		"Peptidase_M23",
+		"YkuD",
+		"NLPC_P60",
+		"Peptidase_C39_2",
+		"CHAP",
+		"DUF3597"
+    ]
+}

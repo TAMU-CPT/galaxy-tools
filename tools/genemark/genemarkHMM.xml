@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.genemark.GeneMarkhmm" name="GenMarkHMM" version="Alpha.2">
+  <description>Prototype - Not Yet for General Use: Wrapper for GeneMark tool</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+<requirements>
+      <requirement type="package" version="1.3.0">genemarkhmm</requirement>
+      <yield/>
+    </requirements>
+  <command detect_errors="aggressive"><![CDATA[
+ls -a ||
+gmhmme3
+#if $input_type.input_type_selector == "predef_file":
+  -m $input_type.model_predef 
+#elif $input_type.input_type_selector == "hist_item":
+  -m $input_type.model_hist
+#end if
+$nuc
+$prot
+-f $format
+-o $outName
+
+$fastaSeq
+
+
+
+]]></command>
+  <inputs>
+    <conditional name="input_type">
+        <param name="input_type_selector" type="select" label="Model Input">
+            <option value="predef_file">From list of included GeneMarkHMM models</option>
+            <option value="hist_item">Custom .mod from History</option>
+        </param>
+      <when value="predef_file">
+        <param name="model_predef" type="select" label="Included Models:">
+            <option value="./mod/a_gambiae.mod">Gambiae</option>
+            <option value="./mod/a_thaliana.mod">Thaliana</option>
+            <option value="./mod/c_briggsae.mod">Briggsae</option>
+            <option value="./mod/c_elegans.mod">Elegans</option>
+            <option value="./mod/c_intestinalis.mod">Intestinalis</option>
+            <option value="./mod/c_reinhardtii.mod">Reinhardt II</option>
+            <option value="./mod/c_remanei.mod">Remanei</option>
+            <option value="./mod/d_melanogaster.mod">Melanogaster</option>
+            <option value="./mod/m_truncatula.mod">Truncatula</option>
+            <option value="./mod/o_sativa.mod">Sativa</option>                  
+        </param>               
+      </when>
+      <when value="hist_item">
+        <param label="Mod File from History" name="model_hist" type="data"/>
+      </when>
+    </conditional>
+
+    <param label="Fasta Sequence" name="fastaSeq" type="data" format="fasta"/>
+
+    <param checked="false" label="Output Nucleotide Sequence" name="nuc" type="boolean" falsevalue="" truevalue="-n"/>
+    <param checked="false" label="Output Protein Translation" name="prot" type="boolean" falsevalue="" truevalue="-p"/>
+    <param name="format" type="select" label="Output Format">
+              <option value="lst">LST</option>
+              <option value="gff3">GFF3</option>
+              <option value="gtf">GTF</option>
+    </param>
+  </inputs>
+  <outputs>
+        <data format="txt" name="outName" label="GeneMarkHMM"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+Genemark Prototype
+      ]]></help>
+  <expand macro="citations" />
+</tool>

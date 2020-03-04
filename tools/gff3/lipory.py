@@ -42,41 +42,40 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
             if len(cdss) == 0:
                 continue
 
-            try:
-                tmpseq = str(
-                    cds.extract(record.seq).translate(table=11, cds=True)
-                ).replace("*", "")
-            except:
-                continue
+            for cds in cdss:
+              try:
+                  tmpseq = str(cds.extract(record.seq).translate(table=11, cds=True)).replace("*", "")
+              except:
+                  continue
 
-            for case in CASES:
-                m = case.search(tmpseq)
-                if m:
-                    if cds.location.strand > 0:
+              for case in CASES:
+                  m = case.search(tmpseq)
+                  if m:
+                      if cds.location.strand > 0:
                         start = cds.location.start + (3 * (m.end() - 4))
                         end = cds.location.start + (3 * m.end())
-                    else:
+                      else:
                         start = cds.location.end - (3 * (m.end() - 4))
                         end = cds.location.end - (3 * m.end())
 
-                    tmp = SeqFeature(
-                        FeatureLocation(
-                            min(start, end), max(start, end), strand=cds.location.strand
-                        ),
-                        type="Lipobox",
-                        qualifiers={
-                            "source": "CPT_LipoRy",
-                            "ID": "%s.lipobox" % get_id(gene),
-                        },
-                    )
-                    tmp.qualifiers["sequence"] = str(
-                        tmp.extract(record).seq.translate()
-                    )
+                      tmp = SeqFeature(
+                          FeatureLocation(
+                              min(start, end),
+                              max(start, end),
+                              strand=cds.location.strand
+                          ),
+                          type='Lipobox',
+                          qualifiers={
+                            'source': 'CPT_LipoRy',
+                            'ID': '%s.lipobox' % get_id(gene),
+                          }
+                      )
+                      tmp.qualifiers['sequence'] = str(tmp.extract(record).seq.translate())
 
-                    gene.sub_features.append(tmp)
-                    good_features.append(gene)
+                      gene.sub_features.append(tmp)
+                      good_features.append(gene)
 
-        record.features = good_features
+            record.features = good_features
         yield [record]
 
 

@@ -8,6 +8,7 @@
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
 $__tool_directory__/fasta_charges.py
+$svg
 @SEQUENCE@
 
 --width $width
@@ -35,9 +36,13 @@ $__tool_directory__/fasta_charges.py
 </command>
 	<inputs>
 		<expand macro="input/fasta/protein" />
+                <param label="Output format" name="svg" type="select">
+			<option value="">HTML</option>
+			<option value="--svg">SVG</option>
+		</param>
 		<conditional name="scheme">
 			<param label="Colour scheme" name="cs" type="select">
-				<option value="default">Deafult hyrophobic/polar/charged</option>
+				<option value="default">Default hyrophobic/polar/charged</option>
 				<option value="custom">Custom Colour Scheme</option>
 			</param>
 			<when value="default" />
@@ -53,7 +58,11 @@ $__tool_directory__/fasta_charges.py
 		<param label="Plot width" name="width" type="integer" value="120" />
 	</inputs>
 	<outputs>
-		<data format="html" name="html" />
+		<data format="html" name="html">
+                  <change_format>
+                    <when input="svg" value="--svg" format="svg" />
+                  </change_format>
+                </data>
 	</outputs>
 	<tests>
 		<test>

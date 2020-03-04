@@ -16,35 +16,53 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
 
     if feature_filter == "nice_cds":
         from gff2gb import gff3_to_genbank
-
         for rec in gff3_to_genbank(gff3, fasta):
+            seenList = {}
+            if rec.seq[0] == '?':
+              print("No Fasta ID matches GFF")
+              exit(1) 
             for feat in sorted(rec.features, key=lambda x: x.location.start):
                 if feat.type != "CDS":
                     continue
+                  
+                ind = 0              
+                if str(feat.qualifiers.get('locus_tag', get_id(feat)).replace(' ', '-')) in seenList.keys():
+                  seenList[str(feat.qualifiers.get('locus_tag', get_id(feat)).replace(' ', '-'))] += 1
+                  ind = seenList[str(feat.qualifiers.get('locus_tag', get_id(feat)).replace(' ', '-'))]
+                else:
+                  seenList[str(feat.qualifiers.get('locus_tag', get_id(feat)).replace(' ', '-'))] = 1
+                append = ""
+                if ind != 0:
+                  append = "_" + str(ind)
 
                 if nodesc:
                     description = ""
                 else:
-                    feat.qualifiers["ID"] = [feat._ID]
-                    product = feat.qualifiers.get("product", "")
-                    description = "{1} [Location={0.location};ID={0.qualifiers[ID][0]}]".format(
-                        feat, product
-                    )
-
+                    feat.qualifiers['ID'] = [feat._ID]
+                    product = feat.qualifiers.get('product', '')
+                    description = '{1} [Location={0.location};ID={0.qualifiers[ID][0]}]'.format(feat, product)
+                #print(feat.qualifiers.get('locus_tag', get_id(feat)).replace(' ', '-'))
                 yield [
                     SeqRecord(
                         feat.extract(rec).seq,
-                        id=feat.qualifiers.get("locus_tag", get_id(feat)).replace(
-                            " ", "-"
-                        ),
-                        description=description,
+                        id=str(feat.qualifiers.get('locus_tag', get_id(feat)).replace(' ', '-')) + append,
+                        description=description
                     )
                 ]
+                
 
     elif feature_filter == "unique_cds":
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         seen_ids = {}
+         
         for rec in GFF.parse(gff3, base_dict=seq_dict):
+            noMatch = True
+            for x in seq_dict:
+              if x == rec.id:
+                noMatch = False
+            if noMatch:
+              print("No Fasta ID matches GFF")
+              exit(1)
             newfeats = []
             for feat in sorted(
                 feature_lambda(
@@ -88,15 +106,19 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
     else:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         for rec in GFF.parse(gff3, base_dict=seq_dict):
-            for feat in sorted(
-                feature_lambda(
-                    rec.features,
-                    feature_test_type,
-                    {"type": feature_filter},
-                    subfeatures=False,
-                ),
-                key=lambda f: f.location.start,
-            ):
+            noMatch = True
+            for x in seq_dict:
+              if x == rec.id:
+                noMatch = False
+            if noMatch:
+              print("No Fasta ID matches GFF")
+              exit(1)
+            for feat in sorted(feature_lambda(
+                rec.features,
+                feature_test_type,
+                {'type': feature_filter},
+                subfeatures=False
+            ), key=lambda f: f.location.start):
                 id = feat.id
                 if len(id) == 0:
                     id = get_id(feat)

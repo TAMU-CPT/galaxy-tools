@@ -45,5 +45,14 @@ At least one CDS feature must have either the same start or end as the mRNA pare
 If you are having trouble solving a duplicated feature error, read this. GFF3 requires all features to have a unique ID. If the parser detects that two entries have the same ID, it automatically gives the second one a temporary random ID, which is what's being output to the errorlog. If you are getting a duplicate entry error, but cannot find one of the error IDs in your GFF3 file, it most likely means there are two of the other ID in your file (ie, in addition to having the same type and location, the feature also has the same ID). This will most likely have been caused by someone copy/pasting sections of the GFF3 by hand and accidentally creating duplicates, and can be resolved by deleting the second entry.
    
       ]]></help>
-  <expand macro="citations" />
+  <citations>
+                        <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+		</citations>
 </tool>
