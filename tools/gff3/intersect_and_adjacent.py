@@ -5,6 +5,7 @@ from intervaltree import IntervalTree, Interval
 from BCBio import GFF
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -21,7 +22,7 @@ def intersect(a, b, window, stranding):
     if len(rec_a) > 0 and len(rec_b) > 0:
 
         if len(rec_a) > 1 or len(rec_b) > 1:
-                raise Exception("Cannot handle multiple GFF3 records in a file, yet")
+            raise Exception("Cannot handle multiple GFF3 records in a file, yet")
 
         
         rec_a = rec_a[0]
@@ -57,7 +58,7 @@ def intersect(a, b, window, stranding):
           tree_b_pos = IntervalTree(b_pos)
           tree_b_neg = IntervalTree(b_neg)
 
-        #Used to map ids back to features later
+        # Used to map ids back to features later
         rec_a_map = {f.id: f for f in rec_a.features}
         rec_b_map = {f.id: f for f in rec_b.features}
 
@@ -108,14 +109,14 @@ def intersect(a, b, window, stranding):
                   rec_b_hits_in_a.append(rec_a_map[hit.data])
 
 
-        #Remove duplicate features using sets
+        # Remove duplicate features using sets
         rec_a.features = set(rec_a_hits_in_b)
         rec_b.features = set(rec_b_hits_in_a)
 
     else:
-        #If one input is empty, output two empty result files.
-        rec_a = SeqRecord(Seq(''), "none")
-        rec_b = SeqRecord(Seq(''), "none")
+        # If one input is empty, output two empty result files.
+        rec_a = SeqRecord(Seq(""), "none")
+        rec_b = SeqRecord(Seq(""), "none")
     return rec_a, rec_b
 
 
@@ -131,8 +132,8 @@ if __name__ == '__main__':
 
     b, a = intersect(args.a, args.b, args.window, args.stranding)
 
-    with open(args.oa, 'w') as handle:
+    with open(args.oa, "w") as handle:
         GFF.write([a], handle)
 
-    with open(args.ob, 'w') as handle:
+    with open(args.ob, "w") as handle:
         GFF.write([b], handle)

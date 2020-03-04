@@ -2,11 +2,16 @@
 import argparse
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='PHAnTASM Comparison Mapper')
-    parser.add_argument('--files', type=argparse.FileType("r"), nargs="+", help='Input Two-Way Comparison')
-    parser.add_argument('--weights', type=float, nargs="+", help="Metric Weighting")
-    parser.add_argument('--version', action='version', version='0.2')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="PHAnTASM Comparison Mapper")
+    parser.add_argument(
+        "--files",
+        type=argparse.FileType("r"),
+        nargs="+",
+        help="Input Two-Way Comparison",
+    )
+    parser.add_argument("--weights", type=float, nargs="+", help="Metric Weighting")
+    parser.add_argument("--version", action="version", version="0.2")
     args = parser.parse_args()
 
     if len(args.files) != len(args.weights):
@@ -16,21 +21,20 @@ if __name__ == '__main__':
     weight_sums = sum(args.weights)
 
     for f, m in zip(args.files, args.weights):
-        data = [x.strip().split('\t') for x in f.readlines() if not
-                x.startswith('#')]
+        data = [x.strip().split("\t") for x in f.readlines() if not x.startswith("#")]
         for (a, b, score) in data:
             if a not in result_map:
                 result_map[a] = {}
             if b not in result_map[a]:
                 result_map[a][b] = 0
 
-            result_map[a][b] += (float(score) * m / weight_sums)
+            result_map[a][b] += float(score) * m / weight_sums
 
     keys = sorted(result_map.keys())
     # Header
-    print '\t'.join([''] + keys)
+    print "\t".join([""] + keys)
     for f in keys:
         current_row = [f]
         for t in keys:
             current_row.extend([result_map[f][t]])
-        print '\t'.join(current_row)
+        print "\t".join(current_row)

@@ -4,14 +4,17 @@ import random
 from webapollo import WebApolloInstance
 from webapollo import WAAuth, OrgOrGuess, GuessOrg, AssertUser
 import logging
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Script to extract qualifiers from an organism')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Script to extract qualifiers from an organism"
+    )
     WAAuth(parser)
-    parser.add_argument('email', help='User Email')
+    parser.add_argument("email", help="User Email")
     OrgOrGuess(parser)
 
     args = parser.parse_args()
@@ -29,11 +32,11 @@ if __name__ == '__main__':
     org = wa.organisms.findOrganismByCn(org_cn)
 
     # Call setSequence to tell apollo which organism we're working with
-    wa.annotations.setSequence(org['commonName'], org['id'])
+    wa.annotations.setSequence(org["commonName"], org["id"])
     # Then get a list of features.
     features = wa.annotations.getFeatures()
     # For each feature in the features
-    for feature in sorted(features['features'], key=lambda x: random.random()):
+    for feature in sorted(features["features"], key=lambda x: random.random()):
         # We see that deleteFeatures wants a uniqueName, and so we pass
         # is the uniquename field in the feature.
         pass

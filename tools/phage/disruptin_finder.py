@@ -26,7 +26,9 @@ import argparse
 import sys
 
 
-def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_ratio, selection_criteria):
+def disruptin_finder(
+    fasta_file, thresh_size, thresh_net_charge, thresh_charge_ratio, selection_criteria
+):
     # Iterable variables
     net_charge = 0
     charge_res = 0
@@ -41,11 +43,11 @@ def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_r
         if len(sequence) <= thresh_size:
             for aa in sequence:
                 # For R and K residues a positive charge is given
-                if aa in 'RK':
+                if aa in "RK":
                     net_charge += 1
                     charge_res += 1
                 # For D and E residues a negative charge is given
-                elif aa in 'DE':
+                elif aa in "DE":
                     net_charge -= 1
                     charge_res += 1
 
@@ -54,14 +56,17 @@ def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_r
             charge_ratio = float(charge_res)/float(Length)
 
             # Based on the user-specified selection criteria a list of records is compiled
-            if selection_criteria == 'net':
+            if selection_criteria == "net":
                 if net_charge >= thresh_net_charge:
                     total_record = total_record + [rec]
-            elif selection_criteria == 'ratio':
+            elif selection_criteria == "ratio":
                 if charge_ratio >= thresh_charge_ratio:
                     total_record = total_record + [rec]
-            elif selection_criteria =='both':
-                if charge_ratio >= thresh_charge_ratio and net_charge >= thresh_net_charge:
+            elif selection_criteria == "both":
+                if (
+                    charge_ratio >= thresh_charge_ratio
+                    and net_charge >= thresh_net_charge
+                ):
                     total_record = total_record + [rec]
 
             # Reset the iterable variables
@@ -72,7 +77,7 @@ def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_r
     yield total_record
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Grab all of the filters from our plugin loader
     parser = argparse.ArgumentParser(description='Disruptin Finder')
     parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Multi-FASTA Input')

@@ -3,6 +3,7 @@ import sys
 import argparse
 import json
 import logging
+
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
@@ -99,29 +100,29 @@ def filter_dice(blast, threshold=0.5):
 
 
 def split_identifiers_nucl(_, ident):
-    if '<>' in ident:
-        idents = ident.split('<>')
+    if "<>" in ident:
+        idents = ident.split("<>")
     else:
         idents = [ident]
     return idents
 
 
 def split_identifiers_prot(_, ident):
-    if '<>' in ident:
-        idents = ident.split('<>')
+    if "<>" in ident:
+        idents = ident.split("<>")
     else:
         idents = [ident]
     return [
-        x[x.index('[') + 1:x.rindex(']')]
+        x[x.index("[") + 1 : x.rindex("]")]
         for x in idents
         # MULTISPECIES: recombination-associated protein RdgC [Enterobacteriaceae]<>RecName: Full=Recombination-associated protein RdgC<>putative exonuclease, RdgC [Enterobacter sp. 638]
-        if '[' in x and ']' in x
+        if "[" in x and "]" in x
     ]
 
 
 def split_identifiers_phage(par, ident):
-    par = par.replace('lcl|', '')
-    par = par[0:par.index('_prot_')]
+    par = par.replace("lcl|", "")
+    par = par[0 : par.index("_prot_")]
     return [par]
 
 

@@ -5,23 +5,29 @@ import sys  # noqa
 from Bio import SeqIO
 
 import logging
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
 # gene and RBS features are also included in the tagged features list, but are dealt with specifically elsewhere.
 # This is used to filter out just valid "in gene" features
-TAGGED_FEATURES = ['CDS', 'tRNA', 'intron', 'mat_peptide']
+TAGGED_FEATURES = ["CDS", "tRNA", "intron", "mat_peptide"]
 
-def renumber_genes(gbk_files, tag_to_update="locus_tag",
-                   string_prefix="display_id", leading_zeros=3,
-                   change_table=None):
+
+def renumber_genes(
+    gbk_files,
+    tag_to_update="locus_tag",
+    string_prefix="display_id",
+    leading_zeros=3,
+    change_table=None,
+):
 
     for gbk_file in gbk_files:
         for record in SeqIO.parse(gbk_file, "genbank"):
-            if string_prefix == 'display_id':
-                format_string = record.id + '_%0' + str(leading_zeros) + 'd'
+            if string_prefix == "display_id":
+                format_string = record.id + "_%0" + str(leading_zeros) + "d"
             else:
-                format_string = string_prefix + '%0' + str(leading_zeros) + 'd'
+                format_string = string_prefix + "%0" + str(leading_zeros) + "d"
 
             # f_cds = [f for f in record.features if f.type == 'CDS']
             # f_rbs = [f for f in record.features if f.type == 'RBS']
@@ -47,7 +53,7 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
 
             # Make sure we've hit every RBS and gene
             # for cds in f_cds:
-                # If there's an associated gene feature, it will share a stop codon
+            # If there's an associated gene feature, it will share a stop codon
             #    if cds.location.strand > 0:
             #        associated_genes = [f for f in f_gene if f.location.end ==
             #                            cds.location.end]
@@ -68,24 +74,40 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
             #    if len(associated_genes) > 0:
             #        tmp_result.append(associated_genes[0])
 
-             #   if len(associated_rbss) == 1:
-             #       tmp_result.append(associated_rbss[0])
-             #   else:
-             #       log.warning("%s RBSs found for %s", len(associated_rbss), cds.location)
-                # We choose to append to f_other as that has all features not
-                # already accessed. It may mean that some gene/RBS features are
-                # missed if they aren't detected here, which we'll need to handle.
+            #   if len(associated_rbss) == 1:
+            #       tmp_result.append(associated_rbss[0])
+            #   else:
+            #       log.warning("%s RBSs found for %s", len(associated_rbss), cds.location)
+            # We choose to append to f_other as that has all features not
+            # already accessed. It may mean that some gene/RBS features are
+            # missed if they aren't detected here, which we'll need to handle.
             #    f_care_about.append(tmp_result)
 
-#####-----------------------------------------------------------------------------------------------------------#####
+            #####-----------------------------------------------------------------------------------------------------------#####
             # Build list of genes, then iterate over non-gene features and sort into containing genes.
             # tags are assigned based on genes, so start the lists with the gene features
-            f_gene = sorted([f for f in record.features if f.type == 'gene'], key=lambda x: x.location.start)
-            f_rbs = sorted([f for f in record.features if f.type == 'RBS'], key=lambda x: x.location.start)
+            f_gene = sorted(
+                [f for f in record.features if f.type == "gene"],
+                key=lambda x: x.location.start,
+            )
+            f_rbs = sorted(
+                [f for f in record.features if f.type == "RBS"],
+                key=lambda x: x.location.start,
+            )
             f_tag = list()
-            f_sorted = sorted([f for f in record.features if f.type in TAGGED_FEATURES], key=lambda x: x.location.start)
+            f_sorted = sorted(
+                [f for f in record.features if f.type in TAGGED_FEATURES],
+                key=lambda x: x.location.start,
+            )
             # genes not in the TAGGED_FEATURES list are exluded from the processing and assumed to already be clean
-            clean_features = sorted([f for f in record.features if f.type not in TAGGED_FEATURES and f.type not in ['gene', 'RBS']], key=lambda x: x.location.start)
+            clean_features = sorted(
+                [
+                    f
+                    for f in record.features
+                    if f.type not in TAGGED_FEATURES and f.type not in ["gene", "RBS"]
+                ],
+                key=lambda x: x.location.start,
+            )
 
             f_processed = []
             for gene in f_gene:
@@ -100,14 +122,17 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
                         tag.append(rbs)
                         f_processed.append(rbs)
                         break
-                #find all other non-RBS features
+                # find all other non-RBS features
                 for feature in [f for f in f_sorted if f not in f_processed]:
                     # If the feature is within the gene boundaries (genes are the first entry in tag list),
                     # add it to the same locus tag group, does not process RBS
                     if is_within(feature, gene):
-                        #catches genes and CDS feature that are intron-contained.
-                        if feature.type == 'CDS':
-                            if feature.location.start == gene.location.start or feature.location.end == gene.location.end:
+                        # catches genes and CDS feature that are intron-contained.
+                        if feature.type == "CDS":
+                            if (
+                                feature.location.start == gene.location.start
+                                or feature.location.end == gene.location.end
+                            ):
                                 tag.append(feature)
                                 f_processed.append(feature)
                         else:
@@ -116,24 +141,26 @@ def renumber_genes(gbk_files, tag_to_update="locus_tag",
                     elif feature.location.start > gene.location.end:
                         # because the features are sorted by coordinates,
                         # no features further down  on the list will be in this gene
-                        break;
+                        break
                 f_tag.append(tag)
 
             # Process for frameshifts and mat_peptides (inteins)
 
-                # check for overlapped genes
+            # check for overlapped genes
             # at this point, relevant features are put into tag buckets along with the containing gene
             # matin the form of [gene, feature1, feature2, ...]
             tag_index = 1
             delta = []
-            for tag in f_tag: #each tag list is one 'bucket'
+            for tag in f_tag:  # each tag list is one 'bucket'
                 new_tag_value = format_string % tag_index
                 for feature in tag:
                     original_tag_value = delta_old(feature, tag_to_update)
                     feature.qualifiers[tag_to_update] = [new_tag_value]
                     # Once the tag is renumbered, it's added to the clean list for later output
                     clean_features.append(feature)
-                    delta.append('\t'.join((record.id, original_tag_value, new_tag_value)))
+                    delta.append(
+                        "\t".join((record.id, original_tag_value, new_tag_value))
+                    )
                 tag_index += 1
 
             # Why must these people start at 1
@@ -169,19 +196,25 @@ def delta_old(feature, tag_to_update):
     if tag_to_update in feature.qualifiers:
         return feature.qualifiers[tag_to_update][0]
     else:
-        return '%s %s %s' % (feature.location.start, feature.location.end,
-                             feature.location.strand,)
+        return "%s %s %s" % (
+            feature.location.start,
+            feature.location.end,
+            feature.location.strand,
+        )
 
 
 def is_within(query, feature):
     # checks if the query item is within the bounds of the given feature
-    if feature.location.start <= query.location.start and feature.location.end >= query.location.end:
-        return True;
+    if (
+        feature.location.start <= query.location.start
+        and feature.location.end >= query.location.end
+    ):
+        return True
     else:
-        return False;
+        return False
 
 
-#def fix_frameshift(a, b):
+# def fix_frameshift(a, b):
 #    #checks if gene a and gene b are a frameshifted gene (either shares a start or an end and an RBS)
 #    if a[0].location.start == b[0].location.start or a[0].location.end == b[0].location.end:
 #        # It is likely a frameshift. Treat is as such. Find shared RBS, determine which CDS is which
@@ -195,16 +228,28 @@ def is_within(query, feature):
 #        small_cds = cdss[0] if big_cds==cdss[1] else cdss[1]
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Renumber genbank files')
-    parser.add_argument('gbk_files', type=argparse.FileType("r"), nargs='+', help='Genbank files')
-    parser.add_argument('--tag_to_update', type=str, help='Tag to update', default='locus_tag')
-    parser.add_argument('--string_prefix', type=str, help='Prefix string', default='display_id')
-    parser.add_argument('--leading_zeros', type=int, help='# of leading zeroes', default=3)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Renumber genbank files")
+    parser.add_argument(
+        "gbk_files", type=argparse.FileType("r"), nargs="+", help="Genbank files"
+    )
+    parser.add_argument(
+        "--tag_to_update", type=str, help="Tag to update", default="locus_tag"
+    )
+    parser.add_argument(
+        "--string_prefix", type=str, help="Prefix string", default="display_id"
+    )
+    parser.add_argument(
+        "--leading_zeros", type=int, help="# of leading zeroes", default=3
+    )
 
-    parser.add_argument('--change_table', type=argparse.FileType('w'),
-                        help='Location to store change table in', default='renumber.tsv')
+    parser.add_argument(
+        "--change_table",
+        type=argparse.FileType("w"),
+        help="Location to store change table in",
+        default="renumber.tsv",
+    )
 
     args = parser.parse_args()
     for record in renumber_genes(**vars(args)):
-        SeqIO.write(record, sys.stdout, 'genbank')
+        SeqIO.write(record, sys.stdout, "genbank")
