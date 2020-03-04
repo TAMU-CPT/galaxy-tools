@@ -26,11 +26,15 @@ def parse_gff(id_start_end, gff3):
         GFF.write([rec], sys.stdout)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description='features from a GFF3 file based on location')
-    parser.add_argument('id_start_end', type=argparse.FileType("r"),
-                        help='table with record ids, start locations, and end locations')
-    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 annotations')
+        description="features from a GFF3 file based on location"
+    )
+    parser.add_argument(
+        "id_start_end",
+        type=argparse.FileType("r"),
+        help="table with record ids, start locations, and end locations",
+    )
+    parser.add_argument("gff3", type=argparse.FileType("r"), help="GFF3 annotations")
     args = parser.parse_args()
     parse_gff(**vars(args))

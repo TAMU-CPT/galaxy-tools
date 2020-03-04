@@ -4,6 +4,7 @@ import copy
 import logging
 import xmfa
 from itertools import groupby
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -11,17 +12,17 @@ log = logging.getLogger(__name__)
 def split_lcb(lcb, window_size=10, threshold=0.7):
     # Transpose sequence
     lines = []
-    max_align_num = len(lcb[0]['seq'])
+    max_align_num = len(lcb[0]["seq"])
     for i in range(max_align_num):
         lines.append([])
         for j in range(len(lcb)):
-            c = lcb[j]['seq'][i]
-            if c != '-':
+            c = lcb[j]["seq"][i]
+            if c != "-":
                 lines[i].append(j)
 
     count_groups = []
     for i in range(0, len(lines), window_size):
-        current_lines = lines[i:i + window_size]
+        current_lines = lines[i : i + window_size]
         flat_list = [a for b in current_lines for a in b]
         counts = []
         for i in range(len(lcb)):
@@ -43,9 +44,11 @@ def split_lcb(lcb, window_size=10, threshold=0.7):
         local_members = []
         for member in members:
             tmp_member = copy.deepcopy(lcb[member])
-            tmp_member['seq'] = tmp_member['seq'][window_size * position:window_size * (position + count)]
-            tmp_member['start'] = tmp_member['start'] + (3 * window_size * position)
-            tmp_member['end'] = tmp_member['start'] + (3 * window_size * count)
+            tmp_member["seq"] = tmp_member["seq"][
+                window_size * position : window_size * (position + count)
+            ]
+            tmp_member["start"] = tmp_member["start"] + (3 * window_size * position)
+            tmp_member["end"] = tmp_member["start"] + (3 * window_size * count)
             local_members.append(tmp_member)
         if len(local_members) > 0:
             new_lcbs.append(local_members)
@@ -61,12 +64,21 @@ def split_lcbs(lcbs, window_size=10, threshold=100):
     return new_lcbs
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Split XMFA alignments', prog='xmfa2smallerXmfa')
-    parser.add_argument('xmfa_file', type=argparse.FileType("r"), help='XMFA File')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Split XMFA alignments", prog="xmfa2smallerXmfa"
+    )
+    parser.add_argument("xmfa_file", type=argparse.FileType("r"), help="XMFA File")
 
-    parser.add_argument('--window_size', type=int, help='Window size for analysis', default=10)
-    parser.add_argument('--threshold', type=float, help='All genomes must meet N percent similarity', default=0.7)
+    parser.add_argument(
+        "--window_size", type=int, help="Window size for analysis", default=10
+    )
+    parser.add_argument(
+        "--threshold",
+        type=float,
+        help="All genomes must meet N percent similarity",
+        default=0.7,
+    )
 
     args = parser.parse_args()
 

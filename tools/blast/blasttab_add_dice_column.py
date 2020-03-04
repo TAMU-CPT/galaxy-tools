@@ -31,16 +31,18 @@ def blasttsv2gff3(blasttsv):
     # 25 All subject title(s), separated by a '<>'
 
     for line in blasttsv:
-        data = line.split('\t')
+        data = line.split("\t")
         dice = 2 * int(data[14]) / (float(data[22]) + float(data[23]))
-        yield line.strip('\n') + '\t' + str(dice)
+        yield line.strip("\n") + "\t" + str(dice)
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Convert Blast TSV to gapped GFF3')
-    parser.add_argument('blasttsv', type=argparse.FileType("r"), help='Blast TSV Output')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Convert Blast TSV to gapped GFF3")
+    parser.add_argument(
+        "blasttsv", type=argparse.FileType("r"), help="Blast TSV Output"
+    )
     args = parser.parse_args()
 
     for line in blasttsv2gff3(**vars(args)):
         sys.stdout.write(line)
-        sys.stdout.write('\n')
+        sys.stdout.write("\n")

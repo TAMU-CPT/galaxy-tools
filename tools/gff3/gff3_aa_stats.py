@@ -11,23 +11,25 @@ def main(fasta, gff3):
     codon_usage = {}
 
     for rec in GFF.parse(gff3, base_dict=seq_dict):
-        for feat in feature_lambda(rec.features, feature_test_type, {'type': 'CDS'}, subfeatures=True):
+        for feat in feature_lambda(
+            rec.features, feature_test_type, {"type": "CDS"}, subfeatures=True
+        ):
             seq = str(feat.extract(rec).seq)
             for x in range(0, len(seq), 3):
                 try:
-                    codon_usage[seq[x:x + 3]] += 1
+                    codon_usage[seq[x : x + 3]] += 1
                 except KeyError:
-                    codon_usage[seq[x:x + 3]] = 1
+                    codon_usage[seq[x : x + 3]] = 1
 
     # TODO: print all actg combinations? Or just ones that are there
-    print '# Codon\tCount'
+    print "# Codon\tCount"
     for key in sorted(codon_usage):
-        print '\t'.join((key, str(codon_usage[key])))
+        print "\t".join((key, str(codon_usage[key])))
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Summarise AA usage', epilog="")
-    parser.add_argument('fasta', type=argparse.FileType("r"), help='Fasta Genome')
-    parser.add_argument('gff3', help='GFF3 File')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Summarise AA usage", epilog="")
+    parser.add_argument("fasta", type=argparse.FileType("r"), help="Fasta Genome")
+    parser.add_argument("gff3", help="GFF3 File")
     args = parser.parse_args()
     main(**vars(args))

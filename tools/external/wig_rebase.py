@@ -6,6 +6,7 @@ import argparse
 import numpy
 from gff3 import feature_lambda, feature_test_true
 from BCBio import GFF
+
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
@@ -32,7 +33,7 @@ def __update_feature_location(pos, parent, protein2dna):
     return new_pos
 
 
-def getGff3Locations(parent, map_by='ID'):
+def getGff3Locations(parent, map_by="ID"):
     featureLocations = {}
     recs = GFF.parse(parent)
     # Only parse first.
@@ -44,7 +45,7 @@ def getGff3Locations(parent, map_by='ID'):
     return rec, featureLocations
 
 
-def rebase_wig(parent, wigData, protein2dna=False, map_by='ID'):
+def rebase_wig(parent, wigData, protein2dna=False, map_by="ID"):
     rec, locations = getGff3Locations(parent, map_by=map_by)
     current_id = None
     current_ft = None
@@ -54,14 +55,14 @@ def rebase_wig(parent, wigData, protein2dna=False, map_by='ID'):
 
     maxFtLoc = 0
     for line in wigData:
-        if line.startswith('track'):
+        if line.startswith("track"):
             # pass through
             sys.stdout.write(line)
-            sys.stdout.write('variableStep chrom=%s span=1\n' % rec.id)
+            sys.stdout.write("variableStep chrom=%s span=1\n" % rec.id)
             continue
-        if line.startswith('variableStep'):
+        if line.startswith("variableStep"):
             # No passthrough
-            current_id = re.findall('chrom=([^ ]+)', line)[0]
+            current_id = re.findall("chrom=([^ ]+)", line)[0]
             current_ft = locations[current_id]
             # Update max value
             if current_ft.end > maxFtLoc:
@@ -77,15 +78,20 @@ def rebase_wig(parent, wigData, protein2dna=False, map_by='ID'):
             values[npos + 2] = val
 
     for i in range(maxFtLoc):
-        sys.stdout.write('%s %s\n' % (i + 1, values[i]))
+        sys.stdout.write("%s %s\n" % (i + 1, values[i]))
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='rebase wig data against parent locations')
-    parser.add_argument('parent', type=argparse.FileType("r"))
-    parser.add_argument('wigData', type=argparse.FileType("r"))
-    parser.add_argument('--protein2dna', action='store_true',
-                        help='Map protein translated results to original DNA data')
-    parser.add_argument('--map_by', help='Map by key', default='ID')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="rebase wig data against parent locations"
+    )
+    parser.add_argument("parent", type=argparse.FileType("r"))
+    parser.add_argument("wigData", type=argparse.FileType("r"))
+    parser.add_argument(
+        "--protein2dna",
+        action="store_true",
+        help="Map protein translated results to original DNA data",
+    )
+    parser.add_argument("--map_by", help="Map by key", default="ID")
     args = parser.parse_args()
     rebase_wig(**vars(args))

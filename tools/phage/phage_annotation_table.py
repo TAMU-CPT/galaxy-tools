@@ -7,8 +7,9 @@ from BCBio import GFF
 from Bio import SeqIO
 from jinja2 import Environment, FileSystemLoader
 import logging
+
 logging.basicConfig(level=logging.DEBUG)
-log = logging.getLogger(name='pat')
+log = logging.getLogger(name="pat")
 
 # Path to script, required because of Galaxy.
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -33,7 +34,7 @@ def annotation_table_report(record, wanted_cols, gaf_data):
     def name(record, feature):
         """Name
         """
-        return feature.qualifiers.get('Name', ['None'])[0]
+        return feature.qualifiers.get("Name", ["None"])[0]
 
     def start(record, feature):
         """Boundary
@@ -48,72 +49,78 @@ def annotation_table_report(record, wanted_cols, gaf_data):
     def location(record, feature):
         """Location
         """
-        return '{0.start}..{0.end}'.format(feature.location)
+        return "{0.start}..{0.end}".format(feature.location)
 
     def length(record, feature):
         """Length (AA)
         """
-        cdss = list(genes(feature.sub_features, feature_type='CDS', sort=True))
+        cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
         return str(sum([len(cds) for cds in cdss]) / 3)
 
     def notes(record, feature):
         """User entered Notes"""
-        return feature.qualifiers.get('Note', [])
+        return feature.qualifiers.get("Note", [])
 
     def date_created(record, feature):
         """Created"""
-        return feature.qualifiers.get('date_creation', ['None'])[0]
+        return feature.qualifiers.get("date_creation", ["None"])[0]
 
     def date_last_modified(record, feature):
         """Last Modified"""
-        return feature.qualifiers.get('date_last_modified', ['None'])[0]
+        return feature.qualifiers.get("date_last_modified", ["None"])[0]
 
     def description(record, feature):
         """Description"""
-        return feature.qualifiers.get('description', ['None'])[0]
+        return feature.qualifiers.get("description", ["None"])[0]
 
     def owner(record, feature):
         """Owner
 
         User who created the feature. In a 464 scenario this may be one of
         the TAs."""
-        return feature.qualifiers.get('owner', ['None'])[0]
+        return feature.qualifiers.get("owner", ["None"])[0]
 
     def product(record, feature):
         """Product
 
         User entered product qualifier (collects "Product" and "product"
         entries)"""
-        return feature.qualifiers.get('product', feature.qualifiers.get('Product', ['None']))[0]
+        return feature.qualifiers.get(
+            "product", feature.qualifiers.get("Product", ["None"])
+        )[0]
 
     def note(record, feature):
         """Note
 
         User entered Note qualifier(s)"""
-        return feature.qualifiers.get('Note', [])
+        return feature.qualifiers.get("Note", [])
 
     def strand(record, feature):
         """Strand
         """
-        return '+' if feature.location.strand > 0 else '-'
+        return "+" if feature.location.strand > 0 else "-"
 
     def sd_spacing(record, feature):
         """Shine-Dalgarno spacing
         """
         rbss = get_rbs_from(gene)
         if len(rbss) == 0:
-            return 'None'
+            return "None"
         else:
             resp = []
             for rbs in rbss:
-                cdss = list(genes(feature.sub_features, feature_type='CDS', sort=True))
+                cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
 
                 if rbs.location.strand > 0:
-                    distance = min(cdss, key=lambda x: x.location.start - rbs.location.end)
+                    distance = min(
+                        cdss, key=lambda x: x.location.start - rbs.location.end
+                    )
                     distance_val = str(distance.location.start - rbs.location.end)
                     resp.append(distance_val)
                 else:
-                    distance = min(cdss, key=lambda x: x.location.end - rbs.location.start)
+                    distance = min(
+                        cdss, key=lambda x: x.location.end - rbs.location.start
+                    )
                     distance_val = str(rbs.location.start - distance.location.end)
                     resp.append(distance_val)
 
@@ -126,7 +133,7 @@ def annotation_table_report(record, wanted_cols, gaf_data):
         """
         rbss = get_rbs_from(gene)
         if len(rbss) == 0:
-            return 'None'
+            return "None"
         else:
             resp = []
             for rbs in rbss:
@@ -139,13 +146,13 @@ def annotation_table_report(record, wanted_cols, gaf_data):
     def start_codon(record, feature):
         """Start Codon
         """
-        cdss = list(genes(feature.sub_features, feature_type='CDS', sort=True))
+        cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
         data = [x for x in cdss]
         if len(data) == 1:
             return str(data[0].extract(record).seq[0:3])
         else:
             return [
-                '{0} ({1.location.start}..{1.location.end}:{1.location.strand})'.format(
+                "{0} ({1.location.start}..{1.location.end}:{1.location.strand})".format(
                     x.extract(record).seq[0:3], x
                 )
                 for x in data
@@ -159,20 +166,22 @@ def annotation_table_report(record, wanted_cols, gaf_data):
     def dbxrefs(record, feature):
         """DBxrefs
         """
-        return feature.qualifiers.get('Dbxref', [])
+        return feature.qualifiers.get("Dbxref", [])
 
     def upstream_feature(record, feature):
         """Next feature upstream"""
         if feature.strand > 0:
-            upstream_features = [x for x in sorted_features
-                                 if x.location.start < feature.location.start]
+            upstream_features = [
+                x for x in sorted_features if x.location.start < feature.location.start
+            ]
             if len(upstream_features) > 0:
                 return upstream_features[-1]
             else:
                 return None
         else:
-            upstream_features = [x for x in sorted_features
-                                 if x.location.end > feature.location.end]
+            upstream_features = [
+                x for x in sorted_features if x.location.end > feature.location.end
+            ]
 
             if len(upstream_features) > 0:
                 return upstream_features[0]
@@ -184,7 +193,7 @@ def annotation_table_report(record, wanted_cols, gaf_data):
         up = upstream_feature(record, feature)
         if up:
             return str(up)
-        return 'None'
+        return "None"
 
     def ig_dist(record, feature):
         """Distance to next feature on same strand"""
@@ -197,7 +206,7 @@ def annotation_table_report(record, wanted_cols, gaf_data):
                 dist = up.location.start - feature.location.end
             return str(dist)
         else:
-            return 'None'
+            return "None"
 
     def _main_gaf_func(record, feature, gaf_data, attr):
         if feature.id in gaf_data:
@@ -216,91 +225,95 @@ def annotation_table_report(record, wanted_cols, gaf_data):
         annotation extension column would contain a cross-reference to
         the term lymphocyte from the Cell Type Ontology.
         """
-        return _main_gaf_func(record, feature, gaf_data, 'annotation_extension')
+        return _main_gaf_func(record, feature, gaf_data, "annotation_extension")
 
     def gaf_aspect(record, feature, gaf_data):
         """GAF Aspect code
 
         E.g. P (biological process), F (molecular function) or C (cellular component)
         """
-        return _main_gaf_func(record, feature, gaf_data, 'aspect')
+        return _main_gaf_func(record, feature, gaf_data, "aspect")
 
     def gaf_assigned_by(record, feature, gaf_data):
         """GAF Creating Organisation
         """
-        return _main_gaf_func(record, feature, gaf_data, 'assigned_by')
+        return _main_gaf_func(record, feature, gaf_data, "assigned_by")
 
     def gaf_date(record, feature, gaf_data):
         """GAF Creation Date
         """
-        return _main_gaf_func(record, feature, gaf_data, 'date')
+        return _main_gaf_func(record, feature, gaf_data, "date")
 
     def gaf_db(record, feature, gaf_data):
         """GAF DB
         """
-        return _main_gaf_func(record, feature, gaf_data, 'db')
+        return _main_gaf_func(record, feature, gaf_data, "db")
 
     def gaf_db_reference(record, feature, gaf_data):
         """GAF DB Reference
         """
-        return _main_gaf_func(record, feature, gaf_data, 'db_reference')
+        return _main_gaf_func(record, feature, gaf_data, "db_reference")
 
     def gaf_evidence_code(record, feature, gaf_data):
         """GAF Evidence Code
         """
-        return _main_gaf_func(record, feature, gaf_data, 'evidence_code')
+        return _main_gaf_func(record, feature, gaf_data, "evidence_code")
 
     def gaf_go_id(record, feature, gaf_data):
         """GAF GO ID
         """
-        return _main_gaf_func(record, feature, gaf_data, 'go_id')
+        return _main_gaf_func(record, feature, gaf_data, "go_id")
 
     def gaf_go_term(record, feature, gaf_data):
         """GAF GO Term
         """
-        return _main_gaf_func(record, feature, gaf_data, 'go_term')
+        return _main_gaf_func(record, feature, gaf_data, "go_term")
 
     def gaf_id(record, feature, gaf_data):
         """GAF ID
         """
-        return _main_gaf_func(record, feature, gaf_data, 'id')
+        return _main_gaf_func(record, feature, gaf_data, "id")
 
     def gaf_notes(record, feature, gaf_data):
         """GAF Notes
         """
-        return _main_gaf_func(record, feature, gaf_data, 'notes')
+        return _main_gaf_func(record, feature, gaf_data, "notes")
 
     def gaf_owner(record, feature, gaf_data):
         """GAF Creator
         """
-        return _main_gaf_func(record, feature, gaf_data, 'owner')
+        return _main_gaf_func(record, feature, gaf_data, "owner")
 
     def gaf_with_or_from(record, feature, gaf_data):
         """GAF With/From
         """
-        return _main_gaf_func(record, feature, gaf_data, 'with_or_from')
+        return _main_gaf_func(record, feature, gaf_data, "with_or_from")
 
     cols = []
     data = []
     funcs = []
     lcl = locals()
-    for x in [y.strip().lower() for y in wanted_cols.split(',')]:
+    for x in [y.strip().lower() for y in wanted_cols.split(",")]:
         if not x:
             continue
 
         if x in lcl:
             funcs.append(lcl[x])
             # Keep track of docs
-            func_doc = lcl[x].__doc__.strip().split('\n\n')
+            func_doc = lcl[x].__doc__.strip().split("\n\n")
             # If there's a double newline, assume following text is the
             # "help" and the first part is the "name". Generate empty help
             # if not provided
             if len(func_doc) == 1:
-                func_doc += ['']
+                func_doc += [""]
             cols.append(func_doc)
-        elif '__' in x:
-            chosen_funcs = [lcl[y] for y in x.split('__')]
-            func_doc = [' of '.join([y.__doc__.strip().split('\n\n')[0] for y in chosen_funcs[::-1]])]
+        elif "__" in x:
+            chosen_funcs = [lcl[y] for y in x.split("__")]
+            func_doc = [
+                " of ".join(
+                    [y.__doc__.strip().split("\n\n")[0] for y in chosen_funcs[::-1]]
+                )
+            ]
             cols.append(func_doc)
             funcs.append(chosen_funcs)
 
@@ -312,22 +325,22 @@ def annotation_table_report(record, wanted_cols, gaf_data):
                 value = gene
                 for f in func:
                     if value is None:
-                        value = 'None'
+                        value = "None"
                         break
 
                     value = f(record, value)
             else:
                 # Otherwise just apply the lone function
-                if func.func_name.startswith('gaf_'):
+                if func.func_name.startswith("gaf_"):
                     value = func(record, gene, gaf_data)
                 else:
                     value = func(record, gene)
 
             if isinstance(value, list):
-                collapsed_value = ', '.join(value)
-                value = [str(collapsed_value).decode('utf-8')]
+                collapsed_value = ", ".join(value)
+                value = [str(collapsed_value).decode("utf-8")]
             else:
-                value = str(value).decode('utf-8')
+                value = str(value).decode("utf-8")
 
             row.append(value)
         # print row
@@ -355,21 +368,28 @@ def parseGafData(file):
     # 'with_or_from': 'UNIREF90:B2ZYZ7'
     # },
     for row in file:
-        if row.startswith('#'):
+        if row.startswith("#"):
             # Header
-            cols = row.strip().replace('# ', '').replace('GO Term', 'go_term').split('\t')
+            cols = (
+                row.strip().replace("# ", "").replace("GO Term", "go_term").split("\t")
+            )
         else:
-            line = row.strip().split('\t')
+            line = row.strip().split("\t")
             tmp = dict(zip(cols, line))
-            if tmp['gene'] not in data:
-                data[tmp['gene']] = []
+            if tmp["gene"] not in data:
+                data[tmp["gene"]] = []
 
-            data[tmp['gene']].append(tmp)
+            data[tmp["gene"]].append(tmp)
     return data
 
 
-def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotation_validator.html',
-                        annotationTableCols='', gafData=None):
+def evaluate_and_report(
+    annotations,
+    genome,
+    reportTemplateName="phage_annotation_validator.html",
+    annotationTableCols="",
+    gafData=None,
+):
     """
     Generate our HTML evaluation of the genome
     """
@@ -383,45 +403,58 @@ def evaluate_and_report(annotations, genome, reportTemplateName='phage_annotatio
         gaf = parseGafData(gafData)
 
     for record in GFF.parse(annotations, base_dict=seq_dict):
-        if reportTemplateName.endswith('.html'):
+        if reportTemplateName.endswith(".html"):
             record.id = record.id.replace(".", "-")
         log.info("Producing an annotation table for %s" % record.id)
-        annotation_table_data, annotation_table_col_names = annotation_table_report(record, annotationTableCols, gaf)
-        at_table_data.append((
-            record, annotation_table_data
-        ))
+        annotation_table_data, annotation_table_col_names = annotation_table_report(
+            record, annotationTableCols, gaf
+        )
+        at_table_data.append((record, annotation_table_data))
         # break
 
     # This is data that will go into our HTML template
     kwargs = {
-        'annotation_table_data': at_table_data,
-        'annotation_table_col_names': annotation_table_col_names,
+        "annotation_table_data": at_table_data,
+        "annotation_table_col_names": annotation_table_col_names,
     }
 
-    env = Environment(loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True)
-    if reportTemplateName.endswith('.html'):
-        env.filters['nice_id'] = str(get_gff3_id).replace(".", "-")
+    env = Environment(
+        loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True
+    )
+    if reportTemplateName.endswith(".html"):
+        env.filters["nice_id"] = str(get_gff3_id).replace(".", "-")
     else:
-        env.filters['nice_id'] = get_gff3_id
+        env.filters["nice_id"] = get_gff3_id
 
     def join(listy):
-        return '\n'.join(listy)
+        return "\n".join(listy)
 
-    env.filters.update({
-        'join': join
-    })
+    env.filters.update({"join": join})
     tpl = env.get_template(reportTemplateName)
-    return tpl.render(**kwargs).encode('utf-8')
+    return tpl.render(**kwargs).encode("utf-8")
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='rebase gff3 features against parent locations', epilog="")
-    parser.add_argument('annotations', type=argparse.FileType("r"), help='Parent GFF3 annotations')
-    parser.add_argument('genome', type=argparse.FileType("r"), help='Genome Sequence')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="rebase gff3 features against parent locations", epilog=""
+    )
+    parser.add_argument(
+        "annotations", type=argparse.FileType("r"), help="Parent GFF3 annotations"
+    )
+    parser.add_argument("genome", type=argparse.FileType("r"), help="Genome Sequence")
 
-    parser.add_argument('--reportTemplateName', help='Report template file name', default='phageqc_report_full.html')
-    parser.add_argument('--annotationTableCols', help='Select columns to report in the annotation table output format')
-    parser.add_argument('--gafData', help='CPT GAF-like table', type=argparse.FileType('r'))
+    parser.add_argument(
+        "--reportTemplateName",
+        help="Report template file name",
+        default="phageqc_report_full.html",
+    )
+    parser.add_argument(
+        "--annotationTableCols",
+        help="Select columns to report in the annotation table output format",
+    )
+    parser.add_argument(
+        "--gafData", help="CPT GAF-like table", type=argparse.FileType("r")
+    )
 
     args = parser.parse_args()
 

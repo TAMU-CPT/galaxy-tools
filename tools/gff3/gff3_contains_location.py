@@ -11,7 +11,7 @@ def parse_gff(locations, gff3):
         line = line.strip()
         if line:
             locs.append(int(line))
-    #sort for speed
+    # sort for speed
     locs.sort()
 
     for rec in GFF.parse(gff3):
@@ -28,11 +28,15 @@ def parse_gff(locations, gff3):
         GFF.write([rec], sys.stdout)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description='Extract features which contain one or more base locations')
-    parser.add_argument('locations', type=argparse.FileType("r"),
-                        help='table of newline separated base locations')
-    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 annotations')
+        description="Extract features which contain one or more base locations"
+    )
+    parser.add_argument(
+        "locations",
+        type=argparse.FileType("r"),
+        help="table of newline separated base locations",
+    )
+    parser.add_argument("gff3", type=argparse.FileType("r"), help="GFF3 annotations")
     args = parser.parse_args()
     parse_gff(**vars(args))

@@ -3,16 +3,16 @@ import numpy
 import argparse
 from Bio import SeqIO
 import logging
+
 logging.basicConfig(level=logging.INFO)
 
 
 class ABIFParser(object):
-
     def __init__(self, abif_file):
         records = list(SeqIO.parse(abif_file, "abi"))
 
         for record in records:
-            self.abif = record.annotations['abif_raw']
+            self.abif = record.annotations["abif_raw"]
 
         # Copy+pasted from seqtrace-0.9.0
         #
@@ -24,7 +24,7 @@ class ABIFParser(object):
         # sequence data. This method follows the same convention used by the
         # Staden package (see seqIOABI.c), which is to only look at entry 1
         # (the user-edited sequence) and ignore entry 2.
-        self.basecalls = self.abif['PBAS1']
+        self.basecalls = self.abif["PBAS1"]
 
         # There is an inconsistency in the ABIF file format documentation
         # regarding the data format of the confidence scores. The data format
@@ -44,9 +44,9 @@ class ABIFParser(object):
         # follows the same convention used by the Staden package (see
         # seqIOABI.c), which is to only look at entry 1 (the user-edited QVs)
         # and ignore entry 2.
-        self.bcconf = map(ord, self.abif['PCON1'])
+        self.bcconf = map(ord, self.abif["PCON1"])
 
-        self.base_order = self.abif['FWO_1']  # filter wheel order
+        self.base_order = self.abif["FWO_1"]  # filter wheel order
 
         # This is the ID for the first 'DATA' index entry that points to the
         # processed trace data. The man page for the Staden program
@@ -56,25 +56,26 @@ class ABIFParser(object):
         # contain the processed data. Is this always correct?
 
         sn = {}
-        for i, char in enumerate(list(self.abif['FWO_1'])):
+        for i, char in enumerate(list(self.abif["FWO_1"])):
             sn[char] = {
-                'wavelength': self.abif['DyeW' + str(i + 1)],
-                'correction': self.abif['S/N%1'][i],
-                'data': numpy.array(self.abif['DATA' + str(i + 9)]).astype(numpy.float)
+                "wavelength": self.abif["DyeW" + str(i + 1)],
+                "correction": self.abif["S/N%1"][i],
+                "data": numpy.array(self.abif["DATA" + str(i + 9)]).astype(numpy.float),
             }
-        print list(map(ord, self.abif['PCON2']))
-        print len(sn['A']['data'])
+        print(list(map(ord, self.abif["PCON2"])))
+        print(len(sn["A"]["data"]))
 
-        spacing = self.abif['SPAC1']
+        spacing = self.abif["SPAC1"]
         if spacing < 0:
-            spacing = float(self.basepos[-1] - self.basepos[0]) / (len(self.basepos) - 1)
-        print spacing
+            spacing = float(self.basepos[-1] - self.basepos[0]) / (
+                len(self.basepos) - 1
+            )
+        print(spacing)
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Plot AB1 file')
-    parser.add_argument('abif_file', type=argparse.FileType('rb'),
-                        help='ABIF/AB1 file')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Plot AB1 file")
+    parser.add_argument("abif_file", type=argparse.FileType("rb"), help="ABIF/AB1 file")
     args = parser.parse_args()
     ap = ABIFParser(args.abif_file)
     # plot(**vars(args))

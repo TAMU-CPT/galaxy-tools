@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+
 try:
     import StringIO as io
 except ImportError:
@@ -19,8 +20,8 @@ def export(org_cn, seqs):
     data = io.StringIO()
 
     kwargs = dict(
-        exportType='GFF3',
-        seqType='genomic',
+        exportType="GFF3",
+        seqType="genomic",
         exportGff3Fasta=True,
         output="text",
         exportFormat="text",
@@ -28,17 +29,15 @@ def export(org_cn, seqs):
     )
 
     if len(seqs) > 0:
-        data.write(wa.io.write(
-            exportAllSequences=False,
-            sequences=seqs,
-            **kwargs
-        ).encode('utf-8'))
+        data.write(
+            wa.io.write(exportAllSequences=False, sequences=seqs, **kwargs).encode(
+                "utf-8"
+            )
+        )
     else:
-        data.write(wa.io.write(
-            exportAllSequences=True,
-            sequences=[],
-            **kwargs
-        ).encode('utf-8'))
+        data.write(
+            wa.io.write(exportAllSequences=True, sequences=[], **kwargs).encode("utf-8")
+        )
 
     
 
@@ -104,13 +103,15 @@ def export(org_cn, seqs):
     return org_data
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Sample script to add an attribute to a feature via web services"
+    )
     WAAuth(parser)
     CnOrGuess(parser)
-    parser.add_argument('--gff', type=argparse.FileType('w'))
-    parser.add_argument('--fasta', type=argparse.FileType('w'))
-    parser.add_argument('--json', type=argparse.FileType('w'))
+    parser.add_argument("--gff", type=argparse.FileType("w"))
+    parser.add_argument("--fasta", type=argparse.FileType("w"))
+    parser.add_argument("--json", type=argparse.FileType("w"))
 
     args = parser.parse_args()
 

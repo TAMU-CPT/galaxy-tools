@@ -11,6 +11,7 @@ from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda
 from collections import OrderedDict
 import logging
+
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
@@ -86,17 +87,12 @@ def parse_gff(gff3):
         
         _rec = rec
         _rec.annotations = {}
-        for feat in feature_lambda(
-            rec.features,
-            test_true,
-            {},
-            subfeatures=False
-        ):
-            if feat.type == 'CDS':
-                if 'Name' in feat.qualifiers.keys():
-                    CDSname = feat.qualifiers['Name']
+        for feat in feature_lambda(rec.features, test_true, {}, subfeatures=False):
+            if feat.type == "CDS":
+                if "Name" in feat.qualifiers.keys():
+                    CDSname = feat.qualifiers["Name"]
                 else:
-                    CDSname = feat.qualifiers['ID']
+                    CDSname = feat.qualifiers["ID"]
                 gff_info[feat.id] = {
                     'strand': feat.strand,
                     'start': feat.location.start,
@@ -110,17 +106,16 @@ def parse_gff(gff3):
     gff_info = OrderedDict(sorted(gff_info.items(), key=lambda k: k[1]['start']))
     #endBase = 0
     for i, feat_id in enumerate(gff_info):
-        gff_info[feat_id].update({'index': i})
-        if gff_info[feat_id]['loc'].end > endBase:
-            endBase = gff_info[feat_id]['loc'].end 
-    
+        gff_info[feat_id].update({"index": i})
+        if gff_info[feat_id]["loc"].end > endBase:
+            endBase = gff_info[feat_id]["loc"].end
 
     return dict(gff_info), _rec, endBase
 
 
 def all_same(genes_list):
     """ Returns True if all gene names in cluster are identical """
-    return all(gene['name'] == genes_list[0]['name'] for gene in genes_list[1:])
+    return all(gene["name"] == genes_list[0]["name"] for gene in genes_list[1:])
 
 
 def remove_duplicates(clusters):
@@ -176,7 +171,7 @@ class IntronFinder(object):
             pos_strand = []
             neg_strand = []
             for gene in self.clusters[key]:
-                if self.gff_info[gene['name']]['strand'] == 1:
+                if self.gff_info[gene["name"]]["strand"] == 1:
                     pos_strand.append(gene)
                 else:
                     neg_strand.append(gene)
@@ -184,7 +179,7 @@ class IntronFinder(object):
                 filtered_clusters[key] = self.clusters[key]
             else:
                 if len(pos_strand) > 1:
-                    filtered_clusters[key + '_+1'] = pos_strand
+                    filtered_clusters[key + "_+1"] = pos_strand
                 if len(neg_strand) > 1:
                     filtered_clusters[key + '_-1'] = neg_strand
                     
@@ -211,10 +206,10 @@ class IntronFinder(object):
 
             for i, hits in enumerate(hits_lists):
                 if len(hits) >= 2:
-                    filtered_clusters[key + '_' + str(i)] = hits
-        #for i in filtered_clusters:
-         #   print(i)
-          #  print(filtered_clusters[i])
+                    filtered_clusters[key + "_" + str(i)] = hits
+        # for i in filtered_clusters:
+        #   print(i)
+        #  print(filtered_clusters[i])
         log.debug("check_gene_gap %s -> %s", len(self.clusters), len(filtered_clusters))
         
         return remove_duplicates(filtered_clusters)  # call remove_duplicates somewhere else?
@@ -280,10 +275,10 @@ class IntronFinder(object):
         condensed_report = {}
         for key in self.clusters:
             for gene in self.clusters[key]:
-                if gene['name'] in condensed_report:
-                    condensed_report[gene['name']].append(gene['sbjct_range'])
+                if gene["name"] in condensed_report:
+                    condensed_report[gene["name"]].append(gene["sbjct_range"])
                 else:
-                    condensed_report[gene['name']] = [gene['sbjct_range']]
+                    condensed_report[gene["name"]] = [gene["sbjct_range"]]
         return condensed_report
 
     def cluster_report_2(self):
@@ -291,11 +286,11 @@ class IntronFinder(object):
         for key in self.clusters:
             gene_names = []
             for gene in self.clusters[key]:
-                gene_names.append((gene['name']).strip('CPT_phageK_'))
-            if ', '.join(gene_names) in condensed_report:
-                condensed_report[', '.join(gene_names)] += 1
+                gene_names.append((gene["name"]).strip("CPT_phageK_"))
+            if ", ".join(gene_names) in condensed_report:
+                condensed_report[", ".join(gene_names)] += 1
             else:
-                condensed_report[', '.join(gene_names)] = 1
+                condensed_report[", ".join(gene_names)] = 1
         return condensed_report
 
     def cluster_report_3(self):
@@ -305,24 +300,23 @@ class IntronFinder(object):
             gi_nos = []
             for i, gene in enumerate(self.clusters[key]):
                 if i == 0:
-                    gi_nos = gene['gi_nos']
-                gene_names.append((gene['name']).strip('.p01').strip('CPT_phageK_gp'))
-            if ', '.join(gene_names) in condensed_report:
-                condensed_report[', '.join(gene_names)].append(gi_nos)
+                    gi_nos = gene["gi_nos"]
+                gene_names.append((gene["name"]).strip(".p01").strip("CPT_phageK_gp"))
+            if ", ".join(gene_names) in condensed_report:
+                condensed_report[", ".join(gene_names)].append(gi_nos)
             else:
-                condensed_report[', '.join(gene_names)] = [gi_nos]
+                condensed_report[", ".join(gene_names)] = [gi_nos]
         return condensed_report
 
-    
     def output_gff3(self, clusters):
         rec = copy.deepcopy(self.rec)
         rec.features = []
         for cluster_idx, cluster_id in enumerate(clusters):
             # Get the list of genes in this cluster
-            associated_genes = set([x['name'] for x in clusters[cluster_id]])
+            associated_genes = set([x["name"] for x in clusters[cluster_id]])
             # print(associated_genes)
             # Get the gene locations
-            assoc_gene_info = {x: self.gff_info[x]['loc'] for x in associated_genes}
+            assoc_gene_info = {x: self.gff_info[x]["loc"] for x in associated_genes}
             # Now we construct a gene from the children as a "standard gene model" gene.
             # Get the minimum and maximum locations covered by all of the children genes
             gene_min = min([min(x[1].start, x[1].end) for x in assoc_gene_info.items()])
@@ -341,7 +335,7 @@ class IntronFinder(object):
             # With that we can create the top level gene
             gene = SeqFeature(
                 location=FeatureLocation(gene_min, gene_max),
-                type='gene',
+                type="gene",
                 id=cluster_id,
                 qualifiers={
                     'ID': ['gp_%s' % cluster_idx],
@@ -353,20 +347,19 @@ class IntronFinder(object):
             # Below that we have an mRNA
             mRNA = SeqFeature(
                 location=FeatureLocation(gene_min, gene_max),
-                type='mRNA',
-                id=cluster_id + '.mRNA',
-                qualifiers={
-                    'ID': ['gp_%s.mRNA' % cluster_idx],
-                    'note': evidence_notes,
-                }
+                type="mRNA",
+                id=cluster_id + ".mRNA",
+                qualifiers={"ID": ["gp_%s.mRNA" % cluster_idx], "note": evidence_notes},
             )
 
             # Now come the CDSs.
             cdss = []
             # We sort them just for kicks
-            for idx, gene_name in enumerate(sorted(associated_genes, key=lambda x: int(self.gff_info[x]['start']))):
+            for idx, gene_name in enumerate(
+                sorted(associated_genes, key=lambda x: int(self.gff_info[x]["start"]))
+            ):
                 # Copy the CDS so we don't muck up a good one
-                cds = copy.copy(self.gff_info[gene_name]['feat'])
+                cds = copy.copy(self.gff_info[gene_name]["feat"])
                 # Get the associated cluster element (used in the Notes above)
                 cluster_elem = [x for x in clusters[cluster_id] if x['name'] == gene_name][0]
                 
@@ -402,17 +395,17 @@ class IntronFinder(object):
         #print(type(enumerate(clusters)))
         #print(type(clusters))
         for cluster_idx, cluster_id in enumerate(clusters):
-            #print(type(cluster_id))
-            #print(type(cluster_idx)) 
-            #print(type(clusters[cluster_id][0]['hit_num']))
-            if not (clusters[cluster_id][0]['iter_num'] in threeLevel.keys):
-                threeLevel[clusters[cluster_id][0]['iter_num']] = {}
-        #for cluster_idx, cluster_id in enumerate(clusters):
+            # print(type(cluster_id))
+            # print(type(cluster_idx))
+            # print(type(clusters[cluster_id][0]['hit_num']))
+            if not (clusters[cluster_id][0]["iter_num"] in threeLevel.keys):
+                threeLevel[clusters[cluster_id][0]["iter_num"]] = {}
+        # for cluster_idx, cluster_id in enumerate(clusters):
         #    print(type(clusters[cluster_id]))
         #    b = {clusters[cluster_id][i]: clusters[cluster_id][i+1] for i in range(0, len(clusters[cluster_id]), 2)}
         #    print(type(b))#['name']))
-        #for hspList in clusters:
-        #for x, idx in (enumerate(clusters)):#for hsp in hspList:
+        # for hspList in clusters:
+        # for x, idx in (enumerate(clusters)):#for hsp in hspList:
         #    print("In X")
 
 if __name__ == '__main__':
@@ -437,14 +430,12 @@ if __name__ == '__main__':
     ifinder.clusters = ifinder.check_strand()
     ifinder.clusters = ifinder.check_gene_gap(maximum=args.maximum)
     ifinder.clusters = ifinder.check_seq_overlap(minimum=args.minimum)
-    #ifinder.output_xml(ifinder.clusters)
-    #for x, idx in (enumerate(ifinder.clusters)):
-    #print(ifinder.blast)
+    # ifinder.output_xml(ifinder.clusters)
+    # for x, idx in (enumerate(ifinder.clusters)):
+    # print(ifinder.blast)
 
     condensed_report = ifinder.cluster_report()
     rec = ifinder.output_gff3(ifinder.clusters)
     GFF.write([rec], sys.stdout)
-    
-    
 
-    #import pprint; pprint.pprint(ifinder.clusters)
+    # import pprint; pprint.pprint(ifinder.clusters)
