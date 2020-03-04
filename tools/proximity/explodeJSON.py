@@ -1,15 +1,15 @@
 import json
 
-class explodeJSON:
 
+class explodeJSON:
     def __init__(self, file):
         self.file = file
 
     def readJSON(self):
         """ returns dictionary object for reading a JSON """
         with open(self.file) as j:
-            myObj = json.load(j) 
-        
+            myObj = json.load(j)
+
         return myObj
 
     def explode(self):
@@ -27,17 +27,16 @@ class explodeJSON:
 
 if __name__ == "__main__":
     query = []
-    filepath = 'test-data/'
-    filename = 'test.json'
-    e = explodeJSON(file=filepath+filename)
+    filepath = "test-data/"
+    filename = "test.json"
+    e = explodeJSON(file=filepath + filename)
     data = e.readJSON()
     print(data)
     for k, v in data.items():
         for term in v:
-            print(k+ ':' +term) # print global term to synonym / children terms.
+            print(k + ":" + term)  # print global term to synonym / children terms.
 
-
-    print('++ ========= ++')
+    print("++ ========= ++")
 
     terms = e.explode()
     print(terms)

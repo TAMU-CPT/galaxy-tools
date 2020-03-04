@@ -1,4 +1,4 @@
-'''
+"""
 This program is intended to find gene products that would be acceptable disruptin candidates.
 
 The criteria can be toggled between selecting for proteins with:
@@ -19,14 +19,16 @@ Input a multi fasta file with all of the predicted protein sequences from the ge
 sequence length, net charge, and charge residue to length ratio. The program outputs another fasta file.
 The output fasta file includes records for all the sequences meeting the size and charge criteria.
 
-'''
+"""
 
 from Bio import SeqIO
 import argparse
 import sys
 
 
-def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_ratio, selection_criteria):
+def disruptin_finder(
+    fasta_file, thresh_size, thresh_net_charge, thresh_charge_ratio, selection_criteria
+):
     # Iterable variables
     net_charge = 0
     charge_res = 0
@@ -41,27 +43,30 @@ def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_r
         if len(sequence) <= thresh_size:
             for aa in sequence:
                 # For R and K residues a positive charge is given
-                if aa in 'RK':
+                if aa in "RK":
                     net_charge += 1
                     charge_res += 1
                 # For D and E residues a negative charge is given
-                elif aa in 'DE':
+                elif aa in "DE":
                     net_charge -= 1
                     charge_res += 1
 
             # Charge (total charged residues) to size ratio is calculated
             Length = len(sequence)
-            charge_ratio = float(charge_res)/float(Length)
+            charge_ratio = float(charge_res) / float(Length)
 
             # Based on the user-specified selection criteria a list of records is compiled
-            if selection_criteria == 'net':
+            if selection_criteria == "net":
                 if net_charge >= thresh_net_charge:
                     total_record = total_record + [rec]
-            elif selection_criteria == 'ratio':
+            elif selection_criteria == "ratio":
                 if charge_ratio >= thresh_charge_ratio:
                     total_record = total_record + [rec]
-            elif selection_criteria =='both':
-                if charge_ratio >= thresh_charge_ratio and net_charge >= thresh_net_charge:
+            elif selection_criteria == "both":
+                if (
+                    charge_ratio >= thresh_charge_ratio
+                    and net_charge >= thresh_net_charge
+                ):
                     total_record = total_record + [rec]
 
             # Reset the iterable variables
@@ -72,14 +77,16 @@ def disruptin_finder(fasta_file, thresh_size, thresh_net_charge, thresh_charge_r
     yield total_record
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Grab all of the filters from our plugin loader
-    parser = argparse.ArgumentParser(description='Disruptin Finder')
-    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Multi-FASTA Input')
-    parser.add_argument('--thresh_net_charge', type=int, default=4)
-    parser.add_argument('--thresh_size', type=int, default=100)
-    parser.add_argument('--thresh_charge_ratio', type=float, default=0.25)
-    parser.add_argument('--selection_criteria', action='store')
+    parser = argparse.ArgumentParser(description="Disruptin Finder")
+    parser.add_argument(
+        "fasta_file", type=argparse.FileType("r"), help="Multi-FASTA Input"
+    )
+    parser.add_argument("--thresh_net_charge", type=int, default=4)
+    parser.add_argument("--thresh_size", type=int, default=100)
+    parser.add_argument("--thresh_charge_ratio", type=float, default=0.25)
+    parser.add_argument("--selection_criteria", action="store")
     args = parser.parse_args()
 
     for seq in disruptin_finder(**vars(args)):

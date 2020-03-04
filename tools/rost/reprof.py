@@ -14,10 +14,12 @@ from Bio.SeqFeature import SeqFeature, FeatureLocation
 def run_reprof(query_path, modeldir):
     outtmp = tempfile.NamedTemporaryFile(delete=False)
     cmd = [
-        './reprof/scripts/reprof',
-        '-i', query_path,
-        '--modeldir=%s' % modeldir,
-        '-o', outtmp.name
+        "./reprof/scripts/reprof",
+        "-i",
+        query_path,
+        "--modeldir=%s" % modeldir,
+        "-o",
+        outtmp.name,
     ]
     subprocess.check_call(cmd)
     outtmp.seek(0)
@@ -28,14 +30,28 @@ def run_reprof(query_path, modeldir):
 
 
 def process_reprof_report(data):
-    KEYS = ['idx', 'AA', 'PHEL', 'RI_S', 'pH', 'pE', 'pL', 'PACC', 'PREL', 'P10', 'RI_A', 'Pbe', 'Pbie']
+    KEYS = [
+        "idx",
+        "AA",
+        "PHEL",
+        "RI_S",
+        "pH",
+        "pE",
+        "pL",
+        "PACC",
+        "PREL",
+        "P10",
+        "RI_A",
+        "Pbe",
+        "Pbie",
+    ]
     data_tracks = {k: [] for k in KEYS}
 
-    for line in data.split('\n'):
-        if line.startswith('#') or line.startswith('No') or len(line.strip()) == 0:
+    for line in data.split("\n"):
+        if line.startswith("#") or line.startswith("No") or len(line.strip()) == 0:
             continue
 
-        for idx, (key, value) in enumerate(zip(KEYS, line.strip().split('\t'))):
+        for idx, (key, value) in enumerate(zip(KEYS, line.strip().split("\t"))):
             # numerical columns
             if idx not in (1, 2, 11, 12):
                 value = int(value)
@@ -45,16 +61,16 @@ def process_reprof_report(data):
 
 
 def storeWigData(idx, data, id, path):
-    with open(path, 'a') as handle:
-        handle.write('variableStep chrom=%s\n' % id)
+    with open(path, "a") as handle:
+        handle.write("variableStep chrom=%s\n" % id)
         for (pos, val) in zip(idx, data):
-            handle.write('%s %s\n' % (pos, val))
+            handle.write("%s %s\n" % (pos, val))
 
 
 def storeGff3Data(path, id, positions, values, decodeMap):
-    merged = ''.join(values)
+    merged = "".join(values)
     # http://stackoverflow.com/a/19683549
-    regions = [(x[0][0].upper(), len(x[0])) for x in re.findall('((.)(\\2*))', merged)]
+    regions = [(x[0][0].upper(), len(x[0])) for x in re.findall("((.)(\\2*))", merged)]
 
     location = 1
 
@@ -69,71 +85,74 @@ def storeGff3Data(path, id, positions, values, decodeMap):
         # Create a feature representing this region
         region_feat = SeqFeature(
             FeatureLocation(location - 1, location - 1 + region_length),
-            type=region_info['type'], strand=0,
-            qualifiers={k: v for (k, v) in region_info.iteritems() if k != 'type'}
+            type=region_info["type"],
+            strand=0,
+            qualifiers={k: v for (k, v) in region_info.iteritems() if k != "type"},
         )
         # Update our start location
         location += region_length
         rec.features.append(region_feat)
 
-    with open(path, 'a') as handle:
+    with open(path, "a") as handle:
         GFF.write([rec], handle)
 
 
 def main(fasta, modeldir):
-    for record in SeqIO.parse(fasta, 'fasta'):
+    for record in SeqIO.parse(fasta, "fasta"):
         tmp = tempfile.NamedTemporaryFile(delete=False)
-        SeqIO.write([record], tmp, 'fasta')
+        SeqIO.write([record], tmp, "fasta")
         tmp.close()
 
         # Run reprof
         data = process_reprof_report(run_reprof(tmp.name, modeldir))
-        for col in ('RI_S', 'P10', 'RI_A', 'PACC', 'PREL', 'pH', 'pE', 'pL'):
-            storeWigData(data['idx'], data[col], record.id, col + '.wig')
+        for col in ("RI_S", "P10", "RI_A", "PACC", "PREL", "pH", "pE", "pL"):
+            storeWigData(data["idx"], data[col], record.id, col + ".wig")
 
         storeGff3Data(
-            'secondary_structure.gff3', record.id, data['idx'], data['PHEL'],
+            "secondary_structure.gff3",
+            record.id,
+            data["idx"],
+            data["PHEL"],
             {
-                'H': {
-                    'type': 'peptide_helix',
-                    'label': ['Helix'],
-                    'evidence': ['ECO:0000255']
+                "H": {
+                    "type": "peptide_helix",
+                    "label": ["Helix"],
+                    "evidence": ["ECO:0000255"],
                 },
-                'E': {
-                    'type': 'beta_strand',
-                    'label': ['Extended/Sheet'],
-                    'evidence': ['ECO:0000255']
+                "E": {
+                    "type": "beta_strand",
+                    "label": ["Extended/Sheet"],
+                    "evidence": ["ECO:0000255"],
                 },
-                'L': {
-                    'type': 'loop',
-                    'label': ['Loop'],
-                    'evidence': ['ECO:0000255']
-                }
-            }
+                "L": {"type": "loop", "label": ["Loop"], "evidence": ["ECO:0000255"]},
+            },
         )
 
         storeGff3Data(
-            'solvent_accessibility.gff3', record.id, data['idx'], data['Pbe'],
+            "solvent_accessibility.gff3",
+            record.id,
+            data["idx"],
+            data["Pbe"],
             {
-                'B': {
-                    'type': 'experimental_result_region',
-                    'label': ['Buried'],
-                    'evidence': ['ECO:0000255']
+                "B": {
+                    "type": "experimental_result_region",
+                    "label": ["Buried"],
+                    "evidence": ["ECO:0000255"],
                 },
-                'E': {
-                    'type': 'experimental_result_region',
-                    'label': ['Exposed'],
-                    'evidence': ['ECO:0000255']
+                "E": {
+                    "type": "experimental_result_region",
+                    "label": ["Exposed"],
+                    "evidence": ["ECO:0000255"],
                 },
-            }
+            },
         )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Grab all of the filters from our plugin loader
-    parser = argparse.ArgumentParser(description='Wrapper for reprof')
-    parser.add_argument('fasta', type=argparse.FileType("r"), help='Fasta Input')
-    parser.add_argument('modeldir')
+    parser = argparse.ArgumentParser(description="Wrapper for reprof")
+    parser.add_argument("fasta", type=argparse.FileType("r"), help="Fasta Input")
+    parser.add_argument("modeldir")
     args = parser.parse_args()
 
     main(**vars(args))

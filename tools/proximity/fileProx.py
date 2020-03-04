@@ -7,12 +7,12 @@ from BCBio import GFF
 
 #### Text Files
 class FileParser:
-
     def __init__(self, file):
-        self.file = file # term that wants to be queried
+        self.file = file  # term that wants to be queried
+
+
 #### GFF3
 class read_a_GFF3(FileParser):
-    
     def find_prox(self):
         gff = open(self.file)
         gff_recs = []
@@ -21,9 +21,12 @@ class read_a_GFF3(FileParser):
             gff_recs.append(rec)
         gff.close()
 
+
 #### Genbank
 class read_a_GBK(FileParser):
     pass
+
+
 #### FASTA
 class read_a_FASTA(FileParser):
     pass
