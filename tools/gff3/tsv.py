@@ -12,17 +12,13 @@ def load(handle):
 
 def dump(data, handle=sys.stdout):
     for row in data:
-        handle.write('%s\n' % '\t'.join(
-            map(str, row)
-        ))
+        handle.write("%s\n" % "\t".join(map(str, row)))
 
 
 def dumps(data):
     output = ""
     for row in data:
-        output += '%s\n' % '\t'.join(
-            map(str, row)
-        )
+        output += "%s\n" % "\t".join(map(str, row))
     return output
 
 

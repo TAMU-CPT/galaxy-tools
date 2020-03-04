@@ -5,24 +5,25 @@ import copy
 from Bio import SeqIO
 from Bio.Seq import Seq
 import logging
+
 logging.basicConfig(level=logging.INFO)
 
 
 def mutate(char):
-    targets = ['A', 'C', 'T', 'G']
+    targets = ["A", "C", "T", "G"]
     del targets[targets.index(char)]
     return targets
 
 
 def insert(char):
-    return [char + x for x in ('A', 'C', 'T', 'G')]
+    return [char + x for x in ("A", "C", "T", "G")]
 
 
 def delete(char):
     return [""]
 
 
-def snp(fasta_file, mutation='mutate', translate=False):
+def snp(fasta_file, mutation="mutate", translate=False):
 
     methodToCall = globals()[mutation]
 
@@ -34,20 +35,20 @@ def snp(fasta_file, mutation='mutate', translate=False):
             messages = []
             ids = []
             if i == -1:
-                if mutation == 'insert':
+                if mutation == "insert":
                     for tmp in methodToCall(""):
                         results.append(tmp + seq)
-                        messages.append('[%s at %s: %s]' % (mutation, i + 1, tmp))
-                        ids.append('_%s%s%s' % (mutation[0], i + 1, tmp))
+                        messages.append("[%s at %s: %s]" % (mutation, i + 1, tmp))
+                        ids.append("_%s%s%s" % (mutation[0], i + 1, tmp))
                 else:
                     results = None
             else:
                 # Get all possible mutations
                 for mutated in methodToCall(seq[i]):
                     # And add those
-                    results.append(seq[0:i] + mutated + seq[i + 1:])
-                    messages.append('[%s at %s: %s]' % (mutation, i + 1, mutated))
-                    ids.append('_%s%s%s' % (mutation[0], i + 1, mutated))
+                    results.append(seq[0:i] + mutated + seq[i + 1 :])
+                    messages.append("[%s at %s: %s]" % (mutation, i + 1, mutated))
+                    ids.append("_%s%s%s" % (mutation[0], i + 1, mutated))
 
             if results is not None:
                 seen = {}
@@ -67,12 +68,19 @@ def snp(fasta_file, mutation='mutate', translate=False):
                     yield [rec_copy]
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Generate ALL possible SNPs in fasta sequences')
-    parser.add_argument('fasta_file', type=argparse.FileType('r'), help='Fasta file')
-    parser.add_argument('mutation', type=str, help='Type of mutation to make',
-                        default='mutate', choices=['mutate', 'insert', 'delete'])
-    parser.add_argument('--translate', action='store_true')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Generate ALL possible SNPs in fasta sequences"
+    )
+    parser.add_argument("fasta_file", type=argparse.FileType("r"), help="Fasta file")
+    parser.add_argument(
+        "mutation",
+        type=str,
+        help="Type of mutation to make",
+        default="mutate",
+        choices=["mutate", "insert", "delete"],
+    )
+    parser.add_argument("--translate", action="store_true")
 
     args = parser.parse_args()
     for record in snp(**vars(args)):

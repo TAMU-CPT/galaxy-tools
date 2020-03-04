@@ -23,8 +23,10 @@ def indexed_bam(bam_file):
 
 
 def gen_header(bam_file, suffix):
-    track_name = "name=%s_%s" % (os.path.splitext(
-        os.path.split(bam_file)[-1])[0], suffix)
+    track_name = "name=%s_%s" % (
+        os.path.splitext(os.path.split(bam_file)[-1])[0],
+        suffix,
+    )
     return "track type=wiggle_0 %s visibility=full\n" % track_name
 
 
@@ -80,14 +82,14 @@ def start_data(bam_file, starts_f=None, starts_r=None):
                     else:
                         start_map_f[rstart] = 1
             # Write to file
-            starts_f_wig.write(gen_header(bam_file.name, 'f'))
+            starts_f_wig.write(gen_header(bam_file.name, "f"))
             starts_f_wig.write("variableStep chrom=%s\n" % chrom)
             for i in range(start + 1, end + 1):
                 if i in start_map_f:
                     starts_f_wig.write("%s %.1f\n" % (i, start_map_f[i]))
                 else:
                     starts_f_wig.write("%s 0.0\n" % i)
-            starts_r_wig.write(gen_header(bam_file.name, 'r'))
+            starts_r_wig.write(gen_header(bam_file.name, "r"))
             starts_r_wig.write("variableStep chrom=%s\n" % chrom)
             for i in range(start + 1, end + 1):
                 if i in start_map_r:
@@ -106,12 +108,22 @@ def start_data(bam_file, starts_f=None, starts_r=None):
             os.unlink(starts_r_wig.name)
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Extract starts from BAM as BigWig')
-    parser.add_argument('bam_file', type=argparse.FileType("r"), help='Bam file')
-    parser.add_argument('--starts_f', type=argparse.FileType('wb'), default='starts.f.bw', help='Sense Starts File')
-    parser.add_argument('--starts_r', type=argparse.FileType('wb'), default='starts.r.bw', help='Antisense Starts File')
-    parser.add_argument('--version', action='version', version='0.1')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Extract starts from BAM as BigWig")
+    parser.add_argument("bam_file", type=argparse.FileType("r"), help="Bam file")
+    parser.add_argument(
+        "--starts_f",
+        type=argparse.FileType("wb"),
+        default="starts.f.bw",
+        help="Sense Starts File",
+    )
+    parser.add_argument(
+        "--starts_r",
+        type=argparse.FileType("wb"),
+        default="starts.r.bw",
+        help="Antisense Starts File",
+    )
+    parser.add_argument("--version", action="version", version="0.1")
     args = parser.parse_args()
 
     start_data(**vars(args))

@@ -52,18 +52,18 @@ def disruptin_table(garnier_file, fasta_file):
         for aa in sequence:
             position_vec += [str(position)]
             residue_vec += [str(aa)]
-            sec_struct_vec += [str(sec_struct[record_number][position-1])]
+            sec_struct_vec += [str(sec_struct[record_number][position - 1])]
 
             # For R and K residues a positive charge is given
-            if aa in 'RK':
-                symbol = '+'
+            if aa in "RK":
+                symbol = "+"
             # For D and E residues a negative charge is given
-            elif aa in 'DE':
-                symbol = '-'
-            elif aa in 'AVMILPWFG':
-                symbol = 'N'
-            elif aa in 'HSYTCQN':
-                symbol = 'P'
+            elif aa in "DE":
+                symbol = "-"
+            elif aa in "AVMILPWFG":
+                symbol = "N"
+            elif aa in "HSYTCQN":
+                symbol = "P"
             charge_sym_vec += symbol
             position += 1
 
@@ -71,7 +71,7 @@ def disruptin_table(garnier_file, fasta_file):
             # is 9, the first 4 residues and last 4 residues as set blank so as to center the values to their
             # approximate position on the sequence.
             prot_ana_seq = ProteinAnalysis(sequence)
-            hydro = [0]*4 + prot_ana_seq.protein_scale(ProtParamData.kd, 9) + [0]*4
+            hydro = [0] * 4 + prot_ana_seq.protein_scale(ProtParamData.kd, 9) + [0] * 4
 
         record_number += 1
         position = 1
@@ -85,11 +85,18 @@ def disruptin_table(garnier_file, fasta_file):
     # returns values for name of the sequence
     return record, p, r, c, h, s
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # Grab all of the filters from our plugin loader
-    parser = argparse.ArgumentParser(description='Disruptin Table Output')
-    parser.add_argument('garnier_file', type=argparse.FileType("r"), help='csv file from garnier reader')
-    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='fasta file of disruptin candidates')
+    parser = argparse.ArgumentParser(description="Disruptin Table Output")
+    parser.add_argument(
+        "garnier_file", type=argparse.FileType("r"), help="csv file from garnier reader"
+    )
+    parser.add_argument(
+        "fasta_file",
+        type=argparse.FileType("r"),
+        help="fasta file of disruptin candidates",
+    )
     args = parser.parse_args()
 
     # Set up output location
@@ -108,8 +115,8 @@ if __name__ == '__main__':
 #        writer1.writerow([''])
 
         print(str(iden[i]))
-        print('Position \t ' + '\t'.join(position[i]))
-        print('Residue \t' + '\t'.join(residue[i]))
-        print('Charge \t' + '\t'.join(charge[i]))
-        print('Hydrophobicity \t' + '\t'.join(format(x, ".3f") for x in hydro[i]))
-        print('Secondary Structure \t' + '\t'.join(struct[i]))
+        print("Position \t " + "\t".join(position[i]))
+        print("Residue \t" + "\t".join(residue[i]))
+        print("Charge \t" + "\t".join(charge[i]))
+        print("Hydrophobicity \t" + "\t".join(format(x, ".3f") for x in hydro[i]))
+        print("Secondary Structure \t" + "\t".join(struct[i]))

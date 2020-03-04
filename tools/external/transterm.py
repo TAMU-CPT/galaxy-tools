@@ -11,14 +11,29 @@ from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from BCBio import GFF
 from gff3 import feature_lambda, feature_test_type
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 
-REGEX_TERM = re.compile('  TERM \d+ \s* (\d+) - (\d+)\s*(\+|-) [^ ]* \s* (\d+)\s* ([0-9.-]+)\s* -([0-9.]+)\s*\|\s*(.*)')
-PARTS_TERM = re.compile('  ([^ ]*)\s+([^ ]*)\s+([^ ]*)\s+([^ ]*)\s+([^ ]*)')
-COLS = ("start", "end", "strand", "confidence", "hp score", "tail score",
-        "notes", "5' tail", "5' stem", "loop", "3' stem", "3' tail")
+REGEX_TERM = re.compile(
+    "  TERM \d+ \s* (\d+) - (\d+)\s*(\+|-) [^ ]* \s* (\d+)\s* ([0-9.-]+)\s* -([0-9.]+)\s*\|\s*(.*)"
+)
+PARTS_TERM = re.compile("  ([^ ]*)\s+([^ ]*)\s+([^ ]*)\s+([^ ]*)\s+([^ ]*)")
+COLS = (
+    "start",
+    "end",
+    "strand",
+    "confidence",
+    "hp score",
+    "tail score",
+    "notes",
+    "5' tail",
+    "5' stem",
+    "loop",
+    "3' stem",
+    "3' tail",
+)
 
 
 def build_expterm():
@@ -27,25 +42,35 @@ def build_expterm():
 
 def generate_annotation_file(gff3):
     # TODO: cleanup
-    t = tempfile.NamedTemporaryFile(delete=False, suffix='.coords')
+    t = tempfile.NamedTemporaryFile(delete=False, suffix=".coords")
     for rec in GFF.parse(gff3):
-        features = feature_lambda(rec.features, feature_test_type, {'type': 'CDS'}, subfeatures=False)
+        features = feature_lambda(
+            rec.features, feature_test_type, {"type": "CDS"}, subfeatures=False
+        )
         for feature in sorted(features, key=lambda x: x.location.start):
-            t.write('\t'.join(map(str, [
-                feature.id,
-                feature.location.start + 1,
-                feature.location.end,
-                rec.id
-            ])) + '\n')
+            t.write(
+                "\t".join(
+                    map(
+                        str,
+                        [
+                            feature.id,
+                            feature.location.start + 1,
+                            feature.location.end,
+                            rec.id,
+                        ],
+                    )
+                )
+                + "\n"
+            )
     name = t.name
     t.close()
     return name
 
 
 def run_transterm(expterm, fasta, annotations):
-    output = subprocess.check_output([
-        'transterm', '-p', expterm, '--all-context', fasta, annotations
-    ])
+    output = subprocess.check_output(
+        ["transterm", "-p", expterm, "--all-context", fasta, annotations]
+    )
     return output
 
 
@@ -56,40 +81,33 @@ def pairwise(it):
 
 
 def parse_transterm(data):
-    data = data.split('SEQUENCE')[1:]
+    data = data.split("SEQUENCE")[1:]
     for datum in data:
-        lines = datum.split('\n')
+        lines = datum.split("\n")
 
         seq_name = lines[0][1:]
-        seq_name = seq_name[0:seq_name.index(' ')]
+        seq_name = seq_name[0 : seq_name.index(" ")]
 
-        record = SeqRecord(
-            Seq("ACTG"),
-            id=seq_name
-        )
+        record = SeqRecord(Seq("ACTG"), id=seq_name)
 
         important_lines = [
-            x for x in lines
-            if len(x.strip()) > 0 and
-            x.startswith('  ')
+            x for x in lines if len(x.strip()) > 0 and x.startswith("  ")
         ]
         # Must have an even #
         assert len(important_lines) % 2 == 0
         for idx, (a, b) in enumerate(pairwise(important_lines)):
-            parsed_data = \
-                REGEX_TERM.match(a).groups() + \
-                PARTS_TERM.match(b).groups()
+            parsed_data = REGEX_TERM.match(a).groups() + PARTS_TERM.match(b).groups()
 
             pd = {k: v for (k, v) in zip(COLS, parsed_data)}
             # start , end  , strand , confidence , hp score , tail score , notes
             # , 5' tail         , 5'stem   , loop , 3' stem  , 3'loop
-            start = int(pd['start'])
-            end = int(pd['end'])
+            start = int(pd["start"])
+            end = int(pd["end"])
 
             notes = {k: pd[k] for k in COLS[6:]}
             notes2 = {}
             # However, if on - strand, we need to swap 5', 3':
-            if pd['strand'] == '-':
+            if pd["strand"] == "-":
                 # Also need to flip the data
                 notes2 = {
                     "[1] 5' stem": str(Seq(notes["3' stem"]).reverse_complement()),
@@ -106,14 +124,14 @@ def parse_transterm(data):
                 }
 
             qualifiers = {
-                'score': pd['confidence'],
-                'source': 'TranstermHP',
-                'ID': ['terminator_%s' % idx],
+                "score": pd["confidence"],
+                "source": "TranstermHP",
+                "ID": ["terminator_%s" % idx],
             }
             current_start = min(start, end) - 1
             current_end = max(start, end)
 
-            if pd['strand'] == '+':
+            if pd["strand"] == "+":
                 # Let's extend the current_end to include any Ts we find.
                 # Take the 3' tail, and check to see how many Ts we can strip:
                 #
@@ -123,12 +141,18 @@ def parse_transterm(data):
                 addition = ""
                 prime3tail = notes["3' tail"]
                 for idx in range(len(prime3tail)):
-                    if prime3tail[idx] != 'T' and addition.count('A') + addition.count('C') + addition.count('G') == 1:
+                    if (
+                        prime3tail[idx] != "T"
+                        and addition.count("A")
+                        + addition.count("C")
+                        + addition.count("G")
+                        == 1
+                    ):
                         break
 
                     addition += prime3tail[idx]
 
-                if addition[-1] != 'T':
+                if addition[-1] != "T":
                     addition = addition[0:-1]
 
                 current_end += len(addition)
@@ -136,12 +160,18 @@ def parse_transterm(data):
                 addition = ""
                 prime5tail = notes["5' tail"][::-1]
                 for idx in range(len(prime5tail)):
-                    if prime5tail[idx] != 'A' and addition.count('T') + addition.count('C') + addition.count('G') == 1:
+                    if (
+                        prime5tail[idx] != "A"
+                        and addition.count("T")
+                        + addition.count("C")
+                        + addition.count("G")
+                        == 1
+                    ):
                         break
 
                     addition += prime5tail[idx]
 
-                if addition[-1] != 'A':
+                if addition[-1] != "A":
                     addition = addition[0:-1]
 
                 current_start -= len(addition)
@@ -150,7 +180,7 @@ def parse_transterm(data):
             feature = SeqFeature(
                 FeatureLocation(current_start, current_end),
                 type="terminator",
-                strand=1 if pd['strand'] == '+' else -1,
+                strand=1 if pd["strand"] == "+" else -1,
                 qualifiers=qualifiers,
             )
             record.features.append(feature)
@@ -158,13 +188,9 @@ def parse_transterm(data):
         yield record
 
 
-def main(fasta, gff3, existing_expterm='', **kwargs):
+def main(fasta, gff3, existing_expterm="", **kwargs):
     coords_file = generate_annotation_file(gff3)
-    transterm_output = run_transterm(
-        existing_expterm,
-        fasta,
-        coords_file
-    )
+    transterm_output = run_transterm(existing_expterm, fasta, coords_file)
     try:
         os.unlink(coords_file)
     except Exception:
@@ -175,12 +201,19 @@ def main(fasta, gff3, existing_expterm='', **kwargs):
         yield record
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Export corresponding sequence in genome from GFF3', epilog="")
-    parser.add_argument('fasta', help='Fasta Genome')
-    parser.add_argument('gff3', help='GFF3 File')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Export corresponding sequence in genome from GFF3", epilog=""
+    )
+    parser.add_argument("fasta", help="Fasta Genome")
+    parser.add_argument("gff3", help="GFF3 File")
 
-    parser.add_argument('--min_conf', type=int, default=76, help='Only output terminators with confidence >= n')
+    parser.add_argument(
+        "--min_conf",
+        type=int,
+        default=76,
+        help="Only output terminators with confidence >= n",
+    )
 
     # parser.add_argument('--gc', type=float, default=-2.3, help='Score of a G-C pair')
     # parser.add_argument('--au', type=float, default=-0.9, help='Score of an A-U pair')
@@ -198,5 +231,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    for record in main(existing_expterm=os.path.join(SCRIPT_PATH, 'expterm.dat'), **vars(args)):
+    for record in main(
+        existing_expterm=os.path.join(SCRIPT_PATH, "expterm.dat"), **vars(args)
+    ):
         GFF.write([record], sys.stdout)

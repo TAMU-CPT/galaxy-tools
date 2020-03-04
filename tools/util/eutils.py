@@ -1,88 +1,83 @@
 import os
 import re
 import json
+
 try:
     import StringIO as io
 except:
     import io
 
 from Bio import Entrez
+
 Entrez.tool = "GalaxyEutils_1_0"
 BATCH_SIZE = 200
 
 
 class Client(object):
-
     def __init__(self, history_file=None, user_email=None, admin_email=None):
         self.using_history = False
 
         if user_email is not None and admin_email is not None:
-            Entrez.email = ';'.join((admin_email, user_email))
+            Entrez.email = ";".join((admin_email, user_email))
         elif user_email is not None:
             Entrez.email = user_email
         elif admin_email is not None:
             Entrez.email = admin_email
         else:
-            Entrez.email = os.environ.get('NCBI_EUTILS_CONTACT', None)
+            Entrez.email = os.environ.get("NCBI_EUTILS_CONTACT", None)
 
         if Entrez.email is None:
-            raise Exception("Cannot continue without an email; please set "
-                            "administrator email in NCBI_EUTILS_CONTACT")
+            raise Exception(
+                "Cannot continue without an email; please set "
+                "administrator email in NCBI_EUTILS_CONTACT"
+            )
 
         if history_file is not None:
-            with open(history_file, 'r') as handle:
+            with open(history_file, "r") as handle:
                 data = json.loads(handle.read())
-                self.query_key = data['QueryKey']
-                self.webenv = data['WebEnv']
+                self.query_key = data["QueryKey"]
+                self.webenv = data["WebEnv"]
                 self.using_history = True
 
     def get_history(self):
         if not self.using_history:
             return {}
         else:
-            return {
-                'query_key': self.query_key,
-                'WebEnv': self.webenv,
-            }
+            return {"query_key": self.query_key, "WebEnv": self.webenv}
 
     def post(self, database, **payload):
         return json.dumps(Entrez.read(Entrez.epost(database, **payload)), indent=4)
 
     def fetch(self, db, ftype=None, **payload):
-        if not os.path.exists('downloads'):
+        if not os.path.exists("downloads"):
             os.makedirs("downloads")
 
-        if 'id' in payload:
-            summary = self.id_summary(db, payload['id'])
+        if "id" in payload:
+            summary = self.id_summary(db, payload["id"])
         else:
             summary = self.history_summary(db)
 
         count = len(summary)
-        payload['retmax'] = BATCH_SIZE
+        payload["retmax"] = BATCH_SIZE
 
         # This may be bad. I'm not sure yet. I think it will be ... but UGH.
         for i in range(0, count, BATCH_SIZE):
-            payload['retstart'] = i
-            file_path = os.path.join('downloads', 'EFetch Results Chunk %s.%s' % (i, ftype))
-            with open(file_path, 'w') as handle:
+            payload["retstart"] = i
+            file_path = os.path.join(
+                "downloads", "EFetch Results Chunk %s.%s" % (i, ftype)
+            )
+            with open(file_path, "w") as handle:
                 handle.write(Entrez.efetch(db, **payload).read())
 
     def id_summary(self, db, id_list):
-        payload = {
-            'db': db,
-            'id': id_list,
-        }
+        payload = {"db": db, "id": id_list}
         return Entrez.read(Entrez.esummary(**payload))
 
     def history_summary(self, db):
         if not self.using_history:
             raise Exception("History must be available for this method")
 
-        payload = {
-            'db': db,
-            'query_key': self.query_key,
-            'WebEnv': self.webenv,
-        }
+        payload = {"db": db, "query_key": self.query_key, "WebEnv": self.webenv}
         return Entrez.read(Entrez.esummary(**payload))
 
     def summary(self, **payload):
@@ -94,7 +89,7 @@ class Client(object):
     def extract_history(self, xml_data):
         parsed_data = Entrez.read(io.StringIO(xml_data))
         history = {}
-        for key in ('QueryKey', 'WebEnv'):
+        for key in ("QueryKey", "WebEnv"):
             if key in parsed_data:
                 history[key] = parsed_data[key]
 
@@ -119,15 +114,15 @@ class Client(object):
         merged_ids = []
         if id is not None:
             # Remove all whitespace / etc.
-            pids = re.sub(r'(__cn__|\n|\s)+', ',', id)
+            pids = re.sub(r"(__cn__|\n|\s)+", ",", id)
             # Remove multiple commas
-            pids = re.sub(r'(,{2,})', ',', pids)
-            for pid in pids.split(','):
+            pids = re.sub(r"(,{2,})", ",", pids)
+            for pid in pids.split(","):
                 if pid is not None and len(pid) > 0:
                     merged_ids.append(pid)
 
         if id_list is not None:
-            with open(id_list, 'r') as handle:
+            with open(id_list, "r") as handle:
                 merged_ids += [x.strip() for x in handle.readlines()]
 
         # Exception hanlded here for uniformity
