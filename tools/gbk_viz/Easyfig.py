@@ -19788,22 +19788,27 @@ if (
     for i in range(1, len(sys.argv)):
         if sys.argv[i][:1] == "-":
             lastflag = i + 2
-        if sys.argv[i] == '-o':
-            filename = sys.argv[i+1]
-        elif sys.argv[i] == '-e':
-            mineval = float(sys.argv[i+1])
-        elif sys.argv[i] == '-min_length':
-            minlength = int(sys.argv[i+1])
-        elif sys.argv[i] == '-i':
-            minIdent = float(sys.argv[i+1])
-        elif sys.argv[i] == '-width':
-            width = int(sys.argv[i+1])
-        elif sys.argv[i] == '-ann_height':
-            height1 = int((sys.argv[i+1]))
-        elif sys.argv[i] == '-blast_height':
-            height2 = int((sys.argv[i+1]))
-        elif sys.argv[i] == '-f1':
-            if sys.argv[i+1] == 'T' or sys.argv[i+1] == 't' or sys.argv[i+1] == 'True' or sys.argv[i+1] == 'true':
+        if sys.argv[i] == "-o":
+            filename = sys.argv[i + 1]
+        elif sys.argv[i] == "-e":
+            mineval = float(sys.argv[i + 1])
+        elif sys.argv[i] == "-min_length":
+            minlength = int(sys.argv[i + 1])
+        elif sys.argv[i] == "-i":
+            minIdent = float(sys.argv[i + 1])
+        elif sys.argv[i] == "-width":
+            width = int(sys.argv[i + 1])
+        elif sys.argv[i] == "-ann_height":
+            height1 = int((sys.argv[i + 1]))
+        elif sys.argv[i] == "-blast_height":
+            height2 = int((sys.argv[i + 1]))
+        elif sys.argv[i] == "-f1":
+            if (
+                sys.argv[i + 1] == "T"
+                or sys.argv[i + 1] == "t"
+                or sys.argv[i + 1] == "True"
+                or sys.argv[i + 1] == "true"
+            ):
                 drawfig1 = True
             elif (
                 sys.argv[i + 1] == "F"
@@ -19848,7 +19853,7 @@ if (
                     t1, t2, t3, t4, t5, t6 = 30, 144, 255, 25, 25, 112
                 elif sys.argv[i + 1] == "red":
                     t1, t2, t3, t4, t5, t6 = 200, 100, 0, 255, 0, 0
-                elif sys.argv[i+1] == 'gray':
+                elif sys.argv[i + 1] == "gray":
                     t1, t2, t3, t4, t5, t6 = 20, 20, 20, 175, 175, 175
             minblastc = (t1, t2, t3)
             maxblastc = (t4, t5, t6)
@@ -20197,7 +20202,8 @@ elif len(sys.argv) == 1:
     app = App(root)
     root.mainloop()
 else:
-    print """
+    print (
+        """
 Easyfig.py   Written by: Mitchell Sullivan   mjsull@gmail.com
 Supervisor: Dr. Scott Beatson   University of Queensland    03.12.2010
 
@@ -20324,4 +20330,5 @@ Reverse compliment ann2.embl. Writes as a SVG file.
 
 this script uses a modified version of Paul McGuire's (http://www.geocities.com/ptmcg/ RIP (geocities, not paul))
 bmp.py - module for constructing simple BMP graphics files
-'''
+"""
+    )
