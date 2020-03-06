@@ -151,7 +151,7 @@ def charges_svg(svg, fasta, aa, fgColor, bgColor, width=120):
     yInc = 15
     seqIndent = 35
     idIndent = 20
-    letterLen = 8.435
+    letterLen = 8.4375
     recNum = -1
 
     title += (
@@ -280,7 +280,7 @@ def charges_svg(svg, fasta, aa, fgColor, bgColor, width=120):
                     res += sub
                 body += (
                     '<rect x="'
-                    + str(seqIndent + (letterLen * sumSeq))
+                    + str(.5 + seqIndent + (letterLen * sumSeq))
                     + '" y="'
                     + str(yInd - yInc + 2)
                     + '" width="'
