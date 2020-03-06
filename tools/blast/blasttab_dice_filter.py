@@ -39,6 +39,7 @@ def blasttsv2gff3(blasttsv, min_dice=50):
     # 25 All subject title(s), separated by a '<>'
 
     for line in blasttsv:
+        line = line.strip("\n")
         data = line.split("\t")
         dice = 2 * int(data[14]) / (float(data[22]) + float(data[23]))
         if dice >= min_dice:
