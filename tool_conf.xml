@@ -116,6 +116,7 @@
                 <tool file="cpt2/galaxy-tools/tools/gff3/lipoP_to_gff3.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_split_into_frames.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_splitgff.xml" label="gff3" />
+                <tool file="cpt2/galaxy-tools/tools/gff3/gff3_remove_fasta_sequences.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/remove_annotations.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_table_annotations.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/feature_export.xml" label="genbank" />
