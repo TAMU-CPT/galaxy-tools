@@ -11,7 +11,7 @@
 python $__tool_directory__/gff2gb.py
 @INPUT_GFF@
 @INPUT_FASTA@
-$transltbl
+--transltbl $transltbl
 > $output]]></command>
 	<inputs>
 	<expand macro="input/gff3+fasta" />
