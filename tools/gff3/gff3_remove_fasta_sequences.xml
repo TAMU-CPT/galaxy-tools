@@ -12,11 +12,11 @@ $gff3
 --ogff3 $ogff3
 
 ]]></command>
-    <inputs>ff3
+    <inputs>
         <param label="Input .gff3 file" name="gff3" type="data" format="gff3" />
     </inputs>
     <outputs>
-		<data format="gff3" name="ogff3" label="Output file"/>
+	<data format="gff3" name="ogff3" label="Output file"/>
     </outputs>
     <help><![CDATA[
 **What it does**
