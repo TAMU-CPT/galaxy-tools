@@ -47,12 +47,12 @@ def rename_key(ds, k_f, k_t):
     return ds
 
 
-def gff3_to_genbank(gff_file, fasta_file):
+def gff3_to_genbank(gff_file, fasta_file, transltbl):
     fasta_input = SeqIO.to_dict(SeqIO.parse(fasta_file, "fasta", generic_dna))
     gff_iter = GFF.parse(gff_file, fasta_input)
 
     for record in gff_iter:
-        yield handle_record(record)
+        yield handle_record(record, transltbl)
 
 
 def handle_non_gene_features(features):
@@ -286,7 +286,7 @@ def merge_multi_cds(mRNA_sf):
         return non_cdss + [main_cds]
 
 
-def handle_record(record):
+def handle_record(record, transltbl):
     full_feats = []
     for feature in fsort(record.features):
         if (
@@ -364,6 +364,7 @@ def handle_record(record):
         # Add product tag
         if flat_feat.type == "CDS":
             flat_feat.qualifiers["product"] = [protein_product]
+            flat_feat.qualifiers["transl_table"] = [transltbl]
             if "Product" in flat_feat.qualifiers:
                 del flat_feat.qualifiers["Product"]
 
@@ -398,6 +399,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert gff3 to gbk")
     parser.add_argument("gff_file", type=argparse.FileType("r"), help="GFF3 file")
     parser.add_argument("fasta_file", type=argparse.FileType("r"), help="Fasta Input")
+    parser.add_argument("--transltbl", type=int, default=11, help="Translation Table choice for CDS tag, default 11")
     args = parser.parse_args()
 
     for record in gff3_to_genbank(**vars(args)):
