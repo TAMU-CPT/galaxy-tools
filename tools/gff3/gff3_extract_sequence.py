@@ -15,9 +15,9 @@ log = logging.getLogger(__name__)
 def main(fasta, gff3, feature_filter=None, nodesc=False):
 
     if feature_filter == "nice_cds":
-        from gff2gb import gff3_to_genbank
+        from gff2gb import gff3_to_genbank as cpt_Gff2Gbk
 
-        for rec in gff3_to_genbank(gff3, fasta):
+        for rec in cpt_Gff2Gbk(gff3, fasta):
             seenList = {}
             if rec.seq[0] == "?":
                 print("No Fasta ID matches GFF")
