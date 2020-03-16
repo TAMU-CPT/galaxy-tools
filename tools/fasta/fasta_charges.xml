@@ -20,7 +20,7 @@ $svg
 #elif $scheme.cs == "rb":
 --aa KR ED HSQTNCYAVILMPFWG
 --fgColor "#ffffff" "#ffffff" "#000000"
---bgColor "#0000fc" "#fc0000" "#ffffff"
+--bgColor "#00b0f0" "#fc0000" "#ffffff"
 #else:
 	--aa
 	#for group in $scheme.groups:
