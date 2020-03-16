@@ -87,8 +87,12 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
 
         for rec in GFF.parse(gff3, base_dict=seq_dict):
             noMatch = True
+            if 'Alias' in rec.features[0].qualifiers.keys():
+              lColumn = rec.features[0].qualifiers['Alias'][0]
+            else:
+              lColumn = ""  
             for x in seq_dict:
-                if x == rec.id:
+                if x == rec.id or x == lColumn:
                     noMatch = False
             if noMatch:
                 print("No Fasta ID matches GFF")
@@ -137,8 +141,12 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         for rec in GFF.parse(gff3, base_dict=seq_dict):
             noMatch = True
+            if 'Alias' in rec.features[0].qualifiers.keys():
+              lColumn = rec.features[0].qualifiers['Alias'][0]
+            else:
+              lColumn = ""  
             for x in seq_dict:
-                if x == rec.id:
+                if x == rec.id or x == lColumn:
                     noMatch = False
             if noMatch:
                 print("No Fasta ID matches GFF")
