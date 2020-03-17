@@ -33,7 +33,7 @@ This tool updates the gene model in a GFF3, useful when a nonstandard gene model
 has been applied. It finds all CDS features, **strips their parent features**, 
 then applies a gene-mRNA-CDS model, compliant with the standard GFF3 format.
 
-.. class:: warningmark Use this tool only when it is absolutely necessary to fix a gene model. 
+Warning: Use this tool only when it is absolutely necessary to fix a gene model. 
 
       ]]></help>
 		<expand macro="citations" />
