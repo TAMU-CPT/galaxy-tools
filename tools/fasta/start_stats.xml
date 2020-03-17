@@ -29,16 +29,6 @@ This tool processes a **DNA multi-FASTA file** containing feature sequences. For
 sequence in your FASTA file the tool extracts the start codon, then it calculates the 
 codon distribution. 
 
-**Example Output**
-
-	DNA Codon Count
-	AGG   R     90
-	CCT   P     1
-	GAG   E     88
-	GGA   G     47
-	GGG   G     32
-	GGT   G     14
-	TCC   S     1
 
 ]]></help>
 		<expand macro="citations" />
