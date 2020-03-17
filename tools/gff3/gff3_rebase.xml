@@ -41,20 +41,16 @@ $protein2dna
   <help><![CDATA[
 **What it does**
 
-The workflow in a genomic data analysis typically follows a process like this::
--  select specific features from a genome
--  export only the sequences associated with those regions
--  analyze those exported sequences with a tool like BLAST
-- display the results for inspection
+The workflow in a genomic data analysis typically follows a process of feature 
+export, analysis and then mapping the results of the analysis back to the genome.
 
-For meaningful display in software like JBrowse, it is necessary to accurately map 
-those results back to their corresponding positions in the context of the entire 
-genome (*e.g.* if a transmembrane domain is detected at bases 10-20 of an analyzed 
-protein, where should this be displayed relative to the parent genome?).
+For meaningful display in JBrowse, it is necessary to accurately map 
+analysis results back to their corresponding positions in the context of the entire 
+genome.
 
-This tool fills that gap, by rebasing (calculating coordinates in the parent genome) 
-feature (i.e. *child* features) analysis results against the parent features which 
-were originally analyzed.
+This tool fills that gap, by *rebasing* (calculating parent genome coordinates) 
+features from analysis results against the parent features which 
+were originally used for the analysis.
 
 **Example Input/Output**
 
@@ -81,10 +77,10 @@ PhageBob    blastp  match_part      300     449     1e-40   +       .       ID=m
 
 **Options**
 
-The **Interpro** option selectively ignores *features* (*i.e.* polypeptide) and 
+The **Interpro specific modifications** option selectively ignores *features* (*i.e.* polypeptide) and 
 qualifiers (status, Target) not needed in the output. 
 
-The **Map Protein** option indicates that the DNA sequences were translated into 
+The **Map protein translated results to original DNA data** option indicates that the DNA sequences were translated into 
 protein sequence during the genomic export process. When this option is selected, 
 the tool will multiply the bases by three to obtain the correct DNA locations.
 
