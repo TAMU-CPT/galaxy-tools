@@ -7,20 +7,32 @@ import sys
 from BCBio import GFF
 
 logging.basicConfig(level=logging.INFO)
-log = logging.getLogger(name="blastxml2gff3")
+log = logging.getLogger(name="blast2gff3")
 
 __doc__ = """
 BlastXML files, when transformed to GFF3, do not normally show gaps in the
 blast hits. This tool aims to fill that "gap".
 """
 
+def blast2gff3(blast, blastxml=False, blasttab=False, include_seq=False):
+    # Call correct function based on xml or tabular file input, raise error if neither or both are provided
+    if blastxml and blasttab:
+        raise Exception("Cannot provide both blast xml and tabular file")
 
-def blastxml2gff3(blastxml=None, blasttab=None, include_seq=False):
+    if blastxml:
+        recs = blastxml2gff3(blast, include_seq)
+        return recs
+    elif blasttab:
+        raise Exception("Tabular not supported yet, please use xml")
+        #yield blasttab2gff3(blast, include_seq)
+    else:
+        raise Exception("Must provide either blast xml or tabular file")
+
+def blastxml2gff3(blastxml, include_seq=False):
     from Bio.Blast import NCBIXML
     from Bio.Seq import Seq
     from Bio.SeqRecord import SeqRecord
     from Bio.SeqFeature import SeqFeature, FeatureLocation
-    if blastxml
     blast_records = NCBIXML.parse(blastxml)
     for idx_record, record in enumerate(blast_records):
         # http://www.sequenceontology.org/browser/release_2.4/term/SO:0000343
@@ -35,8 +47,21 @@ def blastxml2gff3(blastxml=None, blasttab=None, include_seq=False):
 
         rec = SeqRecord(Seq("ACTG"), id=recid)
         for idx_hit, hit in enumerate(record.alignments):
+            # gotta check all hsps in a hit to see boundaries
+            parent_match_start = 0
+            parent_match_end = 0
+            hit_qualifiers = {
+                    "ID": "b2g.%s.%s.%s" % (idx_record, idx_hit, '0'),
+                    "source": "blast",
+                    "accession": hit.accession,
+                    "hit_id": hit.hit_id,
+                    "length": hit.length,
+                    "hit_titles": hit.title.split(" >"),
+                    "hsp_count": len(hit.hsps),
+                    }
+            sub_features = []
             for idx_hsp, hsp in enumerate(hit.hsps):
-                qualifiers = {
+                hsp_qualifiers = {
                     "ID": "b2g.%s.%s.%s" % (idx_record, idx_hit, idx_hsp),
                     "source": "blast",
                     "score": hsp.expect,
@@ -46,7 +71,7 @@ def blastxml2gff3(blastxml=None, blasttab=None, include_seq=False):
                     "hit_titles": hit.title.split(" >"),
                 }
                 if include_seq:
-                    qualifiers.update(
+                    hsp_qualifiers.update(
                         {
                             "blast_qseq": hsp.query,
                             "blast_sseq": hsp.sbjct,
@@ -68,54 +93,27 @@ def blastxml2gff3(blastxml=None, blasttab=None, include_seq=False):
                     "sbjct_start",
                     "sbjct_end",
                 ):
-                    qualifiers["blast_" + prop] = getattr(hsp, prop, None)
+                    hsp_qualifiers["blast_" + prop] = getattr(hsp, prop, None)
 
                 desc = hit.title.split(" >")[0]
-                qualifiers["description"] = desc[desc.index(" ") :]
+                hsp_qualifiers["description"] = desc[desc.index(" ") :]
 
-                # This required a fair bit of sketching out/match to figure out
-                # the first time.
-                #
-                # the match_start location must account for queries and
-                # subjecst that start at locations other than 1
-                parent_match_start = hsp.query_start - hsp.sbjct_start
-                # The end is the start + hit.length because the match itself
-                # may be longer than the parent feature, so we use the supplied
-                # subject/hit length to calculate the real ending of the target
-                # protein.
-                parent_match_end = hsp.query_start + hit.length + hsp.query.count("-")
+                #check if parent boundary needs to increase 
+                if hsp.query_start < parent_match_start:
+                    parent_match_start = hsp.query_start
+                if hsp.query_end > parent_match_end:    
+                    parent_match_end = hsp.query_end + 1
 
-                # If we trim the left end, we need to trim without losing information.
-                used_parent_match_start = parent_match_start
-                if trim:
-                    if parent_match_start < 1:
-                        used_parent_match_start = 0
-
-                if trim or trim_end:
-                    if parent_match_end > hsp.query_end:
-                        parent_match_end = hsp.query_end + 1
-
-                # The ``match`` feature will hold one or more ``match_part``s
-                top_feature = SeqFeature(
-                    FeatureLocation(used_parent_match_start, parent_match_end),
-                    type=match_type,
-                    strand=0,
-                    qualifiers=qualifiers,
-                )
-
-                # Unlike the parent feature, ``match_part``s have sources.
-                part_qualifiers = {"source": "blast"}
-                top_feature.sub_features = []
+                # Build out the match_part features for each HSP 
                 for idx_part, (start, end, cigar) in enumerate(
                     generate_parts(
-                        hsp.query, hsp.match, hsp.sbjct, ignore_under=min_gap
+                        hsp.query, hsp.match, hsp.sbjct, ignore_under=10
                     )
                 ):
-                    part_qualifiers["Gap"] = cigar
-                    part_qualifiers["ID"] = qualifiers["ID"] + (".%s" % idx_part)
+                    hsp_qualifiers["Gap"] = cigar
+                    hsp_qualifiers["ID"] = hit_qualifiers["ID"] + (".%s" % idx_part)
 
-                    # Otherwise, we have to account for the subject start's location
-                    match_part_start = parent_match_start + hsp.sbjct_start + start - 1
+                    match_part_start = hsp.query_start 
 
                     # We used to use hsp.align_length here, but that includes
                     # gaps in the parent sequence
@@ -124,19 +122,31 @@ def blastxml2gff3(blastxml=None, blasttab=None, include_seq=False):
                     # So we just use (end-start) for simplicity
                     match_part_end = match_part_start + (end - start)
 
-                    top_feature.sub_features.append(
+                    sub_features.append(
                         SeqFeature(
                             FeatureLocation(match_part_start, match_part_end),
                             type="match_part",
                             strand=0,
-                            qualifiers=copy.deepcopy(part_qualifiers),
+                            qualifiers=copy.deepcopy(hsp_qualifiers),
                         )
                     )
 
-                rec.features.append(top_feature)
+            # Build the top level seq feature for the hit
+            top_feature = SeqFeature(
+                FeatureLocation(parent_match_start, parent_match_end),
+                type=match_type,
+                strand=0,
+                qualifiers=hit_qualifiers,
+            )
+            # add the generated subfeature hsp match_parts to the hit feature
+            top_feature.sub_features = copy.deepcopy(sub_features)
+            # Add the hit feature to the record
+            rec.features.append(top_feature)
         rec.annotations = {}
         yield rec
 
+def blasttab2gff3(blasttab, include_seq=False):
+    yield none
 
 def __remove_query_gaps(query, match, subject):
     """remove positions in all three based on gaps in query
@@ -275,10 +285,13 @@ if __name__ == "__main__":
         description="Convert Blast output to gapped GFF3, must provide XML or Tabular output", epilog=""
     )
     parser.add_argument(
-        "--blastxml", type=argparse.FileType("r"), help="Blast XML Output"
+            "blast", type=argparse.FileType("r"), help="Blast XML or 25 Column Tabular Output file"
     )
     parser.add_argument(
-        "--blasttab", type=argparse.FileType("r"), help="Blast 25 Column  Tabular Output"
+        "--blastxml", action="store_true", help="Process file as Blast XML Output"
+    )
+    parser.add_argument(
+        "--blasttab", action="store_true", help="Process file as Blast 25 Column  Tabular Output"
     )
     parser.add_argument("--include_seq", action="store_true", help="Include sequence")
     args = parser.parse_args()
