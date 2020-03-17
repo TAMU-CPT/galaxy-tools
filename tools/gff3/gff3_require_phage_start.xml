@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.gff3.require_phage_start" name="GFF3 Filter: Require Phage Start" version="1.0">
+<tool id="edu.tamu.cpt.gff3.require_phage_start" name="GFF3 Filter: Require Phage Start" version="19.1.0.0">
   <description>ensures start is ATG, TTG, or GTG</description>
   <macros>
     <import>macros.xml</import>

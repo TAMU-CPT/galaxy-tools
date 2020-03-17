@@ -1,0 +1,45 @@
+# ================================================
+# Copyright Georgia Institute of Technology, Atlanta, Georgia, USA
+# Distributed by GeneProbe Inc., Atlanta, Georgia, USA
+# ================================================
+
+Executable: gmhmme3
+GeneMark.hmm algorithm locates genes within a eukaryotic DNA sequence.
+
+# ----
+GeneMark.hmm eukaryotic, version 3.54
+
+Usage: gmhmme3 [options] <sequence file>
+
+  required parameters:
+    -m <model file>
+
+  optional parameters:
+    -o <output file>
+    -p write protein translation
+    -n write nucleotide sequence
+    -b <output file> output statistics of predicted introns
+    -d <file name> provide input for GeneMark.hmm plus
+    -s <string> sequence tag in GFF output format
+    -f <format> output prediction in [lst|gff3|gtf] format; default [lst]
+
+developer options:
+     -r report best path probability
+# ----
+
+Models (species) included into this distribution:
+	a_gambiae.mod
+	a_thaliana.mod
+	c_briggsae.mod
+	c_elegans.mod
+	c_intestinalis.mod
+	c_reinhardtii.mod
+	c_remanei.mod
+	d_melanogaster.mod
+	m_truncatula.mod
+	o_sativa.mod
+
+Note: GeneMark.hmm version 3 cannot be used with model files 
+from older versions of GeneMark.hmm.
+# ---
+

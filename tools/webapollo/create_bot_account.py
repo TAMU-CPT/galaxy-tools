@@ -7,15 +7,17 @@ from webapollo import WAAuth, WebApolloInstance
 
 
 def pwgen(length):
-    chars = list('qwrtpsdfghjklzxcvbnm')
-    return ''.join(random.choice(chars) for _ in range(length))
+    chars = list("qwrtpsdfghjklzxcvbnm")
+    return "".join(random.choice(chars) for _ in range(length))
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Sample script to add an account via web services')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Sample script to add an account via web services"
+    )
     WAAuth(parser)
 
-    parser.add_argument('email', help='User Email')
+    parser.add_argument("email", help="User Email")
     args = parser.parse_args()
 
     wa = WebApolloInstance(args.apollo, args.username, args.password)
@@ -24,16 +26,10 @@ if __name__ == '__main__':
     time.sleep(1)
     users = wa.users.loadUsers()
 
-    bot_email = 'bot-' + args.email.replace('@', '_') + '@cpt.tamu.edu'
-    user = [u for u in users
-            if u.username == bot_email]
+    bot_email = "bot-" + args.email.replace("@", "_") + "@cpt.tamu.edu"
+    user = [u for u in users if u.username == bot_email]
 
-    uargs = [
-        bot_email,
-        "BOT ACCOUNT",
-        args.email,
-        password
-    ]
+    uargs = [bot_email, "BOT ACCOUNT", args.email, password]
 
     if len(user) == 1:
         # Update name, regen password if the user ran it again
@@ -41,10 +37,10 @@ if __name__ == '__main__':
         email = args.email
         q = [userObj] + uargs
         returnData = wa.users.updateUser(*q)
-        sys.stdout.write('Updated User\n')
+        sys.stdout.write("Updated User\n")
     else:
         returnData = wa.users.createUser(*uargs)
-        sys.stdout.write('Created User\n')
+        sys.stdout.write("Created User\n")
 
-    print('Username: %s\nPassword: %s' % (uargs[0], uargs[-1]))
+    print("Username: %s\nPassword: %s" % (uargs[0], uargs[-1]))
     print("Return data: " + str(returnData))

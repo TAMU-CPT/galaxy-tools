@@ -1,0 +1,46 @@
+<tool id="edu.tamu.cpt.gff3.lipoP_to_gff3" name= "LipoP to GFF3" version="1.0">
+  <description>Adds LipoP results to GFF3</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/lipoP_to_gff3.py
+
+"$lipoIn"
+"$gff3In"
+--jBrowseOut "$jBrowseOut"
+> $stdout
+
+]]></command>
+  <inputs>
+    <param label="LipoP Output" name="lipoIn" type="data" format="txt"/>
+    <param label="GFF3 for Rebasing" name="gff3In" type="data" format="gff3"/>
+    <param label="Output to jBrowse" name="jBrowseOut" type="boolean" truevalue="True" falsevalue="" help="Strip non-cleavage features from GFF3 (for viewing in Apollo)"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="stdout"/>
+  </outputs>
+  <tests>
+      
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Adds the cleavage sites from a LipoP run to a GFF3 file's feature list. Must use
+the .txt output of LipoP (ensure .html is turned off). The most common way this
+tool will be utilized is to take a GFF3, use the GFF3 Feature Sequence Export
+tool (https://cpt.tamu.edu/galaxy/root?tool_id=edu.tamu.cpt.gff3.export_seq) to 
+get a multi-FASTA of the CDSs, run that multi-FASTA through LipoP, and then
+recombine the LipoP results with the original GFF3 file with this tool.
+
+Currently, only CleavII results will be added with this tool.
+
+"Output to jBrowse" will remove all gene features that do not have a CleavII 
+result from the LipoP, and remove all sub features of the gene except for the 
+cleavage sites. This is useful for viewing in Apollo, but should most likely 
+not be used if you plan to run this output through more tools.
+      ]]></help>
+		<expand macro="citations-2020" />
+</tool>

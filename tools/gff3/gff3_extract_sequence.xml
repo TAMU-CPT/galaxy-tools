@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gff3.export_seq" name="GFF3 Feature Sequence Export" version="1.2">
+<tool id="edu.tamu.cpt.gff3.export_seq" name="GFF3 Feature Sequence Export" version="19.1.0.0">
   <description>Export corresponding sequence in genome from GFF3</description>
   <macros>
     <import>macros.xml</import>
@@ -56,7 +56,8 @@ all CDSs in an input GFF3 and outputs them as a multi-FASTA formatted file.
 
 The filter for specific feature types was designed for data retrieved from Apollo. 
 Using ‘unique_cds’ extracts the sequence for all CDS. Using ‘nice_cds’ will extract 
-the sequence only for CDS features with a start codon (recommended). 
+the sequence only for CDS features with a start codon (recommended). If a gene from
+Apollo has multiple CDSs, the tool will append a "_##" to the end of subsequent genes.
 
       ]]></help>
 		<expand macro="citations" />

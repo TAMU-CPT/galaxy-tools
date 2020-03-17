@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.blast.relatedness.prototype" name="Prototype Expanded Relatedness" version="0.9">
+	<description>based on protein blast results</description>
+	<macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+	</macros>
+	<expand macro="requirements"/>
+	<command detect_errors="aggressive">
+$__tool_directory__/relatedness_proto.py
+@BLAST_TSV@
+$__tool_directory__/db.json
+--hits $hits
+--protein
+> $accession_list
+</command>
+	<inputs>
+	<expand macro="blast_tsv" />
+                <param label = 'Number of results to return' name="hits" type="integer" size="15" value="5"/>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="accession_list" label="Top BlastP Hits" />
+	</outputs>
+	<help>
+**What it does**
+
+Expanded version of Top BlastP Hits tool with the range of Evalues and Bit values.
+</help>
+	<tests/>
+	<expand macro="citations" />
+</tool>

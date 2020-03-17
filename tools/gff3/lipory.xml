@@ -1,10 +1,13 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.fasta.lipory" name="Identify Lipoboxes" version="1.1">
+<tool id="edu.tamu.cpt.fasta.lipory" name="Identify Lipoboxes" version="19.1.0.0">
   <description> in protein sequences</description>
   <macros>
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
   </macros>
+  <expand macro="requirements">
+    <requirement type="package" version="2019.06.08">regex</requirement>
+  </expand>
   <command interpreter="python" detect_errors="aggressive"><![CDATA[lipory.py
 $positional_1
 $positional_2
@@ -18,7 +21,7 @@ $positional_2
     <param label="Genome" name="positional_2" type="data" format="fasta"/>
 
     <param label="Minimum distance in codons to start of lipobox" name="lipobox_mindist" type="integer" value="10"/>
-    <param label="Maximum distance in codons to start of lipobox" name="lipobox_maxdist" type="integer" value="60"/>
+    <param label="Maximum distance in codons to start of lipobox" name="lipobox_maxdist" type="integer" value="40"/>
   </inputs>
   <outputs>
       <data format="gff3" name="default" label="Lipoboxes from ${on_string}"/>
@@ -43,10 +46,13 @@ Bacteriol.* 188(8):2761-2773 and **Kongari** *et al.* 2018 *BMC Bioinformatics*.
 amino acids allowed here are relaxed to allow for the diversity of amino acids known to occur in lipoboxes.
 
 Position 1: ACGSILMFTV
+
 Position 2: any residue except REKD
+
 Position 3: GASNL
+
 Position 4: C
 
       ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>

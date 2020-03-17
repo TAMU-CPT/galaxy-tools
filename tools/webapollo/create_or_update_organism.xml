@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.create_or_update" name="Create or Update Organism" version="3.2" profile="16.04">
+<tool id="edu.tamu.cpt2.webapollo.create_or_update" name="Create or Update Organism" version="19.1.0.0" profile="16.04">
   <description>will create the organism if it doesn't exist, and update otherwise</description>
   <macros>
     <import>macros.xml</import>
   </macros>
-  <code file="webapollo.py"/>
   <expand macro="requirements"/>
+  <code file="webapollo.py"/>
   <command detect_errors="aggressive"><![CDATA[
 @APOLLO_ENSURE_USER_EXISTS@
 cp -R ${jbrowse.extra_files_path}/data/ @DATA_DIR@/${jbrowse.id};

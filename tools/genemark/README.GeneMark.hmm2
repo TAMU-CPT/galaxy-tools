@@ -1,0 +1,36 @@
+# ================================================
+# Copyright Georgia Institute of Technology, Atlanta, Georgia, USA
+# Distributed by GeneProbe Inc., Atlanta, Georgia, USA
+# ================================================
+
+Executable: gmhmme2
+GeneMark.hmm algorithm locates genes within a eukaryotic DNA sequence.
+
+# ----
+USAGE:
+        gmhmme [ -otp1, [ -opt2, ...]] <sequence-name>
+
+        -m      matrices file
+        -o      output file
+
+version: 2.2b
+# ----
+
+Models (species) included into this distribution:
+	barley.mtx
+	corn.mtx
+	mouse.mtx
+	wheat.mtx
+
+	human_00_43.mtx
+	human_43_49.mtx
+	human_49_99.mtx
+
+Matrices files for human have to be selected based on G+C composition
+of DNA sequence. Numbers in file names correspond to G+C range (percentage).
+
+Note: GeneMark.hmm version 2 cannot be used with model files 
+from newer versions of GeneMark.hmm.
+# ---
+
+

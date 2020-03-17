@@ -9,21 +9,28 @@ from Bio import SeqIO
 class BlastBasedReopening(object):
     """Re-open genomes based on blast"""
 
-    def __init__(self, genome='reopen-data/mis.fa'):
+    def __init__(self, genome="reopen-data/mis.fa"):
         self.genome = genome
-        genome_seq = SeqIO.read(self.genome, 'fasta')
+        genome_seq = SeqIO.read(self.genome, "fasta")
 
         blast_results = self.getBlast(self.genome)
         # If more than half the hits are 'backwards'
 
         if self.shouldReverse(blast_results) > 0.5:
-            new_genome_file = self.genome.replace('.fa', '.revcom.fa')
-            SeqIO.write([genome_seq.reverse_complement(id=True, description=True)],
-                        new_genome_file, 'fasta')
+            new_genome_file = self.genome.replace(".fa", ".revcom.fa")
+            SeqIO.write(
+                [genome_seq.reverse_complement(id=True, description=True)],
+                new_genome_file,
+                "fasta",
+            )
             blast_results = self.getBlast(new_genome_file)
 
-        ref_genome_hits = [self.avg(hit['sstart'], hit['send']) for hit in blast_results]
-        our_genome_hits = [self.avg(hit['qstart'], hit['qend']) for hit in blast_results]
+        ref_genome_hits = [
+            self.avg(hit["sstart"], hit["send"]) for hit in blast_results
+        ]
+        our_genome_hits = [
+            self.avg(hit["qstart"], hit["qend"]) for hit in blast_results
+        ]
         # Now we sort relative to ref genome
         hits = zip(our_genome_hits, ref_genome_hits)
         hits = sorted(hits, key=lambda x: x[1])
@@ -36,29 +43,43 @@ class BlastBasedReopening(object):
         (score, (index, m, c)) = self.scoreResults(ref_genome_hits, our_genome_hits)
 
         # Now on to plotting the real data.
-        totalData = [(hit['qstart'], hit['qend'], hit['sstart'], hit['send']) for hit in blast_results]
+        totalData = [
+            (hit["qstart"], hit["qend"], hit["sstart"], hit["send"])
+            for hit in blast_results
+        ]
         totalData = sorted(totalData, key=lambda x: self.avg(x[2], x[3]))
-        print 'Reopen at', totalData[0][0]
+        print "Reopen at", totalData[0][0]
 
     def getBlast(self, path):
-        blast_results = subprocess.check_output([
-            'blastn', '-db', 'test-data/canonical_nucl',
-            '-query', path, '-outfmt', '6 sseqid evalue pident qstart qend sstart send'
-        ]).strip().split('\n')
-        blast_results = [x.split('\t') for x in blast_results]
+        blast_results = (
+            subprocess.check_output(
+                [
+                    "blastn",
+                    "-db",
+                    "test-data/canonical_nucl",
+                    "-query",
+                    path,
+                    "-outfmt",
+                    "6 sseqid evalue pident qstart qend sstart send",
+                ]
+            )
+            .strip()
+            .split("\n")
+        )
+        blast_results = [x.split("\t") for x in blast_results]
         blast_results = [
             {
-                'sseqid': sseqid,
-                'evalue': float(evalue),
-                'pident': float(pident),
-                'qstart': int(qstart),
-                'qend': int(qend),
-                'sstart': int(sstart),
-                'send': int(send),
+                "sseqid": sseqid,
+                "evalue": float(evalue),
+                "pident": float(pident),
+                "qstart": int(qstart),
+                "qend": int(qend),
+                "sstart": int(sstart),
+                "send": int(send),
             }
             for (sseqid, evalue, pident, qstart, qend, sstart, send) in blast_results
         ]
-        if len([x['sseqid'] for x in blast_results]) > 1:
+        if len([x["sseqid"] for x in blast_results]) > 1:
             sys.stderr.write("DO not know how to handle. This WILL MISBEHAVE\n")
         return blast_results
 
@@ -67,8 +88,8 @@ class BlastBasedReopening(object):
         total = len(blast_results)
 
         for hit in blast_results:
-            qdir = 1 if hit['qstart'] > hit['qend'] else -1
-            sdir = 1 if hit['sstart'] > hit['send'] else -1
+            qdir = 1 if hit["qstart"] > hit["qend"] else -1
+            sdir = 1 if hit["sstart"] > hit["send"] else -1
             if (qdir > 0 and sdir < 0) or (qdir < 0 and sdir > 0):
                 should_reverse += 1
 

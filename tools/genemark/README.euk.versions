@@ -1,0 +1,29 @@
+# ================================================
+# Copyright Georgia Institute of Technology, Atlanta, Georgia, USA
+# Distributed by GeneProbe Inc., Atlanta, Georgia, USA
+# ================================================
+
+Suite of GeneMark.hmm eukaryotic programs with 
+set of species specific gene prediction parameters.
+
+This distribution includes two executables:
+  * GeneMark.hmm eukaryotic version 2.2b
+  * GeneMark.hmm eukaryotic version 3.54
+and two sets of model files
+  * ./mtx/*mtx  for version 2.*
+  * ./mod/*mod  for version 3.*
+
+
+# ---------
+GeneMark.hmm eukaryotic version 2.2b
+Program:	gmhmme2
+Species specific parameter files are in the directory:	./mtx
+Files have extension *.mtx
+# ---------
+GeneMark.hmm eukaryotic version 3.54
+Program:	gmhmme3
+Species specific parameter files are in the directory:  ./mod
+Files have extension *.mod
+# ---------
+
+

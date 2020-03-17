@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.fasta.split" name="Divides a fasta record into smaller records" version="1.0">
+    <description></description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/fasta_split.py
+$seqIn
+$splitLen
+
+>$output
+]]></command>
+  <inputs>
+    <param label="Fasta file" name="seqIn" type="data" format="fasta, txt"/> 
+    <param label="Bases per sub-sequence" name="splitLen" type="integer" value="120" />
+  </inputs>
+  <outputs> 
+    <data format="fasta" name="output"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help>
+**What it does**
+
+Takes a Fasta record and outputs a multifasta with sequence lengths no longer than the specified slice length.
+</help>
+		<citations>
+                        <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+		</citations>
+</tool>
