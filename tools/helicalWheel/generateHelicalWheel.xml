@@ -57,8 +57,17 @@ python $__tool_directory__/generateHelicalWheel.py
 ]]></command>
     <inputs>
         <param label="Peptide Sequence" name="sequence" type="string" />
-        <param label="Chopped Sequence Size" name="chop_amt" type="integer" value="30" help="How large the sequence size will be" />
+        <param label="Sequence Start" name="seqRange" type="integer" value="1" help="Sequence Start Number (eg: VAGGL, V==1)" />
+        <param label="Text Size" name="t_size" type="integer" value="32" help="Alters the Text Size. Default is 32" />
+        <param label="Rotation" name="rotation" type="integer" value="90" help="Rotates the helical wheel. Default is 90" />
     </inputs>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <notfinishedatall>
+                </div>
+            </div>
+        </div>
     <outputs>
         <data format="output" name="output" label="_helicalwheel.png" />
     </outputs>
