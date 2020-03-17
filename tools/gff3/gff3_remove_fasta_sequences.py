@@ -22,7 +22,7 @@ if __name__ == "__main__":
         epilog="",
     )
     parser.add_argument("gff3", type=argparse.FileType("r"), help="original gff3 file")
-    parser.add_argument("ogff3", type=argparse.FileType("w"), default="output.gff3")
+    parser.add_argument("--ogff3", type=argparse.FileType("w"), default="output.gff3")
     args = parser.parse_args()
 
     remove_fasta_seq(args.gff3, args.ogff3)
