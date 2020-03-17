@@ -1,0 +1,79 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.helicalWheel.generateHelicalWheel" name="Helical Wheel" version="1.0">
+    <description>Generate and Plot a Protein Helical Wheel</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/generateHelicalWheel.py
+--sequence $sequence
+--seqRange $seqRange
+--t_size $t_size
+--rotation $rotation
+--output $output
+--f_A $f_A
+--f_C $f_C
+--f_D $f_D
+--f_E $f_E
+--f_F $f_F
+--f_G $f_G
+--f_H $f_H
+--f_I $f_I
+--f_K $f_K
+--f_L $f_L
+--f_M $f_M
+--f_N $f_N
+--f_P $f_P
+--f_Q $f_Q
+--f_R $f_R
+--f_S $f_S
+--f_T $f_T
+--f_V $f_V
+--f_W $f_W
+--f_Y $f_Y
+--t_A $t_A
+--t_C $t_C
+--t_D $t_D
+--t_E $t_E
+--t_F $t_F
+--t_G $t_G
+--t_H $t_H
+--t_I $t_I
+--t_K $t_K
+--t_L $t_L
+--t_M $t_M
+--t_N $t_N
+--t_P $t_P
+--t_Q $t_Q
+--t_R $t_R
+--t_S $t_S
+--t_T $t_T
+--t_V $t_V
+--t_W $t_W
+--t_Y $t_Y
+
+]]></command>
+    <inputs>
+        <param label="Peptide Sequence" name="sequence" type="string" />
+        <param label="Chopped Sequence Size" name="chop_amt" type="integer" value="30" help="How large the sequence size will be" />
+    </inputs>
+    <outputs>
+        <data format="output" name="output" label="_helicalwheel.png" />
+    </outputs>
+    <help><![CDATA[
+**What it does**
+INPUT : Peptide Sequence
+
+PARAMETERS : 
+primary parameters :
+
+color parameters : 
+
+METHOD : Using the core features from the modlAMP python module, a helical wheel projection is constructed.
+
+OUTPUT : Helical Wheel
+]]></help>
+        <expand macro="citations-2020" />
+</tool>
