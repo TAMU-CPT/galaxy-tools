@@ -42,7 +42,7 @@ for visualization within JBrowse. This is critical for displaying the
 position of high-scoring pairs of the Target aligned against the Query.
 
 
-TThe trimming option represents a unique feature among BLAST XML visualization 
+The trimming option represents a unique feature among BLAST XML visualization 
 tools allowing the user to view the complete alignment location information 
 captured in the analysis.
 
