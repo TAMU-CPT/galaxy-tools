@@ -1,11 +1,11 @@
 <?xml version="1.1"?>
-<tool id="edu.tamu.cpt2.phage." name="Remove FASTA Sequences from .gff3 File" version="1.1">
+<tool id="edu.tamu.cpt2.gff3.remove_fasta" name="Remove FASTA Sequences from .gff3 File" version="1.1">
     <description>Removes FASTA sequences at the end of .gff3 file. All lines after '##FASTA' deleted</description>
     <macros>
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
     </macros>
-    <expand macros="requirements"/>
+    <expand macro="requirements"/>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/gff3_remove_fasta_sequences.py
 $gff3
@@ -20,7 +20,7 @@ $gff3
     </outputs>
     <help><![CDATA[
 **What it does**
-This program is removes the lines after '##FASTA' in a .gff3 to be compliant with standard .gff3 format
+This program removes the lines after '##FASTA' in a .gff3 to be compliant with standard .gff3 format
 
         ]]></help>
     <citations>
