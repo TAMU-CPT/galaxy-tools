@@ -87,10 +87,10 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
 
         for rec in GFF.parse(gff3, base_dict=seq_dict):
             noMatch = True
-            if 'Alias' in rec.features[0].qualifiers.keys():
-              lColumn = rec.features[0].qualifiers['Alias'][0]
+            if "Alias" in rec.features[0].qualifiers.keys():
+                lColumn = rec.features[0].qualifiers["Alias"][0]
             else:
-              lColumn = ""  
+                lColumn = ""
             for x in seq_dict:
                 if x == rec.id or x == lColumn:
                     noMatch = False
@@ -141,10 +141,10 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         for rec in GFF.parse(gff3, base_dict=seq_dict):
             noMatch = True
-            if 'Alias' in rec.features[0].qualifiers.keys():
-              lColumn = rec.features[0].qualifiers['Alias'][0]
+            if "Alias" in rec.features[0].qualifiers.keys():
+                lColumn = rec.features[0].qualifiers["Alias"][0]
             else:
-              lColumn = ""  
+                lColumn = ""
             for x in seq_dict:
                 if x == rec.id or x == lColumn:
                     noMatch = False

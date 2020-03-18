@@ -280,7 +280,7 @@ def charges_svg(svg, fasta, aa, fgColor, bgColor, width=120):
                     res += sub
                 body += (
                     '<rect x="'
-                    + str(.5 + seqIndent + (letterLen * sumSeq))
+                    + str(0.5 + seqIndent + (letterLen * sumSeq))
                     + '" y="'
                     + str(yInd - yInc + 2)
                     + '" width="'
