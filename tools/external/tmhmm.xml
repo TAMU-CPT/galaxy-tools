@@ -47,7 +47,6 @@ Runs TMHMM and outputs the GFF3 formatted results, as well as the normal plots i
 		</test>
 	</tests>
 		
-	<expand macro="citations">
-		<citation type="doi">10.1006/jmbi.2000.4315</citation>
-	</expand>
+	<expand macro="citations" />
+		
 </tool>
