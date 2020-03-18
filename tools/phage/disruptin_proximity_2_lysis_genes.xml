@@ -1,11 +1,13 @@
 <?xml version="1.1"?>
-<tool id="edu.tamu.cpt2.phage." name="Disruptin Proximity to Lysis Genes Tool" version="1.1">
+<tool id="edu.tamu.cpt2.phage.disruptin_prox" name="Disruptin Proximity to Lysis Genes Tool" version="1.1">
     <description>identifies lysis gene candidates close to genes encoding endolysin domains and genes encoding transmembrane domains</description>
     <macros>
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
     </macros>
-    <expand macros="requirements"/>
+    <expand macro="requirements">
+      	<requirement type="package" version="3.0.2">intervaltree</requirement>
+    </expand>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/disruptin_proximity_2_lysis_genes.py
 $lgc

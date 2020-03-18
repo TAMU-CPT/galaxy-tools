@@ -3,28 +3,38 @@ import numpy
 import argparse
 from phantasm import Utils, Clustering
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Columnar Data Rescale and Partitioning')
-    parser.add_argument('tabular_data', type=argparse.FileType("r"), help='Tabular Dataset')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Columnar Data Rescale and Partitioning"
+    )
+    parser.add_argument(
+        "tabular_data", type=argparse.FileType("r"), help="Tabular Dataset"
+    )
 
-    choices = ['MeanShift', 'user', 'simple']
-    parser.add_argument('partition_type', choices=choices, help='Partitioning Method')
+    choices = ["MeanShift", "user", "simple"]
+    parser.add_argument("partition_type", choices=choices, help="Partitioning Method")
 
-    parser.add_argument('--user_breakpoints', type=float, nargs='*', help='User specified breakpoints')
-    parser.add_argument('--percentage_breakpoints', type=int, nargs='1',
-                        help='Percentage based breakpoints into N bins')
+    parser.add_argument(
+        "--user_breakpoints", type=float, nargs="*", help="User specified breakpoints"
+    )
+    parser.add_argument(
+        "--percentage_breakpoints",
+        type=int,
+        nargs="1",
+        help="Percentage based breakpoints into N bins",
+    )
 
-    parser.add_argument('--version', action='version', version='0.2')
+    parser.add_argument("--version", action="version", version="0.2")
     args = parser.parse_args()
 
     data = Utils.load_data(args.tabular_data)
-    (id_col, data_col) = (data['id'], data['data'])
+    (id_col, data_col) = (data["id"], data["data"])
 
-    if args.partition_type == 'MeanShift':
+    if args.partition_type == "MeanShift":
         data_col = Clustering.meanshift(data_col)
-    elif args.partition_type == 'user':
+    elif args.partition_type == "user":
         data_col = Clustering.user_break(data_col, breaks=args.user_breakpoints)
-    elif args.partition_type == 'simple':
+    elif args.partition_type == "simple":
         dataset_min = numpy.min(data_col)
         dataset_max = numpy.max(data_col)
         break_size = (dataset_max - dataset_min) / args.percentage_breakpoints

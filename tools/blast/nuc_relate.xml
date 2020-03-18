@@ -28,7 +28,7 @@ $access
 This tool filters a set of BLASTn results and return the top
 related genomes based on number of BLASTn matches.
 
-The input must be a BLASTp tabular file with the qseqID, 
+The input must be a tabular file from a BLASTn run with the qseqID, 
 length, nident, qlen, slen, salltitles, sallacc, 
 and staxIDs fields selected.
 </help>

@@ -38,10 +38,12 @@ $__user_email__
   <help><![CDATA[
 **What it does**
 
-Using a Jbrowse HTML Output, the tool will::
+Using a Jbrowse HTML Output, the tool will:
+
 - **Update** an existing Apollo organism if ‘Select’ is toggled in the 
   Organism Common Name Source field and an Organism is chosen from the 
   resultant drop-down menu.
+
 - **Create** an Apollo organism if ‘Direct Entry’ is toggled in the 
   Organism Common Name Source field. A unique name should be entered 
   in the Organism field.

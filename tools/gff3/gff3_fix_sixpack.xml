@@ -33,9 +33,6 @@ This tool **strips ALL the mRNA features** in a GFF3 file. It specifically forma
 the output of the naïve ORF call Sixpack such that it will be compatible with 
 Apollo via JBrowse.
 
-.. class:: warningmark While CDS and gene features are retained, mRNA features are 
-**not** present in the output GFF3 file.
-
       ]]></help>
 		<expand macro="citations" />
 </tool>

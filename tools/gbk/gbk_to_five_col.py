@@ -3,6 +3,7 @@ import BIO_FIX_TOPO  # NOQA
 import argparse
 import logging
 from Bio import SeqIO
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
@@ -27,8 +28,8 @@ Repeat Line 2 for each qualifier in a feature
 
 def gbk_to_5col(genbank):
     """Converts genbank to BankIt five column format"""
-    for record in SeqIO.parse(genbank, 'genbank'):
-        print('>Feature %s' % record.id)
+    for record in SeqIO.parse(genbank, "genbank"):
+        print(">Feature %s" % record.id)
         for feature in record.features:
             if feature.type == "source":
                 continue
@@ -50,9 +51,11 @@ def gbk_to_5col(genbank):
                         print("\t\t\t%s\t%s" % (qualifier, value))
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Convert a Genbank file into five column format')
-    parser.add_argument('genbank', type=argparse.FileType("r"), help='Genbank file')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Convert a Genbank file into five column format"
+    )
+    parser.add_argument("genbank", type=argparse.FileType("r"), help="Genbank file")
 
     args = vars(parser.parse_args())
     gbk_to_5col(**args)

@@ -46,5 +46,7 @@ Runs TMHMM and outputs the GFF3 formatted results, as well as the normal plots i
 			<output name="bw_m" file="tmhmm_m.wig" />
 		</test>
 	</tests>
-		<expand macro="citations" />
+		
+	<expand macro="citations" />
+		
 </tool>

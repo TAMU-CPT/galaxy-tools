@@ -6,6 +6,7 @@ import copy
 from Bio import SeqIO
 
 import logging
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
@@ -17,7 +18,7 @@ def add_tr(genbank_file, end=None):
 
     # Find region of interest
     if end is None:
-        repeat_regions = [x for x in record.features if x.type == 'repeat_region']
+        repeat_regions = [x for x in record.features if x.type == "repeat_region"]
         if len(repeat_regions) == 1:
             cut_start = repeat_regions[0].location.start
             cut_end = repeat_regions[0].location.end
@@ -34,20 +35,23 @@ def add_tr(genbank_file, end=None):
 
     # Clone features in region of interest for duplication, this will actually
     # grab the repeat_region as well, conveniently
-    clonefeats = [copy.deepcopy(x) for x in record.features if
-                  cut_start <= x.location.start <= cut_end and
-                  cut_start <= x.location.end <= cut_end]
+    clonefeats = [
+        copy.deepcopy(x)
+        for x in record.features
+        if cut_start <= x.location.start <= cut_end
+        and cut_start <= x.location.end <= cut_end
+    ]
 
     # For each cloned feature update the location
     for feat in clonefeats:
         feat.location += len(record.seq)
-        if 'locus_tag' in feat.qualifiers:
-            feat.qualifiers['locus_tag'][0] += '_rep'
+        if "locus_tag" in feat.qualifiers:
+            feat.qualifiers["locus_tag"][0] += "_rep"
 
-        if 'note' in feat.qualifiers:
-            feat.qualifiers['note'].append('CPT_TR dupcliated feature')
+        if "note" in feat.qualifiers:
+            feat.qualifiers["note"].append("CPT_TR dupcliated feature")
         else:
-            feat.qualifiers['note'] = ['CPT_TR dupcliated feature']
+            feat.qualifiers["note"] = ["CPT_TR dupcliated feature"]
 
     # Append extra sequence
     record.seq = record.seq + record.seq[cut_start:cut_end]
@@ -57,10 +61,18 @@ def add_tr(genbank_file, end=None):
     return [record]
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Add Terminal Repeats to a genbank file')
-    parser.add_argument('genbank_file', type=argparse.FileType("r"), help='Genbank file')
-    parser.add_argument('--end', type=str, help='End of Terminal Repeat Region. READ THE DIRECTIONS BELOW')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Add Terminal Repeats to a genbank file"
+    )
+    parser.add_argument(
+        "genbank_file", type=argparse.FileType("r"), help="Genbank file"
+    )
+    parser.add_argument(
+        "--end",
+        type=str,
+        help="End of Terminal Repeat Region. READ THE DIRECTIONS BELOW",
+    )
 
     args = parser.parse_args()
-    SeqIO.write(add_tr(**vars(args)), sys.stdout, 'genbank')
+    SeqIO.write(add_tr(**vars(args)), sys.stdout, "genbank")

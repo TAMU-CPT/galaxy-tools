@@ -13,7 +13,7 @@ $__tool_directory__/fasta_dedup.py
 		<expand macro="input/fasta" />
 	</inputs>
 	<outputs>
-		<data format="fasta" name="default" label="Unique sequences in $positional_1.name"/>
+		<data format="fasta" name="default" label="Unique sequences in input"/>
 	</outputs>
 	<help><![CDATA[
 **What it does**

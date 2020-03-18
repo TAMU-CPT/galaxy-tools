@@ -5,6 +5,7 @@ import sys
 from Bio import SeqIO
 
 import logging
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
@@ -43,13 +44,17 @@ def remove_qualifiers(genbank_files, feature_type=None, tag_type=None, tag_match
             yield [record]
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Remove specific features from a Genbank file')
-    parser.add_argument('genbank_files', type=argparse.FileType("r"), nargs='+', help='Genbank files')
-    parser.add_argument('--feature_type', help='Feature type to remove')
-    parser.add_argument('--tag_type', help='Tag type to remove')
-    parser.add_argument('--tag_match', help='String in tag to match')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Remove specific features from a Genbank file"
+    )
+    parser.add_argument(
+        "genbank_files", type=argparse.FileType("r"), nargs="+", help="Genbank files"
+    )
+    parser.add_argument("--feature_type", help="Feature type to remove")
+    parser.add_argument("--tag_type", help="Tag type to remove")
+    parser.add_argument("--tag_match", help="String in tag to match")
 
     args = parser.parse_args()
     for record in remove_qualifiers(**vars(args)):
-        SeqIO.write(record, sys.stdout, 'genbank')
+        SeqIO.write(record, sys.stdout, "genbank")

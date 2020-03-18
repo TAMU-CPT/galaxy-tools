@@ -19,14 +19,14 @@ def hydrophobicity(beg, mid, end):
     """ analyzes hydrophobicity of a sequence """
 
     # neutral amino acids
-    aas = ['F', 'I', 'W', 'L', 'V', 'M', 'Y', 'C', 'A', 'T', 'G', 'S']
+    aas = ["F", "I", "W", "L", "V", "M", "Y", "C", "A", "T", "G", "S"]
 
     for i in mid:
         if i not in aas:
             return False
         else:
             for j in beg + end:
-                if j not in aas and j != 'K':
+                if j not in aas and j != "K":
                     return False
     return True
 
@@ -45,17 +45,17 @@ def print_seq(locations, record):
     annotate = ""
     for i in range(len(record.seq)):
         if i in locations:
-            annotate += '*'
+            annotate += "*"
         else:
-            annotate += '-'
+            annotate += "-"
 
-    if '*' in annotate:
+    if "*" in annotate:
         print record.id
         print record.seq
         print annotate
         for r in list(ranges(locations)):
-            print r[0], '-', r[1]
-        print '\n'
+            print r[0], "-", r[1]
+        print "\n"
     else:
         return (record.id, record.seq)
 
@@ -70,21 +70,33 @@ def find_tmembrane(records):
     for rec in records:
         locations = []  # indices of hydrophobic domains
         for i in range(3, len(records[rec].seq) - 12):
-            if hydrophobicity(records[rec].seq[i - 3:i], records[rec].seq[i:i + 10], records[rec].seq[i + 10:i + 13]):
-                locations += [loc for loc in range(i - 3, i + 13) if loc not in locations]
+            if hydrophobicity(
+                records[rec].seq[i - 3 : i],
+                records[rec].seq[i : i + 10],
+                records[rec].seq[i + 10 : i + 13],
+            ):
+                locations += [
+                    loc for loc in range(i - 3, i + 13) if loc not in locations
+                ]
 
-        no_tmembrane_domains += [rec_id for rec_id in [print_seq(locations, records[rec])] if rec_id]
+        no_tmembrane_domains += [
+            rec_id for rec_id in [print_seq(locations, records[rec])] if rec_id
+        ]
 
     print "Records with no found transmembrane domains:"
     for i in no_tmembrane_domains:
         print i[0]
         print i[1]
-        print '\n'
+        print "\n"
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='find phage transmembrane domains')
-    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 output of TMHMM')
-    parser.add_argument('fasta', type=argparse.FileType("r"), help='fasta file of protein(s)')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="find phage transmembrane domains")
+    parser.add_argument(
+        "gff3", type=argparse.FileType("r"), help="GFF3 output of TMHMM"
+    )
+    parser.add_argument(
+        "fasta", type=argparse.FileType("r"), help="fasta file of protein(s)"
+    )
     args = parser.parse_args()
     taper_list(**vars(args))

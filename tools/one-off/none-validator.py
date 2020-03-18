@@ -6,9 +6,10 @@ import argparse
 from Bio import SeqIO
 
 import logging
+
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
-LIPOBOX = re.compile('[ILMFTV][^REKD][GAS]C')
+LIPOBOX = re.compile("[ILMFTV][^REKD][GAS]C")
 
 """
 1.  Take all the NONEs and sort out all those with genome size <90 kb.
@@ -103,12 +104,10 @@ __BASE_ENDOLYSIN_KEYWORDS = (
 ENDOLYSIN_KEYWORDS = []
 for x in __BASE_ENDOLYSIN_KEYWORDS:
     ENDOLYSIN_KEYWORDS.append(x.lower())
-    ENDOLYSIN_KEYWORDS.append(x.lower().replace('-', '_'))
-    ENDOLYSIN_KEYWORDS.append(x.lower().replace('_', '-'))
+    ENDOLYSIN_KEYWORDS.append(x.lower().replace("-", "_"))
+    ENDOLYSIN_KEYWORDS.append(x.lower().replace("_", "-"))
 
-HOLIN_KEYWORDS = (
-    'holin'
-)
+HOLIN_KEYWORDS = "holin"
 
 
 def contains_keyword(feats, KWD_LIST):
@@ -158,7 +157,9 @@ def tag(feat, tag_name, tag_value):
 
 
 def putative_lipobox(record, feature):
-    tmpseq = str(feature.extract(record.seq).translate(table=11, cds=True)).replace("*", "")
+    tmpseq = str(feature.extract(record.seq).translate(table=11, cds=True)).replace(
+        "*", ""
+    )
     return LIPOBOX.search(tmpseq)
 
 
@@ -169,35 +170,40 @@ def renumber_genes(gbk_files, problematic=None):
             # 2. Call this the SMALLNONEs.  Everything else is PROBLEMATIC
             # (because lysis cassettes are not as common in large genomes)
             if len(record.seq) > 90000:
-                SeqIO.write([record], problematic, 'genbank')
+                SeqIO.write([record], problematic, "genbank")
 
             # 3. Then sort out all the genomes with the words holin and
             # endolysin anywhere in the record.
-            putative_endolysins = list(contains_keyword(record.features, ENDOLYSIN_KEYWORDS))
+            putative_endolysins = list(
+                contains_keyword(record.features, ENDOLYSIN_KEYWORDS)
+            )
 
             if len(putative_endolysins) == 0:
-                SeqIO.write([record], problematic, 'genbank')
+                SeqIO.write([record], problematic, "genbank")
             else:
                 for feature in putative_endolysins:
-                    tag(feature, 'color', '255 128 128')
-                    tag(feature, 'note', 'putative endolysin')
+                    tag(feature, "color", "255 128 128")
+                    tag(feature, "note", "putative endolysin")
 
                     for nearby in nearby_cds(record.features, feature, dist=3):
                         if putative_lipobox(nearby):
-                            tag(feature, 'color', '255 0 0')
+                            tag(feature, "color", "255 0 0")
 
-                            tag(nearby, 'color', '0 255 0')
-                            tag(nearby, 'note', 'putative lipobox')
+                            tag(nearby, "color", "0 255 0")
+                            tag(nearby, "note", "putative lipobox")
 
-                SeqIO.write([record], sys.stdout, 'genbank')
+                SeqIO.write([record], sys.stdout, "genbank")
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Renumber genbank files')
-    parser.add_argument('gbk_files', type=argparse.FileType("r"), nargs='+', help='Genbank files')
-    parser.add_argument('--problematic', type=argparse.FileType('w'),
-                        help='Problematic genomes')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Renumber genbank files")
+    parser.add_argument(
+        "gbk_files", type=argparse.FileType("r"), nargs="+", help="Genbank files"
+    )
+    parser.add_argument(
+        "--problematic", type=argparse.FileType("w"), help="Problematic genomes"
+    )
 
     args = parser.parse_args()
     for record in renumber_genes(**vars(args)):
-        SeqIO.write(record, sys.stdout, 'genbank')
+        SeqIO.write(record, sys.stdout, "genbank")
