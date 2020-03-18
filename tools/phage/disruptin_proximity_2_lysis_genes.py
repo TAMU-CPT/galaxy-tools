@@ -186,17 +186,19 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
         # print(rec_genome)
 
         for feat in rec_genome.features:
-            # print(feat)
-            # searches for synonyms and
-            if feat.type == "CDS":
+            #print(feat)
+            # searches for synonyms and 
+            if feat.type == 'CDS':
+                feat_names = []
+                if 'locus_tag' in feat.qualifiers:
+                    feat_names.append(str(feat.qualifiers['locus_tag'][0]))
+                if 'Name' in feat.qualifiers:
+                    feat_names.append(str(feat.qualifiers['Name'][0]))
 
-                feat_names = [
-                    str(feat.qualifiers["locus_tag"][0]),
-                    str(feat.qualifiers["Name"][0]),
-                ]
-                # print(str(feat_names[1]))
+                #print(str(feat_names[1]))
+                
+                #print(str(feat.qualifiers))
 
-                # print(str(feat.qualifiers))
                 for i in range(len(feat_names)):
                     if str(feat_names[i]) in str(lgc_names):
                         lgc_seqrec += [feat]
