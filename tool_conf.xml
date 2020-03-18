@@ -168,6 +168,7 @@
 		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3-nt.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_to_gapped_gff3.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/blastp_to_gff3.xml" label="experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml"/>
 	</section>
 	<section id="7045e32e-90c8-4e20-b4ac-a6cb070d40c3" name="CPT: Filter Features">
