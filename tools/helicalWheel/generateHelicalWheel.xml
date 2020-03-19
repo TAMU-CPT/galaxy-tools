@@ -62,12 +62,12 @@ python $__tool_directory__/generateHelicalWheel.py
 
 ]]></command>
     <inputs>
-        <param label="Peptide Sequence" name="sequence" type="string" />
+        <param label="Peptide Sequence" name="sequence" type="text" />
         <param label="Sequence Start" name="seqRange" type="integer" value="1" help="Sequence Start Number (eg: VAGGL, V==1)" />
         <param label="Text Size" name="t_size" type="integer" value="32" help="Alters the Text Size. Default is 32" />
         <param label="Rotation" name="rotation" type="integer" value="90" help="Rotates the helical wheel. Default is 90" />
-        <section title="Color Selection">
-            <section title="nonpolar ; hydrophobic">
+        <section name="sec_A" title="Color Selection">
+            <section name="sec_B" title="nonpolar ; hydrophobic">
                 <param name="f_A" type="color" label="Color for A" value="#ffcc33">
                     <sanitizer>
                         <valid initial="string.ascii_letters,string.digits">
@@ -181,7 +181,7 @@ python $__tool_directory__/generateHelicalWheel.py
                     </sanitizer>
                 </param>
             </section>
-            <section title="polar, uncharged">
+            <section name="sec_B" title="polar, uncharged">
                 <param name="f_C" type="color" label="Color for C" value="#b5b5b5">
                     <sanitizer>
                         <valid initial="string.ascii_letters,string.digits">
@@ -281,7 +281,7 @@ python $__tool_directory__/generateHelicalWheel.py
                     </sanitizer>
                 </param>
             </section>
-            <section title="polar ; acidic (negatively charged">
+            <section name="sec_C" title="polar ; acidic (negatively charged">
                 <param name="f_D" type="color" label="Color for D" value="#db270f">
                     <sanitizer>
                         <valid initial="string.ascii_letters,string.digits">
@@ -311,7 +311,7 @@ python $__tool_directory__/generateHelicalWheel.py
                     </sanitizer>
                 </param>
             </section>
-            <section name="polar ; basic (positive charge)">
+            <section name="sec_D" title="polar ; basic (positive charge)">
                 <param name="f_H" type="color" label="Color for H" value="#12d5fc">
                     <sanitizer>
                         <valid initial="string.ascii_letters,string.digits">
