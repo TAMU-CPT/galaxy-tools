@@ -296,6 +296,7 @@
                 <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-isp.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-osp.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/spanin/findSpanin.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/helicalWheel/generateHelicalWheel.xml"/>
 	</section>
 	<!-- deprecated -->
 	<tool file="cpt2/galaxy-tools/tools/gff3/gff3_ipr_merge.xml" label="deprecated" hidden="True" />
