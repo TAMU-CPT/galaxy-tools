@@ -10,7 +10,7 @@
         <requirement type="package" version="0.24.0">pandas</requirement>
         <requirement type="package" version="0.18.1">scikit-learn</requirement>
         <requirement type="package" version="0.19.1">scipy</requirement>
-        <requirement type="package" version="3.0.2">matplotlib</requirement>
+        <requirement type="package">matplotlib</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/generateHelicalWheel.py
