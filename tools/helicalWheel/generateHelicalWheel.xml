@@ -3,6 +3,7 @@
     <description>Generate and Plot a Protein Helical Wheel</description>
     <macros>
 		<import>cpt-macros.xml</import>
+                <import>macros.xml</import>
     </macros>
     <expand macro="requirements">
         <requirement type="package" version="1.13.1">numpy</requirement>
