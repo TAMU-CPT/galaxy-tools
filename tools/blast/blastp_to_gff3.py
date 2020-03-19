@@ -14,7 +14,7 @@ BlastXML files, when transformed to GFF3, do not normally show gaps in the
 blast hits. This tool aims to fill that "gap".
 """
 
-
+# note for all FeatureLocations, Biopython saves in zero index and Blast provides one indexed locations, thus a Blast Location of (123,500) should be saved as (122, 500)
 def blast2gff3(blast, blastxml=False, blasttab=False, include_seq=False):
     # Call correct function based on xml or tabular file input, raise error if neither or both are provided
     if blastxml and blasttab:
@@ -62,10 +62,12 @@ def blastxml2gff3(blastxml, include_seq=False):
                 "hit_titles": hit.title.split(" >"),
                 "hsp_count": len(hit.hsps),
             }
+            desc = hit.title.split(" >")[0]
+            hit_qualifiers["description"] = desc[desc.index(" ") :]
             sub_features = []
             for idx_hsp, hsp in enumerate(hit.hsps):
                 if idx_hsp == 0:
-                    # -1 and +1 for start/end to convert 0 index of python to 1 index of people
+                    # -2 and +1 for start/end to convert 0 index of python to 1 index of people, -2 on start because feature location saving issue
                     parent_match_start = hsp.query_start - 1
                     parent_match_end = hsp.query_end + 1
                 # generate qualifiers to be added to gff3 feature
@@ -103,8 +105,6 @@ def blastxml2gff3(blastxml, include_seq=False):
                 ):
                     hsp_qualifiers["blast_" + prop] = getattr(hsp, prop, None)
 
-                desc = hit.title.split(" >")[0]
-                hsp_qualifiers["description"] = desc[desc.index(" ") :]
 
                 # check if parent boundary needs to increase to envelope hsp
                 if hsp.query_start < parent_match_start:
@@ -115,7 +115,7 @@ def blastxml2gff3(blastxml, include_seq=False):
                 # add hsp to the gff3 feature as a "match_part"
                 sub_features.append(
                     SeqFeature(
-                        FeatureLocation(hsp.query_start, hsp.query_end),
+                        FeatureLocation(hsp.query_start - 1, hsp.query_end),
                         type="match_part",
                         strand=0,
                         qualifiers=copy.deepcopy(hsp_qualifiers),
@@ -124,7 +124,7 @@ def blastxml2gff3(blastxml, include_seq=False):
 
             # Build the top level seq feature for the hit
             top_feature = SeqFeature(
-                FeatureLocation(parent_match_start, parent_match_end),
+                FeatureLocation(parent_match_start - 1, parent_match_end),
                 type=match_type,
                 strand=0,
                 qualifiers=hit_qualifiers,
@@ -138,10 +138,6 @@ def blastxml2gff3(blastxml, include_seq=False):
 
 
 def blasttsv2gff3(blasttsv, include_seq=False):
-    yield None
-
-
-def blasttab2gff3(blasttab, include_seq=False):
     yield None
 
 
