@@ -6,10 +6,10 @@
                 <import>macros.xml</import>
     </macros>
     <expand macro="requirements">
-        <requirement type="package" version="1.13.1">numpy</requirement>
-        <requirement type="package" version="0.24.0">pandas</requirement>
+        <requirement type="package">numpy</requirement>
+        <requirement type="package">pandas</requirement>
         <requirement type="package" version="0.18.1">scikit-learn</requirement>
-        <requirement type="package" version="0.19.1">scipy</requirement>
+        <requirement type="package">scipy</requirement>
         <requirement type="package">matplotlib</requirement>
     </expand>
     <command detect_errors="aggressive"><![CDATA[
