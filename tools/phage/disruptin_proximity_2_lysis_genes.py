@@ -190,11 +190,13 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
             # searches for synonyms and 
             if feat.type == 'CDS':
                 feat_names = []
-                if 'locus_tag' in feat.qualifiers:
-                    feat_names.append(str(feat.qualifiers['locus_tag'][0]))
-                if 'Name' in feat.qualifiers:
-                    feat_names.append(str(feat.qualifiers['Name'][0]))
-
+                if "locus_tag" in feat.qualifiers:
+                    feat_names.append(str(feat.qualifiers["locus_tag"][0]))
+                if "Name" in feat.qualifiers:
+                    feat_names.append(str(feat.qualifiers["Name"][0]))
+                if "protein_id" in feat.qualifiers:
+                    feat_names.append(str(feat.qualifiers["protein_id"][0]))
+                    
                 #print(str(feat_names[1]))
                 
                 #print(str(feat.qualifiers))
