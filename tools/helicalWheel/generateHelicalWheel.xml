@@ -18,7 +18,7 @@ python $__tool_directory__/generateHelicalWheel.py
 --seqRange $seqRange
 --t_size $t_size
 --rotation $rotation
---f_A $sec_A.sec_B.f_A
+--f_A $sec_B.f_A
 --f_C $f_C
 --f_D $f_D
 --f_E $f_E
