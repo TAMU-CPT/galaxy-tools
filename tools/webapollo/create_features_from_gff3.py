@@ -133,6 +133,10 @@ if __name__ == "__main__":
                 )
             else:
                 try:
+                    print(featureData)
+                    print(featureData[0])
+                    print(featureData[0]["children"][0])
+                    print(featureData[0]["children"][0]["children"])
                     # We're experiencing a (transient?) problem where gene_001 to
                     # gene_025 will be rejected. Thus, hardcode to a known working
                     # gene name and update later.
