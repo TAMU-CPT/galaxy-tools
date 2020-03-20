@@ -43,6 +43,7 @@ def helical_wheel(sequence, colorcoding='rainbow', text_color=None, lineweights=
     .. versionadded:: v2.1.5
     """
     # color mappings
+    matplotlib.use('Agg')
     aa = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
     if colorcoding == type(str):
         f_rainbow = ['#3e3e28', '#ffcc33', '#b30047', '#b30047', '#ffcc33', '#3e3e28', '#80d4ff', '#ffcc33', '#0047b3',
