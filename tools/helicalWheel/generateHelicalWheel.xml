@@ -1,385 +1,84 @@
-<?xml version="1.1"?>
-<tool id="edu.tamu.cpt2.helicalWheel.generateHelicalWheel" name="Helical Wheel" version="1.0">
-    <description>Generate and Plot a Protein Helical Wheel</description>
-    <macros>
-		<import>cpt-macros.xml</import>
-                <import>macros.xml</import>
-    </macros>
-    <expand macro="requirements">
-        <requirement type="package">numpy</requirement>
-        <requirement type="package">pandas</requirement>
-        <requirement type="package" version="0.18.1">scikit-learn</requirement>
-        <requirement type="package">scipy</requirement>
-        <requirement type="package">matplotlib</requirement>
-    </expand>
-    <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/generateHelicalWheel.py
---sequence $sequence
---seqRange $seqRange
---t_size $t_size
---rotation $rotation
---f_A "$sec_B.f_A"
---f_C "$sec_C.f_C"
---f_D "$sec_D.f_D"
---f_E "$sec_D.f_E"
---f_F "$sec_B.f_F"
---f_G "$sec_C.f_G"
---f_H "$sec_E.f_H"
---f_I "$sec_B.f_I"
---f_K "$sec_E.f_K"
---f_L "$sec_B.f_L"
---f_M "$sec_B.f_M"
---f_N "$sec_C.f_N"
---f_P "$sec_B.f_P"
---f_Q "$sec_C.f_Q"
---f_R "$sec_E.f_R"
---f_S "$sec_C.f_S"
---f_T "$sec_C.f_T"
---f_V "$sec_B.f_V"
---f_W "$sec_B.f_W"
---f_Y "$sec_C.f_Y"
---t_A "$sec_B.t_A"
---t_C "$sec_C.t_C"
---t_D "$sec_D.t_D"
---t_E "$sec_D.t_E"
---t_F "$sec_B.t_F"
---t_G "$sec_C.t_G"
---t_H "$sec_E.t_H"
---t_I "$sec_B.t_I"
---t_K "$sec_E.t_K"
---t_L "$sec_B.t_L"
---t_M "$sec_B.t_M"
---t_N "$sec_C.t_N"
---t_P "$sec_B.t_P"
---t_Q "$sec_C.t_Q"
---t_R "$sec_E.t_R"
---t_S "$sec_C.t_S"
---t_T "$sec_C.t_T"
---t_V "$sec_B.t_V"
---t_W "$sec_B.t_W"
---t_Y "$sec_C.t_Y"
---output $output
-]]></command>
-    <inputs>
-        <param label="Peptide Sequence" name="sequence" type="text" />
-        <param label="Sequence Start" name="seqRange" type="integer" value="1" help="Sequence Start Number (eg: VAGGL, V==1)" />
-        <param label="Text Size" name="t_size" type="integer" value="32" help="Alters the Text Size. Default is 32" />
-        <param label="Rotation" name="rotation" type="integer" value="90" help="Rotates the helical wheel. Default is 90" />
-            <section name="sec_B" title="nonpolar ; hydrophobic">
-                <param name="f_A" type="color" label="Color for A" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_A" type="color" label="Text color for A" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_F" type="color" label="Color for F" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_F" type="color" label="Text color for F" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_I" type="color" label="Color for I" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_I" type="color" label="Text color for I" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_L" type="color" label="Color for L" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_L" type="color" label="Text color for L" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_M" type="color" label="Color for M" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_M" type="color" label="Text color for M" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_P" type="color" label="Color for P" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_P" type="color" label="Text color for P" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_V" type="color" label="Color for V" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_V" type="color" label="Text color for V" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_W" type="color" label="Color for W" value="#ffcc33">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_W" type="color" label="Text color for W" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-            </section>
-            <section name="sec_C" title="polar, uncharged">
-                <param name="f_C" type="color" label="Color for C" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_C" type="color" label="Text color for C" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_G" type="color" label="Color for G" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_G" type="color" label="Text color for G" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_N" type="color" label="Color for N" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_N" type="color" label="Text color for N" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_Q" type="color" label="Color for Q" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_Q" type="color" label="Text color for Q" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_S" type="color" label="Color for S" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_S" type="color" label="Text color for S" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_T" type="color" label="Color for T" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_T" type="color" label="Text color for T" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_Y" type="color" label="Color for Y" value="#b5b5b5">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_Y" type="color" label="Text color for Y" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-            </section>
-            <section name="sec_D" title="polar ; acidic (negatively charged">
-                <param name="f_D" type="color" label="Color for D" value="#db270f">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_D" type="color" label="Text color for D" value="#FFFFFF">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_E" type="color" label="Color for D" value="#db270f">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_E" type="color" label="Text color for D" value="#FFFFFF">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-            </section>
-            <section name="sec_E" title="polar ; basic (positive charge)">
-                <param name="f_H" type="color" label="Color for H" value="#12d5fc">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_H" type="color" label="Text color for H" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_K" type="color" label="Color for K" value="#12d5fc">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_K" type="color" label="Text color for K" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="f_R" type="color" label="Color for R" value="#12d5fc">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-                <param name="t_R" type="color" label="Text color for R" value="#000000">
-                    <sanitizer>
-                        <valid initial="string.ascii_letters,string.digits">
-                            <add value="#" />
-                        </valid>
-                    </sanitizer>
-                </param>
-            </section>
-    </inputs>
-    <outputs>
-        <data format="png" name="output" label="_helicalWheel.png" />
-    </outputs>
-    <help><![CDATA[
-**What it does**
-INPUT : Peptide Sequence
-PARAMETERS : 
-primary parameters : 
-> Peptide Sequence - Input Sequence
-> Sequence Start - Numerical value that represents the beginning of the sequence (default 1)
-> Text Size - Size of text for helical wheel (default 32)
-> Rotation - Degrees to rotate helical wheel (defaul 90)
-color parameters : 
-> Background Color and Text Color Selections
-METHOD : Using the core features from the modlAMP python module, a helical wheel projection is constructed.
-OUTPUT : _helicalWheel.png
-]]></help>
-    <citations>
-        <citation type="doi">10.1093/bioinformatics/btx285</citation>
-        <citation type="bibtex">
-        @unpublished{galaxyTools,
-            author = {C. Ross},
-            title = {CPT Galaxy Tools},
-            year = {2020-},
-            note = {https://github.com/tamu-cpt/galaxy-tools/}
-        }
-        </citation>
-    </citations>
-</tool>
+## 
+
+import argparse
+from plotWheels.helical_wheel import helical_wheel
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Generate Helical Wheel")
+    parser.add_argument("--sequence",dest="sequence",type=str)
+    parser.add_argument("--seqRange",dest="seqRange",type=int,default=1)
+    parser.add_argument("--t_size",dest="t_size",type=int,default=32)
+    parser.add_argument("--rotation",dest="rotation",type=int,default=90)
+    parser.add_argument("--output",dest="output",type=argparse.FileType("wb"), default="_helicalwheel.png")#dest="output",default="_helicalwheel.png")
+    #### circle colors
+    parser.add_argument("--f_A",dest="f_A", default="#ffcc33")
+    parser.add_argument("--f_C",dest="f_C",default="#b5b5b5")
+    parser.add_argument("--f_D",dest="f_D",default="#db270f")
+    parser.add_argument("--f_E",dest="f_E",default="#db270f")
+    parser.add_argument("--f_F",dest="f_F",default="#ffcc33")
+    parser.add_argument("--f_G",dest="f_G",default="#b5b5b5")
+    parser.add_argument("--f_H",dest="f_H",default="#12d5fc")
+    parser.add_argument("--f_I",dest="f_I",default="#ffcc33")
+    parser.add_argument("--f_K",dest="f_K",default="#12d5fc")
+    parser.add_argument("--f_L",dest="f_L",default="#ffcc33")
+    parser.add_argument("--f_M",dest="f_M",default="#ffcc33")
+    parser.add_argument("--f_N",dest="f_N",default="#b5b5b5")
+    parser.add_argument("--f_P",dest="f_P",default="#ffcc33")
+    parser.add_argument("--f_Q",dest="f_Q",default="#b5b5b5")
+    parser.add_argument("--f_R",dest="f_R",default="#12d5fc")
+    parser.add_argument("--f_S",dest="f_S",default="#b5b5b5")
+    parser.add_argument("--f_T",dest="f_T",default="#b5b5b5")
+    parser.add_argument("--f_V",dest="f_V",default="#ffcc33")
+    parser.add_argument("--f_W",dest="f_W",default="#ffcc33")
+    parser.add_argument("--f_Y",dest="f_Y",default="#b5b5b5")
+    ### text colors
+    parser.add_argument("--t_A",dest="t_A",default="k")
+    parser.add_argument("--t_C",dest="t_C",default="k")
+    parser.add_argument("--t_D",dest="t_D",default="w")
+    parser.add_argument("--t_E",dest="t_E",default="w")
+    parser.add_argument("--t_F",dest="t_F",default="k")
+    parser.add_argument("--t_G",dest="t_G",default="k")
+    parser.add_argument("--t_H",dest="t_H",default="k")
+    parser.add_argument("--t_I",dest="t_I",default="k")
+    parser.add_argument("--t_K",dest="t_K",default="k")
+    parser.add_argument("--t_L",dest="t_L",default="k")
+    parser.add_argument("--t_M",dest="t_M",default="k")
+    parser.add_argument("--t_N",dest="t_N",default="k")
+    parser.add_argument("--t_P",dest="t_P",default="k")
+    parser.add_argument("--t_Q",dest="t_Q",default="k")
+    parser.add_argument("--t_R",dest="t_R",default="k")
+    parser.add_argument("--t_S",dest="t_S",default="k")
+    parser.add_argument("--t_T",dest="t_T",default="k")
+    parser.add_argument("--t_V",dest="t_V",default="k")
+    parser.add_argument("--t_W",dest="t_W",default="k")
+    parser.add_argument("--t_Y",dest="t_Y",default="k")
+
+    args = parser.parse_args()
+
+    
+    #print(type(args.output))
+
+    f_colors = [args.f_A,args.f_C,args.f_D,args.f_E,args.f_F,args.f_G,args.f_H,args.f_I,args.f_K,
+                args.f_L,args.f_M,args.f_N,args.f_P,args.f_Q,args.f_R,args.f_S,args.f_T,args.f_V,
+                args.f_W,args.f_Y]
+
+    t_colors = [args.t_A,args.t_C,args.t_D,args.t_E,args.t_F,args.t_G,args.t_H,args.t_I,args.t_K,
+                args.t_L,args.t_M,args.t_N,args.t_P,args.t_Q,args.t_R,args.t_S,args.t_T,args.t_V,
+                args.t_W,args.t_Y]
+    
+    colors = [f_colors, t_colors]
+
+    tmp_file = "./tmp.png"
+
+    helical_wheel(sequence=args.sequence,
+                  colorcoding=colors[0],
+                  text_color=colors[1],
+                  seqRange=args.seqRange,
+                  t_size=args.t_size,
+                  rot=args.rotation,
+                  filename=tmp_file,
+                 )
+    
+    with open("tmp.png", "rb") as f:
+        for line in f:
+            args.output.write(line)
