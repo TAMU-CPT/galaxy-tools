@@ -1,3 +1,6 @@
+import matplotlib
+matplotlib.use('Agg')
+
 import matplotlib.lines as lines
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
