@@ -294,14 +294,14 @@ python $__tool_directory__/generateHelicalWheel.py
                         </valid>
                     </sanitizer>
                 </param>
-                <param name="f_E" type="color" label="Color for D" value="#db270f">
+                <param name="f_E" type="color" label="Color for E" value="#db270f">
                     <sanitizer>
                         <valid initial="string.ascii_letters,string.digits">
                             <add value="#" />
                         </valid>
                     </sanitizer>
                 </param>
-                <param name="t_E" type="color" label="Text color for D" value="#FFFFFF">
+                <param name="t_E" type="color" label="Text color for E" value="#FFFFFF">
                     <sanitizer>
                         <valid initial="string.ascii_letters,string.digits">
                             <add value="#" />
