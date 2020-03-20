@@ -11,7 +11,9 @@ from scipy.stats.kde import gaussian_kde
 from plotWheels.core import load_scale
 from plotWheels.descriptors import PeptideDescriptor
 
-def helical_wheel(sequence, colorcoding='rainbow', text_color=None, lineweights=True, filename=None, seq=False, moment=False, seqRange=1, t_size=32, rot=float(90), dpi=150):
+def helical_wheel(sequence, colorcoding='rainbow', text_color=None, 
+                  lineweights=True, filename=None, seq=False, moment=False, 
+                  seqRange=1, t_size=32, rot=float(90), dpi=150, numbering=False):
     """A function to project a given peptide sequence onto a helical wheel plot. It can be useful to illustrate the
     properties of alpha-helices, like positioning of charged and hydrophobic residues along the sequence.
 
@@ -154,23 +156,40 @@ def helical_wheel(sequence, colorcoding='rainbow', text_color=None, lineweights=
         ax.add_patch(circ)
         
         # check if N- or C-terminus and add subscript, then plot AA letter
-        size = t_size
-        if i == 0:
-            ax.text(new[0], new[1], sequence[i] + '$_N$', va='center', ha='center', transform=ax.transData,
-                    size=size, color=dt[sequence[i]], fontweight='bold')
-        elif i == len(sequence) - 1:
-            ax.text(new[0], new[1], sequence[i] + '$_C$', va='center', ha='center', transform=ax.transData,
-                    size=size, color=dt[sequence[i]], fontweight='bold')
-        else:
-            seqRange += 1
-            ax.text(new[0], new[1], sequence[i] + '$_{'+str(seqRange)+'}$', va='center', ha='center', transform=ax.transData,
-                    size=size, color=dt[sequence[i]], fontweight='bold')
+        if not numbering:
+            size = t_size
+            if i == 0:
+                ax.text(new[0], new[1], sequence[i] + '$_N$', va='center', ha='center', transform=ax.transData,
+                        size=size, color=dt[sequence[i]], fontweight='bold')
+            elif i == len(sequence) - 1:
+                ax.text(new[0], new[1], sequence[i] + '$_C$', va='center', ha='center', transform=ax.transData,
+                        size=size, color=dt[sequence[i]], fontweight='bold')
+            else:
+                seqRange += 1
+                ax.text(new[0], new[1], sequence[i] + '$_{'+str(seqRange)+'}$', va='center', ha='center', transform=ax.transData,
+                        size=size, color=dt[sequence[i]], fontweight='bold')
 
-        
-        eb = d_eisberg[sequence[i]][0]  # eisenberg value for this AA
-        hm.append([eb * new[0], eb * new[1]])  # save eisenberg hydrophobicity vector value to later calculate HM
-        
-        old = (np.cos(r), np.sin(r))  # save as previous coordinates
+            eb = d_eisberg[sequence[i]][0]  # eisenberg value for this AA
+            hm.append([eb * new[0], eb * new[1]])  # save eisenberg hydrophobicity vector value to later calculate HM
+            
+            old = (np.cos(r), np.sin(r))  # save as previous coordinates
+
+        else:
+            size = t_size
+            if i == 0:
+                ax.text(new[0], new[1], sequence[i] + '$_N$', va='center', ha='center', transform=ax.transData,
+                        size=size, color=dt[sequence[i]], fontweight='bold')
+            elif i == len(sequence) - 1:
+                ax.text(new[0], new[1], sequence[i] + '$_C$', va='center', ha='center', transform=ax.transData,
+                        size=size, color=dt[sequence[i]], fontweight='bold')
+            else:
+                ax.text(new[0], new[1], sequence[i], va='center', ha='center', transform=ax.transData,
+                        size=size, color=dt[sequence[i]], fontweight='bold')
+
+            eb = d_eisberg[sequence[i]][0]  # eisenberg value for this AA
+            hm.append([eb * new[0], eb * new[1]])  # save eisenberg hydrophobicity vector value to later calculate HM
+            
+            old = (np.cos(r), np.sin(r))  # save as previous coordinates
     
     # draw hydrophobic moment arrow if moment option
     if moment:

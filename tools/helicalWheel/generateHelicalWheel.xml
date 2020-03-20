@@ -18,6 +18,7 @@ python $__tool_directory__/generateHelicalWheel.py
 --seqRange $seqRange
 --t_size $t_size
 --rotation $rotation
+--numbering $numbering
 --f_A "$sec_B.f_A"
 --f_C "$sec_C.f_C"
 --f_D "$sec_D.f_D"
@@ -65,6 +66,7 @@ python $__tool_directory__/generateHelicalWheel.py
         <param label="Label Start Number" name="seqRange" type="integer" value="1" help="starting residue number to use for labels" />
         <param label="Amino Acid Text Size" name="t_size" type="integer" value="32" help="Alters the Text Size. Default is 32" />
         <param label="Rotation" name="rotation" type="integer" value="90" help="Rotates the helical wheel. Default is 90" />
+        <param label="Label Numbering Text" name="numbering" type="boolean" help="number schema subscripts " truevalue="" falsevalue="--numbering"/>
             <section name="sec_B" title="nonpolar ; hydrophobic">
                 <param name="f_A" type="color" label="Color for A" value="#ffcc33">
                     <sanitizer>
@@ -362,9 +364,9 @@ python $__tool_directory__/generateHelicalWheel.py
 INPUT : Peptide Sequence
 PARAMETERS : 
 primary parameters : 
-> Peptide Sequence - Input Sequence
-> Sequence Start - Numerical value that represents the beginning of the sequence (default 1)
-> Text Size - Size of text for helical wheel (default 32)
+> Paste in exact sequence to be plotted - Input Sequence of desired helical wheel plot
+> Label Start Number - Numerical value that represents the beginning of the sequence (default 1)
+> Amino Acid Text Size - Size of text for helical wheel (default 32)
 > Rotation - Degrees to rotate helical wheel (defaul 90)
 color parameters : 
 > Background Color and Text Color Selections
