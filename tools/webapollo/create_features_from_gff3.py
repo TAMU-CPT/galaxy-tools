@@ -133,10 +133,10 @@ if __name__ == "__main__":
                 )
             else:
                 try:
-                    print(featureData)
-                    print(featureData[0])
-                    print(featureData[0]["children"][0])
-                    print(featureData[0]["children"][0]["children"])
+                    #print(featureData)
+                    #print(featureData[0])
+                    #print(featureData[0]["children"][0])
+                    #print(featureData[0]["children"][0]["children"])
                     # We're experiencing a (transient?) problem where gene_001 to
                     # gene_025 will be rejected. Thus, hardcode to a known working
                     # gene name and update later.
@@ -145,7 +145,7 @@ if __name__ == "__main__":
                     # to set the CDS location correctly (apollo currently screwing
                     # this up (2.0.6))
                     CDS = featureData[0]["children"][0]["children"]
-                    CDS = [
+                    lastCDS = [
                         x for x in CDS if x["type"]["name"] in ["CDS", "RBS", "exon"]
                     ][0]["location"]
                     # Create the new feature
@@ -158,13 +158,13 @@ if __name__ == "__main__":
                     # data.
                     time.sleep(1)
                     # Correct the translation start, but with strand specific log
-                    if CDS["strand"] == 1:
+                    if lastCDS["strand"] == 1:
                         wa.annotations.setTranslationStart(
-                            mrna_id, min(CDS["fmin"], CDS["fmax"])
+                            mrna_id, min(lastCDS["fmin"], lastCDS["fmax"])
                         )
                     else:
                         wa.annotations.setTranslationStart(
-                            mrna_id, max(CDS["fmin"], CDS["fmax"]) - 1
+                            mrna_id, max(lastCDS["fmin"], lastCDS["fmax"]) - 1
                         )
 
                     # Finally we set the name, this should be correct.
