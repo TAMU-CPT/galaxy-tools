@@ -61,9 +61,9 @@ python $__tool_directory__/generateHelicalWheel.py
 --output $output
 ]]></command>
     <inputs>
-        <param label="Peptide Sequence" name="sequence" type="text" />
-        <param label="Sequence Start" name="seqRange" type="integer" value="1" help="Sequence Start Number (eg: VAGGL, V==1)" />
-        <param label="Text Size" name="t_size" type="integer" value="32" help="Alters the Text Size. Default is 32" />
+        <param label="Paste in exact sequence to be plotted" name="sequence" type="text" />
+        <param label="Label Start Number" name="seqRange" type="integer" value="1" help="starting residue number to use for labels" />
+        <param label="Amino Acid Text Size" name="t_size" type="integer" value="32" help="Alters the Text Size. Default is 32" />
         <param label="Rotation" name="rotation" type="integer" value="90" help="Rotates the helical wheel. Default is 90" />
             <section name="sec_B" title="nonpolar ; hydrophobic">
                 <param name="f_A" type="color" label="Color for A" value="#ffcc33">
