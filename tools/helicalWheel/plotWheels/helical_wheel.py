@@ -13,7 +13,7 @@ from plotWheels.descriptors import PeptideDescriptor
 
 def helical_wheel(sequence, colorcoding='rainbow', text_color=None, 
                   lineweights=True, filename=None, seq=False, moment=False, 
-                  seqRange=1, t_size=32, rot=float(90), dpi=150, numbering=False):
+                  seqRange=1, t_size=32, rot=float(90), dpi=150, numbering=True):
     """A function to project a given peptide sequence onto a helical wheel plot. It can be useful to illustrate the
     properties of alpha-helices, like positioning of charged and hydrophobic residues along the sequence.
 
@@ -156,7 +156,7 @@ def helical_wheel(sequence, colorcoding='rainbow', text_color=None,
         ax.add_patch(circ)
         
         # check if N- or C-terminus and add subscript, then plot AA letter
-        if not numbering:
+        if numbering:
             size = t_size
             if i == 0:
                 ax.text(new[0], new[1], sequence[i] + '$_N$', va='center', ha='center', transform=ax.transData,
