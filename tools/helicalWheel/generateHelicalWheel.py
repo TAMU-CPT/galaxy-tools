@@ -71,5 +71,5 @@ if __name__ == "__main__":
                   seqRange=args.seqRange,
                   t_size=args.t_size,
                   rot=args.rotation,
-                  filename=args.output,
+                  filename=args.output.name,
                  )
