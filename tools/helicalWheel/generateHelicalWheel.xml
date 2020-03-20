@@ -355,7 +355,7 @@ python $__tool_directory__/generateHelicalWheel.py
             </section>
     </inputs>
     <outputs>
-        <data format="output" name="output" label="_helicalWheel.png" />
+        <data format="png" name="output" label="_helicalWheel.png" />
     </outputs>
     <help><![CDATA[
 **What it does**
