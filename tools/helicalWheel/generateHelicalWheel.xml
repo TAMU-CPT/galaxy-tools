@@ -179,7 +179,7 @@ python $__tool_directory__/generateHelicalWheel.py
                     </sanitizer>
                 </param>
             </section>
-            <section name="sec_C" title="polar, uncharged">
+            <section name="sec_C" title="polar ; uncharged">
                 <param name="f_C" type="color" label="Color for C" value="#b5b5b5">
                     <sanitizer>
                         <valid initial="string.ascii_letters,string.digits">
@@ -279,7 +279,7 @@ python $__tool_directory__/generateHelicalWheel.py
                     </sanitizer>
                 </param>
             </section>
-            <section name="sec_D" title="polar ; acidic (negatively charged">
+            <section name="sec_D" title="polar ; acidic (negatively charged)">
                 <param name="f_D" type="color" label="Color for D" value="#db270f">
                     <sanitizer>
                         <valid initial="string.ascii_letters,string.digits">
