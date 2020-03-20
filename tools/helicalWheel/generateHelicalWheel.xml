@@ -18,7 +18,7 @@ python $__tool_directory__/generateHelicalWheel.py
 --seqRange $seqRange
 --t_size $t_size
 --rotation $rotation
---numbering $numbering
+$numbering
 --f_A "$sec_B.f_A"
 --f_C "$sec_C.f_C"
 --f_D "$sec_D.f_D"
@@ -66,7 +66,7 @@ python $__tool_directory__/generateHelicalWheel.py
         <param label="Label Start Number" name="seqRange" type="integer" value="1" help="starting residue number to use for labels" />
         <param label="Amino Acid Text Size" name="t_size" type="integer" value="32" help="Alters the Text Size. Default is 32" />
         <param label="Rotation" name="rotation" type="integer" value="90" help="Rotates the helical wheel. Default is 90" />
-        <param label="Label Numbering Text" name="numbering" type="boolean" help="number schema subscripts" truevalue="" falsevalue="--numbering"/>
+        <param label="Label Numbering Text" name="numbering" type="boolean" help="number schema subscripts" truevalue="--numbering" falsevalue=""/>
             <section name="sec_B" title="nonpolar ; hydrophobic">
                 <param name="f_A" type="color" label="Color for A" value="#ffcc33">
                     <sanitizer>

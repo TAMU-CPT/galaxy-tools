@@ -9,7 +9,7 @@ if __name__ == "__main__":
     parser.add_argument("--seqRange",dest="seqRange",type=int,default=1)
     parser.add_argument("--t_size",dest="t_size",type=int,default=32)
     parser.add_argument("--rotation",dest="rotation",type=int,default=90)
-    parser.add_argument("--numbering",action="store_true",help="add numbering for helical wheel")
+    parser.add_argument("--numbering",action="store_true",help="numbering for helical wheel")
     parser.add_argument("--output",dest="output",type=argparse.FileType("wb"), default="_helicalwheel.png")#dest="output",default="_helicalwheel.png")
     #### circle colors
     parser.add_argument("--f_A",dest="f_A", default="#ffcc33")
