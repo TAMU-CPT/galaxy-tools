@@ -58,6 +58,7 @@ python $__tool_directory__/generateHelicalWheel.py
 --t_V "$sec_B.t_V"
 --t_W "$sec_B.t_W"
 --t_Y "$sec_C.t_Y"
+--output $output
 ]]></command>
     <inputs>
         <param label="Peptide Sequence" name="sequence" type="text" />
