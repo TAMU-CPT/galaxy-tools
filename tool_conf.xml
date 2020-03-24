@@ -275,6 +275,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gbk/sequin.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/gbk_to_five_col.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/phage_renamer.xml" label="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/cpt_validate_gbk.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_validator.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_table.xml"/>
 	</section>

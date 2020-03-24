@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gbk.cpt_validate_gbk" name="GenBank Validator" version="RC1">
+  <description>Runs a set of quality control checks on a Genbank file before submission</description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/cpt_validate_genbank.py
+$gbkIn
+> $output]]></command>
+  <inputs>
+    <param label="GenBank file" name="gbkIn" type="data" format="genbank"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="output" label="$gbkIn.name QC Report"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Validates the structure of a Genbank file to catch errors prior to submission.
+
+The file first checks the locus tags of features to construct a feature-subfeature system, and then checks that the subfeatures are sensible
+in relation to the parent gene. If a gene is annotated with no RBS or CDS, a warning is thrown. Otherwise, the CDS and RBS must not overlap, and the CDS's end must match the gene's end, while the RBS's start must match the gene's start. An exception to the RBS rule exists for frame shift, in which case an RBS is allowed to not match up with the gene, so long as there exists another RBS feature in a different locus tag with the exact same start and end.
+
+Intron features must be abutted on either side by a CDS feature.
+
+Warnings are thrown for any features for which there is no spec listed.
+      ]]></help>
+		<expand macro="citations-2020" />
+</tool>
