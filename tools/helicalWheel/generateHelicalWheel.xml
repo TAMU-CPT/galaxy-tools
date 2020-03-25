@@ -372,6 +372,7 @@ color parameters :
 > Background Color and Text Color Selections
 METHOD : Using the core features from the modlAMP python module, a helical wheel projection is constructed.
 OUTPUT : _helicalWheel.png
+NOTES : Peptide lengths longer than 36 residues will not properly graph.
 ]]></help>
     <citations>
         <citation type="doi">10.1093/bioinformatics/btx285</citation>
