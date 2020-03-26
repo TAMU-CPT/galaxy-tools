@@ -39,6 +39,7 @@ if __name__ == "__main__":
     # This user MUST be allowed to access an organism before they can
     # modify permissions on it.
     for x in org_cn:
+      print("Assert " + x)
       assert x in orgs
 
     # The other person must already be an apollo user
