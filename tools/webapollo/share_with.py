@@ -2,6 +2,7 @@
 import argparse
 from webapollo import WebApolloInstance
 from webapollo import WAAuth, OrgOrGuess, GuessOrgMulti, AssertUser, accessible_organisms
+import sys
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -39,7 +40,7 @@ if __name__ == "__main__":
     # This user MUST be allowed to access an organism before they can
     # modify permissions on it.
     for x in org_cn:
-      print("Assert " + x)
+      print("Assert " + x, file=sys.stderr)
       assert x in orgs
 
     # The other person must already be an apollo user
