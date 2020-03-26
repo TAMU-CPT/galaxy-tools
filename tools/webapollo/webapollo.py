@@ -447,12 +447,17 @@ def GuessOrgMulti(args, wa):
         orgs = [x for x in orgs if x is not None]
         return orgs
     elif args.org_raw:
-        org = args.org_raw.strip()
-        if len(org) > 0:
-            return [org]
+        args.org_raw = str(args.org_raw)
+        args.org_raw = args.org_raw.split(",")
+        for i in range(len(args.org_raw)):
+          args.org_raw[i] = args.org_raw[i].strip()
+        if len(args.org_raw) > 0:
+            return args.org_raw
         else:
             raise Exception("Organism Common Name not provided")
     elif args.org_id:
+        args.org_id = str(args.org_id)
+        args.org_id = args.org_id.split(",")
         res = []
         for x in wa.organisms.findMultipleOrganismsById(args.org_id):
            res.append(x.get("commonName", None))
