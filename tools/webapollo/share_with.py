@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import argparse
 from webapollo import WebApolloInstance
-from webapollo import WAAuth, OrgOrGuess, GuessOrg, AssertUser, accessible_organisms
+from webapollo import WAAuth, OrgOrGuess, GuessOrgMulti, AssertUser, accessible_organisms
 import logging
 
 logging.basicConfig(level=logging.INFO)
