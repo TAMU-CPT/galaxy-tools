@@ -25,8 +25,8 @@ if __name__ == "__main__":
     wa = WebApolloInstance(args.apollo, args.username, args.password)
     # User must have an account
     gx_user = AssertUser(wa.users.loadUsers(email=args.email))
-    args.org_id = str(args.org_id)
-    args.org_id = args.org_id.split(",")
+    
+
     # Get organism
     org_cn = GuessOrgMulti(args, wa)
 
