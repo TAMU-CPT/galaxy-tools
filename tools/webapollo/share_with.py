@@ -25,9 +25,10 @@ if __name__ == "__main__":
     wa = WebApolloInstance(args.apollo, args.username, args.password)
     # User must have an account
     gx_user = AssertUser(wa.users.loadUsers(email=args.email))
-
+    args.org_id = str(args.org_id)
+    args.org_id = args.org_id.split(",")
     # Get organism
-    org_cn = GuessOrg(args, wa)[0]
+    org_cn = GuessOrgMulti(args, wa)
 
     # Fetch all organisms
     all_orgs = wa.organisms.findAllOrganisms()
@@ -37,20 +38,25 @@ if __name__ == "__main__":
 
     # This user MUST be allowed to access an organism before they can
     # modify permissions on it.
-    assert org_cn in orgs
-
-    org = wa.organisms.findOrganismByCn(org_cn)
+    for x in org_cn:
+      assert x in orgs
 
     # The other person must already be an apollo user
     other_user = AssertUser(
         wa.users.loadUsers(email=args.share_with.replace("__at__", "@"))
     )
 
-    wa.users.updateOrganismPermission(
+    # Did not appear referenced, suspect vestigial
+    # org = wa.organisms.findOrganismByCn(org_cn)
+
+
+    for x in org_cn:
+
+      wa.users.updateOrganismPermission(
         other_user,
-        org_cn,
+        x,
         administrate=False,
         write=args.write,
         export=args.export,
         read=args.read,
-    )
+      )

@@ -34,7 +34,7 @@ $e
             <param name="target_raw" type="text" label="Target Name" optional="False" />
         </when>
       </conditional>
-      <expand macro="org_or_guess" />
+      <expand macro="org_or_guess_multi" />
       <param name="r" type="boolean" truevalue="--read" falsevalue="" label="Give Read Permission" />
       <param name="w" type="boolean" truevalue="--write" falsevalue="" label="Give Write Permission" />
       <param name="e" type="boolean" truevalue="--export" falsevalue="" label="Give Export Permission" />
