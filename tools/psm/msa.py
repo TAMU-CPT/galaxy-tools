@@ -7,6 +7,7 @@ class MSA:
     """
     multiple item alignment
     """
+
     def __init__(self, bidi=True, gap=0, match=5, mismatch=-1):
         self.sequences = []
         self.bidi = bidi
@@ -30,8 +31,9 @@ class MSA:
 
     def Sij(self, merger_row, query):
         for elem in merger_row:
-            if (query in self.relationships and elem in self.relationships[query]) or \
-                    (elem in self.relationships and query in self.relationships[elem]):
+            if (query in self.relationships and elem in self.relationships[query]) or (
+                elem in self.relationships and query in self.relationships[elem]
+            ):
                 return self.match_score
         return self.mismatch_score
 
@@ -52,15 +54,15 @@ class MSA:
         score_mat = {}
         point_mat = {}
 
-        point_mat[(0, 0)] = 'Z'
+        point_mat[(0, 0)] = "Z"
         score_mat[(0, 0)] = 0
 
         for i in range(max_i):
-            point_mat[(i + 1, 0)] = 'U'
+            point_mat[(i + 1, 0)] = "U"
             score_mat[(i + 1, 0)] = self.gap_penalty
 
         for i in range(max_j):
-            point_mat[(0, i + 1)] = 'L'
+            point_mat[(0, i + 1)] = "L"
             score_mat[(0, i + 1)] = self.gap_penalty
 
         # Score
@@ -77,17 +79,17 @@ class MSA:
                 if diag_score >= up_score:
                     if diag_score >= left_score:
                         score_mat[pos] = diag_score
-                        point_mat[pos] = 'D'
+                        point_mat[pos] = "D"
                     else:
                         score_mat[pos] = left_score
-                        point_mat[pos] = 'L'
+                        point_mat[pos] = "L"
                 else:
                     if up_score >= left_score:
                         score_mat[pos] = up_score
-                        point_mat[pos] = 'U'
+                        point_mat[pos] = "U"
                     else:
                         score_mat[pos] = left_score
-                        point_mat[pos] = 'L'
+                        point_mat[pos] = "L"
 
         # self.print2dArray(score_mat, data)
         # self.print2dArray(point_mat, data)
@@ -101,16 +103,16 @@ class MSA:
 
             d = point_mat[(i, j)]
             new_row = None
-            if d == 'D':
+            if d == "D":
                 new_row = self.merger[i - 1] + [data[j - 1]]
                 i -= 1
                 j -= 1
-            elif d == 'L':
-                new_row = ['-' for _ in range(self.number_of_aligned_lists)]
+            elif d == "L":
+                new_row = ["-" for _ in range(self.number_of_aligned_lists)]
                 new_row.append(data[j - 1])
                 j -= 1
-            elif d == 'U':
-                new_row = self.merger[i - 1] + ['-']
+            elif d == "U":
+                new_row = self.merger[i - 1] + ["-"]
                 i -= 1
 
             new_row_set.append(new_row)
@@ -122,21 +124,21 @@ class MSA:
         i = max([q[0] for q in k])
         j = max([q[1] for q in k])
         if xlab:
-            sys.stderr.write('  '.join(['x'] + [str(z) for z in xlab]))
+            sys.stderr.write("  ".join(["x"] + [str(z) for z in xlab]))
         else:
-            sys.stderr.write('  '.join(['x'] + [str(z) for z in range(j)]))
-        sys.stderr.write('\n')
+            sys.stderr.write("  ".join(["x"] + [str(z) for z in range(j)]))
+        sys.stderr.write("\n")
         for n in range(i):
-            sys.stderr.write('%s] ' % n)
+            sys.stderr.write("%s] " % n)
             for m in range(j):
-                sys.stderr.write(str(d.get((n, m), '?')) + ' ')
-            sys.stderr.write('\n')
+                sys.stderr.write(str(d.get((n, m), "?")) + " ")
+            sys.stderr.write("\n")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('rels', type=argparse.FileType("r"), help='Relationships')
-    parser.add_argument('lists', type=argparse.FileType("r"), nargs='+', help='Lists')
+    parser.add_argument("rels", type=argparse.FileType("r"), help="Relationships")
+    parser.add_argument("lists", type=argparse.FileType("r"), nargs="+", help="Lists")
     ARGS = parser.parse_args()
 
     m = MSA()
@@ -149,8 +151,8 @@ if __name__ == '__main__':
 
     # Done aligning
     for row in m.merger:
-        sys.stdout.write('\t'.join(row))
-        sys.stdout.write('\n')
+        sys.stdout.write("\t".join(row))
+        sys.stdout.write("\n")
 
     # Test Case
     # m = MSA()
@@ -165,7 +167,7 @@ if __name__ == '__main__':
     # m.align_list(list('abcdef'))
     # m.align_list(list('12345'))
     # for row in m.merger:
-        # print '\t'.join(row)
+    # print '\t'.join(row)
 
     # print
     # m.align_list(list('uvwxyz'))

@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 import argparse
 import logging
+
 logging.basicConfig(level=logging.INFO)
-log = logging.getLogger(name='blasttab2gff3')
+log = logging.getLogger(name="blasttab2gff3")
 
 __doc__ = """
 Blast TSV files, when transformed to GFF3, do not normally show gaps in the
@@ -38,17 +39,22 @@ def blasttsv2gff3(blasttsv, min_dice=50):
     # 25 All subject title(s), separated by a '<>'
 
     for line in blasttsv:
-        data = line.split('\t')
+        line = line.strip("\n")
+        data = line.split("\t")
         dice = 2 * int(data[14]) / (float(data[22]) + float(data[23]))
         if dice >= min_dice:
             yield line
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Convert Blast TSV to gapped GFF3')
-    parser.add_argument('blasttsv', type=argparse.FileType("r"), help='Blast TSV Output')
-    parser.add_argument('--min_dice', type=float, help='Minimum dice score', default=0.5)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Convert Blast TSV to gapped GFF3")
+    parser.add_argument(
+        "blasttsv", type=argparse.FileType("r"), help="Blast TSV Output"
+    )
+    parser.add_argument(
+        "--min_dice", type=float, help="Minimum dice score", default=0.5
+    )
     args = parser.parse_args()
 
     for line in blasttsv2gff3(**vars(args)):
-        print line,
+        print(line)

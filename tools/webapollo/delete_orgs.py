@@ -4,17 +4,19 @@ from webapollo import WebApolloInstance
 from webapollo import WAAuth, AssertUser, retry
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='IRREVERSIBLY Delete organisms from Apollo')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="IRREVERSIBLY Delete organisms from Apollo"
+    )
     WAAuth(parser)
-    parser.add_argument('email', help='User Email')
-    parser.add_argument('orgids', help='Newline separated list of Organism IDs')
+    parser.add_argument("email", help="User Email")
+    parser.add_argument("orgids", help="Newline separated list of Organism IDs")
 
     args = parser.parse_args()
 
     # Process input file of organism ids
-    with open(args.orgids, 'r') as f:
-        orgids=[]
+    with open(args.orgids, "r") as f:
+        orgids = []
         for line in f:
             orgids.append(line.strip())
 
@@ -30,7 +32,7 @@ if __name__ == '__main__':
     # of wa.organisms.FindOrganismByID() but reduces API calls, also allows us to skip incorrect IDs rather than break processing
     all_organisms = wa.organisms.findAllOrganisms()
     for orgid in orgids:
-        orgs = [x for x in all_organisms if str(x['id']) == str(orgid)]
+        orgs = [x for x in all_organisms if str(x["id"]) == str(orgid)]
         if len(orgs) == 0:
             # Invalid ID number, skip it
             print("%s\t%s\t%s" % (orgid, "Not Found", "Not Found"))
@@ -38,12 +40,12 @@ if __name__ == '__main__':
         else:
             # ID was found, delete organism.
             org = orgs[0]
-            #print("%s\t%s\t%s" % (org['id'], org['commonName'], "Deleted"))
+            # print("%s\t%s\t%s" % (org['id'], org['commonName'], "Deleted"))
 
             def fn():
                 # Commenting the actual deletion for testing
-                wa.organisms.deleteOrganism(org['id'])
-                print("%s\t%s\t%s" % (org['id'], org['commonName'], "Deleted"))
+                wa.organisms.deleteOrganism(org["id"])
+                print("%s\t%s\t%s" % (org["id"], org["commonName"], "Deleted"))
 
             if not retry(fn, limit=3):
-                print("%s\t%s\t%s" % (org['id'], org['commonName'], "Error"))
+                print("%s\t%s\t%s" % (org["id"], org["commonName"], "Error"))

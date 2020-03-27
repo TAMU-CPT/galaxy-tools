@@ -141,3 +141,12 @@ tool_test_output.html
 tool_test_output.json
 
 **/.DS_Store
+
+## spanin chest
+tools/spanin/*.fa
+tools/spanin/*.fna
+tools/spanin/*.bed
+tools/spanin/*.gff3
+tools/spanin/*.txt
+tools/spanin/test-data/results.txt
+tools/spanin/test-data/*.fasta

@@ -2,28 +2,35 @@
 import argparse
 import logging
 from phantasm import Utils, Transforms
+
 logging.basicConfig(level=logging.INFO)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     transformations = {
-        'none': 'x',
-        'neg': '-x',
-        'log': 'log(x)',
-        'ln': 'ln(x)',
-        'inv': '1/x',
-        'abs': 'abs',
-        'exp': 'exp',
+        "none": "x",
+        "neg": "-x",
+        "log": "log(x)",
+        "ln": "ln(x)",
+        "inv": "1/x",
+        "abs": "abs",
+        "exp": "exp",
     }
 
-    parser = argparse.ArgumentParser(description='Transform data')
-    parser.add_argument('tabular_data', type=argparse.FileType("r"), help='Tabular Dataset')
-    parser.add_argument('--operation', choices=transformations.keys(),
-                        nargs='+', help='Transformation to apply to the data')
-    parser.add_argument('--version', action='version', version='0.1')
+    parser = argparse.ArgumentParser(description="Transform data")
+    parser.add_argument(
+        "tabular_data", type=argparse.FileType("r"), help="Tabular Dataset"
+    )
+    parser.add_argument(
+        "--operation",
+        choices=transformations.keys(),
+        nargs="+",
+        help="Transformation to apply to the data",
+    )
+    parser.add_argument("--version", action="version", version="0.1")
     args = parser.parse_args()
 
     data = Utils.load_data(args.tabular_data)
-    (id_col, data_col) = (data['id'], data['data'])
+    (id_col, data_col) = (data["id"], data["data"])
 
     for operation in args.operation:
         data_col = Transforms.apply_transform(data_col, operation)

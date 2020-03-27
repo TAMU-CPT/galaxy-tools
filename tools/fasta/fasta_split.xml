@@ -27,5 +27,14 @@ $splitLen
 
 Takes a Fasta record and outputs a multifasta with sequence lengths no longer than the specified slice length.
 </help>
-		<expand macro="citations" />
+		<citations>
+                        <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+		</citations>
 </tool>

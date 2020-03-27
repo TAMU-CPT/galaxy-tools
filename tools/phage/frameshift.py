@@ -29,8 +29,10 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
     for rec in GFF.parse(gff3, base_dict=seq_dict):
         putative_frameshift_genes = []
 
-        for gene in feature_lambda(rec.features, feature_test_type, {'type': 'gene'}):
-            feats = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'CDS'}))
+        for gene in feature_lambda(rec.features, feature_test_type, {"type": "gene"}):
+            feats = list(
+                feature_lambda(gene.sub_features, feature_test_type, {"type": "CDS"})
+            )
             if len(feats) == 0:
                 continue
 
@@ -41,12 +43,12 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
             overlap = min(len(feat), max_overlap)
             # Make sure overlap is evenly divisible by three
             if overlap % 3 != 0:
-                overlap -= (overlap % 3)
+                overlap -= overlap % 3
 
             feat_seq = feat.extract(rec)
             # Loop across the last overlap / 3 codons
             for idx in range(len(feat) - overlap, len(feat), 3):
-                codons = feat_seq[idx - 6:idx]
+                codons = feat_seq[idx - 6 : idx]
                 # Look from -10 to +5, and check under wobble rules, one
                 # or two codons are equal.
                 tn_codons = codons.seq.translate(table=table)
@@ -55,20 +57,22 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     if wobble % 3 == 0:
                         continue
 
-                    cmp_codons = feat_seq[idx - 6 + wobble:idx + wobble]
+                    cmp_codons = feat_seq[idx - 6 + wobble : idx + wobble]
                     cmp_codons = cmp_codons.seq.translate(table=table)
 
                     # Here we've found a feature which has a possible
                     # frame shift target. Now we need to check if there's
                     # a run of stop-codon free.
                     if feat.location.strand > 0:
-                        possible_frameshift_start = feat.location.start + \
-                            idx - 6 + wobble
+                        possible_frameshift_start = (
+                            feat.location.start + idx - 6 + wobble
+                        )
                         frameshift_to_end = rec.seq[possible_frameshift_start:]
                     else:
-                        possible_frameshift_start = feat.location.end - \
-                            idx + 6 - wobble
-                        frameshift_to_end = rec.seq[0:possible_frameshift_start].reverse_complement()
+                        possible_frameshift_start = feat.location.end - idx + 6 - wobble
+                        frameshift_to_end = rec.seq[
+                            0:possible_frameshift_start
+                        ].reverse_complement()
 
                     translated_seq = frameshift_to_end.translate(table=11, to_stop=True)
 
@@ -96,15 +100,28 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                     # some level as being a possible frameshift candidate.
                     score = 4 + slipperyScore(frameshift_to_end[0:7])
 
-                    sys.stderr.write('>' + '\t'.join(map(str, (
-                        score,
-                        distance(str(tn_codons), str(cmp_codons)),
-                        feat.id,
-                        feat.location.strand,
-                        possible_frameshift_start, idx,
-                        wobble, codons.seq, tn_codons, cmp_codons,
-                        frameshift_to_end[0:6]
-                    ))) + '\n')
+                    sys.stderr.write(
+                        ">"
+                        + "\t".join(
+                            map(
+                                str,
+                                (
+                                    score,
+                                    distance(str(tn_codons), str(cmp_codons)),
+                                    feat.id,
+                                    feat.location.strand,
+                                    possible_frameshift_start,
+                                    idx,
+                                    wobble,
+                                    codons.seq,
+                                    tn_codons,
+                                    cmp_codons,
+                                    frameshift_to_end[0:6],
+                                ),
+                            )
+                        )
+                        + "\n"
+                    )
 
                     # Ok, we need to add a new mRNA structure for this
                     if feat.location.strand > 0:
@@ -112,50 +129,51 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                         cdsB_end = possible_frameshift_start + (len(translated_seq) * 3)
                     else:
                         cdsB_end = possible_frameshift_start
-                        cdsB_start = possible_frameshift_start - (len(translated_seq) * 3)
+                        cdsB_start = possible_frameshift_start - (
+                            len(translated_seq) * 3
+                        )
 
                     frameshiftedFeatureLocation = FeatureLocation(
-                        cdsB_start,
-                        cdsB_end,
-                        strand=feat.location.strand
+                        cdsB_start, cdsB_end, strand=feat.location.strand
                     )
 
                     mRNA = SeqFeature(
                         frameshiftedFeatureLocation,
-                        type='mRNA',
+                        type="mRNA",
                         qualifiers={
-                            'source': 'CPT_FSFinder',
-                            'score': score * (1000 / 8),
-                        }
+                            "source": "CPT_FSFinder",
+                            "score": score * (1000 / 8),
+                        },
                     )
                     exon = SeqFeature(
                         frameshiftedFeatureLocation,
-                        type='exon',
-                        qualifiers={
-                            'source': 'CPT_FSFinder',
-                        }
+                        type="exon",
+                        qualifiers={"source": "CPT_FSFinder"},
                     )
                     cds_b = SeqFeature(
                         frameshiftedFeatureLocation,
-                        type='CDS',
+                        type="CDS",
                         qualifiers={
-                            'source': 'CPT_FSFinder',
-                            'phase': wobble % 3,  # WHO KNOWS
-                        }
+                            "source": "CPT_FSFinder",
+                            "phase": wobble % 3,  # WHO KNOWS
+                        },
                     )
 
                     mRNA.sub_features = [cds_b, exon]
 
                     gene2 = copy.deepcopy(gene)
                     # Strip the ID
-                    del gene2.qualifiers['ID']
+                    del gene2.qualifiers["ID"]
                     gene2.id = None
                     # Add more quals
-                    gene2.qualifiers.update({
-                        'source': 'CPT_FSFinder',
-                        'Name': 'Frameshifted ' + gene2.qualifiers.get('Name', [''])[0],
-                        'Note': ['Predicted frameshift region (%s)' % wobble]
-                    })
+                    gene2.qualifiers.update(
+                        {
+                            "source": "CPT_FSFinder",
+                            "Name": "Frameshifted "
+                            + gene2.qualifiers.get("Name", [""])[0],
+                            "Note": ["Predicted frameshift region (%s)" % wobble],
+                        }
+                    )
                     gene2.sub_features = [mRNA]
                     putative_frameshift_genes.append(gene2)
 
@@ -164,12 +182,12 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
         yield [rec]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('gff3', type=argparse.FileType("r"), help='GFF3 gene calls')
-    parser.add_argument('fasta', type=argparse.FileType("r"), help='FASTA genome calls')
-    parser.add_argument('--max_overlap', type=int, default=60)
-    parser.add_argument('--table', type=int, default=11)
+    parser.add_argument("gff3", type=argparse.FileType("r"), help="GFF3 gene calls")
+    parser.add_argument("fasta", type=argparse.FileType("r"), help="FASTA genome calls")
+    parser.add_argument("--max_overlap", type=int, default=60)
+    parser.add_argument("--table", type=int, default=11)
 
     args = parser.parse_args()
     for rec in FrameShiftFinder(**vars(args)):

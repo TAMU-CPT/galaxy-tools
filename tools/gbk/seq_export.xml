@@ -5,6 +5,9 @@
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
   </macros>
+  <expand macro="requirements">
+    <requirement type="package" version="2019.06.08">regex</requirement>
+  </expand>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/seq_export.py
 "$input"

@@ -58,5 +58,10 @@ python $__tool_directory__/Easyfig.py
 **What it does**
 Paste from tool --help
       ]]></help>
-  <expand macro="citations" />
+  @unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
 </tool>

@@ -1,0 +1,35 @@
+<tool id="edu.tamu.cpt.blastp_to_gff3" name="BlastP Results to GFF3" version="19.1.0.0">
+  <description>converts blast xml results to a JBrowse-compatible file</description>
+  <macros>
+	<import>macros.xml</import>
+	<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/blastp_to_gff3.py
+@BLAST_XML@
+--blastxml
+$include_seq
+> $output]]></command>
+  <inputs>
+    <expand macro="blast_xml" />
+    <param name="include_seq" type="boolean" label="Include protein alignment in Blast view in Apollo/JBrowse" truevalue="--include_seq" falsevalue="" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Convert BLASTP XML results into GFF3 format for visualization within JBrowse. This is critical for displaying the 
+position of high-scoring pairs of the Target aligned against the Query. Blast Tabular output support coming soon.
+
+**Options::**
+
+By selecting **Include protein alignment…**, the actual sequence alignment will be displayed 
+in the pop-up BLAST view in Apollo/JBrowse.
+
+]]></help>
+	<expand macro="citations" />
+</tool>
+

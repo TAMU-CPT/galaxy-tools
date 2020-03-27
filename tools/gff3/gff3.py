@@ -1,10 +1,19 @@
 import copy
 import logging
+
 log = logging.getLogger()
 log.setLevel(logging.WARN)
 
 
-def feature_lambda(feature_list, test, test_kwargs, subfeatures=True, parent=None, invert=False, recurse=True):
+def feature_lambda(
+    feature_list,
+    test,
+    test_kwargs,
+    subfeatures=True,
+    parent=None,
+    invert=False,
+    recurse=True,
+):
     """Recursively search through features, testing each with a test function, yielding matches.
 
     GFF3 is a hierachical data structure, so we need to be able to recursively
@@ -61,13 +70,21 @@ def feature_lambda(feature_list, test, test_kwargs, subfeatures=True, parent=Non
             else:
                 yield feature
 
-        if recurse and hasattr(feature, 'sub_features'):
-            for x in feature_lambda(feature.sub_features, test, test_kwargs, subfeatures=subfeatures, parent=feature, invert=invert, recurse=recurse):
+        if recurse and hasattr(feature, "sub_features"):
+            for x in feature_lambda(
+                feature.sub_features,
+                test,
+                test_kwargs,
+                subfeatures=subfeatures,
+                parent=feature,
+                invert=invert,
+                recurse=recurse,
+            ):
                 yield x
 
 
 def fetchParent(feature):
-    if not hasattr(feature, '_parent') or feature._parent is None:
+    if not hasattr(feature, "_parent") or feature._parent is None:
         return feature
     else:
         return fetchParent(feature._parent)
@@ -78,10 +95,10 @@ def feature_test_true(feature, **kwargs):
 
 
 def feature_test_type(feature, **kwargs):
-    if 'type' in kwargs:
-        return feature.type == kwargs['type']
-    elif 'types' in kwargs:
-        return feature.type in kwargs['types']
+    if "type" in kwargs:
+        return feature.type == kwargs["type"]
+    elif "types" in kwargs:
+        return feature.type in kwargs["types"]
     raise Exception("Incorrect feature_test_type call, need type or types")
 
 
@@ -91,24 +108,24 @@ def feature_test_qual_value(feature, **kwargs):
     For every feature, check that at least one value in
     feature.quailfiers(kwargs['qualifier']) is in kwargs['attribute_list']
     """
-    if isinstance(kwargs['qualifier'], list):
-        for qualifier in kwargs['qualifier']:
+    if isinstance(kwargs["qualifier"], list):
+        for qualifier in kwargs["qualifier"]:
             for attribute_value in feature.qualifiers.get(qualifier, []):
-                if attribute_value in kwargs['attribute_list']:
+                if attribute_value in kwargs["attribute_list"]:
                     return True
     else:
-        for attribute_value in feature.qualifiers.get(kwargs['qualifier'], []):
-            if attribute_value in kwargs['attribute_list']:
+        for attribute_value in feature.qualifiers.get(kwargs["qualifier"], []):
+            if attribute_value in kwargs["attribute_list"]:
                 return True
     return False
 
 
 def feature_test_location(feature, **kwargs):
-    if 'strand' in kwargs:
-        if feature.location.strand != kwargs['strand']:
+    if "strand" in kwargs:
+        if feature.location.strand != kwargs["strand"]:
             return False
 
-    return feature.location.start <= kwargs['loc'] <= feature.location.end
+    return feature.location.start <= kwargs["loc"] <= feature.location.end
 
 
 def feature_test_quals(feature, **kwargs):
@@ -151,31 +168,33 @@ def feature_test_quals(feature, **kwargs):
 
 
 def feature_test_contains(feature, **kwargs):
-    if 'index' in kwargs:
-        return feature.location.start < kwargs['index'] < feature.location.end
-    elif 'range' in kwargs:
-        return feature.location.start < kwargs['range']['start'] < feature.location.end and \
-            feature.location.start < kwargs['range']['end'] < feature.location.end
+    if "index" in kwargs:
+        return feature.location.start < kwargs["index"] < feature.location.end
+    elif "range" in kwargs:
+        return (
+            feature.location.start < kwargs["range"]["start"] < feature.location.end
+            and feature.location.start < kwargs["range"]["end"] < feature.location.end
+        )
     else:
-        raise RuntimeError('Must use index or range keyword')
+        raise RuntimeError("Must use index or range keyword")
 
 
 def get_id(feature=None, parent_prefix=None):
     result = ""
     if parent_prefix is not None:
-        result += parent_prefix + '|'
-    if 'locus_tag' in feature.qualifiers:
-        result += feature.qualifiers['locus_tag'][0]
-    elif 'gene' in feature.qualifiers:
-        result += feature.qualifiers['gene'][0]
-    elif 'Gene' in feature.qualifiers:
-        result += feature.qualifiers['Gene'][0]
-    elif 'product' in feature.qualifiers:
-        result += feature.qualifiers['product'][0]
-    elif 'Product' in feature.qualifiers:
-        result += feature.qualifiers['Product'][0]
-    elif 'Name' in feature.qualifiers:
-        result += feature.qualifiers['Name'][0]
+        result += parent_prefix + "|"
+    if "locus_tag" in feature.qualifiers:
+        result += feature.qualifiers["locus_tag"][0]
+    elif "gene" in feature.qualifiers:
+        result += feature.qualifiers["gene"][0]
+    elif "Gene" in feature.qualifiers:
+        result += feature.qualifiers["Gene"][0]
+    elif "product" in feature.qualifiers:
+        result += feature.qualifiers["product"][0]
+    elif "Product" in feature.qualifiers:
+        result += feature.qualifiers["Product"][0]
+    elif "Name" in feature.qualifiers:
+        result += feature.qualifiers["Name"][0]
     else:
         return feature.id
         # Leaving in case bad things happen.
@@ -189,7 +208,7 @@ def get_id(feature=None, parent_prefix=None):
 
 
 def get_gff3_id(gene):
-    return gene.qualifiers.get('Name', [gene.id])[0]
+    return gene.qualifiers.get("Name", [gene.id])[0]
 
 
 def ensure_location_in_bounds(start=0, end=0, parent_length=0):
@@ -207,19 +226,31 @@ def ensure_location_in_bounds(start=0, end=0, parent_length=0):
 
 def coding_genes(feature_list):
     for x in genes(feature_list):
-        if len(list(feature_lambda(x.sub_features, feature_test_type, {'type': 'CDS'}, subfeatures=False))) > 0:
+        if (
+            len(
+                list(
+                    feature_lambda(
+                        x.sub_features,
+                        feature_test_type,
+                        {"type": "CDS"},
+                        subfeatures=False,
+                    )
+                )
+            )
+            > 0
+        ):
             yield x
 
 
-def genes(feature_list, feature_type='gene', sort=False):
+def genes(feature_list, feature_type="gene", sort=False):
     """
     Simple filter to extract gene features from the feature set.
     """
 
     if not sort:
-        for x in feature_lambda(feature_list, feature_test_type,
-                                {'type': feature_type},
-                                subfeatures=True):
+        for x in feature_lambda(
+            feature_list, feature_test_type, {"type": feature_type}, subfeatures=True
+        ):
             yield x
     else:
         data = list(genes(feature_list, feature_type=feature_type, sort=False))
@@ -235,32 +266,63 @@ def wa_unified_product_name(feature):
     'product' or 'Product', othertimes in 'Name'
     """
     # Manually applied tags.
-    protein_product = feature.qualifiers.get('product', feature.qualifiers.get('Product', [None]))[0]
+    protein_product = feature.qualifiers.get(
+        "product", feature.qualifiers.get("Product", [None])
+    )[0]
 
     # If neither of those are available ...
     if protein_product is None:
         # And there's a name...
-        if 'Name' in feature.qualifiers:
-            if not is_uuid(feature.qualifiers['Name'][0]):
-                protein_product = feature.qualifiers['Name'][0]
+        if "Name" in feature.qualifiers:
+            if not is_uuid(feature.qualifiers["Name"][0]):
+                protein_product = feature.qualifiers["Name"][0]
 
     return protein_product
 
 
 def is_uuid(name):
-    return name.count('-') == 4 and len(name) == 36
+    return name.count("-") == 4 and len(name) == 36
 
 
 def get_rbs_from(gene):
     # Normal RBS annotation types
-    rbs_rbs = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'RBS'}, subfeatures=False))
-    rbs_sds = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'Shine_Dalgarno_sequence'}, subfeatures=False))
+    rbs_rbs = list(
+        feature_lambda(
+            gene.sub_features, feature_test_type, {"type": "RBS"}, subfeatures=False
+        )
+    )
+    rbs_sds = list(
+        feature_lambda(
+            gene.sub_features,
+            feature_test_type,
+            {"type": "Shine_Dalgarno_sequence"},
+            subfeatures=False,
+        )
+    )
     # Fraking apollo
-    apollo_exons = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'exon'}, subfeatures=False))
+    apollo_exons = list(
+        feature_lambda(
+            gene.sub_features, feature_test_type, {"type": "exon"}, subfeatures=False
+        )
+    )
     apollo_exons = [x for x in apollo_exons if len(x) < 10]
     # These are more NCBI's style
-    regulatory_elements = list(feature_lambda(gene.sub_features, feature_test_type, {'type': 'regulatory'}, subfeatures=False))
-    rbs_regulatory = list(feature_lambda(regulatory_elements, feature_test_quals, {'regulatory_class': ['ribosome_binding_site']}, subfeatures=False))
+    regulatory_elements = list(
+        feature_lambda(
+            gene.sub_features,
+            feature_test_type,
+            {"type": "regulatory"},
+            subfeatures=False,
+        )
+    )
+    rbs_regulatory = list(
+        feature_lambda(
+            regulatory_elements,
+            feature_test_quals,
+            {"regulatory_class": ["ribosome_binding_site"]},
+            subfeatures=False,
+        )
+    )
     # Here's hoping you find just one ;)
     return rbs_rbs + rbs_sds + rbs_regulatory + apollo_exons
 
@@ -270,9 +332,9 @@ def nice_name(record):
     get the real name rather than NCBI IDs and so on. If fails, will return record.id
     """
     name = record.id
-    likely_parental_contig = list(genes(record.features, feature_type='contig'))
+    likely_parental_contig = list(genes(record.features, feature_type="contig"))
     if len(likely_parental_contig) == 1:
-        name = likely_parental_contig[0].qualifiers.get('organism', [name])[0]
+        name = likely_parental_contig[0].qualifiers.get("organism", [name])[0]
     return name
 
 

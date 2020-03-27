@@ -33,5 +33,5 @@ python $__tool_directory__/fasta_revcom.py
 
 Reverses and complements all sequences in a set of fasta and/or txt files
 </help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>
