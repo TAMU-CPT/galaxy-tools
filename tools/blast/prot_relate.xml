@@ -7,9 +7,9 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
-$__tool_directory__/relatedness.py
+$__tool_directory__/relatedness_prot.py
 @BLAST_TSV@
-$__tool_directory__/db.json
+$__tool_directory__/TaxID_List.txt
 --hits $hits
 --protein
 > $accession_list
@@ -17,7 +17,7 @@ $__tool_directory__/db.json
 	<inputs>
 	<expand macro="blast_tsv" />
                 <param label = 'Number of results to return' name="hits" type="integer" size="15" value="5"/>
-	</inputs>
+        </inputs>
 	<outputs>
 		<data format="tabular" name="accession_list" label="Top BlastP Hits" />
 	</outputs>
@@ -25,8 +25,11 @@ $__tool_directory__/db.json
 **What it does**
 
 This tool filters a set of BLASTp results and return the top
-related genomes based on number (and score) of protein-protein matches.
+related genomes based on number of protein-protein matches.
+
+The input must be a tabular file from a BLASTp run with the qseqID, 
+sallseqid, salltitles, sallacc, and staxIDs fields selected.
 </help>
 	<tests/>
-	<expand macro="citations" />
+	<expand macro="citations-2020" />
 </tool>

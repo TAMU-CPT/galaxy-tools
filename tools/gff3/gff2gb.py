@@ -14,8 +14,16 @@ from Bio import SeqIO
 from Bio.Alphabet import generic_dna
 from Bio.SeqFeature import CompoundLocation, FeatureLocation
 from BCBio import GFF
-from gff3 import feature_lambda, wa_unified_product_name, is_uuid, \
-    feature_test_type, fsort, feature_test_true, feature_test_quals
+from gff3 import (
+    feature_lambda,
+    wa_unified_product_name,
+    is_uuid,
+    feature_test_type,
+    fsort,
+    feature_test_true,
+    feature_test_quals,
+)
+
 default_name = re.compile(r"^gene_(\d+)$")
 logging.basicConfig(level=logging.INFO)
 
@@ -39,18 +47,25 @@ def rename_key(ds, k_f, k_t):
     return ds
 
 
-def gff3_to_genbank(gff_file, fasta_file):
+def gff3_to_genbank(gff_file, fasta_file, transltbl):
     fasta_input = SeqIO.to_dict(SeqIO.parse(fasta_file, "fasta", generic_dna))
     gff_iter = GFF.parse(gff_file, fasta_input)
 
     for record in gff_iter:
-        yield handle_record(record)
+        yield handle_record(record, transltbl)
 
 
 def handle_non_gene_features(features):
     # These are NON-GENE features (maybe terminators? etc?)
-    for feature in feature_lambda(features, feature_test_type, {'type': 'gene'}, subfeatures=False, invert=True, recurse=False):
-        if feature.type in ('terminator', 'tRNA'):
+    for feature in feature_lambda(
+        features,
+        feature_test_type,
+        {"type": "gene"},
+        subfeatures=False,
+        invert=True,
+        recurse=False,
+    ):
+        if feature.type in ("terminator", "tRNA"):
             yield feature
 
 
@@ -85,28 +100,28 @@ def fix_gene_boundaries(feature):
 
 def fix_gene_qualifiers(name, feature, fid):
     for mRNA in feature.sub_features:
-        mRNA.qualifiers['locus_tag'] = 'CPT_%s_%03d' % (name, fid)
+        mRNA.qualifiers["locus_tag"] = "CPT_%s_%03d" % (name, fid)
         # And some exons below that
         sf_replacement = []
         for sf in mRNA.sub_features:
             # We set a locus_tag on ALL sub features
-            sf.qualifiers['locus_tag'] = 'CPT_%s_%03d' % (name, fid)
+            sf.qualifiers["locus_tag"] = "CPT_%s_%03d" % (name, fid)
             # Remove Names which are UUIDs
-            if is_uuid(sf.qualifiers['Name'][0]):
-                del sf.qualifiers['Name']
+            if is_uuid(sf.qualifiers["Name"][0]):
+                del sf.qualifiers["Name"]
 
             # If it is the RBS exon (mis-labelled by apollo as 'exon')
-            if sf.type == 'exon' and len(sf) < 10:
-                sf.type = 'Shine_Dalgarno_sequence'
+            if sf.type == "exon" and len(sf) < 10:
+                sf.type = "Shine_Dalgarno_sequence"
                 sf_replacement.append(sf)
             # and if it is the CDS
-            elif sf.type == 'CDS':
+            elif sf.type == "CDS":
                 # Update CDS qualifiers with all info that was on parent
                 sf.qualifiers.update(feature.qualifiers)
                 sf_replacement.append(sf)
 
-        if mRNA.type == 'tRNA':
-            mRNA.qualifiers['product'] = mRNA.qualifiers['Name']
+        if mRNA.type == "tRNA":
+            mRNA.qualifiers["product"] = mRNA.qualifiers["Name"]
 
         # Handle multiple child CDS features by merging them.
         # Replace the subfeatures on the mRNA
@@ -136,8 +151,8 @@ def fix_frameshifted(features):
         f.qualifiers = {}
     # Fill rbss + cdss2
     for cds in cdss:
-        if 'frameshift' in cds.qualifiers:
-            del cds.qualifiers['frameshift']
+        if "frameshift" in cds.qualifiers:
+            del cds.qualifiers["frameshift"]
         # Ignore short features, as those are RBSs
         if len(cds) < 15:
             rbss.append(cds)
@@ -194,16 +209,36 @@ def fix_frameshifts(features):
     # Collect all gene features where at least one subfeature has a
     # frameshift=??? annotation.
     def has_frameshift_qual(f):
-        return len(list(feature_lambda(f.sub_features, feature_test_quals, {'frameshift': None}))) > 0
+        return (
+            len(
+                list(
+                    feature_lambda(
+                        f.sub_features, feature_test_quals, {"frameshift": None}
+                    )
+                )
+            )
+            > 0
+        )
 
     def has_frameshift_qual_val(f, val):
-        return len(list(feature_lambda(f.sub_features, feature_test_quals, {'frameshift': val}))) > 0
+        return (
+            len(
+                list(
+                    feature_lambda(
+                        f.sub_features, feature_test_quals, {"frameshift": val}
+                    )
+                )
+            )
+            > 0
+        )
 
     def get_frameshift_qual(f):
-        for f in feature_lambda(f.sub_features, feature_test_quals, {'frameshift': None}):
-            return f.qualifiers['frameshift']
+        for f in feature_lambda(
+            f.sub_features, feature_test_quals, {"frameshift": None}
+        ):
+            return f.qualifiers["frameshift"]
 
-    to_frameshift = [x for x in features if x.type == 'gene' and has_frameshift_qual(x)]
+    to_frameshift = [x for x in features if x.type == "gene" and has_frameshift_qual(x)]
     fixed = [x for x in features if x not in to_frameshift]
 
     frameshift_keys = set(sum(map(get_frameshift_qual, to_frameshift), []))
@@ -219,23 +254,26 @@ def fix_frameshifts(features):
 def remove_useless_features(features):
     # Drop mRNAs, apollo crap, useless CDSs
     for f in features:
-        if f.type in ('non_canonical_three_prime_splice_site',
-                      'non_canonical_five_prime_splice_site',
-                      'stop_codon_read_through', 'mRNA'):
+        if f.type in (
+            "non_canonical_three_prime_splice_site",
+            "non_canonical_five_prime_splice_site",
+            "stop_codon_read_through",
+            "mRNA",
+        ):
             continue
         else:
-            if f.type == 'CDS' and len(f) < 10:
+            if f.type == "CDS" and len(f) < 10:
                 # Another RBS mistake
                 continue
             # We use the full GO term, but it should be less than that.
-            if f.type == 'Shine_Dalgarno_sequence':
-                f.type = 'RBS'
+            if f.type == "Shine_Dalgarno_sequence":
+                f.type = "RBS"
             yield f
 
 
 def merge_multi_cds(mRNA_sf):
-    cdss = [x for x in mRNA_sf if x.type == 'CDS']
-    non_cdss = [x for x in mRNA_sf if x.type != 'CDS']
+    cdss = [x for x in mRNA_sf if x.type == "CDS"]
+    non_cdss = [x for x in mRNA_sf if x.type != "CDS"]
     if len(cdss) <= 1:
         return non_cdss + cdss
     else:
@@ -248,24 +286,27 @@ def merge_multi_cds(mRNA_sf):
         return non_cdss + [main_cds]
 
 
-def handle_record(record):
+def handle_record(record, transltbl):
     full_feats = []
     for feature in fsort(record.features):
-        if feature.type == 'region' and 'source' in feature.qualifiers and \
-                'GenBank' in feature.qualifiers['source']:
-            feature.type = 'source'
+        if (
+            feature.type == "region"
+            and "source" in feature.qualifiers
+            and "GenBank" in feature.qualifiers["source"]
+        ):
+            feature.type = "source"
 
-            if 'comment1' in feature.qualifiers:
-                del feature.qualifiers['comment1']
+            if "comment1" in feature.qualifiers:
+                del feature.qualifiers["comment1"]
 
-            if 'Note' in feature.qualifiers:
+            if "Note" in feature.qualifiers:
                 record.annotations = feature.qualifiers
-                if len(feature.qualifiers['Note']) > 1:
-                    record.annotations['comment'] = feature.qualifiers['Note'][1]
-                del feature.qualifiers['Note']
+                if len(feature.qualifiers["Note"]) > 1:
+                    record.annotations["comment"] = feature.qualifiers["Note"][1]
+                del feature.qualifiers["Note"]
 
-            if 'comment' in feature.qualifiers:
-                del feature.qualifiers['comment']
+            if "comment" in feature.qualifiers:
+                del feature.qualifiers["comment"]
 
     # We'll work on a separate copy of features to avoid modifying a list
     # we're iterating over
@@ -274,7 +315,11 @@ def handle_record(record):
 
     # Renumbering requires sorting
     fid = 0
-    for feature in fsort(feature_lambda(record.features, feature_test_type, {'type': 'gene'}, subfeatures=True)):
+    for feature in fsort(
+        feature_lambda(
+            record.features, feature_test_type, {"type": "gene"}, subfeatures=True
+        )
+    ):
         # Our modifications only involve genes
         fid += 1
 
@@ -283,15 +328,15 @@ def handle_record(record):
         feature = fix_gene_qualifiers(record.id, feature, fid)
 
         # Wipe out the parent gene's data, leaving only a locus_tag
-        feature.qualifiers = {
-            'locus_tag': 'CPT_%s_%03d' % (record.id, fid),
-        }
+        feature.qualifiers = {"locus_tag": "CPT_%s_%03d" % (record.id, fid)}
 
         # Patch our features back in (even if they're non-gene features)
         replacement_feats.append(feature)
 
     replacement_feats = fix_frameshifts(replacement_feats)
-    flat_features = feature_lambda(replacement_feats, lambda x: True, {}, subfeatures=True)
+    flat_features = feature_lambda(
+        replacement_feats, lambda x: True, {}, subfeatures=True
+    )
     flat_features = remove_useless_features(flat_features)
 
     # Meat of our modifications
@@ -301,36 +346,43 @@ def handle_record(record):
         # this isn't as trivial as it should be.
         protein_product = wa_unified_product_name(flat_feat)
 
-        for x in ('source', 'phase', 'Parent', 'ID', 'owner', 'date_creation',
-                  'date_last_modified', 'datasetSource'):
+        for x in (
+            "source",
+            "phase",
+            "Parent",
+            "ID",
+            "owner",
+            "date_creation",
+            "date_last_modified",
+            "datasetSource",
+        ):
             if x in flat_feat.qualifiers:
-                if x == 'ID':
-                    flat_feat._ID = flat_feat.qualifiers['ID']
+                if x == "ID":
+                    flat_feat._ID = flat_feat.qualifiers["ID"]
                 del flat_feat.qualifiers[x]
 
         # Add product tag
-        if flat_feat.type == 'CDS':
-            flat_feat.qualifiers['product'] = [protein_product]
-            if 'Product' in flat_feat.qualifiers:
-                del flat_feat.qualifiers['Product']
+        if flat_feat.type == "CDS":
+            flat_feat.qualifiers["product"] = [protein_product]
+            flat_feat.qualifiers["transl_table"] = [transltbl]
+            if "Product" in flat_feat.qualifiers:
+                del flat_feat.qualifiers["Product"]
 
-        elif flat_feat.type == 'terminator':
-            flat_feat.type = 'regulatory'
-            flat_feat.qualifiers = {
-                'regulatory_class': 'terminator',
-            }
+        elif flat_feat.type == "terminator":
+            flat_feat.type = "regulatory"
+            flat_feat.qualifiers = {"regulatory_class": "terminator"}
 
         # In genbank format, note is lower case.
-        flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'Note', 'note')
-        flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'description', 'note')
-        flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'protein', 'note')
-        flat_feat.qualifiers = rename_key(flat_feat.qualifiers, 'Dbxref', 'db_xref')
-        if 'Name' in flat_feat.qualifiers:
-            del flat_feat.qualifiers['Name']
+        flat_feat.qualifiers = rename_key(flat_feat.qualifiers, "Note", "note")
+        flat_feat.qualifiers = rename_key(flat_feat.qualifiers, "description", "note")
+        flat_feat.qualifiers = rename_key(flat_feat.qualifiers, "protein", "note")
+        flat_feat.qualifiers = rename_key(flat_feat.qualifiers, "Dbxref", "db_xref")
+        if "Name" in flat_feat.qualifiers:
+            del flat_feat.qualifiers["Name"]
 
         # more apollo nonsense
-        if 'Manually set translation start' in flat_feat.qualifiers.get('note', []):
-            flat_feat.qualifiers['note'].remove('Manually set translation start')
+        if "Manually set translation start" in flat_feat.qualifiers.get("note", []):
+            flat_feat.qualifiers["note"].remove("Manually set translation start")
 
         # Append the feature
         full_feats.append(flat_feat)
@@ -342,11 +394,17 @@ def handle_record(record):
     return record
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Grab all of the filters from our plugin loader
-    parser = argparse.ArgumentParser(description='Convert gff3 to gbk')
-    parser.add_argument('gff_file', type=argparse.FileType("r"), help='GFF3 file')
-    parser.add_argument('fasta_file', type=argparse.FileType("r"), help='Fasta Input')
+    parser = argparse.ArgumentParser(description="Convert gff3 to gbk")
+    parser.add_argument("gff_file", type=argparse.FileType("r"), help="GFF3 file")
+    parser.add_argument("fasta_file", type=argparse.FileType("r"), help="Fasta Input")
+    parser.add_argument(
+        "--transltbl",
+        type=int,
+        default=11,
+        help="Translation Table choice for CDS tag, default 11",
+    )
     args = parser.parse_args()
 
     for record in gff3_to_genbank(**vars(args)):

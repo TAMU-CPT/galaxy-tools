@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.gbk.adjacent_features" name="Find adjacent Genbank features" version="RC1">
+<tool id="edu.tamu.cpt2.gbk.adjacent_features" name="Find adjacent Genbank features" version="RC4">
   <description>Searches a Genbank file for a given FASTA sequence, then outputs a file with adjacent upstream features, and another with adjacent downstream features.</description>
   <macros>
     <import>macros.xml</import>
@@ -8,10 +8,15 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/adjacent_features.py
--genbankFiles $gbkIn
--fastaFiles $fastaIn
+#set repeat_var_1 = '" "'.join([ str($var) for $var in $gbkIn ])
+#set repeat_var_2 = '" "'.join([ str($var) for $var in $fastaIn ])
+-genbankFiles "$repeat_var_1"
+-fastaFiles "$repeat_var_2"
+-tTable $tTable
+-fTable $fTable
 -upOut $upstreamOut
 -downOut $downstreamOut
+$translate
 $mode
 --forward $ahead
 --behind $back
@@ -19,8 +24,53 @@ $mode
   <inputs>
     <param label="Genbank file" name="gbkIn" type="data" format="genbank" multiple="True"/>
     <param label="Fasta file" name="fastaIn" type="data" format="fasta" multiple="True"/>
+    <param label="Translation table to use on Fasta input:" name="fTable" type="select">
+      <option value="0" selected="true">[0] Do not translate/ Fasta already translated</option>
+      <option value="1">[1] The Standard Code</option>
+      <option value="2">[2] The Vertebrate Mitochondrial Code</option>
+      <option value="3">[3] The Yeast Mitochondrial Code</option>
+      <option value="4">[4] The Mold, Protozoan, and Coelenterate Mitochondrial Code and the Mycoplasma/Spiroplasma Code</option>
+      <option value="5">[5] The Invertebrate Mitochondrial Code </option>
+      <option value="6">[6] The Ciliate, Dasycladacean and Hexamita Nuclear Code</option>
+      <option value="9">[9] The Echinoderm and Flatworm Mitochondrial Code</option>
+      <option value="10">[10] The Euplotid Nuclear Code</option>
+      <option value="11">[11] The Bacterial, Archaeal and Plant Plastid Code</option>
+      <option value="12">[12] The Alternative Yeast Nuclear Code</option>
+      <option value="13">[13] The Ascidian Mitochondrial Code</option>
+      <option value="14">[14] The Alternative Flatworm Mitochondrial Code</option>
+      <option value="15">[15] Blepharisma Nuclear Code</option>
+      <option value="16">[16] Chlorophycean Mitochondrial Code</option>
+      <option value="21">[21] Trematode Mitochondrial Code</option>
+      <option value="22">[22] Scenedesmus Obliquus Mitochondrial Code</option>
+      <option value="23">[23] Thraustochytrium Mitochondrial Code</option>
+      <option value="24">[24] Pterobranchia Mitochondrial Code</option>
+      <option value="25">[25] Candidate Division SR1 and Gracilibacteria Code</option>
+    </param>
+    <param label="Translation table to use on Genbank features:" name="tTable" type="select">
+      <option value="0">[0] Do not translate (Use nucleotide sequence of features)</option>
+      <option value="1">[1] The Standard Code</option>
+      <option value="2">[2] The Vertebrate Mitochondrial Code</option>
+      <option value="3">[3] The Yeast Mitochondrial Code</option>
+      <option value="4">[4] The Mold, Protozoan, and Coelenterate Mitochondrial Code and the Mycoplasma/Spiroplasma Code</option>
+      <option value="5">[5] The Invertebrate Mitochondrial Code </option>
+      <option value="6">[6] The Ciliate, Dasycladacean and Hexamita Nuclear Code</option>
+      <option value="9">[9] The Echinoderm and Flatworm Mitochondrial Code</option>
+      <option value="10">[10] The Euplotid Nuclear Code</option>
+      <option value="11" selected="true">[11] The Bacterial, Archaeal and Plant Plastid Code</option>
+      <option value="12">[12] The Alternative Yeast Nuclear Code</option>
+      <option value="13">[13] The Ascidian Mitochondrial Code</option>
+      <option value="14">[14] The Alternative Flatworm Mitochondrial Code</option>
+      <option value="15">[15] Blepharisma Nuclear Code</option>
+      <option value="16">[16] Chlorophycean Mitochondrial Code</option>
+      <option value="21">[21] Trematode Mitochondrial Code</option>
+      <option value="22">[22] Scenedesmus Obliquus Mitochondrial Code</option>
+      <option value="23">[23] Thraustochytrium Mitochondrial Code</option>
+      <option value="24">[24] Pterobranchia Mitochondrial Code</option>
+      <option value="25">[25] Candidate Division SR1 and Gracilibacteria Code</option>
+    </param>
     <param label="Number of features upstream to return" name="ahead" type="integer" value="1"/>
     <param label="Number of features downstream to return" name="back" type="integer" value="1"/>
+    <param label="Translate output to protein sequence" name="translate" type="boolean" truevalue="--outProt" falsevalue=""/>
     <param name="mode" type="select" label="Mode">
       <option value="--genesOnly">Search only Gene-type features</option>
       <option value="--cdsOnly">Search only CDS-type features</option>
@@ -38,10 +88,21 @@ Currently Experimental: Uploaded for review purposes
 
 For a given Fasta file, this tool searches through the features of a Genbank file for one that matches the sequence in the Fasta. If found, it will then output a specified number of features upstream from the hit and a specified number of features downstream as a multifasta file.
 
+The drop down menus provide a selection of translation tables for the Fasta and Genbank inputs. If "translate output to protein sequence"
+is selected, the output will be translated using the table selected for the Genbank translation.
+
 It is currently recommended to select either the Gene only or CDS only options for mode, as searching all features will include sub-features of neighbors (ie, selecting 2 for upstream will give you the neighboring gene and then its CDS sub feature, rather than 2 proper neighbors) as well as the sub-features of the search hit itself.
 
-Pending work: Better handling of sub-features to resolve above, and making more informed decisions on when and how to translate the NT sequence in genbank files to match protein Fastas.
 
 ]]></help>
-		<expand macro="citations" />
+		<citations>
+                        <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+		</citations>
 </tool>

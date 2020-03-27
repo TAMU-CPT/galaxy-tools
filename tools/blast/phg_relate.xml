@@ -7,9 +7,9 @@
 	</macros>
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
-$__tool_directory__/relatedness.py
+$__tool_directory__/relatedness_prot.py
 @BLAST_TSV@
-$__tool_directory__/db.json
+$__tool_directory__/TaxID_List.txt
 --hits $hits
 --canonical
 > $accession_list
@@ -25,8 +25,11 @@ $__tool_directory__/db.json
 **What it does**
 
 This tool attempts to filter a set of blast results and return the top
-related genomes based on number (and score) of blastp matches to phages.
+related genomes based on number of blastp matches to phages.
+
+The input must be a BLASTp tabular file with the qseqID, 
+sallseqid, salltitles, sallacc, and staxIDs fields selected.
 </help>
 	<tests/>
-	<expand macro="citations" />
+	<expand macro="citations-2020" />
 </tool>

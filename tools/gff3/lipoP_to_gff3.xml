@@ -42,5 +42,5 @@ result from the LipoP, and remove all sub features of the gene except for the
 cleavage sites. This is useful for viewing in Apollo, but should most likely 
 not be used if you plan to run this output through more tools.
       ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>

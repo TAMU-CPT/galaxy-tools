@@ -116,5 +116,5 @@ $informative
 
 Exports features from a GenBank file.
       ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>

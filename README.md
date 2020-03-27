@@ -9,6 +9,10 @@ maintenance, such as Björn's
 [galaxytools](https://github.com/bgruening/galaxytools) or the IUC
 [repo](https://github.com/galaxyproject/tools-iuc)
 
+## Contribution
+
+If you'd like to contribute new tools or bugfixes to this repo, please do so via Pull Requests and ensure that you apply [Black code formatting](https://github.com/psf/black) to any changes before merging to Master.
+
 ## Nota Bene
 
 NONE of these tools are written/configured for the Toolshed. They will be

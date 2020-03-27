@@ -35,43 +35,43 @@ def parse_xmfa(xmfa):
     current_lcb = []
     current_seq = {}
     for line in xmfa.readlines():
-        if line.startswith('#'):
+        if line.startswith("#"):
             continue
 
-        if line.strip() == '=':
-            if 'id' in current_seq:
+        if line.strip() == "=":
+            if "id" in current_seq:
                 current_lcb.append(current_seq)
                 current_seq = {}
             yield current_lcb
             current_lcb = []
         else:
             line = line.strip()
-            if line.startswith('>'):
-                if 'id' in current_seq:
+            if line.startswith(">"):
+                if "id" in current_seq:
                     current_lcb.append(current_seq)
                     current_seq = {}
                 data = line.strip().split()
                 # 0 1           2 3      4 5
                 # > 1:5986-6406 + CbK.fa # CbK_gp011
-                id, loc = data[1].split(':')
-                start, end = loc.split('-')
+                id, loc = data[1].split(":")
+                start, end = loc.split("-")
                 current_seq = {
-                    'rid': '_'.join(data[1:]),
-                    'id': id,
-                    'start': int(start),
-                    'end': int(end),
-                    'strand': 1 if data[2] == '+' else -1,
-                    'file': data[3],
-                    'seq': '',
-                    'comment': '',
+                    "rid": "_".join(data[1:]),
+                    "id": id,
+                    "start": int(start),
+                    "end": int(end),
+                    "strand": 1 if data[2] == "+" else -1,
+                    "file": data[3],
+                    "seq": "",
+                    "comment": "",
                 }
                 if len(data) > 5:
-                    current_seq['comment'] = ' '.join(data[5:])
+                    current_seq["comment"] = " ".join(data[5:])
             else:
-                current_seq['seq'] += line.strip()
+                current_seq["seq"] += line.strip()
 
 
-HEADER_TPL = '> {id}:{start}-{end} {strand} {file} # {comment}\n'
+HEADER_TPL = "> {id}:{start}-{end} {strand} {file} # {comment}\n"
 
 
 def split_by_n(seq, n):
@@ -86,18 +86,20 @@ def to_xmfa(lcbs, handle=sys.stdout):
     handle.write("#FormatVersion Mauve1\n")
     for lcb in lcbs:
         for aln in lcb:
-            handle.write(HEADER_TPL.format(
-                id=aln['id'],
-                start=aln['start'],
-                end=aln['end'],
-                strand='+' if aln['strand'] > 0 else '-',
-                file=aln['file'],
-                comment=aln['comment'],
-            ))
+            handle.write(
+                HEADER_TPL.format(
+                    id=aln["id"],
+                    start=aln["start"],
+                    end=aln["end"],
+                    strand="+" if aln["strand"] > 0 else "-",
+                    file=aln["file"],
+                    comment=aln["comment"],
+                )
+            )
 
-            for line in split_by_n(aln['seq'], 80):
-                handle.write(line + '\n')
-        handle.write('=\n')
+            for line in split_by_n(aln["seq"], 80):
+                handle.write(line + "\n")
+        handle.write("=\n")
 
 
 def percent_identity(a, b):
@@ -106,7 +108,7 @@ def percent_identity(a, b):
     match = 0
     mismatch = 0
     for char_a, char_b in zip(list(a), list(b)):
-        if char_a == '-':
+        if char_a == "-":
             continue
         if char_a == char_b:
             match += 1
@@ -128,16 +130,13 @@ def id_tn_dict(sequences, tmpfile=False):
 
     i = 0
     for sequence_file in sequences:
-        for record in SeqIO.parse(sequence_file, 'fasta'):
+        for record in SeqIO.parse(sequence_file, "fasta"):
             if correct_chrom is None:
                 correct_chrom = record.id
 
             i += 1
             key = str(i)
-            label_convert[key] = {
-                'record_id': record.id,
-                'len': len(record.seq),
-            }
+            label_convert[key] = {"record_id": record.id, "len": len(record.seq)}
 
             if tmpfile:
                 label_convert[key] = tempfile.NamedTemporaryFile(delete=False)

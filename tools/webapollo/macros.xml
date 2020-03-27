@@ -3,8 +3,8 @@
   <xml name="requirements">
     <requirements>
       <requirement type="package" version="2.7">python</requirement>
-      <requirement type="package" version="1.65">biopython</requirement>
       <requirement type="package" version="0.6.2">bcbiogff</requirement>
+      <requirement type="package">biopython</requirement>
       <requirement type="package" version="2.12.4">requests</requirement>
       <yield/>
     </requirements>
@@ -72,6 +72,24 @@ $__tool_directory__/ensure_exists.sh "$__user_email__";
         </when>
     </conditional>
   </xml>
+  <xml name="org_or_guess_multi">
+    <conditional name="org_source">
+        <param name="source_select" type="select" label="Organism Common Name Source">
+            <option value="select">Select</option>
+            <option value="direct">Direct Entry</option>
+            <option value="auto_json">Autodetect from Apollo JSON</option>
+        </param>
+        <when value="select">
+            <param name="org_select" type="select" multiple="true" dynamic_options="galaxy_list_orgs(__trans__)" label="Organism" />
+        </when>
+        <when value="direct">
+            <param name="org_raw" type="text" label="Organism Common Name" optional="false" />
+        </when>
+        <when value="auto_json">
+            <param name="org_file" type="data" format="json" label="Apollo Organism File" help="Will only fetch first organism" />
+        </when>
+    </conditional>
+  </xml>
   <xml name="cn_or_guess">
     <expand macro="org_or_guess" />
     <conditional name="cn_source">
@@ -119,7 +137,7 @@ $__tool_directory__/ensure_exists.sh "$__user_email__";
 **Citation**
 
 If you use this tool in Galaxy, please cite:
-Eric Rasche (2016), `Galaxy Apollo Tools <https://github.com/galaxy-genome-annotation/galaxy-tools/tree/master/tools/apollo>`_
+Helena Rasche (2016), `Galaxy Apollo Tools <https://github.com/galaxy-genome-annotation/galaxy-tools/tree/master/tools/apollo>`_
 ]]>
     </token>
 </macros>

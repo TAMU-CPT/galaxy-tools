@@ -13,13 +13,15 @@ $__tool_directory__/intersect_and_adjacent.py
 "$gff3_data_a"
 "$gff3_data_b"
 $window
+$stranding
 --oa $oa
 --ob $ob
 ]]></command>
   <inputs>
     <param label="GFF3 Annotations A" name="gff3_data_a" type="data" format="gff3"/>
     <param label="GFF3 Annotations B" name="gff3_data_b" type="data" format="gff3"/>
-    <param label="Adjacency Window Size" name="window" type="integer" value = "50"/>
+    <param label="Adjacency Window Size" name="window" type="integer" value = "0"/>
+    <param label="Only allow adjacencies for features on the same strande" name="stranding" type="boolean" checked="false" truevalue="-stranding" falsevalue="" />
   </inputs>
   <outputs>
     <data format="gff3" name="oa" label="GFF3 Annotations from ${gff3_data_a.name} in ${gff3_data_b.name}"/>
@@ -30,6 +32,7 @@ $window
 			<param name="gff3_data_a" value="a.gff3" />
 			<param name="gff3_data_b" value="b.gff3" />
                         <param name="window" value= "50" />
+                        <param name="stranding" value= "-stranding"/>
 			<output name="oa" file="a_hits_in_b.gff" />
 			<output name="ob" file="b_hits_in_a.gff" />
 		</test>
@@ -42,5 +45,5 @@ Given two input files, this tool computes the members of A that are within
 two gff3 outputs, one being the features of GFF A that pass this check,
 and the other being the features of GFF B that pass.
 ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>
