@@ -27,6 +27,7 @@ $blast_input
       </when>
       <when value="tsv">
 	<param name="blast_input" type="data" format="tabular" label="Blast 25 Column Table"/>
+	<param name="include_seq" type="boolean" label="Include protein alignment unavailable for tsv" truevalue="--include_seq" falsevalue="" />
       </when>
     </conditional>
   </inputs>
@@ -49,6 +50,7 @@ $blast_input
     <test>
       <param name="input_type_selector" value="tsv"/>
       <param name="blast_input" value="test-data/blastptab.tabular" ftype="tabular"/>
+      <param name="include_seq" value="false"/>
       <output name="output" file="test-data/bptsv.gff3" ftype="gff3"/>
     </test>
   </tests>
