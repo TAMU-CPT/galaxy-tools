@@ -7,10 +7,10 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/blastp_to_gff3.py
-$blast_input
+$input_type.blast_input
 #if $input_type.input_type_selector == "xml":
   --blastxml
-  $include_seq
+  $input_type.include_seq
 #elif $input_type.input_type_selector == "tsv":
   --blasttab
 #end if
@@ -27,7 +27,6 @@ $blast_input
       </when>
       <when value="tsv">
 	<param name="blast_input" type="data" format="tabular" label="Blast 25 Column Table"/>
-	<param name="include_seq" type="boolean" label="Include protein alignment unavailable for tsv" truevalue="--include_seq" falsevalue="" />
       </when>
     </conditional>
   </inputs>
