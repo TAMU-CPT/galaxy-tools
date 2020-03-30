@@ -141,7 +141,7 @@ GENERAL OPTIONS:
 
 BLAST OPTIONS:
 
--e <float>            maxmimum e value of blast hits to be drawn. [0.001]
+-e <float> maxmimum e value of blast hits to be drawn. [0.001]
 
 -blast_col <red/blue> changes blast hits to gradient of red or blue
 alternitively <int1 int2 int3 int4 int5 int6>
