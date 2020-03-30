@@ -100,12 +100,10 @@ This script should work on 1 to an infinite amount of GenBank/EMBL files (given 
 Adding 2 integers after the annotation file will crop the annotation file.
 Adding a R after the annotation file will reverse compliment it.
 
------------------------------------------------------
+
 GenBank or EMBL file must have source line, or Sequence.
 '     source  1..<sequence length>' or 'FT   source    1..<sequence length>'
 
-for GenBank / EMBL
------------------------------------------------------
 
 The GenBank file preceding the blast file should always be the query
 the GenBank file after the blast file should always be the reference
