@@ -111,23 +111,18 @@ In it's present state only 'CDS' features will be recorded
 
 Options:
 
--blastn       Generate blastn files automatically. Requires blastall or blast+
-in the path, Annotation file must have nucleotide sequence. 
+-blastn Generate blastn files automatically. Requires blastall or blast+ in the path, Annotation file must have nucleotide sequence. 
 
--tblastx      Generate tblastx files automatically. Requires blastall or blast+
-in the path, Annotation file must have nucleotide sequence.
+-tblastx Generate tblastx files automatically. Requires blastall or blast+ in the path, Annotation file must have nucleotide sequence.
 
--blast_files  List of previously generated blast files, ordered (12 column blast). Query must be
-annotation file on top, reference annotation file on bottom.
+-blast_files List of previously generated blast files, ordered (12 column blast). Query must be annotation file on top, reference annotation file on bottom. 
 
--svg          Create Scalable Vector Graphics (svg) file instead of bmp.
+-svg Create Scalable Vector Graphics (svg) file instead of bmp.
 
 
 GENERAL OPTIONS:
 
--aln <best/left/right/centre> [centre]
-Alignment of genomes
-best aligns feature file perpendicular to best blast hit.
+-aln <best/left/right/centre> [centre] Alignment of genomes best aligns feature file perpendicular to best blast hit.
 
 -legend <single/double/top/bottom/both/None>
 
@@ -139,10 +134,10 @@ best aligns feature file perpendicular to best blast hit.
 
     Bottom: Bottom feature file genes labelled below figure
 
-    Both: Top and bottom feature files genes labelled above
-and below genome.
+    Both: Top and bottom feature files genes labelled above and below genome.
 
     None: No legend or gene labelling <default>
+
 
 BLAST OPTIONS:
 
@@ -190,7 +185,6 @@ Show a tblastx comparison of the first 10000 base pairs of ann1.embl and ann2.em
 Reverse compliment ann2.embl. Writes as a SVG file.
 
 
-this script uses a modified version of Paul McGuire's (http://www.geocities.com/ptmcg/ RIP (geocities, not paul))
-bmp.py - module for constructing simple BMP graphics files
+this script uses a modified version of Paul McGuire's (http://www.geocities.com/ptmcg/) bmp.py - module for constructing simple BMP graphics files
      ]]></help>
 </tool>
