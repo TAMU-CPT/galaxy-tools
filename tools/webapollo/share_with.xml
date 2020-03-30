@@ -28,7 +28,7 @@ $e
             <option value="direct">Direct Entry</option>
         </param>
         <when value="select">
-            <param name="target_select" type="select" dynamic_options="galaxy_list_users(__trans__)" label="Target" />
+            <param name="target_select" type="select" dynamic_options="galaxy_list_users(__trans__)" label="Target" display="checkboxes"/>
         </when>
         <when value="direct">
             <param name="target_raw" type="text" label="Target Name" optional="False" />
