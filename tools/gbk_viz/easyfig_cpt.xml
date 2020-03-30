@@ -79,7 +79,7 @@ python $__tool_directory__/Easyfig.py
     </param>
   </inputs>
   <outputs>
-        <data format="svg" name="Easyfig_Out" label="Easyfig Output">
+        <data format="svg" name="SVG_Out" label="Easyfig Output">
           <change_format>
             <when input="out_format" value="html" format="html" />
           </change_format>
