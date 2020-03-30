@@ -9,11 +9,11 @@
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/Easyfig.py
 -e $eVal 
-#if $blast == "files":
+#if $blast.input_type == "files":
 -blast_files $blast.blastIn
-#else if $blast == "blastN":
+#else if $blast.input_type == "blastN":
 -blastn
-#else if $blast == "blastX":
+#else if $blast.input_type == "blastX":
 -tblastx
 #end if
 -aln $align 
