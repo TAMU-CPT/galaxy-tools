@@ -100,10 +100,12 @@ This script should work on 1 to an infinite amount of GenBank/EMBL files (given 
 Adding 2 integers after the annotation file will crop the annotation file.
 Adding a R after the annotation file will reverse compliment it.
 
+-----------------------------------------------------
 GenBank or EMBL file must have source line, or Sequence.
 '     source  1..<sequence length>' or 'FT   source    1..<sequence length>'
 
 for GenBank / EMBL
+-----------------------------------------------------
 
 The GenBank file preceding the blast file should always be the query
 the GenBank file after the blast file should always be the reference
@@ -111,15 +113,66 @@ In it's present state only 'CDS' features will be recorded
 
 Options:
 -blastn       Generate blastn files automatically. Requires blastall or blast+
-              in the path, Annotation file must have nucleotide sequence. 
+in the path, Annotation file must have nucleotide sequence. 
 -tblastx      Generate tblastx files automatically. Requires blastall or blast+
-              in the path, Annotation file must have nucleotide sequence.
+in the path, Annotation file must have nucleotide sequence.
 -blast_files  List of previously generated blast files, ordered (12 column blast). Query must be
-              annotation file on top, reference annotation file on bottom.
+annotation file on top, reference annotation file on bottom.
 -svg          Create Scalable Vector Graphics (svg) file instead of bmp.
 
 
 GENERAL OPTIONS:
+-aln <best/left/right/centre> [centre]
+Alignment of genomes
+best aligns feature file perpendicular to best blast hit.
+-legend <single/double/top/bottom/both/None>
+Single: Gene names in single column
+Double: Gene names in two columns
+Top: Top feature file genes labelled above figure
+Bottom: Bottom feature file genes labelled below figure
+Both: Top and bottom feature files genes labelled above
+and below genome.
+None: No legend or gene labelling <default>
 
+BLAST OPTIONS:
+-e <float>            maxmimum e value of blast hits to be drawn. [0.001]
+-blast_col <red/blue> changes blast hits to gradient of red or blue
+alternitively <int1 int2 int3 int4 int5 int6>
+defines color gradient for blast hits
+worst blast hit reported will be color int1 int2 int3
+where int 1 2 3 is the RGB of color range[0-255]
+100% identity blast hits will be color int4 int5 int6
+[default 20 20 20 175 175 175] <gray>
+
+
+GRAPH OPTIONS:
+-G <GCContent/GCSkew/Coverage/Custom [filename]>
+Plot GC Content, GC Skew, Coverage or Custom graph.
+if Coverage or Custom filename for ace or custom file needs
+to be provided. Details on how to make custom graph files
+in manual.
+
+
+EXAMPLES:
+
+Easyfig.py -filter -o outfile.bmp genbank1.gbk genbank2.gbk genbank3.gbk
+
+Easiest way to generate a simple comparison file between three (or more) annotation
+files. Shows CDS features as red arrows.
+
+Easyfig.py -o outfile.bmp -e 0.00001 -f gene frame 0 0 255 -G GCContent ann1.embl ann2.gbk ann3.gbk ann4.embl
+
+Generate a blastn comparison between 4 annotation files, Display genes as blue
+arrows in frame. Only report blast hits under 0.00001 expect value.
+Display the GC content of each file as a graph.
+
+Easyfig.py -tblastx -o outfile.svg -svg ann1.embl 1 10000 ann2.embl 1 10000 R
+
+Show a tblastx comparison of the first 10000 base pairs of ann1.embl and ann2.embl
+Reverse compliment ann2.embl. Writes as a SVG file.
+
+
+this script uses a modified version of Paul McGuire's (http://www.geocities.com/ptmcg/ RIP (geocities, not paul))
+bmp.py - module for constructing simple BMP graphics files
      ]]></help>
 </tool>
