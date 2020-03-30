@@ -13,7 +13,7 @@ $blast_input
   $include_seq
 #elif $input_type.input_type_selector == "tsv":
   --blasttab
-#endif
+#end if
 > $output]]></command>
   <inputs>
     <conditional name="input_type">
