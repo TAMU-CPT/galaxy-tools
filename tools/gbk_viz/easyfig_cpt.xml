@@ -87,6 +87,7 @@ python $__tool_directory__/Easyfig.py
   </outputs>
   <help><![CDATA[
 **What it does**
+
 Easyfig.py   Written by: Mitchell Sullivan   mjsull@gmail.com
 Supervisor: Dr. Scott Beatson   University of Queensland    03.12.2010
 
@@ -176,6 +177,5 @@ Reverse compliment ann2.embl. Writes as a SVG file.
 
 this script uses a modified version of Paul McGuire's (http://www.geocities.com/ptmcg/ RIP (geocities, not paul))
 bmp.py - module for constructing simple BMP graphics files
-"""
-    )      ]]></help>
+     ]]></help>
 </tool>
