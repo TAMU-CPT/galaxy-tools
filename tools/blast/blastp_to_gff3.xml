@@ -7,27 +7,61 @@
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/blastp_to_gff3.py
-@BLAST_XML@
---blastxml
-$include_seq
+$blast_input
+#if $input_type.input_type_selector == "xml":
+  --blastxml
+  $include_seq
+#elif $input_type.input_type_selector == "tsv":
+  --blasttab
+#endif
 > $output]]></command>
   <inputs>
-    <expand macro="blast_xml" />
-    <param name="include_seq" type="boolean" label="Include protein alignment in Blast view in Apollo/JBrowse" truevalue="--include_seq" falsevalue="" />
+    <conditional name="input_type">
+      <param name = "input_type_selector" type="select" label="Choose BlastP File Format">
+	<option value="xml" selected="true">BlastXML</option>
+	<option value="tsv">Blast 25 Column Table"</option>
+      </param>
+      <when value="xml">
+	<param name="blast_input" type="data" format="xml" label="BlastXML Input"/>
+	<param name="include_seq" type="boolean" label="Include protein alignment in Blast view in Apollo/JBrowse" truevalue="--include_seq" falsevalue="" />
+      </when>
+      <when value="tsv">
+	<param name="blast_input" type="data" format="tabular" label="Blast 25 Column Table"/>
+      </when>
+    </conditional>
   </inputs>
   <outputs>
     <data format="gff3" name="output"/>
   </outputs>
+  <tests>
+    <test>
+      <param name="input_type_selector" value="xml"/>
+      <param name="blast_input" value="test-data/blastpxml.blastxml" ftype="xml"/>
+      <param name="include_seq" value="false"/>
+      <output name="output" file="test-data/bpxml.gff3" ftype="gff3"/>
+    </test>
+    <test>
+      <param name="input_type_selector" value="xml"/>
+      <param name="blast_input" value="test-data/blastpxml.blastxml" ftype="xml"/>
+      <param name="include_seq" value="true"/>
+      <output name="output" file="test-data/bpxmlis.gff3" ftype="gff3"/>
+    </test>
+    <test>
+      <param name="input_type_selector" value="tsv"/>
+      <param name="blast_input" value="test-data/blastptab.tabular" ftype="tabular"/>
+      <output name="output" file="test-data/bptsv.gff3" ftype="gff3"/>
+    </test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
-Convert BLASTP XML results into GFF3 format for visualization within JBrowse. This is critical for displaying the 
-position of high-scoring pairs of the Target aligned against the Query. Blast Tabular output support coming soon.
+Convert BLASTP XML or tabular results into GFF3 format for visualization within JBrowse, please be sure to select the correct input option for your data. 
+This is critical for displaying the position of high-scoring pairs of the Target aligned against the Query. 
 
 **Options::**
 
 By selecting **Include protein alignment…**, the actual sequence alignment will be displayed 
-in the pop-up BLAST view in Apollo/JBrowse.
+in the pop-up BLAST view in Apollo/JBrowse. This option currently only works when using XML input.
 
 ]]></help>
 	<expand macro="citations" />
