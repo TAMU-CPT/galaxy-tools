@@ -80,7 +80,7 @@ $__tool_directory__/ensure_exists.sh "$__user_email__";
             <option value="auto_json">Autodetect from Apollo JSON</option>
         </param>
         <when value="select">
-            <param name="org_select" type="select" multiple="true" dynamic_options="galaxy_list_orgs(__trans__)" label="Organism" />
+            <param name="org_select" type="select" multiple="true" dynamic_options="galaxy_list_orgs(__trans__)" label="Organism" display="checkboxes"/>
         </when>
         <when value="direct">
             <param name="org_raw" type="text" label="Organism Common Name" optional="false" />
