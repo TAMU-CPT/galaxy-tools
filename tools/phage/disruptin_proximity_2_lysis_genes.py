@@ -215,32 +215,33 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
 
                     # check if gene annotated as holin using key words/synonyms
                     holin_annotations = ["holin"]
-                    if any(
-                        x
-                        for x in holin_annotations
-                        if (x in str(feat.qualifiers["product"]))
-                    ):
-                        tm_seqrec += [feat]
-                    # if not annotated as holin, check if protein contains a TMD
-                    else:
-                        for i in range(len(feat_names)):
-                            if str(feat_names[i]) in str(tmhmm_protein_names):
-                                tm_seqrec += [feat]
+                    if "product" in feat.qualifiers:
+                        if any(
+                            x
+                            for x in holin_annotations
+                            if (x in str(feat.qualifiers["product"]))
+                        ):
+                            tm_seqrec += [feat]
+                        # if not annotated as holin, check if protein contains a TMD
+                        else:
+                            for i in range(len(feat_names)):
+                                if str(feat_names[i]) in str(tmhmm_protein_names):
+                                    tm_seqrec += [feat]
 
                     # check if gene annotated as endolysin using key words/synonyms
                     endolysin_annotations = ["lysin", "lysozyme"]
-
-                    if any(
-                        x
-                        for x in endolysin_annotations
-                        if (x in str(feat.qualifiers["product"]))
-                    ):
-                        endolysin_seqrec += [feat]
-                    # if not annotated as endolysin, check if protein contains an endolysin-associated domain
-                    else:
-                        for i in range(len(feat_names)):
-                            if str(feat_names[i]) in str(endo_names):
-                                endolysin_seqrec += [feat]
+                    if "product" in feat.qualifiers:
+                        if any(
+                            x
+                            for x in endolysin_annotations
+                            if (x in str(feat.qualifiers["product"]))
+                        ):
+                            endolysin_seqrec += [feat]
+                        # if not annotated as endolysin, check if protein contains an endolysin-associated domain
+                        else:
+                            for i in range(len(feat_names)):
+                                if str(feat_names[i]) in str(endo_names):
+                                    endolysin_seqrec += [feat]
 
             # print(endolysin_seqrec, tm_seqrec, lgc_seqrec)
 
