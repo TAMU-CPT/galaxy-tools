@@ -171,7 +171,7 @@ def combine_records(records):
                     idx,
                 )
                 if feat.location.start < new_parent_start:
-                    new_parent_start = feat.location_start - 1
+                    new_parent_start = feat.location.start - 1
                 if feat.location.end > new_parent_end:
                     new_parent_end = feat.location.end + 1
             cleaned_records[combo_id].features[0].location = FeatureLocation(
