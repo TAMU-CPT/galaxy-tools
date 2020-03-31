@@ -10,7 +10,7 @@
 python $__tool_directory__/Easyfig.py
 -e $eVal 
 #if $blast.input_type == "files":
--blast_files "$blast.blastIn"
+-blast_files $blast.blastIn
 #else if $blast.input_type == "blastN":
 -blastn
 #else if $blast.input_type == "blastX":
