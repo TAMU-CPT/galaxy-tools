@@ -38,7 +38,7 @@ $fasta_file
 	<param label="i-spanin minimal length" name="isp_min_len" type="integer" value="60" />
     <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1000:2000)" type="text" name="switch" value="all" />
         <param label="TMD minimal distance from start codon" name="isp_min_dist" type="integer" value="10" />
-	<param label="TMD maximum distance from start codon" name="isp_max_dist" type="integer" value="30" />
+	<param label="TMD maximum distance from start codon" name="isp_max_dist" type="integer" value="30" help="Searches for a TMD between TMDmin and TMDmax ie [TMDmin,TMDmax]" />
         <param label="TMD minimal size" name="min_tmd_size" type="integer" value="10" />
         <param label="TMD maximum size" name="max_tmd_size" type="integer" value="20" />
     </inputs>
@@ -52,20 +52,20 @@ $fasta_file
         <data format="gff3" name="putative_isp_gff" label="putative_isp.gff3"/>
     </outputs>
     <help><![CDATA[
-**What it does**
 
-INPUT : Genomic FASTA
+**INPUT** --> Genomic FASTA
 
-METHODOLOGY
-Initially uses the OrfFinder module from CPT.py and locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA(NT and AA) / BED / GFF3. These are currently hidden.
+**METHODOLOGY**
 
-With the aaFASTA, we read in each potential sequence and determine if it has a TMD based off of:
+Locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA (nt and aa) / BED (hidden) / GFF3 (hidden).
 
-    1. Ciphs through looking for Lysine snorkels and neighboring hydrophobic residues.
-    2. Looks for a repeated hydrophobic region within the sequence, based on a range of user inputs.
+With the aaFASTA, read in each potential sequence and determine if it has a TMD based off of:
 
-OUTPUT : putative_isp.fa (FASTA) file, putative_isp.gff3, and basic summary statistics as summary_isp.txt.
+    1. Lysine snorkels and neighboring hydrophobic residues, within the range the user inputs.
+    2. A repeated hydrophobic region within the sequence, within the range the user inputs.
+
+**OUTPUT** --> putative_isp.fa (FASTA) file, putative_isp.gff3, and basic summary statistics as summary_isp.txt.
 
 ]]></help>
-        <expand macro="citations-2020" />
+        <expand macro="citations-crr" />
 </tool>
