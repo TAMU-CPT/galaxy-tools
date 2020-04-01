@@ -155,8 +155,9 @@ if __name__ == "__main__":
 
     data = expand_taxIDs(data)
     # data = deform_scores(data)
-    data = filter_phage(data, phageTaxLookup)
     data = expand_titles(data)
+    data = filter_phage(data, phageTaxLookup)
+    
 
     if args.protein or args.canonical:
         data = remove_dupes(data)
@@ -171,7 +172,7 @@ if __name__ == "__main__":
 
     if args.access:
         sys.stdout.write(
-            "Top %d matches for BLASTp results of %s\t\t\t\n"
+            "Top %d matches for BLASTp results of %s\n"
             % (args.hits, listify[0][0])
         )
         sys.stdout.write("# TaxID\tName\tAccessions\t%s\n" % count_label)
@@ -186,7 +187,7 @@ if __name__ == "__main__":
             )
     else:
         sys.stdout.write(
-            "Top %d matches for BLASTp results of %s\t\t\n" % (args.hits, listify[0][0])
+            "Top %d matches for BLASTp results of %s\n" % (args.hits, listify[0][0])
         )
         sys.stdout.write("# TaxID\tName\t%s\n" % count_label)
         for idx, ((name, ID), num) in enumerate(
