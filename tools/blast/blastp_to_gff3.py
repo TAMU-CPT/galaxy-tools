@@ -22,15 +22,24 @@ blast hits. This tool aims to fill that "gap".
 def blastp2gff3(blast, blastxml=False, blasttab=False, include_seq=False):
     # Call correct function based on xml or tabular file input, raise error if neither or both are provided
     if blastxml and blasttab:
-        raise Exception("Cannot provide both blast xml and tabular file")
+        raise Exception("Cannot provide both blast xml and tabular flag")
 
     if blastxml:
         return blastpxml2gff3(blast, include_seq)
     elif blasttab:
         return blastptsv2gff3(blast, include_seq)
     else:
-        raise Exception("Must provide either blast xml or tabular file")
+        raise Exception("Must provide either blast xml or tabular flag")
 
+def check_bounds(ps, pe, qs, qe):
+    # simplify the constant boundary checking used in subfeature generation
+    if qs < ps:
+        ps = qs - 1
+    if qe > pe:
+        pe = qe + 1
+    if ps <= 0:
+        ps = 1
+    return (ps, pe)
 
 def blastpxml2gff3(blastxml, include_seq=False):
 
@@ -52,7 +61,7 @@ def blastpxml2gff3(blastxml, include_seq=False):
             parent_match_start = 0
             parent_match_end = 0
             hit_qualifiers = {
-                "ID": "b2g.%s.%s.%s" % (idx_record, idx_hit, "0"),
+                "ID": "b2g.%s.%s" % (idx_record,idx_hit),
                 "source": "blast",
                 "accession": hit.accession,
                 "hit_id": hit.hit_id,
@@ -61,7 +70,7 @@ def blastpxml2gff3(blastxml, include_seq=False):
                 "hsp_count": len(hit.hsps),
             }
             desc = hit.title.split(" >")[0]
-            hit_qualifiers["description"] = desc[desc.index(" ") :]
+            hit_qualifiers["Name"] = desc[desc.index(" ") :]
             sub_features = []
             for idx_hsp, hsp in enumerate(hit.hsps):
                 if idx_hsp == 0:
@@ -70,7 +79,7 @@ def blastpxml2gff3(blastxml, include_seq=False):
                     parent_match_end = hsp.query_end + 1
                 # generate qualifiers to be added to gff3 feature
                 hsp_qualifiers = {
-                    "ID": "b2g.%s.%s.%s" % (idx_record, idx_hit, idx_hsp),
+                    "ID": "b2g.%s.%s.hsp%s" % (idx_record, idx_hit, idx_hsp),
                     "source": "blast",
                     "score": hsp.expect,
                     "accession": hit.accession,
@@ -86,7 +95,6 @@ def blastpxml2gff3(blastxml, include_seq=False):
                             "blast_mseq": hsp.match,
                         }
                     )
-
                 for prop in (
                     "score",
                     "bits",
@@ -104,10 +112,12 @@ def blastpxml2gff3(blastxml, include_seq=False):
                     hsp_qualifiers["blast_" + prop] = getattr(hsp, prop, None)
 
                 # check if parent boundary needs to increase to envelope hsp
-                if hsp.query_start < parent_match_start:
-                    parent_match_start = hsp.query_start - 1
-                if hsp.query_end > parent_match_end:
-                    parent_match_end = hsp.query_end + 1
+                #if hsp.query_start < parent_match_start:
+                #    parent_match_start = hsp.query_start - 1
+                #if hsp.query_end > parent_match_end:
+                #    parent_match_end = hsp.query_end + 1
+                
+                parent_match_start, parent_match_end = check_bounds(parent_match_start, parent_match_end, hsp.query_start, hsp.query_end)
 
                 # add hsp to the gff3 feature as a "match_part"
                 sub_features.append(
@@ -120,6 +130,7 @@ def blastpxml2gff3(blastxml, include_seq=False):
                 )
 
             # Build the top level seq feature for the hit
+            hit_qualifiers["description"] = "Hit to %s..%s of %s" % (parent_match_start,parent_match_end,desc[desc.index(" ") :])
             top_feature = SeqFeature(
                 FeatureLocation(parent_match_start - 1, parent_match_end),
                 type=match_type,
@@ -145,6 +156,9 @@ def combine_records(records):
         if combo_id not in cleaned_records.keys():
             # First instance of a query ID + subject ID combination
             # Save this record as it's only item
+            newid = rec.features[0].qualifiers['ID']+'.0'
+            rec.features[0].qualifiers['ID'] = newid
+            rec.features[0].sub_features[0].qualifiers['ID'] = newid+'.hsp0'
             cleaned_records[combo_id] = rec
         else:
             # Query ID + Subject ID has appeared before
@@ -166,17 +180,19 @@ def combine_records(records):
             new_parent_start = cleaned_records[combo_id].features[0].location.start
             new_parent_end = cleaned_records[combo_id].features[0].location.end
             for idx, feat in enumerate(sub_features):
-                feat.qualifiers["ID"] = "%s.%s" % (
+                feat.qualifiers["ID"] = "%s.hsp%s" % (
                     cleaned_records[combo_id].features[0].qualifiers["ID"],
                     idx,
                 )
-                if feat.location.start < new_parent_start:
-                    new_parent_start = feat.location.start - 1
-                if feat.location.end > new_parent_end:
-                    new_parent_end = feat.location.end + 1
+                new_parent_start, new_parent_end = check_bounds(new_parent_start, new_parent_end, feat.location.start, feat.location.end)
+                #if feat.location.start < new_parent_start:
+                #    new_parent_start = feat.location.start - 1
+                #if feat.location.end > new_parent_end:
+                #    new_parent_end = feat.location.end + 1
             cleaned_records[combo_id].features[0].location = FeatureLocation(
                 new_parent_start, new_parent_end
             )
+            cleaned_records[combo_id].features[0].qualifiers["description"] = "Hit to %s..%s of %s" % (new_parent_start, new_parent_end, cleaned_records[combo_id].features[0].qualifiers["Name"])
             # save the renamed and ordered feature list to record
             cleaned_records[combo_id].features[0].sub_features = copy.deepcopy(
                 sub_features
@@ -230,7 +246,7 @@ def blastptsv2gff3(blasttsv, include_seq=False):
 
         rec = SeqRecord(Seq("ACTG"), id=dc["qseqid"])
 
-        feature_id = "blast.%s.%s.%s" % (record_idx, dc["qseqid"], dc["sseqid"])
+        feature_id = "b2g.%s" % (record_idx)
         feature_id = re.sub("\|", "_", feature_id)  # Replace any \ or | with _
         feature_id = re.sub(
             "[^A-Za-z0-9_.-]", "", feature_id
@@ -268,6 +284,8 @@ def blastptsv2gff3(blasttsv, include_seq=False):
 
         parent_match_start = dc["qstart"] - 1
         parent_match_end = dc["qend"] + 1
+
+        parent_match_start, parent_match_end = check_bounds(parent_match_start, parent_match_end, dc["qstart"], dc["qend"])
 
         # The ``match`` feature will hold one or more ``match_part``s
         top_feature = SeqFeature(
