@@ -16,8 +16,10 @@ python $__tool_directory__/Easyfig.py
 #end for
 #else if $blast.input_type == "blastN":
 -blastn
+$blast.keepBlast
 #else if $blast.input_type == "blastX":
 -tblastx
+$blast.keepBlast
 #end if
 -aln $align 
 -legend $leg 
@@ -31,6 +33,11 @@ python $__tool_directory__/Easyfig.py
 #for $file in $gbkIn:
     $file 
 #end for
+
+#if $blast.keepBlast
+&&
+tar -cvf $blastDir ./temp_easyfig
+#end if
 
 ]]></command>
   <inputs>
@@ -46,8 +53,10 @@ python $__tool_directory__/Easyfig.py
         <param label="Blast Results (12-Column .tsv)" name="blastIn" type="data" format="tabular" multiple="True"/>
       </when>
       <when value="blastN">
+        <param name="keepBlast" type="boolean" checked="false" label="Keep generated blast results" truevalue="-keep" falsevalue="" />
       </when>
       <when value="blastX">
+        <param name="keepBlast" type="boolean" checked="false" label="Keep generated blast results" truevalue="-keep" falsevalue="" />
       </when>
     </conditional>
 
@@ -86,6 +95,9 @@ python $__tool_directory__/Easyfig.py
           <change_format>
             <when input="out_format" value="html" format="html" />
           </change_format>
+        </data>
+        <data format="tar.gz" name="blastDir" label="Easyfig-generated Blast data">
+          <filter>blast['keepBlast']</filter>
         </data>
   </outputs>
   <help><![CDATA[
