@@ -36,7 +36,9 @@ $blast.keepBlast
 
 #if $blast.keepBlast
 &&
-tar -cvf $blastDir ./temp_easyfig
+tar -cvf tempTar ./temp_easyfig
+&&
+mv tempTar $blastDir
 #end if
 
 ]]></command>
