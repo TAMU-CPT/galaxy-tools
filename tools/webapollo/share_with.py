@@ -62,3 +62,5 @@ if __name__ == "__main__":
         export=args.export,
         read=args.read,
       )
+    print("Successfully shared " + str(org_cn) + " with user " + str(args.share_with))
+    

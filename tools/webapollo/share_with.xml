@@ -45,7 +45,9 @@ $e
   <help><![CDATA[
 **What it does**
 
-Shares an organism with another user in Apollo
+Share organisms with another user in Apollo.
+
+To share more than one organism with a user, either select multiple entries in the dropdown list, or enter the common name of the organisms in direct entry mode, separated by commas.
 
 @REFERENCES@
       ]]></help>
