@@ -4,6 +4,8 @@ import json
 import explodeJSON as ej
 import argparse
 
+## The output of this file _SHOULD_ include capturing the outer keys of the input query json. This will permit better remapping in post. Might need to modify explodeJSON
+## Current method will work, but _does_ take longer than it would if the above changes were made (would not be big for the current state/size of dbase)
 
 class GOQ:
     """
@@ -145,12 +147,13 @@ if __name__ == "__main__":
         "--output",
         dest="output",
         type=argparse.FileType("w"),
-        default="go-synonym-results.txt",
+        default="go-synonym-sample-results.txt",
         help="Name of the output file",
     )  # output file name
 
     args = parser.parse_args()
 
+    # cols = ["query_term", "GO:id", "GO:name", "description", "restriction", "synonyms"]
     if args.fileType == "database":
         data = args.file.name
         e = ej.explodeJSON(data)
