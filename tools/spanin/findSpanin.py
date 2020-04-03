@@ -3,10 +3,12 @@
 
 import argparse
 import os
-from spaninFuncs import getDescriptions, grabLocs, spaninProximity, splitStrands
+import re # new
+import itertools # new
+from spaninFuncs import getDescriptions, grabLocs, spaninProximity, splitStrands, tuple_fasta, lineWrapper
 
 ### Requirement Inputs
-#### INPUT : Genomic FASTA
+#### INPUT : putative_isp.fa & putative_osp.fa (in that order)
 #### PARAMETERS :
 
 ###############################################################################
@@ -79,8 +81,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     isp = getDescriptions(args.putative_isp_fasta_file)
+    args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
+    isp_full = tuple_fasta(args.putative_isp_fasta_file)
+    print(isp_full)
     # print(len(isp))
     osp = getDescriptions(args.putative_osp_fasta_file)
+    args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
+    osp_full = tuple_fasta(args.putative_osp_fasta_file)
+    print(osp_full)
 
     strand_isp = []
     strand_osp = []
@@ -144,24 +152,87 @@ if __name__ == "__main__":
         )
         # f.writeline('Unique ORF i-spanin = '+str(amt_unique_embedded))
 
+    #isp = getDescriptions(args.putative_isp_fasta_file)
+    args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
+    isp_full = tuple_fasta(args.putative_isp_fasta_file)
+    #print(isp_full)
+    # print(len(isp))
+    #osp = getDescriptions(args.putative_osp_fasta_file)
+    args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
+    osp_full = tuple_fasta(args.putative_osp_fasta_file)
+    #print(osp_full)
+
+    isp_seqs = []
+    osp_seqs = []
+    for isp_tupe in isp_full:
+        #print(isp_tupe)
+        for pisp, posp in embedded.items():
+            if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
+    #            print(isp_tupe[1])
+                isp_seqs.append((pisp,isp_tupe[1]))
+
+    for osp_tupe in osp_full:
+        for pisp, posp in embedded.items():
+            for data in posp:
+                if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
+                    osp_seqs.append((data[2],osp_tupe[1]))
+
+
     with args.embedded_txt as f:
         f.write("================ Embedded Spanin Candidates =================\n")
         f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
         if embedded != {}:
-            for pisp, posp in embedded.items():
-                f.write(pisp + "\n")
-                for each_posp in posp:
-                    f.write(
-                        "\t{}\t{}\t{}\t{}\t{}\n".format(
-                            each_posp[0],
-                            each_posp[1],
-                            each_posp[2],
-                            each_posp[3],
-                            each_posp[4],
+                for pisp, posp in embedded.items():
+                    f.write(pisp + "\n")
+                    for each_posp in posp:
+                        f.write(
+                            "\t{}\t{}\t{}\t{}\t{}\n".format(
+                                each_posp[0],
+                                each_posp[1],
+                                each_posp[2],
+                                each_posp[3],
+                                each_posp[4],
+                            )
                         )
-                    )
         else:
             f.write("nothing found")
+
+    with open(args.embedded_txt.name, "a") as f:
+        f.write("\n-------------- Sequences -----------------\n")
+        f.write("================== isp =====================\n\n")
+        for isp_data in isp_seqs:
+            f.write(">isp_orf::{}\n{}\n============================================\n".format(isp_data[0],lineWrapper(isp_data[1])))
+        f.write("\n-------------- Sequences -----------------\n")
+        f.write("================== osp ===================\n\n")
+        print(len(osp_seqs))
+        for osp_data in osp_seqs:
+            f.write(">osp_orf::{}\n{}\n============================================\n".format(osp_data[0],lineWrapper(osp_data[1])))
+
+    args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
+    isp_full = tuple_fasta(args.putative_isp_fasta_file)
+    #print(isp_full)
+    # print(len(isp))
+    #osp = getDescriptions(args.putative_osp_fasta_file)
+    args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
+    osp_full = tuple_fasta(args.putative_osp_fasta_file)
+
+    isp_seqs = []
+    osp_seqs = []
+    for isp_tupe in isp_full:
+        #print(isp_tupe)
+        for pisp, posp in overlap.items():
+            if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
+    #            print(isp_tupe[1])
+                isp_seqs.append((pisp,isp_tupe[1]))
+
+    for osp_tupe in osp_full:
+        for pisp, posp in overlap.items():
+            for data in posp:
+                if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
+                    osp_seqs.append((data[2],osp_tupe[1]))
+
+
+    
     with args.overlap_txt as f:
         f.write("================ Overlap Spanin Candidates =================\n")
         f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
@@ -181,6 +252,40 @@ if __name__ == "__main__":
         else:
             f.write("nothing found")
 
+    with open(args.overlap_txt.name, "a") as f:
+        f.write("\n-------------- Sequences -----------------\n")
+        f.write("================== isp =====================\n\n")
+        for isp_data in isp_seqs:
+            f.write(">isp_orf::{}\n{}\n============================================\n".format(isp_data[0],lineWrapper(isp_data[1])))
+        f.write("\n-------------- Sequences -----------------\n")
+        f.write("================== osp ===================\n\n")
+        print(len(osp_seqs))
+        for osp_data in osp_seqs:
+            f.write(">osp_orf::{}\n{}\n============================================\n".format(osp_data[0],lineWrapper(osp_data[1])))
+
+    args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
+    isp_full = tuple_fasta(args.putative_isp_fasta_file)
+    #print(isp_full)
+    # print(len(isp))
+    #osp = getDescriptions(args.putative_osp_fasta_file)
+    args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
+    osp_full = tuple_fasta(args.putative_osp_fasta_file)
+
+    isp_seqs = []
+    osp_seqs = []
+    for isp_tupe in isp_full:
+        #print(isp_tupe)
+        for pisp, posp in separate.items():
+            if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
+    #            print(isp_tupe[1])
+                isp_seqs.append((pisp,isp_tupe[1]))
+
+    for osp_tupe in osp_full:
+        for pisp, posp in separate.items():
+            for data in posp:
+                if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
+                    osp_seqs.append((data[2],osp_tupe[1]))
+
     with args.separate_txt as f:
         f.write("================ Separate Spanin Candidates =================\n")
         f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
@@ -199,3 +304,14 @@ if __name__ == "__main__":
                     )
         else:
             f.write("nothing found")
+
+    with open(args.separate_txt.name, "a") as f:
+        f.write("\n-------------- Sequences -----------------\n")
+        f.write("================== isp =====================\n\n")
+        for isp_data in isp_seqs:
+            f.write(">isp_orf::{}\n{}\n============================================\n".format(isp_data[0],lineWrapper(isp_data[1])))
+        f.write("\n-------------- Sequences -----------------\n")
+        f.write("================== osp ===================\n\n")
+        print(len(osp_seqs))
+        for osp_data in osp_seqs:
+            f.write(">osp_orf::{}\n{}\n============================================\n".format(osp_data[0],lineWrapper(osp_data[1])))
