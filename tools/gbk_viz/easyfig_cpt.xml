@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.gbk_viz.easyfig" name="Output Gbk Visualization" version="Alpha.2">
-  <description>Prototype - Not Yet for General Use: Easyfig toole wrapper for galaxy</description>
+<tool id="edu.tamu.cpt2.gbk_viz.easyfig" name="Easyfig:" version="Alpha.2">
+  <description> Galaxy wrapper for genbank visualization</description>
   <macros>
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
@@ -9,22 +9,59 @@
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/Easyfig.py
 -e $eVal 
+#if $blast.input_type == "files":
+-blast_files 
+#for $file in $blast.blastIn:
+    $file 
+#end for
+#else if $blast.input_type == "blastN":
+-blastn
+$blast.keepBlast
+#else if $blast.input_type == "blastX":
+-tblastx
+$blast.keepBlast
+#end if
 -aln $align 
 -legend $leg 
 -blast_col $color 
 #if $gc != "":
     -G $gc 
 #end if
--tblastx
+
 -o $SVG_Out 
 -svg 
 #for $file in $gbkIn:
     $file 
 #end for
 
+#if $blast.keepBlast
+&&
+tar -cvf tempTar temp_easyfig
+&&
+mv tempTar $blastDir
+#end if
+
 ]]></command>
   <inputs>
     <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
+
+    <conditional name="blast">
+      <param name="input_type" type="select" label="Choose BLAST file source/generation: ">
+        <option value="files" selected="true">Use existing BLAST result</option>
+        <option value="blastN">Auto-run blastN</option>
+        <option value="blastX">Auto-run tblastX</option>
+      </param>
+      <when value="files">
+        <param label="Blast Results (12-Column .tsv)" name="blastIn" type="data" format="tabular" multiple="True"/>
+      </when>
+      <when value="blastN">
+        <param name="keepBlast" type="boolean" checked="false" label="Keep generated blast results" truevalue="-keep" falsevalue="" />
+      </when>
+      <when value="blastX">
+        <param name="keepBlast" type="boolean" checked="false" label="Keep generated blast results" truevalue="-keep" falsevalue="" />
+      </when>
+    </conditional>
+
     <param label="Minimum E Value" name="eVal" type="float" value="0.001"/>
     <param label="Customize location of gene name" name="leg" type="select">
             <option value="single">Single</option>
@@ -50,18 +87,121 @@ python $__tool_directory__/Easyfig.py
             <option value="GCContent">GC Content</option>
             <option value="GCSkew">GC Skew</option>
     </param>
+    <param name="out_format" type="select" label="Output data type">
+      <option value="svg">SVG</option>
+      <option value="html">HTML</option>
+    </param>
   </inputs>
   <outputs>
-        <data format="svg" name="SVG_Out" label="SVG Output"/>
+        <data format="svg" name="SVG_Out" label="Easyfig Output">
+          <change_format>
+            <when input="out_format" value="html" format="html" />
+          </change_format>
+        </data>
+        <data format="tar.gz" name="blastDir" label="Easyfig-generated Blast data">
+          <filter>blast['keepBlast']</filter>
+        </data>
   </outputs>
   <help><![CDATA[
 **What it does**
-Paste from tool --help
-      ]]></help>
-  @unpublished{galaxyTools,
-				author = {A. Criscione},
-				title = {CPT Galaxy Tools},
-				year = {2019-2020},
-				note = {https://github.com/tamu-cpt/galaxy-tools/}
-			}
+
+Easyfig.py   Written by: Mitchell Sullivan   mjsull@gmail.com
+Supervisor: Dr. Scott Beatson   University of Queensland    03.12.2010
+
+License: GPLv3
+
+Version 2.2.3
+
+This script should work on 1 to an infinite amount of GenBank/EMBL files (given enough memory)
+
+Adding 2 integers after the annotation file will crop the annotation file.
+Adding a R after the annotation file will reverse compliment it.
+
+
+GenBank or EMBL file must have source line, or Sequence.
+'     source  1..<sequence length>' or 'FT   source    1..<sequence length>'
+
+
+The GenBank file preceding the blast file should always be the query
+the GenBank file after the blast file should always be the reference
+In it's present state only 'CDS' features will be recorded
+
+Options:
+
+-blastn Generate blastn files automatically. Requires blastall or blast+ in the path, Annotation file must have nucleotide sequence. 
+
+-tblastx Generate tblastx files automatically. Requires blastall or blast+ in the path, Annotation file must have nucleotide sequence.
+
+-blast_files List of previously generated blast files, ordered (12 column blast). Query must be annotation file on top, reference annotation file on bottom. 
+
+-svg Create Scalable Vector Graphics (svg) file instead of bmp.
+
+
+GENERAL OPTIONS:
+
+-aln <best/left/right/centre> [centre] Alignment of genomes best aligns feature file perpendicular to best blast hit.
+
+-legend <single/double/top/bottom/both/None>
+
+    Single: Gene names in single column
+
+    Double: Gene names in two columns
+
+    Top: Top feature file genes labelled above figure
+
+    Bottom: Bottom feature file genes labelled below figure
+
+    Both: Top and bottom feature files genes labelled above and below genome.
+
+    None: No legend or gene labelling <default>
+
+
+BLAST OPTIONS:
+
+-e <float> maxmimum e value of blast hits to be drawn. [0.001]
+
+-blast_col <red/blue> changes blast hits to gradient of red or blue
+alternitively <int1 int2 int3 int4 int5 int6>
+defines color gradient for blast hits
+worst blast hit reported will be color int1 int2 int3
+where int 1 2 3 is the RGB of color range[0-255]
+100% identity blast hits will be color int4 int5 int6
+[default 20 20 20 175 175 175] <gray>
+
+
+GRAPH OPTIONS:
+
+-G <GCContent/GCSkew/Coverage/Custom [filename]>
+Plot GC Content, GC Skew, Coverage or Custom graph.
+if Coverage or Custom filename for ace or custom file needs
+to be provided. Details on how to make custom graph files
+in manual.
+
+
+EXAMPLES:
+
+Easyfig.py -filter -o outfile.bmp genbank1.gbk genbank2.gbk genbank3.gbk
+
+
+Easiest way to generate a simple comparison file between three (or more) annotation
+files. Shows CDS features as red arrows.
+
+
+Easyfig.py -o outfile.bmp -e 0.00001 -f gene frame 0 0 255 -G GCContent ann1.embl ann2.gbk ann3.gbk ann4.embl
+
+
+Generate a blastn comparison between 4 annotation files, Display genes as blue
+arrows in frame. Only report blast hits under 0.00001 expect value.
+Display the GC content of each file as a graph.
+
+
+Easyfig.py -tblastx -o outfile.svg -svg ann1.embl 1 10000 ann2.embl 1 10000 R
+
+
+Show a tblastx comparison of the first 10000 base pairs of ann1.embl and ann2.embl
+Reverse compliment ann2.embl. Writes as a SVG file.
+
+
+this script uses a modified version of Paul McGuire's (http://www.geocities.com/ptmcg/) bmp.py - module for constructing simple BMP graphics files
+     ]]></help>
 </tool>
