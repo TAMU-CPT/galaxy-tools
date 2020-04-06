@@ -12,6 +12,9 @@ from spaninFuncs import getDescriptions, grabLocs, spaninProximity, splitStrands
 #### PARAMETERS :
 
 ###############################################################################
+def write_output(candidates):
+    """ output file function...maybe not needed """
+    pass
 
 if __name__ == "__main__":
 
