@@ -39,7 +39,7 @@ def check_bounds(ps, pe, qs, qe):
         pe = qe + 1
     if ps <= 0:
         ps = 1
-    return (ps, pe)
+    return (min(ps, pe), max(ps, pe))
 
 
 def blastxml2gff3(blastxml, include_seq=False):
