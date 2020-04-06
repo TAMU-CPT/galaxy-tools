@@ -105,6 +105,33 @@ def remove_dupes(data):
         # Pretty simple
         yield row
 
+def greatest_taxID(data):
+    has_seen = {}
+    for row in data:
+        key = row[4]
+        if key in has_seen:
+            if row[2] in has_seen[key]:
+                has_seen[key][row[2]] += 1
+            else:
+                has_seen[key][row[2]] = 1
+        else:
+            has_seen[key] = {}
+            has_seen[key][row[2]] = 1
+    forbid = []
+    for entry in has_seen.keys():
+        greatestNum = 0
+        for elem in has_seen[entry].keys():
+            greatestNum = max(greatestNum, has_seen[entry][elem])
+        for elem in has_seen[entry].keys():
+            if has_seen[entry][elem] != greatestNum:
+                forbid.append((entry,elem))
+    res = []
+    for row in data:
+        key = (row[4], row[2])
+        if key in forbid:
+            continue
+        res.append(row)
+    return res
 
 def scoreMap(blast):
     c = {}
@@ -152,22 +179,19 @@ if __name__ == "__main__":
     # data = with_dice(data)
     # data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
-
+    
     data = expand_taxIDs(data)
     # data = deform_scores(data)
     data = expand_titles(data)
+    data = remove_dupes(data)
     data = filter_phage(data, phageTaxLookup)
-    
-
-    if args.protein or args.canonical:
-        data = remove_dupes(data)
-        count_label = "Similar Unique Proteins"
-    else:
-        count_label = "Nucleotide Hits"
-
     listify = []
     for x in data:
         listify.append(x)
+    listify = greatest_taxID(listify)
+       
+    count_label = "Similar Unique Proteins"
+    
     counts, accessions = scoreMap(listify)
 
     if args.access:
