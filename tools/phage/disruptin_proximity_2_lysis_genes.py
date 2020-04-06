@@ -11,6 +11,7 @@ import sys
 from BCBio import GFF
 from BCBio.GFF import GFFExaminer
 from Bio.SeqRecord import SeqRecord
+from Bio.SeqFeature import SeqFeature
 from Bio.Seq import Seq
 from intervaltree import IntervalTree, Interval
 
@@ -178,6 +179,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
         adjacent_tm = {}
         adjacent_lgc_to_tm = {}
 
+        # print(tmhmm_protein_names, endo_names)
         # print(rec_genome_ini)
         # print(len(rec_genome_ini))
 
@@ -195,7 +197,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
             # print(rec_genome)
 
             for feat in rec_genome.features:
-                # print(feat)
+                # rint(feat)
                 # searches for synonyms and
                 if feat.type == "CDS":
                     feat_names = []
@@ -205,62 +207,60 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                         feat_names.append(str(feat.qualifiers["Name"][0]))
                     if "protein_id" in feat.qualifiers:
                         feat_names.append(str(feat.qualifiers["protein_id"][0]))
-
-                    # print(str(feat_names[1]))
-
+                    # print(str(feat_names))
                     # print(str(feat.qualifiers))
                     for i in range(len(feat_names)):
                         if str(feat_names[i]) in str(lgc_names):
                             lgc_seqrec += [feat]
-
                     # check if gene annotated as holin using key words/synonyms
                     holin_annotations = ["holin"]
-                    if any(
-                        x
-                        for x in holin_annotations
-                        if (x in str(feat.qualifiers["product"]))
-                    ):
-                        tm_seqrec += [feat]
-                    # if not annotated as holin, check if protein contains a TMD
-                    else:
-                        for i in range(len(feat_names)):
-                            if str(feat_names[i]) in str(tmhmm_protein_names):
-                                tm_seqrec += [feat]
+                    if "product" in feat.qualifiers:
+                        if any(
+                            x
+                            for x in holin_annotations
+                            if (x in str(feat.qualifiers["product"]))
+                        ):
+                            tm_seqrec += [feat]
+                    # check if protein contains a TMD
+                    for i in range(len(feat_names)):
+                        if str(feat_names[i]) in tmhmm_protein_names:
+                            # print(feat_names[i])
+                            tm_seqrec += [feat]
 
                     # check if gene annotated as endolysin using key words/synonyms
                     endolysin_annotations = ["lysin", "lysozyme"]
-
-                    if any(
-                        x
-                        for x in endolysin_annotations
-                        if (x in str(feat.qualifiers["product"]))
-                    ):
-                        endolysin_seqrec += [feat]
-                    # if not annotated as endolysin, check if protein contains an endolysin-associated domain
-                    else:
-                        for i in range(len(feat_names)):
-                            if str(feat_names[i]) in str(endo_names):
-                                endolysin_seqrec += [feat]
+                    if "product" in feat.qualifiers:
+                        if any(
+                            x
+                            for x in endolysin_annotations
+                            if (x in str(feat.qualifiers["product"]))
+                        ):
+                            endolysin_seqrec += [feat]
+                    # check if protein contains an endolysin-associated domain
+                    for i in range(len(feat_names)):
+                        if str(feat_names[i]) in endo_names:
+                            endolysin_seqrec += [feat]
 
             # print(endolysin_seqrec, tm_seqrec, lgc_seqrec)
-
             # find possible endolysins that are adjacent to (or within window length away from) the lysis gene, or disruptin, candidates
             # if len(endolysin_seqrec) > 0:
             adjacent_lgc_to_endo_i, adjacent_endo_i = intersect(
                 endolysin_seqrec, lgc_seqrec, window
             )
-
             # find TMD-containing proteins that are adjacent to (or within window length away from) the lysis gene, or disruptin, candidates
             # if len(tm_seqrec) > 0:
             adjacent_lgc_to_tm_i, adjacent_tm_i = intersect(
                 tm_seqrec, lgc_seqrec, window
             )
 
+            # print(len(endolysin_seqrec), len(lgc_seqrec), len(tm_seqrec))
             adjacent_endo[rec_genome.id] = adjacent_endo_i
             adjacent_lgc_to_endo[rec_genome.id] = adjacent_lgc_to_endo_i
             adjacent_tm[rec_genome.id] = adjacent_tm_i
             adjacent_lgc_to_tm[rec_genome.id] = adjacent_lgc_to_tm_i
+            # print(rec_genome.id)
 
+    # print(adjacent_endo)
     return adjacent_endo, adjacent_lgc_to_endo, adjacent_tm, adjacent_lgc_to_tm
 
 
@@ -320,23 +320,27 @@ if __name__ == "__main__":
     with open(args.oa, "w") as handle:
         for i in range(len(rec)):
             rec_i = rec[i]
-            rec_i.features = endo[rec_i.id]
-            GFF.write([rec_i], handle)
+            if endo.get(rec_i.id, "") is not "":
+                rec_i.features = endo[rec_i.id]
+                GFF.write([rec_i], handle)
 
     with open(args.ob, "w") as handle:
         for i in range(len(rec)):
             rec_i = rec[i]
-            rec_i.features = lgc_endo[rec_i.id]
-            GFF.write([rec_i], handle)
+            if lgc_endo.get(rec_i.id, "") is not "":
+                rec_i.features = lgc_endo[rec_i.id]
+                GFF.write([rec_i], handle)
 
     with open(args.oc, "w") as handle:
         for i in range(len(rec)):
             rec_i = rec[i]
-            rec_i.features = tm[rec_i.id]
-            GFF.write([rec_i], handle)
+            if tm.get(rec_i.id, "") is not "":
+                rec_i.features = tm[rec_i.id]
+                GFF.write([rec_i], handle)
 
     with open(args.od, "w") as handle:
         for i in range(len(rec)):
             rec_i = rec[i]
-            rec_i.features = lgc_tm[rec_i.id]
-            GFF.write([rec_i], handle)
+            if lgc_tm.get(rec_i.id, "") is not "":
+                rec_i.features = lgc_tm[rec_i.id]
+                GFF.write([rec_i], handle)

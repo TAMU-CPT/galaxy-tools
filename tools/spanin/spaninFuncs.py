@@ -303,6 +303,7 @@ def grabLocs(text):
 
 def spaninProximity(isp, osp, max_dist=30, strand="+"):
     """
+    _NOTE THIS FUNCTION COULD BE MODIFIED TO RETURN SEQUENCES_
     Compares the locations of i-spanins and o-spanins. max_dist is the distance in NT measurement from i-spanin END site
     to o-spanin START. The user will be inputting AA distance, so a conversion will be necessary (<user_input> * 3)
     INPUT: list of OSP and ISP candidates
