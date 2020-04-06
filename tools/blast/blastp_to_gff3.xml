@@ -6,7 +6,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/blastp_to_gff3.py
+$__tool_directory__/blast_to_gff3.py
 $input_type.blast_input
 #if $input_type.input_type_selector == "xml":
   --blastxml
@@ -56,8 +56,8 @@ $input_type.blast_input
   <help><![CDATA[
 **What it does**
 
-Convert BLASTP XML or tabular results into GFF3 format for visualization within JBrowse, please be sure to select the correct input option for your data. 
-This is critical for displaying the position of high-scoring pairs of the Target aligned against the Query. 
+Convert BlastP XML or tabular results into GFF3 format for visualization within JBrowse, please be sure to select the correct input option for your data. 
+This is critical for displaying the position of high-scoring pairs of the Target aligned against the Query. If you need to convert BlastN results, please use the "BlastN Results to GFF3" tool.
 
 **Options::**
 
