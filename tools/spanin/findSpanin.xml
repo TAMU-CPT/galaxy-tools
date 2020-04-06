@@ -31,9 +31,9 @@ $putative_osp_fasta_file
     </inputs>
     <outputs>
           <data format="txt" name="summary_txt" label="FindSpanin_summary.txt"/>
-          <data format="txt" name="embedded_txt" label="embedded_results.txt"/>
-          <data format="txt" name="overlap_txt" label="overlap_results.txt"/>
-          <data format="txt" name="separate_txt" label="separate_results.txt"/>
+          <data format="tabular" name="embedded_txt" label="embedded_results.txt"/>
+          <data format="tabular" name="overlap_txt" label="overlap_results.txt"/>
+          <data format="tabular" name="separate_txt" label="separate_results.txt"/>
     </outputs>
     <help><![CDATA[
 **What it does**
