@@ -42,6 +42,11 @@ def remove_fat(term): # PASS
         s = s.strip()
     else:
         pass
+    if re.search(("inhibition of"), s):
+        s = s.split("inhibition of")[1]
+        s = s.strip()
+    else:
+        pass
     return s
 
 def readFrameVals(frame=go_syns): # PASS
@@ -93,21 +98,35 @@ def match_and_store(input, db=db): # FAIL
                 else:
                     continue
     """
+    new_db = {}
     for mapper, synonyms in input.items():
         #print(mapper)
         #print("//////////////////")
         #print(synonyms)
         for family_term, list_of_syns in db.items():
+            new_db[family_term] = [] # possibly format db
             #print(family_term)
             #print("++++++++++++++++")
             #print(list_of_syns)
             for map_synonym in list_of_syns:
                 #print(map_synonym)
                 if mapper == map_synonym:
+                    print(mapper+" should equal "+map_synonym)
+                    #print("should equal "+map_synonym)
+                    #print(map_synonym)
+                    print(synonyms)
                     list_of_syns.append(synonyms)
+                    continue
+                    #list_of_syns += synonyms
                 else:
                     continue
     #print(dbase)
+
+    for vals in db.values():
+        print(vals)
+        combo = sum(vals, [])
+        print(combo)
+
     return db
 
 if __name__ == "__main__":
@@ -123,25 +142,23 @@ if __name__ == "__main__":
     #print(syn)
     u = form_dict(link=link,go=go,syn=syn)
     
+    print(u)
+
     print(type(db))
 
     print(db)
-    for k, v in db.items():
-        print(k)
-        print(len(v))
-    """
-    dbase = match_and_store(input=u)
-    for k, v in dbase.items():
-        print(k)
-        print("=========")
-        print(v)
-    """
-    complete = match_and_store(input=u)
+    
+    #for k, v in db.items():
+    #    print(k)
+    #    print(len(v))
+
+    complete = match_and_store(input=u,db=db)
 
     for k,v in complete.items():
         print(k)
-        print(len(v))
+        print(v)
 
-    filename = "lysis-family-expanded.json"
-    with open("data/" + filename, "w") as j:
-        json.dump(complete, j, indent="\t")
+    # SAVE AS JSON
+    #filename = "lysis-family-expanded.json"
+    #with open("data/" + filename, "w") as j:
+    #    json.dump(complete, j, indent="\t")
