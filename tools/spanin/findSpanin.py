@@ -125,7 +125,6 @@ if __name__ == "__main__":
         s += len(v)
     amt_embedded = s
     amt_unique_embedded = len(embedded.keys())
-    print(embedded)
     s = 0
     for v in overlap.values():
         s += len(v)
@@ -142,17 +141,17 @@ if __name__ == "__main__":
 
     with args.summary_txt as f:
         f.write("++++++++++ Embedded Spanin Candidate Statistics +++++++++\n")
-        f.writelines("Total Candidates = " + str(amt_embedded) + "\n")
+        f.writelines("Total Candidate Pairs = " + str(amt_embedded) + "\n")
         f.writelines("Unique ORF i-spanin = " + str(amt_unique_embedded))
         for k,v in embedded.items():
             f.writelines("\n{}--> Amount of corresponding candidate o-spanin(s): {}".format(k,len(v)))
         f.write("\n++++++++++ Overlap Spanin Candidate Statistics +++++++++\n")
-        f.writelines("Total Candidates = " + str(amt_overlap) + "\n")
+        f.writelines("Total Candidate Pairs = " + str(amt_overlap) + "\n")
         f.writelines("Unique ORF i-spanin = " + str(amt_unique_overlap))
         for k,v in overlap.items():
             f.writelines("\n{}--> Amount of corresponding candidate o-spanin(s): {}".format(k,len(v)))
         f.write("\n++++++++++ Separate Spanin Candidate Statistics +++++++++\n")
-        f.writelines("Total Candidates = " + str(amt_separate) + "\n")
+        f.writelines("Total Candidate Pairs = " + str(amt_separate) + "\n")
         f.writelines("Unique ORF i-spanin = " + str(amt_unique_separate))
         for k,v in separate.items():
             f.writelines("\n{}--> Amount of corresponding candidate o-spanin(s): {}".format(k,len(v)))
