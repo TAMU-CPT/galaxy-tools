@@ -1,0 +1,55 @@
+<tool id="edu.tamu.cpt.blastn_to_gff3" name="BlastN Results to GFF3" version="19.1.0.0">
+  <description>converts blast xml or tabular results to a JBrowse-compatible file</description>
+  <macros>
+	<import>macros.xml</import>
+	<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/blast_to_gff3.py
+$input_type.blast_input
+#if $input_type.input_type_selector == "xml":
+  --blastxml
+#elif $input_type.input_type_selector == "tsv":
+  --blasttab
+#end if
+> $output]]></command>
+  <inputs>
+    <conditional name="input_type">
+      <param name = "input_type_selector" type="select" label="Choose BlastN File Format">
+	<option value="xml" selected="true">BlastXML</option>
+	<option value="tsv">Blast 25 Column Table"</option>
+      </param>
+      <when value="xml">
+	<param name="blast_input" type="data" format="xml" label="BlastXML Input"/>
+      </when>
+      <when value="tsv">
+	<param name="blast_input" type="data" format="tabular" label="Blast 25 Column Table"/>
+      </when>
+    </conditional>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <tests>
+    <test>
+      <param name="input_type_selector" value="xml"/>
+      <param name="blast_input" value="test-data/blastnxml.blastxml" ftype="xml"/>
+      <output name="output" file="test-data/bnxml.gff3" ftype="gff3"/>
+    </test>
+    <test>
+      <param name="input_type_selector" value="tsv"/>
+      <param name="blast_input" value="test-data/blastntab.tabular" ftype="tabular"/>
+      <output name="output" file="test-data/bntsv.gff3" ftype="gff3"/>
+    </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Convert BlastN XML or tabular results into GFF3 format for visualization within JBrowse, please be sure to select the correct input option for your data. 
+This is critical for displaying the position of high-scoring pairs of the Target aligned against the Query. If you need to convert BlastP results, please use the "BlastP Results to GFF3" tool.
+
+]]></help>
+	<expand macro="citations" />
+</tool>
+
