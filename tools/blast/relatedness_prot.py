@@ -90,17 +90,19 @@ def expand_titles(blast):
             yield [data[0], data[1], title, data[3], data[4]]
 
 
-def filter_phage(blast, phageTaxLookup):
+def filter_phage(blast, phageTaxLookup, phageSciNames):
     for data in blast:
-        if (data[4]) in phageTaxLookup:
-            yield [data[0], data[1], data[2], data[3], data[4]]
+        for x in range(0, len(phageTaxLookup)):
+            if (data[4]) == phageTaxLookup[x]:
+                yield [data[0], data[1], phageSciNames[x], data[3], data[4]]
+                break
 
 
 def remove_dupes(data):
     has_seen = {}
     for row in data:
         # qseqid, sseqid
-        key = (row[0], row[2], row[4])
+        key = (row[0], row[4])
         # If we've seen the key before, we can exit
         if key in has_seen:
             continue
@@ -109,34 +111,6 @@ def remove_dupes(data):
         has_seen[key] = True
         # Pretty simple
         yield row
-
-def greatest_taxID(data):
-    has_seen = {}
-    for row in data:
-        key = row[4]
-        if key in has_seen:
-            if row[2] in has_seen[key]:
-                has_seen[key][row[2]] += 1
-            else:
-                has_seen[key][row[2]] = 1
-        else:
-            has_seen[key] = {}
-            has_seen[key][row[2]] = 1
-    forbid = []
-    for entry in has_seen.keys():
-        greatestNum = 0
-        for elem in has_seen[entry].keys():
-            greatestNum = max(greatestNum, has_seen[entry][elem])
-        for elem in has_seen[entry].keys():
-            if has_seen[entry][elem] != greatestNum:
-                forbid.append((entry,elem))
-    res = []
-    for row in data:
-        key = (row[4], row[2])
-        if key in forbid:
-            continue
-        res.append(row)
-    return res
 
 def scoreMap(blast):
     c = {}
@@ -159,15 +133,23 @@ if __name__ == "__main__":
     parser.add_argument("--access", action="store_true")
     parser.add_argument("--protein", action="store_true")
     parser.add_argument("--canonical", action="store_true")
+    #parser.add_argument("--title", action="store_true") # Add when ready to update XML after semester
     parser.add_argument("--hits", type=int, default=5)
+    
 
     args = parser.parse_args()
 
     phageDb = args.phagedb
     phageTaxLookup = []
+    sciName = []
     line = phageDb.readline()
     while line:
-        phageTaxLookup.append(int(line))
+        line = line.split("\t")
+        phageTaxLookup.append(int(line[0]))
+        line[1] = line[1].strip()
+        if (line[1] == ""):
+            line[1] = "Novel Genome"
+        sciName.append(line[1])
         line = phageDb.readline()
 
     if args.protein:
@@ -185,9 +167,9 @@ if __name__ == "__main__":
     # data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
     
-    data = expand_fields(data)
+    data = expand_taxIDs(data)
     data = remove_dupes(data)
-    data = filter_phage(data, phageTaxLookup)
+    data = filter_phage(data, phageTaxLookup, sciName)
     listify = []
     for x in data:
         listify.append(x)
@@ -196,31 +178,28 @@ if __name__ == "__main__":
     count_label = "Similar Unique Proteins"
     
     counts, accessions = scoreMap(listify)
-
-    if args.access:
-        sys.stdout.write(
+    
+    sys.stdout.write(
             "Top %d matches for BLASTp results of %s\n"
             % (args.hits, listify[0][0])
         )
-        sys.stdout.write("# TaxID\tName\tAccessions\t%s\n" % count_label)
-        for idx, ((name, ID), num) in enumerate(
+    header = "# TaxID\t"
+    #if args.title:
+    header += "Name\t"
+    if args.access:
+        header += "Accessions\t"
+    header += "Similar Unique Proteins\n"
+    sys.stdout.write(header)
+
+    for idx, ((name, ID), num) in enumerate(
             sorted(counts.items(), key=lambda item: -item[1])
         ):
-            if idx > args.hits - 1:
-                break
-
-            sys.stdout.write(
-                "%s\t%s\t%s\t%d\n" % (ID, name, str(accessions[(name, ID)][0]), num)
-            )
-    else:
-        sys.stdout.write(
-            "Top %d matches for BLASTp results of %s\n" % (args.hits, listify[0][0])
-        )
-        sys.stdout.write("# TaxID\tName\t%s\n" % count_label)
-        for idx, ((name, ID), num) in enumerate(
-            sorted(counts.items(), key=lambda item: -item[1])
-        ):
-            if idx > args.hits - 1:
-                break
-
-            sys.stdout.write("%s\t%s\t%d\n" % (ID, name, num))
+        if idx > args.hits - 1:
+            break
+        line = str(ID) + "\t"
+        #if args.title:
+        line += str(name) + "\t"
+        if args.access:
+          line += str(accessions[(name, ID)][0]) + "\t"
+        line += str(num) + "\n" 
+        sys.stdout.write(line)
