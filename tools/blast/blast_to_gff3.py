@@ -47,10 +47,11 @@ def blastxml2gff3(blastxml, include_seq=False):
     blast_records = NCBIXML.parse(blastxml)
     for idx_record, record in enumerate(blast_records):
         # http://www.sequenceontology.org/browser/release_2.4/term/SO:0000343
-        match_type = {  # Currently we can only handle BLASTN, BLASTP
-            "BLASTN": "nucleotide_match",
-            "BLASTP": "protein_match",
-        }.get(record.application, "match")
+        #match_type = {  # Currently we can only handle BLASTN, BLASTP
+        #    "BLASTN": "nucleotide_match",
+        #    "BLASTP": "protein_match",
+        #}.get(record.application, "match")
+        match_type = 'match'
 
         recid = record.query
         if " " in recid:
@@ -239,10 +240,11 @@ def combine_records(records):
 def blasttsv2gff3(blasttsv, include_seq=False):
 
     # http://www.sequenceontology.org/browser/release_2.4/term/SO:0000343
-    match_type = {  # Currently we can only handle BLASTN, BLASTP
-        "BLASTN": "nucleotide_match",
-        "BLASTP": "protein_match",
-    }.get(type, "match")
+    #match_type = {  # Currently we can only handle BLASTN, BLASTP
+    #    "BLASTN": "nucleotide_match",
+    #    "BLASTP": "protein_match",
+    #}.get(type, "match")
+    match_type = 'match'
 
     columns = [
         "qseqid",  # 01 Query Seq-id (ID of your sequence)
