@@ -71,6 +71,11 @@ def deform_scores(blast):
             yield [data[0], data[1], org, data[3], data[4]]
 
 
+def expand_fields(blast):
+    for data in blast:
+        for x in range(0, len(data[4])):
+            yield [data[0], data[1], data[2][x], data[3], int(data[4][x])]
+
 def expand_taxIDs(blast):
     for data in blast:
         # if(len(data[4]) > 0):
@@ -180,15 +185,13 @@ if __name__ == "__main__":
     # data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
     
-    data = expand_taxIDs(data)
-    # data = deform_scores(data)
-    data = expand_titles(data)
+    data = expand_fields(data)
     data = remove_dupes(data)
     data = filter_phage(data, phageTaxLookup)
     listify = []
     for x in data:
         listify.append(x)
-    listify = greatest_taxID(listify)
+    #listify = greatest_taxID(listify)
        
     count_label = "Similar Unique Proteins"
     
