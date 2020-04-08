@@ -25,7 +25,6 @@ def parse_pipes(piped_data): # PASS
     pipe = piped_data.split("|")
     return pipe
 
-
 def remove_fat(term): # PASS
     """
     removes extra fluff of terms, such as regulation, etc... 
@@ -45,6 +44,14 @@ def remove_fat(term): # PASS
     if re.search(("inhibition of"), s):
         s = s.split("inhibition of")[1]
         s = s.strip()
+    else:
+        pass
+    if re.search(("None"), s):
+        s = ""
+    else:
+        pass
+    if re.search(("NoneAtAll"), s):
+        s = ""
     else:
         pass
     return s
@@ -77,6 +84,7 @@ def form_dict(link, go, syn): # PASS
             pipes = parse_pipes(syn[i])
             for p in pipes:
                 p = remove_fat(p)
+                sync[name].append(p)
     # Removing Duplicates
     unq = {}
     for k, v in sync.items():
@@ -116,17 +124,16 @@ def match_and_store(input, db=db): # FAIL
                     #print(map_synonym)
                     print(synonyms)
                     list_of_syns.append(synonyms)
-                    continue
                     #list_of_syns += synonyms
                 else:
                     continue
     #print(dbase)
-
+    """
     for vals in db.values():
         print(vals)
-        combo = sum(vals, [])
-        print(combo)
-
+        for v in vals:
+            print(v)
+    """
     return db
 
 if __name__ == "__main__":
@@ -142,11 +149,11 @@ if __name__ == "__main__":
     #print(syn)
     u = form_dict(link=link,go=go,syn=syn)
     
-    print(u)
+    #print(u)
 
-    print(type(db))
+    #print(type(db))
 
-    print(db)
+    #print(db)
     
     #for k, v in db.items():
     #    print(k)
@@ -154,9 +161,9 @@ if __name__ == "__main__":
 
     complete = match_and_store(input=u,db=db)
 
-    for k,v in complete.items():
-        print(k)
-        print(v)
+    #for k,v in complete.items():
+    #    print(k)
+    #    print(v)
 
     # SAVE AS JSON
     #filename = "lysis-family-expanded.json"
