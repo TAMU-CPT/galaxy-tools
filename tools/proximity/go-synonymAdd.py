@@ -19,14 +19,14 @@ cols = ["query_term", "GO:id", "GO:name", "description", "restriction", "synonym
 go = pd.read_csv(go_file, names=cols, sep="\t")
 go_syns = go[["query_term","GO:name","synonyms"]] # subset of what I want from the datafile
 
-def parse_pipes(piped_data): # PASS
+def parse_pipes(piped_data): 
     """ 
     Extracts synonyms, and separates them, based on the pipe delimiter used from goQuery.py
     """
     pipe = piped_data.split("|")
     return pipe
 
-def remove_fat(term): # PASS
+def remove_fat(term): 
     """
     removes extra fluff of terms, such as regulation, etc... 
     Do this within a loop to suck all the fat out of terms/synonyms
@@ -52,7 +52,7 @@ def remove_fat(term): # PASS
 
 def readFrameVals(frame=go_syns): # PASS
     """
-    reads the go_syns frame, and grabs the values we want from it
+    reads the go_syns frame, and grabs the information we want from it, which is the mapping query term; name of GO term; and synonyms
     """
     link = frame["query_term"].tolist()
     go = frame["GO:name"].tolist()
@@ -84,13 +84,13 @@ def form_dict(link, go, syn): # PASS
     for k, v in sync.items():
         unq[k] = list(set(v))
         # Removing "None" and "NoneAtAll", this should be the last cleaning needed
-        is_not = lambda x: x is not "None" or "NoneAtAll"
+        is_not = lambda x: x is not "None" or "NoneAtAll" # not working as expected, moved to later step. likely needs copy of list.
         unq[k] = list(filter(is_not, unq[k]))
 
     return unq
 
 def match_and_store(input_data, db=db):
-    """ return JSON object that has go-synonyms added ; input will be return of form_dict function"""
+    """ return JSON object that has go-synonyms added ; input will be return of form_dict function """
     new_db = {}
     for mapper, synonyms in input_data.items():
         for family_term, list_of_syns in db.items():
@@ -102,11 +102,10 @@ def match_and_store(input_data, db=db):
                         new_db[family_term] = synonyms
                 else:
                     continue
-    removes = ["None", "NoneAtAll"]
+    removes = ["None", "NoneAtAll","suppression by virus of host cell lysis in response to superinfection","suppression by virus of host cell lysis in response to superinfecting virus"]
     for each_list in new_db.values():
-        #each_list = [element for element in each_list.copy() if element not in {"None","NoneAtAll"}]
         for element in each_list[:]:
-            if element == removes[0] or element == removes[1]:
+            if element == removes[0] or element == removes[1] or element == removes[2] or element == removes[3]:
                 each_list.remove(element)
             else:
                 continue
@@ -114,7 +113,7 @@ def match_and_store(input_data, db=db):
     return new_db
 
 def merge_go(go_dbase, lysis_dbase):
-    """ match_and_store will have returned a dictionary that can then be fed into this file to merge the datasets, and remove duplicates. Resulting in the final dbase """
+    """ match_and_store will have returned a dictionary that can then be fed into this file to merge the datasets, and remove duplicates. Results in the final dbase """
     combined = {}
     for dictionary in [go_dbase, lysis_dbase]:
         for keys, terms in dictionary.items():
@@ -127,34 +126,11 @@ def merge_go(go_dbase, lysis_dbase):
     
 
 if __name__ == "__main__":
-    #term = "up-regulation of mucopeptide N-acetylmuramoylhydrolase activity"
-    #pipes = "up-regulation of mucopeptide N-acetylmuramoylhydrolase activity|positive regulation of 1,4-N-acetylmuramidase activity|up regulation of muramidase activity|up-regulation of mucopeptide glucohydrolase activity|up-regulation of muramidase activity|up-regulation of peptidoglycan N-acetylmuramoylhydrolase activity|up regulation of peptidoglycan N-acetylmuramoylhydrolase activity|upregulation of mucopeptide N-acetylmuramoylhydrolase activity|upregulation of mucopeptide glucohydrolase activity|upregulation of peptidoglycan N-acetylmuramoylhydrolase activity|positive regulation of mucopeptide glucohydrolase activity|positive regulation of muramidase activity|up regulation of mucopeptide N-acetylmuramoylhydrolase activity|up regulation of mucopeptide glucohydrolase activity|up-regulation of lysozyme activity|upregulation of lysozyme activity|positive regulation of N,O-diacetylmuramidase activity|positive regulation of mucopeptide N-acetylmuramoylhydrolase activity|up-regulation of 1,4-N-acetylmuramidase activity|up-regulation of N,O-diacetylmuramidase activity|upregulation of N,O-diacetylmuramidase activity|positive regulation of peptidoglycan N-acetylmuramoylhydrolase activity|upregulation of 1,4-N-acetylmuramidase activity|upregulation of muramidase activity|up regulation of 1,4-N-acetylmuramidase activity|up regulation of N,O-diacetylmuramidase activity|up regulation of lysozyme activity"
-    #f = remove_fat(term)
-    #print(f)
-    #vals = parse_pipes(pipes)
-    #print(vals)
-    #for v in vals:
-    #    remove_fat(v)
     link, go, syn, zipped = readFrameVals()
-    #print(syn)
     u = form_dict(link=link,go=go,syn=syn)
-    
-    #print(u)
 
-    #print(type(db))
-
-    #print(db)
-    
-    #for k, v in db.items():
-    #    print(k)
-    #    print(len(v))
-
-    #complete = match_and_store(input=u,db=db)
     complete = match_and_store(input_data=u, db=db)
     merged = merge_go(go_dbase=complete,lysis_dbase=db)
-    #for k,v in complete.items():
-    #    print(k)
-    #    print(v)
 
     # SAVE AS JSON
     filename = "lysis-family-expanded.json"
