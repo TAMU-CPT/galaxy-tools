@@ -113,6 +113,18 @@ def match_and_store(input_data, db=db):
 
     return new_db
 
+def merge_go(go_dbase, lysis_dbase):
+    """ match_and_store will have returned a dictionary that can then be fed into this file to merge the datasets, and remove duplicates. Resulting in the final dbase """
+    combined = {}
+    for dictionary in [go_dbase, lysis_dbase]:
+        for keys, terms in dictionary.items():
+            if keys in combined.keys():
+                combined[keys].extend(terms)
+            else:
+                combined[keys] = terms
+    return combined
+
+    
 
 if __name__ == "__main__":
     #term = "up-regulation of mucopeptide N-acetylmuramoylhydrolase activity"
@@ -139,7 +151,7 @@ if __name__ == "__main__":
 
     #complete = match_and_store(input=u,db=db)
     complete = match_and_store(input_data=u, db=db)
-
+    merged = merge_go(go_dbase=complete,lysis_dbase=db)
     #for k,v in complete.items():
     #    print(k)
     #    print(v)
@@ -147,4 +159,4 @@ if __name__ == "__main__":
     # SAVE AS JSON
     filename = "lysis-family-expanded.json"
     with open("data/" + filename, "w") as j:
-        json.dump(complete, j, indent="\t")
+        json.dump(merged, j, indent="\t")
