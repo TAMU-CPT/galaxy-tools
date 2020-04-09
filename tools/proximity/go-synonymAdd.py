@@ -3,6 +3,7 @@
 import json
 import pandas as pd 
 import explodeJSON as ej
+from itertools import chain
 import re
 
 
@@ -46,14 +47,7 @@ def remove_fat(term): # PASS
         s = s.strip()
     else:
         pass
-    if re.search(("None"), s):
-        s = ""
-    else:
-        pass
-    if re.search(("NoneAtAll"), s):
-        s = ""
-    else:
-        pass
+
     return s
 
 def readFrameVals(frame=go_syns): # PASS
@@ -95,46 +89,30 @@ def form_dict(link, go, syn): # PASS
 
     return unq
 
-def match_and_store(input, db=db): # FAIL
+def match_and_store(input_data, db=db):
     """ return JSON object that has go-synonyms added ; input will be return of form_dict function"""
-    """
-    for mapper, synonyms in input.items():
-        for matching_mapper_list in dbase.values():
-            for matching_mapper in matching_mapper_list:
-                if matching_mapper == mapper:
-                    matching_mapper_list += synonyms
-                else:
-                    continue
-    """
     new_db = {}
-    for mapper, synonyms in input.items():
-        #print(mapper)
-        #print("//////////////////")
-        #print(synonyms)
+    for mapper, synonyms in input_data.items():
         for family_term, list_of_syns in db.items():
-            new_db[family_term] = [] # possibly format db
-            #print(family_term)
-            #print("++++++++++++++++")
-            #print(list_of_syns)
-            for map_synonym in list_of_syns:
-                #print(map_synonym)
-                if mapper == map_synonym:
-                    print(mapper+" should equal "+map_synonym)
-                    #print("should equal "+map_synonym)
-                    #print(map_synonym)
-                    print(synonyms)
-                    list_of_syns.append(synonyms)
-                    #list_of_syns += synonyms
+            for pair_map in list_of_syns:
+                if pair_map == mapper:
+                    if family_term in new_db:
+                        new_db[family_term].extend(synonyms)
+                    else:
+                        new_db[family_term] = synonyms
                 else:
                     continue
-    #print(dbase)
-    """
-    for vals in db.values():
-        print(vals)
-        for v in vals:
-            print(v)
-    """
-    return db
+    removes = ["None", "NoneAtAll"]
+    for each_list in new_db.values():
+        #each_list = [element for element in each_list.copy() if element not in {"None","NoneAtAll"}]
+        for element in each_list[:]:
+            if element == removes[0] or element == removes[1]:
+                each_list.remove(element)
+            else:
+                continue
+
+    return new_db
+
 
 if __name__ == "__main__":
     #term = "up-regulation of mucopeptide N-acetylmuramoylhydrolase activity"
@@ -159,13 +137,14 @@ if __name__ == "__main__":
     #    print(k)
     #    print(len(v))
 
-    complete = match_and_store(input=u,db=db)
+    #complete = match_and_store(input=u,db=db)
+    complete = match_and_store(input_data=u, db=db)
 
     #for k,v in complete.items():
     #    print(k)
     #    print(v)
 
     # SAVE AS JSON
-    #filename = "lysis-family-expanded.json"
-    #with open("data/" + filename, "w") as j:
-    #    json.dump(complete, j, indent="\t")
+    filename = "lysis-family-expanded.json"
+    with open("data/" + filename, "w") as j:
+        json.dump(complete, j, indent="\t")
