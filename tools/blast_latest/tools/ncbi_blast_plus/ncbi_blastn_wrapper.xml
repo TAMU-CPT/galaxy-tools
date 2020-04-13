@@ -1,4 +1,4 @@
-<tool id="ncbi_blastn_wrapper_other" name="NCBI BLAST+ blastn (CPT Latest)" version="@WRAPPER_VERSION@">
+<tool id="ncbi_blastn_wrapper_new" name="NCBI BLAST+ blastn (CPT Latest)" version="@WRAPPER_VERSION@">
     <description>Search nucleotide database with nucleotide query sequence(s)</description>
     <macros>
         <token name="@BINARY@">blastn</token>
