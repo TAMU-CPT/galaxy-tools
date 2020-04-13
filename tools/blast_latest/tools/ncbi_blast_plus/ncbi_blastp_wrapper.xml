@@ -1,4 +1,4 @@
-<tool id="ncbi_blastp_wrapper_other" name="NCBI BLAST+ blastp (Publish Test)" version="@WRAPPER_VERSION@">
+<tool id="ncbi_blastp_wrapper_other" name="NCBI BLAST+ blastp (CPT Latest)" version="@WRAPPER_VERSION@">
     <description>Search protein database with protein query sequence(s)</description>
     <macros>
         <token name="@BINARY@">blastp</token>
@@ -49,6 +49,7 @@ blastp
         <expand macro="input_evalue" />
         <expand macro="input_out_format" />
         <expand macro="input_taxIDs" />
+
         <expand macro="advanced_options">
             <!-- Could use a select (yes, no, other) where other allows setting 'window locut hicut' -->
             <expand macro="input_filter_query_default_false" />

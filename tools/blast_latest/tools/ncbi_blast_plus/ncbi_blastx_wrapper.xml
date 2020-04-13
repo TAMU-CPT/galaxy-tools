@@ -1,4 +1,4 @@
-<tool id="ncbi_blastx_wrapper" name="NCBI BLAST+ blastx" version="@WRAPPER_VERSION@">
+<tool id="ncbi_blastx_wrapper" name="NCBI BLAST+ blastx (CPT Latest)" version="@WRAPPER_VERSION@">
     <description>Search protein database with translated nucleotide query sequence(s)</description>
     <macros>
         <token name="@BINARY@">blastx</token>
@@ -44,8 +44,8 @@ $adv_opts.ungapped
             <option value="blastx-fast">blastx-fast - Use longer words for seeding, faster but less accurate</option>
         </param>
         <expand macro="input_evalue" />
-        <expand macro="input_taxIDs" /> 
         <expand macro="input_out_format" />
+        <expand macro="input_taxIDs" /> 
 
         <expand macro="advanced_options">
             <!-- Could use a select (yes, no, other) where other allows setting 'window locut hicut' -->
