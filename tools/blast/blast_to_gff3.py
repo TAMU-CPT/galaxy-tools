@@ -34,13 +34,25 @@ def blast2gff3(blast, blastxml=False, blasttab=False, include_seq=False):
 def check_bounds(ps, pe, qs, qe):
     # simplify the constant boundary checking used in subfeature generation
     if qs < ps:
-        ps = qs - 1
+        ps = qs
     if qe > pe:
-        pe = qe + 1
+        pe = qe 
     if ps <= 0:
         ps = 1
     return (min(ps, pe), max(ps, pe))
 
+def clean_string(s):
+        clean_str = re.sub("\|", "_", s)  # Replace any \ or | with _
+        clean_str = re.sub(
+            "[^A-Za-z0-9_\ .-]", "", clean_str
+        )  # Remove any non-alphanumeric or _.- chars
+        return clean_str
+
+def clean_slist(l):
+    cleaned_list = []
+    for s in l:
+        cleaned_list.append(clean_string(s))
+    return cleaned_list
 
 def blastxml2gff3(blastxml, include_seq=False):
 
@@ -52,27 +64,28 @@ def blastxml2gff3(blastxml, include_seq=False):
         #    "BLASTP": "protein_match",
         #}.get(record.application, "match")
         match_type = 'match'
+        collected_records = []
 
         recid = record.query
         if " " in recid:
-            recid = recid[0 : recid.index(" ")]
+            recid = clean_string(recid[0 : recid.index(" ")])
 
-        rec = SeqRecord(Seq("ACTG"), id=recid)
         for idx_hit, hit in enumerate(record.alignments):
             # gotta check all hsps in a hit to see boundaries
+            rec = SeqRecord(Seq("ACTG"), id=recid)
             parent_match_start = 0
             parent_match_end = 0
             hit_qualifiers = {
                 "ID": "b2g.%s.%s" % (idx_record, idx_hit),
                 "source": "blast",
                 "accession": hit.accession,
-                "hit_id": hit.hit_id,
+                "hit_id": clean_string(hit.hit_id),
                 "length": hit.length,
-                "hit_titles": hit.title.split(" >"),
+                "hit_titles": clean_slist(hit.title.split(" >")),
                 "hsp_count": len(hit.hsps),
             }
-            desc = hit.title.split(" >")[0]
-            hit_qualifiers["Name"] = desc[desc.index(" ") :]
+            desc = clean_string(hit.title.split(" >")[0])
+            hit_qualifiers["Name"] = clean_string(desc)
             sub_features = []
             for idx_hsp, hsp in enumerate(hit.hsps):
                 if idx_hsp == 0:
@@ -85,9 +98,9 @@ def blastxml2gff3(blastxml, include_seq=False):
                     "source": "blast",
                     "score": hsp.expect,
                     "accession": hit.accession,
-                    "hit_id": hit.hit_id,
+                    "hit_id": clean_string(hit.hit_id),
                     "length": hit.length,
-                    "hit_titles": hit.title.split(" >"),
+                    "hit_titles": clean_slist(hit.title.split(" >")),
                 }
                 if include_seq:
                     if (
@@ -147,10 +160,11 @@ def blastxml2gff3(blastxml, include_seq=False):
                 )
 
             # Build the top level seq feature for the hit
-            hit_qualifiers["description"] = "Hit to %s..%s of %s" % (
+            hit_qualifiers["description"] = clean_string("Hit to %s..%s of %s" % (
                 parent_match_start,
                 parent_match_end,
-                desc[desc.index(" ") :],
+                desc,
+            )
             )
             top_feature = SeqFeature(
                 FeatureLocation(parent_match_start - 1, parent_match_end),
@@ -164,8 +178,10 @@ def blastxml2gff3(blastxml, include_seq=False):
             )
             # Add the hit feature to the record
             rec.features.append(top_feature)
-        rec.annotations = {}
-        yield rec
+            rec.annotations = {}
+            collected_records.append(rec)
+        for rec in collected_records:
+            yield rec
 
 
 def combine_records(records):
@@ -220,7 +236,7 @@ def combine_records(records):
             cleaned_records[combo_id].features[0].location = FeatureLocation(
                 new_parent_start, new_parent_end
             )
-            cleaned_records[combo_id].features[0].qualifiers["description"] = (
+            cleaned_records[combo_id].features[0].qualifiers["description"] = clean_string(
                 "Hit to %s..%s of %s"
                 % (
                     new_parent_start,
@@ -273,7 +289,7 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         "slen",  # 24 Subject sequence length
         "salltitles",  # 25 All subject title(s), separated by a '<>'
     ]
-    blast_records = []
+    collected_records = []
     for record_idx, record in enumerate(blasttsv):
         if record.startswith("#"):
             continue
@@ -283,29 +299,25 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         rec = SeqRecord(Seq("ACTG"), id=dc["qseqid"])
 
         feature_id = "b2g.%s" % (record_idx)
-        feature_id = re.sub("\|", "_", feature_id)  # Replace any \ or | with _
-        feature_id = re.sub(
-            "[^A-Za-z0-9_.-]", "", feature_id
-        )  # Remove any non-alphanumeric or _.- chars
         hit_qualifiers = {
             "ID": feature_id,
-            "Name": dc["salltitles"].split("<>")[0],
-            "description": "Hit to {sstart}..{send} ({sframe}) of {x}".format(
+            "Name": clean_string(dc["salltitles"].split("<>")[0]),
+            "description": clean_string("Hit to {sstart}..{send} ({sframe}) of {x}".format(
                 x=dc["salltitles"].split("<>")[0], **dc
-            ),
+            )),
             "source": "blast",
             "score": dc["evalue"],
-            "accession": dc["sseqid"],
+            "accession": clean_string(dc["sseqid"]),
             "length": dc["qlen"],
-            "hit_titles": dc["salltitles"].split("<>"),
-            "target": dc["qseqid"],
+            "hit_titles": clean_slist(dc["salltitles"].split("<>")),
+            "target": clean_string(dc["qseqid"]),
         }
         hsp_qualifiers = {"source": "blast"}
         for key in dc.keys():
             # Add the remaining BLAST info to the GFF qualifiers
             if key in ("salltitles", "sallseqid", "sseqid", "qseqid", "qseq", "sseq",):
                 continue
-            hsp_qualifiers["blast_%s" % key] = dc[key]
+            hsp_qualifiers["blast_%s" % key] = clean_string(dc[key])
 
         # Below numbers stored as strings, convert to proper form
         for (
@@ -339,7 +351,7 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         # There is a possibility of multiple lines containing the HSPS
         # for the same hit.
         # Unlike the parent feature, ``match_part``s have sources.
-        hsp_qualifiers["ID"] = dc["sseqid"]
+        hsp_qualifiers["ID"] = clean_string(dc["sseqid"])
         match_part_start = dc["qstart"]
         match_part_end = dc["qend"]
 
@@ -358,10 +370,12 @@ def blasttsv2gff3(blasttsv, include_seq=False):
             top_feature.sub_features, key=lambda x: int(x.location.start)
         )
         rec.features = [top_feature]
-        blast_records.append(rec)
+        rec.annotations = {}
+        collected_records.append(rec)
 
-    blast_records = combine_records(blast_records)
-    for rec in blast_records:
+    collected_records = combine_records(collected_records)
+
+    for rec in collected_records:
         yield rec
 
 
