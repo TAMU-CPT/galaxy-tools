@@ -22,7 +22,12 @@ $blast.keepBlast
 $blast.keepBlast
 #end if
 -aln $align 
+-i $identity
+-min_length $blastLen
 -legend $leg 
+-leg_name $nameLoc
+-f1 $tfF
+-f2 $intF
 -blast_col $color 
 #if $gc != "":
     -G $gc 
@@ -30,6 +35,7 @@ $blast.keepBlast
 
 -o $SVG_Out 
 -svg 
+-filter
 #for $file in $gbkIn:
     $file 
 #end for
@@ -63,6 +69,12 @@ mv tempTar $blastDir
     </conditional>
 
     <param label="Minimum E Value" name="eVal" type="float" value="0.001"/>
+    <param label="Minimum Percent Identity Value" name="identity" type="float" value="0.00"/>
+    <param label="Minimum Length for Blast Hit to be drawn" name="blastLen" type="integer" value="0"/>
+    
+    <param label="Draw colour gradient figure for blast hits." name="tfF" type="boolean" checked="false"  truevalue="T" falsevalue="F" />
+    <param label="How many base pairs long to draw the scale legend item (0 to not draw it)" name="intF" type="integer" value="0"/>
+
     <param label="Customize location of gene name" name="leg" type="select">
             <option value="single">Single</option>
             <option value="double">Double</option>
@@ -71,6 +83,7 @@ mv tempTar $blastDir
             <option value="both">Both</option>
             <option value="None">None</option>
     </param>
+    <param label="What property to get feature name from" name="nameLoc" type="text" value="gene"/>
     <param label="Customize alignment for Blast hits" name="align" type="select">
             <option value="best">Best</option>
             <option value="left">Left</option>

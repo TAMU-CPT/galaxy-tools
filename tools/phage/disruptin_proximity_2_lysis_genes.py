@@ -11,6 +11,7 @@ import sys
 from BCBio import GFF
 from BCBio.GFF import GFFExaminer
 from Bio.SeqRecord import SeqRecord
+from Bio.SeqFeature import SeqFeature
 from Bio.Seq import Seq
 from intervaltree import IntervalTree, Interval
 
@@ -149,7 +150,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
     rec_lgc = list(SeqIO.parse(lgc, "fasta"))
     rec_tmhmm = list(GFF.parse(tmhmm))
     rec_ipro = list(GFF.parse(ipro))
-    rec_genome = list(GFF.parse(genome, limit_info=dict(gff_type=["CDS"])))
+    rec_genome_ini = list(GFF.parse(genome, limit_info=dict(gff_type=["CDS"])))
 
     # genome.seek(0)
     # examiner = GFFExaminer()
@@ -157,7 +158,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
 
     enzyme_domain_ids, ed_names = read_enzyme_list(enzyme)
 
-    if len(rec_lgc) > 0 and len(rec_tmhmm) > 0 and len(rec_genome) > 0:
+    if len(rec_lgc) > 0 and len(rec_tmhmm) > 0 and len(rec_genome_ini) > 0:
 
         # find names of the proteins containing endolysin associated domains
         endo_names, endo_domain_ids, endo_domain_names = find_endolysins(
@@ -173,75 +174,93 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
         for seq in rec_lgc:
             lgc_names += [seq.id]
 
-        # find records for proteins containing endolysin domains and tmds from genome fasta file
-        tm_seqrec = []
-        endolysin_seqrec = []
-        lgc_seqrec = []
+        adjacent_endo = {}
+        adjacent_lgc_to_endo = {}
+        adjacent_tm = {}
+        adjacent_lgc_to_tm = {}
 
-        rec_genome = rec_genome[0]
+        # print(tmhmm_protein_names, endo_names)
+        # print(rec_genome_ini)
+        # print(len(rec_genome_ini))
 
-        # print(tmhmm_protein_names)
-        # print(endo_names)
-        # print(lgc_names)
-        # print(rec_genome)
+        for i in range(len(rec_genome_ini)):
+            rec_genome = rec_genome_ini[i]
 
-        for feat in rec_genome.features:
-            # print(feat)
-            # searches for synonyms and
-            if feat.type == "CDS":
+            # find records for proteins containing endolysin domains and tmds from genome fasta file
+            tm_seqrec = []
+            endolysin_seqrec = []
+            lgc_seqrec = []
 
-                feat_names = [
-                    str(feat.qualifiers["locus_tag"][0]),
-                    str(feat.qualifiers["Name"][0]),
-                ]
-                # print(str(feat_names[1]))
+            # print(tmhmm_protein_names)
+            # print(endo_names)
+            # print(lgc_names)
+            # print(rec_genome)
 
-                # print(str(feat.qualifiers))
-                for i in range(len(feat_names)):
-                    if str(feat_names[i]) in str(lgc_names):
-                        lgc_seqrec += [feat]
-
-                # check if gene annotated as holin using key words/synonyms
-                holin_annotations = ["holin"]
-                if any(
-                    x
-                    for x in holin_annotations
-                    if (x in str(feat.qualifiers["product"]))
-                ):
-                    tm_seqrec += [feat]
-                # if not annotated as holin, check if protein contains a TMD
-                else:
+            for feat in rec_genome.features:
+                # rint(feat)
+                # searches for synonyms and
+                if feat.type == "CDS":
+                    feat_names = []
+                    if "locus_tag" in feat.qualifiers:
+                        feat_names.append(str(feat.qualifiers["locus_tag"][0]))
+                    if "Name" in feat.qualifiers:
+                        feat_names.append(str(feat.qualifiers["Name"][0]))
+                    if "protein_id" in feat.qualifiers:
+                        feat_names.append(str(feat.qualifiers["protein_id"][0]))
+                    # print(str(feat_names))
+                    # print(str(feat.qualifiers))
                     for i in range(len(feat_names)):
-                        if str(feat_names[i]) in str(tmhmm_protein_names):
+                        if str(feat_names[i]) in str(lgc_names):
+                            lgc_seqrec += [feat]
+                    # check if gene annotated as holin using key words/synonyms
+                    holin_annotations = ["holin"]
+                    if "product" in feat.qualifiers:
+                        if any(
+                            x
+                            for x in holin_annotations
+                            if (x in str(feat.qualifiers["product"]))
+                        ):
+                            tm_seqrec += [feat]
+                    # check if protein contains a TMD
+                    for i in range(len(feat_names)):
+                        if str(feat_names[i]) in tmhmm_protein_names:
+                            # print(feat_names[i])
                             tm_seqrec += [feat]
 
-                # check if gene annotated as endolysin using key words/synonyms
-                endolysin_annotations = ["lysin", "lysozyme"]
-
-                if any(
-                    x
-                    for x in endolysin_annotations
-                    if (x in str(feat.qualifiers["product"]))
-                ):
-                    endolysin_seqrec += [feat]
-                # if not annotated as endolysin, check if protein contains an endolysin-associated domain
-                else:
+                    # check if gene annotated as endolysin using key words/synonyms
+                    endolysin_annotations = ["lysin", "lysozyme"]
+                    if "product" in feat.qualifiers:
+                        if any(
+                            x
+                            for x in endolysin_annotations
+                            if (x in str(feat.qualifiers["product"]))
+                        ):
+                            endolysin_seqrec += [feat]
+                    # check if protein contains an endolysin-associated domain
                     for i in range(len(feat_names)):
-                        if str(feat_names[i]) in str(endo_names):
+                        if str(feat_names[i]) in endo_names:
                             endolysin_seqrec += [feat]
 
-        # print(endolysin_seqrec, tm_seqrec, lgc_seqrec)
+            # print(endolysin_seqrec, tm_seqrec, lgc_seqrec)
+            # find possible endolysins that are adjacent to (or within window length away from) the lysis gene, or disruptin, candidates
+            # if len(endolysin_seqrec) > 0:
+            adjacent_lgc_to_endo_i, adjacent_endo_i = intersect(
+                endolysin_seqrec, lgc_seqrec, window
+            )
+            # find TMD-containing proteins that are adjacent to (or within window length away from) the lysis gene, or disruptin, candidates
+            # if len(tm_seqrec) > 0:
+            adjacent_lgc_to_tm_i, adjacent_tm_i = intersect(
+                tm_seqrec, lgc_seqrec, window
+            )
 
-        # find possible endolysins that are adjacent to (or within window length away from) the lysis gene, or disruptin, candidates
-        # if len(endolysin_seqrec) > 0:
-        adjacent_lgc_to_endo, adjacent_endo = intersect(
-            endolysin_seqrec, lgc_seqrec, window
-        )
+            # print(len(endolysin_seqrec), len(lgc_seqrec), len(tm_seqrec))
+            adjacent_endo[rec_genome.id] = adjacent_endo_i
+            adjacent_lgc_to_endo[rec_genome.id] = adjacent_lgc_to_endo_i
+            adjacent_tm[rec_genome.id] = adjacent_tm_i
+            adjacent_lgc_to_tm[rec_genome.id] = adjacent_lgc_to_tm_i
+            # print(rec_genome.id)
 
-        # find TMD-containing proteins that are adjacent to (or within window length away from) the lysis gene, or disruptin, candidates
-        # if len(tm_seqrec) > 0:
-        adjacent_lgc_to_tm, adjacent_tm = intersect(tm_seqrec, lgc_seqrec, window)
-
+    # print(adjacent_endo)
     return adjacent_endo, adjacent_lgc_to_endo, adjacent_tm, adjacent_lgc_to_tm
 
 
@@ -297,20 +316,31 @@ if __name__ == "__main__":
 
     args.genome.seek(0)
     rec = list(GFF.parse(args.genome))
-    rec = rec[0]
 
     with open(args.oa, "w") as handle:
-        rec.features = endo
-        GFF.write([rec], handle)
+        for i in range(len(rec)):
+            rec_i = rec[i]
+            if endo.get(rec_i.id, "") is not "":
+                rec_i.features = endo[rec_i.id]
+                GFF.write([rec_i], handle)
 
     with open(args.ob, "w") as handle:
-        rec.features = lgc_endo
-        GFF.write([rec], handle)
+        for i in range(len(rec)):
+            rec_i = rec[i]
+            if lgc_endo.get(rec_i.id, "") is not "":
+                rec_i.features = lgc_endo[rec_i.id]
+                GFF.write([rec_i], handle)
 
     with open(args.oc, "w") as handle:
-        rec.features = tm
-        GFF.write([rec], handle)
+        for i in range(len(rec)):
+            rec_i = rec[i]
+            if tm.get(rec_i.id, "") is not "":
+                rec_i.features = tm[rec_i.id]
+                GFF.write([rec_i], handle)
 
     with open(args.od, "w") as handle:
-        rec.features = lgc_tm
-        GFF.write([rec], handle)
+        for i in range(len(rec)):
+            rec_i = rec[i]
+            if lgc_tm.get(rec_i.id, "") is not "":
+                rec_i.features = lgc_tm[rec_i.id]
+                GFF.write([rec_i], handle)

@@ -56,24 +56,24 @@ were originally used for the analysis.
 
 For a *parent* set of annotations::
 
-~#gff-version 3
-~PhageBob    maker   cds     300     600     .       +       .       ID=cds42
+	#gff-version 3
+	PhageBob    maker   cds     300     600     .       +       .       ID=cds42
 
 Where the analysis had exported the CDS (child) FASTA sequence:: 
 
-~>cds42
-~MRTNASC
+	>cds42
+	MRTNASC
 
 Then analyzed that feature, producing the *child* annotation file::
 
-~#gff-version 3
-~cds42       blastp  match_part      1       50      1e-40   .       .       ID=m00001;Notes=RNAse A Protein
+	#gff-version 3
+	cds42       blastp  match_part      1       50      1e-40   .       .       ID=m00001;Notes=RNAse A Protein
 
 This tool will then localize the results properly against the parent and permit 
 proper visualization of the results in the correct location::
 
-~#gff-version 3
-~PhageBob    blastp  match_part      300     449     1e-40   +       .       ID=m00001;Notes=RNAse A Protein
+	#gff-version 3
+	PhageBob    blastp  match_part      300     449     1e-40   +       .       ID=m00001;Notes=RNAse A Protein
 
 **Options**
 

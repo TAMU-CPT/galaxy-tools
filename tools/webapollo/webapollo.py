@@ -441,6 +441,30 @@ def GuessOrg(args, wa):
     else:
         raise Exception("Organism Common Name not provided")
 
+def GuessOrgMulti(args, wa):
+    if args.org_json:
+        orgs = [x.get("commonName", None) for x in json.load(args.org_json)]
+        orgs = [x for x in orgs if x is not None]
+        return orgs
+    elif args.org_raw:
+        args.org_raw = str(args.org_raw)
+        args.org_raw = args.org_raw.split(",")
+        for i in range(len(args.org_raw)):
+          args.org_raw[i] = args.org_raw[i].strip()
+        if len(args.org_raw) > 0:
+            return args.org_raw
+        else:
+            raise Exception("Organism Common Name not provided")
+    elif args.org_id:
+        args.org_id = str(args.org_id)
+        args.org_id = args.org_id.split(",")
+        res = []
+        for x in wa.organisms.findMultipleOrganismsById(args.org_id):
+           res.append(x.get("commonName", None))
+        return res
+    else:
+        raise Exception("Organism Common Name not provided")
+
 
 def GuessCn(args, wa):
     org = GuessOrg(args, wa)
@@ -1168,6 +1192,17 @@ class OrganismsClient(Client):
             raise Exception("Unknown ID")
         else:
             return orgs[0]
+    
+    def findMultipleOrganismsById(self, id_numbers):
+        orgs = self.findAllOrganisms()
+        res = []
+        for i in orgs:
+          if str(i["id"]) in id_numbers:
+            res.append(i)
+        if len(res) == 0: # If len res != len id_numbers?
+            raise Exception("Unknown ID")
+        else:
+            return res
 
     def deleteOrganism(self, organismId):
         return self.request("deleteOrganism", {"id": organismId})

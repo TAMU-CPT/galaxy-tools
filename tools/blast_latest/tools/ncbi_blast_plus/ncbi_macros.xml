@@ -1,0 +1,841 @@
+<macros>
+    <token name="@WRAPPER_VERSION@">0.3.3</token>
+    <xml name="parallelism">
+        <!-- If job splitting is enabled, break up the query file into parts -->
+        <parallelism method="multi" split_inputs="query" split_mode="to_size" split_size="1000" merge_outputs="output1" />
+    </xml>
+
+    <xml name="preamble">
+        <requirements>
+            <requirement type="binary">@BINARY@</requirement>
+            <requirement type="package" version="2.9.0">blast+</requirement>
+            <requirement type="package" version="0.5.0">taxonkit</requirement>
+        </requirements>
+        <version_command>@BINARY@ -version</version_command>
+    </xml>
+
+    <xml name="nucl_query">
+        <param argument="-query" type="data" format="fasta,fasta.gz" label="Nucleotide query sequence(s)"/>
+    </xml>
+
+    <xml name="prot_query">
+        <param argument="-query" type="data" format="fasta,fasta.gz" label="Protein query sequence(s)"/>
+    </xml>
+
+    <xml name="output_change_format">
+        <change_format>
+            <when input="output.out_format" value="0" format="txt"/>
+            <when input="output.out_format" value="0 -html" format="html"/>
+            <when input="output.out_format" value="2" format="txt"/>
+            <when input="output.out_format" value="2 -html" format="html"/>
+            <when input="output.out_format" value="4" format="txt"/>
+            <when input="output.out_format" value="4 -html" format="html"/>
+            <when input="output.out_format" value="5" format="blastxml"/>
+            <when input="output.out_format" value="16" format="blastxml"/>
+        </change_format>
+    </xml>
+
+    <xml name="input_out_format">
+        <conditional name="output">
+            <param name="out_format" argument="-outfmt" type="select" label="Output format">
+                <option value="6">Tabular (standard 12 columns)</option>
+                <option value="ext" selected="true">Tabular (extended 25 columns)</option>
+                <option value="cols">Tabular (select which columns)</option>
+                <option value="5">BLAST XML</option>
+                <option value="16">BLAST XML2</option>
+                <option value="0">Pairwise text</option>
+                <option value="0 -html">Pairwise HTML</option>
+                <option value="2">Query-anchored text</option>
+                <option value="2 -html">Query-anchored HTML</option>
+                <option value="4">Flat query-anchored text</option>
+                <option value="4 -html">Flat query-anchored HTML</option>
+                <!--
+                <option value="-outfmt 11">BLAST archive format (ASN.1)</option>
+                -->
+            </param>
+            <when value="6"/>
+            <when value="ext"/>
+            <when value="cols">
+                <param name="std_cols" type="select" multiple="true" display="checkboxes" label="Standard columns">
+                    <option selected="true" value="qseqid">qseqid = Query Seq-id (ID of your sequence)</option>
+                    <option selected="true" value="sseqid">sseqid = Subject Seq-id (ID of the database hit)</option>
+                    <option selected="true" value="pident">pident = Percentage of identical matches</option>
+                    <option selected="true" value="length">length = Alignment length</option>
+                    <option selected="true" value="mismatch">mismatch = Number of mismatches</option>
+                    <option selected="true" value="gapopen">gapopen = Number of gap openings</option>
+                    <option selected="true" value="qstart">qstart = Start of alignment in query</option>
+                    <option selected="true" value="qend">qend = End of alignment in query</option>
+                    <option selected="true" value="sstart">sstart = Start of alignment in subject (database hit)</option>
+                    <option selected="true" value="send">send = End of alignment in subject (database hit)</option>
+                    <option selected="true" value="evalue">evalue = Expectation value (E-value)</option>
+                    <option selected="true" value="bitscore">bitscore = Bit score</option>
+                </param>
+                <param name="ext_cols" type="select" multiple="true" display="checkboxes" label="Extended columns">
+                    <option value="sallseqid">sallseqid = All subject Seq-id(s), separated by a ';'</option>
+                    <option value="score">score = Raw score</option>
+                    <option value="nident">nident = Number of identical matches</option>
+                    <option value="positive">positive = Number of positive-scoring matches</option>
+                    <option value="gaps">gaps = Total number of gaps</option>
+                    <option value="ppos">ppos = Percentage of positive-scoring matches</option>
+                    <option value="qframe">qframe = Query frame</option>
+                    <option value="sframe">sframe = Subject frame</option>
+                    <option value="qseq">qseq = Aligned part of query sequence</option>
+                    <option value="sseq">sseq = Aligned part of subject sequence</option>
+                    <option value="qlen">qlen = Query sequence length</option>
+                    <option value="slen">slen = Subject sequence length</option>
+                    <option value="salltitles">salltitles = All subject title(s), separated by a '&lt;&gt;'</option>
+                </param>
+                <param name="ids_cols" type="select" multiple="true" display="checkboxes" label="Other identifier columns">
+                    <option value="qgi">qgi = Query GI</option>
+                    <option value="qacc">qacc = Query accesion</option>
+                    <option value="qaccver">qaccver = Query accesion.version</option>
+                    <option value="sallseqid">sallseqid = All subject Seq-id(s), separated by a ';'</option>
+                    <option value="sgi">sgi = Subject GI</option>
+                    <option value="sallgi">sallgi = All subject GIs</option>
+                    <option value="sacc">sacc = Subject accession</option>
+                    <option value="saccver">saccver = Subject accession.version</option>
+                    <option value="sallacc">sallacc = All subject accessions</option>
+                    <option value="stitle">stitle = Subject Title</option>
+                </param>
+                <param name="misc_cols" type="select" multiple="true" display="checkboxes" label="Miscellaneous columns">
+                    <option value="sstrand">sstrand = Subject Strand</option>
+                    <!-- Is it really worth including 'frames' given have 'qframe' and 'sframe'? -->
+                    <option value="frames">frames = Query and subject frames separated by a '/'</option>
+                    <option value="btop">btop = Blast traceback operations (BTOP)</option>
+                    <option value="qcovs">qcovs = Query Coverage Per Subject</option>
+                    <option value="qcovhsp">qcovhsp = Query Coverage Per HSP</option>
+                </param>
+                <param name="tax_cols" type="select" multiple="true" display="checkboxes" label="Taxonomy columns">
+                    <option value="staxids">staxids = unique Subject Taxonomy ID(s), separated by a ';' (in numerical order)</option>
+                    <!-- TODO, how to handle the taxonomy data file dependency? If missing these give N/A -->
+                    <option value="sscinames">sscinames = unique Subject Scientific Name(s), separated by a ';'</option>
+                    <option value="scomnames">scomnames = unique Subject Common Name(s), separated by a ';'</option>
+                    <option value="sblastnames">sblastnames = unique Subject Blast Name(s), separated by a ';' (in alphabetical order)</option>
+                    <option value="sskingdoms">sskingdoms = unique Subject Super Kingdom(s), separated by a ';' (in alphabetical order)</option>
+                </param>
+            </when>
+            <when value="5"/>
+            <when value="16"/>
+            <when value="0"/>
+            <when value="0 -html"/>
+            <when value="2"/>
+            <when value="2 -html"/>
+            <when value="4"/>
+            <when value="4 -html"/>
+        </conditional>
+    </xml>
+
+    <xml name="input_matrix_gapcosts">
+        <conditional name="matrix_gapcosts">
+            <param argument="-matrix" type="select" label="Scoring matrix and gap costs">
+                <option value="" selected="true">Use Defaults</option>
+                <option value="BLOSUM90">BLOSUM90</option>
+                <option value="BLOSUM80">BLOSUM80</option>
+                <option value="BLOSUM62">BLOSUM62</option>
+                <option value="BLOSUM50">BLOSUM50</option>
+                <option value="BLOSUM45">BLOSUM45</option>
+                <option value="PAM250">PAM250</option>
+                <option value="PAM70">PAM70</option>
+                <option value="PAM30">PAM30</option>
+            </param>
+            <when value="">
+            <!-- do nothing -->
+            </when>
+            <when value="BLOSUM90">
+                <param name="gap_costs" type="select" label="Gap Costs">
+                    <option value="" selected="true">Use defaults</option>
+                    <option value="-gapopen 9 -gapextend 2">Existence: 9  Extension: 2</option>
+                    <option value="-gapopen 8 -gapextend 2">Existence: 8  Extension: 2</option>
+                    <option value="-gapopen 7 -gapextend 2">Existence: 7  Extension: 2</option>
+                    <option value="-gapopen 6 -gapextend 2">Existence: 6  Extension: 2</option>
+                    <option value="-gapopen 11 -gapextend 1">Existence: 11  Extension: 1</option>
+                    <option value="-gapopen 10 -gapextend 1">Existence: 10  Extension: 1</option>
+                    <option value="-gapopen 9 -gapextend 1">Existence: 9  Extension: 1</option>
+                </param>
+
+            </when>
+            <when value="BLOSUM80">
+                <param name="gap_costs" type="select" label="Gap Costs">
+                    <option value="" selected="true">Use defaults</option>
+                    <option value="-gapopen 8 -gapextend 2">Existence: 8  Extension: 2</option>
+                    <option value="-gapopen 7 -gapextend 2">Existence: 7  Extension: 2</option>
+                    <option value="-gapopen 6 -gapextend 2">Existence: 6  Extension: 2</option>
+                    <option value="-gapopen 11 -gapextend 1">Existence: 11  Extension: 1</option>
+                    <option value="-gapopen 10 -gapextend 1">Existence: 10  Extension: 1</option>
+                    <option value="-gapopen 9 -gapextend 1">Existence: 9  Extension: 1</option>
+                </param>
+            </when>
+            <when value="BLOSUM62">
+                <param name="gap_costs" type="select" label="Gap Costs">
+                    <option value="" selected="true">Use defaults</option>
+                    <option value="-gapopen 11 -gapextend 2">Existence: 11  Extension: 2</option>
+                    <option value="-gapopen 10 -gapextend 2">Existence: 10  Extension: 2</option>
+                    <option value="-gapopen 9 -gapextend 2">Existence: 9  Extension: 2</option>
+                    <option value="-gapopen 8 -gapextend 2">Existence: 8  Extension: 2</option>
+                    <option value="-gapopen 7 -gapextend 2">Existence: 7  Extension: 2</option>
+                    <option value="-gapopen 6 -gapextend 2">Existence: 6  Extension: 2</option>
+                    <option value="-gapopen 13 -gapextend 1">Existence: 13  Extension: 1</option>
+                    <option value="-gapopen 12 -gapextend 1">Existence: 12  Extension: 1</option>
+                    <option value="-gapopen 11 -gapextend 1">Existence: 11  Extension: 1</option>
+                    <option value="-gapopen 10 -gapextend 1">Existence: 10  Extension: 1</option>
+                    <option value="-gapopen 9 -gapextend 1">Existence: 9  Extension: 1</option>
+                </param>
+
+            </when>
+            <when value="BLOSUM50">
+                <param name="gap_costs" type="select" label="Gap Costs">
+                    <option value="" selected="true">Use defaults</option>
+                    <option value="-gapopen 13 -gapextend 3">Existence: 13  Extension: 3</option>
+                    <option value="-gapopen 12 -gapextend 3">Existence: 12  Extension: 3</option>
+                    <option value="-gapopen 11 -gapextend 3">Existence: 11  Extension: 3</option>
+                    <option value="-gapopen 10 -gapextend 3">Existence: 10  Extension: 3</option>
+                    <option value="-gapopen 9 -gapextend 3">Existence: 9  Extension: 3</option>
+                    <option value="-gapopen 16 -gapextend 2">Existence: 16  Extension: 2</option>
+                    <option value="-gapopen 15 -gapextend 2">Existence: 15  Extension: 2</option>
+                    <option value="-gapopen 14 -gapextend 2">Existence: 14  Extension: 2</option>
+                    <option value="-gapopen 13 -gapextend 2">Existence: 13  Extension: 2</option>
+                    <option value="-gapopen 12 -gapextend 2">Existence: 12  Extension: 2</option>
+                    <option value="-gapopen 19 -gapextend 1">Existence: 19  Extension: 1</option>
+                    <option value="-gapopen 18 -gapextend 1">Existence: 18  Extension: 1</option>
+                    <option value="-gapopen 17 -gapextend 1">Existence: 17  Extension: 1</option>
+                    <option value="-gapopen 16 -gapextend 1">Existence: 16  Extension: 1</option>
+                    <option value="-gapopen 15 -gapextend 1">Existence: 15  Extension: 1</option>
+                </param>
+
+            </when>
+            <when value="BLOSUM45">
+                <param name="gap_costs" type="select" label="Gap Costs">
+                    <option value="" selected="true">Use defaults</option>
+                    <option value="-gapopen 13 -gapextend 3">Existence: 13  Extension: 3</option>
+                    <option value="-gapopen 12 -gapextend 3">Existence: 12  Extension: 3</option>
+                    <option value="-gapopen 11 -gapextend 3">Existence: 11  Extension: 3</option>
+                    <option value="-gapopen 10 -gapextend 3">Existence: 10  Extension: 3</option>
+                    <option value="-gapopen 15 -gapextend 2">Existence: 15  Extension: 2</option>
+                    <option value="-gapopen 14 -gapextend 2">Existence: 14  Extension: 2</option>
+                    <option value="-gapopen 13 -gapextend 2">Existence: 13  Extension: 2</option>
+                    <option value="-gapopen 12 -gapextend 2">Existence: 12  Extension: 2</option>
+                    <option value="-gapopen 19 -gapextend 1">Existence: 19  Extension: 1</option>
+                    <option value="-gapopen 18 -gapextend 1">Existence: 18  Extension: 1</option>
+                    <option value="-gapopen 17 -gapextend 1">Existence: 17  Extension: 1</option>
+                    <option value="-gapopen 16 -gapextend 1">Existence: 16  Extension: 1</option>
+                </param>
+            </when>
+            <when value="PAM250">
+                <param name="gap_costs" type="select" label="Gap Costs">
+                    <option value="" selected="true">Use defaults</option>
+                    <option value="-gapopen 15 -gapextend 3">Existence: 15  Extension: 3</option>
+                    <option value="-gapopen 14 -gapextend 3">Existence: 14  Extension: 3</option>
+                    <option value="-gapopen 13 -gapextend 3">Existence: 13  Extension: 3</option>
+                    <option value="-gapopen 12 -gapextend 3">Existence: 12  Extension: 3</option>
+                    <option value="-gapopen 17 -gapextend 2">Existence: 17  Extension: 2</option>
+                    <option value="-gapopen 16 -gapextend 2">Existence: 16  Extension: 2</option>
+                    <option value="-gapopen 15 -gapextend 2">Existence: 15  Extension: 2</option>
+                    <option value="-gapopen 14 -gapextend 2">Existence: 14  Extension: 2</option>
+                    <option value="-gapopen 13 -gapextend 2">Existence: 13  Extension: 2</option>
+                    <option value="-gapopen 21 -gapextend 1">Existence: 21  Extension: 1</option>
+                    <option value="-gapopen 20 -gapextend 1">Existence: 20  Extension: 1</option>
+                    <option value="-gapopen 19 -gapextend 1">Existence: 19  Extension: 1</option>
+                    <option value="-gapopen 18 -gapextend 1">Existence: 18  Extension: 1</option>
+                    <option value="-gapopen 17 -gapextend 1">Existence: 17  Extension: 1</option>
+                </param>
+
+            </when>
+            <when value="PAM70">
+                <param name="gap_costs" type="select" label="Gap Costs">
+                    <option value="" selected="true">Use defaults</option>
+                    <option value="-gapopen 12 -gapextend 3">Existence: 12 Extension: 3</option>
+                    <option value="-gapopen 11 -gapextend 2">Existence: 11 Extension: 2</option>
+                    <option value="-gapopen 8 -gapextend 2">Existence: 8  Extension: 2</option>
+                    <option value="-gapopen 7 -gapextend 2">Existence: 7  Extension: 2</option>
+                    <option value="-gapopen 6 -gapextend 2">Existence: 6  Extension: 2</option>
+                    <option value="-gapopen 11 -gapextend 1">Existence: 11  Extension: 1</option>
+                    <option value="-gapopen 10 -gapextend 1">Existence: 10  Extension: 1</option>
+                    <option value="-gapopen 9 -gapextend 1">Existence: 9  Extension: 1</option>
+                </param>
+
+            </when>
+            <when value="PAM30">
+                <param name="gap_costs" type="select" label="Gap Costs">
+                    <option value="" selected="true">Use defaults</option>
+                    <option value="-gapopen 15 -gapextend 3">Existence: 15 Extension: 3</option>
+                    <option value="-gapopen 13 -gapextend 3">Existence: 13 Extension: 3</option>
+                    <option value="-gapopen 14 -gapextend 2">Existence: 14 Extension: 2</option>
+                    <option value="-gapopen 7 -gapextend 2">Existence: 7  Extension: 2</option>
+                    <option value="-gapopen 6 -gapextend 2">Existence: 6  Extension: 2</option>
+                    <option value="-gapopen 5 -gapextend 2">Existence: 5  Extension: 2</option>
+                    <option value="-gapopen 14 -gapextend 1">Existence: 14 Extension: 1</option>
+                    <option value="-gapopen 10 -gapextend 1">Existence: 10  Extension: 1</option>
+                    <option value="-gapopen 9 -gapextend 1">Existence: 9  Extension: 1</option>
+                    <option value="-gapopen 8 -gapextend 1">Existence: 8  Extension: 1</option>
+                </param>
+            </when>
+        </conditional>
+    </xml>
+    <!-- these gapopen and gapextend macros are only used in blastn.
+        otherwise, the combined matrix/gapcosts macro is used -->
+    <xml name="input_gapopen">
+        <param argument="-gapopen" type="integer" optional="true" min="0"
+            label="Cost to open a gap"
+            help="Leave blank for default. See tool help for defaults."/>
+    </xml>
+
+    <xml name="input_gapextend">
+        <param argument="-gapextend" type="integer" optional="true" min="1"
+            label="Cost to extend a gap"
+            help="Leave blank for default. See tool help for defaults."/>
+    </xml>
+
+    <!-- this matrix macro is used in deltablast, makeprofiledb, psiblast, and tblastx -->
+    <xml name="input_scoring_matrix">
+        <param argument="-matrix" type="select" label="Scoring matrix">
+            <option value="BLOSUM90">BLOSUM90</option>
+            <option value="BLOSUM80">BLOSUM80</option>
+            <option value="BLOSUM62" selected="true">BLOSUM62 (default)</option>
+            <option value="BLOSUM50">BLOSUM50</option>
+            <option value="BLOSUM45">BLOSUM45</option>
+            <option value="PAM250">PAM250</option>
+            <option value="PAM70">PAM70</option>
+            <option value="PAM30">PAM30</option>
+        </param>
+    </xml>
+
+    <xml name="input_query_gencode">
+        <param argument="-query_gencode" type="select" label="Query genetic code">
+            <!-- See https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi for details -->
+            <option value="1" selected="true">1. Standard</option>
+            <option value="2">2. Vertebrate Mitochondrial</option>
+            <option value="3">3. Yeast Mitochondrial</option>
+            <option value="4">4. Mold, Protozoan, and Coelenterate Mitochondrial Code and the Mycoplasma/Spiroplasma Code</option>
+            <option value="5">5. Invertebrate Mitochondrial</option>
+            <option value="6">6. Ciliate, Dasycladacean and Hexamita Nuclear Code</option>
+            <option value="9">9. Echinoderm Mitochondrial</option>
+            <option value="10">10. Euplotid Nuclear</option>
+            <option value="11">11. Bacteria and Archaea</option>
+            <option value="12">12. Alternative Yeast Nuclear</option>
+            <option value="13">13. Ascidian Mitochondrial</option>
+            <option value="14">14. Flatworm Mitochondrial</option>
+            <option value="15">15. Blepharisma Macronuclear</option>
+            <option value="16">16. Chlorophycean Mitochondrial Code</option>
+            <option value="21">21. Trematode Mitochondrial Code</option>
+            <option value="22">22. Scenedesmus obliquus mitochondrial Code</option>
+            <option value="23">23. Thraustochytrium Mitochondrial Code</option>
+            <option value="24">24. Pterobranchia mitochondrial code</option>
+        </param>
+    </xml>
+
+    <xml name="input_db_gencode">
+        <param argument="-db_gencode" type="select" label="Database/subject genetic code">
+            <!-- See https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi for details -->
+            <option value="1" selected="true">1. Standard</option>
+            <option value="2">2. Vertebrate Mitochondrial</option>
+            <option value="3">3. Yeast Mitochondrial</option>
+            <option value="4">4. Mold, Protozoan, and Coelenterate Mitochondrial Code and the Mycoplasma/Spiroplasma Code</option>
+            <option value="5">5. Invertebrate Mitochondrial</option>
+            <option value="6">6. Ciliate, Dasycladacean and Hexamita Nuclear Code</option>
+            <option value="9">9. Echinoderm Mitochondrial</option>
+            <option value="10">10. Euplotid Nuclear</option>
+            <option value="11">11. Bacteria and Archaea</option>
+            <option value="12">12. Alternative Yeast Nuclear</option>
+            <option value="13">13. Ascidian Mitochondrial</option>
+            <option value="14">14. Flatworm Mitochondrial</option>
+            <option value="15">15. Blepharisma Macronuclear</option>
+            <option value="16">16. Chlorophycean Mitochondrial Code</option>
+            <option value="21">21. Trematode Mitochondrial Code</option>
+            <option value="22">22. Scenedesmus obliquus mitochondrial Code</option>
+            <option value="23">23. Thraustochytrium Mitochondrial Code</option>
+            <option value="24">24. Pterobranchia mitochondrial code</option>
+        </param>
+    </xml>
+
+    <xml name="input_conditional_nucleotide_db">
+        <!-- Usually database argument mapped to -db, but -in in dustmasker -->
+        <conditional name="db_opts">
+            <param name="db_opts_selector" type="select" label="Subject database/sequences">
+              <option value="db" selected="true">Locally installed BLAST database</option>
+              <option value="histdb">BLAST database from your history</option>
+              <option value="file">FASTA file from your history (see warning note below)</option>
+            </param>
+            <when value="db">
+                <param name="database" type="select" multiple="true" label="Nucleotide BLAST database">
+                    <options from_data_table="blastdb_new" />
+                </param>
+                <param name="histdb" type="hidden" value="" />
+                <param name="subject" type="hidden" value="" />
+            </when>
+            <when value="histdb">
+                <param name="database" type="hidden" value="" />
+                <param name="histdb" type="data" format="blastdbn" label="Nucleotide BLAST database" />
+                <param name="subject" type="hidden" value="" />
+            </when>
+            <when value="file">
+                <param name="database" type="hidden" value="" />
+                <param name="histdb" type="hidden" value="" />
+                <param argument="-subject" type="data" format="fasta,fasta.gz" label="Nucleotide FASTA subject file to use instead of a database"/>
+            </when>
+        </conditional>
+    </xml>
+
+    <xml name="input_conditional_protein_db">
+        <!-- Usually database argument mapped to -db, but -in in segmasker -->
+        <conditional name="db_opts">
+            <param name="db_opts_selector" type="select" label="Subject database/sequences">
+              <option value="db" selected="true">Locally installed BLAST database</option>
+              <option value="histdb">BLAST database from your history</option>
+              <option value="file">FASTA file from your history (see warning note below)</option>
+            </param>
+            <when value="db">
+                <param name="database" type="select" multiple="true" label="Protein BLAST database">
+                    <options from_data_table="blastdb_p_new" />
+                </param>
+                <param name="histdb" type="hidden" value="" />
+                <param name="subject" type="hidden" value="" />
+            </when>
+            <when value="histdb">
+                <param name="database" type="hidden" value="" />
+                <param name="histdb" type="data" format="blastdbp" label="Protein BLAST database" />
+                <param name="subject" type="hidden" value="" />
+            </when>
+            <when value="file">
+                <param name="database" type="hidden" value="" />
+                <param name="histdb" type="hidden" value="" />
+                <param argument="-subject" type="data" format="fasta" label="Protein FASTA subject file to use instead of a database"/>
+            </when>
+        </conditional>
+    </xml>
+
+    <xml name="input_conditional_pssm">
+        <conditional name="db_opts">
+            <param name="db_opts_selector" type="select" label="Protein domain database (PSSM)">
+              <option value="db" selected="true">Locally installed BLAST protein domain database</option>
+              <option value="histdb">BLAST protein domain database from your history</option>
+            </param>
+            <when value="db">
+                <param name="database" argument="-db" type="select" label="Protein domain database">
+                    <options from_data_table="blastdb_d" />
+                </param>
+                <param name="histdb" type="hidden" value="" />
+                <param name="subject" type="hidden" value="" />
+            </when>
+            <when value="histdb">
+                <param name="database" type="hidden" value="" />
+                <param name="histdb" argument="-db" type="data" format="blastdbd" label="Protein domain database" />
+                <param name="subject" type="hidden" value="" />
+            </when>
+        </conditional>
+    </xml>
+
+    <xml name="input_conditional_choose_db_type">
+        <conditional name="db_opts">
+            <param argument="-db_type" type="select" label="Type of BLAST database">
+              <option value="nucl" selected="true">Nucleotide</option>
+              <option value="prot">Protein</option>
+            </param>
+            <when value="nucl">
+                <param name="database" argument="-db" type="select" multiple="true" label="Nucleotide BLAST database">
+                    <options from_data_table="blastdb" />
+                </param>
+            </when>
+            <when value="prot">
+                <param name="database" argument="-db" type="select" multiple="true" label="Protein BLAST database">
+                    <options from_data_table="blastdb_p" />
+                </param>
+            </when>
+        </conditional>
+    </xml>
+
+    <xml name="input_parse_deflines">
+        <param argument="-parse_deflines" type="boolean" label="Should the query and subject defline(s) be parsed?" truevalue="-parse_deflines" falsevalue="" checked="false" help="This affects the formatting of the query/subject ID strings"/>
+    </xml>
+
+    <xml name="input_filter_query_default_false">
+        <param name="filter_query" argument="-seg" type="boolean" label="Filter out low complexity regions (with SEG)" truevalue="-seg yes" falsevalue="-seg no" checked="false" />
+    </xml>
+
+    <xml name="input_filter_query_default_true">
+        <param name="filter_query" argument="-seg" type="boolean" label="Filter out low complexity regions (with SEG)" truevalue="-seg yes" falsevalue="-seg no" checked="true" />
+    </xml>
+
+    <xml name="input_max_hits">
+        <param name="max_hits" type="integer" min="0" value="0" label="Maximum hits to consider/show" help="Use zero for default limits. For HTML and plain text output this value is passed -num_descriptions and -num_alignments but for XML and tabular etc, this is used with -max_target_seqs instead. In either case, in addition to limiting the final output, this alters internal limits during the search, which can in some cases exclude matches which would otherwise become the best hit." />
+        <param argument="-max_hsps" type="integer" min="1" optional="true" value="" label="Maximum number of HSPs (alignments) to keep for any single query-subject pair" help="The HSPs shown will be the best as judged by expect value. If this option is not set, BLAST shows all HSPs meeting the expect value criteria" />
+    </xml>
+
+    <xml name="input_evalue">
+        <param name="evalue_cutoff" argument="-evalue" type="float" size="15" value="0.001" label="Set expectation value cutoff" />
+    </xml>
+
+    <xml name="input_taxIDs">
+        <param label="Filter by TaxIDs (Can be multiple, separated by space. Will automatically include sub-IDs)" name="taxids" type="text" value="" optional="true"/>
+    </xml>
+
+    <xml name="input_word_size">
+        <param argument="-word_size" type="integer" min="2" optional="true"
+        label="Word size for wordfinder algorithm"
+        help="Leave blank for default, otherwise minimum 2" />
+    </xml>
+
+    <xml name="input_strand">
+        <param argument="-strand" type="select" label="Query strand(s) to search against database/subject">
+            <option value="-strand both">Both</option>
+            <option value="-strand plus">Plus (forward)</option>
+            <option value="-strand minus">Minus (reverse complement)</option>
+        </param>
+    </xml>
+
+    <xml name="input_qcov_hsp_perc">
+        <param argument="-qcov_hsp_perc" type="float" value="0" min="0" max="100" label="Minimum query coverage per hsp (percentage, 0 to 100)" help="See also the output column qcovhsp"/>
+    </xml>
+
+    <xml name="input_window_size">
+        <param argument="-window_size" type="integer" optional="true" min="0"
+            label="Multiple hits window size: use 0 to specify 1-hit algorithm, leave blank for default"
+            help="Default window size varies with substitution matrix and BLAST type. Enter an integer to override the default."/>
+    </xml>
+
+    <xml name="input_threshold">
+        <param argument="-threshold" type="integer" optional="true" min="0"
+            label="Minimum score to add a word to the BLAST lookup table."
+            help="Leave blank for default, which varies based on application."/>
+    </xml>
+
+    <xml name="input_comp_based_stats">
+        <param argument="-comp_based_stats" type="select"
+            label="Composition-based statistics"
+            help="The default value varies based on application and task. Most common default is 2.">
+            <option value="">Use default</option>
+            <option value="0">0: No composition-based statistics</option>
+            <option value="1">1: Composition-based statistics as in NAR 29:2994-3005, 2001</option>
+            <option value="2">2: Composition-based score adjustment as in Bioinformatics
+                21:902-911, 2005, conditioned on sequence properties</option>
+            <option value="3">3: Composition-based score adjustment as in Bioinformatics 21:902-911, 2005, unconditionally</option>
+        </param>
+    </xml>
+
+    <xml name="advanced_options">
+        <conditional name="adv_opts">
+            <param name="adv_opts_selector" type="select" label="Advanced Options">
+              <option value="basic" selected="true">Hide Advanced Options</option>
+              <option value="advanced">Show Advanced Options</option>
+            </param>
+            <when value="basic" />
+            <when value="advanced">
+                <yield />
+            </when>
+        </conditional>
+    </xml>
+
+    <xml name="advanced_optional_id_files">
+        <conditional name="adv_optional_id_files_opts">
+            <param name="adv_optional_id_files_opts_selector" type="select"
+                   label="Restrict search of database to a given set of ID's"
+                   help="This feature provides a means to exclude ID's from a BLAST database search. The expectation values in the BLAST results are based upon the sequences actually searched, and not on the underlying database. Note this cannot be used when comparing against a FASTA file.">
+                <option value="none" selected="true">No restriction, search the entire database</option>
+                <option value="gilist">GI identifiers</option>
+                <option value="negative_gilist">Negative GI identifiers</option>
+                <option value="seqidlist">Sequence identifiers (SeqId's)</option>
+            </param>
+            <when value="none" />
+            <when value="gilist">
+                <param argument="-gilist" type="data" format="txt" label="Restrict search of database to GI's listed in this file"
+                       help="This option is only available for database searches."/>
+            </when>
+            <when value="negative_gilist">
+                <param argument="-negative_gilist" type="data" format="txt" label="Restrict search of database to everything except the GI's listed in this file"
+                       help="This option is only available for database searches."/>
+            </when>
+            <when value="seqidlist">
+                <param argument="-seqidlist" type="data" format="txt" label=" Restrict search of database to list of SeqId's"
+                       help="This option is only available for database searches."/>
+            </when>
+        </conditional>
+    </xml>
+<!--Tokens-->
+    <token name="@ADV_MATRIX_GAPCOSTS@"><![CDATA[
+#if str($adv_opts.matrix_gapcosts.matrix):
+    -matrix '${adv_opts.matrix_gapcosts.matrix}'
+    ${adv_opts.matrix_gapcosts.gap_costs}
+#end if
+    ]]></token>
+
+    <token name="@ADV_QCOV_HSP_PERC@"><![CDATA[
+#if float(str($adv_opts.qcov_hsp_perc)) > 0:
+    -qcov_hsp_perc '${adv_opts.qcov_hsp_perc}'
+#end if
+    ]]></token>
+
+    <token name="@ADV_ID_LIST_FILTER@"><![CDATA[
+#if $adv_opts.adv_optional_id_files_opts.adv_optional_id_files_opts_selector == 'negative_gilist':
+    -negative_gilist '${adv_opts.adv_optional_id_files_opts.negative_gilist}'
+#elif $adv_opts.adv_optional_id_files_opts.adv_optional_id_files_opts_selector == 'gilist':
+    -gilist '{$adv_opts.adv_optional_id_files_opts.gilist}'
+#elif $adv_opts.adv_optional_id_files_opts.adv_optional_id_files_opts_selector == 'seqidlist':
+    -seqidlist '${adv_opts.adv_optional_id_files_opts.seqidlist}'
+#end if
+    ]]></token>
+
+    <token name="@THREADS@">-num_threads "\${GALAXY_SLOTS:-8}"</token>
+
+    <token name="@QUERY@"><![CDATA[
+#if $query.is_of_type('fasta.gz') and $query.ext != "fasta":
+  -query <(gunzip -c '${query}')
+#else:
+  -query '${query}'
+#end if
+    ]]></token>
+
+    <token name="@TAXONKIT@"><![CDATA[
+#if $taxids != "":
+  for i in $taxids;
+    do taxonkit --data-dir $__tool_data_path__  list --ids \$i | sed 's/ //g' >> taxFile.txt;
+    truncate -s-1 taxFile.txt;
+  done;
+#end if
+    ]]></token>
+
+    <token name="@TAXID_FILTER@"><![CDATA[
+#if $taxids != "":
+ -taxidlist taxFile.txt
+#end if
+    ]]></token>
+
+    <token name="@BLAST_DB_SUBJECT@"><![CDATA[
+#if $db_opts.db_opts_selector == "db":
+  -db '${" ".join(str($db_opts.database.fields.path).split(","))}'
+#elif $db_opts.db_opts_selector == "histdb":
+  -db '${os.path.join($db_opts.histdb.extra_files_path, "blastdb")}'
+#else:
+    #if $db_opts.subject.is_of_type('fasta.gz') and $db_opts.subject.ext != "fasta":
+        -subject <(gunzip -c '${$db_opts.subject}')
+    #else:
+        -subject '${db_opts.subject}'
+    #end if
+#end if
+    ]]></token>
+
+    <token name="@BLAST_OUTPUT@"><![CDATA[ -out '$output1'
+##Set the extended list here so when we add things, saved workflows are not affected
+#if str($output.out_format)=="ext":
+    -outfmt '6 std sallseqid score nident positive gaps ppos qframe sframe qseq sseq qlen slen salltitles'
+#elif str($output.out_format)=="cols"
+##Pick your own columns. Galaxy gives us it comma separated, BLAST+ wants space separated:
+##TODO - Can we catch the user picking no columns and raise an error here?
+#set cols = (str($output.std_cols)+","+str($output.ext_cols)+","+str($output.ids_cols)+","+str($output.misc_cols)+","+str($output.tax_cols)).replace("None", "").replace(",,", ",").replace(",", " ").strip()
+    -outfmt '6 $cols'
+#else:
+## Note do not quote this as can be '0 -html' which is really two arguments
+    -outfmt ${output.out_format}
+#end if
+    ]]></token>
+    <token name="@ADV_FILTER_QUERY@">$adv_opts.filter_query</token>
+    <token name="@ADV_MAX_HITS@"><![CDATA[
+## Need int(str(...)) because $adv_opts.max_hits is an InputValueWrapper object not a string
+##
+## Quoting BLAST 2.7.1+ output from "blastp --help" or "blastn --help":
+##
+##  *** Formatting options
+##   -num_descriptions <Integer, >=0>
+##    Number of database sequences to show one-line descriptions for
+##    Not applicable for outfmt > 4
+##    Default = `500'
+##     * Incompatible with:  max_target_seqs
+##  -num_alignments <Integer, >=0>
+##    Number of database sequences to show alignments for
+##    Default = `250'
+##     * Incompatible with:  max_target_seqs
+##
+##  *** Restrict search or results
+##
+##  -max_target_seqs <Integer, >=1>
+##   Maximum number of aligned sequences to keep
+##   Not applicable for outfmt <= 4
+##   Default = `500'
+##    * Incompatible with:  num_descriptions, num_alignments
+##
+## So, taken at face value we do still need to treat the Text and HTML output
+## differently from the Tabular and XML, yet the treatment of these limits is
+## different (during search or after the search when writing the output):
+## https://blastedbio.blogspot.com/2015/12/blast-max-target-sequences-bug.html
+##
+## See also our user-facing help text.
+#if (str($adv_opts.max_hits) and int(str($adv_opts.max_hits)) > 0):
+    #if str($output.out_format) in ["6", "ext", "cols", "5"]:
+        ## Most output formats use this, including tabular and XML:
+        -max_target_seqs '${adv_opts.max_hits}'
+    #else
+        ## Text and HTML output formats 0-4 currently need this instead:
+        -num_descriptions '${adv_opts.max_hits}' -num_alignments '${adv_opts.max_hits}'
+    #end if
+#end if
+#if str($adv_opts.max_hsps)
+    -max_hsps '${adv_opts.max_hsps}'
+#end if
+    ]]></token>
+    <token name="@ADV_WORD_SIZE@"><![CDATA[
+#if str($adv_opts.word_size):
+-word_size '${adv_opts.word_size}'
+#end if
+$adv_opts.parse_deflines
+    ]]></token>
+    <token name="@ADV_WINDOW_SIZE@"><![CDATA[
+#if str($adv_opts.window_size):
+-window_size '${adv_opts.window_size}'
+#end if
+    ]]></token>
+
+    <token name="@ADV_THRESHOLD@"><![CDATA[
+#if str($adv_opts.threshold):
+-threshold '${adv_opts.threshold}'
+#end if
+    ]]></token>
+
+    <token name="@ADV_COMP_BASED_STATS@"><![CDATA[
+#if str($adv_opts.comp_based_stats):
+-comp_based_stats '${adv_opts.comp_based_stats}'
+#end if
+    ]]></token>
+
+    <token name="@ADV_GAPOPEN@"><![CDATA[
+#if str($adv_opts.gapopen):
+-gapopen '${adv_opts.gapopen}'
+#end if
+    ]]></token>
+
+    <token name="@ADV_GAPEXTEND@"><![CDATA[
+#if str($adv_opts.gapextend):
+-gapextend '${adv_opts.gapextend}'
+#end if
+    ]]></token>
+
+    <token name="@ADV_MATRIX@"><![CDATA[
+#if str($adv_opts.matrix):
+-matrix '${adv_opts.matrix}'
+#end if
+    ]]></token>
+
+    <!-- @ON_DB_SUBJECT@ is for use with @BLAST_DB_SUBJECT@ -->
+    <token name="@ON_DB_SUBJECT@"><![CDATA[
+#if str($db_opts.db_opts_selector)=='db'
+'${db_opts.database}'
+#elif str($db_opts.db_opts_selector)=='histdb'
+'${db_opts.histdb.name}'
+#else
+'${db_opts.subject.name}'
+#end if
+]]></token>
+
+    <token name="@REFERENCES@"><![CDATA[
+Peter J. A. Cock, John M. Chilton, Björn Grüning, James E. Johnson, Nicola Soranzo (2015).
+NCBI BLAST+ integrated into Galaxy. *GigaScience* 4:39
+https://doi.org/10.1186/s13742-015-0080-7
+
+Christiam Camacho et al. (2009).
+BLAST+: architecture and applications.
+*BMC Bioinformatics* 15;10:421.
+https://doi.org/10.1186/1471-2105-10-421
+
+This wrapper is available to install into other Galaxy Instances via the Galaxy
+Tool Shed at http://toolshed.g2.bx.psu.edu/view/devteam/ncbi_blast_plus
+    ]]></token>
+    <xml name="blast_citations">
+        <citations>
+            <citation type="doi">10.1093/nar/25.17.3389</citation>
+            <citation type="doi">10.1186/1471-2105-10-421</citation>
+            <citation type="doi">10.1186/s13742-015-0080-7</citation>
+            <yield/>
+        </citations>
+    </xml>
+
+    <token name="@OUTPUT_FORMAT@"><![CDATA[
+**Output format**
+
+Because Galaxy focuses on processing tabular data, the default output of this
+tool is tabular. The standard BLAST+ tabular output contains 12 columns:
+
+====== ========= ============================================
+Column NCBI name Description
+------ --------- --------------------------------------------
+     1 qseqid    Query Seq-id (ID of your sequence)
+     2 sseqid    Subject Seq-id (ID of the database hit)
+     3 pident    Percentage of identical matches
+     4 length    Alignment length
+     5 mismatch  Number of mismatches
+     6 gapopen   Number of gap openings
+     7 qstart    Start of alignment in query
+     8 qend      End of alignment in query
+     9 sstart    Start of alignment in subject (database hit)
+    10 send      End of alignment in subject (database hit)
+    11 evalue    Expectation value (E-value)
+    12 bitscore  Bit score
+====== ========= ============================================
+
+The BLAST+ tools can optionally output additional columns of information,
+but this takes longer to calculate. Many commonly used extra columns are
+included by selecting the extended tabular output. The extra columns are
+included *after* the standard 12 columns. This is so that you can write
+workflow filtering steps that accept either the 12 or 25 column tabular
+BLAST output. Galaxy now uses this extended 25 column output by default.
+
+====== ============= ===========================================
+Column NCBI name     Description
+------ ------------- -------------------------------------------
+    13 sallseqid     All subject Seq-id(s), separated by a ';'
+    14 score         Raw score
+    15 nident        Number of identical matches
+    16 positive      Number of positive-scoring matches
+    17 gaps          Total number of gaps
+    18 ppos          Percentage of positive-scoring matches
+    19 qframe        Query frame
+    20 sframe        Subject frame
+    21 qseq          Aligned part of query sequence
+    22 sseq          Aligned part of subject sequence
+    23 qlen          Query sequence length
+    24 slen          Subject sequence length
+    25 salltitles    All subject title(s), separated by a '<>'
+====== ============= ===========================================
+
+The third option is to customise the tabular output by selecting which
+columns you want, from the standard set of 12, the default set of 25,
+or any of the additional columns BLAST+ offers (including species name).
+
+The fourth option is BLAST XML output, which is designed to be parsed by
+another program, and is understood by some Galaxy tools.
+
+You can also choose several plain text or HTML output formats which are designed to be read by a person (not by another program).
+The HTML versions use basic webpage formatting and can include links to the hits on the NCBI website.
+The pairwise output (the default on the NCBI BLAST website) shows each match as a pairwise alignment with the query.
+The two query anchored outputs show a multiple sequence alignment between the query and all the matches,
+and differ in how insertions are shown (marked as insertions or with gap characters added to the other sequences).
+    ]]></token>
+    <token name="@FASTA_WARNING@"><![CDATA[
+.. class:: warningmark
+
+You can also search against a FASTA file of subject (target)
+sequences. This is *not* advised because it is slower (only one
+CPU is used), but more importantly gives e-values for pairwise
+searches (very small e-values which will look overly signficiant).
+In most cases you should instead turn the other FASTA file into a
+database first using *makeblastdb* and search against that.
+    ]]></token>
+    <token name="@SEARCH_TIME_WARNING@"><![CDATA[
+.. class:: warningmark
+
+**Note**. Database searches may take a substantial amount of time.
+For large input datasets it is advisable to allow overnight processing.
+
+-----
+    ]]></token>
+    <token name="@CLI_OPTIONS@"><![CDATA[
+**Advanced Options**
+
+For help with advanced options and their default values, visit the
+NCBI BLAST® Command Line Applications User Manual, Appendices,
+`Options for the command-line applications
+<https://www.ncbi.nlm.nih.gov/books/NBK279684/#_appendices_Options_for_the_commandline_a_>`_.
+
+For amino acid substitution matrices, see `BLAST Substitution Matrices
+<https://www.ncbi.nlm.nih.gov/books/NBK279684/#_appendices_BLAST_Substitution_Matrices_>`_ in the same
+appendices.
+
+    ]]></token>
+</macros>
+

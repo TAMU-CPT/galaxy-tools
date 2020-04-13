@@ -14,6 +14,7 @@ endolysins = [
     "muraminidase",
     "glycosidase",
     "endopeptidase",
+    "carboxypeptidase",
     "muralytic",
     "glycosylase",
     "chitinase",

@@ -147,11 +147,11 @@
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_regex_search.xml" label="fasta" />
 	</section>
 	<section id="b751a1c4-9cb9-4a41-8f3d-68c2b440088f" name="CPT: Blast Analysis / Filtering">
-                <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_blastn_wrapper_new.xml"/>
-                <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_blastp_wrapper_new.xml"/>
-                <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_blastx_wrapper_new.xml"/>
-                <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_tblastn_wrapper_new.xml"/>
-    	        <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_tblastx_wrapper_new.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_blastn_wrapper.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_blastp_wrapper.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_blastx_wrapper.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_tblastn_wrapper.xml"/>
+    	        <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_tblastx_wrapper.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_blastn_taxID.xml" label="experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/list_taxids.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_add_dice_column.xml"/>
@@ -168,6 +168,8 @@
 		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blastxml_to_gapped_gff3-nt.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_to_gapped_gff3.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/blastn_to_gff3.xml" label="experimental"/>
+		<tool file="cpt2/galaxy-tools/tools/blast/blastp_to_gff3.xml" label="experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml"/>
 	</section>
 	<section id="7045e32e-90c8-4e20-b4ac-a6cb070d40c3" name="CPT: Filter Features">
@@ -274,6 +276,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gbk/sequin.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/gbk_to_five_col.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/phage_renamer.xml" label="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/cpt_validate_gbk.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_validator.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_table.xml"/>
 	</section>
@@ -295,6 +298,7 @@
                 <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-isp.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-osp.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/spanin/findSpanin.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/helicalWheel/generateHelicalWheel.xml"/>
 	</section>
 	<!-- deprecated -->
 	<tool file="cpt2/galaxy-tools/tools/gff3/gff3_ipr_merge.xml" label="deprecated" hidden="True" />

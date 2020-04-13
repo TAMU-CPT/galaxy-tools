@@ -36,7 +36,7 @@ $fasta_file
 	<param label="o-spanin minimal length" name="osp_min_len" type="integer" value="30" />
     <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1234:4321)" type="text" name="switch" value="all" />
         <param label="Lipobox minimal distance from start codon" name="osp_min_dist" type="integer" value="10" />
-	<param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" />
+	<param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" help="Searches for a Lipobox between Lipoboxmin and Lipoboxmax ie [Lipoboxmin,Lipoboxmax]" />
         <param type="select" label="Regular Expression choice" name="regex_pattern">
             <option value="1">[ILMFTV][^REXD][GAS]C</option>
             <option value="2">[ACGSILMFTV][^REKD][GASNL]C</option>
@@ -53,21 +53,21 @@ $fasta_file
                 <data format="gff3" name="putative_osp_gff" label="putative_osp.gff3"/>
     </outputs>
     <help><![CDATA[
-**What it does**
 
-INPUT : Genomic FASTA
+**INPUT** --> Genomic FASTA
 
-METHODOLOGY
-Initially uses the OrfFinder module from CPT.py and locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA(NT and AA) / BED / GFF3. These are currently hidden.
+**METHODOLOGY**
+
+Locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA (nt and aa) / BED (hidden) / GFF3 (hidden).
+
 With the aaFASTA, this tool reads in each potential sequence and determines if it has a lipobox based off of:
 
->    Min distance from start codon to lipobox
-
->    Max distance from start codon to lipobox
+    1. Min distance from start codon to lipobox
+    2. Max distance from start codon to lipobox
 
 Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found. If so, it is added to a candidate list, and eventually ported to a file in the output.
 
-OUTPUT : putative_osp.fa (FASTA) file, putative_osp.gff3, and basic summary statistics file as sumamry_osp.txt
+**OUTPUT** --> putative_osp.fa (FASTA) file, putative_osp.gff3, and basic summary statistics file as sumamry_osp.txt
 ]]></help>
-        <expand macro="citations-2020" />
+        <expand macro="citations-crr" />
 </tool>

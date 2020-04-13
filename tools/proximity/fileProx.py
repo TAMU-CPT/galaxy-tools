@@ -13,6 +13,9 @@ class FileParser:
 
 #### GFF3
 class read_a_GFF3(FileParser):
+    '''
+    Class for parsing a GFF3 and finding proximity terms
+    '''
     def find_prox(self):
         gff = open(self.file)
         gff_recs = []
@@ -31,6 +34,9 @@ class read_a_GBK(FileParser):
 class read_a_FASTA(FileParser):
     pass
 
+#### Read multi FASTA from GALAXY "adjacent genbank features" tool
+class read_adjacent_FASTA(FileParser):
+    pass
 
 if __name__ == "__main__":
     pass
@@ -41,3 +47,5 @@ if __name__ == "__main__":
     ###### If it's a gff3, output neighboring results
 
     ###### If it's a fast file, output neighboring results
+
+    ###### If it's an adjacent tool FASTA, output neighboring results

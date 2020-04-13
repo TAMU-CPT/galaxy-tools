@@ -399,7 +399,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert gff3 to gbk")
     parser.add_argument("gff_file", type=argparse.FileType("r"), help="GFF3 file")
     parser.add_argument("fasta_file", type=argparse.FileType("r"), help="Fasta Input")
-    parser.add_argument("--transltbl", type=int, default=11, help="Translation Table choice for CDS tag, default 11")
+    parser.add_argument(
+        "--transltbl",
+        type=int,
+        default=11,
+        help="Translation Table choice for CDS tag, default 11",
+    )
     args = parser.parse_args()
 
     for record in gff3_to_genbank(**vars(args)):

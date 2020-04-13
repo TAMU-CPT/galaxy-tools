@@ -1,0 +1,213 @@
+<tool id="ncbi_blastn_wrapper_new" name="NCBI BLAST+ blastn (CPT Latest)" version="@WRAPPER_VERSION@">
+    <description>Search nucleotide database with nucleotide query sequence(s)</description>
+    <macros>
+        <token name="@BINARY@">blastn</token>
+        <import>ncbi_macros.xml</import>
+    </macros>
+    <expand macro="parallelism" />
+    <expand macro="preamble" />
+    <command detect_errors="aggressive">
+<![CDATA[
+## The command is a Cheetah template which allows some Python based syntax.
+## Lines starting hash hash are comments. Galaxy will turn newlines into spaces
+@TAXONKIT@
+blastn
+@QUERY@
+@BLAST_DB_SUBJECT@
+-task '${blast_type}'
+-evalue '${evalue_cutoff}'
+@TAXID_FILTER@
+@BLAST_OUTPUT@
+@THREADS@
+#if $adv_opts.adv_opts_selector=="advanced":
+${adv_opts.strand}
+@ADV_FILTER_QUERY@
+@ADV_MAX_HITS@
+@ADV_WORD_SIZE@
+#if (str($adv_opts.identity_cutoff) and float(str($adv_opts.identity_cutoff)) > 0 ):
+-perc_identity '${adv_opts.identity_cutoff}'
+#end if
+${adv_opts.ungapped}
+@ADV_ID_LIST_FILTER@
+@ADV_QCOV_HSP_PERC@
+## only use window size if dc-megablast mode is used
+#if ($blast_type == "dc-megablast"):
+-window_size @ADV_WINDOW_SIZE@
+#end if
+@ADV_GAPOPEN@
+@ADV_GAPEXTEND@
+## End of advanced options:
+#end if
+]]>
+    </command>
+    <inputs>
+        <expand macro="nucl_query" />
+        <expand macro="input_conditional_nucleotide_db" />
+        <param name="blast_type" argument="-task" type="select" display="radio" label="Type of BLAST">
+            <option value="megablast">megablast - Traditional megablast used to find very similar (e.g., intraspecies or closely related species) sequences</option>
+            <option value="blastn">blastn - Traditional BLASTN requiring an exact match of 11, for somewhat similar sequences</option>
+            <option value="blastn-short">blastn-short - BLASTN program optimized for sequences shorter than 50 bases</option>
+            <option value="dc-megablast">dc-megablast - Discontiguous megablast used to find more distant (e.g., interspecies) sequences</option>
+            <!-- Using BLAST 2.2.24+ this gives an error:
+            BLAST engine error: Program type 'vecscreen' not supported
+            <option value="vecscreen">vecscreen</option>
+            In any case, vecscreen has gone in BLAST+ 2.2.28
+            -->
+            <!-- BLAST+ 2.2.28 also offers rmblastn -->
+        </param>
+        <expand macro="input_evalue" />
+        <expand macro="input_out_format" />
+        <expand macro="input_taxIDs" />
+
+        <expand macro="advanced_options">
+            <!-- Could use a select (yes, no, other) where other allows setting 'level window linker' -->
+            <param name="filter_query" argument="-dust" type="boolean" label="Filter out low complexity regions (with DUST)" truevalue="-dust yes" falsevalue="-dust no" checked="true" />
+            <expand macro="input_strand" />
+            <expand macro="input_max_hits" />
+            <param name="identity_cutoff" argument="-perc_identity" type="float" min="0" max="100" value="0" label="Percent identity cutoff" help="Use zero for no cutoff" />
+            <expand macro="input_word_size" />
+            <param argument="-ungapped" type="boolean" label="Perform ungapped alignment only?" truevalue="-ungapped" falsevalue="" checked="false" />
+            <expand macro="input_parse_deflines" />
+            <expand macro="advanced_optional_id_files" />
+            <expand macro="input_qcov_hsp_perc" />
+            <!-- the help text here is unique to the blastx application, so macro not used -->
+            <param name="window_size" type="integer" optional="true" min="0"
+                label="Multiple hits window size: use 0 to specify 1-hit algorithm, leave blank for default"
+                help="Only relevant for dc-megablast, and otherwise ignored. Default window size changes with substitution matrix and BLAST type.
+                    Entering a non-negative integer will override the default."/>
+            <expand macro="input_gapopen"/>
+            <expand macro="input_gapextend"/>
+        </expand>
+    </inputs>
+    <outputs>
+        <data name="output1" format="tabular" label="${blast_type.value} $query.name vs @ON_DB_SUBJECT@">
+            <expand macro="output_change_format" />
+        </data>
+    </outputs>
+    <tests>
+        <test>
+            <param name="query" value="rhodopsin_nucs.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="file" />
+            <param name="subject" value="three_human_mRNA.fasta" ftype="fasta" />
+            <param name="database" value="" />
+            <param name="evalue_cutoff" value="1e-40" />
+            <param name="out_format" value="5" />
+            <param name="adv_opts_selector" value="basic" />
+            <output name="output1" file="blastn_rhodopsin_vs_three_human.xml" ftype="blastxml" />
+        </test>
+        <test>
+            <param name="query" value="rhodopsin_nucs.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="file" />
+            <param name="subject" value="three_human_mRNA.fasta" ftype="fasta" />
+            <param name="database" value="" />
+            <param name="evalue_cutoff" value="1e-40" />
+            <param name="out_format" value="6" />
+            <param name="adv_opts_selector" value="basic" />
+            <output name="output1" file="blastn_rhodopsin_vs_three_human.tabular" ftype="tabular" />
+        </test>
+        <test>
+            <param name="query" value="rhodopsin_nucs.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="file" />
+            <param name="subject" value="three_human_mRNA.fasta.gz" ftype="fasta.gz" />
+            <param name="database" value="" />
+            <param name="evalue_cutoff" value="1e-40" />
+            <param name="out_format" value="6" />
+            <param name="adv_opts_selector" value="basic" />
+            <output name="output1" file="blastn_rhodopsin_vs_three_human.tabular" ftype="tabular" />
+        </test>
+        <test>
+            <param name="query" value="rhodopsin_nucs.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="file" />
+            <param name="subject" value="three_human_mRNA.fasta" ftype="fasta" />
+            <param name="database" value="" />
+            <param name="evalue_cutoff" value="1e-40" />
+            <param name="out_format" value="cols" />
+            <param name="std_cols" value="qseqid,sseqid,pident" />
+            <param name="ext_cols" value="qlen,slen" />
+            <param name="adv_opts_selector" value="basic" />
+            <output name="output1" file="blastn_rhodopsin_vs_three_human.columns.tabular" ftype="tabular" />
+        </test>
+        <test>
+            <param name="query" value="chimera.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="db" />
+            <param name="database" value="three_human_mRNA" />
+            <param name="out_format" value="6" />
+            <param name="adv_opts_selector" value="advanced" />
+            <param name="max_hits" value="1" />
+            <output name="output1" file="blastn_chimera_vs_three_human_max1.tabular" ftype="tabular" />
+        </test>
+        <test>
+            <param name="query" value="chimera.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="db" />
+            <param name="database" value="three_human_mRNA" />
+            <param name="out_format" value="0" />
+            <param name="adv_opts_selector" value="advanced" />
+            <param name="max_hits" value="1" />
+            <output name="output1" file="blastn_chimera_vs_three_human_max1.txt" ftype="txt" />
+        </test>
+        <test>
+            <param name="query" value="chimera.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="db" />
+            <param name="database" value="three_human_mRNA" />
+            <param name="out_format" value="6" />
+            <output name="output1" file="blastn_chimera_vs_three_human_db.tabular" ftype="tabular" />
+        </test>
+        <test>
+            <param name="query" value="chimera.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="db" />
+            <param name="database" value="rhodopsin_nucs" />
+            <param name="out_format" value="6" />
+            <output name="output1" file="blastn_chimera_vs_rhodopsin_db.tabular" ftype="tabular" />
+        </test>
+        <test>
+            <param name="query" value="chimera.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="db" />
+            <param name="database" value="rhodopsin_nucs" />
+            <param name="out_format" value="6" />
+            <param name="adv_opts_selector" value="advanced" />
+            <param name="max_hsps" value="1" />
+            <output name="output1" file="blastn_chimera_vs_rhodopsin_db_max_hsps1.tabular" ftype="tabular" />
+        </test>
+        <!-- next test is passing in two blast databases -->
+        <test>
+            <param name="query" value="chimera.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="db" />
+            <param name="database" value="three_human_mRNA,rhodopsin_nucs" />
+            <param name="out_format" value="6" />
+            <output name="output1" file="blastn_chimera_vs_three_human_and_rhodopsin_db.tabular" ftype="tabular" />
+        </test>
+    </tests>
+    <help>
+
+@SEARCH_TIME_WARNING@
+
+**What it does**
+
+Search a *nucleotide database* using a *nucleotide query*,
+using the NCBI BLAST+ blastn command line tool.
+Algorithms include blastn, megablast, and discontiguous megablast.
+
+@FASTA_WARNING@
+
+-----
+
+@OUTPUT_FORMAT@
+
+-------
+
+@CLI_OPTIONS@
+
+-------
+
+**References**
+
+If you use this Galaxy tool in work leading to a scientific publication please
+cite the following papers:
+
+@REFERENCES@
+    </help>
+    <expand macro="blast_citations" >
+        <citation type="doi">10.1101/513523</citation>
+    </expand>
+</tool>
+
