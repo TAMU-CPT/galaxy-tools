@@ -684,6 +684,28 @@ def weird_starts(record):
 
         seq_str = str(seq.extract(record.seq))
         start_codon = seq_str[0:3]
+        if len(seq_str) < 3:
+            sys.stderr.write("Fatal Error: CDS of length less than 3 at " + str(seq.location) + '\n')
+            exit(2)
+#        if len(seq_str) % 3 != 0:
+#            if len(seq_str) < 3:
+#                stop_codon = seq_str[-(len(seq_str))]
+#            else:
+#                stop_codon = seq_str[-3]
+#            
+#            log.warn("CDS at %s length is not a multiple of three (Length = %d)", get_gff3_id(gene), len(seq_str))
+#            seq.__error = "Bad CDS Length"
+#            results.append(seq)
+#            qc_features.append(
+#                gen_qc_feature(
+#                    s, e, "Bad Length", strand=seq.strand, id_src=gene
+#                )
+#            )
+#            bad += 1
+#            seq.__start = start_codon
+#            seq.__stop = stop_codon
+#            continue 
+
         stop_codon = seq_str[-3]
         seq.__start = start_codon
         seq.__stop = stop_codon
