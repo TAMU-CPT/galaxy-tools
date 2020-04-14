@@ -12,11 +12,10 @@ class FileParser:
 
 
 #### GFF3
-class read_a_GFF3(FileParser):
-    '''
-    Class for parsing a GFF3 and finding proximity terms
-    '''
-    def find_prox(self):
+    def read_a_GFF3(self):
+        '''
+        Class for parsing a GFF3 and finding proximity terms
+        '''
         gff = open(self.file)
         gff_recs = []
         for rec in GFF.parse(gff):
@@ -25,18 +24,14 @@ class read_a_GFF3(FileParser):
         gff.close()
 
 
-#### Genbank
-class read_a_GBK(FileParser):
-    pass
+    #### Genbank
+    def read_GBK(self):
+        pass
 
 
-#### FASTA
-class read_a_FASTA(FileParser):
-    pass
-
-#### Read multi FASTA from GALAXY "adjacent genbank features" tool
-class read_adjacent_FASTA(FileParser):
-    pass
+    #### FASTA
+    def read_FASTA(self):
+        pass
 
 if __name__ == "__main__":
     pass
