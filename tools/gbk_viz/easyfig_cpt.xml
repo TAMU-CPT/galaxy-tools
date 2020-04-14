@@ -58,7 +58,7 @@ mv tempTar $blastDir
 ]]></command>
   <inputs>
     <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
-    <param label="Reverse Items" name="revString" type="text" value=""/>
+    <param label="Reverse Items (See 'Reverse Option' in help text)" name="revString" type="text" value=""/>
 
     <conditional name="blast">
       <param name="input_type" type="select" label="Choose BLAST file source/generation: ">
@@ -133,6 +133,10 @@ EasyFig Version 2.2.3 generates a linear genomic comparison of 1 to an infinite 
 An input GenBank or EMBL file must have source line, or Sequence.
 '     source  1..<sequence length>' or 'FT   source    1..<sequence length>'
 Only 'CDS' features will be recorded.
+
+**Reverse Option**
+Easyfig will allow you to read in a genbank file in reverse. You can specify which genbanks you would like to be reversed
+by providing their list index in the Reverse Items field. The list is in order from the bottom-up, so if three genbanks are selected, the bottom-most one is 1, the middle is 2, and the top-most 3. The numbers are separated by space, so an entry of 2 3 will reverse the middle and top items, and the bottom will be read in normally.
 
 - Nucleotide BLAST: run BLASTn, run tBLASTx, or provide 12-column BLAST results for each input.  
 
