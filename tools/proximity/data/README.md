@@ -1,3 +1,7 @@
 # Data location for proximity to lysis project
 
 ## lysis-family.json : houses synonyms for lysis queries
+## GO-lysis-query.json : GO term lysis synonyms found using goQuery.py
+## lysis-family-expanded.json : Merged results from lysis-family.json and GO-lysis-query.json
+## go-synonym-results.txt : tab-delimited results from initial goQuery.py
+## go-synonym-results-JRR.txt : JRR culled results from go-synonym-results.txt
