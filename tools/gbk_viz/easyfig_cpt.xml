@@ -7,11 +7,58 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-echo ${#gbkIn[@]} > $SVG_Out
+IFS=',' read -r -a genList <<< "$gbkIn";
+IFS=' ' read -r -a revList <<< "$revString";
+lenGBK=\${#genList[@]};
+lenREV=\${#revList[@]};
+for (( i=0; i<\$lenGBK; i++ )); do
+for (( j=0; j<\$lenREV; j++ )); do
+if [[ \$((i+1)) -eq revList[\$j]  ]]; then
+genList[\$i]="\${genList[\$i]} R";
+fi
+done;
+done;        
 
+python $__tool_directory__/Easyfig.py
+-e $eVal 
+#if $blast.input_type == "files":
+-blast_files 
+#for $file in $blast.blastIn:
+    $file 
+#end for
+#else if $blast.input_type == "blastN":
+-blastn
+$blast.keepBlast
+#else if $blast.input_type == "blastX":
+-tblastx
+$blast.keepBlast
+#end if
+-aln $align 
+-i $identity
+-min_length $blastLen
+-legend $leg 
+-leg_name $nameLoc
+-f1 $tfF
+-f2 $intF
+-blast_col $color 
+#if $gc != "":
+    -G $gc 
+#end if
+
+-o $SVG_Out 
+-svg 
+-filter
+\${genList[@]}
+#if $blast.keepBlast
+&&
+tar -cvf tempTar temp_easyfig
+&&
+mv tempTar $blastDir
+#end if
 ]]></command>
   <inputs>
     <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
+    <param label="Reverse Items" name="revString" type="text" value=""/>
 
     <conditional name="blast">
       <param name="input_type" type="select" label="Choose BLAST file source/generation: ">
