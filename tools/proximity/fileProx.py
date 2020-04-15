@@ -42,35 +42,36 @@ class Terms:
     def __init__(self, termType):
         self.termType = termType
     
-    def formQuery(self,options=[],filename=None,custom=None):
+    def formQuery(self,options=[],filename=None,custom=None,combo=False):
         """ based on the termType, the formation of a query list is made """
-        if self.termType == "dbase":
-            db_path = "data/lysis-family-expanded.json"
-            db = ej.explodeJSON(db_path)
-            db = db.readJSON()
-            # Since this is currently a static dbase, I'm going to hardcode the key options that users have. In the future, there might be some shenanigans done to enhance/improve this choice
-            if options != []:
-                query = options
+        if combo == False:
+            if self.termType == "dbase":
+                db_path = "data/lysis-family-expanded.json"
+                db = ej.explodeJSON(db_path)
+                db = db.readJSON()
+                # Since this is currently a static dbase, I'm going to hardcode the key options that users have. In the future, there might be some shenanigans done to enhance/improve this choice
+                if options != []:
+                    query = options
+                    terms = []
+                    for q in query:
+                        print(q)
+                        terms.extend(db[q]) 
+                else:
+                    terms = []
+                    for vals in db.values():
+                        terms.extend(vals)
+                
+                print(terms)
+            elif self.termType == "custom_text":
+                # I don't know the best way to test this before wrapping. However, I'll take a stab at what I think it will be.
                 terms = []
-                for q in query:
-                    print(q)
-                    terms.extend(db[q]) 
-            else:
-                terms = []
-                for vals in db.values():
-                    terms.extend(vals)
-            
-            print(terms)
-        elif self.termType == "custom_text":
-            # I don't know the best way to test this before wrapping. However, I'll take a stab at what I think it will be.
-            terms = []
-            terms.extend(custom)
-        elif self.termType == "file":
-            # read in a new line separate file.
-            terms = open(filename).read().splitlines()
-            print(terms)
-        elif self.termType == "combination":
-            
+                terms.extend(custom)
+            elif self.termType == "file":
+                # read in a new line separate file.
+                terms = open(filename).read().splitlines()
+                print(terms)
+        else:
+             
             pass
 
         return terms
