@@ -3,10 +3,15 @@
 import re
 import argparse
 import Bio
+import argparse
 from BCBio import GFF
+import explodeJSON as ej
 
 #### Text Files
 class FileParser:
+    """
+       Parses a file, using different methods based on the _TYPE_ of file that it is
+    """
     def __init__(self, file):
         self.file = file  # term that wants to be queried
 
@@ -33,14 +38,44 @@ class FileParser:
     def read_FASTA(self):
         pass
 
+class Terms:
+    def __init__(self, termType):
+        self.termType = termType
+    
+    def formQuery(self,options=[]):
+        """ based on the termType, the formation of a query list is made """
+        if self.termType == "dbase":
+            db_path = "data/lysis-family-expanded.json"
+            db = ej.explodeJSON(db_path)
+            db = db.readJSON()
+            # Since this is currently a static dbase, I'm going to hardcode the key options that users have. In the future, there might be some shenanigans done to enhance/improve this choice
+            if options != []:
+                query = options
+                terms = []
+                for q in query:
+                    print(q)
+                    terms.extend(db[q]) 
+            else:
+                terms = []
+                for vals in db.values():
+                    terms.extend(vals)
+            
+            print(terms)
+        elif self.termType == "custom_text":
+            pass
+        elif self.termType == "file":
+            pass
+        elif self.termType == "combination":
+            pass
+
+        return terms
+    
 if __name__ == "__main__":
-    pass
-    ### What kind of input file are we going to read?
-
-    ###### If it's a genbank, output neighboring results
-
-    ###### If it's a gff3, output neighboring results
-
-    ###### If it's a fast file, output neighboring results
-
-    ###### If it's an adjacent tool FASTA, output neighboring results
+    parser = argparse.ArgumentParser(description="file location")
+    parser.add_argument("--termType",default="dbase")
+    parser.add_argument("--options",default=[],nargs="*")
+    args = parser.parse_args()
+    
+    # Function Calls
+    t = Terms(termType=args.termType)
+    t.formQuery(options=args.options)
