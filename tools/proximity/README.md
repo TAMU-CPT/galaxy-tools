@@ -1,6 +1,6 @@
 # Proximity (to Lysis) Scripts
 ## `generateLysisFamily.py`
-* Numerous list with lysis family relationships. Output is a dictionary --> json that stores these relationships for future use.
+* Numerous list with lysis family relationships. Output is a dictionary --to-a--> json that stores these relationships for future use.
 
 ## `explodeJSON.py`
 * Quick and easy class that will permit (easy) json manipulation.
@@ -22,3 +22,4 @@
 * sample.gff3
 * sample.fa
 * sample.xml
+* search.txt
