@@ -36,17 +36,19 @@ def check_bounds(ps, pe, qs, qe):
     if qs < ps:
         ps = qs
     if qe > pe:
-        pe = qe 
+        pe = qe
     if ps <= 0:
         ps = 1
     return (min(ps, pe), max(ps, pe))
 
+
 def clean_string(s):
-        clean_str = re.sub("\|", "_", s)  # Replace any \ or | with _
-        clean_str = re.sub(
-            "[^A-Za-z0-9_\ .-]", "", clean_str
-        )  # Remove any non-alphanumeric or _.- chars
-        return clean_str
+    clean_str = re.sub("\|", "_", s)  # Replace any \ or | with _
+    clean_str = re.sub(
+        "[^A-Za-z0-9_\ .-]", "", clean_str
+    )  # Remove any non-alphanumeric or _.- chars
+    return clean_str
+
 
 def clean_slist(l):
     cleaned_list = []
@@ -54,16 +56,17 @@ def clean_slist(l):
         cleaned_list.append(clean_string(s))
     return cleaned_list
 
+
 def blastxml2gff3(blastxml, include_seq=False):
 
     blast_records = NCBIXML.parse(blastxml)
     for idx_record, record in enumerate(blast_records):
         # http://www.sequenceontology.org/browser/release_2.4/term/SO:0000343
-        #match_type = {  # Currently we can only handle BLASTN, BLASTP
+        # match_type = {  # Currently we can only handle BLASTN, BLASTP
         #    "BLASTN": "nucleotide_match",
         #    "BLASTP": "protein_match",
-        #}.get(record.application, "match")
-        match_type = 'match'
+        # }.get(record.application, "match")
+        match_type = "match"
         collected_records = []
 
         recid = record.query
@@ -160,11 +163,8 @@ def blastxml2gff3(blastxml, include_seq=False):
                 )
 
             # Build the top level seq feature for the hit
-            hit_qualifiers["description"] = clean_string("Hit to %s..%s of %s" % (
-                parent_match_start,
-                parent_match_end,
-                desc,
-            )
+            hit_qualifiers["description"] = clean_string(
+                "Hit to %s..%s of %s" % (parent_match_start, parent_match_end, desc,)
             )
             top_feature = SeqFeature(
                 FeatureLocation(parent_match_start - 1, parent_match_end),
@@ -234,9 +234,11 @@ def combine_records(records):
                 # if feat.location.end > new_parent_end:
                 #    new_parent_end = feat.location.end + 1
             cleaned_records[combo_id].features[0].location = FeatureLocation(
-                new_parent_start-1, new_parent_end
+                new_parent_start - 1, new_parent_end
             )
-            cleaned_records[combo_id].features[0].qualifiers["description"] = clean_string(
+            cleaned_records[combo_id].features[0].qualifiers[
+                "description"
+            ] = clean_string(
                 "Hit to %s..%s of %s"
                 % (
                     new_parent_start,
@@ -256,11 +258,11 @@ def combine_records(records):
 def blasttsv2gff3(blasttsv, include_seq=False):
 
     # http://www.sequenceontology.org/browser/release_2.4/term/SO:0000343
-    #match_type = {  # Currently we can only handle BLASTN, BLASTP
+    # match_type = {  # Currently we can only handle BLASTN, BLASTP
     #    "BLASTN": "nucleotide_match",
     #    "BLASTP": "protein_match",
-    #}.get(type, "match")
-    match_type = 'match'
+    # }.get(type, "match")
+    match_type = "match"
 
     columns = [
         "qseqid",  # 01 Query Seq-id (ID of your sequence)
@@ -302,9 +304,11 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         hit_qualifiers = {
             "ID": feature_id,
             "Name": clean_string(dc["salltitles"].split("<>")[0]),
-            "description": clean_string("Hit to {sstart}..{send} of {x}".format(
-                x=dc["salltitles"].split("<>")[0], **dc
-            )),
+            "description": clean_string(
+                "Hit to {sstart}..{send} of {x}".format(
+                    x=dc["salltitles"].split("<>")[0], **dc
+                )
+            ),
             "source": "blast",
             "score": dc["evalue"],
             "accession": clean_string(dc["sseqid"]),
