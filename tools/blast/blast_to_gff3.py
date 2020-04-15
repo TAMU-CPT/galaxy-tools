@@ -90,8 +90,8 @@ def blastxml2gff3(blastxml, include_seq=False):
             for idx_hsp, hsp in enumerate(hit.hsps):
                 if idx_hsp == 0:
                     # -2 and +1 for start/end to convert 0 index of python to 1 index of people, -2 on start because feature location saving issue
-                    parent_match_start = hsp.query_start - 1
-                    parent_match_end = hsp.query_end + 1
+                    parent_match_start = hsp.query_start
+                    parent_match_end = hsp.query_end
                 # generate qualifiers to be added to gff3 feature
                 hsp_qualifiers = {
                     "ID": "b2g.%s.%s.hsp%s" % (idx_record, idx_hit, idx_hsp),
@@ -216,7 +216,7 @@ def combine_records(records):
             # sort them into the proper order, then apply new ids
             # and also ensure the parent record boundaries fit the whole span of subfeatures
             sub_features = sorted(sub_features, key=lambda x: int(x.location.start))
-            new_parent_start = cleaned_records[combo_id].features[0].location.start
+            new_parent_start = cleaned_records[combo_id].features[0].location.start + 1
             new_parent_end = cleaned_records[combo_id].features[0].location.end
             for idx, feat in enumerate(sub_features):
                 feat.qualifiers["ID"] = "%s.hsp%s" % (
@@ -226,7 +226,7 @@ def combine_records(records):
                 new_parent_start, new_parent_end = check_bounds(
                     new_parent_start,
                     new_parent_end,
-                    feat.location.start,
+                    feat.location.start + 1,
                     feat.location.end,
                 )
                 # if feat.location.start < new_parent_start:
@@ -234,7 +234,7 @@ def combine_records(records):
                 # if feat.location.end > new_parent_end:
                 #    new_parent_end = feat.location.end + 1
             cleaned_records[combo_id].features[0].location = FeatureLocation(
-                new_parent_start, new_parent_end
+                new_parent_start-1, new_parent_end
             )
             cleaned_records[combo_id].features[0].qualifiers["description"] = clean_string(
                 "Hit to %s..%s of %s"
@@ -302,7 +302,7 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         hit_qualifiers = {
             "ID": feature_id,
             "Name": clean_string(dc["salltitles"].split("<>")[0]),
-            "description": clean_string("Hit to {sstart}..{send} ({sframe}) of {x}".format(
+            "description": clean_string("Hit to {sstart}..{send} of {x}".format(
                 x=dc["salltitles"].split("<>")[0], **dc
             )),
             "source": "blast",
@@ -330,8 +330,8 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         for float_numerical_key in "bitscore evalue pident ppos".split(" "):
             dc[float_numerical_key] = float(dc[float_numerical_key])
 
-        parent_match_start = dc["qstart"] - 1
-        parent_match_end = dc["qend"] + 1
+        parent_match_start = dc["qstart"]
+        parent_match_end = dc["qend"]
 
         parent_match_start, parent_match_end = check_bounds(
             parent_match_start, parent_match_end, dc["qstart"], dc["qend"]
