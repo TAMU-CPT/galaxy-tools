@@ -125,26 +125,47 @@ An input GenBank or EMBL file must have source line, or Sequence.
 '     source  1..<sequence length>' or 'FT   source    1..<sequence length>'
 Only 'CDS' features will be recorded.
 
-- Nucleotide BLAST: run BLASTn, run tBLASTx, or provide 12-column BLAST results for each input.  
+
+**Reverse Option**
+Easyfig can plot a genbank file in reverse, effectively inverting the sequence and its annotations. Specify which genbanks to reverse
+by providing their list index position in the Reverse Items field. The list is in order from the bottom-up, so if three genbanks are selected, 
+the bottom-most one is 1, the middle is 2, and the top-most 3. 
+The numbers must be separated by a space. Entering "2 3" will reverse the middle and top items, and the bottom "1" will be read in the forward orientation.
+
+
+**Nucleotide BLAST**
+ - run BLASTn, run tBLASTx, or provide 12-column BLAST results for each input.  
+
 
 **General options**
 - E-value: Select the minimum e-value of blast hits to be drawn. Default is 0.001
+
 - Percent identity: Enter the minimum hit percent identity to be drawn. Default is 0.
+
 - Hit length: Enter the minimum length of similarity (in nucleotides) for the output to be included on the drawing.
+
 - BLAST scale: Toggle the BLAST similarity scale key for display.
+
 - Genome scale bar: Enter a value in base pairs for the length of scale bar. Default is zero, which does not draw a scale bar.
+
 - Position for feature labels : single (single column), double (two columns), top (feature labels of top genome drawn above figure), bottom (feature labels from bottom genome drawn below figure), both (top and bottom genome features drawn above and below figure), none (no legend or gene labelling, default)
+
 - Source of feature label: default is gene. Other options include the product tag.
+
 - Alignment: align the graphic according to best/left/right/center. Alignment of genomes best aligns feature file perpendicular to best blast hit. Default is center. 
+
 - BLAST similarity gradient color: options are gray, red, and blue.
+
 - GCContent plot: select to display GC content or GCSkew graphs with the output.
+
 
 **Output**
 A Scalable Vector Graphics (svg) file or static html display are returned.
 
+
 Blast Wrapper written by Criscione, Anthony, Center for Phage Technology, Texas A&M University, 2020
      ]]></help>
   <expand macro="citations">
-		<citation type="doi">0.1093/bioinformatics/btr039</citation>
+		<citation type="doi">10.1093/bioinformatics/btr039</citation>
 	</expand>
 </tool>
