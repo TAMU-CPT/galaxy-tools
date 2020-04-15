@@ -36,17 +36,19 @@ def check_bounds(ps, pe, qs, qe):
     if qs < ps:
         ps = qs
     if qe > pe:
-        pe = qe 
+        pe = qe
     if ps <= 0:
         ps = 1
     return (min(ps, pe), max(ps, pe))
 
+
 def clean_string(s):
-        clean_str = re.sub("\|", "_", s)  # Replace any \ or | with _
-        clean_str = re.sub(
-            "[^A-Za-z0-9_\ .-]", "", clean_str
-        )  # Remove any non-alphanumeric or _.- chars
-        return clean_str
+    clean_str = re.sub("\|", "_", s)  # Replace any \ or | with _
+    clean_str = re.sub(
+        "[^A-Za-z0-9_\ .-]", "", clean_str
+    )  # Remove any non-alphanumeric or _.- chars
+    return clean_str
+
 
 def clean_slist(l):
     cleaned_list = []
@@ -54,16 +56,17 @@ def clean_slist(l):
         cleaned_list.append(clean_string(s))
     return cleaned_list
 
+
 def blastxml2gff3(blastxml, include_seq=False):
 
     blast_records = NCBIXML.parse(blastxml)
     for idx_record, record in enumerate(blast_records):
         # http://www.sequenceontology.org/browser/release_2.4/term/SO:0000343
-        #match_type = {  # Currently we can only handle BLASTN, BLASTP
+        # match_type = {  # Currently we can only handle BLASTN, BLASTP
         #    "BLASTN": "nucleotide_match",
         #    "BLASTP": "protein_match",
-        #}.get(record.application, "match")
-        match_type = 'match'
+        # }.get(record.application, "match")
+        match_type = "match"
         collected_records = []
 
         recid = record.query
@@ -90,8 +93,8 @@ def blastxml2gff3(blastxml, include_seq=False):
             for idx_hsp, hsp in enumerate(hit.hsps):
                 if idx_hsp == 0:
                     # -2 and +1 for start/end to convert 0 index of python to 1 index of people, -2 on start because feature location saving issue
-                    parent_match_start = hsp.query_start - 1
-                    parent_match_end = hsp.query_end + 1
+                    parent_match_start = hsp.query_start
+                    parent_match_end = hsp.query_end
                 # generate qualifiers to be added to gff3 feature
                 hsp_qualifiers = {
                     "ID": "b2g.%s.%s.hsp%s" % (idx_record, idx_hit, idx_hsp),
@@ -160,11 +163,8 @@ def blastxml2gff3(blastxml, include_seq=False):
                 )
 
             # Build the top level seq feature for the hit
-            hit_qualifiers["description"] = clean_string("Hit to %s..%s of %s" % (
-                parent_match_start,
-                parent_match_end,
-                desc,
-            )
+            hit_qualifiers["description"] = clean_string(
+                "Hit to %s..%s of %s" % (parent_match_start, parent_match_end, desc,)
             )
             top_feature = SeqFeature(
                 FeatureLocation(parent_match_start - 1, parent_match_end),
@@ -216,7 +216,7 @@ def combine_records(records):
             # sort them into the proper order, then apply new ids
             # and also ensure the parent record boundaries fit the whole span of subfeatures
             sub_features = sorted(sub_features, key=lambda x: int(x.location.start))
-            new_parent_start = cleaned_records[combo_id].features[0].location.start
+            new_parent_start = cleaned_records[combo_id].features[0].location.start + 1
             new_parent_end = cleaned_records[combo_id].features[0].location.end
             for idx, feat in enumerate(sub_features):
                 feat.qualifiers["ID"] = "%s.hsp%s" % (
@@ -226,7 +226,7 @@ def combine_records(records):
                 new_parent_start, new_parent_end = check_bounds(
                     new_parent_start,
                     new_parent_end,
-                    feat.location.start,
+                    feat.location.start + 1,
                     feat.location.end,
                 )
                 # if feat.location.start < new_parent_start:
@@ -234,9 +234,11 @@ def combine_records(records):
                 # if feat.location.end > new_parent_end:
                 #    new_parent_end = feat.location.end + 1
             cleaned_records[combo_id].features[0].location = FeatureLocation(
-                new_parent_start, new_parent_end
+                new_parent_start - 1, new_parent_end
             )
-            cleaned_records[combo_id].features[0].qualifiers["description"] = clean_string(
+            cleaned_records[combo_id].features[0].qualifiers[
+                "description"
+            ] = clean_string(
                 "Hit to %s..%s of %s"
                 % (
                     new_parent_start,
@@ -256,11 +258,11 @@ def combine_records(records):
 def blasttsv2gff3(blasttsv, include_seq=False):
 
     # http://www.sequenceontology.org/browser/release_2.4/term/SO:0000343
-    #match_type = {  # Currently we can only handle BLASTN, BLASTP
+    # match_type = {  # Currently we can only handle BLASTN, BLASTP
     #    "BLASTN": "nucleotide_match",
     #    "BLASTP": "protein_match",
-    #}.get(type, "match")
-    match_type = 'match'
+    # }.get(type, "match")
+    match_type = "match"
 
     columns = [
         "qseqid",  # 01 Query Seq-id (ID of your sequence)
@@ -302,9 +304,11 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         hit_qualifiers = {
             "ID": feature_id,
             "Name": clean_string(dc["salltitles"].split("<>")[0]),
-            "description": clean_string("Hit to {sstart}..{send} ({sframe}) of {x}".format(
-                x=dc["salltitles"].split("<>")[0], **dc
-            )),
+            "description": clean_string(
+                "Hit to {sstart}..{send} of {x}".format(
+                    x=dc["salltitles"].split("<>")[0], **dc
+                )
+            ),
             "source": "blast",
             "score": dc["evalue"],
             "accession": clean_string(dc["sseqid"]),
@@ -330,8 +334,8 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         for float_numerical_key in "bitscore evalue pident ppos".split(" "):
             dc[float_numerical_key] = float(dc[float_numerical_key])
 
-        parent_match_start = dc["qstart"] - 1
-        parent_match_end = dc["qend"] + 1
+        parent_match_start = dc["qstart"]
+        parent_match_end = dc["qend"]
 
         parent_match_start, parent_match_end = check_bounds(
             parent_match_start, parent_match_end, dc["qstart"], dc["qend"]

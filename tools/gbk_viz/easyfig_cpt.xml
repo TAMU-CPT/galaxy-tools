@@ -7,6 +7,18 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
+IFS=',' read -r -a genList <<< "$gbkIn";
+IFS=' ' read -r -a revList <<< "$revString";
+lenGBK=\${#genList[@]};
+lenREV=\${#revList[@]};
+for (( i=0; i<\$lenGBK; i++ )); do
+for (( j=0; j<\$lenREV; j++ )); do
+if [[ \$((i+1)) -eq revList[\$j]  ]]; then
+genList[\$i]="\${genList[\$i]} R";
+fi
+done;
+done;        
+
 python $__tool_directory__/Easyfig.py
 -e $eVal 
 #if $blast.input_type == "files":
@@ -36,20 +48,17 @@ $blast.keepBlast
 -o $SVG_Out 
 -svg 
 -filter
-#for $file in $gbkIn:
-    $file 
-#end for
-
+\${genList[@]}
 #if $blast.keepBlast
 &&
 tar -cvf tempTar temp_easyfig
 &&
 mv tempTar $blastDir
 #end if
-
 ]]></command>
   <inputs>
     <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
+    <param label="Reverse Items (See 'Reverse Option' in help text)" name="revString" type="text" value=""/>
 
     <conditional name="blast">
       <param name="input_type" type="select" label="Choose BLAST file source/generation: ">
