@@ -42,7 +42,7 @@ class Terms:
     def __init__(self, termType):
         self.termType = termType
     
-    def formQuery(self,options=[]):
+    def formQuery(self,options=[],filename=None,custom=None):
         """ based on the termType, the formation of a query list is made """
         if self.termType == "dbase":
             db_path = "data/lysis-family-expanded.json"
@@ -62,20 +62,28 @@ class Terms:
             
             print(terms)
         elif self.termType == "custom_text":
-            pass
+            # I don't know the best way to test this before wrapping. However, I'll take a stab at what I think it will be.
+            terms = []
+            terms.extend(custom)
         elif self.termType == "file":
-            pass
+            # read in a new line separate file.
+            terms = open(filename).read().splitlines()
+            print(terms)
         elif self.termType == "combination":
+            
             pass
 
         return terms
     
 if __name__ == "__main__":
+    # PARAMS
     parser = argparse.ArgumentParser(description="file location")
     parser.add_argument("--termType",default="dbase")
     parser.add_argument("--options",default=[],nargs="*")
+    parser.add_argument("--custom",default=None)
+    parser.add_argument("--filename",default=None)
     args = parser.parse_args()
     
     # Function Calls
-    t = Terms(termType=args.termType)
-    t.formQuery(options=args.options)
+    t = Terms(termType=args.termType) # triggers response
+    t.formQuery(options=args.options,custom=args.custom,filename=args.filename)
