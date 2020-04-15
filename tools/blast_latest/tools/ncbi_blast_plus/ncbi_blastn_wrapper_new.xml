@@ -1,0 +1,156 @@
+<tool id="ncbi_blastn_wrapper_new" name="NCBI BLAST+ blastn CPT Latest" version="0.1.02">
+    <description>Search nucleotide database with nucleotide query sequence(s) with latest version of Blast DB</description>
+    <!-- If job splitting is enabled, break up the query file into parts -->
+    <parallelism method="multi" split_inputs="query" split_mode="to_size" split_size="1000" merge_outputs="output1"></parallelism>
+    <macros>
+        <token name="@BINARY@">blastn</token>
+        <import>ncbi_macros_new.xml</import>
+    </macros>
+    <expand macro="requirements" />
+    <command>
+## The command is a Cheetah template which allows some Python based syntax.
+## Lines starting hash hash are comments. Galaxy will turn newlines into spaces
+
+#if $taxids != "":
+  for i in $taxids;
+    do $__tool_directory__/taxkit/taxonkit --data-dir $__tool_directory__/taxkit  list --ids \$i | sed 's/ //g' >> taxFile.txt;
+    truncate -s-1 taxFile.txt;
+  done;
+#end if
+
+blastn
+-query "$query"
+@BLAST_DB_SUBJECT@
+-task $blast_type
+-evalue $evalue_cutoff
+#if $taxids != "":
+ -taxidlist taxFile.txt
+#end if
+@BLAST_OUTPUT@
+@THREADS@
+#if $adv_opts.adv_opts_selector=="advanced":
+  $adv_opts.strand
+  @ADVANCED_OPTIONS@
+  #if (str($adv_opts.identity_cutoff) and float(str($adv_opts.identity_cutoff)) > 0 ):
+   -perc_identity $adv_opts.identity_cutoff
+  #end if
+  $adv_opts.ungapped
+  @ADV_ID_LIST_FILTER@
+## End of advanced options:
+#end if
+    </command>
+
+    <expand macro="stdio" />
+
+    <inputs>
+        <param name="query" type="data" format="fasta" label="Nucleotide query sequence(s)"/>
+
+        <expand macro="input_conditional_nucleotide_db" />
+
+        <param name="blast_type" type="select" display="radio" label="Type of BLAST">
+            <option value="megablast">megablast - Traditional megablast used to find very similar (e.g., intraspecies or closely related species) sequences</option>
+            <option value="blastn">blastn - Traditional BLASTN requiring an exact match of 11, for somewhat similar sequences</option>
+            <option value="blastn-short">blastn-short - BLASTN program optimized for sequences shorter than 50 bases</option>
+            <option value="dc-megablast">dc-megablast - Discontiguous megablast used to find more distant (e.g., interspecies) sequences</option>
+            <!-- Using BLAST 2.2.24+ this gives an error:
+            BLAST engine error: Program type 'vecscreen' not supported
+            <option value="vecscreen">vecscreen</option>
+            In any case, vecscreen has gone in BLAST+ 2.2.28
+            -->
+            <!-- BLAST+ 2.2.28 also offers rmblastn -->
+        </param>
+        <expand macro="input_evalue" />
+        <param label="Filter by TaxIDs (Can be multiple, separated by space. Will automatically include sub-IDs)" name="taxids" type="text" value="" optional="true"/>
+        <expand macro="input_out_format" />
+        <expand macro="advanced_options">
+            <!-- Could use a select (yes, no, other) where other allows setting 'level window linker' -->
+            <param name="filter_query" type="boolean" label="Filter out low complexity regions (with DUST)" truevalue="-dust yes" falsevalue="-dust no" checked="true" />
+            <expand macro="input_strand" />
+            <expand macro="input_max_hits" />
+            <param name="identity_cutoff" type="float" min="0" max="100" value="0" label="Percent identity cutoff (-perc_identity)" help="Use zero for no cutoff" />
+
+            <!-- I'd like word_size to be optional, with minimum 4 for blastn -->
+            <param name="word_size" type="integer" value="0" label="Word size for wordfinder algorithm" help="Use zero for default, otherwise minimum 4.">
+                <validator type="in_range" min="0" />
+            </param>
+            <param name="ungapped" type="boolean" label="Perform ungapped alignment only?" truevalue="-ungapped" falsevalue="" checked="false" />
+            <expand macro="input_parse_deflines" />
+            <expand macro="advanced_optional_id_files" />
+        </expand>
+    </inputs>
+    <outputs>
+        <data name="output1" format="tabular" label="${blast_type.value} $query.name vs @ON_DB_SUBJECT@">
+            <expand macro="output_change_format" />
+        </data>
+    </outputs>
+    <tests>
+        <test>
+            <param name="query" value="rhodopsin_nucs.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="file" />
+            <param name="subject" value="three_human_mRNA.fasta" ftype="fasta" />
+            <param name="database" value="" />
+            <param name="evalue_cutoff" value="1e-40" />
+            <param name="out_format" value="5" />
+            <param name="adv_opts_selector" value="basic" />
+            <output name="output1" file="blastn_rhodopsin_vs_three_human.xml" ftype="blastxml" />
+        </test>
+        <test>
+            <param name="query" value="rhodopsin_nucs.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="file" />
+            <param name="subject" value="three_human_mRNA.fasta" ftype="fasta" />
+            <param name="database" value="" />
+            <param name="evalue_cutoff" value="1e-40" />
+            <param name="out_format" value="6" />
+            <param name="adv_opts_selector" value="basic" />
+            <output name="output1" file="blastn_rhodopsin_vs_three_human.tabular" ftype="tabular" />
+        </test>
+        <test>
+            <param name="query" value="rhodopsin_nucs.fasta" ftype="fasta" />
+            <param name="db_opts_selector" value="file" />
+            <param name="subject" value="three_human_mRNA.fasta" ftype="fasta" />
+            <param name="database" value="" />
+            <param name="evalue_cutoff" value="1e-40" />
+            <param name="out_format" value="cols" />
+            <param name="std_cols" value="qseqid,sseqid,pident" />
+            <param name="ext_cols" value="qlen,slen" />
+            <param name="adv_opts_selector" value="basic" />
+            <output name="output1" file="blastn_rhodopsin_vs_three_human.columns.tabular" ftype="tabular" />
+        </test>
+    </tests>
+    <help>
+
+@SEARCH_TIME_WARNING@
+Filtering by TaxID can significantly shorten the time it takes to complete the query.
+
+
+**What it does**
+
+Search a *nucleotide database* using a *nucleotide query*,
+using the NCBI BLAST+ blastn command line tool.
+Algorithms include blastn, megablast, and discontiguous megablast.
+
+@FASTA_WARNING@
+
+-----
+
+@OUTPUT_FORMAT@
+
+-------
+
+**References**
+
+Uses BLAST suite 2.9.0
+
+If you use this Galaxy tool in work leading to a scientific publication please
+cite the following papers:
+
+@REFERENCES@
+
+Uses Taxonkit version 0.5.0  by Wei Shen, Jie Xiong, "TaxonKit: a cross-platform and efficient NCBI taxonomy toolkit",
+1/08/19, https://doi.org/10.1101/513523
+
+Blast Wrapper and TaxonKit integrated by Criscione, Anthony, Center for Phage Technology, Texas A&amp;M University, 2019
+
+    </help>
+    <expand macro="blast_citations" />
+</tool>
