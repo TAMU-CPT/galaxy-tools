@@ -17,10 +17,10 @@ $retype
 > $output]]></command>
   <inputs>
     <expand macro="gff3_input" />
-    <repeat name="repeat_0" title="Feature Types">
+    <repeat name="repeat_0" title="Feature types to change: ">
       <param label="Feature type" name="type" type="text"/>
     </repeat>
-    <param label="Invert the filter" name="retype" type="text" value="exon"/>
+    <param label="Type to change to: " name="retype" type="text" value="exon"/>
   </inputs>
   <outputs>
     <data format="gff3" name="output"/>
