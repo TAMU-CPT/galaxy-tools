@@ -119,6 +119,7 @@
                 <tool file="cpt2/galaxy-tools/tools/gff3/gff3_remove_fasta_sequences.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/remove_annotations.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_table_annotations.xml" label="gff3" />
+                <tool file="cpt2/galaxy-tools/tools/gff3/retype_features.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/feature_export.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/adjacent_features.xml" label="genbank" />
