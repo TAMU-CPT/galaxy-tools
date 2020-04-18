@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.rebase_features" name="Rebase GFF feature tree" version="20.1.0.0">
+  <description>: for a given feature type, creates a new feature-tree schema</description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/rebase_features.py
+"$input"
+"$changeTo"
+"$changeList"
+> $output]]></command>
+  <inputs>
+    <param label="GenBank file" name="input" type="data" format="gff3"/>
+    <param label="Types to change (space separated): " name="changeList" type="text" value=""/>
+    <param label="New tree (space separated, first type will be top-most feature): " name="changeTo" type="text" value="gene mRNA"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+For a list of GFF Feature types, this tool will extract any such features from an existing feature/subfeature relationship (if there is one, but will also work on parent-less features), and constructs a new heirarchy based off the New Tree input. For example, for an input in the first field of "CDS exon" and an input in the second of "NewTopType MidType", all CDS and Exon features will now be part of a chain NewTopType->MidType->CDS and NewTopType->MidType->exon. 
+
+
+Note: Currently, if two such features were members of the same gene, they are no longer represented as such. Additionally, the previous heirarchy is not removed from the gff for now (ie, the gene->mRNA from the traditional CDS tree will remain), in case there are other features that would be orphaned by removing them.]]></help>
+		<expand macro="citations-2020" />
+</tool>
