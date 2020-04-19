@@ -1,4 +1,3 @@
-<?xml version="1.1"?>
 <tool id="edu.tamu.cpt2.proximity.searchFile" name="Search File" version="1.0">
     <description>Queries a gff3, genbank, fasta, or blast-xml file for a user defined set of terms</description>
     <macros>
