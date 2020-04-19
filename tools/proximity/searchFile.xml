@@ -21,7 +21,7 @@ python $__tool_directory__/searchFile.py
         <inputs>
             <param name="check" type="select" format="text" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database" display="checkboxes">
                 <option value="endolysins" selected="true">Endolysins: enzymes that attack one ofthe structural bonds ofthepeptidoglycan. The endolysinstep requires the hole-forming function of the holins.</option>
-                <option value="holins" selected="true">Holins & Anti-holins: small cytoplasmic membrane proteins that control the timing of lysis by forming a lethal membrane “hole” at a programmed time (programmed into the holin itself).</option>
+                <option value="holins" selected="true">Holins and Anti-holins: small cytoplasmic membrane proteins that control the timing of lysis by forming a lethal membrane hole at a programmed time (programmed into the holin itself).</option>
                 <option value="ECDs" selected="true">N-terminal enzymatic catalytic domains (ECDs)</option>
                 <option value="ECDs_accro" selected="true">ECDs acronyms</option>
                 <option value="CBDs" selected="true">C-terminal cell wall binding domains (CBDs)</option>
