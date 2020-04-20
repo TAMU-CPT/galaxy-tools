@@ -41,7 +41,7 @@ python $__tool_directory__/searchFile.py
                 <param name="custom_file" value="test-data/search.txt"/>
                 <param name="custom_txt" value="catalytic"/>
                 <param name="gbk_files" value="test-data/NC_008720-N4-Apollo.genbank"/>
-                <output name="output" value="test-data/output-sample.txt"/>
+                <output name="output" file="test-data/output-sample.txt"/>
             </test>
         </tests>
     <help><![CDATA[
