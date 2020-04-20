@@ -38,10 +38,10 @@ python $__tool_directory__/searchFile.py
             <data format="txt" name="output" label="termHits.txt"/>
         </outputs>
     <help><![CDATA[
-    INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated spanin synonym database, or a custom input via file or text box.
+    INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, or a custom input via file or text box.
 
     OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term.
-    ]]>]</help>
+    ]]></help>
         <citations>
             <citation type="bibtex">
                 @unpublished{galaxyTools,
