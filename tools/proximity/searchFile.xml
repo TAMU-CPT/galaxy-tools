@@ -1,11 +1,10 @@
-<?xml version="1.1"?>
-<tool id="edu.tamu.cpt2.proximity.searchFile" name="Search File" version="1.0">
-    <description>Queries a gff3, genbank, fasta, or blast-xml file for a user defined set of terms</description>
+<tool id="edu.tamu.cpt.proximity.searchFile" name="Search File" version="1.0">
+    <description>Queries a gff3, genbank, fasta, or blastxml file for a user defined set of terms</description>
     <macros>
         <import>macros.xml</import>
         <import>cpt-macros.xml</import>
     </macros>
-    <command detect_errors="aggressive">
+    <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/searchFile.py
     #if $check is not None:
     --dbaseTerms "$check"
@@ -17,11 +16,11 @@ python $__tool_directory__/searchFile.py
     --fa_files $fa_files
     --blast_files $blast_files
     --output $output
-    </command>
+    ]]></command>
         <inputs>
             <param name="check" type="select" format="text" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database" display="checkboxes">
-                <option value="endolysins" selected="true">Endolysins: enzymes that attack one ofthe structural bonds ofthepeptidoglycan. The endolysinstep requires the hole-forming function of the holins.</option>
-                <option value="holins" selected="true">Holins and Anti-holins: small cytoplasmic membrane proteins that control the timing of lysis by forming a lethal membrane hole at a programmed time (programmed into the holin itself).</option>
+                <option value="endolysins" selected="true">Endolysins</option>
+                <option value="holins" selected="true">Holins and Anti-holins</option>
                 <option value="ECDs" selected="true">N-terminal enzymatic catalytic domains (ECDs)</option>
                 <option value="ECDs_accro" selected="true">ECDs acronyms</option>
                 <option value="CBDs" selected="true">C-terminal cell wall binding domains (CBDs)</option>
@@ -41,6 +40,11 @@ python $__tool_directory__/searchFile.py
     INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, or a custom input via file or text box.
 
     OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term.
+
+    Options : 
+- Endolysins: enzymes that attack one of the structural bonds of the peptidoglycan. The endolysin step requires the hole-forming function of the holins.
+- Holins and Anti-holins: small cytoplasmic membrane proteins that control the timing of lysis by forming a lethal membrane hole at a programmed time (programmed into the holin itself).
+
     ]]></help>
         <citations>
             <citation type="bibtex">
@@ -52,4 +56,4 @@ python $__tool_directory__/searchFile.py
                 }
             </citation>
         </citations>
-    </tool>
+</tool>
