@@ -25,7 +25,7 @@ python $__tool_directory__/searchFile.py
                 <option value="CBDs" selected="true">C-terminal cell wall binding domains (CBDs)</option>
                 <option value="CBDs_accro" selected="true">CBDs acronyms</option>
             </param>
-            <param name="custom_txt" help="Custom text box for search terms, must be separated by newline (enter)"/>
+            <param name="custom_txt" type="empty_field" help="Custom text box for search terms, must be separated by newline (enter)"/>
             <param name="custom_file" type="data" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
             <param name="gff3_files" type="data" format="gff3" help="gff3 file"/>
             <param name="gbk_files" type="data" format="genbank" help="genbank file"/>
