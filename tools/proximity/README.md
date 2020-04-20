@@ -14,6 +14,9 @@
 ## `goSynonymAdd.py`
 * Merges the lysis-family.json object with results from quickgo
 
+## `searchFile.py`
+* Script that searches a multitude of filetypes, and multiple at a time, and queries the file(s) for terms selected by the user.
+
 # `/data`
 * Check README of this directory to see details on the `.txt` and `.json` files.
 
