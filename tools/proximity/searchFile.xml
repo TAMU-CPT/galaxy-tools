@@ -37,7 +37,7 @@ python $__tool_directory__/searchFile.py
         </outputs>
         <tests>
             <test>
-                <param name="check" value="holins">
+                <param name="check" value="holins"/>
                 <param name="custom_file" value="test-data/search.txt"/>
                 <param name="custom_txt" value="catalytic"/>
                 <param name="gbk_files" value="test-data/NC_008720-N4-Apollo.genbank"/>
