@@ -2,7 +2,6 @@
     <description>Queries a gff3, genbank, fasta, or blastxml file for a user defined set of terms</description>
     <macros>
         <import>macros.xml</import>
-        <import>cpt-macros.xml</import>
     </macros>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/searchFile.py
