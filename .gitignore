@@ -150,3 +150,7 @@ tools/spanin/*.gff3
 tools/spanin/*.txt
 tools/spanin/test-data/results.txt
 tools/spanin/test-data/*.fasta
+
+## proximity
+tools/proximity/*.db
+tools/proximity/termHits.txt
