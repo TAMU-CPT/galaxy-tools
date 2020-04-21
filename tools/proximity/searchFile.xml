@@ -69,7 +69,7 @@ python $__tool_directory__/searchFile.py
                     <param name="fa_files" label="FASTA Input" type="data" format="fasta" help="fasta file"/>
                 </when>
                 <when value="blastfile">
-                    <param name="blast_files" label="BLAST-xml Input" type="data" format="blast" help="blast-xml file"/>
+                    <param name="blast_files" label="BLAST-xml Input" type="data" format="xml" help="blast-xml file"/>
                 </when>
             </conditional>
         </inputs>
