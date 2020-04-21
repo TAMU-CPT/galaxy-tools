@@ -1,16 +1,28 @@
 # Proximity (to Lysis) Scripts
-
 ## `generateLysisFamily.py`
-* Has numerous list with lysis family relationships. Output is a dictionary --> json that stores these relationships for future use.
+* Numerous list with lysis family relationships. Output is a dictionary --to-a--> json that stores these relationships for future use.
 
-## `synonymParse.py`
-* module to incooperate quick parsing of new-line separated files
-```python
-import synonymParse as sp
-file = 'path/to/file.txt'
+## `explodeJSON.py`
+* Quick and easy class that will permit (easy) json manipulation.
 
-myObject = sp.Synonym(filename = file, delims = '\t)
-myObjectList = sp.myObject.parse_it() # creates a list of items from the input file
+## `fileProx.py`
+* GALAXY tool that allows users to query an input file for a set of search terms; either custom, dbase, or a combination of the two.
 
-# Can iterate across the list, and will be able to do various manipulations with it
-```
+## `goQuery.py`
+* Takes terms from the lysis-family.json and queries quickgo
+
+## `goSynonymAdd.py`
+* Merges the lysis-family.json object with results from quickgo
+
+## `searchFile.py`
+* Script that searches a multitude of filetypes, and multiple at a time, and queries the file(s) for terms selected by the user.
+
+# `/data`
+* Check README of this directory to see details on the `.txt` and `.json` files.
+
+# `/test-data`
+* test.json for testing various scripts. Used for `goQuery.py`
+* sample.gff3
+* sample.fa
+* sample.xml
+* search.txt
