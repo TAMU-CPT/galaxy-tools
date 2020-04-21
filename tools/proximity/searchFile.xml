@@ -1,0 +1,71 @@
+<tool id="edu.tamu.cpt.proximity.searchFile" name="Search File" version="1.0">
+    <description>Queries a gff3, genbank, fasta, or blastxml file for a user defined set of terms</description>
+    <macros>
+	    <import>macros.xml</import>
+	    <import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+	    <requirement type="package">gffutils</requirement>
+    </expand>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/searchFile.py
+    #if $check is not None:
+    --dbaseTerms "$check"
+    #end if
+    --custom_txts $custom_txt
+    --custom_file $custom_file
+    --gff3_files $gff3_files
+    --gbk_files $gbk_files
+    --fa_files $fa_files
+    --blast_files $blast_files
+    --output $output
+    ]]></command>
+        <inputs>
+            <param name="check" type="select" format="text" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database" display="checkboxes">
+                <option value="endolysins" selected="true">Endolysins</option>
+                <option value="holins" selected="true">Holins and Anti-holins</option>
+                <option value="ECDs" selected="true">N-terminal enzymatic catalytic domains (ECDs)</option>
+                <option value="ECDs_accro" selected="true">ECDs acronyms</option>
+                <option value="CBDs" selected="true">C-terminal cell wall binding domains (CBDs)</option>
+                <option value="CBDs_accro" selected="true">CBDs acronyms</option>
+            </param>
+            <param name="custom_txt" type="text" help="Custom text box for search terms, must be separated by newline (enter)"/>
+            <param name="custom_file" type="file" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
+            <param name="gff3_files" type="data" format="gff3" help="gff3 file"/>
+            <param name="gbk_files" type="data" format="genbank" help="genbank file"/>
+            <param name="fa_files" type="data" format="fasta" help="fasta file"/>
+            <param name="blast_files" type="data" format="blast" help="blast-xml file"/>
+        </inputs>
+        <outputs>
+            <data format="txt" name="output" label="termHits.txt"/>
+        </outputs>
+        <tests>
+            <test>
+                <param name="check" value="holins"/>
+		<param name="custom_file" value="test-data/search.txt"/>
+		<param name="custom_txt" value="catalytic"/>
+		<param name="gbk_files" value="NC_008720-N4-NCBI.gb"/>
+		<param name="fa_files" value="NC_008720-N4-nucleotide.fasta"/>
+		<param name="gff3_files" value="NC_008720-N4-NCBI.gff3"/>
+		<param name="blast_files" value="Galaxy27-NR.blastxml.xml"/>
+                <output name="output" file="output-sample.txt"/>
+            </test>
+        </tests>
+    <help><![CDATA[
+INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, or a custom input via file or text box.
+OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term.
+Options : 
+- Endolysins: enzymes that attack one of the structural bonds of the peptidoglycan. The endolysin step requires the hole-forming function of the holins.
+- Holins and Anti-holins: small cytoplasmic membrane proteins that control the timing of lysis by forming a lethal membrane hole at a programmed time (programmed into the holin itself).
+    ]]></help>
+        <citations>
+            <citation type="bibtex">
+                @unpublished{galaxyTools,
+                author = {C. Ross},
+                title = {CPT Galaxy Tools},
+                year = {2020-},
+                note = {https://github.com/tamu-cpt/galaxy-tools/}
+                }
+            </citation>
+        </citations>
+</tool>
