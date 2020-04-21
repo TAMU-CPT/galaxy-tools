@@ -17,6 +17,7 @@ def validate_gbk(genbank_file=None):
     outStr = ""
 
     for record in records:
+        orderPairs = {}
         seenLocus = {}
         pairedRBS = {}
         for feature in record.features:
@@ -110,6 +111,7 @@ def validate_gbk(genbank_file=None):
                 errorCount += 1
                 continue
               else:
+                orderPairs[int(locus[locus.rfind("_") + 1:])] = feature
                 geneStart = feature.location.start
                 geneEnd = feature.location.end
             else:
@@ -136,6 +138,14 @@ def validate_gbk(genbank_file=None):
           if ((rbsStart > cdsStart and rbsStart < cdsEnd) or (cdsStart > rbsStart and cdsStart < rbsEnd)) and (rbsStart != -1 and cdsStart != -1):
               outStr += "Error: CDS and RBS overlap in " + record.id + " at locus_tag " + locus + '.\n'
               outStr += "\tCDS: [" + str(cdsStart + 1) + ", " + str(cdsEnd) + "] --- RBS: [" + str(rbsStart + 1) + ", " + str(rbsEnd) + "]\n"
+              errorCount += 1
+        for x in orderPairs.keys():
+          for y in orderPairs.keys():
+            if x == y:
+              continue
+            if x > y and (orderPairs[x].location.start < orderPairs[y].location.start or (orderPairs[x].location.end < orderPairs[y].location.end and orderPairs[x].location.start == orderPairs[y].location.start)):
+              outStr += "Error: Gene at locus_tag " + orderPairs[x].qualifiers['locus_tag'][0] + " comes before lower-numbered gene at locus_tag " + orderPairs[y].qualifiers['locus_tag'][0] + "\n"
+              outStr += "\t" + orderPairs[x].qualifiers['locus_tag'][0] + ": [" + str(orderPairs[x].location.start + 1) + ", " + str(orderPairs[x].location.end) + "] --- " + orderPairs[y].qualifiers['locus_tag'][0] + ": [" + str(orderPairs[y].location.start + 1) + ", " + str(orderPairs[y].location.end) + "]\n"
               errorCount += 1
         outStr = "QC for " + record.id + " finished with " + str(errorCount) + " errors and " + str(warningCount) + " warnings.\n\n" + outStr
     print(outStr)
