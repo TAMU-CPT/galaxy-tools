@@ -14,16 +14,20 @@ python $__tool_directory__/searchFile.py
     #end if
     #if $term_add.term_selector == "customtxt":
     --custom_txt "$custom_txt"
-    #elif $term_add.term_selector == "customfile":
+    #end if
+    #if $file_add.file_selector == "customfile":
     --custom_file "$custom_file"
     #end if
-    #if input_type.input_selector == "gff3file":
+    #if $input_gff3.gff3_selector == "gff3file":
     --gff3_files "$gff3_files"
-    #elif input_type.input_selector == "gbkfile":
+    #end if
+    #if $input_gbk.gbk_selector == "gbkfile":
     --gbk_files "$gbk_files"
-    #elif input_type.input_selector == "fafile":
+    #end if
+    #if $input_fa.fa_selector == "fafile":
     --fa_files "$fa_files"
-    #elif input_type.input_selector == "blastfile":
+    #end if
+    #if $input_blast.blast_selector == "blastfile":
     --blast_files "$blast_files"
     #end if
     --output $output
@@ -40,31 +44,47 @@ python $__tool_directory__/searchFile.py
             <conditional name="term_add">
                 <param name="term_selector" type="select" label="Choose if you'd like to add custom terms">
                     <option value="customtxt" selected="true">Custom Text</option>
-                    <option value="customfile" selected="false">Custom File</option>
                 </param>
                 <when value="customtxt">
                     <param name="custom_txt" label="Custom Text" type="text" help="Custom text box for search terms, must be separated by newline (enter)"/>
                 </when>
+            </conditional>
+            <conditional name="file_add">
+                <param name="file_selector" type="select" label="Choose if you'd like to upload a custom terms file">
+                    <option value="customfile" selected="false">Custom File</option>
+                </param>
                 <when value="customfile">
                     <param name="custom_file" label="Custom File" type="data" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
                 </when>
             </conditional>
-            <conditional name="input_type">
-                <param name="input_selector" type="select" label="Choose what type of Files you wish to analyze">
+            <conditional name="input_gff3">
+                <param name="gff3_selector" type="select" label="Choose if you would like to use a GFF3 File to Analyze">
                     <option value="gff3file" selected="false">GFF3 File</option>
-                    <option value="gbkfile" selected="false">Genbank File</option>
-                    <option value="fafile" selected="false">FASTA File</option>
-                    <option value="blastfile" selected="false">BLAST-xml File</option>
                 </param>
                 <when value="gff3file">
                     <param name="gff3_files" label="GFF3 Input" type="data" format="gff3" help="gff3 file"/>
                 </when>
+            </conditional>
+            <conditional name="input_gbk">
+                <param name="gbk_selector" type="select" label="Choose if you would like to use a Genbank File to Analyze">
+                    <option value="gbkfile" selected="false">Genbank File</option>
+                </param>
                 <when value="gbkfile">
                     <param name="gbk_files" label="Genbank Input" type="data" format="genbank" help="genbank file"/>
                 </when>
+            </conditional>
+            <conditional name="input_fa">
+                <param name="fa_selector" type="select" label="Choose if you would like to use a FASTA File to Analyze">
+                    <option value="fafile" selected="false">FASTA File</option>
+                </param>
                 <when value="fafile">
                     <param name="fa_files" label="FASTA Input" type="data" format="fasta" help="fasta file"/>
                 </when>
+            </conditional>
+            <conditional name="input_blast">
+                <param name="blast_selector" type="select" label="Choose if you would like to use a BLAST-xml File to Analyze">
+                    <option value="blastfile" selected="false">FASTA File</option>
+                </param>
                 <when value="blastfile">
                     <param name="blast_files" label="BLAST-xml Input" type="data" format="blast" help="blast-xml file"/>
                 </when>
