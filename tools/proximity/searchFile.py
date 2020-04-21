@@ -16,7 +16,9 @@ def dbaseTerms(terms):
     dbase_terms = []
     if terms:
         for term in terms:
-            dbase_terms.extend(db[term])
+            index_list = term.split(",")
+            for t in index_list:
+                dbase_terms.extend(db[t])
         return dbase_terms
     else:
         pass
