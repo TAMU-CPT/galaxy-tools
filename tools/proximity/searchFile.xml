@@ -52,7 +52,6 @@ python $__tool_directory__/searchFile.py
     Options : 
 - Endolysins: enzymes that attack one of the structural bonds of the peptidoglycan. The endolysin step requires the hole-forming function of the holins.
 - Holins and Anti-holins: small cytoplasmic membrane proteins that control the timing of lysis by forming a lethal membrane hole at a programmed time (programmed into the holin itself).
-
     ]]></help>
         <citations>
             <citation type="bibtex">
