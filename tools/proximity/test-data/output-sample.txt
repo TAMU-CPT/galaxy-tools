@@ -1,0 +1,23 @@
+
+==================== GBK Term Hits ====================
+
+type: CDS
+location: [58320:58653](-)
+qualifiers:
+    Key: codon_start, Value: ['1']
+    Key: db_xref, Value: ['GeneID:5075677']
+    Key: locus_tag, Value: ['EPNV4_gp63']
+    Key: product, Value: ['co-holin']
+    Key: protein_id, Value: ['YP_950541.1']
+    Key: transl_table, Value: ['11']
+    Key: translation, Value: ['MSHESVEVLLARMEERMKTLFENNARDAKSRQDLDDAVRNLQLSINKMDTRLENVEKSLAESAPTIEEFITIKHKVVGAGLFGKWVWAGAGIIIGILAAARREIFAWFAS']
+type: CDS
+location: [58072:58336](-)
+qualifiers:
+    Key: codon_start, Value: ['1']
+    Key: db_xref, Value: ['GeneID:5075686']
+    Key: locus_tag, Value: ['EPNV4_gp62']
+    Key: product, Value: ['pinholin']
+    Key: protein_id, Value: ['YP_950540.1']
+    Key: transl_table, Value: ['11']
+    Key: translation, Value: ['MVRKLTKHVEMVPNWKRCWKWASIQISTLAILFFSCVDVLSSSFSALPQHILKDIPHGNNIAIALFVLNIICRLVRLKPKEDWCGNK']
