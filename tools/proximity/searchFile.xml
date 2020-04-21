@@ -46,7 +46,7 @@ python $__tool_directory__/searchFile.py
                     <option value="customfile" selected="false">Custom File</option>
                 </param>
                 <when value="customtxt">
-                    <param name="custom_txt" label="Custom Text" optional="true" type="text" help="Custom text box for search terms, must be separated by newline (enter)"/>
+                    <param name="custom_txt" label="Custom Text" optional="true" type="text" area="true" help="Custom text box for search terms, must be separated by newline (enter)"/>
                 </when>
                 <when value="customfile">
                     <param name="custom_file" label="Custom File" optional="true" type="data" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
