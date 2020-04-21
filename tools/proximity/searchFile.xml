@@ -29,12 +29,12 @@ python $__tool_directory__/searchFile.py
                 <option value="CBDs" selected="true">C-terminal cell wall binding domains (CBDs)</option>
                 <option value="CBDs_accro" selected="true">CBDs acronyms</option>
             </param>
-            <param name="custom_txt" type="text" help="Custom text box for search terms, must be separated by newline (enter)"/>
-            <param name="custom_file" type="file" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
-            <param name="gff3_files" type="data" format="gff3" help="gff3 file"/>
-            <param name="gbk_files" type="data" format="genbank" help="genbank file"/>
-            <param name="fa_files" type="data" format="fasta" help="fasta file"/>
-            <param name="blast_files" type="data" format="blast" help="blast-xml file"/>
+            <param name="custom_txt" type="text" value=""  help="Custom text box for search terms, must be separated by newline (enter)"/>
+            <param name="custom_file" type="file" format="txt" value="" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
+            <param name="gff3_files" type="data" format="gff3" value=""  help="gff3 file"/>
+            <param name="gbk_files" type="data" format="genbank" value=""  help="genbank file"/>
+            <param name="fa_files" type="data" format="fasta" value=""  help="fasta file"/>
+            <param name="blast_files" type="data" format="blast" value=""  help="blast-xml file"/>
         </inputs>
         <outputs>
             <data format="txt" name="output" label="termHits.txt"/>
@@ -53,9 +53,12 @@ python $__tool_directory__/searchFile.py
         </tests>
     <help><![CDATA[
 INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, or a custom input via file or text box.
+
 OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term.
+
 Options : 
 - Endolysins: enzymes that attack one of the structural bonds of the peptidoglycan. The endolysin step requires the hole-forming function of the holins.
+
 - Holins and Anti-holins: small cytoplasmic membrane proteins that control the timing of lysis by forming a lethal membrane hole at a programmed time (programmed into the holin itself).
     ]]></help>
         <citations>
