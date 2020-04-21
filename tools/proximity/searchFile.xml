@@ -12,18 +12,18 @@ python $__tool_directory__/searchFile.py
     #if $check is not None:
     --dbaseTerms "$check"
     #end if
-    #if $term_add.term_selector == customtxt:
+    #if $term_add.term_selector == "customtxt":
     --custom_txt "$custom_txt"
-    #elif $term_add.term_selector == customfile:
+    #elif $term_add.term_selector == "customfile":
     --custom_file "$custom_file"
     #end if
-    #if input_type.input_selector == gff3file:
+    #if input_type.input_selector == "gff3file":
     --gff3_files "$gff3_files"
-    #elif input_type.input_selector == gbkfile:
+    #elif input_type.input_selector == "gbkfile":
     --gbk_files "$gbk_files"
-    #elif input_type.input_selector == fafile:
+    #elif input_type.input_selector == "fafile":
     --fa_files "$fa_files"
-    #elif input_type.input_selector == blastfile:
+    #elif input_type.input_selector == "blastfile":
     --blast_files "$blast_files"
     #end if
     --output $output
