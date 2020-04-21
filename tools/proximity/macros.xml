@@ -4,7 +4,6 @@
 		<requirements>
 			<requirement type="package" version="2.7">python</requirement>
 			<requirement type="package" version="1.67">biopython</requirement>
-            <requirement type="package">gffutils</requirement>
 			<yield/>
 		</requirements>
 	</xml>

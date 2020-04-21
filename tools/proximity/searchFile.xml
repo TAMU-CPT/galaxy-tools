@@ -1,8 +1,12 @@
 <tool id="edu.tamu.cpt.proximity.searchFile" name="Search File" version="1.0">
     <description>Queries a gff3, genbank, fasta, or blastxml file for a user defined set of terms</description>
     <macros>
-        <import>macros.xml</import>
+	    <import>macros.xml</import>
+	    <import>cpt-macros.xml</import>
     </macros>
+    <expand macro="requirements">
+	    <requirement type="package">gffutils</requirement>
+    </expand>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/searchFile.py
     #if $check is not None:
@@ -38,18 +42,19 @@ python $__tool_directory__/searchFile.py
         <tests>
             <test>
                 <param name="check" value="holins"/>
-                <param name="custom_file" value="test-data/search.txt"/>
-                <param name="custom_txt" value="catalytic"/>
-                <param name="gbk_files" value="/home/adminuser/research/Galaxy-Tools/tools/proximity/test-data/NC_008720-N4-NCBI.gb"/>
-                <output name="output" file="test-data/output-sample.txt"/>
+		<param name="custom_file" value="test-data/search.txt"/>
+		<param name="custom_txt" value="catalytic"/>
+		<param name="gbk_files" value="NC_008720-N4-NCBI.gb"/>
+		<param name="fa_files" value="NC_008720-N4-nucleotide.fasta"/>
+		<param name="gff3_files" value="NC_008720-N4-NCBI.gff3"/>
+		<param name="blast_files" value="Galaxy27-NR.blastxml.xml"/>
+                <output name="output" file="output-sample.txt"/>
             </test>
         </tests>
     <help><![CDATA[
-    INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, or a custom input via file or text box.
-
-    OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term.
-
-    Options : 
+INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, or a custom input via file or text box.
+OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term.
+Options : 
 - Endolysins: enzymes that attack one of the structural bonds of the peptidoglycan. The endolysin step requires the hole-forming function of the holins.
 - Holins and Anti-holins: small cytoplasmic membrane proteins that control the timing of lysis by forming a lethal membrane hole at a programmed time (programmed into the holin itself).
     ]]></help>
