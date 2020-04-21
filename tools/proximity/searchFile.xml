@@ -39,7 +39,7 @@ python $__tool_directory__/searchFile.py
             </param>
             <conditional name="term_add">
                 <param name="term_selector" type="select" label="Choose if you'd like to add custom terms">
-                    <option value="customtxt" selected="true">Custom Text</option>
+                    <option value="customtxt" selected="false">Custom Text</option>
                     <option value="customfile" selected="false">Custom File</option>
                 </param>
                 <when value="customtxt">
@@ -54,7 +54,7 @@ python $__tool_directory__/searchFile.py
                     <option value="gff3file" selected="false">GFF3 File</option>
                     <option value="gbkfile" selected="false">Genbank File</option>
                     <option value="fafile" selected="false">FASTA File</option>
-                    <option value="blastfile" selected="false">FASTA File</option>
+                    <option value="blastfile" selected="false">BLAST-xml File</option>
                 </param>
                 <when value="gff3file">
                     <param name="gff3_files" label="GFF3 Input" type="data" format="gff3" help="gff3 file"/>
