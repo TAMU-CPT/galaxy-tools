@@ -38,6 +38,8 @@ def userTerms(file,text):
     if file:
         terms = open(file.name).read().splitlines()
         user_terms.extend(terms)
+        for u_t in user_terms:
+            print(u_t)
     else:
         pass
     if text:
