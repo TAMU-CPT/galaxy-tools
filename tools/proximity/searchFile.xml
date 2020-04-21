@@ -14,7 +14,6 @@ python $__tool_directory__/searchFile.py
     #end if
     #if $term_add.term_selector == customtxt:
     --custom_txt "$custom_txt"
-    #end if
     #elif $term_add.term_selector == customfile:
     --custom_file "$custom_file"
     #end if
