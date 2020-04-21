@@ -40,7 +40,7 @@ python $__tool_directory__/searchFile.py
                 <param name="check" value="holins"/>
                 <param name="custom_file" value="test-data/search.txt"/>
                 <param name="custom_txt" value="catalytic"/>
-                <param name="gbk_files" value="($__tool_directory__)/test-data/NC_008720-N4-NCBI.gb"/>
+                <param name="gbk_files" value=$__tool_directory__"/test-data/NC_008720-N4-NCBI.gb"/>
                 <output name="output" file="test-data/output-sample.txt"/>
             </test>
         </tests>
