@@ -6,6 +6,7 @@ import gffutils # THIS IS REQUIREMENT
 from Bio.Blast import NCBIXML
 from Bio import SeqIO
 import re
+import os
 
 ####### TERM FUNCTIONS
 def dbaseTerms(terms):
@@ -221,6 +222,7 @@ def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
 
 
 if __name__ == "__main__":
+    print(os.getcwd())
     parser = argparse.ArgumentParser(description="Uses a selection of terms to query an input file for matching cases")
     parser.add_argument("--dbaseTerms",nargs="*",help="dbase terms to search") # will be a select option, based on KEY within the JSON dbase
     parser.add_argument("--custom_txt",nargs="*",help="custom user input terms")
