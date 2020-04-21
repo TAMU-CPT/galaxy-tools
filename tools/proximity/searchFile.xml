@@ -16,6 +16,8 @@ python $__tool_directory__/searchFile.py
     --custom_txt $custom_txt
     #elif $term_add.term_selector == "customfile":
     --custom_file $custom_file
+    #else:
+    #pass
     #end if
     #if $input_file.file_selector == "gff3file":
     --gff3_files $gff3_files
