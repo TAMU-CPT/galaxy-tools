@@ -13,18 +13,18 @@ python $__tool_directory__/searchFile.py
     --dbaseTerms "$check"
     #end if
     #if $term_add.term_selector == "customtxt":
-    --custom_txt "$custom_txt"
+    --custom_txt $custom_txt
     #elif $term_add.term_selector == "customfile":
-    --custom_file "$custom_file"
+    --custom_file $custom_file
     #end if
     #if $input_file.file_selector == "gff3file":
-    --gff3_files "$gff3_files"
+    --gff3_files $gff3_files
     #elif $input_file.file_selector == "gbkfile":
-    --gbk_files "$gbk_files"
+    --gbk_files $gbk_files
     #elif $input_file.file_selector == "fafile":
-    --fa_files "$fa_files"
+    --fa_files $fa_files
     #elif $input_file.file_selector == "blastfile":
-    --blast_files "$blast_files"
+    --blast_files $blast_files
     #end if
     --output $output
     ]]></command>
@@ -43,10 +43,10 @@ python $__tool_directory__/searchFile.py
                     <option value="customfile" selected="false">Custom File</option>
                 </param>
                 <when value="customtxt">
-                    <param name="custom_txt" label="Custom Text" type="text" help="Custom text box for search terms, must be separated by newline (enter)"/>
+                    <param name="custom_txt" label="Custom Text" optional="true" type="text" help="Custom text box for search terms, must be separated by newline (enter)"/>
                 </when>
                 <when value="customfile">
-                    <param name="custom_file" label="Custom File" type="data" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
+                    <param name="custom_file" label="Custom File" optional="true" type="data" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
                 </when>
             </conditional>
             <conditional name="input_file">
