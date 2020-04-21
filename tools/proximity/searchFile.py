@@ -22,7 +22,10 @@ def dbaseTerms(terms,galaxy=True):
         for term in terms:
             index_list = term.split(",")
             for t in index_list:
-                dbase_terms.extend(db[t])
+                if t != "None":
+                    dbase_terms.extend(db[t])
+                else:
+                    dbase_terms = []
         return dbase_terms
     else:
         pass
