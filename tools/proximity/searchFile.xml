@@ -12,28 +12,26 @@ python $__tool_directory__/searchFile.py
     #if $check is not None:
     --dbaseTerms "$check"
     #end if
-    #if $custom_txt is not None:
-    --custom_txt "$custom_txt"
+    #if $term_add.term_selector == "customtxt":
+    --custom_txt "$term_add.custom_txt"
+    #elif $term_add.term_selector == "customfile":
+    --custom_file "$term_add.custom_file"
+    #else:
+    #pass
     #end if
-    #if $custom_file is not None:
-    --custom_file "$custom_file"
-    #end if
-    #if $gff3_files is not None:
-    --gff3_files "$gff3_files"
-    #end if
-    #if $gbk_files is not None:
-    --gbk_files "$gbk_files"
-    #end if
-    #if $fa_files is not None:
-    --fa_files "$fa_files"
-    #end if
-    #if $blast_files is not None:
-    --blast_files "$blast_files"
+    #if $input_file.file_selector == "gff3file":
+    --gff3_files "$input_file.gff3_files"
+    #elif $input_file.file_selector == "gbkfile":
+    --gbk_files "$input_file.gbk_files"
+    #elif $input_file.file_selector == "fafile":
+    --fa_files "$input_file.fa_files"
+    #elif $input_file.file_selector == "blastfile":
+    --blast_files "$input_file.blast_files"
     #end if
     --output $output
     ]]></command>
         <inputs>
-            <param name="check" type="select" format="text" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database" display="checkboxes">
+            <param name="check" type="select" format="text" optional="true" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database" display="checkboxes">
                 <option value="endolysins" selected="true">Endolysins</option>
                 <option value="holins" selected="true">Holins and Anti-holins</option>
                 <option value="ECDs" selected="true">N-terminal enzymatic catalytic domains (ECDs)</option>
@@ -41,12 +39,39 @@ python $__tool_directory__/searchFile.py
                 <option value="CBDs" selected="true">C-terminal cell wall binding domains (CBDs)</option>
                 <option value="CBDs_accro" selected="true">CBDs acronyms</option>
             </param>
-            <param name="custom_txt" label="Custom Text" type="text" optional="true" help="Custom text box for search terms, must be separated by newline (enter)"/>
-            <param name="custom_file" label="Custom File" type="data" format="txt" optional="true" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
-            <param name="gff3_files" label="GFF3 Input" type="data" format="gff3" optional="true" help="gff3 file"/>
-            <param name="gbk_files" label="Genbank Input" type="data" format="genbank" optional="true" help="genbank file"/>
-            <param name="fa_files" label="FASTA Input" type="data" format="fasta" optional="true" help="fasta file"/>
-            <param name="blast_files" label="BLAST-xml Input" type="data" format="blast" optional="true" help="blast-xml file"/>
+            <conditional name="term_add">
+                <param name="term_selector" type="select" label="Choose if you'd like to add custom terms">
+                    <option value="nocustom" selected="false">No Custom Terms</option>
+                    <option value="customtxt" selected="false">Custom Text</option>
+                    <option value="customfile" selected="false">Custom File</option>
+                </param>
+                <when value="customtxt">
+                    <param name="custom_txt" label="Custom Text" optional="true" type="text" area="true" help="Custom text box for search terms, must be separated by newline (enter)"/>
+                </when>
+                <when value="customfile">
+                    <param name="custom_file" label="Custom File" optional="true" type="data" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
+                </when>
+            </conditional>
+            <conditional name="input_file">
+                <param name="file_selector" type="select" label="Choose if you would like to use a GFF3 File to Analyze">
+                    <option value="gff3file" selected="false">GFF3 File</option>
+                    <option value="gbkfile" selected="false">Genbank File</option>
+                    <option value="fafile" selected="false">FASTA File</option>
+                    <option value="blastfile" selected="false">BLAST-xml File</option>
+                </param>
+                <when value="gff3file">
+                    <param name="gff3_files" label="GFF3 Input" type="data" format="gff3" help="gff3 file"/>
+                </when>
+                <when value="gbkfile">
+                    <param name="gbk_files" label="Genbank Input" type="data" format="genbank" help="genbank file"/>
+                </when>
+                <when value="fafile">
+                    <param name="fa_files" label="FASTA Input" type="data" format="fasta" help="fasta file"/>
+                </when>
+                <when value="blastfile">
+                    <param name="blast_files" label="BLAST-xml Input" type="data" format="xml" help="blast-xml file"/>
+                </when>
+            </conditional>
         </inputs>
         <outputs>
             <data format="txt" name="output" label="termHits.txt"/>
@@ -54,17 +79,17 @@ python $__tool_directory__/searchFile.py
         <tests>
             <test>
                 <param name="check" value="holins"/>
-		<param name="custom_file" value="test-data/search.txt"/>
-		<param name="custom_txt" value="catalytic"/>
-		<param name="gbk_files" value="NC_008720-N4-NCBI.gb"/>
-		<param name="fa_files" value="NC_008720-N4-nucleotide.fasta"/>
-		<param name="gff3_files" value="NC_008720-N4-NCBI.gff3"/>
-		<param name="blast_files" value="Galaxy27-NR.blastxml.xml"/>
+                <param name="custom_file" value="test-data/search.txt"/>
+                <param name="custom_txt" value="catalytic"/>
+                <param name="gbk_files" value="NC_008720-N4-NCBI.gb"/>
+                <param name="fa_files" value="NC_008720-N4-nucleotide.fasta"/>
+                <param name="gff3_files" value="NC_008720-N4-NCBI.gff3"/>
+                <param name="blast_files" value="Galaxy27-NR.blastxml.xml"/>
                 <output name="output" file="output-sample.txt"/>
             </test>
         </tests>
     <help><![CDATA[
-INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, or a custom input via file or text box.
+INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, and/or a custom input via file or text box.
 
 OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term.
 

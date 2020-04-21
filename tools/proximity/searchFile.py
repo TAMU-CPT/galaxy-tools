@@ -6,11 +6,15 @@ import gffutils # THIS IS REQUIREMENT
 from Bio.Blast import NCBIXML
 from Bio import SeqIO
 import re
+import os
 
 ####### TERM FUNCTIONS
-def dbaseTerms(terms):
+def dbaseTerms(terms,galaxy=True):
     """ Index into dictionary object and retrieve all desired terms """
-    db_path = "data/lysis-family-expanded.json"
+    if galaxy:
+        db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-expanded.json"
+    else:
+        db_path = "data/lysis-family-expanded.json"
     db = ej.explodeJSON(db_path)
     db = db.readJSON()
     dbase_terms = []
@@ -18,7 +22,10 @@ def dbaseTerms(terms):
         for term in terms:
             index_list = term.split(",")
             for t in index_list:
-                dbase_terms.extend(db[t])
+                if t != "None":
+                    dbase_terms.extend(db[t])
+                else:
+                    dbase_terms = []
         return dbase_terms
     else:
         pass
@@ -31,6 +38,8 @@ def userTerms(file,text):
     if file:
         terms = open(file.name).read().splitlines()
         user_terms.extend(terms)
+        for u_t in user_terms:
+            print(u_t)
     else:
         pass
     if text:
@@ -221,6 +230,7 @@ def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
 
 
 if __name__ == "__main__":
+    print(os.getcwd())
     parser = argparse.ArgumentParser(description="Uses a selection of terms to query an input file for matching cases")
     parser.add_argument("--dbaseTerms",nargs="*",help="dbase terms to search") # will be a select option, based on KEY within the JSON dbase
     parser.add_argument("--custom_txt",nargs="*",help="custom user input terms")
@@ -234,7 +244,7 @@ if __name__ == "__main__":
 
     ############ STEP I
     ##### Determine user's terms to query
-    dbase_terms = dbaseTerms(terms=args.dbaseTerms)
+    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=True)
     user_terms = userTerms(file=args.custom_file,text=args.custom_txt)
     glued_terms = glueTerms(dbase_terms=dbase_terms, user_terms=user_terms)
 
