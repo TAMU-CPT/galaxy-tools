@@ -41,6 +41,7 @@ python $__tool_directory__/searchFile.py
             </param>
             <conditional name="term_add">
                 <param name="term_selector" type="select" label="Choose if you'd like to add custom terms">
+                    <option value="nocustom" selected="false">No Custom Terms</option>
                     <option value="customtxt" selected="false">Custom Text</option>
                     <option value="customfile" selected="false">Custom File</option>
                 </param>
