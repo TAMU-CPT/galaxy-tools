@@ -13,22 +13,22 @@ python $__tool_directory__/searchFile.py
     --dbaseTerms "$check"
     #end if
     #if $custom_txt is not None:
-    --custom_txts $custom_txt
+    --custom_txts "$custom_txt"
     #end if
     #if $custom_file is not None:
-    --custom_file $custom_file
+    --custom_file "$custom_file"
     #end if
     #if $gff3_files is not None:
-    --gff3_files $gff3_files
+    --gff3_files "$gff3_files"
     #end if
     #if $gbk_files is not None:
-    --gbk_files $gbk_files
+    --gbk_files "$gbk_files"
     #end if
     #if $fa_files is not None:
-    --fa_files $fa_files
+    --fa_files "$fa_files"
     #end if
     #if $blast_files is not None:
-    --blast_files $blast_files
+    --blast_files "$blast_files"
     #end if
     --output $output
     ]]></command>
