@@ -42,7 +42,7 @@ python $__tool_directory__/searchFile.py
                 <option value="CBDs_accro" selected="true">CBDs acronyms</option>
             </param>
             <param name="custom_txt" label="Custom Text" type="text" optional="true" help="Custom text box for search terms, must be separated by newline (enter)"/>
-            <param name="custom_file" label="Custom File" type="file" format="txt" optional="true" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
+            <param name="custom_file" label="Custom File" type="data" format="txt" optional="true" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
             <param name="gff3_files" label="GFF3 Input" type="data" format="gff3" optional="true" help="gff3 file"/>
             <param name="gbk_files" label="Genbank Input" type="data" format="genbank" optional="true" help="genbank file"/>
             <param name="fa_files" label="FASTA Input" type="data" format="fasta" optional="true" help="fasta file"/>
