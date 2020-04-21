@@ -13,20 +13,20 @@ python $__tool_directory__/searchFile.py
     --dbaseTerms "$check"
     #end if
     #if $term_add.term_selector == "customtxt":
-    --custom_txt $custom_txt
+    --custom_txt "$term_add.custom_txt"
     #elif $term_add.term_selector == "customfile":
-    --custom_file $custom_file
+    --custom_file "$term_add.custom_file"
     #else:
     #pass
     #end if
     #if $input_file.file_selector == "gff3file":
-    --gff3_files $gff3_files
+    --gff3_files "$input_file.gff3_files"
     #elif $input_file.file_selector == "gbkfile":
-    --gbk_files $gbk_files
+    --gbk_files "$input_file.gbk_files"
     #elif $input_file.file_selector == "fafile":
-    --fa_files $fa_files
+    --fa_files "$input_file.fa_files"
     #elif $input_file.file_selector == "blastfile":
-    --blast_files $blast_files
+    --blast_files "$input_file.blast_files"
     #end if
     --output $output
     ]]></command>
