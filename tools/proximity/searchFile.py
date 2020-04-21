@@ -9,9 +9,12 @@ import re
 import os
 
 ####### TERM FUNCTIONS
-def dbaseTerms(terms):
+def dbaseTerms(terms,galaxy=True):
     """ Index into dictionary object and retrieve all desired terms """
-    db_path = "data/lysis-family-expanded.json"
+    if galaxy:
+        db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-expanded.json"
+    else:
+        db_path = "data/lysis-family-expanded.json"
     db = ej.explodeJSON(db_path)
     db = db.readJSON()
     dbase_terms = []
@@ -236,7 +239,7 @@ if __name__ == "__main__":
 
     ############ STEP I
     ##### Determine user's terms to query
-    dbase_terms = dbaseTerms(terms=args.dbaseTerms)
+    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=True)
     user_terms = userTerms(file=args.custom_file,text=args.custom_txt)
     glued_terms = glueTerms(dbase_terms=dbase_terms, user_terms=user_terms)
 
