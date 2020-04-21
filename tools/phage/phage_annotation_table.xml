@@ -23,10 +23,11 @@ $gff3_data
     <inputs>
         <expand macro="gff3_input" />
         <expand macro="genome_selector" />
-        <param label="Extra sub-feature types to include (Comma-separated, Will always include gene)" name="extraTypes" type="text" value =""/>
+        <param label="Extra sub-feature types to include (Comma-separated, Will always include gene)" optional="True" name="extraTypes" type="text" value =""/>
         <param label="Columns" type="select" name="cols" multiple="True">
             <option value="rid" selected="true">Record ID</option>
             <option value="id" selected="true">ID</option>
+            <option value="type" selected="true">Type</option>
             <option value="name" selected="true">Name</option>
 
             <option value="location" selected="true">Location</option>
