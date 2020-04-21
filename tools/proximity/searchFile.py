@@ -223,12 +223,12 @@ def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Uses a selection of terms to query an input file for matching cases")
     parser.add_argument("--dbaseTerms",nargs="*",help="dbase terms to search") # will be a select option, based on KEY within the JSON dbase
-    parser.add_argument("--custom_txt",nargs="*",default=None,help="custom user input terms")
-    parser.add_argument("--custom_file",type=argparse.FileType("r"),default=None,help="custom new line separated search term file")
-    parser.add_argument("--gff3_files",type=argparse.FileType("r"),nargs="*",default=None,help="GFF3 File(s)")
-    parser.add_argument("--gbk_files",type=argparse.FileType("r"),nargs="*",default=None,help="GBK File(s)")
-    parser.add_argument("--fa_files",type=argparse.FileType("r"),nargs="*",default=None,help="FASTA File(s)")
-    parser.add_argument("--blast_files",type=argparse.FileType("r"),nargs="*",default=None,help="BLAST.xml File(s)")
+    parser.add_argument("--custom_txt",nargs="*",help="custom user input terms")
+    parser.add_argument("--custom_file",type=argparse.FileType("r"),help="custom new line separated search term file")
+    parser.add_argument("--gff3_files",type=argparse.FileType("r"),nargs="*",help="GFF3 File(s)")
+    parser.add_argument("--gbk_files",type=argparse.FileType("r"),nargs="*",help="GBK File(s)")
+    parser.add_argument("--fa_files",type=argparse.FileType("r"),nargs="*",help="FASTA File(s)")
+    parser.add_argument("--blast_files",type=argparse.FileType("r"),nargs="*",help="BLAST.xml File(s)")
     parser.add_argument("--output",type=argparse.FileType("w"),default="termHits.txt")
     args = parser.parse_args()
 
