@@ -12,9 +12,9 @@ import os
 def dbaseTerms(terms,galaxy=True):
     """ Index into dictionary object and retrieve all desired terms """
     if galaxy:
-        db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-expanded.json"
+        db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-expanded_culled.json"
     else:
-        db_path = "data/lysis-family-expanded.json"
+        db_path = "data/lysis-family-expanded_culled.json"
     db = ej.explodeJSON(db_path)
     db = db.readJSON()
     dbase_terms = []
@@ -121,6 +121,7 @@ def readGFF3(files,search_list):
 def readGBK(files,search_list):
     if files:
         for idx, file in enumerate(files):
+
             if idx == 0:
                 print("Parsing - "+file.name)
                 record = SeqIO.read(file.name, "genbank")
@@ -134,6 +135,7 @@ def readGBK(files,search_list):
                 for feature in record.features:
                     gbk_matches.extend(searchInput(str(feature),search_list=search_list))
                 gbk_matches = list(set(gbk_matches))
+
         return gbk_matches
     else:
         pass
@@ -165,17 +167,19 @@ def readBLAST(files,search_list):
                 print("Parsing - "+file.name)
                 record = NCBIXML.parse(open(file.name))
                 blast_matches = []
-                for feature in record:
-                    #print(feature.descriptions)
+                for feature in record:                    
                     for desc in feature.descriptions:
-                        blast_matches.extend(searchInput(str(desc),search_list=search_list))
+                        pretty = prettifyXML(str(desc))
+                        for each_ret in pretty:
+                            blast_matches.extend(searchInput(each_ret,search_list=search_list))
                 blast_matches = list(set(blast_matches))
             else:
                 print("Parsing - "+file.name)
                 record = NCBIXML.parse(open(file.name))
                 for feature in record:
                     for desc in feature.descriptions:
-                        blast_matches.extend(searchInput(str(desc),search_list=search_list))
+                        pretty = prettifyXML(str(desc))
+                        blast_matches.extend(searchInput(each_ret,search_list=search_list))
                 blast_matches = list(set(blast_matches))
             return blast_matches
     else:
@@ -196,6 +200,13 @@ def searchInput(input, search_list):
             continue
     return list(set(output))
 
+######## prettify-XML function
+def prettifyXML(input):
+    """ prettifies a string input from a BLAST-xml """
+    s = input
+    split = s.split(">")
+
+    return split
 
 ########## Output File Writer
 def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):

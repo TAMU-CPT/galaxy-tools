@@ -19,15 +19,38 @@ python $__tool_directory__/searchFile.py
     #else:
     #pass
     #end if
-    #if $input_file.file_selector == "gff3file":
-    --gff3_files "$input_file.gff3_files"
-    #elif $input_file.file_selector == "gbkfile":
-    --gbk_files "$input_file.gbk_files"
-    #elif $input_file.file_selector == "fafile":
-    --fa_files "$input_file.fa_files"
-    #elif $input_file.file_selector == "blastfile":
-    --blast_files "$input_file.blast_files"
-    #end if
+    #if $gff3_files
+        #for $gff_file in $gff_files
+            $if $gff_file
+                --gff3_files $gff_file
+            #end if
+        #end for
+    #else
+        echo "No gff3 selected"
+    #if $gbk_files
+        #for $gbk_file in $gbk_files
+            #if $gbk_file
+                --gbk_files $gbk_file
+            #end if
+        #end for
+    #else
+        echo "No gbk selected"
+    #if $fa_files
+        #for $fa_file in $fa_files
+            #if $fa_file
+                --fa_files $fa_file
+            #end if
+        #end for
+    #else
+        echo "No fasta selected"
+    #if $blast_files
+        #for $blast_file in $blast_files
+            #if $blast_file
+                --blast_files $blast_file
+            #end if
+        #end for
+    #else
+        echo "No blast-xml file selected"
     --output $output
     ]]></command>
         <inputs>
@@ -52,26 +75,11 @@ python $__tool_directory__/searchFile.py
                     <param name="custom_file" label="Custom File" optional="true" type="data" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
                 </when>
             </conditional>
-            <conditional name="input_file">
-                <param name="file_selector" type="select" label="Choose if you would like to use a GFF3 File to Analyze">
-                    <option value="gff3file" selected="false">GFF3 File</option>
-                    <option value="gbkfile" selected="false">Genbank File</option>
-                    <option value="fafile" selected="false">FASTA File</option>
-                    <option value="blastfile" selected="false">BLAST-xml File</option>
-                </param>
-                <when value="gff3file">
-                    <param name="gff3_files" label="GFF3 Input" type="data" format="gff3" help="gff3 file"/>
-                </when>
-                <when value="gbkfile">
-                    <param name="gbk_files" label="Genbank Input" type="data" format="genbank" help="genbank file"/>
-                </when>
-                <when value="fafile">
-                    <param name="fa_files" label="FASTA Input" type="data" format="fasta" help="fasta file"/>
-                </when>
-                <when value="blastfile">
-                    <param name="blast_files" label="BLAST-xml Input" type="data" format="xml" help="blast-xml file"/>
-                </when>
-            </conditional>
+                <param name="gff3_files" label="GFF3 Input" optional="true" multiple="true" type="data" format="gff3" help="gff3 file"/>
+                <param name="gbk_files" label="Genbank Input" optional="true" multiple="true" type="data" format="genbank" help="genbank file"/>
+                <param name="fa_files" label="FASTA Input" optional="true" multiple="true" type="data" format="fasta" help="fasta file"/>
+                <param name="blast_files" label="BLAST-xml Input" optional="true" multiple="true" type="data" format="xml" help="blast-xml file"/>
+
         </inputs>
         <outputs>
             <data format="txt" name="output" label="termHits.txt"/>
