@@ -19,26 +19,36 @@ python $__tool_directory__/searchFile.py
     #else:
     #pass
     #end if
-    #if "$intput_files.file_selector.file_select" == "gff3selection":
-        #for "$gff_file" in "$file_selector.file_select.gff3_files":
-                --gff3_files "$gff_file"
-        #end for
-    #end if
-    #if "$intput_files.file_selector.file_select" == "gbkselection":
-        #for "$gbk_file" in "$file_selector.file_select.gbk_files":
-                --gbk_files "$gbk_file"
-        #end for
-    #end if
-    #if "$intput_files.file_selector.file_select" == "faselection":
-        #for "$fa_file" in "$file_selector.file_select.fa_files":
-                --fa_files "$fa_file"
-        #end for
-    #end if
-    #if "$intput_files.file_selector.file_select" == "blastselection"::
-        #for "$blast_file" in "$file_selector.file_select.blast_files":
-                --blast_files "$blast_file"
-        #end for
-    #end if
+    #for "$input_file" in "$input_files":
+        #if "$intput_file.file_selector.file_select" == "gff3selection":
+            #for "$gff3_file" in "$file_selector.file_select.gff3_files":
+                #if gff3_file:
+                    --gff3_files "$gff3_file"
+                #end if
+            #end for
+        #end if
+        #if "$intput_file.file_selector.file_select" == "gbkselection":
+            #for "$gbk_file" in "$file_selector.file_select.gbk_files":
+                #if "gbk_file":
+                    --gbk_files "$gbk_file"
+                #end if
+            #end for
+        #end if
+        #if "$intput_file.file_selector.file_select" == "faselection":
+            #for "$fa_file" in "$file_selector.file_select.fa_files":
+                #if "$fa_file":
+                    --fa_files "$fa_file"
+                #end if
+            #end for
+        #end if
+        #if "$intput_file.file_selector.file_select" == "blastselection"::
+            #for "$blast_file" in "$file_selector.file_select.blast_files":
+                #if "$blast_file":
+                    --blast_files "$blast_file"
+                #end if
+            #end for
+        #end if
+    #end for
     --output $output
     ]]></command>
         <inputs>
@@ -72,16 +82,16 @@ python $__tool_directory__/searchFile.py
                         <option value="blastselection" selected="false">BLAST-XML</option>
                     </param>
                     <when value="gff3selection">
-                        <param name="gff3_files" label="GFF3 Input" optional="true" multiple="true" type="data" format="gff3" help="gff3 file"/>
+                        <param name="gff3_files" label="GFF3 Input" optional="true" multiple="true" type="data" format="gff3"/>
                     </when>
                     <when value="gbkselection">
-                        <param name="gbk_files" label="Genbank Input" optional="true" multiple="true" type="data" format="genbank" help="genbank file"/>
+                        <param name="gbk_files" label="Genbank Input" optional="true" multiple="true" type="data" format="genbank"/>
                     </when>
                     <when value="faselection">
-                        <param name="fa_files" label="FASTA Input" optional="true" multiple="true" type="data" format="fasta" help="fasta file"/>
+                        <param name="fa_files" label="FASTA Input" optional="true" multiple="true" type="data" format="fasta"/>
                     </when>
                     <when value="blastselection">
-                        <param name="blast_files" label="BLAST-xml Input" optional="true" multiple="true" type="data" format="xml" help="blast-xml file"/>
+                        <param name="blast_files" label="BLAST-xml Input" optional="true" multiple="true" type="data" format="xml"/>
                     </when>
                 </conditional>
             </repeat>
