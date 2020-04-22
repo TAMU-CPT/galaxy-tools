@@ -19,34 +19,34 @@ python $__tool_directory__/searchFile.py
     #else:
     #pass
     #end if
-        #if "$input_files.file_selector.file_select" == "gff3selection":
-            #for $gff3_file in "$input_files.file_selector.file_select.gff3_files":
-                #if $gff3_file:
-                    --gff3_files $gff3_file
-                #end if
-            #end for
-        #end if
-        #if "$input_files.file_selector.file_select" == "gbkselection":
-            #for $gbk_file in "$file_selector.file_select.gbk_files":
-                #if "$gbk_file":
-                    --gbk_files "$gbk_file"
-                #end if
-            #end for
-        #end if
-        #if "$input_files.file_selector.file_select" == "faselection":
-            #for $fa_file in "$file_selector.file_select.fa_files":
-                #if "$fa_file":
-                    --fa_files "$fa_file"
-                #end if
-            #end for
-        #end if
-        #if "$input_files.file_selector.file_select" == "blastselection":
-            #for $blast_file in "$file_selector.file_select.blast_files":
-                #if "$blast_file":
-                    --blast_files "$blast_file"
-                #end if
-            #end for
-        #end if
+    #if "$input_files.file_selector.file_select" == "gff3selection":
+        #for $gff3_file in "$input_files.file_selector.file_select.gff3selection":
+            #if $gff3_file:
+                --gff3_files $gff3_file
+            #end if
+        #end for
+    #end if
+    #if "$input_files.file_selector.file_select" == "gbkselection":
+        #for $gbk_file in "$file_selector.file_select.gbk_files":
+            #if "$gbk_file":
+                --gbk_files "$gbk_file"
+            #end if
+        #end for
+    #end if
+    #if "$input_files.file_selector.file_select" == "faselection":
+        #for $fa_file in "$file_selector.file_select.fa_files":
+            #if "$fa_file":
+                --fa_files "$fa_file"
+            #end if
+        #end for
+    #end if
+    #if "$input_files.file_selector.file_select" == "blastselection":
+        #for $blast_file in "$file_selector.file_select.blast_files":
+            #if "$blast_file":
+                --blast_files "$blast_file"
+            #end if
+        #end for
+    #end if
     --output $output
     ]]></command>
         <inputs>
