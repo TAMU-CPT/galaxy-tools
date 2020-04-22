@@ -22,36 +22,36 @@ python $__tool_directory__/searchFile.py
     #if $gff3_files:
         #for "$gff_file" in "$gff3_files":
             $if "$gff_file":
-                --gff3_files "$gff_file";
-            #end if
-        #end for
+                --gff3_files "$gff_file"
+            #end for
+        #end if
     #else
         echo "No gff3 selected"
     #end if
     #if "$gbk_files":
         #for "$gbk_file" in "$gbk_files":
             #if "$gbk_file":
-                --gbk_files "$gbk_file";
-            #end if
-        #end for
+                --gbk_files "$gbk_file"
+            #end for
+        #end if
     #else
         echo "No gbk selected"
     #end if
     #if "$fa_files":
         #for "$fa_file" in "$fa_files":
             #if "$fa_file":
-                --fa_files "$fa_file";
-            #end if
-        #end for
+                --fa_files "$fa_file"
+            #end for
+        #end if
     #else
         echo "No fasta selected"
     #end if
     #if "$blast_files":
         #for "$blast_file" in "$blast_files":
             #if "$blast_file":
-                --blast_files "$blast_file";
-            #end if
-        #end for
+                --blast_files "$blast_file"
+            #end for
+        #end if
     #else
         echo "No blast-xml file selected"
     #end if
