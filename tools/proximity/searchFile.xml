@@ -25,19 +25,17 @@ python $__tool_directory__/searchFile.py
                 "${gff3_file}" #end for
         #end if
         #if "$input_select.file_selector.file_select" == "gbkselection":
-            #for $gbk_file in $input_select.file_selector.gbk_files:
-                    --gbk_files "${gbk_file}"
+            --gbk_files #for $gbk_file in $input_select.file_selector.gbk_files:
+                "${gbk_file}" #end for
             #end for
         #end if
         #if "$input_select.file_selector.file_select" == "faselection":
-            #for $fa_file in "$file_selector.fa_files":
-                    --fa_files "$fa_file"
-            #end for
+            --fa_files #for $fa_file in $input_select.file_selector.fa_files:
+                "${fa_file}" #end for
         #end if
         #if "$input_select.file_selector.file_select" == "blastselection":
-            #for $blast_file in "$file_selector.blast_files":
-                    --blast_files "$blast_file"
-            #end for
+            --blast_files #for $blast_file in $input_select.file_selector.blast_files:
+                "${blast_file}" #end for
         #end if
     #end for
     --output $output
