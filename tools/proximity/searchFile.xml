@@ -27,7 +27,6 @@ python $__tool_directory__/searchFile.py
         #if $input_select.file_selector.file_select == "gbkselection":
             --gbk_files #for $gbk_file in $input_select.file_selector.gbk_files:
                 "${gbk_file}" #end for
-            #end for
         #end if
         #if $input_select.file_selector.file_select == "faselection":
             --fa_files #for $fa_file in $input_select.file_selector.fa_files:
