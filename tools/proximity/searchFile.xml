@@ -28,7 +28,7 @@ python $__tool_directory__/searchFile.py
     #else:
     #pass
     #end if
-    #if $intput_files.file_selector.file_select" == "gbkselection":
+    #if "$intput_files.file_selector.file_select" == "gbkselection":
         #for "$gbk_file" in "$file_selector.file_select.gbk_files":
             #if "$gbk_file":
                 --gbk_files "$gbk_file"
@@ -37,7 +37,7 @@ python $__tool_directory__/searchFile.py
     #else:
     #pass
     #end if
-    #if $intput_files.file_selector.file_select" == "faselection":
+    #if "$intput_files.file_selector.file_select" == "faselection":
         #for "$fa_file" in "$file_selector.file_select.fa_files":
             #if "$fa_file":
                 --fa_files "$fa_file"
@@ -46,7 +46,7 @@ python $__tool_directory__/searchFile.py
     #else:
     #pass
     #end if
-    #if $intput_files.file_selector.file_select" == "blastselection"::
+    #if "$intput_files.file_selector.file_select" == "blastselection"::
         #for "$blast_file" in "$file_selector.file_select.blast_files":
             #if "$blast_file":
                 --blast_files "$blast_file"
