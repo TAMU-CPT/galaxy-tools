@@ -20,9 +20,9 @@ python $__tool_directory__/searchFile.py
     #pass
     #end if
     #if $input_files.file_selector.file_select == "gff3selection":
-        #for $gff3_file in $input_files.file_selector.file_select.gff3selection:
+        #for $gff3_file in "$input_files.file_selector.file_select.gff3selection":
             #if $gff3_file:
-                --gff3_files $gff3_file
+                --gff3_files "$gff3_file"
             #end if
         #end for
     #end if
