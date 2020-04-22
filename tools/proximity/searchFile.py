@@ -127,15 +127,26 @@ def readGBK(files,search_list):
                 record = SeqIO.read(file.name, "genbank")
                 gbk_matches = []
                 for feature in record.features:
-                    gbk_matches.extend(searchInput(str(feature),search_list=search_list))
+                    try:
+                        if searchInput(str(feature.qualifiers["product"]),search_list=search_list) or searchInput(str(feature.qualifiers["note"]),search_list=search_list) or searchInput(str(feature.qualifiers["dbxref"]),search_list=search_list):
+                            gbk_matches.extend([str(feature)])
+                        else:
+                            continue
+                    except KeyError:
+                        continue
                 gbk_matches = list(set(gbk_matches))
             else:
                 print("Parsing - "+file.name)
                 record = SeqIO.read(file.name, "genbank")
                 for feature in record.features:
-                    gbk_matches.extend(searchInput(str(feature),search_list=search_list))
+                    try:
+                        if searchInput(str(feature.qualifiers["product"]),search_list=search_list) or searchInput(str(feature.qualifiers["note"]),search_list=search_list) or searchInput(str(feature.qualifiers["dbxref"]),search_list=search_list):
+                            gbk_matches.extend([str(feature)])
+                        else:
+                            continue
+                    except KeyError:
+                        continue
                 gbk_matches = list(set(gbk_matches))
-
         return gbk_matches
     else:
         pass
@@ -165,21 +176,21 @@ def readBLAST(files,search_list):
         for idx, file in enumerate(files):
             if idx == 0:
                 print("Parsing - "+file.name)
-                record = NCBIXML.parse(open(file.name))
+                blast_records = NCBIXML.parse(open(file.name))
                 blast_matches = []
-                for feature in record:                    
-                    for desc in feature.descriptions:
+                for blast_record in blast_records:
+                    for desc in blast_record.descriptions:
                         pretty = prettifyXML(str(desc))
                         for each_ret in pretty:
-                            blast_matches.extend(searchInput(each_ret,search_list=search_list))
+                            blast_matches.extend(searchInput(each_ret,search_list=search_list,blast=True,q_id=blast_record.query))
                 blast_matches = list(set(blast_matches))
             else:
                 print("Parsing - "+file.name)
-                record = NCBIXML.parse(open(file.name))
-                for feature in record:
-                    for desc in feature.descriptions:
+                blast_records = NCBIXML.parse(open(file.name))
+                for blast_record in blast_records:
+                    for desc in blast_record.descriptions:
                         pretty = prettifyXML(str(desc))
-                        blast_matches.extend(searchInput(each_ret,search_list=search_list))
+                        blast_matches.extend(searchInput(each_ret,search_list=search_list,blast=True,q_id=blast_record.query))
                 blast_matches = list(set(blast_matches))
             return blast_matches
     else:
@@ -187,17 +198,24 @@ def readBLAST(files,search_list):
 
 
 ######## SEARCH FILE FUNCTIONS
-def searchInput(input, search_list):
+def searchInput(input, search_list,blast=False,q_id=None):
     """ Takes an input search string, and returns uniques of passing """
     output = []
     for search_term in search_list:
+        if blast:
+            if re.search(re.escape(search_term), input, flags=re.IGNORECASE):
+                add_query = "QueryID: "+str(q_id)+"\nSearchQuery: "+search_term+"\nMatch: "+input+"\n"
+                output.extend([add_query])
+            else:
+                continue
         #print(search_term)
         #st = r"\b"+search_term+r"\b"
-        if re.search(re.escape(search_term), input,flags=re.IGNORECASE):
-            #print(search_term+" -> was found")
-            output.extend([input])
         else:
-            continue
+            if re.search(re.escape(search_term), input,flags=re.IGNORECASE):
+                #print(search_term+" -> was found")
+                output.extend([input])
+            else:
+                continue
     return list(set(output))
 
 ######## prettify-XML function
@@ -255,7 +273,7 @@ if __name__ == "__main__":
 
     ############ STEP I
     ##### Determine user's terms to query
-    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=True)
+    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=False)
     user_terms = userTerms(file=args.custom_file,text=args.custom_txt)
     glued_terms = glueTerms(dbase_terms=dbase_terms, user_terms=user_terms)
 
