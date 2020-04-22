@@ -21,7 +21,7 @@ python $__tool_directory__/searchFile.py
     #end if
     #for $input_select in $input_files:
         #if $input_select.file_selector.file_select == "gff3selection":
-            #for $gff3_file in $file_select.gff3_files:
+            #for $gff3_file in $input_select.file_selector.file_select.gff3_files:
                     --gff3_files "$gff3_file"
             #end for
         #end if
