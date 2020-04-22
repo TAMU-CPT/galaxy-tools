@@ -21,13 +21,12 @@ python $__tool_directory__/searchFile.py
     #end if
     #for $input_select in $input_files:
         #if $input_select.file_selector.file_select == "gff3selection":
-            #for $gff3_file in $input_select.file_selector.gff3_files:
-                    --gff3_files "${gff3_file}"
-            #end for
+            --gff3_files #for $gff3_file in $input_select.file_selector.gff3_files:
+                "${gff3_file}" #end for
         #end if
         #if "$input_select.file_selector.file_select" == "gbkselection":
-            #for $gbk_file in "$file_selector.gbk_files":
-                    --gbk_files "$file_selector.gbk_file"
+            #for $gbk_file in $input_select.file_selector.gbk_files:
+                    --gbk_files "${gbk_file}"
             #end for
         #end if
         #if "$input_select.file_selector.file_select" == "faselection":
