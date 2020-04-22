@@ -17,8 +17,15 @@
 ## `searchFile.py`
 * Script that searches a multitude of filetypes, and multiple at a time, and queries the file(s) for terms selected by the user.
 
+## `cleanDB.py`
+* Script that finds redudancy, and other issues, with the `...expanded.json` output and resolves said issues.
+
 # `/data`
 * Check README of this directory to see details on the `.txt` and `.json` files.
+* Order of scripts to generate `lysis-family-expanded.json` (this is the dbase used in query scripts/galaxy tools)
+    * `generateLysisFamily.py`
+    * `goQuery.py` + curate results --- _then_ ---> `goSynonymAdd.py`
+    * I don't feel like the list was appropriately parsed down, especially during the merger. Thus run the output json from the above through `cleanDB.py`
 
 # `/test-data`
 * test.json for testing various scripts. Used for `goQuery.py`
