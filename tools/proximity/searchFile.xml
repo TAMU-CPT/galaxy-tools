@@ -20,7 +20,7 @@ python $__tool_directory__/searchFile.py
     #pass
     #end if
     #if $gff3_files:
-        #for $gff_file in $gff_files:
+        #for $gff_file in $gff3_files:
             $if $gff_file:
                 --gff3_files "$gff_file";
             #end if
