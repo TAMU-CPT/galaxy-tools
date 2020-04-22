@@ -22,7 +22,7 @@ python $__tool_directory__/searchFile.py
     #if $gff3_files:
         #for $gff_file in $gff_files:
             $if $gff_file:
-                --gff3_files "$gff_file"
+                --gff3_files "$gff_file";
             #end if
         #end for
     #else
@@ -31,7 +31,7 @@ python $__tool_directory__/searchFile.py
     #if $gbk_files:
         #for $gbk_file in $gbk_files:
             #if $gbk_file:
-                --gbk_files "$gbk_file"
+                --gbk_files "$gbk_file";
             #end if
         #end for
     #else
@@ -40,7 +40,7 @@ python $__tool_directory__/searchFile.py
     #if $fa_files:
         #for $fa_file in $fa_files:
             #if $fa_file:
-                --fa_files "$fa_file"
+                --fa_files "$fa_file";
             #end if
         #end for
     #else
@@ -49,7 +49,7 @@ python $__tool_directory__/searchFile.py
     #if $blast_files:
         #for $blast_file in $blast_files:
             #if $blast_file:
-                --blast_files "$blast_file"
+                --blast_files "$blast_file";
             #end if
         #end for
     #else
