@@ -27,7 +27,7 @@ python $__tool_directory__/searchFile.py
         #end if
     #else
         echo "No gff3 selected"
-    #end if
+
     #if "$gbk_files":
         #for "$gbk_file" in "$gbk_files":
             #if "$gbk_file":
@@ -36,7 +36,7 @@ python $__tool_directory__/searchFile.py
         #end if
     #else
         echo "No gbk selected"
-    #end if
+
     #if "$fa_files":
         #for "$fa_file" in "$fa_files":
             #if "$fa_file":
@@ -45,7 +45,7 @@ python $__tool_directory__/searchFile.py
         #end if
     #else
         echo "No fasta selected"
-    #end if
+
     #if "$blast_files":
         #for "$blast_file" in "$blast_files":
             #if "$blast_file":
@@ -54,7 +54,7 @@ python $__tool_directory__/searchFile.py
         #end if
     #else
         echo "No blast-xml file selected"
-    #end if
+
     --output $output
     ]]></command>
         <inputs>
