@@ -234,6 +234,7 @@ def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
         if gffs:
             out_file.writelines("==================== GFF3 Term Hits ====================\n\n")
             for gff_hits in gffs:
+                print(gff_hits)
                 out_file.writelines(gff_hits+"\n")
         else:
             pass
