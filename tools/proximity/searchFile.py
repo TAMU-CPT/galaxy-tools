@@ -14,6 +14,7 @@ def dbaseTerms(terms,galaxy=True):
     if galaxy:
         db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-expanded_culled.json"
     else:
+        #db_path = "/home/adminuser/research/Galaxy-Tools/tools/proximity/data/lysis-family-expanded_culled.json"
         db_path = "data/lysis-family-expanded_culled.json"
     db = ej.explodeJSON(db_path)
     db = db.readJSON()
@@ -38,12 +39,20 @@ def userTerms(file,text):
     if file:
         terms = open(file.name).read().splitlines()
         user_terms.extend(terms)
-        for u_t in user_terms:
-            print(u_t)
     else:
         pass
     if text:
-        user_terms.extend(text)
+        if re.search(("__cn__"),str(text[0])):
+            #s = text[0].split("__cn__")
+            #print(s)
+            #print(text[0])
+            s = text[0]
+            #print(type(s))
+            split = s.split("__cn__")
+            #print(split)
+            user_terms.extend(split)
+        else:
+            user_terms.extend(text)
     else:
         pass
 
@@ -79,7 +88,7 @@ def glueFiles(gff,gbk,fa,blast):
     if gbk:
         for gbk_file in gbk:
             gbks.extend(gbk_file)
-        print(gbks)
+        #print(gbks)
     else:
         pass
     fas = []
@@ -235,33 +244,30 @@ def prettifyXML(input):
 def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
     """ Takes an input list for each parameter, and writes each result to the output file """
 
-    with open(outName.name, "w") as out_file:
+    with open(outName.name, "w+") as out_file:
         if gffs:
             out_file.writelines("\n==================== GFF3 Term Hits ====================\n\n")
             for gff_hits in gffs:
-                print(gff_hits)
                 out_file.writelines(gff_hits+"\n")
-        else:
-            pass
         if gbks:
             out_file.writelines("\n==================== GBK Term Hits ====================\n\n")
             for gbk_hits in gbks:
                 out_file.writelines(gbk_hits+"\n")
-        else:
-            pass
         if fas:
             out_file.writelines("\n==================== FASTA Term Hits ====================\n\n")
             for fa_hits in fas:
                 out_file.writelines(fa_hits+"\n")
-        else:
-            pass
         if blasts:
             out_file.writelines("\n==================== BLAST Term Hits ====================\n\n")
             for blast_hits in blasts:
                 out_file.writelines(blast_hits+"\n")
         else:
-            out_file.writelines("\nNo query matches, try again with new terms!")
-            pass
+            try:
+                if len(gffs) or len(gbks) or len(fas) or len(blasts):
+                    print("Terms Found")
+            except TypeError:
+                out_file.writelines("\nNo query matches, try again with new terms!")
+                print("No query matches, try again with new terms!")
             
 
 
@@ -269,13 +275,13 @@ if __name__ == "__main__":
     print(os.getcwd())
     parser = argparse.ArgumentParser(description="Uses a selection of terms to query an input file for matching cases")
     parser.add_argument("--dbaseTerms",nargs="*",help="dbase terms to search") # will be a select option, based on KEY within the JSON dbase
-    parser.add_argument("--custom_txt",nargs="*",help="custom user input terms")
+    parser.add_argument("--custom_txt",nargs="*",help="custom user input terms, if using Galaxy, terms will be __cn__ sep, otherwise by space")
     parser.add_argument("--custom_file",type=argparse.FileType("r"),help="custom new line separated search term file")
-    parser.add_argument("--gff3_files",type=argparse.FileType("r"),nargs="*",action="append",help="GFF3 File(s)")
-    parser.add_argument("--gbk_files",type=argparse.FileType("r"),nargs="*",action="append",help="GBK File(s)")
-    parser.add_argument("--fa_files",type=argparse.FileType("r"),nargs="*",action="append",help="FASTA File(s)")
-    parser.add_argument("--blast_files",type=argparse.FileType("r"),nargs="*",action="append",help="BLAST.xml File(s)")
-    parser.add_argument("--output",type=argparse.FileType("w"),default="termHits.txt")
+    parser.add_argument("--gff3_files",type=argparse.FileType("r"),nargs="*",action="append",help="GFF3 File(s), if multiple files, use another flag")
+    parser.add_argument("--gbk_files",type=argparse.FileType("r"),nargs="*",action="append",help="GBK File(s), if multiple files, use another flag")
+    parser.add_argument("--fa_files",type=argparse.FileType("r"),nargs="*",action="append",help="FASTA File(s), if multiple files, use another flag")
+    parser.add_argument("--blast_files",type=argparse.FileType("r"),nargs="*",action="append",help="BLAST.xml File(s), if multiple files, use another flag")
+    parser.add_argument("--output",type=argparse.FileType("w+"),default="termHits.txt")
     args = parser.parse_args()
 
     ############ STEP I
