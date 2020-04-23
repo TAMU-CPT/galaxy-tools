@@ -232,7 +232,7 @@ def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
 
     with open(outName.name, "w") as out_file:
         if gffs:
-            out_file.writelines("==================== GFF3 Term Hits ====================\n\n")
+            out_file.writelines("\n==================== GFF3 Term Hits ====================\n\n")
             for gff_hits in gffs:
                 print(gff_hits)
                 out_file.writelines(gff_hits+"\n")
@@ -241,17 +241,17 @@ def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
         if gbks:
             out_file.writelines("\n==================== GBK Term Hits ====================\n\n")
             for gbk_hits in gbks:
-                out_file.writelines(gbk_hits)
+                out_file.writelines(gbk_hits+"\n")
         else:
             pass
         if fas:
-            out_file.writelines("==================== FASTA Term Hits ====================\n\n")
+            out_file.writelines("\n==================== FASTA Term Hits ====================\n\n")
             for fa_hits in fas:
                 out_file.writelines(fa_hits+"\n")
         else:
             pass
         if blasts:
-            out_file.writelines("==================== BLAST Term Hits ====================\n\n")
+            out_file.writelines("\n==================== BLAST Term Hits ====================\n\n")
             for blast_hits in blasts:
                 out_file.writelines(blast_hits+"\n")
         else:
