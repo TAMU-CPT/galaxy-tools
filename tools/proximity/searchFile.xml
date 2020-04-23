@@ -102,9 +102,9 @@ python $__tool_directory__/searchFile.py
     <help><![CDATA[
 INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, and/or a custom input via file or text box.
 
-OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term.
+OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term. See file search areas, for the regions of each type of file that are searched.
 
-Options :
+DBase Family Term Descriptions :
 
 - Endolysins: enzymes that attack one of the structural bonds of the peptidoglycan. The endolysin step requires the hole-forming function of the holins.
 
