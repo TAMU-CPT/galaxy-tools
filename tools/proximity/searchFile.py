@@ -260,6 +260,7 @@ def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
             for blast_hits in blasts:
                 out_file.writelines(blast_hits+"\n")
         else:
+            out_file.writelines("\nNo query matches, try again with new terms!")
             pass
             
 
