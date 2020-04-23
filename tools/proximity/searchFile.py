@@ -14,7 +14,8 @@ def dbaseTerms(terms,galaxy=True):
     if galaxy:
         db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-expanded_culled.json"
     else:
-        db_path = "/home/adminuser/research/Galaxy-Tools/tools/proximity/data/lysis-family-expanded_culled.json"
+        #db_path = "/home/adminuser/research/Galaxy-Tools/tools/proximity/data/lysis-family-expanded_culled.json"
+        db_path = "data/lysis-family-expanded_culled.json"
     db = ej.explodeJSON(db_path)
     db = db.readJSON()
     dbase_terms = []
@@ -274,18 +275,18 @@ if __name__ == "__main__":
     print(os.getcwd())
     parser = argparse.ArgumentParser(description="Uses a selection of terms to query an input file for matching cases")
     parser.add_argument("--dbaseTerms",nargs="*",help="dbase terms to search") # will be a select option, based on KEY within the JSON dbase
-    parser.add_argument("--custom_txt",nargs="*",help="custom user input terms")
+    parser.add_argument("--custom_txt",nargs="*",help="custom user input terms, if using Galaxy, terms will be __cn__ sep, otherwise by space")
     parser.add_argument("--custom_file",type=argparse.FileType("r"),help="custom new line separated search term file")
-    parser.add_argument("--gff3_files",type=argparse.FileType("r"),nargs="*",action="append",help="GFF3 File(s)")
-    parser.add_argument("--gbk_files",type=argparse.FileType("r"),nargs="*",action="append",help="GBK File(s)")
-    parser.add_argument("--fa_files",type=argparse.FileType("r"),nargs="*",action="append",help="FASTA File(s)")
-    parser.add_argument("--blast_files",type=argparse.FileType("r"),nargs="*",action="append",help="BLAST.xml File(s)")
+    parser.add_argument("--gff3_files",type=argparse.FileType("r"),nargs="*",action="append",help="GFF3 File(s), if multiple files, use another flag")
+    parser.add_argument("--gbk_files",type=argparse.FileType("r"),nargs="*",action="append",help="GBK File(s), if multiple files, use another flag")
+    parser.add_argument("--fa_files",type=argparse.FileType("r"),nargs="*",action="append",help="FASTA File(s), if multiple files, use another flag")
+    parser.add_argument("--blast_files",type=argparse.FileType("r"),nargs="*",action="append",help="BLAST.xml File(s), if multiple files, use another flag")
     parser.add_argument("--output",type=argparse.FileType("w+"),default="termHits.txt")
     args = parser.parse_args()
 
     ############ STEP I
     ##### Determine user's terms to query
-    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=False)
+    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=True)
     user_terms = userTerms(file=args.custom_file,text=args.custom_txt)
     glued_terms = glueTerms(dbase_terms=dbase_terms, user_terms=user_terms)
 
