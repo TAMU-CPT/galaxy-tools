@@ -72,20 +72,25 @@ def glueFiles(gff,gbk,fa,blast):
     gbks = []
     blasts = []
     if gff:
-        gffs.extend(gff)
+        for gff_file in gff:
+            gffs.extend(gff_file)
     else:
         pass
     if gbk:
-        gbks.extend(gbk)
+        for gbk_file in gbk:
+            gbks.extend(gbk_file)
+        print(gbks)
     else:
         pass
     fas = []
     if fa:
-        fas.extend(fa)
+        for fa_file in fa:
+            fas.extend(fa_file)
     else:
         pass
     if blast:
-        blasts.extend(blast)
+        for blast_file in blast:
+            blasts.extend(blast_file)
     else:
         pass
     files = [gffs,gbks,fas,blasts]
@@ -265,16 +270,16 @@ if __name__ == "__main__":
     parser.add_argument("--dbaseTerms",nargs="*",help="dbase terms to search") # will be a select option, based on KEY within the JSON dbase
     parser.add_argument("--custom_txt",nargs="*",help="custom user input terms")
     parser.add_argument("--custom_file",type=argparse.FileType("r"),help="custom new line separated search term file")
-    parser.add_argument("--gff3_files",type=argparse.FileType("r"),nargs="*",help="GFF3 File(s)")
-    parser.add_argument("--gbk_files",type=argparse.FileType("r"),nargs="*",help="GBK File(s)")
-    parser.add_argument("--fa_files",type=argparse.FileType("r"),nargs="*",help="FASTA File(s)")
-    parser.add_argument("--blast_files",type=argparse.FileType("r"),nargs="*",help="BLAST.xml File(s)")
+    parser.add_argument("--gff3_files",type=argparse.FileType("r"),nargs="*",action="append",help="GFF3 File(s)")
+    parser.add_argument("--gbk_files",type=argparse.FileType("r"),nargs="*",action="append",help="GBK File(s)")
+    parser.add_argument("--fa_files",type=argparse.FileType("r"),nargs="*",action="append",help="FASTA File(s)")
+    parser.add_argument("--blast_files",type=argparse.FileType("r"),nargs="*",action="append",help="BLAST.xml File(s)")
     parser.add_argument("--output",type=argparse.FileType("w"),default="termHits.txt")
     args = parser.parse_args()
 
     ############ STEP I
     ##### Determine user's terms to query
-    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=True)
+    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=False)
     user_terms = userTerms(file=args.custom_file,text=args.custom_txt)
     glued_terms = glueTerms(dbase_terms=dbase_terms, user_terms=user_terms)
 
