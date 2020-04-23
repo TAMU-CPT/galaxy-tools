@@ -92,7 +92,7 @@ python $__tool_directory__/searchFile.py
                 <param name="check" value="holins"/>
                 <conditional name="term_add">
                     <param name="term_selector" value="customtxt"/>
-                        <param name="custom_file" value="endolysin"/>
+                        <param name="custom_txt" value="endolysin"/>
                 </conditional>
                 <conditional name="term_add">
                     <param name="term_selector" value="customfile"/>
