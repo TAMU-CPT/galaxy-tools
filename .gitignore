@@ -149,7 +149,7 @@ tools/spanin/*.bed
 tools/spanin/*.gff3
 tools/spanin/*.txt
 tools/spanin/test-data/results.txt
-tools/spanin/test-data/*.fasta
+tools/spanin/debug
 
 ## proximity
 tools/proximity/*.db
