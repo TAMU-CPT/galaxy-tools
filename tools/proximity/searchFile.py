@@ -14,7 +14,7 @@ def dbaseTerms(terms,galaxy=True):
     if galaxy:
         db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-expanded_culled.json"
     else:
-        db_path = "data/lysis-family-expanded_culled.json"
+        db_path = "/home/adminuser/research/Galaxy-Tools/tools/proximity/data/lysis-family-expanded_culled.json"
     db = ej.explodeJSON(db_path)
     db = db.readJSON()
     dbase_terms = []
