@@ -89,6 +89,7 @@ python $__tool_directory__/searchFile.py
         </outputs>
         <tests>
             <test>
+                <param name="check" value="holins">
                 <conditional name="term_add">
                     <param name="term_selector" value="customfile"/>
                         <param name="custom_file" value="search.txt"/>
@@ -101,6 +102,10 @@ python $__tool_directory__/searchFile.py
                     <conditional name="file_selector">
                         <param name="file_select" value="gbkselection"/>
                             <param name="gbk_files" value="t7-genome.gb"/>
+                    </conditional>
+                    <conditional name="file_selector">
+                        <param name="file_select" value="gbkselection"/>
+                            <param name="gbk_files" value="NC_008720-N4-Apollo.genbank"/>
                     </conditional>
                     <conditional name="file_selector">
                         <param name="file_select" value="faselection"/>
