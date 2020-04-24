@@ -298,7 +298,7 @@ if __name__ == "__main__":
 
     ############ STEP I
     ##### Determine user's terms to query
-    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=False)
+    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=True)
     user_terms = userTerms(file=args.custom_file,text=args.custom_txt)
     glued_terms = glueTerms(dbase_terms=dbase_terms, user_terms=user_terms)
 
