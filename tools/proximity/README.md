@@ -33,3 +33,7 @@
 * sample.fa
 * sample.xml
 * search.txt
+
+# Release Notes:
+CPT: OTHER- Search File
+In light of various lysis projects, searching for lysis-related terms within files can be useful. This tool allows for the querying of GFF3, FASTA, Genbank, and/or BLAST-xml files with a user defined set of terms. The terms can either be from the curated lysis family term database, a custom set of terms, or both. Each query term is passed to each file, to see if it is within the contents (similar to CTRL+F), but it queries specific places, specific to the file type. For example, genbank’s product and notes qualifier is queried. Matches of each filetype are returned in an output file that allows users to see the contents of what was matched.

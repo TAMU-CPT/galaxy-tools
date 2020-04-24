@@ -1,0 +1,95 @@
+
+==================== GFF3 Term Hits ====================
+
+NC_008720.1	RefSeq	CDS	58073	58336	.	-	0	ID=cds-YP_950540.1;Parent=gene-EPNV4_gp62;Dbxref=Genbank:YP_950540.1,GeneID:5075686;Name=YP_950540.1;gbkey=CDS;locus_tag=EPNV4_gp62;product=gp62-pinholin;protein_id=YP_950540.1;transl_table=11
+NC_008720.1	RefSeq	gene	58321	58653	.	-	.	ID=gene-EPNV4_gp63;Dbxref=GeneID:5075677;Name=EPNV4_gp63-co-holin;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp63
+
+==================== GBK Term Hits ====================
+
+type: CDS
+location: [10705:11161](+)
+qualifiers:
+    Key: codon_start, Value: ['1']
+    Key: db_xref, Value: ['GOA:P00806', 'UniProtKB/Swiss-Prot:P00806', 'GeneID:1261077']
+    Key: locus_tag, Value: ['T7p20']
+    Key: note, Value: ['T7 lysozyme hydrolyzes an amide bond in the host cell wall following its release from the cytoplasm. In addition, T7 lysozyme inhibits T7 RNA polymerase initiation. This inhibition is greater for class II promoters than class III promoters and therefore may aid in temporal regulation of transcription and the switch to particle assembly. In T7, lysozyme, unlike the T7 holin, is expressed with and lies in the same region as the replication genes. Lack of gp3.5 reduces replication and burst size and delays, but does not completely prevent lysis. Mutations in the muralytic domain of gene 16, an inner capsid protein, can partially compensate for a deletion of gp3.5. Other names: gp3.5; amidase; N-acetylmuramoyl-L-alanine amidase']
+    Key: product, Value: ['lysozyme']
+    Key: protein_id, Value: ['NP_041973.1']
+    Key: transl_table, Value: ['11']
+    Key: translation, Value: ['MARVQFKQRESTDAIFVHCSATKPSQNVGVREIRQWHKEQGWLDVGYHFIIKRDGTVEAGRDEMAVGSHAKGYNHNSIGVCLVGGIDDKGKFDANFTPAQMQSLRSLLVTLLAKYEGAVLRAHHEVAPKACPSFDLKRWWEKNELVTSDRG']
+
+type: CDS
+location: [36343:36547](+)
+qualifiers:
+    Key: codon_start, Value: ['1']
+    Key: db_xref, Value: ['GOA:P03802', 'UniProtKB/Swiss-Prot:P03802', 'GeneID:1261022']
+    Key: locus_tag, Value: ['T7p53']
+    Key: note, Value: ['Type II holins have two putative transmembrane domains and are thought to allow endolysins access to the cell wall at the optimal lysis time. However, in phage T7 the holin protein gp17.5 does not appear to be essential and gp17.5 mutants only show a minor delay in lysis. Other names: gp17.5; lysis protein']
+    Key: product, Value: ['type II holin']
+    Key: protein_id, Value: ['NP_042006.1']
+    Key: transl_table, Value: ['11']
+    Key: translation, Value: ['MLSLDFNNELIKAAPIVGTGVADVSARLFFGLSLNEWFYVAAIAYTVVQIGAKVVDKMIDWKKANKE']
+
+type: CDS
+location: [58072:58336](-)
+qualifiers:
+    Key: codon_start, Value: ['1']
+    Key: db_xref, Value: ['GeneID:5075686']
+    Key: locus_tag, Value: ['EPNV4_gp62']
+    Key: product, Value: ['pinholin']
+    Key: protein_id, Value: ['YP_950540.1']
+    Key: transl_table, Value: ['11']
+    Key: translation, Value: ['MVRKLTKHVEMVPNWKRCWKWASIQISTLAILFFSCVDVLSSSFSALPQHILKDIPHGNNIAIALFVLNIICRLVRLKPKEDWCGNK']
+
+type: CDS
+location: [58320:58653](-)
+qualifiers:
+    Key: codon_start, Value: ['1']
+    Key: db_xref, Value: ['GeneID:5075677']
+    Key: locus_tag, Value: ['EPNV4_gp63']
+    Key: product, Value: ['co-holin']
+    Key: protein_id, Value: ['YP_950541.1']
+    Key: transl_table, Value: ['11']
+    Key: translation, Value: ['MSHESVEVLLARMEERMKTLFENNARDAKSRQDLDDAVRNLQLSINKMDTRLENVEKSLAESAPTIEEFITIKHKVVGAGLFGKWVWAGAGIIIGILAAARREIFAWFAS']
+
+
+==================== FASTA Term Hits ====================
+
+CPT_NC_008720_071  EPNV4_gp61  SAR endolysin [start=57459,end=58086]
+CPT_NC_008720_072  EPNV4_gp62 pinholin [start=58072,end=58402]
+CPT_NC_008720_073  EPNV4_gp63 co-holin[start=58320,end=58653]
+
+==================== BLAST Term Hits ====================
+
+QueryID: 4de5bc24-8b6d-4dca-a898-388323d0aeb5 [Location=[58072:58402](-);Name=4de5bc24-8b6d-4dca-a898-388323d0aeb5]
+SearchQuery: holin
+Match: gi|1275230268|gb|ATS92537.1| putative holin protein [Escherichia phage St11Ph5] 319.0  7.86338e-35
+
+QueryID: 4de5bc24-8b6d-4dca-a898-388323d0aeb5 [Location=[58072:58402](-);Name=4de5bc24-8b6d-4dca-a898-388323d0aeb5]
+SearchQuery: holin
+Match: gi|343082262|gb|AEL79673.1| putative holin protein [Escherichia phage vB_EcoP_G7C] 273.0  5.59921e-28
+
+QueryID: 4de5bc24-8b6d-4dca-a898-388323d0aeb5 [Location=[58072:58402](-);Name=4de5bc24-8b6d-4dca-a898-388323d0aeb5]
+SearchQuery: holin
+Match: gi|441431493|gb|AGC31577.1| putative holin protein [Escherichia phage EC1-UPM] 312.0  9.07916e-34
+
+QueryID: 4de5bc24-8b6d-4dca-a898-388323d0aeb5 [Location=[58072:58402](-);Name=4de5bc24-8b6d-4dca-a898-388323d0aeb5]
+SearchQuery: holin
+Match: gi|601128344|gb|AHN83363.1| putative holin protein [Escherichia phage Bp4] 314.0  4.95265e-34
+
+QueryID: 4de5bc24-8b6d-4dca-a898-388323d0aeb5 [Location=[58072:58402](-);Name=4de5bc24-8b6d-4dca-a898-388323d0aeb5]
+SearchQuery: holin
+Match: gi|640884668|ref|YP_009031977.1| putative holin protein [Escherichia phage Bp4] 
+
+QueryID: 59a17070-cb4e-4caa-ace0-165ed4243615-CDS [Location=[58756:60010](-);Name=59a17070-cb4e-4caa-ace0-165ed4243615-CDS]
+SearchQuery: aminidase
+Match: gi|1087465649|emb|SDM32819.1| Chitobiase/beta-hexosaminidase C-terminal domain-containing protein [Paenibacillus sp. OK060] 431.0  2.38656e-42
+
+QueryID: 59a17070-cb4e-4caa-ace0-165ed4243615-CDS [Location=[58756:60010](-);Name=59a17070-cb4e-4caa-ace0-165ed4243615-CDS]
+SearchQuery: aminidase
+Match: gi|1087486417|emb|SDD52739.1| Chitobiase/beta-hexosaminidase C-terminal domain-containing protein [Paenibacillus sp. CF095] 427.0  8.27126e-42
+
+QueryID: 59a17070-cb4e-4caa-ace0-165ed4243615-CDS [Location=[58756:60010](-);Name=59a17070-cb4e-4caa-ace0-165ed4243615-CDS]
+SearchQuery: aminidase
+Match: gi|1110072162|emb|SHK58718.1| Chitobiase/beta-hexosaminidase C-terminal domain-containing protein [Paramaledivibacter caminithermalis DSM 15212] 464.0  6.15131e-46
+
