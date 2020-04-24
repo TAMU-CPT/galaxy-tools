@@ -128,6 +128,7 @@ def readGFF3(files,search_list):
                 for feature in features:
                     gff3_matches.extend(searchInput(str(feature), search_list=search_list))
                 gff3_matches = list(set(gff3_matches)) # make sure we don't fluff the list
+        gff3_matches.sort()
         return gff3_matches
     else:
         pass
@@ -135,7 +136,6 @@ def readGFF3(files,search_list):
 def readGBK(files,search_list):
     if files:
         for idx, file in enumerate(files):
-
             if idx == 0:
                 print("Parsing - "+file.name)
                 record = SeqIO.read(file.name, "genbank")
@@ -161,6 +161,7 @@ def readGBK(files,search_list):
                     except KeyError:
                         continue
                 gbk_matches = list(set(gbk_matches))
+        gbk_matches.sort()
         return gbk_matches
     else:
         pass
@@ -181,6 +182,7 @@ def readFASTA(files,search_list):
                 for feature in record:
                     fa_matches.extend(searchInput(feature.description,search_list=search_list))
                 fa_matches = list(set(fa_matches))
+        fa_matches.sort()
         return fa_matches
     else:
         pass
@@ -206,6 +208,7 @@ def readBLAST(files,search_list):
                         pretty = prettifyXML(str(desc))
                         blast_matches.extend(searchInput(each_ret,search_list=search_list,blast=True,q_id=blast_record.query))
                 blast_matches = list(set(blast_matches))
+            blast_matches.sort()
             return blast_matches
     else:
         pass
@@ -217,7 +220,7 @@ def searchInput(input, search_list,blast=False,q_id=None):
     output = []
     for search_term in search_list:
         if blast:
-            if re.search(re.escape(search_term), input, flags=re.IGNORECASE):
+            if re.search(re.escape(search_term), input):
                 add_query = "QueryID: "+str(q_id)+"\nSearchQuery: "+search_term+"\nMatch: "+input+"\n"
                 output.extend([add_query])
             else:
@@ -225,7 +228,7 @@ def searchInput(input, search_list,blast=False,q_id=None):
         #print(search_term)
         #st = r"\b"+search_term+r"\b"
         else:
-            if re.search(re.escape(search_term), input,flags=re.IGNORECASE):
+            if re.search(re.escape(search_term), input):
                 #print(search_term+" -> was found")
                 output.extend([input])
             else:
@@ -246,28 +249,37 @@ def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
 
     with open(outName.name, "w+") as out_file:
         if gffs:
+
             out_file.writelines("\n==================== GFF3 Term Hits ====================\n\n")
             for gff_hits in gffs:
                 out_file.writelines(gff_hits+"\n")
+        else:
+            gffs = []
         if gbks:
             out_file.writelines("\n==================== GBK Term Hits ====================\n\n")
             for gbk_hits in gbks:
                 out_file.writelines(gbk_hits+"\n")
+        else:
+            gbks = []
         if fas:
+
             out_file.writelines("\n==================== FASTA Term Hits ====================\n\n")
             for fa_hits in fas:
                 out_file.writelines(fa_hits+"\n")
+        else:
+            fas = []
         if blasts:
+
             out_file.writelines("\n==================== BLAST Term Hits ====================\n\n")
             for blast_hits in blasts:
                 out_file.writelines(blast_hits+"\n")
         else:
-            try:
-                if len(gffs) or len(gbks) or len(fas) or len(blasts):
-                    print("Terms Found")
-            except TypeError:
-                out_file.writelines("\nNo query matches, try again with new terms!")
-                print("No query matches, try again with new terms!")
+            blasts = []
+        if len(gffs) or len(gbks) or len(fas) or len(blasts):
+                print("Terms Found")
+        else:
+            out_file.writelines("No query matches, try again with new terms!")
+            print("No query matches, try again with new terms!")
             
 
 
@@ -286,7 +298,7 @@ if __name__ == "__main__":
 
     ############ STEP I
     ##### Determine user's terms to query
-    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=True)
+    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=False)
     user_terms = userTerms(file=args.custom_file,text=args.custom_txt)
     glued_terms = glueTerms(dbase_terms=dbase_terms, user_terms=user_terms)
 
