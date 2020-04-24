@@ -89,7 +89,7 @@ python $__tool_directory__/searchFile.py
         </outputs>
         <tests>
             <test>
-                <param name="check" value="holins">
+                <param name="check" value="holins"/>
                 <conditional name="term_add">
                     <param name="term_selector" value="customfile"/>
                         <param name="custom_file" value="search.txt"/>
