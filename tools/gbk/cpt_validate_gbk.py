@@ -4,6 +4,7 @@ import sys
 import argparse
 import copy
 import logging
+import re
 from Bio import SeqIO
 logging.basicConfig(level=logging.INFO)
 
@@ -21,6 +22,8 @@ def validate_gbk(genbank_file=None):
         seenLocus = {}
         pairedRBS = {}
         for feature in record.features:
+            if feature.type == "source":
+              continue
             if 'locus_tag' not in feature.qualifiers:
               if feature.type != 'regulatory': # Terminators allowed to overlap other features and not have locus_tag, basically anything goes (according to spec provided for this tool)
                 outStr += "Warning: Unhandled top-level feature type in " + record.id + " at start location " + str(feature.location.start + 1) + ", type is " + feature.type + "\n"
@@ -30,6 +33,9 @@ def validate_gbk(genbank_file=None):
            # if feature.type == 'CDS' and feature.qualifiers['locus_tag'][0] == "Meda_016":
            #   print((feature.location.parts[0].start))
            #   exit()
+
+            #if feature.type == "mat_peptide":
+            #  continue
 
             if feature.type == "regulatory" and feature.qualifiers['regulatory_class'][0] == 'ribosome_binding_site':
               theKey = str(feature.location.start) + ", " + str(feature.location.end)
@@ -50,7 +56,18 @@ def validate_gbk(genbank_file=None):
           cdsEnd = -1
           trnaStart = -1
           trnaEnd = -1
+          foundIntron = False
+          foundSubfeatures = []
+          absFeatStart = -1
+          absFeatEnd = -1
           for feature in seenLocus[locus]:
+            foundSubfeatures.append(feature.type)
+            if absFeatStart == -1:
+              absFeatStart = feature.location.start
+              absFeatEnd = feature.location.end
+            else: 
+              absFeatStart = min(absFeatStart, feature.location.start)
+              absFeatEnd = max(absFeatEnd, feature.location.end)
             if feature.type == 'CDS':
               if cdsStart != -1:
                 outStr += "Error: More than one CDS in " + record.id + " at locus_tag " + locus + ".\n"
@@ -85,6 +102,7 @@ def validate_gbk(genbank_file=None):
             elif feature.type == "intron":
                startMatch = False
                endMatch = False
+               foundIntron = True
                #print(str(feature.location.parts[0].start) + ", " + str(feature.location.parts[0].end))
                for findCDS in seenLocus[locus]:
                  if findCDS.type != "CDS":
@@ -111,22 +129,31 @@ def validate_gbk(genbank_file=None):
                 errorCount += 1
                 continue
               else:
-                orderPairs[int(locus[locus.rfind("_") + 1:])] = feature
+                if not(re.search(r'_gt(\d+)', locus)):
+                  orderPairs[int(re.findall(r'(\d+)', locus)[-1])] = feature
                 geneStart = feature.location.start
                 geneEnd = feature.location.end
+                
+            elif feature.type == "mat_peptide":
+                continue
             else:
               outStr += "Warning: Unhandled sub-feature type in " + record.id + " at locus tag " + locus + ", type is " + str(feature.type) + '.\n'
               warningCount += 1
 
-          if rbsStart == -1 and cdsStart == -1:
+          if geneStart == -1:
+              outStr += "Errors (" + str(len(foundSubfeatures)) + " at this location): Subfeatures found for locus_tag " + locus + " but there is no gene feature with an equivalent locus_tag.\n"
+              outStr += "\tFeatures " + str(foundSubfeatures) + " at location [" + str(absFeatStart) + ", " + str(absFeatEnd) + "]\n"
+              errorCount += len(foundSubfeatures)
+              
+          elif rbsStart == -1 and cdsStart == -1:
             outStr += "Warning: Gene in " + record.id + " at locus_tag " + locus + ' has no RBS or CDS.\n'
             warningCount += 1
-          if cdsStart != geneStart and cdsEnd != geneEnd and cdsStart != -1:
+          elif cdsStart != geneStart and cdsEnd != geneEnd and cdsStart != -1:
               outStr += "Error: CDS in " + record.id + " at locus_tag " + locus + ' does not line up with parent gene.\n'
               outStr += "\tGene: [" + str(geneStart + 1) + ", " + str(geneEnd) + "] --- CDS: [" + str(cdsStart + 1) + ", " + str(cdsEnd) + "]\n"
               errorCount += 1
           #elif rbsStart == -1:
-          if rbsStart != geneStart and rbsEnd != geneEnd and rbsStart != -1:
+          elif rbsStart != geneStart and rbsEnd != geneEnd and rbsStart != -1:
               shifted = False
               for x in pairedRBS.keys():
                 if locus in pairedRBS[x]:
@@ -135,7 +162,7 @@ def validate_gbk(genbank_file=None):
                 outStr += "Error: RBS in " + record.id + " at locus_tag " + locus + ' does not line up with parent gene and did not have a possible frameshift equivalent RBS.\n'
                 outStr += "\tGene: [" + str(geneStart + 1) + ", " + str(geneEnd) + "] --- RBS: [" + str(rbsStart + 1) + ", " + str(rbsEnd) + "]\n"
                 errorCount += 1
-          if ((rbsStart > cdsStart and rbsStart < cdsEnd) or (cdsStart > rbsStart and cdsStart < rbsEnd)) and (rbsStart != -1 and cdsStart != -1):
+          elif ((rbsStart > cdsStart and rbsStart < cdsEnd) or (cdsStart > rbsStart and cdsStart < rbsEnd)) and (rbsStart != -1 and cdsStart != -1):
               outStr += "Error: CDS and RBS overlap in " + record.id + " at locus_tag " + locus + '.\n'
               outStr += "\tCDS: [" + str(cdsStart + 1) + ", " + str(cdsEnd) + "] --- RBS: [" + str(rbsStart + 1) + ", " + str(rbsEnd) + "]\n"
               errorCount += 1
