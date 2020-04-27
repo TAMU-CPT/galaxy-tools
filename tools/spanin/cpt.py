@@ -55,8 +55,9 @@ class OrfFinder(object):
         self.ends = ends
         self.ftype = ftype
         self.min_len = min_len
-        self.starts = sorted(self.table_obj.start_codons)
+        self.starts = sorted(["ATG","TTG","GTG"])
         self.stops = sorted(self.table_obj.stop_codons)
+        #self.spanin = sorted(["ATG","TTG","GTG"])
         self.re_starts = re.compile("|".join(self.starts))
         self.re_stops = re.compile("|".join(self.stops))
         self.strand = strand
