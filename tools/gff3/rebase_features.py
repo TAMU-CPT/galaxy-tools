@@ -46,9 +46,13 @@ if __name__ == "__main__":
                     tempFeat.ref_db = feature.ref_db
                     tempFeat.ref = feature.ref
                     #tempFeat.sub_features.append(newChain[x])
-                    newChain[x].qualifiers["Parent"][0] = feature.id + "_p" + str(len(args.changeTo) - x)
+                    if "Parent" in newChain[x].qualifiers.keys():
+                      newChain[x].qualifiers["Parent"][0] = feature.id + "_p" + str(len(args.changeTo) - x)
+                    else:
+                      newChain[x].qualifiers["Parent"] = [feature.id + "_p" + str(len(args.changeTo) - x)] 
                     tempFeat.qualifiers["ID"] = [tempFeat.id]
-                    tempFeat.qualifiers["Name"] = [feature.qualifiers["Name"][0] + "_p" + str(len(args.changeTo) - x)]
+                    if "Name" in newChain[x].qualifiers.keys():
+                      tempFeat.qualifiers["Name"] = [feature.qualifiers["Name"][0] + "_p" + str(len(args.changeTo) - x)]
                     newChain.append(tempFeat)
                     
                 #print(dir(feature))
@@ -63,10 +67,10 @@ if __name__ == "__main__":
                         if y.id != feature.id:
                           newSubs.append(y)
                       x.sub_features = newSubs
-                tempDict = safe_qualifiers(feature.qualifiers)
-                tempDict["Parent"] = newChain[1].id
-                feature.qualifiers.clear()
-                feature.qualifiers.update(tempDict)
+                #tempDict = safe_qualifiers(feature.qualifiers)
+                #tempDict["Parent"] = newChain[1].id
+                #feature.qualifiers.clear()
+                #feature.qualifiers.update(tempDict)
                 for x in range(0, len(newChain)):
                     newRecs.append(newChain[len(newChain) - 1 - x])
                     
