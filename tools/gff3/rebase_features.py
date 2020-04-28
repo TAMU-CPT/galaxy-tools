@@ -36,7 +36,9 @@ if __name__ == "__main__":
                       #for x in range(0, len(args.changeList)):
                       #feature.qualifiers["Parent"] = []
                 newChain = [feature]
-                tempParent = feature.qualifiers["Parent"][0]
+                tempParent = ""
+                if "Parent" in feature.qualifiers.keys():
+                    tempParent = feature.qualifiers["Parent"][0]
                 for x in range(0, len(args.changeTo)):
                     tempFeat = SeqFeature(location=feature.location)
                     tempFeat.type = args.changeTo[len(args.changeTo) - 1 - x]
@@ -53,13 +55,14 @@ if __name__ == "__main__":
                 #exit()
                 #print(type(record.features))
                 #exit()
-                for x in record.features:
-                  if x.id == tempParent:
-                    newSubs = []
-                    for y in x.sub_features:
-                      if y.id != feature.id:
-                        newSubs.append(y)
-                    x.sub_features = newSubs
+                if tempParent != "":
+                  for x in record.features:
+                    if x.id == tempParent:
+                      newSubs = []
+                      for y in x.sub_features:
+                        if y.id != feature.id:
+                          newSubs.append(y)
+                      x.sub_features = newSubs
                 tempDict = safe_qualifiers(feature.qualifiers)
                 tempDict["Parent"] = newChain[1].id
                 feature.qualifiers.clear()
