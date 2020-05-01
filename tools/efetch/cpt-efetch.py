@@ -1,30 +1,56 @@
-##### 
-
 import argparse
+import sys
 from time import sleep
 from Bio import Entrez
 from Bio import SeqIO
+import urllib
 
 
-def query(email,user_input,db,sleep_amt,multi=False,both=False):
-    """ Use Entrez.efetch to query based on a user's request """
+# Not very DRY, but, I think this will get the job done and be easy to read/alter for anyone in the future.
+def do_multi(user_input,db,sleep_amt,ret_type):
+    """ Formats a multi-fasta/gbk """
+    acc_list = user_input
+    try:
+        if ret_type == "genbank":
+            net_handle = Entrez.efetch(db=db,id=acc_list,rettype="gb",retmode="text")
+        else:
+            net_handle = Entrez.efetch(db=db,id=acc_list,rettype="fasta",retmode="text")
+    except urllib.error.HTTPError: # <-- This is the response error if you get timed out, if it occurs, sleep and send the request again
+        sleep(sleep_amt)
+        if ret_type == "genbank":
+            net_handle = Entrez.efetch(db=db,id=acc_list,rettype="gb",retmode="text")
+        else:
+            net_handle = Entrez.efetch(db=db,id=acc_list,rettype="fasta",retmode="text")
+    records = SeqIO.parse(net_handle,ret_type)
+    with open(f"multi{ret_type}.{ret_type}", "w") as file:
+        for record in records:
+            SeqIO.write(record, file, ret_type)
 
-    Entrez.email = email
-    print("Logged in as: "+str(Entrez.email))
+    return print("...File(s) fetched and downloaded...")
 
-    if multi:
-        acc_list = user_input
-        net_handle = Entrez.efetch(db=db,id=acc_list,rettype="fasta",retmode="txt")
-    else:
-        acc_list = user_input
-        for acc in acc_list:
-            try: # sleep this
-                net_handle = Entrez.efetch(db=db,id=acc,rettype="fasta", retmode="text")
-            except HTTPError:
-                sleep(sleep_amt)
-                net_handle = Entrez.efetch(db=db,id=acc,rettype="fasta",retmode="text")
-    print(net_handle.read())
-    sleep(sleep_amt)
+def do_individuals(user_input,db,sleep_amt,ret_type):
+    """ returns individual fasta/gbk files """
+    acc_list = user_input
+    for acc in acc_list:
+        try:
+            if ret_type == "genbank":
+                net_handle = Entrez.efetch(db=db,id=acc,rettype="gbwithparts", retmode="text")
+            else:
+                net_handle = Entrez.efetch(db=db,id=acc,rettype=ret_type, retmode="text")
+        except urllib.error.HTTPError: # <-- This is the response error if you get timed out, if it occurs, sleep and send the request again
+            sleep(sleep_amt)
+            if ret_type == "genbank":
+                net_handle = Entrez.efetch(db=db,id=acc,rettype="gbwithparts", retmode="text")
+            else:
+                net_handle = Entrez.efetch(db=db,id=acc,rettype=ret_type, retmode="text")
+        record = net_handle.read()
+        print(record)
+        with open(f"{acc}.{ret_type}","w") as file:
+            file.write(record)
+        net_handle.close()
+        file.close()
+
+    return print("...File(s) fetched and downloaded...")
 
 
 
@@ -32,7 +58,7 @@ def query(email,user_input,db,sleep_amt,multi=False,both=False):
 if __name__ == "__main__":
 
     ##### Arguments
-    parser = argparse.ArgumentParser(description="Trim the putative protein candidates and find potential i-spanin / o-spanin pairs")
+    parser = argparse.ArgumentParser(description="CPT's very own modified Efetch")
 
     parser.add_argument("email",
                         type=str,
@@ -43,25 +69,36 @@ if __name__ == "__main__":
                         nargs="*",
                         help='accession input"')
 
-    parser.add_argument("--multi",
-                        action="store_true",
-                        help="store as multifasta or multigbk")
-
-    parser.add_argument("--both",
-                        action="store_true",
-                        help="do both single and multi fetching")
-
     parser.add_argument("--db",
                         type=str,
                         choices=("protein", "nuccore"),
                         help="choose protein or nuccore database to do query")
-    
+
+    parser.add_argument("--ret_format",
+                        type=str,
+                        choices=("multi","individual","both"),
+                        default="individual",
+                        help="choose between having a multi-fa/gbk, invidual, or both for the output")
+
+    parser.add_argument("--ret_type",
+                        choices=("fasta","genbank"),
+                        help="return format of file")
+
     parser.add_argument("--sleep",
                         type=int,
-                        default=1,
+                        default=10,
                         help="Amount to delay a query to NCBI by")
 
-    args = parser.parse_args()
+    parser.add_argument("--output",
+                        type=argparse.FileType("w+"),
+                        default="output.dat")
 
-    ##### NCBI Query
-    query(email=args.email,user_input=args.input,db=args.db,sleep_amt=args.sleep)
+    args = parser.parse_args()
+    Entrez.email = args.email
+    if args.ret_format == "multi":
+        do_multi(user_input=args.input,db=args.db,ret_type=args.ret_type,sleep_amt=args.sleep)
+    elif args.ret_format == "individual":
+        do_individuals(user_input=args.input,db=args.db,ret_type=args.ret_type,sleep_amt=args.sleep)
+    elif args.ret_format == "both":
+        do_multi(user_input=args.input,db=args.db,ret_type=args.ret_type,sleep_amt=args.sleep)
+        do_individuals(user_input=args.input,db=args.db,ret_type=args.ret_type,sleep_amt=args.sleep)
