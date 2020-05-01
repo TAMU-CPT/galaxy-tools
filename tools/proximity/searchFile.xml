@@ -40,13 +40,10 @@ python $__tool_directory__/searchFile.py
     --output $output
     ]]></command>
         <inputs>
-            <param name="check" type="select" format="text" optional="true" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database" display="checkboxes">
+            <param name="check" type="select" format="text" optional="true" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database (see terms in Shared Data/Lysis family Terms)" display="checkboxes">
                 <option value="endolysins" selected="true">Endolysins</option>
                 <option value="holins" selected="true">Holins and Anti-holins</option>
-                <option value="ECDs" selected="true">N-terminal enzymatic catalytic domains (ECDs)</option>
-                <option value="ECDs_accro" selected="true">ECDs acronyms</option>
-                <option value="CBDs" selected="true">C-terminal cell wall binding domains (CBDs)</option>
-                <option value="CBDs_accro" selected="true">CBDs acronyms</option>
+                <option value="endolysin_domains" selected="true">Endolysin Associated Domains</option>
             </param>
             <conditional name="term_add">
                 <param name="term_selector" type="select" label="Choose if you'd like to add custom terms">
