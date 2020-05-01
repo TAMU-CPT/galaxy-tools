@@ -1,0 +1,184 @@
+cell wall amidase
+CWA
+N-acetylmuramoyl-L-alanine amidase of type 2
+NALAA-2
+IPR002502
+PF01510
+SM00644
+SSF55846
+G3DSA:3.40.80.10
+CD06583
+SLT1
+soluble lytic murein transglycosylase of type 1
+IPR010618
+TG
+IPR010618 (transglycosylase)
+PGB1
+peptidoglycan binding domain type 1
+IPR002477
+sporulation-related
+IPR007730
+sarcoma [src] homology 3 of type 3
+PF08329 (SH3-3)
+sarcoma [src] homology 3 of type 5
+PF08460 (SH3-5)
+sarcoma [src] homology 3 of type 8
+SH3-8
+PF13457
+S-layer protien
+IPR024968
+lysin motif
+IPR018392
+CW7
+cell wall binding domain of Cpl-7
+IPR013168
+SLH
+S-layer homology domain
+IPR001119
+CWB1
+cell wall binding repeat of type 1
+IPR018337
+CWB2
+cell wall binding repeat of type 2
+IPR007253
+clostridial hydrophobic repeat with a conserved W residue
+IPR006637
+N-acetylmuramoyl-L-alanine amidase of type 3
+NALAA-3
+IPR002508
+PF01520
+SM00646
+G3DSA:3.40.630.40
+CD2696
+AMIN
+N-terminal nonamidase
+IPR021731
+SH3-4
+sarcoma [src] homology 3 of type 4
+PF06347
+N-acetylmuramoyl-L-alanine amidase of type 5
+NALAA-5
+IPR008044
+PF05382
+cell wall glycosidases
+CWG
+glycoside hydrolase family 3
+GHF-3
+IPR002772
+IPR001764
+PF01915
+SSF52279
+G3DSA:3.40.50.1700
+PF00933
+PR00133
+G3DSA:3.20.20.300
+CWBD1
+LPXTG
+glycoside hydrolase family 73
+GHF-73
+IPR002901
+PF01832
+SM00047
+MltG
+membrane-bound lytic transglycosylase of type G
+IPR003770
+CWBD2
+glycoside hydrolase family 22
+GHF-22
+IPR001916
+PF00062
+glycoside hydrolase family 24
+GHF-24
+IPR002196
+2ANV
+2ANX
+glycoside hydrolase family 25
+GHF-25
+IPR002053
+PF01183
+cell wall peptidase
+CWP
+cysteine histidine-dependent amidohydrolases/peptidase
+IPR007921
+PF05257
+PS50911
+SleB
+Spore cortex-lytic enzyme of Bacilus
+IPR011105
+SLT2
+soluble lytic murein transglycosylase of type 2
+IPR031304
+N lipoprotein C/protein of 60-kDa
+NlpC/P60
+IPR000064
+PF0877
+G3DSA:3.90.1720.10
+PGB2
+peptidoglycan binding domain of type 2
+IPR014927
+SH3-1
+sarcoma [src] homology 3 of type 1
+PF00018
+SH3-2
+sarcoma [src] homology 3 of type 2
+PF07653
+SH3-6
+sarcoma [src] homology 3 of type 6
+PF12913
+SH3-7
+sarcoma [src] homology 3 of type 7
+PF12914
+Peptidase M14
+PM14
+IPR000834
+PF00246
+PS00132
+PR00765
+SM00631
+Peptidase M15
+PM15
+IPR000755
+PF01427
+MF01924
+PIRSF026671
+PGB3
+peptidoglycan binding domain of type 3
+IPR018537
+Peptidase M23
+PM23
+IPR016047
+PF01551
+RlpA
+rare lipoprotein A
+IPR034718
+SH3-9
+sarcoma [src] homology 3 of type 9
+PF14604
+Peptidase M74
+PM74
+IPR005073
+PF03411
+MF01623
+PIRSF018455
+Peptidase S11
+PS11
+IPR001967
+PF00768
+Peptidase S13
+PS13
+IPR000667
+PF02113
+TIGR00666
+PR0922
+Peptidase S66
+PS66
+IPR003507
+PF02016
+PIRSF028757
+Transpeptidase
+TP
+IPR0005490
+PF03734
+PGB4
+peptidoglycan binding domain of type 4
+IPR022029
