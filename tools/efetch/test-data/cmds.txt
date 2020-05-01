@@ -1,0 +1,3 @@
+python cpt-efetch.py curtisross@tamu.edu --input "NC_001416.1" "NC_000866.4" --db "nuccore" --ret_type "fasta" --ret_format "individual"
+
+python cpt-efetch.py curtisross@tamu.edu --input "EAA0819122.1" "EAM4818916" "STE16814.1" "WP_038819265.1" --db "protein" --ret_type "fasta" --ret_format "multi"
