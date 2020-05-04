@@ -38,6 +38,6 @@ class CPTEfetch:
         net_handle.close()  # probably redundant
 
 if __name__ == "__main__":
-    c = CPTEfetch("curtisross@tamu.edu","NC_000866.4","nuccore","fasta")
+    c = CPTEfetch("curtisross@tamu.edu","NC_001416.1","nuccore","fasta")
     print(c)
     c.retrieve_data()
