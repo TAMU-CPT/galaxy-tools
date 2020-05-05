@@ -19,7 +19,7 @@ class CPTEfetch:
 
 
     def __repr__(self):
-        return "<accession: {}| database: {}>".format(self.acc,self.db)
+        return "<accession: {} | database: {}>".format(self.acc,self.db)
 
 
     def retrieve_data(self,sleep_time=5):
@@ -102,4 +102,4 @@ if __name__ == "__main__":
         c.write_record(st=args.sleep,galaxy=False)
 
     if args.ret_format == "multi" or args.ret_format == "both":
-        cat_files(args.ret_type)
+        cat_files(args.ret_type,output="multi."+str(args.ret_type))
