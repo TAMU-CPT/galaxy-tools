@@ -16,7 +16,7 @@ Tools in the /tools directory are generally organized according to input file ty
 
 The most commonly used tools have test cases built into the wrappper for code validation via [Planemo](https://github.com/galaxyproject/planemo). Test data for each case is specified, and usually lives in a sub-directory.
 
-Tools in this repository are meant to be used on Galaxy. Any use or installation independent of Galaxy, or outside the scope detailed for any given tool, is not guaranteed. 
+Tools in this repository are meant to be used on Galaxy. Any use or installation independent of Galaxy, or outside the scope detailed for any given tool, is not guaranteed. There are also external proprietary tools we have permission to use that are not present in this repository for public distribution, including TMHMM.
 
 
 ## Contribution
