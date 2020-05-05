@@ -3,7 +3,7 @@ from Bio import Entrez
 from Bio import SeqIO
 from urllib.error import HTTPError
 import argparse
-from helperFunctions import cat_files
+from helperFunctions import awk_files
 
 
 Entrez.email = "curtisross@tamu.edu"
@@ -38,10 +38,10 @@ class CPTEfetch:
         return net_handle.read()
 
 
-    def write_record(self,st,galaxy=True):
+    def write_record(self,name,st,galaxy=True,generic=True):
         record = self.retrieve_data(sleep_time=st)
         if galaxy:
-            with open(f"{str(self.acc)}.DAT","w") as file:
+            with open(f"{name}_{str(self.acc)}.DAT","w") as file:
                 file.write(record)
         else:
             with open(f"{str(self.acc)}.{str(self.ret_type)}","w") as file:
@@ -58,22 +58,26 @@ if __name__ == "__main__":
 
     parser.add_argument("--input",
                         type=str,
+                        required=True,
                         action="append",
                         #nargs="*",
                         help='accession input"')
 
     parser.add_argument("--db",
                         type=str,
+                        required=True,
                         choices=("protein", "nuccore"),
                         help="choose protein or nuccore database to do query")
 
     parser.add_argument("--ret_format",
                         type=str,
+                        required=True,
                         choices=("multi","individual","both"),
                         default="individual",
                         help="choose between having a multi-fa/gbk, invidual, or both for the output")
 
     parser.add_argument("--ret_type",
+                        required=True,
                         choices=("fasta","genbank"),
                         help="return format of file")
 
@@ -81,25 +85,34 @@ if __name__ == "__main__":
                         type=int,
                         default=20,
                         help="Amount to delay a query to NCBI by")
-
+    """
     parser.add_argument("--output",
+                        type=argparse.FileType("w"),
+                        default="output")
+
+    parser.add_argument("--multi_output",
                         type=argparse.FileType("w+"),
-                        default="output.dat")
+                        default="multi")
+    """
+    parser.add_argument("--galaxy_on",
+                        action="store_true",
+                        help="user to run galaxy like outputs")
+
 
     args = parser.parse_args()
 
-    print(args.input)
-    for i in args.input:
-        print(i)
-    print(args.email)
-    print(args.db)
-    print(args.ret_type)
-
+    # Write individual records
     for acc in args.input:
         c = CPTEfetch(args.email, acc, args.db, args.ret_type)
-        #c = CPTEfetch("curtisross@tamu.edu","NC_000866.4","nuccore","genbank")
         print(c)
-        c.write_record(st=args.sleep,galaxy=False)
+        if args.galaxy_on:
+            c.write_record(st=args.sleep,name="output",galaxy=True)
+        else:
+            c.write_record(st=args.sleep,name="output",galaxy=False)
 
+    # If more multi format is requested, perform below
     if args.ret_format == "multi" or args.ret_format == "both":
-        cat_files(args.ret_type,output="multi."+str(args.ret_type))
+        if args.galaxy_on:
+            awk_files("DAT",output=f"outputMulti.{str(args.ret_type)}")
+        else:
+            awk_files(str(args.ret_type),output=f"outputMulti.{str(args.ret_type)}")
