@@ -64,7 +64,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
     def start(record, feature):
         """Boundary
         """
-        return str(feature.location.start)
+        return str(feature.location.start + 1)
 
     def end(record, feature):
         """Boundary
@@ -74,10 +74,10 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
     def location(record, feature):
         """Location
         """
-        return "{0.start}..{0.end}".format(feature.location)
+        return str(feature.location.start + 1) + "..{0.end}".format(feature.location)
 
     def length(record, feature):
-        """Length (AA)
+        """CDS Length (AA)
         """
         cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
         return str(sum([len(cds) for cds in cdss]) / 3)
@@ -197,7 +197,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
         """Next gene upstream"""
         if feature.strand > 0:
             upstream_features = [
-                x for x in sorted_features if (x.location.start < feature.location.start and x.type == "gene")
+                x for x in sorted_features if (x.location.start < feature.location.start and x.type == "gene" and x.strand == feature.strand)
             ]
             if len(upstream_features) > 0:
                 return upstream_features[-1]
@@ -205,7 +205,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
                 return None
         else:
             upstream_features = [
-                x for x in sorted_features if x.location.end > feature.location.end
+                x for x in sorted_features if (x.location.end > feature.location.end and x.type == "gene" and x.strand == feature.strand)
             ]
 
             if len(upstream_features) > 0:
@@ -221,7 +221,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
         return "None"
 
     def ig_dist(record, feature):
-        """Distance to next gene on same strand"""
+        """Distance to next upstream gene on same strand"""
         up = upstream_feature(record, feature)
         if up:
             dist = None
