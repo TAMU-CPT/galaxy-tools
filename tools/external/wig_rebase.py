@@ -63,7 +63,10 @@ def rebase_wig(parent, wigData, protein2dna=False, map_by="ID"):
         if line.startswith("variableStep"):
             # No passthrough
             current_id = re.findall("chrom=([^ ]+)", line)[0]
-            current_ft = locations[current_id]
+            try:
+              current_ft = locations[current_id]
+            except:
+              continue
             # Update max value
             if current_ft.end > maxFtLoc:
                 maxFtLoc = current_ft.end
