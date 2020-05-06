@@ -65,7 +65,6 @@ email $email
                         <discover_datasets pattern="(outputMulti)" format="fasta" directory="results" visible="true" />
                     </data>
                 </conditional>
-            </conditional>
                 <conditonal name="ret_type.genbank">
                     <data name="data" format="txt">
                         <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="true" />
