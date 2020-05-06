@@ -19,7 +19,7 @@ class CPTEfetch:
 
 
     def __repr__(self):
-        return "<accession: {} | database: {}>".format(self.acc,self.db)
+        return "<accession: {} | database: {} | return_type: {}>".format(self.acc,self.db,self.ret_type)
 
 
     def retrieve_data(self,sleep_time=5):
@@ -38,11 +38,13 @@ class CPTEfetch:
         return net_handle.read()
 
 
-    def write_record(self,name,st,galaxy=True,generic=True):
+    def write_record(self,name,st,galaxy=True):
         record = self.retrieve_data(sleep_time=st)
         if galaxy:
-            with open(f"{name}_{str(self.acc)}.DAT","w") as file:
+            with open(f"{name}_{str(self.acc)}.{str(self.ret_type)}","w") as file:
                 file.write(record)
+            #with open(f"{name}_{str(self.acc)}.DAT","w") as file:
+                #file.write(record)
         else:
             with open(f"{str(self.acc)}.{str(self.ret_type)}","w") as file:
                 file.write(record)
@@ -102,7 +104,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Write individual records
-    for acc in args.input:
+    for idx, acc in enumerate(args.input):
         c = CPTEfetch(args.email, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
@@ -113,6 +115,7 @@ if __name__ == "__main__":
     # If more multi format is requested, perform below
     if args.ret_format == "multi" or args.ret_format == "both":
         if args.galaxy_on:
-            awk_files("DAT",output=f"outputMulti.{str(args.ret_type)}")
+            #awk_files("DAT",output=f"outputMulti.{str(args.ret_type)}")
+            awk_files(str(args.ret_type),output=f"outputMulti.{str(args.ret_type)}")
         else:
             awk_files(str(args.ret_type),output=f"outputMulti.{str(args.ret_type)}")
