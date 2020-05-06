@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.efetch.cpt-efetch" name="CPT EFetch" version="1.0">
+<tool id="edu.tamu.cpt.efetch.cpt-efetch" name="CPT EFetch (ALPHA)" version="1.0">
     <description>CPT's revised NCBI EFetch</description>
     <macros>
         <requirement type="package" version="1.65">biopython</requirement>
@@ -11,10 +11,11 @@ email $email
 --ret_format $ret_format
 --ret_type $ret_type
 --sleep $sleep
---galaxy_on
+--galaxy_on 
 
     ]]></command>
         <inputs>
+            <param type="text" name="input" label="NCBI Protein or Genome Accession" area="true" help="Custom text box for accessions, must be separated by newline (enter)"/>
             <param type="select" label="NCBI Database to Query" name="db">
                 <option value="protein">Protein</option>
                 <option value="nuccore">Nucleotide</option>
@@ -24,14 +25,53 @@ email $email
                 <option value="genbank">Genbank</option>
             </param>
             <param type="select" label="Format of your returned Files" name="ret_format">
-                <option value="individual"></option>
-                <option value="multi"></option>
-                <option value="both"></option>
+                <option value="individual">Return each file individually</option>
+                <option value="multi">Return a multi-genbank or multi-fasta</option>
+                <option value="both">Return both individual and multi versions</option>
             </param>
             <param name="sleep" type="integer" value="20" label="Amount to slow request to NCBI by" />
         </inputs>
         <outputs>
-            <data format="txt" name="output" label="termHits.txt"/>
+            <conditional name="ret_format.individual">
+                <conditional name="ret_type.fasta">
+                    <data name="data" format="txt">
+                        <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="true" />
+                    </data>
+                </conditional>
+                <conditional name="ret_type.genbank">
+                    <data name="data" format="txt">
+                        <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="true" />
+                    </data>
+                </conditional>
+            </conditional>
+            <conditional name="ret_format.multi">
+                <conditional name="ret_type.fasta">
+                    <data name="data" format="txt">
+                        <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="false" />
+                        <discover_datasets pattern="(outputMulti)" format="fasta" directory="results" visible="true" />
+                    </data>
+                </conditional>
+                <conditional name="ret_type.genbank">
+                    <data name="data" format="txt">
+                        <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="false" />
+                        <discover_datasets pattern="(outputMulti)" format="genbank" directory="results" visible="true" />
+                    </data>
+                </conditional>
+            </conditional>
+            <conditional name="ret_format.both">
+                <conditonal name="ret_type.fasta">
+                    <data name="data" format="txt">
+                        <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="true" />
+                        <discover_datasets pattern="(outputMulti)" format="fasta" directory="results" visible="true" />
+                    </data>
+                </conditional>
+                <conditonal name="ret_type.genbank">
+                    <data name="data" format="txt">
+                        <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="true" />
+                        <discover_datasets pattern="(outputMulti)" format="genbank" directory="results" visible="true" />
+                    </data>
+                </conditional>
+            </conditional>
         </outputs>
         <tests>
         </tests>
