@@ -104,7 +104,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Write individual records
-    for acc in enumerate(args.input):
+    for acc in args.input:
         c = CPTEfetch(args.email, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
@@ -116,6 +116,6 @@ if __name__ == "__main__":
     if args.ret_format == "multi" or args.ret_format == "both":
         if args.galaxy_on:
             #awk_files("DAT",output=f"outputMulti.{str(args.ret_type)}")
-            awk_files(str(args.ret_type),output=f"results/outputMulti.{str(args.ret_type)}")
+            awk_files(str(args.ret_type),direc="results",output=f"outputMulti.{str(args.ret_type)}")
         else:
-            awk_files(str(args.ret_type),output=f"results/outputMulti.{str(args.ret_type)}")
+            awk_files(str(args.ret_type),direc="results",output=f"outputMulti.{str(args.ret_type)}")
