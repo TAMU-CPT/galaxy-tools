@@ -59,7 +59,7 @@ email $email
                 </conditional>
             </conditional>
             <conditional name="ret_format.both">
-                <conditonal name="ret_type.fasta">
+                <conditional name="ret_type.fasta">
                     <data name="data" format="txt">
                         <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="true" />
                         <discover_datasets pattern="(outputMulti)" format="fasta" directory="results" visible="true" />
