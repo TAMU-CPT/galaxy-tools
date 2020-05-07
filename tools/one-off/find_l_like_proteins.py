@@ -59,12 +59,16 @@ def find_l_like_proteins(fasta):
     records = list(SeqIO.parse(fasta, "fasta"))
 
     for record in records:
+        if len(record.seq) < 150:
+            pass
+        else:
+            continue
         for a in find_hydrophobic_seq(record.seq):
             if n_terminus_charge(record.seq[0 : a["start"]]):
                 if record.name.endswith(".CDS"):
-                    print record.name[:-4]
+                    print(record.name[:-4])
                 else:
-                    print record.name
+                    print(record.name)
 
 
 if __name__ == "__main__":
