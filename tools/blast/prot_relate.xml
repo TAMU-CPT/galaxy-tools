@@ -21,6 +21,13 @@ $__tool_directory__/TaxID_List.txt
 	<outputs>
 		<data format="tabular" name="accession_list" label="Top BlastP Hits" />
 	</outputs>
+	<tests>
+		<test>
+			<param name="blast_tsv" value="prot_relate_in.tab"/>
+			<param name="hits" value="10"/>
+			<output name="accession_list" file="prot_relate_out.tab"/>
+		</test>
+	</tests>
 	<help>
 **What it does**
 
@@ -30,6 +37,5 @@ related genomes based on number of protein-protein matches.
 The input must be a tabular file from a BLASTp run with the qseqID, 
 sallseqid, salltitles, sallacc, and staxIDs fields selected.
 </help>
-	<tests/>
 	<expand macro="citations-2020" />
 </tool>
