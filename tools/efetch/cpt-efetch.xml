@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.efetch.cpt-efetch" name="CPT EFetch (ALPHA)" version="1.0">
+<tool id="edu.tamu.cpt.efetch.cpt-efetch" name="ALPHA CPT EFetch ALPHA" version="1.0">
     <description>CPT's revised NCBI EFetch</description>
     <macros>
         <requirement type="package" version="1.65">biopython</requirement>
@@ -57,6 +57,8 @@ email $email
         <tests>
         </tests>
     <help><![CDATA[
+** WARNING : THIS IS AN ALPHA VERSION OF THE TOOL. IT DOES NOT WORK AS DESCRIBED IN THE CURRENT STATE. **
+
 INPUT : An accession, or set of accessions separated by new line. 
 
 - Current version has manual entry of email. Due to the following (from NCBI): To make use of NCBI's E-utilities, NCBI requires you to specify your email address with each request. In case of excessive usage of the E-utilities, NCBI will attempt to contact a user at the email address provided before blocking access to the E-utilities.
