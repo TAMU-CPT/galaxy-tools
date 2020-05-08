@@ -42,6 +42,21 @@ $__tool_directory__/mist3.py
 	<outputs>
 		<data format="html" name="output" />
 	</outputs>
+	<tests>
+		<test>
+			<param name="fasta_files" value="mist3_in.fasta"/>
+			<param name="plot_type" value="complete"/>
+			<param name="zoom" value="100"/>
+			<param name="window" value="20"/>
+			<param name="matrix" value="edna"/>
+			<output name="output" ftype="html">
+				<assert_contents>
+					<has_text text="Mist Results"/>
+					<has_text text="Each section of mist output is now clickable to view a higher resolution version of that subsection"/>
+				</assert_contents>
+			</output>
+		</test>
+	</tests>
 	<help>
 Multiple Interrlated Sequence doTplotter
 ========================================
@@ -73,7 +88,6 @@ considered a single pixel in the output image. For a 1 Mbp genome comparison
 (say 5 x 200-kb phages), this would result in a 20,000 pixel image.
 
 </help>
-	<tests/>
 	<citations>
 		<expand macro="citation/gepard" />
 		<expand macro="citation/mijalisrasche" />
