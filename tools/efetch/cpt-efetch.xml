@@ -12,6 +12,7 @@ email $email
 --ret_type $ret_type
 --sleep $sleep
 --galaxy_on 
+--data $data
 
     ]]></command>
         <inputs>
@@ -29,49 +30,29 @@ email $email
                 <option value="multi">Return a multi-genbank or multi-fasta</option>
                 <option value="both">Return both individual and multi versions</option>
             </param>
-            <param name="sleep" type="integer" value="20" label="Amount to slow request to NCBI by" />
+            <param name="sleep" type="integer" value="20" label="Amount to slow request to NCBI by; increase if errors occur" />
         </inputs>
         <outputs>
-            <when input="ret_format.individual">
-                <when input="ret_type.fasta">
-                    <data name="data" format="txt">
+            <data name="data" format="txt">
+                <filter>ret_type == "fasta"</filter>
+                    <filter>ret_format == "individual"</filter>
                         <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="true" />
-                    </data>
-                </when>
-                <when input="ret_type.genbank">
-                    <data name="data" format="txt">
-                        <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="true" />
-                    </data>
-                </when>
-            </when>
-            <when input="ret_format.multi">
-                <when input="ret_type.fasta">
-                    <data name="data" format="txt">
+                    <filter>ret_format == "multi"</filter>
                         <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="false" />
                         <discover_datasets pattern="(outputMulti)" format="fasta" directory="results" visible="true" />
-                    </data>
-                </when>
-                <when input="ret_type.genbank">
-                    <data name="data" format="txt">
-                        <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="false" />
-                        <discover_datasets pattern="(outputMulti)" format="genbank" directory="results" visible="true" />
-                    </data>
-                </when>
-            </when>
-            <when input="ret_format.both">
-                <when input="ret_type.fasta">
-                    <data name="data" format="txt">
+                    <filter>ret_format == "both"</filter>
                         <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="true" />
                         <discover_datasets pattern="(outputMulti)" format="fasta" directory="results" visible="true" />
-                    </data>
-                </when>
-                <when input="ret_type.genbank">
-                    <data name="data" format="txt">
+                <filter>ret_type == "genbank"</filter>
+                    <filter>ret_format == "individual"</filter>
+                        <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="true" />
+                    <filter>ret_format == "multi"</filter>
+                        <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="false" />
+                        <discover_datasets pattern="(outputMulti)" format="genbank" directory="results" visible="true" />
+                    <filter>ret_format == "both"</filter>
                         <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="true" />
                         <discover_datasets pattern="(outputMulti)" format="genbank" directory="results" visible="true" />
-                    </data>
-                </when>
-            </when>
+            </data>
         </outputs>
         <tests>
         </tests>

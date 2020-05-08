@@ -87,11 +87,12 @@ if __name__ == "__main__":
                         type=int,
                         default=20,
                         help="Amount to delay a query to NCBI by")
-    """
-    parser.add_argument("--output",
+
+    parser.add_argument("--data",
                         type=argparse.FileType("w"),
                         default="output")
 
+    """
     parser.add_argument("--multi_output",
                         type=argparse.FileType("w+"),
                         default="multi")
