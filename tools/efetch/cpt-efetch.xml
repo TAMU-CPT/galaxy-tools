@@ -32,46 +32,46 @@ email $email
             <param name="sleep" type="integer" value="20" label="Amount to slow request to NCBI by" />
         </inputs>
         <outputs>
-            <conditional name="ret_format.individual">
-                <conditional name="ret_type.fasta">
+            <when input="ret_format.individual">
+                <when input="ret_type.fasta">
                     <data name="data" format="txt">
                         <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="true" />
                     </data>
-                </conditional>
-                <conditional name="ret_type.genbank">
+                </when>
+                <when input="ret_type.genbank">
                     <data name="data" format="txt">
                         <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="true" />
                     </data>
-                </conditional>
-            </conditional>
-            <conditional name="ret_format.multi">
-                <conditional name="ret_type.fasta">
+                </when>
+            </when>
+            <when input="ret_format.multi">
+                <when input="ret_type.fasta">
                     <data name="data" format="txt">
                         <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="false" />
                         <discover_datasets pattern="(outputMulti)" format="fasta" directory="results" visible="true" />
                     </data>
-                </conditional>
-                <conditional name="ret_type.genbank">
+                </when>
+                <when input="ret_type.genbank">
                     <data name="data" format="txt">
                         <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="false" />
                         <discover_datasets pattern="(outputMulti)" format="genbank" directory="results" visible="true" />
                     </data>
-                </conditional>
-            </conditional>
-            <conditional name="ret_format.both">
-                <conditional name="ret_type.fasta">
+                </when>
+            </when>
+            <when input="ret_format.both">
+                <when input="ret_type.fasta">
                     <data name="data" format="txt">
                         <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="true" />
                         <discover_datasets pattern="(outputMulti)" format="fasta" directory="results" visible="true" />
                     </data>
-                </conditional>
-                <conditional name="ret_type.genbank">
+                </when>
+                <when input="ret_type.genbank">
                     <data name="data" format="txt">
                         <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="true" />
                         <discover_datasets pattern="(outputMulti)" format="genbank" directory="results" visible="true" />
                     </data>
-                </conditional>
-            </conditional>
+                </when>
+            </when>
         </outputs>
         <tests>
         </tests>
