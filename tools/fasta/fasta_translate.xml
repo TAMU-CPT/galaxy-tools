@@ -54,6 +54,15 @@ $__tool_directory__/fasta_translate.py
 	<outputs>
 		<data format="fasta" hidden="false" name="default"/>
 	</outputs>
+	<tests>
+		<test>
+			<param name="sequences" value="miro.cds.fa" />
+			<param name="format_select" value="protein" />
+			<param name="table" value="11" />
+			<param name="strip_stops" value="--strip_stops" />
+			<output name="default" file="miro.cdsprot.fa" />
+		</test>
+	</tests>
 	<help><![CDATA[
 **What it does**
 
