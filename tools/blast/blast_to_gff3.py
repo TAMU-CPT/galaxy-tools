@@ -83,6 +83,7 @@ def blastxml2gff3(blastxml, include_seq=False):
                 "source": "blast",
                 "accession": hit.accession,
                 "hit_id": clean_string(hit.hit_id),
+                "score": None,
                 "length": hit.length,
                 "hit_titles": clean_slist(hit.title.split(" >")),
                 "hsp_count": len(hit.hsps),
@@ -95,7 +96,9 @@ def blastxml2gff3(blastxml, include_seq=False):
                     # -2 and +1 for start/end to convert 0 index of python to 1 index of people, -2 on start because feature location saving issue
                     parent_match_start = hsp.query_start
                     parent_match_end = hsp.query_end
+                    hit_qualifiers["score"] = hsp.expect
                 # generate qualifiers to be added to gff3 feature
+                hit_qualifiers["score"] = min(hit_qualifiers["score"], hsp.expect)
                 hsp_qualifiers = {
                     "ID": "b2g.%s.%s.hsp%s" % (idx_record, idx_hit, idx_hsp),
                     "source": "blast",
@@ -229,6 +232,7 @@ def combine_records(records):
                     feat.location.start + 1,
                     feat.location.end,
                 )
+                cleaned_records[combo_id].features[0].qualifiers["score"] = min(cleaned_records[combo_id].features[0].qualifiers["score"], feat.qualifiers["score"])
                 # if feat.location.start < new_parent_start:
                 #    new_parent_start = feat.location.start - 1
                 # if feat.location.end > new_parent_end:
