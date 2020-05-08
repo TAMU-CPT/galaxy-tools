@@ -25,6 +25,7 @@
 		<tool hidden="True" file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/epost.xml"/>
 		<tool hidden="True" file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/esearch.xml"/>
 		<tool hidden="True" file="cpt2/tools-iuc/tools/ncbi_entrez_eutils/esummary.xml"/>
+        <tool file="cpt2/galaxy-tools/tools/efetch/cpt-efetch.xml"/>
 	</section>
 	<section id="34f35d9e-195b-4a7e-9ebc-da841227cd46" name="CPT: Sequencing">
 		<tool file="cpt2/galaxy-tools/tools/ngs/cpt_read_subset.xml" label="ngs"/>
