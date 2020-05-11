@@ -1,7 +1,7 @@
 <tool id="edu.tamu.cpt.efetch.cpt-efetch" name="ALPHA CPT EFetch ALPHA" version="1.0">
     <description>CPT's revised NCBI EFetch</description>
     <macros>
-        <requirement type="package" version="1.65">biopython</requirement>
+        <import>cpt-macros.xml</import>
     </macros>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/cpt-efetch.py
