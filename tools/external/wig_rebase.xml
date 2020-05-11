@@ -32,9 +32,10 @@ $protein2dna
           <output name="output" file="T7_BW_I_REBASE.wig"/>
       </test>
       <test>
-          <param name="parent" value="tmhmm.parent.gff"/>
-          <param name="wigFile" value="tmhmm_m.gff"/>
+          <param name="parent" value="tmhmm.parent.gff3"/>
+          <param name="wigFile" value="tmhmm_m.wig"/>
           <param name="protein2dna" value="--protein2dna" />
+          <param name="map_by" value="ID" />
           <output name="output" file="rebased_m.wig"/>
       </test>
   </tests>
