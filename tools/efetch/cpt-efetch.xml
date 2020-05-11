@@ -35,24 +35,6 @@ email $email
         </inputs>
         <outputs>
             <data name="data" format="txt">
-                <filter>ret_type == "fasta"</filter>
-                    <filter>ret_format == "individual"</filter>
-                        <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="true" />
-                    <filter>ret_format == "multi"</filter>
-                        <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="false" />
-                        <discover_datasets pattern="(outputMulti)" format="fasta" directory="results" visible="true" />
-                    <filter>ret_format == "both"</filter>
-                        <discover_datasets pattern="__designation__" format="fasta" directory="results" visible="true" />
-                        <discover_datasets pattern="(outputMulti)" format="fasta" directory="results" visible="true" />
-                <filter>ret_type == "genbank"</filter>
-                    <filter>ret_format == "individual"</filter>
-                        <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="true" />
-                    <filter>ret_format == "multi"</filter>
-                        <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="false" />
-                        <discover_datasets pattern="(outputMulti)" format="genbank" directory="results" visible="true" />
-                    <filter>ret_format == "both"</filter>
-                        <discover_datasets pattern="__designation__" format="genbank" directory="results" visible="true" />
-                        <discover_datasets pattern="(outputMulti)" format="genbank" directory="results" visible="true" />
             </data>
         </outputs>
         <tests>
