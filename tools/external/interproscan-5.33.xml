@@ -52,9 +52,9 @@ mv ${output_gff3}.html.tar.gz ${output_html};
     <tests>
           <test>
             <param name="input" value="T7_CDS_AA.fasta" />
-            <param name="goterms" value="True" />
-            <param name="iprlookup" value="True" />
-            <param name="pathways" value="True" />
+            <param name="goterms" value="--goterms" />
+            <param name="iprlookup" value="--iprlookup" />
+            <param name="pathways" value="--pathways" />
             <param name="appl" value="TIGRFAM,PIRSF,ProDom,PANTHER,SMART,PrositeProfiles,PrositePatterns,Hamap,Pfam,PRINTS,SUPERFAMILY,Coils,Gene3D,SignalP-GRAM_POSITIVE,SignalP-GRAM_NEGATIVE,SignalP-EUK,Phobius" />
             <output name="output_gff3" file="T7_INTERPRO.gff3" />
             <output name="output_html" file="T7_INTERPRO.tar.gz" />
