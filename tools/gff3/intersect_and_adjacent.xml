@@ -21,13 +21,21 @@ $stranding
     <param label="GFF3 Annotations A" name="gff3_data_a" type="data" format="gff3"/>
     <param label="GFF3 Annotations B" name="gff3_data_b" type="data" format="gff3"/>
     <param label="Adjacency Window Size" name="window" type="integer" value = "0"/>
-    <param label="Only allow adjacencies for features on the same strande" name="stranding" type="boolean" checked="false" truevalue="-stranding" falsevalue="" />
+    <param label="Only allow adjacencies for features on the same strand" name="stranding" type="boolean" checked="false" truevalue="-stranding" falsevalue="" />
   </inputs>
   <outputs>
     <data format="gff3" name="oa" label="GFF3 Annotations from ${gff3_data_a.name} in ${gff3_data_b.name}"/>
     <data format="gff3" name="ob" label="GFF3 Annotations from ${gff3_data_b.name} in ${gff3_data_a.name}"/>
   </outputs>
   <tests>
+		<test>
+			<param name="gff3_data_a" value="T7_ISP.gff3" />
+			<param name="gff3_data_b" value="T7_OSP.gff3" />
+                        <param name="window" value= "50" />
+                        <param name="stranding" value= "True"/>
+			<output name="oa" file="T7_IA1.gff3" />
+			<output name="ob" file="T7_IA2.gff3" />
+		</test>
 		<test>
 			<param name="gff3_data_a" value="a.gff3" />
 			<param name="gff3_data_b" value="b.gff3" />

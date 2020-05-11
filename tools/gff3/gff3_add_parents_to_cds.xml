@@ -17,6 +17,10 @@ $__tool_directory__/gff3_add_parents_to_cds.py
     <data format="gff3" name="output"/>
   </outputs>
   <tests>
+                <test>
+			<param name="gff3_data" value="T7_ORF_GFF.gff3" />
+			<output name="output" file="T7_ORF_WITH_GENE.gff3" />
+		</test>
 		<test>
 			<param name="gff3_data" value="miro.gff3" />
 			<output name="output" file="miro.full.gff3" />

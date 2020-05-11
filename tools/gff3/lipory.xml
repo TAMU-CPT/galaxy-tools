@@ -28,6 +28,13 @@ $positional_2
   </outputs>
   <tests>
       <test>
+          <param name="positional_1" value="T7_REQ_SD.gff3" />
+          <param name="positional_2" value="T7_CLEAN.fasta" />
+          <param name="lipobox_mindist" value="10" />
+          <param name="lipobox_maxdist" value="60" />
+          <output name="default" value="T7_OSP.gff3" />
+      </test>
+      <test>
           <param name="positional_1" value="soft.gff" />
           <param name="positional_2" value="soft.fa" />
           <param name="default" value="soft.lipo.gff" />
