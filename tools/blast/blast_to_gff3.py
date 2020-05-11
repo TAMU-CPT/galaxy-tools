@@ -231,8 +231,8 @@ def combine_records(records):
                     new_parent_end,
                     feat.location.start + 1,
                     feat.location.end,
-                )
-                cleaned_records[combo_id].features[0].qualifiers["score"] = min(cleaned_records[combo_id].features[0].qualifiers["score"], feat.qualifiers["score"])
+                ) 
+                cleaned_records[combo_id].features[0].qualifiers["score"] = min(cleaned_records[combo_id].features[0].qualifiers["score"], feat.qualifiers["blast_score"])
                 # if feat.location.start < new_parent_start:
                 #    new_parent_start = feat.location.start - 1
                 # if feat.location.end > new_parent_end:
