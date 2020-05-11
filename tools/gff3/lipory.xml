@@ -37,6 +37,8 @@ $positional_2
       <test>
           <param name="positional_1" value="soft.gff" />
           <param name="positional_2" value="soft.fa" />
+	  <param name="lipobox_mindist" value="10" />
+          <param name="lipobox_maxdist" value="40" />
           <param name="default" value="soft.lipo.gff" />
       </test>
   </tests>
