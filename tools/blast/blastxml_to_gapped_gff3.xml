@@ -33,11 +33,14 @@ $include_seq
           <param name="blastxml" value="T7_NR.blastxml"/>
           <param name="min_gap" value="10"/>
           <param name="trim" value="--trim"/>
-          <param name="include_seq" value="True"/>
+          <param name="include_seq" value="--include_seq"/>
           <output name="output" file="T7_NR_TO_GFF3.gff3"/>
       </test>
       <test>
           <param name="blastxml" value="input.xml"/>
+	  <param name="min_gap" value="10"/>
+          <param name="trim" value=""/>
+          <param name="include_seq" value=""/>
           <output name="output" file="blast.gff"/>
       </test>
   </tests>
