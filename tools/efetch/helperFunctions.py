@@ -18,7 +18,7 @@ def cat_files(file_ext, direc=False, output="cat_combination.txt",galaxy=False):
 def awk_files(file_ext, output="awk_combination.txt", galaxy=False):
     try:
         if galaxy:
-            cmd = "awk NF *.{} > {}Multi.{}".format(file_ext, output.name, file_ext)
+            cmd = "awk NF *.{} > {}Multi.{}".format(file_ext, output, file_ext)
         else:
             cmd = "awk NF *.{} > {}".format(file_ext, output)
         subprocess.run(cmd, shell=True)

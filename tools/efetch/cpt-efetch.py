@@ -46,7 +46,7 @@ class CPTEfetch:
             """with name as f:
                 print(name)
                 f.write(record)"""
-            with open(f"{name.name}_{str(self.acc)}.{str(self.ret_type)}","w") as file:
+            with open(f"{name}_{str(self.acc)}.{str(self.ret_type)}","w") as file:
                 file.write(record)
         else:
             with open(f"{str(self.acc)}.{str(self.ret_type)}","w") as file:
@@ -92,9 +92,8 @@ if __name__ == "__main__":
                         help="Amount to delay a query to NCBI by")
 
     parser.add_argument("--data",
-                        type=argparse.FileType("w"),
-                        nargs="?",
-                        default="output")
+                        type=argparse.FileType("w+"),
+                        default="data_accs.txt")
 
     """
     parser.add_argument("--multi_output",
@@ -107,10 +106,13 @@ if __name__ == "__main__":
 
 
     args = parser.parse_args()
-    print(args)
+    #print(args)
     # Write individual records
     if not os.path.exists("results"):
         os.mkdir("results")
+
+    with open(args.data.name, "w+") as f:
+        f.writelines("accession: "+str(args.input)+"\n")
 
     if args.galaxy_on:
         os.chdir("results")
@@ -119,7 +121,7 @@ if __name__ == "__main__":
         c = CPTEfetch(args.email, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
-            c.write_record(st=args.sleep,name=args.data,galaxy=True)
+            c.write_record(st=args.sleep,name="output",galaxy=True)
         else:
             c.write_record(st=args.sleep,name="data_",galaxy=False)
 
@@ -128,6 +130,7 @@ if __name__ == "__main__":
         if args.galaxy_on:
             #awk_files("DAT",output=f"outputMulti.{str(args.ret_type)}")
             #awk_files(str(args.ret_type),output=f"outputMulti.{str(args.ret_type)}")
-            awk_files(str(args.ret_type),output=args.data,galaxy=True)
+            awk_files(str(args.ret_type),output="output",galaxy=True)
         else:
             awk_files(str(args.ret_type),output=f"outputMulti.{str(args.ret_type)}")
+
