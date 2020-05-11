@@ -32,17 +32,9 @@ $stranding
 			<param name="gff3_data_a" value="T7_ISP.gff3" />
 			<param name="gff3_data_b" value="T7_OSP.gff3" />
                         <param name="window" value= "50" />
-                        <param name="stranding" value= "True"/>
+                        <param name="stranding" value= "-stranding"/>
 			<output name="oa" file="T7_IA1.gff3" />
 			<output name="ob" file="T7_IA2.gff3" />
-		</test>
-		<test>
-			<param name="gff3_data_a" value="a.gff3" />
-			<param name="gff3_data_b" value="b.gff3" />
-                        <param name="window" value= "50" />
-                        <param name="stranding" value= "-stranding"/>
-			<output name="oa" file="a_hits_in_b.gff" />
-			<output name="ob" file="b_hits_in_a.gff" />
 		</test>
   </tests>
   <help><![CDATA[
