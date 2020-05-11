@@ -15,11 +15,10 @@ def cat_files(file_ext, direc=False, output="cat_combination.txt",galaxy=False):
         print(err)
 
 
-def awk_files(file_ext, direc=False, output="awk_combination.txt",galaxy=False):
+def awk_files(file_ext, output="awk_combination.txt", galaxy=False):
     try:
-        if direc:
-            os.chdir(direc)
-            cmd = "awk NF *.{} > {}".format(file_ext, output)
+        if galaxy:
+            cmd = "awk NF *.{} > {}Multi.{}".format(file_ext, output.name, file_ext)
         else:
             cmd = "awk NF *.{} > {}".format(file_ext, output)
         subprocess.run(cmd, shell=True)

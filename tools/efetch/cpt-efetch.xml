@@ -16,6 +16,7 @@ email $email
 
     ]]></command>
         <inputs>
+            <param type="text" name="email" label="Email" help="Email used to query NCBI"/>
             <param type="text" name="input" label="NCBI Protein or Genome Accession" area="true" help="Custom text box for accessions, must be separated by newline (enter)"/>
             <param type="select" label="NCBI Database to Query" name="db">
                 <option value="protein">Protein</option>
