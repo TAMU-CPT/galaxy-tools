@@ -51,6 +51,19 @@ get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e "
 	</outputs>
 	<tests>
 		<test>
+			<param name="input_file" value="T7_CLEAN.fasta" />
+			<param name="table" value="11" />
+			<param name="ftype" value="ORF" />
+			<param name="ends" value="open" />
+			<param name="mode" value="all" />
+			<param name="min_len" value="30" />
+			<param name="strand" value="both" />
+			<output name="out_nuc_file" file="T7_ORF_NUC.fasta" />
+			<output name="out_prot_file" file="T7_ORF_AA.fasta" />
+			<output name="out_bed_file" file="T7_ORF_BED.bed" />
+			<output name="out_gff3_file" file="T7_ORF_GFF.gff3" />
+		</test>
+		<test>
 			<param name="input_file" value="get_orf_input.fasta" />
 			<param name="table" value="1" />
 			<param name="ftype" value="CDS" />
