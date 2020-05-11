@@ -25,10 +25,6 @@ $__tool_directory__/gff3_add_parents_to_cds.py
 			<param name="gff3_data" value="miro.gff3" />
 			<output name="output" file="miro.full.gff3" />
 		</test>
-		<test>
-			<param name="gff3_data" value="miro.cds.gff3" />
-			<output name="output" file="miro.full.gff3" />
-		</test>
   </tests>
   <help><![CDATA[
 **What it does**
