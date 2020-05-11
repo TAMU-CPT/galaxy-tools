@@ -23,8 +23,8 @@ $region
   <tests>
 		<test>
 			<param name="gff3_data" value="T7_IA1.gff3" />
-			<param name="remark" value="True" />
-                        <param name="region" value= "True" />
+			<param name="remark" value="--remark" />
+                        <param name="region" value= "--region" />
 			<output name="default" file="T7_IA1_NO_ANNOT.gff3" />
 		</test>
   </tests>
