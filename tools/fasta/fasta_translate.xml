@@ -59,7 +59,7 @@ $__tool_directory__/fasta_translate.py
 			<param name="sequences" value="T7_EXT_CDS.fasta" />
                         <param name="output" value="protein" />
                         <param name="table" value="11" />
-                        <param name="strip_stops" value="True" />
+                        <param name="strip_stops" value="--strip_stops" />
 			<output name="default" file="T7_CDS_AA.fasta" />
 		</test>
 	</tests>
