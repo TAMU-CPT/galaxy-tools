@@ -54,8 +54,6 @@ get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e "
 			<param name="input_file" value="T7_CLEAN.fasta" />
 			<param name="table" value="11" />
 			<param name="ftype" value="ORF" />
-			<param name="ends" value="open" />
-			<param name="mode" value="all" />
 			<param name="min_len" value="30" />
 			<param name="strand" value="both" />
 			<output name="out_nuc_file" file="T7_ORF_NUC.fasta" />
@@ -67,8 +65,6 @@ get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e "
 			<param name="input_file" value="get_orf_input.fasta" />
 			<param name="table" value="1" />
 			<param name="ftype" value="CDS" />
-			<param name="ends" value="open" />
-			<param name="mode" value="all" />
 			<param name="min_len" value="10" />
 			<param name="strand" value="forward" />
 			<output name="out_nuc_file" file="get_orf_input.t1_nuc_out.fasta" />
@@ -80,40 +76,12 @@ get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e "
 			<param name="input_file" value="get_orf_input.fasta" />
 			<param name="table" value="11" />
 			<param name="ftype" value="CDS" />
-			<param name="ends" value="closed" />
-			<param name="mode" value="all" />
 			<param name="min_len" value="10" />
 			<param name="strand" value="forward" />
 			<output name="out_nuc_file" file="get_orf_input.t11_nuc_out.fasta" />
 			<output name="out_prot_file" file="get_orf_input.t11_prot_out.fasta" />
 			<output name="out_bed_file" file="get_orf_input.t11_bed_out.bed" />
 			<output name="out_gff3_file" file="get_orf_input.t11_gff3_out.gff3" />
-		</test>
-		<test>
-			<param name="input_file" value="get_orf_input.fasta" />
-			<param name="table" value="11" />
-			<param name="ftype" value="CDS" />
-			<param name="ends" value="open" />
-			<param name="mode" value="all" />
-			<param name="min_len" value="10" />
-			<param name="strand" value="forward" />
-			<output name="out_nuc_file" file="get_orf_input.t11_open_nuc_out.fasta" />
-			<output name="out_prot_file" file="get_orf_input.t11_open_prot_out.fasta" />
-			<output name="out_bed_file" file="get_orf_input.t11_open_bed_out.bed" />
-			<output name="out_gff3_file" file="get_orf_input.t11_open_gff3_out.gff3" />
-		</test>
-		<test>
-			<param name="input_file" value="Ssuis.fasta" />
-			<param name="table" value="11" />
-			<param name="ftype" value="ORF" />
-			<param name="ends" value="open" />
-			<param name="mode" value="all" />
-			<param name="min_len" value="100" />
-			<param name="strand" value="both" />
-			<output name="out_nuc_file" file="get_orf_input.Suis_ORF.nuc.fasta" />
-			<output name="out_prot_file" file="get_orf_input.Suis_ORF.prot.fasta" />
-			<output name="out_bed_file" file="get_orf_input.Suis_ORF.bed" />
-			<output name="out_gff3_file" file="get_orf_input.Suis_ORF.gff3" />
 		</test>
 	</tests>
 	<help>
