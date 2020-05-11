@@ -1,5 +1,6 @@
 import time
 import os
+from os import path
 from Bio import Entrez
 from Bio import SeqIO
 from urllib.error import HTTPError
@@ -42,10 +43,11 @@ class CPTEfetch:
     def write_record(self,name,st,galaxy=True):
         record = self.retrieve_data(sleep_time=st)
         if galaxy:
+            """with name as f:
+                print(name)
+                f.write(record)"""
             with open(f"{name.name}_{str(self.acc)}.{str(self.ret_type)}","w") as file:
                 file.write(record)
-            #with open(f"{name}_{str(self.acc)}.DAT","w") as file:
-                #file.write(record)
         else:
             with open(f"{str(self.acc)}.{str(self.ret_type)}","w") as file:
                 file.write(record)
@@ -91,6 +93,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--data",
                         type=argparse.FileType("w"),
+                        nargs="?",
                         default="output")
 
     """
@@ -104,8 +107,11 @@ if __name__ == "__main__":
 
 
     args = parser.parse_args()
-
+    print(args)
     # Write individual records
+    if not os.path.exists("results"):
+        os.mkdir("results")
+
     if args.galaxy_on:
         os.chdir("results")
 
@@ -115,7 +121,7 @@ if __name__ == "__main__":
         if args.galaxy_on:
             c.write_record(st=args.sleep,name=args.data,galaxy=True)
         else:
-            c.write_record(st=args.sleep,name="results/output",galaxy=False)
+            c.write_record(st=args.sleep,name="data_",galaxy=False)
 
     # If more multi format is requested, perform below
     if args.ret_format == "multi" or args.ret_format == "both":
