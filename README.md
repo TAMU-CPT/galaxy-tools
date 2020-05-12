@@ -1,6 +1,6 @@
 # CPT Galaxy Tools
 
-This is the collection of tools found in the [Center for Phage Technology](https://cpt.tamu.edu/) Galaxy instance. The tool set is tailored for the analysis and annotation of bacteriophage genomes, but should also work well for prokaryotic genomes. 
+This is the collection of tools developed by the [Center for Phage Technology](https://cpt.tamu.edu/) for their Galaxy instance. The tool set is tailored for the analysis and annotation of bacteriophage genomes, but should also work well for prokaryotic genomes. 
 
 Documentation on the use of common tools and workflows can be found at [https://cpt.tamu.edu/training-material](https://cpt.tamu.edu/training-material).
 
@@ -31,4 +31,4 @@ Exceptions include the [webapollo tools](https://github.tamu.edu/CPT/Galaxy-Tool
 
 ## Support and Funding
 
-Funding for the CPT Galaxy project comes from the National Science Foundation (awards DBI-1565146, EF-0949351). Additional support has been provided by an Initial University Multidisciplinary Research Initiative supported by Texas A&M University and Texas AgriLife Research, and from the Department of Biochemistry and Biophysics at Texas A&M University. Visit the p[CPT website](https://cpt.tamu.edu/people/) for contact information of the Principal Investigators on this project, Ry Young and Jason Gill. 
+Funding for the CPT Galaxy project comes from the National Science Foundation (awards DBI-1565146, EF-0949351). Additional support has been provided by an Initial University Multidisciplinary Research Initiative supported by Texas A&M University and Texas AgriLife Research, and from the Department of Biochemistry and Biophysics at Texas A&M University. Visit the [CPT website](https://cpt.tamu.edu/people/) for contact information of the Principal Investigators on this project, Ry Young and Jason Gill. 
