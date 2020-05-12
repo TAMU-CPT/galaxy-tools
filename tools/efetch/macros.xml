@@ -6,6 +6,11 @@
 			<requirement type="package" version="1.67">biopython</requirement>
 			<yield/>
 		</requirements>
+        <version_command>
+		<![CDATA[
+			cd $__tool_directory__ && git rev-parse HEAD
+		]]>
+		</version_command>
 	</xml>
 	<xml name="genome_selector">
 		<conditional name="reference_genome">
