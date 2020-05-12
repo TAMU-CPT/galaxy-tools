@@ -2,7 +2,7 @@
 <macros>
 	<xml name="requirements">
 		<requirements>
-			<requirement type="package" version="2.7">python</requirement>
+			<requirement type="package" version="3.6">python</requirement>
 			<requirement type="package" version="1.67">biopython</requirement>
 			<yield/>
 		</requirements>
