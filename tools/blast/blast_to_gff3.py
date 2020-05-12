@@ -88,8 +88,8 @@ def blastxml2gff3(blastxml, include_seq=False):
                 "hit_titles": clean_slist(hit.title.split(" >")),
                 "hsp_count": len(hit.hsps),
             }
-            desc = clean_string(hit.title.split(" >")[0])
-            hit_qualifiers["Name"] = clean_string(desc)
+            desc = hit.title.split(" >")[0]
+            hit_qualifiers["Name"] = desc
             sub_features = []
             for idx_hsp, hsp in enumerate(hit.hsps):
                 if idx_hsp == 0:
@@ -166,9 +166,7 @@ def blastxml2gff3(blastxml, include_seq=False):
                 )
 
             # Build the top level seq feature for the hit
-            hit_qualifiers["description"] = clean_string(
-                "Hit to %s..%s of %s" % (parent_match_start, parent_match_end, desc,)
-            )
+            hit_qualifiers["description"] = "Hit to %s..%s of %s" % (parent_match_start, parent_match_end, desc,)
             top_feature = SeqFeature(
                 FeatureLocation(parent_match_start - 1, parent_match_end),
                 type=match_type,
@@ -242,14 +240,11 @@ def combine_records(records):
             )
             cleaned_records[combo_id].features[0].qualifiers[
                 "description"
-            ] = clean_string(
-                "Hit to %s..%s of %s"
-                % (
+            ] = "Hit to %s..%s of %s"  % (
                     new_parent_start,
                     new_parent_end,
                     cleaned_records[combo_id].features[0].qualifiers["Name"],
                 )
-            )
             # save the renamed and ordered feature list to record
             cleaned_records[combo_id].features[0].sub_features = copy.deepcopy(
                 sub_features
@@ -307,11 +302,9 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         feature_id = "b2g.%s" % (record_idx)
         hit_qualifiers = {
             "ID": feature_id,
-            "Name": clean_string(dc["salltitles"].split("<>")[0]),
-            "description": clean_string(
-                "Hit to {sstart}..{send} of {x}".format(
+            "Name": (dc["salltitles"].split("<>")[0]),
+            "description": "Hit to {sstart}..{send} of {x}".format(
                     x=dc["salltitles"].split("<>")[0], **dc
-                )
             ),
             "source": "blast",
             "score": dc["evalue"],
