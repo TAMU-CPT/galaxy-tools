@@ -141,5 +141,5 @@ if __name__ == "__main__":
             #awk_files(str(args.ret_type),output=f"outputMulti.{str(args.ret_type)}")
             awk_files(str(args.ret_type),output="output",galaxy=True)
         else:
-            awk_files(str(args.ret_type),output=f"outputMulti.{str(args.ret_type)}")
+            awk_files(str(args.ret_type),output="outputMulti"+str(args.ret_type))
 
