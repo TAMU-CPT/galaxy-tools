@@ -1,0 +1,17 @@
+IPR020000
+Bacteriophage P2, LysB
+IPR020130
+Spanin, outer lipoprotein subunit, T7likevirus
+IPR016417
+Spanin, inner membrane subunit, T7likevirus-type
+TIGR03495
+phage lysis regulatory protein, LysB family
+IPR004929
+Spanin, inner membrane subunit
+IPR010346
+Spanin, outer membrane subunit
+PF17531
+outer-membrane spanin sub-unit
+MF_04137
+PF06085
+Lipoprotein Rz1 precursor

@@ -1,7 +1,5 @@
 # Notes to the Future Maintainer
 
-(Of this steaming pile of \*\*\*\*)
-
 - The ideas in this tool are all good
 - We just need to be more obvious about what we're doing.
     - E.g. BlastN, if we rev+com before analysing, make sure ALL locations

@@ -19,6 +19,13 @@ wigToBigWig -clip stdin chrom.len '$bigwig'
 	<outputs>
 		<data format="bigwig" name="bigwig" />
 	</outputs>
+        <tests>
+          <test>
+            <param name="wigFile" value="T7_BW_I_REBASE.wig" />
+            <param name="genomes" value="T7_CLEAN.fasta" />
+            <output name="bigwig" value="T7_BW_I_REBASE.bigwig" />
+          </test>
+        </tests>
 	<help><![CDATA[
 **What it does**
 

@@ -61,9 +61,13 @@ def blasttsv2gff3(
             continue
 
         dc = {k: v for (k, v) in zip(columns, (x.strip() for x in record.split("\t")))}
+        #print(columns)
+        #print(dc)
+        #exit()
 
         rec = SeqRecord(Seq("ACTG"), id=dc["qseqid"])
-
+        #print(record_idx)
+        #print(type(record_idx))
         feature_id = "blast.%s.%s.%s" % (record_idx, dc["qseqid"], dc["sseqid"])
         feature_id = re.sub("\|", "_", feature_id)  # Replace any \ or | with _
         feature_id = re.sub(
