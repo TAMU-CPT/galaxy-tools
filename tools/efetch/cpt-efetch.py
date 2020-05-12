@@ -113,15 +113,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
     #print(args)
     # Write individual records
-    if not os.path.exists("results"):
-        os.mkdir("results")
 
     with args.data as f:
         f.writelines("accessions: "+str(args.input)+"\n")
 
-    if args.galaxy_on:
-        os.chdir("results")
-    
     if "__at__" in args.email:
         splits = args.email.split("__at__")
         email = splits[0]+"@"+splits[1]
