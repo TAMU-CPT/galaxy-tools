@@ -116,9 +116,16 @@ if __name__ == "__main__":
 
     if args.galaxy_on:
         os.chdir("results")
+    
+    if "__at__" in args.email:
+        splits = args.email.split("__at__")
+        email = splits[0]+"@"+splits[1]
+    else:
+        email = args.email
 
+    print("Logged in as: "+email)
     for acc in args.input:
-        c = CPTEfetch(args.email, acc, args.db, args.ret_type)
+        c = CPTEfetch(email, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
             c.write_record(st=args.sleepy,name="output",galaxy=True)
