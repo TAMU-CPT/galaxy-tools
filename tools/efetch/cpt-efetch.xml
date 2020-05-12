@@ -1,0 +1,65 @@
+<tool id="edu.tamu.cpt.efetch.cpt-efetch" name="ALPHA CPT EFetch ALPHA" version="1.0">
+    <description>CPT's revised NCBI EFetch</description>
+    <macros>
+        <import>macros.xml</import>
+    <!--    <import>cpt-macros.xml</import>-->
+    </macros>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/cpt-efetch.py
+email $email
+--input $input
+--db $db
+--ret_format $ret_format
+--ret_type $ret_type
+--galaxy_on 
+--data $data
+--sleepy $sleepy
+
+    ]]></command>
+        <inputs>
+            <param type="text" name="email" label="Email" help="Email used to query NCBI"/>
+            <param type="text" name="input" label="NCBI Protein or Genome Accession" area="true" help="Custom text box for accessions, must be separated by newline (enter)"/>
+            <param type="select" label="NCBI Database to Query" name="db">
+                <option value="protein">Protein</option>
+                <option value="nuccore">Nucleotide</option>
+            </param>
+            <param type="select" label="File(s) Retrieved Type" name="ret_type">
+                <option value="fasta">FASTA</option>
+                <option value="genbank">Genbank</option>
+            </param>
+            <param type="select" label="Format of your returned Files" name="ret_format">
+                <option value="individual">Return each file individually</option>
+                <option value="multi">Return a multi-genbank or multi-fasta</option>
+                <option value="both">Return both individual and multi versions</option>
+            </param>
+            <param name="sleepy" type="integer" value="20" label="Amount to slow request to NCBI by; increase if errors occur"/>
+        </inputs>
+        <outputs>
+            <data name="data" format="txt">
+            </data>
+        </outputs>
+        <tests>
+        </tests>
+    <help><![CDATA[
+** WARNING : THIS IS AN ALPHA VERSION OF THE TOOL. IT DOES NOT WORK AS DESCRIBED IN THE CURRENT STATE. **
+
+INPUT : An accession, or set of accessions separated by new line. 
+
+
+** aside: ** Current version has manual entry of email. This is due to the following (from NCBI): To make use of NCBI's E-utilities, NCBI requires you to specify your email address with each request. In case of excessive usage of the E-utilities, NCBI will attempt to contact a user at the email address provided before blocking access to the E-utilities.
+
+
+OUTPUT : Requested file type (genbank or fasta) individually and/or combined together.
+
+    ]]></help>
+        <citations>
+            <citation type="bibtex">
+                @unpublished{galaxyTools,
+                author = {C. Ross},
+                title = {CPT Galaxy Tools},
+                year = {2020-},
+                note = {https://github.com/tamu-cpt/galaxy-tools/}
+                }
+            </citation>
+        </citations>
+</tool>

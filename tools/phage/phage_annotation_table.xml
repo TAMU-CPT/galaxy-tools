@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.phage.annotation_table" name="Annotation Table" version="4.0">
+<tool id="edu.tamu.cpt2.phage.annotation_table" name="Annotation Table" version="20.0.0.1">
     <description>from gff3 formatted datasets</description>
     <macros>
       <import>macros.xml</import>
@@ -12,7 +12,7 @@
 python $__tool_directory__/phage_annotation_table.py
 $gff3_data
 @GENOME_SELECTOR@
-
+--types "$extraTypes"
 --reportTemplateName "$report_format"
 --annotationTableCols "$cols,$gaf_cols"
 #if $gaf_data:
@@ -23,9 +23,11 @@ $gff3_data
     <inputs>
         <expand macro="gff3_input" />
         <expand macro="genome_selector" />
+        <param label="Extra sub-feature types to include (Comma-separated, Will always include gene)" optional="True" name="extraTypes" type="text" value =""/>
         <param label="Columns" type="select" name="cols" multiple="True">
             <option value="rid" selected="true">Record ID</option>
             <option value="id" selected="true">ID</option>
+            <option value="type" selected="true">Type</option>
             <option value="name" selected="true">Name</option>
 
             <option value="location" selected="true">Location</option>
@@ -57,20 +59,20 @@ $gff3_data
             help="Optional GAF Data Table. This usually comes from the CPT CACAO GAF Data Export tool. The [GAF] Columns below are ONLY available when this data is populated."/>
         <param label="GAF Columns" type="select" name="gaf_cols" multiple="True">
             <!-- GAF Specific Fields -->
-            <option value="gaf_annotation_extension" selected="true">GAF Annotation Extension</option>
-            <option value="gaf_aspect" selected="true">GAF Aspect</option>
-            <option value="gaf_assigned_by" selected="true">GAF Assigned By</option>
-            <option value="gaf_date" selected="true">GAF Date</option>
-            <option value="gaf_db" selected="true">GAF DB</option>
-            <option value="gaf_db_reference" selected="true">GAF DB Reference</option>
-            <option value="gaf_evidence_code" selected="true">GAF Evidence Code</option>
-            <option value="gaf_gene" selected="true">GAF Gene</option>
-            <option value="gaf_go_id" selected="true">GAF GO ID</option>
-            <option value="gaf_go_term" selected="true">GAF GO Term</option>
-            <option value="gaf_id" selected="true">GAF ID</option>
-            <option value="gaf_notes" selected="true">GAF Notes</option>
-            <option value="gaf_owner" selected="true">GAF Owner</option>
-            <option value="gaf_with_or_from" selected="true">GAF with_or_from</option>
+            <option value="gaf_annotation_extension" selected="false">GAF Annotation Extension</option>
+            <option value="gaf_aspect" selected="false">GAF Aspect</option>
+            <option value="gaf_assigned_by" selected="false">GAF Assigned By</option>
+            <option value="gaf_date" selected="false">GAF Date</option>
+            <option value="gaf_db" selected="false">GAF DB</option>
+            <option value="gaf_db_reference" selected="false">GAF DB Reference</option>
+            <option value="gaf_evidence_code" selected="false">GAF Evidence Code</option>
+            <option value="gaf_gene" selected="false">GAF Gene</option>
+            <option value="gaf_go_id" selected="false">GAF GO ID</option>
+            <option value="gaf_go_term" selected="false">GAF GO Term</option>
+            <option value="gaf_id" selected="false">GAF ID</option>
+            <option value="gaf_notes" selected="false">GAF Notes</option>
+            <option value="gaf_owner" selected="false">GAF Owner</option>
+            <option value="gaf_with_or_from" selected="false">GAF with_or_from</option>
         </param>
         <param label="Report Format" type="select" name="report_format">
             <option value="phageqc_report_annotation_table.html" selected="true">HTML Table</option>

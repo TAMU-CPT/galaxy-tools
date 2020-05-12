@@ -40,7 +40,7 @@ if __name__ == "__main__":
     # This user MUST be allowed to access an organism before they can
     # modify permissions on it.
     for x in org_cn:
-      print("Assert " + x, file=sys.stderr)
+      sys.stderr.write("Assert " + str(x) + "\n")
       assert x in orgs
 
     # The other person must already be an apollo user
@@ -62,3 +62,5 @@ if __name__ == "__main__":
         export=args.export,
         read=args.read,
       )
+    print("Successfully shared " + str(org_cn) + " with user " + str(args.share_with))
+    

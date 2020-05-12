@@ -7,17 +7,39 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
+IFS=',' read -r -a genList <<< "$gbkIn";
+IFS=' ' read -r -a revList <<< "$revString";
+lenGBK=\${#genList[@]};
+lenREV=\${#revList[@]};
+for (( i=0; i<\$lenGBK; i++ )); do
+for (( j=0; j<\$lenREV; j++ )); do
+if [[ \$((i+1)) -eq revList[\$j]  ]]; then
+genList[\$i]="\${genList[\$i]} R";
+fi
+done;
+done;        
+
 python $__tool_directory__/Easyfig.py
 -e $eVal 
-#if $blast == "files":
--blast_files $blast.blastIn
-#else if $blast == "blastN":
+#if $blast.input_type == "files":
+-blast_files 
+#for $file in $blast.blastIn:
+    $file 
+#end for
+#else if $blast.input_type == "blastN":
 -blastn
-#else if $blast == "blastX":
+$blast.keepBlast
+#else if $blast.input_type == "blastX":
 -tblastx
+$blast.keepBlast
 #end if
 -aln $align 
+-i $identity
+-min_length $blastLen
 -legend $leg 
+-leg_name $nameLoc
+-f1 $tfF
+-f2 $intF
 -blast_col $color 
 #if $gc != "":
     -G $gc 
@@ -25,13 +47,18 @@ python $__tool_directory__/Easyfig.py
 
 -o $SVG_Out 
 -svg 
-#for $file in $gbkIn:
-    $file 
-#end for
-
+-filter
+\${genList[@]}
+#if $blast.keepBlast
+&&
+tar -cvf tempTar temp_easyfig
+&&
+mv tempTar $blastDir
+#end if
 ]]></command>
   <inputs>
     <param label="Genbanks" name="gbkIn" type="data" multiple="true" format="genbank"/>
+    <param label="Reverse Items (See 'Reverse Option' in help text)" name="revString" type="text" value=""/>
 
     <conditional name="blast">
       <param name="input_type" type="select" label="Choose BLAST file source/generation: ">
@@ -43,12 +70,20 @@ python $__tool_directory__/Easyfig.py
         <param label="Blast Results (12-Column .tsv)" name="blastIn" type="data" format="tabular" multiple="True"/>
       </when>
       <when value="blastN">
+        <param name="keepBlast" type="boolean" checked="false" label="Keep generated blast results" truevalue="-keep" falsevalue="" />
       </when>
       <when value="blastX">
+        <param name="keepBlast" type="boolean" checked="false" label="Keep generated blast results" truevalue="-keep" falsevalue="" />
       </when>
     </conditional>
 
     <param label="Minimum E Value" name="eVal" type="float" value="0.001"/>
+    <param label="Minimum Percent Identity Value" name="identity" type="float" value="0.00"/>
+    <param label="Minimum Length for Blast Hit to be drawn" name="blastLen" type="integer" value="0"/>
+    
+    <param label="Draw colour gradient figure for blast hits." name="tfF" type="boolean" checked="false"  truevalue="T" falsevalue="F" />
+    <param label="How many base pairs long to draw the scale legend item (0 to not draw it)" name="intF" type="integer" value="0"/>
+
     <param label="Customize location of gene name" name="leg" type="select">
             <option value="single">Single</option>
             <option value="double">Double</option>
@@ -57,6 +92,7 @@ python $__tool_directory__/Easyfig.py
             <option value="both">Both</option>
             <option value="None">None</option>
     </param>
+    <param label="What property to get feature name from" name="nameLoc" type="text" value="gene"/>
     <param label="Customize alignment for Blast hits" name="align" type="select">
             <option value="best">Best</option>
             <option value="left">Left</option>
@@ -84,107 +120,61 @@ python $__tool_directory__/Easyfig.py
             <when input="out_format" value="html" format="html" />
           </change_format>
         </data>
+        <data format="tar.gz" name="blastDir" label="Easyfig-generated Blast data">
+          <filter>blast['keepBlast']</filter>
+        </data>
   </outputs>
   <help><![CDATA[
 **What it does**
 
-Easyfig.py   Written by: Mitchell Sullivan   mjsull@gmail.com
-Supervisor: Dr. Scott Beatson   University of Queensland    03.12.2010
+EasyFig Version 2.2.3 generates a linear genomic comparison of 1 to an infinite number of GenBank/EMBL files as a customizable graphic output.
 
-License: GPLv3
-
-Version 2.2.3
-
-This script should work on 1 to an infinite amount of GenBank/EMBL files (given enough memory)
-
-Adding 2 integers after the annotation file will crop the annotation file.
-Adding a R after the annotation file will reverse compliment it.
-
-
-GenBank or EMBL file must have source line, or Sequence.
+**Input**
+An input GenBank or EMBL file must have source line, or Sequence.
 '     source  1..<sequence length>' or 'FT   source    1..<sequence length>'
+Only 'CDS' features will be recorded.
 
 
-The GenBank file preceding the blast file should always be the query
-the GenBank file after the blast file should always be the reference
-In it's present state only 'CDS' features will be recorded
-
-Options:
-
--blastn Generate blastn files automatically. Requires blastall or blast+ in the path, Annotation file must have nucleotide sequence. 
-
--tblastx Generate tblastx files automatically. Requires blastall or blast+ in the path, Annotation file must have nucleotide sequence.
-
--blast_files List of previously generated blast files, ordered (12 column blast). Query must be annotation file on top, reference annotation file on bottom. 
-
--svg Create Scalable Vector Graphics (svg) file instead of bmp.
+**Reverse Option**
+Easyfig can plot a genbank file in reverse, effectively inverting the sequence and its annotations. Specify which genbanks to reverse
+by providing their list index position in the Reverse Items field. The list is in order from the bottom-up, so if three genbanks are selected, 
+the bottom-most one is 1, the middle is 2, and the top-most 3. 
+The numbers must be separated by a space. Entering "2 3" will reverse the middle and top items, and the bottom "1" will be read in the forward orientation.
 
 
-GENERAL OPTIONS:
-
--aln <best/left/right/centre> [centre] Alignment of genomes best aligns feature file perpendicular to best blast hit.
-
--legend <single/double/top/bottom/both/None>
-
-    Single: Gene names in single column
-
-    Double: Gene names in two columns
-
-    Top: Top feature file genes labelled above figure
-
-    Bottom: Bottom feature file genes labelled below figure
-
-    Both: Top and bottom feature files genes labelled above and below genome.
-
-    None: No legend or gene labelling <default>
+**Nucleotide BLAST**
+ - run BLASTn, run tBLASTx, or provide 12-column BLAST results for each input.  
 
 
-BLAST OPTIONS:
+**General options**
+- E-value: Select the minimum e-value of blast hits to be drawn. Default is 0.001
 
--e <float> maxmimum e value of blast hits to be drawn. [0.001]
+- Percent identity: Enter the minimum hit percent identity to be drawn. Default is 0.
 
--blast_col <red/blue> changes blast hits to gradient of red or blue
-alternitively <int1 int2 int3 int4 int5 int6>
-defines color gradient for blast hits
-worst blast hit reported will be color int1 int2 int3
-where int 1 2 3 is the RGB of color range[0-255]
-100% identity blast hits will be color int4 int5 int6
-[default 20 20 20 175 175 175] <gray>
+- Hit length: Enter the minimum length of similarity (in nucleotides) for the output to be included on the drawing.
 
+- BLAST scale: Toggle the BLAST similarity scale key for display.
 
-GRAPH OPTIONS:
+- Genome scale bar: Enter a value in base pairs for the length of scale bar. Default is zero, which does not draw a scale bar.
 
--G <GCContent/GCSkew/Coverage/Custom [filename]>
-Plot GC Content, GC Skew, Coverage or Custom graph.
-if Coverage or Custom filename for ace or custom file needs
-to be provided. Details on how to make custom graph files
-in manual.
+- Position for feature labels : single (single column), double (two columns), top (feature labels of top genome drawn above figure), bottom (feature labels from bottom genome drawn below figure), both (top and bottom genome features drawn above and below figure), none (no legend or gene labelling, default)
 
+- Source of feature label: default is gene. Other options include the product tag.
 
-EXAMPLES:
+- Alignment: align the graphic according to best/left/right/center. Alignment of genomes best aligns feature file perpendicular to best blast hit. Default is center. 
 
-Easyfig.py -filter -o outfile.bmp genbank1.gbk genbank2.gbk genbank3.gbk
+- BLAST similarity gradient color: options are gray, red, and blue.
+
+- GCContent plot: select to display GC content or GCSkew graphs with the output.
 
 
-Easiest way to generate a simple comparison file between three (or more) annotation
-files. Shows CDS features as red arrows.
+**Output**
+A Scalable Vector Graphics (svg) file or static html display are returned.
 
 
-Easyfig.py -o outfile.bmp -e 0.00001 -f gene frame 0 0 255 -G GCContent ann1.embl ann2.gbk ann3.gbk ann4.embl
-
-
-Generate a blastn comparison between 4 annotation files, Display genes as blue
-arrows in frame. Only report blast hits under 0.00001 expect value.
-Display the GC content of each file as a graph.
-
-
-Easyfig.py -tblastx -o outfile.svg -svg ann1.embl 1 10000 ann2.embl 1 10000 R
-
-
-Show a tblastx comparison of the first 10000 base pairs of ann1.embl and ann2.embl
-Reverse compliment ann2.embl. Writes as a SVG file.
-
-
-this script uses a modified version of Paul McGuire's (http://www.geocities.com/ptmcg/) bmp.py - module for constructing simple BMP graphics files
+Blast Wrapper written by Criscione, Anthony, Center for Phage Technology, Texas A&M University, 2020
      ]]></help>
+  <expand macro="citations">
+		<citation type="doi">10.1093/bioinformatics/btr039</citation>
+	</expand>
 </tool>

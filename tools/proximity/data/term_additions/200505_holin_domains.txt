@@ -1,0 +1,139 @@
+IPR006479
+PF07332
+Putative Actinobacterial Holin-X, holin superfamily III
+IPR007953
+Holin-like, BlyB
+IPR006485
+Bacteriophage holin
+IPR020109
+Holin, r1t-type
+IPR009937
+IPR007633
+Bacteriophage P2, GpY, holin
+IPR032111
+Clostridium phage holin
+IPR020982
+Bacteriophage T4, GpT, holin
+IPR006480
+Bacteriophage holin family
+IPR006493
+Holin, BlyA
+IPR009708
+Bacteriophage A118-like, holin/antiholin
+IPR032124
+Bacteriophage F116-like holin
+IPR032127
+LydA-holin antagonist LydB
+IPR032118
+Bacteriophage holin HP1 family
+PF04531
+PF04688
+SPP1 phage holin
+PF04971
+Bacteriophage P21 holin S
+IPR032126
+LydA-like holin
+PF16079
+Phage holin family Hol44, in holin superfamily V
+PF16084
+LydA-holin antagonist
+PF04550
+Phage holin family 2
+PF06946
+Bacteriophage A118-like holin, Hol118
+PF05105
+PF16080
+Bacteriophage holin family HP1
+TIGR01598
+holin, phage phi LC3 family
+PF05102
+holin, BlyA family
+IPR021497
+Holin of 3TMs, for gene-transfer release
+IPR023760
+Holin-like protein CidA
+PF16083
+LydA holin phage, holin superfamily III
+PF10960
+BhlA holin family
+TIGR01606
+holin, BlyA family
+PF11031
+Bacteriophage T holin
+PF16082
+Bacteriophage holin family, superfamily II-like
+TIGR01673
+phage holin, LL-H family
+PF11351
+IPR007054
+Lysis protein S
+IPR007165
+Mycobacterial 4 TMS phage holin, superfamily IV
+PF09682
+Bacteriophage holin of superfamily 6 (Holin_LLH)
+IPR031614
+Putative holin
+PF05449
+Putative 3TM holin, Phage_holin_3
+IPR019715
+Haemolysin XhlA
+IPR005538
+LrgA/CidA family
+IPR034696
+Antiholin T4 type
+IPR008473
+Putative 3TM holin, Phage holin 3
+MF_04104
+MF_04108
+PF04020
+IPR031612
+Putative phage holin
+IPR032128
+Pyocin R2, holin
+IPR032121
+Mycobacterial phage holin
+Antiholin-like protein LrgA
+IPR024891
+Antiholin-like protein LrgB
+IPR019682
+Bacteriophage T7, Gp17.5, holin
+IPR032637
+Putative phage holin-like
+IPR006481
+Bacteriophage lambda, GpS, holin
+PF05289
+Borrelia hemolysin accessory protein
+IPR007300
+CidB/LrgB family
+PF16936
+IPR010026
+Phage holin, LL-H family
+IPR025140
+Putative 2/3 transmembrane domain holin
+IPR031616
+Putative Holin-like Toxin (Hol-Tox)
+PF10746
+Phage holin T7 family, holin superfamily II
+PF16931
+TIGR01592
+holin, SPP1 family
+TIGR01594
+phage holin, lambda family
+PF16938
+Putative phage holin Dp-1
+TIGR01593
+toxin secretion/phage lysis holin
+MF_01143
+Holin-like protein CidA [cidA]
+PF16085
+Bacteriophage holin Hol, superfamily III
+PF05106
+Phage holin family (Lysis protein S)
+PF13272
+PF16935
+PF16945
+Putative lactococcus lactis phage r1t holin
+PF17368
+Spore morphogenesis and germination YwcE
+PF16081
+Mycobacterial 2 TMS Phage Holin (M2 Hol) Family

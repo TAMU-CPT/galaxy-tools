@@ -62,7 +62,7 @@ def export(org_cn, seqs):
             else:
                 return org_data
             line = data.readline()
-            args.fasta.write(line + "\n")
+            args.fasta.write(line)
             line = data.readline()
         elif line[0:3] == "###":
             line = data.readline()  # continue
@@ -70,7 +70,7 @@ def export(org_cn, seqs):
             args.gff.write(line + "\n")
             line = data.readline()
         elif mode == 1:
-            args.fasta.write(line + "\n")
+            args.fasta.write(line)
             line = data.readline()
         elif mode == -1:
             line = data.readline()

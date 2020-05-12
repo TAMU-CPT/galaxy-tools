@@ -71,6 +71,11 @@ def deform_scores(blast):
             yield [data[0], data[1], org, data[3], data[4]]
 
 
+def expand_fields(blast):
+    for data in blast:
+        for x in range(0, len(data[4])):
+            yield [data[0], data[1], data[2][x], data[3], int(data[4][x])]
+
 def expand_taxIDs(blast):
     for data in blast:
         # if(len(data[4]) > 0):
@@ -85,17 +90,19 @@ def expand_titles(blast):
             yield [data[0], data[1], title, data[3], data[4]]
 
 
-def filter_phage(blast, phageTaxLookup):
+def filter_phage(blast, phageTaxLookup, phageSciNames):
     for data in blast:
-        if (data[4]) in phageTaxLookup:
-            yield [data[0], data[1], data[2], data[3], data[4]]
+        for x in range(0, len(phageTaxLookup)):
+            if (data[4]) == phageTaxLookup[x]:
+                yield [data[0], data[1], phageSciNames[x], data[3], data[4]]
+                break
 
 
 def remove_dupes(data):
     has_seen = {}
     for row in data:
         # qseqid, sseqid
-        key = (row[0], row[2], row[4])
+        key = (row[0], row[4])
         # If we've seen the key before, we can exit
         if key in has_seen:
             continue
@@ -104,7 +111,6 @@ def remove_dupes(data):
         has_seen[key] = True
         # Pretty simple
         yield row
-
 
 def scoreMap(blast):
     c = {}
@@ -127,15 +133,23 @@ if __name__ == "__main__":
     parser.add_argument("--access", action="store_true")
     parser.add_argument("--protein", action="store_true")
     parser.add_argument("--canonical", action="store_true")
+    #parser.add_argument("--title", action="store_true") # Add when ready to update XML after semester
     parser.add_argument("--hits", type=int, default=5)
+    
 
     args = parser.parse_args()
 
     phageDb = args.phagedb
     phageTaxLookup = []
+    sciName = []
     line = phageDb.readline()
     while line:
-        phageTaxLookup.append(int(line))
+        line = line.split("\t")
+        phageTaxLookup.append(int(line[0]))
+        line[1] = line[1].strip()
+        if (line[1] == ""):
+            line[1] = "Novel Genome"
+        sciName.append(line[1])
         line = phageDb.readline()
 
     if args.protein:
@@ -152,47 +166,40 @@ if __name__ == "__main__":
     # data = with_dice(data)
     # data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
-
+    
     data = expand_taxIDs(data)
-    # data = deform_scores(data)
-    data = filter_phage(data, phageTaxLookup)
-    data = expand_titles(data)
-
-    if args.protein or args.canonical:
-        data = remove_dupes(data)
-        count_label = "Similar Unique Proteins"
-    else:
-        count_label = "Nucleotide Hits"
-
+    data = remove_dupes(data)
+    data = filter_phage(data, phageTaxLookup, sciName)
     listify = []
     for x in data:
         listify.append(x)
+    #listify = greatest_taxID(listify)
+       
+    count_label = "Similar Unique Proteins"
+    
     counts, accessions = scoreMap(listify)
-
-    if args.access:
-        sys.stdout.write(
-            "Top %d matches for BLASTp results of %s\t\t\t\n"
+    
+    sys.stdout.write(
+            "Top %d matches for BLASTp results of %s\n"
             % (args.hits, listify[0][0])
         )
-        sys.stdout.write("# TaxID\tName\tAccessions\t%s\n" % count_label)
-        for idx, ((name, ID), num) in enumerate(
+    header = "# TaxID\t"
+    #if args.title:
+    header += "Name\t"
+    if args.access:
+        header += "Accessions\t"
+    header += "Similar Unique Proteins\n"
+    sys.stdout.write(header)
+
+    for idx, ((name, ID), num) in enumerate(
             sorted(counts.items(), key=lambda item: -item[1])
         ):
-            if idx > args.hits - 1:
-                break
-
-            sys.stdout.write(
-                "%s\t%s\t%s\t%d\n" % (ID, name, str(accessions[(name, ID)][0]), num)
-            )
-    else:
-        sys.stdout.write(
-            "Top %d matches for BLASTp results of %s\t\t\n" % (args.hits, listify[0][0])
-        )
-        sys.stdout.write("# TaxID\tName\t%s\n" % count_label)
-        for idx, ((name, ID), num) in enumerate(
-            sorted(counts.items(), key=lambda item: -item[1])
-        ):
-            if idx > args.hits - 1:
-                break
-
-            sys.stdout.write("%s\t%s\t%d\n" % (ID, name, num))
+        if idx > args.hits - 1:
+            break
+        line = str(ID) + "\t"
+        #if args.title:
+        line += str(name) + "\t"
+        if args.access:
+          line += str(accessions[(name, ID)][0]) + "\t"
+        line += str(num) + "\n" 
+        sys.stdout.write(line)

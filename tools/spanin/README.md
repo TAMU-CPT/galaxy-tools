@@ -1,6 +1,6 @@
 # Overview
 
-## The goal of this(these) tool(s) is to take putative protein sequences and determine if any of them are quality candidates for a potential spanin pair (OSP/ISP). 
+## The goal of these tools is to take putative protein sequences and determine if any of them are quality candidates for a potential spanin pair (OSP/ISP). 
 ### Current Scripts:
 * `generate-putative-isp.py`
     * INPUT : Genomic FASTA 
@@ -13,7 +13,7 @@
 
 ## Requirements:
 * regex (as of 2.17.2020 not needed...)
-* cpt.py
+* cpt.py (copied and edited for handeling specific task for these tools)
 
 ## Script Descriptions / Methodologies:
 * `generate-putative-osp.py`
@@ -45,18 +45,6 @@
     * func `tuple_fasta`
         * Outputs a tuple which contains the description header from the original fasta generation with candidate sequences.
 
-## To-dos:
-[x] - Determine Methodology for ORF function in `CPT.py`
-    * Done. Naive caller used. Table 11 used in functions. Remove 'I' starts within `tuple_fasta`
-
-[x] - User input 
-    * FASTA (<s>preferred</s>done) ; <s>not entire .gb file. We only want the sequence</s>
-
-[x] - Output (correct) putative .fasta files containing ISP/OSP for lambda & T7
-    * Works, where for both, the sequence can be found for each of their isp and osp.
-
-[ ] - Mimic returns from `findSpanin.pl` / Best candidate file (?) 
-    * These include:
-        * Overlap spanins
-        * Covered spanins
-        * Next-to spanins
+## Release Notes
+CPT: OTHER- ISP candidates, OSP candidates, Find Spanin
+These tools are used in conjunction to help find potential spanin couples. ISP and OSP candidate tools take an input genomic fasta, where all putative proteins are gathered, based on having a “ATG”, “TTG”, or “GTG” start site. Each potential gene is fed through a set of criteria, including TMD distance from the start site for i-spanins, and lipobox presence for o-spanins. The putative_isp and putative_osp fasta outputs are fed to the Find Spanin tool. The output is broken up based on their type:embedded, overlapping, or separate.

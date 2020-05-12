@@ -1,0 +1,166 @@
+<tool id="edu.tamu.cpt.proximity.searchFile" name="Search File" version="1.0">
+    <description>Queries a gff3, genbank, fasta, or blastxml file for a user defined set of terms</description>
+    <macros>
+	    <import>macros.xml</import>
+	    <import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+	    <requirement type="package">gffutils</requirement>
+    </expand>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/searchFile.py
+    #if $check is not None:
+    --dbaseTerms "$check"
+    #end if
+    #if $term_add.term_selector == "customtxt":
+    --custom_txt "$term_add.custom_txt"
+    #elif $term_add.term_selector == "customfile":
+    --custom_file "$term_add.custom_file"
+    #else:
+    #pass
+    #end if
+    #for $input_select in $input_files:
+        #if $input_select.file_selector.file_select == "gff3selection":
+            --gff3_files #for $gff3_file in $input_select.file_selector.gff3_files:
+                "${gff3_file}" #end for
+        #end if
+        #if $input_select.file_selector.file_select == "gbkselection":
+            --gbk_files #for $gbk_file in $input_select.file_selector.gbk_files:
+                "${gbk_file}" #end for
+        #end if
+        #if $input_select.file_selector.file_select == "faselection":
+            --fa_files #for $fa_file in $input_select.file_selector.fa_files:
+                "${fa_file}" #end for
+        #end if
+        #if $input_select.file_selector.file_select == "blastselection":
+            --blast_files #for $blast_file in $input_select.file_selector.blast_files:
+                "${blast_file}" #end for
+        #end if
+    #end for
+    --output $output
+    ]]></command>
+        <inputs>
+            <param name="check" type="select" format="text" optional="true" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database (see terms in Shared Data/Lysis family Terms)" display="checkboxes">
+                <option value="endolysins" selected="true">Endolysins</option>
+                <option value="holins" selected="true">Holins and Anti-holins</option>
+                <option value="endolysin_domains" selected="true">Endolysin Associated Domains</option>
+                <option value="spanin_domains" selected="true">Spanin Associated Domains</option>
+                <option value="holin_domains" selected="true">Holin Associated Domains</option>
+            </param>
+            <conditional name="term_add">
+                <param name="term_selector" type="select" label="Choose if you'd like to add custom terms">
+                    <option value="nocustom" selected="false">No Custom Terms</option>
+                    <option value="customtxt" selected="false">Custom Text</option>
+                    <option value="customfile" selected="false">Custom File</option>
+                </param>
+                <when value="customtxt">
+                    <param name="custom_txt" label="Custom Text" optional="true" type="text" area="true" help="Custom text box for search terms, must be separated by newline (enter)"/>
+                </when>
+                <when value="customfile">
+                    <param name="custom_file" label="Custom File" optional="true" type="data" format="txt" help="Custom search terms, uploaded via file, where terms must be separated by newline"/>
+                </when>
+            </conditional>
+            <repeat name="input_files" title="Input Files">
+                <conditional name="file_selector">
+                    <param name="file_select" type="select" label="Choose the type of file(s) you'd like to query">
+                        <option value="gff3selection" selected="false">GFF3</option>
+                        <option value="gbkselection" selected="false">Genbank</option>
+                        <option value="faselection" selected="false">FASTA</option>
+                        <option value="blastselection" selected="false">BLAST-XML</option>
+                    </param>
+                    <when value="gff3selection">
+                        <param name="gff3_files" label="GFF3 Input" optional="true" multiple="true" type="data" format="gff3"/>
+                    </when>
+                    <when value="gbkselection">
+                        <param name="gbk_files" label="Genbank Input" optional="true" multiple="true" type="data" format="genbank"/>
+                    </when>
+                    <when value="faselection">
+                        <param name="fa_files" label="FASTA Input" optional="true" multiple="true" type="data" format="fasta"/>
+                    </when>
+                    <when value="blastselection">
+                        <param name="blast_files" label="BLAST-xml Input" optional="true" multiple="true" type="data" format="xml"/>
+                    </when>
+                </conditional>
+            </repeat>
+        </inputs>
+        <outputs>
+            <data format="txt" name="output" label="termHits.txt"/>
+        </outputs>
+        <tests>
+            <test>
+                <param name="check" value="holins"/>
+                <conditional name="term_add">
+                    <param name="term_selector" value="customfile"/>
+                        <param name="custom_file" value="search.txt"/>
+                </conditional>
+                	<repeat name="input_files">
+                    <conditional name="file_selector">
+                        <param name="file_select" value="gbkselection"/>
+                            <param name="gbk_files" value="t7-genome.gb"/>
+		    </conditional>
+		    </repeat>
+		    <repeat name="input_files">
+                    <conditional name="file_selector">
+                        <param name="file_select" value="gbkselection"/>
+			<param name="gbk_files" value="NC_008720-N4-NCBI.gb"/>
+		</conditional>
+	</repeat>
+		    <repeat name="input_files">
+                    <conditional name="file_selector">
+                        <param name="file_select" value="gbkselection"/>
+                            <param name="gbk_files" value="NC_008720-N4-Apollo.genbank"/>
+		    </conditional>
+	    </repeat>
+	    <repeat name="input_files">
+                    <conditional name="file_selector">
+                        <param name="file_select" value="faselection"/>
+                            <param name="fa_files" value="NC_008720-N4-nucleotide.fasta"/>
+		    </conditional>
+	    </repeat>
+	    <repeat name="input_files">
+                    <conditional name="file_selector">
+                        <param name="file_select" value="gff3selection"/>
+                            <param name="gff3_files" value="NC_008720-N4-NCBI.gff3"/>
+		    </conditional>
+	    </repeat>
+	    <repeat name="input_files">
+                    <conditional name="file_selector">
+                        <param name="file_select" value="blastselection"/>
+                            <param name="blast_files" value="Galaxy27-NR.blastxml.xml"/>
+                    </conditional>
+                </repeat>
+                <output name="output" file="termHits.txt"/>
+            </test>
+        </tests>
+    <help><![CDATA[
+INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, and/or a custom input via file or text box.
+
+OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term. See file search areas, for the regions of each type of file that are searched.
+
+DBase Family Term Descriptions :
+
+- Endolysins: enzymes that attack one of the structural bonds of the peptidoglycan. The endolysin step requires the hole-forming function of the holins.
+
+- Holins and Anti-holins: small cytoplasmic membrane proteins that control the timing of lysis by forming a lethal membrane hole at a programmed time (programmed into the holin itself).
+
+File Search Areas:
+
+- gff3 : entire row
+
+- genbank : product and note qualifier of each feature
+
+- fasta : header field
+
+- blast-xml : hit description
+    ]]></help>
+        <citations>
+            <citation type="bibtex">
+                @unpublished{galaxyTools,
+                author = {C. Ross},
+                title = {CPT Galaxy Tools},
+                year = {2020-},
+                note = {https://github.com/tamu-cpt/galaxy-tools/}
+                }
+            </citation>
+        </citations>
+</tool>

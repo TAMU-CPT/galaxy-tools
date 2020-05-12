@@ -3,13 +3,18 @@
 
 import argparse
 import os
-from spaninFuncs import getDescriptions, grabLocs, spaninProximity, splitStrands
+import re # new
+import itertools # new
+from spaninFuncs import getDescriptions, grabLocs, spaninProximity, splitStrands, tuple_fasta, lineWrapper
 
 ### Requirement Inputs
-#### INPUT : Genomic FASTA
+#### INPUT : putative_isp.fa & putative_osp.fa (in that order)
 #### PARAMETERS :
 
 ###############################################################################
+def write_output(candidates):
+    """ output file function...maybe not needed """
+    pass
 
 if __name__ == "__main__":
 
@@ -79,8 +84,13 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     isp = getDescriptions(args.putative_isp_fasta_file)
-    # print(len(isp))
+    args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
+    isp_full = tuple_fasta(args.putative_isp_fasta_file)
+
     osp = getDescriptions(args.putative_osp_fasta_file)
+    args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
+    osp_full = tuple_fasta(args.putative_osp_fasta_file)
+
 
     strand_isp = []
     strand_osp = []
@@ -126,44 +136,105 @@ if __name__ == "__main__":
     amt_separate = s
     amt_unique_separate = len(separate.keys())
 
+
     ################################### OUTPUTS #################################################
 
     with args.summary_txt as f:
         f.write("++++++++++ Embedded Spanin Candidate Statistics +++++++++\n")
-        f.writelines("Total Candidates = " + str(amt_embedded) + "\n")
+        f.writelines("Total Candidate Pairs = " + str(amt_embedded) + "\n")
         f.writelines("Unique ORF i-spanin = " + str(amt_unique_embedded))
+        for k,v in embedded.items():
+            f.writelines("\n{}--> Amount of corresponding candidate o-spanin(s): {}".format(k,len(v)))
         f.write("\n++++++++++ Overlap Spanin Candidate Statistics +++++++++\n")
-        f.writelines("Total Candidates = " + str(amt_overlap) + "\n")
+        f.writelines("Total Candidate Pairs = " + str(amt_overlap) + "\n")
         f.writelines("Unique ORF i-spanin = " + str(amt_unique_overlap))
+        for k,v in overlap.items():
+            f.writelines("\n{}--> Amount of corresponding candidate o-spanin(s): {}".format(k,len(v)))
         f.write("\n++++++++++ Separate Spanin Candidate Statistics +++++++++\n")
-        f.writelines("Total Candidates = " + str(amt_separate) + "\n")
+        f.writelines("Total Candidate Pairs = " + str(amt_separate) + "\n")
         f.writelines("Unique ORF i-spanin = " + str(amt_unique_separate))
+        for k,v in separate.items():
+            f.writelines("\n{}--> Amount of corresponding candidate o-spanin(s): {}".format(k,len(v)))
         f.write("\n++++++++++++++++++++++++ Totals +++++++++++++++++++++++++\n")
         f.writelines(
             "Total Candidates = " + str(amt_embedded + amt_overlap + amt_separate)
         )
         # f.writeline('Unique ORF i-spanin = '+str(amt_unique_embedded))
 
+
+    args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
+    isp_full = tuple_fasta(args.putative_isp_fasta_file)
+
+    args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
+    osp_full = tuple_fasta(args.putative_osp_fasta_file)
+
+
+    isp_seqs = []
+    osp_seqs = []
+    for isp_tupe in isp_full:
+        for pisp, posp in embedded.items():
+            if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
+                isp_seqs.append((pisp,isp_tupe[1]))
+
+    for osp_tupe in osp_full:
+        for pisp, posp in embedded.items():
+            for data in posp:
+                if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
+                    osp_seqs.append((data[2],osp_tupe[1]))
+
+
     with args.embedded_txt as f:
-        f.write("================ Embedded Spanin Candidates =================\n")
+        f.write("================ embedded spanin candidates =================\n")
         f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
         if embedded != {}:
-            for pisp, posp in embedded.items():
-                f.write(pisp + "\n")
-                for each_posp in posp:
-                    f.write(
-                        "\t{}\t{}\t{}\t{}\t{}\n".format(
-                            each_posp[0],
-                            each_posp[1],
-                            each_posp[2],
-                            each_posp[3],
-                            each_posp[4],
+                for pisp, posp in embedded.items():
+                    f.write(pisp + "\n")
+                    for each_posp in posp:
+                        f.write(
+                            "\t{}\t{}\t{}\t{}\t{}\n".format(
+                                each_posp[0],
+                                each_posp[1],
+                                each_posp[2],
+                                each_posp[3],
+                                each_posp[4],
+                            )
                         )
-                    )
         else:
             f.write("nothing found")
+
+    with open(args.embedded_txt.name, "a") as f:
+        f.write("\n================= embedded candidate sequences ================\n")
+        f.write("======================= isp ==========================\n\n")
+        for isp_data in isp_seqs:
+            f.write(">isp_orf::{}\n{}\n".format(isp_data[0],lineWrapper(isp_data[1])))
+        f.write("\n======================= osp ========================\n\n")
+        for osp_data in osp_seqs:
+            f.write(">osp_orf::{}\n{}\n".format(osp_data[0],lineWrapper(osp_data[1])))
+
+    args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
+    isp_full = tuple_fasta(args.putative_isp_fasta_file)
+
+    args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
+    osp_full = tuple_fasta(args.putative_osp_fasta_file)
+
+    isp_seqs = []
+    osp_seqs = []
+    for isp_tupe in isp_full:
+
+        for pisp, posp in overlap.items():
+            if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
+                isp_seqs.append((pisp,isp_tupe[1]))
+
+    for osp_tupe in osp_full:
+        for pisp, posp in overlap.items():
+            for data in posp:
+                if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
+                    osp_seqs.append((data[2],osp_tupe[1]))
+
+
+    
     with args.overlap_txt as f:
-        f.write("================ Overlap Spanin Candidates =================\n")
+        f.write("================ overlap spanin candidates =================\n")
         f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
         if overlap != {}:
             for pisp, posp in overlap.items():
@@ -181,8 +252,35 @@ if __name__ == "__main__":
         else:
             f.write("nothing found")
 
+    with open(args.overlap_txt.name, "a") as f:
+        f.write("\n================= overlap candidate sequences ================\n")
+        f.write("======================= isp ==========================\n\n")
+        for isp_data in isp_seqs:
+            f.write(">isp_orf::{}\n{}\n".format(isp_data[0],lineWrapper(isp_data[1])))
+        f.write("\n======================= osp ========================\n\n")
+        for osp_data in osp_seqs:
+            f.write(">osp_orf::{}\n{}\n".format(osp_data[0],lineWrapper(osp_data[1])))
+
+    args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
+    isp_full = tuple_fasta(args.putative_isp_fasta_file)
+    args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
+    osp_full = tuple_fasta(args.putative_osp_fasta_file)
+
+    isp_seqs = []
+    osp_seqs = []
+    for isp_tupe in isp_full:
+        for pisp, posp in separate.items():
+            if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
+                isp_seqs.append((pisp,isp_tupe[1]))
+
+    for osp_tupe in osp_full:
+        for pisp, posp in separate.items():
+            for data in posp:
+                if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
+                    osp_seqs.append((data[2],osp_tupe[1]))
+
     with args.separate_txt as f:
-        f.write("================ Separate Spanin Candidates =================\n")
+        f.write("================ separated spanin candidates =================\n")
         f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
         if separate != {}:
             for pisp, posp in separate.items():
@@ -199,3 +297,12 @@ if __name__ == "__main__":
                     )
         else:
             f.write("nothing found")
+
+    with open(args.separate_txt.name, "a") as f:
+        f.write("\n================= separated candidate sequences ================\n")
+        f.write("======================= isp ==========================\n\n")
+        for isp_data in isp_seqs:
+            f.write(">isp_orf::{}\n{}\n".format(isp_data[0],lineWrapper(isp_data[1])))
+        f.write("\n======================= osp ========================\n\n")
+        for osp_data in osp_seqs:
+            f.write(">osp_orf::{}\n{}\n".format(osp_data[0],lineWrapper(osp_data[1])))

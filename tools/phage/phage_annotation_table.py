@@ -2,7 +2,7 @@
 # vim: set fileencoding=utf-8
 import os
 import argparse
-from gff3 import genes, get_gff3_id, get_rbs_from
+from gff3 import genes, get_gff3_id, get_rbs_from, feature_test_true, feature_lambda, feature_test_type
 from BCBio import GFF
 from Bio import SeqIO
 from jinja2 import Environment, FileSystemLoader
@@ -15,9 +15,29 @@ log = logging.getLogger(name="pat")
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # Path to the HTML template for the report
 
+def genes_all(feature_list, feature_type=["gene"], sort=False):
+    """
+    Simple filter to extract gene features from the feature set.
+    """
 
-def annotation_table_report(record, wanted_cols, gaf_data):
-    sorted_features = list(genes(record.features, sort=True))
+    if not sort:
+        for x in feature_lambda(
+            feature_list, feature_test_type, {"types": feature_type}, subfeatures=True
+        ):
+            yield x
+    else:
+        data = list(genes_all(feature_list, feature_type, sort=False))
+        data = sorted(data, key=lambda feature: feature.location.start)
+        for x in data:
+            yield x
+
+
+def annotation_table_report(record, types, wanted_cols, gaf_data):
+    getTypes = []
+    for x in [y.strip() for y in types.split(",")]:
+        getTypes.append(x)
+    getTypes.append("gene")
+    sorted_features = list(genes_all(record.features, getTypes, sort=True))
     if wanted_cols is None or len(wanted_cols.strip()) == 0:
         return [], []
 
@@ -31,6 +51,11 @@ def annotation_table_report(record, wanted_cols, gaf_data):
         """
         return feature.id
 
+    def featureType(record, feature):
+        """Type
+        """
+        return feature.type
+
     def name(record, feature):
         """Name
         """
@@ -39,7 +64,7 @@ def annotation_table_report(record, wanted_cols, gaf_data):
     def start(record, feature):
         """Boundary
         """
-        return str(feature.location.start)
+        return str(feature.location.start + 1)
 
     def end(record, feature):
         """Boundary
@@ -49,13 +74,13 @@ def annotation_table_report(record, wanted_cols, gaf_data):
     def location(record, feature):
         """Location
         """
-        return "{0.start}..{0.end}".format(feature.location)
+        return str(feature.location.start + 1) + "..{0.end}".format(feature.location)
 
     def length(record, feature):
-        """Length (AA)
+        """CDS Length (AA)
         """
         cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
-        return str(sum([len(cds) for cds in cdss]) / 3)
+        return str((sum([len(cds) for cds in cdss]) / 3) - 1)
 
     def notes(record, feature):
         """User entered Notes"""
@@ -169,10 +194,10 @@ def annotation_table_report(record, wanted_cols, gaf_data):
         return feature.qualifiers.get("Dbxref", [])
 
     def upstream_feature(record, feature):
-        """Next feature upstream"""
+        """Next gene upstream"""
         if feature.strand > 0:
             upstream_features = [
-                x for x in sorted_features if x.location.start < feature.location.start
+                x for x in sorted_features if (x.location.start < feature.location.start and x.type == "gene" and x.strand == feature.strand)
             ]
             if len(upstream_features) > 0:
                 return upstream_features[-1]
@@ -180,7 +205,7 @@ def annotation_table_report(record, wanted_cols, gaf_data):
                 return None
         else:
             upstream_features = [
-                x for x in sorted_features if x.location.end > feature.location.end
+                x for x in sorted_features if (x.location.end > feature.location.end and x.type == "gene" and x.strand == feature.strand)
             ]
 
             if len(upstream_features) > 0:
@@ -189,14 +214,14 @@ def annotation_table_report(record, wanted_cols, gaf_data):
                 return None
 
     def up_feat(record, feature):
-        """Next feature upstream"""
+        """Next gene upstream"""
         up = upstream_feature(record, feature)
         if up:
-            return str(up)
+            return str(up.id)
         return "None"
 
     def ig_dist(record, feature):
-        """Distance to next feature on same strand"""
+        """Distance to next upstream gene on same strand"""
         up = upstream_feature(record, feature)
         if up:
             dist = None
@@ -296,7 +321,8 @@ def annotation_table_report(record, wanted_cols, gaf_data):
     for x in [y.strip().lower() for y in wanted_cols.split(",")]:
         if not x:
             continue
-
+        if x == "type":
+          x = "featureType"
         if x in lcl:
             funcs.append(lcl[x])
             # Keep track of docs
@@ -317,7 +343,7 @@ def annotation_table_report(record, wanted_cols, gaf_data):
             cols.append(func_doc)
             funcs.append(chosen_funcs)
 
-    for gene in genes(record.features, sort=True):
+    for gene in genes_all(record.features, getTypes, sort=True):
         row = []
         for func in funcs:
             if isinstance(func, list):
@@ -386,6 +412,7 @@ def parseGafData(file):
 def evaluate_and_report(
     annotations,
     genome,
+    types="gene",
     reportTemplateName="phage_annotation_validator.html",
     annotationTableCols="",
     gafData=None,
@@ -407,7 +434,7 @@ def evaluate_and_report(
             record.id = record.id.replace(".", "-")
         log.info("Producing an annotation table for %s" % record.id)
         annotation_table_data, annotation_table_col_names = annotation_table_report(
-            record, annotationTableCols, gaf
+            record, types, annotationTableCols, gaf
         )
         at_table_data.append((record, annotation_table_data))
         # break
@@ -442,6 +469,11 @@ if __name__ == "__main__":
         "annotations", type=argparse.FileType("r"), help="Parent GFF3 annotations"
     )
     parser.add_argument("genome", type=argparse.FileType("r"), help="Genome Sequence")
+
+    parser.add_argument(
+        "--types",
+        help="Select extra types to display in output (Will always include gene)",
+    )
 
     parser.add_argument(
         "--reportTemplateName",

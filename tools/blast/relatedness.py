@@ -246,7 +246,8 @@ if __name__ == "__main__":
     phageTaxLookup = []
     line = phageDb.readline()
     while line:
-        phageTaxLookup.append(int(line))
+        line = line.split("\t")
+        phageTaxLookup.append(int(line[0]))
         line = phageDb.readline()
 
     if args.protein:
