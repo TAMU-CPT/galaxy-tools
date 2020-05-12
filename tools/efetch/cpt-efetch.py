@@ -46,10 +46,12 @@ class CPTEfetch:
             """with name as f:
                 print(name)
                 f.write(record)"""
-            with open(f"{name}_{str(self.acc)}.{str(self.ret_type)}","w") as file:
+            #with open(f"{name}_{str(self.acc)}.{str(self.ret_type)}","w") as file:
+            with open(str(name)+"_"+str(self.acc)+"."+str(self.ret_type),"w") as file:
                 file.write(record)
         else:
-            with open(f"{str(self.acc)}.{str(self.ret_type)}","w") as file:
+            #with open(f"{str(self.acc)}.{str(self.ret_type)}","w") as file:
+            with open(str(self.acc)+"."+str(self.ret_type),"w") as file:
                 file.write(record)
 
 
