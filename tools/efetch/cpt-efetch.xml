@@ -8,7 +8,7 @@
     </expand>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/cpt-efetch.py
-email $email
+--email $email
 --input $input
 --db $db
 --ret_format $ret_format

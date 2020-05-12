@@ -10,7 +10,7 @@ import argparse
 from helperFunctions import awk_files
 
 
-Entrez.email = "curtisross@tamu.edu"
+#Entrez.email = "curtisross@tamu.edu"
 
 class CPTEfetch:
     """ Object that has built in functions to retrieve data from NCBI. Initially constructued to retreive GB and FA files from the nuccore and protein NCBI databases """
@@ -20,6 +20,7 @@ class CPTEfetch:
         self.acc = acc
         self.db = db
         self.ret_type = ret_type
+        Entrez.email = self.email
 
 
     def __repr__(self):
@@ -61,7 +62,7 @@ if __name__ == "__main__":
         ##### Arguments
     parser = argparse.ArgumentParser(description="CPT's very own modified Efetch")
 
-    parser.add_argument("email",
+    parser.add_argument("--email",
                         type=str,
                         help="Entrez Required Email") # current place holder until I determine how best to use the current user's email from Galaxy
 

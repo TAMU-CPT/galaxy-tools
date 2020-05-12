@@ -1,7 +1,10 @@
-python cpt-efetch.py curtisross@tamu.edu --input "NC_001416.1" --input "NC_000866.4" --db "nuccore" --ret_type "genbank" --ret_format "individual" --galaxy_on
+python cpt-efetch.py --email curtisross@tamu.edu --input "NC_001416.1" --input "NC_000866.4" --db "nuccore" --ret_type "genbank" --ret_format "individual" --galaxy_on
 
-python cpt-efetch.py curtisross@tamu.edu --input "NC_001416.1" --input "NC_000866.4" --db "nuccore" --ret_type "genbank" --ret_format "multi" --galaxy_on
+python cpt-efetch.py --email curtisross@tamu.edu --input "NC_001416.1" --input "NC_000866.4" --db "nuccore" --ret_type "genbank" --ret_format "multi" --galaxy_on
 
-python cpt-efetch.py curtisross@tamu.edu --input "EAA0819122.1" --input "EAM4818916" --input "STE16814.1" --input "WP_038819265.1" --db "protein" --ret_type "fasta" --ret_format "multi"
+python cpt-efetch.py --email curtisross@tamu.edu --input "EAA0819122.1" --input "EAM4818916" --input "STE16814.1" --input "WP_038819265.1" --db "protein" --ret_type "fasta" --ret_format "multi"
 
-python cpt-efetch.py curtisross__at__tamu.edu --input NC_001416.1 --input NC_000866.4 --db nuccore --ret_type genbank --ret_format multi --galaxy_on --sleepy 10
+python cpt-efetch.py --email curtisross__at__tamu.edu --input NC_001416.1 --input NC_000866.4 --db nuccore --ret_type genbank --ret_format multi --galaxy_on --sleepy 10
+
+python cpt-efetch.py --email curtisross__at__tamu.edu --input NC_001416.1 --db nuccore --ret_format indiv
+idual --ret_type fasta --galaxy_on --sleepy 20
