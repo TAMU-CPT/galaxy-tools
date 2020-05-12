@@ -86,7 +86,7 @@ if __name__ == "__main__":
                         choices=("fasta","genbank"),
                         help="return format of file")
 
-    parser.add_argument("--sleep",
+    parser.add_argument("--sleepy",
                         type=int,
                         default=20,
                         help="Amount to delay a query to NCBI by")
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     if not os.path.exists("results"):
         os.mkdir("results")
 
-    with open(args.data.name, "w+") as f:
+    with args.data as f:
         f.writelines("accessions: "+str(args.input)+"\n")
 
     if args.galaxy_on:
@@ -121,9 +121,9 @@ if __name__ == "__main__":
         c = CPTEfetch(args.email, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
-            c.write_record(st=args.sleep,name="output",galaxy=True)
+            c.write_record(st=args.sleepy,name="output",galaxy=True)
         else:
-            c.write_record(st=args.sleep,name="data_",galaxy=False)
+            c.write_record(st=args.sleepy,name="data_",galaxy=False)
 
     # If more multi format is requested, perform below
     if args.ret_format == "multi" or args.ret_format == "both":
