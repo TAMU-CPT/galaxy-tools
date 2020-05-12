@@ -1,3 +1,5 @@
+import sys
+print(sys.version)
 from time import sleep 
 import os
 from os import path
