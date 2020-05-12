@@ -1,4 +1,4 @@
-import time
+from time import sleep 
 import os
 from os import path
 from Bio import Entrez
@@ -29,13 +29,13 @@ class CPTEfetch:
             try:
                 net_handle = Entrez.efetch(db=self.db,id=self.acc,rettype="gbwithparts",retmode="text")
             except HTTPError:
-                time.sleep(sleep_time)
+                sleep(sleep_time)
                 net_handle = Entrez.efetch(db=self.db,id=self.acc,rettype="gbwithparts",retmode="text")
         else:
             try:
                 net_handle = Entrez.efetch(db=self.db,id=self.acc,rettype="fasta",retmode="text")
             except HTTPError:
-                time.sleep(sleep_time)
+                sleep(sleep_time)
                 net_handle = Entrez.efetch(db=self.db,id=self.acc,rettype="fasta",retmode="text")
         return net_handle.read()
 
@@ -112,7 +112,7 @@ if __name__ == "__main__":
         os.mkdir("results")
 
     with open(args.data.name, "w+") as f:
-        f.writelines("accession: "+str(args.input)+"\n")
+        f.writelines("accessions: "+str(args.input)+"\n")
 
     if args.galaxy_on:
         os.chdir("results")
