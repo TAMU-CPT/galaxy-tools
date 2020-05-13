@@ -1,0 +1,22 @@
+{
+	"endolysins": [
+		"lysozyme",
+		"endolysin",
+		"lysin",
+		"amidase",
+		"muramidase",
+		"muraminidase",
+		"glycosidase",
+		"endopeptidase",
+		"muralytic",
+		"glycosylase",
+		"chitinase"
+	],
+	"holins": [
+		"holin",
+		"antiholin",
+		"hole",
+		"pinholin",
+		"lysis"
+	]
+}
