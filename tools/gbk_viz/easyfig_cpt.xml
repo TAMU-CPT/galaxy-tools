@@ -123,6 +123,7 @@ mv tempTar $blastDir
           </change_format>
         </data>
         <data format="tar.gz" name="blastDir" label="Easyfig-generated Blast data">
+          <filter>blast['input_type'] != 'files'</filter>
           <filter>blast['keepBlast']</filter>
         </data>
   </outputs>
