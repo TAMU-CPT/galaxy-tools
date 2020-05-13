@@ -33,6 +33,9 @@ def pass_flag(input,flag="--output"):
     except subprocess.TimeoutExpired as err:
         print(err)
 
+def redirect(input):
+    pass
+
 
 if __name__ == "__main__":
     #cat_files("fasta")

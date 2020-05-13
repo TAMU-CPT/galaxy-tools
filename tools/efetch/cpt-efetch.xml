@@ -53,6 +53,7 @@ INPUT : An accession, or set of accessions separated by new line.
 
 OUTPUT : Requested file type (genbank or fasta) individually and/or combined together.
 
+@DISCLAIMER@
     ]]></help>
         <citations>
             <citation type="bibtex">
