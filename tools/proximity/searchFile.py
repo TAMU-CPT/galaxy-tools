@@ -75,7 +75,7 @@ def glueTerms(dbase_terms, user_terms):
 
 ####### FILE FUNCTIONS
 def glueFiles(gff,gbk,fa,blast):
-    """ glue giles into one list...I think this is a decent way to go about this...#CHECK LATER#... """
+    """ glue files into one list...I think this is a decent way to go about this...#CHECK LATER#... """
     files = []
     gffs = []
     gbks = []
@@ -289,7 +289,7 @@ def write_gff3(gffs,outName="prox_out.gff3"):
             for gff_hits in gffs:
                 out_file.writelines(gff_hits+"\n")
         else:
-            raise Exception("GFFs were not used as input; The proximity to lysis pipeline REQUIRES ONLY GFF3 inputs")
+            raise Exception("GFFs were not used as input. The proximity to lysis pipeline REQUIRES ONLY GFF3 inputs")
 
 
 if __name__ == "__main__":
