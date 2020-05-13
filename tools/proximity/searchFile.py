@@ -289,7 +289,7 @@ def write_gff3(gffs,outName="prox_out.gff3"):
             for gff_hits in gffs:
                 out_file.writelines(gff_hits+"\n")
         else:
-            pass
+            raise Exception("GFFs were not used as input; The proximity to lysis pipeline REQUIRES ONLY GFF3 inputs")
 
 
 if __name__ == "__main__":
