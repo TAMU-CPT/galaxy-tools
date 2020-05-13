@@ -1,5 +1,4 @@
 import sys
-print(sys.version)
 from time import sleep 
 import os
 from os import path
@@ -93,7 +92,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--sleepy",
                         type=int,
-                        default=20,
+                        default=30,
                         help="Amount to delay a query to NCBI by")
 
     parser.add_argument("--data",
@@ -113,19 +112,32 @@ if __name__ == "__main__":
     args = parser.parse_args()
     #print(args)
     # Write individual records
+    if not os.path.exists("results"):	
+        os.mkdir("results")
 
     with args.data as f:
         f.writelines("accessions: "+str(args.input)+"\n")
 
+    if args.galaxy_on:	
+        os.chdir("results")
+
     if "__at__" in args.email:
         splits = args.email.split("__at__")
         email = splits[0]+"@"+splits[1]
-    else:
+    elif "@" in args.email:
         email = args.email
+    elif args.email is None:
+        raise Exception("EMAIL IS NECESSARY TO USE TOOL")
+
+    #  Join together admin emails to append to hopefully catch NCBI's eye if abuse occurs
+    admins = ["curtisross@tamu.edu","cory.maughmer@tamu.edu","anthonyc@tamu.edu"]
+    sep = ";"
+    admins.insert(0,email)
+    emails = sep.join(admins)
 
     print("Logged in as: "+email)
     for acc in args.input:
-        c = CPTEfetch(email, acc, args.db, args.ret_type)
+        c = CPTEfetch(emails, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
             c.write_record(st=args.sleepy,name="output",galaxy=True)
