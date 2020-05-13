@@ -12,10 +12,10 @@ import os
 def dbaseTerms(terms,galaxy=True):
     """ Index into dictionary object and retrieve all desired terms """
     if galaxy:
-        db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-v1.0.1.json"
+        db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-v1.0.2.json"
     else:
-        #db_path = "/home/adminuser/research/Galaxy-Tools/tools/proximity/data/lysis-family-expanded_culled.json"
-        db_path = "data/lysis-family-v1.0.1.json"
+        #db_path = "/home/adminuser/research/Galaxy-Tools/tools/proximity/data/lysis-family-v1.0.2.json"
+        db_path = "data/lysis-family-v1.0.2.json"
     db = ej.explodeJSON(db_path)
     db = db.readJSON()
     dbase_terms = []
@@ -281,15 +281,16 @@ def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
             out_file.writelines("No query matches, try again with new terms!")
             print("No query matches, try again with new terms!")
 
-def write_gff3(gffs,outName="prox_out.gff3"):
+def write_gff3(gffs,outName="proxHits.gff3"):
     """ writes output to gff3 file for prox2lysis pipeline """
+
     with open(outName.name, "w+") as out_file:
         out_file.writelines("##gff-version 3\n")
         if gffs:
             for gff_hits in gffs:
                 out_file.writelines(gff_hits+"\n")
         else:
-            raise Exception("GFFs were not used as input. The proximity to lysis pipeline REQUIRES ONLY GFF3 inputs")
+            raise Exception("No terms were found from query set")
 
 
 if __name__ == "__main__":
