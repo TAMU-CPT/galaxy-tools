@@ -80,7 +80,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
         """CDS Length (AA)
         """
         cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
-        return str(sum([len(cds) for cds in cdss]) / 3)
+        return str((sum([len(cds) for cds in cdss]) / 3) - 1)
 
     def notes(record, feature):
         """User entered Notes"""
