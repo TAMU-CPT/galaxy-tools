@@ -46,6 +46,5 @@ The input must be a tabular file from a BLASTn run with the qseqID,
 length, nident, qlen, slen, salltitles, sallacc, 
 and staxIDs fields selected.
 </help>
-	<tests/>
 	<expand macro="citations-2020" />
 </tool>

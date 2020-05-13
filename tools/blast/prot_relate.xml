@@ -25,7 +25,7 @@ $__tool_directory__/TaxID_List.txt
 		<test>
 			<param name="blast_tsv" value="prot_relate_in.tab"/>
 			<param name="hits" value="10"/>
-			<output name="accession_list" file="prot_relate_out.tab"/>
+			<output name="accession_list" file="prot_relate_out.tab" lines_diff="4"/>
 		</test>
 	</tests>
 	<help>
