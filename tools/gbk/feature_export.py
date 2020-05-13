@@ -169,8 +169,7 @@ def extract_features(
                     defline = " [start=%s,end=%s]" % (start, end)
 
                 extracted_seq = str(retSeq)
-                rangeS -= 1
-                rangeE -= 1
+                
                 if strip_stops:
                     if extracted_seq[-3:] in codon_table.stop_codons:
                         extracted_seq = extracted_seq[:-3]
