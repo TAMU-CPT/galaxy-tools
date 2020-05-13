@@ -42,7 +42,7 @@ def build_expterm():
 
 def generate_annotation_file(gff3):
     # TODO: cleanup
-    t = tempfile.NamedTemporaryFile(delete=False, suffix=".coords")
+    t = tempfile.NamedTemporaryFile(mode="w",delete=False, suffix=".coords")
     for rec in GFF.parse(gff3):
         features = feature_lambda(
             rec.features, feature_test_type, {"type": "CDS"}, subfeatures=False
