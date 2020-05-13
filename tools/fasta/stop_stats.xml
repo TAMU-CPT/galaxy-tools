@@ -19,7 +19,7 @@ python $__tool_directory__/stop_stats.py
 	<tests>
                 <test>
 			<param name="sequences" value="T7_EXT_CDS.fasta" />
-			<output name="output_table" file="T7_STOPS.fasta" />
+			<output name="output_table" file="T7_STOPS.tabular" />
 		</test>
 		<test>
 			<param name="sequences" value="miro.cds.fa" />
