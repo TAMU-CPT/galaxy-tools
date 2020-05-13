@@ -37,9 +37,15 @@ python $__tool_directory__/searchFile.py
                 "${blast_file}" #end for
         #end if
     #end for
-    --output $output
+    #if str($prox) == "--prox":
+        --prox $prox
+        --output $output
+    #else:
+        --output $output
+    #end if
     ]]></command>
         <inputs>
+            <param label="Using Proximity to Lysis Pipeline?" name="prox" type="boolean" truevalue="--prox" falsevalue="" help="required GFF3 input"/>
             <param name="check" type="select" format="text" optional="true" label="Family terms to search" multiple="true" help="Terms avilable to query from the Lysis-family synonym database (see terms in Shared Data/Lysis family Terms)" display="checkboxes">
                 <option value="endolysins" selected="true">Endolysins</option>
                 <option value="holins" selected="true">Holins and Anti-holins</option>
@@ -84,64 +90,44 @@ python $__tool_directory__/searchFile.py
             </repeat>
         </inputs>
         <outputs>
-            <data format="txt" name="output" label="termHits.txt"/>
+            <data format="txt" name="output" label="termHits.txt">
+                <filter>prox == ""</filter>
+            </data>
+            <data format="gff3" name="output" label="proxHits.gff3">
+                <filter>prox == "--prox"</filter>
+            </data>
         </outputs>
         <tests>
             <test>
-                <param name="check" value="holins"/>
-                <conditional name="term_add">
-                    <param name="term_selector" value="customfile"/>
-                        <param name="custom_file" value="search.txt"/>
-                </conditional>
-                	<repeat name="input_files">
-                    <conditional name="file_selector">
-                        <param name="file_select" value="gbkselection"/>
-                            <param name="gbk_files" value="t7-genome.gb"/>
-		    </conditional>
-		    </repeat>
-		    <repeat name="input_files">
-                    <conditional name="file_selector">
-                        <param name="file_select" value="gbkselection"/>
-			<param name="gbk_files" value="NC_008720-N4-NCBI.gb"/>
-		</conditional>
-	</repeat>
-		    <repeat name="input_files">
-                    <conditional name="file_selector">
-                        <param name="file_select" value="gbkselection"/>
-                            <param name="gbk_files" value="NC_008720-N4-Apollo.genbank"/>
-		    </conditional>
-	    </repeat>
-	    <repeat name="input_files">
-                    <conditional name="file_selector">
-                        <param name="file_select" value="faselection"/>
-                            <param name="fa_files" value="NC_008720-N4-nucleotide.fasta"/>
-		    </conditional>
-	    </repeat>
-	    <repeat name="input_files">
+                <param name="prox" value="--prox"/>
+                <param name="check" value="spanin_domains"/>
+                <repeat name="input_files">
                     <conditional name="file_selector">
                         <param name="file_select" value="gff3selection"/>
-                            <param name="gff3_files" value="NC_008720-N4-NCBI.gff3"/>
-		    </conditional>
-	    </repeat>
-	    <repeat name="input_files">
-                    <conditional name="file_selector">
-                        <param name="file_select" value="blastselection"/>
-                            <param name="blast_files" value="Galaxy27-NR.blastxml.xml"/>
+                            <param name="gff3_files" value="lambda_spaninBLAST.gff3"/>
                     </conditional>
                 </repeat>
-                <output name="output" file="termHits.txt"/>
+                <output name="output" file="proxHits.gff3"/>
             </test>
         </tests>
     <help><![CDATA[
-INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, and/or a custom input via file or text box.
+INPUT : A user's file(s) of interest (gff3, gbk, fasta, or blast-xml) and query said file(s) with a determined set of search terms. The search terms can be either from the curated lysis synonym database, and/or a custom input via file or text box. Additionally, if a user is performing this script in the proximity to lysis workflow, the selector needs to be selected to true, and only gff3 files will be able to complete the job.
 
-OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term. See file search areas, for the regions of each type of file that are searched.
+OUTPUT : "termHits.txt" output file has file-type separated returns for features, or lines, that contained hits to a query term. See file search areas, for the regions of each type of file that are searched. If used for the proximity to lysis workflow, the output will be a proxHits.gff3 file that will be able to be fed to the next stages of the pipeline.
 
 DBase Family Term Descriptions :
 
 - Endolysins: enzymes that attack one of the structural bonds of the peptidoglycan. The endolysin step requires the hole-forming function of the holins.
 
 - Holins and Anti-holins: small cytoplasmic membrane proteins that control the timing of lysis by forming a lethal membrane hole at a programmed time (programmed into the holin itself).
+
+- Endolysins Domains: information pulled from PMID: 30873139
+
+- Spanin Domains: information pulled from http://www.ebi.ac.uk/interpro/search/text/spanin/
+
+- Holin Domains: information pulled from http://www.ebi.ac.uk/interpro/search/text/holin/
+
+Additionally, some terms were added by querying the QuickGO, located at https://www.ebi.ac.uk/QuickGO/
 
 File Search Areas:
 
