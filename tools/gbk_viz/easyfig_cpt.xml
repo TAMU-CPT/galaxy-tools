@@ -49,11 +49,13 @@ $blast.keepBlast
 -svg 
 -filter
 \${genList[@]}
+#if $blast.input_type !=  "files"
 #if $blast.keepBlast
 &&
 tar -cvf tempTar temp_easyfig
 &&
 mv tempTar $blastDir
+#end if
 #end if
 ]]></command>
   <inputs>
