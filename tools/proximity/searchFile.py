@@ -280,7 +280,16 @@ def writeResults(gffs, gbks, fas, blasts, outName="termHits.txt"):
         else:
             out_file.writelines("No query matches, try again with new terms!")
             print("No query matches, try again with new terms!")
-            
+
+def write_gff3(gffs,outName="prox_out.gff3"):
+    """ writes output to gff3 file for prox2lysis pipeline """
+    with open(outName.name, "w+") as out_file:
+        out_file.writelines("##gff-version 3\n")
+        if gffs:
+            for gff_hits in gffs:
+                out_file.writelines(gff_hits+"\n")
+        else:
+            pass
 
 
 if __name__ == "__main__":
@@ -294,11 +303,12 @@ if __name__ == "__main__":
     parser.add_argument("--fa_files",type=argparse.FileType("r"),nargs="*",action="append",help="FASTA File(s), if multiple files, use another flag")
     parser.add_argument("--blast_files",type=argparse.FileType("r"),nargs="*",action="append",help="BLAST.xml File(s), if multiple files, use another flag")
     parser.add_argument("--output",type=argparse.FileType("w+"),default="termHits.txt")
+    parser.add_argument("--prox",action="store_true",help="Use when running the prox2lysis pipeline")
     args = parser.parse_args()
 
     ############ STEP I
     ##### Determine user's terms to query
-    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=True)
+    dbase_terms = dbaseTerms(terms=args.dbaseTerms,galaxy=False)
     user_terms = userTerms(file=args.custom_file,text=args.custom_txt)
     glued_terms = glueTerms(dbase_terms=dbase_terms, user_terms=user_terms)
 
@@ -311,7 +321,10 @@ if __name__ == "__main__":
     blasts = readBLAST(files=files[3],search_list=glued_terms)
 
     ############ STEP III
-    ##### Output results to a text file
-    writeResults(gffs,gbks,fas,blasts,outName=args.output)
+    ##### Output results to a text file or gff3
+    if args.prox:
+        write_gff3(gffs,outName=args.output)
+    else:
+        writeResults(gffs,gbks,fas,blasts,outName=args.output)
 
 
