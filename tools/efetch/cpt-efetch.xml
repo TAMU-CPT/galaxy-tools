@@ -38,9 +38,20 @@ python $__tool_directory__/cpt-efetch.py
         </inputs>
         <outputs>
             <data name="data" format="txt">
+                <discover_datasets pattern="__designation_and_ext__" directory="results" visible="true" assign_primary_output="true"/>
             </data>
         </outputs>
         <tests>
+            <test>
+                <param name="email" value="curtisross@tamu.edu"/>
+                <param name="input" value="NC_001416.1"/>
+                <param name="db" value="nuccore"/>
+                <param name="ret_type" value="fasta"/>
+                <param name="ret_format" value="individual"/>
+                <output name="data">
+                    <discovered_dataset designation="__designation_and_ext__" ftype="fasta"/>
+                </output>
+            </test>
         </tests>
     <help><![CDATA[
 ** WARNING : THIS IS AN ALPHA VERSION OF THE TOOL. IT DOES NOT WORK AS DESCRIBED IN THE CURRENT STATE. **
