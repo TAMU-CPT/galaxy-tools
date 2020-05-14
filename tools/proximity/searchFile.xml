@@ -37,8 +37,8 @@ python $__tool_directory__/searchFile.py
                 "${blast_file}" #end for
         #end if
     #end for
-    #if str($prox) == "--prox":
-        --prox $prox
+    #if $prox:
+        --prox
         --output $output
     #else:
         --output $output
