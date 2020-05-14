@@ -138,7 +138,14 @@ if __name__ == "__main__":
     emails = sep.join(admins)
 
     print("Logged in as: "+email)
+    count = 0 # add a counter, so, it will do a two minute delay every 20th query, to attempt to not bother NCBI with load.
     for acc in args.input:
+        count += 1
+        if count % 20 == 0:
+            sleep(120)
+            continue
+        else:
+            continue
         c = CPTEfetch(emails, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
