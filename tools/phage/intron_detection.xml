@@ -32,6 +32,16 @@ python $__tool_directory__/intron_detection.py
   <outputs>
     <data format="gff3" name="output" label="Putative introns"/>
   </outputs>
+  <tests>
+      <test>
+          <param name="gff3_data" value="T7_CLEAN.gff3"/>
+          <param name="blast" value="T7_NR.blastxml"/>
+          <param name="minimum" value="10" />
+          <param name="maximum" value="2000" />
+          <param name="idThresh" value="0.3" />
+          <output name="output" file="T7_INTRON.gff3"/>
+      </test>
+  </tests>
   <help><![CDATA[
 **What it does**
 
