@@ -39,10 +39,8 @@ python $__tool_directory__/searchFile.py
     #end for
     #if $prox:
         --prox
-        --output $output
-    #else:
-        --output $output
     #end if
+    --output $output
     ]]></command>
         <inputs>
             <param label="Using Proximity to Lysis Pipeline?" name="prox" type="boolean" truevalue="--prox" falsevalue="" checked="false" help="required GFF3 input"/>
@@ -91,11 +89,10 @@ python $__tool_directory__/searchFile.py
             </repeat>
         </inputs>
         <outputs>
-            <data format="txt" name="output" label="termHits.txt">
-                <filter>prox == ""</filter>
-            </data>
-            <data format="gff3" name="output" label="proxHits.gff3">
-                <filter>prox == "--prox"</filter>
+            <data format="txt" name="output" label="termHits">
+                <change_format>
+                    <when input="prox" value="--prox" format="gff3"/>
+                </change_format>
             </data>
         </outputs>
         <tests>
@@ -108,7 +105,7 @@ python $__tool_directory__/searchFile.py
                             <param name="gff3_files" value="lambda_spaninBLAST.gff3"/>
                     </conditional>
                 </repeat>
-                <output name="output" file="proxHits.gff3"/>
+                <output name="output" file="termHits"/>
             </test>
         </tests>
     <help><![CDATA[
