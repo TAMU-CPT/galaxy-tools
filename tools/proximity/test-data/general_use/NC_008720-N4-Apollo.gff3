@@ -1,0 +1,686 @@
+##gff-version 3
+
+##sequence-region NC_008720 1 70153
+
+NC_008720	CPT	gene	141	480	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075708;ID=83f7e74c-0833-494b-926d-8274bdeb5ca0;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-06-03;Name=EPNV4_gp01;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	154	480	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=83f7e74c-0833-494b-926d-8274bdeb5ca0;ID=5010a5fd-e6a5-4389-a4cf-46897d4c11e4;date_last_modified=2019-05-30;Name=EPNV4_gp01;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	154	480	.	+	0	Parent=5010a5fd-e6a5-4389-a4cf-46897d4c11e4;Note=Manually set translation start;ID=5010a5fd-e6a5-4389-a4cf-46897d4c11e4-CDS;date_last_modified=2019-05-30;Name=5010a5fd-e6a5-4389-a4cf-46897d4c11e4-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	154	480	.	+	.	Parent=5010a5fd-e6a5-4389-a4cf-46897d4c11e4;ID=e467945d-509d-44a0-9b55-876abbcc31c5;date_last_modified=2019-05-30;Name=e467945d-509d-44a0-9b55-876abbcc31c5;date_creation=2019-05-30
+
+NC_008720	CPT	gene	576	1071	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075649;ID=5eb21c3f-d122-43cd-8f33-eb134c56e29e;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-06-03;Name=EPNV4_gp02;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	586	1071	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=5eb21c3f-d122-43cd-8f33-eb134c56e29e;ID=600d322b-6e1f-478c-bef2-9097cea917b9;date_last_modified=2019-05-30;Name=EPNV4_gp02;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	586	1071	.	+	0	Parent=600d322b-6e1f-478c-bef2-9097cea917b9;Note=Manually set translation start;ID=600d322b-6e1f-478c-bef2-9097cea917b9-CDS;date_last_modified=2019-05-30;Name=600d322b-6e1f-478c-bef2-9097cea917b9-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	586	1071	.	+	.	Parent=600d322b-6e1f-478c-bef2-9097cea917b9;ID=a6de4976-2173-4534-a77a-c4317066aea2;date_last_modified=2019-05-30;Name=a6de4976-2173-4534-a77a-c4317066aea2;date_creation=2019-05-30
+
+NC_008720	CPT	gene	1214	1528	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075659;ID=da69f78b-edc4-4f9c-9692-bee4e824f493;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp03;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	1214	1528	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=da69f78b-edc4-4f9c-9692-bee4e824f493;ID=3fab4367-d236-41ba-8496-0cf31487da8b;date_last_modified=2019-05-30;Name=EPNV4_gp03;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	1214	1528	.	+	0	Parent=3fab4367-d236-41ba-8496-0cf31487da8b;Note=Manually set translation start;ID=3fab4367-d236-41ba-8496-0cf31487da8b-CDS;date_last_modified=2019-05-30;Name=3fab4367-d236-41ba-8496-0cf31487da8b-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	1214	1528	.	+	.	Parent=3fab4367-d236-41ba-8496-0cf31487da8b;ID=188b31e2-4ce4-4214-85eb-c3303a339d00;date_last_modified=2019-05-30;Name=188b31e2-4ce4-4214-85eb-c3303a339d00;date_creation=2019-05-30
+
+NC_008720	CPT	gene	1532	1969	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075683;ID=55835df4-14bf-4352-a300-18eb242afab4;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp04;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	1532	1969	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=55835df4-14bf-4352-a300-18eb242afab4;ID=a3b79140-32dc-46ea-9399-a7f11914eb33;date_last_modified=2019-05-30;Name=EPNV4_gp04;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	1532	1969	.	+	0	Parent=a3b79140-32dc-46ea-9399-a7f11914eb33;Note=Manually set translation start;ID=a3b79140-32dc-46ea-9399-a7f11914eb33-CDS;date_last_modified=2019-05-30;Name=a3b79140-32dc-46ea-9399-a7f11914eb33-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	1532	1969	.	+	.	Parent=a3b79140-32dc-46ea-9399-a7f11914eb33;ID=e1b34f8b-ed08-4259-abab-7f196e2efeb9;date_last_modified=2019-05-30;Name=e1b34f8b-ed08-4259-abab-7f196e2efeb9;date_creation=2019-05-30
+
+NC_008720	CPT	gene	1944	2141	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075660;ID=675c3107-fe63-453c-ad9e-ed824959f8e0;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp05;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	1944	2141	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=675c3107-fe63-453c-ad9e-ed824959f8e0;ID=022ec50b-15d8-47e5-8e86-d04d0020cdb7;date_last_modified=2019-05-30;Name=EPNV4_gp05;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	1944	2141	.	+	0	Parent=022ec50b-15d8-47e5-8e86-d04d0020cdb7;Note=Manually set translation start;ID=022ec50b-15d8-47e5-8e86-d04d0020cdb7-CDS;date_last_modified=2019-05-30;Name=022ec50b-15d8-47e5-8e86-d04d0020cdb7-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	1944	2141	.	+	.	Parent=022ec50b-15d8-47e5-8e86-d04d0020cdb7;ID=4fdc95de-3b02-4272-a7cd-3c8e9f4299e4;date_last_modified=2019-05-30;Name=4fdc95de-3b02-4272-a7cd-3c8e9f4299e4;date_creation=2019-05-30
+
+NC_008720	CPT	gene	2152	2310	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075682;ID=b507be2b-18ef-4dfd-be9f-5a60a862a960;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp06;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	2152	2310	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=b507be2b-18ef-4dfd-be9f-5a60a862a960;ID=8e5ab9cb-36de-428e-acdb-c8c9adf74952;date_last_modified=2019-05-30;Name=EPNV4_gp06;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	2152	2310	.	+	0	Parent=8e5ab9cb-36de-428e-acdb-c8c9adf74952;Note=Manually set translation start;ID=8e5ab9cb-36de-428e-acdb-c8c9adf74952-CDS;date_last_modified=2019-05-30;Name=8e5ab9cb-36de-428e-acdb-c8c9adf74952-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	2152	2310	.	+	.	Parent=8e5ab9cb-36de-428e-acdb-c8c9adf74952;ID=d1f9453a-18c7-4291-8f5b-cb49e15ea6b3;date_last_modified=2019-05-30;Name=d1f9453a-18c7-4291-8f5b-cb49e15ea6b3;date_creation=2019-05-30
+
+NC_008720	CPT	gene	2310	2519	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075646;ID=620c5f56-ebae-4957-b6a0-b302a6522fbf;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp07;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	2310	2519	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=620c5f56-ebae-4957-b6a0-b302a6522fbf;ID=b0ce1765-d269-467a-8197-5ce0916a0470;date_last_modified=2019-05-30;Name=EPNV4_gp07;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	2310	2519	.	+	0	Parent=b0ce1765-d269-467a-8197-5ce0916a0470;Note=Manually set translation start;ID=b0ce1765-d269-467a-8197-5ce0916a0470-CDS;date_last_modified=2019-05-30;Name=b0ce1765-d269-467a-8197-5ce0916a0470-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	2310	2519	.	+	.	Parent=b0ce1765-d269-467a-8197-5ce0916a0470;ID=b206e820-e727-4b74-958e-793be866d95e;date_last_modified=2019-05-30;Name=b206e820-e727-4b74-958e-793be866d95e;date_creation=2019-05-30
+
+NC_008720	CPT	gene	2593	2808	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075662;ID=9becb220-4a96-47a8-8d12-e05e9d049617;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp08;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	2593	2808	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=9becb220-4a96-47a8-8d12-e05e9d049617;ID=0d00187c-50fe-4dc4-9f70-9267c9192c23;date_last_modified=2019-05-30;Name=EPNV4_gp08;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	2593	2808	.	+	0	Parent=0d00187c-50fe-4dc4-9f70-9267c9192c23;Note=Manually set translation start;ID=0d00187c-50fe-4dc4-9f70-9267c9192c23-CDS;date_last_modified=2019-05-30;Name=0d00187c-50fe-4dc4-9f70-9267c9192c23-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	2593	2808	.	+	.	Parent=0d00187c-50fe-4dc4-9f70-9267c9192c23;ID=147291b3-1b91-4269-8193-dd6d97d7c3e7;date_last_modified=2019-05-30;Name=147291b3-1b91-4269-8193-dd6d97d7c3e7;date_creation=2019-05-30
+
+NC_008720	CPT	gene	2805	3119	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075675;ID=6990e590-e820-46d9-af2a-95db5950865a;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp09;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	2805	3119	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=6990e590-e820-46d9-af2a-95db5950865a;ID=b9a063f7-5ac8-49b2-af26-b601d6bd84bb;date_last_modified=2019-05-30;Name=EPNV4_gp09;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	2805	3119	.	+	0	Parent=b9a063f7-5ac8-49b2-af26-b601d6bd84bb;Note=Manually set translation start;ID=b9a063f7-5ac8-49b2-af26-b601d6bd84bb-CDS;date_last_modified=2019-05-30;Name=b9a063f7-5ac8-49b2-af26-b601d6bd84bb-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	2805	3119	.	+	.	Parent=b9a063f7-5ac8-49b2-af26-b601d6bd84bb;ID=43ed0f83-48df-4569-90a1-a065ac74f604;date_last_modified=2019-05-30;Name=43ed0f83-48df-4569-90a1-a065ac74f604;date_creation=2019-05-30
+
+NC_008720	CPT	gene	3106	3282	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075653;ID=fe9ee9a3-8747-46d6-ac10-54c53fb6f3cf;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp10;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	3106	3282	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=fe9ee9a3-8747-46d6-ac10-54c53fb6f3cf;ID=873e773d-bf96-410a-91c6-314c8b8b3463;date_last_modified=2019-05-30;Name=EPNV4_gp10;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	3106	3282	.	+	0	Parent=873e773d-bf96-410a-91c6-314c8b8b3463;Note=Manually set translation start;ID=873e773d-bf96-410a-91c6-314c8b8b3463-CDS;date_last_modified=2019-05-30;Name=873e773d-bf96-410a-91c6-314c8b8b3463-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	3106	3282	.	+	.	Parent=873e773d-bf96-410a-91c6-314c8b8b3463;ID=e1707c67-17b7-49da-85f3-5f79957fc23a;date_last_modified=2019-05-30;Name=e1707c67-17b7-49da-85f3-5f79957fc23a;date_creation=2019-05-30
+
+NC_008720	CPT	gene	3282	3602	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075688;ID=c9b18e5c-3ba1-4d2a-9a53-59cf1cba933b;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp11;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	3282	3602	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=c9b18e5c-3ba1-4d2a-9a53-59cf1cba933b;ID=277a0c13-59f5-4fb6-9154-ea17aac9ed05;date_last_modified=2019-05-30;Name=EPNV4_gp11;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	3282	3602	.	+	0	Parent=277a0c13-59f5-4fb6-9154-ea17aac9ed05;Note=Manually set translation start;ID=277a0c13-59f5-4fb6-9154-ea17aac9ed05-CDS;date_last_modified=2019-05-30;Name=277a0c13-59f5-4fb6-9154-ea17aac9ed05-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	3282	3602	.	+	.	Parent=277a0c13-59f5-4fb6-9154-ea17aac9ed05;ID=63f8a20e-c14c-4404-8868-d2e896e796e8;date_last_modified=2019-05-30;Name=63f8a20e-c14c-4404-8868-d2e896e796e8;date_creation=2019-05-30
+
+NC_008720	CPT	gene	3605	3973	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075650;ID=6b8ffe0f-6fae-4d41-8c7b-c741296b9aeb;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp12;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	3605	3973	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=6b8ffe0f-6fae-4d41-8c7b-c741296b9aeb;ID=97d0766d-0db9-4329-ae1b-3f0eee31590e;date_last_modified=2019-05-30;Name=EPNV4_gp12;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	3605	3973	.	+	0	Parent=97d0766d-0db9-4329-ae1b-3f0eee31590e;Note=Manually set translation start;ID=97d0766d-0db9-4329-ae1b-3f0eee31590e-CDS;date_last_modified=2019-05-30;Name=97d0766d-0db9-4329-ae1b-3f0eee31590e-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	3605	3973	.	+	.	Parent=97d0766d-0db9-4329-ae1b-3f0eee31590e;ID=e4e2c629-1ebd-4106-a25c-7861aaedc8f3;date_last_modified=2019-05-30;Name=e4e2c629-1ebd-4106-a25c-7861aaedc8f3;date_creation=2019-05-30
+
+NC_008720	CPT	gene	3966	4151	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075668;ID=7cda5149-f599-49a9-bf15-fda539c34765;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp13;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	3966	4151	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=7cda5149-f599-49a9-bf15-fda539c34765;ID=8f12c6e4-4a85-4eb4-99e2-a39d94b921a6;date_last_modified=2019-05-30;Name=EPNV4_gp13;date_creation=2019-05-30
+
+NC_008720	CPT	exon	3966	4151	.	+	.	Parent=8f12c6e4-4a85-4eb4-99e2-a39d94b921a6;ID=89dd8860-3d69-4a5c-99da-19b2ebdf1db9;date_last_modified=2019-05-30;Name=89dd8860-3d69-4a5c-99da-19b2ebdf1db9;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	3966	4151	.	+	0	Parent=8f12c6e4-4a85-4eb4-99e2-a39d94b921a6;Note=Manually set translation start;ID=8f12c6e4-4a85-4eb4-99e2-a39d94b921a6-CDS;date_last_modified=2019-05-30;Name=8f12c6e4-4a85-4eb4-99e2-a39d94b921a6-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	4148	4528	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075657;ID=585d72d0-2f07-43db-8cf8-6770d10f0148;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp14;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	4148	4528	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=585d72d0-2f07-43db-8cf8-6770d10f0148;ID=8462b2b7-a876-45dd-a30a-0ea4da2c7e5e;date_last_modified=2019-05-30;Name=EPNV4_gp14;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	4148	4528	.	+	0	Parent=8462b2b7-a876-45dd-a30a-0ea4da2c7e5e;Note=Manually set translation start;ID=8462b2b7-a876-45dd-a30a-0ea4da2c7e5e-CDS;date_last_modified=2019-05-30;Name=8462b2b7-a876-45dd-a30a-0ea4da2c7e5e-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	4148	4528	.	+	.	Parent=8462b2b7-a876-45dd-a30a-0ea4da2c7e5e;ID=1e19e989-7394-451e-813e-7001375d3821;date_last_modified=2019-05-30;Name=1e19e989-7394-451e-813e-7001375d3821;date_creation=2019-05-30
+
+NC_008720	CPT	gene	4603	5412	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075664;ID=7ba09829-2d3d-43dc-8ead-b8ca24975316;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp15;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	4603	5412	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=7ba09829-2d3d-43dc-8ead-b8ca24975316;ID=e41a86ce-3e47-4750-84ee-8d78a3c7b040;date_last_modified=2019-05-30;Name=EPNV4_gp15;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	4603	5412	.	+	0	Parent=e41a86ce-3e47-4750-84ee-8d78a3c7b040;Note=Manually set translation start;ID=e41a86ce-3e47-4750-84ee-8d78a3c7b040-CDS;date_last_modified=2019-05-30;Name=e41a86ce-3e47-4750-84ee-8d78a3c7b040-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	4603	5412	.	+	.	Parent=e41a86ce-3e47-4750-84ee-8d78a3c7b040;ID=65fd13f0-946a-4342-a987-f238f4f10557;date_last_modified=2019-05-30;Name=65fd13f0-946a-4342-a987-f238f4f10557;date_creation=2019-05-30
+
+NC_008720	CPT	gene	5460	6674	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075661;ID=a8243f73-7b94-45f4-928c-28b99418ba69;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp16;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	5460	6674	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=a8243f73-7b94-45f4-928c-28b99418ba69;ID=6c5dd22e-4bd1-40d0-8234-9310b8cda05b;date_last_modified=2019-05-30;Name=EPNV4_gp16;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	5460	6674	.	+	0	Parent=6c5dd22e-4bd1-40d0-8234-9310b8cda05b;Note=Manually set translation start;ID=6c5dd22e-4bd1-40d0-8234-9310b8cda05b-CDS;date_last_modified=2019-05-30;Name=6c5dd22e-4bd1-40d0-8234-9310b8cda05b-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	5460	6674	.	+	.	Parent=6c5dd22e-4bd1-40d0-8234-9310b8cda05b;ID=2a6a7a48-fca0-45a1-bd4f-d4d46b31f1a1;date_last_modified=2019-05-30;Name=2a6a7a48-fca0-45a1-bd4f-d4d46b31f1a1;date_creation=2019-05-30
+
+NC_008720	CPT	gene	6726	7598	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075684;ID=7a2e1bf7-b58f-4f74-bd68-9a979ded5b76;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-06-03;Name=EPNV4_gp17;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	6726	7598	.	+	.	owner=cody.martin@tamu.edu;Parent=7a2e1bf7-b58f-4f74-bd68-9a979ded5b76;ID=a031a7ae-2ad5-49c3-b0ad-625ef6a2daf4;date_last_modified=2019-06-03;Name=EPNV4_gp17-00001;date_creation=2019-06-03
+
+NC_008720	CPT	exon	6726	7598	.	+	.	Parent=a031a7ae-2ad5-49c3-b0ad-625ef6a2daf4;ID=7596b0ab-bca8-46be-b857-b77c466a1401;date_last_modified=2019-06-03;Name=7596b0ab-bca8-46be-b857-b77c466a1401;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	6726	7598	.	+	0	Parent=a031a7ae-2ad5-49c3-b0ad-625ef6a2daf4;ID=2d90da8e-ff02-4d20-b649-c0c22c4a40a8;date_last_modified=2019-06-03;Name=2d90da8e-ff02-4d20-b649-c0c22c4a40a8;date_creation=2019-06-03
+
+NC_008720	CPT	gene	7668	7982	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075673;ID=9a940af7-2242-4c50-8c98-3687db85bed9;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp18;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	7668	7982	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=9a940af7-2242-4c50-8c98-3687db85bed9;ID=edd73e3e-9109-4678-a368-0dbab8005b0f;date_last_modified=2019-05-30;Name=EPNV4_gp18;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	7668	7982	.	+	0	Parent=edd73e3e-9109-4678-a368-0dbab8005b0f;Note=Manually set translation start;ID=edd73e3e-9109-4678-a368-0dbab8005b0f-CDS;date_last_modified=2019-05-30;Name=edd73e3e-9109-4678-a368-0dbab8005b0f-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	7668	7982	.	+	.	Parent=edd73e3e-9109-4678-a368-0dbab8005b0f;ID=38f18af5-d8ba-414e-af52-67f275da54ce;date_last_modified=2019-05-30;Name=38f18af5-d8ba-414e-af52-67f275da54ce;date_creation=2019-05-30
+
+NC_008720	CPT	gene	8057	8263	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075680;ID=ca47c650-d1fa-4e11-8293-541124479314;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp19;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	8057	8263	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=ca47c650-d1fa-4e11-8293-541124479314;ID=819fdc6b-1da3-4107-90b1-3d6a1eca9712;date_last_modified=2019-05-30;Name=EPNV4_gp19;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	8057	8263	.	+	0	Parent=819fdc6b-1da3-4107-90b1-3d6a1eca9712;Note=Manually set translation start;ID=819fdc6b-1da3-4107-90b1-3d6a1eca9712-CDS;date_last_modified=2019-05-30;Name=819fdc6b-1da3-4107-90b1-3d6a1eca9712-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	8057	8263	.	+	.	Parent=819fdc6b-1da3-4107-90b1-3d6a1eca9712;ID=1a1b7779-327a-42cc-9caa-cf1772e8a97f;date_last_modified=2019-05-30;Name=1a1b7779-327a-42cc-9caa-cf1772e8a97f;date_creation=2019-05-30
+
+NC_008720	CPT	gene	8256	9092	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075674;ID=865f7ecf-6ddd-4158-8649-524426af956f;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp20;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	8256	9092	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=865f7ecf-6ddd-4158-8649-524426af956f;ID=208bc500-0ca0-4f7c-bdad-da3f986e4981;date_last_modified=2019-05-30;Name=EPNV4_gp20;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	8256	9092	.	+	0	Parent=208bc500-0ca0-4f7c-bdad-da3f986e4981;Note=Manually set translation start;ID=208bc500-0ca0-4f7c-bdad-da3f986e4981-CDS;date_last_modified=2019-05-30;Name=208bc500-0ca0-4f7c-bdad-da3f986e4981-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	8256	9092	.	+	.	Parent=208bc500-0ca0-4f7c-bdad-da3f986e4981;ID=ae8efd50-87bf-40ae-9501-1e2dbba29119;date_last_modified=2019-05-30;Name=ae8efd50-87bf-40ae-9501-1e2dbba29119;date_creation=2019-05-30
+
+NC_008720	CPT	gene	9155	9379	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075696;ID=356fd122-83fc-4cf3-9f21-6d6a6de4d4ec;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp21;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	9155	9379	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=356fd122-83fc-4cf3-9f21-6d6a6de4d4ec;ID=c78b7342-3a9c-4d2f-8795-d7a523709952;date_last_modified=2019-05-30;Name=EPNV4_gp21;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	9155	9379	.	+	0	Parent=c78b7342-3a9c-4d2f-8795-d7a523709952;Note=Manually set translation start;ID=c78b7342-3a9c-4d2f-8795-d7a523709952-CDS;date_last_modified=2019-05-30;Name=c78b7342-3a9c-4d2f-8795-d7a523709952-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	9155	9379	.	+	.	Parent=c78b7342-3a9c-4d2f-8795-d7a523709952;ID=e3bfa0d7-a81b-49a6-9f20-ea7a2c5e2e65;date_last_modified=2019-05-30;Name=e3bfa0d7-a81b-49a6-9f20-ea7a2c5e2e65;date_creation=2019-05-30
+
+NC_008720	CPT	gene	9381	9737	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075685;ID=2d94b26a-b8dd-4bc0-84af-f9a7996eeaa6;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp22;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	9381	9737	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=2d94b26a-b8dd-4bc0-84af-f9a7996eeaa6;ID=ae484b80-33b9-4cee-a87e-39f50bbb8e36;date_last_modified=2019-05-30;Name=EPNV4_gp22;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	9381	9737	.	+	0	Parent=ae484b80-33b9-4cee-a87e-39f50bbb8e36;Note=Manually set translation start;ID=ae484b80-33b9-4cee-a87e-39f50bbb8e36-CDS;date_last_modified=2019-05-30;Name=ae484b80-33b9-4cee-a87e-39f50bbb8e36-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	9381	9737	.	+	.	Parent=ae484b80-33b9-4cee-a87e-39f50bbb8e36;ID=f8e1e8bd-3f48-4153-9040-700fb1deeafe;date_last_modified=2019-05-30;Name=f8e1e8bd-3f48-4153-9040-700fb1deeafe;date_creation=2019-05-30
+
+NC_008720	CPT	gene	9738	9908	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075679;ID=be43fb8f-c097-4695-a7eb-a582216f45cf;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp23;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	9738	9908	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=be43fb8f-c097-4695-a7eb-a582216f45cf;ID=41b86791-923e-4ec6-a7e0-bc824b2ad52d;date_last_modified=2019-05-30;Name=EPNV4_gp23;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	9738	9908	.	+	0	Parent=41b86791-923e-4ec6-a7e0-bc824b2ad52d;Note=Manually set translation start;ID=41b86791-923e-4ec6-a7e0-bc824b2ad52d-CDS;date_last_modified=2019-05-30;Name=41b86791-923e-4ec6-a7e0-bc824b2ad52d-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	9738	9908	.	+	.	Parent=41b86791-923e-4ec6-a7e0-bc824b2ad52d;ID=0393cbbe-188c-4e6d-994b-91a2d4170525;date_last_modified=2019-05-30;Name=0393cbbe-188c-4e6d-994b-91a2d4170525;date_creation=2019-05-30
+
+NC_008720	CPT	gene	9938	10996	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075701;ID=49be6a9e-2a77-4d74-9b90-ec86e3161a69;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp24;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	9938	10996	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=49be6a9e-2a77-4d74-9b90-ec86e3161a69;ID=2226472d-50fc-44ec-bf4c-a7559ad8fb1e;date_last_modified=2019-05-30;Name=EPNV4_gp24;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	9938	10996	.	+	0	Parent=2226472d-50fc-44ec-bf4c-a7559ad8fb1e;Note=Manually set translation start;ID=2226472d-50fc-44ec-bf4c-a7559ad8fb1e-CDS;date_last_modified=2019-05-30;Name=2226472d-50fc-44ec-bf4c-a7559ad8fb1e-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	9938	10996	.	+	.	Parent=2226472d-50fc-44ec-bf4c-a7559ad8fb1e;ID=9375a6d0-b12e-4483-90db-db8631c7ee8d;date_last_modified=2019-05-30;Name=9375a6d0-b12e-4483-90db-db8631c7ee8d;date_creation=2019-05-30
+
+NC_008720	CPT	gene	11164	12306	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075654;ID=0ea2e2c1-8b06-4046-8108-a3ee1f935769;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp25;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	11164	12306	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=0ea2e2c1-8b06-4046-8108-a3ee1f935769;ID=d94a2ad1-13b9-4e65-b5b9-d02c0f7ca660;date_last_modified=2019-05-30;Name=EPNV4_gp25;date_creation=2019-05-30
+
+NC_008720	CPT	exon	11164	12306	.	+	.	Parent=d94a2ad1-13b9-4e65-b5b9-d02c0f7ca660;ID=2f668314-0fee-4cf8-8c2a-31aed8ef2984;date_last_modified=2019-05-30;Name=2f668314-0fee-4cf8-8c2a-31aed8ef2984;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	11164	12306	.	+	0	Parent=d94a2ad1-13b9-4e65-b5b9-d02c0f7ca660;Note=Manually set translation start;ID=d94a2ad1-13b9-4e65-b5b9-d02c0f7ca660-CDS;date_last_modified=2019-05-30;Name=d94a2ad1-13b9-4e65-b5b9-d02c0f7ca660-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	12313	12819	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075698;ID=bab6b567-45f5-4527-92eb-892c0e6d5446;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp26;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	12313	12819	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=bab6b567-45f5-4527-92eb-892c0e6d5446;ID=50a06275-011b-4de4-bcdf-8e39f4f1128e;date_last_modified=2019-05-30;Name=EPNV4_gp26;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	12313	12819	.	+	0	Parent=50a06275-011b-4de4-bcdf-8e39f4f1128e;Note=Manually set translation start;ID=50a06275-011b-4de4-bcdf-8e39f4f1128e-CDS;date_last_modified=2019-05-30;Name=50a06275-011b-4de4-bcdf-8e39f4f1128e-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	12313	12819	.	+	.	Parent=50a06275-011b-4de4-bcdf-8e39f4f1128e;ID=44ade55d-4df8-4980-900b-bd980b855d07;date_last_modified=2019-05-30;Name=44ade55d-4df8-4980-900b-bd980b855d07;date_creation=2019-05-30
+
+NC_008720	CPT	gene	12833	13033	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075692;ID=8e6e38d4-b399-4d0a-8b48-16c366e1523c;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp27;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	12833	13033	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=8e6e38d4-b399-4d0a-8b48-16c366e1523c;ID=6d1e3ad8-d5a5-444e-affc-5567a6b9ed84;date_last_modified=2019-05-30;Name=EPNV4_gp27;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	12833	13033	.	+	0	Parent=6d1e3ad8-d5a5-444e-affc-5567a6b9ed84;Note=Manually set translation start;ID=6d1e3ad8-d5a5-444e-affc-5567a6b9ed84-CDS;date_last_modified=2019-05-30;Name=6d1e3ad8-d5a5-444e-affc-5567a6b9ed84-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	12833	13033	.	+	.	Parent=6d1e3ad8-d5a5-444e-affc-5567a6b9ed84;ID=996a7b71-8a15-4fad-b8c4-e957507273e9;date_last_modified=2019-05-30;Name=996a7b71-8a15-4fad-b8c4-e957507273e9;date_creation=2019-05-30
+
+NC_008720	CPT	gene	13147	13389	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075651;ID=e90c6877-30ca-4da8-b074-c23edf36a998;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp28;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	13147	13389	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=e90c6877-30ca-4da8-b074-c23edf36a998;ID=6b0aa606-6acb-4962-aa4d-e49f82774ef6;date_last_modified=2019-05-30;Name=EPNV4_gp28;date_creation=2019-05-30
+
+NC_008720	CPT	exon	13147	13389	.	+	.	Parent=6b0aa606-6acb-4962-aa4d-e49f82774ef6;ID=1a712a83-6541-4d4f-8016-1a30ecfc0df5;date_last_modified=2019-05-30;Name=1a712a83-6541-4d4f-8016-1a30ecfc0df5;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	13147	13389	.	+	0	Parent=6b0aa606-6acb-4962-aa4d-e49f82774ef6;Note=Manually set translation start;ID=6b0aa606-6acb-4962-aa4d-e49f82774ef6-CDS;date_last_modified=2019-05-30;Name=6b0aa606-6acb-4962-aa4d-e49f82774ef6-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	13389	13850	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075694;ID=36f36144-ec76-401e-9d96-d3737e85fd4c;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp29;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	13389	13850	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=36f36144-ec76-401e-9d96-d3737e85fd4c;ID=6d45bf72-bce1-473c-a43a-52c0a266bf58;date_last_modified=2019-05-30;Name=EPNV4_gp29;date_creation=2019-05-30
+
+NC_008720	CPT	exon	13389	13850	.	+	.	Parent=6d45bf72-bce1-473c-a43a-52c0a266bf58;ID=c2a3fbd6-ef77-48e9-ba16-e083fc834bf7;date_last_modified=2019-05-30;Name=c2a3fbd6-ef77-48e9-ba16-e083fc834bf7;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	13389	13850	.	+	0	Parent=6d45bf72-bce1-473c-a43a-52c0a266bf58;Note=Manually set translation start;ID=6d45bf72-bce1-473c-a43a-52c0a266bf58-CDS;date_last_modified=2019-05-30;Name=6d45bf72-bce1-473c-a43a-52c0a266bf58-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	13843	14784	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075665;ID=45db022d-71a4-4ce5-9475-6cbf006cf6ec;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp30;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	13843	14784	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=45db022d-71a4-4ce5-9475-6cbf006cf6ec;ID=0e6a0149-1ba0-4f0f-9abc-6c84ed0f9d32;date_last_modified=2019-05-30;Name=EPNV4_gp30;date_creation=2019-05-30
+
+NC_008720	CPT	exon	13843	14784	.	+	.	Parent=0e6a0149-1ba0-4f0f-9abc-6c84ed0f9d32;ID=23e941eb-6306-4514-bf50-d852a776e40d;date_last_modified=2019-05-30;Name=23e941eb-6306-4514-bf50-d852a776e40d;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	13843	14784	.	+	0	Parent=0e6a0149-1ba0-4f0f-9abc-6c84ed0f9d32;Note=Manually set translation start;ID=0e6a0149-1ba0-4f0f-9abc-6c84ed0f9d32-CDS;date_last_modified=2019-05-30;Name=0e6a0149-1ba0-4f0f-9abc-6c84ed0f9d32-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	14882	15115	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075678;ID=d47e2ab8-3363-4c22-8d44-2d6286f1ba7d;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp31;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	14882	15115	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=d47e2ab8-3363-4c22-8d44-2d6286f1ba7d;ID=da6fcd14-9e54-48e3-bb69-45340d7bc46b;date_last_modified=2019-05-30;Name=EPNV4_gp31;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	14882	15115	.	+	0	Parent=da6fcd14-9e54-48e3-bb69-45340d7bc46b;Note=Manually set translation start;ID=da6fcd14-9e54-48e3-bb69-45340d7bc46b-CDS;date_last_modified=2019-05-30;Name=da6fcd14-9e54-48e3-bb69-45340d7bc46b-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	14882	15115	.	+	.	Parent=da6fcd14-9e54-48e3-bb69-45340d7bc46b;ID=0474fcbb-7371-46ec-be1a-634f9d5d5307;date_last_modified=2019-05-30;Name=0474fcbb-7371-46ec-be1a-634f9d5d5307;date_creation=2019-05-30
+
+NC_008720	CPT	gene	15108	15434	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075672;ID=ae3d0a09-ff9e-489c-ac3f-f1d235ef43cd;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp32;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	15108	15434	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=ae3d0a09-ff9e-489c-ac3f-f1d235ef43cd;ID=142829f6-7951-4074-add8-4dd47c4f3d9f;date_last_modified=2019-05-30;Name=EPNV4_gp32;date_creation=2019-05-30
+
+NC_008720	CPT	exon	15108	15434	.	+	.	Parent=142829f6-7951-4074-add8-4dd47c4f3d9f;ID=1f2f986b-c8f3-4a00-84da-94e96397a564;date_last_modified=2019-05-30;Name=1f2f986b-c8f3-4a00-84da-94e96397a564;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	15108	15434	.	+	0	Parent=142829f6-7951-4074-add8-4dd47c4f3d9f;Note=Manually set translation start;ID=142829f6-7951-4074-add8-4dd47c4f3d9f-CDS;date_last_modified=2019-05-30;Name=142829f6-7951-4074-add8-4dd47c4f3d9f-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	15460	17985	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075670;ID=6daee57f-74a2-438d-a168-765542c1afd3;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp33;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	15460	17985	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=6daee57f-74a2-438d-a168-765542c1afd3;ID=ac2b2734-639c-406e-b23d-5cccecdbd9f2;date_last_modified=2019-05-30;Name=EPNV4_gp33;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	15460	17985	.	+	0	Parent=ac2b2734-639c-406e-b23d-5cccecdbd9f2;Note=Manually set translation start;ID=ac2b2734-639c-406e-b23d-5cccecdbd9f2-CDS;date_last_modified=2019-05-30;Name=ac2b2734-639c-406e-b23d-5cccecdbd9f2-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	15460	17985	.	+	.	Parent=ac2b2734-639c-406e-b23d-5cccecdbd9f2;ID=ce004ecb-7404-4130-9e40-e751c1a31cc7;date_last_modified=2019-05-30;Name=ce004ecb-7404-4130-9e40-e751c1a31cc7;date_creation=2019-05-30
+
+NC_008720	CPT	gene	17985	20075	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075709;ID=3646b20a-8616-4e5a-aba9-79ceb3da2d81;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp34;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	17985	20075	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=3646b20a-8616-4e5a-aba9-79ceb3da2d81;ID=f89a43a5-5032-4ecd-93b7-40a4e0717257;date_last_modified=2019-05-30;Name=EPNV4_gp34;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	17985	20075	.	+	0	Parent=f89a43a5-5032-4ecd-93b7-40a4e0717257;Note=Manually set translation start;ID=f89a43a5-5032-4ecd-93b7-40a4e0717257-CDS;date_last_modified=2019-05-30;Name=f89a43a5-5032-4ecd-93b7-40a4e0717257-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	17985	20075	.	+	.	Parent=f89a43a5-5032-4ecd-93b7-40a4e0717257;ID=42466ba2-db96-4523-8670-149285bcf9fa;date_last_modified=2019-05-30;Name=42466ba2-db96-4523-8670-149285bcf9fa;date_creation=2019-05-30
+
+NC_008720	CPT	gene	20143	20538	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075652;ID=d6da0e15-311c-46e2-a1a9-95f63c433b86;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp35;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	20143	20538	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=d6da0e15-311c-46e2-a1a9-95f63c433b86;ID=c41dacfd-79f3-400f-8301-0910f79a6dbd;date_last_modified=2019-05-30;Name=EPNV4_gp35;date_creation=2019-05-30
+
+NC_008720	CPT	exon	20143	20538	.	+	.	Parent=c41dacfd-79f3-400f-8301-0910f79a6dbd;ID=f0775371-8ae0-4a42-9f83-57a3a333a1a5;date_last_modified=2019-05-30;Name=f0775371-8ae0-4a42-9f83-57a3a333a1a5;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	20143	20538	.	+	0	Parent=c41dacfd-79f3-400f-8301-0910f79a6dbd;Note=Manually set translation start;ID=c41dacfd-79f3-400f-8301-0910f79a6dbd-CDS;date_last_modified=2019-05-30;Name=c41dacfd-79f3-400f-8301-0910f79a6dbd-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	20462	20914	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075669;ID=1a057257-cd57-47c2-8a1b-b3a7caa1cce1;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp36;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	20462	20914	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=1a057257-cd57-47c2-8a1b-b3a7caa1cce1;ID=28e5d7f7-02c7-4a97-9e0b-2c80f5559d3d;date_last_modified=2019-05-30;Name=EPNV4_gp36;date_creation=2019-05-30
+
+NC_008720	CPT	exon	20462	20914	.	+	.	Parent=28e5d7f7-02c7-4a97-9e0b-2c80f5559d3d;ID=52f93f3c-f768-4c55-8071-183dd0795efe;date_last_modified=2019-05-30;Name=52f93f3c-f768-4c55-8071-183dd0795efe;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	20462	20914	.	+	0	Parent=28e5d7f7-02c7-4a97-9e0b-2c80f5559d3d;Note=Manually set translation start;ID=28e5d7f7-02c7-4a97-9e0b-2c80f5559d3d-CDS;date_last_modified=2019-05-30;Name=28e5d7f7-02c7-4a97-9e0b-2c80f5559d3d-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	20957	22276	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075695;ID=e9727c3c-c1d7-428e-babd-2157c7bb3db0;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp37;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	20957	22276	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=e9727c3c-c1d7-428e-babd-2157c7bb3db0;ID=aaa00fc5-620b-4aa5-b137-b597b7540794;date_last_modified=2019-05-30;Name=EPNV4_gp37;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	20957	22276	.	+	0	Parent=aaa00fc5-620b-4aa5-b137-b597b7540794;Note=Manually set translation start;ID=aaa00fc5-620b-4aa5-b137-b597b7540794-CDS;date_last_modified=2019-05-30;Name=aaa00fc5-620b-4aa5-b137-b597b7540794-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	20957	22276	.	+	.	Parent=aaa00fc5-620b-4aa5-b137-b597b7540794;ID=4c876f42-2cae-4ec5-9481-731593c49561;date_last_modified=2019-05-30;Name=4c876f42-2cae-4ec5-9481-731593c49561;date_creation=2019-05-30
+
+NC_008720	CPT	gene	22286	22813	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075705;ID=02132698-c3b7-485b-9034-e218f9760f8e;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp38;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	22286	22813	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=02132698-c3b7-485b-9034-e218f9760f8e;ID=746e5a99-4ef2-4b8a-b684-bcd58e0f5fe3;date_last_modified=2019-05-30;Name=EPNV4_gp38;date_creation=2019-05-30
+
+NC_008720	CPT	exon	22286	22813	.	+	.	Parent=746e5a99-4ef2-4b8a-b684-bcd58e0f5fe3;ID=806a9c12-e833-43ab-a85b-7f72be0ffc98;date_last_modified=2019-05-30;Name=806a9c12-e833-43ab-a85b-7f72be0ffc98;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	22286	22813	.	+	0	Parent=746e5a99-4ef2-4b8a-b684-bcd58e0f5fe3;Note=Manually set translation start;ID=746e5a99-4ef2-4b8a-b684-bcd58e0f5fe3-CDS;date_last_modified=2019-05-30;Name=746e5a99-4ef2-4b8a-b684-bcd58e0f5fe3-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	22729	25400	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075690;ID=0f72eef9-87c9-4390-9a03-5b90bc2535d1;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-06-03;Name=EPNV4_gp39;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	22729	25400	.	+	.	owner=cody.martin@tamu.edu;Parent=0f72eef9-87c9-4390-9a03-5b90bc2535d1;ID=db2daaf6-ff9a-4341-9aae-f6517034337f;date_last_modified=2019-06-03;Name=EPNV4_gp39-00001;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	22737	25400	.	+	0	Parent=db2daaf6-ff9a-4341-9aae-f6517034337f;ID=12ff26b6-bb3d-44f3-874d-65df3db6ec2d;date_last_modified=2019-06-03;Name=12ff26b6-bb3d-44f3-874d-65df3db6ec2d;date_creation=2019-06-03
+
+NC_008720	CPT	exon	22737	25400	.	+	.	Parent=db2daaf6-ff9a-4341-9aae-f6517034337f;ID=aaecd671-6fea-48ed-bdbf-03682f07b8d0;date_last_modified=2019-06-03;Name=aaecd671-6fea-48ed-bdbf-03682f07b8d0;date_creation=2019-06-03
+
+NC_008720	CPT	exon	22729	22731	.	+	.	Parent=db2daaf6-ff9a-4341-9aae-f6517034337f;ID=590ba4c5-b4e8-4aa0-a8fa-77268b7c23eb;date_last_modified=2019-06-03;Name=590ba4c5-b4e8-4aa0-a8fa-77268b7c23eb;date_creation=2019-06-03
+
+NC_008720	CPT	gene	25397	25735	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075663;ID=2a299eff-1d47-4d02-b7f1-8ec8529fb284;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp40;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	25397	25735	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=2a299eff-1d47-4d02-b7f1-8ec8529fb284;ID=1124a1c2-a334-4bf9-8d49-ddf5b2c54004;date_last_modified=2019-05-30;Name=EPNV4_gp40;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	25397	25735	.	+	0	Parent=1124a1c2-a334-4bf9-8d49-ddf5b2c54004;Note=Manually set translation start;ID=1124a1c2-a334-4bf9-8d49-ddf5b2c54004-CDS;date_last_modified=2019-05-30;Name=1124a1c2-a334-4bf9-8d49-ddf5b2c54004-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	25397	25735	.	+	.	Parent=1124a1c2-a334-4bf9-8d49-ddf5b2c54004;ID=7ced62a3-f5a2-4537-8d0f-6c27621a5098;date_last_modified=2019-05-30;Name=7ced62a3-f5a2-4537-8d0f-6c27621a5098;date_creation=2019-05-30
+
+NC_008720	CPT	gene	25738	26346	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075656;ID=b9d5f530-be85-42a3-a7ab-82b4aa460ba6;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp41;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	25738	26346	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=b9d5f530-be85-42a3-a7ab-82b4aa460ba6;ID=5cceaaaa-089d-4a39-97e1-4d1b13b5db75;date_last_modified=2019-05-30;Name=EPNV4_gp41;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	25738	26346	.	+	0	Parent=5cceaaaa-089d-4a39-97e1-4d1b13b5db75;Note=Manually set translation start;ID=5cceaaaa-089d-4a39-97e1-4d1b13b5db75-CDS;date_last_modified=2019-05-30;Name=5cceaaaa-089d-4a39-97e1-4d1b13b5db75-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	25738	26346	.	+	.	Parent=5cceaaaa-089d-4a39-97e1-4d1b13b5db75;ID=bffe95d6-11a4-47db-a99c-924f71b5beba;date_last_modified=2019-05-30;Name=bffe95d6-11a4-47db-a99c-924f71b5beba;date_creation=2019-05-30
+
+NC_008720	CPT	gene	26343	27317	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075655;ID=158fe30c-e980-43d4-b704-6e6c18dc7a6b;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp42;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	26343	27317	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=158fe30c-e980-43d4-b704-6e6c18dc7a6b;ID=66e68606-7572-4b21-bfa2-4d3d2559b8ad;date_last_modified=2019-05-30;Name=EPNV4_gp42;date_creation=2019-05-30
+
+NC_008720	CPT	exon	26343	27317	.	+	.	Parent=66e68606-7572-4b21-bfa2-4d3d2559b8ad;ID=76830d66-a161-4ef9-8061-028beb6dafd0;date_last_modified=2019-05-30;Name=76830d66-a161-4ef9-8061-028beb6dafd0;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	26343	27317	.	+	0	Parent=66e68606-7572-4b21-bfa2-4d3d2559b8ad;Note=Manually set translation start;ID=66e68606-7572-4b21-bfa2-4d3d2559b8ad-CDS;date_last_modified=2019-05-30;Name=66e68606-7572-4b21-bfa2-4d3d2559b8ad-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	27314	29461	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075689;ID=5c9c6ee0-f90c-4eeb-8bfd-5d8f30440850;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp43;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	27314	29461	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=5c9c6ee0-f90c-4eeb-8bfd-5d8f30440850;ID=24760395-5598-4b1a-ae4f-5c563a7c7963;date_last_modified=2019-05-30;Name=EPNV4_gp43;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	27314	29461	.	+	0	Parent=24760395-5598-4b1a-ae4f-5c563a7c7963;Note=Manually set translation start;ID=24760395-5598-4b1a-ae4f-5c563a7c7963-CDS;date_last_modified=2019-05-30;Name=24760395-5598-4b1a-ae4f-5c563a7c7963-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	27314	29461	.	+	.	Parent=24760395-5598-4b1a-ae4f-5c563a7c7963;ID=d0c16116-b797-48eb-b146-1580ecd8476e;date_last_modified=2019-05-30;Name=d0c16116-b797-48eb-b146-1580ecd8476e;date_creation=2019-05-30
+
+NC_008720	CPT	gene	29520	30275	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075710;ID=06d4ac6f-3a76-4e35-a7e9-bb7e3a63e0c5;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp44;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	29520	30275	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=06d4ac6f-3a76-4e35-a7e9-bb7e3a63e0c5;ID=7074b17c-4e02-4272-afcb-adbc9a408fa6;date_last_modified=2019-05-30;Name=EPNV4_gp44;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	29520	30275	.	+	0	Parent=7074b17c-4e02-4272-afcb-adbc9a408fa6;Note=Manually set translation start;ID=7074b17c-4e02-4272-afcb-adbc9a408fa6-CDS;date_last_modified=2019-05-30;Name=7074b17c-4e02-4272-afcb-adbc9a408fa6-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	29520	30275	.	+	.	Parent=7074b17c-4e02-4272-afcb-adbc9a408fa6;ID=bdd3f607-bb9d-4d35-8bae-72f515d88143;date_last_modified=2019-05-30;Name=bdd3f607-bb9d-4d35-8bae-72f515d88143;date_creation=2019-05-30
+
+NC_008720	CPT	gene	30321	31118	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075703;ID=7eb02662-6b74-474a-9f5c-6cd414e4bc39;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp45;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	30321	31118	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=7eb02662-6b74-474a-9f5c-6cd414e4bc39;ID=0ffd65fe-7313-41bb-984f-67b112bfe220;date_last_modified=2019-05-30;Name=EPNV4_gp45;date_creation=2019-05-30
+
+NC_008720	CPT	exon	30321	31118	.	+	.	Parent=0ffd65fe-7313-41bb-984f-67b112bfe220;ID=e36daa20-69d6-4e6c-bac5-30b8e640f15b;date_last_modified=2019-05-30;Name=e36daa20-69d6-4e6c-bac5-30b8e640f15b;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	30321	31118	.	+	0	Parent=0ffd65fe-7313-41bb-984f-67b112bfe220;Note=Manually set translation start;ID=0ffd65fe-7313-41bb-984f-67b112bfe220-CDS;date_last_modified=2019-05-30;Name=0ffd65fe-7313-41bb-984f-67b112bfe220-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	31118	31675	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075676;ID=d1af85fe-fcdf-4b4c-b416-7e391847987e;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp46;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	31118	31675	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=d1af85fe-fcdf-4b4c-b416-7e391847987e;ID=7e33c810-2e58-4f58-b3b4-bda15bb492a1;date_last_modified=2019-05-30;Name=EPNV4_gp46;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	31118	31675	.	+	0	Parent=7e33c810-2e58-4f58-b3b4-bda15bb492a1;Note=Manually set translation start;ID=7e33c810-2e58-4f58-b3b4-bda15bb492a1-CDS;date_last_modified=2019-05-30;Name=7e33c810-2e58-4f58-b3b4-bda15bb492a1-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	31118	31675	.	+	.	Parent=7e33c810-2e58-4f58-b3b4-bda15bb492a1;ID=b50e2fa5-4305-4820-9268-c0484bff38f7;date_last_modified=2019-05-30;Name=b50e2fa5-4305-4820-9268-c0484bff38f7;date_creation=2019-05-30
+
+NC_008720	CPT	gene	31678	32112	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075713;ID=ea503eaa-b5a8-479d-85f2-ec2a1d4bfbac;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp47;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	31678	32112	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=ea503eaa-b5a8-479d-85f2-ec2a1d4bfbac;ID=b68241eb-31a6-4263-b694-f4081a9a8f0e;date_last_modified=2019-05-30;Name=EPNV4_gp47;date_creation=2019-05-30
+
+NC_008720	CPT	exon	31678	32112	.	+	.	Parent=b68241eb-31a6-4263-b694-f4081a9a8f0e;ID=5152ec40-5461-45f3-806f-a7197ce6eae3;date_last_modified=2019-05-30;Name=5152ec40-5461-45f3-806f-a7197ce6eae3;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	31678	32112	.	+	0	Parent=b68241eb-31a6-4263-b694-f4081a9a8f0e;Note=Manually set translation start;ID=b68241eb-31a6-4263-b694-f4081a9a8f0e-CDS;date_last_modified=2019-05-30;Name=b68241eb-31a6-4263-b694-f4081a9a8f0e-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	33632	34003	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075711;ID=76eb061f-9b79-4f53-905e-0b672fbed3f9;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp48;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	33632	34003	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=76eb061f-9b79-4f53-905e-0b672fbed3f9;ID=97e403ed-afdb-4374-be3c-7f39a96d9d31;date_last_modified=2019-05-30;Name=EPNV4_gp48;date_creation=2019-05-30
+
+NC_008720	CPT	exon	33632	34003	.	+	.	Parent=97e403ed-afdb-4374-be3c-7f39a96d9d31;ID=2728c0da-31d0-4c86-86ef-6cbc991ee657;date_last_modified=2019-05-30;Name=2728c0da-31d0-4c86-86ef-6cbc991ee657;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	33632	34003	.	+	0	Parent=97e403ed-afdb-4374-be3c-7f39a96d9d31;Note=Manually set translation start;ID=97e403ed-afdb-4374-be3c-7f39a96d9d31-CDS;date_last_modified=2019-05-30;Name=97e403ed-afdb-4374-be3c-7f39a96d9d31-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	34003	34485	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075666;ID=ca2fcd6f-9501-4daf-b15c-32c152832e84;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp49;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	34003	34485	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=ca2fcd6f-9501-4daf-b15c-32c152832e84;ID=74597cce-dbd0-4797-a573-0d28f6c19f63;date_last_modified=2019-05-30;Name=EPNV4_gp49;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	34003	34485	.	+	0	Parent=74597cce-dbd0-4797-a573-0d28f6c19f63;Note=Manually set translation start;ID=74597cce-dbd0-4797-a573-0d28f6c19f63-CDS;date_last_modified=2019-05-30;Name=74597cce-dbd0-4797-a573-0d28f6c19f63-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	34003	34485	.	+	.	Parent=74597cce-dbd0-4797-a573-0d28f6c19f63;ID=2260f06f-d647-4144-86bb-5e443fd09549;date_last_modified=2019-05-30;Name=2260f06f-d647-4144-86bb-5e443fd09549;date_creation=2019-05-30
+
+NC_008720	CPT	gene	34523	45025	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075715;ID=66ab2628-27e5-4bec-84f7-7492ba518890;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp50;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	34523	45025	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=66ab2628-27e5-4bec-84f7-7492ba518890;ID=8fa275d9-6626-4b4e-ba14-a00e6477d1df;date_last_modified=2019-05-30;Name=EPNV4_gp50;date_creation=2019-05-30
+
+NC_008720	CPT	exon	34523	45025	.	-	.	Parent=8fa275d9-6626-4b4e-ba14-a00e6477d1df;ID=6ffa0ab4-0e71-469b-a7a4-781fb5b041c7;date_last_modified=2019-05-30;Name=6ffa0ab4-0e71-469b-a7a4-781fb5b041c7;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	34523	45025	.	-	0	Parent=8fa275d9-6626-4b4e-ba14-a00e6477d1df;Note=Manually set translation start;ID=8fa275d9-6626-4b4e-ba14-a00e6477d1df-CDS;date_last_modified=2019-05-30;Name=8fa275d9-6626-4b4e-ba14-a00e6477d1df-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	45126	47060	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075693;ID=12ad6ed4-f38c-4a00-b02d-53db4fae18dc;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp51;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	45126	47060	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=12ad6ed4-f38c-4a00-b02d-53db4fae18dc;ID=8a136c85-700a-4cfc-b484-0bdb5b4ccbf0;date_last_modified=2019-05-30;Name=EPNV4_gp51;date_creation=2019-05-30
+
+NC_008720	CPT	exon	45126	47060	.	-	.	Parent=8a136c85-700a-4cfc-b484-0bdb5b4ccbf0;ID=eda5e691-4520-4d41-bbb6-49a20a2a621a;date_last_modified=2019-05-30;Name=eda5e691-4520-4d41-bbb6-49a20a2a621a;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	45126	47060	.	-	0	Parent=8a136c85-700a-4cfc-b484-0bdb5b4ccbf0;Note=Manually set translation start;ID=8a136c85-700a-4cfc-b484-0bdb5b4ccbf0-CDS;date_last_modified=2019-05-30;Name=8a136c85-700a-4cfc-b484-0bdb5b4ccbf0-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	47071	47523	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075681;ID=bfc9dafb-b357-4e23-8107-f92ca0f329ef;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp52;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	47071	47523	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=bfc9dafb-b357-4e23-8107-f92ca0f329ef;ID=fe96f97a-1753-4de1-ab74-7bd34eefbd4a;date_last_modified=2019-05-30;Name=EPNV4_gp52;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	47071	47523	.	-	0	Parent=fe96f97a-1753-4de1-ab74-7bd34eefbd4a;Note=Manually set translation start;ID=fe96f97a-1753-4de1-ab74-7bd34eefbd4a-CDS;date_last_modified=2019-05-30;Name=fe96f97a-1753-4de1-ab74-7bd34eefbd4a-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	47071	47523	.	-	.	Parent=fe96f97a-1753-4de1-ab74-7bd34eefbd4a;ID=763ede8a-1913-4c20-ae79-528516051f2d;date_last_modified=2019-05-30;Name=763ede8a-1913-4c20-ae79-528516051f2d;date_creation=2019-05-30
+
+NC_008720	CPT	gene	50198	51097	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075658;ID=297832b6-2525-4edd-b243-169f5e21ddd6;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp54;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	50198	51097	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=297832b6-2525-4edd-b243-169f5e21ddd6;ID=9f604f22-7a23-4b39-b465-34a1700df4eb;date_last_modified=2019-05-30;Name=EPNV4_gp54;date_creation=2019-05-30
+
+NC_008720	CPT	exon	50198	51097	.	-	.	Parent=9f604f22-7a23-4b39-b465-34a1700df4eb;ID=1ce8a9dd-eabd-4f9b-8c9c-80c32dd0bcde;date_last_modified=2019-05-30;Name=1ce8a9dd-eabd-4f9b-8c9c-80c32dd0bcde;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	50198	51097	.	-	0	Parent=9f604f22-7a23-4b39-b465-34a1700df4eb;Note=Manually set translation start;ID=9f604f22-7a23-4b39-b465-34a1700df4eb-CDS;date_last_modified=2019-05-30;Name=9f604f22-7a23-4b39-b465-34a1700df4eb-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	51177	51803	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075671;ID=0382ffde-74e6-4859-8fac-1bbb6ec4c794;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp55;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	51177	51803	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=0382ffde-74e6-4859-8fac-1bbb6ec4c794;ID=a9809bf9-b1b6-46f9-841c-5f3ce9f1f827;date_last_modified=2019-05-30;Name=EPNV4_gp55;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	51177	51803	.	-	0	Parent=a9809bf9-b1b6-46f9-841c-5f3ce9f1f827;Note=Manually set translation start;ID=a9809bf9-b1b6-46f9-841c-5f3ce9f1f827-CDS;date_last_modified=2019-05-30;Name=a9809bf9-b1b6-46f9-841c-5f3ce9f1f827-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	51177	51803	.	-	.	Parent=a9809bf9-b1b6-46f9-841c-5f3ce9f1f827;ID=bf5fdf7d-0154-4359-92b3-076b9521ca37;date_last_modified=2019-05-30;Name=bf5fdf7d-0154-4359-92b3-076b9521ca37;date_creation=2019-05-30
+
+NC_008720	CPT	gene	51866	53071	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075702;ID=0029684b-6966-4c5d-ba34-73d007458a1e;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp56;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	51866	53071	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=0029684b-6966-4c5d-ba34-73d007458a1e;ID=65037c80-874c-4e33-ba47-1e86dd5a623b;date_last_modified=2019-05-30;Name=EPNV4_gp56;date_creation=2019-05-30
+
+NC_008720	CPT	exon	51866	53071	.	-	.	Parent=65037c80-874c-4e33-ba47-1e86dd5a623b;ID=f6ae80ef-a636-4d8e-933c-b87df51814a1;date_last_modified=2019-05-30;Name=f6ae80ef-a636-4d8e-933c-b87df51814a1;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	51866	53071	.	-	0	Parent=65037c80-874c-4e33-ba47-1e86dd5a623b;Note=Manually set translation start;ID=65037c80-874c-4e33-ba47-1e86dd5a623b-CDS;date_last_modified=2019-05-30;Name=65037c80-874c-4e33-ba47-1e86dd5a623b-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	53083	54300	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075645;ID=d705f53b-67ca-4778-9927-995e7e44b569;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp57;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	53083	54300	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=d705f53b-67ca-4778-9927-995e7e44b569;ID=f2de7c2c-0240-4a96-8f9d-01109aca808a;date_last_modified=2019-05-30;Name=EPNV4_gp57;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	53083	54300	.	-	0	Parent=f2de7c2c-0240-4a96-8f9d-01109aca808a;Note=Manually set translation start;ID=f2de7c2c-0240-4a96-8f9d-01109aca808a-CDS;date_last_modified=2019-05-30;Name=f2de7c2c-0240-4a96-8f9d-01109aca808a-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	53083	54300	.	-	.	Parent=f2de7c2c-0240-4a96-8f9d-01109aca808a;ID=53986bab-d459-45f6-bbd7-a7bdf981530c;date_last_modified=2019-05-30;Name=53986bab-d459-45f6-bbd7-a7bdf981530c;date_creation=2019-05-30
+
+NC_008720	CPT	gene	54326	54673	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075712;ID=7348c0f3-2b84-4df6-8f4c-338c0cb1c5bf;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp58;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	54326	54673	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=7348c0f3-2b84-4df6-8f4c-338c0cb1c5bf;ID=c1634215-ec7c-4205-ba5f-fe72f4ebe2b3;date_last_modified=2019-05-30;Name=EPNV4_gp58;date_creation=2019-05-30
+
+NC_008720	CPT	exon	54326	54673	.	-	.	Parent=c1634215-ec7c-4205-ba5f-fe72f4ebe2b3;ID=803927d2-da9e-4518-8902-783b04aff106;date_last_modified=2019-05-30;Name=803927d2-da9e-4518-8902-783b04aff106;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	54326	54673	.	-	0	Parent=c1634215-ec7c-4205-ba5f-fe72f4ebe2b3;Note=Manually set translation start;ID=c1634215-ec7c-4205-ba5f-fe72f4ebe2b3-CDS;date_last_modified=2019-05-30;Name=c1634215-ec7c-4205-ba5f-fe72f4ebe2b3-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	54676	56967	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075648;ID=a339e127-d0ac-4737-86b9-ae5eaab37d5d;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp59;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	54676	56967	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=a339e127-d0ac-4737-86b9-ae5eaab37d5d;ID=d5869d34-3386-4569-bd7e-3de83ad49cea;date_last_modified=2019-05-30;Name=EPNV4_gp59;date_creation=2019-05-30
+
+NC_008720	CPT	exon	54676	56967	.	-	.	Parent=d5869d34-3386-4569-bd7e-3de83ad49cea;ID=bb7b4f85-8f6e-4cbb-a92e-66987f516162;date_last_modified=2019-05-30;Name=bb7b4f85-8f6e-4cbb-a92e-66987f516162;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	54676	56967	.	-	0	Parent=d5869d34-3386-4569-bd7e-3de83ad49cea;Note=Manually set translation start;ID=d5869d34-3386-4569-bd7e-3de83ad49cea-CDS;date_last_modified=2019-05-30;Name=d5869d34-3386-4569-bd7e-3de83ad49cea-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	57460	58098	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;Note=SAR endolysin;dbxref=GeneID:5075699;ID=5ff637fc-ba9a-42bb-827a-cad327ed2e2d;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-06-06;Name=EPNV4_gp61;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	57460	58098	.	-	.	owner=cody.martin@tamu.edu;Parent=5ff637fc-ba9a-42bb-827a-cad327ed2e2d;ID=5c330801-45c6-462a-b808-1ce56e6c708a;date_last_modified=2019-06-06;Name=EPNV4_gp61-00001;date_creation=2019-06-06
+
+NC_008720	CPT	exon	57460	58086	.	-	.	Parent=5c330801-45c6-462a-b808-1ce56e6c708a;ID=ca9eed2c-9c5c-4de4-976e-c03cf2c954cf;date_last_modified=2019-06-06;Name=ca9eed2c-9c5c-4de4-976e-c03cf2c954cf;date_creation=2019-06-06
+
+NC_008720	CPT	CDS	57460	58086	.	-	0	Parent=5c330801-45c6-462a-b808-1ce56e6c708a;ID=7db8753f-e976-452a-9ce0-4d3e3a2faf70;date_last_modified=2019-06-06;Name=7db8753f-e976-452a-9ce0-4d3e3a2faf70;date_creation=2019-06-06
+
+NC_008720	CPT	exon	58093	58098	.	-	.	Parent=5c330801-45c6-462a-b808-1ce56e6c708a;ID=0e4447c2-cb8b-4b91-8e60-4b7745e2ea84;date_last_modified=2019-06-06;Name=0e4447c2-cb8b-4b91-8e60-4b7745e2ea84;date_creation=2019-06-06
+
+NC_008720	CPT	gene	58073	58416	.	-	.	owner=galaxy@cpt.tamu.edu;ID=548eccd6-da37-484d-b964-a5262b5942ac;date_last_modified=2019-06-07;Name=EPNV4_gp62;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	58073	58416	.	-	.	owner=cody.martin@tamu.edu;Parent=548eccd6-da37-484d-b964-a5262b5942ac;ID=1e2180d9-7764-44d0-ba44-aa5c6d9cd197;date_last_modified=2019-06-03;Name=EPNV4_gp62-00001;date_creation=2019-06-03
+
+NC_008720	CPT	exon	58073	58402	.	-	.	Parent=1e2180d9-7764-44d0-ba44-aa5c6d9cd197;ID=d42b3b92-a3bc-403e-b66e-896e7c3ecf9c;date_last_modified=2019-06-03;Name=d42b3b92-a3bc-403e-b66e-896e7c3ecf9c;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	58073	58402	.	-	0	Parent=1e2180d9-7764-44d0-ba44-aa5c6d9cd197;ID=4de5bc24-8b6d-4dca-a898-388323d0aeb5;date_last_modified=2019-06-03;Name=4de5bc24-8b6d-4dca-a898-388323d0aeb5;date_creation=2019-06-03
+
+NC_008720	CPT	exon	58414	58416	.	-	.	Parent=1e2180d9-7764-44d0-ba44-aa5c6d9cd197;ID=b3406345-4129-4a8e-9d0e-f1ce52e84ac5;date_last_modified=2019-06-03;Name=b3406345-4129-4a8e-9d0e-f1ce52e84ac5;date_creation=2019-06-03
+
+NC_008720	CPT	gene	58321	58663	.	-	.	phase=1,1;owner=galaxy@cpt.tamu.edu;Note=pinholin;dbxref=GeneID:5075677,GeneID:5075686;ID=3fb211de-e4d7-40b9-bd8b-034bb6fd843a;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3,https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-06-06;Name=EPNV4_gp63;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	58321	58663	.	-	.	owner=cody.martin@tamu.edu;Parent=3fb211de-e4d7-40b9-bd8b-034bb6fd843a;ID=5b96a54f-ab51-4647-ba92-fdd7f6455fc3;date_last_modified=2019-06-06;Name=EPNV4_gp63-holin;date_creation=2019-06-06
+
+NC_008720	CPT	CDS	58321	58653	.	-	0	Parent=5b96a54f-ab51-4647-ba92-fdd7f6455fc3;ID=4a317de0-d5f3-4293-8b0d-5b8cf78e8697;date_last_modified=2019-06-06;Name=4a317de0-d5f3-4293-8b0d-5b8cf78e8697;date_creation=2019-06-06
+
+NC_008720	CPT	exon	58321	58653	.	-	.	Parent=5b96a54f-ab51-4647-ba92-fdd7f6455fc3;ID=05bb6b8a-4170-4aec-87a7-0899b42d4e63;date_last_modified=2019-06-06;Name=05bb6b8a-4170-4aec-87a7-0899b42d4e63;date_creation=2019-06-06
+
+NC_008720	CPT	exon	58660	58663	.	-	.	Parent=5b96a54f-ab51-4647-ba92-fdd7f6455fc3;ID=bd0a3ec8-cd2a-4649-b454-7b0d263d2969;date_last_modified=2019-06-06;Name=bd0a3ec8-cd2a-4649-b454-7b0d263d2969;date_creation=2019-06-06
+
+NC_008720	CPT	gene	58757	60010	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075687;ID=c68d93e5-48b4-41c9-a739-65e18b46d49b;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp64;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	58757	60010	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=c68d93e5-48b4-41c9-a739-65e18b46d49b;ID=59a17070-cb4e-4caa-ace0-165ed4243615;date_last_modified=2019-05-30;Name=EPNV4_gp64;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	58757	60010	.	-	0	Parent=59a17070-cb4e-4caa-ace0-165ed4243615;Note=Manually set translation start;ID=59a17070-cb4e-4caa-ace0-165ed4243615-CDS;date_last_modified=2019-05-30;Name=59a17070-cb4e-4caa-ace0-165ed4243615-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	58757	60010	.	-	.	Parent=59a17070-cb4e-4caa-ace0-165ed4243615;ID=675b1171-a0a5-423b-a515-cd198d69eb1b;date_last_modified=2019-05-30;Name=675b1171-a0a5-423b-a515-cd198d69eb1b;date_creation=2019-05-30
+
+NC_008720	CPT	gene	60043	64191	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075714;ID=eaa2e7aa-309d-4d5c-a470-97039a76d782;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp65;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	60043	64191	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=eaa2e7aa-309d-4d5c-a470-97039a76d782;ID=6f5ad481-4ff5-4098-8892-9930f811f461;date_last_modified=2019-05-30;Name=EPNV4_gp65;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	60043	64191	.	-	0	Parent=6f5ad481-4ff5-4098-8892-9930f811f461;Note=Manually set translation start;ID=6f5ad481-4ff5-4098-8892-9930f811f461-CDS;date_last_modified=2019-05-30;Name=6f5ad481-4ff5-4098-8892-9930f811f461-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	60043	64191	.	-	.	Parent=6f5ad481-4ff5-4098-8892-9930f811f461;ID=81233244-9878-4354-98e5-eabd8153df73;date_last_modified=2019-05-30;Name=81233244-9878-4354-98e5-eabd8153df73;date_creation=2019-05-30
+
+NC_008720	CPT	gene	64233	65903	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075704;ID=a3a7f1c5-68e9-4035-9d22-fbc466a1ae35;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp66;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	64233	65903	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=a3a7f1c5-68e9-4035-9d22-fbc466a1ae35;ID=fd5825de-e733-4b50-a4fe-e4de4b682c70;date_last_modified=2019-05-30;Name=EPNV4_gp66;date_creation=2019-05-30
+
+NC_008720	CPT	exon	64233	65903	.	-	.	Parent=fd5825de-e733-4b50-a4fe-e4de4b682c70;ID=547db05f-5db1-4f88-8b43-74a77039a4d8;date_last_modified=2019-05-30;Name=547db05f-5db1-4f88-8b43-74a77039a4d8;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	64233	65903	.	-	0	Parent=fd5825de-e733-4b50-a4fe-e4de4b682c70;Note=Manually set translation start;ID=fd5825de-e733-4b50-a4fe-e4de4b682c70-CDS;date_last_modified=2019-05-30;Name=fd5825de-e733-4b50-a4fe-e4de4b682c70-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	65900	66610	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075707;ID=8b799b9d-1504-498d-98a1-0f4bb8c3edda;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp67;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	65900	66610	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=8b799b9d-1504-498d-98a1-0f4bb8c3edda;ID=f82f6ac2-d735-4a9f-b40b-6e4f5beeb2f7;date_last_modified=2019-05-30;Name=EPNV4_gp67;date_creation=2019-05-30
+
+NC_008720	CPT	exon	65900	66610	.	-	.	Parent=f82f6ac2-d735-4a9f-b40b-6e4f5beeb2f7;ID=b30eb017-e4ce-4c3c-b763-a75127f4a882;date_last_modified=2019-05-30;Name=b30eb017-e4ce-4c3c-b763-a75127f4a882;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	65900	66610	.	-	0	Parent=f82f6ac2-d735-4a9f-b40b-6e4f5beeb2f7;Note=Manually set translation start;ID=f82f6ac2-d735-4a9f-b40b-6e4f5beeb2f7-CDS;date_last_modified=2019-05-30;Name=f82f6ac2-d735-4a9f-b40b-6e4f5beeb2f7-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	66617	68209	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075700;ID=c3b6c0b4-fc53-46da-a892-39f34e6378c6;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp68;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	66617	68209	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=c3b6c0b4-fc53-46da-a892-39f34e6378c6;ID=42e8fc04-8fa3-45e2-a76e-eea413f7b551;date_last_modified=2019-05-30;Name=EPNV4_gp68;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	66617	68209	.	-	0	Parent=42e8fc04-8fa3-45e2-a76e-eea413f7b551;Note=Manually set translation start;ID=42e8fc04-8fa3-45e2-a76e-eea413f7b551-CDS;date_last_modified=2019-05-30;Name=42e8fc04-8fa3-45e2-a76e-eea413f7b551-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	66617	68209	.	-	.	Parent=42e8fc04-8fa3-45e2-a76e-eea413f7b551;ID=c1d925a1-618b-4b62-af65-3ce5d1eaaedb;date_last_modified=2019-05-30;Name=c1d925a1-618b-4b62-af65-3ce5d1eaaedb;date_creation=2019-05-30
+
+NC_008720	CPT	gene	68202	68894	.	-	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075691;ID=f203520c-0924-44ab-b813-5f54e073b813;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp69;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	68202	68894	.	-	.	owner=galaxy@cpt.tamu.edu;Parent=f203520c-0924-44ab-b813-5f54e073b813;ID=b1fe7ac5-1174-474e-bc61-5503a2b2ea05;date_last_modified=2019-05-30;Name=EPNV4_gp69;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	68202	68894	.	-	0	Parent=b1fe7ac5-1174-474e-bc61-5503a2b2ea05;Note=Manually set translation start;ID=b1fe7ac5-1174-474e-bc61-5503a2b2ea05-CDS;date_last_modified=2019-05-30;Name=b1fe7ac5-1174-474e-bc61-5503a2b2ea05-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	68202	68894	.	-	.	Parent=b1fe7ac5-1174-474e-bc61-5503a2b2ea05;ID=7d57a4c3-f418-4604-a216-2cdeb555de58;date_last_modified=2019-05-30;Name=7d57a4c3-f418-4604-a216-2cdeb555de58;date_creation=2019-05-30
+
+NC_008720	CPT	gene	69055	69363	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075667;ID=fca5958b-ea42-4781-9552-bec70d5d8780;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp70;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	69055	69363	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=fca5958b-ea42-4781-9552-bec70d5d8780;ID=93cf4714-c5ff-4ce2-9160-0cdbc72b02c5;date_last_modified=2019-05-30;Name=EPNV4_gp70;date_creation=2019-05-30
+
+NC_008720	CPT	exon	69055	69363	.	+	.	Parent=93cf4714-c5ff-4ce2-9160-0cdbc72b02c5;ID=0559374e-7d52-4969-bb36-8b8081b1b5cd;date_last_modified=2019-05-30;Name=0559374e-7d52-4969-bb36-8b8081b1b5cd;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	69055	69363	.	+	0	Parent=93cf4714-c5ff-4ce2-9160-0cdbc72b02c5;Note=Manually set translation start;ID=93cf4714-c5ff-4ce2-9160-0cdbc72b02c5-CDS;date_last_modified=2019-05-30;Name=93cf4714-c5ff-4ce2-9160-0cdbc72b02c5-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	69574	69939	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075716;ID=07c9f86c-590d-4bae-959c-5c4cb157dd1e;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp71;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	69574	69939	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=07c9f86c-590d-4bae-959c-5c4cb157dd1e;ID=5a98e46d-0641-45ac-928e-4f8dadc82e2f;date_last_modified=2019-05-30;Name=EPNV4_gp71;date_creation=2019-05-30
+
+NC_008720	CPT	exon	69574	69939	.	+	.	Parent=5a98e46d-0641-45ac-928e-4f8dadc82e2f;ID=03fb5863-1087-4428-b30c-33c799215297;date_last_modified=2019-05-30;Name=03fb5863-1087-4428-b30c-33c799215297;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	69574	69939	.	+	0	Parent=5a98e46d-0641-45ac-928e-4f8dadc82e2f;Note=Manually set translation start;ID=5a98e46d-0641-45ac-928e-4f8dadc82e2f-CDS;date_last_modified=2019-05-30;Name=5a98e46d-0641-45ac-928e-4f8dadc82e2f-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	gene	69948	70076	.	+	.	phase=1;owner=galaxy@cpt.tamu.edu;dbxref=GeneID:5075647;ID=f785d70d-b77d-4202-befd-e7dd7dc7b055;datasetSource=https://cpt.tamu.edu/galaxy/history/view/968c4b45ea55c0f3;date_last_modified=2019-05-30;Name=EPNV4_gp72;date_creation=2019-05-30
+
+NC_008720	CPT	mRNA	69948	70076	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=f785d70d-b77d-4202-befd-e7dd7dc7b055;ID=5d8ee98c-c50f-4eac-8f5a-c73241d78844;date_last_modified=2019-05-30;Name=EPNV4_gp72;date_creation=2019-05-30
+
+NC_008720	CPT	CDS	69948	70076	.	+	0	Parent=5d8ee98c-c50f-4eac-8f5a-c73241d78844;Note=Manually set translation start;ID=5d8ee98c-c50f-4eac-8f5a-c73241d78844-CDS;date_last_modified=2019-05-30;Name=5d8ee98c-c50f-4eac-8f5a-c73241d78844-CDS;date_creation=2019-05-30
+
+NC_008720	CPT	exon	69948	70076	.	+	.	Parent=5d8ee98c-c50f-4eac-8f5a-c73241d78844;ID=4aa2e6c1-d968-48a6-bfc3-3ae5124fcd3e;date_last_modified=2019-05-30;Name=4aa2e6c1-d968-48a6-bfc3-3ae5124fcd3e;date_creation=2019-05-30
+
+NC_008720	CPT	gene	10983	11162	.	+	.	owner=cody.martin@tamu.edu;ID=ab59eb38-6706-4c40-ba4e-d519709bcb57;date_last_modified=2019-06-03;Name=NC_008720.orf00029;date_creation=2019-06-03
+
+NC_008720	CPT	mRNA	10983	11162	.	+	.	owner=cody.martin@tamu.edu;Parent=ab59eb38-6706-4c40-ba4e-d519709bcb57;ID=b3ad1a91-4bd6-4d6c-bc9c-bc5694eac694;date_last_modified=2019-06-03;Name=NC_008720.orf00029-00001;date_creation=2019-06-03
+
+NC_008720	CPT	exon	10983	11162	.	+	.	Parent=b3ad1a91-4bd6-4d6c-bc9c-bc5694eac694;ID=5f8e8972-c203-452c-b8bd-4c23a507a095;date_last_modified=2019-06-03;Name=5f8e8972-c203-452c-b8bd-4c23a507a095;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	10983	11162	.	+	0	Parent=b3ad1a91-4bd6-4d6c-bc9c-bc5694eac694;ID=f0f3f3d2-ee88-4515-9bf1-6f2bea580783;date_last_modified=2019-06-03;Name=f0f3f3d2-ee88-4515-9bf1-6f2bea580783;date_creation=2019-06-03
+
+NC_008720	CPT	gene	13005	13133	.	+	.	owner=cody.martin@tamu.edu;ID=0d8ae1c4-f008-4f82-bfbb-8ce538b834bd;date_last_modified=2019-06-03;Name=CDS.0.2132_0.026211221963;date_creation=2019-06-03
+
+NC_008720	CPT	mRNA	13005	13133	.	+	.	owner=cody.martin@tamu.edu;Parent=0d8ae1c4-f008-4f82-bfbb-8ce538b834bd;ID=962c9fd4-ddd2-4785-9e0e-458536408ce3;date_last_modified=2019-06-03;Name=CDS.0.2132_0.026211221963-00001;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	13005	13133	.	+	0	Parent=962c9fd4-ddd2-4785-9e0e-458536408ce3;ID=4ba60c09-e21f-4ef1-945a-9a76f0fe8281;date_last_modified=2019-06-03;Name=4ba60c09-e21f-4ef1-945a-9a76f0fe8281;date_creation=2019-06-03
+
+NC_008720	CPT	exon	13005	13133	.	+	.	Parent=962c9fd4-ddd2-4785-9e0e-458536408ce3;ID=6fad9b95-6d13-4c2c-97f0-519a94ef2f4a;date_last_modified=2019-06-03;Name=6fad9b95-6d13-4c2c-97f0-519a94ef2f4a;date_creation=2019-06-03
+
+NC_008720	CPT	gene	32126	32299	.	+	.	owner=cody.martin@tamu.edu;ID=bc71b71e-09d1-4538-b3e8-c4adfc202754;date_last_modified=2019-06-03;Name=CDS.0.1324_0.135481839858;date_creation=2019-06-03
+
+NC_008720	CPT	mRNA	32126	32299	.	+	.	owner=cody.martin@tamu.edu;Parent=bc71b71e-09d1-4538-b3e8-c4adfc202754;ID=296b5cdc-f9b5-4915-8c2d-6f26f8e6d853;date_last_modified=2019-06-03;Name=CDS.0.1324_0.135481839858-00001;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	32135	32299	.	+	0	Parent=296b5cdc-f9b5-4915-8c2d-6f26f8e6d853;ID=ad096998-5e74-4594-8448-1c08ad408ba8;date_last_modified=2019-06-03;Name=ad096998-5e74-4594-8448-1c08ad408ba8;date_creation=2019-06-03
+
+NC_008720	CPT	exon	32126	32129	.	+	.	Parent=296b5cdc-f9b5-4915-8c2d-6f26f8e6d853;ID=0269d1f3-b23b-4a93-95ac-bc0878b6c47b;date_last_modified=2019-06-03;Name=0269d1f3-b23b-4a93-95ac-bc0878b6c47b;date_creation=2019-06-03
+
+NC_008720	CPT	exon	32135	32299	.	+	.	Parent=296b5cdc-f9b5-4915-8c2d-6f26f8e6d853;ID=1fd53dc0-0d77-4395-a6bb-6125cc386b25;date_last_modified=2019-06-03;Name=1fd53dc0-0d77-4395-a6bb-6125cc386b25;date_creation=2019-06-03
+
+NC_008720	CPT	gene	32454	32662	.	+	.	owner=cody.martin@tamu.edu;ID=699e6788-48f8-42c7-8a26-d2a2b4969688;date_last_modified=2019-06-03;Name=CDS.0.1337_0.509435516814;date_creation=2019-06-03
+
+NC_008720	CPT	mRNA	32454	32662	.	+	.	owner=cody.martin@tamu.edu;Parent=699e6788-48f8-42c7-8a26-d2a2b4969688;ID=28d94fa0-4620-4fd9-bdf1-977b40b61046;date_last_modified=2019-06-03;Name=CDS.0.1337_0.509435516814-00001;date_creation=2019-06-03
+
+NC_008720	CPT	exon	32454	32456	.	+	.	Parent=28d94fa0-4620-4fd9-bdf1-977b40b61046;ID=759923a3-899a-4682-b22d-357b10059209;date_last_modified=2019-06-03;Name=759923a3-899a-4682-b22d-357b10059209;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	32465	32662	.	+	0	Parent=28d94fa0-4620-4fd9-bdf1-977b40b61046;ID=a5be0708-3a64-40c2-b703-b5c1b5fcf276;date_last_modified=2019-06-03;Name=a5be0708-3a64-40c2-b703-b5c1b5fcf276;date_creation=2019-06-03
+
+NC_008720	CPT	exon	32465	32662	.	+	.	Parent=28d94fa0-4620-4fd9-bdf1-977b40b61046;ID=b225bc95-73ba-497a-abf4-26bd487c8424;date_last_modified=2019-06-03;Name=b225bc95-73ba-497a-abf4-26bd487c8424;date_creation=2019-06-03
+
+NC_008720	CPT	gene	32345	32463	.	-	.	owner=cody.martin@tamu.edu;ID=a7348688-6d13-40d6-af57-3c388fa8fe99;date_last_modified=2019-06-03;Name=CDS.0.3875_0.441688510435;date_creation=2019-06-03
+
+NC_008720	CPT	mRNA	32345	32463	.	-	.	owner=cody.martin@tamu.edu;Parent=a7348688-6d13-40d6-af57-3c388fa8fe99;ID=b12900ae-3a62-45de-8d99-8a4ec32cb214;date_last_modified=2019-06-03;Name=CDS.0.3875_0.441688510435-00001;date_creation=2019-06-03
+
+NC_008720	CPT	exon	32345	32446	.	-	.	Parent=b12900ae-3a62-45de-8d99-8a4ec32cb214;ID=1a7098cd-d5e3-4b21-bbb2-3e9100f662e2;date_last_modified=2019-06-03;Name=1a7098cd-d5e3-4b21-bbb2-3e9100f662e2;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	32345	32446	.	-	0	Parent=b12900ae-3a62-45de-8d99-8a4ec32cb214;ID=67180c80-aa19-4ba1-890a-9aed51cbb1df;date_last_modified=2019-06-03;Name=67180c80-aa19-4ba1-890a-9aed51cbb1df;date_creation=2019-06-03
+
+NC_008720	CPT	exon	32461	32463	.	-	.	Parent=b12900ae-3a62-45de-8d99-8a4ec32cb214;ID=d759625d-34c1-422b-9acb-78cfef99b17f;date_last_modified=2019-06-03;Name=d759625d-34c1-422b-9acb-78cfef99b17f;date_creation=2019-06-03
+
+NC_008720	CPT	gene	32840	33006	.	+	.	owner=cody.martin@tamu.edu;ID=8a95e4f3-8b23-4ce4-a14d-c3068f50880b;date_last_modified=2019-06-03;Name=CDS.0.515_0.785882920155;date_creation=2019-06-03
+
+NC_008720	CPT	mRNA	32840	33006	.	+	.	owner=cody.martin@tamu.edu;Parent=8a95e4f3-8b23-4ce4-a14d-c3068f50880b;ID=16d3aae8-1bf4-4450-ad56-5bde4efd5bb8;date_last_modified=2019-06-03;Name=CDS.0.515_0.785882920155-00001;date_creation=2019-06-03
+
+NC_008720	CPT	exon	32840	32842	.	+	.	Parent=16d3aae8-1bf4-4450-ad56-5bde4efd5bb8;ID=a682ae37-69d7-4829-a235-43c800a60227;date_last_modified=2019-06-03;Name=a682ae37-69d7-4829-a235-43c800a60227;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	32848	33006	.	+	0	Parent=16d3aae8-1bf4-4450-ad56-5bde4efd5bb8;ID=a4d81584-d8e6-46dd-97fd-93aa4aa9cce9;date_last_modified=2019-06-03;Name=a4d81584-d8e6-46dd-97fd-93aa4aa9cce9;date_creation=2019-06-03
+
+NC_008720	CPT	exon	32848	33006	.	+	.	Parent=16d3aae8-1bf4-4450-ad56-5bde4efd5bb8;ID=b44b4d3b-a797-4452-a153-63d2f64440af;date_last_modified=2019-06-03;Name=b44b4d3b-a797-4452-a153-63d2f64440af;date_creation=2019-06-03
+
+NC_008720	CPT	gene	33055	33165	.	+	.	owner=cody.martin@tamu.edu;ID=4c579262-7028-42db-9a46-b01118018203;date_last_modified=2019-06-03;Name=CDS.0.521_0.249959977586;date_creation=2019-06-03
+
+NC_008720	CPT	mRNA	33055	33165	.	+	.	owner=cody.martin@tamu.edu;Parent=4c579262-7028-42db-9a46-b01118018203;ID=73bfd0b3-7d05-4af0-adee-305146108e8a;date_last_modified=2019-06-03;Name=CDS.0.521_0.249959977586-00001;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	33070	33165	.	+	0	Parent=73bfd0b3-7d05-4af0-adee-305146108e8a;ID=5d078c57-6c0c-48aa-a413-ddf8a691ed04;date_last_modified=2019-06-03;Name=5d078c57-6c0c-48aa-a413-ddf8a691ed04;date_creation=2019-06-03
+
+NC_008720	CPT	exon	33055	33058	.	+	.	Parent=73bfd0b3-7d05-4af0-adee-305146108e8a;ID=4c7f76c0-d8a1-4f2e-a60b-aa37d6f7af57;date_last_modified=2019-06-03;Name=4c7f76c0-d8a1-4f2e-a60b-aa37d6f7af57;date_creation=2019-06-03
+
+NC_008720	CPT	exon	33070	33165	.	+	.	Parent=73bfd0b3-7d05-4af0-adee-305146108e8a;ID=6a179f20-1a39-4fff-a661-a4e044a1bf3b;date_last_modified=2019-06-03;Name=6a179f20-1a39-4fff-a661-a4e044a1bf3b;date_creation=2019-06-03
+
+NC_008720	CPT	gene	33213	33330	.	-	.	owner=cody.martin@tamu.edu;ID=be0653d4-24a2-4329-a4e7-816afa0e1816;date_last_modified=2019-06-03;Name=CDS.0.5513_0.89766847112;date_creation=2019-06-03
+
+NC_008720	CPT	mRNA	33213	33330	.	-	.	owner=cody.martin@tamu.edu;Parent=be0653d4-24a2-4329-a4e7-816afa0e1816;ID=38e05ee4-a480-4e5e-939c-3c1bc61c97ab;date_last_modified=2019-06-03;Name=CDS.0.5513_0.89766847112-00001;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	33213	33320	.	-	0	Parent=38e05ee4-a480-4e5e-939c-3c1bc61c97ab;ID=dc8a65dd-0ddc-4735-bd12-5e0b7b8e9e25;date_last_modified=2019-06-03;Name=dc8a65dd-0ddc-4735-bd12-5e0b7b8e9e25;date_creation=2019-06-03
+
+NC_008720	CPT	exon	33326	33330	.	-	.	Parent=38e05ee4-a480-4e5e-939c-3c1bc61c97ab;ID=851250d1-ec26-40b5-9346-5cf2cf00b217;date_last_modified=2019-06-03;Name=851250d1-ec26-40b5-9346-5cf2cf00b217;date_creation=2019-06-03
+
+NC_008720	CPT	exon	33213	33320	.	-	.	Parent=38e05ee4-a480-4e5e-939c-3c1bc61c97ab;ID=5ff77c22-4c00-472e-a3d4-c726d7aacce0;date_last_modified=2019-06-03;Name=5ff77c22-4c00-472e-a3d4-c726d7aacce0;date_creation=2019-06-03
+
+NC_008720	CPT	gene	33395	33509	.	+	.	owner=cody.martin@tamu.edu;ID=51994d7e-d48f-4fd9-b279-8b91e72e5f2d;date_last_modified=2019-06-03;Name=CDS.0.2547_0.112272480496;date_creation=2019-06-03
+
+NC_008720	CPT	mRNA	33395	33509	.	+	.	owner=cody.martin@tamu.edu;Parent=51994d7e-d48f-4fd9-b279-8b91e72e5f2d;ID=9e07e524-e68e-4fb6-9016-1824bad045db;date_last_modified=2019-06-03;Name=CDS.0.2547_0.112272480496-00001;date_creation=2019-06-03
+
+NC_008720	CPT	exon	33395	33398	.	+	.	Parent=9e07e524-e68e-4fb6-9016-1824bad045db;ID=3045d864-4a71-4f32-af61-1c833f7ade59;date_last_modified=2019-06-03;Name=3045d864-4a71-4f32-af61-1c833f7ade59;date_creation=2019-06-03
+
+NC_008720	CPT	CDS	33408	33509	.	+	0	Parent=9e07e524-e68e-4fb6-9016-1824bad045db;ID=798c1dbb-107b-40ae-b081-f9675ef56301;date_last_modified=2019-06-03;Name=798c1dbb-107b-40ae-b081-f9675ef56301;date_creation=2019-06-03
+
+NC_008720	CPT	exon	33408	33509	.	+	.	Parent=9e07e524-e68e-4fb6-9016-1824bad045db;ID=2c66a5ff-3254-4c61-b707-2fe720bc209f;date_last_modified=2019-06-03;Name=2c66a5ff-3254-4c61-b707-2fe720bc209f;date_creation=2019-06-03
+
+NC_008720	CPT	gene	57023	57328	.	-	.	owner=cody.martin@tamu.edu;Note=o-spanin,ORF.0.3099_0.0789397449253;ID=712f59c7-c9ca-4760-8eff-4f42c45258f5;date_last_modified=2020-04-16;Name=putative o-spanin;date_creation=2019-06-04
+
+NC_008720	CPT	mRNA	57023	57328	.	-	.	owner=cody.martin@tamu.edu;Parent=712f59c7-c9ca-4760-8eff-4f42c45258f5;ID=afb51842-0c9f-4eeb-9540-53df8cb79d20;date_last_modified=2020-04-03;Name=putative o-spanin;date_creation=2019-06-04
+
+NC_008720	CPT	exon	57023	57313	.	-	.	Parent=afb51842-0c9f-4eeb-9540-53df8cb79d20;ID=a2c16c15-ce73-47e7-b3fc-26f8704fdf44;date_last_modified=2019-06-04;Name=a2c16c15-ce73-47e7-b3fc-26f8704fdf44;date_creation=2019-06-04
+
+NC_008720	CPT	exon	57326	57328	.	-	.	Parent=afb51842-0c9f-4eeb-9540-53df8cb79d20;ID=b5602c21-450d-4f06-9188-e818088a020a;date_last_modified=2019-06-04;Name=b5602c21-450d-4f06-9188-e818088a020a;date_creation=2019-06-04
+
+NC_008720	CPT	CDS	57023	57313	.	-	0	Parent=afb51842-0c9f-4eeb-9540-53df8cb79d20;ID=afb51842-0c9f-4eeb-9540-53df8cb79d20-CDS;date_last_modified=2019-06-04;Name=afb51842-0c9f-4eeb-9540-53df8cb79d20-CDS;date_creation=2019-06-04
+
+NC_008720	CPT	gene	56976	57490	.	-	.	owner=cody.martin@tamu.edu;Note=i-spanin;ID=ae3dfaf3-a835-44c0-8f9a-e6504794e428;date_last_modified=2019-06-07;Name=EPNV4_gp60c;date_creation=2019-06-07
+
+NC_008720	CPT	mRNA	56976	57490	.	-	.	owner=cody.martin@tamu.edu;Parent=ae3dfaf3-a835-44c0-8f9a-e6504794e428;ID=5de00772-a61e-44aa-9b68-f37049c46055;date_last_modified=2019-06-07;Name=EPNV4_gp60c-00001;date_creation=2019-06-06
+
+NC_008720	CPT	CDS	56976	57479	.	-	0	Parent=5de00772-a61e-44aa-9b68-f37049c46055;ID=641e32f0-a842-452d-85f8-825106b60703;date_last_modified=2019-06-06;Name=641e32f0-a842-452d-85f8-825106b60703;date_creation=2019-06-06
+
+NC_008720	CPT	exon	57487	57490	.	-	.	Parent=5de00772-a61e-44aa-9b68-f37049c46055;ID=5e5e0398-0ab2-48c0-a2d7-979928c729e5;date_last_modified=2019-06-06;Name=5e5e0398-0ab2-48c0-a2d7-979928c729e5;date_creation=2019-06-06
+
+NC_008720	CPT	exon	56976	57479	.	-	.	Parent=5de00772-a61e-44aa-9b68-f37049c46055;ID=38121d96-9d84-4f88-9240-f82f58fab90c;date_last_modified=2019-06-06;Name=38121d96-9d84-4f88-9240-f82f58fab90c;date_creation=2019-06-06
+
+NC_008720	CPT	gene	47537	50194	.	-	.	owner=cody.martin@tamu.edu;ID=525c5c4a-d1c7-4ca5-be76-30eb2dcf464f;date_last_modified=2020-03-10;Name=gp53;date_creation=2019-10-18
+
+NC_008720	CPT	mRNA	47537	50194	.	-	.	owner=cody.martin@tamu.edu;Parent=525c5c4a-d1c7-4ca5-be76-30eb2dcf464f;ID=67b39f4b-f294-4a47-b79f-fb75e82b3af4;date_last_modified=2020-03-10;Name=gp53;date_creation=2019-10-18
+
+NC_008720	CPT	CDS	47537	50194	.	-	0	Parent=67b39f4b-f294-4a47-b79f-fb75e82b3af4;Note=Manually set translation start;ID=67b39f4b-f294-4a47-b79f-fb75e82b3af4-CDS;date_last_modified=2019-10-18;Name=67b39f4b-f294-4a47-b79f-fb75e82b3af4-CDS;date_creation=2019-10-18
+
+NC_008720	CPT	exon	47537	50194	.	-	.	Parent=67b39f4b-f294-4a47-b79f-fb75e82b3af4;ID=86d65bac-9e74-4d61-be10-ef55a2fec03e;date_last_modified=2019-10-18;Name=86d65bac-9e74-4d61-be10-ef55a2fec03e;date_creation=2019-10-18
+

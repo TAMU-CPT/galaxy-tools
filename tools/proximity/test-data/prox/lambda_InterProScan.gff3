@@ -1,0 +1,297 @@
+##gff-version 3
+##sequence-region NC_001416.1 1 48502
+NC_001416.1	Coils	protein_match	434	517	.	+	.	ID=match%241_82_109;Name=Coil;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	191	394	4.0E-35	+	.	Dbxref=InterPro:IPR036388;ID=match%242_1_68;Name=G3DSA:1.10.10.10;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	194	382	6.71E-15	+	.	Dbxref=InterPro:IPR009061;ID=match%243_2_64;Name=SSF46955;date=13-05-2020
+NC_001416.1	Coils	protein_match	344	415	.	+	.	ID=match%244_52_75;Name=Coil;date=13-05-2020
+NC_001416.1	Pfam	protein_match	191	682	4.8E-89	+	.	Dbxref=InterPro:IPR010906;ID=match%245_1_164;Name=PF07471;date=13-05-2020;signature_desc=Phage DNA packaging protein Nu1
+NC_001416.1	PANTHER	protein_match	774	2357	4.2E-68	+	.	ID=match%2433_22_549;Name=PTHR34413;date=13-05-2020
+NC_001416.1	PANTHER	protein_match	774	2357	4.2E-68	+	.	ID=match%2434_22_549;Name=PTHR34413:SF2;date=13-05-2020
+NC_001416.1	Pfam	protein_match	828	2510	7.0E-131	+	.	Dbxref=InterPro:IPR008866;ID=match%2435_40_600;Name=PF05876;date=13-05-2020;signature_desc=Phage terminase large subunit %28GpA%29
+NC_001416.1	ProDom	protein_match	2699	2827	6.0E-18	+	.	Dbxref=InterPro:IPR004174;ID=match%24191_23_65;Name=PD019366;Ontology_term=GO:0019058;date=13-05-2020;signature_desc=PROPHAGE HEAD JOINING GP3 COMPLETION HEAD-TO-TAIL W PROPHAGE-DERIVED DNA HEAD-TAIL
+NC_001416.1	Pfam	protein_match	2633	2833	4.5E-36	+	.	Dbxref=InterPro:IPR004174;ID=match%24192_1_67;Name=PF02831;Ontology_term=GO:0019058;date=13-05-2020;signature_desc=gpW
+NC_001416.1	SUPERFAMILY	protein_match	2633	2803	5.75E-24	+	.	Dbxref=InterPro:IPR036626;ID=match%24193_1_57;Name=SSF64210;Ontology_term=GO:0019058;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	2633	2818	2.4E-33	+	.	Dbxref=InterPro:IPR036626;ID=match%24194_1_62;Name=G3DSA:3.30.1580.10;Ontology_term=GO:0019058;date=13-05-2020
+NC_001416.1	TIGRFAM	protein_match	2923	4365	3.7E-141	+	.	Dbxref=InterPro:IPR006429;ID=match%24131_30_510;Name=TIGR01539;Ontology_term=GO:0005198%22%2C%22GO:0019068;date=13-05-2020;signature_desc=portal_lambda: phage portal protein,lambda family
+NC_001416.1	Pfam	protein_match	2929	4035	6.6E-95	+	.	Dbxref=InterPro:IPR006429;ID=match%24132_32_400;Name=PF05136;Ontology_term=GO:0005198%22%2C%22GO:0019068;date=13-05-2020;signature_desc=Phage portal protein,lambda family
+NC_001416.1	PANTHER	protein_match	4628	5332	2.8E-48	+	.	ID=match%24234_71_305;Name=PTHR33209;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	4634	5278	3.41E-32	+	.	Dbxref=InterPro:IPR029045;ID=match%24235_73_287;Name=SSF52096;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	4985	5185	3.0E-41	+	.	ID=match%24236_190_256;Name=G3DSA:3.40.1750.20;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	4664	5293	3.0E-41	+	.	ID=match%24237_83_292;Name=G3DSA:3.90.226.10;date=13-05-2020
+NC_001416.1	Pfam	protein_match	4865	5308	7.0E-44	+	.	Dbxref=InterPro:IPR002142;ID=match%24238_150_297;Name=PF01343;Ontology_term=GO:0006508%22%2C%22GO:0008233;date=13-05-2020;signature_desc=Peptidase family S49
+NC_001416.1	Pfam	protein_match	5132	5308	1.5E-10	+	.	Dbxref=InterPro:IPR002142;ID=match%24272_1_59;Name=PF01343;Ontology_term=GO:0006508%22%2C%22GO:0008233;date=13-05-2020;signature_desc=Peptidase family S49
+NC_001416.1	Gene3D	protein_match	5792	6076	2.5E-42	+	.	ID=match%24273_16_110;Name=G3DSA:2.40.300.10;date=13-05-2020
+NC_001416.1	Pfam	protein_match	5783	6064	2.8E-15	+	.	Dbxref=InterPro:IPR004195;ID=match%24274_13_106;Name=PF02924;date=13-05-2020;signature_desc=Bacteriophage lambda head decoration protein D
+NC_001416.1	SUPERFAMILY	protein_match	5792	6073	6.54E-44	+	.	Dbxref=InterPro:IPR036630;ID=match%24275_16_109;Name=SSF51274;date=13-05-2020
+NC_001416.1	ProDom	protein_match	5816	6076	1.0E-43	+	.	Dbxref=InterPro:IPR004195;ID=match%24276_24_110;Name=PD020518;date=13-05-2020;signature_desc=CAPSID HEAD PROPHAGE DECORATION SUBUNIT SMALL 3D-STRUCTURE MAJOR GIFSY-1 STRUCTURAL
+NC_001416.1	Gene3D	protein_match	6597	6971	2.7E-98	+	.	ID=match%2451_155_279;Name=G3DSA:3.30.1930.10;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	6210	7121	2.7E-98	+	.	ID=match%2452_26_329;Name=G3DSA:3.15.30.10;date=13-05-2020
+NC_001416.1	Pfam	protein_match	6144	7148	4.0E-71	+	.	Dbxref=InterPro:IPR005564;ID=match%2453_4_338;Name=PF03864;date=13-05-2020;signature_desc=Phage major capsid protein E
+NC_001416.1	Pfam	protein_match	7205	7588	5.4E-59	+	.	Dbxref=InterPro:IPR025147;ID=match%24267_2_129;Name=PF14000;date=13-05-2020;signature_desc=DNA packaging protein FI
+NC_001416.1	Coils	protein_match	7280	7342	.	+	.	ID=match%24268_27_47;Name=Coil;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	7415	7597	2.8E-34	+	.	ID=match%24269_72_132;Name=G3DSA:3.40.5.70;date=13-05-2020
+NC_001416.1	ProDom	protein_match	7612	7962	5.0E-63	+	.	Dbxref=InterPro:IPR008018;ID=match%24173_1_117;Name=PD031229;Ontology_term=GO:0019068;date=13-05-2020;signature_desc=PROPHAGE HEAD-TAIL JOINING CAPSID TAIL ATTACHMENT MINOR GIFSY-1 FII CP-933X
+NC_001416.1	SUPERFAMILY	protein_match	7612	7962	1.11E-58	+	.	ID=match%24174_1_117;Name=SSF69279;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	7612	7962	4.1E-57	+	.	ID=match%24175_1_117;Name=G3DSA:2.40.10.180;date=13-05-2020
+NC_001416.1	Pfam	protein_match	7612	7962	2.2E-69	+	.	Dbxref=InterPro:IPR008018;ID=match%24176_1_117;Name=PF05354;Ontology_term=GO:0019068;date=13-05-2020;signature_desc=Phage Head-Tail Attachment
+NC_001416.1	Pfam	protein_match	7983	8552	3.3E-79	+	.	Dbxref=InterPro:IPR010633;ID=match%24280_3_192;Name=PF06763;date=13-05-2020;signature_desc=Prophage minor tail protein Z %28GPZ%29
+NC_001416.1	PIRSF	protein_match	7977	8552	2.5E-100	+	.	Dbxref=InterPro:IPR010633;ID=match%24281_1_192;Name=PIRSF004395;date=13-05-2020
+NC_001416.1	Pfam	protein_match	8552	8938	1.1E-48	+	.	Dbxref=InterPro:IPR009312;ID=match%24183_1_129;Name=PF06141;date=13-05-2020;signature_desc=Phage minor tail protein U
+NC_001416.1	SUPERFAMILY	protein_match	8555	8941	2.88E-49	+	.	Dbxref=InterPro:IPR035934;ID=match%24184_2_130;Name=SSF143749;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	8552	8944	6.2E-59	+	.	Dbxref=InterPro:IPR038512;ID=match%24185_1_131;Name=G3DSA:3.30.70.1700;date=13-05-2020
+NC_001416.1	Pfam	protein_match	9435	9671	1.5E-18	+	.	Dbxref=InterPro:IPR003343;ID=match%24200_161_239;Name=PF02368;date=13-05-2020;signature_desc=Bacterial Ig-like domain %28group 2%29
+NC_001416.1	Pfam	protein_match	9006	9410	6.0E-64	+	.	Dbxref=InterPro:IPR032494;ID=match%24201_18_152;Name=PF16461;date=13-05-2020;signature_desc=Lambda phage tail tube protein,TTP
+NC_001416.1	Gene3D	protein_match	8955	9413	6.1E-79	+	.	ID=match%24202_1_153;Name=G3DSA:2.30.110.60;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	9420	9692	1.0E-15	+	.	ID=match%24203_156_246;Name=G3DSA:2.60.40.1080;date=13-05-2020
+NC_001416.1	SMART	protein_match	9432	9674	1.3E-17	+	.	Dbxref=InterPro:IPR003343;ID=match%24204_160_240;Name=SM00635;date=13-05-2020
+NC_001416.1	Pfam	protein_match	9711	10085	8.4E-62	+	.	Dbxref=InterPro:IPR010027;ID=match%24205_1_125;Name=PF06894;date=13-05-2020;signature_desc=Bacteriophage lambda tail assembly chaperone,TAC,protein G
+NC_001416.1	TIGRFAM	protein_match	9711	10115	4.1E-66	+	.	Dbxref=InterPro:IPR010027;ID=match%24206_1_135;Name=TIGR01674;date=13-05-2020;signature_desc=phage_lambda_G: phage minor tail protein G
+NC_001416.1	Pfam	protein_match	10145	10447	6.8E-50	+	.	Dbxref=InterPro:IPR009350;ID=match%24189_11_111;Name=PF06223;date=13-05-2020;signature_desc=Minor tail protein T
+NC_001416.1	TIGRFAM	protein_match	10127	10444	5.7E-51	+	.	Dbxref=InterPro:IPR009350;ID=match%24190_5_110;Name=TIGR01715;date=13-05-2020;signature_desc=phage_lam_T: phage tail assembly protein T
+NC_001416.1	Pfam	protein_match	10701	11309	3.4E-66	+	.	Dbxref=InterPro:IPR009628;ID=match%24241_54_256;Name=PF06791;date=13-05-2020;signature_desc=Prophage tail length tape measure protein
+NC_001416.1	TIGRFAM	protein_match	11955	12980	2.7E-135	+	.	Dbxref=InterPro:IPR006431;ID=match%24242_472_813;Name=TIGR01541;date=13-05-2020;signature_desc=tape_meas_lam_C: phage tail tape measure protein,lambda family
+NC_001416.1	Phobius	protein_match	10962	13100	.	+	.	ID=match%24243_141_853;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Phobius	protein_match	10542	10880	.	+	.	ID=match%24244_1_113;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Coils	protein_match	12183	12245	.	+	.	ID=match%24245_548_568;Name=Coil;date=13-05-2020
+NC_001416.1	Pfam	protein_match	12420	12644	1.0E-20	+	.	Dbxref=InterPro:IPR006431;ID=match%24246_627_701;Name=PF09718;date=13-05-2020;signature_desc=Lambda phage tail tape-measure protein %28Tape_meas_lam_C%29
+NC_001416.1	Coils	protein_match	11619	11702	.	+	.	ID=match%24247_360_387;Name=Coil;date=13-05-2020
+NC_001416.1	Phobius	protein_match	10881	10961	.	+	.	ID=match%24248_114_140;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Pfam	protein_match	13103	13423	2.8E-36	+	.	Dbxref=InterPro:IPR010265;ID=match%24207_2_108;Name=PF05939;date=13-05-2020;signature_desc=Phage minor tail protein
+NC_001416.1	TIGRFAM	protein_match	13462	14118	1.9E-99	+	.	Dbxref=InterPro:IPR006487;ID=match%24277_12_230;Name=TIGR01600;date=13-05-2020;signature_desc=phage_tail_L: phage minor tail protein L
+NC_001416.1	Pfam	protein_match	13513	14118	1.8E-99	+	.	Dbxref=InterPro:IPR006487;ID=match%24278_29_230;Name=PF05100;date=13-05-2020;signature_desc=Phage minor tail protein L
+NC_001416.1	Gene3D	protein_match	14459	14794	1.1E-6	+	.	ID=match%24137_62_173;Name=G3DSA:3.90.1720.10;date=13-05-2020
+NC_001416.1	ProSiteProfiles	protein_match	14276	14506	14.153	+	.	Dbxref=InterPro:IPR037518;ID=match%24138_1_77;Name=PS50249;date=13-05-2020;signature_desc=MPN domain profile.
+NC_001416.1	Gene3D	protein_match	14276	14458	9.6E-8	+	.	ID=match%24139_1_61;Name=G3DSA:3.40.140.10;date=13-05-2020
+NC_001416.1	PANTHER	protein_match	14276	14809	3.8E-23	+	.	ID=match%24140_1_178;Name=PTHR34858;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	14279	14422	7.59E-9	+	.	ID=match%24141_2_49;Name=SSF102712;date=13-05-2020
+NC_001416.1	Pfam	protein_match	14462	14800	6.0E-14	+	.	Dbxref=InterPro:IPR000064;ID=match%24142_63_175;Name=PF00877;date=13-05-2020;signature_desc=NlpC/P60 family
+NC_001416.1	SUPERFAMILY	protein_match	14429	14809	2.26E-17	+	.	Dbxref=InterPro:IPR038765;ID=match%24143_52_178;Name=SSF54001;date=13-05-2020
+NC_001416.1	Phobius	protein_match	14773	15075	.	+	.	ID=match%2411_1_101;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Phobius	protein_match	15184	15240	.	+	.	ID=match%2412_138_156;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	15076	15150	.	+	.	ID=match%2413_102_126;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	15241	15441	.	+	.	ID=match%2414_157_223;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Pfam	protein_match	14812	15063	2.9E-34	+	.	Dbxref=InterPro:IPR010654;ID=match%2415_14_97;Name=PF06805;date=13-05-2020;signature_desc=Bacteriophage lambda tail assembly protein I
+NC_001416.1	Phobius	protein_match	15151	15183	.	+	.	ID=match%2416_127_137;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Pfam	protein_match	16492	16998	1.1E-40	+	.	Dbxref=InterPro:IPR032876;ID=match%24113_330_498;Name=PF13550;date=13-05-2020;signature_desc=Putative phage tail protein
+NC_001416.1	Gene3D	protein_match	17326	17664	3.5E-5	+	.	Dbxref=InterPro:IPR013783;ID=match%24114_608_720;Name=G3DSA:2.60.40.10;date=13-05-2020
+NC_001416.1	PANTHER	protein_match	15508	18015	0.0	+	.	ID=match%24115_2_837;Name=PTHR36251;date=13-05-2020
+NC_001416.1	PANTHER	protein_match	18016	18870	0.0	+	.	ID=match%24115_838_1122;Name=PTHR36251;date=13-05-2020
+NC_001416.1	Pfam	protein_match	18040	18279	2.5E-26	+	.	Dbxref=InterPro:IPR015406;ID=match%24116_846_925;Name=PF09327;date=13-05-2020;signature_desc=Domain of unknown function %28DUF1983%29
+NC_001416.1	Pfam	protein_match	18349	18774	8.2E-61	+	.	Dbxref=InterPro:IPR021034;ID=match%24117_949_1090;Name=PF12421;date=13-05-2020;signature_desc=Fibronectin type III protein
+NC_001416.1	SMART	protein_match	17356	17607	0.11	+	.	Dbxref=InterPro:IPR003961;ID=match%24118_618_701;Name=SM00060;Ontology_term=GO:0005515;date=13-05-2020
+NC_001416.1	SMART	protein_match	17644	17898	66.0	+	.	Dbxref=InterPro:IPR003961;ID=match%24118_714_798;Name=SM00060;Ontology_term=GO:0005515;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	17353	17661	4.36E-6	+	.	Dbxref=InterPro:IPR036116;ID=match%24119_617_719;Name=SSF49265;Ontology_term=GO:0005515;date=13-05-2020
+NC_001416.1	Coils	protein_match	18898	18900	.	+	.	ID=match%24120_1132_1132;Name=Coil;date=13-05-2020
+NC_001416.1	ProSiteProfiles	protein_match	17362	17649	10.659	+	.	Dbxref=InterPro:IPR003961;ID=match%24121_620_715;Name=PS50853;Ontology_term=GO:0005515;date=13-05-2020;signature_desc=Fibronectin type-III domain profile.
+NC_001416.1	SUPERFAMILY	protein_match	19058	19582	9.16E-20	+	.	Dbxref=InterPro:IPR011250;ID=match%2454_32_206;Name=SSF56925;date=13-05-2020
+NC_001416.1	Phobius	protein_match	19010	19033	.	+	.	ID=match%2455_16_23;Name=SIGNAL_PEPTIDE_C_REGION;date=13-05-2020;signature_desc=C-terminal region of a signal peptide.
+NC_001416.1	ProSitePatterns	protein_match	19556	19582	.	+	.	Dbxref=InterPro:IPR000758;ID=match%2456_198_206;Name=PS00695;Ontology_term=GO:0009279;date=13-05-2020;signature_desc=Enterobacterial virulence outer membrane protein signature 2.
+NC_001416.1	PANTHER	protein_match	18965	19582	3.0E-34	+	.	ID=match%2457_1_206;Name=PTHR35892;date=13-05-2020
+NC_001416.1	SignalP_EUK	protein_match	18965	19033	.	+	.	ID=match%2458_1_23;Name=SignalP-noTM;date=13-05-2020
+NC_001416.1	ProSitePatterns	protein_match	19133	19159	.	+	.	Dbxref=InterPro:IPR000758;ID=match%2459_57_65;Name=PS00694;Ontology_term=GO:0009279;date=13-05-2020;signature_desc=Enterobacterial virulence outer membrane protein signature 1.
+NC_001416.1	Gene3D	protein_match	19037	19582	5.1E-40	+	.	ID=match%2460_25_206;Name=G3DSA:2.40.160.20;date=13-05-2020
+NC_001416.1	PRINTS	protein_match	19463	19528	4.4E-25	+	.	Dbxref=InterPro:IPR000758;ID=match%2461_167_188;Name=PR00316;Ontology_term=GO:0009279;date=13-05-2020;signature_desc=Enterobacterial virulence outer membrane protein signature
+NC_001416.1	PRINTS	protein_match	19130	19168	4.4E-25	+	.	Dbxref=InterPro:IPR000758;ID=match%2461_56_68;Name=PR00316;Ontology_term=GO:0009279;date=13-05-2020;signature_desc=Enterobacterial virulence outer membrane protein signature
+NC_001416.1	PRINTS	protein_match	19544	19579	4.4E-25	+	.	Dbxref=InterPro:IPR000758;ID=match%2461_194_205;Name=PR00316;Ontology_term=GO:0009279;date=13-05-2020;signature_desc=Enterobacterial virulence outer membrane protein signature
+NC_001416.1	PRINTS	protein_match	19271	19342	4.4E-25	+	.	Dbxref=InterPro:IPR000758;ID=match%2461_103_126;Name=PR00316;Ontology_term=GO:0009279;date=13-05-2020;signature_desc=Enterobacterial virulence outer membrane protein signature
+NC_001416.1	Phobius	protein_match	19034	19582	.	+	.	ID=match%2462_24_206;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Pfam	protein_match	18965	19582	9.5E-54	+	.	Dbxref=InterPro:IPR000758;ID=match%2463_1_206;Name=PF06316;Ontology_term=GO:0009279;date=13-05-2020;signature_desc=Enterobacterial Ail/Lom protein
+NC_001416.1	Phobius	protein_match	18974	19009	.	+	.	ID=match%2464_4_15;Name=SIGNAL_PEPTIDE_H_REGION;date=13-05-2020;signature_desc=Hydrophobic region of a signal peptide.
+NC_001416.1	Phobius	protein_match	18965	18973	.	+	.	ID=match%2465_1_3;Name=SIGNAL_PEPTIDE_N_REGION;date=13-05-2020;signature_desc=N-terminal region of a signal peptide.
+NC_001416.1	SignalP_GRAM_NEGATIVE	protein_match	18965	19033	.	+	.	ID=match%2466_1_23;Name=SignalP-noTM;date=13-05-2020
+NC_001416.1	PANTHER	protein_match	18965	19582	3.0E-34	+	.	ID=match%2467_1_206;Name=PTHR35892:SF2;date=13-05-2020
+NC_001416.1	Phobius	protein_match	18965	19033	.	+	.	ID=match%2468_1_23;Name=SIGNAL_PEPTIDE;date=13-05-2020;signature_desc=Signal peptide region
+NC_001416.1	Coils	protein_match	20166	20228	.	+	.	ID=match%24224_173_193;Name=Coil;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	19659	19907	5.49E-8	+	.	Dbxref=InterPro:IPR008969;ID=match%24225_4_86;Name=SSF49464;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	19662	19946	1.8E-9	+	.	ID=match%24226_5_99;Name=G3DSA:2.60.40.1120;date=13-05-2020
+NC_001416.1	Pfam	protein_match	20721	20834	1.2E-18	+	.	Dbxref=InterPro:IPR005068;ID=match%24227_358_395;Name=PF03406;date=13-05-2020;signature_desc=Phage tail fibre repeat
+NC_001416.1	PANTHER	protein_match	20085	20837	1.8E-43	+	.	ID=match%24228_146_396;Name=PTHR35191;date=13-05-2020
+NC_001416.1	Pfam	protein_match	19650	20051	2.0E-75	+	.	Dbxref=InterPro:IPR013609;ID=match%24229_1_134;Name=PF08400;date=13-05-2020;signature_desc=Prophage tail fibre N-terminal
+NC_001416.1	SignalP_EUK	protein_match	20717	20767	.	-	.	ID=match%2483_1_17;Name=SignalP-noTM;date=13-05-2020
+NC_001416.1	Phobius	protein_match	20696	20719	.	-	.	ID=match%2484_17_24;Name=SIGNAL_PEPTIDE_C_REGION;date=13-05-2020;signature_desc=C-terminal region of a signal peptide.
+NC_001416.1	Phobius	protein_match	20150	20695	.	-	.	ID=match%2485_25_206;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Phobius	protein_match	20765	20767	.	-	.	ID=match%2486_1_1;Name=SIGNAL_PEPTIDE_N_REGION;date=13-05-2020;signature_desc=N-terminal region of a signal peptide.
+NC_001416.1	Phobius	protein_match	20696	20767	.	-	.	ID=match%2487_1_24;Name=SIGNAL_PEPTIDE;date=13-05-2020;signature_desc=Signal peptide region
+NC_001416.1	SignalP_GRAM_NEGATIVE	protein_match	20696	20767	.	-	.	ID=match%2488_1_24;Name=SignalP-noTM;date=13-05-2020
+NC_001416.1	Phobius	protein_match	20720	20764	.	-	.	ID=match%2489_2_16;Name=SIGNAL_PEPTIDE_H_REGION;date=13-05-2020;signature_desc=Hydrophobic region of a signal peptide.
+NC_001416.1	Gene3D	protein_match	21230	21391	1.9E-22	+	.	Dbxref=InterPro:IPR037053;ID=match%2437_68_121;Name=G3DSA:3.90.1340.10;date=13-05-2020
+NC_001416.1	PANTHER	protein_match	21224	21970	6.0E-96	+	.	ID=match%2438_66_314;Name=PTHR35191;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	21221	21967	4.71E-29	+	.	ID=match%2439_65_313;Name=SSF88874;date=13-05-2020
+NC_001416.1	Pfam	protein_match	21245	21385	1.6E-10	+	.	Dbxref=InterPro:IPR011083;ID=match%2440_73_119;Name=PF07484;date=13-05-2020;signature_desc=Phage Tail Collar Domain
+NC_001416.1	Pfam	protein_match	21605	21634	21.0	+	.	Dbxref=InterPro:IPR005003;ID=match%2441_193_202;Name=PF03335;Ontology_term=GO:0005198;date=13-05-2020;signature_desc=Phage tail fibre repeat
+NC_001416.1	Pfam	protein_match	21560	21601	0.0073	+	.	Dbxref=InterPro:IPR005003;ID=match%2441_178_191;Name=PF03335;Ontology_term=GO:0005198;date=13-05-2020;signature_desc=Phage tail fibre repeat
+NC_001416.1	Pfam	protein_match	21434	21472	0.075	+	.	Dbxref=InterPro:IPR005003;ID=match%2441_136_148;Name=PF03335;Ontology_term=GO:0005198;date=13-05-2020;signature_desc=Phage tail fibre repeat
+NC_001416.1	Pfam	protein_match	21746	21787	0.014	+	.	Dbxref=InterPro:IPR005003;ID=match%2441_240_253;Name=PF03335;Ontology_term=GO:0005198;date=13-05-2020;signature_desc=Phage tail fibre repeat
+NC_001416.1	Pfam	protein_match	21791	21826	0.16	+	.	Dbxref=InterPro:IPR005003;ID=match%2441_255_266;Name=PF03335;Ontology_term=GO:0005198;date=13-05-2020;signature_desc=Phage tail fibre repeat
+NC_001416.1	Pfam	protein_match	21848	21880	0.79	+	.	Dbxref=InterPro:IPR005003;ID=match%2441_274_284;Name=PF03335;Ontology_term=GO:0005198;date=13-05-2020;signature_desc=Phage tail fibre repeat
+NC_001416.1	Pfam	protein_match	22186	22545	2.5E-39	+	.	Dbxref=InterPro:IPR003458;ID=match%24258_72_191;Name=PF02413;date=13-05-2020;signature_desc=Caudovirales tail fibre assembly protein,lambda gpK
+NC_001416.1	PANTHER	protein_match	21988	22551	1.5E-68	+	.	ID=match%24259_6_193;Name=PTHR34413;date=13-05-2020
+NC_001416.1	SMART	protein_match	24956	25114	2.2E-7	-	.	Dbxref=InterPro:IPR003615;ID=match%24270_96_148;Name=SM00507;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	24887	25186	6.2E-6	-	.	ID=match%24271_72_171;Name=G3DSA:3.30.40.60;date=13-05-2020
+NC_001416.1	PANTHER	protein_match	25636	26025	7.1E-16	-	.	ID=match%24220_317_446;Name=PTHR43581;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	25651	26472	2.5E-16	-	.	ID=match%24221_168_441;Name=G3DSA:3.40.50.300;date=13-05-2020
+NC_001416.1	Pfam	protein_match	25684	25893	9.6E-12	-	.	Dbxref=InterPro:IPR003959;ID=match%24222_361_430;Name=PF13304;Ontology_term=GO:0005524;date=13-05-2020;signature_desc=AAA domain,putative AbiEii toxin,Type IV TA system
+NC_001416.1	SUPERFAMILY	protein_match	25672	26460	8.17E-19	-	.	Dbxref=InterPro:IPR027417;ID=match%24223_172_434;Name=SSF52540;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	27842	28663	8.54E-63	-	.	Dbxref=InterPro:IPR011010;ID=match%2442_74_347;Name=SSF56349;Ontology_term=GO:0003677;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	28355	28663	1.4E-27	-	.	Dbxref=InterPro:IPR010998;ID=match%2443_74_176;Name=G3DSA:1.10.150.130;date=13-05-2020
+NC_001416.1	Pfam	protein_match	28409	28642	5.6E-7	-	.	Dbxref=InterPro:IPR004107;ID=match%2444_81_158;Name=PF02899;Ontology_term=GO:0003677%22%2C%22GO:0015074;date=13-05-2020;signature_desc=Phage integrase,N-terminal SAM-like domain
+NC_001416.1	Pfam	protein_match	27851	28348	2.2E-35	-	.	Dbxref=InterPro:IPR002104;ID=match%2445_179_344;Name=PF00589;Ontology_term=GO:0003677%22%2C%22GO:0006310%22%2C%22GO:0015074;date=13-05-2020;signature_desc=Phage integrase family
+NC_001416.1	SUPERFAMILY	protein_match	28706	28852	1.7E-21	-	.	Dbxref=InterPro:IPR016177;ID=match%2446_11_59;Name=SSF54171;Ontology_term=GO:0003677;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	28691	28882	2.3E-34	-	.	ID=match%2447_1_64;Name=G3DSA:3.30.160.60;date=13-05-2020
+NC_001416.1	Pfam	protein_match	28676	28882	1.9E-25	-	.	Dbxref=InterPro:IPR015094;ID=match%2448_1_69;Name=PF09003;Ontology_term=GO:0003677%22%2C%22GO:0008907%22%2C%22GO:0015074;date=13-05-2020;signature_desc=Bacteriophage lambda integrase,Arm DNA-binding domain
+NC_001416.1	PANTHER	protein_match	27845	28699	1.7E-23	-	.	ID=match%2449_62_346;Name=PTHR30349;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	27818	28354	1.1E-50	-	.	Dbxref=InterPro:IPR013762;ID=match%2450_177_355;Name=G3DSA:1.10.443.10;Ontology_term=GO:0003677%22%2C%22GO:0006310%22%2C%22GO:0015074;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	28869	29078	2.2E-22	-	.	Dbxref=InterPro:IPR009061;ID=match%24152_1_70;Name=SSF46955;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	28863	29078	2.8E-34	-	.	Dbxref=InterPro:IPR038137;ID=match%24153_1_72;Name=G3DSA:1.10.1660.20;date=13-05-2020
+NC_001416.1	Pfam	protein_match	28863	29078	2.6E-41	-	.	Dbxref=InterPro:IPR012884;ID=match%24154_1_72;Name=PF07825;Ontology_term=GO:0003677%22%2C%22GO:0006310;date=13-05-2020;signature_desc=Excisionase-like protein
+NC_001416.1	Gene3D	protein_match	29377	29655	7.4E-43	-	.	ID=match%2436_1_93;Name=G3DSA:1.10.10.1920;date=13-05-2020
+NC_001416.1	Pfam	protein_match	30093	30392	4.8E-27	-	.	Dbxref=InterPro:IPR025153;ID=match%2424_2_101;Name=PF13935;date=13-05-2020;signature_desc=Ead/Ea22-like protein
+NC_001416.1	Pfam	protein_match	31017	31196	3.1E-37	-	.	Dbxref=InterPro:IPR009814;ID=match%24257_1_60;Name=PF07131;date=13-05-2020;signature_desc=Protein of unknown function %28DUF1382%29
+NC_001416.1	Pfam	protein_match	31172	31351	6.7E-41	-	.	Dbxref=InterPro:IPR009750;ID=match%24256_1_60;Name=PF07026;date=13-05-2020;signature_desc=Protein of unknown function %28DUF1317%29
+NC_001416.1	Gene3D	protein_match	31351	32028	5.2E-99	-	.	Dbxref=InterPro:IPR011604;ID=match%246_1_226;Name=G3DSA:3.90.320.10;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	31354	32016	3.75E-67	-	.	Dbxref=InterPro:IPR011335%22%2C%22Reactome:R-HSA-6783310;ID=match%247_5_225;Name=SSF52980;date=13-05-2020
+NC_001416.1	PANTHER	protein_match	31414	31974	3.7E-12	-	.	ID=match%248_19_205;Name=PTHR10333;date=13-05-2020
+NC_001416.1	Pfam	protein_match	31528	31959	4.8E-25	-	.	Dbxref=InterPro:IPR019080;ID=match%249_24_167;Name=PF09588;date=13-05-2020;signature_desc=YqaJ-like viral recombinase domain
+NC_001416.1	PANTHER	protein_match	31414	31974	3.7E-12	-	.	ID=match%2410_19_205;Name=PTHR10333:SF87;date=13-05-2020
+NC_001416.1	TIGRFAM	protein_match	32283	32777	2.3E-50	-	.	Dbxref=InterPro:IPR010183;ID=match%24239_12_176;Name=TIGR01913;date=13-05-2020;signature_desc=bet_lambda: phage recombination protein Bet
+NC_001416.1	Pfam	protein_match	32265	32501	3.7E-12	-	.	Dbxref=InterPro:IPR018330;ID=match%24240_104_182;Name=PF03837;Ontology_term=GO:0003677%22%2C%22GO:0006259;date=13-05-2020;signature_desc=RecT family
+NC_001416.1	Pfam	protein_match	32517	32741	1.3E-14	-	.	Dbxref=InterPro:IPR018330;ID=match%24240_24_98;Name=PF03837;Ontology_term=GO:0003677%22%2C%22GO:0006259;date=13-05-2020;signature_desc=RecT family
+NC_001416.1	Gene3D	protein_match	32819	33115	9.5E-59	-	.	ID=match%24186_40_138;Name=G3DSA:1.10.10.2020;date=13-05-2020
+NC_001416.1	ProDom	protein_match	32819	33112	1.0E-52	-	.	Dbxref=InterPro:IPR009274;ID=match%24187_41_138;Name=PD084412;Ontology_term=GO:0060703;date=13-05-2020;signature_desc=GAM INHIBITOR HOST-NUCLEASE BACTERIPHAGE CP-933V BP- 933W PROPHAGE
+NC_001416.1	Pfam	protein_match	32819	33112	8.4E-65	-	.	Dbxref=InterPro:IPR009274;ID=match%24188_41_138;Name=PF06064;Ontology_term=GO:0060703;date=13-05-2020;signature_desc=Host-nuclease inhibitor protein Gam
+NC_001416.1	Pfam	protein_match	33205	33330	1.1E-29	-	.	Dbxref=InterPro:IPR010444;ID=match%24266_1_42;Name=PF06301;date=13-05-2020;signature_desc=Bacteriophage lambda Kil protein
+NC_001416.1	PRINTS	protein_match	33347	33388	1.5E-10	-	.	Dbxref=InterPro:IPR013056;ID=match%2469_26_39;Name=PR00936;date=13-05-2020;signature_desc=Lambda phage regulatory protein CIII signature
+NC_001416.1	PRINTS	protein_match	33386	33418	1.5E-10	-	.	Dbxref=InterPro:IPR013056;ID=match%2469_16_26;Name=PR00936;date=13-05-2020;signature_desc=Lambda phage regulatory protein CIII signature
+NC_001416.1	Pfam	protein_match	33335	33460	1.5E-30	-	.	Dbxref=InterPro:IPR013056;ID=match%2470_2_43;Name=PF02061;date=13-05-2020;signature_desc=Lambda Phage CIII
+NC_001416.1	ProSitePatterns	protein_match	33353	33418	.	-	.	Dbxref=InterPro:IPR013056;ID=match%2471_16_37;Name=PS00553;date=13-05-2020;signature_desc=Lambdoid phages regulatory protein CIII signature.
+NC_001416.1	ProDom	protein_match	33383	33463	4.0E-9	-	.	ID=match%2472_1_27;Name=PD026804;date=13-05-2020;signature_desc=CIII REGULATORY TRANSCRIPTION LAMBDA C3 ACTIVATOR REGULATION GP GP52
+NC_001416.1	ProDom	protein_match	33539	33904	6.0E-67	-	.	Dbxref=InterPro:IPR024252;ID=match%24195_1_122;Name=PD077587;date=13-05-2020;signature_desc=EA10 BINDING SINGLE-STRANDED DNA GENE STRAND GP03 PROPHAGE-DERIVED SSB LAMBDA
+NC_001416.1	Pfam	protein_match	33548	33859	6.7E-42	-	.	Dbxref=InterPro:IPR024252;ID=match%24196_16_119;Name=PF10800;date=13-05-2020;signature_desc=Protein of unknown function %28DUF2528%29
+NC_001416.1	ProDom	protein_match	34108	34287	3.0E-30	-	.	Dbxref=InterPro:IPR022759;ID=match%24254_1_60;Name=PD019289;date=13-05-2020;signature_desc=RAL RESTRICTION ANTIRESTRICTION INHIBITOR SYSTEM LAMBDA ANT-RESTRICTION GENE
+NC_001416.1	Pfam	protein_match	34090	34287	1.1E-48	-	.	Dbxref=InterPro:IPR022759;ID=match%24255_1_66;Name=PF11058;date=13-05-2020;signature_desc=Antirestriction protein Ral
+NC_001416.1	Phobius	protein_match	34482	34541	.	+	.	ID=match%2417_1_20;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Phobius	protein_match	34542	34595	.	+	.	ID=match%2418_21_38;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	34596	34652	.	+	.	ID=match%2419_39_57;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Pfam	protein_match	34554	35033	8.9E-39	+	.	Dbxref=InterPro:IPR025982;ID=match%2420_25_184;Name=PF14163;date=13-05-2020;signature_desc=Super-infection exclusion protein B
+NC_001416.1	Phobius	protein_match	34722	35033	.	+	.	ID=match%2421_81_184;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Coils	protein_match	34743	34805	.	+	.	ID=match%2422_88_108;Name=Coil;date=13-05-2020
+NC_001416.1	Phobius	protein_match	34653	34721	.	+	.	ID=match%2423_58_80;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Pfam	protein_match	35253	35357	4.1E-26	-	.	Dbxref=InterPro:IPR020952;ID=match%24249_28_62;Name=PF11438;date=13-05-2020;signature_desc=36-mer N-terminal peptide of the N protein %28N36%29
+NC_001416.1	Coils	protein_match	35121	35183	.	-	.	ID=match%24250_86_106;Name=Coil;date=13-05-2020
+NC_001416.1	Pfam	protein_match	35828	36244	6.9E-92	-	.	Dbxref=InterPro:IPR031892;ID=match%2473_6_144;Name=PF15968;date=13-05-2020;signature_desc=Membrane-anchored ion channel,Abi component
+NC_001416.1	Phobius	protein_match	35942	36028	.	-	.	ID=match%2474_78_106;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	36182	36241	.	-	.	ID=match%2475_7_26;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	36029	36061	.	-	.	ID=match%2476_67_77;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Phobius	protein_match	36062	36124	.	-	.	ID=match%2477_46_66;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	35828	35848	.	-	.	ID=match%2478_138_144;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Phobius	protein_match	35849	35926	.	-	.	ID=match%2479_112_137;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	36125	36181	.	-	.	ID=match%2480_27_45;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Phobius	protein_match	36242	36259	.	-	.	ID=match%2481_1_6;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Phobius	protein_match	35927	35941	.	-	.	ID=match%2482_107_111;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Pfam	protein_match	36434	37114	4.2E-96	-	.	Dbxref=InterPro:IPR031894;ID=match%24279_1_227;Name=PF15969;date=13-05-2020;signature_desc=Intracellular sensor of Lambda phage,Abi component
+NC_001416.1	SMART	protein_match	37710	37889	4.3E-9	-	.	Dbxref=InterPro:IPR001387;ID=match%24103_18_77;Name=SM00530;Ontology_term=GO:0043565;date=13-05-2020
+NC_001416.1	Pfam	protein_match	37710	37871	6.0E-10	-	.	Dbxref=InterPro:IPR001387;ID=match%24104_24_77;Name=PF01381;Ontology_term=GO:0043565;date=13-05-2020;signature_desc=Helix-turn-helix
+NC_001416.1	PANTHER	protein_match	37242	37928	9.3E-56	-	.	ID=match%24105_5_233;Name=PTHR33516;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	37656	37934	9.29E-20	-	.	Dbxref=InterPro:IPR010982;ID=match%24106_3_95;Name=SSF47413;Ontology_term=GO:0003677;date=13-05-2020
+NC_001416.1	Pfam	protein_match	37287	37508	4.1E-17	-	.	Dbxref=InterPro:IPR015927;ID=match%24107_145_218;Name=PF00717;date=13-05-2020;signature_desc=Peptidase S24-like
+NC_001416.1	Gene3D	protein_match	37650	37940	4.3E-39	-	.	ID=match%24108_1_97;Name=G3DSA:1.10.260.40;date=13-05-2020
+NC_001416.1	PANTHER	protein_match	37242	37928	9.3E-56	-	.	ID=match%24109_5_233;Name=PTHR33516:SF7;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	37230	37646	6.3E-59	-	.	ID=match%24110_99_237;Name=G3DSA:2.10.109.10;date=13-05-2020
+NC_001416.1	ProSiteProfiles	protein_match	37710	37886	12.377	-	.	Dbxref=InterPro:IPR001387;ID=match%24111_19_77;Name=PS50943;Ontology_term=GO:0043565;date=13-05-2020;signature_desc=Cro/C1-type HTH domain profile.
+NC_001416.1	SUPERFAMILY	protein_match	37245	37529	1.1E-29	-	.	Dbxref=InterPro:IPR036286;ID=match%24112_138_232;Name=SSF51306;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	38041	38238	1.1E-35	+	.	Dbxref=InterPro:IPR038202;ID=match%24177_1_66;Name=G3DSA:3.30.240.10;date=13-05-2020
+NC_001416.1	PRINTS	protein_match	38110	38157	9.6E-10	+	.	Dbxref=InterPro:IPR000655;ID=match%24178_24_39;Name=PR00030;Ontology_term=GO:0003677%22%2C%22GO:0006355;date=13-05-2020;signature_desc=Cro repressor HTH signature
+NC_001416.1	PRINTS	protein_match	38083	38112	9.6E-10	+	.	Dbxref=InterPro:IPR000655;ID=match%24178_15_24;Name=PR00030;Ontology_term=GO:0003677%22%2C%22GO:0006355;date=13-05-2020;signature_desc=Cro repressor HTH signature
+NC_001416.1	PIRSF	protein_match	38041	38238	1.1E-49	+	.	Dbxref=InterPro:IPR000655;ID=match%24179_1_66;Name=PIRSF003217;Ontology_term=GO:0003677%22%2C%22GO:0006355;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	38041	38235	5.62E-29	+	.	Dbxref=InterPro:IPR010982;ID=match%24180_1_65;Name=SSF47413;Ontology_term=GO:0003677;date=13-05-2020
+NC_001416.1	ProDom	protein_match	38050	38229	2.0E-29	+	.	Dbxref=InterPro:IPR000655;ID=match%24181_4_63;Name=PD054632;Ontology_term=GO:0003677%22%2C%22GO:0006355;date=13-05-2020;signature_desc=CRO REPRESSOR TRANSCRIPTION REGULATORY 3D-STRUCTURE DNA-BINDING DIRECT EARLY REGULATION SEQUENCING
+NC_001416.1	Pfam	protein_match	38041	38220	1.5E-33	+	.	Dbxref=InterPro:IPR000655;ID=match%24182_1_60;Name=PF09048;Ontology_term=GO:0003677%22%2C%22GO:0006355;date=13-05-2020;signature_desc=Cro
+NC_001416.1	Gene3D	protein_match	38363	38605	8.0E-41	+	.	ID=match%24155_2_82;Name=G3DSA:1.10.260.40;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	38375	38599	1.34E-25	+	.	Dbxref=InterPro:IPR010982;ID=match%24156_6_80;Name=SSF47413;Ontology_term=GO:0003677;date=13-05-2020
+NC_001416.1	Pfam	protein_match	38360	38632	3.0E-48	+	.	Dbxref=InterPro:IPR007933;ID=match%24157_1_91;Name=PF05269;Ontology_term=GO:0003677%22%2C%22GO:0006355;date=13-05-2020;signature_desc=Bacteriophage CII protein
+NC_001416.1	Pfam	protein_match	38749	39030	4.1E-33	+	.	Dbxref=InterPro:IPR006497;ID=match%24208_22_115;Name=PF04492;Ontology_term=GO:0006260;date=13-05-2020;signature_desc=Bacteriophage replication protein O
+NC_001416.1	Gene3D	protein_match	38740	39039	2.9E-38	+	.	Dbxref=InterPro:IPR036388;ID=match%24209_19_118;Name=G3DSA:1.10.10.10;date=13-05-2020
+NC_001416.1	TIGRFAM	protein_match	38752	39030	2.3E-39	+	.	Dbxref=InterPro:IPR006497;ID=match%24210_23_115;Name=TIGR01610;Ontology_term=GO:0006260;date=13-05-2020;signature_desc=phage_O_Nterm: phage replication protein O,N-terminal domain
+NC_001416.1	Pfam	protein_match	39696	40175	7.5E-64	+	.	Dbxref=InterPro:IPR009731;ID=match%24260_39_198;Name=PF06992;Ontology_term=GO:0006270;date=13-05-2020;signature_desc=Replication protein P
+NC_001416.1	Gene3D	protein_match	40644	41081	1.7E-67	+	.	Dbxref=InterPro:IPR036619;ID=match%24251_1_146;Name=G3DSA:1.10.3790.10;date=13-05-2020
+NC_001416.1	Pfam	protein_match	40650	41027	1.1E-52	+	.	Dbxref=InterPro:IPR008711;ID=match%24252_3_128;Name=PF05772;date=13-05-2020;signature_desc=NinB protein
+NC_001416.1	SUPERFAMILY	protein_match	40644	41066	1.44E-56	+	.	Dbxref=InterPro:IPR036619;ID=match%24253_1_141;Name=SSF103370;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	41084	41659	4.1E-23	+	.	Dbxref=InterPro:IPR014729;ID=match%24133_2_193;Name=G3DSA:3.40.50.620;date=13-05-2020
+NC_001416.1	Pfam	protein_match	41087	41530	1.1E-8	+	.	Dbxref=InterPro:IPR002500%22%2C%22Reactome:R-HSA-196843;ID=match%24134_3_150;Name=PF01507;Ontology_term=GO:0003824;date=13-05-2020;signature_desc=Phosphoadenosine phosphosulfate reductase family
+NC_001416.1	PANTHER	protein_match	41090	41515	4.9E-14	+	.	ID=match%24135_4_145;Name=PTHR43196;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	41090	41599	4.75E-20	+	.	ID=match%24136_4_173;Name=SSF52402;date=13-05-2020
+NC_001416.1	Pfam	protein_match	41950	42120	1.5E-41	+	.	Dbxref=InterPro:IPR035346;ID=match%24261_1_57;Name=PF17466;date=13-05-2020;signature_desc=Family of unknown function
+NC_001416.1	ProDom	protein_match	41950	42120	7.0E-27	+	.	Dbxref=InterPro:IPR035346;ID=match%24262_1_57;Name=PD027041;date=13-05-2020;signature_desc=NIND GP65
+NC_001416.1	Pfam	protein_match	42090	42263	5.7E-45	+	.	Dbxref=InterPro:IPR007986;ID=match%24102_1_58;Name=PF05322;date=13-05-2020;signature_desc=NINE Protein
+NC_001416.1	Pfam	protein_match	42278	42433	1.3E-27	+	.	Dbxref=InterPro:IPR008712;ID=match%24144_4_55;Name=PF05810;date=13-05-2020;signature_desc=NinF protein
+NC_001416.1	Coils	protein_match	42963	43040	.	+	.	ID=match%24197_179_204;Name=Coil;date=13-05-2020
+NC_001416.1	Coils	protein_match	42543	42641	.	+	.	ID=match%24198_39_71;Name=Coil;date=13-05-2020
+NC_001416.1	Pfam	protein_match	42432	43019	5.9E-87	+	.	Dbxref=InterPro:IPR008713;ID=match%24199_2_197;Name=PF05766;date=13-05-2020;signature_desc=Bacteriophage Lambda NinG protein
+NC_001416.1	Pfam	protein_match	43040	43219	9.3E-41	+	.	Dbxref=InterPro:IPR010454;ID=match%24100_1_60;Name=PF06322;date=13-05-2020;signature_desc=Phage NinH protein
+NC_001416.1	ProDom	protein_match	43070	43219	2.0E-23	+	.	Dbxref=InterPro:IPR010454;ID=match%24101_11_60;Name=PD019190;date=13-05-2020;signature_desc=NINH READING ECS2976 ECS1202 H0110 DNA-BINDING GENE GP68 FRAME BACTERIOPHAGE
+NC_001416.1	Pfam	protein_match	43263	43784	7.6E-17	+	.	Dbxref=InterPro:IPR004843;ID=match%24158_14_187;Name=PF00149;Ontology_term=GO:0016787;date=13-05-2020;signature_desc=Calcineurin-like phosphoesterase
+NC_001416.1	PANTHER	protein_match	43233	43868	5.8E-58	+	.	ID=match%24159_4_215;Name=PTHR24032:SF33;date=13-05-2020
+NC_001416.1	ProSitePatterns	protein_match	43437	43454	.	+	.	Dbxref=InterPro:IPR006186%22%2C%22KEGG:04658%2B3.1.3.16%22%2C%22KEGG:04660%2B3.1.3.16;ID=match%24160_72_77;Name=PS00125;Ontology_term=GO:0016787;date=13-05-2020;signature_desc=Serine/threonine specific protein phosphatases signature.
+NC_001416.1	Gene3D	protein_match	43224	43886	1.5E-71	+	.	Dbxref=InterPro:IPR029052;ID=match%24161_1_221;Name=G3DSA:3.60.21.10;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	43230	43877	2.31E-53	+	.	ID=match%24162_3_218;Name=SSF56300;date=13-05-2020
+NC_001416.1	PANTHER	protein_match	43233	43868	5.8E-58	+	.	ID=match%24163_4_215;Name=PTHR24032;date=13-05-2020
+NC_001416.1	Gene3D	protein_match	44069	44506	9.4E-65	+	.	ID=match%24263_62_207;Name=G3DSA:3.30.260.20;date=13-05-2020
+NC_001416.1	Pfam	protein_match	43952	44218	3.4E-29	+	.	Dbxref=InterPro:IPR003222;ID=match%24264_23_111;Name=PF03589;Ontology_term=GO:0003677%22%2C%22GO:0006355;date=13-05-2020;signature_desc=Antitermination protein
+NC_001416.1	Pfam	protein_match	44222	44482	2.6E-23	+	.	Dbxref=InterPro:IPR003222;ID=match%24264_113_199;Name=PF03589;Ontology_term=GO:0003677%22%2C%22GO:0006355;date=13-05-2020;signature_desc=Antitermination protein
+NC_001416.1	SUPERFAMILY	protein_match	44228	44347	5.49E-5	+	.	Dbxref=InterPro:IPR036410;ID=match%24265_115_154;Name=SSF57938;date=13-05-2020
+NC_001416.1	Phobius	protein_match	44741	44797	.	+	.	ID=match%24149_41_59;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	44798	44812	.	+	.	ID=match%24150_60_64;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Phobius	protein_match	44621	44740	.	+	.	ID=match%24151_1_40;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Phobius	protein_match	45300	45359	.	+	.	ID=match%24122_39_58;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	45435	45506	.	+	.	ID=match%24123_84_107;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Phobius	protein_match	45360	45374	.	+	.	ID=match%24124_59_63;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Pfam	protein_match	45207	45479	6.6E-28	+	.	Dbxref=InterPro:IPR006481;ID=match%24125_8_98;Name=PF05106;date=13-05-2020;signature_desc=Phage holin family %28Lysis protein S%29
+NC_001416.1	Phobius	protein_match	45219	45281	.	+	.	ID=match%24126_12_32;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	45186	45218	.	+	.	ID=match%24127_1_11;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Phobius	protein_match	45375	45434	.	+	.	ID=match%24128_64_83;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	TIGRFAM	protein_match	45189	45494	7.3E-38	+	.	Dbxref=InterPro:IPR006481;ID=match%24129_2_103;Name=TIGR01594;date=13-05-2020;signature_desc=holin_lambda: phage holin,lambda family
+NC_001416.1	Phobius	protein_match	45282	45299	.	+	.	ID=match%24130_33_38;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	TIGRFAM	protein_match	45192	45494	1.9E-37	+	.	Dbxref=InterPro:IPR006481;ID=match%24211_1_101;Name=TIGR01594;date=13-05-2020;signature_desc=holin_lambda: phage holin,lambda family
+NC_001416.1	Phobius	protein_match	45192	45206	.	+	.	ID=match%24212_1_5;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Phobius	protein_match	45435	45506	.	+	.	ID=match%24213_82_105;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Phobius	protein_match	45360	45374	.	+	.	ID=match%24214_57_61;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Pfam	protein_match	45207	45479	1.5E-27	+	.	Dbxref=InterPro:IPR006481;ID=match%24215_6_96;Name=PF05106;date=13-05-2020;signature_desc=Phage holin family %28Lysis protein S%29
+NC_001416.1	Phobius	protein_match	45270	45302	.	+	.	ID=match%24216_27_37;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+NC_001416.1	Phobius	protein_match	45207	45269	.	+	.	ID=match%24217_6_26;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	45375	45434	.	+	.	ID=match%24218_62_81;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Phobius	protein_match	45303	45359	.	+	.	ID=match%24219_38_56;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+NC_001416.1	Pfam	protein_match	45589	45912	2.1E-22	+	.	Dbxref=InterPro:IPR002196;ID=match%24230_33_140;Name=PF00959;Ontology_term=GO:0003796%22%2C%22GO:0009253%22%2C%22GO:0016998;date=13-05-2020;signature_desc=Phage lysozyme
+NC_001416.1	Hamap	protein_match	45493	45954	39.345	+	.	Dbxref=InterPro:IPR034691;ID=match%24231_1_154;Name=MF_04109;Ontology_term=GO:0003796%22%2C%22GO:0009253%22%2C%22GO:0019076%22%2C%22GO:0044659;date=13-05-2020;signature_desc=Endolysin.
+NC_001416.1	Gene3D	protein_match	45493	45966	1.3E-71	+	.	ID=match%24232_1_158;Name=G3DSA:1.10.530.10;date=13-05-2020
+NC_001416.1	SUPERFAMILY	protein_match	45496	45948	1.07E-53	+	.	Dbxref=InterPro:IPR023346;ID=match%24233_2_152;Name=SSF53955;date=13-05-2020
+NC_001416.1	Phobius	protein_match	46017	46031	.	+	.	ID=match%2425_18_22;Name=SIGNAL_PEPTIDE_C_REGION;date=13-05-2020;signature_desc=C-terminal region of a signal peptide.
+NC_001416.1	Pfam	protein_match	46053	46424	6.3E-50	+	.	Dbxref=InterPro:IPR004929;ID=match%2426_30_153;Name=PF03245;Ontology_term=GO:0019076%22%2C%22GO:0019835;date=13-05-2020;signature_desc=Bacteriophage Rz lysis protein
+NC_001416.1	Phobius	protein_match	45981	46016	.	+	.	ID=match%2427_6_17;Name=SIGNAL_PEPTIDE_H_REGION;date=13-05-2020;signature_desc=Hydrophobic region of a signal peptide.
+NC_001416.1	Phobius	protein_match	46032	46424	.	+	.	ID=match%2428_23_153;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	Coils	protein_match	46158	46241	.	+	.	ID=match%2429_65_92;Name=Coil;date=13-05-2020
+NC_001416.1	Phobius	protein_match	45966	46031	.	+	.	ID=match%2430_1_22;Name=SIGNAL_PEPTIDE;date=13-05-2020;signature_desc=Signal peptide region
+NC_001416.1	Phobius	protein_match	45966	45980	.	+	.	ID=match%2431_1_5;Name=SIGNAL_PEPTIDE_N_REGION;date=13-05-2020;signature_desc=N-terminal region of a signal peptide.
+NC_001416.1	SignalP_EUK	protein_match	45966	46031	.	+	.	ID=match%2432_1_22;Name=SignalP-TM;date=13-05-2020
+NC_001416.1	Phobius	protein_match	46252	46365	.	+	.	ID=match%24164_23_60;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	SignalP_EUK	protein_match	46186	46251	.	+	.	ID=match%24165_1_22;Name=SignalP-noTM;date=13-05-2020
+NC_001416.1	Pfam	protein_match	46243	46362	2.5E-20	+	.	Dbxref=InterPro:IPR010346;ID=match%24166_20_59;Name=PF06085;Ontology_term=GO:0019076%22%2C%22GO:0019835;date=13-05-2020;signature_desc=Lipoprotein Rz1 precursor
+NC_001416.1	ProSiteProfiles	protein_match	46186	46245	6.0	+	.	ID=match%24167_1_20;Name=PS51257;date=13-05-2020;signature_desc=Prokaryotic membrane lipoprotein lipid attachment site profile.
+NC_001416.1	Phobius	protein_match	46186	46206	.	+	.	ID=match%24168_1_7;Name=SIGNAL_PEPTIDE_N_REGION;date=13-05-2020;signature_desc=N-terminal region of a signal peptide.
+NC_001416.1	Phobius	protein_match	46240	46251	.	+	.	ID=match%24169_19_22;Name=SIGNAL_PEPTIDE_C_REGION;date=13-05-2020;signature_desc=C-terminal region of a signal peptide.
+NC_001416.1	SignalP_GRAM_NEGATIVE	protein_match	46186	46242	.	+	.	ID=match%24170_1_19;Name=SignalP-noTM;date=13-05-2020
+NC_001416.1	Phobius	protein_match	46207	46239	.	+	.	ID=match%24171_8_18;Name=SIGNAL_PEPTIDE_H_REGION;date=13-05-2020;signature_desc=Hydrophobic region of a signal peptide.
+NC_001416.1	Phobius	protein_match	46186	46251	.	+	.	ID=match%24172_1_22;Name=SIGNAL_PEPTIDE;date=13-05-2020;signature_desc=Signal peptide region
+NC_001416.1	SignalP_GRAM_NEGATIVE	protein_match	46693	46752	.	-	.	ID=match%2490_1_20;Name=SignalP-noTM;date=13-05-2020
+NC_001416.1	Phobius	protein_match	46462	46698	.	-	.	ID=match%2491_19_97;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+NC_001416.1	SignalP_EUK	protein_match	46696	46752	.	-	.	ID=match%2492_1_19;Name=SignalP-noTM;date=13-05-2020
+NC_001416.1	Phobius	protein_match	46699	46710	.	-	.	ID=match%2493_15_18;Name=SIGNAL_PEPTIDE_C_REGION;date=13-05-2020;signature_desc=C-terminal region of a signal peptide.
+NC_001416.1	Phobius	protein_match	46711	46740	.	-	.	ID=match%2494_5_14;Name=SIGNAL_PEPTIDE_H_REGION;date=13-05-2020;signature_desc=Hydrophobic region of a signal peptide.
+NC_001416.1	Phobius	protein_match	46699	46752	.	-	.	ID=match%2495_1_18;Name=SIGNAL_PEPTIDE;date=13-05-2020;signature_desc=Signal peptide region
+NC_001416.1	ProDom	protein_match	46465	46752	3.0E-44	-	.	Dbxref=InterPro:IPR010438;ID=match%2496_1_96;Name=PD020173;Ontology_term=GO:0009279;date=13-05-2020;signature_desc=BOR LIPOPROTEIN PLASMID ISS HOMOLOG MEMBRANE FROM PRECURSOR PALMITATE DLP12
+NC_001416.1	Pfam	protein_match	46468	46698	2.2E-31	-	.	Dbxref=InterPro:IPR010438;ID=match%2497_19_95;Name=PF06291;Ontology_term=GO:0009279;date=13-05-2020;signature_desc=Bor protein
+NC_001416.1	Phobius	protein_match	46741	46752	.	-	.	ID=match%2498_1_4;Name=SIGNAL_PEPTIDE_N_REGION;date=13-05-2020;signature_desc=N-terminal region of a signal peptide.
+NC_001416.1	ProSiteProfiles	protein_match	46702	46752	6.0	-	.	ID=match%2499_1_17;Name=PS51257;date=13-05-2020;signature_desc=Prokaryotic membrane lipoprotein lipid attachment site profile.
+NC_001416.1	Gene3D	protein_match	47069	47467	5.3E-59	-	.	Dbxref=InterPro:IPR036696;ID=match%24145_37_169;Name=G3DSA:3.30.1810.10;date=13-05-2020
+NC_001416.1	ProDom	protein_match	47072	47437	8.0E-66	-	.	Dbxref=InterPro:IPR009833;ID=match%24146_47_168;Name=PD021249;date=13-05-2020;signature_desc=YDFO YCGX ENVELOPE CYTOPLASMIC STY1988 CP-933X ECS1626 YBCV PROPHAGE
+NC_001416.1	Pfam	protein_match	47078	47431	1.2E-43	-	.	Dbxref=InterPro:IPR009833;ID=match%24147_49_166;Name=PF07166;date=13-05-2020;signature_desc=Protein of unknown function %28DUF1398%29
+NC_001416.1	SUPERFAMILY	protein_match	47069	47446	9.02E-44	-	.	Dbxref=InterPro:IPR036696;ID=match%24148_44_169;Name=SSF160419;date=13-05-2020

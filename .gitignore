@@ -154,3 +154,4 @@ tools/spanin/debug
 ## proximity
 tools/proximity/*.db
 tools/proximity/termHits.txt
+tools/proximity/test-data/prox/lambda_NRBLAST.gff3
