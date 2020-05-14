@@ -28,11 +28,11 @@ $protein2dna
   <tests>
       <test>
           <param name="parent" value="T7_CLEAN.gff3"/>
-          <param name="child" value="T7_TMHMM.gff"/>
+          <param name="child" value="T7_TMHMM.gff3"/>
           <param name="interpro" value="" />
           <param name="protein2dna" value="--protein2dna" />
           <param name="map_by" value="ID" />
-          <output name="default" file="T7_TMHMM_REBASE.gff"/>
+          <output name="default" file="T7_TMHMM_REBASE.gff3"/>
       </test>
       <test>
           <param name="parent" value="parent.gff"/>
