@@ -1,38 +1,50 @@
 # Proximity (to Lysis) Scripts
-## `generateLysisFamily.py`
+_aside: Some of the scripts that are prepatory scripts, have been moved, and thus their paths for some of the calls they make will raise errors. When/If this is ever ran from the ground up again, that will need to be remedied first_
+
+_aside#2: planemo test will need to be regenerated because of the XML alterations, and need to test the prox function. I'll still likely just stick with one test case_
+
+### `searchFile.py`
+* Script that searches a multitude of filetypes, and multiple at a time, and queries the file(s) for terms selected by the user.
+* `--prox` flag enables the proximity2lysis GFF3 output
+
+### `editDB.py`
+* Script that finds redudancy, and other issues, with the `...expanded.json` output and resolves said issues.
+* Functions to modify the database, and output a new version.
+
+## `/prep-data`
+### `generateLysisFamily.py`
 * Numerous list with lysis family relationships. Output is a dictionary --to-a--> json that stores these relationships for future use.
 
-## `explodeJSON.py`
+### `explodeJSON.py`
 * Quick and easy class that will permit (easy) json manipulation.
 
-## `fileProx.py`
-* GALAXY tool that allows users to query an input file for a set of search terms; either custom, dbase, or a combination of the two.
-
-## `goQuery.py`
+### `goQuery.py`
 * Takes terms from the lysis-family.json and queries quickgo
 
-## `goSynonymAdd.py`
+### `goSynonymAdd.py`
 * Merges the lysis-family.json object with results from quickgo
 
-## `searchFile.py`
-* Script that searches a multitude of filetypes, and multiple at a time, and queries the file(s) for terms selected by the user.
-
-## `cleanDB.py`
-* Script that finds redudancy, and other issues, with the `...expanded.json` output and resolves said issues.
-
-# `/data`
+## `/data`
 * Check README of this directory to see details on the `.txt` and `.json` files.
 * Order of scripts to generate `lysis-family-expanded.json` (this is the dbase used in query scripts/galaxy tools)
     * `generateLysisFamily.py`
     * `goQuery.py` + curate results --- _then_ ---> `goSynonymAdd.py`
-    * I don't feel like the list was appropriately parsed down, especially during the merger. Thus run the output json from the above through `cleanDB.py`
+    * I don't feel like the list was appropriately parsed down, especially during the merger. Thus run the output json from the above through `editDB.py`
 
-# `/test-data`
-* test.json for testing various scripts. Used for `goQuery.py`
-* sample.gff3
-* sample.fa
-* sample.xml
-* search.txt
+## `/test-data`
+* `/other`
+    * test.json for testing various scripts. Used for `goQuery.py`
+    * sample.gff3
+    * sample.fa
+    * sample.xml
+* `/general_use` :: for running planemo test as well as testing the overall function of the script
+* `/prox` :: for testing the proximity to lysis portion of this tool
+
+## Order for reproducing database
+1. generateLysisFamily.py
+2. goQuery.py
+3. goSynonymAdd.py
+4. (optional) editDB.py
 
 # Release Notes:
 CPT: OTHER- Search File
