@@ -54,13 +54,11 @@ python $__tool_directory__/cpt-efetch.py
             </test>
         </tests>
     <help><![CDATA[
-** WARNING : THIS IS AN ALPHA VERSION OF THE TOOL. IT DOES NOT WORK AS DESCRIBED IN THE CURRENT STATE. **
+**WARNING : THIS IS AN ALPHA VERSION OF THE TOOL. IT DOES NOT WORK AS DESCRIBED IN THE CURRENT STATE.**
 
 INPUT : An accession, or set of accessions separated by new line. 
 
-
-** aside: ** Current version has manual entry of email. This is due to the following (from NCBI): To make use of NCBI's E-utilities, NCBI requires you to specify your email address with each request. In case of excessive usage of the E-utilities, NCBI will attempt to contact a user at the email address provided before blocking access to the E-utilities.
-
+**aside:** Current version has manual entry of email.
 
 OUTPUT : Requested file type (genbank or fasta) individually and/or combined together.
 
