@@ -38,7 +38,7 @@ python $__tool_directory__/cpt-efetch.py
         </inputs>
         <outputs>
             <data name="data" format="txt">
-                <discover_datasets pattern="__name_and_ext__" directory="results" visible="true" assign_primary_output="true"/>
+                <discover_datasets pattern="(output)" directory="results" visible="true" assign_primary_output="true"/>
             </data>
         </outputs>
         <tests>
