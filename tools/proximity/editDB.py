@@ -41,13 +41,15 @@ def add_from_file(input_file,index_val,db,sep="\n"):
 
 if __name__ == "__main__":
 
-    lysis_json = "data/lysis-family-v1.0.0.json" # insert json of choice
+    lysis_json = "data/lysis-family-v1.0.1.json" # insert json of choice
     db = ej.explodeJSON(lysis_json)
     db = db.readJSON()
-    revise_db = add_new_key(db=db,add_key=["spanin_domains","holin_domains"])
-    files = ["data/term_additions/200505_holin_domains.txt","data/term_additions/200505_Spanin_Domains.txt"]
-    revise_db = add_from_file(files[0],"holin_domains",revise_db)
-    revise_db = add_from_file(files[1],"spanin_domains",revise_db)
-    save_dict_to_json(obj=revise_db,filename="data/lysis-family-v1.0.1.json")
+    revise_db = add_new_key(db=db,add_key=["spanins"])
+    #files = ["data/term_additions/200505_holin_domains.txt","data/term_additions/200505_Spanin_Domains.txt"]
+    terms = ["isp","osp","usp","ISP","OSP","USP","EOS","OOS","SOS","SIS","OIS","EIS","embedded","overlapping","separated","unimolecular","spanin","Rz","outer membrane spanin","inner membrane spanin"]
+    #revise_db = add_from_file(files[0],"holin_domains",revise_db)
+    #revise_db = add_from_file(files[1],"spanin_domains",revise_db)
+    revise_db = add_value_to_term("spanins",revise_db,add_value=terms)
+    save_dict_to_json(obj=revise_db,filename="data/lysis-family-v1.0.2.json")
 
 

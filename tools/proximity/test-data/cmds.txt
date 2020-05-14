@@ -1,0 +1,1 @@
+python searchFile.py --dbaseTerms "endolysins,holins,spanin_domains" --gff3_files test-data/prox/lambda_canonicalBLAST.gff3 --output proxResult.gff3 --prox

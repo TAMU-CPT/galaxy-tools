@@ -1,0 +1,92 @@
+##gff-version 3
+##sequence-region KF669656.1 1 40739
+KF669656.1	Phobius	protein_match	2468	2482	.	+	.	ID=match%2437_14_18;Name=SIGNAL_PEPTIDE_C_REGION;date=13-05-2020;signature_desc=C-terminal region of a signal peptide.
+KF669656.1	Phobius	protein_match	2483	2500	.	+	.	ID=match%2438_19_24;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+KF669656.1	Phobius	protein_match	2429	2437	.	+	.	ID=match%2439_1_3;Name=SIGNAL_PEPTIDE_N_REGION;date=13-05-2020;signature_desc=N-terminal region of a signal peptide.
+KF669656.1	Phobius	protein_match	2429	2482	.	+	.	ID=match%2440_1_18;Name=SIGNAL_PEPTIDE;date=13-05-2020;signature_desc=Signal peptide region
+KF669656.1	Phobius	protein_match	2438	2467	.	+	.	ID=match%2441_4_13;Name=SIGNAL_PEPTIDE_H_REGION;date=13-05-2020;signature_desc=Hydrophobic region of a signal peptide.
+KF669656.1	Gene3D	protein_match	6668	7057	2.3E-9	+	.	ID=match%2420_153_282;Name=G3DSA:3.40.1360.10;date=13-05-2020
+KF669656.1	SUPERFAMILY	protein_match	6500	7045	1.67E-7	+	.	ID=match%2421_97_278;Name=SSF56731;date=13-05-2020
+KF669656.1	Pfam	protein_match	7846	8364	6.4E-8	+	.	ID=match%2445_176_348;Name=PF13481;date=13-05-2020;signature_desc=AAA domain
+KF669656.1	SUPERFAMILY	protein_match	7852	8571	5.31E-5	+	.	Dbxref=InterPro:IPR027417;ID=match%2446_178_417;Name=SSF52540;date=13-05-2020
+KF669656.1	Gene3D	protein_match	7795	8574	8.7E-14	+	.	ID=match%2447_159_418;Name=G3DSA:3.40.50.300;date=13-05-2020
+KF669656.1	Pfam	protein_match	9329	9583	1.2E-10	+	.	Dbxref=InterPro:IPR029319;ID=match%2481_228_312;Name=PF14743;date=13-05-2020;signature_desc=DNA ligase OB-like domain
+KF669656.1	SUPERFAMILY	protein_match	9296	9607	4.51E-13	+	.	Dbxref=InterPro:IPR012340;ID=match%2482_217_320;Name=SSF50249;date=13-05-2020
+KF669656.1	ProSiteProfiles	protein_match	9032	9364	10.056	+	.	Dbxref=InterPro:IPR012310;ID=match%2483_129_239;Name=PS50160;Ontology_term=GO:0003910%22%2C%22GO:0005524%22%2C%22GO:0006281%22%2C%22GO:0006310;date=13-05-2020;signature_desc=ATP-dependent DNA ligase family profile.
+KF669656.1	Gene3D	protein_match	9290	9607	1.3E-8	+	.	ID=match%2484_215_320;Name=G3DSA:2.40.50.140;date=13-05-2020
+KF669656.1	SUPERFAMILY	protein_match	8732	9277	1.04E-18	+	.	ID=match%2485_29_210;Name=SSF56091;date=13-05-2020
+KF669656.1	Gene3D	protein_match	8687	9283	6.6E-12	+	.	ID=match%2486_14_212;Name=G3DSA:3.30.470.30;date=13-05-2020
+KF669656.1	Pfam	protein_match	8696	9280	5.9E-15	+	.	Dbxref=InterPro:IPR012310;ID=match%2487_17_211;Name=PF01068;Ontology_term=GO:0003910%22%2C%22GO:0005524%22%2C%22GO:0006281%22%2C%22GO:0006310;date=13-05-2020;signature_desc=ATP dependent DNA ligase domain
+KF669656.1	PANTHER	protein_match	10117	10653	4.1E-48	+	.	ID=match%2452_92_270;Name=PTHR10133:SF26;date=13-05-2020
+KF669656.1	Gene3D	protein_match	9847	10455	1.7E-11	+	.	Dbxref=InterPro:IPR036397;ID=match%2453_2_204;Name=G3DSA:3.30.420.10;Ontology_term=GO:0003676;date=13-05-2020
+KF669656.1	PANTHER	protein_match	11044	12105	4.1E-48	+	.	ID=match%2454_401_754;Name=PTHR10133:SF26;date=13-05-2020
+KF669656.1	PANTHER	protein_match	10117	10653	4.1E-48	+	.	Dbxref=InterPro:IPR002298%22%2C%22KEGG:00230%2B2.7.7.7%22%2C%22KEGG:00240%2B2.7.7.7;ID=match%2455_92_270;Name=PTHR10133;Ontology_term=GO:0003887%22%2C%22GO:0006261;date=13-05-2020
+KF669656.1	PRINTS	protein_match	11170	11238	9.2E-10	+	.	Dbxref=InterPro:IPR002298%22%2C%22KEGG:00230%2B2.7.7.7%22%2C%22KEGG:00240%2B2.7.7.7;ID=match%2456_443_465;Name=PR00868;Ontology_term=GO:0003887%22%2C%22GO:0006261;date=13-05-2020;signature_desc=DNA-polymerase family A %28pol I%29 signature
+KF669656.1	PRINTS	protein_match	11326	11397	9.2E-10	+	.	Dbxref=InterPro:IPR002298%22%2C%22KEGG:00230%2B2.7.7.7%22%2C%22KEGG:00240%2B2.7.7.7;ID=match%2456_495_518;Name=PR00868;Ontology_term=GO:0003887%22%2C%22GO:0006261;date=13-05-2020;signature_desc=DNA-polymerase family A %28pol I%29 signature
+KF669656.1	SMART	protein_match	11278	12024	3.7E-8	+	.	Dbxref=InterPro:IPR001098%22%2C%22KEGG:00230%2B2.7.7.7%22%2C%22KEGG:00240%2B2.7.7.7;ID=match%2457_479_727;Name=SM00482;Ontology_term=GO:0003677%22%2C%22GO:0003887%22%2C%22GO:0006260;date=13-05-2020
+KF669656.1	Gene3D	protein_match	11353	11895	4.7E-36	+	.	ID=match%2458_504_684;Name=G3DSA:1.10.150.20;date=13-05-2020
+KF669656.1	Pfam	protein_match	10990	12078	1.1E-34	+	.	Dbxref=InterPro:IPR001098%22%2C%22KEGG:00230%2B2.7.7.7%22%2C%22KEGG:00240%2B2.7.7.7;ID=match%2459_383_745;Name=PF00476;Ontology_term=GO:0003677%22%2C%22GO:0003887%22%2C%22GO:0006260;date=13-05-2020;signature_desc=DNA polymerase family A
+KF669656.1	Gene3D	protein_match	11194	12075	4.7E-36	+	.	ID=match%2460_451_744;Name=G3DSA:3.30.70.370;date=13-05-2020
+KF669656.1	PANTHER	protein_match	11044	12105	4.1E-48	+	.	Dbxref=InterPro:IPR002298%22%2C%22KEGG:00230%2B2.7.7.7%22%2C%22KEGG:00240%2B2.7.7.7;ID=match%2461_401_754;Name=PTHR10133;Ontology_term=GO:0003887%22%2C%22GO:0006261;date=13-05-2020
+KF669656.1	SUPERFAMILY	protein_match	10408	12084	3.67E-64	+	.	ID=match%2462_189_747;Name=SSF56672;date=13-05-2020
+KF669656.1	SUPERFAMILY	protein_match	9967	10347	6.9E-7	+	.	Dbxref=InterPro:IPR012337;ID=match%2463_42_168;Name=SSF53098;date=13-05-2020
+KF669656.1	Pfam	protein_match	15029	15292	4.0E-16	+	.	Dbxref=InterPro:IPR004211;ID=match%2412_22_109;Name=PF02945;date=13-05-2020;signature_desc=Recombination endonuclease VII
+KF669656.1	Gene3D	protein_match	15017	15238	2.1E-17	+	.	Dbxref=InterPro:IPR038563;ID=match%2413_18_91;Name=G3DSA:3.40.1800.10;date=13-05-2020
+KF669656.1	SUPERFAMILY	protein_match	15029	15295	2.47E-19	+	.	ID=match%2414_22_110;Name=SSF54060;date=13-05-2020
+KF669656.1	SUPERFAMILY	protein_match	15619	16224	6.08E-7	+	.	ID=match%2449_64_265;Name=SSF56300;date=13-05-2020
+KF669656.1	Pfam	protein_match	15619	15957	1.7E-6	+	.	Dbxref=InterPro:IPR004843;ID=match%2450_64_176;Name=PF00149;Ontology_term=GO:0016787;date=13-05-2020;signature_desc=Calcineurin-like phosphoesterase
+KF669656.1	Phobius	protein_match	16372	16419	.	+	.	ID=match%2473_1_16;Name=SIGNAL_PEPTIDE;date=13-05-2020;signature_desc=Signal peptide region
+KF669656.1	Phobius	protein_match	16372	16377	.	+	.	ID=match%2474_1_2;Name=SIGNAL_PEPTIDE_N_REGION;date=13-05-2020;signature_desc=N-terminal region of a signal peptide.
+KF669656.1	Gene3D	protein_match	16384	16989	2.8E-8	+	.	ID=match%2475_5_206;Name=G3DSA:3.40.50.300;date=13-05-2020
+KF669656.1	Phobius	protein_match	16420	17010	.	+	.	ID=match%2476_17_213;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+KF669656.1	Gene3D	protein_match	16483	16767	2.8E-8	+	.	Dbxref=InterPro:IPR023191%22%2C%22MetaCyc:PWY-7197;ID=match%2477_38_132;Name=G3DSA:1.10.238.70;date=13-05-2020
+KF669656.1	Phobius	protein_match	16378	16404	.	+	.	ID=match%2478_3_11;Name=SIGNAL_PEPTIDE_H_REGION;date=13-05-2020;signature_desc=Hydrophobic region of a signal peptide.
+KF669656.1	Phobius	protein_match	16405	16419	.	+	.	ID=match%2479_12_16;Name=SIGNAL_PEPTIDE_C_REGION;date=13-05-2020;signature_desc=C-terminal region of a signal peptide.
+KF669656.1	SUPERFAMILY	protein_match	16372	16989	1.33E-6	+	.	Dbxref=InterPro:IPR027417;ID=match%2480_1_206;Name=SSF52540;date=13-05-2020
+KF669656.1	Gene3D	protein_match	18612	19256	1.4E-105	+	.	ID=match%2422_531_745;Name=G3DSA:1.10.150.20;date=13-05-2020
+KF669656.1	Pfam	protein_match	18297	19487	1.2E-74	+	.	Dbxref=InterPro:IPR002092%22%2C%22KEGG:00230%2B2.7.7.6%22%2C%22KEGG:00240%2B2.7.7.6%22%2C%22Reactome:R-HSA-163282%22%2C%22Reactome:R-HSA-2151201;ID=match%2423_426_822;Name=PF00940;Ontology_term=GO:0003677%22%2C%22GO:0003899%22%2C%22GO:0006351;date=13-05-2020;signature_desc=DNA-dependent RNA polymerase
+KF669656.1	Gene3D	protein_match	17904	18179	1.6E-5	+	.	Dbxref=InterPro:IPR024075%22%2C%22KEGG:00230%2B2.7.7.6%22%2C%22KEGG:00240%2B2.7.7.6;ID=match%2424_295_386;Name=G3DSA:1.10.287.260;Ontology_term=GO:0003899;date=13-05-2020
+KF669656.1	ProSitePatterns	protein_match	18549	18584	.	+	.	Dbxref=InterPro:IPR002092%22%2C%22KEGG:00230%2B2.7.7.6%22%2C%22KEGG:00240%2B2.7.7.6%22%2C%22Reactome:R-HSA-163282%22%2C%22Reactome:R-HSA-2151201;ID=match%2425_510_521;Name=PS00900;Ontology_term=GO:0003677%22%2C%22GO:0003899%22%2C%22GO:0006351;date=13-05-2020;signature_desc=Bacteriophage-type RNA polymerase family active site signature 1.
+KF669656.1	SUPERFAMILY	protein_match	17025	19487	1.29E-149	+	.	ID=match%2426_2_822;Name=SSF56672;date=13-05-2020
+KF669656.1	Pfam	protein_match	17208	17771	1.2E-9	+	.	Dbxref=InterPro:IPR029262%22%2C%22KEGG:00230%2B2.7.7.6%22%2C%22KEGG:00240%2B2.7.7.6%22%2C%22Reactome:R-HSA-163282%22%2C%22Reactome:R-HSA-2151201;ID=match%2427_63_250;Name=PF14700;date=13-05-2020;signature_desc=DNA-directed RNA polymerase N-terminal
+KF669656.1	PANTHER	protein_match	17115	19487	3.4E-104	+	.	Dbxref=InterPro:IPR002092%22%2C%22KEGG:00230%2B2.7.7.6%22%2C%22KEGG:00240%2B2.7.7.6%22%2C%22Reactome:R-HSA-163282%22%2C%22Reactome:R-HSA-2151201;ID=match%2428_32_822;Name=PTHR10102;Ontology_term=GO:0003677%22%2C%22GO:0003899%22%2C%22GO:0006351;date=13-05-2020
+KF669656.1	PANTHER	protein_match	17115	19487	3.4E-104	+	.	ID=match%2429_32_822;Name=PTHR10102:SF0;date=13-05-2020
+KF669656.1	Gene3D	protein_match	17022	17903	4.4E-39	+	.	Dbxref=InterPro:IPR037159%22%2C%22KEGG:00230%2B2.7.7.6%22%2C%22KEGG:00240%2B2.7.7.6%22%2C%22Reactome:R-HSA-163282%22%2C%22Reactome:R-HSA-2151201;ID=match%2430_1_294;Name=G3DSA:1.10.1320.10;date=13-05-2020
+KF669656.1	Gene3D	protein_match	18297	18533	1.4E-105	+	.	ID=match%2431_426_504;Name=G3DSA:1.10.287.280;date=13-05-2020
+KF669656.1	SMART	protein_match	17037	17903	2.8E-7	+	.	Dbxref=InterPro:IPR029262%22%2C%22KEGG:00230%2B2.7.7.6%22%2C%22KEGG:00240%2B2.7.7.6%22%2C%22Reactome:R-HSA-163282%22%2C%22Reactome:R-HSA-2151201;ID=match%2432_6_294;Name=SM01311;date=13-05-2020
+KF669656.1	ProSitePatterns	protein_match	18795	18839	.	+	.	Dbxref=InterPro:IPR002092%22%2C%22KEGG:00230%2B2.7.7.6%22%2C%22KEGG:00240%2B2.7.7.6%22%2C%22Reactome:R-HSA-163282%22%2C%22Reactome:R-HSA-2151201;ID=match%2433_592_606;Name=PS00489;Ontology_term=GO:0003677%22%2C%22GO:0003899%22%2C%22GO:0006351;date=13-05-2020;signature_desc=Bacteriophage-type RNA polymerase family active site signature 2.
+KF669656.1	Gene3D	protein_match	18210	19457	1.4E-105	+	.	ID=match%2434_397_812;Name=G3DSA:3.30.70.370;date=13-05-2020
+KF669656.1	Phobius	protein_match	19810	19824	.	+	.	ID=match%244_103_107;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+KF669656.1	Phobius	protein_match	19504	19506	.	+	.	ID=match%245_1_1;Name=SIGNAL_PEPTIDE_N_REGION;date=13-05-2020;signature_desc=N-terminal region of a signal peptide.
+KF669656.1	SignalP_EUK	protein_match	19504	19554	.	+	.	ID=match%246_1_17;Name=SignalP-noTM;date=13-05-2020
+KF669656.1	Phobius	protein_match	19507	19542	.	+	.	ID=match%247_2_13;Name=SIGNAL_PEPTIDE_H_REGION;date=13-05-2020;signature_desc=Hydrophobic region of a signal peptide.
+KF669656.1	Phobius	protein_match	19729	19809	.	+	.	ID=match%248_76_102;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+KF669656.1	Phobius	protein_match	19504	19554	.	+	.	ID=match%249_1_17;Name=SIGNAL_PEPTIDE;date=13-05-2020;signature_desc=Signal peptide region
+KF669656.1	Phobius	protein_match	19543	19554	.	+	.	ID=match%2410_14_17;Name=SIGNAL_PEPTIDE_C_REGION;date=13-05-2020;signature_desc=C-terminal region of a signal peptide.
+KF669656.1	Phobius	protein_match	19555	19728	.	+	.	ID=match%2411_18_75;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+KF669656.1	Pfam	protein_match	20445	21533	3.7E-42	+	.	Dbxref=InterPro:IPR020991;ID=match%2435_22_384;Name=PF12236;date=13-05-2020;signature_desc=Bacteriophage head to tail connecting protein
+KF669656.1	Coils	protein_match	21774	21857	.	+	.	ID=match%2436_465_492;Name=Coil;date=13-05-2020
+KF669656.1	Coils	protein_match	24019	24123	.	+	.	ID=match%2448_25_59;Name=Coil;date=13-05-2020
+KF669656.1	Pfam	protein_match	24315	24806	9.0E-24	+	.	Dbxref=InterPro:IPR033767;ID=match%2489_4_167;Name=PF17212;date=13-05-2020;signature_desc=Tail tubular protein
+KF669656.1	Phobius	protein_match	27271	27852	.	+	.	ID=match%241_40_233;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+KF669656.1	Phobius	protein_match	27211	27270	.	+	.	ID=match%242_20_39;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+KF669656.1	Phobius	protein_match	27154	27210	.	+	.	ID=match%243_1_19;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+KF669656.1	Coils	protein_match	33841	33858	.	+	.	ID=match%2415_1050_1055;Name=Coil;date=13-05-2020
+KF669656.1	Phobius	protein_match	30694	33522	.	+	.	ID=match%2416_1_943;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+KF669656.1	Phobius	protein_match	33589	33858	.	+	.	ID=match%2417_966_1055;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+KF669656.1	Phobius	protein_match	33523	33588	.	+	.	ID=match%2418_944_965;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+KF669656.1	Coils	protein_match	33271	33333	.	+	.	ID=match%2419_860_880;Name=Coil;date=13-05-2020
+KF669656.1	SUPERFAMILY	protein_match	34859	35674	1.46E-7	+	.	Dbxref=InterPro:IPR011050;ID=match%2442_333_604;Name=SSF51126;date=13-05-2020
+KF669656.1	Coils	protein_match	36596	36616	.	+	.	ID=match%2443_912_918;Name=Coil;date=13-05-2020
+KF669656.1	Coils	protein_match	34289	34351	.	+	.	ID=match%2444_143_163;Name=Coil;date=13-05-2020
+KF669656.1	Phobius	protein_match	36781	36795	.	+	.	ID=match%2464_1_5;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+KF669656.1	Phobius	protein_match	36919	36987	.	+	.	ID=match%2465_47_69;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+KF669656.1	Phobius	protein_match	36796	36885	.	+	.	ID=match%2466_6_35;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+KF669656.1	Phobius	protein_match	37003	37071	.	+	.	ID=match%2467_75_97;Name=TRANSMEMBRANE;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.
+KF669656.1	Pfam	protein_match	36799	37095	4.3E-7	+	.	Dbxref=InterPro:IPR006481;ID=match%2468_7_105;Name=PF05106;date=13-05-2020;signature_desc=Phage holin family %28Lysis protein S%29
+KF669656.1	Phobius	protein_match	36988	37002	.	+	.	ID=match%2469_70_74;Name=NON_CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the extracellular region.
+KF669656.1	Phobius	protein_match	36886	36918	.	+	.	ID=match%2470_36_46;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+KF669656.1	Phobius	protein_match	37072	37131	.	+	.	ID=match%2471_98_117;Name=CYTOPLASMIC_DOMAIN;date=13-05-2020;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane,in the cytoplasm.
+KF669656.1	Pfam	protein_match	37175	37690	1.4E-60	+	.	Dbxref=InterPro:IPR024408;ID=match%2451_21_192;Name=PF11860;date=13-05-2020;signature_desc=N-acetylmuramidase
+KF669656.1	Gene3D	protein_match	38038	38760	2.9E-20	+	.	ID=match%2488_2_242;Name=G3DSA:3.40.50.300;date=13-05-2020
+KF669656.1	Pfam	protein_match	40221	40328	4.0E-8	+	.	Dbxref=InterPro:IPR003847;ID=match%2472_10_45;Name=PF02697;date=13-05-2020;signature_desc=Putative antitoxin
