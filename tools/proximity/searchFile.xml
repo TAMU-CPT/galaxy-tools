@@ -93,6 +93,7 @@ python $__tool_directory__/searchFile.py
                 <change_format>
                     <when input="prox" value="--prox" format="gff3"/>
                 </change_format>
+            </data>
         </outputs>
         <tests>
             <test>
