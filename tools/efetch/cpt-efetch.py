@@ -143,9 +143,9 @@ if __name__ == "__main__":
         count += 1
         if count % 20 == 0:
             sleep(120)
-            continue
+            pass
         else:
-            continue
+            pass
         c = CPTEfetch(emails, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
