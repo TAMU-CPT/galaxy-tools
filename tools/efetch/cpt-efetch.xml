@@ -42,14 +42,16 @@ python $__tool_directory__/cpt-efetch.py
             </data>
         </outputs>
         <tests>
-            <param name="email" value="curtisross@tamu.edu"/>
-            <param name="input" value="NC_001416.1"/>
-            <param name="db" value="nuccore"/>
-            <param name="ret_type" value="fasta"/>
-            <param name="ret_format" value="individual"/>
-            <output name="data">
-                <discover_datasets designation="output" ftype="fasta"/>
-            </output>
+            <test>
+                <param name="email" value="curtisross@tamu.edu"/>
+                <param name="input" value="NC_001416.1"/>
+                <param name="db" value="nuccore"/>
+                <param name="ret_type" value="fasta"/>
+                <param name="ret_format" value="individual"/>
+                <output name="data">
+                    <discover_datasets designation="output" ftype="fasta"/>
+                </output>
+            </test>
         </tests>
     <help><![CDATA[
 ** WARNING : THIS IS AN ALPHA VERSION OF THE TOOL. IT DOES NOT WORK AS DESCRIBED IN THE CURRENT STATE. **
