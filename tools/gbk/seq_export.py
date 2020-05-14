@@ -28,7 +28,7 @@ if __name__ == "__main__":
             elif args.name_src == "phage_name":
                 (host, phage) = cpt.phage_name_parser(seq.description)
                 seq.id = phage
-            if args.name_src == "name" or phage == None:
+            if args.name_src == "name" or (args.name_src == "phage_name" and phage == None):
                 seq.id = seq.name
 
             SeqIO.write(seq, sys.stdout, "fasta")
