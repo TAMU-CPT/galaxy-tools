@@ -36,8 +36,8 @@ python $__tool_directory__/cpt-efetch.py
             <param name="sleepy" type="integer" value="20" label="Amount to slow request to NCBI by; increase if errors occur"/>
         </inputs>
         <outputs>
-            <data name="output" format="ret_type">
-                <discover_datasets pattern="__designation_and_ext__" ext="ret_type" directory="results" visible="true" assign_primary_output="true"/>
+            <data name="output" format="txt">
+                <discover_datasets pattern="__designation_and_ext__" ext="fasta" directory="results" visible="true" assign_primary_output="true"/>
             </data>
         </outputs>
         <tests>
