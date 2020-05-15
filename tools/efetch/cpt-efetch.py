@@ -121,7 +121,7 @@ if __name__ == "__main__":
     # Write individual records
     #if not os.path.exists("results"):
         #os.mkdir("results")
-
+    print(os.getcwd())
     path = os.path.join(os.getcwd(),"results/",args.data_name)
 
     with open(path,"w+") as f:
@@ -169,4 +169,5 @@ if __name__ == "__main__":
             awk_files(str(args.ret_type),output=path,galaxy=True)
         else:
             awk_files(str(args.ret_type),output="outputMulti"+str(args.ret_type))
-
+    print("---finish---")
+    print(os.getcwd())
