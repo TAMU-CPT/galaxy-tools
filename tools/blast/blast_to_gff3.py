@@ -215,6 +215,7 @@ def combine_records(records):
             cleaned_records[combo_id].features[0].subfeatures = copy.deepcopy(
                 sub_features
             )
+            cleaned_records[combo_id].features[0].qualifiers["score"] = min(cleaned_records[combo_id].features[0].qualifiers["score"], rec.features[0].qualifiers["score"])
             # now we need to update the IDs for the features when combined
             # sort them into the proper order, then apply new ids
             # and also ensure the parent record boundaries fit the whole span of subfeatures
@@ -232,7 +233,6 @@ def combine_records(records):
                     feat.location.start + 1,
                     feat.location.end,
                 )
-                cleaned_records[combo_id].features[0].qualifiers["score"] = min(cleaned_records[combo_id].features[0].qualifiers["score"], feat.qualifiers["score"])
                 # if feat.location.start < new_parent_start:
                 #    new_parent_start = feat.location.start - 1
                 # if feat.location.end > new_parent_end:
