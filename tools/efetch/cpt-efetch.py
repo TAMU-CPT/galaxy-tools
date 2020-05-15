@@ -114,14 +114,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
     #print(args)
     # Write individual records
-    if not os.path.exists("results"):	
+    if not os.path.exists("results"):
         os.mkdir("results")
 
     with args.data as f:
         f.writelines("accessions: "+str(args.input)+"\n")
 
-    if args.galaxy_on:	
-        os.chdir("results")
+    #if args.galaxy_on:
+    #    os.chdir("results")
 
     if "__at__" in args.email:
         splits = args.email.split("__at__")
@@ -146,10 +146,11 @@ if __name__ == "__main__":
             pass
         else:
             pass
+        path = os.path.join(os.getcwd(),"results/","output")
         c = CPTEfetch(emails, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
-            c.write_record(st=args.sleepy,name="output",galaxy=True)
+            c.write_record(st=args.sleepy,name=path,galaxy=True)
         else:
             c.write_record(st=args.sleepy,name="data_",galaxy=False)
 
@@ -158,7 +159,7 @@ if __name__ == "__main__":
         if args.galaxy_on:
             #awk_files("DAT",output=f"outputMulti.{str(args.ret_type)}")
             #awk_files(str(args.ret_type),output=f"outputMulti.{str(args.ret_type)}")
-            awk_files(str(args.ret_type),output="output",galaxy=True)
+            awk_files(str(args.ret_type),output=path,galaxy=True)
         else:
             awk_files(str(args.ret_type),output="outputMulti"+str(args.ret_type))
 
