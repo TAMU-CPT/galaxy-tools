@@ -33,8 +33,22 @@ $stranding
 			<param name="gff3_data_b" value="T7_OSP.gff3" />
                         <param name="window" value= "50" />
                         <param name="stranding" value= "-stranding"/>
-			<output name="oa" file="T7_IA1.gff3" />
-			<output name="ob" file="T7_IA2.gff3" />
+			<output name="oa" >
+			  <!-- test-data/T7_IA1.gff3 -->
+			  <assert_contents>
+			    <has_line line="##gff-version 3" />
+			    <has_line line="##sequence-region NC_001604 1 39538" />
+			    <has_n_lines n="83" />
+			  </assert_contents>
+			</output>
+			<output name="ob" >
+			  <!-- test-data/T7_IA2.gff3 -->
+			  <assert_contents>
+			    <has_line line="##gff-version 3" />
+			    <has_line line="##sequence-region NC_001604 1 39554" />
+			    <has_n_lines n="103" />
+			  </assert_contents>
+			</output>
 		</test>
   </tests>
   <help><![CDATA[

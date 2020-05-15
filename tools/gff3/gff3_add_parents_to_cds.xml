@@ -19,11 +19,25 @@ $__tool_directory__/gff3_add_parents_to_cds.py
   <tests>
                 <test>
 			<param name="gff3_data" value="T7_ORF_GFF.gff3" />
-			<output name="output" file="T7_ORF_WITH_GENE.gff3" />
+			<output name="output" >
+			  <!-- test-data/T7_ORF_WITH_GENE.gff3 -->
+			  <assert_contents>
+			    <has_line line="##gff-version 3"/>
+			    <has_line line="##sequence-region NC_001604 1 39875" />
+			    <has_n_lines n="10106" />
+			  </assert_contents>
+			</output>
 		</test>
 		<test>
 			<param name="gff3_data" value="miro.gff3" />
-			<output name="output" file="miro.full.gff3" />
+			<output name="output" >
+			  <!-- test-data/miro.full.gff3 -->
+			  <assert_contents>
+			    <has_line line="##gff-version 3"/>
+			    <has_line line="##sequence-region Miro 1 176055" />
+			    <has_n_lines n="830" />
+			  </assert_contents>
+			</output>
 		</test>
   </tests>
   <help><![CDATA[
