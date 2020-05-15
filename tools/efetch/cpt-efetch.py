@@ -8,7 +8,7 @@ from Bio import Entrez
 from Bio import SeqIO
 from urllib.error import HTTPError
 import argparse
-from helperFunctions import awk_files
+from helperFunctions import awk_files, is_dir
 
 
 #Entrez.email = "curtisross@tamu.edu"
@@ -98,8 +98,8 @@ if __name__ == "__main__":
                         help="Amount to delay a query to NCBI by")
 
     parser.add_argument("--data",
-                        type=argparse.FileType("w+"),
-                        default="data_accs.txt")
+                        type=lambda x: is_dir(parser,x,"results"),
+                        default="results/data_accs.txt")
 
     """
     parser.add_argument("--multi_output",
@@ -111,13 +111,20 @@ if __name__ == "__main__":
                         help="user to run galaxy like outputs")
 
 
+    parser.add_argument("--data_name",
+                        type=str,
+                        default="data_accs.txt",
+                        help="name of acc file")
+
     args = parser.parse_args()
     #print(args)
     # Write individual records
-    if not os.path.exists("results"):
-        os.mkdir("results")
+    #if not os.path.exists("results"):
+        #os.mkdir("results")
 
-    with args.data as f:
+    path = os.path.join(os.getcwd(),"results/",args.data_name)
+
+    with open(path,"w+") as f:
         f.writelines("accessions: "+str(args.input)+"\n")
 
     #if args.galaxy_on:
@@ -139,6 +146,7 @@ if __name__ == "__main__":
 
     print("Logged in as: "+email)
     count = 0 # add a counter, so, it will do a two minute delay every 20th query, to attempt to not bother NCBI with load.
+    path = os.path.join(os.getcwd(),"results/","output")
     for acc in args.input:
         count += 1
         if count % 20 == 0:
@@ -146,7 +154,6 @@ if __name__ == "__main__":
             pass
         else:
             pass
-        path = os.path.join(os.getcwd(),"results/","output")
         c = CPTEfetch(emails, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
