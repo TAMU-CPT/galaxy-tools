@@ -122,7 +122,7 @@ if __name__ == "__main__":
     #if not os.path.exists("results"):
         #os.mkdir("results")
     print(os.getcwd())
-    path = os.path.join(os.getcwd(),"results/",args.data_name)
+    path = os.path.join("results",args.data_name)
 
     with open(path,"w+") as f:
         f.writelines("accessions: "+str(args.input)+"\n")
@@ -146,7 +146,7 @@ if __name__ == "__main__":
 
     print("Logged in as: "+email)
     count = 0 # add a counter, so, it will do a two minute delay every 20th query, to attempt to not bother NCBI with load.
-    path = os.path.join(os.getcwd(),"results/","output")
+    path = os.path.join("results","output")
     for acc in args.input:
         count += 1
         if count % 20 == 0:
