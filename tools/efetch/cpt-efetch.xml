@@ -47,7 +47,7 @@ python $__tool_directory__/cpt-efetch.py
                 <param name="db" value="nuccore"/>
                 <param name="ret_type" value="fasta"/>
                 <param name="ret_format" value="individual"/>
-                <output name="data">
+                <output name="output">
                     <discovered_dataset designation="__designation_and_ext__" ftype="fasta"/>
                 </output>
             </test>
