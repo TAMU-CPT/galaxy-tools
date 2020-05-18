@@ -525,7 +525,7 @@ char *argv[];
 
   strcpy (Line,"ps2pdf ");
   strcat(Line,argv[3]);
-  strcat(Line,".c.ps");
+  //strcat(Line,".c.ps");
   system (Line);
 
 };
