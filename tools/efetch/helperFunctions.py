@@ -37,6 +37,13 @@ def redirect(input):
     pass
 
 
+def is_dir(parser, arg, make_dir):
+    if not os.path.exists(arg):
+        os.mkdir(make_dir)
+        open(arg, "w+")
+    else:
+        open(arg, "w+")
+
 if __name__ == "__main__":
     #cat_files("fasta")
     #clean_files()
