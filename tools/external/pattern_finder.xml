@@ -1,4 +1,4 @@
-<tool id="external.pattern-finder" name="Pattern Finder" version="1.0.0" profile="16.04">
+<tool id="external.pattern-finder" name="Pattern Finder" version="1.0.0">
     <description> from Computational Microbiology Laboratory</description>
     <requirements>
     </requirements>
@@ -21,8 +21,21 @@ $__tool_directory__/rscangpdf $output_pll $output_final_txt $output_final_pdf;
     <help>
 **What it does**
 
-Alpha upload of pattern finder, desc coming soon
+A tool for finding sequence patterns in long DNA sequences.
+
+Sequence File format:
+One pattern per line, no spaces.
+
     </help>
 	<citations>
+        <citations>
+		<citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {Mrazek, J. and Xie, S},
+				title = {University of Georgia, Computational Microbiology Laboratory},
+				year = {2020-},
+				note = {https://www.cmbl.uga.edu/software/patloc.html}
+			}
+		</citation>
 	</citations>
 </tool>
