@@ -145,7 +145,7 @@ char *argv[];
   long NGaps5,StartGaps5[MAXCLUSTERS],EndGaps5[MAXCLUSTERS];
   char IQNone;
 
-  if (argc!=3)    {
+  if (argc!=4)    {
     printf ("\n\n\nUsage:  rscang InputFile OutputFile\n\n");
     exit(0);
   };
@@ -157,7 +157,7 @@ char *argv[];
     exit (0);
   };
   strcpy(OFiName,argv[2]);
-  strcat(OFiName,".txt");
+  //strcat(OFiName,".txt");
   if ( (OFi=fopen(OFiName,"w")) == NULL )  {
     printf ("Unable to open output file %s.\n",OFiName);
     exit (0);
@@ -428,7 +428,7 @@ char *argv[];
   double Scale;
   long I,J,KK,LI,LP,LII;
 
-  strcpy(OFiName,argv[2]);
+  strcpy(OFiName,argv[3]);
   strcat(OFiName,".c.ps");
   if ( (OFi=fopen(OFiName,"w")) == NULL )  {
     printf ("Unable to open output file.\n");
@@ -524,7 +524,7 @@ char *argv[];
   fclose (OFi);
 
   strcpy (Line,"ps2pdf ");
-  strcat(Line,argv[2]);
+  strcat(Line,argv[3]);
   strcat(Line,".c.ps");
   system (Line);
 
