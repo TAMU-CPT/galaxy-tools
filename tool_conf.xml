@@ -148,6 +148,7 @@
 	</section>
 	<section id="5477aa4e-90ce-4672-85d1-41b08f506097" name="CPT: Sequence Search">
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_regex_search.xml" label="fasta" />
+                <tool file="cpt2/galaxy-tools/tools/external/pattern_finder.xml"/>     
 	</section>
 	<section id="b751a1c4-9cb9-4a41-8f3d-68c2b440088f" name="CPT: Blast Analysis / Filtering">
                 <tool file="cpt2/galaxy-tools/tools/blast_latest/tools/ncbi_blast_plus/ncbi_blastn_wrapper.xml"/>
