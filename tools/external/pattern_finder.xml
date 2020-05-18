@@ -4,7 +4,7 @@
     </requirements>
     <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/patloc $seqIn $pat $output_pll $output_plq $overlap;
-$__tool_directory__/rscangpdf $output_pll $output_final;
+$__tool_directory__/rscangpdf $output_pll $output_final_txt $output_final_pdf;
 ]]>
     </command>
     <inputs>
@@ -15,7 +15,8 @@ $__tool_directory__/rscangpdf $output_pll $output_final;
     <outputs>
         <data format="pll" name="output_pll" label="Intermediate Pattern Locator result (.pll)"/>
         <data format="plq" name="output_plq" label="Intermediate Pattern Locator result (.plq)"/>
-        <data format="pdf" name="output_final" label="Final R-scan PDF"/>
+        <data format="txt" name="output_final_txt" label="Final R-scan Textfile"/>
+        <data format="pdf" name="output_final_pdf" label="Final R-scan PDF"/>
     </outputs>
     <help>
 **What it does**
