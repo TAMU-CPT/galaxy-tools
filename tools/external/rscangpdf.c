@@ -429,7 +429,7 @@ char *argv[];
   long I,J,KK,LI,LP,LII;
 
   strcpy(OFiName,argv[3]);
-  strcat(OFiName,".c.ps");
+  //strcat(OFiName,".c.ps");
   if ( (OFi=fopen(OFiName,"w")) == NULL )  {
     printf ("Unable to open output file.\n");
     exit(0);
