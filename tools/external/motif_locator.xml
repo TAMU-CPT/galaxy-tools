@@ -28,14 +28,13 @@ Contains the aligned sequences (and nothing else), one pattern per line, no spac
 Minimum Score:
 Specifies minimum score with 0 defaulting to the 10th percentile among scores for all sequences in the initial alignment but not lower than 0 and not higher than log2(sequence length)
     </help>
-	<citations>
         <citations>
 		<citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {Mrazek, J. and Xie, S},
 				title = {University of Georgia, Computational Microbiology Laboratory},
 				year = {2020-},
-				note = {https://www.cmbl.uga.edu/software/patloc.html}
+				note = {https://www.cmbl.uga.edu/software/motloc.html}
 			}
 		</citation>
 	</citations>
