@@ -179,7 +179,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
         adjacent_tm = {}
         adjacent_lgc_to_tm = {}
 
-        # print(tmhmm_protein_names, endo_names)
+        # print(len(tmhmm_protein_names), len(endo_names))
         # print(rec_genome_ini)
         # print(len(rec_genome_ini))
 
@@ -197,16 +197,17 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
             # print(rec_genome)
 
             for feat in rec_genome.features:
-                # rint(feat)
+                # print(feat)
                 # searches for synonyms and
                 if feat.type == "CDS":
                     feat_names = []
+                    feat_names.append(str(feat.id))
                     if "locus_tag" in feat.qualifiers:
                         feat_names.append(str(feat.qualifiers["locus_tag"][0]))
-                    if "Name" in feat.qualifiers:
-                        feat_names.append(str(feat.qualifiers["Name"][0]))
                     if "protein_id" in feat.qualifiers:
                         feat_names.append(str(feat.qualifiers["protein_id"][0]))
+                    if len(str(feat.qualifiers["Name"][0])) > 5:
+                        feat_names.append(str(feat.qualifiers["Name"][0]))
                     # print(str(feat_names))
                     # print(str(feat.qualifiers))
                     for i in range(len(feat_names)):
@@ -223,7 +224,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                             tm_seqrec += [feat]
                     # check if protein contains a TMD
                     for i in range(len(feat_names)):
-                        if str(feat_names[i]) in tmhmm_protein_names:
+                        if str(feat_names[i]) in str(tmhmm_protein_names):
                             # print(feat_names[i])
                             tm_seqrec += [feat]
 
@@ -238,7 +239,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                             endolysin_seqrec += [feat]
                     # check if protein contains an endolysin-associated domain
                     for i in range(len(feat_names)):
-                        if str(feat_names[i]) in endo_names:
+                        if str(feat_names[i]) in str(endo_names):
                             endolysin_seqrec += [feat]
 
             # print(endolysin_seqrec, tm_seqrec, lgc_seqrec)
