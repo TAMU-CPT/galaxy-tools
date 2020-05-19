@@ -27,7 +27,6 @@ Sequence File format:
 One pattern per line, no spaces.
 
     </help>
-	<citations>
         <citations>
 		<citation type="bibtex">
 			@unpublished{galaxyTools,
