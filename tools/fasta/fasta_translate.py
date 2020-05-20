@@ -45,7 +45,7 @@ def translate(fasta_file, target="protein", table=11, strip_stops=False, met=Fal
                 tmpseq = tmpseq + "*"
 
             if met:
-                tmpseq[0] = "M"
+                tmpseq = "M" + tmpseq[1:]
 
             record.seq = tmpseq
             if len(record.seq) > 0:
