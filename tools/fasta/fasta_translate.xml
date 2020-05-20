@@ -14,6 +14,7 @@ $__tool_directory__/fasta_translate.py
 #if str($output.format_select) == "protein":
 		--table $output.table
 		$output.strip_stops
+		$output.met
 #end if
 
 > $default]]></command>
@@ -48,6 +49,7 @@ $__tool_directory__/fasta_translate.py
 					<option value="25">[25] Candidate Division SR1 and Gracilibacteria Code</option>
 				</param>
 				<param label="Remove stop characters" name="strip_stops" type="boolean" checked="true" truevalue="--strip_stops" falsevalue=""/>
+                                <param label="Convert first residue to Met" name="met" type="boolean" checked="false" truevalue="--met" falsevalue=""/>
 			</when>
 		</conditional>
 	</inputs>

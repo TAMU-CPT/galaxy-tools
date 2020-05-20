@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
 
-def translate(fasta_file, target="protein", table=11, strip_stops=False):
+def translate(fasta_file, target="protein", table=11, strip_stops=False, met=False):
     records = list(SeqIO.parse(fasta_file, "fasta"))
 
     for record in records:
@@ -44,6 +44,9 @@ def translate(fasta_file, target="protein", table=11, strip_stops=False):
             if not strip_stops:
                 tmpseq = tmpseq + "*"
 
+            if met:
+                tmpseq[0] = "M"
+
             record.seq = tmpseq
             if len(record.seq) > 0:
                 SeqIO.write(record, sys.stdout, "fasta")
@@ -65,6 +68,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--strip_stops", action="store_true", help="Remove stop characters"
+    )
+    parser.add_argument(
+        "--met", action="store_true", help="Convert first residue to Met"
     )
 
     args = parser.parse_args()
