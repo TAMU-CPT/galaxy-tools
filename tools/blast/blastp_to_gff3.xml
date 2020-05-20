@@ -50,7 +50,12 @@ $input_type.blast_input
       <param name="input_type_selector" value="tsv"/>
       <param name="blast_input" value="blastptab.tabular" ftype="tabular"/>
       <param name="include_seq" value="false"/>
-      <output name="output" file="bptsv.gff3" ftype="gff3"/>
+      <output name="output" ftype="gff3">
+	<assert_contents>
+	  <has_line line="##gff-version 3"/>
+	  <has_n_lines n="162"/>
+	</assert_contents>
+      </output>
     </test>
   </tests>
   <help><![CDATA[

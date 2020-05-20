@@ -40,10 +40,10 @@ $input_type.blast_input
     <test>
       <param name="input_type_selector" value="tsv"/>
       <param name="blast_input" value="blastntab.tabular" ftype="tabular"/>
-      <output name="output" file="bntsv.gff3" >
+      <output name="output" ftype="gff3" >
 	<assert_contents>
 	  <has_line line="##gff-version 3"/>
-	  <has_n_lines n="3233"/>
+	  <has_n_lines n="3652"/>
 	</assert_contents>
       </output>
     </test>
