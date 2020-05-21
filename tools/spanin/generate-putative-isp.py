@@ -226,7 +226,7 @@ if __name__ == "__main__":
     with args.putative_isp_fa as f:
         for desc, s in candidate_dict.items():  # description / sequence
             f.write(">" + str(desc))
-            f.write("\n" + lineWrapper(str(s)) + "\n")
+            f.write("\n" + lineWrapper(str(s).replace("*","")) + "\n")
             length.append(len(s))
             # ORF.append(desc)
 

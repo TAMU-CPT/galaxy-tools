@@ -1,6 +1,6 @@
 # Data location for proximity to lysis project
 
-### lysis-family-v.1.0.1.json : Added new domains for both holins and spanins.
+### lysis-family-v.1.0.2.json : Added new spanin synonyms.
 
 # /attic
 old/obsolete/unused data. Kept only to follow tracks.
@@ -12,7 +12,7 @@ old/obsolete/unused data. Kept only to follow tracks.
 ### lysis-family-expanded.json : Merged results from lysis-family.json and GO-lysis-query.json
 ### lysis-family-expanded_culled.json : Cleaned up version of the expanded.json
 ### lysis-family-v.1.0.0.json : First offical version of lysis family dbase. Revised based on additions/critiques by @LM and @JRR
-
+### lysis-family-v.1.0.1.json : Added new domains for both holins and spanins.
 
 # /term_additions
 * Files made by @JRR and/or @LTM to add terms to the database

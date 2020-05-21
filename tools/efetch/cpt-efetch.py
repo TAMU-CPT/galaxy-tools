@@ -1,5 +1,6 @@
+#!/usr/bin/env python
+
 import sys
-print(sys.version)
 from time import sleep 
 import os
 from os import path
@@ -7,10 +8,10 @@ from Bio import Entrez
 from Bio import SeqIO
 from urllib.error import HTTPError
 import argparse
-from helperFunctions import awk_files
+from helperFunctions import awk_files, is_dir
 
 
-Entrez.email = "curtisross@tamu.edu"
+#Entrez.email = "curtisross@tamu.edu"
 
 class CPTEfetch:
     """ Object that has built in functions to retrieve data from NCBI. Initially constructued to retreive GB and FA files from the nuccore and protein NCBI databases """
@@ -20,6 +21,7 @@ class CPTEfetch:
         self.acc = acc
         self.db = db
         self.ret_type = ret_type
+        Entrez.email = self.email
 
 
     def __repr__(self):
@@ -61,7 +63,7 @@ if __name__ == "__main__":
         ##### Arguments
     parser = argparse.ArgumentParser(description="CPT's very own modified Efetch")
 
-    parser.add_argument("email",
+    parser.add_argument("--email",
                         type=str,
                         help="Entrez Required Email") # current place holder until I determine how best to use the current user's email from Galaxy
 
@@ -92,12 +94,12 @@ if __name__ == "__main__":
 
     parser.add_argument("--sleepy",
                         type=int,
-                        default=20,
+                        default=30,
                         help="Amount to delay a query to NCBI by")
 
     parser.add_argument("--data",
-                        type=argparse.FileType("w+"),
-                        default="data_accs.txt")
+                        type=lambda x: is_dir(parser,x,"results"),
+                        default="results/data_accs.txt")
 
     """
     parser.add_argument("--multi_output",
@@ -109,30 +111,53 @@ if __name__ == "__main__":
                         help="user to run galaxy like outputs")
 
 
+    parser.add_argument("--data_name",
+                        type=str,
+                        default="data_accs.txt",
+                        help="name of acc file")
+
     args = parser.parse_args()
     #print(args)
     # Write individual records
-    if not os.path.exists("results"):
-        os.mkdir("results")
+    #if not os.path.exists("results"):
+        #os.mkdir("results")
+    print(os.getcwd())
+    path = os.path.join("results",args.data_name)
 
-    with args.data as f:
+    with open(path,"w+") as f:
         f.writelines("accessions: "+str(args.input)+"\n")
 
-    if args.galaxy_on:
-        os.chdir("results")
-    
+    #if args.galaxy_on:
+    #    os.chdir("results")
+
     if "__at__" in args.email:
         splits = args.email.split("__at__")
         email = splits[0]+"@"+splits[1]
-    else:
+    elif "@" in args.email:
         email = args.email
+    elif args.email is None:
+        raise Exception("EMAIL IS NECESSARY TO USE TOOL")
+
+    #  Join together admin emails to append to hopefully catch NCBI's eye if abuse occurs
+    admins = ["curtisross@tamu.edu","cory.maughmer@tamu.edu","anthonyc@tamu.edu"]
+    sep = ";"
+    admins.insert(0,email)
+    emails = sep.join(admins)
 
     print("Logged in as: "+email)
+    count = 0 # add a counter, so, it will do a two minute delay every 20th query, to attempt to not bother NCBI with load.
+    path = os.path.join("results","output")
     for acc in args.input:
-        c = CPTEfetch(email, acc, args.db, args.ret_type)
+        count += 1
+        if count % 20 == 0:
+            sleep(120)
+            pass
+        else:
+            pass
+        c = CPTEfetch(emails, acc, args.db, args.ret_type)
         print(c)
         if args.galaxy_on:
-            c.write_record(st=args.sleepy,name="output",galaxy=True)
+            c.write_record(st=args.sleepy,name=path,galaxy=True)
         else:
             c.write_record(st=args.sleepy,name="data_",galaxy=False)
 
@@ -141,7 +166,8 @@ if __name__ == "__main__":
         if args.galaxy_on:
             #awk_files("DAT",output=f"outputMulti.{str(args.ret_type)}")
             #awk_files(str(args.ret_type),output=f"outputMulti.{str(args.ret_type)}")
-            awk_files(str(args.ret_type),output="output",galaxy=True)
+            awk_files(str(args.ret_type),output=path,galaxy=True)
         else:
             awk_files(str(args.ret_type),output="outputMulti"+str(args.ret_type))
-
+    print("---finish---")
+    print(os.getcwd())

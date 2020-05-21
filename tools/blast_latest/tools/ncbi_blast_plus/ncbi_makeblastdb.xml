@@ -1,4 +1,4 @@
-<tool id="ncbi_makeblastdb" name="NCBI BLAST+ makeblastdb" version="@WRAPPER_VERSION@">
+<tool id="ncbi_makeblastdb_latest" name="NCBI BLAST+ makeblastdb (CPT Latest)" version="@WRAPPER_VERSION@">
     <description>Make BLAST database</description>
     <macros>
         <token name="@BINARY@">makeblastdb</token>
@@ -29,6 +29,7 @@ $hash_index
 -in -
 #if $title:
 -title '${title}'
+-blastdb_version $verNum
 #else:
 ##Would default to being based on the cryptic Galaxy filenames, which is unhelpful
 -title 'BLAST Database'
@@ -49,9 +50,8 @@ $hash_index
 ## --------------------------------------------------------------------
 #if $tax.taxselect == 'id':
 -taxid $tax.taxid
-## TODO - Can we use a tabular file for the taxonomy mapping?
-## #else if $tax.taxselect == 'map':
-## -taxid_map $tax.taxmap
+#else if $tax.taxselect == 'map':
+ -taxid_map $tax.taxmap
 #end if
 ## --------------------------------------------------------------------
 ## Capture the stdout log information to the primary file (plain text):
@@ -68,6 +68,10 @@ $hash_index
         <!-- Note this is a mandatory parameter - default should be most recent FASTA file -->
         <param name="input_file" argument="-in" type="data" multiple="true" optional="false" format="fasta,fasta.gz" label="Input FASTA files(s)" help="One or more FASTA files" />
         <param argument="-title" type="text" value="" label="Title for BLAST database" help="This is the database name shown in BLAST search output" />
+        <param name="verNum" type="select" label="Blast DB version number">
+                <option value="4">Version 4 (Support for older Blast versions, no TaxID support)</option>
+                <option value="5">Version 5 (Newer Blast only, supports TaxID mapping)</option>
+        </param>
         <param argument="-parse_seqids" type="boolean" truevalue="-parse_seqids" falsevalue="" checked="false" label="Parse the sequence identifiers" help="This is only advised if your FASTA file follows the NCBI naming conventions using pipe '|' symbols" />
         <param argument="-hash_index" type="boolean" truevalue="-hash_index" falsevalue="" checked="true" label="Enable the creation of sequence hash values" help="These hash values can then be used to quickly determine if a given sequence data exists in this BLAST database." />
         <!-- SEQUENCE MASKING OPTIONS -->
@@ -79,20 +83,16 @@ $hash_index
             <param name="taxselect" type="select" label="Taxonomy options">
                 <option value="">Do not assign a Taxonomy ID to the sequences</option>
                 <option value="id">Assign the same Taxonomy ID to all the sequences</option>
-                <!--
-                <option value="map">Supply text file mapping sequence IDs to taxnomy IDs</option>
-                -->
+                <option value="map">Supply text file mapping sequence IDs to taxnomy IDs (Parse Sequence Identifiers must be true)</option> 
             </param>
             <when value="">
             </when>
             <when value="id">
                 <param argument="-taxid" type="integer" min="0" value="" label="NCBI taxonomy ID" help="Integer &gt;=0, e.g. 9606 for Homo sapiens" />
             </when>
-            <!-- TODO: File format?
             <when value="map">
                 <param name="taxmap" argument="-taxid_map" type="data" format="txt" label="Seq ID : Tax ID mapping file" help="Format: SequenceId TaxonomyId" />
             </when>
-            -->
         </conditional>
     </inputs>
     <outputs>

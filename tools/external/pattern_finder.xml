@@ -1,0 +1,40 @@
+<tool id="external.pattern-finder" name="Pattern Finder" version="1.0.0">
+    <description> from Computational Microbiology Laboratory</description>
+    <requirements>
+    </requirements>
+    <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/patloc $seqIn $pat $output_pll $output_plq $overlap;
+$__tool_directory__/rscangpdf $output_pll $output_final_txt $output_final_pdf;
+]]>
+    </command>
+    <inputs>
+        <param name="seqIn" type="data" label="Sequence File" format="fasta, genbank"/>
+        <param name="pat" format="txt" type="data" label="Pattern file (.txt)"/>
+        <param name="overlap" truevalue="1" type="boolean" falsevalue="0" label="Leave overlapping patterns (False will combine)"/>
+    </inputs>
+    <outputs>
+        <data format="pll" name="output_pll" label="Intermediate Pattern Locator result (.pll)"/>
+        <data format="plq" name="output_plq" label="Intermediate Pattern Locator result (.plq)"/>
+        <data format="txt" name="output_final_txt" label="Final R-scan Textfile"/>
+        <data format="pdf" name="output_final_pdf" label="Final R-scan PDF"/>
+    </outputs>
+    <help>
+**What it does**
+
+A tool for finding sequence patterns in long DNA sequences.
+
+Sequence File format:
+One pattern per line, no spaces.
+
+    </help>
+        <citations>
+		<citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {Mrazek, J. and Xie, S},
+				title = {University of Georgia, Computational Microbiology Laboratory},
+				year = {2020-},
+				note = {https://www.cmbl.uga.edu/software/patloc.html}
+			}
+		</citation>
+	</citations>
+</tool>

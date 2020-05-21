@@ -1,0 +1,41 @@
+<tool id="external.motif-locator" name="Motif Locator" version="1.0.0">
+    <description> from Computational Microbiology Laboratory</description>
+    <requirements>
+    </requirements>
+    <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/motloc $seqIn $alg $output_mll $output_mlq $minScore $overlap $strand;
+]]>
+    </command>
+    <inputs>
+        <param name="seqIn" type="data" label="Sequence File" format="fasta, genbank"/>
+        <param name="alg" format="txt" type="data" label="Alignment file (.txt)"/>
+        <param name="minScore" type="float" value="0.0" label="Minimum Score"/>
+        <param name="overlap" truevalue="1" type="boolean" falsevalue="0" label="Leave overlapping patterns (False will combine)"/>
+        <param name="strand" truevalue="1" type="boolean" falsevalue="0" label="Search both DNA strands (False will search only the direct strand)"/>
+    </inputs>
+    <outputs>
+        <data format="mll" name="output_mll" label="Motif Locator result (.mll)"/>
+        <data format="mlq" name="output_mlq" label="Motif Locator result (.mlq)"/>
+    </outputs>
+    <help>
+**What it does**
+
+Uses aligned set of DNA sequence motifs (no gaps, all motifs of the same length) and finds similar motifs in the analyzed sequence. Uses position specific score matrix (PSSM) representation of the motif.
+
+Alignment File format:
+Contains the aligned sequences (and nothing else), one pattern per line, no spaces
+
+Minimum Score:
+Specifies minimum score with 0 defaulting to the 10th percentile among scores for all sequences in the initial alignment but not lower than 0 and not higher than log2(sequence length)
+    </help>
+        <citations>
+		<citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {Mrazek, J. and Xie, S},
+				title = {University of Georgia, Computational Microbiology Laboratory},
+				year = {2020-},
+				note = {https://www.cmbl.uga.edu/software/motloc.html}
+			}
+		</citation>
+	</citations>
+</tool>

@@ -49,11 +49,13 @@ $blast.keepBlast
 -svg 
 -filter
 \${genList[@]}
+#if $blast.input_type !=  "files"
 #if $blast.keepBlast
 &&
 tar -cvf tempTar temp_easyfig
 &&
 mv tempTar $blastDir
+#end if
 #end if
 ]]></command>
   <inputs>
@@ -121,6 +123,7 @@ mv tempTar $blastDir
           </change_format>
         </data>
         <data format="tar.gz" name="blastDir" label="Easyfig-generated Blast data">
+          <filter>blast['input_type'] != 'files'</filter>
           <filter>blast['keepBlast']</filter>
         </data>
   </outputs>

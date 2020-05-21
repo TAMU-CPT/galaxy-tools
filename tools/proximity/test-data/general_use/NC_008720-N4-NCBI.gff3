@@ -1,0 +1,148 @@
+##sequence-region NC_008720.1 1 70153
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=10752
+NC_008720.1	RefSeq	region	1	70153	.	+	.	ID=NC_008720.1:1..70153;Dbxref=taxon:10752;gbkey=Src;genome=genomic;lab-host=Escherichia coli K-12;mol_type=genomic DNA;nat-host=Escherichia coli;old-name=Enterobacteria phage N4
+NC_008720.1	RefSeq	gene	154	480	.	+	.	ID=gene-EPNV4_gp01;Dbxref=GeneID:5075708;Name=EPNV4_gp01;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp01
+NC_008720.1	RefSeq	CDS	154	480	.	+	0	ID=cds-YP_950479.1;Parent=gene-EPNV4_gp01;Dbxref=Genbank:YP_950479.1,GeneID:5075708;Name=YP_950479.1;gbkey=CDS;locus_tag=EPNV4_gp01;product=gp1;protein_id=YP_950479.1;transl_table=11
+NC_008720.1	RefSeq	gene	586	1071	.	+	.	ID=gene-EPNV4_gp02;Dbxref=GeneID:5075649;Name=EPNV4_gp02;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp02
+NC_008720.1	RefSeq	CDS	586	1071	.	+	0	ID=cds-YP_950480.1;Parent=gene-EPNV4_gp02;Dbxref=Genbank:YP_950480.1,GeneID:5075649;Name=YP_950480.1;gbkey=CDS;locus_tag=EPNV4_gp02;product=gp2;protein_id=YP_950480.1;transl_table=11
+NC_008720.1	RefSeq	gene	1214	1528	.	+	.	ID=gene-EPNV4_gp03;Dbxref=GeneID:5075659;Name=EPNV4_gp03;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp03
+NC_008720.1	RefSeq	CDS	1214	1528	.	+	0	ID=cds-YP_950481.1;Parent=gene-EPNV4_gp03;Dbxref=Genbank:YP_950481.1,GeneID:5075659;Name=YP_950481.1;gbkey=CDS;locus_tag=EPNV4_gp03;product=gp3;protein_id=YP_950481.1;transl_table=11
+NC_008720.1	RefSeq	gene	1532	1969	.	+	.	ID=gene-EPNV4_gp04;Dbxref=GeneID:5075683;Name=EPNV4_gp04;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp04
+NC_008720.1	RefSeq	CDS	1532	1969	.	+	0	ID=cds-YP_950482.1;Parent=gene-EPNV4_gp04;Dbxref=Genbank:YP_950482.1,GeneID:5075683;Name=YP_950482.1;gbkey=CDS;locus_tag=EPNV4_gp04;product=gp4;protein_id=YP_950482.1;transl_table=11
+NC_008720.1	RefSeq	gene	1944	2141	.	+	.	ID=gene-EPNV4_gp05;Dbxref=GeneID:5075660;Name=EPNV4_gp05;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp05
+NC_008720.1	RefSeq	CDS	1944	2141	.	+	0	ID=cds-YP_950483.1;Parent=gene-EPNV4_gp05;Dbxref=Genbank:YP_950483.1,GeneID:5075660;Name=YP_950483.1;gbkey=CDS;locus_tag=EPNV4_gp05;product=gp5;protein_id=YP_950483.1;transl_table=11
+NC_008720.1	RefSeq	gene	2152	2310	.	+	.	ID=gene-EPNV4_gp06;Dbxref=GeneID:5075682;Name=EPNV4_gp06;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp06
+NC_008720.1	RefSeq	CDS	2152	2310	.	+	0	ID=cds-YP_950484.1;Parent=gene-EPNV4_gp06;Dbxref=Genbank:YP_950484.1,GeneID:5075682;Name=YP_950484.1;gbkey=CDS;locus_tag=EPNV4_gp06;product=gp6;protein_id=YP_950484.1;transl_table=11
+NC_008720.1	RefSeq	gene	2310	2519	.	+	.	ID=gene-EPNV4_gp07;Dbxref=GeneID:5075646;Name=EPNV4_gp07;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp07
+NC_008720.1	RefSeq	CDS	2310	2519	.	+	0	ID=cds-YP_950485.1;Parent=gene-EPNV4_gp07;Dbxref=Genbank:YP_950485.1,GeneID:5075646;Name=YP_950485.1;gbkey=CDS;locus_tag=EPNV4_gp07;product=gp7;protein_id=YP_950485.1;transl_table=11
+NC_008720.1	RefSeq	gene	2593	2808	.	+	.	ID=gene-EPNV4_gp08;Dbxref=GeneID:5075662;Name=EPNV4_gp08;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp08
+NC_008720.1	RefSeq	CDS	2593	2808	.	+	0	ID=cds-YP_950486.1;Parent=gene-EPNV4_gp08;Dbxref=Genbank:YP_950486.1,GeneID:5075662;Name=YP_950486.1;gbkey=CDS;locus_tag=EPNV4_gp08;product=gp8;protein_id=YP_950486.1;transl_table=11
+NC_008720.1	RefSeq	gene	2805	3119	.	+	.	ID=gene-EPNV4_gp09;Dbxref=GeneID:5075675;Name=EPNV4_gp09;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp09
+NC_008720.1	RefSeq	CDS	2805	3119	.	+	0	ID=cds-YP_950487.1;Parent=gene-EPNV4_gp09;Dbxref=Genbank:YP_950487.1,GeneID:5075675;Name=YP_950487.1;gbkey=CDS;locus_tag=EPNV4_gp09;product=gp9;protein_id=YP_950487.1;transl_table=11
+NC_008720.1	RefSeq	gene	3106	3282	.	+	.	ID=gene-EPNV4_gp10;Dbxref=GeneID:5075653;Name=EPNV4_gp10;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp10
+NC_008720.1	RefSeq	CDS	3106	3282	.	+	0	ID=cds-YP_950488.1;Parent=gene-EPNV4_gp10;Dbxref=Genbank:YP_950488.1,GeneID:5075653;Name=YP_950488.1;gbkey=CDS;locus_tag=EPNV4_gp10;product=gp10;protein_id=YP_950488.1;transl_table=11
+NC_008720.1	RefSeq	gene	3282	3602	.	+	.	ID=gene-EPNV4_gp11;Dbxref=GeneID:5075688;Name=EPNV4_gp11;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp11
+NC_008720.1	RefSeq	CDS	3282	3602	.	+	0	ID=cds-YP_950489.1;Parent=gene-EPNV4_gp11;Dbxref=Genbank:YP_950489.1,GeneID:5075688;Name=YP_950489.1;gbkey=CDS;locus_tag=EPNV4_gp11;product=gp11;protein_id=YP_950489.1;transl_table=11
+NC_008720.1	RefSeq	gene	3605	3973	.	+	.	ID=gene-EPNV4_gp12;Dbxref=GeneID:5075650;Name=EPNV4_gp12;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp12
+NC_008720.1	RefSeq	CDS	3605	3973	.	+	0	ID=cds-YP_950490.1;Parent=gene-EPNV4_gp12;Dbxref=Genbank:YP_950490.1,GeneID:5075650;Name=YP_950490.1;gbkey=CDS;locus_tag=EPNV4_gp12;product=gp12;protein_id=YP_950490.1;transl_table=11
+NC_008720.1	RefSeq	gene	3966	4151	.	+	.	ID=gene-EPNV4_gp13;Dbxref=GeneID:5075668;Name=EPNV4_gp13;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp13
+NC_008720.1	RefSeq	CDS	3966	4151	.	+	0	ID=cds-YP_950491.1;Parent=gene-EPNV4_gp13;Dbxref=Genbank:YP_950491.1,GeneID:5075668;Name=YP_950491.1;gbkey=CDS;locus_tag=EPNV4_gp13;product=gp13;protein_id=YP_950491.1;transl_table=11
+NC_008720.1	RefSeq	gene	4148	4528	.	+	.	ID=gene-EPNV4_gp14;Dbxref=GeneID:5075657;Name=EPNV4_gp14;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp14
+NC_008720.1	RefSeq	CDS	4148	4528	.	+	0	ID=cds-YP_950492.1;Parent=gene-EPNV4_gp14;Dbxref=Genbank:YP_950492.1,GeneID:5075657;Name=YP_950492.1;gbkey=CDS;locus_tag=EPNV4_gp14;product=hypothetical protein;protein_id=YP_950492.1;transl_table=11
+NC_008720.1	RefSeq	gene	4603	5412	.	+	.	ID=gene-EPNV4_gp15;Dbxref=GeneID:5075664;Name=EPNV4_gp15;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp15
+NC_008720.1	RefSeq	CDS	4603	5412	.	+	0	ID=cds-YP_950493.1;Parent=gene-EPNV4_gp15;Dbxref=Genbank:YP_950493.1,GeneID:5075664;Name=YP_950493.1;gbkey=CDS;locus_tag=EPNV4_gp15;product=RNAP1;protein_id=YP_950493.1;transl_table=11
+NC_008720.1	RefSeq	gene	5460	6674	.	+	.	ID=gene-EPNV4_gp16;Dbxref=GeneID:5075661;Name=EPNV4_gp16;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp16
+NC_008720.1	RefSeq	CDS	5460	6674	.	+	0	ID=cds-YP_950494.1;Parent=gene-EPNV4_gp16;Dbxref=Genbank:YP_950494.1,GeneID:5075661;Name=YP_950494.1;gbkey=CDS;locus_tag=EPNV4_gp16;product=RNAP2;protein_id=YP_950494.1;transl_table=11
+NC_008720.1	RefSeq	gene	6759	7598	.	+	.	ID=gene-EPNV4_gp17;Dbxref=GeneID:5075684;Name=EPNV4_gp17;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp17
+NC_008720.1	RefSeq	CDS	6759	7598	.	+	0	ID=cds-YP_950495.1;Parent=gene-EPNV4_gp17;Dbxref=Genbank:YP_950495.1,GeneID:5075684;Name=YP_950495.1;gbkey=CDS;locus_tag=EPNV4_gp17;product=32 kDa protein;protein_id=YP_950495.1;transl_table=11
+NC_008720.1	RefSeq	gene	7668	7982	.	+	.	ID=gene-EPNV4_gp18;Dbxref=GeneID:5075673;Name=EPNV4_gp18;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp18
+NC_008720.1	RefSeq	CDS	7668	7982	.	+	0	ID=cds-YP_950496.1;Parent=gene-EPNV4_gp18;Dbxref=Genbank:YP_950496.1,GeneID:5075673;Name=YP_950496.1;Note=similar to P22 gp17;gbkey=CDS;locus_tag=EPNV4_gp18;product=hypothetical protein;protein_id=YP_950496.1;transl_table=11
+NC_008720.1	RefSeq	gene	8057	8263	.	+	.	ID=gene-EPNV4_gp19;Dbxref=GeneID:5075680;Name=EPNV4_gp19;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp19
+NC_008720.1	RefSeq	CDS	8057	8263	.	+	0	ID=cds-YP_950497.1;Parent=gene-EPNV4_gp19;Dbxref=Genbank:YP_950497.1,GeneID:5075680;Name=YP_950497.1;gbkey=CDS;locus_tag=EPNV4_gp19;product=gp19;protein_id=YP_950497.1;transl_table=11
+NC_008720.1	RefSeq	gene	8256	9092	.	+	.	ID=gene-EPNV4_gp20;Dbxref=GeneID:5075674;Name=EPNV4_gp20;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp20
+NC_008720.1	RefSeq	CDS	8256	9092	.	+	0	ID=cds-YP_950498.1;Parent=gene-EPNV4_gp20;Dbxref=Genbank:YP_950498.1,GeneID:5075674;Name=YP_950498.1;Note=similar to Yersinia pestis protein;gbkey=CDS;locus_tag=EPNV4_gp20;product=gp20;protein_id=YP_950498.1;transl_table=11
+NC_008720.1	RefSeq	gene	9155	9379	.	+	.	ID=gene-EPNV4_gp21;Dbxref=GeneID:5075696;Name=EPNV4_gp21;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp21
+NC_008720.1	RefSeq	CDS	9155	9379	.	+	0	ID=cds-YP_950499.1;Parent=gene-EPNV4_gp21;Dbxref=Genbank:YP_950499.1,GeneID:5075696;Name=YP_950499.1;gbkey=CDS;locus_tag=EPNV4_gp21;product=gp21;protein_id=YP_950499.1;transl_table=11
+NC_008720.1	RefSeq	gene	9381	9737	.	+	.	ID=gene-EPNV4_gp22;Dbxref=GeneID:5075685;Name=EPNV4_gp22;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp22
+NC_008720.1	RefSeq	CDS	9381	9737	.	+	0	ID=cds-YP_950500.1;Parent=gene-EPNV4_gp22;Dbxref=Genbank:YP_950500.1,GeneID:5075685;Name=YP_950500.1;gbkey=CDS;locus_tag=EPNV4_gp22;product=gp22;protein_id=YP_950500.1;transl_table=11
+NC_008720.1	RefSeq	gene	9738	9908	.	+	.	ID=gene-EPNV4_gp23;Dbxref=GeneID:5075679;Name=EPNV4_gp23;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp23
+NC_008720.1	RefSeq	CDS	9738	9908	.	+	0	ID=cds-YP_950501.1;Parent=gene-EPNV4_gp23;Dbxref=Genbank:YP_950501.1,GeneID:5075679;Name=YP_950501.1;gbkey=CDS;locus_tag=EPNV4_gp23;product=gp23;protein_id=YP_950501.1;transl_table=11
+NC_008720.1	RefSeq	gene	9938	10996	.	+	.	ID=gene-EPNV4_gp24;Dbxref=GeneID:5075701;Name=EPNV4_gp24;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp24
+NC_008720.1	RefSeq	CDS	9938	10996	.	+	0	ID=cds-YP_950502.1;Parent=gene-EPNV4_gp24;Dbxref=Genbank:YP_950502.1,GeneID:5075701;Name=YP_950502.1;Note=similar to S. coel. protein 1;gbkey=CDS;locus_tag=EPNV4_gp24;product=gp24;protein_id=YP_950502.1;transl_table=11
+NC_008720.1	RefSeq	gene	11164	12306	.	+	.	ID=gene-EPNV4_gp25;Dbxref=GeneID:5075654;Name=EPNV4_gp25;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp25
+NC_008720.1	RefSeq	CDS	11164	12306	.	+	0	ID=cds-YP_950503.1;Parent=gene-EPNV4_gp25;Dbxref=Genbank:YP_950503.1,GeneID:5075654;Name=YP_950503.1;Note=similar to S. coel. protein 2;gbkey=CDS;locus_tag=EPNV4_gp25;product=gp25;protein_id=YP_950503.1;transl_table=11
+NC_008720.1	RefSeq	gene	12313	12819	.	+	.	ID=gene-EPNV4_gp26;Dbxref=GeneID:5075698;Name=EPNV4_gp26;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp26
+NC_008720.1	RefSeq	CDS	12313	12819	.	+	0	ID=cds-YP_950504.1;Parent=gene-EPNV4_gp26;Dbxref=Genbank:YP_950504.1,GeneID:5075698;Name=YP_950504.1;gbkey=CDS;locus_tag=EPNV4_gp26;product=dCTP deaminase;protein_id=YP_950504.1;transl_table=11
+NC_008720.1	RefSeq	gene	12833	13033	.	+	.	ID=gene-EPNV4_gp27;Dbxref=GeneID:5075692;Name=EPNV4_gp27;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp27
+NC_008720.1	RefSeq	CDS	12833	13033	.	+	0	ID=cds-YP_950505.1;Parent=gene-EPNV4_gp27;Dbxref=Genbank:YP_950505.1,GeneID:5075692;Name=YP_950505.1;gbkey=CDS;locus_tag=EPNV4_gp27;product=gp27;protein_id=YP_950505.1;transl_table=11
+NC_008720.1	RefSeq	gene	13147	13389	.	+	.	ID=gene-EPNV4_gp28;Dbxref=GeneID:5075651;Name=EPNV4_gp28;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp28
+NC_008720.1	RefSeq	CDS	13147	13389	.	+	0	ID=cds-YP_950506.1;Parent=gene-EPNV4_gp28;Dbxref=Genbank:YP_950506.1,GeneID:5075651;Name=YP_950506.1;gbkey=CDS;locus_tag=EPNV4_gp28;product=gp28;protein_id=YP_950506.1;transl_table=11
+NC_008720.1	RefSeq	gene	13389	13850	.	+	.	ID=gene-EPNV4_gp29;Dbxref=GeneID:5075694;Name=EPNV4_gp29;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp29
+NC_008720.1	RefSeq	CDS	13389	13850	.	+	0	ID=cds-YP_950507.1;Parent=gene-EPNV4_gp29;Dbxref=Genbank:YP_950507.1,GeneID:5075694;Name=YP_950507.1;gbkey=CDS;locus_tag=EPNV4_gp29;product=gp29;protein_id=YP_950507.1;transl_table=11
+NC_008720.1	RefSeq	gene	13843	14784	.	+	.	ID=gene-EPNV4_gp30;Dbxref=GeneID:5075665;Name=EPNV4_gp30;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp30
+NC_008720.1	RefSeq	CDS	13843	14784	.	+	0	ID=cds-YP_950508.1;Parent=gene-EPNV4_gp30;Dbxref=Genbank:YP_950508.1,GeneID:5075665;Name=YP_950508.1;gbkey=CDS;locus_tag=EPNV4_gp30;product=gp30;protein_id=YP_950508.1;transl_table=11
+NC_008720.1	RefSeq	gene	14882	15115	.	+	.	ID=gene-EPNV4_gp31;Dbxref=GeneID:5075678;Name=EPNV4_gp31;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp31
+NC_008720.1	RefSeq	CDS	14882	15115	.	+	0	ID=cds-YP_950509.1;Parent=gene-EPNV4_gp31;Dbxref=Genbank:YP_950509.1,GeneID:5075678;Name=YP_950509.1;gbkey=CDS;locus_tag=EPNV4_gp31;product=gp31;protein_id=YP_950509.1;transl_table=11
+NC_008720.1	RefSeq	gene	15108	15434	.	+	.	ID=gene-EPNV4_gp32;Dbxref=GeneID:5075672;Name=EPNV4_gp32;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp32
+NC_008720.1	RefSeq	CDS	15108	15434	.	+	0	ID=cds-YP_950510.1;Parent=gene-EPNV4_gp32;Dbxref=Genbank:YP_950510.1,GeneID:5075672;Name=YP_950510.1;gbkey=CDS;locus_tag=EPNV4_gp32;product=gp32;protein_id=YP_950510.1;transl_table=11
+NC_008720.1	RefSeq	gene	15460	17985	.	+	.	ID=gene-EPNV4_gp33;Dbxref=GeneID:5075670;Name=EPNV4_gp33;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp33
+NC_008720.1	RefSeq	CDS	15460	17985	.	+	0	ID=cds-YP_950511.1;Parent=gene-EPNV4_gp33;Dbxref=Genbank:YP_950511.1,GeneID:5075670;Name=YP_950511.1;gbkey=CDS;locus_tag=EPNV4_gp33;product=rIIA-like protein;protein_id=YP_950511.1;transl_table=11
+NC_008720.1	RefSeq	gene	17985	20075	.	+	.	ID=gene-EPNV4_gp34;Dbxref=GeneID:5075709;Name=EPNV4_gp34;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp34
+NC_008720.1	RefSeq	CDS	17985	20075	.	+	0	ID=cds-YP_950512.1;Parent=gene-EPNV4_gp34;Dbxref=Genbank:YP_950512.1,GeneID:5075709;Name=YP_950512.1;gbkey=CDS;locus_tag=EPNV4_gp34;product=rIIB-like protein;protein_id=YP_950512.1;transl_table=11
+NC_008720.1	RefSeq	gene	20143	20538	.	+	.	ID=gene-EPNV4_gp35;Dbxref=GeneID:5075652;Name=EPNV4_gp35;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp35
+NC_008720.1	RefSeq	CDS	20143	20538	.	+	0	ID=cds-YP_950513.1;Parent=gene-EPNV4_gp35;Dbxref=Genbank:YP_950513.1,GeneID:5075652;Name=YP_950513.1;gbkey=CDS;locus_tag=EPNV4_gp35;product=gp35;protein_id=YP_950513.1;transl_table=11
+NC_008720.1	RefSeq	gene	20462	20914	.	+	.	ID=gene-EPNV4_gp36;Dbxref=GeneID:5075669;Name=EPNV4_gp36;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp36
+NC_008720.1	RefSeq	CDS	20462	20914	.	+	0	ID=cds-YP_950514.1;Parent=gene-EPNV4_gp36;Dbxref=Genbank:YP_950514.1,GeneID:5075669;Name=YP_950514.1;gbkey=CDS;locus_tag=EPNV4_gp36;product=gp36;protein_id=YP_950514.1;transl_table=11
+NC_008720.1	RefSeq	gene	20957	22276	.	+	.	ID=gene-EPNV4_gp37;Dbxref=GeneID:5075695;Name=EPNV4_gp37;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp37
+NC_008720.1	RefSeq	CDS	20957	22276	.	+	0	ID=cds-YP_950515.1;Parent=gene-EPNV4_gp37;Dbxref=Genbank:YP_950515.1,GeneID:5075695;Name=YP_950515.1;gbkey=CDS;locus_tag=EPNV4_gp37;product=DNA helicase;protein_id=YP_950515.1;transl_table=11
+NC_008720.1	RefSeq	gene	22286	22813	.	+	.	ID=gene-EPNV4_gp38;Dbxref=GeneID:5075705;Name=EPNV4_gp38;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp38
+NC_008720.1	RefSeq	CDS	22286	22813	.	+	0	ID=cds-YP_950516.1;Parent=gene-EPNV4_gp38;Dbxref=Genbank:YP_950516.1,GeneID:5075705;Name=YP_950516.1;gbkey=CDS;locus_tag=EPNV4_gp38;product=gp38;protein_id=YP_950516.1;transl_table=11
+NC_008720.1	RefSeq	gene	22821	25400	.	+	.	ID=gene-EPNV4_gp39;Dbxref=GeneID:5075690;Name=EPNV4_gp39;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp39
+NC_008720.1	RefSeq	CDS	22821	25400	.	+	0	ID=cds-YP_950517.1;Parent=gene-EPNV4_gp39;Dbxref=Genbank:YP_950517.1,GeneID:5075690;Name=YP_950517.1;gbkey=CDS;locus_tag=EPNV4_gp39;product=DNAP;protein_id=YP_950517.1;transl_table=11
+NC_008720.1	RefSeq	gene	25397	25735	.	+	.	ID=gene-EPNV4_gp40;Dbxref=GeneID:5075663;Name=EPNV4_gp40;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp40
+NC_008720.1	RefSeq	CDS	25397	25735	.	+	0	ID=cds-YP_950518.1;Parent=gene-EPNV4_gp40;Dbxref=Genbank:YP_950518.1,GeneID:5075663;Name=YP_950518.1;gbkey=CDS;locus_tag=EPNV4_gp40;product=gp40;protein_id=YP_950518.1;transl_table=11
+NC_008720.1	RefSeq	gene	25738	26346	.	+	.	ID=gene-EPNV4_gp41;Dbxref=GeneID:5075656;Name=EPNV4_gp41;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp41
+NC_008720.1	RefSeq	CDS	25738	26346	.	+	0	ID=cds-YP_950519.1;Parent=gene-EPNV4_gp41;Dbxref=Genbank:YP_950519.1,GeneID:5075656;Name=YP_950519.1;gbkey=CDS;locus_tag=EPNV4_gp41;product=gp41;protein_id=YP_950519.1;transl_table=11
+NC_008720.1	RefSeq	gene	26343	27317	.	+	.	ID=gene-EPNV4_gp42;Dbxref=GeneID:5075655;Name=EPNV4_gp42;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp42
+NC_008720.1	RefSeq	CDS	26343	27317	.	+	0	ID=cds-YP_950520.1;Parent=gene-EPNV4_gp42;Dbxref=Genbank:YP_950520.1,GeneID:5075655;Name=YP_950520.1;gbkey=CDS;locus_tag=EPNV4_gp42;product=gp42;protein_id=YP_950520.1;transl_table=11
+NC_008720.1	RefSeq	gene	27314	29461	.	+	.	ID=gene-EPNV4_gp43;Dbxref=GeneID:5075689;Name=EPNV4_gp43;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp43
+NC_008720.1	RefSeq	CDS	27314	29461	.	+	0	ID=cds-YP_950521.1;Parent=gene-EPNV4_gp43;Dbxref=Genbank:YP_950521.1,GeneID:5075689;Name=YP_950521.1;gbkey=CDS;locus_tag=EPNV4_gp43;product=gp43;protein_id=YP_950521.1;transl_table=11
+NC_008720.1	RefSeq	gene	29520	30275	.	+	.	ID=gene-EPNV4_gp44;Dbxref=GeneID:5075710;Name=EPNV4_gp44;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp44
+NC_008720.1	RefSeq	CDS	29520	30275	.	+	0	ID=cds-YP_950522.1;Parent=gene-EPNV4_gp44;Dbxref=Genbank:YP_950522.1,GeneID:5075710;Name=YP_950522.1;gbkey=CDS;locus_tag=EPNV4_gp44;product=gp44;protein_id=YP_950522.1;transl_table=11
+NC_008720.1	RefSeq	gene	30321	31118	.	+	.	ID=gene-EPNV4_gp45;Dbxref=GeneID:5075703;Name=EPNV4_gp45;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp45
+NC_008720.1	RefSeq	CDS	30321	31118	.	+	0	ID=cds-YP_950523.1;Parent=gene-EPNV4_gp45;Dbxref=Genbank:YP_950523.1,GeneID:5075703;Name=YP_950523.1;gbkey=CDS;locus_tag=EPNV4_gp45;product=single-stranded DNA-binding protein;protein_id=YP_950523.1;transl_table=11
+NC_008720.1	RefSeq	gene	31118	31675	.	+	.	ID=gene-EPNV4_gp46;Dbxref=GeneID:5075676;Name=EPNV4_gp46;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp46
+NC_008720.1	RefSeq	CDS	31118	31675	.	+	0	ID=cds-YP_950524.1;Parent=gene-EPNV4_gp46;Dbxref=Genbank:YP_950524.1,GeneID:5075676;Name=YP_950524.1;gbkey=CDS;locus_tag=EPNV4_gp46;product=gp46;protein_id=YP_950524.1;transl_table=11
+NC_008720.1	RefSeq	gene	31678	32112	.	+	.	ID=gene-EPNV4_gp47;Dbxref=GeneID:5075713;Name=EPNV4_gp47;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp47
+NC_008720.1	RefSeq	CDS	31678	32112	.	+	0	ID=cds-YP_950525.1;Parent=gene-EPNV4_gp47;Dbxref=Genbank:YP_950525.1,GeneID:5075713;Name=YP_950525.1;gbkey=CDS;locus_tag=EPNV4_gp47;product=gp47;protein_id=YP_950525.1;transl_table=11
+NC_008720.1	RefSeq	gene	33632	34003	.	+	.	ID=gene-EPNV4_gp48;Dbxref=GeneID:5075711;Name=EPNV4_gp48;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp48
+NC_008720.1	RefSeq	CDS	33632	34003	.	+	0	ID=cds-YP_950526.1;Parent=gene-EPNV4_gp48;Dbxref=Genbank:YP_950526.1,GeneID:5075711;Name=YP_950526.1;gbkey=CDS;locus_tag=EPNV4_gp48;product=hypothetical protein;protein_id=YP_950526.1;transl_table=11
+NC_008720.1	RefSeq	gene	34003	34485	.	+	.	ID=gene-EPNV4_gp49;Dbxref=GeneID:5075666;Name=EPNV4_gp49;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp49
+NC_008720.1	RefSeq	CDS	34003	34485	.	+	0	ID=cds-YP_950527.1;Parent=gene-EPNV4_gp49;Dbxref=Genbank:YP_950527.1,GeneID:5075666;Name=YP_950527.1;gbkey=CDS;locus_tag=EPNV4_gp49;product=gp49;protein_id=YP_950527.1;transl_table=11
+NC_008720.1	RefSeq	gene	34523	45025	.	-	.	ID=gene-EPNV4_gp50;Dbxref=GeneID:5075715;Name=EPNV4_gp50;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp50
+NC_008720.1	RefSeq	CDS	34523	45025	.	-	0	ID=cds-YP_950528.1;Parent=gene-EPNV4_gp50;Dbxref=Genbank:YP_950528.1,GeneID:5075715;Name=YP_950528.1;gbkey=CDS;locus_tag=EPNV4_gp50;product=virion RNA polymerase;protein_id=YP_950528.1;transl_table=11
+NC_008720.1	RefSeq	gene	45126	47060	.	-	.	ID=gene-EPNV4_gp51;Dbxref=GeneID:5075693;Name=EPNV4_gp51;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp51
+NC_008720.1	RefSeq	CDS	45126	47060	.	-	0	ID=cds-YP_950529.1;Parent=gene-EPNV4_gp51;Dbxref=Genbank:YP_950529.1,GeneID:5075693;Name=YP_950529.1;gbkey=CDS;locus_tag=EPNV4_gp51;product=66 kDa protein;protein_id=YP_950529.1;transl_table=11
+NC_008720.1	RefSeq	gene	47071	47523	.	-	.	ID=gene-EPNV4_gp52;Dbxref=GeneID:5075681;Name=EPNV4_gp52;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp52
+NC_008720.1	RefSeq	CDS	47071	47523	.	-	0	ID=cds-YP_950530.1;Parent=gene-EPNV4_gp52;Dbxref=Genbank:YP_950530.1,GeneID:5075681;Name=YP_950530.1;gbkey=CDS;locus_tag=EPNV4_gp52;product=16.5 kDa protein;protein_id=YP_950530.1;transl_table=11
+NC_008720.1	RefSeq	gene	47537	50194	.	-	.	ID=gene-EPNV4_gp53;Dbxref=GeneID:5075697;Name=EPNV4_gp53;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp53
+NC_008720.1	RefSeq	CDS	47537	50194	.	-	0	ID=cds-YP_950531.1;Parent=gene-EPNV4_gp53;Dbxref=Genbank:YP_950531.1,GeneID:5075697;Name=YP_950531.1;gbkey=CDS;locus_tag=EPNV4_gp53;product=gp53;protein_id=YP_950531.1;transl_table=11
+NC_008720.1	RefSeq	gene	50198	51097	.	-	.	ID=gene-EPNV4_gp54;Dbxref=GeneID:5075658;Name=EPNV4_gp54;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp54
+NC_008720.1	RefSeq	CDS	50198	51097	.	-	0	ID=cds-YP_950532.1;Parent=gene-EPNV4_gp54;Dbxref=Genbank:YP_950532.1,GeneID:5075658;Name=YP_950532.1;gbkey=CDS;locus_tag=EPNV4_gp54;product=gp54;protein_id=YP_950532.1;transl_table=11
+NC_008720.1	RefSeq	gene	51177	51803	.	-	.	ID=gene-EPNV4_gp55;Dbxref=GeneID:5075671;Name=EPNV4_gp55;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp55
+NC_008720.1	RefSeq	CDS	51177	51803	.	-	0	ID=cds-YP_950533.1;Parent=gene-EPNV4_gp55;Dbxref=Genbank:YP_950533.1,GeneID:5075671;Name=YP_950533.1;gbkey=CDS;locus_tag=EPNV4_gp55;product=gp55;protein_id=YP_950533.1;transl_table=11
+NC_008720.1	RefSeq	gene	51866	53071	.	-	.	ID=gene-EPNV4_gp56;Dbxref=GeneID:5075702;Name=EPNV4_gp56;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp56
+NC_008720.1	RefSeq	CDS	51866	53071	.	-	0	ID=cds-YP_950534.1;Parent=gene-EPNV4_gp56;Dbxref=Genbank:YP_950534.1,GeneID:5075702;Name=YP_950534.1;gbkey=CDS;locus_tag=EPNV4_gp56;product=major coat protein;protein_id=YP_950534.1;transl_table=11
+NC_008720.1	RefSeq	gene	53083	54300	.	-	.	ID=gene-EPNV4_gp57;Dbxref=GeneID:5075645;Name=EPNV4_gp57;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp57
+NC_008720.1	RefSeq	CDS	53083	54300	.	-	0	ID=cds-YP_950535.1;Parent=gene-EPNV4_gp57;Dbxref=Genbank:YP_950535.1,GeneID:5075645;Name=YP_950535.1;gbkey=CDS;locus_tag=EPNV4_gp57;product=gp57;protein_id=YP_950535.1;transl_table=11
+NC_008720.1	RefSeq	gene	54326	54673	.	-	.	ID=gene-EPNV4_gp58;Dbxref=GeneID:5075712;Name=EPNV4_gp58;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp58
+NC_008720.1	RefSeq	CDS	54326	54673	.	-	0	ID=cds-YP_950536.1;Parent=gene-EPNV4_gp58;Dbxref=Genbank:YP_950536.1,GeneID:5075712;Name=YP_950536.1;gbkey=CDS;locus_tag=EPNV4_gp58;product=gp58;protein_id=YP_950536.1;transl_table=11
+NC_008720.1	RefSeq	gene	54676	56967	.	-	.	ID=gene-EPNV4_gp59;Dbxref=GeneID:5075648;Name=EPNV4_gp59;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp59
+NC_008720.1	RefSeq	CDS	54676	56967	.	-	0	ID=cds-YP_950537.1;Parent=gene-EPNV4_gp59;Dbxref=Genbank:YP_950537.1,GeneID:5075648;Name=YP_950537.1;gbkey=CDS;locus_tag=EPNV4_gp59;product=94 kDa protein;protein_id=YP_950537.1;transl_table=11
+NC_008720.1	RefSeq	gene	56976	57479	.	-	.	ID=gene-EPNV4_gp60;Dbxref=GeneID:5075706;Name=EPNV4_gp60;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp60
+NC_008720.1	RefSeq	CDS	56976	57479	.	-	0	ID=cds-YP_950538.1;Parent=gene-EPNV4_gp60;Dbxref=Genbank:YP_950538.1,GeneID:5075706;Name=YP_950538.1;gbkey=CDS;locus_tag=EPNV4_gp60;product=gp60-i-spanin;protein_id=YP_950538.1;transl_table=11
+NC_008720.1	RefSeq	gene	57460	58086	.	-	.	ID=gene-EPNV4_gp61;Dbxref=GeneID:5075699;Name=EPNV4_gp61;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp61
+NC_008720.1	RefSeq	CDS	57460	58086	.	-	0	ID=cds-YP_950539.1;Parent=gene-EPNV4_gp61;Dbxref=Genbank:YP_950539.1,GeneID:5075699;Name=YP_950539.1;gbkey=CDS;locus_tag=EPNV4_gp61;product=N-acetylmuramidase;protein_id=YP_950539.1;transl_table=11
+NC_008720.1	RefSeq	gene	58073	58336	.	-	.	ID=gene-EPNV4_gp62;Dbxref=GeneID:5075686;Name=EPNV4_gp62;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp62
+NC_008720.1	RefSeq	CDS	58073	58336	.	-	0	ID=cds-YP_950540.1;Parent=gene-EPNV4_gp62;Dbxref=Genbank:YP_950540.1,GeneID:5075686;Name=YP_950540.1;gbkey=CDS;locus_tag=EPNV4_gp62;product=gp62-pinholin;protein_id=YP_950540.1;transl_table=11
+NC_008720.1	RefSeq	gene	58321	58653	.	-	.	ID=gene-EPNV4_gp63;Dbxref=GeneID:5075677;Name=EPNV4_gp63-co-holin;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp63
+NC_008720.1	RefSeq	CDS	58321	58653	.	-	0	ID=cds-YP_950541.1;Parent=gene-EPNV4_gp63;Dbxref=Genbank:YP_950541.1,GeneID:5075677;Name=YP_950541.1;gbkey=CDS;locus_tag=EPNV4_gp63;product=gp63;protein_id=YP_950541.1;transl_table=11
+NC_008720.1	RefSeq	gene	58757	60010	.	-	.	ID=gene-EPNV4_gp64;Dbxref=GeneID:5075687;Name=EPNV4_gp64;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp64
+NC_008720.1	RefSeq	CDS	58757	60010	.	-	0	ID=cds-YP_950542.1;Parent=gene-EPNV4_gp64;Dbxref=Genbank:YP_950542.1,GeneID:5075687;Name=YP_950542.1;gbkey=CDS;locus_tag=EPNV4_gp64;product=gp64;protein_id=YP_950542.1;transl_table=11
+NC_008720.1	RefSeq	gene	60043	64191	.	-	.	ID=gene-EPNV4_gp65;Dbxref=GeneID:5075714;Name=EPNV4_gp65;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp65
+NC_008720.1	RefSeq	CDS	60043	64191	.	-	0	ID=cds-YP_950543.1;Parent=gene-EPNV4_gp65;Dbxref=Genbank:YP_950543.1,GeneID:5075714;Name=YP_950543.1;gbkey=CDS;locus_tag=EPNV4_gp65;product=160 kDa protein;protein_id=YP_950543.1;transl_table=11
+NC_008720.1	RefSeq	gene	64233	65903	.	-	.	ID=gene-EPNV4_gp66;Dbxref=GeneID:5075704;Name=EPNV4_gp66;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp66
+NC_008720.1	RefSeq	CDS	64233	65903	.	-	0	ID=cds-YP_950544.1;Parent=gene-EPNV4_gp66;Dbxref=Genbank:YP_950544.1,GeneID:5075704;Name=YP_950544.1;gbkey=CDS;locus_tag=EPNV4_gp66;product=60 kDa protein;protein_id=YP_950544.1;transl_table=11
+NC_008720.1	RefSeq	gene	65900	66610	.	-	.	ID=gene-EPNV4_gp67;Dbxref=GeneID:5075707;Name=EPNV4_gp67;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp67
+NC_008720.1	RefSeq	CDS	65900	66610	.	-	0	ID=cds-YP_950545.1;Parent=gene-EPNV4_gp67;Dbxref=Genbank:YP_950545.1,GeneID:5075707;Name=YP_950545.1;gbkey=CDS;locus_tag=EPNV4_gp67;product=30 kDa protein;protein_id=YP_950545.1;transl_table=11
+NC_008720.1	RefSeq	gene	66617	68209	.	-	.	ID=gene-EPNV4_gp68;Dbxref=GeneID:5075700;Name=EPNV4_gp68;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp68
+NC_008720.1	RefSeq	CDS	66617	68209	.	-	0	ID=cds-YP_950546.1;Parent=gene-EPNV4_gp68;Dbxref=Genbank:YP_950546.1,GeneID:5075700;Name=YP_950546.1;gbkey=CDS;locus_tag=EPNV4_gp68;product=gp68;protein_id=YP_950546.1;transl_table=11
+NC_008720.1	RefSeq	gene	68202	68894	.	-	.	ID=gene-EPNV4_gp69;Dbxref=GeneID:5075691;Name=EPNV4_gp69;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp69
+NC_008720.1	RefSeq	CDS	68202	68894	.	-	0	ID=cds-YP_950547.1;Parent=gene-EPNV4_gp69;Dbxref=Genbank:YP_950547.1,GeneID:5075691;Name=YP_950547.1;gbkey=CDS;locus_tag=EPNV4_gp69;product=gp69;protein_id=YP_950547.1;transl_table=11
+NC_008720.1	RefSeq	gene	69055	69363	.	+	.	ID=gene-EPNV4_gp70;Dbxref=GeneID:5075667;Name=EPNV4_gp70;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp70
+NC_008720.1	RefSeq	CDS	69055	69363	.	+	0	ID=cds-YP_950548.1;Parent=gene-EPNV4_gp70;Dbxref=Genbank:YP_950548.1,GeneID:5075667;Name=YP_950548.1;gbkey=CDS;locus_tag=EPNV4_gp70;product=gp70;protein_id=YP_950548.1;transl_table=11
+NC_008720.1	RefSeq	gene	69574	69939	.	+	.	ID=gene-EPNV4_gp71;Dbxref=GeneID:5075716;Name=EPNV4_gp71;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp71
+NC_008720.1	RefSeq	CDS	69574	69939	.	+	0	ID=cds-YP_950549.1;Parent=gene-EPNV4_gp71;Dbxref=Genbank:YP_950549.1,GeneID:5075716;Name=YP_950549.1;gbkey=CDS;locus_tag=EPNV4_gp71;product=gp71;protein_id=YP_950549.1;transl_table=11
+NC_008720.1	RefSeq	gene	69948	70076	.	+	.	ID=gene-EPNV4_gp72;Dbxref=GeneID:5075647;Name=EPNV4_gp72;gbkey=Gene;gene_biotype=protein_coding;locus_tag=EPNV4_gp72
+NC_008720.1	RefSeq	CDS	69948	70076	.	+	0	ID=cds-YP_950550.1;Parent=gene-EPNV4_gp72;Dbxref=Genbank:YP_950550.1,GeneID:5075647;Name=YP_950550.1;gbkey=CDS;locus_tag=EPNV4_gp72;product=gp72;protein_id=YP_950550.1;transl_table=11
+

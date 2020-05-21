@@ -4,15 +4,16 @@
         <import>macros.xml</import>
     <!--    <import>cpt-macros.xml</import>-->
     </macros>
+    <expand macro="requirements">
+    </expand>
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/cpt-efetch.py
-email $email
+--email $email
 --input $input
 --db $db
 --ret_format $ret_format
 --ret_type $ret_type
 --galaxy_on 
---data $data
 --sleepy $sleepy
 
     ]]></command>
@@ -35,22 +36,32 @@ email $email
             <param name="sleepy" type="integer" value="20" label="Amount to slow request to NCBI by; increase if errors occur"/>
         </inputs>
         <outputs>
-            <data name="data" format="txt">
+            <data name="output" format="fasta">
+                <discover_datasets pattern="__designation_and_ext__" ext="fasta" directory="results" visible="true" assign_primary_output="true"/>
             </data>
         </outputs>
         <tests>
+            <test>
+                <param name="email" value="curtisross@tamu.edu"/>
+                <param name="input" value="NC_001416.1"/>
+                <param name="db" value="nuccore"/>
+                <param name="ret_type" value="fasta"/>
+                <param name="ret_format" value="individual"/>
+                <output name="output">
+                    <discovered_dataset designation="__designation_and_ext__" ftype="fasta"/>
+                </output>
+            </test>
         </tests>
     <help><![CDATA[
-** WARNING : THIS IS AN ALPHA VERSION OF THE TOOL. IT DOES NOT WORK AS DESCRIBED IN THE CURRENT STATE. **
+**WARNING : THIS IS AN ALPHA VERSION OF THE TOOL. IT DOES NOT WORK AS DESCRIBED IN THE CURRENT STATE.**
 
 INPUT : An accession, or set of accessions separated by new line. 
 
-
-** aside: ** Current version has manual entry of email. This is due to the following (from NCBI): To make use of NCBI's E-utilities, NCBI requires you to specify your email address with each request. In case of excessive usage of the E-utilities, NCBI will attempt to contact a user at the email address provided before blocking access to the E-utilities.
-
+**aside:** Current version has manual entry of email.
 
 OUTPUT : Requested file type (genbank or fasta) individually and/or combined together.
 
+@DISCLAIMER@
     ]]></help>
         <citations>
             <citation type="bibtex">
