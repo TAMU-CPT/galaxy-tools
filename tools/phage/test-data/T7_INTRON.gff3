@@ -1,0 +1,6 @@
+##gff-version 3
+##sequence-region NC_001604 1 39937
+NC_001604	feature	gene	9158	10706	.	.	.	ID=gp_0;Notes=T7p17 had 56%25 identity to NCBI Protein ID QFG06980,T7p19 had 71%25 identity to NCBI Protein ID QFG06980;intron_info=gb%7CQFG06980.1%7C putative helix-destabilizing protein %5BEscherichia virus ECG4%5D
+NC_001604	feature	mRNA	9158	10706	.	.	.	ID=gp_0.mRNA;Parent=gp_0;note=T7p17 had 56%25 identity to NCBI Protein ID QFG06980,T7p19 had 71%25 identity to NCBI Protein ID QFG06980
+NC_001604	feature	CDS	9317	9697	563	+	0	ID=gp_0.CDS.0;Identity=56.3492063492;Name=T7p17;Parent=gp_0.mRNA;evalue=6.62467e-40
+NC_001604	feature	CDS	10290	10649	714	+	0	ID=gp_0.CDS.1;Identity=71.4285714286;Name=T7p19;Parent=gp_0.mRNA;evalue=5.74854e-55

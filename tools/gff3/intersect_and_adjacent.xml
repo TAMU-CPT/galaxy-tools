@@ -21,7 +21,7 @@ $stranding
     <param label="GFF3 Annotations A" name="gff3_data_a" type="data" format="gff3"/>
     <param label="GFF3 Annotations B" name="gff3_data_b" type="data" format="gff3"/>
     <param label="Adjacency Window Size" name="window" type="integer" value = "0"/>
-    <param label="Only allow adjacencies for features on the same strande" name="stranding" type="boolean" checked="false" truevalue="-stranding" falsevalue="" />
+    <param label="Only allow adjacencies for features on the same strand" name="stranding" type="boolean" checked="false" truevalue="-stranding" falsevalue="" />
   </inputs>
   <outputs>
     <data format="gff3" name="oa" label="GFF3 Annotations from ${gff3_data_a.name} in ${gff3_data_b.name}"/>
@@ -29,12 +29,26 @@ $stranding
   </outputs>
   <tests>
 		<test>
-			<param name="gff3_data_a" value="a.gff3" />
-			<param name="gff3_data_b" value="b.gff3" />
+			<param name="gff3_data_a" value="T7_ISP.gff3" />
+			<param name="gff3_data_b" value="T7_OSP.gff3" />
                         <param name="window" value= "50" />
                         <param name="stranding" value= "-stranding"/>
-			<output name="oa" file="a_hits_in_b.gff" />
-			<output name="ob" file="b_hits_in_a.gff" />
+			<output name="oa" >
+			  <!-- test-data/T7_IA1.gff3 -->
+			  <assert_contents>
+			    <has_line line="##gff-version 3" />
+			    <has_line line="##sequence-region NC_001604 1 39538" />
+			    <has_n_lines n="83" />
+			  </assert_contents>
+			</output>
+			<output name="ob" >
+			  <!-- test-data/T7_IA2.gff3 -->
+			  <assert_contents>
+			    <has_line line="##gff-version 3" />
+			    <has_line line="##sequence-region NC_001604 1 39554" />
+			    <has_n_lines n="103" />
+			  </assert_contents>
+			</output>
 		</test>
   </tests>
   <help><![CDATA[

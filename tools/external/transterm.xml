@@ -4,10 +4,9 @@
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
 	</macros>
-        <requirements>
+	<expand macro="requirements">
 		<requirement type="package" version="2.09">transtermhp</requirement>
-		<yield/>
-	</requirements>
+	</expand>
 	<command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
 
@@ -26,11 +25,6 @@ $gff3_data
 	<outputs>
 		<data name="output" label="Terminators from ${gff3_data.name}" format="gff3" />
 	</outputs>
-	<help>
-*TransTermHP* finds rho-independent transcription terminators in bacterial
-genomes. Each terminator found by the program is assigned a confidence
-value that estimates its probability of being a true terminator.
-	</help>
 	<tests>
 		<test>
 			<param name="genome_fasta" value="miro.fa" />
@@ -38,6 +32,11 @@ value that estimates its probability of being a true terminator.
 			<output name="output" file="miro.terminators.gff3" />
 		</test>
 	</tests>
+	<help>
+*TransTermHP* finds rho-independent transcription terminators in bacterial
+genomes. Each terminator found by the program is assigned a confidence
+value that estimates its probability of being a true terminator.
+	</help>
 	<citations>
 		<citation type="doi">10.1186/gb-2007-8-2-r22</citation>
 	</citations>

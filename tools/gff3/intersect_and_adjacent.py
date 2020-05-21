@@ -137,8 +137,8 @@ def intersect(a, b, window, stranding):
                         rec_b_hits_in_a.append(rec_a_map[hit.data])
 
         # Remove duplicate features using sets
-        rec_a.features = set(rec_a_hits_in_b)
-        rec_b.features = set(rec_b_hits_in_a)
+        rec_a.features = sorted(set(rec_a_hits_in_b), key=lambda feat: feat.location.start)
+        rec_b.features = sorted(set(rec_b_hits_in_a), key=lambda feat: feat.location.start)
 
     else:
         # If one input is empty, output two empty result files.

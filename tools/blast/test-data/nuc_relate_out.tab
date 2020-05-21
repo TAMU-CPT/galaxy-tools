@@ -1,0 +1,12 @@
+Top 10 matches for BLASTn results of Phriendly						
+TaxID	Name	Accessions	Subject Length	Number of HSPs	Total Aligned Length	Dice Score
+2596675	Vibrio phage Phriendly, complete genome	MN062185	50218	1	50218	1.0000
+2530170	Vibrio phage vB_VpP_BA6, complete genome	MK483107	50520	28	27846	0.5528
+2024229	Vibrio phage vB_ValP_IME271, complete genome	MF431726	50345	31	27565	0.5482
+1524880	Vibrio phage VPp1, complete genome	KJ936628	50431	31	26870	0.5339
+1881238	Vibrio phage 1.262.O._10N.286.51.A9, partial genome	MG592626	47635	20	9443	0.1930
+1881383	Vibrio phage 1.097.O._10N.286.49.B3, partial genome	MG592470	76918	3	2040	0.0321
+1881429	Vibrio phage 1.150.O._10N.222.46.A6, partial genome	MG592519	75796	4	1937	0.0307
+1881448	Vibrio phage 2.130.O._10N.222.46.C2, partial genome	MG592668	75797	4	1937	0.0307
+1881420	Vibrio phage 1.025.O._10N.222.46.B6, partial genome	MG592409	75797	4	1937	0.0307
+1881431	Vibrio phage 1.152.O._10N.222.46.E1, partial genome	MG592521	75798	4	1936	0.0307

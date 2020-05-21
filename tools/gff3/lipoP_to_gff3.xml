@@ -23,7 +23,12 @@ python $__tool_directory__/lipoP_to_gff3.py
     <data format="gff3" name="stdout"/>
   </outputs>
   <tests>
-      
+    <test>
+      <param name="lipoIn" value="GalPub.txt" />
+      <param name="gff3In" value="GalPub.gff3" />
+      <param name="jBrowseOut" value="True" />
+      <output name="stdout" value="GalPubExt.gff3" />
+    </test>
   </tests>
   <help><![CDATA[
 **What it does**

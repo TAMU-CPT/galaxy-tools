@@ -38,6 +38,13 @@ $__tool_directory__/tmhmm-2.0c/lib/TMHMM2.0.model
 Runs TMHMM and outputs the GFF3 formatted results, as well as the normal plots in the form of Wig files.
 	</help>
 	<tests>
+                <test>
+			<param name="infile" value="T7_CDS_AA.fasta" />
+			<output name="output" file="T7_TMHMM.gff3" />
+			<output name="bw_i" file="T7_BW_I.wig" />
+			<output name="bw_o" file="T7_BW_O.wig" />
+			<output name="bw_m" file="T7_BW_M.wig" />
+		</test>
 		<test>
 			<param name="infile" value="tmp.fa" />
 			<output name="output" file="tmhmm.gff3" />

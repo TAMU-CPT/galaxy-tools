@@ -49,6 +49,17 @@ mv ${output_gff3}.html.tar.gz ${output_html};
         <data format="gff3" name="output_gff3" label="Interproscan GFF3 output on ${on_string}"/>
         <data format="tar.gz" name="output_html" label="Interproscan HTML output on ${on_string} (.tar.gz)"/>
     </outputs>
+    <tests>
+          <test>
+            <param name="input" value="T7_CDS_AA.fasta" />
+            <param name="goterms" value="--goterms" />
+            <param name="iprlookup" value="--iprlookup" />
+            <param name="pathways" value="--pathways" />
+            <param name="appl" value="TIGRFAM,PIRSF,ProDom,PANTHER,SMART,PrositeProfiles,PrositePatterns,Hamap,Pfam,PRINTS,SUPERFAMILY,Coils,Gene3D,SignalP-GRAM_POSITIVE,SignalP-GRAM_NEGATIVE,SignalP-EUK,Phobius" />
+            <output name="output_gff3" file="T7_INTERPRO.gff3" />
+            <output name="output_html" file="T7_INTERPRO.tar.gz" />
+          </test>
+    </tests>
     <help>
 **What it does**
 

@@ -27,13 +27,13 @@ $dice
 		<test>
 			<param name="xmfa" value="test.xmfa"/>
 			<param name="sequences" value="test.fa" />
-			<output name="output" file="output.tsv"/>
+			<output name="output" file="xmfa2tbl_out.tsv"/>
 		</test>
 		<test>
 			<param name="dice" value="true"/>
 			<param name="xmfa" value="test.xmfa"/>
 			<param name="sequences" value="test.fa" />
-			<output name="output" file="output_dice.tsv"/>
+			<output name="output" file="xmfa2tbl_out_dice.tsv"/>
 		</test>
 	</tests>
 	<help><![CDATA[

@@ -197,7 +197,6 @@ $disable_backbone
     </data>
   </outputs>
   <tests>
-  <!--
       <test>
           <param name="sequences" value="phagey.fa,karma.fa" />
           <output name="output" file="1.xmfa" lines_diff="20"/>
@@ -222,7 +221,6 @@ $disable_backbone
           <param name="match_input" value="1.mums" />
           <output name="output" file="1.xmfa" lines_diff="24"/>
       </test>
-      -->
   </tests>
   <help><![CDATA[
 What it does
