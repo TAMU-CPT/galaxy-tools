@@ -1,0 +1,1466 @@
+##gff-version 3
+##feature-ontology http://song.cvs.sourceforge.net/viewvc/song/ontology/sofa.obo?revision=1.269
+##interproscan-version 5.33-72.0
+##sequence-region T7p49 1 196
+T7p49	.	polypeptide	1	196	.	+	.	ID=T7p49;md5=cd70d616f43bab97f9eb714342d751a5
+T7p49	Phobius	protein_match	1	16	.	+	.	date=07-05-2020;Target=T7p49 1 16;ID=match$1_1_16;signature_desc=Signal peptide region;Name=SIGNAL_PEPTIDE;status=T
+T7p49	Phobius	protein_match	1	1	.	+	.	date=07-05-2020;Target=T7p49 1 1;ID=match$2_1_1;signature_desc=N-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_N_REGION;status=T
+T7p49	Hamap	protein_match	1	194	38.159	+	.	date=07-05-2020;Target=T7p49 1 194;Ontology_term="GO:0039678";ID=match$3_1_194;signature_desc=Internal virion protein gp14.;Name=MF_04118;status=T;Dbxref="InterPro:IPR038996"
+T7p49	Phobius	protein_match	17	196	.	+	.	date=07-05-2020;Target=T7p49 17 196;ID=match$4_17_196;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+T7p49	Phobius	protein_match	2	11	.	+	.	date=07-05-2020;Target=T7p49 2 11;ID=match$5_2_11;signature_desc=Hydrophobic region of a signal peptide.;Name=SIGNAL_PEPTIDE_H_REGION;status=T
+T7p49	Phobius	protein_match	12	16	.	+	.	date=07-05-2020;Target=T7p49 12 16;ID=match$6_12_16;signature_desc=C-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_C_REGION;status=T
+##sequence-region T7p22 1 566
+T7p22	.	polypeptide	1	566	.	+	.	ID=T7p22;md5=76fc03b84bdaa87b8edc36c06a0f2ddc
+T7p22	Pfam	protein_match	290	507	2.1E-16	+	.	date=07-05-2020;Target=T7p22 290 507;Ontology_term="GO:0003678","GO:0005524","GO:0006260";ID=match$7_290_507;signature_desc=DnaB-like helicase C terminal domain;Name=PF03796;status=T;Dbxref="InterPro:IPR007694","Reactome:R-HSA-2151201"
+T7p22	ProSiteProfiles	protein_match	151	238	13.495	+	.	date=07-05-2020;Target=T7p22 151 238;ID=match$8_151_238;signature_desc=Toprim domain profile.;Name=PS50880;status=T;Dbxref="InterPro:IPR006171"
+T7p22	Pfam	protein_match	154	241	1.7E-11	+	.	date=07-05-2020;Target=T7p22 154 241;ID=match$9_154_241;signature_desc=Toprim-like;Name=PF13155;status=T
+T7p22	SUPERFAMILY	protein_match	65	255	1.96E-87	+	.	date=07-05-2020;Target=T7p22 65 255;ID=match$10_65_255;Name=SSF56731;status=T
+T7p22	Gene3D	protein_match	137	262	5.3E-52	+	.	date=07-05-2020;Target=T7p22 137 262;ID=match$11_137_262;Name=G3DSA:3.40.1360.10;status=T
+T7p22	Pfam	protein_match	13	47	3.5E-10	+	.	date=07-05-2020;Target=T7p22 13 47;Ontology_term="GO:0003896","GO:0004386","GO:0008270";ID=match$12_13_47;signature_desc=Zinc-binding domain of primase-helicase;Name=PF08273;status=T;Dbxref="InterPro:IPR013237"
+T7p22	ProSiteProfiles	protein_match	281	548	55.699	+	.	date=07-05-2020;Target=T7p22 281 548;Ontology_term="GO:0003678","GO:0005524","GO:0006260";ID=match$13_281_548;signature_desc=Superfamily 4 helicase domain profile.;Name=PS51199;status=T;Dbxref="InterPro:IPR007694","Reactome:R-HSA-2151201"
+T7p22	Gene3D	protein_match	1	56	1.4E-29	+	.	date=07-05-2020;Target=T7p22 1 56;ID=match$14_1_56;Name=G3DSA:2.20.25.10;status=T
+T7p22	PANTHER	protein_match	79	554	4.4E-45	+	.	date=07-05-2020;Target=T7p22 79 554;ID=match$15_79_554;Name=PTHR12873;status=T
+T7p22	SMART	protein_match	151	228	4.4E-9	+	.	date=07-05-2020;Target=T7p22 151 228;ID=match$16_151_228;Name=SM00493;status=T;Dbxref="InterPro:IPR006171"
+T7p22	SUPERFAMILY	protein_match	273	540	1.19E-32	+	.	date=07-05-2020;Target=T7p22 273 540;ID=match$17_273_540;Name=SSF52540;status=T;Dbxref="InterPro:IPR027417"
+T7p22	SUPERFAMILY	protein_match	10	63	4.25E-18	+	.	date=07-05-2020;Target=T7p22 10 63;ID=match$18_10_63;Name=SSF57783;status=T
+T7p22	Gene3D	protein_match	64	136	2.8E-37	+	.	date=07-05-2020;Target=T7p22 64 136;ID=match$19_64_136;Name=G3DSA:2.20.25.180;status=T
+T7p22	Gene3D	protein_match	271	547	1.2E-68	+	.	date=07-05-2020;Target=T7p22 271 547;ID=match$20_271_547;Name=G3DSA:3.40.50.300;status=T
+T7p22	SMART	protein_match	12	48	1.9E-14	+	.	date=07-05-2020;Target=T7p22 12 48;Ontology_term="GO:0003896","GO:0004386","GO:0008270";ID=match$21_12_48;Name=SM00778;status=T;Dbxref="InterPro:IPR013237"
+##sequence-region T7p32 1 99
+T7p32	.	polypeptide	1	99	.	+	.	ID=T7p32;md5=9a3273f190862e5107df3b3c78d903c3
+T7p32	Pfam	protein_match	1	99	3.7E-69	+	.	date=07-05-2020;Target=T7p32 1 99;ID=match$22_1_99;signature_desc=Protein of unknown function (DUF2675);Name=PF11247;status=T;Dbxref="InterPro:IPR022611"
+T7p32	ProDom	protein_match	1	99	5.0E-53	+	.	date=07-05-2020;Target=T7p32 1 99;ID=match$23_1_99;signature_desc=GENE 5.5-5.7 FUSION CONTAINS:;Name=PD029745;status=T;Dbxref="InterPro:IPR022611"
+##sequence-region T7p31.cds1 1 99
+T7p31.cds1	.	polypeptide	1	99	.	+	.	ID=T7p31.cds1;md5=9a3273f190862e5107df3b3c78d903c3
+T7p31.cds1	Pfam	protein_match	1	99	3.7E-69	+	.	date=07-05-2020;Target=T7p31.cds1 1 99;ID=match$24_1_99;signature_desc=Protein of unknown function (DUF2675);Name=PF11247;status=T;Dbxref="InterPro:IPR022611"
+T7p31.cds1	ProDom	protein_match	1	99	5.0E-53	+	.	date=07-05-2020;Target=T7p31.cds1 1 99;ID=match$25_1_99;signature_desc=GENE 5.5-5.7 FUSION CONTAINS:;Name=PD029745;status=T;Dbxref="InterPro:IPR022611"
+##sequence-region T7p30 1 118
+T7p30	.	polypeptide	1	118	.	+	.	ID=T7p30;md5=c3c6e1d64212b9a94e1283c6544b64b3
+T7p30	Pfam	protein_match	6	102	3.8E-13	+	.	date=07-05-2020;Target=T7p30 6 102;ID=match$26_6_102;signature_desc=PD-(D/E)XK endonuclease;Name=PF11645;status=T;Dbxref="InterPro:IPR021671"
+T7p30	Gene3D	protein_match	1	117	1.0E-15	+	.	date=07-05-2020;Target=T7p30 1 117;Ontology_term="GO:0003676","GO:0004518";ID=match$27_1_117;Name=G3DSA:3.40.1350.10;status=T;Dbxref="InterPro:IPR011856"
+##sequence-region T7p56 1 83
+T7p56	.	polypeptide	1	83	.	+	.	ID=T7p56;md5=6f50921c4948cfe46655be693b158c7d
+T7p56	Phobius	protein_match	50	83	.	+	.	date=07-05-2020;Target=T7p56 50 83;ID=match$28_50_83;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+T7p56	Pfam	protein_match	51	83	8.7E-24	+	.	date=07-05-2020;Target=T7p56 51 83;Ontology_term="GO:0019076";ID=match$29_51_83;signature_desc=outer-membrane spanin sub-unit;Name=PF17531;status=T;Dbxref="InterPro:IPR020130"
+T7p56	ProDom	protein_match	1	83	6.0E-35	+	.	date=07-05-2020;Target=T7p56 1 83;Ontology_term="GO:0019076";ID=match$30_1_83;signature_desc=GENE;Name=PD028580;status=T;Dbxref="InterPro:IPR020130"
+T7p56	Phobius	protein_match	45	49	.	+	.	date=07-05-2020;Target=T7p56 45 49;ID=match$31_45_49;signature_desc=C-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_C_REGION;status=T
+T7p56	Phobius	protein_match	1	49	.	+	.	date=07-05-2020;Target=T7p56 1 49;ID=match$32_1_49;signature_desc=Signal peptide region;Name=SIGNAL_PEPTIDE;status=T
+T7p56	Phobius	protein_match	33	44	.	+	.	date=07-05-2020;Target=T7p56 33 44;ID=match$33_33_44;signature_desc=Hydrophobic region of a signal peptide.;Name=SIGNAL_PEPTIDE_H_REGION;status=T
+T7p56	Phobius	protein_match	1	32	.	+	.	date=07-05-2020;Target=T7p56 1 32;ID=match$34_1_32;signature_desc=N-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_N_REGION;status=T
+##sequence-region T7p17 1 232
+T7p17	.	polypeptide	1	232	.	+	.	ID=T7p17;md5=ebf5446ee689acf3e36e7978404f1a92
+T7p17	PIRSF	protein_match	1	232	1.4E-159	+	.	date=07-05-2020;Target=T7p17 1 232;ID=match$35_1_232;Name=PIRSF004311;status=T;Dbxref="InterPro:IPR016411"
+T7p17	SUPERFAMILY	protein_match	2	197	2.74E-71	+	.	date=07-05-2020;Target=T7p17 2 197;ID=match$36_2_197;Name=SSF50249;status=T;Dbxref="InterPro:IPR012340"
+T7p17	Gene3D	protein_match	1	206	5.1E-72	+	.	date=07-05-2020;Target=T7p17 1 206;ID=match$37_1_206;Name=G3DSA:2.40.50.140;status=T
+##sequence-region T7p29 1 704
+T7p29	.	polypeptide	1	704	.	+	.	ID=T7p29;md5=e83ca1cab9ae4b2c26ecc42e080d7b84
+T7p29	SMART	protein_match	448	664	2.6E-63	+	.	date=07-05-2020;Target=T7p29 448 664;Ontology_term="GO:0003677","GO:0003887","GO:0006260";ID=match$38_448_664;Name=SM00482;status=T;Dbxref="InterPro:IPR001098","KEGG:00230+2.7.7.7","KEGG:00240+2.7.7.7"
+T7p29	Gene3D	protein_match	415	700	3.7E-101	+	.	date=07-05-2020;Target=T7p29 415 700;ID=match$39_415_700;Name=G3DSA:3.30.70.370;status=T
+T7p29	Gene3D	protein_match	485	596	3.7E-101	+	.	date=07-05-2020;Target=T7p29 485 596;ID=match$40_485_596;Name=G3DSA:1.10.150.20;status=T
+T7p29	Gene3D	protein_match	1	232	6.9E-78	+	.	date=07-05-2020;Target=T7p29 1 232;Ontology_term="GO:0003676";ID=match$41_1_232;Name=G3DSA:3.30.420.10;status=T;Dbxref="InterPro:IPR036397"
+T7p29	Pfam	protein_match	331	701	3.3E-54	+	.	date=07-05-2020;Target=T7p29 331 701;Ontology_term="GO:0003677","GO:0003887","GO:0006260";ID=match$42_331_701;signature_desc=DNA polymerase family A;Name=PF00476;status=T;Dbxref="InterPro:IPR001098","KEGG:00230+2.7.7.7","KEGG:00240+2.7.7.7"
+T7p29	Gene3D	protein_match	233	414	2.5E-75	+	.	date=07-05-2020;Target=T7p29 233 414;ID=match$43_233_414;Name=G3DSA:1.20.1060.10;status=T
+T7p29	PANTHER	protein_match	68	701	4.8E-27	+	.	date=07-05-2020;Target=T7p29 68 701;Ontology_term="GO:0003887","GO:0006261";ID=match$44_68_701;Name=PTHR10133;status=T;Dbxref="InterPro:IPR002298","KEGG:00230+2.7.7.7","KEGG:00240+2.7.7.7"
+T7p29	SUPERFAMILY	protein_match	214	704	3.45E-140	+	.	date=07-05-2020;Target=T7p29 214 704;ID=match$45_214_704;Name=SSF56672;status=T
+T7p29	SUPERFAMILY	protein_match	1	206	6.33E-54	+	.	date=07-05-2020;Target=T7p29 1 206;ID=match$46_1_206;Name=SSF53098;status=T;Dbxref="InterPro:IPR012337"
+T7p29	Hamap	protein_match	1	704	86.366	+	.	date=07-05-2020;Target=T7p29 1 704;Ontology_term="GO:0006261","GO:0008408";ID=match$47_1_704;signature_desc=DNA-directed DNA polymerase.;Name=MF_04101;status=T;Dbxref="InterPro:IPR034699","KEGG:00230+2.7.7.7","KEGG:00240+2.7.7.7"
+T7p29	PRINTS	protein_match	416	438	1.2E-8	+	.	date=07-05-2020;Target=T7p29 416 438;Ontology_term="GO:0003887","GO:0006261";ID=match$48_416_438;signature_desc=DNA-polymerase family A (pol I) signature;Name=PR00868;status=T;Dbxref="InterPro:IPR002298","KEGG:00230+2.7.7.7","KEGG:00240+2.7.7.7"
+T7p29	PRINTS	protein_match	611	627	1.2E-8	+	.	date=07-05-2020;Target=T7p29 611 627;Ontology_term="GO:0003887","GO:0006261";ID=match$48_611_627;signature_desc=DNA-polymerase family A (pol I) signature;Name=PR00868;status=T;Dbxref="InterPro:IPR002298","KEGG:00230+2.7.7.7","KEGG:00240+2.7.7.7"
+T7p29	PRINTS	protein_match	518	543	1.2E-8	+	.	date=07-05-2020;Target=T7p29 518 543;Ontology_term="GO:0003887","GO:0006261";ID=match$48_518_543;signature_desc=DNA-polymerase family A (pol I) signature;Name=PR00868;status=T;Dbxref="InterPro:IPR002298","KEGG:00230+2.7.7.7","KEGG:00240+2.7.7.7"
+T7p29	PRINTS	protein_match	440	455	1.2E-8	+	.	date=07-05-2020;Target=T7p29 440 455;Ontology_term="GO:0003887","GO:0006261";ID=match$48_440_455;signature_desc=DNA-polymerase family A (pol I) signature;Name=PR00868;status=T;Dbxref="InterPro:IPR002298","KEGG:00230+2.7.7.7","KEGG:00240+2.7.7.7"
+T7p29	ProSitePatterns	protein_match	518	537	.	+	.	date=07-05-2020;Target=T7p29 518 537;Ontology_term="GO:0003887","GO:0006260";ID=match$49_518_537;signature_desc=DNA polymerase family A signature.;Name=PS00447;status=T;Dbxref="InterPro:IPR019760","KEGG:00230+2.7.7.7","KEGG:00240+2.7.7.7"
+##sequence-region T7p51 1 1318
+T7p51	.	polypeptide	1	1318	.	+	.	ID=T7p51;md5=29229509a985c6b6dbb98b4192b45928
+T7p51	Phobius	protein_match	1158	1318	.	+	.	date=07-05-2020;Target=T7p51 1158 1318;ID=match$50_1158_1318;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the cytoplasm.;Name=CYTOPLASMIC_DOMAIN;status=T
+T7p51	Phobius	protein_match	1136	1157	.	+	.	date=07-05-2020;Target=T7p51 1136 1157;ID=match$51_1136_1157;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.;Name=TRANSMEMBRANE;status=T
+T7p51	Phobius	protein_match	1	1135	.	+	.	date=07-05-2020;Target=T7p51 1 1135;ID=match$52_1_1135;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+T7p51	Gene3D	protein_match	5	152	2.1E-28	+	.	date=07-05-2020;Target=T7p51 5 152;ID=match$53_5_152;Name=G3DSA:1.10.530.10;status=T
+T7p51	ProSitePatterns	protein_match	33	61	.	+	.	date=07-05-2020;Target=T7p51 33 61;Ontology_term="GO:0000270","GO:0008933","GO:0016020";ID=match$54_33_61;signature_desc=Prokaryotic transglycosylases signature.;Name=PS00922;status=T;Dbxref="InterPro:IPR000189"
+T7p51	SUPERFAMILY	protein_match	5	146	4.67E-28	+	.	date=07-05-2020;Target=T7p51 5 146;ID=match$55_5_146;Name=SSF53955;status=T;Dbxref="InterPro:IPR023346"
+T7p51	Coils	protein_match	1317	1318	.	+	.	date=07-05-2020;Target=T7p51 1317 1318;ID=match$56_1317_1318;Name=Coil;status=T
+T7p51	Hamap	protein_match	2	1309	10.789	+	.	date=07-05-2020;Target=T7p51 2 1309;Ontology_term="GO:0039678";ID=match$57_2_1309;signature_desc=Peptidoglycan transglycosylase gp16.;Name=MF_04121;status=T;Dbxref="InterPro:IPR038994"
+T7p51	Pfam	protein_match	15	127	2.8E-29	+	.	date=07-05-2020;Target=T7p51 15 127;ID=match$58_15_127;signature_desc=Transglycosylase SLT domain;Name=PF01464;status=T;Dbxref="InterPro:IPR008258"
+T7p51	PANTHER	protein_match	10	116	4.7E-12	+	.	date=07-05-2020;Target=T7p51 10 116;ID=match$59_10_116;Name=PTHR45529;status=T
+##sequence-region T7p12 1 29
+T7p12	.	polypeptide	1	29	.	+	.	ID=T7p12;md5=3680de1ba56d2dfd6bbe9dace003ecc1
+T7p12	Phobius	protein_match	4	15	.	+	.	date=07-05-2020;Target=T7p12 4 15;ID=match$60_4_15;signature_desc=Hydrophobic region of a signal peptide.;Name=SIGNAL_PEPTIDE_H_REGION;status=T
+T7p12	Phobius	protein_match	1	3	.	+	.	date=07-05-2020;Target=T7p12 1 3;ID=match$61_1_3;signature_desc=N-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_N_REGION;status=T
+T7p12	Phobius	protein_match	1	19	.	+	.	date=07-05-2020;Target=T7p12 1 19;ID=match$62_1_19;signature_desc=Signal peptide region;Name=SIGNAL_PEPTIDE;status=T
+T7p12	Phobius	protein_match	20	29	.	+	.	date=07-05-2020;Target=T7p12 20 29;ID=match$63_20_29;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+T7p12	Phobius	protein_match	16	19	.	+	.	date=07-05-2020;Target=T7p12 16 19;ID=match$64_16_19;signature_desc=C-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_C_REGION;status=T
+T7p12	SignalP_EUK	protein_match	1	16	.	+	.	date=07-05-2020;Target=T7p12 1 16;ID=match$65_1_16;Name=SignalP-noTM;status=T
+##sequence-region T7p46 1 196
+T7p46	.	polypeptide	1	196	.	+	.	ID=T7p46;md5=811981e496974709d96eeac41b16805b
+T7p46	Pfam	protein_match	14	181	1.3E-61	+	.	date=07-05-2020;Target=T7p46 14 181;ID=match$66_14_181;signature_desc=Tail tubular protein;Name=PF17212;status=T;Dbxref="InterPro:IPR033767"
+##sequence-region T7p35 1 300
+T7p35	.	polypeptide	1	300	.	+	.	ID=T7p35;md5=d85a968415f33a219af2a55091f3c08d
+T7p35	Pfam	protein_match	78	165	7.7E-9	+	.	date=07-05-2020;Target=T7p35 78 165;Ontology_term="GO:0003677";ID=match$67_78_165;signature_desc=5'-3' exonuclease, N-terminal resolvase-like domain;Name=PF02739;status=T;Dbxref="InterPro:IPR020046"
+T7p35	Gene3D	protein_match	12	190	4.1E-17	+	.	date=07-05-2020;Target=T7p35 12 190;ID=match$68_12_190;Name=G3DSA:3.40.50.1010;status=T
+T7p35	SUPERFAMILY	protein_match	19	181	9.81E-21	+	.	date=07-05-2020;Target=T7p35 19 181;ID=match$69_19_181;Name=SSF88723;status=T;Dbxref="InterPro:IPR029060"
+##sequence-region T7p24 1 503
+T7p24	.	polypeptide	1	503	.	+	.	ID=T7p24;md5=764227a097b784aedf28204e54c552bb
+T7p24	Gene3D	protein_match	208	484	8.9E-69	+	.	date=07-05-2020;Target=T7p24 208 484;ID=match$70_208_484;Name=G3DSA:3.40.50.300;status=T
+T7p24	ProSiteProfiles	protein_match	218	485	55.699	+	.	date=07-05-2020;Target=T7p24 218 485;Ontology_term="GO:0003678","GO:0005524","GO:0006260";ID=match$71_218_485;signature_desc=Superfamily 4 helicase domain profile.;Name=PS51199;status=T;Dbxref="InterPro:IPR007694","Reactome:R-HSA-2151201"
+T7p24	Gene3D	protein_match	1	73	2.4E-37	+	.	date=07-05-2020;Target=T7p24 1 73;ID=match$72_1_73;Name=G3DSA:2.20.25.180;status=T
+T7p24	ProSiteProfiles	protein_match	88	175	13.495	+	.	date=07-05-2020;Target=T7p24 88 175;ID=match$73_88_175;signature_desc=Toprim domain profile.;Name=PS50880;status=T;Dbxref="InterPro:IPR006171"
+T7p24	Pfam	protein_match	91	178	1.4E-11	+	.	date=07-05-2020;Target=T7p24 91 178;ID=match$74_91_178;signature_desc=Toprim-like;Name=PF13155;status=T
+T7p24	SUPERFAMILY	protein_match	210	477	8.69E-33	+	.	date=07-05-2020;Target=T7p24 210 477;ID=match$75_210_477;Name=SSF52540;status=T;Dbxref="InterPro:IPR027417"
+T7p24	PANTHER	protein_match	18	491	4.1E-45	+	.	date=07-05-2020;Target=T7p24 18 491;ID=match$76_18_491;Name=PTHR12873;status=T
+T7p24	SMART	protein_match	88	165	4.4E-9	+	.	date=07-05-2020;Target=T7p24 88 165;ID=match$77_88_165;Name=SM00493;status=T;Dbxref="InterPro:IPR006171"
+T7p24	SUPERFAMILY	protein_match	2	192	1.44E-87	+	.	date=07-05-2020;Target=T7p24 2 192;ID=match$78_2_192;Name=SSF56731;status=T
+T7p24	Gene3D	protein_match	74	199	4.3E-52	+	.	date=07-05-2020;Target=T7p24 74 199;ID=match$79_74_199;Name=G3DSA:3.40.1360.10;status=T
+T7p24	Pfam	protein_match	227	444	1.6E-16	+	.	date=07-05-2020;Target=T7p24 227 444;Ontology_term="GO:0003678","GO:0005524","GO:0006260";ID=match$80_227_444;signature_desc=DnaB-like helicase C terminal domain;Name=PF03796;status=T;Dbxref="InterPro:IPR007694","Reactome:R-HSA-2151201"
+##sequence-region T7p13 1 86
+T7p13	.	polypeptide	1	86	.	+	.	ID=T7p13;md5=7700127ef206025647172610081eb42b
+T7p13	Pfam	protein_match	1	67	1.3E-24	+	.	date=07-05-2020;Target=T7p13 1 67;ID=match$81_1_67;signature_desc=Bladder cancer-related protein BC10;Name=PF06726;status=T
+##sequence-region T7p52 1 553
+T7p52	.	polypeptide	1	553	.	+	.	ID=T7p52;md5=022e2fd9ea993f77902c7d366d068b8c
+T7p52	Pfam	protein_match	359	521	8.8E-67	+	.	date=07-05-2020;Target=T7p52 359 521;ID=match$82_359_521;signature_desc=Tail fibre protein gp37 C terminal;Name=PF12604;status=T;Dbxref="InterPro:IPR022246"
+T7p52	Pfam	protein_match	1	162	2.6E-75	+	.	date=07-05-2020;Target=T7p52 1 162;ID=match$83_1_162;signature_desc=Phage T7 tail fibre protein;Name=PF03906;status=T;Dbxref="InterPro:IPR005604"
+T7p52	Coils	protein_match	168	188	.	+	.	date=07-05-2020;Target=T7p52 168 188;ID=match$84_168_188;Name=Coil;status=T
+T7p52	Gene3D	protein_match	370	430	4.4E-31	+	.	date=07-05-2020;Target=T7p52 370 430;ID=match$85_370_430;Name=G3DSA:2.20.220.30;status=T
+T7p52	Gene3D	protein_match	464	553	2.6E-55	+	.	date=07-05-2020;Target=T7p52 464 553;ID=match$86_464_553;Name=G3DSA:2.60.320.30;status=T
+T7p52	Gene3D	protein_match	431	463	1.0E-19	+	.	date=07-05-2020;Target=T7p52 431 463;ID=match$87_431_463;Name=G3DSA:2.20.70.120;status=T
+T7p52	Coils	protein_match	249	269	.	+	.	date=07-05-2020;Target=T7p52 249 269;ID=match$88_249_269;Name=Coil;status=T
+##sequence-region T7p10.p01 1 359
+T7p10.p01	.	polypeptide	1	359	.	+	.	ID=T7p10.p01;md5=f73bb0b6a5095b30d888cbcc3413ff45
+T7p10.p01	Gene3D	protein_match	4	240	5.0E-116	+	.	date=07-05-2020;Target=T7p10.p01 4 240;ID=match$89_4_240;Name=G3DSA:3.30.1490.70;status=T
+T7p10.p01	Pfam	protein_match	8	240	5.2E-47	+	.	date=07-05-2020;Target=T7p10.p01 8 240;Ontology_term="GO:0003910","GO:0005524","GO:0006281","GO:0006310";ID=match$90_8_240;signature_desc=ATP dependent DNA ligase domain;Name=PF01068;status=T;Dbxref="InterPro:IPR012310"
+T7p10.p01	ProSiteProfiles	protein_match	175	242	13.093	+	.	date=07-05-2020;Target=T7p10.p01 175 242;Ontology_term="GO:0003910","GO:0005524","GO:0006281","GO:0006310";ID=match$91_175_242;signature_desc=ATP-dependent DNA ligase family profile.;Name=PS50160;status=T;Dbxref="InterPro:IPR012310"
+T7p10.p01	ProSitePatterns	protein_match	217	240	.	+	.	date=07-05-2020;Target=T7p10.p01 217 240;Ontology_term="GO:0003909","GO:0051103";ID=match$92_217_240;signature_desc=ATP-dependent DNA ligase signature 2.;Name=PS00333;status=T;Dbxref="InterPro:IPR016059"
+T7p10.p01	SUPERFAMILY	protein_match	5	240	4.03E-41	+	.	date=07-05-2020;Target=T7p10.p01 5 240;ID=match$93_5_240;Name=SSF56091;status=T
+T7p10.p01	SUPERFAMILY	protein_match	241	349	2.11E-32	+	.	date=07-05-2020;Target=T7p10.p01 241 349;ID=match$94_241_349;Name=SSF50249;status=T;Dbxref="InterPro:IPR012340"
+T7p10.p01	Pfam	protein_match	241	349	1.0E-75	+	.	date=07-05-2020;Target=T7p10.p01 241 349;Ontology_term="GO:0003690";ID=match$95_241_349;signature_desc=DNA ligase C-terminal domain;Name=PF17879;status=T;Dbxref="InterPro:IPR041559"
+T7p10.p01	Gene3D	protein_match	37	194	5.0E-116	+	.	date=07-05-2020;Target=T7p10.p01 37 194;ID=match$96_37_194;Name=G3DSA:3.30.470.30;status=T
+T7p10.p01	PIRSF	protein_match	1	359	8.4E-193	+	.	date=07-05-2020;Target=T7p10.p01 1 359;ID=match$97_1_359;Name=PIRSF001600;status=T;Dbxref="InterPro:IPR016306"
+T7p10.p01	Gene3D	protein_match	241	349	1.2E-52	+	.	date=07-05-2020;Target=T7p10.p01 241 349;ID=match$98_241_349;Name=G3DSA:2.40.50.140;status=T
+T7p10.p01	ProSitePatterns	protein_match	32	40	.	+	.	date=07-05-2020;Target=T7p10.p01 32 40;Ontology_term="GO:0003909","GO:0051103";ID=match$99_32_40;signature_desc=ATP-dependent DNA ligase AMP-binding site.;Name=PS00697;status=T;Dbxref="InterPro:IPR016059"
+##sequence-region T7p41 1 130
+T7p41	.	polypeptide	1	130	.	+	.	ID=T7p41;md5=3dc367ca6c7d99b5f733577520b020e0
+T7p41	SUPERFAMILY	protein_match	4	121	2.65E-30	+	.	date=07-05-2020;Target=T7p41 4 121;ID=match$100_4_121;Name=SSF54060;status=T
+T7p41	Pfam	protein_match	29	70	1.1E-12	+	.	date=07-05-2020;Target=T7p41 29 70;ID=match$101_29_70;signature_desc=HNH endonuclease;Name=PF13392;status=T;Dbxref="InterPro:IPR003615"
+##sequence-region T7p20 1 151
+T7p20	.	polypeptide	1	151	.	+	.	ID=T7p20;md5=02dbd8f9ad32adc46635f83db01c1217
+T7p20	Pfam	protein_match	10	132	1.1E-19	+	.	date=07-05-2020;Target=T7p20 10 132;Ontology_term="GO:0008745","GO:0009253";ID=match$102_10_132;signature_desc=N-acetylmuramoyl-L-alanine amidase;Name=PF01510;status=T;Dbxref="InterPro:IPR002502","Reactome:R-HSA-6803157"
+T7p20	Gene3D	protein_match	6	151	3.5E-52	+	.	date=07-05-2020;Target=T7p20 6 151;Ontology_term="GO:0008745","GO:0009253";ID=match$103_6_151;Name=G3DSA:3.40.80.10;status=T;Dbxref="InterPro:IPR036505","Reactome:R-HSA-6803157"
+T7p20	SMART	protein_match	1	151	1.9E-24	+	.	date=07-05-2020;Target=T7p20 1 151;Ontology_term="GO:0008745","GO:0009253";ID=match$104_1_151;Name=SM00644;status=T;Dbxref="InterPro:IPR002502","Reactome:R-HSA-6803157"
+T7p20	PANTHER	protein_match	12	132	6.2E-21	+	.	date=07-05-2020;Target=T7p20 12 132;ID=match$105_12_132;Name=PTHR11022;status=T;Dbxref="InterPro:IPR015510","Reactome:R-HSA-6803157"
+T7p20	SUPERFAMILY	protein_match	10	146	4.06E-44	+	.	date=07-05-2020;Target=T7p20 10 146;Ontology_term="GO:0008745","GO:0009253";ID=match$106_10_146;Name=SSF55846;status=T;Dbxref="InterPro:IPR036505","Reactome:R-HSA-6803157"
+T7p20	PANTHER	protein_match	12	132	6.2E-21	+	.	date=07-05-2020;Target=T7p20 12 132;ID=match$107_12_132;Name=PTHR11022:SF41;status=T
+T7p20	Hamap	protein_match	1	149	51.166	+	.	date=07-05-2020;Target=T7p20 1 149;Ontology_term="GO:0008745","GO:0009253","GO:0032897","GO:0044659";ID=match$108_1_149;signature_desc=Endolysin.;Name=MF_04111;status=T;Dbxref="InterPro:IPR034689","MetaCyc:PWY-7883"
+T7p20	SMART	protein_match	1	124	3.2E-32	+	.	date=07-05-2020;Target=T7p20 1 124;Ontology_term="GO:0008270","GO:0008745","GO:0009253";ID=match$109_1_124;Name=SM00701;status=T;Dbxref="InterPro:IPR006619","Reactome:R-HSA-6803157"
+##sequence-region T7p08.p01 1 85
+T7p08.p01	.	polypeptide	1	85	.	+	.	ID=T7p08.p01;md5=899fdde520dbab7d67bce6a349a07839
+T7p08.p01	ProDom	protein_match	1	85	1.0E-44	+	.	date=07-05-2020;Target=T7p08.p01 1 85;ID=match$110_1_85;signature_desc=GENE DNA EARLY REPLICATION INHIBITOR TRIPHOSPHO-HYDROLASE HYDROLASE DEOXYGUANOSINE;Name=PD028750;status=T;Dbxref="InterPro:IPR020147"
+T7p08.p01	Pfam	protein_match	1	85	3.5E-62	+	.	date=07-05-2020;Target=T7p08.p01 1 85;ID=match$111_1_85;signature_desc=Protein of unknown function (DUF2745);Name=PF10922;status=T;Dbxref="InterPro:IPR020147"
+##sequence-region T7p60 1 49
+T7p60	.	polypeptide	1	49	.	+	.	ID=T7p60;md5=2e15b2b43ff80e089e58b3ba400b5156
+T7p60	Phobius	protein_match	26	30	.	+	.	date=07-05-2020;Target=T7p60 26 30;ID=match$112_26_30;signature_desc=C-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_C_REGION;status=T
+T7p60	Phobius	protein_match	1	30	.	+	.	date=07-05-2020;Target=T7p60 1 30;ID=match$113_1_30;signature_desc=Signal peptide region;Name=SIGNAL_PEPTIDE;status=T
+T7p60	Pfam	protein_match	31	49	4.7E-11	+	.	date=07-05-2020;Target=T7p60 31 49;ID=match$114_31_49;signature_desc=Family of unknown function (DUF5465);Name=PF17553;status=T;Dbxref="InterPro:IPR035581"
+T7p60	Phobius	protein_match	31	49	.	+	.	date=07-05-2020;Target=T7p60 31 49;ID=match$115_31_49;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+T7p60	Phobius	protein_match	17	25	.	+	.	date=07-05-2020;Target=T7p60 17 25;ID=match$116_17_25;signature_desc=Hydrophobic region of a signal peptide.;Name=SIGNAL_PEPTIDE_H_REGION;status=T
+T7p60	ProDom	protein_match	1	49	3.0E-20	+	.	date=07-05-2020;Target=T7p60 1 49;ID=match$117_1_49;signature_desc=GENE;Name=PD026679;status=T;Dbxref="InterPro:IPR035580"
+T7p60	Phobius	protein_match	1	16	.	+	.	date=07-05-2020;Target=T7p60 1 16;ID=match$118_1_16;signature_desc=N-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_N_REGION;status=T
+##sequence-region T7p25 1 112
+T7p25	.	polypeptide	1	112	.	+	.	ID=T7p25;md5=ef9d87f490cf0219c249ee67120cdfb3
+T7p25	Phobius	protein_match	7	31	.	+	.	date=07-05-2020;Target=T7p25 7 31;ID=match$119_7_31;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.;Name=TRANSMEMBRANE;status=T
+T7p25	ProDom	protein_match	1	77	2.0E-25	+	.	date=07-05-2020;Target=T7p25 1 77;ID=match$120_1_77;signature_desc=GENE;Name=PD030520;status=T;Dbxref="InterPro:IPR035148"
+T7p25	Pfam	protein_match	22	92	4.8E-50	+	.	date=07-05-2020;Target=T7p25 22 92;ID=match$121_22_92;signature_desc=Family of unknown function (DUF5480);Name=PF17576;status=T;Dbxref="InterPro:IPR035148"
+T7p25	Phobius	protein_match	37	59	.	+	.	date=07-05-2020;Target=T7p25 37 59;ID=match$122_37_59;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.;Name=TRANSMEMBRANE;status=T
+T7p25	Phobius	protein_match	1	6	.	+	.	date=07-05-2020;Target=T7p25 1 6;ID=match$123_1_6;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the cytoplasm.;Name=CYTOPLASMIC_DOMAIN;status=T
+T7p25	Phobius	protein_match	32	36	.	+	.	date=07-05-2020;Target=T7p25 32 36;ID=match$124_32_36;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+T7p25	Phobius	protein_match	60	112	.	+	.	date=07-05-2020;Target=T7p25 60 112;ID=match$125_60_112;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the cytoplasm.;Name=CYTOPLASMIC_DOMAIN;status=T
+##sequence-region T7p37 1 84
+T7p37	.	polypeptide	1	84	.	+	.	ID=T7p37;md5=786a796a6302ed22eb09efd0cf20b773
+T7p37	ProDom	protein_match	1	77	5.0E-40	+	.	date=07-05-2020;Target=T7p37 1 77;ID=match$126_1_77;signature_desc=GENE;Name=PD028448;status=T;Dbxref="InterPro:IPR020121"
+T7p37	Pfam	protein_match	1	77	3.8E-42	+	.	date=07-05-2020;Target=T7p37 1 77;ID=match$127_1_77;signature_desc=Protein of unknown function (DUF2717);Name=PF10911;status=T;Dbxref="InterPro:IPR020121"
+T7p37	Coils	protein_match	61	81	.	+	.	date=07-05-2020;Target=T7p37 61 81;ID=match$128_61_81;Name=Coil;status=T
+##sequence-region T7p01.p01 1 117
+T7p01.p01	.	polypeptide	1	117	.	+	.	ID=T7p01.p01;md5=7a60f9d467142e862320f521605b746a
+T7p01.p01	Coils	protein_match	95	115	.	+	.	date=07-05-2020;Target=T7p01.p01 95 115;ID=match$129_95_115;Name=Coil;status=T
+T7p01.p01	Pfam	protein_match	3	103	1.1E-64	+	.	date=07-05-2020;Target=T7p01.p01 3 103;ID=match$130_3_103;signature_desc=DNA mimic ocr;Name=PF08684;status=T;Dbxref="InterPro:IPR014798"
+T7p01.p01	ProDom	protein_match	8	98	2.0E-47	+	.	date=07-05-2020;Target=T7p01.p01 8 98;ID=match$131_8_98;signature_desc=GENE 3D-STRUCTURE ANTIRESTRICTION EARLY GENOME GP5;Name=PD069042;status=T;Dbxref="InterPro:IPR014798"
+T7p01.p01	Gene3D	protein_match	1	107	9.3E-57	+	.	date=07-05-2020;Target=T7p01.p01 1 107;ID=match$132_1_107;Name=G3DSA:1.20.120.780;status=T;Dbxref="InterPro:IPR036207"
+T7p01.p01	SUPERFAMILY	protein_match	6	111	1.31E-57	+	.	date=07-05-2020;Target=T7p01.p01 6 111;ID=match$133_6_111;Name=SSF101059;status=T;Dbxref="InterPro:IPR036207"
+##sequence-region T7p42 1 536
+T7p42	.	polypeptide	1	536	.	+	.	ID=T7p42;md5=a1805d7cc41e3015441b422ca1a6a088
+T7p42	Pfam	protein_match	18	483	2.2E-107	+	.	date=07-05-2020;Target=T7p42 18 483;ID=match$134_18_483;signature_desc=Bacteriophage head to tail connecting protein;Name=PF12236;status=T;Dbxref="InterPro:IPR020991"
+T7p42	Hamap	protein_match	2	526	61.231	+	.	date=07-05-2020;Target=T7p42 2 526;Ontology_term="GO:0046798","GO:0099002";ID=match$135_2_526;signature_desc=Portal protein.;Name=MF_04120;status=T;Dbxref="InterPro:IPR038995"
+##sequence-region T7p57 1 586
+T7p57	.	polypeptide	1	586	.	+	.	ID=T7p57;md5=88f1f51e4236b62648b2ac74c260ec47
+T7p57	Gene3D	protein_match	2	220	2.3E-15	+	.	date=07-05-2020;Target=T7p57 2 220;ID=match$136_2_220;Name=G3DSA:3.40.50.300;status=T
+##sequence-region T7p07.p01 1 883
+T7p07.p01	.	polypeptide	1	883	.	+	.	ID=T7p07.p01;md5=e265ad382fd01e3b58abf8c087e6f00e
+T7p07.p01	ProSitePatterns	protein_match	625	639	.	+	.	date=07-05-2020;Target=T7p07.p01 625 639;Ontology_term="GO:0003677","GO:0003899","GO:0006351";ID=match$137_625_639;signature_desc=Bacteriophage-type RNA polymerase family active site signature 2.;Name=PS00489;status=T;Dbxref="InterPro:IPR002092","KEGG:00230+2.7.7.6","KEGG:00240+2.7.7.6","Reactome:R-HSA-163282","Reactome:R-HSA-2151201"
+T7p07.p01	ProSitePatterns	protein_match	533	544	.	+	.	date=07-05-2020;Target=T7p07.p01 533 544;Ontology_term="GO:0003677","GO:0003899","GO:0006351";ID=match$138_533_544;signature_desc=Bacteriophage-type RNA polymerase family active site signature 1.;Name=PS00900;status=T;Dbxref="InterPro:IPR002092","KEGG:00230+2.7.7.6","KEGG:00240+2.7.7.6","Reactome:R-HSA-163282","Reactome:R-HSA-2151201"
+T7p07.p01	Gene3D	protein_match	421	868	9.2E-177	+	.	date=07-05-2020;Target=T7p07.p01 421 868;ID=match$139_421_868;Name=G3DSA:3.30.70.370;status=T
+T7p07.p01	SUPERFAMILY	protein_match	7	882	1.96E-280	+	.	date=07-05-2020;Target=T7p07.p01 7 882;ID=match$140_7_882;Name=SSF56672;status=T
+T7p07.p01	Gene3D	protein_match	450	527	9.2E-177	+	.	date=07-05-2020;Target=T7p07.p01 450 527;ID=match$141_450_527;Name=G3DSA:1.10.287.280;status=T
+T7p07.p01	Gene3D	protein_match	326	411	1.5E-37	+	.	date=07-05-2020;Target=T7p07.p01 326 411;Ontology_term="GO:0003899";ID=match$142_326_411;Name=G3DSA:1.10.287.260;status=T;Dbxref="InterPro:IPR024075","KEGG:00230+2.7.7.6","KEGG:00240+2.7.7.6"
+T7p07.p01	Pfam	protein_match	36	322	6.9E-33	+	.	date=07-05-2020;Target=T7p07.p01 36 322;ID=match$143_36_322;signature_desc=DNA-directed RNA polymerase N-terminal;Name=PF14700;status=T;Dbxref="InterPro:IPR029262","KEGG:00230+2.7.7.6","KEGG:00240+2.7.7.6","Reactome:R-HSA-163282","Reactome:R-HSA-2151201"
+T7p07.p01	Gene3D	protein_match	8	325	2.8E-133	+	.	date=07-05-2020;Target=T7p07.p01 8 325;ID=match$144_8_325;Name=G3DSA:1.10.1320.10;status=T;Dbxref="InterPro:IPR037159","KEGG:00230+2.7.7.6","KEGG:00240+2.7.7.6","Reactome:R-HSA-163282","Reactome:R-HSA-2151201"
+T7p07.p01	SMART	protein_match	34	325	2.4E-61	+	.	date=07-05-2020;Target=T7p07.p01 34 325;ID=match$145_34_325;Name=SM01311;status=T;Dbxref="InterPro:IPR029262","KEGG:00230+2.7.7.6","KEGG:00240+2.7.7.6","Reactome:R-HSA-163282","Reactome:R-HSA-2151201"
+T7p07.p01	Gene3D	protein_match	554	786	9.2E-177	+	.	date=07-05-2020;Target=T7p07.p01 554 786;ID=match$146_554_786;Name=G3DSA:1.10.150.20;status=T
+T7p07.p01	PANTHER	protein_match	31	882	7.8E-154	+	.	date=07-05-2020;Target=T7p07.p01 31 882;Ontology_term="GO:0003677","GO:0003899","GO:0006351";ID=match$147_31_882;Name=PTHR10102;status=T;Dbxref="InterPro:IPR002092","KEGG:00230+2.7.7.6","KEGG:00240+2.7.7.6","Reactome:R-HSA-163282","Reactome:R-HSA-2151201"
+T7p07.p01	Pfam	protein_match	450	882	1.0E-106	+	.	date=07-05-2020;Target=T7p07.p01 450 882;Ontology_term="GO:0003677","GO:0003899","GO:0006351";ID=match$148_450_882;signature_desc=DNA-dependent RNA polymerase;Name=PF00940;status=T;Dbxref="InterPro:IPR002092","KEGG:00230+2.7.7.6","KEGG:00240+2.7.7.6","Reactome:R-HSA-163282","Reactome:R-HSA-2151201"
+T7p07.p01	PANTHER	protein_match	31	882	7.8E-154	+	.	date=07-05-2020;Target=T7p07.p01 31 882;ID=match$149_31_882;Name=PTHR10102:SF0;status=T
+##sequence-region T7p26 1 70
+T7p26	.	polypeptide	1	70	.	+	.	ID=T7p26;md5=db0e249e6f28e6d2dc3179fadf46afcb
+T7p26	ProDom	protein_match	1	70	4.0E-33	+	.	date=07-05-2020;Target=T7p26 1 70;ID=match$150_1_70;signature_desc=GENE;Name=PD027656;status=T;Dbxref="InterPro:IPR035156"
+T7p26	Pfam	protein_match	1	70	1.8E-50	+	.	date=07-05-2020;Target=T7p26 1 70;ID=match$151_1_70;signature_desc=Family of unknown function (DUF5471);Name=PF17565;status=T;Dbxref="InterPro:IPR035156"
+##sequence-region T7p04 1 47
+T7p04	.	polypeptide	1	47	.	+	.	ID=T7p04;md5=58d1df177bb7d2f0b5bdff724fefc956
+T7p04	Phobius	protein_match	4	12	.	+	.	date=07-05-2020;Target=T7p04 4 12;ID=match$152_4_12;signature_desc=Hydrophobic region of a signal peptide.;Name=SIGNAL_PEPTIDE_H_REGION;status=T
+T7p04	Phobius	protein_match	27	45	.	+	.	date=07-05-2020;Target=T7p04 27 45;ID=match$153_27_45;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.;Name=TRANSMEMBRANE;status=T
+T7p04	Phobius	protein_match	18	26	.	+	.	date=07-05-2020;Target=T7p04 18 26;ID=match$154_18_26;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+T7p04	Phobius	protein_match	46	47	.	+	.	date=07-05-2020;Target=T7p04 46 47;ID=match$155_46_47;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the cytoplasm.;Name=CYTOPLASMIC_DOMAIN;status=T
+T7p04	Phobius	protein_match	13	17	.	+	.	date=07-05-2020;Target=T7p04 13 17;ID=match$156_13_17;signature_desc=C-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_C_REGION;status=T
+T7p04	Phobius	protein_match	1	3	.	+	.	date=07-05-2020;Target=T7p04 1 3;ID=match$157_1_3;signature_desc=N-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_N_REGION;status=T
+T7p04	Phobius	protein_match	1	17	.	+	.	date=07-05-2020;Target=T7p04 1 17;ID=match$158_1_17;signature_desc=Signal peptide region;Name=SIGNAL_PEPTIDE;status=T
+##sequence-region T7p11 1 51
+T7p11	.	polypeptide	1	51	.	+	.	ID=T7p11;md5=4af313d24cf8c888bdc459edf8cbb039
+T7p11	Pfam	protein_match	1	51	1.8E-36	+	.	date=07-05-2020;Target=T7p11 1 51;ID=match$159_1_51;signature_desc=Family of unknown function (DUF5464);Name=PF17552;status=T;Dbxref="InterPro:IPR035180"
+T7p11	Phobius	protein_match	20	28	.	+	.	date=07-05-2020;Target=T7p11 20 28;ID=match$160_20_28;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+T7p11	Phobius	protein_match	8	15	.	+	.	date=07-05-2020;Target=T7p11 8 15;ID=match$161_8_15;signature_desc=Hydrophobic region of a signal peptide.;Name=SIGNAL_PEPTIDE_H_REGION;status=T
+T7p11	Phobius	protein_match	1	7	.	+	.	date=07-05-2020;Target=T7p11 1 7;ID=match$162_1_7;signature_desc=N-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_N_REGION;status=T
+T7p11	Phobius	protein_match	50	51	.	+	.	date=07-05-2020;Target=T7p11 50 51;ID=match$163_50_51;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the cytoplasm.;Name=CYTOPLASMIC_DOMAIN;status=T
+T7p11	Phobius	protein_match	1	19	.	+	.	date=07-05-2020;Target=T7p11 1 19;ID=match$164_1_19;signature_desc=Signal peptide region;Name=SIGNAL_PEPTIDE;status=T
+T7p11	ProDom	protein_match	1	51	2.0E-11	+	.	date=07-05-2020;Target=T7p11 1 51;ID=match$165_1_51;signature_desc=GENE ORF;Name=PD026641;status=T;Dbxref="InterPro:IPR035180"
+T7p11	Phobius	protein_match	16	19	.	+	.	date=07-05-2020;Target=T7p11 16 19;ID=match$166_16_19;signature_desc=C-terminal region of a signal peptide.;Name=SIGNAL_PEPTIDE_C_REGION;status=T
+T7p11	Phobius	protein_match	29	49	.	+	.	date=07-05-2020;Target=T7p11 29 49;ID=match$167_29_49;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.;Name=TRANSMEMBRANE;status=T
+##sequence-region T7p16 1 64
+T7p16	.	polypeptide	1	64	.	+	.	ID=T7p16;md5=0a5957edfb4e6dc7ef5bb6980d77390e
+T7p16	Gene3D	protein_match	1	64	2.1E-39	+	.	date=07-05-2020;Target=T7p16 1 64;ID=match$168_1_64;Name=G3DSA:3.10.20.510;status=T;Dbxref="InterPro:IPR038715"
+T7p16	PIRSF	protein_match	1	64	7.4E-52	+	.	date=07-05-2020;Target=T7p16 1 64;ID=match$169_1_64;Name=PIRSF004348;status=T;Dbxref="InterPro:IPR016412"
+T7p16	Pfam	protein_match	14	60	8.1E-27	+	.	date=07-05-2020;Target=T7p16 14 60;ID=match$170_14_60;signature_desc=RNA polymerase inhibitor;Name=PF16857;status=T;Dbxref="InterPro:IPR016412"
+##sequence-region T7p36 1 37
+T7p36	.	polypeptide	1	37	.	+	.	ID=T7p36;md5=4670cfb66fa594807b9792629b8c7ff6
+T7p36	Phobius	protein_match	6	27	.	+	.	date=07-05-2020;Target=T7p36 6 27;ID=match$171_6_27;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.;Name=TRANSMEMBRANE;status=T
+T7p36	Phobius	protein_match	1	5	.	+	.	date=07-05-2020;Target=T7p36 1 5;ID=match$172_1_5;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+T7p36	Pfam	protein_match	1	37	8.3E-28	+	.	date=07-05-2020;Target=T7p36 1 37;ID=match$173_1_37;signature_desc=Family of unknown function (DUF5516);Name=PF17637;status=T;Dbxref="InterPro:IPR035111"
+T7p36	Phobius	protein_match	28	37	.	+	.	date=07-05-2020;Target=T7p36 28 37;ID=match$174_28_37;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the cytoplasm.;Name=CYTOPLASMIC_DOMAIN;status=T
+##sequence-region T7p21 1 121
+T7p21	.	polypeptide	1	121	.	+	.	ID=T7p21;md5=388b5b89c43724ee4d965fe7e73e992e
+T7p21	SUPERFAMILY	protein_match	8	62	3.53E-15	+	.	date=07-05-2020;Target=T7p21 8 62;ID=match$175_8_62;Name=SSF54060;status=T
+T7p21	Gene3D	protein_match	2	66	5.8E-6	+	.	date=07-05-2020;Target=T7p21 2 66;ID=match$176_2_66;Name=G3DSA:3.90.75.20;status=T
+T7p21	SMART	protein_match	8	56	6.2E-5	+	.	date=07-05-2020;Target=T7p21 8 56;ID=match$177_8_56;Name=SM00507;status=T;Dbxref="InterPro:IPR003615"
+T7p21	Pfam	protein_match	14	56	3.4E-15	+	.	date=07-05-2020;Target=T7p21 14 56;ID=match$178_14_56;signature_desc=HNH endonuclease;Name=PF13392;status=T;Dbxref="InterPro:IPR003615"
+##sequence-region T7p48 1 138
+T7p48	.	polypeptide	1	138	.	+	.	ID=T7p48;md5=f105cbce826fdfd610afd79fadb2c5ff
+T7p48	Pfam	protein_match	39	124	1.3E-47	+	.	date=07-05-2020;Target=T7p48 39 124;ID=match$179_39_124;signature_desc=Protein of unknown function (DUF2833);Name=PF11090;status=T;Dbxref="InterPro:IPR020335"
+T7p48	ProDom	protein_match	15	136	1.0E-69	+	.	date=07-05-2020;Target=T7p48 15 136;ID=match$180_15_136;signature_desc=INTERNAL VIRION A GENE;Name=PD084413;status=T;Dbxref="InterPro:IPR020335"
+##sequence-region T7p55 1 143
+T7p55	.	polypeptide	1	143	.	+	.	ID=T7p55;md5=9a959e5e9446f5ad34aa835722e77661
+T7p55	Phobius	protein_match	1	5	.	+	.	date=07-05-2020;Target=T7p55 1 5;ID=match$181_1_5;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+T7p55	Phobius	protein_match	26	143	.	+	.	date=07-05-2020;Target=T7p55 26 143;ID=match$182_26_143;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the cytoplasm.;Name=CYTOPLASMIC_DOMAIN;status=T
+T7p55	ProDom	protein_match	1	143	1.0E-78	+	.	date=07-05-2020;Target=T7p55 1 143;Ontology_term="GO:0019076";ID=match$183_1_143;signature_desc=ENDOPEPTIDASE GENE LYSIS PROBABLE PHAGE PROTEASE 3.4.-.- HYDROLASE BACTERIOPHAGE CELL;Name=PD033200;status=T;Dbxref="InterPro:IPR016417"
+T7p55	Phobius	protein_match	6	25	.	+	.	date=07-05-2020;Target=T7p55 6 25;ID=match$184_6_25;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.;Name=TRANSMEMBRANE;status=T
+T7p55	PIRSF	protein_match	1	143	1.1E-100	+	.	date=07-05-2020;Target=T7p55 1 143;Ontology_term="GO:0019076";ID=match$185_1_143;Name=PIRSF004485;status=T;Dbxref="InterPro:IPR016417"
+T7p55	Pfam	protein_match	34	139	3.5E-8	+	.	date=07-05-2020;Target=T7p55 34 139;Ontology_term="GO:0019076","GO:0019835";ID=match$186_34_139;signature_desc=Bacteriophage Rz lysis protein;Name=PF03245;status=T;Dbxref="InterPro:IPR004929"
+##sequence-region T7p38 1 88
+T7p38	.	polypeptide	1	88	.	+	.	ID=T7p38;md5=4aceaf33d32e3fd902ed3464049c8edd
+T7p38	ProDom	protein_match	1	74	1.0E-36	+	.	date=07-05-2020;Target=T7p38 1 74;ID=match$187_1_74;signature_desc=GENE;Name=PD028585;status=T;Dbxref="InterPro:IPR020134"
+T7p38	Pfam	protein_match	1	61	3.5E-29	+	.	date=07-05-2020;Target=T7p38 1 61;ID=match$188_1_61;signature_desc=Family of unknown function (DUF5476);Name=PF17570;status=T;Dbxref="InterPro:IPR020134"
+##sequence-region T7p58 1 85
+T7p58	.	polypeptide	1	85	.	+	.	ID=T7p58;md5=c0e2a8efe351e9d3f250bd846d10b7d9
+T7p58	ProDom	protein_match	1	77	2.0E-36	+	.	date=07-05-2020;Target=T7p58 1 77;ID=match$189_1_77;signature_desc=GENE;Name=PD028751;status=T;Dbxref="InterPro:IPR020148"
+T7p58	Pfam	protein_match	1	77	3.4E-53	+	.	date=07-05-2020;Target=T7p58 1 77;ID=match$190_1_77;signature_desc=Family of unknown function (DUF5477);Name=PF17571;status=T;Dbxref="InterPro:IPR020148"
+##sequence-region T7p53 1 67
+T7p53	.	polypeptide	1	67	.	+	.	ID=T7p53;md5=3c5db5570b55dd0fae442995ffd403a5
+T7p53	Phobius	protein_match	56	67	.	+	.	date=07-05-2020;Target=T7p53 56 67;ID=match$191_56_67;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the cytoplasm.;Name=CYTOPLASMIC_DOMAIN;status=T
+T7p53	Phobius	protein_match	37	55	.	+	.	date=07-05-2020;Target=T7p53 37 55;ID=match$192_37_55;signature_desc=Region of a membrane-bound protein predicted to be embedded in the membrane.;Name=TRANSMEMBRANE;status=T
+T7p53	Hamap	protein_match	1	64	23.99	+	.	date=07-05-2020;Target=T7p53 1 64;Ontology_term="GO:0019076","GO:0019835";ID=match$193_1_64;signature_desc=Holin.;Name=MF_04108;status=T;Dbxref="InterPro:IPR019682"
+T7p53	Pfam	protein_match	4	63	8.5E-30	+	.	date=07-05-2020;Target=T7p53 4 63;Ontology_term="GO:0019076","GO:0019835";ID=match$194_4_63;signature_desc=Phage holin T7 family, holin superfamily II;Name=PF10746;status=T;Dbxref="InterPro:IPR019682"
+T7p53	Phobius	protein_match	1	36	.	+	.	date=07-05-2020;Target=T7p53 1 36;ID=match$195_1_36;signature_desc=Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.;Name=NON_CYTOPLASMIC_DOMAIN;status=T
+##sequence-region T7p44.cds1 1 341
+T7p44.cds1	.	polypeptide	1	341	.	+	.	ID=T7p44.cds1;md5=f122194e1249a7461658ca1f3de72b94
+T7p44.cds1	Hamap	protein_match	1	341	59.921	+	.	date=07-05-2020;Target=T7p44.cds1 1 341;Ontology_term="GO:0019028";ID=match$196_1_341;signature_desc=Minor capsid protein.;Name=MF_04119;status=T;Dbxref="InterPro:IPR039009"
+##sequence-region T7p54 1 89
+T7p54	.	polypeptide	1	89	.	+	.	ID=T7p54;md5=3c73d538a7577ddb43ce1587ecac03e1
+T7p54	ProDom	protein_match	4	85	6.0E-42	+	.	date=07-05-2020;Target=T7p54 4 85;ID=match$197_4_85;signature_desc=DNA A PACKAGING GP18 GENE MATURASE PACKAGING/MATURATION;Name=PD029080;status=T;Dbxref="InterPro:IPR024345"
+T7p54	Pfam	protein_match	4	85	3.3E-50	+	.	date=07-05-2020;Target=T7p54 4 85;ID=match$198_4_85;signature_desc=DNA packaging protein;Name=PF11123;status=T;Dbxref="InterPro:IPR024345"
+##sequence-region T7p45 1 345
+T7p45	.	polypeptide	1	345	.	+	.	ID=T7p45;md5=7aaa55410a0a355253cff4373ee36afb
+T7p45	Hamap	protein_match	1	345	60.808	+	.	date=07-05-2020;Target=T7p45 1 345;Ontology_term="GO:0019028";ID=match$199_1_345;signature_desc=Minor capsid protein.;Name=MF_04119;status=T;Dbxref="InterPro:IPR039009"
+##sequence-region T7p50 1 747
+T7p50	.	polypeptide	1	747	.	+	.	ID=T7p50;md5=cf89ce9f214cb2d234a6a00294842161
+T7p50	Hamap	protein_match	1	747	40.703	+	.	date=07-05-2020;Target=T7p50 1 747;Ontology_term="GO:0039678";ID=match$200_1_747;signature_desc=Internal virion protein gp15.;Name=MF_04122;status=T;Dbxref="InterPro:IPR038993"
+##sequence-region T7p43 1 307
+T7p43	.	polypeptide	1	307	.	+	.	ID=T7p43;md5=074d839c99865e8d40d7c8aa8830931b
+T7p43	Pfam	protein_match	155	276	1.0E-60	+	.	date=07-05-2020;Target=T7p43 155 276;Ontology_term="GO:0019069";ID=match$201_155_276;signature_desc=Phage T7 capsid assembly protein;Name=PF05396;status=T;Dbxref="InterPro:IPR008768"
+##sequence-region T7p33 1 69
+T7p33	.	polypeptide	1	69	.	+	.	ID=T7p33;md5=7be4170a46b2f9b438760d258a1e1bfd
+T7p33	ProDom	protein_match	1	69	5.0E-35	+	.	date=07-05-2020;Target=T7p33 1 69;ID=match$202_1_69;signature_desc=GENE 5.5-5.7 FUSION CONTAINS:;Name=PD027613;status=T
+##sequence-region T7p34 1 52
+T7p34	.	polypeptide	1	52	.	+	.	ID=T7p34;md5=f7ffea1da1ec7319b28fc131559029b9
+T7p34	Coils	protein_match	20	47	.	+	.	date=07-05-2020;Target=T7p34 20 47;ID=match$203_20_47;Name=Coil;status=T
+##sequence-region T7p03.p01 1 359
+T7p03.p01	.	polypeptide	1	359	.	+	.	ID=T7p03.p01;md5=184adb06fce4d6e151e05bc7fc552fa9
+T7p03.p01	Coils	protein_match	234	254	.	+	.	date=07-05-2020;Target=T7p03.p01 234 254;ID=match$204_234_254;Name=Coil;status=T
+T7p03.p01	PIRSF	protein_match	1	359	6.3E-209	+	.	date=07-05-2020;Target=T7p03.p01 1 359;ID=match$205_1_359;Name=PIRSF000547;status=T;Dbxref="InterPro:IPR014374","KEGG:04150+2.7.11.1","KEGG:04151+2.7.11.1","KEGG:04714+2.7.11.1","KEGG:04926+2.7.11.1","KEGG:05163+2.7.11.1","KEGG:05165+2.7.11.1","KEGG:05170+2.7.11.1"
+##sequence-region T7p40 1 99
+T7p40	.	polypeptide	1	99	.	+	.	ID=T7p40;md5=a42003d5fdbbe337e9a92564a99b5b75
+T7p40	Pfam	protein_match	1	99	2.2E-61	+	.	date=07-05-2020;Target=T7p40 1 99;ID=match$206_1_99;signature_desc=Bacteriophage T7 virion assembly protein;Name=PF11653;status=T;Dbxref="InterPro:IPR024281"
+T7p40	ProDom	protein_match	45	99	3.0E-16	+	.	date=07-05-2020;Target=T7p40 45 99;ID=match$207_45_99;signature_desc=GENE HOST SPECIFICITY B RANGE;Name=PD027060;status=T;Dbxref="InterPro:IPR024281"
+T7p40	SignalP_GRAM_POSITIVE	protein_match	1	11	.	+	.	date=07-05-2020;Target=T7p40 1 11;ID=match$208_1_11;Name=SignalP-TM;status=T
+##sequence-region T7p27 1 89
+T7p27	.	polypeptide	1	89	.	+	.	ID=T7p27;md5=134df7a0d77578db215a5b20468da275
+T7p27	ProDom	protein_match	1	89	1.0E-45	+	.	date=07-05-2020;Target=T7p27 1 89;ID=match$209_1_89;signature_desc=GENE;Name=PD029079;status=T;Dbxref="InterPro:IPR035151"
+T7p27	Pfam	protein_match	1	89	1.7E-62	+	.	date=07-05-2020;Target=T7p27 1 89;ID=match$210_1_89;signature_desc=Inhibitor of toxin/antitoxin system (Gp4.5);Name=PF17574;status=T;Dbxref="InterPro:IPR035151"
+##sequence-region T7p18 1 139
+T7p18	.	polypeptide	1	139	.	+	.	ID=T7p18;md5=53c679439f0c1886f9ddf4b48e783589
+T7p18	SUPERFAMILY	protein_match	1	128	1.06E-35	+	.	date=07-05-2020;Target=T7p18 1 128;ID=match$211_1_128;Name=SSF54060;status=T
+T7p18	Pfam	protein_match	51	81	2.8E-6	+	.	date=07-05-2020;Target=T7p18 51 81;ID=match$212_51_81;signature_desc=HNH endonuclease;Name=PF13392;status=T;Dbxref="InterPro:IPR003615"
+##sequence-region T7p14 1 196
+T7p14	.	polypeptide	1	196	.	+	.	ID=T7p14;md5=e0041e1d01cea341a705e0f553d0db38
+T7p14	Pfam	protein_match	122	184	3.1E-21	+	.	date=07-05-2020;Target=T7p14 122 184;ID=match$213_122_184;signature_desc=Protein of unknwon function (DUF3310);Name=PF11753;status=T;Dbxref="InterPro:IPR021739"
+##sequence-region T7p09 1 42
+T7p09	.	polypeptide	1	42	.	+	.	ID=T7p09;md5=4352035a6540b99ca849a0abe6e3e721
+T7p09	Pfam	protein_match	1	40	1.4E-18	+	.	date=07-05-2020;Target=T7p09 1 40;ID=match$214_1_40;signature_desc=Bacteriophage 1.1 Protein;Name=PF08200;status=T;Dbxref="InterPro:IPR013232"
+##sequence-region T7p59 1 57
+T7p59	.	polypeptide	1	57	.	+	.	ID=T7p59;md5=3022e593f4cfb9a048d416ddc887891c
+T7p59	Pfam	protein_match	1	57	3.2E-42	+	.	date=07-05-2020;Target=T7p59 1 57;ID=match$215_1_57;signature_desc=Family of unknown function (DUF5466);Name=PF17554;status=T;Dbxref="InterPro:IPR035178"
+T7p59	ProDom	protein_match	1	19	2.0E-4	+	.	date=07-05-2020;Target=T7p59 1 19;ID=match$216_1_19;signature_desc=GENE;Name=PD027045;status=T;Dbxref="InterPro:IPR035178"
+##sequence-region T7p19 1 149
+T7p19	.	polypeptide	1	149	.	+	.	ID=T7p19;md5=17edbdfb6f04ccbfe20adfd2180b3b4e
+T7p19	Pfam	protein_match	1	149	3.5E-85	+	.	date=07-05-2020;Target=T7p19 1 149;Ontology_term="GO:0008833","GO:0015074","GO:0016032";ID=match$217_1_149;signature_desc=Phage endonuclease I;Name=PF05367;status=T;Dbxref="InterPro:IPR008029"
+T7p19	Gene3D	protein_match	12	149	2.8E-63	+	.	date=07-05-2020;Target=T7p19 12 149;Ontology_term="GO:0003677","GO:0004536";ID=match$218_12_149;Name=G3DSA:3.40.91.30;status=T;Dbxref="InterPro:IPR011578"
+T7p19	SUPERFAMILY	protein_match	17	145	2.17E-61	+	.	date=07-05-2020;Target=T7p19 17 145;ID=match$219_17_145;Name=SSF52980;status=T;Dbxref="InterPro:IPR011335","Reactome:R-HSA-6783310"
+##sequence-region T7p44.cds2 1 57
+T7p44.cds2	.	polypeptide	1	57	.	+	.	ID=T7p44.cds2;md5=11f1885d30d18d7006df72e64750b572
+T7p44.cds2	Coils	protein_match	38	57	.	+	.	date=07-05-2020;Target=T7p44.cds2 38 57;ID=match$220_38_57;Name=Coil;status=T
+##sequence-region T7p31.cds2 1 70
+T7p31.cds2	.	polypeptide	1	70	.	+	.	ID=T7p31.cds2;md5=88c8ad7809eac3d72ca5b6ea43c15ea4
+T7p31.cds2	ProDom	protein_match	2	70	4.0E-35	+	.	date=07-05-2020;Target=T7p31.cds2 2 70;ID=match$221_2_70;signature_desc=GENE 5.5-5.7 FUSION CONTAINS:;Name=PD027613;status=T
+##FASTA
+>T7p01.p01
+MAMSNMTYNNVFDHAYEMLKENIRYDDIRDTDDLHDAIHMAADNAVPHYYADIFSVMASE
+GIDLEFEDSGLMPDTKDVIRILQARIYEQLTIDLWEDAEDLLNEYLEEVEEYEEDEE
+>T7p03.p01
+MNITDIMNAIDAIKALPICELDKRQGMLIDLLVEMVNSETCDGELTELNQALEHQDWWTT
+LKCLTADAGFKMLGNGHFSAAYSHPLLPNRVIKVGFKKEDSGAAYTAFCRMYQGRPGIPN
+VYDVQRHAGCYTVVLDALKDCERFNNDAHYKYAEIASDIIDCNSDEHDELTGWDGEFVET
+CKLIRKFFEGIASFDMHSGNIMFSNGDVPYITDPVSFSQKKDGGAFSIDPEELIKEVEEV
+ARQKEIDRAKARKERHEGRLEARRFKRRNRKARKAHKAKRERMLAAWRWAERQERRNHEV
+AVDVLGRTNNAMLWVNMFSGDFKALEERIALHWRNADRMAIANGLTLNIDKQLDAMLMG
+>T7p04
+MYMLTIGLLTALGLAVGASFGKALGVAVGSYFTACIIIGIIKGALRK
+>T7p07.p01
+MNTINIAKNDFSDIELAAIPFNTLADHYGERLAREQLALEHESYEMGEARFRKMFERQLK
+AGEVADNAAAKPLITTLLPKMIARINDWFEEVKAKRGKRPTAFQFLQEIKPEAVAYITIK
+TTLACLTSADNTTVQAVASAIGRAIEDEARFGRIRDLEAKHFKKNVEEQLNKRVGHVYKK
+AFMQVVEADMLSKGLLGGEAWSSWHKEDSIHVGVRCIEMLIESTGMVSLHRQNAGVVGQD
+SETIELAPEYAEAIATRAGALAGISPMFQPCVVPPKPWTGITGGGYWANGRRPLALVRTH
+SKKALMRYEDVYMPEVYKAINIAQNTAWKINKKVLAVANVITKWKHCPVEDIPAIEREEL
+PMKPEDIDMNPEALTAWKRAAAAVYRKDKARKSRRISLEFMLEQANKFANHKAIWFPYNM
+DWRGRVYAVSMFNPQGNDMTKGLLTLAKGKPIGKEGYYWLKIHGANCAGVDKVPFPERIK
+FIEENHENIMACAKSPLENTWWAEQDSPFCFLAFCFEYAGVQHHGLSYNCSLPLAFDGSC
+SGIQHFSAMLRDEVGGRAVNLLPSETVQDIYGIVAKKVNEILQADAINGTDNEVVTVTDE
+NTGEISEKVKLGTKALAGQWLAYGVTRSVTKRSVMTLAYGSKEFGFRQQVLEDTIQPAID
+SGKGLMFTQPNQAAGYMAKLIWESVSVTVVAAVEAMNWLKSAAKLLAAEVKDKKTGEILR
+KRCAVHWVTPDGFPVWQEYKKPIQTRLNLMFLGQFRLQPTINTNKDSEIDAHKQESGIAP
+NFVHSQDGSHLRKTVVWAHEKYGIESFALIHDSFGTIPADAANLFKAVRETMVDTYESCD
+VLADFYDQFADQLHESQLDKMPALPAKGNLNLRDILESDFAFA
+>T7p08.p01
+MGRLYSGNLAAFKAATNKLFQLDLAVIYDDWYDAYTRKDCIRLRIEDRSGNLIDTSTFYH
+HDEDVLFNMCTDWLNHMYDQLKDWK
+>T7p09
+MRNFEKMTKRSNRNARDFEATKGRKLNKTKRDRSHKRSWEGQ
+>T7p10.p01
+MMNIKTNPFKAVSFVESAIKKALDNAGYLIAEIKYDGVRGNICVDNTANSYWLSRVSKTI
+PALEHLNGFDVRWKRLLNDDRCFYKDGFMLDGELMVKGVDFNTGSGLLRTKWTDTKNQEF
+HEELFVEPIRKKDKVPFKLHTGHLHIKLYAILPLHIVESGEDCDVMTLLMQEHVKNMLPL
+LQEYFPEIEWQAAESYEVYDMVELQQLYEQKRAEGHEGLIVKDPMCIYKRGKKSGWWKMK
+PENEADGIIQGLVWGTKGLANEGKVIGFEVLLESGRLVNATNISRALMDEFTETVKEATL
+SQWGFFSPYGIGDNDACTINPYDGWACQISYMEETPDGSLRHPSFVMFRGTEDNPQEKM
+>T7p11
+MFKKVGKFLAALAAILTLAYILAVYPQVALVVVGACYLAAVCACVWSIVNW
+>T7p12
+MMYLMPLLIVIVGCLALHCSDDDMPDGHA
+>T7p13
+MFRLHYNKSVKNFTVRRADRSIVCASERRAKIPLIGNTVPLAPSVHIIITRGDFEKAIDK
+KRPVLSVAVTRFPFVRLLLKRIKEVF
+>T7p14
+MGLLDGEAWEKENPPVQATGCIACLEKDDRYPHTCNKGANDMTEREQEMIIKLIDNNEGR
+PDDLNGCGILCSNVPCHLCPANNDQKITLGEIRAMDPRKPHLNKPEVTPTDDQPSAETIE
+GVTKPSHYMLFDDIEAIEVIARSMTVEQFKGYCFGNILKYRLRAGKKSELAYLEKDLAKA
+DFYKELFEKHKDKCYA
+>T7p16
+MSNVNTGSLSVDNKKFWATVESSEHSFEVPIYAETLDEALELAEWQYVPAGFEVTRVRPC
+VAPK
+>T7p17
+MAKKIFTSALGTAEPYAYIAKPDYGNEERGFGNPRGVYKVDLTIPNKDPRCQRMVDEIVK
+CHEEAYAAAVEEYEANPPAVARGKKPLKPYEGDMPFFDNGDGTTTFKFKCYASFQDKKTK
+ETKHINLVVVDSKGKKMEDVPIIGGGSKLKVKYSLVPYKWNTAVGASVKLQLESVMLVEL
+ATFGGGEDDWADEVEENGYVASGSAKASKPRDEESWDEDDEESEEADEDGDF
+>T7p18
+MELREKILERIKVTSSGCWEWQGATNNKGYGQVWCSNTGKVVYCHRVMSNAPKGSTVLHS
+CDNPLCCNPEHLSIGTPKENSTDMVNKGRSHKGYKLSDEDVMAIMESSESNVSLARTYGV
+SQQTICDIRKGRRHGRLRR
+>T7p19
+MAGYGAKGIRKVGAFRSGLEDKVSKQLESKGIKFEYEEWKVPYVIPASNHTYTPDFLLPN
+GIFVETKGLWESDDRKKHLLIREQHPELDIRIVFSSSRTKLYKGSPTSYGEFCEKHGIKF
+ADKLIPAEWIKEPKKEVPFDRLKRKGGKK
+>T7p20
+MARVQFKQRESTDAIFVHCSATKPSQNVGVREIRQWHKEQGWLDVGYHFIIKRDGTVEAG
+RDEMAVGSHAKGYNHNSIGVCLVGGIDDKGKFDANFTPAQMQSLRSLLVTLLAKYEGAVL
+RAHHEVAPKACPSFDLKRWWEKNELVTSDRG
+>T7p21
+MRKSYKQFYKAPRRHIQVWEAANGPIPKGYYIDHIDGNPLNDALDNLRLALPKENSWNMK
+TPKSNTSGLKGLSWSKEREMWRGTVTAEGKQHNFRSRDLLEVVAWIYRTRRELHGQFARF
+R
+>T7p22
+MDNSHDSDSVFLYHIPCDNCGSSDGNSLFSDGHTFCYVCEKWTAGNEDTKERASKRKPSG
+GKPMTYNVWNFGESNGRYSALTARGISKETCQKAGYWIAKVDGVMYQVADYRDQNGNIVS
+QKVRDKDKNFKTTGSHKSDALFGKHLWNGGKKIVVTEGEIDMLTVMELQDCKYPVVSLGH
+GASAAKKTCAANYEYFDQFEQIILMFDMDEAGRKAVEEAAQVLPAGKVRVAVLPCKDANE
+CHLNGHDREIMEQVWNAGPWIPDGVVSALSLRERIREHLSSEESVGLLFSGCTGINDKTL
+GARGGEVIMVTSGSGMGKSTFVRQQALQWGTAMGKKVGLAMLEESVEETAEDLIGLHNRV
+RLRQSDSLKREIIENGKFDQWFDELFGNDTFHLYDSFAEAETDRLLAKLAYMRSGLGCDV
+IILDHISIVVSASGESDERKMIDNLMTKLKGFAKSTGVVLVVICHLKNPDKGKAHEEGRP
+VSITDLRGSGALRQLSDTIIALERNQQGDMPNLVLVRILKCRFTGDTGIAGYMEYNKETG
+WLEPSSYSGEEESHSESTDWSNDTDF
+>T7p24
+MTYNVWNFGESNGRYSALTARGISKETCQKAGYWIAKVDGVMYQVADYRDQNGNIVSQKV
+RDKDKNFKTTGSHKSDALFGKHLWNGGKKIVVTEGEIDMLTVMELQDCKYPVVSLGHGAS
+AAKKTCAANYEYFDQFEQIILMFDMDEAGRKAVEEAAQVLPAGKVRVAVLPCKDANECHL
+NGHDREIMEQVWNAGPWIPDGVVSALSLRERIREHLSSEESVGLLFSGCTGINDKTLGAR
+GGEVIMVTSGSGMGKSTFVRQQALQWGTAMGKKVGLAMLEESVEETAEDLIGLHNRVRLR
+QSDSLKREIIENGKFDQWFDELFGNDTFHLYDSFAEAETDRLLAKLAYMRSGLGCDVIIL
+DHISIVVSASGESDERKMIDNLMTKLKGFAKSTGVVLVVICHLKNPDKGKAHEEGRPVSI
+TDLRGSGALRQLSDTIIALERNQQGDMPNLVLVRILKCRFTGDTGIAGYMEYNKETGWLE
+PSSYSGEEESHSESTDWSNDTDF
+>T7p25
+MRKVAPFLLLTYVVLAHYANYLILLLPLSVISKAICLTLSSFVFSSAALLVILVSLATWN
+TTRKPDGLNHQVTQGKKSHTQSQQTGPTTLTSDRILDDFPDDYEKFRWRVPF
+>T7p26
+MFKLIKKLGQLLVRMYNVEAKRLNDEARKEATQSRALAIRSNELADSASTKVTEAARVAN
+QAQQLSKFFE
+>T7p27
+MSNVAETIRLSDTADQWNRRVHINVRNGKATMVYRWKDSKSSKNHTQRMTLTDEQALRLV
+NALTKAAVTAIHEAGRVNEAMAILDKIDN
+>T7p29
+MIVSDIEANALLESVTKFHCGVIYDYSTAEYVSYRPSDFGAYLDALEAEVARGGLIVFHN
+GHKYDVPALTKLAKLQLNREFHLPRENCIDTLVLSRLIHSNLKDTDMGLLRSGKLPGKRF
+GSHALEAWGYRLGEMKGEYKDDFKRMLEEQGEEYVDGMEWWNFNEEMMDYNVQDVVVTKA
+LLEKLLSDKHYFPPEIDFTDVGYTTFWSESLEAVDIEHRAAWLLAKQERNGFPFDTKAIE
+ELYVELAARRSELLRKLTETFGSWYQPKGGTEMFCHPRTGKPLPKYPRIKTPKVGGIFKK
+PKNKAQREGREPCELDTREYVAGAPYTPVEHVVFNPSSRDHIQKKLQEAGWVPTKYTDKG
+APVVDDEVLEGVRVDDPEKQAAIDLIKEYLMIQKRIGQSAEGDKAWLRYVAEDGKIHGSV
+NPNGAVTGRATHAFPNLAQIPGVRSPYGEQCRAAFGAEHHLDGITGKPWVQAGIDASGLE
+LRCLAHFMARFDNGEYAHEILNGDIHTKNQIAAELPTRDNAKTFIYGFLYGAGDEKIGQI
+VGAGKERGKELKKKFLENTPAIAALRESIQQTLVESSQWVAGEQQVKWKRRWIKGLDGRK
+VHVRSPHAALNTLLQSAGALICKLWIIKTEEMLVEKGLKHGWDGDFAYMAWVHDEIQVGC
+RTEEIAQVVIETAQEAMRWVGDHWNFRCLLDTEGKMGPNWAICH
+>T7p30
+MNERHLTGAASEMLVAYKFTKAGYTVYYPMLTQSKEDLVVCKDGKFSKVQVKTATTVQTN
+TGDAKQVRLGGCGRSEYKDGDFDILAVVVDEDVLIFTWDEVKGKTSMCVGKRNKGIKL
+>T7p31.cds1
+MAMTKKFKVSFDVTAKMSSDVQAILEKDMLHLCKQVGSGAIVPNGKQKEMIVQFLTHGME
+GLMTFVVRTSFREAIKDMHEEYADKDSFKQSPATVREVF
+>T7p31.cds2
+MMSDYLKVLQAIKSCPKTFQSNYVRNNASLVAEAASRGHISCLTTSGRNGGAWEITASGT
+RFLKRMGGCV
+>T7p32
+MAMTKKFKVSFDVTAKMSSDVQAILEKDMLHLCKQVGSGAIVPNGKQKEMIVQFLTHGME
+GLMTFVVRTSFREAIKDMHEEYADKDSFKQSPATVREVF
+>T7p33
+MSDYLKVLQAIKSCPKTFQSNYVRNNASLVAEAASRGHISCLTTSGRNGGAWEITASGTR
+FLKRMGGCV
+>T7p34
+MSRDLVTIPRDVWNDIQGYIDSLERENDSLKNQLMEADEYVAELEEKLNGTS
+>T7p35
+MALLDLKQFYELREGCDDKGILVMDGDWLVFQAMSAAEFDASWEEEIWHRCCDHAKARQI
+LEDSIKSYETRKKAWAGAPIVLAFTDSVNWRKELVDPNYKANRKAVKKPVGYFEFLDALF
+EREEFYCIREPMLEGDDVMGVIASNPSAFGARKAVIISCDKDFKTIPNCDFLWCTTGNIL
+TQTEESADWWHLFQTIKGDITDGYSGIAGWGDTAEDFLNNPFITEPKTSVLKSGKNKGQE
+VTKWVKRDPEPHETLWDCIKSIGAKAGMTEEDIIKQGQMARILRFNEYNFIDKEIYLWRP
+>T7p36
+METVAYIGLGLCVLGVCLISWGLWDLARIIKSLHDTK
+>T7p37
+MLTPINQLLKNPNDIPDVPRATAEYLQVRFNYAYLEASGHIGLMRANGCSEAHILGFIQG
+LQYASNVIDEIELRKEQLRDDGED
+>T7p38
+MCFSPKIKTPKMDTNQIRAVEPAPLTQEVSSVEFGGSSDETDTEGTEVSGRKGLKVERDD
+SVAKSKASGNGSARMKSSIRKSAFGGKK
+>T7p40
+MGKKVKKAVKKVTKSVKKVVKEGARPVKQVAGGLAGLAGGTGEAQMVEVPQAAAQIVDVP
+EKEVSTEDEAQTESGRKKARAGGKKSLSVARSSGGGINI
+>T7p41
+MEDCIEWTGGVNSKGYGRKWVNGKLVTPHRHIYEETYGPVPTGIVVMHICDNPRCYNIKH
+LTLGTPKDNSEDMVTKGRQAKGEELSKKLTESDVLAIRSSTLSHRSLGELYGVSQSTITR
+ILQRKTWRHI
+>T7p42
+MAEKRTGLAEDGAKSVYERLKNDRAPYETRAQNCAQYTIPSLFPKDSDNASTDYQTPWQA
+VGARGLNNLASKLMLALFPMQTWMRLTISEYEAKQLLSDPDGLAKVDEGLSMVERIIMNY
+IESNSYRVTLFEALKQLVVAGNVLLYLPEPEGSNYNPMKLYRLSSYVVQRDAFGNVLQMV
+TRDQIAFGALPEDIRKAVEGQGGEKKADETIDVYTHIYLDEDSGEYLRYEEVEGMEVQGS
+DGTYPKEACPYIPIRMVRLDGESYGRSYIEEYLGDLRSLENLQEAIVKMSMISSKVIGLV
+NPAGITQPRRLTKAQTGDFVTGRPEDISFLQLEKQADFTVAKAVSDAIEARLSFAFMLNS
+AVQRTGERVTAEEIRYVASELEDTLGGVYSILSQELQLPLVRVLLKQLQATQQIPELPKE
+AVEPTISTGLEAIGRGQDLDKLERCVTAWAALAPMRDDPDINLAMIKLRIANAIGIDTSG
+ILLTEEQKQQKMAQQSMQMGMDNGAAALAQGMAAQATASPEAMAAAADSVGLQPGI
+>T7p43
+MAESNADVYASFGVNSAVMSGGSVEEHEQNMLALDVAARDGDDAIELASDEVETERDLYD
+NSDPFGQEDDEGRIQVRIGDGSEPTDVDTGEEGVEGTEGSEEFTPLGETPEELVAASEQL
+GEHEEGFQEMINIAAERGMSVETIEAIQREYEENEELSAESYAKLAEIGYTKAFIDSYIR
+GQEALVEQYVNSVIEYAGGRERFDALYNHLETHNPEAAQSLDNALTNRDLATVKAIINLA
+GESRAKAFGRKPTRSVTNRAIPAKPQATKREGFADRSEMIKAMSDPRYRTDANYRRQVEQ
+KVIDSNF
+>T7p44.cds1
+MASMTGGQQMGTNQGKGVVAAGDKLALFLKVFGGEVLTAFARTSVTTSRHMVRSISSGKS
+AQFPVLGRTQAAYLAPGENLDDKRKDIKHTEKVITIDGLLTADVLIYDIEDAMNHYDVRS
+EYTSQLGESLAMAADGAVLAEIAGLCNVESKYNENIEGLGTATVIETTQNKAALTDQVAL
+GKEIIAALTKARAALTKNYVPAADRVFYCDPDSYSAILAALMPNAANYAALIDPEKGSIR
+NVMGFEVVEVPHLTAGGAGTAREGTTGQKHVFPANKGEGNVKVAKDNVIGLFMHRSAVGT
+VKLRDLALERARRANFQADQIIAKYAMGHGGLRPEAAGAVV
+>T7p44.cds2
+FQSGVMLGVASTVAASPEEASVTSTEETLTPAQEAARTRAANKARKEAELAAATAEQ
+>T7p45
+MASMTGGQQMGTNQGKGVVAAGDKLALFLKVFGGEVLTAFARTSVTTSRHMVRSISSGKS
+AQFPVLGRTQAAYLAPGENLDDKRKDIKHTEKVITIDGLLTADVLIYDIEDAMNHYDVRS
+EYTSQLGESLAMAADGAVLAEIAGLCNVESKYNENIEGLGTATVIETTQNKAALTDQVAL
+GKEIIAALTKARAALTKNYVPAADRVFYCDPDSYSAILAALMPNAANYAALIDPEKGSIR
+NVMGFEVVEVPHLTAGGAGTAREGTTGQKHVFPANKGEGNVKVAKDNVIGLFMHRSAVGT
+VKLRDLALERARRANFQADQIIAKYAMGHGGLRPEAAGAVVFKVE
+>T7p46
+MRSYDMNVETAAELSAVNDILASIGEPPVSTLEGDANADAANARRILNKINRQIQSRGWT
+FNIEEGITLLPDVYSNLIVYSDDYLSLMSTSGQSIYVNRGGYVYDRTSQSDRFDSGITVN
+IIRLRDYDEMPECFRYWIVTKASRQFNNRFFGAPEVEGVLQEEEDEARRLCMEYEMDYGG
+YNMLDGDAFTSGLLTR
+>T7p48
+MMTIRPTKSTDFEVFTPAHHDILEAKAAGIEPSFPDASECVTLSLYGFPLAIGGNCGDQC
+WFVTSDQVWRLSGKAKRKFRKLIMEYRDKMLEKYDTLWNYVWVGNTSHIRFLKTIGAVFH
+EEYTRDGQFQLFTITKGG
+>T7p49
+MCWAAAIPIAISGAQAISGQNAQAKMIAAQTAAGRRQAMEIMRQTNIQNADLSLQARSKL
+EEASAELTSQNMQKVQAIGSIRAAIGESMLEGSSMDRIKRVTEGQFIREANMVTENYRRD
+YQAIFAQQLGGTQSAASQIDEIYKSEQKQKSKLQMVLDPLAIMGSSAASAYASGAFDSKS
+TTKAPIVAAKGTKTGR
+>T7p50
+MSKIESALQAAQPGLSRLRGGAGGMGYRAATTQAEQPRSSLLDTIGRFAKAGADMYTAKE
+QRARDLADERSNEIIRKLTPEQRREALNNGTLLYQDDPYAMEALRVKTGRNAAYLVDDDV
+MQKIKEGVFRTREEMEEYRHSRLQEGAKVYAEQFGIDPEDVDYQRGFNGDITERNISLYG
+AHDNFLSQQAQKGAIMNSRVELNGVLQDPDMLRRPDSADFFEKYIDNGLVTGAIPSDAQA
+TQLISQAFSDASSRAGGADFLMRVGDKKVTLNGATTTYRELIGEEQWNALMVTAQRSQFE
+TDAKLNEQYRLKINSALNQEDPRTAWEMLQGIKAELDKVQPDEQMTPQREWLISAQEQVQ
+NQMNAWTKAQAKALDDSMKSMNKLDVIDKQFQKRINGEWVSTDFKDMPVNENTGEFKHSD
+MVNYANKKLAEIDSMDIPDGAKDAMKLKYLQADSKDGAFRTAIGTMVTDAGQEWSAAVIN
+GKLPERTPAMDALRRIRNADPQLIAALYPDQAELFLTMDMMDKQGIDPQVILDADRLTVK
+RSKEQRFEDDKAFESALNASKAPEIARMPASLRESARKIYDSVKYRSGNESMAMEQMTKF
+LKESTYTFTGDDVDGDTVGVIPKNMMQVNSDPKSWEQGRDILEEARKGIIASNPWITNKQ
+LTMYSQGDSIYLMDTTGQVRVRYDKELLSKVWSENQKKLEEKAREKALADVNKRAPIVAA
+TKAREAAAKRVREKRKQTPKFIYGRKE
+>T7p51
+MDKYDKNVPSDYDGLFQKAADANGVSYDLLRKVAWTESRFVPTAKSKTGPLGMMQFTKAT
+AKALGLRVTDGPDDDRLNPELAINAAAKQLAGLVGKFDGDELKAALAYNQGEGRLGNPQL
+EAYSKGDFASISEEGRNYMRNLLDVAKSPMAGQLETFGGITPKGKGIPAEVGLAGIGHKQ
+KVTQELPESTSFDVKGIEQEATAKPFAKDFWETHGETLDEYNSRSTFFGFKNAAEAELSN
+SVAGMAFRAGRLDNGFDVFKDTITPTRWNSHIWTPEELEKIRTEVKNPAYINVVTGGSPE
+NLDDLIKLANENFENDSRAAEAGLGAKLSAGIIGAGVDPLSYVPMVGVTGKGFKLINKAL
+VVGAESAALNVASEGLRTSVAGGDADYAGAALGGFVFGAGMSAISDAVAAGLKRSKPEAE
+FDNEFIGPMMRLEARETARNANSADLSRMNTENMKFEGEHNGVPYEDLPTERGAVVLHDG
+SVLSASNPINPKTLKEFSEVDPEKAARGIKLAGFTEIGLKTLGSDDADIRRVAIDLVRSP
+TGMQSGASGKFGATASDIHERLHGTDQRTYNDLYKAMSDAMKDPEFSTGGAKMSREETRY
+TIYRRAALAIERPELQKALTPSERIVMDIIKRHFDTKRELMENPAIFGNTKAVSIFPESR
+HKGTYVPHVYDRHAKALMIQRYGAEGLQEGIARSWMNSYVSRPEVKARVDEMLKELHGVK
+EVTPEMVEKYAMDKAYGISHSDQFTNSSIIEENIEGLVGIENNSFLEARNLFDSDLSITM
+PDGQQFSVNDLRDFDMFRIMPAYDRRVNGDIAIMGSTGKTTKELKDEILALKAKAEGDGK
+KTGEVHALMDTVKILTGRARRNQDTVWETSLRAINDLGFFAKNAYMGAQNITEIAGMIVT
+GNVRALGHGIPILRDTLYKSKPVSAKELKELHASLFGKEVDQLIRPKRADIVQRLREATD
+TGPAVANIVGTLKYSTQELAARSPWTKLLNGTTNYLLDAARQGMLGDVISATLTGKTTRW
+EKEGFLRGASVTPEQMAGIKSLIKEHMVRGEDGKFTVKDKQAFSMDPRAMDLWRLADKVA
+DEAMLRPHKVSLQDSHAFGALGKMVMQFKSFTIKSLNSKFLRTFYDGYKNNRAIDAALSI
+ITSMGLAGGFYAMAAHVKAYALPKEKRKEYLERALDPTMIAHAALSRSSQLGAPLAMVDL
+VGGVLGFESSKMARSTILPKDTVKERDPNKPYTSREVMGAMGSNLLEQMPSAGFVANVGA
+TLMNAAGVVNSPNKATEQDFMTGLMNSTKELVPNDPLTQQLVLKIYEANGVNLRERRK
+>T7p52
+MANVIKTVLTYQLDGSNRDFNIPFEYLARKFVVVTLIGVDRKVLTINTDYRFATRTTISL
+TKAWGPADGYTTIELRRVTSTTDRLVDFTDGSILRAYDLNVAQIQTMHVAEEARDLTTDT
+IGVNNDGHLDARGRRIVNLANAVDDRDAVPFGQLKTMNQNSWQARNEALQFRNEAETFRN
+QAEGFKNESSTNATNTKQWRDETKGFRDEAKRFKNTAGQYATSAGNSASAAHQSEVNAEN
+SATASANSAHLAEQQADRAEREADKLENYNGLAGAIDKVDGTNVYWKGNIHANGRLYMTT
+NGFDCGQYQQFFGGVTNRYSVMEWGDENGWLMYVQRREWTTAIGGNIQLVVNGQIITQGG
+AMTGQLKLQNGHVLQLESASDKAHYILSKDGNRNNWYIGRGSDNNNDCTFHSYVHGTTLT
+LKQDYAVVNKHFHVGQAVVATDGNIQGTKWGGKWLDAYLRDSFVAKSKAWTQVWSGSAGG
+GVSVTVSQDLRFRNIWIKCANNSWNFFRTGPDGIYFIASDGGWLRFQIHSNGLGFKNIAD
+SRSVPNAIMVENE
+>T7p53
+MLSLDFNNELIKAAPIVGTGVADVSARLFFGLSLNEWFYVAAIAYTVVQIGAKVVDKMID
+WKKANKE
+>T7p54
+MEKDKSLITFLEMLDTAMAQRMLADLSDHERRSPQLYNAINKLLDRHKFQIGKLQPDVHI
+LGGLAGALEEYKEKVGDNGLTDDDIYTLQ
+>T7p55
+MLEFLRKLIPWVLAGMLFGLGWHLGSDSMDAKWKQEVHNEYVKRVEAAKSTQRAIDAVSA
+KYQEDLAALEGSTDRIISDLRSDNKRLRVRVKTTGTSDGQCGFEPDGRAELDDRDAKRIL
+AVTQKGDAWIRALQDTIRELQRK
+>T7p56
+MSTLRELRLRRALKEQSMRYLLSIKKTLPRWKGALIGLFLICVATISGCASESKLPEPPM
+VSVDSSLMVEPNLTTEMLNVFSQ
+>T7p57
+MSTQSNRNALVVAQLKGDFVAFLFVLWKALNLPVPTKCQIDMAKVLANGDNKKFILQAFR
+GIGKSFITCAFVVWSLWRDPQLKILIVSASKERADANSIFIKNIIDLLPFLSELKPRPGQ
+RDSVISFDVGPANPDHSPSVKSVGITGQLTGSRADIIIADDVEIPSNSATMGAREKLWTL
+VQEFAALLKPLPSSRVIYLGTPQTEMTLYKELEDNRGYTTIIWPALYPRTREENLYYSQR
+LAPMLRAEYDENPEALAGTPTDPVRFDRDDLRERELEYGKAGFTLQFMLNPNLSDAEKYP
+LRLRDAIVAALDLEKAPMHYQWLPNRQNIIEDLPNVGLKGDDLHTYHDCSNNSGQYQQKI
+LVIDPSGRGKDETGYAVLYTLNGYIYLMEAGGFRDGYSDKTLELLAKKAKQWGVQTVVYE
+SNFGDGMFGKVFSPILLKHHNCAMEEIRARGMKEMRICDTLEPVMQTHRLVIRDEVIRAD
+YQSARDVDGKHDVKYSLFYQMTRITREKGALAHDDRLDALALGIEYLRESMQLDSVKVEG
+EVLADFLEEHMMRPTVAATHIIEMSVGGVDVYSEDDEGYGTSFIEW
+>T7p58
+MGTQPLSGLLCTQGHVKRTSITHSVLLLCYALSTMRTLRHLLGLQQTQCALTVMTCASVS
+WNTVRLALRYSSCLTLTLVMPRSTR
+>T7p59
+MATPIRPLSYSLRRQSNGESRRLSTRVTSVTVCSVRYSVLSFLNTTTVRWKRFVPVV
+>T7p60
+MFRLLLNLLRHRVTYRFLVVLCAALGYASLTGDLSSLESVVCSILTCSD
+>match$1_1_16
+MCWAAAIPIAISGAQA
+>match$2_1_1
+M
+>match$3_1_194
+MCWAAAIPIAISGAQAISGQNAQAKMIAAQTAAGRRQAMEIMRQTNIQNADLSLQARSKL
+EEASAELTSQNMQKVQAIGSIRAAIGESMLEGSSMDRIKRVTEGQFIREANMVTENYRRD
+YQAIFAQQLGGTQSAASQIDEIYKSEQKQKSKLQMVLDPLAIMGSSAASAYASGAFDSKS
+TTKAPIVAAKGTKT
+>match$4_17_196
+ISGQNAQAKMIAAQTAAGRRQAMEIMRQTNIQNADLSLQARSKLEEASAELTSQNMQKVQ
+AIGSIRAAIGESMLEGSSMDRIKRVTEGQFIREANMVTENYRRDYQAIFAQQLGGTQSAA
+SQIDEIYKSEQKQKSKLQMVLDPLAIMGSSAASAYASGAFDSKSTTKAPIVAAKGTKTGR
+>match$5_2_11
+CWAAAIPIAI
+>match$6_12_16
+SGAQA
+>match$7_290_507
+SGCTGINDKTLGARGGEVIMVTSGSGMGKSTFVRQQALQWGTAMGKKVGLAMLEESVEET
+AEDLIGLHNRVRLRQSDSLKREIIENGKFDQWFDELFGNDTFHLYDSFAEAETDRLLAKL
+AYMRSGLGCDVIILDHISIVVSASGESDERKMIDNLMTKLKGFAKSTGVVLVVICHLKNP
+DKGKAHEEGRPVSITDLRGSGALRQLSDTIIALERNQQ
+>match$8_151_238
+KKIVVTEGEIDMLTVMELQDCKYPVVSLGHGASAAKKTCAANYEYFDQFEQIILMFDMDE
+AGRKAVEEAAQVLPAGKVRVAVLPCKDA
+>match$9_154_241
+VVTEGEIDMLTVMELQDCKYPVVSLGHGASAAKKTCAANYEYFDQFEQIILMFDMDEAGR
+KAVEEAAQVLPAGKVRVAVLPCKDANEC
+>match$10_65_255
+TYNVWNFGESNGRYSALTARGISKETCQKAGYWIAKVDGVMYQVADYRDQNGNIVSQKVR
+DKDKNFKTTGSHKSDALFGKHLWNGGKKIVVTEGEIDMLTVMELQDCKYPVVSLGHGASA
+AKKTCAANYEYFDQFEQIILMFDMDEAGRKAVEEAAQVLPAGKVRVAVLPCKDANECHLN
+GHDREIMEQVW
+>match$11_137_262
+KSDALFGKHLWNGGKKIVVTEGEIDMLTVMELQDCKYPVVSLGHGASAAKKTCAANYEYF
+DQFEQIILMFDMDEAGRKAVEEAAQVLPAGKVRVAVLPCKDANECHLNGHDREIMEQVWN
+AGPWIP
+>match$12_13_47
+YHIPCDNCGSSDGNSLFSDGHTFCYVCEKWTAGNE
+>match$13_281_548
+SEESVGLLFSGCTGINDKTLGARGGEVIMVTSGSGMGKSTFVRQQALQWGTAMGKKVGLA
+MLEESVEETAEDLIGLHNRVRLRQSDSLKREIIENGKFDQWFDELFGNDTFHLYDSFAEA
+ETDRLLAKLAYMRSGLGCDVIILDHISIVVSASGESDERKMIDNLMTKLKGFAKSTGVVL
+VVICHLKNPDKGKAHEEGRPVSITDLRGSGALRQLSDTIIALERNQQGDMPNLVLVRILK
+CRFTGDTGIAGYMEYNKETGWLEPSSYS
+>match$14_1_56
+MDNSHDSDSVFLYHIPCDNCGSSDGNSLFSDGHTFCYVCEKWTAGNEDTKERASKR
+>match$15_79_554
+SALTARGISKETCQKAGYWIAKVDGVMYQVADYRDQNGNIVSQKVRDKDKNFKTTGSHKS
+DALFGKHLWNGGKKIVVTEGEIDMLTVMELQDCKYPVVSLGHGASAAKKTCAANYEYFDQ
+FEQIILMFDMDEAGRKAVEEAAQVLPAGKVRVAVLPCKDANECHLNGHDREIMEQVWNAG
+PWIPDGVVSALSLRERIREHLSSEESVGLLFSGCTGINDKTLGARGGEVIMVTSGSGMGK
+STFVRQQALQWGTAMGKKVGLAMLEESVEETAEDLIGLHNRVRLRQSDSLKREIIENGKF
+DQWFDELFGNDTFHLYDSFAEAETDRLLAKLAYMRSGLGCDVIILDHISIVVSASGESDE
+RKMIDNLMTKLKGFAKSTGVVLVVICHLKNPDKGKAHEEGRPVSITDLRGSGALRQLSDT
+IIALERNQQGDMPNLVLVRILKCRFTGDTGIAGYMEYNKETGWLEPSSYSGEEESH
+>match$16_151_228
+KKIVVTEGEIDMLTVMELQDCKYPVVSLGHGASAAKKTCAANYEYFDQFEQIILMFDMDE
+AGRKAVEEAAQVLPAGKV
+>match$17_273_540
+ERIREHLSSEESVGLLFSGCTGINDKTLGARGGEVIMVTSGSGMGKSTFVRQQALQWGTA
+MGKKVGLAMLEESVEETAEDLIGLHNRVRLRQSDSLKREIIENGKFDQWFDELFGNDTFH
+LYDSFAEAETDRLLAKLAYMRSGLGCDVIILDHISIVVSASGESDERKMIDNLMTKLKGF
+AKSTGVVLVVICHLKNPDKGKAHEEGRPVSITDLRGSGALRQLSDTIIALERNQQGDMPN
+LVLVRILKCRFTGDTGIAGYMEYNKETG
+>match$18_10_63
+VFLYHIPCDNCGSSDGNSLFSDGHTFCYVCEKWTAGNEDTKERASKRKPSGGKP
+>match$19_64_136
+MTYNVWNFGESNGRYSALTARGISKETCQKAGYWIAKVDGVMYQVADYRDQNGNIVSQKV
+RDKDKNFKTTGSH
+>match$20_271_547
+LRERIREHLSSEESVGLLFSGCTGINDKTLGARGGEVIMVTSGSGMGKSTFVRQQALQWG
+TAMGKKVGLAMLEESVEETAEDLIGLHNRVRLRQSDSLKREIIENGKFDQWFDELFGNDT
+FHLYDSFAEAETDRLLAKLAYMRSGLGCDVIILDHISIVVSASGESDERKMIDNLMTKLK
+GFAKSTGVVLVVICHLKNPDKGKAHEEGRPVSITDLRGSGALRQLSDTIIALERNQQGDM
+PNLVLVRILKCRFTGDTGIAGYMEYNKETGWLEPSSY
+>match$21_12_48
+LYHIPCDNCGSSDGNSLFSDGHTFCYVCEKWTAGNED
+>match$22_1_99
+MAMTKKFKVSFDVTAKMSSDVQAILEKDMLHLCKQVGSGAIVPNGKQKEMIVQFLTHGME
+GLMTFVVRTSFREAIKDMHEEYADKDSFKQSPATVREVF
+>match$23_1_99
+MAMTKKFKVSFDVTAKMSSDVQAILEKDMLHLCKQVGSGAIVPNGKQKEMIVQFLTHGME
+GLMTFVVRTSFREAIKDMHEEYADKDSFKQSPATVREVF
+>match$24_1_99
+MAMTKKFKVSFDVTAKMSSDVQAILEKDMLHLCKQVGSGAIVPNGKQKEMIVQFLTHGME
+GLMTFVVRTSFREAIKDMHEEYADKDSFKQSPATVREVF
+>match$25_1_99
+MAMTKKFKVSFDVTAKMSSDVQAILEKDMLHLCKQVGSGAIVPNGKQKEMIVQFLTHGME
+GLMTFVVRTSFREAIKDMHEEYADKDSFKQSPATVREVF
+>match$26_6_102
+LTGAASEMLVAYKFTKAGYTVYYPMLTQSKEDLVVCKDGKFSKVQVKTATTVQTNTGDAK
+QVRLGGCGRSEYKDGDFDILAVVVDEDVLIFTWDEVK
+>match$27_1_117
+MNERHLTGAASEMLVAYKFTKAGYTVYYPMLTQSKEDLVVCKDGKFSKVQVKTATTVQTN
+TGDAKQVRLGGCGRSEYKDGDFDILAVVVDEDVLIFTWDEVKGKTSMCVGKRNKGIK
+>match$28_50_83
+ASESKLPEPPMVSVDSSLMVEPNLTTEMLNVFSQ
+>match$29_51_83
+SESKLPEPPMVSVDSSLMVEPNLTTEMLNVFSQ
+>match$30_1_83
+MSTLRELRLRRALKEQSMRYLLSIKKTLPRWKGALIGLFLICVATISGCASESKLPEPPM
+VSVDSSLMVEPNLTTEMLNVFSQ
+>match$31_45_49
+TISGC
+>match$32_1_49
+MSTLRELRLRRALKEQSMRYLLSIKKTLPRWKGALIGLFLICVATISGC
+>match$33_33_44
+GALIGLFLICVA
+>match$34_1_32
+MSTLRELRLRRALKEQSMRYLLSIKKTLPRWK
+>match$35_1_232
+MAKKIFTSALGTAEPYAYIAKPDYGNEERGFGNPRGVYKVDLTIPNKDPRCQRMVDEIVK
+CHEEAYAAAVEEYEANPPAVARGKKPLKPYEGDMPFFDNGDGTTTFKFKCYASFQDKKTK
+ETKHINLVVVDSKGKKMEDVPIIGGGSKLKVKYSLVPYKWNTAVGASVKLQLESVMLVEL
+ATFGGGEDDWADEVEENGYVASGSAKASKPRDEESWDEDDEESEEADEDGDF
+>match$36_2_197
+AKKIFTSALGTAEPYAYIAKPDYGNEERGFGNPRGVYKVDLTIPNKDPRCQRMVDEIVKC
+HEEAYAAAVEEYEANPPAVARGKKPLKPYEGDMPFFDNGDGTTTFKFKCYASFQDKKTKE
+TKHINLVVVDSKGKKMEDVPIIGGGSKLKVKYSLVPYKWNTAVGASVKLQLESVMLVELA
+TFGGGEDDWADEVEEN
+>match$37_1_206
+MAKKIFTSALGTAEPYAYIAKPDYGNEERGFGNPRGVYKVDLTIPNKDPRCQRMVDEIVK
+CHEEAYAAAVEEYEANPPAVARGKKPLKPYEGDMPFFDNGDGTTTFKFKCYASFQDKKTK
+ETKHINLVVVDSKGKKMEDVPIIGGGSKLKVKYSLVPYKWNTAVGASVKLQLESVMLVEL
+ATFGGGEDDWADEVEENGYVASGSAK
+>match$38_448_664
+GEQCRAAFGAEHHLDGITGKPWVQAGIDASGLELRCLAHFMARFDNGEYAHEILNGDIHT
+KNQIAAELPTRDNAKTFIYGFLYGAGDEKIGQIVGAGKERGKELKKKFLENTPAIAALRE
+SIQQTLVESSQWVAGEQQVKWKRRWIKGLDGRKVHVRSPHAALNTLLQSAGALICKLWII
+KTEEMLVEKGLKHGWDGDFAYMAWVHDEIQVGCRTEE
+>match$39_415_700
+KIHGSVNPNGAVTGRATHAFPNLAQIPGVRSPYGEQCRAAFGAEHHLDGITGKPWVQAGI
+DASGLELRCLAHFMARFDNGEYAHEILNGDIHTKNQIAAELPTRDNAKTFIYGFLYGAGD
+EKIGQIVGAGKERGKELKKKFLENTPAIAALRESIQQTLVESSQWVAGEQQVKWKRRWIK
+GLDGRKVHVRSPHAALNTLLQSAGALICKLWIIKTEEMLVEKGLKHGWDGDFAYMAWVHD
+EIQVGCRTEEIAQVVIETAQEAMRWVGDHWNFRCLLDTEGKMGPNW
+>match$40_485_596
+AHFMARFDNGEYAHEILNGDIHTKNQIAAELPTRDNAKTFIYGFLYGAGDEKIGQIVGAG
+KERGKELKKKFLENTPAIAALRESIQQTLVESSQWVAGEQQVKWKRRWIKGL
+>match$41_1_232
+MIVSDIEANALLESVTKFHCGVIYDYSTAEYVSYRPSDFGAYLDALEAEVARGGLIVFHN
+GHKYDVPALTKLAKLQLNREFHLPRENCIDTLVLSRLIHSNLKDTDMGLLRSGKLPGKRF
+GSHALEAWGYRLGEMKGEYKDDFKRMLEEQGEEYVDGMEWWNFNEEMMDYNVQDVVVTKA
+LLEKLLSDKHYFPPEIDFTDVGYTTFWSESLEAVDIEHRAAWLLAKQERNGF
+>match$42_331_701
+HVVFNPSSRDHIQKKLQEAGWVPTKYTDKGAPVVDDEVLEGVRVDDPEKQAAIDLIKEYL
+MIQKRIGQSAEGDKAWLRYVAEDGKIHGSVNPNGAVTGRATHAFPNLAQIPGVRSPYGEQ
+CRAAFGAEHHLDGITGKPWVQAGIDASGLELRCLAHFMARFDNGEYAHEILNGDIHTKNQ
+IAAELPTRDNAKTFIYGFLYGAGDEKIGQIVGAGKERGKELKKKFLENTPAIAALRESIQ
+QTLVESSQWVAGEQQVKWKRRWIKGLDGRKVHVRSPHAALNTLLQSAGALICKLWIIKTE
+EMLVEKGLKHGWDGDFAYMAWVHDEIQVGCRTEEIAQVVIETAQEAMRWVGDHWNFRCLL
+DTEGKMGPNWA
+>match$43_233_414
+PFDTKAIEELYVELAARRSELLRKLTETFGSWYQPKGGTEMFCHPRTGKPLPKYPRIKTP
+KVGGIFKKPKNKAQREGREPCELDTREYVAGAPYTPVEHVVFNPSSRDHIQKKLQEAGWV
+PTKYTDKGAPVVDDEVLEGVRVDDPEKQAAIDLIKEYLMIQKRIGQSAEGDKAWLRYVAE
+DG
+>match$44_68_701
+ALTKLAKLQLNREFHLPRENCIDTLVLSRLIHSNLKDTDMGLLRSGKLPGKRFGSHALEA
+WGYRLGEMKGEYKDDFKRMLEEQGEEYVDGMEWWNFNEEMMDYNVQDVVVTKALLEKLLS
+DKHYFPPEIDFTDVGYTTFWSESLEAVDIEHRAAWLLAKQERNGFPFDTKAIEELYVELA
+ARRSELLRKLTETFGSWYQPKGGTEMFCHPRTGKPLPKYPRIKTPKVGGIFKKPKNKAQR
+EGREPCELDTREYVAGAPYTPVEHVVFNPSSRDHIQKKLQEAGWVPTKYTDKGAPVVDDE
+VLEGVRVDDPEKQAAIDLIKEYLMIQKRIGQSAEGDKAWLRYVAEDGKIHGSVNPNGAVT
+GRATHAFPNLAQIPGVRSPYGEQCRAAFGAEHHLDGITGKPWVQAGIDASGLELRCLAHF
+MARFDNGEYAHEILNGDIHTKNQIAAELPTRDNAKTFIYGFLYGAGDEKIGQIVGAGKER
+GKELKKKFLENTPAIAALRESIQQTLVESSQWVAGEQQVKWKRRWIKGLDGRKVHVRSPH
+AALNTLLQSAGALICKLWIIKTEEMLVEKGLKHGWDGDFAYMAWVHDEIQVGCRTEEIAQ
+VVIETAQEAMRWVGDHWNFRCLLDTEGKMGPNWA
+>match$45_214_704
+VDIEHRAAWLLAKQERNGFPFDTKAIEELYVELAARRSELLRKLTETFGSWYQPKGGTEM
+FCHPRTGKPLPKYPRIKTPKVGGIFKKPKNKAQREGREPCELDTREYVAGAPYTPVEHVV
+FNPSSRDHIQKKLQEAGWVPTKYTDKGAPVVDDEVLEGVRVDDPEKQAAIDLIKEYLMIQ
+KRIGQSAEGDKAWLRYVAEDGKIHGSVNPNGAVTGRATHAFPNLAQIPGVRSPYGEQCRA
+AFGAEHHLDGITGKPWVQAGIDASGLELRCLAHFMARFDNGEYAHEILNGDIHTKNQIAA
+ELPTRDNAKTFIYGFLYGAGDEKIGQIVGAGKERGKELKKKFLENTPAIAALRESIQQTL
+VESSQWVAGEQQVKWKRRWIKGLDGRKVHVRSPHAALNTLLQSAGALICKLWIIKTEEML
+VEKGLKHGWDGDFAYMAWVHDEIQVGCRTEEIAQVVIETAQEAMRWVGDHWNFRCLLDTE
+GKMGPNWAICH
+>match$46_1_206
+MIVSDIEANALLESVTKFHCGVIYDYSTAEYVSYRPSDFGAYLDALEAEVARGGLIVFHN
+GHKYDVPALTKLAKLQLNREFHLPRENCIDTLVLSRLIHSNLKDTDMGLLRSGKLPGKRF
+GSHALEAWGYRLGEMKGEYKDDFKRMLEEQGEEYVDGMEWWNFNEEMMDYNVQDVVVTKA
+LLEKLLSDKHYFPPEIDFTDVGYTTF
+>match$47_1_704
+MIVSDIEANALLESVTKFHCGVIYDYSTAEYVSYRPSDFGAYLDALEAEVARGGLIVFHN
+GHKYDVPALTKLAKLQLNREFHLPRENCIDTLVLSRLIHSNLKDTDMGLLRSGKLPGKRF
+GSHALEAWGYRLGEMKGEYKDDFKRMLEEQGEEYVDGMEWWNFNEEMMDYNVQDVVVTKA
+LLEKLLSDKHYFPPEIDFTDVGYTTFWSESLEAVDIEHRAAWLLAKQERNGFPFDTKAIE
+ELYVELAARRSELLRKLTETFGSWYQPKGGTEMFCHPRTGKPLPKYPRIKTPKVGGIFKK
+PKNKAQREGREPCELDTREYVAGAPYTPVEHVVFNPSSRDHIQKKLQEAGWVPTKYTDKG
+APVVDDEVLEGVRVDDPEKQAAIDLIKEYLMIQKRIGQSAEGDKAWLRYVAEDGKIHGSV
+NPNGAVTGRATHAFPNLAQIPGVRSPYGEQCRAAFGAEHHLDGITGKPWVQAGIDASGLE
+LRCLAHFMARFDNGEYAHEILNGDIHTKNQIAAELPTRDNAKTFIYGFLYGAGDEKIGQI
+VGAGKERGKELKKKFLENTPAIAALRESIQQTLVESSQWVAGEQQVKWKRRWIKGLDGRK
+VHVRSPHAALNTLLQSAGALICKLWIIKTEEMLVEKGLKHGWDGDFAYMAWVHDEIQVGC
+RTEEIAQVVIETAQEAMRWVGDHWNFRCLLDTEGKMGPNWAICH
+>match$48_416_438
+IHGSVNPNGAVTGRATHAFPNLA
+>match$48_440_455
+IPGVRSPYGEQCRAAF
+>match$48_518_543
+RDNAKTFIYGFLYGAGDEKIGQIVGA
+>match$48_611_627
+NTLLQSAGALICKLWII
+>match$49_518_537
+RDNAKTFIYGFLYGAGDEKI
+>match$50_1158_1318
+KAYALPKEKRKEYLERALDPTMIAHAALSRSSQLGAPLAMVDLVGGVLGFESSKMARSTI
+LPKDTVKERDPNKPYTSREVMGAMGSNLLEQMPSAGFVANVGATLMNAAGVVNSPNKATE
+QDFMTGLMNSTKELVPNDPLTQQLVLKIYEANGVNLRERRK
+>match$51_1136_1157
+AALSIITSMGLAGGFYAMAAHV
+>match$52_1_1135
+MDKYDKNVPSDYDGLFQKAADANGVSYDLLRKVAWTESRFVPTAKSKTGPLGMMQFTKAT
+AKALGLRVTDGPDDDRLNPELAINAAAKQLAGLVGKFDGDELKAALAYNQGEGRLGNPQL
+EAYSKGDFASISEEGRNYMRNLLDVAKSPMAGQLETFGGITPKGKGIPAEVGLAGIGHKQ
+KVTQELPESTSFDVKGIEQEATAKPFAKDFWETHGETLDEYNSRSTFFGFKNAAEAELSN
+SVAGMAFRAGRLDNGFDVFKDTITPTRWNSHIWTPEELEKIRTEVKNPAYINVVTGGSPE
+NLDDLIKLANENFENDSRAAEAGLGAKLSAGIIGAGVDPLSYVPMVGVTGKGFKLINKAL
+VVGAESAALNVASEGLRTSVAGGDADYAGAALGGFVFGAGMSAISDAVAAGLKRSKPEAE
+FDNEFIGPMMRLEARETARNANSADLSRMNTENMKFEGEHNGVPYEDLPTERGAVVLHDG
+SVLSASNPINPKTLKEFSEVDPEKAARGIKLAGFTEIGLKTLGSDDADIRRVAIDLVRSP
+TGMQSGASGKFGATASDIHERLHGTDQRTYNDLYKAMSDAMKDPEFSTGGAKMSREETRY
+TIYRRAALAIERPELQKALTPSERIVMDIIKRHFDTKRELMENPAIFGNTKAVSIFPESR
+HKGTYVPHVYDRHAKALMIQRYGAEGLQEGIARSWMNSYVSRPEVKARVDEMLKELHGVK
+EVTPEMVEKYAMDKAYGISHSDQFTNSSIIEENIEGLVGIENNSFLEARNLFDSDLSITM
+PDGQQFSVNDLRDFDMFRIMPAYDRRVNGDIAIMGSTGKTTKELKDEILALKAKAEGDGK
+KTGEVHALMDTVKILTGRARRNQDTVWETSLRAINDLGFFAKNAYMGAQNITEIAGMIVT
+GNVRALGHGIPILRDTLYKSKPVSAKELKELHASLFGKEVDQLIRPKRADIVQRLREATD
+TGPAVANIVGTLKYSTQELAARSPWTKLLNGTTNYLLDAARQGMLGDVISATLTGKTTRW
+EKEGFLRGASVTPEQMAGIKSLIKEHMVRGEDGKFTVKDKQAFSMDPRAMDLWRLADKVA
+DEAMLRPHKVSLQDSHAFGALGKMVMQFKSFTIKSLNSKFLRTFYDGYKNNRAID
+>match$53_5_152
+DKNVPSDYDGLFQKAADANGVSYDLLRKVAWTESRFVPTAKSKTGPLGMMQFTKATAKAL
+GLRVTDGPDDDRLNPELAINAAAKQLAGLVGKFDGDELKAALAYNQGEGRLGNPQLEAYS
+KGDFASISEEGRNYMRNLLDVAKSPMAG
+>match$54_33_61
+VAWTESRFVPTAKSKTGPLGMMQFTKATA
+>match$55_5_146
+DKNVPSDYDGLFQKAADANGVSYDLLRKVAWTESRFVPTAKSKTGPLGMMQFTKATAKAL
+GLRVTDGPDDDRLNPELAINAAAKQLAGLVGKFDGDELKAALAYNQGEGRLGNPQLEAYS
+KGDFASISEEGRNYMRNLLDVA
+>match$56_1317_1318
+RK
+>match$57_2_1309
+DKYDKNVPSDYDGLFQKAADANGVSYDLLRKVAWTESRFVPTAKSKTGPLGMMQFTKATA
+KALGLRVTDGPDDDRLNPELAINAAAKQLAGLVGKFDGDELKAALAYNQGEGRLGNPQLE
+AYSKGDFASISEEGRNYMRNLLDVAKSPMAGQLETFGGITPKGKGIPAEVGLAGIGHKQK
+VTQELPESTSFDVKGIEQEATAKPFAKDFWETHGETLDEYNSRSTFFGFKNAAEAELSNS
+VAGMAFRAGRLDNGFDVFKDTITPTRWNSHIWTPEELEKIRTEVKNPAYINVVTGGSPEN
+LDDLIKLANENFENDSRAAEAGLGAKLSAGIIGAGVDPLSYVPMVGVTGKGFKLINKALV
+VGAESAALNVASEGLRTSVAGGDADYAGAALGGFVFGAGMSAISDAVAAGLKRSKPEAEF
+DNEFIGPMMRLEARETARNANSADLSRMNTENMKFEGEHNGVPYEDLPTERGAVVLHDGS
+VLSASNPINPKTLKEFSEVDPEKAARGIKLAGFTEIGLKTLGSDDADIRRVAIDLVRSPT
+GMQSGASGKFGATASDIHERLHGTDQRTYNDLYKAMSDAMKDPEFSTGGAKMSREETRYT
+IYRRAALAIERPELQKALTPSERIVMDIIKRHFDTKRELMENPAIFGNTKAVSIFPESRH
+KGTYVPHVYDRHAKALMIQRYGAEGLQEGIARSWMNSYVSRPEVKARVDEMLKELHGVKE
+VTPEMVEKYAMDKAYGISHSDQFTNSSIIEENIEGLVGIENNSFLEARNLFDSDLSITMP
+DGQQFSVNDLRDFDMFRIMPAYDRRVNGDIAIMGSTGKTTKELKDEILALKAKAEGDGKK
+TGEVHALMDTVKILTGRARRNQDTVWETSLRAINDLGFFAKNAYMGAQNITEIAGMIVTG
+NVRALGHGIPILRDTLYKSKPVSAKELKELHASLFGKEVDQLIRPKRADIVQRLREATDT
+GPAVANIVGTLKYSTQELAARSPWTKLLNGTTNYLLDAARQGMLGDVISATLTGKTTRWE
+KEGFLRGASVTPEQMAGIKSLIKEHMVRGEDGKFTVKDKQAFSMDPRAMDLWRLADKVAD
+EAMLRPHKVSLQDSHAFGALGKMVMQFKSFTIKSLNSKFLRTFYDGYKNNRAIDAALSII
+TSMGLAGGFYAMAAHVKAYALPKEKRKEYLERALDPTMIAHAALSRSSQLGAPLAMVDLV
+GGVLGFESSKMARSTILPKDTVKERDPNKPYTSREVMGAMGSNLLEQMPSAGFVANVGAT
+LMNAAGVVNSPNKATEQDFMTGLMNSTKELVPNDPLTQQLVLKIYEAN
+>match$58_15_127
+LFQKAADANGVSYDLLRKVAWTESRFVPTAKSKTGPLGMMQFTKATAKALGLRVTDGPDD
+DRLNPELAINAAAKQLAGLVGKFDGDELKAALAYNQGEGRLGNPQLEAYSKGD
+>match$59_10_116
+SDYDGLFQKAADANGVSYDLLRKVAWTESRFVPTAKSKTGPLGMMQFTKATAKALGLRVT
+DGPDDDRLNPELAINAAAKQLAGLVGKFDGDELKAALAYNQGEGRLG
+>match$60_4_15
+LMPLLIVIVGCL
+>match$61_1_3
+MMY
+>match$62_1_19
+MMYLMPLLIVIVGCLALHC
+>match$63_20_29
+SDDDMPDGHA
+>match$64_16_19
+ALHC
+>match$65_1_16
+MMYLMPLLIVIVGCLA
+>match$66_14_181
+LSAVNDILASIGEPPVSTLEGDANADAANARRILNKINRQIQSRGWTFNIEEGITLLPDV
+YSNLIVYSDDYLSLMSTSGQSIYVNRGGYVYDRTSQSDRFDSGITVNIIRLRDYDEMPEC
+FRYWIVTKASRQFNNRFFGAPEVEGVLQEEEDEARRLCMEYEMDYGGY
+>match$67_78_165
+APIVLAFTDSVNWRKELVDPNYKANRKAVKKPVGYFEFLDALFEREEFYCIREPMLEGDD
+VMGVIASNPSAFGARKAVIISCDKDFKT
+>match$68_12_190
+LREGCDDKGILVMDGDWLVFQAMSAAEFDASWEEEIWHRCCDHAKARQILEDSIKSYETR
+KKAWAGAPIVLAFTDSVNWRKELVDPNYKANRKAVKKPVGYFEFLDALFEREEFYCIREP
+MLEGDDVMGVIASNPSAFGARKAVIISCDKDFKTIPNCDFLWCTTGNILTQTEESADWW
+>match$69_19_181
+KGILVMDGDWLVFQAMSAAEFDASWEEEIWHRCCDHAKARQILEDSIKSYETRKKAWAGA
+PIVLAFTDSVNWRKELVDPNYKANRKAVKKPVGYFEFLDALFEREEFYCIREPMLEGDDV
+MGVIASNPSAFGARKAVIISCDKDFKTIPNCDFLWCTTGNILT
+>match$70_208_484
+LRERIREHLSSEESVGLLFSGCTGINDKTLGARGGEVIMVTSGSGMGKSTFVRQQALQWG
+TAMGKKVGLAMLEESVEETAEDLIGLHNRVRLRQSDSLKREIIENGKFDQWFDELFGNDT
+FHLYDSFAEAETDRLLAKLAYMRSGLGCDVIILDHISIVVSASGESDERKMIDNLMTKLK
+GFAKSTGVVLVVICHLKNPDKGKAHEEGRPVSITDLRGSGALRQLSDTIIALERNQQGDM
+PNLVLVRILKCRFTGDTGIAGYMEYNKETGWLEPSSY
+>match$71_218_485
+SEESVGLLFSGCTGINDKTLGARGGEVIMVTSGSGMGKSTFVRQQALQWGTAMGKKVGLA
+MLEESVEETAEDLIGLHNRVRLRQSDSLKREIIENGKFDQWFDELFGNDTFHLYDSFAEA
+ETDRLLAKLAYMRSGLGCDVIILDHISIVVSASGESDERKMIDNLMTKLKGFAKSTGVVL
+VVICHLKNPDKGKAHEEGRPVSITDLRGSGALRQLSDTIIALERNQQGDMPNLVLVRILK
+CRFTGDTGIAGYMEYNKETGWLEPSSYS
+>match$72_1_73
+MTYNVWNFGESNGRYSALTARGISKETCQKAGYWIAKVDGVMYQVADYRDQNGNIVSQKV
+RDKDKNFKTTGSH
+>match$73_88_175
+KKIVVTEGEIDMLTVMELQDCKYPVVSLGHGASAAKKTCAANYEYFDQFEQIILMFDMDE
+AGRKAVEEAAQVLPAGKVRVAVLPCKDA
+>match$74_91_178
+VVTEGEIDMLTVMELQDCKYPVVSLGHGASAAKKTCAANYEYFDQFEQIILMFDMDEAGR
+KAVEEAAQVLPAGKVRVAVLPCKDANEC
+>match$75_210_477
+ERIREHLSSEESVGLLFSGCTGINDKTLGARGGEVIMVTSGSGMGKSTFVRQQALQWGTA
+MGKKVGLAMLEESVEETAEDLIGLHNRVRLRQSDSLKREIIENGKFDQWFDELFGNDTFH
+LYDSFAEAETDRLLAKLAYMRSGLGCDVIILDHISIVVSASGESDERKMIDNLMTKLKGF
+AKSTGVVLVVICHLKNPDKGKAHEEGRPVSITDLRGSGALRQLSDTIIALERNQQGDMPN
+LVLVRILKCRFTGDTGIAGYMEYNKETG
+>match$76_18_491
+LTARGISKETCQKAGYWIAKVDGVMYQVADYRDQNGNIVSQKVRDKDKNFKTTGSHKSDA
+LFGKHLWNGGKKIVVTEGEIDMLTVMELQDCKYPVVSLGHGASAAKKTCAANYEYFDQFE
+QIILMFDMDEAGRKAVEEAAQVLPAGKVRVAVLPCKDANECHLNGHDREIMEQVWNAGPW
+IPDGVVSALSLRERIREHLSSEESVGLLFSGCTGINDKTLGARGGEVIMVTSGSGMGKST
+FVRQQALQWGTAMGKKVGLAMLEESVEETAEDLIGLHNRVRLRQSDSLKREIIENGKFDQ
+WFDELFGNDTFHLYDSFAEAETDRLLAKLAYMRSGLGCDVIILDHISIVVSASGESDERK
+MIDNLMTKLKGFAKSTGVVLVVICHLKNPDKGKAHEEGRPVSITDLRGSGALRQLSDTII
+ALERNQQGDMPNLVLVRILKCRFTGDTGIAGYMEYNKETGWLEPSSYSGEEESH
+>match$77_88_165
+KKIVVTEGEIDMLTVMELQDCKYPVVSLGHGASAAKKTCAANYEYFDQFEQIILMFDMDE
+AGRKAVEEAAQVLPAGKV
+>match$78_2_192
+TYNVWNFGESNGRYSALTARGISKETCQKAGYWIAKVDGVMYQVADYRDQNGNIVSQKVR
+DKDKNFKTTGSHKSDALFGKHLWNGGKKIVVTEGEIDMLTVMELQDCKYPVVSLGHGASA
+AKKTCAANYEYFDQFEQIILMFDMDEAGRKAVEEAAQVLPAGKVRVAVLPCKDANECHLN
+GHDREIMEQVW
+>match$79_74_199
+KSDALFGKHLWNGGKKIVVTEGEIDMLTVMELQDCKYPVVSLGHGASAAKKTCAANYEYF
+DQFEQIILMFDMDEAGRKAVEEAAQVLPAGKVRVAVLPCKDANECHLNGHDREIMEQVWN
+AGPWIP
+>match$80_227_444
+SGCTGINDKTLGARGGEVIMVTSGSGMGKSTFVRQQALQWGTAMGKKVGLAMLEESVEET
+AEDLIGLHNRVRLRQSDSLKREIIENGKFDQWFDELFGNDTFHLYDSFAEAETDRLLAKL
+AYMRSGLGCDVIILDHISIVVSASGESDERKMIDNLMTKLKGFAKSTGVVLVVICHLKNP
+DKGKAHEEGRPVSITDLRGSGALRQLSDTIIALERNQQ
+>match$81_1_67
+MFRLHYNKSVKNFTVRRADRSIVCASERRAKIPLIGNTVPLAPSVHIIITRGDFEKAIDK
+KRPVLSV
+>match$82_359_521
+GGAMTGQLKLQNGHVLQLESASDKAHYILSKDGNRNNWYIGRGSDNNNDCTFHSYVHGTT
+LTLKQDYAVVNKHFHVGQAVVATDGNIQGTKWGGKWLDAYLRDSFVAKSKAWTQVWSGSA
+GGGVSVTVSQDLRFRNIWIKCANNSWNFFRTGPDGIYFIASDG
+>match$83_1_162
+MANVIKTVLTYQLDGSNRDFNIPFEYLARKFVVVTLIGVDRKVLTINTDYRFATRTTISL
+TKAWGPADGYTTIELRRVTSTTDRLVDFTDGSILRAYDLNVAQIQTMHVAEEARDLTTDT
+IGVNNDGHLDARGRRIVNLANAVDDRDAVPFGQLKTMNQNSW
+>match$84_168_188
+ALQFRNEAETFRNQAEGFKNE
+>match$85_370_430
+NGHVLQLESASDKAHYILSKDGNRNNWYIGRGSDNNNDCTFHSYVHGTTLTLKQDYAVVN
+K
+>match$86_464_553
+VAKSKAWTQVWSGSAGGGVSVTVSQDLRFRNIWIKCANNSWNFFRTGPDGIYFIASDGGW
+LRFQIHSNGLGFKNIADSRSVPNAIMVENE
+>match$87_431_463
+HFHVGQAVVATDGNIQGTKWGGKWLDAYLRDSF
+>match$88_249_269
+AHLAEQQADRAEREADKLENY
+>match$89_4_240
+IKTNPFKAVSFVESAIKKALDNAGYLIAEIKYDGVRGNICVDNTANSYWLSRVSKTIPAL
+EHLNGFDVRWKRLLNDDRCFYKDGFMLDGELMVKGVDFNTGSGLLRTKWTDTKNQEFHEE
+LFVEPIRKKDKVPFKLHTGHLHIKLYAILPLHIVESGEDCDVMTLLMQEHVKNMLPLLQE
+YFPEIEWQAAESYEVYDMVELQQLYEQKRAEGHEGLIVKDPMCIYKRGKKSGWWKMK
+>match$90_8_240
+PFKAVSFVESAIKKALDNAGYLIAEIKYDGVRGNICVDNTANSYWLSRVSKTIPALEHLN
+GFDVRWKRLLNDDRCFYKDGFMLDGELMVKGVDFNTGSGLLRTKWTDTKNQEFHEELFVE
+PIRKKDKVPFKLHTGHLHIKLYAILPLHIVESGEDCDVMTLLMQEHVKNMLPLLQEYFPE
+IEWQAAESYEVYDMVELQQLYEQKRAEGHEGLIVKDPMCIYKRGKKSGWWKMK
+>match$91_175_242
+KNMLPLLQEYFPEIEWQAAESYEVYDMVELQQLYEQKRAEGHEGLIVKDPMCIYKRGKKS
+GWWKMKPE
+>match$92_217_240
+EGLIVKDPMCIYKRGKKSGWWKMK
+>match$93_5_240
+KTNPFKAVSFVESAIKKALDNAGYLIAEIKYDGVRGNICVDNTANSYWLSRVSKTIPALE
+HLNGFDVRWKRLLNDDRCFYKDGFMLDGELMVKGVDFNTGSGLLRTKWTDTKNQEFHEEL
+FVEPIRKKDKVPFKLHTGHLHIKLYAILPLHIVESGEDCDVMTLLMQEHVKNMLPLLQEY
+FPEIEWQAAESYEVYDMVELQQLYEQKRAEGHEGLIVKDPMCIYKRGKKSGWWKMK
+>match$94_241_349
+PENEADGIIQGLVWGTKGLANEGKVIGFEVLLESGRLVNATNISRALMDEFTETVKEATL
+SQWGFFSPYGIGDNDACTINPYDGWACQISYMEETPDGSLRHPSFVMFR
+>match$95_241_349
+PENEADGIIQGLVWGTKGLANEGKVIGFEVLLESGRLVNATNISRALMDEFTETVKEATL
+SQWGFFSPYGIGDNDACTINPYDGWACQISYMEETPDGSLRHPSFVMFR
+>match$96_37_194
+GVRGNICVDNTANSYWLSRVSKTIPALEHLNGFDVRWKRLLNDDRCFYKDGFMLDGELMV
+KGVDFNTGSGLLRTKWTDTKNQEFHEELFVEPIRKKDKVPFKLHTGHLHIKLYAILPLHI
+VESGEDCDVMTLLMQEHVKNMLPLLQEYFPEIEWQAAE
+>match$97_1_359
+MMNIKTNPFKAVSFVESAIKKALDNAGYLIAEIKYDGVRGNICVDNTANSYWLSRVSKTI
+PALEHLNGFDVRWKRLLNDDRCFYKDGFMLDGELMVKGVDFNTGSGLLRTKWTDTKNQEF
+HEELFVEPIRKKDKVPFKLHTGHLHIKLYAILPLHIVESGEDCDVMTLLMQEHVKNMLPL
+LQEYFPEIEWQAAESYEVYDMVELQQLYEQKRAEGHEGLIVKDPMCIYKRGKKSGWWKMK
+PENEADGIIQGLVWGTKGLANEGKVIGFEVLLESGRLVNATNISRALMDEFTETVKEATL
+SQWGFFSPYGIGDNDACTINPYDGWACQISYMEETPDGSLRHPSFVMFRGTEDNPQEKM
+>match$98_241_349
+PENEADGIIQGLVWGTKGLANEGKVIGFEVLLESGRLVNATNISRALMDEFTETVKEATL
+SQWGFFSPYGIGDNDACTINPYDGWACQISYMEETPDGSLRHPSFVMFR
+>match$99_32_40
+EIKYDGVRG
+>match$100_4_121
+CIEWTGGVNSKGYGRKWVNGKLVTPHRHIYEETYGPVPTGIVVMHICDNPRCYNIKHLTL
+GTPKDNSEDMVTKGRQAKGEELSKKLTESDVLAIRSSTLSHRSLGELYGVSQSTITRI
+>match$101_29_70
+HRHIYEETYGPVPTGIVVMHICDNPRCYNIKHLTLGTPKDNS
+>match$102_10_132
+ESTDAIFVHCSATKPSQNVGVREIRQWHKEQGWLDVGYHFIIKRDGTVEAGRDEMAVGSH
+AKGYNHNSIGVCLVGGIDDKGKFDANFTPAQMQSLRSLLVTLLAKYEGAVLRAHHEVAPK
+ACP
+>match$103_6_151
+FKQRESTDAIFVHCSATKPSQNVGVREIRQWHKEQGWLDVGYHFIIKRDGTVEAGRDEMA
+VGSHAKGYNHNSIGVCLVGGIDDKGKFDANFTPAQMQSLRSLLVTLLAKYEGAVLRAHHE
+VAPKACPSFDLKRWWEKNELVTSDRG
+>match$104_1_151
+MARVQFKQRESTDAIFVHCSATKPSQNVGVREIRQWHKEQGWLDVGYHFIIKRDGTVEAG
+RDEMAVGSHAKGYNHNSIGVCLVGGIDDKGKFDANFTPAQMQSLRSLLVTLLAKYEGAVL
+RAHHEVAPKACPSFDLKRWWEKNELVTSDRG
+>match$105_12_132
+TDAIFVHCSATKPSQNVGVREIRQWHKEQGWLDVGYHFIIKRDGTVEAGRDEMAVGSHAK
+GYNHNSIGVCLVGGIDDKGKFDANFTPAQMQSLRSLLVTLLAKYEGAVLRAHHEVAPKAC
+P
+>match$106_10_146
+ESTDAIFVHCSATKPSQNVGVREIRQWHKEQGWLDVGYHFIIKRDGTVEAGRDEMAVGSH
+AKGYNHNSIGVCLVGGIDDKGKFDANFTPAQMQSLRSLLVTLLAKYEGAVLRAHHEVAPK
+ACPSFDLKRWWEKNELV
+>match$107_12_132
+TDAIFVHCSATKPSQNVGVREIRQWHKEQGWLDVGYHFIIKRDGTVEAGRDEMAVGSHAK
+GYNHNSIGVCLVGGIDDKGKFDANFTPAQMQSLRSLLVTLLAKYEGAVLRAHHEVAPKAC
+P
+>match$108_1_149
+MARVQFKQRESTDAIFVHCSATKPSQNVGVREIRQWHKEQGWLDVGYHFIIKRDGTVEAG
+RDEMAVGSHAKGYNHNSIGVCLVGGIDDKGKFDANFTPAQMQSLRSLLVTLLAKYEGAVL
+RAHHEVAPKACPSFDLKRWWEKNELVTSD
+>match$109_1_124
+MARVQFKQRESTDAIFVHCSATKPSQNVGVREIRQWHKEQGWLDVGYHFIIKRDGTVEAG
+RDEMAVGSHAKGYNHNSIGVCLVGGIDDKGKFDANFTPAQMQSLRSLLVTLLAKYEGAVL
+RAHH
+>match$110_1_85
+MGRLYSGNLAAFKAATNKLFQLDLAVIYDDWYDAYTRKDCIRLRIEDRSGNLIDTSTFYH
+HDEDVLFNMCTDWLNHMYDQLKDWK
+>match$111_1_85
+MGRLYSGNLAAFKAATNKLFQLDLAVIYDDWYDAYTRKDCIRLRIEDRSGNLIDTSTFYH
+HDEDVLFNMCTDWLNHMYDQLKDWK
+>match$112_26_30
+GYASL
+>match$113_1_30
+MFRLLLNLLRHRVTYRFLVVLCAALGYASL
+>match$114_31_49
+TGDLSSLESVVCSILTCSD
+>match$115_31_49
+TGDLSSLESVVCSILTCSD
+>match$116_17_25
+FLVVLCAAL
+>match$117_1_49
+MFRLLLNLLRHRVTYRFLVVLCAALGYASLTGDLSSLESVVCSILTCSD
+>match$118_1_16
+MFRLLLNLLRHRVTYR
+>match$119_7_31
+FLLLTYVVLAHYANYLILLLPLSVI
+>match$120_1_77
+MRKVAPFLLLTYVVLAHYANYLILLLPLSVISKAICLTLSSFVFSSAALLVILVSLATWN
+TTRKPDGLNHQVTQGKK
+>match$121_22_92
+LILLLPLSVISKAICLTLSSFVFSSAALLVILVSLATWNTTRKPDGLNHQVTQGKKSHTQ
+SQQTGPTTLTS
+>match$122_37_59
+LTLSSFVFSSAALLVILVSLATW
+>match$123_1_6
+MRKVAP
+>match$124_32_36
+SKAIC
+>match$125_60_112
+NTTRKPDGLNHQVTQGKKSHTQSQQTGPTTLTSDRILDDFPDDYEKFRWRVPF
+>match$126_1_77
+MLTPINQLLKNPNDIPDVPRATAEYLQVRFNYAYLEASGHIGLMRANGCSEAHILGFIQG
+LQYASNVIDEIELRKEQ
+>match$127_1_77
+MLTPINQLLKNPNDIPDVPRATAEYLQVRFNYAYLEASGHIGLMRANGCSEAHILGFIQG
+LQYASNVIDEIELRKEQ
+>match$128_61_81
+LQYASNVIDEIELRKEQLRDD
+>match$129_95_115
+WEDAEDLLNEYLEEVEEYEED
+>match$130_3_103
+MSNMTYNNVFDHAYEMLKENIRYDDIRDTDDLHDAIHMAADNAVPHYYADIFSVMASEGI
+DLEFEDSGLMPDTKDVIRILQARIYEQLTIDLWEDAEDLLN
+>match$131_8_98
+YNNVFDHAYEMLKENIRYDDIRDTDDLHDAIHMAADNAVPHYYADIFSVMASEGIDLEFE
+DSGLMPDTKDVIRILQARIYEQLTIDLWEDA
+>match$132_1_107
+MAMSNMTYNNVFDHAYEMLKENIRYDDIRDTDDLHDAIHMAADNAVPHYYADIFSVMASE
+GIDLEFEDSGLMPDTKDVIRILQARIYEQLTIDLWEDAEDLLNEYLE
+>match$133_6_111
+MTYNNVFDHAYEMLKENIRYDDIRDTDDLHDAIHMAADNAVPHYYADIFSVMASEGIDLE
+FEDSGLMPDTKDVIRILQARIYEQLTIDLWEDAEDLLNEYLEEVEE
+>match$134_18_483
+ERLKNDRAPYETRAQNCAQYTIPSLFPKDSDNASTDYQTPWQAVGARGLNNLASKLMLAL
+FPMQTWMRLTISEYEAKQLLSDPDGLAKVDEGLSMVERIIMNYIESNSYRVTLFEALKQL
+VVAGNVLLYLPEPEGSNYNPMKLYRLSSYVVQRDAFGNVLQMVTRDQIAFGALPEDIRKA
+VEGQGGEKKADETIDVYTHIYLDEDSGEYLRYEEVEGMEVQGSDGTYPKEACPYIPIRMV
+RLDGESYGRSYIEEYLGDLRSLENLQEAIVKMSMISSKVIGLVNPAGITQPRRLTKAQTG
+DFVTGRPEDISFLQLEKQADFTVAKAVSDAIEARLSFAFMLNSAVQRTGERVTAEEIRYV
+ASELEDTLGGVYSILSQELQLPLVRVLLKQLQATQQIPELPKEAVEPTISTGLEAIGRGQ
+DLDKLERCVTAWAALAPMRDDPDINLAMIKLRIANAIGIDTSGILL
+>match$135_2_526
+AEKRTGLAEDGAKSVYERLKNDRAPYETRAQNCAQYTIPSLFPKDSDNASTDYQTPWQAV
+GARGLNNLASKLMLALFPMQTWMRLTISEYEAKQLLSDPDGLAKVDEGLSMVERIIMNYI
+ESNSYRVTLFEALKQLVVAGNVLLYLPEPEGSNYNPMKLYRLSSYVVQRDAFGNVLQMVT
+RDQIAFGALPEDIRKAVEGQGGEKKADETIDVYTHIYLDEDSGEYLRYEEVEGMEVQGSD
+GTYPKEACPYIPIRMVRLDGESYGRSYIEEYLGDLRSLENLQEAIVKMSMISSKVIGLVN
+PAGITQPRRLTKAQTGDFVTGRPEDISFLQLEKQADFTVAKAVSDAIEARLSFAFMLNSA
+VQRTGERVTAEEIRYVASELEDTLGGVYSILSQELQLPLVRVLLKQLQATQQIPELPKEA
+VEPTISTGLEAIGRGQDLDKLERCVTAWAALAPMRDDPDINLAMIKLRIANAIGIDTSGI
+LLTEEQKQQKMAQQSMQMGMDNGAAALAQGMAAQATASPEAMAAA
+>match$136_2_220
+STQSNRNALVVAQLKGDFVAFLFVLWKALNLPVPTKCQIDMAKVLANGDNKKFILQAFRG
+IGKSFITCAFVVWSLWRDPQLKILIVSASKERADANSIFIKNIIDLLPFLSELKPRPGQR
+DSVISFDVGPANPDHSPSVKSVGITGQLTGSRADIIIADDVEIPSNSATMGAREKLWTLV
+QEFAALLKPLPSSRVIYLGTPQTEMTLYKELEDNRGYTT
+>match$137_625_639
+VTRSVTKRSVMTLAY
+>match$138_533_544
+PLAFDGSCSGIQ
+>match$139_421_868
+DWRGRVYAVSMFNPQGNDMTKGLLTLAKGKPIGKEGYYWLKIHGANCAGVDKVPFPERIK
+FIEENHENIMACAKSPLENTWWAEQDSPFCFLAFCFEYAGVQHHGLSYNCSLPLAFDGSC
+SGIQHFSAMLRDEVGGRAVNLLPSETVQDIYGIVAKKVNEILQADAINGTDNEVVTVTDE
+NTGEISEKVKLGTKALAGQWLAYGVTRSVTKRSVMTLAYGSKEFGFRQQVLEDTIQPAID
+SGKGLMFTQPNQAAGYMAKLIWESVSVTVVAAVEAMNWLKSAAKLLAAEVKDKKTGEILR
+KRCAVHWVTPDGFPVWQEYKKPIQTRLNLMFLGQFRLQPTINTNKDSEIDAHKQESGIAP
+NFVHSQDGSHLRKTVVWAHEKYGIESFALIHDSFGTIPADAANLFKAVRETMVDTYESCD
+VLADFYDQFADQLHESQLDKMPALPAKG
+>match$140_7_882
+AKNDFSDIELAAIPFNTLADHYGERLAREQLALEHESYEMGEARFRKMFERQLKAGEVAD
+NAAAKPLITTLLPKMIARINDWFEEVKAKRGKRPTAFQFLQEIKPEAVAYITIKTTLACL
+TSADNTTVQAVASAIGRAIEDEARFGRIRDLEAKHFKKNVEEQLNKRVGHVYKKAFMQVV
+EADMLSKGLLGGEAWSSWHKEDSIHVGVRCIEMLIESTGMVSLHRQNAGVVGQDSETIEL
+APEYAEAIATRAGALAGISPMFQPCVVPPKPWTGITGGGYWANGRRPLALVRTHSKKALM
+RYEDVYMPEVYKAINIAQNTAWKINKKVLAVANVITKWKHCPVEDIPAIEREELPMKPED
+IDMNPEALTAWKRAAAAVYRKDKARKSRRISLEFMLEQANKFANHKAIWFPYNMDWRGRV
+YAVSMFNPQGNDMTKGLLTLAKGKPIGKEGYYWLKIHGANCAGVDKVPFPERIKFIEENH
+ENIMACAKSPLENTWWAEQDSPFCFLAFCFEYAGVQHHGLSYNCSLPLAFDGSCSGIQHF
+SAMLRDEVGGRAVNLLPSETVQDIYGIVAKKVNEILQADAINGTDNEVVTVTDENTGEIS
+EKVKLGTKALAGQWLAYGVTRSVTKRSVMTLAYGSKEFGFRQQVLEDTIQPAIDSGKGLM
+FTQPNQAAGYMAKLIWESVSVTVVAAVEAMNWLKSAAKLLAAEVKDKKTGEILRKRCAVH
+WVTPDGFPVWQEYKKPIQTRLNLMFLGQFRLQPTINTNKDSEIDAHKQESGIAPNFVHSQ
+DGSHLRKTVVWAHEKYGIESFALIHDSFGTIPADAANLFKAVRETMVDTYESCDVLADFY
+DQFADQLHESQLDKMPALPAKGNLNLRDILESDFAF
+>match$141_450_527
+KPIGKEGYYWLKIHGANCAGVDKVPFPERIKFIEENHENIMACAKSPLENTWWAEQDSPF
+CFLAFCFEYAGVQHHGLS
+>match$142_326_411
+TAWKINKKVLAVANVITKWKHCPVEDIPAIEREELPMKPEDIDMNPEALTAWKRAAAAVY
+RKDKARKSRRISLEFMLEQANKFANH
+>match$143_36_322
+QLALEHESYEMGEARFRKMFERQLKAGEVADNAAAKPLITTLLPKMIARINDWFEEVKAK
+RGKRPTAFQFLQEIKPEAVAYITIKTTLACLTSADNTTVQAVASAIGRAIEDEARFGRIR
+DLEAKHFKKNVEEQLNKRVGHVYKKAFMQVVEADMLSKGLLGGEAWSSWHKEDSIHVGVR
+CIEMLIESTGMVSLHRQNAGVVGQDSETIELAPEYAEAIATRAGALAGISPMFQPCVVPP
+KPWTGITGGGYWANGRRPLALVRTHSKKALMRYEDVYMPEVYKAINI
+>match$144_8_325
+KNDFSDIELAAIPFNTLADHYGERLAREQLALEHESYEMGEARFRKMFERQLKAGEVADN
+AAAKPLITTLLPKMIARINDWFEEVKAKRGKRPTAFQFLQEIKPEAVAYITIKTTLACLT
+SADNTTVQAVASAIGRAIEDEARFGRIRDLEAKHFKKNVEEQLNKRVGHVYKKAFMQVVE
+ADMLSKGLLGGEAWSSWHKEDSIHVGVRCIEMLIESTGMVSLHRQNAGVVGQDSETIELA
+PEYAEAIATRAGALAGISPMFQPCVVPPKPWTGITGGGYWANGRRPLALVRTHSKKALMR
+YEDVYMPEVYKAINIAQN
+>match$145_34_325
+REQLALEHESYEMGEARFRKMFERQLKAGEVADNAAAKPLITTLLPKMIARINDWFEEVK
+AKRGKRPTAFQFLQEIKPEAVAYITIKTTLACLTSADNTTVQAVASAIGRAIEDEARFGR
+IRDLEAKHFKKNVEEQLNKRVGHVYKKAFMQVVEADMLSKGLLGGEAWSSWHKEDSIHVG
+VRCIEMLIESTGMVSLHRQNAGVVGQDSETIELAPEYAEAIATRAGALAGISPMFQPCVV
+PPKPWTGITGGGYWANGRRPLALVRTHSKKALMRYEDVYMPEVYKAINIAQN
+>match$146_554_786
+VGGRAVNLLPSETVQDIYGIVAKKVNEILQADAINGTDNEVVTVTDENTGEISEKVKLGT
+KALAGQWLAYGVTRSVTKRSVMTLAYGSKEFGFRQQVLEDTIQPAIDSGKGLMFTQPNQA
+AGYMAKLIWESVSVTVVAAVEAMNWLKSAAKLLAAEVKDKKTGEILRKRCAVHWVTPDGF
+PVWQEYKKPIQTRLNLMFLGQFRLQPTINTNKDSEIDAHKQESGIAPNFVHSQ
+>match$147_31_882
+RLAREQLALEHESYEMGEARFRKMFERQLKAGEVADNAAAKPLITTLLPKMIARINDWFE
+EVKAKRGKRPTAFQFLQEIKPEAVAYITIKTTLACLTSADNTTVQAVASAIGRAIEDEAR
+FGRIRDLEAKHFKKNVEEQLNKRVGHVYKKAFMQVVEADMLSKGLLGGEAWSSWHKEDSI
+HVGVRCIEMLIESTGMVSLHRQNAGVVGQDSETIELAPEYAEAIATRAGALAGISPMFQP
+CVVPPKPWTGITGGGYWANGRRPLALVRTHSKKALMRYEDVYMPEVYKAINIAQNTAWKI
+NKKVLAVANVITKWKHCPVEDIPAIEREELPMKPEDIDMNPEALTAWKRAAAAVYRKDKA
+RKSRRISLEFMLEQANKFANHKAIWFPYNMDWRGRVYAVSMFNPQGNDMTKGLLTLAKGK
+PIGKEGYYWLKIHGANCAGVDKVPFPERIKFIEENHENIMACAKSPLENTWWAEQDSPFC
+FLAFCFEYAGVQHHGLSYNCSLPLAFDGSCSGIQHFSAMLRDEVGGRAVNLLPSETVQDI
+YGIVAKKVNEILQADAINGTDNEVVTVTDENTGEISEKVKLGTKALAGQWLAYGVTRSVT
+KRSVMTLAYGSKEFGFRQQVLEDTIQPAIDSGKGLMFTQPNQAAGYMAKLIWESVSVTVV
+AAVEAMNWLKSAAKLLAAEVKDKKTGEILRKRCAVHWVTPDGFPVWQEYKKPIQTRLNLM
+FLGQFRLQPTINTNKDSEIDAHKQESGIAPNFVHSQDGSHLRKTVVWAHEKYGIESFALI
+HDSFGTIPADAANLFKAVRETMVDTYESCDVLADFYDQFADQLHESQLDKMPALPAKGNL
+NLRDILESDFAF
+>match$148_450_882
+KPIGKEGYYWLKIHGANCAGVDKVPFPERIKFIEENHENIMACAKSPLENTWWAEQDSPF
+CFLAFCFEYAGVQHHGLSYNCSLPLAFDGSCSGIQHFSAMLRDEVGGRAVNLLPSETVQD
+IYGIVAKKVNEILQADAINGTDNEVVTVTDENTGEISEKVKLGTKALAGQWLAYGVTRSV
+TKRSVMTLAYGSKEFGFRQQVLEDTIQPAIDSGKGLMFTQPNQAAGYMAKLIWESVSVTV
+VAAVEAMNWLKSAAKLLAAEVKDKKTGEILRKRCAVHWVTPDGFPVWQEYKKPIQTRLNL
+MFLGQFRLQPTINTNKDSEIDAHKQESGIAPNFVHSQDGSHLRKTVVWAHEKYGIESFAL
+IHDSFGTIPADAANLFKAVRETMVDTYESCDVLADFYDQFADQLHESQLDKMPALPAKGN
+LNLRDILESDFAF
+>match$149_31_882
+RLAREQLALEHESYEMGEARFRKMFERQLKAGEVADNAAAKPLITTLLPKMIARINDWFE
+EVKAKRGKRPTAFQFLQEIKPEAVAYITIKTTLACLTSADNTTVQAVASAIGRAIEDEAR
+FGRIRDLEAKHFKKNVEEQLNKRVGHVYKKAFMQVVEADMLSKGLLGGEAWSSWHKEDSI
+HVGVRCIEMLIESTGMVSLHRQNAGVVGQDSETIELAPEYAEAIATRAGALAGISPMFQP
+CVVPPKPWTGITGGGYWANGRRPLALVRTHSKKALMRYEDVYMPEVYKAINIAQNTAWKI
+NKKVLAVANVITKWKHCPVEDIPAIEREELPMKPEDIDMNPEALTAWKRAAAAVYRKDKA
+RKSRRISLEFMLEQANKFANHKAIWFPYNMDWRGRVYAVSMFNPQGNDMTKGLLTLAKGK
+PIGKEGYYWLKIHGANCAGVDKVPFPERIKFIEENHENIMACAKSPLENTWWAEQDSPFC
+FLAFCFEYAGVQHHGLSYNCSLPLAFDGSCSGIQHFSAMLRDEVGGRAVNLLPSETVQDI
+YGIVAKKVNEILQADAINGTDNEVVTVTDENTGEISEKVKLGTKALAGQWLAYGVTRSVT
+KRSVMTLAYGSKEFGFRQQVLEDTIQPAIDSGKGLMFTQPNQAAGYMAKLIWESVSVTVV
+AAVEAMNWLKSAAKLLAAEVKDKKTGEILRKRCAVHWVTPDGFPVWQEYKKPIQTRLNLM
+FLGQFRLQPTINTNKDSEIDAHKQESGIAPNFVHSQDGSHLRKTVVWAHEKYGIESFALI
+HDSFGTIPADAANLFKAVRETMVDTYESCDVLADFYDQFADQLHESQLDKMPALPAKGNL
+NLRDILESDFAF
+>match$150_1_70
+MFKLIKKLGQLLVRMYNVEAKRLNDEARKEATQSRALAIRSNELADSASTKVTEAARVAN
+QAQQLSKFFE
+>match$151_1_70
+MFKLIKKLGQLLVRMYNVEAKRLNDEARKEATQSRALAIRSNELADSASTKVTEAARVAN
+QAQQLSKFFE
+>match$152_4_12
+LTIGLLTAL
+>match$153_27_45
+AVGSYFTACIIIGIIKGAL
+>match$154_18_26
+ASFGKALGV
+>match$155_46_47
+RK
+>match$156_13_17
+GLAVG
+>match$157_1_3
+MYM
+>match$158_1_17
+MYMLTIGLLTALGLAVG
+>match$159_1_51
+MFKKVGKFLAALAAILTLAYILAVYPQVALVVVGACYLAAVCACVWSIVNW
+>match$160_20_28
+YILAVYPQV
+>match$161_8_15
+FLAALAAI
+>match$162_1_7
+MFKKVGK
+>match$163_50_51
+NW
+>match$164_1_19
+MFKKVGKFLAALAAILTLA
+>match$165_1_51
+MFKKVGKFLAALAAILTLAYILAVYPQVALVVVGACYLAAVCACVWSIVNW
+>match$166_16_19
+LTLA
+>match$167_29_49
+ALVVVGACYLAAVCACVWSIV
+>match$168_1_64
+MSNVNTGSLSVDNKKFWATVESSEHSFEVPIYAETLDEALELAEWQYVPAGFEVTRVRPC
+VAPK
+>match$169_1_64
+MSNVNTGSLSVDNKKFWATVESSEHSFEVPIYAETLDEALELAEWQYVPAGFEVTRVRPC
+VAPK
+>match$170_14_60
+KKFWATVESSEHSFEVPIYAETLDEALELAEWQYVPAGFEVTRVRPC
+>match$171_6_27
+YIGLGLCVLGVCLISWGLWDLA
+>match$172_1_5
+METVA
+>match$173_1_37
+METVAYIGLGLCVLGVCLISWGLWDLARIIKSLHDTK
+>match$174_28_37
+RIIKSLHDTK
+>match$175_8_62
+FYKAPRRHIQVWEAANGPIPKGYYIDHIDGNPLNDALDNLRLALPKENSWNMKTP
+>match$176_2_66
+RKSYKQFYKAPRRHIQVWEAANGPIPKGYYIDHIDGNPLNDALDNLRLALPKENSWNMKT
+PKSNT
+>match$177_8_56
+FYKAPRRHIQVWEAANGPIPKGYYIDHIDGNPLNDALDNLRLALPKENS
+>match$178_14_56
+RHIQVWEAANGPIPKGYYIDHIDGNPLNDALDNLRLALPKENS
+>match$179_39_124
+ECVTLSLYGFPLAIGGNCGDQCWFVTSDQVWRLSGKAKRKFRKLIMEYRDKMLEKYDTLW
+NYVWVGNTSHIRFLKTIGAVFHEEYT
+>match$180_15_136
+FTPAHHDILEAKAAGIEPSFPDASECVTLSLYGFPLAIGGNCGDQCWFVTSDQVWRLSGK
+AKRKFRKLIMEYRDKMLEKYDTLWNYVWVGNTSHIRFLKTIGAVFHEEYTRDGQFQLFTI
+TK
+>match$181_1_5
+MLEFL
+>match$182_26_143
+SDSMDAKWKQEVHNEYVKRVEAAKSTQRAIDAVSAKYQEDLAALEGSTDRIISDLRSDNK
+RLRVRVKTTGTSDGQCGFEPDGRAELDDRDAKRILAVTQKGDAWIRALQDTIRELQRK
+>match$183_1_143
+MLEFLRKLIPWVLAGMLFGLGWHLGSDSMDAKWKQEVHNEYVKRVEAAKSTQRAIDAVSA
+KYQEDLAALEGSTDRIISDLRSDNKRLRVRVKTTGTSDGQCGFEPDGRAELDDRDAKRIL
+AVTQKGDAWIRALQDTIRELQRK
+>match$184_6_25
+RKLIPWVLAGMLFGLGWHLG
+>match$185_1_143
+MLEFLRKLIPWVLAGMLFGLGWHLGSDSMDAKWKQEVHNEYVKRVEAAKSTQRAIDAVSA
+KYQEDLAALEGSTDRIISDLRSDNKRLRVRVKTTGTSDGQCGFEPDGRAELDDRDAKRIL
+AVTQKGDAWIRALQDTIRELQRK
+>match$186_34_139
+KQEVHNEYVKRVEAAKSTQRAIDAVSAKYQEDLAALEGSTDRIISDLRSDNKRLRVRVKT
+TGTSDGQCGFEPDGRAELDDRDAKRILAVTQKGDAWIRALQDTIRE
+>match$187_1_74
+MCFSPKIKTPKMDTNQIRAVEPAPLTQEVSSVEFGGSSDETDTEGTEVSGRKGLKVERDD
+SVAKSKASGNGSAR
+>match$188_1_61
+MCFSPKIKTPKMDTNQIRAVEPAPLTQEVSSVEFGGSSDETDTEGTEVSGRKGLKVERDD
+S
+>match$189_1_77
+MGTQPLSGLLCTQGHVKRTSITHSVLLLCYALSTMRTLRHLLGLQQTQCALTVMTCASVS
+WNTVRLALRYSSCLTLT
+>match$190_1_77
+MGTQPLSGLLCTQGHVKRTSITHSVLLLCYALSTMRTLRHLLGLQQTQCALTVMTCASVS
+WNTVRLALRYSSCLTLT
+>match$191_56_67
+DKMIDWKKANKE
+>match$192_37_55
+WFYVAAIAYTVVQIGAKVV
+>match$193_1_64
+MLSLDFNNELIKAAPIVGTGVADVSARLFFGLSLNEWFYVAAIAYTVVQIGAKVVDKMID
+WKKA
+>match$194_4_63
+LDFNNELIKAAPIVGTGVADVSARLFFGLSLNEWFYVAAIAYTVVQIGAKVVDKMIDWKK
+>match$195_1_36
+MLSLDFNNELIKAAPIVGTGVADVSARLFFGLSLNE
+>match$196_1_341
+MASMTGGQQMGTNQGKGVVAAGDKLALFLKVFGGEVLTAFARTSVTTSRHMVRSISSGKS
+AQFPVLGRTQAAYLAPGENLDDKRKDIKHTEKVITIDGLLTADVLIYDIEDAMNHYDVRS
+EYTSQLGESLAMAADGAVLAEIAGLCNVESKYNENIEGLGTATVIETTQNKAALTDQVAL
+GKEIIAALTKARAALTKNYVPAADRVFYCDPDSYSAILAALMPNAANYAALIDPEKGSIR
+NVMGFEVVEVPHLTAGGAGTAREGTTGQKHVFPANKGEGNVKVAKDNVIGLFMHRSAVGT
+VKLRDLALERARRANFQADQIIAKYAMGHGGLRPEAAGAVV
+>match$197_4_85
+DKSLITFLEMLDTAMAQRMLADLSDHERRSPQLYNAINKLLDRHKFQIGKLQPDVHILGG
+LAGALEEYKEKVGDNGLTDDDI
+>match$198_4_85
+DKSLITFLEMLDTAMAQRMLADLSDHERRSPQLYNAINKLLDRHKFQIGKLQPDVHILGG
+LAGALEEYKEKVGDNGLTDDDI
+>match$199_1_345
+MASMTGGQQMGTNQGKGVVAAGDKLALFLKVFGGEVLTAFARTSVTTSRHMVRSISSGKS
+AQFPVLGRTQAAYLAPGENLDDKRKDIKHTEKVITIDGLLTADVLIYDIEDAMNHYDVRS
+EYTSQLGESLAMAADGAVLAEIAGLCNVESKYNENIEGLGTATVIETTQNKAALTDQVAL
+GKEIIAALTKARAALTKNYVPAADRVFYCDPDSYSAILAALMPNAANYAALIDPEKGSIR
+NVMGFEVVEVPHLTAGGAGTAREGTTGQKHVFPANKGEGNVKVAKDNVIGLFMHRSAVGT
+VKLRDLALERARRANFQADQIIAKYAMGHGGLRPEAAGAVVFKVE
+>match$200_1_747
+MSKIESALQAAQPGLSRLRGGAGGMGYRAATTQAEQPRSSLLDTIGRFAKAGADMYTAKE
+QRARDLADERSNEIIRKLTPEQRREALNNGTLLYQDDPYAMEALRVKTGRNAAYLVDDDV
+MQKIKEGVFRTREEMEEYRHSRLQEGAKVYAEQFGIDPEDVDYQRGFNGDITERNISLYG
+AHDNFLSQQAQKGAIMNSRVELNGVLQDPDMLRRPDSADFFEKYIDNGLVTGAIPSDAQA
+TQLISQAFSDASSRAGGADFLMRVGDKKVTLNGATTTYRELIGEEQWNALMVTAQRSQFE
+TDAKLNEQYRLKINSALNQEDPRTAWEMLQGIKAELDKVQPDEQMTPQREWLISAQEQVQ
+NQMNAWTKAQAKALDDSMKSMNKLDVIDKQFQKRINGEWVSTDFKDMPVNENTGEFKHSD
+MVNYANKKLAEIDSMDIPDGAKDAMKLKYLQADSKDGAFRTAIGTMVTDAGQEWSAAVIN
+GKLPERTPAMDALRRIRNADPQLIAALYPDQAELFLTMDMMDKQGIDPQVILDADRLTVK
+RSKEQRFEDDKAFESALNASKAPEIARMPASLRESARKIYDSVKYRSGNESMAMEQMTKF
+LKESTYTFTGDDVDGDTVGVIPKNMMQVNSDPKSWEQGRDILEEARKGIIASNPWITNKQ
+LTMYSQGDSIYLMDTTGQVRVRYDKELLSKVWSENQKKLEEKAREKALADVNKRAPIVAA
+TKAREAAAKRVREKRKQTPKFIYGRKE
+>match$201_155_276
+EELSAESYAKLAEIGYTKAFIDSYIRGQEALVEQYVNSVIEYAGGRERFDALYNHLETHN
+PEAAQSLDNALTNRDLATVKAIINLAGESRAKAFGRKPTRSVTNRAIPAKPQATKREGFA
+DR
+>match$202_1_69
+MSDYLKVLQAIKSCPKTFQSNYVRNNASLVAEAASRGHISCLTTSGRNGGAWEITASGTR
+FLKRMGGCV
+>match$203_20_47
+IDSLERENDSLKNQLMEADEYVAELEEK
+>match$204_234_254
+IKEVEEVARQKEIDRAKARKE
+>match$205_1_359
+MNITDIMNAIDAIKALPICELDKRQGMLIDLLVEMVNSETCDGELTELNQALEHQDWWTT
+LKCLTADAGFKMLGNGHFSAAYSHPLLPNRVIKVGFKKEDSGAAYTAFCRMYQGRPGIPN
+VYDVQRHAGCYTVVLDALKDCERFNNDAHYKYAEIASDIIDCNSDEHDELTGWDGEFVET
+CKLIRKFFEGIASFDMHSGNIMFSNGDVPYITDPVSFSQKKDGGAFSIDPEELIKEVEEV
+ARQKEIDRAKARKERHEGRLEARRFKRRNRKARKAHKAKRERMLAAWRWAERQERRNHEV
+AVDVLGRTNNAMLWVNMFSGDFKALEERIALHWRNADRMAIANGLTLNIDKQLDAMLMG
+>match$206_1_99
+MGKKVKKAVKKVTKSVKKVVKEGARPVKQVAGGLAGLAGGTGEAQMVEVPQAAAQIVDVP
+EKEVSTEDEAQTESGRKKARAGGKKSLSVARSSGGGINI
+>match$207_45_99
+QMVEVPQAAAQIVDVPEKEVSTEDEAQTESGRKKARAGGKKSLSVARSSGGGINI
+>match$208_1_11
+MGKKVKKAVKK
+>match$209_1_89
+MSNVAETIRLSDTADQWNRRVHINVRNGKATMVYRWKDSKSSKNHTQRMTLTDEQALRLV
+NALTKAAVTAIHEAGRVNEAMAILDKIDN
+>match$210_1_89
+MSNVAETIRLSDTADQWNRRVHINVRNGKATMVYRWKDSKSSKNHTQRMTLTDEQALRLV
+NALTKAAVTAIHEAGRVNEAMAILDKIDN
+>match$211_1_128
+MELREKILERIKVTSSGCWEWQGATNNKGYGQVWCSNTGKVVYCHRVMSNAPKGSTVLHS
+CDNPLCCNPEHLSIGTPKENSTDMVNKGRSHKGYKLSDEDVMAIMESSESNVSLARTYGV
+SQQTICDI
+>match$212_51_81
+APKGSTVLHSCDNPLCCNPEHLSIGTPKENS
+>match$213_122_184
+VTKPSHYMLFDDIEAIEVIARSMTVEQFKGYCFGNILKYRLRAGKKSELAYLEKDLAKAD
+FYK
+>match$214_1_40
+MRNFEKMTKRSNRNARDFEATKGRKLNKTKRDRSHKRSWE
+>match$215_1_57
+MATPIRPLSYSLRRQSNGESRRLSTRVTSVTVCSVRYSVLSFLNTTTVRWKRFVPVV
+>match$216_1_19
+MATPIRPLSYSLRRQSNGE
+>match$217_1_149
+MAGYGAKGIRKVGAFRSGLEDKVSKQLESKGIKFEYEEWKVPYVIPASNHTYTPDFLLPN
+GIFVETKGLWESDDRKKHLLIREQHPELDIRIVFSSSRTKLYKGSPTSYGEFCEKHGIKF
+ADKLIPAEWIKEPKKEVPFDRLKRKGGKK
+>match$218_12_149
+VGAFRSGLEDKVSKQLESKGIKFEYEEWKVPYVIPASNHTYTPDFLLPNGIFVETKGLWE
+SDDRKKHLLIREQHPELDIRIVFSSSRTKLYKGSPTSYGEFCEKHGIKFADKLIPAEWIK
+EPKKEVPFDRLKRKGGKK
+>match$219_17_145
+SGLEDKVSKQLESKGIKFEYEEWKVPYVIPASNHTYTPDFLLPNGIFVETKGLWESDDRK
+KHLLIREQHPELDIRIVFSSSRTKLYKGSPTSYGEFCEKHGIKFADKLIPAEWIKEPKKE
+VPFDRLKRK
+>match$220_38_57
+TRAANKARKEAELAAATAEQ
+>match$221_2_70
+MSDYLKVLQAIKSCPKTFQSNYVRNNASLVAEAASRGHISCLTTSGRNGGAWEITASGTR
+FLKRMGGCV

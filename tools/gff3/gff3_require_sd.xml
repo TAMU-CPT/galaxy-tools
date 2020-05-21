@@ -26,6 +26,13 @@ python $__tool_directory__/gff3_require_sd.py
   <tests>
       <test>
 			<param name="reference_genome_source" value="history" />
+			<param name="genome_fasta" value="T7_CLEAN.fasta" />
+			<param name="gff3_data" value="T7_REQ_START.gff3" />
+
+          <output name="stdout" file="T7_REQ_SD.gff3" />
+      </test>
+      <test>
+			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="miro.fa" />
 			<param name="gff3_data" value="miro.gff3" />
 

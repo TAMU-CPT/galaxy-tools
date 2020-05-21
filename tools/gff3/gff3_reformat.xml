@@ -17,6 +17,10 @@ $__tool_directory__/gff3_reformat.py
     <data format="gff3" hidden="false" name="default"/>
   </outputs>
   <tests>
+                <test>
+			<param name="gff3_data" value="T7_GFF_FROM_GBK.gff3" />
+			<output name="output" file="T7_CLEAN.gff3" />
+		</test>
 		<test>
 			<param name="gff3_data" value="miro.gff3" />
 			<output name="output" file="miro.reformat.gff3" />

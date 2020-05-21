@@ -17,14 +17,14 @@ $__tool_directory__/gff3_fix_sixpack.py
     <data format="gff3" name="output"/>
   </outputs>
   <tests>
-      <!--<test>
+      <test>
 			<param name="gff3_data" value="miro.gff3" />
 			<output name="output" file="miro.6pfix.gff3" />
 		</test>
 		<test>
 			<param name="gff3_data" value="miro.cds.gff3" />
 			<output name="output" file="miro.cds6pfix.gff3" />
-        </test>-->
+        </test>
   </tests>
   <help><![CDATA[
 **What it does**

@@ -1,0 +1,7 @@
+##gff-version 3
+##sequence-region testseq_2018-03-08 1 9198
+testseq_2018-03-08	annotation	remark	1	9198	.	.	.	gff-version=3;sequence-region=%28%27testseq_2018-03-08%27%2C 0%2C 9216%29
+testseq_2018-03-08	cpt.fixModel	gene	7852	8313	.	+	.	ID=ORF.0.50_0.415010657017
+testseq_2018-03-08	cpt.fixModel	cleavage_site	7902	7903	.	+	.	ID=ORF.0.50_0.415010657017_cleavage_1;Parent=ORF.0.50_0.415010657017
+testseq_2018-03-08	cpt.fixModel	gene	8072	8254	.	+	.	ID=ORF.0.247_0.938715889806
+testseq_2018-03-08	cpt.fixModel	cleavage_site	8128	8129	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_1;Parent=ORF.0.247_0.938715889806

@@ -32,6 +32,7 @@ $default_output
 		<test>
 			<param name="genbank" value="miro2.gbk" />
 			<param name="gbk_output" value="miro3.gbk" />
+			<param name="default_output" value="shinefind.tabular" />
 			<param name="lookahead_max" value="15" />
 			<param name="lookahead_min" value="5" />
 		</test>

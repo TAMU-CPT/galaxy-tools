@@ -1,141 +1,141 @@
 ##gff-version 3
 ##sequence-region Miro 1 4
-Miro	feature	terminator	803	784	80	-	.	ID=terminator_0;Note=notes: opp_overlap 784%2C overlap 783,5%27 tail: CTTGCGGTTGATAAC,5%27 stem: GCGCCCAA,loop: TGGT,3%27 stem: TCGGGCGC,3%27 loop: TTACGTTGAACTGTT;Source=TranstermHP
-Miro	feature	terminator	4030	4010	100	-	.	ID=terminator_1;Note=notes: opp_overlap 4010,5%27 tail: CCAATATAGCAAAAA,5%27 stem: GCCCCCTGC,loop: ATT,3%27 stem: GCAAGAGGC,3%27 loop: TTTGTAATTATTTCA;Source=TranstermHP
-Miro	feature	terminator	5239	5212	91	-	.	ID=terminator_2;Note=notes: overlap 5213 5229,5%27 tail: GAGTGAATAAAGAAA,5%27 stem: CGGTGAACGGGT,loop: TTAA,3%27 stem: ACCCGTCTACCA,3%27 loop: GGTGCGGGATCGCAC;Source=TranstermHP
-Miro	feature	terminator	5238	5213	76	-	.	ID=terminator_3;Note=notes: overlap 5212 5229,5%27 tail: AGTGAATAAAGAAAC,5%27 stem: GGTGAACGGGT,loop: TTAA,3%27 stem: ACCCGTCTACC,3%27 loop: AGGTGCGGGATCGCA;Source=TranstermHP
-Miro	feature	terminator	6062	6107	77	+	.	ID=terminator_4;Note=notes: gap 1,5%27 tail: CAATGCGGATTCAAT,5%27 stem: GATCGGAGTAATGATTTCTGGA,loop: GTA,3%27 stem: TCCATAA-TCATTTTTGCGATC,3%27 loop: TTTTTGTAATTCAAA;Source=TranstermHP
-Miro	feature	terminator	7293	7272	100	-	.	ID=terminator_5;Note=notes: opp_overlap 7272 7277%2C overlap 7257 7277,5%27 tail: GGGTTCTATGAAAAA,5%27 stem: GAAAACCCC,loop: TTTC,3%27 stem: GGGGTTTAC,3%27 loop: TTGTTATAAGGGAAA;Source=TranstermHP
-Miro	feature	terminator	7272	7293	78	+	.	ID=terminator_6;Note=notes: opp_overlap 7257 7272 7277%2C overlap 7277,5%27 tail: GGGTTCTATGAAAAA,5%27 stem: GAAAACCCC,loop: TTTC,3%27 stem: GGGGTTTAC,3%27 loop: TTGTTATAAGGGAAA;Source=TranstermHP
-Miro	feature	terminator	7288	7277	95	-	.	ID=terminator_7;Note=notes: opp_overlap 7277 7272%2C overlap 7257 7272,5%27 tail: CTATGAAAAAGAAAA,5%27 stem: CCCC,loop: TTTC,3%27 stem: GGGG,3%27 loop: TTTACTTGTTATAAG;Source=TranstermHP
-Miro	feature	terminator	9393	9382	85	-	.	ID=terminator_8;Note=notes: opp_overlap 9382 9382,5%27 tail: TCCTTTTAAGAAAAA,5%27 stem: GGGC,loop: CGAA,3%27 stem: GCCC,3%27 loop: CTTTGTTAACGAAGA;Source=TranstermHP
-Miro	feature	terminator	10420	10400	100	-	.	ID=terminator_9;Note=notes: opp_overlap 10400,5%27 tail: ACAAGATACCAAAAA,5%27 stem: GCCTCCCGC,loop: AAT,3%27 stem: GCAAGAGGC,3%27 loop: TTCTTTAACAAAAAA;Source=TranstermHP
-Miro	feature	terminator	11171	11150	100	-	.	ID=terminator_10;Note=notes: opp_overlap 11150 11159,5%27 tail: CCCAATATAACAAAA,5%27 stem: GCCCTCAAC,loop: CGAA,3%27 stem: GTCAAGGGC,3%27 loop: TTTGTTTTAAATTTT;Source=TranstermHP
-Miro	feature	terminator	15435	15423	79	-	.	ID=terminator_11;Note=notes: opp_overlap 15422,5%27 tail: CCTCAAGAAGATAAA,5%27 stem: CCGTT,loop: TTT,3%27 stem: AACGG,3%27 loop: ATCTATCGTATCCTG;Source=TranstermHP
-Miro	feature	terminator	18535	18548	83	+	.	ID=terminator_12;Note=notes: opp_overlap 18535%2C overlap 18531 18547,5%27 tail: TATAGATACAAAAAA,5%27 stem: GCCCC,loop: GAAA,3%27 stem: GGGGC,3%27 loop: TTAATTTTTATGCGT;Source=TranstermHP
-Miro	feature	terminator	18548	18535	100	-	.	ID=terminator_13;Note=notes: opp_overlap 18531 18535 18547,5%27 tail: TATAGATACAAAAAA,5%27 stem: GCCCC,loop: GAAA,3%27 stem: GGGGC,3%27 loop: TTAATTTTTATGCGT;Source=TranstermHP
-Miro	feature	terminator	20982	21001	100	+	.	ID=terminator_14;Note=notes:,5%27 tail: ATACATTGCCTCGGT,5%27 stem: TATGGGGC,loop: CGAA,3%27 stem: GCCCCATA,3%27 loop: TTTTTTATAAAATTT;Source=TranstermHP
-Miro	feature	terminator	22231	22218	83	-	.	ID=terminator_15;Note=notes:,5%27 tail: CACTAGTTAATGAAA,5%27 stem: GGGGC,loop: CGAA,3%27 stem: GCCCC,3%27 loop: TAGAGTTTACCAGTC;Source=TranstermHP
-Miro	feature	terminator	22301	22330	100	+	.	ID=terminator_16;Note=notes: opp_overlap 22327 22329,5%27 tail: AATTTTACATACTTC,5%27 stem: CGTGATATTAGTC,loop: AATG,3%27 stem: GACTAATAACATG,3%27 loop: TTTTTCAAACATACC;Source=TranstermHP
-Miro	feature	terminator	25658	25637	100	-	.	ID=terminator_17;Note=notes: opp_overlap 25637,5%27 tail: ACCCAATATAACAAA,5%27 stem: GCCCCTGCA,loop: CGAA,3%27 stem: TGCAAGGGC,3%27 loop: TTTTTGATTAGTGAC;Source=TranstermHP
-Miro	feature	terminator	25637	25658	100	+	.	ID=terminator_18;Note=notes: opp_overlap 25637,5%27 tail: ACCCAATATAACAAA,5%27 stem: GCCCCTGCA,loop: CGAA,3%27 stem: TGCAAGGGC,3%27 loop: TTTTTGATTAGTGAC;Source=TranstermHP
-Miro	feature	terminator	26428	26446	84	+	.	ID=terminator_19;Note=notes: opp_overlap 26427 26428 26431%2C overlap 26431,5%27 tail: CACTTCATCGATAAC,5%27 stem: CAACGGCG,loop: TTT,3%27 stem: TGCCGTTG,3%27 loop: TTGATTTCGTCTATG;Source=TranstermHP
-Miro	feature	terminator	27643	27630	91	-	.	ID=terminator_20;Note=notes:,5%27 tail: ATGGTGTAAAAGAAA,5%27 stem: GGGGC,loop: CGTA,3%27 stem: GCCCC,3%27 loop: TTAAAACTATCTTAC;Source=TranstermHP
-Miro	feature	terminator	28647	28666	95	+	.	ID=terminator_21;Note=notes:,5%27 tail: CTTAGAATTCTTTGA,5%27 stem: GTGGGGGC,loop: CGAA,3%27 stem: GCCCCCGC,3%27 loop: TTGTATTACATGTCT;Source=TranstermHP
-Miro	feature	terminator	33161	33142	78	-	.	ID=terminator_22;Note=notes: overlap 33139 33143,5%27 tail: AGCACTAACAAACAA,5%27 stem: GTAGCCCC,loop: GAAA,3%27 stem: GGGGCTAT,3%27 loop: GAGGGTCTTATGAGA;Source=TranstermHP
-Miro	feature	terminator	33160	33143	80	-	.	ID=terminator_23;Note=notes: overlap 33142 33139,5%27 tail: GCACTAACAAACAAG,5%27 stem: TAGCCCC,loop: GAAA,3%27 stem: GGGGCTA,3%27 loop: TGAGGGTCTTATGAG;Source=TranstermHP
-Miro	feature	terminator	34515	34541	95	+	.	ID=terminator_24;Note=notes: opp_overlap 34512%2C overlap 34512 34518,5%27 tail: CTTATCAAAATATCT,5%27 stem: TGTCGGTCGGTA,loop: ACG,3%27 stem: TACCGATCGTCA,3%27 loop: TTGATTTTGATTCAG;Source=TranstermHP
-Miro	feature	terminator	34518	34538	86	+	.	ID=terminator_25;Note=notes: opp_overlap 34512%2C overlap 34515 34512,5%27 tail: ATCAAAATATCTTGT,5%27 stem: CGGTCGGTA,loop: ACG,3%27 stem: TACCGATCG,3%27 loop: TCATTGATTTTGATT;Source=TranstermHP
-Miro	feature	terminator	36390	36411	93	+	.	ID=terminator_26;Note=notes: opp_overlap 36390,5%27 tail: AAATACAGTAAAGTA,5%27 stem: GCCCATGT,loop: AACGAA,3%27 stem: ACGTGGGC,3%27 loop: TTTGTTTTTATTTGA;Source=TranstermHP
-Miro	feature	terminator	38163	38184	100	+	.	ID=terminator_27;Note=notes: opp_overlap 38163 38162 38157 38156 38152,5%27 tail: CAAATGAACTATAAT,5%27 stem: GGGAACTGT,loop: TAAC,3%27 stem: GCAGTTCCC,3%27 loop: TTTTTATTTGAGGAA;Source=TranstermHP
-Miro	feature	terminator	40449	40434	78	-	.	ID=terminator_28;Note=notes: opp_overlap 40435%2C overlap 40435,5%27 tail: TGGCAGTATGAAAAA,5%27 stem: TGGGGC,loop: TTCG,3%27 stem: GCCCCT,3%27 loop: TTCTTAACAAGGTAA;Source=TranstermHP
-Miro	feature	terminator	40435	40448	85	+	.	ID=terminator_29;Note=notes: opp_overlap 40434 40435,5%27 tail: GGCAGTATGAAAAAT,5%27 stem: GGGGC,loop: TTCG,3%27 stem: GCCCC,3%27 loop: TTTCTTAACAAGGTA;Source=TranstermHP
-Miro	feature	terminator	40448	40435	76	-	.	ID=terminator_30;Note=notes: opp_overlap 40435%2C overlap 40434,5%27 tail: GGCAGTATGAAAAAT,5%27 stem: GGGGC,loop: TTCG,3%27 stem: GCCCC,3%27 loop: TTTCTTAACAAGGTA;Source=TranstermHP
-Miro	feature	terminator	42727	42740	91	+	.	ID=terminator_31;Note=notes: opp_overlap 42726 42727,5%27 tail: TAAGATTTGATTAAT,5%27 stem: GCCCC,loop: TTCG,3%27 stem: GGGGC,3%27 loop: TTTTTAAAGGTAAAG;Source=TranstermHP
-Miro	feature	terminator	44060	44014	80	-	.	ID=terminator_32;Note=notes: gap 1%2C opp_overlap 44050%2C overlap 44012 44016 44020,5%27 tail: GCAACCCTTATAACA,5%27 stem: CAGGAACCAGGGGAGAAAACA,loop: TTTTAG,3%27 stem: CGTTTA-TCCCCTGGTTCCAG,3%27 loop: AATCAGGTTCGTACT;Source=TranstermHP
-Miro	feature	terminator	44058	44016	87	-	.	ID=terminator_33;Note=notes: gap 1%2C opp_overlap 44050%2C overlap 44014 44012 44020,5%27 tail: AACCCTTATAACACA,5%27 stem: GGAACCAGGGGAGAAAACA,loop: TTTTAG,3%27 stem: CGTTTA-TCCCCTGGTTCC,3%27 loop: AGAATCAGGTTCGTA;Source=TranstermHP
-Miro	feature	terminator	45801	45765	84	-	.	ID=terminator_34;Note=notes: opp_overlap 45774%2C overlap 45774,5%27 tail: AGCCGAACGATAGAA,5%27 stem: CAAGAAAAAGCAGGGA,loop: TTGAT,3%27 stem: TCCCTGCTTTCTTTCG,3%27 loop: TTGATGTTTTCCCCG;Source=TranstermHP
-Miro	feature	terminator	45774	45792	100	+	.	ID=terminator_35;Note=notes: opp_overlap 45765 45774,5%27 tail: ATAGAACAAGAAAAA,5%27 stem: GCAGGGA,loop: TTGAT,3%27 stem: TCCCTGC,3%27 loop: TTTCTTTCGTTGATG;Source=TranstermHP
-Miro	feature	terminator	45792	45774	100	-	.	ID=terminator_36;Note=notes: opp_overlap 45774%2C overlap 45765,5%27 tail: ATAGAACAAGAAAAA,5%27 stem: GCAGGGA,loop: TTGAT,3%27 stem: TCCCTGC,3%27 loop: TTTCTTTCGTTGATG;Source=TranstermHP
-Miro	feature	terminator	49007	48977	100	-	.	ID=terminator_37;Note=notes:,5%27 tail: ACTGAGTGAAGAAAA,5%27 stem: GCGCCCTGAACATT,loop: CAC,3%27 stem: AATGGTCAGATCGC,3%27 loop: AACGAAGTACACGCA;Source=TranstermHP
-Miro	feature	terminator	50946	50929	76	-	.	ID=terminator_38;Note=notes: opp_overlap 50929 50926%2C overlap 50928,5%27 tail: AACAAATAATCAAAT,5%27 stem: GGCTATC,loop: TTCG,3%27 stem: GATAGCC,3%27 loop: TTATTTTTGGGGTGT;Source=TranstermHP
-Miro	feature	terminator	50929	50946	91	+	.	ID=terminator_39;Note=notes: opp_overlap 50928 50929%2C overlap 50926,5%27 tail: AACAAATAATCAAAT,5%27 stem: GGCTATC,loop: TTCG,3%27 stem: GATAGCC,3%27 loop: TTATTTTTGGGGTGT;Source=TranstermHP
-Miro	feature	terminator	52180	52201	100	+	.	ID=terminator_40;Note=notes: opp_overlap 52180,5%27 tail: AATATTAAAAATCAA,5%27 stem: GCCGTTGCC,loop: GAAA,3%27 stem: GGTAGCGGC,3%27 loop: TTTTTCTTTTTTGGT;Source=TranstermHP
-Miro	feature	terminator	53432	53419	90	-	.	ID=terminator_41;Note=notes: opp_overlap 53423,5%27 tail: GGCAAAAAGAAAAAA,5%27 stem: TGGT,loop: GGACTA,3%27 stem: ACCA,3%27 loop: GACCTTATACTGGAA;Source=TranstermHP
-Miro	feature	terminator	56293	56272	81	-	.	ID=terminator_42;Note=notes: opp_overlap 56272,5%27 tail: CTATTTTAATAAAAA,5%27 stem: GCCCTTGAC,loop: TCCG,3%27 stem: GTCGGGGGC,3%27 loop: TTTGTTATATTGGGC;Source=TranstermHP
-Miro	feature	terminator	56272	56293	91	+	.	ID=terminator_43;Note=notes: opp_overlap 56272,5%27 tail: CTATTTTAATAAAAA,5%27 stem: GCCCTTGAC,loop: TCCG,3%27 stem: GTCGGGGGC,3%27 loop: TTTGTTATATTGGGC;Source=TranstermHP
-Miro	feature	terminator	56925	56959	86	+	.	ID=terminator_44;Note=notes: opp_overlap 56932%2C overlap 56932,5%27 tail: AATAGCACTTTTTGT,5%27 stem: TAAAGAAGCCTCTTGC,loop: AAT,3%27 stem: GCAGGGGGCTTTTTTG,3%27 loop: TATAGTGTGTTCATT;Source=TranstermHP
-Miro	feature	terminator	56932	56952	100	+	.	ID=terminator_45;Note=notes: opp_overlap 56932%2C overlap 56925,5%27 tail: CTTTTTGTTAAAGAA,5%27 stem: GCCTCTTGC,loop: AAT,3%27 stem: GCAGGGGGC,3%27 loop: TTTTTTGTATAGTGT;Source=TranstermHP
-Miro	feature	terminator	60407	60392	100	-	.	ID=terminator_46;Note=notes: overlap 60386,5%27 tail: AGAACAAAAGAAAAA,5%27 stem: GTTTCT,loop: GAAC,3%27 stem: AGAAAC,3%27 loop: AGCAACAAACAACCA;Source=TranstermHP
-Miro	feature	terminator	62218	62190	100	-	.	ID=terminator_47;Note=notes: overlap 62192,5%27 tail: CAAAAATATTAAAAA,5%27 stem: TCGCGGTATCCCC,loop: TCT,3%27 stem: GGGGGTGCCGCAA,3%27 loop: TCACAGAATCAGTAT;Source=TranstermHP
-Miro	feature	terminator	62216	62192	80	-	.	ID=terminator_48;Note=notes: overlap 62190,5%27 tail: AAAATATTAAAAATC,5%27 stem: GCGGTATCCCC,loop: TCT,3%27 stem: GGGGGTGCCGC,3%27 loop: AATCACAGAATCAGT;Source=TranstermHP
-Miro	feature	terminator	64085	64098	85	+	.	ID=terminator_49;Note=notes: opp_overlap 64085,5%27 tail: TTACAGGACAATAAA,5%27 stem: GGGGC,loop: TACG,3%27 stem: GCCCC,3%27 loop: TTTTGAGGATCTTAT;Source=TranstermHP
-Miro	feature	terminator	64098	64085	91	-	.	ID=terminator_50;Note=notes: opp_overlap 64085,5%27 tail: TTACAGGACAATAAA,5%27 stem: GGGGC,loop: TACG,3%27 stem: GCCCC,3%27 loop: TTTTGAGGATCTTAT;Source=TranstermHP
-Miro	feature	terminator	65806	65827	81	+	.	ID=terminator_51;Note=notes: opp_overlap 65806,5%27 tail: GCATCATAACAAAAA,5%27 stem: GCCCCTTCC,loop: TTTC,3%27 stem: GGTTGGGGC,3%27 loop: TTTCTTTTAGAATTC;Source=TranstermHP
-Miro	feature	terminator	65827	65806	90	-	.	ID=terminator_52;Note=notes: opp_overlap 65806,5%27 tail: GCATCATAACAAAAA,5%27 stem: GCCCCTTCC,loop: TTTC,3%27 stem: GGTTGGGGC,3%27 loop: TTTCTTTTAGAATTC;Source=TranstermHP
-Miro	feature	terminator	68480	68465	87	-	.	ID=terminator_53;Note=notes: opp_overlap 68471,5%27 tail: ACAAGTCACCTCAAA,5%27 stem: GCCCCC,loop: TTTC,3%27 stem: GGGGGC,3%27 loop: GAGATCTCATTAGAG;Source=TranstermHP
-Miro	feature	terminator	72046	72059	76	+	.	ID=terminator_54;Note=notes: opp_overlap 72046,5%27 tail: AAACCTCACGAAAAA,5%27 stem: GCCCC,loop: TTTC,3%27 stem: GGGGC,3%27 loop: TTGATTAATCAATGT;Source=TranstermHP
-Miro	feature	terminator	72059	72046	100	-	.	ID=terminator_55;Note=notes: opp_overlap 72046,5%27 tail: AAACCTCACGAAAAA,5%27 stem: GCCCC,loop: TTTC,3%27 stem: GGGGC,3%27 loop: TTGATTAATCAATGT;Source=TranstermHP
-Miro	feature	terminator	73260	73238	100	-	.	ID=terminator_56;Note=notes: opp_overlap 73238,5%27 tail: TTTCAGACGTTAAAA,5%27 stem: GGCATTCGAC,loop: CCC,3%27 stem: GCCGAATGCC,3%27 loop: TTATCGAAACCGAGC;Source=TranstermHP
-Miro	feature	terminator	73238	73260	89	+	.	ID=terminator_57;Note=notes: opp_overlap 73238,5%27 tail: TTTCAGACGTTAAAA,5%27 stem: GGCATTCGAC,loop: CCC,3%27 stem: GCCGAATGCC,3%27 loop: TTATCGAAACCGAGC;Source=TranstermHP
-Miro	feature	terminator	75458	75480	78	+	.	ID=terminator_58;Note=notes: overlap 75459,5%27 tail: CAAGCCATTCCAGAT,5%27 stem: TCTGATTGAG,loop: TGA,3%27 stem: TTCAATCAGC,3%27 loop: TTTTTATCGCGTCTG;Source=TranstermHP
-Miro	feature	terminator	76268	76248	100	-	.	ID=terminator_59;Note=notes:,5%27 tail: CAGGTAACAGGCAAA,5%27 stem: CCACCCGG,loop: ACTAA,3%27 stem: CCGGGCGG,3%27 loop: GTAACAAGACAATAG;Source=TranstermHP
-Miro	feature	terminator	76562	76531	77	-	.	ID=terminator_60;Note=notes: opp_overlap 76536%2C overlap 76536,5%27 tail: TATGTGTGTATAATA,5%27 stem: CAAAAGCCCTCACG,loop: AGAA,3%27 stem: CGCAAGGGCTTTTT,3%27 loop: ATTAAATTTCGTATA;Source=TranstermHP
-Miro	feature	terminator	76557	76536	100	-	.	ID=terminator_61;Note=notes: opp_overlap 76536%2C overlap 76531,5%27 tail: GTGTATAATACAAAA,5%27 stem: GCCCTCACG,loop: AGAA,3%27 stem: CGCAAGGGC,3%27 loop: TTTTTATTAAATTTC;Source=TranstermHP
-Miro	feature	terminator	76536	76557	81	+	.	ID=terminator_62;Note=notes: opp_overlap 76531 76536,5%27 tail: GTGTATAATACAAAA,5%27 stem: GCCCTCACG,loop: AGAA,3%27 stem: CGCAAGGGC,3%27 loop: TTTTTATTAAATTTC;Source=TranstermHP
-Miro	feature	terminator	76625	76596	78	-	.	ID=terminator_63;Note=notes: gap 1%2C opp_overlap 76595 76596,5%27 tail: CTGGATTCACAATAA,5%27 stem: CCGCACATAAAAGA,loop: TCA,3%27 stem: TCTA-TATGTGCGG,3%27 loop: CTTCTTGTTCTAAGG;Source=TranstermHP
-Miro	feature	terminator	77874	77890	84	+	.	ID=terminator_64;Note=notes: overlap 77865,5%27 tail: CGTTTTAGATGTCAA,5%27 stem: GCCCCC,loop: AAAGA,3%27 stem: GGGGGC,3%27 loop: TTTAAAACATTATTT;Source=TranstermHP
-Miro	feature	terminator	79641	79626	100	-	.	ID=terminator_65;Note=notes: opp_overlap 79620 79626,5%27 tail: TATTTATAGCAAAAA,5%27 stem: CGAGGC,loop: CGAA,3%27 stem: GCCTCG,3%27 loop: TTATAATATTTTTGC;Source=TranstermHP
-Miro	feature	terminator	79626	79641	82	+	.	ID=terminator_66;Note=notes: opp_overlap 79626%2C overlap 79620,5%27 tail: TATTTATAGCAAAAA,5%27 stem: CGAGGC,loop: CGAA,3%27 stem: GCCTCG,3%27 loop: TTATAATATTTTTGC;Source=TranstermHP
-Miro	feature	terminator	80210	80223	76	+	.	ID=terminator_67;Note=notes:,5%27 tail: TTTGCATCAATACGG,5%27 stem: GCAAC,loop: GGTA,3%27 stem: GTTGC,3%27 loop: TTTCTTTCCACAATA;Source=TranstermHP
-Miro	feature	terminator	83658	83679	100	+	.	ID=terminator_68;Note=notes: opp_overlap 83658,5%27 tail: ATCCATAATAAAAAA,5%27 stem: GCCCCTGAC,loop: CGAA,3%27 stem: GTCAAGGGC,3%27 loop: TTTTTGTCAAATGAT;Source=TranstermHP
-Miro	feature	terminator	83679	83658	100	-	.	ID=terminator_69;Note=notes: opp_overlap 83658,5%27 tail: ATCCATAATAAAAAA,5%27 stem: GCCCCTGAC,loop: CGAA,3%27 stem: GTCAAGGGC,3%27 loop: TTTTTGTCAAATGAT;Source=TranstermHP
-Miro	feature	terminator	83687	83697	78	+	.	ID=terminator_70;Note=notes:,5%27 tail: TCAAGGGCTTTTTGT,5%27 stem: CAAA,loop: TGA,3%27 stem: TTTG,3%27 loop: TTTTTCTTCTAACAG;Source=TranstermHP
-Miro	feature	terminator	85188	85173	100	-	.	ID=terminator_71;Note=notes: opp_overlap 85172,5%27 tail: ACACCTCACAAAAAA,5%27 stem: GGGGGC,loop: TTTC,3%27 stem: GCCCCC,3%27 loop: ATCATTAGAAATTGT;Source=TranstermHP
-Miro	feature	terminator	87545	87558	86	+	.	ID=terminator_72;Note=notes:,5%27 tail: ATGTTTTACCTTTAA,5%27 stem: GGGGC,loop: CAAA,3%27 stem: GCCCC,3%27 loop: TTTGTTACGCTAATT;Source=TranstermHP
-Miro	feature	terminator	88001	87978	88	-	.	ID=terminator_73;Note=notes: opp_overlap 87978,5%27 tail: CACCTCTTGTAAAAA,5%27 stem: TACCCTGTTT,loop: GGGT,3%27 stem: ACACAGGGTA,3%27 loop: TTTATGGTTTAAGAG;Source=TranstermHP
-Miro	feature	terminator	87978	88001	79	+	.	ID=terminator_74;Note=notes: opp_overlap 87978,5%27 tail: CACCTCTTGTAAAAA,5%27 stem: TACCCTGTTT,loop: GGGT,3%27 stem: ACACAGGGTA,3%27 loop: TTTATGGTTTAAGAG;Source=TranstermHP
-Miro	feature	terminator	88837	88824	100	-	.	ID=terminator_75;Note=notes: opp_overlap 88821 88824,5%27 tail: TTTACCTACAAAAAA,5%27 stem: GCCCC,loop: TTTC,3%27 stem: GGGGC,3%27 loop: TAGTTAATTAGAGTT;Source=TranstermHP
-Miro	feature	terminator	92701	92687	78	-	.	ID=terminator_76;Note=notes:,5%27 tail: CACGGAGAAGAAAAA,5%27 stem: GCGGAT,loop: ACT,3%27 stem: ATACGC,3%27 loop: AAAGCACAATCTGAA;Source=TranstermHP
-Miro	feature	terminator	93200	93248	100	+	.	ID=terminator_77;Note=notes: gap 1,5%27 tail: TAACAATCTCCGGTT,5%27 stem: TCGTTT-CTATGTGTGTAAGGTA,loop: TCAT,3%27 stem: TACCCTACACACAACGCAAGCGA,3%27 loop: TTTTTATTTTCCGTA;Source=TranstermHP
-Miro	feature	terminator	94268	94238	100	-	.	ID=terminator_78;Note=notes: opp_overlap 94243 94264%2C overlap 94243,5%27 tail: ATGTGTGTAATATAA,5%27 stem: CAAAACCCCTCACC,loop: ATA,3%27 stem: GGCAAGGGGTTTTG,3%27 loop: CAAAAAATTATCGTT;Source=TranstermHP
-Miro	feature	terminator	94263	94243	100	-	.	ID=terminator_79;Note=notes: opp_overlap 94243%2C overlap 94238,5%27 tail: TGTAATATAACAAAA,5%27 stem: CCCCTCACC,loop: ATA,3%27 stem: GGCAAGGGG,3%27 loop: TTTTGCAAAAAATTA;Source=TranstermHP
-Miro	feature	terminator	95958	95937	100	-	.	ID=terminator_80;Note=notes: opp_overlap 95937,5%27 tail: GTGTAATATAACAAA,5%27 stem: GCCCCTGCA,loop: CTAA,3%27 stem: TGCAAGGGC,3%27 loop: TTTTTGATTATTTTG;Source=TranstermHP
-Miro	feature	terminator	95937	95958	100	+	.	ID=terminator_81;Note=notes: opp_overlap 95937,5%27 tail: GTGTAATATAACAAA,5%27 stem: GCCCCTGCA,loop: CTAA,3%27 stem: TGCAAGGGC,3%27 loop: TTTTTGATTATTTTG;Source=TranstermHP
-Miro	feature	terminator	97741	97758	79	+	.	ID=terminator_82;Note=notes: opp_overlap 97743%2C overlap 97743,5%27 tail: ATAATATGATCCTCA,5%27 stem: AAGGGGC,loop: CGAA,3%27 stem: GCCCCTA,3%27 loop: TTTTGCGTTCTTCTG;Source=TranstermHP
-Miro	feature	terminator	97756	97743	78	-	.	ID=terminator_83;Note=notes: opp_overlap 97743 97741,5%27 tail: AATATGATCCTCAAA,5%27 stem: GGGGC,loop: CGAA,3%27 stem: GCCCC,3%27 loop: TATTTTGCGTTCTTC;Source=TranstermHP
-Miro	feature	terminator	97743	97756	81	+	.	ID=terminator_84;Note=notes: opp_overlap 97743%2C overlap 97741,5%27 tail: AATATGATCCTCAAA,5%27 stem: GGGGC,loop: CGAA,3%27 stem: GCCCC,3%27 loop: TATTTTGCGTTCTTC;Source=TranstermHP
-Miro	feature	terminator	100369	100348	100	-	.	ID=terminator_85;Note=notes: opp_overlap 100348,5%27 tail: GGCCAATATAACAAA,5%27 stem: GCCCCTGCA,loop: CGAA,3%27 stem: TGCAAGGGC,3%27 loop: TTTTTTCAGTTTTTC;Source=TranstermHP
-Miro	feature	terminator	100348	100369	100	+	.	ID=terminator_86;Note=notes: opp_overlap 100348,5%27 tail: GGCCAATATAACAAA,5%27 stem: GCCCCTGCA,loop: CGAA,3%27 stem: TGCAAGGGC,3%27 loop: TTTTTTCAGTTTTTC;Source=TranstermHP
-Miro	feature	terminator	101578	101565	100	-	.	ID=terminator_87;Note=notes: opp_overlap 101565%2C overlap 101552,5%27 tail: CACCCCAATAAAAAA,5%27 stem: GGGGC,loop: CGAA,3%27 stem: GCCCC,3%27 loop: TTTGTAATAAATTTG;Source=TranstermHP
-Miro	feature	terminator	101565	101578	85	+	.	ID=terminator_88;Note=notes: opp_overlap 101552 101565,5%27 tail: CACCCCAATAAAAAA,5%27 stem: GGGGC,loop: CGAA,3%27 stem: GCCCC,3%27 loop: TTTGTAATAAATTTG;Source=TranstermHP
-Miro	feature	terminator	101890	101902	76	+	.	ID=terminator_89;Note=notes: opp_overlap 101886,5%27 tail: AAATTTAAAAGTATC,5%27 stem: GAGCA,loop: CTT,3%27 stem: TGCTC,3%27 loop: TTTAGTTGTTTCAAA;Source=TranstermHP
-Miro	feature	terminator	104284	104263	83	-	.	ID=terminator_90;Note=notes: opp_overlap 104263,5%27 tail: CCCTGTAAAAATAAA,5%27 stem: GCCCCTTCC,loop: TTTC,3%27 stem: GGTTGGGGC,3%27 loop: TTCTGTATATGGCAC;Source=TranstermHP
-Miro	feature	terminator	104840	104817	85	-	.	ID=terminator_91;Note=notes: opp_overlap 104822%2C overlap 104822,5%27 tail: GGAGAATTTGCAAAA,5%27 stem: TAAAAGCCCC,loop: GAAA,3%27 stem: GGGGCTTTTT,3%27 loop: AGTATCTGTTCCAGA;Source=TranstermHP
-Miro	feature	terminator	104822	104835	100	+	.	ID=terminator_92;Note=notes: opp_overlap 104817 104822,5%27 tail: ATTTGCAAAATAAAA,5%27 stem: GCCCC,loop: GAAA,3%27 stem: GGGGC,3%27 loop: TTTTTAGTATCTGTT;Source=TranstermHP
-Miro	feature	terminator	104835	104822	100	-	.	ID=terminator_93;Note=notes: opp_overlap 104822%2C overlap 104817,5%27 tail: ATTTGCAAAATAAAA,5%27 stem: GCCCC,loop: GAAA,3%27 stem: GGGGC,3%27 loop: TTTTTAGTATCTGTT;Source=TranstermHP
-Miro	feature	terminator	106918	106904	90	-	.	ID=terminator_94;Note=notes: opp_overlap 106905%2C overlap 106905,5%27 tail: GCCCAAAAACAAAAA,5%27 stem: TCCGAT,loop: GCG,3%27 stem: ATCGGT,3%27 loop: GTTCCTGTTGAAGAT;Source=TranstermHP
-Miro	feature	terminator	110717	110696	80	-	.	ID=terminator_95;Note=notes: opp_overlap 110696 110693%2C overlap 110697,5%27 tail: AACAGATTAACCAAA,5%27 stem: TCCCCGATA,loop: TCTT,3%27 stem: TATCGGGGG,3%27 loop: TACTTTCGAAGAAAT;Source=TranstermHP
-Miro	feature	terminator	110696	110717	79	+	.	ID=terminator_96;Note=notes: opp_overlap 110696 110697%2C overlap 110693,5%27 tail: AACAGATTAACCAAA,5%27 stem: TCCCCGATA,loop: TCTT,3%27 stem: TATCGGGGG,3%27 loop: TACTTTCGAAGAAAT;Source=TranstermHP
-Miro	feature	terminator	110716	110697	86	-	.	ID=terminator_97;Note=notes: opp_overlap 110696 110693%2C overlap 110696,5%27 tail: ACAGATTAACCAAAT,5%27 stem: CCCCGATA,loop: TCTT,3%27 stem: TATCGGGG,3%27 loop: GTACTTTCGAAGAAA;Source=TranstermHP
-Miro	feature	terminator	112583	112602	100	+	.	ID=terminator_98;Note=notes:,5%27 tail: GTCAATAATCTTTAA,5%27 stem: CCCCTGTC,loop: TTCG,3%27 stem: GATAGGGG,3%27 loop: TTTTTCTTTTTATAA;Source=TranstermHP
-Miro	feature	terminator	115582	115572	77	-	.	ID=terminator_99;Note=notes: opp_overlap 115563,5%27 tail: GACGTTGAAGAAAAA,5%27 stem: CCGC,loop: TTA,3%27 stem: ACGG,3%27 loop: TGTTCTTCCTTCTGC;Source=TranstermHP
-Miro	feature	terminator	115841	115817	76	-	.	ID=terminator_100;Note=notes: gap 1%2C overlap 115815 115819 115820 115822,5%27 tail: GATGAACTTCAAAGA,5%27 stem: TATGATCGGCG,loop: ATGC,3%27 stem: CGCCGATC-TA,3%27 loop: AACACGATTTATATG;Source=TranstermHP
-Miro	feature	terminator	115840	115819	76	-	.	ID=terminator_101;Note=notes: overlap 115817 115815 115820 115822,5%27 tail: TGAACTTCAAAGATA,5%27 stem: TGATCGGCG,loop: ATGC,3%27 stem: CGCCGATCT,3%27 loop: AAACACGATTTATAT;Source=TranstermHP
-Miro	feature	terminator	115839	115820	91	-	.	ID=terminator_102;Note=notes: overlap 115819 115817 115815 115822,5%27 tail: GAACTTCAAAGATAT,5%27 stem: GATCGGCG,loop: ATGC,3%27 stem: CGCCGATC,3%27 loop: TAAACACGATTTATA;Source=TranstermHP
-Miro	feature	terminator	123258	123271	85	+	.	ID=terminator_103;Note=notes: opp_overlap 123258,5%27 tail: CTTAACGATTAACAA,5%27 stem: GGGGC,loop: TTCG,3%27 stem: GCCCC,3%27 loop: TTTTGAGGATCTTTA;Source=TranstermHP
-Miro	feature	terminator	123271	123258	81	-	.	ID=terminator_104;Note=notes: opp_overlap 123258,5%27 tail: CTTAACGATTAACAA,5%27 stem: GGGGC,loop: TTCG,3%27 stem: GCCCC,3%27 loop: TTTTGAGGATCTTTA;Source=TranstermHP
-Miro	feature	terminator	125208	125192	87	-	.	ID=terminator_105;Note=notes:,5%27 tail: GCATCAAAAGAAAAA,5%27 stem: TTCCTGG,loop: CAT,3%27 stem: CCATGAA,3%27 loop: CAAGCTGAACTATGC;Source=TranstermHP
-Miro	feature	terminator	130220	130205	79	-	.	ID=terminator_106;Note=notes: overlap 130200 130198 130217,5%27 tail: CAGTATAACATGTAA,5%27 stem: GGGGCT,loop: GAAA,3%27 stem: AGCCCC,3%27 loop: TATAAATACACATAG;Source=TranstermHP
-Miro	feature	terminator	130601	130571	95	-	.	ID=terminator_107;Note=notes: overlap 130572 130593,5%27 tail: CAAACTACAAAAAAA,5%27 stem: CCGCTACGGTT,loop: AAACAGAAA,3%27 stem: AACCGTAACGA,3%27 loop: CGAAGTAACCGCCGA;Source=TranstermHP
-Miro	feature	terminator	130746	130761	78	+	.	ID=terminator_108;Note=notes: opp_overlap 130746 130744 130742,5%27 tail: AACGCTATAAATACA,5%27 stem: GGGGTA,loop: GCAA,3%27 stem: TACCCC,3%27 loop: TTATCATTATTTTTC;Source=TranstermHP
-Miro	feature	terminator	136109	136126	100	+	.	ID=terminator_109;Note=notes: opp_overlap 136109,5%27 tail: CAACGACTTTTTAAA,5%27 stem: GGGAACC,loop: TTCG,3%27 stem: GGTTCCC,3%27 loop: TTTTTGTTTATATAA;Source=TranstermHP
-Miro	feature	terminator	136126	136109	84	-	.	ID=terminator_110;Note=notes: opp_overlap 136109,5%27 tail: CAACGACTTTTTAAA,5%27 stem: GGGAACC,loop: TTCG,3%27 stem: GGTTCCC,3%27 loop: TTTTTGTTTATATAA;Source=TranstermHP
-Miro	feature	terminator	138160	138185	100	+	.	ID=terminator_111;Note=notes: opp_overlap 138160 138158 138151,5%27 tail: GGATAATATTCAATA,5%27 stem: GGTGGAGTAGG,loop: GAAA,3%27 stem: CTTACTCCACC,3%27 loop: TTTTAATAATTGTTA;Source=TranstermHP
-Miro	feature	terminator	138185	138160	87	-	.	ID=terminator_112;Note=notes: opp_overlap 138160%2C overlap 138158 138151,5%27 tail: GGATAATATTCAATA,5%27 stem: GGTGGAGTAGG,loop: GAAA,3%27 stem: CTTACTCCACC,3%27 loop: TTTTAATAATTGTTA;Source=TranstermHP
-Miro	feature	terminator	139296	139275	79	-	.	ID=terminator_113;Note=notes: opp_overlap 139272 139275,5%27 tail: AGCAAATGTACAAAA,5%27 stem: GCCCCTTCC,loop: TTTC,3%27 stem: GGTTGGGGC,3%27 loop: TTCTTTTTAGAACTT;Source=TranstermHP
-Miro	feature	terminator	139275	139296	79	+	.	ID=terminator_114;Note=notes: opp_overlap 139275%2C overlap 139272,5%27 tail: AGCAAATGTACAAAA,5%27 stem: GCCCCTTCC,loop: TTTC,3%27 stem: GGTTGGGGC,3%27 loop: TTCTTTTTAGAACTT;Source=TranstermHP
-Miro	feature	terminator	142163	142150	81	-	.	ID=terminator_115;Note=notes: opp_overlap 142150,5%27 tail: TTTATTGATTAACAA,5%27 stem: GGGGC,loop: TACG,3%27 stem: GCCCC,3%27 loop: TTTTCTTTTAGGTGA;Source=TranstermHP
-Miro	feature	terminator	142150	142163	100	+	.	ID=terminator_116;Note=notes: opp_overlap 142150,5%27 tail: TTTATTGATTAACAA,5%27 stem: GGGGC,loop: TACG,3%27 stem: GCCCC,3%27 loop: TTTTCTTTTAGGTGA;Source=TranstermHP
-Miro	feature	terminator	142652	142667	76	+	.	ID=terminator_117;Note=notes: overlap 142639,5%27 tail: GATCCGTAACATTTT,5%27 stem: CGGGGT,loop: TACT,3%27 stem: ACTCCG,3%27 loop: TTTTGTCCTGAATGC;Source=TranstermHP
-Miro	feature	terminator	144157	144139	100	-	.	ID=terminator_118;Note=notes: opp_overlap 144139,5%27 tail: ATCAATAACAAAAAA,5%27 stem: GGGAACC,loop: GCAAT,3%27 stem: GGTTCCC,3%27 loop: TTTTTTTACAATCTT;Source=TranstermHP
-Miro	feature	terminator	144139	144157	100	+	.	ID=terminator_119;Note=notes: opp_overlap 144139,5%27 tail: ATCAATAACAAAAAA,5%27 stem: GGGAACCG,loop: CAA,3%27 stem: TGGTTCCC,3%27 loop: TTTTTTTACAATCTT;Source=TranstermHP
-Miro	feature	terminator	149009	148993	84	-	.	ID=terminator_120;Note=notes: opp_overlap 148993,5%27 tail: AGAAAAAGACAAAAA,5%27 stem: CCAACTC,loop: GAT,3%27 stem: GAGTTTG,3%27 loop: TTTGTTACCTTACAG;Source=TranstermHP
-Miro	feature	terminator	151682	151667	79	-	.	ID=terminator_121;Note=notes:,5%27 tail: AATATCTCAAGAAAA,5%27 stem: CCTCCG,loop: ATCT,3%27 stem: CGAAGG,3%27 loop: TGAAGCATTTGATAT;Source=TranstermHP
-Miro	feature	terminator	153496	153525	79	+	.	ID=terminator_122;Note=notes:,5%27 tail: GAGTTATATGCTTTC,5%27 stem: CTTGACTCCCTGC,loop: ATGA,3%27 stem: GCGGGGTATCAAG,3%27 loop: TTTGGTTTATCAAAC;Source=TranstermHP
-Miro	feature	terminator	156980	157011	78	+	.	ID=terminator_123;Note=notes: opp_overlap 156985%2C overlap 156985,5%27 tail: GCATCAAAATTAATC,5%27 stem: AAAAAGCCCTTGAC,loop: TTCG,3%27 stem: GTTGAGGGCTTTTG,3%27 loop: TTATATTAGGCCTAT;Source=TranstermHP
-Miro	feature	terminator	156985	157006	100	+	.	ID=terminator_124;Note=notes: opp_overlap 156985%2C overlap 156980,5%27 tail: AAAATTAATCAAAAA,5%27 stem: GCCCTTGAC,loop: TTCG,3%27 stem: GTTGAGGGC,3%27 loop: TTTTGTTATATTAGG;Source=TranstermHP
-Miro	feature	terminator	160711	160726	100	+	.	ID=terminator_125;Note=notes: opp_overlap 160710 160709 160704,5%27 tail: CAAGTAAATTAAACT,5%27 stem: GGGTGC,loop: TCCG,3%27 stem: GCACCC,3%27 loop: TTTTTTATGAGGTGA;Source=TranstermHP
-Miro	feature	terminator	161967	161980	100	+	.	ID=terminator_126;Note=notes: opp_overlap 161967,5%27 tail: AAATAATCAGTTAAA,5%27 stem: TGGCC,loop: TTCG,3%27 stem: GGCCA,3%27 loop: TTTTTTGTATATAAA;Source=TranstermHP
-Miro	feature	terminator	165966	165949	100	-	.	ID=terminator_127;Note=notes: opp_overlap 165946 165949,5%27 tail: TACACTAAATCAAAA,5%27 stem: GGCGGTA,loop: GGGA,3%27 stem: CACCGCC,3%27 loop: TAGTGTTGGGATCAA;Source=TranstermHP
-Miro	feature	terminator	166950	166933	91	-	.	ID=terminator_128;Note=notes: opp_overlap 166933,5%27 tail: TGATGCATAAACAAA,5%27 stem: GGCCCG,loop: GATCAT,3%27 stem: CGGGCC,3%27 loop: TTATAAATATGTAAA;Source=TranstermHP
-Miro	feature	terminator	166933	166950	80	+	.	ID=terminator_129;Note=notes: opp_overlap 166933,5%27 tail: TGATGCATAAACAAA,5%27 stem: GGCCCGG,loop: ATCA,3%27 stem: TCGGGCC,3%27 loop: TTATAAATATGTAAA;Source=TranstermHP
-Miro	feature	terminator	171472	171485	85	+	.	ID=terminator_130;Note=notes: opp_overlap 171472 171467,5%27 tail: ACTGAAATAATGTAA,5%27 stem: GGGGC,loop: TTCG,3%27 stem: GCCCC,3%27 loop: TTTTAGGAGAAATAA;Source=TranstermHP
-Miro	feature	terminator	171485	171472	76	-	.	ID=terminator_131;Note=notes: opp_overlap 171472%2C overlap 171467,5%27 tail: ACTGAAATAATGTAA,5%27 stem: GGGGC,loop: TTCG,3%27 stem: GCCCC,3%27 loop: TTTTAGGAGAAATAA;Source=TranstermHP
-Miro	feature	terminator	172099	172071	76	-	.	ID=terminator_132;Note=notes: opp_overlap 172076%2C overlap 172076,5%27 tail: TACTATTAAATATAT,5%27 stem: TAAAAGGCTACC,loop: ATATA,3%27 stem: GGTAGCCTTTTT,3%27 loop: GTTGCATCCTAAATA;Source=TranstermHP
-Miro	feature	terminator	172094	172076	95	-	.	ID=terminator_133;Note=notes: opp_overlap 172076%2C overlap 172071,5%27 tail: TTAAATATATTAAAA,5%27 stem: GGCTACC,loop: ATATA,3%27 stem: GGTAGCC,3%27 loop: TTTTTGTTGCATCCT;Source=TranstermHP
-Miro	feature	terminator	172076	172094	100	+	.	ID=terminator_134;Note=notes: opp_overlap 172076 172071,5%27 tail: TTAAATATATTAAAA,5%27 stem: GGCTACC,loop: ATATA,3%27 stem: GGTAGCC,3%27 loop: TTTTTGTTGCATCCT;Source=TranstermHP
-Miro	feature	terminator	172378	172424	100	+	.	ID=terminator_135;Note=notes: gap 2%2C opp_overlap 172378,5%27 tail: GAAAAGTTTAATCAA,5%27 stem: TCCGCGTTGGAA--CAGTTGAGC,loop: ATA,3%27 stem: GTTCATCTTACTTCCAACGCGGA,3%27 loop: TTTTTCGGCGGTACT;Source=TranstermHP
-Miro	feature	terminator	174227	174194	100	-	.	ID=terminator_136;Note=notes: opp_overlap 174200%2C overlap 174200,5%27 tail: GATATGGCTAATATA,5%27 stem: GCAAAAGCCCCTGAC,loop: CGAA,3%27 stem: GTCAAGGGCTTTTTC,3%27 loop: ATCATTCATTCGAAT;Source=TranstermHP
-Miro	feature	terminator	174200	174221	100	+	.	ID=terminator_137;Note=notes: opp_overlap 174194 174200,5%27 tail: GCTAATATAGCAAAA,5%27 stem: GCCCCTGAC,loop: CGAA,3%27 stem: GTCAAGGGC,3%27 loop: TTTTTCATCATTCAT;Source=TranstermHP
-Miro	feature	terminator	174221	174200	100	-	.	ID=terminator_138;Note=notes: opp_overlap 174200%2C overlap 174194,5%27 tail: GCTAATATAGCAAAA,5%27 stem: GCCCCTGAC,loop: CGAA,3%27 stem: GTCAAGGGC,3%27 loop: TTTTTCATCATTCAT;Source=TranstermHP
+Miro	TranstermHP	terminator	781	803	80	-	.	ID=terminator_0;[1] 5' stem=GCGCCCGA;[2] loop=ACCA;[3] 3' stem=TTGGGCGC;[4] 3' tail=GTTATCAACCGCAAG
+Miro	TranstermHP	terminator	4005	4030	100	-	.	ID=terminator_1;[1] 5' stem=GCCTCTTGC;[2] loop=AAT;[3] 3' stem=GCAGGGGGC;[4] 3' tail=TTTTTGCTATATTGG
+Miro	TranstermHP	terminator	5205	5239	91	-	.	ID=terminator_2;[1] 5' stem=TGGTAGACGGGT;[2] loop=TTAA;[3] 3' stem=ACCCGTTCACCG;[4] 3' tail=TTTCTTTATTCACTC
+Miro	TranstermHP	terminator	5209	5238	76	-	.	ID=terminator_3;[1] 5' stem=GGTAGACGGGT;[2] loop=TTAA;[3] 3' stem=ACCCGTTCACC;[4] 3' tail=GTTTCTTTATTCACT
+Miro	TranstermHP	terminator	6062	6114	77	+	.	ID=terminator_4;[1] 5' stem=GATCGGAGTAATGATTTCTGGA;[2] loop=GTA;[3] 3' stem=TCCATAA-TCATTTTTGCGATC;[4] 3' tail=TTTTTGTAATTCAAA
+Miro	TranstermHP	terminator	7267	7293	100	-	.	ID=terminator_5;[1] 5' stem=GTAAACCCC;[2] loop=GAAA;[3] 3' stem=GGGGTTTTC;[4] 3' tail=TTTTTCATAGAACCC
+Miro	TranstermHP	terminator	7272	7298	78	+	.	ID=terminator_6;[1] 5' stem=GAAAACCCC;[2] loop=TTTC;[3] 3' stem=GGGGTTTAC;[4] 3' tail=TTGTTATAAGGGAAA
+Miro	TranstermHP	terminator	7267	7288	95	-	.	ID=terminator_7;[1] 5' stem=CCCC;[2] loop=GAAA;[3] 3' stem=GGGG;[4] 3' tail=TTTTCTTTTTCATAG
+Miro	TranstermHP	terminator	9374	9393	85	-	.	ID=terminator_8;[1] 5' stem=GGGC;[2] loop=TTCG;[3] 3' stem=GCCC;[4] 3' tail=TTTTTCTTAAAAGGA
+Miro	TranstermHP	terminator	10395	10420	100	-	.	ID=terminator_9;[1] 5' stem=GCCTCTTGC;[2] loop=ATT;[3] 3' stem=GCGGGAGGC;[4] 3' tail=TTTTTGGTATCTTGT
+Miro	TranstermHP	terminator	11143	11171	100	-	.	ID=terminator_10;[1] 5' stem=GCCCTTGAC;[2] loop=TTCG;[3] 3' stem=GTTGAGGGC;[4] 3' tail=TTTTGTTATATTGGG
+Miro	TranstermHP	terminator	15418	15435	79	-	.	ID=terminator_11;[1] 5' stem=CCGTT;[2] loop=AAA;[3] 3' stem=AACGG;[4] 3' tail=TTTATCTTCTTGAGG
+Miro	TranstermHP	terminator	18535	18550	83	+	.	ID=terminator_12;[1] 5' stem=GCCCC;[2] loop=GAAA;[3] 3' stem=GGGGC;[4] 3' tail=TTAATTTTTATGCGT
+Miro	TranstermHP	terminator	18527	18548	100	-	.	ID=terminator_13;[1] 5' stem=GCCCC;[2] loop=TTTC;[3] 3' stem=GGGGC;[4] 3' tail=TTTTTTGTATCTATA
+Miro	TranstermHP	terminator	20982	21009	100	+	.	ID=terminator_14;[1] 5' stem=TATGGGGC;[2] loop=CGAA;[3] 3' stem=GCCCCATA;[4] 3' tail=TTTTTTATAAAATTT
+Miro	TranstermHP	terminator	22215	22231	83	-	.	ID=terminator_15;[1] 5' stem=GGGGC;[2] loop=TTCG;[3] 3' stem=GCCCC;[4] 3' tail=TTTCATTAACTAGTG
+Miro	TranstermHP	terminator	22301	22335	100	+	.	ID=terminator_16;[1] 5' stem=CGTGATATTAGTC;[2] loop=AATG;[3] 3' stem=GACTAATAACATG;[4] 3' tail=TTTTTCAAACATACC
+Miro	TranstermHP	terminator	25631	25658	100	-	.	ID=terminator_17;[1] 5' stem=GCCCTTGCA;[2] loop=TTCG;[3] 3' stem=TGCAGGGGC;[4] 3' tail=TTTGTTATATTGGGT
+Miro	TranstermHP	terminator	25637	25663	100	+	.	ID=terminator_18;[1] 5' stem=GCCCCTGCA;[2] loop=CGAA;[3] 3' stem=TGCAAGGGC;[4] 3' tail=TTTTTGATTAGTGAC
+Miro	TranstermHP	terminator	26428	26448	84	+	.	ID=terminator_19;[1] 5' stem=CAACGGCG;[2] loop=TTT;[3] 3' stem=TGCCGTTG;[4] 3' tail=TTGATTTCGTCTATG
+Miro	TranstermHP	terminator	27622	27643	91	-	.	ID=terminator_20;[1] 5' stem=GGGGC;[2] loop=TACG;[3] 3' stem=GCCCC;[4] 3' tail=TTTCTTTTACACCAT
+Miro	TranstermHP	terminator	28647	28670	95	+	.	ID=terminator_21;[1] 5' stem=GTGGGGGC;[2] loop=CGAA;[3] 3' stem=GCCCCCGC;[4] 3' tail=TTGTATTACATGTCT
+Miro	TranstermHP	terminator	33136	33161	78	-	.	ID=terminator_22;[1] 5' stem=ATAGCCCC;[2] loop=TTTC;[3] 3' stem=GGGGCTAC;[4] 3' tail=TTGTTTGTTAGTGCT
+Miro	TranstermHP	terminator	33140	33160	80	-	.	ID=terminator_23;[1] 5' stem=TAGCCCC;[2] loop=TTTC;[3] 3' stem=GGGGCTA;[4] 3' tail=CTTGTTTGTTAGTGC
+Miro	TranstermHP	terminator	34515	34543	95	+	.	ID=terminator_24;[1] 5' stem=TGTCGGTCGGTA;[2] loop=ACG;[3] 3' stem=TACCGATCGTCA;[4] 3' tail=TTGATTTTGATTCAG
+Miro	TranstermHP	terminator	34518	34539	86	+	.	ID=terminator_25;[1] 5' stem=CGGTCGGTA;[2] loop=ACG;[3] 3' stem=TACCGATCG;[4] 3' tail=TCATTGATTTTGATT
+Miro	TranstermHP	terminator	36390	36420	93	+	.	ID=terminator_26;[1] 5' stem=GCCCATGT;[2] loop=AACGAA;[3] 3' stem=ACGTGGGC;[4] 3' tail=TTTGTTTTTATTTGA
+Miro	TranstermHP	terminator	38163	38193	100	+	.	ID=terminator_27;[1] 5' stem=GGGAACTGT;[2] loop=TAAC;[3] 3' stem=GCAGTTCCC;[4] 3' tail=TTTTTATTTGAGGAA
+Miro	TranstermHP	terminator	40429	40449	78	-	.	ID=terminator_28;[1] 5' stem=AGGGGC;[2] loop=CGAA;[3] 3' stem=GCCCCA;[4] 3' tail=TTTTTCATACTGCCA
+Miro	TranstermHP	terminator	40435	40454	85	+	.	ID=terminator_29;[1] 5' stem=GGGGC;[2] loop=TTCG;[3] 3' stem=GCCCC;[4] 3' tail=TTTCTTAACAAGGTA
+Miro	TranstermHP	terminator	40429	40448	76	-	.	ID=terminator_30;[1] 5' stem=GGGGC;[2] loop=CGAA;[3] 3' stem=GCCCC;[4] 3' tail=ATTTTTCATACTGCC
+Miro	TranstermHP	terminator	42727	42745	91	+	.	ID=terminator_31;[1] 5' stem=GCCCC;[2] loop=TTCG;[3] 3' stem=GGGGC;[4] 3' tail=TTTTTAAAGGTAAAG
+Miro	TranstermHP	terminator	44010	44060	80	-	.	ID=terminator_32;[1] 5' stem=CTGGAACCAGGGGA-TAAACG;[2] loop=CTAAAA;[3] 3' stem=TGTTTTCTCCCCTGGTTCCTG;[4] 3' tail=TGTTATAAGGGTTGC
+Miro	TranstermHP	terminator	44013	44058	87	-	.	ID=terminator_33;[1] 5' stem=GGAACCAGGGGA-TAAACG;[2] loop=CTAAAA;[3] 3' stem=TGTTTTCTCCCCTGGTTCC;[4] 3' tail=TGTGTTATAAGGGTT
+Miro	TranstermHP	terminator	45761	45801	84	-	.	ID=terminator_34;[1] 5' stem=CGAAAGAAAGCAGGGA;[2] loop=ATCAA;[3] 3' stem=TCCCTGCTTTTTCTTG;[4] 3' tail=TTCTATCGTTCGGCT
+Miro	TranstermHP	terminator	45774	45799	100	+	.	ID=terminator_35;[1] 5' stem=GCAGGGA;[2] loop=TTGAT;[3] 3' stem=TCCCTGC;[4] 3' tail=TTTCTTTCGTTGATG
+Miro	TranstermHP	terminator	45766	45792	100	-	.	ID=terminator_36;[1] 5' stem=GCAGGGA;[2] loop=ATCAA;[3] 3' stem=TCCCTGC;[4] 3' tail=TTTTTCTTGTTCTAT
+Miro	TranstermHP	terminator	48970	49007	100	-	.	ID=terminator_37;[1] 5' stem=GCGATCTGACCATT;[2] loop=GTG;[3] 3' stem=AATGTTCAGGGCGC;[4] 3' tail=TTTTCTTCACTCAGT
+Miro	TranstermHP	terminator	50925	50946	76	-	.	ID=terminator_38;[1] 5' stem=GGCTATC;[2] loop=CGAA;[3] 3' stem=GATAGCC;[4] 3' tail=ATTTGATTATTTGTT
+Miro	TranstermHP	terminator	50929	50954	91	+	.	ID=terminator_39;[1] 5' stem=GGCTATC;[2] loop=TTCG;[3] 3' stem=GATAGCC;[4] 3' tail=TTATTTTTGGGGTGT
+Miro	TranstermHP	terminator	52180	52213	100	+	.	ID=terminator_40;[1] 5' stem=GCCGTTGCC;[2] loop=GAAA;[3] 3' stem=GGTAGCGGC;[4] 3' tail=TTTTTCTTTTTTGGT
+Miro	TranstermHP	terminator	53407	53432	90	-	.	ID=terminator_41;[1] 5' stem=TGGT;[2] loop=TAGTCC;[3] 3' stem=ACCA;[4] 3' tail=TTTTTTCTTTTTGCC
+Miro	TranstermHP	terminator	56264	56293	81	-	.	ID=terminator_42;[1] 5' stem=GCCCCCGAC;[2] loop=CGGA;[3] 3' stem=GTCAAGGGC;[4] 3' tail=TTTTTATTAAAATAG
+Miro	TranstermHP	terminator	56272	56299	91	+	.	ID=terminator_43;[1] 5' stem=GCCCTTGAC;[2] loop=TCCG;[3] 3' stem=GTCGGGGGC;[4] 3' tail=TTTGTTATATTGGGC
+Miro	TranstermHP	terminator	56925	56962	86	+	.	ID=terminator_44;[1] 5' stem=TAAAGAAGCCTCTTGC;[2] loop=AAT;[3] 3' stem=GCAGGGGGCTTTTTTG;[4] 3' tail=TATAGTGTGTTCATT
+Miro	TranstermHP	terminator	56932	56960	100	+	.	ID=terminator_45;[1] 5' stem=GCCTCTTGC;[2] loop=AAT;[3] 3' stem=GCAGGGGGC;[4] 3' tail=TTTTTTGTATAGTGT
+Miro	TranstermHP	terminator	60382	60407	100	-	.	ID=terminator_46;[1] 5' stem=GTTTCT;[2] loop=GTTC;[3] 3' stem=AGAAAC;[4] 3' tail=TTTTTCTTTTGTTCT
+Miro	TranstermHP	terminator	62185	62218	100	-	.	ID=terminator_47;[1] 5' stem=TTGCGGCACCCCC;[2] loop=AGA;[3] 3' stem=GGGGATACCGCGA;[4] 3' tail=TTTTTAATATTTTTG
+Miro	TranstermHP	terminator	62192	62216	80	-	.	ID=terminator_48;[1] 5' stem=GCGGCACCCCC;[2] loop=AGA;[3] 3' stem=GGGGATACCGC;[4] 3' tail=GATTTTTAATATTTT
+Miro	TranstermHP	terminator	64085	64102	85	+	.	ID=terminator_49;[1] 5' stem=GGGGC;[2] loop=TACG;[3] 3' stem=GCCCC;[4] 3' tail=TTTTGAGGATCTTAT
+Miro	TranstermHP	terminator	64079	64098	91	-	.	ID=terminator_50;[1] 5' stem=GGGGC;[2] loop=CGTA;[3] 3' stem=GCCCC;[4] 3' tail=TTTATTGTCCTGTAA
+Miro	TranstermHP	terminator	65806	65835	81	+	.	ID=terminator_51;[1] 5' stem=GCCCCTTCC;[2] loop=TTTC;[3] 3' stem=GGTTGGGGC;[4] 3' tail=TTTCTTTTAGAATTC
+Miro	TranstermHP	terminator	65798	65827	90	-	.	ID=terminator_52;[1] 5' stem=GCCCCAACC;[2] loop=GAAA;[3] 3' stem=GGAAGGGGC;[4] 3' tail=TTTTTGTTATGATGC
+Miro	TranstermHP	terminator	68462	68480	87	-	.	ID=terminator_53;[1] 5' stem=GCCCCC;[2] loop=GAAA;[3] 3' stem=GGGGGC;[4] 3' tail=TTTGAGGTGACTTGT
+Miro	TranstermHP	terminator	72046	72061	76	+	.	ID=terminator_54;[1] 5' stem=GCCCC;[2] loop=TTTC;[3] 3' stem=GGGGC;[4] 3' tail=TTGATTAATCAATGT
+Miro	TranstermHP	terminator	72041	72059	100	-	.	ID=terminator_55;[1] 5' stem=GCCCC;[2] loop=GAAA;[3] 3' stem=GGGGC;[4] 3' tail=TTTTTCGTGAGGTTT
+Miro	TranstermHP	terminator	73234	73260	100	-	.	ID=terminator_56;[1] 5' stem=GGCATTCGGC;[2] loop=GGG;[3] 3' stem=GTCGAATGCC;[4] 3' tail=TTTTAACGTCTGAAA
+Miro	TranstermHP	terminator	73238	73264	89	+	.	ID=terminator_57;[1] 5' stem=GGCATTCGAC;[2] loop=CCC;[3] 3' stem=GCCGAATGCC;[4] 3' tail=TTATCGAAACCGAGC
+Miro	TranstermHP	terminator	75458	75487	78	+	.	ID=terminator_58;[1] 5' stem=TCTGATTGAG;[2] loop=TGA;[3] 3' stem=TTCAATCAGC;[4] 3' tail=TTTTTATCGCGTCTG
+Miro	TranstermHP	terminator	76245	76268	100	-	.	ID=terminator_59;[1] 5' stem=CCGCCCGG;[2] loop=TTAGT;[3] 3' stem=CCGGGTGG;[4] 3' tail=TTTGCCTGTTACCTG
+Miro	TranstermHP	terminator	76527	76562	77	-	.	ID=terminator_60;[1] 5' stem=AAAAAGCCCTTGCG;[2] loop=TTCT;[3] 3' stem=CGTGAGGGCTTTTG;[4] 3' tail=TATTATACACACATA
+Miro	TranstermHP	terminator	76530	76557	100	-	.	ID=terminator_61;[1] 5' stem=GCCCTTGCG;[2] loop=TTCT;[3] 3' stem=CGTGAGGGC;[4] 3' tail=TTTTGTATTATACAC
+Miro	TranstermHP	terminator	76536	76565	81	+	.	ID=terminator_62;[1] 5' stem=GCCCTCACG;[2] loop=AGAA;[3] 3' stem=CGCAAGGGC;[4] 3' tail=TTTTTATTAAATTTC
+Miro	TranstermHP	terminator	76591	76625	78	-	.	ID=terminator_63;[1] 5' stem=CCGCACATA-TAGA;[2] loop=TGA;[3] 3' stem=TCTTTTATGTGCGG;[4] 3' tail=TTATTGTGAATCCAG
+Miro	TranstermHP	terminator	77874	77893	84	+	.	ID=terminator_64;[1] 5' stem=GCCCCC;[2] loop=AAAGA;[3] 3' stem=GGGGGC;[4] 3' tail=TTTAAAACATTATTT
+Miro	TranstermHP	terminator	79621	79641	100	-	.	ID=terminator_65;[1] 5' stem=CGAGGC;[2] loop=TTCG;[3] 3' stem=GCCTCG;[4] 3' tail=TTTTTGCTATAAATA
+Miro	TranstermHP	terminator	79626	79645	82	+	.	ID=terminator_66;[1] 5' stem=CGAGGC;[2] loop=CGAA;[3] 3' stem=GCCTCG;[4] 3' tail=TTATAATATTTTTGC
+Miro	TranstermHP	terminator	80210	80230	76	+	.	ID=terminator_67;[1] 5' stem=GCAAC;[2] loop=GGTA;[3] 3' stem=GTTGC;[4] 3' tail=TTTCTTTCCACAATA
+Miro	TranstermHP	terminator	83658	83686	100	+	.	ID=terminator_68;[1] 5' stem=GCCCCTGAC;[2] loop=CGAA;[3] 3' stem=GTCAAGGGC;[4] 3' tail=TTTTTGTCAAATGAT
+Miro	TranstermHP	terminator	83649	83679	100	-	.	ID=terminator_69;[1] 5' stem=GCCCTTGAC;[2] loop=TTCG;[3] 3' stem=GTCAGGGGC;[4] 3' tail=TTTTTTATTATGGAT
+Miro	TranstermHP	terminator	83687	83705	78	+	.	ID=terminator_70;[1] 5' stem=CAAA;[2] loop=TGA;[3] 3' stem=TTTG;[4] 3' tail=TTTTTCTTCTAACAG
+Miro	TranstermHP	terminator	85165	85188	100	-	.	ID=terminator_71;[1] 5' stem=GGGGGC;[2] loop=GAAA;[3] 3' stem=GCCCCC;[4] 3' tail=TTTTTTGTGAGGTGT
+Miro	TranstermHP	terminator	87545	87564	86	+	.	ID=terminator_72;[1] 5' stem=GGGGC;[2] loop=CAAA;[3] 3' stem=GCCCC;[4] 3' tail=TTTGTTACGCTAATT
+Miro	TranstermHP	terminator	87973	88001	88	-	.	ID=terminator_73;[1] 5' stem=TACCCTGTGT;[2] loop=ACCC;[3] 3' stem=AAACAGGGTA;[4] 3' tail=TTTTTACAAGAGGTG
+Miro	TranstermHP	terminator	87978	88006	79	+	.	ID=terminator_74;[1] 5' stem=TACCCTGTTT;[2] loop=GGGT;[3] 3' stem=ACACAGGGTA;[4] 3' tail=TTTATGGTTTAAGAG
+Miro	TranstermHP	terminator	88816	88837	100	-	.	ID=terminator_75;[1] 5' stem=GCCCC;[2] loop=GAAA;[3] 3' stem=GGGGC;[4] 3' tail=TTTTTTGTAGGTAAA
+Miro	TranstermHP	terminator	92679	92701	78	-	.	ID=terminator_76;[1] 5' stem=GCGTAT;[2] loop=AGT;[3] 3' stem=ATCCGC;[4] 3' tail=TTTTTCTTCTCCGTG
+Miro	TranstermHP	terminator	93200	93258	100	+	.	ID=terminator_77;[1] 5' stem=TCGTTT-CTATGTGTGTAAGGTA;[2] loop=TCAT;[3] 3' stem=TACCCTACACACAACGCAAGCGA;[4] 3' tail=TTTTTATTTTCCGTA
+Miro	TranstermHP	terminator	94234	94268	100	-	.	ID=terminator_78;[1] 5' stem=CAAAACCCCTTGCC;[2] loop=TAT;[3] 3' stem=GGTGAGGGGTTTTG;[4] 3' tail=TTATATTACACACAT
+Miro	TranstermHP	terminator	94236	94263	100	-	.	ID=terminator_79;[1] 5' stem=CCCCTTGCC;[2] loop=TAT;[3] 3' stem=GGTGAGGGG;[4] 3' tail=TTTTGTTATATTACA
+Miro	TranstermHP	terminator	95931	95958	100	-	.	ID=terminator_80;[1] 5' stem=GCCCTTGCA;[2] loop=TTAG;[3] 3' stem=TGCAGGGGC;[4] 3' tail=TTTGTTATATTACAC
+Miro	TranstermHP	terminator	95937	95963	100	+	.	ID=terminator_81;[1] 5' stem=GCCCCTGCA;[2] loop=CTAA;[3] 3' stem=TGCAAGGGC;[4] 3' tail=TTTTTGATTATTTTG
+Miro	TranstermHP	terminator	97741	97762	79	+	.	ID=terminator_82;[1] 5' stem=AAGGGGC;[2] loop=CGAA;[3] 3' stem=GCCCCTA;[4] 3' tail=TTTTGCGTTCTTCTG
+Miro	TranstermHP	terminator	97740	97756	78	-	.	ID=terminator_83;[1] 5' stem=GGGGC;[2] loop=TTCG;[3] 3' stem=GCCCC;[4] 3' tail=TTTGAGGATCATATT
+Miro	TranstermHP	terminator	97743	97762	81	+	.	ID=terminator_84;[1] 5' stem=GGGGC;[2] loop=CGAA;[3] 3' stem=GCCCC;[4] 3' tail=TATTTTGCGTTCTTC
+Miro	TranstermHP	terminator	100342	100369	100	-	.	ID=terminator_85;[1] 5' stem=GCCCTTGCA;[2] loop=TTCG;[3] 3' stem=TGCAGGGGC;[4] 3' tail=TTTGTTATATTGGCC
+Miro	TranstermHP	terminator	100348	100375	100	+	.	ID=terminator_86;[1] 5' stem=GCCCCTGCA;[2] loop=CGAA;[3] 3' stem=TGCAAGGGC;[4] 3' tail=TTTTTTCAGTTTTTC
+Miro	TranstermHP	terminator	101556	101578	100	-	.	ID=terminator_87;[1] 5' stem=GGGGC;[2] loop=TTCG;[3] 3' stem=GCCCC;[4] 3' tail=TTTTTTATTGGGGTG
+Miro	TranstermHP	terminator	101565	101583	85	+	.	ID=terminator_88;[1] 5' stem=GGGGC;[2] loop=CGAA;[3] 3' stem=GCCCC;[4] 3' tail=TTTGTAATAAATTTG
+Miro	TranstermHP	terminator	101890	101905	76	+	.	ID=terminator_89;[1] 5' stem=GAGCA;[2] loop=CTT;[3] 3' stem=TGCTC;[4] 3' tail=TTTAGTTGTTTCAAA
+Miro	TranstermHP	terminator	104254	104284	83	-	.	ID=terminator_90;[1] 5' stem=GCCCCAACC;[2] loop=GAAA;[3] 3' stem=GGAAGGGGC;[4] 3' tail=TTTATTTTTACAGGG
+Miro	TranstermHP	terminator	104813	104840	85	-	.	ID=terminator_91;[1] 5' stem=AAAAAGCCCC;[2] loop=TTTC;[3] 3' stem=GGGGCTTTTA;[4] 3' tail=TTTTGCAAATTCTCC
+Miro	TranstermHP	terminator	104822	104840	100	+	.	ID=terminator_92;[1] 5' stem=GCCCC;[2] loop=GAAA;[3] 3' stem=GGGGC;[4] 3' tail=TTTTTAGTATCTGTT
+Miro	TranstermHP	terminator	104813	104835	100	-	.	ID=terminator_93;[1] 5' stem=GCCCC;[2] loop=TTTC;[3] 3' stem=GGGGC;[4] 3' tail=TTTTATTTTGCAAAT
+Miro	TranstermHP	terminator	106893	106918	90	-	.	ID=terminator_94;[1] 5' stem=ACCGAT;[2] loop=CGC;[3] 3' stem=ATCGGA;[4] 3' tail=TTTTTGTTTTTGGGC
+Miro	TranstermHP	terminator	110693	110717	80	-	.	ID=terminator_95;[1] 5' stem=CCCCCGATA;[2] loop=AAGA;[3] 3' stem=TATCGGGGA;[4] 3' tail=TTTGGTTAATCTGTT
+Miro	TranstermHP	terminator	110696	110718	79	+	.	ID=terminator_96;[1] 5' stem=TCCCCGATA;[2] loop=TCTT;[3] 3' stem=TATCGGGGG;[4] 3' tail=TACTTTCGAAGAAAT
+Miro	TranstermHP	terminator	110693	110716	86	-	.	ID=terminator_97;[1] 5' stem=CCCCGATA;[2] loop=AAGA;[3] 3' stem=TATCGGGG;[4] 3' tail=ATTTGGTTAATCTGT
+Miro	TranstermHP	terminator	112583	112613	100	+	.	ID=terminator_98;[1] 5' stem=CCCCTGTC;[2] loop=TTCG;[3] 3' stem=GATAGGGG;[4] 3' tail=TTTTTCTTTTTATAA
+Miro	TranstermHP	terminator	115564	115582	77	-	.	ID=terminator_99;[1] 5' stem=CCGT;[2] loop=TAA;[3] 3' stem=GCGG;[4] 3' tail=TTTTTCTTCAACGTC
+Miro	TranstermHP	terminator	115812	115841	76	-	.	ID=terminator_100;[1] 5' stem=TA-GATCGGCG;[2] loop=GCAT;[3] 3' stem=CGCCGATCATA;[4] 3' tail=TCTTTGAAGTTCATC
+Miro	TranstermHP	terminator	115816	115840	76	-	.	ID=terminator_101;[1] 5' stem=AGATCGGCG;[2] loop=GCAT;[3] 3' stem=CGCCGATCA;[4] 3' tail=TATCTTTGAAGTTCA
+Miro	TranstermHP	terminator	115818	115839	91	-	.	ID=terminator_102;[1] 5' stem=GATCGGCG;[2] loop=GCAT;[3] 3' stem=CGCCGATC;[4] 3' tail=ATATCTTTGAAGTTC
+Miro	TranstermHP	terminator	123258	123275	85	+	.	ID=terminator_103;[1] 5' stem=GGGGC;[2] loop=TTCG;[3] 3' stem=GCCCC;[4] 3' tail=TTTTGAGGATCTTTA
+Miro	TranstermHP	terminator	123253	123271	81	-	.	ID=terminator_104;[1] 5' stem=GGGGC;[2] loop=CGAA;[3] 3' stem=GCCCC;[4] 3' tail=TTGTTAATCGTTAAG
+Miro	TranstermHP	terminator	125182	125208	87	-	.	ID=terminator_105;[1] 5' stem=TTCATGG;[2] loop=ATG;[3] 3' stem=CCAGGAA;[4] 3' tail=TTTTTCTTTTGATGC
+Miro	TranstermHP	terminator	130203	130220	79	-	.	ID=terminator_106;[1] 5' stem=GGGGCT;[2] loop=TTTC;[3] 3' stem=AGCCCC;[4] 3' tail=TTACATGTTATACTG
+Miro	TranstermHP	terminator	130562	130601	95	-	.	ID=terminator_107;[1] 5' stem=TCGTTACGGTT;[2] loop=TTTCTGTTT;[3] 3' stem=AACCGTAGCGG;[4] 3' tail=TTTTTTTGTAGTTTG
+Miro	TranstermHP	terminator	130746	130765	78	+	.	ID=terminator_108;[1] 5' stem=GGGGTA;[2] loop=GCAA;[3] 3' stem=TACCCC;[4] 3' tail=TTATCATTATTTTTC
+Miro	TranstermHP	terminator	136109	136135	100	+	.	ID=terminator_109;[1] 5' stem=GGGAACC;[2] loop=TTCG;[3] 3' stem=GGTTCCC;[4] 3' tail=TTTTTGTTTATATAA
+Miro	TranstermHP	terminator	136106	136126	84	-	.	ID=terminator_110;[1] 5' stem=GGGAACC;[2] loop=CGAA;[3] 3' stem=GGTTCCC;[4] 3' tail=TTTAAAAAGTCGTTG
+Miro	TranstermHP	terminator	138160	138189	100	+	.	ID=terminator_111;[1] 5' stem=GGTGGAGTAGG;[2] loop=GAAA;[3] 3' stem=CTTACTCCACC;[4] 3' tail=TTTTAATAATTGTTA
+Miro	TranstermHP	terminator	138156	138185	87	-	.	ID=terminator_112;[1] 5' stem=GGTGGAGTAAG;[2] loop=TTTC;[3] 3' stem=CCTACTCCACC;[4] 3' tail=TATTGAATATTATCC
+Miro	TranstermHP	terminator	139269	139296	79	-	.	ID=terminator_113;[1] 5' stem=GCCCCAACC;[2] loop=GAAA;[3] 3' stem=GGAAGGGGC;[4] 3' tail=TTTTGTACATTTGCT
+Miro	TranstermHP	terminator	139275	139304	79	+	.	ID=terminator_114;[1] 5' stem=GCCCCTTCC;[2] loop=TTTC;[3] 3' stem=GGTTGGGGC;[4] 3' tail=TTCTTTTTAGAACTT
+Miro	TranstermHP	terminator	142145	142163	81	-	.	ID=terminator_115;[1] 5' stem=GGGGC;[2] loop=CGTA;[3] 3' stem=GCCCC;[4] 3' tail=TTGTTAATCAATAAA
+Miro	TranstermHP	terminator	142150	142172	100	+	.	ID=terminator_116;[1] 5' stem=GGGGC;[2] loop=TACG;[3] 3' stem=GCCCC;[4] 3' tail=TTTTCTTTTAGGTGA
+Miro	TranstermHP	terminator	142652	142673	76	+	.	ID=terminator_117;[1] 5' stem=CGGGGT;[2] loop=TACT;[3] 3' stem=ACTCCG;[4] 3' tail=TTTTGTCCTGAATGC
+Miro	TranstermHP	terminator	144130	144157	100	-	.	ID=terminator_118;[1] 5' stem=GGGAACC;[2] loop=ATTGC;[3] 3' stem=GGTTCCC;[4] 3' tail=TTTTTTGTTATTGAT
+Miro	TranstermHP	terminator	144139	144164	100	+	.	ID=terminator_119;[1] 5' stem=GGGAACCG;[2] loop=CAA;[3] 3' stem=TGGTTCCC;[4] 3' tail=TTTTTTTACAATCTT
+Miro	TranstermHP	terminator	148986	149009	84	-	.	ID=terminator_120;[1] 5' stem=CAAACTC;[2] loop=ATC;[3] 3' stem=GAGTTGG;[4] 3' tail=TTTTTGTCTTTTTCT
+Miro	TranstermHP	terminator	151660	151682	79	-	.	ID=terminator_121;[1] 5' stem=CCTTCG;[2] loop=AGAT;[3] 3' stem=CGGAGG;[4] 3' tail=TTTTCTTGAGATATT
+Miro	TranstermHP	terminator	153496	153528	79	+	.	ID=terminator_122;[1] 5' stem=CTTGACTCCCTGC;[2] loop=ATGA;[3] 3' stem=GCGGGGTATCAAG;[4] 3' tail=TTTGGTTTATCAAAC
+Miro	TranstermHP	terminator	156980	157015	78	+	.	ID=terminator_123;[1] 5' stem=AAAAAGCCCTTGAC;[2] loop=TTCG;[3] 3' stem=GTTGAGGGCTTTTG;[4] 3' tail=TTATATTAGGCCTAT
+Miro	TranstermHP	terminator	156985	157013	100	+	.	ID=terminator_124;[1] 5' stem=GCCCTTGAC;[2] loop=TTCG;[3] 3' stem=GTTGAGGGC;[4] 3' tail=TTTTGTTATATTAGG
+Miro	TranstermHP	terminator	160711	160734	100	+	.	ID=terminator_125;[1] 5' stem=GGGTGC;[2] loop=TCCG;[3] 3' stem=GCACCC;[4] 3' tail=TTTTTTATGAGGTGA
+Miro	TranstermHP	terminator	161967	161988	100	+	.	ID=terminator_126;[1] 5' stem=TGGCC;[2] loop=TTCG;[3] 3' stem=GGCCA;[4] 3' tail=TTTTTTGTATATAAA
+Miro	TranstermHP	terminator	165945	165966	100	-	.	ID=terminator_127;[1] 5' stem=GGCGGTG;[2] loop=TCCC;[3] 3' stem=TACCGCC;[4] 3' tail=TTTTGATTTAGTGTA
+Miro	TranstermHP	terminator	166926	166950	91	-	.	ID=terminator_128;[1] 5' stem=GGCCCG;[2] loop=ATGATC;[3] 3' stem=CGGGCC;[4] 3' tail=TTTGTTTATGCATCA
+Miro	TranstermHP	terminator	166933	166954	80	+	.	ID=terminator_129;[1] 5' stem=GGCCCGG;[2] loop=ATCA;[3] 3' stem=TCGGGCC;[4] 3' tail=TTATAAATATGTAAA
+Miro	TranstermHP	terminator	171472	171489	85	+	.	ID=terminator_130;[1] 5' stem=GGGGC;[2] loop=TTCG;[3] 3' stem=GCCCC;[4] 3' tail=TTTTAGGAGAAATAA
+Miro	TranstermHP	terminator	171470	171485	76	-	.	ID=terminator_131;[1] 5' stem=GGGGC;[2] loop=CGAA;[3] 3' stem=GCCCC;[4] 3' tail=TTACATTATTTCAGT
+Miro	TranstermHP	terminator	172069	172099	76	-	.	ID=terminator_132;[1] 5' stem=AAAAAGGCTACC;[2] loop=TATAT;[3] 3' stem=GGTAGCCTTTTA;[4] 3' tail=ATATATTTAATAGTA
+Miro	TranstermHP	terminator	172072	172094	95	-	.	ID=terminator_133;[1] 5' stem=GGCTACC;[2] loop=TATAT;[3] 3' stem=GGTAGCC;[4] 3' tail=TTTTAATATATTTAA
+Miro	TranstermHP	terminator	172076	172102	100	+	.	ID=terminator_134;[1] 5' stem=GGCTACC;[2] loop=ATATA;[3] 3' stem=GGTAGCC;[4] 3' tail=TTTTTGTTGCATCCT
+Miro	TranstermHP	terminator	172378	172429	100	+	.	ID=terminator_135;[1] 5' stem=TCCGCGTTGGAA--CAGTTGAGC;[2] loop=ATA;[3] 3' stem=GTTCATCTTACTTCCAACGCGGA;[4] 3' tail=TTTTTCGGCGGTACT
+Miro	TranstermHP	terminator	174191	174227	100	-	.	ID=terminator_136;[1] 5' stem=GAAAAAGCCCTTGAC;[2] loop=TTCG;[3] 3' stem=GTCAGGGGCTTTTGC;[4] 3' tail=TATATTAGCCATATC
+Miro	TranstermHP	terminator	174200	174226	100	+	.	ID=terminator_137;[1] 5' stem=GCCCCTGAC;[2] loop=CGAA;[3] 3' stem=GTCAAGGGC;[4] 3' tail=TTTTTCATCATTCAT
+Miro	TranstermHP	terminator	174196	174221	100	-	.	ID=terminator_138;[1] 5' stem=GCCCTTGAC;[2] loop=TTCG;[3] 3' stem=GTCAGGGGC;[4] 3' tail=TTTTGCTATATTAGC

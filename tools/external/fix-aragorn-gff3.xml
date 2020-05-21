@@ -17,6 +17,10 @@ $__tool_directory__/fix-aragorn-gff3.py
     <data format="gff3" name="default"/>
   </outputs>
   <tests>
+    <test>
+      <param name="gff3_data" value="aragorn-direct.gff3"/>
+      <output name="default" file="aragorn-fixed.gff3"/>
+    </test>
   </tests>
   <help><![CDATA[
 **What it does**

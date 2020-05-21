@@ -4,9 +4,11 @@
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
 	</macros>
-	<expand macro="requirements"/>
+	<expand macro="requirements">
+		<requirement type="package" version="377">ucsc-wigtobigwig</requirement>
+	</expand>
 	<command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/../fasta/fasta_len.py '$genomes' > 'chrom.len';
+python $__tool_directory__/fasta_len.py '$genomes' > 'chrom.len';
 
 grep -v "^track" '$wigFile' |
 wigToBigWig -clip stdin chrom.len '$bigwig'
@@ -19,6 +21,13 @@ wigToBigWig -clip stdin chrom.len '$bigwig'
 	<outputs>
 		<data format="bigwig" name="bigwig" />
 	</outputs>
+        <tests>
+          <test>
+            <param name="wigFile" value="T7_BW_I_REBASE.wig" />
+            <param name="genomes" value="T7_CLEAN.fasta" />
+            <output name="bigwig" value="T7_BW_I_REBASE.bigwig" />
+          </test>
+        </tests>
 	<help><![CDATA[
 **What it does**
 
