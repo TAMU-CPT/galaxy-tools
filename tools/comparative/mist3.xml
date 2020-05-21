@@ -5,6 +5,12 @@
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
 	</macros>
+	<expand macro="requirements">
+		<requirement type="package" version="2.7">python</requirement>
+		<requirement type="package" version="8.0.192">openjdk</requirement>
+		<requirement type="package" version="7.0.8_68">imagemagick</requirement>
+		<requirement type="package" version="9.18">ghostscript</requirement>
+	</expand>
 	<command detect_errors="aggressive">
 $__tool_directory__/mist3.py
 #set repeat_var_1 = '" "'.join([ str($var) for $var in $fasta_files ])
