@@ -21,7 +21,7 @@ $inType $inFile
 -e $eVal 
 -n $hmmerNum 
 -g $geneNum
-#if $tree.customize == "-t":
+#if $tree.customize == "-t"
 -t
 -ts $tree.triSize
 -tf $tree.fontSize
@@ -47,6 +47,7 @@ mv tempTar $blastDir
         <option value="-p" selected="true">Protein accession</option>
         <option value="-a">Protein accession with Genome Assembly Identifier</option>
     </param>
+    <param name="inFile" type="data" label="Identifier List" format="text"/>
     <param label="Number of identical genomes to search (Input A for all)" name="redundancy" type="text" value ="0"/>
     <param label="E-Value minimum for Jackhmmer" name="eVal" type="float" size="15" value="0.000000001"/>
     <param label="Number of Jackhmmer iterations" name="hmmerNum" type="integer" value="3"/>
