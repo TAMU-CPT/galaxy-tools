@@ -28,6 +28,7 @@ $invert
 		<test>
 			<param name="gff3_data" value="miro.gff3" />
 			<param name="repeat_0_0|type" value="CDS" />
+			<param name="invert" value="False" />
 			<output name="output" file="miro.cds.gff3" />
 		</test>
 		<test>

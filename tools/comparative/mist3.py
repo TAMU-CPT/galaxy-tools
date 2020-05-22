@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python 
 import argparse
 import time
 import tempfile
@@ -30,6 +30,7 @@ IMAGE_BORDER_COLOUR = "purple"
 LABEL_COLOUR = "grey22"
 TICK_LENGTH = 0.2 * MONTAGE_BORDER
 
+TYPEFONT = "Ubuntu-Mono"
 
 CREDITS = (
     "CPT's MISTv3\n"
@@ -40,7 +41,7 @@ CREDITS = (
 
 class FancyRecord(object):
     def __init__(self, record, tmpdir):
-        self.temp = tempfile.NamedTemporaryFile(dir=tmpdir, delete=False, suffix=".fa")
+        self.temp = tempfile.NamedTemporaryFile(mode='w', dir=tmpdir, delete=False, suffix=".fa")
         self.temp_path = self.temp.name
         self.id = self.temp_path.rsplit("/")[-1]
         self.record = record
@@ -220,7 +221,7 @@ class Subplot(object):
         GFNS = GREY_FILL + NO_STROKE
         NFGS = NO_FILL + GREY_STROKE
         # Font for labels
-        FONT_SPEC = GFNS + ["-font", "Ubuntu-Mono-Regular"]
+        FONT_SPEC = GFNS + ["-font", TYPEFONT]
         FONT_10pt = FONT_SPEC + ["-pointsize", "10"]
         FONT_20pt = FONT_SPEC + ["-pointsize", "20"]
         FONT_30pt = FONT_SPEC + ["-pointsize", "30"]
@@ -449,7 +450,7 @@ class Misty(object):
     @classmethod
     def obtain_image_dimensions(cls, path):
         cmd = ["identify", path]
-        output = subprocess.check_output(cmd)
+        output = subprocess.check_output(cmd, universal_newlines=True)
         size = output.split(" ")[3]
         (w, h) = size[0 : size.index("+")].split("x")
         return (int(w), int(h))
@@ -550,6 +551,8 @@ class Misty(object):
             str(IMAGE_BORDER),
             "-bordercolor",
             IMAGE_BORDER_COLOUR,
+            "-font",
+            TYPEFONT,
             m0,
         ]
 
@@ -632,7 +635,7 @@ class Misty(object):
             "-pointsize",
             "20",
             "-font",
-            "Ubuntu-Mono-Regular",
+            TYPEFONT,
         ]
         cmd += convert_arguments_left
         cmd += ["-rotate", "90"]

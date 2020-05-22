@@ -36,21 +36,26 @@ $input_type.blast_input
   <tests>
     <test>
       <param name="input_type_selector" value="xml"/>
-      <param name="blast_input" value="test-data/blastpxml.blastxml" ftype="xml"/>
+      <param name="blast_input" value="blastpxml.blastxml" ftype="xml"/>
       <param name="include_seq" value="false"/>
-      <output name="output" file="test-data/bpxml.gff3" ftype="gff3"/>
+      <output name="output" file="bpxml.gff3" ftype="gff3"/>
     </test>
     <test>
       <param name="input_type_selector" value="xml"/>
-      <param name="blast_input" value="test-data/blastpxml.blastxml" ftype="xml"/>
+      <param name="blast_input" value="blastpxml.blastxml" ftype="xml"/>
       <param name="include_seq" value="true"/>
-      <output name="output" file="test-data/bpxmlis.gff3" ftype="gff3"/>
+      <output name="output" file="bpxmlis.gff3" ftype="gff3"/>
     </test>
     <test>
       <param name="input_type_selector" value="tsv"/>
-      <param name="blast_input" value="test-data/blastptab.tabular" ftype="tabular"/>
+      <param name="blast_input" value="blastptab.tabular" ftype="tabular"/>
       <param name="include_seq" value="false"/>
-      <output name="output" file="test-data/bptsv.gff3" ftype="gff3"/>
+      <output name="output" ftype="gff3">
+	<assert_contents>
+	  <has_line line="##gff-version 3"/>
+	  <has_n_lines n="162"/>
+	</assert_contents>
+      </output>
     </test>
   </tests>
   <help><![CDATA[

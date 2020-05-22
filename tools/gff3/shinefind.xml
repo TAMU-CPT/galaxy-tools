@@ -48,9 +48,11 @@ $top_only
 			<param name="gff3_data" value="miro.gff3" />
 			<param name="lookahead_max" value="15" />
 			<param name="lookahead_min" value="5" />
+			<param name="add" value="True"/>
 			<param name="top_only" value="False" />
 			<output name="default_output" file="shinefind.tbl" />
 			<output name="gff3_output" file="shinefind.gff3" />
+			<output name="stdout" file="shinefind_stdout.gff3" />
 		</test>
 	</tests>
 	<help><![CDATA[

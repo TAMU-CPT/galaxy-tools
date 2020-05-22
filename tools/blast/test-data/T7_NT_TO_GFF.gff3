@@ -1,0 +1,178 @@
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	1	39937	0.0	.	.	ID=blast.0.NC_001604.V01146.1;Name=Genome of bacteriophage T7;Target=NC_001604;accession=V01146.1;blast_bitscore=72022;blast_evalue=0.0;blast_gapopen=0;blast_gaps=0;blast_length=39937;blast_mismatch=0;blast_nident=39937;blast_pident=100.000;blast_positive=39937;blast_ppos=100.00;blast_qend=39937;blast_qframe=1;blast_qlen=39937;blast_qstart=1;blast_send=39937;blast_sframe=1;blast_slen=39937;blast_sstart=1;description=Hit to 1..39937 %281%29 of Genome of bacteriophage T7;hit_titles=Genome of bacteriophage T7;length=39937
+NC_001604	blast	match_part	1	39937	.	.	.	Gap=M39937;ID=V01146.1;Parent=blast.0.NC_001604.V01146.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	1	39937	0.0	.	.	ID=blast.1.NC_001604.AY264774.1;Name=Enterobacteria phage T7%2C complete genome;Target=NC_001604;accession=AY264774.1;blast_bitscore=72007;blast_evalue=0.0;blast_gapopen=1;blast_gaps=1;blast_length=39938;blast_mismatch=2;blast_nident=39935;blast_pident=99.992;blast_positive=39935;blast_ppos=99.99;blast_qend=39937;blast_qframe=1;blast_qlen=39937;blast_qstart=1;blast_send=39938;blast_sframe=1;blast_slen=39938;blast_sstart=1;description=Hit to 1..39938 %281%29 of Enterobacteria phage T7%2C complete genome;hit_titles=Enterobacteria phage T7%2C complete genome;length=39937
+NC_001604	blast	match_part	1	39937	.	.	.	Gap=M39937;ID=AY264774.1;Parent=blast.1.NC_001604.AY264774.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	1	39777	0.0	.	.	ID=blast.2.NC_001604.GU071091.1;Name=Enterobacteria phage T7%2C complete genome;Target=NC_001604;accession=GU071091.1;blast_bitscore=71709;blast_evalue=0.0;blast_gapopen=1;blast_gaps=1;blast_length=39778;blast_mismatch=4;blast_nident=39773;blast_pident=99.987;blast_positive=39773;blast_ppos=99.99;blast_qend=39777;blast_qframe=1;blast_qlen=39937;blast_qstart=1;blast_send=39778;blast_sframe=1;blast_slen=39778;blast_sstart=1;description=Hit to 1..39778 %281%29 of Enterobacteria phage T7%2C complete genome;hit_titles=Enterobacteria phage T7%2C complete genome;length=39937
+NC_001604	blast	match_part	1	39777	.	.	.	Gap=M39777;ID=GU071091.1;Parent=blast.2.NC_001604.GU071091.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	2572	39936	0.0	.	.	ID=blast.3.NC_001604.AY264775.1;Name=Enterobacteria phage T7 isolate K%2C complete genome;Target=NC_001604;accession=AY264775.1;blast_bitscore=65633;blast_evalue=0.0;blast_gapopen=2;blast_gaps=6;blast_length=37368;blast_mismatch=384;blast_nident=36978;blast_pident=98.956;blast_positive=36978;blast_ppos=98.96;blast_qend=39936;blast_qframe=1;blast_qlen=39937;blast_qstart=2572;blast_send=39092;blast_sframe=1;blast_slen=39093;blast_sstart=1728;description=Hit to 1728..39092 %281%29 of Enterobacteria phage T7 isolate K%2C complete genome;hit_titles=Enterobacteria phage T7 isolate K%2C complete genome;length=39937
+NC_001604	blast	match_part	2572	39936	.	.	.	Gap=M37365;ID=AY264775.1;Parent=blast.3.NC_001604.AY264775.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	2988	39936	0.0	.	.	ID=blast.4.NC_001604.AY264777.1;Name=Enterobacteria phage T7 isolate P%2C complete genome;Target=NC_001604;accession=AY264777.1;blast_bitscore=65377;blast_evalue=0.0;blast_gapopen=0;blast_gaps=0;blast_length=36949;blast_mismatch=280;blast_nident=36669;blast_pident=99.242;blast_positive=36669;blast_ppos=99.24;blast_qend=39936;blast_qframe=1;blast_qlen=39937;blast_qstart=2988;blast_send=39095;blast_sframe=1;blast_slen=39096;blast_sstart=2147;description=Hit to 2147..39095 %281%29 of Enterobacteria phage T7 isolate P%2C complete genome;hit_titles=Enterobacteria phage T7 isolate P%2C complete genome;length=39937
+NC_001604	blast	match_part	2988	39936	.	.	.	Gap=M36949;ID=AY264777.1;Parent=blast.4.NC_001604.AY264777.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	2988	39936	0.0	.	.	ID=blast.5.NC_001604.AY264778.1;Name=Enterobacteria phage T7 isolate P82%2C complete genome;Target=NC_001604;accession=AY264778.1;blast_bitscore=65241;blast_evalue=0.0;blast_gapopen=3;blast_gaps=14;blast_length=36949;blast_mismatch=295;blast_nident=36640;blast_pident=99.164;blast_positive=36640;blast_ppos=99.16;blast_qend=39936;blast_qframe=1;blast_qlen=39937;blast_qstart=2988;blast_send=39085;blast_sframe=1;blast_slen=39085;blast_sstart=2151;description=Hit to 2151..39085 %281%29 of Enterobacteria phage T7 isolate P82%2C complete genome;hit_titles=Enterobacteria phage T7 isolate P82%2C complete genome;length=39937
+NC_001604	blast	match_part	2988	19577	.	.	.	Gap=M16590;ID=AY264778.1;Parent=blast.5.NC_001604.AY264778.1
+NC_001604	blast	match_part	19590	39936	.	.	.	Gap=M20347;ID=AY264778.1;Parent=blast.5.NC_001604.AY264778.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	5847	39937	0.0	.	.	ID=blast.6.NC_001604.MG833025.1;Name=Mutant Enterobacteria phage T7 strain T7Del1revsplitRNAP%2C complete genome;Target=NC_001604;accession=MG833025.1;blast_bitscore=61479;blast_evalue=0.0;blast_gapopen=0;blast_gaps=0;blast_length=34091;blast_mismatch=0;blast_nident=34091;blast_pident=100.000;blast_positive=34091;blast_ppos=100.00;blast_qend=39937;blast_qframe=1;blast_qlen=39937;blast_qstart=5847;blast_send=38553;blast_sframe=1;blast_slen=38553;blast_sstart=4463;description=Hit to 4463..38553 %281%29 of Mutant Enterobacteria phage T7 strain T7Del1revsplitRNAP%2C complete genome;hit_titles=Mutant Enterobacteria phage T7 strain T7Del1revsplitRNAP%2C complete genome;length=39937
+NC_001604	blast	match_part	5847	39937	.	.	.	Gap=M34091;ID=MG833025.1;Parent=blast.6.NC_001604.MG833025.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	17486	39932	0.0	.	.	ID=blast.7.NC_001604.AY264776.1;Name=Enterobacteria phage T7 isolate K115%2C complete genome;Target=NC_001604;accession=AY264776.1;blast_bitscore=39528;blast_evalue=0.0;blast_gapopen=0;blast_gaps=0;blast_length=22447;blast_mismatch=213;blast_nident=22234;blast_pident=99.051;blast_positive=22234;blast_ppos=99.05;blast_qend=39932;blast_qframe=1;blast_qlen=39937;blast_qstart=17486;blast_send=37664;blast_sframe=1;blast_slen=37664;blast_sstart=15218;description=Hit to 15218..37664 %281%29 of Enterobacteria phage T7 isolate K115%2C complete genome;hit_titles=Enterobacteria phage T7 isolate K115%2C complete genome;length=39937
+NC_001604	blast	match_part	17486	39932	.	.	.	Gap=M22447;ID=AY264776.1;Parent=blast.7.NC_001604.AY264776.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	3085	16855	0.0	.	.	ID=blast.8.NC_001604.AY264776.1;Name=Enterobacteria phage T7 isolate K115%2C complete genome;Target=NC_001604;accession=AY264776.1;blast_bitscore=23994;blast_evalue=0.0;blast_gapopen=3;blast_gaps=7;blast_length=13774;blast_mismatch=180;blast_nident=13587;blast_pident=98.642;blast_positive=13587;blast_ppos=98.64;blast_qend=16855;blast_qframe=1;blast_qlen=39937;blast_qstart=3085;blast_send=15240;blast_sframe=1;blast_slen=37664;blast_sstart=1471;description=Hit to 1471..15240 %281%29 of Enterobacteria phage T7 isolate K115%2C complete genome;hit_titles=Enterobacteria phage T7 isolate K115%2C complete genome;length=39937
+NC_001604	blast	match_part	3085	16855	.	.	.	Gap=M13771;ID=AY264776.1;Parent=blast.8.NC_001604.AY264776.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	16834	39937	0.0	.	.	ID=blast.9.NC_001604.JQ965703.1;Name=Yersinia phage YpsP-G%2C complete sequence;Target=NC_001604;accession=JQ965703.1;blast_bitscore=35561;blast_evalue=0.0;blast_gapopen=26;blast_gaps=94;blast_length=23138;blast_mismatch=1267;blast_nident=21777;blast_pident=94.118;blast_positive=21777;blast_ppos=94.12;blast_qend=39937;blast_qframe=1;blast_qlen=39937;blast_qstart=16834;blast_send=37608;blast_sframe=1;blast_slen=38288;blast_sstart=14531;description=Hit to 14531..37608 %281%29 of Yersinia phage YpsP-G%2C complete sequence;hit_titles=Yersinia phage YpsP-G%2C complete sequence;length=39937
+NC_001604	blast	match_part	16834	19554	.	.	.	Gap=M2721;ID=JQ965703.1;Parent=blast.9.NC_001604.JQ965703.1
+NC_001604	blast	match_part	19567	39897	.	.	.	Gap=M20331;ID=JQ965703.1;Parent=blast.9.NC_001604.JQ965703.1
+NC_001604	blast	match_part	39911	39937	.	.	.	Gap=M27;ID=JQ965703.1;Parent=blast.9.NC_001604.JQ965703.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	17112	39937	0.0	.	.	ID=blast.10.NC_001604.JQ965701.1;Name=Yersinia phage YpP-R%2C complete sequence;Target=NC_001604;accession=JQ965701.1;blast_bitscore=35180;blast_evalue=0.0;blast_gapopen=24;blast_gaps=92;blast_length=22857;blast_mismatch=1243;blast_nident=21522;blast_pident=94.159;blast_positive=21522;blast_ppos=94.16;blast_qend=39937;blast_qframe=1;blast_qlen=39937;blast_qstart=17112;blast_send=38069;blast_sframe=1;blast_slen=38284;blast_sstart=15274;description=Hit to 15274..38069 %281%29 of Yersinia phage YpP-R%2C complete sequence;hit_titles=Yersinia phage YpP-R%2C complete sequence;length=39937
+NC_001604	blast	match_part	17112	19554	.	.	.	Gap=M2443;ID=JQ965701.1;Parent=blast.10.NC_001604.JQ965701.1
+NC_001604	blast	match_part	19567	39897	.	.	.	Gap=M20331;ID=JQ965701.1;Parent=blast.10.NC_001604.JQ965701.1
+NC_001604	blast	match_part	39911	39937	.	.	.	Gap=M27;ID=JQ965701.1;Parent=blast.10.NC_001604.JQ965701.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	17112	39937	0.0	.	.	ID=blast.11.NC_001604.JQ965700.1;Name=Yersinia phage YpP-Y%2C complete sequence;Target=NC_001604;accession=JQ965700.1;blast_bitscore=35013;blast_evalue=0.0;blast_gapopen=25;blast_gaps=91;blast_length=22857;blast_mismatch=1281;blast_nident=21485;blast_pident=93.997;blast_positive=21485;blast_ppos=94.00;blast_qend=39937;blast_qframe=1;blast_qlen=39937;blast_qstart=17112;blast_send=34263;blast_sframe=1;blast_slen=37714;blast_sstart=11467;description=Hit to 11467..34263 %281%29 of Yersinia phage YpP-Y%2C complete sequence;hit_titles=Yersinia phage YpP-Y%2C complete sequence;length=39937
+NC_001604	blast	match_part	17112	19554	.	.	.	Gap=M2443;ID=JQ965700.1;Parent=blast.11.NC_001604.JQ965700.1
+NC_001604	blast	match_part	19567	39897	.	.	.	Gap=M20331;ID=JQ965700.1;Parent=blast.11.NC_001604.JQ965700.1
+NC_001604	blast	match_part	39911	39937	.	.	.	Gap=M27;ID=JQ965700.1;Parent=blast.11.NC_001604.JQ965700.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	17112	39936	0.0	.	.	ID=blast.12.NC_001604.JQ957925.1;Name=Yersinia phage Y%2C complete genome;Target=NC_001604;accession=JQ957925.1;blast_bitscore=34960;blast_evalue=0.0;blast_gapopen=27;blast_gaps=142;blast_length=22862;blast_mismatch=1250;blast_nident=21470;blast_pident=93.911;blast_positive=21470;blast_ppos=93.91;blast_qend=39936;blast_qframe=1;blast_qlen=39937;blast_qstart=17112;blast_send=37179;blast_sframe=1;blast_slen=37432;blast_sstart=14423;description=Hit to 14423..37179 %281%29 of Yersinia phage Y%2C complete genome;hit_titles=Yersinia phage Y%2C complete genome;length=39937
+NC_001604	blast	match_part	17112	19554	.	.	.	Gap=M2443;ID=JQ957925.1;Parent=blast.12.NC_001604.JQ957925.1
+NC_001604	blast	match_part	19588	19669	.	.	.	Gap=M82;ID=JQ957925.1;Parent=blast.12.NC_001604.JQ957925.1
+NC_001604	blast	match_part	19688	39897	.	.	.	Gap=M20210;ID=JQ957925.1;Parent=blast.12.NC_001604.JQ957925.1
+NC_001604	blast	match_part	39911	39936	.	.	.	Gap=M26;ID=JQ957925.1;Parent=blast.12.NC_001604.JQ957925.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	17112	39936	0.0	.	.	ID=blast.13.NC_001604.AY247822.1;Name=Yersinia pestis phage phiA1122%2C complete genome;Target=NC_001604;accession=AY247822.1;blast_bitscore=34960;blast_evalue=0.0;blast_gapopen=27;blast_gaps=142;blast_length=22862;blast_mismatch=1250;blast_nident=21470;blast_pident=93.911;blast_positive=21470;blast_ppos=93.91;blast_qend=39936;blast_qframe=1;blast_qlen=39937;blast_qstart=17112;blast_send=37553;blast_sframe=1;blast_slen=37555;blast_sstart=14797;description=Hit to 14797..37553 %281%29 of Yersinia pestis phage phiA1122%2C complete genome;hit_titles=Yersinia pestis phage phiA1122%2C complete genome;length=39937
+NC_001604	blast	match_part	17112	19554	.	.	.	Gap=M2443;ID=AY247822.1;Parent=blast.13.NC_001604.AY247822.1
+NC_001604	blast	match_part	19588	19669	.	.	.	Gap=M82;ID=AY247822.1;Parent=blast.13.NC_001604.AY247822.1
+NC_001604	blast	match_part	19688	39897	.	.	.	Gap=M20210;ID=AY247822.1;Parent=blast.13.NC_001604.AY247822.1
+NC_001604	blast	match_part	39911	39936	.	.	.	Gap=M26;ID=AY247822.1;Parent=blast.13.NC_001604.AY247822.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	17112	38858	0.0	.	.	ID=blast.14.NC_001604.JX000007.1;Name=Yersinia phage R%2C complete genome;Target=NC_001604;accession=JX000007.1;blast_bitscore=33188;blast_evalue=0.0;blast_gapopen=32;blast_gaps=137;blast_length=21787;blast_mismatch=1212;blast_nident=20438;blast_pident=93.808;blast_positive=20438;blast_ppos=93.81;blast_qend=38858;blast_qframe=1;blast_qlen=39937;blast_qstart=17112;blast_send=36111;blast_sframe=1;blast_slen=37260;blast_sstart=14422;description=Hit to 14422..36111 %281%29 of Yersinia phage R%2C complete genome;hit_titles=Yersinia phage R%2C complete genome;length=39937
+NC_001604	blast	match_part	17112	19554	.	.	.	Gap=M2443;ID=JX000007.1;Parent=blast.14.NC_001604.JX000007.1
+NC_001604	blast	match_part	19588	19632	.	.	.	Gap=M45;ID=JX000007.1;Parent=blast.14.NC_001604.JX000007.1
+NC_001604	blast	match_part	19643	19669	.	.	.	Gap=M27;ID=JX000007.1;Parent=blast.14.NC_001604.JX000007.1
+NC_001604	blast	match_part	19688	38858	.	.	.	Gap=M19171;ID=JX000007.1;Parent=blast.14.NC_001604.JX000007.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20217	39136	0.0	.	.	ID=blast.15.NC_001604.EU734174.1;Name=Enterobacteria phage 13a%2C complete genome;Target=NC_001604;accession=EU734174.1;blast_bitscore=30065;blast_evalue=0.0;blast_gapopen=14;blast_gaps=37;blast_length=18945;blast_mismatch=866;blast_nident=18042;blast_pident=95.234;blast_positive=18042;blast_ppos=95.23;blast_qend=39136;blast_qframe=1;blast_qlen=39937;blast_qstart=20217;blast_send=37614;blast_sframe=1;blast_slen=38841;blast_sstart=18682;description=Hit to 18682..37614 %281%29 of Enterobacteria phage 13a%2C complete genome;hit_titles=Enterobacteria phage 13a%2C complete genome;length=39937
+NC_001604	blast	match_part	20217	39136	.	.	.	Gap=M18920;ID=EU734174.1;Parent=blast.15.NC_001604.EU734174.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	16834	35487	0.0	.	.	ID=blast.16.NC_001604.MH717100.1;Name=Escherichia phage N13%2C complete genome;Target=NC_001604;accession=MH717100.1;blast_bitscore=26115;blast_evalue=0.0;blast_gapopen=40;blast_gaps=97;blast_length=18710;blast_mismatch=1574;blast_nident=17039;blast_pident=91.069;blast_positive=17039;blast_ppos=91.07;blast_qend=35487;blast_qframe=1;blast_qlen=39937;blast_qstart=16834;blast_send=34446;blast_sframe=1;blast_slen=39666;blast_sstart=15778;description=Hit to 15778..34446 %281%29 of Escherichia phage N13%2C complete genome;hit_titles=Escherichia phage N13%2C complete genome;length=39937
+NC_001604	blast	match_part	16834	35487	.	.	.	Gap=M18654;ID=MH717100.1;Parent=blast.16.NC_001604.MH717100.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	16834	35184	0.0	.	.	ID=blast.17.NC_001604.MG832642.1;Name=Escherichia phage HZ2R8%2C complete genome;Target=NC_001604;accession=MG832642.1;blast_bitscore=23611;blast_evalue=0.0;blast_gapopen=48;blast_gaps=108;blast_length=18411;blast_mismatch=1993;blast_nident=16310;blast_pident=88.588;blast_positive=16310;blast_ppos=88.59;blast_qend=35184;blast_qframe=1;blast_qlen=39937;blast_qstart=16834;blast_send=38159;blast_sframe=1;blast_slen=39482;blast_sstart=19797;description=Hit to 19797..38159 %281%29 of Escherichia phage HZ2R8%2C complete genome;hit_titles=Escherichia phage HZ2R8%2C complete genome;length=39937
+NC_001604	blast	match_part	16834	35184	.	.	.	Gap=M18351;ID=MG832642.1;Parent=blast.17.NC_001604.MG832642.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	35042	0.0	.	.	ID=blast.18.NC_001604.MN026740.1;Name=Salmonella phage C2%2C complete genome;Target=NC_001604;accession=MN026740.1;blast_bitscore=22051;blast_evalue=0.0;blast_gapopen=17;blast_gaps=38;blast_length=14823;blast_mismatch=991;blast_nident=13794;blast_pident=93.058;blast_positive=13794;blast_ppos=93.06;blast_qend=35042;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=38554;blast_sframe=1;blast_slen=38554;blast_sstart=23750;description=Hit to 23750..38554 %281%29 of Salmonella phage C2%2C complete genome;hit_titles=Salmonella phage C2%2C complete genome;length=39937
+NC_001604	blast	match_part	20240	35042	.	.	.	Gap=M14803;ID=MN026740.1;Parent=blast.18.NC_001604.MN026740.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	35182	0.0	.	.	ID=blast.19.NC_001604.MH382198.1;Name=Salmonella phage 3A_8767%2C complete genome;Target=NC_001604;accession=MH382198.1;blast_bitscore=22043;blast_evalue=0.0;blast_gapopen=5;blast_gaps=13;blast_length=14949;blast_mismatch=1075;blast_nident=13861;blast_pident=92.722;blast_positive=13861;blast_ppos=92.72;blast_qend=35182;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=38691;blast_sframe=1;blast_slen=38821;blast_sstart=23750;description=Hit to 23750..38691 %281%29 of Salmonella phage 3A_8767%2C complete genome;hit_titles=Salmonella phage 3A_8767%2C complete genome;length=39937
+NC_001604	blast	match_part	20240	35182	.	.	.	Gap=M14943;ID=MH382198.1;Parent=blast.19.NC_001604.MH382198.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	35075	0.0	.	.	ID=blast.20.NC_001604.MH779619.1;Name=Enterobacteria phage vB_EcoP_IME390%2C complete genome;Target=NC_001604;accession=MH779619.1;blast_bitscore=21832;blast_evalue=0.0;blast_gapopen=7;blast_gaps=15;blast_length=14841;blast_mismatch=1075;blast_nident=13751;blast_pident=92.655;blast_positive=13751;blast_ppos=92.66;blast_qend=35075;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=32870;blast_sframe=1;blast_slen=38396;blast_sstart=18040;description=Hit to 18040..32870 %281%29 of Enterobacteria phage vB_EcoP_IME390%2C complete genome;hit_titles=Enterobacteria phage vB_EcoP_IME390%2C complete genome;length=39937
+NC_001604	blast	match_part	20240	35075	.	.	.	Gap=M14836;ID=MH779619.1;Parent=blast.20.NC_001604.MH779619.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	35043	0.0	.	.	ID=blast.21.NC_001604.KM242061.1;Name=Escherichia phage CICC 80001%2C complete genome;Target=NC_001604;accession=KM242061.1;blast_bitscore=21808;blast_evalue=0.0;blast_gapopen=5;blast_gaps=11;blast_length=14807;blast_mismatch=1072;blast_nident=13724;blast_pident=92.686;blast_positive=13724;blast_ppos=92.69;blast_qend=35043;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=38657;blast_sframe=1;blast_slen=38810;blast_sstart=23859;description=Hit to 23859..38657 %281%29 of Escherichia phage CICC 80001%2C complete genome;hit_titles=Escherichia phage CICC 80001%2C complete genome;length=39937
+NC_001604	blast	match_part	20240	35043	.	.	.	Gap=M14804;ID=KM242061.1;Parent=blast.21.NC_001604.KM242061.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	1	12100	0.0	.	.	ID=blast.22.NC_001604.V01127.1;Name=Left end of bacteriophage T7 genome. Includes the reading frames of the genes 0.3%2C 0.4%2C 0.5%2C 0.6%2C 0.65%2C 0.7%2C 1%2C 1.1%2C 1.2%2C 1.3 %28early proteins%29 and 1.4%2C 1.5%2C 1.6%2C 1.7%2C 2%2C 2.5%2C 2.8%2C 3%2C 3.5%2C 4A and 4B %28late proteins%29. Gene 1 is the T7 RNA polymerase;Target=NC_001604;accession=V01127.1;blast_bitscore=21771;blast_evalue=0.0;blast_gapopen=2;blast_gaps=2;blast_length=12101;blast_mismatch=8;blast_nident=12091;blast_pident=99.917;blast_positive=12091;blast_ppos=99.92;blast_qend=12100;blast_qframe=1;blast_qlen=39937;blast_qstart=1;blast_send=12100;blast_sframe=1;blast_slen=12100;blast_sstart=1;description=Hit to 1..12100 %281%29 of Left end of bacteriophage T7 genome. Includes the reading frames of the genes 0.3%2C 0.4%2C 0.5%2C 0.6%2C 0.65%2C 0.7%2C 1%2C 1.1%2C 1.2%2C 1.3 %28early proteins%29 and 1.4%2C 1.5%2C 1.6%2C 1.7%2C 2%2C 2.5%2C 2.8%2C 3%2C 3.5%2C 4A and 4B %28late proteins%29. Gene 1 is the T7 RNA polymerase;hit_titles=Left end of bacteriophage T7 genome. Includes the reading frames of the genes 0.3%2C 0.4%2C 0.5%2C 0.6%2C 0.65%2C 0.7%2C 1%2C 1.1%2C 1.2%2C 1.3 %28early proteins%29 and 1.4%2C 1.5%2C 1.6%2C 1.7%2C 2%2C 2.5%2C 2.8%2C 3%2C 3.5%2C 4A and 4B %28late proteins%29. Gene 1 is the T7 RNA polymerase;length=39937
+NC_001604	blast	match_part	1	12100	.	.	.	Gap=M12100;ID=V01127.1;Parent=blast.22.NC_001604.V01127.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	35487	0.0	.	.	ID=blast.23.NC_001604.MH717098.1;Name=Escherichia phage N30%2C complete genome;Target=NC_001604;accession=MH717098.1;blast_bitscore=21653;blast_evalue=0.0;blast_gapopen=20;blast_gaps=51;blast_length=15276;blast_mismatch=1247;blast_nident=13978;blast_pident=91.503;blast_positive=13978;blast_ppos=91.50;blast_qend=35487;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=34045;blast_sframe=1;blast_slen=39266;blast_sstart=18793;description=Hit to 18793..34045 %281%29 of Escherichia phage N30%2C complete genome;hit_titles=Escherichia phage N30%2C complete genome;length=39937
+NC_001604	blast	match_part	20240	35487	.	.	.	Gap=M15248;ID=MH717098.1;Parent=blast.23.NC_001604.MH717098.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	35474	0.0	.	.	ID=blast.24.NC_001604.KU927499.1;Name=Escherichia phage 64795_ec1%2C complete genome;Target=NC_001604;accession=KU927499.1;blast_bitscore=21366;blast_evalue=0.0;blast_gapopen=16;blast_gaps=47;blast_length=15249;blast_mismatch=1307;blast_nident=13895;blast_pident=91.121;blast_positive=13895;blast_ppos=91.12;blast_qend=35474;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=34653;blast_sframe=1;blast_slen=39235;blast_sstart=19438;description=Hit to 19438..34653 %281%29 of Escherichia phage 64795_ec1%2C complete genome;hit_titles=Escherichia phage 64795_ec1%2C complete genome;length=39937
+NC_001604	blast	match_part	20240	24119	.	.	.	Gap=M3880;ID=KU927499.1;Parent=blast.24.NC_001604.KU927499.1
+NC_001604	blast	match_part	24139	35474	.	.	.	Gap=M11336;ID=KU927499.1;Parent=blast.24.NC_001604.KU927499.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	16834	35487	0.0	.	.	ID=blast.25.NC_001604.MH717099.1;Name=Escherichia phage C5%2C complete genome;Target=NC_001604;accession=MH717099.1;blast_bitscore=21105;blast_evalue=0.0;blast_gapopen=73;blast_gaps=167;blast_length=18744;blast_mismatch=2610;blast_nident=15967;blast_pident=85.185;blast_positive=15967;blast_ppos=85.18;blast_qend=35487;blast_qframe=1;blast_qlen=39937;blast_qstart=16834;blast_send=34776;blast_sframe=1;blast_slen=39551;blast_sstart=16110;description=Hit to 16110..34776 %281%29 of Escherichia phage C5%2C complete genome;hit_titles=Escherichia phage C5%2C complete genome;length=39937
+NC_001604	blast	match_part	16834	35487	.	.	.	Gap=M18654;ID=MH717099.1;Parent=blast.25.NC_001604.MH717099.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	32730	0.0	.	.	ID=blast.26.NC_001604.MK310182.1;Name=Phage NC-A%2C complete genome;Target=NC_001604;accession=MK310182.1;blast_bitscore=17412;blast_evalue=0.0;blast_gapopen=11;blast_gaps=22;blast_length=12499;blast_mismatch=1109;blast_nident=11368;blast_pident=90.951;blast_positive=11368;blast_ppos=90.95;blast_qend=32730;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=31627;blast_sframe=1;blast_slen=39536;blast_sstart=19143;description=Hit to 19143..31627 %281%29 of Phage NC-A%2C complete genome;hit_titles=Phage NC-A%2C complete genome;length=39937
+NC_001604	blast	match_part	20240	32730	.	.	.	Gap=M12491;ID=MK310182.1;Parent=blast.26.NC_001604.MK310182.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	35040	0.0	.	.	ID=blast.27.NC_001604.FR667955.1;Name=Salmonella phage Vi06 complete sequence;Target=NC_001604;accession=FR667955.1;blast_bitscore=16287;blast_evalue=0.0;blast_gapopen=50;blast_gaps=221;blast_length=14913;blast_mismatch=2126;blast_nident=12566;blast_pident=84.262;blast_positive=12566;blast_ppos=84.26;blast_qend=35040;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=31910;blast_sframe=1;blast_slen=38368;blast_sstart=17107;description=Hit to 17107..31910 %281%29 of Salmonella phage Vi06 complete sequence;hit_titles=Salmonella phage Vi06 complete sequence;length=39937
+NC_001604	blast	match_part	20240	21900	.	.	.	Gap=M1661;ID=FR667955.1;Parent=blast.27.NC_001604.FR667955.1
+NC_001604	blast	match_part	21941	24133	.	.	.	Gap=M2193;ID=FR667955.1;Parent=blast.27.NC_001604.FR667955.1
+NC_001604	blast	match_part	24149	35040	.	.	.	Gap=M10892;ID=FR667955.1;Parent=blast.27.NC_001604.FR667955.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	22951	35486	0.0	.	.	ID=blast.28.NC_001604.MN098329.1;Name=Serratia phage Pila%2C complete genome;Target=NC_001604;accession=MN098329.1;blast_bitscore=15831;blast_evalue=0.0;blast_gapopen=28;blast_gaps=74;blast_length=12571;blast_mismatch=1430;blast_nident=11067;blast_pident=88.036;blast_positive=11067;blast_ppos=88.04;blast_qend=35486;blast_qframe=1;blast_qlen=39937;blast_qstart=22951;blast_send=33990;blast_sframe=1;blast_slen=38678;blast_sstart=21459;description=Hit to 21459..33990 %281%29 of Serratia phage Pila%2C complete genome;hit_titles=Serratia phage Pila%2C complete genome;length=39937
+NC_001604	blast	match_part	22951	35486	.	.	.	Gap=M12536;ID=MN098329.1;Parent=blast.28.NC_001604.MN098329.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	35075	0.0	.	.	ID=blast.29.NC_001604.MG488277.1;Name=Escherichia phage EG1%2C complete genome;Target=NC_001604;accession=MG488277.1;blast_bitscore=15315;blast_evalue=0.0;blast_gapopen=106;blast_gaps=223;blast_length=14963;blast_mismatch=2304;blast_nident=12436;blast_pident=83.112;blast_positive=12436;blast_ppos=83.11;blast_qend=35075;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=34750;blast_sframe=1;blast_slen=39919;blast_sstart=19884;description=Hit to 19884..34750 %281%29 of Escherichia phage EG1%2C complete genome;hit_titles=Escherichia phage EG1%2C complete genome;length=39937
+NC_001604	blast	match_part	20240	35075	.	.	.	Gap=M14836;ID=MG488277.1;Parent=blast.29.NC_001604.MG488277.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	27539	39641	0.0	.	.	ID=blast.30.NC_001604.KC960671.1;Name=Enterobacteria phage T3%2C complete genome;Target=NC_001604;accession=KC960671.1;blast_bitscore=14982;blast_evalue=0.0;blast_gapopen=60;blast_gaps=130;blast_length=12165;blast_mismatch=1379;blast_nident=10656;blast_pident=87.596;blast_positive=10656;blast_ppos=87.60;blast_qend=39641;blast_qframe=1;blast_qlen=39937;blast_qstart=27539;blast_send=37848;blast_sframe=1;blast_slen=38209;blast_sstart=25752;description=Hit to 25752..37848 %281%29 of Enterobacteria phage T3%2C complete genome;hit_titles=Enterobacteria phage T3%2C complete genome;length=39937
+NC_001604	blast	match_part	27539	39261	.	.	.	Gap=M11723;ID=KC960671.1;Parent=blast.30.NC_001604.KC960671.1
+NC_001604	blast	match_part	39272	39641	.	.	.	Gap=M370;ID=KC960671.1;Parent=blast.30.NC_001604.KC960671.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	27539	39641	0.0	.	.	ID=blast.31.NC_001604.JX421753.1;Name=Enterobacteria phage T7M%2C complete genome;Target=NC_001604;accession=JX421753.1;blast_bitscore=14978;blast_evalue=0.0;blast_gapopen=60;blast_gaps=130;blast_length=12165;blast_mismatch=1380;blast_nident=10655;blast_pident=87.587;blast_positive=10655;blast_ppos=87.59;blast_qend=39641;blast_qframe=1;blast_qlen=39937;blast_qstart=27539;blast_send=37841;blast_sframe=1;blast_slen=38202;blast_sstart=25745;description=Hit to 25745..37841 %281%29 of Enterobacteria phage T7M%2C complete genome;hit_titles=Enterobacteria phage T7M%2C complete genome;length=39937
+NC_001604	blast	match_part	27539	39261	.	.	.	Gap=M11723;ID=JX421753.1;Parent=blast.31.NC_001604.JX421753.1
+NC_001604	blast	match_part	39272	39641	.	.	.	Gap=M370;ID=JX421753.1;Parent=blast.31.NC_001604.JX421753.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	27539	39641	0.0	.	.	ID=blast.32.NC_001604.AJ318471.1;Name=Bacteriophage T3 complete genome%2C strain Luria;Target=NC_001604;accession=AJ318471.1;blast_bitscore=14978;blast_evalue=0.0;blast_gapopen=60;blast_gaps=130;blast_length=12165;blast_mismatch=1380;blast_nident=10655;blast_pident=87.587;blast_positive=10655;blast_ppos=87.59;blast_qend=39641;blast_qframe=1;blast_qlen=39937;blast_qstart=27539;blast_send=37846;blast_sframe=1;blast_slen=38208;blast_sstart=25750;description=Hit to 25750..37846 %281%29 of Bacteriophage T3 complete genome%2C strain Luria;hit_titles=Bacteriophage T3 complete genome%2C strain Luria;length=39937
+NC_001604	blast	match_part	27539	39261	.	.	.	Gap=M11723;ID=AJ318471.1;Parent=blast.32.NC_001604.AJ318471.1
+NC_001604	blast	match_part	39272	39641	.	.	.	Gap=M370;ID=AJ318471.1;Parent=blast.32.NC_001604.AJ318471.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	1	8316	0.0	.	.	ID=blast.33.NC_001604.DQ100054.1;Name=Bacteriophage T7.1 section alpha sequence;Target=NC_001604;accession=DQ100054.1;blast_bitscore=13880;blast_evalue=0.0;blast_gapopen=25;blast_gaps=468;blast_length=8767;blast_mismatch=29;blast_nident=8270;blast_pident=94.331;blast_positive=8270;blast_ppos=94.33;blast_qend=8316;blast_qframe=1;blast_qlen=39937;blast_qstart=1;blast_send=8750;blast_sframe=1;blast_slen=8750;blast_sstart=1;description=Hit to 1..8750 %281%29 of Bacteriophage T7.1 section alpha sequence;hit_titles=Bacteriophage T7.1 section alpha sequence;length=39937
+NC_001604	blast	match_part	1	1983	.	.	.	Gap=M1983;ID=DQ100054.1;Parent=blast.33.NC_001604.DQ100054.1
+NC_001604	blast	match_part	1999	8316	.	.	.	Gap=M6318;ID=DQ100054.1;Parent=blast.33.NC_001604.DQ100054.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	29826	0.0	.	.	ID=blast.34.NC_001604.MK542821.1;Name=Escherichia phage HZP2%2C partial genome;Target=NC_001604;accession=MK542821.1;blast_bitscore=11399;blast_evalue=0.0;blast_gapopen=27;blast_gaps=67;blast_length=9617;blast_mismatch=1238;blast_nident=8312;blast_pident=86.430;blast_positive=8312;blast_ppos=86.43;blast_qend=29826;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=32441;blast_sframe=1;blast_slen=32448;blast_sstart=22862;description=Hit to 22862..32441 %281%29 of Escherichia phage HZP2%2C partial genome;hit_titles=Escherichia phage HZP2%2C partial genome;length=39937
+NC_001604	blast	match_part	20240	28259	.	.	.	Gap=M8020;ID=MK542821.1;Parent=blast.34.NC_001604.MK542821.1
+NC_001604	blast	match_part	28272	29826	.	.	.	Gap=M1555;ID=MK542821.1;Parent=blast.34.NC_001604.MK542821.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	35170	0.0	.	.	ID=blast.35.NC_001604.JX872508.1;Name=Stenotrophomonas phage IME15%2C complete genome;Target=NC_001604;accession=JX872508.1;blast_bitscore=10589;blast_evalue=0.0;blast_gapopen=100;blast_gaps=258;blast_length=15040;blast_mismatch=3361;blast_nident=11421;blast_pident=75.938;blast_positive=11421;blast_ppos=75.94;blast_qend=35170;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=33596;blast_sframe=1;blast_slen=38513;blast_sstart=18706;description=Hit to 18706..33596 %281%29 of Stenotrophomonas phage IME15%2C complete genome;hit_titles=Stenotrophomonas phage IME15%2C complete genome;length=39937
+NC_001604	blast	match_part	20240	21875	.	.	.	Gap=M1636;ID=JX872508.1;Parent=blast.35.NC_001604.JX872508.1
+NC_001604	blast	match_part	21895	21897	.	.	.	Gap=M3;ID=JX872508.1;Parent=blast.35.NC_001604.JX872508.1
+NC_001604	blast	match_part	21912	24820	.	.	.	Gap=M2909;ID=JX872508.1;Parent=blast.35.NC_001604.JX872508.1
+NC_001604	blast	match_part	24832	35170	.	.	.	Gap=M10339;ID=JX872508.1;Parent=blast.35.NC_001604.JX872508.1
+##gff-version 3
+##sequence-region NC_001604 1 4
+NC_001604	blast	match	20240	35075	0.0	.	.	ID=blast.36.NC_001604.MG966531.1;Name=Escherichia phage Ebrios%2C complete genome;Target=NC_001604;accession=MG966531.1;blast_bitscore=10485;blast_evalue=0.0;blast_gapopen=109;blast_gaps=259;blast_length=14944;blast_mismatch=3336;blast_nident=11349;blast_pident=75.944;blast_positive=11349;blast_ppos=75.94;blast_qend=35075;blast_qframe=1;blast_qlen=39937;blast_qstart=20240;blast_send=34544;blast_sframe=1;blast_slen=39752;blast_sstart=19752;description=Hit to 19752..34544 %281%29 of Escherichia phage Ebrios%2C complete genome;hit_titles=Escherichia phage Ebrios%2C complete genome;length=39937
+NC_001604	blast	match_part	20240	21875	.	.	.	Gap=M1636;ID=MG966531.1;Parent=blast.36.NC_001604.MG966531.1
+NC_001604	blast	match_part	21895	21897	.	.	.	Gap=M3;ID=MG966531.1;Parent=blast.36.NC_001604.MG966531.1
+NC_001604	blast	match_part	21912	24820	.	.	.	Gap=M2909;ID=MG966531.1;Parent=blast.36.NC_001604.MG966531.1
+NC_001604	blast	match_part	24832	35075	.	.	.	Gap=M10244;ID=MG966531.1;Parent=blast.36.NC_001604.MG966531.1

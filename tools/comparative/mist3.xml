@@ -5,6 +5,12 @@
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
 	</macros>
+	<expand macro="requirements">
+		<requirement type="package" version="2.7">python</requirement>
+		<requirement type="package" version="8.0.192">openjdk</requirement>
+		<requirement type="package" version="7.0.8_68">imagemagick</requirement>
+		<requirement type="package" version="9.18">ghostscript</requirement>
+	</expand>
 	<command detect_errors="aggressive">
 $__tool_directory__/mist3.py
 #set repeat_var_1 = '" "'.join([ str($var) for $var in $fasta_files ])
@@ -42,6 +48,21 @@ $__tool_directory__/mist3.py
 	<outputs>
 		<data format="html" name="output" />
 	</outputs>
+	<tests>
+		<test>
+			<param name="fasta_files" value="mist3_in.fasta"/>
+			<param name="plot_type" value="complete"/>
+			<param name="zoom" value="100"/>
+			<param name="window" value="20"/>
+			<param name="matrix" value="edna"/>
+			<output name="output" ftype="html">
+				<assert_contents>
+					<has_text text="Mist Results"/>
+					<has_text text="Each section of mist output is now clickable to view a higher resolution version of that subsection"/>
+				</assert_contents>
+			</output>
+		</test>
+	</tests>
 	<help>
 Multiple Interrlated Sequence doTplotter
 ========================================
@@ -73,7 +94,6 @@ considered a single pixel in the output image. For a 1 Mbp genome comparison
 (say 5 x 200-kb phages), this would result in a 20,000 pixel image.
 
 </help>
-	<tests/>
 	<citations>
 		<expand macro="citation/gepard" />
 		<expand macro="citation/mijalisrasche" />

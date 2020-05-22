@@ -18,6 +18,11 @@ $__tool_directory__/blasttab_to_gapped_gff3.py
 		<data format="gff3" name="output"/>
 	</outputs>
 	<tests>
+          <test>
+            <param name="blast_tsv" value="T7_NT_BLAST_FILTERED.tabular" />
+            <param name="min_gap" value="10" />
+            <output name="output" file="T7_NT_TO_GFF.gff3" />
+          </test>
 	</tests>
 	<help><![CDATA[
 **What it does**

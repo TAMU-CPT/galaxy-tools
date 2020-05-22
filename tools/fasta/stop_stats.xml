@@ -17,6 +17,10 @@ python $__tool_directory__/stop_stats.py
 		<data format="tabular" name="output_table" label="Stop Codon Usage in ${sequences.name}"/>
 	</outputs>
 	<tests>
+                <test>
+			<param name="sequences" value="T7_EXT_CDS.fasta" />
+			<output name="output_table" file="T7_STOPS.tabular" />
+		</test>
 		<test>
 			<param name="sequences" value="miro.cds.fa" />
 			<output name="output_table" file="miro.stops.tab" />
