@@ -2,7 +2,6 @@
 <tool id="edu.tamu.cpt2.external.flags" name="FlaGs: " version="1.0.0">
   <description> Galaxy wrapper for Flanking Genomes</description>
   <macros>
-    <import>macros.xml</import>
     <import>cpt-macros.xml</import>
   </macros>
   <requirements>
