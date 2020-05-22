@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.external.flags" name="FlaGs: " version="1.0.0">
+  <description> Galaxy wrapper for Flanking Genomes</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <requirements>
+     <requirement type="package" version="3.5">python</requirement>
+     <requirement type="package">etetoolkit</requirement>
+     <requirement type="package">ete3</requirement>
+     <requirement type="package">ete_toolchain</requirement>
+     <requirement type="package">biocore</requirement>
+     <requirement type="package">hmmer</requirement>
+  </requirements>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/FlaGs_linux.py
+$inType $inFile
+#if $redundancy != "0"
+-r $redundancy
+#endif
+-e $eVal 
+-n $hmmerNum 
+-g $geneNum
+#if $tree.customize == "-t":
+-t
+-ts $tree.triSize
+-tf $tree.fontSize
+$tree.treeFirst
+#end if
+
+-o CPT_FlaGs
+#if $email.custom == "nonDef"
+-u $email.custEmail
+#else
+-u $__user_email__
+#endif
+-vb
+&&
+mv CPT_FlaGs* $__tool_directory__/FlaGs_Output
+&&
+tar -cvf tempTar $__tool_directory__/FlaGs_Output
+&&
+mv tempTar $blastDir
+]]></command>
+  <inputs>
+    <param name="inType" type="select" label="Choose Identifier List structure (See help text for examples): ">
+        <option value="-p" selected="true">Protein accession</option>
+        <option value="-a">Protein accession with Genome Assembly Identifier</option>
+    </param>
+    <param label="Number of identical genomes to search (Input A for all)" name="redundancy" type="text" value ="0"/>
+    <param label="E-Value minimum for Jackhmmer" name="eVal" type="float" size="15" value="0.000000001"/>
+    <param label="Number of Jackhmmer iterations" name="hmmerNum" type="integer" value="3"/>
+    <param label="Number of flanking genes to search for" name="geneNum" type="integer" value="4"/>    
+
+    <conditional name="email">
+      <param name="custom" type="boolean" label="Use email for NCBI Efetch other than your Galaxy login email" truevalue="nonDef" falsevalue=""/>
+      <when value="nonDef">
+        <param label="Email" name="custEmail" type="text" value=""/>    
+      </when>
+      <when value="">
+      </when>
+    </conditional>
+ 
+    <conditional name="tree">
+      <param name="customize" type="boolean" label="Output Phylogenic Tree " truevalue="-t" falsevalue=""/>
+      <when value="-t">
+        <param label="Triangle size" name="triSize" type="integer" value="12"/>
+        <param label="Font size" name="fontSize" type="integer" value="4"/>
+        <param label="Re-Base text output on tree diagram" name="treeFirst" type="boolean" truevalue="-to" falsevalue=""/>    
+      </when>
+      <when value="">
+      </when>
+    </conditional>   
+  <outputs>
+        <data format="tar" name="FlaGsDir" label="FlaGs Output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Help text from manual coming soon
+
+Blast Wrapper written by Criscione, Anthony, Center for Phage Technology, Texas A&M University, 2020
+     ]]></help>
+  <expand macro="citations">
+		<citation type="doi">10.1093/bioinformatics/btr039</citation>
+	</expand>
+</tool>
