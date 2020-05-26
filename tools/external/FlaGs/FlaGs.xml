@@ -26,7 +26,7 @@ $inType $inFile
 -ts $tree.triSize
 -tf $tree.fontSize
 $tree.treeFirst
-#end if
+#endif
 
 -o CPT_FlaGs
 #if $email.custom == "nonDef"
