@@ -50,7 +50,7 @@ python $__tool_directory__/cpt-efetch.py
                 <output_collection name="output" type="list">
                     <element name="NC_001416.1">
                         <assert_contents>
-                            <has_text_matching expression="lambda">
+                            <has_text_matching expression="lambda"/>
                         </assert_contents>
                     </element>
                 </output_collection>
