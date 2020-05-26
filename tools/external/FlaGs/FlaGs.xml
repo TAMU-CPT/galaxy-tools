@@ -17,7 +17,7 @@ python $__tool_directory__/FlaGs_linux.py
 $inType $inFile
 #if $redundancy != "0"
 -r $redundancy
-#endif
+#end if
 -e $eVal 
 -n $hmmerNum 
 -g $geneNum
@@ -26,14 +26,14 @@ $inType $inFile
 -ts $tree.triSize
 -tf $tree.fontSize
 $tree.treeFirst
-#endif
+#end if
 
 -o CPT_FlaGs
 #if $email.custom == "nonDef"
 -u $email.custEmail
 #else
 -u $__user_email__
-#endif
+#end if
 -vb
 &&
 mv CPT_FlaGs* $__tool_directory__/FlaGs_Output
