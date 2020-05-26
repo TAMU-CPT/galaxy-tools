@@ -36,9 +36,9 @@ python $__tool_directory__/cpt-efetch.py
             <param name="sleepy" type="integer" value="20" label="Amount to slow request to NCBI by; increase if errors occur"/>
         </inputs>
         <outputs>
-            <data name="output" format="fasta">
-                <discover_datasets pattern="__designation_and_ext__" ext="fasta" directory="results" visible="true" assign_primary_output="true"/>
-            </data>
+            <collection name="output" type="list" label="collection of efetch results">
+                <discover_datasets pattern="__designation_and_ext__" directory="results"/>
+            </collection>
         </outputs>
         <tests>
             <test>
@@ -47,9 +47,13 @@ python $__tool_directory__/cpt-efetch.py
                 <param name="db" value="nuccore"/>
                 <param name="ret_type" value="fasta"/>
                 <param name="ret_format" value="individual"/>
-                <output name="output">
-                    <discovered_dataset designation="__designation_and_ext__" ftype="fasta"/>
-                </output>
+                <output_collection name="output" type="list">
+                    <element name="NC_001416.1">
+                        <assert_contents>
+                            <has_text_matching expression="lambda"/>
+                        </assert_contents>
+                    </element>
+                </output_collection>
             </test>
         </tests>
     <help><![CDATA[
