@@ -140,7 +140,7 @@ def find_endolysins(rec_ipro, enzyme_domain_ids, enzyme_domain_names):
 
                             target = f.qualifiers["Target"][0]
                             target = target.split(" ")
-                            protein_name = target[0]
+                            protein_name = str(target[0]) + '**'
                             endo_rec_names += [protein_name]
 
         return endo_rec_names, endo_rec_domain_ids, rec_domain_name
@@ -168,11 +168,11 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
         # find names of proteins containing transmembrane domains
         tmhmm_protein_names = []
         for seq in rec_tmhmm:
-            tmhmm_protein_names += [seq.id]
+            tmhmm_protein_names += [str(seq.id) + '**']
 
         lgc_names = []
         for seq in rec_lgc:
-            lgc_names += [seq.id]
+            lgc_names += [str(seq.id) + '**']
 
         adjacent_endo = {}
         adjacent_lgc_to_endo = {}
@@ -201,13 +201,14 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                 # searches for synonyms and
                 if feat.type == "CDS":
                     feat_names = []
-                    feat_names.append(str(feat.id))
+                    feat_names.append(str(feat.id) + '**')
                     if "locus_tag" in feat.qualifiers:
-                        feat_names.append(str(feat.qualifiers["locus_tag"][0]))
+                        feat_names.append(str(feat.qualifiers["locus_tag"][0]) + '**')
                     if "protein_id" in feat.qualifiers:
-                        feat_names.append(str(feat.qualifiers["protein_id"][0]))
-                    if len(str(feat.qualifiers["Name"][0])) > 5:
-                        feat_names.append(str(feat.qualifiers["Name"][0]))
+                        feat_names.append(str(feat.qualifiers["protein_id"][0]) + '**')
+                    if "Name" in feat.qualifiers:
+                        if len(str(feat.qualifiers["Name"][0])) > 5:
+                            feat_names.append(str(feat.qualifiers["Name"][0]) + '**')
                     # print(str(feat_names))
                     # print(str(feat.qualifiers))
                     for i in range(len(feat_names)):
