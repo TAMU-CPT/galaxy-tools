@@ -40,7 +40,7 @@ mv CPT_FlaGs* $__tool_directory__/FlaGs_Output
 &&
 tar -cvf tempTar $__tool_directory__/FlaGs_Output
 &&
-mv tempTar $blastDir
+mv tempTar $FlaGsDir
 ]]></command>
   <inputs>
     <param name="inType" type="select" label="Choose Identifier List structure (See help text for examples): ">
