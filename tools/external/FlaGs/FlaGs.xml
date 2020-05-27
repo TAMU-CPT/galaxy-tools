@@ -6,10 +6,10 @@
   </macros>
   <requirements>
      <requirement type="package" version="3.5">python</requirement>
-     <requirement type="package">biopython</requirement>
+     <requirement type="package" version="1.76">biopython</requirement>
      <requirement type="package" version="2019.06.08">regex</requirement>
-     <requirement type="package">ete3</requirement>
-     <requirement type="package">hmmer</requirement>
+     <requirement type="package" version="3.1.1">ete3</requirement>
+     <requirement type="package" version="3.3">hmmer</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/FlaGs_linux.py
