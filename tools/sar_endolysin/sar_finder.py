@@ -19,7 +19,6 @@ class CheckSequence:
 
     def check_sizes(self,min,max):
         """ check the minimum and maximum peptide lengths """
-
         if self.size < min:
             print("too small")
         elif self.size > max:
@@ -30,24 +29,24 @@ class CheckSequence:
 
     def check_hydrophobicity(self):
         """ verifies the existence of a hydrophobic region within the sequence """
-
-        hydrophobic_residues = "AGSILVFYWM" # alternate "FIWLVMYCATGS"
+        hydrophobic_residues = "['FIWLVMYCATGS']"
         loc = 0
-        domain = ""
-        for num, aa in enumerate(self.seq):
-            print(str(num)+"\n++++++")
-            if aa in hydrophobic_residues:
-                if not loc:
-                    start = num
-                loc += 1
-                end = num + 1
-                domain = self.seq[start:end]
-                print(domain)
+        tmd_size = 15 # current implementation is to have the TMD span 15 residues
+        if self.size > 50:
+            seq = self.seq[0:50]
+        else:
+            seq = self.seq
+        for i in range(0,len(seq)-tmd_size,1):
+            check_seq = str(seq[i:loc+tmd_size])
+            print(f"original sequence: {seq}\ncheck sequence: {check_seq}")
+            if re.search((hydrophobic_residues+"{"+str(tmd_size)+"}"),check_seq):
+                print("hydrophobic region FOUND")
+                return True
             else:
-                print("other option happened")
-                loc = 0
-        
-    
+                print("did not find hydrophobic region")
+                loc += 1
+                continue
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SAR Finder")
@@ -60,7 +59,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    fa_dict = FASTA_parser(fa=args.fa).parse_and_dict_multifasta()
+    fa_dict = FASTA_parser(fa=args.fa).multifasta_dict()
 
     for protein_name, protein_data in fa_dict.items():
         sar = CheckSequence(protein_name, protein_data)
