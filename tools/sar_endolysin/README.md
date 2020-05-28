@@ -15,6 +15,8 @@
     * Min length check
     * Max length check (user dictated)
     * Hydrophobic residues (Ile, Leu, Val, Phe, Tyr, Trp, Met) except often rich in Gly, Ala, and/or Ser residues
+        * <s>Option 1: FIWLVMYAGS</s> Using option #2
+        * Option 2: FIWLVMYCATGS # add C and T
     * Lysines can be present in the hydrophobic stretch if within 3 residues of the domain boundary (lysine snorkeling)
     * Topology check
         * N term (net positive charge)
