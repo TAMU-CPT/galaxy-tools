@@ -3,13 +3,14 @@
 > output: multi fasta of positive candidates and a table summarizing the stats for each candidate with identifier, length of potential SAR, topology orientation, calculate %G and %A
 
 # Requirements
-* python 3.6
+* python 3.6+
 * biopython
 * pandas
 * numpy
 
 # Outline
 1. Read in input multi fasta
+    * multi fasta parsed by `biopython_parsing.py`
 2. Check SAR requirements
     * Min length check
     * Max length check (user dictated)
@@ -21,3 +22,6 @@
 3. Return candidates and multi fasta.
 4. Write statistics to output file in table format
     * identifier :: length of peptide :: topology orientation :: %G and %A :: likely more later
+
+# Testing
+* Mu (mu-proteins.fa) for a TP
