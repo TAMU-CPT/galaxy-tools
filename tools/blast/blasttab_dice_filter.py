@@ -44,7 +44,7 @@ def blasttsv2gff3(blasttsv, min_dice=50):
         #print(line)
         data = line.split("\t")
         #print(data)
-        print(str(float(data[14])) + ", " + str(float(data[22])) + ", " + str(float(data[23])))
+        #print(str(float(data[14])) + ", " + str(float(data[22])) + ", " + str(float(data[23])))
         dice = 2 * float(data[14]) / (float(data[22]) + float(data[23]))
         #print(dice)
         
