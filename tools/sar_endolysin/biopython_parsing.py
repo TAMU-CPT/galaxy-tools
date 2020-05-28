@@ -9,7 +9,7 @@ class FASTA_parser:
     def __init__(self, fa):
         self.fa = fa
     
-    def parse_and_dict_multifasta(self):
+    def multifasta_dict(self):
         """ parses the input multi fasta, and puts results into dictionary """
 
         return SeqIO.to_dict(SeqIO.parse(self.fa,"fasta"))
@@ -17,6 +17,6 @@ class FASTA_parser:
 
 if __name__ == "__main__":
     fa_file = "test-data/mu-proteins.fa"
-    d = FASTA_parser(fa_file).parse_and_dict_multifasta()
+    d = FASTA_parser(fa_file).multifasta_dict()
     print(d)
     
