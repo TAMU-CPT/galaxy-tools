@@ -3,7 +3,7 @@ This is a modified version of the efetch tool from NCBI and Galaxy. It is a redu
 
 The power in this tool is in fetching large amounts of files. There is built in sleep functions that will delay large queries to NCBI, as well as attempt to resubmit GET requests if a HTTP error occurs.
 
-Due to not _wanting_ to cause too much of a ruccus if multiple user's are wanting to use this tool, I believe in Galaxy we should limit only one concurrent use of this tool. It is capable of being abused, and since NCBI __will__ block by IP, I think it's worth our time and effort to ensure we do not overwhelm their systems as well as not be on the recieving end of a ban. Helena from the Galaxy team has their efetch tools with the following Galaxy config:
+Due to not _wanting_ to cause too much of a ruccus if multiple user's are wanting to use this tool, I believe that in our Galaxy config we should limit only one concurrent use of this tool. It is capable of being abused, and since NCBI __will__ block by IP, I think it's worth our time and effort to ensure we do not overwhelm their systems as well as not be on the recieving end of a ban. Helena from the Galaxy team has their efetch tools with the following Galaxy config:
 
 ``` xml
 <destination id="entrez" runner="local">
