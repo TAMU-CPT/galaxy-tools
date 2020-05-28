@@ -2,6 +2,9 @@ __author__		= "Chayan Kumar Saha, Gemma C. Atkinson"
 __copyright__	= "GNU General Public License v3.0"
 __email__		= "chayan.sust7@gmail.com"
 
+import matplotlib      #CPT Added
+matplotlib.use('Agg')  #CPT Added
+
 from Bio import SeqIO
 from Bio import Entrez
 from Bio.Seq import Seq
