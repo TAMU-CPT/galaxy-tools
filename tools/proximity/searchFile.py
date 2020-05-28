@@ -290,8 +290,9 @@ def write_gff3(gffs,outName="proxHits.gff3"):
             for gff_hits in gffs:
                 out_file.writelines(gff_hits+"\n")
         else:
-            raise Exception("No terms were found from query set")
-
+            #raise Exception("No terms were found from query set")
+            out_file.writelines("##No terms were found from query set\n")
+        
 
 if __name__ == "__main__":
     print(os.getcwd())
