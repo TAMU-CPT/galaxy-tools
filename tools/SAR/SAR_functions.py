@@ -67,13 +67,15 @@ class CheckSequence:
 
 
 ### Extra "helper" functions
-def storage_dict(self,tmd_size,tmd_seq,hits,charge_seq,charge):
+def storage_dict(self,tmd_size,tmd_seq,hits,charge_seq,charge): # probably not good to call "self" a param here...definitley not PEP approved...
     """ organize dictionary for hydrophobicity check """
     if self.name not in hits:
         hits[self.name] = {}
         hits[self.name]["description"] = str(self.description)
         hits[self.name]["sequence"] = str(self.seq)
         hits[self.name]["size"] = str(self.size)
+        GAcont = str((str(self.seq).count("G")+str(self.seq).count("A"))/int(self.size)*100)
+        hits[self.name]["GAcont"] = "{:.2f}%".format(float(GAcont))
         if "TMD_"+str(tmd_size) not in hits[self.name]:
             hits[self.name]["TMD_"+str(tmd_size)] = []
             hits[self.name]["TMD_"+str(tmd_size)].append([tmd_seq,charge_seq,charge])
