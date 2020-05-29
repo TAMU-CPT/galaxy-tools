@@ -2,12 +2,9 @@ import sys
 import argparse
 import os
 import re
-import pandas as pd
-import numpy as np
 from biopython_parsing import FASTA_parser
 from file_operations import fasta_from_SAR_dict, stat_file_from_SAR_dict
 from SAR_functions import CheckSequence
-from Bio import SeqIO
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SAR Finder")
