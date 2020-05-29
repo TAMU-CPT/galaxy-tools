@@ -1,0 +1,58 @@
+<tool id="edu.tamu.cpt.sar.sar_finder" name="SAR Finder" version="1.0">
+    <description>SAR Domain Finder</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+    </expand>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/SAR_finder.py
+$fa
+--tmd_min $tmd_min
+--tmd_max $tmd_max
+--out_fa $out_fa
+--out_stat $out_stat
+    ]]></command>
+    <inputs>
+        <param label="Multi FASTA File" name="fa" type="data" format="fasta" />
+        <param label="TMD minimal size" name="tmd_min" type="integer" value="15" />
+        <param label="TMD maximum size" name="tmd_max" type="integer" value="20" />
+    </inputs>
+    <outputs>
+        <data format="txt" name="out_stat" label="candidate_SAR_stats.txt"/>
+        <data format="fasta" name="out_fa" label="candidate_SAR.fa"/>
+    </outputs>
+        <tests>
+            <test>
+                <param name="fa" value="simple-proteins.fa"/>
+                <param name="tmd_min" value="15"/>
+                <param name="tmd_max" value="20"/>
+                <output name="out_stat" file="candidate_SAR_stats_test.txt"/>
+                <output name="out_fa" file="candidate_SAR_test.fa"/>
+            </test>
+        </tests>
+    <help><![CDATA[
+INPUT : Protein Multi FASTA
+
+OUTPUT : 
+
+* Multi FASTA of candidate proteins that pass the SAR domain criteria
+* Text summary file containing each protein that passes the SAR domain criteria
+
+SAR Domain Criteria :
+1. Find a Hydrophobic transmembrane spanning domain, within the min and maximum TMD size selections.
+2. N terminal charge must be >= 1.
+
+Note: Gly and Ala percent content is calculated in the summary file to aide in narrowing potential candidates.
+    ]]></help>
+    <citations>
+        <citation type="bibtex">
+            @unpublished{galaxyTools,
+            author = {C. Ross},
+            title = {CPT Galaxy Tools},
+            year = {2020-},
+            note = {https://github.com/tamu-cpt/galaxy-tools/}
+            }
+        </citation>
+    </citations>
+</tool>
