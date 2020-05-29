@@ -24,15 +24,11 @@ $fa
     </outputs>
         <tests>
             <test>
-                <inputs>
-                    <param name="fa" value="simple-proteins.fa"/>
-                    <param name="tmd_min" value="15"/>
-                    <param name="tmd_max" value="20"/>
-                </inputs>
-                <outputs>
-                    <data format="txt" name="out_stat" label="candidate_SAR_stats_test.txt"/>
-                    <data format="fasta" name="out_fa" label="candidate_SAR_test.fa"/>
-                </outputs>
+                <param name="fa" value="simple-proteins.fa"/>
+                <param name="tmd_min" value="15"/>
+                <param name="tmd_max" value="20"/>
+                <output format="txt" name="out_stat" label="candidate_SAR_stats_test.txt"/>
+                <output format="fasta" name="out_fa" label="candidate_SAR_test.fa"/>
             </test>
         </tests>
     <help><![CDATA[
@@ -46,7 +42,8 @@ OUTPUT :
 SAR Domain Criteria :
 1. Find a Hydrophobic transmembrane spanning domain, within the min and maximum TMD size selections.
 2. N terminal charge must be >= 1.
-3. Gly and Ala percent content is calculated in the summary file to aide in narrowing potential candidates.
+
+Note: Gly and Ala percent content is calculated in the summary file to aide in narrowing potential candidates.
     ]]></help>
     <citations>
         <citation type="bibtex">
