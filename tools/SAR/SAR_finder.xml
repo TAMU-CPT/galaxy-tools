@@ -30,8 +30,8 @@ $fa
                     <param name="tmd_max" value="20"/>
                 </inputs>
                 <outputs>
-                    <data format="txt" name="out_stat" label="candidate_SAR_stats_test.txt">
-                    <data format="fasta" name="out_fa" label="candidate_SAR_test.fa">
+                    <data format="txt" name="out_stat" label="candidate_SAR_stats_test.txt"/>
+                    <data format="fasta" name="out_fa" label="candidate_SAR_test.fa"/>
                 </outputs>
             </test>
         </tests>
