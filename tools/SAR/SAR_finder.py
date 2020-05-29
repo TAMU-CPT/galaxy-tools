@@ -25,7 +25,7 @@ if __name__ == "__main__":
     for protein_name, protein_data in fa_dict.items():
         sar = CheckSequence(protein_name, protein_data)
         #sar.check_sizes(min=args.min,max=args.max)
-        hydros = sar.check_hydrophobicity()
+        hydros = sar.check_hydrophobicity_and_charge()
         hits.update(hydros)
     
     print(hits)
