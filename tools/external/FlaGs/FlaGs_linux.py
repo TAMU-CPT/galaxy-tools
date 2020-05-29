@@ -2,9 +2,6 @@ __author__		= "Chayan Kumar Saha, Gemma C. Atkinson"
 __copyright__	= "GNU General Public License v3.0"
 __email__		= "chayan.sust7@gmail.com"
 
-import matplotlib      #CPT Added
-matplotlib.use('Agg')  #CPT Added
-
 from Bio import SeqIO
 from Bio import Entrez
 from Bio.Seq import Seq
@@ -25,7 +22,7 @@ from collections import OrderedDict
 import subprocess
 from tkinter import *
 os.environ['DISPLAY'] = ':0' #linux
-master = Tk()
+#master = Tk()
 
 
 usage= ''' Description:  Identify flanking genes and cluster them based on similarity and visualize the structure; Requirement= Python3, BioPython; tkinter ; Optional Requirement= ETE3. '''
@@ -67,9 +64,9 @@ def checkBioPython(): #Checking Biopython Version
 	import Bio
 	return (Bio.__version__)
 
-from tkinter.font import Font #Font for postscript to-scale output
-myFont12 = Font(family="Helvetica", size=12)
-myFont7 = Font(family="Helvetica", size=7)
+#from tkinter.font import Font #Font for postscript to-scale output
+#myFont12 = Font(family="Helvetica", size=12)
+#myFont7 = Font(family="Helvetica", size=7)
 
 Entrez.email = args.recipients[0] #User email
 Entrez.max_tries = 5
@@ -1481,19 +1478,19 @@ if not args.tree_order:
 	windowMost=round(((max(pPos)+abs(min(nPos))+1)*4)/100)
 	widthM=(windowMost*3)+500
 	heightM=int(newQ)*20
-	from tkinter import *
-	master = Tk()
+	#from tkinter import *
+	#master = Tk()
 
 
-	canvas = Canvas(master, width=widthM,height=heightM,background='white', scrollregion=(0,0,round(widthM*2.5),round(heightM*2.5)))
-	hbar=Scrollbar(master,orient=HORIZONTAL)
-	hbar.pack(side=BOTTOM,fill=X)
-	hbar.config(command=canvas.xview)
-	vbar=Scrollbar(master,orient=VERTICAL)
-	vbar.pack(side=RIGHT,fill=Y)
-	vbar.config(command=canvas.yview)
-	canvas.config(xscrollcommand=hbar.set, yscrollcommand=vbar.set)
-	canvas.pack(side=LEFT,expand=True,fill=BOTH)
+	#canvas = Canvas(master, width=widthM,height=heightM,background='white', scrollregion=(0,0,round(widthM*2.5),round(heightM*2.5)))
+	#hbar=Scrollbar(master,orient=HORIZONTAL)
+	#hbar.pack(side=BOTTOM,fill=X)
+	#hbar.config(command=canvas.xview)
+	#vbar=Scrollbar(master,orient=VERTICAL)
+	#vbar.pack(side=RIGHT,fill=Y)
+	#vbar.config(command=canvas.yview)
+	#canvas.config(xscrollcommand=hbar.set, yscrollcommand=vbar.set)
+	#canvas.pack(side=LEFT,expand=True,fill=BOTH)
 
 	def operonFamily(item):
 		if item==0:
@@ -1524,7 +1521,7 @@ if not args.tree_order:
 			textspace=widthM/2
 			line_pos_y=line_pos_y+16-round(postscriptSize(newQ))
 			half_dom_height=5-round(postscriptSize(newQ))
-			text = canvas.create_text(textspace/2-textspace/8,line_pos_y, text=org, fill="#404040", font=myFont12)
+			#text = canvas.create_text(textspace/2-textspace/8,line_pos_y, text=org, fill="#404040", font=myFont12)
 			for entry in entries:
 				items=entry.split("\t")
 				aln_start=round(int(items[5])*4/100)
@@ -1535,14 +1532,14 @@ if not args.tree_order:
 				oL80=round(dom1_len*80/100)
 				dom1_start=aln_start+textspace
 				dom1_end=dom1_len+dom1_start
-				if strandType=='+':
-					rect = canvas.create_polygon(dom1_start, line_pos_y+half_dom_height, dom1_start, line_pos_y-half_dom_height,dom1_start+oL80, line_pos_y-half_dom_height, dom1_end, line_pos_y, dom1_start+oL80, line_pos_y+half_dom_height,fill=colorDict[dom1_name], outline=outliner(colorDict[dom1_name]))
-				else:
-					rect = canvas.create_polygon(dom1_end-oL80, line_pos_y+half_dom_height, dom1_start, line_pos_y, dom1_end-oL80, line_pos_y-half_dom_height,dom1_end, line_pos_y-half_dom_height, dom1_end, line_pos_y+half_dom_height, fill=colorDict[dom1_name], outline=outliner(colorDict[dom1_name]))
-				textd1 = canvas.create_text(dom1_start+(dom1_len/2),line_pos_y, text=operonFamily(dom1_name), font=myFont7)
+				#if strandType=='+':
+				#	rect = canvas.create_polygon(dom1_start, line_pos_y+half_dom_height, dom1_start, line_pos_y-half_dom_height,dom1_start+oL80, line_pos_y-half_dom_height, dom1_end, line_pos_y, dom1_start+oL80, line_pos_y+half_dom_height,fill=colorDict[dom1_name], outline=outliner(colorDict[dom1_name]))
+				#else:
+				#	rect = canvas.create_polygon(dom1_end-oL80, line_pos_y+half_dom_height, dom1_start, line_pos_y, dom1_end-oL80, line_pos_y-half_dom_height,dom1_end, line_pos_y-half_dom_height, dom1_end, line_pos_y+half_dom_height, fill=colorDict[dom1_name], outline=outliner(colorDict[dom1_name]))
+				#textd1 = canvas.create_text(dom1_start+(dom1_len/2),line_pos_y, text=operonFamily(dom1_name), font=myFont7)
 				coln=coln+1
 
-	retval = canvas.postscript(file=args.out_prefix+"_flankgenes.ps", height=heightM, width=widthM, colormode="color")
+	#retval = canvas.postscript(file=args.out_prefix+"_flankgenes.ps", height=heightM, width=widthM, colormode="color")
 
 
 
@@ -1716,18 +1713,18 @@ if args.tree and args.tree_order:  # Queries in postscript file will be presente
 	windowMost=round(((max(ptPos)+abs(min(ntPos))+1)*4)/100)
 	widthM=(windowMost*3)+500
 	heightM=int(newQ)*20
-	from tkinter import *
-	master = Tk()
+	#from tkinter import *
+	#master = Tk()
 
-	canvas = Canvas(master, width=widthM,height=heightM,background='white', scrollregion=(0,0,round(widthM*2.5),round(heightM*2.5)))
-	hbar=Scrollbar(master,orient=HORIZONTAL)
-	hbar.pack(side=BOTTOM,fill=X)
-	hbar.config(command=canvas.xview)
-	vbar=Scrollbar(master,orient=VERTICAL)
-	vbar.pack(side=RIGHT,fill=Y)
-	vbar.config(command=canvas.yview)
-	canvas.config(xscrollcommand=hbar.set, yscrollcommand=vbar.set)
-	canvas.pack(side=LEFT,expand=True,fill=BOTH)
+	#canvas = Canvas(master, width=widthM,height=heightM,background='white', scrollregion=(0,0,round(widthM*2.5),round(heightM*2.5)))
+	#hbar=Scrollbar(master,orient=HORIZONTAL)
+	#hbar.pack(side=BOTTOM,fill=X)
+	#hbar.config(command=canvas.xview)
+	#vbar=Scrollbar(master,orient=VERTICAL)
+	#vbar.pack(side=RIGHT,fill=Y)
+	#vbar.config(command=canvas.yview)
+	#canvas.config(xscrollcommand=hbar.set, yscrollcommand=vbar.set)
+	#canvas.pack(side=LEFT,expand=True,fill=BOTH)
 
 	def operonFamily(item):
 		if item==0:
@@ -1758,7 +1755,7 @@ if args.tree and args.tree_order:  # Queries in postscript file will be presente
 			textspace=widthM/2
 			line_pos_y=line_pos_y+16-round(postscriptSize(newQ))
 			half_dom_height=5-round(postscriptSize(newQ))
-			text = canvas.create_text(textspace/2-textspace/8,line_pos_y, text=org, fill="#404040", font=myFont12)
+			#text = canvas.create_text(textspace/2-textspace/8,line_pos_y, text=org, fill="#404040", font=myFont12)
 			for entry in entries:
 				items=entry.split("\t")
 				aln_start=round(int(items[5])*4/100)
@@ -1769,14 +1766,14 @@ if args.tree and args.tree_order:  # Queries in postscript file will be presente
 				oL80=round(dom1_len*80/100)
 				dom1_start=aln_start+textspace
 				dom1_end=dom1_len+dom1_start
-				if strandType=='+':
-					rect = canvas.create_polygon(dom1_start, line_pos_y+half_dom_height, dom1_start, line_pos_y-half_dom_height,dom1_start+oL80, line_pos_y-half_dom_height, dom1_end, line_pos_y, dom1_start+oL80, line_pos_y+half_dom_height,fill=colorDict[dom1_name], outline=outliner(colorDict[dom1_name]))
-				else:
-					rect = canvas.create_polygon(dom1_end-oL80, line_pos_y+half_dom_height, dom1_start, line_pos_y, dom1_end-oL80, line_pos_y-half_dom_height,dom1_end, line_pos_y-half_dom_height, dom1_end, line_pos_y+half_dom_height, fill=colorDict[dom1_name], outline=outliner(colorDict[dom1_name]))
-				textd1 = canvas.create_text(dom1_start+(dom1_len/2),line_pos_y, text=operonFamily(dom1_name), font=myFont7)
+				#if strandType=='+':
+				#	rect = canvas.create_polygon(dom1_start, line_pos_y+half_dom_height, dom1_start, line_pos_y-half_dom_height,dom1_start+oL80, line_pos_y-half_dom_height, dom1_end, line_pos_y, dom1_start+oL80, line_pos_y+half_dom_height,fill=colorDict[dom1_name], outline=outliner(colorDict[dom1_name]))
+				#else:
+				#	rect = canvas.create_polygon(dom1_end-oL80, line_pos_y+half_dom_height, dom1_start, line_pos_y, dom1_end-oL80, line_pos_y-half_dom_height,dom1_end, line_pos_y-half_dom_height, dom1_end, line_pos_y+half_dom_height, fill=colorDict[dom1_name], outline=outliner(colorDict[dom1_name]))
+				#textd1 = canvas.create_text(dom1_start+(dom1_len/2),line_pos_y, text=operonFamily(dom1_name), font=myFont7)
 				coln=coln+1
 
-	retval = canvas.postscript(file=args.out_prefix+"_treeOrder_flankgenes.ps", height=heightM, width=widthM, colormode="color")
+	#retval = canvas.postscript(file=args.out_prefix+"_treeOrder_flankgenes.ps", height=heightM, width=widthM, colormode="color")
 
 print('\n'+'<<< Done >>>')
 print('\nIf you use FlaGs in your work, please remember to cite these papers!'+'\n\n- Saha CK, Pires RS, Brolin H, Delannoy M, Atkinson GC. 2020. Predicting Functional Associations using Flanking Genes (FlaGs). BioRxiv:362095'+\
