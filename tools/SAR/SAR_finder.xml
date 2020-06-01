@@ -32,6 +32,8 @@ $fa
             </test>
         </tests>
     <help><![CDATA[
+A tool that analyzes protein sequence within the first 50 residues for a weakly hydrophobic domain sometimes found in endolysins called Signal-Anchor-Release (aka SAR). 
+
 INPUT : Protein Multi FASTA
 
 OUTPUT : 
@@ -41,9 +43,8 @@ OUTPUT :
 
 SAR Domain Criteria :
 1. Find a Hydrophobic transmembrane spanning domain, within the min and maximum TMD size selections.
-2. N terminal charge must be >= 1.
 
-Note: Gly and Ala percent content is calculated in the summary file to aide in narrowing potential candidates.
+Note: Gly and Ala percent content is calculated within the SAR domain in the summary file to aide in narrowing potential candidates.
     ]]></help>
     <citations>
         <citation type="bibtex">

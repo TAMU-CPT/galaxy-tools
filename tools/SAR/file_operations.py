@@ -15,15 +15,15 @@ def stat_file_from_SAR_dict(sar_dict, stat_file, tmd_min, tmd_max):
                 f.writelines("Protein Description and Name: {}\n".format(data["description"]))
                 f.writelines("Protein Sequence: {}\n".format(data["sequence"]))
                 f.writelines("Protein Length: {}\n".format(data["size"]))
-                f.writelines("Percent G and A content: {}\n".format(data["GAcont"]))
                 f.writelines("SAR Criteria matching region(s)\n")
-                for tmd_size in range(tmd_min, tmd_max, 1):
+                for tmd_size in range(tmd_max, tmd_min-1, -1):
                     if "TMD_"+str(tmd_size) in data:
-                        f.writelines("TMD length of {}:\n".format(tmd_size))
+                        f.writelines("\nSAR length of {}:\n".format(tmd_size))
                         for each_match in data["TMD_"+str(tmd_size)]:
-                            f.writelines("TMD domain sequence: {}\n".format(each_match[0]))
+                            f.writelines("Potential SAR domain sequence: {}\n".format(each_match[0]))
                             f.writelines("N-term sequence: {}\n".format(each_match[1]))
                             f.writelines("N-term net charge: {}\n".format(each_match[2]))
+                            f.writelines("Percent GA content: {:.2f}%\n".format(each_match[3]))
                 f.writelines("========================================================\n\n")
         else:
             f.writelines("No candidate SAR Proteins found")
