@@ -97,9 +97,9 @@ if __name__ == "__main__":
                         default=30,
                         help="Amount to delay a query to NCBI by")
 
-    parser.add_argument("--data",
-                        type=lambda x: is_dir(parser,x,"results"),
-                        default="results/data_accs.txt")
+    #parser.add_argument("--data",
+    #                    type=lambda x: is_dir(parser,x,"results"),
+    #                    default="results/data_accs.txt")
 
     """
     parser.add_argument("--multi_output",
@@ -122,10 +122,12 @@ if __name__ == "__main__":
     #if not os.path.exists("results"):
         #os.mkdir("results")
     print(os.getcwd())
+    if not os.path.exists("results"):
+        os.mkdir("results")
     path = os.path.join("results",args.data_name)
 
-    with open(path,"w+") as f:
-        f.writelines("accessions: "+str(args.input)+"\n")
+    #with open(path,"w+") as f:
+    #    f.writelines("accessions: "+str(args.input)+"\n")
 
     #if args.galaxy_on:
     #    os.chdir("results")
