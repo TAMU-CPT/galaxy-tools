@@ -165,7 +165,7 @@ def find_lipobox(pair, minimum=10, maximum=30, regex=1):
         
     """
     if regex == 1:
-        pattern = "[ILMFTV][^REXD][GAS]C"  # regex for Lipobox from findSpanin.pl
+        pattern = "[ILMFTV][^REKD][GAS]C"  # regex for Lipobox from findSpanin.pl
     elif regex == 2:
         pattern = "[ACGSILMFTV][^REKD][GASNL]C"  # regex for Lipobox from LipoRy
 
