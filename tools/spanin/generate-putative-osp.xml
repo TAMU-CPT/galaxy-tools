@@ -38,7 +38,7 @@ $fasta_file
         <param label="Lipobox minimal distance from start codon" name="osp_min_dist" type="integer" value="10" />
 	<param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" help="Searches for a Lipobox between Lipoboxmin and Lipoboxmax ie [Lipoboxmin,Lipoboxmax]" />
         <param type="select" label="Regular Expression choice" name="regex_pattern">
-            <option value="1">[ILMFTV][^REXD][GAS]C</option>
+            <option value="1">[ILMFTV][^REKD][GAS]C</option>
             <option value="2">[ACGSILMFTV][^REKD][GASNL]C</option>
         </param>
 
