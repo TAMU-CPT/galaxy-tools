@@ -633,6 +633,9 @@ class Client(object):
                 if "password" in d:
                     del d["password"]
                 return d
+            elif r.status_code == 504:
+                print("The Galaxy server timed out while waiting for Apollo to finish. Your organism was most likely created, but will need to be manually assigned to your account by an administrator. Please submit a bug report for this job and we will get back to you shortly."
+
             else:
                 return r.text
 
