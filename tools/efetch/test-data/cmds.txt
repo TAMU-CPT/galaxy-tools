@@ -8,3 +8,7 @@ python cpt-efetch.py --email curtisross__at__tamu.edu --input NC_001416.1 --inpu
 
 python cpt-efetch.py --email curtisross__at__tamu.edu --input NC_001416.1 --db nuccore --ret_format indiv
 idual --ret_type fasta --galaxy_on --sleepy 20
+
+
+command used for local == galaxy test:
+python cpt-efetch.py --email curtisross__at__tamu.edu --input NC_001416 --db nuccore --ret_format individual --ret_type fasta --galaxy_on --sleepy 20
