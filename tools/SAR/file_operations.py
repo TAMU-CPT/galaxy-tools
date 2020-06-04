@@ -13,23 +13,26 @@ def gff3_from_SAR_dict(sar_dict,gff3_file):
     """ make a multi gff3 with candidates from SAR dictionary """
     gff3_cols = ["Seqid","Source","Type","Start","End","Score","Strand","Phase","Attributes"]
     with gff3_file as f:
-        f.writelines(f"{gff3_cols[0]}\t{gff3_cols[1]}\t{gff3_cols[2]}\t{gff3_cols[3]}\t{gff3_cols[4]}\t{gff3_cols[5]}\t{gff3_cols[6]}\t{gff3_cols[7]}\t{gff3_cols[8]}\t{gff3_cols[9]}\n")
+        f.writelines(f"{gff3_cols[0]}\t{gff3_cols[1]}\t{gff3_cols[2]}\t{gff3_cols[3]}\t{gff3_cols[4]}\t{gff3_cols[5]}\t{gff3_cols[6]}\t{gff3_cols[7]}\t{gff3_cols[8]}\n")
         if sar_dict:
+            #print(sar_dict)
             for name, data in sar_dict.items():
-                if len(data["size"][0]) > 1: # might need to be ["size"][-1]...dont remember if this will be ordered in reverse or not...
+                if len(data["TMD_"+str(data["biggest_sar"])]) > 1: # might need to be ["size"][-1]...dont remember if this will be ordered in reverse or not...
                     values = []
-                    for idx, value in enumerate(data["size"][0]):
+                    for idx, value in enumerate(data["TMD_"+str(data["biggest_sar"])][0]):
+                        print(value)
                         values.append([idx,value])
+                    print(values)
                     min_idx = min(values[1])
                 else:
                     min_idx = 0
                 f.writelines("##gff-version 3\n")
                 f.writelines(f"##sequence-region {name}\n")
-                n_start, n_end = split_seq_string(data["size"][0][min_idx][4])
-                sar_start, sar_end = split_seq_string(data["size"][0][min_idx][5])
-                c_start, c_end = split_seq_string(data["size"][0][min_idx][6])
-                f.writelines(f'{name}\tSAR_finder\tTopological domain\t{n_start}\t{n_end}\t.\t.\t.\tNote=N-terminus Charge={data["size"][0][min_idx][2]}\n')
-                f.writelines(f'{name}\tSAR_finder\tSAR domain\t{sar_start}\t{sar_end}\t.\t.\t.\tNote=%{[perc[1] for perc in data["size"][0][min_idx][3]]}\n')
+                n_start, n_end = split_seq_string(data["TMD_"+str(data["biggest_sar"])][min_idx][4])
+                sar_start, sar_end = split_seq_string(data["TMD_"+str(data["biggest_sar"])][min_idx][5])
+                c_start, c_end = split_seq_string(data["TMD_"+str(data["biggest_sar"])][min_idx][6])
+                f.writelines(f'{name}\tSAR_finder\tTopological domain\t{n_start}\t{n_end}\t.\t.\t.\tNote=N-terminus Charge is {data["TMD_"+str(data["biggest_sar"])][min_idx][2]}\n')
+                f.writelines(f'{name}\tSAR_finder\tSAR domain\t{sar_start}\t{sar_end}\t.\t.\t.\tNote=%{[perc for perc in data["TMD_"+str(data["biggest_sar"])][min_idx][3]]}\n')
                 f.writelines(f'{name}\tSAR_finder\tTopological domain\t{c_start}\t{c_end}\t.\t.\t.\tNote=C-terminus\n')
         else:
             f.writelines("##gff-version 3\n")
@@ -85,8 +88,8 @@ def split_seq_string(input_range, python_indexing=True):
     """ splits a #..# sequence into the two respective starts and ends, if python indexing, adds 1, otherwise keeps """
     if python_indexing:
         values = input_range.split("..")
-        start = values[0] + 1
-        end = values[1] + 1
+        start =int(values[0]) + 1
+        end = int(values[1]) + 1
     else:
         values = input_range.split("..")
         start = values[0]
