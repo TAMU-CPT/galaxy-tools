@@ -5,8 +5,8 @@
 # Requirements
 * python 3.6+
 * biopython
-* pandas
-* numpy
+* <s>pandas</s> --> thought I might use this, but ended up seeing I wouldnt needed it by the time I was wrapping this up.
+* <s>numpy</s>
 
 # Outline
 1. Read in input multi fasta
@@ -24,8 +24,11 @@
         * N term (net positive charge)
         * C term catalytic domain
 3. Return candidates and multi fasta.
-4. Write statistics to output file in table format
+4. Return candidates in multi gff3.
+5. Write statistics to output file in table format
     * identifier :: length of peptide :: topology orientation :: %G and %A :: likely more later
+    * Been reworked to include what is currently in tab-separated format:
+        * ["Name","Protein Sequence","Protein Length","SAR Length","Putative SAR Sequence","SAR Start Location","[res%]","N-term Sequence","N-term net Charge"]
 
 # File Summaries
 * `SAR_functions.py`
