@@ -1,7 +1,4 @@
 
-import pandas as pd
-
-
 def fasta_from_SAR_dict(sar_dict,fa_file):
     """ makes a multi fasta with candidates from SAR dictionary """
     with fa_file as f:
