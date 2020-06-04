@@ -1,0 +1,6 @@
+Seqid	Source	Type	Start	End	Score	Strand	Phase	Attributes
+##gff-version 3
+##sequence-region SAR-endolysin
+SAR-endolysin	SAR_finder	Topological domain	1	8	.	.	.	Note=N-terminus Charge is 2
+SAR-endolysin	SAR_finder	SAR domain	9	26	.	.	.	Note=%[('S', 0.0), ('G', 29.41), ('A', 23.53)]
+SAR-endolysin	SAR_finder	Topological domain	27	172	.	.	.	Note=C-terminus
