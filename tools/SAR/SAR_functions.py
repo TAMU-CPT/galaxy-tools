@@ -90,7 +90,6 @@ class CheckSequence:
                             compare_candidates[sar_name][the_data[-1]]["size"] = [sar_size]
                             compare_candidates[sar_name][the_data[-1]]["index"] = [idx]
             hits[sar_name]["biggest_sar"] = tmd_log[0]
-            print("Biggest sar --> "+str(hits[sar_name]["biggest_sar"]))
         for sar_name, compare_data in compare_candidates.items():
             for data in compare_data.values():
                 if len(data["size"]) >= 3:

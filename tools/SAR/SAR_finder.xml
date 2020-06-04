@@ -48,7 +48,7 @@ OUTPUT :
 
 * Text summary file containing each protein that passes the SAR domain criteria
 
-* GFF3 Apollo ready file
+* Multi GFF3
 
     ]]></help>
     <citations>

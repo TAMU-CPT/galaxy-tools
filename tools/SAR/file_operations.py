@@ -17,10 +17,10 @@ def gff3_from_SAR_dict(sar_dict,gff3_file):
                 if len(data["TMD_"+str(data["biggest_sar"])]) > 1: # might need to be ["size"][-1]...dont remember if this will be ordered in reverse or not...
                     values = []
                     for idx, value in enumerate(data["TMD_"+str(data["biggest_sar"])][0]):
-                        print(value)
                         values.append([idx,value])
+                    #print(values[1])
                     print(values)
-                    min_idx = min(values[1])
+                    min_idx = values[1][0]
                 else:
                     min_idx = 0
                 f.writelines("##gff-version 3\n")
