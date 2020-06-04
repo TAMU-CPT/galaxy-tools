@@ -49,15 +49,15 @@ class CheckSequence:
                 if re.search((hydrophobic_residues+"{"+str(sar_size)+"}"),sar_seq):
                     charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start = rep_funcs(self,seq,i,pos_res,neg_res,sar_seq,perc_residues,sar_size)
                     storage_dict(self=self,sar_size=sar_size,sar_seq=sar_seq,hits=hits,charge_seq=charge_seq,charge=charge,perc_cont=perc_cont,nterm_coords=nterm_coords,sar_coords=sar_coords,cterm_coords=cterm_coords,sar_start=sar_start)
-                    print("TMDSIZE: {}\tINDEX: {}".format(sar_size,i+1))
+                    #print("TMDSIZE: {}\tINDEX: {}".format(sar_size,i+1))
                 elif "K" in sar_seq[0] and re.search((hydrophobic_residues+"{"+str(sar_size-1)+"}"),sar_seq[1:]): # check frontend snorkels
                     charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start = rep_funcs(self,seq,i,pos_res,neg_res,sar_seq,perc_residues,sar_size)
                     storage_dict(self=self,sar_size=sar_size,sar_seq=sar_seq,hits=hits,charge_seq=charge_seq,charge=charge,perc_cont=perc_cont,nterm_coords=nterm_coords,sar_coords=sar_coords,cterm_coords=cterm_coords,sar_start=sar_start)
-                    print("TMDSIZE: {}\tINDEX: {}".format(sar_size,i+1))
+                    #print("TMDSIZE: {}\tINDEX: {}".format(sar_size,i+1))
                 elif "K" in sar_seq[-1] and re.search((hydrophobic_residues+"{"+str(sar_size-1)+"}"),sar_seq[:-1]): # check backend snorkels
                     charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start = rep_funcs(self,seq,i,pos_res,neg_res,sar_seq,perc_residues,sar_size)
                     storage_dict(self=self,sar_size=sar_size,sar_seq=sar_seq,hits=hits,charge_seq=charge_seq,charge=charge,perc_cont=perc_cont,nterm_coords=nterm_coords,sar_coords=sar_coords,cterm_coords=cterm_coords,sar_start=sar_start)
-                    print("TMDSIZE: {}\tINDEX: {}".format(sar_size,i+1))
+                    #print("TMDSIZE: {}\tINDEX: {}".format(sar_size,i+1))
                 continue
         
         return hits
@@ -67,17 +67,16 @@ class CheckSequence:
         compare_candidates = {}
         hits = self.check_hydrophobicity_and_charge()
         for sar_name, data in hits.items():
+            print(sar_name)
             compare_candidates[sar_name] = {}
-            print("We're in this key: {}".format(sar_name))
             #print("\nThese are the values: {}".format(v))
             #count_of_times = 0
             for sar_size in range(sar_max,sar_min-1,-1):
-                print(sar_size)
                 if "TMD_"+str(sar_size) in data: 
-                    print(data["TMD_"+str(sar_size)])
+                    #print(data["TMD_"+str(sar_size)])
                     for idx,the_data in enumerate(data["TMD_"+str(sar_size)]):
-                        print(f"This is the index: {idx}")
-                        print(f"This is the list of data at this index: {the_data}")
+                        #print(f"This is the index: {idx}")
+                        #print(f"This is the list of data at this index: {the_data}")
                         if the_data[-1] in compare_candidates[sar_name]:
                             compare_candidates[sar_name][the_data[-1]]["count"] += 1
                             compare_candidates[sar_name][the_data[-1]]["size"].append(sar_size)
@@ -88,29 +87,23 @@ class CheckSequence:
                             compare_candidates[sar_name][the_data[-1]]["size"] = [sar_size]
                             compare_candidates[sar_name][the_data[-1]]["index"] = [idx]
         for sar_name, compare_data in compare_candidates.items():
-            for each_size, data in compare_data.items():
+            for data in compare_data.values():
                 if len(data["size"]) >= 3:
-                    print(f"{each_size} --> {data}")
+                    #print(f"{each_size} --> {data}")
                     minmax = [min(data["size"]),max(data["size"])]
                     nonminmax = [x for x in data["size"] if x not in minmax]
                     nonminmax_index = []
                     for each_nonminmax in nonminmax:
                         v = data["size"].index(each_nonminmax)
-                        nonminmax_index.append(v)
+                        x = data["index"][v]
+                        nonminmax_index.append(x)
                     nons = zip(nonminmax,nonminmax_index)
                     for value in nons:
-                        print(value)
-                    #print(minmax)
-                        for data in hits[sar_name]["TMD_"+str(value[0])]:
-                            print(data)
+                        #hits[sar_name]["TMD_"+str(value[0])] = hits[sar_name]["TMD_"+str(value[0])].pop(value[1])
+                        hits[sar_name]["TMD_"+str(value[0])][value[1]] = [""]
+        
+        return hits
 
-                        #if not hits[sar_name]["TMD_"minmax[0]] or hits[sar_name]["TMD_"minmax[1]]:
-                            #hits[sar_name]
-
-                #print(compare_candidates)
-
-                    #compare_candidates = {}
-                    #count_of_times += 1 
 
 def rep_funcs(self,seq,loc,pos_res,neg_res,sar_seq,perc_residues,sar_size):
     """ run a set of functions together before sending the results to the storage dictionary """
