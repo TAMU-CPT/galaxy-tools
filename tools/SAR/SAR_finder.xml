@@ -31,6 +31,7 @@ $fa
                 <param name="tmd_max" value="20"/>
                 <output name="out_stat" file="candidate_SAR_stats_test.tsv"/>
                 <output name="out_fa" file="candidate_SAR_test.fa"/>
+                <output name="out_gff3" file="candidate_SAR_test.gff3"/>
             </test>
         </tests>
     <help><![CDATA[
