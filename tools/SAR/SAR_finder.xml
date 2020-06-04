@@ -22,7 +22,7 @@ $fa
     <outputs>
         <data format="tabular" name="out_stat" label="candidate_SAR_stats.tsv"/>
         <data format="fasta" name="out_fa" label="candidate_SAR.fa"/>
-        <data format="gff3" name="out_fa" label="candidate_SAR.gff3"/>
+        <data format="gff3" name="out_gff3" label="candidate_SAR.gff3"/>
     </outputs>
         <tests>
             <test>
