@@ -71,8 +71,11 @@ class CheckSequence:
             compare_candidates[sar_name] = {}
             #print("\nThese are the values: {}".format(v))
             #count_of_times = 0
+            tmd_log = []
             for sar_size in range(sar_max,sar_min-1,-1):
-                if "TMD_"+str(sar_size) in data: 
+                if "TMD_"+str(sar_size) in data:
+                    tmd_log.append(sar_size)
+                    #print(tmd_log) 
                     #print(data["TMD_"+str(sar_size)])
                     for idx,the_data in enumerate(data["TMD_"+str(sar_size)]):
                         #print(f"This is the index: {idx}")
@@ -86,6 +89,8 @@ class CheckSequence:
                             compare_candidates[sar_name][the_data[-1]]["count"] = 1 
                             compare_candidates[sar_name][the_data[-1]]["size"] = [sar_size]
                             compare_candidates[sar_name][the_data[-1]]["index"] = [idx]
+            hits[sar_name]["biggest_sar"] = tmd_log[0]
+            print("Biggest sar --> "+str(hits[sar_name]["biggest_sar"]))
         for sar_name, compare_data in compare_candidates.items():
             for data in compare_data.values():
                 if len(data["size"]) >= 3:
@@ -101,7 +106,7 @@ class CheckSequence:
                     for value in nons:
                         #hits[sar_name]["TMD_"+str(value[0])] = hits[sar_name]["TMD_"+str(value[0])].pop(value[1])
                         hits[sar_name]["TMD_"+str(value[0])][value[1]] = [""]
-        
+
         return hits
 
 
