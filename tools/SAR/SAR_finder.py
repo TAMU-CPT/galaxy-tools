@@ -3,7 +3,7 @@ import argparse
 import os
 import re
 from biopython_parsing import FASTA_parser
-from file_operations import fasta_from_SAR_dict, stat_file_from_SAR_dict, tab_from_SAR_dict
+from file_operations import fasta_from_SAR_dict, gff3_from_SAR_dict, tab_from_SAR_dict
 from SAR_functions import CheckSequence
 
 if __name__ == "__main__":
@@ -36,6 +36,7 @@ if __name__ == "__main__":
         hydros = sar.shrink_results(sar_min=args.sar_min, sar_max=args.sar_max)
         sars.update(hydros)
     
+    gff3_from_SAR_dict(sars, args.out_gff3)
     tab_from_SAR_dict(sars,args.out_stat,"SGA",sar_min=args.sar_min, sar_max=args.sar_max)
     fasta_from_SAR_dict(sars,args.out_fa)
     #stat_file_from_SAR_dict(sars,args.out_stat,sar_min=args.sar_min,sar_max=args.sar_max) # fix this whenever ready.
