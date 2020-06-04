@@ -8,16 +8,16 @@
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/SAR_finder.py
 $fa
---tmd_min $tmd_min
---tmd_max $tmd_max
+--sar_min $sar_min
+--sar_max $sar_max
 --out_fa $out_fa
 --out_gff3 $out_gff3
 --out_stat $out_stat
     ]]></command>
     <inputs>
         <param label="Multi FASTA File" name="fa" type="data" format="fasta" />
-        <param label="TMD minimal size" name="tmd_min" type="integer" value="15" />
-        <param label="TMD maximum size" name="tmd_max" type="integer" value="20" />
+        <param label="SAR domain minimal size" name="sar_min" type="integer" value="15" />
+        <param label="SAR domain maximum size" name="sar_max" type="integer" value="20" />
     </inputs>
     <outputs>
         <data format="tabular" name="out_stat" label="candidate_SAR_stats.tsv"/>
@@ -27,8 +27,8 @@ $fa
         <tests>
             <test>
                 <param name="fa" value="simple-proteins.fa"/>
-                <param name="tmd_min" value="15"/>
-                <param name="tmd_max" value="20"/>
+                <param name="sar_min" value="15"/>
+                <param name="sar_max" value="20"/>
                 <output name="out_stat" file="candidate_SAR_stats_test.tsv"/>
                 <output name="out_fa" file="candidate_SAR_test.fa"/>
                 <output name="out_gff3" file="candidate_SAR_test.gff3"/>
