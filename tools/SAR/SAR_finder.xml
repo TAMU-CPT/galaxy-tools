@@ -11,6 +11,7 @@ $fa
 --tmd_min $tmd_min
 --tmd_max $tmd_max
 --out_fa $out_fa
+--out_gff3 $out_gff3
 --out_stat $out_stat
     ]]></command>
     <inputs>
@@ -19,15 +20,16 @@ $fa
         <param label="TMD maximum size" name="tmd_max" type="integer" value="20" />
     </inputs>
     <outputs>
-        <data format="txt" name="out_stat" label="candidate_SAR_stats.txt"/>
+        <data format="tabular" name="out_stat" label="candidate_SAR_stats.tsv"/>
         <data format="fasta" name="out_fa" label="candidate_SAR.fa"/>
+        <data format="gff3" name="out_fa" label="candidate_SAR.gff3"/>
     </outputs>
         <tests>
             <test>
                 <param name="fa" value="simple-proteins.fa"/>
                 <param name="tmd_min" value="15"/>
                 <param name="tmd_max" value="20"/>
-                <output name="out_stat" file="candidate_SAR_stats_test.txt"/>
+                <output name="out_stat" file="candidate_SAR_stats_test.tsv"/>
                 <output name="out_fa" file="candidate_SAR_test.fa"/>
             </test>
         </tests>
