@@ -23,20 +23,28 @@ def treeFeatures(features, window):
 def intersect(a, b, window, stranding):
     rec_a = list(GFF.parse(a))
     rec_b = list(GFF.parse(b))
-    if len(rec_a) > 0 and len(rec_b) > 0:
+    rec_a_out = []
+    rec_b_out = []
+    maxLen = min(len(rec_a), len(rec_b))
+    iterate = 0
+ 
 
-        if len(rec_a) > 1 or len(rec_b) > 1:
-            raise Exception("Cannot handle multiple GFF3 records in a file, yet")
+    if maxLen > 0:
+        finA = []
+        finB = []
+        while iterate < maxLen:
+        #if len(rec_a) > 1 or len(rec_b) > 1:
+        #    raise Exception("Cannot handle multiple GFF3 records in a file, yet")
 
-        rec_a = rec_a[0]
-        rec_b = rec_b[0]
-
-        a_neg = []
-        a_pos = []
-        b_neg = []
-        b_pos = []
-        if stranding == True:
-            for feat in rec_a.features:
+          rec_a_i = rec_a[iterate]
+          rec_b_i = rec_b[iterate]
+ 
+          a_neg = []
+          a_pos = []
+          b_neg = []
+          b_pos = []
+          if stranding == True:
+            for feat in rec_a_i.features:
                 if feat.strand > 0:
                     a_pos.append(
                         Interval(
@@ -54,7 +62,7 @@ def intersect(a, b, window, stranding):
                         )
                     )
 
-            for feat in rec_b.features:
+            for feat in rec_b_i.features:
                 if feat.strand > 0:
                     b_pos.append(
                         Interval(
@@ -72,24 +80,24 @@ def intersect(a, b, window, stranding):
                         )
                     )
 
-        if stranding == False:
+          if stranding == False:
             # builds interval tree from Interval objects of form (start, end, id) for each feature
-            tree_a = IntervalTree(list(treeFeatures(rec_a.features, window)))
-            tree_b = IntervalTree(list(treeFeatures(rec_b.features, window)))
-        else:
+            tree_a = IntervalTree(list(treeFeatures(rec_a_i.features, window)))
+            tree_b = IntervalTree(list(treeFeatures(rec_b_i.features, window)))
+          else:
             tree_a_pos = IntervalTree(a_pos)
             tree_a_neg = IntervalTree(a_neg)
             tree_b_pos = IntervalTree(b_pos)
             tree_b_neg = IntervalTree(b_neg)
 
-        # Used to map ids back to features later
-        rec_a_map = {f.id: f for f in rec_a.features}
-        rec_b_map = {f.id: f for f in rec_b.features}
+          # Used to map ids back to features later
+          rec_a_map = {f.id: f for f in rec_a_i.features}
+          rec_b_map = {f.id: f for f in rec_b_i.features}
 
-        rec_a_hits_in_b = []
-        rec_b_hits_in_a = []
+          rec_a_hits_in_b = []
+          rec_b_hits_in_a = []
 
-        for feature in rec_a.features:
+          for feature in rec_a_i.features:
             # Save each feature in rec_a that overlaps a feature in rec_b
             # hits = tree_b.find_range((int(feature.location.start), int(feature.location.end)))
 
@@ -114,7 +122,7 @@ def intersect(a, b, window, stranding):
                     for hit in hits_neg:
                         rec_a_hits_in_b.append(rec_b_map[hit.data])
 
-        for feature in rec_b.features:
+          for feature in rec_b_i.features:
             if stranding == False:
                 hits = tree_a[int(feature.location.start) : int(feature.location.end)]
 
@@ -136,15 +144,16 @@ def intersect(a, b, window, stranding):
                     for hit in hits_neg:
                         rec_b_hits_in_a.append(rec_a_map[hit.data])
 
-        # Remove duplicate features using sets
-        rec_a.features = sorted(set(rec_a_hits_in_b), key=lambda feat: feat.location.start)
-        rec_b.features = sorted(set(rec_b_hits_in_a), key=lambda feat: feat.location.start)
-
+          # Remove duplicate features using sets
+          rec_a_out.append(SeqRecord(rec_a[iterate].seq, rec_a[iterate].id, rec_a[iterate].name, rec_a[iterate].description, rec_a[iterate].dbxrefs, sorted(set(rec_a_hits_in_b), key=lambda feat: feat.location.start)))
+          rec_b_out.append(SeqRecord(rec_b[iterate].seq, rec_b[iterate].id, rec_b[iterate].name, rec_b[iterate].description, rec_b[iterate].dbxrefs, sorted(set(rec_b_hits_in_a), key=lambda feat: feat.location.start)))
+          iterate += 1
+  
     else:
         # If one input is empty, output two empty result files.
-        rec_a = SeqRecord(Seq(""), "none")
-        rec_b = SeqRecord(Seq(""), "none")
-    return rec_a, rec_b
+        rec_a_out = [SeqRecord(Seq(""), "none")]
+        rec_b_out = [SeqRecord(Seq(""), "none")]
+    return rec_a_out, rec_b_out
 
 
 if __name__ == "__main__":
@@ -171,7 +180,9 @@ if __name__ == "__main__":
     b, a = intersect(args.a, args.b, args.window, args.stranding)
 
     with open(args.oa, "w") as handle:
-        GFF.write([a], handle)
+        for rec in a:
+          GFF.write([rec], handle)
 
     with open(args.ob, "w") as handle:
-        GFF.write([b], handle)
+        for rec in b:
+          GFF.write([rec], handle)
