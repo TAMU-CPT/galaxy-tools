@@ -29,9 +29,9 @@ $fa
                 <param name="fa" value="simple-proteins.fa"/>
                 <param name="sar_min" value="15"/>
                 <param name="sar_max" value="20"/>
-                <output name="out_stat" file="candidate_SAR_stats_test.tsv"/>
-                <output name="out_fa" file="candidate_SAR_test.fa"/>
-                <output name="out_gff3" file="candidate_SAR_test.gff3"/>
+                <output name="out_stat" file="candidate_SAR_stats.tsv"/>
+                <output name="out_fa" file="candidate_SAR.fa"/>
+                <output name="out_gff3" file="candidate_SAR.gff3"/>
             </test>
         </tests>
     <help><![CDATA[
