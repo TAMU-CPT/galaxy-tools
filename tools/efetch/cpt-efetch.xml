@@ -37,7 +37,7 @@ python $__tool_directory__/cpt-efetch.py
         </inputs>
         <outputs>
             <collection name="output" type="list" label="EFetch results">
-                <discover_datasets pattern="(output_)" directory="results"/>
+                <discover_datasets pattern="__designation__" directory="results"/>
             </collection>
         </outputs>
         <tests>
