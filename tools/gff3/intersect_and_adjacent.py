@@ -9,9 +9,18 @@ from Bio.Seq import Seq
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-
 def treeFeatures(features, window):
     for feat in features:
+        # Interval(begin, end, data)
+        yield Interval(
+            int(feat.location.start) - int(window),
+            int(feat.location.end) + int(window),
+            feat.id,
+        )
+def treeFeatures_noRem(features, window):
+    for feat in features:
+        if feat.type == 'remark' or feat.type == 'annotation':
+          continue
         # Interval(begin, end, data)
         yield Interval(
             int(feat.location.start) - int(window),
@@ -45,6 +54,8 @@ def intersect(a, b, window, stranding):
           b_pos = []
           if stranding == True:
             for feat in rec_a_i.features:
+                if feat.type == 'remark' or feat.type == 'annotation':
+                  continue
                 if feat.strand > 0:
                     a_pos.append(
                         Interval(
@@ -63,6 +74,8 @@ def intersect(a, b, window, stranding):
                     )
 
             for feat in rec_b_i.features:
+                if feat.type == 'remark' or feat.type == 'annotation':
+                  continue
                 if feat.strand > 0:
                     b_pos.append(
                         Interval(
@@ -82,8 +95,8 @@ def intersect(a, b, window, stranding):
 
           if stranding == False:
             # builds interval tree from Interval objects of form (start, end, id) for each feature
-            tree_a = IntervalTree(list(treeFeatures(rec_a_i.features, window)))
-            tree_b = IntervalTree(list(treeFeatures(rec_b_i.features, window)))
+            tree_a = IntervalTree(list(treeFeatures_noRem(rec_a_i.features, window)))
+            tree_b = IntervalTree(list(treeFeatures_noRem(rec_b_i.features, window)))
           else:
             tree_a_pos = IntervalTree(a_pos)
             tree_a_neg = IntervalTree(a_neg)
