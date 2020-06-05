@@ -14,22 +14,14 @@ def gff3_from_SAR_dict(sar_dict,gff3_file):
         if sar_dict:
             #print(sar_dict)
             for name, data in sar_dict.items():
-                if len(data["TMD_"+str(data["biggest_sar"])]) > 1: # might need to be ["size"][-1]...dont remember if this will be ordered in reverse or not...
-                    values = []
-                    for idx, value in enumerate(data["TMD_"+str(data["biggest_sar"])][0]):
-                        values.append([idx,value])
-                    #print(values[1])
-                    print(values)
-                    min_idx = values[1][0]
-                else:
-                    min_idx = 0
+                min_idx = 0
                 f.writelines("##gff-version 3\n")
                 f.writelines(f"##sequence-region {name}\n")
                 n_start, n_end = split_seq_string(data["TMD_"+str(data["biggest_sar"])][min_idx][4])
                 sar_start, sar_end = split_seq_string(data["TMD_"+str(data["biggest_sar"])][min_idx][5])
                 c_start, c_end = split_seq_string(data["TMD_"+str(data["biggest_sar"])][min_idx][6])
-                f.writelines(f'{name}\tSAR_finder\tTopological domain\t{n_start}\t{n_end}\t.\t.\t.\tNote=N-terminus Charge is {data["TMD_"+str(data["biggest_sar"])][min_idx][2]}\n')
-                f.writelines(f'{name}\tSAR_finder\tSAR domain\t{sar_start}\t{sar_end}\t.\t.\t.\tNote=%{[perc for perc in data["TMD_"+str(data["biggest_sar"])][min_idx][3]]}\n')
+                f.writelines(f'{name}\tSAR_finder\tTopological domain\t{n_start}\t{n_end}\t.\t.\t.\tNote=N-terminal net charge is {data["TMD_"+str(data["biggest_sar"])][min_idx][2]}\n')
+                f.writelines(f'{name}\tSAR_finder\tSAR domain\t{sar_start}\t{sar_end}\t.\t.\t.\tNote=residue % in SAR {[perc for perc in data["TMD_"+str(data["biggest_sar"])][min_idx][3]]}\n')
                 f.writelines(f'{name}\tSAR_finder\tTopological domain\t{c_start}\t{c_end}\t.\t.\t.\tNote=C-terminus\n')
         else:
             f.writelines("##gff-version 3\n")
@@ -38,16 +30,20 @@ def gff3_from_SAR_dict(sar_dict,gff3_file):
 
 def tab_from_SAR_dict(sar_dict,stat_file,hydrophillic_res, sar_min, sar_max):
     """ convert SAR dict to a dataframe """
-    columns = ["Name","Protein Sequence","Protein Length","SAR Length","Putative SAR Sequence","SAR Start Location",[f"{res}%" for res in hydrophillic_res],"N-term Sequence","N-term net Charge"]
+    columns = ["Name","Protein Sequence","Protein Length","SAR Length","SAR Start","Putative SAR Sequence","SAR End",[f"{res}%" for res in hydrophillic_res],"N-term Sequence","N-term net Charge"] # using different residues for percent calc: [f"{res}%" for res in hydrophillic_res]
     with stat_file as f:
-        f.writelines(f"{columns[0]}\t{columns[1]}\t{columns[2]}\t{columns[3]}\t{columns[4]}\t{columns[5]}\t{columns[6]}\t{columns[7]}\t{columns[8]}\n")
+        f.writelines(f"{columns[0]}\t{columns[1]}\t{columns[2]}\t{columns[3]}\t{columns[4]}\t{columns[5]}\t{columns[6]}\t{columns[7]}\t{columns[8]}\t{columns[9]}\n")
         if sar_dict:
+            #print(sar_dict)
             for name, data in sar_dict.items():
                 for tmd_size in range(sar_max, sar_min-1, -1):
                     if "TMD_"+str(tmd_size) in data:
                         for each_match in data["TMD_"+str(tmd_size)]:
                             if each_match != [""]:
-                                f.writelines(f'{name}\t{data["sequence"]}\t{data["size"]}\t{tmd_size}\t{each_match[0]}\t{int(each_match[-1])+1}\t{[perc[1] for perc in each_match[3]]}\t{each_match[1]}\t{each_match[2]}\n')
+                                #print(each_match)
+                                #for perc in each_match[3]:
+                                #    print(perc)
+                                f.writelines(f'{name}\t{data["sequence"]}\t{data["size"]}\t{tmd_size}\t{int(each_match[7])+1}\t{each_match[0]}\t{int(each_match[8])+1}\t{[perc for perc in each_match[3]]}\t{each_match[1]}\t{each_match[2]}\n')
                             else:
                                 continue
 

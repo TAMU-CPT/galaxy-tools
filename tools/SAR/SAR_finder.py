@@ -30,13 +30,15 @@ if __name__ == "__main__":
     fa_dict = FASTA_parser(fa=args.fa).multifasta_dict()
 
     sars = {}
+
     for protein_name, protein_data in fa_dict.items():
         sar = CheckSequence(protein_name, protein_data)
         #sar.check_sizes(min=args.min,max=args.max)
         hydros = sar.shrink_results(sar_min=args.sar_min, sar_max=args.sar_max)
         sars.update(hydros)
     
+
     gff3_from_SAR_dict(sars, args.out_gff3)
-    tab_from_SAR_dict(sars,args.out_stat,"SGA",sar_min=args.sar_min, sar_max=args.sar_max)
+    tab_from_SAR_dict(sars,args.out_stat,"SGAT",sar_min=args.sar_min, sar_max=args.sar_max)
     fasta_from_SAR_dict(sars,args.out_fa)
     #stat_file_from_SAR_dict(sars,args.out_stat,sar_min=args.sar_min,sar_max=args.sar_max) # fix this whenever ready.
