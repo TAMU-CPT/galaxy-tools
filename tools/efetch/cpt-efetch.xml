@@ -37,7 +37,7 @@ python $__tool_directory__/cpt-efetch.py
         </inputs>
         <outputs>
             <collection name="output" type="list" label="EFetch results">
-                <discover_datasets pattern="__designation_and_ext__" directory="results"/>
+                <discover_datasets pattern="__designation__" directory="results"/>
             </collection>
         </outputs>
         <tests>
@@ -48,7 +48,7 @@ python $__tool_directory__/cpt-efetch.py
                 <param name="ret_type" value="fasta"/>
                 <param name="ret_format" value="individual"/>
                 <output_collection name="output" type="list">
-                    <element name="NC_001416.1">
+                    <element name="output_NC_001416.fasta">
                         <assert_contents>
                             <has_text_matching expression="lambda"/>
                         </assert_contents>

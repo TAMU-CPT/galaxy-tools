@@ -1,6 +1,6 @@
 # Overview
 > input: multi protein fasta file
-> output: multi fasta of positive candidates and a table summarizing the stats for each candidate with identifier, length of potential SAR, topology orientation, calculate %G and %A
+> output: multi fasta of positive candidates and a table summarizing the stats for each candidate with identifier, length of potential SAR, topology orientation, calculate % of hydrophillic residues.
 
 # Requirements
 * python 3.6+
@@ -40,7 +40,7 @@
 * `biopython_parsing.py`
     * _might scale to a_ sym link for parsing bio related files, otherwise will just be related to addressing this experiment.
 * `file_operations.py`
-    * _mich scale to a_ sym link for operating on files and exporting them, otherwise will just be related to addressing this experiment.
+    * _mich scale to a_ sym link for operating on files and exporting them, otherwise will just be related to addressing this experiment, and writing the outputs.
 
 # Testing
 * Mu (mu-proteins.fa) for a TP
