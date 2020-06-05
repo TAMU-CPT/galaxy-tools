@@ -32,7 +32,7 @@ class CheckSequence:
             return True
 
 
-    def check_hydrophobicity_and_charge(self,sar_min=15,sar_max=20,perc_residues="SGA"):
+    def check_hydrophobicity_and_charge(self,sar_min=15,sar_max=20,perc_residues="SGAT"):
         """ verifies the existence of a hydrophobic region within the sequence """
         hydrophobic_residues = "['FIWLVMYCATGS']" # fed through regex
         hits = self.store
@@ -47,27 +47,27 @@ class CheckSequence:
             for i in range(0,len(seq)-sar_size,1):
                 sar_seq = str(seq[i:i+sar_size])
                 if re.search((hydrophobic_residues+"{"+str(sar_size)+"}"),sar_seq):
-                    charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start = rep_funcs(self,seq,i,pos_res,neg_res,sar_seq,perc_residues,sar_size)
-                    storage_dict(self=self,sar_size=sar_size,sar_seq=sar_seq,hits=hits,charge_seq=charge_seq,charge=charge,perc_cont=perc_cont,nterm_coords=nterm_coords,sar_coords=sar_coords,cterm_coords=cterm_coords,sar_start=sar_start)
+                    charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start, sar_end = rep_funcs(self,seq,i,pos_res,neg_res,sar_seq,perc_residues,sar_size)
+                    storage_dict(self=self,sar_size=sar_size,sar_seq=sar_seq,hits=hits,charge_seq=charge_seq,charge=charge,perc_cont=perc_cont,nterm_coords=nterm_coords,sar_coords=sar_coords,cterm_coords=cterm_coords,sar_start=sar_start,sar_end=sar_end)
                     #print("TMDSIZE: {}\tINDEX: {}".format(sar_size,i+1))
                 elif "K" in sar_seq[0] and re.search((hydrophobic_residues+"{"+str(sar_size-1)+"}"),sar_seq[1:]): # check frontend snorkels
-                    charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start = rep_funcs(self,seq,i,pos_res,neg_res,sar_seq,perc_residues,sar_size)
-                    storage_dict(self=self,sar_size=sar_size,sar_seq=sar_seq,hits=hits,charge_seq=charge_seq,charge=charge,perc_cont=perc_cont,nterm_coords=nterm_coords,sar_coords=sar_coords,cterm_coords=cterm_coords,sar_start=sar_start)
+                    charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start, sar_end = rep_funcs(self,seq,i,pos_res,neg_res,sar_seq,perc_residues,sar_size)
+                    storage_dict(self=self,sar_size=sar_size,sar_seq=sar_seq,hits=hits,charge_seq=charge_seq,charge=charge,perc_cont=perc_cont,nterm_coords=nterm_coords,sar_coords=sar_coords,cterm_coords=cterm_coords,sar_start=sar_start,sar_end=sar_end)
                     #print("TMDSIZE: {}\tINDEX: {}".format(sar_size,i+1))
                 elif "K" in sar_seq[-1] and re.search((hydrophobic_residues+"{"+str(sar_size-1)+"}"),sar_seq[:-1]): # check backend snorkels
-                    charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start = rep_funcs(self,seq,i,pos_res,neg_res,sar_seq,perc_residues,sar_size)
-                    storage_dict(self=self,sar_size=sar_size,sar_seq=sar_seq,hits=hits,charge_seq=charge_seq,charge=charge,perc_cont=perc_cont,nterm_coords=nterm_coords,sar_coords=sar_coords,cterm_coords=cterm_coords,sar_start=sar_start)
+                    charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start, sar_end = rep_funcs(self,seq,i,pos_res,neg_res,sar_seq,perc_residues,sar_size)
+                    storage_dict(self=self,sar_size=sar_size,sar_seq=sar_seq,hits=hits,charge_seq=charge_seq,charge=charge,perc_cont=perc_cont,nterm_coords=nterm_coords,sar_coords=sar_coords,cterm_coords=cterm_coords,sar_start=sar_start,sar_end=sar_end)
                     #print("TMDSIZE: {}\tINDEX: {}".format(sar_size,i+1))
                 continue
         
         return hits
 
-    def shrink_results(self,sar_min=15,sar_max=20,perc_residues="SGA"):
+    def shrink_results(self,sar_min=15,sar_max=20,perc_residues="SGAT"):
         """ removes repetiive hits, keeps only the shortest and longest of each SAR domain """
         compare_candidates = {}
-        hits = self.check_hydrophobicity_and_charge()
+        hits = self.check_hydrophobicity_and_charge(sar_min=sar_min,sar_max=sar_max)
         for sar_name, data in hits.items():
-            print(sar_name)
+            #print(sar_name)
             compare_candidates[sar_name] = {}
             #print("\nThese are the values: {}".format(v))
             #count_of_times = 0
@@ -75,20 +75,21 @@ class CheckSequence:
             for sar_size in range(sar_max,sar_min-1,-1):
                 if "TMD_"+str(sar_size) in data:
                     tmd_log.append(sar_size)
-                    #print(tmd_log) 
-                    #print(data["TMD_"+str(sar_size)])
+                    #print(tmd_log)
                     for idx,the_data in enumerate(data["TMD_"+str(sar_size)]):
+                        #print(the_data[7])
+                        #print(the_data)
                         #print(f"This is the index: {idx}")
                         #print(f"This is the list of data at this index: {the_data}")
-                        if the_data[-1] in compare_candidates[sar_name]:
-                            compare_candidates[sar_name][the_data[-1]]["count"] += 1
-                            compare_candidates[sar_name][the_data[-1]]["size"].append(sar_size)
-                            compare_candidates[sar_name][the_data[-1]]["index"].append(idx)
+                        if the_data[7] in compare_candidates[sar_name]: # index to start
+                            compare_candidates[sar_name][the_data[7]]["count"] += 1
+                            compare_candidates[sar_name][the_data[7]]["size"].append(sar_size)
+                            compare_candidates[sar_name][the_data[7]]["index"].append(idx)
                         else:
-                            compare_candidates[sar_name][the_data[-1]] = {}
-                            compare_candidates[sar_name][the_data[-1]]["count"] = 1 
-                            compare_candidates[sar_name][the_data[-1]]["size"] = [sar_size]
-                            compare_candidates[sar_name][the_data[-1]]["index"] = [idx]
+                            compare_candidates[sar_name][the_data[7]] = {}
+                            compare_candidates[sar_name][the_data[7]]["count"] = 1
+                            compare_candidates[sar_name][the_data[7]]["size"] = [sar_size]
+                            compare_candidates[sar_name][the_data[7]]["index"] = [idx]
             hits[sar_name]["biggest_sar"] = tmd_log[0]
         for sar_name, compare_data in compare_candidates.items():
             for data in compare_data.values():
@@ -116,15 +117,16 @@ def rep_funcs(self,seq,loc,pos_res,neg_res,sar_seq,perc_residues,sar_size):
     charge = charge_check(charge_seq,pos_res,neg_res)
     perc_cont = percent_calc(sar_seq,perc_residues,int(sar_size))
     sar_start = loc
+    sar_end = loc + sar_size
     sar_coords = "{}..{}".format(loc,loc+sar_size)
     nterm_coords = "{}..{}".format("0",loc-1)
     cterm_coords = "{}..{}".format(loc+sar_size+1,self.size)
 
-    return charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start
+    return charge_seq, charge, perc_cont, sar_coords, nterm_coords, cterm_coords, sar_start, sar_end
 
 
 ### Extra "helper" functions
-def storage_dict(self,sar_size,sar_seq,hits,charge_seq,charge,perc_cont,nterm_coords,sar_coords,cterm_coords,sar_start): # probably not good to call "self" a param here...definitley not PEP approved...
+def storage_dict(self,sar_size,sar_seq,hits,charge_seq,charge,perc_cont,nterm_coords,sar_coords,cterm_coords,sar_start,sar_end): # probably not good to call "self" a param here...definitley not PEP approved...
     """ organize dictionary for hydrophobicity check """
     if self.name not in hits:
         hits[self.name] = {}
@@ -135,15 +137,15 @@ def storage_dict(self,sar_size,sar_seq,hits,charge_seq,charge,perc_cont,nterm_co
         #hits[self.name]["GAcont"] = "{:.2f}%".format(float(GAcont))
         if "TMD_"+str(sar_size) not in hits[self.name]:
             hits[self.name]["TMD_"+str(sar_size)] = []
-            hits[self.name]["TMD_"+str(sar_size)].append([sar_seq,charge_seq,charge,perc_cont,nterm_coords,sar_coords,cterm_coords,sar_start])
+            hits[self.name]["TMD_"+str(sar_size)].append([sar_seq,charge_seq,charge,perc_cont,nterm_coords,sar_coords,cterm_coords,sar_start,sar_end])
         else:
-            hits[self.name]["TMD_"+str(sar_size)].append([sar_seq,charge_seq,charge,perc_cont,nterm_coords,sar_coords,cterm_coords,sar_start])
+            hits[self.name]["TMD_"+str(sar_size)].append([sar_seq,charge_seq,charge,perc_cont,nterm_coords,sar_coords,cterm_coords,sar_start,sar_end])
     else:
         if "TMD_"+str(sar_size) not in hits[self.name]:
             hits[self.name]["TMD_"+str(sar_size)] = []
-            hits[self.name]["TMD_"+str(sar_size)].append([sar_seq,charge_seq,charge,perc_cont,nterm_coords,sar_coords,cterm_coords,sar_start])
+            hits[self.name]["TMD_"+str(sar_size)].append([sar_seq,charge_seq,charge,perc_cont,nterm_coords,sar_coords,cterm_coords,sar_start,sar_end])
         else:
-            hits[self.name]["TMD_"+str(sar_size)].append([sar_seq,charge_seq,charge,perc_cont,nterm_coords,sar_coords,cterm_coords,sar_start]) 
+            hits[self.name]["TMD_"+str(sar_size)].append([sar_seq,charge_seq,charge,perc_cont,nterm_coords,sar_coords,cterm_coords,sar_start,sar_end]) 
 
 
 def percent_calc(sequence,residues,size):
@@ -165,7 +167,7 @@ def percent_calc(sequence,residues,size):
         ratio = residue_amt/size
         my_ratios.append((round(ratio*100,2)))
     
-    res_rat = zip(residues,my_ratios)
+    res_rat = list(zip(residues,my_ratios))
 
     return res_rat
 
