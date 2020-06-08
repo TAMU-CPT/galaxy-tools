@@ -52,6 +52,8 @@ def intersect(a, b, window, stranding):
           a_pos = []
           b_neg = []
           b_pos = []
+          tree_a = []
+          tree_b = []
           if stranding == True:
             for feat in rec_a_i.features:
                 if feat.type == 'remark' or feat.type == 'annotation':
@@ -93,15 +95,40 @@ def intersect(a, b, window, stranding):
                         )
                     )
 
-          if stranding == False:
-            # builds interval tree from Interval objects of form (start, end, id) for each feature
-            tree_a = IntervalTree(list(treeFeatures_noRem(rec_a_i.features, window)))
-            tree_b = IntervalTree(list(treeFeatures_noRem(rec_b_i.features, window)))
           else:
+            for feat in rec_a_i.features:
+              if feat.type == 'remark' or feat.type == 'annotation':
+                  continue
+              tree_a.append(
+                Interval(
+                            int(feat.location.start) - int(window),
+                            int(feat.location.end) + int(window),
+                            feat.id,
+                        )
+              )
+            for feat in rec_b_i.features:
+              if feat.type == 'remark' or feat.type == 'annotation':
+                  continue
+              tree_b.append(
+                Interval(
+                            int(feat.location.start) - int(window),
+                            int(feat.location.end) + int(window),
+                            feat.id,
+                        )
+              )
+          if stranding:
+            # builds interval tree from Interval objects of form (start, end, id) for each feature
+           # tree_a = IntervalTree(list(treeFeatures_noRem(rec_a_i.features, window)))
+            #tree_b = IntervalTree(list(treeFeatures_noRem(rec_b_i.features, window)))
+          #else:
             tree_a_pos = IntervalTree(a_pos)
             tree_a_neg = IntervalTree(a_neg)
             tree_b_pos = IntervalTree(b_pos)
             tree_b_neg = IntervalTree(b_neg)
+          else:
+            tree_a = IntervalTree(tree_a)
+            tree_b = IntervalTree(tree_b)
+            
 
           # Used to map ids back to features later
           rec_a_map = {f.id: f for f in rec_a_i.features}
@@ -114,9 +141,13 @@ def intersect(a, b, window, stranding):
             # Save each feature in rec_a that overlaps a feature in rec_b
             # hits = tree_b.find_range((int(feature.location.start), int(feature.location.end)))
 
+            if feature.type == "remark" or feature.type == "annotation":
+              continue
+
             if stranding == False:
                 hits = tree_b[int(feature.location.start) : int(feature.location.end)]
-
+                
+                
                 # feature id is saved in interval result.data, use map to get full feature
                 for hit in hits:
                     rec_a_hits_in_b.append(rec_b_map[hit.data])
@@ -136,6 +167,9 @@ def intersect(a, b, window, stranding):
                         rec_a_hits_in_b.append(rec_b_map[hit.data])
 
           for feature in rec_b_i.features:
+            if feature.type == "remark" or feature.type == "annotation":
+              continue
+
             if stranding == False:
                 hits = tree_a[int(feature.location.start) : int(feature.location.end)]
 
