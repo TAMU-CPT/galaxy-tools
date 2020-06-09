@@ -184,4 +184,4 @@ if __name__ == "__main__":
         print(fold)
     
     resultsfiles = [f for f in os.listdir("results") if os.path.isfile(os.path.join("results",f))]
-    print(f"files in results: {resultsfiles}")
+    print("files in results: " +str(resultsfiles))
