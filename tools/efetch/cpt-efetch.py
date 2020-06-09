@@ -173,3 +173,13 @@ if __name__ == "__main__":
             awk_files(str(args.ret_type),output="outputMulti"+str(args.ret_type))
     print("---finish---")
     print(os.getcwd())
+
+    ### Test for subdirs
+    folders = []
+    for r, d, f in os.walk(os.getcwd()):
+        for folder in d:
+            folders.append(os.path.join(r, folder))
+    
+    for fold in folders:
+        print(fold)
+
