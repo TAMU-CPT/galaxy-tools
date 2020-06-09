@@ -17,6 +17,7 @@ python $__tool_directory__/adjacent_features.py
 -upOut $upstreamOut
 -downOut $downstreamOut
 $translate
+$forceID
 $mode
 --forward $ahead
 --behind $back
@@ -71,6 +72,7 @@ $mode
     <param label="Number of features upstream to return" name="ahead" type="integer" value="1"/>
     <param label="Number of features downstream to return" name="back" type="integer" value="1"/>
     <param label="Translate output to protein sequence" name="translate" type="boolean" truevalue="--outProt" falsevalue=""/>
+    <param label="Genbank Protein's ID must also match Fasta Sequence's ID " name="forceID" type="boolean" truevalue="--forceSeqID" falsevalue=""/>
     <param name="mode" type="select" label="Mode">
       <option value="--genesOnly">Search only Gene-type features</option>
       <option value="--cdsOnly">Search only CDS-type features</option>

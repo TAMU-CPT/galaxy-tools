@@ -19,6 +19,7 @@ def extract_features(
     downOut=None,
     genesOnly=False,
     cdsOnly=True,
+    forceSeqID=False,
     forward=1,
     behind=1,
     outProt=True,
@@ -80,7 +81,7 @@ def extract_features(
                         "++++++++"
                     ]  # Junk value for genesOnly flag
 
-                if (gSeq == fSeq) or (protID == feat.qualifiers["protein_id"][0]):
+                if (gSeq == fSeq) and (protID == feat.qualifiers["protein_id"][0] or forceSeqID == False):
                     goBack = num - 1
                     goAhead = num + 1
                     numBack = behind
@@ -402,6 +403,11 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--cdsOnly",
+        action="store_true",
+        help="Search and return only CDS type features",
+    )
+    parser.add_argument(
+        "--forceSeqID",
         action="store_true",
         help="Search and return only CDS type features",
     )
