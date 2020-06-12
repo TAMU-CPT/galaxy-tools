@@ -601,6 +601,10 @@ class Misty(object):
         current_sum_width = MONTAGE_BORDER
         current_sum_height = MONTAGE_BORDER
 
+        convert_arguments_top+= [
+            "-rotate",
+            "90"
+        ]
         # Top side
         for j in range(len(self.matrix_data[0])):
             subplot = self.matrix_data[0][j]["subplot"]
@@ -613,7 +617,10 @@ class Misty(object):
             ]
             current_sum_width += subplot.get_thumb_dims()[0] + (2 * IMAGE_BORDER)
             log.debug("CSW %s", current_sum_width)
-
+        convert_arguments_top+= [
+            "-rotate",
+            "-90"
+        ]
         # Left side
         for i in range(len(self.matrix_data)):
             subplot = self.matrix_data[i][0]["subplot"]
