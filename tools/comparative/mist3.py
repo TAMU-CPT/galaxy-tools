@@ -1,4 +1,4 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python
 import argparse
 import time
 import tempfile
@@ -17,7 +17,7 @@ logging.basicConfig(level=logging.INFO, format=FORMAT)
 log = logging.getLogger("mist")
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
-MONTAGE_BORDER = 50
+MONTAGE_BORDER = 80
 IMAGE_BORDER = 2
 
 MONTAGE_BORDER_COORD = "%sx%s" % (MONTAGE_BORDER, MONTAGE_BORDER)
@@ -190,6 +190,8 @@ class Subplot(object):
 
         half_height = (original_dims[1] / 2) + MONTAGE_BORDER + IMAGE_BORDER
         half_width = (original_dims[0] / 2) + MONTAGE_BORDER + IMAGE_BORDER
+
+        restoreBorder = MONTAGE_BORDER
 
         def char_width(font_size):
             """approximate pixel width of a single character at Xpt font
@@ -540,6 +542,12 @@ class Misty(object):
                 image_list.append(subplot.thumb_path)
 
         # Montage step
+        global MONTAGE_BORDER
+        global MONTAGE_BORDER_COORD
+        for rec in self.records:
+            MONTAGE_BORDER = max(MONTAGE_BORDER, (len(rec.id) * 12) + 4)
+        MONTAGE_BORDER_COORD = "%sx%s" % (MONTAGE_BORDER, MONTAGE_BORDER)
+
         m0 = os.path.join(self.tmpdir, "m0.png")
         cmd = ["montage"] + image_list
         cmd += [
@@ -603,7 +611,7 @@ class Misty(object):
 
         convert_arguments_top+= [
             "-rotate",
-            "90"
+            "-90"
         ]
         # Top side
         for j in range(len(self.matrix_data[0])):
@@ -612,23 +620,27 @@ class Misty(object):
                 "-fill",
                 LABEL_COLOUR,
                 "-annotate",
-                "+%s+40" % current_sum_width,
+                "-%s+%s" % (0, str(cumulative_width - current_sum_width -(subplot.get_thumb_dims()[0]/2) + (2 * MONTAGE_BORDER) + IMAGE_BORDER)),
                 subplot.j.header,
             ]
             current_sum_width += subplot.get_thumb_dims()[0] + (2 * IMAGE_BORDER)
             log.debug("CSW %s", current_sum_width)
         convert_arguments_top+= [
             "-rotate",
-            "-90"
+            "90"
         ]
         # Left side
+        #convert_arguments_left += [
+        #    "-rotate",
+        #    "90"
+        #]
         for i in range(len(self.matrix_data)):
             subplot = self.matrix_data[i][0]["subplot"]
             convert_arguments_left += [
                 "-fill",
                 LABEL_COLOUR,
                 "-annotate",
-                "+%s+%s" % (current_sum_height, left_offset),
+                "+2+%s" % str(current_sum_height + (subplot.get_thumb_dims()[1]/2.0) + IMAGE_BORDER),
                 "\n" + subplot.i.header,
             ]
             current_sum_height += subplot.get_thumb_dims()[1] + (2 * IMAGE_BORDER)
@@ -637,15 +649,15 @@ class Misty(object):
         cmd = [
             "convert",
             base_path,
-            "-rotate",
-            "-90",
+       #     "-rotate",
+       #     "-90",
             "-pointsize",
             "20",
             "-font",
             TYPEFONT,
         ]
         cmd += convert_arguments_left
-        cmd += ["-rotate", "90"]
+       # cmd += ["-rotate", "90"]
         cmd += convert_arguments_top
 
         output_path = os.path.join(self.tmpdir, "large.png")
@@ -653,7 +665,7 @@ class Misty(object):
             "-pointsize",
             "14",
             "-annotate",
-            "+%s+%s" % (2, current_sum_height + 15),
+            "+2+%s" % str(current_sum_height + 40),
             CREDITS,
             output_path,
         ]
