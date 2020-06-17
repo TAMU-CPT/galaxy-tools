@@ -26,6 +26,7 @@ $fasta_file
 --putative_isp $putative_isp
 --summary_isp_txt $summary_isp
 --putative_isp_gff $putative_isp_gff
+--isp_max $isp_max
 
 ]]></command>
     <inputs>
@@ -36,6 +37,7 @@ $fasta_file
     </param>
         <param label="FASTA" name="fasta_file" type="data" format="fasta" />
 	<param label="i-spanin minimal length" name="isp_min_len" type="integer" value="60" />
+    <param label="i-spanin maximum length" name="isp_max" type="integer" value="230" />
     <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1000:2000)" type="text" name="switch" value="all" />
         <param label="TMD minimal distance from start codon" name="isp_min_dist" type="integer" value="10" />
 	<param label="TMD maximum distance from start codon" name="isp_max_dist" type="integer" value="30" help="Searches for a TMD between TMDmin and TMDmax ie [TMDmin,TMDmax]" />

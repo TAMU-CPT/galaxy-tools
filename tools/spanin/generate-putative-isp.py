@@ -166,6 +166,14 @@ if __name__ == "__main__":
         help="gff3 output for putative i-spanins",
     )
 
+    parser.add_argument(
+        "--max_isp",
+        dest="max_isp",
+        default=230,
+        help="Maximum size of the ISP",
+        type=int,
+    )
+
     # parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
     the_args = vars(parser.parse_args())
@@ -192,21 +200,23 @@ if __name__ == "__main__":
     # print(pairs)
 
     have_tmd = []  # empty candidates list to be passed through the user input criteria
+
     for (
         each_pair
     ) in (
         pairs
     ):  # grab transmembrane domains from spaninFuncts (queries for lysin snorkels # and a range of hydrophobic regions that could be TMDs)
-        try:
-            have_tmd += find_tmd(
-                pair=each_pair,
-                minimum=args.isp_min_dist,
-                maximum=args.isp_max_dist,
-                TMDmin=args.min_tmd_size,
-                TMDmax=args.max_tmd_size,
-            )
-        except TypeError:
-            continue
+        if len(each_pair[1]) <= args.max_isp:
+            try:
+                have_tmd += find_tmd(
+                    pair=each_pair,
+                    minimum=args.isp_min_dist,
+                    maximum=args.isp_max_dist,
+                    TMDmin=args.min_tmd_size,
+                    TMDmax=args.max_tmd_size,
+                )
+            except TypeError:
+                continue
 
     if args.switch == "all":
         pass

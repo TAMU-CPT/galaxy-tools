@@ -161,6 +161,14 @@ if __name__ == "__main__":
         help="gff3 output for putative o-spanins",
     )
 
+    parser.add_argument(
+        "--max_osp",
+        dest="max_osp",
+        default=200,
+        help="Maximum size of the OSP",
+        type=int,
+    )
+
     # parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
 
@@ -193,15 +201,16 @@ if __name__ == "__main__":
     have_lipo = []  # empty candidates list to be passed through the user input
 
     for each_pair in pairs:
-        try:
-            have_lipo += find_lipobox(
-                pair=each_pair,
-                minimum=args.osp_min_dist,
-                maximum=args.osp_max_dist,
-                regex=args.pattern,
-            )
-        except (IndexError, TypeError):
-            continue
+        if len(each_pair[1]) <= args.max_osp:
+            try:
+                have_lipo += find_lipobox(
+                    pair=each_pair,
+                    minimum=args.osp_min_dist,
+                    maximum=args.osp_max_dist,
+                    regex=args.pattern,
+                )
+            except (IndexError, TypeError):
+                continue
 
     if args.switch == "all":
         pass
