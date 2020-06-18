@@ -9,7 +9,7 @@ from Bio.Seq import Seq
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-def validFeat(rec)
+def validFeat(rec):
     for feat in rec.features:
       if feat.type != 'remark' and feat.type != 'annotation:
         return True
@@ -49,7 +49,7 @@ def intersect(a, b, window, stranding):
           rec_a_i = rec_a[iterate]
           rec_b_i = rec_b[iterate]
  
-          if (not validFeat(rec_a_i)) and (not validFeat(rec_b_i)):
+          if (not validFeat(rec_a_i)) or (not validFeat(rec_b_i)):
             rec_a_out.append(SeqRecord(rec_a[iterate].seq, rec_a[iterate].id, rec_a[iterate].name, rec_a[iterate].description, rec_a[iterate].dbxrefs, []))
             rec_b_out.append(SeqRecord(rec_b[iterate].seq, rec_b[iterate].id, rec_b[iterate].name, rec_b[iterate].description, rec_b[iterate].dbxrefs, []))
             iterate += 1
