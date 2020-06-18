@@ -40,11 +40,14 @@ def tab_from_SAR_dict(sar_dict,stat_file,hydrophillic_res, sar_min, sar_max):
                     if "TMD_"+str(tmd_size) in data:
                         for each_match in data["TMD_"+str(tmd_size)]:
                             if each_match != [""]:
+                                print(f"{name} - {data}")
                                 #print(each_match)
                                 #for perc in each_match[3]:
                                 #    print(perc)
-                                print(each_match[3])
-                                f.writelines(f'{name}\t{data["sequence"]}\t{data["size"]}\t{tmd_size}\t{int(each_match[7])+1}\t{each_match[0]}\t{int(each_match[8])+1}\t{[perc for perc in each_match[3]]}\t{round(sum(j for i,j in each_match[3]),2)}\t{each_match[1][1]}\t{each_match[2]}\n')
+                                try:
+                                    f.writelines(f'{name}\t{data["sequence"]}\t{data["size"]}\t{tmd_size}\t{int(each_match[7])+1}\t{each_match[0]}\t{int(each_match[8])+1}\t{[perc for perc in each_match[3]]}\t{round(sum(j for i,j in each_match[3]),2)}\t{each_match[1][1]}\t{each_match[2]}\n')
+                                except IndexError:
+                                    f.writelines(f'ERROR\tERROR\tERROR\tERROR\tERROR\tERROR\tERROR\tERROR\tERROR\tERROR\tERROR\n')
                             else:
                                 continue
 
