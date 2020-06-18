@@ -50,7 +50,6 @@ def intersect(a, b, window, stranding):
           rec_b_i = rec_b[iterate]
 
           if (not validFeat(rec_a_i)) or (not validFeat(rec_b_i)):
-            print("No Feat loop")
             rec_a_out.append(SeqRecord(rec_a[iterate].seq, rec_a[iterate].id, rec_a[iterate].name, rec_a[iterate].description, rec_a[iterate].dbxrefs, [], rec_a[iterate].annotations))
             rec_b_out.append(SeqRecord(rec_b[iterate].seq, rec_b[iterate].id, rec_b[iterate].name, rec_b[iterate].description, rec_b[iterate].dbxrefs, [], rec_b[iterate].annotations))
             iterate += 1
