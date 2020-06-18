@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 def validFeat(rec):
     for feat in rec.features:
-      if feat.type != 'remark' and feat.type != 'annotation:
+      if feat.type != 'remark' and feat.type != 'annotation':
         return True
     return False
 
