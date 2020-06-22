@@ -161,7 +161,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 
                 qc_features.append(
                     gen_qc_feature(
-                        rbs.location.start,
+                        rbs.location.start + 1,
                         rbs.location.end,
                         gene.__message,
                         strand=gene.strand,
