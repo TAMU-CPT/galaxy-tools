@@ -927,7 +927,11 @@ def evaluate_and_report(
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
     # Get the first GFF3 record
     # TODO: support multiple GFF3 files.
-    record = list(GFF.parse(annotations, base_dict=seq_dict))[0]
+    mostFeat = 0
+    for rec in list(GFF.parse(annotations, base_dict=seq_dict)):
+      if len(rec.features) > mostFeat:
+        mostFeat = len(rec.features)
+        record = rec
 
     gff3_qc_record = SeqRecord(record.id, id=record.id)
     gff3_qc_record.features = []
