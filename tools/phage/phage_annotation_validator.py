@@ -135,7 +135,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 
             qc_features.append(
                 gen_qc_feature(
-                    start + 1, end, "Missing RBS", strand=gene.strand, id_src=gene
+                    start, end, "Missing RBS", strand=gene.strand, id_src=gene
                 )
             )
 
@@ -171,6 +171,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 
                 bad += 1
                 results.append(gene)
+                results[-1].location.start += 1
             else:
                 good += 1
 
@@ -728,9 +729,10 @@ def weird_starts(record):
                 e = seq.location.end - 3
 
             results.append(seq)
+            results[-1].location.start += 1
             qc_features.append(
                 gen_qc_feature(
-                    s + 1, e, "Weird start codon", strand=seq.strand, id_src=gene
+                    s, e, "Weird start codon", strand=seq.strand, id_src=gene
                 )
             )
             bad += 1
