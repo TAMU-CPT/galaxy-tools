@@ -24,7 +24,7 @@ $svg
 #elif $scheme.cs == "rbgb":
 --aa KR ED P C HSQTNYAVILMFWG
 --fgColor "#ffffff" "#ffffff" "#ffffff" "#ffffff" "#000000"
---bgColor "#00b0f0" "#fc0000" "#1cb026" "#7a6246" "#000000"
+--bgColor "#00b0f0" "#fc0000" "#1cb026" "#7a6246" "#ffffff"
 #else:
 	--aa
 	#for group in $scheme.groups:
