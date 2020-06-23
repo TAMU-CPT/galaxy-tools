@@ -52,6 +52,7 @@ $svg
 			<param label="Colour scheme" name="cs" type="select">
 				<option value="default">Default hyrophobic/polar/charged</option>
 				<option value="rb">Positives Blue, Negatives Red</option>
+                <option value="rbgb">Positives Blue, Negatives Red, Prolines Green, Cysteines Brown</option>
 				<option value="custom">Custom Colour Scheme</option>
 			</param>
 			<when value="default" />
