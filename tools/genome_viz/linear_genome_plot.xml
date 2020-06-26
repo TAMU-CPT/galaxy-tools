@@ -38,8 +38,8 @@ $label_above
         <param label="Multi FASTA File" name="input_file" type="data" format="fasta" />
         <param label="Plot Width" name="plot_width" type="int" default="40" help="Width of the plot. Increase for larger genomes." />
         <param label="Plot Height" name="plot_height" type="int" default="4" help="Height of the plot." hidden="true" />
-        <param label="Features to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by commas." />
-        <param label="Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein)" />
+        <param label="Features to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by comma(s)." />
+        <param label="Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein). Separate by commas" />
         <param label="ALL labels above Gene" name="label_above" type="boolean" help="number schema subscripts" truevalue="--label_above" falsevalue=""/>
         <conditional name="selectregion">
             <param label="Select Custom Region" name="custom_region" type="boolean" default="false" />
