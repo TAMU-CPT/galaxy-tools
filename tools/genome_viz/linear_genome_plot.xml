@@ -1,0 +1,95 @@
+<tool id="edu.tamu.cpt.sar.sar_finder" name="SAR Finder" version="1.0">
+    <description>SAR Domain Finder</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+    </expand>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/linear_genome_plot.py
+$input_file
+-plot_width $plot_width
+--features_excluded $features_excluded
+--ignore_labeling $ignore_labeling
+$label_above
+#if $selectregion.custom_region
+    --sz $custom_region.start_zoom
+    --ez $custom_region.end_zoom
+    --st $custom_region.start_translate
+    --et $custom_region.end_translate
+#end if
+#if $custom_feature_colors.custom_feature_colors_bool
+    #for $feature_color in $feature_colors.feature_color_selector:
+        --feature_id $feature_color.feature_id
+        --feature_id_color $feature_color.feature_id_color
+    #end for
+#end if
+#if $custom_gene_colors.custom_gene_colors_bool
+    #for $gene_color in $gene_colors.gene_color_selector:
+        --gene_id $gene_color.gene_id
+        --gene_id_color $gene_color.gene_id_color
+    #end for
+#end if
+
+--file_stats $file_stats
+--out_img $out_img
+    ]]></command>
+    <inputs>
+        <param label="Multi FASTA File" name="input_file" type="data" format="fasta" />
+        <param label="Plot Width" name="plot_width" type="int" default="40" help="Width of the plot. Increase for larger genomes." />
+        <param label="Plot Height" name="plot_height" type="int" default="4" help="Height of the plot." hidden="true" />
+        <param label="Features to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by commas." />
+        <param label="Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein)" />
+        <param label="ALL labels above Gene" name="label_above" type="boolean" help="number schema subscripts" truevalue="--label_above" falsevalue=""/>
+        <conditional name="selectregion">
+            <param label="Select Custom Region" name="custom_region" type="boolean" default="false" />
+            <when value="true">
+                <param name="start_zoom" label="Start Zoom" type="int" help="(--sz)" />
+                <param name="end_zoom" label="End Zoom" type="int" help="(--ez)" />
+                <param name="start_translate" label="Start Translation Site" type="int" help="(--st)" />
+                <param name="end_translate" label="End Translation Site" type="int" help="(--et)" />
+            </when>
+            <when value="false">
+            </when>
+        </conditional>
+        <conditional name="custom_feature_colors">
+            <param label="Custom Feature Colors" name="custom_feature_colors_bool" type="boolean" default="false" />
+            <when value="true">
+                <repeat name="feature_colors" title="Feature Colors">
+                    <conditional name="feature_color_selector">
+                        <param name="feature_id" label="Feature Name" type="txt" help="feature name. Example: CDS" />
+                        <param name="feature_id_color" label="Feature Color" type="color" />
+                    </conditional>
+                </repeat>
+            <when value="false">
+            </when>
+        </conditional>
+    </inputs>
+    <outputs>
+        <data format="txt" name="file_stats" label="file_stats.txt" />
+        <data format="svg" name="out_img" label="genome_plot.svg" />
+    </outputs>
+        <tests>
+            <test>
+            </test>
+        </tests>
+    <help><![CDATA[
+ALPHA VERSION
+
+Genome Plot
+
+Output:
+* file_stats will output the different 
+    ]]></help>
+    <citations>
+        <citation type="doi">https://doi.org/10.1101/2020.01.09.900589</citation>
+        <citation type="bibtex">
+            @unpublished{galaxyTools,
+            author = {C. Ross},
+            title = {CPT Galaxy Tools},
+            year = {2020-},
+            note = {https://github.com/tamu-cpt/galaxy-tools/}
+            }
+        </citation>
+    </citations>
+</tool>
