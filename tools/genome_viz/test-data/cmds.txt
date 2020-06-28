@@ -1,4 +1,4 @@
-python linear_genome_plot.py test-data/mu_reanno.gb --feature_id CDS --feature_id_color blue --feature_id gene --feature_id_color green --feature_id RBS --feature_id_color red --features_excluded misc_feature,misc_difference --ignore_labeling "hypothetical protein,uncharacterized protein"
+python linear_genome_plot.py test-data/mu_reanno.gb --feature_id CDS --feature_id_color blue --feature_id gene --feature_id_color green --feature_id RBS --feature_id_color red --features_excluded misc_feature,misc_difference --ignore_labeling "hypothetical protein,uncharacterized protein" --feature_label_order "locus_tag"
 
 python linear_genome_plot.py test-data/mu_reanno.gb --feature_id CDS --feature_id_color blue --feature_id gene --feature_id_color green --feature_id RBS --feature_id_color red
 
