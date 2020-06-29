@@ -20,19 +20,14 @@ $label_above
     --st $custom_region.start_translate
     --et $custom_region.end_translate
 #end if
-#if $custom_feature_colors.custom_feature_colors_bool
-    #for $feature_color in $feature_colors.feature_color_selector:
-        --feature_id $feature_color.feature_id
-        --feature_id_color $feature_color.feature_id_color
-    #end for
-#end if
-#if $custom_gene_colors.custom_gene_colors_bool
-    #for $gene_color in $gene_colors.gene_color_selector:
-        --gene_id $gene_color.gene_id
-        --gene_id_color $gene_color.gene_id_color
-    #end for
-#end if
-
+#for $feature_color in $feature_colors.feature_color_selector:
+    --feature_id $feature_color.feature_id
+    --feature_id_color $feature_color.feature_id_color
+#end for
+#for $gene_color in $gene_colors.gene_color_selector:
+    --gene_id $gene_color.gene_id
+    --gene_id_color $gene_color.gene_id_color
+#end for
 --file_stats $file_stats
 --out_img $out_img
     ]]></command>
