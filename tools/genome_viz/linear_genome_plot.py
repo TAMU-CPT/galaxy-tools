@@ -145,7 +145,7 @@ if __name__ == "__main__":
     print(ignored_gene_labels)
 
     ## Part III ; PLOT
-    if args.label_above:
+    rc_context({"font.family": ["monospace"],})
         above = True
     else:
         above = False
