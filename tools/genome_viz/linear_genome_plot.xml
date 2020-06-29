@@ -86,13 +86,13 @@ $label_above
                 <param name="ignore_labeling" value="uncharacterized protein" />
                 <param name="title" value="Mu Test Plot" />
                 <parm name="feature_label_order" value="product" />
-                <repeat name="feature_colors" />
+                <repeat name="feature_colors" >
                     <conditional name="custom_feature_colors" >
                         <param name="feature_id" value="CDS" />
                         <param name="feature_id_color" value="#FFFFFF" />
                     </conditional>
                 </repeat>
-                <repeat name="feature_colors" />
+                <repeat name="feature_colors" >
                     <conditional name="custom_feature_colors" >
                         <param name="feature_id" value="RBS" />
                         <param name="feature_id_color" value="#CD5C5C" />
