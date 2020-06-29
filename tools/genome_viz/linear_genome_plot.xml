@@ -80,6 +80,7 @@ $label_above
     </outputs>
         <tests>
             <test>
+                <param name="input_file" value="mu_reanno.gb" />
                 <param name="plot_width" value="25" />
                 <param name="features_excluded" value="misc_feature,misc_difference,source,gene" />
                 <param name="ignore_labeling" value="uncharacterized protein" />
