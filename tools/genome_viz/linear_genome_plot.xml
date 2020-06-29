@@ -60,17 +60,17 @@ $label_above
                 <param name="feature_color_options" type="select" label="Feature Color Options">
                     <option value="none" selected="false"></option>
                     <option value="add_colors" selected="false">Add Custom Colors</option>
-                    <when value="add_colors">
-                        <param name="feature_id" label="Feature Name" type="text" help="Feature name. Example: CDS. Case Sensitive." />
-                        <param name="feature_id_color" label="Feature Color" type="color" value="#FFFFFF" >
-                            <sanitizer>
-                                <valid initial="string.ascii_letters,string.digits">
-                                    <add value="#" />
-                                </valid>
-                            </sanitizer>
-                        </param>
-                    </when>
                 </param>
+                <when value="add_colors">
+                    <param name="feature_id" label="Feature Name" type="text" help="Feature name. Example: CDS. Case Sensitive." />
+                    <param name="feature_id_color" label="Feature Color" type="color" value="#FFFFFF" >
+                        <sanitizer>
+                            <valid initial="string.ascii_letters,string.digits">
+                                <add value="#" />
+                            </valid>
+                        </sanitizer>
+                    </param>
+                </when>
             </conditional>
         </repeat>
         <repeat name="gene_colors" title="Product Name Colors">
@@ -78,17 +78,17 @@ $label_above
                 <param name="gene_color_options" type="select" label="Product Color Options">
                     <option value="none" selected="false"></option>
                     <option value="add_colors" selected="false">Add Custom Colors</option>
-                    <when value="add_colors">
-                        <param name="gene_id" label="Product Name" type="text" help="Product Name. Example: holin. Case Sensitive." />
-                        <param name="gene_id_color" label="Product Color" type="color" value="#CD5C5C" >
-                            <sanitizer>
-                                <valid initial="string.ascii_letters,string.digits">
-                                    <add value="#" />
-                                </valid>
-                            </sanitizer>
-                        </param>
-                    </when>
                 </param>
+                <when value="add_colors">
+                    <param name="gene_id" label="Product Name" type="text" help="Product Name. Example: holin. Case Sensitive." />
+                    <param name="gene_id_color" label="Product Color" type="color" value="#CD5C5C" >
+                        <sanitizer>
+                            <valid initial="string.ascii_letters,string.digits">
+                                <add value="#" />
+                            </valid>
+                        </sanitizer>
+                    </param>
+                </when>
             </conditional>
         </repeat>
     </inputs>
