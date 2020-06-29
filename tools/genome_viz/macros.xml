@@ -6,7 +6,8 @@
 			<requirement type="package" version="1.67">biopython</requirement>
             <requirement type="package" version="0.24.0">pandas</requirement>
             <requirement type="package" version="0.6.6">bcbio-gff</requirement>
-            <requirement type="package" version="3.0.1">dna-features-viewer</requirement>
+            <requirement type="package" version="3.0.2">matplotlib</requirement>
+            <!-- <requirement type="package" version="3.0.1">dna-features-viewer</requirement> -->
 			<yield/>
 		</requirements>
         <version_command>
