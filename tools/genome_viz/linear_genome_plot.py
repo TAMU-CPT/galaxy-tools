@@ -155,7 +155,7 @@ if __name__ == "__main__":
 
     if args.sz: #  if user is wanting to look at a subset region of the genome
         print("-- crop mode --")
-        zoom_start, zoom_end = args.sz, srgs.ez
+        zoom_start, zoom_end = args.sz, args.ez
         cropped = graphic_record.crop((zoom_start,zoom_end))
         ax, _ = cropped.plot(figure_width=args.plot_width, elevate_outline_annotations=True)
         if args.translation_on:
