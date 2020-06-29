@@ -31,7 +31,7 @@ class CPTTranslator(BiopythonTranslator):
                 try:
                     return custom_feature_colors[feature.type]
                 except KeyError:
-                    sys.exit("ERROR: Ignored labeling does not match custom color schemea")
+                    sys.exit("ERROR: Features included for plotting do not match custom color schemea")
 
     def compute_feature_label(self, feature): # remove the chop_blocks
         self.label_fields = label_fields
