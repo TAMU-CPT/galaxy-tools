@@ -108,7 +108,6 @@ $label_above
                 <param name="ignore_labeling" value="uncharacterized protein" />
                 <param name="title" value="Mu Test Plot" />
                 <param name="feature_label_order" value="product" />
-                <conditional name="custom_region" value="false" />
                 <repeat name="feature_colors" >
                     <conditional name="custom_feature_colors" >
                         <param name="feature_color_options" value="add_colors" />
