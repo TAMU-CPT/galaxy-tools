@@ -37,8 +37,8 @@ $label_above
     ]]></command>
     <inputs>
         <param label="Multi FASTA File" name="input_file" type="data" format="fasta" />
-        <param label="Plot Width" name="plot_width" type="int" default="20" help="Width of the plot. Increase for larger genomes." />
-        <param label="Plot Height" name="plot_height" type="int" default="4" help="Height of the plot." hidden="true" />
+        <param label="Plot Width" name="plot_width" type="integer" default="20" help="Width of the plot. Increase for larger genomes." />
+        <param label="Plot Height" name="plot_height" type="integer" default="4" help="Height of the plot." hidden="true" />
         <param label="Features to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by comma(s)." />
         <param label="Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein). Separate by commas" />
         <param label="Name ordering" help="Order of features to orient naming convention (example: locus_tag,product). Separate by commas." name="feature_label_order" type="txt"/>
@@ -47,10 +47,10 @@ $label_above
         <conditional name="selectregion">
             <param label="Select Custom Region" name="custom_region" type="boolean" default="false" />
             <when value="true">
-                <param name="start_zoom" label="Start Zoom" type="int" help="(--sz)" />
-                <param name="end_zoom" label="End Zoom" type="int" help="(--ez)" />
-                <param name="start_translate" label="Start Translation Site" type="int" help="(--st)" />
-                <param name="end_translate" label="End Translation Site" type="int" help="(--et)" />
+                <param name="start_zoom" label="Start Zoom" type="integer" help="(--sz)" />
+                <param name="end_zoom" label="End Zoom" type="integer" help="(--ez)" />
+                <param name="start_translate" label="Start Translation Site" type="integer" help="(--st)" />
+                <param name="end_translate" label="End Translation Site" type="integer" help="(--et)" />
             </when>
             <when value="false">
             </when>
@@ -58,7 +58,7 @@ $label_above
         <repeat name="feature_colors" title="Feature Colors">
             <conditional name="feature_color_selector" type="boolean">
                 <when value="true">
-                    <param name="feature_id" label="Feature Name" type="txt" help="feature name. Example: CDS" />
+                    <param name="feature_id" label="Feature Name" type="text" help="feature name. Example: CDS" />
                     <param name="feature_id_color" label="Feature Color" type="color" />
                         <sanitizer>
                             <valid initial="string.ascii_letters,string.digits">
@@ -71,7 +71,7 @@ $label_above
         <repeat name="gene_colors" title="gene Colors">
             <conditional name="gene_color_selector" type="boolean">
                 <when value="true">
-                    <param name="gene_id" label="Feature Name" type="txt" help="gene name. Example: CDS" >
+                    <param name="gene_id" label="Feature Name" type="text" help="gene name. Example: CDS" >
                     <param name="gene_id_color" label="Feature Color" type="color" value="#FFFFFF"/>
                         <sanitizer>
                             <valid initial="string.ascii_letters,string.digits">
@@ -84,7 +84,7 @@ $label_above
         </repeat>
     </inputs>
     <outputs>
-        <data format="txt" name="file_stats" label="out_stats.txt" />
+        <data format="text" name="file_stats" label="out_stats.txt" />
         <data format="svg" name="out_img" label="genome_plot.svg" />
     </outputs>
         <tests>
