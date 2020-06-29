@@ -3,7 +3,7 @@ from dna_features_viewer import BiopythonTranslator, GraphicRecord
 import matplotlib.pyplot as plt
 from itertools import cycle
 import re
-import numpy as np
+import sys
 import argparse
 
 class CPTTranslator(BiopythonTranslator):
@@ -28,8 +28,10 @@ class CPTTranslator(BiopythonTranslator):
                     return custom_feature_colors[feature.type]
         else:
             if feature.type not in ignored_features_types:
-                
-                return custom_feature_colors[feature.type]
+                try:
+                    return custom_feature_colors[feature.type]
+                except KeyError:
+                    sys.exit("ERROR: Ignored labeling does not match custom color schemea")
 
     def compute_feature_label(self, feature): # remove the chop_blocks
         self.label_fields = label_fields
@@ -177,8 +179,3 @@ if __name__ == "__main__":
         with open("tmp.svg", "rb") as img:
             for line in img:
                 args.out_img.write(line)
-    #ignored_features_types
-    #chop_block
-    #label_fields
-    #custom_name_colors
-    #custom_feature_colors
