@@ -1,5 +1,5 @@
-<tool id="edu.tamu.cpt.sar.sar_finder" name="SAR Finder" version="1.0">
-    <description>SAR Domain Finder</description>
+<tool id="edu.tamu.cpt.genome_viz.linear_genome_plot" name="Linear Genome Plot" version="1.0">
+    <description>Linear Genome Plot</description>
     <macros>
         <import>macros.xml</import>
     </macros>
