@@ -56,13 +56,13 @@ $label_above
             </when>
         </conditional>
         <repeat name="feature_colors" title="Feature Colors">
-            <conditional name="feature_color_selector">
+            <conditional name="feature_color_selector" type="boolean">
                 <param name="feature_id" label="Feature Name" type="txt" help="feature name. Example: CDS" />
                 <param name="feature_id_color" label="Feature Color" type="color" />
             </conditional>
         </repeat>
         <repeat name="gene_colors" title="gene Colors">
-            <conditional name="gene_color_selector">
+            <conditional name="gene_color_selector" type="boolean">
                 <param name="gene_id" label="Feature Name" type="txt" help="gene name. Example: CDS" >
                 <param name="gene_id_color" label="Feature Color" type="color" value="#FFFFFF"/>
                     <sanitizer>
