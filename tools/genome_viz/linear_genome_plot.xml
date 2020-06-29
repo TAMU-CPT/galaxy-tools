@@ -47,10 +47,10 @@ $label_above
         <conditional name="selectregion">
             <param label="Select Custom Region" name="custom_region" type="boolean" checked="false" />
             <when value="true">
-                <param name="start_zoom" label="Start Zoom" type="integer" help="start zoom" />
-                <param name="end_zoom" label="End Zoom" type="integer" help="end zoom" />
-                <param name="start_translate" label="Start Translation Site" type="integer" help="start translation" />
-                <param name="end_translate" label="End Translation Site" type="integer" help="end translation" />
+                <param name="start_zoom" label="Start Zoom" type="integer" help="start zoom" optional="true"/>
+                <param name="end_zoom" label="End Zoom" type="integer" help="end zoom" optional="true"/>
+                <param name="start_translate" label="Start Translation Site" type="integer" help="start translation" optional="true" />
+                <param name="end_translate" label="End Translation Site" type="integer" help="end translation" optional="true" />
             </when>
             <when value="false">
             </when>
