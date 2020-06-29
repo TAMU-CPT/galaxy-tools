@@ -20,13 +20,17 @@ $label_above
     --st $custom_region.start_translate
     --et $custom_region.end_translate
 #end if
-#for $feature_color in $feature_colors.feature_color_selector:
-    --feature_id $feature_color.feature_id
-    --feature_id_color $feature_color.feature_id_color
+#for $feature_color in $feature_colors:
+    #if $feature_color.feature_color_selector.feature_id:
+        --feature_id $feature_color.feature_color_selector.feature_id
+        --feature_id_color $feature_color.feature_color_selector.feature_id_color
+    #end if
 #end for
-#for $gene_color in $gene_colors.gene_color_selector:
-    --gene_id $gene_color.gene_id
-    --gene_id_color $gene_color.gene_id_color
+#for $gene_color in $gene_colors:
+    #if $gene_color.gene_color_selector.gene_id:
+        --gene_id $gene_color.gene_color_selector.gene_id
+        --gene_id_color $gene_color.gene_color_selector.gene_id_color
+    #end if
 #end for
 --file_stats $file_stats
 --out_img $out_img
@@ -57,6 +61,18 @@ $label_above
                 <param name="feature_id_color" label="Feature Color" type="color" />
             </conditional>
         </repeat>
+        <repeat name="gene_colors" title="gene Colors">
+            <conditional name="gene_color_selector">
+                <param name="gene_id" label="Feature Name" type="txt" help="gene name. Example: CDS" >
+                <param name="gene_id_color" label="Feature Color" type="color" value="#FFFFFF"/>
+                    <sanitizer>
+                        <valid initial="string.ascii_letters,string.digits">
+                            <add value="#" />
+                        </valid>
+                    </sanitizer>
+                </param>
+            </conditional>
+        </repeat>
     </inputs>
     <outputs>
         <data format="txt" name="file_stats" label="out_stats.txt" />
@@ -72,13 +88,13 @@ $label_above
                 <repeat name="feature_colors" />
                     <conditional name="custom_feature_colors" />
                         <param name="feature_id" value="CDS" />
-                        <param name="feature_id_color" value="white" />
+                        <param name="feature_id_color" value="#FFFFFF" />
                     </conditional>
                 </repeat>
                 <repeat name="feature_colors" />
                     <conditional name="custom_feature_colors" />
                         <param name="feature_id" value="RBS" />
-                        <param name="feature_id_color" value="red" />
+                        <param name="feature_id_color" value="#CD5C5C" />
                     </conditional>
                 </repeat>
                 <output name="file_stats" file="out_stats.txt" />
