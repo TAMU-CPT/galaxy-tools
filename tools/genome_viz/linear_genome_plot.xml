@@ -118,7 +118,7 @@ $label_above
                     </conditional>
                 </repeat>
                 <repeat name="feature_colors" >
-                    <conditional name="custom_feature_colors" >
+                    <conditional name="feature_color_selector" >
                         <param name="feature_color_options" value="add_colors" />
                             <param name="feature_id" value="RBS" />
                             <param name="feature_id_color" value="#CD5C5C" />
