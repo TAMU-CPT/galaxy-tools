@@ -8,9 +8,11 @@
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/linear_genome_plot.py
 $input_file
--plot_width $plot_width
+--plot_width $plot_width
 --features_excluded $features_excluded
 --ignore_labeling $ignore_labeling
+--feature_label_order $feature_label_order
+--title $title
 $label_above
 #if $selectregion.custom_region
     --sz $custom_region.start_zoom
@@ -36,10 +38,12 @@ $label_above
     ]]></command>
     <inputs>
         <param label="Multi FASTA File" name="input_file" type="data" format="fasta" />
-        <param label="Plot Width" name="plot_width" type="int" default="40" help="Width of the plot. Increase for larger genomes." />
+        <param label="Plot Width" name="plot_width" type="int" default="20" help="Width of the plot. Increase for larger genomes." />
         <param label="Plot Height" name="plot_height" type="int" default="4" help="Height of the plot." hidden="true" />
         <param label="Features to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by comma(s)." />
         <param label="Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein). Separate by commas" />
+        <param label="Name ordering" help="Order of features to orient naming convention (example: locus_tag,product). Separate by commas." name="feature_label_order" type="txt"/>
+        <param label="Title of Graph" name="title" type="txt"/>
         <param label="ALL labels above Gene" name="label_above" type="boolean" help="number schema subscripts" truevalue="--label_above" falsevalue=""/>
         <conditional name="selectregion">
             <param label="Select Custom Region" name="custom_region" type="boolean" default="false" />
@@ -52,25 +56,38 @@ $label_above
             <when value="false">
             </when>
         </conditional>
-        <conditional name="custom_feature_colors">
-            <param label="Custom Feature Colors" name="custom_feature_colors_bool" type="boolean" default="false" />
-            <when value="true">
-                <repeat name="feature_colors" title="Feature Colors">
-                    <conditional name="feature_color_selector">
-                        <param name="feature_id" label="Feature Name" type="txt" help="feature name. Example: CDS" />
-                        <param name="feature_id_color" label="Feature Color" type="color" />
-                    </conditional>
-                </repeat>
-            <when value="false">
-            </when>
-        </conditional>
+        <repeat name="feature_colors" title="Feature Colors">
+            <conditional name="feature_color_selector">
+                <param name="feature_id" label="Feature Name" type="txt" help="feature name. Example: CDS" />
+                <param name="feature_id_color" label="Feature Color" type="color" />
+            </conditional>
+        </repeat>
     </inputs>
     <outputs>
-        <data format="txt" name="file_stats" label="file_stats.txt" />
+        <data format="txt" name="file_stats" label="out_stats.txt" />
         <data format="svg" name="out_img" label="genome_plot.svg" />
     </outputs>
         <tests>
             <test>
+                <param name="plot_width" value="25" />
+                <param name="features_excluded" value="misc_feature,misc_difference,source,gene" />
+                <param name="ignore_labeling" value="uncharacterized protein" />
+                <param name="title" value="Mu Test Plot" />
+                <parm name="feature_label_order" value="product" />
+                <repeat name="feature_colors" />
+                    <conditional name="custom_feature_colors" />
+                        <param name="feature_id" value="CDS" />
+                        <param name="feature_id_color" value="white" />
+                    </conditional>
+                </repeat>
+                <repeat name="feature_colors" />
+                    <conditional name="custom_feature_colors" />
+                        <param name="feature_id" value="RBS" />
+                        <param name="feature_id_color" value="red" />
+                    </conditional>
+                </repeat>
+                <output name="file_stats" file="out_stats.txt" />
+                <output name="out_img" file="out_img.svg" />
             </test>
         </tests>
     <help><![CDATA[
