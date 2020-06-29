@@ -45,7 +45,7 @@ $label_above
         <param label="Title of Graph" name="title" type="text"/>
         <param label="ALL labels above Gene" name="label_above" type="boolean" help="number schema subscripts" truevalue="--label_above" falsevalue=""/>
         <conditional name="selectregion">
-            <param label="Select Custom Region" name="custom_region" type="boolean" value="false" />
+            <param label="Select Custom Region" name="custom_region" type="boolean" checked="false" />
             <when value="true">
                 <param name="start_zoom" label="Start Zoom" type="integer" help="(--sz)" />
                 <param name="end_zoom" label="End Zoom" type="integer" help="(--ez)" />
@@ -57,9 +57,9 @@ $label_above
         </conditional>
         <repeat name="feature_colors" title="Feature Colors">
             <conditional name="feature_color_selector">
-                <param name="feature_color_options" type="boolean" value="true">
+                <param name="feature_color_options" type="boolean" checked="false">
                     <when value="true">
-                        <param name="feature_id" label="Feature Name" type="text" help="feature name. Example: CDS" />
+                        <param name="feature_id" label="Feature Name" type="text" help="Feature name. Example: CDS. Case Sensitive." />
                         <param name="feature_id_color" label="Feature Color" type="color" value="#FFFFFF" >
                             <sanitizer>
                                 <valid initial="string.ascii_letters,string.digits">
@@ -68,14 +68,16 @@ $label_above
                             </sanitizer>
                         </param>
                     </when>
+                    <when value="false">
+                    </when>
                 </param>
             </conditional>
         </repeat>
-        <repeat name="gene_colors" title="gene Colors">
+        <repeat name="gene_colors" title="Product Name Colors">
             <conditional name="gene_color_selector" >
-                <param name="gene_color_options" type="boolean">
+                <param name="gene_color_options" type="boolean" checked="false">
                     <when value="true">
-                        <param name="gene_id" label="Product Name" type="text" help="product name. Example: holin" />
+                        <param name="gene_id" label="Product Name" type="text" help="Product Name. Example: holin. Case Sensitive." />
                         <param name="gene_id_color" label="Product Color" type="color" value="#CD5C5C" >
                             <sanitizer>
                                 <valid initial="string.ascii_letters,string.digits">
@@ -83,6 +85,8 @@ $label_above
                                 </valid>
                             </sanitizer>
                         </param>
+                    </when>
+                    <when value="false">
                     </when>
                 </param>
             </conditional>
