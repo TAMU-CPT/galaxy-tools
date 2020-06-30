@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from Bio import SeqIO
 from dna_features_viewer import BiopythonTranslator, GraphicRecord
 from matplotlib import rc_context
