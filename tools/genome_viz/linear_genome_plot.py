@@ -66,12 +66,9 @@ class CPTTranslator(BiopythonTranslator):
     def compute_feature_box_color(self, feature):
         if feature.type == "CDS":
             return "white"
-    
+
     def compute_feature_label_link_color(self, feature):
         return "black"
-
-    def compute_feature_box_linewidth(self, feature):
-        return 0.5
 
     def compute_featurebox_linewidth(self, feature):
         return 0.5

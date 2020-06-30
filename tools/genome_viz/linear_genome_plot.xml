@@ -14,11 +14,9 @@ $input_file
 --feature_label_order "$feature_label_order"
 --title "$title"
 $label_above
-#if $selectregion.custom_region
+#if $selectregion.custom_region == "true":
     --sz $custom_region.start_zoom
     --ez $custom_region.end_zoom
-    --st $custom_region.start_translate
-    --et $custom_region.end_translate
 #end if
 #for $feature_color in $feature_colors:
     #if $feature_color.feature_color_selector.feature_color_options == "add_colors":
@@ -51,8 +49,8 @@ $label_above
             <when value="true">
                 <param name="start_zoom" label="Start Zoom" type="integer" help="start zoom" optional="true"/>
                 <param name="end_zoom" label="End Zoom" type="integer" help="end zoom" optional="true"/>
-                <param name="start_translate" label="Start Translation Site" type="integer" help="start translation" optional="true" />
-                <param name="end_translate" label="End Translation Site" type="integer" help="end translation" optional="true" />
+                <!--<param name="start_translate" label="Start Translation Site" type="integer" help="start translation" optional="true" /> -->
+                <!-- <param name="end_translate" label="End Translation Site" type="integer" help="end translation" optional="true" /> -->
             </when>
             <when value="false">
             </when>
@@ -134,6 +132,7 @@ ALPHA VERSION
 Genome Plot
 
 Output:
+
 * file_stats will output the different
     ]]></help>
     <citations>
