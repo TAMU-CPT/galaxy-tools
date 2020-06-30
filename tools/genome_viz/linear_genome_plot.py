@@ -100,7 +100,7 @@ if __name__ == "__main__":
     parser.add_argument("--gene_id_color",nargs="*",action="append",help="gene/cds's accompanying color")
     #  Output
     parser.add_argument("--file_stats",type=argparse.FileType("w"),default="out_stats.txt",help="output stat file")
-    parser.add_argument("--tmp_img",type=argparse.FileType("wb"),default="tmp.svg")
+    parser.add_argument("--tmp_img",dest="tmp_img",type=argparse.FileType("wb"),default="out_tmp.svg")
     parser.add_argument("--out_img",dest="out_img",type=argparse.FileType("wb"),default="out_img.svg",help="svg genome plot")
     args = parser.parse_args()
 
@@ -172,7 +172,7 @@ if __name__ == "__main__":
         tmp_fig = args.tmp_img.name
         plt.savefig(tmp_fig)
         plt.close()
-        with open("tmp.svg", "rb") as img:
+        with open(tmp_fig, "rb") as img:
             for line in img:
                 args.out_img.write(line)
         # do the chop cut
@@ -182,6 +182,6 @@ if __name__ == "__main__":
         tmp_fig = args.tmp_img.name
         plt.savefig(tmp_fig)
         plt.close()
-        with open("tmp.svg", "rb") as img:
+        with open(tmp_fig, "rb") as img:
             for line in img:
                 args.out_img.write(line)
