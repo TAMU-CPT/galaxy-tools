@@ -45,6 +45,8 @@ class CPTTranslator(BiopythonTranslator):
                     return None
                 else:
                     return BiopythonTranslator.compute_feature_label(self, feature)
+        else:
+            return BiopythonTranslator.compute_feature_label(self, feature)
 
     def compute_filtered_features(self, features):
         return [
