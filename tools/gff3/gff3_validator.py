@@ -8,6 +8,86 @@ from gff3 import feature_lambda, feature_test_true
 import csv
 import argparse
 
+disallowArray = ["&", ",", ";", "="]
+validArray = ["%26", "%2C", "%3B", "%3D"]
+
+validID = ['.:^*$@!+_?-|']
+
+def validateID(idIn):
+    badChar = []
+    for x in idIn:
+      if (ord(x) > 47 and ord(x) < 58) or (ord(x) > 64 and ord(x) < 91) or (ord(x) > 96 and ord(x) < 123) or (x in validID):
+        continue
+      else:
+        if not(x in badChar):
+          badChar.append(x)
+    return badChar 
+
+def replaceBadChars(qualIn):
+    newQual = ""
+    for x in qualIn:
+      goodVal = True
+      for y in range(0, len(disallowArray):
+        if x == disallowArray[y]:
+          goodVal = False
+          newQual += validArray[y]
+      if goodVal:
+        newQual += x
+    return newQual
+
+def validateQual(qualIn):
+    badChar = []
+    for x in qualIn:
+      if x in disallowArray:
+        if not(x in badChar):
+          badChar.append(x)
+    return badChar 
+
+def lineAnalysis(line)
+    if len(line) == 0:
+      return ""
+    if line[0] == "#":
+      if len(line) > 1 and line[1] != "#":
+        return "" 
+      # else handle ## Pragmas
+
+    errorMessage = ""
+
+    fields = line.split("\t")
+    if len(fields[0]) != 9:
+      errorMessage += "GFF3 is a 9-column tab-separated format, line has " + str(len(fields)) + " columns.\nPossible unescaped tab in a qualifier field.\n"
+
+    idEval = validateID(fields[0])
+    if len(idEval) != 0:
+      errorMessage += "ID contains the following invalid characters: " + str(idEval) + ".\n"
+
+    # fields[1]
+    # fields[2]
+
+    for x in fields[3]:
+      if not(ord(x) > 47 and ord(x) < 58):
+        errorMessage += "Feature location start contains non-numeric character.\n"
+        break
+    
+    for x in fields[4]:
+      if not(ord(x) > 47 and ord(x) < 58):
+        errorMessage += "Feature location end contains non-numeric character.\n"
+        break
+
+    # fields[5]
+
+    if len(fields[6]) != 1 or (not(fields[0] in '-+.?')):
+      errorMessage += "Feature strand must be '+', '-', '.', or '?', actual value is '" + fields[6] + "'.\n"
+
+    if fields[7] != '.' and fields[1] != "CDS":
+      errorMessage += "Expected '.' in Phase field for non-CDS feature, actual value is '" + fields[7] + "'.\n"
+    elif fields[1] == "CDS":
+      for x in fields[7]:
+        if not(ord(x) > 47 and ord(x) < 58):
+          errorMessage += "Non-numeric value in Phase field for CDS type feature '" + fields[7] + "'.\n"
+
+        
+    
 
 def table_annotations(gff3In, out_errorlog):
 
@@ -29,7 +109,6 @@ def table_annotations(gff3In, out_errorlog):
         errorMessage = ""
 
         for featLvl1 in record.features:
-
             for notes in featLvl1.qualifiers:
                 for i in disallowedChars:
                     for j in featLvl1.qualifiers[notes]:
