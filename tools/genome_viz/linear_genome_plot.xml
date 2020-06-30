@@ -35,7 +35,7 @@ $label_above
     #end if
 #end for
 --file_stats $file_stats
---tmp_img
+--tmp_img "tmp.svg"
 --out_img $out_img
     ]]></command>
     <inputs>
