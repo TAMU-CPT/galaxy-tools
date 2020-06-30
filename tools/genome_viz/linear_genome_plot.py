@@ -147,7 +147,10 @@ if __name__ == "__main__":
     print(ignored_gene_labels)
 
     ## Part III ; PLOT
+    # Housekeeping
     rc_context({"font.family": ["monospace"],}) # courier-like
+    matplotlib.use('Agg') # I think this has to be used...
+
     if args.label_above:
         above = True
     else:
