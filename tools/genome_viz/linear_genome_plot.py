@@ -100,7 +100,7 @@ if __name__ == "__main__":
     parser.add_argument("--gene_id_color",nargs="*",action="append",help="gene/cds's accompanying color")
     #  Output
     parser.add_argument("--file_stats",type=argparse.FileType("w"),default="out_stats.txt",help="output stat file")
-    parser.add_argument("--tmp_img",dest="tmp_img",type=argparse.FileType("wb"),default="out_tmp.svg")
+    #parser.add_argument("--tmp_img",dest="tmp_img",type=argparse.FileType("wb"),default="out_tmp.svg")
     parser.add_argument("--out_img",dest="out_img",type=argparse.FileType("wb"),default="out_img.svg",help="svg genome plot")
     args = parser.parse_args()
 
@@ -169,19 +169,19 @@ if __name__ == "__main__":
             crop_seq = (args.st - 1, args.et)
             cropped.plot_translation(ax, location=crop_seq, fontdict={'size':8, 'weight':'bold'},y_offset=1)
         ax.set_title(args.title)
-        tmp_fig = args.tmp_img.name
-        plt.savefig(tmp_fig)
+        #tmp_fig = args.tmp_img.name
+        plt.savefig(args.out_img.name)
         plt.close()
-        with open(tmp_fig, "rb") as img:
-            for line in img:
-                args.out_img.write(line)
+        #with open(tmp_fig, "rb") as img:
+        #    for line in img:
+        #        args.out_img.write(line)
         # do the chop cut
     else:
         ax, _ = graphic_record.plot(figure_width=args.plot_width, annotate_inline=above)
         ax.set_title(args.title)
-        tmp_fig = args.tmp_img.name
-        plt.savefig(tmp_fig)
+        #tmp_fig = args.tmp_img.name
+        plt.savefig(args.out_img.name)
         plt.close()
-        with open(tmp_fig, "rb") as img:
-            for line in img:
-                args.out_img.write(line)
+        #with open(tmp_fig, "rb") as img:
+        #    for line in img:
+        #        args.out_img.write(line)
