@@ -179,7 +179,7 @@ if __name__ == "__main__":
     else:
         ax, _ = graphic_record.plot(figure_width=args.plot_width, annotate_inline=above)
         ax.set_title(args.title)
-        tmp_fig = "./tmp.svg"
+        tmp_fig = args.tmp_img.name
         plt.savefig(tmp_fig)
         plt.close()
         with open("tmp.svg", "rb") as img:
