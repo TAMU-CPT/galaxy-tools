@@ -169,19 +169,18 @@ if __name__ == "__main__":
             crop_seq = (args.st - 1, args.et)
             cropped.plot_translation(ax, location=crop_seq, fontdict={'size':8, 'weight':'bold'},y_offset=1)
         ax.set_title(args.title)
-        #tmp_fig = args.tmp_img.name
-        plt.savefig(args.out_img.name)
+        tmp_fig = "./a_temp_img.svg"
+        plt.savefig(tmp_fig)
         plt.close()
-        #with open(tmp_fig, "rb") as img:
-        #    for line in img:
-        #        args.out_img.write(line)
-        # do the chop cut
+        with open("a_temp_img.svg", "rb") as img:
+            for line in img:
+                args.out_img.write(line)
     else:
         ax, _ = graphic_record.plot(figure_width=args.plot_width, annotate_inline=above)
         ax.set_title(args.title)
-        #tmp_fig = args.tmp_img.name
-        plt.savefig(args.out_img.name)
+        tmp_fig = "./a_temp_img.svg"
+        plt.savefig(tmp_fig)
         plt.close()
-        #with open(tmp_fig, "rb") as img:
-        #    for line in img:
-        #        args.out_img.write(line)
+        with open("a_temp_img.svg", "rb") as img:
+            for line in img:
+                args.out_img.write(line)
