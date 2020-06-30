@@ -175,7 +175,6 @@ if __name__ == "__main__":
         with open("a_temp_img.svg", "rb") as img:
             for line in img:
                 args.out_img.write(line)
-         do the chop cut
     else:
         ax, _ = graphic_record.plot(figure_width=args.plot_width, annotate_inline=above)
         ax.set_title(args.title)
