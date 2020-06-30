@@ -1,0 +1,9 @@
+python linear_genome_plot.py test-data/mu_reanno.gb --feature_id CDS --feature_id_color blue --feature_id gene --feature_id_color green --feature_id RBS --feature_id_color red --features_excluded misc_feature,misc_difference --ignore_labeling "hypothetical protein,uncharacterized protein" --feature_label_order "locus_tag"
+
+python linear_genome_plot.py test-data/mu_reanno.gb --feature_id CDS --feature_id_color blue --feature_id gene --feature_id_color green --feature_id RBS --feature_id_color red
+
+python linear_genome_plot.py test-data/mu_reanno.gb --feature_id CDS --feature_id_color blue --feature_id gene --feature_id_color green --feature_id RBS --feature_id_color red --features_excluded misc_feature,misc_difference
+
+python linear_genome_plot.py test-data/mu_reanno.gb --feature_id CDS --feature_id_color blue --feature_id gene --feature_id_color green --feature_id RBS --feature_id_color red --feature_id source --feature_id_color black --features_excluded misc_feature,misc_difference --ignore_labeling "hypothetical protein,uncharacterized protein" --feature_label_order "product"
+
+python linear_genome_plot.py test-data/mu_reanno.gb --feature_id CDS --feature_id_color "#FFFFFF" --feature_id RBS --feature_id_color "#CD5C5C" --features_excluded misc_feature,misc_difference,source,gene --ignore_labeling "uncharacterized protein" --feature_label_order "product" --plot_width 25 --title "Mu Test Plot"
