@@ -2,6 +2,7 @@
 from Bio import SeqIO
 from dna_features_viewer import BiopythonTranslator, GraphicRecord
 from matplotlib import rc_context
+import matplotlib
 import matplotlib.pyplot as plt
 from itertools import cycle
 import re
