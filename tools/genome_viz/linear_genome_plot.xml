@@ -43,7 +43,7 @@ $label_above
         <param label="Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein). Separate by commas" />
         <param label="Name ordering" help="Order of features to orient naming convention (example: locus_tag,product). Separate by commas." name="feature_label_order" type="text"/>
         <param label="Title of Graph" name="title" type="text"/>
-        <param label="ALL labels above Gene" name="label_above" type="boolean" help="number schema subscripts" truevalue="--label_above" falsevalue=""/>
+        <param label="Label algorithm dictates label placement" name="label_above" type="boolean" help="number schema subscripts" truevalue="--label_above" falsevalue="" help="Some features will be displayed inside if there is sufficient space"/>
         <conditional name="selectregion">
             <param label="Select Custom Region" name="custom_region" type="boolean" checked="false" />
             <when value="true">
