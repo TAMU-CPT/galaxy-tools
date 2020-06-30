@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from Bio import SeqIO
 from dna_features_viewer import BiopythonTranslator, GraphicRecord
 from matplotlib import rc_context
@@ -9,7 +10,7 @@ import sys
 import argparse
 
 class CPTTranslator(BiopythonTranslator):
-    """ 
+    """
     This is a customized translator from the dna_features_viewer module to fit Galaxy
     """
 
@@ -27,39 +28,53 @@ class CPTTranslator(BiopythonTranslator):
                     print(custom_name_colors[feature.qualifiers["product"][0]])
                     return custom_name_colors[feature.qualifiers["product"][0]]
                 else:
-                    return custom_feature_colors[feature.type]
+                    try:
+                        return custom_feature_colors[feature.type]
+                    except KeyError:
+                        return BiopythonTranslator.compute_feature_color(self, feature)
         else:
             if feature.type not in ignored_features_types:
                 try:
                     return custom_feature_colors[feature.type]
                 except KeyError:
-                    sys.exit("ERROR: Features included for plotting do not match custom color schemea")
+                    return BiopythonTranslator.compute_feature_color(self, feature)
 
     def compute_feature_label(self, feature): # remove the chop_blocks
         self.label_fields = label_fields
         if feature.type == "CDS":
             if "product" in feature.qualifiers:
-                verify_chops = any(re.search(("(\\b"+str(item)+"\\b)"),feature.qualifiers["product"][0]) for item in ignored_gene_labels)
-                if verify_chops:
-                    return None
+                if ignored_gene_labels:
+                    verify_chops = any(re.search(("(\\b"+str(item)+"\\b)"),feature.qualifiers["product"][0]) for item in ignored_gene_labels)
+                    if verify_chops:
+                        return None
+                    else:
+                        return BiopythonTranslator.compute_feature_label(self, feature)
                 else:
                     return BiopythonTranslator.compute_feature_label(self, feature)
+        else:
+            return BiopythonTranslator.compute_feature_label(self, feature)
 
     def compute_filtered_features(self, features):
         return [
             feature for feature in features if feature.type not in ignored_features_types
         ]
-        
-    
+
+
     def compute_feature_legend_text(self, feature):
         return feature.type
-    
+
     def compute_feature_box_color(self, feature):
         if feature.type == "CDS":
             return "white"
     
+    def compute_feature_label_link_color(self, feature):
+        return "black"
+
+    def compute_feature_box_linewidth(self, feature):
+        return 0.5
+
     def compute_featurebox_linewidth(self, feature):
-        return 0
+        return 0.5
 
 def parse_gbk(file):
     """ simple function to parse out the feature information AND products """
@@ -75,7 +90,7 @@ def parse_gbk(file):
             feature_types[feat.type] += 1
         if "product" in feat.qualifiers:
             product_names.append(feat.qualifiers["product"][0])
-    
+
     return feature_types, product_names, record
 
 if __name__ == "__main__":
@@ -86,7 +101,7 @@ if __name__ == "__main__":
     parser.add_argument("--title",type=str,default="genome plot") # NEED TO ADD TO XML
     parser.add_argument("--features_excluded",default="",help="features to be excluded from plot, separate by commas")
     parser.add_argument("--ignore_labeling",default="",help="labeling for specific genes to ignore, separate by commas")
-    parser.add_argument("--feature_label_order",default="CDS",help="label order, where the first choice is the first feature listed to pull name labels from") # NEED TO ADD TO XML
+    parser.add_argument("--feature_label_order",default="locus_tag",help="label order, where the first choice is the first feature listed to pull name labels from") # NEED TO ADD TO XML
     parser.add_argument("--label_above",action="store_true",help="force all labels above gene")
     #parser.add_argument("--custom_region",action="store_true",help="cropped region for plot")
     parser.add_argument("--sz",type=int,help="beginning location for crop")
@@ -127,7 +142,7 @@ if __name__ == "__main__":
         custom_feature_colors = dict(zip(feature_ids,feature_ids_colors))
     else:
         custom_feature_colors = {}
-    
+
     ##  Make K:V pairs for Name Colors (as above)
     if args.gene_id:
         gene_ids = [g for listed_obj in args.gene_id for g in listed_obj]
@@ -139,13 +154,18 @@ if __name__ == "__main__":
     ##  Ignored Features
     ignored_features_types = str.split(args.features_excluded,",")
     ignored_gene_labels = str.split(args.ignore_labeling,",")
-    label_fields = str.split(args.feature_label_order,",")
+    if args.feature_label_order != ['']:
+        label_fields = str.split(args.feature_label_order,",")
+
+    if ignored_gene_labels == ['']:
+        ignored_gene_labels = False
 
     ##  Print Statements for Debugging
     print(custom_feature_colors)
     print(custom_name_colors)
     print(ignored_features_types)
     print(ignored_gene_labels)
+    print(label_fields)
 
     ## Part III ; PLOT
     # Housekeeping
@@ -159,6 +179,10 @@ if __name__ == "__main__":
 
     translator = CPTTranslator()
     graphic_record = translator.translate_record(genome)
+
+    with open("a_temp_img.svg", "wb") as img:
+        img.truncate(0)
+        img.close()
 
     if args.sz: #  if user is wanting to look at a subset region of the genome
         print("-- crop mode --")
