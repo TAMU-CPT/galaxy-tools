@@ -2,6 +2,7 @@
 from Bio import SeqIO
 from dna_features_viewer import BiopythonTranslator, GraphicRecord
 from matplotlib import rc_context
+import matplotlib
 import matplotlib.pyplot as plt
 from itertools import cycle
 import re
@@ -147,7 +148,10 @@ if __name__ == "__main__":
     print(ignored_gene_labels)
 
     ## Part III ; PLOT
+    # Housekeeping
     rc_context({"font.family": ["monospace"],}) # courier-like
+    matplotlib.use('Agg') # I think this has to be used...
+
     if args.label_above:
         above = True
     else:
