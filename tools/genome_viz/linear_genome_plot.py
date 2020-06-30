@@ -166,7 +166,7 @@ if __name__ == "__main__":
             cropped.plot_translation(ax, location=crop_seq, fontdict={'size':8, 'weight':'bold'},y_offset=1)
         ax.set_title(args.title)
         tmp_fig = "./tmp.svg"
-        ax.figure.savefig(tmp_fig)
+        plt.savefig(tmp_fig)
         plt.close()
         with open("tmp.svg", "rb") as img:
             for line in img:
@@ -175,9 +175,8 @@ if __name__ == "__main__":
     else:
         ax, _ = graphic_record.plot(figure_width=args.plot_width, annotate_inline=above)
         ax.set_title(args.title)
-        plt.close()
         tmp_fig = "./tmp.svg"
-        ax.figure.savefig(tmp_fig)
+        plt.savefig(tmp_fig)
         plt.close()
         with open("tmp.svg", "rb") as img:
             for line in img:
