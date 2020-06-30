@@ -14,9 +14,9 @@ $input_file
 --feature_label_order "$feature_label_order"
 --title "$title"
 $label_above
-#if $selectregion.custom_region == "true":
-    --sz $custom_region.start_zoom
-    --ez $custom_region.end_zoom
+#if $selectregion.custom_region:
+    --sz $selectregion.start_zoom
+    --ez $selectregion.end_zoom
 #end if
 #for $feature_color in $feature_colors:
     #if $feature_color.feature_color_selector.feature_color_options == "add_colors":
