@@ -251,6 +251,7 @@
 	<section id="6b26a975-a24a-4b05-b082-2286e1693fef" name="CPT: Genomic Viz">
 		<tool file="cpt2/galaxy-tools/tools/gbk/featuresvg.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/phage/genome_map.xml"/>
+        <tool file="cpt2/galaxy-tools/tools/genome_viz/linear_genome_plot.xml"/>
 		<!-- <tool file="cpt2/tools-iuc/tools/jbrowse/jbrowse.xml"/> -->
 		<tool file="cpt2/galaxy-tools/tools/jbrowse/jbrowse.xml"/>
 		<tool file="cpt2/Restriction-Digest-Tool/bin/digest_dna.xml"/>
