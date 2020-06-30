@@ -185,7 +185,7 @@ if __name__ == "__main__":
         print("-- crop mode --")
         zoom_start, zoom_end = args.sz, args.ez
         cropped = graphic_record.crop((zoom_start,zoom_end))
-        ax, _ = cropped.plot(figure_width=args.plot_width, elevate_outline_annotations=True)
+        ax, _ = cropped.plot(figure_width=args.plot_width, annotate_inline=above)#, elevate_outline_annotations=True)
         if args.translation_on:
             crop_seq = (args.st - 1, args.et)
             cropped.plot_translation(ax, location=crop_seq, fontdict={'size':8, 'weight':'bold'},y_offset=1)
