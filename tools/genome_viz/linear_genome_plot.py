@@ -146,6 +146,7 @@ if __name__ == "__main__":
 
     ## Part III ; PLOT
     rc_context({"font.family": ["monospace"],})
+    if args.label_above:
         above = True
     else:
         above = False
