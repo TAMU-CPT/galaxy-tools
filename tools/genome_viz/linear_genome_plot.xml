@@ -6,7 +6,7 @@
     <expand macro="requirements">
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/linear_genome_plot.py
+$__tool_directory__/linear_genome_plot.py
 $input_file
 --plot_width $plot_width
 --features_excluded "$features_excluded"
@@ -134,7 +134,7 @@ ALPHA VERSION
 Genome Plot
 
 Output:
-* file_stats will output the different 
+* file_stats will output the different
     ]]></help>
     <citations>
         <citation type="doi">https://doi.org/10.1101/2020.01.09.900589</citation>

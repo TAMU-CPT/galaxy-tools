@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from Bio import SeqIO
 from dna_features_viewer import BiopythonTranslator, GraphicRecord
 from matplotlib import rc_context
@@ -9,7 +10,7 @@ import sys
 import argparse
 
 class CPTTranslator(BiopythonTranslator):
-    """ 
+    """
     This is a customized translator from the dna_features_viewer module to fit Galaxy
     """
 
@@ -49,15 +50,15 @@ class CPTTranslator(BiopythonTranslator):
         return [
             feature for feature in features if feature.type not in ignored_features_types
         ]
-        
-    
+
+
     def compute_feature_legend_text(self, feature):
         return feature.type
-    
+
     def compute_feature_box_color(self, feature):
         if feature.type == "CDS":
             return "white"
-    
+
     def compute_featurebox_linewidth(self, feature):
         return 0
 
@@ -75,7 +76,7 @@ def parse_gbk(file):
             feature_types[feat.type] += 1
         if "product" in feat.qualifiers:
             product_names.append(feat.qualifiers["product"][0])
-    
+
     return feature_types, product_names, record
 
 if __name__ == "__main__":
@@ -127,7 +128,7 @@ if __name__ == "__main__":
         custom_feature_colors = dict(zip(feature_ids,feature_ids_colors))
     else:
         custom_feature_colors = {}
-    
+
     ##  Make K:V pairs for Name Colors (as above)
     if args.gene_id:
         gene_ids = [g for listed_obj in args.gene_id for g in listed_obj]
@@ -159,6 +160,10 @@ if __name__ == "__main__":
 
     translator = CPTTranslator()
     graphic_record = translator.translate_record(genome)
+
+    with open("a_temp_img.svg", "wb") as img:
+        img.truncate(0)
+        img.close()
 
     if args.sz: #  if user is wanting to look at a subset region of the genome
         print("-- crop mode --")
