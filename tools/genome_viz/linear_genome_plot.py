@@ -1,5 +1,6 @@
 from Bio import SeqIO
 from dna_features_viewer import BiopythonTranslator, GraphicRecord
+from matplotlib import rc_context
 import matplotlib.pyplot as plt
 from itertools import cycle
 import re
@@ -145,7 +146,7 @@ if __name__ == "__main__":
     print(ignored_gene_labels)
 
     ## Part III ; PLOT
-    rc_context({"font.family": ["monospace"],})
+    rc_context({"font.family": ["monospace"],}) # courier-like
     if args.label_above:
         above = True
     else:
