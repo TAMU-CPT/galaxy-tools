@@ -13,7 +13,8 @@ $input_file
 --ignore_labeling "$ignore_labeling"
 --feature_label_order "$feature_label_order"
 --title "$title"
-$label_above
+$label_algo
+$no_label_box
 #if $selectregion.custom_region:
     --sz $selectregion.start_zoom
     --ez $selectregion.end_zoom
@@ -38,12 +39,13 @@ $label_above
     <inputs>
         <param label="Annotated Genome File (Gbk or GFF3)" name="input_file" type="data" format="genbank" />
         <param label="Plot Width" name="plot_width" type="integer" value="20" help="Width of the plot. Increase for larger genomes." />
-        <param label="Plot Height" name="plot_height" type="integer" value="4" help="Height of the plot." />
+        <!-- <param label="Plot Height" name="plot_height" type="integer" value="4" help="Height of the plot." /> -->
+        <param label="No Box Label" name="no_label_box" type="boolean" help="Select 'yes' to have no label box around feature labels" truevalue="--no_label_box" falsevalue="" />
         <param label="Features to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by comma(s)." />
-        <param label="Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein). Separate by commas" />
-        <param label="Name ordering" help="Order of features to orient naming convention (example: locus_tag,product). Separate by commas." name="feature_label_order" type="text"/>
+        <param label="Products/Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein). Separate by commas" />
+        <param label="Name ordering" help="Order of features to decide naming convention (example: locus_tag,product). Separate by commas." name="feature_label_order" type="text"/>
         <param label="Title of Graph" name="title" type="text"/>
-        <param label="Label algorithm dictates label placement" name="label_above" type="boolean" help="Some features will be displayed inside if there is sufficient space" truevalue="--label_above" falsevalue="" />
+        <param label="Label algorithm dictates label placement" name="label_algo" type="boolean" help="Some features will be displayed inside if there is sufficient space. If set to no, all labels will be placed in the box labels above the feature" truevalue="--label_algo" falsevalue="" />
         <conditional name="selectregion">
             <param label="Select Custom Region" name="custom_region" type="boolean" checked="false" />
             <when value="true">
