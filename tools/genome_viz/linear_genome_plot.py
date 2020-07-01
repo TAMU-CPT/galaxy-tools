@@ -106,7 +106,7 @@ if __name__ == "__main__":
     parser.add_argument("--ignored_feature_labels",default="",help="ignore labeling of specific features")
     parser.add_argument("--ignore_labeling",default="",help="labeling for specific products to ignore, separate by commas")
     parser.add_argument("--feature_label_order",default="locus_tag",help="label order, where the first choice is the first feature listed to pull name labels from") # NEED TO ADD TO XML
-    parser.add_argument("--no_label_box",action="store_true",help="Use to have no label box around feature labels")
+    parser.add_argument("--label_box",action="store_true",help="Use to have label box around feature labels")
     parser.add_argument("--label_algo",action="store_true",help="use dna features spacing algo for label placement (in or above feature)")
     #parser.add_argument("--level_offset",type=int,default=0,help="All features and annotations will be pushed up by the input amount. Useful for when plotting several sets of features successively on the same axis.") # Will exclude for now
     #parser.add_argument("--custom_region",action="store_true",help="cropped region for plot")
@@ -142,10 +142,10 @@ if __name__ == "__main__":
 
     ##  Part II ; Prep Global Variables
     ##  Make K:V pairs for Feature Colors
-    if args.no_label_box:
-        box_status = False
-    else:
+    if args.label_box:
         box_status = True
+    else:
+        box_status = False
 
     print(box_status)
 

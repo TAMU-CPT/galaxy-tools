@@ -15,7 +15,7 @@ $input_file
 --ignored_feature_labels "$ignored_feature_labels"
 --title "$title"
 $label_algo
-$no_label_box
+$label_box
 #if $selectregion.custom_region:
     --sz $selectregion.start_zoom
     --ez $selectregion.end_zoom
@@ -43,10 +43,10 @@ $no_label_box
         <param label="Annotated Genome File (Gbk or GFF3)" name="input_file" type="data" format="genbank" />
         <param label="Plot Width" name="plot_width" type="integer" value="20" help="Width of the plot. Increase for larger genomes." />
         <!-- <param label="Plot Height" name="plot_height" type="integer" value="4" help="Height of the plot." /> -->
-        <param label="No Box Label" name="no_label_box" type="boolean" help="Select 'yes' to have no label box around feature labels" truevalue="--no_label_box" falsevalue="" />
-        <param label="Features to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by comma(s)." />
+        <param label="Box Label" name="label_box" type="boolean" checked="true" help="Select 'no' to have no label box around feature labels" truevalue="--label_box" falsevalue="" />
+        <param label="Feature(s) to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by comma(s)." />
         <param label="Feature(s) label(s) to EXCLUDE" name="ignored_feature_labels" type="text" optional="true" help="If plotting multiple features, especially when using product names, and you want to ignore labeling certain types of features, input the feature(s) (example: RBS,misc_feature). For multiple feature labels to exclude, separate by commas." />
-        <param label="Products/Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein). Separate by commas" />
+        <param label="Product(s) name label(s) to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein). Separate by commas" />
         <param label="Name ordering" help="Order of features to decide naming convention (example: locus_tag,product). Separate by commas." name="feature_label_order" type="text"/>
         <param label="Title of Graph" name="title" type="text" value="Linear Genome Plot"/>
         <param label="Label algorithm dictates label placement" name="label_algo" type="boolean" help="Some features will be displayed inside if there is sufficient space. If set to no, all labels will be placed in the box labels above the feature" checked="true" truevalue="--label_algo" falsevalue="" />
@@ -137,9 +137,30 @@ ALPHA VERSION
 
 Genome Plot
 
+* Description of some of the various parameters:
+
+Features to EXCLUDE :: Pass one, or multiple, feature(s) to be excluded from the plot. Separate by commas with NO spaces.
+
+Feature(s) label(s) to EXCLUDE :: Use this when you still want to plot the feature but not label it. A good sample case is if you are zoomed into a specific region and looking at overlapping genes but do not want to label all of the RBS sites. Pass a custom color to the RBS feature, but have it as a feature to exclude.
+
+Products(s) names label(s) to EXCLUDE :: Input specific names that you do not want to include. Any product with this name will NOT be passed. It must be spelt, spaced, and capetilzed exactly as it is within the file to be caught. Of note, if you choose to label by locus_tags, and want to skip over each, for example, hypothetical protein; the script will still pass their label and not label them.
+
+Name ordering :: In case you want to customize the selection method of labeling genes by a specific feature, use this argument. "product" will use the product names from within the file. If you want to use product, and if there is no name, use locus_tag as the next name, pass the following: product,locus_tag.
+
+Label algorithm dictates label placement :: DNA-features (the orginal python package) has a very nice spacing algorithm for deciding how to space and where to put the label. Selecting no will force ALL features to placed outside of their gene box. If more tuning is desired, a custom pixel control can be implemented as an argument (not currently implemented) to allow more user control for label placement within gene boxes.
+
+Select Custom Region :: If you would like to zoom in and look at a specific region of select a start and end site to zoom in on. Values are based on Nucleotides.
+
+Feature Colors :: Customizing Feature colors based on their exact name as listed in the file (check the output stats file for spelling).
+
+Product Name Colors :: Customizing Product colors based on their exact name as listed in the file (check the output stats file for spelling).
+
+
+
 Output:
 
-* file_stats will output the different
+* file_stats will output the different product names as well as the count of each respective feature
+* svg output
     ]]></help>
     <citations>
         <citation type="doi">https://doi.org/10.1101/2020.01.09.900589</citation>
