@@ -12,6 +12,7 @@ $input_file
 --features_excluded "$features_excluded"
 --ignore_labeling "$ignore_labeling"
 --feature_label_order "$feature_label_order"
+--ignored_feature_labels "$ignored_feature_labels"
 --title "$title"
 $label_algo
 $no_label_box
@@ -44,10 +45,11 @@ $no_label_box
         <!-- <param label="Plot Height" name="plot_height" type="integer" value="4" help="Height of the plot." /> -->
         <param label="No Box Label" name="no_label_box" type="boolean" help="Select 'yes' to have no label box around feature labels" truevalue="--no_label_box" falsevalue="" />
         <param label="Features to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by comma(s)." />
+        <param label="Feature(s) label(s) to EXCLUDE" name="ignored_feature_labels" type="text" optional="true" help="If plotting multiple features, especially when using product names, and you want to ignore labeling certain types of features, input the feature(s) (example: RBS,misc_feature). For multiple feature labels to exclude, separate by commas." />
         <param label="Products/Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein). Separate by commas" />
         <param label="Name ordering" help="Order of features to decide naming convention (example: locus_tag,product). Separate by commas." name="feature_label_order" type="text"/>
         <param label="Title of Graph" name="title" type="text" value="Linear Genome Plot"/>
-        <param label="Label algorithm dictates label placement" name="label_algo" type="boolean" help="Some features will be displayed inside if there is sufficient space. If set to no, all labels will be placed in the box labels above the feature" truevalue="--label_algo" falsevalue="" />
+        <param label="Label algorithm dictates label placement" name="label_algo" type="boolean" help="Some features will be displayed inside if there is sufficient space. If set to no, all labels will be placed in the box labels above the feature" checked="true" truevalue="--label_algo" falsevalue="" />
         <conditional name="selectregion">
             <param label="Select Custom Region" name="custom_region" type="boolean" checked="false" />
             <when value="true">
