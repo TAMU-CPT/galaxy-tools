@@ -40,7 +40,7 @@ $label_box
 --out_img $out_img
     ]]></command>
     <inputs>
-        <param label="Annotated Genome File (Gbk or GFF3)" name="input_file" type="data" format="genbank" />
+        <param label="Annotated Genome File (Gbk)" name="input_file" type="data" format="genbank" />
         <param label="Plot Width" name="plot_width" type="integer" value="20" help="Width of the plot. Increase for larger genomes." />
         <!-- <param label="Plot Height" name="plot_height" type="integer" value="4" help="Height of the plot." /> -->
         <param label="Box Label" name="label_box" type="boolean" checked="true" help="Select 'no' to have no label box around feature labels" truevalue="--label_box" falsevalue="" />
