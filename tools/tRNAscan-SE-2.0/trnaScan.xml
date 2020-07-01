@@ -3,7 +3,7 @@
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/tRNAscan-SE
 $inSeq
-> $output
+> $default
     ]]></command>
         <inputs>
             <param type="data" name="inSeq" label="Input Fasta File"/>
