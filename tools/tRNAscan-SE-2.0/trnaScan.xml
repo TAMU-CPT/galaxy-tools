@@ -4,7 +4,7 @@
       <requirement type="package" version="5.26.2">perl</requirement>
     </requirements>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/tRNAscan-SE
+$__tool_directory__/tRNAscan-SE
 $inSeq
 > $default
     ]]></command>
