@@ -15,6 +15,7 @@ class CPTTranslator(BiopythonTranslator):
     """
 
     global custom_feature_colors
+    global box_status
     global label_fields
     global custom_name_colors
     global ignored_features_types
@@ -59,7 +60,6 @@ class CPTTranslator(BiopythonTranslator):
             feature for feature in features if feature.type not in ignored_features_types
         ]
 
-
     def compute_feature_legend_text(self, feature):
         return feature.type
 
@@ -70,8 +70,11 @@ class CPTTranslator(BiopythonTranslator):
     def compute_feature_label_link_color(self, feature):
         return "black"
 
-    def compute_featurebox_linewidth(self, feature):
-        return 0.5
+    def compute_feature_box_linewidth(self, feature):
+        if box_status:
+            return 0.5
+        else:
+            return 0
 
 def parse_gbk(file):
     """ simple function to parse out the feature information AND products """
@@ -95,11 +98,14 @@ if __name__ == "__main__":
     #  Input and Parameters
     parser.add_argument("input_file",type=argparse.FileType("r"),help="genbank or gff3 file")
     parser.add_argument("--plot_width",type=int,default=20)
+    #parser.add_argument("--plot_height",type=int,default=4)
     parser.add_argument("--title",type=str,default="genome plot") # NEED TO ADD TO XML
     parser.add_argument("--features_excluded",default="",help="features to be excluded from plot, separate by commas")
     parser.add_argument("--ignore_labeling",default="",help="labeling for specific genes to ignore, separate by commas")
     parser.add_argument("--feature_label_order",default="locus_tag",help="label order, where the first choice is the first feature listed to pull name labels from") # NEED TO ADD TO XML
-    parser.add_argument("--label_above",action="store_true",help="force all labels above gene")
+    parser.add_argument("--no_label_box",action="store_true",help="Use to have no label box around feature labels")
+    parser.add_argument("--label_algo",action="store_true",help="use dna features spacing algo for label placement (in or above feature)")
+    #parser.add_argument("--level_offset",type=int,default=0,help="All features and annotations will be pushed up by the input amount. Useful for when plotting several sets of features successively on the same axis.") # Will exclude for now
     #parser.add_argument("--custom_region",action="store_true",help="cropped region for plot")
     parser.add_argument("--sz",type=int,help="beginning location for crop")
     parser.add_argument("--ez",type=int,help="end location for crop")
@@ -133,6 +139,13 @@ if __name__ == "__main__":
 
     ##  Part II ; Prep Global Variables
     ##  Make K:V pairs for Feature Colors
+    if args.no_label_box:
+        box_status = False
+    else:
+        box_status = True
+
+    print(box_status)
+
     if args.feature_id:
         feature_ids = [f for listed_obj in args.feature_id for f in listed_obj]
         feature_ids_colors = [f for listed_obj in args.feature_id_color for f in listed_obj]
@@ -169,10 +182,10 @@ if __name__ == "__main__":
     rc_context({"font.family": ["monospace"],}) # courier-like
     matplotlib.use('Agg') # I think this has to be used...
 
-    if args.label_above:
-        above = True
+    if args.label_algo:
+        lab_algo = True
     else:
-        above = False
+        lab_algo = False
 
     translator = CPTTranslator()
     graphic_record = translator.translate_record(genome)
@@ -185,11 +198,12 @@ if __name__ == "__main__":
         print("-- crop mode --")
         zoom_start, zoom_end = args.sz, args.ez
         cropped = graphic_record.crop((zoom_start,zoom_end))
-        ax, _ = cropped.plot(figure_width=args.plot_width, annotate_inline=above)#, elevate_outline_annotations=True)
+        ax, _ = cropped.plot(figure_width=args.plot_width, annotate_inline=lab_algo,figure_height=None)
         if args.translation_on:
             crop_seq = (args.st - 1, args.et)
             cropped.plot_translation(ax, location=crop_seq, fontdict={'size':8, 'weight':'bold'},y_offset=1)
         ax.set_title(args.title)
+        # Galaxy specific shenanigans
         tmp_fig = "./a_temp_img.svg"
         plt.savefig(tmp_fig)
         plt.close()
@@ -197,9 +211,10 @@ if __name__ == "__main__":
             for line in img:
                 args.out_img.write(line)
     else:
-        ax, _ = graphic_record.plot(figure_width=args.plot_width, annotate_inline=above)
+        ax, _ = graphic_record.plot(figure_width=args.plot_width, annotate_inline=lab_algo)
         ax.set_title(args.title)
         tmp_fig = "./a_temp_img.svg"
+        # Galaxy specific shenanigans
         plt.savefig(tmp_fig)
         plt.close()
         with open("a_temp_img.svg", "rb") as img:
