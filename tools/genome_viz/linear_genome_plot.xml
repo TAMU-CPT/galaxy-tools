@@ -32,7 +32,7 @@ $no_label_box
         --gene_id #for $gene_id in $gene_color.gene_color_selector.gene_id:
             "${gene_id}" #end for
         --gene_id_color #for $gene_col in $gene_color.gene_color_selector.gene_id_color:
-            "${gene_id_color} #end for
+            "${gene_col} #end for
     #end if
 #end for
 --file_stats $file_stats
