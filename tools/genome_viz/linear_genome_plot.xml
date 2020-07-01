@@ -46,7 +46,7 @@ $no_label_box
         <param label="Features to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by comma(s)." />
         <param label="Products/Names to EXCLUDE" name="ignore_labeling" type="text" optional="true" help="Product names to ignore (example: hypothetical protein). Separate by commas" />
         <param label="Name ordering" help="Order of features to decide naming convention (example: locus_tag,product). Separate by commas." name="feature_label_order" type="text"/>
-        <param label="Title of Graph" name="title" type="text"/>
+        <param label="Title of Graph" name="title" type="text" value="Linear Genome Plot"/>
         <param label="Label algorithm dictates label placement" name="label_algo" type="boolean" help="Some features will be displayed inside if there is sufficient space. If set to no, all labels will be placed in the box labels above the feature" truevalue="--label_algo" falsevalue="" />
         <conditional name="selectregion">
             <param label="Select Custom Region" name="custom_region" type="boolean" checked="false" />
