@@ -20,13 +20,13 @@ class CPTTranslator(BiopythonTranslator):
     global custom_name_colors
     global ignored_features_types
     global ignored_gene_labels
+    global ignored_feature_labels
 
     def compute_feature_color(self, feature):
         if feature.type == "CDS":
             if "product" in feature.qualifiers:
                 color_specific = any(re.search(("(\\b"+str(item)+"\\b)"),feature.qualifiers["product"][0]) for item in custom_name_colors.keys())
                 if color_specific:
-                    print(custom_name_colors[feature.qualifiers["product"][0]])
                     return custom_name_colors[feature.qualifiers["product"][0]]
                 else:
                     try:
@@ -52,6 +52,8 @@ class CPTTranslator(BiopythonTranslator):
                         return BiopythonTranslator.compute_feature_label(self, feature)
                 else:
                     return BiopythonTranslator.compute_feature_label(self, feature)
+        elif feature.type in ignored_feature_labels:
+            return None
         else:
             return BiopythonTranslator.compute_feature_label(self, feature)
 
@@ -101,7 +103,8 @@ if __name__ == "__main__":
     #parser.add_argument("--plot_height",type=int,default=4)
     parser.add_argument("--title",type=str,default="genome plot") # NEED TO ADD TO XML
     parser.add_argument("--features_excluded",default="",help="features to be excluded from plot, separate by commas")
-    parser.add_argument("--ignore_labeling",default="",help="labeling for specific genes to ignore, separate by commas")
+    parser.add_argument("--ignored_feature_labels",default="",help="ignore labeling of specific features")
+    parser.add_argument("--ignore_labeling",default="",help="labeling for specific products to ignore, separate by commas")
     parser.add_argument("--feature_label_order",default="locus_tag",help="label order, where the first choice is the first feature listed to pull name labels from") # NEED TO ADD TO XML
     parser.add_argument("--no_label_box",action="store_true",help="Use to have no label box around feature labels")
     parser.add_argument("--label_algo",action="store_true",help="use dna features spacing algo for label placement (in or above feature)")
@@ -169,6 +172,9 @@ if __name__ == "__main__":
 
     if ignored_gene_labels == ['']:
         ignored_gene_labels = False
+
+    ##  Ignored Labeling
+    ignored_feature_labels = str.split(args.ignored_feature_labels,",")
 
     ##  Print Statements for Debugging
     print(custom_feature_colors)
