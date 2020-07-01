@@ -1,0 +1,27 @@
+<tool id="edu.tamu.cpt.tRNAscan" name="tRNAscan-SE" version="2.0.5">
+    <description>wrapped 2.0.X version</description>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/tRNAscan-SE
+$inSeq
+> $output
+    ]]></command>
+        <inputs>
+            <param type="data" name="inSeq" label="Input Fasta File"/>
+        </inputs>
+        <outputs>
+            <data format="text" name="default"/>
+        </outputs>
+    <help><![CDATA[
+Initial upload of tRNAscan's latest version, wrapped by CPT. Options and proper citation pending. Output is a text file, conversion to GFF3 can be found under the CPT: Format Conversion scripts
+    ]]></help>
+        <citations>
+            <citation type="bibtex">
+                @unpublished{galaxyTools,
+                author = {Anthony C.},
+                title = {CPT Galaxy Tools},
+                year = {2020-},
+                note = {https://github.com/tamu-cpt/galaxy-tools/}
+                }
+            </citation>
+        </citations>
+</tool>
