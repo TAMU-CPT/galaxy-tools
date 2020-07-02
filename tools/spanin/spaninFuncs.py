@@ -172,17 +172,17 @@ def find_lipobox(pair, minimum=10, maximum=30, min_after=10, max_after=50, regex
     candidates = []
     s = str(pair[1])
     # print(s) # trouble shooting
-    search_region = s[minimum : maximum + 1]
+    search_region = s[minimum-1 : maximum + 5] # properly slice the input... add 4 to catch if it hangs off at max input
     # print(search_region) # trouble shooting
     # for each_pair in pair:
     # print(s)
     if re.search((pattern), search_region):  # lipobox must be WITHIN the range...
         # searches the sequence with the input RegEx AND omits if
-        g = re.search((pattern), search_region).group() # find the exact group match
-        if min_after < len(s) - re.search((g), s).end() < max_after: # find the lipobox end region
-            candidates.append(pair)
+        #g = re.search((pattern), search_region).group() # find the exact group match
+        #if min_after < len(s) - re.search((g), s).end() < max_after: # find the lipobox end region
+        candidates.append(pair)
         # print('passed') # trouble shooting
-            return candidates
+        return candidates
     else:
         # print('didnotpass') # trouble shooting
         pass

@@ -128,7 +128,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--osp_max_dist",
         dest="osp_max_dist",
-        default=60,
+        default=50,
         help="Maximum distance to first AA of lipobox, measured in AA",
         type=int,
     )
@@ -221,8 +221,6 @@ if __name__ == "__main__":
                     pair=each_pair,
                     minimum=args.osp_min_dist,
                     maximum=args.osp_max_dist,
-                    min_after=args.min_lipo_after,
-                    max_after=args.max_lipo_after,
                     regex=args.pattern,
                 )
             except (IndexError, TypeError):
