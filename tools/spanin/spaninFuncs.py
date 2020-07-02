@@ -156,7 +156,7 @@ def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20):
         return tmd
 
 
-def find_lipobox(pair, minimum=10, maximum=30, regex=1):
+def find_lipobox(pair, minimum=10, maximum=30, min_after=10, max_after=50, regex=1):
     """
         Function that takes an input tuple, and will return pairs of sequences to their description that have a lipoobox
         ---> minimum - min distance from start codon to first AA of lipobox
@@ -178,9 +178,11 @@ def find_lipobox(pair, minimum=10, maximum=30, regex=1):
     # print(s)
     if re.search((pattern), search_region):  # lipobox must be WITHIN the range...
         # searches the sequence with the input RegEx AND omits if
-        candidates.append(pair)
+        g = re.search((pattern), search_region).group() # find the exact group match
+        if min_after < len(s) - re.search((g), s).end() < max_after: # find the lipobox end region
+            candidates.append(pair)
         # print('passed') # trouble shooting
-        return candidates
+            return candidates
     else:
         # print('didnotpass') # trouble shooting
         pass

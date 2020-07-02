@@ -140,6 +140,20 @@ if __name__ == "__main__":
         type=int,
     )
     parser.add_argument(
+        "--min_lipo_after",
+        dest="min_lipo_after",
+        default=10,
+        help="minimal amount of residues after lipobox",
+        type=int,
+    )
+    parser.add_argument(
+        "--max_lipo_after",
+        dest="min_lipo_after",
+        default=50,
+        help="minimal amount of residues after lipobox",
+        type=int,
+    )
+    parser.add_argument(
         "--putative_osp",
         dest="putative_osp_fa",
         type=argparse.FileType("w"),
@@ -207,6 +221,8 @@ if __name__ == "__main__":
                     pair=each_pair,
                     minimum=args.osp_min_dist,
                     maximum=args.osp_max_dist,
+                    min_after=args.min_lipo_after,
+                    max_after=args.max_lipo_after,
                     regex=args.pattern,
                 )
             except (IndexError, TypeError):
