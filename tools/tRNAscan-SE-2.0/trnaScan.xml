@@ -12,7 +12,7 @@ $inSeq
             <param type="data" name="inSeq" label="Input Fasta File"/>
         </inputs>
         <outputs>
-            <data format="text" name="default"/>
+            <data format="tabular" name="default"/>
         </outputs>
     <help><![CDATA[
 Initial upload of tRNAscan's latest version, wrapped by CPT. Options and proper citation pending. Output is a text file, conversion to GFF3 can be found under the CPT: Format Conversion scripts
