@@ -10,6 +10,7 @@ $maxMode
 $noPseudo
 --score $cutoff
 --pad $padding
+--forceow
 --output $default
 --fasta $faOut
 $inSeq
