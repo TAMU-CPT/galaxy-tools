@@ -31,8 +31,8 @@ $inSeq
             <param checked="false" label="Disable pseudogene checking" name="noPseudo" type="boolean" truevalue="--nopseudo" falsevalue="" />
         </inputs>
         <outputs>
-            <data format="tabular" name="default"/>
-            <data format="fasta" name="faOut"/>
+            <data format="tabular" name="default" label="tRNAscan-SE on ${inSeq.name} (Tabular Results)"/>
+            <data format="fasta" name="faOut" label="tRNAscan-SE on ${inSeq.name} predicted tRNA sequences (Fasta)"/>
         </outputs>
     <help><![CDATA[
 Initial upload of tRNAscan's latest version, wrapped by CPT. Options and proper citation pending. Output is a text file, conversion to GFF3 can be found under the CPT: Format Conversion scripts
