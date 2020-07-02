@@ -5,14 +5,33 @@
     </requirements>
     <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/tRNAscan-SE
+$model
+$maxMode
+$noPseudo
+--score $cutoff
+--pad $padding
+--output $default
+--fasta $faOut
 $inSeq
-> $default
     ]]></command>
         <inputs>
             <param type="data" name="inSeq" label="Input Fasta File"/>
+            <param label="tRNA model to use" name="model" type="select">
+		<option value="-B" selected="true">Bacterial</option>
+		<option value="-E">Eukaryotic</option>
+		<option value="-A">Archaeal</option>
+		<option value="-M mammal">Mitochondrial (Mammal)</option>
+		<option value="-M vert">Mitochondrial (Vertebrate)</option>
+                <option value="-G">General (cytoslic tRNAs from all 3 domains included)</option>
+	    </param>
+            <param label="Cutoff score (in bits) for reporting tRNAs" name="cutoff" type="integer" value="20"/>
+            <param label="Number of nucleotide padding when passing first-pass tRNA bounds predictions to CM analysis" name="padding" type="integer" value="8"/>
+            <param checked="false" label="Run search without HMM filter" name="maxMode" type="boolean" truevalue="-I --max" falsevalue="" />
+            <param checked="false" label="Disable pseudogene checking" name="noPseudo" type="boolean" truevalue="--nopseudo" falsevalue="" />
         </inputs>
         <outputs>
             <data format="tabular" name="default"/>
+            <data format="fasta" name="faOut"/>
         </outputs>
     <help><![CDATA[
 Initial upload of tRNAscan's latest version, wrapped by CPT. Options and proper citation pending. Output is a text file, conversion to GFF3 can be found under the CPT: Format Conversion scripts
