@@ -11,7 +11,7 @@ for trna in fileinput.input():
     cols_tsv = trna.split("\t")
     cols_gff = [
         cols_tsv[0],
-        "aragorn",
+        "tRNAscan-SE",
         "tRNA",
         cols_tsv[2],
         cols_tsv[3],
