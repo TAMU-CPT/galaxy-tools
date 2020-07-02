@@ -5,7 +5,7 @@ print "##gff-version-3"
 # process each trna in tsv file
 metaLines = 0
 for trna in fileinput.input():
-    if metaLines < 5:
+    if metaLines < 3:
       metaLines += 1
       continue
     cols_tsv = trna.split("\t")
