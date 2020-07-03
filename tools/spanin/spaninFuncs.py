@@ -63,9 +63,11 @@ def prep_a_gff3(fa, spanin_type):
         elif spanin_type == "osp":
             methodtype = "CDS"  # column 3
             spanin = "osp"
+        elif spanin_type == "usp":
+            methodtype = "CDS"
+            spanin = "usp"
         else:
-            print("need to input spanin type")
-            break
+            raise "need to input spanin type"
         source = "cpt.py|putative-*.py"  # column 2
         score = "."  # column 6
         phase = "."  # column 8
@@ -115,48 +117,49 @@ def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20):
     tmd = []
     s = str(pair[1])  # sequence being analyzed
     # print(s) # for trouble shooting
+    if maximum > len(s):
+        maximum = len(s)
     search_region = s[minimum - 1 : maximum + 1]
+    #print(f"this is the search region: {search_region}")
     # print(search_region) # for trouble shooting
 
-    for tmsize in range(TMDmin, TMDmax + 1, 1):
+    for tmsize in range(TMDmin, TMDmax+1, 1):
+        #print(f"this is the current tmsize we're trying: {tmsize}")
         # print('==============='+str(tmsize)+'================') # print for troubleshooting
-        pattern = (
-            "['FIWLVMYCATGS']{" + str(tmsize) + "}"
-        )  # searches for these hydrophobic residues tmsize total times
+        pattern = "[PFIWLVMYCATGS]{"+str(tmsize)+"}"  # searches for these hydrophobic residues tmsize total times
+        #print(pattern)
+        #print(f"sending to regex: {search_region}")
         if re.search(
-            ("[K]"), search_region[1:8]
-        ):  # grabbing one below with search region, so I want to grab one ahead here when I query.
-            store_search = re.search(
-                ("[K]"), search_region[1:8]
-            )  # storing regex object
+            ("[K]"), search_region[1:8]):  # grabbing one below with search region, so I want to grab one ahead here when I query.
+            store_search = re.search(("[K]"), search_region[1:8])  # storing regex object
             where_we_are = store_search.start()  # finding where we got the hit
             if re.search(
-                ("[FIWLVMYCATGS]"), search_region[where_we_are + 1]
+                ("[PFIWLVMYCATGS]"), search_region[where_we_are + 1]
             ) and re.search(
-                ("[FIWLVMYCATGS]"), search_region[where_we_are - 1]
+                ("[PFIWLVMYCATGS]"), search_region[where_we_are - 1]
             ):  # hydrophobic neighbor
-                try:
-                    backend = check_back_end_snorkels(search_region, tmsize)
-                    if backend == "match":
-                        tmd.append(pair)
-                    else:
-                        continue
-                except (IndexError, TypeError):
+                #try:
+                backend = check_back_end_snorkels(search_region, tmsize)
+                if backend == "match":
+                    tmd.append(pair)
+                else:
                     continue
-            else:
-                continue
-        elif re.search((pattern), search_region):
-            try:
-                tmd.append(pair)
-            except (IndexError, TypeError):
-                continue
+        #else:
+            #print("I'm continuing out of snorkel loop")
+            #print(f"{search_region}")
+            #continue
+        if re.search((pattern), search_region):
+            #print(f"found match: {}")
+            #print("I AM HEREEEEEEEEEEEEEEEEEEEEEEE")
+            #try:
+            tmd.append(pair)
         else:
             continue
 
         return tmd
 
 
-def find_lipobox(pair, minimum=10, maximum=30, regex=1):
+def find_lipobox(pair, minimum=10, maximum=50, min_after=30, max_after=185, regex=1):
     """
         Function that takes an input tuple, and will return pairs of sequences to their description that have a lipoobox
         ---> minimum - min distance from start codon to first AA of lipobox
@@ -172,15 +175,17 @@ def find_lipobox(pair, minimum=10, maximum=30, regex=1):
     candidates = []
     s = str(pair[1])
     # print(s) # trouble shooting
-    search_region = s[minimum : maximum + 1]
+    search_region = s[minimum-1 : maximum + 5] # properly slice the input... add 4 to catch if it hangs off at max input
     # print(search_region) # trouble shooting
     # for each_pair in pair:
     # print(s)
     if re.search((pattern), search_region):  # lipobox must be WITHIN the range...
         # searches the sequence with the input RegEx AND omits if
-        candidates.append(pair)
+        g = re.search((pattern), search_region).group() # find the exact group match
+        if min_after <= len(s) - re.search((g), s).end() + 1 <= max_after: # find the lipobox end region
+            candidates.append(pair)
         # print('passed') # trouble shooting
-        return candidates
+            return candidates
     else:
         # print('didnotpass') # trouble shooting
         pass
@@ -383,6 +388,9 @@ def spaninProximity(isp, osp, max_dist=30, strand="+"):
     separate = {k: separate[k] for k in separate if separate[k]}
     return embedded, overlap, separate
 
+
+def check_for_usp():
+    " pass "
 
 ############################################### TEST RANGE #########################################################################
 ####################################################################################################################################
