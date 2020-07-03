@@ -11,7 +11,7 @@ for trna in fileinput.input():
     cols_tsv = trna.split("\t")
     if int(cols_tsv[2]) < int(cols_tsv[3]):
       cols_gff = [
-        cols_tsv[0],
+        cols_tsv[0].strip(),
         "tRNAscan",
         "tRNA",
         cols_tsv[2],
@@ -24,7 +24,7 @@ for trna in fileinput.input():
       ]
     else:
       cols_gff = [
-        cols_tsv[0],
+        cols_tsv[0].strip(),
         "tRNAscan",
         "tRNA",
         cols_tsv[3],
