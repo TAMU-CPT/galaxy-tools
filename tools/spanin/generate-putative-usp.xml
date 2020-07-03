@@ -64,7 +64,7 @@ $fa
     </outputs>
         <tests>
             <test>
-                <param name="fa" value="t1.fa"
+                <param name="fa" value="t1.fa" />
                 <param name="min-size" value="100" />
                 <param name="max-size" value="200" />
                 <param name="switch" value="all"/>
