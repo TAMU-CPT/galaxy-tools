@@ -307,6 +307,7 @@
                 <tool file="cpt2/galaxy-tools/tools/genemark/genemarkHMM.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-isp.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-osp.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-usp.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/spanin/findSpanin.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/helicalWheel/generateHelicalWheel.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/proximity/searchFile.xml"/>
