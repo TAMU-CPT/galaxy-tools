@@ -101,28 +101,28 @@ if __name__ == "__main__":
         "--osp_on",
         dest="out_osp_nuc",
         type=argparse.FileType("w"),
-        default="out_osp.fna",
+        default="_out_osp.fna",
         help="Output nucleotide sequences, FASTA",
     )
     parser.add_argument(
         "--osp_op",
         dest="out_osp_prot",
         type=argparse.FileType("w"),
-        default="out_osp.fa",
+        default="_out_osp.fa",
         help="Output protein sequences, FASTA",
     )
     parser.add_argument(
         "--osp_ob",
         dest="out_osp_bed",
         type=argparse.FileType("w"),
-        default="out_osp.bed",
+        default="_out_osp.bed",
         help="Output BED file",
     )
     parser.add_argument(
         "--osp_og",
         dest="out_osp_gff3",
         type=argparse.FileType("w"),
-        default="out_osp.gff3",
+        default="_out_osp.gff3",
         help="Output GFF3 file",
     )
     parser.add_argument(
@@ -149,14 +149,14 @@ if __name__ == "__main__":
     parser.add_argument(
         "--min_lipo_after",
         dest="min_lipo_after",
-        default=30,
+        default=25,
         help="minimal amount of residues after lipobox",
         type=int,
     )
     parser.add_argument(
         "--max_lipo_after",
         dest="max_lipo_after",
-        default=185,
+        default=170,
         help="minimal amount of residues after lipobox",
         type=int,
     )
@@ -164,22 +164,27 @@ if __name__ == "__main__":
         "--putative_osp",
         dest="putative_osp_fa",
         type=argparse.FileType("w"),
-        default="putative_osp.fa",
+        default="_putative_osp.fa",
         help="Output of putative FASTA file",
     )
     parser.add_argument(
         "--summary_osp_txt",
         dest="summary_osp_txt",
         type=argparse.FileType("w"),
-        default="summary_osp.txt",
+        default="_summary_osp.txt",
         help="Summary statistics on putative o-spanins",
     )
     parser.add_argument(
         "--putative_osp_gff",
         dest="putative_osp_gff",
         type=argparse.FileType("w"),
-        default="putative_osp.gff3",
+        default="_putative_osp.gff3",
         help="gff3 output for putative o-spanins",
+    )
+    parser.add_argument(
+        "--osp_mode",
+        action="store_true",
+        default=True
     )
 
     # parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
@@ -228,6 +233,7 @@ if __name__ == "__main__":
                     min_after=args.min_lipo_after,
                     max_after=args.max_lipo_after,
                     regex=args.pattern,
+                    osp_mode=args.osp_mode,
                 )
             except (IndexError, TypeError):
                 continue

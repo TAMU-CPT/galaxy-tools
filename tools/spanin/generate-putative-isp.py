@@ -92,28 +92,28 @@ if __name__ == "__main__":
         "--isp_on",
         dest="out_isp_nuc",
         type=argparse.FileType("w"),
-        default="out_isp.fna",
+        default="_out_isp.fna",
         help="Output nucleotide sequences, FASTA",
     )
     parser.add_argument(
         "--isp_op",
         dest="out_isp_prot",
         type=argparse.FileType("w"),
-        default="out_isp.fa",
+        default="_out_isp.fa",
         help="Output protein sequences, FASTA",
     )
     parser.add_argument(
         "--isp_ob",
         dest="out_isp_bed",
         type=argparse.FileType("w"),
-        default="out_isp.bed",
+        default="_out_isp.bed",
         help="Output BED file",
     )
     parser.add_argument(
         "--isp_og",
         dest="out_isp_gff3",
         type=argparse.FileType("w"),
-        default="out_isp.gff3",
+        default="_out_isp.gff3",
         help="Output GFF3 file",
     )
     parser.add_argument(
@@ -134,7 +134,7 @@ if __name__ == "__main__":
         "--putative_isp",
         dest="putative_isp_fa",
         type=argparse.FileType("w"),
-        default="putative_isp.fa",
+        default="_putative_isp.fa",
         help="Output of putative FASTA file",
     )
     parser.add_argument(
@@ -155,14 +155,14 @@ if __name__ == "__main__":
         "--summary_isp_txt",
         dest="summary_isp_txt",
         type=argparse.FileType("w"),
-        default="summary_isp.txt",
+        default="_summary_isp.txt",
         help="Summary statistics on putative i-spanins",
     )
     parser.add_argument(
         "--putative_isp_gff",
         dest="putative_isp_gff",
         type=argparse.FileType("w"),
-        default="putative_isp.gff3",
+        default="_putative_isp.gff3",
         help="gff3 output for putative i-spanins",
     )
 
@@ -174,6 +174,25 @@ if __name__ == "__main__":
         type=int,
     )
 
+    parser.add_argument(
+        "--isp_mode",
+        action="store_true",
+        default=True
+    )
+
+    parser.add_argument(
+        "--peri_min",
+        type=int,
+        default=18,
+        help="amount of residues after TMD is found min"
+    )
+
+    parser.add_argument(
+        "--peri_max",
+        type=int,
+        default=206,
+        help="amount of residues after TMD is found max"
+    )
     # parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
     args = parser.parse_args()
     the_args = vars(parser.parse_args())
@@ -191,7 +210,7 @@ if __name__ == "__main__":
     >T7_EIS MLEFLRKLIPWVLVGMLFGLGWHLGSDSMDAKWKQEVHNEYVKRVEAAKSTQRAIGAVSAKYQEDLAALEGSTDRIISDLRSDNKRLRVRVKTTGISDGQCGFEPDGRAELDDRDAKRILAVTQKGDAWIRALQDTIRELQRK
     >lambda_EIS MSRVTAIISALVICIIVCLSWAVNHYRDNAITYKAQRDKNARELKLANAAITDMQMRQRDVAALDAKYTKELADAKAENDALRDDVAAGRRRLHIKAVCQSVREATTASGVDNAASPRLADTAERDYFTLRERLITMQKQLEGTQKYINEQCR
     """
-
+    print(args.isp_mode)
     args.out_isp_prot.close()
     args.out_isp_prot = open(args.out_isp_prot.name, "r")
 
@@ -214,6 +233,9 @@ if __name__ == "__main__":
                     maximum=args.isp_max_dist,
                     TMDmin=args.min_tmd_size,
                     TMDmax=args.max_tmd_size,
+                    isp_mode=args.isp_mode,
+                    peri_min=args.peri_min,
+                    peri_max=args.peri_max,
                 )
             except TypeError:
                 continue
