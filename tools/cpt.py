@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import regex as re
+import re
 from Bio.Seq import Seq, reverse_complement, translate
 from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
