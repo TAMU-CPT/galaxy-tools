@@ -8,6 +8,9 @@
 * `generate-putative-osp.py`
     * INPUT : Genomic FASTA
     * OUTPUT : Putative candidates for osp
+* `generate-putative-usp.py`
+    * INPUT : Genomic FASTA
+    * OUTPUT : Putative candidates for usp
 * `spaninFuncs.py`
     * Functions that drive the scripts within this directory
 
@@ -35,6 +38,9 @@
         * Searches for Lysine snorkels (see `find_tmd`)
         * Searches for large spanning hydrophobic regions (see `find_tmd`)
     * OUTPUT : All matching description/sequence pairs are stored, and returned as a `putative_isp.fa` file.
+* `generate-putative-usp.py`
+    * INPUT : Genomic FASTA
+    * Does a combination of the spanin func lipobox and tmd functions with different default parameters than their isp/osp counterparts.
 * `spaninFuncs.py`
     * func `find_lipobox`
         * Uses a choice of (currently two) regular expressions that find lipoboxes upstream of the input sequence. If this passes, the description/sequence is saved.
