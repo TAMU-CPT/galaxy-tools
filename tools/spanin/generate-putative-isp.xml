@@ -35,7 +35,7 @@ $fasta_file
             <option value="forward">+</option>
             <option value="reverse">-</option>
         </param>
-        <param label="FASTA" name="fasta_file" type="data" format="fasta" />
+        <param label="Single Genome FASTA" name="fasta_file" type="data" format="fasta" />
         <param label="i-spanin minimal length" name="isp_min_len" type="integer" value="60" />
         <param label="i-spanin maximum length" name="isp_max" type="integer" value="230" />
         <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1000:2000)" type="text" name="switch" value="all" />

@@ -31,7 +31,7 @@ $fasta_file
             <option value="forward">+</option>
             <option value="reverse">-</option>
         </param>
-        <param label="FASTA" name="fasta_file" type="data" format="fasta" />
+        <param label="Single Genome FASTA" name="fasta_file" type="data" format="fasta" />
         <param label="o-spanin minimal length" name="osp_min_len" type="integer" value="45" />
         <param label="o-spanin maximum length" name="osp_max" type="integer" value="200" />
         <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1234:4321)" type="text" name="switch" value="all" />
@@ -66,8 +66,10 @@ With the aaFASTA, this tool reads in each potential sequence and determines if i
 
     1. Min distance from start codon to lipobox
     2. Max distance from start codon to lipobox
+    3. Min amount of periplasmic residues after the lipobox
+    4. Max amount of periplasmic residues after the lipobox
 
-Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found. If so, it is added to a candidate list, and eventually ported to a file in the output.
+Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found.
 
 **OUTPUT** --> putative_osp.fa (FASTA) file, putative_osp.gff3, and basic summary statistics file as sumamry_osp.txt
 ]]></help>
