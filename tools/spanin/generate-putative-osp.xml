@@ -54,6 +54,7 @@ $fasta_file
         <data format="gff3" name="putative_osp_gff" label="putative_osp.gff3"/>
     </outputs>
     <help><![CDATA[
+*NOTE: This tool only takes a SINGLE genomic fasta. It does not work with multiFASTAs.*
 
 **INPUT** --> Genomic FASTA
 
