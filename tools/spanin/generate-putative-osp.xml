@@ -23,8 +23,8 @@ $fasta_file
 --putative_osp $putative_osp
 --summary_osp_txt $summary_osp
 --putative_osp_gff $putative_osp_gff
---lipo_min $lipo_min
---lipo_max $lipo_max
+--min_lipo_after $lipo_min
+--max_lipo_after $lipo_max
 --osp_max $osp_max
 ]]></command>
     <inputs>
