@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt2.spanin.generate-putative-usp" name="SAR Finder" version="1.0">
+<tool id="edu.tamu.cpt2.spanin.generate-putative-usp" name="USP Candidates" version="1.0">
     <description>constructs a putative list of potential u-spanin from an input genomic FASTA</description>
     <macros>
         <import>macros.xml</import>
@@ -37,8 +37,8 @@ $fa
             <option value="forward">+</option>
             <option value="reverse">-</option>
         </param>
-        <param label="u-spanin minimal length" type="integer" name="--min_size" value="100" />
-        <param label="u-spanin maximum length" type="integer" name="--max_size" value="200" />
+        <param label="u-spanin minimal length" type="integer" name="min_size" value="100" />
+        <param label="u-spanin maximum length" type="integer" name="max_size" value="200" />
         <param label="Range Selection; default is all; slices are based on NT. Separated by a colon (eg. #:#)" name="switch" type="text" value="all"/>
         <param label="TMD minimal distance from start codon" type="integer" name="tmd_min_start" value="75" />
         <param label="TMD maximum distance from start codon" type="integer" name="tmd_max_start" value="200" />
@@ -64,6 +64,25 @@ $fa
     </outputs>
         <tests>
             <test>
+                <param name="min-size" value="100" />
+                <param name="max-size" value="200" />
+                <param name="switch" value="all"/>
+                <param name="tmd_min_start" value="75" />
+                <param name="tmd_max_start" value="200" />
+                <param name="tmd_min_size" value="15" />
+                <param name="tmd_max_size" value="25" />
+                <param name="lipo_min_start" value="15" />
+                <param name="lipo_max_start" value="30" />
+                <param name="min_lipo_after" value="60" />
+                <param name="max_lipo_after" value="160" />
+                <param name="select" value="1" />
+                <output name="usp_on" file="_out_usp.fna"/>
+                <output name="usp_op" file="_out_usp.fa"/>
+                <output name="usp_ob" file="_out_usp.bed"/>
+                <output name="usp_og" file="_out_usp.gff3"/>
+                <output name="putative_usp" file="_putative_usp.fa"/>
+                <output name="summary_usp" file="_summary_usp.txt"/>
+                <output name="putative_usp_gff" file="_putative_usp.gff3"/>
             </test>
         </tests>
     <help><![CDATA[
