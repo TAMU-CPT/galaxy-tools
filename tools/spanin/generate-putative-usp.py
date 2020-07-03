@@ -165,17 +165,17 @@ if __name__ == "__main__":
             except (IndexError, TypeError):
                 continue
     
-    print(len(have_lipo))
+    #print(len(have_lipo))
     #print(have_lipo)
 
     have_tmd_and_lipo = []
-    print(args.tmd_min_start)
-    print(args.tmd_max_start)
-    print(args.tmd_min_size)
-    print(args.tmd_max_size)
+    #print(args.tmd_min_start)
+    #print(args.tmd_max_start)
+    #print(args.tmd_min_size)
+    #print(args.tmd_max_size)
 
     for each_pair in have_lipo:
-        print(each_pair)
+        #print(each_pair)
         try:
             have_tmd_and_lipo += find_tmd(pair=each_pair,
                                 minimum=args.tmd_min_start,
@@ -186,8 +186,8 @@ if __name__ == "__main__":
         except (IndexError, TypeError):
             continue
     
-    print(len(have_tmd_and_lipo))
-    print(have_tmd_and_lipo)
+    #print(len(have_tmd_and_lipo))
+    #print(have_tmd_and_lipo)
 
     if args.switch == "all":
         pass
