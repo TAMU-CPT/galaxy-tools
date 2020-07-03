@@ -27,6 +27,8 @@ $fasta_file
 --summary_isp_txt $summary_isp
 --putative_isp_gff $putative_isp_gff
 --isp_max $isp_max
+--peri_min $peri_min
+--peri_max $peri_max
 
 ]]></command>
     <inputs>
@@ -43,6 +45,8 @@ $fasta_file
         <param label="TMD maximum distance from start codon" name="isp_max_dist" type="integer" value="35" help="Searches for a TMD between TMDmin and TMDmax ie [TMDmin,TMDmax]" />
         <param label="TMD minimal size" name="min_tmd_size" type="integer" value="10" />
         <param label="TMD maximum size" name="max_tmd_size" type="integer" value="25" />
+        <param label="Periplasmic minimal residue amount" name="peri_min" type="integer" value="16" />
+        <param label="Periplasmic maximum residue amount" name="peri_max" type="integer" value="206" />
     </inputs>
     <outputs>
         <data format="fasta" name="isp_on" label="NucSequences.fa" hidden = "true"/>
@@ -66,6 +70,7 @@ With the aaFASTA, read in each potential sequence and determine if it has a TMD 
 
     1. Lysine snorkels and neighboring hydrophobic residues, within the range the user inputs.
     2. A repeated hydrophobic region within the sequence, within the range the user inputs.
+    3. Periplasmic calculations of residues. Minimal and maximum thresholds for required amount of residues after TMD is found.
 
 **OUTPUT** --> putative_isp.fa (FASTA) file, putative_isp.gff3, and basic summary statistics as summary_isp.txt.
 

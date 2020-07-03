@@ -23,6 +23,8 @@ $fasta_file
 --putative_osp $putative_osp
 --summary_osp_txt $summary_osp
 --putative_osp_gff $putative_osp_gff
+--lipo_min $lipo_min
+--lipo_max $lipo_max
 --osp_max $osp_max
 ]]></command>
     <inputs>
@@ -37,8 +39,8 @@ $fasta_file
         <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1234:4321)" type="text" name="switch" value="all" />
         <param label="Lipobox minimal distance from start codon" name="osp_min_dist" type="integer" value="10" />
         <param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" help="Searches for a Lipobox between Lipoboxmin and Lipoboxmax ie [Lipoboxmin,Lipoboxmax]" />
-        <param label="Minimum amount of residues after lipobox is found" name="lipo_min" type="integer" value="85" />
-        <param label="Maximum amount of residues after lipobox is found" name="lipo_max" type="integer" value="185" />
+        <param label="Minimum amount of residues after lipobox is found" name="lipo_min" type="integer" value="25" />
+        <param label="Maximum amount of residues after lipobox is found" name="lipo_max" type="integer" value="170" />
         <param type="select" label="Regular Expression choice" name="regex_pattern">
             <option value="1">[ILMFTV][^REKD][GAS]C</option>
             <option value="2">[ACGSILMFTV][^REKD][GAS]C</option>
