@@ -22,7 +22,7 @@ $fa
 --tmd_min_size $tmd_min_size
 --tmd_max_size $tmd_max_size
 --putative_usp_gff $putative_usp_gff
---summary_usp_txt $summary_usp_txt
+--summary_usp_txt $summary_usp
 --putative_usp $putative_usp
 --usp_og $usp_og
 --usp_ob $usp_ob
