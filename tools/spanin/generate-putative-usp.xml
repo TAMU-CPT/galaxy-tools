@@ -46,7 +46,7 @@ $fa
         <param label="TMD maximum distance from start codon" type="integer" name="tmd_max_start" value="200" />
         <param label="TMD minimal size" type="integer" name="tmd_min_size" value="15"/>
         <param label="TMD maximum size" type="integer" name="tmd_max_size" value="25"/>
-        <param label="Lipobox minimal distance from start codon" type="integer" name="lipo_min_start" value="15"/>
+        <param label="Lipobox minimal distance from start codon" type="integer" name="lipo_min_start" value="10"/>
         <param label="Lipobox maximum distance from start codon" type="integer" name="lipo_max_start" value="30"/>
         <param label="Minimum amount of periplasmic residues after Lipobox" type="integer" name="min_lipo_after" value="60"/>
         <param label="Maximum amount of periplasmic residues after Lipobox" type="integer" name="max_lipo_after" value="160"/>
