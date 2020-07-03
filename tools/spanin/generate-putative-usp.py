@@ -122,7 +122,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--min_size", type=int, default=100, help="minimum size of peptide")
     parser.add_argument("--max_size", type=int, default=200, help="maximum size of peptide")
-    parser.add_argument("--lipo_min_start", type=int, default=15, help="minimum start site of lipobox")
+    parser.add_argument("--lipo_min_start", type=int, default=10, help="minimum start site of lipobox")
     parser.add_argument("--lipo_max_start", type=int, default=30, help="maximum end site of lipobox")
     parser.add_argument("--min_lipo_after", type=int, default=60, help="minumum amount of residues after lipobox")
     parser.add_argument("--max_lipo_after", type=int, default=160, help="maximum amount of residues after lipobox")
@@ -209,12 +209,6 @@ if __name__ == "__main__":
             f.write("\n" + lineWrapper(str(s).replace("*",""))+"\n")
             length.append(len(s))
             ORF.append(desc)
-    
-    bot_size = min(length)
-    top_size = max(length)
-    avg = (sum(length)) / total_have_tmd_and_lipo
-    med = median(length)
-
     with args.summary_usp_txt as f:
         f.write("total potential u-spanins: " +str(total_have_tmd_and_lipo) + "\n")
         f.write("average length (AA): " + str(avg) + "\n")
