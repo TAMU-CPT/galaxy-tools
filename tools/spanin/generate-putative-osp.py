@@ -91,6 +91,13 @@ if __name__ == "__main__":
         type=int,
     )
     parser.add_argument(
+        "--max_osp",
+        dest="max_osp",
+        default=200,
+        help="Maximum ORF length, measured in codons",
+        type=int,
+    )
+    parser.add_argument(
         "--osp_on",
         dest="out_osp_nuc",
         type=argparse.FileType("w"),
@@ -128,7 +135,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--osp_max_dist",
         dest="osp_max_dist",
-        default=60,
+        default=50,
         help="Maximum distance to first AA of lipobox, measured in AA",
         type=int,
     )
@@ -137,6 +144,20 @@ if __name__ == "__main__":
         dest="pattern",
         default=1,
         help="Regex Pattern to use. 1 for more strict, 2 for LipoRy pattern.",
+        type=int,
+    )
+    parser.add_argument(
+        "--min_lipo_after",
+        dest="min_lipo_after",
+        default=30,
+        help="minimal amount of residues after lipobox",
+        type=int,
+    )
+    parser.add_argument(
+        "--max_lipo_after",
+        dest="max_lipo_after",
+        default=185,
+        help="minimal amount of residues after lipobox",
         type=int,
     )
     parser.add_argument(
@@ -159,14 +180,6 @@ if __name__ == "__main__":
         type=argparse.FileType("w"),
         default="putative_osp.gff3",
         help="gff3 output for putative o-spanins",
-    )
-
-    parser.add_argument(
-        "--max_osp",
-        dest="max_osp",
-        default=200,
-        help="Maximum size of the OSP",
-        type=int,
     )
 
     # parser.add_argument('-v', action='version', version='0.3.0') # Is this manually updated?
@@ -200,6 +213,11 @@ if __name__ == "__main__":
     pairs = tuple_fasta(fasta_file=args.out_osp_prot)
     have_lipo = []  # empty candidates list to be passed through the user input
 
+    print(args.osp_min_dist)
+    print(args.osp_max_dist)
+    print(args.min_lipo_after)
+    print(args.max_lipo_after)
+
     for each_pair in pairs:
         if len(each_pair[1]) <= args.max_osp:
             try:
@@ -207,6 +225,8 @@ if __name__ == "__main__":
                     pair=each_pair,
                     minimum=args.osp_min_dist,
                     maximum=args.osp_max_dist,
+                    min_after=args.min_lipo_after,
+                    max_after=args.max_lipo_after,
                     regex=args.pattern,
                 )
             except (IndexError, TypeError):

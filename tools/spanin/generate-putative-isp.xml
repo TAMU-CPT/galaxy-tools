@@ -2,8 +2,8 @@
 <tool id="edu.tamu.cpt2.spanin.generate-putative-isp" name="ISP candidates" version="1.0">
     <description>constructs a putative list of potential i-spanin from an input genomic FASTA</description>
     <macros>
-		<import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements">
       <requirement type="package" version="2019.06.08">regex</requirement>
@@ -30,27 +30,27 @@ $fasta_file
 
 ]]></command>
     <inputs>
-    <param type="select" label="Strand Choice" name="strand">
-        <option value="both">both</option>
-        <option value="forward">+</option>
-        <option value="reverse">-</option>
-    </param>
+        <param type="select" label="Strand Choice" name="strand">
+            <option value="both">both</option>
+            <option value="forward">+</option>
+            <option value="reverse">-</option>
+        </param>
         <param label="FASTA" name="fasta_file" type="data" format="fasta" />
-	<param label="i-spanin minimal length" name="isp_min_len" type="integer" value="60" />
-    <param label="i-spanin maximum length" name="isp_max" type="integer" value="230" />
-    <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1000:2000)" type="text" name="switch" value="all" />
+        <param label="i-spanin minimal length" name="isp_min_len" type="integer" value="60" />
+        <param label="i-spanin maximum length" name="isp_max" type="integer" value="230" />
+        <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1000:2000)" type="text" name="switch" value="all" />
         <param label="TMD minimal distance from start codon" name="isp_min_dist" type="integer" value="10" />
-	<param label="TMD maximum distance from start codon" name="isp_max_dist" type="integer" value="30" help="Searches for a TMD between TMDmin and TMDmax ie [TMDmin,TMDmax]" />
+        <param label="TMD maximum distance from start codon" name="isp_max_dist" type="integer" value="35" help="Searches for a TMD between TMDmin and TMDmax ie [TMDmin,TMDmax]" />
         <param label="TMD minimal size" name="min_tmd_size" type="integer" value="10" />
-        <param label="TMD maximum size" name="max_tmd_size" type="integer" value="20" />
+        <param label="TMD maximum size" name="max_tmd_size" type="integer" value="25" />
     </inputs>
     <outputs>
-                <data format="fasta" name="isp_on" label="NucSequences.fa" hidden = "true"/>
-		<data format="fasta" name="isp_op" label="ProtSequences.fa" hidden = "true"/>
-                <data format="bed" name="isp_ob" label="BED_Output.bed" hidden = "true"/>
-                <data format="gff3" name="isp_og" label="GFF_Output.gff" hidden = "true"/>
-		<data format="fasta" name="putative_isp" label="putative_isp.fa"/>
-                <data format="txt" name="summary_isp" label="summary_isp.txt"/>
+        <data format="fasta" name="isp_on" label="NucSequences.fa" hidden = "true"/>
+        <data format="fasta" name="isp_op" label="ProtSequences.fa" hidden = "true"/>
+        <data format="bed" name="isp_ob" label="BED_Output.bed" hidden = "true"/>
+        <data format="gff3" name="isp_og" label="GFF_Output.gff" hidden = "true"/>
+        <data format="fasta" name="putative_isp" label="putative_isp.fa"/>
+        <data format="txt" name="summary_isp" label="summary_isp.txt"/>
         <data format="gff3" name="putative_isp_gff" label="putative_isp.gff3"/>
     </outputs>
     <help><![CDATA[

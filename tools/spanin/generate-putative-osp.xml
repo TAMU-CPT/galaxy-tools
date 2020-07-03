@@ -19,8 +19,6 @@ $fasta_file
 --osp_ob $osp_ob
 --osp_og $osp_og
 --osp_min_len $osp_min_len
---osp_min_dist $osp_min_dist
---osp_max_dist $osp_max_dist
 --regex_pattern $regex_pattern
 --putative_osp $putative_osp
 --summary_osp_txt $summary_osp
@@ -28,31 +26,32 @@ $fasta_file
 --osp_max $osp_max
 ]]></command>
     <inputs>
-    <param type="select" label="Strand Choice" name="strand">
-        <option value="both">both</option>
-        <option value="forward">+</option>
-        <option value="reverse">-</option>
-    </param>
+        <param type="select" label="Strand Choice" name="strand">
+            <option value="both">both</option>
+            <option value="forward">+</option>
+            <option value="reverse">-</option>
+        </param>
         <param label="FASTA" name="fasta_file" type="data" format="fasta" />
-	<param label="o-spanin minimal length" name="osp_min_len" type="integer" value="30" />
-    <param label="o-spanin maximum length" name="osp_max" type="integer" value="200" />
-    <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1234:4321)" type="text" name="switch" value="all" />
+        <param label="o-spanin minimal length" name="osp_min_len" type="integer" value="45" />
+        <param label="o-spanin maximum length" name="osp_max" type="integer" value="200" />
+        <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1234:4321)" type="text" name="switch" value="all" />
         <param label="Lipobox minimal distance from start codon" name="osp_min_dist" type="integer" value="10" />
-	<param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" help="Searches for a Lipobox between Lipoboxmin and Lipoboxmax ie [Lipoboxmin,Lipoboxmax]" />
+        <param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" help="Searches for a Lipobox between Lipoboxmin and Lipoboxmax ie [Lipoboxmin,Lipoboxmax]" />
+        <param label="Minimum amount of residues after lipobox is found" name="lipo_min" type="integer" value="85" />
+        <param label="Maximum amount of residues after lipobox is found" name="lipo_max" type="integer" value="185" />
         <param type="select" label="Regular Expression choice" name="regex_pattern">
             <option value="1">[ILMFTV][^REKD][GAS]C</option>
             <option value="2">[ACGSILMFTV][^REKD][GAS]C</option>
         </param>
-
     </inputs>
     <outputs>   
-                <data format="fasta" name="osp_on" label="NucSequences.fa" hidden = "true"/>
-		<data format="fasta" name="osp_op" label="ProtSequences.fa" hidden = "true"/>
-                <data format="bed" name="osp_ob" label="BED_Output.bed" hidden = "true"/>
-                <data format="gff3" name="osp_og" label="GFF_Output.gff" hidden = "true"/>
-                <data format="fasta" name="putative_osp" label="putative_osp.fa"/>
+        <data format="fasta" name="osp_on" label="NucSequences.fa" hidden = "true"/>
+        <data format="fasta" name="osp_op" label="ProtSequences.fa" hidden = "true"/>
+        <data format="bed" name="osp_ob" label="BED_Output.bed" hidden = "true"/>
+        <data format="gff3" name="osp_og" label="GFF_Output.gff" hidden = "true"/>
+        <data format="fasta" name="putative_osp" label="putative_osp.fa"/>
         <data format="txt" name="summary_osp" label="summary_osp.txt"/>
-                <data format="gff3" name="putative_osp_gff" label="putative_osp.gff3"/>
+        <data format="gff3" name="putative_osp_gff" label="putative_osp.gff3"/>
     </outputs>
     <help><![CDATA[
 

@@ -1,0 +1,110 @@
+<tool id="edu.tamu.cpt2.spanin.generate-putative-usp" name="USP Candidates" version="1.0">
+    <description>constructs a putative list of potential u-spanin from an input genomic FASTA</description>
+    <macros>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+    </expand>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/generate-putative-usp.py
+$fa
+--strand $strand
+--min_size $min_size
+--max_size $max_size
+--lipo_min_start $lipo_min_start
+--lipo_max_start $lipo_max_start
+--min_lipo_after $min_lipo_after
+--max_lipo_after $max_lipo_after
+--regex_pattern $regex_pattern
+--tmd_min_start $tmd_min_start
+--tmd_max_start $tmd_max_start
+--tmd_min_size $tmd_min_size
+--tmd_max_size $tmd_max_size
+--putative_usp_gff $putative_usp_gff
+--summary_usp_txt $summary_usp
+--putative_usp $putative_usp
+--usp_og $usp_og
+--usp_ob $usp_ob
+--usp_op $usp_op
+--usp_on $usp_on
+--switch $switch
+    ]]></command>
+    <inputs>
+        <param label="FASTA" name="fa" type="data" format="fasta" />
+        <param type="select" label="Strand Choice" name="strand">
+            <option value="both">both</option>
+            <option value="forward">+</option>
+            <option value="reverse">-</option>
+        </param>
+        <param label="u-spanin minimal length" type="integer" name="min_size" value="100" />
+        <param label="u-spanin maximum length" type="integer" name="max_size" value="200" />
+        <param label="Range Selection; default is all; slices are based on NT. Separated by a colon (eg. #:#)" name="switch" type="text" value="all"/>
+        <param label="TMD minimal distance from start codon" type="integer" name="tmd_min_start" value="75" />
+        <param label="TMD maximum distance from start codon" type="integer" name="tmd_max_start" value="200" />
+        <param label="TMD minimal size" type="integer" name="tmd_min_size" value="15"/>
+        <param label="TMD maximum size" type="integer" name="tmd_max_size" value="25"/>
+        <param label="Lipobox minimal distance from start codon" type="integer" name="lipo_min_start" value="15"/>
+        <param label="Lipobox maximum distance from start codon" type="integer" name="lipo_max_start" value="30"/>
+        <param label="Minimum amount of periplasmic residues after Lipobox" type="integer" name="min_lipo_after" value="60"/>
+        <param label="Maximum amount of periplasmic residues after Lipobox" type="integer" name="max_lipo_after" value="160"/>
+        <param label="Regular Expression" type="select" name="regex_pattern">
+            <option value="1">[ILMFTV][^REKD][GAS]C</option>
+            <option value="2">[ACGSILMFTV][^REKD][GAS]C</option>
+        </param> 
+    </inputs>
+    <outputs>
+        <data format="fasta" name="usp_on" label="NucSequences.fa" hidden = "true"/>
+        <data format="fasta" name="usp_op" label="ProtSequences.fa" hidden = "true"/>
+        <data format="bed" name="usp_ob" label="BED_Output.bed" hidden = "true"/>
+        <data format="gff3" name="usp_og" label="GFF_Output.gff" hidden = "true"/>
+        <data format="fasta" name="putative_usp" label="putative_usp.fa"/>
+        <data format="txt" name="summary_usp" label="summary_usp.txt"/>
+        <data format="gff3" name="putative_usp_gff" label="putative_usp.gff3"/>
+    </outputs>
+        <tests>
+            <test>
+                <param name="fa" value="t1.fa" />
+                <param name="min-size" value="100" />
+                <param name="max-size" value="200" />
+                <param name="switch" value="all"/>
+                <param name="tmd_min_start" value="75" />
+                <param name="tmd_max_start" value="200" />
+                <param name="tmd_min_size" value="15" />
+                <param name="tmd_max_size" value="25" />
+                <param name="lipo_min_start" value="15" />
+                <param name="lipo_max_start" value="30" />
+                <param name="min_lipo_after" value="60" />
+                <param name="max_lipo_after" value="160" />
+                <param name="select" value="1" />
+                <output name="usp_on" file="_out_usp.fna"/>
+                <output name="usp_op" file="_out_usp.fa"/>
+                <output name="usp_ob" file="_out_usp.bed"/>
+                <output name="usp_og" file="_out_usp.gff3"/>
+                <output name="putative_usp" file="_putative_usp.fa"/>
+                <output name="summary_usp" file="_summary_usp.txt"/>
+                <output name="putative_usp_gff" file="_putative_usp.gff3"/>
+            </test>
+        </tests>
+    <help><![CDATA[
+ALPHA VERSION OF USP TOOL
+*WARNING* - Use a single genome fasta. Multiple FASTAs will not work.
+Generates a putative multifasta and multigff3 of the unimolecular spanin (u-spanin) class. Uses methods from the ISP and OSP candidates tool for finding TMDs and the Lipobox.
+
+INPUT: Genomic FASTA
+
+OUTPUT: Summary of results as well as multi FA and GFF3 of candidates that matched criteria.
+
+    ]]></help>
+    <citations>
+        <citation type="doi">https://dx.doi.org/10.1016/bs.aivir.2018.09.003</citation>
+        <citation type="bibtex">
+            @unpublished{galaxyTools,
+            author = {C. Ross},
+            title = {CPT Galaxy Tools},
+            year = {2020-},
+            note = {https://github.com/tamu-cpt/galaxy-tools/}
+            }
+        </citation>
+    </citations>
+</tool>
