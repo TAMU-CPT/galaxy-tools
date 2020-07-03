@@ -31,7 +31,7 @@ $fa
 --switch $switch
     ]]></command>
     <inputs>
-        <param label="FASTA" name="fasta_file" type="data" format="fasta" />
+        <param label="FASTA" name="fa" type="data" format="fasta" />
         <param type="select" label="Strand Choice" name="strand">
             <option value="both">both</option>
             <option value="forward">+</option>
@@ -64,6 +64,7 @@ $fa
     </outputs>
         <tests>
             <test>
+                <param name="fa" value="t1.fa"
                 <param name="min-size" value="100" />
                 <param name="max-size" value="200" />
                 <param name="switch" value="all"/>
