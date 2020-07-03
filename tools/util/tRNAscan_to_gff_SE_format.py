@@ -19,7 +19,7 @@ for trna in fileinput.input():
         cols_tsv[8],
         "+",
         ".",
-        'ID="trna.%s";Anticodon="%s";Codon="tRNA-%s"'
+        'ID=trna.%s;Anticodon=%s;Codon=tRNA-%s'
         % (cols_tsv[1], cols_tsv[5].lower(), cols_tsv[4]),
       ]
     else:
@@ -32,7 +32,7 @@ for trna in fileinput.input():
         cols_tsv[8],
         "-",
         ".",
-        'ID="trna.%s";Anticodon="%s";Codon="tRNA-%s"'
+        'ID=trna.%s;Anticodon=%s;Codon=tRNA-%s'
         % (cols_tsv[1], cols_tsv[5].lower(), cols_tsv[4]),
       ] 
     print ("\t".join(cols_gff))
