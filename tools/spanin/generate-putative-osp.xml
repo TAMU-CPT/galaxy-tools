@@ -23,6 +23,8 @@ $fasta_file
 --putative_osp $putative_osp
 --summary_osp_txt $summary_osp
 --putative_osp_gff $putative_osp_gff
+--lipo_min $lipo_min
+--lipo_max $lipo_max
 --osp_max $osp_max
 ]]></command>
     <inputs>
@@ -31,14 +33,14 @@ $fasta_file
             <option value="forward">+</option>
             <option value="reverse">-</option>
         </param>
-        <param label="FASTA" name="fasta_file" type="data" format="fasta" />
+        <param label="Single Genome FASTA" name="fasta_file" type="data" format="fasta" />
         <param label="o-spanin minimal length" name="osp_min_len" type="integer" value="45" />
         <param label="o-spanin maximum length" name="osp_max" type="integer" value="200" />
         <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1234:4321)" type="text" name="switch" value="all" />
         <param label="Lipobox minimal distance from start codon" name="osp_min_dist" type="integer" value="10" />
         <param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" help="Searches for a Lipobox between Lipoboxmin and Lipoboxmax ie [Lipoboxmin,Lipoboxmax]" />
-        <param label="Minimum amount of residues after lipobox is found" name="lipo_min" type="integer" value="85" />
-        <param label="Maximum amount of residues after lipobox is found" name="lipo_max" type="integer" value="185" />
+        <param label="Minimum amount of residues after lipobox is found" name="lipo_min" type="integer" value="25" />
+        <param label="Maximum amount of residues after lipobox is found" name="lipo_max" type="integer" value="170" />
         <param type="select" label="Regular Expression choice" name="regex_pattern">
             <option value="1">[ILMFTV][^REKD][GAS]C</option>
             <option value="2">[ACGSILMFTV][^REKD][GAS]C</option>
@@ -66,8 +68,10 @@ With the aaFASTA, this tool reads in each potential sequence and determines if i
 
     1. Min distance from start codon to lipobox
     2. Max distance from start codon to lipobox
+    3. Min amount of periplasmic residues after the lipobox
+    4. Max amount of periplasmic residues after the lipobox
 
-Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found. If so, it is added to a candidate list, and eventually ported to a file in the output.
+Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found.
 
 **OUTPUT** --> putative_osp.fa (FASTA) file, putative_osp.gff3, and basic summary statistics file as sumamry_osp.txt
 ]]></help>

@@ -104,7 +104,7 @@ def write_gff3(data, output="results.gff3"):
     f.close()
 
 
-def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20):
+def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20, isp_mode=False, peri_min=18, peri_max=206):
     """ 
         Function that searches for lysine snorkels and then for a spanning hydrophobic region that indicates a potential TMD
         ---> pair : Input of tuple with description and AA sequence (str)
@@ -139,9 +139,19 @@ def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20):
                 ("[PFIWLVMYCATGS]"), search_region[where_we_are - 1]
             ):  # hydrophobic neighbor
                 #try:
+                g = re.search(("[PFIWLVMYCATGS]"), search_region[where_we_are + 1]).group()
                 backend = check_back_end_snorkels(search_region, tmsize)
                 if backend == "match":
-                    tmd.append(pair)
+                    if isp_mode:
+                        g = re.search((pattern), search_region).group()
+                        end_of_tmd = re.search((g), s).end()+1
+                        amt_peri = len(s) - end_of_tmd
+                        if peri_min <= amt_peri <= peri_max:
+                            pair_desc = pair[0] + ", peri_count~="+str(amt_peri)
+                            new_pair = (pair_desc,pair[1])
+                            tmd.append(new_pair)
+                    else:
+                        tmd.append(pair)
                 else:
                     continue
         #else:
@@ -152,14 +162,23 @@ def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20):
             #print(f"found match: {}")
             #print("I AM HEREEEEEEEEEEEEEEEEEEEEEEE")
             #try:
-            tmd.append(pair)
+            if isp_mode:
+                g = re.search((pattern), search_region).group()
+                end_of_tmd = re.search((g), s).end()+1
+                amt_peri = len(s) - end_of_tmd
+                if peri_min <= amt_peri <= peri_max:
+                    pair_desc = pair[0] + ", peri_count~="+str(amt_peri)
+                    new_pair = (pair_desc,pair[1])
+                    tmd.append(new_pair)
+            else:
+                tmd.append(pair)
         else:
             continue
 
         return tmd
 
 
-def find_lipobox(pair, minimum=10, maximum=50, min_after=30, max_after=185, regex=1):
+def find_lipobox(pair, minimum=10, maximum=50, min_after=30, max_after=185, regex=1, osp_mode=False):
     """
         Function that takes an input tuple, and will return pairs of sequences to their description that have a lipoobox
         ---> minimum - min distance from start codon to first AA of lipobox
@@ -182,13 +201,19 @@ def find_lipobox(pair, minimum=10, maximum=50, min_after=30, max_after=185, rege
     if re.search((pattern), search_region):  # lipobox must be WITHIN the range...
         # searches the sequence with the input RegEx AND omits if
         g = re.search((pattern), search_region).group() # find the exact group match
-        if min_after <= len(s) - re.search((g), s).end() + 1 <= max_after: # find the lipobox end region
-            candidates.append(pair)
+        amt_peri = len(s) - re.search((g), s).end() + 1
+        if min_after <= amt_peri <= max_after: # find the lipobox end region
+            if osp_mode:
+                pair_desc = pair[0] + ", peri_count~="+str(amt_peri)
+                new_pair = (pair_desc,pair[1])
+                candidates.append(new_pair)
+            else:
+                candidates.append(pair)
         # print('passed') # trouble shooting
             return candidates
-    else:
+    #else:
         # print('didnotpass') # trouble shooting
-        pass
+    #    pass
 
 
 def tuple_fasta(fasta_file):
