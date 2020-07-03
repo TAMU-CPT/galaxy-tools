@@ -209,6 +209,10 @@ if __name__ == "__main__":
             f.write("\n" + lineWrapper(str(s).replace("*",""))+"\n")
             length.append(len(s))
             ORF.append(desc)
+    bot_size = min(length)
+    top_size = max(length)
+    avg = (sum(length)) / total_have_tmd_and_lipo
+    med = median(length)
     with args.summary_usp_txt as f:
         f.write("total potential u-spanins: " +str(total_have_tmd_and_lipo) + "\n")
         f.write("average length (AA): " + str(avg) + "\n")
