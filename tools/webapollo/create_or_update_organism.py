@@ -68,13 +68,17 @@ if __name__ == "__main__":
     else:
         # New organism
         log.info("\tAdding Organism")
-        data = wa.organisms.addOrganism(
+        try:
+          data = wa.organisms.addOrganism(
             org_cn,
             args.jbrowse,
             genus=args.genus,
             species=args.species,
             public=args.public,
-        )
+          )
+        except:
+          print("Organism Common Name: " + org_cn)
+          exit(2)
 
         # Must sleep before we're ready to handle
         time.sleep(20)
