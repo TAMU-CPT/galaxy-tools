@@ -8,7 +8,7 @@
     </requirements>
     <command>
 #for $item in $refFiles:
-ln -s $item "$__tool_directory__/brigRefs/$item.name";
+ln -s $item "$__tool_directory__/brigRefs/{$item}.fasta";
 #end for
 $__tool_directory__/brigaid.py 
 -q $inputFasta
@@ -18,7 +18,7 @@ $__tool_directory__/brigaid.py
 -if svg
 ;
 #for $item in $refFiles:
-rm "$__tool_directory__/brigRefs/$item.name";
+rm "$__tool_directory__/brigRefs/{$item}.fasta";
 #end for
 
     </command>
