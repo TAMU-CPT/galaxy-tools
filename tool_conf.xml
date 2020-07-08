@@ -179,6 +179,7 @@
 		<tool file="cpt2/galaxy-tools/tools/blast/blastn_to_gff3.xml" label="experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blastp_to_gff3.xml" label="experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/genome_viz/brigaid.xml"/>
 	</section>
 	<section id="7045e32e-90c8-4e20-b4ac-a6cb070d40c3" name="CPT: Filter Features">
 		<tool file="cpt2/galaxy-tools/tools/gff3/filter_type.xml" label="gff3" />

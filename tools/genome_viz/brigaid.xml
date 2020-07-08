@@ -1,0 +1,42 @@
+<tool id="brigaid" name="BriGaid" version="1.0.0" profile="16.04">
+    <description> visualizer</description>
+    <requirements>
+	<requirement type="package" version="3.6.10">python</requirement>
+	<requirement type="package" version="1.67">biopython</requirement>
+        <requirement type="package" version="0.6.6">bcbio-gff</requirement>
+        <requirement type="package" version="3.0.2">matplotlib</requirement>
+    </requirements>
+    <command>
+#for $item in $refFiles:
+ln -s $item "$__tool_directory__/brigRefs/$item.name";
+#end for
+$__tool_directory__/brigaid.py 
+-q $inputFasta
+-rfd $__tool_directory__/brigRefs
+-of $outputXML
+-oi $outputImage
+-if svg
+;
+#for $item in $refFiles:
+rm "$__tool_directory__/brigRefs/$item.name";
+#end for
+
+    </command>
+    <inputs>
+        <param name="inputFasta" type="data" label="Fasta Source File" format="fasta"/>
+        <param name="refFiles" multiple="true" type="data" falsevalue="" label="FASTA files to reference the source file against"/>
+    </inputs>
+    <outputs>
+        <data format="xml" name="outputXML"/>
+        <data format="svg" name="outputImage"/>
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+**What it does**
+
+BRiG
+</help>
+	<citations>
+	</citations>
+</tool>
