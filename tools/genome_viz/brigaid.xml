@@ -9,7 +9,7 @@
     <command>
 
 #for $file in $refFiles:
-    ln -s $file "RefLink_$__tool_directory__/brigRefs/$file";
+    ln -s $file $__tool_directory__/brigRefs/"RefLink_$file";
 #end for
 
 $__tool_directory__/brigaid.py 
