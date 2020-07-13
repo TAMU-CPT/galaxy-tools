@@ -12,13 +12,14 @@
 placehold=$file ;
     ln -s $file $__tool_directory__/brigRefs/\${placehold\#\#*/}.fasta;
 #end for
-
+subdir=\$(echo $outputXML | cut -c1-31) ;
+echo \$subdir ;
 $__tool_directory__/brigaid.py 
 -q $inputFasta
 -rfd $__tool_directory__/brigRefs
 -of $outputXML
 -oi $outputImage
--od $__tool_directory__/brigRefs/
+-od \$subdir
 -if svg
 -t Test
 ;
