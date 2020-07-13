@@ -7,14 +7,17 @@
         <requirement type="package" version="3.0.2">matplotlib</requirement>
     </requirements>
     <command>
-#for $item in $refFiles:
-cp $item $__tool_directory__/brigRefs/ ;
+
+#for $file in $refFiles:
+    ln -s $file $__tool_directory__/brigRefs/$file;
 #end for
+
 $__tool_directory__/brigaid.py 
 -q $inputFasta
 -rfd $__tool_directory__/brigRefs
 -of $outputXML
 -oi $outputImage
+-od $__tool_directory__/brigRefs/
 -if svg
 ;
 rm $__tool_directory__/brigRefs/*;
