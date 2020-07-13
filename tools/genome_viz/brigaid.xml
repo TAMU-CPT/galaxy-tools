@@ -9,7 +9,7 @@
     <command>
 
 #for $file in $refFiles:
-    ln -s $file $__tool_directory__/brigRefs/$file;
+    ln -s $file "RefLink_$__tool_directory__/brigRefs/$file";
 #end for
 
 $__tool_directory__/brigaid.py 
@@ -19,6 +19,7 @@ $__tool_directory__/brigaid.py
 -oi $outputImage
 -od $__tool_directory__/brigRefs/
 -if svg
+-t Test
 ;
 rm $__tool_directory__/brigRefs/*;
 
