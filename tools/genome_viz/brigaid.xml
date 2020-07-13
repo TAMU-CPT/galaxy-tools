@@ -9,7 +9,8 @@
     <command>
 
 #for $file in $refFiles:
-    ln -s $file $__tool_directory__/brigRefs/\${"$file"\#\#*/}.fasta;
+placehold=$file ;
+    ln -s $file $__tool_directory__/brigRefs/\${placehold\#\#*/}.fasta;
 #end for
 
 $__tool_directory__/brigaid.py 
