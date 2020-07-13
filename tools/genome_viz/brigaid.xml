@@ -9,7 +9,7 @@
     <command>
 
 #for $file in $refFiles:
-    ln -s $file $__tool_directory__/brigRefs/\${$file\#\#*/}.fasta;
+    ln -s $file $__tool_directory__/brigRefs/\${"$file"\#\#*/}.fasta;
 #end for
 
 $__tool_directory__/brigaid.py 
