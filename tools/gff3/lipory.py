@@ -17,7 +17,7 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
 
     CASES = [
         re.compile(
-            "^.{%s,%s}[ACGSILMFTV][^REKD][GAS]C" % (lipobox_mindist, lipobox_maxdist)
+            "^.{%s,%s}[ILMFTV][^REKD][GAS]C" % (lipobox_mindist, lipobox_maxdist)
         ),
         # Make sure to not have multiple cases that share matches, will introduce duplicate features into gff3 file
     ]
