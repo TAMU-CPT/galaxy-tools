@@ -67,7 +67,7 @@ if __name__ == "__main__":
         data = [wa.organisms.findOrganismById(org["id"])]
     else:
         # New organism
-        log.info("\tAdding Organism")
+        log.info("Adding Organism")
         try:
           data = wa.organisms.addOrganism(
             org_cn,
@@ -76,8 +76,9 @@ if __name__ == "__main__":
             species=args.species,
             public=args.public,
           )
-        except:
-          print("Organism Common Name: " + org_cn)
+        except Exception as errorOut:
+          log.info("Exception on Organism Common Name '" + org_cn + "':")
+          log.info(errorOut)
           exit(2)
 
         # Must sleep before we're ready to handle
