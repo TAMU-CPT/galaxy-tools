@@ -145,6 +145,7 @@
         <!--<tool file="cpt2/galaxy-tools/tools/external/interproscan.xml"/>-->
 		<tool file="cpt2/galaxy-tools/tools/external/interproscan-5.22.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/interproscan-5.33.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/external/interproscan-5.XX.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/fix-aragorn-gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/one-off/genrand.xml"/>
 	</section>
