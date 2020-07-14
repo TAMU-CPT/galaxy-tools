@@ -54,7 +54,7 @@ for a 4-amino acid motif based on the consensus sequences described in (**Babu**
 Bacteriol.* 188(8):2761-2773 and **Kongari** *et al.* 2018 *BMC Bioinformatics*. 19:326). The 
 amino acids allowed here are relaxed to allow for the diversity of amino acids known to occur in lipoboxes.
 
-Position 1: ACGSILMFTV
+Position 1: ILMFTV
 
 Position 2: any residue except REKD
 
