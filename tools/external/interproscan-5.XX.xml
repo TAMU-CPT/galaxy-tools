@@ -1,6 +1,7 @@
 <tool id="interproscan" name="Interproscan functional predictions of ORFs" version="5.45-80.0" profile="16.04">
     <description>Interproscan functional predictions of ORFs</description>
     <requirements>
+        <requirement type="package" version="11.0.1">openjdk</requirement>
     </requirements>
     <command>
 /opt/interpro/interproscan-5.45-80.0/interproscan.sh
