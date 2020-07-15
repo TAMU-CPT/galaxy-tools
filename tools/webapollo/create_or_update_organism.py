@@ -79,6 +79,8 @@ if __name__ == "__main__":
         except Exception as errorOut:
           log.info("Exception on Organism Common Name '" + org_cn + "':")
           log.info(errorOut)
+          if str(errorOut)[-3:] == "504"
+              log.info("\nThe Galaxy server timed out while waiting for Apollo to finish. Your organism was most likely created, but will need to be manually assigned to your account by an administrator. Please submit a bug report for this job and we will get back to you shortly.\n")
           exit(2)
 
         # Must sleep before we're ready to handle
