@@ -125,6 +125,7 @@
                 <tool file="cpt2/galaxy-tools/tools/gff3/retype_features.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/rebase_features.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/feature_export.xml" label="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/gbk_sectioning.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/adjacent_features.xml" label="genbank" />
                 <tool file="cpt2/galaxy-tools/tools/fasta/fasta_split.xml" label="fasta" />
