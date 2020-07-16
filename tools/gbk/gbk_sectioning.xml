@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gbk.gbk_subset" name="GenBank Extract Subsection" version="1.0">
+  <description>Export a subset of a GenBank file based on a range</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gbk_sectioning.py
+$gbkIn
+$locusMode
+$revCom
+--startLoc $startLoc
+--endLoc $endLoc
+> $gbkOut]]></command>
+  <inputs>
+    <param label="GenBank file" name="gbkIn" type="data" format="genbank"/>
+    <param label="Use locus_tag as start and end location (Set to No to use number of bases instead)" name="locusMode" type="boolean"
+        truevalue="--locusMode" falsevalue=""/>
+    <param label="Use reverse complement of sequence for the output" name="revCom"
+        type="boolean" truevalue="--revCom" falsevalue=""/>
+    <param label="Starting location" name="startLoc"
+        type="text" value="1"/>
+    <param label="Ending Location" name="endLoc"
+        type="text" value="100"/>
+  </inputs>
+  <outputs>
+    <data format="genbank" name="gbkOut" label="Subsection of $gbkIn.name"/>
+  </outputs>
+  <tests>
+      
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Exports a subsection of a Genbank file based on a start and end location. If locus_tag mode is used instead, the features will be sorted based on start location, and features starting from when it finds the start locus tag will be added, and it will stop adding features at the first feature *after*  the ending locus tag (Ie, ending is inclusive. Tool will attempt to include the entire gene feature tree, which may add some additional features with no locus tag)
+      ]]></help>
+		<expand macro="citations-2020" />
+</tool>
