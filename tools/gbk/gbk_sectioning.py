@@ -23,7 +23,7 @@ def makeSubset(
     
     if locusMode:
       for record in SeqIO.parse(genbank_file, "genbank"):
-        record.features = (record.features, key=lambda x: x.location.start)
+        record.features = sorted(record.features, key=lambda x: x.location.start)
         startPos = 0
         endPos = 1
         if endLoc = "":
@@ -34,12 +34,11 @@ def makeSubset(
         for feature in record.features:
           if 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == startLoc:
             addFeats = True
-            startPos = feature.location.start
+            startPos = feature.location.start - 1
           elif addFeats and 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == endLoc:
             nextEnd = True
           elif nextEnd and 'locus_tag' in feature.qualifiers:  # inclusive end (To include final feature if desired)
             addFeats = False  # Attempts to get entire feature tree of last feature
-            if endPos < feature.location.end
 
           if addFeats:
             if endPos < feature.location.end:
@@ -50,7 +49,9 @@ def makeSubset(
         if revCom:
           finSeq = (record.seq[startPos: endPos).reverse_complement()
         else:
-          finSeq = record.seq[startPos: endPos]
+          finSeq = record.seq[startPos: endPos] 
+        for x in featOut:
+          x.location = FeatureLocation(x.location.start - startPos, x.location.end - startPos, x.location.strand)
         yield [
                     SeqRecord(
                         Seq(finSeq.strip()),
@@ -69,6 +70,8 @@ def makeSubset(
           finSeq = (record.seq[int(startLoc) - 1: int(endLoc)]).reverse_complement()
         else:
           finSeq = record.seq[int(startLoc) - 1: int(endLoc)]
+        for x in featOut:
+          x.location = FeatureLocation(x.location.start - (int(startLoc) - 1), x.location.end - (int(startLoc) - 1), x.location.strand)
         yield [
                     SeqRecord(
                         Seq(finSeq.strip()),
