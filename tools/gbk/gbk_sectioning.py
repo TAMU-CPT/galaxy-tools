@@ -90,11 +90,11 @@ if __name__ == "__main__":
         "genbank_file", type=argparse.FileType("r"), help="Genbank file"
     )
     parser.add_argument(
-        "--locusMode", type=store_true, choices=gbk_tags, help="Use locus tags"
+        "--locusMode", action="store_true", help="Use locus tags"
     )
     parser.add_argument("--revcom", action="store_true", help="Reverse complement sequence")
-    parser.add_argument("--startLoc", help="Translation table ID", default='0')
-    parser.add_argument("--endLoc", help="Translation table ID", default='1')
+    parser.add_argument("--startLoc", help="Starting Location", default='0')
+    parser.add_argument("--endLoc", help="Ending Location", default='1')
     args = vars(parser.parse_args())
     for seq in makeSubset(**args):
         SeqIO.write(seq, sys.stdout, "genbank")
