@@ -23,8 +23,6 @@ def makeSubset(
     
     if locusMode:
       for record in SeqIO.parse(genbank_file, "genbank"):
-        print(dir(record))
-        exit(0)
         record.features = sorted(record.features, key=lambda x: x.location.start)
         startPos = 0
         endPos = 1
@@ -34,9 +32,9 @@ def makeSubset(
         addFeats = False
         nextEnd = False
         for feature in record.features:
-          if 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == startLoc:
+          if 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == startLoc and not addFeats:
             addFeats = True
-            startPos = feature.location.start - 1
+            startPos = feature.location.start
           elif addFeats and 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == endLoc:
             nextEnd = True
           elif nextEnd and 'locus_tag' in feature.qualifiers:  # inclusive end (To include final feature if desired)
@@ -56,18 +54,13 @@ def makeSubset(
           x.location = FeatureLocation(x.location.start - startPos, x.location.end - startPos, x.location.strand)
         yield [
                     SeqRecord(
-                        Seq(str(finSeq).strip()),
+                        Seq(str(finSeq).strip(), record.seq.alphabet),
                         id=record.id,
                         features=featOut,
                     )
               ]
     else:
       for record in SeqIO.parse(genbank_file, "genbank"):
-        #print(dir(record.seq))
-        #print(type(record.seq))
-        #print(record.seq.alphabet)
-        #print(record.description)
-        #exit(0)
         featOut = []
         for feature in record.features:
           if feature.location.start >= int(startLoc) - 1 and feature.location.end < int(endLoc):
