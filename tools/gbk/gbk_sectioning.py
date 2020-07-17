@@ -37,7 +37,7 @@ def makeSubset(
             startPos = feature.location.start
           elif addFeats and 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == endLoc:
             nextEnd = True
-          elif nextEnd and 'locus_tag' in feature.qualifiers:  # inclusive end (To include final feature if desired)
+          elif nextEnd and (('locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] != endLoc) or 'locus_tag' not in feature.qualifiers):  # inclusive end (To include final feature if desired)
             addFeats = False  # Attempts to get entire feature tree of last feature
 
           if addFeats:
