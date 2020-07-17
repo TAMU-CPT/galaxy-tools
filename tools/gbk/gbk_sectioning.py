@@ -47,7 +47,7 @@ def makeSubset(
         
 
         if revCom:
-          finSeq = (record.seq[startPos: endPos).reverse_complement()
+          finSeq = (record.seq[startPos: endPos]).reverse_complement()
         else:
           finSeq = record.seq[startPos: endPos] 
         for x in featOut:
