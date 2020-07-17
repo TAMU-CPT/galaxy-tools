@@ -54,7 +54,7 @@ def makeSubset(
           x.location = FeatureLocation(x.location.start - startPos, x.location.end - startPos, x.location.strand)
         yield [
                     SeqRecord(
-                        Seq(finSeq.strip()),
+                        Seq(str(finSeq).strip()),
                         id=record.id,
                         features=featOut,
                     )
@@ -74,7 +74,7 @@ def makeSubset(
           x.location = FeatureLocation(x.location.start - (int(startLoc) - 1), x.location.end - (int(startLoc) - 1), x.location.strand)
         yield [
                     SeqRecord(
-                        Seq(finSeq.strip()),
+                        Seq(str(finSeq).strip()),
                         id=record.id,
                         features=featOut,
                     )
