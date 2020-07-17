@@ -15,7 +15,7 @@ log = logging.getLogger()
 def makeSubset(
     genbank_file=None,
     locusMode=False,
-    revcom=False,
+    revCom=False,
     startLoc='0',
     endLoc='1'
 ):
@@ -92,7 +92,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--locusMode", action="store_true", help="Use locus tags"
     )
-    parser.add_argument("--revcom", action="store_true", help="Reverse complement sequence")
+    parser.add_argument("--revCom", action="store_true", help="Reverse complement sequence")
     parser.add_argument("--startLoc", help="Starting Location", default='0')
     parser.add_argument("--endLoc", help="Ending Location", default='1')
     args = vars(parser.parse_args())
