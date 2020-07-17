@@ -26,7 +26,7 @@ def makeSubset(
         record.features = sorted(record.features, key=lambda x: x.location.start)
         startPos = 0
         endPos = 1
-        if endLoc = "":
+        if endLoc == "":
           endLoc = record.features[-1].qualifiers['locus_tag'][0] # Attempt to get last feature if none supplied
         featOut = []
         addFeats = False
