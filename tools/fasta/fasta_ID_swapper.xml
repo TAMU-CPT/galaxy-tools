@@ -20,8 +20,8 @@ $fasta
     </outputs>
     <tests>
         <test>
-            <param name="fasta" value="_id_swap.fa">
-            <param name="swap_fa" value="_id_swapped.fa">
+            <param name="fasta" value="_id_swap.fa"/>
+            <param name="swap_fa" value="_id_swapped.fa"/>
         </test>
     </tests>
     <help><![CDATA[
