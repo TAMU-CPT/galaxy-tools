@@ -156,12 +156,12 @@ if __name__ == "__main__":
         if len(each_pair[1]) <= args.max_size:
             try:
                 have_lipo += find_lipobox(pair=each_pair,
-                                          minimum=args.lipo_min_start,
-                                          maximum=args.lipo_max_start,
-                                          min_after=args.min_lipo_after,
-                                          max_after=args.max_lipo_after,
-                                          regex=args.regex_pattern,
-                                          )
+                                        minimum=args.lipo_min_start,
+                                        maximum=args.lipo_max_start,
+                                        min_after=args.min_lipo_after,
+                                        max_after=args.max_lipo_after,
+                                        regex=args.regex_pattern,
+                                    )
             except (IndexError, TypeError):
                 continue
     
