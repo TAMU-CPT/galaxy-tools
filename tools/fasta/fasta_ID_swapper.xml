@@ -1,0 +1,50 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.fasta.fasta_id_swapper" name="FASTA ID Swapper" version="1.0">
+    <description>Reorders header line with strain/name from ending parentheticals</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/fasta_chop.py
+$fasta
+--swap_fa $swap_fa
+
+]]></command>
+    <inputs>
+        <param label="FASTA" name="fasta" type="data" format="fasta" />
+    </inputs>
+    <outputs>
+        <data format="fasta" name="swap_fa" label="_id_swapped.fa" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="fasta" value="_id_swap.fa">
+            <param name="swap_fa" value="_id_swapped.fa">
+        </test>
+    </tests>
+    <help><![CDATA[
+**What it does**
+
+    * This tool is to aide in clarifying the phage being examined for CLC as it uses the first uninterrupted string as the record name.
+    * More options can be added to this if the need arises. 
+    * Currently it separates the last whitespace word and removes the closing bracket. It takes the value and appends it to the beginning of the header.
+
+INPUT : FASTA file (single or multi)
+
+METHOD : FASTA sequence where the strain/name at the end of the fasta header line is inserted at the beginning of the header.
+
+OUTPUT : Swapped ID FASTA file.
+]]></help>
+        <citations>
+            <citation type="bibtex">
+                @unpublished{galaxyTools,
+                author = {C. Ross},
+                title = {CPT Galaxy Tools},
+                year = {2020-},
+                note = {https://github.com/tamu-cpt/galaxy-tools/}
+                }
+            </citation>
+        </citations>
+</tool>
