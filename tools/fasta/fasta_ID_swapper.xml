@@ -27,7 +27,7 @@ $fasta
     <help><![CDATA[
 **What it does**
 
-    * This tool is to aide in clarifying the phage being examined for CLC as it uses the first uninterrupted string as the record name.
+    * This tool is to aid in clarifying the phage being examined for CLC as it uses the first uninterrupted string as the record name.
     * More options can be added to this if the need arises. 
     * Currently it separates the last whitespace word and removes the closing bracket. It takes the value and appends it to the beginning of the header.
 
