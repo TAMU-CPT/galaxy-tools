@@ -140,13 +140,6 @@ if __name__ == "__main__":
         type=int,
     )
     parser.add_argument(
-        "--regex_pattern",
-        dest="pattern",
-        default=1,
-        help="Regex Pattern to use. 1 for more strict, 2 for LipoRy pattern.",
-        type=int,
-    )
-    parser.add_argument(
         "--min_lipo_after",
         dest="min_lipo_after",
         default=25,
@@ -232,7 +225,6 @@ if __name__ == "__main__":
                     maximum=args.osp_max_dist,
                     min_after=args.min_lipo_after,
                     max_after=args.max_lipo_after,
-                    regex=args.pattern,
                     osp_mode=args.osp_mode,
                 )
             except (IndexError, TypeError):

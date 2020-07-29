@@ -126,7 +126,6 @@ if __name__ == "__main__":
     parser.add_argument("--lipo_max_start", type=int, default=30, help="maximum end site of lipobox")
     parser.add_argument("--min_lipo_after", type=int, default=60, help="minumum amount of residues after lipobox")
     parser.add_argument("--max_lipo_after", type=int, default=160, help="maximum amount of residues after lipobox")
-    parser.add_argument("--regex_pattern", type=int, default=1, help="Regex Pattern. 1 is more strict.")
     parser.add_argument("--tmd_min_start", type=int, default=75, help="minumum start site of TMD")
     parser.add_argument("--tmd_max_start", type=int, default=200, help="maximum end site of TMD")
     parser.add_argument("--tmd_min_size", type=int, default=15, help="minimum size of TMD")
@@ -156,12 +155,11 @@ if __name__ == "__main__":
         if len(each_pair[1]) <= args.max_size:
             try:
                 have_lipo += find_lipobox(pair=each_pair,
-                                          minimum=args.lipo_min_start,
-                                          maximum=args.lipo_max_start,
-                                          min_after=args.min_lipo_after,
-                                          max_after=args.max_lipo_after,
-                                          regex=args.regex_pattern,
-                                          )
+                                        minimum=args.lipo_min_start,
+                                        maximum=args.lipo_max_start,
+                                        min_after=args.min_lipo_after,
+                                        max_after=args.max_lipo_after,
+                                    )
             except (IndexError, TypeError):
                 continue
     
