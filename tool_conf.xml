@@ -87,11 +87,12 @@
 	</section>
 	<section id="3e66d481-56c7-471f-8de2-7d496977c5eb" name="CPT: Genomic Data Editing">
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_concat.xml"/>
-                <tool file="cpt2/galaxy-tools/tools/fasta/fasta_append.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_append.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_join.xml" label="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_ligate.xml" label="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_reopen.xml" label="fasta" />
-                <tool file="cpt2/galaxy-tools/tools/fasta/fasta_chop.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_ID_swapper.xml" />
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_chop.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/safe_reopen.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" label="genbank,fasta,gff3,experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/gff3/genome_editor.xml" label="experimental,gff3" />
