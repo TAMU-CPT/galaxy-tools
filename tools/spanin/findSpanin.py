@@ -43,13 +43,6 @@ if __name__ == "__main__":
         type=int,
         help="max distance from end of i-spanin to start of o-spanin, measured in AAs",
     )
-
-    parser.add_argument(
-        "--strand",
-        dest="strand",
-        default="+",
-        help="strand to investigate matches, + or -",
-    )
     parser.add_argument(
         "--embedded_txt",
         dest="embedded_txt",
@@ -91,35 +84,20 @@ if __name__ == "__main__":
     args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
     osp_full = tuple_fasta(args.putative_osp_fasta_file)
 
-
-    strand_isp = []
-    strand_osp = []
-    for desc in isp:  # will retrieve only + or - strand for analysis
-        text = splitStrands(desc, args.strand)
-        strand_isp.append(text)
-    for desc in osp:
-        text = splitStrands(desc, args.strand)
-        strand_osp.append(text)
-
-    strand_isp = [i for i in strand_isp if i]  # filtering out Nones
-    strand_osp = [ii for ii in strand_osp if ii]  # filtering out Nones
-
     data_isp = []
     data_osp = []
-    for desc in strand_isp:
+    for desc in isp:
         d = grabLocs(desc)
         data_isp.append(d)
 
-    for desc in strand_osp:
+    for desc in osp:
         d = grabLocs(desc)
         data_osp.append(d)
 
     ###### The above steps probablt __SHOULD__ be wrapped into a little function. But, not necessary atm.
 
     # constructs list where we must multiply user input of AA by 3 to correspond to triplet codons
-    embedded, overlap, separate = spaninProximity(
-        data_isp, data_osp, max_dist=args.max_isp_osp_distance * 3, strand=args.strand
-    )
+    embedded, overlap, separate = spaninProximity(data_isp, data_osp, max_dist=args.max_isp_osp_distance * 3)
     s = 0
     for v in embedded.values():
         s += len(v)
@@ -188,19 +166,20 @@ if __name__ == "__main__":
 
     with args.embedded_txt as f:
         f.write("================ embedded spanin candidates =================\n")
-        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
+        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\tstrand\n")
         if embedded != {}:
             #print(embedded)
             for pisp, posp in embedded.items():
                 f.write(pisp + "\n")
                 for each_posp in posp:
                     f.write(
-                        "\t{}\t{}\t{}\t{}\t{}\n".format(
+                        "\t{}\t{}\t{}\t{}\t{}\t{}\n".format(
                             each_posp[0],
                             each_posp[1],
                             each_posp[2],
                             each_posp[3],
                             each_posp[4],
+                            each_posp[5],
                         )
                     )
         else:
@@ -242,18 +221,19 @@ if __name__ == "__main__":
     
     with args.overlap_txt as f:
         f.write("================ overlap spanin candidates =================\n")
-        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
+        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\tstrand\n")
         if overlap != {}:
             for pisp, posp in overlap.items():
                 f.write(pisp + "\n")
                 for each_posp in posp:
                     f.write(
-                        "\t{}\t{}\t{}\t{}\t{}\n".format(
+                        "\t{}\t{}\t{}\t{}\t{}\t{}\n".format(
                             each_posp[0],
                             each_posp[1],
                             each_posp[2],
                             each_posp[3],
                             each_posp[4],
+                            each_posp[5],
                         )
                     )
         else:
@@ -290,18 +270,19 @@ if __name__ == "__main__":
 
     with args.separate_txt as f:
         f.write("================ separated spanin candidates =================\n")
-        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
+        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\tstrand\n")
         if separate != {}:
             for pisp, posp in separate.items():
                 f.write(pisp + "\n")
                 for each_posp in posp:
                     f.write(
-                        "\t{}\t{}\t{}\t{}\t{}\n".format(
+                        "\t{}\t{}\t{}\t{}\t{}\t{}\n".format(
                             each_posp[0],
                             each_posp[1],
                             each_posp[2],
                             each_posp[3],
                             each_posp[4],
+                            each_posp[5],
                         )
                     )
         else:
