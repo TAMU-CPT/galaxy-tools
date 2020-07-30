@@ -204,7 +204,8 @@ if __name__ == "__main__":
     -----------------------------LIPO----------------------------------------
     > lambda_EOS MLKLKMMLCVMMLPLVVVGCTSKQSVSQCVKPPPPPAWIMQPPPDWQTPLNGIISPSERG
     """
-
+    args.fasta_file.close()
+    args.fasta_file = open(args.fasta_file.name, "r")
     args.out_osp_prot.close()
     args.out_osp_prot = open(args.out_osp_prot.name, "r")
 
@@ -273,5 +274,5 @@ if __name__ == "__main__":
 
     # Output the putative list in gff3 format:
     args.putative_osp_fa = open(args.putative_osp_fa.name, "r")
-    gff_data = prep_a_gff3(fa=args.putative_osp_fa, spanin_type="osp")
+    gff_data = prep_a_gff3(fa=args.putative_osp_fa, spanin_type="osp",org=args.fasta_file)
     write_gff3(data=gff_data, output=args.putative_osp_gff)

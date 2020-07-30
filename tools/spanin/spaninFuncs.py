@@ -39,13 +39,17 @@ def check_back_end_snorkels(seq, tmsize):
         return found
 
 
-def prep_a_gff3(fa, spanin_type):
+def prep_a_gff3(fa, spanin_type, org):
     """
         Function parses an input detailed 'fa' file and outputs a 'gff3' file
         ---> fa = input .fa file
         ---> output = output a returned list of data, easily portable to a gff3 next
         ---> spanin_type = 'isp' or 'osp'
     """
+    with org as f:
+        header = f.readline()
+        orgacc = header.split(" ")
+        orgacc = orgacc[0].split(">")[1]
     fa_zip = tuple_fasta(fa)
     data = []
     for a_pair in fa_zip:
@@ -71,8 +75,8 @@ def prep_a_gff3(fa, spanin_type):
         source = "cpt.py|putative-*.py"  # column 2
         score = "."  # column 6
         phase = "."  # column 8
-        seq = a_pair[1] + ";Alias=" + spanin  # column 9
-        sequence = [[orfid, source, methodtype, start, end, score, strand, phase, seq]]
+        attributes = "ID=" + orfid + ";ALIAS=" + spanin + ";SEQ="+a_pair[1]  # column 9
+        sequence = [[orgacc, source, methodtype, start, end, score, strand, phase, attributes]]
         data += sequence
     return data
 
