@@ -211,11 +211,6 @@ if __name__ == "__main__":
     pairs = tuple_fasta(fasta_file=args.out_osp_prot)
     have_lipo = []  # empty candidates list to be passed through the user input
 
-    print(args.osp_min_dist)
-    print(args.osp_max_dist)
-    print(args.min_lipo_after)
-    print(args.max_lipo_after)
-
     for each_pair in pairs:
         if len(each_pair[1]) <= args.max_osp:
             try:
@@ -277,7 +272,6 @@ if __name__ == "__main__":
         f.write("minimum orf in size (AA): " + str(bot_size))
 
     # Output the putative list in gff3 format:
-    # args.putative_osp_fa.close()
     args.putative_osp_fa = open(args.putative_osp_fa.name, "r")
     gff_data = prep_a_gff3(fa=args.putative_osp_fa, spanin_type="osp")
     write_gff3(data=gff_data, output=args.putative_osp_gff)
