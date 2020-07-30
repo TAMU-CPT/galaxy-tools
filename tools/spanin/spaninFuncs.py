@@ -75,7 +75,7 @@ def prep_a_gff3(fa, spanin_type, org):
         source = "cpt.py|putative-*.py"  # column 2
         score = "."  # column 6
         phase = "."  # column 8
-        attributes = "ID=" + orfid + ";ALIAS=" + spanin + ";SEQ="+a_pair[1]  # column 9
+        attributes = "ID=" +orgacc+ "|"+ orfid + ";ALIAS=" + spanin + ";SEQ="+a_pair[1]  # column 9
         sequence = [[orgacc, source, methodtype, start, end, score, strand, phase, attributes]]
         data += sequence
     return data
