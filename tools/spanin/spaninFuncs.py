@@ -305,31 +305,21 @@ def grabLocs(text):
     Grabs the locations of the spanin based on NT location (seen from ORF). Grabs the ORF name, as per named from the ORF class/module
     from cpt.py
     """
-    start = re.search(("[\d]+\.\."), text).group(
-        0
-    )  # Start of the sequence ; looks for [numbers]..
-    end = re.search(("\.\.[\d]+"), text).group(
-        0
-    )  # End of the sequence ; Looks for ..[numbers]
-    orf = re.search(("(ORF)[\d]+"), text).group(
-        0
-    )  # Looks for ORF and the numbers that are after it
-
+    start = re.search(("[\d]+\.\."), text).group(0)  # Start of the sequence ; looks for [numbers]..
+    end = re.search(("\.\.[\d]+"), text).group(0)  # End of the sequence ; Looks for ..[numbers]
+    orf = re.search(("(ORF)[\d]+"), text).group(0)  # Looks for ORF and the numbers that are after it
+    if re.search(("(\[1\])"), text): # stores strand
+        strand = "+"
+    elif re.search(("(\[-1\])"), text): # stores strand
+        strand = "-"
     start = int(start.split("..")[0])
     end = int(end.split("..")[1])
+    vals = [start, end, orf, strand]
 
-    vals = [start, end, orf]
-
-    """
-    store_vals = []
-    for r in vals:
-        if r is not None:
-            store_vals.append(r.group(0))
-    """
     return vals
 
 
-def spaninProximity(isp, osp, max_dist=30, strand="+"):
+def spaninProximity(isp, osp, max_dist=30):
     """
     _NOTE THIS FUNCTION COULD BE MODIFIED TO RETURN SEQUENCES_
     Compares the locations of i-spanins and o-spanins. max_dist is the distance in NT measurement from i-spanin END site
@@ -338,78 +328,71 @@ def spaninProximity(isp, osp, max_dist=30, strand="+"):
     INPUT: list of OSP and ISP candidates
     OUTPUT: Return (improved) candidates for overlapping, embedded, and separate list
     """
-    if strand == "+":
-        embedded = {}
-        overlap = {}
-        separate = {}
-        for iseq in isp:
-            embedded[iseq[2]] = []
-            overlap[iseq[2]] = []
-            separate[iseq[2]] = []
-            # print(iseq)
-            for oseq in osp:
-                # print(oseq)
-                if iseq[0] < oseq[0] < iseq[1] and oseq[1] < iseq[1]:
-                    ### EMBEDDED ###
-                    combo = [
-                        iseq[0],
-                        iseq[1],
-                        oseq[2],
-                        oseq[0],
-                        oseq[1],
-                    ]  # ordering a return for dic
-                    embedded[iseq[2]] += [combo]
-                elif iseq[0] < oseq[0] <= iseq[1] and oseq[1] > iseq[1]:
-                    ### OVERLAP / SEPARATE ###
-                    if (iseq[1] - oseq[0]) < 6:
-                        combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1]]
+
+    embedded = {}
+    overlap = {}
+    separate = {}
+    for iseq in isp:
+        embedded[iseq[2]] = []
+        overlap[iseq[2]] = []
+        separate[iseq[2]] = []
+        for oseq in osp:
+            if iseq[3] == "+":
+                if oseq[3] == "+":
+                    if iseq[0] < oseq[0] < iseq[1] and oseq[1] < iseq[1]:
+                        ### EMBEDDED ###
+                        combo = [
+                            iseq[0],
+                            iseq[1],
+                            oseq[2],
+                            oseq[0],
+                            oseq[1],
+                            iseq[3],
+                        ]  # ordering a return for dic
+                        embedded[iseq[2]] += [combo]
+                    elif iseq[0] < oseq[0] <= iseq[1] and oseq[1] > iseq[1]:
+                        ### OVERLAP / SEPARATE ###
+                        if (iseq[1] - oseq[0]) < 6:
+                            combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
+                            separate[iseq[2]] += [combo]
+                        else:
+                            combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
+                            overlap[iseq[2]] += [combo]
+                    elif iseq[1] <= oseq[0] <= iseq[1] + max_dist:
+                        combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
                         separate[iseq[2]] += [combo]
                     else:
-                        combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1]]
-                        overlap[iseq[2]] += [combo]
-                elif iseq[1] <= oseq[0] <= iseq[1] + max_dist:
-                    combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1]]
-                    separate[iseq[2]] += [combo]
-                else:
-                    continue
-    elif strand == "-":
-        embedded = {}
-        overlap = {}
-        separate = {}
-        for iseq in isp:
-            embedded[iseq[2]] = []
-            overlap[iseq[2]] = []
-            separate[iseq[2]] = []
-            for oseq in osp:
-                if iseq[0] <= oseq[1] <= iseq[1] and oseq[0] > iseq[0]:
-                    ### EMBEDDED ###
-                    combo = [
-                        iseq[0],
-                        iseq[1],
-                        oseq[2],
-                        oseq[0],
-                        oseq[1],
-                    ]  # ordering a return for dict
-                    embedded[iseq[2]] += [combo]
-                elif iseq[0] <= oseq[1] <= iseq[1] and oseq[0] < iseq[0]:
-                    if (oseq[1] - iseq[0]) < 6:
-                        combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1]]
+                        continue
+            if iseq[3] == "-":
+                if oseq[3] == "-":
+                    if iseq[0] <= oseq[1] <= iseq[1] and oseq[0] > iseq[0]:
+                        ### EMBEDDED ###
+                        combo = [
+                            iseq[0],
+                            iseq[1],
+                            oseq[2],
+                            oseq[0],
+                            oseq[1],
+                            iseq[3],
+                        ]  # ordering a return for dict
+                        embedded[iseq[2]] += [combo]
+                    elif iseq[0] <= oseq[1] <= iseq[1] and oseq[0] < iseq[0]:
+                        if (oseq[1] - iseq[0]) < 6:
+                            combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
+                            separate[iseq[2]] += [combo]
+                        else:
+                            combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
+                            overlap[iseq[2]] += [combo]
+                    elif iseq[0] - 10 < oseq[1] < iseq[0]:
+                        combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1],iseq[3]]
                         separate[iseq[2]] += [combo]
                     else:
-                        combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1]]
-                        overlap[iseq[2]] += [combo]
-                elif iseq[0] - 10 < oseq[1] < iseq[0]:
-                    combo = [iseq[0], iseq[1], oseq[2], oseq[0], oseq[1]]
-                    separate[iseq[2]] += [combo]
-                else:
-                    continue
-    else:
-        print("please insert a strand")
-        pass
+                        continue
 
     embedded = {k: embedded[k] for k in embedded if embedded[k]}
     overlap = {k: overlap[k] for k in overlap if overlap[k]}
     separate = {k: separate[k] for k in separate if separate[k]}
+
     return embedded, overlap, separate
 
 
