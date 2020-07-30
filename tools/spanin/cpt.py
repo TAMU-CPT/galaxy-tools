@@ -107,7 +107,7 @@ class OrfFinder(object):
                         map(
                             str,
                             [
-                                record.id,
+                                "%s%s" % (self.ftype, i + 1),
                                 "getOrfsOrCds",
                                 "CDS",
                                 f_start + 1,
