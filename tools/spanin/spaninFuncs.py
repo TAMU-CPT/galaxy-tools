@@ -334,6 +334,7 @@ def spaninProximity(isp, osp, max_dist=30, strand="+"):
     _NOTE THIS FUNCTION COULD BE MODIFIED TO RETURN SEQUENCES_
     Compares the locations of i-spanins and o-spanins. max_dist is the distance in NT measurement from i-spanin END site
     to o-spanin START. The user will be inputting AA distance, so a conversion will be necessary (<user_input> * 3)
+    I modified this on 07.30.2020 to bypass the pick + or - strand. To 
     INPUT: list of OSP and ISP candidates
     OUTPUT: Return (improved) candidates for overlapping, embedded, and separate list
     """
