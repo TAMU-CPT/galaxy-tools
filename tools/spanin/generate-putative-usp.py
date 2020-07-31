@@ -173,7 +173,6 @@ if __name__ == "__main__":
     #print(args.tmd_max_size)
 
     for each_pair in have_lipo:
-        #print(each_pair)
         try:
             have_tmd_and_lipo += find_tmd(pair=each_pair,
                                 minimum=args.tmd_min_start,
@@ -207,17 +206,29 @@ if __name__ == "__main__":
             f.write("\n" + lineWrapper(str(s).replace("*",""))+"\n")
             length.append(len(s))
             ORF.append(desc)
-    bot_size = min(length)
-    top_size = max(length)
-    avg = (sum(length)) / total_have_tmd_and_lipo
-    med = median(length)
-    with args.summary_usp_txt as f:
-        f.write("total potential u-spanins: " +str(total_have_tmd_and_lipo) + "\n")
-        f.write("average length (AA): " + str(avg) + "\n")
-        f.write("median length (AA): " + str(med) + "\n")
-        f.write("maximum orf in size (AA): " + str(top_size) + "\n")
-        f.write("minimum orf in size (AA): " + str(bot_size))
 
-    args.putative_usp_fa = open(args.putative_usp_fa.name, "r")
-    gff_data = prep_a_gff3(fa=args.putative_usp_fa, spanin_type="usp")
-    write_gff3(data=gff_data, output=args.putative_usp_gff)
+    if ORF:
+        bot_size = min(length)
+        top_size = max(length)
+        avg = (sum(length)) / total_have_tmd_and_lipo
+        med = median(length)
+        with args.summary_usp_txt as f:
+            f.write("total potential u-spanins: " +str(total_have_tmd_and_lipo) + "\n")
+            f.write("average length (AA): " + str(avg) + "\n")
+            f.write("median length (AA): " + str(med) + "\n")
+            f.write("maximum orf in size (AA): " + str(top_size) + "\n")
+            f.write("minimum orf in size (AA): " + str(bot_size))
+
+        args.putative_usp_fa = open(args.putative_usp_fa.name, "r")
+        gff_data = prep_a_gff3(fa=args.putative_usp_fa, spanin_type="usp")
+        write_gff3(data=gff_data, output=args.putative_usp_gff)
+    else:
+        with args.summary_usp_txt as f:
+            f.write("No Candidate USPs found")
+            if have_lipo:
+                f.write("\nLipoboxes were found here:\n")
+                for each_lipo in have_lipo:
+                    f.write('>'+str(each_lipo[0]))
+                    f.write("\n" + lineWrapper(each_lipo[1].replace("*",""))+"\n")
+            else:
+                f.write("\nNo Lipobox(es) were found within search restraints")
