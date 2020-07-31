@@ -49,7 +49,7 @@ def prep_a_gff3(fa, spanin_type, org):
     with org as f:
         header = f.readline()
         orgacc = header.split(" ")
-        orgacc = orgacc[0].split(">")[1]
+        orgacc = orgacc[0].split(">")[1].strip()
     fa_zip = tuple_fasta(fa)
     data = []
     for a_pair in fa_zip:
