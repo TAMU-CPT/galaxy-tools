@@ -115,7 +115,7 @@ class OrfFinder(object):
                                 ".",
                                 nice_strand,
                                 0,
-                                "ID=%s%s" % (self.ftype, i + 1),
+                                "ID=%s|%s%s" % (record.id,self.ftype, i + 1),
                             ],
                         )
                     )
