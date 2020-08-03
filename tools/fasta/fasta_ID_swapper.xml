@@ -16,11 +16,11 @@ $fasta
 ]]></command>
     <inputs>
         <param label="FASTA" name="fasta" type="data" format="fasta" />
-        <param label="Wrapping Brackets" name="wrapper" type="select" />
+        <param label="Wrapping Brackets" name="wrapper" type="select" >
             <option value="bracket" selected="true">Square Brackets, [ and ]</option>
             <option value="parenth">Parentheses, ( and )</option>
         </param>
-        <param label="Space Separator" name="space" type="text" default="last" help="Select 'last' or the numbered word to be placed at the front of header." />
+        <param label="Space Separator" name="space" type="text" value="last" help="Select 'last' or the numbered word to be placed at the front of header." />
     </inputs>
     <outputs>
         <data format="fasta" name="swap_fa" label="_id_swapped.fa" />
@@ -28,7 +28,8 @@ $fasta
     <tests>
         <test>
             <param name="fasta" value="_id_swap.fa"/>
-            <param name=""
+            <param name="wrapper" value="bracket" />
+            <param name="space" value="last" />
             <output name="swap_fa" value="_id_swapped.fa"/>
         </test>
     </tests>
