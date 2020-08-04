@@ -39,19 +39,25 @@ def swap_fa(fa, wrapper="bracket", space="last"):  # recycled from spaninFuncs.p
         wrap = ['(',')']
     for r in fasta:  # iterates and stores each description and sequence
         description = r.description
-        if space == "last":
-            find_space = description.split(' ')[-1]
-            remove_wrap = find_space.replace(str(wrap[1]),' ')
-        else:
-            if description.split(' ')[-1] == description.split(' ')[space-1]: # means we're at the end of the header
+        try:
+            if space == "last":
                 find_space = description.split(' ')[-1]
                 remove_wrap = find_space.replace(str(wrap[1]),' ')
             else:
-                find_space = description.split(' ')[space-1]
-                if find_space[-1] == wrap[0]:
-                    remove_wrap = find_space.replace(str(wrap[0]),' ')
+                if description.split(' ')[-1] == description.split(' ')[space-1]: # means we're at the end of the header
+                    find_space = description.split(' ')[-1]
+                    remove_wrap = find_space.replace(str(wrap[1]),' ')
                 else:
-                    remove_wrap = find_space + ' '
+                    find_space = description.split(' ')[space-1]
+                    if find_space[-1] == wrap[0]:
+                        remove_wrap = find_space.replace(str(wrap[0]),' ')
+                    elif find_space[0] == wrap[0]:
+                        remove_wrap = find_space.replace(str(wrap[0]),'')
+                        remove_wrap = remove_wrap + ' '
+                    else:
+                        remove_wrap = find_space + ' '
+        except IndexError:
+            raise "Space choice exceeded the length of words for a header! Try a smaller number."
         description = remove_wrap + description
         sequence = str(r.seq)
         descriptions.append(description)
