@@ -53,9 +53,9 @@ EXAMPLE :
 >YP_004539126.1 hypothetical protein LIMEzero_ORF53 [Pantoea phage LIMEzero]
 
     * If you wanted LIMEzero to be the first word in the header:
-        * Select *"Square Brackets, [ and ]"* and type *"last"* (no quotes)
-    * If you wanted LIMEzero_ORF53 you would select *"Square Brackets, [ and ]"* and "4" (no quotes)
-    * Keep in mind that this scheme is dependent on if choosing a different word than last, that the spacing of data and information is homogenous across the headers in the multifasta. This is not necessarily true.
+        * Select "Square Brackets, [ and ]" and type "last" (no quotes)
+    * If you wanted LIMEzero_ORF53 you would select "Square Brackets, [ and ]" and "4" (no quotes)
+    * Keep in mind that this scheme is dependent on if you are choosing a different word than 'last', the spacing of data and information is homogenous across the headers in the multifasta. This is not necessarily true.
 ]]></help>
         <citations>
             <citation type="bibtex">
