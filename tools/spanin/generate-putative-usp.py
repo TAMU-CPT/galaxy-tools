@@ -145,6 +145,8 @@ if __name__ == "__main__":
         args.out_usp_gff3,
     )
 
+    args.fasta_file.close()
+    args.fasta_file = open(args.fasta_file.name, "r")
     args.out_usp_prot.close()
     args.out_usp_prot = open(args.out_usp_prot.name,"r")
 
@@ -220,7 +222,7 @@ if __name__ == "__main__":
             f.write("minimum orf in size (AA): " + str(bot_size))
 
         args.putative_usp_fa = open(args.putative_usp_fa.name, "r")
-        gff_data = prep_a_gff3(fa=args.putative_usp_fa, spanin_type="usp")
+        gff_data = prep_a_gff3(fa=args.putative_usp_fa, spanin_type="usp", org=args.fasta_file)
         write_gff3(data=gff_data, output=args.putative_usp_gff)
     else:
         with args.summary_usp_txt as f:
