@@ -210,7 +210,8 @@ if __name__ == "__main__":
     >T7_EIS MLEFLRKLIPWVLVGMLFGLGWHLGSDSMDAKWKQEVHNEYVKRVEAAKSTQRAIGAVSAKYQEDLAALEGSTDRIISDLRSDNKRLRVRVKTTGISDGQCGFEPDGRAELDDRDAKRILAVTQKGDAWIRALQDTIRELQRK
     >lambda_EIS MSRVTAIISALVICIIVCLSWAVNHYRDNAITYKAQRDKNARELKLANAAITDMQMRQRDVAALDAKYTKELADAKAENDALRDDVAAGRRRLHIKAVCQSVREATTASGVDNAASPRLADTAERDYFTLRERLITMQKQLEGTQKYINEQCR
     """
-    print(args.isp_mode)
+    args.fasta_file.close()
+    args.fasta_file = open(args.fasta_file.name, "r")
     args.out_isp_prot.close()
     args.out_isp_prot = open(args.out_isp_prot.name, "r")
 
@@ -276,7 +277,7 @@ if __name__ == "__main__":
 
     # Output the putative list in gff3 format
     args.putative_isp_fa = open(args.putative_isp_fa.name, "r")
-    gff_data = prep_a_gff3(fa=args.putative_isp_fa, spanin_type="isp")
+    gff_data = prep_a_gff3(fa=args.putative_isp_fa, spanin_type="isp",org=args.fasta_file)
     write_gff3(data=gff_data, output=args.putative_isp_gff)
 
     """https://docs.python.org/3.4/library/subprocess.html"""

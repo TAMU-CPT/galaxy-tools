@@ -19,7 +19,6 @@ $fasta_file
 --osp_ob $osp_ob
 --osp_og $osp_og
 --osp_min_len $osp_min_len
---regex_pattern $regex_pattern
 --putative_osp $putative_osp
 --summary_osp_txt $summary_osp
 --putative_osp_gff $putative_osp_gff
@@ -41,10 +40,6 @@ $fasta_file
         <param label="Lipobox maximum distance from start codon" name="osp_max_dist" type="integer" value="60" help="Searches for a Lipobox between Lipoboxmin and Lipoboxmax ie [Lipoboxmin,Lipoboxmax]" />
         <param label="Minimum amount of residues after lipobox is found" name="lipo_min" type="integer" value="25" />
         <param label="Maximum amount of residues after lipobox is found" name="lipo_max" type="integer" value="170" />
-        <param type="select" label="Regular Expression choice" name="regex_pattern">
-            <option value="1">[ILMFTV][^REKD][GAS]C</option>
-            <option value="2">[ACGSILMFTV][^REKD][GAS]C</option>
-        </param>
     </inputs>
     <outputs>   
         <data format="fasta" name="osp_on" label="NucSequences.fa" hidden = "true"/>
@@ -71,7 +66,10 @@ With the aaFASTA, this tool reads in each potential sequence and determines if i
     3. Min amount of periplasmic residues after the lipobox
     4. Max amount of periplasmic residues after the lipobox
 
-Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found.
+Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found. The expressions checked are the following:
+
+    * [ILMFTV][^REKD][GAS]C
+    * AW[AGS]C
 
 **OUTPUT** --> putative_osp.fa (FASTA) file, putative_osp.gff3, and basic summary statistics file as sumamry_osp.txt
 ]]></help>

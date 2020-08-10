@@ -140,13 +140,6 @@ if __name__ == "__main__":
         type=int,
     )
     parser.add_argument(
-        "--regex_pattern",
-        dest="pattern",
-        default=1,
-        help="Regex Pattern to use. 1 for more strict, 2 for LipoRy pattern.",
-        type=int,
-    )
-    parser.add_argument(
         "--min_lipo_after",
         dest="min_lipo_after",
         default=25,
@@ -211,17 +204,13 @@ if __name__ == "__main__":
     -----------------------------LIPO----------------------------------------
     > lambda_EOS MLKLKMMLCVMMLPLVVVGCTSKQSVSQCVKPPPPPAWIMQPPPDWQTPLNGIISPSERG
     """
-
+    args.fasta_file.close()
+    args.fasta_file = open(args.fasta_file.name, "r")
     args.out_osp_prot.close()
     args.out_osp_prot = open(args.out_osp_prot.name, "r")
 
     pairs = tuple_fasta(fasta_file=args.out_osp_prot)
     have_lipo = []  # empty candidates list to be passed through the user input
-
-    print(args.osp_min_dist)
-    print(args.osp_max_dist)
-    print(args.min_lipo_after)
-    print(args.max_lipo_after)
 
     for each_pair in pairs:
         if len(each_pair[1]) <= args.max_osp:
@@ -232,7 +221,6 @@ if __name__ == "__main__":
                     maximum=args.osp_max_dist,
                     min_after=args.min_lipo_after,
                     max_after=args.max_lipo_after,
-                    regex=args.pattern,
                     osp_mode=args.osp_mode,
                 )
             except (IndexError, TypeError):
@@ -285,7 +273,6 @@ if __name__ == "__main__":
         f.write("minimum orf in size (AA): " + str(bot_size))
 
     # Output the putative list in gff3 format:
-    # args.putative_osp_fa.close()
     args.putative_osp_fa = open(args.putative_osp_fa.name, "r")
-    gff_data = prep_a_gff3(fa=args.putative_osp_fa, spanin_type="osp")
+    gff_data = prep_a_gff3(fa=args.putative_osp_fa, spanin_type="osp",org=args.fasta_file)
     write_gff3(data=gff_data, output=args.putative_osp_gff)

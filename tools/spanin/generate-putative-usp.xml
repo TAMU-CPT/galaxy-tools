@@ -18,7 +18,6 @@ $fa
 --lipo_max_start $lipo_max_start
 --min_lipo_after $min_lipo_after
 --max_lipo_after $max_lipo_after
---regex_pattern $regex_pattern
 --tmd_min_start $tmd_min_start
 --tmd_max_start $tmd_max_start
 --tmd_min_size $tmd_min_size
@@ -50,10 +49,6 @@ $fa
         <param label="Lipobox maximum distance from start codon" type="integer" name="lipo_max_start" value="30"/>
         <param label="Minimum amount of periplasmic residues after Lipobox" type="integer" name="min_lipo_after" value="60"/>
         <param label="Maximum amount of periplasmic residues after Lipobox" type="integer" name="max_lipo_after" value="160"/>
-        <param label="Regular Expression" type="select" name="regex_pattern">
-            <option value="1">[ILMFTV][^REKD][GAS]C</option>
-            <option value="2">[ACGSILMFTV][^REKD][GAS]C</option>
-        </param> 
     </inputs>
     <outputs>
         <data format="fasta" name="usp_on" label="NucSequences.fa" hidden = "true"/>
@@ -94,6 +89,11 @@ ALPHA VERSION OF USP TOOL
 Generates a putative multifasta and multigff3 of the unimolecular spanin (u-spanin) class. Uses methods from the ISP and OSP candidates tool for finding TMDs and the Lipobox.
 
 INPUT: Genomic FASTA
+
+Lipobox Pattern:
+
+    * [ILMFTV][^REKD][GAS]C
+    * AW[AGS]C
 
 OUTPUT: Summary of results as well as multi FA and GFF3 of candidates that matched criteria.
 
