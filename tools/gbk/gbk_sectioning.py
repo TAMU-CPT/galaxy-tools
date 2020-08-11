@@ -27,8 +27,8 @@ def makeSubset(
     if locusMode:
       for record in SeqIO.parse(genbank_file, "genbank"):
         record.features = sorted(record.features, key=lambda x: x.location.start)
-        lastEnd = int(max(lastEnd, max(feature.location.start, feature.location.end)))
         for feature in record.features:
+          lastEnd = int(max(lastEnd, max(feature.location.start, feature.location.end)))
           if 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == startLoc:
             if numStart == -1:
               numStart = int(min(feature.location.start, feature.location.end))
