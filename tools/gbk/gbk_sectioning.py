@@ -16,61 +16,62 @@ def makeSubset(
     genbank_file=None,
     locusMode=False,
     revCom=False,
-    startLoc='0',
-    endLoc='1'
+    startLoc='',
+    endLoc=''
 ):
 
+    numStart = -1
+    numEnd = -1
+    lastEnd = 0
     
     if locusMode:
       for record in SeqIO.parse(genbank_file, "genbank"):
         record.features = sorted(record.features, key=lambda x: x.location.start)
-        startPos = 0
-        endPos = 1
-        if endLoc == "":
-          endLoc = record.features[-1].qualifiers['locus_tag'][0] # Attempt to get last feature if none supplied
-        featOut = []
-        addFeats = False
-        nextEnd = False
+        lastEnd = int(max(lastEnd, max(feature.location.start, feature.location.end)))
         for feature in record.features:
-          if 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == startLoc and not addFeats:
-            addFeats = True
-            startPos = feature.location.start
-          elif addFeats and 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == endLoc:
-            nextEnd = True
-          elif nextEnd and (('locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] != endLoc) or 'locus_tag' not in feature.qualifiers):  # inclusive end (To include final feature if desired)
-            addFeats = False  # Attempts to get entire feature tree of last feature
+          if 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == startLoc:
+            if numStart == -1:
+              numStart = int(min(feature.location.start, feature.location.end))
+            else:
+              numStart = int(min(numStart, min(feature.location.start, feature.location.end)))
 
-          if addFeats:
-            if endPos < feature.location.end:
-              endPos = feature.location.end
-            featOut.append(feature)
-        
+          elif 'locus_tag' in feature.qualifiers and feature.qualifiers['locus_tag'][0] == endLoc:
+            numEnd = int(max(numEnd, max(feature.location.start, feature.location.end)))
+      if startLoc == '':
+        numStart = 0
+      if endLoc == '':
+        numEnd = lastEnd
+      
+      if numStart == -1:
+        exit(2)
+      if numEnd == -1:
+        exit(2)
+    else:  
+      if startLoc == '':
+        numStart = 0
+      else:
+        numStart = int(startLoc) - 1
+      if endLoc == '':
+        numEnd = lastEnd
+      else:
+        numEnd = int(endLoc) - 1
+          
 
-        if revCom:
-          finSeq = (record.seq[startPos: endPos]).reverse_complement()
-        else:
-          finSeq = record.seq[startPos: endPos] 
-        for x in featOut:
-          x.location = FeatureLocation(x.location.start - startPos, x.location.end - startPos, x.location.strand)
-        yield [
-                    SeqRecord(
-                        Seq(str(finSeq).strip(), record.seq.alphabet),
-                        id=record.id,
-                        features=featOut,
-                    )
-              ]
-    else:
-      for record in SeqIO.parse(genbank_file, "genbank"):
+    
+    for record in SeqIO.parse(genbank_file, "genbank"):
         featOut = []
         for feature in record.features:
-          if feature.location.start >= int(startLoc) - 1 and feature.location.end < int(endLoc):
+          if feature.location.start >= numStart and feature.location.start < numEnd:
                 featOut.append(feature)
         if revCom:
-          finSeq = (record.seq[int(startLoc) - 1: int(endLoc)]).reverse_complement()
+          finSeq = (record.seq[numStart: numEnd]).reverse_complement()
         else:
-          finSeq = record.seq[int(startLoc) - 1: int(endLoc)]
+          finSeq = record.seq[numStart: numEnd]
         for x in featOut:
-          x.location = FeatureLocation(x.location.start - (int(startLoc) - 1), x.location.end - (int(startLoc) - 1), x.location.strand)
+          if revCom:
+            x.location = FeatureLocation(numEnd - (x.location.end - numStart), numEnd - (x.location.start - numStart), x.location.strand)
+          else:
+            x.location = FeatureLocation(x.location.start - numStart, x.location.end - numStart, x.location.strand)
         yield [
                     SeqRecord(
                         Seq(str(finSeq).strip(), record.seq.alphabet),
