@@ -61,7 +61,7 @@ def makeSubset(
     for record in SeqIO.parse(genbank_file, "genbank"):
         featOut = []
         for feature in record.features:
-          if feature.location.start >= numStart and feature.location.start < numEnd:
+          if feature.location.start >= numStart and feature.location.end < numEnd:
                 featOut.append(feature)
         if revCom:
           finSeq = (record.seq[numStart: numEnd]).reverse_complement()
@@ -72,6 +72,7 @@ def makeSubset(
             x.location = FeatureLocation(numEnd - (x.location.end - numStart), numEnd - (x.location.start - numStart), x.location.strand)
           else:
             x.location = FeatureLocation(x.location.start - numStart, x.location.end - numStart, x.location.strand)
+        featOut = sorted(featOut, key=lambda x: x.location.start)
         yield [
                     SeqRecord(
                         Seq(str(finSeq).strip(), record.seq.alphabet),
