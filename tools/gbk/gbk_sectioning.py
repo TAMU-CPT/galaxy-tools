@@ -46,6 +46,7 @@ def makeSubset(
         exit(2)
       if numEnd == -1:
         exit(2)
+      genbank_file.seek(0)
     else:  
       if startLoc == '':
         numStart = 0
@@ -55,13 +56,11 @@ def makeSubset(
         numEnd = lastEnd
       else:
         numEnd = int(endLoc) - 1
-          
-
     
     for record in SeqIO.parse(genbank_file, "genbank"):
         featOut = []
         for feature in record.features:
-          if feature.location.start >= numStart and feature.location.end < numEnd:
+          if feature.location.start >= numStart and feature.location.end <= numEnd:
                 featOut.append(feature)
         if revCom:
           finSeq = (record.seq[numStart: numEnd]).reverse_complement()
@@ -69,7 +68,7 @@ def makeSubset(
           finSeq = record.seq[numStart: numEnd]
         for x in featOut:
           if revCom:
-            x.location = FeatureLocation(numEnd - (x.location.end - numStart), numEnd - (x.location.start - numStart), x.location.strand)
+            x.location = FeatureLocation(numEnd - x.location.end, numEnd - x.location.start, x.location.strand)
           else:
             x.location = FeatureLocation(x.location.start - numStart, x.location.end - numStart, x.location.strand)
         featOut = sorted(featOut, key=lambda x: x.location.start)
@@ -94,8 +93,8 @@ if __name__ == "__main__":
         "--locusMode", action="store_true", help="Use locus tags"
     )
     parser.add_argument("--revCom", action="store_true", help="Reverse complement sequence")
-    parser.add_argument("--startLoc", help="Starting Location", default='0')
-    parser.add_argument("--endLoc", help="Ending Location", default='1')
+    parser.add_argument("--startLoc", help="Starting Location", default='')
+    parser.add_argument("--endLoc", help="Ending Location", default='')
     args = vars(parser.parse_args())
     for seq in makeSubset(**args):
         SeqIO.write(seq, sys.stdout, "genbank")
