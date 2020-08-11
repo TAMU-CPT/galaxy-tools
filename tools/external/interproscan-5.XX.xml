@@ -30,6 +30,7 @@ mv ${output_gff3}.html.tar.gz ${output_html};
             <option value="ProDom" selected="true">ProDom: set of protein domain families generated from the UniProtKB</option>
             <option value="PANTHER" selected="true">Panther: Protein ANalysis THrough Evolutionary Relationships</option>
             <option value="SMART" selected="true">SMART: identification and analysis of domain architectures based on Hidden Markov Models or HMMs</option>
+            <option value="CDD" selected="true">CDD: Prediction of CDD domains in Proteins</option>
             <option value="PrositeProfiles" selected="true">PROSITE Profiles: protein domains, families and functional sites as well as associated profiles to identify them</option>
             <option value="PrositePatterns" selected="true">PROSITE Pattern: protein domains, families and functional sites as well as associated patterns to identify them</option>
             <option value="Hamap" selected="true">HAMAP: High-quality Automated Annotation of Microbial Proteomes</option>
