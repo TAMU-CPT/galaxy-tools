@@ -68,7 +68,7 @@ def makeSubset(
           finSeq = record.seq[numStart: numEnd]
         for x in featOut:
           if revCom:
-            x.location = FeatureLocation(numEnd - x.location.end, numEnd - x.location.start, x.location.strand)
+            x.location = FeatureLocation(numEnd - x.location.end, numEnd - x.location.start, x.location.strand * -1)
           else:
             x.location = FeatureLocation(x.location.start - numStart, x.location.end - numStart, x.location.strand)
         featOut = sorted(featOut, key=lambda x: x.location.start)
