@@ -90,11 +90,52 @@ if __name__ == "__main__":
         "genbank_file", type=argparse.FileType("r"), help="Genbank file"
     )
     parser.add_argument(
+        "--locFile", type=argparse.FileType("r"), help="Tabular file"
+    )
+    parser.add_argument(
         "--locusMode", action="store_true", help="Use locus tags"
+    )
+    parser.add_argument(
+        "--fileMode", action="store_true", help="Use TSV locations", default=False
     )
     parser.add_argument("--revCom", action="store_true", help="Reverse complement sequence")
     parser.add_argument("--startLoc", help="Starting Location", default='')
     parser.add_argument("--endLoc", help="Ending Location", default='')
     args = vars(parser.parse_args())
-    for seq in makeSubset(**args):
+
+    if args['fileMode']:
+      locations = [x.split("\t") for x in args['locFile'].readlines()]
+      combRecs = [] 
+      for eachLine in locations:
+        tempStart = int(eachLine[1])
+        tempEnd = int(eachLine[2])
+        for i in makeSubset(args['genbank_file'], False, args['revCom'], tempStart, tempEnd):
+          for j in i:
+            combRecs.append(j)
+        args['genbank_file'].seek(0)
+      offset = 0
+      finSeq = ""
+      finFeats = []
+      finID = ""
+      if args['revCom']:
+        combRecs.reverse()
+      for i in combRecs:
+        for x in i.features:
+          x.location = FeatureLocation(x.location.start + offset, x.location.end + offset, x.location.strand)
+          finFeats.append(x)
+        offset += len(str(i.seq))
+        finSeq += str(i.seq).strip()
+        finID = i.id
+      SeqIO.write(
+                    SeqRecord(
+                        Seq(finSeq, combRecs[0].seq.alphabet),
+                        id=combRecs[0].id,
+                        features=finFeats,
+                    ), 
+                    sys.stdout, 
+                    "genbank"
+                 )
+
+    else:
+      for seq in makeSubset(args['genbank_file'], args['locusMode'], args['revCom'], args['startLoc'], args['endLoc']):
         SeqIO.write(seq, sys.stdout, "genbank")
