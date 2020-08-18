@@ -9,21 +9,34 @@
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/gbk_sectioning.py
 $gbkIn
-$locusMode
+
+#if $source.source_select == 'file':
+    --fileMode
+    --locFile $source.table
+#else:
+    $source.locusMode
+    --startLoc $source.startLoc
+    --endLoc $source.endLoc
+#end if
 $revCom
---startLoc $startLoc
---endLoc $endLoc
 > $gbkOut]]></command>
   <inputs>
     <param label="GenBank file" name="gbkIn" type="data" format="genbank"/>
-    <param label="Use locus_tag as start and end location (Set to No to use number of bases instead)" name="locusMode" type="boolean"
-        truevalue="--locusMode" falsevalue=""/>
-    <param label="Use reverse complement of sequence for the output" name="revCom"
-        type="boolean" truevalue="--revCom" falsevalue=""/>
-    <param label="Starting location" name="startLoc"
-        type="text" value="1"/>
-    <param label="Ending Location" name="endLoc"
-        type="text" value="100"/>
+    <conditional name="source">
+        <param name="source_select" type="select" label="Subsection Location List">
+            <option value="file">Tabular File</option>
+            <option value="text">Direct Entry</option>
+        </param>
+        <when value="file">
+            <param label="Table of coordinates to include" name="table" type="data" format="tabular"/>
+        </when>
+        <when value="text">
+            <param label="Use locus_tag as start and end location (Set to No to use number of bases instead)" name="locusMode" type="boolean" truevalue="--locusMode" falsevalue=""/>
+            <param label="Starting location" name="startLoc" type="text" value="1"/>
+            <param label="Ending Location" name="endLoc" type="text" value="100"/>
+        </when>
+    </conditional>
+    <param label="Use reverse complement of sequence for the output" name="revCom" type="boolean" truevalue="--revCom" falsevalue=""/>
   </inputs>
   <outputs>
     <data format="genbank" name="gbkOut" label="Subsection of $gbkIn.name"/>
@@ -34,7 +47,13 @@ $revCom
   <help><![CDATA[
 **What it does**
 
-Exports a subsection of a Genbank file based on a start and end location. If locus_tag mode is used instead, the features will be sorted based on start location, and features starting from when it finds the start locus tag will be added, and it will stop adding features at the first feature *after*  the ending locus tag (Ie, ending is inclusive. Tool will attempt to include the entire gene feature tree, which may add some additional features with no locus tag)
+Exports a subsection of a Genbank file based on a start and end location. If locus_tag mode is used instead, the start will be based on the lowest location number found for a feature with the starting locus tag, and the end will be the greatest number for that tag.
+
+If using file mode, the input should be a tabular/ tsv file of three columns:
+
+OrganismName	StartingLocation	EndingLocation
+
+Currently file mode only supports numeric inputs.
       ]]></help>
 		<expand macro="citations-2020" />
 </tool>
