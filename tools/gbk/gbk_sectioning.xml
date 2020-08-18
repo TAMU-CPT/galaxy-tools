@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gbk.gbk_subset" name="GenBank Extract Subsection" version="1.1">
+<tool id="edu.tamu.cpt.gbk.gbk_subset" name="GenBank Extract Subsection" version="1.2">
   <description>Export a subset of a GenBank file based on a range</description>
   <macros>
     <import>macros.xml</import>
@@ -53,7 +53,7 @@ If using file mode, the input should be a tabular/ tsv file of three columns:
 
 OrganismName	StartingLocation	EndingLocation
 
-Currently file mode only supports numeric inputs.
+The locations can be either locus tags or numbers. While the type of the ending location must be the same as the starting location, a file can have a mix of numeric and locus tag lines if desired.
       ]]></help>
 		<expand macro="citations-2020" />
 </tool>

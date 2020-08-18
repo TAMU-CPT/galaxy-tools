@@ -107,9 +107,21 @@ if __name__ == "__main__":
       locations = [x.split("\t") for x in args['locFile'].readlines()]
       combRecs = [] 
       for eachLine in locations:
-        tempStart = int(eachLine[1])
-        tempEnd = int(eachLine[2])
-        for i in makeSubset(args['genbank_file'], False, args['revCom'], tempStart, tempEnd):
+        tempLocMode = False
+        for eachChar in eachLine[1].strip()
+          if not(ord(eachChar) > 47 and ord(eachChar) < 58):
+            tempLocMode = True
+        for eachChar in eachLine[2].strip()
+          if not(ord(eachChar) > 47 and ord(eachChar) < 58):
+            tempLocMode = True
+
+        if tempLocMode:
+          tempStart = eachLine[1].strip()
+          tempEnd = eachLine[2].strip()
+        else:
+          tempStart = int(eachLine[1])
+          tempEnd = int(eachLine[2])
+        for i in makeSubset(args['genbank_file'], tempLocMode, args['revCom'], tempStart, tempEnd):
           for j in i:
             combRecs.append(j)
         args['genbank_file'].seek(0)
