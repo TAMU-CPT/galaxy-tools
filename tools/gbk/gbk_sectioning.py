@@ -108,10 +108,10 @@ if __name__ == "__main__":
       combRecs = [] 
       for eachLine in locations:
         tempLocMode = False
-        for eachChar in eachLine[1].strip()
+        for eachChar in eachLine[1].strip():
           if not(ord(eachChar) > 47 and ord(eachChar) < 58):
             tempLocMode = True
-        for eachChar in eachLine[2].strip()
+        for eachChar in eachLine[2].strip():
           if not(ord(eachChar) > 47 and ord(eachChar) < 58):
             tempLocMode = True
 
