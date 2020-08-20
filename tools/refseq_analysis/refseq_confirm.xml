@@ -9,9 +9,9 @@
 	<![CDATA[
 	python $__tool_directory__/refseq_confirm.py
 	--email $email
-	#if $acc_add.acc_selector == "":
+	#if $acc_add.acc_selector == "acc_text":
 	--acc_text "$acc_add.acc_text"
-	#elif $acc_add.acc_selector == "":
+	#elif $acc_add.acc_selector == "acc_file":
 	---acc_file "$acc_add.acc_file"
 	#end if
 	--out_file $out_file
