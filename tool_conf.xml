@@ -48,6 +48,7 @@
                 <tool file="cpt2/galaxy-tools/tools/gff3/gff3_validator.xml" label="gff3"/>
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_sixpack.xml" label="gff3" />
 		<tool file="cpt2/tools-iuc/tools/bioperl/bp_genbank2gff3.xml" label="genbank" />
+                <tool file="cpt2/galaxy-tools/tools/util/tRNAscan_to_gff_SE_format.xml"/>  
 	</section>
 	<section id="6dbd8994-74d6-4a9e-834b-131d9cd99526" name="CPT: Text Utilities">
 		<tool file="cpt2/galaxy-tools/tools/text/cat.xml"/>
@@ -82,14 +83,16 @@
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_aa_stats.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/one-off/starts-sds-scrubber.xml" label="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/util/compare_codons.xml" label="gff3" />
+                <tool file="cpt2/galaxy-tools/tools/tRNAscan-SE-2.0/trnaScan.xml"/>
 	</section>
 	<section id="3e66d481-56c7-471f-8de2-7d496977c5eb" name="CPT: Genomic Data Editing">
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_concat.xml"/>
-                <tool file="cpt2/galaxy-tools/tools/fasta/fasta_append.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_append.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_join.xml" label="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_ligate.xml" label="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_reopen.xml" label="fasta" />
-                <tool file="cpt2/galaxy-tools/tools/fasta/fasta_chop.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_ID_swapper.xml" />
+		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_chop.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/fasta/safe_reopen.xml" label="fasta" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/rename.xml" label="genbank,fasta,gff3,experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/gff3/genome_editor.xml" label="experimental,gff3" />
@@ -123,6 +126,7 @@
                 <tool file="cpt2/galaxy-tools/tools/gff3/retype_features.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/rebase_features.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/feature_export.xml" label="genbank" />
+		<tool file="cpt2/galaxy-tools/tools/gbk/gbk_sectioning.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/seq_export.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/gbk/adjacent_features.xml" label="genbank" />
                 <tool file="cpt2/galaxy-tools/tools/fasta/fasta_split.xml" label="fasta" />
@@ -141,8 +145,7 @@
 		<tool file="cpt2/galaxy-tools/tools/external/tmhmm.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/signalp.xml"/>
         <!--<tool file="cpt2/galaxy-tools/tools/external/interproscan.xml"/>-->
-		<tool file="cpt2/galaxy-tools/tools/external/interproscan-5.22.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/external/interproscan-5.33.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/external/interproscan-5.XX.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/fix-aragorn-gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/one-off/genrand.xml"/>
 	</section>
@@ -177,6 +180,7 @@
 		<tool file="cpt2/galaxy-tools/tools/blast/blastn_to_gff3.xml" label="experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blastp_to_gff3.xml" label="experimental"/>
 		<tool file="cpt2/galaxy-tools/tools/blast/blasttab_dice_filter.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/genome_viz/brigaid.xml"/>
 	</section>
 	<section id="7045e32e-90c8-4e20-b4ac-a6cb070d40c3" name="CPT: Filter Features">
 		<tool file="cpt2/galaxy-tools/tools/gff3/filter_type.xml" label="gff3" />
@@ -251,6 +255,7 @@
 	<section id="6b26a975-a24a-4b05-b082-2286e1693fef" name="CPT: Genomic Viz">
 		<tool file="cpt2/galaxy-tools/tools/gbk/featuresvg.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/phage/genome_map.xml"/>
+        <tool file="cpt2/galaxy-tools/tools/genome_viz/linear_genome_plot.xml"/>
 		<!-- <tool file="cpt2/tools-iuc/tools/jbrowse/jbrowse.xml"/> -->
 		<tool file="cpt2/galaxy-tools/tools/jbrowse/jbrowse.xml"/>
 		<tool file="cpt2/Restriction-Digest-Tool/bin/digest_dna.xml"/>
@@ -303,6 +308,7 @@
                 <tool file="cpt2/galaxy-tools/tools/genemark/genemarkHMM.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-isp.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-osp.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/spanin/generate-putative-usp.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/spanin/findSpanin.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/helicalWheel/generateHelicalWheel.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/proximity/searchFile.xml"/>

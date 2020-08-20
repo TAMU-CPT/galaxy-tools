@@ -43,39 +43,32 @@ if __name__ == "__main__":
         type=int,
         help="max distance from end of i-spanin to start of o-spanin, measured in AAs",
     )
-
-    parser.add_argument(
-        "--strand",
-        dest="strand",
-        default="+",
-        help="strand to investigate matches, + or -",
-    )
     parser.add_argument(
         "--embedded_txt",
         dest="embedded_txt",
         type=argparse.FileType("w"),
-        default="embedded_results.txt",
+        default="_findSpanin_embedded_results.txt",
         help="Results of potential embedded spanins",
     )
     parser.add_argument(
         "--overlap_txt",
         dest="overlap_txt",
         type=argparse.FileType("w"),
-        default="overlap_results.txt",
+        default="_findSpanin_overlap_results.txt",
         help="Results of potential overlapping spanins",
     )
     parser.add_argument(
         "--separate_txt",
         dest="separate_txt",
         type=argparse.FileType("w"),
-        default="separated_results.txt",
+        default="_findSpanin_separated_results.txt",
         help="Results of potential separated spanins",
     )
     parser.add_argument(
         "--summary_txt",
         dest="summary_txt",
         type=argparse.FileType("w"),
-        default="findSpanin_summary.txt",
+        default="_findSpanin_summary.txt",
         help="Results of potential spanin pairs",
     )
     parser.add_argument(
@@ -91,35 +84,20 @@ if __name__ == "__main__":
     args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
     osp_full = tuple_fasta(args.putative_osp_fasta_file)
 
-
-    strand_isp = []
-    strand_osp = []
-    for desc in isp:  # will retrieve only + or - strand for analysis
-        text = splitStrands(desc, args.strand)
-        strand_isp.append(text)
-    for desc in osp:
-        text = splitStrands(desc, args.strand)
-        strand_osp.append(text)
-
-    strand_isp = [i for i in strand_isp if i]  # filtering out Nones
-    strand_osp = [ii for ii in strand_osp if ii]  # filtering out Nones
-
     data_isp = []
     data_osp = []
-    for desc in strand_isp:
+    for desc in isp:
         d = grabLocs(desc)
         data_isp.append(d)
 
-    for desc in strand_osp:
+    for desc in osp:
         d = grabLocs(desc)
         data_osp.append(d)
 
     ###### The above steps probablt __SHOULD__ be wrapped into a little function. But, not necessary atm.
 
     # constructs list where we must multiply user input of AA by 3 to correspond to triplet codons
-    embedded, overlap, separate = spaninProximity(
-        data_isp, data_osp, max_dist=args.max_isp_osp_distance * 3, strand=args.strand
-    )
+    embedded, overlap, separate = spaninProximity(data_isp, data_osp, max_dist=args.max_isp_osp_distance * 3)
     s = 0
     for v in embedded.values():
         s += len(v)
@@ -174,31 +152,36 @@ if __name__ == "__main__":
     for isp_tupe in isp_full:
         for pisp, posp in embedded.items():
             if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
-                isp_seqs.append((pisp,isp_tupe[1]))
-
+                #print(isp_tupe[0])
+                #print(peri_count)
+                peri_count = str.split(isp_tupe[0],"~=")[1]
+                isp_seqs.append((pisp,isp_tupe[1],peri_count))
+    #print(isp_seqs)
     for osp_tupe in osp_full:
         for pisp, posp in embedded.items():
             for data in posp:
                 if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
-                    osp_seqs.append((data[2],osp_tupe[1]))
-
+                    peri_count = str.split(osp_tupe[0],"~=")[1]
+                    osp_seqs.append((data[2],osp_tupe[1],peri_count))
 
     with args.embedded_txt as f:
         f.write("================ embedded spanin candidates =================\n")
-        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
+        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\tstrand\n")
         if embedded != {}:
-                for pisp, posp in embedded.items():
-                    f.write(pisp + "\n")
-                    for each_posp in posp:
-                        f.write(
-                            "\t{}\t{}\t{}\t{}\t{}\n".format(
-                                each_posp[0],
-                                each_posp[1],
-                                each_posp[2],
-                                each_posp[3],
-                                each_posp[4],
-                            )
+            #print(embedded)
+            for pisp, posp in embedded.items():
+                f.write(pisp + "\n")
+                for each_posp in posp:
+                    f.write(
+                        "\t{}\t{}\t{}\t{}\t{}\t{}\n".format(
+                            each_posp[0],
+                            each_posp[1],
+                            each_posp[2],
+                            each_posp[3],
+                            each_posp[4],
+                            each_posp[5],
                         )
+                    )
         else:
             f.write("nothing found")
 
@@ -206,10 +189,11 @@ if __name__ == "__main__":
         f.write("\n================= embedded candidate sequences ================\n")
         f.write("======================= isp ==========================\n\n")
         for isp_data in isp_seqs:
-            f.write(">isp_orf::{}\n{}\n".format(isp_data[0],lineWrapper(isp_data[1])))
+            #print(isp_data)
+            f.write(">isp_orf::{}-peri_count~={}\n{}\n".format(isp_data[0],isp_data[2],lineWrapper(isp_data[1])))
         f.write("\n======================= osp ========================\n\n")
         for osp_data in osp_seqs:
-            f.write(">osp_orf::{}\n{}\n".format(osp_data[0],lineWrapper(osp_data[1])))
+            f.write(">osp_orf::{}-peri_count~={}\n{}\n".format(osp_data[0],osp_data[2],lineWrapper(osp_data[1])))
 
     args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
     isp_full = tuple_fasta(args.putative_isp_fasta_file)
@@ -220,33 +204,36 @@ if __name__ == "__main__":
     isp_seqs = []
     osp_seqs = []
     for isp_tupe in isp_full:
-
+        peri_count = str.split(isp_tupe[0],"~=")[1]
         for pisp, posp in overlap.items():
             if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
-                isp_seqs.append((pisp,isp_tupe[1]))
+                peri_count = str.split(isp_tupe[0],"~=")[1]
+                isp_seqs.append((pisp,isp_tupe[1],peri_count))
 
     for osp_tupe in osp_full:
         for pisp, posp in overlap.items():
             for data in posp:
                 if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
-                    osp_seqs.append((data[2],osp_tupe[1]))
+                    peri_count = str.split(osp_tupe[0],"~=")[1]
+                    osp_seqs.append((data[2],osp_tupe[1],peri_count))
 
 
     
     with args.overlap_txt as f:
         f.write("================ overlap spanin candidates =================\n")
-        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
+        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\tstrand\n")
         if overlap != {}:
             for pisp, posp in overlap.items():
                 f.write(pisp + "\n")
                 for each_posp in posp:
                     f.write(
-                        "\t{}\t{}\t{}\t{}\t{}\n".format(
+                        "\t{}\t{}\t{}\t{}\t{}\t{}\n".format(
                             each_posp[0],
                             each_posp[1],
                             each_posp[2],
                             each_posp[3],
                             each_posp[4],
+                            each_posp[5],
                         )
                     )
         else:
@@ -256,10 +243,10 @@ if __name__ == "__main__":
         f.write("\n================= overlap candidate sequences ================\n")
         f.write("======================= isp ==========================\n\n")
         for isp_data in isp_seqs:
-            f.write(">isp_orf::{}\n{}\n".format(isp_data[0],lineWrapper(isp_data[1])))
+            f.write(">isp_orf::{}-pericount~={}\n{}\n".format(isp_data[0],isp_data[2],lineWrapper(isp_data[1])))
         f.write("\n======================= osp ========================\n\n")
         for osp_data in osp_seqs:
-            f.write(">osp_orf::{}\n{}\n".format(osp_data[0],lineWrapper(osp_data[1])))
+            f.write(">osp_orf::{}-pericount~={}\n{}\n".format(osp_data[0],osp_data[2],lineWrapper(osp_data[1])))
 
     args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
     isp_full = tuple_fasta(args.putative_isp_fasta_file)
@@ -271,28 +258,31 @@ if __name__ == "__main__":
     for isp_tupe in isp_full:
         for pisp, posp in separate.items():
             if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
-                isp_seqs.append((pisp,isp_tupe[1]))
-
+                peri_count = str.split(isp_tupe[0],"~=")[1]
+                isp_seqs.append((pisp,isp_tupe[1],peri_count))
+    #print(isp_seqs)
     for osp_tupe in osp_full:
         for pisp, posp in separate.items():
             for data in posp:
                 if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
-                    osp_seqs.append((data[2],osp_tupe[1]))
+                    peri_count = str.split(osp_tupe[0],"~=")[1]
+                    osp_seqs.append((data[2],osp_tupe[1],peri_count))
 
     with args.separate_txt as f:
         f.write("================ separated spanin candidates =================\n")
-        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\n")
+        f.write("isp\tisp_start\tisp_end\tosp\tosp_start\tosp_end\tstrand\n")
         if separate != {}:
             for pisp, posp in separate.items():
                 f.write(pisp + "\n")
                 for each_posp in posp:
                     f.write(
-                        "\t{}\t{}\t{}\t{}\t{}\n".format(
+                        "\t{}\t{}\t{}\t{}\t{}\t{}\n".format(
                             each_posp[0],
                             each_posp[1],
                             each_posp[2],
                             each_posp[3],
                             each_posp[4],
+                            each_posp[5],
                         )
                     )
         else:
@@ -302,7 +292,7 @@ if __name__ == "__main__":
         f.write("\n================= separated candidate sequences ================\n")
         f.write("======================= isp ==========================\n\n")
         for isp_data in isp_seqs:
-            f.write(">isp_orf::{}\n{}\n".format(isp_data[0],lineWrapper(isp_data[1])))
+            f.write(">isp_orf::{}-pericount~={}\n{}\n".format(isp_data[0],isp_data[2],lineWrapper(isp_data[1])))
         f.write("\n======================= osp ========================\n\n")
         for osp_data in osp_seqs:
-            f.write(">osp_orf::{}\n{}\n".format(osp_data[0],lineWrapper(osp_data[1])))
+            f.write(">osp_orf::{}-pericount~={}\n{}\n".format(osp_data[0],osp_data[2],lineWrapper(osp_data[1])))

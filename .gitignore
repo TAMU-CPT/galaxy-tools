@@ -155,3 +155,7 @@ tools/spanin/debug
 tools/proximity/*.db
 tools/proximity/termHits.txt
 tools/proximity/test-data/prox/lambda_NRBLAST.gff3
+
+## SAR
+
+tools/SAR/big-data/

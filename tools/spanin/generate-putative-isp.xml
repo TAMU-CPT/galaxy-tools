@@ -2,8 +2,8 @@
 <tool id="edu.tamu.cpt2.spanin.generate-putative-isp" name="ISP candidates" version="1.0">
     <description>constructs a putative list of potential i-spanin from an input genomic FASTA</description>
     <macros>
-		<import>macros.xml</import>
-		<import>cpt-macros.xml</import>
+        <import>macros.xml</import>
+        <import>cpt-macros.xml</import>
     </macros>
     <expand macro="requirements">
       <requirement type="package" version="2019.06.08">regex</requirement>
@@ -26,32 +26,39 @@ $fasta_file
 --putative_isp $putative_isp
 --summary_isp_txt $summary_isp
 --putative_isp_gff $putative_isp_gff
+--isp_max $isp_max
+--peri_min $peri_min
+--peri_max $peri_max
 
 ]]></command>
     <inputs>
-    <param type="select" label="Strand Choice" name="strand">
-        <option value="both">both</option>
-        <option value="forward">+</option>
-        <option value="reverse">-</option>
-    </param>
-        <param label="FASTA" name="fasta_file" type="data" format="fasta" />
-	<param label="i-spanin minimal length" name="isp_min_len" type="integer" value="60" />
-    <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1000:2000)" type="text" name="switch" value="all" />
+        <param type="select" label="Strand Choice" name="strand">
+            <option value="both">both</option>
+            <option value="forward">+</option>
+            <option value="reverse">-</option>
+        </param>
+        <param label="Single Genome FASTA" name="fasta_file" type="data" format="fasta" />
+        <param label="i-spanin minimal length" name="isp_min_len" type="integer" value="60" />
+        <param label="i-spanin maximum length" name="isp_max" type="integer" value="230" />
+        <param label="Range Selection; default is all; for a specific range to check for a spanin input integers separated by a colon (eg. 1000:2000)" type="text" name="switch" value="all" />
         <param label="TMD minimal distance from start codon" name="isp_min_dist" type="integer" value="10" />
-	<param label="TMD maximum distance from start codon" name="isp_max_dist" type="integer" value="30" help="Searches for a TMD between TMDmin and TMDmax ie [TMDmin,TMDmax]" />
+        <param label="TMD maximum distance from start codon" name="isp_max_dist" type="integer" value="35" help="Searches for a TMD between TMDmin and TMDmax ie [TMDmin,TMDmax]" />
         <param label="TMD minimal size" name="min_tmd_size" type="integer" value="10" />
-        <param label="TMD maximum size" name="max_tmd_size" type="integer" value="20" />
+        <param label="TMD maximum size" name="max_tmd_size" type="integer" value="25" />
+        <param label="Periplasmic minimal residue amount" name="peri_min" type="integer" value="16" />
+        <param label="Periplasmic maximum residue amount" name="peri_max" type="integer" value="206" />
     </inputs>
     <outputs>
-                <data format="fasta" name="isp_on" label="NucSequences.fa" hidden = "true"/>
-		<data format="fasta" name="isp_op" label="ProtSequences.fa" hidden = "true"/>
-                <data format="bed" name="isp_ob" label="BED_Output.bed" hidden = "true"/>
-                <data format="gff3" name="isp_og" label="GFF_Output.gff" hidden = "true"/>
-		<data format="fasta" name="putative_isp" label="putative_isp.fa"/>
-                <data format="txt" name="summary_isp" label="summary_isp.txt"/>
+        <data format="fasta" name="isp_on" label="NucSequences.fa" hidden = "true"/>
+        <data format="fasta" name="isp_op" label="ProtSequences.fa" hidden = "true"/>
+        <data format="bed" name="isp_ob" label="BED_Output.bed" hidden = "true"/>
+        <data format="gff3" name="isp_og" label="GFF_Output.gff" hidden = "true"/>
+        <data format="fasta" name="putative_isp" label="putative_isp.fa"/>
+        <data format="txt" name="summary_isp" label="summary_isp.txt"/>
         <data format="gff3" name="putative_isp_gff" label="putative_isp.gff3"/>
     </outputs>
     <help><![CDATA[
+*NOTE: This tool only takes a SINGLE genomic fasta. It does not work with multiFASTAs.*
 
 **INPUT** --> Genomic FASTA
 
@@ -63,6 +70,7 @@ With the aaFASTA, read in each potential sequence and determine if it has a TMD 
 
     1. Lysine snorkels and neighboring hydrophobic residues, within the range the user inputs.
     2. A repeated hydrophobic region within the sequence, within the range the user inputs.
+    3. Periplasmic calculations of residues. Minimal and maximum thresholds for required amount of residues after TMD is found.
 
 **OUTPUT** --> putative_isp.fa (FASTA) file, putative_isp.gff3, and basic summary statistics as summary_isp.txt.
 

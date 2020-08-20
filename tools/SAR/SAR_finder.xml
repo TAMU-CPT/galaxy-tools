@@ -38,7 +38,7 @@ $fa
 A tool that analyzes protein sequence within the first 50 residues for a weakly hydrophobic domain sometimes found in endolysins called Signal-Anchor-Release (aka SAR)
 
 Definition: A Signal-Arrest-Release (SAR) domain is a N-terminal, weakly hydrophobic transmembrane region rich is Gly/Ala and/or Ser residues sometimes found in phage lysis proteins, including endolysins and holins. The SAR domain can be released from the membrane in a proton motive force-dependent manner.
-This tool finds proteins that contain a stretch (default 15-20 residues) of hydrophobic residues (Ile, Leu, Val, Phe, Tyr, Trp, Met, Gly, Ala, Ser) and calculates the % Gly/Ala/Ser residues in the hydrophobic stretch. The net charge on the N-terminal region is also displayed to aid in determining the SAR topology.
+This tool finds proteins that contain a stretch (default 15-20 residues) of hydrophobic residues (Ile, Leu, Val, Phe, Tyr, Trp, Met, Gly, Ala, Ser) and calculates the % Gly/Ala/Ser/Thr residues in the hydrophobic stretch. The net charge on the N-terminal region is also displayed to aid in determining the SAR topology.[1]
 
 INPUT : Protein Multi FASTA
 
@@ -52,6 +52,7 @@ OUTPUT :
 
     ]]></help>
     <citations>
+        <citation type="doi">https://dx.doi.org/10.1016/bs.aivir.2018.09.003</citation>
         <citation type="bibtex">
             @unpublished{galaxyTools,
             author = {C. Ross},

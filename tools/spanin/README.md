@@ -8,6 +8,9 @@
 * `generate-putative-osp.py`
     * INPUT : Genomic FASTA
     * OUTPUT : Putative candidates for osp
+* `generate-putative-usp.py`
+    * INPUT : Genomic FASTA
+    * OUTPUT : Putative candidates for usp
 * `spaninFuncs.py`
     * Functions that drive the scripts within this directory
 
@@ -16,6 +19,7 @@
 * cpt.py (copied and edited for handeling specific task for these tools)
 
 ## Script Descriptions / Methodologies:
+_aside: Much of this code base from isp/osp/usp/findspanin tools is **NOT** very DRY. I would like to go in and clean this up; however it may be improved down the line when we incooperate ML into the pipeline_
 * `generate-putative-osp.py`
     * INPUT : Genomic FASTA
     * METHODOLOGY 
@@ -35,6 +39,9 @@
         * Searches for Lysine snorkels (see `find_tmd`)
         * Searches for large spanning hydrophobic regions (see `find_tmd`)
     * OUTPUT : All matching description/sequence pairs are stored, and returned as a `putative_isp.fa` file.
+* `generate-putative-usp.py`
+    * INPUT : Genomic FASTA
+    * Does a combination of the spanin func lipobox and tmd functions with different default parameters than their isp/osp counterparts.
 * `spaninFuncs.py`
     * func `find_lipobox`
         * Uses a choice of (currently two) regular expressions that find lipoboxes upstream of the input sequence. If this passes, the description/sequence is saved.
@@ -44,6 +51,7 @@
             2. Looks for a repeated hydrophobic region within the sequence, based on a range of user inputs (example, transmembrane size 6 - 20, will look for [hydrophobic-AAs]x6 through [hydrophobic-AAs]x20). If this passes, the description/sequence is saved.
     * func `tuple_fasta`
         * Outputs a tuple which contains the description header from the original fasta generation with candidate sequences.
+    * There are many more functions and I wont list them all here. I believe that the majority of the functions have appropriate descriptions.
 
 ## Release Notes
 CPT: OTHER- ISP candidates, OSP candidates, Find Spanin

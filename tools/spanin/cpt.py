@@ -80,7 +80,7 @@ class OrfFinder(object):
                 descr = "length %i aa, %i bp, from %s..%s[%s] of %s" % (
                     len(t),
                     len(n),
-                    f_start,
+                    f_start+1,
                     f_end,
                     f_strand,
                     record.description,
@@ -115,7 +115,7 @@ class OrfFinder(object):
                                 ".",
                                 nice_strand,
                                 0,
-                                "ID=%s.%s.%s" % (self.ftype, idx, i + 1),
+                                "ID=%s|%s%s" % (record.id,self.ftype, i + 1),
                             ],
                         )
                     )

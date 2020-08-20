@@ -19,6 +19,7 @@ def extract_features(
     downOut=None,
     genesOnly=False,
     cdsOnly=True,
+    forceSeqID=False,
     forward=1,
     behind=1,
     outProt=True,
@@ -62,9 +63,18 @@ def extract_features(
                 ):
                     continue
 
+                if "codon_start" in feat.qualifiers:
+                  offset = 1 - int(feat.qualifiers["codon_start"][0])
+                else:
+                  offset = 0
+
+
                 temp = gbk.seq[feat.location.start : feat.location.end]
                 if feat.location.strand == -1:
+                    temp = gbk.seq[feat.location.start : feat.location.end - offset]
                     temp = temp.reverse_complement()
+                else:
+                    temp = gbk.seq[feat.location.start + offset : feat.location.end]
 
                 if tTable != 0:
                     try:
@@ -80,7 +90,7 @@ def extract_features(
                         "++++++++"
                     ]  # Junk value for genesOnly flag
 
-                if (gSeq == fSeq) or (protID == feat.qualifiers["protein_id"][0]):
+                if (gSeq == fSeq) and (protID == feat.qualifiers["protein_id"][0] or forceSeqID == False):
                     goBack = num - 1
                     goAhead = num + 1
                     numBack = behind
@@ -109,6 +119,11 @@ def extract_features(
                         goAhead += 1
 
                     backList.reverse()
+                    if feat.location.strand == -1:
+                      tmpList = aheadList
+                      aheadList = backList
+                      backList = tmpList
+                      
 
                     for item in backList:
                         addition = ""
@@ -402,6 +417,11 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--cdsOnly",
+        action="store_true",
+        help="Search and return only CDS type features",
+    )
+    parser.add_argument(
+        "--forceSeqID",
         action="store_true",
         help="Search and return only CDS type features",
     )

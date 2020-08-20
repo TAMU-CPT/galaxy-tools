@@ -23,7 +23,7 @@ cat
         ${i}
     #end if
 #end for
-| makeblastdb -out '${os.path.join($outfile.files_path, "blastdb")}'
+| $__tool_directory__/makeblastdb -out '${os.path.join($outfile.files_path, "blastdb")}'
 $parse_seqids
 $hash_index
 -in -

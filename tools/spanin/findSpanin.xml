@@ -14,7 +14,6 @@ python $__tool_directory__/findSpanin.py
 $putative_isp_fasta_file
 $putative_osp_fasta_file
 --max_isp_osp_distance $max_isp_osp_distance
---strand $strand
 --embedded_txt $embedded_txt
 --overlap_txt $overlap_txt
 --separate_txt $separate_txt
@@ -24,10 +23,6 @@ $putative_osp_fasta_file
         <param label="(putative) i-spanin FASTA file" name="putative_isp_fasta_file" type="data" format="fasta"/>
         <param label="(putative) o-spanin FASTA file" name="putative_osp_fasta_file" type="data" format="fasta"/>
         <param label="max distance from end of i-spanin to beginning of o-spanin (measured in AAs)" name="max_isp_osp_distance" type="integer" value="10" />
-        <param type="select" label="strand" name="strand">
-            <option value="+">Positive Sense Strand</option>
-            <option value="-">Negative Sense Strand</option>
-        </param>
     </inputs>
     <outputs>
           <data format="txt" name="summary_txt" label="FindSpanin_summary.txt"/>

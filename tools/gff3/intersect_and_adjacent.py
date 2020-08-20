@@ -9,6 +9,12 @@ from Bio.Seq import Seq
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+def validFeat(rec):
+    for feat in rec.features:
+      if feat.type != 'remark' and feat.type != 'annotation':
+        return True
+    return False
+
 def treeFeatures(features, window):
     for feat in features:
         # Interval(begin, end, data)
@@ -39,15 +45,16 @@ def intersect(a, b, window, stranding):
  
 
     if maxLen > 0:
-        finA = []
-        finB = []
         while iterate < maxLen:
-        #if len(rec_a) > 1 or len(rec_b) > 1:
-        #    raise Exception("Cannot handle multiple GFF3 records in a file, yet")
-
           rec_a_i = rec_a[iterate]
           rec_b_i = rec_b[iterate]
- 
+
+          if (not validFeat(rec_a_i)) or (not validFeat(rec_b_i)):
+            rec_a_out.append(SeqRecord(rec_a[iterate].seq, rec_a[iterate].id, rec_a[iterate].name, rec_a[iterate].description, rec_a[iterate].dbxrefs, [], rec_a[iterate].annotations))
+            rec_b_out.append(SeqRecord(rec_b[iterate].seq, rec_b[iterate].id, rec_b[iterate].name, rec_b[iterate].description, rec_b[iterate].dbxrefs, [], rec_b[iterate].annotations))
+            iterate += 1
+            continue
+
           a_neg = []
           a_pos = []
           b_neg = []
@@ -192,8 +199,8 @@ def intersect(a, b, window, stranding):
                         rec_b_hits_in_a.append(rec_a_map[hit.data])
 
           # Remove duplicate features using sets
-          rec_a_out.append(SeqRecord(rec_a[iterate].seq, rec_a[iterate].id, rec_a[iterate].name, rec_a[iterate].description, rec_a[iterate].dbxrefs, sorted(set(rec_a_hits_in_b), key=lambda feat: feat.location.start)))
-          rec_b_out.append(SeqRecord(rec_b[iterate].seq, rec_b[iterate].id, rec_b[iterate].name, rec_b[iterate].description, rec_b[iterate].dbxrefs, sorted(set(rec_b_hits_in_a), key=lambda feat: feat.location.start)))
+          rec_a_out.append(SeqRecord(rec_a[iterate].seq, rec_a[iterate].id, rec_a[iterate].name, rec_a[iterate].description, rec_a[iterate].dbxrefs, sorted(set(rec_a_hits_in_b), key=lambda feat: feat.location.start), rec_a[iterate].annotations))
+          rec_b_out.append(SeqRecord(rec_b[iterate].seq, rec_b[iterate].id, rec_b[iterate].name, rec_b[iterate].description, rec_b[iterate].dbxrefs, sorted(set(rec_b_hits_in_a), key=lambda feat: feat.location.start), rec_b[iterate].annotations))
           iterate += 1
   
     else:
