@@ -17,7 +17,10 @@ def fixed_feature(rec):
         )
     ):
         fid = "tRNA-%03d" % (1 + idx)
-        name = ["tRNA-" + feature.qualifiers["Codon"][0]]
+        try:
+            name = ["tRNA-" + feature.qualifiers["Codon"][0]]
+        except KeyError:
+            name = [feature.qualifiers['product'][0]]
         try:
           origSource = feature.qualifiers["source"][0]
         except:
