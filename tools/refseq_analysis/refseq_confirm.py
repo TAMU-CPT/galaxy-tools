@@ -1,4 +1,5 @@
 import argparse
+import re
 
 #  CPT tools
 from refseq_tools import CPTrefseq

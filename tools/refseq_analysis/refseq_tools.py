@@ -1,11 +1,11 @@
+#!/usr/bin/env python
+
 import time
 import sys
 import os
-from progress.bar import Bar
 
 # External
 from Bio import Entrez
-from Bio import SeqIO
 
 """
 The goal of this script is to insert a genome accession and determine 
