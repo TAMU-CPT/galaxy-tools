@@ -45,7 +45,6 @@ def parse_email(email):
 
     ADMINS.insert(0,email)
     emails = sep.join(ADMINS)
-
     return emails
 
 if __name__ == "__main__":
