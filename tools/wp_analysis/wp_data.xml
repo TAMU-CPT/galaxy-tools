@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.refseq_analysis.wp_data" name="WP Accession Data" version="1.0">
+<tool id="edu.tamu.cpt.wp_analysis.wp_data" name="WP Accession Data" version="1.0">
 	<description>Queries NCBI to retrieve genome accessions and taxon information with WP accessions</description>
 	<macros>
 		<import>macros.xml</import>
@@ -7,7 +7,7 @@
 	</expand>
 	<command detect_errors="aggressive">
 	<![CDATA[
-	python $__tool_directory__/refseq_confirm.py
+	python $__tool_directory__/wp_data.py
 	--email $email
 	#if $acc_add.acc_selector == "acc_text":
 	--wp_text "$acc_add.acc_text"
