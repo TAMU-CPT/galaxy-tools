@@ -51,7 +51,7 @@ class CPTrefseq:
                 else:
                     for id in ids: # potential problem area
                         record = self.do_esummary(id['Id'])
-                        ref_acc = record[0]['Caption']
+                        ref_acc = record[0]['AccessionVersion']
                         title = record[0]['Title']
                         return ref_acc, title
             else:

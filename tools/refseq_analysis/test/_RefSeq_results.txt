@@ -1,5 +1,5 @@
-Input_Accession	Queried_Accession	RefSeq_Match	Name
-KC821634.1	KC821634	No_RefSeq_Record	Not_Fetched
-FR687252.1	FR687252	NC_019454	Pantoea phage LIMElight, complete genome
-299780356	299780356	No_RefSeq_Record	Not_Fetched
-NC_004902	NC_004902	Is_RefSeq	Not_Fetched
+Input_Accession	RefSeq_Match	Name
+KC821634.1	No_RefSeq_Record	Not_Fetched
+FR687252.1	NC_019454.1	Pantoea phage LIMElight, complete genome
+299780356	No_RefSeq_Record	Not_Fetched
+NC_004902	Is_RefSeq	Not_Fetched

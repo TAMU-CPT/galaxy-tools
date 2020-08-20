@@ -98,12 +98,12 @@ if __name__ == "__main__":
                 "acc" : acc
             }
             ref_acc, name = CPTrefseq(**depot).check_if_ref()
-            temp_list = [og_acc,acc,ref_acc,name]
+            temp_list = [og_acc,ref_acc,name]
         else:
-            temp_list = ["None","None","None","None"]
+            temp_list = ["None","None","None"]
         report_list.append(temp_list)
     
     with args.out_file as file:
-        file.writelines("Input_Accession\tQueried_Accession\tRefSeq_Match\tName\n")
+        file.writelines("Input_Accession\tRefSeq_Match\tName\n")
         for each_return in report_list:
-            file.writelines(f"{each_return[0]}\t{each_return[1]}\t{each_return[2]}\t{each_return[3]}\n")
+            file.writelines(f"{each_return[0]}\t{each_return[1]}\t{each_return[2]}\n")
