@@ -37,7 +37,9 @@
 	</outputs>
 	<tests>
 		<test>
-			<param name="acc_add.acc_file" value="accs.txt"/>
+			<conditional name="acc_selector">
+				<param name="acc_file" value="accs.txt"/>
+			</conditional>
 			<param name="email" value="curtisross@tamu.edu"/>
 			<output name="out_file" value="_RefSeq_results.txt"/>
 		</test>
