@@ -9,9 +9,9 @@
 	<![CDATA[
 	python $__tool_directory__/refseq_confirm.py
 	--email $email
-	#if "$acc_add.acc_selector" == "acc_text":
+	#if "$acc_add.acc_selector" == "acc_text_selection":
 	--acc_text "$acc_add.acc_text"
-	#elif "$acc_add.acc_selector" == "acc_file":
+	#elif "$acc_add.acc_selector" == "acc_file_selection":
 	---acc_file "$acc_add.acc_file"
 	#end if
 	--out_file $out_file
@@ -21,13 +21,13 @@
 		<param type="text" name="email" label="Email" help="Email used with Admin emails to query NCBI."/>
 		<conditional name="acc_add">
 			<param name="acc_selector" type="select" label="Choose the method to submit accessions">
-				<option value="acc_text" selected="false">Paste Accessions</option>
-				<option value="acc_file" selected="false">Upload Accessions</option>
+				<option value="acc_text_selection" selected="false">Paste Accessions</option>
+				<option value="acc_file_selection" selected="false">Upload Accessions</option>
 			</param>
-			<when value="acc_text">
+			<when value="acc_text_selection">
 				<param name="acc_text" label="Accessions" optional="true" type="text" area="true" help="Past accessions separated by newline (space)"/>
 			</when>
-			<when value="acc_file">
+			<when value="acc_file_selection">
 				<param name="acc_file" label="Accessions File upload" optional="true" type="data" format="txt" help="File consisting of accessions separated by newline (space)"/>
 			</when>
 		</conditional>
@@ -38,7 +38,8 @@
 	<tests>
 		<test>
 			<conditional name="acc_add">
-				<param name="acc_file" value="accs.txt"/>
+				<param name="acc_selector" value="acc_file_selection"/>
+					<param name="acc_file" value="accs.txt"/>
 			</conditional>
 			<param name="email" value="curtisross@tamu.edu"/>
 			<output name="out_file" value="_RefSeq_results.txt"/>
