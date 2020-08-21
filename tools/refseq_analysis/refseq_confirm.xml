@@ -37,7 +37,7 @@
 	</outputs>
 	<tests>
 		<test>
-			<conditional name="acc_selector">
+			<conditional name="acc_add">
 				<param name="acc_file" value="accs.txt"/>
 			</conditional>
 			<param name="email" value="curtisross@tamu.edu"/>
