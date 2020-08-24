@@ -26,9 +26,9 @@ if __name__ == "__main__":
       elif line == "##FASTA\n":
         writeMode = 2
       elif writeMode == 1:
-        outGFF += line
+        args['gffFile'].write(line)
       elif writeMode == 2:
-        outFASTA += line
+        args['fastaFile'].write(line)
       
-    args['gffFile'].write(outGFF)
-    args['fastaFile'].write(outFASTA)
+#    args['gffFile'].write(outGFF)
+#    args['fastaFile'].write(outFASTA)

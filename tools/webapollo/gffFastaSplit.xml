@@ -6,7 +6,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/list_organism_data.py
+$__tool_directory__/gffFastaSplit.py
 $fileIn
 $gffOut
 $fastaOut
@@ -15,8 +15,8 @@ $fastaOut
     <param label="GFF3" name="fileIn" type="data" format="gff3"/>
   </inputs>
   <outputs>
-    <data format="gff3" name="gffOut"/>
-    <data format="fasta" name="fastaOut"/>
+    <data format="gff3" name="gffOut" label="GFF Portion"/>
+    <data format="fasta" name="fastaOut" label="Fasta Portion"/>
   </outputs>
   <help><![CDATA[
 **What it does**
