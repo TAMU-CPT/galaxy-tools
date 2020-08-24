@@ -3,9 +3,9 @@
 
 	<label id="=====1" text="Input"/>
 	<section id="8a843907-df36-4d82-a1ab-2bde1b4ce827" name="CPT: Get Data">
-		<label id="getext_1" text="Apollo"/>
+		<!--<label id="getext_1" text="Apollo"/>
 		<tool file="cpt2/galaxy-tools/tools/webapollo/export.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/webapollo/fetch_organism_jbrowse.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/webapollo/fetch_organism_jbrowse.xml"/>-->
 		<label id="getext_2" text="BaseSpace"/>
 		<tool file="cpt2/galaxy-tools/tools/sequencing/basespace-auth-1.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/sequencing/basespace-auth-2.xml"/>
@@ -266,14 +266,14 @@
 		<tool file="cpt2/galaxy-tools/tools/webapollo/create_account.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/list_organisms.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/list_organism_data.xml" label="apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/create_or_update_organism.xml" label="apollo" />
+		<!--<tool file="cpt2/galaxy-tools/tools/webapollo/create_or_update_organism.xml" label="apollo" />-->
 		<tool file="cpt2/galaxy-tools/tools/webapollo/renumber_features.xml" label="new,apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" label="danger,apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" label="experimental,apollo" />
-        <tool file="cpt2/galaxy-tools/tools/webapollo/rename_from_table.xml" label="new,apollo" />
+		<!--<tool file="cpt2/galaxy-tools/tools/webapollo/delete_features.xml" label="danger,apollo" />-->
+		<!--<tool file="cpt2/galaxy-tools/tools/webapollo/create_features_from_gff3.xml" label="experimental,apollo" />-->
+		<!--<tool file="cpt2/galaxy-tools/tools/webapollo/rename_from_table.xml" label="new,apollo" />-->
 		<tool file="cpt2/galaxy-tools/tools/webapollo/json2iframe.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_apollo_sd.xml" label="apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/share_with.xml" label="apollo" />
+		<!--<tool file="cpt2/galaxy-tools/tools/webapollo/share_with.xml" label="apollo" />-->
 	</section>
 	<section id="42fc75d5-cae2-4d29-8794-9a8d2f390032" name="CPT: Phage">
 		<tool file="cpt2/galaxy-tools/tools/gbk/phage_renamer.xml" label="genbank" />

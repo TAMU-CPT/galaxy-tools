@@ -262,7 +262,8 @@ if __name__ == "__main__":
             f.write("\n" + lineWrapper(str(s).replace("*","")) + "\n")
             length.append(len(s))
             # ORF.append(desc)
-
+    if not length:
+        raise Exception("Parameters yielded no candidates.")
     bot_size = min(length)
     top_size = max(length)
     avg = (sum(length)) / total_isp
