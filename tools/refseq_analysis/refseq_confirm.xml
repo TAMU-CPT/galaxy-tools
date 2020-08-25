@@ -15,7 +15,7 @@
 	--acc_file "$acc_add.acc_file"
 	#end if
 	--out_file $out_file
-	]]>]
+	]]>
 	</command>
 	<inputs>
 		<param type="text" name="email" label="Email" help="Email used with Admin emails to query NCBI."/>
