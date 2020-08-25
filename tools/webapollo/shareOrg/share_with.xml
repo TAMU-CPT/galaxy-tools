@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.share_with" name="Share Organism With User" version="1.2">
+  <description>in Apollo</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <code file="webapollo.py"/>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+@APOLLO_ENSURE_USER_EXISTS@
+python $__tool_directory__/share_with.py
+@ADMIN_AUTH@
+$__user_email__
+#if $share_with.source_select == "select":
+    "${share_with.target_select}"
+#else:
+    "${share_with.target_raw}"
+#end if
+@ORG_OR_GUESS@
+$r
+$w
+$e
+> $output]]></command>
+  <inputs>
+      <conditional name="share_with">
+        <param name="source_select" type="select" label="Share Target">
+            <option value="select">Select</option>
+            <option value="direct">Direct Entry</option>
+        </param>
+        <when value="select">
+            <param name="target_select" type="select" dynamic_options="galaxy_list_users(__trans__)" label="Target"/>
+        </when>
+        <when value="direct">
+            <param name="target_raw" type="text" label="Target Name" optional="False" />
+        </when>
+      </conditional>
+      <expand macro="org_or_guess_multi" />
+      <param name="r" type="boolean" truevalue="--read" falsevalue="" label="Give Read Permission" />
+      <param name="w" type="boolean" truevalue="--write" falsevalue="" label="Give Write Permission" />
+      <param name="e" type="boolean" truevalue="--export" falsevalue="" label="Give Export Permission" />
+  </inputs>
+  <outputs>
+    <data format="txt" name="output" />
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Share organisms with another user in Apollo.
+
+To share more than one organism with a user, either select multiple entries in the dropdown list, or enter the common name of the organisms in direct entry mode, separated by commas.
+
+@REFERENCES@
+      ]]></help>
+</tool>
