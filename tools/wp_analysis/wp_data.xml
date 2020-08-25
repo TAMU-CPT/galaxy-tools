@@ -58,7 +58,7 @@
 			<param name="wp_amt" value="first" />
 			<param name="email" value="curtisross@tamu.edu" />
 			<output name="out_file" value="_solo_return_table.txt" />
-
+		</test>
 	</tests>
 	<help>
 	<![CDATA[
