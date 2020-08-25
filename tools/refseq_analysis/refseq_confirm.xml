@@ -12,7 +12,7 @@
 	#if $acc_add.acc_selector == "acc_text_selection":
 	--acc_text "$acc_add.acc_text"
 	#elif $acc_add.acc_selector == "acc_file_selection":
-	---acc_file "$acc_add.acc_file"
+	--acc_file "$acc_add.acc_file"
 	#end if
 	--out_file $out_file
 	]]>]
