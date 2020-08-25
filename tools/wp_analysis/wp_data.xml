@@ -9,14 +9,14 @@
 	<![CDATA[
 	python $__tool_directory__/wp_data.py
 	--email $email
-	#if $acc_add.acc_selector == "acc_text":
+	#if $acc_add.acc_selector == "acc_text_selection":
 	--wp_text "$acc_add.acc_text"
-	#elif $acc_add.acc_selector == "acc_file":
-	---wp_file "$acc_add.acc_file"
+	#elif $acc_add.acc_selector == "acc_file_selection":
+	--wp_file "$acc_add.acc_file"
 	#end if
     --wp_amt $wp_amt
 	--out_table $out_file
-	]]>]
+	]]>
 	</command>
 	<inputs>
 		<param type="text" name="email" label="Email" help="Email used with Admin emails to query NCBI."/>
@@ -26,13 +26,13 @@
         </param>
 		<conditional name="acc_add">
 			<param name="acc_selector" type="select" label="Choose the method to submit accessions">
-				<option value="acc_text" selected="false">Paste Accessions</option>
-				<option value="acc_file" selected="false">Upload Accessions</option>
+				<option value="acc_text_selection" selected="false">Paste Accessions</option>
+				<option value="acc_file_selection" selected="false">Upload Accessions</option>
 			</param>
-			<when value="acc_text">
+			<when value="acc_text_selection">
 				<param name="acc_text" label="Accessions" optional="true" type="text" area="true" help="Past accessions separated by newline (space)"/>
 			</when>
-			<when value="acc_file">
+			<when value="acc_file_selection">
 				<param name="acc_file" label="Accessions File upload" optional="true" type="data" format="txt" help="File consisting of accessions separated by newline (space)"/>
 			</when>
 		</conditional>
@@ -42,11 +42,23 @@
 	</outputs>
 	<tests>
 		<test>
-			<param name="acc_add.acc_file" value="wp_accs.txt"/>
+			<conditional name="acc_add">
+				<param name="acc_selector" value="acc_file_selection" />
+					<param name="acc_file" value="wp_accs.txt"/>
+			</conditional>
             <param name="wp_amt" value="all"/>
 			<param name="email" value="curtisross@tamu.edu"/>
 			<output name="out_file" value="_return_table.txt"/>
 		</test>
+		<test>
+			<conditional name="acc_add">
+				<param name="acc_selector" value="acc_text_selection" />
+					<param name="acc_text" value="WP_032188451.1" />
+			</conditional>
+			<param name="wp_amt" value="first" />
+			<param name="email" value="curtisross@tamu.edu" />
+			<output name="out_file" value="_solo_return_table.txt" />
+
 	</tests>
 	<help>
 	<![CDATA[
