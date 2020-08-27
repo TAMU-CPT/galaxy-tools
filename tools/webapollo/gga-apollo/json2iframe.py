@@ -30,4 +30,7 @@ if __name__ == '__main__':
         </html>
     """
 
-    print(HTML_TPL.format(base_url=args.external_apollo_url, chrom="", orgId=data[0]['id'], tracklist='&tracklist=1' if args.tracklist else ''))
+    if len(data)>1:
+        print(HTML_TPL.format(base_url=args.external_apollo_url, chrom="", orgId=data[0]['id'], tracklist='&tracklist=1' if args.tracklist else ''))
+    else:
+        print(HTML_TPL.format(base_url=args.external_apollo_url, chrom="", orgId=data['id'], tracklist='&tracklist=1' if args.tracklist else ''))
