@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<tool id="fetch_jbrowse" name="Retrieve JBrowse" version="@WRAPPER_VERSION@" profile="16.04">
+  <description>for an organism, from Apollo</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <code file="webapollo.py"/>
+  <command detect_errors="aggressive"><![CDATA[
+mkdir -p '$jbrowse.files_path/'
+
+&&
+
+@AUTH@
+
+python '$__tool_directory__/fetch_organism_jbrowse.py'
+
+@ORG_OR_GUESS@
+'$jbrowse.files_path/'
+
+'$__user_email__' &&
+
+cp '$dummyIndex' '$jbrowse' &&
+find '$jbrowse.files_path' -type f -printf '<li><a href="%P">%P</a></li>\n' | sort >> $jbrowse &&
+echo '</ul></body></html>' >> '$jbrowse'
+
+]]></command>
+  <configfiles>
+      <configfile name="dummyIndex">
+      <![CDATA[
+      <html>
+          <head>
+          </head>
+          <body>
+              <h1>JBrowse Data Directory</h1>
+              <p>
+                Hi! This is not a full JBrowse instance. JBrowse v0.4(+?)
+                started shipping with the ability to produce just the
+                "data" directory from a JBrowse instance, rather than a
+                complete, standalone instance. This was intended to be used
+                with the in-development Apollo integration, but may have other
+                uses as well.
+              </p>
+              <p>
+                <u>This is not usable on its own</u>. The output dataset may be
+                used with Apollo, or may be passed through the "JBrowse -
+                Convert to Standalone" tool in Galaxy to "upgrade" to a full
+                JBrowse instance.
+              </p>
+              <p>
+                  The following list is provided for your convenience / debugging.
+              </p>
+              <h2>Contained Files</h2>
+              <ul>
+          ]]>
+      </configfile>
+  </configfiles>
+  <inputs>
+    <expand macro="org_or_guess" />
+  </inputs>
+  <outputs>
+    <data format="html" name="jbrowse">
+        <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="tabular" visible="true"/>
+    </data>
+  </outputs>
+  <tests>
+      <test>
+          <conditional name="org_source">
+              <param name="source_select" value="direct"/>
+              <param name="org_raw" value="alt_org" />
+          </conditional>
+          <output name="jbrowse">
+              <assert_contents>
+                  <has_text text="This is not a full JBrowse instance" />
+              </assert_contents>
+          </output>
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Fetches the JBrowse directory from Apollo back into Galaxy.
+
+.. class:: warningmark
+
+If you provide an Apollo JSON file, only the first organism block will be used
+in Common Name determination, as it is improbable you wish to apply a single
+JBrowse instance to multiple organisms.
+
+@REFERENCES@
+]]></help>
+  <expand macro="citations"/>
+</tool>

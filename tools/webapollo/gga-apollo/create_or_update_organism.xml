@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<tool id="create_or_update" name="Create or Update Organism" version="@WRAPPER_VERSION@">
+  <description>will create the organism if it doesn't exist, and update otherwise</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements">
+    <requirement type="package" version="377">ucsc-fatotwobit</requirement>
+  </expand>
+  <code file="webapollo.py"/>
+  <command detect_errors="aggressive"><![CDATA[
+@AUTH@
+
+python '$__tool_directory__/create_or_update_organism.py'
+
+--genus '$genus'
+--species '$species'
+#if str($group) != "None":
+--group '${group}'
+#end if
+
+--userid '$__user_id__'
+
+${remove_old_directory}
+${no_reload_sequences}
+$public
+
+@ORG_OR_GUESS@
+
+#if $test_hack == "yes":
+## When testing we can't access extra_files_path, but we know the path of test data
+'$__tool_directory__/test-data/dataset_1_files/data/'
+#else:
+'${jbrowse.extra_files_path}/data/'
+#end if
+
+"@DATA_DIR@/${jbrowse.id}"
+
+'$__user_email__'
+
+> '$output']]></command>
+  <inputs>
+    <param name="jbrowse" type="data" format="html" label="JBrowse HTML Output" />
+    <expand macro="org_or_guess" />
+    <param name="genus" type="text" label="Genus" optional="False" />
+    <param name="species" type="text" label="Species" optional="True" />
+    <param name="public" type="boolean" truevalue="--public" falsevalue="" label="Is Organism Public" />
+    <param name="group" type="select" dynamic_options="galaxy_list_groups(__trans__)" label="Grant access to a user group" optional="True" />
+    <param name="remove_old_directory" type="boolean" truevalue="--remove_old_directory" falsevalue="" label="Remove old data directory" />
+    <param name="no_reload_sequences" type="boolean" truevalue="" falsevalue="--no_reload_sequences" label="Update genome sequences" help="Select this if you want Apollo to reload the genome sequences when updating an existing organism. BEWARE! You will lose annotation data for all sequences that are not present anymore in the new jbrowse dataset." />
+    <param name="test_hack" type="hidden" value="no"/>
+  </inputs>
+  <outputs>
+    <data format="json" name="output">
+        <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="tabular" visible="true"/>
+    </data>
+  </outputs>
+  <tests>
+      <test>
+          <param name="jbrowse" value="dataset_1.dat"/>
+          <conditional name="org_source">
+              <param name="source_select" value="direct"/>
+              <param name="org_raw" value="Test org" />
+          </conditional>
+          <param name="genus" value="genus"/>
+          <param name="test_hack" value="yes"/>
+          <output name="output" file="create_org/output.json" lines_diff="8"/>
+      </test>
+      <test>
+          <!-- Send the same input to test updating -->
+          <param name="jbrowse" value="dataset_1.dat"/>
+          <conditional name="org_source">
+              <param name="source_select" value="direct"/>
+              <param name="org_raw" value="Test org" />
+          </conditional>
+          <param name="genus" value="genus2"/>
+          <param name="species" value="sp"/>
+          <param name="test_hack" value="yes"/>
+          <output name="output" file="create_org/output2.json" lines_diff="8"/>
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Adds an organism to the Apollo database. The tool takes the output of a
+JBrowse run as that contains all of the necessary information for which
+tracks are appropriate for a given analysis.
+
+**WARNINGS**
+
+- Do not use names which conflict with other users.
+- If you provide an Apollo JSON file, only the first organism block will
+  be used in Common Name determination, as it is improbable you wish to
+  apply a single JBrowse instance to multiple organisms.
+
+@REFERENCES@
+      ]]></help>
+  <expand macro="citations"/>
+</tool>
