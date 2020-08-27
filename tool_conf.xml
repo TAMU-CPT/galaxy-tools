@@ -268,8 +268,8 @@
 		<tool file="cpt2/galaxy-tools/tools/webapollo/gga-apollo/create_features_from_gff3.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/gga-apollo/create_or_update_organism.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/gga-apollo/json2iframe.xml" label="apollo" />
-		<tool file="cpt2/galaxy-tools/tools/webapollo/gga-apollo/delete_features.xml label="danger, apollo"/>
-		<tool file="cpt2/galaxy-tools/tools/webapollo/gga-apollo/delete_organism.xml label="danger, apollo"/>
+		<tool file="cpt2/galaxy-tools/tools/webapollo/gga-apollo/delete_features.xml" label="danger, apollo"/>
+		<tool file="cpt2/galaxy-tools/tools/webapollo/gga-apollo/delete_organism.xml" label="danger, apollo"/>
 		<tool file="cpt2/galaxy-tools/tools/webapollo/renumber_features.xml" label="new,apollo" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_apollo_sd.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/shareOrg/share_with.xml" label="apollo" />
