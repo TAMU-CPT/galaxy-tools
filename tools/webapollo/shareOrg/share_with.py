@@ -86,4 +86,4 @@ if __name__ == "__main__":
           export=args.export,
           read=args.read,
         )
-        print("Successfully shared " + str(x) + " with user " + str(args.users['username']))
+        print("Successfully shared " + str(x) + " with user " + str(users['username']))
