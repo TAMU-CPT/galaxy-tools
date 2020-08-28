@@ -24,6 +24,16 @@ $__tool_directory__/ensure_exists.sh "$__user_email__";
 \$GALAXY_WEBAPOLLO_USER
 \$GALAXY_WEBAPOLLO_PASSWORD
   </token>
+  <token name="@AUTH@"><![CDATA[
+  if [ -z "\$ARROW_GLOBAL_CONFIG_PATH"  ]; then
+  echo "__default: local" > '.auth.yml' &&
+  echo "local:" >> '.auth.yml' &&
+  echo "    url: \"\$GALAXY_WEBAPOLLO_URL\"" >> '.auth.yml' &&
+  echo "    username: \"\$GALAXY_WEBAPOLLO_USER\"" >> '.auth.yml' &&
+  echo "    password: \"\$GALAXY_WEBAPOLLO_PASSWORD\"" >> '.auth.yml' &&
+  export ARROW_GLOBAL_CONFIG_PATH='.auth.yml'
+  ; fi &&
+  ]]></token>
 
   <token name="@ORG_OR_GUESS@">
 <![CDATA[
