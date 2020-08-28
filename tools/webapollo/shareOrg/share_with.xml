@@ -5,9 +5,12 @@
     <import>macros.xml</import>
   </macros>
   <code file="webapollo.py"/>
-  <expand macro="requirements"/>
+  <requirements>
+      <requirement type="package" version="4.2.5">apollo</requirement>
+  </requirements>
   <command detect_errors="aggressive"><![CDATA[
 @APOLLO_ENSURE_USER_EXISTS@
+@AUTH@
 python $__tool_directory__/share_with.py
 @ADMIN_AUTH@
 $__user_email__
@@ -28,7 +31,7 @@ $e
             <option value="direct">Direct Entry</option>
         </param>
         <when value="select">
-            <param name="target_select" type="select" dynamic_options="galaxy_list_users(__trans__)" label="Target"/>
+            <param name="target_select" type="select" dynamic_options="galaxy_list_users(__trans__)" label="Target" multiple="True"/>
         </when>
         <when value="direct">
             <param name="target_raw" type="text" label="Target Name" optional="False" />
