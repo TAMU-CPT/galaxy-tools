@@ -2,17 +2,9 @@
 from __future__ import print_function
 
 import argparse
-import json
 import logging
-import os
-import re
-import shutil
-import stat
-import subprocess
 import sys
-import tarfile
-import tempfile
-import time
+import json
 from pathlib import Path
 
 from apollo import accessible_organisms
@@ -20,7 +12,7 @@ from apollo.util import GuessOrg, OrgOrGuess
 
 from arrow.apollo import get_apollo_instance
 
-from webapollo import WebApolloInstance, WAAuth, AssertUser
+from webapollo import WebApolloInstance, WAAuth, AssertUser, UserObj, handle_credentials, galaxy_list_users
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -36,69 +28,62 @@ if __name__ == "__main__":
     parser.add_argument("--write", action="store_true", help="Write permission")
     parser.add_argument("--export", action="store_true", help="Export permission")
     parser.add_argument("--read", action="store_true", help="Read permission")
-
-    OrgOrGuess(parser)
+    parser.add_argument('--org_json', type=argparse.FileType("r"), help='Apollo JSON output, source for common name')
+    parser.add_argument('--org_raw', help='Common Name')
+    parser.add_argument('--org_id', help='Organism ID')
     args = parser.parse_args()
 
-    #wa = WebApolloInstance(args.apollo, args.username, args.password)
     wa = get_apollo_instance()
     # User must have an account
-    #gx_user = AssertUser(wa.users.loadUsers(email=args.email))
+    args.share_with = args.share_with.replace("__at__", "@")
+    args.share_with = args.share_with.split(",")
+    valUsers = []
+    for users in args.share_with:
+      other_user = wa.users.show_user(users.strip())
+      if other_user == []:
+        sys.stderr.write("Error: No such user " + users.strip() + " to share organism with, exiting...")
+        exit(1)
+      else:
+        valUsers.append(other_user)
 
-    gx_user = UserObj(**wa.users._assert_or_create_user(args.email))
-    handle_credentials(gx_user)
+    orgs = wa.users.get_organism_permissions(args.email)
+    org_cn = []
+    if args.org_json:
+        org_cn = [x.get("commonName", None) for x in json.load(args.org_json)]
+        org_cn = [x for x in orgs if x is not None]
+    elif args.org_raw:
+        args.org_raw = str(args.org_raw)
+        args.org_raw = args.org_raw.split(",")
+        for i in range(len(args.org_raw)):
+            org_cn.append(args.org_raw[i].strip())
+    elif args.org_id:
+        orgList = str(args.org_id)
+        orgList = orgList.split(",")
+        for x in orgList:
+            args.org_id = x.strip()
+            res = GuessOrg(args, wa)
+            if res:
+               org_cn.append(res[0])
 
-    # TODO: Get organism multiple common names
-
-    org_cn = GuessOrg(args, wa)
-        
+    if len(org_cn) == 0:
+        raise Exception("Organism Common Name not provided")
 
     # Get organism
-    #org_cn = GuessOrgMulti(args, wa)
+    valOrgs = []
 
-    # Fetch all organisms
-    all_orgs = wa.organisms.findAllOrganisms()
-    # Figure out which are accessible to the user
-    # filter out common names
-    orgs = [d[0] for d in accessible_organisms(gx_user, all_orgs)]
+    for x in orgs:
+        for y in org_cn:
+          if y == str(x['organism']).strip() and 'EXPORT' in x['permissions']:
+            valOrgs.append(y)
 
-    # This user MUST be allowed to access an organism before they can
-    # modify permissions on it.
-    #for x in org_cn:
-    sys.stderr.write("Assert " + str(x) + "\n")
-    assert x in orgs
-
-    # The other person must already be an apollo user
-    other_user = AssertUser(
-        wa.users.loadUsers(email=args.share_with.replace("__at__", "@"))
-    )
-
-    # Did not appear referenced, suspect vestigial
-    # org = wa.organisms.findOrganismByCn(org_cn)
-
-
-#    for x in org_cn:
-
-    wa.users.updateOrganismPermission(
-        other_user,
-        x,
-        administrate=False,
-        write=args.write,
-        export=args.export,
-        read=args.read,
-    )
-    print("Successfully shared " + str(org_cn) + " with user " + str(args.share_with))
-
-
-
-#### New Stuff
-
-log.info("Updating permissions for %s on %s", gx_user, org_cn)
+    for x in valOrgs:
+      for users in valUsers:
         wa.users.update_organism_permissions(
-            gx_user.username,
-            org_cn,
-            write=True,
-            export=True,
-            read=True,
+          users['username'],
+          x,
+          administrate=False,
+          write=args.write,
+          export=args.export,
+          read=args.read,
         )
-    
+        print("Successfully shared " + str(x) + " with user " + str(args.users['username']))
