@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<tool id="create_account" name="Register Account" version="@WRAPPER_VERSION@">
+  <description>with Apollo</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+@AUTH@
+
+python '$__tool_directory__/create_account.py'
+
+'$__user_email__'
+
+--first '$first'
+--last '$last'
+> $output]]></command>
+  <inputs>
+    <param name="first" type="text" label="First Name" />
+    <param name="last" type="text" label="Last Name" />
+  </inputs>
+  <outputs>
+    <data format="txt" name="output" label="Apollo Credentials"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="first" value="first" />
+          <param name="last" value="last" />
+          <output name="output">
+              <assert_contents>
+                  <has_text text="Updated User" />
+                  <has_text text="Password:" />
+                  <has_text text="Return data:" />
+                  <has_text text="alt_org" />
+                  <has_text text="test_organism" />
+              </assert_contents>
+          </output>
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Registers an account with Apollo. Just click run, then view
+the output file for your password.
+
+@REFERENCES@
+      ]]></help>
+      <expand macro="citations"/>
+</tool>
