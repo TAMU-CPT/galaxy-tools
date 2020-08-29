@@ -47,6 +47,9 @@ def add_exons(rec):
                 },
                 sub_features=cds_list,
             )
+            for cds in cds_list:
+                #update parent qualifier for cdss
+                cds.qualifiers["Parent"] = new_exon.qualifiers["ID"]
             # gene.sub_features.append(new_exon)
             # get all the other children of gene that AREN'T a CDS including the new exon
             clean_gene.sub_features = [copy.deepcopy(new_exon)]
