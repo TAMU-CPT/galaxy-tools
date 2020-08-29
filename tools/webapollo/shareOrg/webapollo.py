@@ -613,7 +613,7 @@ def accessible_organisms(user, orgs):
 
     return [
         (org['commonName'], org['id'], False)
-        for org in sorted(orgs, key=lambda x: x['commonName'])
+        for org in orgs#sorted(orgs, key=lambda x: x['commonName'])
         if org['commonName'] in permissionMap
     ]
 
@@ -655,6 +655,16 @@ def _galaxy_list_groups(wa, *args, **kwargs):
         group_data.append((group.name, group.name, False))
     return group_data
 
+
+def galaxy_list_users(trans, *args, **kwargs):
+   # email = trans.get_user().email
+    wa = WebApolloInstance()
+    userDicts = wa.users.loadUsers()
+    outList = []
+    #return "String [0]: " + str(userDicts[0]) + "\n------\nDir: " + str(dir(userDicts[0]))
+    for x in userDicts:
+        outList.append((x.username, x.username, False))
+    return outList
 
 def galaxy_list_orgs(trans, *args, **kwargs):
     email = trans.get_user().email
