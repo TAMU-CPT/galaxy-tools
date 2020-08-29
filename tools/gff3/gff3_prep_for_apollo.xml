@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.prepForApollo" name="Prep GFF3 Input for Apollo" version="20.8.0.0">
+  <description>by ensuring that CDS features have a wrapping exon feature</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/gff3_prep_for_apollo.py
+@INPUT_GFF@
+> $output]]></command>
+  <inputs>
+      <expand macro="gff3_input" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <tests>
+                <test>
+			<param name="gff3_data" value="exon-parent.gff3" />
+			<output name="output" value="exon-parent-fixed.gff3" />
+		</test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+This tool updates the gene model in a GFF3 so that it can be added into Apollo
+and be used to promote annotations with the correct CDS calculation. It finds any
+CDS feature who's direct parent is a gene feature, and creates an exon feature 
+that is the child of the gene feature and the parent of the CDS. If a gene has 
+multiple CDS features, they will be wrapped under the same exon feature. 
+
+All other features present in the GFF under the gene will be kept the same. 
+
+Warning: Use this tool only when it is absolutely necessary to fix a gene model. 
+
+      ]]></help>
+		<expand macro="citations" />
+</tool>
