@@ -13,7 +13,7 @@ $__tool_directory__/fasta_aastats.py
 		<expand macro="input/fasta" />
 	</inputs>
 	<outputs>
-		<data format="tabular" hidden="false" name="default" label="Amino Acid usage in $sequence.name"/>
+		<data format="tabular" hidden="false" name="default" label="Amino Acid usage in input"/>
 	</outputs>
 	<help><![CDATA[
 **What it does**
