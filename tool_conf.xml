@@ -264,6 +264,7 @@
 		<tool file="cpt2/Restriction-Digest-Tool/bin/graphic_drawer.xml"/>
 	</section>
 	<section id="8dee2684-f833-4dd9-b50d-abfdbb78f0be" name="CPT: Apollo">
+		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_prep_for_apollo.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/gga-apollo/create_account.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/gga-apollo/create_features_from_gff3.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/gga-apollo/create_or_update_organism.xml" label="apollo" />
