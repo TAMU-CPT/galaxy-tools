@@ -18,6 +18,7 @@ def add_exons(rec):
         clean_gene = copy.deepcopy(gene)
         exon_start = None
         exon_end = None
+        exon_strand = None
         cds_list = []
         # check for CDS child features of the gene, do not go a further step (this should skip any CDS children of exon child features)
         for cds in feature_lambda(
@@ -30,6 +31,7 @@ def add_exons(rec):
             # check all CDS features for min/max boundaries
             if exon_start is None:
                 exon_start = cds.location.start
+                exon_strand = cds.location.strand
             if exon_end is None:
                 exon_end = cds.location.end
             exon_start = min(exon_start, cds.location.start)
@@ -46,6 +48,7 @@ def add_exons(rec):
                     "Parent": clean_gene.qualifiers["ID"],
                 },
                 sub_features=cds_list,
+                strand=exon_strand
             )
             for cds in cds_list:
                 #update parent qualifier for cdss
