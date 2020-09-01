@@ -277,6 +277,7 @@ def gffParse(gff3In):
     orgDict = {}
     seekParentDict = {}
     indDict = {}
+
     for line in gff3In:
       lineInd += 1
       err, prag, res = lineAnalysis(line)
@@ -303,7 +304,7 @@ def gffParse(gff3In):
           for y in orgDict[org]:
             found = False
             if y.id == x:
-              y.sub_features.append(y)
+              y.sub_features.append(orgDict[org][ind])
               found = True
               break
           if not found:
@@ -311,6 +312,9 @@ def gffParse(gff3In):
 
     res = []
     for x in orgDict.keys():
-      res.append(SeqRecord.SeqRecord(None, x, "<unknown name>", "<unknown description>", None, orgDict[x], None, None))
+      finalOrgHeirarchy = []
+      for i in orgDict[x]:
+        if "Parent" not in i.qualifiers.keys():
+          finalOrgHeirarchy.append(i)
+      res.append(SeqRecord.SeqRecord(None, x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, None, None))
     return res
-
