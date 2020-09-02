@@ -120,7 +120,7 @@ def lineAnalysis(line):
     endLoc = -1
     score = None
     if len(line) == 0 or line == "\n":
-      return "", None
+      return None, None, None
     if line[0] == "#":
       if len(line) > 2 and line[1] == "#":
         return None, line[2:-1], None 
@@ -132,9 +132,9 @@ def lineAnalysis(line):
     errorMessage = ""
 
     fields = line.split("\t")
-    if len(fields[0]) != 9:
+    if len(fields) != 9:
       errorMessage += "GFF3 is a 9-column tab-separated format, line has " + str(len(fields)) + " columns.\n"
-      if len(fields[0]) > 9:
+      if len(fields) > 9:
         errorMessage += "Possible unescaped tab in a qualifier field.\n"
         return errorMessage, None, None
 
@@ -219,7 +219,7 @@ def lineAnalysis(line):
         else: #Encode special char
           keyName += "%" + str(hex(ord(currChar)))
       elif parseMode == 1:
-        if not (currChar in "=,;"):
+        if not (currChar in "=,;\n"):
           valNames[valInd] += currChar
         elif currChar == ",":
           valInd += 1
@@ -277,10 +277,24 @@ def gffParse(gff3In):
     orgDict = {}
     seekParentDict = {}
     indDict = {}
+    seqDict = {}
+    currFastaKey = ""
+    
 
     for line in gff3In:
       lineInd += 1
-      err, prag, res = lineAnalysis(line)
+      err = None
+      prag = None
+      res = None
+      if not fastaDirective:
+        err, prag, res = lineAnalysis(line)
+      else:
+        if line[0] == ">":
+          currFastaKey = line[1:-1]
+        elif line[0] == "#":
+          continue
+        elif line:
+          seqDict[currFastaKey] += line[:-1]
       if err:
         errOut += (str(lineInd) + ": " + err + "\n")
       if prag and not res:
@@ -291,6 +305,7 @@ def gffParse(gff3In):
           indDict[prag] = 0
           orgDict[prag] = []
           seekParentDict[prag] = []
+          seqDict[prag] = ""
         else:
           indDict[prag] += 1
         orgDict[prag].append(res)
@@ -316,5 +331,5 @@ def gffParse(gff3In):
       for i in orgDict[x]:
         if "Parent" not in i.qualifiers.keys():
           finalOrgHeirarchy.append(i)
-      res.append(SeqRecord.SeqRecord(None, x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, None, None))
+      res.append(SeqRecord.SeqRecord(Seq(seqDict[x]), x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, None, None))
     return res
