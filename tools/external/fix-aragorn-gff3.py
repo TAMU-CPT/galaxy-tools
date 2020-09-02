@@ -46,10 +46,14 @@ def fixed_feature(rec):
 
 
 def gff_filter(gff3):
+    found_gff = False
     for rec in GFF.parse(gff3):
+        found_gff = True
         rec.features = sorted(list(fixed_feature(rec)), key=lambda x: x.location.start)
         rec.annotations = {}
         GFF.write([rec], sys.stdout)
+    if not found_gff:
+        print("##gff-version 3")
 
 
 if __name__ == "__main__":
