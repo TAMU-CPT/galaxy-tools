@@ -243,4 +243,4 @@ if __name__ == '__main__':
         # Get expected metadata for organism since AllOrganism  output is suppressed from add_organism
         data = wa.organisms.show_organism(org_cn)
 
-    print(json.dumps(data, indent=2))
+    print(json.dumps([data], indent=2))
