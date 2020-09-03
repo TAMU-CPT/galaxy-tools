@@ -1,6 +1,6 @@
 from Bio.SeqFeature import FeatureLocation, CompoundLocation
 from Bio import SeqIO, SeqFeature, SeqRecord
-from Bio.Seq import Seq
+from Bio.Seq import Seq, UnknownSeq
 
 disallowArray = ["&", ",", ";", "="]
 validArray = ["%26", "%2C", "%3B", "%3D"]
@@ -278,6 +278,7 @@ def gffParse(gff3In):
     seekParentDict = {}
     indDict = {}
     seqDict = {}
+    regionDict = {}
     currFastaKey = ""
     
 
@@ -286,6 +287,8 @@ def gffParse(gff3In):
       err = None
       prag = None
       res = None
+      if line[0] == ">":	# For compatibility with Artemis-style GFF
+        fastaDirective = True
       if not fastaDirective:
         err, prag, res = lineAnalysis(line)
       else:
@@ -294,12 +297,15 @@ def gffParse(gff3In):
         elif line[0] == "#":
           continue
         elif line:
-          seqDict[currFastaKey] += line[:-1]
+          seqDict[currFastaKey] += (line[:-1]).strip()
       if err:
         errOut += (str(lineInd) + ": " + err + "\n")
       if prag and not res:
-        if prag == "FASTA":
+        prag = prag.split(" ")
+        if prag[0] == "FASTA":
           fastaDirective = True
+        elif prag[0] == "sequence-region":
+          regionDict[prag[1]] = [int(prag[2]) - 1, int(prag[3])]
       if res:
         if prag not in indDict.keys():
           indDict[prag] = 0
@@ -331,5 +337,16 @@ def gffParse(gff3In):
       for i in orgDict[x]:
         if "Parent" not in i.qualifiers.keys():
           finalOrgHeirarchy.append(i)
-      res.append(SeqRecord.SeqRecord(Seq(seqDict[x]), x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, None, None))
+      if seqDict[x]:
+        if x in regionDict.keys():
+          if len(seqDict[x]) < regionDict[x][1] - regionDict[x][0]:
+            seqDict[x] += "?" * (regionDict[x][1] - regionDict[x][0] - len(seqDict[x]))
+          else:
+            seqDict[x] = seqDict[x][regionDict[x][0]:regionDict[x][1]]
+        seqDict[x] = Seq(seqDict[x])
+      elif x in regionDict.keys():
+        seqDict[x] = UnknownSeq(regionDict[x][1] - regionDict[x][0])
+      else:
+        seqDict[x] = None
+      res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, None, None))
     return res
