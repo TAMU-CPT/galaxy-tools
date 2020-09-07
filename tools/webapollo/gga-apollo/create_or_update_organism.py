@@ -177,7 +177,8 @@ if __name__ == '__main__':
                 species=args.species,
                 public=args.public,
                 blatdb=blat_db,
-                no_reload_sequences=args.no_reload_sequences
+                no_reload_sequences=args.no_reload_sequences,
+                suppress_output=True
             )
         time.sleep(2)
 
