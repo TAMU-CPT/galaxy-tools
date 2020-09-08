@@ -185,34 +185,6 @@ def lineAnalysis(line):
       except:
         score = None
         errorMessage += "Score field could not be interpreted as a floating-point (real) number. Ensure notation is correct.\n"
-      """
-      print(float(fields[5]))
-      isNum = True
-      sliceSci = fields[5].find('e')
-      if sliceSci != -1:
-        primSlice = float(fields[5][0:sliceSci])
-        if '-' in fields[5][sliceSci:]:
-          noteSlice = int(fields[5][(sliceSci + 2):])
-          for x in range(0, noteSlice):
-            primSlice = primSlice / 10.0
-        else:          
-          noteSlice = float(fields[5][(sliceSci + 1):])
-          for x in range(0, noteSlice):
-            primSlice = primSlice * 10.0
-        score = primSlice
-      else:
-        for x in fields[5]:
-          if not(ord(x) > 47 and ord(x) < 58):
-            if x == "." and not foundDot:
-              foundDot = True
-            else:
-              errorMessage += "Feature score is a non-numeric structure.\n"
-              isNum = False
-              break
-        if isNum:
-          score = float(fields[5])
-      print(score)
-      """
 
     if len(fields[6]) != 1 or (not(fields[6] in '-+.?')):
       errorMessage += "Feature strand must be '+', '-', '.', or '?', actual value is '" + fields[6] + "'.\n"
@@ -378,6 +350,22 @@ def gffParse(gff3In):
       else:
         seqDict[x] = None
       res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, annoteDict, None))
+    standaloneList = []
+    for x in regionDict.keys():
+      if x not in orgDict.keys():
+        standaloneList.append(x)
+    for x in standaloneList:
+      annoteDict = {}
+      annoteDict["sequence-region"] = (x, regionDict[x][0], regionDict[x][1])
+      if x in seqDict.keys():
+        if len(seqDict[x]) < regionDict[x][1] - regionDict[x][0]:
+          seqDict[x] += "?" * (regionDict[x][1] - regionDict[x][0] - len(seqDict[x]))
+        else:
+          seqDict[x] = seqDict[x][regionDict[x][0]:regionDict[x][1]]
+      else:
+        seqDict[x] = UnknownSeq(regionDict[x][1] - regionDict[x][0])
+      res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, None, annoteDict, None))
+
     return res
 
 def printFeatLine(inFeat, orgName, source = None, score = None, shift = None):
