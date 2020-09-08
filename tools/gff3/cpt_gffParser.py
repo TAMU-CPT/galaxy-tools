@@ -177,19 +177,42 @@ def lineAnalysis(line):
     isNum = False
     foundDot = False
     sciPart = False
+    mult = 1
+    finNum = 0
     if fields[5] != ".":
-      isNum = True
-      for x in fields[5]:
-        if not(ord(x) > 47 and ord(x) < 58):
-          if x == "." and not foundDot:
-            foundDot = True
-          else:
-            errorMessage += "Feature score is a non-numeric structure.\n"
-            isNum = False
-            break
-      if isNum:
+      try:
         score = float(fields[5])
-
+      except:
+        score = None
+        errorMessage += "Score field could not be interpreted as a floating-point (real) number. Ensure notation is correct.\n"
+      """
+      print(float(fields[5]))
+      isNum = True
+      sliceSci = fields[5].find('e')
+      if sliceSci != -1:
+        primSlice = float(fields[5][0:sliceSci])
+        if '-' in fields[5][sliceSci:]:
+          noteSlice = int(fields[5][(sliceSci + 2):])
+          for x in range(0, noteSlice):
+            primSlice = primSlice / 10.0
+        else:          
+          noteSlice = float(fields[5][(sliceSci + 1):])
+          for x in range(0, noteSlice):
+            primSlice = primSlice * 10.0
+        score = primSlice
+      else:
+        for x in fields[5]:
+          if not(ord(x) > 47 and ord(x) < 58):
+            if x == "." and not foundDot:
+              foundDot = True
+            else:
+              errorMessage += "Feature score is a non-numeric structure.\n"
+              isNum = False
+              break
+        if isNum:
+          score = float(fields[5])
+      print(score)
+      """
 
     if len(fields[6]) != 1 or (not(fields[6] in '-+.?')):
       errorMessage += "Feature strand must be '+', '-', '.', or '?', actual value is '" + fields[6] + "'.\n"
