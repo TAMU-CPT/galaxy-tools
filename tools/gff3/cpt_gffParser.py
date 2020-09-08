@@ -403,11 +403,14 @@ def printFeatLine(inFeat, orgName, source = None, score = None, shift = None):
 
 def GFFWrite(inRec):
     print("##gff-version 3")
+    if not inRec:
+      return
     if type(inRec) != list:
       inRec = [inRec]
     for rec in inRec:
       if "sequence-region" in rec.annotations.keys():
         print("##sequence-region " + rec.annotations["sequence-region"][0] + " " + str(rec.annotations["sequence-region"][1] + 1) + " " + str(rec.annotations["sequence-region"][2]))
+      #else make one up based on feature locations?
       for feat in rec.features:
           printFeatLine(feat, rec.id)        
      
