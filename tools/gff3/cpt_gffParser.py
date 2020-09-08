@@ -383,9 +383,7 @@ def printFeatLine(inFeat, orgName, source = None, score = None, shift = None):
       line += ".\t"
     for qual in inFeat.qualifiers.keys():
       line += qual + "="
-      for x in inFeat.qualifiers[qual]:
-        line += str(x) + ","
-      line = line[0:-1] + ";"
+      line += ",".join(inFeat.qualifiers[qual]) + ";"
     print(line)
   
     if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
