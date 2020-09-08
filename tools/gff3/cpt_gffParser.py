@@ -176,6 +176,7 @@ def lineAnalysis(line):
     # fields[5]
     isNum = False
     foundDot = False
+    sciPart = False
     if fields[5] != ".":
       isNum = True
       for x in fields[5]:
@@ -334,19 +335,70 @@ def gffParse(gff3In):
     res = []
     for x in orgDict.keys():
       finalOrgHeirarchy = []
+      annoteDict = {}
       for i in orgDict[x]:
         if "Parent" not in i.qualifiers.keys():
           finalOrgHeirarchy.append(i)
       if seqDict[x]:
         if x in regionDict.keys():
+          annoteDict["sequence-region"] = (x, regionDict[x][0], regionDict[x][1])
           if len(seqDict[x]) < regionDict[x][1] - regionDict[x][0]:
             seqDict[x] += "?" * (regionDict[x][1] - regionDict[x][0] - len(seqDict[x]))
           else:
             seqDict[x] = seqDict[x][regionDict[x][0]:regionDict[x][1]]
+        else:
+          annoteDict["sequence-region"] = (x, 0, len(seqDict[x]))
         seqDict[x] = Seq(seqDict[x])
       elif x in regionDict.keys():
+        annoteDict["sequence-region"] = (x, regionDict[x][0], regionDict[x][1])
         seqDict[x] = UnknownSeq(regionDict[x][1] - regionDict[x][0])
       else:
         seqDict[x] = None
-      res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, None, None))
+      res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, annoteDict, None))
     return res
+
+def printFeatLine(inFeat, orgName, source = None, score = None, shift = None):
+    line = orgName + "\t"
+    if source:
+      line += source + "\t"
+    else:
+      line += ".\t" 
+    line += inFeat.type + "\t"
+    line += str(min(inFeat.location.start, inFeat.location.end) + 1) + "\t" + str(max(inFeat.location.start, inFeat.location.end)) + "\t"
+    if score:
+      line += str(score) + "\t"
+    else:
+      line += ".\t"
+    if inFeat.location.strand == None:
+      line += ".\t"
+    elif inFeat.location.strand == 1:
+      line += "+\t"
+    elif inFeat.location.strand == -1:
+      line += "-\t"
+    else: 
+      line += "?\t"
+    if shift:
+      line += str(shift) + "\t"
+    else:
+      line += ".\t"
+    for qual in inFeat.qualifiers.keys():
+      line += qual + "="
+      for x in inFeat.qualifiers[qual]:
+        line += str(x) + ","
+      line = line[0:-1] + ";"
+    print(line)
+  
+    if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
+      for x in inFeat.sub_features:
+        printFeatLine(x, orgName, source, score, shift)
+
+def GFFWrite(inRec):
+    print("##gff-version 3")
+    if type(inRec) != list:
+      inRec = [inRec]
+    for rec in inRec:
+      if "sequence-region" in rec.annotations.keys():
+        print("##sequence-region " + rec.annotations["sequence-region"][0] + " " + str(rec.annotations["sequence-region"][1] + 1) + " " + str(rec.annotations["sequence-region"][2]))
+      for feat in rec.features:
+          printFeatLine(feat, rec.id)        
+     
