@@ -31,6 +31,6 @@ if __name__ == "__main__":
         description="Summarise start codon usage", epilog=""
     )
     parser.add_argument("fasta", type=argparse.FileType("r"), help="Fasta Genome")
-    parser.add_argument("gff3", help="GFF3 File")
+    parser.add_argument("gff3", type=argparse.FileType("r"), help="GFF3 File")
     args = parser.parse_args()
     main(**vars(args))
