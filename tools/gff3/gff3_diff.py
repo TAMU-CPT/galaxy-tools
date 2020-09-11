@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import logging
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 
 logging.basicConfig(level=logging.INFO)
@@ -32,7 +32,7 @@ def find_differences(a, b):
 def gff3_diff(gff3_1, gff3_2):
     feats1 = {}
     feats2 = {}
-    for rec1 in GFF.parse(gff3_1):
+    for rec1 in gffParse(gff3_1):
         for feat in feature_lambda(
             rec1.features, feature_test_type, {"type": "gene"}, subfeatures=True
         ):
@@ -41,7 +41,7 @@ def gff3_diff(gff3_1, gff3_2):
             else:
                 feats1[feat.location.end] = feat
 
-    for rec2 in GFF.parse(gff3_2):
+    for rec2 in gffParse(gff3_2):
         for feat in feature_lambda(
             rec2.features, feature_test_type, {"type": "gene"}, subfeatures=True
         ):

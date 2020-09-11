@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type, feature_test_true
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     args.changeTo = args.changeTo.split(" ")
     args.changeList = args.changeList.split(" ")
 
-    for record in GFF.parse(args.gff3):
+    for record in gffParse(args.gff3):
         newRecs = []
         for feature in feature_lambda(record.features, feature_test_true, {}):
             if feature.type in args.changeList:
@@ -77,4 +77,4 @@ if __name__ == "__main__":
         for x in newRecs:
             record.features.append(x)
         record.features.sort(key=lambda x: x.location.start)
-        GFF.write([record], sys.stdout)
+        gffWrite([record], sys.stdout)

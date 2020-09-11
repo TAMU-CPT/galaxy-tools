@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 import logging
 
 logging.basicConfig(level=logging.INFO)
 
 
 def reformat(data):
-    for record in GFF.parse(data):
+    for record in gffParse(data):
         record.annotations = {}
-        GFF.write([record], sys.stdout)
+        gffWrite([record], sys.stdout)
 
 
 if __name__ == "__main__":

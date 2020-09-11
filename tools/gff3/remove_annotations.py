@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -10,10 +10,10 @@ if __name__ == "__main__":
     parser.add_argument("--region", action="store_true", help="Remove region features")
     args = parser.parse_args()
 
-    for rec in GFF.parse(args.gff3):
+    for rec in gffParse(args.gff3):
         rec.annotations = {}
         if args.remark:
             rec.features = [x for x in rec.features if x.type != "remark"]
         if args.region:
             rec.features = [x for x in rec.features if x.type != "region"]
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)

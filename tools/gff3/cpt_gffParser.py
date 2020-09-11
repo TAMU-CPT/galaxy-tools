@@ -1,6 +1,7 @@
 from Bio.SeqFeature import FeatureLocation, CompoundLocation
 from Bio import SeqIO, SeqFeature, SeqRecord
 from Bio.Seq import Seq, UnknownSeq
+import sys
 
 disallowArray = ["&", ",", ";", "="]
 validArray = ["%26", "%2C", "%3B", "%3D"]
@@ -174,11 +175,6 @@ def lineAnalysis(line):
       errorMessage += "Feature Location end is less than start (GFF  spec requires all features, regardless of strand, to have the lower number as the start).\n"
 
     # fields[5]
-    isNum = False
-    foundDot = False
-    sciPart = False
-    mult = 1
-    finNum = 0
     if fields[5] != ".":
       try:
         score = float(fields[5])
@@ -243,8 +239,8 @@ def lineAnalysis(line):
 
     for x in qualDict.keys():
       if x == "ID":
-        if len(qualDict[x]) > 1:
-          errorMessage += "More than one ID supplied for feature.\n"
+        #if len(qualDict[x]) > 1:
+          #errorMessage += "More than one ID supplied for feature.\n"
         IDName = qualDict[x][0]
 
     if startLoc == -1 or endLoc == -1 or (not(fields[6] in '-+.?')):
@@ -263,7 +259,7 @@ def lineAnalysis(line):
       
     return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None)   
         
-def gffParse(gff3In):
+def gffParse(gff3In, base_dict = {}):
     fastaDirective = False
     errOut = ""
     featList = []
@@ -295,7 +291,7 @@ def gffParse(gff3In):
         elif line:
           seqDict[currFastaKey] += (line[:-1]).strip()
       if err:
-        errOut += (str(lineInd) + ": " + err + "\n")
+        errOut += ("Line " + str(lineInd) + ": " + err + "\n")
       if prag and not res:
         prag = prag.split(" ")
         if prag[0] == "FASTA":
@@ -365,10 +361,20 @@ def gffParse(gff3In):
       else:
         seqDict[x] = UnknownSeq(regionDict[x][1] - regionDict[x][0])
       res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, None, annoteDict, None))
+    for x in base_dict.keys():
+      found = False
+      for y in res:
+        if x == y.id:
+          found = True
+          y.name = base_dict[x].name
+          y.description = base_dict[x].description
+          y.seq = base_dict[x].seq
+          break
+      
 
     return res
 
-def printFeatLine(inFeat, orgName, source = None, score = None, shift = None):
+def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = None, outStream = sys.stdout):
     line = orgName + "\t"
     if source:
       line += source + "\t"
@@ -390,27 +396,33 @@ def printFeatLine(inFeat, orgName, source = None, score = None, shift = None):
       line += "?\t"
     if shift:
       line += str(shift) + "\t"
+    elif inFeat.type == "CDS":
+      line += "0\t"
     else:
       line += ".\t"
     for qual in inFeat.qualifiers.keys():
       line += qual + "="
       line += ",".join(inFeat.qualifiers[qual]) + ";"
-    print(line)
+    outStream.write(line + "\n")
   
     if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
       for x in inFeat.sub_features:
-        printFeatLine(x, orgName, source, score, shift)
+        printFeatLine(x, orgName, source, score, shift, outStream)
 
-def GFFWrite(inRec):
-    print("##gff-version 3")
+def gffWrite(inRec, outStream = None):
+    if not outStream:
+      outStream = sys.stdout
+    outStream.write("##gff-version 3\n")
     if not inRec:
       return
     if type(inRec) != list:
       inRec = [inRec]
     for rec in inRec:
       if "sequence-region" in rec.annotations.keys():
-        print("##sequence-region " + rec.annotations["sequence-region"][0] + " " + str(rec.annotations["sequence-region"][1] + 1) + " " + str(rec.annotations["sequence-region"][2]))
+        outStream.write("##sequence-region " + rec.annotations["sequence-region"][0] + " " + str(rec.annotations["sequence-region"][1] + 1) + " " + str(rec.annotations["sequence-region"][2]) + "\n")
       #else make one up based on feature locations?
+      else:
+        outStream.write("##sequence-region " + rec.id + " 1 " + str(len(rec.seq)) +"\n")
       for feat in rec.features:
-          printFeatLine(feat, rec.id)        
+          printFeatLine(feat, rec.id, outStream = outStream)        
      

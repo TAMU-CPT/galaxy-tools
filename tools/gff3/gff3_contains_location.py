@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 import argparse
 import sys
 
@@ -14,7 +14,7 @@ def parse_gff(locations, gff3):
     # sort for speed
     locs.sort()
 
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         matched_features = []
         for feat in rec.features:
             for loc in locs:
@@ -25,7 +25,7 @@ def parse_gff(locations, gff3):
                     # locations are now beyond this feature, skip checking
                     break
         rec.features = matched_features
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
 
 
 if __name__ == "__main__":

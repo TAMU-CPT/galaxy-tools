@@ -4,6 +4,7 @@ import argparse
 import logging
 import uuid
 from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from gff3 import feature_lambda, feature_test_type, get_id
@@ -85,7 +86,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         seen_ids = {}
 
-        for rec in GFF.parse(gff3, base_dict=seq_dict):
+        for rec in gffParse(gff3, base_dict=seq_dict):
             noMatch = True
             if "Alias" in rec.features[0].qualifiers.keys():
                 lColumn = rec.features[0].qualifiers["Alias"][0]
@@ -107,7 +108,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 nid = rec.id + "____" + feat.id
                 if nid in seen_ids:
                     nid = nid + "__" + uuid.uuid4().hex
-                feat.qualifiers["ID"] = nid
+                feat.qualifiers["ID"] = [nid]
                 newfeats.append(feat)
                 seen_ids[nid] = True
 
@@ -136,10 +137,11 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 ]
             rec.features = newfeats
             rec.annotations = {}
-            GFF.write([rec], sys.stderr)
+            gffWrite([rec], sys.stdout)
     else:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
-        for rec in GFF.parse(gff3, base_dict=seq_dict):
+        
+        for rec in gffParse(gff3, base_dict=seq_dict):
             noMatch = True
             if "Alias" in rec.features[0].qualifiers.keys():
                 lColumn = rec.features[0].qualifiers["Alias"][0]
@@ -194,7 +196,7 @@ if __name__ == "__main__":
         description="Export corresponding sequence in genome from GFF3", epilog=""
     )
     parser.add_argument("fasta", type=argparse.FileType("r"), help="Fasta Genome")
-    parser.add_argument("gff3", help="GFF3 File")
+    parser.add_argument("gff3", type=argparse.FileType("r"), help="GFF3 File")
     parser.add_argument(
         "--feature_filter", default=None, help="Filter for specific feature types"
     )
@@ -202,6 +204,7 @@ if __name__ == "__main__":
         "--nodesc", action="store_true", help="Strip description field off"
     )
     args = parser.parse_args()
-
+    x = 0
     for seq in main(**vars(args)):
-        SeqIO.write(seq, sys.stdout, "fasta")
+        x += 1
+        #SeqIO.write(seq, sys.stdout, "fasta")

@@ -2,7 +2,7 @@
 import logging
 import argparse
 from intervaltree import IntervalTree, Interval
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 
@@ -36,8 +36,8 @@ def treeFeatures_noRem(features, window):
 
 
 def intersect(a, b, window, stranding):
-    rec_a = list(GFF.parse(a))
-    rec_b = list(GFF.parse(b))
+    rec_a = list(gffParse(a))
+    rec_b = list(gffParse(b))
     rec_a_out = []
     rec_b_out = []
     maxLen = min(len(rec_a), len(rec_b))
@@ -235,8 +235,8 @@ if __name__ == "__main__":
 
     with open(args.oa, "w") as handle:
         for rec in a:
-          GFF.write([rec], handle)
+          gffWrite([rec], handle)
 
     with open(args.ob, "w") as handle:
         for rec in b:
-          GFF.write([rec], handle)
+          gffWrite([rec], handle)

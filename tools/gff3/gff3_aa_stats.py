@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from gff3 import feature_lambda, feature_test_type
 
@@ -10,7 +10,7 @@ def main(fasta, gff3):
 
     codon_usage = {}
 
-    for rec in GFF.parse(gff3, base_dict=seq_dict):
+    for rec in gffParse(gff3, base_dict=seq_dict):
         for feat in feature_lambda(
             rec.features, feature_test_type, {"type": "CDS"}, subfeatures=True
         ):

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 import argparse
 import sys
 
@@ -13,7 +13,7 @@ def parse_gff(id_start_end, gff3):
         else:
             ids[l[0]] = [(int(l[1]), int(l[2]))]
 
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         locs = ids[rec.id]
         feats = []
         for feat in rec.features:
@@ -23,7 +23,7 @@ def parse_gff(id_start_end, gff3):
                     feats.append(feat)
 
         rec.features = feats
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
 
 
 if __name__ == "__main__":
