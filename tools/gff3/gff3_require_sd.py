@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 from Bio import SeqIO
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 from shinefind import NaiveSDCaller
 
@@ -16,7 +16,7 @@ def require_shinefind(gff3, fasta):
     # Load up sequence(s) for GFF3 data
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
     # Parse GFF3 records
-    for record in GFF.parse(gff3, base_dict=seq_dict):
+    for record in gffParse(gff3, base_dict=seq_dict):
         # Reopen
         genes = list(
             feature_lambda(
@@ -64,4 +64,4 @@ if __name__ == "__main__":
 
     for rec in require_shinefind(**vars(args)):
         rec.annotations = {}
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)

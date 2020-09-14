@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 from Bio import SeqIO
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -12,9 +12,9 @@ log = logging.getLogger(__name__)
 def gff_filter(gff3, fasta=None, fasta_output=None):
     if fasta:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
-        it = GFF.parse(gff3, base_dict=seq_dict)
+        it = gffParse(gff3, base_dict=seq_dict)
     else:
-        it = GFF.parse(gff3)
+        it = gffParse(gff3)
 
     for rec in it:
         rec.annotations = {}
@@ -47,6 +47,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     for rec in gff_filter(**vars(args)):
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
         if args.fasta:
             SeqIO.write([rec], args.fasta_output, "fasta")

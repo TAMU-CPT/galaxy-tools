@@ -3,7 +3,7 @@ import re
 import sys
 import logging
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, wa_unified_product_name
 
 logging.basicConfig(level=logging.INFO)
@@ -274,12 +274,12 @@ def apply_color(feature, **kwargs):
 def gff_filter(gff3):
     cs = ColorScheme()
 
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         rec.features = feature_lambda(
             rec.features, apply_color, {"cs": cs}, subfeatures=False
         )
         rec.annotations = {}
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
 
 
 if __name__ == "__main__":

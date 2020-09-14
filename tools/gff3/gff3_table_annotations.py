@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.SeqFeature import FeatureLocation
 from Bio import SeqIO
 from Bio.Seq import Seq
@@ -27,7 +27,7 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
     idDict = csv.DictReader(tabularIn, delimiter="\t", fieldnames=header.fieldnames)
 
     # BioPython parse GFF
-    sourceG = list(GFF.parse(gff3In, SeqIO.to_dict(SeqIO.parse(fastaIn, "fasta"))))
+    sourceG = list(gffParse(gff3In, SeqIO.to_dict(SeqIO.parse(fastaIn, "fasta"))))
     recG = []
 
     recTest = []
@@ -230,7 +230,7 @@ def table_annotations(gff3In, tabularIn, fastaIn, out_gff3, out_changelog):
     if anyChange:
         sourceG[0].annotations = {}
         sourceG[0].features = [x for x in sourceG[0].features if x.type != "remark"]
-        GFF.write(sourceG, out_gff3)
+        gffWrite(sourceG, out_gff3)
     else:
         out_changelog.write("GFF3\tNone\tGFF3 already equals Table\n")
         out_gff3 = gff3In

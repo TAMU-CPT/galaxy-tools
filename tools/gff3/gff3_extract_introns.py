@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 from Bio import SeqIO
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 
 logging.basicConfig(level=logging.INFO)
@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 
 def find_introns(gff3, fasta):
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
-    for rec in GFF.parse(gff3, base_dict=seq_dict):
+    for rec in gffParse(gff3, base_dict=seq_dict):
         genes = list(
             feature_lambda(
                 rec.features, feature_test_type, {"type": "gene"}, subfeatures=True

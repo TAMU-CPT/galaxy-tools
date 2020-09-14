@@ -2,7 +2,7 @@
 import sys
 import logging
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda
 
 logging.basicConfig(level=logging.INFO)
@@ -14,13 +14,13 @@ def test_true(feature, **kwargs):
 
 
 def gff_filter(gff3):
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         for feature in feature_lambda(rec.features, test_true, {}, subfeatures=True):
             if feature.type == "exon" and len(feature) < 20:
                 feature.type = "Shine_Dalgarno_sequence"
 
         rec.annotations = {}
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 import sys
 import copy
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -31,7 +31,7 @@ def lipoP_gff(lipoIn, gff3In, jBrowseOut):
             orgIDs[orgID].append(int(rowElem[3]))  # , int(rowElem[4])))
 
     # Rebase
-    for gff in GFF.parse(gff3In):
+    for gff in gffParse(gff3In):
         keepSeq = []
         for xRec in gff.features:
             cdss = list(
@@ -77,7 +77,7 @@ def lipoP_gff(lipoIn, gff3In, jBrowseOut):
             keepSeq.append(xRec)
 
         gff.features = keepSeq
-        GFF.write([gff], sys.stdout)
+        gffWrite([gff], sys.stdout)
 
 
 if __name__ == "__main__":

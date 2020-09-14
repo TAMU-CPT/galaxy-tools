@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 import copy
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 
@@ -73,10 +73,10 @@ def add_exons(rec):
 
 
 def gff_filter(gff3):
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         rec.features = sorted(list(add_exons(rec)), key=lambda x: x.location.start)
         rec.annotations = {}
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
 
 
 if __name__ == "__main__":

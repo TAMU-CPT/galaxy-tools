@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 
 if __name__ == "__main__":
@@ -11,7 +11,7 @@ if __name__ == "__main__":
     parser.add_argument("--invert", action="store_true")
     args = parser.parse_args()
 
-    for rec in GFF.parse(args.gff3):
+    for rec in gffParse(args.gff3):
         rec.features = feature_lambda(
             rec.features,
             feature_test_type,
@@ -19,4 +19,4 @@ if __name__ == "__main__":
             invert=args.invert,
             subfeatures=False,
         )
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)

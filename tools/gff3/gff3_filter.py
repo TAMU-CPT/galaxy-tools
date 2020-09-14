@@ -2,7 +2,7 @@
 import sys
 import logging
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_qual_value
 
 logging.basicConfig(level=logging.INFO)
@@ -15,7 +15,7 @@ def gff_filter(gff3, id_list=None, id="", attribute_field="ID", subfeatures=True
         filter_strings = [line.strip() for line in id_list]
     else:
         filter_strings = [x.strip() for x in id.split("__cn__")]
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         rec.features = feature_lambda(
             rec.features,
             feature_test_qual_value,
@@ -23,7 +23,7 @@ def gff_filter(gff3, id_list=None, id="", attribute_field="ID", subfeatures=True
             subfeatures=subfeatures,
         )
         rec.annotations = {}
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
 
 
 if __name__ == "__main__":

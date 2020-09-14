@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 import copy
 
 
 def split_into_frames(gff3):
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         rf1 = []
         rf2 = []
         rf3 = []
@@ -27,7 +27,7 @@ def split_into_frames(gff3):
         for i in range(6):
             dummy_rec.features = locals()["rf" + str(i + 1)]
             with open("rf" + str(i + 1) + ".gff3", "a") as outfile:
-                GFF.write([dummy_rec], outfile)
+                gffWrite([dummy_rec], outfile)
 
 
 if __name__ == "__main__":
