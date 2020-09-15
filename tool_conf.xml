@@ -260,6 +260,7 @@
 		<tool file="cpt2/galaxy-tools/tools/phage/genome_map.xml"/>
         <tool file="cpt2/galaxy-tools/tools/genome_viz/linear_genome_plot.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/jbrowse/jbrowse.xml" label="deprecated"/>
+		<tool file="cpt2/galaxy-tools/tools/jbrowse-iuc/jbrowse.xml" label="experimental"/>
 		<tool file="cpt2/Restriction-Digest-Tool/bin/digest_dna.xml"/>
 		<tool file="cpt2/Restriction-Digest-Tool/bin/graphic_drawer.xml"/>
 	</section>
