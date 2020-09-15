@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import argparse
 import logging
-#from BCBio import GFF
+#from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_true
 from cpt_gffParser import gffParse
 

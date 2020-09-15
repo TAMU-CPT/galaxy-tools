@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 from gff3 import feature_lambda, feature_test_true
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -14,7 +14,7 @@ def merge_interpro(gff3, interpro):
     # blacklist = ('Name', 'ID', 'Target', 'date', 'status', 'signature_desc', 'source', 'md5', 'score')
     whitelist = ("Dbxref", "Ontology_term")
 
-    for rec in GFF.parse(interpro):
+    for rec in gffParse(interpro):
         ipr_additions[rec.id] = {}
         for feature in rec.features:
             quals = feature.qualifiers
@@ -31,7 +31,7 @@ def merge_interpro(gff3, interpro):
             if key not in whitelist:
                 del ipr_additions[rec.id][key]
 
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         for feature in feature_lambda(
             rec.features, feature_test_true, None, subfeatures=True
         ):
@@ -42,7 +42,7 @@ def merge_interpro(gff3, interpro):
 
                     feature.qualifiers[key] += list(ipr_additions[feature.id][key])
         rec.annotations = {}
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
 
 
 if __name__ == "__main__":

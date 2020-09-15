@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.efetch.cpt-efetch" name="ALPHA CPT EFetch ALPHA" version="1.0">
+<tool id="edu.tamu.cpt.efetch.cpt_efetch" name="ALPHA CPT EFetch ALPHA" version="1.0">
     <description>CPT's revised NCBI EFetch</description>
     <macros>
         <import>macros.xml</import>
@@ -7,7 +7,7 @@
     <expand macro="requirements">
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/cpt-efetch.py
+python $__tool_directory__/cpt_efetch.py
 --email $email
 --input $input
 --db $db

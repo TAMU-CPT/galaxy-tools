@@ -2,7 +2,7 @@
 import logging
 import argparse
 from intervaltree import IntervalTree, Interval
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 
@@ -17,8 +17,8 @@ def treeFeatures(features):
 
 
 def intersect(a, b):
-    rec_a = list(GFF.parse(a))
-    rec_b = list(GFF.parse(b))
+    rec_a = list(gffParse(a))
+    rec_b = list(gffParse(b))
     if len(rec_a) > 0 and len(rec_b) > 0:
 
         if len(rec_a) > 1 or len(rec_b) > 1:
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     b, a = intersect(args.a, args.b)
 
     with open(args.oa, "w") as handle:
-        GFF.write([a], handle)
+        gffWrite([a], handle)
 
     with open(args.ob, "w") as handle:
-        GFF.write([b], handle)
+        gffWrite([b], handle)

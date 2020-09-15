@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 from gff3 import feature_lambda, feature_test_type
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -20,7 +20,7 @@ def safe_qualifiers(quals):
 
 
 def fix_ncbi(gff3):
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         for feature in feature_lambda(
             rec.features, feature_test_type, {"type": "gene"}, subfeatures=True
         ):
@@ -35,7 +35,7 @@ def fix_ncbi(gff3):
             if len(CDSs) == 1:
                 feature.qualifiers.update(safe_qualifiers(CDSs[0].qualifiers))
 
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
 
 
 if __name__ == "__main__":

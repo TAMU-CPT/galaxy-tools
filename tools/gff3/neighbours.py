@@ -2,7 +2,7 @@
 import logging
 import argparse
 from interval_tree import IntervalTree
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.SeqFeature import FeatureLocation
 
 logging.basicConfig(level=logging.INFO)
@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 def __get_features(child, interpro=False):
     child_features = {}
-    for rec in GFF.parse(child):
+    for rec in gffParse(child):
         log.info("Parsing %s", rec.id)
         for feature in rec.features:
             parent_feature_id = rec.id
@@ -71,8 +71,8 @@ def treeFeatures(features, strand=0):
 
 
 def neighbours(a, b, within=1000, mode="unordered", **kwargs):
-    rec_a = list(GFF.parse(a))
-    rec_b = list(GFF.parse(b))
+    rec_a = list(gffParse(a))
+    rec_b = list(gffParse(b))
 
     # Maybe a, b are not identical sets.
     for a in rec_a:
@@ -163,7 +163,7 @@ if __name__ == "__main__":
 
     for (a, b) in neighbours(**vars(args)):
         with open(args.oa, "a") as handle:
-            GFF.write([a], handle)
+            gffWrite([a], handle)
 
         with open(args.ob, "a") as handle:
-            GFF.write([b], handle)
+            gffWrite([b], handle)

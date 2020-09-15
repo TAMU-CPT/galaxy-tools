@@ -13,7 +13,7 @@ import logging
 from Bio import SeqIO
 from Bio.Alphabet import generic_dna
 from Bio.SeqFeature import CompoundLocation, FeatureLocation
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import (
     feature_lambda,
     wa_unified_product_name,
@@ -49,7 +49,7 @@ def rename_key(ds, k_f, k_t):
 
 def gff3_to_genbank(gff_file, fasta_file, transltbl):
     fasta_input = SeqIO.to_dict(SeqIO.parse(fasta_file, "fasta", generic_dna))
-    gff_iter = GFF.parse(gff_file, fasta_input)
+    gff_iter = gffParse(gff_file, fasta_input)
 
     for record in gff_iter:
         yield handle_record(record, transltbl)

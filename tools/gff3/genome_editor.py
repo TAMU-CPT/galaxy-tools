@@ -5,7 +5,7 @@ import argparse
 import tsv
 from Bio import SeqIO
 from Bio.Seq import Seq
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_contains
 
 logging.basicConfig(level=logging.INFO)
@@ -24,7 +24,7 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
         custom_seqs = {}
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
     # Pull first and onl record
-    rec = list(GFF.parse(gff3, base_dict=seq_dict))[0]
+    rec = list(gffParse(gff3, base_dict=seq_dict))[0]
     # Create a "clean" record
     new_record = copy.deepcopy(rec)
     new_record.id = new_id
@@ -141,6 +141,6 @@ if __name__ == "__main__":
         args.gff3, args.fasta, args.changes, args.customSeqs, args.new_id
     ):
         # TODO: Check that this appends and doesn't overwirte
-        GFF.write([rec], args.out_gff3)
+        gffWrite([rec], args.out_gff3)
         SeqIO.write([rec], args.out_fasta, "fasta")
         tsv.dump(chain, args.out_simpleChain)

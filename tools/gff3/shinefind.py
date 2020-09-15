@@ -3,7 +3,7 @@ import re
 import sys
 import argparse
 import logging
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -196,7 +196,7 @@ def shinefind(
     # Load up sequence(s) for GFF3 data
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
     # Parse GFF3 records
-    for record in GFF.parse(gff3, base_dict=seq_dict):
+    for record in gffParse(gff3, base_dict=seq_dict):
         # Shinefind's gff3_output.
         gff3_output_record = SeqRecord(record.seq, record.id)
         # Filter out just coding sequences
@@ -357,13 +357,13 @@ def shinefind(
                 )
 
         record.annotations = {}
-        GFF.write([record], sys.stdout)
+        gffWrite([record], sys.stdout)
 
         gff3_output_record.features = sorted(
             gff3_output_record.features, key=lambda x: x.location.start
         )
         gff3_output_record.annotations = {}
-        GFF.write([gff3_output_record], gff3_output)
+        gffWrite([gff3_output_record], gff3_output)
 
 
 if __name__ == "__main__":

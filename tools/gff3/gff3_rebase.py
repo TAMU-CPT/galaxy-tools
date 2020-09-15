@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 from gff3 import feature_lambda, feature_test_qual_value
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.SeqFeature import FeatureLocation
 
 log = logging.getLogger(__name__)
@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 
 def __get_features(child, interpro=False):
     child_features = {}
-    for rec in GFF.parse(child):
+    for rec in gffParse(child):
         log.info("Parsing %s", rec.id)
         # Only top level
         for feature in rec.features:
@@ -69,7 +69,7 @@ def rebase(parent, child, interpro=False, protein2dna=False, map_by="ID"):
     # get all of the features we will be re-mapping in a dictionary, keyed by parent feature ID
     child_features = __get_features(child, interpro=interpro)
 
-    for rec in GFF.parse(parent):
+    for rec in gffParse(parent):
         replacement_features = []
         # Horrifically slow I believe
         for feature in feature_lambda(
@@ -103,7 +103,7 @@ def rebase(parent, child, interpro=False, protein2dna=False, map_by="ID"):
         # were rebasing against in our result.
         rec.features = replacement_features
         rec.annotations = {}
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
 
 
 if __name__ == "__main__":
