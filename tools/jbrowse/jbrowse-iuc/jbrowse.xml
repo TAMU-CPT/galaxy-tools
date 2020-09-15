@@ -1,4 +1,4 @@
-<tool id="jbrowse-iuc-cpt" name="JBrowse" version="@TOOL_VERSION@+@WRAPPER_VERSION@">
+<tool id="jbrowse-iuc-cpt" name="JBrowse" version="@TOOL_VERSION@.cpt+@WRAPPER_VERSION@">
   <description>genome browser</description>
   <macros>
     <import>macros.xml</import>
