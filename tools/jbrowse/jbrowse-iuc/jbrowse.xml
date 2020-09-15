@@ -308,7 +308,7 @@ $trackxml &&
                     <match>${track.data_format.match_part.name}</match>
                   #end if
                     <index>${track.data_format.index}</index>
-                  #if $track.data_format.chunkSizeLimit:
+                  #if $track.data_format.gff3chunkSizeLimit:
                     <chunkSizeLimit>${track.data_format.gff3chunkSizeLimit}</chunkSizeLimit>
                   #end if
                 </gff>
