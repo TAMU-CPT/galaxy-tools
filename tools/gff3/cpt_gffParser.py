@@ -218,7 +218,8 @@ def lineAnalysis(line):
           keyName += urllib.parse.unquote(fields[8][x:x+3])
           contCounter = 2
         else: #Encode special char
-          keyName += "%" + str(hex(ord(currChar)))
+          encoded = str(hex(ord(currChar)))
+          keyName += "%" + encoded[2:].upper()
       elif parseMode == 1:
         if not (currChar in "=,;%\n"):
           valNames[valInd] += currChar
@@ -416,20 +417,22 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
     for qual in inFeat.qualifiers.keys():
       for keyChar in str(qual):
         if keyChar in "%,=;":
-          line += "%" + str(hex(ord(keyChar)))
+          encoded = str(hex(ord(keyChar)))
+          line += "%" + encoded[2:].upper()
         else:
           line += keyChar
       line += "="
       for ind in range(0, len(inFeat.qualifiers[qual])):
-        for valChar in str(inFeat.qualifiers[qual][x]):
+        for valChar in str(inFeat.qualifiers[qual][ind]):
           if valChar in "%,=;":
-            line += "%" + str(hex(ord(valChar)))
+            encoded = str(hex(ord(valChar)))
+            line += "%" + encoded[2:].upper()
           else:
             line += valChar
-      if x < len(inFeat.qualifiers[qual]) - 1:
-        line += ","
-      else:
-        line += ";"
+        if ind < len(inFeat.qualifiers[qual]) - 1:
+          line += ","
+        else:
+          line += ";"
     outStream.write(line + "\n")
   
     if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
