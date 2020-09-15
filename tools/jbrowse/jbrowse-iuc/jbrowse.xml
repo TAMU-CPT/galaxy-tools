@@ -310,7 +310,7 @@ $trackxml &&
                     <index>${track.data_format.index}</index>
                   #if $track.data_format.chunkSizeLimit:
                     <chunkSizeLimit>${track.data_format.gff3chunkSizeLimit}</chunkSizeLimit>
-                  #endif
+                  #end if
                 </gff>
             #else if str($track.data_format.data_format_select) == "rest":
                 <label>${track.data_format.label}</label>
