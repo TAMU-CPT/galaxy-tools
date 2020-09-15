@@ -2,9 +2,11 @@ from Bio.SeqFeature import FeatureLocation, CompoundLocation
 from Bio import SeqIO, SeqFeature, SeqRecord
 from Bio.Seq import Seq, UnknownSeq
 import sys
+import urllib
 
 disallowArray = ["&", ",", ";", "="]
 validArray = ["%26", "%2C", "%3B", "%3D"]
+encoders = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890"
 
 validID = '.:^*$@!+_?-|'
 
@@ -197,10 +199,14 @@ def lineAnalysis(line):
     valInd = 0
     parseMode = 0  
     qualDict = {} 
+    contCounter = 0
     for x in range(0, len(fields[8])):
       currChar = fields[8][x]
+      if contCounter:
+        contCounter += -1
+        continue
       if parseMode == 0:
-        if not (currChar in "=,;"):
+        if not (currChar in "=,;%"):
           keyName += currChar
         elif currChar == "=":
           if len(keyName) == 0:
@@ -208,16 +214,22 @@ def lineAnalysis(line):
             break
           parseMode = 1
           continue
+        elif currChar == "%" and (fields[8][x+1] in encoders) and (fields[8][x+2] in encoders):
+          keyName += urllib.parse.unquote(fields[8][x:x+3])
+          contCounter = 2
         else: #Encode special char
           keyName += "%" + str(hex(ord(currChar)))
       elif parseMode == 1:
-        if not (currChar in "=,;\n"):
+        if not (currChar in "=,;%\n"):
           valNames[valInd] += currChar
         elif currChar == ",":
           valInd += 1
           valNames.append("")
         elif currChar == "=":
           valNames[valInd] += "%3D"
+        elif currChar == "%" and (fields[8][x+1] in encoders) and (fields[8][x+2] in encoders):
+          valNames[valInd] += urllib.parse.unquote(fields[8][x:x+3])
+          contCounter = 2
         else:
           if x == len(fields[8]) - 1: # Assume if last char in fields[8] is a semicolon, then just the end of qualifier 
             parseMode = 2
@@ -259,7 +271,7 @@ def lineAnalysis(line):
       
     return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None)   
         
-def gffParse(gff3In, base_dict = {}):
+def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
     fastaDirective = False
     errOut = ""
     featList = []
@@ -310,7 +322,8 @@ def gffParse(gff3In, base_dict = {}):
         if "Parent" in res.qualifiers.keys():
           seekParentDict[prag].append(indDict[prag])
     if errOut:
-      raise Exception("Failed GFF Feature Parsing with: \n" + errOut)
+      outStream.write(errOut + "\n")
+      raise Exception("Failed GFF Feature Parsing, error log output to stderr")
     for org in seekParentDict.keys():
       for ind in seekParentDict[org]:
         for x in orgDict[org][ind].qualifiers['Parent']:
@@ -401,8 +414,22 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
     else:
       line += ".\t"
     for qual in inFeat.qualifiers.keys():
-      line += qual + "="
-      line += ",".join(inFeat.qualifiers[qual]) + ";"
+      for keyChar in str(qual):
+        if keyChar in "%,=;":
+          line += "%" + str(hex(ord(keyChar)))
+        else:
+          line += keyChar
+      line += "="
+      for ind in range(0, len(inFeat.qualifiers[qual])):
+        for valChar in str(inFeat.qualifiers[qual][x]):
+          if valChar in "%,=;":
+            line += "%" + str(hex(ord(valChar)))
+          else:
+            line += valChar
+      if x < len(inFeat.qualifiers[qual]) - 1:
+        line += ","
+      else:
+        line += ";"
     outStream.write(line + "\n")
   
     if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
