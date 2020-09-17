@@ -3,6 +3,8 @@ from Bio import SeqIO, SeqFeature, SeqRecord
 from Bio.Seq import Seq, UnknownSeq
 import sys
 import urllib
+import urllib.parse
+
 
 disallowArray = ["&", ",", ";", "="]
 validArray = ["%26", "%2C", "%3B", "%3D"]
@@ -455,4 +457,3 @@ def gffWrite(inRec, outStream = None):
         outStream.write("##sequence-region " + rec.id + " 1 " + str(len(rec.seq)) +"\n")
       for feat in rec.features:
           printFeatLine(feat, rec.id, outStream = outStream)        
-     
