@@ -451,7 +451,7 @@ def gffWrite(inRec, outStream = None):
       if "sequence-region" in rec.annotations.keys():
         outStream.write("##sequence-region " + rec.annotations["sequence-region"][0] + " " + str(rec.annotations["sequence-region"][1] + 1) + " " + str(rec.annotations["sequence-region"][2]) + "\n")
       #else make one up based on feature locations?
-      else:
+      elif rec.seq:
         outStream.write("##sequence-region " + rec.id + " 1 " + str(len(rec.seq)) +"\n")
       for feat in rec.features:
           printFeatLine(feat, rec.id, outStream = outStream)        
