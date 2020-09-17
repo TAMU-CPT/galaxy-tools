@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.blast.top_hits_table" name="Top Hits Table" version="1.2" profile="16.04">
-	<description>based on blast tabular files</description>
+<tool id="edu.tamu.cpt.bacphlip" name="Bacphlip" version="1.0" profile="16.04">
+	<description></description>
 	<macros/>
 	<requirements>
 		<requirement type="package">bacphlip</requirement>
 	</requirements>
 	<command detect_errors="aggressive">
-ln -s $fastIn "InputFasta";
+ln -s $fastaIn "InputFasta";
 bacphlip -i InputFasta;
 cat InputFasta.bacphlip > $out1
 cat InputFasta.6frame > $out2
