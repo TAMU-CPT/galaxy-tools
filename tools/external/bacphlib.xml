@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.blast.top_hits_table" name="Top Hits Table" version="1.2" profile="16.04">
+	<description>based on blast tabular files</description>
+	<macros/>
+	<requirements>
+		<requirement type="package">bacphlip</requirement>
+	</requirements>
+	<command detect_errors="aggressive">
+ln -s $fastIn "InputFasta";
+bacphlip -i InputFasta;
+cat InputFasta.bacphlip > $out1
+cat InputFasta.6frame > $out2
+cat InputFasta.hmmsearch > $out3
+cat InputFasta.hmmsearch.tsv > $out4
+</command>
+	<inputs>
+		<param label="Fasta Sequence" name="fastaIn" type="data" format="fasta" />
+	</inputs>
+	<outputs>
+		<data format="tabular" name="out1" label="Bacphlip summary" />
+		<data format="fasta" name="out2" label="6frame results" />
+		<data format="text" name="out3" label="HMM results" />
+		<data format="tabular" name="out4" label="HMM tabular results" />
+	</outputs>
+	<help>
+**What it does**
+
+Prints out a table showing the best hit name / evalue / dice for each input query sequence across a range of blast results.
+</help>
+	<tests/>
+	<citations>
+		<citation type="bibtex">
+		@unpublished{galaxyTools,
+			author = {Hockenberry, Adam J. and Wilke, Claus O.},
+			title = {BACPHLIP: Predicting bacteriophage lifestyle from conserved protein domains},
+			year = {2020},
+			note = {https://doi.org/10.1101/2020.05.13.094805}
+		}
+		</citation>
+	</citations>
+</tool>
