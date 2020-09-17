@@ -32,6 +32,7 @@ class ExcelParsing:
 
 
 if __name__ == "__main__":
+    
     file = 'test-data/Refseq_coliphages_20200908.xlsb'
     data = ExcelParsing(file).chop_frame(cols=['Genome','Accession'])
     names = list(data['Genome'])
