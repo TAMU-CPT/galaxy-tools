@@ -3,8 +3,9 @@ from Bio import SeqIO, SeqFeature, SeqRecord
 from Bio.Seq import Seq, UnknownSeq
 import sys
 import urllib
-import urllib.parse
 
+#import urlparse.urlparse
+#import urllib.parse
 
 disallowArray = ["&", ",", ";", "="]
 validArray = ["%26", "%2C", "%3B", "%3D"]
@@ -217,7 +218,7 @@ def lineAnalysis(line):
           parseMode = 1
           continue
         elif currChar == "%" and (fields[8][x+1] in encoders) and (fields[8][x+2] in encoders):
-          keyName += urllib.parse.unquote(fields[8][x:x+3])
+          keyName += urllib.unquote(fields[8][x:x+3])
           contCounter = 2
         else: #Encode special char
           encoded = str(hex(ord(currChar)))
@@ -231,7 +232,7 @@ def lineAnalysis(line):
         elif currChar == "=":
           valNames[valInd] += "%3D"
         elif currChar == "%" and (fields[8][x+1] in encoders) and (fields[8][x+2] in encoders):
-          valNames[valInd] += urllib.parse.unquote(fields[8][x:x+3])
+          valNames[valInd] += urllib.unquote(fields[8][x:x+3])
           contCounter = 2
         else:
           if x == len(fields[8]) - 1: # Assume if last char in fields[8] is a semicolon, then just the end of qualifier 
