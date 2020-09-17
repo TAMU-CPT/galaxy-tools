@@ -2,8 +2,8 @@
 import sys
 import logging
 import argparse
-from cpt_gffParser import gffParse, gffWrite
-from Bio.SeqFeature import SeqFeature
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+#from Bio.SeqFeature import SeqFeature
 from gff3 import feature_lambda, feature_test_type
 
 logging.basicConfig(level=logging.INFO)
@@ -17,13 +17,13 @@ def fixed_feature(rec):
         import random
 
         fid = feature.qualifiers["ID"][0] + "_" + str(random.random())
-        gene = SeqFeature(
+        gene = gffSeqFeature(
             location=feature.location,
             type="gene",
             qualifiers={"ID": [fid], "source": ["cpt.fixModel"]},
         )
         # Below that we have an mRNA
-        mRNA = SeqFeature(
+        mRNA = gffSeqFeature(
             location=feature.location,
             type="mRNA",
             qualifiers={"source": ["cpt.fixModel"], "ID": ["%s.mRNA" % fid]},
