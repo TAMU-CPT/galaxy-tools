@@ -8,10 +8,10 @@
 	<command detect_errors="aggressive">
 ln -s $fastaIn "InputFasta";
 bacphlip -i InputFasta;
-cat InputFasta.bacphlip > $out1
-cat InputFasta.6frame > $out2
-cat InputFasta.hmmsearch > $out3
-cat InputFasta.hmmsearch.tsv > $out4
+cat InputFasta.bacphlip > $out1;
+cat InputFasta.6frame > $out2;
+cat InputFasta.hmmsearch > $out3;
+cat InputFasta.hmmsearch.tsv > $out4;
 </command>
 	<inputs>
 		<param label="Fasta Sequence" name="fastaIn" type="data" format="fasta" />
