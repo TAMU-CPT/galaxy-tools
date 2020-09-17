@@ -316,6 +316,7 @@
                 <tool file="cpt2/galaxy-tools/tools/proximity/searchFile.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/external/FlaGs/FlaGs.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/SAR/SAR_finder.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/external/bacphlib.xml"/>
 	</section>
 	<!-- deprecated -->
 	<tool file="cpt2/galaxy-tools/tools/gff3/gff3_ipr_merge.xml" label="deprecated" hidden="True" />
