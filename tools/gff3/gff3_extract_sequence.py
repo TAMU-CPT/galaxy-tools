@@ -68,7 +68,6 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     description = "{1} [Location={0.location};ID={0.qualifiers[ID][0]}]".format(
                         feat, product
                     )
-                # print(feat.qualifiers.get('locus_tag', get_id(feat)).replace(' ', '-'))
                 yield [
                     SeqRecord(
                         feat.extract(rec).seq,
@@ -158,7 +157,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     rec.features,
                     feature_test_type,
                     {"type": feature_filter},
-                    subfeatures=False,
+                    subfeatures=True,
                 ),
                 key=lambda f: f.location.start,
             ):
@@ -181,7 +180,6 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                             ]
                         )
                     )
-
                 yield [
                     SeqRecord(
                         feat.extract(rec).seq,
@@ -204,7 +202,5 @@ if __name__ == "__main__":
         "--nodesc", action="store_true", help="Strip description field off"
     )
     args = parser.parse_args()
-    x = 0
     for seq in main(**vars(args)):
-        x += 1
-        #SeqIO.write(seq, sys.stdout, "fasta")
+        SeqIO.write(seq, sys.stdout, "fasta")
