@@ -203,7 +203,7 @@ def lineAnalysis(line):
     parseMode = 0  
     qualDict = {} 
     contCounter = 0
-    for x in range(0, len(fields[8]) - 1):
+    for x in range(0, len(fields[8])):
       currChar = fields[8][x]
       if contCounter:
         contCounter += -1
