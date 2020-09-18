@@ -52,7 +52,7 @@ if __name__ == '__main__':
         org = wa.organisms.show_organism(org_cn)
 
         if args.gff:
-            uuid_gff = wa.io.write_downloadable(org['commonName'], 'GFF3', export_gff3_fasta=False, sequences=seqs)
+            uuid_gff = wa.io.write_downloadable(org['commonName'], 'GFF3', export_gff3_fasta=True, sequences=seqs)
             if 'error' in uuid_gff or 'uuid' not in uuid_gff:
                 raise Exception("Apollo failed to prepare the GFF3 file for download: %s" % uuid_gff)
             args.gff.write(wa.io.download(uuid_gff['uuid'], output_format="text"))
