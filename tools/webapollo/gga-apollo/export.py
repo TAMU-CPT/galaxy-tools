@@ -59,7 +59,7 @@ if __name__ == '__main__':
             time.sleep(1)
 
         if args.seq:
-            uuid_gff = wa.io.write_downloadable(org['commonName'], 'FASTA', sequences=seqs, seq_type='genomic')
+            uuid_fa = wa.io.write_downloadable(org['commonName'], 'FASTA', sequences=seqs, seq_type='genomic')
             if 'error' in uuid_fa or 'uuid' not in uuid_fa:
                 raise Exception("Apollo failed to prepare the FASTA file for download: %s" % uuid_fa)
             args.seq.write(wa.io.download(uuid_fa['uuid'], output_format="text"))
