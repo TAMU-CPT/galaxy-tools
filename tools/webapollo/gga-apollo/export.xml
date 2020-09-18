@@ -38,7 +38,7 @@ python '$__tool_directory__/export.py'
   <inputs>
     <expand macro="cn_or_guess" />
     <param name="get_gff" type="boolean" truevalue="yes" falsevalue="" checked='true' label="Retrieve GFF Annotations" />
-    <param name="get_seq" type="boolean" truevalue="yes" falsevalue="" checked='true' label="Retrieve Whole Genome Sequence" />
+    <param name="get_seq" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve Genomic Sequence" />
     <param name="get_pep" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve Peptide Sequences" />
     <param name="get_cds" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve CDS Sequences" />
     <param name="get_cdna" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve cDNA Sequences" />
@@ -48,7 +48,7 @@ python '$__tool_directory__/export.py'
     <data format="gff3" name="gff_out" label="Annotations from Apollo">
       <filter>get_gff</filter>
     </data>
-    <data format="fasta" name="seq_out" label="Sequence from Apollo">
+    <data format="fasta" name="seq_out" label="Genomic sequences from Apollo">
       <filter>get_seq</filter>
     </data>
     <data format="fasta" name="fasta_pep" label="Peptide sequences from Apollo">
