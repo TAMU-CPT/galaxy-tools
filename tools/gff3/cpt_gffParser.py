@@ -332,7 +332,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
         for x in orgDict[org][ind].qualifiers['Parent']:
           for y in orgDict[org]:
             found = False
-            if y.id == x:
+            if "ID" in y.qualifiers and y.qualfiers["ID"] == x:
               y.sub_features.append(orgDict[org][ind])
               found = True
               break
@@ -391,7 +391,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
 
     return res
 
-def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = None, outStream = sys.stdout):
+def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = None, outStream = sys.stdout, parents = None):
     line = orgName + "\t"
     if source:
       line += source + "\t"
@@ -417,6 +417,8 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
       line += "0\t"
     else:
       line += ".\t"
+    if parents and "Parent" not in inFeat.qualifiers.keys():
+      inFeat.qualifiers["Parent"] = parents.qualifiers["ID"]
     for qual in inFeat.qualifiers.keys():
       for keyChar in str(qual):
         if keyChar in "%,=;":
@@ -440,13 +442,11 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
           line += ","
         else:
           line += ";"
-      #  print(line)
-      #exit()
-    outStream.write(line + "\n")
-    #exit()  
+      
+    outStream.write(line + "\n")  
     if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
       for x in inFeat.sub_features:
-        printFeatLine(x, orgName, source, score, shift, outStream)
+        printFeatLine(x, orgName, source, score, shift, outStream, inFeat)
 
 def gffWrite(inRec, outStream = None):
     if not outStream:
