@@ -364,7 +364,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
     for x in regionDict.keys():
       if x not in orgDict.keys():
         standaloneList.append(x)
-    for x in standaloneList:
+    """for x in standaloneList:
       annoteDict = {}
       annoteDict["sequence-region"] = (x, regionDict[x][0], regionDict[x][1])
       if x in seqDict.keys():
@@ -375,6 +375,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
       else:
         seqDict[x] = UnknownSeq(regionDict[x][1] - regionDict[x][0])
       res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, None, annoteDict, None))
+    """
     for x in base_dict.keys():
       found = False
       for y in res:
