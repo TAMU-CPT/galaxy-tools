@@ -12,11 +12,11 @@ python '$__tool_directory__/export.py'
 
 @ORG_CN_OR_GUESS@
 
-'$get_gff'
-'$get_pep'
-'$get_cds'
-'$get_cdna'
-'$get_vcf'
+$get_gff
+$get_pep
+$get_cds
+$get_cdna
+$get_vcf
 --json '$json_out'
 
 '$__user_email__'
@@ -24,11 +24,11 @@ python '$__tool_directory__/export.py'
 ]]></command>
   <inputs>
     <expand macro="cn_or_guess" />
-    <param name="get_gff" type="boolean" truevalue="--gff '$gff_out'" falsevalue="" checked='true' label="Retrieve GFF+FASTA" />
-    <param name="get_pep" type="boolean" truevalue="--fasta_pep '$fasta_pep'" falsevalue="" checked='false' label="Retrieve Peptide Sequences" />
-    <param name="get_cds" type="boolean" truevalue="--fasta_cds '$fasta_cds'" falsevalue="" checked='false' label="Retrieve CDS Sequences" />
-    <param name="get_cdna" type="boolean" truevalue="--fasta_cdna '$fasta_cdna'" falsevalue="" checked='false' label="Retrieve cDNA Sequences" />
-    <param name="get_vcf" type="boolean" truevalue="--vcf '$vcf_out'" falsevalue="" checked='false' label="Retrieve VCF Sequence Alterations" />
+    <param name="get_gff" type="boolean" truevalue="--gff $gff_out" falsevalue="" checked='true' label="Retrieve GFF+FASTA" />
+    <param name="get_pep" type="boolean" truevalue="--fasta_pep $fasta_pep" falsevalue="" checked='false' label="Retrieve Peptide Sequences" />
+    <param name="get_cds" type="boolean" truevalue="--fasta_cds $fasta_cds" falsevalue="" checked='false' label="Retrieve CDS Sequences" />
+    <param name="get_cdna" type="boolean" truevalue="--fasta_cdna $fasta_cdna" falsevalue="" checked='false' label="Retrieve cDNA Sequences" />
+    <param name="get_vcf" type="boolean" truevalue="--vcf $vcf_out" falsevalue="" checked='false' label="Retrieve VCF Sequence Alterations" />
   </inputs>
   <outputs>
     <data format="gff3" name="gff_out" label="Annotations from Apollo">
