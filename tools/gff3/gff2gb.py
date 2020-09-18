@@ -107,8 +107,12 @@ def fix_gene_qualifiers(name, feature, fid):
             # We set a locus_tag on ALL sub features
             sf.qualifiers["locus_tag"] = "CPT_%s_%03d" % (name, fid)
             # Remove Names which are UUIDs
-            if is_uuid(sf.qualifiers["Name"][0]):
-                del sf.qualifiers["Name"]
+            # NOT GOOD PRACTICE
+            try:
+                if is_uuid(sf.qualifiers["Name"][0]):
+                    del sf.qualifiers["Name"]
+            except KeyError:
+                pass
 
             # If it is the RBS exon (mis-labelled by apollo as 'exon')
             if sf.type == "exon" and len(sf) < 10:
