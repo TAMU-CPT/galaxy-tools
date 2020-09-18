@@ -203,7 +203,7 @@ def lineAnalysis(line):
     parseMode = 0  
     qualDict = {} 
     contCounter = 0
-    for x in range(0, len(fields[8])):
+    for x in range(0, len(fields[8]) - 1):
       currChar = fields[8][x]
       if contCounter:
         contCounter += -1
@@ -235,7 +235,7 @@ def lineAnalysis(line):
           valNames[valInd] += urllib.unquote(fields[8][x:x+3])
           contCounter = 2
         else:
-          if x == len(fields[8]) - 1: # Assume if last char in fields[8] is a semicolon, then just the end of qualifier 
+          if x == len(fields[8]) - 2: # Assume if last char in fields[8] is a semicolon, then just the end of qualifier 
             parseMode = 2
           elif encodeFromLookahead(fields[8][x+1:]):
             valNames[valInd] += "%3B"
@@ -332,7 +332,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
         for x in orgDict[org][ind].qualifiers['Parent']:
           for y in orgDict[org]:
             found = False
-            if y.id == x:
+            if "ID" in y.qualifiers.keys() and x in y.qualifiers["ID"]:
               y.sub_features.append(orgDict[org][ind])
               found = True
               break
@@ -391,7 +391,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
 
     return res
 
-def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = None, outStream = sys.stdout):
+def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = None, outStream = sys.stdout, parents = None):
     line = orgName + "\t"
     if source:
       line += source + "\t"
@@ -417,6 +417,8 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
       line += "0\t"
     else:
       line += ".\t"
+    if parents and "Parent" not in inFeat.qualifiers.keys():
+      inFeat.qualifiers["Parent"] = parents.qualifiers["ID"]
     for qual in inFeat.qualifiers.keys():
       for keyChar in str(qual):
         if keyChar in "%,=;":
@@ -440,13 +442,11 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
           line += ","
         else:
           line += ";"
-      #  print(line)
-      #exit()
-    outStream.write(line + "\n")
-    #exit()  
+      
+    outStream.write(line + "\n")  
     if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
       for x in inFeat.sub_features:
-        printFeatLine(x, orgName, source, score, shift, outStream)
+        printFeatLine(x, orgName, source, score, shift, outStream, inFeat)
 
 def gffWrite(inRec, outStream = None):
     if not outStream:
