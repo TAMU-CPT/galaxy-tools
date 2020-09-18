@@ -42,19 +42,19 @@ python '$__tool_directory__/export.py'
   </inputs>
   <outputs>
     <data format="gff3" name="gff_out" label="Annotations from Apollo">
-      <filter>options['get_gff']</filter>
+      <filter>get_gff</filter>
     </data>
     <data format="fasta" name="fasta_pep" label="Peptide sequences from Apollo">
-      <filter>options['get_pep']</filter>
+      <filter>get_pep</filter>
     </data>
     <data format="fasta" name="fasta_cds" label="CDS sequences from Apollo">
-      <filter>options['get_cds']</filter>
+      <filter>get_cds</filter>
     </data>
     <data format="fasta" name="fasta_cdna" label="cDNA sequences from Apollo">
-      <filter>options['get_cdna']</filter>
+      <filter>get_cdna</filter>
     </data>
     <data format="vcf" name="vcf_out" label="Sequence alterations from Apollo">
-      <filter>options['get_vcf']</filter>
+      <filter>get_vcf</filter>
     </data>
     <data format="json" name="json_out" label="Metadata from Apollo">
         <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="tabular" visible="true"/>
