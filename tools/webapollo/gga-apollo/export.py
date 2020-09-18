@@ -16,6 +16,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Script to export data from Apollo via web services')
     CnOrGuess(parser)
     parser.add_argument('--gff', type=argparse.FileType('w'))
+    parser.add_argument('--seq', type=argparse.FileType('w'))
     parser.add_argument('--fasta_pep', type=argparse.FileType('w'))
     parser.add_argument('--fasta_cds', type=argparse.FileType('w'))
     parser.add_argument('--fasta_cdna', type=argparse.FileType('w'))
@@ -51,10 +52,17 @@ if __name__ == '__main__':
         org = wa.organisms.show_organism(org_cn)
 
         if args.gff:
-            uuid_gff = wa.io.write_downloadable(org['commonName'], 'GFF3', export_gff3_fasta=True, sequences=seqs)
+            uuid_gff = wa.io.write_downloadable(org['commonName'], 'GFF3', export_gff3_fasta=False, sequences=seqs)
             if 'error' in uuid_gff or 'uuid' not in uuid_gff:
                 raise Exception("Apollo failed to prepare the GFF3 file for download: %s" % uuid_gff)
             args.gff.write(wa.io.download(uuid_gff['uuid'], output_format="text"))
+            time.sleep(1)
+
+        if args.seq:
+            uuid_gff = wa.io.write_downloadable(org['commonName'], 'FASTA', sequences=seqs, seq_type='genomic')
+            if 'error' in uuid_fa or 'uuid' not in uuid_fa:
+                raise Exception("Apollo failed to prepare the FASTA file for download: %s" % uuid_fa)
+            args.seq.write(wa.io.download(uuid_fa['uuid'], output_format="text"))
             time.sleep(1)
 
         if args.vcf:
