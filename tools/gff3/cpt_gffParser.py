@@ -272,7 +272,6 @@ def lineAnalysis(line):
 
     if errorMessage != "":
       return errorMessage, None, None
-      
     return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None)   
         
 def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
@@ -426,6 +425,8 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
         else:
           line += keyChar
       line += "="
+      if type(inFeat.qualifiers[qual]) != list:
+        inFeat.qualifiers[qual] = [inFeat.qualifiers[qual]]
       for ind in range(0, len(inFeat.qualifiers[qual])):
         for valChar in str(inFeat.qualifiers[qual][ind]):
           if valChar in "%,=;":
@@ -433,12 +434,16 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
             line += "%" + encoded[2:].upper()
           else:
             line += valChar
+          #print(line)
+        
         if ind < len(inFeat.qualifiers[qual]) - 1:
           line += ","
         else:
           line += ";"
+      #  print(line)
+      #exit()
     outStream.write(line + "\n")
-  
+    #exit()  
     if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
       for x in inFeat.sub_features:
         printFeatLine(x, orgName, source, score, shift, outStream)
