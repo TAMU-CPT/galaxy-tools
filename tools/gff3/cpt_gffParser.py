@@ -209,7 +209,7 @@ def lineAnalysis(line):
         contCounter += -1
         continue
       if parseMode == 0:
-        if not (currChar in "=,;%"):
+        if not (currChar in "=,;%\n"):
           keyName += currChar
         elif currChar == "=":
           if len(keyName) == 0:
@@ -234,6 +234,8 @@ def lineAnalysis(line):
         elif currChar == "%" and (fields[8][x+1] in encoders) and (fields[8][x+2] in encoders):
           valNames[valInd] += urllib.unquote(fields[8][x:x+3])
           contCounter = 2
+        elif currChar == "\n":
+          parseMode = 2
         else:
           if x == len(fields[8]) - 2: # Assume if last char in fields[8] is a semicolon, then just the end of qualifier 
             parseMode = 2
@@ -242,6 +244,7 @@ def lineAnalysis(line):
             continue
           else:
             parseMode = 2
+          
       if parseMode == 2: # Do not elif, this is used as a wrapup for each qualifier and we want it checked if parsemode == 1 incremented itself 
         if keyName not in qualDict.keys():
           qualDict[keyName] = valNames
