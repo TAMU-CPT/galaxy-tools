@@ -304,6 +304,8 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
       else:
         if line[0] == ">":
           currFastaKey = line[1:-1]
+          if currFastaKey not in seqDict.keys():
+            seqDict[currFastaKey] = ""
         elif line[0] == "#":
           continue
         elif line:
