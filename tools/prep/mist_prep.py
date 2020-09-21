@@ -1,6 +1,7 @@
 import argparse
 import os
 import re
+import time
 
 from Bio import SeqIO
 
@@ -38,7 +39,7 @@ if __name__ == "__main__":
     parser.add_argument('--rettype', default="fasta", help='Rettype')
     
     # output
-    parser.add_argument('--output_fasta', type=argparse.FileType('a+'), default="_MIST_multi.fa")
+    parser.add_argument('--output_fasta', type=argparse.FileType('w'), default="_MIST_multi.fa")
 
     args = parser.parse_args()
 
@@ -72,8 +73,9 @@ if __name__ == "__main__":
         if getattr(args, attr, None) is not None:
             payload[attr] = getattr(args, attr)
 
-    for org in combined_data:
-        with args.output_fasta as f:
+    
+    with args.output_fasta as f:
+        for org in combined_data:
             payload['id'] = org[1]
             print(payload)
             obj = c.fetch(args.db, ftype=args.retmode, read_only_fasta=True, **payload)

@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from io import StringIO
 
 from Bio import Entrez, SeqIO
@@ -27,8 +28,12 @@ class Client(object):
                             "administrator email in NCBI_EUTILS_CONTACT")
         
         if api_key is not None:
+            print('should be passed in')
             Entrez.api_key = api_key
+        elif galaxy_api_key is not None:
+            Entrez.api_key = env_api_key
         else:
+            print('no api')
             Entrez.api_key = None
 
         if history_file is not None:
@@ -67,6 +72,7 @@ class Client(object):
         # I've done 'every 20, sleep for 10 seconds', which works great for genbank retrievals. 
         # Of note, this may not be an issue with the API key.
         for i in range(0, count, BATCH_SIZE):
+            time.sleep(0.5) # trying to slow down the rate per req
             payload['retstart'] = i
             file_path = os.path.join('downloads', 'EFetch Results Chunk %s.%s' % (i, ftype))
             if read_only_fasta:
