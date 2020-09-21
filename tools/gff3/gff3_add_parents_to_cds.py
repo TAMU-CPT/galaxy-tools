@@ -26,9 +26,10 @@ def fixed_feature(rec):
         mRNA = gffSeqFeature(
             location=feature.location,
             type="mRNA",
-            qualifiers={"source": ["cpt.fixModel"], "ID": ["%s.mRNA" % fid]},
+            qualifiers={"source": ["cpt.fixModel"], "ID": ["%s.mRNA" % fid], "Parent": gene.qualifiers["ID"]},
         )
         feature.qualifiers["ID"] = [fid + ".CDS"]
+        feature.qualifiers["Parent"] = mRNA.qualifiers["ID"]
 
         mRNA.sub_features = [feature]
         gene.sub_features = [mRNA]
