@@ -6,7 +6,9 @@ import uuid
 from BCBio import GFF
 from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
+from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
+from Bio.SeqFeature import FeatureLocation
 from gff3 import feature_lambda, feature_test_type, get_id
 
 logging.basicConfig(level=logging.INFO)
@@ -114,7 +116,10 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 if nodesc:
                     description = ""
                 else:
-                    important_data = {"Location": feat.location}
+                    if feat.strand == -1:
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1, feat.location.end - feat.shift, feat.strand)}
+                    else:
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1 + feat.shift, feat.location.end, feat.strand)}
                     if "Name" in feat.qualifiers:
                         important_data["Name"] = feat.qualifiers.get("Name", [""])[0]
 
@@ -127,13 +132,23 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                         )
                     )
 
-                yield [
+                if feat.strand == -1:
+                  yield [
                     SeqRecord(
-                        feat.extract(rec).seq,
+                        (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
                         id=nid.replace(" ", "-"),
                         description=description,
                     )
-                ]
+                  ]
+                else:
+                  yield [
+                    SeqRecord(
+                        #feat.extract(rec).seq,
+                        rec.seq[feat.location.start + feat.shift: feat.location.end],
+                        id=nid.replace(" ", "-"),
+                        description=description,
+                    )
+                  ]
             rec.features = newfeats
             rec.annotations = {}
             gffWrite([rec], sys.stdout)
@@ -168,7 +183,10 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 if nodesc:
                     description = ""
                 else:
-                    important_data = {"Location": feat.location}
+                    if feat.strand == -1:
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1, feat.location.end - feat.shift, feat.strand)}
+                    else:
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1 + feat.shift, feat.location.end, feat.strand)}
                     if "Name" in feat.qualifiers:
                         important_data["Name"] = feat.qualifiers.get("Name", [""])[0]
 
@@ -180,13 +198,23 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                             ]
                         )
                     )
-                yield [
+                if feat.strand == -1:
+                  yield [
                     SeqRecord(
-                        feat.extract(rec).seq,
+                        (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
                         id=id.replace(" ", "-"),
                         description=description,
                     )
-                ]
+                  ]
+                else:
+                  yield [
+                    SeqRecord(
+                        #feat.extract(rec).seq,
+                        rec.seq[feat.location.start + feat.shift: feat.location.end],
+                        id=id.replace(" ", "-"),
+                        description=description,
+                    )
+                  ]
 
 
 if __name__ == "__main__":
