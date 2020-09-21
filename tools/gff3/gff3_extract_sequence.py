@@ -6,6 +6,7 @@ import uuid
 from BCBio import GFF
 from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
+from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import FeatureLocation
 from gff3 import feature_lambda, feature_test_type, get_id
@@ -134,7 +135,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 if feat.strand == -1:
                   yield [
                     SeqRecord(
-                        rec.seq[feat.location.start: feat.location.end - feat.shift],
+                        (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
                         id=nid.replace(" ", "-"),
                         description=description,
                     )
@@ -200,7 +201,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 if feat.strand == -1:
                   yield [
                     SeqRecord(
-                        rec.seq[feat.location.start: feat.location.end - feat.shift],
+                        (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
                         id=id.replace(" ", "-"),
                         description=description,
                     )
