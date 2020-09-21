@@ -25,6 +25,7 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         sub_features=None,
         ref=None,
         ref_db=None,
+        shift=0
     ):
         """Reimplementation of SeqFeature for use with GFF3 Parsing
         Does not remove the sub_feature functionality, as unlike
@@ -40,6 +41,7 @@ class gffSeqFeature(SeqFeature.SeqFeature):
             )
         self.location = location
         self.type = type
+        self.shift = shift
         if location_operator:
             # TODO - Deprecation warning
             self.location_operator = location_operator
@@ -196,6 +198,10 @@ def lineAnalysis(line):
       errorMessage += "Expected 0, 1, 2, or . for Phase field value, actual value is '" + fields[7] + "'.\n"
     elif fields[7] =='.' and fields[1] == "CDS":
       errorMessage += "Expected 0, 1, or 2 in Phase field for CDS-type feature, actual value is '" + fields[7] + "'.\n"
+    if fields[7] == '.':
+      shiftIn = 0
+    else:
+      shiftIn = int(fields[7])
 
     keyName = ""
     valNames = [""]
@@ -275,7 +281,7 @@ def lineAnalysis(line):
 
     if errorMessage != "":
       return errorMessage, None, None
-    return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None)   
+    return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, shiftIn)   
         
 def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
     fastaDirective = False
