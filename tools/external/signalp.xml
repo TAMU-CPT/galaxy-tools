@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.external.signalp" name="SignalP to GFF3" version="1.0">
+<tool id="edu.tamu.cpt.external.signalp" name="SignalP v4.1 to GFF3" version="1.0">
 	<description>converts txt formatted SignalP to gff3 results</description>
 	<macros>
 		<import>macros.xml</import>
@@ -28,9 +28,11 @@ python $__tool_directory__/signalp.py
 		<data format="wig" name="bw_y" label="SignalP $on_string Y signal"/>
 	</outputs>
 	<help><![CDATA[
+**Deprecated, incompatible with SignalP v5.0 output**
+
 **What it does**
 
-Process the SignalP output into a GFF3 formatted dataset and wig datasets.
+Process the SignalP v4.1 output into a GFF3 formatted dataset and wig datasets.
 ]]></help>
 	<expand macro="citations" />
 </tool>
