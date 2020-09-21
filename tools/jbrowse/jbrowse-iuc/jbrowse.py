@@ -642,8 +642,8 @@ class JbrowseConnector(object):
         self._add_track_json(trackData)
 
     def _sort_gff(self, data, dest):
-        # Only index if not already done
-        if not os.path.exists(dest):
+        # Only index if not already done and data is non-zero filesize
+        if not os.path.exists(dest) and os.path.getsize(data):
             cmd = "gff3sort.pl --precise '%s' | grep -v \"^$\" > '%s'" % (data, dest)
             self.subprocess_popen(cmd)
 
