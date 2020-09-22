@@ -24,11 +24,11 @@
 </command>
 	<inputs>
                 <conditional name="multiF">
-                     <param label="Input dataset is a multi-fasta" name="multiFasta" type="boolean" truevalue="--multi_fasta" falsevalue="" checked="false"/>
+                     <param label="Input dataset is a multi-fasta" name="multiFasta" type="boolean" truevalue="--multi_fasta" falsevalue="not" checked="false"/>
                      <when value="--multi_fasta">
                         <param label="Fasta Sequence" name="fastaIn" type="data" format="fasta" />
                      </when>
-                     <when value="">
+                     <when value="not">
                         <param label="Fasta Sequence" name="fastaIn" type="data" format="fasta" />
                      </when>
                 </conditional>
@@ -36,16 +36,16 @@
 	<outputs>
                 <data format="tabular" name="out1" label="Bacphlip summary" />
 		<data format="fasta" name="out2" label="6frame results">
-                  <filter>multiF['multiFasta'] == ''</filter>
+                  <filter>not multiF['multiFasta']</filter>
                 </data>
 		<data format="text" name="out3" label="HMM results">
-                  <filter>multiF['multiFasta'] == ''</filter>
+                  <filter>not multiF['multiFasta']</filter>
                 </data>
 		<data format="tabular" name="out4" label="HMM tabular results" >
-                  <filter>multiF['multiFasta'] == ''</filter>
+                  <filter>not multiF['multiFasta']</filter>
                 </data>
                 <data format="tabular" name="out5" from_work_dir="InputFasta.BACPHLIP_DIR" label="HMM and 6frame results" >
-                  <filter>multiF['multiFasta'] == '--multi_fasta'</filter>
+                  <filter>multiF['multiFasta']</filter>
                 </data>
 	</outputs>
 	<help>
