@@ -1,0 +1,51 @@
+<tool id="edu.tamu.cpt.prep.mist_prep" name="Excel to MultiFASTA MIST Preparation" version="1.0">
+    <description>Parses a minimal two column excel sheet to retrieve data from NCBI with one column and renaming the header with the other column</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+    </expand>
+    <!-- TODO: Add history arguments for wrapper -->
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/mist_prep.py 
+$excel_file
+--acc_col $acc_col
+--name_col $name_col
+--user_email "$__user_email__"
+#set admin_emails = ';'.join(str($__admin_users__).split(','))
+--admin_email "$admin_emails"
+#set ncbi_api_key = str($__ncbi_api_key__)
+--api_key "$api_key"
+--output_fasta $output_fasta
+]]></command>
+        <inputs>    
+            <param name="excel_file" label="Excel File" type="data" />
+            <param name="acc_col" label="Accession Column Label" type="text" />
+            <param name="name_col" label="Name Column Label" type="text" />
+            <param name="api_key" label="NCBI API Key" type="text" />
+        </inputs>
+        <outputs>
+            <data name="output_fasta" label="_MIST_multi.fa" format="fasta" />
+        </outputs>
+        <tests>
+            <test>
+                <param name="excel_file" value="mist_prep_sample.xlsx"/>
+                <param name="acc_col" value="Acccession" />
+                <param name="name_col" value="Genome" />
+                <output name="output_fasta" file="_MIST_multi.fa" />
+            </test>
+        </tests>
+    <help><![CDATA[
+
+    ]]></help>
+        <citations>
+            <citation type="bibtex">
+                @unpublished{galaxyTools,
+                author = {C. Ross},
+                title = {CPT Galaxy Tools},
+                year = {2020-},
+                note = {https://github.com/tamu-cpt/galaxy-tools/}
+                }
+            </citation>
+        </citations>
+</tool>

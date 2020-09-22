@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<macros>
+	<xml name="requirements">
+		<requirements>
+			<requirement type="package" version="3.8.3">python</requirement>
+			<requirement type="package" version="1.70">biopython</requirement>
+			<yield/>
+		</requirements>
+        <version_command>
+		<![CDATA[
+			cd $__tool_directory__ && git rev-parse HEAD
+		]]>
+		</version_command>
+	</xml>
+</macros>
