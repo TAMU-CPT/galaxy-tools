@@ -25,7 +25,8 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         sub_features=None,
         ref=None,
         ref_db=None,
-        shift=0
+        shift=0,
+        score=0.0
     ):
         """Reimplementation of SeqFeature for use with GFF3 Parsing
         Does not remove the sub_feature functionality, as unlike
@@ -42,6 +43,7 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         self.location = location
         self.type = type
         self.shift = shift
+        self.score = score
         if location_operator:
             # TODO - Deprecation warning
             self.location_operator = location_operator
@@ -126,7 +128,7 @@ def lineAnalysis(line):
     IDName = ""
     startLoc = -1
     endLoc = -1
-    score = None
+    scoreIn = 0.0
     if len(line) == 0 or line == "\n":
       return None, None, None
     if line[0] == "#":
@@ -184,9 +186,9 @@ def lineAnalysis(line):
     # fields[5]
     if fields[5] != ".":
       try:
-        score = float(fields[5])
+        scoreIn = float(fields[5])
       except:
-        score = None
+        scoreIn = 0.0
         errorMessage += "Score field could not be interpreted as a floating-point (real) number. Ensure notation is correct.\n"
 
     if len(fields[6]) != 1 or (not(fields[6] in '-+.?')):
@@ -281,7 +283,7 @@ def lineAnalysis(line):
 
     if errorMessage != "":
       return errorMessage, None, None
-    return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, shiftIn)   
+    return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, shiftIn, scoreIn)   
         
 def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
     fastaDirective = False
@@ -474,4 +476,4 @@ def gffWrite(inRec, outStream = None):
       elif rec.seq:
         outStream.write("##sequence-region " + rec.id + " 1 " + str(len(rec.seq)) +"\n")
       for feat in rec.features:
-          printFeatLine(feat, rec.id, outStream = outStream)        
+          printFeatLine(feat, rec.id, score = feat.score, shift = feat.shift, outStream = outStream)        
