@@ -28,12 +28,10 @@ class Client(object):
                             "administrator email in NCBI_EUTILS_CONTACT")
         
         if api_key is not None:
-            print('should be passed in')
             Entrez.api_key = api_key
         elif galaxy_api_key is not None:
             Entrez.api_key = env_api_key
         else:
-            print('no api')
             Entrez.api_key = None
 
         if history_file is not None:
