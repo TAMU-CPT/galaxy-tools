@@ -44,7 +44,7 @@
 		<data format="tabular" name="out4" label="HMM tabular results" >
                   <filter>not multiF['multiFasta']</filter>
                 </data>
-                <data format="tabular" name="out5" from_work_dir="InputFasta.BACPHLIP_DIR" label="HMM and 6frame results" >
+                <data format="html" name="out5" from_work_dir="InputFasta.BACPHLIP_DIR" label="HMM and 6frame results" >
                   <filter>multiF['multiFasta']</filter>
                 </data>
 	</outputs>
