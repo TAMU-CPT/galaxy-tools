@@ -10,8 +10,9 @@
   ln -s $fastaIn "InputFasta";
   bacphlip -i InputFasta --multi_fasta;
   cat InputFasta.bacphlip > $out1;
-  cat InputFasta.hmmsearch.tsv > $out5;
-  cp InputFasta.BACPHLIP_DIR/* $out5.files_path
+  cat InputFasta.hmmsearch.tsv > $out4;
+  tar -cvf tempTar InputFasta.BACPHLIP_DIR;
+  mv tempTar $out5;
 #else:
   ln -s $fastaIn "InputFasta";
   bacphlip -i InputFasta;
@@ -41,18 +42,16 @@
 		<data format="text" name="out3" label="HMM results">
                   <filter>not multiF['multiFasta']</filter>
                 </data>
-		<data format="tabular" name="out4" label="HMM tabular results" >
-                  <filter>not multiF['multiFasta']</filter>
-                </data>
-                <data format="html" name="out5" from_work_dir="InputFasta.BACPHLIP_DIR" label="HMM and 6frame results" >
+		<data format="tabular" name="out4" label="HMM tabular results" />
+                <data format="tar.gz" name="out5" label="Individual HMM and 6frame results archive" >
                   <filter>multiF['multiFasta']</filter>
                 </data>
 	</outputs>
 	<help>
 **What it does**
 
-Prints out a table showing the best hit name / evalue / dice for each input query sequence across a range of blast results.
-</help>
+Runs BACPHLIB analysis on a fasta. For multifastas, please be sure to check the multifasta option. 
+Individual sequence results will be available within a tar.gz archive for multifasta runs.
 	<tests/>
 	<citations>
 		<citation type="bibtex">
