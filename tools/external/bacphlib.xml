@@ -10,8 +10,9 @@
   ln -s $fastaIn "InputFasta";
   bacphlip -i InputFasta --multi_fasta;
   cat InputFasta.bacphlip > $out1;
-  cat InputFasta.hmmsearch.tsv > $out5;
-  cp InputFasta.BACPHLIP_DIR/* $out5.files_path
+  cat InputFasta.hmmsearch.tsv > $out4;
+  tar -cvf tempTar InputFasta.BACPHLIP_DIR
+  mv tempTar $out5 
 #else:
   ln -s $fastaIn "InputFasta";
   bacphlip -i InputFasta;
@@ -42,9 +43,8 @@
                   <filter>not multiF['multiFasta']</filter>
                 </data>
 		<data format="tabular" name="out4" label="HMM tabular results" >
-                  <filter>not multiF['multiFasta']</filter>
                 </data>
-                <data format="html" name="out5" from_work_dir="InputFasta.BACPHLIP_DIR" label="HMM and 6frame results" >
+                <data format="tar.gz" name="out5" label="HMM and 6frame results" >
                   <filter>multiF['multiFasta']</filter>
                 </data>
 	</outputs>
