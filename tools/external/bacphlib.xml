@@ -52,6 +52,7 @@
 
 Runs BACPHLIB analysis on a fasta. For multifastas, please be sure to check the multifasta option. 
 Individual sequence results will be available within a tar.gz archive for multifasta runs.
+	</help>
 	<tests/>
 	<citations>
 		<citation type="bibtex">
