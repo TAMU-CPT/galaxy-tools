@@ -22,7 +22,7 @@ def extractCodonsFromDb(target, codondb):
             break
 
     if header is None:
-        print "Not found"
+        print("Not found")
         sys.exit(1)
 
     spsum_label = (
@@ -46,6 +46,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     ocu = extractCodonsFromDb(**vars(args))
-    print "# Codon\tCount"
+    print ("# Codon\tCount")
     for (key, value) in ocu.iteritems():
-        print "%s\t%s" % (key, value)
+        print ("%s\t%s" % (key, value))
