@@ -1,3 +1,5 @@
+![DOI](https://zenodo.org/badge/69267095.svg)
+
 # CPT Galaxy Tools
 
 This is the collection of tools developed by the [Center for Phage Technology](https://cpt.tamu.edu/) for their Galaxy instance. The tool set is tailored for the analysis and annotation of bacteriophage genomes, but should also work well for prokaryotic genomes. 
