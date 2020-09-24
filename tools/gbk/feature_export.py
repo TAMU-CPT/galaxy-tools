@@ -60,23 +60,33 @@ def extract_features(
     for record in SeqIO.parse(genbank_file, "genbank"):
         for feature in record.features:
             if feature.type in tag:
+              finSeq = ""
+              for locInd in range(0, len(feature.location.parts)):
+                thisLoc = feature.location.parts[locInd]
                 # Find new feature boundaries
-                start = int(feature.location.start)
-                end = int(feature.location.end)
-                strand = feature.location.strand
+                start = int(thisLoc.start)
+                end = int(thisLoc.end)
+                strand = thisLoc.strand
+                if strand < 0:
+                  temp = end
+                  end = min(start, end)
+                  start = max(start, temp)
+                
+                if locInd == 1:
+                  start += 0
 
                 if n_bases_downstream != 0:
                     # If we want extra on the end we cannot listen to
                     # stop_stripping requests
-                    if strand > 0:
+                    if strand >= 0 and locInd == len(feature.location.parts) - 1:
                         end += n_bases_downstream
-                    else:
+                    elif strand < 0 and locInd == 0:
                         start -= n_bases_downstream
 
                 # n_bases_upstream
-                if strand > 0:
+                if strand >= 0 and locInd == 0:
                     start -= n_bases_upstream
-                else:
+                elif strand < 0 and locInd == len(feature.location.parts) - 1:
                     end += n_bases_upstream
 
                 __seqs = []
@@ -85,19 +95,24 @@ def extract_features(
                     __seqs.append(
                         SeqFeature(
                             FeatureLocation(
-                                start, int(feature.location.start), strand=strand
+                                start, int(thisLoc.start), strand=strand
                             ),
                             type="domain",
                         )
                     )
 
-                __seqs.append(feature)
+                __seqs.append(SeqFeature(
+                                FeatureLocation(
+                                start, end, strand=strand
+                                ),
+                                type="domain",
+                             ))
                 # Downstream addition
                 if n_bases_downstream > 0:
                     __seqs.append(
                         SeqFeature(
                             FeatureLocation(
-                                int(feature.location.end), end, strand=strand
+                                int(thisLoc.end), end, strand=strand
                             ),
                             type="domain",
                         )
@@ -108,7 +123,7 @@ def extract_features(
                 for s in __seqs:
                     if rangeS > s.location.start:
                         rangeS = s.location.start
-                    if rangeE > s.location.end:
+                    if rangeE < s.location.end:
                         rangeE = s.location.end
 
                 if "codon_start" in feature.qualifiers:
@@ -160,13 +175,20 @@ def extract_features(
                     # extracted_seqs = [x.extract(record.seq) for x in __seqs]
 
                 if informative:
+                  if locInd == 0:
                     defline = " %s [start=%s,end=%s]" % (
                         ",".join(feature.qualifiers.get("product", [])),
-                        start,
+                        start + 1,
                         end,
                     )
+                  else:
+                    defline += ", joined with [start=%s,end=%s]" % (start + 1, end)
+                   
                 else:
-                    defline = " [start=%s,end=%s]" % (start, end)
+                  if locInd == 0:
+                    defline = " [start=%s,end=%s]" % (start + 1, end)
+                  else:
+                    defline += ", joined with [start=%s,end=%s]" % (start + 1, end)
 
                 extracted_seq = str(retSeq)
                 
@@ -175,14 +197,15 @@ def extract_features(
                         extracted_seq = extracted_seq[:-3]
                     elif extracted_seq[-1:] in "*":
                         extracted_seq = extracted_seq[:-1]
+                finSeq += extracted_seq
 
-                yield [
+              yield [
                     SeqRecord(
-                        Seq(extracted_seq.strip()),
+                        Seq(finSeq.strip()),
                         id=get_id(feature),
                         description=defline,
                     )
-                ]
+              ]
 
 
 if __name__ == "__main__":
