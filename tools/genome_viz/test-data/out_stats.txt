@@ -1,0 +1,68 @@
+---::: FILE BREAKDOWN :::---
+
+------::: Feature Count :::------
+Feature: source ::::: Count: 1
+Feature: gene ::::: Count: 58
+Feature: CDS ::::: Count: 58
+Feature: RBS ::::: Count: 57
+Feature: misc_feature ::::: Count: 7
+Feature: misc_difference ::::: Count: 1
+------::: Product Names :::------
+Product Name: repressor protein c
+Product Name: DNA binding protein ner
+Product Name: transposase
+Product Name: AAA-ATPase DNA transposition protein
+Product Name: protein kil
+Product Name: uncharacterized protein
+Product Name: uncharacterized protein
+Product Name: uncharacterized protein
+Product Name: uncharacterized protein
+Product Name: host nuclease inhibitor Gam
+Product Name: uncharacterized protein
+Product Name: uncharacterized protein
+Product Name: uncharacterized protein
+Product Name: uncharacterized protein
+Product Name: uncharacterized protein
+Product Name: hypothetical protein
+Product Name: protein GemA
+Product Name: middle operon regulator Mor
+Product Name: uncharacterized protein
+Product Name: pinholin
+Product Name: antiholin
+Product Name: transcription regulator C
+Product Name: SAR endolysin
+Product Name: i-spanin
+Product Name: o-spanin
+Product Name: uncharacterized protein
+Product Name: releasin
+Product Name: winged HTH domain-containing protein
+Product Name: terminase small subunit
+Product Name: terminase large subunit
+Product Name: portal protein
+Product Name: minor head protein
+Product Name: capsid morphogenesis protein
+Product Name: capsid maturation protease
+Product Name: scaffolding protein Z
+Product Name: major capsid protein
+Product Name: head-to-tail connector complex protein
+Product Name: head-to-tail connector complex protein
+Product Name: tail terminator protein
+Product Name: putative sheath terminator protein
+Product Name: tail sheath
+Product Name: tail tube protein
+Product Name: tail assembly chaperone
+Product Name: tail assembly chaperone frameshift product
+Product Name: tape measure protein
+Product Name: DNA circularization protein
+Product Name: baseplate hub protein
+Product Name: baseplate spike protein
+Product Name: baseplate wedge protein
+Product Name: baseplate wedge protein
+Product Name: baseplate wedge protein
+Product Name: tail fiber S
+Product Name: tail fiber assembly chaperone
+Product Name: tail fiber assembly protein
+Product Name: tail fiber fragment
+Product Name: serine recombinase Gin
+Product Name: translational activator Com
+Product Name: adenine modification enzyme Mom

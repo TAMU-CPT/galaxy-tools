@@ -158,7 +158,8 @@ def feature_test_quals(feature, **kwargs):
         # And check all of the feature qualifier valuse
         for value in feature.qualifiers[key]:
             # For that kwargs[key] value
-            matches.append(kwargs[key] in value)
+            for x in kwargs[key]:
+                matches.append(x in value)
 
         # If none matched, then we return false.
         if not any(matches):

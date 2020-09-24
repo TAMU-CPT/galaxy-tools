@@ -31,9 +31,11 @@ $glimmer
 		</test>
 	</tests>
 	<help>
-**What it does**
+	**What it does**
 
-Converts an input Glimmer3 table to the GFF3 format.	
+	Converts an input Glimmer3 table to the GFF3 format. If the Glimmer3 output indicates a gene wrapping 
+	around over the sequence boundary (as if circular) then it will only convert the upstream fragment and 
+	label it as "_truncated" in the resulting GFF.
 	</help>
 		<expand macro="citations" />
 </tool>

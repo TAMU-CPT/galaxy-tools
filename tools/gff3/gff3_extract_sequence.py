@@ -4,8 +4,11 @@ import argparse
 import logging
 import uuid
 from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
+from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
+from Bio.SeqFeature import FeatureLocation
 from gff3 import feature_lambda, feature_test_type, get_id
 
 logging.basicConfig(level=logging.INFO)
@@ -67,7 +70,6 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     description = "{1} [Location={0.location};ID={0.qualifiers[ID][0]}]".format(
                         feat, product
                     )
-                # print(feat.qualifiers.get('locus_tag', get_id(feat)).replace(' ', '-'))
                 yield [
                     SeqRecord(
                         feat.extract(rec).seq,
@@ -85,7 +87,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         seen_ids = {}
 
-        for rec in GFF.parse(gff3, base_dict=seq_dict):
+        for rec in gffParse(gff3, base_dict=seq_dict):
             noMatch = True
             if "Alias" in rec.features[0].qualifiers.keys():
                 lColumn = rec.features[0].qualifiers["Alias"][0]
@@ -107,14 +109,17 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 nid = rec.id + "____" + feat.id
                 if nid in seen_ids:
                     nid = nid + "__" + uuid.uuid4().hex
-                feat.qualifiers["ID"] = nid
+                feat.qualifiers["ID"] = [nid]
                 newfeats.append(feat)
                 seen_ids[nid] = True
 
                 if nodesc:
                     description = ""
                 else:
-                    important_data = {"Location": feat.location}
+                    if feat.strand == -1:
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1, feat.location.end - feat.shift, feat.strand)}
+                    else:
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1 + feat.shift, feat.location.end, feat.strand)}
                     if "Name" in feat.qualifiers:
                         important_data["Name"] = feat.qualifiers.get("Name", [""])[0]
 
@@ -127,19 +132,30 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                         )
                     )
 
-                yield [
+                if feat.strand == -1:
+                  yield [
                     SeqRecord(
-                        feat.extract(rec).seq,
+                        (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
                         id=nid.replace(" ", "-"),
                         description=description,
                     )
-                ]
+                  ]
+                else:
+                  yield [
+                    SeqRecord(
+                        #feat.extract(rec).seq,
+                        rec.seq[feat.location.start + feat.shift: feat.location.end],
+                        id=nid.replace(" ", "-"),
+                        description=description,
+                    )
+                  ]
             rec.features = newfeats
             rec.annotations = {}
-            GFF.write([rec], sys.stderr)
+            gffWrite([rec], sys.stdout)
     else:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
-        for rec in GFF.parse(gff3, base_dict=seq_dict):
+        
+        for rec in gffParse(gff3, base_dict=seq_dict):
             noMatch = True
             if "Alias" in rec.features[0].qualifiers.keys():
                 lColumn = rec.features[0].qualifiers["Alias"][0]
@@ -156,7 +172,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     rec.features,
                     feature_test_type,
                     {"type": feature_filter},
-                    subfeatures=False,
+                    subfeatures=True,
                 ),
                 key=lambda f: f.location.start,
             ):
@@ -167,7 +183,10 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 if nodesc:
                     description = ""
                 else:
-                    important_data = {"Location": feat.location}
+                    if feat.strand == -1:
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1, feat.location.end - feat.shift, feat.strand)}
+                    else:
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1 + feat.shift, feat.location.end, feat.strand)}
                     if "Name" in feat.qualifiers:
                         important_data["Name"] = feat.qualifiers.get("Name", [""])[0]
 
@@ -179,14 +198,23 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                             ]
                         )
                     )
-
-                yield [
+                if feat.strand == -1:
+                  yield [
                     SeqRecord(
-                        feat.extract(rec).seq,
+                        (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
                         id=id.replace(" ", "-"),
                         description=description,
                     )
-                ]
+                  ]
+                else:
+                  yield [
+                    SeqRecord(
+                        #feat.extract(rec).seq,
+                        rec.seq[feat.location.start + feat.shift: feat.location.end],
+                        id=id.replace(" ", "-"),
+                        description=description,
+                    )
+                  ]
 
 
 if __name__ == "__main__":
@@ -194,7 +222,7 @@ if __name__ == "__main__":
         description="Export corresponding sequence in genome from GFF3", epilog=""
     )
     parser.add_argument("fasta", type=argparse.FileType("r"), help="Fasta Genome")
-    parser.add_argument("gff3", help="GFF3 File")
+    parser.add_argument("gff3", type=argparse.FileType("r"), help="GFF3 File")
     parser.add_argument(
         "--feature_filter", default=None, help="Filter for specific feature types"
     )
@@ -202,6 +230,5 @@ if __name__ == "__main__":
         "--nodesc", action="store_true", help="Strip description field off"
     )
     args = parser.parse_args()
-
     for seq in main(**vars(args)):
         SeqIO.write(seq, sys.stdout, "fasta")

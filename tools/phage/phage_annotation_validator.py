@@ -141,6 +141,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 
             bad += 1
             results.append(gene)
+            results[-1].location = FeatureLocation(results[-1].location.start + 1, results[-1].location.end, results[-1].location.strand)
         else:
             if len(rbss) > 1:
                 log.warn("%s RBSs found for gene %s", rbss[0].id, get_gff3_id(gene))
@@ -171,6 +172,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 
                 bad += 1
                 results.append(gene)
+                results[-1].location = FeatureLocation(results[-1].location.start + 1, results[-1].location.end, results[-1].location.strand)
             else:
                 good += 1
 
@@ -728,6 +730,7 @@ def weird_starts(record):
                 e = seq.location.end - 3
 
             results.append(seq)
+            results[-1].location = FeatureLocation(results[-1].location.start + 1, results[-1].location.end, results[-1].location.strand) 
             qc_features.append(
                 gen_qc_feature(
                     s, e, "Weird start codon", strand=seq.strand, id_src=gene
@@ -924,7 +927,11 @@ def evaluate_and_report(
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
     # Get the first GFF3 record
     # TODO: support multiple GFF3 files.
-    record = list(GFF.parse(annotations, base_dict=seq_dict))[0]
+    mostFeat = 0
+    for rec in list(GFF.parse(annotations, base_dict=seq_dict)):
+      if len(rec.features) > mostFeat:
+        mostFeat = len(rec.features)
+        record = rec
 
     gff3_qc_record = SeqRecord(record.id, id=record.id)
     gff3_qc_record.features = []

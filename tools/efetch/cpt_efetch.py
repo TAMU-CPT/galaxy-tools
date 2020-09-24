@@ -97,9 +97,9 @@ if __name__ == "__main__":
                         default=30,
                         help="Amount to delay a query to NCBI by")
 
-    parser.add_argument("--data",
-                        type=lambda x: is_dir(parser,x,"results"),
-                        default="results/data_accs.txt")
+    #parser.add_argument("--data",
+    #                    type=lambda x: is_dir(parser,x,"results"),
+    #                    default="results/data_accs.txt")
 
     """
     parser.add_argument("--multi_output",
@@ -122,10 +122,12 @@ if __name__ == "__main__":
     #if not os.path.exists("results"):
         #os.mkdir("results")
     print(os.getcwd())
+    if not os.path.exists("results"):
+        os.mkdir("results")
     path = os.path.join("results",args.data_name)
 
-    with open(path,"w+") as f:
-        f.writelines("accessions: "+str(args.input)+"\n")
+    #with open(path,"w+") as f:
+    #    f.writelines("accessions: "+str(args.input)+"\n")
 
     #if args.galaxy_on:
     #    os.chdir("results")
@@ -171,3 +173,15 @@ if __name__ == "__main__":
             awk_files(str(args.ret_type),output="outputMulti"+str(args.ret_type))
     print("---finish---")
     print(os.getcwd())
+
+    ### Test for subdirs
+    folders = []
+    for r, d, f in os.walk(os.getcwd()):
+        for folder in d:
+            folders.append(os.path.join(r, folder))
+    
+    for fold in folders:
+        print(fold)
+    
+    resultsfiles = [f for f in os.listdir("results") if os.path.isfile(os.path.join("results",f))]
+    print("files in results: " +str(resultsfiles))

@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<macros>
+  <token name="@WRAPPER_VERSION@">4.2.9</token>
+
+  <xml name="requirements">
+    <requirements>
+      <requirement type="package" version="4.2.9">apollo</requirement>
+      <yield/>
+    </requirements>
+  </xml>
+  <token name="@DATA_DIR@">\$GALAXY_SHARED_DIR</token>
+  <token name="@EXT_URL@">
+"\$GALAXY_WEBAPOLLO_EXT_URL"
+  </token>
+  <token name="@URL@">
+"\$GALAXY_WEBAPOLLO_URL"
+  </token>
+
+  <token name="@AUTH@"><![CDATA[
+      if [ -z "\$ARROW_GLOBAL_CONFIG_PATH" ]; then
+        echo "__default: local" > '.auth.yml' &&
+        echo "local:" >> '.auth.yml' &&
+        echo "    url: \"\$GALAXY_WEBAPOLLO_URL\"" >> '.auth.yml' &&
+        echo "    username: \"\$GALAXY_WEBAPOLLO_USER\"" >> '.auth.yml' &&
+        echo "    password: \"\$GALAXY_WEBAPOLLO_PASSWORD\"" >> '.auth.yml' &&
+
+        export ARROW_GLOBAL_CONFIG_PATH='.auth.yml'
+      ; fi &&
+  ]]></token>
+
+  <token name="@ORG_OR_GUESS@">
+<![CDATA[
+#if $org_source.source_select == "auto_json":
+    --org_json '${org_source.org_file}'
+#elif $org_source.source_select == "select":
+    --org_id '${org_source.org_select}'
+#else:
+    --org_raw '${org_source.org_raw}'
+#end if
+]]>
+  </token>
+  <token name="@ORG_CN_OR_GUESS@">
+<![CDATA[
+@ORG_OR_GUESS@
+
+#if $cn_source.source_select == "auto":
+    #if str($cn_source.cn_file) != "None":
+        --seq_fasta '$cn_source.cn_file'
+    #end if
+#else
+    #if $cn_source.source_select != "all" and len($cn_source.refseqs) > 0:
+        --seq_raw
+        #for $item in $cn_source.refseqs:
+            '${item.refseq}'
+        #end for
+    #end if
+#end if
+]]>
+  </token>
+  <xml name="org_or_guess">
+    <conditional name="org_source">
+        <param name="source_select" type="select" label="Organism Common Name Source">
+            <option value="select">Select</option>
+            <option value="direct">Direct Entry</option>
+            <option value="auto_json">Autodetect from Apollo JSON</option>
+        </param>
+        <when value="select">
+            <param name="org_select" type="select" dynamic_options="galaxy_list_orgs(__trans__)" label="Organism" />
+        </when>
+        <when value="direct">
+            <param name="org_raw" type="text" label="Organism Common Name" optional="False" />
+        </when>
+        <when value="auto_json">
+            <param name="org_file" type="data" format="json" label="Apollo Organism File" help="Will only fetch first organism" />
+        </when>
+    </conditional>
+  </xml>
+  <xml name="cn_or_guess">
+    <expand macro="org_or_guess" />
+    <conditional name="cn_source">
+        <param name="source_select" type="select" label="Organism Sequence(s) Source">
+            <option value="all">All Refseqs</option>
+            <option value="direct">Direct Entry</option>
+            <option value="auto">Autodetect from Fasta</option>
+        </param>
+        <when value="all">
+        </when>
+        <when value="auto">
+            <param name="cn_file" type="data" format="fasta" label="Reference sequence(s)" optional="true"/>
+        </when>
+        <when value="direct">
+            <repeat name="refseqs" title="Reference Sequences" help="These are used to identify sequences within an organism that you wish to extract">
+                <param name="refseq" type="text" label="Reference sequence(s)" />
+            </repeat>
+        </when>
+    </conditional>
+  </xml>
+
+  <xml name="citations">
+      <citations>
+        <citation type="doi">10.1371/journal.pcbi.1006790</citation>
+      </citations>
+  </xml>
+  <xml name="gff3_input">
+    <param label="GFF3 Annotations" name="gff3_data" type="data" format="gff3"/>
+  </xml>
+  <token name="@GENOME_SELECTOR_PRE@">
+#if $reference_genome.reference_genome_source == 'history':
+    ln -s '$reference_genome.genome_fasta' genomeref.fa;
+#end if
+  </token>
+  <token name="@GENOME_SELECTOR@">
+#if $reference_genome.reference_genome_source == 'cached':
+    '${reference_genome.fasta_indexes.fields.path}'
+#elif $reference_genome.reference_genome_source == 'history':
+    genomeref.fa
+#end if
+  </token>
+<token name="@REFERENCES@">
+<![CDATA[
+------
+
+**Citation**
+
+If you use this tool in Galaxy, please cite:
+Helena Rasche, Anthony Bretaudeau, and Mateo Boudet (2019), `Galaxy Apollo Tools <https://github.com/galaxy-genome-annotation/galaxy-tools/tree/master/tools/apollo>`_
+]]>
+    </token>
+</macros>

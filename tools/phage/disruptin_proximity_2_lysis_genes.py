@@ -46,16 +46,16 @@ def treeFeatures(features):
 def read_enzyme_list(enzyme_file=None):
     enzyme_file.seek(0)
     domains = []
-    domain_names = []
+    #domain_names = []
 
     for line in enzyme_file:
         if not line.startswith("*"):
             words = line.split("\t")
             if len(words) > 3:
                 domains += [words[2]]
-                domain_names += [words[0]]
+                #domain_names += [words[0]]
 
-    return (domains[1:], domain_names[1:])
+    return (domains[1:])
 
 
 # adapted from intersect_and_adjacent.py
@@ -113,7 +113,7 @@ def intersect(rec_a, rec_b, window):
 
 
 # Function to identify enzyme domains associated with endolysin function from the interproscan results file
-def find_endolysins(rec_ipro, enzyme_domain_ids, enzyme_domain_names):
+def find_endolysins(rec_ipro, enzyme_domain_ids):
 
     # print(rec_ipro)
 
@@ -132,18 +132,24 @@ def find_endolysins(rec_ipro, enzyme_domain_ids, enzyme_domain_names):
                     # Ignores feature with unwanted key words in the feature name
                     if all(x not in f.qualifiers["Name"][0] for x in unwanted):
                         # If feature is included in the given enzyme domain list, the protein name, domain id, and domain name are stored
-                        if f.qualifiers["Name"][0] in enzyme_domain_ids:
-                            endo_rec_domain_ids += [f.qualifiers["Name"][0]]
+                        domain_description = [str(f.qualifiers['Name'][0])]
+                        if 'signature_desc' in f.qualifiers:
+                            domain_description += [str(f.qualifiers['signature_desc'][0])]
+                        
+                        for i in enzyme_domain_ids: 
+                            for y in domain_description:
+                                if i in y:
+                                    endo_rec_domain_ids += [f.qualifiers["Name"][0]]
 
-                            e_index = enzyme_domain_ids.index(f.qualifiers["Name"][0])
-                            rec_domain_name += [enzyme_domain_names[e_index]]
+                                    # e_index = enzyme_domain_ids.index(i)
+                                    # rec_domain_name += [enzyme_domain_names[e_index]]
 
-                            target = f.qualifiers["Target"][0]
-                            target = target.split(" ")
-                            protein_name = target[0]
-                            endo_rec_names += [protein_name]
+                                    target = f.qualifiers["Target"][0]
+                                    target = target.split(" ")
+                                    protein_name = str(target[0]) + '**'
+                                    endo_rec_names += [protein_name]
 
-        return endo_rec_names, endo_rec_domain_ids, rec_domain_name
+        return endo_rec_names, endo_rec_domain_ids
 
 
 def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
@@ -156,30 +162,30 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
     # examiner = GFFExaminer()
     # print(examiner.available_limits(genome))
 
-    enzyme_domain_ids, ed_names = read_enzyme_list(enzyme)
+    enzyme_domain_ids = read_enzyme_list(enzyme)
 
     if len(rec_lgc) > 0 and len(rec_tmhmm) > 0 and len(rec_genome_ini) > 0:
 
         # find names of the proteins containing endolysin associated domains
-        endo_names, endo_domain_ids, endo_domain_names = find_endolysins(
-            rec_ipro, list(enzyme_domain_ids), list(ed_names)
+        endo_names, endo_domain_ids = find_endolysins(
+            rec_ipro, list(enzyme_domain_ids)
         )
 
         # find names of proteins containing transmembrane domains
         tmhmm_protein_names = []
         for seq in rec_tmhmm:
-            tmhmm_protein_names += [seq.id]
+            tmhmm_protein_names += [str(seq.id) + '**']
 
         lgc_names = []
         for seq in rec_lgc:
-            lgc_names += [seq.id]
+            lgc_names += [str(seq.id) + '**']
 
         adjacent_endo = {}
         adjacent_lgc_to_endo = {}
         adjacent_tm = {}
         adjacent_lgc_to_tm = {}
 
-        # print(tmhmm_protein_names, endo_names)
+        # print(len(tmhmm_protein_names), len(endo_names))
         # print(rec_genome_ini)
         # print(len(rec_genome_ini))
 
@@ -197,16 +203,19 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
             # print(rec_genome)
 
             for feat in rec_genome.features:
-                # rint(feat)
+                # print(feat)
                 # searches for synonyms and
                 if feat.type == "CDS":
                     feat_names = []
+                    feat_names.append(str(feat.id) + '**')
                     if "locus_tag" in feat.qualifiers:
-                        feat_names.append(str(feat.qualifiers["locus_tag"][0]))
-                    if "Name" in feat.qualifiers:
-                        feat_names.append(str(feat.qualifiers["Name"][0]))
+                        feat_names.append(str(feat.qualifiers["locus_tag"][0]) + '**')
                     if "protein_id" in feat.qualifiers:
-                        feat_names.append(str(feat.qualifiers["protein_id"][0]))
+                        feat_names.append(str(feat.qualifiers["protein_id"][0]) + '**')
+                    if "Name" in feat.qualifiers:
+                        if len(str(feat.qualifiers["Name"][0])) > 5:
+                            feat_names.append(str(feat.qualifiers["Name"][0]) + '**')
+                    
                     # print(str(feat_names))
                     # print(str(feat.qualifiers))
                     for i in range(len(feat_names)):
@@ -218,12 +227,12 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                         if any(
                             x
                             for x in holin_annotations
-                            if (x in str(feat.qualifiers["product"]))
+                            if (x in str(feat.qualifiers))
                         ):
                             tm_seqrec += [feat]
                     # check if protein contains a TMD
                     for i in range(len(feat_names)):
-                        if str(feat_names[i]) in tmhmm_protein_names:
+                        if str(feat_names[i]) in str(tmhmm_protein_names):
                             # print(feat_names[i])
                             tm_seqrec += [feat]
 
@@ -233,12 +242,12 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                         if any(
                             x
                             for x in endolysin_annotations
-                            if (x in str(feat.qualifiers["product"]))
+                            if (x in str(feat.qualifiers))
                         ):
                             endolysin_seqrec += [feat]
                     # check if protein contains an endolysin-associated domain
                     for i in range(len(feat_names)):
-                        if str(feat_names[i]) in endo_names:
+                        if str(feat_names[i]) in str(endo_names):
                             endolysin_seqrec += [feat]
 
             # print(endolysin_seqrec, tm_seqrec, lgc_seqrec)

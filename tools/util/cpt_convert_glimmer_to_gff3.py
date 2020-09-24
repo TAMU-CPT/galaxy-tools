@@ -44,6 +44,15 @@ def glimmer3_to_gff3(glimmer, genome):
             # Correct for gff3
             start -= 1
 
+            if start > end:
+                #gene found on boundary (ex [4000, 200]) from glimmer assuming circular genome
+                #-------------start<=======|sequence end|========>end------
+                if strand > 0:
+                    end = len(current_record)
+                else:
+                    start = 0
+                gene_id+="_truncated"
+
             cds_feat = SeqFeature(
                 FeatureLocation(start, end),
                 type="CDS",

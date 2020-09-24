@@ -21,6 +21,10 @@ $svg
 --aa KR ED HSQTNCYAVILMPFWG
 --fgColor "#ffffff" "#ffffff" "#000000"
 --bgColor "#00b0f0" "#fc0000" "#ffffff"
+#elif $scheme.cs == "rbgb":
+--aa KR ED P C HSQTNYAVILMFWG
+--fgColor "#ffffff" "#ffffff" "#ffffff" "#ffffff" "#000000"
+--bgColor "#00b0f0" "#fc0000" "#1cb026" "#805839" "#ffffff"
 #else:
 	--aa
 	#for group in $scheme.groups:
@@ -48,6 +52,7 @@ $svg
 			<param label="Colour scheme" name="cs" type="select">
 				<option value="default">Default hyrophobic/polar/charged</option>
 				<option value="rb">Positives Blue, Negatives Red</option>
+                <option value="rbgb">Positives Blue, Negatives Red, Prolines Green, Cysteines Brown</option>
 				<option value="custom">Custom Colour Scheme</option>
 			</param>
 			<when value="default" />

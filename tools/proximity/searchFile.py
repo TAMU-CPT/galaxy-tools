@@ -12,10 +12,10 @@ import os
 def dbaseTerms(terms,galaxy=True):
     """ Index into dictionary object and retrieve all desired terms """
     if galaxy:
-        db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-v1.0.2.json"
+        db_path = "/galaxy/tools/cpt2/galaxy-tools/tools/proximity/data/lysis-family-v1.0.3.json"
     else:
         #db_path = "/home/adminuser/research/Galaxy-Tools/tools/proximity/data/lysis-family-v1.0.2.json"
-        db_path = "data/lysis-family-v1.0.2.json"
+        db_path = "data/lysis-family-v1.0.3.json"
     db = ej.explodeJSON(db_path)
     db = db.readJSON()
     dbase_terms = []
@@ -290,8 +290,9 @@ def write_gff3(gffs,outName="proxHits.gff3"):
             for gff_hits in gffs:
                 out_file.writelines(gff_hits+"\n")
         else:
-            raise Exception("No terms were found from query set")
-
+            #raise Exception("No terms were found from query set")
+            out_file.writelines("##No terms were found from query set\n")
+        
 
 if __name__ == "__main__":
     print(os.getcwd())

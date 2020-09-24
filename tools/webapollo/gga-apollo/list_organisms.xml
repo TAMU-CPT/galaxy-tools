@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<tool id="list_organism" name="List Organisms" version="@WRAPPER_VERSION@">
+  <description>in Apollo</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+@AUTH@
+
+python '$__tool_directory__/list_organisms.py'
+'$__user_email__'
+> '$output']]></command>
+  <inputs>
+  </inputs>
+  <outputs>
+    <data format="json" name="output">
+        <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="tabular" visible="true"/>
+    </data>
+  </outputs>
+  <tests>
+      <test>
+        <output name="output">
+            <assert_contents>
+                <has_text text="alt_org" />
+                <has_text text="test_organism" />
+                <has_text text="Testus" />
+            </assert_contents>
+        </output>
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Lists organism in Apollo
+
+@REFERENCES@
+      ]]></help>
+  <expand macro="citations"/>
+</tool>

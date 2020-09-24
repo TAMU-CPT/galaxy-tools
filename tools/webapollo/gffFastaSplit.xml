@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.gff_fasta_splitter" name="Separate Fasta file from GFF3 footer" version="1.0">
+  <description>for use with Apollo's Retrieve Organism</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/gffFastaSplit.py
+$fileIn
+$gffOut
+$fastaOut
+]]></command>
+  <inputs>
+    <param label="GFF3" name="fileIn" type="data" format="gff3"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="gffOut" label="GFF Portion"/>
+    <data format="fasta" name="fastaOut" label="Fasta Portion"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+For GFF files with a Fasta sequence, will separate the file into a features-only GFF file and Fasta file containing the sequence. Will also remove the ### directive between feature groups from Apollo's output.
+]]></help>
+</tool>

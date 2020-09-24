@@ -635,6 +635,9 @@ class Client(object):
                 return d
             else:
                 return r.text
+        elif r.status_code == 504:
+            raise Exception("Apollo Timeout 504")
+        #
 
         # @see self.body for HTTP response body
         raise Exception(

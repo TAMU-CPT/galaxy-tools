@@ -1,0 +1,70 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.fasta.fasta_id_swapper" name="FASTA ID Swapper" version="1.0">
+    <description>Reorders header line with strain/name from ending parentheticals</description>
+    <macros>
+		<import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+    </macros>
+    <expand macro="requirements"/>
+    <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/fasta_ID_swapper.py
+$fasta
+--space $space
+--wrapper $wrapper
+--swap_fa $swap_fa
+
+]]></command>
+    <inputs>
+        <param label="FASTA" name="fasta" type="data" format="fasta" />
+        <param label="Wrapping Brackets" name="wrapper" type="select" >
+            <option value="bracket" selected="true">Square Brackets, [ and ]</option>
+            <option value="parenth">Parentheses, ( and )</option>
+        </param>
+        <param label="Space Separator" name="space" type="text" value="last" help="Select 'last' or the numbered word to be placed at the front of header." />
+    </inputs>
+    <outputs>
+        <data format="fasta" name="swap_fa" label="_id_swapped.fa" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="fasta" value="_id_swap.fa"/>
+            <param name="wrapper" value="bracket" />
+            <param name="space" value="last" />
+            <output name="swap_fa" value="_id_swapped.fa"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+**What it does**
+
+    * This tool is to aid in clarifying the phage being examined for CLC as it uses the first uninterrupted string as the record name.
+    * More options can be added to this if the need arises. 
+    * Selection for either parentheses or square bracket wrappers.
+    * Word based on space separators or the last one in the header.
+    * It takes the value from the above two points and appends it to the beginning of the header.
+
+INPUT : FASTA file (single or multi)
+
+METHOD : FASTA sequence where the strain/name at the end of the fasta header line is inserted at the beginning of the header.
+
+OUTPUT : Swapped ID FASTA file.
+
+EXAMPLE :
+
+>YP_004539126.1 hypothetical protein LIMEzero_ORF53 [Pantoea phage LIMEzero]
+
+    * If you wanted LIMEzero to be the first word in the header:
+        * Select "Square Brackets, [ and ]" and type "last" (no quotes)
+    * If you wanted LIMEzero_ORF53 you would select "Square Brackets, [ and ]" and "4" (no quotes)
+    * Keep in mind that this scheme is dependent on if you are choosing a different word than 'last', the spacing of data and information is homogenous across the headers in the multifasta. This is not necessarily true.
+]]></help>
+        <citations>
+            <citation type="bibtex">
+                @unpublished{galaxyTools,
+                author = {C. Ross},
+                title = {CPT Galaxy Tools},
+                year = {2020-},
+                note = {https://github.com/tamu-cpt/galaxy-tools/}
+                }
+            </citation>
+        </citations>
+</tool>

@@ -4,7 +4,7 @@ import sys
 import argparse
 import logging
 from Bio import SeqIO
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type, get_id
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 
@@ -17,12 +17,15 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
 
     CASES = [
         re.compile(
-            "^.{%s,%s}[ACGSILMFTV][^REKD][GASNL]C" % (lipobox_mindist, lipobox_maxdist)
+            "^.{%s,%s}[ILMFTV][^REKD][GAS]C" % (lipobox_mindist, lipobox_maxdist)
+        ),
+        re.compile(
+            "^.{%s,%s}AW[AGS]C" % (lipobox_mindist, lipobox_maxdist)
         ),
         # Make sure to not have multiple cases that share matches, will introduce duplicate features into gff3 file
     ]
 
-    for record in GFF.parse(gff3_file, base_dict=seq_dict):
+    for record in gffParse(gff3_file, base_dict=seq_dict):
         good_features = []
 
         genes = list(
@@ -110,4 +113,4 @@ if __name__ == "__main__":
     args = vars(parser.parse_args())
     for record in find_lipoprotein(**args):
         record[0].annotations = {}
-        GFF.write(record, sys.stdout)
+        gffWrite(record, sys.stdout)

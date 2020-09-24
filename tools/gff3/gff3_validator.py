@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.SeqFeature import FeatureLocation
-from Bio import SeqIO
+from Bio import SeqIO, SeqFeature, SeqRecord
 from Bio.Seq import Seq
 from gff3 import feature_lambda, feature_test_true
 import csv
 import argparse
-
+from cpt_gffParser import gffParse, gffWrite
 
 def table_annotations(gff3In, out_errorlog):
 
@@ -17,19 +17,35 @@ def table_annotations(gff3In, out_errorlog):
     locations = []
     # disallowedChars = ['\t', '\n', '\r', '%', ';', '=', '&',',']
     disallowedChars = ['"']
-
+    #"""
+    outList = (gffParse(gff3In))
+    gffWrite(None)
+    #GFFWrite(outList)
+    #for x in outList:
+    #  GFFWrite(x)
+      #if "sequence-region" in x.annotations.keys():
+      #  print(x.annotations["sequence-region"][2])
+      #for y in x.features:
+      #  if y.sub_features:
+      #    for z in y.sub_features:
+      #      if z.sub_features:
+      #        for t in z.sub_features:
+      #          print(t)
+    exit()
+    #"""
     # For each record in gff3 parse
-    for record in list(GFF.parse(gff3In)):
-
+    for record in list(gffParse(gff3In)):
+        print((record.annotations))
         # For each feature in record
         # featLvl1 = Genes, terminator, tRNA
         # featLvl2 = mRNA
         # featLvl3 = Exons, CDS, introns, and Shines
-
+        #for x in record.features:
+        #  print(x)
+        exit()
         errorMessage = ""
 
         for featLvl1 in record.features:
-
             for notes in featLvl1.qualifiers:
                 for i in disallowedChars:
                     for j in featLvl1.qualifiers[notes]:
@@ -141,8 +157,7 @@ def table_annotations(gff3In, out_errorlog):
         disallowedChars = ["\t", "\n", "\r", "%", ";", "=", "&", ","]
 
         # For each record in gff3 parse
-        for record in list(GFF.parse(gff3In)):
-
+        for record in list(gffParse(gff3In)):
             # For each feature in record
             # featLvl1 = Genes, terminator, tRNA
             # featLvl2 = mRNA

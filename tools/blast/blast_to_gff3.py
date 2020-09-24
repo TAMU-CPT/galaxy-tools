@@ -181,6 +181,10 @@ def blastxml2gff3(blastxml, include_seq=False):
             rec.features.append(top_feature)
             rec.annotations = {}
             collected_records.append(rec)
+
+        if not len(collected_records):
+            print("##gff-version 3\n##sequence-region null 1 4")
+
         for rec in collected_records:
             yield rec
 
@@ -376,7 +380,8 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         collected_records.append(rec)
 
     collected_records = combine_records(collected_records)
-
+    if not len(collected_records):
+        print("##gff-version 3\n##sequence-region null 1 4")
     for rec in collected_records:
         yield rec
 

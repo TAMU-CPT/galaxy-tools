@@ -1,0 +1,5 @@
+total potential u-spanins: 1
+average length (AA): 134.0
+median length (AA): 134
+maximum orf in size (AA): 134
+minimum orf in size (AA): 134

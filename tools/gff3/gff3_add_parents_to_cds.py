@@ -2,8 +2,8 @@
 import sys
 import logging
 import argparse
-from BCBio import GFF
-from Bio.SeqFeature import SeqFeature
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+#from Bio.SeqFeature import SeqFeature
 from gff3 import feature_lambda, feature_test_type
 
 logging.basicConfig(level=logging.INFO)
@@ -17,18 +17,19 @@ def fixed_feature(rec):
         import random
 
         fid = feature.qualifiers["ID"][0] + "_" + str(random.random())
-        gene = SeqFeature(
+        gene = gffSeqFeature(
             location=feature.location,
             type="gene",
             qualifiers={"ID": [fid], "source": ["cpt.fixModel"]},
         )
         # Below that we have an mRNA
-        mRNA = SeqFeature(
+        mRNA = gffSeqFeature(
             location=feature.location,
             type="mRNA",
-            qualifiers={"source": ["cpt.fixModel"], "ID": ["%s.mRNA" % fid]},
+            qualifiers={"source": ["cpt.fixModel"], "ID": ["%s.mRNA" % fid], "Parent": gene.qualifiers["ID"]},
         )
         feature.qualifiers["ID"] = [fid + ".CDS"]
+        feature.qualifiers["Parent"] = mRNA.qualifiers["ID"]
 
         mRNA.sub_features = [feature]
         gene.sub_features = [mRNA]
@@ -36,10 +37,10 @@ def fixed_feature(rec):
 
 
 def gff_filter(gff3):
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         rec.features = sorted(list(fixed_feature(rec)), key=lambda x: x.location.start)
         rec.annotations = {}
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)
 
 
 if __name__ == "__main__":

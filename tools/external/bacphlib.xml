@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.bacphlip" name="Bacphlip" version="1.0" profile="16.04">
+	<description></description>
+	<macros/>
+	<requirements>
+		<requirement type="package">bacphlip</requirement>
+	</requirements>
+	<command detect_errors="aggressive">
+#if (str($multiF.multiFasta) == '--multi_fasta'):
+  ln -s $fastaIn "InputFasta";
+  bacphlip -i InputFasta --multi_fasta;
+  cat InputFasta.bacphlip > $out1;
+  cat InputFasta.hmmsearch.tsv > $out4;
+  tar -cvf tempTar InputFasta.BACPHLIP_DIR;
+  mv tempTar $out5;
+#else:
+  ln -s $fastaIn "InputFasta";
+  bacphlip -i InputFasta;
+  cat InputFasta.bacphlip > $out1;
+  cat InputFasta.6frame > $out2;
+  cat InputFasta.hmmsearch > $out3;
+  cat InputFasta.hmmsearch.tsv > $out4;
+#end if
+  
+</command>
+	<inputs>
+                <conditional name="multiF">
+                     <param label="Input dataset is a multi-fasta" name="multiFasta" type="boolean" truevalue="--multi_fasta" falsevalue="not" checked="false"/>
+                     <when value="--multi_fasta">
+                        <param label="Fasta Sequence" name="fastaIn" type="data" format="fasta" />
+                     </when>
+                     <when value="not">
+                        <param label="Fasta Sequence" name="fastaIn" type="data" format="fasta" />
+                     </when>
+                </conditional>
+	</inputs>
+	<outputs>
+                <data format="tabular" name="out1" label="Bacphlip summary" />
+		<data format="fasta" name="out2" label="6frame results">
+                  <filter>not multiF['multiFasta']</filter>
+                </data>
+		<data format="text" name="out3" label="HMM results">
+                  <filter>not multiF['multiFasta']</filter>
+                </data>
+		<data format="tabular" name="out4" label="HMM tabular results" />
+                <data format="tar.gz" name="out5" label="Individual HMM and 6frame results archive" >
+                  <filter>multiF['multiFasta']</filter>
+                </data>
+	</outputs>
+	<help>
+**What it does**
+
+Runs BACPHLIB analysis on a fasta. For multifastas, please be sure to check the multifasta option. 
+Individual sequence results will be available within a tar.gz archive for multifasta runs.
+	</help>
+	<tests/>
+	<citations>
+		<citation type="bibtex">
+		@unpublished{galaxyTools,
+			author = {Hockenberry, Adam J. and Wilke, Claus O.},
+			title = {BACPHLIP: Predicting bacteriophage lifestyle from conserved protein domains},
+			year = {2020},
+			note = {https://doi.org/10.1101/2020.05.13.094805}
+		}
+		</citation>
+	</citations>
+</tool>

@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<tool id="export" name="Retrieve Data" version="@WRAPPER_VERSION@">
+  <description>from Apollo into Galaxy</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <code file="webapollo.py"/>
+  <command detect_errors="aggressive"><![CDATA[
+@AUTH@
+python '$__tool_directory__/export.py'
+
+@ORG_CN_OR_GUESS@
+
+#if str($get_gff) == "yes":
+    --gff '$gff_out'
+#end if
+#if str($get_seq) == "yes":
+    --seq '$seq_out'
+#end if
+#if str($get_pep) == "yes":
+    --fasta_pep '$fasta_pep'
+#end if
+#if str($get_cds) == "yes":
+    --fasta_cds '$fasta_cds'
+#end if
+#if str($get_cdna) == "yes":
+    --fasta_cdna '$fasta_cdna
+#end if
+#if str($get_vcf) == "yes":
+    --vcf '#vcf_out'
+#end if
+--json '$json_out'
+
+'$__user_email__'
+
+]]></command>
+  <inputs>
+    <expand macro="cn_or_guess" />
+    <param name="get_gff" type="boolean" truevalue="yes" falsevalue="" checked='true' label="Retrieve GFF Annotations + Whole Genome" />
+    <param name="get_seq" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve Genomic Sequences" />
+    <param name="get_pep" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve Peptide Sequences" />
+    <param name="get_cds" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve CDS Sequences" />
+    <param name="get_cdna" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve cDNA Sequences" />
+    <param name="get_vcf" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve VCF Sequence Alterations" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="gff_out" label="Annotations and Sequence from Apollo">
+      <filter>get_gff</filter>
+    </data>
+    <data format="fasta" name="seq_out" label="Genomic sequences from Apollo">
+      <filter>get_seq</filter>
+    </data>
+    <data format="fasta" name="fasta_pep" label="Peptide sequences from Apollo">
+      <filter>get_pep</filter>
+    </data>
+    <data format="fasta" name="fasta_cds" label="CDS sequences from Apollo">
+      <filter>get_cds</filter>
+    </data>
+    <data format="fasta" name="fasta_cdna" label="cDNA sequences from Apollo">
+      <filter>get_cdna</filter>
+    </data>
+    <data format="vcf" name="vcf_out" label="Sequence alterations from Apollo">
+      <filter>get_vcf</filter>
+    </data>
+    <data format="json" name="json_out" label="Metadata from Apollo">
+        <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="tabular" visible="true"/>
+    </data>
+  </outputs>
+  <tests>
+      <test>
+          <conditional name="org_source">
+              <param name="source_select" value="direct"/>
+              <param name="org_raw" value="test_organism" />
+          </conditional>
+          <conditional name="cn_source">
+              <param name="source_select" value="all"/>
+          </conditional>
+
+          <output name="gff_out">
+              <assert_contents>
+                  <has_text text="##sequence-region Merlin 1 172788" />
+                  <has_text text="owner=admin@local.host;" />
+              </assert_contents>
+          </output>
+          <output name="fasta_pep" file="export/pep.fa" lines_diff="12"/>
+          <output name="fasta_cds" file="export/cds.fa" lines_diff="12"/>
+          <output name="fasta_cdna" file="export/cdna.fa" lines_diff="12"/>
+          <output name="vcf_out" file="export/out.vcf" lines_diff="4"/>
+          <output name="json_out">
+              <assert_contents>
+                  <has_text text="test_organism" />
+              </assert_contents>
+          </output>
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Exports the sequence data and annotations from Apollo.
+
+If you provide an Apollo JSON file as input to the Organism Common Name list,
+this will enable extracting multiple organism's data at once from Apollo.
+Beware that currently **all gff3 and fasta responses are merged together**. If you
+have two separate organisms with identically named reference sequences, it will
+not be possible to separate those out.
+
+@REFERENCES@
+      ]]></help>
+  <expand macro="citations"/>
+</tool>

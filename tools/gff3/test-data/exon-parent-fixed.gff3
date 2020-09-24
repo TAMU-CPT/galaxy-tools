@@ -1,0 +1,17 @@
+##gff-version 3
+##sequence-region testseq_2018-03-08 1 900
+testseq_2018-03-08	feature	gene	154	297	.	-	.	ID=testseq_2018-03-08.gene_1;source2=MGA;uniqueID=offset-159323
+testseq_2018-03-08	cpt.prepApollo	exon	154	297	.	-	.	ID=testseq_2018-03-08.gene_1.exon;Parent=testseq_2018-03-08.gene_1
+testseq_2018-03-08	feature	CDS	154	297	.	-	0	ID=testseq_2018-03-08.cds_gene_1;Parent=testseq_2018-03-08.gene_1.exon;source2=MGA;uniqueID=offset-159409
+testseq_2018-03-08	feature	gene	314	507	.	-	.	ID=testseq_2018-03-08.gene_2;source2=MGA;uniqueID=offset-159674
+testseq_2018-03-08	cpt.prepApollo	exon	314	490	.	-	.	ID=testseq_2018-03-08.gene_2.exon;Parent=testseq_2018-03-08.gene_2
+testseq_2018-03-08	feature	CDS	314	490	.	-	0	ID=testseq_2018-03-08.cds_gene_2;Parent=testseq_2018-03-08.gene_2.exon;source2=MGA;uniqueID=offset-159760
+testseq_2018-03-08	CPT_ShineFind	Shine_Dalgarno_sequence	504	507	.	-	.	ID=testseq_2018-03-08.cds_gene_2.rbs-0;Parent=testseq_2018-03-08.gene_2;uniqueID=offset-160090
+testseq_2018-03-08	feature	gene	487	670	.	-	.	ID=testseq_2018-03-08.gene_3;source2=MGA;uniqueID=offset-159882
+testseq_2018-03-08	feature	exon	487	657	.	-	0	ID=testseq_2018-03-08.exon_gene_3;Parent=testseq_2018-03-08.gene_3;source2=MGA;uniqueID=offset-159968
+testseq_2018-03-08	feature	CDS	487	657	.	-	0	ID=testseq_2018-03-08.cds_gene_3;Parent=testseq_2018-03-08.exon_gene_3;source2=MGA;uniqueID=offset-159969
+testseq_2018-03-08	CPT_ShineFind	Shine_Dalgarno_sequence	665	670	.	-	.	ID=testseq_2018-03-08.cds_gene_3.rbs-0;Parent=testseq_2018-03-08.gene_3;uniqueID=offset-160441
+testseq_2018-03-08	feature	gene	700	900	.	-	.	ID=testseq_2018-03-08.gene_4;source2=MGA;uniqueID=offset-159874
+testseq_2018-03-08	cpt.prepApollo	exon	700	900	.	-	.	ID=testseq_2018-03-08.gene_4.exon;Parent=testseq_2018-03-08.gene_4
+testseq_2018-03-08	feature	CDS	700	790	.	-	0	ID=testseq_2018-03-08.cds_gene_4;Parent=testseq_2018-03-08.gene_4.exon;source2=MGA;uniqueID=offset-159765
+testseq_2018-03-08	feature	CDS	820	900	.	-	0	ID=testseq_2018-03-08.cds2_gene_4;Parent=testseq_2018-03-08.gene_4.exon;source2=MGA;uniqueID=offset-159762

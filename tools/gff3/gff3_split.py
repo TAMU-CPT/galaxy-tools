@@ -2,7 +2,7 @@
 import os
 import copy
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     file_handles = {}
     logging.info("Parsing Data")
-    for record in GFF.parse(args.data):
+    for record in gffParse(args.data):
         logging.info("Process record %s", record.id)
         record_features = record.features
         record.features = []
@@ -47,7 +47,7 @@ if __name__ == "__main__":
                 file_handles[propkey] = open(path, "a")
 
             tmprec.features = [feature]
-            GFF.write([tmprec], file_handles[propkey])
+            gffWrite([tmprec], file_handles[propkey])
         # SeqIO.write([record], args.fasta, 'fasta')
         # sys.exit()
 
