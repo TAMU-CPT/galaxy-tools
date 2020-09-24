@@ -2,10 +2,12 @@ from Bio.SeqFeature import FeatureLocation, CompoundLocation
 from Bio import SeqIO, SeqFeature, SeqRecord
 from Bio.Seq import Seq, UnknownSeq
 import sys
-import urllib
+try:
+  import urllib.parse
+except:
+  import urllib
 
-#import urlparse.urlparse
-#import urllib.parse
+#Try/Except blocks used for limited python 2.7 compatibility. Python3 spec is within the try block
 
 disallowArray = ["&", ",", ";", "="]
 validArray = ["%26", "%2C", "%3B", "%3D"]
@@ -52,7 +54,10 @@ class gffSeqFeature(SeqFeature.SeqFeature):
             self.strand = strand
         self.id = id
         if qualifiers is None:
-            qualifiers = OrderedDict()
+            try:
+              qualifiers = OrderedDict()
+            except:
+              qualifiers = {}
         self.qualifiers = qualifiers
         if sub_features is None:
             sub_features = []
@@ -226,7 +231,10 @@ def lineAnalysis(line):
           parseMode = 1
           continue
         elif currChar == "%" and (fields[8][x+1] in encoders) and (fields[8][x+2] in encoders):
-          keyName += urllib.unquote(fields[8][x:x+3])
+          try:
+            keyName += urllib.parse.unquote(fields[8][x:x+3])
+          except:
+            keyName += urllib.unquote(fields[8][x:x+3])
           contCounter = 2
         else: #Encode special char
           encoded = str(hex(ord(currChar)))
@@ -240,7 +248,10 @@ def lineAnalysis(line):
         elif currChar == "=":
           valNames[valInd] += "%3D"
         elif currChar == "%" and (fields[8][x+1] in encoders) and (fields[8][x+2] in encoders):
-          valNames[valInd] += urllib.unquote(fields[8][x:x+3])
+          try:
+            valNames[valInd] += urllib.parse.unquote(fields[8][x:x+3])
+          except:
+            valNames[valInd] += urllib.unquote(fields[8][x:x+3])
           contCounter = 2
         elif currChar == "\n":
           parseMode = 2
