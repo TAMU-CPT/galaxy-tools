@@ -3,9 +3,9 @@ import sys
 import logging
 import argparse
 import copy
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from gff3 import feature_lambda, feature_test_type
-from Bio.SeqFeature import SeqFeature, FeatureLocation
+from Bio.SeqFeature import FeatureLocation
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -39,7 +39,7 @@ def add_exons(rec):
             cds_list.append(cds)
         if cds_list:
             # we found a CDS to adopt
-            new_exon = SeqFeature(
+            new_exon = gffSeqFeature(
                 location=FeatureLocation(exon_start, exon_end),
                 type="exon",
                 qualifiers={
