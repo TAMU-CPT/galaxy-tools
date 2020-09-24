@@ -29,10 +29,8 @@ class Client(object):
         
         if api_key is not None:
             Entrez.api_key = api_key
-        elif galaxy_api_key is not None:
-            Entrez.api_key = env_api_key
         else:
-            Entrez.api_key = None
+            print("API Key not being used. Increase request rate by obtaining an API Key from NCBI. See https://www.ncbi.nlm.nih.gov/books/NBK25497/")
 
         if history_file is not None:
             with open(history_file, 'r') as handle:
