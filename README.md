@@ -18,6 +18,26 @@ The most commonly used tools have test cases built into the wrappper for code va
 
 Tools in this repository are designed for use inside of a Galaxy instance. Any use or installation independent of Galaxy, or outside the scope detailed for any given tool, is not supported. The CPT Galaxy instance hosts multiple tools produced by external groups which are not present in this repository. Some of these tools require additional permissions or licenses; please contact the relevant tool author(s) if you wish to host these on your Galaxy instance.
 
+#### Deprecation Candidates
+
+Some tools are being set for deprecation and may be removed in future updates.
+
+Tool Name | Script Location | Reason
+----------|-----------------|--------
+EFetch | edirect/efetch.xml | To be replaced with IUC version
+
+## Testing and Test Data
+All tools present in the Structural, Functional, and Comparative workflows are testable with the `planemo test` command or via Galaxy's built in `run_tests.sh` script using the data in each subdirectory's `test-data` folder. The following tools are exceptions to this, as they rely on externally installed tools or services that are outside of Galaxy or Conda installed Packages. 
+
+We are currently working to include these tests to all tools.
+
+Tool Name | Script Location
+----------|-----------------
+TMHMM (GFF3) | external/tmhmm.xml
+[5.33-72.0] Interproscan functional predictions of ORFs | external/interproscan-5.33.xml
+JBrowse 0.6.3+cpt | jbrowse/jbrowse.xml
+progressiveMauve | comparative/progressivemauve.xml
+All webapollo tools | webapollo/*
 
 ## Contribution
 
