@@ -5,6 +5,7 @@
 	</macros>
 	<expand macro="requirements">
         <!-- <requirement type="package" version="1.0.6">pyxlsb</requirement> -->
+        <requirement type="package" versi5on="1.2.0">xlrd</requirement>
         <requirement type="package" version="1.0.5">pandas</requirement>
 	</expand>
     <!-- TODO: Add history arguments for wrapper -->
