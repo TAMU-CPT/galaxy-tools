@@ -4,6 +4,8 @@
 		<import>crr_macros.xml</import>
 	</macros>
 	<expand macro="requirements">
+        <requirement type="package" version="1.0.6">pyxlsb</requirement>
+        <requirement type="package" version="1.0.5">pandas</requirement>
 	</expand>
     <!-- TODO: Add history arguments for wrapper -->
     <command detect_errors="aggressive"><![CDATA[
