@@ -25,7 +25,8 @@ class ExcelParsing:
     
     def chop_frame(self, cols=None, **kwargs):
         """ subset based on columns """
-
+        print(cols)
+        exit()
         frame = self.parse_excel(self.file, **kwargs)
         return frame.reindex(columns=cols)
         #return frame.loc[:,cols]
