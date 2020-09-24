@@ -1,10 +1,10 @@
 <tool id="edu.tamu.cpt.prep.mist_prep" name="Excel to MultiFASTA MIST Preparation" version="1.0">
     <description>Parses a minimal two column excel sheet to retrieve data from NCBI with one column and renaming the header with the other column</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
-    <expand macro="requirements">
-    </expand>
+	<macros>
+		<import>crr_macros.xml</import>
+	</macros>
+	<expand macro="requirements">
+	</expand>
     <!-- TODO: Add history arguments for wrapper -->
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/mist_prep.py 
@@ -14,15 +14,19 @@ $excel_file
 --user_email "$__user_email__"
 #set admin_emails = ';'.join(str($__admin_users__).split(','))
 --admin_email "$admin_emails"
-#set ncbi_api_key = str($__ncbi_api_key__)
---api_key "$api_key"
+#if $api_key
+    --api_key $api_key
+#else
+    #set galaxy_api_key = str($__ncbi_api_key__)
+    --api_key $galaxy_api_key
+#end if
 --output_fasta $output_fasta
 ]]></command>
         <inputs>    
-            <param name="excel_file" label="Excel File" type="data" />
+            <param name="excel_file" label="Excel File" type="data" format="data"/>
             <param name="acc_col" label="Accession Column Label" type="text" />
             <param name="name_col" label="Name Column Label" type="text" />
-            <param name="api_key" label="NCBI API Key" type="text" />
+            <param name="api_key" label="NCBI API Key" type="text" optional="True"/>
         </inputs>
         <outputs>
             <data name="output_fasta" label="_MIST_multi.fa" format="fasta" />
@@ -32,20 +36,15 @@ $excel_file
                 <param name="excel_file" value="mist_prep_sample.xlsx"/>
                 <param name="acc_col" value="Acccession" />
                 <param name="name_col" value="Genome" />
+                <param name="api_key" value="65da3234a0dd70611ede507979d1f3885608" />
                 <output name="output_fasta" file="_MIST_multi.fa" />
             </test>
         </tests>
     <help><![CDATA[
-
+--> filler text
+* User selects accession column which will query NCBI and generate a multifasta
+* User selects naming column to reconfigure the header of the multi fasta
+* Output is a multifasta
     ]]></help>
-        <citations>
-            <citation type="bibtex">
-                @unpublished{galaxyTools,
-                author = {C. Ross},
-                title = {CPT Galaxy Tools},
-                year = {2020-},
-                note = {https://github.com/tamu-cpt/galaxy-tools/}
-                }
-            </citation>
-        </citations>
+    <expand macro="citations-crr" />
 </tool>

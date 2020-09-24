@@ -34,7 +34,8 @@ if __name__ == "__main__":
     parser.add_argument('--admin_email', help="Admin email")
     parser.add_argument('--history_file', help='Fetch results from previous query')
     parser.add_argument('--db', default="nuccore", help='Database to use')
-    parser.add_argument('--api_key', default="65da3234a0dd70611ede507979d1f3885608", help="NCBI API Key")
+    parser.add_argument('--api_key', help="NCBI API Key")
+    #"65da3234a0dd70611ede507979d1f3885608"
     parser.add_argument('--retmode', default="fasta", help='Retmode')
     parser.add_argument('--rettype', default="fasta", help='Rettype')
     
