@@ -12,7 +12,7 @@
     --api_key $api_key
 #else if $__ncbi_api_key__
     #set ncbi_api_key = str($__ncbi_api_key__)
-    --api_key $ncbi_api_key
+    --api_key "$ncbi_api_key"
 #else
   #pass
 #end if
