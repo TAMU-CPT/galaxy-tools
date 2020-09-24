@@ -74,7 +74,7 @@ class NaiveSDCaller(object):
         )
 
     @classmethod
-    def to_features(cls, hits, strand, parent_start, parent_end, feature_id=None, sd_min=5, sd_max=15):
+    def to_features(cls, hits, strand, parent_start, parent_end, feature_id=None, sd_min=3, sd_max=17):
         results = []
         for idx, hit in enumerate(hits):
             # gene            complement(124..486)
@@ -113,7 +113,7 @@ class NaiveSDCaller(object):
             results.append(tmp)
         return results
 
-    def testFeatureUpstream(self, feature, record, sd_min=5, sd_max=15):
+    def testFeatureUpstream(self, feature, record, sd_min=3, sd_max=17):
         # Strand information necessary to getting correct upstream sequence
         strand = feature.location.strand
 
@@ -135,7 +135,7 @@ class NaiveSDCaller(object):
         seq = str(tmp.extract(record.seq))
         return self.list_sds(seq), start, end, seq
 
-    def hasSd(self, feature, record, sd_min=5, sd_max=15):
+    def hasSd(self, feature, record, sd_min=3, sd_max=17):
         sds, start, end, seq = self.testFeatureUpstream(
             feature, record, sd_min=sd_min, sd_max=sd_max
         )
@@ -178,8 +178,8 @@ def shinefind(
     gff3,
     gff3_output=None,
     table_output=None,
-    lookahead_min=5,
-    lookahead_max=15,
+    lookahead_min=3,
+    lookahead_max=17,
     top_only=False,
     add=False,
 ):
@@ -396,14 +396,14 @@ if __name__ == "__main__":
         nargs="?",
         type=int,
         help="Number of bases upstream of CDSs to end search",
-        default=5,
+        default=3,
     )
     parser.add_argument(
         "--lookahead_max",
         nargs="?",
         type=int,
         help="Number of bases upstream of CDSs to begin search",
-        default=15,
+        default=17,
     )
 
     parser.add_argument("--top_only", action="store_true", help="Only report best hits")

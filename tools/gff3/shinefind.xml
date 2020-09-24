@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.genbank.shinefind" name="Shine Find" version="19.1.0.0">
+<tool id="edu.tamu.cpt.genbank.shinefind" name="Shine Find" version="20.9.0.0">
 	<description>Identify shine-dalgarno sequences</description>
 	<macros>
 		<import>macros.xml</import>
@@ -29,8 +29,8 @@ $top_only
 		<expand macro="genome_selector" />
 		<expand macro="gff3_input" />
 
-		<param label="Number of bases upstream of CDSs to end search (--lookahead_min)" name="lookahead_min" type="integer" value="5"/>
-		<param label="Number of bases upstream of CDSs to begin search (--lookahead_max)" name="lookahead_max" type="integer" value="15"/>
+		<param label="Minimum number of bases upstream of CDS for gap (--lookahead_min)" name="lookahead_min" type="integer" value="3"/>
+		<param label="Maximum number of bases upstream of CDS for gap (--lookahead_max)" name="lookahead_max" type="integer" value="17"/>
 		<param checked="true" label="Automatically add RBSs to input GFF3" name="add"
 				type="boolean" truevalue="--add" falsevalue="" />
 		<param checked="true" label="Only report best hits (--top_only)"
@@ -78,6 +78,10 @@ possible Shine-Dalgarno sequences:
 - GAG
 - AGG
 - GGT
+
+**Gap Min/Max Settings**
+ In previous versions of this tool, the min/max was set for the window to find a Shine-Dalgarno sequence, but 
+ currently we specify the minimum and maxium GAP between the end of the SD and the start of the closest CDS. 
 
 By default, only the first (closest to consensus) hit to the list is returned to the GFF3. 
 By selecting ‘No’ for ‘Only report best hits’, **all hits** to the possible SD list will 
