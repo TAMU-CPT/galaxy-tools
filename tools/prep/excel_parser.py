@@ -3,7 +3,6 @@ import re
 import pandas as pd
 #from pyxlsb import open_workbook
 
-
 class ExcelParsing:
     
     def __init__(self, file):
@@ -28,6 +27,7 @@ class ExcelParsing:
         """ subset based on columns """
 
         frame = self.parse_excel(self.file, **kwargs)
+        #return frame.reindex(columns=cols)
         return frame.loc[:,cols]
 
 

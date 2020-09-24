@@ -45,9 +45,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     #  parse data into dataframe using excel_parser
-    cols = [args.acc_col, args.name_col]
+    cols = [str(args.acc_col), str(args.name_col)]
     data = ExcelParsing(args.excel_file).chop_frame(cols=cols)
-
+    
     #  prettify future headers
     names = list(data[args.name_col])
     spliced_names = []
