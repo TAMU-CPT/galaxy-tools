@@ -1,8 +1,7 @@
 import re
 
 import pandas as pd
-from pyxlsb import open_workbook
-
+#from pyxlsb import open_workbook
 
 class ExcelParsing:
     
@@ -14,24 +13,29 @@ class ExcelParsing:
     def parse_excel(file):
         """ returns a dataframe object, checks binary """
         
-        try:
-            return pd.read_excel(file)
-        except:
-            df=[]
-            with open_workbook(file) as wb:
-                with wb.get_sheet(1) as sheet:
-                    for row in sheet.rows():
-                        df.append([item.v for item in row])
-            return pd.DataFrame(df[1:], columns=df[0])
+        #try:
+        return pd.read_excel(file)
+        #except:
+        #    df=[]
+        #    with open_workbook(file) as wb:
+        #        with wb.get_sheet(1) as sheet:
+        #            for row in sheet.rows():
+        #                df.append([item.v for item in row])
+        #    return pd.DataFrame(df[1:], columns=df[0])
     
     def chop_frame(self, cols=None, **kwargs):
         """ subset based on columns """
+        print(cols)
 
         frame = self.parse_excel(self.file, **kwargs)
-        return frame.loc[:,cols]
+        print(frame.columns)
+        print(frame.head())
+        return frame.reindex(columns=cols)
+        #return frame.loc[:,cols]
 
 
 if __name__ == "__main__":
+    
     file = 'test-data/Refseq_coliphages_20200908.xlsb'
     data = ExcelParsing(file).chop_frame(cols=['Genome','Accession'])
     names = list(data['Genome'])
