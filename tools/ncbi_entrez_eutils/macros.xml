@@ -21,6 +21,12 @@ if [ ! -z "${NCBI_API_KEY}" ];
   <!--  TODO: citation -->
   <token name="@REFERENCES@"><![CDATA[
   ]]></token>
+    <xml name="api_key_input"
+        token_name="api_key_input"
+        token_label="Personal NCBI API Key"
+    >
+    <param name="api_key" label="NCBI API Key" type="text" optional="True"/>
+    </xml>
   <token name="@DISCLAIMER@"><![CDATA[
 Usage Guidelines and Requirements
 =================================

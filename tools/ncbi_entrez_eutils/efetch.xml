@@ -26,6 +26,7 @@ $db.db_select
   <inputs>
     <expand macro="db"/>
     <expand macro="list_or_hist"/>
+    <expand macro="api_key_input"/>
   </inputs>
   <outputs>
     <collection name="output1" type="list" label="NCBI EFetch results">
