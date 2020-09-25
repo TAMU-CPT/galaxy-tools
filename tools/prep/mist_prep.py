@@ -10,14 +10,15 @@ import eutils
 
 
 def is_binary_file(parser_var, arg):
+    """
+    THIS IS NOT WORKING AS DESIRED, MIGHT SCRAP AND FORCE NONBINARY EXCEL UPLOAD
+    """
     if not os.path.exists(arg):
         parser_var.error(f"File {arg} does NOT exist!")
     else:
         try:
-
             return open(arg, 'rb')
         except:
-
             return open(arg, 'r')
 
 if __name__ == "__main__":
@@ -61,10 +62,6 @@ if __name__ == "__main__":
     
     ids = list(data[args.acc_col])
     combined_data = zip(spliced_names, ids)
-    for each_combo  in combined_data:
-        print(f"{each_combo[0]}-{each_combo[1]}")
-        print(type(each_combo[1]))
-    exit()
     c = eutils.Client(
         history_file=args.history_file,
         user_email=args.user_email,
@@ -78,9 +75,11 @@ if __name__ == "__main__":
         if getattr(args, attr, None) is not None:
             payload[attr] = getattr(args, attr)
 
-    
+    print('here')
     with args.output_fasta as f:
+        print('here again')
         for org in combined_data:
+            print(org)
             payload['id'] = org[1]
             print(payload)
             obj = c.fetch(args.db, ftype=args.retmode, read_only_fasta=True, **payload)
