@@ -33,7 +33,7 @@ $excel_file
         </outputs>
         <tests>
             <test>
-                <param name="excel_file" value="mist_prep_sample.xlsx" />
+                <param name="excel_file" value="mist_prep_sample_2.xlsx" />
                 <param name="acc_col" value="Acccession" />
                 <param name="name_col" value="Genome" />
                 <param name="api_key" value="65da3234a0dd70611ede507979d1f3885608" />
