@@ -28,8 +28,8 @@ class ExcelParsing:
         print(cols)
 
         frame = self.parse_excel(self.file, **kwargs)
-        return frame.reindex(columns=cols)
-        #return frame.loc[:,cols]
+        #return frame.reindex(columns=cols)
+        return frame.loc[:,cols]
 
 
 if __name__ == "__main__":
