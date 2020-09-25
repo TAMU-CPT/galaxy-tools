@@ -46,8 +46,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     #  parse data into dataframe using excel_parser
-    cols = [str(args.acc_col), str(args.name_col)]
+    print(str(args.acc_col))
+    print(str(args.name_col))
+    cols = [str(args.acc_col).strip(), str(args.name_col).strip()]
     data = ExcelParsing(args.excel_file).chop_frame(cols=cols)
+    print(data.columns)
     
     #  prettify future headers
     names = list(data[args.name_col])
