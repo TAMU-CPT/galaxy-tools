@@ -3,7 +3,7 @@
 	<xml name="requirements">
 		<requirements>
 			<requirement type="package" version="3.8.3">python</requirement>
-			<requirement type="package" version="1.70">biopython</requirement>
+			<requirement type="package" version="1.77">biopython</requirement>
 			<yield/>
 		</requirements>
         <version_command>
