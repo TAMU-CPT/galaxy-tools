@@ -19,6 +19,7 @@ $excel_file
 --admin_email "$admin_emails"
 #if $api_key
     --api_key $api_key
+#end if
 --output_fasta $output_fasta
 ]]></command>
         <inputs>    
