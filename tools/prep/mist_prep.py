@@ -59,7 +59,7 @@ if __name__ == "__main__":
         else:
             r = s[1:]
         spliced_names.append(r)
-    
+    print(names)
     ids = list(data[args.acc_col])
     combined_data = zip(spliced_names, ids)
     c = eutils.Client(
