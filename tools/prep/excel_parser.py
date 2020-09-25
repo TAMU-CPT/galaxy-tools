@@ -28,6 +28,7 @@ class ExcelParsing:
         print(cols)
 
         frame = self.parse_excel(self.file, **kwargs)
+        print(frame.head())
         return frame.reindex(columns=cols)
         #return frame.loc[:,cols]
 
