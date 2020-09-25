@@ -61,6 +61,9 @@ if __name__ == "__main__":
     
     ids = list(data[args.acc_col])
     combined_data = zip(spliced_names, ids)
+    for each_combo  in combined_data:
+        print(f"{each_combo[0]}-{each_combo[1]}")
+    exit()
     c = eutils.Client(
         history_file=args.history_file,
         user_email=args.user_email,
