@@ -28,7 +28,8 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         ref=None,
         ref_db=None,
         shift=0,
-        score=0.0
+        score=0.0,
+        source="feature"
     ):
         """Reimplementation of SeqFeature for use with GFF3 Parsing
         Does not remove the sub_feature functionality, as unlike
@@ -46,6 +47,7 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         self.type = type
         self.shift = shift
         self.score = score
+        self.source = source
         if location_operator:
             # TODO - Deprecation warning
             self.location_operator = location_operator
@@ -294,7 +296,7 @@ def lineAnalysis(line):
 
     if errorMessage != "":
       return errorMessage, None, None
-    return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, shiftIn, scoreIn)   
+    return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, shiftIn, scoreIn, fields[1])   
         
 def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
     fastaDirective = False
@@ -499,4 +501,4 @@ def gffWrite(inRec, outStream = None):
       elif rec.seq:
         outStream.write("##sequence-region " + rec.id + " 1 " + str(len(rec.seq)) +"\n")
       for feat in rec.features:
-          printFeatLine(feat, rec.id, score = feat.score, shift = feat.shift, outStream = outStream)        
+          printFeatLine(feat, rec.id, source = feat.source, score = feat.score, shift = feat.shift, outStream = outStream)        
