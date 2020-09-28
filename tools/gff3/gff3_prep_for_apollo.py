@@ -10,16 +10,42 @@ from Bio.SeqFeature import FeatureLocation
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+ALLOWED_FEATURES = [
+        "mRNA",
+        "exon",
+        "transposable_element",
+        "tRNA",
+        "transcript",
+        "terminator",
+        "Shine_Dalgarno_Sequence",
+        "pseudogene",
+        "stop_codon_read_through",
+        "repeat_region",
+        "CDS",
+        "gene",
+        "rRNA",
+        "ncRNA",
+        "snRNA",
+        "snoRNA",
+        "miRNA",
+        ]
 
-def add_exons(rec):
+SPECIAL_REMOVED_FEATURES = ["gene_component_region", "sequence_difference"]
+
+
+
+def add_exons(features):
     for gene in feature_lambda(
-        rec.features, feature_test_type, {"type": "gene"}, subfeatures=True
+        features, feature_test_type, {"type": "gene"}, subfeatures=True
     ):
         clean_gene = copy.deepcopy(gene)
         exon_start = None
         exon_end = None
         exon_strand = None
         cds_list = []
+        for exon in feature_lambda(gene.sub_features, feature_test_type, {"type": "exon"}, subfeatures=False,recurse=False):
+            #if the gene contains an exon, skip.
+            continue
         # check for CDS child features of the gene, do not go a further step (this should skip any CDS children of exon child features)
         for cds in feature_lambda(
             gene.sub_features,
@@ -42,8 +68,8 @@ def add_exons(rec):
             new_exon = gffSeqFeature(
                 location=FeatureLocation(exon_start, exon_end),
                 type="exon",
+                source = "cpt.prepApollo",
                 qualifiers={
-                    "source": ["cpt.prepApollo"],
                     "ID": ["%s.exon" % clean_gene.qualifiers["ID"][0]],
                     "Parent": clean_gene.qualifiers["ID"],
                 },
@@ -71,10 +97,27 @@ def add_exons(rec):
         # return the cleaned gene with new exon
         yield clean_gene
 
+def process_features(features):
+    # change RBS to 'Shine_Dalgarno_sequence'
+    for rbs in feature_lambda(features, feature_test_type, {'type': "RBS"}):
+        rbs.type = "Shine_Dalgarno_sequence"
+
+    # Filter top level features
+    for feature in feature_lambda(features, feature_test_type, {"types": ALLOWED_FEATURES}, subfeatures=True):
+        cleaned_subfeatures = []
+        for sf in feature.sub_features:
+            if sf.type in SPECIAL_REMOVED_FEATURES:
+                # 'gene_component_region' is uncaught by feature_test_type as it contains `gene`
+                continue
+            else:
+                cleaned_subfeatures.append(sf)
+        feature.sub_features = copy.deepcopy(cleaned_subfeatures)  
+        yield feature
 
 def gff_filter(gff3):
     for rec in gffParse(gff3):
-        rec.features = sorted(list(add_exons(rec)), key=lambda x: x.location.start)
+        cleaned_features = sorted(list(process_features(rec.features)), key=lambda x: x.location.start)
+        rec.features = sorted(list(add_exons(cleaned_features)), key=lambda x: x.location.start)
         rec.annotations = {}
         gffWrite([rec], sys.stdout)
 
