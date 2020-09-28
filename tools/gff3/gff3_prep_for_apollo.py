@@ -30,6 +30,8 @@ ALLOWED_FEATURES = [
         "miRNA",
         ]
 
+SPECIAL_REMOVED_FEATURES = ["gene_component_region", "sequence_difference"]
+
 
 
 def add_exons(features):
@@ -66,8 +68,8 @@ def add_exons(features):
             new_exon = gffSeqFeature(
                 location=FeatureLocation(exon_start, exon_end),
                 type="exon",
+                source = "cpt.prepApollo",
                 qualifiers={
-                    "source": ["cpt.prepApollo"],
                     "ID": ["%s.exon" % clean_gene.qualifiers["ID"][0]],
                     "Parent": clean_gene.qualifiers["ID"],
                 },
@@ -100,13 +102,16 @@ def process_features(features):
     for rbs in feature_lambda(features, feature_test_type, {'type': "RBS"}):
         rbs.type = "Shine_Dalgarno_sequence"
 
-    # remove any non-allowed features
+    # Filter top level features
     for feature in feature_lambda(features, feature_test_type, {"types": ALLOWED_FEATURES}, subfeatures=True):
-        # ensures that subfeatures are also filtered 
-#        clean_sfs = []
-#        for sf in feature_lambda(feature.sub_features, feature_test_type, {"types": ALLOWED_FEATURES}, subfeatures=True):
-#            clean_sfs.append(sf)
-#        feature.sub_features = copy.deepcopy(clean_sfs)
+        cleaned_subfeatures = []
+        for sf in feature.sub_features:
+            if sf.type in SPECIAL_REMOVED_FEATURES:
+                # 'gene_component_region' is uncaught by feature_test_type as it contains `gene`
+                continue
+            else:
+                cleaned_subfeatures.append(sf)
+        feature.sub_features = copy.deepcopy(cleaned_subfeatures)  
         yield feature
 
 def gff_filter(gff3):
