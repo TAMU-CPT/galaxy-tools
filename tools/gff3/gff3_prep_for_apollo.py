@@ -10,16 +10,40 @@ from Bio.SeqFeature import FeatureLocation
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+ALLOWED_FEATURES = [
+        "mRNA",
+        "exon",
+        "transposable_element",
+        "tRNA",
+        "transcript",
+        "terminator",
+        "Shine_Dalgarno_Sequence",
+        "pseudogene",
+        "stop_codon_read_through",
+        "repeat_region",
+        "CDS",
+        "gene",
+        "rRNA",
+        "ncRNA",
+        "snRNA",
+        "snoRNA",
+        "miRNA",
+        ]
 
-def add_exons(rec):
+
+
+def add_exons(features):
     for gene in feature_lambda(
-        rec.features, feature_test_type, {"type": "gene"}, subfeatures=True
+        features, feature_test_type, {"type": "gene"}, subfeatures=True
     ):
         clean_gene = copy.deepcopy(gene)
         exon_start = None
         exon_end = None
         exon_strand = None
         cds_list = []
+        for exon in feature_lambda(gene.sub_features, feature_test_type, {"type": "exon"}, subfeatures=False,recurse=False):
+            #if the gene contains an exon, skip.
+            continue
         # check for CDS child features of the gene, do not go a further step (this should skip any CDS children of exon child features)
         for cds in feature_lambda(
             gene.sub_features,
@@ -71,10 +95,24 @@ def add_exons(rec):
         # return the cleaned gene with new exon
         yield clean_gene
 
+def process_features(features):
+    # change RBS to 'Shine_Dalgarno_sequence'
+    for rbs in feature_lambda(features, feature_test_type, {'type': "RBS"}):
+        rbs.type = "Shine_Dalgarno_sequence"
+
+    # remove any non-allowed features
+    for feature in feature_lambda(features, feature_test_type, {"types": ALLOWED_FEATURES}, subfeatures=True):
+        # ensures that subfeatures are also filtered 
+#        clean_sfs = []
+#        for sf in feature_lambda(feature.sub_features, feature_test_type, {"types": ALLOWED_FEATURES}, subfeatures=True):
+#            clean_sfs.append(sf)
+#        feature.sub_features = copy.deepcopy(clean_sfs)
+        yield feature
 
 def gff_filter(gff3):
     for rec in gffParse(gff3):
-        rec.features = sorted(list(add_exons(rec)), key=lambda x: x.location.start)
+        cleaned_features = sorted(list(process_features(rec.features)), key=lambda x: x.location.start)
+        rec.features = sorted(list(add_exons(cleaned_features)), key=lambda x: x.location.start)
         rec.annotations = {}
         gffWrite([rec], sys.stdout)
 
