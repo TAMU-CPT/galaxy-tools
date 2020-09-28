@@ -28,9 +28,11 @@ class Client(object):
                             "administrator email in NCBI_EUTILS_CONTACT")
         
         if api_key is not None:
+            print("Using User NCBI API Key")
             Entrez.api_key = api_key
-        elif "NCBI_API_KEY" in os.environ:
-            Entrez.api_key = os.environ.get("NCBI_API_KEY")
+        elif os.environ.get('NCBI_API_KEY') is not None:
+            print("Using Galaxy NCBI API Key")
+            Entrez.api_key = os.environ.get('NCBI_API_KEY')
         else:
             print("API Key not being used. Increase request rate by obtaining an API Key from NCBI. See https://www.ncbi.nlm.nih.gov/books/NBK25497/")
 
