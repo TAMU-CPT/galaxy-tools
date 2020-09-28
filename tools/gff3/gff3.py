@@ -96,9 +96,12 @@ def feature_test_true(feature, **kwargs):
 
 def feature_test_type(feature, **kwargs):
     if "type" in kwargs:
-        return feature.type == kwargs["type"]
+        return str(feature.type).upper() == str(kwargs["type"]).upper()
     elif "types" in kwargs:
-        return feature.type in kwargs["types"]
+      for x in kwargs["types"]:
+        if str(feature.type).upper() == str(x).upper():
+          return True
+      return False
     raise Exception("Incorrect feature_test_type call, need type or types")
 
 

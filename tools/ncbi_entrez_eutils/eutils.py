@@ -29,8 +29,8 @@ class Client(object):
         
         if api_key is not None:
             Entrez.api_key = api_key
-        elif "NCBI_API_KEY" in os.environ:
-            Entrez.api_key = os.environ.get("NCBI_API_KEY")
+        elif os.environ.get('NCBI_API_KEY') is not None:
+            Entrez.api_key = os.environ.get('NCBI_API_KEY')
         else:
             print("API Key not being used. Increase request rate by obtaining an API Key from NCBI. See https://www.ncbi.nlm.nih.gov/books/NBK25497/")
 
