@@ -340,14 +340,26 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
       if res:
         if prag not in indDict.keys():
           indDict[prag] = 0
-          orgDict[prag] = []
+          orgDict[prag] = [res]
           seekParentDict[prag] = []
           seqDict[prag] = ""
+          if "Parent" in res.qualifiers.keys():
+              seekParentDict[prag].append(indDict[prag])
         else:
-          indDict[prag] += 1
-        orgDict[prag].append(res)
-        if "Parent" in res.qualifiers.keys():
-          seekParentDict[prag].append(indDict[prag])
+          incInd = True
+          if res.id:
+            for x in range(0, len(orgDict[prag])):
+              if res.id == orgDict[prag][x].id:
+                if orgDict[prag][x].type != res.type:
+                  errOut += ("Line " + str(lineInd) + ": Duplicate IDs in file but differing types. Cannot assume CompoundFeature/ join location, please resolve type descrepancy or de-duplicate ID " + res.id + ".\n")
+                orgDict[prag][x].location = orgDict[prag][x].location + res.location
+                incInd = False
+                break
+          if incInd:
+            indDict[prag] += 1
+            orgDict[prag].append(res)
+            if "Parent" in res.qualifiers.keys():
+              seekParentDict[prag].append(indDict[prag])
     if errOut:
       outStream.write(errOut + "\n")
       raise Exception("Failed GFF Feature Parsing, error log output to stderr")
