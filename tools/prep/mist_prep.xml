@@ -45,7 +45,7 @@ $excel_file
                 <param name="excel_file" value="rename_with_column.xlsx" />
                 <param name="use_name_col" value="true" />
                 <param name="acc_col" value="Acc" />
-                <param name="name_col" value="'New Name'" />
+                <param name="name_col" value="New_Name" />
                 <output name="output_fasta" file="_MIST_name_multi.fa" />
             </test>
         </tests>
