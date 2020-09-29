@@ -29,6 +29,7 @@ if __name__ == "__main__":
     parser.add_argument("excel_file", type=lambda x: is_binary_file(parser, x), help='Input excel file')
     parser.add_argument("--acc_col", type=str, help="column header label for accessions")
     parser.add_argument("--name_col", type=str, help="column header for MIST plot labels")
+    parser.add_argument("--use_name_col", action="store_true", help="Uses column value for renaming the header")
 
     # eutils params
     parser.add_argument('--user_email', help="User email")
@@ -46,25 +47,24 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     #  parse data into dataframe using excel_parser
-    print(str(args.acc_col))
-    print(str(args.name_col))
     cols = [str(args.acc_col).strip(), str(args.name_col).strip()]
     data = ExcelParsing(args.excel_file).chop_frame(cols=cols)
-    print(data.columns)
     
     #  prettify future headers
     names = list(data[args.name_col])
     spliced_names = []
     for name in names:
-        s = name.split(' ')
-        if re.search(('phage|virus|coli'), s[1]):
-            r = s[2:]
+        if args.use_name_col: # just use what is in the column
+            r = name.split(' ')
+            spliced_names.append(r)
         else:
-            r = s[1:]
-        spliced_names.append(r)
-    print(names)
+            s = name.split(' ')
+            if re.search(('phage|virus|coli'), s[1]):
+                r = s[2:]
+            else:
+                r = s[1:]
+            spliced_names.append(r)
     ids = list(data[args.acc_col])
-    print(ids)
     combined_data = zip(spliced_names, ids)
     c = eutils.Client(
         history_file=args.history_file,
@@ -79,11 +79,8 @@ if __name__ == "__main__":
         if getattr(args, attr, None) is not None:
             payload[attr] = getattr(args, attr)
 
-    print('here')
     with args.output_fasta as f:
-        print('here again')
         for org in combined_data:
-            print(org)
             payload['id'] = org[1]
             print(payload)
             obj = c.fetch(args.db, ftype=args.retmode, read_only_fasta=True, **payload)
