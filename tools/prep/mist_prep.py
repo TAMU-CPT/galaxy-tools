@@ -4,6 +4,7 @@ import re
 import time
 
 from Bio import SeqIO
+from Bio.SeqRecord import SeqRecord
 
 from excel_parser import ExcelParsing
 import eutils
@@ -42,7 +43,6 @@ if __name__ == "__main__":
     parser.add_argument('--rettype', default="fasta", help='Rettype')
     
     # output
-    parser.add_argument('--temp_fasta', type=argparse.FileType('w'), default="_temp.fa")
     parser.add_argument('--output_fasta', type=argparse.FileType('w'), default="_MIST_multi.fa")
 
     args = parser.parse_args()
@@ -67,31 +67,32 @@ if __name__ == "__main__":
             spliced_names.append(r)
     ids = list(data[args.acc_col])
     combined_data = zip(spliced_names, ids)
+
+
+    #  initiate eutils obj and prep payload
     c = eutils.Client(
         history_file=args.history_file,
         user_email=args.user_email,
         admin_email=args.admin_email,
         api_key=args.api_key
     )
-
-    #  retrieve data using accession column
     payload = {}
     for attr in ('retmode', 'rettype'):
         if getattr(args, attr, None) is not None:
             payload[attr] = getattr(args, attr)
 
-    with args.output_fasta as f:
-        for org in combined_data:
-            payload['id'] = org[1]
-            print(payload)
-            obj = c.fetch(args.db, ftype=args.retmode, read_only_fasta=True, **payload)
-            #print(obj)
-            obj.description = obj.id
-            obj.id = '_'.join(org[0])
-            #print(obj.description)
-            SeqIO.write(obj,args.temp_fasta.name,"fasta")
-            for line in open(args.temp_fasta.name):
-                f.write(line)
-            args.temp_fasta.close()
-            args.temp_fasta = open(args.temp_fasta.name, "w")
+    #  fetch and write multi fasta
+    #with args.output_fasta as f:
+    list_of_seq = []
+    for org in combined_data:
+        payload['id'] = org[1]
+        print(payload)
+        obj = c.fetch(args.db, ftype=args.retmode, read_only_fasta=True, **payload)
+        obj.description = obj.id
+        obj.id = '_'.join(org[0])
+        list_of_seq.append(SeqRecord(obj.seq,obj.id,description=obj.description))
+
+    for each_record in list_of_seq:
+        SeqIO.write(each_record, args.output_fasta, "fasta")
+
 

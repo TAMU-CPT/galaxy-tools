@@ -24,7 +24,6 @@ $excel_file
 #if $use_name_col
     --use_name_col
 #end if
---temp_fasta $temp_fasta
 --output_fasta $output_fasta
 ]]></command>
         <inputs>    
