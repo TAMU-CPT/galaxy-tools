@@ -21,6 +21,9 @@ $excel_file
 #if $api_key
     --api_key $api_key
 #end if
+#if $use_name_col
+    --use_name_col
+#end if
 --output_fasta $output_fasta
 ]]></command>
         <inputs>    
