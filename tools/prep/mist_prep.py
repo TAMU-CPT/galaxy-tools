@@ -89,7 +89,7 @@ if __name__ == "__main__":
             obj.description = obj.id
             obj.id = '_'.join(org[0])
             #print(obj.description)
-            SeqIO.write(obj,args.temp_fasta,"fasta")
+            SeqIO.write(obj,args.temp_fasta.name,"fasta")
             for line in open(args.temp_fasta.name):
                 f.write(line)
             args.temp_fasta.close()
