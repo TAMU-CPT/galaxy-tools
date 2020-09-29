@@ -42,6 +42,7 @@ if __name__ == "__main__":
     parser.add_argument('--rettype', default="fasta", help='Rettype')
     
     # output
+    parser.add_argument('--temp_fasta', type=argparse.FileType('w'), default="_temp.fa")
     parser.add_argument('--output_fasta', type=argparse.FileType('w'), default="_MIST_multi.fa")
 
     args = parser.parse_args()
@@ -88,7 +89,9 @@ if __name__ == "__main__":
             obj.description = obj.id
             obj.id = '_'.join(org[0])
             #print(obj.description)
-            SeqIO.write(obj,"_temp.fa","fasta")
-            for line in open("_temp.fa"):
+            SeqIO.write(obj,args.temp_fasta.name,"fasta")
+            for line in open(args.temp_fasta.name):
                 f.write(line)
+            args.temp_fasta.close()
+            args.temp_fasta = open(args.temp_fasta.name, "w")
 
