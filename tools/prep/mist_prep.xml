@@ -24,6 +24,7 @@ $excel_file
 #if $use_name_col
     --use_name_col
 #end if
+--temp_fasta $temp_fasta
 --output_fasta $output_fasta
 ]]></command>
         <inputs>    
@@ -35,6 +36,7 @@ $excel_file
         </inputs>
         <outputs>
             <data name="output_fasta" label="_MIST_multi.fa" format="fasta" />
+            <data name="temp_fasta" label="_temp.fa" format="fasta" hidden="true" />
         </outputs>
         <tests>
             <test>
