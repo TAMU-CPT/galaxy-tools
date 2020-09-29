@@ -28,6 +28,7 @@ $excel_file
             <param name="acc_col" label="Accession Column Label" type="text" />
             <param name="name_col" label="Name Column Label" type="text" />
             <param name="api_key" label="NCBI API Key" type="text" optional="True"/>
+            <param name="use_name_col" label="Relabel with ENTIRE name column" type="boolean" truevalue="--use_name_col" falsevalue="" checked="false" help="Use this if you want the ENTIRE name column to be used for header replacement"/>
         </inputs>
         <outputs>
             <data name="output_fasta" label="_MIST_multi.fa" format="fasta" />
@@ -39,6 +40,13 @@ $excel_file
                 <param name="name_col" value="Genome" />
                 <param name="api_key" value="65da3234a0dd70611ede507979d1f3885608" />
                 <output name="output_fasta" file="_MIST_multi.fa" />
+            </test>
+            <test>
+                <param name="excel_file" value="rename_with_column.xlsx" />
+                <param name="use_name_col" value="true" />
+                <param name="acc_col" value="Acc" />
+                <param name="name_col" value="New Name" />
+                <output name="output_fasta" file="_MIST_name_multi.fa" />
             </test>
         </tests>
     <help><![CDATA[
