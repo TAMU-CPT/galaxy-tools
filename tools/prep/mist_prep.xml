@@ -55,8 +55,8 @@ $file
             <test>
                 <param name="file" value="mist_prep_sample_2.csv" />
                 <param name="use_name_col" value="true" />
-                <param name="acc_col" value="name" />
-                <param name="name_col" value="acc" />
+                <param name="acc_col" value="acc" />
+                <param name="name_col" value="name" />
                 <output name="output_fasta" file="_MIST_csv_multi.fa" />
             </test>
         </tests>
