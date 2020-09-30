@@ -1,5 +1,5 @@
 <tool id="edu.tamu.cpt.prep.mist_prep" name="Excel to MultiFASTA MIST Preparation" version="1.0">
-    <description>Parses a minimal two column excel sheet to retrieve data from NCBI with one column and renaming the header with the other column</description>
+    <description>Parses a minimal two column csv or excel file to retrieve data from NCBI with one column and renaming the header with the other column</description>
 	<macros>
 		<import>crr_macros.xml</import>
 	</macros>
@@ -12,7 +12,7 @@
     <!-- TODO: Add history arguments for wrapper -->
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/mist_prep.py 
-$excel_file
+$file
 --acc_col $acc_col
 --name_col $name_col
 --user_email "$__user_email__"
@@ -27,7 +27,7 @@ $excel_file
 --output_fasta $output_fasta
 ]]></command>
         <inputs>    
-            <param name="excel_file" label="Excel File" type="data" format="data" />
+            <param name="file" label="Excel or CSV File" type="data" format="data" />
             <param name="acc_col" label="Accession Column Label" type="text" />
             <param name="name_col" label="Name Column Label" type="text" />
             <param name="api_key" label="NCBI API Key" type="text" optional="True"/>
@@ -39,18 +39,25 @@ $excel_file
         </outputs>
         <tests>
             <test>
-                <param name="excel_file" value="mist_prep_sample_2.xlsx" />
+                <param name="file" value="mist_prep_sample_2.xlsx" />
                 <param name="acc_col" value="Accession" />
                 <param name="name_col" value="Genome" />
                 <param name="api_key" value="65da3234a0dd70611ede507979d1f3885608" />
                 <output name="output_fasta" file="_MIST_multi.fa" />
             </test>
             <test>
-                <param name="excel_file" value="rename_with_column.xlsx" />
+                <param name="file" value="rename_with_column.xlsx" />
                 <param name="use_name_col" value="true" />
                 <param name="acc_col" value="Acc" />
                 <param name="name_col" value="New_Name" />
                 <output name="output_fasta" file="_MIST_name_multi.fa" />
+            </test>
+            <test>
+                <param name="file" value="mist_prep_sample_2.csv" />
+                <param name="use_name_col" value="true" />
+                <param name="acc_col" value="acc" />
+                <param name="name_col" value="name" />
+                <output name="output_fasta" file="_MIST_csv_multi.fa" />
             </test>
         </tests>
     <help><![CDATA[

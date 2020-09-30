@@ -97,7 +97,7 @@ if __name__ == "__main__":
             if type(acc) is str: 
                 acc = acc.strip()
                 acc = acc.split(".")[0]
-            print(f"\nAccession: {acc}")
+            #print(f"\nAccession: {acc}")
             depot = {
                 "email" : emails,
                 "acc" : acc,
