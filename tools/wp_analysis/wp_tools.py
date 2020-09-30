@@ -1,16 +1,33 @@
+import os
 from time import sleep
+
 from Bio import Entrez
 from Bio import SeqIO
 
 
 class CPTLink:
 
-    def __init__(self, email, db, acc, dbfrom=None):
-        self.email = email
+    def __init__(self, email, db, acc, api_key=None, dbfrom=None):
+
         self.db = db
         self.dbfrom = dbfrom
         self.acc = acc
-        Entrez.email = self.email
+
+        if email is not None:
+            self.email = email
+            Entrez.email = email
+        
+        if Entrez.email is None:
+            raise Exception("Cannot continue without an email being used")
+
+        if api_key is not None:
+            print("Using User NCBI API Key")
+            Entrez.api_key = api_key
+        elif os.environ.get('NCBI_API_KEY') is not None:
+            Entrez.api_key = os.environ.get('NCBI_API_KEY')
+            print("Using Galaxy NCBI API Key")
+        else:
+            print("API Key not being used. Increase request rate by obtaining an API Key from NCBI. See https://www.ncbi.nlm.nih.gov/books/NBK25497/")
 
     def __repr__(self):
         return f"< email: {self.email} | accession: {self.acc} | database: {self.db}>"
