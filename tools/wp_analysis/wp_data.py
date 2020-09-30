@@ -82,6 +82,11 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "--api_key",
+        help="NCBI API Key"
+    )
+
+    parser.add_argument(
         "--email",
         type=str,
         help="Entrez requires an email to connect to NCBI database. CPT Admin emails will be appended to list."
@@ -114,6 +119,7 @@ if __name__ == "__main__":
         "email" : emails,
         "db" : "nuccore",
         "dbfrom" : "protein",
+        "api_key" : args.api_key,
     }
     wps = []
     for acc in accs:

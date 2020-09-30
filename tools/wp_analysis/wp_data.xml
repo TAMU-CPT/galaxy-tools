@@ -8,22 +8,25 @@
 	<command detect_errors="aggressive">
 	<![CDATA[
 	python $__tool_directory__/wp_data.py
-	--email $email
+	--email "$__user_email__"
 	#if $acc_add.acc_selector == "acc_text_selection":
 	--wp_text "$acc_add.acc_text"
 	#elif $acc_add.acc_selector == "acc_file_selection":
 	--wp_file "$acc_add.acc_file"
 	#end if
     --wp_amt $wp_amt
+	#if $api_key
+	--api_key  $api_key
+	#end if
 	--out_table $out_file
 	]]>
 	</command>
 	<inputs>
-		<param type="text" name="email" label="Email" help="Email used with Admin emails to query NCBI."/>
         <param type="select" label="WP amount" name="wp_amt">
             <option value="first">First Accession Only</option>
             <option value="all">All Accessions</option>
         </param>
+		<param type="text" name="api_key" label="NCBI API Key" optional="True"/>
 		<conditional name="acc_add">
 			<param name="acc_selector" type="select" label="Choose the method to submit accessions">
 				<option value="acc_text_selection" selected="false">Paste Accessions</option>
