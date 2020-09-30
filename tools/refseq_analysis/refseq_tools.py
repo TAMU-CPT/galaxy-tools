@@ -15,11 +15,25 @@ esearch -db nuccore -query 'KC821634.1 FR687252.1' | elink -related -name nuccor
 
 class CPTrefseq:
     
-    def __init__(self, email, acc):
+    def __init__(self, email, acc, api_key=None):
 
-        self.email = email
         self.acc = acc
-        Entrez.email = self.email
+
+        if email is not None:
+            self.email = email
+            Entrez.email = email
+        
+        if Entrez.email is None:
+            raise Exception("Cannot continue without an email being used")
+
+        if api_key is not None:
+            print("Using User NCBI API Key")
+            Entrez.api_key = api_key
+        elif os.environ.get('NCBI_API_KEY') is not None:
+            Entrez.api_key = os.environ.get('NCBI_API_KEY')
+            print("Using Galaxy NCBI API Key")
+        else:
+            print("API Key not being used. Increase request rate by obtaining an API Key from NCBI. See https://www.ncbi.nlm.nih.gov/books/NBK25497/")
     
     def check_if_ref(self):
         """

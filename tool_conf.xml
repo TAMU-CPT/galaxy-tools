@@ -319,6 +319,8 @@
                 <tool file="cpt2/galaxy-tools/tools/SAR/SAR_finder.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/external/bacphlib.xml"/>
 				<tool file="cpt2/galaxy-tools/tools/ncbi_entrez_eutils/efetch.xml"/>
+				<tool file="cpt2/galaxy-tools/tools/wp_analysis/wp_data.xml"/>
+				<tool file="cpt2/galaxy-tools/tools/refseq_analysis/refseq_confirm.xml"/>
 	</section>
 	<!-- deprecated -->
 	<tool file="cpt2/galaxy-tools/tools/gff3/gff3_ipr_merge.xml" label="deprecated" hidden="True" />
