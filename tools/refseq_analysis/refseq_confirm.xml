@@ -21,7 +21,6 @@
 	]]>
 	</command>
 	<inputs>
-		<param type="text" name="email" label="Email" help="Email used with Admin emails to query NCBI."/>
 		<conditional name="acc_add">
 			<param name="acc_selector" type="select" label="Choose the method to submit accessions">
 				<option value="acc_text_selection" selected="false">Paste Accessions</option>
