@@ -65,6 +65,11 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "--api_key",
+        help="NCBI API Key"
+    )
+
+    parser.add_argument(
         "--email",
         type=str,
         help="User email which will have CPT admins appended to list of emails for NCBI"
@@ -95,7 +100,8 @@ if __name__ == "__main__":
             print(f"\nAccession: {acc}")
             depot = {
                 "email" : emails,
-                "acc" : acc
+                "acc" : acc,
+                "api_key" : args.api_key,
             }
             ref_acc, name = CPTrefseq(**depot).check_if_ref()
             temp_list = [og_acc,ref_acc,name]
