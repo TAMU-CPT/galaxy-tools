@@ -16,6 +16,7 @@
 	#end if
 	#if api_key
 	--api_key $api_key
+	#end if
 	--out_file $out_file
 	]]>
 	</command>
