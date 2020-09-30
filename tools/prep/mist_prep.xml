@@ -53,11 +53,11 @@ $file
                 <output name="output_fasta" file="_MIST_name_multi.fa" />
             </test>
             <test>
-                <param name="file" value="rename_with_column.xlsx" />
+                <param name="file" value="mist_prep_sample_2.csv" />
                 <param name="use_name_col" value="true" />
-                <param name="acc_col" value="Acc" />
-                <param name="name_col" value="New_Name" />
-                <output name="output_fasta" file="_MIST_name_multi.fa" />
+                <param name="acc_col" value="name" />
+                <param name="name_col" value="acc" />
+                <output name="output_fasta" file="_MIST_csv_multi.fa" />
             </test>
         </tests>
     <help><![CDATA[
