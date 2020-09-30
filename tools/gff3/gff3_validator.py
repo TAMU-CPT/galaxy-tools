@@ -157,7 +157,7 @@ def qualCheck(thisFeat, autoFix=False):
               warnOut += "Warning: Qualifier " + x + " in feature " + thisFeat.id + " modified to be GFF-to-Genbank compliant.\n"
               warnCount += 1
             else:
-              warnOut += "Warning: Qualifier " + x + " in feature " + thisFeat.id + " has a double-qoute character (\") at position " + str(ind) + "), which will break the GFF-to-Genbank conversion. If conversion to Genbank is desired, place another \" immediately after it to meet the Genbank spec.\n"
+              warnOut += "Warning: Qualifier " + x + " in feature " + thisFeat.id + " has a double-qoute character (\") at position " + str(ind) + ", which will break the GFF-to-Genbank conversion. If conversion to Genbank is desired, place another \" immediately after it to meet the Genbank spec.\n"
               warnCount += 1
           else: # Already compliant
             skip = True 
@@ -175,13 +175,14 @@ def qualCheck(thisFeat, autoFix=False):
 
 
 
-def table_annotations(gff3In, out_errorlog, autoFix = False):
+def table_annotations(gff3In, out_errorlog, autoFix = True):
 
-    numError = 0
-    numWarning = 0
-    errorMessage = ""
-    warnMessage = ""
+    
     for record in list(gffParse(gff3In)):
+        numError = 0
+        numWarning = 0
+        errorMessage = ""
+        warnMessage = ""
         topFeats = []
         metaFeats = []
         for x in record.features:
@@ -190,12 +191,38 @@ def table_annotations(gff3In, out_errorlog, autoFix = False):
           else:
             metaFeats.append(x)
         topFeats.sort(key=lambda x: x.location.start)
+
+        for featInd in range(0, len(metaFeats)):
+          resetID = False
+          feat = metaFeats[featInd]
+          if feat.id == "" or feat.id == None:
+            warnMessage += "Warning: No ID found for " + feat.type + " feature at ["+ str(feat.location.start) + ", " + str(feat.location.end) + "].\n"
+            numWarning += 1
+            feat.id = "at location ["+ str(feat.location.start) + ", " + str(feat.location.end) + "] (No ID)"
+            resetID = True
+          resWarn, resNum, featOut = qualCheck(feat, autoFix)
+          warnMessage += resWarn
+          numWarning += resNum
+          if resNum > 0 and autoFix:
+            if resetID:
+              featOut.id = None
+            metaFeats[featInd] = featOut
+
         for featInd in range(0, len(topFeats)):
           feat = topFeats[featInd]
           if feat.id == "" or feat.id == None:
             warnMessage += "Warning: No ID found for " + feat.type + " feature at ["+ str(feat.location.start) + ", " + str(feat.location.end) + "].\n"
             numWarning += 1
-            continue
+            feat.id = "at location ["+ str(feat.location.start) + ", " + str(feat.location.end) + "] (No ID)"
+
+          resWarn, resNum, featOut = qualCheck(feat, autoFix)
+          warnMessage += resWarn
+          numWarning += resNum
+          if resNum > 0 and autoFix:
+            if resetID:
+              featOut.id = None
+            topFeats[featInd] = featOut
+
           if str(feat.type).upper() == "CDS" or str(feat.type).upper() == "EXON" or str(feat.type).upper() == "INTRON" or str(feat.type).upper() == "SHINE_DALGARNO_SEQUENCE" or str(feat.type).upper() == "MRNA":
             errorMessage += "Error: Bad top-level feature " + feat.id + " of type " + feat.type + " at ["+ str(feat.location.start) + ", " + str(feat.location.end) + "].\n"
             numError += 1
@@ -211,11 +238,7 @@ def table_annotations(gff3In, out_errorlog, autoFix = False):
           resWarn, resNum = dupCheck(feat)
           warnMessage += resWarn
           numWarning += resNum
-          resWarn, resNum, featOut = qualCheck(feat)
-          warnMessage += resWarn
-          numWarning += resNum
-          if resNum > 0 and autoFix:
-            topFeats[featInd] = featOut
+          
  
           checkInd = featInd + 1
           while checkInd < len(topFeats):
@@ -236,8 +259,10 @@ def table_annotations(gff3In, out_errorlog, autoFix = False):
                 numError += 1
               checkInd += 1
 
-        ##  
+        ##
+        out_errorlog.write("=======================================================================\n")  
         out_errorlog.write("Validation for " + record.id + " finished with " + str(numError) + " errors and " + str(numWarning) + " warnings.\n")
+        out_errorlog.write("=======================================================================\n")
         out_errorlog.write(errorMessage)
         out_errorlog.write(warnMessage)
 
@@ -245,6 +270,11 @@ def table_annotations(gff3In, out_errorlog, autoFix = False):
     # For each terminator/tRNA
     # Bother Cory later
 
+        if autoFix:
+          finFeats = topFeats + metaFeats
+          record.features = finFeats
+          record.features.sort(key=lambda x: x.location.start)
+          gffWrite(record)
 
 #  print(dir(record.features))
 if __name__ == "__main__":
@@ -257,6 +287,9 @@ if __name__ == "__main__":
         type=argparse.FileType("w"),
         help="Output Error Log",
         default="test-data/errorlog.txt",
+    )
+    parser.add_argument(
+        "--autoFix", action="store_true", help="More informative deflines"
     )
     args = parser.parse_args()
     table_annotations(**vars(args))
