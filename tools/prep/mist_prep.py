@@ -24,10 +24,11 @@ def is_binary_file(parser_var, arg):
 
 if __name__ == "__main__":
     
-    parser = argparse.ArgumentParser(description="Prepares a excel file for a pairwise MIST dot plot")
+    parser = argparse.ArgumentParser(description="Prepares an Excel or CSV file for a pairwise MIST dot plot")
 
     #  prep arguments
-    parser.add_argument("excel_file", type=lambda x: is_binary_file(parser, x), help='Input excel file')
+    #parser.add_argument("file", type=lambda x: is_binary_file(parser, x), help='Input excel file')
+    parser.add_argument("file", type=argparse.FileType('r'), help='Input File')
     parser.add_argument("--acc_col", type=str, help="column header label for accessions")
     parser.add_argument("--name_col", type=str, help="column header for MIST plot labels")
     parser.add_argument("--use_name_col", action="store_true", help="Uses column value for renaming the header")
@@ -49,7 +50,7 @@ if __name__ == "__main__":
 
     #  parse data into dataframe using excel_parser
     cols = [str(args.acc_col).strip(), str(args.name_col).strip()]
-    data = ExcelParsing(args.excel_file).chop_frame(cols=cols)
+    data = ExcelParsing(args.file.name).chop_frame(cols=cols)
     
     #  prettify future headers
     names = list(data[args.name_col])
