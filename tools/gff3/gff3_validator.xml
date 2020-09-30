@@ -25,7 +25,7 @@ $filterGFF.autofix
   <outputs>
         <data name="Errorlog" format="txt" label="Errorlog"/>
         <data format="gff3" name="gffOut" label="GFF with fixed qualifiers">
-              <filter>filterGFF['autoFix']</filter>
+              <filter>filterGFF['autofix']</filter>
         </data>
   </outputs>
   <help><![CDATA[
