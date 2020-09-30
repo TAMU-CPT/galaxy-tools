@@ -1,5 +1,5 @@
 <tool id="edu.tamu.cpt.wp_analysis.wp_data" name="WP Accession Data" version="1.0">
-	<description>Queries NCBI to retrieve genome accessions and taxon information with WP accessions</description>
+	<description>Queries NCBI to retrieve genome accessions and taxon information from WP accessions</description>
 	<macros>
 		<import>macros.xml</import>
 	</macros>
