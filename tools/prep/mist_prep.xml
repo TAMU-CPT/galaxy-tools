@@ -1,4 +1,4 @@
-<tool id="edu.tamu.cpt.prep.mist_prep" name="Excel to MultiFASTA MIST Preparation" version="1.0">
+<tool id="edu.tamu.cpt.prep.mist_prep" name="Excel or CSV to MultiFASTA MIST Preparation" version="1.0">
     <description>Parses a minimal two column csv or excel file to retrieve data from NCBI with one column and renaming the header of a multifasta with the other column</description>
 	<macros>
 		<import>crr_macros.xml</import>
