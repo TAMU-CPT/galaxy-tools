@@ -1,5 +1,5 @@
 <tool id="edu.tamu.cpt.wp_analysis.wp_data" name="WP Accession Data" version="1.0">
-	<description>Queries NCBI to retrieve genome accessions and taxon information with WP accessions</description>
+	<description>Queries NCBI to retrieve genome accessions and taxon information from WP accessions</description>
 	<macros>
 		<import>macros.xml</import>
 	</macros>
@@ -26,19 +26,19 @@
             <option value="first">First Accession Only</option>
             <option value="all">All Accessions</option>
         </param>
-		<param type="text" name="api_key" label="NCBI API Key" optional="True"/>
 		<conditional name="acc_add">
 			<param name="acc_selector" type="select" label="Choose the method to submit accessions">
 				<option value="acc_text_selection" selected="false">Paste Accessions</option>
 				<option value="acc_file_selection" selected="false">Upload Accessions</option>
 			</param>
 			<when value="acc_text_selection">
-				<param name="acc_text" label="Accessions" optional="true" type="text" area="true" help="Past accessions separated by newline (space)"/>
+				<param name="acc_text" label="Accessions" optional="true" type="text" area="true" help="Past accessions separated by newline"/>
 			</when>
 			<when value="acc_file_selection">
-				<param name="acc_file" label="Accessions File upload" optional="true" type="data" format="txt" help="File consisting of accessions separated by newline (space)"/>
+				<param name="acc_file" label="Accessions File upload" optional="true" type="data" format="txt" help="File consisting of accessions separated by newline"/>
 			</when>
 		</conditional>
+		<param type="text" name="api_key" label="NCBI API Key" optional="True"/>
 	</inputs>
 	<outputs>
 		<data format="tabular" name="out_file" label="_return_table.txt"/>
