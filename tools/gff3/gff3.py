@@ -61,11 +61,10 @@ def feature_lambda(
             feature._parent = feature
         test_result = test(feature, **test_kwargs)
         # if (not invert and test_result) or (invert and not test_result):
-        # print feature.type, test_kwargs, test_result, invert ^ test_result
         if invert ^ test_result:
             if not subfeatures:
                 feature_copy = copy.deepcopy(feature)
-                feature_copy.sub_features = []
+                feature_copy.sub_features = list()
                 yield feature_copy
             else:
                 yield feature
