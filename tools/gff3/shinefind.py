@@ -48,19 +48,22 @@ class NaiveSDCaller(object):
     def __init__(self):
         self.sd_reg = [re.compile(x, re.IGNORECASE) for x in self.SD_SEQUENCES]
 
-    def list_sds(self, sequence):
+    def list_sds(self, sequence, sd_min=3, sd_max=17):
         hits = []
         for regex in self.sd_reg:
             for match in regex.finditer(sequence):
-                hits.append(
-                    {
-                        "spacing": len(sequence) - len(match.group()) - match.start(),
-                        "hit": match.group(),
-                        "start": match.start(),
-                        "end": match.end(),
-                        "len": len(match.group()),
-                    }
-                )
+                spacing = len(sequence) - len(match.group()) - match.start()
+                if sd_max >= spacing or spacing >= sd_min:
+                    #if the spacing is within gap limits, add
+                    hits.append(
+                        {
+                            "spacing": spacing,
+                            "hit": match.group(),
+                            "start": match.start(),
+                            "end": match.end(),
+                            "len": len(match.group()),
+                        }
+                    )
         return hits
 
     @classmethod
@@ -84,7 +87,7 @@ class NaiveSDCaller(object):
             # -1      491     501     2       3       5
             # -1      491     501     1       3       5
             # -1      491     501     0       3       5
-
+            
             qualifiers = {
                 "source": "CPT_ShineFind",
                 "ID": "%s.rbs-%s" % (feature_id, idx),
@@ -100,11 +103,6 @@ class NaiveSDCaller(object):
 
             # gap is either the sd_start-cds_end (neg strand) or the sd_end-cds_start (pos strand)
             # minimum absolute value of these two will be the proper gap regardless of strand
-            gap = min(abs(start-parent_end),abs(end-parent_start))
-            if not sd_max >= gap and gap >= sd_min:
-                # skip adding any features that have a larger gap than requested, this should only filter out short 
-                # sds found in the seven base window added to the total search window in testFeatureUpstream
-                continue
             tmp = gffSeqFeature(
                 FeatureLocation(start, end, strand=strand),
                 type="Shine_Dalgarno_sequence",
@@ -133,7 +131,7 @@ class NaiveSDCaller(object):
         # genome
         tmp = gffSeqFeature(FeatureLocation(start, end, strand=strand), type="domain")
         seq = str(tmp.extract(record.seq))
-        return self.list_sds(seq), start, end, seq
+        return self.list_sds(seq, sd_min, sd_max), start, end, seq
 
     def hasSd(self, feature, record, sd_min=3, sd_max=17):
         sds, start, end, seq = self.testFeatureUpstream(
