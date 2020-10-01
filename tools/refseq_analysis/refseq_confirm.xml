@@ -1,0 +1,71 @@
+<tool id="edu.tamu.cpt.refseq_analysis.refseq_confirm" name="RefSeq Accession Mapping Confirmation" version="1.0">
+	<description>Queries NCBI to map genome accessions and/or gids to existing RefSeq accessions</description>
+	<macros>
+		<import>macros.xml</import>
+	</macros>
+	<expand macro="requirements">
+	</expand>
+	<command detect_errors="aggressive">
+	<![CDATA[
+	python $__tool_directory__/refseq_confirm.py
+	--email "$__user_email__"
+	#if $acc_add.acc_selector == "acc_text_selection":
+	--acc_text "$acc_add.acc_text"
+	#elif $acc_add.acc_selector == "acc_file_selection":
+	--acc_file "$acc_add.acc_file"
+	#end if
+	#if $api_key
+	--api_key $api_key
+	#end if
+	--out_file $out_file
+	]]>
+	</command>
+	<inputs>
+		<conditional name="acc_add">
+			<param name="acc_selector" type="select" label="Choose the method to submit accessions">
+				<option value="acc_text_selection" selected="false">Paste Accessions</option>
+				<option value="acc_file_selection" selected="false">Upload Accessions</option>
+			</param>
+			<when value="acc_text_selection">
+				<param name="acc_text" label="Accessions" optional="true" type="text" area="true" help="Past accessions separated by newline"/>
+			</when>
+			<when value="acc_file_selection">
+				<param name="acc_file" label="Accessions File upload" optional="true" type="data" format="txt" help="File consisting of accessions separated by newline"/>
+			</when>
+		</conditional>
+		<param type="text" name="api_key" label="NCBI API Key" optional="True" help="NCBI API Keys enable users to have an increased request limit connecting to NCBI."/>
+	</inputs>
+	<outputs>
+		<data format="tabular" name="out_file" label="_RefSeq_results.txt"/>
+	</outputs>
+	<tests>
+		<test>
+			<conditional name="acc_add">
+				<param name="acc_selector" value="acc_file_selection"/>
+					<param name="acc_file" value="accs.txt"/>
+			</conditional>
+			<param name="email" value="curtisross@tamu.edu"/>
+			<output name="out_file" value="_RefSeq_results.txt"/>
+		</test>
+	</tests>
+	<help>
+	<![CDATA[
+	**What it does**
+	Implements a set of piped calls to NCBI using Entrez to confirm if a given input accession has a RefSeq record.
+	* INPUT: Newline separated pasted accessions (genome accessions or gids) OR newline separated file
+	* OUTPUT: Tab delimited table reporting if an input accession has a refseq record and the name of the organism (sanity check).
+
+	**note: The NCBI API Key is optional. CPT has their own key which will be used if user's do not have their own**
+	]]>
+	</help>
+		<citations>
+			<citation type="bibtex">
+				@unpublished{galaxyTools,
+				author = {C. Ross},
+				title = {CPT Galaxy Tools},
+				year = {2020-},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+				}
+			</citation>
+		</citations>
+</tool>

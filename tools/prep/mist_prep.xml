@@ -1,5 +1,5 @@
-<tool id="edu.tamu.cpt.prep.mist_prep" name="Excel to MultiFASTA MIST Preparation" version="1.0">
-    <description>Parses a minimal two column excel sheet to retrieve data from NCBI with one column and renaming the header with the other column</description>
+<tool id="edu.tamu.cpt.prep.mist_prep" name="Excel or CSV to MultiFASTA MIST Preparation" version="1.0">
+    <description>Parses a minimal two column csv or excel file to retrieve data from NCBI with one column and renaming the header of a multifasta with the other column</description>
 	<macros>
 		<import>crr_macros.xml</import>
 	</macros>
@@ -12,7 +12,7 @@
     <!-- TODO: Add history arguments for wrapper -->
     <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/mist_prep.py 
-$excel_file
+$file
 --acc_col $acc_col
 --name_col $name_col
 --user_email "$__user_email__"
@@ -27,36 +27,54 @@ $excel_file
 --output_fasta $output_fasta
 ]]></command>
         <inputs>    
-            <param name="excel_file" label="Excel File" type="data" format="data" />
+            <param name="file" label="Excel or CSV File" type="data" format="data" />
             <param name="acc_col" label="Accession Column Label" type="text" />
             <param name="name_col" label="Name Column Label" type="text" />
-            <param name="api_key" label="NCBI API Key" type="text" optional="True"/>
+            <param name="api_key" label="NCBI API Key" type="text" optional="True" help="NCBI API Keys enable users to have an increased request limit connecting to NCBI."/>
             <param name="use_name_col" label="Relabel with ENTIRE name column" type="boolean" truevalue="--use_name_col" falsevalue="" checked="false" help="Use this if you want the ENTIRE name column to be used for header replacement"/>
         </inputs>
         <outputs>
             <data name="output_fasta" label="_MIST_multi.fa" format="fasta" />
+            <data name="temp_fasta" label="_temp.fa" format="fasta" hidden="true" />
         </outputs>
         <tests>
             <test>
-                <param name="excel_file" value="mist_prep_sample_2.xlsx" />
+                <param name="file" value="mist_prep_sample_2.xlsx" />
                 <param name="acc_col" value="Accession" />
                 <param name="name_col" value="Genome" />
                 <param name="api_key" value="65da3234a0dd70611ede507979d1f3885608" />
                 <output name="output_fasta" file="_MIST_multi.fa" />
             </test>
             <test>
-                <param name="excel_file" value="rename_with_column.xlsx" />
+                <param name="file" value="rename_with_column.xlsx" />
                 <param name="use_name_col" value="true" />
                 <param name="acc_col" value="Acc" />
                 <param name="name_col" value="New_Name" />
                 <output name="output_fasta" file="_MIST_name_multi.fa" />
             </test>
+            <test>
+                <param name="file" value="mist_prep_sample_2.csv" />
+                <param name="use_name_col" value="true" />
+                <param name="acc_col" value="acc" />
+                <param name="name_col" value="name" />
+                <output name="output_fasta" file="_MIST_csv_multi.fa" />
+            </test>
         </tests>
     <help><![CDATA[
---> filler text
-* User selects accession column which will query NCBI and generate a multifasta
-* User selects naming column to reconfigure the header of the multi fasta
-* Output is a multifasta
+Description
+-------------
+This tool reorders the header of a fasta for use with MIST. The input is either a CSV or Excel file. Minimally the file needs: a column that you want to have as the new name for the header, which is what will be used for MIST in representing the genome, and an accession column, which is used for retrieving and generating the multifasta from NCBI. 
+
+There are two methods that the header is reorganized. 
+
+* **OPTION 1:** The "Relabel with ENTIRE name column" switch, when on, will use the name column as the replacement text for the header. It will put '_' between spaces. The accession will be added with a space after the name in the header of that genome in the fasta.
+* **OPTION 2:** The "Relabel with ENTIRE name column" switch is off (to no). This will cause a specific pattern to be parsed. Which is the following: Search through the value in the name column. If the second word is 'phage', 'virus', or 'ecoli', grab all words following them, otherwise grab everything from the first word and beyond. Similarly to the other method, if there is more than one word, combine with a '_' and then tack on the accession after the new name for the header. If more options are desired, they can be added by request via GitHub.
+
+MIST uses the first "word" of the header of a fasta for labeling, which when used with a multifasta from this tool, will result in the allowance of controlling the labeling for MIST plots.
+
+Lastly, when errors arise from running this tool in conjunction with MIST, a issue might be the diverse size of genomes. When MIST is given genomes of different sizes (say 4kb v. 100kb), it struggles to do a pairwise comparison. When this occurs, it is advised to filter out those genomes.
+
+**note: The NCBI API Key is optional. CPT has their own key which will be used if user's do not have their own**
     ]]></help>
     <expand macro="citations-crr" />
 </tool>

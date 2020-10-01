@@ -4,6 +4,7 @@ import re
 import time
 
 from Bio import SeqIO
+from Bio.SeqRecord import SeqRecord
 
 from excel_parser import ExcelParsing
 import eutils
@@ -23,10 +24,11 @@ def is_binary_file(parser_var, arg):
 
 if __name__ == "__main__":
     
-    parser = argparse.ArgumentParser(description="Prepares a excel file for a pairwise MIST dot plot")
+    parser = argparse.ArgumentParser(description="Prepares an Excel or CSV file for a pairwise MIST dot plot")
 
     #  prep arguments
-    parser.add_argument("excel_file", type=lambda x: is_binary_file(parser, x), help='Input excel file')
+    #parser.add_argument("file", type=lambda x: is_binary_file(parser, x), help='Input excel file')
+    parser.add_argument("file", type=argparse.FileType('r'), help='Input File')
     parser.add_argument("--acc_col", type=str, help="column header label for accessions")
     parser.add_argument("--name_col", type=str, help="column header for MIST plot labels")
     parser.add_argument("--use_name_col", action="store_true", help="Uses column value for renaming the header")
@@ -48,7 +50,7 @@ if __name__ == "__main__":
 
     #  parse data into dataframe using excel_parser
     cols = [str(args.acc_col).strip(), str(args.name_col).strip()]
-    data = ExcelParsing(args.excel_file).chop_frame(cols=cols)
+    data = ExcelParsing(args.file.name).chop_frame(cols=cols)
     
     #  prettify future headers
     names = list(data[args.name_col])
@@ -66,29 +68,32 @@ if __name__ == "__main__":
             spliced_names.append(r)
     ids = list(data[args.acc_col])
     combined_data = zip(spliced_names, ids)
+
+
+    #  initiate eutils obj and prep payload
     c = eutils.Client(
         history_file=args.history_file,
         user_email=args.user_email,
         admin_email=args.admin_email,
         api_key=args.api_key
     )
-
-    #  retrieve data using accession column
     payload = {}
     for attr in ('retmode', 'rettype'):
         if getattr(args, attr, None) is not None:
             payload[attr] = getattr(args, attr)
 
-    with args.output_fasta as f:
-        for org in combined_data:
-            payload['id'] = org[1]
-            print(payload)
-            obj = c.fetch(args.db, ftype=args.retmode, read_only_fasta=True, **payload)
-            #print(obj)
-            obj.description = obj.id
-            obj.id = '_'.join(org[0])
-            #print(obj.description)
-            SeqIO.write(obj,"_temp.fa","fasta")
-            for line in open("_temp.fa"):
-                f.write(line)
+    #  fetch and write multi fasta
+    #with args.output_fasta as f:
+    list_of_seq = []
+    for org in combined_data:
+        payload['id'] = org[1]
+        print(payload)
+        obj = c.fetch(args.db, ftype=args.retmode, read_only_fasta=True, **payload)
+        obj.description = obj.id
+        obj.id = '_'.join(org[0])
+        list_of_seq.append(SeqRecord(obj.seq,obj.id,description=obj.description))
+
+    for each_record in list_of_seq:
+        SeqIO.write(each_record, args.output_fasta, "fasta")
+
 

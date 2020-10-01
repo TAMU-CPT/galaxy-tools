@@ -1,6 +1,7 @@
 import re
 
 import pandas as pd
+from xlrd import XLRDError
 #from pyxlsb import open_workbook
 
 class ExcelParsing:
@@ -13,9 +14,10 @@ class ExcelParsing:
     def parse_excel(file):
         """ returns a dataframe object, checks binary """
         
-        #try:
-        return pd.read_excel(file)
-        #except:
+        try:
+            return pd.read_excel(file)
+        except XLRDError:
+            return pd.read_csv(file)
         #    df=[]
         #    with open_workbook(file) as wb:
         #        with wb.get_sheet(1) as sheet:

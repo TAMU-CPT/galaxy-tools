@@ -10,12 +10,23 @@
 python $__tool_directory__/gff3_validator.py
 "$gff3In"
 --out_errorlog "$Errorlog"
+$filterGFF.autofix
+#if (str($filterGFF.autofix) == '--autoFix'):
+>> gffOut
+#end if
 ]]></command>
   <inputs>
     <param label="GFF3" name="gff3In" type="data" format="gff3"/>
+    <conditional name="filterGFF">
+      <param label="Automatically fix genbank-incompatible qualifiers" name="autofix" type="boolean" truevalue="--autoFix" falsevalue="" checked="false"/>
+      <when value=""/>
+    </conditional>
   </inputs>
   <outputs>
         <data name="Errorlog" format="txt" label="Errorlog"/>
+        <data format="gff3" name="gffOut" label="GFF with fixed qualifiers">
+              <filter>filterGFF['autofix']</filter>
+        </data>
   </outputs>
   <help><![CDATA[
 **What it does**
@@ -23,15 +34,15 @@ python $__tool_directory__/gff3_validator.py
 Reads through the GFF3 file in search of errors that may make results inaccurate or nonsensical. Outputs an error log as a .txt file listing the sort of error found, the type and ID of the feature which caused it, and any other relevant information such as location, and finally ends with the number of errors and warnings found. 
 
 Will log an error on: 
-  Duplicated features- A gene has the same type, start, and end base as another feature in the GFF3 file. Will output the types, IDs, and locations of both features. 
   Incorrect number of features- If an mRNA has more than two exons, an error will be raised with the mRNA feature's ID and its total number of exons. The same will occur if a gene has more than one mRNA feature. This function can be expanded to other feature types with set maximums.
   Incorrect start/end boundary: If an object has nonsensical location data, an error is raised. The criteria for this is detailed in a later section.
-  Excessive overlap: If a feature overlaps another feature by too much, an error is raised with the ID's and locations of both. The current overlap allowances are 10 bases if one of the features is a tRNA object, and 59 bases if both are genes.
+  Excessive overlap: If a feature overlaps another feature by too much, an error is raised with the ID's and locations of both. The current overlap allowances are 10 bases if one of the features is a tRNA object, and 60 bases if both are genes.
   Incorrect parenting: If exons or CDS subfeatures are parented directly to the gene rather than the gene's mRNA feature, an error is raised with the IDs of the gene and subfeatures.
 
 Additionally, the program will raise a warning if:
   No subfeatures: If a gene has no mRNA object, or an mRNA object has no exons or CDS features, a warning with the empty object's ID is raised.
-  Unencoded character in qualifiers: The '%', '&', '=' ,',', ';', tab, and return characters are not supposed to appear in the qualifiers of a GFF3 entry (ie, extra fields such as date created or notes), as they serve a programming function, and this warning is raised when unencoded characters appear in the GFF3 file. Although this won't necessarily break the data, it can cause notes to fail to save properly and may create extra fields of junk data. The warning will include the feature ID, the problematic field, and the unencoded character. Note that this doesn't mean you can't use commas or equals signs in your notes; programs like Apollo should know how to properly encode your data and allow you to use any character. This warning most likely means someone opened the GFF3 file and edited it by hand, but without knowing how to properly format/ sanitize the fields. 
+  Unencoded character in qualifiers: The " character is used by Genbank to mark its own qualifier fields, so any unescaped " in a qualifier will break the GFF to Genbank conversion. To escape the " character, it must be followed by another " immediately after. The autofix option will automatically apply this fix.
+  Duplicated features- A gene has the same type, start, and end base as another feature in the GFF3 file. Will output the types, IDs, and locations of both features. 
 
 **Boundary Start/End Rules**
 
