@@ -80,11 +80,10 @@ class gffSeqFeature(SeqFeature.SeqFeature):
 
     def _set_subfeatures(self, value):
         """Set function for the sub_features property (PRIVATE)."""
-        if value:
-            if isinstance(value, list):
-                self._sub_features = value
-            else:
-                raise ValueError("sub_feature must be a list of gffSeqFeature objects")
+        if isinstance(value, list):
+            self._sub_features = value
+        else:
+            raise ValueError("sub_feature must be a list of gffSeqFeature objects")
 
     sub_features = property(
         fget=_get_subfeatures,
