@@ -38,7 +38,7 @@
 				<param name="acc_file" label="Accessions File upload" optional="true" type="data" format="txt" help="File consisting of accessions separated by newline"/>
 			</when>
 		</conditional>
-		<param type="text" name="api_key" label="NCBI API Key" optional="True"/>
+		<param type="text" name="api_key" label="NCBI API Key" optional="True" help="NCBI API Keys enable users to have an increased request limit connecting to NCBI."/>
 	</inputs>
 	<outputs>
 		<data format="tabular" name="out_file" label="_return_table.txt"/>
@@ -67,8 +67,10 @@
 	<![CDATA[
 	**What it does**
 	Retrieves data about mapped proteins to a WP accession.
-	INPUT: Newline separated pasted accessions OR newline separated file
-	OUTPUT: Tab delimited table reporting results, such as the corresponding genomic accession, taxid, organism name, and amount of proteins mapped to that WP accession.
+	* INPUT: Newline separated pasted accessions OR newline separated file
+	* OUTPUT: Tab delimited table reporting results, such as the corresponding genomic accession, taxid, organism name, and amount of proteins mapped to that WP accession.
+
+	**note: The NCBI API Key is optional. CPT has their own key which will be used if user's do not have their own**
 	]]>
 	</help>
 		<citations>

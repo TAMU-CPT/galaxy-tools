@@ -33,7 +33,7 @@
 				<param name="acc_file" label="Accessions File upload" optional="true" type="data" format="txt" help="File consisting of accessions separated by newline"/>
 			</when>
 		</conditional>
-		<param type="text" name="api_key" label="NCBI API Key" optional="True"/>
+		<param type="text" name="api_key" label="NCBI API Key" optional="True" help="NCBI API Keys enable users to have an increased request limit connecting to NCBI."/>
 	</inputs>
 	<outputs>
 		<data format="tabular" name="out_file" label="_RefSeq_results.txt"/>
@@ -52,10 +52,10 @@
 	<![CDATA[
 	**What it does**
 	Implements a set of piped calls to NCBI using Entrez to confirm if a given input accession has a RefSeq record.
+	* INPUT: Newline separated pasted accessions (genome accessions or gids) OR newline separated file
+	* OUTPUT: Tab delimited table reporting if an input accession has a refseq record and the name of the organism (sanity check).
 
-	INPUT: Newline separated pasted accessions (genome accessions or gids) OR newline separated file
-
-	OUTPUT: Tab delimited table reporting if an input accession has a refseq record and the name of the organism (sanity check). 
+	**note: The NCBI API Key is optional. CPT has their own key which will be used if user's do not have their own**
 	]]>
 	</help>
 		<citations>
