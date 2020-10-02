@@ -65,7 +65,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--table",
         type=int,
-        default=11,
+        default=0,
         help="Translation table to use",
         choices=range(0, 23),
     )
