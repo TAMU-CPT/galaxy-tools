@@ -53,8 +53,10 @@ class NaiveSDCaller(object):
         for regex in self.sd_reg:
             for match in regex.finditer(sequence):
                 spacing = len(sequence) - len(match.group()) - match.start()
-                if sd_max >= spacing or spacing >= sd_min:
-                    #if the spacing is within gap limits, add
+                if sd_max >= spacing+sd_min and spacing+sd_min >= sd_min:
+                    #if the spacing is within gap limits, add 
+                    #(search space is [sd_max+7 .. sd_min] so actual gap is spacing+sd_min)
+                    #print('min %d max %d - adding SD with gap %d' % (sd_min, sd_max, spacing+sd_min))
                     hits.append(
                         {
                             "spacing": spacing,
