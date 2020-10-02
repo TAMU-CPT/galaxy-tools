@@ -44,6 +44,7 @@
 		<tool file="cpt2/galaxy-tools/tools/util/cpt_convert_glimmer_to_gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/util/cpt_convert_mga_to_gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/wigToBigWig.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/gff3/cpt_fixGbkConversion.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_reformat.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff2gb.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/fix_ncbi.xml" label="gff3,apollo" />
