@@ -9,9 +9,9 @@
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/cpt_fixGbkConversion.py
 $gff3_data
-#if (str($reference_genome_source) == "history"):
---fasta $reference_genome_source.genome_fasta
---table $reference_genome_source.table
+#if (str($reference_genome.reference_genome_source) == "history"):
+--fasta $reference_genome.genome_fasta
+--table $reference_genome.table
 #end if
 > $default]]></command>
   <inputs>
