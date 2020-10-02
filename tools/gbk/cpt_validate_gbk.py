@@ -151,9 +151,9 @@ def validate_gbk(genbank_file=None):
               warningCount += 1
           elif cdsStart == -1:
               outStr += "Warning: Gene in " + record.id + " at locus_tag " + locus + ' has no CDS'
-                if foundSubfeatures:
-                  outStr += " (Does have the following subfeatures: " + str(foundSubfeatures) + ").\n"
-                else:
+              if foundSubfeatures:
+                  outStr += " (Does have the following subfeatures: " + str(list(filter(lambda x: x != 'gene', foundSubfeatures))) + ").\n"
+              else:
                   outStr += ".\n"
               warningCount += 1
           elif cdsStart != geneStart and cdsEnd != geneEnd and cdsStart != -1:
