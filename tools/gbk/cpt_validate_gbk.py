@@ -149,6 +149,13 @@ def validate_gbk(genbank_file=None):
             if trnaStart == -1:
               outStr += "Warning: Gene in " + record.id + " at locus_tag " + locus + ' has no RBS or CDS.\n'
               warningCount += 1
+          elif cdsStart == -1:
+              outStr += "Warning: Gene in " + record.id + " at locus_tag " + locus + ' has no CDS'
+                if foundSubfeatures:
+                  outStr += " (Does have the following subfeatures: " + str(foundSubfeatures) + ").\n"
+                else:
+                  outStr += ".\n"
+              warningCount += 1
           elif cdsStart != geneStart and cdsEnd != geneEnd and cdsStart != -1:
               outStr += "Error: CDS in " + record.id + " at locus_tag " + locus + ' does not line up with parent gene.\n'
               outStr += "\tGene: [" + str(geneStart + 1) + ", " + str(geneEnd) + "] --- CDS: [" + str(cdsStart + 1) + ", " + str(cdsEnd) + "]\n"
