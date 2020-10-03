@@ -2,10 +2,10 @@
 import sys
 import copy
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
-from Bio.SeqFeature import SeqFeature, FeatureLocation
+from Bio.import SeqFeature, FeatureLocation
 from gff3 import feature_lambda, feature_test_type, get_id
 
 
@@ -64,7 +64,7 @@ def lipoP_gff(lipoIn, gff3In, jBrowseOut):
                 tempQuals["ID"] = xRec.id + "_cleavage_" + str(i)
 
                 xRec.sub_features.append(
-                    SeqFeature(
+                    gffSeqFeature(
                         FeatureLocation(
                             cdss[cdsOff].location.start + (cleaveBase * 3) - 1,
                             cdss[cdsOff].location.start + (cleaveBase * 3) + 1,
