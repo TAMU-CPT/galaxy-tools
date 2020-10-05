@@ -5,7 +5,7 @@ import argparse
 from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
-from Bio.import SeqFeature, FeatureLocation
+from Bio import SeqFeature, FeatureLocation
 from gff3 import feature_lambda, feature_test_type, get_id
 
 
