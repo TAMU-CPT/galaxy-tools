@@ -46,6 +46,12 @@ python $__tool_directory__/gff2gb.py
 			<param name="gff3_data" value="miro.gff3" />
 			<output name="output" file="miro.gbk" />
 		</test>
+		<test>
+			<param name="reference_genome_source" value="history" />
+			<param name="genome_fasta" value="Mu_from_NCBI.fasta" />
+			<param name="gff3_data" value="Mu_from_NCBI.gff3" />
+			<output name="output" file="Mu_from_NCBI.gbk" />
+		</test>
 	</tests>
 	<help><![CDATA[
 .. class:: warningmark
