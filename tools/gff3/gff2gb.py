@@ -67,6 +67,9 @@ def handle_non_gene_features(features):
     ):
         if feature.type in ("terminator", "tRNA"):
             yield feature
+        else:
+            yield feature
+
 
 
 def fminmax(feature):
