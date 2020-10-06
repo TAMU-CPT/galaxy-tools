@@ -449,7 +449,7 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
         line += "-\t"
       else: 
         line += "?\t"
-      if shift:
+      if shift or shift == 0:
         line += str(shift) + "\t"
       elif inFeat.type == "CDS":
         line += "0\t"
@@ -484,7 +484,7 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
       outStream.write(line + "\n")  
     if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
       for x in inFeat.sub_features:
-        printFeatLine(x, orgName, source, score, shift, outStream, inFeat)
+        printFeatLine(x, orgName, x.source, x.score, x.shift, outStream, inFeat)
 
 def gffWrite(inRec, outStream = None):
     if not outStream:
