@@ -294,7 +294,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gbk/cpt_validate_gbk.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_validator.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_table.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/gff3/promote_qualifiers.xml" label="gff3" />
+		<tool file="cpt2/galaxy-tools/tools/gff3/promote_qualifier.xml" label="gff3" />
 	</section>
 
 
