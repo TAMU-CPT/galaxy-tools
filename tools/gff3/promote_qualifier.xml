@@ -36,20 +36,30 @@ $qualifier
 
 Allows you to copy a specified qualifier value from a child feature into a parent feature, most likely to copy the Name from an mRNA into a gene. 
 
-For example, for a Parent Feature Type of "gene", Child Feature Type of "mRNA", and Qualifier to Promote of "Name" the following gff will be changed:
-```
-NC_049846.1	.	gene	630	1182	.	+	.	ID=8942304a;date_last_modified=2020-09-25;Name=**NC_049846.1.gene_1**;date_creation=2020-09-25
-NC_049846.1	.	mRNA	630	1182	.	+	.	Parent=8942304a;ID=536ddf54;**Name=Gene_1_Name**;date_creation=2020-09-25
-```
-To this:
-```
-NC_049846.1	.	gene	630	1182	.	+	.	ID=8942304a;date_last_modified=2020-09-25;**Name=Gene_1_Name**;date_creation=2020-09-25
-NC_049846.1	.	mRNA	630	1182	.	+	.	Parent=8942304a;ID=536ddf54;**Name=Gene_1_Name**;date_creation=2020-09-25
-```
+For example, for a *Parent Feature Type* of "gene", *Child Feature Type* of "mRNA", and *Qualifier to Promote* of "Name" the following gff will be changed:
 
-**Notes**
-- If the qualifier is already present in the parent, it will be overwritten with the child's value. 
-- If there are multiple child features of the specified type under the same parent, the value from the first child. This is strand aware, for positive strand features it will select the child with the smaller start coordinate. For negative strand it will select the child with the largest end coordinate.
+*Before*::
+
+  NC_049846.1	.	gene	630	1182	.	+	.	ID=8942304a;date_last_modified=2020-09-25;Name=**NC_049846.1.gene_1**;date_creation=2020-09-25
+  NC_049846.1	.	mRNA	630	1182	.	+	.	Parent=8942304a;ID=536ddf54;**Name=Gene_1_Name**;date_creation=2020-09-25
+
+*After*::
+
+  NC_049846.1	.	gene	630	1182	.	+	.	ID=8942304a;date_last_modified=2020-09-25;**Name=Gene_1_Name**;date_creation=2020-09-25
+  NC_049846.1	.	mRNA	630	1182	.	+	.	Parent=8942304a;ID=536ddf54;**Name=Gene_1_Name**;date_creation=2020-09-25
+
+.. class:: infomark 
+
+**Notes**::
+
+  - If the qualifier is already present in the parent, it will be overwritten with the child's value. 
+  - If there are multiple child features of the specified type under the same parent, the value from the first child. This is strand aware, for positive strand features it will select the child with the smaller start coordinate. For negative strand it will select the child with the largest end coordinate.
+
+.. class:: warningmark 
+
+**Warning**::
+
+  You should likely never run this to promote the "ID" qualifier as this will break the gff3 hierarchy structure and cause parsing failures downstream. 
 ]]></help>
 		<expand macro="citations" />
 </tool>
