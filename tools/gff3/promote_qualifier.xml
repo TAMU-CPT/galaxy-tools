@@ -53,7 +53,9 @@ For example, for a *Parent Feature Type* of "gene", *Child Feature Type* of "mRN
 **Notes**::
 
   - If the qualifier is already present in the parent, it will be overwritten with the child's value. 
-  - If there are multiple child features of the specified type under the same parent, the value from the first child. This is strand aware, for positive strand features it will select the child with the smaller start coordinate. For negative strand it will select the child with the largest end coordinate.
+  - If there are multiple child features of the specified type under the same parent, the value from the first child. This action is strand aware. 
+    - For positive strand features it will select the child with the smaller start coordinate. 
+    - For negative strand it will select the child with the largest end coordinate.
 
 .. class:: warningmark 
 
