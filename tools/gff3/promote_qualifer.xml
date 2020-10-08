@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.promote_qualifiers" name="Promote Qualifers" version="20.0.0">
+  <description>Promote a child feature's qualifier into the parent feature</description>
+  <macros>
+    <import>macros.xml</import>
+	<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/promote_qualifiers.py
+@INPUT_GFF@
+$parent
+$child
+$qualifier
+> $output]]></command>
+  <inputs>
+    <expand macro="gff3_input" />
+    <param label="Parent Feature Type" name="parent" type="text" help="e.g. gene, mRNA, exon" />
+    <param label="Child Feature Type" name="child" type="text" help="e.g. mRNA, exon, CDS" />
+    <param label="Qualifer to Promote" name="qualifier" type="text" help="e.g. Name, Product, Notes" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output" />
+  </outputs>
+  <tests>
+      <test>
+          <param name="gff3_data" value="promote_qualifiers_in.gff3" />
+          <param name="parent" value="gene" />
+          <param name="child" value="mRNA" />
+          <param name="qualifier" value="Name" />
+          <output name="output" file="promote_qualifiers_out.gff3" />
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Allows you to copy a specified qualifier value from a child feature into a parent feature, most likely to copy the Name from an mRNA into a gene. 
+
+For example, for a Parent Feature Type of "gene", Child Feature Type of "mRNA", and Qualifier to Promote of "Name" the following gff will be changed:
+```
+NC_049846.1	.	gene	630	1182	.	+	.	ID=8942304a;date_last_modified=2020-09-25;Name=**NC_049846.1.gene_1**;date_creation=2020-09-25
+NC_049846.1	.	mRNA	630	1182	.	+	.	Parent=8942304a;ID=536ddf54;**Name=Gene_1_Name**;date_creation=2020-09-25
+```
+To this:
+```
+NC_049846.1	.	gene	630	1182	.	+	.	ID=8942304a;date_last_modified=2020-09-25;**Name=Gene_1_Name**;date_creation=2020-09-25
+NC_049846.1	.	mRNA	630	1182	.	+	.	Parent=8942304a;ID=536ddf54;**Name=Gene_1_Name**;date_creation=2020-09-25
+```
+
+**Notes**
+- If the qualifier is already present in the parent, it will be overwritten with the child's value. 
+- If there are multiple child features of the specified type under the same parent, the value from the first child. This is strand aware, for positive strand features it will select the child with the smaller start coordinate. For negative strand it will select the child with the largest end coordinate.
+]]></help>
+		<expand macro="citations" />
+</tool>
