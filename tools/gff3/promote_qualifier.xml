@@ -7,7 +7,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/promote_qualifiers.py
+python $__tool_directory__/promote_qualifier.py
 @INPUT_GFF@
 $parent
 $child
