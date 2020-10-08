@@ -31,7 +31,7 @@ def promote_qualifier(qualifier, parent, child, gff3):
             )[0]
             try:
                 parent_feature.qualifiers[qualifier] = first_child.qualifiers[qualifier]
-                print(
+                logging.info(
                     "Promoted %s=%s in child %s to parent %s"
                     % (
                         qualifier,
