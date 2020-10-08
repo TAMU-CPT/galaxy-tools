@@ -15,20 +15,24 @@ def promote_qualifier(qualifier, parent, child, gff3):
             record.features, feature_test_type, {"type": parent}, subfeatures=True
         ):
             # for each feature of the parent type, get the first subfeature of the child type
-            first_child = sorted(
-                list(
-                    feature_lambda(
-                        parent_feature.sub_features,
-                        feature_test_type,
-                        {"type": child},
-                        subfeatures=False,
-                    )
-                ),
-                key=lambda x: x.location.start
-                if parent_feature.strand > 0
-                else x.location.end,
-                reverse=False if parent_feature.strand > 0 else True,
-            )[0]
+            try:
+                first_child = sorted(
+                    list(
+                        feature_lambda(
+                            parent_feature.sub_features,
+                            feature_test_type,
+                            {"type": child},
+                            subfeatures=False,
+                        )
+                    ),
+                    key=lambda x: x.location.start
+                    if parent_feature.strand > 0
+                    else x.location.end,
+                    reverse=False if parent_feature.strand > 0 else True,
+                )[0]
+            except IndexError:
+                logging.warning("Child type %s not found under parent %s" % (child, parent_feature.qualifiers["ID"]))
+                continue
             try:
                 parent_feature.qualifiers[qualifier] = first_child.qualifiers[qualifier]
                 logging.info(
