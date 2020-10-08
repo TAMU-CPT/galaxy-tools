@@ -63,5 +63,5 @@ For example, for a *Parent Feature Type* of "gene", *Child Feature Type* of "mRN
 
   You should likely never run this to promote the "ID" qualifier as this will break the gff3 hierarchy structure and cause parsing failures downstream. 
 ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-clm" />
 </tool>
