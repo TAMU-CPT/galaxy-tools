@@ -38,12 +38,12 @@ Allows you to copy a specified qualifier value from a child feature into a paren
 
 For example, for a *Parent Feature Type* of "gene", *Child Feature Type* of "mRNA", and *Qualifier to Promote* of "Name" the following gff will be changed:
 
-*Before*::
+*Before*
 
   NC_049846.1	.	gene	630	1182	.	+	.	ID=8942304a;date_last_modified=2020-09-25;Name=**NC_049846.1.gene_1**;date_creation=2020-09-25
   NC_049846.1	.	mRNA	630	1182	.	+	.	Parent=8942304a;ID=536ddf54;**Name=Gene_1_Name**;date_creation=2020-09-25
 
-*After*::
+*After*
 
   NC_049846.1	.	gene	630	1182	.	+	.	ID=8942304a;date_last_modified=2020-09-25;**Name=Gene_1_Name**;date_creation=2020-09-25
   NC_049846.1	.	mRNA	630	1182	.	+	.	Parent=8942304a;ID=536ddf54;**Name=Gene_1_Name**;date_creation=2020-09-25
