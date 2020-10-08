@@ -1,8 +1,3 @@
-Promoted Name=['Gene_1_Name'] in child ['536ddf54-8e6c-4928-99cb-958fbd796706'] to parent ['8942304a-f4f8-4429-82b1-2b28f07f8b1e']
-Promoted Name=['Gene_2_Name'] in child ['c146fe26-27b0-4abe-8266-4047c8418fac'] to parent ['cba0ed94-36c1-4db5-9ddf-66dd9364e918']
-Promoted Name=['Gene_3_Name_1'] in child ['4cb5597d-fdfe-4a51-8e5a-477ffefd1815'] to parent ['007a93d5-5241-4646-9dd3-ec991a73760f']
-Promoted Name=['Gene_4_Name'] in child ['0deef6f0-0bfc-448a-a9f3-be4f50304c8b'] to parent ['c81f410e-9108-4274-89b3-c52904a05447']
-Promoted Name=['Gene_5_Name_1'] in child ['ac8fd0a0-115e-4343-8420-15fd17fa8406'] to parent ['8c23e351-f6b4-4142-8874-e4a8f99a0032']
 ##gff-version 3
 ##sequence-region NC_049846.1 1 49045
 NC_049846.1	.	gene	630	1182	.	+	0	owner=benburrowes@tamu.edu;ID=8942304a-f4f8-4429-82b1-2b28f07f8b1e;date_last_modified=2020-09-25;Name=Gene_1_Name;date_creation=2020-09-25;
