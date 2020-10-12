@@ -50,19 +50,19 @@ python $__tool_directory__/gff2gb.py
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="mu_from_ncbi.fasta" />
 			<param name="gff3_data" value="mu_from_ncbi.gff3" />
-			<output name="output" file="mu_from_ncbi.gbk" />
+			<output name="output" file="mu_from_tool.gbk" />
 		</test>
 		<test> <!-- TEST FOR DIFFERENT FEATURES -->
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="t1_from_ncbi.fasta" />
 			<param name="gff3_data" value="t1_from_ncbi.gff3" />
-			<output name="output" file="t1_from_ncbi.gbk" />
+			<output name="output" file="t1_from_tool.gbk" />
 		</test>
 		<test> <!-- TEST FOR DIFFERENT FEATURES -->
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="lambda_from_ncbi.fasta" />
 			<param name="gff3_data" value="lambda_from_ncbi.gff3" />
-			<output name="output" file="lambda_from_ncbi.gbk" />
+			<output name="output" file="lambda_from_tool.gbk" />
 		</test>
 		<test> <!-- TEST FOR VERIFYING OLD FIX FOR RBS STILL WORKS -->
 			<param name="reference_genome_source" value="history" />
@@ -74,7 +74,7 @@ python $__tool_directory__/gff2gb.py
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="sun.fasta" />
 			<param name="gff3_data" value="sun.gff3" />
-			<output name="output" file="sun.gbk" />		
+			<output name="output" file="sun_from_tool.gbk" />		
 		</test>
 	</tests>
 	<help><![CDATA[
