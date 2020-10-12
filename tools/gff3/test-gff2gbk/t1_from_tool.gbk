@@ -7,16 +7,6 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     region          1..48836
-                     /gbkey="Src"
-                     /genome="genomic"
-                     /mol_type="genomic DNA"
-                     /nat-host="Escherichia coli"
-                     /old-name="Bacteriophage T1"
-                     /db_xref="taxon:1921008"
-     repeat_region   1..2800
-                     /gbkey="repeat_region"
-                     /rpt_type=terminal
      gene            539..1114
                      /locus_tag="CPT_NC_005833.1_001"
      CDS             539..1114

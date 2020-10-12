@@ -7,14 +7,6 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     region          1..36717
-                     /gbkey="Src"
-                     /genome="genomic"
-                     /mol_type="genomic DNA"
-                     /nat-host="Escherichia coli"
-                     /note="G(+) form"
-                     /old-name="Enterobacteria phage Mu"
-                     /db_xref="taxon:2681603"
      gene            complement(339..863)
                      /locus_tag="CPT_NC_000929.1_001"
      CDS             complement(339..863)
@@ -259,7 +251,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_050627.1"
                      /db_xref="GeneID:2636265"
-     sequence_feature11159
+     misc_feature    11159
                      /gbkey="misc_feature"
                      /locus_tag="Mup23"
                      /note="possible alternate start site for gp23"
@@ -350,7 +342,7 @@ FEATURES             Location/Qualifiers
                      homologs"
                      /db_xref="Genbank:NP_050635.1"
                      /db_xref="GeneID:2636282"
-     sequence_feature17879..17880
+     misc_feature    17879..17880
                      /gbkey="misc_feature"
                      /note="gyrase cut site"
      gene            18056..19141
@@ -485,11 +477,6 @@ FEATURES             Location/Qualifiers
                      homolog"
                      /db_xref="Genbank:NP_050646.1"
                      /db_xref="GeneID:2636275"
-     sequence_differe24268
-                     /gbkey="misc_difference"
-                     /locus_tag="Mup42"
-                     /replace="a"
-                     /db_xref="GeneID:2636275"
      gene            26208..27695
                      /locus_tag="CPT_NC_000929.1_043"
      CDS             26208..27695
@@ -558,7 +545,7 @@ FEATURES             Location/Qualifiers
                      /note="Haemophilus influenzae HI1521 homolog"
                      /db_xref="Genbank:NP_050652.1"
                      /db_xref="GeneID:2636277"
-     sequence_feature31458..31966
+     misc_feature    31458..31966
                      /gbkey="misc_feature"
                      /locus_tag="Mup49"
                      /note="encodes amino terminal end of tail fiber protein
@@ -575,7 +562,7 @@ FEATURES             Location/Qualifiers
                      /note="Haemophilus influenzae HI1522 homolog"
                      /db_xref="Genbank:NP_050653.1"
                      /db_xref="GeneID:2636293"
-     sequence_feature31966
+     misc_feature    31966
                      /gbkey="misc_feature"
                      /locus_tag="Mup49"
                      /note="G-segment boundary"
@@ -590,7 +577,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_050654.1"
                      /db_xref="GeneID:2636270"
-     sequence_featurecomplement(33531..34064)
+     misc_feature    complement(33531..34064)
                      /gbkey="misc_feature"
                      /locus_tag="Mup51"
                      /note="encodes tail fiber assembly protein (U') in G(-)
@@ -606,7 +593,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_602302.1"
                      /db_xref="GeneID:2636259"
-     sequence_featurecomplement(34067..35024)
+     misc_feature    complement(34067..35024)
                      /gbkey="misc_feature"
                      /locus_tag="Mup52"
                      /note="encodes carboxyl terminal end of tail fiber protein
@@ -622,7 +609,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_602303.1"
                      /db_xref="GeneID:2636274"
-     sequence_feature35025
+     misc_feature    35025
                      /gbkey="misc_feature"
                      /note="G-segment boundary"
      gene            35092..35673

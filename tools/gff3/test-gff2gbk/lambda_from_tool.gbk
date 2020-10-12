@@ -7,13 +7,6 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     region          1..48502
-                     /gbkey="Src"
-                     /genome="genomic"
-                     /mol_type="genomic DNA"
-                     /nat-host="Escherichia coli"
-                     /old-name="Bacteriophage lambda"
-                     /db_xref="taxon:10710"
      gene            191..736
                      /locus_tag="CPT_NC_001416.1_001"
      CDS             191..736
@@ -264,7 +257,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040601.1"
                      /db_xref="GeneID:2703517"
-     sequence_alterat19368..23278
+     variation       19368..23278
                      /gbkey="variation"
                      /locus_tag="lambdap25"
                      /note="lac5 substitution"
@@ -303,7 +296,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040604.1"
                      /db_xref="GeneID:2703519"
-     sequence_alterat21737
+     variation       21737
                      /end_range="21737"
                      /end_range="."
                      /gbkey="variation"
@@ -336,15 +329,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="GeneID:3827051"
      gene            complement(23231)
                      /locus_tag="CPT_NC_001416.1_032"
-     RBS             complement(23231)
-                     /gbkey="mRNA"
-                     /locus_tag="CPT_NC_001416.1_032"
-                     /partial="true"
-                     /product="mRNA-pbl"
-                     /start_range="."
-                     /start_range="23231"
-                     /db_xref="GeneID:2703520"
-     recombination_fe24389..24390
+     misc_recomb     24389..24390
                      /gbkey="misc_recomb"
                      /organism="Bacteriophage lambda"
      gene            complement(24509..25399)
@@ -369,7 +354,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040608.1"
                      /db_xref="GeneID:3827053"
-     sequence_alterat27537
+     variation       27537
                      /gbkey="variation"
                      /locus_tag="lambdap25"
                      /replace="t"
@@ -379,32 +364,32 @@ FEATURES             Location/Qualifiers
                      /locus_tag="CPT_NC_001416.1_035"
      gene            complement(27538..29065)
                      /locus_tag="CPT_NC_001416.1_036"
-     sequence_alterat27547
+     variation       27547
                      /gbkey="variation"
                      /locus_tag="lambdap32"
                      /replace="a"
                      /note="a in hef13; g in wild-type"
                      /db_xref="GeneID:2703464"
-     sequence_alterat27568
+     variation       27568
                      /gbkey="variation"
                      /locus_tag="lambdap32"
                      /note="a in sib2; c in wild-type"
                      /db_xref="GeneID:2703464"
-     sequence_alterat27573
+     variation       27573
                      /gbkey="variation"
                      /locus_tag="lambdap32"
                      /note="t in sib1; g in wild-type"
                      /db_xref="GeneID:2703464"
-     binding_site    27583..27602
+     misc_binding    27583..27602
                      /bound_moiety="int 1"
                      /gbkey="misc_binding"
-     binding_site    27615..27634
+     misc_binding    27615..27634
                      /bound_moiety="int 2"
                      /gbkey="misc_binding"
-     binding_site    27714..27747
+     misc_binding    27714..27747
                      /bound_moiety="int 3"
                      /gbkey="misc_binding"
-     recombination_fe27724..27738
+     misc_recomb     27724..27738
                      /gbkey="misc_recomb"
                      /organism="Bacteriophage lambda"
      gene            complement(27812..28882)
@@ -418,7 +403,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040609.1"
                      /db_xref="GeneID:2703470"
-     binding_site    27814..27854
+     misc_binding    27814..27854
                      /bound_moiety="int 4"
                      /gbkey="misc_binding"
      gene            complement(28860..29078)
@@ -432,7 +417,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040610.1"
                      /db_xref="GeneID:2703504"
-     sequence_alterat29063
+     variation       29063
                      /gbkey="variation"
                      /gene="xis"
                      /locus_tag="lambdap34"
@@ -506,7 +491,7 @@ FEATURES             Location/Qualifiers
                      /db_xref="GeneID:2703508"
      gene            complement(31262..35582)
                      /locus_tag="CPT_NC_001416.1_045"
-     recombination_fe31266..31267
+     misc_recomb     31266..31267
                      /gbkey="misc_recomb"
                      /organism="Bacteriophage lambda"
      gene            complement(31348..32028)
@@ -601,7 +586,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040623.1"
                      /db_xref="GeneID:2703510"
-     sequence_alterat34378..38617
+     variation       34378..38617
                      /gbkey="variation"
                      /note="imm21 region"
      gene            34482..35036
@@ -625,71 +610,59 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /gene_biotype="protein_coding"
                      /db_xref="GeneID:2703540"
-     binding_site    complement(35518..35534)
+     misc_binding    complement(35518..35534)
                      /bound_moiety="Nutl"
                      /gbkey="misc_binding"
                      /gene="N"
                      /locus_tag="lambdap49"
                      /note="N-utilization leftward.; putative"
                      /db_xref="GeneID:2703540"
-     sequence_alterat35528
+     variation       35528
                      /gbkey="variation"
                      /gene="N"
                      /locus_tag="lambdap49"
                      /replace="a"
                      /note="a in Nutl63; c in wild-type"
                      /db_xref="GeneID:2703540"
-     sequence_alterat35528
+     variation       35528
                      /gbkey="variation"
                      /gene="N"
                      /locus_tag="lambdap49"
                      /replace="g"
                      /note="g in Nutl96; c in wild-type"
                      /db_xref="GeneID:2703540"
-     sequence_alterat35528
+     variation       35528
                      /gbkey="variation"
                      /gene="N"
                      /locus_tag="lambdap49"
                      /replace="t"
                      /note="t in Nutl18; c in wild-type"
                      /db_xref="GeneID:2703540"
-     sequence_alterat35529..35531
+     variation       35529..35531
                      /gbkey="variation"
                      /gene="N"
                      /locus_tag="lambdap49"
                      /replace="ag"
                      /note="agg in wild-type; ag in Nutl3"
                      /db_xref="GeneID:2703540"
-     sequence_alterat35583..38245
+     variation       35583..38245
                      /gbkey="variation"
                      /note="imm434 region"
-     regulatory_regiocomplement(35591..35607)
-                     /gbkey="regulatory"
-                     /regulatory_class="other"
-                     /note="operator-l1 (first base on comp strand)"
-     sequence_alterat35596
+     variation       35596
                      /gbkey="variation"
                      /note="a in vir2, t in v003, c in wild-type"
-     sequence_alterat35606
+     variation       35606
                      /gbkey="variation"
                      /replace="c"
                      /note="c in vir101; t in wild-type"
-     regulatory_regiocomplement(35615..35631)
-                     /gbkey="regulatory"
-                     /regulatory_class="other"
-                     /note="operator-l2 (first base on comp strand)"
-     sequence_alterat35621
+     variation       35621
                      /gbkey="variation"
                      /replace="t"
                      /note="t in v305, c in wild-type"
-     sequence_alterat35622
+     variation       35622
                      /gbkey="variation"
                      /replace="t"
                      /note="t in v305, g in wild-type"
-     regulatory_regiocomplement(35635..35651)
-                     /gbkey="regulatory"
-                     /regulatory_class="other"
-                     /note="operator-l3 (first base on comp strand)"
      gene            complement(35798..38343)
                      /locus_tag="CPT_NC_001416.1_058"
      gene            complement(35798..37940)
@@ -707,14 +680,14 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040626.1"
                      /db_xref="GeneID:2703493"
-     sequence_alterat35940
+     variation       35940
                      /gbkey="variation"
                      /gene="rexb"
                      /locus_tag="lambdap53"
                      /replace="a"
                      /note="a in rex209, g in wild-type"
                      /db_xref="GeneID:2703493"
-     sequence_alterat35947
+     variation       35947
                      /gbkey="variation"
                      /gene="rexb"
                      /locus_tag="lambdap53"
@@ -743,197 +716,185 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040628.1"
                      /db_xref="GeneID:3827059"
-     sequence_alterat37287
+     variation       37287
                      /gbkey="variation"
                      /gene="cI"
                      /locus_tag="lambdap88"
                      /replace="a"
                      /note="a in cIam14, c in wild-type"
                      /db_xref="GeneID:3827059"
-     sequence_alterat37308
+     variation       37308
                      /gbkey="variation"
                      /gene="cI"
                      /locus_tag="lambdap88"
                      /replace="c"
                      /note="c in cIam504, g in wild-type"
                      /db_xref="GeneID:3827059"
-     sequence_alterat37313
+     variation       37313
                      /gbkey="variation"
                      /gene="cI"
                      /locus_tag="lambdap88"
                      /replace="a"
                      /note="a in cIam505, g in wild-type"
                      /db_xref="GeneID:3827059"
-     sequence_alterat37589
+     variation       37589
                      /gbkey="variation"
                      /gene="cI"
                      /locus_tag="lambdap88"
                      /replace="t"
                      /note="t in ind1; c in wild-type"
                      /db_xref="GeneID:3827059"
-     sequence_alterat37629
+     variation       37629
                      /gbkey="variation"
                      /gene="cI"
                      /locus_tag="lambdap88"
                      /replace="c"
                      /note="c in cIam499; g in wild-type"
                      /db_xref="GeneID:3827059"
-     sequence_alterat37635
+     variation       37635
                      /gbkey="variation"
                      /gene="cI"
                      /locus_tag="lambdap88"
                      /replace="c"
                      /note="c in cIam212, a in wild-type"
                      /db_xref="GeneID:3827059"
-     sequence_alterat37680
+     variation       37680
                      /gbkey="variation"
                      /gene="cI"
                      /locus_tag="lambdap88"
                      /replace="a"
                      /note="a in cIam34; c in wild-type"
                      /db_xref="GeneID:3827059"
-     sequence_alterat37742
+     variation       37742
                      /gbkey="variation"
                      /gene="cI"
                      /locus_tag="lambdap88"
                      /replace="t"
                      /note="t in strain ci857s7([25]); c in wild-type"
                      /db_xref="GeneID:3827059"
-     sequence_alterat37808
+     variation       37808
                      /gbkey="variation"
                      /gene="cI"
                      /locus_tag="lambdap88"
                      /replace="a"
                      /note="a in cIam282; g in wild-type"
                      /db_xref="GeneID:3827059"
-     sequence_alterat37872
+     variation       37872
                      /gbkey="variation"
                      /gene="cI"
                      /locus_tag="lambdap88"
                      /replace="c"
                      /note="c in cIam302; a in wild-type"
                      /db_xref="GeneID:3827059"
-     regulatory_regio37951..37967
-                     /gbkey="regulatory"
-                     /regulatory_class="other"
-                     /note="operator-r3"
-     sequence_alterat37954
+     variation       37954
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="t"
                      /note="t in prm-e37; c in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37955
+     variation       37955
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="g"
                      /note="g in vc3;, a in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37957
+     variation       37957
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="t"
                      /note="t in or3-r1; c in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37958
+     variation       37958
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="a"
                      /note="a in or 3-r3 mutants; g in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37965
+     variation       37965
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="g"
                      /note="g in or3-c12; a in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37966
+     variation       37966
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="c"
                      /note="c in or3-c10; t in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37971
+     variation       37971
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="g"
                      /note="g inp-rmup-1; a in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37973
+     variation       37973
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="t"
                      /note="t in prm-m104; 116; u31 mutants, c in wild-type"
                      /db_xref="GeneID:2703537"
-     regulatory_regio37974..37990
-                     /gbkey="regulatory"
-                     /regulatory_class="other"
-                     /note="operator-r2"
-     sequence_alterat37978
+     variation       37978
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="g"
                      /note="g in vc3; a in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37978
+     variation       37978
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="t"
                      /note="t in prm-e104; a in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37979
+     variation       37979
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="t"
                      /note="t in prm-e93; c in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37985
+     variation       37985
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="t"
                      /note="t in vn; g in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37988..37990
+     variation       37988..37990
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="tg"
                      /note="tg in mah4 mutant; ttg in wt"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37989..37991
+     variation       37989..37991
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="ta"
                      /note="ta in mch9 mutant; tga in wt"
                      /db_xref="GeneID:2703537"
-     sequence_alterat37991
+     variation       37991
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="g"
                      /note="g in pr-x3; a in wild-type"
                      /db_xref="GeneID:2703537"
-     regulatory_regio37998..38014
-                     /gbkey="regulatory"
-                     /regulatory_class="other"
-                     /note="operator-r1"
-     sequence_alterat38003
+     variation       38003
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="a"
                      /note="a in vs326; c in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat38007
+     variation       38007
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="a"
                      /note="a in vir3; c in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat38007
+     variation       38007
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="t"
                      /note="t in prm-uv8; c in wild-type"
                      /db_xref="GeneID:2703537"
-     sequence_alterat38009
+     variation       38009
                      /gbkey="variation"
                      /locus_tag="lambdap50"
                      /replace="t"
@@ -958,59 +919,59 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /gene_biotype="protein_coding"
                      /db_xref="GeneID:2703467"
-     sequence_feature38249..38266
+     misc_feature    38249..38266
                      /gbkey="misc_feature"
                      /gene="cro"
                      /locus_tag="lambdap57"
                      /note="rho utilization site A (rutA)"
                      /db_xref="GeneID:2703467"
-     binding_site    38265..38281
+     misc_binding    38265..38281
                      /bound_moiety="Nutr"
                      /gbkey="misc_binding"
                      /gene="cro"
                      /locus_tag="lambdap57"
                      /note="N-utilization rightward; putative"
                      /db_xref="GeneID:2703467"
-     sequence_feature38282..38301
+     misc_feature    38282..38301
                      /gbkey="misc_feature"
                      /gene="cro"
                      /locus_tag="lambdap57"
                      /note="rho utilization site B (rutB)"
                      /db_xref="GeneID:2703467"
-     sequence_alterat38302
+     variation       38302
                      /gbkey="variation"
                      /gene="cro"
                      /locus_tag="lambdap57"
                      /replace="a"
                      /note="a in cin-1; g in wild-type"
                      /db_xref="GeneID:2703467"
-     sequence_alterat38306
+     variation       38306
                      /gbkey="variation"
                      /gene="cro"
                      /locus_tag="lambdap57"
                      /replace="c"
                      /note="c in cnc1; t in wild-type"
                      /db_xref="GeneID:2703467"
-     sequence_alterat38307
+     variation       38307
                      /gbkey="variation"
                      /gene="cro"
                      /locus_tag="lambdap57"
                      /replace="g"
                      /note="g in cnc8; a in wild-type"
                      /db_xref="GeneID:2703467"
-     sequence_alterat38350
+     variation       38350
                      /gbkey="variation"
                      /locus_tag="lambdap55"
                      /replace="g"
                      /note="g in cy3048; a in wild-type"
                      /db_xref="GeneID:2703491"
-     sequence_alterat38354
+     variation       38354
                      /gbkey="variation"
                      /locus_tag="lambdap55"
                      /replace="c"
                      /note="c in cy2001; t in wild-type"
                      /db_xref="GeneID:2703491"
-     sequence_alterat38357
+     variation       38357
                      /gbkey="variation"
                      /locus_tag="lambdap55"
                      /replace="t"
@@ -1027,49 +988,49 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040630.1"
                      /db_xref="GeneID:2703494"
-     sequence_alterat38364
+     variation       38364
                      /gbkey="variation"
                      /gene="cII"
                      /locus_tag="lambdap59"
                      /replace="g"
                      /note="g in can1; t in wild-type"
                      /db_xref="GeneID:2703494"
-     sequence_alterat38370
+     variation       38370
                      /gbkey="variation"
                      /gene="cII"
                      /locus_tag="lambdap59"
                      /replace="t"
                      /note="t in cy3003; c in wild-type"
                      /db_xref="GeneID:2703494"
-     sequence_alterat38371
+     variation       38371
                      /gbkey="variation"
                      /gene="cII"
                      /locus_tag="lambdap59"
                      /replace="t"
                      /note="t in cy42; a in wild-type"
                      /db_xref="GeneID:2703494"
-     sequence_alterat38376
+     variation       38376
                      /gbkey="variation"
                      /gene="cII"
                      /locus_tag="lambdap59"
                      /replace="g"
                      /note="g in cy844; a in wild-type"
                      /db_xref="GeneID:2703494"
-     sequence_alterat38379
+     variation       38379
                      /gbkey="variation"
                      /gene="cII"
                      /locus_tag="lambdap59"
                      /replace="a"
                      /note="a in cy3008; g in wild-type"
                      /db_xref="GeneID:2703494"
-     sequence_alterat38380
+     variation       38380
                      /gbkey="variation"
                      /gene="cII"
                      /locus_tag="lambdap59"
                      /replace="t"
                      /note="t in cy3001; c in wild-type"
                      /db_xref="GeneID:2703494"
-     sequence_alterat38430
+     variation       38430
                      /gbkey="variation"
                      /gene="cII"
                      /locus_tag="lambdap59"
@@ -1096,57 +1057,57 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040631.1"
                      /db_xref="GeneID:3827060"
-     binding_site    39034..39051
+     misc_binding    39034..39051
                      /bound_moiety="ori iteron 1(O"
                      /gbkey="misc_binding"
                      /gene="O"
                      /locus_tag="lambdap89"
                      /db_xref="GeneID:3827060"
-     binding_site    39054..39071
+     misc_binding    39054..39071
                      /bound_moiety="ori iteron 2(O"
                      /gbkey="misc_binding"
                      /gene="O"
                      /locus_tag="lambdap89"
                      /db_xref="GeneID:3827060"
-     binding_site    39078..39095
+     misc_binding    39078..39095
                      /bound_moiety="ori iteron 3(O"
                      /gbkey="misc_binding"
                      /gene="O"
                      /locus_tag="lambdap89"
                      /db_xref="GeneID:3827060"
-     binding_site    39101..39118
+     misc_binding    39101..39118
                      /bound_moiety="ori iteron 4(O"
                      /gbkey="misc_binding"
                      /gene="O"
                      /locus_tag="lambdap89"
                      /db_xref="GeneID:3827060"
-     sequence_alterat39122
+     variation       39122
                      /gbkey="variation"
                      /gene="O"
                      /locus_tag="lambdap89"
                      /replace="a"
                      /note="a in ti-12; c in wild-type"
                      /db_xref="GeneID:3827060"
-     recombination_fe39157..39158
+     misc_recomb     39157..39158
                      /gbkey="misc_recomb"
                      /gene="O"
                      /locus_tag="lambdap89"
                      /organism="Bacteriophage lambda"
                      /db_xref="GeneID:3827060"
-     recombination_fe39165..39166
+     misc_recomb     39165..39166
                      /gbkey="misc_recomb"
                      /gene="O"
                      /locus_tag="lambdap89"
                      /organism="Bacteriophage lambda"
                      /db_xref="GeneID:3827060"
-     sequence_alterat39268
+     variation       39268
                      /gbkey="variation"
                      /gene="O"
                      /locus_tag="lambdap89"
                      /replace="t"
                      /note="t in ric5b; c in wild-type"
                      /db_xref="GeneID:3827060"
-     sequence_alterat39292
+     variation       39292
                      /gbkey="variation"
                      /gene="O"
                      /locus_tag="lambdap89"
@@ -1175,7 +1136,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040633.1"
                      /db_xref="GeneID:2703496"
-     sequence_alterat40501..43307
+     variation       40501..43307
                      /gbkey="variation"
                      /note="Nin5 substitution"
      gene            40644..41084
@@ -1256,15 +1217,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040640.1"
                      /db_xref="GeneID:2703475"
-     sequence_uncerta43082
-                     /gbkey="unsure"
-                     /gene="NinH"
-                     /locus_tag="lambdap69"
-                     /replace="a"
-                     /note="g or a, cited in [(in) Hendrix,R.W., Roberts,J.W.,
-                     Stahl,F.W. andWeisberg,R.A. (Eds.);Lambda II: 4]"
-                     /db_xref="GeneID:2703475"
-     sequence_alterat43082
+     variation       43082
                      /gbkey="variation"
                      /gene="NinH"
                      /locus_tag="lambdap69"
@@ -1282,7 +1235,7 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:NP_040641.1"
                      /db_xref="GeneID:2703476"
-     recombination_fe43884..43885
+     misc_recomb     43884..43885
                      /gbkey="misc_recomb"
                      /gene="NinI"
                      /locus_tag="lambdap70"
@@ -1334,14 +1287,14 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
                      /db_xref="Genbank:YP_001551775.1"
                      /db_xref="GeneID:5740919"
-     sequence_alterat45352
+     variation       45352
                      /gbkey="variation"
                      /gene="S'"
                      /locus_tag="lambdap92"
                      /replace="a"
                      /note="a in sam7; g in wild-type"
                      /db_xref="GeneID:5740919"
-     sequence_alterat45352
+     variation       45352
                      /gbkey="variation"
                      /gene="S'"
                      /locus_tag="lambdap92"
