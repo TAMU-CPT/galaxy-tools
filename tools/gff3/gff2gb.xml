@@ -48,21 +48,15 @@ python $__tool_directory__/gff2gb.py
 		</test>
 		<test> <!-- TEST FOR DIFFERENT FEATURES -->
 			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="Mu_from_ncbi.fasta" />
-			<param name="gff3_data" value="Mu_from_ncbi.gff3" />
-			<output name="output" file="Mu_from_ncbi.gbk" />
+			<param name="genome_fasta" value="mu_from_ncbi.fasta" />
+			<param name="gff3_data" value="mu_from_ncbi.gff3" />
+			<output name="output" file="mu_from_ncbi.gbk" />
 		</test>
 		<test> <!-- TEST FOR DIFFERENT FEATURES -->
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="t1_from_ncbi.fasta" />
 			<param name="gff3_data" value="t1_from_ncbi.gff3" />
 			<output name="output" file="t1_from_ncbi.gbk" />
-		</test>
-		<test> <!-- TEST FOR DIFFERENT FEATURES -->
-			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="lambda_from_ncbi.fasta" />
-			<param name="gff3_data" value="lambda_from_ncbi.gff3" />
-			<output name="output" file="lambda_from_ncbi.gbk" />
 		</test>
 		<test> <!-- TEST FOR DIFFERENT FEATURES -->
 			<param name="reference_genome_source" value="history" />
