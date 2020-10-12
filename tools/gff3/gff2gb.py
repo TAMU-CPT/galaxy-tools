@@ -63,11 +63,9 @@ def handle_non_gene_features(features):
         {"type": "gene"},
         subfeatures=False,
         invert=True,
-        recurse=False,
+        recurse=True, #  used to catch RBS from new apollo runs (used to be False)
     ):
-        if feature.type in ("terminator", "tRNA"):
-            yield feature
-        else:
+        if feature.type in ("terminator", "tRNA", "Shine_Dalgarno_sequence"): # This if statement is pretty messy atm, should fix
             yield feature
 
 
@@ -115,7 +113,7 @@ def fix_gene_qualifiers(name, feature, fid):
                 if is_uuid(sf.qualifiers["Name"][0]):
                     del sf.qualifiers["Name"]
             except KeyError:
-                pass
+                continue # might should go back to pass, I have not put thought into this still
 
             # If it is the RBS exon (mis-labelled by apollo as 'exon')
             if sf.type == "exon" and len(sf) < 10:
@@ -348,7 +346,6 @@ def handle_record(record, transltbl):
 
     # Meat of our modifications
     for flat_feat in flat_features:
-
         # Try and figure out a name. We gave conflicting instructions, so
         # this isn't as trivial as it should be.
         protein_product = wa_unified_product_name(flat_feat)
