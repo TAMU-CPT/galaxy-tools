@@ -9,3 +9,4 @@
             * "recombination_feature" --> "misc_recomb"
             * "sequence_alteration" --> "variation"
             * "binding_site" --> "misc_binding"
+* `generate_gbks.sh` will regenerate the genbanks for testing (`bash generate_gbks.sh`)
