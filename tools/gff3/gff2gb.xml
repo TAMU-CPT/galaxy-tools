@@ -40,11 +40,11 @@ python $__tool_directory__/gff2gb.py
 		<data format="genbank" hidden="false" name="output" label="${gff3_data.name} as GenBank"/>
 	</outputs>
 	<tests>
-		<test> <!-- ORIGINAL TEST -->
+		<test> <!-- ORIGINAL TEST, regenerate 10.12.2020 -->
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="miro.fa" />
 			<param name="gff3_data" value="miro.gff3" />
-			<output name="output" file="miro.gbk" />
+			<output name="output" file="miro_from_tool.gbk" />
 		</test>
 		<test> <!-- TEST FOR DIFFERENT FEATURES -->
 			<param name="reference_genome_source" value="history" />
@@ -68,7 +68,7 @@ python $__tool_directory__/gff2gb.py
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="shady_old.fasta" />
 			<param name="gff3_data" value="shady_old.gff3" />
-			<output name="output" file="shady_old.gbk" />
+			<output name="output" file="shady_from_tool.gbk" />
 		</test> 
 		<test> <!-- TEST FOR VERIFYING NEW FIX FOR RBS WORKS -->
 			<param name="reference_genome_source" value="history" />
