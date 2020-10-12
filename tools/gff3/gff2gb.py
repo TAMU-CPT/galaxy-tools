@@ -65,7 +65,15 @@ def handle_non_gene_features(features):
         invert=True,
         recurse=True, #  used to catch RBS from new apollo runs (used to be False)
     ):
-        if feature.type in ("terminator", "tRNA", "Shine_Dalgarno_sequence"): # This if statement is pretty messy atm, should fix
+        if feature.type in (
+            "terminator", 
+            "tRNA", 
+            "Shine_Dalgarno_sequence",
+            "sequence_feature",
+            "recombination_feature",
+            "sequence_alteration",
+            "binding_site",
+        ):
             yield feature
 
 
@@ -273,6 +281,19 @@ def remove_useless_features(features):
             # We use the full GO term, but it should be less than that.
             if f.type == "Shine_Dalgarno_sequence":
                 f.type = "RBS"
+            
+            if f.type == "sequence_feature":
+                f.type = "misc_feature"
+            
+            if f.type == "recombination_feature":
+                f.type = "misc_recomb"
+            
+            if f.type == "sequence_alteration":
+                f.type = "variation"
+            
+            if f.type == "binding_site":
+                f.type = "misc_binding"
+
             yield f
 
 
