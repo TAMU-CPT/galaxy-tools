@@ -175,8 +175,9 @@ def qualCheck(thisFeat, autoFix=False):
 
 
 
-def table_annotations(gff3In, out_errorlog, autoFix = True, removeAnnote = []):
+def table_annotations(gff3In, out_errorlog, autoFix = True, annoteList = [], removeAnnote = False):
 
+    annoteTypes = annoteList # Going to see if users leave prepopulated list untouched ["annotation", "remark", "contig"] + annoteList
     outRec = []
     
     for record in list(gffParse(gff3In)):
@@ -187,11 +188,21 @@ def table_annotations(gff3In, out_errorlog, autoFix = True, removeAnnote = []):
         warnMessage = ""
         topFeats = []
         metaFeats = []
+        highestEnd = 0
         for x in record.features:
-          if x.type != "annotation" and x.type != "contig":
-            topFeats.append(x)
-          else:
-            metaFeats.append(x)
+          highestEnd = max(highestEnd, x.location.end)
+
+        for x in record.features:
+          for y in annoteTypes:
+            if x.type == y:
+              metaFeats.append(x)
+              break
+          if not metaFeats or x != metaFeats[-1]:
+              if x.location.end - x.location.start >= highestEnd:
+                warnMessage += "Warning: Feature of type " + x.type + " is not labeled as a metadata type, but runs the entire length of the genome. May cause numerous overlap issues.\n"
+                numWarning += 1
+              topFeats.append(x)
+            
         topFeats.sort(key=lambda x: x.location.start)
 
         for featInd in range(0, len(metaFeats)):
@@ -270,7 +281,7 @@ def table_annotations(gff3In, out_errorlog, autoFix = True, removeAnnote = []):
           record.annotations = {}
           outFeats = []
           for x in record.features:
-            if x.type not in removeAnnote:
+            if x.type not in annoteList:
               outFeats.append(x)
             else:
               remLines += 1
@@ -282,7 +293,7 @@ def table_annotations(gff3In, out_errorlog, autoFix = True, removeAnnote = []):
             record.annotations = {}
             outFeats = []
             for x in finFeats:
-              if x.type not in removeAnnote:
+              if x.type not in annoteList:
                 outFeats.append(x)
               else:
                 remLines += 1
@@ -322,10 +333,13 @@ if __name__ == "__main__":
         "--autoFix", action="store_true", help="Fix qualifiers to be genbank compatible"
     )
     parser.add_argument(
-        "--removeAnnote", type=str, help="Remove Annotations", default=""
+        "--annoteList", type=str, help="Annotation feature types (ie, Don't QC these features)", default=""
+    )
+    parser.add_argument(
+        "--removeAnnote", action="store_true", help="Remove Annotations", default=""
     )
     args = parser.parse_args()
-    if args.removeAnnote:
-      args.removeAnnote = args.removeAnnote.split(" ")
+    if args.annoteList:
+      args.annoteList = args.annoteList.split(" ")
     
     table_annotations(**vars(args))
