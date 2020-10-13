@@ -63,6 +63,7 @@ python $__tool_directory__/gff2gb.py
 					<has_text text="misc_feature" />
 					<has_text text="gene" />
 					<has_text text="CDS" />
+					<has_text text="sequence_differe" />
 				</assert_contents>
 			</output>
 		</test>
