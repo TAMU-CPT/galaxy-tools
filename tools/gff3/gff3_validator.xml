@@ -12,7 +12,7 @@ python $__tool_directory__/gff3_validator.py
 --out_errorlog "$Errorlog"
 $filterGFF.autofix
 #if (str($removeAnnote.removeBool) == '--removeAnnote'):
---removeAnnote $removeAnnote.annoteList
+--removeAnnote "$removeAnnote.annoteList"
 #end if
 #if (str($filterGFF.autofix) == '--autoFix' or str($removeAnnote.removeBool) == '--removeAnnote'):
 >> gffOut
