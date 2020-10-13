@@ -25,7 +25,7 @@ $filterGFF.autofix
       <param label="Automatically fix genbank-incompatible qualifiers" name="autofix" type="boolean" truevalue="--autoFix" falsevalue="" checked="false"/>
       <when value=""/>
     </conditional>
-    <param label="annoteList" type="text" value="remark contig annotation" label="Metadata features (Will not check overlap with other features, space seperated list)"/> 
+    <param name="annoteList" type="text" value="remark contig annotation" label="Metadata features (Will not check overlap with other features, space seperated list)"/> 
     <conditional name="removeAnnote">
       <param label="Remove metadata/ annotation features" name="removeBool" type="boolean" truevalue="--removeAnnote" falsevalue="" checked="false"/>
       <when value="--removeAnnote"/>
