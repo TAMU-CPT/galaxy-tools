@@ -63,10 +63,25 @@ def handle_non_gene_features(features):
         {"type": "gene"},
         subfeatures=False,
         invert=True,
-        recurse=False,
+        recurse=True, #  used to catch RBS from new apollo runs (used to be False)
     ):
-        if feature.type in ("terminator", "tRNA"):
+        if feature.type in (
+            "terminator", 
+            "tRNA", 
+            "Shine_Dalgarno_sequence",
+            "sequence_feature",
+            "recombination_feature",
+            "sequence_alteration",
+            "binding_site",
+        ):
             yield feature
+        elif feature.type in (
+            "CDS",
+        ):
+            pass
+        else:
+            yield feature
+
 
 
 def fminmax(feature):
@@ -112,7 +127,7 @@ def fix_gene_qualifiers(name, feature, fid):
                 if is_uuid(sf.qualifiers["Name"][0]):
                     del sf.qualifiers["Name"]
             except KeyError:
-                pass
+                continue # might should go back to pass, I have not put thought into this still
 
             # If it is the RBS exon (mis-labelled by apollo as 'exon')
             if sf.type == "exon" and len(sf) < 10:
@@ -272,6 +287,19 @@ def remove_useless_features(features):
             # We use the full GO term, but it should be less than that.
             if f.type == "Shine_Dalgarno_sequence":
                 f.type = "RBS"
+            
+            if f.type == "sequence_feature":
+                f.type = "misc_feature"
+            
+            if f.type == "recombination_feature":
+                f.type = "misc_recomb"
+            
+            if f.type == "sequence_alteration":
+                f.type = "variation"
+            
+            if f.type == "binding_site":
+                f.type = "misc_binding"
+
             yield f
 
 
@@ -345,7 +373,6 @@ def handle_record(record, transltbl):
 
     # Meat of our modifications
     for flat_feat in flat_features:
-
         # Try and figure out a name. We gave conflicting instructions, so
         # this isn't as trivial as it should be.
         protein_product = wa_unified_product_name(flat_feat)
