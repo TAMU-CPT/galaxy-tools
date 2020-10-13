@@ -10,3 +10,5 @@
             * "sequence_alteration" --> "variation"
             * "binding_site" --> "misc_binding"
 * `generate_gbks.sh` will regenerate the genbanks for testing (`bash generate_gbks.sh`)
+* Lastly, the conditional in the `handle_non_gene_features` function will extract all extra features to the output genbank. 
+    * Mu has an extra feature (see `handle_non_gene_features` function) that is caught by the conditional modification. Test implemented to verify it is added to genbank.
