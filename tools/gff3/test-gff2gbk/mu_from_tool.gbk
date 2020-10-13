@@ -7,6 +7,14 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
+     region          1..36717
+                     /gbkey="Src"
+                     /genome="genomic"
+                     /mol_type="genomic DNA"
+                     /nat-host="Escherichia coli"
+                     /note="G(+) form"
+                     /old-name="Enterobacteria phage Mu"
+                     /db_xref="taxon:2681603"
      gene            complement(339..863)
                      /locus_tag="CPT_NC_000929.1_001"
      CDS             complement(339..863)
@@ -476,6 +484,11 @@ FEATURES             Location/Qualifiers
                      tape measure proteins. Haemophilus influenzae HI1514
                      homolog"
                      /db_xref="Genbank:NP_050646.1"
+                     /db_xref="GeneID:2636275"
+     sequence_differe24268
+                     /gbkey="misc_difference"
+                     /locus_tag="Mup42"
+                     /replace="a"
                      /db_xref="GeneID:2636275"
      gene            26208..27695
                      /locus_tag="CPT_NC_000929.1_043"

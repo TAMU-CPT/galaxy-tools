@@ -7,46 +7,56 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
+     exon            7..10
      gene            7..1635
                      /locus_tag="CPT_Shady_200528_001"
      RBS             7..10
                      /locus_tag="CPT_Shady_200528_001"
+     exon            16..1635
      CDS             16..1635
                      /locus_tag="CPT_Shady_200528_001"
                      /product="terminase"
                      /transl_table=11
                      /note="ref|NP_039677.1| Terminase [Mycobacterium virus L5]
                      evalue 3.56172e-133"
+     exon            1665..1667
      gene            1665..3088
                      /locus_tag="CPT_Shady_200528_002"
      RBS             1665..1667
                      /locus_tag="CPT_Shady_200528_002"
+     exon            1673..3088
      CDS             1673..3088
                      /locus_tag="CPT_Shady_200528_002"
                      /product="portal protein"
                      /transl_table=11
                      /note="HHpred 2JES_G PORTAL PROTEIN BACTERIOPHAGE SPP1
                      100%3B evalue 8.4e-36"
+     exon            3073..3076
      gene            3073..3846
                      /locus_tag="CPT_Shady_200528_003"
      RBS             3073..3076
                      /locus_tag="CPT_Shady_200528_003"
+     exon            3085..3846
      CDS             3085..3846
                      /locus_tag="CPT_Shady_200528_003"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            3836..3840
      gene            3836..4322
                      /locus_tag="CPT_Shady_200528_004"
      RBS             3836..3840
                      /locus_tag="CPT_Shady_200528_004"
+     exon            3846..4322
      CDS             3846..4322
                      /locus_tag="CPT_Shady_200528_004"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            4324..4327
      gene            4324..5344
                      /locus_tag="CPT_Shady_200528_005"
      RBS             4324..4327
                      /locus_tag="CPT_Shady_200528_005"
+     exon            4337..5344
      CDS             4337..5344
                      /locus_tag="CPT_Shady_200528_005"
                      /product="major capsid protein"
@@ -55,10 +65,12 @@ FEATURES             Location/Qualifiers
                      probability to  P22 Bacteriophage protein Major Capsid
                      Protein Protein Data Bank entry 5UU5_A over most of
                      protein."
+     exon            5391..5396
      gene            5391..5828
                      /locus_tag="CPT_Shady_200528_006"
      RBS             5391..5396
                      /locus_tag="CPT_Shady_200528_006"
+     exon            5403..5828
      CDS             5403..5828
                      /locus_tag="CPT_Shady_200528_006"
                      /product="head-to-tail connector complex protein"
@@ -66,34 +78,42 @@ FEATURES             Location/Qualifiers
                      /note="ref|NP_075282.1| gp15 [Mycobacterium virus
                      Bxb1]gb|AAG59720.1| head-to-tail adaptor [Mycobacterium
                      virus Bxb1]"
+     exon            5803..5806
      gene            5803..6165
                      /locus_tag="CPT_Shady_200528_007"
      RBS             5803..5806
                      /locus_tag="CPT_Shady_200528_007"
+     exon            5815..6165
      CDS             5815..6165
                      /locus_tag="CPT_Shady_200528_007"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            6157..6160
      gene            6157..6470
                      /locus_tag="CPT_Shady_200528_008"
      RBS             6157..6160
                      /locus_tag="CPT_Shady_200528_008"
+     exon            6168..6470
      CDS             6168..6470
                      /locus_tag="CPT_Shady_200528_008"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            6458..6461
      gene            6458..6877
                      /locus_tag="CPT_Shady_200528_009"
      RBS             6458..6461
                      /locus_tag="CPT_Shady_200528_009"
+     exon            6467..6877
      CDS             6467..6877
                      /locus_tag="CPT_Shady_200528_009"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            6872..6874
      gene            6872..7450
                      /locus_tag="CPT_Shady_200528_010"
      RBS             6872..6874
                      /locus_tag="CPT_Shady_200528_010"
+     exon            6884..7450
      CDS             6884..7450
                      /locus_tag="CPT_Shady_200528_010"
                      /product="major tail protein"
@@ -101,6 +121,8 @@ FEATURES             Location/Qualifiers
                      /note="ref|NP_075286.1| gp19 [Mycobacterium virus
                      Bxb1]gb|AAG59724.1| major tail protein [Mycobacterium virus
                      Bxb1] evalue 1.32786e-24"
+     exon            7543..7546
+     exon            7543..7546
      gene            7543..8296
                      /locus_tag="CPT_Shady_200528_011"
      RBS             7543..7546
@@ -109,6 +131,8 @@ FEATURES             Location/Qualifiers
                      /locus_tag="CPT_Shady_200528_012"
      RBS             7543..7546
                      /locus_tag="CPT_Shady_200528_011"
+     exon            7557..7886
+     exon            7557..7875
      CDS             join(7557..7875,7876..8296)
                      /locus_tag="CPT_Shady_200528_011"
                      /product="tape measure chaperone frameshift product"
@@ -117,20 +141,25 @@ FEATURES             Location/Qualifiers
                      /locus_tag="CPT_Shady_200528_011"
                      /product="tape measure chaperone frameshift product"
                      /transl_table=11
+     exon            7876..8296
+     exon            8303..8306
      gene            8303..10513
                      /locus_tag="CPT_Shady_200528_013"
      RBS             8303..8306
                      /locus_tag="CPT_Shady_200528_013"
+     exon            8312..10513
      CDS             8312..10513
                      /locus_tag="CPT_Shady_200528_013"
                      /product="tape measure protein"
                      /transl_table=11
                      /note="ref|NP_039690.1| Tapemeasure [Mycobacterium virus
                      L5]"
+     exon            10572..10575
      gene            10572..11308
                      /locus_tag="CPT_Shady_200528_014"
      RBS             10572..10575
                      /locus_tag="CPT_Shady_200528_014"
+     exon            10583..11308
      CDS             10583..11308
                      /locus_tag="CPT_Shady_200528_014"
                      /product="minor tail protein"
@@ -139,50 +168,62 @@ FEATURES             Location/Qualifiers
                      probability to Staphylococcus virus 80alpha protein Distal
                      Tail Protein Protein Data Bank entry 6V8I_CC over most of
                      protein."
+     exon            11293..11295
      gene            11293..13253
                      /locus_tag="CPT_Shady_200528_015"
      RBS             11293..11295
                      /locus_tag="CPT_Shady_200528_015"
+     exon            11308..12429
      CDS             11308..12429
                      /locus_tag="CPT_Shady_200528_015"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            12413..12417
      gene            12413..13253
                      /locus_tag="CPT_Shady_200528_016"
      RBS             12413..12417
                      /locus_tag="CPT_Shady_200528_016"
+     exon            12429..13253
      CDS             12429..13253
                      /locus_tag="CPT_Shady_200528_016"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            13254..13256
      gene            13254..13773
                      /locus_tag="CPT_Shady_200528_017"
      RBS             13254..13256
                      /locus_tag="CPT_Shady_200528_017"
+     exon            13262..13531
      CDS             13262..13531
                      /locus_tag="CPT_Shady_200528_017"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            13516..13520
      gene            13516..13773
                      /locus_tag="CPT_Shady_200528_018"
      RBS             13516..13520
                      /locus_tag="CPT_Shady_200528_018"
+     exon            13528..13773
      CDS             13528..13773
                      /locus_tag="CPT_Shady_200528_018"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            13799..13803
      gene            13799..16051
                      /locus_tag="CPT_Shady_200528_019"
      RBS             13799..13803
                      /locus_tag="CPT_Shady_200528_019"
+     exon            13811..16051
      CDS             13811..16051
                      /locus_tag="CPT_Shady_200528_019"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            16118..16121
      gene            16118..16954
                      /locus_tag="CPT_Shady_200528_020"
      RBS             16118..16121
                      /locus_tag="CPT_Shady_200528_020"
+     exon            16127..16954
      CDS             16127..16954
                      /locus_tag="CPT_Shady_200528_020"
                      /product="endolysin endopeptidase"
@@ -191,10 +232,12 @@ FEATURES             Location/Qualifiers
                      probability to  Streptococcus pyogenes phage-associated
                      cell wall hydrolase PlyPy Protein Data Bank entry 5UDM_B at
                      the N-terminus."
+     exon            17053..17056
      gene            17053..17313
                      /locus_tag="CPT_Shady_200528_021"
      RBS             17053..17056
                      /locus_tag="CPT_Shady_200528_021"
+     exon            17062..17313
      CDS             17062..17313
                      /locus_tag="CPT_Shady_200528_021"
                      /product="holin class III"
@@ -203,10 +246,12 @@ FEATURES             Location/Qualifiers
                      /note="Analyzing the aa sequence, multiple  R residues can
                      be seen at the N-term and multiple D residues can be seen
                      at the C-term."
+     exon            17346..17351
      gene            17346..17909
                      /locus_tag="CPT_Shady_200528_022"
      RBS             17346..17351
                      /locus_tag="CPT_Shady_200528_022"
+     exon            17361..17909
      CDS             17361..17909
                      /locus_tag="CPT_Shady_200528_022"
                      /product="deoxynucleoside monophosphate kinase"
@@ -214,44 +259,54 @@ FEATURES             Location/Qualifiers
                      /note="HHPred predicted structural similarity at 99.9
                      probability to Enterobacteria phage T4 protein dNMP Kinase
                      Protein Data Bank entry 1DEK_B over most of protein"
+     exon            18066..18069
      gene            18066..19292
                      /locus_tag="CPT_Shady_200528_023"
      RBS             18066..18069
                      /locus_tag="CPT_Shady_200528_023"
+     exon            18075..19292
      CDS             18075..19292
                      /locus_tag="CPT_Shady_200528_023"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            19370..19372
      gene            19370..19850
                      /locus_tag="CPT_Shady_200528_024"
      RBS             19370..19372
                      /locus_tag="CPT_Shady_200528_024"
+     exon            19383..19850
      CDS             19383..19850
                      /locus_tag="CPT_Shady_200528_024"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            19831..19834
      gene            19831..20076
                      /locus_tag="CPT_Shady_200528_025"
      RBS             19831..19834
                      /locus_tag="CPT_Shady_200528_025"
+     exon            19843..20076
      CDS             19843..20076
                      /locus_tag="CPT_Shady_200528_025"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            20062..20065
      gene            20062..20183
                      /locus_tag="CPT_Shady_200528_026"
      RBS             20062..20065
                      /locus_tag="CPT_Shady_200528_026"
+     exon            20073..20183
      CDS             20073..20183
                      /locus_tag="CPT_Shady_200528_026"
                      /product="hypothetical protein"
                      /transl_table=11
      regulatory      20201..20243
                      /regulatory_class="terminator"
+     exon            20393..20396
      gene            20393..21222
                      /locus_tag="CPT_Shady_200528_027"
      RBS             20393..20396
                      /locus_tag="CPT_Shady_200528_027"
+     exon            20404..21222
      CDS             20404..21222
                      /locus_tag="CPT_Shady_200528_027"
                      /product="DNA helicase"
@@ -260,10 +315,12 @@ FEATURES             Location/Qualifiers
                      probability to Mycobacterium smegmatis protein UvrD/REP
                      helicase, ATP-dependent DNA helicase Protein Data Bank
                      entry 6PPR_B over most of protein."
+     exon            21316..21319
      gene            21316..22103
                      /locus_tag="CPT_Shady_200528_028"
      RBS             21316..21319
                      /locus_tag="CPT_Shady_200528_028"
+     exon            21330..22103
      CDS             21330..22103
                      /locus_tag="CPT_Shady_200528_028"
                      /product="recombination directionality factor"
@@ -271,54 +328,66 @@ FEATURES             Location/Qualifiers
                      /note="sp|Q9T216|RDF_BPPHC Recombination directionality
                      factor OS=Streptomyces phage phiC31 Score7.33095e-59 over
                      most of the gene"
+     exon            22138..22142
      gene            22138..22475
                      /locus_tag="CPT_Shady_200528_029"
      RBS             22138..22142
                      /locus_tag="CPT_Shady_200528_029"
+     exon            22152..22475
      CDS             22152..22475
                      /locus_tag="CPT_Shady_200528_029"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            22466..22468
      gene            22466..22752
                      /locus_tag="CPT_Shady_200528_030"
      RBS             22466..22468
                      /locus_tag="CPT_Shady_200528_030"
+     exon            22477..22752
      CDS             22477..22752
                      /locus_tag="CPT_Shady_200528_030"
                      /product="hypothetical protein"
                      /transl_table=11
      regulatory      22762..22802
                      /regulatory_class="terminator"
+     exon            22845..22848
      gene            22845..23452
                      /locus_tag="CPT_Shady_200528_031"
      RBS             22845..22848
                      /locus_tag="CPT_Shady_200528_031"
+     exon            22854..23036
      CDS             22854..23036
                      /locus_tag="CPT_Shady_200528_031"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            23010..23014
      gene            23010..23452
                      /locus_tag="CPT_Shady_200528_032"
      RBS             23010..23014
                      /locus_tag="CPT_Shady_200528_032"
+     exon            23024..23452
      CDS             23024..23452
                      /locus_tag="CPT_Shady_200528_032"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            23540..23543
      gene            23540..25976
                      /locus_tag="CPT_Shady_200528_033"
      RBS             23540..23543
                      /locus_tag="CPT_Shady_200528_033"
+     exon            23553..25976
      CDS             23553..25976
                      /locus_tag="CPT_Shady_200528_033"
                      /product="DNA primase"
                      /transl_table=11
                      /note="ref|NP_042036.1| DNA primase [Enterobacteria phage
                      P4] evalue 1.09734e-9"
+     exon            26033..26038
      gene            26033..27902
                      /locus_tag="CPT_Shady_200528_034"
      RBS             26033..26038
                      /locus_tag="CPT_Shady_200528_034"
+     exon            26046..27902
      CDS             26046..27902
                      /locus_tag="CPT_Shady_200528_034"
                      /product="DNA polymerase I"
@@ -327,10 +396,12 @@ FEATURES             Location/Qualifiers
                      virus L5] evalue 1.13815e-146"
      regulatory      27911..27956
                      /regulatory_class="terminator"
+     exon            28321..28325
      gene            28321..29138
                      /locus_tag="CPT_Shady_200528_035"
      RBS             28321..28325
                      /locus_tag="CPT_Shady_200528_035"
+     exon            28335..29138
      CDS             28335..29138
                      /locus_tag="CPT_Shady_200528_035"
                      /product="DNA-directed RNA polymerase subunit alpha"
@@ -339,10 +410,12 @@ FEATURES             Location/Qualifiers
                      probability to Mycobacterium tuberculosis (strain ATCC
                      25618 / H37Rv) protein  DNA-directed RNA polymerase subunit
                      alpha Protein Data Bank entry 6FBV_F over most of protein."
+     exon            29123..29126
      gene            29123..29623
                      /locus_tag="CPT_Shady_200528_036"
      RBS             29123..29126
                      /locus_tag="CPT_Shady_200528_036"
+     exon            29135..29623
      CDS             29135..29623
                      /locus_tag="CPT_Shady_200528_036"
                      /product="HNH endonuclease"
@@ -351,52 +424,64 @@ FEATURES             Location/Qualifiers
                      probability to Enterobacteria phage P1 protein
                      Recombination enhancement function protein (HNH nuclease)
                      Protein Data Bank entry 3PLW_A over most of protein."
+     exon            29745..29749
      gene            29745..29927
                      /locus_tag="CPT_Shady_200528_037"
      RBS             29745..29749
                      /locus_tag="CPT_Shady_200528_037"
+     exon            29757..29927
      CDS             29757..29927
                      /locus_tag="CPT_Shady_200528_037"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            29911..29915
      gene            29911..30052
                      /locus_tag="CPT_Shady_200528_038"
      RBS             29911..29915
                      /locus_tag="CPT_Shady_200528_038"
+     exon            29924..30052
      CDS             29924..30052
                      /locus_tag="CPT_Shady_200528_038"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            30035..30038
      gene            30035..31168
                      /locus_tag="CPT_Shady_200528_039"
      RBS             30035..30038
                      /locus_tag="CPT_Shady_200528_039"
+     exon            30049..30399
      CDS             30049..30399
                      /locus_tag="CPT_Shady_200528_039"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            30381..30384
      gene            30381..31168
                      /locus_tag="CPT_Shady_200528_040"
      RBS             30381..30384
                      /locus_tag="CPT_Shady_200528_040"
+     exon            30392..31168
      CDS             30392..31168
                      /locus_tag="CPT_Shady_200528_040"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            31240..31244
      gene            31240..31951
                      /locus_tag="CPT_Shady_200528_041"
      RBS             31240..31244
                      /locus_tag="CPT_Shady_200528_041"
+     exon            31253..31951
      CDS             31253..31951
                      /locus_tag="CPT_Shady_200528_041"
                      /product="ThyX-like thymidylate synthase"
                      /transl_table=11
                      /note="NP_039712.1| ThyX-like [Mycobacterium virus L5]
                      evalue 3.93717e-69"
+     exon            31935..31939
      gene            31935..32217
                      /locus_tag="CPT_Shady_200528_042"
      RBS             31935..31939
                      /locus_tag="CPT_Shady_200528_042"
+     exon            31948..32217
      CDS             31948..32217
                      /locus_tag="CPT_Shady_200528_042"
                      /product="hypothetical outer membrane lipoprotein"
@@ -404,20 +489,24 @@ FEATURES             Location/Qualifiers
                      /note="NON_CYTOPLASMIC_DOMAIN; Signature_desc: Region of a
                      membrane-bound protein predicted to be outside the membrane
                      in the extracellular region. Source: Phobius"
+     exon            32197..32200
      gene            32197..32458
                      /locus_tag="CPT_Shady_200528_043"
      RBS             32197..32200
                      /locus_tag="CPT_Shady_200528_043"
+     exon            32210..32458
      CDS             32210..32458
                      /locus_tag="CPT_Shady_200528_043"
                      /product="thioredoxin"
                      /transl_table=11
                      /note="HHpred 2VOC_A THIOREDOXIN Bacillus subtilis subsp.
                      subtilis 99.61%3B 1.5e-13"
+     exon            32442..32446
      gene            32442..32850
                      /locus_tag="CPT_Shady_200528_044"
      RBS             32442..32446
                      /locus_tag="CPT_Shady_200528_044"
+     exon            32455..32850
      CDS             32455..32850
                      /locus_tag="CPT_Shady_200528_044"
                      /product="deoxycytidylate deaminase"
@@ -426,188 +515,232 @@ FEATURES             Location/Qualifiers
                      virus T4] evalue 5.65936e-12"
                      /note="BLAST putative dCMP deaminase [Streptomyces phage
                      R4] Sequence ID: YP_006990149.1Length: 161"
+     exon            32847..32999
      gene            32847..32999
                      /locus_tag="CPT_Shady_200528_045"
      CDS             32847..32999
                      /locus_tag="CPT_Shady_200528_045"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            32984..32987
      gene            32984..33193
                      /locus_tag="CPT_Shady_200528_046"
      RBS             32984..32987
                      /locus_tag="CPT_Shady_200528_046"
+     exon            32999..33193
      CDS             32999..33193
                      /locus_tag="CPT_Shady_200528_046"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            33328..33331
      gene            33328..33572
                      /locus_tag="CPT_Shady_200528_047"
      RBS             33328..33331
                      /locus_tag="CPT_Shady_200528_047"
+     exon            33339..33572
      CDS             33339..33572
                      /locus_tag="CPT_Shady_200528_047"
                      /product="hypothetical protein"
                      /transl_table=11
      regulatory      33579..33602
                      /regulatory_class="terminator"
+     exon            33654..33658
      gene            33654..33866
                      /locus_tag="CPT_Shady_200528_048"
      RBS             33654..33658
                      /locus_tag="CPT_Shady_200528_048"
+     exon            33666..33866
      CDS             33666..33866
                      /locus_tag="CPT_Shady_200528_048"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            33887..33891
      gene            33887..34179
                      /locus_tag="CPT_Shady_200528_049"
      RBS             33887..33891
                      /locus_tag="CPT_Shady_200528_049"
+     exon            33904..34179
      CDS             33904..34179
                      /locus_tag="CPT_Shady_200528_049"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            34224..34227
      gene            34224..34604
                      /locus_tag="CPT_Shady_200528_050"
      RBS             34224..34227
                      /locus_tag="CPT_Shady_200528_050"
+     exon            34233..34604
      CDS             34233..34604
                      /locus_tag="CPT_Shady_200528_050"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            34574..34577
      gene            34574..34917
                      /locus_tag="CPT_Shady_200528_051"
      RBS             34574..34577
                      /locus_tag="CPT_Shady_200528_051"
+     exon            34585..34917
      CDS             34585..34917
                      /locus_tag="CPT_Shady_200528_051"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            34912..34914
      gene            34912..35095
                      /locus_tag="CPT_Shady_200528_052"
      RBS             34912..34914
                      /locus_tag="CPT_Shady_200528_052"
+     exon            34922..35095
      CDS             34922..35095
                      /locus_tag="CPT_Shady_200528_052"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            35069..35071
      gene            35069..35324
                      /locus_tag="CPT_Shady_200528_053"
      RBS             35069..35071
                      /locus_tag="CPT_Shady_200528_053"
+     exon            35079..35324
      CDS             35079..35324
                      /locus_tag="CPT_Shady_200528_053"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            35342..35344
      gene            35342..35611
                      /locus_tag="CPT_Shady_200528_054"
      RBS             35342..35344
                      /locus_tag="CPT_Shady_200528_054"
+     exon            35357..35611
      CDS             35357..35611
                      /locus_tag="CPT_Shady_200528_054"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            35674..35677
      gene            35674..35922
                      /locus_tag="CPT_Shady_200528_055"
      RBS             35674..35677
                      /locus_tag="CPT_Shady_200528_055"
+     exon            35686..35922
      CDS             35686..35922
                      /locus_tag="CPT_Shady_200528_055"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            36246..36249
      gene            36246..36773
                      /locus_tag="CPT_Shady_200528_056"
      RBS             36246..36249
                      /locus_tag="CPT_Shady_200528_056"
+     exon            36255..36773
      CDS             36255..36773
                      /locus_tag="CPT_Shady_200528_056"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            36810..36813
      gene            36810..37070
                      /locus_tag="CPT_Shady_200528_057"
      RBS             36810..36813
                      /locus_tag="CPT_Shady_200528_057"
+     exon            36825..37070
      CDS             36825..37070
                      /locus_tag="CPT_Shady_200528_057"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            37114..37116
      gene            37114..37236
                      /locus_tag="CPT_Shady_200528_058"
      RBS             37114..37116
                      /locus_tag="CPT_Shady_200528_058"
+     exon            37126..37236
      CDS             37126..37236
                      /locus_tag="CPT_Shady_200528_058"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            37279..37283
      gene            37279..37526
                      /locus_tag="CPT_Shady_200528_059"
      RBS             37279..37283
                      /locus_tag="CPT_Shady_200528_059"
+     exon            37290..37526
      CDS             37290..37526
                      /locus_tag="CPT_Shady_200528_059"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            37629..37632
      gene            37629..37901
                      /locus_tag="CPT_Shady_200528_060"
      RBS             37629..37632
                      /locus_tag="CPT_Shady_200528_060"
+     exon            37638..37901
      CDS             37638..37901
                      /locus_tag="CPT_Shady_200528_060"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            37995..37998
      gene            37995..38248
                      /locus_tag="CPT_Shady_200528_061"
      RBS             37995..37998
                      /locus_tag="CPT_Shady_200528_061"
+     exon            38006..38248
      CDS             38006..38248
                      /locus_tag="CPT_Shady_200528_061"
                      /product="hypothetical protein"
                      /transl_table=11
      regulatory      38264..38293
                      /regulatory_class="terminator"
+     exon            38332..38523
      gene            38332..38523
                      /locus_tag="CPT_Shady_200528_062"
      CDS             38332..38523
                      /locus_tag="CPT_Shady_200528_062"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            38520..38957
      gene            38520..38957
                      /locus_tag="CPT_Shady_200528_063"
      CDS             38520..38957
                      /locus_tag="CPT_Shady_200528_063"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            39063..39065
      gene            39063..39376
                      /locus_tag="CPT_Shady_200528_064"
      RBS             39063..39065
                      /locus_tag="CPT_Shady_200528_064"
+     exon            39074..39376
      CDS             39074..39376
                      /locus_tag="CPT_Shady_200528_064"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            39425..39428
      gene            39425..39560
                      /locus_tag="CPT_Shady_200528_065"
      RBS             39425..39428
                      /locus_tag="CPT_Shady_200528_065"
+     exon            39438..39560
      CDS             39438..39560
                      /locus_tag="CPT_Shady_200528_065"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            39541..39545
      gene            39541..39780
                      /locus_tag="CPT_Shady_200528_066"
      RBS             39541..39545
                      /locus_tag="CPT_Shady_200528_066"
+     exon            39553..39780
      CDS             39553..39780
                      /locus_tag="CPT_Shady_200528_066"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            39759..39763
      gene            39759..39940
                      /locus_tag="CPT_Shady_200528_067"
      RBS             39759..39763
                      /locus_tag="CPT_Shady_200528_067"
+     exon            39773..39940
      CDS             39773..39940
                      /locus_tag="CPT_Shady_200528_067"
                      /product="hypothetical protein"
                      /transl_table=11
+     exon            39937..40206
      gene            39937..40206
                      /locus_tag="CPT_Shady_200528_068"
      CDS             39937..40206
@@ -616,10 +749,12 @@ FEATURES             Location/Qualifiers
                      /transl_table=11
      regulatory      40219..40254
                      /regulatory_class="terminator"
+     exon            40385..40388
      gene            40385..42262
                      /locus_tag="CPT_Shady_200528_069"
      RBS             40385..40388
                      /locus_tag="CPT_Shady_200528_069"
+     exon            40397..42262
      CDS             40397..42262
                      /locus_tag="CPT_Shady_200528_069"
                      /product="integrase"
@@ -630,10 +765,12 @@ FEATURES             Location/Qualifiers
                      Protein Data Bank entry 4BQQ_B over most of protein"
      regulatory      42284..42334
                      /regulatory_class="terminator"
+     exon            42364..42366
      gene            42364..42509
                      /locus_tag="CPT_Shady_200528_070"
      RBS             42364..42366
                      /locus_tag="CPT_Shady_200528_070"
+     exon            42378..42509
      CDS             42378..42509
                      /locus_tag="CPT_Shady_200528_070"
                      /product="hypothetical protein"
@@ -642,75 +779,89 @@ FEATURES             Location/Qualifiers
                      called as 2 separate genes leading to errors in PhageQC;
                      re-called gene correctly"
      tRNA            42638..42711
+     exon            42638..42711
      gene            42638..42711
                      /locus_tag="CPT_Shady_200528_071"
      tRNA            42638..42711
                      /locus_tag="CPT_Shady_200528_071"
                      /product="tRNA-Unk"
      tRNA            42720..42794
+     exon            42720..42794
      gene            42720..42794
                      /locus_tag="CPT_Shady_200528_072"
      tRNA            42720..42794
                      /locus_tag="CPT_Shady_200528_072"
                      /product="tRNA-Asn"
      tRNA            42797..42870
+     exon            42797..42870
      gene            42797..42870
                      /locus_tag="CPT_Shady_200528_073"
      tRNA            42797..42870
                      /locus_tag="CPT_Shady_200528_073"
                      /product="tRNA-Asp"
      tRNA            42982..43056
+     exon            42982..43056
      gene            42982..43056
                      /locus_tag="CPT_Shady_200528_074"
      tRNA            42982..43056
                      /locus_tag="CPT_Shady_200528_074"
                      /product="tRNA-Phe"
      tRNA            43060..43151
+     exon            43060..43151
      gene            43060..43151
                      /locus_tag="CPT_Shady_200528_075"
      tRNA            43060..43151
                      /locus_tag="CPT_Shady_200528_075"
                      /product="tRNA-Trp"
      tRNA            43175..43256
+     exon            43175..43256
      gene            43175..43256
                      /locus_tag="CPT_Shady_200528_076"
      tRNA            43175..43256
                      /locus_tag="CPT_Shady_200528_076"
                      /product="tRNA-Leu"
+     exon            43260..43263
      gene            43260..43886
                      /locus_tag="CPT_Shady_200528_077"
      RBS             43260..43263
                      /locus_tag="CPT_Shady_200528_077"
+     exon            43269..43886
      CDS             43269..43886
                      /locus_tag="CPT_Shady_200528_077"
                      /product="hypothetical protein"
                      /transl_table=11
      tRNA            43902..43973
+     exon            43902..43973
      gene            43902..43973
                      /locus_tag="CPT_Shady_200528_078"
      tRNA            43902..43973
                      /locus_tag="CPT_Shady_200528_078"
                      /product="tRNA-Gln"
      tRNA            43996..44070
+     exon            43996..44070
      gene            43996..44070
                      /locus_tag="CPT_Shady_200528_079"
      tRNA            43996..44070
                      /locus_tag="CPT_Shady_200528_079"
                      /product="tRNA-Pro"
+     exon            44097..44100
      gene            44097..44420
                      /locus_tag="CPT_Shady_200528_080"
      RBS             44097..44100
                      /locus_tag="CPT_Shady_200528_080"
+     exon            44106..44420
      CDS             44106..44420
                      /locus_tag="CPT_Shady_200528_080"
                      /product="HNH endonuclease"
                      /transl_table=11
                      /note="ref|NP_039671.1| HNH endonuclease [Mycobacterium
                      virus L5] evalue 8.70929e-15"
+     exon            44661..44666
      gene            44661..45098
                      /locus_tag="CPT_Shady_200528_081"
      RBS             44661..44666
                      /locus_tag="CPT_Shady_200528_081"
+     exon            44673..45098
      CDS             44673..45098
                      /locus_tag="CPT_Shady_200528_081"
                      /product="hypothetical protein"

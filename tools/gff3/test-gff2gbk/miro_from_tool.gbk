@@ -7,6 +7,9 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
+     DNA             1..176055
+                     /Alias="Miro"
+                     /date="01-JAN-1980"
      gene            complement(1..910)
                      /locus_tag="CPT_Miro_001"
      CDS             complement(1..900)
