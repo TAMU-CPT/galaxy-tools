@@ -182,6 +182,7 @@ def table_annotations(gff3In, out_errorlog, autoFix = True, removeAnnote = []):
     for record in list(gffParse(gff3In)):
         numError = 0
         numWarning = 0
+        remLines = 0
         errorMessage = ""
         warnMessage = ""
         topFeats = []
@@ -261,12 +262,6 @@ def table_annotations(gff3In, out_errorlog, autoFix = True, removeAnnote = []):
               checkInd += 1
 
         ##
-        out_errorlog.write("=======================================================================\n")  
-        out_errorlog.write("Validation for " + record.id + " finished with " + str(numError) + " errors and " + str(numWarning) + " warnings.\n")
-        out_errorlog.write("=======================================================================\n")
-        out_errorlog.write(errorMessage)
-        out_errorlog.write(warnMessage)
-
         
     # For each terminator/tRNA
     # Bother Cory later
@@ -277,15 +272,20 @@ def table_annotations(gff3In, out_errorlog, autoFix = True, removeAnnote = []):
           for x in record.features:
             if x.type not in removeAnnote:
               outFeats.append(x)
+            else:
+              remLines += 1
           record.features = outFeats
 
         if autoFix:
           finFeats = topFeats + metaFeats
           if removeAnnote:
+            record.annotations = {}
             outFeats = []
             for x in finFeats:
               if x.type not in removeAnnote:
                 outFeats.append(x)
+              else:
+                remLines += 1
             record.features = outFeats
           else:
             record.features = finFeats
@@ -294,6 +294,14 @@ def table_annotations(gff3In, out_errorlog, autoFix = True, removeAnnote = []):
         if autoFix or removeAnnote:
           record.features.sort(key=lambda x: x.location.start)
           outRec.append(record)
+  
+        out_errorlog.write("=======================================================================\n")  
+        out_errorlog.write("Validation for " + record.id + " finished with " + str(numError) + " errors and " + str(numWarning) + " warnings.\n")
+        if remLines:
+          out_errorlog.write(str(remLines) + " metadata feature(s) removed.\n")
+        out_errorlog.write("=======================================================================\n")
+        out_errorlog.write(errorMessage)
+        out_errorlog.write(warnMessage)
 
     if autoFix or removeAnnote:
       gffWrite(outRec)
