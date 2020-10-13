@@ -175,8 +175,9 @@ def qualCheck(thisFeat, autoFix=False):
 
 
 
-def table_annotations(gff3In, out_errorlog, autoFix = True):
+def table_annotations(gff3In, out_errorlog, autoFix = True, removeAnnote = []):
 
+    outRec = []
     
     for record in list(gffParse(gff3In)):
         numError = 0
@@ -266,15 +267,36 @@ def table_annotations(gff3In, out_errorlog, autoFix = True):
         out_errorlog.write(errorMessage)
         out_errorlog.write(warnMessage)
 
-    
+        
     # For each terminator/tRNA
     # Bother Cory later
 
+        if removeAnnote and not autoFix:
+          record.annotations = {}
+          outFeats = []
+          for x in record.features:
+            if x.type in removeAnnote:
+              outFeats.append(x)
+          record.features = outFeats
+
         if autoFix:
           finFeats = topFeats + metaFeats
-          record.features = finFeats
+          if removeAnnote:
+            outFeats = []
+            for x in finFeats:
+              if x.type not in removeAnnote:
+                outFeats.append(x)
+            record.features = outFeats
+          else:
+            record.features = finFeats
+          
+          
+        if autoFix or removeAnnote:
           record.features.sort(key=lambda x: x.location.start)
-          gffWrite(record)
+          outRec.append(record)
+
+    if autoFix or removeAnnote:
+      gffWrite(outRec)
 
 #  print(dir(record.features))
 if __name__ == "__main__":
@@ -289,7 +311,13 @@ if __name__ == "__main__":
         default="test-data/errorlog.txt",
     )
     parser.add_argument(
-        "--autoFix", action="store_true", help="More informative deflines"
+        "--autoFix", action="store_true", help="Fix qualifiers to be genbank compatible"
+    )
+    parser.add_argument(
+        "--removeAnnote", type=str, help="Remove Annotations", default=""
     )
     args = parser.parse_args()
+    if args.removeAnnote:
+      args.removeAnnote = args.removeAnnote.split(" ")
+    
     table_annotations(**vars(args))
