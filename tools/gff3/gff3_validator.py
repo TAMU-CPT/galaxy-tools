@@ -275,7 +275,7 @@ def table_annotations(gff3In, out_errorlog, autoFix = True, removeAnnote = []):
           record.annotations = {}
           outFeats = []
           for x in record.features:
-            if x.type in removeAnnote:
+            if x.type not in removeAnnote:
               outFeats.append(x)
           record.features = outFeats
 
