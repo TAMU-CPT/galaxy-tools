@@ -39,6 +39,8 @@ def main():
     features_skipped_count = 0
     outRec = []
 
+    failed = 0
+
     for rec in SeqIO.parse(open(args.input_file, "r"), "genbank"):
         recID = rec.name
 
@@ -100,6 +102,14 @@ def main():
               typeDict[x] = 0
             else:
               typeDict[x] = 1
+          
+          if not topFeat:
+            sys.stderr.write("Unable to create a feature heirarchy at location [%d, %d] with features: \n" % (minLoc, maxLoc))
+            for x in locBucket[locus]:
+              sys.stderr.write(str(x))
+              sys.stderr.write('\n')
+              failed = 1
+            continue
 
           outFeats.append(makeGffFeat(topFeat, 0, recID))
           if midFeat: # Again, need a new if statement if we want to handle multiple mid-tier features
@@ -117,8 +127,7 @@ def main():
         outRec.append(SeqRecord(rec.seq, recID, rec.name, rec.description, rec.dbxrefs, outFeats, rec.annotations, rec.letter_annotations)) 
 
     gffWrite(outRec, ofh)    
-    if features_skipped_count > 0:
-        print("Warning: {0} unsupported feature types were skipped".format(features_skipped_count))
+    exit(failed) # 0 if all features handled, 1 if unable to handle some
 
 
 if __name__ == '__main__':
