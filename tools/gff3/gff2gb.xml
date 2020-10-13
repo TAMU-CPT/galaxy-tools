@@ -46,7 +46,7 @@ python $__tool_directory__/gff2gb.py
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="miro.fa" />
 			<param name="gff3_data" value="miro.gff3" />
-			<output name="output" file="miro_from_tool.gbk" lines_diff="10">
+			<output name="output" file="miro_from_tool.gbk" lines_diff="20">
 				<assert_contents>
 					<has_text text="RBS" />
 					<has_text text="gene" />
@@ -58,7 +58,7 @@ python $__tool_directory__/gff2gb.py
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="mu_from_ncbi.fasta" />
 			<param name="gff3_data" value="mu_from_ncbi.gff3" />
-			<output name="output" file="mu_from_tool.gbk" lines_diff="10">
+			<output name="output" file="mu_from_tool.gbk" lines_diff="20">
 				<assert_contents>
 					<has_text text="misc_feature" />
 					<has_text text="gene" />
@@ -70,7 +70,7 @@ python $__tool_directory__/gff2gb.py
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="t1_from_ncbi.fasta" />
 			<param name="gff3_data" value="t1_from_ncbi.gff3" />
-			<output name="output" file="t1_from_tool.gbk" lines_diff="10">
+			<output name="output" file="t1_from_tool.gbk" lines_diff="20">
 				<assert_contents>
 					<has_text text="gene" />
 					<has_text text="CDS" />
@@ -83,7 +83,7 @@ python $__tool_directory__/gff2gb.py
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="lambda_from_ncbi.fasta" />
 			<param name="gff3_data" value="lambda_from_ncbi.gff3" />
-			<output name="output" file="lambda_from_tool.gbk" lines_diff="10">
+			<output name="output" file="lambda_from_tool.gbk" lines_diff="20">
 				<assert_contents>
 					<has_text text="gene" />
 					<has_text text="CDS" />
@@ -98,7 +98,7 @@ python $__tool_directory__/gff2gb.py
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="shady_old.fasta" />
 			<param name="gff3_data" value="shady_old.gff3" />
-			<output name="output" file="shady_from_tool.gbk" lines_diff="10">
+			<output name="output" file="shady_from_tool.gbk" lines_diff="20">
 				<assert_contents>
 					<has_text text="RBS" />
 					<has_text text="gene" />
@@ -110,7 +110,7 @@ python $__tool_directory__/gff2gb.py
 			<param name="reference_genome_source" value="history" />
 			<param name="genome_fasta" value="sun.fasta" />
 			<param name="gff3_data" value="sun.gff3" />
-			<output name="output" file="sun_from_tool.gbk" lines_diff="10">
+			<output name="output" file="sun_from_tool.gbk" lines_diff="20">
 				<assert_contents>
 					<has_text text="RBS" />
 					<has_text text="gene" />
