@@ -75,6 +75,12 @@ def handle_non_gene_features(features):
             "binding_site",
         ):
             yield feature
+        elif feature.type in (
+            "CDS",
+        ):
+            pass
+        else:
+            yield feature
 
 
 
