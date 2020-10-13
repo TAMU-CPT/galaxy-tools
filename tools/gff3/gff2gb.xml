@@ -51,6 +51,7 @@ python $__tool_directory__/gff2gb.py
 					<has_text text="RBS" />
 					<has_text text="gene" />
 					<has_text text="CDS" />
+					<has_text text="Curtis" />
 				</assert_contents>
 			</output>
 		</test>
