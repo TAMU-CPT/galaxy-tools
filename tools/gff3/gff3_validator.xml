@@ -11,7 +11,10 @@ python $__tool_directory__/gff3_validator.py
 "$gff3In"
 --out_errorlog "$Errorlog"
 $filterGFF.autofix
-#if (str($filterGFF.autofix) == '--autoFix'):
+#if (str($removeAnnote.removeBool) == '--removeAnnote'):
+--removeAnnote $removeAnnote.annoteList
+#end if
+#if (str($filterGFF.autofix) == '--autoFix' or str($removeAnnote.removeBool) == '--removeAnnote'):
 >> gffOut
 #end if
 ]]></command>
@@ -21,11 +24,17 @@ $filterGFF.autofix
       <param label="Automatically fix genbank-incompatible qualifiers" name="autofix" type="boolean" truevalue="--autoFix" falsevalue="" checked="false"/>
       <when value=""/>
     </conditional>
+    <conditional name="removeAnnote">
+      <param label="Remove metadata/ annotation features" name="removeBool" type="boolean" truevalue="--removeAnnote" falsevalue="" checked="false"/>
+      <when value="--removeAnnote">
+        <param name="annoteList" type="text" value="remark contig" label="Metadata features to remove (space seperated list)" />
+      </when>
+    </conditional>
   </inputs>
   <outputs>
         <data name="Errorlog" format="txt" label="Errorlog"/>
         <data format="gff3" name="gffOut" label="GFF with fixed qualifiers">
-              <filter>filterGFF['autofix']</filter>
+              <filter>filterGFF['autofix'] or removeAnnote['removeBool']</filter>
         </data>
   </outputs>
   <help><![CDATA[
