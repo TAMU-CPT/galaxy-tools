@@ -11,8 +11,9 @@ python $__tool_directory__/gff3_validator.py
 "$gff3In"
 --out_errorlog "$Errorlog"
 $filterGFF.autofix
+--annoteList "$annoteList"
 #if (str($removeAnnote.removeBool) == '--removeAnnote'):
---removeAnnote "$removeAnnote.annoteList"
+--removeAnnote 
 #end if
 #if (str($filterGFF.autofix) == '--autoFix' or str($removeAnnote.removeBool) == '--removeAnnote'):
 >> $gffOut
@@ -24,11 +25,10 @@ $filterGFF.autofix
       <param label="Automatically fix genbank-incompatible qualifiers" name="autofix" type="boolean" truevalue="--autoFix" falsevalue="" checked="false"/>
       <when value=""/>
     </conditional>
+    <param label="annoteList" type="text" value="remark contig annotation" label="Metadata features (Will not check overlap with other features, space seperated list)"/> 
     <conditional name="removeAnnote">
       <param label="Remove metadata/ annotation features" name="removeBool" type="boolean" truevalue="--removeAnnote" falsevalue="" checked="false"/>
-      <when value="--removeAnnote">
-        <param name="annoteList" type="text" value="remark contig" label="Metadata features to remove (space seperated list)" />
-      </when>
+      <when value="--removeAnnote"/>
     </conditional>
   </inputs>
   <outputs>
@@ -52,6 +52,7 @@ Additionally, the program will raise a warning if:
   No subfeatures: If a gene has no mRNA object, or an mRNA object has no exons or CDS features, a warning with the empty object's ID is raised.
   Unencoded character in qualifiers: The " character is used by Genbank to mark its own qualifier fields, so any unescaped " in a qualifier will break the GFF to Genbank conversion. To escape the " character, it must be followed by another " immediately after. The autofix option will automatically apply this fix.
   Duplicated features- A gene has the same type, start, and end base as another feature in the GFF3 file. Will output the types, IDs, and locations of both features. 
+  Non-Annotation feature runs the entire length of the genome- Commonly caused by a feature being a metadata object but its type not being in the prepopulated annotations list. Warning will output the feature's type. If it is not a functional type such as a gene, add it to the metadata features list and run the job again.
 
 **Boundary Start/End Rules**
 
