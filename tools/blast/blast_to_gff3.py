@@ -166,7 +166,7 @@ def blastxml2gff3(blastxml, include_seq=False):
                 )
 
             # Build the top level seq feature for the hit
-            hit_qualifiers["description"] = "Hit to %s..%s of %s" % (parent_match_start, parent_match_end, desc,)
+            hit_qualifiers["description"] = "Residue %s..%s hit to %s" % (parent_match_start, parent_match_end, desc,)
             top_feature = SeqFeature(
                 FeatureLocation(parent_match_start - 1, parent_match_end),
                 type=match_type,
@@ -245,7 +245,7 @@ def combine_records(records):
             )
             cleaned_records[combo_id].features[0].qualifiers[
                 "description"
-            ] = "Hit to %s..%s of %s"  % (
+            ] = "Residue %s..%s hit to %s"  % (
                     new_parent_start,
                     new_parent_end,
                     cleaned_records[combo_id].features[0].qualifiers["Name"],
@@ -308,7 +308,7 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         hit_qualifiers = {
             "ID": feature_id,
             "Name": (dc["salltitles"].split("<>")[0]),
-            "description": "Hit to {sstart}..{send} of {x}".format(
+            "description": "Residue {sstart}..{send} hit to {x}".format(
                     x=dc["salltitles"].split("<>")[0], **dc
             ),
             "source": "blast",
