@@ -15,7 +15,7 @@ $filterGFF.autofix
 --removeAnnote "$removeAnnote.annoteList"
 #end if
 #if (str($filterGFF.autofix) == '--autoFix' or str($removeAnnote.removeBool) == '--removeAnnote'):
->> gffOut
+>> $gffOut
 #end if
 ]]></command>
   <inputs>
