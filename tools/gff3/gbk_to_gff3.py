@@ -73,7 +73,6 @@ def main():
           minLoc = locBucket[locus][0].location.start
           maxLoc = locBucket[locus][0].location.end
           for feat in locBucket[locus]:
-            print(feat)
             # If we want to make our own top-level feat?
             minLoc = min(minLoc, feat.location.start)
             maxLoc = max(maxLoc, feat.location.end)
