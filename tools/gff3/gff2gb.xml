@@ -61,7 +61,6 @@ python $__tool_directory__/gff2gb.py
 			<output name="output" file="mu_from_tool.gbk" >
 				<assert_contents>
 					<has_text text="misc_feature" />
-					<has_text text="RBS" />
 					<has_text text="gene" />
 					<has_text text="CDS" />
 				</assert_contents>
