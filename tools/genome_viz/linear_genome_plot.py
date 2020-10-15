@@ -45,8 +45,9 @@ class CPTTranslator(BiopythonTranslator):
         if feature.type == "CDS":
             if "product" in feature.qualifiers:
                 if ignored_gene_labels:
-                    verify_chops = any(re.search(("(\\b"+str(item)+"\\b)"),feature.qualifiers["product"][0]) for item in ignored_gene_labels)
+                    verify_chops = any(re.search(("(\\b"+str(item)+"\\b)"),feature.qualifiers["product"][0]) for item in ignored_gene_labels) or any(re.search((item), feature.qualifiers["product"][0]) for item in ignored_gene_labels)
                     if verify_chops:
+                        print(feature.qualifiers["product"][0])
                         return None
                     else:
                         return BiopythonTranslator.compute_feature_label(self, feature)
@@ -147,8 +148,6 @@ if __name__ == "__main__":
     else:
         box_status = False
 
-    print(box_status)
-
     if args.feature_id:
         feature_ids = [f for listed_obj in args.feature_id for f in listed_obj]
         feature_ids_colors = [f for listed_obj in args.feature_id_color for f in listed_obj]
@@ -177,11 +176,11 @@ if __name__ == "__main__":
     ignored_feature_labels = str.split(args.ignored_feature_labels,",")
 
     ##  Print Statements for Debugging
-    print(custom_feature_colors)
-    print(custom_name_colors)
-    print(ignored_features_types)
-    print(ignored_gene_labels)
-    print(label_fields)
+    #print(custom_feature_colors)
+    #print(custom_name_colors)
+    #print(ignored_features_types)
+    #print(ignored_gene_labels)
+    #print(label_fields)
 
     ## Part III ; PLOT
     # Housekeeping
@@ -201,7 +200,6 @@ if __name__ == "__main__":
         img.close()
 
     if args.sz: #  if user is wanting to look at a subset region of the genome
-        print("-- crop mode --")
         zoom_start, zoom_end = args.sz, args.ez
         cropped = graphic_record.crop((zoom_start,zoom_end))
         ax, _ = cropped.plot(figure_width=args.plot_width, annotate_inline=lab_algo,figure_height=None)
