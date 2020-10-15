@@ -67,13 +67,13 @@ def extract_features(
                 start = int(thisLoc.start)
                 end = int(thisLoc.end)
                 strand = thisLoc.strand
-                if strand < 0:
-                  temp = end
-                  end = min(start, end)
-                  start = max(start, temp)
+                #if strand < 0:
+                #  temp = end
+                #  end = min(start, end)
+                #  start = max(start, temp)
                 
-                if locInd == 1:
-                  start += 0
+                #if locInd == 1:
+                #  start += 0
 
                 if n_bases_downstream != 0:
                     # If we want extra on the end we cannot listen to
@@ -92,6 +92,16 @@ def extract_features(
                 __seqs = []
                 # Upstream addition
                 if n_bases_upstream > 0:
+                  if strand < 0:
+                    __seqs.append(
+                        SeqFeature(
+                            FeatureLocation(
+                                int(thisLoc.end), end, strand=strand
+                            ),
+                            type="domain",
+                        )
+                    )
+                  else:
                     __seqs.append(
                         SeqFeature(
                             FeatureLocation(
@@ -103,12 +113,22 @@ def extract_features(
 
                 __seqs.append(SeqFeature(
                                 FeatureLocation(
-                                start, end, strand=strand
+                                thisLoc.start, thisLoc.end, strand=strand
                                 ),
                                 type="domain",
                              ))
                 # Downstream addition
                 if n_bases_downstream > 0:
+                  if strand < 0:
+                    __seqs.append(
+                        SeqFeature(
+                            FeatureLocation(
+                                start, int(thisLoc.start), strand=strand
+                            ),
+                            type="domain",
+                        )
+                    )
+                  else:
                     __seqs.append(
                         SeqFeature(
                             FeatureLocation(
