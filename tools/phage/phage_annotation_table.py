@@ -3,7 +3,7 @@
 import os
 import argparse
 from gff3 import genes, get_gff3_id, get_rbs_from, feature_test_true, feature_lambda, feature_test_type
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from jinja2 import Environment, FileSystemLoader
 import logging
@@ -429,7 +429,7 @@ def evaluate_and_report(
     if gafData:
         gaf = parseGafData(gafData)
 
-    for record in GFF.parse(annotations, base_dict=seq_dict):
+    for record in gffParse(annotations, base_dict=seq_dict):
         if reportTemplateName.endswith(".html"):
             record.id = record.id.replace(".", "-")
         log.info("Producing an annotation table for %s" % record.id)
