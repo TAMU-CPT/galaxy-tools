@@ -138,6 +138,7 @@ $label_box
                 <param name="feature_label_order" value="product" />
                 <param name="title" value="Mu Test label" />
                 <param name="label algo" value="true" />
+                <param name="common_ignore_product_labels" value="uncharacterized protein,hypothetical protein" />
                 <conditional name="selectregion">
                     <param name="start_zoom" value="7000" />
                     <param name="end_zoom" value="12000" />
