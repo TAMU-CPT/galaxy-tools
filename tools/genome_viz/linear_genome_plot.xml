@@ -65,7 +65,7 @@ $label_box
             <option value="misc_difference">misc_difference</option>
         </param>
         <param label="Extra Feature(s) label(s) to EXCLUDE" name="ignored_feature_labels" type="text" optional="true" help="If plotting multiple features, especially when using product names, and you want to ignore labeling certain types of features, input the feature(s) (example: RBS,misc_feature). For multiple feature labels to exclude, separate by commas." />
-        <param argument="common_ignore_product_labels" label="Common Product names to EXCLUDE from labeling">
+        <param argument="common_ignore_product_labels" label="Common Product names to EXCLUDE from labeling" type="select">
             <option value="hypothetical protein" selected="true">hypothetical protein</option>
             <option value="uncharacterized protein" selected="true">uncharacterized protein</option>
             <!--<option value="phage" selected="true">phage</option> MIGHT ADD THIS LATER-->
