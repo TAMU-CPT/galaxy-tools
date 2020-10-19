@@ -44,8 +44,8 @@ class CPTTranslator(BiopythonTranslator):
         self.label_fields = label_fields
         if feature.type == "CDS":
             if "product" in feature.qualifiers:
-                if ignored_gene_labels:
-                    verify_chops = any(re.search(("(\\b"+str(item)+"\\b)"),feature.qualifiers["product"][0]) for item in ignored_gene_labels)
+                if ignored_gene_labels: #  product name drop
+                    verify_chops = any(re.search(("(\\b"+str(item)+"\\b)"),feature.qualifiers["product"][0]) for item in ignored_gene_labels) or any(re.search((item), feature.qualifiers["product"][0]) for item in ignored_gene_labels)
                     if verify_chops:
                         return None
                     else:
@@ -102,8 +102,11 @@ if __name__ == "__main__":
     parser.add_argument("--plot_width",type=int,default=20)
     #parser.add_argument("--plot_height",type=int,default=4)
     parser.add_argument("--title",type=str,default="genome plot") # NEED TO ADD TO XML
+    parser.add_argument("--common_features_excluded", default="", help="common features to be excluded")
     parser.add_argument("--features_excluded",default="",help="features to be excluded from plot, separate by commas")
+    parser.add_argument("--common_ignore_feature_labels", default="", help="common feature labels to be excluded")
     parser.add_argument("--ignored_feature_labels",default="",help="ignore labeling of specific features")
+    parser.add_argument("--common_ignore_product_labels", default="", help="common product names to not label")
     parser.add_argument("--ignore_labeling",default="",help="labeling for specific products to ignore, separate by commas")
     parser.add_argument("--feature_label_order",default="locus_tag",help="label order, where the first choice is the first feature listed to pull name labels from") # NEED TO ADD TO XML
     parser.add_argument("--label_box",action="store_true",help="Use to have label box around feature labels")
@@ -147,8 +150,6 @@ if __name__ == "__main__":
     else:
         box_status = False
 
-    print(box_status)
-
     if args.feature_id:
         feature_ids = [f for listed_obj in args.feature_id for f in listed_obj]
         feature_ids_colors = [f for listed_obj in args.feature_id_color for f in listed_obj]
@@ -165,23 +166,53 @@ if __name__ == "__main__":
         custom_name_colors = {}
 
     ##  Ignored Features
-    ignored_features_types = str.split(args.features_excluded,",")
-    ignored_gene_labels = str.split(args.ignore_labeling,",")
+    #ignored_features_types = str.split(args.features_excluded,",")
+    if args.common_features_excluded:
+        ignored_features_types = str.split(args.common_features_excluded, ",")
+        if args.features_excluded:
+            ignored_features_types += str.split(args.features_excluded,",")
+    elif args.features_excluded:
+        ignored_features_types = str.split(args.features_excluded,",")
+    else:
+        ignored_features_types = False
+
+    print(ignored_features_types)
+    
+    ## product labels
+    if args.common_ignore_product_labels:
+        ignored_gene_labels = str.split(args.common_ignore_product_labels,",")
+        if args.ignore_labeling:
+            ignored_gene_labels += str.split(args.ignore_labeling,",")
+    elif args.ignore_labeling:
+        ignored_gene_labels = str.split(args.ignore_labeling,",")
+    else:
+        ignored_gene_labels = False
+    
+    print(ignored_gene_labels)
+
     if args.feature_label_order != ['']:
         label_fields = str.split(args.feature_label_order,",")
 
-    if ignored_gene_labels == ['']:
-        ignored_gene_labels = False
+    #if ignored_gene_labels == ['']:
+    #    ignored_gene_labels = False
 
     ##  Ignored Labeling
-    ignored_feature_labels = str.split(args.ignored_feature_labels,",")
-
+    if args.common_ignore_feature_labels:
+        ignored_feature_labels = str.split(args.common_ignore_feature_labels)
+        if args.ignored_feature_labels:
+            ignored_feature_labels += str.split(args.ignored_feature_labels,",")
+    elif args.ignored_feature_labels:
+        ignored_feature_labels = str.split(args.ignored_feature_labels,",")
+    else:
+        ignored_feature_labels = False
+    
+    print(ignored_feature_labels)
     ##  Print Statements for Debugging
-    print(custom_feature_colors)
-    print(custom_name_colors)
-    print(ignored_features_types)
-    print(ignored_gene_labels)
-    print(label_fields)
+    #print(custom_feature_colors)
+    #print(custom_name_colors)
+    #print(ignored_features_types)
+    #print(ignored_gene_labels)
+    #print(label_fields)
 
     ## Part III ; PLOT
     # Housekeeping
@@ -196,12 +227,11 @@ if __name__ == "__main__":
     translator = CPTTranslator()
     graphic_record = translator.translate_record(genome)
 
-    with open("a_temp_img.svg", "wb") as img:
+    with open("tmp.svg", "wb") as img:
         img.truncate(0)
         img.close()
 
     if args.sz: #  if user is wanting to look at a subset region of the genome
-        print("-- crop mode --")
         zoom_start, zoom_end = args.sz, args.ez
         cropped = graphic_record.crop((zoom_start,zoom_end))
         ax, _ = cropped.plot(figure_width=args.plot_width, annotate_inline=lab_algo,figure_height=None)
@@ -210,19 +240,19 @@ if __name__ == "__main__":
             cropped.plot_translation(ax, location=crop_seq, fontdict={'size':8, 'weight':'bold'},y_offset=1)
         ax.set_title(args.title)
         # Galaxy specific shenanigans
-        tmp_fig = "./a_temp_img.svg"
+        tmp_fig = "./tmp.svg"
         plt.savefig(tmp_fig)
         plt.close()
-        with open("a_temp_img.svg", "rb") as img:
+        with open("tmp.svg", "rb") as img:
             for line in img:
                 args.out_img.write(line)
     else:
         ax, _ = graphic_record.plot(figure_width=args.plot_width, annotate_inline=lab_algo)
         ax.set_title(args.title)
-        tmp_fig = "./a_temp_img.svg"
+        tmp_fig = "./tmp.svg"
         # Galaxy specific shenanigans
         plt.savefig(tmp_fig)
         plt.close()
-        with open("a_temp_img.svg", "rb") as img:
+        with open("tmp.svg", "rb") as img:
             for line in img:
                 args.out_img.write(line)
