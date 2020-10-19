@@ -9,14 +9,13 @@
 $__tool_directory__/linear_genome_plot.py
 $input_file
 --plot_width $plot_width
---common_features_excluded  $common_features_excluded
+--common_features_excluded  "$common_features_excluded"
 --features_excluded "$features_excluded"
---common_ignore_feature_labels $common_ignore_feature_labels
+--common_ignore_feature_labels "$common_ignore_feature_labels"
 --ignored_feature_labels "$ignored_feature_labels"
---feature_label_order "$feature_label_order"
---common_ignore_product_labels $common_ignore_product_labels
+--common_ignore_product_labels "$common_ignore_product_labels"
 --ignore_labeling "$ignore_labeling"
-
+--feature_label_order "$feature_label_order"
 --title "$title"
 $label_algo
 $label_box
