@@ -139,8 +139,9 @@ $label_box
                 <param name="label algo" value="true" />
                 <param name="common_ignore_product_labels" value="uncharacterized protein,hypothetical protein" />
                 <conditional name="selectregion">
-                    <param name="start_zoom" value="7000" />
-                    <param name="end_zoom" value="12000" />
+                    <param name="custom_region" value="true" />
+                        <param name="start_zoom" value="7000" />
+                        <param name="end_zoom" value="12000" />
                 </conditional>
                 <output name="file_stats" file="out_stats_zoom.txt" />
                 <output name="out_img" file="out_img_zoom.svg" compare="sim_size" delta_frac="0.05"/>
