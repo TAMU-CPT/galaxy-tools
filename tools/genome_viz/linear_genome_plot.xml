@@ -54,7 +54,7 @@ $label_box
             <option value="RBS">RBS</option>
             <option value="misc_feature">misc_feature</option>
             <option value="misc_difference">misc_difference</option>
-        <param/>
+        </param>
         <param label="Extra Feature(s) to EXCLUDE" name="features_excluded" type="text" optional="true" help="Feature(s) to exclude from plot (example: source,gene). Separate by comma(s)." value="variation,misc_recomb"/>
         <param argument="common_ignore_feature_labels" label="Common Feature(s) label(s) to EXCLUDE" type="select" multiple="true">
             <option value="source" selected="true">source</option>
