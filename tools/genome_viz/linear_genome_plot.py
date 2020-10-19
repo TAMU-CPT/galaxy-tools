@@ -198,7 +198,7 @@ if __name__ == "__main__":
 
     ##  Ignored Labeling
     if args.common_ignore_feature_labels:
-        ignored_feature_labels = str.split(args.common_ignore_feature_labels)
+        ignored_feature_labels = str.split(args.common_ignore_feature_labels,",")
         if args.ignored_feature_labels:
             ignored_feature_labels += str.split(args.ignored_feature_labels,",")
     elif args.ignored_feature_labels:
