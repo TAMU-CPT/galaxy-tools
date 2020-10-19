@@ -142,8 +142,8 @@ $label_box
                     <param name="start_zoom" value="7000" />
                     <param name="end_zoom" value="12000" />
                 </conditional>
-                <output name="file_stats" file="_out_stats_zoom.txt" />
-                <output name="out_img" file="_out_img_zoom.svg" />
+                <output name="file_stats" file="out_stats_zoom.txt" />
+                <output name="out_img" file="out_img_zoom.svg" />
             </test>
             <test> <!-- Test nonzoom and extra params -->
                 <param name="input_file" value="mu_reanno.gb" />
@@ -158,9 +158,11 @@ $label_box
                 <param name="ignore_labeling" value="testing_ignore_labeling,another_test" />
                 <param name="ignored_feature_labels" value="testing_ignored_feature_labels,another_test" />
                 <assert_command>
-                    <has_text text="--ignore_labeling testing_ignore_labeling,another_test" />
-                    <has_text text="--ignored_feature_labels testing_ignored_feature_labels,another_test" />
+                    <has_text text='--ignore_labeling "testing_ignore_labeling,another_test" '/>
+                    <has_text text='--ignored_feature_labels "testing_ignored_feature_labels,another_test" '/>
                 </assert_command>
+                <output name="file_stats" file="out_stats.txt" />
+                <output name="out_img" file="out_img.svg" />
             </test>
         </tests>
     <help><![CDATA[
