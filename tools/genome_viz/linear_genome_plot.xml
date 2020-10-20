@@ -128,7 +128,7 @@ $label_box
         <data format="svg" name="out_img" label="genome_plot.svg" />
     </outputs>
         <tests>
-            <test> <!-- Testing zoom -->
+            <test> <!-- Testing zoom and 95% or > sim -->
                 <param name="input_file" value="mu_reanno.gb" />
                 <param name="plot_width" value="10" />
                 <param name="common_features_excluded" value="source,misc_feature" />
