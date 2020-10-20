@@ -112,7 +112,7 @@ def renumber_genes(
             f_processed = []
             for gene in f_gene:
                 tag = [gene]
-                if gene.location.strand == 1:  # Be strict on where to find starting RBS
+                if gene.location.strand >= 0:  # Be strict on where to find starting RBS
                     geneComp = gene.location.start
                 else:
                     geneComp = gene.location.end
@@ -121,6 +121,9 @@ def renumber_genes(
                     if is_within(rbs, gene) and (
                         rbs.location.start == geneComp or rbs.location.end == geneComp
                     ):
+                        if tag_to_update in rbs.qualifiers.keys() and tag_to_update in gene.qualifiers.keys() and rbs.qualifiers[tag_to_update] != gene.qualifiers[tag_to_update]:
+                           
+                           continue
                         tag.append(rbs)
                         f_processed.append(rbs)
                         break
@@ -135,6 +138,8 @@ def renumber_genes(
                                 feature.location.start == gene.location.start
                                 or feature.location.end == gene.location.end
                             ):
+                                if tag_to_update in feature.qualifiers.keys() and tag_to_update in gene.qualifiers.keys() and feature.qualifiers[tag_to_update] != gene.qualifiers[tag_to_update]:
+                                   continue
                                 tag.append(feature)
                                 f_processed.append(feature)
                         else:
