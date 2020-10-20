@@ -31,11 +31,10 @@ def parse_xml(blastxml, thresh):
             gi_nos = str(alignment.accession)
 
             for hsp in alignment.hsps:
-                x = float(hsp.identities) / (hsp.query_end - hsp.query_start)
+                x = float(hsp.identities - 1) / ((hsp.query_end) - hsp.query_start)
                 if x < thresh:
                     discarded_records += 1
                     continue
-
                 nice_name = blast_record.query
 
                 if " " in nice_name:
@@ -349,7 +348,7 @@ class IntronFinder(object):
                     pretty_gi=(cluster_elem["gi_nos"]),
                     ident=int(
                         100
-                        * float(cluster_elem["identity"])
+                        * float(cluster_elem["identity"] - 1.00)
                         / abs(
                             cluster_elem["query_range"][1]
                             - cluster_elem["query_range"][0]
