@@ -129,6 +129,8 @@ if __name__ == "__main__":
     parser.add_argument("--feature_id_color",nargs="*",action="append",help="feature's accompanying color")
     parser.add_argument("--gene_id",nargs="*",action="append",help="gene/cds label to have custom color")
     parser.add_argument("--gene_id_color",nargs="*",action="append",help="gene/cds's accompanying color")
+    parser.add_argument("--multiline",action="store_true",help="Plot multiline plot")
+    parser.add_argument("--nucl_per_line",type=int,help="nucleotides per line of multiline")
     #  Output
     parser.add_argument("--file_stats",type=argparse.FileType("w"),default="out_stats.txt",help="output stat file")
     #parser.add_argument("--tmp_img",dest="tmp_img",type=argparse.FileType("wb"),default="out_tmp.svg")
@@ -238,7 +240,7 @@ if __name__ == "__main__":
         img.truncate(0)
         img.close()
 
-    if args.sz: #  if user is wanting to look at a subset region of the genome
+    if args.sz and not args.multiline: #  if user is wanting to look at a subset region of the genome
         zoom_start, zoom_end = args.sz, args.ez
         cropped = graphic_record.crop((zoom_start,zoom_end))
         ax, _ = cropped.plot(figure_width=args.plot_width, annotate_inline=lab_algo,figure_height=None)
@@ -250,9 +252,23 @@ if __name__ == "__main__":
         tmp_fig = "./tmp.svg"
         plt.savefig(tmp_fig)
         plt.close()
-        with open("tmp.svg", "rb") as img:
-            for line in img:
-                args.out_img.write(line)
+    elif args.multiline:
+        if args.sz:
+            zoom_start, zoom_end = args.sz, args.ez
+        else:
+            zoom_start, zoom_end = 1, graphic_record.sequence_length
+        cropped = graphic_record.crop((zoom_start,zoom_end))
+        ax, _ = cropped.plot_on_multiple_lines(
+            figure_width=args.plot_width,
+            annotate_inline=lab_algo,
+            figure_height=None,
+            nucl_per_line=args.nucl_per_line,
+            plot_sequence=False
+        )
+        #ax.set_title(args.title)
+        tmp_fig = "./tmp.svg"
+        plt.savefig(tmp_fig)
+        plt.close()
     else:
         ax, _ = graphic_record.plot(figure_width=args.plot_width, annotate_inline=lab_algo)
         ax.set_title(args.title)
@@ -260,6 +276,6 @@ if __name__ == "__main__":
         # Galaxy specific shenanigans
         plt.savefig(tmp_fig)
         plt.close()
-        with open("tmp.svg", "rb") as img:
-            for line in img:
-                args.out_img.write(line)
+    with open("tmp.svg", "rb") as img:
+        for line in img:
+            args.out_img.write(line)
