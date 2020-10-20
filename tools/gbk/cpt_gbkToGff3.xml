@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.customGbkToGff" name="Genbank to GFF3: " version="20.1.0.0">
+  <description> CPT made Biobython-based solution</description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/gbk_to_gff3.py
+$gbkIn
+$makeMRNA
+> $default]]></command>
+  <inputs>
+    <param label="GenBank file" name="gbkIn" type="data" format="genbank"/>
+    <param checked="true" label="Automatically generate missing mRNA features for genes" name="makeMRNA"
+        type="boolean" truevalue="--makeMRNA" falsevalue=""/>
+  </inputs>
+  <outputs>
+    <data format="gff3" hidden="false" name="default"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+A Biopython-based script to convert Genbank files to GFF3. Should resolve frame shift errors and other problems caused by the old Bioperl  solution. 
+
+Will also attempt to automatically parent RBS, CDS, and Exon features without a locus tag to an appropriate gene feature.]]></help>
+		<expand macro="citations" />
+</tool>
