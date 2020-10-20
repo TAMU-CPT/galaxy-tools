@@ -167,32 +167,31 @@ $label_box
             </test>
         </tests>
     <help><![CDATA[
-ALPHA VERSION
+.. class:: warningmark
+'''TIP''' This tool requires *genbank* format.
+----
 
 Genome Plot
 
-* Description of some of the various parameters:
+*Description of some of the various parameters:*
 
-Features to EXCLUDE :: The **"Common Feature(s) to EXCLUDE"** select menu has frequence features that are excluded. **"Extra Feature(s) to EXCLUDE"** is where you can pass one, or multiple, feature(s) to be excluded from the plot. Separate by commas with NO spaces.
+* Features to EXCLUDE :: The **"Common Feature(s) to EXCLUDE"** select menu has frequence features that are excluded. **"Extra Feature(s) to EXCLUDE"** is where you can pass one, or multiple, feature(s) to be excluded from the plot. Separate by commas with NO spaces.
 
-Feature(s) label(s) to EXCLUDE :: The **"Common Feature(s) label(s) to EXCLUDE from labeling"** select menu has frequent labels from features that are excluded. Input specific features that you do not want to include in the **"Extra Feature(s) label(s) to EXCLUDE"**. Use this when you still want to plot the feature but not label it. A good sample case is if you are zoomed into a specific region and looking at overlapping genes but do not want to label all of the RBS sites. 
+* Feature(s) label(s) to EXCLUDE :: The **"Common Feature(s) label(s) to EXCLUDE from labeling"** select menu has frequent labels from features that are excluded. Input specific features that you do not want to include in the **"Extra Feature(s) label(s) to EXCLUDE"**. Use this when you still want to plot the feature but not label it. A good sample case is if you are zoomed into a specific region and looking at overlapping genes but do not want to label all of the RBS sites. 
 
-Products(s) names label(s) to EXCLUDE :: The **"Common Product names to EXCLUDE from labeling"** select menu has frequent product names that are excluded. Input specific names that you do not want to include in the **"Extra Product(s) name label(s) to EXCLUDE"**. Any product with this name will NOT be labeled. It must be spelt, spaced, and capitalized exactly as it is within the file to be caught. However, if you wish to exclude labels with common patterns, say JX0101.orf01, you could pass "JX" to the input box and it will skip all names containing JX. Realize that passing something like protein will also eliminate labels such as DNA binding protein. Of note, if you choose to label by locus_tags, and want to skip over each, for example, hypothetical protein; the script will still pass their label and not label them.
+* Products(s) names label(s) to EXCLUDE :: The **"Common Product names to EXCLUDE from labeling"** select menu has frequent product names that are excluded. Input specific names that you do not want to include in the **"Extra Product(s) name label(s) to EXCLUDE"**. Any product with this name will NOT be labeled. It must be spelt, spaced, and capitalized exactly as it is within the file to be caught. However, if you wish to exclude labels with common patterns, say JX0101.orf01, you could pass "JX" to the input box and it will skip all names containing JX. Realize that passing something like protein will also eliminate labels such as DNA binding protein. Of note, if you choose to label by locus_tags, and want to skip over each, for example, hypothetical protein; the script will still pass their label and not label them.
 
-Name ordering :: In case you want to customize the selection method of labeling genes by a specific feature, use this argument. "product" will use the product names from within the file. If you want to use product, and if there is no name, use locus_tag as the next name, pass the following: product,locus_tag.
+* Name ordering :: In case you want to customize the selection method of labeling genes by a specific feature, use this argument. "product" will use the product names from within the file. If you want to use product, and if there is no name, use locus_tag as the next name, pass the following: product,locus_tag.
 
-Label algorithm dictates label placement :: DNA-features (the orginal python package) has a very nice spacing algorithm for deciding how to space and where to put the label. Selecting no will force ALL features to placed outside of their gene box. If more tuning is desired, a custom pixel control can be implemented as an argument (not currently implemented) to allow more user control for label placement within gene boxes.
+* Label algorithm dictates label placement :: DNA-features (the orginal python package) has a very nice spacing algorithm for deciding how to space and where to put the label. Selecting no will force ALL features to placed outside of their gene box. If more tuning is desired, a custom pixel control can be implemented as an argument (not currently implemented) to allow more user control for label placement within gene boxes.
 
-Select Custom Region :: If you would like to zoom in and look at a specific region of select a start and end site to zoom in on. Values are based on Nucleotides.
+* Select Custom Region :: If you would like to zoom in and look at a specific region of select a start and end site to zoom in on. Values are based on Nucleotides.
 
-Feature Colors :: Customizing Feature colors based on their exact name as listed in the file (check the output stats file for spelling).
+* Feature Colors :: Customizing Feature colors based on their exact name as listed in the file (check the output stats file for spelling).
 
-Product Name Colors :: Customizing Product colors based on their exact name as listed in the file (check the output stats file for spelling). **NOW**, in addition to the exact name, general words can be used to grab similiarly named features. For example, if the genome has a two component spanin system (i-spanin + o-spanin), using "spanin" would change the color for both the i-spanin and o-spanin.
+* Product Name Colors :: Customizing Product colors based on their exact name as listed in the file (check the output stats file for spelling). **NOW**, in addition to the exact name, general words can be used to grab similiarly named features. For example, if the genome has a two component spanin system (i-spanin + o-spanin), using "spanin" would change the color for both the i-spanin and o-spanin.
 
-
-
-Output:
-
+*Output*
 * file_stats will output the different product names as well as the count of each respective feature
 * svg output
     ]]></help>
