@@ -23,6 +23,10 @@ $label_box
     --sz $selectregion.start_zoom
     --ez $selectregion.end_zoom
 #end if
+#if $multiline.multi_line:
+    --multiline
+    --nucl_per_line $multiline.nucl_per_line
+#end if
 #for $feature_color in $feature_colors:
     #if $feature_color.feature_color_selector.feature_color_options == "add_colors":
         --feature_id #for $feat_id in $feature_color.feature_color_selector.feature_id:
@@ -44,8 +48,25 @@ $label_box
     ]]></command>
     <inputs>
         <param label="Annotated Genome File (Gbk)" name="input_file" type="data" format="genbank" />
-        <param label="Plot Width" name="plot_width" type="integer" value="100" help="Width of the plot. Increase for larger genomes." />
+        <param label="Plot Width" name="plot_width" type="integer" value="10" help="Width of the plot. Increase for larger genomes." />
         <param label="Box Label" name="label_box" type="boolean" checked="true" help="Select 'no' to have no label box around feature labels" truevalue="--label_box" falsevalue="" />
+        <conditional name="selectregion">
+            <param label="Select Custom Region" name="custom_region" type="boolean" checked="false" />
+            <when value="true">
+                <param name="start_zoom" label="Start Zoom" type="integer" help="start zoom" optional="true"/>
+                <param name="end_zoom" label="End Zoom" type="integer" help="end zoom" optional="true"/>
+            </when>
+            <when value="false">
+            </when>
+        </conditional>
+        <conditional name="multiline">
+            <param label="Multi Line Plot" name="multi_line" type="boolean" checked="false" />
+            <when value="true">
+                <param name="nucl_per_line" label="Nucleotides Per Line" type="integer" optional="true" />
+            </when>
+            <when value="false">
+            </when>
+        </conditional>
         <param argument="common_features_excluded" label="Common Feature(s) to EXCLUDE" type="select" multiple="true" help="Common Features to be excluded from the plot">
             <option value="source" selected="true">source</option>
             <option value="gene" selected="true">gene</option>
@@ -73,15 +94,6 @@ $label_box
         <param label="Name ordering" help="Order of features to decide naming convention (example: locus_tag,product). Separate by commas." name="feature_label_order" type="text" value="product"/>
         <param label="Title of Graph" name="title" type="text" value="Linear Genome Plot"/>
         <param label="Label algorithm dictates label placement" name="label_algo" type="boolean" help="Some features will be displayed inside if there is sufficient space. If set to no, all labels will be placed in the box labels above the feature" checked="true" truevalue="--label_algo" falsevalue="" />
-        <conditional name="selectregion">
-            <param label="Select Custom Region" name="custom_region" type="boolean" checked="false" />
-            <when value="true">
-                <param name="start_zoom" label="Start Zoom" type="integer" help="start zoom" optional="true"/>
-                <param name="end_zoom" label="End Zoom" type="integer" help="end zoom" optional="true"/>
-            </when>
-            <when value="false">
-            </when>
-        </conditional>
         <repeat name="feature_colors" title="Feature Colors">
             <conditional name="feature_color_selector">
                 <param name="feature_color_options" type="select" label="Feature Color Options">
@@ -165,6 +177,62 @@ $label_box
                 <output name="file_stats" file="out_stats.txt" />
                 <output name="out_img" file="out_img.svg" compare="sim_size" delta_frac="0.05"/>
             </test>
+            <test> <!-- Test for multiline plot and plotting custom colors -->
+                <param name="input_file" value="mu_reanno.gb" />
+                <param name="plot_width" value="100" />
+                <param name="common_features_excluded" value="source,misc_feature" />
+                <param name="features_excluded" value="misc_difference","gene" />
+                <param name="common_ignore_feature_labels" value="RBS" />
+                <param name="feature_label_order" value="product" />
+                <param name="title" value="Mu Test label" />
+                <param name="label algo" value="true" />
+                <param name="common_ignore_product_labels" value="uncharacterized protein,hypothetical protein" />
+                <conditional name="selectregion">
+                    <param name="custom_region" value="true" />
+                        <param name="start_zoom" value="7000" />
+                        <param name="end_zoom" value="12000" />
+                </conditional>
+                <conditional name="multiline">
+                    <parma name="multi_line" value="true" />
+                        <param name="nucl_per_line" value="1200" />
+                </conditional>
+                <repeat name="feature_colors" >
+                    <conditional name="feature_color_selector" >
+                        <param name="feature_color_options" value="add_colors" />
+                            <param name="feature_id" value="RBS" />
+                            <param name="feature_id_color" value="#CD5C5C" />
+                    </conditional>
+                </repeat>
+                <repeat name="feature_colors" >
+                    <conditional name="feature_color_selector" >
+                        <param name="feature_color_options" value="add_colors" />
+                            <param name="feature_id" value="CDS" />
+                            <param name="feature_id_color" value="#FFFFFF" />
+                    </conditional>
+                </repeat>
+                <repeat name="gene_colors" >
+                    <conditional name="gene_color_selector" >
+                        <param name="gene_color_options" value="add_colors" />
+                            <param name="gene_id" value="spanin" />
+                            <param name="gene_id_color" value="#3355FF" />
+                    </conditional>
+                </repeat>
+                <repeat name="gene_colors" >
+                    <conditional name="gene_color_selector" >
+                        <param name="gene_color_options" value="add_colors" />
+                            <param name="gene_id" value="SAR endolysin" />
+                            <param name="gene_id_color" value="#33FFB2" />
+                    </conditional>
+                </repeat>
+                <output name="file_stats" file="out_stats_multi.txt" />
+                <output name="out_img" file="out_img_multi.svg" compare="sim_size" delta_frac="0.05"/>
+                <assert_command>
+                    <has_text text="--multiline" />
+                    <has_text text="--nucl_per_line 1200" />
+                    <has_text text='--gene_id "SAR endolysin"' />
+                    <has_text text='--gene_id_color "#33FFB2"' />
+                </assert_command>
+            </test>
         </tests>
     <help><![CDATA[
 .. class:: warningmark
@@ -188,6 +256,8 @@ Genome Plot
 * Label algorithm dictates label placement :: DNA-features (the orginal python package) has a very nice spacing algorithm for deciding how to space and where to put the label. Selecting no will force ALL features to placed outside of their gene box. If more tuning is desired, a custom pixel control can be implemented as an argument (not currently implemented) to allow more user control for label placement within gene boxes.
 
 * Select Custom Region :: If you would like to zoom in and look at a specific region of select a start and end site to zoom in on. Values are based on Nucleotides.
+
+* Multiline :: Permits plotting of the genome across multiple lines. Select the amount of nucleotides per line you would like in the **"Nucleotides Per Line"** field. Smaller widths (which are recommended for multiline plots) and larger nucleotides per line will have faster compute times. This can also be combined with the custom region parameters.
 
 * Feature Colors :: Customizing Feature colors based on their exact name as listed in the file (check the output stats file for spelling).
 
