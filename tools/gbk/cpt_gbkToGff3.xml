@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.gff3.customGbkToGff" name="Genbank to GFF3: " version="20.1.0.0">
+<tool id="edu.tamu.cpt.gff3.customGbkToGff" name="(CPT) Genbank to GFF3: " version="20.1.0.0">
   <description> CPT made Biobython-based solution</description>
   <macros>
     <import>macros.xml</import>
