@@ -7,7 +7,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/cpt_gbkToGff3.py
+$__tool_directory__/gbk_to_gff3.py
 $gbkIn
 $makeMRNA
 > $default]]></command>
