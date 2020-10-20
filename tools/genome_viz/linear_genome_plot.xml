@@ -168,7 +168,9 @@ $label_box
         </tests>
     <help><![CDATA[
 .. class:: warningmark
+
 '''TIP''' This tool requires *genbank* format.
+
 ----
 
 Genome Plot
