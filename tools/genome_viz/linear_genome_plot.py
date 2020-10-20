@@ -25,9 +25,16 @@ class CPTTranslator(BiopythonTranslator):
     def compute_feature_color(self, feature):
         if feature.type == "CDS":
             if "product" in feature.qualifiers:
-                color_specific = any(re.search(("(\\b"+str(item)+"\\b)"),feature.qualifiers["product"][0]) for item in custom_name_colors.keys())
+                color_specific = any(re.search(("(\\b"+str(item)+"\\b)"),feature.qualifiers["product"][0]) for item in custom_name_colors.keys()) or any(re.search((item),feature.qualifiers["product"][0]) for item in custom_name_colors.keys())
                 if color_specific:
-                    return custom_name_colors[feature.qualifiers["product"][0]]
+                    try:
+                        return custom_name_colors[feature.qualifiers["product"][0]]
+                    except KeyError:
+                        for item in custom_name_colors.keys():
+                            if item in feature.qualifiers["product"][0]:
+                                custom_name_colors[feature.qualifiers["product"][0]] = custom_name_colors[item]
+                                return custom_name_colors[feature.qualifiers["product"][0]]
+                                #print(feature.qualifiers["product"][0])
                 else:
                     try:
                         return custom_feature_colors[feature.type]
