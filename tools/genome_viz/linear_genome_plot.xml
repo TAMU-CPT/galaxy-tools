@@ -193,7 +193,7 @@ $label_box
                         <param name="end_zoom" value="12000" />
                 </conditional>
                 <conditional name="multiline">
-                    <parma name="multi_line" value="true" />
+                    <param name="multi_line" value="true" />
                         <param name="nucl_per_line" value="1200" />
                 </conditional>
                 <repeat name="feature_colors" >
