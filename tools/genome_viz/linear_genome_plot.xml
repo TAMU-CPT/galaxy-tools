@@ -51,7 +51,7 @@ $label_box
         <param label="Plot Width" name="plot_width" type="integer" value="10" help="Width of the plot. Increase for larger genomes." />
         <param label="Box Label" name="label_box" type="boolean" checked="true" help="Select 'no' to have no label box around feature labels" truevalue="--label_box" falsevalue="" />
         <conditional name="selectregion">
-            <param label="Select Custom Region" name="custom_region" type="boolean" checked="false" help="Plot a specific region of the genome">
+            <param label="Select Custom Region" name="custom_region" type="boolean" checked="false" help="Plot a specific region of the genome" />
             <when value="true">
                 <param name="start_zoom" label="Start Zoom" type="integer" help="start zoom" optional="true"/>
                 <param name="end_zoom" label="End Zoom" type="integer" help="end zoom" optional="true"/>

@@ -15,15 +15,11 @@ python '$__tool_directory__/create_features_from_gff3.py'
 '$__user_email__'
 '$gff3_data'
 --source '${__app__.config.galaxy_infrastructure_url}/history/view/${__app__.security.encode_id($gff3_data.history_id)}'
-$use_name
-$disable_cds_recalculation
 
-> '$output']]></command>
+> '$output']]></command> 
   <inputs>
     <expand macro="org_or_guess" />
     <expand macro="gff3_input" />
-    <param name="use_name" type="boolean" truevalue="--user_name" falsevalue="" label="Use the given name instead of generating one" />
-    <param name="disable_cds_recalculation" type="boolean" truevalue="--disable_cds_recalculation" falsevalue="" label="Disable CDS recalculation and instead use the one provided" />
   </inputs>
   <outputs>
     <data format="txt" name="output" label="Process and Error Log"/>
