@@ -177,7 +177,7 @@ Genome Plot
 
 *Description of some of the various parameters:*
 
-* Features to EXCLUDE :: The **"Common Feature(s) to EXCLUDE"** select menu has frequence features that are excluded. **"Extra Feature(s) to EXCLUDE"** is where you can pass one, or multiple, feature(s) to be excluded from the plot. Separate by commas with NO spaces.
+* Features to EXCLUDE :: The **"Common Feature(s) to EXCLUDE"** select menu has frequent features that are excluded. **"Extra Feature(s) to EXCLUDE"** is where you can pass one, or multiple, feature(s) to be excluded from the plot. Separate by commas with NO spaces.
 
 * Feature(s) label(s) to EXCLUDE :: The **"Common Feature(s) label(s) to EXCLUDE from labeling"** select menu has frequent labels from features that are excluded. Input specific features that you do not want to include in the **"Extra Feature(s) label(s) to EXCLUDE"**. Use this when you still want to plot the feature but not label it. A good sample case is if you are zoomed into a specific region and looking at overlapping genes but do not want to label all of the RBS sites. 
 
