@@ -169,7 +169,7 @@ $label_box
     <help><![CDATA[
 .. class:: warningmark
 
-'''TIP''' This tool requires *genbank* format.
+**TIP** This tool requires *genbank* format.
 
 -----
 
