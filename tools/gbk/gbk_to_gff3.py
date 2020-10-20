@@ -213,7 +213,7 @@ def main(inFile, makeMRNA, identifier, fastaFile, outFile):
                 outFeats[-1].sub_features.append(makeGffFeat(x, typeDict[x.type], recID, identifier))
                 outFeats[-1].sub_features[-1].qualifiers["Parent"] = [outFeats[-1].id]
                 
-        outRec.append(SeqRecord(rec.seq, recID, rec.name, rec.description, rec.dbxrefs, outFeats, rec.annotations, rec.letter_annotations)) 
+        outRec.append(SeqRecord(rec.seq, recID, rec.name, rec.description, rec.dbxrefs, sorted(outFeats, key=lambda x: x.location.start), rec.annotations, rec.letter_annotations))
         SeqIO.write([rec], fastaFile, "fasta")
     gffWrite(outRec, ofh)    
     exit(failed) # 0 if all features handled, 1 if unable to handle some
