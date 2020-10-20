@@ -181,7 +181,7 @@ $label_box
                 <param name="input_file" value="mu_reanno.gb" />
                 <param name="plot_width" value="100" />
                 <param name="common_features_excluded" value="source,misc_feature" />
-                <param name="features_excluded" value="misc_difference","gene" />
+                <param name="features_excluded" value="misc_difference,gene" />
                 <param name="common_ignore_feature_labels" value="RBS" />
                 <param name="feature_label_order" value="product" />
                 <param name="title" value="Mu Test label" />
