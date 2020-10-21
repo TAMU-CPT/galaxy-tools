@@ -219,8 +219,8 @@ def renumber_genes(
                         + feature.type
                         + ":"
                         + (feature.qualifiers[tag_to_update][0])
-                        + "\t[Removed: CDS did not share a boundary with a gene]\n"
-                    )
+                        + "\t[Removed: CDS did not both fall within boundary of gene and share a boundary with a gene]\n"
+                  )
                 else:
                     change_table.write(
                         record.id
@@ -228,7 +228,7 @@ def renumber_genes(
                         + feature.type
                         + ":"
                         + (feature.qualifiers[tag_to_update][0])
-                        + "\t[Removed: Feature not within boundary of gene]\n"
+                        + "\t[Removed: Feature not within boundary of a gene]\n"
                     )
             change_table.write("\n".join(delta) + "\n")
 
