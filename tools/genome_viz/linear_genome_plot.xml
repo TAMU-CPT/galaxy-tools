@@ -263,13 +263,20 @@ Genome Plot
 
 * Product Name Colors :: Customizing Product colors based on their exact name as listed in the file (check the output stats file for spelling). **NOW**, in addition to the exact name, general words can be used to grab similiarly named features. For example, if the genome has a two component spanin system (i-spanin + o-spanin), using "spanin" would change the color for both the i-spanin and o-spanin.
 
+-----
+
+**Output Example**
+
+Using the zoom function and custom colors for various product names
+
+.. image:: sample.png
+
+-----
+
 *Output*
 
 * file_stats will output the different product names as well as the count of each respective feature
 * svg output
-
-<img src="sample.png" alt="Sample Linear Genome Plot">
-
 
     ]]></help>
     <citations>
