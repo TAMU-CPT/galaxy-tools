@@ -132,14 +132,16 @@ def renumber_genes(
                     # If the feature is within the gene boundaries (genes are the first entry in tag list),
                     # add it to the same locus tag group, does not process RBS
                     if is_within(feature, gene):
+                        if tag_to_update in feature.qualifiers.keys() and tag_to_update in gene.qualifiers.keys() and feature.qualifiers[tag_to_update] == gene.qualifiers[tag_to_update]:
+                                tag.append(feature)
+                                f_processed.append(feature)
                         # catches genes and CDS feature that are intron-contained.
-                        if feature.type == "CDS":
+                        elif feature.type == "CDS":
                             if (
                                 feature.location.start == gene.location.start
                                 or feature.location.end == gene.location.end
                             ):
-                                if tag_to_update in feature.qualifiers.keys() and tag_to_update in gene.qualifiers.keys() and feature.qualifiers[tag_to_update] != gene.qualifiers[tag_to_update]:
-                                   continue
+                                
                                 tag.append(feature)
                                 f_processed.append(feature)
                         else:
@@ -156,6 +158,31 @@ def renumber_genes(
             # check for overlapped genes
             # at this point, relevant features are put into tag buckets along with the containing gene
             # matin the form of [gene, feature1, feature2, ...]
+            for rbs in [f for f in f_rbs if f not in f_processed]:
+                dupeRBS = False
+                for x in f_processed:
+                  if x.type == "RBS" and rbs.qualifiers[tag_to_update] == x.qualifiers[tag_to_update]:
+                    dupeRBS = True
+                if dupeRBS:
+                  change_table.write(
+                    record.id
+                    + "\t"
+                    + rbs.type
+                    + ":"
+                    + (rbs.qualifiers[tag_to_update][0])
+                    + "\t[Removed: Parent gene already had an RBS]\n"
+                  )
+                else:
+                  change_table.write(
+                    record.id
+                    + "\t"
+                    + rbs.type
+                    + ":"
+                    + (rbs.qualifiers[tag_to_update][0])
+                    + "\t[Removed: RBS did not both fall within boundary of gene and share a boundary with a gene]\n"
+                  )
+
+
             tag_index = 1
             delta = []
             for tag in f_tag:  # each tag list is one 'bucket'
@@ -185,15 +212,7 @@ def renumber_genes(
 
             # Update all features
             record.features = sorted(clean_features, key=lambda x: x.location.start)
-            for rbs in [f for f in f_rbs if f not in f_processed]:
-                change_table.write(
-                    record.id
-                    + "\t"
-                    + rbs.type
-                    + ":"
-                    + (rbs.qualifiers["locus_tag"][0])
-                    + "\t[Removed: RBS not within boundary of gene or did not share a boundary with a gene]\n"
-                )
+            
             for feature in [f for f in f_sorted if f not in f_processed]:
                 if feature.type == "CDS":
                     change_table.write(
@@ -201,17 +220,17 @@ def renumber_genes(
                         + "\t"
                         + feature.type
                         + ":"
-                        + (feature.qualifiers["locus_tag"][0])
-                        + "\t[Removed: CDS not within boundary of gene or did not share a boundary with a gene]\n"
-                    )
+                        + (feature.qualifiers[tag_to_update][0])
+                        + "\t[Removed: CDS did not both fall within boundary of gene and share a boundary with a gene]\n"
+                  )
                 else:
                     change_table.write(
                         record.id
                         + "\t"
                         + feature.type
                         + ":"
-                        + (feature.qualifiers["locus_tag"][0])
-                        + "\t[Removed: Feature not within boundary of gene]\n"
+                        + (feature.qualifiers[tag_to_update][0])
+                        + "\t[Removed: Feature not within boundary of a gene]\n"
                     )
             change_table.write("\n".join(delta) + "\n")
 
