@@ -267,6 +267,10 @@ Genome Plot
 
 * file_stats will output the different product names as well as the count of each respective feature
 * svg output
+
+.. image:: sample.svg
+    :height: 500
+    :width: 600
     ]]></help>
     <citations>
         <citation type="doi">https://doi.org/10.1101/2020.01.09.900589</citation>
