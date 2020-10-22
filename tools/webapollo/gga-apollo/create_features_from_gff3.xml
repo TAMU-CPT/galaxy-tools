@@ -14,7 +14,6 @@ python '$__tool_directory__/create_features_from_gff3.py'
 
 '$__user_email__'
 '$gff3_data'
---source '${__app__.config.galaxy_infrastructure_url}/history/view/${__app__.security.encode_id($gff3_data.history_id)}'
 
 > '$output']]></command> 
   <inputs>
@@ -35,6 +34,10 @@ python '$__tool_directory__/create_features_from_gff3.py'
       </test>
   </tests>
   <help><![CDATA[
+
+  Load properly formatted gene, terminator, and tRNA features from GFF directly into Apollo as user-created annotations. Currently being improved, and may not copy all
+  feature qualifiers. 
+
 @REFERENCES@
 ]]></help>
   <expand macro="citations"/>
