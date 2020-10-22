@@ -23,7 +23,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
         for rec in cpt_Gff2Gbk(gff3, fasta, 11):
             seenList = {}
             if rec.seq[0] == "?":
-                print("No Fasta ID matches GFF")
+                sys.stderr.write("Error: No Fasta ID matches GFF ID '" + rec.id + "'\n")
                 exit(1)
             for feat in sorted(rec.features, key=lambda x: x.location.start):
                 if feat.type != "CDS":
@@ -97,7 +97,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 if x == rec.id or x == lColumn:
                     noMatch = False
             if noMatch:
-                print("No Fasta ID matches GFF")
+                sys.stderr.write("Error: No Fasta ID matches GFF ID '" + rec.id + "'\n")
                 exit(1)
             newfeats = []
             for feat in sorted(
@@ -136,8 +136,6 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 #exit()
                 
                 if isinstance(feat.location, CompoundLocation):
-                  print("isCompound")
-                  exit()
                   finSeq = ""
                   if feat.strand == -1:
                     for x in feat.location.parts:
@@ -185,7 +183,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 if x == rec.id or x == lColumn:
                     noMatch = False
             if noMatch:
-                print("No Fasta ID matches GFF")
+                sys.stderr.write("Error: No Fasta ID matches GFF ID '" + rec.id + "'\n")
                 exit(1)
             for feat in sorted(
                 feature_lambda(
