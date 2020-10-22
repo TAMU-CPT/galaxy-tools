@@ -11,7 +11,7 @@ from cpt_gffParser import gffSeqFeature, gffWrite
 bottomFeatTypes = ["exon", "RBS", "CDS"]
 
 def makeGffFeat(inFeat, num, recName, identifier):
-    if inFeat.type == "RBS":
+    if inFeat.type == "RBS" or (inFeat.type == "regulatory" and "regulatory_class" in infeat.qualifiers.keys() and infeat.qualifiers["regulatory_class"][0] == "ribosome_binding_site"):
       inFeat.type = "Shine_Dalgarno_seqeunce"
     if "codon_start" in inFeat.qualifiers.keys():
       shift = int(inFeat.qualifiers["codon_start"][0]) - 1
@@ -214,7 +214,7 @@ def main(inFile, makeMRNA, identifier, fastaFile, outFile):
                 outFeats[-1].sub_features[-1].qualifiers["Parent"] = [outFeats[-1].id]
                 
         outRec.append(SeqRecord(rec.seq, recID, rec.name, rec.description, rec.dbxrefs, sorted(outFeats, key=lambda x: x.location.start), rec.annotations, rec.letter_annotations))
-        SeqIO.write([rec], fastaFile, "fasta")
+        SeqIO.write([outRec[-1]], fastaFile, "fasta")
     gffWrite(outRec, ofh)    
     exit(failed) # 0 if all features handled, 1 if unable to handle some
 
