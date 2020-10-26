@@ -10,11 +10,14 @@
 $__tool_directory__/gbk_to_gff3.py
 $gbkIn
 $makeMRNA
+$makeGene
 --identifier "$qualID"
 --fastaFile $fastaOut
 > $default]]></command>
   <inputs>
     <param label="GenBank file" name="gbkIn" type="data" format="genbank"/>
+    <param checked="true" label="Automatically generate any missing Gene features if CDS/RBS has none" name="makeGene"
+        type="boolean" truevalue="--makeGene" falsevalue=""/>
     <param checked="true" label="Automatically generate missing mRNA features for genes" name="makeMRNA"
         type="boolean" truevalue="--makeMRNA" falsevalue=""/>
     <param label="Qualifier to derive GFF ID from" name="qualID" type="text" value="locus_tag"/>
