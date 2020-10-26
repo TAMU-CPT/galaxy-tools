@@ -67,10 +67,10 @@ def add_exons(features):
             # we found a CDS to adopt
             new_exon = gffSeqFeature(
                 location=FeatureLocation(exon_start, exon_end),
-                type="exon",
+                type="mRNA",
                 source = "cpt.prepApollo",
                 qualifiers={
-                    "ID": ["%s.exon" % clean_gene.qualifiers["ID"][0]],
+                    "ID": ["%s.mRNA" % clean_gene.qualifiers["ID"][0]],
                     "Parent": clean_gene.qualifiers["ID"],
                 },
                 sub_features=cds_list,
