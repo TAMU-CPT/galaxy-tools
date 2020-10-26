@@ -56,10 +56,10 @@ def add_exons(features):
         ):
             # check all CDS features for min/max boundaries
             if exon_start is None:
-                exon_start = cds.location.start
+                exon_start = gene.location.start
                 exon_strand = cds.location.strand
             if exon_end is None:
-                exon_end = cds.location.end
+                exon_end = gene.location.end
             exon_start = min(exon_start, cds.location.start)
             exon_end = max(exon_end, cds.location.end)
             cds_list.append(cds)
