@@ -43,7 +43,7 @@ def add_exons(features):
         exon_end = None
         exon_strand = None
         cds_list = []
-        for exon in feature_lambda(gene.sub_features, feature_test_type, {"type": "exon"}, subfeatures=False,recurse=False):
+        for exon in feature_lambda(gene.sub_features, feature_test_type, {"type": "mRNA"}, subfeatures=False,recurse=False):
             #if the gene contains an exon, skip.
             continue
         # check for CDS child features of the gene, do not go a further step (this should skip any CDS children of exon child features)
@@ -55,6 +55,7 @@ def add_exons(features):
             recurse=False,
         ):
             # check all CDS features for min/max boundaries
+            # Note: Changed to gene boundary, Shine dalgarnos were getting parented to the mrna but falling out of bounds
             if exon_start is None:
                 exon_start = gene.location.start
                 exon_strand = cds.location.strand
@@ -92,7 +93,7 @@ def add_exons(features):
             ):
                 child = copy.deepcopy(sf)
                 child.qualifiers["Parent"] = new_exon.qualifiers["ID"]
-                clean_gene.sub_features.append(child)
+                clean_gene.sub_features[-1].sub_features.append(child)
             # add them to the new Exon feature
         # return the cleaned gene with new exon
         yield clean_gene
