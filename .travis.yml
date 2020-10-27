@@ -1,19 +1,19 @@
 language: python
-python: 2.7
+python: 3.7
 
 git:
     submodules: false
 
 before_install:
   - export GALAXY_REPO=https://github.com/galaxyproject/galaxy
-  - export GALAXY_RELEASE=release_17.01
+  - export GALAXY_RELEASE=release_20.05
   - export PLANEMO_CONDA_PREFIX="$HOME/conda"
   - unset JAVA_HOME
   - git submodule init
   - git submodule update tools/one_snp_away
 
 install:
-  - pip install flake8 planemo==0.39
+  - pip install flake8 planemo==0.62
   - planemo conda_init
   - export PATH="$PLANEMO_CONDA_PREFIX/bin:$PATH"
   - conda create -y -q -c bioconda --name iuc_conda samtools=0.1.19 bcftools
