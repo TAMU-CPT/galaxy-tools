@@ -10,7 +10,6 @@ FEATURES             Location/Qualifiers
      RBS             203..205
      gene            203..539
                      /locus_tag="CPT_NODE_1_length_41_001"
-     exon            216..539
      CDS             216..539
                      /locus_tag="CPT_NODE_1_length_41_001"
                      /product="CDS.0.1214_0.853966911671"
@@ -18,7 +17,6 @@ FEATURES             Location/Qualifiers
      RBS             852..855
      gene            852..1042
                      /locus_tag="CPT_NODE_1_length_41_002"
-     exon            863..1042
      CDS             863..1042
                      /locus_tag="CPT_NODE_1_length_41_002"
                      /product="NODE_1_length_41.orf00002"
@@ -29,7 +27,6 @@ FEATURES             Location/Qualifiers
      RBS             1100..1104
      gene            1100..1317
                      /locus_tag="CPT_NODE_1_length_41_003"
-     exon            1111..1317
      CDS             1111..1317
                      /locus_tag="CPT_NODE_1_length_41_003"
                      /product="NODE_1_length_41.gene_2"
@@ -39,7 +36,6 @@ FEATURES             Location/Qualifiers
      RBS             1746..1750
      gene            1746..2006
                      /locus_tag="CPT_NODE_1_length_41_004"
-     exon            1758..2006
      CDS             1758..2006
                      /locus_tag="CPT_NODE_1_length_41_004"
                      /product="NODE_1_length_41.orf00004"
@@ -49,7 +45,6 @@ FEATURES             Location/Qualifiers
      RBS             2022..2024
      gene            2022..2586
                      /locus_tag="CPT_NODE_1_length_41_005"
-     exon            2035..2586
      CDS             2035..2586
                      /locus_tag="CPT_NODE_1_length_41_005"
                      /product="NODE_1_length_41.orf00005"
@@ -57,7 +52,6 @@ FEATURES             Location/Qualifiers
      RBS             2578..2581
      gene            2578..2863
                      /locus_tag="CPT_NODE_1_length_41_006"
-     exon            2588..2863
      CDS             2588..2863
                      /locus_tag="CPT_NODE_1_length_41_006"
                      /product="NODE_1_length_41.orf00006"
@@ -65,7 +59,6 @@ FEATURES             Location/Qualifiers
      RBS             2855..2859
      gene            2855..3239
                      /locus_tag="CPT_NODE_1_length_41_007"
-     exon            2865..3239
      CDS             2865..3239
                      /locus_tag="CPT_NODE_1_length_41_007"
                      /product="NODE_1_length_41.orf00007"
@@ -73,7 +66,6 @@ FEATURES             Location/Qualifiers
      RBS             3221..3224
      gene            3221..3343
                      /locus_tag="CPT_NODE_1_length_41_008"
-     exon            3230..3343
      CDS             3230..3343
                      /locus_tag="CPT_NODE_1_length_41_008"
                      /product="NODE_1_length_41.orf00008"
@@ -81,7 +73,6 @@ FEATURES             Location/Qualifiers
      RBS             3318..3321
      gene            3318..3554
                      /locus_tag="CPT_NODE_1_length_41_009"
-     exon            3330..3554
      CDS             3330..3554
                      /locus_tag="CPT_NODE_1_length_41_009"
                      /product="NODE_1_length_41.orf00009"
@@ -89,7 +80,6 @@ FEATURES             Location/Qualifiers
      RBS             3627..3630
      gene            3627..4235
                      /locus_tag="CPT_NODE_1_length_41_010"
-     exon            3639..4235
      CDS             3639..4235
                      /locus_tag="CPT_NODE_1_length_41_010"
                      /product="NODE_1_length_41.orf00010"
@@ -97,7 +87,6 @@ FEATURES             Location/Qualifiers
      RBS             4208..4211
      gene            4208..4336
                      /locus_tag="CPT_NODE_1_length_41_011"
-     exon            4223..4336
      CDS             4223..4336
                      /locus_tag="CPT_NODE_1_length_41_011"
                      /product="NODE_1_length_41.orf00011"
@@ -105,7 +94,6 @@ FEATURES             Location/Qualifiers
      RBS             4484..4487
      gene            4484..4892
                      /locus_tag="CPT_NODE_1_length_41_012"
-     exon            4494..4892
      CDS             4494..4892
                      /locus_tag="CPT_NODE_1_length_41_012"
                      /product="NODE_1_length_41.orf00012"
@@ -113,7 +101,6 @@ FEATURES             Location/Qualifiers
      RBS             4951..4955
      gene            4951..5442
                      /locus_tag="CPT_NODE_1_length_41_013"
-     exon            4963..5442
      CDS             4963..5442
                      /locus_tag="CPT_NODE_1_length_41_013"
                      /product="NODE_1_length_41.orf00013"
@@ -121,7 +108,6 @@ FEATURES             Location/Qualifiers
      RBS             5430..5434
      gene            5430..5896
                      /locus_tag="CPT_NODE_1_length_41_014"
-     exon            5444..5896
      CDS             5444..5896
                      /locus_tag="CPT_NODE_1_length_41_014"
                      /product="NODE_1_length_41.orf00014"
@@ -129,7 +115,6 @@ FEATURES             Location/Qualifiers
      RBS             5898..5901
      gene            5898..6074
                      /locus_tag="CPT_NODE_1_length_41_015"
-     exon            5907..6074
      CDS             5907..6074
                      /locus_tag="CPT_NODE_1_length_41_015"
                      /product="NODE_1_length_41.orf00015"
@@ -137,7 +122,6 @@ FEATURES             Location/Qualifiers
      RBS             6048..6051
      gene            6048..6252
                      /locus_tag="CPT_NODE_1_length_41_016"
-     exon            6061..6252
      CDS             6061..6252
                      /locus_tag="CPT_NODE_1_length_41_016"
                      /product="NODE_1_length_41.orf00016"
@@ -145,7 +129,6 @@ FEATURES             Location/Qualifiers
      RBS             6239..6242
      gene            6239..6479
                      /locus_tag="CPT_NODE_1_length_41_017"
-     exon            6249..6479
      CDS             6249..6479
                      /locus_tag="CPT_NODE_1_length_41_017"
                      /product="NODE_1_length_41.orf00017"
@@ -153,7 +136,6 @@ FEATURES             Location/Qualifiers
      RBS             6455..6459
      gene            6455..6693
                      /locus_tag="CPT_NODE_1_length_41_018"
-     exon            6469..6693
      CDS             6469..6693
                      /locus_tag="CPT_NODE_1_length_41_018"
                      /product="NODE_1_length_41.orf00018"
@@ -161,7 +143,6 @@ FEATURES             Location/Qualifiers
      RBS             6672..6676
      gene            6672..7483
                      /locus_tag="CPT_NODE_1_length_41_019"
-     exon            6683..7483
      CDS             6683..7483
                      /locus_tag="CPT_NODE_1_length_41_019"
                      /product="NODE_1_length_41.gene_16"
@@ -169,7 +150,6 @@ FEATURES             Location/Qualifiers
      RBS             7472..7475
      gene            7472..7605
                      /locus_tag="CPT_NODE_1_length_41_020"
-     exon            7483..7605
      CDS             7483..7605
                      /locus_tag="CPT_NODE_1_length_41_020"
                      /product="NODE_1_length_41.orf00020"
@@ -177,7 +157,6 @@ FEATURES             Location/Qualifiers
      RBS             7869..7872
      gene            7869..9177
                      /locus_tag="CPT_NODE_1_length_41_021"
-     exon            7879..9177
      CDS             7879..9177
                      /locus_tag="CPT_NODE_1_length_41_021"
                      /product="NODE_1_length_41.orf00022"
@@ -185,7 +164,6 @@ FEATURES             Location/Qualifiers
      RBS             9900..9904
      gene            9900..10885
                      /locus_tag="CPT_NODE_1_length_41_022"
-     exon            9914..10885
      CDS             9914..10885
                      /locus_tag="CPT_NODE_1_length_41_022"
                      /product="NODE_1_length_41.orf00024"
@@ -193,7 +171,6 @@ FEATURES             Location/Qualifiers
      RBS             11135..11138
      gene            11135..11590
                      /locus_tag="CPT_NODE_1_length_41_023"
-     exon            11144..11590
      CDS             11144..11590
                      /locus_tag="CPT_NODE_1_length_41_023"
                      /product="NODE_1_length_41.orf00026"
@@ -201,7 +178,6 @@ FEATURES             Location/Qualifiers
      RBS             11576..11580
      gene            11576..13905
                      /locus_tag="CPT_NODE_1_length_41_024"
-     exon            11587..13905
      CDS             11587..13905
                      /locus_tag="CPT_NODE_1_length_41_024"
                      /product="NODE_1_length_41.gene_22"
@@ -209,7 +185,6 @@ FEATURES             Location/Qualifiers
      RBS             13904..13908
      gene            13904..14393
                      /locus_tag="CPT_NODE_1_length_41_025"
-     exon            13914..14393
      CDS             13914..14393
                      /locus_tag="CPT_NODE_1_length_41_025"
                      /product="NODE_1_length_41.orf00028"
@@ -217,7 +192,6 @@ FEATURES             Location/Qualifiers
      RBS             14399..14403
      gene            14399..15301
                      /locus_tag="CPT_NODE_1_length_41_026"
-     exon            14411..15301
      CDS             14411..15301
                      /locus_tag="CPT_NODE_1_length_41_026"
                      /product="NODE_1_length_41.orf00029"
@@ -225,7 +199,6 @@ FEATURES             Location/Qualifiers
      RBS             15348..15352
      gene            15348..15477
                      /locus_tag="CPT_NODE_1_length_41_027"
-     exon            15358..15477
      CDS             15358..15477
                      /locus_tag="CPT_NODE_1_length_41_027"
                      /product="NODE_1_length_41.orf00030"
@@ -233,7 +206,6 @@ FEATURES             Location/Qualifiers
      RBS             15499..15502
      gene            15499..16463
                      /locus_tag="CPT_NODE_1_length_41_028"
-     exon            15510..16463
      CDS             15510..16463
                      /locus_tag="CPT_NODE_1_length_41_028"
                      /product="NODE_1_length_41.orf00031"
@@ -241,7 +213,6 @@ FEATURES             Location/Qualifiers
      RBS             16440..16443
      gene            16440..17022
                      /locus_tag="CPT_NODE_1_length_41_029"
-     exon            16453..17022
      CDS             16453..17022
                      /locus_tag="CPT_NODE_1_length_41_029"
                      /product="NODE_1_length_41.orf00032"
@@ -249,7 +220,6 @@ FEATURES             Location/Qualifiers
      RBS             17006..17008
      gene            17006..17459
                      /locus_tag="CPT_NODE_1_length_41_030"
-     exon            17019..17459
      CDS             17019..17459
                      /locus_tag="CPT_NODE_1_length_41_030"
                      /product="NODE_1_length_41.orf00033"
@@ -257,7 +227,6 @@ FEATURES             Location/Qualifiers
      RBS             17450..17453
      gene            17450..18398
                      /locus_tag="CPT_NODE_1_length_41_031"
-     exon            17463..18398
      CDS             17463..18398
                      /locus_tag="CPT_NODE_1_length_41_031"
                      /product="NODE_1_length_41.orf00034"
@@ -265,7 +234,6 @@ FEATURES             Location/Qualifiers
      RBS             18383..18387
      gene            18383..19048
                      /locus_tag="CPT_NODE_1_length_41_032"
-     exon            18398..19048
      CDS             18398..19048
                      /locus_tag="CPT_NODE_1_length_41_032"
                      /product="NODE_1_length_41.orf00035"
@@ -273,7 +241,6 @@ FEATURES             Location/Qualifiers
      RBS             19047..19051
      gene            19047..21474
                      /locus_tag="CPT_NODE_1_length_41_033"
-     exon            19057..21474
      CDS             19057..21474
                      /locus_tag="CPT_NODE_1_length_41_033"
                      /product="NODE_1_length_41.orf00036"
@@ -281,7 +248,6 @@ FEATURES             Location/Qualifiers
      RBS             21565..21569
      gene            21565..21774
                      /locus_tag="CPT_NODE_1_length_41_034"
-     exon            21577..21774
      CDS             21577..21774
                      /locus_tag="CPT_NODE_1_length_41_034"
                      /product="NODE_1_length_41.orf00037"
@@ -289,7 +255,6 @@ FEATURES             Location/Qualifiers
      RBS             21758..21762
      gene            21758..22022
                      /locus_tag="CPT_NODE_1_length_41_035"
-     exon            21771..22022
      CDS             21771..22022
                      /locus_tag="CPT_NODE_1_length_41_035"
                      /product="NODE_1_length_41.orf00038"
@@ -297,7 +262,6 @@ FEATURES             Location/Qualifiers
      RBS             22022..22026
      gene            22022..23587
                      /locus_tag="CPT_NODE_1_length_41_036"
-     exon            22031..23587
      CDS             22031..23587
                      /locus_tag="CPT_NODE_1_length_41_036"
                      /product="NODE_1_length_41.gene_34"
@@ -305,7 +269,6 @@ FEATURES             Location/Qualifiers
      RBS             23586..23590
      gene            23586..24456
                      /locus_tag="CPT_NODE_1_length_41_037"
-     exon            23596..24456
      CDS             23596..24456
                      /locus_tag="CPT_NODE_1_length_41_037"
                      /product="NODE_1_length_41.orf00040"
@@ -313,7 +276,6 @@ FEATURES             Location/Qualifiers
      RBS             24458..24462
      gene            24458..25503
                      /locus_tag="CPT_NODE_1_length_41_038"
-     exon            24472..25503
      CDS             24472..25503
                      /locus_tag="CPT_NODE_1_length_41_038"
                      /product="NODE_1_length_41.orf00041"
@@ -321,7 +283,6 @@ FEATURES             Location/Qualifiers
      RBS             25545..25549
      gene            25545..25744
                      /locus_tag="CPT_NODE_1_length_41_039"
-     exon            25559..25744
      CDS             25559..25744
                      /locus_tag="CPT_NODE_1_length_41_039"
                      /product="NODE_1_length_41.orf00042"
@@ -329,7 +290,6 @@ FEATURES             Location/Qualifiers
      RBS             25746..25750
      gene            25746..26049
                      /locus_tag="CPT_NODE_1_length_41_040"
-     exon            25756..26049
      CDS             25756..26049
                      /locus_tag="CPT_NODE_1_length_41_040"
                      /product="NODE_1_length_41.orf00043"
@@ -337,7 +297,6 @@ FEATURES             Location/Qualifiers
      RBS             26132..26137
      gene            26132..26706
                      /locus_tag="CPT_NODE_1_length_41_041"
-     exon            26146..26706
      CDS             26146..26706
                      /locus_tag="CPT_NODE_1_length_41_041"
                      /product="NODE_1_length_41.orf00044"
@@ -345,7 +304,6 @@ FEATURES             Location/Qualifiers
      RBS             26705..26709
      gene            26705..29006
                      /locus_tag="CPT_NODE_1_length_41_042"
-     exon            26715..29006
      CDS             26715..29006
                      /locus_tag="CPT_NODE_1_length_41_042"
                      /product="NODE_1_length_41.orf00045"
@@ -353,7 +311,6 @@ FEATURES             Location/Qualifiers
      RBS             28993..28996
      gene            28993..29677
                      /locus_tag="CPT_NODE_1_length_41_043"
-     exon            29006..29677
      CDS             29006..29677
                      /locus_tag="CPT_NODE_1_length_41_043"
                      /product="NODE_1_length_41.orf00046"
@@ -361,7 +318,6 @@ FEATURES             Location/Qualifiers
      RBS             29681..29684
      gene            29681..32575
                      /locus_tag="CPT_NODE_1_length_41_044"
-     exon            29690..32575
      CDS             29690..32575
                      /locus_tag="CPT_NODE_1_length_41_044"
                      /product="NODE_1_length_41.orf00047"
@@ -369,7 +325,6 @@ FEATURES             Location/Qualifiers
      RBS             32574..32579
      gene            32574..35683
                      /locus_tag="CPT_NODE_1_length_41_045"
-     exon            32585..35683
      CDS             32585..35683
                      /locus_tag="CPT_NODE_1_length_41_045"
                      /product="NODE_1_length_41.orf00048"
@@ -377,7 +332,6 @@ FEATURES             Location/Qualifiers
      RBS             35675..35678
      gene            35675..37726
                      /locus_tag="CPT_NODE_1_length_41_046"
-     exon            35690..37726
      CDS             35690..37726
                      /locus_tag="CPT_NODE_1_length_41_046"
                      /product="NODE_1_length_41.orf00049"
@@ -385,7 +339,6 @@ FEATURES             Location/Qualifiers
      RBS             37726..37730
      gene            37726..38071
                      /locus_tag="CPT_NODE_1_length_41_047"
-     exon            37736..38071
      CDS             37736..38071
                      /locus_tag="CPT_NODE_1_length_41_047"
                      /product="NODE_1_length_41.orf00050"
@@ -393,7 +346,6 @@ FEATURES             Location/Qualifiers
      RBS             38049..38052
      gene            38049..38615
                      /locus_tag="CPT_NODE_1_length_41_048"
-     exon            38058..38615
      CDS             38058..38615
                      /locus_tag="CPT_NODE_1_length_41_048"
                      /product="NODE_1_length_41.orf00051"
@@ -401,7 +353,6 @@ FEATURES             Location/Qualifiers
      RBS             38614..38618
      gene            38614..38932
                      /locus_tag="CPT_NODE_1_length_41_049"
-     exon            38624..38932
      CDS             38624..38932
                      /locus_tag="CPT_NODE_1_length_41_049"
                      /product="NODE_1_length_41.orf00052"
@@ -409,7 +360,6 @@ FEATURES             Location/Qualifiers
      RBS             38932..38936
      gene            38932..40879
                      /locus_tag="CPT_NODE_1_length_41_050"
-     exon            38942..40879
      CDS             38942..40879
                      /locus_tag="CPT_NODE_1_length_41_050"
                      /product="NODE_1_length_41.orf00053"
@@ -417,7 +367,6 @@ FEATURES             Location/Qualifiers
      RBS             40862..40866
      gene            40862..41013
                      /locus_tag="CPT_NODE_1_length_41_051"
-     exon            40876..41013
      CDS             40876..41013
                      /locus_tag="CPT_NODE_1_length_41_051"
                      /product="NODE_1_length_41.gene_49"
@@ -425,7 +374,6 @@ FEATURES             Location/Qualifiers
      RBS             40958..40962
      gene            40958..41173
                      /locus_tag="CPT_NODE_1_length_41_052"
-     exon            40970..41173
      CDS             40970..41173
                      /locus_tag="CPT_NODE_1_length_41_052"
                      /product="NODE_1_length_41.orf00055"

@@ -278,6 +278,7 @@ def remove_useless_features(features):
             "non_canonical_five_prime_splice_site",
             "stop_codon_read_through",
             "mRNA",
+            "exon",
         ):
             continue
         else:
