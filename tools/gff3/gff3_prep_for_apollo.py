@@ -75,7 +75,7 @@ def add_exons(features):
                     "ID": ["%s.mRNA" % clean_gene.qualifiers["ID"][0]],
                     "Parent": clean_gene.qualifiers["ID"],
                 },
-                sub_features=cds_list,
+                sub_features=[],
                 strand=exon_strand
             )
             for cds in cds_list:
