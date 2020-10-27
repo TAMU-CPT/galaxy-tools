@@ -43,9 +43,10 @@ def add_exons(features):
         exon_end = None
         exon_strand = None
         cds_list = []
-        for exon in feature_lambda(gene.sub_features, feature_test_type, {"type": "mRNA"}, subfeatures=False,recurse=False):
+        for exon in feature_lambda(gene.sub_features, feature_test_type, {"type": "exon"}, subfeatures=True,recurse=False):
             #if the gene contains an exon, skip.
             continue
+        
         # check for CDS child features of the gene, do not go a further step (this should skip any CDS children of exon child features)
         for cds in feature_lambda(
             gene.sub_features,
@@ -57,17 +58,17 @@ def add_exons(features):
             # check all CDS features for min/max boundaries
             # Note: Changed to gene boundary, Shine dalgarnos were getting parented to the mrna but falling out of bounds
             if exon_start is None:
-                exon_start = gene.location.start
+                exon_start = cds.location.start
                 exon_strand = cds.location.strand
             if exon_end is None:
-                exon_end = gene.location.end
+                exon_end = cds.location.end
             exon_start = min(exon_start, cds.location.start)
             exon_end = max(exon_end, cds.location.end)
             cds_list.append(cds)
         if cds_list:
             # we found a CDS to adopt
             new_exon = gffSeqFeature(
-                location=FeatureLocation(exon_start, exon_end),
+                location=FeatureLocation(gene.location.start, gene.location.end),
                 type="mRNA",
                 source = "cpt.prepApollo",
                 qualifiers={
@@ -83,6 +84,7 @@ def add_exons(features):
             # gene.sub_features.append(new_exon)
             # get all the other children of gene that AREN'T a CDS including the new exon
             clean_gene.sub_features = [copy.deepcopy(new_exon)]
+            clean_gene.sub_features[-1].sub_features.append(gffSeqFeature(location=FeatureLocation(exon_start, exon_end), type="exon", source = "cpt.prepApollo", qualifiers={"ID": ["%s.exon" % clean_gene.qualifiers["ID"][0]], "Parent": clean_gene.sub_features[-1].qualifiers["ID"],}, sub_features=cds_list, strand=exon_strand))
             for sf in feature_lambda(
                 gene.sub_features,
                 feature_test_type,
