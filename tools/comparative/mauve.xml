@@ -8,6 +8,21 @@
 	<configfiles>
 		<configfile name="index">
 		<![CDATA[
+#if $frameHeight > 0:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=$frameHeight, initial-scale=1">
+    <meta name="description" content="X-Vis">
+    <title>X-Vis</title>
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+    <script src="mauve.js"></script>
+</body>
+</html>
+#else:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +36,7 @@
     <script src="mauve.js"></script>
 </body>
 </html>
+#end if
 		]]>
 		</configfile>
 	</configfiles>
@@ -41,6 +57,7 @@ cp $index "$output"
 	<inputs>
 		<expand macro="input/gff3+fasta" />
 		<expand macro="xmfa_input" />
+                <param label="Manually Set Height (0 for auto-scaling)" name="frameHeight" type="integer" value="0"/>
 	</inputs>
 	<outputs>
 		<data format="html" name="output" />
