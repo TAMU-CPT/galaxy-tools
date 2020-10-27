@@ -44,12 +44,14 @@
 		<tool file="cpt2/galaxy-tools/tools/util/cpt_convert_glimmer_to_gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/util/cpt_convert_mga_to_gff3.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/wigToBigWig.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/gff3/cpt_fixGbkConversion.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_reformat.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff2gb.xml" label="gff3" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/fix_ncbi.xml" label="gff3,apollo" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_genemarks.xml" label="gff3" />
                 <tool file="cpt2/galaxy-tools/tools/gff3/gff3_validator.xml" label="gff3"/>
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_sixpack.xml" label="gff3" />
+                <tool file="cpt2/galaxy-tools/tools/gbk/cpt_gbkToGff3.xml" label="genbank" />
 		<tool file="cpt2/tools-iuc/tools/bioperl/bp_genbank2gff3.xml" label="genbank" />
                 <tool file="cpt2/galaxy-tools/tools/util/tRNAscan_to_gff_SE_format.xml"/>  
 	</section>
@@ -220,6 +222,7 @@
 	</section>
 	<section id="b3065028-2363-4c7a-922b-a054cfce8cc8" name="CPT: Comparative Genomics">
 		<tool file="cpt2/galaxy-tools/tools/comparative/mist3.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/prep/mist_prep.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/PHANOTATE/phanotate.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/gepard.xml" hidden="True"/>
 		<tool file="cpt2/galaxy-tools/tools/comparative/progressivemauve.xml" hidden="True"/>
@@ -259,8 +262,8 @@
 		<tool file="cpt2/galaxy-tools/tools/gbk/featuresvg.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/phage/genome_map.xml"/>
         	<tool file="cpt2/galaxy-tools/tools/genome_viz/linear_genome_plot.xml"/>
-		<tool file="cpt2/galaxy-tools/tools/jbrowse/jbrowse.xml" label="deprecated"/>
-		<tool file="cpt2/galaxy-tools/tools//jbrowse/jbrowse-iuc/jbrowse.xml" label="experimental"/>
+		<tool file="cpt2/galaxy-tools/tools/jbrowse/jbrowse.xml" label="deprecated" hidden="True"/>
+		<tool file="cpt2/galaxy-tools/tools//jbrowse/jbrowse-iuc/jbrowse.xml"/>
 		<tool file="cpt2/Restriction-Digest-Tool/bin/digest_dna.xml"/>
 		<tool file="cpt2/Restriction-Digest-Tool/bin/graphic_drawer.xml"/>
 	</section>
@@ -292,6 +295,7 @@
 		<tool file="cpt2/galaxy-tools/tools/gbk/cpt_validate_gbk.xml" label="genbank" />
 		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_validator.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/phage/phage_annotation_table.xml"/>
+		<tool file="cpt2/galaxy-tools/tools/gff3/promote_qualifier.xml" label="gff3" />
 	</section>
 
 
@@ -317,6 +321,9 @@
                 <tool file="cpt2/galaxy-tools/tools/external/FlaGs/FlaGs.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/SAR/SAR_finder.xml"/>
                 <tool file="cpt2/galaxy-tools/tools/external/bacphlib.xml"/>
+				<tool file="cpt2/galaxy-tools/tools/ncbi_entrez_eutils/efetch.xml"/>
+				<tool file="cpt2/galaxy-tools/tools/wp_analysis/wp_data.xml"/>
+				<tool file="cpt2/galaxy-tools/tools/refseq_analysis/refseq_confirm.xml"/>
 	</section>
 	<!-- deprecated -->
 	<tool file="cpt2/galaxy-tools/tools/gff3/gff3_ipr_merge.xml" label="deprecated" hidden="True" />

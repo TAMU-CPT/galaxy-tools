@@ -69,4 +69,28 @@
                         <yield/>
 		</citations>
 	</xml>
+        <xml name="citations-clm">
+		<citations>
+			<citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {C. Maughmer},
+				title = {CPT Galaxy Tools},
+				year = {2017-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+                        <yield/>
+		</citations>
+	</xml>
+        <xml name="sl-citations-clm">
+			<citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {C. Maughmer},
+				title = {CPT Galaxy Tools},
+				year = {2017-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+                        <yield/>
+	</xml>
 </macros>

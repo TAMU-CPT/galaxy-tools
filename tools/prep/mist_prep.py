@@ -1,13 +1,21 @@
 import argparse
 import os
 import re
+import time
+
+from Bio import SeqIO
+from Bio.SeqRecord import SeqRecord
 
 from excel_parser import ExcelParsing
+import eutils
 
 
-def is_binary_file(parser, arg):
+def is_binary_file(parser_var, arg):
+    """
+    THIS IS NOT WORKING AS DESIRED, MIGHT SCRAP AND FORCE NONBINARY EXCEL UPLOAD
+    """
     if not os.path.exists(arg):
-        parser.error(f"File {arg} does NOT exist!")
+        parser_var.error(f"File {arg} does NOT exist!")
     else:
         try:
             return open(arg, 'rb')
@@ -16,45 +24,76 @@ def is_binary_file(parser, arg):
 
 if __name__ == "__main__":
     
-    parser = argparse.ArgumentParser(description="Prepares a excel file for a pairwise MIST dot plot")
+    parser = argparse.ArgumentParser(description="Prepares an Excel or CSV file for a pairwise MIST dot plot")
 
-    parser.add_argument("excel_file", type=lambda x: is_binary_file(parser, x), help='Input excel file')
+    #  prep arguments
+    #parser.add_argument("file", type=lambda x: is_binary_file(parser, x), help='Input excel file')
+    parser.add_argument("file", type=argparse.FileType('r'), help='Input File')
     parser.add_argument("--acc_col", type=str, help="column header label for accessions")
     parser.add_argument("--name_col", type=str, help="column header for MIST plot labels")
-    parser.add_argument("--output_multifa", type=argparse.FileType('w'), default="_multi.fa")
+    parser.add_argument("--use_name_col", action="store_true", help="Uses column value for renaming the header")
 
-    #parser.add_argument("--cols", type=)
+    # eutils params
+    parser.add_argument('--user_email', help="User email")
+    parser.add_argument('--admin_email', help="Admin email")
+    parser.add_argument('--history_file', help='Fetch results from previous query')
+    parser.add_argument('--db', default="nuccore", help='Database to use')
+    parser.add_argument('--api_key', help="NCBI API Key")
+    #"65da3234a0dd70611ede507979d1f3885608"
+    parser.add_argument('--retmode', default="fasta", help='Retmode')
+    parser.add_argument('--rettype', default="fasta", help='Rettype')
+    
+    # output
+    parser.add_argument('--output_fasta', type=argparse.FileType('w'), default="_MIST_multi.fa")
 
     args = parser.parse_args()
 
     #  parse data into dataframe using excel_parser
-    cols = [args.acc_col, args.name_col]
-    data = ExcelParsing(args.excel_file).chop_frame(cols=cols)
-
+    cols = [str(args.acc_col).strip(), str(args.name_col).strip()]
+    data = ExcelParsing(args.file.name).chop_frame(cols=cols)
+    
     #  prettify future headers
     names = list(data[args.name_col])
     spliced_names = []
     for name in names:
-        s = name.split(' ')
-        if re.search(('phage|virus|coli'), s[1]):
-            r = s[2:]
+        if args.use_name_col: # just use what is in the column
+            r = name.split(' ')
+            spliced_names.append(r)
         else:
-            r = s[1:]
-        spliced_names.append(r)
-    
-    print(spliced_names)
-    #  retrieve data using accession column
-    """
-    accs = list(data[args.acc_col])
-    for acc in accs:
-        load = {
-            "email":"curtisross@tamu.edu",
-            "acc":acc,
-            "db":"nuccore",
-            "ret_type":"fasta"
-        }
-        c = SeqIO.read(CPTEfetch(**load).retrieve_data(), "fasta")
-        #c = str(c)
-        print(c)
-        exit()
-    """
+            s = name.split(' ')
+            if re.search(('phage|virus|coli'), s[1]):
+                r = s[2:]
+            else:
+                r = s[1:]
+            spliced_names.append(r)
+    ids = list(data[args.acc_col])
+    combined_data = zip(spliced_names, ids)
+
+
+    #  initiate eutils obj and prep payload
+    c = eutils.Client(
+        history_file=args.history_file,
+        user_email=args.user_email,
+        admin_email=args.admin_email,
+        api_key=args.api_key
+    )
+    payload = {}
+    for attr in ('retmode', 'rettype'):
+        if getattr(args, attr, None) is not None:
+            payload[attr] = getattr(args, attr)
+
+    #  fetch and write multi fasta
+    #with args.output_fasta as f:
+    list_of_seq = []
+    for org in combined_data:
+        payload['id'] = org[1]
+        print(payload)
+        obj = c.fetch(args.db, ftype=args.retmode, read_only_fasta=True, **payload)
+        obj.description = obj.id
+        obj.id = '_'.join(org[0])
+        list_of_seq.append(SeqRecord(obj.seq,obj.id,description=obj.description))
+
+    for each_record in list_of_seq:
+        SeqIO.write(each_record, args.output_fasta, "fasta")
+
+

@@ -28,7 +28,8 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         ref=None,
         ref_db=None,
         shift=0,
-        score=0.0
+        score=0.0,
+        source="feature"
     ):
         """Reimplementation of SeqFeature for use with GFF3 Parsing
         Does not remove the sub_feature functionality, as unlike
@@ -46,6 +47,7 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         self.type = type
         self.shift = shift
         self.score = score
+        self.source = source
         if location_operator:
             # TODO - Deprecation warning
             self.location_operator = location_operator
@@ -78,11 +80,10 @@ class gffSeqFeature(SeqFeature.SeqFeature):
 
     def _set_subfeatures(self, value):
         """Set function for the sub_features property (PRIVATE)."""
-        if value:
-            if isinstance(value, list):
-                self._sub_features = value
-            else:
-                raise ValueError("sub_feature must be a list of gffSeqFeature objects")
+        if isinstance(value, list):
+            self._sub_features = value
+        else:
+            raise ValueError("sub_feature must be a list of gffSeqFeature objects")
 
     sub_features = property(
         fget=_get_subfeatures,
@@ -294,7 +295,7 @@ def lineAnalysis(line):
 
     if errorMessage != "":
       return errorMessage, None, None
-    return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, shiftIn, scoreIn)   
+    return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, shiftIn, scoreIn, fields[1])   
         
 def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
     fastaDirective = False
@@ -340,14 +341,26 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
       if res:
         if prag not in indDict.keys():
           indDict[prag] = 0
-          orgDict[prag] = []
+          orgDict[prag] = [res]
           seekParentDict[prag] = []
           seqDict[prag] = ""
+          if "Parent" in res.qualifiers.keys():
+              seekParentDict[prag].append(indDict[prag])
         else:
-          indDict[prag] += 1
-        orgDict[prag].append(res)
-        if "Parent" in res.qualifiers.keys():
-          seekParentDict[prag].append(indDict[prag])
+          incInd = True
+          if res.id:
+            for x in range(0, len(orgDict[prag])):
+              if res.id == orgDict[prag][x].id:
+                if orgDict[prag][x].type != res.type:
+                  errOut += ("Line " + str(lineInd) + ": Duplicate IDs in file but differing types. Cannot assume CompoundFeature/ join location, please resolve type descrepancy or de-duplicate ID " + res.id + ".\n")
+                orgDict[prag][x].location = orgDict[prag][x].location + res.location
+                incInd = False
+                break
+          if incInd:
+            indDict[prag] += 1
+            orgDict[prag].append(res)
+            if "Parent" in res.qualifiers.keys():
+              seekParentDict[prag].append(indDict[prag])
     if errOut:
       outStream.write(errOut + "\n")
       raise Exception("Failed GFF Feature Parsing, error log output to stderr")
@@ -416,61 +429,62 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
     return res
 
 def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = None, outStream = sys.stdout, parents = None):
-    line = orgName + "\t"
-    if source:
-      line += source + "\t"
-    else:
-      line += ".\t" 
-    line += inFeat.type + "\t"
-    line += str(min(inFeat.location.start, inFeat.location.end) + 1) + "\t" + str(max(inFeat.location.start, inFeat.location.end)) + "\t"
-    if score:
-      line += str(score) + "\t"
-    else:
-      line += ".\t"
-    if inFeat.location.strand == None:
-      line += ".\t"
-    elif inFeat.location.strand == 1:
-      line += "+\t"
-    elif inFeat.location.strand == -1:
-      line += "-\t"
-    else: 
-      line += "?\t"
-    if shift:
-      line += str(shift) + "\t"
-    elif inFeat.type == "CDS":
-      line += "0\t"
-    else:
-      line += ".\t"
-    if parents and "Parent" not in inFeat.qualifiers.keys():
-      inFeat.qualifiers["Parent"] = parents.qualifiers["ID"]
-    for qual in inFeat.qualifiers.keys():
-      for keyChar in str(qual):
-        if keyChar in "%,=;":
-          encoded = str(hex(ord(keyChar)))
-          line += "%" + encoded[2:].upper()
-        else:
-          line += keyChar
-      line += "="
-      if type(inFeat.qualifiers[qual]) != list:
-        inFeat.qualifiers[qual] = [inFeat.qualifiers[qual]]
-      for ind in range(0, len(inFeat.qualifiers[qual])):
-        for valChar in str(inFeat.qualifiers[qual][ind]):
-          if valChar in "%,=;":
-            encoded = str(hex(ord(valChar)))
+    for loc in inFeat.location.parts:
+      line = orgName + "\t"
+      if source:
+        line += source + "\t"
+      else:
+        line += ".\t" 
+      line += inFeat.type + "\t"
+      line += str(min(loc.start, loc.end) + 1) + "\t" + str(max(loc.start, loc.end)) + "\t"
+      if score:
+        line += str(score) + "\t"
+      else:
+        line += ".\t"
+      if inFeat.location.strand == None:
+        line += ".\t"
+      elif inFeat.location.strand == 1:
+        line += "+\t"
+      elif inFeat.location.strand == -1:
+        line += "-\t"
+      else: 
+        line += "?\t"
+      if shift or shift == 0:
+        line += str(shift) + "\t"
+      elif inFeat.type == "CDS":
+        line += "0\t"
+      else:
+        line += ".\t"
+      if parents and "Parent" not in inFeat.qualifiers.keys():
+        inFeat.qualifiers["Parent"] = parents.qualifiers["ID"]
+      for qual in inFeat.qualifiers.keys():
+        for keyChar in str(qual):
+          if keyChar in "%,=;":
+            encoded = str(hex(ord(keyChar)))
             line += "%" + encoded[2:].upper()
           else:
-            line += valChar
+            line += keyChar
+        line += "="
+        if type(inFeat.qualifiers[qual]) != list:
+          inFeat.qualifiers[qual] = [inFeat.qualifiers[qual]]
+        for ind in range(0, len(inFeat.qualifiers[qual])):
+          for valChar in str(inFeat.qualifiers[qual][ind]):
+            if valChar in "%,=;":
+              encoded = str(hex(ord(valChar)))
+              line += "%" + encoded[2:].upper()
+            else:
+              line += valChar
           #print(line)
         
-        if ind < len(inFeat.qualifiers[qual]) - 1:
-          line += ","
-        else:
-          line += ";"
+          if ind < len(inFeat.qualifiers[qual]) - 1:
+            line += ","
+          else:
+            line += ";"
       
-    outStream.write(line + "\n")  
+      outStream.write(line + "\n")  
     if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
       for x in inFeat.sub_features:
-        printFeatLine(x, orgName, source, score, shift, outStream, inFeat)
+        printFeatLine(x, orgName, x.source, x.score, x.shift, outStream, inFeat)
 
 def gffWrite(inRec, outStream = None):
     if not outStream:
@@ -487,4 +501,4 @@ def gffWrite(inRec, outStream = None):
       elif rec.seq:
         outStream.write("##sequence-region " + rec.id + " 1 " + str(len(rec.seq)) +"\n")
       for feat in rec.features:
-          printFeatLine(feat, rec.id, score = feat.score, shift = feat.shift, outStream = outStream)        
+          printFeatLine(feat, rec.id, source = feat.source, score = feat.score, shift = feat.shift, outStream = outStream)        

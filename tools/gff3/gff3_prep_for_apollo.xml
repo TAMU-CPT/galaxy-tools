@@ -36,5 +36,5 @@ All other features present in the GFF under the gene will be kept the same.
 Warning: Use this tool only when it is absolutely necessary to fix a gene model. 
 
       ]]></help>
-		<expand macro="citations" />
+		<expand macro="citations-clm" />
 </tool>

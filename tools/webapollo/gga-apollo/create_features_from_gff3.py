@@ -45,5 +45,5 @@ if __name__ == '__main__':
     if not orgs:
         raise Exception("You do not have write permission on this organism")
 
-    load_result = wa.annotations.load_gff3(org_cn, args.gff3, args.source, use_name=args.use_name, disable_cds_recalculation=args.disable_cds_recalculation)
-    print(json.dumps(load_result, indent=2))
+    load_result = wa.annotations.load_legacy_gff3(org_cn, args.gff3) # use_name=args.use_name, disable_cds_recalculation=args.disable_cds_recalculation)
+    #print(json.dumps(load_result, indent=2))

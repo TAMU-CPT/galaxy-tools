@@ -8,7 +8,7 @@ from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
-from Bio.SeqFeature import FeatureLocation
+from Bio.SeqFeature import FeatureLocation, CompoundLocation
 from gff3 import feature_lambda, feature_test_type, get_id
 
 logging.basicConfig(level=logging.INFO)
@@ -23,7 +23,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
         for rec in cpt_Gff2Gbk(gff3, fasta, 11):
             seenList = {}
             if rec.seq[0] == "?":
-                print("No Fasta ID matches GFF")
+                sys.stderr.write("Error: No Fasta ID matches GFF ID '" + rec.id + "'\n")
                 exit(1)
             for feat in sorted(rec.features, key=lambda x: x.location.start):
                 if feat.type != "CDS":
@@ -97,7 +97,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 if x == rec.id or x == lColumn:
                     noMatch = False
             if noMatch:
-                print("No Fasta ID matches GFF")
+                sys.stderr.write("Error: No Fasta ID matches GFF ID '" + rec.id + "'\n")
                 exit(1)
             newfeats = []
             for feat in sorted(
@@ -131,7 +131,25 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                             ]
                         )
                     )
-
+                #if feat.id == "CPT_Privateer_006.p01":
+                #print(feat)
+                #exit()
+                
+                if isinstance(feat.location, CompoundLocation):
+                  finSeq = ""
+                  if feat.strand == -1:
+                    for x in feat.location.parts:
+                      finSeq += str((rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement())
+                  else:
+                    for x in feat.location.parts:
+                      finSeq += str(rec.seq[feat.location.start + feat.shift: feat.location.end])
+                  yield [
+                    SeqRecord(
+                        finSeq,
+                        id=nid.replace(" ", "-"),
+                        description=description,
+                    )
+                  ]
                 if feat.strand == -1:
                   yield [
                     SeqRecord(
@@ -165,7 +183,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 if x == rec.id or x == lColumn:
                     noMatch = False
             if noMatch:
-                print("No Fasta ID matches GFF")
+                sys.stderr.write("Error: No Fasta ID matches GFF ID '" + rec.id + "'\n")
                 exit(1)
             for feat in sorted(
                 feature_lambda(
@@ -198,23 +216,42 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                             ]
                         )
                     )
-                if feat.strand == -1:
+
+                if isinstance(feat.location, CompoundLocation):
+                  finSeq = ""
+                  if feat.strand == -1:
+                    for x in feat.location.parts:
+                      finSeq += str((rec.seq[x.start: x.end - feat.shift]).reverse_complement())
+                  else:
+                    for x in feat.location.parts:
+                      finSeq += str(rec.seq[x.start + feat.shift: x.end])
                   yield [
                     SeqRecord(
-                        (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
+                        Seq(finSeq),
                         id=id.replace(" ", "-"),
                         description=description,
                     )
                   ]
+
                 else:
-                  yield [
-                    SeqRecord(
-                        #feat.extract(rec).seq,
-                        rec.seq[feat.location.start + feat.shift: feat.location.end],
-                        id=id.replace(" ", "-"),
-                        description=description,
-                    )
-                  ]
+
+                  if feat.strand == -1:
+                    yield [
+                      SeqRecord(
+                          (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
+                          id=id.replace(" ", "-"),
+                          description=description,
+                      )
+                    ]
+                  else:
+                    yield [
+                      SeqRecord(
+                          #feat.extract(rec).seq,
+                          rec.seq[feat.location.start + feat.shift: feat.location.end],
+                          id=id.replace(" ", "-"),
+                          description=description,
+                      )
+                    ]
 
 
 if __name__ == "__main__":

@@ -8,4 +8,17 @@ python linear_genome_plot.py test-data/mu_reanno.gb --feature_id CDS --feature_i
 
 python linear_genome_plot.py test-data/mu_reanno.gb --feature_id CDS --feature_id_color "#FFFFFF" --feature_id RBS --feature_id_color "#CD5C5C" --features_excluded misc_feature,misc_difference,source,gene --ignore_labeling "uncharacterized protein" --feature_label_order "product" --plot_width 25 --title "Mu Test Plot"
 
-python linear_genome_plot.py test-data/mu_reanno.gb --features_excluded "misc_difference,misc_feature,gene" --feature_id "CDS" --feature_id_color "white" --feature_id "RBS" --feature_id_color "red" --title "Test control label" --gene_id "SAR endolysin" --gene_id_color "pink" --plot_width 40 --sz 10000 --ez 12000 --feature_label_order "product" --ignored_feature_labels "RBS" --label_algo
+python linear_genome_plot.py test-data/mu_reanno.gb --features_excluded "misc_difference,misc_feature,gene" --feature_id "CDS" --feature_id_color "white" --feature_id "RBS" --feature_id_color "red" --title "Test control label" --gene_id "SAR endolysin" --gene_id_color "pink" --plot_width 10 --sz 10000 --ez 12000 --feature_label_order "product" --ignored_feature_labels "RBS" --label_algo
+
+---FOR TEST---
+
+python linear_genome_plot.py test-data/mu_reanno.gb --features_excluded "misc_difference,gene" --feature_id "CDS" --feature_id_color "white" --feature_id "RBS" --feature_id_color "red" --title "Mu Test label" --gene_id "SAR endolysin" --gene_id_color "pink" --plot_width 10 --sz 7000 --ez 12000 --feature_label_order "product" --ignored_feature_labels "RBS" --label_algo --common_ignore_product_labels "uncharacterized protein,hypothetical protein" --common_features_excluded "source,misc_feature"
+
+python linear_genome_plot.py test-data/mu_reanno.gb --features_excluded "misc_difference,gene" --feature_id "CDS" --feature_id_color "white" --feature_id "RBS" --feature_id_color "red" --title "Mu Test label" --gene_id "SAR endolysin" --gene_id_color "pink" --plot_width 100 --feature_label_order "product" --common_ignore_feature_labels "RBS" --label_algo --common_ignore_product_labels "uncharacterized protein,hypothetical protein" --common_features_excluded "source,misc_feature" --ignore_labeling "testing_ignore_labeling,another_test" --ignored_feature_labels "testing_ignored_feature_labels,another_test"
+
+---multiline test---
+python linear_genome_plot.py test-data/mu_reanno.gb --features_excluded "misc_difference,gene" --feature_id "CDS" --feature_id_color "#FFFFFF" --feature_id "RBS" --feature_id_color "#CD5C5C" --title "Mu Test label" --gene_id "SAR endolysin" --gene_id_color "#33FFB2" --plot_width 10 --sz 7000 --ez 12000 --feature_label_order "product" --ignored_feature_labels "RBS" --label_algo --common_ignore_product_labels "uncharacterized protein,hypothetical protein" --common_features_excluded "source,misc_feature" --gene_id "spanin" --gene_id_color "#3355FF" --multiline --nucl_per_line 1200
+
+
+---galaxy tool img---
+python linear_genome_plot.py test-data/mu_reanno.gb --features_excluded "misc_difference,gene,RBS" --feature_id "CDS" --feature_id_color "#FFFFFF" --feature_id "RBS" --feature_id_color "#CD5C5C" --title "" --gene_id "SAR endolysin" --gene_id_color "#CCFFEE" --plot_width 10 --sz 7000 --ez 12100 --feature_label_order "product" --ignored_feature_labels "RBS" --label_algo --common_ignore_product_labels "uncharacterized protein,hypothetical protein,winged" --common_features_excluded "source,misc_feature" --gene_id "spanin" --gene_id_color "#CCDDFF" --feature_id "CDS" --feature_id_color "#F7F7EF" --gene_id "holin" --gene_id_color "#F5D5CB" --gene_id "releasin" --gene_id_color "#FF9AA2"

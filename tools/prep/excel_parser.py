@@ -1,8 +1,8 @@
 import re
 
 import pandas as pd
-from pyxlsb import open_workbook
-
+from xlrd import XLRDError
+#from pyxlsb import open_workbook
 
 class ExcelParsing:
     
@@ -16,22 +16,26 @@ class ExcelParsing:
         
         try:
             return pd.read_excel(file)
-        except:
-            df=[]
-            with open_workbook(file) as wb:
-                with wb.get_sheet(1) as sheet:
-                    for row in sheet.rows():
-                        df.append([item.v for item in row])
-            return pd.DataFrame(df[1:], columns=df[0])
+        except XLRDError:
+            return pd.read_csv(file)
+        #    df=[]
+        #    with open_workbook(file) as wb:
+        #        with wb.get_sheet(1) as sheet:
+        #            for row in sheet.rows():
+        #                df.append([item.v for item in row])
+        #    return pd.DataFrame(df[1:], columns=df[0])
     
     def chop_frame(self, cols=None, **kwargs):
         """ subset based on columns """
 
         frame = self.parse_excel(self.file, **kwargs)
-        return frame.loc[:,cols]
+
+        return frame.reindex(columns=cols)
+        #return frame.loc[:,cols]
 
 
 if __name__ == "__main__":
+    
     file = 'test-data/Refseq_coliphages_20200908.xlsb'
     data = ExcelParsing(file).chop_frame(cols=['Genome','Accession'])
     names = list(data['Genome'])

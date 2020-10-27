@@ -2,11 +2,11 @@
 <macros>
 	<xml name="requirements">
 		<requirements>
-			<requirement type="package" version="3.6.10">python</requirement>
-			<requirement type="package" version="1.67">biopython</requirement>
-            <requirement type="package" version="0.24.0">pandas</requirement>
+			<requirement type="package" version="3.8.3">python</requirement>
+			<requirement type="package" version="1.77">biopython</requirement>
+            <requirement type="package" version="1.0.5">pandas</requirement>
             <requirement type="package" version="0.6.6">bcbio-gff</requirement>
-            <requirement type="package" version="3.0.2">matplotlib</requirement>
+            <requirement type="package" version="3.3.2">matplotlib</requirement>
             <!-- <requirement type="package" version="3.0.1">dna-features-viewer</requirement> -->
 			<yield/>
 		</requirements>
