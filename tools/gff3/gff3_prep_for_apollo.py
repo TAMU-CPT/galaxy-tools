@@ -95,7 +95,7 @@ def add_exons(features):
             ):
                 child = copy.deepcopy(sf)
                 child.qualifiers["Parent"] = new_exon.qualifiers["ID"]
-                #clean_gene.sub_features[-1].sub_features.append(child)
+                clean_gene.sub_features[-1].sub_features.append(child)
             # add them to the new Exon feature
         # return the cleaned gene with new exon
         yield clean_gene
