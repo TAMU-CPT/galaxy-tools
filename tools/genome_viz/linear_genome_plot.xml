@@ -6,7 +6,7 @@
     <expand macro="requirements">
     </expand>
     <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/linear_genome_plot.py
+python $__tool_directory__/linear_genome_plot.py
 $input_file
 --plot_width $plot_width
 --common_features_excluded  "$common_features_excluded"
