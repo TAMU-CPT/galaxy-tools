@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.webapollo.delete_organism" name="Delete Organism" version="20.1.0.0">
-  <description>from Apollo listing</description>
+<tool id="edu.tamu.cpt2.webapollo.delete_organism" name="Delete Organism" version="1.2">
+  <description>in Apollo</description>
   <macros>
     <import>macros.xml</import>
   </macros>
@@ -11,7 +11,7 @@
   <command detect_errors="aggressive"><![CDATA[
 @APOLLO_ENSURE_USER_EXISTS@
 @AUTH@
-python $__tool_directory__/delete_organism.py
+python $__tool_directory__/share_with.py
 @ADMIN_AUTH@
 $__user_email__
 @ORG_OR_GUESS@
@@ -23,8 +23,10 @@ $__user_email__
     <data format="txt" name="output" />
   </outputs>
   <help><![CDATA[
-**Warning: Experimental, do not use yet unless explicitly testing**
+**What it does**
 
-Remove an organism from list of accessible organisms in Galaxy/Apollo.
+Share organisms with another user in Apollo.
+
+To share more than one organism with a user, either select multiple entries in the dropdown list, or enter the common name of the organisms in direct entry mode, separated by commas.
       ]]></help>
 </tool>
