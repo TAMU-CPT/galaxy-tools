@@ -83,12 +83,12 @@ def add_exons(features):
                 sub_features=[],
                 strand=exon_strand
             )
-            for cds in cds_list:
-                cds.qualifiers["Parent"] = new_exon.qualifiers["ID"]
+            #for cds in cds_list:
+            #    cds.qualifiers["Parent"] = new_exon.qualifiers["ID"]
             # gene.sub_features.append(new_exon)
             # get all the other children of gene that AREN'T a CDS including the new exon
             #clean_gene.sub_features = [copy.deepcopy(new_exon)]
-            clean_gene.sub_features.append(gffSeqFeature(location=FeatureLocation(exon_start, exon_end, exon_strand), type="exon", source = "cpt.prepApollo", qualifiers={"ID": ["%s.exon" % clean_gene.qualifiers["ID"][0]], "Parent": clean_gene.qualifiers["ID"]}, sub_features=[], strand=exon_strand))
+            #clean_gene.sub_features.append(gffSeqFeature(location=FeatureLocation(exon_start, exon_end, exon_strand), type="exon", source = "cpt.prepApollo", qualifiers={"ID": ["%s.exon" % clean_gene.qualifiers["ID"][0]], "Parent": clean_gene.qualifiers["ID"]}, sub_features=[], strand=exon_strand))
             """
             for sf in feature_lambda(
                 gene.sub_features,
