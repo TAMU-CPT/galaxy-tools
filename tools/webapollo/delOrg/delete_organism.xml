@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.webapollo.delete_organism" name="Delete Organism" version="20.1.0.0">
+  <description>from Apollo</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <code file="webapollo.py"/>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+@APOLLO_ENSURE_USER_EXISTS@
+python $__tool_directory__/delete_organism.py
+@ADMIN_AUTH@
+$__user_email__
+@ORG_OR_GUESS@
+> $output]]></command>
+  <inputs>
+      <expand macro="org_or_guess_multi" />
+  </inputs>
+  <outputs>
+    <data format="txt" name="output" />
+  </outputs>
+  <help><![CDATA[
+**Warning: Experimental, do not use yet unless explicitly testing**
+
+Remove an organism from list of accessible organisms in Galaxy/Apollo.
+@REFERENCES@
+      ]]></help>
+</tool>
