@@ -1,9 +1,18 @@
 #!/usr/bin/env python
+from __future__ import print_function
+
 import argparse
-from webapollo import WebApolloInstance
-from webapollo import WAAuth, OrgOrGuess, GuessOrgMulti, AssertUser, accessible_organisms
-import sys
 import logging
+import sys
+import json
+from pathlib import Path
+
+from apollo import accessible_organisms
+from apollo.util import GuessOrg, OrgOrGuess
+
+from arrow.apollo import get_apollo_instance
+
+from webapollo import WebApolloInstance, WAAuth, AssertUser, UserObj, handle_credentials, galaxy_list_users
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -27,7 +36,7 @@ if __name__ == "__main__":
     if other_user == []:
         sys.stderr.write("Error: No such user " + cleanName.strip() + " to share organism with, exiting...")
         exit(1)
-    
+
     orgs = wa.users.get_organism_permissions(args.email)
     org_cn = []
     if args.org_json:
@@ -63,8 +72,8 @@ if __name__ == "__main__":
           other_user['username'],
           x,
           administrate=False,
-          write=args.write,
-          export=args.export,
-          read=args.read,
+          write=False,
+          export=False,
+          read=False,
         )
         print("Successfully removed " + str(x) + " from Apollo/ Galaxy lists.")
