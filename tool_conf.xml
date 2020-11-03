@@ -278,6 +278,7 @@
 		<tool file="cpt2/galaxy-tools/tools/webapollo/renumber_features.xml" label="new,apollo" />
 		<tool file="cpt2/galaxy-tools/tools/gff3/gff3_fix_apollo_sd.xml" label="apollo" />
 		<tool file="cpt2/galaxy-tools/tools/webapollo/shareOrg/share_with.xml" label="apollo" />
+                <tool file="cpt2/galaxy-tools/tools/webapollo/delete_organism.xml" label="apollo" />
 	</section>
 	<section id="42fc75d5-cae2-4d29-8794-9a8d2f390032" name="CPT: Phage">
 		<tool file="cpt2/galaxy-tools/tools/gbk/phage_renamer.xml" label="genbank" />
