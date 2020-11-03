@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <tool id="edu.tamu.cpt2.webapollo.delete_organism" name="Delete Organism" version="20.1.0.0">
-  <description>from Apollo</description>
+  <description>from Apollo listing</description>
   <macros>
     <import>macros.xml</import>
   </macros>
@@ -26,6 +26,5 @@ $__user_email__
 **Warning: Experimental, do not use yet unless explicitly testing**
 
 Remove an organism from list of accessible organisms in Galaxy/Apollo.
-@REFERENCES@
       ]]></help>
 </tool>
