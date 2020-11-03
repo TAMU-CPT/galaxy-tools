@@ -35,9 +35,31 @@ $inSeq
             <data format="fasta" name="faOut" label="tRNAscan-SE on ${inSeq.name} predicted tRNA sequences (Fasta)"/>
         </outputs>
     <help><![CDATA[
-Initial upload of tRNAscan's latest version, wrapped by CPT. Options and proper citation pending. Output is a text file, conversion to GFF3 can be found under the CPT: Format Conversion scripts
+**What it is**
+
+tRNAscan-SE version 2.0.5 wrapped by CPT. 
+
+**Input**
+Nucleotide sequence in FASTA format.
+
+**What it does**
+
+tRNAscan-SE was designed to make rapid, sensitive searches of genomic sequence feasible using the selectivity of the Cove analysis package. We have 
+optimized search sensitivity with eukaryote cytoplasmic and eubacterial sequences, but it may be applied more broadly with a slight reduction in sensitivity.
+search for bacterial tRNAs
+
+The default option selects the bacterial covariance model for tRNA analysis, and loosens the search parameters for EufindtRNA to improve detection of bacterial 
+tRNAs. Use of this mode with bacterial sequences will also improve bounds prediction of the 3' end (the terminal CAA triplet).
+disable pseudogene checking
+
+    Manually disable checking tRNAs for poor primary or secondary structure scores often indicative of eukaryotic pseudogenes. This will slightly speed the program 
+and may be necessary for non-eukaryotic sequences that are flagged as possible pseudogenes but are known to be functional tRNAs.
+
+**Output**
+Output is a text file, but tool for conversion to GFF3 can be found under the CPT: Format Conversion scripts. 
+
     ]]></help>
-        <citations>
+        <citations macro="citations">
             <citation type="bibtex">
                 @unpublished{galaxyTools,
                 author = {Anthony C.},
@@ -46,5 +68,6 @@ Initial upload of tRNAscan's latest version, wrapped by CPT. Options and proper 
                 note = {https://github.com/tamu-cpt/galaxy-tools/}
                 }
             </citation>
+	<citation type="doi">10.1007/978-1-4939-9173-0_1</citation>
         </citations>
 </tool>
