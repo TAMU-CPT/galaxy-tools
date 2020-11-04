@@ -88,7 +88,6 @@
 		</citations>
 	</xml>
         <xml name="sl-citations-clm">
-			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
 			<citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {C. Maughmer},
