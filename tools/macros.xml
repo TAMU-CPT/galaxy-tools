@@ -14,6 +14,7 @@
 		</version_command>
 	</xml>
 	<xml name="citation/mijalisrasche">
+		<citation type="doi">10.1371/journal.pcbi.1008214</citation>
 		<citation type="bibtex">@unpublished{galaxyTools,
 		author = {E. Mijalis, H. Rasche},
 		title = {CPT Galaxy Tools},
@@ -24,6 +25,7 @@
 	</xml>
 	<xml name="citations">
 		<citations>
+			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
 			<citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {E. Mijalis, H. Rasche},
@@ -37,6 +39,7 @@
 	</xml>
     	<xml name="citations-crr">
 		<citations>
+			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
 			<citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {C. Ross},
@@ -50,6 +53,7 @@
 	</xml>
         <xml name="citations-2020">
 		<citations>
+			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
 			<citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {E. Mijalis, H. Rasche},
@@ -71,6 +75,7 @@
 	</xml>
         <xml name="citations-clm">
 		<citations>
+			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
 			<citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {C. Maughmer},
@@ -83,6 +88,7 @@
 		</citations>
 	</xml>
         <xml name="sl-citations-clm">
+			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
 			<citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {C. Maughmer},
