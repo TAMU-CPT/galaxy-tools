@@ -52,6 +52,7 @@ OUTPUT :
 
     ]]></help>
     <citations>
+        <citation type="doi">10.1371/journal.pcbi.1008214</citation>
         <citation type="doi">https://dx.doi.org/10.1016/bs.aivir.2018.09.003</citation>
         <citation type="bibtex">
             @unpublished{galaxyTools,
