@@ -28,7 +28,8 @@ $splitLen
 Takes a Fasta record and outputs a multifasta with sequence lengths no longer than the specified slice length.
 </help>
 		<citations>
-                        <citation type="bibtex">
+      <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+      <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {A. Criscione},
 				title = {CPT Galaxy Tools},
