@@ -46,7 +46,7 @@ def add_exons(features):
 
         for mRNA in gene.sub_features:
             for x in mRNA.sub_features:
-                x.qualifiers["Parent"] = [gene.ID]
+                x.qualifiers["Parent"] = [gene.id]
                 gene.sub_features.append(x)
                  
         for exon in feature_lambda(gene.sub_features, feature_test_type, {"type": "exon"}, subfeatures=False,recurse=False):
