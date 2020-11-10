@@ -23,4 +23,7 @@ $fastaOut
 
 For GFF files with a Fasta sequence, will separate the file into a features-only GFF file and Fasta file containing the sequence. Will also remove the ### directive between feature groups from Apollo's output.
 ]]></help>
+  <citations>
+    <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+  </citations>
 </tool>

@@ -57,6 +57,7 @@ EXAMPLE :
     * If you wanted LIMEzero_ORF53 you would select "Square Brackets, [ and ]" and "4" (no quotes)
     * Keep in mind that this scheme is dependent on if you are choosing a different word than 'last', the spacing of data and information is homogenous across the headers in the multifasta. This is not necessarily true.
 ]]></help>
+        <citation type="doi">10.1371/journal.pcbi.1008214</citation>
         <citations>
             <citation type="bibtex">
                 @unpublished{galaxyTools,

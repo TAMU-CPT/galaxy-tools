@@ -98,7 +98,8 @@ It is currently recommended to select either the Gene only or CDS only options f
 
 ]]></help>
 		<citations>
-                        <citation type="bibtex">
+      <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+      <citation type="bibtex">
 			@unpublished{galaxyTools,
 				author = {A. Criscione},
 				title = {CPT Galaxy Tools},
