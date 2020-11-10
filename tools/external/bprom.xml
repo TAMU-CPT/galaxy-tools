@@ -2,7 +2,9 @@
 <tool id="edu.tamu.cpt.bprom" name="BPROM" version="1.0.0" profile="16.04">
 	<description></description>
 	<macros/>
-	<requirements/>
+	<requirements>
+		<requirement type="package">libgcc</requirement>
+	</requirements>
 	<command detect_errors="aggressive">
 export TSS_DATA=$__tool_directory__/bprom_libFiles;
 $__tool_directory__/bprom $inFile $outFile
