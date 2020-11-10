@@ -13,7 +13,7 @@ $__tool_directory__/bprom $inFile $outFile
                 <param label="Fasta Sequence" name="inFile" type="data" format="fasta" />   
 	</inputs>
 	<outputs>
-                <data format="txt" name="outFile" label="Bprom Results" />
+                <data format="txt" name="outFile" label="BPROM Results" />
 	</outputs>
 	<help>
 **What it does**
