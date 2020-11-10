@@ -25,7 +25,7 @@ Runs BPROM analysis on a fasta file.
 			author = {V. Solovyev, A Salamov},
 			title = {Automatic Annotation of Microbial Genomes and Metagenomic Sequences. In Metagenomics and its Applications in Agriculture, Biomedicine and Environmental Studies (Ed. R.W. Li), Nova Science Publishers, p. 61-78 },
 			year = {2011},
-			note = {https://doi.org/10.1101/2020.05.13.094805}
+			
 		}
 		</citation>
 	</citations>
