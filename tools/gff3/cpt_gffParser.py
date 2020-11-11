@@ -444,7 +444,13 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
       else:
         line += ".\t" 
       line += inFeat.type + "\t"
-      line += str(min(loc.start, loc.end) + 1) + "\t" + str(max(loc.start, loc.end)) + "\t"
+      startStr = str(min(loc.start, loc.end) + 1)
+      endStr = str(max(loc.start, loc.end))
+      if startStr[0] == "<":
+        startStr = startStr[1:]
+      if endStr[0] == ">":
+        endStr = endStr[1:]
+      line += startStr + "\t" + endStr + "\t"
       if score:
         line += str(score) + "\t"
       else:
