@@ -169,22 +169,30 @@ def lineAnalysis(line):
     # fields[2]
 
     isNum = True
-    for x in fields[3]:  
-      if not(ord(x) > 47 and ord(x) < 58):
+    uncert = 0
+    for x in range(0, len(fields[3])):  
+      if not(ord(fields[3][x]) > 47 and ord(fields[3][x]) < 58):
+        if x == 0 and fields[3][0] in "<>":
+           uncert = 1
+           continue
         errorMessage += "Feature location start contains non-numeric character.\n"
         isNum = False
         break
     if isNum:
-      startLoc = int(fields[3])
+      startLoc = int(fields[3][uncert:])
     
     isNum = True
+    uncert = 0
     for x in fields[4]:
       if not(ord(x) > 47 and ord(x) < 58):
+        if x == 0 and fields[4][0] in "<>":
+           uncert = 1
+           continue
         errorMessage += "Feature location end contains non-numeric character.\n"
         isNum = False
         break
     if isNum:
-      endLoc = int(fields[4])
+      endLoc = int(fields[4][uncert:])
 
     if endLoc < startLoc:
       errorMessage += "Feature Location end is less than start (GFF  spec requires all features, regardless of strand, to have the lower number as the start).\n"
@@ -436,7 +444,13 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
       else:
         line += ".\t" 
       line += inFeat.type + "\t"
-      line += str(min(loc.start, loc.end) + 1) + "\t" + str(max(loc.start, loc.end)) + "\t"
+      startStr = str(min(loc.start, loc.end) + 1)
+      endStr = str(max(loc.start, loc.end))
+      if startStr[0] == "<":
+        startStr = startStr[1:]
+      if endStr[0] == ">":
+        endStr = endStr[1:]
+      line += startStr + "\t" + endStr + "\t"
       if score:
         line += str(score) + "\t"
       else:
