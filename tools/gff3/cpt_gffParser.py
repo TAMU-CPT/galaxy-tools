@@ -171,10 +171,10 @@ def lineAnalysis(line):
     isNum = True
     uncert = 0
     for x in range(0, len(fields[3])):  
+      if x == 0 and fields[3][0] in "<>":
+        uncert = 1
+        continue
       if not(ord(fields[3][x]) > 47 and ord(fields[3][x]) < 58):
-        if x == 0 and fields[3][0] in "<>":
-           uncert = 1
-           continue
         errorMessage += "Feature location start contains non-numeric character.\n"
         isNum = False
         break
@@ -183,11 +183,11 @@ def lineAnalysis(line):
     
     isNum = True
     uncert = 0
-    for x in fields[4]:
+    for x in range(0, len(fields[4])):
+      if x == 0 and fields[4][0] in "<>":
+        uncert = 1
+        continue
       if not(ord(x) > 47 and ord(x) < 58):
-        if x == 0 and fields[4][0] in "<>":
-           uncert = 1
-           continue
         errorMessage += "Feature location end contains non-numeric character.\n"
         isNum = False
         break
