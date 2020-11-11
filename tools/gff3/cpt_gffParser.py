@@ -187,7 +187,7 @@ def lineAnalysis(line):
       if x == 0 and fields[4][0] in "<>":
         uncert = 1
         continue
-      if not(ord(x) > 47 and ord(x) < 58):
+      if not(ord(fields[4][x]) > 47 and ord(fields[4][x]) < 58):
         errorMessage += "Feature location end contains non-numeric character.\n"
         isNum = False
         break
