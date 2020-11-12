@@ -33,7 +33,7 @@ TICK_LENGTH = 0.2 * MONTAGE_BORDER
 TYPEFONT = "Ubuntu-Mono"
 
 CREDITS = (
-    "CPT's MISTv3\n"
+    "CPTs MISTv3\n"
     "GPLv3 (C) 2015 Helena Rasche <esr\@tamu.edu>\n"
     "Dot plots by Gepard Dot Plotter by Dr. Jan Krumsiek"
 )
