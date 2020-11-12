@@ -264,7 +264,7 @@ class Subplot(object):
             ]
         )
 
-        if est_pixels(self.i.description, 10) < original_dims[1]:
+        if est_pixels(self.i.description, 10) < original_dims[1] and secondary_head != "":
             cmd += FONT_10pt + [
                 # Side label (i/row)
                 "-annotate",
@@ -338,7 +338,7 @@ class Subplot(object):
             ]
         )
 
-        if est_pixels(self.j.description, 10) < original_dims[0]:
+        if est_pixels(self.j.description, 10) < original_dims[0] and secondary_head != "":
             cmd += FONT_10pt + [
                 "-annotate",
                 "+%s+%s"
