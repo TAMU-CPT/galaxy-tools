@@ -9,7 +9,7 @@ import math
 from string import Template
 from Bio import SeqIO
 import subprocess
-
+import sys
 import logging
 
 FORMAT = "[%(levelname)s:%(filename)s:%(lineno)s:%(funcName)s()] %(message)s"
@@ -30,11 +30,11 @@ IMAGE_BORDER_COLOUR = "purple"
 LABEL_COLOUR = "grey22"
 TICK_LENGTH = 0.2 * MONTAGE_BORDER
 
-TYPEFONT = "Ubuntu-Mono"
+TYPEFONT = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 CREDITS = (
-    "CPTs MISTv3\n"
-    "GPLv3 (C) 2015 Helena Rasche <esr\@tamu.edu>\n"
+    "CPTs MISTv3\\n"
+    "GPLv3 (C) 2015 Helena Rasche <esr\@tamu.edu>\\n"
     "Dot plots by Gepard Dot Plotter by Dr. Jan Krumsiek"
 )
 
@@ -138,7 +138,8 @@ class Subplot(object):
             "--silent",
         ]
         log.debug(subprocess.list2cmdline(cmd))
-
+        #log.info(subprocess.check_output("convert -list type"))
+        #exit(2)
         failure_count = 0
         while True:
             try:
@@ -257,6 +258,7 @@ class Subplot(object):
                     + MONTAGE_BORDER
                     + 2 * IMAGE_BORDER
                     + char_height(30 + 20)
+                    + 10
                     # 30 = primary header
                     # 20 = tick labels
                 ),
@@ -334,7 +336,7 @@ class Subplot(object):
                 # Credits
                 "-annotate",
                 "+%s+%s" % (2, MONTAGE_BORDER + original_dims[1] + 2 * IMAGE_BORDER),
-                "\n" + CREDITS,
+                "\\n" + CREDITS,
             ]
         )
 
@@ -377,8 +379,20 @@ class Subplot(object):
             cmd += ["-annotate", "+%s+%s" % (x + 5, y), self.label_formatter(z)]
 
         cmd.append(outfile)
-        log.debug(subprocess.list2cmdline(cmd))
-        subprocess.check_output(cmd)
+        #tmpFile = open(outfile, "w")
+        #tmpFile.close()
+        log.info(subprocess.check_output( ["cp", infile, outfile] ))
+        log.info(subprocess.list2cmdline(cmd))
+        log.info(subprocess.check_output( "ls" ))
+        log.info(self.tmpdir)
+        log.info(subprocess.check_output( ["ls", self.tmpdir]))
+        log.info(outfile[2:])
+        log.info("Above was ls\n")
+        try:
+            subprocess.check_output(cmd)# + [" 2>&1"])
+        except:
+            log.info("Excepted")
+
 
 
 class Misty(object):
@@ -549,6 +563,7 @@ class Misty(object):
         MONTAGE_BORDER_COORD = "%sx%s" % (MONTAGE_BORDER, MONTAGE_BORDER)
 
         m0 = os.path.join(self.tmpdir, "m0.png")
+#        log.info(subprocess.check_output( ["cp", image_list[0], m0]  ))
         cmd = ["montage"] + image_list
         cmd += [
             "-tile",
@@ -565,8 +580,10 @@ class Misty(object):
         ]
 
         log.debug(" ".join(cmd))
-        subprocess.check_call(cmd)
-
+        try:
+          subprocess.check_call(cmd)
+        except:
+          log.debug("Excepted, 2")
         # Add grey borders
         montage_path = os.path.join(self.tmpdir, "montage.png")
         cmd = [
@@ -584,7 +601,10 @@ class Misty(object):
         ]
 
         log.debug(" ".join(cmd))
-        subprocess.check_call(cmd)
+        try:
+          subprocess.check_call(cmd)
+        except:
+          log.debug("Excepted, 2")
         os.unlink(m0)
         return montage_path
 
@@ -670,7 +690,11 @@ class Misty(object):
             output_path,
         ]
         log.debug(" ".join(cmd))
-        subprocess.check_output(cmd)
+        try:
+            subprocess.check_call(cmd)
+        except:
+            log.debug("Excepted, 3")
+        #subprocess.check_output(cmd)
         return output_path
 
     def run(self):
