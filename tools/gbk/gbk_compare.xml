@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gbk.gbk_compare" name="Compare Genbanks" version="20.1.0">
+  <description>, compare the identity of two genbank files</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/gbk_compare.py
+$annotation_1
+$annotation_2
+--match_identity_threshold $match_identity_threshold
+--allowed_skipped_genes $allowed_skipped_genes
+> $repOut]]></command>
+  <inputs>
+    <param label="First annotated genome (Genbank)" name="annotation_1" type="data" format="genbank"/>
+    <param label="Second annotated genome (Genbank)" name="annotation_2" type="data" format="genbank"/>
+    <param label="Two genes must have at least this identity to be considerd the same (0.00 to 1.00)" name="match_identity_threshold" type="float" value="0.70" min="0.00" max="1.00"/>
+    <param label="This many missing genes are allowed when aligning the annotations" name="allowed_skipped_genes" type="integer" value="10"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="repOut" label="Comparison Report of Two Genomes"/>
+  </outputs>
+  <tests>
+      
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Compares the features of two Genbank files.
+]]></help>
+</tool>
