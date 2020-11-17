@@ -90,6 +90,7 @@
 		<tool file="cpt2/galaxy-tools/tools/one-off/starts-sds-scrubber.xml" label="fasta"/>
 		<tool file="cpt2/galaxy-tools/tools/util/compare_codons.xml" label="gff3" />
                 <tool file="cpt2/galaxy-tools/tools/tRNAscan-SE-2.0/trnaScan.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/gbk/gbk_compare.xml" label="gbk" />
 	</section>
 	<section id="3e66d481-56c7-471f-8de2-7d496977c5eb" name="CPT: Genomic Data Editing">
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_concat.xml"/>
