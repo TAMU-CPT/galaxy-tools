@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<tool id="FindSpanin" name="FindSpanin" version="0.0.1">
+  <description>does what it says on the tin</description>
+  <version_command>perl bin/cpt_getspanin.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_getspanin.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--strand "${strand}"
+
+--isp_min "${isp_min}"
+
+--isp_nterm "${isp_nterm}"
+
+--osp_min "${osp_min}"
+
+--osp_signal "${osp_signal}"
+
+#if $cys_failover:
+--cys_failover
+#end if
+
+#if $use_lipop:
+--use_lipop
+#end if
+
+--max_isp_osp_distance "${max_isp_osp_distance}"
+
+--spanin_report "${spanin_report}"
+
+--spanin_report_files_path "${spanin_report.files_path}"
+
+--spanin_report_format "${spanin_report_format}"
+
+--spanin_report_id "${spanin_report.id}"
+
+--putative_isps "${putative_isps}"
+
+--putative_isps_files_path "${putative_isps.files_path}"
+
+--putative_isps_format "${putative_isps_format}"
+
+--putative_isps_id "${putative_isps.id}"
+
+--putative_osps "${putative_osps}"
+
+--putative_osps_files_path "${putative_osps.files_path}"
+
+--putative_osps_format "${putative_osps_format}"
+
+--putative_osps_id "${putative_osps.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input genome sequence as fasta file" optional="False" label="file" type="data"/>
+    <param name="strand" help="Which strand to search" optional="False" label="strand" type="select">
+      <option value="a">Antisense</option>
+      <option value="b">Both</option>
+      <option value="s">Sense</option>
+    </param>
+    <param value="60" name="isp_min" help="smallest ORF length for i-spanin (in codons)" optional="False" label="isp_min" type="integer"/>
+    <param value="10" name="isp_nterm" help="distance to first AA of tmd of ispanin (in codons)" optional="False" label="isp_nterm" type="integer"/>
+    <param value="30" name="osp_min" help="smallest ORF length for o-spanin (in codons)" optional="False" label="osp_min" type="integer"/>
+    <param value="30" name="osp_signal" help="distance from start to first AA of lipobox (in codons)" optional="False" label="osp_signal" type="integer"/>
+    <param name="cys_failover" falsevalue="False" optional="True" truevalue="True" checked="" help="failover to anything with a cys residue" type="boolean" label="cys_failover"/>
+    <param name="use_lipop" falsevalue="False" optional="True" truevalue="True" checked="" help="Use LipoP for additional information" label="use_lipop" type="boolean"/>
+    <param value="10" name="max_isp_osp_distance" help="Maximum distance between end of i-spanin, and start of o-spanin" optional="False" label="max_isp_osp_distance" type="integer"/>
+    <param name="spanin_report_format" help="Output HTML File" optional="False" label="Format of spanin_report" type="select">
+      <option value="HTML" selected="True">HTML</option>
+    </param>
+    <param name="putative_isps_format" help="Putative ISPs " optional="False" label="Format of putative_isps" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+    <param name="putative_osps_format" help="Putative OSPs " optional="False" label="Format of putative_osps" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="spanin_report" format="HTML">
+      <change_format>
+        <when input="spanin_report_format" value="HTML" format="html"/>
+      </change_format>
+    </data>
+    <data name="putative_isps" format="Fasta">
+      <change_format>
+        <when input="putative_isps_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+    <data name="putative_osps" format="Fasta">
+      <change_format>
+        <when input="putative_osps_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+GetSpanin - attempt to identify spanins in a whole genome sequence
+
+DESCRIPTION
+===========
+
+According to Dr. Young:
+
+::
+
+    &gt; The new FindSpanin program should do this:
+    &gt; check all such orfs  for lipobox matching a table of possible Lipoboxes,
+    &gt; which can be supplied by Rohit/Manoj and should be settable.
+    &gt;
+    &gt; Also, if all else fails, it simply reports all orfs that have Cys residues
+    &gt; and meet the two criteria.  This is to cover our asses if a new lipobox is
+    &gt; present.  Has happened already.
+    &gt;
+    &gt; Then off it goes.
+    &gt;
+    &gt; Output would be hits in BOTH lipo search...which should include all possible
+    &gt; lipoproteins, including osp and usp candidates, and all possible isp candidates.
+    &gt;
+    &gt; IF there are isp-osp adjacencies or overlappencies or embeddencies, then the
+    &gt; program should cry hallelujah and say Gotcha.
+
+</help>
+  <tests/>
+</tool>

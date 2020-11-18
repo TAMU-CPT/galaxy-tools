@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="package_libhdf5_1_18_13" version="1.18.13">
+    <install version="1.0">
+      <actions>
+        <action type="download_by_url">http://www.hdfgroup.org/ftp/HDF5/current/bin/linux/hdf5-1.8.13-linux-shared.tar.gz</action>
+        <action type="move_directory_files">
+          <source_directory>bin/</source_directory>
+          <destination_directory>$INSTALL_DIR/bin/</destination_directory>
+        </action>
+        <action type="move_directory_files">
+          <source_directory>include/</source_directory>
+          <destination_directory>$INSTALL_DIR/include/</destination_directory>
+        </action>
+        <action type="move_directory_files">
+          <source_directory>lib/</source_directory>
+          <destination_directory>$INSTALL_DIR/lib/</destination_directory>
+        </action>
+        <action type="move_directory_files">
+          <source_directory>share/</source_directory>
+          <destination_directory>$INSTALL_DIR/share/</destination_directory>
+        </action>
+        <action type="set_environment">
+          <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin/</environment_variable>
+          <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$INSTALL_DIR/lib/</environment_variable>
+          <environment_variable action="prepend_to" name="LIBRARY_PATH">$INSTALL_DIR/lib/</environment_variable>
+          <environment_variable action="prepend_to" name="CPLUS_INCLUDE_PATH">$INSTALL_DIR/include/</environment_variable>
+          <environment_variable action="prepend_to" name="C_INCLUDE_PATH">$INSTALL_DIR/include/</environment_variable>
+          <environment_variable action="set_to" name="HDF5_LIB_DIR">$INSTALL_DIR/lib/</environment_variable>
+          <environment_variable action="set_to" name="HDF5_SHARE_DIR">$INSTALL_DIR/share/</environment_variable>
+        </action>
+      </actions>
+    </install>
+    <readme>HDF5 Library from the HDF group's website
+</readme>
+  </package>
+</tool_dependency>

@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<tool id="tRNAscanSE" name="tRNAscanSE" version="1.94">
+  <description>adds tRNAs to your GBK files</description>
+  <version_command>perl cpt_trnascan.pl --version</version_command>
+  <stdio>
+    <regex match="Exception" source="stderr" level="fatal" description="Tool exception"/>
+  </stdio>
+  <command interpreter="perl">cpt_trnascan.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+#if $disable_pseudo:
+--disable_pseudo
+#end if
+
+#if $cove_cutoff is not "None":
+--cove_cutoff "${cove_cutoff}"
+#end if
+
+#if $intermediate_cutoff is not "None":
+--intermediate_cutoff "${intermediate_cutoff}"
+#end if
+
+--eutrna "${eutrna}"
+
+--genetic_code "${genetic_code}"
+
+--search_mode "${search_mode}"
+
+--source "${source}"
+
+--genbank "${genbank}"
+
+--genbank_files_path "${genbank.files_path}"
+
+--genbank_format "${genbank_format}"
+
+--genbank_id "${genbank.id}"
+
+--report "${report}"
+
+--report_files_path "${report.files_path}"
+
+--report_format "${report_format}"
+
+--report_id "${report.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <param name="disable_pseudo" falsevalue="False" optional="True" truevalue="True" checked="" help="Disable pseudo gene checking" type="boolean" label="disable_pseudo"/>
+    <param name="cove_cutoff" help="Cove score cutoff" optional="True" label="cove_cutoff" type="float"/>
+    <param name="intermediate_cutoff" help="Intermediate score cutoff" optional="True" label="intermediate_cutoff" type="float"/>
+    <param value="default" name="eutrna" help="EufindtRNA search parameters" optional="False" label="eutrna" type="select">
+      <option value="strict">Strict (Pavesi params)</option>
+      <option value="deafult">Default</option>
+      <option value="relaxed">Relaxed</option>
+    </param>
+    <param value="universal" name="genetic_code" help="Genetic Code for tRNA Isotype Prediction" optional="False" label="genetic_code" type="select">
+      <option value="universal" selected="True">Universal</option>
+      <option value="ciliate">Ciliate Nuclear</option>
+      <option value="vertebrate">Vertebrate Mito</option>
+      <option value="echinoderm">Echinoderm Mito</option>
+      <option value="mold">Mold and Protozoan Mito</option>
+      <option value="invertebrate">Invertebrate Mito</option>
+      <option value="yeast">Yeast Mito</option>
+    </param>
+    <param value="default" name="search_mode" help="Search Mode" optional="False" label="search_mode" type="select">
+      <option value="trna_only">tRNAscan only</option>
+      <option value="eufind_cove">EufindtRNA then Cove</option>
+      <option value="eufind_only">EufindtRNA only</option>
+      <option value="trna_cove">tRNAscan then Cove</option>
+      <option value="default" selected="True">Default</option>
+      <option value="cove">Cove only (very slow)</option>
+    </param>
+    <param value="bact" name="source" help="Source" optional="False" label="source" type="select">
+      <option value="mito_chloro">Mito and Chloroplast</option>
+      <option value="euk">Eukaryotic</option>
+      <option value="arch">Archaeal</option>
+      <option value="bact" selected="True">Bacterial</option>
+      <option value="mixed">Mixed (general tRNA model)</option>
+    </param>
+    <param name="genbank_format" help="Genbank file with annotated tRNAs" optional="False" label="Format of genbank" type="select">
+      <option value="Genbank" selected="True">Genbank</option>
+    </param>
+    <param name="report_format" help="tRNAscanSE report" optional="False" label="Format of report" type="select">
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="ODS">ODS</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="YAML">YAML</option>
+      <option value="XLSX">XLSX</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="genbank" format="Genbank">
+      <change_format>
+        <when input="genbank_format" value="Genbank" format="txt"/>
+      </change_format>
+    </data>
+    <data name="report" format="CSV">
+      <change_format>
+        <when input="report_format" value="TSV" format="tabular"/>
+        <when input="report_format" value="TSV_U" format="tabular"/>
+        <when input="report_format" value="CSV" format="tabular"/>
+        <when input="report_format" value="CSV_U" format="tabular"/>
+        <when input="report_format" value="XLS" format="data"/>
+        <when input="report_format" value="ODS" format="data"/>
+        <when input="report_format" value="Dumper" format="txt"/>
+        <when input="report_format" value="JSON" format="txt"/>
+        <when input="report_format" value="YAML" format="txt"/>
+        <when input="report_format" value="XLSX" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests/>
+</tool>

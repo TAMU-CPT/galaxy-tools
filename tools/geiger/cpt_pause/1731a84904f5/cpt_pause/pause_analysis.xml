@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<tool id="PAUSE_Base" name="PAUSE:Base" version="0.0.1">
+  <description>Pile-up Analysis Using Starts &amp; Ends. Reads Illumina/454 Data and attempts to determine possible genome ends based on that data.</description>
+  <version_command>perl bin/pause_analysis.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/pause_analysis.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--bam_sense "${bam_sense}"
+
+--bam_antisense "${bam_antisense}"
+
+#if $bai_sense and $bai_sense is not "None":
+--bai_sense "${bai_sense}"
+#end if
+
+#if $bai_antisense and $bai_antisense is not "None":
+--bai_antisense "${bai_antisense}"
+#end if
+
+--genome "${genome}"
+
+#if $starts_threshold and $starts_threshold is not "None":
+--starts_threshold "${starts_threshold}"
+#end if
+
+--pause "${pause}"
+--pause_files_path "${pause.files_path}"
+--pause_format "${pause_format}"
+--pause_id "${pause.id}"
+
+--pause_info "${pause_info}"
+--pause_info_files_path "${pause_info.files_path}"
+--pause_info_format "${pause_info_format}"
+--pause_info_id "${pause_info.id}"
+
+</command>
+  <inputs>
+    <param name="bam_sense" help="BAM aligned reads on Sense Strand" optional="False" label="bam_sense" type="data"/>
+    <param name="bam_antisense" help="BAM aligned reads on Antisense Strand" optional="False" label="bam_antisense" type="data"/>
+    <param name="bai_sense" help="BAI - bam index for Sense Strand" optional="True" label="bai_sense" type="data"/>
+    <param name="bai_antisense" help="BAI - bam index for Antisense Strand" optional="True" label="bai_antisense" type="data"/>
+    <param name="genome" help="FASTA Genome" optional="False" label="genome" type="data"/>
+    <param min="1" value="10" name="starts_threshold" help="SNR threshold in CWT for starts" optional="True" label="starts_threshold" type="integer"/>
+    <param name="pause_format" help="PAUSE Results" optional="False" label="Format of pause" type="select">
+      <option value="HTML" selected="True">HTML</option>
+    </param>
+    <param name="pause_info_format" help="Extra PAUSE Information" optional="False" label="Format of pause_info" type="select">
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="pause" format="HTML">
+      <change_format>
+        <when input="pause_format" value="HTML" format="html"/>
+      </change_format>
+    </data>
+    <data name="pause_info" format="CSV">
+      <change_format>
+        <when input="pause_info_format" value="CSV" format="tabular"/>
+        <when input="pause_info_format" value="CSV_U" format="tabular"/>
+        <when input="pause_info_format" value="Dumper" format="txt"/>
+        <when input="pause_info_format" value="JSON" format="txt"/>
+        <when input="pause_info_format" value="ODS" format="data"/>
+        <when input="pause_info_format" value="TSV" format="tabular"/>
+        <when input="pause_info_format" value="TSV_U" format="tabular"/>
+        <when input="pause_info_format" value="XLS" format="data"/>
+        <when input="pause_info_format" value="XLSX" format="data"/>
+        <when input="pause_info_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+PAUSE:Analysis is a tool to run peak finding on BAM alignments. Uses
+genome for sequence information surrounding peaks.
+
+This tool takes a mapped alignment of sequencing data and uses that data
+for CWT (Continuous Wavelet Transform) analysis in R in order to
+identify peaks.
+
+PARAMETERS
+==========
+
+-  ``bam_sense`` bam file of reads mapping to sense strand
+-  ``bai_sense`` bam index for ``bam_sense``
+-  ``bam_antisense`` bam file of reads mapping to antisense strand
+-  ``bai_antisense`` bam index for ``bam_antisense``
+-  ``genome`` fasta sequence of the genome
+-  ``starts_threshold`` this parameter is the signal to noise ratio for
+   the peak detection algorithm. 10 seems to be a good value for phages,
+   but try adjusting downwards if you are finding too few peaks. Once
+   you've settled on a good value and found reasonable looking peaks,
+   confer with the PAUSE:Base plot to identify your end type.
+
+KNOWN BUGS
+==========
+
+-  Currently the position used in the header label is incorrect. Use the
+   number as seen in the histogram for accurate start/end position
+   information.
+-  Information is incorrect around start/end of the genome, as reads
+   that are off either end do not map correctly. We will probably
+   eventually add "circular genome" assumptions which will duplicate a
+   portion of the genome on each for better mapping results.
+
+</help>
+  <tests/>
+</tool>

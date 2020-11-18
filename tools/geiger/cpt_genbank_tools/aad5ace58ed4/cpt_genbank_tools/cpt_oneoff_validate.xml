@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<tool id="OneOff.Rohit.Spanins" name="Spanin validator" version="1.94">
+  <description>Validates spanins from Rohit's Excel database</description>
+  <version_command>perl bin/cpt_oneoff_validate.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_oneoff_validate.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--rz "${rz}"
+
+--rz1 "${rz1}"
+
+#if $has_header:
+--has_header
+#end if
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file Spanin CSV Database" optional="False" label="file" type="data"/>
+    <param value="1" name="rz" help="Column of the Rz sequence (numbers start at 1)" optional="False" label="rz" type="integer"/>
+    <param value="2" name="rz1" help="Column of the Rz1 sequence (numbers start at 1)" optional="False" label="rz1" type="integer"/>
+    <param name="has_header" falsevalue="False" optional="True" truevalue="True" checked="" help="Should we ignore the first line" type="boolean" label="has_header"/>
+    <param name="results_format" help="Report of Valid/Invalid spanins" optional="False" label="Format of results" type="select">
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="results" format="CSV">
+      <change_format>
+        <when input="results_format" value="CSV" format="tabular"/>
+        <when input="results_format" value="CSV_U" format="tabular"/>
+        <when input="results_format" value="Dumper" format="txt"/>
+        <when input="results_format" value="JSON" format="txt"/>
+        <when input="results_format" value="ODS" format="data"/>
+        <when input="results_format" value="TSV" format="tabular"/>
+        <when input="results_format" value="TSV_U" format="tabular"/>
+        <when input="results_format" value="XLS" format="data"/>
+        <when input="results_format" value="XLSX" format="data"/>
+        <when input="results_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests/>
+</tool>

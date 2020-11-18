@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<tool id="GfftoGenbank" name="GFF3 + Fasta to Genbank" version="1.94">
+  <description>No application description provided</description>
+  <version_command>perl bin/cpt_gfffasta_genbank.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_gfffasta_genbank.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--fasta "${fasta}"
+
+--gff3 "${gff3}"
+
+--genbank "${genbank}"
+
+--genbank_files_path "${genbank.files_path}"
+
+--genbank_format "${genbank_format}"
+
+--genbank_id "${genbank.id}"
+
+</command>
+  <inputs>
+    <param format="fasta" name="fasta" help="Input Fasta file" optional="False" label="fasta" type="data"/>
+    <param format="gff3" name="gff3" help="Input GFF3 file" optional="False" label="gff3" type="data"/>
+    <param name="genbank_format" help="Merged Genbank File" optional="False" label="Format of genbank" type="select">
+      <option value="Genbank" selected="True">Genbank</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="genbank" format="Genbank">
+      <change_format>
+        <when input="genbank_format" value="Genbank" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+Given a GFF3 set of annotations and a fasta file, this tool will create
+a single genbank file out of them
+</help>
+  <tests/>
+</tool>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<tool id="tRNA" name="tRNA Usage" version="1.94">
+  <description>attempts to determine how many tRNAs are in the genome for a given amino acid</description>
+  <version_command>perl bin/cpt_trna.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_trna.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#for $item in $repeat_file:
+--file "${item.file}"
+#end for
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+</command>
+  <inputs>
+    <repeat name="repeat_file" title="File">
+      <param name="file" help="Input Genbank file" optional="False" label="file" type="data"/>
+    </repeat>
+    <param name="results_format" help="Analysis results" optional="False" label="Format of results" type="select">
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="results" format="CSV">
+      <change_format>
+        <when input="results_format" value="CSV" format="tabular"/>
+        <when input="results_format" value="CSV_U" format="tabular"/>
+        <when input="results_format" value="Dumper" format="txt"/>
+        <when input="results_format" value="JSON" format="txt"/>
+        <when input="results_format" value="ODS" format="data"/>
+        <when input="results_format" value="TSV" format="tabular"/>
+        <when input="results_format" value="TSV_U" format="tabular"/>
+        <when input="results_format" value="XLS" format="data"/>
+        <when input="results_format" value="XLSX" format="data"/>
+        <when input="results_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+tRNA usage
+
+DESCRIPTION
+===========
+
+Attempts to parse tRNAs listed in the genome and obtain number of codons
+for each amino acid.
+</help>
+  <tests/>
+</tool>

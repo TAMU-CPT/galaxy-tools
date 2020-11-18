@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<tool id="PPEPP" name="PPEPP" version="0.0.1">
+  <description>Paradigm Phage Early Promoter Project. Finds promoters that ought to be expressed by unmodified host RNA polymerase, utilising HMMR3 databases curated from T3, T5, T7, P1, P2, P4, and 186</description>
+  <version_command>perl bin/cpt_ppepp.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_ppepp.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--lookahead_dist "${lookahead_dist}"
+
+#if $evalue and $evalue is not "None":
+--evalue "${evalue}"
+#end if
+
+#if $inc and $inc is not "None":
+--inc "${inc}"
+#end if
+
+#if $f1 and $f1 is not "None":
+--f1 "${f1}"
+#end if
+
+#if $f2 and $f2 is not "None":
+--f2 "${f2}"
+#end if
+
+#if $f3 and $f3 is not "None":
+--f3 "${f3}"
+#end if
+
+#if $domz and $domz is not "None":
+--domz "${domz}"
+#end if
+
+--report "${report}"
+
+--report_files_path "${report.files_path}"
+
+--report_format "${report_format}"
+
+--report_id "${report.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input Genbank file" optional="False" label="file" type="data"/>
+    <param value="30" max="100" name="lookahead_dist" help="Lookahead distance" optional="False" label="lookahead_dist" type="float"/>
+    <param value="5" name="evalue" help="report sequences &lt;= this E-value threshold in output" optional="True" label="evalue" type="float"/>
+    <param value="0.05" name="inc" help="consider sequences &lt;= this E-value threshold as significant" optional="True" label="inc" type="float"/>
+    <param value="0.1" name="f1" help="Stage 1 (MSV) threshold: promote hits w/ P &lt;= F1" optional="True" label="f1" type="float"/>
+    <param value="0.05" name="f2" help="Stage 1 (Vit) threshold: promote hits w/ P &lt;= F2" optional="True" label="f2" type="float"/>
+    <param value="0.05" name="f3" help="Stage 1 (Fwd) threshold: promote hits w/ P &lt;= F3" optional="True" label="f3" type="float"/>
+    <param value="10" name="domz" help="set # of significant seqs, for domain E-value calculation" optional="True" label="domz" type="float"/>
+    <param name="report_format" help="PPEPP Report" optional="False" label="Format of report" type="select">
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="report" format="CSV">
+      <change_format>
+        <when input="report_format" value="CSV" format="tabular"/>
+        <when input="report_format" value="CSV_U" format="tabular"/>
+        <when input="report_format" value="Dumper" format="txt"/>
+        <when input="report_format" value="JSON" format="txt"/>
+        <when input="report_format" value="ODS" format="data"/>
+        <when input="report_format" value="TSV" format="tabular"/>
+        <when input="report_format" value="TSV_U" format="tabular"/>
+        <when input="report_format" value="XLS" format="data"/>
+        <when input="report_format" value="XLSX" format="data"/>
+        <when input="report_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests>
+    <test>
+      <param name="file" value="t/data/lambda.gbk"/>
+      <output name="report" file="t/data/ppepp.csv"/>
+    </test>
+  </tests>
+</tool>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<tool id="PHAnTASM.ClusterWrapper" name="Hierarchical Clustering" version="1.94">
+  <description>runs R stat module's hclust algorithm</description>
+  <version_command>perl bin/phantasm_cluster_wrapper.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/phantasm_cluster_wrapper.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--cluster_dendrogram "${cluster_dendrogram}"
+
+--cluster_dendrogram_files_path "${cluster_dendrogram.files_path}"
+
+--cluster_dendrogram_format "${cluster_dendrogram_format}"
+
+--cluster_dendrogram_id "${cluster_dendrogram.id}"
+
+--newick_tree "${newick_tree}"
+
+--newick_tree_files_path "${newick_tree.files_path}"
+
+--newick_tree_format "${newick_tree_format}"
+
+--newick_tree_id "${newick_tree.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <param name="cluster_dendrogram_format" help="hclust dendrogram of clusters" optional="False" label="Format of cluster_dendrogram" type="select">
+      <option value="Dummy" selected="True">Dummy</option>
+    </param>
+    <param name="newick_tree_format" help="Newick Tree from Hierarchical Clustering" optional="False" label="Format of newick_tree" type="select">
+      <option value="Dummy" selected="True">Dummy</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="cluster_dendrogram" format="Dummy">
+      <change_format>
+        <when input="cluster_dendrogram_format" value="Dummy" format="data"/>
+      </change_format>
+    </data>
+    <data name="newick_tree" format="Dummy">
+      <change_format>
+        <when input="newick_tree_format" value="Dummy" format="data"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+PHAnTASM Genomic Hierarchical Clustering
+
+DESCRIPTION
+===========
+
+This tool accepts the output of the PHAnTASM Comparison Map generator in
+order to build and plot a dendrogram from the results. This tool is a
+thin wrapper around the ``stat`` package in R's hclust method.
+</help>
+  <tests/>
+</tool>

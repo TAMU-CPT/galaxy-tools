@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<tool id="ColumnarDataTransformation" name="Columnar Data Transformation" version="1.94.2">
+  <description>apply mathetmatical transformations to datasets</description>
+  <version_command>perl bin/phantasm_data_transformation.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/phantasm_data_transformation.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--column "${column}"
+
+#for $item in $repeat_data_transform:
+--data_transform "${item.data_transform}"
+#end for
+
+--transformed "${transformed}"
+
+--transformed_files_path "${transformed.files_path}"
+
+--transformed_format "${transformed_format}"
+
+--transformed_id "${transformed.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input Tabular Data" optional="False" label="file" type="data"/>
+    <param min="1" value="2" name="column" help="Selected column from dataset to apply transformation to, where 1 is the first column" optional="False" label="column" type="integer"/>
+    <repeat name="repeat_data_transform" title="Data Transform">
+      <param name="data_transform" help="Transformation to apply to this dataset. Transformations will be applied in the order they're received. For instance, if you apply the '-x' transformation followed by 'log(x)' transformation, it will evaluate to 'log(-x)'" optional="False" label="data_transform" type="select">
+        <option value="abs">abs</option>
+        <option value="inv">1/x</option>
+        <option value="log">log(x)</option>
+        <option value="neg">-x</option>
+        <option value="none">x</option>
+      </param>
+    </repeat>
+    <param name="transformed_format" help="Transformed Data" optional="False" label="Format of transformed" type="select">
+      <option value="CSV">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U" selected="True">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="transformed" format="TSV_U">
+      <change_format>
+        <when input="transformed_format" value="CSV" format="tabular"/>
+        <when input="transformed_format" value="CSV_U" format="tabular"/>
+        <when input="transformed_format" value="Dumper" format="txt"/>
+        <when input="transformed_format" value="JSON" format="txt"/>
+        <when input="transformed_format" value="ODS" format="data"/>
+        <when input="transformed_format" value="TSV" format="tabular"/>
+        <when input="transformed_format" value="TSV_U" format="tabular"/>
+        <when input="transformed_format" value="XLS" format="data"/>
+        <when input="transformed_format" value="XLSX" format="data"/>
+        <when input="transformed_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+PHAnTASM Data Transformation tool will apply simple mathematical
+transforms to your data. Additionally, this tool allows for chaining
+transforms. They will be applied sequentially, in the order that they
+are specified.
+</help>
+  <tests/>
+</tool>

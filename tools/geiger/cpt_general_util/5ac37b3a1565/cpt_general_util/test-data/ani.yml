@@ -1,0 +1,13 @@
+---
+PercentageConservedDNA:
+  data:
+  - - Karma
+    - 100
+    - 100
+  - - Karma0
+    - 100
+    - 100
+  header:
+  - ''
+  - Karma
+  - Karma0

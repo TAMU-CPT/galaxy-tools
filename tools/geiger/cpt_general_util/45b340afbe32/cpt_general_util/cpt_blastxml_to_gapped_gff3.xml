@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<tool id="BlastXMLtoGFF3" name="BlastXML to GFF3 Gapped Alignment" version="1.94">
+  <description>converts blast XML data to gapped alignment</description>
+  <version_command>perl bin/cpt_blastxml_to_gapped_gff3.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_blastxml_to_gapped_gff3.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#if $file and $file is not "None":
+--file "${file}"
+#end if
+
+#if $strict_m:
+--strict_m
+#end if
+
+--output "${output}"
+
+--output_files_path "${output.files_path}"
+
+--output_format "${output_format}"
+
+--output_id "${output.id}"
+
+</command>
+  <inputs>
+    <param format="blastxml" name="file" help="Input file" optional="True" label="file" type="data"/>
+    <param name="strict_m" falsevalue="False" optional="True" truevalue="True" checked="" help="One CIGAR spec specificies that Matches AND Mismatches are both represented as M. Another spec allows for = and X to disambiguate. Depending on your downstream pipeline, choose to use =/X or not." type="boolean" label="strict_m"/>
+    <param name="output_format" help="Output GFF3 Gapped Alignment" optional="False" label="Format of output" type="select">
+      <option value="GFF3" selected="True">GFF3</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="output" format="GFF3">
+      <change_format>
+        <when input="output_format" value="GFF3" format="interval"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+BlastXML files, when transformed to GFF3, do not normally show gaps in
+the blast hits. This tool aims to fill that "gap".
+
+For an input BlastXML file, this tool will produce a GFF3 file
+containing all of the relevant information: start, stop, score, and the
+GAP as a CIGAR string.
+
+`One CIGAR Spec &lt;http://www.sequenceontology.org/gff3.shtml&gt;`__ does not
+list X and = for mismatches and matches, respsectively. However, `Other
+CIGAR Specs &lt;http://samtools.github.io/hts-specs/SAMv1.pdf&gt;`__ do allow
+for those characters. Given that I cannot anticipate which characters
+your downstream analysis methods will support, this tool provides the
+option to use just M (``strict_m`` enabled), or to use both, as is the
+default.
+</help>
+  <tests>
+    <test>
+      <param name="file" value="test-data/inputs/ex.blastxml"/>
+      <param name="output" value="test-data/outputs/blast2gff.gff3"/>
+    </test>
+  </tests>
+</tool>

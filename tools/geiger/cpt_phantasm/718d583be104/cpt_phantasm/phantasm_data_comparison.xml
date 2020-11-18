@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<tool id="ColumnarDataComparison" name="Columnar Data Comparison" version="1.94.1">
+  <description>generates a comparison map of two datasets</description>
+  <version_command>perl bin/phantasm_data_comparison.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/phantasm_data_comparison.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file_a "${file_a}"
+
+--file_b "${file_b}"
+
+#if $id_col_a and $id_col_a is not "None":
+--id_col_a "${id_col_a}"
+#end if
+
+#if $id_col_b and $id_col_b is not "None":
+--id_col_b "${id_col_b}"
+#end if
+
+#if $data_col_a and $data_col_a is not "None":
+--data_col_a "${data_col_a}"
+#end if
+
+#if $data_col_b and $data_col_b is not "None":
+--data_col_b "${data_col_b}"
+#end if
+
+--comparison_method "${comparison_method}"
+
+--undef_val "${undef_val}"
+
+--comp "${comp}"
+
+--comp_files_path "${comp.files_path}"
+
+--comp_format "${comp_format}"
+
+--comp_id "${comp.id}"
+
+</command>
+  <inputs>
+    <param name="file_a" help="Input Tabular Data &quot;From&quot;" optional="False" label="file_a" type="data"/>
+    <param name="file_b" help="Input Tabular Data &quot;To&quot;" optional="False" label="file_b" type="data"/>
+    <param min="1" value="1" name="id_col_a" help="Column containing row identifier in file_a. Columns numbered starting at 1" optional="True" label="id_col_a" type="integer"/>
+    <param min="1" value="1" name="id_col_b" help="Column containing row identifier in file_b. Columns numbered starting at 1" optional="True" label="id_col_b" type="integer"/>
+    <param min="1" value="2" name="data_col_a" help="Column containing data of interest in file_a. Columns numbered starting at 1" optional="True" label="data_col_a" type="integer"/>
+    <param min="1" value="2" name="data_col_b" help="Column containing data of interest in file_b. Columns numbered starting at 1" optional="True" label="data_col_b" type="integer"/>
+    <param name="comparison_method" help="Function or method by which two data points are compared" optional="False" label="comparison_method" type="select">
+      <option value="add">Add the two values</option>
+      <option value="bit_diff">Calculates number of different bits.</option>
+      <option value="dist">Absolute distance between two numbers (abs(a-b))</option>
+      <option value="div">Divide the two values (a/b)</option>
+      <option value="equal">Text Equality</option>
+      <option value="mult">Multiple the two values</option>
+      <option value="pdiff">Calculates % difference between the two values being compared</option>
+      <option value="sub">Subtract the two values (a-b)</option>
+    </param>
+    <param value="0" name="undef_val" help="Undefined value. For operations involving division, what should undefined results be set to? (e.g. 3/0 = ?). Depending on your dataset, it may be appropriate to rescale everything 1 higher (or a similar operation) to avoid zero values." optional="False" label="undef_val" type="float"/>
+    <param name="comp_format" help="Compared Data" optional="False" label="Format of comp" type="select">
+      <option value="CSV">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U" selected="True">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="comp" format="TSV_U">
+      <change_format>
+        <when input="comp_format" value="CSV" format="tabular"/>
+        <when input="comp_format" value="CSV_U" format="tabular"/>
+        <when input="comp_format" value="Dumper" format="txt"/>
+        <when input="comp_format" value="JSON" format="txt"/>
+        <when input="comp_format" value="ODS" format="data"/>
+        <when input="comp_format" value="TSV" format="tabular"/>
+        <when input="comp_format" value="TSV_U" format="tabular"/>
+        <when input="comp_format" value="XLS" format="data"/>
+        <when input="comp_format" value="XLSX" format="data"/>
+        <when input="comp_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+Tool to compare two sets of data, where each set of data has a (unique)
+ID column, and a data column that is of interest for analysis. For
+instance, given two data tables
+
+::
+
+    #ID,Val (Table N)
+    A,1
+    B,-4
+    C,3
+    D,10
+
+    #ID,Val (Table M)
+    A,-1
+    B,4
+    C,-3
+    D,-10
+
+This tool could accept those files for ``file_a`` and ``file_b``, with
+``id_col_N`` = 1 and ``data_col_N`` = 2. The tool would then compare
+these datasets against one another and produce a larger table with an
+NxM comparison of the two datasets.
+
+If the user were to select the "multiplication" option for comparison, a
+table like the following would be generated
+
+::
+
+    #ID_N, ID_M, Val
+    A,A,-1
+    A,B,4
+    A,C,-3
+    A,D,-10
+    B,A,4
+    B,B,-16
+    B,C,12
+    B,D,40
+    ...
+
+Every comparison is included, and these results can be used in
+downstream analysis either in R or in the PHAnTASM squite as a
+comparison table.
+
+Algorithm Choices
+-----------------
+
+Some of the algorithms are possibly unfamiliar:
+
+-  pdiff
+
+   Percent difference is calculated as (abs(a-b)/(a+b))
+
+-  bit\_diff
+
+   In order to protect the code, all values are converted to integers
+   and then taken an absolute value of. (-1.5 =&gt; -1 =&gt; 1).
+
+   However if you're using this option, it's generally expected you're
+   using it for the correct reasons and know why you would use this
+   function.
+
+   The quick test for "should you use this" is: "If I multiply every
+   value by 3 in your dataset, will it completely screw up the data? Or
+   will the data be fine?" If the data will be absolutely fine (with
+   results just scaled), then you should not be using this function to
+   analyse your data.
+
+   E.g., f(5,4) = 1 while f(5,1) = 3
+
+
+</help>
+  <tests/>
+</tool>

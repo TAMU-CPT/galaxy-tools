@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<tool id="GenomicConverter" name="File Format Convert" version="1.94">
+  <description>Convert amongst support BioPerl/libCPT formats</description>
+  <version_command>perl bin/cpt_convert.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_convert.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--converted "${converted}"
+
+--converted_files_path "${converted.files_path}"
+
+--converted_format "${converted_format}"
+
+--converted_id "${converted.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <param name="converted_format" help="Converted Output File" optional="False" label="Format of converted" type="select">
+      <option value="ABI">ABI</option>
+      <option value="AGAVE">AGAVE</option>
+      <option value="ALF">ALF</option>
+      <option value="Ace">Ace</option>
+      <option value="AsciiTree">AsciiTree</option>
+      <option value="BSML">BSML</option>
+      <option value="BSML_SAX">BSML_SAX</option>
+      <option value="CTF">CTF</option>
+      <option value="ChadoXML">ChadoXML</option>
+      <option value="Chaos">Chaos</option>
+      <option value="ChaosXML">ChaosXML</option>
+      <option value="EMBL">EMBL</option>
+      <option value="EntrezGene">EntrezGene</option>
+      <option value="Excel">Excel</option>
+      <option value="Exp">Exp</option>
+      <option value="Fasta">Fasta</option>
+      <option value="Fastq">Fastq</option>
+      <option value="GAME">GAME</option>
+      <option value="GCG">GCG</option>
+      <option value="Genbank" selected="True">Genbank</option>
+      <option value="Interpro">Interpro</option>
+      <option value="KEGG">KEGG</option>
+      <option value="LargeFasta">LargeFasta</option>
+      <option value="LaserGene">LaserGene</option>
+      <option value="LocusLink">LocusLink</option>
+      <option value="PHD">PHD</option>
+      <option value="PIR">PIR</option>
+      <option value="PLN">PLN</option>
+      <option value="Qual">Qual</option>
+      <option value="Raw">Raw</option>
+      <option value="SCF">SCF</option>
+      <option value="SeqXML">SeqXML</option>
+      <option value="Strider">Strider</option>
+      <option value="Swiss">Swiss</option>
+      <option value="TIGR">TIGR</option>
+      <option value="TIGRXML">TIGRXML</option>
+      <option value="Tab">Tab</option>
+      <option value="TinySeq">TinySeq</option>
+      <option value="ZTR">ZTR</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="converted" format="Genbank">
+      <change_format>
+        <when input="converted_format" value="ABI" format="data"/>
+        <when input="converted_format" value="AGAVE" format="xml"/>
+        <when input="converted_format" value="ALF" format=""/>
+        <when input="converted_format" value="Ace" format="txt"/>
+        <when input="converted_format" value="AsciiTree" format="txt"/>
+        <when input="converted_format" value="BSML" format="xml"/>
+        <when input="converted_format" value="BSML_SAX" format="xml"/>
+        <when input="converted_format" value="CTF" format="data"/>
+        <when input="converted_format" value="ChadoXML" format="xml"/>
+        <when input="converted_format" value="Chaos" format="xml"/>
+        <when input="converted_format" value="ChaosXML" format="xml"/>
+        <when input="converted_format" value="EMBL" format="txt"/>
+        <when input="converted_format" value="EntrezGene" format="txt"/>
+        <when input="converted_format" value="Excel" format="data"/>
+        <when input="converted_format" value="Exp" format="txt"/>
+        <when input="converted_format" value="Fasta" format="fasta"/>
+        <when input="converted_format" value="Fastq" format="fastq"/>
+        <when input="converted_format" value="GAME" format="xml"/>
+        <when input="converted_format" value="GCG" format="txt"/>
+        <when input="converted_format" value="Genbank" format="txt"/>
+        <when input="converted_format" value="Interpro" format="xml"/>
+        <when input="converted_format" value="KEGG" format="txt"/>
+        <when input="converted_format" value="LargeFasta" format="txt"/>
+        <when input="converted_format" value="LaserGene" format="data"/>
+        <when input="converted_format" value="LocusLink" format="data"/>
+        <when input="converted_format" value="PHD" format="data"/>
+        <when input="converted_format" value="PIR" format="data"/>
+        <when input="converted_format" value="PLN" format="data"/>
+        <when input="converted_format" value="Qual" format="data"/>
+        <when input="converted_format" value="Raw" format="txt"/>
+        <when input="converted_format" value="SCF" format="data"/>
+        <when input="converted_format" value="SeqXML" format="xml"/>
+        <when input="converted_format" value="Strider" format="data"/>
+        <when input="converted_format" value="Swiss" format="txt"/>
+        <when input="converted_format" value="TIGR" format="xml"/>
+        <when input="converted_format" value="TIGRXML" format="xml"/>
+        <when input="converted_format" value="Tab" format="tabular"/>
+        <when input="converted_format" value="TinySeq" format="xml"/>
+        <when input="converted_format" value="ZTR" format="data"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+This tool converts between file formats supported by BOTH BioPerl AND
+LibCPT.
+
+Input Formats
+-------------
+
+Right now this consists of Genbank and EMBL. If you need more, create a
+gitlab bug for them
+
+Output Formats
+--------------
+
+Most of the `BioPerl formats &lt;http://bioperl.org/wiki/HOWTO:SeqIO&gt;`__
+are supported. The support of ``scf, abi, alf, pln, exp, ctf, ztr``
+formats are dependent on the server having ``bioperl-ext`` installed.
+</help>
+  <tests/>
+</tool>

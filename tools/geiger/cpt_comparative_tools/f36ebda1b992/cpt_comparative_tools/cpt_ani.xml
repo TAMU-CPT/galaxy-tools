@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<tool id="ANI" name="ANI" version="0.0.1">
+  <description>calculates average nucleotide identity for a set of genomes</description>
+  <version_command>perl bin/cpt_ani.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_ani.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#for $item in $repeat_file:
+--file "${item.file}"
+#end for
+
+--window_size "${window_size}"
+
+--step_size "${step_size}"
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+</command>
+  <inputs>
+    <repeat name="repeat_file" title="File">
+      <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    </repeat>
+    <param min="500" value="1000" name="window_size" help="Length of segments that a genome is chopped into before the blasting process" optional="False" label="window_size" type="integer"/>
+    <param min="200" value="200" name="step_size" help="Step size between each new segment of the genome" optional="False" label="step_size" type="integer"/>
+    <param name="results_format" help="ANI Table" optional="False" label="Format of results" type="select">
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="results" format="CSV">
+      <change_format>
+        <when input="results_format" value="CSV" format="tabular"/>
+        <when input="results_format" value="CSV_U" format="tabular"/>
+        <when input="results_format" value="Dumper" format="txt"/>
+        <when input="results_format" value="JSON" format="txt"/>
+        <when input="results_format" value="ODS" format="data"/>
+        <when input="results_format" value="TSV" format="tabular"/>
+        <when input="results_format" value="TSV_U" format="tabular"/>
+        <when input="results_format" value="XLS" format="data"/>
+        <when input="results_format" value="XLSX" format="data"/>
+        <when input="results_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>Why You Should Use This and NOTHING Else
+========================================
+
+Methods like EMBOSS Stretcher (and other sequence alignment) are good
+for aligning sequences, they are **NOT** good for comparing the
+similarity of genomes, as they are **very** susceptible to
+rearrangements of the genome, producing many false negatives.
+
+Methods like the previous ANI script fail in that they will report
+falsely high scores for a small portion of the genomes matching. If you
+have an aligned region of 1kb in the old version, and 50kb in the new
+version that are identical, but the other 99% of the genome is
+*completely 100% different*, they will report the genomes as being
+identical.
+
+NAME
+====
+
+ANI - Average Nucleotide Identity
+
+PURPOSE
+=======
+
+This tool provides a means by which you can compare N-by-N genomes for
+their overall average nucleotide similarity, avoiding the pitfalls of
+using Emboss Stretcher/MegaBlast or similar methods.
+
+This tool does an N-by-N comparison of genomes for average nucleotide
+identity. This tool was based upon previous work of , wherein they
+described a method by which two genomes could be analysed for their
+similarity. This method split the genome into subsets and blasted them,
+before comparing and averaging the score of the "good fragments".
+
+We've modified their algorithm as we believe it did not accurately
+reflect the biology, and their algorithm was flawed in how they
+determined the final ANI#. Our tool more accurately reflects the true %
+similarity.
+
+How it Works
+============
+
+Each genome is split into subsets, defined by the window and step size
+parameters. These fragments are blasted against one another, and then
+scored. Similar fragments (Percent identity &gt; 75 and length of hit &gt; 70%
+of gene), are collected. These scores are averaged, and corrected for
+the total % of the target genome they cover.
+</help>
+  <tests>
+    <test>
+      <param name="file" value="test-data/inputs/ani.fa"/>
+      <param name="results_format" value="YAML"/>
+      <output name="results" file="test-data/outputs/ani.yml"/>
+    </test>
+  </tests>
+</tool>

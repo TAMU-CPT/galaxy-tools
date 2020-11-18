@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<tool id="CHAPLIN_list_organisms" name="List Organisms" version="0.0.1">
+  <description>lists organisms in a chado database</description>
+  <version_command>perl bin/chaplin-list-orgs.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/chaplin-list-orgs.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--database "${database}"
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+</command>
+  <inputs>
+    <param name="database" help="Database Name" optional="False" label="database" type="text"/>
+    <param name="results_format" help="Organism Listing" optional="False" label="Format of results" type="select">
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="ODS">ODS</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="YAML">YAML</option>
+      <option value="XLSX">XLSX</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="results" format="CSV">
+      <change_format>
+        <when input="results_format" value="TSV" format="tabular"/>
+        <when input="results_format" value="TSV_U" format="tabular"/>
+        <when input="results_format" value="CSV" format="tabular"/>
+        <when input="results_format" value="CSV_U" format="tabular"/>
+        <when input="results_format" value="XLS" format="data"/>
+        <when input="results_format" value="ODS" format="data"/>
+        <when input="results_format" value="Dumper" format="txt"/>
+        <when input="results_format" value="JSON" format="txt"/>
+        <when input="results_format" value="YAML" format="txt"/>
+        <when input="results_format" value="XLSX" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests/>
+</tool>

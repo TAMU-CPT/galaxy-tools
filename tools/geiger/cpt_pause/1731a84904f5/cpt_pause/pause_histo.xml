@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<tool id="PAUSE_Histogram" name="PAUSE:Histogram" version="1.93">
+  <description>plots a simple histogram of a bam mapping to a genome</description>
+  <version_command>perl bin/pause_histo.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/pause_histo.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--sense_bam "${sense_bam}"
+
+--antisense_bam "${antisense_bam}"
+
+--genome "${genome}"
+
+--pause_results "${pause_results}"
+
+--pause_results_files_path "${pause_results.files_path}"
+
+--pause_results_format "${pause_results_format}"
+
+--pause_results_id "${pause_results.id}"
+
+</command>
+  <inputs>
+    <param name="sense_bam" help="Sense BAM File" optional="False" label="sense_bam" type="data"/>
+    <param name="antisense_bam" help="Antisense BAM File" optional="False" label="antisense_bam" type="data"/>
+    <param name="genome" help="Genomic DNA as Fasta File" optional="False" label="genome" type="data"/>
+    <param name="pause_results_format" help="Output TXT File" optional="False" label="Format of pause_results" type="select">
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="pause_results" format="CSV">
+      <change_format>
+        <when input="pause_results_format" value="CSV" format="tabular"/>
+        <when input="pause_results_format" value="CSV_U" format="tabular"/>
+        <when input="pause_results_format" value="Dumper" format="txt"/>
+        <when input="pause_results_format" value="JSON" format="txt"/>
+        <when input="pause_results_format" value="ODS" format="data"/>
+        <when input="pause_results_format" value="TSV" format="tabular"/>
+        <when input="pause_results_format" value="TSV_U" format="tabular"/>
+        <when input="pause_results_format" value="XLS" format="data"/>
+        <when input="pause_results_format" value="XLSX" format="data"/>
+        <when input="pause_results_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+PAUSE:histo is a tool to plot a complete historgram of number of aligned
+reads for every single base.
+
+PARAMETERS
+==========
+
+-  ``bam_sense`` bam file of reads mapping to sense strand
+-  ``bam_antisense`` bam file of reads mapping to antisense strand
+-  ``genome`` fasta sequence of the genome
+
+</help>
+  <tests/>
+</tool>

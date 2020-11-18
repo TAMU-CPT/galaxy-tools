@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<tool id="Genome_Map" name="Genome Mapper" version="0.0.1">
+  <description>Maps genomes into SVG files, similar to DNA Master</description>
+  <version_command>perl bin/cpt_genome_mapper.pl --version</version_command>
+  <stdio>
+    <regex match="Exception" source="stderr" level="fatal" description="Tool exception"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_genome_mapper.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+#if $double_line_for_overlap:
+--double_line_for_overlap
+#end if
+
+--justification "${justification}"
+
+#if $separate_strands:
+--separate_strands
+#end if
+
+--view "${view}"
+
+--x_offset "${x_offset}"
+
+--y_offset "${y_offset}"
+
+--opacity "${opacity}"
+
+--rows "${rows}"
+
+--split_factor "${split_factor}"
+
+--zoom "${zoom}"
+
+--inter_line_separation "${inter_line_separation}"
+
+#if $label:
+--label
+#end if
+
+#if $label_position is not "None":
+--label_position "${label_position}"
+#end if
+
+#if $label_shrink_mode is not "None":
+--label_shrink_mode "${label_shrink_mode}"
+#end if
+
+#if $label_callouts:
+--label_callouts
+#end if
+
+#if $label_from is not "None":
+--label_from "${label_from}"
+#end if
+
+#if $label_text_source is not "None":
+--label_text_source "${label_text_source}"
+#end if
+
+#for $item in $repeat_label_numeric_features:
+--label_numeric_features "${item.label_numeric_features}"
+#end for
+
+#if $label_query is not "None":
+--label_query "${label_query}"
+#end if
+
+--genome_map "${genome_map}"
+
+--genome_map_files_path "${genome_map.files_path}"
+
+--genome_map_format "${genome_map_format}"
+
+--genome_map_id "${genome_map.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <param name="double_line_for_overlap" falsevalue="False" optional="True" truevalue="True" checked="True" help="Use a double line where a section of the genome is plotted twice" type="boolean" label="double_line_for_overlap"/>
+    <param value="justify" name="justification" help="How should each strand of the genome be treated when plotting" optional="False" label="justification" type="select">
+      <option value="justify" selected="True">Justify the strands of the genome, just like with text in a word processor</option>
+      <option value="leftalign">Left align the strands of the genome, the right edges will be uneven</option>
+    </param>
+    <param name="separate_strands" falsevalue="False" optional="True" truevalue="True" checked="True" help="+/- strand should be plotted on different tracks (artemis style)" label="separate_strands" type="boolean"/>
+    <param value="alt_artemis" name="view" help="This option controls the arrangement of genes in a track" optional="False" label="view" type="select">
+      <option value="alt_none">No alternation. Genes are plotted on the same line</option>
+      <option value="alt_artemis" selected="True">Alternate genes up/down by reading frame, like Artemis</option>
+      <option value="alt_every">Alternate each gene up/down, like DNA Master</option>
+      <option value="alt_random">Alternate genes up/down randomly</option>
+    </param>
+    <param value="30" name="x_offset" help="The border on the X-axes" optional="False" label="x_offset" type="integer"/>
+    <param value="100" name="y_offset" help="The border on the Y-axes" optional="False" label="y_offset" type="integer"/>
+    <param value="0.7" max="1" name="opacity" help="Opacity of the plotted genes" optional="False" label="opacity" type="float"/>
+    <param min="1" value="3" name="rows" help="Number of rows the genome should be split into" optional="False" label="rows" type="integer"/>
+    <param min="1" value="1.02" max="1.7" name="split_factor" optional="False" help="Factor by which each line overcompensates. If you have a short piece of the genome at the end of your last row, bump this up until each line of the genome is approximately equivalent." type="float" label="split_factor"/>
+    <param min="1" value="80" max="100" name="zoom" optional="False" help="Adjusts width of the plot." type="integer" label="zoom"/>
+    <param min="1" value="200" name="inter_line_separation" optional="False" help="Separation between each consecutive plotted row" label="inter_line_separation" type="integer"/>
+    <param name="label" falsevalue="False" optional="True" truevalue="True" checked="" help="Enable Labelling" label="label" type="boolean"/>
+    <param value="above" name="label_position" help="Label position" optional="True" label="label_position" type="select">
+      <option value="on">Plot labels on top of genomic features</option>
+      <option value="above" selected="True">Plot labels above genomic features</option>
+    </param>
+    <param value="cutoff" name="label_shrink_mode" help="How should the label be treated if it is too large?" optional="True" label="label_shrink_mode" type="select">
+      <option value="cutoff" selected="True">Anything labels which would not fit are not printed</option>
+      <option value="shrink">Reduce font size to make it generally proportional to genomic feature size</option>
+    </param>
+    <param name="label_callouts" falsevalue="False" optional="True" truevalue="True" checked="" help="Use callouts if labelling above" label="label_callouts" type="boolean"/>
+    <param value="numeric" name="label_from" help="Where should label text be obtained from?" optional="True" label="label_from" type="select">
+      <option value="numeric" selected="True">Basic numeric labels, which increase sequentially for selected features (must specify label_numeric_features)</option>
+      <option value="custom">Use a custom query (must specify label_query)</option>
+    </param>
+    <param value="locus_tag" name="label_text_source" help="Which tag (e.g., note, locus_tag, product) should be used as label text?" optional="True" label="label_text_source" type="text"/>
+    <repeat name="repeat_label_numeric_features" title="Label Numeric Features">
+      <param name="label_numeric_features" help="If you selected to label with numbers, specify this option as many times as needed to select the features you wish to number" optional="True" label="label_numeric_features" type="select">
+        <option value="operon">operon</option>
+        <option value="D-loop">D-loop</option>
+        <option value="mobile_element">mobile_element</option>
+        <option value="mRNA">mRNA</option>
+        <option value="polyA_site">polyA_site</option>
+        <option value="transit_peptide">transit_peptide</option>
+        <option value="N_region">N_region</option>
+        <option value="misc_feature">misc_feature</option>
+        <option value="gene">gene</option>
+        <option value="unsure">unsure</option>
+        <option value="5'UTR">5'UTR</option>
+        <option value="CAAT_signal">CAAT_signal</option>
+        <option value="sig_peptide">sig_peptide</option>
+        <option value="modified_base">modified_base</option>
+        <option value="whole">whole</option>
+        <option value="stem_loop">stem_loop</option>
+        <option value="terminator">terminator</option>
+        <option value="gap">gap</option>
+        <option value="misc_recomb">misc_recomb</option>
+        <option value="repeat_region">repeat_region</option>
+        <option value="exon">exon</option>
+        <option value="tRNA">tRNA</option>
+        <option value="-35_signal">-35_signal</option>
+        <option value="prim_transcript">prim_transcript</option>
+        <option value="misc_signal">misc_signal</option>
+        <option value="old_sequence">old_sequence</option>
+        <option value="C_region">C_region</option>
+        <option value="tmRNA">tmRNA</option>
+        <option value="GC_signal">GC_signal</option>
+        <option value="3'UTR">3'UTR</option>
+        <option value="attenuator">attenuator</option>
+        <option value="source">source</option>
+        <option value="assembly_gap">assembly_gap</option>
+        <option value="iDNA">iDNA</option>
+        <option value="STS">STS</option>
+        <option value="J_segment">J_segment</option>
+        <option value="CDS">CDS</option>
+        <option value="all">all</option>
+        <option value="misc_difference">misc_difference</option>
+        <option value="intron">intron</option>
+        <option value="primer_bind">primer_bind</option>
+        <option value="rRNA">rRNA</option>
+        <option value="rep_origin">rep_origin</option>
+        <option value="promoter">promoter</option>
+        <option value="V_region">V_region</option>
+        <option value="ncRNA">ncRNA</option>
+        <option value="protein_bind">protein_bind</option>
+        <option value="variation">variation</option>
+        <option value="S_region">S_region</option>
+        <option value="precursor_RNA">precursor_RNA</option>
+        <option value="D_segment">D_segment</option>
+        <option value="RBS">RBS</option>
+        <option value="polyA_signal">polyA_signal</option>
+        <option value="V_segment">V_segment</option>
+        <option value="enhancer">enhancer</option>
+        <option value="TATA_signal">TATA_signal</option>
+        <option value="-10_signal">-10_signal</option>
+        <option value="misc_binding">misc_binding</option>
+        <option value="LTR">LTR</option>
+        <option value="misc_RNA">misc_RNA</option>
+        <option value="mat_peptide">mat_peptide</option>
+        <option value="misc_structure">misc_structure</option>
+        <option value="oriT">oriT</option>
+      </param>
+    </repeat>
+    <param name="label_query" help="If you selected to label from a custom query, specify that here. An example query would be: !contains:&quot;Hypothetical&quot; key:&quot;CDS,tRNA&quot; tag:&quot;locus_tag&quot; which would search all CDSs and tRNAs which have a locus_tag and do not contain the text &quot;Hypothetical&quot;" optional="True" label="label_query" type="text"/>
+    <param name="genome_map_format" help="SVG Genome Map" optional="False" label="Format of genome_map" type="select">
+      <option value="SVG" selected="True">SVG</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="genome_map" format="SVG">
+      <change_format>
+        <when input="genome_map_format" value="SVG" format="xml"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests/>
+</tool>

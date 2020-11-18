@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<tool id="NCBICDDSearch" name="NCBI CDD Search" version="1.94">
+  <description>Searches the NCBI CDD database</description>
+  <version_command>perl bin/ncbi_cdd_search.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/ncbi_cdd_search.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#if $file and $file is not "None":
+--file "${file}"
+#end if
+
+--output "${output}"
+
+--output_files_path "${output.files_path}"
+
+--output_format "${output_format}"
+
+--output_id "${output.id}"
+
+</command>
+  <inputs>
+    <param format="fasta" name="file" help="Input (protein) fasta file" optional="True" label="file" type="data"/>
+    <param name="output_format" help="Raw CDD Output" optional="False" label="Format of output" type="select">
+      <option value="CONF">CONF</option>
+      <option value="TXT" selected="True">TXT</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="output" format="TXT">
+      <change_format>
+        <when input="output_format" value="CONF" format="txt"/>
+        <when input="output_format" value="TXT" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests/>
+</tool>

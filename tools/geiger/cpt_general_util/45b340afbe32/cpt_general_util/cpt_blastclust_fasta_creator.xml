@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<tool id="BlastclustFastaCreator" name="Blastclust fasta creator" version="1.94">
+  <description>Create fasta files based on the groupings in blastclust</description>
+  <version_command>perl bin/cpt_blastclust_fasta_creator.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_blastclust_fasta_creator.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--fasta "${fasta}"
+
+--blastclust_output "${blastclust_output}"
+
+--blastclust "${blastclust}"
+
+--blastclust_files_path "${blastclust.files_path}"
+
+--blastclust_format "${blastclust_format}"
+
+--blastclust_id "${blastclust.id}"
+
+</command>
+  <inputs>
+    <param format="fasta" name="fasta" help="Input fasta file" optional="False" label="fasta" type="data"/>
+    <param format="data" name="blastclust_output" help="Output of Blastclust" optional="False" label="blastclust_output" type="data"/>
+    <param name="blastclust_format" help="Blastclust Output" optional="False" label="Format of blastclust" type="select">
+      <option value="Fasta">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="blastclust" format="fasta">
+      <change_format>
+        <when input="blastclust_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+Given the fasta file input to blastclust, as well as the output of
+blastclust, this tool will generate a new fasta file with the sequences
+from the original file grouped by their name.
+
+For example, if you had two sequences in a cluster, ``gp01`` and
+``gp02``, they would be formatted as:
+
+::
+
+    &gt;cluser_001_gp01
+    ACTGACTGATCGATGCATGCAGTC
+    &gt;cluser_001_gp02
+    GATGCATGCAGTCACTGACTGATC
+
+This will allow you to use the other tools in your toolbox (e.g.,
+Fasta-to-Tabular, "filter on lines", Tabular-to-Fasta) to select a
+subset of these fasta sequences to produce a fasta file with only a
+single cluster.
+</help>
+  <tests/>
+</tool>

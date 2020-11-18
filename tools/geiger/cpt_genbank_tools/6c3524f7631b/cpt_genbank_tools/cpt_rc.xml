@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<tool id="RevCom" name="Reverse and Complement" version="1.94">
+  <description>for a given genbank file</description>
+  <version_command>perl bin/cpt_rc.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_rc.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <param name="results_format" help="RC'd Genbank File" optional="False" label="Format of results" type="select">
+      <option value="Genbank" selected="True">Genbank</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="results" format="Genbank">
+      <change_format>
+        <when input="results_format" value="Genbank" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+RevCom/Reverse and Complement
+
+DESCRIPTION
+===========
+
+Simply flips the sequence (+comlements), and does the same for features
+</help>
+  <tests>
+    <test>
+      <param name="file" value="test-data/inputs/single.gbk"/>
+      <param name="results" value="test-data/outputs/rc.gbk"/>
+    </test>
+  </tests>
+</tool>

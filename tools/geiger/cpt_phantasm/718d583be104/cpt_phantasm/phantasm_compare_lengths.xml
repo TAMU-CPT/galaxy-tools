@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<tool id="PHAnTASM.Comparison.Lengths" name="Length Scoring" version="1.94">
+  <description>produces from-to-score table of lengths for input length table (CPT LOGS)</description>
+  <version_command>perl bin/phantasm_compare_lengths.pl --version</version_command>
+  <stdio>
+    <regex match="Exception" source="stderr" level="fatal" description="Tool exception"/>
+  </stdio>
+  <command interpreter="perl">bin/phantasm_compare_lengths.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--comp_lens "${comp_lens}"
+
+--comp_lens_files_path "${comp_lens.files_path}"
+
+--comp_lens_format "${comp_lens_format}"
+
+--comp_lens_id "${comp_lens.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Genome Length list" optional="False" label="file" type="data"/>
+    <param name="comp_lens_format" help="Scored len pairs" optional="False" label="Format of comp_lens" type="select">
+      <option value="TSV">TSV</option>
+      <option value="TSV_U" selected="True">TSV_U</option>
+      <option value="CSV">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="ODS">ODS</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="YAML">YAML</option>
+      <option value="XLSX">XLSX</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="comp_lens" format="TSV_U">
+      <change_format>
+        <when input="comp_lens_format" value="TSV" format="tabular"/>
+        <when input="comp_lens_format" value="TSV_U" format="tabular"/>
+        <when input="comp_lens_format" value="CSV" format="tabular"/>
+        <when input="comp_lens_format" value="CSV_U" format="tabular"/>
+        <when input="comp_lens_format" value="XLS" format="data"/>
+        <when input="comp_lens_format" value="ODS" format="data"/>
+        <when input="comp_lens_format" value="Dumper" format="txt"/>
+        <when input="comp_lens_format" value="JSON" format="txt"/>
+        <when input="comp_lens_format" value="YAML" format="txt"/>
+        <when input="comp_lens_format" value="XLSX" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+PHAnTASM Length Scoring Tool
+
+DESCRIPTION
+===========
+
+Given two genome lengths A and B, this tool calculates ``abs(A-B)/A+B``
+</help>
+  <tests/>
+</tool>

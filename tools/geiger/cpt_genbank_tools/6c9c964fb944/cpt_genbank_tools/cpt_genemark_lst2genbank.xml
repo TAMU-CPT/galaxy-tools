@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<tool id="GenemarkFastaMergeLST" name="GenBank from GeneMarkS LST output" version="1.94">
+  <description>creates a valid genbank file from GeneMarkS and Fasta</description>
+  <version_command>perl bin/cpt_genemark_lst2genbank.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_genemark_lst2genbank.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file_fasta "${file_fasta}"
+
+--file_lst "${file_lst}"
+
+--genemark "${genemark}"
+
+--genemark_files_path "${genemark.files_path}"
+
+--genemark_format "${genemark_format}"
+
+--genemark_id "${genemark.id}"
+
+</command>
+  <inputs>
+    <param format="fasta" name="file_fasta" help="Input Fasta file" optional="False" label="file_fasta" type="data"/>
+    <param name="file_lst" help="Input genemark LST formatted calls" optional="False" label="file_lst" type="data"/>
+    <param name="genemark_format" help="Merged Genbank File" optional="False" label="Format of genemark" type="select">
+      <option value="ABI">ABI</option>
+      <option value="Ace">Ace</option>
+      <option value="AGAVE">AGAVE</option>
+      <option value="ALF">ALF</option>
+      <option value="AsciiTree">AsciiTree</option>
+      <option value="BSML">BSML</option>
+      <option value="BSML_SAX">BSML_SAX</option>
+      <option value="ChadoXML">ChadoXML</option>
+      <option value="Chaos">Chaos</option>
+      <option value="ChaosXML">ChaosXML</option>
+      <option value="CTF">CTF</option>
+      <option value="EMBL">EMBL</option>
+      <option value="EntrezGene">EntrezGene</option>
+      <option value="Excel">Excel</option>
+      <option value="Exp">Exp</option>
+      <option value="Fasta">Fasta</option>
+      <option value="Fastq">Fastq</option>
+      <option value="GAME">GAME</option>
+      <option value="GCG">GCG</option>
+      <option value="Genbank" selected="True">Genbank</option>
+      <option value="Interpro">Interpro</option>
+      <option value="KEGG">KEGG</option>
+      <option value="LargeFasta">LargeFasta</option>
+      <option value="LaserGene">LaserGene</option>
+      <option value="LocusLink">LocusLink</option>
+      <option value="PHD">PHD</option>
+      <option value="PIR">PIR</option>
+      <option value="PLN">PLN</option>
+      <option value="Qual">Qual</option>
+      <option value="Raw">Raw</option>
+      <option value="SCF">SCF</option>
+      <option value="SeqXML">SeqXML</option>
+      <option value="Strider">Strider</option>
+      <option value="Swiss">Swiss</option>
+      <option value="Tab">Tab</option>
+      <option value="TIGR">TIGR</option>
+      <option value="TIGRXML">TIGRXML</option>
+      <option value="TinySeq">TinySeq</option>
+      <option value="ZTR">ZTR</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="genemark" format="Genbank">
+      <change_format>
+        <when input="genemark_format" value="ABI" format="data"/>
+        <when input="genemark_format" value="Ace" format="txt"/>
+        <when input="genemark_format" value="AGAVE" format="xml"/>
+        <when input="genemark_format" value="ALF" format=""/>
+        <when input="genemark_format" value="AsciiTree" format="txt"/>
+        <when input="genemark_format" value="BSML" format="xml"/>
+        <when input="genemark_format" value="BSML_SAX" format="xml"/>
+        <when input="genemark_format" value="ChadoXML" format="xml"/>
+        <when input="genemark_format" value="Chaos" format="xml"/>
+        <when input="genemark_format" value="ChaosXML" format="xml"/>
+        <when input="genemark_format" value="CTF" format="data"/>
+        <when input="genemark_format" value="EMBL" format="txt"/>
+        <when input="genemark_format" value="EntrezGene" format="txt"/>
+        <when input="genemark_format" value="Excel" format="data"/>
+        <when input="genemark_format" value="Exp" format="txt"/>
+        <when input="genemark_format" value="Fasta" format="fasta"/>
+        <when input="genemark_format" value="Fastq" format="fastq"/>
+        <when input="genemark_format" value="GAME" format="xml"/>
+        <when input="genemark_format" value="GCG" format="txt"/>
+        <when input="genemark_format" value="Genbank" format="txt"/>
+        <when input="genemark_format" value="Interpro" format="xml"/>
+        <when input="genemark_format" value="KEGG" format="txt"/>
+        <when input="genemark_format" value="LargeFasta" format="txt"/>
+        <when input="genemark_format" value="LaserGene" format="data"/>
+        <when input="genemark_format" value="LocusLink" format="data"/>
+        <when input="genemark_format" value="PHD" format="data"/>
+        <when input="genemark_format" value="PIR" format="data"/>
+        <when input="genemark_format" value="PLN" format="data"/>
+        <when input="genemark_format" value="Qual" format="data"/>
+        <when input="genemark_format" value="Raw" format="txt"/>
+        <when input="genemark_format" value="SCF" format="data"/>
+        <when input="genemark_format" value="SeqXML" format="xml"/>
+        <when input="genemark_format" value="Strider" format="data"/>
+        <when input="genemark_format" value="Swiss" format="txt"/>
+        <when input="genemark_format" value="Tab" format="tabular"/>
+        <when input="genemark_format" value="TIGR" format="xml"/>
+        <when input="genemark_format" value="TIGRXML" format="xml"/>
+        <when input="genemark_format" value="TinySeq" format="xml"/>
+        <when input="genemark_format" value="ZTR" format="data"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+This tool depends on the output of GeneMarkS in LST format. With the LST
+formatted GeneMarkS output and a fasta sequence, it will produce a
+genbank file ready for annotation. The genbank file lacks any feature
+IDs, so you might want to use the CPT's gene renumbering tool to add
+those.
+</help>
+  <tests/>
+</tool>

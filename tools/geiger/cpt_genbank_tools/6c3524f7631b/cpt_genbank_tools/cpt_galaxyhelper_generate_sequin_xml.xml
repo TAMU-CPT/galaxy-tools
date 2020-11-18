@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<tool id="galaxyhelper.sequin_options" name="Galaxy Helper: Sequin Options" version="1.94">
+  <description>generates xml file for cpt_sequin.pl</description>
+  <version_command>perl bin/cpt_galaxyhelper_generate_sequin_xml.pl --version</version_command>
+  <stdio>
+    <regex match="Exception" source="stderr" level="fatal" description="Tool exception"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_galaxyhelper_generate_sequin_xml.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--ldap_url "${ldap_url}"
+
+--ldap_base "${ldap_base}"
+
+--mode "${mode}"
+
+--sequin_xml_options "${sequin_xml_options}"
+
+--sequin_xml_options_files_path "${sequin_xml_options.files_path}"
+
+--sequin_xml_options_format "${sequin_xml_options_format}"
+
+--sequin_xml_options_id "${sequin_xml_options.id}"
+
+</command>
+  <inputs>
+    <param value="ldaps://00-ldap-biobio.tamu.edu" name="ldap_url" help="LDAP Server URL" optional="False" label="ldap_url" type="text"/>
+    <param value="ou=People,dc=tamu,dc=edu" name="ldap_base" help="LDAP Server Base" optional="False" label="ldap_base" type="text"/>
+    <param value="cn" name="mode" help="Selection mode" optional="False" label="mode" type="select">
+      <option value="ou">Only list OUs (groups/organizationalUnits)</option>
+      <option value="cn" selected="True">Search for CNs, i.e., people</option>
+    </param>
+    <param name="sequin_xml_options_format" help="Converted LDAP tree for use in sequin as options in a tree-select" optional="False" label="Format of sequin_xml_options" type="select"/>
+  </inputs>
+  <outputs>
+    <data name="sequin_xml_options" format="Dummy">
+      <change_format/>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+Galaxy Helper - XML dump of users in LDAP
+
+DESCRIPTION
+===========
+
+This script lives to connect to an LDAP database and then dump a list of
+users as XML. This file can then be used to allow users to select an
+LDAP entry from a dropdown in galaxy.
+
+Once you've generated the file, you'll need to place it in
+``$GALAXY_ROOT/tool-data/sequin.xml``
+
+Tools can access this data by declaring parameteres like the following:
+
+::
+
+    &lt;param help="select a user from the LDAP database" name="dn" label="User DN" type="drill_down" multiple="False" display="radio" hierarchy="recurse" from_file="sequin.xml" optional="False"/&gt;
+
+</help>
+  <tests/>
+</tool>

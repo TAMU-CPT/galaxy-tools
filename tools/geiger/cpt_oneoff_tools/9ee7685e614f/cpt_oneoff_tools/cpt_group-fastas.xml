@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<tool id="GroupSeqs" name="Group Sequences" version="1.94">
+  <description>group sequences according to user queries</description>
+  <version_command>perl bin/cpt_group-fastas.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_group-fastas.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--center_around "${center_around}"
+
+--number_before "${number_before}"
+
+--report "${report}"
+
+--report_files_path "${report.files_path}"
+
+--report_format "${report_format}"
+
+--report_id "${report.id}"
+
+</command>
+  <inputs>
+    <param format="fasta" name="file" help="Fasta input file" optional="False" label="file" type="data"/>
+    <param name="center_around" help="Center&#10;&#9;&#9;&#9;around which residue? This will occur for the first&#10;&#9;&#9;&#9;time this residue is seen in a given sequence" optional="False" label="center_around" type="text"/>
+    <param value="4" name="number_before" help="How many resiudes before the target should be&#10;&#9;&#9;considered?" optional="False" label="number_before" type="integer"/>
+    <param name="report_format" help="Grouped Sequence Report" optional="False" label="Format of report" type="select">
+      <option value="HTML" selected="True">HTML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="report" format="HTML">
+      <change_format>
+        <when input="report_format" value="HTML" format="html"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+Given a set of fasta sequences, this tool will group them acording to
+the first time it encounters a set of N residues which it should
+``center_around``. All the sequences with that cluster of amino acids
+are then reported
+</help>
+  <tests/>
+</tool>

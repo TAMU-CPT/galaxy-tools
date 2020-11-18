@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<tool id="com.github.pacificbiosciences.blasr" name="BLASR" version="2014.06.10-4">
+  <description>The PacBio(R) long read aligner</description>
+  <version_command>python blasr.py --version</version_command>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command>
+
+## Repeat Table FOFN
+
+#if $repeat_regionTable:
+    #for $item in $repeat_regionTable:
+        echo "${item.regionTable}" >> regiontable.fofn;
+    #end for
+#end if
+
+#if $reads_source.source_select == "fasta"
+ln -fns $reads_source.fasta_reads ${reads_source.fasta_reads}.fa;
+#end if
+
+blasr
+#if $reads_source.source_select == "fasta"
+    ${reads_source.fasta_reads}.fa
+#else
+    ${reads_source.reads.extra_files_path}/parent.bas.h5
+#end if
+${genome_fasta}
+
+#if $sa and $sa is not "None":
+-sa "${sa}"
+#end if
+
+#if $ctab and $ctab is not "None":
+-ctab "${ctab}"
+#end if
+
+#if $repeat_regionTable:
+-regionTable regiontable.fofn
+#end if
+
+#if $useccs:
+-useccs
+#end if
+
+#if $useccsall:
+-useccsall
+#end if
+
+#if $useccsdenovo:
+-useccsdenovo
+#end if
+
+#if $noSplitSubreads:
+-noSplitSubreads
+#end if
+
+#if $ignoreRegions:
+-ignoreRegions
+#end if
+
+#if $ignoreHQRegions:
+-ignoreHQRegions
+#end if
+
+#if $bestn and $bestn is not "None" and int($bestn) > 0:
+-bestn "${bestn}"
+#end if
+
+#if $sam:
+-sam
+#end if
+
+#if $m and $m is not "None":
+-m "${m}"
+#end if
+
+#if $noSortRefinedAlignments:
+-noSortRefinedAlignments
+#end if
+
+#if $allowAdjacentIndels:
+-allowAdjacentIndels
+#end if
+
+#if $header:
+-header
+#end if
+
+#if $titleTable and $titleTable is not "None":
+-titleTable "${titleTable}"
+#end if
+
+#if $minPctIdentity and $minPctIdentity is not "None":
+-minPctIdentity "${minPctIdentity}"
+#end if
+
+#if $holeNumbers and $holeNumbers is not "None":
+-holeNumbers "${holeNumbers}"
+#end if
+
+#if $placeRepeatsRandomly:
+-placeRepeatsRandomly
+#end if
+
+#if $printSAMQV:
+-printSAMQV
+#end if
+
+#if $unaligned:
+-unaligned $unaligned_reads_output
+#end if
+
+-out $alignment_output
+
+</command>
+  <inputs>
+    <conditional name="reads_source">
+        <param name="source_select" type="select" label="Reads source">
+            <option value="fasta">Fasta</option>
+            <option value="bax">plx.h5/bax.h5</option>
+        </param>
+        <when value="fasta">
+            <param help="Fasta read data" label="fasta_reads" name="fasta_reads" optional="False" type="data" format="fasta"/>
+        </when>
+        <when value="bax">
+            <param help="plx.h5/bax.h5 data" label="reads" name="reads" optional="False" type="data" format="pacbioreads"/>
+        </when>
+    </conditional>
+    <param help="Fasta Genome" label="genome_fasta" name="genome_fasta" optional="False" type="data" format="fasta"/>
+    <param help="Use the suffix array 'sa' for detecting matches between the reads and the reference.  The suffix array has been prepared by the sawriter program." label="sa" name="sa" optional="True" type="data"/>
+    <param format="pacbio_ctab" help="A table of tuple counts used to estimate match significance. This is by the program 'printTupleCountTable'.  While it is quick to generate on the fly, if there are many invocations of blasr, it is useful to precompute the ctab." label="ctab" name="ctab" optional="True" type="data"/>
+    <repeat name="repeat_regionTable" title="Regiontable">
+      <param format="pacbio_hdf" help="Read in a read-region table in HDF format for masking portions of reads. This may be a single table if there is just one input file, or a fofn.  When a region table is specified, any region table inside the reads.plx.h5 or reads.bax.h5 files are ignored." label="regionTable" name="regionTable" optional="True" type="data"/>
+    </repeat>
+    <param falsevalue="False" help="Align the circular consensus sequence (ccs), then report alignments of the ccs subreads to the window that the ccs was mapped to.  Only alignments of the subreads are reported." label="useccs" name="useccs" optional="True" truevalue="True" type="boolean"/>
+    <param falsevalue="False" help="Similar to -useccs, except all subreads are aligned, rather than just the subreads used to call the ccs.  This will include reads that only cover part of the template." label="useccsall" name="useccsall" optional="True" truevalue="True" type="boolean"/>
+    <param falsevalue="False" help="Align the circular consensus, and report only the alignment of the ccs sequence." label="useccsdenovo" name="useccsdenovo" optional="True" truevalue="True" type="boolean"/>
+    <param falsevalue="False" help="Do not split subreads at adapters.  This is typically only useful when the genome in an unrolled version of a known template, and contains template-adapter-reverse_template sequence." label="noSplitSubreads" name="noSplitSubreads" optional="True" truevalue="True" type="boolean"/>
+    <param falsevalue="False" help="Ignore any information in the region table." label="ignoreRegions" name="ignoreRegions" optional="True" truevalue="True" type="boolean"/>
+    <param falsevalue="False" help="Ignore any hq regions in the region table" label="ignoreHQRegions" name="ignoreHQRegions" optional="True" truevalue="True" type="boolean"/>
+    <param help="report the top 'n' alignments, or -1 for all" label="bestn" name="bestn" optional="True" type="integer" value="-1"/>
+    <param checked="True" falsevalue="False" help="Write output in SAM format" label="sam" name="sam" optional="True" truevalue="True" type="boolean"/>
+    <param checked="" falsevalue="False" help="Output reads that are not aligned to a file" label="unaligned" name="unaligned" optional="True" truevalue="True" type="boolean"/>
+    <param help="If not printing in SAM, modify the output of the alignment." label="m" name="m" optional="True" type="select">
+      <option value="0">Print blast like output with |s connecting the matched nucleotides</option>
+      <option value="1">Print only a summary: score and pos.</option>
+      <option value="2">Print in Compare.xml format.</option>
+      <option value="3">Print in vulgar format (deprecated).</option>
+      <option value="4">Print a longer tabular version of the alignment.</option>
+      <option value="5">Print in a machine-parsable format that is read by compareSequences.py.</option>
+    </param>
+    <param checked="" falsevalue="False" help="Once candidate alignments are generated and scored via sparse dynamic programming, they are rescored using local alignment that accounts for different error profiles. Resorting based on the local alignment may change the order the hits are returned." label="noSortRefinedAlignments" name="noSortRefinedAlignments" optional="True" truevalue="True" type="boolean"/>
+    <param checked="" falsevalue="False" help="When specified, adjacent insertion or deletions are allowed. Otherwise, adjacent insertion and deletions are merged into one operation.  Using quality values to guide pairwise alignments may dictate that the higher probability alignment contains adjacent insertions or deletions.  Current tools such as GATK do not permit this and so they are not reported by default." label="allowAdjacentIndels" name="allowAdjacentIndels" optional="True" truevalue="True" type="boolean"/>
+    <param checked="" falsevalue="False" help="Print a header as the first line of the output file describing the contents of each column." label="header" name="header" optional="True" truevalue="True" type="boolean"/>
+    <param help="Construct a table of reference sequence titles.  The reference sequences are enumerated by row, 0,1,...  The reference index is printed in alignment results rather than the full reference name. This makes output concise, particularly when very verbose titles exist in reference names." label="titleTable" name="titleTable" optional="True" type="text"/>
+    <param help="Only report alignments if they are greater than p percent identity." label="minPctIdentity" name="minPctIdentity" optional="True" type="integer" value="0"/>
+    <param help="When specified, only align reads whose ZMW hole numbers are in LIST. LIST is a comma-delimited string of ranges, such as '1,2,3,10-13'. This option only works when reads are in base or pulse h5 format." label="holeNumbers" name="holeNumbers" optional="True" type="text"/>
+    <param checked="" falsevalue="False" help="When there are multiple positions to map a read with equal alignment scores, place the read randomly at one of them." label="placeRepeatsRandomly" name="placeRepeatsRandomly" optional="True" truevalue="True" type="boolean"/>
+    <param checked="" falsevalue="False" help="Print quality values to sam files." label="printSAMQV" name="printSAMQV" optional="True" truevalue="True" type="boolean"/>
+  </inputs>
+  <outputs>
+    <data format="sam" name="alignment_output">
+      <change_format>
+        <when format="sam" input="sam" value="True"/>
+        <when format="tabular" input="sam" value="False"/>
+      </change_format>
+    </data>
+    <data format="sam" name="unaligned_reads_output" label="Unaligned reads">
+        <filter>unaligned == True</filter>
+    </data>
+  </outputs>
+  <help>PacBio(R) Long Read Aligner
+</help>
+  <tests/>
+</tool>

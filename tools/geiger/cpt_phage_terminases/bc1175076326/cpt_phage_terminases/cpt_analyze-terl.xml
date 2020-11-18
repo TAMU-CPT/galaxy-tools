@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<tool id="Analysis_TerL" name="Analyse TerL Sequences" version="1.95">
+  <description>Analyse sequences for similarity to known TerL sequences, and assigns a morphology based on homology</description>
+  <version_command>perl bin/cpt_analyze-terl.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_analyze-terl.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+#if $blast:
+--blast
+#end if
+
+#if $hmmer:
+--hmmer
+#end if
+
+--hmmer_evalue_cutoff "${hmmer_evalue_cutoff}"
+
+--blast_evalue_cutoff "${blast_evalue_cutoff}"
+
+--blast_dice_cutoff "${blast_dice_cutoff}"
+
+--terl_report "${terl_report}"
+
+--terl_report_files_path "${terl_report.files_path}"
+
+--terl_report_format "${terl_report_format}"
+
+--terl_report_id "${terl_report.id}"
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <param name="blast" falsevalue="False" optional="True" truevalue="True" checked="" help="Run Blast analysis" type="boolean" label="blast"/>
+    <param name="hmmer" falsevalue="False" optional="True" truevalue="True" checked="" help="Run HMMER analysis" label="hmmer" type="boolean"/>
+    <param value="-64" name="hmmer_evalue_cutoff" help="Minimum log evalue acceptable from HMMER" optional="False" label="hmmer_evalue_cutoff" type="integer"/>
+    <param value="-140" name="blast_evalue_cutoff" help="Minimum log evalue acceptable from BLAST" optional="False" label="blast_evalue_cutoff" type="integer"/>
+    <param value="30" name="blast_dice_cutoff" help="Minimum dice score acceptable from BLAST" optional="False" label="blast_dice_cutoff" type="integer"/>
+    <param name="terl_report_format" help="Output Results File" optional="False" label="Format of terl_report" type="select">
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="terl_report" format="CSV">
+      <change_format>
+        <when input="terl_report_format" value="CSV" format="tabular"/>
+        <when input="terl_report_format" value="CSV_U" format="tabular"/>
+        <when input="terl_report_format" value="Dumper" format="txt"/>
+        <when input="terl_report_format" value="JSON" format="txt"/>
+        <when input="terl_report_format" value="ODS" format="data"/>
+        <when input="terl_report_format" value="TSV" format="tabular"/>
+        <when input="terl_report_format" value="TSV_U" format="tabular"/>
+        <when input="terl_report_format" value="XLS" format="data"/>
+        <when input="terl_report_format" value="XLSX" format="data"/>
+        <when input="terl_report_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests>
+    <test>
+      <param name="blast" value=""/>
+      <param name="file" value="t/data/test.fa"/>
+      <param name="hmmer" value=""/>
+      <param name="terl_report_format" value="YAML"/>
+      <output name="terl_report" file="t/data/output.yml"/>
+    </test>
+  </tests>
+</tool>

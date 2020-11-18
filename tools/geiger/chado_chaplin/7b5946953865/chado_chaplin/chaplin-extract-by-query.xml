@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<tool id="CHAPLIN_extract_fasta" name="Extract Fasta from Query" version="0.0.1">
+  <description>allows exporting a query against chado as fasta.</description>
+  <version_command>perl bin/chaplin-extract-by-query.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/chaplin-extract-by-query.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--database "${database}"
+
+--query "${query}"
+
+#if $translate:
+--translate
+#end if
+
+--sequence "${sequence}"
+
+--sequence_files_path "${sequence.files_path}"
+
+--sequence_format "${sequence_format}"
+
+--sequence_id "${sequence.id}"
+
+</command>
+  <inputs>
+    <param name="database" help="Database Name" optional="False" label="database" type="text"/>
+    <param name="query" help="Search string for searching through all tags in the database. Use &quot;*&quot; as a wildcard character, e.g., &quot;*ISP*&quot; will match anything with the characters ISP in it" optional="False" label="query" type="text"/>
+    <param name="translate" falsevalue="False" optional="True" truevalue="True" checked="" help="Translate to amino acid sequence (uses t/n table #11)" type="boolean" label="translate"/>
+    <param name="sequence_format" help="Extracted Features" optional="False" label="Format of sequence" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="sequence" format="Fasta">
+      <change_format>
+        <when input="sequence_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests/>
+</tool>

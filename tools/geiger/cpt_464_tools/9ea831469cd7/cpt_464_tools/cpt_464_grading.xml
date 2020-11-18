@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<tool id="464.GradingAndCorrections" name="464 Grading and Correction Utility" version="1.94">
+  <description>makes numerous corrections to the genome and scores the student's work</description>
+  <version_command>perl bin/cpt_464_grading.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_464_grading.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--corrections "${corrections}"
+
+--corrections_files_path "${corrections.files_path}"
+
+--corrections_format "${corrections_format}"
+
+--corrections_id "${corrections.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input Student Genbank file" optional="False" label="file" type="data"/>
+    <param name="corrections_format" help="List of Good/Bad Annotations" optional="False" label="Format of corrections" type="select">
+      <option value="HTML" selected="True">HTML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="corrections" format="HTML">
+      <change_format>
+        <when input="corrections_format" value="HTML" format="html"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>README
+------
+
+This is very much a prototype. If you see "incorrect" calls from this
+tool, PLEASE report them to me so they can be patched!
+
+Functionality
+-------------
+
+This tool runs numerous checks over the correctness of annotations.
+These checks are mostly related to formatting, rather than an actual
+assessment of the annotation quality, as that tool is still in
+development.
+
+InterPro
+~~~~~~~~
+
+``db_xref`` fields which look like they contain an IPR number are
+checked for formatting. Specifically this should be
+``Interpro:IPR######``. ``db_xref``\ s which look like ``IPR######``
+will be failed.
+
+RBSs
+~~~~
+
+If an RBS is annotated within 15 bases upstream of a gene, that's marked
+as good. If there are zero, or more than one RBS annotated, it's marked
+as bad.
+
+TMDs
+~~~~
+
+This check is for formatting of TMDs. TMDs should be annotated like the
+following:
+
+::
+
+    4TMDs (12-34, 56-72) N-in, C-out
+    1TMD (12-34) N out, C in
+
+the dashes were made optional, as is the 's' following 'TMD'
+
+SignalP/LipoP
+~~~~~~~~~~~~~
+
+If a note contains ``signal.*cleavage``, then it was checked to make
+sure it was of the form:
+
+::
+
+    signal peptidase .* cleavage site ##-##
+
+Terminators
+~~~~~~~~~~~
+
+All information must be removed from terminators.
+
+tRNAs
+~~~~~
+
+Tags other than ``evidence`` and ``product`` must be removed from tRNAs.
+</help>
+  <tests/>
+</tool>

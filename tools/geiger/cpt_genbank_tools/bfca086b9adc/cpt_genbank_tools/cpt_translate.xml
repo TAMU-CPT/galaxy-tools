@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<tool id="FastaTranslator" name="Translate Fasta Sequeces" version="1.94">
+  <description>dna to protein with selectable coding table</description>
+  <version_command>perl bin/cpt_translate.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_translate.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--tn_table "${tn_table}"
+
+#if $strip_stops:
+--strip_stops
+#end if
+
+--fasta "${fasta}"
+
+--fasta_files_path "${fasta.files_path}"
+
+--fasta_format "${fasta_format}"
+
+--fasta_id "${fasta.id}"
+
+</command>
+  <inputs>
+    <param format="fasta" name="file" help="Input Fasta file" optional="False" label="file" type="data"/>
+    <param value="11" name="tn_table" help="Translation Table" optional="False" label="tn_table" type="select">
+      <option value="11" selected="True">The Bacterial, Archaeal and Plant Plastid Code</option>
+      <option value="21">Trematode Mitochondrial Code</option>
+      <option value="2">The Vertebrate Mitochondrial Code</option>
+      <option value="22">Scenedesmus Obliquus Mitochondrial Code</option>
+      <option value="1">The Standard Code</option>
+      <option value="23">Thraustochytrium Mitochondrial Code</option>
+      <option value="16">Chlorophycean Mitochondrial Code</option>
+      <option value="13">The Ascidian Mitochondrial Code</option>
+      <option value="25">Candidate Division SR1 and Gracilibacteria Code</option>
+      <option value="6">The Ciliate, Dasycladacean and Hexamita Nuclear Code</option>
+      <option value="3">The Yeast Mitochondrial Code</option>
+      <option value="9">The Echinoderm and Flatworm Mitochondrial Code</option>
+      <option value="12">The Alternative Yeast Nuclear Code</option>
+      <option value="14">The Alternative Flatworm Mitochondrial Code</option>
+      <option value="15">Blepharisma Nuclear Code</option>
+      <option value="4">The Mold, Protozoan, and Coelenterate Mitochondrial Code and the Mycoplasma/Spiroplasma Code</option>
+      <option value="24">Pterobranchia Mitochondrial Code</option>
+      <option value="10">The Euplotid Nuclear Code</option>
+      <option value="5">The Invertebrate Mitochondrial Code </option>
+    </param>
+    <param name="strip_stops" falsevalue="False" optional="True" truevalue="True" checked="" help="Remove stop codons from translated sequence" type="boolean" label="strip_stops"/>
+    <param name="fasta_format" help="Translated fasta file" optional="False" label="Format of fasta" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="fasta" format="Fasta">
+      <change_format>
+        <when input="fasta_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+Translate sequences from DNA to AAs.
+</help>
+  <tests/>
+</tool>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="package_libhdf5_1_18_13" version="1.18.13">
+    <repository changeset_revision="d5d9e0081cc4" name="package_libhdf5_1_18_13" owner="esr" prior_installation_required="True" toolshed="https://cpt.tamu.edu/toolshed/"/>
+  </package>
+  <package name="package_blasr_2014_06_10" version="2014.06.10">
+    <install version="1.0">
+      <actions>
+        <action type="shell_command">git clone https://github.com/PacificBiosciences/blasr package_blasr_2014_06_10</action>
+        <action type="shell_command">git reset --hard abf9c38c55c2fb5f40316885dce39f5308c9ff25</action>
+        <action type="set_environment_for_install">
+          <repository name="package_libhdf5_1_18_13" owner="esr">
+            <package name="package_libhdf5_1_18_13" version="1.18.13"/>
+          </repository>
+        </action>
+        <action type="shell_command">make</action>
+        <action type="move_directory_files">
+          <source_directory>alignment/bin/</source_directory>
+          <destination_directory>$INSTALL_DIR/bin/</destination_directory>
+        </action>
+        <action type="move_directory_files">
+          <source_directory>bwtutils/bin/</source_directory>
+          <destination_directory>$INSTALL_DIR/bin/</destination_directory>
+        </action>
+        <action type="move_directory_files">
+          <source_directory>pbihdfutils/bin/</source_directory>
+          <destination_directory>$INSTALL_DIR/bin/</destination_directory>
+        </action>
+        <action type="move_directory_files">
+          <source_directory>sequtils/bin/</source_directory>
+          <destination_directory>$INSTALL_DIR/bin/</destination_directory>
+        </action>
+        <action type="move_directory_files">
+          <source_directory>simulator/bin/</source_directory>
+          <destination_directory>$INSTALL_DIR/bin/</destination_directory>
+        </action>
+        <action type="set_environment">
+          <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin/</environment_variable>
+          <environment_variable action="set_to" name="BLASR_PATH">$INSTALL_DIR/</environment_variable>
+        </action>
+      </actions>
+    </install>
+    <readme/>
+  </package>
+</tool_dependency>

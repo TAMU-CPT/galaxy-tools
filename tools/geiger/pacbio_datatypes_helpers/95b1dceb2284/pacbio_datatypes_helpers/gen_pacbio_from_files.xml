@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool id="com.github.erasche.galaxytools.pacbioreadgen" name="PacBio Read Dataset Generator" version="0.0.2">
+  <description>creates Galaxy dataset from input hdf5 files</description>
+  <stdio>
+    <exit_code level="fatal" range="1:"/>
+  </stdio>
+  <command interpreter="python">gen_pacbio_from_files.py $output.files_path $bash5
+#for file in $baxh5:
+  ${file.baxh5}
+#end for
+</command>
+  <inputs>
+    <param help="bas.h5" label="reads" name="bash5" optional="False" type="data" format="h5"/>
+    <repeat name="baxh5" title="bax.h5 file">
+      <param format="h5" help="Add a child bax.h5 movie" label="bax.h5" name="baxh5" type="data"/>
+    </repeat>
+  </inputs>
+  <outputs>
+    <data format="pacbioreads" name="output"/>
+  </outputs>
+  <help>Convert a set of bas.h5 + bax.h5 files into a Galaxy dataset amenable for use in PacBio utiltiies
+</help>
+  <tests>
+      <!--<test>-->
+          <!--<param name="bas.h5" -->
+      <!--</test>-->
+  </tests>
+</tool>

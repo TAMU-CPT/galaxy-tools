@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<tool id="Color" name="Color" version="1.94">
+  <description>Add a `/color` tag to GenBank files based on text in the `/product` field.</description>
+  <version_command>perl bin/cpt_color.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_color.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--mode "${mode}"
+
+--genbank "${genbank}"
+
+--genbank_files_path "${genbank.files_path}"
+
+--genbank_format "${genbank_format}"
+
+--genbank_id "${genbank.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <param name="mode" help="How should we treat the addition of new color tags to genes with existing color tags?" optional="False" label="mode" type="select">
+      <option value="append">Append new color tags, leaving the old in place</option>
+      <option value="ignore">Do nothing, use the old color tag</option>
+      <option value="prepend">Prepend new color tags, leaving the old in place</option>
+      <option value="remove">Remove all other color tags before inserting new one</option>
+    </param>
+    <param name="genbank_format" help="Recolored Genbank File" optional="False" label="Format of genbank" type="select">
+      <option value="ABI">ABI</option>
+      <option value="AGAVE">AGAVE</option>
+      <option value="ALF">ALF</option>
+      <option value="Ace">Ace</option>
+      <option value="AsciiTree">AsciiTree</option>
+      <option value="BSML">BSML</option>
+      <option value="BSML_SAX">BSML_SAX</option>
+      <option value="CTF">CTF</option>
+      <option value="ChadoXML">ChadoXML</option>
+      <option value="Chaos">Chaos</option>
+      <option value="ChaosXML">ChaosXML</option>
+      <option value="EMBL">EMBL</option>
+      <option value="EntrezGene">EntrezGene</option>
+      <option value="Excel">Excel</option>
+      <option value="Exp">Exp</option>
+      <option value="Fasta">Fasta</option>
+      <option value="Fastq">Fastq</option>
+      <option value="GAME">GAME</option>
+      <option value="GCG">GCG</option>
+      <option value="Genbank" selected="True">Genbank</option>
+      <option value="Interpro">Interpro</option>
+      <option value="KEGG">KEGG</option>
+      <option value="LargeFasta">LargeFasta</option>
+      <option value="LaserGene">LaserGene</option>
+      <option value="LocusLink">LocusLink</option>
+      <option value="PHD">PHD</option>
+      <option value="PIR">PIR</option>
+      <option value="PLN">PLN</option>
+      <option value="Qual">Qual</option>
+      <option value="Raw">Raw</option>
+      <option value="SCF">SCF</option>
+      <option value="SeqXML">SeqXML</option>
+      <option value="Strider">Strider</option>
+      <option value="Swiss">Swiss</option>
+      <option value="TIGR">TIGR</option>
+      <option value="TIGRXML">TIGRXML</option>
+      <option value="Tab">Tab</option>
+      <option value="TinySeq">TinySeq</option>
+      <option value="ZTR">ZTR</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="genbank" format="Genbank">
+      <change_format>
+        <when input="genbank_format" value="ABI" format="data"/>
+        <when input="genbank_format" value="AGAVE" format="xml"/>
+        <when input="genbank_format" value="ALF" format=""/>
+        <when input="genbank_format" value="Ace" format="txt"/>
+        <when input="genbank_format" value="AsciiTree" format="txt"/>
+        <when input="genbank_format" value="BSML" format="xml"/>
+        <when input="genbank_format" value="BSML_SAX" format="xml"/>
+        <when input="genbank_format" value="CTF" format="data"/>
+        <when input="genbank_format" value="ChadoXML" format="xml"/>
+        <when input="genbank_format" value="Chaos" format="xml"/>
+        <when input="genbank_format" value="ChaosXML" format="xml"/>
+        <when input="genbank_format" value="EMBL" format="txt"/>
+        <when input="genbank_format" value="EntrezGene" format="txt"/>
+        <when input="genbank_format" value="Excel" format="data"/>
+        <when input="genbank_format" value="Exp" format="txt"/>
+        <when input="genbank_format" value="Fasta" format="fasta"/>
+        <when input="genbank_format" value="Fastq" format="fastq"/>
+        <when input="genbank_format" value="GAME" format="xml"/>
+        <when input="genbank_format" value="GCG" format="txt"/>
+        <when input="genbank_format" value="Genbank" format="txt"/>
+        <when input="genbank_format" value="Interpro" format="xml"/>
+        <when input="genbank_format" value="KEGG" format="txt"/>
+        <when input="genbank_format" value="LargeFasta" format="txt"/>
+        <when input="genbank_format" value="LaserGene" format="data"/>
+        <when input="genbank_format" value="LocusLink" format="data"/>
+        <when input="genbank_format" value="PHD" format="data"/>
+        <when input="genbank_format" value="PIR" format="data"/>
+        <when input="genbank_format" value="PLN" format="data"/>
+        <when input="genbank_format" value="Qual" format="data"/>
+        <when input="genbank_format" value="Raw" format="txt"/>
+        <when input="genbank_format" value="SCF" format="data"/>
+        <when input="genbank_format" value="SeqXML" format="xml"/>
+        <when input="genbank_format" value="Strider" format="data"/>
+        <when input="genbank_format" value="Swiss" format="txt"/>
+        <when input="genbank_format" value="TIGR" format="xml"/>
+        <when input="genbank_format" value="TIGRXML" format="xml"/>
+        <when input="genbank_format" value="Tab" format="tabular"/>
+        <when input="genbank_format" value="TinySeq" format="xml"/>
+        <when input="genbank_format" value="ZTR" format="data"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+Genbank Coloring Utility
+
+DESCRIPTION
+===========
+
+In order to easily visualize clusters of genes in phages with related
+functions, the CPT has found it of use to be able to automatically apply
+colors to genes which can then be visualized in Artemis and the CPT's
+Genome Mapper. These coloring rules are based off of analysis of common
+tags for phage genomes.
+
+-  Biosynthesis
+
+   ::
+
+       Contains text: "Deoxynucleoside", "Deoxyribonucleotidase", "Deoxyuridine", "Ribonucleoside-diphoshate reductase", "Serine kinase", "threonine kinase", "cytidine deaminase", "dUTPase", "dUTPase", "deoxynucleotide", "dihydrofolate reductase", "glutaredoxin", "guanylate kinase", "reductase", "ribonucleotide reductase", "thioredoxin", "thymidylate"
+
+   Color: `rgb(0,0,255) &lt;https://duckduckgo.com/?q=rgb+0+0+255&gt;`__
+
+-  Defense
+
+   ::
+
+       Contains text: "rII", "rIIA", "rIIB", "rex", "rexA", "rexB", "ocr", "dar", "darA", "darB"
+
+   Color:
+   `rgb(200,255,200) &lt;https://duckduckgo.com/?q=rgb+200+255+200&gt;`__
+
+-  DNA Packaging
+
+   ::
+
+       Contains text: "terminase"
+
+   Color: `rgb(0,255,255) &lt;https://duckduckgo.com/?q=rgb+0+255+255&gt;`__
+
+-  DNA Replication/Recombination
+
+   ::
+
+       Contains text: "Clamp", "DNA binding protein", "DNA end Protector", "DNA ligase", "DexA", "DnaA", "DnaB", "DnaQ", "Helicase", "RNA ligase", "RNaseH", "RecA", "RecF", "Recombination", "RuvC", "UvsW", "UvsY", "helicase", "holliday junction", "phosphoesterase", "primase", "recombinase", "recombination", "repair", "single strand annealing", "topoisomerase", "whisker", "sliding", "methylase", "methyltransferase", "mom", "glucosyl\s*transferase", "glycosyl\s*transferase", "integrase"
+
+       Special rules:
+           - "polymerase" but not "rna polymerase" or "polymerase sigma factor"
+           - "nuclease" but not "HNH" or "homing endonuclease"
+
+   Color: `rgb(255,255,0) &lt;https://duckduckgo.com/?q=rgb+255+255+0&gt;`__
+
+-  HNH/Homing/GIY-YIG
+
+   ::
+
+       Contains text: "HNH", "homing endonuclease", "GIY-YIG"
+
+   Color:
+   `rgb(200,150,100) &lt;https://duckduckgo.com/?q=rgb+200+150+100&gt;`__
+
+-  Lysis
+
+   ::
+
+       Contains text: "antiholin", "holin", "endolysin", "spanin", "peptidoglycan", "amidase", "transglycosylase", "carboxypeptidase"
+
+       Special rules:
+           - "lysozyme" but not "lysozyme baseplate" or "tail lysozyme"
+
+   Color: `rgb(255,0,255) &lt;https://duckduckgo.com/?q=rgb+255+0+255&gt;`__
+
+-  Morphogenesis
+
+   ::
+
+       Contains text: "tail\s*spike", "fiber", "neck", "sheath", "tube", "pectin", "prohead", "scaffold", "capsid", "head", "head-to-tail joining", "pre-neck", "Tape", "tailspike", "structural", "morphogenesis", "assembly", "chaperone", "joining", "decoration", "protease", "frameshift", "portal"
+
+       Special rules:
+           - "tail" but not "tail lysozyme"
+           - "baseplate" but not "lysozyme baseplate"
+
+   Color:
+   `rgb(135,206,250) &lt;https://duckduckgo.com/?q=rgb+135+206+250&gt;`__
+
+-  Novel
+
+   ::
+
+       Contains text: "Novel"
+
+   Color:
+   `rgb(170,170,170) &lt;https://duckduckgo.com/?q=rgb+170+170+170&gt;`__
+
+-  Regulation
+
+   ::
+
+       Contains text: "Translational repressor", "RegA", "RegB", "regulatory", "regulator", "transcriptional repressor", "anti-repressor", "rna", "rna polymerase", "Sigma Factor"
+
+   Color: `rgb(255,165,0) &lt;https://duckduckgo.com/?q=rgb+255+165+0&gt;`__
+
+-  terminator
+
+   ::
+
+       Contains text: "terminator"
+
+   Color: `rgb(0,255,0) &lt;https://duckduckgo.com/?q=rgb+0+255+0&gt;`__
+
+-  tRNAs
+
+   ::
+
+       Contains text: "tRNA"
+
+   Color:
+   `rgb(113,188,120) &lt;https://duckduckgo.com/?q=rgb+113+188+120&gt;`__
+
+
+</help>
+  <tests/>
+</tool>

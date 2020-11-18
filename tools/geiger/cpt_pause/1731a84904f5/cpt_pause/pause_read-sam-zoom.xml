@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<tool id="read_plotter_zoom" name="Aligned BAM PAUSE Plotter (Zoom)" version="0.0.1">
+  <description>plot data to allow visual verification of PAUSE results</description>
+  <version_command>perl bin/pause_read-sam-zoom.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/pause_read-sam-zoom.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--fasta "${fasta}"
+
+--sense_bam "${sense_bam}"
+
+--antisense_bam "${antisense_bam}"
+
+--from "${from}"
+
+--to "${to}"
+
+--kb_per_row "${kb_per_row}"
+
+--line_height "${line_height}"
+
+--plot_width "${plot_width}"
+
+--x_border "${x_border}"
+
+--y_border "${y_border}"
+
+#if $nopng:
+--nopng
+#end if
+
+--plot "${plot}"
+
+--plot_files_path "${plot.files_path}"
+
+--plot_format "${plot_format}"
+--plot_id "${plot.id}"
+
+</command>
+  <inputs>
+    <param name="fasta" help="Input genome (FASTA)" optional="False" label="fasta" type="data"/>
+    <param name="sense_bam" help="Sense BAM File/Input" optional="False" label="sense_bam" type="data"/>
+    <param name="antisense_bam" help="Antisense BAM File/Input" optional="False" label="antisense_bam" type="data"/>
+    <param value="1000" name="from" help="From" optional="False" label="from" type="integer"/>
+    <param value="2000" name="to" help="To" optional="False" label="to" type="integer"/>
+    <param value="20" name="kb_per_row" help="Base number of kb plotted per row" optional="False" label="kb_per_row" type="integer"/>
+    <param value="500" name="line_height" help="Vertical size of each section of the genome" optional="False" label="line_height" type="integer"/>
+    <param value="1500" name="plot_width" help="Width of plot, roughly in pixels (not including scales and axis labels)" optional="False" label="plot_width" type="integer"/>
+    <param value="100" name="x_border" help="Spacing on left and right sides" optional="False" label="x_border" type="integer"/>
+    <param value="150" name="y_border" help="Spacing on top and bottom" optional="False" label="y_border" type="integer"/>
+    <param name="nopng" falsevalue="False" optional="True" truevalue="True" checked="" help="Do not automatically convert SVG to PNG" type="boolean" label="nopng"/>
+    <param name="plot_format" help="Output Plot" optional="False" label="Format of plot" type="select">
+      <option value="HTML" selected="True">HTML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="plot" format="HTML">
+      <change_format>
+        <when input="plot_format" value="HTML" format="html"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+PAUSE:Plot:Zoom is a tool to generate enlarged subsets of PAUSE:Plot
+images. No automated analysis is done with this tool.
+
+PARAMETERS
+==========
+
+-  ``bam_sense`` bam file of reads mapping to sense strand
+-  ``bam_antisense`` bam file of reads mapping to antisense strand
+-  ``genome`` fasta sequence of the genome
+-  ``starts_threshold`` this parameter is the signal to noise ratio for
+   the peak detection algorithm. 10 seems to be a good value for phages,
+   but try adjusting downwards if you are finding too few peaks. Once
+   you've settled on a good value and found reasonable looking peaks,
+   confer with the PAUSE:Base plot to identify your end type.
+-  ``from`` base start of the subset you wish to plot
+-  ``to`` base end of the subset you wish to plot
+
+PLOT OPTIONS
+------------
+
+-  ``kb_per_row`` This parameter controls segmentation of the genome as
+   plots are cut into separate rows for easier plotting/viz.
+-  ``line_height`` Size of each row of the genome
+-  ``plot_width`` Controls overall width of the plot. Can allow for
+   smaller/bigger plots as needed.
+-  ``x_border`` Amount of blank space on the left and right sides of the
+   plot.
+-  ``y_border`` Amount of blank space on the top and bottom sides of the
+   plot.
+-  ``nopng`` Do not generate a PNG (only an SVG)
+
+</help>
+  <tests/>
+</tool>

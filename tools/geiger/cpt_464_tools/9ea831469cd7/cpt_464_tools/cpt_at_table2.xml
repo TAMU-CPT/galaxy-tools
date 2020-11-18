@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<tool id="AT_Table" name="Annotation Table Generator" version="1.94">
+  <description>from a set of input BlastXML results, automatically filling in Hypothetical Novels</description>
+  <version_command>perl bin/cpt_at_table2.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_at_table2.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#for $item in $repeat_file:
+--file "${item.file}"
+#end for
+
+#for $item in $repeat_label:
+--label "${item.label}"
+#end for
+
+--genome "${genome}"
+
+--dice_cutoff "${dice_cutoff}"
+
+--evalue_cutoff "${evalue_cutoff}"
+
+--lookahead "${lookahead}"
+
+#if $disable_auto_hypothetical_novels:
+--disable_auto_hypothetical_novels
+#end if
+
+#if $full:
+--full
+#end if
+
+--annotation_table "${annotation_table}"
+
+--annotation_table_files_path "${annotation_table.files_path}"
+
+--annotation_table_format "${annotation_table_format}"
+
+--annotation_table_id "${annotation_table.id}"
+
+</command>
+  <inputs>
+    <repeat name="repeat_file" title="File">
+      <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    </repeat>
+    <repeat name="repeat_label" title="Label">
+      <param name="label" help="Sheet name which corresponds to a given file" optional="False" label="label" type="text"/>
+    </repeat>
+    <param name="genome" help="Input Genome&#10;&#9;&#9;&#9;File" optional="False" label="genome" type="data"/>
+    <param value="30" name="dice_cutoff" help="Dice" optional="False" label="dice_cutoff" type="integer"/>
+    <param value="-5" name="evalue_cutoff" help="Evalue" optional="False" label="evalue_cutoff" type="integer"/>
+    <param value="30" name="lookahead" help="Lookahead for running ShineFind" optional="False" label="lookahead" type="integer"/>
+    <param name="disable_auto_hypothetical_novels" falsevalue="False" optional="True" truevalue="True" checked="" help="Disable the automatic labelling of hypothetical novels from Blast XML files based on the listing of Hits and Genes. If your FASTA header lines do not match your `/gene` tag in your `/products`, then you should set this flag" type="boolean" label="disable_auto_hypothetical_novels"/>
+    <param name="full" falsevalue="False" optional="True" truevalue="True" checked="" help="Use Full output instead of Light output" label="full" type="boolean"/>
+    <param name="annotation_table_format" help="Annotation Table" optional="False" label="Format of annotation_table" type="select">
+      <option value="CSV">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="XLS" selected="True">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="annotation_table" format="XLS">
+      <change_format>
+        <when input="annotation_table_format" value="CSV" format="tabular"/>
+        <when input="annotation_table_format" value="CSV_U" format="tabular"/>
+        <when input="annotation_table_format" value="Dumper" format="txt"/>
+        <when input="annotation_table_format" value="JSON" format="txt"/>
+        <when input="annotation_table_format" value="ODS" format="data"/>
+        <when input="annotation_table_format" value="TSV" format="tabular"/>
+        <when input="annotation_table_format" value="TSV_U" format="tabular"/>
+        <when input="annotation_table_format" value="XLS" format="data"/>
+        <when input="annotation_table_format" value="XLSX" format="data"/>
+        <when input="annotation_table_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+Annotation Table Generator
+
+DESCRIPTION
+===========
+
+This script merges a number of CSV formatted blast hits, and produces an
+"annotation table" from that data. This annotation table consists of
+human-readable tabular blast results and the core annotation sheet which
+is used by students to record their putative gene assignments based on
+blast (and other) data.
+</help>
+  <tests>
+    <test>
+      <param name="annotation_table_format" value="YAML"/>
+      <param name="file" value="test-data/inputs/blast_results/blastp_bct.csv"/>
+      <param name="genome" value="test-data/inputs/single.gbk"/>
+      <param name="label" value="BCT"/>
+      <output name="annotation_table" file="test-data/outputs/at_table2.deafult.yaml"/>
+    </test>
+  </tests>
+</tool>

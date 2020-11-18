@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<tool id="signalp_post_process" name="SignalP+Fasta processing" version="0.0.1">
+  <description>uses SignalP output and original fasta sequence to process out various portions of the SignalP results for use later</description>
+  <version_command>perl bin/cpt_signalp_post_process.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_signalp_post_process.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--fasta "${fasta}"
+
+--file "${file}"
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+</command>
+  <inputs>
+    <param format="fasta" name="fasta" help="Input fasta file" optional="False" label="fasta" type="data"/>
+    <param name="file" help="SignalP txt output file" optional="False" label="file" type="data"/>
+    <param name="results_format" help="Processed Sequences" optional="False" label="Format of results" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="results" format="Fasta">
+      <change_format>
+        <when input="results_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests/>
+</tool>

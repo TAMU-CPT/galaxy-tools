@@ -1,0 +1,41 @@
+<tool id="circos_wrapper" name="Circos" version="1.0.1">
+	<description>generate circos plots</description>
+	<command>
+ln -s "$archive" archive.zip;
+
+python $__tool_directory__/circos.py
+--archive archive.zip
+--svg $outsvg
+--png $outpng
+    </command>
+        <inputs>
+	    <param name="archive" label="Input archive of Circos data and conf" type="data" format="data,zip"/>
+	</inputs>
+	<outputs>
+		<data format="svg" name="outsvg" />
+		<data format="png" name="outpng" />
+	</outputs>
+    <stdio>
+        <regex match="CIRCOS ERROR" source="stderr" level="warning" description="Circos Issue"/>
+    </stdio>
+<tests>
+	<!--
+	<test>
+		<param name="blastxml_file" value="blastp_four_human_vs_rhodopsin.xml" ftype="blastxml" />
+		<param name="out_format" value="std" />
+		<output name="tabular_file" file="blastp_four_human_vs_rhodopsin_converted.tabular" ftype="tabular" />
+	</test>
+	-->
+</tests>
+
+	<help>
+Circos Wrapper
+==============
+
+1. Produce "nice" archives. (i.e. put /etc/ and /data/ in a folder inside the archive). Rude archives do not do this and write all over data in your CWD and drive people insane.
+2. Put circos confs in /folder/etc/circos.conf
+3. Put data in /folder/data/file
+4. Tar/Tar.gz/Zip that folder up and execute it with this tool.
+
+	</help>
+</tool>

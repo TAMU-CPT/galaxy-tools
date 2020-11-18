@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="pacbio_datatypes" version="0.1">
+      <repository changeset_revision="510c3d9cb1bc" name="pacbio_datatypes" owner="esr" prior_installation_required="True"
+          toolshed="https://cpt.tamu.edu/toolshed/"/>
+  </package>
+</tool_dependency>

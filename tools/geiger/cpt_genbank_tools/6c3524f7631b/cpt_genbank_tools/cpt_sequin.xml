@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<tool id="sequin" name="Sequin" version="1.94">
+  <description>generates files which can be sent to NCBI for genome submission</description>
+  <version_command>perl bin/cpt_sequin.pl --version</version_command>
+  <stdio>
+    <regex match="Exception" source="stderr" level="fatal" description="Tool exception"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_sequin.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--ldap_url "${ldap_url}"
+
+--ldap_base "${ldap_base}"
+
+--genbank_submission_title "${genbank_submission_title}"
+
+#for $item in $repeat_genbank_record_author:
+--genbank_record_author "${item.genbank_record_author}"
+#end for
+
+#for $item in $repeat_genbank_record_contact:
+--genbank_record_contact "${item.genbank_record_contact}"
+#end for
+
+--genbank_record_affiliation "${genbank_record_affiliation}"
+
+--paper_submission_title "${paper_submission_title}"
+
+#for $item in $repeat_paper_record_author:
+--paper_record_author "${item.paper_record_author}"
+#end for
+
+#for $item in $repeat_paper_record_contact:
+--paper_record_contact "${item.paper_record_contact}"
+#end for
+
+--paper_record_affiliation "${paper_record_affiliation}"
+
+--genbank_file "${genbank_file}"
+
+--sequin "${sequin}"
+
+--sequin_files_path "${sequin.files_path}"
+
+--sequin_format "${sequin_format}"
+
+--sequin_id "${sequin.id}"
+
+--discrep "${discrep}"
+
+--discrep_files_path "${discrep.files_path}"
+
+--discrep_format "${discrep_format}"
+
+--discrep_id "${discrep.id}"
+
+</command>
+  <inputs>
+    <param value="ldaps://00-ldap-biobio.tamu.edu" name="ldap_url" help="LDAP Server URL" optional="False" label="ldap_url" type="text"/>
+    <param value="ou=People,dc=tamu,dc=edu" name="ldap_base" help="LDAP Server Base" optional="False" label="ldap_base" type="text"/>
+    <param name="genbank_submission_title" help="Genbank Submission Title" optional="False" label="genbank_submission_title" type="text"/>
+    <repeat name="repeat_genbank_record_author" title="Genbank Record Author">
+      <param name="genbank_record_author" help="Genbank record authors (LDAP DN)" optional="False" label="genbank_record_author" type="text"/>
+    </repeat>
+    <repeat name="repeat_genbank_record_contact" title="Genbank Record Contact">
+      <param name="genbank_record_contact" help="Genbank record contact (LDAP DN)" optional="False" label="genbank_record_contact" type="text"/>
+    </repeat>
+    <param name="genbank_record_affiliation" help="Genbank record affiliation (LDAP DN)" optional="False" label="genbank_record_affiliation" type="text"/>
+    <param name="paper_submission_title" help="Paper Submission Title" optional="False" label="paper_submission_title" type="text"/>
+    <repeat name="repeat_paper_record_author" title="Paper Record Author">
+      <param name="paper_record_author" help="Paper record authors (LDAP DN)" optional="False" label="paper_record_author" type="text"/>
+    </repeat>
+    <repeat name="repeat_paper_record_contact" title="Paper Record Contact">
+      <param name="paper_record_contact" help="Paper record contact (LDAP DN)" optional="False" label="paper_record_contact" type="text"/>
+    </repeat>
+    <param name="paper_record_affiliation" help="Paper record affiliation (LDAP DN)" optional="False" label="paper_record_affiliation" type="text"/>
+    <param name="genbank_file" help="Genbank File" optional="False" label="genbank_file" type="text"/>
+    <param name="sequin_format" help="Sequin Output" optional="False" label="Format of sequin" type="select"/>
+    <param name="discrep_format" help="NCBI tbl2asn Discrepencies" optional="False" label="Format of discrep" type="select"/>
+  </inputs>
+  <outputs>
+    <data name="sequin" format="zip">
+      <change_format/>
+    </data>
+    <data name="discrep" format="Dummy">
+      <change_format/>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests/>
+</tool>

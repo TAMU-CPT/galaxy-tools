@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<tool id="MIST" name="MIST" version="1.94">
+  <description>Multiple Interrelated Sequence doT plotter. Uses a stripped down vesion of Gepard (Dr. Jan Krumsiek/HelmholtzZentrum/IBIS) for dot plotting.</description>
+  <version_command>perl bin/cpt_mist.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_mist.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#for $item in $repeat_file:
+--file "${item.file}"
+--label "${item.label}"
+#end for
+
+--zoom "${zoom}"
+
+--dotplot "${dotplot}"
+
+--dotplot_files_path "${dotplot.files_path}"
+
+--dotplot_format "${dotplot_format}"
+
+--dotplot_id "${dotplot.id}"
+
+</command>
+  <inputs>
+    <repeat name="repeat_file" title="File">
+      <param name="file" help="Input file" optional="False" label="file" type="data"/>
+      <param name="label" help="Label (per input file)" optional="False" label="label" type="text"/>
+    </repeat>
+    <param min="20" value="50" name="zoom" help="How zoomed in the image is. Be careful with this option. It represents the number of bases to plot in a single pixel. For large genomes, this can mean very large images, and should be lowered appropriately. For a value of 50, 50 bases would be considered a single pixel in the output image. For 1Mbp of genomes totaly (say 5 x 200 kb phages), this would result in a 20,000 pixel image." optional="False" label="zoom" type="integer"/>
+    <param name="dotplot_format" help="MIST Plot" optional="False" label="Format of dotplot" type="select">
+      <option value="HTML" selected="True">HTML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="dotplot" format="HTML">
+      <change_format>
+        <when input="dotplot_format" value="HTML" format="html"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+MIST produces an N-by-N dot matrix of a given set of input genomes
+(fasta or genbank).
+</help>
+  <tests/>
+</tool>

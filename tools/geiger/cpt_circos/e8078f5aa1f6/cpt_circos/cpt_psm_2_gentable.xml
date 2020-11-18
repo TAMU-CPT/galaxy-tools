@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<tool id="PSM.Comp" name="PSM Comparison Table" version="1.94">
+  <description>aligns and lists data from PSM Prep</description>
+  <version_command>perl bin/cpt_psm_2_gentable.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_psm_2_gentable.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+#if $evalue and $evalue is not "None":
+--evalue "${evalue}"
+#end if
+
+#if $dice and $dice is not "None":
+--dice "${dice}"
+#end if
+
+#if $mismatch and $mismatch is not "None":
+--mismatch "${mismatch}"
+#end if
+
+#if $gap_penalty and $gap_penalty is not "None":
+--gap_penalty "${gap_penalty}"
+#end if
+
+#if $match and $match is not "None":
+--match "${match}"
+#end if
+
+--diff_table "${diff_table}"
+--diff_table_files_path "${diff_table.files_path}"
+--diff_table_format TSV_U
+--diff_table_id "${diff_table.id}"
+
+--blastclust "${blastclust}"
+--blastclust_files_path "${blastclust.files_path}"
+--blastclust_format TSV_U
+--blastclust_id "${blastclust.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="PSM2 Data File" optional="False" label="file" type="data"/>
+    <param value="0.0001" name="evalue" help="Evalue cutoff" optional="True" label="evalue" type="float"/>
+    <param value="50" name="dice" help="Dice cutoff" optional="True" label="dice" type="float"/>
+    <param value="-1" name="mismatch" help="Mismatch Score" optional="True" label="mismatch" type="float"/>
+    <param value="0.0" name="gap_penalty" help="Gap Penalty" optional="True" label="gap_penalty" type="float"/>
+    <param value="5" name="match" help="Match Score" optional="True" label="match" type="float"/>
+  </inputs>
+  <outputs>
+    <data name="diff_table" format="tabular">
+    </data>
+    <data name="blastclust" format="tabular">
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+Following the execution of the PSM Prep tool, this tool simply aligns
+the genomes and generates a table comparison the positions of all
+proteins. It can be very useful to figure out which genes are missing in
+which genomes.
+
+IMPORTANT PARAMETERS
+--------------------
+
+-  ``mismatch``, ``gap_penalty``, ``match``
+
+   These parameters control the Needleman-Wunsch Multiple Sequence
+   Alignment library's scoring scheme. Mismatch scores are generally
+   negative and discourage unrelated proteins from being plotted in a
+   line together. Match scores encourage related proteins to line up.
+   Gap penalty is set at zero as we generally prefer gaps to mismatches
+   in this tool; phage genomes are small and gaps are "cheap" to use,
+   whereas mismatches can sometimes give an incorrect impression of
+   relatedness. That said, how your plots look is completely up to you
+   and we encourage experimentation!
+
+
+</help>
+  <tests/>
+</tool>

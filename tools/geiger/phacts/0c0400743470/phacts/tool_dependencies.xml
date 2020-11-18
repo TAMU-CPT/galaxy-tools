@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<tool_dependency>
+	<package name="phacts03" version="0.3">
+		<repository changeset_revision="9a243d7e1935" name="phacts_0_3" owner="esr"    toolshed="https://geiger.tamu.edu/toolshed/" />
+	</package>
+	<package name="fasta35" version="35.4.12">
+		<repository changeset_revision="e8fe11192d51" name="fasta_35_4_12" owner="esr" toolshed="https://geiger.tamu.edu/toolshed/" />
+	</package>
+</tool_dependency>

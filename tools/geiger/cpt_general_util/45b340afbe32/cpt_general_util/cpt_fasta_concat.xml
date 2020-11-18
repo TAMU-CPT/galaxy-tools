@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<tool id="fasta_concat" name="Fasta concat" version="1.94">
+  <description>concatenates FASTA files. Requires two (or more) inputs fasta files with identical numbers of sequences, and pairs them off going down the list.</description>
+  <version_command>perl bin/cpt_fasta_concat.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_fasta_concat.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#for $item in $repeat_file:
+--file "${item.file}"
+#end for
+
+#for $item in $repeat_reverse:
+--reverse "${item.reverse}"
+#end for
+
+--merged "${merged}"
+
+--merged_files_path "${merged.files_path}"
+
+--merged_format "${merged_format}"
+
+--merged_id "${merged.id}"
+
+--rejects "${rejects}"
+
+--rejects_files_path "${rejects.files_path}"
+
+--rejects_format "${rejects_format}"
+
+--rejects_id "${rejects.id}"
+
+</command>
+  <inputs>
+    <repeat name="repeat_file" title="File">
+      <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    </repeat>
+    <repeat name="repeat_reverse" title="Reverse">
+      <param name="reverse" help="Sequence should&#10;            be reversed" optional="False" label="reverse" type="select">
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+      </param>
+    </repeat>
+    <param name="merged_format" help="merged fasta sequences" optional="False" label="Format of merged" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+    <param name="rejects_format" help="non-merged fasta sequences" optional="False" label="Format of rejects" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="merged" format="Fasta">
+      <change_format>
+        <when input="merged_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+    <data name="rejects" format="Fasta">
+      <change_format>
+        <when input="rejects_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+This tool will attempt to concatenate multiple fasta files by finding
+sequences with **IDENTICAL** fasta IDs in each file. Sequences with a
+partner will be placed in the "merged" file, and those without partners
+will be placed in the rejects file
+</help>
+  <tests/>
+</tool>

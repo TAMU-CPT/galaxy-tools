@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<tool id="RelabelGBKTags" name="Relabel Genbank Tags" version="1.94">
+  <description>re-labels genbank tags according to rules</description>
+  <version_command>perl bin/cpt_renumbering.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_renumbering.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+#if $clustered_by_tag and $clustered_by_tag is not "None":
+--clustered_by_tag "${clustered_by_tag}"
+#end if
+
+#if $tag_to_update and $tag_to_update is not "None":
+--tag_to_update "${tag_to_update}"
+#end if
+
+#if $string_prefix and $string_prefix is not "None":
+--string_prefix "${string_prefix}"
+#end if
+
+#if $leading_zeros and $leading_zeros is not "None":
+--leading_zeros "${leading_zeros}"
+#end if
+
+--genbank "${genbank}"
+
+--genbank_files_path "${genbank.files_path}"
+
+--genbank_format "${genbank_format}"
+
+--genbank_id "${genbank.id}"
+
+--change_table "${change_table}"
+
+--change_table_files_path "${change_table.files_path}"
+
+--change_table_format "${change_table_format}"
+
+--change_table_id "${change_table.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input File" optional="False" label="file" type="data"/>
+    <param name="clustered_by_tag" help="If items in the genome are already clustered with a specific tag(i.e.; gene, CDS, RBS all share a locus_tag), then we can use this information to help renumber" optional="True" label="clustered_by_tag" type="text"/>
+    <param value="locus_tag" name="tag_to_update" help="Which tag is used to store gene&#10;&#9;&#9;&#9;numbering" optional="True" label="tag_to_update" type="text"/>
+    <param value="display_id" name="string_prefix" help="A string to use as&#10;&#9;&#9;a prefix for the numbering. Will be used as XXXXXNNNwhere&#10;&#9;&#9;XXXXX is the string. Using &quot;display_id&quot; has special meaning: it&#10;&#9;&#9;will use the genome's name/accession number." optional="True" label="string_prefix" type="text"/>
+    <param value="3" name="leading_zeros" help="Number of leading zeros. The number will be padded to this length" optional="True" label="leading_zeros" type="integer"/>
+    <param name="genbank_format" help="Renumbered Genbank File" optional="False" label="Format of genbank" type="select">
+      <option value="ABI">ABI</option>
+      <option value="Ace">Ace</option>
+      <option value="AGAVE">AGAVE</option>
+      <option value="ALF">ALF</option>
+      <option value="AsciiTree">AsciiTree</option>
+      <option value="BSML">BSML</option>
+      <option value="BSML_SAX">BSML_SAX</option>
+      <option value="ChadoXML">ChadoXML</option>
+      <option value="Chaos">Chaos</option>
+      <option value="ChaosXML">ChaosXML</option>
+      <option value="CTF">CTF</option>
+      <option value="EMBL">EMBL</option>
+      <option value="EntrezGene">EntrezGene</option>
+      <option value="Excel">Excel</option>
+      <option value="Exp">Exp</option>
+      <option value="Fasta">Fasta</option>
+      <option value="Fastq">Fastq</option>
+      <option value="GAME">GAME</option>
+      <option value="GCG">GCG</option>
+      <option value="Genbank" selected="True">Genbank</option>
+      <option value="Interpro">Interpro</option>
+      <option value="KEGG">KEGG</option>
+      <option value="LargeFasta">LargeFasta</option>
+      <option value="LaserGene">LaserGene</option>
+      <option value="LocusLink">LocusLink</option>
+      <option value="PHD">PHD</option>
+      <option value="PIR">PIR</option>
+      <option value="PLN">PLN</option>
+      <option value="Qual">Qual</option>
+      <option value="Raw">Raw</option>
+      <option value="SCF">SCF</option>
+      <option value="SeqXML">SeqXML</option>
+      <option value="Strider">Strider</option>
+      <option value="Swiss">Swiss</option>
+      <option value="Tab">Tab</option>
+      <option value="TIGR">TIGR</option>
+      <option value="TIGRXML">TIGRXML</option>
+      <option value="TinySeq">TinySeq</option>
+      <option value="ZTR">ZTR</option>
+    </param>
+    <param name="change_table_format" help="Table of gene name changes" optional="False" label="Format of change_table" type="select">
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="ODS">ODS</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="YAML">YAML</option>
+      <option value="XLSX">XLSX</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="genbank" format="Genbank">
+      <change_format>
+        <when input="genbank_format" value="ABI" format="data"/>
+        <when input="genbank_format" value="Ace" format="txt"/>
+        <when input="genbank_format" value="AGAVE" format="xml"/>
+        <when input="genbank_format" value="ALF" format=""/>
+        <when input="genbank_format" value="AsciiTree" format="txt"/>
+        <when input="genbank_format" value="BSML" format="xml"/>
+        <when input="genbank_format" value="BSML_SAX" format="xml"/>
+        <when input="genbank_format" value="ChadoXML" format="xml"/>
+        <when input="genbank_format" value="Chaos" format="xml"/>
+        <when input="genbank_format" value="ChaosXML" format="xml"/>
+        <when input="genbank_format" value="CTF" format="data"/>
+        <when input="genbank_format" value="EMBL" format="txt"/>
+        <when input="genbank_format" value="EntrezGene" format="txt"/>
+        <when input="genbank_format" value="Excel" format="data"/>
+        <when input="genbank_format" value="Exp" format="txt"/>
+        <when input="genbank_format" value="Fasta" format="fasta"/>
+        <when input="genbank_format" value="Fastq" format="fastq"/>
+        <when input="genbank_format" value="GAME" format="xml"/>
+        <when input="genbank_format" value="GCG" format="txt"/>
+        <when input="genbank_format" value="Genbank" format="txt"/>
+        <when input="genbank_format" value="Interpro" format="xml"/>
+        <when input="genbank_format" value="KEGG" format="txt"/>
+        <when input="genbank_format" value="LargeFasta" format="txt"/>
+        <when input="genbank_format" value="LaserGene" format="data"/>
+        <when input="genbank_format" value="LocusLink" format="data"/>
+        <when input="genbank_format" value="PHD" format="data"/>
+        <when input="genbank_format" value="PIR" format="data"/>
+        <when input="genbank_format" value="PLN" format="data"/>
+        <when input="genbank_format" value="Qual" format="data"/>
+        <when input="genbank_format" value="Raw" format="txt"/>
+        <when input="genbank_format" value="SCF" format="data"/>
+        <when input="genbank_format" value="SeqXML" format="xml"/>
+        <when input="genbank_format" value="Strider" format="data"/>
+        <when input="genbank_format" value="Swiss" format="txt"/>
+        <when input="genbank_format" value="Tab" format="tabular"/>
+        <when input="genbank_format" value="TIGR" format="xml"/>
+        <when input="genbank_format" value="TIGRXML" format="xml"/>
+        <when input="genbank_format" value="TinySeq" format="xml"/>
+        <when input="genbank_format" value="ZTR" format="data"/>
+      </change_format>
+    </data>
+    <data name="change_table" format="CSV">
+      <change_format>
+        <when input="change_table_format" value="TSV" format="tabular"/>
+        <when input="change_table_format" value="TSV_U" format="tabular"/>
+        <when input="change_table_format" value="CSV" format="tabular"/>
+        <when input="change_table_format" value="CSV_U" format="tabular"/>
+        <when input="change_table_format" value="XLS" format="data"/>
+        <when input="change_table_format" value="ODS" format="data"/>
+        <when input="change_table_format" value="Dumper" format="txt"/>
+        <when input="change_table_format" value="JSON" format="txt"/>
+        <when input="change_table_format" value="YAML" format="txt"/>
+        <when input="change_table_format" value="XLSX" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+Tool attempts to modify GenBank files to relabel all tags in the genome
+according to user-specified format. It is pending a re-write which will
+fix several important bugs
+</help>
+  <tests>
+    <test>
+      <param name="file" value="test-data/inputs/single.gbk"/>
+      <param name="string_prefix" value="gp"/>
+      <param name="change_table" value="test-data/outputs/renumbered.csv"/>
+      <param name="genbank" value="test-data/outputs/renumbered.gbk"/>
+    </test>
+    <test>
+      <param name="clustered_by_tag" value="locus_tag"/>
+      <param name="file" value="test-data/inputs/single.gbk"/>
+      <param name="string_prefix" value="gp"/>
+      <param name="change_table" value="test-data/outputs/renumbered.cluster.csv"/>
+      <param name="genbank" value="test-data/outputs/renumbered.cluster.gbk"/>
+    </test>
+  </tests>
+</tool>

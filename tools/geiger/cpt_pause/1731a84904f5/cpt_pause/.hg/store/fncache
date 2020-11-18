@@ -1,0 +1,12 @@
+data/CPT/Analysis/PAUSE.pm.i
+data/pause_histo.xml.i
+data/pause_read-sam.xml.i
+data/bin/pause_read-sam-zoom.pl.i
+data/CPT/Analysis/PAUSE/SVG.pm.i
+data/bin/pause_analysis.pl.i
+data/bin/pause_histo.pl.i
+data/pause_read-sam-zoom.xml.i
+data/README.rst.i
+data/pause_analysis.xml.i
+data/CPT/Analysis/PAUSE/ParsedSam.pm.i
+data/bin/pause_read-sam.pl.i

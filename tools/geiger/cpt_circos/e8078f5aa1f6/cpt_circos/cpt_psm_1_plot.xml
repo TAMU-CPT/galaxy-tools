@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<tool id="PSM.Plot" name="PSM Plotter" version="1.94.2">
+  <description>plots data from PSM Prep</description>
+  <version_command>perl bin/cpt_psm_1_plot.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_psm_1_plot.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--user_ordering "${user_ordering}"
+
+#if $percent_filled and $percent_filled is not "None":
+--percent_filled "${percent_filled}"
+#end if
+
+#if $ig_dist and $ig_dist is not "None":
+--ig_dist "${ig_dist}"
+#end if
+
+#if $stroke_thickness and $stroke_thickness is not "None":
+--stroke_thickness "${stroke_thickness}"
+#end if
+
+#if $every_nth and $every_nth is not "None":
+--every_nth "${every_nth}"
+#end if
+
+#if $evalue and $evalue is not "None":
+--evalue "${evalue}"
+#end if
+
+#if $dice and $dice is not "None":
+--dice "${dice}"
+#end if
+
+#if $mismatch and $mismatch is not "None":
+--mismatch "${mismatch}"
+#end if
+
+#if $gap_penalty and $gap_penalty is not "None":
+--gap_penalty "${gap_penalty}"
+#end if
+
+#if $match and $match is not "None":
+--match "${match}"
+#end if
+
+--output_circos_confs "${output_circos_confs}"
+
+--output_circos_confs_files_path "${output_circos_confs.files_path}"
+
+--output_circos_confs_format "${output_circos_confs_format}"
+
+--output_circos_confs_id "${output_circos_confs.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="PSM2 Data File" optional="False" label="file" type="data"/>
+    <param name="user_ordering" help="List of genome IDs used in the analysis, can be comma/space/newline separated." optional="False" label="user_ordering" type="text"/>
+    <param min="0.1" value="0.8" max="1.0" name="percent_filled" optional="True" help="Percentage of a whole block that an individual gene is" type="float" label="percent_filled"/>
+    <param value="100" name="ig_dist" help="Maximum length of links between genome comparisons" optional="True" label="ig_dist" type="integer"/>
+    <param min="1" value="2" max="10" name="stroke_thickness" optional="True" help="Thickness of inter-genome links" type="integer" label="stroke_thickness"/>
+    <param value="20" name="every_nth" optional="True" help="Plot every Nth gene a modified version of the main color for that genome" label="every_nth" type="integer"/>
+    <param value="0.0001" name="evalue" optional="True" help="Evalue cutoff" label="evalue" type="float"/>
+    <param value="50" name="dice" optional="True" help="Dice cutoff" label="dice" type="float"/>
+    <param value="-0.1" name="mismatch" optional="True" help="Mismatch Score" label="mismatch" type="float"/>
+    <param value="0.0" name="gap_penalty" optional="True" help="Gap Penalty" label="gap_penalty" type="float"/>
+    <param value="5" name="match" optional="True" help="Match Score" label="match" type="float"/>
+    <param name="output_circos_confs_format" help="Output Circos Conf Object" optional="False" label="Format of output_circos_confs" type="select">
+      <option value="zip">zip</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="output_circos_confs" format="tar.gz">
+      <change_format>
+        <when input="output_circos_confs_format" value="tar.gz" format="tar.gz"/>
+        <when input="output_circos_confs_format" value="zip" format="zip"/>
+        <when input="output_circos_confs_format" value="tar" format="tar"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+PSM Plotter
+
+DESCRIPTION
+===========
+
+Following the execution of the PSM Prep tool, this tool plots a subset
+of those genomes as ciruclar tracks with protein-protein relationships
+plotted as links between the boxes representing proteins.
+
+IMPORTANT PARAMETERS
+--------------------
+
+-  ``user_ordering``
+
+   This parameter controls the order in which genomes are aligned and
+   then plotted. This MUST contain (comma/space) separated values
+   listing the order (outside to in) in which you want your genomes to
+   appear. In this field, type the name of each genome. The name can be
+   found on the first line of the file under "LOCUS NC\_00000001", where
+   NC\_00000001 would be the genome's name.
+
+-  ``evalue``, ``dice``
+
+   Adjusting these parameters will affect which links are plotted. Links
+   are heatmapped into bins based on dice score as that is the easiest
+   measure to work with, and scales nicely from 0 to 100. For example, a
+   link with a dice score of 20-29 would be plotted as 20% black
+   (grey20), whereas a dice score of 90+ would be plotted as solid black
+
+-  ``mismatch``, ``gap_penalty``, ``match``
+
+   These parameters control the Needleman-Wunsch Multiple Sequence
+   Alignment library's scoring scheme. Mismatch scores are generally
+   negative and discourage unrelated proteins from being plotted in a
+   line together. Match scores encourage related proteins to line up.
+   Gap penalty is set at zero as we generally prefer gaps to mismatches
+   in this tool; phage genomes are small and gaps are "cheap" to use,
+   whereas mismatches can sometimes give an incorrect impression of
+   relatedness. That said, how your plots look is completely up to you
+   and we encourage experimentation!
+
+-  ``every_nth``
+
+   Every Nth gene in a genome will be plotted a slightly different
+   color.
+
+Why Can't I Control Colors?
+---------------------------
+
+::
+
+    Brewer colors compose Brewer palettes which have been manually defined by
+    Cynthia Brewer for their perceptual properties.
+
+    http://circos.ca/tutorials/lessons/configuration/colors/
+
+Color palette choice is very important to creating an attractive and
+easy to read graphic. In the words of Dr. Krzywinski, `Color palettes
+matter &lt;http://mkweb.bcgsc.ca/jclub/biovis/brewer/colorpalettes.pdf&gt;`__.
+Humans selecting from an RGB/HSV color palette tend to make poor
+choices, so we've removed the option in lieu of using the very
+attractive `Brewer Palettes &lt;http://colorbrewer2.org/&gt;`__. Specifically,
+I've selected the 8 class qualtitative "Accent" color set, which has
+produced some very nice maps. If you would like the option of selecting
+amongst the other 8-class qualitative color sets, please file a bug
+report and let me know.
+</help>
+  <tests/>
+</tool>

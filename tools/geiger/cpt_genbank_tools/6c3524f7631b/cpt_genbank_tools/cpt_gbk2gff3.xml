@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<tool id="gbk2gff3" name="Genbank To GFF3" version="1.94">
+  <description>conversion utility. </description>
+  <version_command>perl bin/cpt_gbk2gff3.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_gbk2gff3.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+#if $is_circular:
+--is_circular
+#end if
+
+--seqid "${seqid}"
+
+--id_prefix "${id_prefix}"
+
+#if $cpt_modifications:
+--cpt_modifications
+#end if
+
+--gff3 "${gff3}"
+
+--gff3_files_path "${gff3.files_path}"
+
+--gff3_format "${gff3_format}"
+
+--gff3_id "${gff3.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <param name="is_circular" falsevalue="False" optional="True" truevalue="True" checked="" help="Set this flag if the genome is circular" type="boolean" label="is_circular"/>
+    <param name="seqid" help="Seqid used in GFF3 file" optional="False" label="seqid" type="text"/>
+    <param name="id_prefix" help="While the ID must be unique only within the scope of the GFF3 file, by the GFF3 spec, Chado treats them as globally unique" optional="False" label="id_prefix" type="text"/>
+    <param name="cpt_modifications" falsevalue="False" optional="True" truevalue="True" checked="" help="Coerce all transformation specialised for the CPT to Genbank (mostly specification of programmes we use, e.g., transterm, etc)" label="cpt_modifications" type="boolean"/>
+    <param name="gff3_format" help="Converted GFF3 File" optional="False" label="Format of gff3" type="select">
+      <option value="GFF3" selected="True">GFF3</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="gff3" format="GFF3">
+      <change_format>
+        <when input="gff3_format" value="GFF3" format="interval"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+Convert GBK files to GFF3 files. This is a **ALPHA** quality tool, so
+beware!
+</help>
+  <tests/>
+</tool>

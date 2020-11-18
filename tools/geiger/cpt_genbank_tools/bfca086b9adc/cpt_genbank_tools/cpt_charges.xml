@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<tool id="Charges" name="Charges" version="1.94">
+  <description>colour sequences based on rules.</description>
+  <version_command>perl bin/cpt_charges.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_charges.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--tag "${tag}"
+
+#if $number_residues:
+--number_residues
+#end if
+
+--residues_per_line "${residues_per_line}"
+
+#for $item in $repeat_group:
+--group "${item.group}"
+--match "${item.match}"
+--fg "${item.fg}"
+--bg "${item.bg}"
+#end for
+
+--charges "${charges}"
+
+--charges_files_path "${charges.files_path}"
+
+--charges_format "${charges_format}"
+
+--charges_id "${charges.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <param value="all" name="tag" help="Analyse by a specific tag" optional="False" label="tag" type="select">
+      <option value="operon">operon</option>
+      <option value="D-loop">D-loop</option>
+      <option value="mobile_element">mobile_element</option>
+      <option value="mRNA">mRNA</option>
+      <option value="polyA_site">polyA_site</option>
+      <option value="transit_peptide">transit_peptide</option>
+      <option value="N_region">N_region</option>
+      <option value="misc_feature">misc_feature</option>
+      <option value="gene">gene</option>
+      <option value="unsure">unsure</option>
+      <option value="5'UTR">5'UTR</option>
+      <option value="CAAT_signal">CAAT_signal</option>
+      <option value="sig_peptide">sig_peptide</option>
+      <option value="modified_base">modified_base</option>
+      <option value="whole">whole</option>
+      <option value="stem_loop">stem_loop</option>
+      <option value="terminator">terminator</option>
+      <option value="gap">gap</option>
+      <option value="misc_recomb">misc_recomb</option>
+      <option value="repeat_region">repeat_region</option>
+      <option value="exon">exon</option>
+      <option value="tRNA">tRNA</option>
+      <option value="-35_signal">-35_signal</option>
+      <option value="prim_transcript">prim_transcript</option>
+      <option value="misc_signal">misc_signal</option>
+      <option value="old_sequence">old_sequence</option>
+      <option value="C_region">C_region</option>
+      <option value="tmRNA">tmRNA</option>
+      <option value="GC_signal">GC_signal</option>
+      <option value="3'UTR">3'UTR</option>
+      <option value="attenuator">attenuator</option>
+      <option value="source">source</option>
+      <option value="assembly_gap">assembly_gap</option>
+      <option value="iDNA">iDNA</option>
+      <option value="STS">STS</option>
+      <option value="J_segment">J_segment</option>
+      <option value="CDS">CDS</option>
+      <option value="all" selected="True">all</option>
+      <option value="misc_difference">misc_difference</option>
+      <option value="intron">intron</option>
+      <option value="primer_bind">primer_bind</option>
+      <option value="rRNA">rRNA</option>
+      <option value="rep_origin">rep_origin</option>
+      <option value="promoter">promoter</option>
+      <option value="V_region">V_region</option>
+      <option value="ncRNA">ncRNA</option>
+      <option value="protein_bind">protein_bind</option>
+      <option value="variation">variation</option>
+      <option value="S_region">S_region</option>
+      <option value="precursor_RNA">precursor_RNA</option>
+      <option value="D_segment">D_segment</option>
+      <option value="RBS">RBS</option>
+      <option value="polyA_signal">polyA_signal</option>
+      <option value="V_segment">V_segment</option>
+      <option value="enhancer">enhancer</option>
+      <option value="TATA_signal">TATA_signal</option>
+      <option value="-10_signal">-10_signal</option>
+      <option value="misc_binding">misc_binding</option>
+      <option value="LTR">LTR</option>
+      <option value="misc_RNA">misc_RNA</option>
+      <option value="mat_peptide">mat_peptide</option>
+      <option value="misc_structure">misc_structure</option>
+      <option value="oriT">oriT</option>
+    </param>
+    <param name="number_residues" falsevalue="False" optional="True" truevalue="True" checked="" help="Number the residues (every 10)" type="boolean" label="number_residues"/>
+    <param min="10" value="70" max="1000" name="residues_per_line" optional="False" help="# of residues per line, defaults to 70" type="integer" label="residues_per_line"/>
+    <repeat name="repeat_group" title="Group">
+      <param value="polar" name="group" help="Name for a group of residues, free text" optional="False" label="group" type="text"/>
+      <param value="HSTQNCY" name="match" help="String of letters that should be matched" optional="False" label="match" type="text"/>
+      <param value="white" name="fg" help="Foreground colour for a group" optional="False" label="fg" type="select">
+        <option value="green">green</option>
+        <option value="white">white</option>
+        <option value="red">red</option>
+        <option value="yellow">yellow</option>
+        <option value="orange">orange</option>
+        <option value="black">black</option>
+        <option value="gray">gray</option>
+        <option value="blue">blue</option>
+      </param>
+      <param value="red" name="bg" help="Background colour for a group" optional="False" label="bg" type="select">
+        <option value="green">green</option>
+        <option value="white">white</option>
+        <option value="red">red</option>
+        <option value="yellow">yellow</option>
+        <option value="orange">orange</option>
+        <option value="black">black</option>
+        <option value="gray">gray</option>
+        <option value="blue">blue</option>
+      </param>
+    </repeat>
+    <param name="charges_format" help="Charges Output" optional="False" label="Format of charges" type="select">
+      <option value="HTML" selected="True">HTML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="charges" format="HTML">
+      <change_format>
+        <when input="charges_format" value="HTML" format="html"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+Charges simply pretty-prints fasta sequences with their charges labelled
+above the sequence
+</help>
+  <tests>
+    <test>
+      <param name="file" value="test-data/inputs/multi.gbk"/>
+      <param name="tag" value="CDS"/>
+      <param name="charges" value="test-data/outputs/charges.gbk.html"/>
+    </test>
+    <test>
+      <param name="file" value="test-data/inputs/multi.cds.fa"/>
+      <param name="tag" value="CDS"/>
+      <param name="charges" value="test-data/outputs/charges.fa.html"/>
+    </test>
+  </tests>
+</tool>

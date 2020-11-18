@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="fasta35" version="35.4.12">
+    <repository changeset_revision="e8fe11192d51" name="fasta_35_4_12" owner="esr" toolshed="https://geiger.tamu.edu/toolshed/" prior_installation_required="True"/>
+  </package>
+  <package name="phacts03" version="0.3">
+    <install version="1.0">
+      <actions>
+        <action type="download_by_url">http://www.phantome.org/PHACTS/files/PHACTS-0.3.tar.gz</action>
+        <action type="shell_command">
+sed -i 's/\/home\/deprekate\/fasta-35.4.12\/bin\///g' phacts.pl make_database.pl make_importance.pl
+        </action>
+	<action type="download_file" target_filename="phacts-galaxy.patch">https://gist.githubusercontent.com/erasche/c1260441d5d783bcc7d9/raw/6ef774684184685f322dd5afa427bb43e9428365/phacts-galaxy.patch</action>
+	<action type="shell_command">
+		patch phacts.pl &lt; phacts-galaxy.patch
+	</action>
+        <!--All the rest is data-->
+        <action type="move_directory_files">
+          <source_directory>.</source_directory>
+          <destination_directory>$INSTALL_DIR</destination_directory>
+        </action>
+        <!--Update environment-->
+        <action type="set_environment">
+          <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR</environment_variable>
+          <environment_variable action="set_to" name="PHACTS_PATH">$INSTALL_DIR</environment_variable>
+        </action>
+      </actions>
+    </install>
+    <readme/>
+  </package>
+</tool_dependency>

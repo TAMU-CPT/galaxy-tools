@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<tool id="NCBICDDtoGFF3" name="NCBI CDD query to GFF3" version="1.94">
+  <description>converts results of raw CDD queries to gff3 format for downstream analysis</description>
+  <version_command>perl bin/ncbi_cdd_parse.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/ncbi_cdd_parse.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#if $file and $file is not "None":
+--file "${file}"
+#end if
+
+--output "${output}"
+
+--output_files_path "${output.files_path}"
+
+--output_format "${output_format}"
+
+--output_id "${output.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="NCBI CDD Query Output" optional="True" label="file" type="data"/>
+    <param name="output_format" help="GFF3 formatted results" optional="False" label="Format of output" type="select">
+      <option value="GFF3" selected="True">GFF3</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="output" format="GFF3">
+      <change_format>
+        <when input="output_format" value="GFF3" format="interval"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests>
+    <test>
+      <param name="file" value="test-data/inputs/output.txt"/>
+      <output name="output" file="test-data/outputs/cdd-01.gff3"/>
+    </test>
+  </tests>
+</tool>

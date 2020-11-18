@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<tool id="aragorn" name="Aragorn" version="1.0.0">
+  <description>detect tRNA genes in nucleotide sequences</description>
+  <command>
+aragorn $should_show_tv.search_mode
+#if $should_show_tv.search_mode == "-mt":
+    $should_show_tv.tv
+#end if
+-gc$transl_table
+$c7
+#if $allow_introns.allow_introns_check:
+    ## -i "$allow_introns.intron_min,$allow_introns.intron_max"
+    $allow_introns.trna_overlap
+    $allow_introns.fix_pos
+    $allow_introns.report_min
+#end if
+$circular $strandedness -ps$thresh $pseudo $ss $ss2 $a $a7 $aa $j $jr
+
+$input_file
+> $output
+	</command>
+  <inputs>
+    <param name="input_file" type="data" format="fasta" label="Fasta input file" />
+    <conditional name="should_show_tv">
+      <param name="search_mode" type="select" label="Search Mode">
+        <option value="">Search for tmRNA+tRNA</option>
+        <option value="-m">Search for tmRNA genes only</option>
+        <option value="-t">Search for tRNA genes only</option>
+        <option value="-mt">Search for Metazoan mitochondrial tRNA genes. tRNA genes with introns not detected.  -i, -sr switchs ignored. Composite Metazoan mitochondrial genetic code used.</option>
+        <option value="-mtx">Search for Metazoan mitochondrial tRNA genes. tRNA genes with introns not detected.  -i, -sr switchs ignored. Composite Metazoan mitochondrial genetic code used. Do NOT report low scoring tRNA genes</option>
+        <option value="-mtam">Search for Mammalian mitochondrial tRNA genes.  -i, -sr switchs ignored.  -tv switch set. Mammalian mitochondrial genetic code used.</option>
+      </param>
+      <when value="-mt">
+        <param type="boolean" truevalue="-tv" false_value="" name="tv" label="Do not search for mitochondrial TV replacement loop tRNA genes." checked="False"/>
+      </when>
+    </conditional>
+    <!-- gencode.loc -->
+    <!-- http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi -->
+    <param name="transl_table" type="select" label="Translation Table">
+      <options from_file="gencode.loc">
+        <column name="name" index="1"/>
+        <column name="value" index="0"/>
+      </options>
+    </param>
+    <param name="c7" type="boolean" truevalue="-c7" falsevalue="" label="Search for tRNA genes with 7 base C-loops only"/>
+    <conditional name="allow_introns">
+      <param name="allow_introns_check" type="boolean" truevalue="True" falsevalue="False" label="Search for tRNAs with introns"/>
+      <when value="True">
+        <param type="integer" value="0" name="intron_min" label="Minimum length of introns"/>
+        <param type="integer" value="3000" name="intron_max" label="Maximum length of introns"/>
+        <param name="trna_overlap" type="boolean" truevalue="-io" falsevalue="" label="Allow tRNA genes with long introns to overlap shorter tRNA genes"/>
+        <param name="fix_pos" type="boolean" truevalue="-if" falsevalue="" label="fix intron between positions 37 and 38 on C-loop (one base after anticodon)."/>
+        <param name="report_min" type="boolean" truevalue="-ir" falsevalue="" label="report tRNA genes with minimum length [min] bases rather than search for tRNA genes with minimum length [min] bases. With this switch, [min] acts as an output filter, minimum intron With this switch, [min] acts as an output filter, minimum intron length for searching is still 0 bases."/>
+      </when>
+    </conditional>
+    <param name="circular" type="boolean" truevalue="-c" falsevalue="-l" checked="True" label="Sequence has circular topology, search wraps around each end"/>
+    <param name="strandedness" type="select" label="Which strands to search">
+      <option value="-d">Search both strands of each sequence.</option>
+      <option value="-s">Positive Sense Strand only</option>
+      <option value="-sc">Negative Sense Strand only</option>
+    </param>
+    <param name="thresh" type="integer" value="100" label="Change scoring thresholds to [num] percent of default levels"/>
+    <param name="pseudo" type="boolean" truevalue="-rp" falsevalue="" label="Flag possible pseudogenes" help="Flag possible pseudogenes (score &lt; 100 or tRNA anticodon loop &lt;&gt; 7 bases long). Note that genes with score &lt; 100 will not be detected or flagged if scoring thresholds are not also changed to below 100% (see -ps switch)."/>
+    <param name="ss" type="boolean" truevalue="-br" falsevalue="" label="Show secondary structure of tRNA gene primary sequence using round brackets."/>
+    <param name="ss2" type="boolean" truevalue="-ss" falsevalue="" label="Use the stricter canonical 1-2 bp spacer1 and 1 bp spacer2. Default is to allow 3 bp spacer1 and 0-2 bp spacer2, which may degrade selectivity."/>
+    <param name="a" type="boolean" truevalue="-a" falsevalue="" label="Print out tRNA domain for tmRNA genes."/>
+    <param name="a7" type="boolean" truevalue="-a7" falsevalue="" label="Restrict tRNA astem length to a maximum of 7 bases"/>
+    <param name="aa" type="boolean" truevalue="-aa" falsevalue="" label="Display message if predicted iso-acceptor species does not match species in sequence name (if present)"/>
+    <param name="j" type="boolean" truevalue="-j" falsevalue="" label="Display 4-base sequence on 3' end of astem regardless of predicted amino-acyl acceptor length."/>
+    <param name="jr" type="boolean" truevalue="-jr" falsevalue="" label="Allow some divergence of 3' amino-acyl acceptor sequence from NCCA."/>
+  </inputs>
+  <outputs>
+    <data name="output" format="txt"/>
+  </outputs>
+  <help>
+	</help>
+</tool>

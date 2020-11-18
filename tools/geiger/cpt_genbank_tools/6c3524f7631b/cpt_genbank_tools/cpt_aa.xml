@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<tool id="AA" name="Amino Acid Statistics" version="1.94">
+  <description>for an input GBK file</description>
+  <version_command>perl bin/cpt_aa.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_aa.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#for $item in $repeat_file:
+--file "${item.file}"
+#end for
+
+#if $normalize:
+--normalize
+#end if
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+</command>
+  <inputs>
+    <repeat name="repeat_file" title="File">
+      <param name="file" help="Input Genbank file" optional="False" label="file" type="data"/>
+    </repeat>
+    <param name="normalize" falsevalue="False" optional="True" truevalue="True" checked="" help="Normalize all data" type="boolean" label="normalize"/>
+    <param name="results_format" help="Analysis results" optional="False" label="Format of results" type="select">
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="ODS">ODS</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="YAML">YAML</option>
+      <option value="XLSX">XLSX</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="results" format="CSV">
+      <change_format>
+        <when input="results_format" value="TSV" format="tabular"/>
+        <when input="results_format" value="TSV_U" format="tabular"/>
+        <when input="results_format" value="CSV" format="tabular"/>
+        <when input="results_format" value="CSV_U" format="tabular"/>
+        <when input="results_format" value="XLS" format="data"/>
+        <when input="results_format" value="ODS" format="data"/>
+        <when input="results_format" value="Dumper" format="txt"/>
+        <when input="results_format" value="JSON" format="txt"/>
+        <when input="results_format" value="YAML" format="txt"/>
+        <when input="results_format" value="XLSX" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+Amino Acid Statistics
+
+DESCRIPTION
+===========
+
+This tool calculate the following statistics:
+
+-  Codon usage in CDSs
+
+   How often each codon (e.g., AAT) was used in each CDS
+
+-  AA Usage in CDSs
+
+   How often each AA residue was used in a given CDS
+
+-  Overall AA Usage
+
+   Amino acids used in every CDS (summation of previous table).
+
+
+</help>
+  <tests>
+    <test>
+      <param name="file" value="test-data/inputs/single.gbk"/>
+      <param name="results_format" value="YAML"/>
+      <param name="results" value="test-data/outputs/aa.yml"/>
+    </test>
+    <test>
+      <param name="file" value="test-data/inputs/single.gbk"/>
+      <param name="normalize" value=" "/>
+      <param name="results_format" value="YAML"/>
+      <param name="results" value="test-data/outputs/aa-norm-indiv.yml"/>
+    </test>
+  </tests>
+</tool>

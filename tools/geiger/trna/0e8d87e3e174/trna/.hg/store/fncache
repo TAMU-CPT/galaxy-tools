@@ -1,0 +1,13 @@
+data/tRNAscan.xml.i
+data/test-data/trna_arabidopsis.fasta.i
+data/aragorn_out_to_gff3.py.i
+data/test-data/tRNAscan_eukaryotic_infernal.tabular.i
+data/tool_test_output.html.i
+data/test-data/tRNAscan_eukaryotic_infernal.fasta.i
+data/aragorn.xml.i
+data/readme.rst.i
+data/tool_dependencies.xml.i
+data/tRNAscan.py.i
+data/tool_test_output.json.i
+data/test-data/aragorn_tansl-table-1_tmRNA_tRNA.fasta.i
+data/test-data/aragorn_tansl-table-1_tmRNA_tRNA.gff3.i

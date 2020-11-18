@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<tool id="sequin" name="Sequin" version="1.94.1">
+  <description>generates files which can be sent to NCBI for genome submission</description>
+  <version_command>perl cpt_sequin.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">cpt_sequin.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--ldap_url "${ldap_url}"
+
+--ldap_base "${ldap_base}"
+
+--genbank_submission_title "${genbank_submission_title}"
+
+#for $item in $repeat_genbank_record_author:
+--genbank_record_author "${item.genbank_record_author}"
+#end for
+
+--genbank_record_contact "${genbank_record_contact}"
+
+--genbank_record_affiliation "${genbank_record_affiliation}"
+
+--paper_submission_title "${paper_submission_title}"
+
+#for $item in $repeat_paper_record_author:
+--paper_record_author "${item.paper_record_author}"
+#end for
+
+#for $item in $repeat_paper_record_contact:
+--paper_record_contact "${item.paper_record_contact}"
+#end for
+
+--paper_record_affiliation "${paper_record_affiliation}"
+
+--genbank_file "${genbank_file}"
+
+--sequin "${sequin}"
+
+--sequin_files_path "${sequin.files_path}"
+
+--sequin_format "${sequin_format}"
+
+--sequin_id "${sequin.id}"
+
+--discrep "${discrep}"
+
+--discrep_files_path "${discrep.files_path}"
+
+--discrep_format "${discrep_format}"
+
+--discrep_id "${discrep.id}"
+
+</command>
+  <inputs>
+    <param value="ldaps://00-ldap-biobio.tamu.edu" name="ldap_url" help="LDAP Server URL" optional="False" label="ldap_url" type="text"/>
+    <param value="ou=People,dc=tamu,dc=edu" name="ldap_base" help="LDAP Server Base" optional="False" label="ldap_base" type="text"/>
+    <param name="genbank_submission_title" help="Genbank Submission Title" optional="False" label="genbank_submission_title" type="text"/>
+    <repeat name="repeat_genbank_record_author" title="Genbank Record Author">
+      <param name="genbank_record_author" help="Genbank record authors (LDAP DN)" optional="False" label="genbank_record_author" type="select" from_file="sequin.loc">
+        <options from_file="sequin.loc">
+          <column name="name" index="0"/>
+          <column name="value" index="1"/>
+        </options>
+      </param>
+    </repeat>
+      <param name="genbank_record_contact" help="Genbank record contact (LDAP DN)" optional="False" label="genbank_record_contact" type="select" >
+        <options from_file="sequin.loc">
+          <column name="name" index="0"/>
+          <column name="value" index="1"/>
+        </options>
+      </param>
+    <param name="genbank_record_affiliation" help="Genbank record affiliation (LDAP DN)" optional="False" label="genbank_record_affiliation" type="select" >
+        <options from_file="sequin.loc">
+          <column name="name" index="0"/>
+          <column name="value" index="1"/>
+        </options>
+      </param>
+    <param name="paper_submission_title" help="Paper Submission Title" optional="False" label="paper_submission_title" type="text"/>
+    <repeat name="repeat_paper_record_author" title="Paper Record Author">
+      <param name="paper_record_author" help="Paper record authors (LDAP DN)" optional="False" label="paper_record_author" type="select" >
+        <options from_file="sequin.loc">
+          <column name="name" index="0"/>
+          <column name="value" index="1"/>
+        </options>
+      </param>
+    </repeat>
+    <repeat name="repeat_paper_record_contact" title="Paper Record Contact">
+      <param name="paper_record_contact" help="Paper record contact (LDAP DN)" optional="False" label="paper_record_contact" type="select" >
+        <options from_file="sequin.loc">
+          <column name="name" index="0"/>
+          <column name="value" index="1"/>
+        </options>
+      </param>
+    </repeat>
+    <param name="paper_record_affiliation" help="Paper record affiliation (LDAP DN)" optional="False" label="paper_record_affiliation" type="select" >
+        <options from_file="sequin.loc">
+          <column name="name" index="0"/>
+          <column name="value" index="1"/>
+        </options>
+      </param>
+    <param name="genbank_file" help="Genbank File" optional="False" label="genbank_file" type="data"/>
+    <param name="sequin_format" help="Sequin Output" optional="False" label="Format of sequin" type="select">
+      <option value="tar">tar</option>
+      <option value="tar.gz">tar.gz</option>
+      <option value="zip" selected="True">zip</option>
+    </param>
+    <param name="discrep_format" help="NCBI tbl2asn Discrepencies" optional="False" label="Format of discrep" type="select">
+      <option value="CONF">CONF</option>
+      <option value="TXT" selected="True">TXT</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="sequin" format="zip">
+      <change_format>
+        <when input="sequin_format" value="tar" format="tar"/>
+        <when input="sequin_format" value="tar.gz" format="tar.gz"/>
+        <when input="sequin_format" value="zip" format="zip"/>
+      </change_format>
+    </data>
+    <data name="discrep" format="TXT">
+      <change_format>
+        <when input="discrep_format" value="CONF" format="txt"/>
+        <when input="discrep_format" value="TXT" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>WHY YOU CARE
+============
+
+Have you ever had to submit more than one GenBank file? Have you ever
+had to submit dozens? Do you worry that you might make mistakes? This
+tool avoids **ALL OF THAT** by letting you select the name from our
+directory, and have the person's information filled in correctly and
+automatically. This tool, on average, saves about 20-30 minutes of work
+due simply to how easy it is to fill out a couple text boxes, rather
+than the complex and *error prone* workflow normal to Sequin users.
+
+DESCRIPTION
+===========
+
+Generate Sequin/tbl2asn output for submission to genbank. Files are
+created as an archive, which can be downloaded and edited further. If
+the organisation is NOT the CPT, **PLEASE** submit your organisation's
+contact information and address and we will add it to the directory.
+</help>
+  <tests/>
+</tool>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<tool id="glimmer2genbank" name="Glimmer To Genbank" version="1.94">
+  <description>Merge Glimmer/Genemark with Fasta sequence to create a Genbank file</description>
+  <version_command>perl bin/cpt_glimmer2genbank.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_glimmer2genbank.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--glimmerfile "${glimmerfile}"
+
+--genbank "${genbank}"
+
+--genbank_files_path "${genbank.files_path}"
+
+--genbank_format "${genbank_format}"
+
+--genbank_id "${genbank.id}"
+
+</command>
+  <inputs>
+    <param format="fasta" name="file" help="Input file (fasta)" optional="False" label="file" type="data"/>
+    <param name="glimmerfile" help="File to obtain glimmer data from" optional="False" label="glimmerfile" type="data"/>
+    <param name="genbank_format" help="Glimmer converted to Genbank" optional="False" label="Format of genbank" type="select">
+      <option value="Genbank" selected="True">Genbank</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="genbank" format="Genbank">
+      <change_format>
+        <when input="genbank_format" value="Genbank" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+This tool with the output of the glimmer gene caller and the genome's
+fasta file, will produce a GenBank formatted file for analysis. The
+genbank file lacks any feature IDs, so you might want to use the CPT's
+gene renumbering tool to add those.
+</help>
+  <tests/>
+</tool>

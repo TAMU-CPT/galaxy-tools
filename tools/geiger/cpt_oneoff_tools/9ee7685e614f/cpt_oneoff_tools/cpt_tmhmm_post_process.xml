@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<tool id="tmhmm_post_process" name="TMHMM+Fasta processing" version="1.94">
+  <description>uses TMHMM output and original fasta sequence to process out various portions of the TMHMM results for use later</description>
+  <version_command>perl bin/cpt_tmhmm_post_process.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_tmhmm_post_process.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--fasta "${fasta}"
+
+--file "${file}"
+
+--min_length "${min_length}"
+
+--max_length "${max_length}"
+
+--min_exp_aas "${min_exp_aas}"
+
+--max_exp_aas "${max_exp_aas}"
+
+--min_total_prob_n_in "${min_total_prob_n_in}"
+
+--max_total_prob_n_in "${max_total_prob_n_in}"
+
+--min_exp_num_first_60 "${min_exp_num_first_60}"
+
+--max_exp_num_first_60 "${max_exp_num_first_60}"
+
+--min_num_predict_tmhs "${min_num_predict_tmhs}"
+
+--max_num_predict_tmhs "${max_num_predict_tmhs}"
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+--last_ones "${last_ones}"
+
+--last_ones_files_path "${last_ones.files_path}"
+
+--last_ones_format "${last_ones_format}"
+
+--last_ones_id "${last_ones.id}"
+
+</command>
+  <inputs>
+    <param format="fasta" name="fasta" help="Input file" optional="False" label="fasta" type="data"/>
+    <param name="file" help="TMHMM txt output file" optional="False" label="file" type="data"/>
+    <param value="10" name="min_length" help="Minimum Length" optional="False" label="min_length" type="integer"/>
+    <param value="200" name="max_length" help="Maximum Length" optional="False" label="max_length" type="integer"/>
+    <param value="1" name="min_exp_aas" help="Minimum Exp number of AAs in TMHs" optional="False" label="min_exp_aas" type="integer"/>
+    <param value="50" name="max_exp_aas" help="Maximum Exp number of AAs in TMHs" optional="False" label="max_exp_aas" type="integer"/>
+    <param value="0" name="min_total_prob_n_in" help="Minimum Total prob of N-in" optional="False" label="min_total_prob_n_in" type="integer"/>
+    <param value="100" name="max_total_prob_n_in" help="Maximum Total prob of N-in" optional="False" label="max_total_prob_n_in" type="integer"/>
+    <param value="0" name="min_exp_num_first_60" help="Minimum Exp number, first 60 AAs" optional="False" label="min_exp_num_first_60" type="integer"/>
+    <param value="100" name="max_exp_num_first_60" help="Maximum Exp number, first 60 AAs" optional="False" label="max_exp_num_first_60" type="integer"/>
+    <param value="1" name="min_num_predict_tmhs" help="Minimum Number of predicted TMHs" optional="False" label="min_num_predict_tmhs" type="integer"/>
+    <param value="10" name="max_num_predict_tmhs" help="Maximum Number of predicted TMHs" optional="False" label="max_num_predict_tmhs" type="integer"/>
+    <param name="results_format" help="Analysis results" optional="False" label="Format of results" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+    <param name="last_ones_format" help="Last ones (?)" optional="False" label="Format of last_ones" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="results" format="Fasta">
+      <change_format>
+        <when input="results_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+    <data name="last_ones" format="Fasta">
+      <change_format>
+        <when input="last_ones_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>
+</help>
+  <tests/>
+</tool>

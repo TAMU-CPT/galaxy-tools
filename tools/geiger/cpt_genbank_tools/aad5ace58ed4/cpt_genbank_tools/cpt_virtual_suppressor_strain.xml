@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<tool id="VirtSupStr" name="Virtual Suppressor Strain" version="1.94">
+  <description>generates a genome with specified stop codons suppressed</description>
+  <version_command>perl bin/cpt_virtual_suppressor_strain.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_virtual_suppressor_strain.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+#for $item in $repeat_suppress:
+--suppress "${item.suppress}"
+#end for
+
+#for $item in $repeat_replacement:
+--replacement "${item.replacement}"
+#end for
+
+#if $translate:
+--translate
+#end if
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+--modified_features "${modified_features}"
+
+--modified_features_files_path "${modified_features.files_path}"
+
+--modified_features_format "${modified_features_format}"
+
+--modified_features_id "${modified_features.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <repeat name="repeat_suppress" title="Suppress">
+      <param name="suppress" help="Suppress this stop codon. All features with this codon will be extended to the next available stop codon." optional="False" label="suppress" type="select">
+        <option value="amber">TAG (Amber)</option>
+        <option value="ochre">TAA (Ochre)</option>
+        <option value="opal">TGA (Opal/Umber)</option>
+      </param>
+    </repeat>
+    <repeat name="repeat_replacement" title="Replacement">
+      <param value="N" name="replacement" help="Replace a suppressed stop codon with a user specified amino acid. Defaults to an N (because of bioperl restrictions), but this should be replaced with an 1 letter amino acid. This option is ONLY used if you also specify to translate the sequence below" optional="False" label="replacement" type="text"/>
+    </repeat>
+    <param name="translate" falsevalue="False" optional="True" truevalue="True" checked="" help="Translate to amino acids" type="boolean" label="translate"/>
+    <param name="results_format" help="Genbank File with suppressed stops" optional="False" label="Format of results" type="select">
+      <option value="ABI">ABI</option>
+      <option value="AGAVE">AGAVE</option>
+      <option value="ALF">ALF</option>
+      <option value="Ace">Ace</option>
+      <option value="AsciiTree">AsciiTree</option>
+      <option value="BSML">BSML</option>
+      <option value="BSML_SAX">BSML_SAX</option>
+      <option value="CTF">CTF</option>
+      <option value="ChadoXML">ChadoXML</option>
+      <option value="Chaos">Chaos</option>
+      <option value="ChaosXML">ChaosXML</option>
+      <option value="EMBL">EMBL</option>
+      <option value="EntrezGene">EntrezGene</option>
+      <option value="Excel">Excel</option>
+      <option value="Exp">Exp</option>
+      <option value="Fasta">Fasta</option>
+      <option value="Fastq">Fastq</option>
+      <option value="GAME">GAME</option>
+      <option value="GCG">GCG</option>
+      <option value="Genbank" selected="True">Genbank</option>
+      <option value="Interpro">Interpro</option>
+      <option value="KEGG">KEGG</option>
+      <option value="LargeFasta">LargeFasta</option>
+      <option value="LaserGene">LaserGene</option>
+      <option value="LocusLink">LocusLink</option>
+      <option value="PHD">PHD</option>
+      <option value="PIR">PIR</option>
+      <option value="PLN">PLN</option>
+      <option value="Qual">Qual</option>
+      <option value="Raw">Raw</option>
+      <option value="SCF">SCF</option>
+      <option value="SeqXML">SeqXML</option>
+      <option value="Strider">Strider</option>
+      <option value="Swiss">Swiss</option>
+      <option value="TIGR">TIGR</option>
+      <option value="TIGRXML">TIGRXML</option>
+      <option value="Tab">Tab</option>
+      <option value="TinySeq">TinySeq</option>
+      <option value="ZTR">ZTR</option>
+    </param>
+    <param name="modified_features_format" help="Fasta File with modified features" optional="False" label="Format of modified_features" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="results" format="Genbank">
+      <change_format>
+        <when input="results_format" value="ABI" format="data"/>
+        <when input="results_format" value="AGAVE" format="xml"/>
+        <when input="results_format" value="ALF" format=""/>
+        <when input="results_format" value="Ace" format="txt"/>
+        <when input="results_format" value="AsciiTree" format="txt"/>
+        <when input="results_format" value="BSML" format="xml"/>
+        <when input="results_format" value="BSML_SAX" format="xml"/>
+        <when input="results_format" value="CTF" format="data"/>
+        <when input="results_format" value="ChadoXML" format="xml"/>
+        <when input="results_format" value="Chaos" format="xml"/>
+        <when input="results_format" value="ChaosXML" format="xml"/>
+        <when input="results_format" value="EMBL" format="txt"/>
+        <when input="results_format" value="EntrezGene" format="txt"/>
+        <when input="results_format" value="Excel" format="data"/>
+        <when input="results_format" value="Exp" format="txt"/>
+        <when input="results_format" value="Fasta" format="fasta"/>
+        <when input="results_format" value="Fastq" format="fastq"/>
+        <when input="results_format" value="GAME" format="xml"/>
+        <when input="results_format" value="GCG" format="txt"/>
+        <when input="results_format" value="Genbank" format="txt"/>
+        <when input="results_format" value="Interpro" format="xml"/>
+        <when input="results_format" value="KEGG" format="txt"/>
+        <when input="results_format" value="LargeFasta" format="txt"/>
+        <when input="results_format" value="LaserGene" format="data"/>
+        <when input="results_format" value="LocusLink" format="data"/>
+        <when input="results_format" value="PHD" format="data"/>
+        <when input="results_format" value="PIR" format="data"/>
+        <when input="results_format" value="PLN" format="data"/>
+        <when input="results_format" value="Qual" format="data"/>
+        <when input="results_format" value="Raw" format="txt"/>
+        <when input="results_format" value="SCF" format="data"/>
+        <when input="results_format" value="SeqXML" format="xml"/>
+        <when input="results_format" value="Strider" format="data"/>
+        <when input="results_format" value="Swiss" format="txt"/>
+        <when input="results_format" value="TIGR" format="xml"/>
+        <when input="results_format" value="TIGRXML" format="xml"/>
+        <when input="results_format" value="Tab" format="tabular"/>
+        <when input="results_format" value="TinySeq" format="xml"/>
+        <when input="results_format" value="ZTR" format="data"/>
+      </change_format>
+    </data>
+    <data name="modified_features" format="Fasta">
+      <change_format>
+        <when input="modified_features_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+Virtual Suppressor Strain
+
+DESCRIPTION
+===========
+
+Given (one or more, mutli-genome) genbank file(s), this tool will extend
+features past specific stop codon types, suppressing them. It will also
+produce a fasta DNA sequence for modified features, allowing further
+investigation of those features which changed.
+
+Acknowledgements
+================
+
+This tool was developed with significant input from Dr. Jason Gill @
+TAMU
+</help>
+  <tests>
+    <test>
+      <param name="file" value="test-data/inputs/multi.gbk"/>
+      <param name="suppress" value="amber"/>
+      <param name="translate" value=""/>
+      <output name="modified_features" file="test-data/outputs/virt_suppressor_strain.fa"/>
+      <output name="results" file="test-data/outputs/virt_suppressor_strain.gbk"/>
+    </test>
+  </tests>
+</tool>

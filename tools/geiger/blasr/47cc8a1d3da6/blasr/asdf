@@ -1,0 +1,13 @@
+    <conditional name="reads_source">
+        <param name="source_select" type="select" label="Reads source">
+            <option value="fasta">Fasta</option>
+            <option value="bax">plx.h5/bax.h5</option>
+        </param>
+        <when value="fasta">
+            <param help="Fasta read data" label="fasta_reads" name="fasta_reads" optional="False" type="data" format="fasta"/>
+        </when>
+        <when value="bax">
+            <param help="plx.h5/bax.h5 data" label="reads" name="reads" optional="False" type="data" format="pacbioreads"/>
+        </when>
+    </conditional>
+

@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<tool id="PHAnTASM.ComparisonMapper" name="Comparison Mapper" version="1.94">
+  <description>utilising multiple sets of input data as a basis for generating a comparison matrix which can then be fed into the clustering tool</description>
+  <version_command>perl bin/phantasm_compare.pl --version</version_command>
+  <stdio>
+    <regex match="Exception" source="stderr" level="fatal" description="Tool exception"/>
+  </stdio>
+  <command interpreter="perl">bin/phantasm_compare.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#for $item in $repeat_file:
+--file "${item.file}"
+--metric_weight "${item.metric_weight}"
+--metric_multiplier "${item.metric_multiplier}"
+--metric_adjustment "${item.metric_adjustment}"
+#end for
+
+--comp_map "${comp_map}"
+
+--comp_map_files_path "${comp_map.files_path}"
+
+--comp_map_format "${comp_map_format}"
+
+--comp_map_id "${comp_map.id}"
+
+</command>
+  <inputs>
+    <repeat name="repeat_file" title="File">
+      <param name="file" help="Input Two-Way Comparison. Should be a three-column file with column 1 and 2 being a from/to name of a node. Column 3 should be the edge weight between the nodes. For bi-directional nodes, this tool will average the values" optional="False" label="file" type="data"/>
+      <param min="1" value="1" name="metric_weight" help="How important/how much of the overall result should this particular variable count as. If you have 3 files and you specify the numbers 2, 1, 1, then dataset 1 will have a 50% weight and the other two will have a 25% weighting." optional="False" label="metric_weight" type="float"/>
+      <param value="1" name="metric_multiplier" help="Dataset multiplier. Datasets are allowed to be transformed again before use with a formula of f(x) = a*x + b; this represents the value of &quot;a&quot;" optional="False" label="metric_multiplier" type="float"/>
+      <param value="0" name="metric_adjustment" help="Dataset constant. Datasets are allowed to be transformed again before use with a formula of f(x) = a*x + b; this represents the value of &quot;b&quot;" optional="False" label="metric_adjustment" type="float"/>
+    </repeat>
+    <param name="comp_map_format" help="Comparison Matrix" optional="False" label="Format of comp_map" type="select">
+      <option value="TSV">TSV</option>
+      <option value="TSV_U" selected="True">TSV_U</option>
+      <option value="CSV">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="ODS">ODS</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="YAML">YAML</option>
+      <option value="XLSX">XLSX</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="comp_map" format="TSV_U">
+      <change_format>
+        <when input="comp_map_format" value="TSV" format="tabular"/>
+        <when input="comp_map_format" value="TSV_U" format="tabular"/>
+        <when input="comp_map_format" value="CSV" format="tabular"/>
+        <when input="comp_map_format" value="CSV_U" format="tabular"/>
+        <when input="comp_map_format" value="XLS" format="data"/>
+        <when input="comp_map_format" value="ODS" format="data"/>
+        <when input="comp_map_format" value="Dumper" format="txt"/>
+        <when input="comp_map_format" value="JSON" format="txt"/>
+        <when input="comp_map_format" value="YAML" format="txt"/>
+        <when input="comp_map_format" value="XLSX" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+PHAnTASM Cluster Comparison Map Table Generator
+
+DESCRIPTION
+===========
+
+Given a set ``G`` of genomes, and one or more sets of scores
+``S_{1..n}``, this tool aggregates those sets of scores (with
+appropriate modifications) and produces a single comparison map which
+can be fed in to the PHAnTASM Hierarchical Clustering Tool
+
+To put it mathematically,
+
+::
+
+    let f(S_i, g1, g2) be a function of S_i which returns the score associated with the pair g1,g2 in S_i
+
+    forall sets of scores S_i in S_{1..n}:
+        forall genomes g1,g2 in G:
+            f(S_i, g1, g2) is defined
+
+    From this knowledge, and a set of transformations T with a unique mapping to S, we can generate a result mapping R (like S)
+
+    f(R, g1, g2) = \sum_{i=1}^{n} f(S_i, g1, g2) * T_i
+
+    Which represents an aggregation of all our score sets S
+
+</help>
+  <tests/>
+</tool>

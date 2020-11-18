@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<tool id="ColumnarDataRescale" name="Columnar Data Rescale and Partitioning" version="1.94.2">
+  <description>transforms data sets according to a particular modification type to coerce them for use in downstream analysis</description>
+  <version_command>perl bin/phantasm_data_rescale.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/phantasm_data_rescale.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--column "${column}"
+
+#if $min and $min is not "None":
+--min "${min}"
+#end if
+
+#if $max and $max is not "None":
+--max "${max}"
+#end if
+
+#if $none:
+--none
+#end if
+
+#if $partition_type and $partition_type is not "None":
+--partition_type "${partition_type}"
+#end if
+
+#for $item in $repeat_user_provided_breakpoints:
+--user_provided_breakpoints "${item.user_provided_breakpoints}"
+#end for
+
+#if $k_means_clusters and $k_means_clusters is not "None":
+--k_means_clusters "${k_means_clusters}"
+#end if
+
+#if $percentage_based_partitions and $percentage_based_partitions is not "None":
+--percentage_based_partitions "${percentage_based_partitions}"
+#end if
+
+--rescale "${rescale}"
+
+--rescale_files_path "${rescale.files_path}"
+
+--rescale_format "${rescale_format}"
+
+--rescale_id "${rescale.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input Tabular Data" optional="False" label="file" type="data"/>
+    <param min="1" value="2" name="column" help="Selected column from dataset to apply transformation to, where 1 is the first column" optional="False" label="column" type="integer"/>
+    <param name="min" help="New minimum value for data set. All data will be shifted upwards by a factor calculated from the data set's max valu" optional="True" label="min" type="integer"/>
+    <param name="max" help="New maximum value for data set. All data will be shifted downward by a factor calculated from the data set's min value" optional="True" label="max" type="integer"/>
+    <param name="none" falsevalue="False" optional="True" truevalue="True" checked="" help="No partitioning is done" type="boolean" label="none"/>
+    <param name="partition_type" help="Select the type of partitioning to use (galaxy only)" optional="True" label="partition_type" type="select">
+      <option value="kmeans">1D K-means clustering</option>
+      <option value="none">No partitioning is done</option>
+      <option value="simple">Simple % of min/max based partitions</option>
+      <option value="user">User specified breakpoints</option>
+    </param>
+    <repeat name="repeat_user_provided_breakpoints" title="User Provided Breakpoints">
+      <param name="user_provided_breakpoints" help="This option allows you to specify a set of values that act as breakpoints for the data. Any value less than OR equal to will be within the cutoff. Data is then renumbered as 0..#_of_clusters. If these numbers should be different, re-run this tool on the output with min/max/invert, or use the PHAnTASM Data Transform." optional="True" label="user_provided_breakpoints" type="float"/>
+    </repeat>
+    <param name="k_means_clusters" help="Number of k-means clusters to create (or 0 for &quot;best guess&quot;)" optional="True" label="k_means_clusters" type="integer"/>
+    <param name="percentage_based_partitions" help="Simple partitions based on an N equal subdivisions of min/max. Good for evenly distributed data." optional="True" label="percentage_based_partitions" type="integer"/>
+    <param name="rescale_format" help="Rescaled Data" optional="False" label="Format of rescale" type="select">
+      <option value="CSV">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U" selected="True">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="rescale" format="TSV_U">
+      <change_format>
+        <when input="rescale_format" value="CSV" format="tabular"/>
+        <when input="rescale_format" value="CSV_U" format="tabular"/>
+        <when input="rescale_format" value="Dumper" format="txt"/>
+        <when input="rescale_format" value="JSON" format="txt"/>
+        <when input="rescale_format" value="ODS" format="data"/>
+        <when input="rescale_format" value="TSV" format="tabular"/>
+        <when input="rescale_format" value="TSV_U" format="tabular"/>
+        <when input="rescale_format" value="XLS" format="data"/>
+        <when input="rescale_format" value="XLSX" format="data"/>
+        <when input="rescale_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+PHAnTASM Data Rescaling tool will help the user fix the distribution of
+data in their tables of values. Given a table
+
+::
+
+    #ID, VAL
+    A,-1
+    B,-2
+    C,3
+    D,4
+
+this tool will allow you to:
+
+-  Change scale of data
+-  Cluster data
+
+Changing Data Scale
+-------------------
+
+Rescaling data allows you to adapt your data into a format more
+paletable to downstream analysis. Given a set of negative numbers, it
+may be desirable to shift these to be positive numbers so a logarithm
+may be applied. By setting ``min`` and ``max``, it is possible to do
+exactly that. For the above table, if we set ``min = 1`` and
+``max = 10``, we would see the following results:
+
+::
+
+    A,2.5
+    B,1
+    C,8.5
+    D,10
+
+Very easy!
+
+Clustering Data
+---------------
+
+You may find that the range of values in your dataset is too larger, and
+that these values should be binned or clustered. This tool offers a
+couple different methods by which that might be achieved.
+
+-  User specified breakpoints
+
+   These are the simplest and most controlled option. The user specifies
+   a number of different breakpoints and values will be distributed into
+   bins that are inside those breakpoints.
+
+-  % based paritions
+
+   Another very simple option is to say "I want N bins". The number line
+   along which your data is distributed is then split into N+1 pieces
+   and your data is binned accordingly.
+
+-  k-means clustering
+
+   Alternatively, you can use k-means clustering to handle your
+   analysis. K-means clustering will attempt to cluster your data into K
+   bins, which you can specify or let the library determine
+   automatically. If you specify K, be sure that
+
+   ::
+
+       N &gt; 2 * K^2
+
+   where N is the number of data points you have and K is the number of
+   clusters you wish to have.
+
+
+</help>
+  <tests/>
+</tool>

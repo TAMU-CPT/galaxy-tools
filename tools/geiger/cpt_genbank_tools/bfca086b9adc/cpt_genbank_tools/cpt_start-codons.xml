@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<tool id="StartCodonStats" name="Start Codon Statistics" version="1.94">
+  <description>Extract a table of start codon frequencies from a Genbank file</description>
+  <version_command>perl bin/cpt_start-codons.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_start-codons.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#for $item in $repeat_file:
+--file "${item.file}"
+#end for
+
+--results "${results}"
+
+--results_files_path "${results.files_path}"
+
+--results_format "${results_format}"
+
+--results_id "${results.id}"
+
+</command>
+  <inputs>
+    <repeat name="repeat_file" title="File">
+      <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    </repeat>
+    <param name="results_format" help="Start Codon Statistics" optional="False" label="Format of results" type="select">
+      <option value="TSV">TSV</option>
+      <option value="TSV_U">TSV_U</option>
+      <option value="CSV" selected="True">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="ODS">ODS</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="YAML">YAML</option>
+      <option value="XLSX">XLSX</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="results" format="CSV">
+      <change_format>
+        <when input="results_format" value="TSV" format="tabular"/>
+        <when input="results_format" value="TSV_U" format="tabular"/>
+        <when input="results_format" value="CSV" format="tabular"/>
+        <when input="results_format" value="CSV_U" format="tabular"/>
+        <when input="results_format" value="XLS" format="data"/>
+        <when input="results_format" value="ODS" format="data"/>
+        <when input="results_format" value="Dumper" format="txt"/>
+        <when input="results_format" value="JSON" format="txt"/>
+        <when input="results_format" value="YAML" format="txt"/>
+        <when input="results_format" value="XLSX" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+This tool produces a table of start codons used in a genome
+</help>
+  <tests>
+    <test>
+      <param name="file" value="test-data/inputs/multi.gbk"/>
+      <param name="results" value="test-data/outputs/start_codons.csv"/>
+    </test>
+  </tests>
+</tool>

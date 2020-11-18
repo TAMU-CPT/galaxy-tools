@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<tool id="PHAnTASM.Comparison.CIDS" name="CID Scoring" version="1.94">
+  <description>produces from-to-score table of CIDS for input CID table</description>
+  <version_command>perl bin/phantasm_compare_cids.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command interpreter="perl">bin/phantasm_compare_cids.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+--comp_cid "${comp_cid}"
+
+--comp_cid_files_path "${comp_cid.files_path}"
+
+--comp_cid_format "${comp_cid_format}"
+
+--comp_cid_id "${comp_cid.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Genome CID list" optional="False" label="file" type="data"/>
+    <param name="comp_cid_format" help="Scored CID pairs" optional="False" label="Format of comp_cid" type="select">
+      <option value="CSV">CSV</option>
+      <option value="CSV_U">CSV_U</option>
+      <option value="Dumper">Dumper</option>
+      <option value="JSON">JSON</option>
+      <option value="ODS">ODS</option>
+      <option value="TSV">TSV</option>
+      <option value="TSV_U" selected="True">TSV_U</option>
+      <option value="XLS">XLS</option>
+      <option value="XLSX">XLSX</option>
+      <option value="YAML">YAML</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="comp_cid" format="TSV_U">
+      <change_format>
+        <when input="comp_cid_format" value="CSV" format="tabular"/>
+        <when input="comp_cid_format" value="CSV_U" format="tabular"/>
+        <when input="comp_cid_format" value="Dumper" format="txt"/>
+        <when input="comp_cid_format" value="JSON" format="txt"/>
+        <when input="comp_cid_format" value="ODS" format="data"/>
+        <when input="comp_cid_format" value="TSV" format="tabular"/>
+        <when input="comp_cid_format" value="TSV_U" format="tabular"/>
+        <when input="comp_cid_format" value="XLS" format="data"/>
+        <when input="comp_cid_format" value="XLSX" format="data"/>
+        <when input="comp_cid_format" value="YAML" format="txt"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>NAME
+====
+
+PHAnTASM CID Scoring Tool
+
+DESCRIPTION
+===========
+
+Given a list of CIDS
+
+::
+
+    #Genome     CID
+    Lambda      c+m+r-r-m+m+
+    Rogue       r-m+m+c+m+r-
+
+This tool will score all vs. all pairings. The scoring process involves
+taking a query CID (let's use Lambda's in this example) and a subject
+CID (Rogue's). The subject CID is reversed and complemented
+
+::
+
+    r-m+m+c+m+r-
+    # reversed + comp'd:
+    r+m-c-m-m-r+
+
+Then with both of these strings, they're rotated through all possible
+rotations. The trivial example of the string ``abcd`` would produce
+
+::
+
+    abcd
+    bcda
+    cdab
+    dabc
+
+With a long list of reversed+complemented and rotations of these
+possibilities, we score our subject and queries with a simple
+calculation of Levenshtein distance. The minimum score "wins", and the
+others are discarded. This process is done to account for the
+possibility the genome was opened in a different location than our
+query, but still has an identical layout of genes.
+</help>
+  <tests/>
+</tool>

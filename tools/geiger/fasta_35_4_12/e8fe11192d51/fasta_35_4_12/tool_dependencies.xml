@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="fasta35" version="35.4.12">
+    <install version="1.0">
+      <actions>
+	      <action type="download_by_url" target_filename="fasta-35.4.12.tar.gz">http://faculty.virginia.edu/wrpearson/fasta/fasta3/fasta-35.4.12.tar.gz</action>
+        <action type="shell_command">
+		cd src &amp;&amp; make -f ../make/Makefile.linux64;
+ </action>
+	<action type="move_directory_files">
+		<source_directory>bin</source_directory>
+		<destination_directory>$INSTALL_DIR/bin</destination_directory>
+	</action>
+        <action type="set_environment">
+          <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin</environment_variable>
+        </action>
+      </actions>
+    </install>
+    <readme>Compiling numpy requires a C compiler (typically gcc).</readme>
+  </package>
+</tool_dependency>

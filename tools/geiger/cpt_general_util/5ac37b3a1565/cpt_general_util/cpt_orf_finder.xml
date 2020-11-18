@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<tool id="NaiveOrfFinder" name="Na&#xEF;ve Orf Finder" version="1.94">
+  <description>finds orf finders via a very basic start/stop analysis. No further processing is done. c.f. Emboss Sixpack</description>
+  <version_command>perl bin/cpt_orf_finder.pl --version</version_command>
+  <stdio>
+    <regex match="Exception" source="stderr" level="fatal" description="Tool exception"/>
+  </stdio>
+  <command interpreter="perl">bin/cpt_orf_finder.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${file}"
+
+#if $atg:
+--atg
+#end if
+
+#if $ctg:
+--ctg
+#end if
+
+#if $ttg:
+--ttg
+#end if
+
+#if $gtg:
+--gtg
+#end if
+
+--min_gene_length "${min_gene_length}"
+
+#if $translate:
+--translate
+#end if
+
+--fasta "${fasta}"
+
+--fasta_files_path "${fasta.files_path}"
+
+--fasta_format "${fasta_format}"
+
+--fasta_id "${fasta.id}"
+
+</command>
+  <inputs>
+    <param name="file" help="Input file" optional="False" label="file" type="data"/>
+    <param name="atg" falsevalue="False" optional="True" truevalue="True" checked="" help="ATG is a valid start" type="boolean" label="atg"/>
+    <param name="ctg" falsevalue="False" optional="True" truevalue="True" checked="" help="CTG is a valid start" label="ctg" type="boolean"/>
+    <param name="ttg" falsevalue="False" optional="True" truevalue="True" checked="" help="TTG is a valid start" label="ttg" type="boolean"/>
+    <param name="gtg" falsevalue="False" optional="True" truevalue="True" checked="" help="GTG is a valid start" label="gtg" type="boolean"/>
+    <param value="30" name="min_gene_length" help="Minimum gene length." optional="False" label="min_gene_length" type="integer"/>
+    <param name="translate" falsevalue="False" optional="True" truevalue="True" checked="" help="Translate from DNA to proteins" label="translate" type="boolean"/>
+    <param name="fasta_format" help="Found ORFs" optional="False" label="Format of fasta" type="select">
+      <option value="Fasta" selected="True">Fasta</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="fasta" format="Fasta">
+      <change_format>
+        <when input="fasta_format" value="Fasta" format="fasta"/>
+      </change_format>
+    </data>
+  </outputs>
+  <help>DESCRIPTION
+===========
+
+Basically this is EMBOSS six-pack, with the option of selecting your
+start codons
+</help>
+  <tests/>
+</tool>

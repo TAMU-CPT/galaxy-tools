@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="velvet" version="1.2.10">
+      <repository changeset_revision="3530dd738f99" name="package_velvet_1_2_10" owner="esr-" toolshed="https://cpt.tamu.edu/toolshed" />
+    </package>
+</tool_dependency>

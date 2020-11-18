@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<tool id="PHACTS_03" name="PHACTS" version="0.3">
+  <requirements>
+    <requirement type="package" version="0.3">phacts03</requirement>
+    <requirement type="package" version="35.4.12">fasta35</requirement>
+  </requirements>
+  <description>simple and automated classification of phage lifestyles</description>
+  <version_command>phacts.pl --version</version_command>
+  <stdio>
+    <exit_code range="1:" level="fatal"/>
+  </stdio>
+  <command>phacts.pl --file "${file}" --classes \${PHACTS_PATH}/${classes} | sed -e '1,2s/^/#/g' > ${output}
+</command>
+  <inputs>
+    <param format="fasta" name="file" help="Input Fasta Genome" optional="False" label="file" type="data"/>
+    <param name="classes" help="Classification Database" optional="False" label="classes" type="select">
+      <option value="classes_family">Phage Family</option>
+      <option value="classes_gram">Garm Stain of Host</option>
+      <option value="classes_lifestyle">Lytic or Lysogenic</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="output" format="tabular" />
+  </outputs>
+  <help>About
+=====
+
+Documentation for PHACTS is hosted at
+`phantome &lt;http://www.phantome.org/PHACTS/about.htm&gt;`__
+</help>
+  <tests/>
+</tool>
