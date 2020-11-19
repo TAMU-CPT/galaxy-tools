@@ -368,8 +368,8 @@ class IntronFinder(object):
                 id=cluster_id,
                 qualifiers={
                     "ID": ["gp_%s" % cluster_idx],
-                    "Note": evidence_notes,
-                    "intron_info": clusters[cluster_id][0]["match_id"],
+                    "Percent_Identities": evidence_notes,
+                    "Note": clusters[cluster_id][0]["match_id"],
                 },
             )
 
