@@ -77,7 +77,7 @@ def main():
     inexactRec = [0, 0 ,0]
     hypoRec = [0, 0, 0]
     newCount = 0
-    oldCOunt = 0
+    oldCount = 0
     while True:
         if old_i >= len(old_features) and new_i >= len(new_features):
             break
