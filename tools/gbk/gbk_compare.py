@@ -20,6 +20,12 @@ import itertools
 import sys
 
 
+def addArr(arrA, arrB):
+    res = []
+    for x in range(0, min(len(a1, a2))):
+      res[x] = arrA[x] + arrB[x]
+    return res
+
 def get_arguments():
     parser = argparse.ArgumentParser(description='Compare GenBank annotations',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -29,10 +35,15 @@ def get_arguments():
     parser.add_argument('annotation_2', type=str,
                         help='Second annotated genome in Genbank format')
 
+
     parser.add_argument('--match_identity_threshold', type=float, default=0.7,
                         help='Two genes must have at least this identity to be considerd the same (0.0 to 1.0)')
     parser.add_argument('--allowed_skipped_genes', type=int, default=10,
                         help='This many missing genes are allowed when aligning the annotations')
+
+    parser.add_argument(
+        "-sumOut", type=argparse.FileType("w"), help="Summary out file"
+    )
     args = parser.parse_args()
     return args
 
@@ -53,8 +64,8 @@ def main():
         if f.type == 'CDS':
             new_features.append(f)
 
-    print('Features in old assembly:', len(old_features))
-    print('Features in new assembly:', len(new_features))
+    args.sumOut.write('Features in old assembly:\t' + str(len(old_features)) + "\n")
+    args.sumOut.write('Features in new assembly:\t' + str(len(new_features)) + "\n\n")
 
     # Align the features to each other.
     offsets = sorted(list(itertools.product(range(args.allowed_skipped_genes),
@@ -62,6 +73,11 @@ def main():
                      key=lambda x: x[0]+x[1])
     
     old_i, new_i = 0, 0
+    exactRec = 0
+    inexactRec = [0, 0 ,0]
+    hypoRec = [0, 0, 0]
+    newCount = 0
+    oldCOunt = 0
     while True:
         if old_i >= len(old_features) and new_i >= len(new_features):
             break
@@ -82,9 +98,15 @@ def main():
             if match:
                 for j in range(old_offset):
                     print_in_old_not_new(old_features[old_i + j])
+                    oldCount += 1
                 for j in range(new_offset):
                     print_in_new_not_old(new_features[new_i + j])
-                print_match(old_features[old_i + old_offset], new_features[new_i + new_offset], identity, length_diff)
+                    newCount += 1
+                if identity == 1.0:
+                  exactRec += 1
+                res1, res2 = print_match(old_features[old_i + old_offset], new_features[new_i + new_offset], identity, length_diff)
+                inexactRec = addArr(inexactRec, res1)
+                hypoRec = addArr(hypoRec, res2)
                 old_i += old_offset
                 new_i += new_offset
                 break
@@ -97,19 +119,37 @@ def main():
         old_i += 1
         new_i += 1
 
+    args.sumOut.write('Exact Match:\t' + str(exactRec) + "\n\n")
+
+    args.sumOut.write('Inexact Match:\t' + str(inexactRec[0] + inexactRec[1] + inexactRec[2]) + "\n")
+    args.sumOut.write('  Same length:\t' + str(inexactRec[0]) + "\n")
+    args.sumOut.write('  New Seq longer:\t' + str(inexactRec[2]) + "\n")
+    args.sumOut.write('  Old Seq longer:\t' + str(inexactRec[1]) + "\n\n")
+     
+    args.sumOut.write('In New but not in Old:\t' + str(newCount) + "\n")
+    args.sumOut.write('In Old but not in New:\t' + str(oldCount) + "\n\n")
+
+    args.sumOut.write('No Longer Hypothetical:\t' + str(hypoRec[1]) + "\n")
+    args.sumOut.write('Still Hypothetical:\t' + str(hypoRec[0] + hypoRec[2]) + "\n")
+    
 
 def print_match(f1, f2, identity, length_diff):
     print('', flush=True)
+    matchArr = [0, 0, 0]
+    hypoArr = [0, 0, 0]
     if identity == 1.0:
         print('Exact match')
     else:
         print('Inexact match (' + '%.2f' % (identity * 100.0) + '% ID, ', end='')
         if length_diff == 0:
             print('same length)')
+            matchArr[0] += 1
         elif length_diff > 0:
             print('old seq longer)')
+            matchArr[1] += 1
         elif length_diff < 0:
             print('new seq longer)')
+            matchArr[2] += 1
     print('  old: ', end='')
     print_feature_one_line(f1)
     print('  new: ', end='')
@@ -118,11 +158,15 @@ def print_match(f1, f2, identity, length_diff):
     p2 = f2.qualifiers['product'][0].lower()
     if 'hypothetical' in p1 and 'hypothetical' in p2:
         print('  still hypothetical')
+        hypoArr[0] += 1
     if 'hypothetical' in p1 and 'hypothetical' not in p2:
         print('  no longer hypothetical')
+        hypoArr[1] += 1
     if 'hypothetical' not in p1 and 'hypothetical' in p2:
         print('  became hypothetical')
+        hypoArr[2] += 1
 
+    return matchArr, hypoArr
 
 def print_in_old_not_new(f): # rename file outputs
     print('')
