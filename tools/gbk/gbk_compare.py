@@ -23,7 +23,7 @@ import sys
 def addArr(arrA, arrB):
     res = []
     for x in range(0, min(len(arrA), len(arrB))):
-      res[x] = arrA[x] + arrB[x]
+      res.append(arrA[x] + arrB[x])
     return res
 
 def get_arguments():
