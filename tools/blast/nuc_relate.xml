@@ -39,12 +39,19 @@ $access
 	<help>
 **What it does**
 
-This tool filters a set of BLASTn results and return the top
-related genomes based on number of BLASTn matches.
+This tool filters a set of BLASTn results and returns the top related genomes based on the total aligned length as determined by BLASTn. Total aligned length here is the sum of all high-scoring pairs (HSP's) between the query DNA sequence and each matched subject sequence in the BLASTn results; the subjects with the greatest total aligned length are presented in descending order and the number of returned sequences is specified by the user at runtime.
 
-The input must be a tabular file from a BLASTn run with the qseqID, 
-length, nident, qlen, slen, salltitles, sallacc, 
-and staxIDs fields selected.
+The input for this tool must be a tabular file from BLASTn with the output columns in the following order: qseqID, length, nident, qlen, slen, salltitles, sallacc, and staxIDs. The tool is also expecting a BLASTn analysis run with a single query DNA sequence against the NCBI nt database. Multiple query sequences or runs against other databases may result in unpredicted behavior. This tool is most commonly run as part of a workflow in which run parameters are properly set.
+
+The tool determines the total aligned length of all HSPs between the query and each subject in the BLASTn results, and presents the organisms with the greatest aligned lengths in descending order. Note that the tool does not take alignment quality into account when determining the top related organisms. The tool produces a tabular output with the following columns:
+
+TaxID: The subject NCBI TaxID, as found in the BLASTn results.
+Name: The subject organism name, as found in the BLASTn results.
+Accessions: The subject NCBI nucleotide accession, as found in the BLASTn results. If there are multiple accessions associated with a single TaxID, each will be listed on a new line.
+Subject Length: The length of the subject nucleotide sequence, in bp.
+Number of HSPs: The number of HSP's identified by BLASTn between the query and subject. Note that the HSP's could represent BLASTn alignments that range from the entire query length to only a few dozen bp.
+Total Aligned Length: The sum of HSP lengths between the query and subject. Note that if the query and/or subject contain repetitive sequence elements that can align multiple times, the total HSP length can exceed that of the query or subject.
+Dice Score: A simple Dice coefficient calculation, equal to (2 * total aligned length)/(query length + subject length). Note that this value can be greater than 1 if the query and/or subject contain repetitive sequence elements that can align multiple times.
 </help>
 	<expand macro="citations-2020" />
 </tool>
