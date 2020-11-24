@@ -71,7 +71,6 @@ def main():
     offsets = sorted(list(itertools.product(range(args.allowed_skipped_genes),
                                             range(args.allowed_skipped_genes))),
                      key=lambda x: x[0]+x[1])
-    
     old_i, new_i = 0, 0
     exactRec = 0
     inexactRec = [0, 0 ,0]
@@ -193,11 +192,12 @@ def print_feature_one_line(f):
 def compare_features(f1, f2, r1, r2, match_identity_threshold):
     if f1 is None or f2 is None:
         return False
+
     s1 = f1.extract(r1).seq
     s2 = f2.extract(r2).seq
     score = pairwise2.align.globalms(s1, s2, 1, 0, 0, 0, score_only=True)
     identity = score / max(len(s1), len(s2))
-    match = identity > match_identity_threshold
+    match = identity >= match_identity_threshold
     length_diff = len(s1) - len(s2)
     return match, identity, length_diff
 
