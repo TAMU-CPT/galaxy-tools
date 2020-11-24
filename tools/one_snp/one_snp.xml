@@ -34,4 +34,23 @@ polymorphism (SNP) away from the input amino acid.
 
 To check SNPs to Stop codons, input Stop in the Amino Acid field.
 ]]></help>
+  <citations>
+			<citation type="doi">10.1371/journal.pcbi.1008214</citation>
+			<citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {E. Mijalis, H. Rasche},
+				title = {CPT Galaxy Tools},
+				year = {2013-2017},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+                        <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+                        </citation>
+		</citations>
 </tool>
