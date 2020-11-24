@@ -68,8 +68,8 @@ def main():
     args.sumOut.write('Features in new assembly:\t' + str(len(new_features)) + "\n\n")
 
     # Align the features to each other.
-    offsets = sorted(list(itertools.product(range(args.allowed_skipped_genes),
-                                            range(args.allowed_skipped_genes))),
+    offsets = sorted(list(itertools.product(range(args.allowed_skipped_genes + 1),
+                                            range(args.allowed_skipped_genes + 1))),
                      key=lambda x: x[0]+x[1])
     old_i, new_i = 0, 0
     exactRec = 0
