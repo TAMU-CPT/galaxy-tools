@@ -46,5 +46,5 @@ Gene Renumbering Tool
 
 Renumber genes in a genome
 </help>
-		<expand macro="citations" />
+		<expand macro="citations-2020" />
 </tool>
