@@ -97,5 +97,13 @@ considered a single pixel in the output image. For a 1 Mbp genome comparison
 	<citations>
 		<expand macro="citation/gepard" />
 		<expand macro="citation/mijalisrasche" />
+                <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+                        </citation>
 	</citations>
 </tool>
