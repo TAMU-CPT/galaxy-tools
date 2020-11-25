@@ -70,4 +70,7 @@ single JBrowse instance is applied to an organism.
 
 @REFERENCES@
 ]]></help>
+  <citations>
+    <citation type="doi">10.1371/journal.pcbi.1008214</citation>
+  </citations>
 </tool>

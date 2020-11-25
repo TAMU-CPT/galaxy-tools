@@ -43,6 +43,7 @@ The goal is to identify possible lysis genes or to narrow a list of disruptin ca
 
         ]]></help>
     <citations>
+        <citation type="doi">10.1371/journal.pcbi.1008214</citation>
         <citation type="bibtex">
         @unpublished{galaxyTools, 
             author = {A. Holt},
