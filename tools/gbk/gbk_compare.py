@@ -77,6 +77,7 @@ def main():
     hypoRec = [0, 0, 0]
     newCount = 0
     oldCount = 0
+    print("Old Record CDS Product\tExactness\tNew Record CDS Product\tPercent Identity\tLength Difference\tOld CDS Location\tNew CDS Location\tHypothetical  Status\n")
     while True:
         if old_i >= len(old_features) and new_i >= len(new_features):
             break
@@ -133,60 +134,78 @@ def main():
     
 
 def print_match(f1, f2, identity, length_diff):
-    print('', flush=True)
+    #print('', flush=True)
+    line = f1.qualifiers['product'][0] + "\t"
     matchArr = [0, 0, 0]
     hypoArr = [0, 0, 0]
     if identity == 1.0:
-        print('Exact match')
+#        print('Exact match')
+        line += 'Exact match\t' + f2.qualifiers['product'][0] + "\t100.0\tSame Length\t"
     else:
-        print('Inexact match (' + '%.2f' % (identity * 100.0) + '% ID, ', end='')
+#        print('Inexact match (' + '%.2f' % (identity * 100.0) + '% ID, ', end='')
+        line += 'Inexact match\t' + f2.qualifiers['product'][0] + "\t%.2f\t" % (identity * 100.0)
         if length_diff == 0:
-            print('same length)')
+#            print('same length)')
+            line +="Same Length\t"
             matchArr[0] += 1
         elif length_diff > 0:
-            print('old seq longer)')
+#            print('old seq longer)')
+            line +="Old Seq Longer\t"
             matchArr[1] += 1
         elif length_diff < 0:
-            print('new seq longer)')
+#            print('new seq longer)')
+            line +="New Seq Longer\t"
             matchArr[2] += 1
-    print('  old: ', end='')
-    print_feature_one_line(f1)
-    print('  new: ', end='')
-    print_feature_one_line(f2)
+#    print('  old: ', end='')
+#    print_feature_one_line(f1)
+    line += print_feature_one_line(f1) + "\t"
+#    print('  new: ', end='')
+#    print_feature_one_line(f2)
+    line += print_feature_one_line(f2) + "\t"
     p1 = f1.qualifiers['product'][0].lower()
     p2 = f2.qualifiers['product'][0].lower()
     if 'hypothetical' in p1 and 'hypothetical' in p2:
-        print('  still hypothetical')
+#        print('  still hypothetical')
+        line += "Still Hypothetical"
         hypoArr[0] += 1
-    if 'hypothetical' in p1 and 'hypothetical' not in p2:
-        print('  no longer hypothetical')
+    elif 'hypothetical' in p1 and 'hypothetical' not in p2:
+#        print('  no longer hypothetical')
+        line += "No Longer Hypothetical"
         hypoArr[1] += 1
-    if 'hypothetical' not in p1 and 'hypothetical' in p2:
-        print('  became hypothetical')
+    elif 'hypothetical' not in p1 and 'hypothetical' in p2:
+#        print('  became hypothetical')
+        line += "Became Hypothetical"
         hypoArr[2] += 1
-
+    else:
+        line += "'Hypothetical' not in new nor old product tag"
+    print(line)
     return matchArr, hypoArr
 
 def print_in_old_not_new(f): # rename file outputs
-    print('')
-    print('In old but not in new:')
-    print('  ', end='')
-    print_feature_one_line(f)
+    line = f.qualifiers['product'][0] + "\tIn Old Gbk but not New\tN/A\t0.00\t" + str(f.location.end - f.location.start) + "\t" + print_feature_one_line(f) + "\tN/A\tN/A"
+#    print('')
+#    print('In old but not in new:')
+#    print('  ', end='')
+#    print_feature_one_line(f)
+    print(line)
 
 
 def print_in_new_not_old(f): # rename file outputs
-    print('')
-    print('In new but not in old:')
-    print('  ', end='')
-    print_feature_one_line(f)
+    line = "N/A\tIn New Gbk but not Old\t" + f.qualifiers['product'][0] + "\t0.00\t" + str(f.location.end - f.location.start) + "\tN/A\t" + print_feature_one_line(f) + "\tN/A"
+    #print('')
+    #print('In new but not in old:')
+    #print('  ', end='')
+    #print_feature_one_line(f)
+    print(line)
 
 
 def print_feature_one_line(f):
-    f_str = f.qualifiers['product'][0]
+    #f_str = f.qualifiers['product'][0]
+    f_str = ""
     strand = '+' if f.location.strand == 1 else '-'
-    f_str += ' (' + str(f.location.start) + '-' + str(f.location.end) + ' ' + strand + ', '
+    f_str += '(' + str(f.location.start) + '-' + str(f.location.end) + ' ' + strand + ', '
     f_str += str(f.location.end - f.location.start) + ' bp)'
-    print(f_str)
+    return(f_str)
 
 
 def compare_features(f1, f2, r1, r2, match_identity_threshold):
