@@ -15,6 +15,7 @@ $annotation_1
 $annotation_2
 --match_identity_threshold $match_identity_threshold
 --allowed_skipped_genes $allowed_skipped_genes
+$addNotes
 -sumOut $sumOut
 > $repOut]]></command>
   <inputs>
@@ -22,6 +23,7 @@ $annotation_2
     <param label="Second annotated genome (Genbank)" name="annotation_2" type="data" format="genbank"/>
     <param label="Two genes must have at least this identity to be considerd the same (0.00 to 1.00)" name="match_identity_threshold" type="float" value="0.70" min="0.00" max="1.00"/>
     <param label="This many missing genes are allowed when aligning the annotations" name="allowed_skipped_genes" type="integer" value="10"/>
+    <param label="Include 'note' field in output" name="addNotes" type="boolean" truevalue="--addNotes" falsevalue=""/>
   </inputs>
   <outputs>
     <data format="tsv" name="sumOut" label="Report Summary"/>
