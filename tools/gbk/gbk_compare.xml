@@ -25,7 +25,7 @@ $annotation_2
   </inputs>
   <outputs>
     <data format="tsv" name="sumOut" label="Report Summary"/>
-    <data format="txt" name="repOut" label="Comparison Report of Two Genomes"/>
+    <data format="tsv" name="repOut" label="Comparison Report of Two Genomes"/>
   </outputs>
   <tests>
       
@@ -34,6 +34,8 @@ $annotation_2
 **What it does**
 
 This script quantifies the improvements in an annotation for when a genome is reassembled and/or reannotated. It does a global alignment (using pairwise2 from biopython) of the genes of one annotation to the other. It does mean that the genomes must be roughly aligned at the gene level. If there are structural rearragements, the script will not work. The script was written by Ryan Wick from Monash University and was adapted to work on Galaxy.
+
+"Allowed Skipped Genes" is the number of genes that are allowed to be present in one record but not the other. Presence is dtermined by wether a pair of genes are above the provided identity threshhold. The script will compare the CDSs in order, ie the 1st CDS from Genbank 1 and the 1st CDS from the 2nd Genbank, the 2nd CDS and 2nd CDS, and so on. When a pair fails to meet the identity threshhold, one of the CDSs is skipped and the comparisons will resume but offset, ie if 3rd and 3rd CDS failed, then the 3rd CDS from Genbank 1 and the 4th from Genbank 2 will be checked next, and if they pass then the march down the list will resume as 4th and 5th compared to each other, then 5th and 6th, and so on. If the amount of these offsets exceeds the allowed skip number, then it is assumed the genbanks are too different for a meaningful for comparison, and the job will fail.
 
 **Input**
 

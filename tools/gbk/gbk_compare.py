@@ -77,7 +77,7 @@ def main():
     hypoRec = [0, 0, 0]
     newCount = 0
     oldCount = 0
-    print("Old Record CDS Product\tExactness\tNew Record CDS Product\tPercent Identity\tLength Difference\tOld CDS Location\tNew CDS Location\tHypothetical  Status\n")
+    print("First Record CDS Product\tExactness\tSecond Record CDS Product\tPercent Identity\tLength Difference\tFirst Gbk's CDS Location\tSecond Gbk's CDS Location\tHypothetical Status\n")
     while True:
         if old_i >= len(old_features) and new_i >= len(new_features):
             break
@@ -111,7 +111,8 @@ def main():
                 new_i += new_offset
                 break
         else:
-            sys.exit('\nERROR: Failed to find alignment')
+            sys.stderr.write("Exceeded allowed number of skipped genes (" + str(args.allowed_skipped_genes) + "), unable to maintain alignment and continue comparison.\n")
+            exit(2)
 
         if old_feature is None and new_feature is None:
             break
@@ -123,11 +124,11 @@ def main():
 
     args.sumOut.write('Inexact Match:\t' + str(inexactRec[0] + inexactRec[1] + inexactRec[2]) + "\n")
     args.sumOut.write('  Same length:\t' + str(inexactRec[0]) + "\n")
-    args.sumOut.write('  New Seq longer:\t' + str(inexactRec[2]) + "\n")
-    args.sumOut.write('  Old Seq longer:\t' + str(inexactRec[1]) + "\n\n")
+    args.sumOut.write('  Second Gbk Seq longer:\t' + str(inexactRec[2]) + "\n")
+    args.sumOut.write('  First Gbk Seq longer:\t' + str(inexactRec[1]) + "\n\n")
      
-    args.sumOut.write('In New but not in Old:\t' + str(newCount) + "\n")
-    args.sumOut.write('In Old but not in New:\t' + str(oldCount) + "\n\n")
+    args.sumOut.write('In Second Gbk but not in first:\t' + str(newCount) + "\n")
+    args.sumOut.write('In First Gbk but not in second:\t' + str(oldCount) + "\n\n")
 
     args.sumOut.write('No Longer Hypothetical:\t' + str(hypoRec[1]) + "\n")
     args.sumOut.write('Still Hypothetical:\t' + str(hypoRec[0] + hypoRec[2]) + "\n")
@@ -150,11 +151,11 @@ def print_match(f1, f2, identity, length_diff):
             matchArr[0] += 1
         elif length_diff > 0:
 #            print('old seq longer)')
-            line +="Old Seq Longer\t"
+            line +="First Gbk Seq Longer\t"
             matchArr[1] += 1
         elif length_diff < 0:
 #            print('new seq longer)')
-            line +="New Seq Longer\t"
+            line +="Second Gbk Seq Longer\t"
             matchArr[2] += 1
 #    print('  old: ', end='')
 #    print_feature_one_line(f1)
@@ -177,12 +178,12 @@ def print_match(f1, f2, identity, length_diff):
         line += "Became Hypothetical"
         hypoArr[2] += 1
     else:
-        line += "'Hypothetical' not in new nor old product tag"
+        line += "'Hypothetical' not in second nor first Gbk's product tag"
     print(line)
     return matchArr, hypoArr
 
 def print_in_old_not_new(f): # rename file outputs
-    line = f.qualifiers['product'][0] + "\tIn Old Gbk but not New\tN/A\t0.00\t" + str(f.location.end - f.location.start) + "\t" + print_feature_one_line(f) + "\tN/A\tN/A"
+    line = f.qualifiers['product'][0] + "\tIn First Gbk but not Second\tN/A\t0.00\t" + str(f.location.end - f.location.start) + "\t" + print_feature_one_line(f) + "\tN/A\tN/A"
 #    print('')
 #    print('In old but not in new:')
 #    print('  ', end='')
@@ -191,7 +192,7 @@ def print_in_old_not_new(f): # rename file outputs
 
 
 def print_in_new_not_old(f): # rename file outputs
-    line = "N/A\tIn New Gbk but not Old\t" + f.qualifiers['product'][0] + "\t0.00\t" + str(f.location.end - f.location.start) + "\tN/A\t" + print_feature_one_line(f) + "\tN/A"
+    line = "N/A\tIn Second Gbk but not First\t" + f.qualifiers['product'][0] + "\t0.00\t" + str(f.location.end - f.location.start) + "\tN/A\t" + print_feature_one_line(f) + "\tN/A"
     #print('')
     #print('In new but not in old:')
     #print('  ', end='')
