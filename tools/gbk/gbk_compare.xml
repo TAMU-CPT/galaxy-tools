@@ -33,6 +33,26 @@ $annotation_2
   <help><![CDATA[
 **What it does**
 
-Compares the features of two Genbank files.
+This script quantifies the improvements in an annotation for when a genome is reassembled and/or reannotated. It does a global alignment (using pairwise2 from biopython) of the genes of one annotation to the other. It does mean that the genomes must be roughly aligned at the gene level. If there are structural rearragements, the script will not work. The script was written by Ryan Wick from Monash University and was adapted to work on Galaxy.
+
+**Input**
+
+Files *MUST* be in gebank format.
+The script only looks at CDS features in the genome.
+
+**Output**
+
+* A tab delimited file of the results
+* Summary of the results.
 ]]></help>
+  <citations>
+    <citation type="bibtex">
+      @unpublished{galaxyTools,
+      author = {R. Wick},
+      title = {CPT Galaxy Tools},
+      year = {2020},
+      note = {https://github.com/rrwick}
+      }
+    </citation>
+  </citations>
 </tool>
