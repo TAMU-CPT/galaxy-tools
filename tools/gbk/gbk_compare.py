@@ -108,7 +108,7 @@ def main():
                     newCount += 1
                 if identity == 1.0:
                   exactRec += 1
-                res1, res2 = print_match(old_features[old_i + old_offset], new_features[new_i + new_offset], identity, length_diff)
+                res1, res2 = print_match(old_features[old_i + old_offset], new_features[new_i + new_offset], identity, length_diff, args.addNotes)
                 inexactRec = addArr(inexactRec, res1)
                 hypoRec = addArr(hypoRec, res2)
                 old_i += old_offset
@@ -138,7 +138,7 @@ def main():
     args.sumOut.write('Hypothetical:\t' + str(hypoRec[0] + hypoRec[2]) + "\n")
     
 
-def print_match(f1, f2, identity, length_diff):
+def print_match(f1, f2, identity, length_diff, outNotes):
     #print('', flush=True)
     line = f1.qualifiers['product'][0] + "\t"
     matchArr = [0, 0, 0]
@@ -184,7 +184,7 @@ def print_match(f1, f2, identity, length_diff):
     else:
         line += "'Hypothetical' not in second nor first Gbk's product tag"
     
-    if args.addNotes:
+    if outNotes:
       line += "\t"
       if "note" in f1.qualifiers.keys():
         for x in f1.qualifiers["note"]:
