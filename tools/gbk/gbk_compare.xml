@@ -15,13 +15,15 @@ $annotation_1
 $annotation_2
 --match_identity_threshold $match_identity_threshold
 --allowed_skipped_genes $allowed_skipped_genes
+$addNotes
 -sumOut $sumOut
 > $repOut]]></command>
   <inputs>
     <param label="First annotated genome (Genbank)" name="annotation_1" type="data" format="genbank"/>
     <param label="Second annotated genome (Genbank)" name="annotation_2" type="data" format="genbank"/>
-    <param label="Two genes must have at least this identity to be considerd the same (0.00 to 1.00)" name="match_identity_threshold" type="float" value="0.70" min="0.00" max="1.00"/>
-    <param label="This many missing genes are allowed when aligning the annotations" name="allowed_skipped_genes" type="integer" value="10"/>
+    <param label="Two genes must have at least this nucleotide identity to be considerd the same (0.00 to 1.00)" name="match_identity_threshold" type="float" value="0.70" min="0.00" max="1.00"/>
+    <param label="This many missing genes are allowed when aligning the annotations (see help below)" name="allowed_skipped_genes" type="integer" value="10"/>
+    <param label="Include 'note' field in output" name="addNotes" type="boolean" truevalue="--addNotes" falsevalue=""/>
   </inputs>
   <outputs>
     <data format="tsv" name="sumOut" label="Report Summary"/>
@@ -33,14 +35,24 @@ $annotation_2
   <help><![CDATA[
 **What it does**
 
-This script quantifies the improvements in an annotation for when a genome is reassembled and/or reannotated. It does a global alignment (using pairwise2 from biopython) of the genes of one annotation to the other. It does mean that the genomes must be roughly aligned at the gene level. If there are structural rearragements, the script will not work. The script was written by Ryan Wick from Monash University and was adapted to work on Galaxy.
+This tool quantifies the changes in annotations for a genome, such as when it has been reassembled and/or reannotated. 
+The tool does a global alignment (using pairwise2 from biopython) of the annotated genes in both files. This means that 
+the input genomes must be roughly aligned at the gene level. If there are structural rearrangements, the tool will not work. 
+The original script was written by Ryan Wick from Monash University and was adapted to work on Galaxy by the CPT team.
 
-"Allowed Skipped Genes" is the number of genes that are allowed to be present in one record but not the other. Presence is dtermined by wether a pair of genes are above the provided identity threshhold. The script will compare the CDSs in order, ie the 1st CDS from Genbank 1 and the 1st CDS from the 2nd Genbank, the 2nd CDS and 2nd CDS, and so on. When a pair fails to meet the identity threshhold, one of the CDSs is skipped and the comparisons will resume but offset, ie if 3rd and 3rd CDS failed, then the 3rd CDS from Genbank 1 and the 4th from Genbank 2 will be checked next, and if they pass then the march down the list will resume as 4th and 5th compared to each other, then 5th and 6th, and so on. If the amount of these offsets exceeds the allowed skip number, then it is assumed the genbanks are too different for a meaningful for comparison, and the job will fail.
+"Allowed Skipped Genes" is the number of genes that are allowed to be present in one record but not the other. Presence is 
+determined by whether a pair of genes are above the provided identity threshold. The tool will compare the CDSs in order, 
+ie the 1st CDS from Genbank 1 and the 1st CDS from the 2nd Genbank, the 2nd CDS and 2nd CDS, and so on. When a pair fails 
+to meet the identity threshhold, one of the CDSs is skipped and the comparisons will resume but offset, ie if 3rd and 3rd 
+CDS failed, then the 3rd CDS from Genbank 1 and the 4th from Genbank 2 will be checked next, and if they pass then the 
+march down the list will resume as 4th and 5th compared to each other, then 5th and 6th, and so on. If the number of these 
+offsets exceeds the allowed skip number, then it is assumed the genbanks are too different for a meaningful for comparison, 
+and the job will fail.
 
 **Input**
 
 Files *MUST* be in gebank format.
-The script only looks at CDS features in the genome.
+The tool only looks at CDS features in the genome.
 
 **Output**
 
@@ -53,8 +65,24 @@ The script only looks at CDS features in the genome.
       author = {R. Wick},
       title = {CPT Galaxy Tools},
       year = {2020},
-      note = {https://github.com/rrwick}
+      note = {https://github.com/rrwick/Compare-annotations}
       }
     </citation>
+    			<citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {C. Ross},
+				title = {CPT Galaxy Tools},
+				year = {2020-},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+			</citation>
+                            <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+      </citation>
   </citations>
 </tool>

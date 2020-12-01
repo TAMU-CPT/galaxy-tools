@@ -40,6 +40,7 @@ def get_arguments():
                         help='Two genes must have at least this identity to be considerd the same (0.0 to 1.0)')
     parser.add_argument('--allowed_skipped_genes', type=int, default=10,
                         help='This many missing genes are allowed when aligning the annotations')
+    parser.add_argument("--addNotes", action="store_true", help="Add Note fields")
 
     parser.add_argument(
         "-sumOut", type=argparse.FileType("w"), help="Summary out file"
@@ -64,8 +65,8 @@ def main():
         if f.type == 'CDS':
             new_features.append(f)
 
-    args.sumOut.write('Features in old assembly:\t' + str(len(old_features)) + "\n")
-    args.sumOut.write('Features in new assembly:\t' + str(len(new_features)) + "\n\n")
+    args.sumOut.write('Features in First Genbank\'s assembly:\t' + str(len(old_features)) + "\n")
+    args.sumOut.write('Features in Second Genbank\'s assembly:\t' + str(len(new_features)) + "\n\n")
 
     # Align the features to each other.
     offsets = sorted(list(itertools.product(range(args.allowed_skipped_genes + 1),
@@ -77,7 +78,10 @@ def main():
     hypoRec = [0, 0, 0]
     newCount = 0
     oldCount = 0
-    print("First Record CDS Product\tExactness\tSecond Record CDS Product\tPercent Identity\tLength Difference\tFirst Gbk's CDS Location\tSecond Gbk's CDS Location\tHypothetical Status\n")
+    if args.addNotes:
+      print("First Record CDS Product\tSimilarity\tSecond Record CDS Product\tPercent Identity\tLength Difference\tFirst Gbk's CDS Location\tSecond Gbk's CDS Location\tHypothetical Status\tFirst Record's Notes\tSecond Record's Notes\n")
+    else:
+      print("First Record CDS Product\tSimilarity\tSecond Record CDS Product\tPercent Identity\tLength Difference\tFirst Gbk's CDS Location\tSecond Gbk's CDS Location\tHypothetical Status\n")
     while True:
         if old_i >= len(old_features) and new_i >= len(new_features):
             break
@@ -130,8 +134,8 @@ def main():
     args.sumOut.write('In Second Gbk but not in first:\t' + str(newCount) + "\n")
     args.sumOut.write('In First Gbk but not in second:\t' + str(oldCount) + "\n\n")
 
-    args.sumOut.write('No Longer Hypothetical:\t' + str(hypoRec[1]) + "\n")
-    args.sumOut.write('Still Hypothetical:\t' + str(hypoRec[0] + hypoRec[2]) + "\n")
+    args.sumOut.write('Hypothetical Annotation Change:\t' + str(hypoRec[1] + hypoRec[2]) + "\n")
+    args.sumOut.write('Hypothetical:\t' + str(hypoRec[0] + hypoRec[2]) + "\n")
     
 
 def print_match(f1, f2, identity, length_diff):
@@ -167,18 +171,33 @@ def print_match(f1, f2, identity, length_diff):
     p2 = f2.qualifiers['product'][0].lower()
     if 'hypothetical' in p1 and 'hypothetical' in p2:
 #        print('  still hypothetical')
-        line += "Still Hypothetical"
+        line += "Hypothetical\t"
         hypoArr[0] += 1
     elif 'hypothetical' in p1 and 'hypothetical' not in p2:
 #        print('  no longer hypothetical')
-        line += "No Longer Hypothetical"
+        line += "No Longer Hypothetical\t"
         hypoArr[1] += 1
     elif 'hypothetical' not in p1 and 'hypothetical' in p2:
 #        print('  became hypothetical')
-        line += "Became Hypothetical"
+        line += "Became Hypothetical\t"
         hypoArr[2] += 1
     else:
         line += "'Hypothetical' not in second nor first Gbk's product tag"
+    
+    if args.addNotes:
+      line += "\t"
+      if "note" in f1.qualifiers.keys():
+        for x in f1.qualifiers["note"]:
+          line += x
+        line += "\t"
+      else:
+        line += "N/A\t"
+      if "note" in f2.qualifiers.keys():
+        for x in f2.qualifiers["note"]:
+          line += x
+      else:
+        line += "N/A"
+
     print(line)
     return matchArr, hypoArr
 
