@@ -74,5 +74,7 @@ would get the following output::
     b64994a8,Carol,94,College Station,Carol,Knitting
 
 	</help>
+	<citations>
+		<citation type="doi">10.1371/journal.pcbi.1008214</citation>
 	<citations/>
 </tool>
