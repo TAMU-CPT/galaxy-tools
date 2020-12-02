@@ -635,6 +635,7 @@ permissions.
       </when>
       <when value="protein">
         <param name="output_format" type="select" label="Output Format">
+          <option value="fasta-fasta">FASTA (text)</option>
           <option value="docsum-json">Document Summary (json)</option>
           <option value="docsum-xml">Document Summary (xml)</option>
           <option value="full-text">Full Document (text)</option>
