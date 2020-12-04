@@ -75,6 +75,7 @@
 		<tool file="cpt2/galaxy-tools/tools/external/gmsn.pl.xml"/>
 		<tool file="cpt2/galaxy-tools/tools/external/phageterm/PhageTerm.xml" hidden="True"/>
                 <tool file="cpt2/galaxy-tools/tools/external/bprom.xml"/>
+                <tool file="cpt2/galaxy-tools/tools/external/Prophet/Prophet.xml"/>
 	</section>
 	<section id="7374d429-f8a9-4f83-8dbc-8b5cd6a90f4b" name="CPT: Genomic Overview">
 		<tool file="cpt2/galaxy-tools/tools/fasta/fasta_aastats.xml" label="fasta"/>
