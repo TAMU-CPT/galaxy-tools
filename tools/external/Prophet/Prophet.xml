@@ -7,10 +7,10 @@
 mkdir ./tempOut ;
 python $__tool_directory__/ProphET_standalone.pl 
 --fasta $fasIn 
---gff_in gffIn 
+--gff_in $gffIn 
 --outdir ./tempOut ;
-cat ./tempOut/*.fas > fasOut ;
-cat ./tempOut/*.svg > svgOut ;]]></command>
+cat ./tempOut/*.fas > $fasOut ;
+cat ./tempOut/*.svg > $svgOut ;]]></command>
   <inputs>
     <param label="Fasta file" name="fasIn" type="data" format="fasta"/>
     <param label="GFF Annotations" name="gffIn" type="data" format="gff"/>
