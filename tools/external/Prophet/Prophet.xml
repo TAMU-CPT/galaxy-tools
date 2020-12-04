@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.external.Prophet" name="Prophet" version="6.6.0">
+  <description>, (Under development)</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <requirements>
+  </requirements>
+  <command detect_errors="aggressive"><![CDATA[
+mkdir ./tempOut ;
+python $__tool_directory__/ProphET_standalone.pl 
+--fasta $fasIn 
+--gff_in gffIn 
+--outdir ./tempOut ;
+cat ./tempOut/*.fas > fasOut ;
+cat ./tempOut/*.svg > svgOut ;]]></command>
+  <inputs>
+    <param label="Fasta file" name="fasIn" type="data" format="fasta"/>
+    <param label="GFF Annotations" name="gffIn" type="data" format="gff"/>
+  </inputs>
+  <outputs>
+    <data format="fasta" name="fasOut" label="Prophet Sequences"/>
+    <data format="svg" name="svgOut" label="Prophet Image"/>
+  </outputs>
+  <tests>
+      
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Prophet testbed, currently under development
+
+**Input**
+
+GFF and FASTA, get guideline from Prophet documentation
+**Output**
+
+* A Multifasta of the results (Multifasta because the number of sequences returned is arbitrary, so all the files are cat'd into one fasta)
+* SVG image results.
+]]></help>
+  <citations>
+    <citation type="bibtex">
+      @unpublished{galaxyTools,
+      author = {Placeholder},
+      title = {CPT Galaxy Tools},
+      year = {2020},
+      note = {Prophet}
+      }
+    </citation>
+  </citations>
+</tool>
