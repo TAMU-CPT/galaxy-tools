@@ -5,7 +5,7 @@
   <requirements/>
   <command detect_errors="aggressive"><![CDATA[
 mkdir ./tempOut ;
-python $__tool_directory__/ProphET_standalone.pl 
+perl $__tool_directory__/ProphET_standalone.pl 
 --fasta $fasIn 
 --gff_in $gffIn 
 --outdir ./tempOut ;
