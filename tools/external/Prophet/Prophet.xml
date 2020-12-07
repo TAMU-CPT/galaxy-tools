@@ -5,10 +5,9 @@
   <requirements/>
   <command detect_errors="aggressive"><![CDATA[
 mkdir ./tempOut ;
-perl $__tool_directory__/ProphET_standalone.pl 
---fasta $fasIn 
---gff_in $gffIn 
---outdir ./tempOut ;
+python $__tool_directory__/runProphet.py 
+$fasIn 
+$gffIn ;
 cat ./tempOut/*.fas > $fasOut ;
 cat ./tempOut/*.svg > $svgOut ;]]></command>
   <inputs>
