@@ -14,12 +14,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     cmd = "/galaxy/tools/cpt2/galaxy-tools/tools/external/Prophet/ProphET_standalone.pl --fasta" + args.fasIn + " --gff_in" + args.gffIn + "--outdir ./tempOut"
-    try {
+    try :
         subprocess.run(cmd, shell=True)#, stdout=output)
-    }
-    except {
+    except :
         res = 0
-    }
+    
     
     return
 }
