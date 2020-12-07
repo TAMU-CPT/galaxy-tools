@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt2.external.Phigaro" name="Phigaro: " version="1.0.0">
+  <description> Galaxy wrapper for Phigaro</description>
+  <macros/>
+  <requirements>
+     <requirement type="package" version="3.7.6">python</requirement>
+     <requirement type="package" version="1.76">biopython</requirement>
+     <requirement type="package" version="2019.06.08">regex</requirement>
+     <requirement type="package" version="2.3.0">phigaro</requirement>
+     <requirement type="package" version="3.3.1">hmmer</requirement>
+     <requirement type="package" version="2.6.3">prodigal</requirement>
+  </requirements>
+  <command detect_errors="aggressive"><![CDATA[
+phigaro-setup --no-updatedb;
+phigaro -v;
+]]></command>
+  <inputs>
+    <param name="inFile" type="data" label="Identifier List" format="text"/>   
+  </inputs>
+  <outputs>
+        <data format="tar" name="FlaGsDir" label="FlaGs Output"/>
+  </outputs>
+  <help><![CDATA[
+**What it does**
+
+Help text from manual coming soon
+
+Blast Wrapper written by Criscione, Anthony, Center for Phage Technology, Texas A&M University, 2020
+     ]]></help>
+  <citations>
+		<citation type="doi">10.1093/bioinformatics/btr039</citation>
+  </citations>
+</tool>
