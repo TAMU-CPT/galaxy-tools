@@ -13,7 +13,7 @@ if __name__ == "__main__":
     parser.add_argument("gffIn", type=str)
 
     args = parser.parse_args()
-    cmd = "/galaxy/tools/cpt2/galaxy-tools/tools/external/Prophet/ProphET_standalone.pl --fasta" + args.fasIn + " --gff_in" + args.gffIn + "--outdir ./tempOut"
+    cmd = "/galaxy/tools/cpt2/galaxy-tools/tools/external/Prophet/ProphET_standalone.pl --fasta " + args.fasIn + " --gff_in " + args.gffIn + "--outdir ./tempOut"
     try :
         subprocess.run(cmd, shell=True)#, stdout=output)
     except :
