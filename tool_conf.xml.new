@@ -3,7 +3,7 @@
     <label id="5b97358a-94e5-44ca-bf28-312ad252b0a8" text="Tool Showcase"/>
     <section id="0914476f-f380-4532-8dbf-fba110dee899" name="Commonly Used Tools">
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/webapollo/gga-apollo/export.xml"/>
-        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/efetch/cpt-efetch.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/ncbi_entrez_eutils/efetch.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/comparative/mist3.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/genome_map.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/genome_viz/linear_genome_plot.xml"/>
@@ -42,7 +42,7 @@
     </section>
     <label id="494239c0-5e62-46ec-b9a0-39122963fbe1" text="Data Retreival"/>
     <section id="fba2434e-1932-41d7-a632-f4b610ef21e0" name="Galaxy Tools">
-        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/efetch/cpt-efetch.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/ncbi_entrez_eutils/efetch.xml"/>
     </section>
     <section id="0367a574-9504-44ea-abbf-6ea875f3362f" name="NCBI Entrez Utilities"/>
     <section id="f3ebd36c-61d3-42ff-9657-6c84660a8c54" name="Get Data">
