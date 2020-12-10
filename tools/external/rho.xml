@@ -33,5 +33,15 @@ INPUT: genome sequences file in fasta format
 
 OUTPUT: a csv file containing the coordinates of predicted Rho-dependent terminators and a txt file cointaining some informations about predictions
 ]]></help>
-	<expand macro="citations" />
+	<citations>
+		<citation type="bibtex">
+		@unpublished{galaxyTools,
+			author = {Marco Di Salvo, Simone Puccio, Clelia Peano, Stephan Lacour and Pietro Alifano},
+			title = {RhoTermPredict: an algorithm for predicting Rho-dependent transcription terminators based on Escherichia coli,
+Bacillus subtilis and Salmonella enterica databases},
+			year = {2019},
+			note = {https://doi.org/10.1186/s12859-019-2704-x}
+		}
+		</citation>
+	</citations>
 </tool>
