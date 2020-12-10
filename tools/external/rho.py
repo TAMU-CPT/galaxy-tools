@@ -3,6 +3,7 @@ import re
 from Bio import SeqIO
 from Bio.Seq import Seq
 import csv
+import sys
 
 def palindrome_finder(sequence, file=None, gc_genome=None, strand=None, score=None, calc="no"):
     n_rut = 0
