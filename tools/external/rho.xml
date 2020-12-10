@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.external.rho" name="RhoTermPredict," version="20.1.0">
+	<description> prediction of Rho-dependent transcription terminators</description>
+	<macros/>
+        <requirements>
+		<requirement type="package" version="2019.06.08">regex</requirement>
+                <requirement type="package" version="2.7">python</requirement>
+		<requirement type="package" version="1.67">biopython</requirement>
+	</requirements>
+	<expand macro="requirements">
+            <requirement type="package" version="2019.06.08">regex</requirement>
+        </expand>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/rho.py
+$fastaIn
+$xmlOut
+$txtOut
+]]></command>
+	<inputs>
+		<param label="Fasta Sequence" name="fastaIn" type="data" format="fasta" />
+	</inputs>
+	<outputs>
+		<data format="csv" name="xmlOut" label="Rho XML Display"/>
+		<data format="txt" name="txtOut" label="Rho Information"/>
+	</outputs>
+	<tests/>
+	<help><![CDATA[
+**What it does**
+
+RhoTermPredict is an algorithm for the prediction of Rho-dependent transcription terminators in bacterial genomes. It searchs for a putative RUT site followed by a putative pause site for RNA polymerase (hairpin structure and/or pause-consensus element).
+
+INPUT: genome sequences file in fasta format
+
+OUTPUT: a csv file containing the coordinates of predicted Rho-dependent terminators and a txt file cointaining some informations about predictions
+]]></help>
+	<expand macro="citations" />
+</tool>
