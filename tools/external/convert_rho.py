@@ -7,7 +7,7 @@ import sys
 gffOut = open(sys.argv[1], "w")
 res = []
 for recPath in sys.argv[2:]:
-  recName = recPath[23:-4]
+  recName = recPath[25:-4]
   termList = []
   termNum = 0
   maxLoc = 0
