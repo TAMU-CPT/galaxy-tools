@@ -268,7 +268,7 @@ try:
                         score = 3
                         ctrl = palindrome_finder(s)
                         if ctrl > 0 or re.search(pattern_pause_site2, s):
-                            writer.writerow([f'T{cod}', x1, x2, 'minus'])
+                            writer.writerow([f'{sq}_T{cod}', x1, x2, 'minus'])
                             num += 1
                             predictions += 1
                             scale = x2 + 150 - j - 1
