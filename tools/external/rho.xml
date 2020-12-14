@@ -13,8 +13,9 @@
 	<command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/rho.py
 $fastaIn
-$xmlOut
-$txtOut
+$xmlOut ;
+python $__tool_directory__/convert_rho.py $gffOut ./info_about_pred* ;
+cat ./info_about_pred* > $txtOut
 ]]></command>
 	<inputs>
 		<param label="Fasta Sequence" name="fastaIn" type="data" format="fasta" />
@@ -22,6 +23,7 @@ $txtOut
 	<outputs>
 		<data format="csv" name="xmlOut" label="Rho XML Display"/>
 		<data format="txt" name="txtOut" label="Rho Information"/>
+                <data format="gff" name="gffOut" label="Rho Terminators (GFF3)"/>
 	</outputs>
 	<tests/>
 	<help><![CDATA[
@@ -31,7 +33,7 @@ RhoTermPredict is an algorithm for the prediction of Rho-dependent transcription
 
 INPUT: genome sequences file in fasta format
 
-OUTPUT: a csv file containing the coordinates of predicted Rho-dependent terminators and a txt file cointaining some informations about predictions
+OUTPUT: a csv file containing the coordinates of predicted Rho-dependent terminators, a GFF file of the predicted locations, and a txt file cointaining some informations about predictions
 ]]></help>
 	<citations>
 		<citation type="bibtex">
@@ -43,5 +45,13 @@ Bacillus subtilis and Salmonella enterica databases},
 			note = {https://doi.org/10.1186/s12859-019-2704-x}
 		}
 		</citation>
+                <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2020},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+                        </citation>
 	</citations>
 </tool>

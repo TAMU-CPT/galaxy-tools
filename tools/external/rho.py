@@ -124,8 +124,8 @@ try:
         predictions_file = open(sys.argv[2], mode='a')
         writer = csv.writer(predictions_file, delimiter='\t')
         writer.writerow(['Region', 'Start RUT', 'End RUT', 'Strand'])
-        p = open(sys.argv[3], "a")
-        p.write("Sequences of predicted Rho-dependent terminators")
+        p = open(f"info_about_predictions_{sq}.txt", "a")
+        p.write("Sequences of predicted Rho-dependent terminators for " + sq)
 
         # positive strand
 
@@ -174,7 +174,7 @@ try:
                         score = 3
                         ctrl = palindrome_finder(s)
                         if ctrl > 0 or re.search(pattern_pause_site1, s):
-                            writer.writerow([f'T{cod}', x1, x2, 'plus'])
+                            writer.writerow([f'{sq}_T{cod}', x1, x2, 'plus'])
                             num += 1
                             predictions += 1
                             scale = x2 + 150 - j - 1
@@ -320,10 +320,10 @@ try:
         p.write(str(np.mean(cg_value)))
         p.write("\nStandard deviation: ")
         p.write(str(np.std(cg_value)))
-
+        p.write("\n=========================================================\n")
         p.close()
         predictions_file.close()
-
+           
     print("Work finished, see output files in the current directory")
     
 except IOError:   
