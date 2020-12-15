@@ -4,6 +4,7 @@
   <macros/>
   <requirements/>
   <command detect_errors="aggressive"><![CDATA[
+export PERL5LIB=$__tool_directory__/UTILS.dir/GFFLib ;
 mkdir ./tempOut ;
 perl $__tool_directory__/UTILS.dir/GFFLib/gff_rewrite.pl --input $gffIn -output ./tempGFF.gff --add_missing_features ;
 python $__tool_directory__/runProphet.py 
