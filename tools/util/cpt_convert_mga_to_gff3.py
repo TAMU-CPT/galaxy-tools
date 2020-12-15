@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from BCBio import GFF
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature
 from Bio.SeqFeature import FeatureLocation
+from cpt_gffParser import gffParse, gffWrite
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -75,7 +75,9 @@ def mga_to_gff3(mga_output, genome):
                 qualifiers={
                     "Source": "MGA",
                     "ID": "%s.cds_%s" % (current_record.id, gene_id),
-                },
+                }, 
+                shift=phase,
+                source="MGA"
             )
 
             if rbs_feat is not None:
@@ -89,7 +91,7 @@ def mga_to_gff3(mga_output, genome):
                 gene_start = start
                 gene_end = end
 
-            gene = SeqFeature(
+            gene = gffSeqFeature(
                 FeatureLocation(gene_start, gene_end),
                 type="gene",
                 strand=strand,
@@ -97,6 +99,8 @@ def mga_to_gff3(mga_output, genome):
                     "Source": "MGA",
                     "ID": "%s.%s" % (current_record.id, gene_id),
                 },
+                shift=phase,
+                source="MGA"
             )
 
             gene.sub_features = [cds_feat]
@@ -115,4 +119,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     for result in mga_to_gff3(**vars(args)):
-        GFF.write([result], sys.stdout)
+        gffWrite([result], sys.stdout)
