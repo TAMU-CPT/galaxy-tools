@@ -4,7 +4,7 @@ import argparse
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature
 from Bio.SeqFeature import FeatureLocation
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 import logging
 
 logging.basicConfig(level=logging.INFO)
