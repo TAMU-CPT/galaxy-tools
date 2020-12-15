@@ -4,7 +4,7 @@ import argparse
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature
 from Bio.SeqFeature import FeatureLocation
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -58,7 +58,7 @@ def mga_to_gff3(mga_output, genome):
             if rbs_start != "-":
                 rbs_start = int(rbs_start)
                 rbs_end = int(rbs_end)
-                rbs_feat = SeqFeature(
+                rbs_feat = gffSeqFeature(
                     FeatureLocation(rbs_start, rbs_end),
                     type="Shine_Dalgarno_sequence",
                     strand=strand,
@@ -66,9 +66,11 @@ def mga_to_gff3(mga_output, genome):
                         "ID": "%s.rbs_%s" % (current_record.id, gene_id),
                         "Source": "MGA",
                     },
+                    shift=phase,
+                    source="MGA"
                 )
 
-            cds_feat = SeqFeature(
+            cds_feat = gffSeqFeature(
                 FeatureLocation(start, end),
                 type="CDS",
                 strand=strand,
