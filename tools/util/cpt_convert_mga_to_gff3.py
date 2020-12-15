@@ -58,7 +58,7 @@ def mga_to_gff3(mga_output, genome):
             if rbs_start != "-":
                 rbs_start = int(rbs_start)
                 rbs_end = int(rbs_end)
-                rbs_feat = SeqFeature(
+                rbs_feat = gffSeqFeature(
                     FeatureLocation(rbs_start, rbs_end),
                     type="Shine_Dalgarno_sequence",
                     strand=strand,
@@ -66,6 +66,8 @@ def mga_to_gff3(mga_output, genome):
                         "ID": "%s.rbs_%s" % (current_record.id, gene_id),
                         "Source": "MGA",
                     },
+                    shift=phase,
+                    source="MGA"
                 )
 
             cds_feat = gffSeqFeature(
