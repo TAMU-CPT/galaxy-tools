@@ -150,7 +150,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                         description=description,
                     )
                   ]
-                if feat.strand == -1:
+                elif feat.strand == -1:
                   yield [
                     SeqRecord(
                         (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
@@ -169,7 +169,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                   ]
             rec.features = newfeats
             rec.annotations = {}
-            gffWrite([rec], sys.stdout)
+            #gffWrite([rec], sys.stdout)
     else:
         seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
         
