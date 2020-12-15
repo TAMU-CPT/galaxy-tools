@@ -68,7 +68,7 @@ def mga_to_gff3(mga_output, genome):
                     },
                 )
 
-            cds_feat = SeqFeature(
+            cds_feat = gffSeqFeature(
                 FeatureLocation(start, end),
                 type="CDS",
                 strand=strand,
