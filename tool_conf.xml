@@ -74,6 +74,7 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gff3/gff3_color.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/fasta/fasta_snp_plot.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/phage_annotation_table.xml"/>
+        <tool file="cpt2/galaxy-tools/tools/external/Prophet/Prophet.xml"/>
     </section>
     <section id="7de17161-4bd8-41ca-8838-2d0777b752a3" name="Multiple sequence alignment">
         <label id="3f2511b5-1947-43ef-a081-d252b6855dbc" text="MAF Tools Suite"/>
