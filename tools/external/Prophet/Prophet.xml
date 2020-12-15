@@ -5,11 +5,12 @@
   <requirements/>
   <command detect_errors="aggressive"><![CDATA[
 mkdir ./tempOut ;
+$__tool_directory__/UTILS.dir/GFFLib/gff_rewrite --input $gffIn -output ./tempGFF.gff --add_missing_features;
 python $__tool_directory__/runProphet.py 
 --evalue_cutoff $cutoff
 --window_size $window
 $fasIn 
-$gffIn ;
+./tempGFF.gff ;
 cat ./tempOut/*.fas > $fasOut ;
 cat ./tempOut/*.svg > $svgOut ;]]></command>
   <inputs>
