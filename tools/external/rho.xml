@@ -23,7 +23,7 @@ cat ./info_about_pred* > $txtOut
 	<outputs>
 		<data format="csv" name="xmlOut" label="Rho XML Display"/>
 		<data format="txt" name="txtOut" label="Rho Information"/>
-                <data format="gff" name="gffOut" label="Rho Terminators (GFF3)"/>
+                <data format="gff3" name="gffOut" label="Rho Terminators (GFF3)"/>
 	</outputs>
 	<tests/>
 	<help><![CDATA[
