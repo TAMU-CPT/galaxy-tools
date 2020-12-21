@@ -73,9 +73,9 @@ if __name__ == '__main__':
             for y in ["pseudogene", "pseudogenic_region", "processed_pseudogene", 'transcript', 'tRNA', 'snRNA', 'snoRNA', 'ncRNA', 'rRNA', 'mRNA', 'miRNA', 'guide_RNA', 'RNase_P_RNA', 'telomerase_RNA', 'SRP_RNA', 'lnc_RNA', 'RNase_MRP_RNA', 'scRNA', 'piRNA', 'tmRNA', 'enzymatic_RNA', "repeat_region", "terminator", "shine_dalgarno_sequence", "transposable_element", "gene"]:
                 if str(x.type) == y:
                     filteredFeats.append(x)
-                    if args.overrideID != "ID" and args.overrideID in filteredFeats.qualifiers.keys():
-                        filteredFeats.qualifiers["ID"] = filteredFeats.qualifiers[args.overrideID]
-                        filteredFeats.id = filteredFeats.qualifiers["ID"][0]
+                    if args.overrideID != "ID" and args.overrideID in filteredFeats[-1].qualifiers.keys():
+                        filteredFeats[-1].qualifiers["ID"] = filteredFeats[-1].qualifiers[args.overrideID]
+                        filteredFeats[-1].id = filteredFeats[-1].qualifiers["ID"][0]
                     break
         rec.features = filteredFeats
         recList.append(rec)
