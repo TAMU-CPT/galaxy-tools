@@ -46,7 +46,7 @@ if __name__ == '__main__':
     if org_cn not in all_orgs:
         raise Exception("Could not find organism %s" % org_cn)
 
-    orgs = accessible_organisms(gx_user, [org_cn], 'WRITE')from cpt_gffParser import gffParse
+    orgs = accessible_organisms(gx_user, [org_cn], 'WRITE')
     if not orgs:
         raise Exception("You do not have write permission on this organism")
 
