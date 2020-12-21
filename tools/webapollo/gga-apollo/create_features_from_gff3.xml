@@ -9,7 +9,7 @@
   <command detect_errors="aggressive"><![CDATA[
 @AUTH@
 
-python '$__tool_directory__/create_features_from_gff3.py'
+python3 '$__tool_directory__/create_features_from_gff3.py'
 @ORG_OR_GUESS@
 
 '$__user_email__'
