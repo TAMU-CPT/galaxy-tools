@@ -61,6 +61,7 @@ if __name__ == '__main__':
     batch_size = 1
     test = False
     timing=False
+    loading_status = {}
     for rec in gffParse(args.gff3):
         annoteClient.set_sequence(org_cn, rec.id)
         try:
@@ -101,4 +102,4 @@ if __name__ == '__main__':
         loading_status = {**loading_status, **written_transcripts}
 
     log.info("Finished loading")
-    #print(loading_status)
+    print(loading_status)
