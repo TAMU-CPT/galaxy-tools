@@ -3,8 +3,10 @@ import argparse
 import json
 import logging
 
-from apollo import accessible_organisms
-from apollo.util import GuessOrg, OrgOrGuess
+from apollo import util, accessible_organisms
+from apollo.client import Client
+from apollo.util import features_to_feature_schema, retry, GuessOrg, OrgOrGuess
+from enum import Enum
 
 from arrow.apollo import get_apollo_instance
 
