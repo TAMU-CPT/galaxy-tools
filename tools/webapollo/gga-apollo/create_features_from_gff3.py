@@ -70,7 +70,7 @@ if __name__ == '__main__':
         featList.sort(key=lambda x: x.location.start)
         for x in featList:
             for y in ["pseudogene", "pseudogenic_region", "processed_pseudogene", 'transcript', 'tRNA', 'snRNA', 'snoRNA', 'ncRNA', 'rRNA', 'mRNA', 'miRNA', 'guide_RNA', 'RNase_P_RNA', 'telomerase_RNA', 'SRP_RNA', 'lnc_RNA', 'RNase_MRP_RNA', 'scRNA', 'piRNA', 'tmRNA', 'enzymatic_RNA', "repeat_region", "terminator", "shine_dalgarno_sequence", "transposable_element", "gene"]:
-                if str(x.type) == y
+                if str(x.type) == y:
                     filteredFeats.append(x)
                     break
         rec.features = filteredFeats
