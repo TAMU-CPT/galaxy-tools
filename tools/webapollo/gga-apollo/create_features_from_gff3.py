@@ -100,3 +100,4 @@ if __name__ == '__main__':
         loading_status = {**loading_status, **written_transcripts}
 
     log.info("Finished loading")
+    print(loading_status)
