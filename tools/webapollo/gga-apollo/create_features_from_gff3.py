@@ -16,7 +16,7 @@ from webapollo import UserObj, handle_credentials
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-class FeatureType:
+class FeatureType(Enum):
     FEATURE = 1
     TRANSCRIPT = 2
 
@@ -61,7 +61,6 @@ if __name__ == '__main__':
     batch_size = 1
     test = False
     timing=False
-    passThrough = FeatureType()
     for rec in gffParse(args.gff3):
         annoteClient.set_sequence(org_cn, rec.id)
         try:
@@ -73,8 +72,8 @@ if __name__ == '__main__':
             all_processed['top-level'].extend(processed['top-level'])
             all_processed['transcripts'].extend(processed['transcripts'])
             total_features_written += 1
-            written_top = annoteClient._check_write(batch_size, test, all_processed['top-level'], passThrough, timing)
-            written_transcripts = annoteClient._check_write(batch_size, test, all_processed['transcripts'], passThrough, timing)
+            written_top = annoteClient._check_write(batch_size, test, all_processed['top-level'], FeatureType.FEATURE, timing)
+            written_transcripts = annoteClient._check_write(batch_size, test, all_processed['transcripts'], FeatureType.TRANSCRIPT, timing)
 
             if len(written_top):
                 all_processed['top-level'] = []
@@ -90,8 +89,8 @@ if __name__ == '__main__':
             log.error("Failed to load features from %s" % rec.id)
 
         # Write the rest of things to write (ignore batch_size)
-    written_top = annoteClient._check_write(0, test, all_processed['top-level'], passThrough, timing)
-    written_transcripts = annoteClient._check_write(0, test, all_processed['transcripts'], passThrough, timing)
+    written_top = annoteClient._check_write(0, test, all_processed['top-level'], FeatureType.FEATURE, timing)
+    written_transcripts = annoteClient._check_write(0, test, all_processed['transcripts'], FeatureType.TRANSCRIPT, timing)
 
     if len(written_top):
         all_processed['top-level'] = []
