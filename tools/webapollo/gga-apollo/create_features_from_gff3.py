@@ -16,7 +16,7 @@ from webapollo import UserObj, handle_credentials
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-class FeatureType(Enum):
+class FeatureType():
     FEATURE = 1
     TRANSCRIPT = 2
 
