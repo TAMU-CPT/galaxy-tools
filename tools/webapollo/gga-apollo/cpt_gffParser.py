@@ -1,1 +1,1 @@
-../gff3/cpt_gffParser.py
+../../gff3/cpt_gffParser.py
