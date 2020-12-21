@@ -62,7 +62,22 @@ if __name__ == '__main__':
     test = False
     timing=False
     loading_status = {}
+    
+    recList = [] 
     for rec in gffParse(args.gff3):
+        filteredFeats = []  
+        featList = rec.features
+        featList.sort(key=lambda x: x.location.start)
+        for x in featList:
+            for y in ["pseudogene", "pseudogenic_region", "processed_pseudogene", 'transcript', 'tRNA', 'snRNA', 'snoRNA', 'ncRNA', 'rRNA', 'mRNA', 'miRNA', 'guide_RNA', 'RNase_P_RNA', 'telomerase_RNA', 'SRP_RNA', 'lnc_RNA', 'RNase_MRP_RNA', 'scRNA', 'piRNA', 'tmRNA', 'enzymatic_RNA', "repeat_region", "terminator", "shine_dalgarno_sequence", "transposable_element", "gene"]:
+                if str(x.type) == y:
+                    filteredFeats.append(x)
+                    break
+        rec.features = filteredFeats
+        recList.append(rec)
+
+    #args.gff3.seek(0)
+    for rec in recList:
         annoteClient.set_sequence(org_cn, rec.id)
         try:
             log.info("Processing %s with features: %s" % (rec.id, rec.features))
@@ -70,7 +85,6 @@ if __name__ == '__main__':
                                                 disable_cds_recalculation=args.disable_cds_recalculation,
                                                 use_name=args.use_name
                                                 )
-            print(processed)
             all_processed['top-level'].extend(processed['top-level'])
             all_processed['transcripts'].extend(processed['transcripts'])
             total_features_written += 1
