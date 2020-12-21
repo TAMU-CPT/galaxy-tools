@@ -8,10 +8,15 @@ from apollo.util import GuessOrg, OrgOrGuess
 
 from arrow.apollo import get_apollo_instance
 
+from cpt_gffParser import gffParse
+
 from webapollo import UserObj, handle_credentials
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+class FeatureType(Enum):
+    FEATURE = 1
+    TRANSCRIPT = 2
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sample script to add an attribute to a feature via web services')
@@ -41,9 +46,55 @@ if __name__ == '__main__':
     if org_cn not in all_orgs:
         raise Exception("Could not find organism %s" % org_cn)
 
-    orgs = accessible_organisms(gx_user, [org_cn], 'WRITE')
+    orgs = accessible_organisms(gx_user, [org_cn], 'WRITE')from cpt_gffParser import gffParse
     if not orgs:
         raise Exception("You do not have write permission on this organism")
 
-    load_result = wa.annotations.load_legacy_gff3(org_cn, args.gff3) # use_name=args.use_name, disable_cds_recalculation=args.disable_cds_recalculation)
+    #load_result = wa.annotations.load_legacy_gff3(org_cn, args.gff3) # use_name=args.use_name, disable_cds_recalculation=args.disable_cds_recalculation)
     #print(json.dumps(load_result, indent=2))
+
+    annoteClient = wa.annotations
+    all_processed = {'top-level': [], 'transcripts': []}
+    total_features_written = 0
+    batch_size = 1
+    test = False
+    timing=False
+    for rec in gffParse(args.gff3):
+        annoteClient.set_sequence(org_cn, rec.id)
+        try:
+            log.info("Processing %s with features: %s" % (rec.id, rec.features))
+            processed = annoteClient._process_gff_entry(rec, source=args.source,
+                                                disable_cds_recalculation=args.disable_cds_recalculation,
+                                                use_name=args.use_name
+                                                )
+            all_processed['top-level'].extend(processed['top-level'])
+            all_processed['transcripts'].extend(processed['transcripts'])
+            total_features_written += 1
+            written_top = annoteClient._check_write(batch_size, test, all_processed['top-level'], FeatureType.FEATURE, timing)
+            written_transcripts = annoteClient._check_write(batch_size, test, all_processed['transcripts'], FeatureType.TRANSCRIPT, timing)
+
+            if len(written_top):
+                all_processed['top-level'] = []
+                loading_status = {**loading_status, **written_top}
+            if len(written_transcripts):
+                all_processed['transcripts'] = []
+                loading_status = {**loading_status, **written_transcripts}
+
+        except Exception as e:
+            msg = str(e)
+            if '\n' in msg:
+                msg = msg[0:msg.index('\n')]
+            log.error("Failed to load features from %s" % rec.id)
+
+        # Write the rest of things to write (ignore batch_size)
+    written_top = annoteClient._check_write(0, test, all_processed['top-level'], FeatureType.FEATURE, timing)
+    written_transcripts = annoteClient._check_write(0, test, all_processed['transcripts'], FeatureType.TRANSCRIPT, timing)
+
+    if len(written_top):
+        all_processed['top-level'] = []
+        loading_status = {**loading_status, **written_top}
+    if len(written_transcripts):
+        all_processed['transcripts'] = []
+        loading_status = {**loading_status, **written_transcripts}
+
+    log.info("Finished loading")
