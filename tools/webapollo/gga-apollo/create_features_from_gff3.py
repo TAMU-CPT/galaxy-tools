@@ -72,8 +72,8 @@ if __name__ == '__main__':
             all_processed['top-level'].extend(processed['top-level'])
             all_processed['transcripts'].extend(processed['transcripts'])
             total_features_written += 1
-            written_top = annoteClient._check_write(batch_size, test, all_processed['top-level'], FeatureType.FEATURE, timing)
-            written_transcripts = annoteClient._check_write(batch_size, test, all_processed['transcripts'], FeatureType.TRANSCRIPT, timing)
+            written_top = annoteClient._check_write(batch_size, test, all_processed['top-level'], FeatureType, timing)
+            written_transcripts = annoteClient._check_write(batch_size, test, all_processed['transcripts'], FeatureType, timing)
 
             if len(written_top):
                 all_processed['top-level'] = []
@@ -89,8 +89,8 @@ if __name__ == '__main__':
             log.error("Failed to load features from %s" % rec.id)
 
         # Write the rest of things to write (ignore batch_size)
-    written_top = annoteClient._check_write(0, test, all_processed['top-level'], FeatureType.FEATURE, timing)
-    written_transcripts = annoteClient._check_write(0, test, all_processed['transcripts'], FeatureType.TRANSCRIPT, timing)
+    written_top = annoteClient._check_write(0, test, all_processed['top-level'], FeatureType, timing)
+    written_transcripts = annoteClient._check_write(0, test, all_processed['transcripts'], FeatureType, timing)
 
     if len(written_top):
         all_processed['top-level'] = []
