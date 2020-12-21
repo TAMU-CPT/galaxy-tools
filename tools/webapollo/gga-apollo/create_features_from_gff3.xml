@@ -10,6 +10,7 @@
 @AUTH@
 
 python3 '$__tool_directory__/create_features_from_gff3.py'
+--overrideID $idField
 @ORG_OR_GUESS@
 
 '$__user_email__'
@@ -19,6 +20,7 @@ python3 '$__tool_directory__/create_features_from_gff3.py'
   <inputs>
     <expand macro="org_or_guess" />
     <expand macro="gff3_input" />
+    <param label="Qualifier to pull display name from (Case-sensitive, default ID)" name="idField" type="text" value="ID" />
   </inputs>
   <outputs>
     <data format="txt" name="output" label="Process and Error Log"/>

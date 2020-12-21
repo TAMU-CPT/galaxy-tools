@@ -26,6 +26,7 @@ if __name__ == '__main__':
     parser.add_argument('--source', help='URL where the input dataset can be found.')
     parser.add_argument('--use_name', action='store_true', help='Use the given name instead of generating one.')
     parser.add_argument('--disable_cds_recalculation', action='store_true', help='Disable CDS recalculation and instead use the one provided.')
+    parser.add_argument('--overrideID', type=str, help='Select new field to display name in annotation track')
     OrgOrGuess(parser)
 
     parser.add_argument('gff3', type=argparse.FileType('r'), help='GFF3 file')
@@ -72,6 +73,9 @@ if __name__ == '__main__':
             for y in ["pseudogene", "pseudogenic_region", "processed_pseudogene", 'transcript', 'tRNA', 'snRNA', 'snoRNA', 'ncRNA', 'rRNA', 'mRNA', 'miRNA', 'guide_RNA', 'RNase_P_RNA', 'telomerase_RNA', 'SRP_RNA', 'lnc_RNA', 'RNase_MRP_RNA', 'scRNA', 'piRNA', 'tmRNA', 'enzymatic_RNA', "repeat_region", "terminator", "shine_dalgarno_sequence", "transposable_element", "gene"]:
                 if str(x.type) == y:
                     filteredFeats.append(x)
+                    if args.overrideID != "ID" and args.overrideID in filteredFeats.qualifiers.keys():
+                        filteredFeats.qualifiers["ID"] = filteredFeats.qualifiers[args.overrideID]
+                        filteredFeats.id = filteredFeats.qualifiers["ID"][0]
                     break
         rec.features = filteredFeats
         recList.append(rec)
