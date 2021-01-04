@@ -81,7 +81,8 @@ def expand_taxIDs(blast):
         # if(len(data[4]) > 0):
         #  print(data[0])
         for ID in data[4]:
-            yield [data[0], data[1], data[2], data[3], int(ID)]
+            if ID != "N/A":
+              yield [data[0], data[1], data[2], data[3], int(ID)]
 
 
 def expand_titles(blast):
@@ -133,6 +134,7 @@ if __name__ == "__main__":
     parser.add_argument("--access", action="store_true")
     parser.add_argument("--protein", action="store_true")
     parser.add_argument("--canonical", action="store_true")
+    parser.add_argument("--noFilter", action="store_true")
     #parser.add_argument("--title", action="store_true") # Add when ready to update XML after semester
     parser.add_argument("--hits", type=int, default=5)
     
@@ -169,7 +171,8 @@ if __name__ == "__main__":
     
     data = expand_taxIDs(data)
     data = remove_dupes(data)
-    data = filter_phage(data, phageTaxLookup, sciName)
+    if not args.noFilter:
+        data = filter_phage(data, phageTaxLookup, sciName)
     listify = []
     for x in data:
         listify.append(x)
