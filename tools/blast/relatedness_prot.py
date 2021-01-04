@@ -119,7 +119,7 @@ def scoreMap(blast):
     c = {}
     m = {}
     for (qseq, subID, subTitle, access, ID) in blast:
-        if (subTitle, ID) not in c:
+        if (subTitle, ID) not in c.keys():
             m[(subTitle, ID)] = access
             c[(subTitle, ID)] = 0
 
