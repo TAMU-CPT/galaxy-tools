@@ -239,6 +239,7 @@ if __name__ == "__main__":
     parser.add_argument("--protein", action="store_true")
     parser.add_argument("--canonical", action="store_true")
     parser.add_argument("--hits", type=int, default=5)
+    parser.add_argument("--noFilter", action="store_true")
 
     args = parser.parse_args()
 
@@ -272,7 +273,8 @@ if __name__ == "__main__":
 
     # data = expand_taxIDs(data)
     # data = deform_scores(data)
-    data = filter_phage(data, phageTaxLookup)
+    if not args.noFilter:
+      data = filter_phage(data, phageTaxLookup)
     # data = expand_titles(data)
 
     if args.protein or args.canonical:

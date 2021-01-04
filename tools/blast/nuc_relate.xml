@@ -11,6 +11,7 @@ $__tool_directory__/relatedness.py
 @BLAST_TSV@
 $__tool_directory__/TaxID_List.txt
 $access
+$filter
 --hits $hits
 > $accession_list
 </command>
@@ -18,6 +19,7 @@ $access
 	<expand macro="blast_tsv" />
                 <param label = 'Number of results to return' name="hits" type="integer" size="15" value="5"/>
                 <param name="access" type="boolean" truevalue="--access" falsevalue="" label="Return Accession Numbers"/>
+                <param name="filter" type="boolean" truevalue="" falsevalue="--noFilter" checked="true" label="Automatically filter by phage Taxonomy IDs"/>
 	</inputs>
 	<outputs>
 		<data format="tabular" name="accession_list" label="Top BlastN Hits" />
