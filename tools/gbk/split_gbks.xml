@@ -5,6 +5,10 @@
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
   </macros>
+    <requirements>
+      <requirement type="package" version="2.7">python</requirement>
+      <requirement type="package" version="1.74">biopython</requirement>
+    </requirements>
     <command interpreter="python" detect_errors="aggressive"><![CDATA[split_gbks.py
 $multi_genbank
 ]]></command>
