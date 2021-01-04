@@ -165,6 +165,7 @@ if __name__ == "__main__":
         # phageNameLookup = {k['desc'].rstrip('.'): k['id'] for k in phageDb}
 
     data = parse_blast(args.blast)
+    nameRec = data[0][0]
     # data = with_dice(data)
     # data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
@@ -184,7 +185,7 @@ if __name__ == "__main__":
     
     sys.stdout.write(
             "Top %d matches for BLASTp results of %s\n"
-            % (args.hits, listify[0][0])
+            % (args.hits, nameRec)
         )
     header = "# TaxID\t"
     #if args.title:
