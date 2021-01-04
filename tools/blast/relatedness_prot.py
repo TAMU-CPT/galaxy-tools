@@ -9,8 +9,10 @@ log = logging.getLogger()
 
 
 def parse_blast(blast):
+    res = []
     for line in blast:
-        yield line.strip("\n").split("\t")
+        res.append(line.strip("\n").split("\t"))
+    return res
 
 
 def with_dice(blast):
