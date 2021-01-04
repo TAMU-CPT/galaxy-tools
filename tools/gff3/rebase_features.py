@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from gff3 import feature_lambda, feature_test_type, feature_test_true
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -40,7 +40,7 @@ if __name__ == "__main__":
                 if "Parent" in feature.qualifiers.keys():
                     tempParent = feature.qualifiers["Parent"][0]
                 for x in range(0, len(args.changeTo)):
-                    tempFeat = SeqFeature(location=feature.location)
+                    tempFeat = gffSeqFeature(location=feature.location)
                     tempFeat.type = args.changeTo[len(args.changeTo) - 1 - x]
                     tempFeat.id = feature.id + "_p" + str(len(args.changeTo) - x)
                     tempFeat.ref_db = feature.ref_db
