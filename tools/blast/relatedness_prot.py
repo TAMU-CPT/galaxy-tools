@@ -9,10 +9,8 @@ log = logging.getLogger()
 
 
 def parse_blast(blast):
-    res = []
     for line in blast:
-        res.append(line.strip("\n").split("\t"))
-    return res
+        yield line.strip("\n").split("\t")
 
 
 def with_dice(blast):
@@ -119,12 +117,11 @@ def scoreMap(blast):
     c = {}
     m = {}
     for (qseq, subID, subTitle, access, ID) in blast:
-        key = str(subTitle) + str(ID)
-        if key not in c:
-            m[key] = access
-            c[key] = 0
+        if (subTitle, ID) not in c:
+            m[(subTitle, ID)] = access
+            c[(subTitle, ID)] = 0
 
-        c[key] += 1
+        c[(subTitle, ID)] += 1
     return c, m
 
 
@@ -157,6 +154,11 @@ if __name__ == "__main__":
         sciName.append(line[1])
         line = phageDb.readline()
 
+    line = args.blast.readline()
+    line = line.split("\t")
+    nameRec = line[0]
+    args.blast.seek(0)
+
     if args.protein:
         splitId = split_identifiers_prot
         # phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
@@ -168,7 +170,6 @@ if __name__ == "__main__":
         # phageNameLookup = {k['desc'].rstrip('.'): k['id'] for k in phageDb}
 
     data = parse_blast(args.blast)
-    nameRec = data[0][0]
     # data = with_dice(data)
     # data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
