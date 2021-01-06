@@ -128,6 +128,7 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/correct_gene_model.xml"/>
         <label id="be4a8e9f-6fc6-40cb-8bf5-3417ea7635fd" text="Filter / Extract"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/find_by_tag.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/split_on_qualifier.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/subsection.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/feature_export.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/seq_export.xml"/>
