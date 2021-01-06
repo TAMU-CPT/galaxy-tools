@@ -19,7 +19,7 @@ $gbkIn
 > $output
 ]]></command>
 	<inputs>
-          <param label="Genbank file" name="multi_genbank" type="data" format="genbank"/>
+          <param label="Genbank file" name="gbkIn" type="data" format="genbank"/>
           <param label="Which qualifier(s) to check against (Space separated list)" name="keyCheck" type="text" value="locus_tag"/>
           <param label="Value(s) that qualifier must match for feature to be extracted (Space separated list)" name="valCheck" type="text" value=""/>
           <param label="Number of additional bases upstream to extract" name="aheadNum" type="integer" value="0"/>
