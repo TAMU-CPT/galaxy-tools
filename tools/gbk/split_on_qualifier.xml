@@ -32,8 +32,9 @@ $gbkIn
 	<help>
 **What it does**
 
-Splits a genbank file that contains multiple records into separate genbank files.
-Output can be separate history items or a zip file.
+Takes a Genbank file and searches the features for the provided qualifiers, and then filters those features for those who have a value provided in the second list. Features are then placed into groups based on location, where features that overlap each other will be bundled together. Finally, a Genbank record for each group will be created. The user can also specify a number of additional bases upstream and downstream of each contiguous group to go in the nucleotide sequence record portion of the Genbank. 
+
+The tool will effectively filter and split a genbank based off of qualifier/ value pairs, or if a highly specific value is set, such as a single locus_tag, it will create one specific subsection of a genbank file.
 </help>
-		<expand macro="citations" />
+		<expand macro="citations-2020-AJC-Solo" />
 </tool>
