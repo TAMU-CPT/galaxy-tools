@@ -6,6 +6,7 @@ import logging
 from apollo import util, accessible_organisms
 from apollo.client import Client
 from apollo.util import features_to_feature_schema, retry, GuessOrg, OrgOrGuess
+from apollo.annotations import FeatureType
 from enum import Enum
 
 from arrow.apollo import get_apollo_instance
@@ -70,7 +71,7 @@ if __name__ == '__main__':
         featList = rec.features
         featList.sort(key=lambda x: x.location.start)
         for x in featList:
-            for y in ["pseudogene", "pseudogenic_region", "processed_pseudogene", 'transcript', 'tRNA', 'snRNA', 'snoRNA', 'ncRNA', 'rRNA', 'mRNA', 'miRNA', 'guide_RNA', 'RNase_P_RNA', 'telomerase_RNA', 'SRP_RNA', 'lnc_RNA', 'RNase_MRP_RNA', 'scRNA', 'piRNA', 'tmRNA', 'enzymatic_RNA', "repeat_region", "terminator", "shine_dalgarno_sequence", "transposable_element", "gene"]:
+            for y in ["pseudogene", "pseudogenic_region", "processed_pseudogene", 'transcript', 'tRNA', 'snRNA', 'snoRNA', 'ncRNA', 'rRNA', 'mRNA', 'miRNA', 'guide_RNA', 'RNase_P_RNA', 'telomerase_RNA', 'SRP_RNA', 'lnc_RNA', 'RNase_MRP_RNA', 'scRNA', 'piRNA', 'tmRNA', 'enzymatic_RNA', "repeat_region", "terminator", "shine_dalgarno_sequence", "transposable_element", "gene", "CDS"]:
                 if str(x.type) == y:
                     filteredFeats.append(x)
                     if args.overrideID != "ID" and args.overrideID in filteredFeats[-1].qualifiers.keys():
@@ -94,7 +95,7 @@ if __name__ == '__main__':
             all_processed['transcripts'].extend(processed['transcripts'])
             total_features_written += 1
             written_top = annoteClient._check_write(batch_size, test, all_processed['top-level'])#, FeatureType.FEATURE, timing)
-            written_transcripts = annoteClient._check_write(batch_size, test, all_processed['transcripts'])#, FeatureType.TRANSCRIPT, timing)
+            written_transcripts = annoteClient._check_write(batch_size, test, all_processed['transcripts'], FeatureType.TRANSCRIPT)#, timing)
 
             if len(written_top):
                 all_processed['top-level'] = []
@@ -121,4 +122,4 @@ if __name__ == '__main__':
         loading_status = {**loading_status, **written_transcripts}
 
     log.info("Finished loading")
-    #print(loading_status)
+    print(loading_status)
