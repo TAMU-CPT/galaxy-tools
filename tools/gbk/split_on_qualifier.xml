@@ -36,5 +36,5 @@ Takes a Genbank file and searches the features for the provided qualifiers, and 
 
 The tool will effectively filter and split a genbank based off of qualifier/ value pairs, or if a highly specific value is set, such as a single locus_tag, it will create one specific subsection of a genbank file.
 </help>
-		<expand macro="citations-2020-AJC-Solo" />
+		<expand macro="citations-2020-AJC-solo" />
 </tool>
