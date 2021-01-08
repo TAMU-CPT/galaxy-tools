@@ -9,7 +9,7 @@ from Bio.SeqFeature import FeatureLocation
 from gff3 import feature_lambda, feature_test_type, get_id
 
 
-def lipoP_gff(lipoIn, gff3In, jBrowseOut):
+def lipoP_gff(lipoIn, gff3In, jBrowseOut, filterSP2):
 
     orgIDs = {}
     orgID = ""
@@ -24,11 +24,18 @@ def lipoP_gff(lipoIn, gff3In, jBrowseOut):
         rowElem = row.split("\t")
 
         orgID = rowElem[0]
-
-        if rowElem[2] == "CleavII":
+        
+        if filterSP2:
+          if rowElem[2] == "CleavII":
             if not (orgID in orgIDs.keys()):
                 orgIDs[orgID] = []
             orgIDs[orgID].append(int(rowElem[3]))  # , int(rowElem[4])))
+        else:
+          if rowElem[2] in "CleavII":
+            if not (orgID in orgIDs.keys()):
+                orgIDs[orgID] = []
+            orgIDs[orgID].append(int(rowElem[3]))  # , int(rowElem[4])))
+
 
     # Rebase
     for gff in gffParse(gff3In):
@@ -93,6 +100,11 @@ if __name__ == "__main__":
         type=bool,
         default=False,
         help="Prepare Output for jBrowse instance",
+    )
+    parser.add_argument(
+        "--filterSP2",
+        action='store_true',
+        help="Filter for only SPII sites",
     )
     args = parser.parse_args()
     lipoP_gff(**vars(args))
