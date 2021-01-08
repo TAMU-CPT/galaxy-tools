@@ -94,7 +94,7 @@ if __name__ == '__main__':
             all_processed['top-level'].extend(processed['top-level'])
             all_processed['transcripts'].extend(processed['transcripts'])
             total_features_written += 1
-            written_top = annoteClient._check_write(batch_size, test, all_processed['top-level'])#, FeatureType.FEATURE, timing)
+            written_top = annoteClient._check_write(batch_size, test, all_processed['top-level'], FeatureType.FEATURE)#, timing)
             written_transcripts = annoteClient._check_write(batch_size, test, all_processed['transcripts'], FeatureType.TRANSCRIPT)#, timing)
 
             if len(written_top):
@@ -122,4 +122,4 @@ if __name__ == '__main__':
         loading_status = {**loading_status, **written_transcripts}
 
     log.info("Finished loading")
-    print(loading_status)
+    #print(loading_status)
