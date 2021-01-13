@@ -269,12 +269,38 @@ if __name__ == "__main__":
     avg = (sum(length)) / total_isp
     med = median(length)
 
+    #### Extra statistics
+    args.out_isp_prot.close()
+    all_orfs = open(args.out_isp_prot.name, "r")
+    all_isps = open(args.putative_isp_fa.name, "r")
+    #record = SeqIO.read(all_orfs, "fasta")
+    #print(len(record))
+    n = 0
+    for line in all_orfs:
+        if line.startswith(">"):
+            n += 1
+    all_orfs_counts = n
+    
+    c = 0
+    for line in all_isps:
+        if line.startswith(">"):
+            c += 1
+    all_isps_counts = c
+
+    #print(f"{n} -> {c}")
+    #count = 0
+    #for feature in record.features:
+    #    count += 1
+    #print(count)
+
+
     with args.summary_isp_txt as f:
         f.write("total potential o-spanins: " + str(total_isp) + "\n")
         f.write("average length (AA): " + str(avg) + "\n")
         f.write("median length (AA): " + str(med) + "\n")
         f.write("maximum orf in size (AA): " + str(top_size) + "\n")
-        f.write("minimum orf in size (AA): " + str(bot_size))
+        f.write("minimum orf in size (AA): " + str(bot_size) + "\n")
+        f.write(f"ratio of isps found from naive orfs: {c}/{n}")
 
     # Output the putative list in gff3 format
     args.putative_isp_fa = open(args.putative_isp_fa.name, "r")
