@@ -290,7 +290,8 @@ if __name__ == "__main__":
         f.write("median length (AA): " + str(med) + "\n")
         f.write("maximum orf in size (AA): " + str(top_size) + "\n")
         f.write("minimum orf in size (AA): " + str(bot_size) + "\n")
-        f.write(f"ratio of osps found from naive orfs: {c}/{n}")
+        #f.write(f"ratio of osps found from naive orfs: {c}/{n}")
+        f.write("ratio of osps found from naive orfs: "+ str(c) + "/" +str(n))
     # Output the putative list in gff3 format:
     args.putative_osp_fa = open(args.putative_osp_fa.name, "r")
     gff_data = prep_a_gff3(fa=args.putative_osp_fa, spanin_type="osp",org=args.fasta_file)
