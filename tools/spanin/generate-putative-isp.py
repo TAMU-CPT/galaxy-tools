@@ -300,7 +300,7 @@ if __name__ == "__main__":
         f.write("median length (AA): " + str(med) + "\n")
         f.write("maximum orf in size (AA): " + str(top_size) + "\n")
         f.write("minimum orf in size (AA): " + str(bot_size) + "\n")
-        f.write(f"ratio of isps found from naive orfs: {c}/{n}")
+        f.write("ratio of isps found from naive orfs: " + str(c) + "/" +str(n))
 
     # Output the putative list in gff3 format
     args.putative_isp_fa = open(args.putative_isp_fa.name, "r")

@@ -240,24 +240,24 @@ if __name__ == "__main__":
                 if each_spanin_type not in ["total_amount","total_unique"]:
                     #print(each_spanin_type)
                     #print(each_spanin_type)
-                    f.write(f"=~~~~~= {each_spanin_type} Spanin Candidate Statistics =~~~~~=\n")
-                    f.writelines(f"Total Candidate Pairs = {spanin_data['amount']}\n")
-                    f.writelines(f"Unique ORF i-spanin = {spanin_data['uniques']}\n")
+                    f.write("=~~~~~= "+str(each_spanin_type) +" Spanin Candidate Statistics =~~~~~=\n")
+                    f.writelines("Total Candidate Pairs = "+str(spanin_data['amount'])+"\n")
+                    f.writelines("Unique ORF i-spanin = "+str(spanin_data['uniques'])+"\n")
                     if each_spanin_type == "EMBEDDED":
                         for k, v in SPANIN_TYPES['EMBEDDED'].items():
                             print(k)
-                            f.writelines(f"{k} ==> Amount of corresponding candidate o-spanins(s): {len(v)}\n")
+                            f.writelines(""+str(k)+" ==> Amount of corresponding candidate o-spanins(s): "+str(len(v))+"\n")
                     if each_spanin_type == "SEPARATED":
                         for k, v in SPANIN_TYPES['SEPARATED'].items():
-                            f.writelines(f"{k} ==> Amount of corresponding candidate o-spanins(s): {len(v)}\n")
+                            f.writelines(""+str(k)+ " ==> Amount of corresponding candidate o-spanins(s): "+str(len(v))+"\n")
                     if each_spanin_type == "OVERLAPPED":
                         for k, v in SPANIN_TYPES['OVERLAPPED'].items():
-                            f.writelines(f"{k} ==> Amount of corresponding candidate o-spanins(s): {len(v)}\n")
+                            f.writelines(""+str(k)+" ==> Amount of corresponding candidate o-spanins(s): "+str(len(v))+"\n")
             except TypeError:
                 continue
         f.write("\n=~~~~~= Totals =~~~~~=\n")
-        f.writelines(f"Total Candidates = {spanins['total_amount']}\n")
-        f.writelines(f"Total Unique Candidates = {spanins['total_unique']}")
+        f.writelines("Total Candidates = "+str(spanins['total_amount'])+"\n")
+        f.writelines("Total Unique Candidates = "+str(spanins['total_unique'])+"\n")
 
     args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
     isp_full = tuple_fasta(args.putative_isp_fasta_file)
@@ -303,10 +303,10 @@ if __name__ == "__main__":
                     )
                     if each_posp[6] == "+":
                         if each_posp[1] in pair_dict['pairs']['pair_number'].keys():
-                            f.write(f"{pair_dict['pairs']['pair_number'][each_posp[1]]}\n")
+                            f.write(""+str(pair_dict['pairs']['pair_number'][each_posp[1]])+"\n")
                     elif each_posp[6] == "-":
                         if each_posp[0] in pair_dict['pairs']['pair_number'].keys():
-                            f.write(f"{pair_dict['pairs']['pair_number'][each_posp[0]]}\n")
+                            f.write(""+str(pair_dict['pairs']['pair_number'][each_posp[0]])+"\n")
         else:
             f.write("nothing found")
 
@@ -363,10 +363,10 @@ if __name__ == "__main__":
                     )
                     if each_posp[6] == "+":
                         if each_posp[2] in pair_dict['pairs']['pair_number'].keys():
-                            f.write(f"{pair_dict['pairs']['pair_number'][each_posp[2]]}\n")
+                            f.write(""+str(pair_dict['pairs']['pair_number'][each_posp[2]])+"\n")
                     elif each_posp[6] == "-":
                         if each_posp[1] in pair_dict['pairs']['pair_number'].keys():
-                            f.write(f"{pair_dict['pairs']['pair_number'][each_posp[1]]}\n")
+                            f.write(""+str(pair_dict['pairs']['pair_number'][each_posp[1]])+"\n")
         else:
             f.write("nothing found")
 
@@ -418,10 +418,10 @@ if __name__ == "__main__":
                     )
                     if each_posp[6] == "+":
                         if each_posp[2] in pair_dict['pairs']['pair_number'].keys():
-                            f.write(f"{pair_dict['pairs']['pair_number'][each_posp[2]]}\n")
+                            f.write(""+str(pair_dict['pairs']['pair_number'][each_posp[2]])+"\n")
                     elif each_posp[6] == "-":
                         if each_posp[1] in pair_dict['pairs']['pair_number'].keys():
-                            f.write(f"{pair_dict['pairs']['pair_number'][each_posp[1]]}\n")
+                            f.write(""+str(pair_dict['pairs']['pair_number'][each_posp[1]])+"\n")
         else:
             f.write("nothing found")
 
