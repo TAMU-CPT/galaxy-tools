@@ -266,13 +266,31 @@ if __name__ == "__main__":
     avg = (sum(length)) / total_osp
     med = median(length)
 
+    args.out_osp_prot.close()
+    all_orfs = open(args.out_osp_prot.name, "r")
+    all_osps = open(args.putative_osp_fa.name, "r")
+    #record = SeqIO.read(all_orfs, "fasta")
+    #print(len(record))
+    #### Extra stats
+    n = 0
+    for line in all_orfs:
+        if line.startswith(">"):
+            n += 1
+    all_orfs_counts = n
+    
+    c = 0
+    for line in all_osps:
+        if line.startswith(">"):
+            c += 1
+    all_osps_counts = c
+
     with args.summary_osp_txt as f:
         f.write("total potential o-spanins: " + str(total_osp) + "\n")
         f.write("average length (AA): " + str(avg) + "\n")
         f.write("median length (AA): " + str(med) + "\n")
         f.write("maximum orf in size (AA): " + str(top_size) + "\n")
-        f.write("minimum orf in size (AA): " + str(bot_size))
-
+        f.write("minimum orf in size (AA): " + str(bot_size) + "\n")
+        f.write(f"ratio of osps found from naive orfs: {c}/{n}")
     # Output the putative list in gff3 format:
     args.putative_osp_fa = open(args.putative_osp_fa.name, "r")
     gff_data = prep_a_gff3(fa=args.putative_osp_fa, spanin_type="osp",org=args.fasta_file)
