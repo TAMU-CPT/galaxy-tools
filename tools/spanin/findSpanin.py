@@ -25,9 +25,9 @@ def reconfigure_dict(spanins):
     new_spanin_dict = OrderedDict()
 
     for each_spanin_type, data_dict in spanins.items():
-        new_spanin_dict[each_spanin_type] = {}
-        new_spanin_dict[each_spanin_type]['positive'] = {}
-        new_spanin_dict[each_spanin_type]['negative'] = {}
+        new_spanin_dict[each_spanin_type] = OrderedDict()
+        new_spanin_dict[each_spanin_type]['positive'] = OrderedDict()
+        new_spanin_dict[each_spanin_type]['negative'] = OrderedDict()
         new_spanin_dict[each_spanin_type]['positive']['coords'] = []
         new_spanin_dict[each_spanin_type]['negative']['coords'] = []
         for outter_orf, inner_data in data_dict.items():
@@ -186,11 +186,15 @@ if __name__ == "__main__":
 
 
     #### RE-WRITE
-    SPANIN_TYPES = {
-        'EMBEDDED' : {},
-        'OVERLAPPED' : {},
-        'SEPARATED' : {},
-    }
+    SPANIN_TYPES = OrderedDict()
+    SPANIN_TYPES['EMBEDDED'] = OrderedDict()
+    SPANIN_TYPES['OVERLAPPED'] = OrderedDict()
+    SPANIN_TYPES['SEPARATED'] = OrderedDict()
+    #SPANIN_TYPES = {
+    #    'EMBEDDED' : {},
+    #    'OVERLAPPED' : {},
+    #    'SEPARATED' : {},
+    #}
 
     isp = getDescriptions(args.putative_isp_fasta_file)
     args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
