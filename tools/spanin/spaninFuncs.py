@@ -8,6 +8,7 @@ PREMISE
 import re
 from Bio import SeqIO
 from Bio import Seq
+from collections import OrderedDict
 
 # Not written in OOP for a LITTLE bit of trying to keep the complication down in case adjustments are needed by someone else.
 # Much of the manipulation is string based; so it should be straightforward as well as moderately quick
@@ -333,9 +334,9 @@ def spaninProximity(isp, osp, max_dist=30):
     OUTPUT: Return (improved) candidates for overlapping, embedded, and separate list
     """
 
-    embedded = {}
-    overlap = {}
-    separate = {}
+    embedded = OrderedDict()
+    overlap = OrderedDict()
+    separate = OrderedDict()
     for iseq in isp:
         embedded[iseq[2]] = []
         overlap[iseq[2]] = []
