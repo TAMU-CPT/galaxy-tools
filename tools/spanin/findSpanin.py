@@ -5,7 +5,7 @@ import argparse
 import os
 import re # new
 import itertools # new
-from collections import Counter
+from collections import Counter, OrderedDict
 from spaninFuncs import getDescriptions, grabLocs, spaninProximity, splitStrands, tuple_fasta, lineWrapper
 
 ### Requirement Inputs
@@ -22,7 +22,7 @@ def reconfigure_dict(spanins):
     re organizes dictionary to be more friendly for checks
     """
 
-    new_spanin_dict = {}
+    new_spanin_dict = OrderedDict()
 
     for each_spanin_type, data_dict in spanins.items():
         new_spanin_dict[each_spanin_type] = {}
@@ -54,6 +54,7 @@ def check_for_uniques(spanins):
     If the positive strand end site is _the same_ for a i-spanin, we would group that as "1".
     i.e. if ORF1, ORF2, and ORF3 all ended with location 4231, they would not be unique.
     """
+    pair_dict = OrderedDict()
     pair_dict = {
         'pairs' : {
             'location_amount' : [],
