@@ -14,7 +14,7 @@ from arrow.apollo import get_apollo_instance
 from cpt_gffParser import gffParse
 
 from webapollo import UserObj, handle_credentials
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 #class FeatureType(Enum):
