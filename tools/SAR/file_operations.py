@@ -25,7 +25,7 @@ def gff3_from_SAR_dict(sar_dict,gff3_file):
                 f.writelines(f'{name}\tSAR_finder\tTopological domain\t{c_start}\t{c_end}\t.\t.\t.\tNote=C-terminus\n')
         else:
             f.writelines("##gff-version 3\n")
-            f.writelines(f"##sequence-region {name}\n")
+            f.writelines(f"##sequence-region\n")
 
 
 def tab_from_SAR_dict(sar_dict,stat_file,hydrophillic_res, sar_min, sar_max):
@@ -40,7 +40,7 @@ def tab_from_SAR_dict(sar_dict,stat_file,hydrophillic_res, sar_min, sar_max):
                     if "TMD_"+str(tmd_size) in data:
                         for each_match in data["TMD_"+str(tmd_size)]:
                             if each_match != [""]:
-                                print(f"{name} - {data}")
+                                #print(f"{name} - {data}")
                                 #print(each_match)
                                 #for perc in each_match[3]:
                                 #    print(perc)

@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--sar_min",type=int,default=15,help="minimum size of candidate peptide TMD domain")
 
-    parser.add_argument("--sar_max",type=int,default=20,help="maximum size of candidate peptide TMD domain")
+    parser.add_argument("--sar_max",type=int,default=24,help="maximum size of candidate peptide TMD domain")
     
     parser.add_argument("--out_fa",type=argparse.FileType("w"),help="multifasta output of candidate SAR proteins",default="candidate_SAR.fa")
 
