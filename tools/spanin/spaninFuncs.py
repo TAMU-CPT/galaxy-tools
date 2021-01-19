@@ -118,7 +118,7 @@ def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20, isp_mode=False,
         ---> TMDmin : The minimum size that a transmembrane can be (default = 10)
         ---> TMDmax : The maximum size tha ta transmembrane can be (default = 20)
     """
-    # hydrophobicAAs = ['F', 'I', 'W', 'L', 'V', 'M', 'Y', 'C', 'A', 'T', 'G', 'S']
+    # hydrophobicAAs = ['P', 'F', 'I', 'W', 'L', 'V', 'M', 'Y', 'C', 'A', 'T', 'G', 'S']
     tmd = []
     s = str(pair[1])  # sequence being analyzed
     # print(s) # for trouble shooting
