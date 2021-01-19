@@ -22,28 +22,39 @@ def reconfigure_dict(spanins):
     re organizes dictionary to be more friendly for checks
     """
 
-    new_spanin_dict = OrderedDict()
+    new_spanin_dict = {}
 
     for each_spanin_type, data_dict in spanins.items():
-        new_spanin_dict[each_spanin_type] = OrderedDict()
-        new_spanin_dict[each_spanin_type]['positive'] = OrderedDict()
-        new_spanin_dict[each_spanin_type]['negative'] = OrderedDict()
+        #print(f"{each_spanin_type} == {data_dict}")
+        new_spanin_dict[each_spanin_type] = {}
+        new_spanin_dict[each_spanin_type]['positive'] = {}
+        new_spanin_dict[each_spanin_type]['negative'] = {}
         new_spanin_dict[each_spanin_type]['positive']['coords'] = []
         new_spanin_dict[each_spanin_type]['negative']['coords'] = []
         for outter_orf, inner_data in data_dict.items():
             list_of_hits = []
             for data_content in inner_data:
+                #print(data_content)
                 data_content.insert(0, outter_orf)
+                #print(f"new data_content -> {data_content}")
                 #print(data_content)
                 #list_of_hits += [data_content]
                 #new_spanin_dict[each_spanin_type] += [data_content]
                 if data_content[6] == "+":
+                    #print(f"{each_spanin_type} @ POSITIVE")
                     new_spanin_dict[each_spanin_type]['positive']['coords'] += [data_content]
                 elif data_content[6] == "-":
+                    #print(f"{each_spanin_type} @ NEGATIVE")
                     new_spanin_dict[each_spanin_type]['negative']['coords'] += [data_content]
-            #new_spanin_dict[each_spanin_type]
+        #print(new_spanin_dict[each_spanin_type])
             #print(reorganized)
             #print(f"{outter_orf} => {inner_data}")
+            #print(new_spanin_dict)
+        
+        #print('\n')
+    #for k, v in new_spanin_dict.items():
+        #print(k)
+        #print(v)
     return new_spanin_dict
 
 
@@ -54,7 +65,7 @@ def check_for_uniques(spanins):
     If the positive strand end site is _the same_ for a i-spanin, we would group that as "1".
     i.e. if ORF1, ORF2, and ORF3 all ended with location 4231, they would not be unique.
     """
-    pair_dict = OrderedDict()
+    pair_dict = {}
     pair_dict = {
         'pairs' : {
             'location_amount' : [],
@@ -62,6 +73,7 @@ def check_for_uniques(spanins):
         }
     }
     for each_spanin_type, spanin_data in spanins.items():
+        #print(f"{each_spanin_type} ===> {spanin_data}")
         # early declarations for cases of no results
         pos_check = [] # end checks
         pos_uniques = []
@@ -74,40 +86,54 @@ def check_for_uniques(spanins):
         amt_negative = 0
         spanin_data['uniques'] = 0
         spanin_data['amount'] = 0
-        spanin_data['positive']['amt_positive'] = 0
-        spanin_data['positive']['pos_amt_unique'] = 0
+        #spanin_data['positive']['amt_positive'] = 0
+        #spanin_data['positive']['pos_amt_unique'] = 0
         #spanin_data['positive']['isp_match'] = []
-        spanin_data['negative']['amt_negative'] = 0
-        spanin_data['negative']['neg_amt_unique'] = 0
+        #spanin_data['negative']['amt_negative'] = 0
+        #spanin_data['negative']['neg_amt_unique'] = 0
         #spanin_data['negative']['isp_match'] = []
+        #print(spanin_data)
         if spanin_data['positive']['coords']:
             # do something...
+            #print('in other function')
+            #print(spanin_data['positive']['coords'])
             for each_hit in spanin_data['positive']['coords']:
                 pos_check.append(each_hit[2])
                 pair_dict['pairs']['location_amount'].append(each_hit[2])
-                pos_uniques = list(set([end_site for end_site in pos_check if pos_check.count(end_site) > 1]))
+                pos_uniques = list(set([end_site for end_site in pos_check if pos_check.count(end_site) >= 1]))
+            #print(pos_check)
+            #print(pos_uniques)
             amt_positive = len(spanin_data['positive']['coords'])
             pos_amt_unique = len(pos_uniques)
             if amt_positive:
                 spanin_data['positive']['amt_positive'] = amt_positive
                 spanin_data['positive']['pos_amt_unique'] = pos_amt_unique
             #pair_dict['pairs']['locations'].extend(pos_uniques)
+        else:
+            spanin_data['positive']['amt_positive'] = 0
+            spanin_data['positive']['pos_amt_unique'] = 0
         if spanin_data['negative']['coords']:
+
             # do something else...
+            #print('in other function')
+            #print(spanin_data['negative']['coords'])
             for each_hit in spanin_data['negative']['coords']:
                 neg_check.append(each_hit[1])
                 pair_dict['pairs']['location_amount'].append(each_hit[1])
-                neg_uniques = list(set([start_site for start_site in neg_check if neg_check.count(start_site) > 1]))
+                neg_uniques = list(set([start_site for start_site in neg_check if neg_check.count(start_site) >= 1]))
+            #print(neg_uniques)
             amt_negative = len(spanin_data['negative']['coords'])
-            neg_amt_unique = len(pos_uniques)
+            neg_amt_unique = len(neg_uniques)
             if amt_negative:
                 spanin_data['negative']['amt_negative'] = amt_negative
                 spanin_data['negative']['neg_amt_unique'] = neg_amt_unique
             #pair_dict['pairs']['locations'].extend(neg_uniques)
+        else:
+            spanin_data['negative']['amt_negative'] = 0
+            spanin_data['negative']['neg_amt_unique'] = 0
         spanin_data['uniques'] += (spanin_data['positive']['pos_amt_unique'] + spanin_data['negative']['neg_amt_unique'])
         spanin_data['amount'] += (spanin_data['positive']['amt_positive'] + spanin_data['negative']['amt_negative'])
-    spanins['total_amount'] = spanins['EMBEDDED']['amount'] + spanins['SEPARATED']['amount'] + spanins['OVERLAPPED']['amount']
-    spanins['total_unique'] = spanins['EMBEDDED']['uniques'] + spanins['SEPARATED']['uniques'] + spanins['OVERLAPPED']['uniques']
+        #print(spanin_data['uniques'])
     list(set(pair_dict['pairs']['location_amount']))
     pair_dict['pairs']['location_amount'] = dict(Counter(pair_dict['pairs']['location_amount']))
     for data in pair_dict.values():
@@ -120,6 +146,9 @@ def check_for_uniques(spanins):
             data['pair_number'][loc] = v
     #print(dict(Counter(pair_dict['pairs']['locations'])))
     #print(pair_dict)
+    spanins['total_amount'] = spanins['EMBEDDED']['amount'] + spanins['SEPARATED']['amount'] + spanins['OVERLAPPED']['amount']
+    #spanins['total_unique'] = spanins['EMBEDDED']['uniques'] + spanins['SEPARATED']['uniques'] + spanins['OVERLAPPED']['uniques']
+    spanins['total_unique'] = len(pair_dict['pairs']['pair_number'])
     return spanins, pair_dict
 
 if __name__ == "__main__":
@@ -186,10 +215,10 @@ if __name__ == "__main__":
 
 
     #### RE-WRITE
-    SPANIN_TYPES = OrderedDict()
-    SPANIN_TYPES['EMBEDDED'] = OrderedDict()
-    SPANIN_TYPES['OVERLAPPED'] = OrderedDict()
-    SPANIN_TYPES['SEPARATED'] = OrderedDict()
+    SPANIN_TYPES = {}
+    SPANIN_TYPES['EMBEDDED'] = {}
+    SPANIN_TYPES['OVERLAPPED'] = {}
+    SPANIN_TYPES['SEPARATED'] = {}
     #SPANIN_TYPES = {
     #    'EMBEDDED' : {},
     #    'OVERLAPPED' : {},
@@ -248,7 +277,7 @@ if __name__ == "__main__":
                     #print(each_spanin_type)
                     f.write("=~~~~~= "+str(each_spanin_type) +" Spanin Candidate Statistics =~~~~~=\n")
                     f.writelines("Total Candidate Pairs = "+str(spanin_data['amount'])+"\n")
-                    f.writelines("Unique ORF i-spanin = "+str(spanin_data['uniques'])+"\n")
+                    f.writelines("Total Unique Pairs = "+str(spanin_data['uniques'])+"\n")
                     if each_spanin_type == "EMBEDDED":
                         for k, v in SPANIN_TYPES['EMBEDDED'].items():
                             #print(k)
@@ -261,9 +290,9 @@ if __name__ == "__main__":
                             f.writelines(""+str(k)+" ==> Amount of corresponding candidate o-spanins(s): "+str(len(v))+"\n")
             except TypeError:
                 continue
-        f.write("\n=~~~~~= Totals =~~~~~=\n")
+        f.write("\n=~~~~~= Tally from ALL spanin types =~~~~~=\n")
         f.writelines("Total Candidates = "+str(spanins['total_amount'])+"\n")
-        f.writelines("Total Unique Candidates = "+str(spanins['total_unique'])+"\n")
+        f.writelines("Total Unique Candidate Pairs = "+str(spanins['total_unique'])+"\n")
 
     args.putative_isp_fasta_file = open(args.putative_isp_fasta_file.name, "r")
     isp_full = tuple_fasta(args.putative_isp_fasta_file)

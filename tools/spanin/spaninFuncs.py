@@ -334,9 +334,9 @@ def spaninProximity(isp, osp, max_dist=30):
     OUTPUT: Return (improved) candidates for overlapping, embedded, and separate list
     """
 
-    embedded = OrderedDict()
-    overlap = OrderedDict()
-    separate = OrderedDict()
+    embedded = {}
+    overlap = {}
+    separate = {}
     for iseq in isp:
         embedded[iseq[2]] = []
         overlap[iseq[2]] = []

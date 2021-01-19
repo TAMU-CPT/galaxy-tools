@@ -1,6 +1,6 @@
 <?xml version="1.1"?>
 <tool id="edu.tamu.cpt2.spanin.findSpanin" name="Find Spanin" version="1.0">
-    <description>With the outputs from ISP and OSP candidates, cull the list down to (hopefully) more accurate candidate pairs</description>
+    <description>With the outputs from the ISP and OSP candidate tools, cull the list down to candidate pairs</description>
     <macros>
 		<import>macros.xml</import>
 		<import>cpt-macros.xml</import>
@@ -32,12 +32,14 @@ $putative_osp_fasta_file
     </outputs>
     <help><![CDATA[
 **What it does**
+Compares the protein FASTA files with candidate i-spanins and o-spanins from a genome and matches them into candidate pairs based on position in a strand-aware fashion.
 
-INPUT : Putative i-spanin and o-spanin FASTAs (generated from the ISP/OSP Candidate Tool). 
+**INPUT** --> Putative i-spanin and o-spanin protein multiFASTAs (generated from the ISP/OSP Candidate Tools). 
 
-METHODOLOGY : Does a pairwise comparison between candidate i-spanins to o-spanins based on their location. Results are either identified as embedded, overlapping, separated, or NOT a potential pair.
+**METHODOLOGY** 
+Does a pairwise comparison between candidate i-spanins and o-spanins based on their genomic location, and classifies them into the known bimolecular spanin genetic architectures. Classes are: embedded, overlapping, separated, or NOT a potential pair.
 
-OUTPUT : File for each potential type of candidates (eg. overlap_results.txt). Additionally, a basic summary statistics file (findSpanin_summary.txt). 
+**OUTPUT** --> File with candidate pairs for each bimolecular spanin class and a basic summary statistics file. 
 
 ]]></help>
         <expand macro="citations-2020" />
