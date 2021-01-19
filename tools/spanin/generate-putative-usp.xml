@@ -90,6 +90,10 @@ Generates a putative multifasta and multigff3 of the unimolecular spanin (u-span
 
 INPUT: Genomic FASTA
 
+TMD Pattern:
+
+    * [FIWLVMYCATGSP]
+
 Lipobox Pattern:
 
     * [ILMFTV][^REKD][GAS]C
