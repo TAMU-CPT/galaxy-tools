@@ -277,7 +277,7 @@ if __name__ == "__main__":
     for isp_tupe in isp_full:
         #print(isp_tupe)
         for pisp, posp in embedded.items():
-            print(f"ISP = searching for {pisp} in {isp_tupe[0]}")
+            #print(f"ISP = searching for {pisp} in {isp_tupe[0]}")
             if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
                 #print(isp_tupe[0])
                 #print(peri_count)
@@ -287,7 +287,7 @@ if __name__ == "__main__":
     for osp_tupe in osp_full:
         for pisp, posp in embedded.items():
             for data in posp:
-                print(f"OSP = searching for {data[3]} in {osp_tupe[0]}, coming from this object: {data}")
+                #print(f"OSP = searching for {data[3]} in {osp_tupe[0]}, coming from this object: {data}")
                 if re.search(("("+str(data[3])+")\D"), osp_tupe[0]):
                     peri_count = str.split(osp_tupe[0],"~=")[1]
                     osp_seqs.append((data[3],osp_tupe[1],peri_count))
