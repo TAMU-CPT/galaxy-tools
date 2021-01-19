@@ -50,27 +50,32 @@ $fasta_file
         <data format="gff3" name="putative_osp_gff" label="putative_osp.gff3"/>
     </outputs>
     <help><![CDATA[
-*NOTE: This tool only takes a SINGLE genomic fasta. It does not work with multiFASTAs.*
 
-**INPUT** --> Genomic FASTA
+**What it does**
+Searches a genome for candidate o-spanins (OSPs), a phage protein involved in outer membrane disruption during Gram-negative bacterial host cell lysis.
+
 
 **METHODOLOGY**
 
-Locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of output files consisting of FASTA (nt and aa) / BED (hidden) / GFF3 (hidden).
+Locates ALL potential start sequences, based on TTG / ATG / GTG (M / L / V). This generates a set of files with all ORFs in FASTA (nt and aa), BED, and GFF3 file formats.
 
-With the aaFASTA, this tool reads in each potential sequence and determines if it has a lipobox based off of:
+For each sequence in the protein FASTA, the tool then checks within the user-specified range: 
 
-    1. Min distance from start codon to lipobox
-    2. Max distance from start codon to lipobox
-    3. Min amount of periplasmic residues after the lipobox
-    4. Max amount of periplasmic residues after the lipobox
+    1. Min distance from start codon to lipobox start residue
+    2. Max distance from start codon to lipobox start residue
+    3. Min number of periplasmic residues after a 4-residue lipobox
+    4. Max number of periplasmic residues after a 4-residue lipobox
 
-Within that minimum and maximum range, a regular expression (RegEx) is used to determine if a lipobox is found. The expressions checked are the following:
+using a regular expression (RegEx) to identify a potential lipobox. The following residues are allowed for the potential lipobox: 
 
     * [ILMFTV][^REKD][GAS]C
     * AW[AGS]C
 
+**INPUT** --> Genomic FASTA
+*NOTE: This tool only takes a SINGLE genomic fasta. It does not work with multiFASTAs.*
+
 **OUTPUT** --> putative_osp.fa (FASTA) file, putative_osp.gff3, and basic summary statistics file as sumamry_osp.txt
+Protein sequences which passed the above filters are returned as the candidate OSPs.
 ]]></help>
         <expand macro="citations-crr" />
 </tool>
