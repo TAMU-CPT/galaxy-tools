@@ -57,21 +57,26 @@ $fasta_file
         <data format="gff3" name="putative_isp_gff" label="putative_isp.gff3"/>
     </outputs>
     <help><![CDATA[
-*NOTE: This tool only takes a SINGLE genomic fasta. It does not work with multiFASTAs.*
 
-**INPUT** --> Genomic FASTA
+**What it does**
+Searches a genome for candidate i-spanins (ISPs), a phage protein involved in outer membrane disruption during Gram-negative bacterial host cell lysis.
 
 **METHODOLOGY**
 
-Locates ALL potential start sequences, based on ttg / atg / gtg (M / L / V). This generates a set of "pre-output" files consisting of FASTA (nt and aa) / BED / GFF3.
+Locates ALL potential start sequences, based on TTG / ATG / GTG (M / L / V). This generates a set of files with all ORFs in FASTA (nt and aa), BED, and GFF3 file formats.
 
-With the aaFASTA, read in each potential sequence and determine if it has a TMD based off of:
+With the protein FASTA, the tool next reads in each potential sequence and determines if it has a putative transmembrane domain (TMD) with the following criteria:
 
-    1. Lysine snorkels and neighboring hydrophobic residues, within the range the user inputs.
-    2. A repeated hydrophobic region within the sequence ([FIWLVMYCATGSP]), within the range the user inputs.
-    3. Periplasmic calculations of residues. Minimal and maximum thresholds for required amount of residues after TMD is found.
+    1. Presence of snorkeling Lysine residues surrounded by hydrophobic residues described for TMD below, within the range the user specifies.
+    2. A putative transmembrane domain, or TMD, defined as a repeated hydrophobic region within the sequence ([FIWLVMYCATGSP]), of length and position within the range the user inputs.
+    3. Length of expected periplasmic region. User defines minimum and maximum thresholds for required number of residues after TMD.
+
+**INPUT** --> Genomic FASTA
+*NOTE: This tool only takes a SINGLE genomic fasta. It does not work with multiFASTAs.*
 
 **OUTPUT** --> putative_isp.fa (FASTA) file, putative_isp.gff3, and basic summary statistics as summary_isp.txt.
+
+Protein sequences which passed the above filters are returned as the candidate ISPs.
 
 ]]></help>
         <expand macro="citations-crr" />
