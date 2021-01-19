@@ -34,10 +34,16 @@ $filter
 **What it does**
 
 This tool filters a set of BLASTp results and return the top
-related genomes based on number of protein-protein matches.
+related genomes based on number of protein-protein matches. The 
+default mode is to only consider phage hits (based on TaxID), 
+but this can the toggled off. 
 
 The input must be a tabular file from a BLASTp run with the qseqID, 
 sallseqid, salltitles, sallacc, and staxIDs fields selected.
+		
+The output will be a tabular file with the top hits returned, 
+where each row specifies the TaxID, organism name, and number of 
+similar unique protein hits shared.
 </help>
 	<expand macro="citations-2020" />
 </tool>
