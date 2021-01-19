@@ -454,7 +454,7 @@ if __name__ == "__main__":
     pairs = zip(test_desc, test_seq)
     lipo = []
     for each_pair in pairs:
-        print(each_pair)
+        #print(each_pair)
         # try:
         try:
             lipo += find_lipobox(pair=each_pair, regex=2)  # , minimum=8)

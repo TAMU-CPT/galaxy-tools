@@ -119,7 +119,7 @@ def check_for_uniques(spanins):
             v += 1
             data['pair_number'][loc] = v
     #print(dict(Counter(pair_dict['pairs']['locations'])))
-
+    #print(pair_dict)
     return spanins, pair_dict
 
 if __name__ == "__main__":
@@ -239,6 +239,7 @@ if __name__ == "__main__":
     #check_for_unique_spanins(SPANIN_TYPES)
     spanins = reconfigure_dict(SPANIN_TYPES)
     spanins, pair_dict = check_for_uniques(spanins)
+    #print(pair_dict)
     with args.summary_txt as f:
         for each_spanin_type, spanin_data in spanins.items():
             try:
@@ -250,7 +251,7 @@ if __name__ == "__main__":
                     f.writelines("Unique ORF i-spanin = "+str(spanin_data['uniques'])+"\n")
                     if each_spanin_type == "EMBEDDED":
                         for k, v in SPANIN_TYPES['EMBEDDED'].items():
-                            print(k)
+                            #print(k)
                             f.writelines(""+str(k)+" ==> Amount of corresponding candidate o-spanins(s): "+str(len(v))+"\n")
                     if each_spanin_type == "SEPARATED":
                         for k, v in SPANIN_TYPES['SEPARATED'].items():
@@ -270,11 +271,13 @@ if __name__ == "__main__":
     args.putative_osp_fasta_file = open(args.putative_osp_fasta_file.name, "r")
     osp_full = tuple_fasta(args.putative_osp_fasta_file)
 
-
+    #print(isp_full)
     isp_seqs = []
     osp_seqs = []
     for isp_tupe in isp_full:
+        #print(isp_tupe)
         for pisp, posp in embedded.items():
+            #print(f"ISP = searching for {pisp} in {isp_tupe[0]}")
             if re.search(("("+str(pisp)+")\D"), isp_tupe[0]):
                 #print(isp_tupe[0])
                 #print(peri_count)
@@ -284,9 +287,10 @@ if __name__ == "__main__":
     for osp_tupe in osp_full:
         for pisp, posp in embedded.items():
             for data in posp:
-                if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
+                #print(f"OSP = searching for {data[3]} in {osp_tupe[0]}, coming from this object: {data}")
+                if re.search(("("+str(data[3])+")\D"), osp_tupe[0]):
                     peri_count = str.split(osp_tupe[0],"~=")[1]
-                    osp_seqs.append((data[2],osp_tupe[1],peri_count))
+                    osp_seqs.append((data[3],osp_tupe[1],peri_count))
 
     with args.embedded_txt as f:
         f.write("================ embedded spanin candidates =================\n")
@@ -294,10 +298,12 @@ if __name__ == "__main__":
         if embedded != {}:
             #print(embedded)
             for pisp, posp in embedded.items():
+                #print(f"{pisp} - {posp}")
                 f.write(pisp + "\n")
                 for each_posp in posp:
+                    #print(posp)
                     f.write(
-                        "\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(
+                        "\t{}\t{}\t{}\t{}\t{}\t{}\t".format(
                             each_posp[1],
                             each_posp[2],
                             each_posp[3],
@@ -307,11 +313,11 @@ if __name__ == "__main__":
                         )
                     )
                     if each_posp[6] == "+":
+                        if each_posp[2] in pair_dict['pairs']['pair_number'].keys():
+                            f.write(""+str(pair_dict['pairs']['pair_number'][each_posp[2]])+"\n")
+                    elif each_posp[6] == "-":
                         if each_posp[1] in pair_dict['pairs']['pair_number'].keys():
                             f.write(""+str(pair_dict['pairs']['pair_number'][each_posp[1]])+"\n")
-                    elif each_posp[6] == "-":
-                        if each_posp[0] in pair_dict['pairs']['pair_number'].keys():
-                            f.write(""+str(pair_dict['pairs']['pair_number'][each_posp[0]])+"\n")
         else:
             f.write("nothing found")
 
@@ -343,9 +349,9 @@ if __name__ == "__main__":
     for osp_tupe in osp_full:
         for pisp, posp in overlap.items():
             for data in posp:
-                if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
+                if re.search(("("+str(data[3])+")\D"), osp_tupe[0]):
                     peri_count = str.split(osp_tupe[0],"~=")[1]
-                    osp_seqs.append((data[2],osp_tupe[1],peri_count))
+                    osp_seqs.append((data[3],osp_tupe[1],peri_count))
 
 
     
@@ -368,6 +374,7 @@ if __name__ == "__main__":
                     )
                     if each_posp[6] == "+":
                         if each_posp[2] in pair_dict['pairs']['pair_number'].keys():
+                            #print('ovl ; +')
                             f.write(""+str(pair_dict['pairs']['pair_number'][each_posp[2]])+"\n")
                     elif each_posp[6] == "-":
                         if each_posp[1] in pair_dict['pairs']['pair_number'].keys():
@@ -376,6 +383,7 @@ if __name__ == "__main__":
             f.write("nothing found")
 
     with open(args.overlap_txt.name, "a") as f:
+        #print(isp_seqs)
         f.write("\n================= overlap candidate sequences ================\n")
         f.write("======================= isp ==========================\n\n")
         for isp_data in isp_seqs:
@@ -400,9 +408,9 @@ if __name__ == "__main__":
     for osp_tupe in osp_full:
         for pisp, posp in separate.items():
             for data in posp:
-                if re.search(("("+str(data[2])+")\D"), osp_tupe[0]):
+                if re.search(("("+str(data[3])+")\D"), osp_tupe[0]):
                     peri_count = str.split(osp_tupe[0],"~=")[1]
-                    osp_seqs.append((data[2],osp_tupe[1],peri_count))
+                    osp_seqs.append((data[3],osp_tupe[1],peri_count))
 
     with args.separate_txt as f:
         f.write("================ separated spanin candidates =================\n")
