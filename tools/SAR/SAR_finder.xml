@@ -35,20 +35,27 @@ $fa
             </test>
         </tests>
     <help><![CDATA[
-A tool that analyzes protein sequence within the first 50 residues for a weakly hydrophobic domain sometimes found in endolysins called Signal-Anchor-Release (aka SAR)
 
-Definition: A Signal-Arrest-Release (SAR) domain is a N-terminal, weakly hydrophobic transmembrane region rich is Gly/Ala and/or Ser residues sometimes found in phage lysis proteins, including endolysins and holins. The SAR domain can be released from the membrane in a proton motive force-dependent manner.
-This tool finds proteins that contain a stretch (default 15-20 residues) of hydrophobic residues (Ile, Leu, Val, Phe, Tyr, Trp, Met, Gly, Ala, Ser) and calculates the % Gly/Ala/Ser/Thr residues in the hydrophobic stretch. The net charge on the N-terminal region is also displayed to aid in determining the SAR topology.[1]
+**What it does**
+A tool that analyzes the sequence within the first 50 residues of a protein for a weakly hydrophobic domain called Signal-Anchor-Release (aka SAR). 
+The tool finds proteins that contain a stretch (default 15-20 residues) of hydrophobic residues (Ile, Leu, Val, Phe, Tyr, Trp, Met, Gly, Ala, Ser) and 
+calculates the % Gly/Ala/Ser/Thr residues in the hydrophobic stretch. The net charge on the N-terminus is also displayed to aid in determining the 
+SAR orientation in the membrane.[2]
 
-INPUT : Protein Multi FASTA
+Definition: A Signal-Anchor-Release (SAR) domain is an N-terminal, weakly hydrophobic transmembrane region rich in Gly/Ala and/or Ser (and sometimes Thr) residues. 
+The SAR domain is sometimes found in phage lysis proteins, including endolysins and holins. The SAR domain can be released from the membrane in a proton 
+motive force-dependent manner. Known SAR domains in phage endolysins often have >50-60% Gly/Ala/Ser/Thr content. SAR endolysins are expected to have a net positive
+charge on the N-terminus by the positive-inside rule.
 
-OUTPUT : 
+**INPUT** --> Protein Multi FASTA
 
-* Multi FASTA of candidate proteins that pass the SAR domain criteria
+**OUTPUT** --> 
 
-* Text summary file containing each protein that passes the SAR domain criteria
+* Multi FASTA with candidate proteins that pass the SAR domain criteria
 
-* Multi GFF3
+* Tabular summary file that lists protein name/sequence/length, SAR length/start/sequence/end, individual and total GAST% content in SAR, and N-terminal sequence/net charge
+
+* Multi GFF3 for unique candidate SAR domain-containing proteins
 
     ]]></help>
     <citations>
