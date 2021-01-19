@@ -59,7 +59,7 @@ $fasta_file
     <help><![CDATA[
 
 **What it does**
-Searches a genome for candidate i-spanins, a phage protein involved in outer membrane disruption during host cell lysis.
+Searches a genome for candidate i-spanins, a phage protein involved in outer membrane disruption during Gram-negative bacterial host cell lysis.
 
 **METHODOLOGY**
 
