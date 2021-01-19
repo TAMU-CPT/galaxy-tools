@@ -59,17 +59,12 @@ Searches a genome for candidate o-spanins (OSPs), a phage protein involved in ou
 
 Locates ALL potential start sequences, based on TTG / ATG / GTG (M / L / V). This generates a set of files with all ORFs in FASTA (nt and aa), BED, and GFF3 file formats.
 
-For each sequence in the protein FASTA, the tool then checks within the user-specified range: 
-
-    1. Min distance from start codon to lipobox start residue
-    2. Max distance from start codon to lipobox start residue
-    3. Min number of periplasmic residues after a 4-residue lipobox
-    4. Max number of periplasmic residues after a 4-residue lipobox
-
-using a regular expression (RegEx) to identify a potential lipobox. The following residues are allowed for the potential lipobox: 
+For each sequence in the protein FASTA, the tool then checks within the user-specified range (min/max distance from start codon) for a regular expression (RegEx) to identify a potential lipobox. The following residues are allowed for the potential lipobox: 
 
     * [ILMFTV][^REKD][GAS]C
     * AW[AGS]C
+
+Finally, the protein list is filtered for size with user-set periplasmic length parameters, calculated as the number of residues after the putative lipobox.
 
 **INPUT** --> Genomic FASTA
 *NOTE: This tool only takes a SINGLE genomic fasta. It does not work with multiFASTAs.*
