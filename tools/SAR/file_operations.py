@@ -32,7 +32,7 @@ def tab_from_SAR_dict(sar_dict,stat_file,hydrophillic_res, sar_min, sar_max):
     """ convert SAR dict to a dataframe """
     columns = ["Name","Protein Sequence","Protein Length","SAR Length","SAR Start","Putative SAR Sequence","SAR End",[f"{res}%" for res in hydrophillic_res],"% Total","N-term Sequence","N-term net Charge"] # using different residues for percent calc: [f"{res}%" for res in hydrophillic_res]
     with stat_file as f:
-        f.writelines(f"{columns[0]}\t{columns[1]}\t{columns[2]}\t{columns[3]}\t{columns[4]}\t{columns[5]}\t{columns[6]}\t{columns[7]}\t{columns[8]}\t{columns[9]}\n")
+        f.writelines(f"{columns[0]}\t{columns[1]}\t{columns[2]}\t{columns[3]}\t{columns[4]}\t{columns[5]}\t{columns[6]}\t{columns[7]}\t{columns[8]}\t{columns[9]}\t{columns[10]}\n")
         if sar_dict:
             #print(sar_dict)
             for name, data in sar_dict.items():
@@ -45,7 +45,7 @@ def tab_from_SAR_dict(sar_dict,stat_file,hydrophillic_res, sar_min, sar_max):
                                 #for perc in each_match[3]:
                                 #    print(perc)
                                 try:
-                                    f.writelines(f'{name}\t{data["sequence"]}\t{data["size"]}\t{tmd_size}\t{int(each_match[7])+1}\t{each_match[0]}\t{int(each_match[8])+1}\t{[perc for perc in each_match[3]]}\t{round(sum(j for i,j in each_match[3]),2)}\t{each_match[1][1]}\t{each_match[2]}\n')
+                                    f.writelines(f'{name}\t{data["sequence"]}\t{data["size"]}\t{tmd_size}\t{int(each_match[7])+1}\t{each_match[0]}\t{int(each_match[8])+1}\t{[perc for perc in each_match[3]]}\t{round(sum(j for i,j in each_match[3]),2)}\t{each_match[1]}\t{each_match[2]}\n')
                                 except IndexError:
                                     f.writelines(f'ERROR\tERROR\tERROR\tERROR\tERROR\tERROR\tERROR\tERROR\tERROR\tERROR\tERROR\n')
                             else:

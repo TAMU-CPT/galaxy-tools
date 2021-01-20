@@ -19,3 +19,13 @@ SAR-endolysin	SAR_finder	Topological domain	27	172	.	.	.	Note=C-terminus
 i-spanin	SAR_finder	Topological domain	1	5	.	.	.	Note=N-terminal net charge is 0
 i-spanin	SAR_finder	SAR domain	6	24	.	.	.	Note=residue % in SAR [('S', 11.11), ('G', 11.11), ('A', 16.67), ('T', 5.56)],Total % is 44.45
 i-spanin	SAR_finder	Topological domain	25	129	.	.	.	Note=C-terminus
+##gff-version 3
+##sequence-region o-spanin
+o-spanin	SAR_finder	Topological domain	1	8	.	.	.	Note=N-terminal net charge is 3
+o-spanin	SAR_finder	SAR domain	9	31	.	.	.	Note=residue % in SAR [('S', 0.0), ('G', 9.09), ('A', 9.09), ('T', 9.09)],Total % is 27.27
+o-spanin	SAR_finder	Topological domain	32	114	.	.	.	Note=C-terminus
+##gff-version 3
+##sequence-region releasin
+releasin	SAR_finder	Topological domain	1	2	.	.	.	Note=N-terminal net charge is -1
+releasin	SAR_finder	SAR domain	3	26	.	.	.	Note=residue % in SAR [('S', 4.35), ('G', 8.7), ('A', 17.39), ('T', 0.0)],Total % is 30.44
+releasin	SAR_finder	Topological domain	27	100	.	.	.	Note=C-terminus
