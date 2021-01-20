@@ -208,6 +208,23 @@ if __name__ == "__main__":
             f.write("\n" + lineWrapper(str(s).replace("*",""))+"\n")
             length.append(len(s))
             ORF.append(desc)
+    #### Extra statistics
+    args.out_usp_prot.close()
+    all_orfs = open(args.out_usp_prot.name, "r")
+    all_isps = open(args.putative_usp_fa.name, "r")
+    #record = SeqIO.read(all_orfs, "fasta")
+    #print(len(record))
+    n = 0
+    for line in all_orfs:
+        if line.startswith(">"):
+            n += 1
+    all_orfs_counts = n
+    
+    c = 0
+    for line in all_isps:
+        if line.startswith(">"):
+            c += 1
+    all_isps_counts = c
 
     if ORF:
         bot_size = min(length)
@@ -219,7 +236,8 @@ if __name__ == "__main__":
             f.write("average length (AA): " + str(avg) + "\n")
             f.write("median length (AA): " + str(med) + "\n")
             f.write("maximum orf in size (AA): " + str(top_size) + "\n")
-            f.write("minimum orf in size (AA): " + str(bot_size))
+            f.write("minimum orf in size (AA): " + str(bot_size) + "\n")
+            f.write("ratio of isps found from naive orfs: " + str(c) + "/" +str(n))
 
         args.putative_usp_fa = open(args.putative_usp_fa.name, "r")
         gff_data = prep_a_gff3(fa=args.putative_usp_fa, spanin_type="usp", org=args.fasta_file)
