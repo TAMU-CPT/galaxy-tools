@@ -53,7 +53,7 @@ charge on the N-terminus by the positive-inside rule.
 
 * Multi FASTA with candidate proteins that pass the SAR domain criteria
 
-* Tabular summary file that lists protein name/sequence/length, SAR length/start/sequence/end, individual and total GAST% content in SAR, and N-terminal sequence/net charge
+* Tabular summary file that lists every subdomain fitting the criteria for each potential SAR domain-containing protein with the following: protein name/sequence/length, SAR length/start/sequence/end, individual and total GAST% content in SAR, and N-terminal sequence/net charge
 
 * Multi GFF3 for unique candidate SAR domain-containing proteins
 
