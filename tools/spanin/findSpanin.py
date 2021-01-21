@@ -147,8 +147,8 @@ def check_for_uniques(spanins):
     #print(dict(Counter(pair_dict['pairs']['locations'])))
     #print(pair_dict)
     spanins['total_amount'] = spanins['EMBEDDED']['amount'] + spanins['SEPARATED']['amount'] + spanins['OVERLAPPED']['amount']
-    #spanins['total_unique'] = spanins['EMBEDDED']['uniques'] + spanins['SEPARATED']['uniques'] + spanins['OVERLAPPED']['uniques']
-    spanins['total_unique'] = len(pair_dict['pairs']['pair_number'])
+    spanins['total_unique'] = spanins['EMBEDDED']['uniques'] + spanins['SEPARATED']['uniques'] + spanins['OVERLAPPED']['uniques']
+    #spanins['total_unique'] = len(pair_dict['pairs']['pair_number'])
     return spanins, pair_dict
 
 if __name__ == "__main__":
