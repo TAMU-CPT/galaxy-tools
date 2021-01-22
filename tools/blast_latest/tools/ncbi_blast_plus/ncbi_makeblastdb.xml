@@ -72,7 +72,7 @@ $hash_index
                 <option value="4">Version 4 (Support for older Blast versions, no TaxID support)</option>
                 <option value="5">Version 5 (Newer Blast only, supports TaxID mapping)</option>
         </param>
-        <param argument="-parse_seqids" type="boolean" truevalue="-parse_seqids" falsevalue="" checked="false" label="Parse the sequence identifiers" help="This is only advised if your FASTA file follows the NCBI naming conventions using pipe '|' symbols" />
+        <param argument="-parse_seqids" type="boolean" truevalue="-parse_seqids" falsevalue="" checked="true" label="Parse the sequence identifiers" help="Generally required to be true for Version 5 databases, do not disable without good reason" />
         <param argument="-hash_index" type="boolean" truevalue="-hash_index" falsevalue="" checked="true" label="Enable the creation of sequence hash values" help="These hash values can then be used to quickly determine if a given sequence data exists in this BLAST database." />
         <!-- SEQUENCE MASKING OPTIONS -->
         <!-- Note this is an optional parameter - default should be NO files -->
