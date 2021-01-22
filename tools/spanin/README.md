@@ -1,6 +1,6 @@
 # Overview
 
-## The goal of these tools is to take putative protein sequences and determine if any of them are quality candidates for a potential spanin pair (OSP/ISP). 
+## The goal of these tools is to take protein sequences from naively called ORFs and determine if any of them are quality candidates for a potential spanin gene (USP) or gene pair (OSP/ISP). 
 ### Current Scripts:
 * `generate-putative-isp.py`
     * INPUT : Genomic FASTA 
@@ -16,10 +16,10 @@
 
 ## Requirements:
 * regex (as of 2.17.2020 not needed...)
-* cpt.py (copied and edited for handeling specific task for these tools)
+* cpt.py (copied and edited for handling specific task for these tools)
 
 ## Script Descriptions / Methodologies:
-_aside: Much of this code base from isp/osp/usp/findspanin tools is **NOT** very DRY. I would like to go in and clean this up; however it may be improved down the line when we incooperate ML into the pipeline_
+_aside: Much of this code base from isp/osp/usp/findspanin tools is **NOT** very DRY. I would like to go in and clean this up; however it may be improved down the line when we incorporate ML into the pipeline_
 * `generate-putative-osp.py`
     * INPUT : Genomic FASTA
     * METHODOLOGY 
@@ -54,5 +54,5 @@ _aside: Much of this code base from isp/osp/usp/findspanin tools is **NOT** very
     * There are many more functions and I wont list them all here. I believe that the majority of the functions have appropriate descriptions.
 
 ## Release Notes
-CPT: OTHER- ISP candidates, OSP candidates, Find Spanin
-These tools are used in conjunction to help find potential spanin couples. ISP and OSP candidate tools take an input genomic fasta, where all putative proteins are gathered, based on having a “ATG”, “TTG”, or “GTG” start site. Each potential gene is fed through a set of criteria, including TMD distance from the start site for i-spanins, and lipobox presence for o-spanins. The putative_isp and putative_osp fasta outputs are fed to the Find Spanin tool. The output is broken up based on their type:embedded, overlapping, or separate.
+Functional Prediction>Lysis Gene Prediction: ISP candidates, OSP candidates, USP candidates, Find Spanin
+These tools are used in conjunction to help find potential spanins. ISP, OSP, and USP candidate tools take an input genomic fasta, where all putative proteins are gathered, based on having a “ATG”, “TTG”, or “GTG” start site. Each potential gene is fed through a set of criteria, including TMD distance from the start site for i-spanins, and lipobox presence for o-spanins, or both for u-spanins. The putative_isp and putative_osp fasta outputs are fed to the Find Spanin tool. The output is broken up based on their class:embedded, overlapping, or separate.

@@ -334,9 +334,9 @@ def spaninProximity(isp, osp, max_dist=30):
     OUTPUT: Return (improved) candidates for overlapping, embedded, and separate list
     """
 
-    embedded = OrderedDict()
-    overlap = OrderedDict()
-    separate = OrderedDict()
+    embedded = {}
+    overlap = {}
+    separate = {}
     for iseq in isp:
         embedded[iseq[2]] = []
         overlap[iseq[2]] = []
@@ -454,7 +454,7 @@ if __name__ == "__main__":
     pairs = zip(test_desc, test_seq)
     lipo = []
     for each_pair in pairs:
-        print(each_pair)
+        #print(each_pair)
         # try:
         try:
             lipo += find_lipobox(pair=each_pair, regex=2)  # , minimum=8)

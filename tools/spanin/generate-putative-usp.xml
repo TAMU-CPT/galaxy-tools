@@ -84,22 +84,29 @@ $fa
             </test>
         </tests>
     <help><![CDATA[
-ALPHA VERSION OF USP TOOL
-*WARNING* - Use a single genome fasta. Multiple FASTAs will not work.
-Generates a putative multifasta and multigff3 of the unimolecular spanin (u-spanin) class. Uses methods from the ISP and OSP candidates tool for finding TMDs and the Lipobox.
 
-INPUT: Genomic FASTA
+**What it does**
+Searches a genome for candidate u-spanins (USPs), a phage protein involved in outer membrane disruption during Gram-negative bacterial host cell lysis. 
 
-TMD Pattern:
+
+**METHODOLOGY**
+This tool combines the methods used in the ISP and OSP Candidates tools to search for putative transmembrane domains and lipoboxes. See those tools for additional detail. Within user-set parameters, the following residues are allowed:
+
+Hydrophobic residues allowed in TMD:
 
     * [FIWLVMYCATGSP]
 
-Lipobox Pattern:
+Lipobox patterns:
 
     * [ILMFTV][^REKD][GAS]C
-    * AW[AGS]C
+    * A W[AGS]C
 
-OUTPUT: Summary of results as well as multi FA and GFF3 of candidates that matched criteria.
+**INPUT** --> Genomic FASTA
+*Note* - Use a single genome fasta. Multiple FASTAs will not work.
+
+**OUTPUT** -->
+Protein sequences which passed the above filters are returned as the candidate USPs in three files: a protein FASTA file, a GFF3, and basic summary statistics text file.
+.
 
     ]]></help>
     <citations>
