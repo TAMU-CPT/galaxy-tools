@@ -63,7 +63,7 @@ Searches a genome for candidate i-spanins (ISPs), a phage protein involved in ou
 
 **METHODOLOGY**
 
-Locates ALL potential start sequences, based on TTG / ATG / GTG (M / L / V). This generates a set of files with all ORFs in FASTA (nt and aa), BED, and GFF3 file formats.
+Locates ALL potential start sequences, based on TTG / ATG / GTG (M / L / V). This list is pared down to those within the user-set min/max lengths. That filtered list generates a set of files with the ORFs in FASTA (nt and aa), BED, and GFF3 file formats.
 
 With the protein FASTA, the tool next reads in each potential sequence and determines if it has a putative transmembrane domain (TMD) with the following criteria:
 
