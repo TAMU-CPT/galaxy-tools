@@ -8,7 +8,7 @@
     #if $appl is not None:
     --applications "$appl"
     #end if
-    --formats GFF3,HTML
+    --formats GFF3,JSON
     $goterms $iprlookup $pathways
     -i $input
     --output-file-base ${output_gff3}
