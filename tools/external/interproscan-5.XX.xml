@@ -8,7 +8,7 @@
     #if $appl is not None:
     --applications "$appl"
     #end if
-    --formats GFF3,HTML
+    --formats GFF3,JSON
     $goterms $iprlookup $pathways
     -i $input
     --output-file-base ${output_gff3}
@@ -16,7 +16,7 @@
 ;
 
 mv ${output_gff3}.gff3 ${output_gff3};
-mv ${output_gff3}.html.tar.gz ${output_html};
+mv ${output_gff3}.json ${output_json};
 
     </command>
     <inputs>
@@ -49,7 +49,7 @@ mv ${output_gff3}.html.tar.gz ${output_html};
     </inputs>
     <outputs>
         <data format="gff3" name="output_gff3" label="Interproscan GFF3 output on ${on_string}"/>
-        <data format="tar.gz" name="output_html" label="Interproscan HTML output on ${on_string} (.tar.gz)"/>
+        <data format="json" name="output_json" label="Interproscan JSON output on ${on_string}"/>
     </outputs>
     <tests>
           <test>
@@ -59,7 +59,7 @@ mv ${output_gff3}.html.tar.gz ${output_html};
             <param name="pathways" value="--pathways" />
             <param name="appl" value="TIGRFAM,PIRSF,ProDom,PANTHER,SMART,PrositeProfiles,PrositePatterns,Hamap,Pfam,PRINTS,SUPERFAMILY,Coils,Gene3D,SignalP-GRAM_POSITIVE,SignalP-GRAM_NEGATIVE,SignalP-EUK,Phobius" />
             <output name="output_gff3" file="T7_INTERPRO.gff3" />
-            <output name="output_html" file="T7_INTERPRO.tar.gz" />
+            <output name="output_json" file="T7_INTERPRO.json" />
           </test>
     </tests>
     <help>

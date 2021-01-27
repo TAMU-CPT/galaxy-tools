@@ -64,10 +64,10 @@ if __name__ == '__main__':
     test = False
     timing=False
     loading_status = {}
-    
-    recList = [] 
+
+    recList = []
     for rec in gffParse(args.gff3):
-        filteredFeats = []  
+        filteredFeats = []
         featList = rec.features
         featList.sort(key=lambda x: x.location.start)
         for x in featList:
@@ -90,7 +90,7 @@ if __name__ == '__main__':
                                                 disable_cds_recalculation=args.disable_cds_recalculation,
                                                 use_name=args.use_name
                                                 )
-            print(processed)
+            #print(processed)
             all_processed['top-level'].extend(processed['top-level'])
             all_processed['transcripts'].extend(processed['transcripts'])
             total_features_written += 1
