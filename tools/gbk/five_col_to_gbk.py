@@ -20,7 +20,6 @@ def fiveColToGbk(tabIn, seqIn):
   featType = ""
   recOut = []
   for line in tabIn:
-    print(line)
     if line[0] == ">":
       if featType:
         #if len(seqList) == 1

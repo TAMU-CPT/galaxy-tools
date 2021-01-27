@@ -14,7 +14,7 @@ $seqIn
 
 ]]></command>
   <inputs>
-    <param label="Five-column Tabular Input" name="tabIn" type="data" format="tsv" />
+    <param label="Five-column Tabular Input" name="tabIn" type="data" format="tabular" />
     <param label="FASTA Sequences" name="seqIn" type="data" format="fasta" />
   </inputs>
   <outputs>
