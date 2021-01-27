@@ -197,6 +197,7 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/autoreopen.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/sequin.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/gbk_to_five_col.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/five_col_to_gbk.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/cpt_validate_gbk.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/phage_annotation_validator.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gff3/promote_qualifier.xml"/>

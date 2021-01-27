@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.genbank.FiveColToGbk" name="Five Column Tabular to Genbank" version="21.0.0">
+    <description></description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/five_col_to_gbk.py
+$tabIn
+$seqIn
+> $output
+
+]]></command>
+  <inputs>
+    <param label="Five-column Tabular Input" name="tabIn" type="data" format="tabular" />
+    <param label="FASTA Sequences" name="seqIn" type="data" format="fasta" />
+  </inputs>
+  <outputs>
+    <data format="genbank" name="output">
+    </data>
+  </outputs>
+  <tests>
+      <test>
+      </test>
+  </tests>
+  <help>
+
+**What it does**
+
+Converts the output of the Genbank to Five Column back into Genbank.
+
+Takes the tabular input and a fasta sequence to pair with it and recreates the Genbank file. If the fasta file has only one sequence, it will be applied to all the records in the tabular file. If it has more than one sequence, there must be one sequence with the same ID as the record in the tabular file (Found on ">Feature " line at the start of each tabular record). Note that strandedness is lost in the initial conversion to five-column, so all features are rebuilt on the positive strand.
+</help>
+		<expand macro="citations-2020" />
+</tool>
