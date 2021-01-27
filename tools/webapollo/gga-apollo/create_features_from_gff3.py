@@ -77,6 +77,7 @@ if __name__ == '__main__':
                     if args.overrideID != "ID" and args.overrideID in filteredFeats[-1].qualifiers.keys():
                         filteredFeats[-1].qualifiers["ID"] = filteredFeats[-1].qualifiers[args.overrideID]
                         filteredFeats[-1].id = filteredFeats[-1].qualifiers["ID"][0]
+                        filteredFeats[-1].qualifiers["Name"] = filteredFeats[-1].qualifiers[args.overrideID]
                     break
         rec.features = filteredFeats
         recList.append(rec)
