@@ -7,7 +7,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-python $__tool_directory__/five_col_to_gbk.pypromoter
+python $__tool_directory__/five_col_to_gbk.py
 $tabIn
 $seqIn
 > $output
