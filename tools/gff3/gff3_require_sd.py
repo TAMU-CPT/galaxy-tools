@@ -50,9 +50,9 @@ def require_shinefind(gff3, fasta):
                 )
                 gene.sub_features.append(sd_features[0])
                 if gene.location.start > sd_features[0].location.start:
-                    gene.location.start = sd_features[0].location.start:
+                    gene.location.start = sd_features[0].location.start
                 if gene.location.end < sd_features[0].location.end:
-                    gene.location.end = sd_features[0].location.end:                 
+                    gene.location.end = sd_features[0].location.end                 
                 good_genes.append(gene)
 
         record.features = good_genes
