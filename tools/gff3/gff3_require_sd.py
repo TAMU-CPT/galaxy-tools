@@ -3,6 +3,7 @@ import sys
 import logging
 import argparse
 from Bio import SeqIO
+from Bio.SeqFeature import FeatureLocation
 from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 from shinefind import NaiveSDCaller
@@ -50,9 +51,9 @@ def require_shinefind(gff3, fasta):
                 )
                 gene.sub_features.append(sd_features[0])
                 if gene.location.start > sd_features[0].location.start:
-                    gene.location.start = sd_features[0].location.start
+                    gene.location = FeatureLocation(int(sd_features[0].location.start), int(gene.location.end), gene.location.strand)
                 if gene.location.end < sd_features[0].location.end:
-                    gene.location.end = sd_features[0].location.end                 
+                    gene.location = FeatureLocation(int(gene.location.start), int(sd_features[0].location.end), gene.location.strand)                 
                 good_genes.append(gene)
 
         record.features = good_genes
