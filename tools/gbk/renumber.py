@@ -253,14 +253,15 @@ def delta_old(feature, tag_to_update):
 
 def is_within(query, feature):
     # checks if the query item is within the bounds of the given feature
-    for x in query.location.parts:
+    sortedList = sorted(query.location.parts, key=lambda x: x.start)
+    for x in sortedList:
       if (
           feature.location.start <= x.start
           and feature.location.end >= x.end
       ):
-        if x.strand < 0 and x == query.location.parts[-1]:
+        if x.strand < 0 and x == sortedList[-1]:
           return True
-        elif x.strand >= 0 and x == query.location.parts[0]:
+        elif x.strand >= 0 and x == sortedList[0]:
           return True
     #else:
     return False
