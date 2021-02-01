@@ -253,13 +253,17 @@ def delta_old(feature, tag_to_update):
 
 def is_within(query, feature):
     # checks if the query item is within the bounds of the given feature
-    if (
-        feature.location.start <= query.location.start
-        and feature.location.end >= query.location.end
-    ):
-        return True
-    else:
-        return False
+    for x in query.location.parts:
+      if (
+          feature.location.start <= x.start
+          and feature.location.end >= x.end
+      ):
+        if x.strand < 0 and x == query.location.parts[-1]:
+          return True
+        elif x.strand >= 0 and x == query.location.parts[0]:
+          return True
+    #else:
+    return False
 
 
 # def fix_frameshift(a, b):
