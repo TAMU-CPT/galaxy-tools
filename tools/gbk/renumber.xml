@@ -12,6 +12,7 @@ python $__tool_directory__/renumber.py
 --tag_to_update "${tag_to_update}"
 --string_prefix "${string_prefix}"
 --leading_zeros "${leading_zeros}"
+$forceMatch
 --change_table $change_table
 
 > $output
@@ -25,6 +26,7 @@ python $__tool_directory__/renumber.py
         label="String prefix" name="string_prefix" type="text" value="display_id"/>
     <param label="Number of leading zeros/padding" name="leading_zeros"
         type="integer" value="3"/>
+    <param name="forceMatch" label="Force Updated Tags to initially match in addition to location checks. " help="If tag is not present, only location and type checks will be used to infer renumber" type="boolean" truevalue="--forceTagMatch" falsevalue="" checked="True" />
   </inputs>
   <outputs>
     <data format="genbank" name="output">

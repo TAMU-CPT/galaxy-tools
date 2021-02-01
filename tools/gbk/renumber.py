@@ -19,6 +19,7 @@ def renumber_genes(
     tag_to_update="locus_tag",
     string_prefix="display_id",
     leading_zeros=3,
+    forceTagMatch=False,
     change_table=None,
 ):
 
@@ -90,6 +91,11 @@ def renumber_genes(
                 [f for f in record.features if f.type == "gene"],
                 key=lambda x: x.location.start,
             )
+            oldNames = []
+            for x in f_gene:
+              if tag_to_update in x.qualifiers.keys():
+                oldNames.append(x.qualifiers[tag_to_update])
+            
             f_rbs = sorted(
                 [f for f in record.features if f.type == "RBS"],
                 key=lambda x: x.location.start,
@@ -145,7 +151,7 @@ def renumber_genes(
                           else:
                             tag.append(feature)
                             f_processed.append(feature)
-                        elif tag_to_update in gene.qualifiers.keys() and feature.qualifiers[tag_to_update] == gene.qualifiers[tag_to_update]:
+                        elif (not forceTagMatch) or (tag_to_update in gene.qualifiers.keys() and feature.qualifiers[tag_to_update] == gene.qualifiers[tag_to_update]):
                           tag.append(feature)
                           f_processed.append(feature)
                     elif feature.location.start > gene.location.end:
@@ -216,6 +222,33 @@ def renumber_genes(
             
             for feature in [f for f in f_sorted if f not in f_processed]:
                 if feature.type == "CDS":
+                  if tag_to_update in feature.qualifiers.keys() and forceTagMatch:
+                    failNameCheck = True
+                    for x in oldNames:
+                      for tag in feature.qualifiers[tag_to_update]:
+                          if tag in x:
+                            failNameCheck = False
+                      if not failNameCheck:
+                        break
+                    if failNameCheck:
+                      change_table.write(
+                        record.id
+                        + "\t"
+                        + feature.type
+                        + ":"
+                        + (feature.qualifiers[tag_to_update][0])
+                        + "\t[Removed: (Tag check enabled) CDS did not both share a start/end with and fall within a gene with the same " + tag_to_update + " value]\n"
+                      )
+                    else:
+                      change_table.write(
+                        record.id
+                        + "\t"
+                        + feature.type
+                        + ":"
+                        + (feature.qualifiers[tag_to_update][0])
+                        + "\t[Removed: CDS did not both fall within boundary of gene and share a boundary with a gene]\n"
+                      )  
+                  else:
                     change_table.write(
                         record.id
                         + "\t"
@@ -223,8 +256,35 @@ def renumber_genes(
                         + ":"
                         + (feature.qualifiers[tag_to_update][0])
                         + "\t[Removed: CDS did not both fall within boundary of gene and share a boundary with a gene]\n"
-                  )
+                    )
                 else:
+                  if tag_to_update in feature.qualifiers.keys() and forceTagMatch:
+                    failNameCheck = True
+                    for x in oldNames:
+                      for tag in feature.qualifiers[tag_to_update]:
+                          if tag in x:
+                            failNameCheck = False
+                      if not failNameCheck:
+                        break
+                    if failNameCheck:
+                      change_table.write(
+                        record.id
+                        + "\t"
+                        + feature.type
+                        + ":"
+                        + (feature.qualifiers[tag_to_update][0])
+                        + "\t[Removed: (Tag check enabled) Feature did not fall within a gene it shared a " + tag_to_update + " value with]\n"
+                      )
+                    else:
+                      change_table.write(
+                        record.id
+                        + "\t"
+                        + feature.type
+                        + ":"
+                        + (feature.qualifiers[tag_to_update][0])
+                        + "\t[Removed: Feature not within boundary of a gene]\n"
+                      )
+                  else:
                     change_table.write(
                         record.id
                         + "\t"
@@ -294,6 +354,10 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--leading_zeros", type=int, help="# of leading zeroes", default=3
+    )
+
+    parser.add_argument(
+        "--forceTagMatch", action="store_true", help="Make non-CDS features match tag initially"
     )
 
     parser.add_argument(
