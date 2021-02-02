@@ -92,8 +92,8 @@ def add_exons(features):
                 exon_strand = cds.location.strand
             if exon_end is None:
                 exon_end = cds.location.end
-            exon_start = min(exon_start, cds.location.start)
-            exon_end = max(exon_end, cds.location.end)
+            exon_start = min(gene.location.start, cds.location.start)
+            exon_end = max(gene.location.end, cds.location.end)
             cds_list.append(cds)
         if cds_list:
             # we found a CDS to adopt
