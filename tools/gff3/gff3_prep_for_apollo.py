@@ -92,8 +92,8 @@ def add_exons(features):
                 exon_strand = cds.location.strand
             if exon_end is None:
                 exon_end = cds.location.end
-            exon_start = min(gene.location.start, cds.location.start)
-            exon_end = max(gene.location.end, cds.location.end)
+            exon_start = min(exon_start, cds.location.start)
+            exon_end = max(exon_end, cds.location.end)
             cds_list.append(cds)
         if cds_list:
             # we found a CDS to adopt
@@ -113,9 +113,9 @@ def add_exons(features):
                 new_exon.sub_features.append(cds)
             #gene.sub_features.append(new_exon)
             # get all the other children of gene that AREN'T a CDS including the new exon
-            clean_gene.sub_features = [copy.deepcopy(new_exon)]
+            clean_gene.sub_features.append(copy.deepcopy(new_exon))
             #clean_gene.sub_features.append(gffSeqFeature(location=FeatureLocation(exon_start, exon_end, exon_strand), type="exon", source = "cpt.prepApollo", qualifiers={"ID": ["%s.exon" % clean_gene.qualifiers["ID"][0]], "Parent": clean_gene.qualifiers["ID"]}, sub_features=[], strand=exon_strand))
-            
+            """
             for sf in feature_lambda(
                 gene.sub_features,
                 feature_test_type,
@@ -127,7 +127,7 @@ def add_exons(features):
                 child = copy.deepcopy(sf)
                 child.qualifiers["Parent"] = new_exon.qualifiers["ID"]
                 clean_gene.sub_features.append(child)
-            
+            """
             # add them to the new Exon feature
         # return the cleaned gene with new exon
         yield clean_gene
