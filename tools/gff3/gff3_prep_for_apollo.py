@@ -44,15 +44,40 @@ def add_exons(features):
         exon_strand = None
         cds_list = []
 
-        for mRNA in gene.sub_features:
-            for x in mRNA.sub_features:
-                x.qualifiers["Parent"] = [gene.id]
-                gene.sub_features.append(x)
+        #for mRNA in gene.sub_features:
+        #    for x in mRNA.sub_features:
+        #        x.qualifiers["Parent"] = [gene.id]
+        #        gene.sub_features.append(x)
                  
         for exon in feature_lambda(gene.sub_features, feature_test_type, {"type": "exon"}, subfeatures=False,recurse=False):
             #if the gene contains an exon, skip.
             continue
-        
+        hasMRNA = False
+        for x in gene.sub_features:
+          if x.type == "mRNA":
+            hasMRNA = True
+            mRNA = x
+        """
+        if not hasMRNA:
+          mRNA = gffSeqFeature(
+                   location=FeatureLocation(gene.location.start, gene.location.end, gene.location.strand),
+                   type="mRNA",
+                   source = "cpt.prepApollo",
+                   qualifiers={
+                       "ID": ["%s.mRNA" % clean_gene.qualifiers["ID"][0]],
+                       "Parent": clean_gene.qualifiers["ID"],
+                   },
+                   sub_features=gene.sub_features,
+                   strand=exon_strand
+                 )
+          for x in mRNA.sub_features:
+            x.qualifiers["Parent"] = mRNA["ID"] 
+          clean_gene.sub_features = [mRNA]
+        else:
+          for x in clean_gene.sub_features:
+            if x.type != "mRNA":
+              x.qualifiers["Parent"] = [mRNA.id] """
+            
         # check for CDS child features of the gene, do not go a further step (this should skip any CDS children of exon child features)
         for cds in feature_lambda(
             gene.sub_features,
@@ -60,7 +85,7 @@ def add_exons(features):
             {"type": "CDS"},
             subfeatures=False,
             recurse=False,
-        ):
+            ):
             # check all CDS features for min/max boundaries
             if exon_start is None:
                 exon_start = cds.location.start
@@ -78,18 +103,19 @@ def add_exons(features):
                 source = "cpt.prepApollo",
                 qualifiers={
                     "ID": ["%s.exon" % clean_gene.qualifiers["ID"][0]],
-                    "Parent": clean_gene.qualifiers["ID"],
+                    "Parent": [clean_gene.id],
                 },
                 sub_features=[],
                 strand=exon_strand
             )
-            #for cds in cds_list:
-            #    cds.qualifiers["Parent"] = new_exon.qualifiers["ID"]
-            # gene.sub_features.append(new_exon)
+            for cds in cds_list:
+                cds.qualifiers["Parent"] = new_exon.qualifiers["ID"]
+                new_exon.sub_features.append(cds)
+            #gene.sub_features.append(new_exon)
             # get all the other children of gene that AREN'T a CDS including the new exon
-            #clean_gene.sub_features = [copy.deepcopy(new_exon)]
+            clean_gene.sub_features = [copy.deepcopy(new_exon)]
             #clean_gene.sub_features.append(gffSeqFeature(location=FeatureLocation(exon_start, exon_end, exon_strand), type="exon", source = "cpt.prepApollo", qualifiers={"ID": ["%s.exon" % clean_gene.qualifiers["ID"][0]], "Parent": clean_gene.qualifiers["ID"]}, sub_features=[], strand=exon_strand))
-            """
+            
             for sf in feature_lambda(
                 gene.sub_features,
                 feature_test_type,
@@ -101,7 +127,7 @@ def add_exons(features):
                 child = copy.deepcopy(sf)
                 child.qualifiers["Parent"] = new_exon.qualifiers["ID"]
                 clean_gene.sub_features.append(child)
-            """
+            
             # add them to the new Exon feature
         # return the cleaned gene with new exon
         yield clean_gene
