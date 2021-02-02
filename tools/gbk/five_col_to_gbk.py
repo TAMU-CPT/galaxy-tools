@@ -54,7 +54,10 @@ def fiveColToGbk(tabIn, seqIn):
         featStrand = -1
       else:
         featStrand = 1
-      featLoc.parts.append(FeatureLocation(min(int(fields[0]), int(fields[1])) - 1, max(int(fields[0]), int(fields[1])), strand=featStrand))
+      if featStrand == -1:
+        featLoc = FeatureLocation(min(int(fields[0]), int(fields[1])) - 1, max(int(fields[0]), int(fields[1])), strand=featStrand) + featLoc
+      else:
+        featLoc = featLoc + FeatureLocation(min(int(fields[0]), int(fields[1])) - 1, max(int(fields[0]), int(fields[1])), strand=featStrand)
     elif fields[3].strip():
       if fields[3].strip() in featQuals.keys():
         featQuals[fields[3].strip()].append(fields[4].strip())
