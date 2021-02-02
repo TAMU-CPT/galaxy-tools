@@ -42,24 +42,24 @@ def fiveColToGbk(tabIn, seqIn):
     if len(fields) > 2 and fields[2]:
       if featType:
         featList.append(SeqFeature(featLoc, featType, qualifiers=featQuals))
-      featType = fields[2]
+      featType = fields[2].strip()
       if int(fields[0]) > int(fields[1]):
         featStrand = -1
       else:
         featStrand = 1
       featLoc = FeatureLocation(min(int(fields[0]), int(fields[1])) -1 , max(int(fields[0]), int(fields[1])), strand=featStrand)
       featQuals = {}
-    elif fields[0]:
+    elif fields[0].strip():
       if int(fields[0]) > int(fields[1]):
         featStrand = -1
       else:
         featStrand = 1
       featLoc.parts.append(FeatureLocation(min(int(fields[0]), int(fields[1])) - 1, max(int(fields[0]), int(fields[1])), strand=featStrand))
-    elif fields[3]:
-      if fields[3] in featQuals.keys():
-        featQuals[fields[3]].append(fields[4][0:-1])
+    elif fields[3].strip():
+      if fields[3].strip() in featQuals.keys():
+        featQuals[fields[3].strip()].append(fields[4].strip())
       else:
-        featQuals[fields[3]] = [fields[4][0:-1]]
+        featQuals[fields[3].strip()] = [fields[4].strip()]
     # else blank line
 
   if len(seqList) == 1:
