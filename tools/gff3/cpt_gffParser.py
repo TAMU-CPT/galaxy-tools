@@ -91,6 +91,51 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         doc="Sub-features for GFF Heirarchy",
     )
 
+    
+    def __add__(self, other):
+        if not isinstance(other, gffSeqRecord):
+            # Assume it is a string or a Seq.
+            # Note can't transfer any per-letter-annotations
+            if not isinstance(other, SeqRecord): 
+              return SeqRecord(
+                self.seq + other,
+                id=self.id,
+                name=self.name,
+                description=self.description,
+                features=self.features[:],
+                annotations=self.annotations.copy(),
+                dbxrefs=self.dbxrefs[:],
+              )
+            #else:
+              
+        # Adding two SeqRecord objects... must merge annotation.
+        answer = gffSeqRecord(
+            self.seq + other.seq, features=self.features[:], dbxrefs=self.dbxrefs[:]
+        )
+        # Will take all the features and all the db cross refs,
+        length = len(self)
+        for f in other.features:
+            answer.features.append(f._shift(length))
+        del length
+        for ref in other.dbxrefs:
+            if ref not in answer.dbxrefs:
+                answer.dbxrefs.append(ref)
+        # Take common id/name/description/annotation
+        if self.id == other.id:
+            answer.id = self.id
+        if self.name == other.name:
+            answer.name = self.name
+        if self.description == other.description:
+            answer.description = self.description
+        for k, v in self.annotations.items():
+            if k in other.annotations and other.annotations[k] == v:
+                answer.annotations[k] = v
+        # Can append matching per-letter-annotation
+        for k, v in self.letter_annotations.items():
+            if k in other.letter_annotations:
+                answer.letter_annotations[k] = v + other.letter_annotations[k]
+        return answer
+
 
 def validateID(idIn):
     badChar = []
