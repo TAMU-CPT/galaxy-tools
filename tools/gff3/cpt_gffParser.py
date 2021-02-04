@@ -110,11 +110,6 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         )
 
 
-def recastSeqFeat(inFeat, refFeat = None):
-    if isinstance(inFeat, gffSeqFeature):
-      return inFeat
-    if refFeat:
-
 def validateID(idIn):
     badChar = []
     for x in idIn:
