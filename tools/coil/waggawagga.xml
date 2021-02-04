@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.waggawagga" name="Waggawagga" version="1.0.0" profile="16.04">
+	<description> coiled-coil prediction</description>
+	<macros/>
+	<requirements>
+		<requirement type="package">libgcc</requirement>
+	</requirements>
+	<command detect_errors="aggressive">
+cp -r $__tool_directory__/waggawagga/* ./ ;
+./waggawagga-cli -a complete -f $inFile ;
+rm -r ./results/sah_data ;
+tar -zcvf $outFile ./results/*/results ;
+</command>
+	<inputs>
+                <param label="Fasta Sequence" name="inFile" type="data" format="fasta" />   
+	</inputs>
+	<outputs>
+                <data format="tar.gz" name="outFile" label="Waggawagga Results" />
+	</outputs>
+	<help>
+**What it does**
+
+Coiled-coil predictions are characterized by contiguous heptad repeats, which can be depicted in the form of a net-diagram. From this representation a score has been developed, which enables the discrimination between coiled-coil-domains and single α-helices. The software was implemented as a web-application and comes with an user-optimized interface. The user can run applications for the sole prediction of coiled-coils and applications for the prediction of the oligomerisation states. The query sequence is visualized as helical wheel-diagram of parallel or anti-parallel homodimers, or parallel homotrimers, and as heptad-net-diagram. In addition the SAH-score is calculated for each prediction. Considered together, these information provide an indication for the correct prediction of the structural motives. The results of the application can be stored, exported to files and be restored for later analysis.
+	</help>
+	<tests/>
+	<citations>
+		<citation type="bibtex">
+		@unpublished{galaxyTools,
+			author = {Simm D., Hatje K. and Kollmar M.},
+			title = {Waggawagga: comparative visualization of coiled-coil predictions and detection of stable single α-helices (SAH domains). Bioinformatics. 31(5):767-769 },
+			year = {2015},
+			
+		}
+		</citation>
+	</citations>
+</tool>

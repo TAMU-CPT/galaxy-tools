@@ -1,0 +1,490 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Web-Application »Waggawagga« &#8212; Waggawagga 0.4.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/typo3sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Standalone-Tool »Waggawagga-CLI«" href="standalone.html" />
+    <link rel="prev" title="Documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+<div id="logo-div">
+  <a href="index.html" title="Start">
+    <img id="logo-img" src="_static/max-planck-logo.jpg" 
+         border="0" alt="Max-Planck-Institut f&uuml;r Biophysikalische Chemie Logo" />
+  </a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="standalone.html" title="Standalone-Tool »Waggawagga-CLI«"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Documentation"
+             accesskey="P">previous</a> |</li>
+  <li><a href="index.html">documentation</a>|&nbsp;</li>
+  <li><a href="search.html">search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Web-Application »Waggawagga«</a><ul>
+<li><a class="reference internal" href="#input-mask">Input mask</a></li>
+<li><a class="reference internal" href="#result-section">Result section</a><ul>
+<li><a class="reference internal" href="#domain-overview">Domain Overview</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#helical-wheel-view">Helical wheel view</a></li>
+<li><a class="reference internal" href="#helical-net-view-and-the-single-alpha-helix-score">Helical Net view and the Single-Alpha-Helix Score</a></li>
+<li><a class="reference internal" href="#sah-scoring">SAH-Scoring</a></li>
+<li><a class="reference internal" href="#prediction-results-gnuplot-and-tabular">Prediction results: GnuPlot and Tabular</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rights-and-restrictions">Rights and Restrictions</a></li>
+<li><a class="reference internal" href="#references">References</a><ul>
+<li><a class="reference internal" href="#methodical-references">Methodical References</a></li>
+<li><a class="reference internal" href="#software-references">Software References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="standalone.html"
+                        title="next chapter">Standalone-Tool »Waggawagga-CLI«</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/web-application.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="web-application-waggawagga">
+<h1>Web-Application »Waggawagga«<a class="headerlink" href="#web-application-waggawagga" title="Permalink to this headline">¶</a></h1>
+<p>In the following section the single components of the user interface will shortly be presented. Simply spoken the user interface is divided in two main parts: The input mask at the top of the page and the result section of the analysis below.</p>
+<div class="section" id="input-mask">
+<h2>Input mask<a class="headerlink" href="#input-mask" title="Permalink to this headline">¶</a></h2>
+<p>The web-based user interface provides an input form, which enables the user to upload protein sequences in plain-text or as FASTA-formatted text. On the server-side the sequence is pre-processed to filter out gaps, special characters, numbers, etc. In general characters, which does not match the FASTA-format. A specification of the FASTA-format can be found <a class="reference external" href="http://www.ncbi.nlm.nih.gov/BLAST/blastcgihelp.shtml">here</a>. Additionally to garantuee the compatibility with the coiled-coil-tools, amino acid specifiers other than the 20 standard characters are removed either. This may lead to shifts in your amino acid numbering. For demonstration purposes there are three examples, which can be loaded instead of an own protein sequence.</p>
+<p>As a next step, the coiled-coil prediction tools can be chosen out of two sets: The classic prediction tools, which deliver as a result probable coiled-coil regions, and the extended tools, which predict several types of oligomerization states on basis of the previous prediction results. Another feature, which can be customized, is the used window-length of the prediction tools. It directly influences the predicted region by smoothing the predictions with increasing windows-length, which can be 14, 21 and 28.</p>
+</div>
+<div class="section" id="result-section">
+<h2>Result section<a class="headerlink" href="#result-section" title="Permalink to this headline">¶</a></h2>
+<p>The result section is grouped into four subsections, which present the analysed protein sequence data in different ways. After finishing the calculation of the results, the user can find a unique <em>job-id*(*entifier</em>) at the top of the result section. The <em>id</em> is the key to very quickly restore already calculated results back. The user only has to copy and paste his <em>job-id</em> into the text-field on the <em>Restore Session</em> page. The <em>id</em> is valid for at least one week, and can be shared with others or used to continue an analysis at a later stage.</p>
+<div class="section" id="domain-overview">
+<h3>Domain Overview<a class="headerlink" href="#domain-overview" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>first subsection</strong> is the <strong>domain view</strong>, which lists an abstract sequence overview for all submitted protein sequences in combination with the selected prediction tools. Predicted coiled-coil regions are highlighted. Each sequence has an interactive slider for changing the viewable region of the current sequence. By moving the slider, the illustrations below alter instantaniously/accordingly.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/interface_domain_view_detailed01.png"><img alt="_images/interface_domain_view_detailed01.png" src="_images/interface_domain_view_detailed01.png" style="width: 100%;" /></a>
+</div>
+<p>The <strong>domain view</strong> has several functions to interact with: The first figure shows the predicted coiled-coil regions for the tool Marcoil, which were calculated for the example protein sequence <em>Myosin heavy chain IIa</em>. Starting from left to right, the narrow rubbed zone can be used to change the order of the respective domain views through drag and drop. The grey box aside shows the used prediction-tool and the sequence title. The long box contains a grey slim bar, which represents the analysed protein sequence, with highlighted small boxes, which represent the predicted coiled-coil regions. For each coiled-coil box, the position information and the coiled-coil score can be derived in its mouse tool tip. The predicted oligomerization state is indicated in the grey bubbles. Possible values are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Symbol</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2</td>
+<td>General dimer</td>
+</tr>
+<tr class="row-odd"><td>⇈</td>
+<td>Parallel dimer</td>
+</tr>
+<tr class="row-even"><td>⇵</td>
+<td>Antiparallel dimer</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>Trimer</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>Tetramer</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>Combined information in case a box doesn&#8217;t provide enough space</td>
+</tr>
+</tbody>
+</table>
+<p>The predicted coiled-coil regions may contain shifts in the heptad motives, which are indicated by red lines. Shift positions can be detected by hovering with the mouse above them. The domain view contains an interactive slider that influences the rendered regions in the illustrations below (<em>Helical wheel</em> and <em>Helical net views</em>).</p>
+<p>On the right side of the domain view are two buttons: The left of them opens a textual result of the prediction, that is very useful to see the predicted coiled-coil regions and heptad patterns aligned to the protein sequence. By clicking on the left/right arrows, the user can scroll through the textual result. Here is also an automatic scrolling available, the textual result automatically jumps to the corresponding sequence position, when the according slider is dragged around. In the top-right corner of the textual result box is a download link. The up/down-pointing arrow-button can be used to fade in/out the textual result.</p>
+<p>Finally the most right button in the domain view is a switch to turn the slider into an inactive state, so that the single coiled-coil regions are directly clickable. An example for this function is given in the figure below. When inactived, the slider turns into grey color and is not draggable anymore. The current active region is highlighted then in blue.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/interface_domain_view_detailed04.png"><img alt="_images/interface_domain_view_detailed04.png" src="_images/interface_domain_view_detailed04.png" style="width: 100%;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/interface_domain_view_detailed01_new.png"><img alt="_images/interface_domain_view_detailed01_new.png" src="_images/interface_domain_view_detailed01_new.png" style="width: 100%;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/interface_domain_view_detailed05.png"><img alt="_images/interface_domain_view_detailed05.png" src="_images/interface_domain_view_detailed05.png" style="width: 100%;" /></a>
+</div>
+</div>
+<div class="section" id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>Another part of the result section is the <strong>Configuration</strong>, which enables the user to fine-tune the selected protein sequence region for the <strong>Helical wheel view</strong>.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/interface_configuration.png"><img alt="_images/interface_configuration.png" src="_images/interface_configuration.png" style="width: 100%;" /></a>
+</div>
+<p>Configurations, which can be made, are the selection of the type of the helical wheel diagram. The user can choose between Monomer, Dimer or Trimer views. By switching between them, the illustration below alters instantaniously. Further functions are the precise specification of the sequence range for the wheels of the helical wheel diagram, the direction (<em>normal/reverse</em>) and the coiled-coil composition (<em>heterodimer/homodimer</em>).</p>
+</div>
+<div class="section" id="helical-wheel-view">
+<h3>Helical wheel view<a class="headerlink" href="#helical-wheel-view" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>second main subsection</strong> is the <strong>Helical wheel view</strong>. This view is designed to visualize the possible residue interactions inside a predicted coiled-coil. The view is capable to depict the three above mentioned coiled-coil types. The helical wheel view can be customized &#8220;freely&#8221; in range, direction and oligomerization state by using the above described <strong>Configuration</strong> form or simply by moving the slider along a <strong>domain view</strong>, if the user wants quickly to shift over the sequence. The pre-selected windows-length for the slider has a fixed size of 49.</p>
+<p>Each wheel, representing a helix viewed from the top, is made up of     seven groups [<em>a,b,c,d,e,f,g</em>] with the residues sorted according to the predicted heptad pattern. The sequence starts in the most inner circle of the wheel-spiral and follows in the arrow-indicated fashion to the outside. The heptad positions <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">d</span></code> are highlighted in orange and are oriented to the opposing wheel representing the inner side of a coiled-coil helix. If there are more than six residues per heptad group, the remaining residues are combined into an expandable bubble at the end of the group (outside the wheel). The group can be expanded by clicking on it. If there are less than six residues per group, the SVG-based view shrinks automatically the number of windings.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/interface_monomer.png"><img alt="_images/interface_monomer.png" src="_images/interface_monomer.png" style="width: 100%;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/interface_dimer.png"><img alt="_images/interface_dimer.png" src="_images/interface_dimer.png" style="width: 100%;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/interface_trimer.png"><img alt="_images/interface_trimer.png" src="_images/interface_trimer.png" style="width: 100%;" /></a>
+</div>
+<p>There are several common control icons, which occur repeatedly on the page. Declaring from left to right: The <em>Adobe</em> icon stands for a PDF download of the current view. The  small picture right to it, stands for a PNG download. The small double window means that the current view can be zoomed in, in an extra overlayed viewbox (it is still interactive) and the arrow at the right stands for maximizing/minimizing the current view.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/interface_buttons.png"><img alt="_images/interface_buttons.png" src="_images/interface_buttons.png" style="width: 25%;" /></a>
+</div>
+</div>
+<div class="section" id="helical-net-view-and-the-single-alpha-helix-score">
+<h3>Helical Net view and the Single-Alpha-Helix Score<a class="headerlink" href="#helical-net-view-and-the-single-alpha-helix-score" title="Permalink to this headline">¶</a></h3>
+<p>The web-application <em>Waggawagga</em> has another unique feature. In the helical net view the selected protein region is depicted in the form of an interaction net of an open-cutted single-alpha-helix. The cut, which flattens the helix, is made along the surface in the direction of the helix axis. Therefore the heptad repeat pattern is used as a basis to divide the residues in strict columns, the cut is then made along the <em>f</em> column. On basis of the interacting residues a score is calculated (<strong>Single-Alpha-Helix Score</strong>), which enables the user to discriminate between predicted coiled-coil regions and a Single-Alpha-Helix (SAH). A high SAH-score (values &gt;= 0.25) for the selected protein sequence region is a strong indicator for a single-&amp;alpha;-helix instead of a predicted coiled-coil.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/interface_heptad_net_declaration_01.png"><img alt="_images/interface_heptad_net_declaration_01.png" src="_images/interface_heptad_net_declaration_01.png" style="width: 80%;" /></a>
+</div>
+<p>The helical net has to be read in rows always starting from right to left. Between interacting residues, solid and dashed connections are drawn, which represent the strong and weak type of interactions. As you can see from the figure above, the black drawn lines are strong interactions and the dashed grey ones are weak. The classification of the interaction lines results from the rules, aside the helical net. For instance the black rule <em>E(i-4)</em> has the meaning, that between a residue E and the upper-right residue (i-4 positions) will probable a strong interaction develop. The other rules can be applied accordingly. The used weights for the scoring algorithm can be seen from the table below.</p>
+<p>In the top-right corner of the helical net view the SAH-score with the number of the strong and weak interactions is displayed. On the left side of the helical net diagram an overview is depicted, which shall give an idea of the position of selected region in the sequence and its surrounding residues.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="2%" />
+<col width="30%" />
+<col width="25%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Source Residue</th>
+<th class="head">&nbsp;</th>
+<th class="head">Target residue</th>
+<th class="head">Interaction</th>
+<th class="head">Score</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>E</td>
+<td>⟹</td>
+<td>K/R</td>
+<td>i+4</td>
+<td>1.0</td>
+</tr>
+<tr class="row-odd"><td>H/K/R</td>
+<td>⟹</td>
+<td>E</td>
+<td>i+4</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td>D</td>
+<td>⟹</td>
+<td>K/R</td>
+<td>i+4</td>
+<td>0.75</td>
+</tr>
+<tr class="row-odd"><td>E</td>
+<td>⟹</td>
+<td>K/R</td>
+<td>i+3</td>
+<td>0.75</td>
+</tr>
+<tr class="row-even"><td>H/K/R</td>
+<td>⟹</td>
+<td>E</td>
+<td>i+3</td>
+<td>0.75</td>
+</tr>
+<tr class="row-odd"><td>Q</td>
+<td>⟹</td>
+<td>E</td>
+<td>i+4; i+3</td>
+<td>0.5</td>
+</tr>
+<tr class="row-even"><td>E</td>
+<td>⟹</td>
+<td>Q</td>
+<td>i+4; i+3</td>
+<td>0.5</td>
+</tr>
+<tr class="row-odd"><td>E</td>
+<td>⟹</td>
+<td>H</td>
+<td>i+3</td>
+<td>0.5</td>
+</tr>
+<tr class="row-even"><td>K/R</td>
+<td>⟹</td>
+<td>D</td>
+<td>i+3</td>
+<td>0.5</td>
+</tr>
+<tr class="row-odd"><td>D</td>
+<td>⟹</td>
+<td>K/R</td>
+<td>i+3</td>
+<td>0.5</td>
+</tr>
+<tr class="row-even"><td>F/I/L/M/V/Y</td>
+<td>⟹</td>
+<td>F/I/L/M/V/Y</td>
+<td>i+4; i+3</td>
+<td>-0.5</td>
+</tr>
+<tr class="row-odd"><td>A</td>
+<td>⟹</td>
+<td>[A-Y]</td>
+<td>i+4; i+3</td>
+<td>0.25</td>
+</tr>
+<tr class="row-even"><td>G</td>
+<td>⟹</td>
+<td>[A-Y]</td>
+<td>i+4; i+3</td>
+<td>-0.5</td>
+</tr>
+<tr class="row-odd"><td>P</td>
+<td>⟹</td>
+<td>[A-Y]</td>
+<td>i+4; i+3</td>
+<td>-0.75</td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/scoring_matrix_i_3.png"><img alt="_images/scoring_matrix_i_3.png" src="_images/scoring_matrix_i_3.png" style="width: 100%;" /></a>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/scoring_matrix_i_4.png"><img alt="_images/scoring_matrix_i_4.png" src="_images/scoring_matrix_i_4.png" style="width: 100%;" /></a>
+</div>
+</div>
+<div class="section" id="sah-scoring">
+<h3>SAH-Scoring<a class="headerlink" href="#sah-scoring" title="Permalink to this headline">¶</a></h3>
+<p>Helices, that are not buried within globular structures or coiled-coil helix dimers with hydrophobic seams at their interfaces, need networks of charge interactions for stabilization in water. For example, poly-alanine peptides adopt α-helical conformations in water only when they contain oppositely charged residues in distances appropriate to form salt bridges. In the late 1980th and early 1990th many studies have been performed using such poly-alanine models aiming to resolve the conditions for helix formation and stabilization. Different amino acids (mainly Asp, Glu, Lys and Arg, but in some cases also Gln) were introduced in various combinations at varying distances, the corresponding peptides synthesised, their α-helicity experimentally determined by, for example, circular dichroism, and stabilization energies obtained by fitting models to the data.</p>
+<p>According to these experiments, helices are stabilized by charged interactions (salt bridges) between residues at <em>i, i+3</em> and <em>i, i+4</em> [1, 2] and hydrogen-bonding interactions between polar/charged residues at <em>i, i+3</em> and <em>i, i+4</em> [3, 4]. Additional stability can be obtained through networks of oppositely charged residues in <em>i, i+3, i, i+6,</em> or <em>i, i+3, i, i+7,</em> or <em>i, i+4, i, i+7,</em> or <em>i, i+4, i, i+8</em> distances [5]. In addition to these poly-alanine based peptides, studies have been performed on peptides with complex amino acid distributions [6, 7]. However, each study used different combinations of residues and the experimental conditions (e.g. salt concentrations) were out of the physiological range. Therefore, it is not possible to tabulate all possible combinations and provide comparable stabilization energies. Here, we compared many of the published stabilization energies, tried to set them into relation and define stabilization values for all types of salt bridges and hydrogen-bonding interactions. These stabilization values are summarized for a given sequence window to determine a SAH score. In addition to binary interactions, additional stabilization is added for networks of at least three residues (see above), and destabilizing effects through networks of hydrophobic residues in <em>i, i+3, i, i+6,</em> or <em>i, i+3, i, i+7,</em> or <em>i, i+4, i, i+7,</em> or <em>i, i+4, i, i+8</em> distances, which would favour coiled-coil formation, are taken into account.</p>
+</div>
+<div class="section" id="prediction-results-gnuplot-and-tabular">
+<h3>Prediction results: GnuPlot and Tabular<a class="headerlink" href="#prediction-results-gnuplot-and-tabular" title="Permalink to this headline">¶</a></h3>
+<p>In the last result subsection the computed analyses are presented as plotted graphs (GnuPlot) and as pure values in the table aside. For each analysis there is a tab, which holds the relevant prediction data. The plot combines both predictions (coiled-coil &amp; according SAH) in one graph and visualizes the probabilities over the length of the sequence. Filled areas in blue/red give a hint, as described in the legend of the figure below, whether there is a probable coiled-coil or SAH region or not. This depends on the in dashed lines drawn thresholds. Our values for the thresholds were chosen by analysing an annotated PDB-dataset, where the exact regions of coiled-coils and single-alpha-helices were available.</p>
+<p>Left to it are the prediction values listed in a table. Each line follows the structure: Sequence position, residue, heptad pattern position, coiled-coil prediction probability and SAH prediction probabilility.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/interface_gnuplot.png"><img alt="_images/interface_gnuplot.png" src="_images/interface_gnuplot.png" style="width: 80%;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="rights-and-restrictions">
+<h2>Rights and Restrictions<a class="headerlink" href="#rights-and-restrictions" title="Permalink to this headline">¶</a></h2>
+<p>Using Waggawagga by non-academics requires permission. Waggawagga may be obtained upon request and used under a GNU General Public License.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>This last section is a listing of all publications with methodical influence on the implementation of the scoring algorithm and the visualizations and of the software, which has been used to realize this service. The focus here lies mainly on the bioinformatic coiled-coil prediction tools.</p>
+<div class="section" id="methodical-references">
+<h3>Methodical References<a class="headerlink" href="#methodical-references" title="Permalink to this headline">¶</a></h3>
+<p>The following list shows the literature that helped to develop the theoretical base of the SAH prediction:</p>
+<table class="docutils citation" frame="void" id="marqusee1987" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Marqusee1987]</td><td>Marqusee S, Baldwin RL. 1987. Helix stabilization by Glu-...Lys+ salt bridges in short peptides of de novo design. Proc Natl Acad Sci U S A, 84:8898–8902.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="baldwin1993" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Baldwin1993]</td><td>Huyghues-Despointes BM, Scholtz JM, Baldwin RL. 1993. Helical peptides with three pairs of Asp-Arg and Glu-Arg residues in different orientations and spacings. Protein Sci Publ Protein Soc, 2:80–85.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="scholtz1993" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Scholtz1993]</td><td>Scholtz JM, Qian H, Robbins VH, Baldwin RL. 1993. The energetics of ion-pair and hydrogen-bonding interactions in a helical peptide. Biochemistry (Mosc), 32:9668–9676.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="smith1998" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Smith1998]</td><td>Smith JS, Scholtz JM. 1998. Energetics of polar side-chain interactions in helical peptides: salt effects on ion pairs and hydrogen bonds. Biochemistry (Mosc), 37:33–40.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="olson2001" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Olson2001]</td><td>Olson CA, Spek EJ, Shi Z, Vologodskii A, Kallenbach NR. 2001. Cooperative helix stabilization by complex Arg-Glu salt bridges. Proteins, 44:123–132.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="lyu1989" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Lyu1989]</td><td>Lyu PC, Marky LA, Kallenbach NR. 1989. The role of ion pairs in .alpha. helix stability: two new designed helical peptides. J Am Chem Soc, 111:2733–2734.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="lyu1990" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Lyu1990]</td><td>Lyu PC, Liff MI, Marky LA, Kallenbach NR. 1990. Side chain contributions to the stability of alpha-helical structure in peptides. Science, 250:669–673.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="peckham2009" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Peckham2009]</td><td>Michelle Peckham and Peter J. Knight. 2009. When a predicted coiled coil is really a single alpha-helix, in myosins and other proteins. The Royal Society of Chemistry - Soft Matter, 5:2493–2503. doi:10.1039/b822339d.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="software-references">
+<h3>Software References<a class="headerlink" href="#software-references" title="Permalink to this headline">¶</a></h3>
+<p>The following list shows all main software packages that are part of the web-application:</p>
+<table class="docutils citation" frame="void" id="bioruby" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[BioRuby]</td><td>Naohisa Goto, Pjotr Prins, Mitsuteru Nakao, Raoul Bonnal, Jan Aerts and Toshiaki Katayama. 2010. BioRuby. Bioinformatics, 26: 2617–2619.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="ncoils" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Ncoils]</td><td>Andrei Lupas, Marc Van Dyke and Jeff Stock. 1991. Predicting coiled coils from protein sequences. Science, 252(5009): 1162-1164.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="marcoil" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Marcoil]</td><td>Mauro Delorenzi and Terry Speed. 2002. An HMM model for coiled-coil domains and a comparison with PSSM-based predictions. Bioinformatics, 18: 617–625.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="multicoil" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Multicoil]</td><td>Peter S Kim, Bonnie Berger and Ethan Wolf. 1997. MultiCoil: A program for predicting two-and three-stranded coiled coils. Protein Science, 6: 1179–1189.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="multicoil2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Multicoil2]</td><td>Jason Trigg, Karl Gutwin, Amy E Keating and Bonnie Berger. 2011. Multicoil2: Predicting Coiled Coils and Their Oligomerization States from Sequence in the Twilight Zone. PLOS ONE, 6: 1–10.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="paircoil" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Paircoil]</td><td>Bonnie Berger, David B. Wilson, Ethan Wolf, Theodore Tonchev, Mari Milla, and Peter S. Kim. 1995. Predicting Coiled Coils by Use of Pairwise Residue Correlations. Proceedings of the National Academy of Science USA, 92: 8259-8263.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="paircoil2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Paircoil2]</td><td>Andrew V McDonnell, Taijiao Jiang, Amy E Keating and Bonnie Berger. 2006. Paircoil2: improved prediction of coiled coils from sequence. Bioinformatics, 22: 356–358.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="procoil" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[PrOCoil]</td><td>C C Mahrenholz, I G Abfalter, U Bodenhofer and R Volkmer. 2010. PrOCoil - Advances in predicting two-and three-stranded coiled coils. homo.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="logicoil" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[LOGICOIL]</td><td>Thomas L Vincent, Peter J Green and Derek N Woolfson. 2013. LOGICOIL — Multi-state prediction of coiled-coil oligomeric state. Bioinformatics, 29: 69–76.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="standalone.html" title="Standalone-Tool »Waggawagga-CLI«"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Documentation"
+             >previous</a> |</li>
+  <li><a href="index.html">documentation</a>|&nbsp;</li>
+  <li><a href="search.html">search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Dominic Simm.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+    </div>
+  </body>
+</html>
