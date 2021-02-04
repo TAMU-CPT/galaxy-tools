@@ -1,6 +1,7 @@
 from Bio.SeqFeature import FeatureLocation, CompoundLocation
 from Bio import SeqIO, SeqFeature, SeqRecord
 from Bio.Seq import Seq, UnknownSeq
+from collections import OrderedDict
 import sys
 try:
   import urllib.parse
