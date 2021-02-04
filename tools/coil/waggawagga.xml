@@ -8,8 +8,9 @@
 	<command detect_errors="aggressive">
 cp -r $__tool_directory__/waggawagga/* ./ ;
 ./waggawagga-cli -a complete -f $inFile ;
-rm -r ./results/sah_data ;
-tar -zcvf $outFile ./results/*/results ;
+rm -r ./results/sah_data ; 
+ls results ;
+tar -zcvf $outFile ./results/* ;
 </command>
 	<inputs>
                 <param label="Fasta Sequence" name="inFile" type="data" format="fasta" />   
