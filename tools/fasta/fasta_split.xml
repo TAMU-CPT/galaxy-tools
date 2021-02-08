@@ -33,7 +33,7 @@ Takes a Fasta record and outputs a multifasta with sequence lengths no longer th
 			@unpublished{galaxyTools,
 				author = {A. Criscione},
 				title = {CPT Galaxy Tools},
-				year = {2019-2020},
+				year = {2019-2021},
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
 			</citation>

@@ -41,7 +41,7 @@ Will also attempt to automatically parent RBS, CDS, and Exon features without a 
 			@unpublished{galaxyTools,
 				author = {A. Criscione},
 				title = {CPT Galaxy Tools},
-				year = {2019-2020},
+				year = {2019-2021},
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
                         </citation>

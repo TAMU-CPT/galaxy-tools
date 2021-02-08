@@ -103,7 +103,7 @@ It is currently recommended to select either the Gene only or CDS only options f
 			@unpublished{galaxyTools,
 				author = {A. Criscione},
 				title = {CPT Galaxy Tools},
-				year = {2019-2020},
+				year = {2019-2021},
 				note = {https://github.com/tamu-cpt/galaxy-tools/}
 			}
 			</citation>
