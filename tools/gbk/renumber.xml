@@ -46,7 +46,11 @@ $forceMatch
 Gene Renumbering Tool
 =====================
 
-Renumber genes in a genome
+Renumber genes in a genome.
+
+Subfeatures, such as CDS or intron, will attempt to be grouped with their associated gene, based on location. CDSs and RBSs must share either a start or an end boundary with their parent gene, and also fall entirely within the boundary of said gene. All other features only need to fall within the boundary of a gene. 
+
+If the tag check is enabled, then whatever qualifier is selected for updating (such as locus_tag), the subfeatures must also have the same value as any canidate parent gene had for that qualifier. This is useful for subfeatures such as introns, which may be inside more than one gene and could potentially get renumbered to the wrong parent in a location-only check. However, if your dataset does not already have a consistent naming convention, other valid heirarchies could get dropped. The log file will list what features got dropped based on tag checks, so be sure to use that to verify all data made it through.
 </help>
 		<expand macro="citations-2020" />
 </tool>
