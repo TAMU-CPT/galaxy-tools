@@ -7,13 +7,16 @@
 	</requirements>
 	<command detect_errors="aggressive">
 cp -r $__tool_directory__/waggawagga/* ./ ;
-./waggawagga-cli -a complete -f $inFile ;
+./waggawagga-cli -a complete -f $inFile 
+-c $cutoff
+$plot ;
 rm -r ./results/sah_data ; 
-ls results ;
 tar -zcvf $outFile ./results/* ;
 </command>
 	<inputs>
                 <param label="Fasta Sequence" name="inFile" type="data" format="fasta" />   
+                <param label="Set SAH-Domain-Score ground-cutoff " value="0.25" name="cutoff" help="for the selection of SAH-Domains" type="text"/>
+                <param label="Generate Gnuplot figures " name="plot" type="boolean" help="(.svg format)" truevalue="-g" falsevalue=""/>
 	</inputs>
 	<outputs>
                 <data format="tar.gz" name="outFile" label="Waggawagga Results" />
