@@ -73,7 +73,7 @@ $hash_index
                 <option value="5">Version 5 (Newer Blast only, supports TaxID mapping)</option>
         </param>
         <param argument="-parse_seqids" type="boolean" truevalue="-parse_seqids" falsevalue="" checked="true" label="Parse the sequence identifiers" help="Generally required to be true for Version 5 databases, do not disable without good reason" />
-        <param argument="-hash_index" type="boolean" truevalue="-hash_index" falsevalue="" checked="true" label="Enable the creation of sequence hash values" help="These hash values can then be used to quickly determine if a given sequence data exists in this BLAST database." />
+        <param argument="-hash_index" type="boolean" truevalue="-hash_index" falsevalue="" checked="false" label="Enable the creation of sequence hash values" help="These hash values can then be used to quickly determine if a given sequence data exists in this BLAST database." />
         <!-- SEQUENCE MASKING OPTIONS -->
         <!-- Note this is an optional parameter - default should be NO files -->
         <param name="mask_data_file" argument="-mask_data" type="data" multiple="true" optional="true" value="" format="maskinfo-asn1,maskinfo-asn1-binary" label="Optional ASN.1 file(s) containing masking data" help="As produced by NCBI masking applications (e.g. dustmasker, segmasker, windowmasker)" />
