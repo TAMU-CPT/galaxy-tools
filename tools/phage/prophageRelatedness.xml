@@ -1,0 +1,36 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.phage.relatedProphages" name="Related Prophages tool" version="19.1.0.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <requirements>
+        <requirement type="package" version="2.7">python</requirement>
+	<requirement type="package" version="1.74">biopython</requirement>
+  </requirements>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/prophageRelatedness.py
+$blast
+--outFile $output
+--padding $padding
+--numReturn $returns
+]]></command>
+  <inputs>
+    <param label="Blastn Results (Blast XML)" name="blast" type="data" format="blastxml"/>
+    <param label="Cluster Window" name="padding" type="text" value="1.5"
+        help="Nucleotide window for HSPs to form a cluster (Multiplicative of length of query sequence)"/>
+    <param label="Number of Results to return" name="returns" type="integer" value="20"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output" label="Top related prophages"/>
+  </outputs>
+  <tests/>
+  <help><![CDATA[
+**What it does**
+
+Filters BLAST results for high-scoring clusters of HSPs.
+
+      ]]></help>
+		<expand macro="citations-2021" />
+</tool>

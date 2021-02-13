@@ -251,6 +251,7 @@
     </section>
     <section id="1642965e-e98d-4ddb-8fd1-768c3f0563bd" name="BLAST output processing">
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/intron_detection.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/prophageRelatedness.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/blast/nuc_relate.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/blast/prot_relate.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/blast/list_taxids.xml"/>
