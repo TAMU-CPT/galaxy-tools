@@ -1,6 +1,6 @@
 <?xml version="1.1"?>
-<tool id="edu.tamu.cpt2.phage.relatedProphages" name="Related Prophages tool" version="19.1.0.0">
-  <description></description>
+<tool id="edu.tamu.cpt2.phage.relatedProphages" name="Related Prophages tool" version="21.1.0.0">
+  <description/>
   <macros>
     <import>macros.xml</import>
 		<import>cpt-macros.xml</import>
@@ -32,5 +32,5 @@ $blast
 Filters BLAST results for high-scoring clusters of HSPs.
 
       ]]></help>
-		<expand macro="citations-2021" />
+		<expand macro="citations-2020-AJC-solo" />
 </tool>
