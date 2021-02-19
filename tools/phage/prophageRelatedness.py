@@ -18,13 +18,14 @@ def parseXML(blastxml): # Modified from intron_detection
     blast = []
     for iter_num, blast_record in enumerate(NCBIXML.parse(blastxml), 1):
         align_num = 0
-        
+        print(dir(blast_record))
         for alignment in blast_record.alignments:
             print(dir(alignment))
             align_num += 1
             gi_nos = str(alignment.accession)
             blast_gene = []
             for hsp in alignment.hsps:
+                print(dir(hsp))
                 x = float(hsp.identities - 1) / ((hsp.query_end) - hsp.query_start)
                 nice_name = blast_record.query
 
