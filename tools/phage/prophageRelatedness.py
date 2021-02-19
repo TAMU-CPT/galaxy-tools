@@ -20,6 +20,7 @@ def parseXML(blastxml): # Modified from intron_detection
         align_num = 0
         
         for alignment in blast_record.alignments:
+            print(dir(alignment))
             align_num += 1
             gi_nos = str(alignment.accession)
             blast_gene = []
