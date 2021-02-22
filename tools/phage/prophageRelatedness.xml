@@ -31,9 +31,9 @@ $blast
 
 Filters BLAST results for high-scoring clusters of HSPs.
 
-The script first determines a window of X nucleotide bases, where X is the length of the query multiplied by the value supplied in the cluster window input. Then for each hit in the blast record, the high scoring pairs are sorted into sets based on the number of HSPs which would fall within that window.* Finally, the total number of identities in the set is divided by the query length, and this score is used to return the top results. If a set would make it into the final results, any other HSP sets from that same hit will also be returned.
+The script first determines a window of X nucleotide bases, where X is the length of the query multiplied by the value supplied in the cluster window input. Then for each hit in the blast record, the high scoring pairs are sorted into sets based on the number of HSPs which would fall within that window.&ast; Finally, the total number of identities in the set is divided by the query length, and this score is used to return the top results. If a set would make it into the final results, any other HSP sets from that same hit will also be returned.
 
-*Sets are formed with a greedy method, where creating a set with the largest possible number of HSPs is the first action, then the next set is the largest possible number of HSPs that is also disjoint from the first, and so on until all HSPs are in a set.
+&ast; Sets are formed with a greedy method, where creating a set with the largest possible number of HSPs is the first action, then the next set is the largest possible number of HSPs that is also disjoint from the first, and so on until all HSPs are in a set.
 
       ]]></help>
 		<expand macro="citations-2020-AJC-solo" />
