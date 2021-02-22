@@ -14,11 +14,13 @@ logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
 
-def parseXML(blastxml): # Modified from intron_detection
+def parseXML(blastxml, outFile): # Modified from intron_detection
     blast = []
     for iter_num, blast_record in enumerate(NCBIXML.parse(blastxml), 1):
         align_num = 0
-
+        outFile.write("Query ID\tQuery Length\tTotal Number of Hits\n")
+        outFile.write("%s\t%d\t%d\n\n" % (blast_record.query_id, blast_record.query_length, len(blast_record.alignments)))
+        
         for alignment in blast_record.alignments:
 
             align_num += 1
@@ -92,7 +94,7 @@ def disjointSets(inSets):
     return res
         
 def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
-    inRec = parseXML(inRec)
+    inRec = parseXML(inRec, outFile)
     res = []
     for group in inRec:
       window = floor(padding * float(group[0]["query_length"]))
@@ -132,15 +134,21 @@ def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
 
     outList.sort(key = lambda x: x[-1], reverse = True)
 
-    outFile.write("Accession Number\tScore\tCluster Start Location\tEnd Location\t# HSPs in Cluster\tComplete Accession Info\n")
+    outFile.write("Accession Number\tScore\tCluster Start Location\tEnd Location\tTotal Length\t# HSPs in Cluster\tComplete Accession Info\n")
 
     for x in outList:
       minStart = x[0]["sbjct_range"][0]
       maxEnd = x[0]["sbjct_range"][1]
+      if "|gb|" in x[0]["match_id"]:
+        startSlice = x[0]["match_id"].index("gb|") + 3
+        endSlice = (x[0]["match_id"][startSlice:]).index("|")
+        accOut = x[0]["match_id"][startSlice: startSlice + endSlice]
+      else:
+        accOut = x[0]["gi_nos"]
       for y in x[0:-1]:
         minStart = min(minStart, y["sbjct_range"][0])
         maxEnd = max(maxEnd, y["sbjct_range"][1])
-      outFile.write(x[0]["gi_nos"] + "\t" + str(x[-1]) + "\t" + str(minStart) + "\t" + str(maxEnd) + "\t" + str(len(x) - 1) + "\t" + x[0]["match_id"] + "\n")
+      outFile.write(accOut + "\t" + str(x[-1]) + "\t" + str(minStart) + "\t" + str(maxEnd) + "\t" + str(maxEnd - minStart) + "\t" + str(len(x) - 1) + "\t" + x[0]["match_id"] + "\n")
    
     #accession start end number
 

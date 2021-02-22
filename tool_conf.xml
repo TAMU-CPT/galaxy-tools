@@ -251,7 +251,6 @@
     </section>
     <section id="1642965e-e98d-4ddb-8fd1-768c3f0563bd" name="BLAST output processing">
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/intron_detection.xml"/>
-        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/prophageRelatedness.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/blast/nuc_relate.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/blast/prot_relate.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/blast/list_taxids.xml"/>
@@ -324,6 +323,7 @@
     <section id="33e81af1-4203-4a97-a659-87889316ad55" name="Comparative Genomics and Visualization">
         <label id="5e627375-b511-499a-9709-da4eaf0e0fd2" text="Genome comparison"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/diff.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/prophageRelatedness.xml"/>
     </section>
     <section id="004a4a47-d24c-49bd-8650-98f2fd155e42" name="Functional Prediction">
         <label id="bbe8ecf4-0973-475d-ada9-5eaaf2371c41" text="BLAST output processing"/>
