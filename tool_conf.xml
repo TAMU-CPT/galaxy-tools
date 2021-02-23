@@ -3,6 +3,7 @@
     <label id="5b97358a-94e5-44ca-bf28-312ad252b0a8" text="Tool Showcase"/>
     <section id="0914476f-f380-4532-8dbf-fba110dee899" name="Commonly Used Tools">
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/webapollo/gga-apollo/export.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/webapollo/gffFastaSplit.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/ncbi_entrez_eutils/efetch.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/comparative/mist3.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/genome_map.xml"/>
@@ -74,7 +75,6 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gff3/gff3_color.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/fasta/fasta_snp_plot.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/phage_annotation_table.xml"/>
-        <tool file="cpt2/galaxy-tools/tools/external/Prophet/Prophet.xml"/>
     </section>
     <section id="7de17161-4bd8-41ca-8838-2d0777b752a3" name="Multiple sequence alignment">
         <label id="3f2511b5-1947-43ef-a081-d252b6855dbc" text="MAF Tools Suite"/>
@@ -211,6 +211,7 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/gmsn.pl.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/tRNAscan-SE-2.0/trnaScan.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/transterm.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/rho.xml"/>
     </section>
     <section id="a0d981ae-23a6-460b-a674-c79a790d7f48" name="Phage whole genome analyses">
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/bacphlib.xml"/>
@@ -322,6 +323,7 @@
     <label id="306f0d37-f0d1-4150-9ab9-05ab164436db" text="Deprecated"/>
     <section id="33e81af1-4203-4a97-a659-87889316ad55" name="Comparative Genomics and Visualization">
         <label id="5e627375-b511-499a-9709-da4eaf0e0fd2" text="Genome comparison"/>
+        <tool file="cpt2/galaxy-tools/tools/external/Prophet/Prophet.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/diff.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/prophageRelatedness.xml"/>
     </section>
