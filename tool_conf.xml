@@ -226,7 +226,6 @@
         <label id="5d31897d-1b58-4968-ae16-370fd5cd4f8d" text="Motif Tools"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/pattern_finder.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/motif_locator.xml"/>
-        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/rho.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/coil/waggawagga.xml"/>
     </section>
     <section id="8e11ff1b-8123-4b7d-bbe7-dccbd28b1057" name="HMMER"/>
