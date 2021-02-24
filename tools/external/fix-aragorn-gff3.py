@@ -13,12 +13,13 @@ log = logging.getLogger(__name__)
 def fixed_feature(rec):
     for idx, feature in enumerate(
         feature_lambda(
-            rec.features, feature_test_type, {"type": "tRNA"}, subfeatures=True
+            rec.features, feature_test_type, {"types": ["tRNA", "tmRNA"]}, subfeatures=True
         )
     ):
-        fid = "tRNA-%03d" % (1 + idx)
+        
+        fid = "%s-%03d" % (feature.type, 1 + idx)
         try:
-            name = ["tRNA-" + feature.qualifiers["Codon"][0]]
+            name = [feature.type + "-" + feature.qualifiers["Codon"][0]]
         except KeyError:
             name = [feature.qualifiers['product'][0]]
         try:
