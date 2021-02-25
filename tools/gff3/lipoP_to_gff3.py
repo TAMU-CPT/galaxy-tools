@@ -61,8 +61,8 @@ def lipoP_gff(lipoIn, gff3In, jBrowseOut, filterSP2):
                     keepSeq.append(xRec)
                 continue
 
-            if jBrowseOut:
-                xRec.sub_features = []
+            #if jBrowseOut:
+            #    xRec.sub_features = []
 
             i = 0
             for cleaveBase in orgIDs[findCleave]:
