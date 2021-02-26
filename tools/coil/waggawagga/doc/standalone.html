@@ -1,0 +1,562 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Standalone-Tool »Waggawagga-CLI« &#8212; Waggawagga 0.4.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/typo3sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Web-Application »Waggawagga«" href="web-application.html" /> 
+  </head>
+  <body role="document">
+<div id="logo-div">
+  <a href="index.html" title="Start">
+    <img id="logo-img" src="_static/max-planck-logo.jpg" 
+         border="0" alt="Max-Planck-Institut f&uuml;r Biophysikalische Chemie Logo" />
+  </a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="web-application.html" title="Web-Application »Waggawagga«"
+             accesskey="P">previous</a> |</li>
+  <li><a href="index.html">documentation</a>|&nbsp;</li>
+  <li><a href="search.html">search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Standalone-Tool »Waggawagga-CLI«</a><ul>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#simple-mode">Simple Mode</a><ul>
+<li><a class="reference internal" href="#results">Results</a></li>
+<li><a class="reference internal" href="#prediction-files-sequence-analysis-summary-tables-and-visualizations">Prediction files: Sequence analysis, summary tables, and visualizations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-mode">Advanced Mode</a><ul>
+<li><a class="reference internal" href="#using-the-sqlite-database">Using the SQLite database</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li><a class="reference internal" href="#single-alpha-helix-prediction">Single-Alpha-Helix Prediction</a><ul>
+<li><a class="reference internal" href="#some-theory-about-sahs">Some theory about SAHs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rights-and-restrictions">Rights and Restrictions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="web-application.html"
+                        title="previous chapter">Web-Application »Waggawagga«</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/standalone.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="standalone-tool-waggawagga-cli">
+<h1>Standalone-Tool »Waggawagga-CLI«<a class="headerlink" href="#standalone-tool-waggawagga-cli" title="Permalink to this headline">¶</a></h1>
+<p>If Waggawagga was helpful for your research, please cite:</p>
+<table class="docutils citation" frame="void" id="simm2014" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Simm2014]</td><td>Simm D., Hatje K. and Kollmar M. (2014) Waggawagga: comparative visualization of coiled-coil predictions and detection of stable single α-helices (SAH domains). Bioinformatics. 31(5):767-769. doi://10.1093/bioinformatics/btu700</td></tr>
+</tbody>
+</table>
+<div class="section" id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>Waggawagga-CLI is the command-line version of the web-application <a class="reference external" href="http://waggawagga.motorprotein.de">Waggawagga</a> for SAH prediction in proteins. It comes with a ruby environment and a mobile SQLite-database, where the analysed sequence data is stored for direct or later use. To see whether waggawagga-cli is working on your system, run the example data:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>➜  ./waggawagga-cli -a example
+Import:
+- Create session-directory &lt;$HOME&gt;/waggawagga-cli/results/example_myosin_seqs
+- FASTA-file: test/example_myosin_seqs.fas
+- Found 4 sequences to import (4/4 sequences with len&gt;=49aa)
+
+Progress: 100.00% (37.43 sec.)
+
+- Imported into SQLite-database under identifier &#39;genome&#39; = &quot;example_myosin_seqs&quot;
+
+Evaluation:
+Calculation for window-size: 14
+All Found SAHs:  2
+Max SAH per seq: 2
+- Filter data
+Calculation for window-size: 21
+[...]
+
+Find your filtered results in
+- &lt;$HOME&gt;/waggawagga-cli/results/example_myosin_seqs
+</pre></div>
+</div>
+<p>Waggawagga-CLI can be run in two modes:</p>
+</div>
+<div class="section" id="simple-mode">
+<h2>Simple Mode<a class="headerlink" href="#simple-mode" title="Permalink to this headline">¶</a></h2>
+<p>Waggawagga can directly be used with the standard parameter-set only by specifying a <em>FASTA-file</em>:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>➜  ./waggawagga-cli &lt;&#39;path/to/your/fastafile.fas&#39;&gt;
+</pre></div>
+</div>
+<div class="section" id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<p>The result files are stored in the <em>stated session-folder</em>, which is located in the results directory. By default, the folder gets the name of the input file. The analysis starts with predicting SAH-domains for each of the sequences in the file, and subsequently filters the lists of detected SAH-domains. The filtering is done by to two cutoffs: the first specifies the minimum SAH-score for each amino acid to be included in a SAH domain (<em>default: 0.25</em>). The second defines the minimum SAH-domain-score. The SAH-domain score is the maximum of the scores computed as the average of SAH-scores within a window of neighbouring amino acids (default: 14 amino acids). Both cutoffs can be adjusted (see <em>Advanced Mode</em>).</p>
+<p>Waggawagga-cli provides three types of files: the analysis of each sequence (txt format), summary tables (CSV format), and (optional) gnuplot SVG images. These files are generated for each of the four different window-sizes (14, 21, 28, 49).</p>
+<a class=""
+               data-lightbox="group-8b68d8cc-0d63-48b4-ab4d-02737a9f3515"
+               href="_images/result_files.png"
+               title="File listing of the example SAH prediction"
+               data-title="File listing of the example SAH prediction"
+               ><img src="_images/result_files.png"
+                     class="align-center"
+                     width="100%"
+                     height="auto"
+                     alt=""/>
+                </a></div>
+<div class="section" id="prediction-files-sequence-analysis-summary-tables-and-visualizations">
+<h3>Prediction files: Sequence analysis, summary tables, and visualizations<a class="headerlink" href="#prediction-files-sequence-analysis-summary-tables-and-visualizations" title="Permalink to this headline">¶</a></h3>
+<p>The sequence analysis files contain the SAH-scores from the start to the end of the sequence. The corresponding optional gnuplot SVG images present the data in a SAH-score by sequence plot. Only the analyses of sequences with SAH-domain scores above the given threshold are stored.</p>
+<a class=""
+               data-lightbox="group-d83d3ad2-64d6-485a-8807-39530fc514b5"
+               href="_images/interface_gnuplot.png"
+               title=""
+               data-title=""
+               ><img src="_images/interface_gnuplot.png"
+                     class="align-center"
+                     width="80%"
+                     height="auto"
+                     alt=""/>
+                </a><p>Waggawagga-cli produces three summary tables:</p>
+<ul class="simple">
+<li>The <em>SAH amino acid distribution</em>, which is the frequency of each amino acid found in all detected SAH-domains.</li>
+<li>The <em>SAH length distribution</em>, which is a listing of the detected SAHs ordered by the length of the regions.</li>
+<li>The <em>SAH-domain list</em>, which is a detailed list of all detected SAH-domains, ordered by SAH-domain-score. The table contains information such as the sequence header for referencing, the SAH-domain-score cutoff, the SAH-domain-score, the sequence, length and range of the putative SAH domain, and the SAH-scores for each of the amino acids within the SAH domain. The structure of this file is explained below:</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="13%" />
+<col width="9%" />
+<col width="19%" />
+<col width="17%" />
+<col width="12%" />
+<col width="9%" />
+<col width="10%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ID</th>
+<th class="head">internalID</th>
+<th class="head">Header</th>
+<th class="head">SahDomainCutoff</th>
+<th class="head">Max14AvgScore</th>
+<th class="head">SahDomain</th>
+<th class="head">Length</th>
+<th class="head">Range</th>
+<th class="head">...</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>1</td>
+<td>HsMyo10</td>
+<td>0.50</td>
+<td>0.770</td>
+<td>KREQ...KKQE</td>
+<td>61</td>
+<td>815..875</td>
+<td>...</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>21</td>
+<td>HsMyo6</td>
+<td>0.50</td>
+<td>0.707</td>
+<td>EAER...IQEE</td>
+<td>61</td>
+<td>922..982</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="30%" />
+<col width="29%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">...</th>
+<th class="head">Scores[preRange(-4/+3)]</th>
+<th class="head">Scores[sufRange(-3/+4)]</th>
+<th class="head">Scores[Range]</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>...</td>
+<td>[0.077, 0.113, 0.1012, ...]</td>
+<td>[0.172, 0.160, 0.214, ...]</td>
+<td>[0.308, 0.391, 0.457, 0.523, ...]</td>
+</tr>
+<tr class="row-odd"><td>...</td>
+<td>[0.214, 0.267, 0.2679, ...]</td>
+<td>[0.446, 0.367, 0.351, ...]</td>
+<td>[0.272, 0.361, 0.350, 0.338, ...]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="advanced-mode">
+<h2>Advanced Mode<a class="headerlink" href="#advanced-mode" title="Permalink to this headline">¶</a></h2>
+<p>The SAH prediction and evaluation steps can be separated with the <code class="docutils literal"><span class="pre">'-a/--action'</span></code>-argument. Users experienced in database interaction (SQL) can easily design additional analyses. With the <code class="docutils literal"><span class="pre">'import'</span></code> action, a full SAH prediction is started and the data are stored into the database. At this stage, the predictions for all sequences are stored and no cutoff is applied. With the <code class="docutils literal"><span class="pre">'evaluate'</span></code> action, the provided (otherwise default) cutoffs are applied onto the stored dataset and the standard analysis files are generated. The name of the dataset (set of sequences with the same <code class="docutils literal"><span class="pre">'--id</span> <span class="pre">dataset-id'</span></code>) can be set by the user, or, if left blank, will automatically be assigned by the program. With the action <code class="docutils literal"><span class="pre">'complete'</span></code>, a full analysis without further user interaction is done. This argument is similar to ommitting the <code class="docutils literal"><span class="pre">'-a/--action'</span></code>-argument. Some examples for option usage are given below.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>Usage: ➜  ./waggawagga-cli -a &lt;action&gt; [options]
+
+➜  ./waggawagga-cli -a import -i &#39;dataset-id&#39; -g -f &#39;path/to/your/fasta.fas&#39;
+➜  ./waggawagga-cli -a evaluation -i &#39;dataset-id&#39;
+➜  ./waggawagga-cli -a complete -g -f &#39;path/to/your/fasta.fas&#39;
+➜  ./waggawagga-cli -a example
+</pre></div>
+</div>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">Specific</span> <span class="n">options</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">a</span><span class="p">,</span> <span class="o">--</span><span class="n">action</span> <span class="n">NAME</span>                <span class="n">Choose</span> <span class="n">action</span><span class="p">:</span>
+                                    <span class="p">(</span><span class="n">import</span><span class="p">,</span> <span class="n">evaluation</span><span class="p">,</span> <span class="n">complete</span><span class="p">,</span> <span class="n">example</span><span class="p">)</span>
+  <span class="o">-</span><span class="n">i</span><span class="p">,</span> <span class="o">--</span><span class="nb">id</span> <span class="n">NAME</span>                    <span class="n">Identifier</span> <span class="k">for</span> <span class="n">your</span> <span class="n">imported</span> <span class="n">dataset</span>
+  <span class="o">-</span><span class="n">f</span><span class="p">,</span> <span class="o">--</span><span class="n">file</span> <span class="n">FILE</span>                  <span class="n">Input</span> <span class="n">sequence</span><span class="o">-</span><span class="n">filepath</span>
+                                    <span class="p">(</span><span class="n">protein</span><span class="o">-</span><span class="n">sequences</span><span class="p">,</span> <span class="n">Multiple</span> <span class="n">FASTA</span> <span class="nb">format</span><span class="p">)</span>
+  <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">cutoff</span> <span class="n">LIMIT</span>               <span class="n">Set</span> <span class="n">SAH</span><span class="o">-</span><span class="n">Domain</span><span class="o">-</span><span class="n">Score</span> <span class="n">ground</span><span class="o">-</span><span class="n">cutoff</span> <span class="k">for</span> <span class="n">the</span>
+                                   <span class="n">selection</span> <span class="n">of</span> <span class="n">SAH</span><span class="o">-</span><span class="n">Domains</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+  <span class="o">-</span><span class="n">g</span><span class="p">,</span> <span class="o">--</span><span class="n">gnuplot</span>                    <span class="n">Activate</span> <span class="n">the</span> <span class="n">generation</span> <span class="n">of</span> <span class="n">gnuplot</span> <span class="n">figures</span>
+  <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>                    <span class="n">Run</span> <span class="n">verbosely</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>                       <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span>
+      <span class="o">--</span><span class="n">version</span>                    <span class="n">Show</span> <span class="n">version</span>
+</pre></div>
+</div>
+<p>Waggawagga comes with support for visualizing the SAH-scores with <a class="reference external" href="http://www.gnuplot.info">gnuplot</a> as SVG-images. Setting the <code class="docutils literal"><span class="pre">'-g/--gnuplot'</span></code> switch on <code class="docutils literal"><span class="pre">'import'</span></code> invokes Waggawagga to compute these plots. This feature works ONLY if gnuplot is pre-installed on your system. Gnuplot is not included in the Waggawagga-CLI package, thus please contact your administrator in case of problems.</p>
+<p>Waggawagga-cli uses two parameter files for the SAH-predictions containing the SAH-scores for amino acid interactions in i,i+3 and i,i+4 distances, which are located in the <em>config</em> directory. These files can be customized. For detailed specifications, please see the description in the scoring section below.</p>
+<div class="section" id="using-the-sqlite-database">
+<h3>Using the SQLite database<a class="headerlink" href="#using-the-sqlite-database" title="Permalink to this headline">¶</a></h3>
+<p>The database can be used and requested with the simple command-line call, which you can find below. This enters the SQL-shell, where all normal SQL statements are available and further usage commands (<cite>.help, .databases, .tables, ..., .exit, .quit</cite>)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>➜  db: sqlite3 development.sqlite3
+SQLite version 3.14.0 2016-07-26 15:17:14
+Enter &quot;.help&quot; for usage hints.
+sqlite&gt; SELECT * FROM genome_evaluations LIMIT 5;
+sqlite&gt; SELECT COUNT(*) FROM genome_evaluations;
+sqlite&gt; ...
+sqlite&gt; .read db.sql
+sqlite&gt; .quit
+</pre></div>
+</div>
+<p>Or for an direct SQL import of your data use the following instruction:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>➜  db: cat db.sql | sqlite3 database.db
+</pre></div>
+</div>
+<p>If you have deleted a big bunch of entries from a table, you need to add the <cite>VACUUM</cite> command to flush the data really out of the database. Otherwise it remains in the database not visible, and your command has no effect to the filesize.</p>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span> <span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">genome_evaluations</span><span class="p">;</span>
+<span class="n">sqlite</span><span class="o">&gt;</span> <span class="n">VACUUM</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>We are using the <a class="reference external" href="https://github.com/phusion/traveling-ruby">Traveling-Ruby framework</a> for packaging our Ruby-on-Rails-based <em>Waggawagga-CLI</em>-tool for different plaforms. Therefore we are currently not able to provide packages for others than the following platforms: Linux-x86, Linux-x86 64 Bit and macOS.</p>
+<p>If you get errors like this on startup, there is an incompatibility between your system and the chosen package.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>➜  ./waggawagga-cli -a example
+[...]/lib/ruby/bin/ruby: line 6: [...]/lib/ruby/bin.real/ruby: No such file or directory
+
+[...]/lib/ruby/bin/ruby: Zeile 6: [...]]/lib/ruby/bin.real/ruby: Kann die Binärdatei nicht ausführen: Fehler im Format der Programmdatei
+</pre></div>
+</div>
+</div>
+<div class="section" id="single-alpha-helix-prediction">
+<h2>Single-Alpha-Helix Prediction<a class="headerlink" href="#single-alpha-helix-prediction" title="Permalink to this headline">¶</a></h2>
+<p>For an understanding of the software <em>Waggawagga</em>, a basic sketch of the SAH-scoring method is drawn in the following section. The SAH prediction is based on a helical net representation of a selected protein region, that is depicted in the form of an residue interaction net of an open-cutted single-alpha-helix. The cut, which flattens the helix, is made along the surface in the direction of the helix axis. A heptad repeat pattern is used as a basis to divide the residues in strict columns, the cut is then made along the <em>f</em> column. On basis of the interacting residues a score is calculated (<strong>Single-Alpha-Helix Score</strong>), which helps the user to discriminate between coiled-coil regions and single-alpha-helices (SAHs). A high SAH-score (<code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">0.25</span></code>) for the selected protein sequence region is a strong indicator for a single α-helix instead of a predicted coiled-coil.</p>
+<a class=""
+               data-lightbox="group-56769b5e-1fcc-4316-a5e1-66d5cef7e841"
+               href="_images/interface_heptad_net_declaration_01.png"
+               title="Figure taken from Waggawagga"
+               data-title="Figure taken from Waggawagga"
+               ><img src="_images/interface_heptad_net_declaration_01.png"
+                     class="align-center"
+                     width="80%"
+                     height="auto"
+                     alt=""/>
+                </a><p>In the top-right corner of the helical net view the SAH-score with the number of the strong, medium and weak interactions is displayed. On the left side of the helical net diagram an overview is depicted, which shall give an idea of the position of selected region in the sequence and its surrounding residues.</p>
+<p>The <em>helical net</em> has to be read in rows always starting from right to left. Between interacting residues, solid and dashed connections are drawn, which represent strong, medium and weak type of interactions. As you can see from the figure above, the black drawn lines are strong interactions and the dashed grey ones are medium and weak. The classification of the interaction lines results from the rules, aside the helical net. For instance the black rule <em>K(i+4)</em> has the meaning, that between the residue K and the lower-left residue E (i+4 positions) a strong interaction will probably develop. The other rules can be applied accordingly. The used weights for the scoring algorithm can be seen from the table below.</p>
+<p>Furthermore network stabilization effects have been included into the calculation of the SAH-score. ...</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="1%" />
+<col width="24%" />
+<col width="19%" />
+<col width="10%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Source Residue</th>
+<th class="head">&nbsp;</th>
+<th class="head">Target residue</th>
+<th class="head">Interaction</th>
+<th class="head">Score</th>
+<th class="head">Stabilization</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>E</td>
+<td>⟹</td>
+<td>K/R</td>
+<td>i+4</td>
+<td>1.0</td>
+<td>strong</td>
+</tr>
+<tr class="row-odd"><td>H/K/R</td>
+<td>⟹</td>
+<td>E</td>
+<td>i+4</td>
+<td>1.0</td>
+<td>strong</td>
+</tr>
+<tr class="row-even"><td>D</td>
+<td>⟹</td>
+<td>K/R</td>
+<td>i+4</td>
+<td>0.75</td>
+<td>medium</td>
+</tr>
+<tr class="row-odd"><td>K/R</td>
+<td>⟹</td>
+<td>D</td>
+<td>i+4</td>
+<td>0.75</td>
+<td>medium</td>
+</tr>
+<tr class="row-even"><td>E</td>
+<td>⟹</td>
+<td>K/R</td>
+<td>i+3</td>
+<td>0.75</td>
+<td>medium</td>
+</tr>
+<tr class="row-odd"><td>H/K/R</td>
+<td>⟹</td>
+<td>E</td>
+<td>i+3</td>
+<td>0.75</td>
+<td>medium</td>
+</tr>
+<tr class="row-even"><td>Q</td>
+<td>⟹</td>
+<td>E</td>
+<td>i+4; i+3</td>
+<td>0.5</td>
+<td>weak</td>
+</tr>
+<tr class="row-odd"><td>E</td>
+<td>⟹</td>
+<td>Q</td>
+<td>i+4; i+3</td>
+<td>0.5</td>
+<td>weak</td>
+</tr>
+<tr class="row-even"><td>E</td>
+<td>⟹</td>
+<td>H</td>
+<td>i+3</td>
+<td>0.5</td>
+<td>weak</td>
+</tr>
+<tr class="row-odd"><td>K/R</td>
+<td>⟹</td>
+<td>D</td>
+<td>i+3</td>
+<td>0.5</td>
+<td>weak</td>
+</tr>
+<tr class="row-even"><td>D</td>
+<td>⟹</td>
+<td>K/R</td>
+<td>i+3</td>
+<td>0.5</td>
+<td>weak</td>
+</tr>
+<tr class="row-odd"><td>F/I/L/M/V/Y</td>
+<td>⟹</td>
+<td>F/I/L/M/V/Y</td>
+<td>i+4; i+3</td>
+<td>-0.5</td>
+<td>destabilizing</td>
+</tr>
+<tr class="row-even"><td>A</td>
+<td>⟹</td>
+<td>[A-Y]</td>
+<td>i+4; i+3</td>
+<td>0.25</td>
+<td>stabilizing</td>
+</tr>
+<tr class="row-odd"><td>G</td>
+<td>⟹</td>
+<td>[A-Y]</td>
+<td>i+4; i+3</td>
+<td>-0.5</td>
+<td>destabilizing</td>
+</tr>
+<tr class="row-even"><td>P</td>
+<td>⟹</td>
+<td>[A-Y]</td>
+<td>i+4; i+3</td>
+<td>-0.75</td>
+<td>destabilizing</td>
+</tr>
+<tr class="row-odd"><td colspan="3">Network stabilization</td>
+<td>i; i+3; i+6</td>
+<td>0.25</td>
+<td>network</td>
+</tr>
+<tr class="row-even"><td colspan="3">(oppositely charged residues)</td>
+<td>i; i+3; i+7</td>
+<td>0.25</td>
+<td>network</td>
+</tr>
+<tr class="row-odd"><td colspan="3">&nbsp;</td>
+<td>i; i+4; i+7</td>
+<td>0.25</td>
+<td>network</td>
+</tr>
+<tr class="row-even"><td colspan="3">&nbsp;</td>
+<td>i; i+4; i+8</td>
+<td>0.25</td>
+<td>network</td>
+</tr>
+</tbody>
+</table>
+<p>As described above, Waggawagga uses a customizable scoring-scheme, that can be influenced by specifying scoring-files containing fixed values. The standard scoring files are located in the <em>config</em>-directory named <em>&#8216;scoring_matrix_i_3.csv&#8217;</em> and <em>&#8216;scoring_matrix_i_4.csv&#8217;</em>. Due to the internal realization of the scoring, a separate notation for <code class="docutils literal"><span class="pre">i+3</span></code> and <code class="docutils literal"><span class="pre">i+4</span></code> interactions is used. Currently the user has only the option to change the file-content directly or replace the scoring-files with his own. For the realization of an easy-to-note scoring-scheme, amino acid-based scoring matrices have been chosen with alphabetically ordered residues. An illustration of both is listed below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Scoring matrix: i+3 (bottom right)</th>
+<th class="head">Scoring matrix: i+4 (bottom left)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="first last"
+               data-lightbox="group-6e724f88-610b-44a0-a139-338e57d7e387"
+               href="_images/scoring_matrix_i_3.png"
+               title="Bottom right (i+3) interaction-scores"
+               data-title="Bottom right (i+3) interaction-scores"
+               ><img src="_images/scoring_matrix_i_3.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt=""/>
+                </a></td>
+<td><a class="first last"
+               data-lightbox="group-2859b556-a8f3-4c49-969a-1f36e082a0b1"
+               href="_images/scoring_matrix_i_4.png"
+               title="Bottom left (i+4) interaction-scores"
+               data-title="Bottom left (i+4) interaction-scores"
+               ><img src="_images/scoring_matrix_i_4.png"
+                     class=""
+                     width="100%"
+                     height="auto"
+                     alt=""/>
+                </a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="some-theory-about-sahs">
+<h3>Some theory about SAHs<a class="headerlink" href="#some-theory-about-sahs" title="Permalink to this headline">¶</a></h3>
+<p>Helices, that are not buried within globular structures or coiled-coil helix dimers with hydrophobic seams at their interfaces, need networks of charge interactions for stabilization in water. For example, poly-alanine peptides adopt α-helical conformations in water only when they contain oppositely charged residues in distances appropriate to form salt bridges. In the late 1980th and early 1990th many studies have been performed using such poly-alanine models aiming to resolve the conditions for helix formation and stabilization. Different amino acids (mainly Asp, Glu, Lys and Arg, but in some cases also Gln) were introduced in various combinations at varying distances, the corresponding peptides synthesised, their α-helicity experimentally determined by, for example, circular dichroism, and stabilization energies obtained by fitting models to the data.</p>
+<p>According to these experiments, helices are stabilized by charged interactions (salt bridges) between residues at <em>i, i+3</em> and <em>i, i+4</em> [1, 2] and hydrogen-bonding interactions between polar/charged residues at <em>i, i+3</em> and <em>i, i+4</em> [3, 4]. Additional stability can be obtained through networks of oppositely charged residues in <em>i, i+3, i, i+6,</em> or <em>i, i+3, i, i+7,</em> or <em>i, i+4, i, i+7,</em> or <em>i, i+4, i, i+8</em> distances [5]. In addition to these poly-alanine based peptides, studies have been performed on peptides with complex amino acid distributions [6, 7]. However, each study used different combinations of residues and the experimental conditions (e.g. salt concentrations) were out of the physiological range. Therefore, it is not possible to tabulate all possible combinations and provide comparable stabilization energies. Here, we compared many of the published stabilization energies, tried to set them into relation and define stabilization values for all types of salt bridges and hydrogen-bonding interactions. These stabilization values are summarized for a given sequence window to determine a SAH score. In addition to binary interactions, additional stabilization is added for networks of at least three residues (see above), and destabilizing effects through networks of hydrophobic residues in <em>i, i+3, i, i+6,</em> or <em>i, i+3, i, i+7,</em> or <em>i, i+4, i, i+7,</em> or <em>i, i+4, i, i+8</em> distances, which would favour coiled-coil formation, are taken into account.</p>
+</div>
+</div>
+<div class="section" id="rights-and-restrictions">
+<h2>Rights and Restrictions<a class="headerlink" href="#rights-and-restrictions" title="Permalink to this headline">¶</a></h2>
+<p>Using Waggawagga by non-academics requires permission. Waggawagga may be obtained upon request and used under a GNU General Public License.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="web-application.html" title="Web-Application »Waggawagga«"
+             >previous</a> |</li>
+  <li><a href="index.html">documentation</a>|&nbsp;</li>
+  <li><a href="search.html">search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Dominic Simm.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.2.
+    </div>
+  </body>
+</html>

@@ -34,7 +34,7 @@ class CheckSequence:
 
     def check_hydrophobicity_and_charge(self,sar_min=15,sar_max=20,perc_residues="SGAT"):
         """ verifies the existence of a hydrophobic region within the sequence """
-        hydrophobic_residues = "['FIWLVMYCATGS']" # fed through regex
+        hydrophobic_residues = "['FIWLVMYCATGSP']" # fed through regex
         hits = self.store
         pos_res = "RK"
         neg_res = "DE"

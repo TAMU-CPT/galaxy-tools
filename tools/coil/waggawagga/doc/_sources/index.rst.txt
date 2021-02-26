@@ -1,0 +1,11 @@
+=============
+Documentation
+=============
+
+The documentation for the project **Waggawagga** is divided into two main parts, the docs with explanations for the **web-application and its interface** (http://waggawagga.motorprotein.de) and the **standalone version** for massive SAH predictions on the command-line.
+
+.. toctree::
+   :maxdepth: 2
+
+   web-application
+   standalone

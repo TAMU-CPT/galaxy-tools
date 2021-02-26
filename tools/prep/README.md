@@ -7,4 +7,4 @@
 * pandas==1.0.5
 
 ## `mist_prep.py`
-* N/A
+* biopython==1.70

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.gff3.fixGbkConversion" name="Fix Genbank to GFF3 output" version="19.1.0.0">
+  <description> Resolves structural problems introduced by Genbank conversion script</description>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/cpt_fixGbkConversion.py
+$gff3_data
+#if (str($reference_genome.reference_genome_source) == "history"):
+--fasta $reference_genome.genome_fasta
+--table $reference_genome.table
+#end if
+> $default]]></command>
+  <inputs>
+    <expand macro="gff3_input" />
+    <conditional name="reference_genome">
+	<param name="reference_genome_source" type="select" label="Sequence to fix translation tag with (Optional, select none to remove malformed translation tags instead)">
+                <option value="none" selected="True">None</option>
+		<option value="history">From History</option>
+	</param>
+	<when value="history">
+	    <param name="genome_fasta" type="data" format="fasta" label="Source FASTA Sequence"/>
+            <param label="Translation table to use" name="table" type="select">
+			<option value="1">[1] The Standard Code</option>
+			<option value="2">[2] The Vertebrate Mitochondrial Code</option>
+			<option value="3">[3] The Yeast Mitochondrial Code</option>
+			<option value="4">[4] The Mold, Protozoan, and Coelenterate Mitochondrial Code and the Mycoplasma/Spiroplasma Code</option>
+			<option value="5">[5] The Invertebrate Mitochondrial Code </option>
+			<option value="6">[6] The Ciliate, Dasycladacean and Hexamita Nuclear Code</option>
+			<option value="9">[9] The Echinoderm and Flatworm Mitochondrial Code</option>
+			<option value="10">[10] The Euplotid Nuclear Code</option>
+			<option value="11" selected="true">[11] The Bacterial, Archaeal and Plant Plastid Code</option>
+			<option value="12">[12] The Alternative Yeast Nuclear Code</option>
+			<option value="13">[13] The Ascidian Mitochondrial Code</option>
+			<option value="14">[14] The Alternative Flatworm Mitochondrial Code</option>
+			<option value="15">[15] Blepharisma Nuclear Code</option>
+			<option value="16">[16] Chlorophycean Mitochondrial Code</option>
+			<option value="21">[21] Trematode Mitochondrial Code</option>
+			<option value="22">[22] Scenedesmus Obliquus Mitochondrial Code</option>
+			<option value="23">[23] Thraustochytrium Mitochondrial Code</option>
+			<option value="24">[24] Pterobranchia Mitochondrial Code</option>
+			<option value="25">[25] Candidate Division SR1 and Gracilibacteria Code</option>
+		</param>
+	</when>
+    </conditional>
+  </inputs>
+  <outputs>
+    <data format="gff3" hidden="false" name="default"/>
+  </outputs>
+  <tests>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Fixes the frameshift and translation tag errors introduced by the Genbank to Gff3 conversion script.
+]]></help>
+		<expand macro="citations" />
+</tool>

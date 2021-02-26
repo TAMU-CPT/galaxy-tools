@@ -11,6 +11,7 @@ python $__tool_directory__/lipoP_to_gff3.py
 "$lipoIn"
 "$gff3In"
 --jBrowseOut "$jBrowseOut"
+$filterSP2
 > $stdout
 
 ]]></command>
@@ -18,6 +19,7 @@ python $__tool_directory__/lipoP_to_gff3.py
     <param label="LipoP Output" name="lipoIn" type="data" format="txt"/>
     <param label="GFF3 for Rebasing" name="gff3In" type="data" format="gff3"/>
     <param label="Output to jBrowse" name="jBrowseOut" type="boolean" truevalue="True" falsevalue="" help="Strip non-cleavage features from GFF3 (for viewing in Apollo)"/>
+    <param name="filterSP2" truevalue="--filterSP2" falsevalue="" type="boolean" label="Filter for only SPII Cleavage sites" checked="true"/>
   </inputs>
   <outputs>
     <data format="gff3" name="stdout"/>

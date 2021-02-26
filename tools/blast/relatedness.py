@@ -239,6 +239,7 @@ if __name__ == "__main__":
     parser.add_argument("--protein", action="store_true")
     parser.add_argument("--canonical", action="store_true")
     parser.add_argument("--hits", type=int, default=5)
+    parser.add_argument("--noFilter", action="store_true")
 
     args = parser.parse_args()
 
@@ -263,6 +264,7 @@ if __name__ == "__main__":
     data = []  # Reformatting to list rather than generator
 
     data = parse_blast(args.blast)
+    nameRec = data[0][0]
     data = make_num(data)
     data = add_dice(data)
     data = bundle_dice(data)
@@ -271,7 +273,8 @@ if __name__ == "__main__":
 
     # data = expand_taxIDs(data)
     # data = deform_scores(data)
-    data = filter_phage(data, phageTaxLookup)
+    if not args.noFilter:
+      data = filter_phage(data, phageTaxLookup)
     # data = expand_titles(data)
 
     if args.protein or args.canonical:
@@ -286,7 +289,7 @@ if __name__ == "__main__":
     if args.access:
         sys.stdout.write(
             "Top %d matches for BLASTn results of %s\t\t\t\t\t\t\n"
-            % (args.hits, data[0][0])
+            % (args.hits, nameRec)
         )
         sys.stdout.write(
             "TaxID\tName\tAccessions\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"

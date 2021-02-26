@@ -87,6 +87,8 @@ By default, only the first (closest to consensus) hit to the list is returned to
 By selecting ‘No’ for ‘Only report best hits’, **all hits** to the possible SD list will 
 be added to the GFF3 file. 
 			]]></help>
-		<expand macro="citations" />
+		<expand macro="citations" >
+			<expand macro="sl-citations-clm"/>
+		</expand>
 </tool>
 

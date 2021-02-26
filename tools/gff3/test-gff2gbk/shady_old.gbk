@@ -1,0 +1,17 @@
+ID: Shady_200528
+Name: Shady_200528
+Description: Shady_200528
+Number of features: 88
+/sequence-region=('Shady_200528', 0, 45128)
+Seq('CTGAAAGGGGCCACCATGGAACCAGTCCGCACTATTGAGGACGACTACGTACCG...TCG', DNAAlphabet())
+terminator
+terminator
+terminator
+terminator
+terminator
+terminator
+terminator
+gene
+mRNA
+Shine_Dalgarno_sequence
+SDS FOUND

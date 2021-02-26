@@ -1,0 +1,1004 @@
+##gff-version 3
+##sequence-region NODE_1_length_41 1 41264
+NODE_1_length_41	.	gene	852	1042	.	+	.	owner=sunlc@jaas.ac.cn;Note=Hit to 1..59 of ref|YP_009610440.1| hypothetical protein P1_01 [Acinetobacter phage vB_ApiP_P1];description=P1_01 [Acinetobacter phage vB_ApiP_P1];ID=f1227607-0e19-47ef-983c-0c73c9cb38f6;date_last_modified=2020-09-23;Name=NODE_1_length_41.orf00002;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	852	1042	.	+	.	owner=sunlc@jaas.ac.cn;Parent=f1227607-0e19-47ef-983c-0c73c9cb38f6;ID=80fbbe10-b66c-496f-bba9-a0d7eec177c4;orig_id=NODE_1_length_41.orf00002;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00002-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	863	1042	.	+	.	Parent=80fbbe10-b66c-496f-bba9-a0d7eec177c4;ID=4a0ba454-a1a4-4145-bdf9-1361bfa1362f;Name=4a0ba454-a1a4-4145-bdf9-1361bfa1362f
+NODE_1_length_41	.	Shine_Dalgarno_sequence	852	855	.	+	.	Parent=80fbbe10-b66c-496f-bba9-a0d7eec177c4;ID=ccafb90c-0ac4-4d4f-bb62-da11e9240d94;Name=ccafb90c-0ac4-4d4f-bb62-da11e9240d94
+NODE_1_length_41	.	CDS	863	1042	.	+	0	Parent=80fbbe10-b66c-496f-bba9-a0d7eec177c4;ID=80fbbe10-b66c-496f-bba9-a0d7eec177c4-CDS;Name=80fbbe10-b66c-496f-bba9-a0d7eec177c4-CDS
+###
+NODE_1_length_41	.	gene	1100	1317	.	+	.	owner=sunlc@jaas.ac.cn;Note=1 [Acinetobacter phage vB_AbaP_46-62_Aci07];description=Aci07_01 [Acinetobacter phage vB_AbaP_46-62_Aci07];ID=578f9568-effe-409b-9394-caf7172cf7e2;date_last_modified=2020-09-23;Name=NODE_1_length_41.gene_2;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	1100	1317	.	+	.	owner=sunlc@jaas.ac.cn;Parent=578f9568-effe-409b-9394-caf7172cf7e2;ID=db14d763-d349-42a5-af43-2078e5bef1d8;orig_id=NODE_1_length_41.gene_2;date_last_modified=2020-09-19;Name=NODE_1_length_41.gene_2-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	1111	1317	.	+	.	Parent=db14d763-d349-42a5-af43-2078e5bef1d8;ID=0013ccc9-e2fd-4433-ba55-4e4b2c96382e;Name=0013ccc9-e2fd-4433-ba55-4e4b2c96382e
+NODE_1_length_41	.	CDS	1111	1317	.	+	0	Parent=db14d763-d349-42a5-af43-2078e5bef1d8;ID=db14d763-d349-42a5-af43-2078e5bef1d8-CDS;Name=db14d763-d349-42a5-af43-2078e5bef1d8-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	1100	1104	.	+	.	Parent=db14d763-d349-42a5-af43-2078e5bef1d8;ID=7df51d47-dae3-4e2c-a7b4-d817ebeee5a1;Name=7df51d47-dae3-4e2c-a7b4-d817ebeee5a1
+###
+NODE_1_length_41	.	gene	203	539	.	+	.	owner=sunlc@jaas.ac.cn;ID=1175ff2c-69f4-4477-b19e-77c0da0c1d13;date_last_modified=2020-09-19;Name=CDS.0.1214_0.853966911671;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	203	539	.	+	.	owner=sunlc@jaas.ac.cn;Parent=1175ff2c-69f4-4477-b19e-77c0da0c1d13;Note=1e-09 [Acinetobacter phage vB_AbaP_B3] YP_009610338.1;description=ref|YP_009610338.1| hypothetical protein B3_01 [Acinetobacter phage vB_AbaP_B3];ID=87ae1a02-3be2-4f66-b3dd-fc3e25b27923;orig_id=CDS.0.1214_0.853966911671;date_last_modified=2020-09-23;Name=hypothetical protein;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	203	205	.	+	.	Parent=87ae1a02-3be2-4f66-b3dd-fc3e25b27923;ID=f84d498c-6740-4579-8aa9-42b257cb576b;Name=f84d498c-6740-4579-8aa9-42b257cb576b
+NODE_1_length_41	.	exon	216	539	.	+	.	Parent=87ae1a02-3be2-4f66-b3dd-fc3e25b27923;ID=06b8deb1-73df-427a-b1bf-5aebb233d7c1;Name=06b8deb1-73df-427a-b1bf-5aebb233d7c1
+NODE_1_length_41	.	CDS	216	539	.	+	0	Parent=87ae1a02-3be2-4f66-b3dd-fc3e25b27923;ID=87ae1a02-3be2-4f66-b3dd-fc3e25b27923-CDS;Name=87ae1a02-3be2-4f66-b3dd-fc3e25b27923-CDS
+###
+NODE_1_length_41	.	gene	1746	2006	.	+	.	owner=sunlc@jaas.ac.cn;Note=APK37_03 [Acinetobacter phage vB_AbaP_APK37];description=APK37_03 [Acinetobacter phage vB_AbaP_APK37];ID=5d16737c-4eff-4a87-a4b6-60aa2c896a47;date_last_modified=2020-09-23;Name=NODE_1_length_41.orf00004;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	1746	2006	.	+	.	owner=sunlc@jaas.ac.cn;Parent=5d16737c-4eff-4a87-a4b6-60aa2c896a47;Note=[Acinetobacter phage vB_AbaP_APK2];description= [Acinetobacter phage vB_AbaP_APK2];ID=0e3b6405-2083-4c79-a19d-46025c44e993;orig_id=NODE_1_length_41.orf00004;date_last_modified=2020-09-23;Name=hypothetical protein;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	1758	2006	.	+	0	Parent=0e3b6405-2083-4c79-a19d-46025c44e993;ID=0e3b6405-2083-4c79-a19d-46025c44e993-CDS;Name=0e3b6405-2083-4c79-a19d-46025c44e993-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	1746	1750	.	+	.	Parent=0e3b6405-2083-4c79-a19d-46025c44e993;ID=5c5d11ec-6426-4a5d-b082-2b99f6124b53;Name=5c5d11ec-6426-4a5d-b082-2b99f6124b53
+NODE_1_length_41	.	exon	1758	2006	.	+	.	Parent=0e3b6405-2083-4c79-a19d-46025c44e993;ID=5398c3f8-0ca4-4668-9152-a895b41a2cbc;Name=5398c3f8-0ca4-4668-9152-a895b41a2cbc
+###
+NODE_1_length_41	.	gene	2022	2586	.	+	.	owner=sunlc@jaas.ac.cn;ID=1471799a-a39d-4b96-9fde-a2796e3fec31;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00005;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	2022	2586	.	+	.	owner=sunlc@jaas.ac.cn;Parent=1471799a-a39d-4b96-9fde-a2796e3fec31;ID=d9bdf8a1-3a60-4a6a-b0e2-23f803ca2a5b;orig_id=NODE_1_length_41.orf00005;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00005-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	2035	2586	.	+	0	Parent=d9bdf8a1-3a60-4a6a-b0e2-23f803ca2a5b;ID=d9bdf8a1-3a60-4a6a-b0e2-23f803ca2a5b-CDS;Name=d9bdf8a1-3a60-4a6a-b0e2-23f803ca2a5b-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	2022	2024	.	+	.	Parent=d9bdf8a1-3a60-4a6a-b0e2-23f803ca2a5b;ID=a6b0b78d-ceff-40a1-847d-c0173408f36c;Name=a6b0b78d-ceff-40a1-847d-c0173408f36c
+NODE_1_length_41	.	exon	2035	2586	.	+	.	Parent=d9bdf8a1-3a60-4a6a-b0e2-23f803ca2a5b;ID=af1415d0-355d-42a2-a72e-94b5da910039;Name=af1415d0-355d-42a2-a72e-94b5da910039
+###
+NODE_1_length_41	.	gene	2578	2863	.	+	.	owner=sunlc@jaas.ac.cn;ID=0070a460-d3f3-4d85-875f-4da957552b33;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00006;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	2578	2863	.	+	.	owner=sunlc@jaas.ac.cn;Parent=0070a460-d3f3-4d85-875f-4da957552b33;description= P2_05 [Acinetobacter phage vB_ApiP_P2];ID=58f2ab10-975e-438e-8de0-20c7c09975b6;orig_id=NODE_1_length_41.orf00006;date_last_modified=2020-09-23;Name=NODE_1_length_41.orf00006-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	2588	2863	.	+	.	Parent=58f2ab10-975e-438e-8de0-20c7c09975b6;ID=552dd371-4af5-4654-987a-e2fd2774172c;Name=552dd371-4af5-4654-987a-e2fd2774172c
+NODE_1_length_41	.	Shine_Dalgarno_sequence	2578	2581	.	+	.	Parent=58f2ab10-975e-438e-8de0-20c7c09975b6;ID=5ca34f11-08f3-4d95-9b53-4f8304560790;Name=5ca34f11-08f3-4d95-9b53-4f8304560790
+NODE_1_length_41	.	CDS	2588	2863	.	+	0	Parent=58f2ab10-975e-438e-8de0-20c7c09975b6;ID=58f2ab10-975e-438e-8de0-20c7c09975b6-CDS;Name=58f2ab10-975e-438e-8de0-20c7c09975b6-CDS
+###
+NODE_1_length_41	.	gene	2855	3239	.	+	.	owner=sunlc@jaas.ac.cn;ID=feb66df6-69aa-4c70-9210-7887b34ee266;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00007;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	2855	3239	.	+	.	owner=sunlc@jaas.ac.cn;Parent=feb66df6-69aa-4c70-9210-7887b34ee266;ID=e82a9b4a-6673-46a4-8e3b-d8e9b3d026fe;orig_id=NODE_1_length_41.orf00007;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00007-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	2865	3239	.	+	.	Parent=e82a9b4a-6673-46a4-8e3b-d8e9b3d026fe;ID=9d4b569c-bc61-42ae-8c75-0de27150c02f;Name=9d4b569c-bc61-42ae-8c75-0de27150c02f
+NODE_1_length_41	.	Shine_Dalgarno_sequence	2855	2859	.	+	.	Parent=e82a9b4a-6673-46a4-8e3b-d8e9b3d026fe;ID=f5c6747b-49f2-4733-82b2-935858b39f1c;Name=f5c6747b-49f2-4733-82b2-935858b39f1c
+NODE_1_length_41	.	CDS	2865	3239	.	+	0	Parent=e82a9b4a-6673-46a4-8e3b-d8e9b3d026fe;ID=e82a9b4a-6673-46a4-8e3b-d8e9b3d026fe-CDS;Name=e82a9b4a-6673-46a4-8e3b-d8e9b3d026fe-CDS
+###
+NODE_1_length_41	.	gene	3221	3343	.	+	.	owner=sunlc@jaas.ac.cn;ID=fb0e9dbe-4679-4288-bb77-33a25390a0a9;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00008;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	3221	3343	.	+	.	owner=sunlc@jaas.ac.cn;Parent=fb0e9dbe-4679-4288-bb77-33a25390a0a9;ID=c26442cc-598d-4efe-9f53-58852a8637e5;orig_id=NODE_1_length_41.orf00008;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00008-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	3230	3343	.	+	0	Parent=c26442cc-598d-4efe-9f53-58852a8637e5;ID=c26442cc-598d-4efe-9f53-58852a8637e5-CDS;Name=c26442cc-598d-4efe-9f53-58852a8637e5-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	3221	3224	.	+	.	Parent=c26442cc-598d-4efe-9f53-58852a8637e5;ID=f8e71fcf-7939-415c-988f-4bb2b3266c00;Name=f8e71fcf-7939-415c-988f-4bb2b3266c00
+NODE_1_length_41	.	exon	3230	3343	.	+	.	Parent=c26442cc-598d-4efe-9f53-58852a8637e5;ID=d658ed97-35ad-4889-aa72-2fcf6db5548f;Name=d658ed97-35ad-4889-aa72-2fcf6db5548f
+###
+NODE_1_length_41	.	gene	3318	3554	.	+	.	owner=sunlc@jaas.ac.cn;ID=0fb1d981-b5c0-4f9d-96cb-e866db36bba3;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00009;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	3318	3554	.	+	.	owner=sunlc@jaas.ac.cn;Parent=0fb1d981-b5c0-4f9d-96cb-e866db36bba3;ID=a45a5e96-2da4-419f-ad09-840361d38ec6;orig_id=NODE_1_length_41.orf00009;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00009-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	3330	3554	.	+	.	Parent=a45a5e96-2da4-419f-ad09-840361d38ec6;ID=687d30b0-2469-45b4-a581-8272682f1dfe;Name=687d30b0-2469-45b4-a581-8272682f1dfe
+NODE_1_length_41	.	Shine_Dalgarno_sequence	3318	3321	.	+	.	Parent=a45a5e96-2da4-419f-ad09-840361d38ec6;ID=dd4df8b6-c6bc-4fbd-aaef-420f6003c9a3;Name=dd4df8b6-c6bc-4fbd-aaef-420f6003c9a3
+NODE_1_length_41	.	CDS	3330	3554	.	+	0	Parent=a45a5e96-2da4-419f-ad09-840361d38ec6;ID=a45a5e96-2da4-419f-ad09-840361d38ec6-CDS;Name=a45a5e96-2da4-419f-ad09-840361d38ec6-CDS
+###
+NODE_1_length_41	.	gene	3627	4235	.	+	.	owner=sunlc@jaas.ac.cn;ID=c2c1d3df-7148-49d4-a2ef-0a58a31283e2;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00010;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	3627	4235	.	+	.	owner=sunlc@jaas.ac.cn;Parent=c2c1d3df-7148-49d4-a2ef-0a58a31283e2;ID=7d01a150-e750-4c61-841b-f3ffdd7076ca;orig_id=NODE_1_length_41.orf00010;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00010-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	3639	4235	.	+	0	Parent=7d01a150-e750-4c61-841b-f3ffdd7076ca;ID=7d01a150-e750-4c61-841b-f3ffdd7076ca-CDS;Name=7d01a150-e750-4c61-841b-f3ffdd7076ca-CDS
+NODE_1_length_41	.	exon	3639	4235	.	+	.	Parent=7d01a150-e750-4c61-841b-f3ffdd7076ca;ID=e7de412d-5c96-45b5-a73e-cff4f7897260;Name=e7de412d-5c96-45b5-a73e-cff4f7897260
+NODE_1_length_41	.	Shine_Dalgarno_sequence	3627	3630	.	+	.	Parent=7d01a150-e750-4c61-841b-f3ffdd7076ca;ID=0a388d50-0bfc-40a1-832b-d550d65099c7;Name=0a388d50-0bfc-40a1-832b-d550d65099c7
+###
+NODE_1_length_41	.	gene	4208	4336	.	+	.	owner=sunlc@jaas.ac.cn;ID=73c24563-8803-49b1-9573-c25e1dd2c4c9;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00011;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	4208	4336	.	+	.	owner=sunlc@jaas.ac.cn;Parent=73c24563-8803-49b1-9573-c25e1dd2c4c9;ID=6965aa1e-3d27-4b14-8cfa-a64c47c17de7;orig_id=NODE_1_length_41.orf00011;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00011-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	4208	4211	.	+	.	Parent=6965aa1e-3d27-4b14-8cfa-a64c47c17de7;ID=b24d47bd-ac29-42c0-b56c-0cdc110a4309;Name=b24d47bd-ac29-42c0-b56c-0cdc110a4309
+NODE_1_length_41	.	CDS	4223	4336	.	+	0	Parent=6965aa1e-3d27-4b14-8cfa-a64c47c17de7;ID=6965aa1e-3d27-4b14-8cfa-a64c47c17de7-CDS;Name=6965aa1e-3d27-4b14-8cfa-a64c47c17de7-CDS
+NODE_1_length_41	.	exon	4223	4336	.	+	.	Parent=6965aa1e-3d27-4b14-8cfa-a64c47c17de7;ID=fe000d37-f70a-4fb9-9d6e-d0752287c83a;Name=fe000d37-f70a-4fb9-9d6e-d0752287c83a
+###
+NODE_1_length_41	.	gene	4484	4892	.	+	.	owner=sunlc@jaas.ac.cn;ID=c081709d-26e5-4b49-8a07-9a1a6fbb9db5;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00012;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	4484	4892	.	+	.	owner=sunlc@jaas.ac.cn;Parent=c081709d-26e5-4b49-8a07-9a1a6fbb9db5;ID=1d5b9537-54e1-4f77-bbc7-1b7cd1c5defd;orig_id=NODE_1_length_41.orf00012;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00012-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	4494	4892	.	+	.	Parent=1d5b9537-54e1-4f77-bbc7-1b7cd1c5defd;ID=4086cab0-d13b-45ff-a6e0-2d695f748090;Name=4086cab0-d13b-45ff-a6e0-2d695f748090
+NODE_1_length_41	.	Shine_Dalgarno_sequence	4484	4487	.	+	.	Parent=1d5b9537-54e1-4f77-bbc7-1b7cd1c5defd;ID=746d7a20-92c8-4206-93ed-ca37f9d3330b;Name=746d7a20-92c8-4206-93ed-ca37f9d3330b
+NODE_1_length_41	.	CDS	4494	4892	.	+	0	Parent=1d5b9537-54e1-4f77-bbc7-1b7cd1c5defd;ID=1d5b9537-54e1-4f77-bbc7-1b7cd1c5defd-CDS;Name=1d5b9537-54e1-4f77-bbc7-1b7cd1c5defd-CDS
+###
+NODE_1_length_41	.	gene	4951	5442	.	+	.	owner=sunlc@jaas.ac.cn;ID=87abb060-123e-4836-833e-ca8b34a75a22;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00013;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	4951	5442	.	+	.	owner=sunlc@jaas.ac.cn;Parent=87abb060-123e-4836-833e-ca8b34a75a22;ID=a4cddccb-f2ae-4cbe-8b7e-17d3a5829f25;orig_id=NODE_1_length_41.orf00013;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00013-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	4963	5442	.	+	0	Parent=a4cddccb-f2ae-4cbe-8b7e-17d3a5829f25;ID=a4cddccb-f2ae-4cbe-8b7e-17d3a5829f25-CDS;Name=a4cddccb-f2ae-4cbe-8b7e-17d3a5829f25-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	4951	4955	.	+	.	Parent=a4cddccb-f2ae-4cbe-8b7e-17d3a5829f25;ID=3f3dfc0a-2e7c-4773-b827-55d453c517d4;Name=3f3dfc0a-2e7c-4773-b827-55d453c517d4
+NODE_1_length_41	.	exon	4963	5442	.	+	.	Parent=a4cddccb-f2ae-4cbe-8b7e-17d3a5829f25;ID=47bf5b95-4ea9-412d-9025-9eb81866555c;Name=47bf5b95-4ea9-412d-9025-9eb81866555c
+###
+NODE_1_length_41	.	gene	5430	5896	.	+	.	owner=sunlc@jaas.ac.cn;ID=4c4f4a8e-fd26-408b-a48a-f349fa124f56;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00014;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	5430	5896	.	+	.	owner=sunlc@jaas.ac.cn;Parent=4c4f4a8e-fd26-408b-a48a-f349fa124f56;ID=9dd7fb68-3540-463f-a139-bd994199b5f2;orig_id=NODE_1_length_41.orf00014;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00014-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	5430	5434	.	+	.	Parent=9dd7fb68-3540-463f-a139-bd994199b5f2;ID=0b4b147d-a1fb-4540-9be1-7fe4526e20f1;Name=0b4b147d-a1fb-4540-9be1-7fe4526e20f1
+NODE_1_length_41	.	exon	5444	5896	.	+	.	Parent=9dd7fb68-3540-463f-a139-bd994199b5f2;ID=c29559fa-f600-4a5f-af4e-7defb93f26f1;Name=c29559fa-f600-4a5f-af4e-7defb93f26f1
+NODE_1_length_41	.	CDS	5444	5896	.	+	0	Parent=9dd7fb68-3540-463f-a139-bd994199b5f2;ID=9dd7fb68-3540-463f-a139-bd994199b5f2-CDS;Name=9dd7fb68-3540-463f-a139-bd994199b5f2-CDS
+###
+NODE_1_length_41	.	gene	5898	6074	.	+	.	owner=sunlc@jaas.ac.cn;ID=af8f7229-9984-4c2b-beb8-665be6c11a99;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00015;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	5898	6074	.	+	.	owner=sunlc@jaas.ac.cn;Parent=af8f7229-9984-4c2b-beb8-665be6c11a99;ID=e0321f52-bb09-4335-af5a-c9ce6c02c6fb;orig_id=NODE_1_length_41.orf00015;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00015-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	5907	6074	.	+	.	Parent=e0321f52-bb09-4335-af5a-c9ce6c02c6fb;ID=73d46af7-8902-4221-aab9-03fc727ce2a7;Name=73d46af7-8902-4221-aab9-03fc727ce2a7
+NODE_1_length_41	.	Shine_Dalgarno_sequence	5898	5901	.	+	.	Parent=e0321f52-bb09-4335-af5a-c9ce6c02c6fb;ID=dc7f168d-2695-482a-96c3-558b05854b0b;Name=dc7f168d-2695-482a-96c3-558b05854b0b
+NODE_1_length_41	.	CDS	5907	6074	.	+	0	Parent=e0321f52-bb09-4335-af5a-c9ce6c02c6fb;ID=e0321f52-bb09-4335-af5a-c9ce6c02c6fb-CDS;Name=e0321f52-bb09-4335-af5a-c9ce6c02c6fb-CDS
+###
+NODE_1_length_41	.	gene	6048	6252	.	+	.	owner=sunlc@jaas.ac.cn;ID=ba9b9fba-25f8-4343-9556-28678eda8d48;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00016;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	6048	6252	.	+	.	owner=sunlc@jaas.ac.cn;Parent=ba9b9fba-25f8-4343-9556-28678eda8d48;ID=d2ec07fd-c215-4840-a7aa-032ee384e673;orig_id=NODE_1_length_41.orf00016;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00016-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	6061	6252	.	+	.	Parent=d2ec07fd-c215-4840-a7aa-032ee384e673;ID=218a1dd4-8971-452f-b177-fedabee7665c;Name=218a1dd4-8971-452f-b177-fedabee7665c
+NODE_1_length_41	.	Shine_Dalgarno_sequence	6048	6051	.	+	.	Parent=d2ec07fd-c215-4840-a7aa-032ee384e673;ID=add6738c-6485-441b-801f-eac8ba8ee443;Name=add6738c-6485-441b-801f-eac8ba8ee443
+NODE_1_length_41	.	CDS	6061	6252	.	+	0	Parent=d2ec07fd-c215-4840-a7aa-032ee384e673;ID=d2ec07fd-c215-4840-a7aa-032ee384e673-CDS;Name=d2ec07fd-c215-4840-a7aa-032ee384e673-CDS
+###
+NODE_1_length_41	.	gene	6239	6479	.	+	.	owner=sunlc@jaas.ac.cn;ID=3aabcd79-e3e4-4e35-9be2-3b97b8fe5982;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00017;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	6239	6479	.	+	.	owner=sunlc@jaas.ac.cn;Parent=3aabcd79-e3e4-4e35-9be2-3b97b8fe5982;ID=e6fd4f6f-228b-4788-92ea-e5dce3070839;orig_id=NODE_1_length_41.orf00017;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00017-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	6239	6242	.	+	.	Parent=e6fd4f6f-228b-4788-92ea-e5dce3070839;ID=a74f09ef-be4e-44c0-8e8c-22087c6c3dd0;Name=a74f09ef-be4e-44c0-8e8c-22087c6c3dd0
+NODE_1_length_41	.	CDS	6249	6479	.	+	0	Parent=e6fd4f6f-228b-4788-92ea-e5dce3070839;ID=e6fd4f6f-228b-4788-92ea-e5dce3070839-CDS;Name=e6fd4f6f-228b-4788-92ea-e5dce3070839-CDS
+NODE_1_length_41	.	exon	6249	6479	.	+	.	Parent=e6fd4f6f-228b-4788-92ea-e5dce3070839;ID=245e951d-72e1-4733-920d-9926285c25c7;Name=245e951d-72e1-4733-920d-9926285c25c7
+###
+NODE_1_length_41	.	gene	6455	6693	.	+	.	owner=sunlc@jaas.ac.cn;ID=7ff86aaf-0d22-4b55-825b-d94e563518cb;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00018;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	6455	6693	.	+	.	owner=sunlc@jaas.ac.cn;Parent=7ff86aaf-0d22-4b55-825b-d94e563518cb;ID=0d8e4c36-d9a5-4ca8-8f54-a3ef91597e23;orig_id=NODE_1_length_41.orf00018;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00018-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	6455	6459	.	+	.	Parent=0d8e4c36-d9a5-4ca8-8f54-a3ef91597e23;ID=cec6b283-2671-4ec8-af21-6bc0e40f93f3;Name=cec6b283-2671-4ec8-af21-6bc0e40f93f3
+NODE_1_length_41	.	CDS	6469	6693	.	+	0	Parent=0d8e4c36-d9a5-4ca8-8f54-a3ef91597e23;ID=0d8e4c36-d9a5-4ca8-8f54-a3ef91597e23-CDS;Name=0d8e4c36-d9a5-4ca8-8f54-a3ef91597e23-CDS
+NODE_1_length_41	.	exon	6469	6693	.	+	.	Parent=0d8e4c36-d9a5-4ca8-8f54-a3ef91597e23;ID=5b830da3-1ff6-47ce-aff1-4cd3368dce5a;Name=5b830da3-1ff6-47ce-aff1-4cd3368dce5a
+###
+NODE_1_length_41	.	gene	6672	7483	.	+	.	owner=sunlc@jaas.ac.cn;ID=3118fa05-ee00-4c6f-b8f2-f8883c8b482f;date_last_modified=2020-09-19;Name=NODE_1_length_41.gene_16;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	6672	7483	.	+	.	owner=sunlc@jaas.ac.cn;Parent=3118fa05-ee00-4c6f-b8f2-f8883c8b482f;ID=9f5648c1-034a-424e-af7e-107b454633b8;orig_id=NODE_1_length_41.gene_16;date_last_modified=2020-09-19;Name=NODE_1_length_41.gene_16-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	6683	7483	.	+	.	Parent=9f5648c1-034a-424e-af7e-107b454633b8;ID=f79888d9-1739-458d-b522-09da3e798bfc;Name=f79888d9-1739-458d-b522-09da3e798bfc
+NODE_1_length_41	.	CDS	6683	7483	.	+	0	Parent=9f5648c1-034a-424e-af7e-107b454633b8;ID=9f5648c1-034a-424e-af7e-107b454633b8-CDS;Name=9f5648c1-034a-424e-af7e-107b454633b8-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	6672	6676	.	+	.	Parent=9f5648c1-034a-424e-af7e-107b454633b8;ID=3a874c7a-35cf-43f4-bfb2-171a3aa4193b;Name=3a874c7a-35cf-43f4-bfb2-171a3aa4193b
+###
+NODE_1_length_41	.	gene	7472	7605	.	+	.	owner=sunlc@jaas.ac.cn;ID=504f8586-19f0-44ae-b3bf-53b51b139283;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00020;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	7472	7605	.	+	.	owner=sunlc@jaas.ac.cn;Parent=504f8586-19f0-44ae-b3bf-53b51b139283;ID=166c60e8-b545-4b0e-8cde-4f7d5d8fb23b;orig_id=NODE_1_length_41.orf00020;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00020-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	7472	7475	.	+	.	Parent=166c60e8-b545-4b0e-8cde-4f7d5d8fb23b;ID=e8d9740b-78a9-4d7d-9616-259c5ac6e85d;Name=e8d9740b-78a9-4d7d-9616-259c5ac6e85d
+NODE_1_length_41	.	exon	7483	7605	.	+	.	Parent=166c60e8-b545-4b0e-8cde-4f7d5d8fb23b;ID=82442769-4283-4d42-8055-5b8684272e25;Name=82442769-4283-4d42-8055-5b8684272e25
+NODE_1_length_41	.	CDS	7483	7605	.	+	0	Parent=166c60e8-b545-4b0e-8cde-4f7d5d8fb23b;ID=166c60e8-b545-4b0e-8cde-4f7d5d8fb23b-CDS;Name=166c60e8-b545-4b0e-8cde-4f7d5d8fb23b-CDS
+###
+NODE_1_length_41	.	gene	7869	9177	.	+	.	owner=sunlc@jaas.ac.cn;ID=afba2d13-ed4f-4188-833d-b4c504a7fd34;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00022;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	7869	9177	.	+	.	owner=sunlc@jaas.ac.cn;Parent=afba2d13-ed4f-4188-833d-b4c504a7fd34;ID=2aca6d69-f248-46b7-9e47-1563e0490a94;orig_id=NODE_1_length_41.orf00022;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00022-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	7869	7872	.	+	.	Parent=2aca6d69-f248-46b7-9e47-1563e0490a94;ID=e6ac561f-7626-4030-954e-dcbd778038c7;Name=e6ac561f-7626-4030-954e-dcbd778038c7
+NODE_1_length_41	.	CDS	7879	9177	.	+	0	Parent=2aca6d69-f248-46b7-9e47-1563e0490a94;ID=2aca6d69-f248-46b7-9e47-1563e0490a94-CDS;Name=2aca6d69-f248-46b7-9e47-1563e0490a94-CDS
+NODE_1_length_41	.	exon	7879	9177	.	+	.	Parent=2aca6d69-f248-46b7-9e47-1563e0490a94;ID=36c9f55b-7ada-441b-9f96-9e9486a78e48;Name=36c9f55b-7ada-441b-9f96-9e9486a78e48
+###
+NODE_1_length_41	.	gene	9900	10885	.	+	.	owner=sunlc@jaas.ac.cn;ID=3f3d2169-7d27-44b8-b15c-f8668213eba2;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00024;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	9900	10885	.	+	.	owner=sunlc@jaas.ac.cn;Parent=3f3d2169-7d27-44b8-b15c-f8668213eba2;ID=530edc5a-59a2-478e-b5ce-b002f5feee5b;orig_id=NODE_1_length_41.orf00024;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00024-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	9900	9904	.	+	.	Parent=530edc5a-59a2-478e-b5ce-b002f5feee5b;ID=d686cb91-1aac-4c3f-b30c-4dd709cdebd3;Name=d686cb91-1aac-4c3f-b30c-4dd709cdebd3
+NODE_1_length_41	.	exon	9914	10885	.	+	.	Parent=530edc5a-59a2-478e-b5ce-b002f5feee5b;ID=553e2847-a661-4227-a2f5-c79a641e860f;Name=553e2847-a661-4227-a2f5-c79a641e860f
+NODE_1_length_41	.	CDS	9914	10885	.	+	0	Parent=530edc5a-59a2-478e-b5ce-b002f5feee5b;ID=530edc5a-59a2-478e-b5ce-b002f5feee5b-CDS;Name=530edc5a-59a2-478e-b5ce-b002f5feee5b-CDS
+###
+NODE_1_length_41	.	gene	11135	11590	.	+	.	owner=sunlc@jaas.ac.cn;ID=5fa28f41-8552-42a6-8222-e18a1356fdb8;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00026;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	11135	11590	.	+	.	owner=sunlc@jaas.ac.cn;Parent=5fa28f41-8552-42a6-8222-e18a1356fdb8;ID=5bda8e81-cbc6-49c5-a346-1d5509aff9dd;orig_id=NODE_1_length_41.orf00026;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00026-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	11144	11590	.	+	0	Parent=5bda8e81-cbc6-49c5-a346-1d5509aff9dd;ID=5bda8e81-cbc6-49c5-a346-1d5509aff9dd-CDS;Name=5bda8e81-cbc6-49c5-a346-1d5509aff9dd-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	11135	11138	.	+	.	Parent=5bda8e81-cbc6-49c5-a346-1d5509aff9dd;ID=d9ff3d83-fe63-4ee1-8b4a-8befdcacf24a;Name=d9ff3d83-fe63-4ee1-8b4a-8befdcacf24a
+NODE_1_length_41	.	exon	11144	11590	.	+	.	Parent=5bda8e81-cbc6-49c5-a346-1d5509aff9dd;ID=309015ea-e46f-40f1-b229-6526c4c066c1;Name=309015ea-e46f-40f1-b229-6526c4c066c1
+###
+NODE_1_length_41	.	gene	11576	13905	.	+	.	owner=sunlc@jaas.ac.cn;ID=7c29a885-aed8-40cb-b71f-7aaf6b6c3687;date_last_modified=2020-09-19;Name=NODE_1_length_41.gene_22;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	11576	13905	.	+	.	owner=sunlc@jaas.ac.cn;Parent=7c29a885-aed8-40cb-b71f-7aaf6b6c3687;ID=4247d8be-3ea4-4ad4-8e0a-1fa1969589c2;orig_id=NODE_1_length_41.gene_22;date_last_modified=2020-09-19;Name=NODE_1_length_41.gene_22-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	11587	13905	.	+	0	Parent=4247d8be-3ea4-4ad4-8e0a-1fa1969589c2;ID=4247d8be-3ea4-4ad4-8e0a-1fa1969589c2-CDS;Name=4247d8be-3ea4-4ad4-8e0a-1fa1969589c2-CDS
+NODE_1_length_41	.	exon	11587	13905	.	+	.	Parent=4247d8be-3ea4-4ad4-8e0a-1fa1969589c2;ID=a48b01a1-991b-4b24-8e13-ae6859acd35e;Name=a48b01a1-991b-4b24-8e13-ae6859acd35e
+NODE_1_length_41	.	Shine_Dalgarno_sequence	11576	11580	.	+	.	Parent=4247d8be-3ea4-4ad4-8e0a-1fa1969589c2;ID=48bec32e-db7e-4c70-8f7f-0c152292e078;Name=48bec32e-db7e-4c70-8f7f-0c152292e078
+###
+NODE_1_length_41	.	gene	13904	14393	.	+	.	owner=sunlc@jaas.ac.cn;ID=b88ffc5b-aa8c-43ed-a58c-c5cdc6106a98;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00028;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	13904	14393	.	+	.	owner=sunlc@jaas.ac.cn;Parent=b88ffc5b-aa8c-43ed-a58c-c5cdc6106a98;ID=1e24d24a-c459-4cf4-830a-1f9856614982;orig_id=NODE_1_length_41.orf00028;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00028-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	13904	13908	.	+	.	Parent=1e24d24a-c459-4cf4-830a-1f9856614982;ID=2c9875a2-f19c-4cea-b31f-e39dc31e8e47;Name=2c9875a2-f19c-4cea-b31f-e39dc31e8e47
+NODE_1_length_41	.	CDS	13914	14393	.	+	0	Parent=1e24d24a-c459-4cf4-830a-1f9856614982;ID=1e24d24a-c459-4cf4-830a-1f9856614982-CDS;Name=1e24d24a-c459-4cf4-830a-1f9856614982-CDS
+NODE_1_length_41	.	exon	13914	14393	.	+	.	Parent=1e24d24a-c459-4cf4-830a-1f9856614982;ID=0417a777-3613-43e5-b816-366d82495d8d;Name=0417a777-3613-43e5-b816-366d82495d8d
+###
+NODE_1_length_41	.	gene	14399	15301	.	+	.	owner=sunlc@jaas.ac.cn;ID=58361701-69d5-4368-bb4b-4bda8bf0ab79;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00029;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	14399	15301	.	+	.	owner=sunlc@jaas.ac.cn;Parent=58361701-69d5-4368-bb4b-4bda8bf0ab79;ID=f09a50f4-7ebf-42fb-8d95-b95111b7c0e8;orig_id=NODE_1_length_41.orf00029;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00029-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	14411	15301	.	+	0	Parent=f09a50f4-7ebf-42fb-8d95-b95111b7c0e8;ID=f09a50f4-7ebf-42fb-8d95-b95111b7c0e8-CDS;Name=f09a50f4-7ebf-42fb-8d95-b95111b7c0e8-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	14399	14403	.	+	.	Parent=f09a50f4-7ebf-42fb-8d95-b95111b7c0e8;ID=0b3c8b37-6b5c-4845-900b-ec0aba2b002a;Name=0b3c8b37-6b5c-4845-900b-ec0aba2b002a
+NODE_1_length_41	.	exon	14411	15301	.	+	.	Parent=f09a50f4-7ebf-42fb-8d95-b95111b7c0e8;ID=23038def-bb69-4b8a-ba1c-624191328cbd;Name=23038def-bb69-4b8a-ba1c-624191328cbd
+###
+NODE_1_length_41	.	gene	15348	15477	.	+	.	owner=sunlc@jaas.ac.cn;ID=e5c54263-f7c7-4b75-b091-76f9ad276efc;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00030;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	15348	15477	.	+	.	owner=sunlc@jaas.ac.cn;Parent=e5c54263-f7c7-4b75-b091-76f9ad276efc;ID=b62ab7cd-1aff-4e9c-b3c9-44b107a3d724;orig_id=NODE_1_length_41.orf00030;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00030-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	15358	15477	.	+	0	Parent=b62ab7cd-1aff-4e9c-b3c9-44b107a3d724;ID=b62ab7cd-1aff-4e9c-b3c9-44b107a3d724-CDS;Name=b62ab7cd-1aff-4e9c-b3c9-44b107a3d724-CDS
+NODE_1_length_41	.	exon	15358	15477	.	+	.	Parent=b62ab7cd-1aff-4e9c-b3c9-44b107a3d724;ID=844dd5bb-faee-4b3f-82fc-6ceb459e03cc;Name=844dd5bb-faee-4b3f-82fc-6ceb459e03cc
+NODE_1_length_41	.	Shine_Dalgarno_sequence	15348	15352	.	+	.	Parent=b62ab7cd-1aff-4e9c-b3c9-44b107a3d724;ID=f416804d-c556-47e1-b36e-2a08ce881d04;Name=f416804d-c556-47e1-b36e-2a08ce881d04
+###
+NODE_1_length_41	.	gene	15499	16463	.	+	.	owner=sunlc@jaas.ac.cn;ID=c4551e0b-e5d8-41b5-a15e-406a342f2cb9;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00031;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	15499	16463	.	+	.	owner=sunlc@jaas.ac.cn;Parent=c4551e0b-e5d8-41b5-a15e-406a342f2cb9;ID=4b3dde16-af74-435c-9b51-d3c90bedc82c;orig_id=NODE_1_length_41.orf00031;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00031-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	15510	16463	.	+	.	Parent=4b3dde16-af74-435c-9b51-d3c90bedc82c;ID=10f5cd63-e77a-4418-afe8-ebe1587533bd;Name=10f5cd63-e77a-4418-afe8-ebe1587533bd
+NODE_1_length_41	.	CDS	15510	16463	.	+	0	Parent=4b3dde16-af74-435c-9b51-d3c90bedc82c;ID=4b3dde16-af74-435c-9b51-d3c90bedc82c-CDS;Name=4b3dde16-af74-435c-9b51-d3c90bedc82c-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	15499	15502	.	+	.	Parent=4b3dde16-af74-435c-9b51-d3c90bedc82c;ID=30e78b61-f4cb-440d-a245-7b7bc3db7ce2;Name=30e78b61-f4cb-440d-a245-7b7bc3db7ce2
+###
+NODE_1_length_41	.	gene	16440	17022	.	+	.	owner=sunlc@jaas.ac.cn;ID=c70ecd2c-f55b-48e2-b768-267c5e95d036;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00032;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	16440	17022	.	+	.	owner=sunlc@jaas.ac.cn;Parent=c70ecd2c-f55b-48e2-b768-267c5e95d036;ID=a1ac1efc-75ff-47ae-88da-dc92fbb7cbdb;orig_id=NODE_1_length_41.orf00032;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00032-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	16440	16443	.	+	.	Parent=a1ac1efc-75ff-47ae-88da-dc92fbb7cbdb;ID=a0387f2c-02ad-437c-810b-e0f324403f8d;Name=a0387f2c-02ad-437c-810b-e0f324403f8d
+NODE_1_length_41	.	CDS	16453	17022	.	+	0	Parent=a1ac1efc-75ff-47ae-88da-dc92fbb7cbdb;ID=a1ac1efc-75ff-47ae-88da-dc92fbb7cbdb-CDS;Name=a1ac1efc-75ff-47ae-88da-dc92fbb7cbdb-CDS
+NODE_1_length_41	.	exon	16453	17022	.	+	.	Parent=a1ac1efc-75ff-47ae-88da-dc92fbb7cbdb;ID=bbd41aee-0db9-40e8-a2b9-cd07d50755c1;Name=bbd41aee-0db9-40e8-a2b9-cd07d50755c1
+###
+NODE_1_length_41	.	gene	17006	17459	.	+	.	owner=sunlc@jaas.ac.cn;ID=a59d27de-d10a-4648-a2d7-a4c372ab9b1c;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00033;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	17006	17459	.	+	.	owner=sunlc@jaas.ac.cn;Parent=a59d27de-d10a-4648-a2d7-a4c372ab9b1c;ID=b8678a84-bfc8-4400-8511-0db7e0b051b2;orig_id=NODE_1_length_41.orf00033;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00033-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	17019	17459	.	+	0	Parent=b8678a84-bfc8-4400-8511-0db7e0b051b2;ID=b8678a84-bfc8-4400-8511-0db7e0b051b2-CDS;Name=b8678a84-bfc8-4400-8511-0db7e0b051b2-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	17006	17008	.	+	.	Parent=b8678a84-bfc8-4400-8511-0db7e0b051b2;ID=a579bdd9-1b7f-40f1-88e9-fdde42fea742;Name=a579bdd9-1b7f-40f1-88e9-fdde42fea742
+NODE_1_length_41	.	exon	17019	17459	.	+	.	Parent=b8678a84-bfc8-4400-8511-0db7e0b051b2;ID=125a49fc-e4b7-4ae9-a5eb-f2ad4db1bd2f;Name=125a49fc-e4b7-4ae9-a5eb-f2ad4db1bd2f
+###
+NODE_1_length_41	.	gene	17450	18398	.	+	.	owner=sunlc@jaas.ac.cn;ID=a6a49616-56bb-462d-b25a-a35c5a00fc87;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00034;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	17450	18398	.	+	.	owner=sunlc@jaas.ac.cn;Parent=a6a49616-56bb-462d-b25a-a35c5a00fc87;ID=61c0ad56-7cd1-493b-a177-72cc08fd2472;orig_id=NODE_1_length_41.orf00034;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00034-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	17463	18398	.	+	.	Parent=61c0ad56-7cd1-493b-a177-72cc08fd2472;ID=d7c68b67-3fcb-49c6-b1ed-e2ccb280a538;Name=d7c68b67-3fcb-49c6-b1ed-e2ccb280a538
+NODE_1_length_41	.	CDS	17463	18398	.	+	0	Parent=61c0ad56-7cd1-493b-a177-72cc08fd2472;ID=61c0ad56-7cd1-493b-a177-72cc08fd2472-CDS;Name=61c0ad56-7cd1-493b-a177-72cc08fd2472-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	17450	17453	.	+	.	Parent=61c0ad56-7cd1-493b-a177-72cc08fd2472;ID=7aa9f859-c4f8-47ff-b77c-1d0a1b597ec8;Name=7aa9f859-c4f8-47ff-b77c-1d0a1b597ec8
+###
+NODE_1_length_41	.	gene	18383	19048	.	+	.	owner=sunlc@jaas.ac.cn;ID=ba15b7cf-866b-480a-9d2c-5610d7943799;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00035;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	18383	19048	.	+	.	owner=sunlc@jaas.ac.cn;Parent=ba15b7cf-866b-480a-9d2c-5610d7943799;ID=c5d9539e-116f-4973-bd85-67c041408b5a;orig_id=NODE_1_length_41.orf00035;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00035-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	18398	19048	.	+	0	Parent=c5d9539e-116f-4973-bd85-67c041408b5a;ID=c5d9539e-116f-4973-bd85-67c041408b5a-CDS;Name=c5d9539e-116f-4973-bd85-67c041408b5a-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	18383	18387	.	+	.	Parent=c5d9539e-116f-4973-bd85-67c041408b5a;ID=499ca250-427c-43ac-936d-686c08f8f959;Name=499ca250-427c-43ac-936d-686c08f8f959
+NODE_1_length_41	.	exon	18398	19048	.	+	.	Parent=c5d9539e-116f-4973-bd85-67c041408b5a;ID=65f33140-91d8-4268-afde-c76b62d13953;Name=65f33140-91d8-4268-afde-c76b62d13953
+###
+NODE_1_length_41	.	gene	19047	21474	.	+	.	owner=sunlc@jaas.ac.cn;ID=d5df454a-2e92-4e63-a889-6d4613052edc;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00036;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	19047	21474	.	+	.	owner=sunlc@jaas.ac.cn;Parent=d5df454a-2e92-4e63-a889-6d4613052edc;ID=acdd9dad-723a-4a6d-b569-d0fa0912da27;orig_id=NODE_1_length_41.orf00036;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00036-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	19057	21474	.	+	.	Parent=acdd9dad-723a-4a6d-b569-d0fa0912da27;ID=f1ddb086-f2b8-4e62-aa71-ac84680f59e4;Name=f1ddb086-f2b8-4e62-aa71-ac84680f59e4
+NODE_1_length_41	.	Shine_Dalgarno_sequence	19047	19051	.	+	.	Parent=acdd9dad-723a-4a6d-b569-d0fa0912da27;ID=85429a8b-7680-4378-ab22-d2b3133d2844;Name=85429a8b-7680-4378-ab22-d2b3133d2844
+NODE_1_length_41	.	CDS	19057	21474	.	+	0	Parent=acdd9dad-723a-4a6d-b569-d0fa0912da27;ID=acdd9dad-723a-4a6d-b569-d0fa0912da27-CDS;Name=acdd9dad-723a-4a6d-b569-d0fa0912da27-CDS
+###
+NODE_1_length_41	.	gene	21565	21774	.	+	.	owner=sunlc@jaas.ac.cn;ID=571ed20a-1270-4723-9106-96c95efd8906;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00037;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	21565	21774	.	+	.	owner=sunlc@jaas.ac.cn;Parent=571ed20a-1270-4723-9106-96c95efd8906;ID=95813a96-c26a-4ffe-a15f-cc21392025c2;orig_id=NODE_1_length_41.orf00037;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00037-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	21565	21569	.	+	.	Parent=95813a96-c26a-4ffe-a15f-cc21392025c2;ID=46b47175-1f4f-431e-aaf7-ab8bc338dd38;Name=46b47175-1f4f-431e-aaf7-ab8bc338dd38
+NODE_1_length_41	.	exon	21577	21774	.	+	.	Parent=95813a96-c26a-4ffe-a15f-cc21392025c2;ID=e5ee8c7d-25d2-4174-b8c0-301fca5d6d86;Name=e5ee8c7d-25d2-4174-b8c0-301fca5d6d86
+NODE_1_length_41	.	CDS	21577	21774	.	+	0	Parent=95813a96-c26a-4ffe-a15f-cc21392025c2;ID=95813a96-c26a-4ffe-a15f-cc21392025c2-CDS;Name=95813a96-c26a-4ffe-a15f-cc21392025c2-CDS
+###
+NODE_1_length_41	.	gene	21758	22022	.	+	.	owner=sunlc@jaas.ac.cn;ID=419fd000-7870-4bd1-81da-646c199dcfbb;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00038;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	21758	22022	.	+	.	owner=sunlc@jaas.ac.cn;Parent=419fd000-7870-4bd1-81da-646c199dcfbb;ID=79b4baa0-618c-425f-9f1c-3d82c93360fe;orig_id=NODE_1_length_41.orf00038;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00038-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	21771	22022	.	+	0	Parent=79b4baa0-618c-425f-9f1c-3d82c93360fe;ID=79b4baa0-618c-425f-9f1c-3d82c93360fe-CDS;Name=79b4baa0-618c-425f-9f1c-3d82c93360fe-CDS
+NODE_1_length_41	.	exon	21771	22022	.	+	.	Parent=79b4baa0-618c-425f-9f1c-3d82c93360fe;ID=22058f63-fd4a-430b-87f2-fbde03a32bf2;Name=22058f63-fd4a-430b-87f2-fbde03a32bf2
+NODE_1_length_41	.	Shine_Dalgarno_sequence	21758	21762	.	+	.	Parent=79b4baa0-618c-425f-9f1c-3d82c93360fe;ID=5ba51ed5-e466-4577-ac42-24da51458fba;Name=5ba51ed5-e466-4577-ac42-24da51458fba
+###
+NODE_1_length_41	.	gene	22022	23587	.	+	.	owner=sunlc@jaas.ac.cn;ID=7827aa6b-a705-451d-af9f-c03bc59dc543;date_last_modified=2020-09-19;Name=NODE_1_length_41.gene_34;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	22022	23587	.	+	.	owner=sunlc@jaas.ac.cn;Parent=7827aa6b-a705-451d-af9f-c03bc59dc543;ID=906b59ea-a6f3-4d16-8ce7-f838f042788e;orig_id=NODE_1_length_41.gene_34;date_last_modified=2020-09-19;Name=NODE_1_length_41.gene_34-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	22031	23587	.	+	.	Parent=906b59ea-a6f3-4d16-8ce7-f838f042788e;ID=1297ed3a-3aa7-49e1-9fbf-ec465b6dc9e1;Name=1297ed3a-3aa7-49e1-9fbf-ec465b6dc9e1
+NODE_1_length_41	.	Shine_Dalgarno_sequence	22022	22026	.	+	.	Parent=906b59ea-a6f3-4d16-8ce7-f838f042788e;ID=0befcc10-f004-430e-915c-079b4ed785ed;Name=0befcc10-f004-430e-915c-079b4ed785ed
+NODE_1_length_41	.	CDS	22031	23587	.	+	0	Parent=906b59ea-a6f3-4d16-8ce7-f838f042788e;ID=906b59ea-a6f3-4d16-8ce7-f838f042788e-CDS;Name=906b59ea-a6f3-4d16-8ce7-f838f042788e-CDS
+###
+NODE_1_length_41	.	gene	24458	25503	.	+	.	owner=sunlc@jaas.ac.cn;ID=e0775da2-e56e-4ba4-ac66-f924b13e131f;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00041;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	24458	25503	.	+	.	owner=sunlc@jaas.ac.cn;Parent=e0775da2-e56e-4ba4-ac66-f924b13e131f;ID=f953c325-3ec5-4566-8921-e0c8f15427ef;orig_id=NODE_1_length_41.orf00041;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00041-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	24472	25503	.	+	.	Parent=f953c325-3ec5-4566-8921-e0c8f15427ef;ID=609149dc-6ceb-4257-8b8c-585f58811152;Name=609149dc-6ceb-4257-8b8c-585f58811152
+NODE_1_length_41	.	CDS	24472	25503	.	+	0	Parent=f953c325-3ec5-4566-8921-e0c8f15427ef;ID=f953c325-3ec5-4566-8921-e0c8f15427ef-CDS;Name=f953c325-3ec5-4566-8921-e0c8f15427ef-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	24458	24462	.	+	.	Parent=f953c325-3ec5-4566-8921-e0c8f15427ef;ID=d99b456d-b4f0-447d-a351-fbe4adc31c2d;Name=d99b456d-b4f0-447d-a351-fbe4adc31c2d
+###
+NODE_1_length_41	.	gene	23586	24456	.	+	.	owner=sunlc@jaas.ac.cn;ID=0108df26-22fe-4ac6-9b5c-c4a6a134e508;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00040;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	23586	24456	.	+	.	owner=sunlc@jaas.ac.cn;Parent=0108df26-22fe-4ac6-9b5c-c4a6a134e508;ID=8126cbfa-ab0f-4342-a3af-2e013c1e9c22;orig_id=NODE_1_length_41.orf00040;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00040-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	23586	23590	.	+	.	Parent=8126cbfa-ab0f-4342-a3af-2e013c1e9c22;ID=99f759f4-a0e6-4ea3-a78c-b1036d824d0c;Name=99f759f4-a0e6-4ea3-a78c-b1036d824d0c
+NODE_1_length_41	.	CDS	23596	24456	.	+	0	Parent=8126cbfa-ab0f-4342-a3af-2e013c1e9c22;ID=8126cbfa-ab0f-4342-a3af-2e013c1e9c22-CDS;Name=8126cbfa-ab0f-4342-a3af-2e013c1e9c22-CDS
+NODE_1_length_41	.	exon	23596	24456	.	+	.	Parent=8126cbfa-ab0f-4342-a3af-2e013c1e9c22;ID=d34ade62-b285-478c-bbe6-48034238d614;Name=d34ade62-b285-478c-bbe6-48034238d614
+###
+NODE_1_length_41	.	gene	25545	25744	.	+	.	owner=sunlc@jaas.ac.cn;ID=3fc8ce19-b6f6-490e-a939-c188d8994f12;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00042;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	25545	25744	.	+	.	owner=sunlc@jaas.ac.cn;Parent=3fc8ce19-b6f6-490e-a939-c188d8994f12;ID=acceb65e-74eb-45ed-a6a9-a4a2e7ee2066;orig_id=NODE_1_length_41.orf00042;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00042-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	25559	25744	.	+	0	Parent=acceb65e-74eb-45ed-a6a9-a4a2e7ee2066;ID=acceb65e-74eb-45ed-a6a9-a4a2e7ee2066-CDS;Name=acceb65e-74eb-45ed-a6a9-a4a2e7ee2066-CDS
+NODE_1_length_41	.	exon	25559	25744	.	+	.	Parent=acceb65e-74eb-45ed-a6a9-a4a2e7ee2066;ID=9bbffc9e-529b-4e78-97c8-2f5fff23727e;Name=9bbffc9e-529b-4e78-97c8-2f5fff23727e
+NODE_1_length_41	.	Shine_Dalgarno_sequence	25545	25549	.	+	.	Parent=acceb65e-74eb-45ed-a6a9-a4a2e7ee2066;ID=22983acd-a4cc-4583-9759-e7508d2d018d;Name=22983acd-a4cc-4583-9759-e7508d2d018d
+###
+NODE_1_length_41	.	gene	25746	26049	.	+	.	owner=sunlc@jaas.ac.cn;ID=a63f0129-a8c9-4d53-b1d9-57bfa1a5a126;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00043;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	25746	26049	.	+	.	owner=sunlc@jaas.ac.cn;Parent=a63f0129-a8c9-4d53-b1d9-57bfa1a5a126;ID=f087a8d3-0d8e-43a7-83e6-d5e7bdf24504;orig_id=NODE_1_length_41.orf00043;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00043-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	25746	25750	.	+	.	Parent=f087a8d3-0d8e-43a7-83e6-d5e7bdf24504;ID=5720895f-3524-44bf-b18c-248e301726b0;Name=5720895f-3524-44bf-b18c-248e301726b0
+NODE_1_length_41	.	CDS	25756	26049	.	+	0	Parent=f087a8d3-0d8e-43a7-83e6-d5e7bdf24504;ID=f087a8d3-0d8e-43a7-83e6-d5e7bdf24504-CDS;Name=f087a8d3-0d8e-43a7-83e6-d5e7bdf24504-CDS
+NODE_1_length_41	.	exon	25756	26049	.	+	.	Parent=f087a8d3-0d8e-43a7-83e6-d5e7bdf24504;ID=b7e45ba0-c2ee-45fa-a087-f0a128dee8a9;Name=b7e45ba0-c2ee-45fa-a087-f0a128dee8a9
+###
+NODE_1_length_41	.	gene	26132	26706	.	+	.	owner=sunlc@jaas.ac.cn;ID=79f33295-8056-46a4-b335-ee152ee2fcce;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00044;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	26132	26706	.	+	.	owner=sunlc@jaas.ac.cn;Parent=79f33295-8056-46a4-b335-ee152ee2fcce;ID=9c4fbd59-9574-40bc-a8b1-56d784b1ae07;orig_id=NODE_1_length_41.orf00044;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00044-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	26146	26706	.	+	.	Parent=9c4fbd59-9574-40bc-a8b1-56d784b1ae07;ID=35337e42-f9d1-469c-af90-c6b99f136ed3;Name=35337e42-f9d1-469c-af90-c6b99f136ed3
+NODE_1_length_41	.	Shine_Dalgarno_sequence	26132	26137	.	+	.	Parent=9c4fbd59-9574-40bc-a8b1-56d784b1ae07;ID=7a4d578e-2a07-4005-8f28-6e3c71c972fb;Name=7a4d578e-2a07-4005-8f28-6e3c71c972fb
+NODE_1_length_41	.	CDS	26146	26706	.	+	0	Parent=9c4fbd59-9574-40bc-a8b1-56d784b1ae07;ID=9c4fbd59-9574-40bc-a8b1-56d784b1ae07-CDS;Name=9c4fbd59-9574-40bc-a8b1-56d784b1ae07-CDS
+###
+NODE_1_length_41	.	gene	26705	29006	.	+	.	owner=sunlc@jaas.ac.cn;ID=c4823efb-62f5-47ae-88f8-643e4bef092f;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00045;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	26705	29006	.	+	.	owner=sunlc@jaas.ac.cn;Parent=c4823efb-62f5-47ae-88f8-643e4bef092f;ID=a3d4e78e-6f57-43d4-a276-fa4717e9bae0;orig_id=NODE_1_length_41.orf00045;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00045-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	26715	29006	.	+	0	Parent=a3d4e78e-6f57-43d4-a276-fa4717e9bae0;ID=a3d4e78e-6f57-43d4-a276-fa4717e9bae0-CDS;Name=a3d4e78e-6f57-43d4-a276-fa4717e9bae0-CDS
+NODE_1_length_41	.	exon	26715	29006	.	+	.	Parent=a3d4e78e-6f57-43d4-a276-fa4717e9bae0;ID=b9a31dd2-f418-4f3c-aaff-a01cf8da29b6;Name=b9a31dd2-f418-4f3c-aaff-a01cf8da29b6
+NODE_1_length_41	.	Shine_Dalgarno_sequence	26705	26709	.	+	.	Parent=a3d4e78e-6f57-43d4-a276-fa4717e9bae0;ID=fef16e94-29bc-4b1c-8117-63d17e16a464;Name=fef16e94-29bc-4b1c-8117-63d17e16a464
+###
+NODE_1_length_41	.	gene	28993	29677	.	+	.	owner=sunlc@jaas.ac.cn;ID=cca03c3b-ae28-474a-9d56-3e1b1b0af315;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00046;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	28993	29677	.	+	.	owner=sunlc@jaas.ac.cn;Parent=cca03c3b-ae28-474a-9d56-3e1b1b0af315;ID=9023181c-69fa-488a-8c94-14f04330dca3;orig_id=NODE_1_length_41.orf00046;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00046-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	28993	28996	.	+	.	Parent=9023181c-69fa-488a-8c94-14f04330dca3;ID=3609e123-69bc-4cfc-a49f-deca303e7ef0;Name=3609e123-69bc-4cfc-a49f-deca303e7ef0
+NODE_1_length_41	.	CDS	29006	29677	.	+	0	Parent=9023181c-69fa-488a-8c94-14f04330dca3;ID=9023181c-69fa-488a-8c94-14f04330dca3-CDS;Name=9023181c-69fa-488a-8c94-14f04330dca3-CDS
+NODE_1_length_41	.	exon	29006	29677	.	+	.	Parent=9023181c-69fa-488a-8c94-14f04330dca3;ID=4115c265-df9d-4477-a4fa-e16fc4925edb;Name=4115c265-df9d-4477-a4fa-e16fc4925edb
+###
+NODE_1_length_41	.	gene	29681	32575	.	+	.	owner=sunlc@jaas.ac.cn;ID=a7b7f4d4-02c1-417c-909d-a3920c09012a;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00047;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	29681	32575	.	+	.	owner=sunlc@jaas.ac.cn;Parent=a7b7f4d4-02c1-417c-909d-a3920c09012a;ID=46d941aa-b58d-4331-82fc-5c6a089177c2;orig_id=NODE_1_length_41.orf00047;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00047-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	29690	32575	.	+	0	Parent=46d941aa-b58d-4331-82fc-5c6a089177c2;ID=46d941aa-b58d-4331-82fc-5c6a089177c2-CDS;Name=46d941aa-b58d-4331-82fc-5c6a089177c2-CDS
+NODE_1_length_41	.	exon	29690	32575	.	+	.	Parent=46d941aa-b58d-4331-82fc-5c6a089177c2;ID=60b1124e-8b3b-472b-b695-f2c994217758;Name=60b1124e-8b3b-472b-b695-f2c994217758
+NODE_1_length_41	.	Shine_Dalgarno_sequence	29681	29684	.	+	.	Parent=46d941aa-b58d-4331-82fc-5c6a089177c2;ID=32839a60-bb49-4613-bfb2-799731fb8406;Name=32839a60-bb49-4613-bfb2-799731fb8406
+###
+NODE_1_length_41	.	gene	32574	35683	.	+	.	owner=sunlc@jaas.ac.cn;ID=e89ecd61-e44d-4cc6-ab74-6146e5373414;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00048;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	32574	35683	.	+	.	owner=sunlc@jaas.ac.cn;Parent=e89ecd61-e44d-4cc6-ab74-6146e5373414;ID=476322bf-227c-439b-9600-c832b8c76847;orig_id=NODE_1_length_41.orf00048;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00048-00001;date_creation=2020-09-19
+NODE_1_length_41	.	CDS	32585	35683	.	+	0	Parent=476322bf-227c-439b-9600-c832b8c76847;ID=476322bf-227c-439b-9600-c832b8c76847-CDS;Name=476322bf-227c-439b-9600-c832b8c76847-CDS
+NODE_1_length_41	.	exon	32585	35683	.	+	.	Parent=476322bf-227c-439b-9600-c832b8c76847;ID=fc73f343-b93d-4015-8c07-509c4fa69e3d;Name=fc73f343-b93d-4015-8c07-509c4fa69e3d
+NODE_1_length_41	.	Shine_Dalgarno_sequence	32574	32579	.	+	.	Parent=476322bf-227c-439b-9600-c832b8c76847;ID=cf3676be-3f45-423b-a23e-d010abce33e2;Name=cf3676be-3f45-423b-a23e-d010abce33e2
+###
+NODE_1_length_41	.	gene	35675	37726	.	+	.	owner=sunlc@jaas.ac.cn;ID=5fae5462-5df1-4592-bddd-5391bc9aa3bd;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00049;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	35675	37726	.	+	.	owner=sunlc@jaas.ac.cn;Parent=5fae5462-5df1-4592-bddd-5391bc9aa3bd;ID=b01c1bcd-612b-45f5-840e-9c3326565eda;orig_id=NODE_1_length_41.orf00049;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00049-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	35675	35678	.	+	.	Parent=b01c1bcd-612b-45f5-840e-9c3326565eda;ID=336ce13a-494c-460b-9b33-c286d234c3bd;Name=336ce13a-494c-460b-9b33-c286d234c3bd
+NODE_1_length_41	.	exon	35690	37726	.	+	.	Parent=b01c1bcd-612b-45f5-840e-9c3326565eda;ID=0fcd47b8-c7ec-4646-b1e8-f3f94c77ee7d;Name=0fcd47b8-c7ec-4646-b1e8-f3f94c77ee7d
+NODE_1_length_41	.	CDS	35690	37726	.	+	0	Parent=b01c1bcd-612b-45f5-840e-9c3326565eda;ID=b01c1bcd-612b-45f5-840e-9c3326565eda-CDS;Name=b01c1bcd-612b-45f5-840e-9c3326565eda-CDS
+###
+NODE_1_length_41	.	gene	37726	38071	.	+	.	owner=sunlc@jaas.ac.cn;ID=558af17b-a572-4e05-a0b9-1db1f09f9521;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00050;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	37726	38071	.	+	.	owner=sunlc@jaas.ac.cn;Parent=558af17b-a572-4e05-a0b9-1db1f09f9521;ID=19f3ff29-1b90-4326-b509-ae5952eace92;orig_id=NODE_1_length_41.orf00050;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00050-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	37736	38071	.	+	.	Parent=19f3ff29-1b90-4326-b509-ae5952eace92;ID=1f1f4c19-996a-4710-a073-89230c77656c;Name=1f1f4c19-996a-4710-a073-89230c77656c
+NODE_1_length_41	.	CDS	37736	38071	.	+	0	Parent=19f3ff29-1b90-4326-b509-ae5952eace92;ID=19f3ff29-1b90-4326-b509-ae5952eace92-CDS;Name=19f3ff29-1b90-4326-b509-ae5952eace92-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	37726	37730	.	+	.	Parent=19f3ff29-1b90-4326-b509-ae5952eace92;ID=393f3263-9296-4fa0-8040-b4dc7330da15;Name=393f3263-9296-4fa0-8040-b4dc7330da15
+###
+NODE_1_length_41	.	gene	38049	38615	.	+	.	owner=sunlc@jaas.ac.cn;ID=7c23aa3f-1ba9-4d67-8439-24bba4f7fe14;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00051;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	38049	38615	.	+	.	owner=sunlc@jaas.ac.cn;Parent=7c23aa3f-1ba9-4d67-8439-24bba4f7fe14;ID=fb60ac24-d944-44db-b021-24c770a472a3;orig_id=NODE_1_length_41.orf00051;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00051-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	38058	38615	.	+	.	Parent=fb60ac24-d944-44db-b021-24c770a472a3;ID=7296d8b0-696b-4fee-886b-487a90379d38;Name=7296d8b0-696b-4fee-886b-487a90379d38
+NODE_1_length_41	.	Shine_Dalgarno_sequence	38049	38052	.	+	.	Parent=fb60ac24-d944-44db-b021-24c770a472a3;ID=76f1cff8-f4a2-45c6-846d-a6609e3e93ee;Name=76f1cff8-f4a2-45c6-846d-a6609e3e93ee
+NODE_1_length_41	.	CDS	38058	38615	.	+	0	Parent=fb60ac24-d944-44db-b021-24c770a472a3;ID=fb60ac24-d944-44db-b021-24c770a472a3-CDS;Name=fb60ac24-d944-44db-b021-24c770a472a3-CDS
+###
+NODE_1_length_41	.	gene	38614	38932	.	+	.	owner=sunlc@jaas.ac.cn;ID=cc74745e-6dde-431f-b09c-2b6e93d80bd9;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00052;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	38614	38932	.	+	.	owner=sunlc@jaas.ac.cn;Parent=cc74745e-6dde-431f-b09c-2b6e93d80bd9;ID=ab967b8f-afb2-4f36-870a-ea6f347e679f;orig_id=NODE_1_length_41.orf00052;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00052-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	38614	38618	.	+	.	Parent=ab967b8f-afb2-4f36-870a-ea6f347e679f;ID=5f3d953f-3cfb-4011-af6e-537be7b64efd;Name=5f3d953f-3cfb-4011-af6e-537be7b64efd
+NODE_1_length_41	.	exon	38624	38932	.	+	.	Parent=ab967b8f-afb2-4f36-870a-ea6f347e679f;ID=3ea662e4-dca6-459b-8924-1dc43e320daf;Name=3ea662e4-dca6-459b-8924-1dc43e320daf
+NODE_1_length_41	.	CDS	38624	38932	.	+	0	Parent=ab967b8f-afb2-4f36-870a-ea6f347e679f;ID=ab967b8f-afb2-4f36-870a-ea6f347e679f-CDS;Name=ab967b8f-afb2-4f36-870a-ea6f347e679f-CDS
+###
+NODE_1_length_41	.	gene	38932	40879	.	+	.	owner=sunlc@jaas.ac.cn;ID=17be5a81-4eda-4f45-bf32-4ab5f897c506;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00053;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	38932	40879	.	+	.	owner=sunlc@jaas.ac.cn;Parent=17be5a81-4eda-4f45-bf32-4ab5f897c506;ID=796828ef-d9f2-4619-b6a0-0f3e68eb13ee;orig_id=NODE_1_length_41.orf00053;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00053-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	38932	38936	.	+	.	Parent=796828ef-d9f2-4619-b6a0-0f3e68eb13ee;ID=5247958b-0e94-4bde-90fc-08998f6fc6a1;Name=5247958b-0e94-4bde-90fc-08998f6fc6a1
+NODE_1_length_41	.	exon	38942	40879	.	+	.	Parent=796828ef-d9f2-4619-b6a0-0f3e68eb13ee;ID=25fd9d86-0088-4839-8fac-37959b5ff01c;Name=25fd9d86-0088-4839-8fac-37959b5ff01c
+NODE_1_length_41	.	CDS	38942	40879	.	+	0	Parent=796828ef-d9f2-4619-b6a0-0f3e68eb13ee;ID=796828ef-d9f2-4619-b6a0-0f3e68eb13ee-CDS;Name=796828ef-d9f2-4619-b6a0-0f3e68eb13ee-CDS
+###
+NODE_1_length_41	.	gene	40862	41013	.	+	.	owner=sunlc@jaas.ac.cn;ID=38254efc-6cca-4abf-98ef-fe9664717164;date_last_modified=2020-09-19;Name=NODE_1_length_41.gene_49;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	40862	41013	.	+	.	owner=sunlc@jaas.ac.cn;Parent=38254efc-6cca-4abf-98ef-fe9664717164;ID=77a0ea12-06da-4e00-86e4-6a12a2aea3e5;orig_id=NODE_1_length_41.gene_49;date_last_modified=2020-09-19;Name=NODE_1_length_41.gene_49-00001;date_creation=2020-09-19
+NODE_1_length_41	.	exon	40876	41013	.	+	.	Parent=77a0ea12-06da-4e00-86e4-6a12a2aea3e5;ID=66640644-6268-4e97-a652-10e79b02b022;Name=66640644-6268-4e97-a652-10e79b02b022
+NODE_1_length_41	.	CDS	40876	41013	.	+	0	Parent=77a0ea12-06da-4e00-86e4-6a12a2aea3e5;ID=77a0ea12-06da-4e00-86e4-6a12a2aea3e5-CDS;Name=77a0ea12-06da-4e00-86e4-6a12a2aea3e5-CDS
+NODE_1_length_41	.	Shine_Dalgarno_sequence	40862	40866	.	+	.	Parent=77a0ea12-06da-4e00-86e4-6a12a2aea3e5;ID=aa3bbc6b-3201-421a-a0de-426f775fdd59;Name=aa3bbc6b-3201-421a-a0de-426f775fdd59
+###
+NODE_1_length_41	.	gene	40958	41173	.	+	.	owner=sunlc@jaas.ac.cn;ID=314a8ae4-4297-4293-9d87-849cdd0fe055;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00055;date_creation=2020-09-19
+NODE_1_length_41	.	mRNA	40958	41173	.	+	.	owner=sunlc@jaas.ac.cn;Parent=314a8ae4-4297-4293-9d87-849cdd0fe055;ID=55b15bbe-e358-4735-95a5-e6e0b19254cd;orig_id=NODE_1_length_41.orf00055;date_last_modified=2020-09-19;Name=NODE_1_length_41.orf00055-00001;date_creation=2020-09-19
+NODE_1_length_41	.	Shine_Dalgarno_sequence	40958	40962	.	+	.	Parent=55b15bbe-e358-4735-95a5-e6e0b19254cd;ID=56d19469-e306-41cc-b56c-f59f566ab80d;Name=56d19469-e306-41cc-b56c-f59f566ab80d
+NODE_1_length_41	.	CDS	40970	41173	.	+	0	Parent=55b15bbe-e358-4735-95a5-e6e0b19254cd;ID=55b15bbe-e358-4735-95a5-e6e0b19254cd-CDS;Name=55b15bbe-e358-4735-95a5-e6e0b19254cd-CDS
+NODE_1_length_41	.	exon	40970	41173	.	+	.	Parent=55b15bbe-e358-4735-95a5-e6e0b19254cd;ID=4dd36ece-ccc3-4935-a6dd-ade8a31b7dc9;Name=4dd36ece-ccc3-4935-a6dd-ade8a31b7dc9
+###
+##FASTA
+>NODE_1_length_41
+tctcccacctaacccgtcccgtttaccccgtgtaccctctttcttgaggaatttctagga
+actctcttatcaagagtccttatcagtagctatagggtatagtagagctatcatgcatat
+aaccaagcatgttatacctatacagaggtgcacatcaatcatagcggtactccttatcaa
+ccttatggaatgcatcttatcaaggctcttatcagttgtcaacacctttcttaatatatt
+tatatagaacttcactcttcgagtgtacagtgctagagagatcactaggaggatcggtag
+ggatcacttatctacacttatcaactacacttatcaatgtatatagagaggttctaggtt
+ctttctctgagcgtctatattggttcggtagcttgcctctatgcatttctttatctattc
+attctatgcatttctttctatcacttcatatcatagttcttatcactattcttatatcta
+tattcttattactttcttatatagttcttatctatatgttcttatcagtacttatataga
+tagttctatatttatattcttatactaatatttataagaagtttattttattctattcta
+ttctatgagtgcaacttcaaatattatctatatatattaataacttagcctacccctgaa
+taaatactttaaagcgtatagaagtactagtattgattaatttatgatcacatgaataaa
+ttatttatagaaagtgcttgacgtataaattctaacgtattactatgcactcataccaag
+cgatgacgagtccttgagttactctttaaagtatttattcagatagttctaattagtgta
+tcaatcaatcaaggtatttaccatgcaacagtacactatgattaacctactcactgaaca
+ggttgtaaacgttgaagctaacagtcgattacatgcacgtattaaggcttgtgcaatagc
+taagcagcatgaagatgagagatgttattggataactaaacaagcatatcacgatgtatc
+aggttatgaggtattggcttaacggctgatacactaattagaattatcttagttcttatc
+agtgtatcaatcaatctagtggtgagcactatggaacaattagcagagcatatcaatagt
+acgtacctatcgaaagatgtacactctgatggtaagttatgggttatatttaatcacgat
+ggtaaagactaccaacgagaggttaagtttaaaccctttagtaatttcccaattgagtat
+attaatttcaaaggtaagcagtaccaagtgaatactgttaaaagtgtatcggcttaggct
+gatacactgataagaattaaattgaataaatatgaaattaagtgttgacattagaatctt
+taatgattaagatgacaaccatagcaaataagctaggctagaaacagaagcttctatgag
+gtagatgttaaaggtgaatcgtaaggcagtagcaagccgttaatgatgtaatgtgctaca
+taggcggtgtaaggtaagccagaacaaattacctgagcggtgaatcccgtcctctagccg
+atattagagggatgtactaagtcctttaaggataaacttattacacaagtagtaagctct
+tatcaaactaggctttaaggcgttaagtctttaataactccgtaaggatttatatagttg
+tattggtatagggtctcgcactcacaaccgatacaacgcttataaatctttctaaccatg
+tactaaggagtacacctatgactaactatgtagtaaagaatgctgaactaactgctgaac
+aacatgaccgcttacaaggtaaaggttatacatttgataatactaacggtgctgatttaa
+cagacggtaatcactttatcgtgtctgatgctatcgatgagtatagcaccaacgctaacg
+acctttgtttattgacgtgtggtgcttttgatctgtatgaatcagtagatcaaatcattg
+atgtactacctgaccgcttcaagtaatcttacagcatgattggtgttgccgatcatgtta
+ataaggttatttaacaacccacataaggtgcacactatgaatctattaattactgttgac
+gatattaacaaagcaatcgcatctatctctaagcgtggtaagcaattggataacgacatc
+catgttgctggtgtgagttgccttaagcactgtgacgcacatggcgatagtactttgttg
+gataagctagttcaagctatgcctaaaggttcacgcaaagcagcattctgtgaatgggcg
+ttagcgtatggaaatgtacgtatgcttgaccgtgagaacaaagcggataaaagcgctatt
+gaacaaggtcgattgttcgctaaggataagtctaaaacttatgatgaagctggtgctatt
+gctaaccattgggtagattttaaacctgaaccagacctgttaacgactttcgatgttcat
+gctcaagtggctgcgcttattagtaaatacaataaagcgattaacaaaggtgtggatatt
+gaaggtaaagcggacgcagccaaagagttgcgtacattgttaaaccagctggaagtagag
+gcttaatatgaagtctaaagtaactctacctaacaagttgcgtgctggtggtgaaatacg
+tcaacacaaatttactaaagatgtggcgctatttcatcctaacgggttaagttatacggt
+actagttaatggaggacctcgtgcgcggtttggacaacgtggtgaggttgatctaggtcc
+acagatagggttcacacaaacatactccgaggaacgcgcagaatgtgttgaggataattg
+gttgcctgttccagaaggtactgtaataacgattgaggtgtaacatggaacctactatta
+aacaactgcaagacactattgcacaacttaacgaagcgttagagaattgggactatgttg
+tatctcaagaaggtataccagtacagctacctaccactaaaaagatggtaggtgcaaatc
+gtggtttatgtgtcgcattcttcagtgattatcctgattggtttattgatgaaatgtggg
+accagttaaagaatccagaaggtacttggctattccctgtaggaggtcgggaagagttct
+atagtgattgtaaccgatgggctaaccctaaacgtaaggagttagctgaacgttgtgtcc
+cttacttacaagctaaactcgaagctgtattgcttaaggaaggtggtgaatgttcttagg
+attaccttatcatttctggtatggtgtatgtttagctatacttgttgttatattagctga
+aattgcagcacgtcatagaggaaaacgcgatgaaggatcgtaaatacgattaccaatcac
+atgcacacatacctagctgggttactgtgaagattgtatcttatcacacgtctaagattg
+ttatgcttaagtcatctatccatacggactggaaagattatcgggcactcagtcctagct
+attcagatgattggttagatcatgagatattaaaagataatgactttctcaaacatttgg
+agcgctttaaatgacattacttgaacaagtctttgtattcttcctatgtatagctgctgg
+gtgtatcctctcttattttatctgtaaggattgttaatatgtcacatataatctatggta
+tcgaacctattatggctgtaattgcacagtgtcttgaagaaaccctgttattacaacaag
+ggcagtaccctatacactattcagctaatgcggaagaagtccctagtacgggtaaacaag
+tacatgctatgtggttatgcgctcataactttggttcacctttccttgtgtatagcggtg
+ctaacgatgcagataagttatatttaaacccacaagtaaacttaatgtatcgtgctgtac
+atgatcatgatcacgcatttgcttacgagcttgggcgtggtacaactaagtacgaagacg
+aacgttatcttaactgtctaatggctaaacgatgctacgagtttgctttagctaataaag
+atgttgtgttagctatgcaagtattctttataatgtaccatgatactgtagggcaagtag
+agtactttaaagagaagggtactttctgcgaagatcaacgtgctgaaacaacacgaagac
+tagatgagtgtgcaggttatcgtgccttaaaacaaggtcgtactcgtattgctaaagcgt
+atatgttaggttatatggggcaatgtggactatgaaaggcgtacttacaactagtttatt
+ctgcttaacgtatgcagtgttgtctgcgtatgagtggttagctaatcctagcaaggaaga
+acatgagcatacttgagtggttgtttgtgatccactactttataggtgcagcgctgtgtt
+tctctatatggacgctacctatatctaataagtggagatgtattattctattctatctca
+ttctagcgataccagtgcttagctggttatctgaaagtaattaaggtgacgttatggacg
+taagacttcaacaagttattgagcagtacaaagataagaccacaccgattcgcttgttct
+atatggatgatgacggtactgattggttggaagaaagtggttgtatcggttatgttattt
+atccacaaggtgcggtatctgcccatgactttgaattagtaggtgctgggactgtactgc
+ataatgcaatcggtaaggttgttgatgtgcagactggacgtattctatatcagcatggga
+gctaccagaatccgaacttaaaagtagtgggtagtcacctacgtggttgggaaataagac
+atcctgacggacgtatggttgcgttctatcgcacaaaaggaccagctacccgcttagcta
+actacttaaacggtgtgactaattcaatctagtatatttatagcagtattctatatggat
+gctgttagtaaatattctcaacaactctaaaggagttaaacaatgactaaacgtaacgct
+tatcctgtcggtaaatttgataatgtagagtggaacggtaatcctatctacaaccataaa
+gtagagcaggtactccgtgctgtgttagtacccgacgcttatgttaataatgttaatgca
+ttaagtggtgggtttacttacaaccaacaacctacggaccatgttcgtgtaggtaagagt
+actgtgcgtggttggtgctttgaacctacaacaaacagcttcttaattcgtttaggtatt
+aaaccaagtgctttgttactacgcttagcccaacaacatcttaatggtgtaatgctgtta
+cgtgaacaaggtgaagacttattcatcccattcactgcgttataccaagctgcataccta
+gccgtatttaaacctgagttacttaataaagaactctatgagtatgttagcaaacacggc
+acacctaaacatttcgctgtagaagtaaaaggagttaaatagcatgactactaaaaaaca
+atatcctgatttctgtgttgctaactattcacctgagcactttaaagctactaagaaagt
+gttagcggactgcggtattgagctacgttacttgatgccacaggaagattataaacccca
+gtatgaccctgataaccctaaaggtattcgagttaaaggtaaagttgctactgtggctgt
+tactgatggtggttttgaacaggctaaggcagggactccacttacaatcaaaactagaaa
+catctaccgtcatgtaggtaaactaaacattttcgaaggtccagacttaacagattattc
+taaaactttgtcggagttggcgggtaaggatataacatttgatgagtatattaagttacg
+tacattcggtgtaaagactgccttatttaagaagttcctaattactcttaaggctatcat
+caatcactttcgttaataggtagaacatgtcaattaaaggttatagtgttacacaagttt
+atgttgatgaacttcaagaactaactaactatgaacaacgtaagcgtgaacaacgtgagc
+gtaagaacattgtcaaggagcgtaagctggatcgtcgctctaagcgtgaggctaaacgaa
+atgcatgggcataagtataatgtaggtgatcgtgtttaccgaacagtttcgagtcccttt
+ataccaaaagggactaagggtactgtaggtcattgtcgtatgagtcacggtatacaggta
+aactttgacaacgggtctatctggtattgttcagataaatttattaaacctttagtgagg
+gtagtcggatgaagttcggtaaagttaaagtaggtatgcgtgttcgtgttgcacataatc
+ctaatggcaattcctttgaagaagaattgcatggtcgcataggtgtggtgagtgttaaag
+aacctgcacactataatgcatggggcaatttatctacatgcgtgtattttgaaaataata
+catgggaccacgattggggttcacatttaaacttggaggaagttaaagatgaagcgtaag
+aattgtgttgtaggtcaacgtgtcgaagttaaactcgtaattggttttgatgcagatcac
+tttagtataggtgatacaggtgttattatgcatacggaagacactggtgatacagagcca
+cacgtgtacgtaaaatttgatggtagcgtagaaacttgtgaacgctttctataccctagt
+caattacgtaaggtgaaaggagatgcttcatagcagtgaatggttggaccaagcgagggc
+tgtaccattaggtcagaaacgtagggtatggcatggagcagagcagactaaagcaatgga
+tgtttacaacaacttagacagttggtcatgttggtgtcatcgttgtcatgaaggtggtaa
+ggtctggaaaacacacttagctagggagacattagttcaagcacccgtcattaagcactt
+cttgaactataagcagctatgtacgcttacagaattagcggagaagcacgaaagcaagta
+cagccgtatggttgtactactccagagcaaaggtgtctctacgacgattctacagcccta
+tagacctatgtataatttagaggacgatcggttagtatttagcttcgaaggtgttgacat
+cggtagagattgtacaggtgtctcacctatgaaatggtataagtactataaagaaaatcc
+taagagctttgtgtacttgcaaggcaaaaatcaattcgatacacgagagcctgtggctgt
+tactgaggatttgttttcaagtatgaagataaaacattactcaggttgcagtgcgatgtg
+tttactaggaactaattttgaagatgaaaaacttaacttcttatcatcccgtaagccagt
+tcttgcattggatggcgatcttgcaggacaaactgctgaaaggcttattagtaatcgtct
+tagtctttttgctataccttacttgcgggttaatattcctttaggacttgaccctaagga
+tttaaaacctaatgaaatcaaacaattatttggagccgtctaatgagtggtaagtatcgc
+tttattaagtttaatgtaaacagtctcagtgagtgggtattagctatacaacatgcagag
+aacaatggattcccagtacatgaatcacatatatatataagctagatatgtataggggtg
+gttatggttcggtctgtgtacgtttgtataaggatgcaacaagtttaaactacaattacc
+atgaaccttgtgggttcagcacgttagaggttacatctatagcacaattcaaacatgctg
+taaattgcttctgtcacgatggttatttaaatgatgaaaacttaggagaaatctaatgtt
+atgcaacggtattaatattgatgtgaacgcttaacagtaaaccaattagctagtaagttg
+aaataattaggaaattttatgtctgaccgtgaaccaattgatcggaatgtgttacatgca
+ctaagtgataagaagcgtttcgatcttctttatacgtctgtacctaaagatatgttagac
+gctaacacagtccgattactggattggtttggtgtttactttaaggagtatcctgagcat
+caatatgtagattggtctgcatttgatacgctggtgaaacttaaaggtaacatgacgaaa
+gagcaaatcactgctatggctgcgctaactactttattacgtaagcctgtgagtgatgat
+attatcaagaatacttgtgatcaacttgaagtactaaggttcgaaggtgaagtcggtatg
+atccttaagcgcttccagagcggtgaggagttcgatttagcaagtgagcttgaggtagct
+acccaaacacacaaacaacgcgttacaacgcaagtagaagcgctttggtgcgatacagat
+attgcagagttaattgacttgtctgctgatgatagtggttataagttcgattgtttacct
+gacgttatctgtgatgatcttaaaggtgctactgctggtaagaacattgcattagctatg
+cctaccaacgcaggtaaaacatcattattctgtgcgattgctaagtcatttgcagtacag
+cataaggacttggtagaagctggtgaggcagagttccagcctatcttgtacttgattaat
+gaaggtacggcagaggacattatgcctcgtatatatagtacagtgcttggtgttgatagc
+agtaagctgttcgaaatgcgtaaagagttaggtggtgatggtttacgtgaagcttacaag
+aaagtagttggacgtattgatgctattcgattagtgaatattcacggtgcaacaactgcc
+gatgttaataagttaatcagtaaacataaaccattctgtgtgatcacagacatgactgga
+cgtattcgctgtgtaggcgctcaagctgctaatgatgtacaacagttagaaacggtgtgg
+gatacgatgcgacagttcgcagcaattcataagatgattcatatcggaagtattcaggtg
+agtgctgagggtatggatatgttatttcctccactatctgcattgcagaatagtaaaaca
+ggtgtacagactacactggacttagccatctttggtggtgcttggatgcaacctacagag
+gatattgagtaccagcgtggtattagcacaccgaagaataaacttaaacgtgcaggtaag
+aaatcgtatctcaaagccgagacattctttaaccctgacttaaacacttggaaatgatta
+tgaatagatttaaagttggtgatctagttcgatgctgtaactctttcggttgtgaaactg
+taagtaatggtagagtttacaaagtcacaatagtccgagataatacaatcggattagata
+atgggttcggtacattctacaatgcgaatcgttttgtactatttaaagcaggtaaacaag
+aggttaaggaaatgaaacaagaacaacgagttatcgctacacgtttaacaggcggttctg
+atctagttatcggtgaagtatacattggtaattggaatcagtttgcagccatagtacaga
+ttggtgatcaacattataatgcaaagtacttctcgttagaggttcaacttacacctgaaa
+aagtattcgaagctatccgagcaggtgaaaccttagagcatttcaataatattcgacagg
+tttggcaacgagttgaaaatccgcgttgtttaagttatggcggtattgcgagtggtgtct
+tccgtattgctaagcagtatattgatttctttggacataaagtaccagcacctattagag
+atgggaataagcatgttggtgatttctatggtgtaagctttagtaagaacacagtttacc
+agtgtgcacgtcagcatgcagtacgtaatattgaggctggtactgcctgctattgggcta
+atgagcaagacgcagatattgttcgtaaacttattcgtcaaccattcgataacaaaacag
+aggttccaaacgtatgagtcatgatctaattgaagattacttagctaagactaagaaccc
+tgtgcagcttgtcaaacactttgatgaagtacccgaaagtaagattgcgtatcctttaat
+tggtcagattaaatatgatggtgtttatatcatgatcgttatacataacggtatgcctac
+agcttatagccgtacaggtaaggaatactaccgagaactttatgagactgattacttcat
+gagtatctatggtttaactgatggtgtttacataggtgagctggttgcacctacaatcac
+gttagaggaactttctggcttagtaagtactaaccgtaaggcagagtggggagcagccga
+tatagaggcaatggatcaaagctacgtgatgttacacgattacttgcactttgatgagtt
+cttagctggcggttctgttcgctattatactgaccgttatgcagaattagcacgtatctt
+agaaattgcccaatgtagtctataccttgtagataatgcaatcattagttctaaagaaga
+tgctgagcagtacgctgatacacatattaagttaggtcatgaaggtgctgtgtttaagca
+ggaccttgattggatagctggtcataaaggttatcgggcaatgaagattgttcgtggtct
+tcatcttgatctactttgcgtaggggttgagtatggtaaaggtaaacgtgcaggtcaaat
+tgctaagcttaaattcgcttataaggggagtgtgttctccgctgacttgggtaaaggatg
+gactgatgagaagcgcaagcaactcacagcgtattatgaaatctaccaaagttatgaacc
+agaagtacaaccagcaatcaaagcatatacacctgtaggtaagatttgggaagttaaagc
+acttcaagaatcaagtacaggtaaagcattacgattacctaaagtggttcgaatacgtga
+agataaggaggaacctgatgcttgaatggtggaatgctcttgaagggtggcaacaaacac
+tactgtttatatctgtagtagtgttcctaattagtcgttaatgggtactgtaagtaactg
+atttagtagttagttatttgaagttgtactaatagaaggagatataaatatgatattaaa
+tattataaatataactataataatatacataagtaatattatagtattcttatttatact
+tcttcttataaatatacttaaaggtaaataatatggaggtactatgctaaccgactgtat
+agatcatggtaaaactaaatcactaagtcccgaaggttatgttatggtacttaatccata
+taagaaacctagaattagtagactacatcgcattgtatactgtcagtctaataatataca
+tatgcaagatattgaaggtttagttgtgaggcataagtgtgataaccctagatgtgttaa
+tcctgagcatttagagatcggcacacttgcggataacaataaagatcgtgctaaacgtgg
+tcgatctgctaaggttgtaccttcgaaacataagcttactactgaggatatatccactat
+acgtagtaggtacattaaaggtaaagcagggaaatataaccctaatggctatgctgcatt
+agctaaggaatataacgtagatgagaaagttatatacaacgttgtaaaacacaaaggtag
+atatgcatgaaacataattggattattctggattttgaggtggagaactatgagtactgt
+ggttctttagctagcccacattgccctgagaactacgtagtagctgctggttgggcgtgt
+gataatggtttagttaaatcagagtattataccgaaccagatcaatgggtagcatctaca
+gcgtttgatgaagatttattaaactctaaagtattagtagcccacaacttatcttttgag
+ttacattggttacttgcaactaagtttgaacttattaaaaagttcttaaataacggtggt
+cgtgtattctgtacgcaatatgcagagttcttgattacgcatcaaactgaaatgtatcct
+aagcttgaagattgttctgtgaagtacggtggtactaaaaagattgatgcggttaagtta
+ctttgggagcaaggttacaagacttctgaaatcgaccaagcattgttaatggaatactta
+gctgatgagcatagcggtgacgtagcaaatacacgtcgagtatgttttgctcaggtagcg
+tacatgcaagaagttggtatgtatgaaatggctaagatgcgtatggatagtttattgttt
+aatgctatcgcaacgtataacggcttgtacgtaaacatggatgtagctaagaagaacatg
+gatgagcagtacaaacgtattgcagagttacaagaggatgttcgtagttatctacctaaa
+gatttacctgctgagttagagttctcattcacttctggttatcatatgagtgcgttctta
+tttggtggtacgattacctacgataagaaggtgtcttatgatcctcctaagtttgaacag
+gttgaggtttatcaattcacacgggatgacggtacggtagagtacttagaacctgacacg
+atcaataagattgaagactgtgagatcgaacgtggtggggttattactaagtataaagct
+gggcgtaataagggattacctaaaacatttaagattgattcaggtgtggagaagcttaag
+tggggtaaaggaacataccgcttcgaaggtttggtaaacttcgatgaactacctaagcat
+gtatccgagcagttcacaggtgatcgtgcagagttcaaaggtaagcgtgtacatacagct
+tgtggtactcctgtatattcgacaggtgatgatgctttagacttagtagctaagttcaca
+gaagcagcacagccgttacgtgacatgaagaagttaatcaaggataccacgacgtattat
+cttgttgaagatgataagggtaagcagtcgggtatgcttcaatatgttgaaccaaatgga
+atcatccatcaccaattaaacaactgtgcaaccgttacaggtcgcttatcaggttctcga
+ccgaatatgcagaacattccccgagatgggacatcgaaagttaaacagatgtttgaatct
+cgtttcggtaaagaaggtcgtattgttgaggtcgattactcagcacttgaggtcgtagca
+ctagctagtatctcaggagataagaacttactccaacagttgattgatggtacagatatg
+cactgctatcgtttagcaggtgctttaggagaagattatgcaactgtgtttgagaagtgc
+catgataagtctcatcctgaacacaagaaatataaacagctacgtaccaatatcaagcct
+cgtgccttcgctaaccaatacggggcttccgctatgggtattagcttctcaacaggatgt
+tcacttgaagaggctgagcaatttaaagagacagagcgtaagttatttccagagtcttcc
+acatacgctgaacgagttgtacgtccgcaagtcgaacaaaacggactcacagtaccgatg
+gaatcagaactcgttaatggtgtatggaagcactttagacgtggattctttaaagctaac
+agtggaacctgctatagctttcgtcaatttcccaagtacgttaagggcgtaggtgagaaa
+tatgattataaagacacacaaatcgctaactaccctattcaaggagaagcatcccttatt
+gttcaagcggcatgtggtcgggttattagagaacttattgctaggaacttcgctggcggt
+ttggtgttacctatcaatactgtgcatgatgcttgttaccttgattgtgcaaacgaagcc
+ttagccaatgaatatggtaaacttgtaaaagagatcatggaatcaacaccgaaatatatg
+gcagagattattccagcgcttaaagaatggcgctacgacacgacaccttttccagcgcaa
+gctgagtatggtataaatatgatggataaagtggatgtaacttaggaggtattatgttta
+gtgaagaactacatacattgtttcagtatgatccagacacaggcactattacacgcttag
+tccgtatgggtaattactccgcaggtacagtgtgtggtggtgtagccttgaatggttatc
+tagtagtaacctatgcagggaaacagatgctagctcacaggctagcatggttcttacact
+atggcaaagaacctccgaagtgcattgaccatataaaccaatgtaagacagataatcgta
+tctctaagcttagagcagcgaatcgtagtcaaaaccaatgtaatattccagtaagtcaac
+gctctactacaggtatcaaaggtattatgcctgtacgtggcggtaagctatttcgtgcag
+aagtatgcttaaacggtaaacgttatcagaaacactcaaaagatattgaggtactaaagc
+gttgggtagtaaccaaacgtgaagaacttcacaaagaatttgcaagccattaatactcag
+gagtttaactatgaacgcattattagcacaagcagcagcagcgatcgaagcaggtaaagt
+acaattagacatgactgaaactacagcaggtggttttgagaaacgtctgttaggtgaagg
+tacagcgattgtacagttcacacaatatattgattatggtattcagaaacagaaaccatt
+caaaggtcaacctaagaaaccagctaagactgcttctttaggattccacatccttgcggg
+tattggtactctccctgatggtacaaaagaaccatacgtacaagacggtaagcttgaaaa
+gattcgtacacgttttgatcttgttttacaccaaaacgaaaaagctaatgctgttaaaat
+attcaacgcattgaactatgctaaagatgcaacacactttgtacaaaaacttggtagcat
+ttacttattatcaattggtattgggaaaggtaaagacggtaaagaatataacacttacga
+cttctctcaactacaaaagccaattgctaatgcaatgacaggtgctatgtatgaggcagg
+taaggatggtgtagcagataccccagcagaagaatatcaattgttcttgtgggatgcacc
+tactaaagaacaatgggattcaatcttcattgaaggtgagtacgagaagaaaactaagga
+tgcaaatggtaatgaggttgtcgagacgaaaagtaagaacttcatccaagagaaaatccg
+tagtgctactaactttaaaggttcaccaatcgacctattgttgattagtcaaggtgagga
+tttaccagcacttgaggctgaggtggaagactcagaccctaatgatcaacatgttgagga
+agataagacagatattccagcagttccagtagcagacatcccagcagttccagccgttta
+agtctacttacaaccaaattataagcctccttcgggaggcaacctctaggagattatatg
+tacacttatatcgaagatgaagactttcaaccagcaacaccaatggattgtcctaattgt
+ggattagtagcaacttatactggaacttgtcattactgtggggagaagtgtgaatgagtt
+taaatattaataaactttaggatgtttgtatgaataatattctatcacgctttggcgtaa
+cctccgatagtatctctaaagtggatacatacaaagcaggtcatcaaggagatgtgttat
+tacatgatggagacagtgactgttactatgtatgcactcagtatcgtaagatgcaaacta
+ttcttaataacttcgagattgctattcaggaaaagatgttcttgacaggtgcgacaactg
+cacgagttcatttaactcctacaggctgtgctaagaacggacgtcatttactgaatacag
+ttaaaccctatcaaggtaatcgagaaggtaaacaaaaacctgctaacttagaagagttgc
+gtaatattgcacctgattatttcaaagatcatcctacgatcaaggtgtttagtcattatg
+acattgaagccgatgatgctttaatgattgaccattatcattatcaaaacggtatcttag
+taagtgcggataaagatttacaaatatctccacacaaatcctataacatggatgaaggta
+agttcgaaacattacttaaaggtgatcgttttgggtggattgctaagaaagagtggttga
+caccgagtttaaaacctgcatctaaaatcgttggtaagggtacaaagttcttctttgcac
+aattactaatgggagatgtagctgataacgttaaaggtatcattaaattgaatggtaagg
+cttgcggtgaagctttaacgttagctaccttagaacctatcaaggatgagaatgaagcct
+gtaacgtcgtcctagacggttatagagctatcaatcaaaacgtactaccagaagcagagg
+ctatgtggttgttacgtaatcgtgaagacagtgcttataagttcttaaaagaacatgatc
+ttagtccagcaaatttacaattcttagaggattgttttggtggtgattggaaacgtatag
+aggatgaatcttatgacaactaaagttgaattacctgtagaagttcgaaatgttttagat
+tggttgaaagagaatggttatatcgcagcattagttggcggttactgtcgtaaacttaaa
+tacggtaaagatacctcggatatcgatattgcggtacttgttggaagtatagaagatgtt
+gaacaacttcaagatgaatttggtttacctgcacactcacaacacttattaactaaagct
+gaacgttcactatatgagggtcacacaggcttcgtagcggactggcgagaaggtaatatc
+aatatcgtggcgtatgatcgtgagtatcatcggagcattccgcgccttgtagaaagcttc
+gattttaactttaacatgtggtatttagatgaggatggtactttaaagaaccctgacccg
+tttgtagaggtgcataaggtacgtttaggtaactcattaggtagtcgtccaagtgtagca
+cggttagcccgtttctataatgagttcagtgcatgggattggaagttagcagatgaacaa
+ctacaatccgagaaagagctattcgggaatttattaggatgacagcacgtaagatttcca
+gaggtcaattaagacctatcgctatgaagctctataaagagcagggtgagaagtgtttac
+tatgtcacaagccgattgactttactaagatgggtagagattcagattacgcagtggatc
+atgaccacgtgacaggtttaatacgaggtacacttcatcgttcttgtaacgctggtgaag
+gtaaggtaattaatgcagtaggttcttggggcagtaagtctaaagagcatgcagcaatcc
+gagagtggttgcagaacctacttaattattatgcttattgtgatgcacatccaacgacta
+tgatttatccaagtcacaaaacagccgatgagaagaaagaagctcagcgtgtgaagcgaa
+atgcagcagcacgaaaagcacgagcagtagttaaacaacgtaaacagaaaggtgattaat
+ttatgtctaaagtagtattcagcagtttaaaagaatggaaacaacgtgcccttcgtatgc
+actttcaaggtctaactagctcagagattgctacagagttaggtatttctgatcgaacta
+ttcgagataacattcagaagttagctcatcgtgttgataagagtgtagcattgaaaccac
+gtaagcctacaatctttgtaattggtgatactcaggttaaacaaggtattagtcttgact
+atatccactggattgcaaactatatcaaacttaaacaacctgacattattgtacagattg
+gtgatcactacgatatggcatcattaagcacatatgataaagggcaacttagtgcagaag
+gtcgtcgattcgtattagatattgaggcaggtgatgaagcactaggtatcattgaagatt
+atatccgatctgttaaaggttataatccacgtaaggttgtggtgttaggtaatcatgaag
+atcgtattgaccgttttgttaagactcatccagagtttgaaggtctgattggtacggata
+aattagcctttcacgattatggttgggaagtaatcccattcttaaaaccacataatattt
+gtggtattcactttgtacattacgcagttaacgtgaacacaggtaaaccactaggtggta
+atctcgatctacgtcttaagactgttggtgaatctttcgtaatggggcatcaacagatgt
+atgcttatgcagaacgtcaattaccaatgacaggtcgtaaacagtttgcagcagtggttg
+gtgcatgttatgtacatgacgagccatataaaggttggcagggcaatcaccacttccgag
+gctgtttaatgctatatggttgtgctgacggttatgctatgcagaagaaagtagaacttg
+aacacatgcgcgaaatttatgaaggagaacatgcttaatgagttataagatcggtttaat
+tggactcgctggggcaggtaaagacacagtagcagttatcttacaagaggctttaaaaga
+aagaggtcaagtgtttgaaattgatcgttatgcaggcttacttaaagaagcagcacgtca
+agtgtttggtgagaactttgatgatcgtaatgtgaaggaggtggataagttcgtagattt
+atatctagctgataagattattgatgctactgattatgtgtatcttaagcttaataggtc
+tgatatagatttagatgaatggaatgatttatgccaaaaacatattgactcttgtacttg
+gatgagtcctcgtaagttccaacaactattaggtacagaagtaggacgtgctattgatcc
+tgatatttgggttaattatcttaagaatcaagaccgtaacctaatcatccctgatgttcg
+ttttggtaatgaggatgtggacttcaatatcctaattacccgacaccctgtaccgcaagg
+taagctacatgcttccgaagtctacgcagccgaattacaactatctgataacccttatga
+ttacgtagattatgtgattcataatgatggttctattgaagacctcaaacgtaaagtaca
+acagttagtaaacaaaattaaagtttaggagatataatgtctgatctataccaacgccaa
+atagctcttgaagaatcatatagtcacgatagtattattgctggtcaaaagcaagtacta
+gatgcatatcagcaaggacgtgctgctgacgtaggtacaggtcgtatcctattagctaaa
+gcatttgaagttggtgtagaagctttaaatgcagttaagaaacaaaagattcgtggtgtt
+ggcggtaaatacttaaaattactttctatcgctgatccagaagttttagtaatggcttca
+ttacgtgatattattaatgcatgcgctgtacctgaaccagtgtctatgcagaaagtactt
+actggtattggtcgtatgattgagtcagagtctatgttggtatttatgcaagagttaaac
+cctgcatatactgacaagactatccagtatttagacaacacaggtacaaaatcagttact
+catcggtatcgtacattcttagcaggttctaaatctattcaactagattgggaacagtgg
+tcacaagaagagcgcataggtgtagctaagttattagtaagttgtttatatgaagctaca
+gggttattccaatgggctaaactagatagcggtatgtaccacattaaagcttctgaatcc
+ttagcgaagcactttcaggatgcagcgagtgcagcgagagcagttgttaaatatcctcct
+atgttgatcaaacctatggattgggaaggtcagtataacggtgggtatttaactgaatgg
+tttaaacataactcacctatgtgtggtattcgctttattaagaaagagcataagcaatgg
+gttattgataacttaaataatggtgcagaaccagttaaggctgcaatgaataaagcacaa
+tctgtaccttaccgtatcaataaagacatcttagcaatcttacgtaaagcagttgctatg
+cgtgtaggtattttaggtttaccaagctatcaacctgcaccgaaacctgcatttcctttt
+accgaggattggttaaagtcggaggctaccgaggaagaattagatcagttccaattctgg
+aaaggtttaatgagttcatggtatacacaagaagctaaacgtgttggtcgtcaacatggt
+atcttaagtcgtattcaagaattggttaaatatcaggacgaagaacgtttatactttcca
+acatttattgattggagaggtcgtctttattttcgcagtagtatcaacccacaatcgaat
+gattgtattaaaggttgtcttgaatttgcagaaggtaaacctttaggtaaaacaggactt
+aaatggttaaagattcatgttgcgaactgttgtggttatgataaacatgatccagatttg
+aaggagaagtggtgtgatgataactggaactatattaagaacttcattaataaccctttc
+gatgtggatgcacccgaacccgacacagcatttaccttattacaagcaggtcttgctctc
+caaagtgccctcgcacttcccgaccccaccacttacatttgtcatgtccccgttgctatg
+gacgcaacttgttcaggactccaacatctctcggcacttactagagatgaagttggcgga
+ctttacacgaacttattagataatggtgaagatcagaagtctgatatttatatgcgtgta
+gcgcacgtagcggatgagtctaagttagaattagctgattctcctgctgtacgtcagtat
+tgggctgataaacctattagtcgtaatatggcgaagaaacctgtgatgacttacgtatat
+ggttcgaagttattatcaactattcaaggcttagctaatgatatgtatgaagcaggtatg
+gatgagattcagttagatggtaagacagtctttacttacaaccgattagctaaaccagtt
+ggtaaggcattacgtaaaggtgttgaagatactgtacctaaatctgctgagatgatgaat
+tatttgcagaacgttgtacgtaaaaataaagctgatgctatgcgttggtttagtccagta
+ggtgttcctgttgtgaattgggcagaaggtatggtgactaaaactgtagcaattcgttcg
+atgggtattaacaacattgcataccgttatccagataatcaatataataccttaagagca
+gctaatggtattgtacctaactttgtacatagtatggatagcagtcacttatgtttaact
+atcttagactttgacggacaagttctaccgattcacgattcatttgcgacgcatcctagt
+gatgtggaatctatgcacatctcactacgtaaaacatttattgatatgtatacacaattc
+agtatcgaagacttcttaaagttcaatgcgattgatcttgaagaatatgaactacctatt
+acaggtaatttagacctacaagaaatttctaaatcacgttatatgtttggttaaacatgg
+cccacatactttcgagtatgtgggcttttttttgaagttgcacttatagaagggaagaaa
+cttatttgaaattgtacttatagaaggagagtagaaatgagtgcaagagacattccatta
+ttcactcaagagcaatatgattacttagataagtattgttttgcagagaatacagaacta
+cttacaccagaggaattaatatataaagctggtcaacgtagtgtaatgtataagatacaa
+acattgattaaccaacaaggtcctacattggtccgtaaggagattaaacgatgagctggt
+taagtaaagctttaggtagtgttatgagtatatttggtattggtgggcaggatgacctcg
+gaaagaagtatgaggaagaaatgcgacgtcaagcagaagctcagaaactacaacaagcta
+acgaacagaaagaagtaacacaatttgatgatacaggaggtactaccttcacaggtgcag
+atggtcctcgtaagaaacgacctacaggtggttattcaagcttagggattaatgcttatt
+aggaggttttatgaagtccaaaggaaatgattttacaaagactattcgagctttgtacga
+tgaatacacggacgattctttaaaaacaagattagaaatgtatgcactttggactctacc
+tagcgtgttcccgacaggtgagattacggtagataatggaaatgctgagattgagcatga
+ctaccaaagtgtaggtgcatatctagtgaatcggttagcgtcacgtttagcgagtacgtt
+atttcccgtaagcacatctttctttagaatcgaacctagtcaagagttgaaagacttagt
+tgataaacgtggtacaagtacccttattgacttagagaacaaagcttgtcgtcgtttatt
+ctttaacgcatcttacgcacagatcgtgcaagcactgcgtttacttattatcactggtga
+agttttattacttcgtagagataatcgcctacgtgtttttagtttaaagaattatgcgtt
+actacgcaacaatgtaggggaagtacttgagatcatcacacgagaacctaaacgttatcg
+ggaattagatgctgagactcaggaactactacaagatcgtaacgaggacgagacccttga
+tctttatactagaatccgtaagcgtaatatcaatggagtaatctcgtggaagattacaca
+agaaatagatggagtacgtttaccaaactatgaaatctaccgagataagttatgcccata
+tattcctgtaacatggagttatatgaatggtgatgcttatggtcgtggttacgtagaaga
+gtacgcaggtgactttgctaagttatctgaactctcacaaggtttaacagagtatcagat
+tgaatcattaattatccgtcatgtgtataatgcacaaggtggttttgatgtagaatctgc
+tgtgaactcacgtaatggtgattggattagtggtaacgttaatgctgtacagaactatga
+atctggatcattccaaaagatgaatgagattcggttaggtttagaagctattatgcaacg
+tctaaacgtagcgttcatgtacacaggtaatatgcgagaaggtgatcgtgttacagccta
+tgagattgcacgtaatgctgatgaagcagagcaagttcttggtggtgtgtactcacaact
+atctcagaatatgcatttacctttagcatatctattactttatgaagttcgtaaagactt
+tattcaggcgattgatagacaagaaatcgaattaaatattctaactggtttacaagcatt
+atcacgtagttcagagaaccaagctttattagtagcagcgaatgagattgctacagttgc
+ccaagtattctcacaagtaagtaaacgatttaatcttgatgctattgtagacaagattct
+actttctaatggtattgatatttcagagattacatacagtgaagaagaaatgagagctaa
+ggctatggaagaacaacgtgcagcagaggcacagcgacaacaagtaatacaacaagctgg
+cgcacagttaggtggtaatcaattagaaaatacacaggctgctcaattggcagcaggtat
+tcaataggagtatttatgagtgaatttaatacaggtggtcaaggaaaccctcaagaaaat
+acaccgcaaggtggacaaggtaatccaacaccacaagaatttaatcaaggtgggcaaggt
+aacttccaacagaactttaatccaaactttaatcaaggtcaattcgggttccagcagaat
+caagcttaccaagcaccacaaggtaatccaacacctgcaccagttgaagataaaacgcct
+actcaaccaactaaggtgtatacaccagaagatttcgcaggtgacagtccgttggatgtt
+agcattaaggttgtatcggctaatgctggattaagtgaagaagcgttcggagcagctatt
+aagaatgctgtacagtacggtaatgctgacttaattgatattgcaacattaactaagggt
+ttagaacctaatattgcagcgcaggtggtagctacggctcaggcagcttatcaacatgct
+actcaacttaaagcacagatcacacagaaagcacatgctgctgctggtggtgctgagcaa
+tggcaagaagctattaacagttttaacacatccgcacctcaagatgtacgtggttacgcc
+atctaccttgagagtatcggtaaacaagatgaagctatccaagttattatgaaccatgtt
+cgcggtactggtctagttaattctaacaacggtgcattgatcaatggcagtactggtggt
+acaggcggtaaagctatgtcacaccaagagttcttggtcgagtggggtaaattagatcgt
+caatataggcatcgattatactcaaataaagaagcacaactaaagattgctgatttacaa
+cgtcgtcgtgctttaggcaaacaacaaggtatttaataggagatttataatatggcaggt
+gctaattacttcgcagagggttcaacacgctttcactggggtggtgatgaatctaatatc
+gaccaacatttagaaatttatgaaagtacggtagatactcaattcgagtatacacaaatt
+ttcaaatcattgtcaacacagaaatctgtggctgaacgttctaaccaaatccgtattgac
+cgtttaggtgcttctcaagcattataccgtcaatctggtgaagacattcttgaccaacgt
+gttaagtctgataaacttaacgtagttgtagaggctatgctgtatatccgtaaccctgtc
+gataagatggatgaatggactgcacctagcttctggactgagatgggacgtaacaacggt
+actacttttggtttagagtacgaccaagcacatatcatccgcttacagaaagccccagct
+tgggtggcacctgctcacttgaaagagcatggcgagttccatgacggcttcttcgttcct
+gtaacgcttaagggtggtgataacttaactgatgctgagttagagcagaatgcttctgca
+cttgtgaaagctcatgctaaagctcgtgatacattagctaaacgtcgtgtacctttaagc
+gacatggttactttagttgatgtagacattttctcagcattactacaccatcctaagtta
+atcaacaaggattacacagcagataatggtgacttcgctaaccgtcgtgtggttaatgtg
+aacggcatccctgtagtagagaatactgcattccctacagcagctatcactggtcatggt
+ttatctactactgagaatggtaatgcatttgacgtaactgctgatgagattaaaggtcgt
+atgatcatcttctctaaagcgttatctcttgtgactgtaactgctcaggaatggactgtt
+gagccatggtatgatccacgttctaagtcgaagattcttgactgctactctatgttcact
+gtagatgtacgtcgtccagacacagttggtgttgttcgtattaccgagcaaacctcacct
+taataataataacatggagggcttaacggctctcctttctacttaggagattcaaactat
+ggcaggtgcattatgtgaaccaatcgtatctttagcattaactcaaacttctgaggatac
+agctatcgcagatacacaagcacagatggctgcgttattagagcaggtacgtgcgttaca
+ggctaaggtagaagaacaggataaagccccaacacgttctaagacaacagctaaagctga
+gtaataggaggtgatatggctggtgctattggtccaccgattgtgtcagaagctattaca
+ggtggctcatctgatccacagttgggtgctattcaagcttctattgatgaaataaagact
+gcggttgcagcagttaaaacggttgtggattcgaataagacagagatcgctacagttaag
+actaacgtaggaactattaatacgaataccaatacaatcaaaacagatgttggtactgtt
+aagactgacacagcaacaattaaggctgatgtagctgttattaaaactaacactacacct
+gctgggtaaactcgaaagggtttactttaagatataatcagtgaatggtttagaatcctg
+cggttatatcttaaagtaaatcaacataacaaggaggatgtacttatgactctacttgaa
+gctgtaaatgctatcctaccttatttaggacagcatgttattacacgtgtagaagattca
+cgaaaccccacagtatctcggatcgttgcagctattgatcgacaacgtaagagtgtactt
+gcagaggggcactggtttaacgaagttcctaataaggtactattgttaaatacagacaag
+acaattgatgcaccacttaatacattagctatttatggtaatacaaaacgtgtagctaag
+cgtggtcctaaactatatgatattgataatgatacacggtactttactggacctgttaaa
+gttaagattatctatgattacccatttgaagaactaccagaatatgctgcacagtacatc
+acgtatttagcaggtattgaagtatacgtcgcggattatggtgtagagaacgctatacaa
+cttatgacagaacgtaaagaagctaaccgtttattattagttcaagagaatatgcgtaat
+cgtaaatggaacagtaatgatgcagctatgcgtcgtagtcgcttccaacgatatttaaga
+cggtaggagttattatgattcttgagggagtgtacccgtcattcttgaaaggtgtatcac
+agcaaacacctcaagagcgtaatgacgggcaattaggcgcacagcttaatttattatctg
+atgctgtaacaggtttacgtagacgtggtggggttaaattccaaactaagttagcaggta
+ttcctaatagtagttatatacgcttgattgacatcaacggtgttaattatattatgatcg
+tagatactgttacgggtactttgaagatttataattttgacggttccttacttaaggcac
+atcaaacagattatcttaaagcttccaatggtaaggctagtatccgtagtacagtctcac
+gtaataattgttttgtattaaacacagagaaggttattgctaagacgcctacaggtggta
+ctaatccaacacctaacccaagtactatgggttatatcagtattcgttcgggtcagttct
+ctaagatgtattcggtagacatcaagtcaggttcttataccttgagctttagtgtaggta
+catcaggtagtgaggcatggcaagctactcctgaatgggtagctactgagatggagaata
+agattaaagcggacactactcttaacgcacgttatgatgttgtacgtgagggtagcacgg
+ttgcacttaaagctaaatcttctacagatacgaacttactagtgattgaatctggtacag
+gtagtacttatattcagacgagtaattctagtcgtgtacaaggtaaacaggacatcattg
+ctaatctacctaatatcttggataagtatattattgcagtaggtacagtcggtaattcag
+cttactatcaatataatgcggactctagtacttggaaagagtgtggtgtatatgaagaac
+catataagttcactaacgaacctatttactggtactttgatgatacggacgctgtacaag
+ttaaaagcctagatattcaaccacgtacagcaggtgatgatgataataatccattaccta
+agttcgtagactttggtatcacaggtattagtgcgtatcaatcacgtttagtactactta
+gtggctcgtatgtaaacttaagtggtacagcagactttaatgtatatatgcgtacctctg
+tagaggaattacaggatgatgaccctatagaagtatcgagtactgctttaagttctgcac
+agtttgaatatgctgttccgtataataaagatttagttttattagctcagaatcaacaag
+ctgttatcccagccaacagtactgtacttacacctaagacggctgttatctatccaagtt
+caaaagctaacattagtatggctagtgagccacaggtagtatcacgtagtttgtattata
+catatcaacgtggtacagattactatcaagttggtgagatgatccctaatgcttactcag
+atgcgcagtactatgcacagaacttagcagaccatataccgttatatgctacaggtgttt
+gtacttcaatcacaggtagtactacagataatatggcagtgttcagttcagatcagaaag
+aggtacttgtacatcaatatctatgggcaggtgaagatcgtccgttaatgagcttccaca
+aatggaaactaccttatgatgtacttcatgtacaatttctacaagagtatttagtactat
+ttatggatgttggtgatgatttagtagttggtactattaacgtacagttaaaccagctag
+acaataaacctatcccattcttagatatttaccaatacgtagatattgtagacggggaag
+gtacattacctgagttcttaccagcaggtgaattagtagctgcggtatacagttctgaaa
+ctatgcgtcatgctaaggttcaatatgaaattgaaggtactaagattaaatgtcaattca
+atggacgtatttatctaggtgtaccttatgaaagttcactcacactaacaccgccttttg
+ttaaagacgataaaggtcgagtagttgctggaagtaatagtacagtagttgatcttacaa
+tgacattcaaaggtacaggtgagtttgagtaccatgtttctgatgcttatggtgatgtgt
+ttgatggtgaaacatccgcacaggcttggtcggaggcacaactagggtatacgagagtaa
+atacagttagtgatgttaagttctcttgtggtacgttattgagttccactgagtttagta
+tacgtactaaaggtacaaccgaattaaacatcattagtgctagttataatatccgtgtac
+caaacagaggacggagacgtttataatggctatgaatatgcaaggtggtatgcaaggcgc
+acagacaggtgcatctatcggaagtaacttcggtccttacggtgcagcctatggcgctat
+tatcggaggtgtattagggttactaacacctgacaaggatatggaagccttaaaagcata
+caacaaacaagtggtacataacttaggttctacgttatttgatatggatcgtcagcgtaa
+catagagaacttacgtacatcgcaagcacttgactcttataggacacagggtcaagtagc
+cgcttctcaatttaacgcagcattcggtgcagcagatattattggtgcaagtgcagatgc
+tcttaagagtactttagatagacaagttcaacaggctacacgacaagtatggatagattg
+ggaagttggtgtggataactacaacactcaaattaatgaggttgtaaaccgtgcagcaag
+ttctttacgtcgtagtaaggctgagacatctaaagtagactatgcagggatgtttaaaca
+aggtatggatatgtaccaacaatataaaggtggttctacaggaactactacaatgagttc
+cacaggtggtggtttatcaggattatctgatttcggatcattcggtaaatctggttctgc
+tatgggcacaagctcagcaggatcgttaacagcgtaatatggagggtatatggctactca
+aattcagatgccaaatgtacgtgatgtacaagtaagtaatttacaagctatcgaacgtcc
+agcagaaggtaatgcattgagtagctttatgcaagacatattacctgctgcggacaaagc
+tttacaaacatataataaggagaatgctgatcgtcttattgcattaggtcgtagtgatca
+aatgaatgacgtacagcgagaggtgaactggcttgatggtaaatactataatcaaggtaa
+agagtaccagaagttagtagctacacaagcacaacagcttcaacaattcaatgcacgtat
+taaagaaatggcagacaatggtgcaagctcagacgagatgtaccaagtcggtaaagagta
+tttaactcaatacacagatgctatttataacagtgatctcgatgctgactttaaagaaca
+tctttataaagaaggtttaaaagagaacgctgtctatcagaagactatcaaggacacaca
+acaacgtgtcgctattgataaagcttatcagagtacattaacattgcaggctaactatgt
+aaatacattacgtactacagagttaagtggtgacgaattagacgtacttacgtatgcata
+cgtgaatcgttctgtagctgctaagatgactgctgatcctaatttaacattagaagaagc
+tactaagtcagcacagggtgaaatagcaagtgcgttcaagtttatcgggcagcaaattga
+tcctacagcacaaggtgcagatcaagtggtaaataaactacgcggtatggtggatcatgc
+ttatactaaagggtacgtagatttagatactcttacaggtgtacgtaagattgctgatga
+tattcatgtaggtattactaactacaatgatactatggctgatcgtaaagttactgagta
+tattgctagtgttgaagtaggtgaggtccctttagattctgatgattataatgagcagat
+gcatgctatttataataaccctaatttgagcgaagataagaagacagctttgacccgtca
+attaactaactcttacgtaactcaacataataaggttatgaatgcggatattgatattaa
+cactattgatcaattccctgacatgattgactttattgcaagtacaggtaagggtgaaga
+tacgtttgtaaacctttggacacagaagcatctacgagaagctaatggtgatgtcttgca
+aggtggtatggctatgattaaccatgccttctcaggtaagacagatgtaccagaattagc
+taagaaaggtgctgagtacgctagttcacaatttacaggttttatgggtatgactcaagc
+tgaggctgagaaagacccttactacaaaaaccgtgagcaagtctttaatacgatggcagg
+tatgtaccgcaattactcacaaacaaacccagcgcgtgctgcacaattgcttgcaggtgt
+tccagaggaatatcgtggagcagtagagcagttatggcgtaatggtggtcgtatgactga
+tgctcgtgaattagtacgtaatcccgttaatcgtcaagttcgttatgagaacattgataa
+agcgacaactgcattaacagctgatactactaaattagataaatggtttagtcgtggtca
+tggtggtggcttctggaatagtcagaaatcagctgttaaagattcacaacttaatgctat
+tatagttgctgctaaagctggtaagttccagttagcgccaagtactactacagctagtcc
+tgaacttcttatggctaacatggaggctttaggtatgctacagaaatcacctaaaggtta
+tgcaagtactgtcttaacacctaatgctgctaatgtagtaaagggtatgaagtcagataa
+tggtgttcctttgagttctgatctgttaggtgtagtagtagataattaccgtcaagaaat
+tgctaagagccttaagactcgaccagaggatattgttgtatcttctgatgagggtggtac
+aggtttatatttccaagcttatgacaaagaaggtaagttagtaaacgtgtcaggtgttgc
+aggtatgcaaggcgcgcagattacaatgaaccgtctacgtaatgacatggctaaagaata
+cagtaatcgtggcagtaagcaactagctgctactaagacttattcaggtggtttagctac
+tggaccttcaaatacgttatatggtgagaatatgcgtcgttatggtggtgctatgtctgg
+tggtcgtgctagacctgttactatcaacagtaacggtagtcttggtacattcccacttaa
+acgtattgggggtggtacaagtactgtacgtatcccagctaatatggcaggtatgttcaa
+tggtaatattggattagctacacagttagtaagtaactttaataccttcgaagcttttgc
+atctcaacaatcttttgttaaaggtgtaggtggtgcaagttcaggtaatgtctatggtca
+tggtattcgcatggataagcatcctaaatggaaggctaagtttgatgcagtagcaggtga
+tccacaaggtattatgaaagttgaagcagatttctttaatgagtactttaagggtatggg
+taatcgtttaactaaaatcagcgtaccagttcctacagcagccccttaccctccacagta
+taaacaatctgtcatgttattagcagatgcatggtggcatggtggtggtggtgcagcaga
+tactattacacgggctatgaacgcacctacctatgcagatggattacgtattcttaagag
+tatgcctatctattcagcaggtggtgatacacaagacaaacgagagaaacatcaacgtaa
+ccgtttctaccgagacgcattacgtcaacattttacagcacaaggtaaacgataggagga
+tattatggctggactttttacaggaacacaagaatctaaattgttaccagaggttcagcc
+tgaactacctattgttcctgctggtaatgtacctaaaattaaacatgttataaacacaca
+accacaaggtcaagctgatgaagttgaccttactaccgaaactcagcagttagagagctt
+agagcgagaggcacctccatctatattggatacagctatcgcaggatttgcacctactgg
+acgagattggttacgtagtggtatggacaaattaagatatgaccgcgaccctaactttac
+acctgacgaatttacagatcagttctttaaagattggggtatgcaacatgcagatgaagc
+ggaataccttaataaagcagtaaactatgaagattggaaaagtcgtacagaacgtatcgt
+gtctaaacgtgaagatgctaaggcattagcagagaaccctattacgggtatagcagctag
+tcttatcgacatcgacttacctttagcagctattccttatttaggttgggcagctaaagg
+ttcacgtatggctcaagttggtgtacgggcagcacaggcaactacggcagcaggtgcagc
+gtatggtgtaaacgtagcattagaggatcaatctattcgatctgaggacgaacgttttat
+ggattccattacgtttggtctaggtgctgggttacgtgctattaaacccgtacaacatct
+tgatgatgctattagtgctgaacttaaaagtttaggttctacagatcatcttatcgaacc
+acatgtacaacaatctttagaggctgctaaagaagatattattaaatctacatctatgcc
+tattagtacaccgagtggcgcgccttctgatataattaaaaaacatggttggttagcaga
+gttatctagttcttatgataagctttactatttgactcaaggtgataactcaacactggt
+taatcgtttattaacaggtgtacacaacaacggtgatgatgtagctacagcacaagcagc
+ttacttaaacaactattcatggcgtttggctggtttagagaaagatttaagtgatgctgt
+agctgaaattacattggttaaacctaatcctattactcggaataatggaaagtacggtaa
+agccacacaagaaacaatggaacttttccaagaatctatgcaacgcttagacgctaaagt
+cttagagctaacagagcaattgggtcaagtaccttctgatgcaactattaagcaacttat
+taatactgttgaaatacatccaagtatgcagcgtgttatgcgaacctatattgattcggg
+atttgctacgcgtatactagatgatgctaaagcggtaggattcttagaagtagaaggtgc
+tgatcagattgtacgtcgtagcacttacatgcctgtacgtcatagctatgatcgtatatt
+ggatgcagtcgaaaatcgtaagttaggttcgtgggatgatattgctcatttctacggtaa
+acagattacccgtatctaccctgaactgttaaaccctaaaggtaacttcaaattaactga
+gaagcaagttggtcaacacttcttgcaaacgcaacgtgacgctgctcggaatttatctga
+ggtagcaaccactggtatgactaaagaacagattcatgacgtacttacccgtgcaggttt
+aagtaacgaagatgctagtggtgtaactgcccgtatgtttgaagcttctaaagatgcaca
+aggacaacctaagaacctacgtaagcgtatggattgggattggaatatgacctatcagtc
+tagtactggtagaacattcggtatgaaagacctaacggattctagtacctttggtaatct
+tgaagagtactcaagacgtatggctgctcgtaacggtttagctcagtatggtattaagtc
+tgaggcagagttagataatctattaacttcttacttagataaattacctaaagggcaaga
+cccacaaaaagcacgtaagttctttcaagcagtacgtgatgacttattagggcgtcctat
+cggagaggctgcacccgaagctttacgcacatctcaagcagtagcagatatgatgttatt
+agctaactcaggtctatacggtattatagacgtagcaactcagatttataagactggtgt
+ggtacgtagtttcccacatatctaccgtggtctaaagactgctgttaaaggtatgaaagg
+gtttagtactaccgaggctaagacgttggaggacatctttacaggtaaacttattgcacc
+ttcccgatggaagaacttcatgagtcactactcagatggctattctgtatctaacggtat
+ccatgaggctgctcagtattacagccagagtacacgtttcctaaatttatctgagtatct
+taaacgattccagattggtatgttaatgggtgtatatggtgatgtactacgtggcgttgc
+taatggtaatgctcgtgatattaagtacatgaagaataagatgaaggtatctgacgaact
+gcttagcgctatccaaactgagtggaaagctaagggtggtaatatcgactcttggtctaa
+tgctacccgtgctgctcttgaacagaagattttcaatgagtccgataacttagcattcaa
+catccagaagggtgaagtacctagtatccttgagcatagtactatgggtaaggttgtctt
+cccgtatatgcgttatgcattcgctatgcaacagaaggtactacgtcgtacattaaatcg
+ggatggtgcggttggtctagctttactcatggcagcgcaaatgccagcagctatgctagt
+aggtgcagcaattaacgtgcgtaatggtaaagagcctgatgaggaccttgctaagatgac
+agttaagactatgagtgctttaggttcttggaactatccattagagatgcttattggagg
+cgtagatcaaagctcagtaacagctttagccccgttaggtaagacatggaattttgtgag
+tgaattggctacaggagagcctgacttaattacgctaaagaaaaatagtattgctaactc
+agcagtattgttagatgctttggcattagcttttgaggattgataatttatgaatatact
+acgctcatttacagagacagtggtgactacacctacagatactttcccaatcagttttga
+atatgatgagaagtatgatgctgtacatgtctttcttaatgacgtagcagttgaagactt
+ggggtacactgtatctcaagttaatgctgttactctaaaagttgaacctgctattccaga
+aggtacagttcgtattgaacgcgaaacagatattgataagatgaagtacatctttgatgc
+tggtgcgttattcattgatcagaacgtggatgcagattttaaacaaatcgtacactctca
+gcaagaggtacgtgatggatttattaaactacgtggagatgtgctaccgctcgtacatgg
+gttacaagaagctttgaaacaggcgcaagaagctagcgaagctgcccaagaggctgctga
+tgctgcggaagaagctgctgcgttagttagtggtgcagttacatccgtcaaaactattac
+ggacttaaaagcattacctgcgtgggaggggcgtgtagttgttatgcaaggtcatactga
+attaggtaagaaatctactatatttagatatgacactactaacacagatacccccaacaa
+ctactccgtaattaaacctaacacaggtacaggtaactggttggctttagatactgcggt
+gtatgaaagctctcaactaggttgtggtattgctgtaactaataacgatgtacttattaa
+cccactattagctacgtcagggtccattactatccgtgatgagttgcctattacgaactc
+aatcaatgtgcagagttacaacgatattcgtggtttaggcacacgcgcagggtttaaata
+caatggaccaagtggtactgctgatactttagaaggtcgcttaccagttgttaagttgtt
+caaggataatgctcaggcagttagtcaatctagattggagaacttaacagtacatgccaa
+ctacaaaccgtatgtaactgcggtagatgctcgctatcttacaggtcagtctaaactacg
+tgagttaatcattcgcggtgttacagatacatctgtagggttagtgctcaacaagatgtg
+gtacgataagatcagtgatgtgttcattagtggttatgatcctagtaaacctgctggttc
+tcgttggggtactggtgtggttatcgagtctaagtactcgtctgatcctgcatcacctga
+ctacggggcacagatcaatgctttgacagtggatgtatcttgtcatagtttaaaggtagg
+ttacttaattcgaccaaataactacatctacggtttaaatattaatacaatgcctactgt
+agagaactgcgacattggcttcaagatggaatctgcacctgcatctgtagattatcaagt
+acggcaaagctgtatttctgcatactttgaaaacaacggtattgatattcagtggggtac
+acctagtaccactaaagcacgtaactctaaacacgtatggttgaactgttcttttgatga
+tgttcattcacgtattgagttatatgaaggacatcataccttcatcggatgtaagggtat
+taagactctagtgtgtggtcaatatgctcaagctgagcttattaacacagcacgacctac
+cactatcactgatgattatggtaacgtaactgtacgtcaagaccctatgtctcagattac
+atctggctcgtatcaaaatgtacgtacacgttctcaaggtatgttgaaactcaaggctac
+cgtcaatgctggtgctactggtacgtttgacttaggttctgtattaaatactactattgc
+ttctgaggggcaaactggtttagtacgcatcctatcacgacgctcttatgatacaacacc
+tgttattgcacaaggtgttatcttacgtaagtctacaggaactacgttcacacctatcgg
+gactgtacctactggtatgactattagtattacaggtacagtattaagtgtatacgagac
+tagaggtgacacaaagtttttagatattatttttaatccagattaaggaggtaatatgaa
+ctacatagatcaggtctatgccgttctgatctatgtatggtcaggcttagataaactgat
+cgtaggcgctgctgctacatcttttgtagtggcactgctacgaactaagaaagaagataa
+taaattctcgtttattgaagcactgctttgcggtatctttacagctattgcattagtagg
+tatgagcttcttgggaacattaacaggtatcattgtacctgaaacattaactgctggcgc
+tgctcacgtagtagctggatttattggttggtacggtacagtgcgaactatgaaatattt
+agaaggaaaggtttcaaatgattctgactaaagacggttttaatattatccgtaatgaat
+tattcggaggtaagttagatcaggctcaggtagatgcaataatctttattgtgacttact
+gtacccaatacgatttaacttatccagaggcagcttatttattagctaccgtttaccatg
+agacgggtttaccgagtggttatcgaactatgcagccgattaaagaagctggttccgata
+gctaccttcgatctaagaagtactatccgtatattggttatggttatgtacaactaactt
+ggaaggagaactacgaacgtattggtaaacttattgggattgatctggttaagaatcctg
+agaaagcgctagaaccattaattgctattcagattgctatcaaaggtatgttgaatggtt
+ggttcacaggtgttgggtttcgacgtaaacgtccagttagtaagtacaacaaacaacagt
+acgtatctgctcgtaatatcattaatgggaaagacaaggctgagcttatagcgaagtatg
+ctattatctttgaacgcgctctacggagcttataggaggttttatggcaggtaagaaaac
+aggggctagtgttagccgtctatgcttattgcatgagttattggtggatatgttcattaa
+agacatccaagatgctatcgagggtgactaccctttagcatctgcggataagaacgttat
+cgttacgttcttaaagaatgaaaatatcacagccacacctgatgcagatggcatggcgca
+attaaaagaagaattaaaagacctatccgaagcacaacgtgcgaaggtggatgctttagt
+aacacaagttgaatcaggtcaattcgatgatctgttaggacctatacaataaggagttgt
+tatgattgatgcgacgttccgagaacgctttaaaagattacgggcacatgttgcccaaca
+caatgatagaccagagttaatccctaaagaagatcgtgaaatgttcgcattaatgtttgc
+agggttattcctgagtttccgagactttgctgagttaggtatggcttatcttggttttaa
+gatgtcggagattcaggaggacattgcagactacatgcaacatggttataagtaccgtat
+ggtgcaagcacagcgtggacaggctaagagtaccttagctgctttatattgcatctggcg
+acttatacagcgtcctaaagaccgttgtttgattgtatctgctggtggtgatcaggctga
+ctctatcgcactgattattacacgtatcattaaccaatgggacatcttatgttggatgcg
+tccagatacgaccagaggtgacagggatagtgctaagaactatgatattcactgtgacct
+taaaggtattgataaatccgcttctgtatcatcagtaggtatttccgcacagttagcagg
+taaacgtgctgactttctgttagcggacgatattgaggttatgcgtaactctatgactca
+aacagagcgtgagaagttagcattacagactcgtgagttctcagctatctgtattcatgg
+tgacattatgtatttaggtacacctcagactaaggactcgatttaccgtgaactacctcg
+tcgtggttttagtgttcgagtttggacaggtcgttaccctacaaatgaagagttagaacg
+ttatggatcaggtacagagattgcacctatgatcatgaagcgtttattagaaaatccaga
+attacaaacaggtggtggtattgaaggtaacagagggcaacctactgaccctaaccacat
+cggagaagagactctacaatctaaagagttggattatggtccagaaggttttgcattaca
+gtacatgttagatacaacattatctgatgagatgcgtaccaagattaaactatccgatat
+tcctgtagtcggtacaggtacagattccgcaccagaggtggttcagtacaagtgtgatcc
+aactacagcatataaagaattaacaccagcaatgacagcctttcgtatgtactggggtat
+tggttctgataagtctgtaccgtttgaacacaaggttatgattattgaccctgctggttc
+aggtggggatgagattgcattcgctacaggtgcagctactaactcctatatctatttact
+atcggtaggtggttttaagggtggtacaaaagaagagaacttgaataaggttatcatgaa
+gatggttacgtcaggtattaaagatttagatattgaacgtaacatgggacatggtactgt
+tactcagttagtcgtagctcaaattgagaagttgcgtttaaaggcttctaaaggctcaca
+ggacgatgatttccttgaactgctacaatcctatggtgttacccattcagagcttaacag
+tgcgctctcaggcgttgctgtgaacgattatttcgttactactcagaaagagcgtcgtat
+cattgatactatctctcctgtgactcgtcgtcataagttagtagtgacaagttcagctat
+tcaagaagattgggaatactgtttacaacatcctatggaaaagcgtactcaatatagctg
+tttctatcagttaggtaatattacttacgatagaggtagtttggtacatgatgaccgagc
+ggactgtgtacaacggttagtagagcgtctatcaccattcttagctaaagatgatgaagc
+tggtgcagttaaacgccatgaggaggagattgcagagtggagacgtaatcctatgggtta
+tacacatggtaagttcgctaacactggtatgcgtagaggttcaggaactactaagaagtt
+tggaggtcgtcgtaaatgacagaacaagaaattaaagaaagactagctaagaattggtta
+gtcatcaatgctgctaagcagttagtactattcgtaaaggagaaattaaatgaaggtaaa
+tctatcagcactaaagaagatcaagcacagtgatgcagttaatgtagtaggtactctagg
+aaccatcgtagagagcgctaaggctgttaattctgttcaggagtacaaaggtaaggacaa
+ggttaataaagggctatcaggagcttctaaagcgctagatatagctgctgttattcttaa
+cattctaaagtagtttactaaggactgttggtgactcatgtgggaaaggttctcttgcaa
+gttatagttgaattcaaaatttgacatatatttgtgaaagggtc

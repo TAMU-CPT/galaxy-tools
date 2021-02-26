@@ -55,5 +55,5 @@ OrganismName	StartingLocation	EndingLocation
 
 The locations can be either locus tags or numbers. While the type of the ending location must be the same as the starting location, a file can have a mix of numeric and locus tag lines if desired.
       ]]></help>
-		<expand macro="citations-2020" />
+		<expand macro="citations-2020-AJC-solo" />
 </tool>

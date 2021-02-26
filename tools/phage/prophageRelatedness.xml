@@ -1,0 +1,40 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.phage.relatedProphages" name="Related Prophages tool" version="21.1.0.0">
+  <description/>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <requirements>
+        <requirement type="package" version="3.7">python</requirement>
+	<requirement type="package" version="1.78">biopython</requirement>
+  </requirements>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/prophageRelatedness.py
+$blast
+--outFile $output
+--padding $padding
+--numReturn $returns
+]]></command>
+  <inputs>
+    <param label="Blastn Results (Blast XML)" name="blast" type="data" format="blastxml"/>
+    <param label="Cluster Window" name="padding" type="text" value="2.0"
+        help="Nucleotide window for HSPs to form a cluster (Multiplicative of length of query sequence)"/>
+    <param label="Number of Results to return" name="returns" type="integer" value="20"/>
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output" label="Top related prophages"/>
+  </outputs>
+  <tests/>
+  <help><![CDATA[
+**What it does**
+
+Filters BLAST results for high-scoring clusters of HSPs.
+
+The script first determines a window of X nucleotide bases, where X is the length of the query multiplied by the value supplied in the cluster window input. Then for each hit in the blast record, the high scoring pairs are sorted into sets based on the number of HSPs which would fall within that window.&ast; Finally, the total number of identities in the set is divided by the query length, and this score is used to return the top results. If a set would make it into the final results, any other HSP sets from that same hit will also be returned.
+
+&ast; Sets are formed with a greedy method, where creating a set with the largest possible number of HSPs is the first action, then the next set is the largest possible number of HSPs that is also disjoint from the first, and so on until all HSPs are in a set.
+
+      ]]></help>
+		<expand macro="citations-2020-AJC-solo" />
+</tool>

@@ -4,7 +4,7 @@ import sys
 import argparse
 import logging
 from Bio import SeqIO
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from gff3 import feature_lambda, feature_test_type, get_id
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 
@@ -63,7 +63,7 @@ def find_lipoprotein(gff3_file, fasta_genome, lipobox_mindist=10, lipobox_maxdis
                             start = cds.location.end - (3 * (m.end() - 4))
                             end = cds.location.end - (3 * m.end())
 
-                        tmp = SeqFeature(
+                        tmp = gffSeqFeature(
                             FeatureLocation(
                                 min(start, end),
                                 max(start, end),

@@ -6,14 +6,14 @@
   </macros>
   <code file="webapollo.py"/>
   <requirements>
-      <requirement type="package" version="2.7">python</requirement>
-      <requirement type="package" version="0.6.4">bcbiogff</requirement>
+      <requirement type="package" version="3.7">python</requirement>
+      <requirement type="package" version="4.2.5">apollo</requirement>
       <requirement type="package">biopython</requirement>
       <requirement type="package" version="2.12.4">requests</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
 @APOLLO_ENSURE_USER_EXISTS@
-python $__tool_directory__/create_features_from_gff3.py
+python $__tool_directory__/GFF_to_Apollo_annotations.py
 @ADMIN_AUTH@
 @ORG_OR_GUESS@
 

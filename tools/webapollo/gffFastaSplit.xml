@@ -23,4 +23,5 @@ $fastaOut
 
 For GFF files with a Fasta sequence, will separate the file into a features-only GFF file and Fasta file containing the sequence. Will also remove the ### directive between feature groups from Apollo's output.
 ]]></help>
+<expand macro="citations-2020-AJC-solo" />
 </tool>

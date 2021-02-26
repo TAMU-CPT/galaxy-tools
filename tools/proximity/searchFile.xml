@@ -140,6 +140,7 @@ File Search Areas:
 - blast-xml : hit description
     ]]></help>
         <citations>
+            <citation type="doi">10.1371/journal.pcbi.1008214</citation>
             <citation type="bibtex">
                 @unpublished{galaxyTools,
                 author = {C. Ross},

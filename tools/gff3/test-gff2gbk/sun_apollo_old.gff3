@@ -1,0 +1,1240 @@
+##gff-version 3
+##sequence-region Shady_200528 1 45128
+Shady_200528	.	gene	7	1635	.	+	.	owner=galaxy@cpt.tamu.edu;Note=ref|NP_039677.1| Terminase [Mycobacterium virus L5] evalue 3.56172e-133;ID=80fa63ee-4e19-497a-8307-9a4d054fa303;date_last_modified=2020-06-16;Name=terminase;date_creation=2020-05-28
+Shady_200528	.	mRNA	7	1635	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=80fa63ee-4e19-497a-8307-9a4d054fa303;ID=a4f01168-36d2-4b12-8ddd-156b56ee376a;date_last_modified=2020-06-16;Name=terminase;date_creation=2020-05-28
+Shady_200528	.	CDS	16	1635	.	+	0	Parent=a4f01168-36d2-4b12-8ddd-156b56ee376a;ID=a4f01168-36d2-4b12-8ddd-156b56ee376a-CDS;Name=a4f01168-36d2-4b12-8ddd-156b56ee376a-CDS
+Shady_200528	.	exon	7	10	.	+	.	Parent=a4f01168-36d2-4b12-8ddd-156b56ee376a;ID=d550b2b4-bda9-42a5-907e-9490a0e749cf;Name=d550b2b4-bda9-42a5-907e-9490a0e749cf
+Shady_200528	.	exon	16	1635	.	+	.	Parent=a4f01168-36d2-4b12-8ddd-156b56ee376a;ID=6ba20d10-345c-4d07-b7da-93d7e1e2d09a;Name=6ba20d10-345c-4d07-b7da-93d7e1e2d09a
+###
+Shady_200528	.	gene	1665	3088	.	+	.	owner=galaxy@cpt.tamu.edu;Note=HHpred 2JES_G PORTAL PROTEIN BACTERIOPHAGE SPP1 100% evalue 8.4e-36;ID=0d17bdfe-eafe-4058-9983-4eb3f4c76ca5;date_last_modified=2020-05-28;Name=portal protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	1665	3088	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=0d17bdfe-eafe-4058-9983-4eb3f4c76ca5;ID=0f9c0041-716b-4e5e-a31d-7a86c50900ca;date_last_modified=2020-05-28;Name=portal protein;date_creation=2020-05-28
+Shady_200528	.	exon	1673	3088	.	+	.	Parent=0f9c0041-716b-4e5e-a31d-7a86c50900ca;ID=c72eba04-1a0d-49ce-8c1d-534a3440331f;Name=c72eba04-1a0d-49ce-8c1d-534a3440331f
+Shady_200528	.	exon	1665	1667	.	+	.	Parent=0f9c0041-716b-4e5e-a31d-7a86c50900ca;ID=70b2c289-ea5d-4505-a2e2-9f20aca62db4;Name=70b2c289-ea5d-4505-a2e2-9f20aca62db4
+Shady_200528	.	CDS	1673	3088	.	+	0	Parent=0f9c0041-716b-4e5e-a31d-7a86c50900ca;ID=0f9c0041-716b-4e5e-a31d-7a86c50900ca-CDS;Name=0f9c0041-716b-4e5e-a31d-7a86c50900ca-CDS
+###
+Shady_200528	.	gene	3836	4322	.	+	.	owner=galaxy@cpt.tamu.edu;ID=4efabc2a-68e3-493b-b7eb-7392036348fd;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	3836	4322	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=4efabc2a-68e3-493b-b7eb-7392036348fd;ID=68976a48-9a87-43fd-bce4-16414bc5acf6;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	3836	3840	.	+	.	Parent=68976a48-9a87-43fd-bce4-16414bc5acf6;ID=02440e89-2888-4971-8461-73998e11ee2f;Name=02440e89-2888-4971-8461-73998e11ee2f
+Shady_200528	.	CDS	3846	4322	.	+	0	Parent=68976a48-9a87-43fd-bce4-16414bc5acf6;ID=68976a48-9a87-43fd-bce4-16414bc5acf6-CDS;Name=68976a48-9a87-43fd-bce4-16414bc5acf6-CDS
+Shady_200528	.	exon	3846	4322	.	+	.	Parent=68976a48-9a87-43fd-bce4-16414bc5acf6;ID=ccb011b9-10fa-4b39-b488-813bbe9c96eb;Name=ccb011b9-10fa-4b39-b488-813bbe9c96eb
+###
+Shady_200528	.	gene	4324	5344	.	+	.	owner=galaxy@cpt.tamu.edu;Note=HHPred predicted structural similarity at 99.96 probability to  P22 Bacteriophage protein Major Capsid Protein Protein Data Bank entry 5UU5_A over most of protein.;ID=fb1a4b6c-c591-4d7f-992e-4d34fccea953;date_last_modified=2020-06-16;Name=major capsid protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	4324	5344	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=fb1a4b6c-c591-4d7f-992e-4d34fccea953;ID=4f3dcb7f-362c-4d7b-90ce-c5cab1f94c03;date_last_modified=2020-05-28;Name=major capsid protein;date_creation=2020-05-28
+Shady_200528	.	exon	4324	4327	.	+	.	Parent=4f3dcb7f-362c-4d7b-90ce-c5cab1f94c03;ID=7f385cf7-7192-4388-8345-708b0f445f7f;Name=7f385cf7-7192-4388-8345-708b0f445f7f
+Shady_200528	.	exon	4337	5344	.	+	.	Parent=4f3dcb7f-362c-4d7b-90ce-c5cab1f94c03;ID=c085ffea-78f1-4eec-84d3-daffaccc7f45;Name=c085ffea-78f1-4eec-84d3-daffaccc7f45
+Shady_200528	.	CDS	4337	5344	.	+	0	Parent=4f3dcb7f-362c-4d7b-90ce-c5cab1f94c03;ID=4f3dcb7f-362c-4d7b-90ce-c5cab1f94c03-CDS;Name=4f3dcb7f-362c-4d7b-90ce-c5cab1f94c03-CDS
+###
+Shady_200528	.	gene	5391	5828	.	+	.	owner=galaxy@cpt.tamu.edu;Note=ref|NP_075282.1| gp15 [Mycobacterium virus Bxb1]gb|AAG59720.1| head-to-tail adaptor [Mycobacterium virus Bxb1];ID=397a2aa9-b793-4cfd-953c-09d864c86e73;date_last_modified=2020-06-16;Name=head-to-tail connector complex protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	5391	5828	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=397a2aa9-b793-4cfd-953c-09d864c86e73;ID=aa5bf6c5-d463-49e5-8e26-db20e5a56553;date_last_modified=2020-05-28;Name=head-to-tail connector complex protein;date_creation=2020-05-28
+Shady_200528	.	exon	5403	5828	.	+	.	Parent=aa5bf6c5-d463-49e5-8e26-db20e5a56553;ID=5c788408-a45d-4b6d-afec-f8316930bc12;Name=5c788408-a45d-4b6d-afec-f8316930bc12
+Shady_200528	.	exon	5391	5396	.	+	.	Parent=aa5bf6c5-d463-49e5-8e26-db20e5a56553;ID=365ac474-f0c6-4972-9845-a46f08174679;Name=365ac474-f0c6-4972-9845-a46f08174679
+Shady_200528	.	CDS	5403	5828	.	+	0	Parent=aa5bf6c5-d463-49e5-8e26-db20e5a56553;ID=aa5bf6c5-d463-49e5-8e26-db20e5a56553-CDS;Name=aa5bf6c5-d463-49e5-8e26-db20e5a56553-CDS
+###
+Shady_200528	.	gene	5803	6165	.	+	.	owner=galaxy@cpt.tamu.edu;ID=0faa8364-71f5-4847-8fc1-8cec962b8bb1;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	5803	6165	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=0faa8364-71f5-4847-8fc1-8cec962b8bb1;ID=4f262ef2-fb5c-4594-ac43-f2bdfa374c36;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	5815	6165	.	+	0	Parent=4f262ef2-fb5c-4594-ac43-f2bdfa374c36;ID=4f262ef2-fb5c-4594-ac43-f2bdfa374c36-CDS;Name=4f262ef2-fb5c-4594-ac43-f2bdfa374c36-CDS
+Shady_200528	.	exon	5815	6165	.	+	.	Parent=4f262ef2-fb5c-4594-ac43-f2bdfa374c36;ID=4cc35972-f2ef-4edb-bbaa-67fc1e07b6ff;Name=4cc35972-f2ef-4edb-bbaa-67fc1e07b6ff
+Shady_200528	.	exon	5803	5806	.	+	.	Parent=4f262ef2-fb5c-4594-ac43-f2bdfa374c36;ID=7724dd14-027e-4093-a040-d4e6f89646b0;Name=7724dd14-027e-4093-a040-d4e6f89646b0
+###
+Shady_200528	.	gene	6157	6470	.	+	.	owner=galaxy@cpt.tamu.edu;ID=05c57499-b95d-4339-a0bc-89d0331a468a;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	6157	6470	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=05c57499-b95d-4339-a0bc-89d0331a468a;ID=ac3f5074-4870-4c3e-8cd0-4c8c7a68b357;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	6168	6470	.	+	0	Parent=ac3f5074-4870-4c3e-8cd0-4c8c7a68b357;ID=ac3f5074-4870-4c3e-8cd0-4c8c7a68b357-CDS;Name=ac3f5074-4870-4c3e-8cd0-4c8c7a68b357-CDS
+Shady_200528	.	exon	6157	6160	.	+	.	Parent=ac3f5074-4870-4c3e-8cd0-4c8c7a68b357;ID=9506b649-399b-4edc-bd0a-86d9b693bd70;Name=9506b649-399b-4edc-bd0a-86d9b693bd70
+Shady_200528	.	exon	6168	6470	.	+	.	Parent=ac3f5074-4870-4c3e-8cd0-4c8c7a68b357;ID=b86945d1-8cc8-4515-951d-a8e97bb18e84;Name=b86945d1-8cc8-4515-951d-a8e97bb18e84
+###
+Shady_200528	.	gene	6458	6877	.	+	.	owner=galaxy@cpt.tamu.edu;ID=3440294f-8c8e-46cd-96a2-d90cb981ee36;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	6458	6877	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=3440294f-8c8e-46cd-96a2-d90cb981ee36;ID=b2f2b10d-e30f-4b05-b79c-117c66ad3b24;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	6458	6461	.	+	.	Parent=b2f2b10d-e30f-4b05-b79c-117c66ad3b24;ID=3b0175a0-b5d1-4c7e-b137-a615755d1164;Name=3b0175a0-b5d1-4c7e-b137-a615755d1164
+Shady_200528	.	CDS	6467	6877	.	+	0	Parent=b2f2b10d-e30f-4b05-b79c-117c66ad3b24;ID=b2f2b10d-e30f-4b05-b79c-117c66ad3b24-CDS;Name=b2f2b10d-e30f-4b05-b79c-117c66ad3b24-CDS
+Shady_200528	.	exon	6467	6877	.	+	.	Parent=b2f2b10d-e30f-4b05-b79c-117c66ad3b24;ID=8786e6c9-fbb1-4a1f-a7c3-b9f26417f9a6;Name=8786e6c9-fbb1-4a1f-a7c3-b9f26417f9a6
+###
+Shady_200528	.	gene	6872	7450	.	+	.	owner=galaxy@cpt.tamu.edu;Note=ref|NP_075286.1| gp19 [Mycobacterium virus Bxb1]gb|AAG59724.1| major tail protein [Mycobacterium virus Bxb1] evalue 1.32786e-24;ID=8a9a5009-ff35-4f31-868f-61c47fe123f2;date_last_modified=2020-06-16;Name=major tail protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	6872	7450	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=8a9a5009-ff35-4f31-868f-61c47fe123f2;ID=d2105055-2f81-4e10-ac9c-3e75a26265a1;date_last_modified=2020-05-28;Name=major tail protein;date_creation=2020-05-28
+Shady_200528	.	exon	6872	6874	.	+	.	Parent=d2105055-2f81-4e10-ac9c-3e75a26265a1;ID=55536455-cffa-4035-860b-6705c452ba19;Name=55536455-cffa-4035-860b-6705c452ba19
+Shady_200528	.	CDS	6884	7450	.	+	0	Parent=d2105055-2f81-4e10-ac9c-3e75a26265a1;ID=d2105055-2f81-4e10-ac9c-3e75a26265a1-CDS;Name=d2105055-2f81-4e10-ac9c-3e75a26265a1-CDS
+Shady_200528	.	exon	6884	7450	.	+	.	Parent=d2105055-2f81-4e10-ac9c-3e75a26265a1;ID=a5e72b5b-aef3-4206-a02f-31f6b3d64890;Name=a5e72b5b-aef3-4206-a02f-31f6b3d64890
+###
+Shady_200528	.	gene	7543	7886	.	+	.	owner=galaxy@cpt.tamu.edu;frameshift=a;ID=29739b8a-38c4-42f7-b6ed-945d74fc065e;date_last_modified=2020-06-17;Name=tape measure chaperone frameshift product;date_creation=2020-05-28
+Shady_200528	.	mRNA	7543	7886	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=29739b8a-38c4-42f7-b6ed-945d74fc065e;ID=db51f21b-3b56-49da-9ffd-ccbafe0667d6;date_last_modified=2020-05-28;Name=tape measure chaperone;date_creation=2020-05-28
+Shady_200528	.	exon	7557	7886	.	+	.	Parent=db51f21b-3b56-49da-9ffd-ccbafe0667d6;ID=9d64bc55-c515-4891-9e0f-61c9ae264c77;Name=9d64bc55-c515-4891-9e0f-61c9ae264c77
+Shady_200528	.	CDS	7557	7886	.	+	0	Parent=db51f21b-3b56-49da-9ffd-ccbafe0667d6;ID=db51f21b-3b56-49da-9ffd-ccbafe0667d6-CDS;Name=db51f21b-3b56-49da-9ffd-ccbafe0667d6-CDS
+Shady_200528	.	exon	7543	7546	.	+	.	Parent=db51f21b-3b56-49da-9ffd-ccbafe0667d6;ID=dcab4b6b-c68d-4deb-a60b-29a4a7727532;Name=dcab4b6b-c68d-4deb-a60b-29a4a7727532
+Shady_200528	.	mRNA	7543	7875	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=29739b8a-38c4-42f7-b6ed-945d74fc065e;ID=c5d734d9-32d1-4db9-a360-4cff851ecd00;date_last_modified=2020-06-16;Name=tape measure chaperone frameshift product;date_creation=2020-05-28
+Shady_200528	.	exon	7557	7875	.	+	.	Parent=c5d734d9-32d1-4db9-a360-4cff851ecd00;ID=63ef6adb-65f0-4a87-8dbd-d7118a4764b4;Name=63ef6adb-65f0-4a87-8dbd-d7118a4764b4
+Shady_200528	.	CDS	7557	7875	.	+	0	Parent=c5d734d9-32d1-4db9-a360-4cff851ecd00;ID=c5d734d9-32d1-4db9-a360-4cff851ecd00-CDS;Name=c5d734d9-32d1-4db9-a360-4cff851ecd00-CDS
+Shady_200528	.	exon	7543	7546	.	+	.	Parent=c5d734d9-32d1-4db9-a360-4cff851ecd00;ID=1235050c-074a-465c-b49d-c55c507e7ab8;Name=1235050c-074a-465c-b49d-c55c507e7ab8
+###
+Shady_200528	.	gene	8303	10513	.	+	.	owner=galaxy@cpt.tamu.edu;Note=ref|NP_039690.1| Tapemeasure [Mycobacterium virus L5];ID=ce1703a6-e75d-4879-ab68-3fe8cbe51531;date_last_modified=2020-06-16;Name=tape measure protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	8303	10513	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=ce1703a6-e75d-4879-ab68-3fe8cbe51531;ID=6a541385-c421-47eb-baca-27e624dbd988;date_last_modified=2020-06-16;Name=tape measure protein;date_creation=2020-05-28
+Shady_200528	.	exon	8303	8306	.	+	.	Parent=6a541385-c421-47eb-baca-27e624dbd988;ID=07c7e93c-9515-47b3-b64c-efe4e9bac770;Name=07c7e93c-9515-47b3-b64c-efe4e9bac770
+Shady_200528	.	CDS	8312	10513	.	+	0	Parent=6a541385-c421-47eb-baca-27e624dbd988;ID=6a541385-c421-47eb-baca-27e624dbd988-CDS;Name=6a541385-c421-47eb-baca-27e624dbd988-CDS
+Shady_200528	.	exon	8312	10513	.	+	.	Parent=6a541385-c421-47eb-baca-27e624dbd988;ID=ca27af46-2ed1-4705-8296-5451edd07ce3;Name=ca27af46-2ed1-4705-8296-5451edd07ce3
+###
+Shady_200528	.	gene	10572	11308	.	+	.	owner=galaxy@cpt.tamu.edu;Note=HHPred predicted structural similarity at 99.9 probability to Staphylococcus virus 80alpha protein Distal Tail Protein Protein Data Bank entry 6V8I_CC over most of protein.;ID=ec934648-7dd3-40b3-8458-2939b3c47d95;date_last_modified=2020-06-16;Name=minor tail protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	10572	11308	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=ec934648-7dd3-40b3-8458-2939b3c47d95;ID=d96a9871-0951-493e-97b0-6b4ebe6b5580;date_last_modified=2020-05-28;Name=minor tail protein;date_creation=2020-05-28
+Shady_200528	.	exon	10583	11308	.	+	.	Parent=d96a9871-0951-493e-97b0-6b4ebe6b5580;ID=2f4018e5-10c5-43dc-b003-0c930b9dbf58;Name=2f4018e5-10c5-43dc-b003-0c930b9dbf58
+Shady_200528	.	exon	10572	10575	.	+	.	Parent=d96a9871-0951-493e-97b0-6b4ebe6b5580;ID=2bdd92c7-a7da-4118-8622-3c11c3ff9aba;Name=2bdd92c7-a7da-4118-8622-3c11c3ff9aba
+Shady_200528	.	CDS	10583	11308	.	+	0	Parent=d96a9871-0951-493e-97b0-6b4ebe6b5580;ID=d96a9871-0951-493e-97b0-6b4ebe6b5580-CDS;Name=d96a9871-0951-493e-97b0-6b4ebe6b5580-CDS
+###
+Shady_200528	.	gene	11293	13253	.	+	.	owner=galaxy@cpt.tamu.edu;ID=31de568a-26f6-468e-a769-37c385d55d0e;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	11293	12429	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=31de568a-26f6-468e-a769-37c385d55d0e;ID=a98845ce-deaf-4160-a550-1bb10692f45a;date_last_modified=2020-05-28;Name=minor tail protein;date_creation=2020-05-28
+Shady_200528	.	CDS	11308	12429	.	+	0	Parent=a98845ce-deaf-4160-a550-1bb10692f45a;ID=a98845ce-deaf-4160-a550-1bb10692f45a-CDS;Name=a98845ce-deaf-4160-a550-1bb10692f45a-CDS
+Shady_200528	.	exon	11308	12429	.	+	.	Parent=a98845ce-deaf-4160-a550-1bb10692f45a;ID=cb765d54-0f68-431d-88b3-7888990d2a75;Name=cb765d54-0f68-431d-88b3-7888990d2a75
+Shady_200528	.	exon	11293	11295	.	+	.	Parent=a98845ce-deaf-4160-a550-1bb10692f45a;ID=bbacd511-e1c3-4229-8a66-7fc0233dab4a;Name=bbacd511-e1c3-4229-8a66-7fc0233dab4a
+###
+Shady_200528	.	gene	13254	13773	.	+	.	owner=galaxy@cpt.tamu.edu;ID=0971777c-70b4-495c-b209-9e0d72122317;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	13254	13531	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=0971777c-70b4-495c-b209-9e0d72122317;ID=34ef65ac-c05a-48e6-8f2a-3e7dc8bceb33;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	13254	13256	.	+	.	Parent=34ef65ac-c05a-48e6-8f2a-3e7dc8bceb33;ID=f4f92c57-7d4d-4506-b8af-d876cd727545;Name=f4f92c57-7d4d-4506-b8af-d876cd727545
+Shady_200528	.	exon	13262	13531	.	+	.	Parent=34ef65ac-c05a-48e6-8f2a-3e7dc8bceb33;ID=d071774d-8986-4779-b93b-d86505d9b5b9;Name=d071774d-8986-4779-b93b-d86505d9b5b9
+Shady_200528	.	CDS	13262	13531	.	+	0	Parent=34ef65ac-c05a-48e6-8f2a-3e7dc8bceb33;ID=34ef65ac-c05a-48e6-8f2a-3e7dc8bceb33-CDS;Name=34ef65ac-c05a-48e6-8f2a-3e7dc8bceb33-CDS
+###
+Shady_200528	.	gene	13799	16051	.	+	.	owner=galaxy@cpt.tamu.edu;ID=03edeef9-c3e8-4796-8502-d358ee5faafd;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	13799	16051	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=03edeef9-c3e8-4796-8502-d358ee5faafd;ID=af87b00a-3964-4c9c-969d-c3ebcedea348;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	13811	16051	.	+	0	Parent=af87b00a-3964-4c9c-969d-c3ebcedea348;ID=af87b00a-3964-4c9c-969d-c3ebcedea348-CDS;Name=af87b00a-3964-4c9c-969d-c3ebcedea348-CDS
+Shady_200528	.	exon	13799	13803	.	+	.	Parent=af87b00a-3964-4c9c-969d-c3ebcedea348;ID=1d638360-7254-4845-b943-c9acca6a6857;Name=1d638360-7254-4845-b943-c9acca6a6857
+Shady_200528	.	exon	13811	16051	.	+	.	Parent=af87b00a-3964-4c9c-969d-c3ebcedea348;ID=84daaffa-df75-4ecc-9379-9174815107f7;Name=84daaffa-df75-4ecc-9379-9174815107f7
+###
+Shady_200528	.	gene	16118	16954	.	+	.	owner=galaxy@cpt.tamu.edu;Note=HHPred predicted structural similarity at 98 probability to  Streptococcus pyogenes phage-associated cell wall hydrolase PlyPy Protein Data Bank entry 5UDM_B at the N-terminus.;ID=4abd39a8-eb61-46f6-b287-af0c1136030f;date_last_modified=2020-06-16;Name=endolysin endopeptidase;date_creation=2020-05-28
+Shady_200528	.	mRNA	16118	16954	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=4abd39a8-eb61-46f6-b287-af0c1136030f;ID=e5bbfb1e-d821-4433-a753-31a0e6105db3;date_last_modified=2020-05-28;Name=endolysin endopeptidase;date_creation=2020-05-28
+Shady_200528	.	exon	16118	16121	.	+	.	Parent=e5bbfb1e-d821-4433-a753-31a0e6105db3;ID=19b05f01-8dbf-4707-999b-5592445d5055;Name=19b05f01-8dbf-4707-999b-5592445d5055
+Shady_200528	.	exon	16127	16954	.	+	.	Parent=e5bbfb1e-d821-4433-a753-31a0e6105db3;ID=8a64c77c-7260-4a34-a549-74fb351d8b10;Name=8a64c77c-7260-4a34-a549-74fb351d8b10
+Shady_200528	.	CDS	16127	16954	.	+	0	Parent=e5bbfb1e-d821-4433-a753-31a0e6105db3;ID=e5bbfb1e-d821-4433-a753-31a0e6105db3-CDS;Name=e5bbfb1e-d821-4433-a753-31a0e6105db3-CDS
+###
+Shady_200528	.	gene	17053	17313	.	+	.	owner=galaxy@cpt.tamu.edu;Note=TMHMM predicts one TM domain%2C N in C out.,Analyzing the aa sequence%2C multiple  R residues can be seen at the N-term and multiple D residues can be seen at the C-term.;ID=3bbc9e62-316d-4980-bb5e-839af4672fce;datasetSource=https://cpt.tamu.edu/galaxyhistory/view/ebcd312d6754f682;date_last_modified=2020-06-16;Name=holin class III;date_creation=2020-05-28
+Shady_200528	.	mRNA	17053	17313	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=3bbc9e62-316d-4980-bb5e-839af4672fce;ID=486c0261-978f-4379-a7cc-83f4b91dbed0;date_last_modified=2020-05-28;Name=holin class III;date_creation=2020-05-28
+Shady_200528	.	exon	17062	17313	.	+	.	Parent=486c0261-978f-4379-a7cc-83f4b91dbed0;ID=f2949510-8251-4d6e-876a-eda691a44c96;Name=f2949510-8251-4d6e-876a-eda691a44c96
+Shady_200528	.	CDS	17062	17313	.	+	0	Parent=486c0261-978f-4379-a7cc-83f4b91dbed0;ID=486c0261-978f-4379-a7cc-83f4b91dbed0-CDS;Name=486c0261-978f-4379-a7cc-83f4b91dbed0-CDS
+Shady_200528	.	exon	17053	17056	.	+	.	Parent=486c0261-978f-4379-a7cc-83f4b91dbed0;ID=0d3770ec-168e-4f63-b06a-7c60a4d4cf9b;Name=0d3770ec-168e-4f63-b06a-7c60a4d4cf9b
+###
+Shady_200528	.	gene	17346	17909	.	+	.	owner=galaxy@cpt.tamu.edu;Note=HHPred predicted structural similarity at 99.9 probability to Enterobacteria phage T4 protein dNMP Kinase Protein Data Bank entry 1DEK_B over most of protein;ID=ccf271f1-ce9b-48c6-a5b0-becce1e2987f;date_last_modified=2020-06-16;Name=deoxynucleoside monophosphate kinase;date_creation=2020-05-28
+Shady_200528	.	mRNA	17346	17909	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=ccf271f1-ce9b-48c6-a5b0-becce1e2987f;ID=021e9637-f152-4f4c-bfbd-7f02b35471d7;date_last_modified=2020-05-28;Name=deoxynucleoside monophosphate kinase;date_creation=2020-05-28
+Shady_200528	.	CDS	17361	17909	.	+	0	Parent=021e9637-f152-4f4c-bfbd-7f02b35471d7;ID=021e9637-f152-4f4c-bfbd-7f02b35471d7-CDS;Name=021e9637-f152-4f4c-bfbd-7f02b35471d7-CDS
+Shady_200528	.	exon	17346	17351	.	+	.	Parent=021e9637-f152-4f4c-bfbd-7f02b35471d7;ID=7d807732-a5c5-4336-b867-62b0674567d6;Name=7d807732-a5c5-4336-b867-62b0674567d6
+Shady_200528	.	exon	17361	17909	.	+	.	Parent=021e9637-f152-4f4c-bfbd-7f02b35471d7;ID=fa6a857b-68b8-4da8-9243-34759c84d1d2;Name=fa6a857b-68b8-4da8-9243-34759c84d1d2
+###
+Shady_200528	.	gene	18066	19292	.	+	.	owner=galaxy@cpt.tamu.edu;ID=c9eec6d9-8dee-443a-b179-efb38b9bbc0c;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	18066	19292	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=c9eec6d9-8dee-443a-b179-efb38b9bbc0c;ID=958f5065-2047-4a36-bef9-271831e5e177;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	18066	18069	.	+	.	Parent=958f5065-2047-4a36-bef9-271831e5e177;ID=cb634039-3015-4afc-9a17-c33c2fe461e6;Name=cb634039-3015-4afc-9a17-c33c2fe461e6
+Shady_200528	.	exon	18075	19292	.	+	.	Parent=958f5065-2047-4a36-bef9-271831e5e177;ID=2945bdaa-aa24-4e52-a03d-d5365a12ade5;Name=2945bdaa-aa24-4e52-a03d-d5365a12ade5
+Shady_200528	.	CDS	18075	19292	.	+	0	Parent=958f5065-2047-4a36-bef9-271831e5e177;ID=958f5065-2047-4a36-bef9-271831e5e177-CDS;Name=958f5065-2047-4a36-bef9-271831e5e177-CDS
+###
+Shady_200528	.	gene	19370	19850	.	+	.	owner=galaxy@cpt.tamu.edu;ID=432355c4-84eb-4564-8d87-7a0221854c35;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	19370	19850	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=432355c4-84eb-4564-8d87-7a0221854c35;ID=8bb91364-af37-4bd1-b72b-29646baa9aba;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	19383	19850	.	+	0	Parent=8bb91364-af37-4bd1-b72b-29646baa9aba;ID=8bb91364-af37-4bd1-b72b-29646baa9aba-CDS;Name=8bb91364-af37-4bd1-b72b-29646baa9aba-CDS
+Shady_200528	.	exon	19383	19850	.	+	.	Parent=8bb91364-af37-4bd1-b72b-29646baa9aba;ID=64583336-f9b7-4240-8759-31c69909559f;Name=64583336-f9b7-4240-8759-31c69909559f
+Shady_200528	.	exon	19370	19372	.	+	.	Parent=8bb91364-af37-4bd1-b72b-29646baa9aba;ID=7618a164-5e49-47aa-b2ee-5c6744b50a15;Name=7618a164-5e49-47aa-b2ee-5c6744b50a15
+###
+Shady_200528	.	gene	19831	20076	.	+	.	owner=galaxy@cpt.tamu.edu;ID=7d0cb149-ef2c-4b78-ad05-c19664d33fab;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	19831	20076	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=7d0cb149-ef2c-4b78-ad05-c19664d33fab;ID=2e6ed405-a464-4fc9-9dbe-841f7f1c0d5e;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	19843	20076	.	+	.	Parent=2e6ed405-a464-4fc9-9dbe-841f7f1c0d5e;ID=957b4513-1fdf-4aef-99e8-3a2cb9189dad;Name=957b4513-1fdf-4aef-99e8-3a2cb9189dad
+Shady_200528	.	exon	19831	19834	.	+	.	Parent=2e6ed405-a464-4fc9-9dbe-841f7f1c0d5e;ID=3cd97080-6ae4-46ab-9875-a5c580df748e;Name=3cd97080-6ae4-46ab-9875-a5c580df748e
+Shady_200528	.	CDS	19843	20076	.	+	0	Parent=2e6ed405-a464-4fc9-9dbe-841f7f1c0d5e;ID=2e6ed405-a464-4fc9-9dbe-841f7f1c0d5e-CDS;Name=2e6ed405-a464-4fc9-9dbe-841f7f1c0d5e-CDS
+###
+Shady_200528	.	gene	20393	21222	.	+	.	owner=galaxy@cpt.tamu.edu;Note=HHPred predicted structural similarity at 98.7 probability to Mycobacterium smegmatis protein UvrD/REP helicase%2C ATP-dependent DNA helicase Protein Data Bank entry 6PPR_B over most of protein.;ID=93a0288f-3e4f-4a71-a65e-0a6c5655fd8e;date_last_modified=2020-06-16;Name=DNA helicase;date_creation=2020-05-28
+Shady_200528	.	mRNA	20393	21222	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=93a0288f-3e4f-4a71-a65e-0a6c5655fd8e;ID=94fafb10-9d85-441d-a242-a520ada2715f;date_last_modified=2020-05-28;Name=DNA helicase;date_creation=2020-05-28
+Shady_200528	.	exon	20404	21222	.	+	.	Parent=94fafb10-9d85-441d-a242-a520ada2715f;ID=6a7cbc0e-b5b5-428c-a71d-199a2e34ff57;Name=6a7cbc0e-b5b5-428c-a71d-199a2e34ff57
+Shady_200528	.	CDS	20404	21222	.	+	0	Parent=94fafb10-9d85-441d-a242-a520ada2715f;ID=94fafb10-9d85-441d-a242-a520ada2715f-CDS;Name=94fafb10-9d85-441d-a242-a520ada2715f-CDS
+Shady_200528	.	exon	20393	20396	.	+	.	Parent=94fafb10-9d85-441d-a242-a520ada2715f;ID=65e0c927-982c-46a4-b6bd-21ba59a9a0fd;Name=65e0c927-982c-46a4-b6bd-21ba59a9a0fd
+###
+Shady_200528	.	gene	21316	22103	.	+	.	owner=galaxy@cpt.tamu.edu;Note=sp|Q9T216|RDF_BPPHC Recombination directionality factor OS%3DStreptomyces phage phiC31 Score7.33095e-59 over most of the gene;ID=824ca571-66f1-4137-85bd-a26a0c401790;date_last_modified=2020-06-16;Name=recombination directionality factor;date_creation=2020-05-28
+Shady_200528	.	mRNA	21316	22103	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=824ca571-66f1-4137-85bd-a26a0c401790;ID=30cfbb10-792d-44e4-9032-615b1f23c349;date_last_modified=2020-06-16;Name=recombination directionality factor;date_creation=2020-05-28
+Shady_200528	.	CDS	21330	22103	.	+	0	Parent=30cfbb10-792d-44e4-9032-615b1f23c349;ID=30cfbb10-792d-44e4-9032-615b1f23c349-CDS;Name=30cfbb10-792d-44e4-9032-615b1f23c349-CDS
+Shady_200528	.	exon	21316	21319	.	+	.	Parent=30cfbb10-792d-44e4-9032-615b1f23c349;ID=e003a2eb-2094-46e6-a449-6a4124074471;Name=e003a2eb-2094-46e6-a449-6a4124074471
+Shady_200528	.	exon	21330	22103	.	+	.	Parent=30cfbb10-792d-44e4-9032-615b1f23c349;ID=915bf9cf-7b52-44bd-b737-78915a76daf1;Name=915bf9cf-7b52-44bd-b737-78915a76daf1
+###
+Shady_200528	.	gene	22138	22475	.	+	.	owner=galaxy@cpt.tamu.edu;ID=b1a6a1b2-52ed-4af9-b53a-6ee1ee5abded;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	22138	22475	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=b1a6a1b2-52ed-4af9-b53a-6ee1ee5abded;ID=5415f2ae-154b-4271-bb95-dbea6d3fd3c6;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	22152	22475	.	+	0	Parent=5415f2ae-154b-4271-bb95-dbea6d3fd3c6;ID=5415f2ae-154b-4271-bb95-dbea6d3fd3c6-CDS;Name=5415f2ae-154b-4271-bb95-dbea6d3fd3c6-CDS
+Shady_200528	.	exon	22152	22475	.	+	.	Parent=5415f2ae-154b-4271-bb95-dbea6d3fd3c6;ID=08b7967c-4d9f-48e0-bb2c-6d185d83f9f1;Name=08b7967c-4d9f-48e0-bb2c-6d185d83f9f1
+Shady_200528	.	exon	22138	22142	.	+	.	Parent=5415f2ae-154b-4271-bb95-dbea6d3fd3c6;ID=510538dc-f255-411d-ba89-91fc71a17e36;Name=510538dc-f255-411d-ba89-91fc71a17e36
+###
+Shady_200528	.	gene	22466	22752	.	+	.	owner=galaxy@cpt.tamu.edu;ID=05aa13aa-4ed1-4714-9d44-c4fd031333f0;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	22466	22752	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=05aa13aa-4ed1-4714-9d44-c4fd031333f0;ID=2e88fc66-1819-407c-8d82-400dc7f78629;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	22477	22752	.	+	.	Parent=2e88fc66-1819-407c-8d82-400dc7f78629;ID=2ffc9494-7442-433c-a1ad-afd1f668dbfb;Name=2ffc9494-7442-433c-a1ad-afd1f668dbfb
+Shady_200528	.	exon	22466	22468	.	+	.	Parent=2e88fc66-1819-407c-8d82-400dc7f78629;ID=9a3c470c-e694-4c83-9af8-21403ea1af7f;Name=9a3c470c-e694-4c83-9af8-21403ea1af7f
+Shady_200528	.	CDS	22477	22752	.	+	0	Parent=2e88fc66-1819-407c-8d82-400dc7f78629;ID=2e88fc66-1819-407c-8d82-400dc7f78629-CDS;Name=2e88fc66-1819-407c-8d82-400dc7f78629-CDS
+###
+Shady_200528	.	gene	22845	23452	.	+	.	owner=galaxy@cpt.tamu.edu;ID=3f1ea8a9-21d5-4e50-a7c1-19e7958d8d94;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	22845	23036	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=3f1ea8a9-21d5-4e50-a7c1-19e7958d8d94;ID=cffe3c1b-d893-425d-a1df-f49a200ef999;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	22845	22848	.	+	.	Parent=cffe3c1b-d893-425d-a1df-f49a200ef999;ID=77bd2916-272d-49fe-ad17-43c17db424e2;Name=77bd2916-272d-49fe-ad17-43c17db424e2
+Shady_200528	.	exon	22854	23036	.	+	.	Parent=cffe3c1b-d893-425d-a1df-f49a200ef999;ID=11f4bf3a-ed20-4f9f-9cf5-4fd9fde762c1;Name=11f4bf3a-ed20-4f9f-9cf5-4fd9fde762c1
+Shady_200528	.	CDS	22854	23036	.	+	0	Parent=cffe3c1b-d893-425d-a1df-f49a200ef999;ID=cffe3c1b-d893-425d-a1df-f49a200ef999-CDS;Name=cffe3c1b-d893-425d-a1df-f49a200ef999-CDS
+###
+Shady_200528	.	gene	23540	25976	.	+	.	owner=galaxy@cpt.tamu.edu;Note=ref|NP_042036.1| DNA primase [Enterobacteria phage P4] evalue 1.09734e-9;ID=8d96ad36-29da-4fb5-9cbd-97c799bc587a;date_last_modified=2020-06-16;Name=DNA primase;date_creation=2020-05-28
+Shady_200528	.	mRNA	23540	25976	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=8d96ad36-29da-4fb5-9cbd-97c799bc587a;ID=8c09cee2-3ac4-45b2-8ebd-111b83719650;date_last_modified=2020-05-28;Name=DNA primase;date_creation=2020-05-28
+Shady_200528	.	exon	23540	23543	.	+	.	Parent=8c09cee2-3ac4-45b2-8ebd-111b83719650;ID=ef3db20f-280f-454e-90d8-3ca1a7e112cb;Name=ef3db20f-280f-454e-90d8-3ca1a7e112cb
+Shady_200528	.	CDS	23553	25976	.	+	0	Parent=8c09cee2-3ac4-45b2-8ebd-111b83719650;ID=8c09cee2-3ac4-45b2-8ebd-111b83719650-CDS;Name=8c09cee2-3ac4-45b2-8ebd-111b83719650-CDS
+Shady_200528	.	exon	23553	25976	.	+	.	Parent=8c09cee2-3ac4-45b2-8ebd-111b83719650;ID=e9860a14-c9ac-4cc7-ad24-24e6f33980dd;Name=e9860a14-c9ac-4cc7-ad24-24e6f33980dd
+###
+Shady_200528	.	gene	26033	27902	.	+	.	owner=galaxy@cpt.tamu.edu;Note=ref|NP_039708.1| DNA polymerase I [Mycobacterium virus L5] evalue 1.13815e-146;ID=b9844059-df6b-4522-9d81-87a2b6e8165e;date_last_modified=2020-06-16;Name=DNA polymerase I;date_creation=2020-05-28
+Shady_200528	.	mRNA	26033	27902	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=b9844059-df6b-4522-9d81-87a2b6e8165e;ID=af091bac-8d33-43fb-a096-8f18f0cd0676;date_last_modified=2020-05-28;Name=DNA polymerase I;date_creation=2020-05-28
+Shady_200528	.	exon	26046	27902	.	+	.	Parent=af091bac-8d33-43fb-a096-8f18f0cd0676;ID=0323ccd8-9584-4da6-87c1-0deb7e80103d;Name=0323ccd8-9584-4da6-87c1-0deb7e80103d
+Shady_200528	.	exon	26033	26038	.	+	.	Parent=af091bac-8d33-43fb-a096-8f18f0cd0676;ID=edce1dfa-a11f-4861-bf30-6f7143543966;Name=edce1dfa-a11f-4861-bf30-6f7143543966
+Shady_200528	.	CDS	26046	27902	.	+	0	Parent=af091bac-8d33-43fb-a096-8f18f0cd0676;ID=af091bac-8d33-43fb-a096-8f18f0cd0676-CDS;Name=af091bac-8d33-43fb-a096-8f18f0cd0676-CDS
+###
+Shady_200528	.	gene	28321	29138	.	+	.	owner=galaxy@cpt.tamu.edu;Note=HHPred predicted structural similarity at 99.5 probability to Mycobacterium tuberculosis (strain ATCC 25618 / H37Rv) protein  DNA-directed RNA polymerase subunit alpha Protein Data Bank entry 6FBV_F over most of protein.;ID=e8e36778-977c-40c4-ad63-0a02377f652f;date_last_modified=2020-06-16;Name=DNA-directed RNA polymerase subunit alpha;date_creation=2020-05-28
+Shady_200528	.	mRNA	28321	29138	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=e8e36778-977c-40c4-ad63-0a02377f652f;ID=4e4460e7-a6ea-427f-b0ad-8932e15722e3;date_last_modified=2020-05-28;Name=DNA-directed RNA polymerase subunit alpha;date_creation=2020-05-28
+Shady_200528	.	exon	28321	28325	.	+	.	Parent=4e4460e7-a6ea-427f-b0ad-8932e15722e3;ID=fb2f59c0-9039-4711-8ab3-aed70dfb62fa;Name=fb2f59c0-9039-4711-8ab3-aed70dfb62fa
+Shady_200528	.	CDS	28335	29138	.	+	0	Parent=4e4460e7-a6ea-427f-b0ad-8932e15722e3;ID=4e4460e7-a6ea-427f-b0ad-8932e15722e3-CDS;Name=4e4460e7-a6ea-427f-b0ad-8932e15722e3-CDS
+Shady_200528	.	exon	28335	29138	.	+	.	Parent=4e4460e7-a6ea-427f-b0ad-8932e15722e3;ID=24730690-b0e5-496e-8b3a-493277795186;Name=24730690-b0e5-496e-8b3a-493277795186
+###
+Shady_200528	.	gene	29123	29623	.	+	.	owner=galaxy@cpt.tamu.edu;Note=HHPred predicted structural similarity at 94.5 probability to Enterobacteria phage P1 protein Recombination enhancement function protein (HNH nuclease) Protein Data Bank entry 3PLW_A over most of protein.;ID=2a7b125f-0c57-4a46-9e77-5b87d7eddfe2;date_last_modified=2020-06-16;Name=HNH endonuclease;date_creation=2020-05-28
+Shady_200528	.	mRNA	29123	29623	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=2a7b125f-0c57-4a46-9e77-5b87d7eddfe2;ID=193ca0fc-9f99-46e9-9855-ac4a3ccf22eb;date_last_modified=2020-05-28;Name=HNH endonuclease;date_creation=2020-05-28
+Shady_200528	.	exon	29123	29126	.	+	.	Parent=193ca0fc-9f99-46e9-9855-ac4a3ccf22eb;ID=e157fa7e-ae3f-429c-a350-df15a498321c;Name=e157fa7e-ae3f-429c-a350-df15a498321c
+Shady_200528	.	CDS	29135	29623	.	+	0	Parent=193ca0fc-9f99-46e9-9855-ac4a3ccf22eb;ID=193ca0fc-9f99-46e9-9855-ac4a3ccf22eb-CDS;Name=193ca0fc-9f99-46e9-9855-ac4a3ccf22eb-CDS
+Shady_200528	.	exon	29135	29623	.	+	.	Parent=193ca0fc-9f99-46e9-9855-ac4a3ccf22eb;ID=5b368de3-dd4a-4adb-8889-003cbb1425a0;Name=5b368de3-dd4a-4adb-8889-003cbb1425a0
+###
+Shady_200528	.	gene	29745	29927	.	+	.	owner=galaxy@cpt.tamu.edu;ID=5840b3ed-796b-4464-acee-fa940b980189;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	29745	29927	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=5840b3ed-796b-4464-acee-fa940b980189;ID=cad4fdc3-73d8-4ab5-ac71-98d9bb6ec874;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	29757	29927	.	+	.	Parent=cad4fdc3-73d8-4ab5-ac71-98d9bb6ec874;ID=11342b2d-c467-4fa2-ad2c-ef7703cb6a80;Name=11342b2d-c467-4fa2-ad2c-ef7703cb6a80
+Shady_200528	.	CDS	29757	29927	.	+	0	Parent=cad4fdc3-73d8-4ab5-ac71-98d9bb6ec874;ID=cad4fdc3-73d8-4ab5-ac71-98d9bb6ec874-CDS;Name=cad4fdc3-73d8-4ab5-ac71-98d9bb6ec874-CDS
+Shady_200528	.	exon	29745	29749	.	+	.	Parent=cad4fdc3-73d8-4ab5-ac71-98d9bb6ec874;ID=7dc10840-e89c-4526-be4a-962557c0609b;Name=7dc10840-e89c-4526-be4a-962557c0609b
+###
+Shady_200528	.	gene	29911	30052	.	+	.	owner=galaxy@cpt.tamu.edu;ID=5d10d1b7-eba1-48ea-91a0-fe3823b150e0;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	29911	30052	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=5d10d1b7-eba1-48ea-91a0-fe3823b150e0;ID=7c6f5fbb-06ed-4816-b154-fd2751c387ab;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	29924	30052	.	+	0	Parent=7c6f5fbb-06ed-4816-b154-fd2751c387ab;ID=7c6f5fbb-06ed-4816-b154-fd2751c387ab-CDS;Name=7c6f5fbb-06ed-4816-b154-fd2751c387ab-CDS
+Shady_200528	.	exon	29924	30052	.	+	.	Parent=7c6f5fbb-06ed-4816-b154-fd2751c387ab;ID=3cd79f1f-0412-4c74-81a5-6cd7698de725;Name=3cd79f1f-0412-4c74-81a5-6cd7698de725
+Shady_200528	.	exon	29911	29915	.	+	.	Parent=7c6f5fbb-06ed-4816-b154-fd2751c387ab;ID=2b9a7e1b-0f16-4ec1-b53f-2db804c448c1;Name=2b9a7e1b-0f16-4ec1-b53f-2db804c448c1
+###
+Shady_200528	.	gene	30035	31168	.	+	.	owner=galaxy@cpt.tamu.edu;ID=9d2fa1ef-fead-48b1-87a2-19a4f0b4a95b;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	30035	30399	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=9d2fa1ef-fead-48b1-87a2-19a4f0b4a95b;ID=bf61d749-a6c4-40c1-8887-22f929f12a82;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	30035	30038	.	+	.	Parent=bf61d749-a6c4-40c1-8887-22f929f12a82;ID=3d764c28-b252-402a-b5c8-772078363edc;Name=3d764c28-b252-402a-b5c8-772078363edc
+Shady_200528	.	exon	30049	30399	.	+	.	Parent=bf61d749-a6c4-40c1-8887-22f929f12a82;ID=517c7d67-c85c-4dd1-a4ee-1948204003fd;Name=517c7d67-c85c-4dd1-a4ee-1948204003fd
+Shady_200528	.	CDS	30049	30399	.	+	0	Parent=bf61d749-a6c4-40c1-8887-22f929f12a82;ID=bf61d749-a6c4-40c1-8887-22f929f12a82-CDS;Name=bf61d749-a6c4-40c1-8887-22f929f12a82-CDS
+###
+Shady_200528	.	gene	31240	31951	.	+	.	owner=galaxy@cpt.tamu.edu;Note=NP_039712.1| ThyX-like [Mycobacterium virus L5] evalue 3.93717e-69;ID=b39494bc-6c87-462f-881f-ba09049bfe98;date_last_modified=2020-06-16;Name=ThyX-like thymidylate synthase;date_creation=2020-05-28
+Shady_200528	.	mRNA	31240	31951	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=b39494bc-6c87-462f-881f-ba09049bfe98;ID=aa2f1945-ab7d-4d47-ab91-cfcd8b6a4891;date_last_modified=2020-05-28;Name=ThyX-like thymidylate synthase;date_creation=2020-05-28
+Shady_200528	.	exon	31253	31951	.	+	.	Parent=aa2f1945-ab7d-4d47-ab91-cfcd8b6a4891;ID=fd11448f-f146-4756-94c4-220cf38ceac0;Name=fd11448f-f146-4756-94c4-220cf38ceac0
+Shady_200528	.	exon	31240	31244	.	+	.	Parent=aa2f1945-ab7d-4d47-ab91-cfcd8b6a4891;ID=8298e62e-e78f-42b2-afe8-96e629e4b90c;Name=8298e62e-e78f-42b2-afe8-96e629e4b90c
+Shady_200528	.	CDS	31253	31951	.	+	0	Parent=aa2f1945-ab7d-4d47-ab91-cfcd8b6a4891;ID=aa2f1945-ab7d-4d47-ab91-cfcd8b6a4891-CDS;Name=aa2f1945-ab7d-4d47-ab91-cfcd8b6a4891-CDS
+###
+Shady_200528	.	gene	31935	32217	.	+	.	owner=galaxy@cpt.tamu.edu;Note=NON_CYTOPLASMIC_DOMAIN%3B Signature_desc: Region of a membrane-bound protein predicted to be outside the membrane in the extracellular region. Source: Phobius;ID=4c0cdf78-1ec3-40b6-9848-41ce71989331;date_last_modified=2020-06-16;Name=hypothetical outer membrane lipoprotein;date_creation=2020-05-28
+Shady_200528	.	mRNA	31935	32217	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=4c0cdf78-1ec3-40b6-9848-41ce71989331;ID=21902776-e020-408c-97b7-7ad7d19f5f6c;date_last_modified=2020-05-28;Name=hypothetical outer membrane lipoprotein;date_creation=2020-05-28
+Shady_200528	.	exon	31948	32217	.	+	.	Parent=21902776-e020-408c-97b7-7ad7d19f5f6c;ID=6249ceb8-8f53-4b60-8e95-c89a9ff0c7a8;Name=6249ceb8-8f53-4b60-8e95-c89a9ff0c7a8
+Shady_200528	.	CDS	31948	32217	.	+	0	Parent=21902776-e020-408c-97b7-7ad7d19f5f6c;ID=21902776-e020-408c-97b7-7ad7d19f5f6c-CDS;Name=21902776-e020-408c-97b7-7ad7d19f5f6c-CDS
+Shady_200528	.	exon	31935	31939	.	+	.	Parent=21902776-e020-408c-97b7-7ad7d19f5f6c;ID=0a67d3e2-92d9-42c8-b9b5-f7910bdde2c6;Name=0a67d3e2-92d9-42c8-b9b5-f7910bdde2c6
+###
+Shady_200528	.	gene	32197	32458	.	+	.	owner=galaxy@cpt.tamu.edu;Note=HHpred 2VOC_A THIOREDOXIN Bacillus subtilis subsp. subtilis 99.61% 1.5e-13;ID=faaf4340-9e7b-4bf0-9c75-9e7c4f1d3616;date_last_modified=2020-06-16;Name=thioredoxin;date_creation=2020-05-28
+Shady_200528	.	mRNA	32197	32458	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=faaf4340-9e7b-4bf0-9c75-9e7c4f1d3616;ID=d8baf788-b299-4581-b13a-584ee79aef32;date_last_modified=2020-05-28;Name=thioredoxin;date_creation=2020-05-28
+Shady_200528	.	exon	32197	32200	.	+	.	Parent=d8baf788-b299-4581-b13a-584ee79aef32;ID=f8fda89d-c717-4205-a784-ef9efc9c0905;Name=f8fda89d-c717-4205-a784-ef9efc9c0905
+Shady_200528	.	CDS	32210	32458	.	+	0	Parent=d8baf788-b299-4581-b13a-584ee79aef32;ID=d8baf788-b299-4581-b13a-584ee79aef32-CDS;Name=d8baf788-b299-4581-b13a-584ee79aef32-CDS
+Shady_200528	.	exon	32210	32458	.	+	.	Parent=d8baf788-b299-4581-b13a-584ee79aef32;ID=98092939-f73c-4074-b33d-4ee8866237fd;Name=98092939-f73c-4074-b33d-4ee8866237fd
+###
+Shady_200528	.	gene	32442	32850	.	+	.	owner=galaxy@cpt.tamu.edu;Note=ref|NP_049828.1| Cd dCMP deaminase [Escherichia virus T4] evalue 5.65936e-12,BLAST putative dCMP deaminase [Streptomyces phage R4] Sequence ID: YP_006990149.1Length: 161;ID=d40470ad-0e35-4533-a944-98f9c6372f7d;date_last_modified=2020-06-16;Name=deoxycytidylate deaminase;date_creation=2020-05-28
+Shady_200528	.	mRNA	32442	32850	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=d40470ad-0e35-4533-a944-98f9c6372f7d;ID=51fa0d6b-b408-4157-a28d-443c6b9d00cc;date_last_modified=2020-06-16;Name=deoxycytidylate deaminase;date_creation=2020-05-28
+Shady_200528	.	exon	32442	32446	.	+	.	Parent=51fa0d6b-b408-4157-a28d-443c6b9d00cc;ID=eb17f20f-47f3-4a51-899f-b22c3ccfc333;Name=eb17f20f-47f3-4a51-899f-b22c3ccfc333
+Shady_200528	.	exon	32455	32850	.	+	.	Parent=51fa0d6b-b408-4157-a28d-443c6b9d00cc;ID=37c31f8c-afb7-4f12-8c40-0e61f6ef64d8;Name=37c31f8c-afb7-4f12-8c40-0e61f6ef64d8
+Shady_200528	.	CDS	32455	32850	.	+	0	Parent=51fa0d6b-b408-4157-a28d-443c6b9d00cc;ID=51fa0d6b-b408-4157-a28d-443c6b9d00cc-CDS;Name=51fa0d6b-b408-4157-a28d-443c6b9d00cc-CDS
+###
+Shady_200528	.	gene	32847	32999	.	+	.	owner=galaxy@cpt.tamu.edu;ID=60d217b0-7948-41e6-9133-7c9fc8439d3c;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	32847	32999	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=60d217b0-7948-41e6-9133-7c9fc8439d3c;ID=089151bd-806c-46fb-b65b-4b625688170e;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	32847	32999	.	+	0	Parent=089151bd-806c-46fb-b65b-4b625688170e;ID=089151bd-806c-46fb-b65b-4b625688170e-CDS;Name=089151bd-806c-46fb-b65b-4b625688170e-CDS
+Shady_200528	.	exon	32847	32999	.	+	.	Parent=089151bd-806c-46fb-b65b-4b625688170e;ID=266f1aa6-3a92-47ca-8dd2-48864027b820;Name=266f1aa6-3a92-47ca-8dd2-48864027b820
+###
+Shady_200528	.	gene	32984	33193	.	+	.	owner=galaxy@cpt.tamu.edu;ID=09f97a0e-6130-47b5-974a-f250d8b1db08;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	32984	33193	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=09f97a0e-6130-47b5-974a-f250d8b1db08;ID=aaff4dfb-1782-4512-a3c9-2e538fed030f;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	32999	33193	.	+	0	Parent=aaff4dfb-1782-4512-a3c9-2e538fed030f;ID=aaff4dfb-1782-4512-a3c9-2e538fed030f-CDS;Name=aaff4dfb-1782-4512-a3c9-2e538fed030f-CDS
+Shady_200528	.	exon	32999	33193	.	+	.	Parent=aaff4dfb-1782-4512-a3c9-2e538fed030f;ID=6d818f88-cbb0-4029-bacb-46d202020ad0;Name=6d818f88-cbb0-4029-bacb-46d202020ad0
+Shady_200528	.	exon	32984	32987	.	+	.	Parent=aaff4dfb-1782-4512-a3c9-2e538fed030f;ID=c2e44237-5a3f-4af6-bc3a-a36a65dadbd5;Name=c2e44237-5a3f-4af6-bc3a-a36a65dadbd5
+###
+Shady_200528	.	gene	33328	33572	.	+	.	owner=galaxy@cpt.tamu.edu;ID=23b306c5-ca9c-4524-b312-ea69d8c95690;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	33328	33572	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=23b306c5-ca9c-4524-b312-ea69d8c95690;ID=061ed089-8dbf-435e-a0dc-734b3db52977;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	33339	33572	.	+	0	Parent=061ed089-8dbf-435e-a0dc-734b3db52977;ID=061ed089-8dbf-435e-a0dc-734b3db52977-CDS;Name=061ed089-8dbf-435e-a0dc-734b3db52977-CDS
+Shady_200528	.	exon	33339	33572	.	+	.	Parent=061ed089-8dbf-435e-a0dc-734b3db52977;ID=2e3f9f24-0018-4de2-a9fd-446ded87208b;Name=2e3f9f24-0018-4de2-a9fd-446ded87208b
+Shady_200528	.	exon	33328	33331	.	+	.	Parent=061ed089-8dbf-435e-a0dc-734b3db52977;ID=129f67b1-48a4-4228-b1ba-db84f05636f4;Name=129f67b1-48a4-4228-b1ba-db84f05636f4
+###
+Shady_200528	.	gene	33654	33866	.	+	.	owner=galaxy@cpt.tamu.edu;ID=a6c80f8b-8504-49f1-8a69-3bf98752c6e1;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	33654	33866	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=a6c80f8b-8504-49f1-8a69-3bf98752c6e1;ID=42bea7d0-15e9-4ca2-9b1c-ab49a2fc498e;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	33654	33658	.	+	.	Parent=42bea7d0-15e9-4ca2-9b1c-ab49a2fc498e;ID=268739e4-1d48-4429-b783-1bf8843edaa6;Name=268739e4-1d48-4429-b783-1bf8843edaa6
+Shady_200528	.	CDS	33666	33866	.	+	0	Parent=42bea7d0-15e9-4ca2-9b1c-ab49a2fc498e;ID=42bea7d0-15e9-4ca2-9b1c-ab49a2fc498e-CDS;Name=42bea7d0-15e9-4ca2-9b1c-ab49a2fc498e-CDS
+Shady_200528	.	exon	33666	33866	.	+	.	Parent=42bea7d0-15e9-4ca2-9b1c-ab49a2fc498e;ID=e5e17bc6-9dcb-4f7b-8e4b-b76f08e5062d;Name=e5e17bc6-9dcb-4f7b-8e4b-b76f08e5062d
+###
+Shady_200528	.	gene	33887	34179	.	+	.	owner=galaxy@cpt.tamu.edu;ID=21c7eede-1958-414a-85e8-3af031711458;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	33887	34179	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=21c7eede-1958-414a-85e8-3af031711458;ID=b28a1c80-2b14-4651-aa5d-d255d482e17c;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	33904	34179	.	+	0	Parent=b28a1c80-2b14-4651-aa5d-d255d482e17c;ID=b28a1c80-2b14-4651-aa5d-d255d482e17c-CDS;Name=b28a1c80-2b14-4651-aa5d-d255d482e17c-CDS
+Shady_200528	.	exon	33887	33891	.	+	.	Parent=b28a1c80-2b14-4651-aa5d-d255d482e17c;ID=f33648d6-2d2f-4c2b-9ed7-b6b7fa0b17e9;Name=f33648d6-2d2f-4c2b-9ed7-b6b7fa0b17e9
+Shady_200528	.	exon	33904	34179	.	+	.	Parent=b28a1c80-2b14-4651-aa5d-d255d482e17c;ID=ae59bd47-d3a4-4c8f-aca2-4f2bd71f4949;Name=ae59bd47-d3a4-4c8f-aca2-4f2bd71f4949
+###
+Shady_200528	.	gene	34224	34604	.	+	.	owner=galaxy@cpt.tamu.edu;ID=c93125f3-2f2c-46d6-b986-f9b61e157b00;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	34224	34604	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=c93125f3-2f2c-46d6-b986-f9b61e157b00;ID=6074c933-4a04-4150-830d-09bb1ac0c480;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	34233	34604	.	+	0	Parent=6074c933-4a04-4150-830d-09bb1ac0c480;ID=6074c933-4a04-4150-830d-09bb1ac0c480-CDS;Name=6074c933-4a04-4150-830d-09bb1ac0c480-CDS
+Shady_200528	.	exon	34233	34604	.	+	.	Parent=6074c933-4a04-4150-830d-09bb1ac0c480;ID=b8c0d497-91c2-4d77-9af9-ed435d53f81a;Name=b8c0d497-91c2-4d77-9af9-ed435d53f81a
+Shady_200528	.	exon	34224	34227	.	+	.	Parent=6074c933-4a04-4150-830d-09bb1ac0c480;ID=774fec10-67c0-42d9-a33c-4d2f2461f6d3;Name=774fec10-67c0-42d9-a33c-4d2f2461f6d3
+###
+Shady_200528	.	gene	34574	34917	.	+	.	owner=galaxy@cpt.tamu.edu;ID=22e1e6f8-a1a0-453f-b728-3a81efc938f8;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	34574	34917	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=22e1e6f8-a1a0-453f-b728-3a81efc938f8;ID=f7b60fef-5cb1-4650-9548-acf709d6bafe;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	34585	34917	.	+	.	Parent=f7b60fef-5cb1-4650-9548-acf709d6bafe;ID=76485169-5a8a-49e2-81fc-b181f42b9ed5;Name=76485169-5a8a-49e2-81fc-b181f42b9ed5
+Shady_200528	.	exon	34574	34577	.	+	.	Parent=f7b60fef-5cb1-4650-9548-acf709d6bafe;ID=348f9f38-a875-4d99-a7a1-494273775755;Name=348f9f38-a875-4d99-a7a1-494273775755
+Shady_200528	.	CDS	34585	34917	.	+	0	Parent=f7b60fef-5cb1-4650-9548-acf709d6bafe;ID=f7b60fef-5cb1-4650-9548-acf709d6bafe-CDS;Name=f7b60fef-5cb1-4650-9548-acf709d6bafe-CDS
+###
+Shady_200528	.	gene	35069	35324	.	+	.	owner=galaxy@cpt.tamu.edu;ID=325fc07e-3b14-43a9-8174-e45c6308e306;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	35069	35324	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=325fc07e-3b14-43a9-8174-e45c6308e306;ID=c0687504-d06b-47fe-a5f1-bea8cf575f63;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	35069	35071	.	+	.	Parent=c0687504-d06b-47fe-a5f1-bea8cf575f63;ID=875de1c7-0664-4c6c-b3c4-23e518a4bcb5;Name=875de1c7-0664-4c6c-b3c4-23e518a4bcb5
+Shady_200528	.	exon	35079	35324	.	+	.	Parent=c0687504-d06b-47fe-a5f1-bea8cf575f63;ID=f761fa40-850f-44ab-9a7a-e6e3362d0c14;Name=f761fa40-850f-44ab-9a7a-e6e3362d0c14
+Shady_200528	.	CDS	35079	35324	.	+	0	Parent=c0687504-d06b-47fe-a5f1-bea8cf575f63;ID=c0687504-d06b-47fe-a5f1-bea8cf575f63-CDS;Name=c0687504-d06b-47fe-a5f1-bea8cf575f63-CDS
+###
+Shady_200528	.	gene	35342	35611	.	+	.	owner=galaxy@cpt.tamu.edu;ID=e813084c-38c3-4651-895a-6af270a0ad0d;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	35342	35611	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=e813084c-38c3-4651-895a-6af270a0ad0d;ID=a37ef7da-f2b8-4ed7-b6f8-43456e53c9ba;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	35342	35344	.	+	.	Parent=a37ef7da-f2b8-4ed7-b6f8-43456e53c9ba;ID=659381ea-145f-4842-a2f5-4af8bc09b691;Name=659381ea-145f-4842-a2f5-4af8bc09b691
+Shady_200528	.	CDS	35357	35611	.	+	0	Parent=a37ef7da-f2b8-4ed7-b6f8-43456e53c9ba;ID=a37ef7da-f2b8-4ed7-b6f8-43456e53c9ba-CDS;Name=a37ef7da-f2b8-4ed7-b6f8-43456e53c9ba-CDS
+Shady_200528	.	exon	35357	35611	.	+	.	Parent=a37ef7da-f2b8-4ed7-b6f8-43456e53c9ba;ID=d1cad82a-c7ab-49f1-a24b-2168fbe8541b;Name=d1cad82a-c7ab-49f1-a24b-2168fbe8541b
+###
+Shady_200528	.	gene	35674	35922	.	+	.	owner=galaxy@cpt.tamu.edu;ID=5eb002c3-3d5c-48ba-89ce-cab0fe26056d;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	35674	35922	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=5eb002c3-3d5c-48ba-89ce-cab0fe26056d;ID=a8bedbde-2513-4363-9fbe-587e4e03bbbe;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	35686	35922	.	+	.	Parent=a8bedbde-2513-4363-9fbe-587e4e03bbbe;ID=764592c9-5922-46c9-b0cc-aa42fa7e2947;Name=764592c9-5922-46c9-b0cc-aa42fa7e2947
+Shady_200528	.	CDS	35686	35922	.	+	0	Parent=a8bedbde-2513-4363-9fbe-587e4e03bbbe;ID=a8bedbde-2513-4363-9fbe-587e4e03bbbe-CDS;Name=a8bedbde-2513-4363-9fbe-587e4e03bbbe-CDS
+Shady_200528	.	exon	35674	35677	.	+	.	Parent=a8bedbde-2513-4363-9fbe-587e4e03bbbe;ID=73427515-aedd-44f0-a80e-ff25e06f347a;Name=73427515-aedd-44f0-a80e-ff25e06f347a
+###
+Shady_200528	.	gene	36246	36773	.	+	.	owner=galaxy@cpt.tamu.edu;ID=1e6bb954-3978-4be5-ab29-8e3c00c572a8;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	36246	36773	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=1e6bb954-3978-4be5-ab29-8e3c00c572a8;ID=911f4fa2-ad56-44d8-a882-7205fe5dc9b7;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	36246	36249	.	+	.	Parent=911f4fa2-ad56-44d8-a882-7205fe5dc9b7;ID=15281105-48d9-4e1a-ac21-ac7d9d32d953;Name=15281105-48d9-4e1a-ac21-ac7d9d32d953
+Shady_200528	.	exon	36255	36773	.	+	.	Parent=911f4fa2-ad56-44d8-a882-7205fe5dc9b7;ID=14054dcc-c4a6-4eee-b4af-b2997407df60;Name=14054dcc-c4a6-4eee-b4af-b2997407df60
+Shady_200528	.	CDS	36255	36773	.	+	0	Parent=911f4fa2-ad56-44d8-a882-7205fe5dc9b7;ID=911f4fa2-ad56-44d8-a882-7205fe5dc9b7-CDS;Name=911f4fa2-ad56-44d8-a882-7205fe5dc9b7-CDS
+###
+Shady_200528	.	gene	36810	37070	.	+	.	owner=galaxy@cpt.tamu.edu;ID=faffccc9-a173-4ccc-9467-642991c4868c;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	36810	37070	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=faffccc9-a173-4ccc-9467-642991c4868c;ID=dd2a280b-6cb7-45d6-8c56-b5018a913abb;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	36810	36813	.	+	.	Parent=dd2a280b-6cb7-45d6-8c56-b5018a913abb;ID=29f41a5e-7f20-43a6-98e5-4c97cae7a835;Name=29f41a5e-7f20-43a6-98e5-4c97cae7a835
+Shady_200528	.	CDS	36825	37070	.	+	0	Parent=dd2a280b-6cb7-45d6-8c56-b5018a913abb;ID=dd2a280b-6cb7-45d6-8c56-b5018a913abb-CDS;Name=dd2a280b-6cb7-45d6-8c56-b5018a913abb-CDS
+Shady_200528	.	exon	36825	37070	.	+	.	Parent=dd2a280b-6cb7-45d6-8c56-b5018a913abb;ID=dc644404-820c-4a48-9c5c-2143d2a46745;Name=dc644404-820c-4a48-9c5c-2143d2a46745
+###
+Shady_200528	.	gene	37279	37526	.	+	.	owner=galaxy@cpt.tamu.edu;ID=1a3b18e0-a31e-426e-b65c-8bb71b3fc506;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	37279	37526	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=1a3b18e0-a31e-426e-b65c-8bb71b3fc506;ID=8c869fbd-a734-4e5c-a540-8b3abcbee22a;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	37290	37526	.	+	.	Parent=8c869fbd-a734-4e5c-a540-8b3abcbee22a;ID=85550fdf-29f0-4440-95c0-a63df38cc151;Name=85550fdf-29f0-4440-95c0-a63df38cc151
+Shady_200528	.	CDS	37290	37526	.	+	0	Parent=8c869fbd-a734-4e5c-a540-8b3abcbee22a;ID=8c869fbd-a734-4e5c-a540-8b3abcbee22a-CDS;Name=8c869fbd-a734-4e5c-a540-8b3abcbee22a-CDS
+Shady_200528	.	exon	37279	37283	.	+	.	Parent=8c869fbd-a734-4e5c-a540-8b3abcbee22a;ID=6fd9af0d-e4e1-4dff-ac07-39894f1b5391;Name=6fd9af0d-e4e1-4dff-ac07-39894f1b5391
+###
+Shady_200528	.	gene	37114	37236	.	+	.	owner=galaxy@cpt.tamu.edu;ID=2672f92b-7768-4989-9906-dcb84eac3d74;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	37114	37236	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=2672f92b-7768-4989-9906-dcb84eac3d74;ID=35397320-09f1-4edb-ac4f-f4f4cc4ca0af;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	37114	37116	.	+	.	Parent=35397320-09f1-4edb-ac4f-f4f4cc4ca0af;ID=a2b6d6cd-6469-48d7-962c-6979391bf2ba;Name=a2b6d6cd-6469-48d7-962c-6979391bf2ba
+Shady_200528	.	exon	37126	37236	.	+	.	Parent=35397320-09f1-4edb-ac4f-f4f4cc4ca0af;ID=a9217cef-5a41-4fc6-babf-0007246cb33a;Name=a9217cef-5a41-4fc6-babf-0007246cb33a
+Shady_200528	.	CDS	37126	37236	.	+	0	Parent=35397320-09f1-4edb-ac4f-f4f4cc4ca0af;ID=35397320-09f1-4edb-ac4f-f4f4cc4ca0af-CDS;Name=35397320-09f1-4edb-ac4f-f4f4cc4ca0af-CDS
+###
+Shady_200528	.	gene	37629	37901	.	+	.	owner=galaxy@cpt.tamu.edu;ID=a5ad333d-05bf-4bd5-964a-0208c041d39b;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	37629	37901	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=a5ad333d-05bf-4bd5-964a-0208c041d39b;ID=96267965-f8ad-420e-a8cf-900e2dd9ba66;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	37638	37901	.	+	.	Parent=96267965-f8ad-420e-a8cf-900e2dd9ba66;ID=d3fd1dec-bf02-4d50-8b15-19c8977e618e;Name=d3fd1dec-bf02-4d50-8b15-19c8977e618e
+Shady_200528	.	CDS	37638	37901	.	+	0	Parent=96267965-f8ad-420e-a8cf-900e2dd9ba66;ID=96267965-f8ad-420e-a8cf-900e2dd9ba66-CDS;Name=96267965-f8ad-420e-a8cf-900e2dd9ba66-CDS
+Shady_200528	.	exon	37629	37632	.	+	.	Parent=96267965-f8ad-420e-a8cf-900e2dd9ba66;ID=a62e88b1-e309-4d6d-951f-7822ca451fdb;Name=a62e88b1-e309-4d6d-951f-7822ca451fdb
+###
+Shady_200528	.	gene	37995	38248	.	+	.	owner=galaxy@cpt.tamu.edu;ID=cde2a0ce-ca91-4512-842b-629f85d0531b;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	37995	38248	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=cde2a0ce-ca91-4512-842b-629f85d0531b;ID=3115057c-7280-448f-a6c4-857afdea2153;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	38006	38248	.	+	0	Parent=3115057c-7280-448f-a6c4-857afdea2153;ID=3115057c-7280-448f-a6c4-857afdea2153-CDS;Name=3115057c-7280-448f-a6c4-857afdea2153-CDS
+Shady_200528	.	exon	37995	37998	.	+	.	Parent=3115057c-7280-448f-a6c4-857afdea2153;ID=7ec0e7d1-674a-4970-af4d-f1541d7d0acd;Name=7ec0e7d1-674a-4970-af4d-f1541d7d0acd
+Shady_200528	.	exon	38006	38248	.	+	.	Parent=3115057c-7280-448f-a6c4-857afdea2153;ID=dc905e3e-1824-45e8-ac27-46c5279c2d31;Name=dc905e3e-1824-45e8-ac27-46c5279c2d31
+###
+Shady_200528	.	gene	38520	38957	.	+	.	owner=galaxy@cpt.tamu.edu;ID=addb03d5-be0e-44d3-829c-205d6eeaa13b;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	38520	38957	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=addb03d5-be0e-44d3-829c-205d6eeaa13b;ID=b41d36f4-2464-4e81-a708-8433b17909a1;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	38520	38957	.	+	.	Parent=b41d36f4-2464-4e81-a708-8433b17909a1;ID=9fec442e-8923-41a8-8a65-08bafa2d5f7b;Name=9fec442e-8923-41a8-8a65-08bafa2d5f7b
+Shady_200528	.	CDS	38520	38957	.	+	0	Parent=b41d36f4-2464-4e81-a708-8433b17909a1;ID=b41d36f4-2464-4e81-a708-8433b17909a1-CDS;Name=b41d36f4-2464-4e81-a708-8433b17909a1-CDS
+###
+Shady_200528	.	gene	39063	39376	.	+	.	owner=galaxy@cpt.tamu.edu;ID=c65ff45f-ac96-478d-b976-c3f057becdf3;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	39063	39376	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=c65ff45f-ac96-478d-b976-c3f057becdf3;ID=f2d1f649-f365-4d0d-8c09-ed54783fafe8;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	39063	39065	.	+	.	Parent=f2d1f649-f365-4d0d-8c09-ed54783fafe8;ID=3ddd9c71-d699-454a-9da1-0430cfee7cdd;Name=3ddd9c71-d699-454a-9da1-0430cfee7cdd
+Shady_200528	.	exon	39074	39376	.	+	.	Parent=f2d1f649-f365-4d0d-8c09-ed54783fafe8;ID=79e8a487-71de-490a-9c9f-761006b99a18;Name=79e8a487-71de-490a-9c9f-761006b99a18
+Shady_200528	.	CDS	39074	39376	.	+	0	Parent=f2d1f649-f365-4d0d-8c09-ed54783fafe8;ID=f2d1f649-f365-4d0d-8c09-ed54783fafe8-CDS;Name=f2d1f649-f365-4d0d-8c09-ed54783fafe8-CDS
+###
+Shady_200528	.	gene	39541	39780	.	+	.	owner=galaxy@cpt.tamu.edu;ID=02cb0516-8a84-4a12-b15c-b54ed4d67c0f;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	39541	39780	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=02cb0516-8a84-4a12-b15c-b54ed4d67c0f;ID=7e084767-35a5-4a27-9995-c8323d4f7990;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	39553	39780	.	+	0	Parent=7e084767-35a5-4a27-9995-c8323d4f7990;ID=7e084767-35a5-4a27-9995-c8323d4f7990-CDS;Name=7e084767-35a5-4a27-9995-c8323d4f7990-CDS
+Shady_200528	.	exon	39541	39545	.	+	.	Parent=7e084767-35a5-4a27-9995-c8323d4f7990;ID=60cfa41e-3b91-4414-8312-0896cbe2c222;Name=60cfa41e-3b91-4414-8312-0896cbe2c222
+Shady_200528	.	exon	39553	39780	.	+	.	Parent=7e084767-35a5-4a27-9995-c8323d4f7990;ID=24afee50-d781-4852-beb4-4070dd5f5adb;Name=24afee50-d781-4852-beb4-4070dd5f5adb
+###
+Shady_200528	.	gene	39759	39940	.	+	.	owner=galaxy@cpt.tamu.edu;ID=ff92ac8e-36eb-4974-952f-269b5819d8b9;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	39759	39940	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=ff92ac8e-36eb-4974-952f-269b5819d8b9;ID=508e9bcf-2565-442a-b3d7-aca7fc322027;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	39773	39940	.	+	.	Parent=508e9bcf-2565-442a-b3d7-aca7fc322027;ID=8f5f3024-67de-44f6-82a4-38305cef674a;Name=8f5f3024-67de-44f6-82a4-38305cef674a
+Shady_200528	.	CDS	39773	39940	.	+	0	Parent=508e9bcf-2565-442a-b3d7-aca7fc322027;ID=508e9bcf-2565-442a-b3d7-aca7fc322027-CDS;Name=508e9bcf-2565-442a-b3d7-aca7fc322027-CDS
+Shady_200528	.	exon	39759	39763	.	+	.	Parent=508e9bcf-2565-442a-b3d7-aca7fc322027;ID=bed0046f-c32e-4f81-9b0c-38e3be85802b;Name=bed0046f-c32e-4f81-9b0c-38e3be85802b
+###
+Shady_200528	.	gene	39937	40206	.	+	.	owner=galaxy@cpt.tamu.edu;ID=5a97b8ec-1007-48b7-9e62-694692d8e5f1;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	39937	40206	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=5a97b8ec-1007-48b7-9e62-694692d8e5f1;ID=e6d9e429-6a58-44c4-a019-29195ffc139e;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	39937	40206	.	+	.	Parent=e6d9e429-6a58-44c4-a019-29195ffc139e;ID=b462938a-ea48-49af-baf3-d82becd12d5e;Name=b462938a-ea48-49af-baf3-d82becd12d5e
+Shady_200528	.	CDS	39937	40206	.	+	0	Parent=e6d9e429-6a58-44c4-a019-29195ffc139e;ID=e6d9e429-6a58-44c4-a019-29195ffc139e-CDS;Name=e6d9e429-6a58-44c4-a019-29195ffc139e-CDS
+###
+Shady_200528	.	gene	40385	42262	.	+	.	owner=galaxy@cpt.tamu.edu;Note=IPR006119%3B Resolvase%2C N terminal domain,HHPred predicted structural similarity at 100 probability to STREPTOMYCES PHAGE PHIC31 protein integrase Protein Data Bank entry 4BQQ_B over most of protein;ID=34d2803b-bf8e-4467-9a61-476c4b9f4aed;date_last_modified=2020-06-16;Name=integrase;date_creation=2020-05-28
+Shady_200528	.	mRNA	40385	42262	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=34d2803b-bf8e-4467-9a61-476c4b9f4aed;ID=4aa6db61-ae46-47cf-a9c6-753e07be3975;date_last_modified=2020-05-28;Name=integrase;date_creation=2020-05-28
+Shady_200528	.	exon	40397	42262	.	+	.	Parent=4aa6db61-ae46-47cf-a9c6-753e07be3975;ID=f4e97852-ed46-4013-885b-6c44787cd795;Name=f4e97852-ed46-4013-885b-6c44787cd795
+Shady_200528	.	exon	40385	40388	.	+	.	Parent=4aa6db61-ae46-47cf-a9c6-753e07be3975;ID=d2851e96-8a70-4c6f-a205-2902027a1f89;Name=d2851e96-8a70-4c6f-a205-2902027a1f89
+Shady_200528	.	CDS	40397	42262	.	+	0	Parent=4aa6db61-ae46-47cf-a9c6-753e07be3975;ID=4aa6db61-ae46-47cf-a9c6-753e07be3975-CDS;Name=4aa6db61-ae46-47cf-a9c6-753e07be3975-CDS
+###
+Shady_200528	.	gene	43260	43886	.	+	.	owner=galaxy@cpt.tamu.edu;ID=8d2f1402-245f-4a50-9fa4-88481919477a;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	43260	43886	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=8d2f1402-245f-4a50-9fa4-88481919477a;ID=2c798d9f-1cc5-4bcd-9668-42a0ccc5571c;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	43269	43886	.	+	.	Parent=2c798d9f-1cc5-4bcd-9668-42a0ccc5571c;ID=4de4b365-c367-49c0-ae74-835273413020;Name=4de4b365-c367-49c0-ae74-835273413020
+Shady_200528	.	exon	43260	43263	.	+	.	Parent=2c798d9f-1cc5-4bcd-9668-42a0ccc5571c;ID=75b0fa6f-6246-4059-8c04-0ec272e12345;Name=75b0fa6f-6246-4059-8c04-0ec272e12345
+Shady_200528	.	CDS	43269	43886	.	+	0	Parent=2c798d9f-1cc5-4bcd-9668-42a0ccc5571c;ID=2c798d9f-1cc5-4bcd-9668-42a0ccc5571c-CDS;Name=2c798d9f-1cc5-4bcd-9668-42a0ccc5571c-CDS
+###
+Shady_200528	.	gene	44097	44420	.	+	.	owner=galaxy@cpt.tamu.edu;Note=ref|NP_039671.1| HNH endonuclease [Mycobacterium virus L5] evalue 8.70929e-15;ID=5adcfc05-a4f7-407b-b57c-2b4592c12dc3;date_last_modified=2020-06-16;Name=HNH endonuclease;date_creation=2020-05-28
+Shady_200528	.	mRNA	44097	44420	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=5adcfc05-a4f7-407b-b57c-2b4592c12dc3;ID=a5eb5857-458e-46ec-b4f6-d3d25c5e4d62;date_last_modified=2020-05-28;Name=HNH endonuclease;date_creation=2020-05-28
+Shady_200528	.	exon	44106	44420	.	+	.	Parent=a5eb5857-458e-46ec-b4f6-d3d25c5e4d62;ID=496e4aca-a850-4f75-b8d7-dd9f5bad9a92;Name=496e4aca-a850-4f75-b8d7-dd9f5bad9a92
+Shady_200528	.	CDS	44106	44420	.	+	0	Parent=a5eb5857-458e-46ec-b4f6-d3d25c5e4d62;ID=a5eb5857-458e-46ec-b4f6-d3d25c5e4d62-CDS;Name=a5eb5857-458e-46ec-b4f6-d3d25c5e4d62-CDS
+Shady_200528	.	exon	44097	44100	.	+	.	Parent=a5eb5857-458e-46ec-b4f6-d3d25c5e4d62;ID=c0706bcd-cad1-4f60-89f2-89e925901f1b;Name=c0706bcd-cad1-4f60-89f2-89e925901f1b
+###
+Shady_200528	.	gene	44661	45098	.	+	.	owner=galaxy@cpt.tamu.edu;ID=52277f51-086e-4ce1-9ffd-1da40a2efe9a;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	44661	45098	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=52277f51-086e-4ce1-9ffd-1da40a2efe9a;ID=bacdd6f5-006d-411e-9ac2-581975aa92ba;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	44661	44666	.	+	.	Parent=bacdd6f5-006d-411e-9ac2-581975aa92ba;ID=6b04076b-adc9-4c77-97f6-f3b54c5498bd;Name=6b04076b-adc9-4c77-97f6-f3b54c5498bd
+Shady_200528	.	CDS	44673	45098	.	+	0	Parent=bacdd6f5-006d-411e-9ac2-581975aa92ba;ID=bacdd6f5-006d-411e-9ac2-581975aa92ba-CDS;Name=bacdd6f5-006d-411e-9ac2-581975aa92ba-CDS
+Shady_200528	.	exon	44673	45098	.	+	.	Parent=bacdd6f5-006d-411e-9ac2-581975aa92ba;ID=98c3e2d2-a78f-476a-8096-43bc3be9397e;Name=98c3e2d2-a78f-476a-8096-43bc3be9397e
+###
+Shady_200528	.	gene	34912	35095	.	+	.	owner=galaxy@cpt.tamu.edu;ID=6701e012-93c2-4beb-a3cc-dc84df699937;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	34912	35095	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=6701e012-93c2-4beb-a3cc-dc84df699937;ID=60077397-5bbd-415b-8c7d-b4f56f45fede;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	34922	35095	.	+	0	Parent=60077397-5bbd-415b-8c7d-b4f56f45fede;ID=60077397-5bbd-415b-8c7d-b4f56f45fede-CDS;Name=60077397-5bbd-415b-8c7d-b4f56f45fede-CDS
+Shady_200528	.	exon	34922	35095	.	+	.	Parent=60077397-5bbd-415b-8c7d-b4f56f45fede;ID=008e3c5c-d29c-4c95-a3e6-19e13836eb26;Name=008e3c5c-d29c-4c95-a3e6-19e13836eb26
+Shady_200528	.	exon	34912	34914	.	+	.	Parent=60077397-5bbd-415b-8c7d-b4f56f45fede;ID=7cef0dda-e795-499c-a6b9-2d758d7b75e8;Name=7cef0dda-e795-499c-a6b9-2d758d7b75e8
+###
+Shady_200528	.	gene	38332	38523	.	+	.	owner=galaxy@cpt.tamu.edu;ID=de7aa766-d124-494d-89f8-67c6dacf8437;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	38332	38523	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=de7aa766-d124-494d-89f8-67c6dacf8437;ID=c58568d9-55cb-4c76-9362-e0bef304e7e9;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	38332	38523	.	+	.	Parent=c58568d9-55cb-4c76-9362-e0bef304e7e9;ID=d8c53efb-7d0b-4205-b23d-83b378b4f7df;Name=d8c53efb-7d0b-4205-b23d-83b378b4f7df
+Shady_200528	.	CDS	38332	38523	.	+	0	Parent=c58568d9-55cb-4c76-9362-e0bef304e7e9;ID=c58568d9-55cb-4c76-9362-e0bef304e7e9-CDS;Name=c58568d9-55cb-4c76-9362-e0bef304e7e9-CDS
+###
+Shady_200528	.	gene	39425	39560	.	+	.	owner=galaxy@cpt.tamu.edu;ID=671550f5-d51d-444e-aa51-4b4cf6c7a4a3;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	39425	39560	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=671550f5-d51d-444e-aa51-4b4cf6c7a4a3;ID=3ad84ab0-4bf2-476d-9dcf-33483dc7c05d;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	39438	39560	.	+	0	Parent=3ad84ab0-4bf2-476d-9dcf-33483dc7c05d;ID=3ad84ab0-4bf2-476d-9dcf-33483dc7c05d-CDS;Name=3ad84ab0-4bf2-476d-9dcf-33483dc7c05d-CDS
+Shady_200528	.	exon	39438	39560	.	+	.	Parent=3ad84ab0-4bf2-476d-9dcf-33483dc7c05d;ID=43ef1e0c-8bf7-4b1d-90f1-778be30c9fc3;Name=43ef1e0c-8bf7-4b1d-90f1-778be30c9fc3
+Shady_200528	.	exon	39425	39428	.	+	.	Parent=3ad84ab0-4bf2-476d-9dcf-33483dc7c05d;ID=738f604d-2440-43ad-b877-3510cabc3e90;Name=738f604d-2440-43ad-b877-3510cabc3e90
+###
+Shady_200528	.	gene	20062	20183	.	+	.	owner=galaxy@cpt.tamu.edu;ID=b74d76c3-32af-4f3b-ab84-284058096df5;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	20062	20183	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=b74d76c3-32af-4f3b-ab84-284058096df5;ID=943cafe8-3aeb-43bf-8bb0-22bf09316197;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	20073	20183	.	+	0	Parent=943cafe8-3aeb-43bf-8bb0-22bf09316197;ID=943cafe8-3aeb-43bf-8bb0-22bf09316197-CDS;Name=943cafe8-3aeb-43bf-8bb0-22bf09316197-CDS
+Shady_200528	.	exon	20062	20065	.	+	.	Parent=943cafe8-3aeb-43bf-8bb0-22bf09316197;ID=059b7c82-b074-4fe5-a4f3-990b9be0373d;Name=059b7c82-b074-4fe5-a4f3-990b9be0373d
+Shady_200528	.	exon	20073	20183	.	+	.	Parent=943cafe8-3aeb-43bf-8bb0-22bf09316197;ID=7c98abc6-2a46-4137-b9f7-af9ba5ca7049;Name=7c98abc6-2a46-4137-b9f7-af9ba5ca7049
+###
+Shady_200528	.	gene	42364	42509	.	+	.	owner=galaxy@cpt.tamu.edu;Note=04/10/2020 - for some reason%2C the SD and CDS were called as 2 separate genes leading to errors in PhageQC%3B re-called gene correctly;ID=8e444a4c-4938-4e12-8799-d326b34c4f71;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	42364	42509	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=8e444a4c-4938-4e12-8799-d326b34c4f71;ID=6f7a2ce6-ec92-4ed6-8c17-e680d2d5c625;date_last_modified=2020-05-28;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	42378	42509	.	+	0	Parent=6f7a2ce6-ec92-4ed6-8c17-e680d2d5c625;ID=6f7a2ce6-ec92-4ed6-8c17-e680d2d5c625-CDS;Name=6f7a2ce6-ec92-4ed6-8c17-e680d2d5c625-CDS
+Shady_200528	.	exon	42378	42509	.	+	.	Parent=6f7a2ce6-ec92-4ed6-8c17-e680d2d5c625;ID=49717709-a81c-4ed4-b19a-7dbb895672f6;Name=49717709-a81c-4ed4-b19a-7dbb895672f6
+Shady_200528	.	exon	42364	42366	.	+	.	Parent=6f7a2ce6-ec92-4ed6-8c17-e680d2d5c625;ID=965d0e26-cb3e-4d11-8212-778bfb1bcd95;Name=965d0e26-cb3e-4d11-8212-778bfb1bcd95
+###
+Shady_200528	.	gene	7876	8296	.	+	.	owner=galaxy@cpt.tamu.edu;frameshift=a;ID=6630fc8d-214c-4d37-a5d7-07235ff522f5;date_last_modified=2020-06-17;Name=tape measure chaperone frameshift product;date_creation=2020-05-28
+Shady_200528	.	mRNA	7876	8296	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=6630fc8d-214c-4d37-a5d7-07235ff522f5;ID=0963d002-2338-4dac-a769-0072f8027fac;date_last_modified=2020-06-16;Name=tape measure chaperone frameshift product;date_creation=2020-05-28
+Shady_200528	.	exon	7876	8296	.	+	.	Parent=0963d002-2338-4dac-a769-0072f8027fac;ID=78c7f2c2-4df0-441a-8dbc-cbbf46e46689;Name=78c7f2c2-4df0-441a-8dbc-cbbf46e46689
+Shady_200528	.	CDS	7876	8296	.	+	0	Parent=0963d002-2338-4dac-a769-0072f8027fac;ID=0963d002-2338-4dac-a769-0072f8027fac-CDS;Name=0963d002-2338-4dac-a769-0072f8027fac-CDS
+###
+Shady_200528	.	gene	3073	3846	.	+	.	owner=galaxy@cpt.tamu.edu;ID=0b270884-f45b-42e5-aefe-237f12c39be0;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	mRNA	3073	3846	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=0b270884-f45b-42e5-aefe-237f12c39be0;ID=6923f6be-928d-4ba0-a01e-f085f0632a19;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	CDS	3085	3846	.	+	0	Parent=6923f6be-928d-4ba0-a01e-f085f0632a19;ID=6923f6be-928d-4ba0-a01e-f085f0632a19-CDS;Name=6923f6be-928d-4ba0-a01e-f085f0632a19-CDS
+Shady_200528	.	exon	3085	3846	.	+	.	Parent=6923f6be-928d-4ba0-a01e-f085f0632a19;ID=909f2f47-e8f1-4bd7-87c5-c61931da05d4;Name=909f2f47-e8f1-4bd7-87c5-c61931da05d4
+Shady_200528	.	exon	3073	3076	.	+	.	Parent=6923f6be-928d-4ba0-a01e-f085f0632a19;ID=5f0fccb8-8296-4db6-b7e1-927981f69da6;Name=5f0fccb8-8296-4db6-b7e1-927981f69da6
+###
+Shady_200528	.	gene	12413	13253	.	+	.	owner=galaxy@cpt.tamu.edu;ID=bd6b8495-0533-403d-977b-3df85d2af9aa;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-06-16
+Shady_200528	.	mRNA	12413	13253	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=bd6b8495-0533-403d-977b-3df85d2af9aa;ID=61b5f835-13bf-424f-9019-34d60b2a95d5;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	12429	13253	.	+	.	Parent=61b5f835-13bf-424f-9019-34d60b2a95d5;ID=7d31b40c-0b94-4b9c-b6df-ef286b84f23d;Name=7d31b40c-0b94-4b9c-b6df-ef286b84f23d
+Shady_200528	.	exon	12413	12417	.	+	.	Parent=61b5f835-13bf-424f-9019-34d60b2a95d5;ID=65dab4d8-cedd-4853-b326-4033077ad194;Name=65dab4d8-cedd-4853-b326-4033077ad194
+Shady_200528	.	CDS	12429	13253	.	+	0	Parent=61b5f835-13bf-424f-9019-34d60b2a95d5;ID=61b5f835-13bf-424f-9019-34d60b2a95d5-CDS;Name=61b5f835-13bf-424f-9019-34d60b2a95d5-CDS
+###
+Shady_200528	.	gene	13516	13773	.	+	.	owner=galaxy@cpt.tamu.edu;ID=2c7dc820-0d71-45ae-859b-9cb2c3ab6a2a;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-06-16
+Shady_200528	.	mRNA	13516	13773	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=2c7dc820-0d71-45ae-859b-9cb2c3ab6a2a;ID=a1896b07-18d4-45e3-a9d9-17b28adbf8a3;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	13516	13520	.	+	.	Parent=a1896b07-18d4-45e3-a9d9-17b28adbf8a3;ID=e5f13828-9da5-46eb-9956-25ba360c7ae9;Name=e5f13828-9da5-46eb-9956-25ba360c7ae9
+Shady_200528	.	exon	13528	13773	.	+	.	Parent=a1896b07-18d4-45e3-a9d9-17b28adbf8a3;ID=cea8b5bf-dece-43f4-9b28-c686e285ddfb;Name=cea8b5bf-dece-43f4-9b28-c686e285ddfb
+Shady_200528	.	CDS	13528	13773	.	+	0	Parent=a1896b07-18d4-45e3-a9d9-17b28adbf8a3;ID=a1896b07-18d4-45e3-a9d9-17b28adbf8a3-CDS;Name=a1896b07-18d4-45e3-a9d9-17b28adbf8a3-CDS
+###
+Shady_200528	.	gene	23010	23452	.	+	.	owner=galaxy@cpt.tamu.edu;ID=f3ac39a4-dab9-4243-8e87-815caad54de2;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-06-16
+Shady_200528	.	mRNA	23010	23452	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=f3ac39a4-dab9-4243-8e87-815caad54de2;ID=86ad9e48-b8a7-4b6d-88c4-d478261633b2;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	23010	23014	.	+	.	Parent=86ad9e48-b8a7-4b6d-88c4-d478261633b2;ID=ed37b649-79a4-4139-a47d-75cd184a0768;Name=ed37b649-79a4-4139-a47d-75cd184a0768
+Shady_200528	.	CDS	23024	23452	.	+	0	Parent=86ad9e48-b8a7-4b6d-88c4-d478261633b2;ID=86ad9e48-b8a7-4b6d-88c4-d478261633b2-CDS;Name=86ad9e48-b8a7-4b6d-88c4-d478261633b2-CDS
+Shady_200528	.	exon	23024	23452	.	+	.	Parent=86ad9e48-b8a7-4b6d-88c4-d478261633b2;ID=197bab46-0fe9-4207-a24d-c0175b732e55;Name=197bab46-0fe9-4207-a24d-c0175b732e55
+###
+Shady_200528	.	gene	30381	31168	.	+	.	owner=galaxy@cpt.tamu.edu;ID=92230847-1658-47a5-a831-68fcdd257707;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-06-16
+Shady_200528	.	mRNA	30381	31168	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=92230847-1658-47a5-a831-68fcdd257707;ID=14a5543e-cf9e-4748-a2da-f6101e361bb2;date_last_modified=2020-06-16;Name=hypothetical protein;date_creation=2020-05-28
+Shady_200528	.	exon	30392	31168	.	+	.	Parent=14a5543e-cf9e-4748-a2da-f6101e361bb2;ID=b9cf928c-dbfc-4ac8-a29d-0e5fa2947283;Name=b9cf928c-dbfc-4ac8-a29d-0e5fa2947283
+Shady_200528	.	exon	30381	30384	.	+	.	Parent=14a5543e-cf9e-4748-a2da-f6101e361bb2;ID=b0bd751d-3da0-4eb9-a5fb-11e04f580896;Name=b0bd751d-3da0-4eb9-a5fb-11e04f580896
+Shady_200528	.	CDS	30392	31168	.	+	0	Parent=14a5543e-cf9e-4748-a2da-f6101e361bb2;ID=14a5543e-cf9e-4748-a2da-f6101e361bb2-CDS;Name=14a5543e-cf9e-4748-a2da-f6101e361bb2-CDS
+###
+Shady_200528	.	terminator	38264	38293	.	+	.	owner=galaxy@cpt.tamu.edu;ID=19c2fc2c-f2a1-45e0-bebf-7a2ebd51e482;date_last_modified=2020-06-16;Name=terminator;date_creation=2020-05-28
+###
+Shady_200528	.	terminator	40219	40254	.	+	.	owner=galaxy@cpt.tamu.edu;ID=9330e910-302f-4139-b05a-6df21bfb6631;date_last_modified=2020-06-16;Name=terminator;date_creation=2020-05-28
+###
+Shady_200528	.	terminator	42284	42334	.	+	.	owner=galaxy@cpt.tamu.edu;ID=ef350232-6d12-49ac-8f0a-f734f92d7b73;date_last_modified=2020-06-16;Name=terminator;date_creation=2020-05-28
+###
+Shady_200528	.	terminator	20201	20243	.	+	.	owner=galaxy@cpt.tamu.edu;ID=3be3b2b8-a2aa-4c58-abee-86bbdbf20596;date_last_modified=2020-06-16;Name=terminator;date_creation=2020-05-28
+###
+Shady_200528	.	terminator	27911	27956	.	+	.	owner=galaxy@cpt.tamu.edu;ID=328d3980-0de0-4133-97db-a12bcba66d0d;date_last_modified=2020-06-16;Name=terminator;date_creation=2020-05-28
+###
+Shady_200528	.	terminator	22762	22802	.	+	.	owner=galaxy@cpt.tamu.edu;ID=85344ee3-4abd-4890-af03-90d09f5f2f0f;date_last_modified=2020-06-16;Name=terminator;date_creation=2020-05-28
+###
+Shady_200528	.	terminator	33579	33602	.	+	.	owner=galaxy@cpt.tamu.edu;ID=f4ff200a-652d-41c7-9a71-6571ac78759e;date_last_modified=2020-06-16;Name=terminator;date_creation=2020-05-28
+###
+Shady_200528	.	gene	42982	43056	.	+	.	owner=galaxy@cpt.tamu.edu;ID=4447f56b-b5ed-4e98-9e8c-dc1857fe6452;date_last_modified=2020-06-16;Name=tRNA-Phe;date_creation=2020-05-28
+Shady_200528	.	tRNA	42982	43056	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=4447f56b-b5ed-4e98-9e8c-dc1857fe6452;ID=3a160e9c-ddab-4980-aa33-0e701ce4eb35;date_last_modified=2020-05-28;Name=tRNA-Phe;date_creation=2020-05-28
+Shady_200528	.	exon	42982	43056	.	+	.	Parent=3a160e9c-ddab-4980-aa33-0e701ce4eb35;ID=69972e8d-4c8e-42f4-ba20-1da301eb6e9a;Name=69972e8d-4c8e-42f4-ba20-1da301eb6e9a
+###
+Shady_200528	.	gene	43060	43151	.	+	.	owner=galaxy@cpt.tamu.edu;ID=cc1548e9-7225-4c96-b2fb-d3a81797960a;date_last_modified=2020-06-16;Name=tRNA-Trp;date_creation=2020-05-28
+Shady_200528	.	tRNA	43060	43151	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=cc1548e9-7225-4c96-b2fb-d3a81797960a;ID=d5be1935-fac9-43f9-a6b5-971e140b1506;date_last_modified=2020-05-28;Name=tRNA-Trp;date_creation=2020-05-28
+Shady_200528	.	exon	43060	43151	.	+	.	Parent=d5be1935-fac9-43f9-a6b5-971e140b1506;ID=4e4a2370-4a3f-4a45-9645-ef34f3f44150;Name=4e4a2370-4a3f-4a45-9645-ef34f3f44150
+###
+Shady_200528	.	gene	42797	42870	.	+	.	owner=galaxy@cpt.tamu.edu;ID=ef96061d-7ad3-4cf8-9b97-007a3451373e;date_last_modified=2020-06-16;Name=tRNA-Asp;date_creation=2020-05-28
+Shady_200528	.	tRNA	42797	42870	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=ef96061d-7ad3-4cf8-9b97-007a3451373e;ID=ae0eb24d-0a8b-4fbf-a235-6fe9df32179d;date_last_modified=2020-05-28;Name=tRNA-Asp;date_creation=2020-05-28
+Shady_200528	.	exon	42797	42870	.	+	.	Parent=ae0eb24d-0a8b-4fbf-a235-6fe9df32179d;ID=e3a4c4d3-1135-4bea-ab35-cbe73c4d343a;Name=e3a4c4d3-1135-4bea-ab35-cbe73c4d343a
+###
+Shady_200528	.	gene	43902	43973	.	+	.	owner=galaxy@cpt.tamu.edu;ID=d6f3d6bd-04a3-4ecb-b974-dc9982597bbc;date_last_modified=2020-06-16;Name=tRNA-Gln;date_creation=2020-05-28
+Shady_200528	.	tRNA	43902	43973	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=d6f3d6bd-04a3-4ecb-b974-dc9982597bbc;ID=6a855ebc-97d2-4cf1-a1ca-cb48f8afe5e9;date_last_modified=2020-05-28;Name=tRNA-Gln;date_creation=2020-05-28
+Shady_200528	.	exon	43902	43973	.	+	.	Parent=6a855ebc-97d2-4cf1-a1ca-cb48f8afe5e9;ID=b187f1e5-b34c-4e74-8c17-bef50dbd6d66;Name=b187f1e5-b34c-4e74-8c17-bef50dbd6d66
+###
+Shady_200528	.	gene	42638	42711	.	+	.	owner=galaxy@cpt.tamu.edu;ID=d14e7fa5-9224-4b4a-aa9b-36edaeb77b18;date_last_modified=2020-06-16;Name=tRNA-Unk;date_creation=2020-05-28
+Shady_200528	.	tRNA	42638	42711	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=d14e7fa5-9224-4b4a-aa9b-36edaeb77b18;ID=962b3115-a765-4964-8e67-57a45df87561;date_last_modified=2020-05-28;Name=tRNA-Unk;date_creation=2020-05-28
+Shady_200528	.	exon	42638	42711	.	+	.	Parent=962b3115-a765-4964-8e67-57a45df87561;ID=f5e36d5e-f766-499c-9950-5eb9b1128a76;Name=f5e36d5e-f766-499c-9950-5eb9b1128a76
+###
+Shady_200528	.	gene	43175	43256	.	+	.	owner=galaxy@cpt.tamu.edu;ID=06a1a1c9-6854-4c3d-bb54-7f47b915f525;date_last_modified=2020-06-16;Name=tRNA-Leu;date_creation=2020-05-28
+Shady_200528	.	tRNA	43175	43256	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=06a1a1c9-6854-4c3d-bb54-7f47b915f525;ID=adb18efc-a1ff-4866-adf0-cacd4359946e;date_last_modified=2020-05-28;Name=tRNA-Leu;date_creation=2020-05-28
+Shady_200528	.	exon	43175	43256	.	+	.	Parent=adb18efc-a1ff-4866-adf0-cacd4359946e;ID=9d14dca1-a470-465c-b2e8-93f6a169be3c;Name=9d14dca1-a470-465c-b2e8-93f6a169be3c
+###
+Shady_200528	.	gene	43996	44070	.	+	.	owner=galaxy@cpt.tamu.edu;ID=908d1120-1515-4886-8d22-ef3709d7ecc0;datasetSource=https://cpt.tamu.edu/galaxyhistory/view/ebcd312d6754f682;date_last_modified=2020-06-16;Name=tRNA-Pro;date_creation=2020-05-28
+Shady_200528	.	tRNA	43996	44070	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=908d1120-1515-4886-8d22-ef3709d7ecc0;ID=3c66c136-f45d-4fe9-9ea1-aff72e1ef8b3;date_last_modified=2020-05-28;Name=tRNA-Pro;date_creation=2020-05-28
+Shady_200528	.	exon	43996	44070	.	+	.	Parent=3c66c136-f45d-4fe9-9ea1-aff72e1ef8b3;ID=e505af49-98f9-4a8f-8753-44db3ac28fb7;Name=e505af49-98f9-4a8f-8753-44db3ac28fb7
+###
+Shady_200528	.	gene	42720	42794	.	+	.	owner=galaxy@cpt.tamu.edu;ID=1308a352-8681-4d9e-834a-c7451888218b;date_last_modified=2020-06-16;Name=tRNA-Asn;date_creation=2020-05-28
+Shady_200528	.	tRNA	42720	42794	.	+	.	owner=galaxy@cpt.tamu.edu;Parent=1308a352-8681-4d9e-834a-c7451888218b;ID=b7268fc4-2fbe-4990-9b5b-dbd774c4a2af;date_last_modified=2020-05-28;Name=tRNA-Asn;date_creation=2020-05-28
+Shady_200528	.	exon	42720	42794	.	+	.	Parent=b7268fc4-2fbe-4990-9b5b-dbd774c4a2af;ID=f399ccda-ae00-4ac6-960e-d88d956f70ad;Name=f399ccda-ae00-4ac6-960e-d88d956f70ad
+###
+##FASTA
+>Shady_200528
+CTGAAAGGGGCCACCATGGAACCAGTCCGCACTATTGAGGACGACTACGTACCGCCGGAC
+AACCGCACGCTTGGCGTGTGGGCTTTCCTGTGGTGCTCGCATTACTTGCGTCAGCCTGAC
+GGCCCGGACGCCGGTAGTCCGTGGCGCTTCACTCCCGAACAGATCCGCATTATCAAGCGG
+TGGTACGAGATTGACGACGCCGGACGGTTCGTCTACCGACAGGGAACCATTCGCCGACTC
+AAGGGTTGGGGTAAGGACCCGTTTACCGCCGCGCTGTGTGCGTTTGAGTTCGTCGGCCCT
+TGTCGGTTCTCTCACTGGGACGCCGACGGTATGCCTGTGGCTAAGCCGCAGAATTCCGCT
+TGGGTGCAGATTGCTGCGACGTCCAAGGATCAGACCCGTAACACGATGACGGTTTTCCCC
+GGCCTCTTCTCTGATGAGTGCGTGGAAAAGTACGGCATCGACATGGGCAAGGAAATCATC
+TATTCCGCCGTAGGCAATCGCATTGAAGCGGTGACGTCCTCGGCGCGTGCCCTTGAGGGC
+GGACGAGCAACTTTTAACCTGCTCAACGAAACTCAGCACTGGATTGCCAACAACGGGGGC
+CACGCTATGGCCCTCACGATCGCCGGTAACCTCGCCAAGTCGCGCGGTGGTGGCGCTCGT
+TCTATGGAGATCACGAACGCCCCTCTACCGGGCGAGGACAGCGTAGCCGAGCGGACTTAT
+CACGCGTGGTCCAAGCTGCGCGACAAGGGGCGAGAAATCCCCCGCGCCGCAGGCTTCTAC
+TACGACAGCGTTGAAGCTCCCGCGTCGTGCGTGCTCGCTGACCGTGAATCCCTCTCCGCT
+GGCATCATCGCTGCACGCGGTGACGCGACGTGGCTAGATGTGGATTGGATCATTTCCACG
+ATCTACGCCGGTACGTATCCCGCGTGGCAGTCCCGCCGCATGTTCCTGAATCAGCTAGTT
+GCCGATGAGGACTCCCTCATTTCTCCTGAGACTTGGGATGCGTGCGCGAGCGAGGACCGG
+CTAAAGCGCGGTGACCGGATCACTCTCGGTTTCGACGGTGGCCGGTCGGATGACGCTACG
+GCCCTCGTTGCCGTCCGCGTGGACGATCGGCTAGTTCAGCCTCTCGGTATTTGGGAAGCC
+CCCGACGGCCCCTCTGGGGAGGGTTGGGAGGTTGACCACGACGAGGTTTCAGACGCCGTT
+GCGCACGCGTTCGGCATGTATGACGTGGCTGCGTTCTTCGCTGACCCGGTTCTCTGGGAG
+GCGGAGGTACAGCGTTGGTCCGAGGAGTACCGCGCTCAGTTGGTCGTCAAGGCGTCTAGC
+GGGTCCTCGGTTGGTATGCGCATGGACGGTGGCCAAAAGCCGGACGTGACCTACGCCAAT
+GAACGGCTTGTCTCCTCGGTCGAGTCCGGGCAGATCAAGCACACCGGACACCACACGTTG
+CGACGTCACGTGATGAACGCCAAGCGCCGGATTACCCGTTGGGGTGTCTCGTTCGGCAAG
+GAACACCGCGAGTCCAAGCGCAAGGTTGACGGCTACGCCGCAATGCTCCTCGCTGACCTC
+GCCCGTACCAAGCTCCTTGAATCAGGCAAGCTCAAGCGTCCTCGCTCGGGTCGGGTCTGG
+GGTTTCGGCGGGTGAGTGCCTAACCCCTCCCCTACTGCTCTAGCGAGGAACCATGGCGGA
+TATCCGCAAGCGTGTTGAGCACGCTATCGGCCGACTCAAGTACGAATACAACGAGCGGCT
+AGAAGAGATTGACCGGTATTACCGAGGCAAGCACGCGGGCCCGTACATGCCGCGTAACGC
+GAACGCTGAATACAAGCTCCTCGCCGAACGCTGCGTTCACAACTGGCTCCCGTGGGTTGT
+CGCCGCTCCTCTCCAGAACTTGCACGTTGACGGGTTCCGCCCGTCTTCCGGCAAGGGTGA
+CGAGGTGTGGGACGTCTGGCAGTCCAACCGCATGGACGCCCGACAGGGTGCCGTACACGA
+GGGGGCCCTAGTTTATGGGCACTCGTACGTAGCGGTTATCCCCGAGCCGGACGGCCCCGC
+TATCCGGCCCATGTCTGCTATGCGTTCGTGGGCTGCATACGACGATCCGGCATCGGATGA
+GTTCCCGCTGTACGCGGTGCAGATTTTCGAGCACCCCGACACGGGTCAGCTTGAGCGGTG
+CCGGTACTTTGACGACGAGGCCATTTACGACATTGCGTTTCGCGACAACGGCACGGCCGA
+GGCGACCAAGGTTCAGCGGCACGGGTTCGGTGTTACGCCGGTCATCCGTTTCGCTGCGAG
+CATGGATCTACTCGGTCGTTCGGTTGGTCTAGTTCAGCCGCTTATCCCCGTGGCCGACCG
+GATCAATCAGTCTTGGTTCGACCTACTCATTGCCCAGACGTTCGGGTCGTTCAAGGTCCG
+GTACGCAACGGGCATGGCTCCGCCGCTGGATATCGACCCGGTGACCGGTGAGGTTCGGGT
+AGACCCCGAGACGGGCGAGCCCCTTTACCGTGCGGTGCAGTTCGACCCAACGCGCGTGAT
+GATGGCCGAGGACCCGGACACCAAGTTTGGTGAGCTGTCCGAGACTTCGCTAGATGGATT
+CCTCAAGTCTATTGAGACCTCGGTACAGCACATGGCCGCTGTCTCGCAGACTCCCCCGCA
+TTACCTACTTGGCAACATGGCCAACCTGAGTGCTGACGCTCTGGCAGCCGCCGAGAGTTC
+GCTAATGCGGCGTGTTGAGGATCTAAAGCAGGCTTTCGGCGAGGCGTGGGAATCCGTTCT
+CCGCCTATGCGCTAAGGCTCTTGGTAAGACCAAGCTAGCGAATGACCGTAAGGCGCAGGT
+CGTTTGGCGTGACACGGGCTCCCGCTCGCTGGCACAGACGGCGGACGCTTACGGCAAGCT
+CGTGCAGATGGTCAGCGTTCCGGCCGAGGCTCTATGGGACAAGCTCCCTGGTTTCACTCA
+GACGGATGTGGACCGGTTCCGCGAACTCAAGGACAAGGCAGACGCCAAGGCCGAGGAGAT
+CGCAGCGCAGGCACCACCTAGTAACGTTACTGACTCCCCCGAGGGCGAGCAGCCACCCGC
+GCCACCTAAGCCGGGTGTTGCCAAGTGACCGAGCTATCCACGCTGACTCGGGACTATCAG
+AACGCGCAAGACAGCGTGGCTAACCGGGTCCTCTCGTGGTTGCTCAAGTGGTGGGTTGGG
+GAAGCTCAGGGAAACCTAGGCAACCCCAACCAACTGTTTGAGAGCTACCGCCGAGAGGTT
+GAGCGGGGCCGTCGTGAGTCAATCCAGCTAGCGCAGAACTTCCACAATACGGTTCGCAAC
+TCTGCCGGATTGGGTTCACTCCCTCCCTCTCAGTGGGGAGGCGTACGCGCGAGTGACGGC
+GTCAATGACGCGTTCTACTCTGCGGTTGCCCCCGCCCGTAAGCGGCTGGACGACCCCGAC
+TTTGTCGCGGAGCTTGACCGGCTGATTTACGGCCCGCTGCGTGAGAACACGGACCGGGTC
+ACGCTGGCAGGTGGGCGAGATGCCCTAGCGAATGCTCGCGAGTCTGACCGCGAGGTTATC
+GGTTATTACCGCAAGGCCGAGGCTGACCCGTGCGGTTTCTGCGCGATGCTCGCTAGCCGA
+GGTCTCGTCTACACCGAAAGCCGGAACTCTGACCGGCGCTCTCGTTCCTATCTGGACGAG
+CAGAACCCCGAGAAGTATCACGAGAACTGCCGTTGTCAGACCCTCCCCCTTTTCGAGGGT
+CTTTCCATGCCCGCCGAGGATCGCGAACGCGCGGACCGCTGGCTAGCGCAGTGGAAGGAA
+ACCGACGGTTCCGGCGCAGAGCAGCTATCCAACTTCCGTAAGCAATTCCGATCCGAGGAG
+AGCTAGTGCCCGAGGAGAACACCCCTGAGACTCCGGATGTCCCGGAGACTCCAAACCCCT
+CCGAGGGCGGCACGCCCGAGGATGCCCCCCAGAAGCCACAGGAGCCCGTACAGGAGCCTG
+TGACGCCGCCGGTGACCAAGGAGACCACCCCCGAGGTTCCGGCCCCTCAGACGCCCGCAC
+AGGGCGACGACGCCACGGCTAAGGCCGAGGCGGAAGCGGCCAAGGCTACGGCCCGCGCCG
+CTCAGCTTGAACTAGAGCTGAACCGTGAGCGCATGGCGCGCAAGCACGGTGTCCCCGACG
+AGCTTGTTGGGATGCTCCGCGCTGACTCGCTTGAGGCAGACGCCAAGGCTCTAGGTGCAC
+TCGCTACGGCCAAGGGTTCAACGCTTGGCACCGGCGGGCTTGACCCGACCGATAACCACG
+ATCCCAAGGCCGAGGGCGAGGCACTAGCCGACCGCATCTTTGCCAAGAACCGTTATTTCT
+AAGGGAGTAACCCCGCATGTCCGATTTCATTAAGCAGCAGCAGAAGCTACTTTCGGCCGC
+GCTGCCTCTCCTAAAGCGCTCGCTCATTCTGTCGGCGTTCATCGACAAGCTGTCTGCGAA
+CGACTTCAAGGGTGCTCAGGGCGACGTCCTGAACATTCGTCGGCCCGCTGTCCTAGCGGC
+TCGCTCCGAGGCGATCACCCGGAGCAAGACCCGCAGCATCCTGACCGACGAAATCGTTGA
+GTCTTCGATTCAGGTCAAGCTAGACCAGCACGTTTACAGCGCGGTTGACATCACCGACGC
+CGAGGCGACCCTAGACCTTGACTCGTTCGCTGAGCAGGTTCTAGCGCCGCAGGTTGAGGC
+TGTCGCGGTTGACCTTGACCTCAAGGTTCGTGACGCGCTTGAGACCCTGCCTGACCTCAA
+GGACGCGAACGGTGCGACCGTGGTTATCGGCCGTGACGCCGACGCCACCAAGCAGGCTGA
+GAAGGTGCGTCTAGCTATCCCGAAGCTGCGTAAGCAGCTCAACGCGAACCACGTTCCGCA
+GGGTGGCCGTATCCTCCTGGTCGGTACCGAGATTGAGTCCATGCTCATCGCGGACCCGCA
+CCTGACCAAGCTCGATGAGAGCGGCACCACGGACGCGCTGCGTGAGGCTTCCATCGGTCG
+CCTGTACGGCTTCACCATCGTCGTCTCTGACGTGATCGAGCCTGACGAGATGATCGCCGT
+TCACCCAACTGCGTTCAAGCTCGCCATGATCGCGCCGGTTGCTCCGGAGGGTGCGAAGTT
+CGCTAGCTCGCAGAGCGCTAACGGCGTGGCTATGCGGTACATCCGAGACTACAACTCGGA
+TAAGGCTATGGACCGTTCGTTCCTGTCCGTCTACGCCGGTATCTCCCCGATCCTTGACCC
+GCTGGTTAACGCCCGTGGTCAGTACGTGGACGCTGCGGGTGCGGTCATCGCGACCCCAAC
+CCCGGCGAACATCGTCAAGGCTCAGCTACGCGGTATCAAGGTCTCGCTAGAGCCTGTCGC
+CTAATCCGAGGGGGACCACCTAGTCACGTTACTGGGTGGTCCCCCGCTAGGGAGGTACAA
+CTATGGCCGCTCTAGCAACGGTTGAGGATCTACAGGCGCGTATGGGGGTGACGTTCTCTA
+CTGCTGAGAGCGTCGCCGCCAACGCAGCGCTAGAGGATATCTCGGCACTTGCGCGGTTGT
+ACGGGCTCCCCGTGTGGGGCAACGCTGGCACTACTGCCCCCGAGGCAGTTAAGGCGGTTG
+TCCTCGCTGTGGCTGAGCGCCGTATGCGTAACCCCGAGGGCTACGTTTCTGAGATGGCCG
+GTGAGTATTCCTACCGGCTTCCCGAGGCGGGTTCAGCGGGGATGTTCTTCCGGCCCGACG
+AGCTGTCGATTATCCGTCAGTCTGCGGGCCGTACGGGTCTGGTCTCTGTTCCTGTCGCAC
+GACCGGTGACCGTGGCTAAGTCCCTGCATTGGCCGCACGGGAAGGATTACCGGAATGGCG
+ATCTTTGACCGTGCCCCGGTGCTCGCCAAGGTGTTTCCCGTTGTGCTTGTCGATGACGGG
+TACGGCGGGACTCGCCCCGGCGAGGGAACCCCGGTTGAGATTCGGGTATTTGCCCAACCC
+ATGGGAAGCGAGGACCCTAACGGCTGGTCCTCCCCCGAGCGGTACAAGATTATCGCCCGG
+CAACTCCCCTTCCTGAGTGCGTGGTCTCGCGTCGAGATGATGGGCCGTGTCTGGTCTGTT
+GTCCGTCAGCCTCGCATCCACGCTGCCTCGCGCCGTACCACTTTCGCTACCGCTGAGGTA
+GTCGAGAAAACTACGCAGAGTCAGGCCGGCGGGAACGGAGCGTAATCGTGGCAACTGTCA
+AGCGCGGGATCGGTAAGCGCATCGCGAGCTTTCCCGGAGTCAATGAGGCAGTGCACGAGG
+AAGCCAACCGGCGCGCGTACAAGGTGCGTTCGGCCGCCTCGGGTCACATCCTGTCCGGCG
+AGTTTCAGCGCTCTATCAAGGTGGTCAAGGCGAGTGGCCCCCATCGTCGCCAAGACTGGC
+TAGTTGCCATTAATCACCCGTGGGCTATCTCGATCAACTGGGGCCACATCGACAGCAAGT
+CGGGCCGCCCCGTGCGAGGTATCCACGCTATCGAAAAGGGGCTTGAGTGATCCCAGTTCT
+CCCCGATGTTGAGGCGCTGACCCTAAAGGCCCTGAGCGGCCGCCTAACGGGCGCACGCGT
+GGCCGTGGACTATCCGGCCGACTGGGACACGGCAAGCCCTCTCGTGGTCGCTCACAGGGT
+CGGAGGGGCCGCCCTAGACGCTCGGTTCCTAGACCGTGCGCTCATGGATGTTCAGGTCTG
+GGCTCCCGACCGGCGCGAGGCTTCCCGGATTGCCCGCGAGGTTCGGGCGATTCTCTTTGA
+CGCTTGCCGCTCCGCTGTCTCGGACGCCGAGGGCTACCTATCCGACTTCCGAGAGGTAAC
+CGGCCCATGGTCGCCCGGTCCGGGTGATCACGCCAACCTGTCGCGGTTCATCGCGACGTA
+TCAGCTAACCGCGCGTCCAGCGCATAAGAAGGGATAGCCCAACATGGCTCTAGACAATGA
+CGCTGTCGTTGTTCCGGGTACCGGTTACGTCTACCTCGGTACTGCGAACACCACGGCTAA
+GCCGACCGGTTCGTTTGACCCTCTTGCCCCCGGTACCGGTTGGGCATCCATTGGTCACAC
+GTCGCTAGAGAACGGCATTGAGTTTGGCCGTGATGGTGACGACCCCGAGACCCTTGGTTC
+GTGGCAGAACCCGAAGCTACGGACGACCAACCCGGACGTCACCTACACCATTTCTCTTGC
+GGCGCTACAGGCGTCTAAGGAGACTTACGAACTCTACTTCGGTGCGGGCCCCGGTGCGAC
+GGTTGGCGGAGTCTTCAAGATTCCGGCTAAGCCGAACGCGCAGAGCAAGGCCCTACTTAT
+CGTCATCGTTGACGGTGAGCAGATGCTACCGCTGTACTTCCCGAACGTGTCCCTACTGGG
+TTCCGACGCTATCGCTATGGACCCTGCGGCGCTTCTTGAGTTCCCGATCAAGGGCACGAT
+CCTTGCCGGTACTGATGGCAGCCTCGGTGACATTGACGCCTTTGTTGCCCCGGGTCCTGT
+CGGCGGCTAACACCACCTAGCAACGTTACTAGGTGCTCCACTCCCCTCCCCCGTAGTTCT
+GGTCCCTCTACGGGGGAGGGTCATTCTTCCTCGGGACCGTTCGGAGAGTAGGGACCATGG
+CTAAGATTACGTTTGACGACCTCGTTGCAGAGGTTCAGGAGACTTACCGCGCGGTTGAGT
+TCGAGCTAGCCGACGGCACCGTTGTGAATCTGCGGGCCCTCGCTATCCTCCCGCGTGAGG
+CTCGCAAGCTGGTCATTGCCGCTGTCAAGGTGGTCAACGACAAGAAGTCTGACGTAGACG
+CGCAGGAGACGGCTGTAGACCACGTCCTGTGTGCGGTCAGCGATAACGCGTCCGCTCTCA
+CTCCGGCGCTTGACGCTCTGCCCCTCGGTGCCAAGCTCAAGCTAGTTCAGATGTGGGCGG
+AGGGGACTCAGGCCCCGGAAGCCTGACACTCCGGGAGATGTGCGACGCCCACGGGGCGGA
+ACTAGTCGCCGACTTTCAGCGGTTCTACGGGCTTGATCTCGTGGCCGTTGTCGGTGGTTC
+AGTCTCGCCCCGTCGCGCTGTGGCGCTGGTCGAACATCTTCCGGAGGATTCAGCCTTTAT
+CAACGCTGTTCGGGGTGGCCGGGAATTCACCGGATGGGACACGTCTGCCTATCTCCTCGC
+CTGCCTTATCGACTCGGTGAACATGACTACTTGGGCGATCGGCGCGCAGAACGCTAAGCG
+CAAGCCCGCTAAGCCCAAGCCGTTTGAGCGTCCGGGCACGCGCAAGCGGAACGTCCGCGC
+TGCGGAAACTCTGCTCAAGAACAACCCGCGCGCGATGCCTATTCCTGAACACCGGTTGCC
+CGCGTCGCGTGCCTGAAACTAAGGGGTACGCATGGCCGGTCCGGGCGGGTCGGAAGCGGG
+GCGCGTCAGTATTCGGGTACTGCCCAATACGTCGTTCTTCGCTCCCGCCCTACAGCGCTA
+CCTAGATCGCGTCGAACGTCGGGCCGTTGTCCACGTTGACGTAGAGCTAGATATCTCCGC
+CGCTGAGCGCGAGATAGATCGTCTGGTCGATGACCGAGAAATCAGCATCGACGTAGACAT
+TGACACTGGCACCGCCGAGGCCGAGCTAGACCGCCTCGCGCAGGATCGTACGGCCAACAT
+CGACGTAGACGTTGATAAGGGCGGACTGTCCCGCGCGGGCGGTGCTATCTCGGGGATGCT
+CGGTGGTCTCGGGAAGATGGCCGGTACTGCCACTAAGGCGAGTATCGGTGTCGGTGCCAT
+CGGGCTAGCCGGTGTCGCTGCGGGTGGTGCCCTCGCTGCACTCCCCCTCGCTATGGCCGG
+TGTCGGCAAGATGGCCATAGCCCAGAGTGAGGAGATGACCGCCGCTTACGAGGCGGCTAC
+CGACAAGATCAAGGCCAAGTTCGGTCAGGTGGCTAAGCCACTTGGCGAGGCCCTGATTTC
+TGCGATGCCCGCAGTTGAAAAGCTGGTCGGTCAGATGGGCCCACTATTCGCCGCAGGCGC
+TCAGTGGATCAAGCCCATGGTTGAGGGCTTTACCGGTCTCGCGTCTAACGCGCTGCCTGG
+TCTGACCTCGGCTATGAAGAACCTCGGTCCTGTGGTCGAGGGTATGCAGATGGGTCTAGG
+CACCCTAGGTAGCGGCATCGGCGACATGTTCGCGGCACTCGGTGAGAATGCCGAGGGTGC
+CGGTATGGCGATGAACTCGCTATTCGGTGGCCTCGGGGATATCCTCGCCGCCCTCGGCCC
+GCTCCTCGGTGGTCTGGCGTCCTCGTTCGCTCCGCTGTTTGACGGCGTATCGGGCGGACT
+CCTGAACCTCATTGACGGACTCGTTCAGGGTCTCGTCCCTGCGGTCAAGGTCATCGCTCC
+GCTTGTCGGCGACCTAGCGGCGGCCCTCGGTGGTGCCCTCGGTGCAGCGATTCAGGCAAT
+CATGCCGGGACTCGCAGCGTTCGCACAGGCAGCGCTACCGGCCATTACCGCAGCGATCAA
+GGGGCTAACCCCGCTGATCACCGCGCTAACCCCGGTGTTCATGCAGCTAGGCGAACTCCT
+CGGGACTGTTGTAGCGACCGCCCTACAGGCGATCATGCCGCTTCTACAGATCCTAATTCC
+GATCTTCGCTCAGATCCTCGCGGCTATCCTGCCCGTGATCGAGCAGCTAGTTTCGGGACT
+GGCCCCGATCTTCACGGCCCTAATGCCGCTGATCTCGCAGGTTGCCACGCTGCTAATGAC
+GCTGCTAGCGCCGATCTTTGAGGCACTGCCGCAGCTCCTCGCGCCGATCCTAGAAGCGCT
+AAACATCCTCATTCCGCTATTCGTGGAAATCGCGACTCAGATTCTCGACGCGCTAGGCCC
+GTCCCTCGGTCAGCTTATGCAAGCCTTTGTGGACGTCATGCTAGCGCTCGCGCCGCTGCT
+ACCGATTTTCGCCAAGCTGATTGAGGCAGCGCTAAAGGTCCTCGTCCCGATCATCACGCC
+GATCATTGCGATCATCGCGAAGTTCGTTTCTGGGATCGTGTCCTCGCTGGTTCCGGCCAT
+CCGGGACATTATCAATTGGCTCGCGTCGTGGATCACCAAGCTAACGAGTGTCCTCGGTGG
+CATTGGTCAGTTCGCTAGCGGCGCGGTGAATTTCTTTATGGGCATCTACAACGGTGTTCA
+GCGAATCCCGGGCATGATCATGGATGCCTTTAAGTGGGCGATCAACGGTGTTATCGGGCT
+GATCAACAACCTGATCGACGGGTACAACTCGATCCCGGTTGCGCCGAACATCCCGCGTAT
+CCCGACGTTCCGTCTGGCGTACCTCCCCGAGATTGGCGAGGGTGACGCGTTCGCGCCGCT
+CCTTTCCGAGACCTCGGCGACGCTGCTACCGATGGGGGCGAGTCCGCTAGAGCGGCTAGC
+ACAGATGCCACAGGCTGACCGTGCGTCGTCTGCGAACACGTCCGCGCTCCGTAAGGCCAT
+TGAGTCTCAGCGCTCCGCATACGAGACCGTGAGCCGTCCTACGGCACAGGTCACCGTGAA
+CGCCGAGACGAACGCCGACCCGGCGGAGATTGGCCGCGAGGTTGCTTGGGTTCTGCGTAC
+GCAGGGCCGGTAGCACCTAGCAACGTTACTAGGTGGGGTGGGGGTTTCGGCTCCCACCCC
+TCCCCCATTGAGAGGCTTCCCCATGCTGCAAGACTGGACGCTTTCCTACGGGCCTATCAC
+GATCGGCGACGCCGAGGCCCTACCCGCTGTGAACTTCACGAACCTTGACGTCATGTCGAT
+GCCCGAGGTTCGCACCAATGACATAACCCTGATCCAGCGGGACGGCTATTGGGCCGGTGA
+CGACTACATGGGCGGGCGGACTGTCGCCCTGTCGCTAGAGGTTCAGGGCAAGGACTCTGA
+CGAGTTCAACGAGGCTGTCAACCTGATCATGCGGGCATTCTCCCCCGGTGTCTCGGGTGA
+GTCTCCCCTGACGTTCAAGATTCCCGGTGTCGCCAACGGGCGTGAGGCGTACGTCAATGT
+CCGCACCCGTCGCCGGTCGGCTCCGCTGGACGCTCGGTTTGGTCGCCTGTACTGCGCGTT
+TGAAATTGAGCTGTTCGCGACTGACCCGCTCATCTACGCGACCGAGGAAACCGCCGTAAC
+GATTCGCAACGGCACGCCAAGCGGTCCGCTTGCTCGTGTATTGGTAGAGGGGTCTCGAAC
+CGCTGAGACCACCATTGACTTTACCGGCGTGACCAACCCGCGCATTGAGAACGCGTTCAC
+GGGTGTTGGCACCACGTACACCGGTACCGGCACGTTCACCACGGCCGGACCTAAGTACAT
+CCCCGGTGAACGCTTCCTCGTCCTCAAGGATTCTGGCACGCCCAAGACTGGCACCGCCGT
+AGTCAAGTGGCGGGATACGTGGGTTTAGTGGCTACTTACAAGGTATTCCTTTACAACGTG
+CTGACTCAGAACGTGATTACTGAAATCCCGTTCGCGGCACTCTCGTACAGCTATGTCATG
+GATGAGCCGGGTACGGCAGAGATTGAAATTCCCATGACTGCCCTAAAGACGGACGGCAAC
+CCGCTTACCCCTGACGACGTGTTCCCGGTCCGTACCGGCATCGCGATTCAGCGGGACAGC
+GAGCTTGTGTGGGGTGGCCTCTTGTGGGCCTATCGCGCTGATCTCGCCAAGCGGACGCTA
+TCGCTTTCGGCACAGGGTTACCTGAGCTACTACCGGTATCGCCATACGGCTACCGCCGGG
+GTCAAGTACAAGAACCTTGAACAGACCACGATGATTAAGAATTTCATTGACTCGATTGCC
+GCTAACGGCATCAAGACTCTGACGTCTGGTCTCGTGGCGACCAACATGGTTCGTACGCGC
+GCGTGGAACCCCTACGAGTTCAAGAACCTTGCCGAGGTTTTCGCGGACCTTGCCGACGAC
+ATCACGTCTAAGGACACGGTTACCGGCATCTACGGTGGCGGGTTCTTCTTCTACCTTGAG
+CCGTACTGGATCACGACCGGTACCAAGGTTGGCAACCGCATTCGGAACACCGCGAACCGG
+CACCCCTACTCCAGCGGGAAGAACCTGCAACAGGGTGTCAACTGCGAGTTTGCCGATATC
+TCCGTTGACGGTACGGGGCTTGCGTCCTCGGCCTTTGCTGTCGGTGCGACGGACGGCACC
+GCGTCTATCACCCCGTATGCCGCTGACAGCAACACCGCGCTATCCGCGCAGATTCCGCAA
+GTGAACGTGGTCCTTAACGAGACCGGCACCAAGGAAGCGGTAGCACTGCAATACAAGGTT
+CGATCGGCCCTCGCGTTCGGCAGTAAGCCCGTAATCCTTCCCAAGGCAGACACGTACCCG
+GATCTGTTCTCGCCCCTCGCGCTACAGCCCGGTATGTCTACCTCGGTCACGTCGGATGAC
+GGGTTCCTGTCGCTCCTCGCTGAGGAGTACGTCATTACCGAGACGGCCGTTTCGGTGGCC
+CCGGATGGTAGCGACCGGCTTTCACTGTCCCTCGTTCAGGCAGACCTATTCAAGGAGACT
+GAGAACTAATGGCACGTCCGGGCACAACCGAGCCTGACCTAGTCGGCGAACTGCGCAAGA
+TTCAGGGGCGGCTAGACGCGCTTGAGCGGAAGCCTGTCCCCCAGAGCATCTATGACCGGT
+ACCCCTGCACCGAGTTGCAGGCACCCGGCCGACCCGCGTACGCGGGCAACGTATGGAACT
+CCGTTGGCGTGGCCAACGTGACGGGTCTCAAGTACGACCGCCTTGAATGGAAGGTTCTTA
+CCTACAACCTGTTCAAGGGCGAGATTGAGGGCGAGCTACGCGTAGCCGCTTTCCGCACGT
+GGGTTGACGCCAACGGCCCGCATCGGCAGATCATTTCGTCTAGTGACGCTCGCCTATTGC
+AGGGGCAGACTCGCCCCGCGAACGGTGTTGGTCATGTGGTCTGCCGCTGGATGCACGGAA
+TCCAGTACGGATGGGACTTTGACGAGCCTGACAACGCGATGTATACCGTCGAGGTTCAGC
+ACCGTACCCACCTGATCAATCCCCCGGACTCTGATCACTTGCAGGTTCTTGCGTTCAGCA
+AGTCCGAAAAGGACGCGAACCGGGGATATCGCATTGACGGTACCGGTGATGACTACTGGG
+GCCTAAGCCTCAAGTCCGTTGGTGGCGGGATCAATACCTATGGGTGGGTCACGCTTCCCG
+GTCAGAGCGTGCTAGACGAGTACGCCATTTCCAACATGCATTACTGCATTGGTGTCCCGC
+AGGAGATCGCCCCGCAGGCAACCCCTAATGGTTGGTGGGCATGGTCCAGCGCGGTCAACA
+CCATGACCAAGCTACGTGACGCCTCGGTTGTCATCAACGAGCCATATTCGTAAGAGGAGT
+TATGGAAGTTTCCGAGGTTCAGCTAAACGTCAATGAGGGGGTGTGCCGCCCGTCCGCGCG
+GGTGGTCTCCCCCGTCAAGGTAGTCAGCGTGGATATCGCCATTGTTGACGAGACGTCCGG
+CGGGATTGCCTCGCCCGGTGTTCTCGTCTCGGGTTCTGCGACTGACGGAGTGTGGCAACT
+CCCCTTCGATTTCAAGCTAAGCGAACTGAGTGTTCACGCTGAGATCGTCGCGTTCGGTGT
+TGACGGTTCCCGGGCGGAGGGTAAGGCGTGAACCTCTCCTACCTCTCGGGACTAGAAGTC
+ATTGTTCCCGTCCTCGTGTTCGCGTTCGTCTCGCTCCAGAAGTTCAAGACTGGAATGCAG
+ACCACTTGGCGGGAAGAGGCCGAGGCACAGAAGCAGCGAGGAGACCGGCTAGCCGAGCAG
+GTGGCCGAACTCACCAAGGAAGTCAAGGCACTTCGCGCCGAGAATGCGGAGCTACGGCAC
+GCACTCGGACTCAAGGACAACCCCAGCACCTAGTAACGTTACTCGGTGCTCCCCCGAAAG
+GAGCTAACGCGTGCCGACGTTTGGCCCGTTCAATCTTCCGGCCTCGGTCCCCAAGGTCAC
+GCTACATGCCAAGTACCTTGCGCCGGACGGCCGTCCGCATGGGGGTTGGGTTGAGATCCT
+GGCCCCGCTCGGTCTCACGTTCCCGAACGCTGACACGTTCGTTACGGGCCCCATCGTGCT
+ACCGCTGGACAGCGAGGGCGGGTTTACCGTCGTTCTTCCGGCCACGGACGTTGCGGGGCA
+GAACCCCACTGAGTGGGCGTATCAGATCACCGAGCGGCTTACCGGCGTCAACGACCGGGC
+CCCGTACATGATCGCGCTGCCACAGTCTCTCGTGGACCCGTTCCTAGATGAGCTTGCGCC
+GACCGACCCAACTACCCCCACTTATGTGCCGGTTGAGGGTGGGCAGATTTACACCGGTAC
+CGCTGACCCTATGGCGGGTCTTGGCAAGCATGGTGACATGTACGTCAAGCGCGATATCTC
+CGCTGCGTTCCTCGGTGTCACGGACACGTCCGTCACTTTCTGGCAGAACGTAAACGATGT
+GTGGCAGGTTCGAACCGGTGAGGTTCGCGGCCACAAGATTTACGTAAACAACACGACCAC
+GTCTAGCGCGACTACGCGTGAGGGTGACCTACTCATCCGTTCCGACACGGGTGATTTCTG
+GCAGCGTGGCGCGTCCTCGTGGGGCACCGTTAAGGGCAATCTCAAGGGCCCGAAGGGTGA
+CAAGGGAGACAAGGGCGATACCGGCGCAACCGGTGCAGCGTCCACGGTCCCCGGTCCGAC
+CGGCCCCAAGGGTGACACTGGCGTCCGAGGGAGTCGCGTATACGAGGGGCCCATTGGGGA
+GGTTGCCGGACTCCTTGACGGAGACTGGTCGATCAACGCAGGCTCCGGCGCTGTCTACAT
+GCGCGAGGGCGGGCAGTGGGTCACTAAGGGCAACATCCGTGGTCCCCAGGGTCTCACGGG
+TGCTACGGGTCCACAGGGGCCCAAGGGTGACCCCGGTACCGGTTCGGGTACTGTCACGGC
+CGTTAACACGGTTCTGCCGGACGGTGGCGGTAACGTCACGCTGACCGCCGCCAATGTCGG
+TGCCATGCCGACCACGGGCGGACAGTTCACCGGGGATATCACCCTGAACGGTGCTGCTGG
+TGCCTATCGTCAGTTCTCCCTAGACGTCGCAGGGCTCAAGCGCTGGACGTTCCAGAAGGA
+TGACGTAGCAGAACCGGGCGACGGTACCGGCTCGAACCTGCGTATCTCGTCCCGCAACGA
+CGATGGCACGTTCAAGTCAACCGTCTTCAATGCCGACCGTGGCACCGGTCAGGTAACCAT
+CGGTTCTACCACGGCCCTCGGTGATGGCAAGTTCACCGTTGCGGGTGCGGCTGGACTCAA
+GGACGTTACGCCGCAGCCTGCCACGCCGACCGGCGGTTCTGTGCTCTACAGCGAAGCGGG
+TGTTCTCAAGGTTGCGACGCCGACCGCGCGTTACTCCCTCGTTCAGCCTGTCCCGCTGTC
+AACGCGCAACGTGGCGAACGGTGTTGCTCCGCTGGACAGTGGGGCCAAGGTTCCGATTGC
+GAACCTTCCGGCCGGTACTGCTAGCGGTGTCGCCACGCTGGACGCGTCTACCAAGATCCC
+GGTTGCTCAGATCCCGACGTCTGTTCAGGGCTCTAAGAACGAGTGGGGCCCCGAGGCTCT
+AGGGTTCAAGGCTTGGTCTCACGACCCGAACCACGTGTCTAACCCGACGACGCTCAAGGC
+TGCGGTGATTCAGCGGCTCTACCTGTGCGCGGTGAACATCACTGAGTCCACGGTAGTGAA
+TGACGTCTATATCCACTCGCGGGGTTGGGCGGGTAACACCGCTGTTCCGGCCGCTCGGTT
+CTTCGGCGGGATCTACAACTCGTCTGGTTCTCGCGTTGCTTGGACGGGTAGCACCGCGCT
+TAGCAACGTGGCGGAACCGGGTCAGACGACCGGCACCCCAGCGGGTCAGAAGAACAACCA
+TATCGGTCCGGTTGAGCTTCCGCTTACGGCGGCGTACACGATGGCCCCCGGCAAGTATTG
+GCTTGCGTTCCTCATGAGCGCGGGTGCCGCGACGGACTTCTACTACTTCCACGTACAGAA
+CGAGGCTCCGGCTAACGCTGGTGGTTCGTTCTTCCTTGGGACGCCGTTCATCCGGAACAT
+GTACTTCGCTGGACAGACGACGCTACCGGCGACGATCACCCCTGCCAACGGCCTTATGGA
+CCATGACCCTTGCATCATGGCCGTTGCCTAACCACCTAGCAACGTTACTAGGTGGTCTGC
+CCCGCTCGGGACTTCCGAGCGGGGCCCCTCTTTGGAAAGGTTCCCAATGACTGAGGTTTC
+GCGGCTAGTTGCCGTTGCCGACGCTGAGGTTGGCTATCACGAGGGTTTCAGTAACGGCCA
+CTGGAACAACCTACAGAAGTATTCCCCCGCCGTTCCGGGCCTTGAGTGGTCGCAGAATCA
+GGCTTGGTGTCAGACGTTCCAGTCGTGGATTTTCCAGACGGCCGGACTCAAGGCTCTTGC
+TCCTGTAACTGCCTCTTGCTATACCGCTGTTCAGTGGTTCAAGGGCCGTGGCCGGTTCTC
+CTACTACCCCGCCGTTGGCGCTCAGGTCTTTTTCGGTCCGGGCGGTGGTTCGCACGTGGG
+CGTAGTGACCTCGTATGACGCTGACTACGTCTACACGGTGGAAGGAAATACGAACGACAA
+CGGTTCGGCCGAGGGTGACGGGGTCTACCGGCGCAAGCGTGCGCGTCGGGATGACTACCT
+GTACGGCTACGGCTACCCGGCTTACGCCGAGGGTTCCGTTTCCGCTGACCCGAACGCGTC
+TGCCTTTGGCTACAAGGTCAAGGCGACTGGCAGTGTTGCGGACGTCGGTGGGGCTACGCC
+CTCGCCCGAGCCGCCCCGTCCTGTTGCTTACGAGCCGTTCCCCGGTGTTCAGTTCTTCAA
+GAAGAAGCCCCGTTCCCCCATCGTAACTGCCATGGGTAAGCGGCTAGTTGCCGTGGGTTG
+CTCGGCTTACTCCGAGGGTCCGGGCCCCAAGTGGACGAACGCTGACCGCGAGTCGTACGC
+CAAGTGGCAGCGCAAGCGTGGGTTCTACGGGGACGACGCCGACGGTTGGCCCGGTAAGAC
+CACGTGGGATGCCCTCAAGGTCCCCAAGGTTTAGTCACTCTCCGTGGATCAGCCGGCGTC
+CGGCATGTCCGTTTTTGACGCGCTTGCCCTATGCCGGCTGATCCCGCGGTTTTCACTGTA
+AGTAACGATCGAGAGGTACCCATGAACTTCGTCAAGACCAACCCCGCCCGTGTCTACGCC
+GTGGTTGTTTCCGCCCTCGCGCTAGTCGCGTTCTACGTTCCGACCCTGCCGGTTGAGCTA
+CTGCTAGGTGTCGTTGCCGCGACCCTCGGTCTCGGTGAGGCTGTCCAGCGGACCGAGAAC
+GCCAAGACCGCTACCGCTTTCGCTGCGCTCCCCCTCGCGTGCCAGAACTGCCCTGCGACC
+GGTTGCGCTGACTGTCCCCGCCTAGACGCTTAACCGGCGCTCTCTCTGCCTCGGGGAACC
+ACTCAAGGAGGAGAGAGCACATGCACGACGTAGCACTCATGGGGAAGGCTCGCAGCGGCA
+AGGACACTGCTGCGGCTTTCCTCGTGGACGTCCACGGGTACAAGCGTCTCGCGTTCGCCG
+ACCCGCTCAAGCACATGGCGGACGAGGTGGACCCGCTGATTCCCACGTCTGTTGGCGTTC
+ACGTCCGGCTCAAGTCGCTAGTCCGTGACGTCGGTTGGGAGTACGCGAAAGACAACTACC
+CCGAGGTTCGGCGGGTGTTGCAGCACATCGGACAGACGATCCGTGACCGTGACCCGGACT
+ACTGGGTACGGCTCCTCATGGCTCAGGTGGAGGGGGCGCGAGAGTTCGGCTATCCCGTAG
+TCGTCTCGGACGTCCGCTACCCCAACGAGGCCGAGGCACTGCGGGCCGCTGGTTTCAAGC
+TCGTTCGCATCTACCGCCCCGGTAACGAGGATGCGGGTACGCACGAGTCTGAGACAGCGC
+TAGACAACTACGTCGGTGACGCTGTGATCCGCAACGACATGACCCCTGCGTTCCTCGGGT
+ACCGCGTGACCCGCTACCTCATGCACTGACAGCTAGCCCCCATGGCCCCCGTGGCTGTGG
+GGGCTTTCTGCGTTTCGGGACCACCTAGCGACGTTACTAGGTGGTGGCGTGTTGACAAGC
+ACCCCCGAGGGTCTGCTACTGTTCTTCTTGTGAGGCCGACACGGAGTCGGCCGGAATCAG
+ACAAGGGGTTTGGGATGAGCATCAAGTTCGCGACGGTGGGCAACGGCGGCACGGTCCACG
+GCACCGAGGACGAGACCAAGACGCTGTGCGGCAAGGACGTTTCGAAGCTGGTCACCATCC
+CCGGCGCGGAGATCGCGTGCAAGGCGTGCACCGCGCAGGCCAAGAAGATCGAATCCCAGA
+CCCCCAACACGGAAGGTGACGACGTGGCCACCGAGAGCAAGACCGCCGAGAAGACGAACG
+ACGAGATCGCGGCCGAGGTCAAGGAGTTCATCGAGAACCTGACCGGTACCGTGATCCCCG
+CGCTGAACAAGTCGGACGGCGAGAAGCTGGACGCGATCATGGCGCAGACGGAATCGGAAC
+TCCTCCGCGTCAGCACCAACAAGCGGGCCGTCTGGCGGACGCTGGTCAAGAACGCGATCT
+CCGAGGCCCGCGAGCGCACCGGCAACACGGTTGCCGTCCGTGAGGCGGTCGAGACCGTCG
+AGCAGATCAAGGACTACGAGGAAGTCATCACCCACACGGCCGGTGTCGTCGCCGAGTCGA
+TCAAGTCCGAGGTTGACGCTCAGGAAGCGGCCAAGAAGGTTGCCAGCGCGATCCTTGACG
+GCCGTCTGCGGGTCACGGACAAGCAGGGCCGCCCGGACCTCAAGGGCACCCGCGACGCGT
+CCAAGAAGCTCGCCGGTCGGATCTACGACGCTGCGGCGGAAAAGCTCATCGCCGAGGAGT
+ACGGTTCGGACGTCGCCGACGTGGACGAGCTGTTGAAGGGGCTCAAGAACAAGGTCTCTT
+ACCAGATGAGCGCGGTTCTCCCCGAGTTCATCCGCGCGCTGGACAACTCGCCCGAGGAGT
+TCGCCGAGCTGTTCCCGAACATGGAGGTTCCCGAGGGCAAGAACCCGTCGGACGTCGTGT
+TCGACACCTACAACATCAGCCGCCGGTCCAAGGCCGAGATGATGGCCGACAACCGGCGCG
+CCAAGAGGGAGCTTGCCAACAAGGTTGCGGCGGGTGAGCTGACCGAGGCGGACGCCGAGG
+CCGAGGCCGAGAAGCTGGACAGCGAGGGTACGTCCACCCGCGCCGAGAAGTCGCAGTTCG
+AGAAGGACACGGCCAAGCTGGACAAGCTCCCCAAGGAACTCGCGGAGATCATCGGCCGGA
+AGGACGAGCGGACCGAGGAGGAGTCCAAGAAGATCGCCGAGAAGATCAACGCGACGATCA
+CCGCTCTGACCGAGGCCCTGACCAAGCTCTGACCGACCCGCACCACTCCCCTAGGGGCCC
+CGCTCGGACCACACCGGGCGGGGCCCCGCCCCTTACCGCCACGACGAACGAGAGTAGGGA
+ACATGTCGGATAGCTGGAACAGCGTGTTCAACCCCGAGGGTCTGCGCCGAGTGTGGGACG
+ACGAGCGACACCCCACCATCGCAAACATGGTCCTGAACACCGACACGGACGGGACGGAGG
+AGTACAACGTCACCCCCGAGGGTTTCCAGCGAATCAGCGATGAACTGAACAACCTCGCTG
+AACTCATGGTCACGCGGGACGACGAACTGACGCAGGGTCTCGCGTACGCGGCATGGTTCA
+CCCTGGCCACCCTCGTCCGGCAGATCACCGAGTCTCGGGAAATGCTTGCCAGCGAGGAAG
+GCAAGGCCGCACCGGGTGCCATCCGGCAGAGCCTCGCGAACGGGACGGCCCACCAAGAGG
+GGCAGTACGCGCATTACGTGCGGCTGTTCGCCAAGCTCCCCGAGGGTATGCGCCCGGACA
+TGCGGGACCGCCGTCTGATCCTCCCTCCCAAGGATGCCGAACATGAGTGAGCAAGGACCC
+GAGGTCATCGGGCGTGAGATCCTGCGGGCCGAGGCAGCGCTAGAGCGGGACAAGGACCGG
+CTAGGCAAGACGACCCGGTCTCAGCAGACGCACCGGATCGAAACGCTCAGGTGGGCTCTA
+CACGCCGCGCTGACCGGTGACCCGTCCCGGAAGCCGGGCGAAGAAGTTGAGGAGTTCCTA
+GGGGCCCTCAAGGCCCGGGAAGAGGGCACGTCGTGAGCTACTGCCTGAACTGCAAGAACG
+AACACCCCGAGGAGACCACCGAGGAGCACGTACCCCCGTGCTCGCGCTGTGACTCTGACG
+GACATTCCACCTGTCAGCACTGACCCACCCCCCGGCAACCGGCCCCGGTTCCCTCCCACA
+GCGGAGAGGATCGGGGCCTTTTTCATGTCTGAGTGTTGAGTGTCGATTCCTGACACAAAA
+AGAGGGAGTCATAAGGGTTCTCTAGGGACTGCCCAAAAACTCTCCGTCGATCGACACTCG
+ACACCGGCTTAACCGGCACCCTCTCTGAGCGCTGTAAGAGACAGCAACCCGAGAGGGCAG
+TACATGACCGCCAAGGTTTCCACGATCCAGCGCGGGGGTTCCCGCTTCTACGTCAACGCC
+GACACTCAGGAAAAGGTGCCGGGCGTCACCTCGGTTGTGGGGATGCTCCCTAAGCCGTTC
+CTACAGTTCTGGAACGCCAAGATGGTTGCAGAACTCGCCGTCGATTCCCTGCCGTTCGTT
+CAGCAGATGGCCGAGCGGGACCGACAGGGGGCCATCGACTATCTCAAGGGTGCGGCCCGC
+CGGTACACCAAGACGCGCGCTGAGATCGGCTCTGACGCGCATGACCTCTTTGAGCGGCTG
+ATCAGGGGTGAGTACGTCCCCCGCCGTCTGCACCCGGACATGCAGCCGTACGCCGATAAC
+TTCCGTGAGTTCCTGGACGTCGTCCAGCCTGAGCTAATCCGCGCGGAAGATGTGGCGTGG
+TCGGACACGCACAAGTACGCCGGTAGCTTTGACGCTCTCCTCCGGATCAAGGACGAGGAC
+GGCACCGCTGTGACCGTGCTTGCCGACTGGAAGACGTCCAAGGCGACGTATCCCGATGTG
+GCCCTACAGATGGCCGCTTACGGCTTTGCCGACAAGCTCATTGACCCTGACGGCAATGAG
+TCGCCGATGCCTCACATTGACGCTGCGGCTGTTCTGCACATCACGCCGGAACAGTGGGCG
+TTCAAGCCGGTGCGGTTTGATCAGGAAGTGTTTTCGCACTTCCTCACGCTGCGGAAGACG
+TTCGATTGGGACCGTGAGGTTTCCAAGTCTGTGATTGGTAAGCCGTTCGCCACGGGCGGC
+ACCAAGGGAATTGTGACGGGAACTCAGCGGCGTGCGCGATAAGCGCGCTTTCGCTTAACC
+CACACGCTCTCTAAAGAGTAGAGAGGGAAGGGCGGCCGGACCGGTCAGCGAGGATCACCA
+CCTAGTAACGTTGCTAGGTGGTACGGGACATGACCGGAATCCCTGCCCTTCCCTCTCGTC
+ACAAAGACTCACAGACAAGAGGTAGAACGTACATGGCTGGTCTGCGCATTTTCGAAACCG
+ACCCTTCCGCCAAGCCCAAGCCGCGTCAGTTCGCGGATGACTTTGTCGGGCGTTTCCGTA
+CTGGTCGGCAGGTGAACAACCGCCCGGAGCAGCTTTCCACGTTCCGTATCACGACCGGTG
+ACCCGTCGATTGCCGACGCGGTTTCCAAGCTGTACGGCGGTAAGCCGTCCGAGTGGGAGA
+CCAGCGGCGAGGATCACAACGAGGTCATCACCGAGGCCGACAAGGTTCTTGTCGTCATCG
+ACGGACCGGCGGCGCTCACTGCGGATATGAAGCTGTGGGGTCGCTCGGGTCTCATCCACC
+ACTGTGACGGTGTTGAGTTCCTGTCTCCCGACGAGGACAAGGGACAGCCGTGCGGTTGCC
+CTGCGCTCATGGAAGACCGGAAGGCACAGGCTAAGTCTGGTCGTGGTCCGCAGCCGAACA
+CGAACCTTGTGTTCCGTCTGGCCGACGACTACCACCTTGGCAAGTTCCGTTTTCAGTCCA
+CGAGTTGGAAGCTCGCCGAGGTGATCCACGAGATTGACGAGGCCCTGTCTCGTCACAAGG
+GTGAGGTTCTGGCCGAACTCTCGCTTGAGCTTGTCGAGTTCACCACCAAGAGCGGTCGGG
+ACGTGTCCTACCGCAAGCCGGTTGTGAAGGTTCTCAAGCCGTGGGCCGATGCTGTGGCCG
+ACGACGCGGACACCGACTACTAAGCCCACTCCCCCAGTCACACACTCACACTCACTCAGG
+AGAGAATCACCATGGCGTTTTACCTCGTTGTCGATGGCAAGCGTAACGAGTTCGGCGAGG
+CTGACAGCTACGTTGTCCGCGCGTCCGGTACCCGTCAGGCTGCCAAGCTCGCCCCGCTCG
+TTGACCGGAAGGGTGCCGAGGTTACCAAGCTGGACGACGGCCGCGACGTCCCCAACGGCG
+TGATCCTGTCCTCGCTGGTCGATTCGTTCGAGGATGCGGCCGAGGCTCTGCCGTTCGGTG
+AGCCGGTCGCCGAGGTCATCGAGACCGAGAACACCGAGACCGTACAGGTTTCCCCTGCCG
+TTGTCGTGGACGCTCCCCGTTACTCGGTGATCTGACATGGGCAAGCGTGGGGTTGTCACC
+GACTATGCCGGTGAGGAGCTTTACGCGGGTGACCTCGTGACCTACTCGGCTCGACAGGGT
+AACCGTGTCCGCATGACGGATGCGGTTATCTCCGAGGTCACGGCCCGTGTTGAGGGTGGC
+AGGCTGCGCCCGATGCTCAAGGTTCACCCGACCGGTATGGAGTCGGGTTTCACTCGCCGC
+CGCAGCTATCGCCCCGTGTGGGTGTCGGCTGAACATGTGCGGCTCATCCTCCCCGCTACG
+GAAGACGAGTAACGAGGAGTGGCCCCGGATCATGGCTTAACGGCTGTGGTCCGGGGCTTT
+TTGCGTTTGACCACCTAGCAACGTTACTAGGTGGCTACCCGGAAAGGTGAAGCATGGAAC
+GACGGATCACTTACGCCAACGCCCCTGCCCTCGGGGACGTTCGGAACATGGGAGAGGGTG
+ACACGCTGTGGCTCCATGCCAACGTGAATCAGCGTGCCGACTGGTCGCGCTATGCCGACG
+CTATCGCTTGCGCTGTGTCTCGGGGTGCCGAGGTTCGTAGGCGGTGGGGACTGTGAAGAC
+ATGCCGACTATGCGGGCGGGAAAAGCCCGCTGCTCAGTTCCTAGCCGGTAAGGCTAAGCG
+TCCGTCATCGACCTGCGGCACATGCCGAGGCAAGCTAGCCGCACAGCACCGCCGGAAGTA
+TTACGCGGGTCTCTCGACGGACAAGCGCAACACCCTGACCCACAAGCGCCGCGCCGAGGC
+GTACGGGGTGGAACACGAGGAGTACAGCCGTACGGCCATCCTCGCTCGCTGGCACAACAA
+GTGCGCGTATTGCGGCAACCGTGCGGAGCATCTAGACCACGTGGTTCCGCTGTCCAAGGG
+TGGGACGGATACCGAATCCAACATCGTCCCCGCGTGTGCCCCCTGCAATCTGAGCAAGGG
+AGCTAAGACCCTGGCCGAGTGGTCCGAGTCTTTCGACGTGCCCCCCTTCTGACCTGCGGT
+TTGTCACCCTCCGTTCCCGCCGGCCTTACGGAGGGTGACTTTCCGTGTGCGCTTAACCCA
+CACACTCACTGGTCAGTGAAGGAAGGAAATACATGGAATTTCGTAAGGTGCTCGATCACT
+TCACTGACGTCACGGAACATCAGGACGGGGGCTACATCGCGCTCTGTCCGGCACACAACG
+ACTCGCGCCCCTCGCTGAGGATTTGGCGCGGGGATGACAACAAGGTTCGGGTAGCTTGCC
+GCACGGGTTGCAAGTTCCCTGAGATCGTCTCGGCCGCTGGTCTGCGACAGGTGGACATGT
+TCGACGCTACCGGCGAGGGCAACACCGTACGCAAGGAACCTCCGGCGCTGGTCGGTGCTG
+CGCACACTGCGGCACTCGCCTATTTCGTAGACACCACGTCGGCCGCACTGTTCGACTACA
+ACGACAACGCGACGGCCGCCGCACGGCTCTACGCCGCTGAACGGTTCGGGCTTTCCGACG
+ATCTCATTGCGGAACTTGAGCTTGGGTTCTCCCCCGCCGGTACACAGTTCCGTTACGCGT
+CTCTCGCGTTCTCGAACTACCCCCGGCTTACGGTCCCGTTCAAGGACTTTGACGGCAACC
+CCCGTGGCTTGCAGGGTCGTGACCTTTCCGGTAACTGCCCCGGTCGGTGGGTAGGGCTCA
+AGAACCCCGAGGGCCACAGGTGGGCCCTGTACGGCGTGTTTCGCGGGTCGGGTGGGTACG
+GGGCAACCATCGTCACCGAGGGGCCGTCAGACGCGCTCACAGCGGTTGCGCTGGGCTATG
+ACGTCGTCATGGTCCGGGGTGCCTCGCTCGCTGCCAATCCTGAGCTTGTGCGAGACCTCG
+CGTTCGGTCTGCGCGGGACTCAAGTCATCGTGGCCGGTGACAACGACAGCGCGGGGAACA
+CGTTCACCGAGCGTCTGTCTCAGGGCCTCGGGGACCACGGCATACAGGTGTACGCGCTCG
+CCATTCCGCGCGAGGGCGACGACTTGAACGCGTGGCGTATGCGTGACCCGCTGTCCTTCC
+CGTCGGAATTCCATCGGGCCGTACAGTCCGCGCGTCTCCCCCAAGCTGCGGCTATCGCCA
+AGGCATCGGCAGAGATCACCACCCGTACCGGCGCTGAGTCTGTGACGTCGGACGAGGGCA
+CCGAGGCAGCGCGCATCATCGCTGGCTTGCTCAAGAAGTACGACAAGTCAGACGCGATGA
+ACGCACATGCCCTCGTTGCGTGGACCAACGGCCGGATCAAGTACGCGCCCGGTCTCGGGT
+TCCACGTGTGGGACGGAAGGGTGTGGGTTCAGTCGGCCACGCTCGTACGTCAGGAGATCC
+ACCGTATGGGGGCTGCACTGGTTCTCTCGGGGCACACCCAAGAGGCACGCGGGTTCACCA
+TGACGACGAACATTGACAACCTGACTAAGGAACTCAAGTCGGTGCCCAACGTGCATGTTG
+AGCCTGACGCGTTCGACGCTCGCCCGGATCTCTTGAGTTTCGCCAACGGGGTTGTTGACC
+TGCGTACCGGCGCGATGCGTGCGCACGACATGCGCGACATGCTGACTACCACTCTCCCGC
+TGGACTACGACCCGAACGCCCGGTGTCCTCGGTGGGAGGAGTTCATACGCGAGATCATGC
+CCAACATGCCTGACATGCCGGGGTACTTGCAGCGGCTCACCGGTTACGGCATCACGGGTC
+ACACGTCGGAACAGTGCTTTGCCGTTTTGTGGGGCAAGGGTGCCAACGGTAAGAGCGTGT
+ATGCCGAGACGCTTTCGAGCATCTTCGGTGCGATCACCAAGACAACGCCGTTTGCGACGT
+TCGAGAGCAAGGGCGGAAGCGGCGGTATCCCCAACGACATTGCAGCGCTCAGGGGTAGCC
+GTTTGGTCATGGCGTCTGAGGGTGAGTCCGGTAAGCCCATGTCCGAGGCGGTGTTGAAGC
+GGCTTACCGGTAAGGACCGGGTCACGGCGCGGTTCCTGAACAAGGAGTTCTTTACCTACG
+CGCCTACGTTCCTGATCATGCTTGCCACGAACCACAAGCCCTCTTTCCGGTCGCAGGACG
+AGGGGCTTTGGCGACGCGTCAAGCTCCTGCCGTTCAAGCGGTATTTCGCTCCCCATGAGC
+GGGACTATGACCTTGACCGGAAGCTAATGGCCGAGTCTGCGGGCATCATCGCTTGGGCCG
+TCCGTGGCGCTGTCGAGTGGTACCGGGACGGACTGAAAGACCCGGACGTTGTCCGCAACG
+CAACGCGTGAGTACCGAGAGACCTCGGACACCCTTGCCGGATTCTTCCCCGATGTGCTGC
+GCCCGACCGGCGGACTTGAGCGCATCGACGGGACCGAGGTCTACAACGCGTACCGGGATT
+GGTGCGAGGCCGAGGGGTTGCAGTCCAAGGAAGTTTGGTCGCGCACGATGCTGTACCGAA
+TGCTTGAGGAACGCGGTATTCAGCGCGTGCGTACGAGCAAGGGACAGGCACTCATCGGCG
+TGAGCCTCACAGCGGCACCGACCGACCCCGAGGGCCCCGGCATCTTCGCCAAGTAGGCCC
+ATCATCTGAGGGGACCACCTAGCAACGTTACTAGGTGGTCCCCTCCGTTGTAAGGAGGAG
+AGACCTTGCAGGTTTACAAGCACAAGGTAGCGGGAGACGTCGTCACCGTACGCGTACCCG
+AGACCCCGGCAGACCTTGACGACTTCCGCGCATGGATGCTGTGGGCCCATGCTCGGGGAG
+CTATCGCGCTGGACACCGAGACGACCGGTCTCGATATCTACTCGGACACGTTCCGGCTCC
+GCACGGTGCAGTTCGGCGACGCGTTCACGGGGTGGGTTATCCACTGGGAACGGGGCGGCC
+CGTTCATTGAGATGGTTCTCTGGGCACTGCGTACGCTGCGGCCCCGCGTGCTCATCCACA
+ACGCCCCTTATGACTGGCTGGTGTTGGACAAGCGGGCCGGTGTCCCGTTGGAAGAACTCG
+CGCCGCTGACCCGTGATACCAAGATCATGGCAACGCTCATCGACCCGCGACAGCCGCAAG
+AGGGCGGGCAGGGTACGGCACTCAAGCCGTTGTCTGCGCTGTACGTGGACCCGTCCTCGC
+CGGACACTCAGGGGGACCTTACGCAGGTCTTCCGTTCCCTCGGTCTGACCAAGGCCACAG
+GGTGGGCAGGTATCCCGCTGGAACACCCAACCTACAACTTGTACGCAGGACTTGACGTCA
+TCCTCACGTCTCGGCTGTACCCGTATCTCAAGGCTGATCTTGACCGGCTTGAGGTTCGGG
+AAATGCTCCTCGACTACGAACACGAGATAGCCCGTATCTGCGCGACCATGCAGCGCACGG
+GGATGGTTCTGGACAAGGGCTACACCAAGAGGCTTGACGCTCAACTCCGCCACGAGTCCG
+AGACGTTCGCGGCCAAGGCTCGCCGGTACGGGGTCGAGAACGTCAACTCAAACGCTCAGA
+TCGTGGAAGCGTTGACCGCCATGGGCGAGACGCTGACCGAGCGTACGGCGTCCGGCAACA
+CCAAGGTAGACAAGTCTGTGTTGCTCGCCCTCGCTGACCTTGACTTGCACTCGTGGGAAC
+CCCTCGGTACCCGGCGGGCAAATCCCTTGGCTGACGCGGTAGTTCGCGCAAAGCGTGCGG
+GCAAATGGCGGAGTGCCTACGTCGATACGTTCCTTGAGACCGTAGACGCTGAGGGTCGCG
+TACACCCGATGATCAATACGCTCATGGCACGCACGGGCCGCATGTCGATTACGCGCCCCG
+CACTCCAAACGCTTCCGTCCTCGGATCAAATGGTTCGCCGTGCACTCCTCGCGGACGAGG
+GTCACGTAATGCTTTCCTGTGACTTTGACGCCGTGGAAATGCGTGTCTTGGCAGCGCTCG
+CCGACGTCAAGCGTATGAAGGAAGCCATTACCGCCGGACAGGACTTGCACGACTTTACGG
+CGTCCCTGGTTTATGGACCGGGATTCACTAAGAAGCACCGCAAGATTTGTAAGGGCGTCG
+GGTTCGGAAAGGTATATGGGGGCGGCGCTGCCACCATTTCCCGTCAGACCGGTGCGGGTC
+TCGCCGAGGTTCAGGGGGCGATCAGTACCTATGACCGGGTGTACCCGGAGATCAAGCGGT
+TCGGTGCGCGACACCAGCGGCTAGCCCGTGCGAACGGCATGGTGACTGTGACGCTGACCG
+GGCGACGTCTTCCGCTGGACCGGGAGCGCGCTTACGCCGTCACGAACTATCAGGTACAGA
+GCGCCGCACGTGACGTATTGGGGCAGGCTCTTATCAACATGGATGAAAACGGACTCCTTC
+CCTACCTCCGTTTGCCGATCCATGACGAGGTGTTGGCGTCGGTTCCCGCCCGTGAGGCTG
+AGGAGTACGCCCGTGAGGTGGAACGTTGCATGACTATGACCCTCGGTGGCGTGCCCATCA
+CAGCCGGTGCTGAGACCAAGGGACTACGTTCTTGGGGCTCTCTGTATGGGGCCGACTACT
+GACCGTTCCCAAGGGGGACCACCCGGCAACGTTACTGGGTGGTCCCTCGATTTTTTACCT
+ACGAGTTTCGGCCACGAGACCAAACCTGATCATTCCGGACATGATCTTGTGAAGGCTAAA
+AACCCCGCGCCTGCAACTTCAAGATCCAAGGTTGACCCCCGGCCTCGCCCTTGGATTCGA
+TCTCTGACACCCCCTCATGCCTGCGGATGATCACGGTAAGCCCGTTGCATATGCCAGCGG
+CCCCATGTTGTTGTGATGACGCAACGACGAACGGCAAGCGCAGCCCCGTCTAGCACCACC
+CGGACGGGGCTCTCTTGTGCCCTCGTACTCAATGTGGCTCAGGTCACATGAGAAAGCTGC
+GCGCTCCGCCCCTCCGGGCTTAACCCACACCCTCTCTGGACTCCAGAGAGACGGAAAACC
+GGAGGAAAACAAACATGGACGCGCTCAGCTTCGAGACCATCACCGCTGCTCAGGGCAACG
+ACATTGCCGCTACGGCCGAGATCATCACCGCAATGGAAAAGCGAATTGCGAACATCGCAT
+TCAAGATGGGCGCGAGCGCTGACCAGCGGGACGAGTTCACGCAGGTTGGCCGAATAGCGG
+TTTGGGAAGGGCTCGCCCGATTCAACGGTGAAGACGTGGACTCGTTCTACGCATTCATGC
+ACCGCACCATTGACGGCAAGATCCGAGACGCTGCGCATGATGAGCGGGTGGCCGGTGCGA
+CCGGTGCCGACCACGAGGCCGCCAAGGTCTTTGCGGCAATGCTCAAGGAAAGCAACGGGG
+ATCTTGACGTTGCTGAGCGTCTTTGCTGCACGCTTCCCCCGAAGGGTCGCCGCCTCTCCC
+CCGAGCGTGCCTATGCGGCGCGTACGGCGTGGGAAGGTGCCGTTTCGCTCGACATGCCGA
+CCGGCGACGAGGACGGATTCAGCCTCGCTGACACGCTCGCCACTGACTACGGCGTGCCGG
+ATGACCTCGTTGAGTCCGGCGACATTGCGCGGGGCGACCGTGACCGGAAGATCAAGACCG
+TGCGCGCTGTCATCGACAGCATGGGAGCCAAGCAGGCTCACGTACTCAAGGCCACGTACG
+GGATTGACCCGGTTGCCTGCCTCGGTACCGGCGCGGAAGCGGACGCCGAACTTGCGGCGG
+AACTCGACATGCAGCCCAAGGCAGTGAAGACGGTTCGCCGTCAGGCTCACCTGAGCTTTG
+AGAACCGCTACCGCAAGGTCACGGGGATGAGCGCGTGAGCTACCGCGCAACACACGACCG
+GTCCGCGTATGACCGCCTGTACCACTCGATCAACGCCGAGGCTCGTAACGAGTACGTGCG
+TGAGTGGCGGGCGGCCAACGCGGACAAGGTTCGGGCCTACCGAGACGAGAACCGCGACAA
+GCGGCTAGCGCAAGCGAGGGCGGGCCGCTACCGGCGACGCATCGCGTTCCACCTGAGAGA
+GACCGAGGAGGTTTACAGCCTTTGGCACAGCCTCACCGGTCAAGGCGACCGATCCCCGGC
+CGTAGACGCGCGGGACCTTATGGCCGAGTGGGAAGCGGCCAACGTCGCGAACACATGCGG
+GAACGGATGCGGCCGAGGGTGGCGCGCAATCGTGCACTCAACACCGCTCTACGAGGGCGG
+GGAACACACGCTCGCGAATCTCCGCCCGGTGTGCGGCAAGCCGACGTGTTCCCCCGCTGG
+GGCTACGCCTGTTGCTACTGCGACCGACCGGCCGAACACCTAGACCACGTAACCCCCATC
+AGCAAGGGCGGGGCCGACACGCTTTCCAACGTCGTCCCCGCCTGTGCGCCATGCAACTTG
+GACAAGGCAGCGCGGACCCTCGCCGAGTGGGCCGCAACATTCTGAGGAGAGACAGGGTGC
+AAACGATCGTGACCCCCGACAACGGAACCATTACCGCTCGCCGCGTGCTCGGGGGCTTTG
+ACCTTGAGGTGAAGAACCCCGAGGGCGAGACCACGGCAACCGTGATCGTCTCGGACGCCA
+AGGCGTGGGAGCTTTTCCAGACGCTCGGTAAGGAGCTGCACGCGTGAACGGCAAGAAGCA
+CATCCCCGGCCTTGACGGCTACGACAGCGGAGAGTCCCCCACCCTGTCCGTGTGGGACGA
+ATGGGACCGCGAAGAACTGAACTACGCCGACGACGAGGACGACGACCAGTGAACACCGAG
+ACCAACCGCTTTGCCGACGCTCACGACTCCTCGGACGCGCTGTTCGTGCGCATGGACGAG
+GACGGCGAACTTGAGGTGACCATTGCCTACGGTGACAAGTCGTCCATCCGAACCGTGTTC
+CTGACCGCCGAGCGAATCGCCGAGCTTGCCGCACTCCTCGCTGAGTTCGTTCCGGCCGAG
+GAGCCGACCGAGCAGACGCACACCGAGTTTCACGCCGAGCGTGCCGACGCATGGGTTGCG
+GCCCGTGGACTGATCAGCGCTAACGGTCTCGCGTTCGACGCGACGGTTGAGGATCACCTA
+GAGCTTGCAAAGTTCCTGGCGGGTGACGACATTGCGTGACCGTTTCGCGGTCGGAATGAC
+CGCCGCCGCTATGGCCTCGCTCCTCGCTGCGGGTGCGACCGGCATAACGAACGCCGTGGC
+CGACCCCGAGGAGACAGGGGAGATGCCCGTCATTCGCCCTGTGGCGGCCCCGGACGTGGC
+CGAGGTACCCGAACCCCAGCCGACCCCCACGAGGGGCGCAGAGAAGCGCGCAGCGGTCGC
+CGAGCGGTACAAGGTGCGTGCGGGTGACTCGCTGTCCAGCATCGCCGAGGAGCGGCTAGG
+CAGCGAGGACAAGTGGCCGAACCTGTGGGGAGCGAACATTGAGCGAGTCGGTAAGGACCC
+GGACCTACTCCGCCCCGGTACCGAGCTTGAGATACGCGAGGGCGAGGCTCCGCAGATCAA
+GCCGAGCGAGGGCAACGGCAAGCACCGTGCCCCCTACTCCCCCAAGGCCGAGGCTCCCAC
+GCAGTACGCCAACAACCTAGACGGCTGGATTCGTGAGGCACTGTCCGTGATGCGCGCCAA
+GGGCATTCCCGGTTCGTACAACGGGATTCACCGCAACATCATGCGGGAGTCCGGCGGCAA
+CCCTCGCGCGGTCAACAACTGGGATATCAACGCGCAGAACGGGACGCCGAGCAAGGGACT
+CTTGCAGACGATTGACCCGACGTTCCGCGCGTACCACGTGGCCGGAACATCGTGGGATGT
+GTTCGACCCGGTCGCCAACATTGCAGCCGCTTGCAACTACGCAGCGTCTCGGTATGGCTC
+CATCGACAACGTCAACGGCGCGTACTGACCCAAGATCACCCGCTAGAAGCACAACCATGG
+GGACCACCTAGTAACGTTGCTAGGTGGTCCCTCCGCAAGAGGAGACCTGATCATGAACGT
+TGACGTCATTGCCGCTACCACCCTCGGTGATCTTCCGCTGTGGGACGCGTACAAGTACGA
+CGTGTGGCCGGATGACCAGCCGCGCGCTTCCGATGGTGACGCCCTCGCCGAGGCTGCGGG
+CCGGATCTGCTACAAGAGCTTCAACCGGCCGAACCTCAACACCGCTGGGAACCGTGCTTA
+CTTGGCCAACATCATTCGGCAGGGTCATTACTCGGTCATGGAACATGCATCCGTGACGTT
+CCTGGTTCGGGACGTGTCGCGTGCGCTCCTCGCTGAGCTGTCCCGGCATCGTCACCTGTC
+GTTCTCGGTCGTGTCTCAGCGGTACGTCAACTATGCCGACACCAAGCCCGTCATGCCCCC
+TGCGCTGCGACAGGACCACATCGGGGATTGGGAGGTACACAACGCATACGAACAGGCTCT
+TGCCGCGTACGAGTCCCTTGTAACTCACCTCACCGGTAAGGGACTCAAGCGCAAGGAAGC
+CCGCGAGGCTGCACGCTGCGTGCTCCCGAATGCCGCACCGGTTGACATGGTCGTTACCGG
+CAACCTGCGCGCATGGCGTGACGTCCTCGGGAAGCGTTGGCACGTCGCCGCCGATGCCGA
+GATTCAGGAGTTCGCGGGCAAGGTGCTTGCCGAACTGCGCAAGACCACCCCGAACATGGT
+TCAGGACATCCCTGAGGAGCCTTACAAGTGAGACGCGTAGCCACTGTCACCGCGCTTACC
+GCGCTGTTCGTTCTGACCGGCTGTTCCGTGGACGACGACGACACCGACTGTGACCGGATC
+GGCACGGTTGCGGCTATCGCTCCTCGTCCGGCACCGGCCCCCGCTCCTCGTCCGCCGAGT
+ATGAGCAAGCCGGTCGCCCCGCCCAAGCTGAGCACTCCGCCGAGCAAGCCGGGTGCCACT
+CCCCCGGCCACCCGTACCCCGCTGATCGTCTGCCACGAGGACAACGACAATGACTAAAAC
+CCTGGTGTTCTTCGGTGCCTCTTGGTGCCGCCCCTGTAAGGCCACGTACCCGATTGCTGA
+GCGGGTGGCCGTGGAACTCGACGTCCCGTTTGAGTACGTCGATGTGGAGTACGGAGACAG
+CCGCGCGAACAACGTAACTGCCGTGCCCACACTGCGGGTTTACGACGAGTACGAGGAGCC
+GATAGCCGAGCATCGCGGCGGCGCGACCGAGGCACAGATTAGGGGGCTCCTCGCTTGAGC
+CGTCCCGATTGGGACACGTACTACCTTGCGGGTGCAGCTTGGGCGGCTAGCCGTGCCGAC
+TGCACCCGCGCCCAGGTAGGCGCTGTCCTCGTGTCTCGTGACCACCGTGTGAGCATCGGC
+TACAACGGCCTACCGGCAGGGATTCCCGGTTGTGCGTCCGCCGGTAATTGCCCGCGAGGC
+AAGCTGAGTTCGGGCGAGTGCGCGCCGGACAGCAACTATGCCAACTGCGCTGCGAACCAT
+GCGGAGTACAACGCGATCACGCGCGCACGTCCCGAGGATCTTCCGGGGTCCACGCTGTAC
+GTGACTCGCTCCCCTTGCCCGCAGTGCCTCACGCTGATTCGCTCAGCGGGTATCGCGCGG
+GTCGTCACACCTGCTACAGTTCTCGCATGACAAACATTCCGGTCCGGGTCGAACTGGCCA
+CGGGTGAGGTTGAAGAGTTCACGGTCATGGCTCACACGGTGTGGGGCGCAATGGCCAAGG
+GACGGGAACGGTTCGCGGGTGTCAAGCTCCGCGAGATCAGCGCGAGGGGACCGAAGTAAT
+GCGGAACGTGTGGCGGGTACTCTTCCCGGACAACAAGGGCGGGACATGGGTCACCGAGGT
+TGACGCCCATGAACTGACCGGAGAGACCACGGTCAAGCATCAGGTTTGGCTCAAGCTCTG
+CCGAGACGGTGCGGACGTCGAACCGAACACCGGAACGGCAGAGATCATCGGACAGCTTGC
+CGACGAAGAGTGAGAGGGGCCCCGGGAAACCGGGGCCTTTCCCGTTGGGTCACCGAGTAA
+CGTTACTAGGTGGGTTGCACGCCCCTCCCCCGGCATGTAGTGTTCTCTGTGTCGGGAGGG
+AACAAGCCCAACCGGTCAACTCAATAGGGAGCGCCACAATGGCCGATGTGTTCGTTACGC
+TGTGGGTCGGTGACCAGAACCTCACGATGGATGGGGAGATCGGTTTCAACCGGCTGACGC
+TGGACGCGGAGGATATCCCGCTTGCGGGGTTCGATGCGGTGCACGCCGCTACCAAGCTCG
+CCGCCCCGGTTGACCGGGTAACGGTGGAGTGGGACGGCGGCAAGGAAGTGTGGAGCCGGA
+ACAACGCACTCCGCGCGTGGATGATGGACTAGTGACAAGCCCTCGGGAGACCGGGGGCTT
+TTCGCTGTGCTACTGTGGTGACACGCCGAACGGGACACGCCGACGGTGGAGCAAGGAGAG
+AACCCATGAGCTTCTATGACAACATCGGTGGTTGCGGCTACGGCTCGCGCCCGTGCGCTA
+ACTGTGAGTCGGAACCGGCCGCCTCGGGTGATCTCTACTGCGAGACCGAGTGCCGGGCCG
+AGGCCGAGGGGTGGACGGACAGCGATTGGGACGCGTGGCAGTCCACGCAGGCCGACCGTT
+ACGCGTGGTCGCGACTGGACAACTAAGGAGAGGGGCCCTCGGAAACGGGGGCCCTTCCTC
+GTTGTGGCGTGGGACACACGGGACCACCTAGCAACGTTACTAGGTGCTGTGCTAGATTTC
+TCTTGTCGCCAAGGGGACAAGCCCAAGGGACAGACGAGAGGTAAGACCATGCTTCGCAAG
+GACAAGTTCGGCATCCTGCACAAGGGTGAGGGTATGTGCGCTGACTGTGGGCGCACGGGT
+CAGTTCGTGGACAGCGTCAAGGTTCCGGGCAAGGGGCCGTTCGGCTCTAACAAGCCTCTC
+GCTGTCTACGCCTGCACCGACCACCGCAACAAGGGCTAACCAACCCGCTACGGGGCCCCT
+GGGAGACTGGGGGCCCCTCCCCTAGGAGTGACATGGATTGGGAATGGTTCCGCCCCGTGG
+ACGGCGTACCGGGCGCGTTGGACTGGTTCATAATCAGCATCCGCCGGGTGGTCAAAGGCC
+CGGACAAGGTCTATCAGGGCATGAGCTTGACCATGATTGACCGGCCCCACAAGGGCGAGG
+AGACCAAGTCACGCGAGATGTTCCCGGACCTTGACGGCGTGTTCGCGATCACGGGTCCGC
+TCGCTAAGGAACTGCGCGCCGATGGCTGGGACAAGACTCCCCCGGCTGACCCGCTTCCCC
+GTATTGACCGCTCCCCCAAGCCTGTGCTTAGATTGGTTCAGCGCCGAGGGAACAAGCCCG
+AGGGCGGACCGGAAGGAAGCAACAATGCAGAACGCGCAGGGTAAGGGACAGACTTGGTTC
+CCGGGCAAGACGTGCGTTGACGTGGACGTGCGTTACTACCTTGAGTGGACGGACCGCCCG
+GACGCCCCCCTTAACCGGCTGACCGAGCGTAAGGCGGCCGAGATGATCCGCACGATCAAG
+GCTAAGCCCGAGCTTGGCGAGGTGTTCACGGTCGTGCGGGAGGTGCGCGAGAGGATCGCA
+AACGCGTGCGTGTGGTGCGGCTCCCGCCCTCGTACCTGGGACATGGACTGTGACGGCCCG
+TACGAGAATGTGACGTGCGACACCGAGCAGTGCACCGCTGGACGCTACGGCGAGTGAATG
+AATGAGACCCCCGGCCGATTGGTCGGGGGTTTCGTCATGTGTGGGCTACGTCATACGGAT
+GAAATCACCGGGTAACGTTACTAGGTGGGGTTGGCGTGTGTTACTGTTCTCTTGTCGCCG
+AGGGAACAAGCCCGAGGGACACGACGAAAGGCAAGAACATGACCGACCGACTTAACGGGT
+TCGCCGCTCAGGTCCGCATCACGGGTGAGGTTGCATCCCTCTCCCCGGTCGCCCGTCGCC
+GCTTCCCCCTCGGCCGCTCTAAGACTTCCCGTGTGGTCGTCTCCAACCCGCTGGACGCTC
+TGCGCCCCGACATTCGCGCCACGGTCGAGCGTGTCGCCACTGCGCGCGGTATCCGCTTCG
+CTGACATCGTGGTTGTGTCCCCCACTAAGGCGATCATGCCGTAAGCATCGCCCCTAGGTA
+TGAGACCCCCGTCACTATGGCGGGGGTTTCGTGCTATGCTCCTCCCATGCAGCGAGACTT
+TAGGAAACCGAGCGAGAAGCACCCCGGACAGTATGACCGGTTCCGCATCCGTGTGCGTTG
+GGTACGATCCCGAGGGGCCTATACGGTCTATCTGACGGACGCTCCGGCGGGCGAGGAGCC
+GACGACCGTACAGGAGACTCCCGAGACGTTCCACGCGCTGTACGAGGGCCTTACGGCTGA
+ACTGGAAGCCGACGGGTGGACGCGCACCTAGTAACGTTACTGAGTGCCCCTCGCGTGTGC
+TAGAGTTCTACTCGTAAGCACGACAGCGAACGAGAGGGGCCGGACATGGCGCAGCACGAG
+GCCAAGCGAGTGGAGAGCTACAACACGACCAGCGGTGACCGGGTGTACCGATGGGACGTG
+AACGGCACTTACGGGGTGGCGTTCATCTACGCCGACCAGTCGCCGCAGTTCATCGCGTGT
+GACACGCAGGCCGAGGCGGACGCGCTGTTCGTCGCATCGCAGGAACGGGCCGACAAGCGC
+GGGGAACTGCGCGAGGTGGAAGAGTTCACCGCAGACGCGTAAGGCTCACACAGGGGCCCT
+CGGAGCGACCGGGGGCCCCACTGAGAGCAGTATGGGGCCTCGCTGGTTCACGGACTGGCG
+GGGCTTTCCCATGCCCTGACCTGCGATGATCACAGAGGGTGCCCGCCGGCCTAACGCTCC
+GTAGTCTGCTGCGCGGCACCTTTTCCACCGTGAACCAATCTAGGCCCTGATCTCAACCCC
+GTCAACCCCTTTCGCGATGTGGGTTACACCACACCGGAAATCCACCCAGTAACGTTACTG
+GGTGCCCAATCTCGTGTAATGTAGTGCTCACACCGAGGGGAACAAGCCCCGAGGGACACG
+AGAAAGGGTCAGAGATGACCGAGCAGAACAACACCGAGGCCCGCAAGATGGCCGGTAAGA
+CCAAGGTCATGATCGGCGCGGGTGTCGCTGCCTTCGCTATCGGCGCGCTGGTCAACCCGA
+ACGTCGAGCTTCCGACCGGCGGCGCTGACACCGTCGTCCCGATGCCCGCCGTTACCGGCC
+CTTCCCCGATGCCCACGCTGTCCCCTCGCCCGGTTGCCCCGGTTCAGGCCCCGGTCCAGC
+AGTACGCCCCGCAGGCCCCCGCGCAGGCTCCGCAGGCCCCGCAGACCTACACGGTCCCCA
+CGGCCCCGCAGATGACCCCGCAGCCTGGCCAGACGGTCTACGTTGAGGTTCCGGTTCCGG
+GCCCGACGGTCTACATCACCGTTCCGGCCACCCCCGAGCCGACCAAGCCCACGGCCACCA
+CGTCCCCGACCGTGGCCACCACTCCCCCGGTGCTCCCGACCGAGTCGGCCACCCCGACCC
+CGACCCCGAGCATGACCACGACCCGCCCGACCCCGCCGCAGCCGCAGCCGTGACCTAAGC
+CACACGGGGGATCACCTAGTAACGTTGCTAGGTGGTCCCCCACCGTGCTATATTTCTCTT
+GTCGCCAAGGGAACAAGCCCAAGGCCAAGGGAAGGAACCAAGAGATGAACGCCAAGCCCA
+AGACCAAGGCCGCGAAGAACATCAAGCCGGGCGACTGGGTGAGCTTCGGATCGCTCGCCT
+GGCAGGCGGGAGCGGTCGAGGTGGACGGGGATGTTACCTACATCACCTTCGGATACTTCC
+CCTGGGAGTACAAGAGCACCAAGCGGATGACGATGCACTACGACGCCTAAGCCTGAGAGA
+CGGGGGCCCCTTCGGGGGCCCTTTGTCGTATCCGGGCCCTTTCACGTGATCACATTCACA
+AGCTCGCATGGACGTTCACGTGAACACATTCACAAGCTCGGGTCACCCGGTAACGTTACT
+CGGTGGGTTGTGCTGCGCCCCGTTTCTGTGCTTTAATGGAGTCAACGCCGAGGGGAACAA
+GCCCCGACAGCGAACGCGAGGAGCACACCATGAACGCCACCGTCTCTTTCTCTAACTGCG
+TCTGCAACAACGGCCGCATGTCCGACCTGTGCCCCGCTGACCGCCGGGACGCTGGTCTCC
+ACTTCTACCGGCGCGAGCTGGACGCGTTCGCTGCGCTGGTCAAGGTGGGTCGGGCCACCC
+TCGCGGACATCGAGAACGCCGAGGCCCTGTCCGCCGAGTGGGGCAAGCTCCTGAACCGCG
+AGGTCTCGTGCCTGTCGGCCGCGTGATCTAACCCACATGCCGGATCACCTAGTAACGTTG
+CTAGGTGGTCCGGTGCCGTGGTAGATTTCTCTTGTCGCCGAGGGAACAGGCCCGAGGGAC
+GAGAGAGAGGGTCAGAGATGATCACGCTTACCGACACCGACCGCGAGACCTACACCGTGC
+CGGGTGACCTCCCCCGTAGCTGGGAAGAGCGGGCCTACCGGATGCTCGCCGGTGGAGAGG
+TGAACTACTGGGTGAACGTCGGTGTTCACAAGATGGTGTTCCGCAACGTGGCGGACGCGT
+GGCTGTTCTACAGCGCCGAAGCCAACGGGATTCAGAACGTCTCTCTCTACCGGGCGACCG
+GCGGCGGGTGGGGCGAGCTGATCGAGCAGGACGCCGCCTAATCTGAAAGGGGCCACCTAG
+TAACGTTGCTAGGTGGCCCTTTCTCGTGGTATCTTTCTCTTGTCGCCGAGGGAACAGGCC
+CGAGGCGGGAACGAGAGGAAACCTGATGTTCCTTCAGATTTGCCACGAGAACGCCAACCG
+CGACATGGGCACTGTGGAGCTTGGCGAGGGTCAGGAGATGACCGCCGAGACGATGCGCTG
+GGAGGCTCACGCGGCGCAGGATGCGGGTATCCTCTCCTACGACATGTACGAGGGCGACAC
+GTACGAACTGCGCGTGTGGGACGAGGACATGTGCGTCTGGGACATGCTCTACACGCTGTC
+TGACGGGTACCTGCGCCCCGTCCGCTAATACCTGAGAACGAGGGGCCCCCTGGGAGACCG
+GGGGGCCTTTTGTCATGCCTGTGAACAAATGATCCTTGAAACTTCAACAAGTTGTTTAGC
+CTAAGTAATGGCCTGCGCCCCTCCCCCCTTGACACCGTTGTCAAACACTCCGGAATGGAT
+AATTCCGAAACAACCCTTCGCCTCCCACCTGCACAACTATCCACCTGTGATGAACCTGTG
+ATGATCGTCCGTATGTCGGCACGTACCGGACATGGTTGGCTTAAACCAGTTGTTCGGACG
+TGAACATCTGTCGAACAATCGTTCCCATACGCAAGACACAGGGGGGCGTCACGGTGGATG
+TGACAGCGCGATTGGATGTGACAGTTGATCTTTGGGTGGAGACCTCGGCGGACGGCCGTG
+TGTGGAAGCGCTCAGAGCGCGTTCCAGGGGCTCAGGAGACCGGGCGGGACTGCAAGGAGC
+TAATGGCCATCCTGCGGGCGTACACGCGCGTCATAGAGACGATCGGGCCCATGTATGACC
+CGGTGTCGTGTTGGTTCCGCATCGTGATCCAGGGGACCGAAACCGGGCGGGTGCTCGCCA
+TGGTCCCTCGGCACTGGAATGAGCTAACGCAGACCTACGACCCGACGGGCGGTGACTGGG
+TGATCACGGACTACCCGGACGCCTATTTCGCGTGGATCGCTGATCTCATGCGGGTGAGGG
+TGTCGGCCAAGCTGTGAACCTCACTGCCCGTAAGCGGTGCCCCGCCGCTATGTCCGAATT
+ACCCTAGCTCTACGCTCCAGCCGGCGAATTCCTGGCATATACGCAGCGTCACATTCGGCC
+CCGGTCCTGCTAGTTGAGGATTCGGGGCCCTACGCTGCGCCCCATGAGCGACGGATACGA
+CAAGGACTTTGCCCGCTTCACCGGTTCGGCGGAACAGGTGATCGCCGAGCTTGAGGACCG
+GGCACAGGGTGCGCACTGCATGGGGCAGAGTGCCGAGAAGGTAGCGAGGTACCGGGAAGC
+CGCTCAGGGGGTCCGTGACGGGAGTTTCAGCGTCCGTGTGGGCCGAGTGATCTACAGCGT
+GCTCACAGCCCCTCAGACGGCCGCTGAGGACGTTCCCGCCCCGCGTGACGAAAAGGCAGA
+CGACACCGTTTCGTAGGCGTACCCTTCGGGGACAACCAACCTGACGAGTGATCAACTCAC
+CGTAAGGACAACCGAAAATGACCGCAGCGGACCGCATGAATGTGCGGGGAATGTCGCTGT
+ACGGCTGGGGAGTGCGTGACTGCTCCCGCGAGCCGTACAGCCACCTTCCCCATGCGCGGA
+GAGGTGGCGTACGTGTCTAACCCCGTGACCAAGCCCCAAGAGATCGTCTCTACGTACCTG
+ACGGAGATTCGGGCCACTCCCGCCCCCGGTTGCGTCCCGTGTTCCCGCCTCGCTGATGAG
+TGGGACCGGGACCACGACCGGGACGTCTTGCTTGAGATCAACAACCACCCGCACGACACG
+CCCAAGCTCTCGCGCGTCGAGCAGTGGATCAGCGCCGAGGGGGTGAGCCTCGGTGACTGA
+GTCTGAGATCCCCGAGGCCCTTCCCGAGGGCGACGTAAGGCAGCTCGCCGCCGCAGCCGG
+TATGCACGTGACCGACTGTCGCGCGTGCCGGGTGGGAAACATCTGCCCTCTCGGTCTGCG
+ACTGGCGAACGCTCGCGCTGCGCTCGCTGAAACCGGGTGACGGCACCTCCCCAGCCTCGG
+AACAAGCCCGCTAAGGTCCGGTCCCCCTTCCCCGCTGCGGGCATGGGTGACCACTCGATT
+CCCGGTGCTGCGCGCTCCCTGCGTGCGCTGGACGAGATGCCTGGCTATTGCGGGTACTGC
+ACGGGTCACCGTTGGGTGTGGTGTCCCGACTGTGCGGGGTTCACAGGCTGTGCCACCTGC
+AACCGTTCGACCAAGGTTCGGTGCCCTTGCTGTGCGGGGGGCGACCGAGAGAAATGGAGC
+CGCTGAACCATCCGGACCGGGGTCCGTCTGTGCCGACGCAGACGGGCCCCTTTTCGTGCC
+TGAAAACTCTCTGACCAGGGGTATTGCAGCCTGCCCCAACTGGGAGATAGCTTGGCCTCA
+CCCAGTTAGGACAGGCTGTTAACCGGCACGCTCCCTGACTGGGGAAGACACCTCAGTCCC
+GGACGGAGCGGCCCCCTTGACCCCGCACATTGAAGAGATCCCCCATATCCTCGCGGCTGG
+ATATGACAGGCAGTCAGACGCTCGCGCAAGCGGTTCTGTCGCCTCCCCCATCACACAGCG
+GACGGCGAACTACGACTGTGCCCACCGACTCAAGGCCGAGGCCGAGGCCAAAGGTGGTCA
+CTTTAAGTGGATCGGTCATTACTCTGAGCGACCGGGAACGTCTGCCTTCGGCAAGGACGA
+ACGCCCCGAGTTTGACCGGCTGTTGGCCGATTGCCGCGCGGGCAAGGTCAACACGGTCAT
+AGTCATGTACGTGAGCCGCTTCTCTCGGCTCGACCCCATGGAAGCCTTTGCGATCGTCTC
+CGAGCTTTTCGCCCTCGGGGTAACGATCATCAGCACGACCGAGGGCACGTTCCGCCGTGG
+GAACATCATGGATATTTTCCATATCCTCATGCGCCTTGACGCGTCCCACAAGGAGTCAGC
+GAACAAGTCCGTAGCCGTCCGCACGGCTCACACGCTGGCACGCACCCTCGGCGGTTTCGT
+CGGCAAGACCCCGTTCGGTTTCAAGCTCGTGGCGCGCACTGTCACGTACATGGAAAACGG
+CAAGCCGCGCCCGGTCGTTATTCAGGTGCTCCAGCACAATGACGACGAGTTCGAAGAAAC
+CGGGTGGTCGGAAATGGCCATCGTCATGCACATATGGCGAACCGTCCGAGAGAACAAAGA
+CAAGCTGTATGACCCCAAGACGGACAAGTTCCACCCCGGTTCCATCAACCACATTTGCGA
+TTGGCTGGACGTCGAAAACGTCCCCACCCGTGGCCGAATGGTCGGCAAGCTCAAGGCTGA
+CAGCAAGTGGGATGTGTCCACGGTGCGCCGGATTCTCATGGACCCGCTGATAGCCGGAAT
+GGACCGAATCCCGATCTACGGCAAGAAGAAGGATGGGACGCCCGGCAAGAAGGTGATCGG
+GTACGAGATCAAGCGCGACCCGGAAACGATGGAGCCGGTAGAGCTTGAGTGCGGCCCCAT
+GGTGCCCCGTAACGAGTGGTACGAGGTACAGGCATGGCTAGGCGAACGAGGGCGAGGAAA
+GGGCCTTTACAACGGGGAAAGTCTGCTCACGCAGATGGACATTCTTTGGTGCTCCTGTGA
+CTGGTACATGGTCAGCAGCGGCAACAGTGATGGGGCCGACTACCGAAAGCCCCCGTACCG
+CTGCAAGCGCAAGAAGAGTCAGCGCACGGCACCGAATCACCTCGGAGACAACACGATCGG
+CAAGGAGCGGCTAGACGAATATGTTGCGCGCCGACTGTTCGCACTCATGGCCACGGCCGA
+GGGTGACGAGGAAATAGCCGACGTCATGGACGAGGCCACCAAGCGGTTTGCAGCCACTCA
+GCAAGCCCCGGAAATCGGCGAGGAGCGAAAGGCACTCATCCGCACCAAGGACGCCACCAC
+ACGCGCGCTGAACGCTCTCTATGACCAGTTCGACAAGATCGTTGAAGAGGGCGGGTTCCC
+GAACGAGATTGCAGAGCAGCGCTACAAGCAGACGGAAAAGACGCTCAGTGACCGACTGTC
+GGCCACGAATGCCGCTCTGAGTGCTCTTGACGTTGCCGCCGCTCCCGCGCTGCCTATCGA
+GCAGTGGACGGCCGCATACGACGAGGAAGGGGCCCCGCTCGCCGAACCGCTCCCCGGTGC
+CGACCCGATCGGCAAGCACTCGTGGTGGGGACGCGCGAGCATGGCGGAACGTCGTCACCT
+CGTGAAACTGTTTGTGCATCGCGTCACAGTTGGACCCAACTTCGGCAAGGGTTCAGCGAT
+CACCCCGCCCGAGGAGCGCGTAACGATCCAGTGGGTACACACGCAGAAATACCGTAAGGC
+CATGGCCGAGGCTGTGGCCTAGGTCACTCGAACGGCCTAGTCAGGGTCGCCCCTCATGCT
+TCGCAGACCAGCGGAGGAGGGGCGGCCCTTTTTTCGTCACCACTCCATACCCCCTCTGAC
+CTGGGACAATGTTACGAGTGTTGATTCTGAACATGAAACTAGGTCACCCCTTGAGAAACC
+CAATGGGGTCCGGAAAACTCTCTCCCGATCAGCACTCGACACACCACCTAGTAACGTCGC
+TAGGTGCTCCCCTCCCCCGCTGTACTTAACCCACACGCTCTCTTAGTAGTGAGGGCGAGG
+TACCGCACAGTTACACGGTGGTCCGAACCTCTCCCCCATGGCACGCACGTTGTGACTCCC
+GTCCCTCTCTCCTGGCGGTTGAGCGCGTGCGTGTCCTCGGCCCGTAGCTCAGTTGGTAGA
+GCGGCGGATTCTTAACCCGTGTGGCGTAGGTTCAAGTCCTACCGGGCCGACATTCTCTTT
+GGCTCGTAGCTCAGTTGGCAGAGCAGCGGATTGTTAATCCGCGCGTCGTAGGTTCGAGTC
+CTACCGGGTCAGCCTTGCACCGTTAGCTCAGTGGTTAGAGCGTCCGCCTGTCGAGCGGGT
+GGCCACCGGTTCGAATCCGGTACGGTGCGCGGGTGCAGACAATAGGCCGTGACTGGCCGA
+CGATATGCGCCGTGGACGAAACCGGCCCTTAGTAGCCGCGCCTAGTCAGCGTGGGGAAAA
+GGGCGGCGAGTAGTCCTAAATGCCGTTCTAGCTCAGTCAGGCAGAGCGACGGAGTGAAAT
+CCCGTAGGTCGGTGGTTCGAATCCATCGGGCGGCACTTTGGGTGGGCGGCGACGTAGGAG
+AGTCGCACCGGTCTCCAACACCGGGCCGACTGATCATCGGCACAAGGGGGTTCGAATCCC
+TCACCACCCGCTGTGTGCACGTGGTGCGCACCTTGCCCACTTGGTGAAACGGTAAACACA
+GCGCGCTTAGAACGCGCCGCCAATTGGCTTGGGGGTTCGAATCCCTCAGTGGGCACTTTG
+GAGGAACCGTGCCGGTATGGCAGCGCCGCATTCCTGTTCACACGCAGGGGCGGACGGGTT
+CCTGTACGGGGAACGCGCTAGCGGGCGTCCTCGGGTCAGACAGTCGGGATCGCACGGGCA
+CTACTCATGTCCGCGTGAGGGCCGACCGTTTCGGCATCTTCCCCGCTGGTTCTTATGCGC
+TTGACGAGGATTTCGCCCGTCGCGCTTATGCCCTCGCTACGCGGTTCGACAATTACCGTG
+GCGAGTATCCGGCACGTGACACGGGCTCTAACGGGCTTGCTGCGGCACAAGCCGGTAAGG
+CTCTTGGCGTTGTCGCCGACTACTCCCACGTTCGTTCGCTGTCGGGCCTTTTGGCCGGTC
+TCGAAAACGGCCCCGTGATTTGGGGCACTCTGTGGCGTCGGTCCATGTTCAGCGTGGACG
+CGTCCGGTTTCGTTTCTGTGGATCGCTCCTCCCCCGTGTGGGGCGGTCATGCGCTGGTCA
+TCAGCGGGCACGAGGGCGACGCTTTCACAATCCAGAACTCTTGGGGCCCTAACTGGGGTC
+TCGGGGGTTCTGCTTTTGTGCATGGGGCGGATATGGCTTGGCTCCTCGCCGAGTATGCCG
+ATATCACGATCCCCTTTCTCTACTAGGGCCCTTTGGGCCATTCCTCGTTAGTACAACGGC
+AGTACGCCCGACTCTGGATCGGGTAATCGTGGTTCGAATCCATGCCGAGGAGCAAGCCCC
+CACAAGGGGCCTTTTCTGGTCGTAGTTCAGCGGTAGAACACTCGCTTTGGGAGCGAGGGG
+CCGCAGGTTCGATCCCTGCCGACCAGACCACCTAGTAACGTCGCTAGCTGCTCAAGGGGT
+GCGCTGTGGCATGGCATTCCAGTAACCGGCGCTCTGAGCTACCCCCTAATTGGGGCACTC
+TCAGGCAGCGCGTTATTCGTAGGGATAAGGGCCTGTGTCAGGGGGTCCTAGATACCGGGG
+GCCTATGTGGGCACCCTGGTACGGACGTGGACCATATACGGCCCGGTAACGACCACTCCC
+TATCTAACCTGCAACTACTGTGCCCCTGGTGTCACAAGCGTAAGACACAGGCTGAGTCTG
+CACAGGCACGCTCTACTAAGAGCATTCCAAAGCAAGCCATCCCCCGTGATCAACGCGAGG
+CCACGCCCGACCCATGGTGACCACATCTTGTGTCGCTCCTCGCTGATCACGCGCTGTTCA
+CGTTGCGTTCTGTGTTCACTCAAAGTGATGTGATCCGAGCCTCAACCTTCGAATCGAAGG
+GACGGGGTGGGGGGAGACCCCGGATCGGATCTCTAAAGGACCGCAAGCGTGTAGCACCTC
+GGAGTCTGTACGGGTTACCAAGTCGCCGAGCTTCGATTCAAAGGTTGAGGATTTCGCCGG
+CATTACCCTACGTGACAACCGGAGGTGAGCACATGGGCACCCGTGGACCGGTCCCCAAGC
+GGGACGACCAGCGGCGACGCCGCAACGCTCATGAGGTTGAGCTAGCTACCGCCCCGAGTG
+GAAACCCGGACGGTGCTACCGCTCCCCCACCCGAGGACGATTGGCACCCGATCGCACGGC
+GCTGGTATGACGCGCTCGCTGAGTCGGGACAGTCGTTCTTTTTCGAGCCGTCCGACTGGG
+CAACCGCCGCGTACGTTGCCGAGGCAATGAGCCGGAACCTGAACCAGGGACAGCGTCTAA
+GCGGACAGCTTTTCGCGTCCGTCATTTCCGCCGCATCCGATCTACTCACTACCGAGGGTT
+CCCGGCGACGTCTGCGTATCGAGCTAAGCAAGGCCGAGGCTACCGAGGTTGATTCGGGTC
+TCGCCGAACTCATGGCCGCGTACAAGGCTCAGAGCTAGCAGCGAGCAACGTTACTAGGTG
+GCTCCTCG

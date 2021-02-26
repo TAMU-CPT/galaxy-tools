@@ -8,6 +8,7 @@ PREMISE
 import re
 from Bio import SeqIO
 from Bio import Seq
+from collections import OrderedDict
 
 # Not written in OOP for a LITTLE bit of trying to keep the complication down in case adjustments are needed by someone else.
 # Much of the manipulation is string based; so it should be straightforward as well as moderately quick
@@ -117,7 +118,7 @@ def find_tmd(pair, minimum=10, maximum=30, TMDmin=10, TMDmax=20, isp_mode=False,
         ---> TMDmin : The minimum size that a transmembrane can be (default = 10)
         ---> TMDmax : The maximum size tha ta transmembrane can be (default = 20)
     """
-    # hydrophobicAAs = ['F', 'I', 'W', 'L', 'V', 'M', 'Y', 'C', 'A', 'T', 'G', 'S']
+    # hydrophobicAAs = ['P', 'F', 'I', 'W', 'L', 'V', 'M', 'Y', 'C', 'A', 'T', 'G', 'S']
     tmd = []
     s = str(pair[1])  # sequence being analyzed
     # print(s) # for trouble shooting
@@ -453,7 +454,7 @@ if __name__ == "__main__":
     pairs = zip(test_desc, test_seq)
     lipo = []
     for each_pair in pairs:
-        print(each_pair)
+        #print(each_pair)
         # try:
         try:
             lipo += find_lipobox(pair=each_pair, regex=2)  # , minimum=8)

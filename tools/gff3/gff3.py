@@ -61,11 +61,10 @@ def feature_lambda(
             feature._parent = feature
         test_result = test(feature, **test_kwargs)
         # if (not invert and test_result) or (invert and not test_result):
-        # print feature.type, test_kwargs, test_result, invert ^ test_result
         if invert ^ test_result:
             if not subfeatures:
                 feature_copy = copy.deepcopy(feature)
-                feature_copy.sub_features = []
+                feature_copy.sub_features = list()
                 yield feature_copy
             else:
                 yield feature
@@ -96,9 +95,12 @@ def feature_test_true(feature, **kwargs):
 
 def feature_test_type(feature, **kwargs):
     if "type" in kwargs:
-        return feature.type == kwargs["type"]
+        return str(feature.type).upper() == str(kwargs["type"]).upper()
     elif "types" in kwargs:
-        return feature.type in kwargs["types"]
+      for x in kwargs["types"]:
+        if str(feature.type).upper() == str(x).upper():
+          return True
+      return False
     raise Exception("Incorrect feature_test_type call, need type or types")
 
 

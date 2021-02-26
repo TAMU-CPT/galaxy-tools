@@ -1,0 +1,794 @@
+/* everything "hacked" by mb, 2011-10-04, 2011-10-15 */
+
+
+/*
+ * typo3sphinx.css_t
+ * ~~~~~~~~~~~~~~~~~
+ *
+ * Sphinx stylesheet -- sphinxdoc theme.  Originally created by
+ * Armin Ronacher for Werkzeug.
+ *
+ * :copyright: Copyright 2007-2011 by the Sphinx team, see AUTHORS.
+ * :license: BSD, see LICENSE for details.
+ *
+ */
+
+@import url("typo3basic.css");
+
+
+
+/* @font-face:
+ * see preview.typo3.org
+ */
+
+@font-face {
+	font-family: 'Share';
+	src: url('fonts/share-bold-webfont.eot');
+	src: url('fonts/share-bold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/share-bold-webfont.woff') format('woff'),
+		 url('fonts/share-bold-webfont.ttf') format('truetype'),
+		 url('fonts/share-bold-webfont.svg#Share-BoldRegular') format('svg');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Share';
+	src: url('fonts/share-italic-webfont.eot');
+	src: url('fonts/share-italic-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/share-italic-webfont.woff') format('woff'),
+		 url('fonts/share-italic-webfont.ttf') format('truetype'),
+		 url('fonts/share-italic-webfont.svg#Share-ItalicRegular') format('svg');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Share';
+	src: url('fonts/share-regular-webfont.eot');
+	src: url('fonts/share-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/share-regular-webfont.woff') format('woff'),
+		 url('fonts/share-regular-webfont.ttf') format('truetype'),
+		 url('fonts/share-regular-webfont.svg#Share-Regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+/* -- page layout ----------------------------------------------------------- */
+
+body {
+	font-family: arial, 'Helvetica Neue', helvetica, sans-serif;
+	font-size: 14px;
+	letter-spacing: -0.01em;
+	line-height: 150%;
+	line-height: 140%;
+	text-align: center;
+	background: url(shadow-page-505x505.png) repeat-x top left scroll #fbfbfb;
+	color: #000000;
+	padding: 0;
+	margin: 0px 50px 0px 50px;
+	min-width: 740px;
+}
+
+div.document {
+	background-color: #FFFFFF;
+	text-align: left;
+	background-image: url(contents.png);
+	background-repeat: repeat-x;
+}
+
+div.bodywrapper {
+	margin: 0 260px 0 0; /*  theme_sidebarwidth|toint + 10 } } 250+10 = 260*/
+	border-right: 1px solid #ccc;
+}
+
+div.body {
+	margin: 0;
+	padding: 0.5em 20px 20px 20px;
+}
+
+div.related {
+	font-size: 1em;
+}
+
+div.related ul {
+	background-image: url(s-buttons.png);
+	height: 32px;
+	border-left:1px solid #FFC37D;
+	border-right: 1px solid #E97E0D;
+	color: #FFFFFF;
+}
+
+div.related ul li {
+	margin: 0;
+	padding: 0;
+	height: 32px;
+	float: left;
+	vertical-align: center;
+}
+
+div.related ul li.right {
+	float: right;
+	margin-right: 5px;
+}
+
+div.related ul li a {
+	margin: 0;
+	padding: 0 5px 0 5px;
+	line-height: 32px;
+	color: #FFFFFF;
+}
+
+div.related ul li a:hover {
+	color: #FFFFFF;
+}
+
+div.sphinxsidebarwrapper {
+	padding: 0;
+}
+
+div.sphinxsidebar {
+	margin: 0;
+
+	padding: 0.5em 15px 15px 0;
+	width: 230px; /*  theme_sidebarwidth|toint - 20 } }px; 250-20=230 */
+
+	padding: 0.5em 10px 15px 0;
+	width: 240px;
+
+	float: right;
+	font-size: 95%;
+	text-align: left;
+}
+
+div.sphinxsidebar h3,
+div.sphinxsidebar h4 {
+	margin: 1em 0 0.5em 0;
+	font-size: 1em;
+	padding: 0.1em 0 0.1em 0.5em;
+	color: #444444;
+	border: 1px solid #e8e8e8;
+	border-bottom: 1px solid #c8c8c8;
+	height: 26px;
+	line-height:26px;
+	background: url(s-buttons.png) repeat-x 0 -64px scroll #fbfbfb;
+}
+
+div.sphinxsidebar h3 a {
+	color: #444444;
+}
+
+div.sphinxsidebar ul {
+	padding-left: 1.5em;
+	margin-top: 7px;
+	padding: 0;
+	line-height: 130%;
+	line-height: 120%;
+}
+div.sphinxsidebar ul li{
+	margin-top: 0;
+	margin-bottom: 8px;
+}
+div.sphinxsidebar ul ul {
+	margin-top: 8px;
+	margin-left: 15px;
+	color: #ff8700;
+}
+div.sphinxsidebar ul ul ul{
+	margin-top: 6px;
+}
+
+div.sphinxsidebar ul ul ul li{
+	margin-top: 0px;
+	margin-bottom: 6px;
+font-size:95%;
+}
+
+div.footer {
+	background: url(shadow-footer.jpg) no-repeat top left scroll #fbfbfb;
+	color: #8c8c8c;
+	color: #444444;
+	padding: 3px 8px 3px 0;
+	clear: both;
+	font-size: 0.8em;
+	text-align: right;
+	margin-bottom: 20px;
+}
+
+div.footer a,
+div.footer a:link,
+div.footer a:visited
+{
+	color: #006299;
+	text-decoration: none;
+	border-bottom: 1px dotted #006299;
+}
+div.footer a:hover,
+div.footer a:focus
+{
+	border-bottom: 1px solid #000000;
+	color: #000000;
+}
+
+/* -- body styles ----------------------------------------------------------- */
+
+p {	
+	margin: 0.8em 0 0.5em 0;
+}
+
+a {
+	color: #CA7900; /* sphinxx */
+	text-decoration: none;
+}
+
+a:hover {
+	color: #2491CF; /* sphinxx */
+}
+
+div.body a {
+	text-decoration: underline;
+	text-decoration: none;
+}
+
+h1 {
+	margin: 0;
+	padding: 0.7em 0 0.3em 0;
+	font-size: 1.5em;
+	color: #11557C; /* sphinxx */
+
+}
+
+h2 {
+	margin: 1.3em 0 0.2em 0;
+	font-size: 1.35em;
+	padding: 0;
+}
+
+h3 {
+	margin: 1em 0 -0.3em 0;
+	font-size: 1.2em;
+}
+
+
+h1 a.anchor, h2 a.anchor, h3 a.anchor, h4 a.anchor, h5 a.anchor, h6 a.anchor {
+	display: none;
+	margin: 0 0 0 0.3em;
+	padding: 0 0.2em 0 0.2em;
+	color: #aaa!important;
+}
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor,
+h5:hover a.anchor, h6:hover a.anchor {
+	display: inline;
+}
+
+h1 a.anchor:hover, h2 a.anchor:hover, h3 a.anchor:hover, h4 a.anchor:hover,
+h5 a.anchor:hover, h6 a.anchor:hover {
+	color: #777;
+	background-color: #eee;
+}
+
+a.headerlink {
+	color: #c60f0f!important; /* sphinxx */
+	font-size: 1em;
+	margin-left: 6px;
+	padding: 0 4px 0 4px;
+	text-decoration: none!important;
+}
+
+a.headerlink:hover {
+	background-color: #ccc;
+	color: #fff!important;
+}
+
+cite, code, tt {
+	/* Share-TechMono */
+	font-family: 'Consolas', 'Deja Vu Sans Mono','Bitstream Vera Sans Mono', monospace;
+	font-size: 0.95em;
+	letter-spacing: 0.01em;
+}
+
+tt {
+	background-color: #f2f2f2;
+	border-bottom: 1px solid #ddd;
+	color: #333;
+	color: #7f1e00; /* -2 orange-red */
+}
+
+tt.descname,
+tt.descclassname,
+tt.xref {
+	border: 0;
+}
+
+hr {
+	border: 1px solid #abc;
+	margin: 2em;
+}
+
+a tt {
+	border: 0;
+	color: #7f1e00; /* -2 orange-red */
+}
+
+a tt:hover {
+	color: #000000;
+}
+
+pre {
+	font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+	font-size: 0.95em;
+	font-size: 0.98em;
+	letter-spacing: 0.015em;
+	line-height: 120%;
+	padding: 0.5em;
+	border: 1px solid #ccc;
+	background-color: #f8f8f8;
+}
+
+pre a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+td.linenos pre {
+	padding: 0.5em 0;
+}
+
+div.quotebar {
+	background-color: #f8f8f8;
+	max-width: 250px;
+	float: right;
+	padding: 2px 7px;
+	border: 1px solid #ccc;
+}
+
+div.topic {
+	background-color: #f8f8f8;
+}
+
+table {
+	border-collapse: collapse;
+	margin: 0 -0.5em 0 -0.5em;
+	margin: 0 ;
+}
+
+table td, table th {
+	padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+div.admonition,
+div.warning {
+	font-size: 0.9em;
+	margin: 1em 0 1em 0;
+	background-color: #FFF7F0;
+	border: 1px solid #c8c8c8;
+
+	background-color: #FFFCF7;
+
+
+	padding: 0;
+}
+
+div.admonition p,
+div.warning p {
+	margin: 0.5em 1em 0.5em 1em;
+	padding: 0;
+}
+
+dl,
+div.admonition pre,
+div.warning pre {
+	margin: 0.4em 1em 0.4em 1em;
+}
+
+div.admonition p.admonition-title {
+	margin: 0;
+	padding: 0.1em 0 0.1em 0.5em;
+	color: #000000;
+	border-bottom: 1px solid #C8C8C8;
+	font-weight: bold;
+	background-color: #EFECE7;
+}
+div.warning {
+	border: 1px solid #ff3d00;
+}
+div.warning p.admonition-title {
+	margin: 0;
+	padding: 0.1em 0 0.1em 0.5em;
+	font-weight: bold;
+	background-color: #ff3d00;
+	border-bottom-color: 1px solid #ff3d00;
+	color: #ffffff;
+}
+div.important {
+	border: 1px solid #ff6433;
+	border: 1px solid #ff8a66;
+	border: 1px solid #a34e33;
+	border: 1px solid #691900;
+	border: 1px solid #8c2100;
+}
+div.important p.admonition-title {
+	margin: 0;
+	padding: 0.1em 0 0.1em 0.5em;
+	font-weight: bold;
+	background-color: #8c2100;
+	border-bottom-color: 1px solid #8c2100;
+	color: #ffffff;
+}
+
+
+div.hint,
+div.tip {
+	border: 1px solid #21b25a;
+}
+div.hint p.admonition-title,
+div.tip p.admonition-title {
+	background-color: #21b25a; /* TYPO3 logo green */
+}
+
+div.warning p.admonition-title {
+	background-color: #ff3d00;
+	border-bottom-color: #ff3d00;
+	color: #ffffff;
+}
+
+div.admonition ul, div.admonition ol,
+div.warning ul, div.warning ol {
+	margin: 0.1em 0.5em 0.5em 3em;
+	padding: 0;
+}
+
+div.versioninfo {
+	margin: 1em 0 0 0;
+	border: 1px solid #ccc;
+	background-color: #DDEAF0;  /* sphinxx */
+	padding: 8px;
+	line-height: 1.3em;
+	font-size: 0.9em;
+}
+
+.viewcode-back {
+	font-family: arial, 'Helvetica Neue', helvetica, sans-serif;
+}
+
+div.viewcode-block:target {
+	background-color: #f4debf;  /* sphinxx */
+	border-top: 1px solid #ac9;  /* sphinxx */
+	border-bottom: 1px solid #ac9; /* sphinxx */
+}
+
+/**
+ *
+ * TYPO3 stuff
+ *
+ **/
+
+
+
+#logo-div {
+	background-color: #FFFFFF; 
+	text-align: left;
+/* 	padding: 18px 15px 15px 15px; */
+	overflow: hidden;
+}
+#logo-img {
+}
+
+h1,
+h2,
+h3,
+div.sphinxsidebar h4 ,
+p.topic-title {
+	font-family: Share, arial, 'Helvetica Neue', helvetica, sans-serif;
+}
+
+h1 {
+
+	/* brown */
+	color: #e8d3cc; /* +4 brown */
+	color: #d1a699; /* +3 brown */
+	color: #ba7a66; /* +2 brown */
+	color: #a34e33; /* +1 brown */
+	color: #8c2100; /*  0 brown */
+	color: #691900; /* -1 brown */
+	color: #461100; /* -2 brown */
+	color: #230800; /* -3 brown */
+	color: #000000; /* -4 brown */
+
+	/* orange-red */
+	color: #ffd8cc; /* +4 orange-red */
+	color: #ffb199; /* +3 orange-red */
+	color: #ff8a66; /* +2 orange-red */
+	color: #ff6433; /* +1 orange-red */
+	color: #ff3d00; /*  0 orange-red */
+	color: #bf2d00; /* -1 orange-red */
+	color: #7f1e00; /* -2 orange-red */
+	color: #400f00; /* -3 orange-red */
+	color: #000000; /* -4 orange-red */
+
+	/* blue */
+	color: #cce0eb; /* +4 blue */
+	color: #99c0d6; /* +3 blue */
+	color: #66a1c2; /* +2 blue */
+	color: #3381ad; /* +1 blue */
+	color: #006299; /*  0 blue */
+	color: #004973; /* -1 blue */
+	color: #00314c; /* -2 blue */
+	color: #001826; /* -3 blue */
+	color: #000000; /* -4 blue */
+
+
+	/* #ff8700 = TYPO3 yellow-orange = base color, "high contrast scheme 4" of illustrator */
+	color: #ffe7cc; /* +4 TYPO3 orange */
+	color: #ffcf99; /* +3 TYPO3 orange */
+	color: #ffb766; /* +2 TYPO3 orange */
+	color: #ff9f33; /* +1 TYPO3 orange */
+	color: #FF8700; /*  0 TYPO3 orange */
+	color: #bf6500; /* -1 TYPO3 orange */
+	color: #804400; /* -2 TYPO3 orange */
+	color: #402200; /* -3 TYPO3 orange */
+	color: #000000; /* -4 TYPO3 orange */
+
+	color: #FF8700; /*  0 TYPO3 orange */
+
+}
+p.topic-title {
+	font-weight: bold;
+}
+
+/* links */
+
+a {
+	color: 
+	background: none repeat scroll 0 0 transparent;
+	text-decoration: none;
+	color: #006299; /*  0 a blue */
+}
+a:visited {
+	/* blue */
+	color: #cce0eb; /* +4 */
+	color: #99c0d6; /* +3 */
+	color: #66a1c2; /* +2 */
+	color: #3381ad; /* +1 blue */
+	color: #004973; /* -1 */
+	color: #00314c; /* -2 */
+	color: #001826; /* -3 */
+	color: #000000; /* -4 */
+	color: #006299; /*  0 a blue */
+}
+a:active {
+	color: #00314c; /* -2 */
+}
+a:hover ,
+a:focus {
+	color: #00314c; /* -2 */
+	text-decoration: underline;
+}
+a.external {
+	text-decoration: none;
+	border-bottom: 1px dotted #006299;
+}
+div.body a:hover,
+div.body a:focus,
+a.external:hover,
+a.external:focus
+ {
+	text-decoration: none;
+	border-bottom: 1px solid #00314c;
+}
+.internal {
+	text-decoration: none;
+}
+
+/*
+html
+body
+div.document
+div.documentwrapper
+div.bodywrapper
+div.body
+div#docutils-project-documentation-overview.section
+div#contents.contents
+ul.simple
+li
+ul
+li
+a#id14.reference
+*/
+
+
+
+
+
+h1 a:link,
+h1 a:visited,
+h1 a:hover, h1 a:focus
+{
+	color: #ff8700;
+}
+h2 a:link,  h2 a:visited,
+h2 a:hover, h2 a:focus
+{
+	color: #000000;
+}
+h3 a:link,  h3 a:visited,
+h3 a:hover, h3 a:focus,
+h4 a:link,  h4 a:visited,
+h4 a:hover, h4 a:focus,
+h5 a:link,  h5 a:visited,
+h5 a:hover, h5 a:focus,
+h6 a:link,  h6 a:visited,
+h6 a:hover, h6 a:focus
+{
+	color: #000000;
+}
+h1 a:hover, h1 a:focus,
+h2 a:hover, h2 a:focus,
+h3 a:hover, h3 a:focus,
+h4 a:hover, h4 a:focus,
+h5 a:hover, h5 a:focus,
+h6 a:hover, h6 a:focus
+{
+	text-decoration: underline;
+}
+
+
+
+/* content sections - general */
+
+.section {
+}
+#none.section h1 a,
+#none.section h2 a,
+#none.section h3 a {
+	color: #EF8100;
+}
+tt.docutils {
+	/* font-size: 1.2em; */
+}
+
+/* content sections - head of the document*/
+
+/*	.docinfo-name {				   */
+/*		color: #333;				  */
+/*		margin-left: 0px;			 */
+/*	}								 */
+/*	.docinfo {						*/
+/*		margin: 1em 0;				*/
+/*		padding: 0.5em;			   */
+/*		background-color: #ffffff;	*/
+/*		/* width: 100%; * /		   */
+/*	}								 */
+/*	ul.auto-toc li {				  */
+/*		list-style-type: none;		*/
+/*	}								 */
+
+
+table {
+	border-collapse: separate;
+	border: 1px solid #c8c8c8;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: #e8d3cc; /* +4 brown */
+	background-color: #c8c8c8; /* trial and error */
+	background-color: #ffe8e0; /* trial and error */
+	background-color: #FFE0b8; /* trial and error */
+	border: 1px none black;
+}
+td {
+	background-color: #ffe7cc; /* +4 TYPO3 orange */
+	background-color: #fff7f0; /* trial and error */
+	background-color: #FFF4E8; /* trial and error */
+
+	border: 1px none black;
+}
+
+
+table.docutils {
+	border-collapse: separate;
+	border: 1px solid #c8c8c8;
+	border-collapse: collapse;
+}
+
+table.docinfo,
+.literal-block,
+pre.literal-block {
+	background: #f8f8f8;
+	border: 1px solid #c8c8c8;
+}
+table.docinfo th,
+table.docinfo td {
+	background-color: transparent;
+}
+
+
+div.documentwrapper {
+	border: 1px solid #eaeaea;
+}
+
+table.docutils td,
+table.docutils th {
+	border: 2px solid white;
+	padding: 2px 8px 2px 6px;
+}
+
+table.docutils.citation td.label,
+table.docutils.citation th.label {
+	min-width: 100px;
+	max-width: 100px;
+	overflow: hidden;
+}
+
+table.citation {
+	font-family: Share, arial, 'Helvetica Neue', helvetica, sans-serif;
+}
+
+table.field-list td,
+table.field-list th {
+	/* border: 0 !important; */
+	border: 2px solid white;
+}
+
+div.sidebar {
+	background-color: #FFF7F0;
+}
+
+
+
+#somethingToTest {
+
+	/* brown */
+	color: #e8d3cc; /* +4 brown */
+	color: #d1a699; /* +3 brown */
+	color: #ba7a66; /* +2 brown */
+	color: #a34e33; /* +1 brown */
+	color: #8c2100; /*  0 brown */
+	color: #691900; /* -1 brown */
+	color: #461100; /* -2 brown */
+	color: #230800; /* -3 brown */
+	color: #000000; /* -4 brown */
+
+	/* orange-red */
+	color: #ffd8cc; /* +4 orange-red */
+	color: #ffb199; /* +3 orange-red */
+	color: #ff8a66; /* +2 orange-red */
+	color: #ff6433; /* +1 orange-red */
+	color: #ff3d00; /*  0 orange-red */
+	color: #bf2d00; /* -1 orange-red */
+	color: #7f1e00; /* -2 orange-red */
+	color: #400f00; /* -3 orange-red */
+	color: #000000; /* -4 orange-red */
+
+	/* blue */
+	color: #cce0eb; /* +4 blue */
+	color: #99c0d6; /* +3 blue */
+	color: #66a1c2; /* +2 blue */
+	color: #3381ad; /* +1 blue */
+	color: #006299; /*  0 blue */
+	color: #004973; /* -1 blue */
+	color: #00314c; /* -2 blue */
+	color: #001826; /* -3 blue */
+	color: #000000; /* -4 blue */
+
+
+	/* #ff8700 = TYPO3 yellow-orange = base color, "high contrast scheme 4" of illustrator */
+	color: #ffe7cc; /* +4 TYPO3 orange */
+	color: #ffcf99; /* +3 TYPO3 orange */
+	color: #ffb766; /* +2 TYPO3 orange */
+	color: #ff9f33; /* +1 TYPO3 orange */
+	color: #FF8700; /*  0 TYPO3 orange */
+	color: #bf6500; /* -1 TYPO3 orange */
+	color: #804400; /* -2 TYPO3 orange */
+	color: #402200; /* -3 TYPO3 orange */
+	color: #000000; /* -4 TYPO3 orange */
+
+}
+
+
+.underline {
+    text-decoration: underline;
+}

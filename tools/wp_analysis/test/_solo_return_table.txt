@@ -1,0 +1,2 @@
+WP_accession	Genome_accession	TaxID	Organism	WP_count
+WP_032188451.1	NZ_FTYR01000050.1	624	Shigella sonnei	3

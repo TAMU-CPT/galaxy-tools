@@ -1,0 +1,40 @@
+<?xml version="1.3"?>
+<tool id="edu.tamu.cpt.tools.split-on-qual" name="Split Genbank On Qualifier" version="20.0.0">
+	<description>Splits a Genbank file into a multi-Genbank or subsection based on qualifier</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+    <requirements>
+      <requirement type="package" version="2.7">python</requirement>
+      <requirement type="package" version="1.74">biopython</requirement>
+    </requirements>
+    <command interpreter="python" detect_errors="aggressive"><![CDATA[
+$__tool_directory__/split_on_qualifier.py
+$gbkIn
+--key $keyCheck 
+--val $valCheck 
+--baseAhead $aheadNum
+--baseBehind $backNum
+> $output
+]]></command>
+	<inputs>
+          <param label="Genbank file" name="gbkIn" type="data" format="genbank"/>
+          <param label="Which qualifier(s) to check against (Space separated list)" name="keyCheck" type="text" value="locus_tag"/>
+          <param label="Value(s) that qualifier must match for feature to be extracted (Space separated list)" name="valCheck" type="text" value=""/>
+          <param label="Number of additional bases upstream to extract" name="aheadNum" type="integer" value="0"/>
+          <param label="Number of additional bases downstream to extract" name="backNum" type="integer" value="0"/>
+	</inputs>
+	<outputs>
+          <data format="genbank" name="output">
+          </data>
+	</outputs>
+	<help>
+**What it does**
+
+Takes a Genbank file and searches the features for the provided qualifiers, and then filters those features for those who have a value provided in the second list. Features are then placed into groups based on location, where features that overlap each other will be bundled together. Finally, a Genbank record for each group will be created. The user can also specify a number of additional bases upstream and downstream of each contiguous group to go in the nucleotide sequence record portion of the Genbank. 
+
+The tool will effectively filter and split a genbank based off of qualifier/ value pairs, or if a highly specific value is set, such as a single locus_tag, it will create one specific subsection of a genbank file.
+</help>
+		<expand macro="citations-2020-AJC-solo" />
+</tool>

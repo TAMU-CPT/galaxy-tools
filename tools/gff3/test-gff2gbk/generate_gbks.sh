@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+python ../gff2gb.py lambda_from_ncbi.gff3 lambda_from_ncbi.fasta > lambda_from_tool.gbk && python ../gff2gb.py mu_from_ncbi.gff3 mu_from_ncbi.fasta > mu_from_tool.gbk && python ../gff2gb.py shady_old.gff3 shady_old.fasta > shady_from_tool.gbk && python ../gff2gb.py sun.gff3 sun.fasta > sun_from_tool.gbk && python ../gff2gb.py t1_from_ncbi.gff3 t1_from_ncbi.fasta > t1_from_tool.gbk && python ../gff2gb.py miro.gff3 miro.fa > miro_from_tool.gbk

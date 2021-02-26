@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.bprom" name="BPROM" version="1.0.0" profile="16.04">
+	<description></description>
+	<macros/>
+	<requirements>
+		<requirement type="package">libgcc</requirement>
+	</requirements>
+	<command detect_errors="aggressive">
+export TSS_DATA=$__tool_directory__/bprom_libFiles;
+$__tool_directory__/bprom $inFile $outFile
+</command>
+	<inputs>
+                <param label="Fasta Sequence" name="inFile" type="data" format="fasta" />   
+	</inputs>
+	<outputs>
+                <data format="txt" name="outFile" label="BPROM Results" />
+	</outputs>
+	<help>
+**What it does**
+
+Runs BPROM analysis on a fasta file.
+	</help>
+	<tests/>
+	<citations>
+		<citation type="bibtex">
+		@unpublished{galaxyTools,
+			author = {V. Solovyev, A Salamov},
+			title = {Automatic Annotation of Microbial Genomes and Metagenomic Sequences. In Metagenomics and its Applications in Agriculture, Biomedicine and Environmental Studies (Ed. R.W. Li), Nova Science Publishers, p. 61-78 },
+			year = {2011},
+			
+		}
+		</citation>
+	</citations>
+</tool>

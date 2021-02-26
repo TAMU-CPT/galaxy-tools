@@ -100,7 +100,7 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                 tempSub.append(sub_feat)
 
             feature = SeqFeature(
-                FeatureLocation(1, length),
+                FeatureLocation(0, length),
                 type="Chain",
                 strand=1,
                 qualifiers={

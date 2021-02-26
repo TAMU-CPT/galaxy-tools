@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.external.Prophet" name="Prophet" version="20.1.0">
+  <description>, prophage identifier</description>
+  <macros/>
+  <requirements/>
+  <command detect_errors="aggressive"><![CDATA[
+export PERL5LIB=$__tool_directory__/UTILS.dir/GFFLib ;
+mkdir ./tempOut ;
+perl $__tool_directory__/UTILS.dir/GFFLib/gff_rewrite.pl --input $gffIn -output ./tempGFF.gff --add_missing_features ;
+python $__tool_directory__/runProphet.py 
+--evalue_cutoff $cutoff
+--window_size $window
+$fasIn 
+./tempGFF.gff ;
+cat ./tempOut/*.fas > $fasOut ;
+cat ./tempOut/*.svg > $svgOut ;]]></command>
+  <inputs>
+    <param label="Fasta file" name="fasIn" type="data" format="fasta"/>
+    <param label="GFF Annotations" name="gffIn" type="data" format="gff"/>
+    <param label="E-value cutoff (Default .00001)" name="cutoff" type="text" value="0.00001"/>
+    <param label="Size of the sliding window used to calculate gene density (Default 10000, must be greater than 1000)" name="window" type="integer" value="10000"/>
+  </inputs>
+  <outputs>
+    <data format="fasta" name="fasOut" label="Prophet Sequences"/>
+    <data format="svg" name="svgOut" label="Prophet Image"/>
+  </outputs>
+  <tests>
+      
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+ProphET is a user friendly algorithm to identify prophages in bacterial genomes.
+
+**Input**
+
+Important! The FASTA and GFF file MUST have the exact scaffold/chrom IDs.
+The GFF file should have the format described by Sequence Ontology consortium:
+https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+
+EX:
+
+FASTA:
+ >NC_005362.1
+
+ TTGTTTGATCTAGATAAATTTTGGCAATTTTTTAATGCTGAGATGAAAAAAAGCTACAGCACGGTTGCCT
+
+ ATAATGCTTGGTTTAAAAATACTAAACCAATTTCCTTTAATAAAAAGACAAAAGAAATGATAATCGCTGT
+
+
+GFF:
+
+ NC_005362.1     .       gene    1       1365    .       +       .       ID=LJ_RS00005;Name=LJ_RS00005;
+
+ NC_005362.1     .       mRNA    1       1365    .       +       .       ID=LJ_RS00005.t01;Parent=LJ_RS00005;
+
+ NC_005362.1     .       exon    1       1365    .       +       .       ID=LJ_RS00005.t01-E1;Parent=LJ_RS00005.t01;
+
+ NC_005362.1     .       CDS     1       1365    .       +       0       ID=LJ_RS00005.p01;Parent=LJ_RS00005.t01;
+
+
+**Output**
+
+* A Multifasta of the results (Multifasta because the number of sequences returned is arbitrary, so all the files are cat'd into one fasta)
+* SVG image results.
+]]></help>
+  <citations>
+	<citation type="doi">10.1371/journal.pone.0223364</citation>
+  </citations>
+</tool>

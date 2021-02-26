@@ -1,14 +1,14 @@
-<tool id="interproscan" name="Interproscan functional predictions of ORFs" version="5.45-80.0" profile="16.04">
+<tool id="interproscan" name="Interproscan functional predictions of ORFs" version="5.48-83.0" profile="16.04">
     <description>Interproscan functional predictions of ORFs</description>
     <requirements>
         <requirement type="package" version="11.0.1">openjdk</requirement>
     </requirements>
     <command>
-/opt/interpro/interproscan-5.45-80.0/interproscan.sh
+/opt/interpro/interproscan-5.48-83.0/interproscan.sh
     #if $appl is not None:
     --applications "$appl"
     #end if
-    --formats GFF3,HTML
+    --formats GFF3,JSON
     $goterms $iprlookup $pathways
     -i $input
     --output-file-base ${output_gff3}
@@ -16,7 +16,7 @@
 ;
 
 mv ${output_gff3}.gff3 ${output_gff3};
-mv ${output_gff3}.html.tar.gz ${output_html};
+mv ${output_gff3}.json ${output_json};
 
     </command>
     <inputs>
@@ -27,7 +27,7 @@ mv ${output_gff3}.html.tar.gz ${output_html};
         <param name="appl" type="select" format="text" label="Applications to run" multiple="true" help="Selecting NONE of the above will run ALL of the applications"  display="checkboxes">
             <option value="TIGRFAM" selected="true">TIGRFAM: protein families based on Hidden Markov Models or HMMs</option>
             <option value="PIRSF" selected="true">PIRSF: non-overlapping clustering of UniProtKB sequences into a hierarchical order (evolutionary relationships)</option>
-            <option value="ProDom" selected="true">ProDom: set of protein domain families generated from the UniProtKB</option>
+            <!--<option value="ProDom" selected="true">ProDom: set of protein domain families generated from the UniProtKB</option>-->
             <option value="PANTHER" selected="true">Panther: Protein ANalysis THrough Evolutionary Relationships</option>
             <option value="SMART" selected="true">SMART: identification and analysis of domain architectures based on Hidden Markov Models or HMMs</option>
             <option value="CDD" selected="true">CDD: Prediction of CDD domains in Proteins</option>
@@ -49,7 +49,7 @@ mv ${output_gff3}.html.tar.gz ${output_html};
     </inputs>
     <outputs>
         <data format="gff3" name="output_gff3" label="Interproscan GFF3 output on ${on_string}"/>
-        <data format="tar.gz" name="output_html" label="Interproscan HTML output on ${on_string} (.tar.gz)"/>
+        <data format="json" name="output_json" label="Interproscan JSON output on ${on_string}"/>
     </outputs>
     <tests>
           <test>
@@ -59,14 +59,16 @@ mv ${output_gff3}.html.tar.gz ${output_html};
             <param name="pathways" value="--pathways" />
             <param name="appl" value="TIGRFAM,PIRSF,ProDom,PANTHER,SMART,PrositeProfiles,PrositePatterns,Hamap,Pfam,PRINTS,SUPERFAMILY,Coils,Gene3D,SignalP-GRAM_POSITIVE,SignalP-GRAM_NEGATIVE,SignalP-EUK,Phobius" />
             <output name="output_gff3" file="T7_INTERPRO.gff3" />
-            <output name="output_html" file="T7_INTERPRO.tar.gz" />
+            <output name="output_json" file="T7_INTERPRO.json" />
           </test>
     </tests>
     <help>
 **What it does**
 
 Interproscan is a batch tool to query the Interpro database. It provides annotations based on multiple searches of profile and other functional databases.
-These include SCOP, CATH, PFAM and SUPERFAMILY. Currently running version 5.45-80.0.
+These include SCOP, CATH, PFAM and SUPERFAMILY. Currently running version 5.48-83.0.
+
+Note: HTML Output was deprecated and removed in version 5.48-83.0, and has been replaced with a JSON output by default in this tool. You can import this JSON output into the Interproscan website for a similar view, but it is now unavailable directly from the command line tool. 
 
 **Input**
 
@@ -139,7 +141,7 @@ Tools
  hmmpfam from the HMMER2.3.2 package (by Sean Eddy,
  eddy@genetics.wustl.edu, http://hmmer.wustl.edu).
 
-**PRODOM**
+**PRODOM** (Currently unavailable)
  ProDom is a database of protein domain families obtained by automated
  analysis of the SWISS-PROT and TrEMBL protein sequences. It is useful
  for analysing the domain arrangements of complex protein families and the
@@ -231,7 +233,7 @@ http://toolshed.g2.bx.psu.edu/view/bgruening/interproscan
     *  Bjoern Gruening, Pharmaceutical Bioinformatics, University of Freiburg
     *  Konrad Paszkiewicz, Exeter Sequencing Service, University of Exeter
 
-Some modifcations made to the wrapper to bring it up to version 5.45, Database version 80.0
+Some modifcations made to the wrapper by CPT Staff to bring it up to version 5.48, Database version 83.0
 </help>
 	<citations>
 		<citation type="doi">10.1093/bioinformatics/17.9.847</citation>

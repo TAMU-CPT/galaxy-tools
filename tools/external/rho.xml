@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.external.rho" name="RhoTermPredict," version="20.1.0">
+	<description> prediction of Rho-dependent transcription terminators</description>
+	<macros/>
+        <requirements>
+		<requirement type="package" version="2019.06.08">regex</requirement>
+                <requirement type="package" version="2.7">python</requirement>
+		<requirement type="package" version="1.67">biopython</requirement>
+	</requirements>
+	<expand macro="requirements">
+            <requirement type="package" version="2019.06.08">regex</requirement>
+        </expand>
+	<command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/rho.py
+$fastaIn
+$xmlOut ;
+python $__tool_directory__/convert_rho.py $gffOut ./info_about_pred* ;
+cat ./info_about_pred* > $txtOut
+]]></command>
+	<inputs>
+		<param label="Fasta Sequence" name="fastaIn" type="data" format="fasta" />
+	</inputs>
+	<outputs>
+		<data format="csv" name="xmlOut" label="Rho XML Display"/>
+		<data format="txt" name="txtOut" label="Rho Information"/>
+                <data format="gff3" name="gffOut" label="Rho Terminators (GFF3)"/>
+	</outputs>
+	<tests/>
+	<help><![CDATA[
+**What it does**
+
+RhoTermPredict is an algorithm for the prediction of Rho-dependent transcription terminators in bacterial genomes. It searchs for a putative RUT site followed by a putative pause site for RNA polymerase (hairpin structure and/or pause-consensus element).
+
+INPUT: genome sequences file in fasta format
+
+OUTPUT: a csv file containing the coordinates of predicted Rho-dependent terminators, a GFF file of the predicted locations, and a txt file containing some information about the predictions
+]]></help>
+	<citations>
+		<citation type="doi">10.1186/s12859-019-2704-x</citation>
+		
+                <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {A. Criscione},
+				title = {CPT Galaxy Tools},
+				year = {2019-2021},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+                        </citation>
+	</citations>
+</tool>

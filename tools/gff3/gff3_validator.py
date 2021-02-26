@@ -9,828 +9,313 @@ import csv
 import argparse
 from cpt_gffParser import gffParse, gffWrite
 
-def table_annotations(gff3In, out_errorlog):
 
-    numError = 0
-    numWarning = 0
-    containsHash = {}
-    locations = []
-    # disallowedChars = ['\t', '\n', '\r', '%', ';', '=', '&',',']
-    disallowedChars = ['"']
-    #"""
-    outList = (gffParse(gff3In))
-    gffWrite(None)
-    #GFFWrite(outList)
-    #for x in outList:
-    #  GFFWrite(x)
-      #if "sequence-region" in x.annotations.keys():
-      #  print(x.annotations["sequence-region"][2])
-      #for y in x.features:
-      #  if y.sub_features:
-      #    for z in y.sub_features:
-      #      if z.sub_features:
-      #        for t in z.sub_features:
-      #          print(t)
-    exit()
-    #"""
-    # For each record in gff3 parse
-    for record in list(gffParse(gff3In)):
-        print((record.annotations))
-        # For each feature in record
-        # featLvl1 = Genes, terminator, tRNA
-        # featLvl2 = mRNA
-        # featLvl3 = Exons, CDS, introns, and Shines
-        #for x in record.features:
-        #  print(x)
-        exit()
-        errorMessage = ""
 
-        for featLvl1 in record.features:
-            for notes in featLvl1.qualifiers:
-                for i in disallowedChars:
-                    for j in featLvl1.qualifiers[notes]:
-                        if i in j:
-                            if i == "\n":
-                                problem = "New Line (Return)"
-                            elif i == "\t":
-                                problem = "Tab space"
-                            elif i == "\r":
-                                problem = "Carriage return"
-                            else:
-                                problem = i
-                            # errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl1.type, featLvl1.id, str(notes), j, problem))
-                            errorMessage = errorMessage + (
-                                "Warning: Character '\"' in qualifiers of %s %s, will not be able to convert to Genbank\n Problem qualifier: %s: %s\n\n"
-                                % (featLvl1.type, featLvl1.id, str(notes), j)
-                            )
-                            numWarning += 1
+def checkParentageBoundaries(thisFeat):
+  errMess = ""
+  errCount = 0
+  warnMess = ""
+  warnCount = 0
+  if str(thisFeat.type).upper() == "GENE":
+    foundMRNA = False
+    for x in thisFeat.sub_features:
+      if str(x.type).upper() == "MRNA":
+        foundMRNA = True
+        if x.location.start != thisFeat.location.start or x.location.end != thisFeat.location.end:
+          errMess += "Error: MRNA " + x.id + " does not match location of parent gene " + thisFeat.id + " (Expected both start and end to match for both features).\n"
+          errCount += 1
+      elif str(x.type).upper() != "REGULATORY" and str(x.type).upper() != "SEQUENCE_SECONDARY_STRUCTURE":
+        errMess += "Error: Gene " + thisFeat.id + " has unexpected subfeature of type " + x.type + " (Expected subtypes for gene: mRNA, regulatory, sequence_secondary_structure).\n"
+        errCount += 1
+    if not foundMRNA:
+      warnMess += "Warning: No MRNA subfeature found for gene " + thisFeat.id + ".\n" 
+      warnCount += 1
+  elif str(thisFeat.type).upper() == "MRNA":
+    hasCDS = False
+    hasExon = False
+    cdsBound = False
+    exonBoundStart = False
+    exonBoundEnd = False
+    exon1 = None
+    exon2 = None
+    for x in thisFeat.sub_features:
+      if str(x.type).upper() == "CDS":
+        hasCDS = True
+        if x.location.start < thisFeat.location.start or x.location.end > thisFeat.location.end:
+          errMess += "Error: CDS " + x.id + " falls outside range of parent feature " + thisFeat.id + " (mRNA: [" + str(thisFeat.location.start) + ", " + str(thisFeat.location.end) + "], CDS [" + str(x.location.start) + ", " + str(x.location.end) + "]).\n"
+          errCount += 1
+        if x.location.start == thisFeat.location.start or x.location.end == thisFeat.location.end:
+          cdsBound = True
+      elif str(x.type).upper() == "EXON":
+        hasExon = True
+        if not exon1:
+          exon1 = x.location
+        elif not exon2:
+          exon2 = x.location
+        if x.location.start < thisFeat.location.start or x.location.end > thisFeat.location.end:
+          errMess += "Error: Exon " + x.id + " falls outside range of parent feature " + thisFeat.id + " (mRNA: [" + str(thisFeat.location.start) + ", " + str(thisFeat.location.end) + "], Exon [" + str(x.location.start) + ", " + str(x.location.end) + "]).\n"
+          errCount += 1
+        if x.location.start == thisFeat.location.start:
+          exonBoundStart = True
+        if x.location.end == thisFeat.location.end:
+          exonBoundEnd = True
+      elif str(x.type).upper() != "INTRON" and str(x.type).upper() != "SHINE_DALGARNO_SEQUENCE":
+        errMess += "Error: mRNA " + thisFeat.id + " has unexpected subfeature of type " + x.type + " (Expected subtypes for mRNA: CDS, exon, intron, and Shine_Dalgarno_sequence).\n"
+        errCount += 1
 
-            dupCheck = containsHash.get(
-                (
-                    featLvl1.type
-                    + str(featLvl1.location.start)
-                    + str(featLvl1.location.end)
-                ),
-                -1,
-            )
-            if dupCheck != -1:
-                errorMessage = errorMessage + (
-                    "Error: Duplicate %ss in GFF3 file\n  %s ID %s occupies the same space as %s ID: %s\n  Note: if one of these IDs doesn't appear to exist, ensure there are not two of the other\n\n"
-                    % (
-                        featLvl1.type,
-                        dupCheck.type,
-                        dupCheck.id,
-                        featLvl1.type,
-                        featLvl1.id,
-                    )
-                )
-                numError += 1
+    if hasCDS:
+      if hasExon and not (exonBoundStart and exonBoundEnd):
+        if not cdsBound:
+          errMess += "Error: mRNA " + thisFeat.id + " has no combination of CDSs or Exons that cover both the start and end.\n"
+          errCount += 1
+      elif not cdsBound:
+        errMess += "Error: mRNA " + thisFeat.id + " has CDS subfeatures but none that cover either the start or the end of the feature.\n" 
+        errCount += 1
+    elif hasExon and not (exonBoundStart and exonBoundEnd):
+      errMess += "Error: mRNA " + thisFeat.id + " has no Exon(s) that cover both the start and the end of the feature.\n"
+      errCount += 1
+    elif not foundCDS and not foundExon:
+      warnMess += "Warning: No CDS or Exon subfeatures found for mRNA " + thisFeat.id + ".\n" 
+      warnCount += 1
+    if exon1 and exon2:
+      if not(exon1.start > exon2.end or exon2.start > exon1.end):
+        errMess += "Error: Overlapping exons in mRNA " + thisFeat.id + ".\n"
+  elif thisFeat.sub_features and (str(thisFeat.type).upper() == "CDS" or str(thisFeat.type).upper() == "EXON" or str(thisFeat.type).upper() == "INTRON" or str(thisFeat.type).upper() == "SHINE_DALGARNO_SEQUENCE"):
+    errMess += "Error: " + thisFeat.type + " " + thisFeat.id + " has subfeatures (Expected to be final, bottom-level feature).\n"
+    errCount += 1
+
+  for x in thisFeat.sub_features:
+    resErr, resErrNum, resWarn, resWarnNum = checkParentageBoundaries(x)
+    errMess += resErr
+    errCount += resErrNum
+    warnMess += resWarn
+    warnCount += resWarnNum
+  return errMess, errCount, warnMess, warnCount  
+
+  
+def tooManyFeatCheck(thisFeat):
+  mrnaCount = 0
+  exonCount = 0
+  errMess = ""
+  errCount = 0
+  for x in thisFeat.sub_features:
+    if str(x.type).upper() == "MRNA":
+      mrnaCount += 1
+    elif str(x.type).upper() == "EXON":
+      exonCount += 1 
+
+  if mrnaCount > 1:
+    errMess += "Error: Too many mRNA features in " + str(thisFeat.id) + ", expected 1, found " + str(mrnaCount) + ".\n"
+    errCount += 1
+  if exonCount > 2:
+    errMess += "Error: Too many exon features in " + str(thisFeat.id) + ", expected a maximum of 2, found " + str(exonCount) + ".\n"
+    errCount += 1
+  
+  for x in thisFeat.sub_features:
+    resMess, resCount = tooManyFeatCheck(x)
+    errMess += resMess
+    errCount += resCount
+  
+  return errMess, errCount
+
+def dupCheck(thisFeat):
+  warnMess = ""
+  warnCount = 0
+  if len(thisFeat.location.parts) > 1:
+    warnMess += "Warning: Two features with ID " + str(thisFeat.id) + " found, ensure that join-type location is intended.\n"
+    warnCount += 1
+  
+  for x in thisFeat.sub_features:
+    resMess, resCount = dupCheck(x)
+    warnMess += resMess
+    warnCount += resCount
+  
+  return warnMess, warnCount
+
+def qualCheck(thisFeat, autoFix=False):
+  # The old bad-character checks are now built into the parser, this only checks Genbank conversion problems
+  # Genbank qualifiers are delinieated by double qoutes. If a user wishes to use double qoutes within a Note or similar field,
+  # the Genbank spec for escaping double qoute is two double qoutes in a row.
+  warnOut = ""
+  warnCount = 0
+  featOut = thisFeat
+  for x in thisFeat.qualifiers.keys():
+    for sentInd in range(0, len(thisFeat.qualifiers[x])):
+      sentence = thisFeat.qualifiers[x][sentInd]
+      newSent = ""
+      skip = False
+      changed = False
+      for ind in range(0, len(sentence)):
+        if skip:
+          continue
+        newSent += sentence[ind]
+        if sentence[ind] == '"':
+          if ind == len(sentence) - 1 or sentence[ind + 1] != '"':
+            if autoFix:
+              newSent += '"'
+              changed = True
+              warnOut += "Warning: Qualifier " + x + " in feature " + thisFeat.id + " modified to be GFF-to-Genbank compliant.\n"
+              warnCount += 1
             else:
-                containsHash[
-                    (
-                        featLvl1.type
-                        + str(featLvl1.location.start)
-                        + str(featLvl1.location.end)
-                    )
-                ] = featLvl1
+              warnOut += "Warning: Qualifier " + x + " in feature " + thisFeat.id + " has a double-qoute character (\") at position " + str(ind) + ", which will break the GFF-to-Genbank conversion. If conversion to Genbank is desired, place another \" immediately after it to meet the Genbank spec.\n"
+              warnCount += 1
+          else: # Already compliant
+            skip = True 
+      if changed:       
+        featOut.qualifiers[x][sentInd] = newSent  
+  for x in range(0, len(featOut.sub_features)):
+    resMess, resCount, resFeat = qualCheck(featOut.sub_features[x], autoFix)
+    warnOut += resMess
+    warnCount += resCount
+    featOut.sub_features[x] = resFeat
+  if warnOut and autoFix:
+    return warnOut, warnCount, featOut 
+  return warnOut, warnCount, thisFeat   
+          
 
-            foundMRNA = 0
-            locations.append(featLvl1)
 
-            # For each gene
-            if featLvl1.type == "gene":
 
-                for featLvl2 in featLvl1.sub_features:
+def table_annotations(gff3In, out_errorlog, autoFix = True, annoteList = [], removeAnnote = False):
 
-                    for notes in featLvl2.qualifiers:
-                        for i in disallowedChars:
-                            for j in featLvl2.qualifiers[notes]:
-                                if i in j:
-                                    if i == "\n":
-                                        problem = "New Line (Return)"
-                                    elif i == "\t":
-                                        problem = "Tab space"
-                                    elif i == "\r":
-                                        problem = "Carriage return"
-                                    else:
-                                        problem = i
-                                    # errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl2.type, featLvl2.id, str(notes), j, problem))
-                                    errorMessage = errorMessage + (
-                                        "Warning: Character '\"' in qualifiers of %s %s, will not be able to convert to Genbank\n Problem qualifier: %s: %s\n\n"
-                                        % (featLvl1.type, featLvl1.id, str(notes), j)
-                                    )
-                                    numWarning += 1
-
-                    dupCheck = containsHash.get(
-                        (
-                            featLvl2.type
-                            + str(featLvl2.location.start)
-                            + str(featLvl2.location.end)
-                        ),
-                        -1,
-                    )
-                    if dupCheck != -1:
-                        errorMessage = errorMessage + (
-                            "Error: Duplicate %ss in GFF3 file\n  %s ID %s occupies the same space as %s ID: %s\n  Note: if one of these IDs doesn't appear to exist, ensure there are not two of the other\n\n"
-                            % (
-                                featLvl2.type,
-                                dupCheck.type,
-                                dupCheck.id,
-                                featLvl2.type,
-                                featLvl2.id,
-                            )
-                        )
-                        numError += 1
-                    else:
-                        containsHash[
-                            (
-                                featLvl2.type
-                                + str(featLvl2.location.start)
-                                + str(featLvl2.location.end)
-                            )
-                        ] = featLvl2
-
+    annoteTypes = annoteList # Going to see if users leave prepopulated list untouched ["annotation", "remark", "contig"] + annoteList
+    outRec = []
+    
+    for record in list(gffParse(gff3In)):
         numError = 0
         numWarning = 0
-        containsHash = {}
-        locations = []
-        disallowedChars = ["\t", "\n", "\r", "%", ";", "=", "&", ","]
+        remLines = 0
+        errorMessage = ""
+        warnMessage = ""
+        topFeats = []
+        metaFeats = []
+        highestEnd = 0
+        for x in record.features:
+          highestEnd = max(highestEnd, x.location.end)
 
-        # For each record in gff3 parse
-        for record in list(gffParse(gff3In)):
-            # For each feature in record
-            # featLvl1 = Genes, terminator, tRNA
-            # featLvl2 = mRNA
-            # featLvl3 = Exons, CDS, introns, and Shines
-
-            errorMessage = ""
-
-            for featLvl1 in record.features:
-
-                for notes in featLvl1.qualifiers:
-                    for i in disallowedChars:
-                        for j in featLvl3.qualifiers[notes]:
-                            if i in j:
-                                if i == "\n":
-                                    problem = "New Line (Return)"
-                                elif i == "\t":
-                                    problem = "Tab space"
-                                elif i == "\r":
-                                    problem = "Carriage return"
-                                else:
-                                    problem = i
-                                # errorMessage = errorMessage + ("Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n" % (featLvl3.type, featLvl3.id, str(notes), j, problem))
-                                errorMessage = errorMessage + (
-                                    "Warning: Character '\"' in qualifiers of %s %s, will not be able to convert to Genbank\n Problem qualifier: %s: %s\n\n"
-                                    % (featLvl1.type, featLvl1.id, str(notes), j)
-                                )
-                                numWarning += 1
-
-                    # cdsList = []
-                    # exonList = []
-
-                dupCheck = containsHash.get(
-                    (
-                        featLvl3.type
-                        + str(featLvl3.location.start)
-                        + str(featLvl3.location.end)
-                    ),
-                    -1,
-                )
-                if dupCheck != -1:
-                    errorMessage = errorMessage + (
-                        "Error: Duplicate %ss in GFF3 file\n  %s ID %s occupies the same space as %s ID: %s\n  Note: if one of these IDs doesn't appear to exist, ensure there are not two of the other\n\n"
-                        % (
-                            featLvl3.type,
-                            dupCheck.type,
-                            dupCheck.id,
-                            featLvl3.type,
-                            featLvl3.id,
-                        )
-                    )
-                    numError += 1
-                else:
-                    containsHash[
-                        (
-                            featLvl1.type
-                            + str(featLvl1.location.start)
-                            + str(featLvl1.location.end)
-                        )
-                    ] = featLvl1
-
-                foundMRNA = 0
-                locations.append(featLvl1)
-
-                # For each gene
-                if featLvl1.type == "gene":
-
-                    for featLvl2 in featLvl1.sub_features:
-
-                        for notes in featLvl2.qualifiers:
-                            for i in disallowedChars:
-                                for j in featLvl2.qualifiers[notes]:
-                                    if i in j:
-                                        if i == "\n":
-                                            problem = "New Line (Return)"
-                                        elif i == "\t":
-                                            problem = "Tab space"
-                                        elif i == "\r":
-                                            problem = "Carriage return"
-                                        else:
-                                            problem = i
-                                        errorMessage = errorMessage + (
-                                            "Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n"
-                                            % (
-                                                featLvl2.type,
-                                                featLvl2.id,
-                                                str(notes),
-                                                j,
-                                                problem,
-                                            )
-                                        )
-                                        numWarning += 1
-
-                        dupCheck = containsHash.get(
-                            (
-                                featLvl2.type
-                                + str(featLvl2.location.start)
-                                + str(featLvl2.location.end)
-                            ),
-                            -1,
-                        )
-                        if dupCheck != -1:
-                            errorMessage = errorMessage + (
-                                "Error: Duplicate %ss in GFF3 file\n  %s ID %s occupies the same space as %s ID: %s\n  Note: if one of these IDs doesn't appear to exist, ensure there are not two of the other\n\n"
-                                % (
-                                    featLvl2.type,
-                                    dupCheck.type,
-                                    dupCheck.id,
-                                    featLvl2.type,
-                                    featLvl2.id,
-                                )
-                            )
-                            numError += 1
-                        else:
-                            containsHash[
-                                (
-                                    featLvl2.type
-                                    + str(featLvl2.location.start)
-                                    + str(featLvl2.location.end)
-                                )
-                            ] = featLvl2
-
-                        if featLvl2.type == "mRNA":
-                            foundMRNA += 1
-
-                            if featLvl2.location.start != featLvl1.location.start:
-                                errorMessage = (
-                                    errorMessage
-                                    + "Error: mRNA start boundary does not match parent gene's boundary\n  Gene %s Start Boundary: %d\n  mRNA %s Start Boundary: %d\n\n"
-                                    % (
-                                        featLvl1.id,
-                                        featLvl1.location.start,
-                                        featLvl2.id,
-                                        featLvl2.location.start,
-                                    )
-                                )
-                                numError += 1
-
-                            if featLvl2.location.end != featLvl1.location.end:
-                                errorMessage = (
-                                    errorMessage
-                                    + "Error: mRNA end boundary does not match parent gene's boundary\n  Gene %s End Boundary: %d\n  mRNA %s End Boundary: %d\n\n"
-                                    % (
-                                        featLvl1.id,
-                                        featLvl1.location.end,
-                                        featLvl2.id,
-                                        featLvl2.location.end,
-                                    )
-                                )
-                                numError += 1
-
-                            exons = 0
-                            CDS = 0
-                            shines = 0
-                            cdsList = []
-                            exonList = []
-
-                            for featLvl3 in featLvl2.sub_features:
-
-                                for notes in featLvl3.qualifiers:
-                                    for i in disallowedChars:
-                                        for j in featLvl3.qualifiers[notes]:
-                                            if i in j:
-                                                if i == "\n":
-                                                    problem = "New Line (Return)"
-                                                elif i == "\t":
-                                                    problem = "Tab space"
-                                                elif i == "\r":
-                                                    problem = "Carriage return"
-                                                else:
-                                                    problem = i
-                                                errorMessage = errorMessage + (
-                                                    "Warning: Unencoded character in qualifiers of %s %s\n  Problem qualifier: %s: %s --- Unencoded Character: %s\n\n"
-                                                    % (
-                                                        featLvl3.type,
-                                                        featLvl3.id,
-                                                        str(notes),
-                                                        j,
-                                                        problem,
-                                                    )
-                                                )
-                                                numWarning += 1
-
-                                # cdsList = []
-                                # exonList = []
-
-                                dupCheck = containsHash.get(
-                                    (
-                                        featLvl3.type
-                                        + str(featLvl3.location.start)
-                                        + str(featLvl3.location.end)
-                                    ),
-                                    -1,
-                                )
-                                if dupCheck != -1:
-                                    errorMessage = errorMessage + (
-                                        "Error: Duplicate %ss in GFF3 file\n  %s ID %s occupies the same space as %s ID: %s\n  Note: if one of these IDs doesn't appear to exist, ensure there are not two of the other\n\n"
-                                        % (
-                                            featLvl3.type,
-                                            dupCheck.type,
-                                            dupCheck.id,
-                                            featLvl3.type,
-                                            featLvl3.id,
-                                        )
-                                    )
-                                    numError += 1
-                                else:
-                                    containsHash[
-                                        (
-                                            featLvl3.type
-                                            + str(featLvl3.location.start)
-                                            + str(featLvl3.location.end)
-                                        )
-                                    ] = featLvl3
-
-                                if featLvl3.type == "exon":
-                                    exons += 1
-                                    exonList.append(featLvl3)
-                                    if (
-                                        featLvl3.location.start
-                                        < featLvl2.location.start
-                                        or featLvl3.location.start
-                                        > featLvl2.location.end
-                                    ):
-                                        errorMessage += (
-                                            "Error: Exon start falls outside the boundary of parent mRNA\n  %s mRNA Start: %d  -- End: %d\n  %s Exon Start: %d\n\n"
-                                            % (
-                                                featLvl2.id,
-                                                featLvl2.location.start,
-                                                featLvl2.location.end,
-                                                featLvl3.id,
-                                                featLvl3.location.start,
-                                            )
-                                        )
-                                        numError += 1
-                                    elif (
-                                        featLvl3.location.end < featLvl2.location.start
-                                        or featLvl3.location.end > featLvl2.location.end
-                                    ):
-                                        errorMessage += (
-                                            "Error: Exon end falls outside the boundary of parent mRNA\n  %s mRNA Start: %d  -- End: %d\n  %s Exon End: %d\n\n"
-                                            % (
-                                                featLvl2.id,
-                                                featLvl2.location.start,
-                                                featLvl2.location.end,
-                                                featLvl3.id,
-                                                featLvl3.location.end,
-                                            )
-                                        )
-                                        numError += 1
-                                    elif (
-                                        featLvl3.location.start
-                                        != featLvl2.location.start
-                                        and featLvl3.location.end
-                                        != featLvl2.location.end
-                                    ):
-                                        errorMessage += (
-                                            "Error: Exon does not match expected start/end pair based on parent mRNA boundary\n  %s mRNA Start: %d  -- End: %d\n  %s Exon Start: %d  -- End: %d\n\n"
-                                            % (
-                                                featLvl2.id,
-                                                featLvl2.location.start,
-                                                featLvl2.location.end,
-                                                featLvl3.id,
-                                                featLvl3.location.start,
-                                                featLvl3.location.end,
-                                            )
-                                        )
-                                        numError += 1
-
-                                elif featLvl3.type == "CDS":
-                                    CDS += 1
-                                    cdsList.append(featLvl3)
-
-                                    if (
-                                        featLvl3.location.start
-                                        < featLvl2.location.start
-                                        or featLvl3.location.start
-                                        > featLvl2.location.end
-                                    ):
-                                        errorMessage += (
-                                            "Error: CDS start falls outside the boundary of parent mRNA\n  %s mRNA Start: %d  -- End: %d\n  %s CDS Start: %d\n\n"
-                                            % (
-                                                featLvl2.id,
-                                                featLvl2.location.start,
-                                                featLvl2.location.end,
-                                                featLvl3.id,
-                                                featLvl3.location.start,
-                                            )
-                                        )
-                                        numError += 1
-                                    elif (
-                                        featLvl3.location.end < featLvl2.location.start
-                                        or featLvl3.location.end > featLvl2.location.end
-                                    ):
-                                        errorMessage += (
-                                            "Error: CDS end falls outside the boundary of parent mRNA\n  %s mRNA Start: %d  -- End: %d\n  %s CDS End: %d\n\n"
-                                            % (
-                                                featLvl2.id,
-                                                featLvl2.location.start,
-                                                featLvl2.location.end,
-                                                featLvl3.id,
-                                                featLvl3.location.end,
-                                            )
-                                        )
-                                        numError += 1
-
-                            #              elif(featLvl3.type == "Shine_Dalgarno_sequence"):
-                            #                shines += 1 # SHINE GET!
-                            #                if(featLvl3.location.start < featLvl2.location.start or featLvl3.location.start > featLvl2.location.end):
-                            #                  errorMessage += ("Error: Shine Dalgarno start falls outside the boundary of parent mRNA\n  %s mRNA Start: %d  -- End: %d\n  %s Shine Dalgarno Start: %d\n\n" % (featLvl2.id, featLvl2.location.start, featLvl2.location.end, featLvl3.id, featLvl3.location.start))
-                            #                elif(featLvl3.location.end < featLvl2.location.start or featLvl3.location.end > featLvl2.location.end):
-                            #                  errorMessage += ("Error: Shine Dalgarno end falls outside the boundary of parent mRNA\n  %s mRNA Start: %d  -- End: %d\n  %s Shine Dalgarno End: %d\n\n" % (featLvl2.id, featLvl2.location.start, featLvl2.location.end, featLvl3.id, featLvl3.location.end))
-                            #                elif(featLvl3.location.start != featLvl2.location.start and featLvl3.location.end != featLvl2.location.end):
-                            #                  errorMessage += ("Error: Shine Dalgarno does not match expected start/end pair based on parent mRNA boundary\n  %s mRNA Start: %d  -- End: %d\n  %s Shine Dalgarno Start: %d  -- End: %d\n\n" % (featLvl2.id, featLvl2.location.start, featLvl2.location.end, featLvl3.id, featLvl3.location.start, featLvl3.location.end))
-
-                            if (
-                                cdsList
-                            ):  # Interpreter requires this, can't just check against CDS sum
-                                if CDS == 1:
-                                    cdsCheck = cdsList.pop()
-                                    if (
-                                        cdsCheck.location.start
-                                        != featLvl2.location.start
-                                        and cdsCheck.location.end
-                                        != featLvl2.location.end
-                                    ):
-                                        errorMessage += (
-                                            "Error: CDS does not match expected start/end pair based on parent mRNA boundary\n  %s mRNA Start: %d  -- End: %d\n  %s CDS Start: %d  -- End: %d\n\n"
-                                            % (
-                                                featLvl2.id,
-                                                featLvl2.location.start,
-                                                featLvl2.location.end,
-                                                cdsList[0].id,
-                                                cdsList[0].location.start,
-                                                cdsList[0].location.end,
-                                            )
-                                        )
-                                        numError += 1
-                                elif CDS > 1:
-                                    match = False
-                                    for i in CDS:
-                                        cdsCheck = cdsList.pop()
-                                        if (
-                                            cdsCheck.location.start
-                                            != featLvl2.location.start
-                                            or cdsCheck.location.end
-                                            != featLvl2.location.end
-                                        ):
-                                            match = True
-                                    if match == False:
-                                        errorMessage = (
-                                            "Error: Multiple CDS in mRNA %s, but none match expected start/end boundary\n\n"
-                                            % (featLvl2.id)
-                                        ) + errorMessage
-                                        numError += 1
-
-                            else:
-                                errorMessage = (
-                                    "Warning: %s mRNA has no CDS features\n\n"
-                                    % (featLvl2.id)
-                                ) + errorMessage
-                                numWarning += 1
-
-                            if exons > 2:
-                                errorMessage = (
-                                    "Error: %s mRNA has %d exons, expected no more than 2\n\n"
-                                    % (featLvl2.id, exons)
-                                ) + errorMessage
-                                numError += 1
-                            elif exons > 1 and len(exonList) > 1:
-                                if not (
-                                    exonList[0].location.start
-                                    > exonList[1].location.end
-                                    or exonList[1].location.start
-                                    > exonList[0].location.end
-                                ):
-                                    errorMessage = (
-                                        "Error: mRNA has 2 exons, and they don't match the expected start/end boundaries\n  mRNA %s Start: %d -- End: %d\n  Exon %s Start: %d -- End: %d\n  Exon %s Start: %d -- End: %d\n  Expected one exon's start to match the mRNA's start, the other to match its end, and neither to overlap.\n\n"
-                                        % (
-                                            featLvl2.id,
-                                            featLvl2.location.start,
-                                            featLvl2.location.end,
-                                            exonList[0].id,
-                                            exonList[0].location.start,
-                                            exonList[0].location.end,
-                                            exonList[1].id,
-                                            exonList[1].location.start,
-                                            exonList[1].location.end,
-                                        )
-                                    ) + errorMessage
-                                    numError += 1
-                            elif exons == 0:
-                                errorMessage = (
-                                    "Warning: %s mRNA has no exons\n\n" % (featLvl2.id)
-                                ) + errorMessage
-                                numWarning += 1
-                            #            if(shines > 0):
-                            #              errorMessage = ("Error: %s mRNA has %d Shine Dalgarno sequences, expected no more than 1\n\n" % (featLvl2.id, shines))  + errorMessage
-
-                            if exons + CDS + shines == 0:
-                                errorMessage = (
-                                    "Warning: %s mRNA has no sub-features\n\n"
-                                )
-                                numWarning += 1
-
-                        elif featLvl2.type in [
-                            "exon",
-                            "CDS",
-                            "intron",
-                            "Shine_Dalgarno_sequence",
-                        ]:
-                            if (
-                                featLvl2.location.start < featLvl1.location.start
-                                or featLvl2.location.start > featLvl1.location.end
-                            ):
-                                errorMessage += (
-                                    "Error: %s start falls outside the boundary of parent gene\n  %s gene Start: %d  -- End: %d\n  %s %s Start: %d\n\n"
-                                    % (
-                                        featLvl2.type,
-                                        featLvl1.id,
-                                        featLvl1.location.start,
-                                        featLvl1.location.end,
-                                        featLvl2.id,
-                                        featLvl2.type,
-                                        featLvl2.location.start,
-                                    )
-                                )
-                                numError += 1
-                            elif (
-                                featLvl2.location.end < featLvl1.location.start
-                                or featLvl2.location.end > featLvl1.location.end
-                            ):
-                                errorMessage += (
-                                    "Error: %s end falls outside the boundary of parent gene\n  %s gene Start: %d  -- End: %d\n  %s %s End: %d\n\n"
-                                    % (
-                                        featLvl2.type,
-                                        featLvl1.id,
-                                        featLvl1.location.start,
-                                        featLvl1.location.end,
-                                        featLvl2.id,
-                                        featLvl2.type,
-                                        featLvl2.location.end,
-                                    )
-                                )
-                                numError += 1
-                            elif (
-                                featLvl2.location.start != featLvl1.location.start
-                                and featLvl2.location.end != featLvl1.location.end
-                            ):
-                                errorMessage += (
-                                    "Error: %s does not match expected start/end pair based on parent gene boundary\n  %s gene Start: %d  -- End: %d\n  %s %s Start: %d  -- End: %d\n"
-                                    % (
-                                        featLvl2.type,
-                                        featLvl1.id,
-                                        featLvl1.location.start,
-                                        featLvl1.location.end,
-                                        featLvl2.id,
-                                        featLvl2.type,
-                                        featLvl2.location.start,
-                                        featLvl2.location.end,
-                                    )
-                                )
-                                numError += 1
-                            errorMessage = (
-                                "Error: %s sub-feature paired to gene and not mRNA feature\n\n"
-                                % featLvl2.type
-                            ) + errorMessage
-                            numError += 1
-                    if foundMRNA > 1:
-                        errorMessage = (
-                            "Error: Gene %s has more than one mRNA sub-feature\n\n"
-                            % (featLvl1.id)
-                        ) + errorMessage
-                        numError += 1
-                    elif foundMRNA == 0:
-                        errorMessage = (
-                            "Warning: Gene %s has no mRNA Feature\n\n" % (featLvl1.id)
-                        ) + errorMessage
-                        numWarning += 1
-
-        locations.sort(key=lambda x: x.location.start)
-
-        i = 0
-        allowOver = 60
-
-        while locations and i < len(locations) - 1:
-            j = i + 1
-            # To-Do: Check if i/j is tRNA and change below to allow flexibility
-            if j + 1 < len(locations):
-                if locations[i].type == "tRNA" or locations[j].type == "tRNA":
-                    allowOver = 10
-                else:
-                    errorMessage = (
-                        "Warning: %s mRNA has no CDS features\n\n" % (featLvl2.id)
-                    ) + errorMessage
-                    numWarning += 1
-
-                if exons > 2:
-                    errorMessage = (
-                        "Error: %s mRNA has %d exons, expected no more than 2\n\n"
-                        % (featLvl2.id, exons)
-                    ) + errorMessage
-                    numError += 1
-                elif exons > 1 and len(exonList) > 1:
-                    if not (
-                        exonList[0].location.start > exonList[1].location.end
-                        or exonList[1].location.start > exonList[0].location.end
-                    ):
-                        errorMessage = (
-                            "Error: mRNA has 2 exons, and they don't match the expected start/end boundaries\n  mRNA %s Start: %d -- End: %d\n  Exon %s Start: %d -- End: %d\n  Exon %s Start: %d -- End: %d\n  Expected one exon's start to match the mRNA's start, the other to match its end, and neither to overlap.\n\n"
-                            % (
-                                featLvl2.id,
-                                featLvl2.location.start,
-                                featLvl2.location.end,
-                                exonList[0].id,
-                                exonList[0].location.start,
-                                exonList[0].location.end,
-                                exonList[1].id,
-                                exonList[1].location.start,
-                                exonList[1].location.end,
-                            )
-                        ) + errorMessage
-                        numError += 1
-                elif exons == 0:
-                    errorMessage = (
-                        "Warning: %s mRNA has no exons\n\n" % (featLvl2.id)
-                    ) + errorMessage
-                    numWarning += 1
-                #            if(shines > 0):
-                #              errorMessage = ("Error: %s mRNA has %d Shine Dalgarno sequences, expected no more than 1\n\n" % (featLvl2.id, shines))  + errorMessage
-
-                if exons + CDS + shines == 0:
-                    errorMessage = "Warning: %s mRNA has no sub-features\n\n"
-                    numWarning += 1
-
-            elif featLvl2.type in ["exon", "CDS", "intron", "Shine_Dalgarno_sequence"]:
-                if (
-                    featLvl2.location.start < featLvl1.location.start
-                    or featLvl2.location.start > featLvl1.location.end
-                ):
-                    errorMessage += (
-                        "Error: %s start falls outside the boundary of parent gene\n  %s gene Start: %d  -- End: %d\n  %s %s Start: %d\n\n"
-                        % (
-                            featLvl2.type,
-                            featLvl1.id,
-                            featLvl1.location.start,
-                            featLvl1.location.end,
-                            featLvl2.id,
-                            featLvl2.type,
-                            featLvl2.location.start,
-                        )
-                    )
-                    numError += 1
-                elif (
-                    featLvl2.location.end < featLvl1.location.start
-                    or featLvl2.location.end > featLvl1.location.end
-                ):
-                    errorMessage += (
-                        "Error: %s end falls outside the boundary of parent gene\n  %s gene Start: %d  -- End: %d\n  %s %s End: %d\n\n"
-                        % (
-                            featLvl2.type,
-                            featLvl1.id,
-                            featLvl1.location.start,
-                            featLvl1.location.end,
-                            featLvl2.id,
-                            featLvl2.type,
-                            featLvl2.location.end,
-                        )
-                    )
-                    numError += 1
-                elif (
-                    featLvl2.location.start != featLvl1.location.start
-                    and featLvl2.location.end != featLvl1.location.end
-                ):
-                    errorMessage += (
-                        "Error: %s does not match expected start/end pair based on parent gene boundary\n  %s gene Start: %d  -- End: %d\n  %s %s Start: %d  -- End: %d\n"
-                        % (
-                            featLvl2.type,
-                            featLvl1.id,
-                            featLvl1.location.start,
-                            featLvl1.location.end,
-                            featLvl2.id,
-                            featLvl2.type,
-                            featLvl2.location.start,
-                            featLvl2.location.end,
-                        )
-                    )
-                    numError += 1
-                errorMessage = (
-                    "Error: %s sub-feature paired to gene and not mRNA feature\n\n"
-                    % featLvl2.type
-                ) + errorMessage
-                numError += 1
-            if foundMRNA > 1:
-                errorMessage = (
-                    "Error: Gene %s has more than one mRNA sub-feature\n\n"
-                    % (featLvl1.id)
-                ) + errorMessage
-                numError += 1
-            elif foundMRNA == 0:
-                errorMessage = (
-                    "Warning: Gene %s has no mRNA Feature\n\n" % (featLvl1.id)
-                ) + errorMessage
+        for x in record.features:
+          for y in annoteTypes:
+            if x.type == y:
+              metaFeats.append(x)
+              break
+          if not metaFeats or x != metaFeats[-1]:
+              if x.location.end - x.location.start >= highestEnd:
+                warnMessage += "Warning: Feature of type " + x.type + " is not labeled as a metadata type, but runs the entire length of the genome. May cause numerous overlap issues.\n"
                 numWarning += 1
+              topFeats.append(x)
+            
+        topFeats.sort(key=lambda x: x.location.start)
 
-    locations.sort(key=lambda x: x.location.start)
+        for featInd in range(0, len(metaFeats)):
+          resetID = False
+          feat = metaFeats[featInd]
+          if feat.id == "" or feat.id == None:
+            warnMessage += "Warning: No ID found for " + feat.type + " feature at ["+ str(feat.location.start) + ", " + str(feat.location.end) + "].\n"
+            numWarning += 1
+            feat.id = "at location ["+ str(feat.location.start) + ", " + str(feat.location.end) + "] (No ID)"
+            resetID = True
+          resWarn, resNum, featOut = qualCheck(feat, autoFix)
+          warnMessage += resWarn
+          numWarning += resNum
+          if resNum > 0 and autoFix:
+            if resetID:
+              featOut.id = None
+            metaFeats[featInd] = featOut
 
-    i = 0
-    allowOver = 60
-    while locations and i < len(locations) - 1:
-        j = i + 1
-        # To-Do: Check if i/j is tRNA and change below to allow flexibility
-        if j + 1 < len(locations):
-            if locations[i].type == "tRNA" or locations[j].type == "tRNA":
-                allowOver = 10
+        for featInd in range(0, len(topFeats)):
+          feat = topFeats[featInd]
+          if feat.id == "" or feat.id == None:
+            warnMessage += "Warning: No ID found for " + feat.type + " feature at ["+ str(feat.location.start) + ", " + str(feat.location.end) + "].\n"
+            numWarning += 1
+            feat.id = "at location ["+ str(feat.location.start) + ", " + str(feat.location.end) + "] (No ID)"
+
+          resWarn, resNum, featOut = qualCheck(feat, autoFix)
+          warnMessage += resWarn
+          numWarning += resNum
+          if resNum > 0 and autoFix:
+            if resetID:
+              featOut.id = None
+            topFeats[featInd] = featOut
+
+          if str(feat.type).upper() == "CDS" or str(feat.type).upper() == "EXON" or str(feat.type).upper() == "INTRON" or str(feat.type).upper() == "SHINE_DALGARNO_SEQUENCE" or str(feat.type).upper() == "MRNA":
+            errorMessage += "Error: Bad top-level feature " + feat.id + " of type " + feat.type + " at ["+ str(feat.location.start) + ", " + str(feat.location.end) + "].\n"
+            numError += 1
+
+          resErr, resNum, resWarn, resWarnNum = checkParentageBoundaries(feat)
+          errorMessage += resErr
+          numError += resNum
+          warnMessage += resWarn
+          numWarning += resWarnNum
+          resErr, resNum = tooManyFeatCheck(feat)
+          errorMessage += resErr
+          numError += resNum
+          resWarn, resNum = dupCheck(feat)
+          warnMessage += resWarn
+          numWarning += resNum
+          
+ 
+          checkInd = featInd + 1
+          while checkInd < len(topFeats):
+            if feat.location.end < topFeats[checkInd].location.start:
+              checkInd = len(topFeats)
             else:
+              if feat.type == "tRNA" or topFeats[checkInd].type == "tRNA":
+                allowOver = 10
+              else:
                 allowOver = 60
-
-        while j < len(locations):
-            if (locations[i].location.end - locations[j].location.start) >= allowOver:
-                errorMessage = (
-                    "Error: %s %s overlaps %s %s by %d or more bases\n  %s %s Start: %d -- End: %d\n  %s %s Start: %d -- End: %d\n\n"
-                    % (
-                        locations[i].type,
-                        locations[i].id,
-                        locations[j].type,
-                        locations[j].id,
-                        allowOver,
-                        locations[i].type,
-                        locations[i].id,
-                        locations[i].location.start,
-                        locations[i].location.end,
-                        locations[j].type,
-                        locations[j].id,
-                        locations[j].location.start,
-                        locations[j].location.end,
-                    )
-                ) + errorMessage
+              badTop = not((feat.type == "gene" or feat.type == "tRNA") and (topFeats[checkInd].type == "gene" or topFeats[checkInd].type == "tRNA"))
+              if allowOver < abs(feat.location.end - topFeats[checkInd].location.start):
+                errorMessage += "Error: " + feat.type + " " + feat.id +" overlaps " + topFeats[checkInd].type + " " + topFeats[checkInd].id + " by " + str(abs(feat.location.end - topFeats[checkInd].location.start)) + " bases, maximum of " + str(allowOver) + " allowed for " + feat.type + " and " + topFeats[checkInd].type
+                if badTop:
+                  errorMessage += " (Note: Probably caused by bad top-level feature).\n"
+                else:
+                  errorMessage += ".\n"
                 numError += 1
-            elif (
-                locations[i].location.end - locations[j].location.start
-            ) > 0 and allowOver == 10:
-                errorMessage = (
-                    "Warning: %s %s overlaps %s %s, may wish to verify\n  %s %s Start: %d -- End: %d\n  %s %s Start: %d -- End: %d\n\n"
-                    % (
-                        locations[i].type,
-                        locations[i].id,
-                        locations[j].type,
-                        locations[j].id,
-                        locations[i].type,
-                        locations[i].id,
-                        locations[i].location.start,
-                        locations[i].location.end,
-                        locations[j].type,
-                        locations[j].id,
-                        locations[j].location.start,
-                        locations[j].location.end,
-                    )
-                )
-                numWarning += 1
-            j += 1
+              checkInd += 1
 
-        i += 1
-
-    if errorMessage:
-        out_errorlog.write(errorMessage)
-
-    out_errorlog.write(
-        "Finished with %d Errors and %d Warnings" % (numError, numWarning)
-    )
-
+        ##
+        
     # For each terminator/tRNA
     # Bother Cory later
 
+        if removeAnnote and not autoFix:
+          record.annotations = {}
+          outFeats = []
+          for x in record.features:
+            if x.type not in annoteList:
+              outFeats.append(x)
+            else:
+              remLines += 1
+          record.features = outFeats
+
+        if autoFix:
+          finFeats = topFeats + metaFeats
+          if removeAnnote:
+            record.annotations = {}
+            outFeats = []
+            for x in finFeats:
+              if x.type not in annoteList:
+                outFeats.append(x)
+              else:
+                remLines += 1
+            record.features = outFeats
+          else:
+            record.features = finFeats
+          
+          
+        if autoFix or removeAnnote:
+          record.features.sort(key=lambda x: x.location.start)
+          outRec.append(record)
+  
+        out_errorlog.write("=======================================================================\n")  
+        out_errorlog.write("Validation for " + record.id + " finished with " + str(numError) + " errors and " + str(numWarning) + " warnings.\n")
+        if remLines:
+          out_errorlog.write(str(remLines) + " metadata feature(s) removed.\n")
+        out_errorlog.write("=======================================================================\n")
+        out_errorlog.write(errorMessage)
+        out_errorlog.write(warnMessage)
+
+    if autoFix or removeAnnote:
+      gffWrite(outRec)
 
 #  print(dir(record.features))
 if __name__ == "__main__":
@@ -844,5 +329,17 @@ if __name__ == "__main__":
         help="Output Error Log",
         default="test-data/errorlog.txt",
     )
+    parser.add_argument(
+        "--autoFix", action="store_true", help="Fix qualifiers to be genbank compatible"
+    )
+    parser.add_argument(
+        "--annoteList", type=str, help="Annotation feature types (ie, Don't QC these features)", default=""
+    )
+    parser.add_argument(
+        "--removeAnnote", action="store_true", help="Remove Annotations", default=""
+    )
     args = parser.parse_args()
+    if args.annoteList:
+      args.annoteList = args.annoteList.split(" ")
+    
     table_annotations(**vars(args))

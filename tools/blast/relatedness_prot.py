@@ -81,7 +81,8 @@ def expand_taxIDs(blast):
         # if(len(data[4]) > 0):
         #  print(data[0])
         for ID in data[4]:
-            yield [data[0], data[1], data[2], data[3], int(ID)]
+            if ID != "N/A":
+              yield [data[0], data[1], data[2], data[3], int(ID)]
 
 
 def expand_titles(blast):
@@ -116,11 +117,11 @@ def scoreMap(blast):
     c = {}
     m = {}
     for (qseq, subID, subTitle, access, ID) in blast:
-        if (subTitle, ID) not in c:
-            m[(subTitle, ID)] = access
-            c[(subTitle, ID)] = 0
+        if (str(subTitle), ID) not in c:
+            m[(str(subTitle), ID)] = access
+            c[(str(subTitle), ID)] = 0
 
-        c[(subTitle, ID)] += 1
+        c[(str(subTitle), ID)] += 1
     return c, m
 
 
@@ -133,6 +134,7 @@ if __name__ == "__main__":
     parser.add_argument("--access", action="store_true")
     parser.add_argument("--protein", action="store_true")
     parser.add_argument("--canonical", action="store_true")
+    parser.add_argument("--noFilter", action="store_true")
     #parser.add_argument("--title", action="store_true") # Add when ready to update XML after semester
     parser.add_argument("--hits", type=int, default=5)
     
@@ -152,6 +154,11 @@ if __name__ == "__main__":
         sciName.append(line[1])
         line = phageDb.readline()
 
+    line = args.blast.readline()
+    line = line.split("\t")
+    nameRec = line[0]
+    args.blast.seek(0)
+
     if args.protein:
         splitId = split_identifiers_prot
         # phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
@@ -169,7 +176,8 @@ if __name__ == "__main__":
     
     data = expand_taxIDs(data)
     data = remove_dupes(data)
-    data = filter_phage(data, phageTaxLookup, sciName)
+    if not args.noFilter:
+        data = filter_phage(data, phageTaxLookup, sciName)
     listify = []
     for x in data:
         listify.append(x)
@@ -181,7 +189,7 @@ if __name__ == "__main__":
     
     sys.stdout.write(
             "Top %d matches for BLASTp results of %s\n"
-            % (args.hits, listify[0][0])
+            % (args.hits, nameRec)
         )
     header = "# TaxID\t"
     #if args.title:
