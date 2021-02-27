@@ -2,6 +2,7 @@ from Bio.SeqFeature import FeatureLocation, CompoundLocation
 from Bio import SeqIO, SeqFeature, SeqRecord
 from Bio.Seq import Seq, UnknownSeq
 from collections import OrderedDict
+from collections.abc import Iterable
 import sys
 try:
   import urllib.parse
@@ -12,7 +13,8 @@ except:
 
 disallowArray = ["&", ",", ";", "="]
 validArray = ["%26", "%2C", "%3B", "%3D"]
-encoders = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890"
+encoders = "ABCDEF1234567890"
+metaAnnotes = ["attribute-ontology", "source-ontology", "feature-ontology", "species", "gff-version"] #Genome-build expects a tuple
 
 validID = '.:^*$@!+_?-|'
 
@@ -111,6 +113,49 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         )
 
 
+def writeMetaQuals(qualList): 
+    outLines = ""
+    for x in qualList.keys():
+      if x == "sequence-region":
+        try:
+          if isinstance(qualList[x], str):
+            if qualList[x][0] == "(" and qualList[x][-1] == ")":
+              fields = (qualList[x][1:-1]).split(" ") 
+            else:
+              fields = qualList[x].split(" ")
+            if len(fields[0]) > 2 and fields[0][0] in ["'", '"'] and fields[0][0] == fields[0][-1]:
+              fields[0] = fields[0][1:-1]
+          
+            if "%" in fields[1]:
+              fields[1] = int(fields[1][:fields[1].find("%")])
+            elif "," in fields[1]:
+              fields[1] = int(fields[1][:fields[1].find("%")])
+            else:
+              fields[1] = int(fields[1])
+
+            if "%" in fields[2]:
+              fields[2] = int(fields[2][:fields[2].find("%")])
+            else:
+              fields[2] = int(fields[2])
+
+          else:
+            fields = qualList[x]
+          outLines += "##sequence-region %s %d %d\n" % (fields[0], fields[1], fields[2])
+        except:
+          sys.stderr.write("Annotation Error: Unable to parse sequence-region in metadata feature. Value was %s" % (qualList[x]))
+        
+      elif x != "gff-version":
+        outLines += "##%s" % (x)
+        if isinstance(qualList[x], str):
+          outLines += " %s" % (qualList[x])
+        elif isinstance(qualList[x], Iterable):
+          for i in qualList[x]:
+            outLines += " %s" % (str(i))
+        else:
+          outLines += " %s" % (str(qualList[x]))
+        outLines += "\n"
+    return outLines  
+
 def validateID(idIn):
     badChar = []
     for x in idIn:
@@ -141,20 +186,113 @@ def validateQual(qualIn):
           badChar.append(x)
     return badChar 
 
+def rAddDict(lDict, rDict):
+    for x in rDict.keys():
+      val = lDict.get(x, [])
+      val += rDict[x]
+      lDict[x] = val
+    return lDict
+
+def checkCycle(orgDict):
+  badOrgs = {}
+  for org in orgDict.keys():
+    for feat in orgDict[org]:
+      if foundID(feat, feat.id):
+        if org in badOrgs.keys():
+           badOrgs[org].append(feat.id)
+        else:
+           badOrgs[org] = [feat.id]
+          
+  return badOrgs
+
+def resolveParent(orgDict, indexDict):
+  errOut = ""
+  for org in indexDict.keys():
+    for ind in indexDict[org]:
+      for x in orgDict[org][ind].qualifiers['Parent']:
+        for y in orgDict[org]:
+          found = False
+          if "ID" in y.qualifiers.keys() and x in y.qualifiers["ID"]:
+            y.sub_features.append(orgDict[org][ind])
+            found = True
+            break
+        if not found:
+          errOut += ("Organism %s: Unable to find parent %s of feature %s\n" % (org, x, orgDict[org][ind].id))
+  cycles = checkCycle(orgDict)
+  if cycles.keys() != []:
+    for x in cycles.keys():
+      errOut += ("Organism %s: Cycle/ loop of features found involving feature IDs %s.\n" % (x, str(cycles[x])[1:-1]))
+  if errOut != "":
+    return None, errOut
+  return orgDict, None
+
+def foundID(featIn, topID):
+  if not len(featIn.sub_features):
+    return False
+  for x in featIn.sub_features:
+    if x.id == topID:
+      return True
+    for y in x.sub_features:
+      if foundID(y, topID):
+        return True
+  return False
+
+# A check for if an unencoded semicolon made it into the body of a qualifier value
+# Sometimes occurs from manually edited Notes qualifiers
 def encodeFromLookahead(remLine):
     for x in remLine:
       if x == "=":
         return False
-      if x == ";" or x == ",":
+      if x in ";,":
         return True
-    return True
+    return True # x == newline or EOF
 
-def lineAnalysis(line):
+def isNum(evalString):
+  for x in range(0, len(evalString)): 
+    if not(ord(evalString[x]) > 47 and ord(evalString[x]) < 58):
+      return False
+  return True
+
+def qualsToAnnotes(inDict, feat, orgID):
+  for x in feat.qualifiers.keys():
+      if x not in inDict.keys():
+        dictVal = " ".join(feat.qualifiers[x])
+        outStr = writeMetaQuals({x: dictVal})
+        if outStr == "":
+          if x == "gff-version":
+            outStr = feat.qualifiers[x][0]
+          else:
+            continue  
+        else:
+          outStr = outStr[outStr.find(" ") + 1:-1]
+        inDict[x] = [[outStr, orgID]]
+      else:
+        contains = False
+        for pragma in inDict.keys():
+          for val in inDict[pragma]:
+            if orgID in val[1:]:
+              contains = True
+              break 
+        if not contains:
+          dictVal = " ".join(feat.qualifiers[x])
+          outStr = writeMetaQuals({x: dictVal})
+          if outStr == "":
+            if x == "gff-version":
+              outStr = feat.qualifiers[x][0]
+            else:
+              continue 
+          else:
+            outStr = outStr[outStr.find(" ") + 1:-1]
+          inDict[x].append([outStr, orgID])
+  return inDict  
+
+
+def lineAnalysis(line, codingTypes = ["CDS"]):
     IDName = ""
     startLoc = -1
     endLoc = -1
     scoreIn = 0.0
-    if len(line) == 0 or line == "\n":
+    if len(line.strip()) == 0 or line.strip() == "\n":
       return None, None, None
     if line[0] == "#":
       if len(line) > 2 and line[1] == "#":
@@ -162,59 +300,59 @@ def lineAnalysis(line):
       # else handle ## Pragmas
       else: 
         return None, None, None
-        
-
     errorMessage = ""
 
     fields = line.split("\t")
     if len(fields) != 9:
-      errorMessage += "GFF3 is a 9-column tab-separated format, line has " + str(len(fields)) + " columns.\n"
+      errorMessage += "GFF3 is a 9-column tab-separated format, line has %d columns.\n" % (len(fields))
       if len(fields) > 9:
         errorMessage += "Possible unescaped tab in a qualifier field.\n"
         return errorMessage, None, None
 
     for x in range(0, len(fields)):
       if fields[x] == "":
-        errorMessage += "Field #" + str(x + 1) + " is empty. Please supply correct or default value.\n"
+        errorMessage += "Field #%d is empty. Please supply correct or default value.\n" % (x + 1)
     if errorMessage != "":
       return errorMessage, None, None
 
     idEval = validateID(fields[0])
     if len(idEval) != 0:
-      errorMessage += "Organism ID contains the following invalid characters: " + str(idEval) + ".\n"
+      errorMessage += "Organism ID contains the following invalid characters: %s\n" % (idEval)
 
     # fields[1]
     
     # fields[2]
 
-    isNum = True
-    uncert = 0
-    for x in range(0, len(fields[3])):  
-      if x == 0 and fields[3][0] in "<>":
-        uncert = 1
-        continue
-      if not(ord(fields[3][x]) > 47 and ord(fields[3][x]) < 58):
-        errorMessage += "Feature location start contains non-numeric character.\n"
-        isNum = False
-        break
-    if isNum:
-      startLoc = int(fields[3][uncert:])
+    # fields[3]
     
-    isNum = True
-    uncert = 0
-    for x in range(0, len(fields[4])):
-      if x == 0 and fields[4][0] in "<>":
-        uncert = 1
-        continue
-      if not(ord(fields[4][x]) > 47 and ord(fields[4][x]) < 58):
-        errorMessage += "Feature location end contains non-numeric character.\n"
-        isNum = False
-        break
-    if isNum:
-      endLoc = int(fields[4][uncert:])
+    if fields[3][0] in "<>":
+      uncert = 1
+      fields[3] = (fields[3][1:]).strip()
+    else:
+      uncert = 0
+      fields[3].strip()
 
-    if endLoc < startLoc:
-      errorMessage += "Feature Location end is less than start (GFF  spec requires all features, regardless of strand, to have the lower number as the start).\n"
+    if isNum(fields[3]):
+      startLoc = int(fields[3])
+    else:
+      errorMessage += "Feature location start contains non-numeric character.\n"
+
+    # fields[4]
+    
+    if fields[4][0] in "<>":
+      uncert = 1
+      fields[4] = (fields[4][1:]).strip()
+    else:
+      uncert = 0
+      fields[4].strip()
+
+    if isNum(fields[4]):
+      endLoc = int(fields[4])
+    else:
+      errorMessage += "Feature location start contains non-numeric character.\n"
+
+    if startLoc >= 0 and endLoc >= 0 and endLoc < startLoc:
+      errorMessage += "Feature Location end is less than start (GFF spec requires all features, regardless of strand, to have the lower number as the start).\n"
 
     # fields[5]
     if fields[5] != ".":
@@ -224,19 +362,21 @@ def lineAnalysis(line):
         scoreIn = 0.0
         errorMessage += "Score field could not be interpreted as a floating-point (real) number. Ensure notation is correct.\n"
 
-    if len(fields[6]) != 1 or (not(fields[6] in '-+.?')):
-      errorMessage += "Feature strand must be '+', '-', '.', or '?', actual value is '" + fields[6] + "'.\n"
-      
-
+    # fields[6]
+    if fields[6] not in ['-', '+', '.', '?']:
+      errorMessage += "Feature strand must be '+', '-', '.', or '?', actual value is '%s'.\n" % (fields[6])
     
+    # fields[7]
     if fields[7] not in ['.', '0', '1', '2']:
-      errorMessage += "Expected 0, 1, 2, or . for Phase field value, actual value is '" + fields[7] + "'.\n"
-    elif fields[7] =='.' and fields[1] == "CDS":
-      errorMessage += "Expected 0, 1, or 2 in Phase field for CDS-type feature, actual value is '" + fields[7] + "'.\n"
+      errorMessage += "Expected 0, 1, 2, or . for Phase field value, actual value is '%s'.\n" % (fields[7])
+    elif fields[7] =='.' and fields[1] in codingTypes:
+      errorMessage += "Expected 0, 1, or 2 in Phase field for %s-type feature, actual value is '%s'.\n" % (fields[1], fields[7])
     if fields[7] == '.':
       shiftIn = 0
     else:
       shiftIn = int(fields[7])
+
+    # fields[8]
 
     keyName = ""
     valNames = [""]
@@ -317,37 +457,51 @@ def lineAnalysis(line):
       featLoc = FeatureLocation(startLoc - 1, endLoc, strand = -1)
     else:
       featLoc = FeatureLocation(startLoc - 1, endLoc, strand = 0)
-     
-    
 
+    if "Parent" in qualDict.keys():
+      for x in qualDict["Parent"]:
+        if x == IDName:
+          errorMessage += "Feature lists itself as a sub_feature, cycles/loops not permitted in GFF format.\n"
+     
     if errorMessage != "":
       return errorMessage, None, None
     return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, shiftIn, scoreIn, fields[1])   
         
-def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
-    fastaDirective = False
+def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, codingTypes=["CDS"], metaTypes = ["remark"], pragmaPriority = True, overridePriority = 0):
+    fastaDirective = False # Once true, must assume remainder of file is a FASTA, per spec
     errOut = ""
-    featList = []
-    featInd = 0
-    seekingParent = []
+    warnOut = ""
     lineInd = 0
-    orgDict = {}
-    seekParentDict = {}
-    indDict = {}
+    pragmaAnnotesDict = {} # Annotations dictionaries, one for ones derived via pragmas and another for ones derived from meta features
+    metaAnnotesDict = {}   # Keys are annotation title, values are a list of lists, where the first entry in a list is the value, and 
+                           # the rest the orgIDs which correspond to the value
+    orgDict = {} # Dictionary of orgIDs, with a list of their features (Top-level or otherwise) as its value
+    finalOrg = {}
+    seekParentDict = {} # Dictionary of orgIDs, with a list of indexes in the equivalent orgDict list which are subfeatures
     seqDict = {}
-    regionDict = {}
+    regionDict = {} # Dictionary of max length for records (For handling circular and bound checking)
+                    # Values are (maxVal, status), where status is 0 if maxVal is derived from features, 1 if derived from sequence-region 
+                    # pragma (Enforce this boundary), or -1 if derived from a feature with is_circular (Unable to construct record)
     currFastaKey = ""
     
+    if pragmaPriority:  # In cases where pragmas and meta-features conflict, such as sequence-region
+      pragBit = 1       # pragmas will take priority
+      annoteBit = 0
+    else:               # Else meta features will
+      pragBit = 0       # Split into ints to cleanly slot into regionDict format
+      annoteBit = 1
 
     for line in gff3In:
       lineInd += 1
       err = None
       prag = None
       res = None
+
+      ### FASTA Pragma Handling
       if line[0] == ">":	# For compatibility with Artemis-style GFF
         fastaDirective = True
       if not fastaDirective:
-        err, prag, res = lineAnalysis(line)
+        err, prag, res = lineAnalysis(line, codingTypes)
       else:
         if line[0] == ">":
           currFastaKey = line[1:-1]
@@ -357,96 +511,169 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
           continue
         elif line:
           seqDict[currFastaKey] += (line[:-1]).strip()
+      ### Error message construction
       if err:
-        errOut += ("Line " + str(lineInd) + ": " + err + "\n")
+        errOut += "Line %d: %s\n" % (lineInd, err)
+      ### Pragma handling
       if prag and not res:
         prag = prag.split(" ")
         if prag[0] == "FASTA":
           fastaDirective = True
         elif prag[0] == "sequence-region":
-          regionDict[prag[1]] = [int(prag[2]) - 1, int(prag[3])]
+          regionDict[prag[1]] = (int(prag[2]) - 1, int(prag[3]), pragBit)
+        elif prag[0] == "#":
+          orgDict, resolveErr = resolveParent(orgDict, seekParentDict)
+          if resolveErr:
+            errOut += resolveErr
+          finalOrg = rAddDict(finalOrg, orgDict)
+          seekParentDict = {}
+          orgDict = {}   
+        elif prag[0] in pragmaAnnotesDict.keys():
+          dictVal = " ".join(prag[1:])
+          pragmaAnnotesDict[prag[0]].append([dictVal])
+        else:
+          dictVal = " ".join(prag[1:])
+          pragmaAnnotesDict[prag[0]] = [[dictVal]]
+      ### Feature Handling
       if res:
-        if prag not in indDict.keys():
-          indDict[prag] = 0
+        if suppressMeta == 2 and res.type in metaTypes:
+          continue
+        if prag not in orgDict.keys():
           orgDict[prag] = [res]
           seekParentDict[prag] = []
           seqDict[prag] = ""
+          for x in pragmaAnnotesDict.keys():
+            if prag in pragmaAnnotesDict[x][-1]:
+              continue
+            pragmaAnnotesDict[x][-1].append(prag)
+          if prag not in regionDict.keys() or (prag in regionDict.keys() and regionDict[prag][-1] != 1):
+              if res.qualifiers.get("sequence-region") and res.type in metaTypes:
+                fields = res.qualifiers["sequence-region"][0].split(" ")
+                regStr = writeMetaQuals({"sequence-region": res.qualifiers["sequence-region"][0]})
+                regStr = regStr[regStr.find(" ") + 1:-1]
+                fields = regStr.split(" ")
+                regionDict[prag] = (int(fields[1]) - 1, int(fields[2]), annoteBit)
+              elif res.qualifiers.get("is_circular") == ['True']:
+                regionDict[prag] = (0, int(res.location.end), -1)
+              else:
+                regionDict[prag] = (0, int(res.location.end), 0)
+          if suppressMeta <= 1 and res.type in metaTypes:
+            qualsToAnnotes(metaAnnotesDict, res, prag)
+            if suppressMeta == 1:
+              orgDict[prag] = []
           if "Parent" in res.qualifiers.keys():
-              seekParentDict[prag].append(indDict[prag])
-        else:
+              seekParentDict[prag].append(0)  
+        else: # Check if it's possible to resolve as a CompoundLocation feature
+          if suppressMeta <= 1 and res.type in metaTypes:
+            qualsToAnnotes(metaAnnotesDict, res, prag)
+            if suppressMeta == 1:
+              break  
           incInd = True
+          if regionDict[prag][2] < 1:
+            if res.qualifiers.get("is_circular") == ['True'] and int(res.location.end) > regionDict[prag][1]:
+                regionDict[prag] = (0, int(res.location.end), -1)
+            elif int(res.location.end) > regionDict[prag][1]: # Can't just max() or else we'll maybe overwrite -1 status
+                regionDict[prag] = (0, int(res.location.end), 0)
           if res.id:
             for x in range(0, len(orgDict[prag])):
               if res.id == orgDict[prag][x].id:
                 if orgDict[prag][x].type != res.type:
-                  errOut += ("Line " + str(lineInd) + ": Duplicate IDs in file but differing types. Cannot assume CompoundFeature/ join location, please resolve type descrepancy or de-duplicate ID " + res.id + ".\n")
+                  errOut += ("Line %d: Duplicate IDs in file but differing types. Cannot assume CompoundFeature/ join location, please resolve type descrepancy or de-duplicate ID %d.\n" % (lineInd, res.id))
                 orgDict[prag][x].location = orgDict[prag][x].location + res.location
-                incInd = False
+                incInd = False 
                 break
           if incInd:
-            indDict[prag] += 1
             orgDict[prag].append(res)
             if "Parent" in res.qualifiers.keys():
-              seekParentDict[prag].append(indDict[prag])
+              seekParentDict[prag].append(len(orgDict[prag])-1)
+    
+    orgDict, resolveErr = resolveParent(orgDict, seekParentDict)
+    if resolveErr:
+      errOut += resolveErr
+    finalOrg = rAddDict(finalOrg, orgDict)
+          
+    for x in regionDict.keys():
+      if seqDict[x] != "":
+        regionDict[x] = (0, len(seqDict[x]), 1)  # Make FASTA the final arbiter of region if present
+    for x in regionDict.keys():
+      if regionDict[x][2] == -1:
+        errOut += "Organism %s: No sequence-region specified and last feature is labeled circular, unable to infer organism length.\n" % (x)       
+
+    for x in finalOrg.keys():
+      for i in finalOrg[x]:
+        circ = False
+        badIDs = []
+        checkList = [i]
+        for j in checkList: # make is_circular retroactively applicable to all features in a tree
+          for k in j.sub_features:
+            checkList.append(k)
+          if j.qualifiers.get("is_circular") == ['True']:
+            circ = True
+            break
+          if int(j.location.start) < regionDict[x][0] or int(j.location.end) > regionDict[x][1]:
+            badIDs.append(j.id)
+      if badIDs != [] and circ == False:
+        errOut += "Organism %s: The following features fall outside of the specified sequence region: %s.\n" % (x, str(badIDs)[1:-1])     
+         
+
     if errOut:
       outStream.write(errOut + "\n")
-      raise Exception("Failed GFF Feature Parsing, error log output to stderr")
-    for org in seekParentDict.keys():
-      for ind in seekParentDict[org]:
-        for x in orgDict[org][ind].qualifiers['Parent']:
-          for y in orgDict[org]:
-            found = False
-            if "ID" in y.qualifiers.keys() and x in y.qualifiers["ID"]:
-              y.sub_features.append(orgDict[org][ind])
-              found = True
-              break
-          if not found:
-            raise Exception("Unable to find parent " + x + " of feature " + orgDict[org][ind].id)
-
+      raise Exception("Failed GFF Feature Parsing, error log output to stderr\n")
     res = []
-    for x in orgDict.keys():
+    for x in finalOrg.keys():
       finalOrgHeirarchy = []
       annoteDict = {}
-      for i in orgDict[x]:
+      for pragma in pragmaAnnotesDict.keys():
+        for vals in pragmaAnnotesDict[pragma]:
+          if x in vals[1:]:
+            annoteDict[pragma]=vals[0]
+            break
+      for pragma in metaAnnotesDict.keys():
+        for vals in metaAnnotesDict[pragma]:
+          if x in vals[1:]:
+            if pragma in annoteDict.keys():
+              if overridePriority == 2:
+                annoteDict[pragma]=vals[0]
+                break
+            else:
+              annoteDict[pragma]=vals[0]
+      for i in finalOrg[x]:
         if "Parent" not in i.qualifiers.keys():
           finalOrgHeirarchy.append(i)
+          if i.type in metaTypes:
+            if overridePriority != 1:
+              for key in annoteDict.keys():
+                if key not in finalOrgHeirarchy[-1].qualifiers.keys():
+                  finalOrgHeirarchy[-1].qualifiers[key] = [annoteDict[key]]
+            else:
+              for key in annoteDict.keys():
+                finalOrgHeirarchy[-1].qualifiers[key] = [annoteDict[key]]
+            
       if seqDict[x]:
         if x in regionDict.keys():
-          annoteDict["sequence-region"] = (x, regionDict[x][0], regionDict[x][1])
+          annoteDict["sequence-region"] = "%s %s %s" % (x, regionDict[x][0] + 1, regionDict[x][1])
           if len(seqDict[x]) < regionDict[x][1] - regionDict[x][0]:
             seqDict[x] += "?" * (regionDict[x][1] - regionDict[x][0] - len(seqDict[x]))
           else:
             seqDict[x] = seqDict[x][regionDict[x][0]:regionDict[x][1]]
         else:
-          annoteDict["sequence-region"] = (x, 0, len(seqDict[x]))
+          annoteDict["sequence-region"] = (x, 1, int(len(seqDict[x])))
         seqDict[x] = Seq(seqDict[x])
       elif x in regionDict.keys():
-        annoteDict["sequence-region"] = (x, regionDict[x][0], regionDict[x][1])
+        annoteDict["sequence-region"] = (x, regionDict[x][0] + 1, regionDict[x][1])
         seqDict[x] = UnknownSeq(regionDict[x][1] - regionDict[x][0])
       else:
         seqDict[x] = None
+      
       res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, annoteDict, None))
     standaloneList = []
     for x in regionDict.keys():
-      if x not in orgDict.keys():
+      if x not in finalOrg.keys():
         standaloneList.append(x)
-    """for x in standaloneList:
-      annoteDict = {}
-      annoteDict["sequence-region"] = (x, regionDict[x][0], regionDict[x][1])
-      if x in seqDict.keys():
-        if len(seqDict[x]) < regionDict[x][1] - regionDict[x][0]:
-          seqDict[x] += "?" * (regionDict[x][1] - regionDict[x][0] - len(seqDict[x]))
-        else:
-          seqDict[x] = seqDict[x][regionDict[x][0]:regionDict[x][1]]
-      else:
-        seqDict[x] = UnknownSeq(regionDict[x][1] - regionDict[x][0])
-      res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, None, annoteDict, None))
-    """
+    
     for x in base_dict.keys():
-      found = False
       for y in res:
         if x == y.id:
-          found = True
           y.name = base_dict[x].name
           y.description = base_dict[x].description
           y.seq = base_dict[x].seq
@@ -455,7 +682,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr):
 
     return res
 
-def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = None, outStream = sys.stdout, parents = None):
+def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = None, outStream = sys.stdout, parents = None, codingTypes = ["CDS"]):
     for loc in inFeat.location.parts:
       line = orgName + "\t"
       if source:
@@ -474,7 +701,7 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
         line += str(score) + "\t"
       else:
         line += ".\t"
-      if inFeat.location.strand == None:
+      if inFeat.location.strand == 0:
         line += ".\t"
       elif inFeat.location.strand == 1:
         line += "+\t"
@@ -482,10 +709,13 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
         line += "-\t"
       else: 
         line += "?\t"
-      if shift or shift == 0:
+      if inFeat.type in codingTypes: 
+        if shift or shift == 0:
+          line += str(shift) + "\t"
+        else:
+          line += "0\t"
+      elif shift != 0:
         line += str(shift) + "\t"
-      elif inFeat.type == "CDS":
-        line += "0\t"
       else:
         line += ".\t"
       if parents and "Parent" not in inFeat.qualifiers.keys():
@@ -506,9 +736,7 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
               encoded = str(hex(ord(valChar)))
               line += "%" + encoded[2:].upper()
             else:
-              line += valChar
-          #print(line)
-        
+              line += valChar        
           if ind < len(inFeat.qualifiers[qual]) - 1:
             line += ","
           else:
@@ -519,19 +747,81 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
       for x in inFeat.sub_features:
         printFeatLine(x, orgName, x.source, x.score, x.shift, outStream, inFeat)
 
-def gffWrite(inRec, outStream = None):
-    if not outStream:
-      outStream = sys.stdout
-    outStream.write("##gff-version 3\n")
+def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=False, codingTypes = ["CDS"], metaTypes = ["remark"], validPragmas = None, recPriority = True, createMetaFeat=None):
+
+    writeFasta = False
+    verOut = "3"
+    firstRec = True
+
     if not inRec:
+      outStream.write("##gff-version 3\n")
       return
     if type(inRec) != list:
       inRec = [inRec]
     for rec in inRec:
-      if "sequence-region" in rec.annotations.keys():
-        outStream.write("##sequence-region " + rec.annotations["sequence-region"][0] + " " + str(rec.annotations["sequence-region"][1] + 1) + " " + str(rec.annotations["sequence-region"][2]) + "\n")
-      #else make one up based on feature locations?
-      elif rec.seq:
-        outStream.write("##sequence-region " + rec.id + " 1 " + str(len(rec.seq)) +"\n")
+      if not isinstance(rec.seq, UnknownSeq):
+        writeFasta = True
+      
+      seenList = []
+      outList = {}
+      if suppressMeta < 2:
+        outList = rec.annotations
+        #outStr = writeMetaQuals(rec.annotations) 
+        #outStream.write(outStr)
+        metaFeats = []
+        for feat in rec.features:
+          if feat.type in metaTypes:
+            metaFeats.append(feat)
+        for feat in metaFeats:
+          for x in feat.qualifiers.keys():
+            if recPriority == False or x not in outList.keys():
+              outList[x] = " ".join(feat.qualifiers[x])
+        
+        if "gff-version" in outList.keys() and outList["gff-version"] != verOut:
+          verOut = outList["gff-version"]
+          outStream.write("##gff-version %s\n" % verOut)
+        elif firstRec:
+          outStream.write("##gff-version %s\n" % verOut)
+        if validPragmas == None:
+          outStr = writeMetaQuals(outList)
+        else:
+          whiteList = {}
+          for x in outList.keys():
+            if x in validPragmas:
+              whiteList[x] = outList[x]
+          outStr = writeMetaQuals(whiteList)
+          outList = whiteList
+        if outStr == "":
+          continue 
+        outStream.write(outStr)
+
+      elif firstRec:
+        outStream.write("##gff-version 3\n")
+
+      foundMeta = False
+      if createMetaFeat != None:
+        for key in outList.keys():  # Change to GFF format qualifier dict
+          outList[key] = [outList[key]]
+        for feat in rec.features:
+          if feat.type in metaTypes:
+            foundMeta = True
+            for key in outList.keys():
+              if recPriority or key not in feat.qualifiers.keys():
+                feat.qualifiers[key] = outList[key]
+            break
+        
+        if not foundMeta:
+          tempSeq = gffSeqFeature(FeatureLocation(0, len(rec.seq), 0), createMetaFeat, '', 0, None, outList, None, None, None, None, None, "CPT_GFFParse") 
+          printFeatLine(tempSeq, rec.id, source = tempSeq.source, score = tempSeq.score, shift = tempSeq.shift, outStream = outStream)
+
       for feat in rec.features:
-          printFeatLine(feat, rec.id, source = feat.source, score = feat.score, shift = feat.shift, outStream = outStream)        
+          if suppressMeta > 0 and feat.type in metaTypes:
+            continue  
+          printFeatLine(feat, rec.id, source = feat.source, score = feat.score, shift = feat.shift, outStream = outStream)   
+      firstRec = False 
+    if writeFasta and not suppressFasta:
+      outStream.write("##FASTA\n")
+      for rec in inRec:
+        rec.description = ""
+        if not isinstance(rec.seq, UnknownSeq):
+          SeqIO.write(rec, outStream, "fasta")
