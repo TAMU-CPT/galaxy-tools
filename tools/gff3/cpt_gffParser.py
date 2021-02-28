@@ -154,12 +154,12 @@ def writeMetaQuals(qualList):
       elif x != "gff-version":
         outLines += "##%s" % (x)
         if isinstance(qualList[x], str):
-          outLines += " %s" % (qualList[x])
+          outLines += " %s" % (qualList[x].replace("\n", " "))
         elif isinstance(qualList[x], Iterable):
           for i in qualList[x]:
-            outLines += " %s" % (str(i))
+            outLines += " %s" % (str(i).replace("\n", " "))
         else:
-          outLines += " %s" % (str(qualList[x]))
+          outLines += " %s" % (str(qualList[x]).replace("\n", " "))
         outLines += "\n"
     return outLines  
 
@@ -782,7 +782,7 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
       for x in inFeat.sub_features:
         printFeatLine(x, orgName, x.source, x.score, x.shift, outStream, inFeat)
 
-def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=False, codingTypes = ["CDS"], metaTypes = ["remark"], validPragmas = None, recPriority = True, createMetaFeat=None):
+def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True, codingTypes = ["CDS"], metaTypes = ["remark"], validPragmas = None, recPriority = True, createMetaFeat=None):
 
     writeFasta = False
     verOut = "3"
