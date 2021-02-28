@@ -238,7 +238,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                   if feat.strand == -1:
                     yield [
                       SeqRecord(
-                          (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
+                          seq=Seq(rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
                           id=id.replace(" ", "-"),
                           description=description,
                       )
@@ -247,7 +247,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     yield [
                       SeqRecord(
                           #feat.extract(rec).seq,
-                          rec.seq[feat.location.start + feat.shift: feat.location.end],
+                          seq=Seq(rec.seq[feat.location.start + feat.shift: feat.location.end]),
                           id=id.replace(" ", "-"),
                           description=description,
                       )
@@ -268,4 +268,9 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     for seq in main(**vars(args)):
-        SeqIO.write(seq, sys.stdout, "fasta")
+        #if isinstance(seq, list):
+        #  for x in seq:
+        #    print(type(x.seq))
+        #    SeqIO.write(x, sys.stdout, "fasta")
+        #else:
+          SeqIO.write(seq, sys.stdout, "fasta")
