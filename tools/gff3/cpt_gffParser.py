@@ -3,7 +3,8 @@
 #
 # Distributed under the BSD 3-Clause License, see included LICENSE file
 
-from Bio import SeqIO, SeqFeature, SeqRecord
+from Bio import SeqIO, SeqFeature
+from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import FeatureLocation, CompoundLocation
 from Bio.Seq import Seq, UnknownSeq
 from collections import OrderedDict
