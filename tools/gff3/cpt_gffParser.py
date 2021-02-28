@@ -826,8 +826,7 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
               whiteList[x] = outList[x]
           outStr = writeMetaQuals(whiteList)
           outList = whiteList
-        if outStr == "":
-          continue 
+        
         outStream.write(outStr)
 
       elif firstRec:
