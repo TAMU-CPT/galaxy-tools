@@ -584,8 +584,8 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
           if isinstance(possSeq, SeqRecord):
             if possSeq.seq == None:
               seqDict[prag] = ""
-          else:
-            seqDict[prag] = possSeq.seq
+            else:
+              seqDict[prag] = str(possSeq.seq)
           for x in pragmaAnnotesDict.keys():
             if prag in pragmaAnnotesDict[x][-1]:
               continue
@@ -641,7 +641,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
     # annotation or sequence associations
 
     for x in regionDict.keys():
-      if seqDict[x] != "":
+      if seqDict[x] != "":   
         regionDict[x] = (0, len(seqDict[x]), 1)  # Make FASTA the final arbiter of region if present
     for x in regionDict.keys():
       if regionDict[x][2] == -1:
@@ -715,7 +715,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
       else: # Should actually no longer be reachable
         seqDict[x] = None
       
-      res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, annoteDict, None))
+      res.append(SeqRecord(str(seqDict[x]), x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, annoteDict, None))
   
     return res
 
