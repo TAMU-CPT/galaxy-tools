@@ -539,7 +539,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
           continue
         elif line:
           seqDict[currFastaKey] += (line[:-1]).strip()
-          continu
+          continue
       ### Error message construction
       if err:
         errOut += "Line %d: %s\n" % (lineInd, err)
