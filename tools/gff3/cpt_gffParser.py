@@ -580,8 +580,9 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
           #                   base_dict is next, and will also accept an empty seq, so take care with what's passed in this field
           #                   Finally, parser will infer an UnknownSeq from either ##sequence-region pragma or the 'last' feature,
           #                   depending on arguments passed to parser.
-          if possSeq == None:
-            seqDict[prag] = ""
+          if isinstance(possSeq, SeqRecord):
+            if possSeq.seq == None:
+              seqDict[prag] = ""
           else:
             seqDict[prag] = possSeq.seq
           for x in pragmaAnnotesDict.keys():
