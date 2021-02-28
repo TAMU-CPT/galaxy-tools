@@ -1,22 +1,23 @@
-from Bio.SeqFeature import FeatureLocation, CompoundLocation
+# Copyright 2020-2021, Anthony Criscione
+# Developed for the Center for Phage Technology, Texas A&M University
+#
+# Distributed under the BSD 3-Clause License, see included LICENSE file
+
 from Bio import SeqIO, SeqFeature, SeqRecord
+from Bio.SeqFeature import FeatureLocation, CompoundLocation
 from Bio.Seq import Seq, UnknownSeq
 from collections import OrderedDict
-from collections.abc import Iterable
 import sys
+#Try/Except blocks used for limited python 2.7 compatibility. Python3 spec is within the try block
+
+try:
+  from collections.abc import Iterable
+except:
+  from collections import Iterable
 try:
   import urllib.parse
 except:
   import urllib
-
-#Try/Except blocks used for limited python 2.7 compatibility. Python3 spec is within the try block
-
-disallowArray = ["&", ",", ";", "="]
-validArray = ["%26", "%2C", "%3B", "%3D"]
-encoders = "ABCDEF1234567890"
-metaAnnotes = ["attribute-ontology", "source-ontology", "feature-ontology", "species", "gff-version"] #Genome-build expects a tuple
-
-validID = '.:^*$@!+_?-|'
 
 class gffSeqFeature(SeqFeature.SeqFeature):
     def __init__(
@@ -112,6 +113,12 @@ class gffSeqFeature(SeqFeature.SeqFeature):
             source=self.source
         )
 
+
+disallowArray = ["&", ",", ";", "="]
+validArray = ["%26", "%2C", "%3B", "%3D"]
+encoders = "ABCDEF1234567890"
+
+validID = '.:^*$@!+_?-|'
 
 def writeMetaQuals(qualList): 
     outLines = ""
@@ -285,6 +292,8 @@ def qualsToAnnotes(inDict, feat, orgID):
             outStr = outStr[outStr.find(" ") + 1:-1]
           inDict[x].append([outStr, orgID])
   return inDict  
+
+
 
 
 def lineAnalysis(line, codingTypes = ["CDS"]):
@@ -467,7 +476,26 @@ def lineAnalysis(line, codingTypes = ["CDS"]):
       return errorMessage, None, None
     return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, shiftIn, scoreIn, fields[1])   
         
-def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, codingTypes=["CDS"], metaTypes = ["remark"], pragmaPriority = True, overridePriority = 0):
+def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"], metaTypes = ["remark"], suppressMeta = 2, pragmaPriority = True, pragmaOverridePriority = True):
+    # gff3In --- source file
+    # base_dict --- file with additional SeqRecord information. Keys are OrganismIDs and values are SeqRecords.
+    #               For BCBio backwards compatibility.
+    # outStream --- output filestream or stringstream
+    # codingTypes --- list of feature types where a non-'.' shift value is expected, passed along to lineAnalysis
+    # metaTypes --- list of metadata feature types. Features of this type will be affected by the remaining arguments
+    # suppressMeta --- Suppress metadata fields. Int, where 0 == no suppression, all metadata from features and pragmas 
+    #                  will be read and output to the SeqRecord as .annotation entries.
+    #                  1 == As above, but metadata features will not be entered into the SeqRecord's feature list
+    #                  after their metadata is recorded and entered into the SeqRecord.annotation
+    #                  2 == Total suppression, no metadata features will even be processed, and no pragmas except
+    #                  those related to sequence length (##FASTA and ##sequence-region) and ##gff-version (required 
+    #                  by GFF spec) will be utilized.
+    # pragmaPriority --- In cases where pragmas and metadata features disagree/conflict, pragmas will take precedence for creating
+    #                    SeqRecord.annotation value if true, else the feature will.
+    # pragmaOverridePriority --- Similar to above, in the event of a conflict between metadata features and pragmas, the pragma's 
+    #                            value will override the metadata gffSeqFeature.qualifier value with the pragma's own. This will force
+    #                            the metadata and pragmas to sync, and avoid future discrepancies. Should only be used with pragmaPrority 
+ 
     fastaDirective = False # Once true, must assume remainder of file is a FASTA, per spec
     errOut = ""
     warnOut = ""
@@ -511,6 +539,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, c
           continue
         elif line:
           seqDict[currFastaKey] += (line[:-1]).strip()
+          continu
       ### Error message construction
       if err:
         errOut += "Line %d: %s\n" % (lineInd, err)
@@ -520,7 +549,10 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, c
         if prag[0] == "FASTA":
           fastaDirective = True
         elif prag[0] == "sequence-region":
-          regionDict[prag[1]] = (int(prag[2]) - 1, int(prag[3]), pragBit)
+          if prag[1] not in regionDict.keys():
+            regionDict[prag[1]] = (int(prag[2]) - 1, int(prag[3]), pragBit)
+          elif pragBit > regionDict[prag[1]]:
+            regionDict[prag[1]] = (int(prag[2]) - 1, int(prag[3]), pragBit)
         elif prag[0] == "#":
           orgDict, resolveErr = resolveParent(orgDict, seekParentDict)
           if resolveErr:
@@ -538,10 +570,20 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, c
       if res:
         if suppressMeta == 2 and res.type in metaTypes:
           continue
+      ## First time encountering orgID
         if prag not in orgDict.keys():
           orgDict[prag] = [res]
           seekParentDict[prag] = []
-          seqDict[prag] = ""
+          possSeq = base_dict.get(prag, None)
+          # Process base_dict
+          # .seq priority is: ##FASTA directives will always define sequence-region and seq if present (done further down)
+          #                   base_dict is next, and will also accept an empty seq, so take care with what's passed in this field
+          #                   Finally, parser will infer an UnknownSeq from either ##sequence-region pragma or the 'last' feature,
+          #                   depending on arguments passed to parser.
+          if possSeq == None:
+            seqDict[prag] = ""
+          else:
+            seqDict[prag] = possSeq.seq
           for x in pragmaAnnotesDict.keys():
             if prag in pragmaAnnotesDict[x][-1]:
               continue
@@ -582,6 +624,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, c
                 orgDict[prag][x].location = orgDict[prag][x].location + res.location
                 incInd = False 
                 break
+          # If incInd is still true, then it's a unique feature, append to list
           if incInd:
             orgDict[prag].append(res)
             if "Parent" in res.qualifiers.keys():
@@ -591,7 +634,10 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, c
     if resolveErr:
       errOut += resolveErr
     finalOrg = rAddDict(finalOrg, orgDict)
-          
+
+    # All features and pragmas should be read in by now, resolve any outstanding 
+    # annotation or sequence associations
+
     for x in regionDict.keys():
       if seqDict[x] != "":
         regionDict[x] = (0, len(seqDict[x]), 1)  # Make FASTA the final arbiter of region if present
@@ -615,10 +661,12 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, c
       if badIDs != [] and circ == False:
         errOut += "Organism %s: The following features fall outside of the specified sequence region: %s.\n" % (x, str(badIDs)[1:-1])     
          
-
+    # By this point, all features and pragmas should be processed and resolved
     if errOut:
       outStream.write(errOut + "\n")
       raise Exception("Failed GFF Feature Parsing, error log output to stderr\n")
+
+    # Construct a SeqRecord from all processed OrgIDs
     res = []
     for x in finalOrg.keys():
       finalOrgHeirarchy = []
@@ -632,7 +680,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, c
         for vals in metaAnnotesDict[pragma]:
           if x in vals[1:]:
             if pragma in annoteDict.keys():
-              if overridePriority == 2:
+              if pragmaOverridePriority == False and pragBit < annoteBit:
                 annoteDict[pragma]=vals[0]
                 break
             else:
@@ -641,7 +689,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, c
         if "Parent" not in i.qualifiers.keys():
           finalOrgHeirarchy.append(i)
           if i.type in metaTypes:
-            if overridePriority != 1:
+            if pragmaOverridePriority == False:
               for key in annoteDict.keys():
                 if key not in finalOrgHeirarchy[-1].qualifiers.keys():
                   finalOrgHeirarchy[-1].qualifiers[key] = [annoteDict[key]]
@@ -657,29 +705,16 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, suppressMeta = 2, c
           else:
             seqDict[x] = seqDict[x][regionDict[x][0]:regionDict[x][1]]
         else:
-          annoteDict["sequence-region"] = (x, 1, int(len(seqDict[x])))
+          annoteDict["sequence-region"] = "%s 1 %s" % (x, int(len(seqDict[x])))
         seqDict[x] = Seq(seqDict[x])
       elif x in regionDict.keys():
-        annoteDict["sequence-region"] = (x, regionDict[x][0] + 1, regionDict[x][1])
+        annoteDict["sequence-region"] = "%s %s %s" % (x, regionDict[x][0] + 1, regionDict[x][1])
         seqDict[x] = UnknownSeq(regionDict[x][1] - regionDict[x][0])
-      else:
+      else: # Should actually no longer be reachable
         seqDict[x] = None
       
       res.append(SeqRecord.SeqRecord(seqDict[x], x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, annoteDict, None))
-    standaloneList = []
-    for x in regionDict.keys():
-      if x not in finalOrg.keys():
-        standaloneList.append(x)
-    
-    for x in base_dict.keys():
-      for y in res:
-        if x == y.id:
-          y.name = base_dict[x].name
-          y.description = base_dict[x].description
-          y.seq = base_dict[x].seq
-          break
-      
-
+  
     return res
 
 def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = None, outStream = sys.stdout, parents = None, codingTypes = ["CDS"]):
@@ -811,7 +846,7 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=Fals
             break
         
         if not foundMeta:
-          tempSeq = gffSeqFeature(FeatureLocation(0, len(rec.seq), 0), createMetaFeat, '', 0, None, outList, None, None, None, None, None, "CPT_GFFParse") 
+          tempSeq = gffSeqFeature(FeatureLocation(0, len(rec.seq), 0), createMetaFeat, '', 0, 0, outList, None, None, None, '.', '.', "CPT_GFFParse") 
           printFeatLine(tempSeq, rec.id, source = tempSeq.source, score = tempSeq.score, shift = tempSeq.shift, outStream = outStream)
 
       for feat in rec.features:
