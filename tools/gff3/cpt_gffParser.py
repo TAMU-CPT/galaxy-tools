@@ -708,12 +708,12 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
             seqDict[x] = seqDict[x][regionDict[x][0]:regionDict[x][1]]
         else:
           annoteDict["sequence-region"] = "%s 1 %s" % (x, int(len(seqDict[x])))
-        seqDict[x] = Seq(seqDict[x])
+        seqDict[x] = str(seqDict[x])
       elif x in regionDict.keys():
         annoteDict["sequence-region"] = "%s %s %s" % (x, regionDict[x][0] + 1, regionDict[x][1])
-        seqDict[x] = UnknownSeq(regionDict[x][1] - regionDict[x][0])
+        seqDict[x] = str(UnknownSeq(regionDict[x][1] - regionDict[x][0]))
       else: # Should actually no longer be reachable
-        seqDict[x] = None
+        seqDict[x] = ""
       
       res.append(SeqRecord(str(seqDict[x]), x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, annoteDict, None))
   
