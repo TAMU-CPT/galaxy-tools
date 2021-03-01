@@ -2,6 +2,7 @@
 import sys
 import argparse
 from Bio import SeqIO
+from Bio.Seq import Seq
 from cpt_gffParser import gffParse, gffWrite
 
 if __name__ == "__main__":
@@ -26,7 +27,9 @@ if __name__ == "__main__":
     for record in gffParse(args.data):
         gffWrite([record], args.gff)
         record.description = ""
-        if not isinstance(record.seq, str):
-          record.seq = str(record.seq)
+        
+        if isinstance(record.seq, str):
+          record.seq = Seq(record.seq)
+        
         SeqIO.write([record], args.fasta, "fasta")
         sys.exit()
