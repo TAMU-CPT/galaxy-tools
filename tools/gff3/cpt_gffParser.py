@@ -586,6 +586,8 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
               seqDict[prag] = ""
             else:
               seqDict[prag] = str(possSeq.seq)
+          else:
+            seqDict[prag] = str(possSeq.seq)
           for x in pragmaAnnotesDict.keys():
             if prag in pragmaAnnotesDict[x][-1]:
               continue
