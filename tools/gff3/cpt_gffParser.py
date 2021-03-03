@@ -114,6 +114,170 @@ class gffSeqFeature(SeqFeature.SeqFeature):
             source=self.source
         )
 
+    def translate(
+        self,
+        parent_sequence,
+        table="Standard",
+        start_offset=None,
+        stop_symbol="*",
+        to_stop=False,
+        cds=None,
+        gap=None,
+    ):
+        """
+          Identical to the implementation found in 
+          Biopython SeqFeature, but will use .shift value instead
+          if start_offset is not set and start_codon is not present
+
+          Deferred to codon_start under reasoning that some bioinformatic scripts
+          may edit the codon_start field, but not change the .shift value
+        """
+        # see if this feature should be translated in a different
+        # frame using the "codon_start" qualifier
+        if start_offset is None:
+            try:
+                start_offset = int(self.qualifiers["codon_start"][0]) - 1
+            except KeyError:
+                start_offset = self.shift
+
+        if start_offset not in [0, 1, 2]:
+            raise ValueError(
+                "The start_offset must be 0, 1, or 2. "
+                f"The supplied value is {start_offset}. "
+                "Check the value of either the codon_start qualifier, "
+                "the .shift property, or the start_offset argument"
+            )
+
+        feat_seq = self.extract(parent_sequence)[start_offset:]
+        codon_table = self.qualifiers.get("transl_table", [table])[0]
+
+        if cds is None:
+            cds = self.type == "CDS"
+
+        return feat_seq.translate(
+            table=codon_table,
+            stop_symbol=stop_symbol,
+            to_stop=to_stop,
+            cds=cds,
+            gap=gap,
+        )
+
+def convertSeqFeat(inFeat, defaultSource = "gffSeqFeature"):
+  featLoc = inFeat.location
+  IDName = inFeat.id
+  qualDict = inFeat.qualifiers
+  parentCands = inFeat.qualifiers.get("Parent", [])
+  for x in parentCands:
+    if x == inFeat.id: # Cannot allow self-loops
+      raise Exception("Cannot convert SeqRecord, feature %s lists itself as a parent feature" % (cand.id))
+  if "codon_start" in inFeat.qualifiers.keys():
+    shiftIn = int(inFeat.qualifiers["codon_start"][0])
+  else:
+    shiftIn = 0
+  if "score" in inFeat.qualifiers.keys():
+    scoreIn = float(inFeat.qualifiers["score"][0])
+  else:
+    scoreIn = "."
+  if "source" in inFeat.qualifiers.keys():
+    sourceIn = inFeat.qualifiers["source"][0]
+  else:
+    sourceIn = defaultSource 
+
+  return gffSeqFeature(featLoc, inFeat.type, '', featLoc.strand, IDName, qualDict, [], None, None, shiftIn, scoreIn, sourceIn)
+
+def convertSeqRec(inRec, defaultSource = "gffSeqFeature", deriveSeqRegion = True, createMetaFeat = None):
+  # Assumes an otherwise well-constructed SeqRecord that just wants to replace its features with gffSeqFeatures
+  if not isinstance(inRec, list):
+    inRec = [inRec]
+  
+  outRec = []
+  for rec in inRec: 
+    topList = []
+    childList = []
+    lastCount = 0
+    maxLoc = 0
+    for feat in rec.features:
+      if "Parent" in feat.qualifiers.keys():
+        childList.append((convertSeqFeat(feat, defaultSource), len(feat.qualifiers["Parent"]))) # Possible to have more than one parent
+        lastCount += childList[-1][1]
+      elif feat.id and feat.id != "<unknown id>": # Do not accept the default value
+        topList.append(convertSeqFeat(feat, defaultSource))
+      maxLoc = max(maxLoc, feat.location.end)
+    if deriveSeqRegion:
+      rec.annotations["sequence-region"] = "%s 1 %s" % (rec.id, str(maxLoc))
+    
+    popList = []
+    thisCount = -1
+    while lastCount != thisCount:
+      thisCount = 0
+      for child in childList: # Check for subfeatures of subfeatures first
+        foundItem = child[1]
+        for cand in childList:
+          if foundItem > 0:
+            for childID in child[0].qualifiers["Parent"]:
+              if cand[0].id == childID:
+                cand[0].sub_features.append(child[0])
+                foundItem -= 1
+          elif foundItem == 0:
+            break
+        if foundItem > 0:
+          popList.append((child[0], foundItem))
+          thisCount += popList[-1][1]
+      childList = popList
+      if thisCount != lastCount:
+        popList = []
+        lastCount = thisCount
+        thisCount = 0 
+    
+    lastCount = -1
+    thisCount = -1
+    while lastCount != 0: # This shouldn't need to actually loop
+      thisCount = 0
+      popList = []
+      for child in childList: 
+        foundItem = child[1]
+        for cand in topList:
+          if foundItem > 0:
+            for childID in child[0].qualifiers["Parent"]:
+              if cand.id == childID:
+                cand.sub_features.append(child[0])
+                foundItem -= 1
+          elif foundItem == 0:
+            break
+        if foundItem > 0:
+          popList.append((child[0], foundItem))
+          thisCount += popList[-1][1]
+      childList = popList
+      if thisCount != 0:
+        popList = []
+        lastCount = thisCount
+        thisCount = 0 
+      elif thisCount == lastCount or thisCount > 0:
+        badIDs = []
+        for x in childList:
+          badIDs.append(x[0].id)
+        outStr = ", ".join(badIDs)
+        sys.stderr.write("Unable to convert SeqRecord %s: could not find parents for features [%s]\n" % (rec.id, outStr))
+        sys.stderr.write("Note that this error will also occur if sub_feature relationships between features ever form a cycle/loop.\n")
+        raise Exception("Could not convert features of SeqRecord %s to gffSeqFeature format, see stderr\n" % (rec.id)) 
+      else:
+        break
+
+    if createMetaFeat:
+      qualDict = {}
+      for x in res.annotations.keys():
+        outVal = ""
+        if isinstance(res.annotations[x], list):
+          outVal = " ".join(res.annotations[x])
+        else:
+          outVal = str(res.annotations[x])
+        outVal = outVal.replace("\n"," ")
+        qualDict[x] = [outVal]
+      topList.append(gffSeqFeature(FeatureLocation(0, maxLoc), createMetaFeat, '', 0, IDName, qualDict, [], None, None, 0, ".", defaultSource))
+    topList = sorted(topList, key=lambda feature: feature.location.start)
+    rec.features = topList
+    outRec.append(rec)
+  return outRec
 
 disallowArray = ["&", ",", ";", "="]
 validArray = ["%26", "%2C", "%3B", "%3D"]
@@ -482,7 +646,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
     # base_dict --- file with additional SeqRecord information. Keys are OrganismIDs and values are SeqRecords.
     #               For BCBio backwards compatibility.
     # outStream --- output filestream or stringstream
-    # codingTypes --- list of feature types where a non-'.' shift value is expected, passed along to lineAnalysis
+    # codingTypes --- list of feature types where a non-'.' phase value is expected, passed along to lineAnalysis
     # metaTypes --- list of metadata feature types. Features of this type will be affected by the remaining arguments
     # suppressMeta --- Suppress metadata fields. Int, where 0 == no suppression, all metadata from features and pragmas 
     #                  will be read and output to the SeqRecord as .annotation entries.
@@ -643,7 +807,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
     # annotation or sequence associations
 
     for x in regionDict.keys():
-      if seqDict[x] != "":   
+      if x and seqDict[x] != "": ## If x handles empty regionDicts   
         regionDict[x] = (0, len(seqDict[x]), 1)  # Make FASTA the final arbiter of region if present
     for x in regionDict.keys():
       if regionDict[x][2] == -1:
@@ -717,7 +881,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
       else: # Should actually no longer be reachable
         seqDict[x] = ""
       
-      res.append(SeqRecord(str(seqDict[x]), x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, annoteDict, None))
+      res.append(SeqRecord(Seq(seqDict[x]), x, "<unknown name>", "<unknown description>", None, finalOrgHeirarchy, annoteDict, None))
   
     return res
 
