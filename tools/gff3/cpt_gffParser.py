@@ -951,6 +951,7 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
     writeFasta = False
     verOut = "3"
     firstRec = True
+    maxInd = 0
 
     if not inRec:
       outStream.write("##gff-version 3\n")
@@ -971,6 +972,7 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
         for feat in rec.features:
           if feat.type in metaTypes:
             metaFeats.append(feat)
+          maxInd = max(maxInd, feat.location.end)
         for feat in metaFeats:
           for x in feat.qualifiers.keys():
             if recPriority == False or x not in outList.keys():
@@ -981,6 +983,11 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
           outStream.write("##gff-version %s\n" % verOut)
         elif firstRec:
           outStream.write("##gff-version %s\n" % verOut)
+        if "sequence-region" in outList.keys():
+          fields = outList["sequence-region"].split(" ")
+          if int(fields[2] < maxInd):
+            fields[2] = maxInd
+            outList["sequence-region"] = " ".join(fields)
         if validPragmas == None:
           outStr = writeMetaQuals(outList)
         else:
@@ -1010,12 +1017,12 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
         
         if not foundMeta:
           tempSeq = gffSeqFeature(FeatureLocation(0, len(rec.seq), 0), createMetaFeat, '', 0, 0, outList, None, None, None, '.', '.', "CPT_GFFParse") 
-          printFeatLine(tempSeq, rec.id, source = tempSeq.source, score = tempSeq.score, shift = tempSeq.shift, outStream = outStream)
+          printFeatLine(tempSeq, rec.id, source = tempSeq.source, score = tempSeq.score, phase = tempSeq.phase, outStream = outStream)
 
       for feat in rec.features:
           if suppressMeta > 0 and feat.type in metaTypes:
             continue  
-          printFeatLine(feat, rec.id, source = feat.source, score = feat.score, shift = feat.shift, outStream = outStream)   
+          printFeatLine(feat, rec.id, source = feat.source, score = feat.score, phase = feat.phase, outStream = outStream)   
       firstRec = False 
     if writeFasta and not suppressFasta:
       outStream.write("##FASTA\n")
