@@ -3,7 +3,6 @@ import sys
 import argparse
 import logging
 import uuid
-from BCBio import GFF
 from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.Seq import Seq
