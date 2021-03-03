@@ -6,7 +6,7 @@
 		<import>cpt-macros.xml</import>
   </macros>
   <expand macro="requirements">
-      <requirement type="package" version="3.0.2">intervaltree</requirement>
+      <requirement type="package" version="2.1.0">intervaltree</requirement>
   </expand>
   <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/intersect_and_adjacent.py
