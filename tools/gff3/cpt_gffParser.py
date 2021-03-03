@@ -141,8 +141,7 @@ class gffSeqFeature(SeqFeature.SeqFeature):
                 start_offset = self.shift
 
         if start_offset not in [0, 1, 2]:
-            raise ValueError(
-                "The start_offset must be 0, 1, or 2. The supplied value is '%s'. Check the value of either the codon_start qualifier, the .phase property, or the start_offset argument" % (start_offset))
+            raise ValueError("The start_offset must be 0, 1, or 2. The supplied value is '%s'. Check the value of either the codon_start qualifier, the .phase property, or the start_offset argument" % (start_offset))
 
         feat_seq = self.extract(parent_sequence)[start_offset:]
         codon_table = self.qualifiers.get("transl_table", [table])[0]
