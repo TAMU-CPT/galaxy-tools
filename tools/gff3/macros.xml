@@ -2,7 +2,6 @@
 <macros>
 	<xml name="requirements">
 		<requirements>
-			<requirements>
 			<requirement type="package" version="3.7.9">python</requirement>
 			<requirement type="package" version="1.77">biopython</requirement>
 		</requirements>
