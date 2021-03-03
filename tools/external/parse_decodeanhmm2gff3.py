@@ -40,7 +40,7 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
             m_data = []
 
             header = line.split(" ")[0].strip()[1:]
-            record = SeqRecord(Seq("ACTG", IUPAC.IUPACUnambiguousDNA), id=header)
+            record = SeqRecord(Seq("", IUPAC.IUPACUnambiguousDNA), id=header)
 
         elif line.startswith("%len"):
             length = int(line[5:].strip())
