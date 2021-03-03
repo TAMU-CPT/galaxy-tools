@@ -985,7 +985,7 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
           outStream.write("##gff-version %s\n" % verOut)
         if "sequence-region" in outList.keys():
           fields = outList["sequence-region"].split(" ")
-          if int(fields[2] < maxInd):
+          if int(fields[2]) < maxInd):
             fields[2] = maxInd
             outList["sequence-region"] = " ".join(fields)
         if validPragmas == None:
