@@ -2,7 +2,7 @@
 import BIO_FIX_TOPO  # NOQA
 import argparse
 import sys
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 
 import logging
@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     # Iterate over our input data
     if args.filetype == "gff3":
-        it = GFF.parse(args.data)
+        it = gffParse(args.data)
     else:
         it = SeqIO.parse(args.data, args.filetype)
 
@@ -36,6 +36,6 @@ if __name__ == "__main__":
 
         # Output according to type
         if args.filetype == "gff3":
-            GFF.write([record], sys.stdout)
+            gffWrite([record], sys.stdout)
         else:
             SeqIO.write([record], sys.stdout, args.filetype)

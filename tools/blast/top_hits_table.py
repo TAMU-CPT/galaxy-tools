@@ -2,7 +2,7 @@
 import sys
 import os
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type, fsort, get_id
 from relatedness import parse_blast, with_dice
 
@@ -69,7 +69,7 @@ if __name__ == "__main__":
     sys.stdout.write("# Query Feature\tLocation\t")
     sys.stdout.write("\t".join(["%s\tevalue\tdice" % x for x in blast_names]))
     sys.stdout.write("\n")
-    for rec in GFF.parse(args.gff3):
+    for rec in gffParse(args.gff3):
         for feat in fsort(
             feature_lambda(
                 rec.features, feature_test_type, {"types": "CDS"}, subfeatures=False

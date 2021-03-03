@@ -8,7 +8,7 @@ The program outputs lists of lysis gene candidates that are close to protein cod
 from Bio import SeqIO
 import argparse
 import sys
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from BCBio.GFF import GFFExaminer
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature
@@ -154,9 +154,9 @@ def find_endolysins(rec_ipro, enzyme_domain_ids):
 
 def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
     rec_lgc = list(SeqIO.parse(lgc, "fasta"))
-    rec_tmhmm = list(GFF.parse(tmhmm))
-    rec_ipro = list(GFF.parse(ipro))
-    rec_genome_ini = list(GFF.parse(genome, limit_info=dict(gff_type=["CDS"])))
+    rec_tmhmm = list(gffParse(tmhmm))
+    rec_ipro = list(gffParse(ipro))
+    rec_genome_ini = list(gffParse(genome, limit_info=dict(gff_type=["CDS"])))
 
     # genome.seek(0)
     # examiner = GFFExaminer()
@@ -324,32 +324,32 @@ if __name__ == "__main__":
     )
 
     args.genome.seek(0)
-    rec = list(GFF.parse(args.genome))
+    rec = list(gffParse(args.genome))
 
     with open(args.oa, "w") as handle:
         for i in range(len(rec)):
             rec_i = rec[i]
             if endo.get(rec_i.id, "") is not "":
                 rec_i.features = endo[rec_i.id]
-                GFF.write([rec_i], handle)
+                gffWrite([rec_i], handle)
 
     with open(args.ob, "w") as handle:
         for i in range(len(rec)):
             rec_i = rec[i]
             if lgc_endo.get(rec_i.id, "") is not "":
                 rec_i.features = lgc_endo[rec_i.id]
-                GFF.write([rec_i], handle)
+                gffWrite([rec_i], handle)
 
     with open(args.oc, "w") as handle:
         for i in range(len(rec)):
             rec_i = rec[i]
             if tm.get(rec_i.id, "") is not "":
                 rec_i.features = tm[rec_i.id]
-                GFF.write([rec_i], handle)
+                gffWrite([rec_i], handle)
 
     with open(args.od, "w") as handle:
         for i in range(len(rec)):
             rec_i = rec[i]
             if lgc_tm.get(rec_i.id, "") is not "":
                 rec_i.features = lgc_tm[rec_i.id]
-                GFF.write([rec_i], handle)
+                gffWrite([rec_i], handle)

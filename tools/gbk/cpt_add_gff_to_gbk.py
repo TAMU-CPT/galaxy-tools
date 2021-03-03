@@ -4,7 +4,7 @@ import sys
 import argparse
 import copy
 import logging
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from gff3 import feature_lambda, feature_test_true
 
@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def extract_features(gff3_file):
-    for rec in GFF.parse(gff3_file):
+    for rec in gffParse(gff3_file):
         for feat in feature_lambda(
             rec.features, feature_test_true, {}, subfeatures=False
         ):

@@ -9,7 +9,7 @@ import logging
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 
 logging.basicConfig(level=logging.INFO)
@@ -43,7 +43,7 @@ def build_expterm():
 def generate_annotation_file(gff3):
     # TODO: cleanup
     t = tempfile.NamedTemporaryFile(mode="w",delete=False, suffix=".coords")
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         features = feature_lambda(
             rec.features, feature_test_type, {"type": "CDS"}, subfeatures=False
         )
@@ -234,4 +234,4 @@ if __name__ == "__main__":
     for record in main(
         existing_expterm=os.path.join(SCRIPT_PATH, "expterm.dat"), **vars(args)
     ):
-        GFF.write([record], sys.stdout)
+        gffWrite([record], sys.stdout)

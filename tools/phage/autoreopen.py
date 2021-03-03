@@ -9,7 +9,7 @@ import subprocess
 import numpy as np
 from enum import Enum
 from Bio import SeqIO
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.SeqRecord import SeqRecord
 from cpt_convert_mga_to_gff3 import mga_to_gff3
 from gff3 import feature_lambda
@@ -473,7 +473,7 @@ class PhageReopener:
             for result in mga_to_gff3(handle, self.rec_file):
                 # Store gFF3 data in self in order to access later.
                 self.mga_rec = result
-                GFF.write([result], output)
+                gffWrite([result], output)
 
         # Process a feature id -> feature table in mem.
         self.featureDict = {}
@@ -567,7 +567,7 @@ class PhageReopener:
                 for result in mga_to_gff3(handle, open(input_seq, "r")):
                     # Store gFF3 data in self in order to access later.
                     self.mga_rec = result
-                    GFF.write([result], output)
+                    gffWrite([result], output)
 
             # Now with GFF3 + fasta, we can safe_reopen
             subprocess.check_call(

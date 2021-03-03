@@ -3,7 +3,7 @@ import sys
 import uuid
 import argparse
 import logging
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -153,7 +153,7 @@ if __name__ == "__main__":
     bigwig_add_header(bw_m, "m", name="TMHMM")
 
     for sequence in convert(None, bw_i, bw_o, bw_m):
-        GFF.write([sequence], sys.stdout)
+        gffWrite([sequence], sys.stdout)
 
     bw_i.close()
     bw_o.close()

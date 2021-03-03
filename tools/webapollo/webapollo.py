@@ -11,7 +11,7 @@ import logging
 import time
 import argparse
 from abc import abstractmethod
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 
 logging.getLogger("requests").setLevel(logging.CRITICAL)
@@ -1346,7 +1346,7 @@ class RemoteRecord(Client):
         )
         data.seek(0)
 
-        for record in GFF.parse(data):
+        for record in gffParse(data):
             yield WebApolloSeqRecord(record, self._wa)
 
 

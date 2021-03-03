@@ -19,7 +19,7 @@ from gff3 import (
     nice_name,
 )
 from shinefind import NaiveSDCaller
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -928,7 +928,7 @@ def evaluate_and_report(
     # Get the first GFF3 record
     # TODO: support multiple GFF3 files.
     mostFeat = 0
-    for rec in list(GFF.parse(annotations, base_dict=seq_dict)):
+    for rec in list(gffParse(annotations, base_dict=seq_dict)):
       if len(rec.features) > mostFeat:
         mostFeat = len(rec.features)
         record = rec
@@ -1112,7 +1112,7 @@ def evaluate_and_report(
     with open(gff3, "w") as handle:
         gff3_qc_record.features = gff3_qc_features
         gff3_qc_record.annotations = {}
-        GFF.write([gff3_qc_record], handle)
+        gffWrite([gff3_qc_record], handle)
 
     def nice_strand(direction):
         if direction > 0:

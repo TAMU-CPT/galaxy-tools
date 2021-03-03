@@ -3,7 +3,7 @@ from Bio import SeqIO
 import argparse
 import json
 import os
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 
 
 def parse_xmfa(xmfa):
@@ -101,11 +101,11 @@ if __name__ == "__main__":
     # Load up sequence(s) for GFF3 data
     seq_dict = SeqIO.to_dict(SeqIO.parse(args.fasta, "fasta"))
     # Parse GFF3 records
-    gffs = GFF.parse(args.gff3, base_dict=seq_dict)
+    gffs = gffParse(args.gff3, base_dict=seq_dict)
     for record in sorted(gffs, key=lambda rec: fasta_list.index(rec.id)):
         gff_output = os.path.join(args.output_dir, record.id + ".gff")
         with open(gff_output, "w") as handle:
-            GFF.write([record], handle)
+            gffWrite([record], handle)
         output["gff3"].append(gff_output)
 
         fa_output = os.path.join(args.output_dir, record.id + ".txt")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import argparse
 import json
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 from guanine_report import auth, post_result, student_id
 
@@ -11,7 +11,7 @@ GUANINE_URL = "https://cpt.tamu.edu/guanine-backend/"
 
 def validate(gff3):
     results = {}
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         for feature in feature_lambda(
             rec.features, feature_test_type, {"type": "gene"}, subfeatures=True
         ):

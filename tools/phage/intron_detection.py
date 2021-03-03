@@ -5,7 +5,7 @@ import itertools
 import argparse
 import hashlib
 import copy
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.Blast import NCBIXML
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda
@@ -82,7 +82,7 @@ def parse_gff(gff3):
     log.debug("parse_gff3")
     gff_info = {}
     _rec = None
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         endBase = len(rec.seq)
 
         _rec = rec
@@ -490,6 +490,6 @@ if __name__ == "__main__":
 
     condensed_report = ifinder.cluster_report()
     rec = ifinder.output_gff3(ifinder.clusters)
-    GFF.write([rec], sys.stdout)
+    gffWrite([rec], sys.stdout)
 
     # import pprint; pprint.pprint(ifinder.clusters)

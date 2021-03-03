@@ -3,7 +3,7 @@ import json
 import requests
 import argparse
 from Bio import SeqIO
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 
 
 def auth(creds, url):
@@ -85,7 +85,7 @@ def main():
 
         refseqs[record.id] = refseq
 
-    for rec in GFF.parse(args.gff3):
+    for rec in gffParse(args.gff3):
         # rs = RefSeq.objects.get(name=rec.id, organism=organism)
         rs = refseqs[rec.id]
         for feat in rec.features:

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature
 from Bio.SeqFeature import FeatureLocation
@@ -84,4 +84,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     for result in glimmer3_to_gff3(**vars(args)):
-        GFF.write([result], sys.stdout)
+        gffWrite([result], sys.stdout)

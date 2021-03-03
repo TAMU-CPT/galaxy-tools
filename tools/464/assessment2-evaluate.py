@@ -1,9 +1,9 @@
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 import glob
 
 # If they find this file in our git repo... (i.e. no need to obfuscate because
 # no student will ever look here.)
-ref = list(GFF.parse(open("assessment2-answers.gff3")))[0]
+ref = list(gffParse(open("assessment2-answers.gff3")))[0]
 ref = ref[213 : 213 + 4113]
 start_bounds = [f.location.start for f in ref.features]
 end_bounds = [f.location.end for f in ref.features]
@@ -13,7 +13,7 @@ scores = []
 
 for f in glob.glob("*-464-*.gff"):
     with open(f, "r") as handle:
-        data = GFF.parse(f)
+        data = gffParse(f)
     for rec in data:
         correct = 0
         incorrect = 0

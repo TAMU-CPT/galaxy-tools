@@ -5,7 +5,7 @@ import sys
 import logging
 from collections import Counter
 from Levenshtein import distance
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda, feature_test_type
@@ -26,7 +26,7 @@ def slipperyScore(sequence):
 
 def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
     seq_dict = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
-    for rec in GFF.parse(gff3, base_dict=seq_dict):
+    for rec in gffParse(gff3, base_dict=seq_dict):
         putative_frameshift_genes = []
 
         for gene in feature_lambda(rec.features, feature_test_type, {"type": "gene"}):
@@ -191,4 +191,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     for rec in FrameShiftFinder(**vars(args)):
-        GFF.write(rec, sys.stdout)
+        gffWrite(rec, sys.stdout)

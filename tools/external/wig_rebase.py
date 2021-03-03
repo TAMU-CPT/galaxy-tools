@@ -5,7 +5,7 @@ import logging
 import argparse
 import numpy
 from gff3 import feature_lambda, feature_test_true
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -35,7 +35,7 @@ def __update_feature_location(pos, parent, protein2dna):
 
 def getGff3Locations(parent, map_by="ID"):
     featureLocations = {}
-    recs = GFF.parse(parent)
+    recs = gffParse(parent)
     # Only parse first.
     rec = next(recs)
     # Get all the feature locations in this genome

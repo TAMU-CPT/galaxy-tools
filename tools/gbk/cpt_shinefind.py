@@ -3,7 +3,7 @@ import re
 import sys
 import argparse
 import logging
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -240,7 +240,7 @@ def shinefind(
             gff3_output_record.features, key=lambda x: x.location.start
         )
         gff3_output_record.annotations = {}
-        GFF.write([gff3_output_record], gff3_output)
+        gffWrite([gff3_output_record], gff3_output)
 
 
 if __name__ == "__main__":

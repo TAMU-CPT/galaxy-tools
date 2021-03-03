@@ -9,7 +9,7 @@ except ImportError:
 import json
 import argparse
 from Bio import SeqIO
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 
 ##import gffutils
 from webapollo import WAAuth, WebApolloInstance, CnOrGuess, GuessCn
@@ -78,7 +78,7 @@ def export(org_cn, seqs):
             print("Unaccounted for line: " + line)
             line = data.readline()
 
-    # records = list(GFF.parse(data))
+    # records = list(gffParse(data))
     ##    db = gffutils.create_db(data, dbfn='temp.db', force=True, keep_order=True,merge_strategy='merge', sort_attribute_values=True)
     ##    db2 = gffutils.FeatureDB('temp.db', keep_order=True)
     if False == True:
@@ -95,7 +95,7 @@ def export(org_cn, seqs):
     ##                args.gff.write('##' + y +'\n')
     ##              for x in db2.all_features():
     ##                args.gff.write(x + '\n')
-    # args.gff.writeGFF.write([record], args.gff)
+    # args.gff.writegffWrite([record], args.gff)
     # record.description = ""
     ##            if args.fasta:
 

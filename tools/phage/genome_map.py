@@ -5,7 +5,7 @@ import argparse
 import svgwrite
 import logging
 from gff3 import feature_lambda, feature_test_type, get_gff3_id, wa_unified_product_name
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.SeqFeature import FeatureLocation, ExactPosition
 
@@ -477,7 +477,7 @@ def parseFile(annotations, genome, subset=None, rows=2, width=0, hypo=False):
 
     tempGff = open("temp", "r")
 
-    for record in GFF.parse(tempGff, base_dict=seq_dict):
+    for record in gffParse(tempGff, base_dict=seq_dict):
         if subset is not None:
             (a, b) = map(int, subset.split(","))
             record = record[a:b]

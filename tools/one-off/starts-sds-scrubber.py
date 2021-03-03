@@ -3,7 +3,7 @@
 import argparse
 from Bio import SeqIO
 from Bio.Seq import Seq
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.Data import CodonTable
 from Bio.Alphabet import IUPAC
 import itertools
@@ -116,7 +116,7 @@ def next_first_frame(start, mod_pos):
 def repair(fasta, gff3):
     recs = {}
     # seqids = {}
-    for record in GFF.parse(gff3):
+    for record in gffParse(gff3):
         # seqids[record.id] = ''
         recs[record.id] = record
 

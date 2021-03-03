@@ -5,7 +5,7 @@ import argparse
 import subprocess
 import tempfile
 from Bio import SeqIO
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -94,7 +94,7 @@ def storeGff3Data(path, id, positions, values, decodeMap):
         rec.features.append(region_feat)
 
     with open(path, "a") as handle:
-        GFF.write([rec], handle)
+        gffWrite([rec], handle)
 
 
 def main(fasta, modeldir):

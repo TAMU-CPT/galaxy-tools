@@ -4,7 +4,7 @@ import time
 import argparse
 from webapollo import WebApolloInstance, featuresToFeatureSchema
 from webapollo import WAAuth, OrgOrGuess, GuessOrg, AssertUser, retry
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     sys.stdout.write("\t".join(["Feature ID", "Apollo ID", "Success", "Messages"]))
     sys.stdout.write("\n")
     # print(wa.annotations.getFeatures())
-    for rec in GFF.parse(args.gff3):
+    for rec in gffParse(args.gff3):
         wa.annotations.setSequence(rec.id, org["id"])
         for feature in rec.features:
             # We can only handle genes right now

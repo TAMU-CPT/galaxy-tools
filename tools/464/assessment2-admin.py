@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import logging
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 from guanine import GuanineClient
 
@@ -13,7 +13,7 @@ g = GuanineClient()
 
 def validate(ogs, user_gff3, user_email, offset=213):
     comp = {}
-    for rec in GFF.parse(ogs):
+    for rec in gffParse(ogs):
         for feature in feature_lambda(
             rec.features, feature_test_type, {"type": "CDS"}, subfeatures=True
         ):
@@ -26,7 +26,7 @@ def validate(ogs, user_gff3, user_email, offset=213):
     max_score = len(comp)
 
     user = {}
-    for rec in GFF.parse(user_gff3):
+    for rec in gffParse(user_gff3):
         for feature in feature_lambda(
             rec.features, feature_test_type, {"type": "gene"}, subfeatures=True
         ):

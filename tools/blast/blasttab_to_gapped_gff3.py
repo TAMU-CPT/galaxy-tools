@@ -3,7 +3,7 @@ import re
 import sys
 import copy
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -350,4 +350,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     for rec in blasttsv2gff3(**vars(args)):
-        GFF.write([rec], sys.stdout)
+        gffWrite([rec], sys.stdout)

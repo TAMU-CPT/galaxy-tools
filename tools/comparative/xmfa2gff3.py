@@ -7,7 +7,7 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.Alphabet import IUPAC
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from xmfa import parse_xmfa, percent_identity, id_tn_dict
 
 logging.basicConfig(level=logging.INFO)
@@ -177,4 +177,4 @@ if __name__ == "__main__":
     except:
         pass
     for result in convert_xmfa_to_gff3(**vars(args)):
-        GFF.write([result], sys.stdout)
+        gffWrite([result], sys.stdout)

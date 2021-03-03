@@ -4,7 +4,7 @@ import sys
 import copy
 import argparse
 import logging
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(name="blastxml2gff3")
@@ -273,4 +273,4 @@ if __name__ == "__main__":
 
     for rec in blastxml2gff3(**vars(args)):
         if len(rec.features):
-            GFF.write([rec], sys.stdout)
+            gffWrite([rec], sys.stdout)

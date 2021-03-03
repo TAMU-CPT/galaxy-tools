@@ -3,7 +3,7 @@ import sys
 import argparse
 import re
 import logging
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, get_id, fetchParent
 from bigwig import bigwig_add_header, bigwig_store
 
@@ -48,7 +48,7 @@ def feature_test_id(feature, **kwargs):
 
 
 def writeGff3(data, handle, parentGff3):
-    for record in GFF.parse(parentGff3):
+    for record in gffParse(parentGff3):
         cdss = list(
             feature_lambda(
                 record.features, feature_test_id, {"id": data.keys()}, subfeatures=False
@@ -66,7 +66,7 @@ def writeGff3(data, handle, parentGff3):
                 )
             record.features.append(fetchParent(cds))
 
-        GFF.write([record], handle)
+        gffWrite([record], handle)
 
 
 if __name__ == "__main__":

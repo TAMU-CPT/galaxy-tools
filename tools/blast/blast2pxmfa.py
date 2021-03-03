@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from gff3 import feature_lambda, feature_test_true
@@ -20,7 +20,7 @@ def parse_gff3(annotations, genome):
 
     data = {}
     seq_dict = SeqIO.to_dict(SeqIO.parse(genome, "fasta"))
-    for record in GFF.parse(annotations, base_dict=seq_dict):
+    for record in gffParse(annotations, base_dict=seq_dict):
         for feature in feature_lambda(
             record.features, feature_test_true, {}, subfeatures=False
         ):

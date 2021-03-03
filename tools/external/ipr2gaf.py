@@ -2,7 +2,7 @@
 import os
 import argparse
 import logging
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from datetime import date
 
 logging.basicConfig(level=logging.INFO)
@@ -12,7 +12,7 @@ today = date.today()
 
 
 def ipr2gaf(gff3):
-    for record in GFF.parse(gff3):
+    for record in gffParse(gff3):
         # Only want real features, not the fasta IPR sticks at the end
         if record.id.startswith("match$"):
             continue

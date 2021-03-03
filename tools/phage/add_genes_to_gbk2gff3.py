@@ -1,6 +1,6 @@
 import sys
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 import logging
 
@@ -9,7 +9,7 @@ log = logging.getLogger(__name__)
 
 
 def fix(gff):
-    for record in GFF.parse(gff):
+    for record in gffParse(gff):
         feature_tag_groups = {}
         rejects = []
         for feature in record.features:
@@ -60,4 +60,4 @@ if __name__ == "__main__":
 
     for record in fix(**vars(args)):
         record.annotations = {}
-        GFF.write(record, sys.stdout)
+        gffWrite(record, sys.stdout)

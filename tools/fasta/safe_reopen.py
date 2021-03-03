@@ -4,7 +4,7 @@ import argparse
 import logging
 from intervaltree import IntervalTree, Interval
 from Bio import SeqIO
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
@@ -13,7 +13,7 @@ log = logging.getLogger()
 def extract_gff3_regions(gff3_files):
     data = {}
     for file in gff3_files:
-        for record in GFF.parse(file):
+        for record in gffParse(file):
             if record.id not in data:
                 data[record.id] = IntervalTree()
 

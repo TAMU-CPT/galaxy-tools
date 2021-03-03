@@ -4,7 +4,7 @@ import copy
 import logging
 import re
 import sys
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio.Blast import NCBIXML
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
@@ -413,4 +413,4 @@ if __name__ == "__main__":
 
     for rec in blast2gff3(**vars(args)):
         if len(rec.features):
-            GFF.write([rec], sys.stdout)
+            gffWrite([rec], sys.stdout)

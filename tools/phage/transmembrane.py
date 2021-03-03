@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import argparse
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 import itertools
 
@@ -9,7 +9,7 @@ def taper_list(gff3, fasta):
     """ deletes records that already have identified transmembrane domains """
 
     records = SeqIO.to_dict(SeqIO.parse(fasta, "fasta"))
-    for rec in GFF.parse(gff3):
+    for rec in gffParse(gff3):
         del records[rec.id]
 
     find_tmembrane(records)

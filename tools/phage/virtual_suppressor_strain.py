@@ -3,7 +3,7 @@ import logging
 import sys
 import argparse
 from gff3 import feature_lambda
-from BCBio import GFF
+from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.Seq import reverse_complement, translate
 
@@ -26,7 +26,7 @@ def suppress(genome, annotations, suppress=None):
 
     suppressed_features = []
 
-    for record in GFF.parse(annotations, base_dict=seq_dict):
+    for record in gffParse(annotations, base_dict=seq_dict):
         for feature in feature_lambda(
             record.features,
             feature_test,
@@ -63,7 +63,7 @@ def suppress(genome, annotations, suppress=None):
 
         record.features = suppressed_features
         record.annotations = {}
-        GFF.write([record], sys.stdout)
+        gffWrite([record], sys.stdout)
 
 
 if __name__ == "__main__":
