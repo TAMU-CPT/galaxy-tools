@@ -75,7 +75,7 @@ def blastxml2gff3(blastxml, include_seq=False):
 
         for idx_hit, hit in enumerate(record.alignments):
             # gotta check all hsps in a hit to see boundaries
-            rec = SeqRecord(Seq("ACTG"), id=recid)
+            rec = SeqRecord("", id=recid)
             parent_match_start = 0
             parent_match_end = 0
             hit_qualifiers = {
@@ -302,7 +302,7 @@ def blasttsv2gff3(blasttsv, include_seq=False):
 
         dc = {k: v for (k, v) in zip(columns, (x.strip() for x in record.split("\t")))}
 
-        rec = SeqRecord(Seq("ACTG"), id=dc["qseqid"])
+        rec = SeqRecord("", id=dc["qseqid"])
 
         feature_id = "b2g.%s" % (record_idx)
         hit_qualifiers = {
