@@ -205,8 +205,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Export corresponding sequence in genome from GFF3", epilog=""
     )
-    parser.add_argument("fasta", help="Fasta Genome")
-    parser.add_argument("gff3", help="GFF3 File")
+    parser.add_argument("fasta", type=argparse.FileType("r"), help="Fasta Genome")
+    parser.add_argument("gff3", type=argparse.FileType("r"), help="GFF3 File")
 
     parser.add_argument(
         "--min_conf",
