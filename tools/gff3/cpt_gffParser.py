@@ -656,8 +656,8 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
     #                            value will override the metadata gffSeqFeature.qualifier value with the pragma's own. This will force
     #                            the metadata and pragmas to sync, and avoid future discrepancies. Should only be used with pragmaPrority 
  
-    if hasattr(gff3, 'readlines') and callable(getattr(gff3, 'readlines')):
-      gff3 = gff3.readlines()
+    if hasattr(gff3In, 'readlines') and callable(getattr(gff3In, 'readlines')):
+      gff3In = gff3In.readlines()
 
     fastaDirective = False # Once true, must assume remainder of file is a FASTA, per spec
     errOut = ""
