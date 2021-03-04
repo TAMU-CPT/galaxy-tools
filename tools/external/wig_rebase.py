@@ -37,7 +37,7 @@ def getGff3Locations(parent, map_by="ID"):
     featureLocations = {}
     recs = gffParse(parent)
     # Only parse first.
-    rec = next(recs)
+    rec = recs[0]
     # Get all the feature locations in this genome
     for feature in feature_lambda(rec.features, feature_test_true, {}):
         id = feature.qualifiers.get(map_by, [feature.id])[0]
