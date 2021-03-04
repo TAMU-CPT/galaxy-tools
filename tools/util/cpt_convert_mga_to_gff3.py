@@ -66,7 +66,7 @@ def mga_to_gff3(mga_output, genome):
                         "ID": "%s.rbs_%s" % (current_record.id, gene_id),
                         "Source": "MGA",
                     },
-                    shift=phase,
+                    phase=phase,
                     source="MGA"
                 )
 
@@ -78,7 +78,7 @@ def mga_to_gff3(mga_output, genome):
                     "Source": "MGA",
                     "ID": "%s.cds_%s" % (current_record.id, gene_id),
                 }, 
-                shift=phase,
+                phase=phase,
                 source="MGA"
             )
 
@@ -101,7 +101,7 @@ def mga_to_gff3(mga_output, genome):
                     "Source": "MGA",
                     "ID": "%s.%s" % (current_record.id, gene_id),
                 },
-                shift=phase,
+                phase=phase,
                 source="MGA"
             )
 
