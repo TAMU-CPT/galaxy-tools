@@ -69,7 +69,7 @@ def generate_annotation_file(gff3):
 
 def run_transterm(expterm, fasta, annotations):
     output = subprocess.check_output(
-        ["transterm", "-p", expterm, "--all-context", fasta, annotations]
+        ["transterm", "-p", expterm, "--all-context", fasta.name, annotations]
     )
     return output
 
