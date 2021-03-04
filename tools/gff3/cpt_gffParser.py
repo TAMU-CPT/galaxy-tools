@@ -986,7 +986,7 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
         if "sequence-region" in outList.keys():
           fields = outList["sequence-region"].split(" ")
           if int(fields[2]) < maxInd:
-            fields[2] = maxInd
+            fields[2] = str(int(maxInd))
             outList["sequence-region"] = " ".join(fields)
         if validPragmas == None:
           outStr = writeMetaQuals(outList)
