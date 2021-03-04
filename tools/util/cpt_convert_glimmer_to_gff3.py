@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature
 from Bio.SeqFeature import FeatureLocation
@@ -53,24 +53,28 @@ def glimmer3_to_gff3(glimmer, genome):
                     start = 0
                 gene_id+="_truncated"
 
-            cds_feat = SeqFeature(
+            cds_feat = gffSeqFeature(
                 FeatureLocation(start, end),
                 type="CDS",
                 strand=strand,
+                id="%s.%s" % (current_record.id, gene_id),
                 qualifiers={
                     "source": "Glimmer3",
                     "ID": "%s.cds_%s" % (current_record.id, gene_id),
                 },
+                source="Glimmer3"
             )
 
-            gene = SeqFeature(
+            gene = gffSeqFeature(
                 FeatureLocation(start, end),
                 type="gene",
                 strand=strand,
+                id="%s.%s" % (current_record.id, gene_id),
                 qualifiers={
-                    "source": "glimmer",
+                    "source": "Glimmer3",
                     "ID": "%s.%s" % (current_record.id, gene_id),
                 },
+                source="Glimmer3"
             )
             gene.sub_features = [cds_feat]
             current_record.features.append(gene)
