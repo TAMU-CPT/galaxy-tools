@@ -77,8 +77,10 @@ def run_transterm(expterm, fasta, annotations):
 def pairwise(it):
     it = iter(it)
     while True:
+      try:
         yield next(it), next(it)
-
+      except StopIteration:
+        return
 
 def parse_transterm(data):
     data = data.decode("utf-8")
