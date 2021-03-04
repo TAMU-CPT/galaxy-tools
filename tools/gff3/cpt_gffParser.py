@@ -959,6 +959,8 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
     if type(inRec) != list:
       inRec = [inRec]
     for rec in inRec:
+      if len(rec.features) > 0 and type(rec.features[0]) == "SeqFeature":
+        rec = convertSeqRec(rec, defaultSource = "gffSeqFeature", deriveSeqRegion = False)
       if not isinstance(rec.seq, UnknownSeq):
         writeFasta = True
       
