@@ -258,7 +258,7 @@ if __name__ == "__main__":
         description="Export corresponding sequence in genome from GFF3", epilog=""
     )
     parser.add_argument("fasta", type=argparse.FileType("r"), help="Fasta Genome")
-    parser.add_argument("gff3", type=argparse.FileType("r"), help="GFF3 File")
+    parser.add_argument("gff3", type=argparse.FileType("rb"), help="GFF3 File")
     parser.add_argument(
         "--feature_filter", default=None, help="Filter for specific feature types"
     )
