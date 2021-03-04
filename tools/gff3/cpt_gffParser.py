@@ -1017,12 +1017,12 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
         
         if not foundMeta:
           tempSeq = gffSeqFeature(FeatureLocation(0, len(rec.seq), 0), createMetaFeat, '', 0, 0, outList, None, None, None, '.', '.', "CPT_GFFParse") 
-          printFeatLine(tempSeq, rec.id, source = tempSeq.source, score = tempSeq.score, phase = tempSeq.phase, outStream = outStream)
+          printFeatLine(tempSeq, rec.id, source = tempSeq.source, score = tempSeq.score, phase = tempSeq.shift, outStream = outStream)
 
       for feat in rec.features:
           if suppressMeta > 0 and feat.type in metaTypes:
             continue  
-          printFeatLine(feat, rec.id, source = feat.source, score = feat.score, phase = feat.phase, outStream = outStream)   
+          printFeatLine(feat, rec.id, source = feat.source, score = feat.score, phase = feat.shift, outStream = outStream)   
       firstRec = False 
     if writeFasta and not suppressFasta:
       outStream.write("##FASTA\n")
