@@ -81,6 +81,7 @@ def pairwise(it):
 
 
 def parse_transterm(data):
+    daa = data.decode("utf-8")
     data = data.split("SEQUENCE")[1:]
     for datum in data:
         lines = datum.split("\n")
