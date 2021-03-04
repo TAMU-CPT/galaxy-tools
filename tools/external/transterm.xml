@@ -5,7 +5,11 @@
 		<import>cpt-macros.xml</import>
 	</macros>
 	<expand macro="requirements">
-		<requirement type="package" version="2.09">transtermhp</requirement>
+            <requirements>
+		<requirement type="package" version="3.7.9">python</requirement>
+		<requirement type="package" version="1.77">biopython</requirement>
+	        <requirement type="package" version="2.09">transtermhp</requirement> 
+            </requirements>
 	</expand>
 	<command detect_errors="aggressive"><![CDATA[
 @GENOME_SELECTOR_PRE@
