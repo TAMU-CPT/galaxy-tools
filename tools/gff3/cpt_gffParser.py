@@ -714,7 +714,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
         elif prag[0] == "sequence-region":
           if prag[1] not in regionDict.keys():
             regionDict[prag[1]] = (int(prag[2]) - 1, int(prag[3]), pragBit)
-          elif pragBit > regionDict[prag[1]]:
+          elif pragBit > regionDict[prag[1]][2]:
             regionDict[prag[1]] = (int(prag[2]) - 1, int(prag[3]), pragBit)
         elif prag[0] == "#":
           orgDict, resolveErr = resolveParent(orgDict, seekParentDict)
