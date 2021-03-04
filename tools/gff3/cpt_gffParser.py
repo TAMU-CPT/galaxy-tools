@@ -32,7 +32,7 @@ class gffSeqFeature(SeqFeature.SeqFeature):
         sub_features=None,
         ref=None,
         ref_db=None,
-        shift=0,
+        phase=0,
         score=0.0,
         source="feature"
     ):
@@ -50,7 +50,7 @@ class gffSeqFeature(SeqFeature.SeqFeature):
             )
         self.location = location
         self.type = type
-        self.shift = shift
+        self.phase = phase
         self.score = score
         self.source = source
         if location_operator:
@@ -109,7 +109,7 @@ class gffSeqFeature(SeqFeature.SeqFeature):
             id=self.id,
             qualifiers=OrderedDict(self.qualifiers.items()),
             sub_features=self.sub_features,
-            shift=self.shift,
+            phase=self.phase,
             score=self.score,
             source=self.source
         )
@@ -126,11 +126,11 @@ class gffSeqFeature(SeqFeature.SeqFeature):
     ):
         """
           Identical to the implementation found in 
-          Biopython SeqFeature, but will use .shift value instead
+          Biopython SeqFeature, but will use .phase value instead
           if start_offset is not set and start_codon is not present
 
           Deferred to codon_start under reasoning that some bioinformatic scripts
-          may edit the codon_start field, but not change the .shift value
+          may edit the codon_start field, but not change the .phase value
         """
         # see if this feature should be translated in a different
         # frame using the "codon_start" qualifier
@@ -138,7 +138,7 @@ class gffSeqFeature(SeqFeature.SeqFeature):
             try:
                 start_offset = int(self.qualifiers["codon_start"][0]) - 1
             except KeyError:
-                start_offset = self.shift
+                start_offset = self.phase
 
         if start_offset not in [0, 1, 2]:
             raise ValueError("The start_offset must be 0, 1, or 2. The supplied value is '%s'. Check the value of either the codon_start qualifier, the .phase property, or the start_offset argument" % (start_offset))
@@ -166,9 +166,9 @@ def convertSeqFeat(inFeat, defaultSource = "gffSeqFeature"):
     if x == inFeat.id: # Cannot allow self-loops
       raise Exception("Cannot convert SeqRecord, feature %s lists itself as a parent feature" % (cand.id))
   if "codon_start" in inFeat.qualifiers.keys():
-    shiftIn = int(inFeat.qualifiers["codon_start"][0])
+    phaseIn = int(inFeat.qualifiers["codon_start"][0])
   else:
-    shiftIn = 0
+    phaseIn = 0
   if "score" in inFeat.qualifiers.keys():
     scoreIn = float(inFeat.qualifiers["score"][0])
   else:
@@ -178,7 +178,7 @@ def convertSeqFeat(inFeat, defaultSource = "gffSeqFeature"):
   else:
     sourceIn = defaultSource 
 
-  return gffSeqFeature(featLoc, inFeat.type, '', featLoc.strand, IDName, qualDict, [], None, None, shiftIn, scoreIn, sourceIn)
+  return gffSeqFeature(featLoc, inFeat.type, '', featLoc.strand, IDName, qualDict, [], None, None, phaseIn, scoreIn, sourceIn)
 
 def convertSeqRec(inRec, defaultSource = "gffSeqFeature", deriveSeqRegion = True, createMetaFeat = None):
   # Assumes an otherwise well-constructed SeqRecord that just wants to replace its features with gffSeqFeatures
@@ -541,9 +541,9 @@ def lineAnalysis(line, codingTypes = ["CDS"]):
     elif fields[7] =='.' and fields[1] in codingTypes:
       errorMessage += "Expected 0, 1, or 2 in Phase field for %s-type feature, actual value is '%s'.\n" % (fields[1], fields[7])
     if fields[7] == '.':
-      shiftIn = 0
+      phaseIn = 0
     else:
-      shiftIn = int(fields[7])
+      phaseIn = int(fields[7])
 
     # fields[8]
 
@@ -634,7 +634,7 @@ def lineAnalysis(line, codingTypes = ["CDS"]):
      
     if errorMessage != "":
       return errorMessage, None, None
-    return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, shiftIn, scoreIn, fields[1])   
+    return None, fields[0], gffSeqFeature(featLoc, fields[2], '', featLoc.strand, IDName, qualDict, None, None, None, phaseIn, scoreIn, fields[1])   
         
 def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"], metaTypes = ["remark"], suppressMeta = 2, pragmaPriority = True, pragmaOverridePriority = True):
     # gff3In --- source file
@@ -881,7 +881,7 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
   
     return res
 
-def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = None, outStream = sys.stdout, parents = None, codingTypes = ["CDS"]):
+def printFeatLine(inFeat, orgName, source = 'feature', score = None, phase = None, outStream = sys.stdout, parents = None, codingTypes = ["CDS"]):
     for loc in inFeat.location.parts:
       line = orgName + "\t"
       if source:
@@ -909,12 +909,12 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
       else: 
         line += "?\t"
       if inFeat.type in codingTypes: 
-        if shift or shift == 0:
-          line += str(shift) + "\t"
+        if phase or phase == 0:
+          line += str(phase) + "\t"
         else:
           line += "0\t"
-      elif shift != 0:
-        line += str(shift) + "\t"
+      elif phase != 0:
+        line += str(phase) + "\t"
       else:
         line += ".\t"
       if parents and "Parent" not in inFeat.qualifiers.keys():
@@ -944,7 +944,7 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, shift = Non
       outStream.write(line + "\n")  
     if type(inFeat) == gffSeqFeature and inFeat.sub_features: 
       for x in inFeat.sub_features:
-        printFeatLine(x, orgName, x.source, x.score, x.shift, outStream, inFeat)
+        printFeatLine(x, orgName, x.source, x.score, x.phase, outStream, inFeat)
 
 def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True, codingTypes = ["CDS"], metaTypes = ["remark"], validPragmas = None, recPriority = True, createMetaFeat=None):
 
@@ -1017,12 +1017,12 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
         
         if not foundMeta:
           tempSeq = gffSeqFeature(FeatureLocation(0, len(rec.seq), 0), createMetaFeat, '', 0, 0, outList, None, None, None, '.', '.', "CPT_GFFParse") 
-          printFeatLine(tempSeq, rec.id, source = tempSeq.source, score = tempSeq.score, phase = tempSeq.shift, outStream = outStream)
+          printFeatLine(tempSeq, rec.id, source = tempSeq.source, score = tempSeq.score, phase = tempSeq.phase, outStream = outStream)
 
       for feat in rec.features:
           if suppressMeta > 0 and feat.type in metaTypes:
             continue  
-          printFeatLine(feat, rec.id, source = feat.source, score = feat.score, phase = feat.shift, outStream = outStream)   
+          printFeatLine(feat, rec.id, source = feat.source, score = feat.score, phase = feat.phase, outStream = outStream)   
       firstRec = False 
     if writeFasta and not suppressFasta:
       outStream.write("##FASTA\n")
