@@ -9,7 +9,6 @@ logging.basicConfig(level=logging.INFO)
 
 def reformat(data):
     for record in gffParse(data):
-        print(record)
         record.annotations = {}
         gffWrite([record], sys.stdout)
 
