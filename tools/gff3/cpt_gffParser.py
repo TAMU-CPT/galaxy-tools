@@ -476,7 +476,7 @@ def lineAnalysis(line, codingTypes = ["CDS"]):
       errorMessage += "GFF3 is a 9-column tab-separated format, line has %d columns.\n" % (len(fields))
       if len(fields) > 9:
         errorMessage += "Possible unescaped tab in a qualifier field.\n"
-        return errorMessage, None, None
+      return errorMessage, None, None
 
     for x in range(0, len(fields)):
       if fields[x] == "":
@@ -656,6 +656,9 @@ def gffParse(gff3In, base_dict = {}, outStream = sys.stderr, codingTypes=["CDS"]
     #                            value will override the metadata gffSeqFeature.qualifier value with the pragma's own. This will force
     #                            the metadata and pragmas to sync, and avoid future discrepancies. Should only be used with pragmaPrority 
  
+    if hasattr(gff3, 'readlines') and callable(getattr(gff3, 'readlines')):
+      gff3 = gff3.readlines()
+
     fastaDirective = False # Once true, must assume remainder of file is a FASTA, per spec
     errOut = ""
     warnOut = ""
