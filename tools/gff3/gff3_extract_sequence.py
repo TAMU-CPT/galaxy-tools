@@ -15,9 +15,9 @@ log = logging.getLogger(__name__)
 
 
 def main(fasta, gff3, feature_filter=None, nodesc=False):
-
     if feature_filter == "nice_cds":
         from gff2gb import gff3_to_genbank as cpt_Gff2Gbk
+        
 
         for rec in cpt_Gff2Gbk(gff3, fasta, 11):
             seenList = {}
@@ -116,9 +116,9 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     description = ""
                 else:
                     if feat.strand == -1:
-                      important_data = {"Location": FeatureLocation(feat.location.start + 1, feat.location.end - feat.shift, feat.strand)}
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1, feat.location.end - feat.phase, feat.strand)}
                     else:
-                      important_data = {"Location": FeatureLocation(feat.location.start + 1 + feat.shift, feat.location.end, feat.strand)}
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1 + feat.phase, feat.location.end, feat.strand)}
                     if "Name" in feat.qualifiers:
                         important_data["Name"] = feat.qualifiers.get("Name", [""])[0]
 
@@ -138,10 +138,10 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                   finSeq = ""
                   if feat.strand == -1:
                     for x in feat.location.parts:
-                      finSeq += str((rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement())
+                      finSeq += str((rec.seq[feat.location.start: feat.location.end - feat.phase]).reverse_complement())
                   else:
                     for x in feat.location.parts:
-                      finSeq += str(rec.seq[feat.location.start + feat.shift: feat.location.end])
+                      finSeq += str(rec.seq[feat.location.start + feat.phase: feat.location.end])
                   yield [
                     SeqRecord(
                         finSeq,
@@ -152,7 +152,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                 elif feat.strand == -1:
                   yield [
                     SeqRecord(
-                        (rec.seq[feat.location.start: feat.location.end - feat.shift]).reverse_complement(),
+                        (rec.seq[feat.location.start: feat.location.end - feat.phase]).reverse_complement(),
                         id=nid.replace(" ", "-"),
                         description=description,
                     )
@@ -161,7 +161,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                   yield [
                     SeqRecord(
                         #feat.extract(rec).seq,
-                        rec.seq[feat.location.start + feat.shift: feat.location.end],
+                        rec.seq[feat.location.start + feat.phase: feat.location.end],
                         id=nid.replace(" ", "-"),
                         description=description,
                     )
@@ -201,9 +201,9 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     description = ""
                 else:
                     if feat.strand == -1:
-                      important_data = {"Location": FeatureLocation(feat.location.start + 1, feat.location.end - feat.shift, feat.strand)}
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1, feat.location.end - feat.phase, feat.strand)}
                     else:
-                      important_data = {"Location": FeatureLocation(feat.location.start + 1 + feat.shift, feat.location.end, feat.strand)}
+                      important_data = {"Location": FeatureLocation(feat.location.start + 1 + feat.phase, feat.location.end, feat.strand)}
                     if "Name" in feat.qualifiers:
                         important_data["Name"] = feat.qualifiers.get("Name", [""])[0]
 
@@ -220,10 +220,10 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                   finSeq = ""
                   if feat.strand == -1:
                     for x in feat.location.parts:
-                      finSeq += str((rec.seq[x.start: x.end - feat.shift]).reverse_complement())
+                      finSeq += str((rec.seq[x.start: x.end - feat.phase]).reverse_complement())
                   else:
                     for x in feat.location.parts:
-                      finSeq += str(rec.seq[x.start + feat.shift: x.end])
+                      finSeq += str(rec.seq[x.start + feat.phase: x.end])
                   yield [
                     SeqRecord(
                         Seq(finSeq),
@@ -237,7 +237,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                   if feat.strand == -1:
                     yield [
                       SeqRecord(
-                          seq=Seq(str(rec.seq[feat.location.start: feat.location.end - feat.shift])).reverse_complement(),
+                          seq=Seq(str(rec.seq[feat.location.start: feat.location.end - feat.phase])).reverse_complement(),
                           id=id.replace(" ", "-"),
                           description=description,
                       )
@@ -246,7 +246,7 @@ def main(fasta, gff3, feature_filter=None, nodesc=False):
                     yield [
                       SeqRecord(
                           #feat.extract(rec).seq,
-                          seq=Seq(str(rec.seq[feat.location.start + feat.shift: feat.location.end])),
+                          seq=Seq(str(rec.seq[feat.location.start + feat.phase: feat.location.end])),
                           id=id.replace(" ", "-"),
                           description=description,
                       )
@@ -258,7 +258,7 @@ if __name__ == "__main__":
         description="Export corresponding sequence in genome from GFF3", epilog=""
     )
     parser.add_argument("fasta", type=argparse.FileType("r"), help="Fasta Genome")
-    parser.add_argument("gff3", type=argparse.FileType("rb"), help="GFF3 File")
+    parser.add_argument("gff3", type=argparse.FileType("r"), help="GFF3 File")
     parser.add_argument(
         "--feature_filter", default=None, help="Filter for specific feature types"
     )
