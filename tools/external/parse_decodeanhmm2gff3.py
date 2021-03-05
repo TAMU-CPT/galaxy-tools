@@ -3,7 +3,7 @@ import sys
 import uuid
 import argparse
 import logging
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
