@@ -5,7 +5,7 @@ import itertools
 import argparse
 import hashlib
 import copy
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio.Blast import NCBIXML
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda
@@ -362,7 +362,7 @@ class IntronFinder(object):
                     "Intron is over 80% of the total length of the genome, possible wraparound scenario"
                 )
             # With that we can create the top level gene
-            gene = SeqFeature(
+            gene = gffSeqFeature(
                 location=FeatureLocation(gene_min, gene_max),
                 type="gene",
                 id=cluster_id,
@@ -374,7 +374,7 @@ class IntronFinder(object):
             )
 
             # Below that we have an mRNA
-            mRNA = SeqFeature(
+            mRNA = gffSeqFeature(
                 location=FeatureLocation(gene_min, gene_max),
                 type="mRNA",
                 id=cluster_id + ".mRNA",
