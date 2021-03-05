@@ -89,7 +89,7 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
 
                 qualifiers.update({"Parent": pID})
 
-                sub_feat = SeqFeature(
+                sub_feat = gffSeqFeature(
                     FeatureLocation(int(start) - 1, int(end)),
                     type="Transmembrane"
                     if region_type == "M"
@@ -99,7 +99,7 @@ def convert(data=None, bw_i=None, bw_o=None, bw_m=None):
                 )
                 tempSub.append(sub_feat)
 
-            feature = SeqFeature(
+            feature = gffSeqFeature(
                 FeatureLocation(0, length),
                 type="Chain",
                 strand=1,
