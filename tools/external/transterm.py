@@ -180,7 +180,7 @@ def parse_transterm(data):
                 current_start -= len(addition)
 
             qualifiers.update(notes2)
-            feature = SeqFeature(
+            feature = gffSeqFeature(
                 FeatureLocation(current_start, current_end),
                 type="terminator",
                 strand=1 if pd["strand"] == "+" else -1,
