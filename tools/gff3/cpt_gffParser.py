@@ -247,7 +247,7 @@ def convertSeqRec(inRec, defaultSource = "gffSeqFeature", deriveSeqRegion = True
         popList = []
         lastCount = thisCount
         thisCount = 0 
-      elif thisCount == lastCount or thisCount > 0:
+      elif thisCount == lastCount:
         badIDs = []
         for x in childList:
           badIDs.append(x[0].id)
@@ -256,7 +256,8 @@ def convertSeqRec(inRec, defaultSource = "gffSeqFeature", deriveSeqRegion = True
         sys.stderr.write("Note that this error will also occur if sub_feature relationships between features ever form a cycle/loop.\n")
         raise Exception("Could not convert features of SeqRecord %s to gffSeqFeature format, see stderr\n" % (rec.id)) 
       else:
-        break
+        lastCount = thisCount
+        
 
     if createMetaFeat:
       qualDict = {}
@@ -988,8 +989,10 @@ def gffWrite(inRec, outStream = sys.stdout, suppressMeta = 1, suppressFasta=True
         if "gff-version" in outList.keys() and outList["gff-version"] != verOut:
           verOut = outList["gff-version"]
           outStream.write("##gff-version %s\n" % verOut)
+          firstRec = False
         elif firstRec:
           outStream.write("##gff-version %s\n" % verOut)
+          firstRec = False
         if "sequence-region" in outList.keys():
           fields = outList["sequence-region"].split(" ")
           if int(fields[2]) < maxInd:
