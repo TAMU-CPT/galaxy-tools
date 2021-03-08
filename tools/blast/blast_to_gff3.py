@@ -345,7 +345,7 @@ def blasttsv2gff3(blasttsv, include_seq=False):
 
         # The ``match`` feature will hold one or more ``match_part``s
         top_feature = gffSeqFeature(
-            gffFeatureLocation(
+            FeatureLocation(
                 min(parent_match_start, parent_match_end) - 1,
                 max(parent_match_start, parent_match_end),
             ),
