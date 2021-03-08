@@ -4,7 +4,7 @@ import copy
 import logging
 import re
 import sys
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio.Blast import NCBIXML
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
@@ -157,7 +157,7 @@ def blastxml2gff3(blastxml, include_seq=False):
 
                 # add hsp to the gff3 feature as a "match_part"
                 sub_features.append(
-                    SeqFeature(
+                    gffSeqFeature(
                         FeatureLocation(hsp.query_start - 1, hsp.query_end),
                         type="match_part",
                         strand=0,
@@ -167,7 +167,7 @@ def blastxml2gff3(blastxml, include_seq=False):
 
             # Build the top level seq feature for the hit
             hit_qualifiers["description"] = "Residue %s..%s hit to %s" % (parent_match_start, parent_match_end, desc,)
-            top_feature = SeqFeature(
+            top_feature = gffSeqFeature(
                 FeatureLocation(parent_match_start - 1, parent_match_end),
                 type=match_type,
                 strand=0,
@@ -344,8 +344,8 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         )
 
         # The ``match`` feature will hold one or more ``match_part``s
-        top_feature = SeqFeature(
-            FeatureLocation(
+        top_feature = gffSeqFeature(
+            gffFeatureLocation(
                 min(parent_match_start, parent_match_end) - 1,
                 max(parent_match_start, parent_match_end),
             ),
@@ -362,7 +362,7 @@ def blasttsv2gff3(blasttsv, include_seq=False):
         match_part_end = dc["qend"]
 
         top_feature.sub_features.append(
-            SeqFeature(
+            gffSeqFeature(
                 FeatureLocation(
                     min(match_part_start, match_part_end) - 1,
                     max(match_part_start, match_part_end),
