@@ -106,7 +106,7 @@ class NaiveSDCaller(object):
             # gap is either the sd_start-cds_end (neg strand) or the sd_end-cds_start (pos strand)
             # minimum absolute value of these two will be the proper gap regardless of strand
             tmp = gffSeqFeature(
-                FeatureLocation(start, end, strand=strand),
+                FeatureLocation(min(start, end), max(start, end), strand=strand),
                 type="Shine_Dalgarno_sequence",
                 qualifiers=qualifiers,
             )
@@ -131,7 +131,7 @@ class NaiveSDCaller(object):
 
         # Create our temp feature used to obtain correct portion of
         # genome
-        tmp = gffSeqFeature(FeatureLocation(start, end, strand=strand), type="domain")
+        tmp = gffSeqFeature(FeatureLocation(min(start, end), max(start, end), strand=strand), type="domain")
         seq = str(tmp.extract(record.seq))
         return self.list_sds(seq, sd_min, sd_max), start, end, seq
 
