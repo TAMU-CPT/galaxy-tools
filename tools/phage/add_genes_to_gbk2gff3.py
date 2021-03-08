@@ -1,6 +1,6 @@
 import sys
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 import logging
 
@@ -30,7 +30,7 @@ def fix(gff):
                 cds = [x for x in feature_tag_groups[group] if x.type == "CDS"][0]
                 rbs = [x for x in feature_tag_groups[group] if x.type == "RBS"][0]
 
-                gene_feature = SeqFeature(
+                gene_feature = gffSeqFeature(
                     FeatureLocation(starts, ends, strand=cds.strand),
                     type="gene",
                     id=cds.id,

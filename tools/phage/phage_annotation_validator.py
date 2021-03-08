@@ -19,7 +19,7 @@ from gff3 import (
     nice_name,
 )
 from shinefind import NaiveSDCaller
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -59,9 +59,9 @@ def gen_qc_feature(start, end, message, strand=0, id_src=None):
         kwargs["qualifiers"]["Name"] = id_src.qualifiers.get("Name", [])
 
     if end >= start:
-        return SeqFeature(FeatureLocation(start, end, strand=strand), **kwargs)
+        return gffSeqFeature(FeatureLocation(start, end, strand=strand), **kwargs)
     else:
-        return SeqFeature(FeatureLocation(end, start, strand=strand), **kwargs)
+        return gffSeqFeature(FeatureLocation(end, start, strand=strand), **kwargs)
 
 
 def __ensure_location_in_bounds(start=0, end=0, parent_length=0):
@@ -115,7 +115,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
                 start=start, end=end, parent_length=len(record)
             )
             # Temporary feature to extract sequence
-            tmp = SeqFeature(
+            tmp = gffSeqFeature(
                 FeatureLocation(start, end, strand=gene.strand), type="domain"
             )
             # Get the sequence
@@ -196,7 +196,7 @@ def require_sd(data, record, chrom_start, sd_min, sd_max):
         (start, end) = __ensure_location_in_bounds(
             start=start, end=end, parent_length=len(record)
         )
-        tmp = SeqFeature(
+        tmp = gffSeqFeature(
             FeatureLocation(start, end, strand=putative_gene[2]), type="domain"
         )
         # Get the sequence
@@ -344,14 +344,14 @@ def excessive_gap(
             possible_gene_end = start + putative_gene[1]
 
             if possible_gene_start <= possible_gene_end:
-                possible_cds = SeqFeature(
+                possible_cds = gffSeqFeature(
                     FeatureLocation(
                         possible_gene_start, possible_gene_end, strand=putative_gene[2]
                     ),
                     type="CDS",
                 )
             else:
-                possible_cds = SeqFeature(
+                possible_cds = gffSeqFeature(
                     FeatureLocation(
                         possible_gene_end, possible_gene_start, strand=putative_gene[2],
                     ),
@@ -366,14 +366,14 @@ def excessive_gap(
                 possible_gene_end = putative_gene[6]
 
             if putative_gene[5] <= putative_gene[6]:
-                possible_rbs = SeqFeature(
+                possible_rbs = gffSeqFeature(
                     FeatureLocation(
                         putative_gene[5], putative_gene[6], strand=putative_gene[2]
                     ),
                     type="Shine_Dalgarno_sequence",
                 )
             else:
-                possible_rbs = SeqFeature(
+                possible_rbs = gffSeqFeature(
                     FeatureLocation(
                         putative_gene[6], putative_gene[5], strand=putative_gene[2],
                     ),
@@ -381,7 +381,7 @@ def excessive_gap(
                 )
 
             if possible_gene_start <= possible_gene_end:
-                possible_gene = SeqFeature(
+                possible_gene = gffSeqFeature(
                     FeatureLocation(
                         possible_gene_start, possible_gene_end, strand=putative_gene[2]
                     ),
@@ -389,7 +389,7 @@ def excessive_gap(
                     qualifiers={"note": ["Possible gene"]},
                 )
             else:
-                possible_gene = SeqFeature(
+                possible_gene = gffSeqFeature(
                     FeatureLocation(
                         possible_gene_end, possible_gene_start, strand=putative_gene[2],
                     ),
