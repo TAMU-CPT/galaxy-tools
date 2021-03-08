@@ -4,7 +4,7 @@ import copy
 import logging
 import re
 import sys
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(name="blastxml2gff3")
@@ -96,7 +96,7 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False, include_seq=F
                         parent_match_end = hsp.query_end + 1
 
                 # The ``match`` feature will hold one or more ``match_part``s
-                top_feature = SeqFeature(
+                top_feature = gffSeqFeature(
                     FeatureLocation(used_parent_match_start, parent_match_end),
                     type=match_type,
                     strand=0,
@@ -125,7 +125,7 @@ def blastxml2gff3(blastxml, min_gap=3, trim=False, trim_end=False, include_seq=F
                     match_part_end = match_part_start + (end - start)
 
                     top_feature.sub_features.append(
-                        SeqFeature(
+                        gffSeqFeature(
                             FeatureLocation(match_part_start, match_part_end),
                             type="match_part",
                             strand=0,
