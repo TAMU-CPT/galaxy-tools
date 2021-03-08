@@ -7,7 +7,7 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.Alphabet import IUPAC
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from xmfa import parse_xmfa, percent_identity, id_tn_dict
 
 logging.basicConfig(level=logging.INFO)
@@ -58,7 +58,7 @@ def generate_subfeatures(parent, window_size, other, protein=False):
         if pid == 0:
             continue
 
-        yield SeqFeature(
+        yield gffSeqFeature(
             FeatureLocation(
                 real_start + indexed_start,
                 real_start + indexed_start + nucl2prot * real_window_size,
@@ -121,7 +121,7 @@ def convert_xmfa_to_gff3(xmfa_file, sequences=None, window_size=1000, protein=Fa
 
             for o_idx, other in enumerate(others):
                 # A feature representing a region of synteny between parent and the given other
-                other_feature = SeqFeature(
+                other_feature = gffSeqFeature(
                     FeatureLocation(parent["start"], parent["end"]),
                     type="match",
                     strand=parent["strand"],

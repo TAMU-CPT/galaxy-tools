@@ -2,7 +2,7 @@
 import sys
 import logging
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio.SeqFeature import SeqFeature
 from gff3 import feature_lambda, feature_test_type
 
@@ -26,14 +26,14 @@ def fixed_feature(rec):
           origSource = feature.qualifiers["source"][0]
         except:
           origSource = "."
-        gene = SeqFeature(
+        gene = gffSeqFeature(
             location=feature.location,
             type="gene",
             qualifiers={"ID": [fid + ".gene"], "source": [origSource], "Name": name},
         )
         feature.qualifiers["Name"] = name
         # Below that we have an mRNA
-        exon = SeqFeature(
+        exon = gffSeqFeature(
             location=feature.location,
             type="exon",
             qualifiers={"source": [origSource], "ID": ["%s.exon" % fid], "Name": name},
