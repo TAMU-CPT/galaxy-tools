@@ -3,7 +3,7 @@ import re
 import sys
 import argparse
 import logging
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -83,7 +83,7 @@ class NaiveSDCaller(object):
                 start = parent_start + hit["spacing"]
                 end = parent_start + hit["spacing"] + hit["len"]
 
-            tmp = SeqFeature(
+            tmp = gffSeqFeature(
                 FeatureLocation(start, end, strand=strand),
                 type="RBS",
                 qualifiers=qualifiers,
@@ -109,7 +109,7 @@ class NaiveSDCaller(object):
 
         # Create our temp feature used to obtain correct portion of
         # genome
-        tmp = SeqFeature(FeatureLocation(start, end, strand=strand), type="domain")
+        tmp = gffSeqFeature(FeatureLocation(start, end, strand=strand), type="domain")
         seq = str(tmp.extract(record.seq))
         return self.list_sds(seq), start, end, seq
 
