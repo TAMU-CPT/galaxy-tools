@@ -66,6 +66,7 @@ class NaiveSDCaller(object):
                             "len": len(match.group()),
                         }
                     )
+        hits = sorted(hits, key= lambda x: (x['len'],x['spacing']))
         return hits
 
     @classmethod
