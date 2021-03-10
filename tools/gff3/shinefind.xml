@@ -83,9 +83,13 @@ possible Shine-Dalgarno sequences:
  In previous versions of this tool, the min/max was set for the window to find a Shine-Dalgarno sequence, but 
  currently we specify the minimum and maxium GAP between the end of the SD and the start of the closest CDS. 
 
-By default, only the first (closest to consensus) hit to the list is returned to the GFF3. 
+By default, only the first (closest to consensus) hit to the list is returned to the GFF3. In the case of a tie, it will select the smaller gap.
 By selecting ‘No’ for ‘Only report best hits’, **all hits** to the possible SD list will 
 be added to the GFF3 file. 
+
+**March 10, 2021 Update**
+		Previous to this date, when using "Only report best hits" option the algorithm would pick the "first" one (moving downstream) found in the case of tied sequence length. After this date, it now will report the sequence with the smaller gap between the END of the SD sequence and the START of the CDS.
+
 			]]></help>
 		<expand macro="citations" >
 			<expand macro="sl-citations-clm"/>
