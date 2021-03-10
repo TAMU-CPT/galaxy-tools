@@ -5,7 +5,7 @@ import sys
 import logging
 from collections import Counter
 from Levenshtein import distance
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda, feature_test_type
@@ -137,7 +137,7 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                         cdsB_start, cdsB_end, strand=feat.location.strand
                     )
 
-                    mRNA = SeqFeature(
+                    mRNA = gffSeqFeature(
                         frameshiftedFeatureLocation,
                         type="mRNA",
                         qualifiers={
@@ -145,12 +145,12 @@ def FrameShiftFinder(gff3, fasta, max_overlap=60, table=11, slippage_max=-3):
                             "score": score * (1000 / 8),
                         },
                     )
-                    exon = SeqFeature(
+                    exon = gffSeqFeature(
                         frameshiftedFeatureLocation,
                         type="exon",
                         qualifiers={"source": "CPT_FSFinder"},
                     )
-                    cds_b = SeqFeature(
+                    cds_b = gffSeqFeature(
                         frameshiftedFeatureLocation,
                         type="CDS",
                         qualifiers={

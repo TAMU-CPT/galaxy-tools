@@ -3,7 +3,7 @@ import re
 import sys
 import copy
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -132,7 +132,7 @@ def blasttsv2gff3(
         # We settle for this.
 
         # The ``match`` feature will hold one or more ``match_part``s
-        top_feature = SeqFeature(
+        top_feature = gffSeqFeature(
             FeatureLocation(
                 min(parent_match_start, parent_match_end) - 1,
                 max(parent_match_start, parent_match_end),
@@ -162,7 +162,7 @@ def blasttsv2gff3(
             match_part_end = match_part_start + (end - start)
 
             top_feature.sub_features.append(
-                SeqFeature(
+                gffSeqFeature(
                     FeatureLocation(
                         min(match_part_start, match_part_end) - 1,
                         max(match_part_start, match_part_end) - 1,
