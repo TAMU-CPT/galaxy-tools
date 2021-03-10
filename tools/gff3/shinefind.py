@@ -66,7 +66,7 @@ class NaiveSDCaller(object):
                             "len": len(match.group()),
                         }
                     )
-        hits = sorted(hits, key= lambda x: (x['len'],x['spacing']))
+        hits = sorted(hits, key= lambda x: (-x['len'],x['spacing']))
         return hits
 
     @classmethod
@@ -108,6 +108,7 @@ class NaiveSDCaller(object):
             # minimum absolute value of these two will be the proper gap regardless of strand
             tmp = gffSeqFeature(
                 FeatureLocation(min(start, end), max(start, end), strand=strand),
+                #FeatureLocation(min(start, end), max(start, end), strand=strand),
                 type="Shine_Dalgarno_sequence",
                 qualifiers=qualifiers,
             )
