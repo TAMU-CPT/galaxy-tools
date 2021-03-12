@@ -500,7 +500,7 @@ def lineAnalysis(line, codingTypes = ["CDS"]):
       fields[3] = (fields[3][1:]).strip()
     else:
       uncert = 0
-      fields[3].strip()
+      fields[3] = fields[3].strip()
 
     if isNum(fields[3]):
       startLoc = int(fields[3])
@@ -514,12 +514,12 @@ def lineAnalysis(line, codingTypes = ["CDS"]):
       fields[4] = (fields[4][1:]).strip()
     else:
       uncert = 0
-      fields[4].strip()
+      fields[4] = fields[4].strip()
 
     if isNum(fields[4]):
       endLoc = int(fields[4])
     else:
-      errorMessage += "Feature location start contains non-numeric character.\n"
+      errorMessage += "Feature location end contains non-numeric character.\n"
 
     if startLoc >= 0 and endLoc >= 0 and endLoc < startLoc:
       errorMessage += "Feature Location end is less than start (GFF spec requires all features, regardless of strand, to have the lower number as the start).\n"
