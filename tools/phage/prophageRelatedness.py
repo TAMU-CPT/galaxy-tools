@@ -137,8 +137,8 @@ def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
     outFile.write("Accession Number\tScore\tCluster Start Location\tEnd Location\tTotal Length\t# HSPs in Cluster\tComplete Accession Info\n")
 
     for x in outList:
-      minStart = x[0]["sbjct_range"][0]
-      maxEnd = x[0]["sbjct_range"][1]
+      minStart = min(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
+      maxEnd = max(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
       if "|gb|" in x[0]["match_id"]:
         startSlice = x[0]["match_id"].index("gb|") + 3
         endSlice = (x[0]["match_id"][startSlice:]).index("|")
