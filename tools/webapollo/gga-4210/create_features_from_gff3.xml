@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<tool id="feat_from_gff3" name="GFF3 to Apollo Annotations" version="@WRAPPER_VERSION@">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <code file="webapollo.py"/>
+  <command detect_errors="aggressive"><![CDATA[
+@AUTH@
+
+python '$__tool_directory__/create_features_from_gff3.py'
+@ORG_OR_GUESS@
+
+'$__user_email__'
+'$gff3_data'
+--source '${__app__.config.galaxy_infrastructure_url}/history/view/${__app__.security.encode_id($gff3_data.history_id)}'
+$use_name
+$disable_cds_recalculation
+
+> '$output']]></command>
+  <inputs>
+    <expand macro="org_or_guess" />
+    <expand macro="gff3_input" />
+    <param name="use_name" type="boolean" truevalue="--user_name" falsevalue="" label="Use the given name instead of generating one" />
+    <param name="disable_cds_recalculation" type="boolean" truevalue="--disable_cds_recalculation" falsevalue="" label="Disable CDS recalculation and instead use the one provided" />
+  </inputs>
+  <outputs>
+    <data format="txt" name="output" label="Process and Error Log"/>
+  </outputs>
+  <tests>
+      <test>
+          <conditional name="org_source">
+              <param name="source_select" value="direct"/>
+              <param name="org_raw" value="Test org" />
+          </conditional>
+          <param name="gff3_data" value="merlin.gff"/>
+          <output name="output" file="load_gff3/output.txt" compare="sim_size"/>
+      </test>
+  </tests>
+  <help><![CDATA[
+@REFERENCES@
+]]></help>
+  <expand macro="citations"/>
+</tool>
