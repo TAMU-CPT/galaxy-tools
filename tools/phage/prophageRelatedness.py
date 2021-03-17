@@ -117,6 +117,7 @@ def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
           sumID += float(y["identity"])
         x.append(sumID / float(x[0]["query_length"]))
         maxID = max(maxID, x[-1])
+      res[-1] = sorted(res[-1], key = lambda x: x[-1], reverse = True)
       res[-1].append(maxID)
         
     res = sorted(res, key = lambda x: x[-1], reverse = True)
@@ -132,7 +133,18 @@ def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
       if outNum == numReturn:
         break
 
-    outList.sort(key = lambda x: x[-1], reverse = True)
+#    outList.sort(key = lambda x: x[-1], reverse = True)
+#    Original request was that low scoring clusters would make it to the final results IF
+#    they were part of an Accession cluster that did have at least one high scoring member.
+
+#    They would like to see what the results are without this provision, so inelegantly commenting
+#    out above and unpacking the buckets below. If they prefer the old way, simply remove the unpacking done here
+
+    tmpOut = []
+    for x in outList:
+      for y in x[0:-1]:
+        tmpOut.append(y)
+    outList = sorted(tmpOut, key = lambda x: x[-1], reverse = True)
 
     outFile.write("Accession Number\tScore\tCluster Start Location\tEnd Location\tTotal Length\t# HSPs in Cluster\tComplete Accession Info\n")
 
