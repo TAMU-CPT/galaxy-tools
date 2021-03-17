@@ -116,7 +116,7 @@ def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
       for x in res[lastInd:]:
         sumID = 0.0
         for y in x:
-          sumID = float(y["identity"])
+          sumID += float(y["identity"])
         x.append(sumID / float(x[0]["query_length"]))
         maxID = max(maxID, x[-1])
         
@@ -142,7 +142,6 @@ def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
     
     outFile.write("Accession Number\tScore\tCluster Start Location\tEnd Location\tTotal Length\t# HSPs in Cluster\tComplete Accession Info\n")
     for x in outList:
-      print(x[-1])
       minStart = min(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
       maxEnd = max(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
       if "|gb|" in x[0]["match_id"]:
