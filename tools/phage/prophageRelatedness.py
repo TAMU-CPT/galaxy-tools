@@ -100,6 +100,7 @@ def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
       window = floor(padding * float(group[0]["query_length"]))
       group = sorted(group, key = lambda x: x["sbjct_range"][0])
       hspGroups = []
+      lastInd = len(res)
       for x in range(0, len(group)):
         hspGroups.append([group[x]])
         startBound = group[x]["sbjct_range"][0]
@@ -108,46 +109,36 @@ def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
           if hsp["sbjct_range"][0] >= startBound and hsp["sbjct_range"][1] <= endBound:
             hspGroups[-1].append(hsp)
         
-      res.append(disjointSets(superSets(hspGroups)))
+      for x in disjointSets(superSets(hspGroups)):
+        res.append(x)
       
       maxID = 0.0
-      for x in res[-1]:
+      for x in res[lastInd:]:
         sumID = 0.0
         for y in x:
-          sumID += float(y["identity"])
+          sumID = float(y["identity"])
         x.append(sumID / float(x[0]["query_length"]))
         maxID = max(maxID, x[-1])
-      res[-1] = sorted(res[-1], key = lambda x: x[-1], reverse = True)
-      res[-1].append(maxID)
         
     res = sorted(res, key = lambda x: x[-1], reverse = True)
 
     outList = []
     outNum = 0
     for x in res:
-      for y in x[0:-1]:
+    #    print(x)
+    #    exit()
+      #for y in x[0:-1]:
         outNum += 1
-        outList.append(y)
+        outList.append(x)
         if outNum == numReturn:
           break
-      if outNum == numReturn:
-        break
 
-#    outList.sort(key = lambda x: x[-1], reverse = True)
+        
 #    Original request was that low scoring clusters would make it to the final results IF
 #    they were part of an Accession cluster that did have at least one high scoring member.
 
-#    They would like to see what the results are without this provision, so inelegantly commenting
-#    out above and unpacking the buckets below. If they prefer the old way, simply remove the unpacking done here
-
-    tmpOut = []
-    for x in outList:
-      for y in x[0:-1]:
-        tmpOut.append(y)
-    outList = sorted(tmpOut, key = lambda x: x[-1], reverse = True)
-
+    
     outFile.write("Accession Number\tScore\tCluster Start Location\tEnd Location\tTotal Length\t# HSPs in Cluster\tComplete Accession Info\n")
-
     for x in outList:
       minStart = min(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
       maxEnd = max(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
