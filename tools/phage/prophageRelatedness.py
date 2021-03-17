@@ -93,7 +93,7 @@ def disjointSets(inSets):
          res.append(inSets[i])
     return res
         
-def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
+def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
     inRec = parseXML(inRec, outFile)
     res = []
     for group in inRec:
@@ -128,10 +128,12 @@ def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
     #    print(x)
     #    exit()
       #for y in x[0:-1]:
+        if outNum + 1 == numReturn or x[-1] < cutoff:
+          break
         outNum += 1
         outList.append(x)
-        if outNum == numReturn:
-          break
+        
+          
 
         
 #    Original request was that low scoring clusters would make it to the final results IF
@@ -140,6 +142,7 @@ def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
     
     outFile.write("Accession Number\tScore\tCluster Start Location\tEnd Location\tTotal Length\t# HSPs in Cluster\tComplete Accession Info\n")
     for x in outList:
+      print(x[-1])
       minStart = min(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
       maxEnd = max(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
       if "|gb|" in x[0]["match_id"]:
@@ -151,7 +154,7 @@ def compPhage(inRec, outFile, padding = 1.2, numReturn = 20):
       for y in x[0:-1]:
         minStart = min(minStart, y["sbjct_range"][0])
         maxEnd = max(maxEnd, y["sbjct_range"][1])
-      outFile.write(accOut + "\t" + str(x[-1]) + "\t" + str(minStart) + "\t" + str(maxEnd) + "\t" + str(maxEnd - minStart) + "\t" + str(len(x) - 1) + "\t" + x[0]["match_id"] + "\n")
+      outFile.write(accOut + ("\t%.3f\t" % (x[-1]))  + str(minStart) + "\t" + str(maxEnd) + "\t" + str(maxEnd - minStart) + "\t" + str(len(x) - 1) + "\t" + x[0]["match_id"] + "\n")
    
     #accession start end number
 
@@ -170,6 +173,12 @@ if __name__ == "__main__":
         "--padding",
         help="Gap minimum (Default -1, set to a negative number to allow overlap)",
         default=1.2,
+        type=float,
+    )
+    parser.add_argument(
+        "--cutoff",
+        help="Gap minimum (Default -1, set to a negative number to allow overlap)",
+        default=.3,
         type=float,
     )
     parser.add_argument(
