@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<tool id="iframe" name="Annotate" version="@WRAPPER_VERSION@">
+  <description>opens an IFrame to Apollo</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/json2iframe.py
+@URL@
+'$json_file'
+@EXT_URL@
+$tracklist
+> $output]]></command>
+  <inputs>
+    <param name="json_file" type="data" format="json" label="Apollo Organism Listing" />
+    <param name="tracklist" type="boolean" truevalue="--tracklist" falsevalue="" label="Force the tracklist on in JBrowse"/>
+  </inputs>
+  <outputs>
+    <data format="html" name="output"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="json_file" value="fake.json"/>
+          <output name="output">
+              <assert_contents>
+                  <has_text text="Embedded Apollo Access" />
+              </assert_contents>
+          </output>
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Given a json file that's output by the Galaxy<->Apollo bridge, this
+generates a nice little IFrame that you can use to access Apollo
+
+@REFERENCES@
+      ]]></help>
+  <expand macro="citations"/>
+</tool>

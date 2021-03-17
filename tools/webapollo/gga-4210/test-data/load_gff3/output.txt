@@ -1,0 +1,646 @@
+{
+  "Merlin_1_mRNA": {
+    "owner": "admin@local.host",
+    "parent_name": "Merlin_1_mRNA",
+    "uniquename": "d33cb6e8-0809-442f-84ff-015aff163846",
+    "type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "mRNA"
+    },
+    "parent_type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "gene"
+    },
+    "date_creation": 1593424039041,
+    "sequence": "Merlin",
+    "children": [
+      {
+        "owner": "None",
+        "parent_name": "Merlin_1_mRNA-00001",
+        "uniquename": "d33cb6e8-0809-442f-84ff-015aff163846-CDS",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "CDS"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039071,
+        "sequence": "Merlin",
+        "parent_id": "d33cb6e8-0809-442f-84ff-015aff163846",
+        "name": "d33cb6e8-0809-442f-84ff-015aff163846-CDS",
+        "location": {
+          "strand": 1,
+          "is_fmin_partial": true,
+          "id": 459,
+          "fmin": 1,
+          "fmax": 691
+        },
+        "id": 458,
+        "properties": [],
+        "date_last_modified": 1593424039095
+      },
+      {
+        "owner": "None",
+        "parent_name": "Merlin_1_mRNA-00001",
+        "uniquename": "0356ce47-8746-4557-9f45-2b08625ebc63",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "exon"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039029,
+        "sequence": "Merlin",
+        "parent_id": "d33cb6e8-0809-442f-84ff-015aff163846",
+        "name": "0356ce47-8746-4557-9f45-2b08625ebc63",
+        "location": {
+          "strand": 1,
+          "id": 455,
+          "fmin": 1,
+          "fmax": 691
+        },
+        "id": 454,
+        "properties": [],
+        "date_last_modified": 1593424039078
+      }
+    ],
+    "parent_id": "436dee83-9e76-44c3-94a8-37ac15c57e8e",
+    "name": "Merlin_1_mRNA-00001",
+    "location": {
+      "strand": 1,
+      "id": 453,
+      "fmin": 1,
+      "fmax": 691
+    },
+    "id": 452,
+    "properties": [],
+    "date_last_modified": 1593424039249
+  },
+  "Merlin_2_mRNA": {
+    "owner": "admin@local.host",
+    "parent_name": "mrna-name",
+    "uniquename": "d5d0e6eb-458d-4402-b2ee-c19e4c1e0666",
+    "type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "mRNA"
+    },
+    "parent_type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "gene"
+    },
+    "date_creation": 1593424039315,
+    "sequence": "Merlin",
+    "children": [
+      {
+        "owner": "None",
+        "parent_name": "mrna-name-00001",
+        "uniquename": "d5d0e6eb-458d-4402-b2ee-c19e4c1e0666-CDS",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "CDS"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039321,
+        "sequence": "Merlin",
+        "parent_id": "d5d0e6eb-458d-4402-b2ee-c19e4c1e0666",
+        "name": "d5d0e6eb-458d-4402-b2ee-c19e4c1e0666-CDS",
+        "location": {
+          "strand": 1,
+          "id": 471,
+          "fmin": 751,
+          "fmax": 1039
+        },
+        "id": 470,
+        "properties": [],
+        "date_last_modified": 1593424039334
+      },
+      {
+        "owner": "None",
+        "parent_name": "mrna-name-00001",
+        "uniquename": "46e2b6ce-5cf2-4472-b858-9535a374f535",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "exon"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039312,
+        "sequence": "Merlin",
+        "parent_id": "d5d0e6eb-458d-4402-b2ee-c19e4c1e0666",
+        "name": "46e2b6ce-5cf2-4472-b858-9535a374f535",
+        "location": {
+          "strand": 1,
+          "id": 467,
+          "fmin": 751,
+          "fmax": 1039
+        },
+        "id": 466,
+        "properties": [],
+        "date_last_modified": 1593424039328
+      }
+    ],
+    "parent_id": "9d2661e7-c095-426e-a9ce-0e0f9d68c1ca",
+    "name": "mrna-name-00001",
+    "location": {
+      "strand": 1,
+      "id": 465,
+      "fmin": 751,
+      "fmax": 1039
+    },
+    "id": 464,
+    "properties": [],
+    "date_last_modified": 1593424039356
+  },
+  "Merlin_3_mRNA": {
+    "owner": "admin@local.host",
+    "parent_name": "Merlin_3_mRNA",
+    "uniquename": "c1e84840-7b7e-4c45-b044-e6ffaa89cb5d",
+    "type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "mRNA"
+    },
+    "parent_type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "gene"
+    },
+    "date_creation": 1593424039392,
+    "sequence": "Merlin",
+    "children": [
+      {
+        "owner": "None",
+        "parent_name": "Merlin_3_mRNA-00001",
+        "uniquename": "3fc60774-85c1-4cbd-aca3-1a1a74a2cbf3",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "exon"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039390,
+        "sequence": "Merlin",
+        "parent_id": "c1e84840-7b7e-4c45-b044-e6ffaa89cb5d",
+        "name": "3fc60774-85c1-4cbd-aca3-1a1a74a2cbf3",
+        "location": {
+          "strand": -1,
+          "id": 479,
+          "fmin": 1066,
+          "fmax": 2011
+        },
+        "id": 478,
+        "properties": [],
+        "date_last_modified": 1593424039410
+      },
+      {
+        "owner": "None",
+        "parent_name": "Merlin_3_mRNA-00001",
+        "uniquename": "c1e84840-7b7e-4c45-b044-e6ffaa89cb5d-CDS",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "CDS"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039403,
+        "sequence": "Merlin",
+        "parent_id": "c1e84840-7b7e-4c45-b044-e6ffaa89cb5d",
+        "name": "c1e84840-7b7e-4c45-b044-e6ffaa89cb5d-CDS",
+        "location": {
+          "strand": -1,
+          "id": 483,
+          "fmin": 1066,
+          "fmax": 2011
+        },
+        "id": 482,
+        "properties": [],
+        "date_last_modified": 1593424039416
+      }
+    ],
+    "parent_id": "6a3cfa63-9957-44c2-855e-8914d14c6773",
+    "name": "Merlin_3_mRNA-00001",
+    "location": {
+      "strand": -1,
+      "id": 477,
+      "fmin": 1066,
+      "fmax": 2011
+    },
+    "id": 476,
+    "properties": [],
+    "date_last_modified": 1593424039439
+  },
+  "Merlin_4_mRNA": {
+    "owner": "admin@local.host",
+    "parent_name": "Merlin_4_mRNA",
+    "uniquename": "4b3f4451-6feb-4a89-85ee-002c03679c4b",
+    "type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "mRNA"
+    },
+    "parent_type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "gene"
+    },
+    "date_creation": 1593424039555,
+    "sequence": "Merlin",
+    "children": [
+      {
+        "owner": "None",
+        "parent_name": "Merlin_4_mRNA-00001",
+        "uniquename": "4b3f4451-6feb-4a89-85ee-002c03679c4b-CDS",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "CDS"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039563,
+        "sequence": "Merlin",
+        "parent_id": "4b3f4451-6feb-4a89-85ee-002c03679c4b",
+        "name": "4b3f4451-6feb-4a89-85ee-002c03679c4b-CDS",
+        "location": {
+          "strand": -1,
+          "id": 503,
+          "fmin": 2010,
+          "fmax": 3066
+        },
+        "id": 502,
+        "properties": [],
+        "date_last_modified": 1593424039575
+      },
+      {
+        "owner": "None",
+        "parent_name": "Merlin_4_mRNA-00001",
+        "uniquename": "4322d1af-5aa0-4777-9bd2-20d87b807d1e",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "exon"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039553,
+        "sequence": "Merlin",
+        "parent_id": "4b3f4451-6feb-4a89-85ee-002c03679c4b",
+        "name": "4322d1af-5aa0-4777-9bd2-20d87b807d1e",
+        "location": {
+          "strand": -1,
+          "id": 499,
+          "fmin": 2010,
+          "fmax": 3066
+        },
+        "id": 498,
+        "properties": [],
+        "date_last_modified": 1593424039569
+      }
+    ],
+    "parent_id": "71eafcd2-8ef6-4a71-88c2-bcac2f342e28",
+    "name": "Merlin_4_mRNA-00001",
+    "location": {
+      "strand": -1,
+      "id": 497,
+      "fmin": 2010,
+      "fmax": 3066
+    },
+    "id": 496,
+    "properties": [],
+    "date_last_modified": 1593424039596
+  },
+  "Merlin_5_mRNA": {
+    "owner": "admin@local.host",
+    "parent_name": "Merlin_5_mRNA",
+    "uniquename": "19b80336-a138-4276-96e1-116a7787afe8",
+    "type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "mRNA"
+    },
+    "parent_type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "gene"
+    },
+    "date_creation": 1593424039700,
+    "sequence": "Merlin",
+    "children": [
+      {
+        "owner": "None",
+        "parent_name": "Merlin_5_mRNA-00001",
+        "uniquename": "19b80336-a138-4276-96e1-116a7787afe8-non_canonical_five_prime_splice_site-4363",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "non_canonical_five_prime_splice_site"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039756,
+        "sequence": "Merlin",
+        "parent_id": "19b80336-a138-4276-96e1-116a7787afe8",
+        "name": "19b80336-a138-4276-96e1-116a7787afe8-non_canonical_five_prime_splice_site-4363",
+        "location": {
+          "strand": -1,
+          "id": 532,
+          "fmin": 4363,
+          "fmax": 4363
+        },
+        "id": 531,
+        "properties": [],
+        "date_last_modified": 1593424039803
+      },
+      {
+        "owner": "None",
+        "parent_name": "Merlin_5_mRNA-00001",
+        "uniquename": "19b80336-a138-4276-96e1-116a7787afe8-non_canonical_three_prime_splice_site-4296",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "non_canonical_three_prime_splice_site"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039767,
+        "sequence": "Merlin",
+        "parent_id": "19b80336-a138-4276-96e1-116a7787afe8",
+        "name": "19b80336-a138-4276-96e1-116a7787afe8-non_canonical_three_prime_splice_site-4296",
+        "location": {
+          "strand": -1,
+          "id": 535,
+          "fmin": 4296,
+          "fmax": 4296
+        },
+        "id": 534,
+        "properties": [],
+        "date_last_modified": 1593424039804
+      },
+      {
+        "owner": "None",
+        "parent_name": "Merlin_5_mRNA-00001",
+        "uniquename": "f192c0c8-c043-474a-9cba-fe593340a28f",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "exon"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039691,
+        "sequence": "Merlin",
+        "parent_id": "19b80336-a138-4276-96e1-116a7787afe8",
+        "name": "f192c0c8-c043-474a-9cba-fe593340a28f",
+        "location": {
+          "strand": -1,
+          "id": 522,
+          "fmin": 3065,
+          "fmax": 4296
+        },
+        "id": 521,
+        "properties": [],
+        "date_last_modified": 1593424039696
+      },
+      {
+        "owner": "None",
+        "parent_name": "Merlin_5_mRNA-00001",
+        "uniquename": "31a23617-42b1-4bf1-a65d-45eccdd17e8e",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "exon"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039699,
+        "sequence": "Merlin",
+        "parent_id": "19b80336-a138-4276-96e1-116a7787afe8",
+        "name": "31a23617-42b1-4bf1-a65d-45eccdd17e8e",
+        "location": {
+          "strand": -1,
+          "id": 525,
+          "fmin": 4365,
+          "fmax": 4796
+        },
+        "id": 524,
+        "properties": [],
+        "date_last_modified": 1593424039716
+      },
+      {
+        "owner": "None",
+        "parent_name": "Merlin_5_mRNA-00001",
+        "uniquename": "19b80336-a138-4276-96e1-116a7787afe8-CDS",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "CDS"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039710,
+        "sequence": "Merlin",
+        "parent_id": "19b80336-a138-4276-96e1-116a7787afe8",
+        "name": "19b80336-a138-4276-96e1-116a7787afe8-CDS",
+        "location": {
+          "strand": -1,
+          "id": 529,
+          "fmin": 3065,
+          "fmax": 4796
+        },
+        "id": 528,
+        "properties": [],
+        "date_last_modified": 1593424039722
+      }
+    ],
+    "parent_id": "f380f7b1-2b7d-45cd-8d0b-2519b1b0afee",
+    "name": "Merlin_5_mRNA-00001",
+    "location": {
+      "strand": -1,
+      "id": 520,
+      "fmin": 3065,
+      "fmax": 4796
+    },
+    "id": 519,
+    "properties": [],
+    "date_last_modified": 1593424039810
+  },
+  "Merlin_42_mRNA": {
+    "owner": "admin@local.host",
+    "parent_name": "Merlin_42_mRNA",
+    "uniquename": "0e34cfa5-6f64-4111-9c2f-37655f6f1b92",
+    "type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "mRNA"
+    },
+    "parent_type": {
+      "cv": {
+        "name": "sequence"
+      },
+      "name": "gene"
+    },
+    "date_creation": 1593424039850,
+    "sequence": "Merlin",
+    "children": [
+      {
+        "owner": "None",
+        "parent_name": "Merlin_42_mRNA-00001",
+        "uniquename": "6596e6e2-a894-4c0b-98c1-298c65f0c021",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "exon"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039841,
+        "sequence": "Merlin",
+        "parent_id": "0e34cfa5-6f64-4111-9c2f-37655f6f1b92",
+        "name": "6596e6e2-a894-4c0b-98c1-298c65f0c021",
+        "location": {
+          "strand": -1,
+          "id": 543,
+          "fmin": 5010,
+          "fmax": 6066
+        },
+        "id": 542,
+        "properties": [],
+        "date_last_modified": 1593424039847
+      },
+      {
+        "owner": "None",
+        "parent_name": "Merlin_42_mRNA-00001",
+        "uniquename": "a42c4166-5211-49b9-9110-e5fd41c9d2cb",
+        "type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "CDS"
+        },
+        "parent_type": {
+          "cv": {
+            "name": "sequence"
+          },
+          "name": "mRNA"
+        },
+        "date_creation": 1593424039849,
+        "sequence": "Merlin",
+        "parent_id": "0e34cfa5-6f64-4111-9c2f-37655f6f1b92",
+        "name": "a42c4166-5211-49b9-9110-e5fd41c9d2cb",
+        "location": {
+          "strand": -1,
+          "id": 546,
+          "fmin": 5288,
+          "fmax": 6065,
+          "is_fmax_partial": true
+        },
+        "id": 545,
+        "properties": [],
+        "date_last_modified": 1593424039867
+      }
+    ],
+    "parent_id": "f7843db6-26da-44f9-ae05-6bb92ca573f6",
+    "name": "Merlin_42_mRNA-00001",
+    "location": {
+      "strand": -1,
+      "id": 541,
+      "fmin": 5010,
+      "fmax": 6066
+    },
+    "id": 540,
+    "properties": [],
+    "date_last_modified": 1593424039879
+  }
+}
