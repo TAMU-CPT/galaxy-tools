@@ -14,12 +14,15 @@ python $__tool_directory__/prophageRelatedness.py
 $blast
 --outFile $output
 --padding $padding
+--cutoff $cutoff
 --numReturn $returns
 ]]></command>
   <inputs>
     <param label="Blastn Results (Blast XML)" name="blast" type="data" format="blastxml"/>
     <param label="Cluster Window" name="padding" type="text" value="2.0"
         help="Nucleotide window for HSPs to form a cluster (Multiplicative of length of query sequence)"/>
+    <param label="Score cutoff" name="cutoff" type="text" value=".3"
+        />
     <param label="Number of Results to return" name="returns" type="integer" value="20"/>
   </inputs>
   <outputs>
