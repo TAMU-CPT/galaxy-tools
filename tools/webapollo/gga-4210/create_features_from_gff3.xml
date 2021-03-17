@@ -22,7 +22,7 @@ $disable_cds_recalculation
   <inputs>
     <expand macro="org_or_guess" />
     <expand macro="gff3_input" />
-    <param name="use_name" type="boolean" truevalue="--user_name" falsevalue="" label="Use the given name instead of generating one" />
+    <param name="use_name" type="boolean" truevalue="--use_name" falsevalue="" label="Use the given name instead of generating one" />
     <param name="disable_cds_recalculation" type="boolean" truevalue="--disable_cds_recalculation" falsevalue="" label="Disable CDS recalculation and instead use the one provided" />
   </inputs>
   <outputs>
