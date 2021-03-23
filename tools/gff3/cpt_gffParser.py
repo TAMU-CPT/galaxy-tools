@@ -925,7 +925,7 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, phase = Non
         inFeat.qualifiers["Parent"] = parents.qualifiers["ID"]
       for qual in inFeat.qualifiers.keys():
         for keyChar in str(qual):
-          if keyChar in "%,=;":
+          if keyChar in "%,=;\n":
             encoded = str(hex(ord(keyChar)))
             line += "%" + encoded[2:].upper()
           else:
