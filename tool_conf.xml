@@ -31,6 +31,7 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gff3/gff3_prep_for_apollo.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/webapollo/gga-apollo/create_account.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/webapollo/gga-apollo/create_features_from_gff3.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/webapollo/gga-4210/create_features_from_gff3.xml" label="new,experimental"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/webapollo/gga-apollo/create_or_update_organism.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/webapollo/gga-apollo/json2iframe.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/webapollo/gga-apollo/delete_features.xml"/>
