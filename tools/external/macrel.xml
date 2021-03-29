@@ -21,8 +21,7 @@ macrel $macrelCommand.comm
 #end if
 --output ./macOut ;
 gunzip ./macOut/*.gz ;
-ls ./macOut > $output ;
-ls ./ > $output;
+cat ./macOut/*.pred* > $output ;
     </command>
     <inputs>
 	<conditional name="macrelCommand">
