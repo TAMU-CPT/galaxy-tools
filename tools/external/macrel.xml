@@ -4,7 +4,6 @@
         <requirement type="package">macrel</requirement>
     </requirements>
     <command>
-mkdir macOut ;
 macrel $macrelCommand.comm
 
 #if $macrelCommand.comm == "peptides":
