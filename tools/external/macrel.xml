@@ -19,7 +19,7 @@ macrel $macrelCommand.comm
   -1 ${macrelCommand.inFasta1}
   --fasta ${macrelCommand.inFasta2}
 #end if
-&&
+;
 ls ./ > $output
     </command>
     <inputs>
