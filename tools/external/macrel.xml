@@ -20,7 +20,9 @@ macrel $macrelCommand.comm
   --fasta ${macrelCommand.inFasta2}
 #end if
 --output ./macOut ;
-ls ./macOut > $output
+gunzip ./macOut/*.gz ;
+ls ./macOut > $output ;
+ls ./ > $output;
     </command>
     <inputs>
 	<conditional name="macrelCommand">
