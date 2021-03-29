@@ -4,6 +4,7 @@
         <requirement type="package">macrel</requirement>
     </requirements>
     <command>
+mkdir macOut ;
 macrel $macrelCommand.comm
 
 #if $macrelCommand.comm == "peptides":
@@ -19,8 +20,8 @@ macrel $macrelCommand.comm
   -1 ${macrelCommand.inFasta1}
   --fasta ${macrelCommand.inFasta2}
 #end if
-;
-ls ./ > $output
+--output ./macOut ;
+ls ./macOut > $output
     </command>
     <inputs>
 	<conditional name="macrelCommand">
