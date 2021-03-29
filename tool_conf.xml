@@ -266,6 +266,7 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/blast/blastp_to_gff3.xml"/>
     </section>
     <section id="e21682ca-670a-4cfc-aa60-fb727d4eaee9" name="Sequence Statistics">
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/macrel.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/fasta/fasta_disambig.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/fasta/fasta_len.xml"/>
         <label id="b07dfcaf-2830-4600-a950-3b41d6ecf8dc" text="Protein"/>

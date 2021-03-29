@@ -1,0 +1,60 @@
+<tool id="edu.tamu.cpt.external.macrel" name="Macrel: " version="21.0.0">
+    <description>(Meta)genomic AMP Classification and Retrieval</description>
+    <requirements>
+        <requirement type="package" version="1.0.0">macrel</requirement>
+    </requirements>
+    <command>
+macrel $macrelCommand.comm
+
+#if $macrelCommand.comm == "peptides":
+  --fasta ${macrelCommand.inFasta}
+#elif $macrelCommand.comm == "contigs":
+  --fasta ${macrelCommand.inFasta}
+#elif $macrelCommand.comm == "reads":
+  -1 ${macrelCommand.inFasta1}
+  #if $macrelCommand.inFasta2 != "None":
+    -2 ${macrelCommand.inFasta2}
+  #end if
+#elif $macrelCommand.comm == "abundance":
+  -1 ${macrelCommand.inFasta1}
+  --fasta ${macrelCommand.inFasta2}
+#end if
+--file-output $output
+    </command>
+    <inputs>
+	<conditional name="macrelCommand">
+		<param name="comm" type="select" label="Macrel Command">
+			<option value="peptides" selected="true">Peptides</option>
+     		        <option value="contigs">Contigs</option>
+            		<option value="reads">Paired Reads</option>
+            		<option value="abundance">Abundance Profiles</option>
+		</param>
+		<when value="peptides">
+			<param name="inFasta" type="data" label="Fasta Input (Expects AA sequences)" format="fasta"/>
+		</when>
+		<when value="contigs">
+			<param name="inFasta" type="data" label="Fasta Input (Expects Nucleotide sequences)" format="fasta"/>
+		</when>
+		<when value="reads">
+			<param name="inFasta1" type="data" label="First paired read" format="fastq, fastqsanger"/>
+			<param name="inFasta2" type="data" label="Second paired read (Optional if first input is single-pair reads)" format="fastq, fastqsanger" optional="true"/>
+		</when>
+		<when value="abundance">
+			<param name="inFasta1" type="data" label="Short reads" format="fastq, fastqsanger"/>
+			<param name="inFasta2" type="data" label="Peptide Sequence references" format="fasta"/>
+		</when>
+	</conditional>
+    </inputs>
+    <outputs>
+        <data format="tabular" name="output" label="Macrel Results on ${on_string}"/>
+    </outputs>
+    <tests>
+          
+    </tests>
+    <help>
+Pipeline to mine antimicrobial peptides (AMPs) from (meta)genomes.
+</help>
+	<citations>
+		<citation type="doi">10.7717/peerj.10555</citation>
+	</citations>
+</tool>
