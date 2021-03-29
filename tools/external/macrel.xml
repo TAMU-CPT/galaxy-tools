@@ -1,7 +1,7 @@
 <tool id="edu.tamu.cpt.external.macrel" name="Macrel: " version="21.0.0">
     <description>(Meta)genomic AMP Classification and Retrieval</description>
     <requirements>
-        <requirement type="package" version="1.0.0">macrel</requirement>
+        <requirement type="package">macrel</requirement>
     </requirements>
     <command>
 macrel $macrelCommand.comm
