@@ -355,6 +355,8 @@ def validateQual(qualIn):
     return badChar 
 
 def rAddDict(lDict, rDict):
+    if lDict == None: return rDict
+    if rDict == None: return lDict
     for x in rDict.keys():
       val = lDict.get(x, [])
       val += rDict[x]
