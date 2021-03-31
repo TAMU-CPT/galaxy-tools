@@ -97,6 +97,7 @@ def mga_to_gff3(mga_output, genome):
                 FeatureLocation(gene_start, gene_end),
                 type="gene",
                 strand=strand,
+                id="%s.%s" % (current_record.id, gene_id),
                 qualifiers={
                     "Source": "MGA",
                     "ID": "%s.%s" % (current_record.id, gene_id),
