@@ -4,7 +4,7 @@
 
   <xml name="requirements">
     <requirements>
-      <requirement type="package" version="4.2.9">apollo</requirement>
+      <requirement type="package" version="4.2.10">apollo</requirement>
       <yield/>
     </requirements>
   </xml>
