@@ -440,4 +440,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     for record in gff3_to_genbank(**vars(args)):
+        record.annotations["molecule_type"] = "DNA"
         SeqIO.write([record], sys.stdout, "genbank")
