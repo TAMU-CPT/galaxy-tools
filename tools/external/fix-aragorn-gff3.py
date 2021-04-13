@@ -39,7 +39,8 @@ def fixed_feature(rec):
             qualifiers={"source": [origSource], "ID": ["%s.exon" % fid], "Name": name},
         )
         feature.qualifiers["ID"] = [fid]
-
+        exon.qualifiers["Parent"] = [fid]
+        feature.qualifiers["Parent"] = [fid + ".gene"]
         # gene -> trna -> exon
         feature.sub_features = [exon]
         gene.sub_features = [feature]
