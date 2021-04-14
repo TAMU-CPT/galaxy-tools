@@ -223,7 +223,7 @@ h3:before {
                         <li>Count: {{ genome_overview.genes.count }}</li>
                         <li>Bases: {{ genome_overview.genes.bases }}</li>
                         <li>Average Length: {{ genome_overview.genes.avg_len | round | int}}</li>
-                        <li>Coding Density: {{ '%0.2f' % (100 * coding_density_exact) }}</li>
+                        <li>Coding Density: {{ '%0.2f' % (100 * coding_density_exact) }}%</li>
                         <li>Composition
                             <ul>
                                 <li>A {{ genome_overview.genes.comp.A }}</li>
@@ -235,7 +235,7 @@ h3:before {
                     </ul>
                     <h4>Overall</h4>
                     <ul>
-                        <li>%GC: {{ '%0.2f' % (100 * genome_overview.overall.gc) }}</li>
+                        <li>%GC: {{ '%0.2f' % (100 * genome_overview.overall.gc) }}%</li>
                         <li>Composition
                             <ul>
                                 <li>A {{ genome_overview.overall.comp.A }}</li>
