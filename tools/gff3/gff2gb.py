@@ -441,4 +441,5 @@ if __name__ == "__main__":
 
     for record in gff3_to_genbank(**vars(args)):
         record.annotations["molecule_type"] = "DNA"
+        record.seq.alphabet = generic_dna
         SeqIO.write([record], sys.stdout, "genbank")
