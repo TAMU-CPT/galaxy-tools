@@ -924,7 +924,10 @@ def printFeatLine(inFeat, orgName, source = 'feature', score = None, phase = Non
       else:
         line += ".\t"
       if parents and "Parent" not in inFeat.qualifiers.keys():
-        inFeat.qualifiers["Parent"] = parents.id
+        if "ID" in parents.qualifiers.keys():
+          inFeat.qualifiers["Parent"] = parents.qualifiers["ID"]
+        else:
+          inFeat.qualifiers["Parent"] = [parents.id]
       for qual in inFeat.qualifiers.keys():
         for keyChar in str(qual):
           if keyChar in "%,=;\n":
