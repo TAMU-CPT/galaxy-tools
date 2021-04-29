@@ -203,7 +203,8 @@ def fix_frameshifted(features):
     # The gene + RBSs should be identical and two/two.
     assert len(fixed_features) == 2
     # If not, we can just duplicate the RBS, doesn't matter.
-    if len(rbss) != 2:
+    noRbs = len(rbss) == 0
+    if len(rbss) != 2 and !noRBS:
         rbss = [rbss[0], copy.deepcopy(rbss[0])]
     # Now re-construct.
     gene_0 = fixed_features[0]
@@ -211,8 +212,12 @@ def fix_frameshifted(features):
     mRNA_0 = fixed_mrnas[0]
     mRNA_1 = fixed_mrnas[1]
 
-    mRNA_0.sub_features = [rbss[0], merge_a]
-    mRNA_1.sub_features = other + [rbss[1]]
+    if !noRBS:
+      mRNA_0.sub_features = [rbss[0], merge_a]
+      mRNA_1.sub_features = other + [rbss[1]]
+    else:
+      mRNA_0.sub_features = [merge_a]
+      mRNA_1.sub_features = other
     mRNA_0 = fix_gene_boundaries(mRNA_0)
     mRNA_1 = fix_gene_boundaries(mRNA_1)
 
