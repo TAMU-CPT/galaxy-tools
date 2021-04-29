@@ -203,7 +203,7 @@ def fix_frameshifted(features):
     # The gene + RBSs should be identical and two/two.
     assert len(fixed_features) == 2
     # If not, we can just duplicate the RBS, doesn't matter.
-    noRbs = len(rbss) == 0
+    noRBS = len(rbss) == 0
     if len(rbss) != 2 and not noRBS:
         rbss = [rbss[0], copy.deepcopy(rbss[0])]
     # Now re-construct.
