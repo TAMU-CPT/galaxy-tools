@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.external.olgenie" name="OL Genie" version="1.0.0" profile="16.04">
+	<description>:Predict Functional Overlapping Genes</description>
+	<macros/>
+	<requirements>
+	</requirements>
+	<command detect_errors="aggressive">
+$__tool_directory__/OLGenie.pl 
+--fasta_file=$inFile 
+--frame=$frame 
+$verb
+--output_file=$outFile
+</command>
+	<inputs>
+                <param label="Fasta Sequence" name="inFile" type="data" format="fasta" />   
+		<param name="frame" type="select" format="text" label="Frame Relationship" multiple="false">ss12, ss13, sas11, sas12, or sas13
+                  <option value="ss12">ss12</option>
+                  <option value="ss13">ss13</option>
+                  <option value="sas11">sas11</option>
+                  <option value="sas12">sas12</option>
+                  <option value="sas13">sas13</option>
+                </param>
+		<param name="verb" truevalue="--verbose" falsevalue="" type="boolean" label="Verbose mode" checked="false"/>
+	</inputs>
+	<outputs>
+                <data format="txt" name="outFile" label="BPROM Results" />
+	</outputs>
+	<help>
+**What it does**
+
+OLGenie is written in Perl with no dependencies for maximum portability (just download and run). The program examines a user-provided FASTA alignment of one protein-coding gene region from the reference gene point of view. This means that the alignment begins at the first site of a reference gene codon, and ends at the last (third) site of a reference gene codon. In practice, depending on the goal of the user, the alignment may contain a reference gene in which a smaller OLG is embedded; just that portion of a reference gene known to contain an OLG; a portion of a reference gene thought not to contain an OLG (i.e., a negative control); or a region in which no OLG is known, but one is being sought.
+
+After reading in the user-provided alignment, OLGenie calculates the number of NN, SN, NS, and SS sites and differences, reporting the mean of all pairwise comparisons. This is done separately for each focal reference codon by considering all unique nonamer (9nt) alleles of which the reference codon is the center, and of which 6nt constitute a minimum overlapping unit: one reference gene codon and its two overlapping alternate gene codons. (Note that sas13 is unique in that one reference codon overlaps exactly one alternate codon.) OLGenie is sufficiently fast that these tasks require no parallelism beyond the level of the single gene alignment. Thus, for datasets with many genes, the user can implement their own parallelization by running numerous alignments (genes) simultaneously.
+
+After results are obtained for each focal codon in the alignment, significant deviations from the null expectation of neutrality (dN - dS = 0) may be tested using a Z-test, where the standard error is estimated using bootstrapping (focal codon unit). Don't worry — we provide scripts to do it all!
+
+**Options**
+
+Call OLGenie using the following options:
+
+    fasta_file (REQUIRED): a FASTA file containing multiple aligned sequences of one coding sequence. The entire coding sequence will be analyzed as an OLG, even if only part (or none) of the alignment constitues a true OLG. The frame of the alignment must be the frame of the reference gene (see the --frame option). If the user wishes to align their own sequences, it is recommended to translate the gene sequences, align at the amino acid level, and then impose the amino acid alignment on the DNA alignment to preserve complete codons. (If you need a tool to help with this, see align_codon2aa.pl at Evolutionary Bioinformatics Toolkit.)
+
+    frame (REQUIRED): the frame relationship of the overlapping gene (OLG): ss12, ss13, sas11, sas12, or sas13.
+
+    output_file (OPTIONAL): name of the TAB-delimited output file to be placed in the working directory unless a full path name is given. If not specified, a file will be printed in the working directory by the name OLGenie_codon_results.txt (DEFAULT).
+
+    verbose (OPTIONAL): tell OLGenie to report all unique nonamers (9nt) overlapping each reference codon, along with their counts, in the output file. May lead to large output files in cases with many and/or divergent sequences. If not specified, verbose output will not be reported (DEFAULT).
+
+	</help>
+	<tests/>
+	<citations>
+		<citation type="bibtex">
+		@unpublished{galaxyTools,
+			author = {Nelson CW, Ardern Z, Wei X.},
+			title = {OLGenie: Estimating Natural Selection to Predict Functional Overlapping Genes. Molecular Biology and Evolution, msaa087 (in press)},
+			year = {2020},
+			
+		}
+		</citation>
+	</citations>
+</tool>

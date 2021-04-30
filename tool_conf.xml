@@ -213,6 +213,7 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/tRNAscan-SE-2.0/trnaScan.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/transterm.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/rho.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/olgenie.xml"/>
     </section>
     <section id="a0d981ae-23a6-460b-a674-c79a790d7f48" name="Phage whole genome analyses">
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/bacphlib.xml"/>
