@@ -23,7 +23,7 @@ $verb
 		<param name="verb" truevalue="--verbose" falsevalue="" type="boolean" label="Verbose mode" checked="false"/>
 	</inputs>
 	<outputs>
-                <data format="txt" name="outFile" label="BPROM Results" />
+                <data format="txt" name="outFile" label="OL Genie Results" />
 	</outputs>
 	<help>
 **What it does**
