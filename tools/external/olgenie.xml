@@ -13,7 +13,7 @@ $verb
 </command>
 	<inputs>
                 <param label="Fasta Sequence" name="inFile" type="data" format="fasta" />   
-		<param name="frame" type="select" format="text" label="Frame Relationship" multiple="false">ss12, ss13, sas11, sas12, or sas13
+		<param name="frame" type="select" format="text" label="Frame Relationship" multiple="false">
                   <option value="ss12">ss12</option>
                   <option value="ss13">ss13</option>
                   <option value="sas11">sas11</option>
