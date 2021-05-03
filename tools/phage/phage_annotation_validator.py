@@ -52,11 +52,16 @@ ENCOURAGEMENT = (
 )
 
 
-def gen_qc_feature(start, end, message, strand=0, id_src=None):
+def gen_qc_feature(start, end, message, strand=0, id_src=None, type_src="gene"):
     kwargs = {"qualifiers": {"note": [message]}}
     if id_src is not None:
         kwargs["id"] = id_src.id
+	kwargs["strand"] = strand
+	kwargs["qualifiers"]["ID"] = [id_src.id]
         kwargs["qualifiers"]["Name"] = id_src.qualifiers.get("Name", [])
+	kwargs["phase"]=0
+        kwargs["score"]=0.0
+        kwargs["source"]="feature"
 
     if end >= start:
         return gffSeqFeature(FeatureLocation(start, end, strand=strand), **kwargs)
