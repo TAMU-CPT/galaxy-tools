@@ -135,7 +135,8 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
             resp = []
             for rbs in rbss:
                 cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
-
+                if len(cdss) == 0:
+                  return "No CDS"
                 if rbs.location.strand > 0:
                     distance = min(
                         cdss, key=lambda x: x.location.start - rbs.location.end
