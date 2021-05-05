@@ -17,8 +17,8 @@ $input
     <param label="Combined GFF3/Fasta File" name="input" type="data" format="gff,gff3"/>
   </inputs>
   <outputs>
-    <data format="gff3" name="gff_out"/>
-    <data format="fasta" name="fasta_out"/>
+    <data format="gff3" label="GFF Portion of ${input.name}" name="gff_out"/>
+    <data format="fasta" label="Fasta Portion of ${input.name}" name="fasta_out"/>
   </outputs>
   <tests>
 		<test>
