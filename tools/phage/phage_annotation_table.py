@@ -365,9 +365,9 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
 
             if isinstance(value, list):
                 collapsed_value = ", ".join(value)
-                value = [str(collapsed_value).decode("utf-8")]
+                value = [str(collapsed_value).decode("unicode_escape")]
             else:
-                value = str(value).decode("utf-8")
+                value = str(value).decode("unicode_escape")
 
             row.append(value)
         # print row
