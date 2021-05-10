@@ -403,6 +403,8 @@ def parseGafData(file):
         else:
             line = row.strip().split("\t")
             tmp = dict(zip(cols, line))
+            if "gene" not in tmp.keys():
+              continue
             if tmp["gene"] not in data:
                 data[tmp["gene"]] = []
 
