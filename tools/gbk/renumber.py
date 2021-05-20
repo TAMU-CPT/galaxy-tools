@@ -175,7 +175,7 @@ def renumber_genes(
             for rbs in [f for f in f_rbs if f not in f_processed]:
                 dupeRBS = False
                 for x in f_processed:
-                  if x.type == "RBS" and (tag_to_update in rbs.qualifiers.keys() and tag_to_update in x.qualifiers.keys() andrbs.qualifiers[tag_to_update] == x.qualifiers[tag_to_update]):
+                  if x.type == "RBS" and (tag_to_update in rbs.qualifiers.keys() and tag_to_update in x.qualifiers.keys() and rbs.qualifiers[tag_to_update] == x.qualifiers[tag_to_update]):
                     dupeRBS = True
                 if dupeRBS:
                   change_table.write(
