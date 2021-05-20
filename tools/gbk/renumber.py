@@ -127,12 +127,19 @@ def renumber_genes(
                     if is_within(rbs, gene) and (
                         rbs.location.start == geneComp or rbs.location.end == geneComp
                     ):
-                        if tag_to_update in rbs.qualifiers.keys() and tag_to_update in gene.qualifiers.keys() and rbs.qualifiers[tag_to_update] != gene.qualifiers[tag_to_update]:
-                           
-                           continue
-                        tag.append(rbs)
-                        f_processed.append(rbs)
-                        break
+                        if (tag_to_update not in rbs.qualifiers.keys()): 
+                          tag.append(rbs)
+                          f_processed.append(rbs)
+                          break
+                        elif (tag_to_update not in gene.qualifiers.keys()): # This will gurantee qual is in gene and RBS for next check
+                          tag.append(rbs)
+                          f_processed.append(rbs)
+                          break
+                        elif rbs.qualifiers[tag_to_update] == gene.qualifiers[tag_to_update]:
+                          tag.append(rbs)
+                          f_processed.append(rbs)
+                          break 
+                        
                 # find all other non-RBS features
                 for feature in [f for f in f_sorted if f not in f_processed]:
                     # If the feature is within the gene boundaries (genes are the first entry in tag list),
