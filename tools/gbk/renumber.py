@@ -271,7 +271,7 @@ def renumber_genes(
                         + feature.type
                         + ": No "
                         + tag_to_update
-                        + "\t[Removed: CDS did not both fall within boundary of gene and share a boundary with a gene]\n"
+                        + "\t[Removed: CDS at (" + feature.location.start + "," + feature.location.end + ") did not both fall within boundary of gene and share a boundary with a gene]\n"
                     )
                 else:
                   if tag_to_update in feature.qualifiers.keys() and forceTagMatch:
