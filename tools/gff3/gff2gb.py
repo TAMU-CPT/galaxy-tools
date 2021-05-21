@@ -138,10 +138,10 @@ def fix_gene_qualifiers(name, feature, fid):
                 # Update CDS qualifiers with all info that was on parent
                 sf.qualifiers.update(feature.qualifiers)
                 sf_replacement.append(sf)
-
+            else:
+                sf_replacement.append(sf)
         if mRNA.type == "tRNA":
             mRNA.qualifiers["product"] = mRNA.qualifiers["Name"]
-
         # Handle multiple child CDS features by merging them.
         # Replace the subfeatures on the mRNA
         mRNA.sub_features = merge_multi_cds(sf_replacement)
@@ -293,7 +293,8 @@ def remove_useless_features(features):
             # We use the full GO term, but it should be less than that.
             if f.type == "Shine_Dalgarno_sequence":
                 f.type = "RBS"
-            
+                
+                
             if f.type == "sequence_feature":
                 f.type = "misc_feature"
             
@@ -367,16 +368,18 @@ def handle_record(record, transltbl):
 
         # Wipe out the parent gene's data, leaving only a locus_tag
         feature.qualifiers = {"locus_tag": "CPT_%s_%03d" % (record.id, fid)}
-
+        
         # Patch our features back in (even if they're non-gene features)
         replacement_feats.append(feature)
-
+        
     replacement_feats = fix_frameshifts(replacement_feats)
+    #exit(0)
     flat_features = feature_lambda(
         replacement_feats, lambda x: True, {}, subfeatures=True
     )
+    
     flat_features = remove_useless_features(flat_features)
-
+    
     # Meat of our modifications
     for flat_feat in flat_features:
         # Try and figure out a name. We gave conflicting instructions, so
@@ -404,6 +407,9 @@ def handle_record(record, transltbl):
             flat_feat.qualifiers["transl_table"] = [transltbl]
             if "Product" in flat_feat.qualifiers:
                 del flat_feat.qualifiers["Product"]
+        elif flat_feat.type == "RBS":
+            if "locus_tag" not in flat_feat.qualifiers.keys():
+               continue
 
         elif flat_feat.type == "terminator":
             flat_feat.type = "regulatory"
