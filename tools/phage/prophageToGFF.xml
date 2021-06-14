@@ -1,0 +1,32 @@
+<?xml version="1.1"?>
+<tool id="edu.tamu.cpt2.phage.prophageToGFF" name="Related Prophages Tabular to GFF" version="21.1.0.0">
+  <description/>
+  <macros>
+    <import>macros.xml</import>
+		<import>cpt-macros.xml</import>
+  </macros>
+  <requirements>
+        <requirement type="package" version="3.7">python</requirement>
+	<requirement type="package" version="1.77">biopython</requirement>
+  </requirements>
+  <command detect_errors="aggressive"><![CDATA[
+python $__tool_directory__/prophageToGFF.py
+$tabIn
+$fastaIn
+> $outFile
+]]></command>
+  <inputs>
+    <param label="Related Prophages results" name="tabIn" type="data" format="tabular"/>
+    <param label="Original Sequence File (ie the BLAST input)" name="fastaIn" type="data" format="fasta"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="outFile" label="Top related prophages"/>
+  </outputs>
+  <tests/>
+  <help><![CDATA[
+**What it does**
+
+Converts the results of the Prophage Relatedness tool to GFF format for use in Apollo.
+      ]]></help>
+		<expand macro="citations-2020-AJC-solo" />
+</tool>

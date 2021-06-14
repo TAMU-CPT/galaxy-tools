@@ -328,6 +328,7 @@
         <tool file="cpt2/galaxy-tools/tools/external/Prophet/Prophet.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/gbk/diff.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/prophageRelatedness.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/phage/prophageToGFF.xml"/>
     </section>
     <section id="004a4a47-d24c-49bd-8650-98f2fd155e42" name="Functional Prediction">
         <label id="bbe8ecf4-0973-475d-ada9-5eaaf2371c41" text="BLAST output processing"/>
