@@ -127,8 +127,8 @@ def parse_transterm(data):
                 }
 
             qualifiers = {
-                "score": pd["confidence"],
-                "source": "TranstermHP",
+                "score": [pd["confidence"]],
+                "source": ["TranstermHP"],
                 "ID": ["terminator_%s" % idx],
             }
             current_start = min(start, end) - 1
