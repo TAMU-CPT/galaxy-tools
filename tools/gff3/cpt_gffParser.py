@@ -255,8 +255,8 @@ def convertSeqRec(inRec, defaultSource = "gffSeqFeature", deriveSeqRegion = True
         sys.stderr.write("Unable to convert SeqRecord %s: could not find parents for features [%s]\n" % (rec.id, badFeats))
         
 
-"""
-for j in childList[childInd][0]: # If there's more than one parent, make sure we haven't already done this one
+    """
+    for j in childList[childInd][0]: # If there's more than one parent, make sure we haven't already done this one
               if j == i:
                 break
     popList = []
@@ -315,7 +315,7 @@ for j in childList[childInd][0]: # If there's more than one parent, make sure we
         raise Exception("Could not convert features of SeqRecord %s to gffSeqFeature format, see stderr\n" % (rec.id)) 
       else:
         lastCount = thisCount
-"""        
+    """        
 
     if createMetaFeat:
       qualDict = {}
