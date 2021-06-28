@@ -216,7 +216,7 @@ def convertSeqRec(inRec, defaultSource = "gffSeqFeature", deriveSeqRegion = True
       elif feat.id and feat.id != "<unknown id>": # Do not accept the default value
         topList.append(convertSeqFeat(feat, defaultSource))
       else: 
-        noIDList.append()
+        noIDList.append(convertSeqFeat(feat, defaultSource))
       maxLoc = max(maxLoc, feat.location.end)
     if deriveSeqRegion:
       rec.annotations["sequence-region"] = "%s 1 %s" % (rec.id, str(maxLoc))
