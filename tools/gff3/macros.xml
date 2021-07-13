@@ -4,6 +4,7 @@
 		<requirements>
 			<requirement type="package" version="3.7">python</requirement>
 			<requirement type="package" version="1.77">biopython</requirement>
+			<requirement type="package">cpt_gffparser</requirement>
 			<requirement type="package" version="2019.06.08">regex</requirement>
 			<yield/>
 		</requirements>
