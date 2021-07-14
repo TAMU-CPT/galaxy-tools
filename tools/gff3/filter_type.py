@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from CPT_GFFParser import gffParse, gffWrite
+from cpt_gffParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 
 if __name__ == "__main__":
