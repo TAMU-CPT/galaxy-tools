@@ -30,7 +30,6 @@ def parseXML(blastxml, outFile): # Modified from intron_detection
 
                 x = float(hsp.identities - 1) / ((hsp.query_end) - hsp.query_start)
                 nice_name = blast_record.query
-
                 if " " in nice_name:
                     nice_name = nice_name[0 : nice_name.index(" ")]
                 blast_gene.append(
@@ -47,6 +46,7 @@ def parseXML(blastxml, outFile): # Modified from intron_detection
                         "hit_num": align_num,
                         "iter_num": iter_num,
                         "match_id": alignment.title.partition(">")[0],
+                        "align_len": hsp.align_length,
                     }
                 )
             blast.append(blast_gene)
@@ -101,6 +101,7 @@ def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
       group = sorted(group, key = lambda x: x["sbjct_range"][0])
       hspGroups = []
       lastInd = len(res)
+      
       for x in range(0, len(group)):
         hspGroups.append([group[x]])
         startBound = group[x]["sbjct_range"][0]
@@ -115,8 +116,11 @@ def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
       maxID = 0.0
       for x in res[lastInd:]:
         sumID = 0.0
+        totAlign = 0
         for y in x:
+          totAlign += y["align_len"] 
           sumID += float(y["identity"])
+        x.append(totAlign)
         x.append(sumID / float(x[0]["query_length"]))
         maxID = max(maxID, x[-1])
         
@@ -125,10 +129,7 @@ def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
     outList = []
     outNum = 0
     for x in res:
-    #    print(x)
-    #    exit()
-      #for y in x[0:-1]:
-        if outNum + 1 == numReturn or x[-1] < cutoff:
+        if outNum == numReturn or x[-1] < cutoff:
           break
         outNum += 1
         outList.append(x)
@@ -140,7 +141,7 @@ def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
 #    they were part of an Accession cluster that did have at least one high scoring member.
 
     
-    outFile.write("Accession Number\tScore\tCluster Start Location\tEnd Location\tTotal Length\t# HSPs in Cluster\tComplete Accession Info\n")
+    outFile.write("Accession Number\tCluster Start Location\tEnd Location\tTotal Length\t# HSPs in Cluster\tTotal Aligned Length\t% of Query Aligned\tOverall % Identity\tComplete Accession Info\n")
     for x in outList:
       minStart = min(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
       maxEnd = max(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
@@ -150,10 +151,11 @@ def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
         accOut = x[0]["match_id"][startSlice: startSlice + endSlice]
       else:
         accOut = x[0]["gi_nos"]
-      for y in x[0:-1]:
+      for y in x[0:-2]:
+# ("\t%.3f\t" % (x[-1]))
         minStart = min(minStart, y["sbjct_range"][0])
         maxEnd = max(maxEnd, y["sbjct_range"][1])
-      outFile.write(accOut + ("\t%.3f\t" % (x[-1]))  + str(minStart) + "\t" + str(maxEnd) + "\t" + str(maxEnd - minStart) + "\t" + str(len(x) - 1) + "\t" + x[0]["match_id"] + "\n")
+      outFile.write(accOut + "\t" + str(minStart) + "\t" + str(maxEnd) + "\t" + str(maxEnd - minStart) + "\t" + str(len(x) - 1) + "\t" + str(x[-2]) + ("\t%.3f" % (float(x[-2]) / float(x[0]['query_length']) * 100.00)) + ("\t%.3f" % (x[-1] * 100.00)) + "\t" + x[0]["match_id"] + "\n")
    
     #accession start end number
 
