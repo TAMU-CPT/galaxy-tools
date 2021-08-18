@@ -13,7 +13,7 @@ import logging
 from Bio import SeqIO
 from Bio.Alphabet import generic_dna
 from Bio.SeqFeature import CompoundLocation, FeatureLocation
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from gff3 import (
     feature_lambda,
     wa_unified_product_name,
