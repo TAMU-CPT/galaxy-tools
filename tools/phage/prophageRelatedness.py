@@ -160,14 +160,6 @@ def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
     #accession start end number
 
 if __name__ == "__main__":
-    start = 4000
-    mult = 1.02
-    loop = 0
-    while loop < 40 * 12:
-      start = start * 1.006
-      loop += 1
-    print(start)
-    exit()
     parser = argparse.ArgumentParser(description="Intron detection")
     parser.add_argument(
         "inRec", type=argparse.FileType("r"), help="blast XML protein results"
