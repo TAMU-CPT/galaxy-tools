@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 from gff3 import feature_lambda, feature_test_qual_value
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio.SeqFeature import FeatureLocation
 
 log = logging.getLogger(__name__)

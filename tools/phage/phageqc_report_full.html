@@ -162,7 +162,7 @@ td.moron {
             <li><a href="#weird_starts"><small>Unusual Start Codons</small></a></li>
             <li><a href="#excessive_gaps"><small>Excessive Gaps</small></a></li>
             <li><a href="#excessive_overlap"><small>Excessive Overlaps</small></a></li>
-            <li><a href="#coding_density"><small>Coding Density</small></a></li>
+            <!--<li><a href="#coding_density"><small>Coding Density</small></a></li>-->
             <li><a href="#antisense"><b>Antisense Genes</b></a></li>
             <li><a href="#morons"><small>Possible Morons</small></a></li>
             <li><a href="#annotations"><b>Annotation Issues</b></a></li>
@@ -174,9 +174,9 @@ td.moron {
                 <div class="row">
                     <div class="col-sm-7">
                         <h1>Phage {{record_name}}</h1>
-                        <h2>Score: {{score}}/100</h2>
+                        <!--<h2>Score: {{score}}/100</h2>-->
                     </div>
-                    <div class="col-sm-5">
+                    <!--<div class="col-sm-5">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -193,14 +193,13 @@ td.moron {
                                 <tr><td>Missing Product Tags</td><td>{{ '%d' % (100 * missing_tags_good / (missing_tags_good + missing_tags_bad))}}%</td></tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div>-->
                 </div>
             </div>
 
           <h2 class="sub-header" id="bad_gene_starts">Gene Starts</h2>
-          <h3 id="missing_rbs">Missing RBS <small>{{missing_rbs_good}} / {{missing_rbs_good + missing_rbs_bad}}</small></h3>
-          <p>This section covers genes with missing or incorrectly chosen
-          RBSs.</p>
+          <h3 id="missing_rbs">Genes missing RBS <small>{{missing_rbs_good}} / {{missing_rbs_good + missing_rbs_bad}}</small></h3>
+          <p>The following genes have issues with their RBS.</p>
           {% if not rbss_annotated %}
           <p>
             Since you have not annotated any possible RBSs, this does not count off from your overall score.
@@ -231,7 +230,7 @@ td.moron {
             </table>
           </div>
 
-          <h3 id="weird_starts">Unusual Start Codons <small>{{weird_starts_good}} / {{weird_starts_good + weird_starts_bad + 1}}</small></h3>
+          <h3 id="weird_starts">Start Codon Usage</h3>
           <p>This section covers genes with unusual start codons</p>
           <div class="table-responsive">
             <table class="table table-striped">
@@ -272,10 +271,8 @@ td.moron {
             </table>
           </div>
 
-          <h3 id="excessive_gaps">Excessive Gaps <small>{{excessive_gap_good}} / {{excessive_gap_good + excessive_gap_bad}}</small></h3>
-          <p>Phage genomes are under selection pressures for high coding
-          densities. Large gaps are a sign of poorly chosen starts, or
-          unannotated regions.</p>
+          <h3 id="excessive_gaps">Intergenic Gaps</h3>
+          <p>Phage genomes are under pressure to maintain high coding density. Large intergenic gaps may be a sign of incorrect gene starts or missing genes.</p>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -304,9 +301,8 @@ td.moron {
             </table>
           </div>
 
-          <h3 id="excessive_overlap">Excessive Overlap <small>{{excessive_overlap_good}} / {{excessive_overlap_good + excessive_overlap_bad}}</small></h3>
-          <p>While large gaps are discouraged, large overlaps are likewise
-          discouraged, as it indicates possible misannotation.</p>
+          <h3 id="excessive_overlap">Overlapping Genes </h3>
+          <p>Large gene overlaps may indicate an incorrect gene start or miscalled gene.</p>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -323,20 +319,20 @@ td.moron {
                     <td>{{row[0].id}} ({{row[0].location}})</td>
                     <td>{{row[1].id}} ({{row[1].location}})</td>
                     <td>{{row[2]}}..{{row[3]}}</td>
-                    <td>{{row[3] - row[2]}}</td>
+                    <td>{{row[3] - row[2]}} bp</td>
                 </tr>
                 {% endfor %}
               </tbody>
             </table>
           </div>
-          <h3 id="coding_density">Coding Density Issues <small>{{ coding_density }} / 100</small></h3>
+          <!--<h3 id="coding_density">Coding Density Issues <small>{{ coding_density }} / 100</small></h3>
           <div class="table-responsive">
             <p>
             You have a coding density of {{ coding_density_real }} which scores
             {{ coding_density }} / 100. Most genomes should be in the 90% to
             100% coding density range
             </p>
-          </div>
+          </div>-->
 
           <h2 class="sub-header" id="antisense">Antisense Genes</h2>
           <h3 id="morons">Possible Morons <small>{{morons_good}} / {{morons_good + morons_bad}} (Doesn't count towards score)</small></h3>

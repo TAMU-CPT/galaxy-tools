@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio.SeqFeature import FeatureLocation
 from Bio import SeqIO, SeqFeature, SeqRecord
 from Bio.Seq import Seq
 from gff3 import feature_lambda, feature_test_true
 import csv
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 
 
 

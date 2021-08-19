@@ -4,7 +4,7 @@ import sys
 import argparse
 import logging
 from Bio import SeqIO
-from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
 from gff3 import feature_lambda, feature_test_type, get_id
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 

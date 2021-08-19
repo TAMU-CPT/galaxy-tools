@@ -474,9 +474,10 @@ def lineAnalysis(line, codingTypes = ["CDS"]):
     fields = line.split("\t")
     if len(fields) != 9:
       errorMessage += "GFF3 is a 9-column tab-separated format, line has %d columns.\n" % (len(fields))
-      if len(fields) > 9:
-        errorMessage += "Possible unescaped tab in a qualifier field.\n"
-        return errorMessage, None, None
+      if len(fields) > 9:   
+          errorMessage += "Possible unescaped tab in a qualifier field.\n"
+      errorMessage += "Line is --" + line + "--\n"
+      return errorMessage, None, None
 
     for x in range(0, len(fields)):
       if fields[x] == "":

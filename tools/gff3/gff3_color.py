@@ -3,7 +3,7 @@ import re
 import sys
 import logging
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from gff3 import feature_lambda, wa_unified_product_name
 
 logging.basicConfig(level=logging.INFO)

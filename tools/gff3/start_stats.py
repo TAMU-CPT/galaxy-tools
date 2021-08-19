@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio import SeqIO
 from gff3 import feature_lambda, feature_test_type
 

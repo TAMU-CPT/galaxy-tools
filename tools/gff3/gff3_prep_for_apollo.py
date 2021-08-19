@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 import copy
-from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
 from gff3 import feature_lambda, feature_test_type
 from Bio.SeqFeature import FeatureLocation
 

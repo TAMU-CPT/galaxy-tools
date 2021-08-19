@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 import logging
 
 logging.basicConfig(level=logging.INFO)

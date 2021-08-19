@@ -2,7 +2,7 @@
 import logging
 import argparse
 from intervaltree import IntervalTree, Interval
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 

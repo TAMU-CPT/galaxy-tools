@@ -3,7 +3,7 @@ import sys
 import argparse
 from Bio import SeqIO
 from Bio.Seq import Seq
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(

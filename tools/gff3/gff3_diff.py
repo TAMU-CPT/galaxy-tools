@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import logging
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type
 
 logging.basicConfig(level=logging.INFO)

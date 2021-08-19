@@ -3,7 +3,7 @@ import sys
 import logging
 import argparse
 from Bio import SeqIO
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)

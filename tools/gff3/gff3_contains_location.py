@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 import argparse
 import sys
 

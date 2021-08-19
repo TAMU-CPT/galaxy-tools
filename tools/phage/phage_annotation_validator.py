@@ -54,14 +54,16 @@ ENCOURAGEMENT = (
 
 def gen_qc_feature(start, end, message, strand=0, id_src=None, type_src="gene"):
     kwargs = {"qualifiers": {"note": [message]}}
+    kwards["type"] = type_src
+    kwargs["strand"] = strand
+    kwargs["phase"]=0
+    kwargs["score"]=0.0
+    kwargs["source"]="feature"
     if id_src is not None:
         kwargs["id"] = id_src.id
-	kwargs["strand"] = strand
 	kwargs["qualifiers"]["ID"] = [id_src.id]
         kwargs["qualifiers"]["Name"] = id_src.qualifiers.get("Name", [])
-	kwargs["phase"]=0
-        kwargs["score"]=0.0
-        kwargs["source"]="feature"
+	
 
     if end >= start:
         return gffSeqFeature(FeatureLocation(start, end, strand=strand), **kwargs)
@@ -140,7 +142,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
 
             qc_features.append(
                 gen_qc_feature(
-                    start, end, "Missing RBS", strand=gene.strand, id_src=gene
+                    start, end, "Missing RBS", strand=gene.strand, id_src=gene, type_src="gene"
                 )
             )
 
@@ -172,6 +174,7 @@ def missing_rbs(record, lookahead_min=5, lookahead_max=15):
                         gene.__message,
                         strand=gene.strand,
                         id_src=gene,
+                        type_src="gene"
                     )
                 )
 
@@ -335,7 +338,7 @@ def excessive_gap(
     for result_obj in results:
         start = result_obj[0]
         end = result_obj[1]
-        f = gen_qc_feature(start, end, "Excessive gap, %s bases" % abs(end - start))
+        f = gen_qc_feature(start, end, "Excessive gap, %s bases" % abs(end - start), type_src="gene")
         qc_features.append(f)
         putative_genes = of.putative_genes_in_sequence(
             str(record[start - slop : end + slop].seq)
@@ -504,7 +507,7 @@ def excessive_overlap(record, excess=15, excess_divergent=30):
         ):
             bad += float(len(ix)) / float(min(excess, excess_divergent))
             qc_features.append(
-                gen_qc_feature(min(ix), max(ix), "Excessive Overlap", id_src=gene_a)
+                gen_qc_feature(min(ix), max(ix), "Excessive Overlap", id_src=gene_a, type_src="gene")
             )
             results.append((gene_a, gene_b, min(ix), max(ix)))
 
@@ -628,7 +631,8 @@ def bad_gene_model(record):
                         gene.location.end,
                         "Mismatched number of exons and CDSs in gff3 representation",
                         strand=gene.strand,
-                        id_src=gene,
+                        id_src=gene, 
+                        type_src="gene"
                     )
                 )
                 bad += 1
@@ -652,7 +656,8 @@ def bad_gene_model(record):
                                 exon.location.end,
                                 "CDS does not extend to full length of gene",
                                 strand=exon.strand,
-                                id_src=gene,
+                                id_src=gene, 
+                                type_src="CDS"
                             )
                         )
                         bad += 1
@@ -738,7 +743,7 @@ def weird_starts(record):
             results[-1].location = FeatureLocation(results[-1].location.start + 1, results[-1].location.end, results[-1].location.strand) 
             qc_features.append(
                 gen_qc_feature(
-                    s, e, "Weird start codon", strand=seq.strand, id_src=gene
+                    s, e, "Weird start codon", strand=seq.strand, id_src=gene, type_src="gene"
                 )
             )
             bad += 1
@@ -800,7 +805,8 @@ def gene_model_correction_issues(record):
                         gene.location.start,
                         gene.location.end,
                         "Gene is missing a locus_tag",
-                        strand=gene.strand,
+                        strand=gene.strand, 
+                        type_src="gene"
                     )
                 )
 
@@ -825,7 +831,8 @@ def gene_model_correction_issues(record):
                                 cds.location.start,
                                 cds.location.end,
                                 "CDS is missing a locus_tag",
-                                strand=cds.strand,
+                                strand=cds.strand, 
+                                type_src="CDS"
                             )
                         )
                         local_qc_features.append(
@@ -833,7 +840,8 @@ def gene_model_correction_issues(record):
                                 gene.location.start,
                                 gene.location.end,
                                 "Gene is missing a locus_tag",
-                                strand=gene.strand,
+                                strand=gene.strand, 
+                                type_src="gene"
                             )
                         )
                     elif problem == "Different locus tag from associated gene.":
@@ -847,7 +855,8 @@ def gene_model_correction_issues(record):
                                 gene.location.start,
                                 gene.location.end,
                                 "Gene and CDS have differing locus tags",
-                                strand=gene.strand,
+                                strand=gene.strand, 
+                                type_src="gene"
                             )
                         )
                     elif problem == "Missing Locus Tag":
@@ -861,7 +870,8 @@ def gene_model_correction_issues(record):
                                 cds.location.start,
                                 cds.location.end,
                                 "CDS is missing a locus_tag",
-                                strand=cds.strand,
+                                strand=cds.strand, 
+                                type_src="CDS"
                             )
                         )
                     else:
@@ -901,6 +911,7 @@ def missing_tags(record):
                     cds.location.end,
                     "Missing product tag",
                     strand=cds.strand,
+                    type_src="CDS"
                 )
             )
             results.append(cds)

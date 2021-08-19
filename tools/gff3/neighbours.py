@@ -2,7 +2,7 @@
 import logging
 import argparse
 from interval_tree import IntervalTree
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio.SeqFeature import FeatureLocation
 
 logging.basicConfig(level=logging.INFO)
