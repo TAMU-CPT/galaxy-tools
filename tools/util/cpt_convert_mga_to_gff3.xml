@@ -5,7 +5,7 @@
 		<import>cpt-macros.xml</import>
 		<import>macros.xml</import>
 	</macros>
-	<expand macro="requirements"/>
+	<expand macro="requirementsPython3"/>
 	<command detect_errors="aggressive">
 @GENOME_SELECTOR_PRE@
 
