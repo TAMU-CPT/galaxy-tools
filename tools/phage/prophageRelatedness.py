@@ -141,7 +141,7 @@ def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
 #    they were part of an Accession cluster that did have at least one high scoring member.
 
     
-    outFile.write("Accession Number\tCluster Start Location\tEnd Location\tTotal Length\t# HSPs in Cluster\tTotal Aligned Length\t% of Query Aligned\tOverall % Identity\tComplete Accession Info\n")
+    outFile.write("Accession Number\tCluster Start Location\tEnd Location\tSubject Cluster Length\t# HSPs in Cluster\tTotal Aligned Length\t% of Query Aligned\tOverall % Query Identity\tOverall % Subject Identity\tComplete Accession Info\n")
     for x in outList:
       minStart = min(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
       maxEnd = max(x[0]["sbjct_range"][0], x[0]["sbjct_range"][1])
@@ -155,7 +155,7 @@ def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
 # ("\t%.3f\t" % (x[-1]))
         minStart = min(minStart, y["sbjct_range"][0])
         maxEnd = max(maxEnd, y["sbjct_range"][1])
-      outFile.write(accOut + "\t" + str(minStart) + "\t" + str(maxEnd) + "\t" + str(maxEnd - minStart) + "\t" + str(len(x) - 1) + "\t" + str(x[-2]) + ("\t%.3f" % (float(x[-2]) / float(x[0]['query_length']) * 100.00)) + ("\t%.3f" % (x[-1] * 100.00)) + "\t" + x[0]["match_id"] + "\n")
+      outFile.write(accOut + "\t" + str(minStart) + "\t" + str(maxEnd) + "\t" + str(maxEnd - minStart + 1) + "\t" + str(len(x) - 1) + "\t" + str(x[-2]) + ("\t%.3f" % (float(x[-2]) / float(x[0]['query_length']) * 100.00)) + ("\t%.3f" % (x[-1] * 100.00)) + ("\t%.3f" % (float(x[-2]) / float(maxEnd - minStart + 1) * 100.00)) + "\t" + x[0]["match_id"] + "\n")
    
     #accession start end number
 
