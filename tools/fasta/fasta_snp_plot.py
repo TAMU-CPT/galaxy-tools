@@ -163,7 +163,7 @@ def plot_snps(reference, mutated):
                         )
                     )
 
-    print dwg.tostring()
+    print (dwg.tostring())
 
 
 if __name__ == "__main__":
