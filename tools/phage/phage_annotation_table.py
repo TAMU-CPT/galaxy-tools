@@ -84,7 +84,11 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
 
     def notes(record, feature):
         """User entered Notes"""
-        return feature.qualifiers.get("Note", [])
+        for x in ["Note", "note", "Notes", "notes"]:
+          for y in feature.qualifiers.keys():
+            if x == y:
+              return feature.qualifiers[x]
+        return []
 
     def date_created(record, feature):
         """Created"""
@@ -358,16 +362,16 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
                     value = f(record, value)
             else:
                 # Otherwise just apply the lone function
-                if func.func_name.startswith("gaf_"):
+                if func.__name__.startswith("gaf_"):
                     value = func(record, gene, gaf_data)
                 else:
                     value = func(record, gene)
 
             if isinstance(value, list):
                 collapsed_value = ", ".join(value)
-                value = [str(collapsed_value).decode("unicode_escape")]
+                value = [str(collapsed_value)]#.encode("unicode_escape")]
             else:
-                value = str(value).decode("unicode_escape")
+                value = str(value)#.encode("unicode_escape")
 
             row.append(value)
         # print row
@@ -493,4 +497,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    print(evaluate_and_report(**vars(args)))
+    print(evaluate_and_report(**vars(args)).decode("utf-8"))
