@@ -80,6 +80,8 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
         """CDS Length (AA)
         """
         cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
+        if cdss == []:
+          return "None"
         return str((sum([len(cds) for cds in cdss]) / 3) - 1)
 
     def notes(record, feature):
@@ -88,7 +90,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
           for y in feature.qualifiers.keys():
             if x == y:
               return feature.qualifiers[x]
-        return []
+        return "None"
 
     def date_created(record, feature):
         """Created"""
@@ -196,7 +198,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
     def dbxrefs(record, feature):
         """DBxrefs
         """
-        return feature.qualifiers.get("Dbxref", [])
+        return feature.qualifiers.get("Dbxref", "None")
 
     def upstream_feature(record, feature):
         """Next gene upstream"""
@@ -218,7 +220,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
             else:
                 return None
 
-    def up_feat(record, feature):
+    def upstream_feature__name(record, feature):
         """Next gene upstream"""
         up = upstream_feature(record, feature)
         if up:
