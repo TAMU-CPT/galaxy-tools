@@ -59,8 +59,11 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
     def name(record, feature):
         """Name
         """
-        return feature.qualifiers.get("Name", ["None"])[0]
-
+        for x in ["Name", "name"]:
+          for y in feature.qualifiers.keys():
+            if x == y:
+              return feature.qualifiers[x][0]
+        return "None"
     def start(record, feature):
         """Boundary
         """
@@ -89,7 +92,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
         for x in ["Note", "note", "Notes", "notes"]:
           for y in feature.qualifiers.keys():
             if x == y:
-              return feature.qualifiers[x]
+              return feature.qualifiers[x][0]
         return "None"
 
     def date_created(record, feature):
@@ -109,16 +112,23 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
 
         User who created the feature. In a 464 scenario this may be one of
         the TAs."""
-        return feature.qualifiers.get("owner", ["None"])[0]
+        for x in ["Owner", "owner"]:
+          for y in feature.qualifiers.keys():
+            if x == y:
+              return feature.qualifiers[x][0]
+        return "None"
 
     def product(record, feature):
         """Product
 
         User entered product qualifier (collects "Product" and "product"
         entries)"""
-        return feature.qualifiers.get(
-            "product", feature.qualifiers.get("Product", ["None"])
-        )[0]
+        """User entered Notes"""
+        for x in ["product", "Product"]:
+          for y in feature.qualifiers.keys():
+            if x == y:
+              return feature.qualifiers[x][0]
+        return "None"
 
     def note(record, feature):
         """Note
@@ -198,10 +208,12 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
     def dbxrefs(record, feature):
         """DBxrefs
         """
-        res = feature.qualifiers.get("Dbxref", -1)
-        if res != -1: 
-          return res
-        return feature.qualifiers.get("db_xref", "None")
+        """User entered Notes"""
+        for x in ["Dbxref", "db_xref", "DB_xref", "DBxref", "DB_Xref", "DBXref"]:
+          for y in feature.qualifiers.keys():
+            if x == y:
+              return feature.qualifiers[x][0]
+        return "None"
 
     def upstream_feature(record, feature):
         """Next gene upstream"""
