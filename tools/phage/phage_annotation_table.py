@@ -198,7 +198,10 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
     def dbxrefs(record, feature):
         """DBxrefs
         """
-        return feature.qualifiers.get("Dbxref", "None")
+        res = feature.qualifiers.get("Dbxref", -1)
+        if res != -1: 
+          return res
+        return feature.qualifiers.get("db_xref", "None")
 
     def upstream_feature(record, feature):
         """Next gene upstream"""
