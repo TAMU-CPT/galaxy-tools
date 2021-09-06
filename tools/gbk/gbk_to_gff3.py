@@ -12,7 +12,7 @@ bottomFeatTypes = ["exon", "RBS", "CDS"]
 
 def makeGffFeat(inFeat, num, recName, identifier):
     if inFeat.type == "RBS" or (inFeat.type == "regulatory" and "regulatory_class" in inFeat.qualifiers.keys() and inFeat.qualifiers["regulatory_class"][0] == "ribosome_binding_site"):
-      inFeat.type = "Shine_Dalgarno_seqeunce"
+      inFeat.type = "Shine_Dalgarno_sequence"
     if "codon_start" in inFeat.qualifiers.keys():
       shift = int(inFeat.qualifiers["codon_start"][0]) - 1
     else:
