@@ -7,6 +7,7 @@ from cpt_gffParser import gffParse, gffWrite
 from Bio import SeqIO
 from jinja2 import Environment, FileSystemLoader
 import logging
+from math import floor
 
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(name="pat")
@@ -82,10 +83,18 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
     def length(record, feature):
         """CDS Length (AA)
         """
-        cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
+        
+        if feature.type == "CDS":
+          cdss = [feature]
+        else:
+          cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
+        
         if cdss == []:
           return "None"
-        return str((sum([len(cds) for cds in cdss]) / 3) - 1)
+        res = (sum([len(cds) for cds in cdss]) / 3) - 1
+        if floor(res) == res:
+          res = int(res)
+        return str(res)
 
     def notes(record, feature):
         """User entered Notes"""
@@ -188,7 +197,11 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
     def start_codon(record, feature):
         """Start Codon
         """
-        cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
+        if feature.type == "CDS":
+          cdss = [feature]
+        else:
+          cdss = list(genes(feature.sub_features, feature_type="CDS", sort=True))
+        
         data = [x for x in cdss]
         if len(data) == 1:
             return str(data[0].extract(record).seq[0:3])
@@ -222,6 +235,17 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
                 x for x in sorted_features if (x.location.start < feature.location.start and x.type == "gene" and x.strand == feature.strand)
             ]
             if len(upstream_features) > 0:
+                foundSelf = False
+                featCheck = upstream_features[-1].sub_features
+                for x in featCheck:
+                  if x == feature:
+                    foundSelf = True
+                    break
+                  featCheck = featCheck + x.sub_features
+                if foundSelf:
+                  if len(upstream_features) > 1:
+                    return upstream_features[-2]
+                  return None
                 return upstream_features[-1]
             else:
                 return None
@@ -231,6 +255,17 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
             ]
 
             if len(upstream_features) > 0:
+                foundSelf = False
+                featCheck = upstream_features[0].sub_features
+                for x in featCheck:
+                  if x == feature:
+                    foundSelf = True
+                    break
+                  featCheck = featCheck + x.sub_features
+                if foundSelf:
+                  if len(upstream_features) > 1:
+                    return upstream_features[1]
+                  return None
                 return upstream_features[0]
             else:
                 return None
