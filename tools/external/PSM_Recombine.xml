@@ -1,0 +1,35 @@
+<tool id="external.PSM_Recombine" name="PSM Table Generator" version="21.0.0">
+  <description>: generates a nicer table out of the default PSM tabular output</description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <requirements>
+      <requirement type="package" version="3.7">python</requirement>
+      <requirement type="package" version="1.74">biopython</requirement>
+  </requirements>
+  <command detect_errors="aggressive">$__tool_directory__/PSM_Recombine.py
+$psmIn
+#for $item in $repeat_file:
+"${item.file}"
+#end for
+> $tableOut 
+  </command>
+  <inputs>
+      <param name="psmIn" type="data" label="PSM Tabular File" format="tabular"/>
+      <repeat name="repeat_file" title="Original Genbank file(s) used to generate PSM">
+        <param name="file" optional="False" label="Gbk file" type="data"/>
+      </repeat>
+  </inputs>
+  <outputs>
+        <data format="tabular" name="tableOut" label="PSM Tabular Results"/>
+  </outputs>
+  <help>
+**What it does**
+
+Recombines the PSM tabular output with the original Genbank files to generate a slightly nicer table.
+
+  </help>
+  <expand macro="citations-2020"/>
+</tool>
+
