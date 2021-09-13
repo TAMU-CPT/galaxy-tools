@@ -57,8 +57,9 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/comparative/cdhit-reformat.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/comparative/cdhit-clustsize.xml"/>
     </section>
-    <section id="67ca8f62-49a7-46dd-9631-88642824b085" name="CPT Circos Tools"/>
-    <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/PSM_Recombine.xml"/>
+    <section id="67ca8f62-49a7-46dd-9631-88642824b085" name="CPT Circos Tools">
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/PSM_Recombine.xml"/>
+    </section>
     <section id="dc10c3dd-b25e-41c3-8f50-1c3ff311c317" name="Deeptools"/>
     <section id="72a69e48-0bfc-45a0-bb51-e5ad36978a63" name="Genome comparison">
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/prep/mist_prep.xml"/>
