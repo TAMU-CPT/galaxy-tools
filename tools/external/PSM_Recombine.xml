@@ -9,7 +9,7 @@
       <requirement type="package" version="3.7">python</requirement>
       <requirement type="package" version="1.74">biopython</requirement>
   </requirements>
-  <command detect_errors="aggressive">
+  <command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/cpt_psm_0_prep.pl
 --galaxy
 --outfile_supporting $__new_file_path__
@@ -33,16 +33,16 @@ ${cpt_psm_object}
 "${item.file}"
 #end for
 > "${tableOut}" 
-
+]]>
 </command>
   <inputs>
     <repeat name="repeat_file" title="Genbank file(s) used to generate PSM">
-        <param name="file" optional="False" label="Gbk file" type="data"/>
+        <param name="file" optional="False" label="Gbk file" type="data" format="genbank"/>
     </repeat> 
   </inputs>
   <outputs>
     <data format="tabular" name="tableOut" label="PSM Tabular Results"/>
-    <data name="cpt_psm_object" label="Raw PSM Binary output" format="TXT">
+    <data name="cpt_psm_object" label="Raw PSM Binary output" format="TXT"/>
   </outputs>
   <help><![CDATA[
 **What it does**
