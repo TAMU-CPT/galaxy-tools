@@ -27,8 +27,51 @@ $__tool_directory__/cpt_psm_0_prep.pl
 
 &&
 
+mkdir tmp_001
+&&
+mkdir tmp_002
+
+&&
+
+$__tool_directory__/cpt_psm_2_gentable.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+--file "${cpt_psm_object}"
+
+#if $evalue and $evalue is not "None":
+--evalue "${evalue}"
+#end if
+
+#if $dice and $dice is not "None":
+--dice "${dice}"
+#end if
+
+#if $mismatch and $mismatch is not "None":
+--mismatch "${mismatch}"
+#end if
+
+#if $gap_penalty and $gap_penalty is not "None":
+--gap_penalty "${gap_penalty}"
+#end if
+
+#if $match and $match is not "None":
+--match "${match}"
+#end if
+
+--diff_table "./tmpDiff.tsv"
+--diff_table_files_path "./tmp_001"
+--diff_table_format TSV_U
+--diff_table_id "000001"
+
+--blastclust "./tmpClust.tsv"
+--blastclust_files_path "./tmp_002"
+--blastclust_format TSV_U
+--blastclust_id "000002"
+
+&&
+
 $__tool_directory__/PSM_Recombine.py
-${cpt_psm_object}
+./tmpDiff.tsv
 #for $item in $repeat_file:
 "${item.file}"
 #end for
@@ -39,6 +82,11 @@ ${cpt_psm_object}
     <repeat name="repeat_file" title="Genbank file(s) used to generate PSM">
         <param name="file" optional="False" label="Gbk file" type="data" format="genbank"/>
     </repeat> 
+    <param value="0.0001" name="evalue" help="Evalue cutoff" optional="True" label="evalue" type="float"/>
+    <param value="50" name="dice" help="Dice cutoff" optional="True" label="dice" type="float"/>
+    <param value="-1" name="mismatch" help="Mismatch Score" optional="True" label="mismatch" type="float"/>
+    <param value="0.0" name="gap_penalty" help="Gap Penalty" optional="True" label="gap_penalty" type="float"/>
+    <param value="5" name="match" help="Match Score" optional="True" label="match" type="float"/>
   </inputs>
   <outputs>
     <data format="tabular" name="tableOut" label="PSM Tabular Results"/>
@@ -52,6 +100,21 @@ structures for use in the companion tool, PSM Plotter, as well as a
 tabular file read-out of the results. Select as many (multi)-gbk files 
 as you *might* want to plot. Once this tool is done, you can select 
 any subset of those to plot then.
+
+IMPORTANT PARAMETERS
+--------------------
+
+-  ``mismatch``, ``gap_penalty``, ``match``
+
+   These parameters control the Needleman-Wunsch Multiple Sequence
+   Alignment library's scoring scheme. Mismatch scores are generally
+   negative and discourage unrelated proteins from being plotted in a
+   line together. Match scores encourage related proteins to line up.
+   Gap penalty is set at zero as we generally prefer gaps to mismatches
+   in this tool; phage genomes are small and gaps are "cheap" to use,
+   whereas mismatches can sometimes give an incorrect impression of
+   relatedness. That said, how your plots look is completely up to you
+   and we encourage experimentation!
   ]]></help>
   <expand macro="citations-2020"/>
 </tool>
