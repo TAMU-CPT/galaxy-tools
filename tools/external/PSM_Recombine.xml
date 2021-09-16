@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt.external.psm_recombine" name="PSM Table Generator" version="21.0.0">
-  <description>: generates a nicer table out of the default PSM tabular output</description>
+<tool id="edu.tamu.cpt.external.psm_recombine" name="PSM Prep and Table Generator:" version="21.0.0">
+  <description>: generates a raw PSM file for plotting and a tabular summary</description>
   <macros>
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
@@ -9,28 +9,49 @@
       <requirement type="package" version="3.7">python</requirement>
       <requirement type="package" version="1.74">biopython</requirement>
   </requirements>
-  <command detect_errors="aggressive"><![CDATA[
+  <command detect_errors="aggressive">
+$__tool_directory__/cpt_psm_0_prep.pl
+--galaxy
+--outfile_supporting $__new_file_path__
+#for $item in $repeat_file:
+--file "${item.file}"
+#end for
+
+--cpt_psm_object "${cpt_psm_object}"
+
+--cpt_psm_object_files_path "${cpt_psm_object.files_path}"
+
+--cpt_psm_object_format "TXT"
+
+--cpt_psm_object_id "${cpt_psm_object.id}" 
+
+&&
+
 $__tool_directory__/PSM_Recombine.py
-$psmIn
+${cpt_psm_object}
 #for $item in $repeat_file:
 "${item.file}"
 #end for
-> $tableOut 
-]]></command>
+> "${tableOut}" 
+
+</command>
   <inputs>
-      <param name="psmIn" type="data" label="PSM Tabular File" format="tabular"/>
-      <repeat name="repeat_file" title="Original Genbank file(s) used to generate PSM">
+    <repeat name="repeat_file" title="Genbank file(s) used to generate PSM">
         <param name="file" optional="False" label="Gbk file" type="data"/>
-      </repeat>
+    </repeat> 
   </inputs>
   <outputs>
-        <data format="tabular" name="tableOut" label="PSM Tabular Results"/>
+    <data format="tabular" name="tableOut" label="PSM Tabular Results"/>
+    <data name="cpt_psm_object" label="Raw PSM Binary output" format="TXT">
   </outputs>
   <help><![CDATA[
 **What it does**
 
-Recombines the PSM tabular output with the original Genbank files to generate a slightly nicer table.
-
+This tool takes in 2 or more GenBank files, blasts, and prepares data
+structures for use in the companion tool, PSM Plotter, as well as a 
+tabular file read-out of the results. Select as many (multi)-gbk files 
+as you *might* want to plot. Once this tool is done, you can select 
+any subset of those to plot then.
   ]]></help>
   <expand macro="citations-2020"/>
 </tool>
