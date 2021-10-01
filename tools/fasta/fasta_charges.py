@@ -38,6 +38,7 @@ FULL_AA = [
 
 def charges_html(svg, fasta, aa, fgColor, bgColor, width=120):
     colour_scheme = zip([x.upper() for x in aa], bgColor, fgColor)
+    copy_colour_scheme = zip([x.upper() for x in aa], bgColor, fgColor)
 
     # CSS and header styling
     css = """<style type="text/css">
@@ -56,7 +57,7 @@ def charges_html(svg, fasta, aa, fgColor, bgColor, width=120):
     info += "</ul>"
 
     # Pre-calculate, so we can use for testing 'in'
-    match_list = [group[0] for group in colour_scheme]
+    match_list = [group[0] for group in copy_colour_scheme]
 
     page = ""
     # Parse sequences from fasta file
