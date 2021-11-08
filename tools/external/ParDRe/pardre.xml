@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.pardre" name="ParDRe: " version="21.1.0" profile="16.04">
+	<description>remove duplicate reads</description>
+	<macros/>
+	<requirements/>
+	<command detect_errors="aggressive">
+lamboot ;
+$__tool_directory__/ParDRe -i ${pardIn.inFile}
+#if $pardIn.fileType == "paired":
+  -p ${pardIn.inFilePaired}
+#end if
+-o $outFile
+#if $pardIn.fileType == "paired":
+  -r $outFilePair
+#end if
+-m $allowMismatch
+-l $prefixLen 
+;
+lamwipe ;
+</command>
+	<inputs>
+          <conditional name="pardIn">
+		<param name="fileType" type="boolean" label="Input paired reads (Unchecked for single reads)" truevalue="paired" falsevalue="not" checked="false"/>
+		<when value="not">
+			<param name="inFile" type="data" label="Fastq read" format="fastq, fastqsanger"/>
+		</when>
+		<when value="paired">
+			<param name="inFile" type="data" label="First paired read" format="fastq, fastqsanger"/>
+			<param name="inFilePaired" type="data" label="Second paired read" format="fastq, fastqsanger"/>
+		</when>
+          </conditional>
+
+                <param label="Fasta Sequence" name="inFile" type="data" format="fasta" />   
+	</inputs>
+	<outputs>
+                <data format="fastq" name="outFile" label="FastQ Dedeuplicated results" />
+                <data format="fastq" name="outFilePair" label="FastQ Dedeuplicated results (Pair)" >
+                  <filter>pardIn['fileType']</filter>
+                </data>
+	</outputs>
+	<help>
+**What it does**
+
+Runs ParDRe de-duplicator on a fastq file or paired reads.
+	</help>
+	<tests/>
+	<citations>
+		<citation type="bibtex">
+		@unpublished{galaxyTools,
+			author = {Parallel and Distributed Architectures Group, Johannes Gutenberg University},
+			year = {2017},
+			
+		}
+		</citation>
+	</citations>
+</tool>
