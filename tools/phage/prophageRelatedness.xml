@@ -11,14 +11,29 @@
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
 python $__tool_directory__/prophageRelatedness.py
-$blast
+${blastIn.blast}
 --outFile $output
 --padding $padding
 --cutoff $cutoff
 --numReturn $returns
+#if $blastIn.blastType == "TSV":
+  --isTSV
+#end if
 ]]></command>
   <inputs>
-    <param label="Blastn Results (Blast XML)" name="blast" type="data" format="blastxml"/>
+    <conditional name="blastIn">
+		<param name="blastType" type="select" label="Blastn Input Type">
+                  <option value="XML" selected="true">Blast XML</option>
+     		  <option value="TSV">Blast 25-Column Tabular</option>
+                </param>
+		<when value="XML">
+			<param label="Blastn Results (Blast XML)" name="blast" type="data" format="blastxml"/>
+		</when>
+		<when value="TSV">
+			<param label="Blastn Results (Blast 25-Column Tabular)" name="blast" type="data" format="tsv, tabular"/>
+		</when>
+    </conditional>
+    <param label="Blastn Results (Blast XML)" name="blast" type="data" format="blastxml, tsv, tabular"/>
     <param label="Cluster Window" name="padding" type="text" value="2.0"
         help="Nucleotide window for HSPs to form a cluster (Multiplicative of length of query sequence)"/>
     <param label="Score cutoff" name="cutoff" type="text" value=".3"

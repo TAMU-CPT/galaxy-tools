@@ -54,6 +54,58 @@ def parseXML(blastxml, outFile): # Modified from intron_detection
         
     return blast
 
+def openTSV(blasttsv, outFile): # Modified from intron_detection
+    blast = []
+    activeAlign = ""
+    numAlignments = 0
+    qLen = 0
+    for line in blasttsv:
+        line = line.strip("\n")
+        data = line.split("\t")
+        for x in range(0, len(data)):
+          data[x] = data[x].strip()
+        qLen = data[22]
+        if activeAlign == "":
+          numAlignments += 1
+          blast_gene = []
+          hsp_num = 1
+        elif activeAlign != data[1]:
+          numAlignments += 1
+          blast.append(blast_gene)
+          blast_gene = []
+          hsp_num = 1
+        else:
+          hsp_num += 1
+        gi_nos = data[12]
+        activeAlign = data[1]
+        x = float(float(data[14]) - 1) / (float(data[7]) - float(data[6]))
+        nice_name = data[1]
+        if " " in nice_name:
+          nice_name = nice_name[0 : nice_name.index(" ")]
+        blast_gene.append(
+                    {
+                        "gi_nos": gi_nos,
+                        "sbjct_length": int(data[23]),
+                        "query_length": int(data[22]),
+                        "sbjct_range": (int(data[8]), int(data[9])),
+                        "query_range": (int(data[6]), int(data[7])),
+                        "name": nice_name,
+                        "evalue": float(data[10]),
+                        "identity": int(data[14]),
+                        "identity_percent": x,
+                        "hit_num": numAlignments,
+                        "iter_num": hsp_num,
+                        "match_id": data[24].partition(">")[0],
+                        "align_len": int(data[3]),
+                    }
+        )
+        
+    blast.append(blast_gene)
+    outFile.write("Query ID\tQuery Length\tTotal Number of Hits\n")
+    outFile.write("%s\t%d\t%d\n\n" % (data[0], int(data[22]), numAlignments))
+        
+    return blast
+
 
 def test_true(feature, **kwargs):
     return True
@@ -93,8 +145,12 @@ def disjointSets(inSets):
          res.append(inSets[i])
     return res
         
-def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20):
-    inRec = parseXML(inRec, outFile)
+def compPhage(inRec, outFile, padding = 1.2, cutoff = .3, numReturn = 20, isTSV = False):
+    
+    if isTSV:
+      inRec = openTSV(inRec, outFile)
+    else:
+      inRec = parseXML(inRec, outFile)
     res = []
     for group in inRec:
       window = floor(padding * float(group[0]["query_length"]))
@@ -187,6 +243,11 @@ if __name__ == "__main__":
         help="Gap maximum in genome (Default 10000)",
         default=20,
         type=int,
+    )
+    parser.add_argument(
+        "--isTSV",
+        help="Opening Blast TSV result",
+        action="store_true",
     )
     args = parser.parse_args()
 
