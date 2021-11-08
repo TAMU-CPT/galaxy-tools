@@ -111,6 +111,7 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/util/cpt_mutate.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/fasta/fasta_split.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/fasta/fasta_revcom.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/ParDRe/pardre.xml"/>
         <label id="26dff739-55ae-40a3-a450-2da1e8973be1" text="Header"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/fasta/fasta_ID_swapper.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/fasta/fasta_rename.xml"/>
