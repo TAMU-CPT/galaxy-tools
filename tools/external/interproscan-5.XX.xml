@@ -1,10 +1,10 @@
-<tool id="interproscan" name="Interproscan functional predictions of ORFs" version="5.48-83.0" profile="16.04">
+<tool id="interproscan" name="Interproscan functional predictions of ORFs" version="5.52-86.0" profile="16.04">
     <description>Interproscan functional predictions of ORFs</description>
     <requirements>
         <requirement type="package" version="11.0.1">openjdk</requirement>
     </requirements>
     <command>
-/opt/interpro/interproscan-5.48-83.0/interproscan.sh
+/opt/interpro/interproscan-5.52-86.0/interproscan.sh
     #if $appl is not None:
     --applications "$appl"
     #end if
