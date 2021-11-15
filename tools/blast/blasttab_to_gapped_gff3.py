@@ -3,7 +3,7 @@ import re
 import sys
 import copy
 import argparse
-from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
 import logging
 
 logging.basicConfig(level=logging.INFO)
