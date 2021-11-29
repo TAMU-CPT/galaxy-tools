@@ -30,7 +30,8 @@ lamwipe ;
 		</when>
           </conditional>
 
-                <param label="Fasta Sequence" name="inFile" type="data" format="fasta" />   
+                <param label="Number of allowed mismatches" name="allowMismatch" type="integer" value="0" />
+                <param label="Prefix length for computation" name="prefixLen" type="integer" value="20" />   
 	</inputs>
 	<outputs>
                 <data format="fastq" name="outFile" label="FastQ Dedeuplicated results" />
