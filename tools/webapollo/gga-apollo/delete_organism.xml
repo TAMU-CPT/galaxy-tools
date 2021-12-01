@@ -37,7 +37,7 @@
 #end if
     ]]></command>
   <inputs>
-    <expand macro="org_or_guess" />
+    <expand macro="org_or_guess_multi" />
     <param name="ask_one" type="boolean" truevalue="yes" falsevalue="" label="Are you SURE you want to do this?" help="It will PERMANENTLY delete all of the features on this organism."/>
     <param name="ask_two" type="boolean" truevalue="yes" falsevalue="" label="Are you really, really SURE you want to do this?" help="There's NO coming back from this."/>
   </inputs>

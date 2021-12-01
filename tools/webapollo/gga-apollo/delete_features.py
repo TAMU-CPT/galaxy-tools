@@ -4,6 +4,7 @@ from __future__ import print_function
 import argparse
 import logging
 import random
+import json
 
 from apollo import accessible_organisms
 from apollo.util import GuessOrg, OrgOrGuess, retry
@@ -30,24 +31,51 @@ if __name__ == '__main__':
     handle_credentials(gx_user)
 
     # Get organism
-    org_cn = GuessOrg(args, wa)
-    if isinstance(org_cn, list):
-        org_cn = org_cn[0]
+    org_cn = []
+    if args.org_json:
+        org_cn = [x.get("commonName", None) for x in json.load(args.org_json)]
+        org_cn = [x for x in orgs if x is not None]
+    elif args.org_raw:
+        args.org_raw = str(args.org_raw)
+        args.org_raw = args.org_raw.split(",")
+        for i in range(len(args.org_raw)):
+            org_cn.append(args.org_raw[i].strip())
+    elif args.org_id:
+        orgList = str(args.org_id)
+        orgList = orgList.split(",")
+        for x in orgList:
+            args.org_id = x.strip()
+            res = GuessOrg(args, wa)
+            if res:
+               org_cn.append(res[0])
+
+    if len(org_cn) == 0:
+        raise Exception("Organism Common Name not provided")
+
 
     all_orgs = wa.organisms.get_organisms()
     if 'error' in all_orgs:
         all_orgs = []
     all_orgs = [org['commonName'] for org in all_orgs]
-    if org_cn not in all_orgs:
-        raise Exception("Could not find organism %s" % org_cn)
+    
+    for orgInd in org_cn:
+      noOrg = True
+      for eachOrg in all_orgs:
+        if eachOrg == orgInd:
+          noOrg = False
+          break
+      if noOrg:
+        raise Exception("Could not find organism %s" % orgInd)
+      else:
+        orgs = accessible_organisms(gx_user, orgInd, 'WRITE')    
+        if not orgs:
+          raise Exception("You do not have write permission on this organism")
 
-    orgs = accessible_organisms(gx_user, [org_cn], 'WRITE')
-    if not orgs:
-        raise Exception("You do not have write permission on this organism")
-    org = wa.organisms.show_organism(org_cn)
+    for orgInd in org_cn:
+      org = wa.organisms.show_organism(orgInd)
 
-    sequences = wa.organisms.get_sequences(org['id'])
-    for sequence in sequences['sequences']:
+      sequences = wa.organisms.get_sequences(org['id'])
+      for sequence in sequences['sequences']:
         log.info("Processing %s %s", org['commonName'], sequence['name'])
         # Call setSequence to tell apollo which organism we're working with
         wa.annotations.set_sequence(org['id'], sequence['name'])
