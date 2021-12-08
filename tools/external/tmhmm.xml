@@ -4,10 +4,7 @@
     <import>macros.xml</import>
     <import>cpt-macros.xml</import>
   </macros>
-	<requirements>
-		<requirement type="package" version="2.7">python</requirement>
-		<requirement type="package" version="0.6.4">bcbiogff</requirement>
-	</requirements>
+	<expand macro="requirements"/>
 	<command detect_errors="aggressive"><![CDATA[
 $__tool_directory__/tmhmm-2.0c/bin/decodeanhmm.Linux_x86_64
 
