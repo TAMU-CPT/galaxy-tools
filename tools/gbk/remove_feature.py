@@ -26,7 +26,7 @@ if __name__ == "__main__":
         description="Remove specific features from a Genbank file"
     )
     parser.add_argument(
-        "genbank_files", nargs="+", type=argparse.FileType("r"), help="Genbank files"
+        "genbank_files", type=argparse.FileType("r"), help="Genbank files"
     )
     parser.add_argument("--feature_types", nargs="+", help="Feature types to remove")
 
