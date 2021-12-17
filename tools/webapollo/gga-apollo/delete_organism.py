@@ -47,14 +47,18 @@ if __name__ == '__main__':
         orgList = str(args.org_id)
         orgList = orgList.split(",")
         for x in orgList:
+            sys.stderr.write("Asserting " + x.strip() + " to be deleted")
             args.org_id = x.strip()
             res = GuessOrg(args, wa)
             if res:
+               sys.stderr.write("Assert passed.")
                org_cn.append(res[0])
 
     if len(org_cn) == 0:
         raise Exception("Organism Common Name not provided")
 
+    sys.stderr.write("CN List: " + str(org_cn))
+            
 
     all_orgs = wa.organisms.get_organisms()
     if 'error' in all_orgs:
