@@ -43,14 +43,14 @@
 <![CDATA[
 @ORG_OR_GUESS@
 
-#if $cn_source.source_select == "auto":
-    #if str($cn_source.cn_file) != "None":
-        --seq_fasta '$cn_source.cn_file'
+#if $org_source.source_select == "auto":
+    #if str($org_source.cn_file) != "None":
+        --seq_fasta '$org_source.cn_file'
     #end if
 #else
-    #if $cn_source.source_select != "all" and len($cn_source.refseqs) > 0:
+    #if $org_source.source_select != "all" and len($org_source.refseqs) > 0:
         --seq_raw
-        #for $item in $cn_source.refseqs:
+        #for $item in $org_source.refseqs:
             '${item.refseq}'
         #end for
     #end if
@@ -111,10 +111,10 @@
         </when>
     </conditional>
   </xml>
-
+https://twitter.com/buttpraxis/status/1472775905382744066
   <xml name="cn_or_guess">
     <expand macro="org_or_guess" />
-    <conditional name="cn_source">
+    <conditional name="org_source">
         <param name="source_select" type="select" label="Organism Sequence(s) Source">
             <option value="all">All Refseqs</option>
             <option value="direct">Direct Entry</option>
