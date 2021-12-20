@@ -14,7 +14,7 @@ from webapollo import UserObj, handle_credentials
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Script to export data from Apollo via web services')
-    CnOrGuess(parser)
+    OrgOrGuess(parser)
     parser.add_argument('--gff', type=argparse.FileType('w'))
     parser.add_argument('--seq', type=argparse.FileType('w'))
     parser.add_argument('--fasta_pep', type=argparse.FileType('w'))
@@ -31,25 +31,47 @@ if __name__ == '__main__':
     gx_user = UserObj(**wa.users._assert_or_create_user(args.email))
     handle_credentials(gx_user)
 
-    org_cns, seqs = GuessCn(args, wa)
-    if not isinstance(org_cns, list):
-        org_cns = [org_cns]
+    org_cn = []
+    if args.org_json:
+        org_cn = [x.get("commonName", None) for x in json.load(args.org_json)]
+        org_cn = [x for x in orgs if x is not None]
+    elif args.org_raw:
+        args.org_raw = str(args.org_raw)
+        args.org_raw = args.org_raw.split(",")
+        for i in range(len(args.org_raw)):
+            org_cn.append(args.org_raw[i].strip())
+    elif args.org_id:
+        orgList = str(args.org_id)
+        orgList = orgList.split(",")
+        for x in orgList:
+            args.org_id = x.strip()
+            res = GuessOrg(args, wa)
+            if res:
+               org_cn.append(res[0])
 
-    all_orgs = wa.organisms.get_organisms()
-    if 'error' in all_orgs:
-        all_orgs = []
-    all_orgs = [org['commonName'] for org in all_orgs]
+    if len(org_cn) == 0:
+        raise Exception("Organism Common Name not provided")
+
+    #for orgInd in org_cn:
+    #  noOrg = True
+    #  for eachOrg in all_orgs:
+    #    if eachOrg == orgInd:
+    #      noOrg = False
+    #      break
+    #  if noOrg:
+    #    raise Exception("Could not find organism %s" % orgInd)
+    #  else:
+    #    orgs = accessible_organisms(gx_user, [orgInd], 'READ')    
+    #    if not orgs:
+    #      raise Exception("You do not have write permission on this organism")
+
+    orgs = accessible_organisms(gx_user, org_cn, 'READ')    
+    if len(orgs) != len(org_cn):
+      raise Exception("Missing Read permission on one or more submitted organism")
 
     org_data = []
-    for org_cn in org_cns:
-        if org_cn not in all_orgs:
-            raise Exception("Could not find organism %s" % org_cn)
-
-        orgs = accessible_organisms(gx_user, [org_cn], 'READ')
-        if not orgs:
-            raise Exception("You do not have read permission on organism %s" % org_cn)
-
-        org = wa.organisms.show_organism(org_cn)
+    for org_ind in org_cn:
+        org = wa.organisms.show_organism(org_ind)
 
         if args.gff:
             uuid_gff = wa.io.write_downloadable(org['commonName'], 'GFF3', export_gff3_fasta=True, sequences=seqs)

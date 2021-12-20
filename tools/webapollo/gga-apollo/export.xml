@@ -36,7 +36,7 @@ python '$__tool_directory__/export.py'
 
 ]]></command>
   <inputs>
-    <expand macro="cn_or_guess" />
+    <expand macro="org_or_guess_multi" />
     <param name="get_gff" type="boolean" truevalue="yes" falsevalue="" checked='true' label="Retrieve GFF Annotations + Whole Genome" />
     <param name="get_seq" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve Genomic Sequences" />
     <param name="get_pep" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve Peptide Sequences" />
