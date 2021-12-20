@@ -65,7 +65,7 @@ if __name__ == '__main__':
     #    if not orgs:
     #      raise Exception("You do not have write permission on this organism")
 
-    orgs = accessible_organisms(gx_user, org_cn, 'READ')    
+    orgs, seqs = GuessCn(args, wa)    
     if len(orgs) != len(org_cn):
       raise Exception("Missing Read permission on one or more submitted organism")
 
