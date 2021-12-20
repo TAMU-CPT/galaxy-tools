@@ -25,7 +25,7 @@ python '$__tool_directory__/export.py'
     --fasta_cds '$fasta_cds'
 #end if
 #if str($get_cdna) == "yes":
-    --fasta_cdna '$fasta_cdna
+    --fasta_cdna '$fasta_cdna'
 #end if
 #if str($get_vcf) == "yes":
     --vcf '#vcf_out'
