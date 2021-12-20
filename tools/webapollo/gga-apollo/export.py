@@ -14,7 +14,7 @@ from webapollo import UserObj, handle_credentials
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Script to export data from Apollo via web services')
-    OrgOrGuess(parser)
+    CnOrGuess(parser)
     parser.add_argument('--gff', type=argparse.FileType('w'))
     parser.add_argument('--seq', type=argparse.FileType('w'))
     parser.add_argument('--fasta_pep', type=argparse.FileType('w'))
