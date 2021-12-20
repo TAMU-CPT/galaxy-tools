@@ -6,7 +6,7 @@ import json
 import time
 
 from apollo import accessible_organisms
-from apollo.util import CnOrGuess, GuessCn
+from apollo.util import CnOrGuess, GuessCn, GuessOrg
 
 from arrow.apollo import get_apollo_instance
 
