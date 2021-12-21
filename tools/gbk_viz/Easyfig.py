@@ -598,8 +598,8 @@ def shortToString(i):
 
 
 def longToString(i):
-    hi = (long(i) & 0x7FFF0000) >> 16
-    lo = long(i) & 0x0000FFFF
+    hi = (int(i) & 0x7FFF0000) >> 16
+    lo = int(i) & 0x0000FFFF
     return shortToString(lo) + shortToString(hi)
 
 
@@ -625,7 +625,7 @@ class Color(object):
         return "R:%d G:%d B:%d" % (self.red, self.grn, self.blu)
 
     def __hash__(self):
-        return (long(self.blu)) + (long(self.grn) << 8) + (long(self.red) << 16)
+        return (int(self.blu)) + (int(self.grn) << 8) + (int(self.red) << 16)
 
     def __eq__(self, other):
         return (self is other) or (self.toLong == other.toLong)
