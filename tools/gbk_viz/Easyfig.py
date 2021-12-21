@@ -12772,7 +12772,7 @@ def getArrows(filename, legname):
             )
             outlist.append(aninstance)
             multifastapos += len(i) - 1 + insertSize
-    theseq = theseq.replace("qqq", "n" * (len(theseq) / 500))
+    theseq = theseq.replace("qqq", "n" * int(len(theseq) / 500))
     if length == None and theseq != "":
         length = len(theseq)
     return length, outlist
@@ -18003,17 +18003,17 @@ To submit a bug please visit https://github.com/mjsull/Easyfig/issues.",
                 maxcut = len(seq)
             if mincut == 1 and maxcut == len(seq):
                 if getmultifa:
-                    seq = seq.replace("qqq", "n" * (len(seq) / 500))
+                    seq = seq.replace("qqq", "n" * int(len(seq) / 500))
                 outfile.write(seq)
             elif mincut < maxcut:
                 seq = seq[mincut - 1 : maxcut]
                 if getmultifa:
-                    seq = seq.replace("qqq", "n" * (len(seq) / 500))
+                    seq = seq.replace("qqq", "n" * int(len(seq) / 500))
                 outfile.write(seq)
             else:
                 seq = seq[mincut - 1 :] + seq[:maxcut]
                 if getmultifa:
-                    seq = seq.replace("qqq", "n" * (len(seq) / 500))
+                    seq = seq.replace("qqq", "n" * int(len(seq) / 500))
                 outfile.write(seq)
             if len(seq) == 0:
                 tkMessageBox.showerror(
@@ -19326,17 +19326,17 @@ def gbk2fasta(genbank, out, mincut, maxcut):
             maxcut = len(seq)
         if mincut == 1 and maxcut == len(seq):
             if getmultifa:
-                seq = seq.replace("qqq", "n" * (len(seq) / 500))
+                seq = seq.replace("qqq", "n" * int(len(seq) / 500))
             outfile.write(seq)
         elif mincut < maxcut:
             seq = seq[mincut - 1 : maxcut]
             if getmultifa:
-                seq = seq.replace("qqq", "n" * (len(seq) / 500))
+                seq = seq.replace("qqq", "n" * int(len(seq) / 500))
             outfile.write(seq)
         else:
             seq = seq[mincut - 1 :] + seq[:maxcut]
             if getmultifa:
-                seq = seq.replace("qqq", "n" * (len(seq) / 500))
+                seq = seq.replace("qqq", "n" * int(len(seq) / 500))
             outfile.write(seq)
         if len(seq) == 0:
             print ("There is no sequence in " + genbank + ".")
