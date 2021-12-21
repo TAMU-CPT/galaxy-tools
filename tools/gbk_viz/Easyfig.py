@@ -12948,20 +12948,20 @@ def draw(
         if i % 2 == 0:
             temp = getArrows(inputlist[i], legname)
             thirdlist = []
-            if minmaxlist[i / 2][1] == "Max":
+            if minmaxlist[int(i / 2)][1] == "Max":
                 if temp[0] == None:
-                    maxcut = featlengths[i / 2]
+                    maxcut = featlengths[int(i / 2)]
                 else:
                     maxcut = temp[0]
-                if minmaxlist[i / 2][0] == 1:
+                if minmaxlist[int(i / 2)][0] == 1:
                     minmaxopt = 0
                 else:
                     minmaxopt = 1
-                    mincut = minmaxlist[i / 2][0]
+                    mincut = minmaxlist[int(i / 2)][0]
             else:
-                mincut = minmaxlist[i / 2][0]
-                maxcut = minmaxlist[i / 2][1]
-                if minmaxlist[i / 2][0] < minmaxlist[i / 2][1]:
+                mincut = minmaxlist[int(i / 2)][0]
+                maxcut = minmaxlist[int(i / 2)][1]
+                if minmaxlist[int(i / 2)][0] < minmaxlist[int(i / 2)][1]:
                     minmaxopt = 1
                 else:
                     minmaxopt = 2
@@ -13002,7 +13002,7 @@ def draw(
                                 thirdlist.append(aninstance)
                     elif minmaxopt == 2:
                         if temp[0] == None:
-                            templength = featlengths[i / 2]
+                            templength = featlengths[int(i / 2)]
                         else:
                             templength = temp[0]
                         if type(j.start) == int:
@@ -13066,9 +13066,9 @@ def draw(
             thirdlist.sort(key=lambda ii: ii.length(), reverse=True)
             if minmaxopt == 0:
                 if temp[0] == None:
-                    secondlist.append((featlengths[i / 2], thirdlist))
-                    if featlengths[i / 2] > maxlength:
-                        maxlength = featlengths[i / 2]
+                    secondlist.append((featlengths[int(i / 2)], thirdlist))
+                    if featlengths[int(i / 2)] > maxlength:
+                        maxlength = featlengths[int(i / 2)]
                 else:
                     secondlist.append((temp[0], thirdlist))
                     if temp[0] > maxlength:
@@ -13079,7 +13079,7 @@ def draw(
                     maxlength = maxcut - mincut + 1
             elif minmaxopt == 2:
                 if temp[0] == None:
-                    templength = featlengths[i / 2]
+                    templength = featlengths[int(i / 2)]
                 else:
                     templength = temp[0]
                 secondlist.append((templength - mincut + maxcut + 1, thirdlist))
@@ -13128,7 +13128,7 @@ def draw(
                     maxbitscore = j[1] - j[0]
             if len(secondlist[i]) == 0:
                 theQstart = 0
-            elif reverseList[i / 2]:
+            elif reverseList[int(i / 2)]:
                 theQstart = secondlist[i - 1][0] - qend
             else:
                 theQstart = qstart
@@ -13153,8 +13153,8 @@ def draw(
             templist.append(i - theminblast)
         blastmatch = templist
         for i in range(0, len(secondlist) + 1, 2):
-            if secondlist[i][0] + blastmatch[i / 2] > maxlength:
-                maxlength = secondlist[i][0] + blastmatch[i / 2]
+            if secondlist[i][0] + blastmatch[int(i / 2)] > maxlength:
+                maxlength = secondlist[i][0] + blastmatch[int(i / 2)]
     leghei = 0
     if legend == "Single column" or legend == "Two columns":
         legendArrows = set()
@@ -13172,7 +13172,7 @@ def draw(
                             tempjstart = j.start
                         else:
                             tempjstart = j.start[0]
-                        legendList[i / 2].append(
+                        legendList[int(i / 2)].append(
                             (j.name, j.colour, featDict[j.type][0], tempjstart)
                         )
         if legend == "Single column":
@@ -13812,8 +13812,8 @@ def draw(
         # draws the blast figure
         if i % 2 == 0:
             if aln == "best blast":
-                shifter = blastmatch[i / 2]
-            genrev1 = reverseList[i / 2]
+                shifter = blastmatch[int(i / 2)]
+            genrev1 = reverseList[int(i / 2)]
             ymod = totalheight - (height1 * i / 2 + height2 * i / 2) - height1
             if graphit != None and len(thearray) > 1:
                 ymod += (gheight + 2 * ggap) * (len(thearray) - i / 2 - 1)
@@ -14078,7 +14078,7 @@ def draw(
                 theColor = Color(r1, r2, r3)
                 bmp.setPenColor(theColor)
                 if aln == "best blast":
-                    shifter = blastmatch[i / 2]
+                    shifter = blastmatch[int(i / 2)]
                 if genrev1:
                     x1e = convertPosR(length1, maxlength, width, qStart, aln)
                     x1s = convertPosR(length1, maxlength, width, qEnd, aln)
@@ -14185,20 +14185,20 @@ def drawsvg(
         if i % 2 == 0:
             temp = getArrows(inputlist[i], legname)
             thirdlist = []
-            if minmaxlist[i / 2][1] == "Max":
+            if minmaxlist[int(i / 2)][1] == "Max":
                 if temp[0] == None:
-                    maxcut = featlengths[i / 2]
+                    maxcut = featlengths[int(i / 2)]
                 else:
                     maxcut = temp[0]
-                if minmaxlist[i / 2][0] == 1:
+                if minmaxlist[int(i / 2)][0] == 1:
                     minmaxopt = 0
                 else:
                     minmaxopt = 1
-                    mincut = minmaxlist[i / 2][0]
+                    mincut = minmaxlist[int(i / 2)][0]
             else:
-                mincut = minmaxlist[i / 2][0]
-                maxcut = minmaxlist[i / 2][1]
-                if minmaxlist[i / 2][0] < minmaxlist[i / 2][1]:
+                mincut = minmaxlist[int(i / 2)][0]
+                maxcut = minmaxlist[int(i / 2)][1]
+                if minmaxlist[int(i / 2)][0] < minmaxlist[int(i / 2)][1]:
                     minmaxopt = 1
                 else:
                     minmaxopt = 2
@@ -14239,7 +14239,7 @@ def drawsvg(
                                 thirdlist.append(aninstance)
                     elif minmaxopt == 2:
                         if temp[0] == None:
-                            templength = featlength[i / 2]
+                            templength = featlength[int(i / 2)]
                         else:
                             templength = temp[0]
                         if type(j.start) == int:
@@ -14303,9 +14303,9 @@ def drawsvg(
             thirdlist.sort(key=lambda i: i.length(), reverse=True)
             if minmaxopt == 0:
                 if temp[0] == None:
-                    secondlist.append((featlengths[i / 2], thirdlist))
-                    if featlengths[i / 2] > maxlength:
-                        maxlength = featlengths[i / 2]
+                    secondlist.append((featlengths[int(i / 2)], thirdlist))
+                    if featlengths[int(i / 2)] > maxlength:
+                        maxlength = featlengths[int(i / 2)]
                 else:
                     secondlist.append((temp[0], thirdlist))
                     if temp[0] >= maxlength:
@@ -14318,7 +14318,7 @@ def drawsvg(
                     maxlength = maxcut - mincut + 1
             elif minmaxopt == 2:
                 if temp[0] == None:
-                    templength = featlengths[i / 2]
+                    templength = featlengths[int(i / 2)]
                 else:
                     templength = temp[0]
                 secondlist.append((templength - mincut + maxcut + 1, thirdlist))
@@ -14367,7 +14367,7 @@ def drawsvg(
                     maxbitscore = j[1] - j[0]
             if len(secondlist[i]) == 0:
                 theQstart = 0
-            elif reverseList[i / 2]:
+            elif reverseList[int(i / 2)]:
                 theQstart = secondlist[i - 1][0] - qend
             else:
                 theQstart = qstart
@@ -14392,8 +14392,8 @@ def drawsvg(
             templist.append(i - theminblast)
         blastmatch = templist
         for i in range(0, len(secondlist) + 1, 2):
-            if secondlist[i][0] + blastmatch[i / 2] > maxlength:
-                maxlength = secondlist[i][0] + blastmatch[i / 2]
+            if secondlist[i][0] + blastmatch[int(i / 2)] > maxlength:
+                maxlength = secondlist[i][0] + blastmatch[int(i / 2)]
     fighei = 0
     if legend == "Single column" or legend == "Two columns":
         legendArrows = set()
@@ -14411,7 +14411,7 @@ def drawsvg(
                             tempjstart = j.start
                         else:
                             tempjstart = j.start[0]
-                        legendList[i / 2].append(
+                        legendList[int(i / 2)].append(
                             (j.name, j.colour, featDict[j.type][0], tempjstart)
                         )
         if legend == "Single column":
@@ -14966,8 +14966,8 @@ def drawsvg(
         # draws the blast figure
         if i % 2 == 0:
             if aln == "best blast":
-                shifter = blastmatch[i / 2]
-            genrev1 = reverseList[i / 2]
+                shifter = blastmatch[int(i / 2)]
+            genrev1 = reverseList[int(i / 2)]
             ymod = height1 * i / 2 + height2 * i / 2
             if graphit != None:
                 ymod += (gheight + 2 * ggap) * (min([len(thearray), i / 2 + 1]))
@@ -15256,7 +15256,7 @@ def drawsvg(
                     r2 = int(minblastc[1] * (1 - ratio) + maxblastc[1] * ratio)
                     r3 = int(minblastc[2] * (1 - ratio) + maxblastc[2] * ratio)
                 if aln == "best blast":
-                    shifter = blastmatch[i / 2]
+                    shifter = blastmatch[int(i / 2)]
                 if genrev1:
                     x1e = convertPosR(length1, maxlength, width, qStart, aln)
                     x1s = convertPosR(length1, maxlength, width, qEnd, aln)
