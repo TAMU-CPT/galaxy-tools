@@ -22,7 +22,7 @@ import sys
 
 
 def colorstr(rgb):
-    return "#%x%x%x" % (rgb[0] / 16, rgb[1] / 16, rgb[2] / 16)
+    return "#%x%x%x" % (int(rgb[0] / 16), int(rgb[1] / 16), int(rgb[2] / 16))
 
 
 def binar(s):
