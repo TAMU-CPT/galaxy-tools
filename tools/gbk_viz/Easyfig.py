@@ -13132,7 +13132,7 @@ def draw(
                 theQstart = secondlist[i - 1][0] - qend
             else:
                 theQstart = qstart
-            if reverseList[(i + 1) / 2]:
+            if reverseList[int((i + 1) / 2)]:
                 if len(secondlist[i]) == 0:
                     theRstart = 0
                 elif rstart < rend:
@@ -14034,7 +14034,7 @@ def draw(
                             x1, x2 = x3, x4
         else:
             # draws teh blast hits
-            genrev2 = reverseList[(i + 1) / 2]
+            genrev2 = reverseList[int((i + 1) / 2)]
             length1 = secondlist[i - 1][0]
             length2 = secondlist[i + 1][0]
             ymod = (
@@ -14086,7 +14086,7 @@ def draw(
                     x1s = convertPos(length1, maxlength, width, qStart, aln)
                     x1e = convertPos(length1, maxlength, width, qEnd, aln)
                 if aln == "best blast":
-                    shifter = blastmatch[(i + 1) / 2]
+                    shifter = blastmatch[int((i + 1) / 2)]
                 if genrev2 and rStart < rEnd:
                     x2e = convertPosR(length2, maxlength, width, rStart, aln)
                     x2s = convertPosR(length2, maxlength, width, rEnd, aln)
@@ -14371,7 +14371,7 @@ def drawsvg(
                 theQstart = secondlist[i - 1][0] - qend
             else:
                 theQstart = qstart
-            if reverseList[(i + 1) / 2]:
+            if reverseList[int((i + 1) / 2)]:
                 if len(secondlist[i]) == 0:
                     theRstart = 0
                 elif rstart < rend:
@@ -15219,7 +15219,7 @@ def drawsvg(
                             x1, x2 = x3, x4
         else:
             # draws teh blast hits
-            genrev2 = reverseList[(i + 1) / 2]
+            genrev2 = reverseList[int((i + 1) / 2)]
             length1 = secondlist[i - 1][0]
             length2 = secondlist[i + 1][0]
             ymod = (height1 * (i - 1) / 2 + height2 * (i - 1) / 2) - 1 + height1
@@ -15264,7 +15264,7 @@ def drawsvg(
                     x1s = convertPos(length1, maxlength, width, qStart, aln)
                     x1e = convertPos(length1, maxlength, width, qEnd, aln)
                 if aln == "best blast":
-                    shifter = blastmatch[(i + 1) / 2]
+                    shifter = blastmatch[int((i + 1) / 2)]
                 if genrev2 and rStart < rEnd:
                     x2e = convertPosR(length2, maxlength, width, rStart, aln)
                     x2s = convertPosR(length2, maxlength, width, rEnd, aln)
