@@ -78,7 +78,7 @@ def align_sequences(SequenceList):
     t_fa = tempfile.NamedTemporaryFile(prefix="blastxmfa.", delete=False)
     t_aln = tempfile.NamedTemporaryFile(prefix="blastxmfa.", delete=False)
     # Write fasta to file
-    SeqIO.write(SequenceList, t_fa, "fasta")
+    SeqIO.write(SequenceList, str.encode(t_fa.name), "fasta")
     # Flush & close
     t_fa.flush()
     t_fa.close()
