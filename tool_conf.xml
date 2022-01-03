@@ -229,6 +229,7 @@
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/interproscan-5.XX.xml"/>
         <label id="0fbd2d78-ab6e-4807-80b2-41eba62bd28a" text="Nucleotide"/>
         <label id="5d31897d-1b58-4968-ae16-370fd5cd4f8d" text="Motif Tools"/>
+	<tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/bprom.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/pattern_finder.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/motif_locator.xml"/>
         
