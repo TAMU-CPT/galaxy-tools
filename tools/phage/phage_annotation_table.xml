@@ -22,7 +22,7 @@ $gff3_data
 #if $gaf_data:
 --gafData "$gaf_data"
 #end if
-
+$checkSubfeats
 > $output]]></command>
     <inputs>
         <expand macro="gff3_input" />
@@ -78,6 +78,7 @@ $gff3_data
             <option value="gaf_owner" selected="false">GAF Owner</option>
             <option value="gaf_with_or_from" selected="false">GAF with_or_from</option>
         </param>
+        <param name="checkSubfeats" label="Search sub-features for fields if gene does not define them" type="boolean" truevalue="--searchSubs" falsevalue=""/>
         <param label="Report Format" type="select" name="report_format">
             <option value="phageqc_report_annotation_table.html" selected="true">HTML Table</option>
             <option value="phageqc_report_annotation_table.tsv">Tabular (Excel Compatible) Table</option>

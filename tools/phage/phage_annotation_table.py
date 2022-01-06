@@ -32,8 +32,29 @@ def genes_all(feature_list, feature_type=["gene"], sort=False):
         for x in data:
             yield x
 
+def checkSubs(feature, qualName):
+    subFeats = []
+    res = ""
+    subFeats = feature.sub_features
+    while (len(subFeats) > 0):
+      for feat in subFeats:
+        for i in feat.qualifiers.keys():
+          for j in qualName:
+            if i == j:
+              if res == "":
+                res = feat.qualifiers[i][0]
+              else:
+                res += "; " + feat.qualifiers[i][0]
+      if res != "":
+        return res 
+      tempFeats = []
+      for feat in subFeats: # Should be breadth-first results
+        for x in feat.sub_features:
+          tempFeats.append(x)
+      subFeats = tempFeats
+    return res  
 
-def annotation_table_report(record, types, wanted_cols, gaf_data):
+def annotation_table_report(record, types, wanted_cols, gaf_data, searchSubs):
     getTypes = []
     for x in [y.strip() for y in types.split(",")]:
         getTypes.append(x)
@@ -41,6 +62,7 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
     sorted_features = list(genes_all(record.features, getTypes, sort=True))
     if wanted_cols is None or len(wanted_cols.strip()) == 0:
         return [], []
+    useSubs = searchSubs
 
     def rid(record, feature):
         """Organism ID
@@ -64,6 +86,10 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
           for y in feature.qualifiers.keys():
             if x == y:
               return feature.qualifiers[x][0]
+        if useSubs:
+          res = checkSubs(feature, ["Name", "name"])
+          if res != "":
+            return res 
         return "None"
     def start(record, feature):
         """Boundary
@@ -102,6 +128,10 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
           for y in feature.qualifiers.keys():
             if x == y:
               return feature.qualifiers[x][0]
+        if useSubs:
+          res = checkSubs(feature, ["Note", "note", "Notes", "notes"])
+          if res != "":
+            return res 
         return "None"
 
     def date_created(record, feature):
@@ -110,11 +140,25 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
 
     def date_last_modified(record, feature):
         """Last Modified"""
-        return feature.qualifiers.get("date_last_modified", ["None"])[0]
+        res = feature.qualifiers.get("date_last_modified", ["None"])[0]
+        if res != "None":
+          return res
+        if useSubs:
+          res = checkSubs(feature, ["date_last_modified"])
+          if res != "":
+            return res
+        return "None"
 
     def description(record, feature):
         """Description"""
-        return feature.qualifiers.get("description", ["None"])[0]
+        res = feature.qualifiers.get("description", ["None"])[0]
+        if res != "None":
+          return res
+        if useSubs:
+          res = checkSubs(feature, ["description"])
+          if res != "":
+            return res
+        return "None"
 
     def owner(record, feature):
         """Owner
@@ -125,6 +169,10 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
           for y in feature.qualifiers.keys():
             if x == y:
               return feature.qualifiers[x][0]
+        if useSubs:
+          res = checkSubs(feature, ["Owner", "owner"])
+          if res != "":
+            return res 
         return "None"
 
     def product(record, feature):
@@ -137,6 +185,10 @@ def annotation_table_report(record, types, wanted_cols, gaf_data):
           for y in feature.qualifiers.keys():
             if x == y:
               return feature.qualifiers[x][0]
+        if useSubs:
+          res = checkSubs(feature, ["product", "Product"])
+          if res != "":
+            return res 
         return "None"
 
     def note(record, feature):
@@ -475,6 +527,7 @@ def evaluate_and_report(
     reportTemplateName="phage_annotation_validator.html",
     annotationTableCols="",
     gafData=None,
+    searchSubs = False,
 ):
     """
     Generate our HTML evaluation of the genome
@@ -493,7 +546,7 @@ def evaluate_and_report(
             record.id = record.id.replace(".", "-")
         log.info("Producing an annotation table for %s" % record.id)
         annotation_table_data, annotation_table_col_names = annotation_table_report(
-            record, types, annotationTableCols, gaf
+            record, types, annotationTableCols, gaf, searchSubs
         )
         at_table_data.append((record, annotation_table_data))
         # break
@@ -545,6 +598,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--gafData", help="CPT GAF-like table", type=argparse.FileType("r")
+    )
+    parser.add_argument(
+        "--searchSubs", help="Attempt to populate fields from sub-features if qualifier is empty", action="store_true"
     )
 
     args = parser.parse_args()
