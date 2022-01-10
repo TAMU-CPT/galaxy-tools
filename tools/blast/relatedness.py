@@ -3,15 +3,39 @@ import sys
 import argparse
 import json
 import logging
+from Bio.Blast import NCBIXML
+
 
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
 
-def parse_blast(blast):
+def parse_blast(blast, isXML = False):
     res = []
     finalRes = []
-    for line in blast:
+    if isXML:
+      for iter_num, blast_record in enumerate(NCBIXML.parse(blast), 1):
+        for alignment in blast_record.alignments:
+            tempID = alignment.hit_id[alignment.hit_id.find("gb|") + 3:]
+            tempID = tempID[:tempID.find("|")]
+            tempDesc = alignment.title
+            while tempDesc.find("|") >= 0:
+              tempDesc = tempDesc[tempDesc.find("|") + 1:]
+            tempDesc = tempDesc.strip()
+            tempID = tempID.strip()
+            for hsp in alignment.hsps:
+              line = [str(blast_record.query)]
+              line.append(str(hsp.align_length))
+              line.append(str(hsp.identities))
+              line.append(str(blast_record.query_length)) 
+              line.append(str(alignment.length))
+              line.append(tempDesc)
+              line.append(tempID)
+              line.append("0000000")
+              #print(line)
+              finalRes.append(line)        
+    else:
+      for line in blast:
         taxSplit = []
         preTaxSplit = line.strip("\n").split("\t")
         for tax in preTaxSplit[-1].split(";"):
@@ -20,7 +44,7 @@ def parse_blast(blast):
                 shallowCopy.append(preTaxSplit[x])
             shallowCopy[-1] = tax
             res.append(shallowCopy)
-    for line in res:
+      for line in res:
         for access in line[6].split(";"):
             shallowCopy = []
             for x in range(len(line)):
@@ -36,7 +60,7 @@ def parse_blast(blast):
 def add_dice(blast):
     res = []
     for data in blast:
-        dice = 2 * int(data[2]) / (float(data[3]) + float(data[4]))
+        dice = (2 * float(data[2])) / (float(data[3]) + float(data[4]))
         res.append(data + [dice])
     return res
 
@@ -240,6 +264,7 @@ if __name__ == "__main__":
     parser.add_argument("--canonical", action="store_true")
     parser.add_argument("--hits", type=int, default=5)
     parser.add_argument("--noFilter", action="store_true")
+    parser.add_argument("--xmlMode", action="store_true")
 
     args = parser.parse_args()
 
@@ -263,11 +288,12 @@ if __name__ == "__main__":
 
     data = []  # Reformatting to list rather than generator
 
-    data = parse_blast(args.blast)
-    nameRec = data[0][0]
+    data = parse_blast(args.blast, args.xmlMode)
+    nameRec = data[0][0] 
     data = make_num(data)
     data = add_dice(data)
     data = bundle_dice(data)
+     
     # data = filter_dice(data, threshold=0.0)
     # data = important_only(data, splitId)
 
@@ -291,32 +317,54 @@ if __name__ == "__main__":
             "Top %d matches for BLASTn results of %s\t\t\t\t\t\t\n"
             % (args.hits, nameRec)
         )
-        sys.stdout.write(
+        if not args.xmlMode: 
+          sys.stdout.write(
             "TaxID\tName\tAccessions\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"
-        )
+          )
+        else:
+          sys.stdout.write(
+            "Name\tAccessions\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"
+          )
         ind = 0
         for out in data:
             if ind >= args.hits:
                 break
             ind += 1
-            sys.stdout.write(
+            if not args.xmlMode: 
+              sys.stdout.write(
                 "%s\t%s\t%s\t%s\t%s\t%s\t%.4f\n"
                 % (out[7], out[5], out[6], out[4], out[9], out[2], out[8])
-            )
+              )
+            else:
+              sys.stdout.write(
+                "%s\t%s\t%s\t%s\t%s\t%.4f\n"
+                % (out[5], out[6], out[4], out[9], out[2], out[8])
+              )
     else:
         sys.stdout.write(
             "Top %d matches for BLASTn results of %s\t\t\t\t\t\n"
             % (args.hits, data[0][0])
         )
-        sys.stdout.write(
+        if not args.xmlMode: 
+          sys.stdout.write(
             "TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"
-        )
+          )
+        else: 
+          sys.stdout.write(
+            "Name\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"
+          )
         ind = 0
         for out in data:
             if ind >= args.hits:
                 break
             ind += 1
-            sys.stdout.write(
+            if not args.xmlMode:
+              sys.stdout.write(
                 "%s\t%s\t%s\t%s\t%s\t%.4f\n"
                 % (out[7], out[5], out[4], out[9], out[1], out[8])
-            )
+              )
+            else:
+              sys.stdout.write(
+                "%s\t%s\t%s\t%s\t%.4f\n"
+                % (out[5], out[4], out[9], out[1], out[8])
+              )
