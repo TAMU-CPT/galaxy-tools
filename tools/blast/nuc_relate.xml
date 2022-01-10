@@ -8,15 +8,29 @@
 	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
 $__tool_directory__/relatedness.py
-@BLAST_TSV@
+${blastIn.blast}
 $__tool_directory__/TaxID_List.txt
 $access
 $filter
 --hits $hits
+#if $blastIn.blastType == "XML":
+--xmlMode
+#end if
 > $accession_list
 </command>
 	<inputs>
-	<expand macro="blast_tsv" />
+	<conditional name="blastIn">
+		<param name="blastType" type="select" label="Blastn Input Type">
+                  <option value="XML" selected="true">Blast XML</option>
+     		  <option value="TSV">Blast Tabular</option>
+                </param>
+		<when value="XML">
+			<param label="Blastn Results (Blast XML)" name="blast" type="data" format="blastxml"/>
+		</when>
+		<when value="TSV">
+			<param label="Blastn Results" name="blast" type="data" format="tsv, tabular"/>
+		</when>
+        </conditional>
                 <param label = 'Number of results to return' name="hits" type="integer" size="15" value="5"/>
                 <param name="access" type="boolean" truevalue="--access" falsevalue="" label="Return Accession Numbers"/>
                 <param name="filter" type="boolean" truevalue="" falsevalue="--noFilter" checked="true" label="Automatically filter by phage Taxonomy IDs"/>

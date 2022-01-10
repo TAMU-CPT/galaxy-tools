@@ -31,9 +31,23 @@ def parse_blast(blast, isXML = False):
               line.append(str(alignment.length))
               line.append(tempDesc)
               line.append(tempID)
-              line.append("0000000")
+              #line.append("0000000")
               #print(line)
-              finalRes.append(line)        
+              res.append(line)
+      blast.seek(0)
+      resInd = -1
+      taxLine = blast.readline()
+      while taxLine: 
+        if "<Hit>" in taxLine:
+          resInd += 1
+          taxSlice = ""
+        elif "<taxid>" in taxLine:
+          taxSlice = taxLine[taxLine.find("<taxid>") + 7:taxLine.find("</taxid>")]
+          finalRes.append(res[resInd])
+          finalRes[-1].append(taxSlice)
+          #print(finalRes[-1])
+        taxLine = blast.readline()
+      return finalRes
     else:
       for line in blast:
         taxSplit = []
@@ -317,54 +331,34 @@ if __name__ == "__main__":
             "Top %d matches for BLASTn results of %s\t\t\t\t\t\t\n"
             % (args.hits, nameRec)
         )
-        if not args.xmlMode: 
-          sys.stdout.write(
+        sys.stdout.write(
             "TaxID\tName\tAccessions\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"
-          )
-        else:
-          sys.stdout.write(
-            "Name\tAccessions\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"
-          )
+        )
         ind = 0
         for out in data:
             if ind >= args.hits:
                 break
             ind += 1
-            if not args.xmlMode: 
-              sys.stdout.write(
+            sys.stdout.write(
                 "%s\t%s\t%s\t%s\t%s\t%s\t%.4f\n"
                 % (out[7], out[5], out[6], out[4], out[9], out[2], out[8])
-              )
-            else:
-              sys.stdout.write(
-                "%s\t%s\t%s\t%s\t%s\t%.4f\n"
-                % (out[5], out[6], out[4], out[9], out[2], out[8])
-              )
+            )
+            
     else:
         sys.stdout.write(
             "Top %d matches for BLASTn results of %s\t\t\t\t\t\n"
             % (args.hits, data[0][0])
         )
-        if not args.xmlMode: 
-          sys.stdout.write(
+        sys.stdout.write(
             "TaxID\tName\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"
-          )
-        else: 
-          sys.stdout.write(
-            "Name\tSubject Length\tNumber of HSPs\tTotal Aligned Length\tDice Score\n"
-          )
+        )
         ind = 0
         for out in data:
             if ind >= args.hits:
                 break
             ind += 1
-            if not args.xmlMode:
-              sys.stdout.write(
+            sys.stdout.write(
                 "%s\t%s\t%s\t%s\t%s\t%.4f\n"
                 % (out[7], out[5], out[4], out[9], out[1], out[8])
-              )
-            else:
-              sys.stdout.write(
-                "%s\t%s\t%s\t%s\t%.4f\n"
-                % (out[5], out[4], out[9], out[1], out[8])
-              )
+            )
+            
