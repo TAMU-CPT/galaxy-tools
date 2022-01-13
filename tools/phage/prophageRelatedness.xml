@@ -33,7 +33,6 @@ ${blastIn.blast}
 			<param label="Blastn Results (Blast 25-Column Tabular)" name="blast" type="data" format="tsv, tabular"/>
 		</when>
     </conditional>
-    <param label="Blastn Results (Blast XML)" name="blast" type="data" format="blastxml, tsv, tabular"/>
     <param label="Cluster Window" name="padding" type="text" value="2.0"
         help="Nucleotide window for HSPs to form a cluster (Multiplicative of length of query sequence)"/>
     <param label="Score cutoff" name="cutoff" type="text" value=".3"
