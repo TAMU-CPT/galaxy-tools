@@ -3,15 +3,47 @@ import sys
 import argparse
 import json
 import logging
+from Bio.Blast import NCBIXML
 
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
-
-def parse_blast(blast):
-    for line in blast:
-        yield line.strip("\n").split("\t")
-
+def parse_blast(blast, isXML = False):
+    res = []
+    finalRes = []
+    if isXML:
+      for iter_num, blast_record in enumerate(NCBIXML.parse(blast), 1):
+        for alignment in blast_record.alignments:
+            tempID = alignment.hit_id[alignment.hit_id.find("gb|") + 3:]
+            tempID = tempID[:tempID.find("|")]
+            tempDesc = alignment.title
+            while tempDesc.find("|") >= 0:
+              tempDesc = tempDesc[tempDesc.find("|") + 1:]
+            tempDesc = tempDesc.strip()
+            tempID = tempID.strip()
+            #for hsp in alignment.hsps:
+            line = [str(blast_record.query)[:str(blast_record.query).find("[")].strip()]
+            line.append(alignment.hit_id)
+            line.append(tempDesc)
+            line.append(alignment.accession)
+            res.append(line)
+      blast.seek(0)
+      resInd = -1
+      taxLine = blast.readline()
+      while taxLine: 
+        if "<Hit>" in taxLine:
+          resInd += 1
+          taxSlice = ""
+        elif "<taxid>" in taxLine:
+          taxSlice = taxLine[taxLine.find("<taxid>") + 7:taxLine.find("</taxid>")]
+          finalRes.append(res[resInd])
+          finalRes[-1].append(taxSlice)
+        taxLine = blast.readline()
+      return finalRes
+    else:
+      for line in blast:
+        finalRes.append(line.strip("\n").split("\t"))
+    return finalRes
 
 def with_dice(blast):
     for data in blast:
@@ -137,7 +169,7 @@ if __name__ == "__main__":
     parser.add_argument("--noFilter", action="store_true")
     #parser.add_argument("--title", action="store_true") # Add when ready to update XML after semester
     parser.add_argument("--hits", type=int, default=5)
-    
+    parser.add_argument("--xmlMode", action="store_true")    
 
     args = parser.parse_args()
 
@@ -154,11 +186,6 @@ if __name__ == "__main__":
         sciName.append(line[1])
         line = phageDb.readline()
 
-    line = args.blast.readline()
-    line = line.split("\t")
-    nameRec = line[0]
-    args.blast.seek(0)
-
     if args.protein:
         splitId = split_identifiers_prot
         # phageNameLookup = {k['source'].rstrip('.'): k['id'] for k in phageDb}
@@ -169,7 +196,7 @@ if __name__ == "__main__":
         splitId = split_identifiers_nucl
         # phageNameLookup = {k['desc'].rstrip('.'): k['id'] for k in phageDb}
 
-    data = parse_blast(args.blast)
+    data = parse_blast(args.blast, args.xmlMode)
     # data = with_dice(data)
     # data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
@@ -187,6 +214,7 @@ if __name__ == "__main__":
     
     counts, accessions = scoreMap(listify)
     
+    nameRec = listify[0][0]
     sys.stdout.write(
             "Top %d matches for BLASTp results of %s\n"
             % (args.hits, nameRec)
