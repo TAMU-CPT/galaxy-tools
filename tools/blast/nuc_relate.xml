@@ -28,7 +28,7 @@ $filter
 			<param label="Blastn Results (Blast XML)" name="blast" type="data" format="blastxml"/>
 		</when>
 		<when value="TSV">
-			<param label="Blastn Results" name="blast" type="data" format="tsv, tabular"/>
+			<param label="Blastn Results" name="blast" type="data" format="tsv,tabular"/>
 		</when>
         </conditional>
                 <param label = 'Number of results to return' name="hits" type="integer" size="15" value="5"/>
