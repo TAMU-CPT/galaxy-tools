@@ -242,6 +242,17 @@ if __name__ == '__main__':
                                                         administrate=False, write=True, read=True,
                                                         export=True)
         # Get expected metadata for organism since AllOrganism  output is suppressed from add_organism
-        data = wa.organisms.show_organism(org_cn)
+        time.sleep(30)
 
+        #data = wa.organisms.show_organism(org_cn)
+    wa = get_apollo_instance()
+
+    # User must have an account, if not, create itorg_cn
+    gx_user = UserObj(**wa.users._assert_or_create_user(args.email))
+    handle_credentials(gx_user)
+
+    org_cn = GuessOrg(args, wa)
+    if isinstance(org_cn, list):
+        org_cn = org_cn[0]
+    data = wa.organisms.show_organism(org_cn)
     print(json.dumps([data], indent=2))
