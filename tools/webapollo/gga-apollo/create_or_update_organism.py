@@ -250,7 +250,8 @@ if __name__ == '__main__':
     # User must have an account, if not, create itorg_cn
     gx_user = UserObj(**wa.users._assert_or_create_user(args.email))
     handle_credentials(gx_user)
-
+    if args.org_json:
+      args.org_json.seek(0)
     org_cn = GuessOrg(args, wa)
     if isinstance(org_cn, list):
         org_cn = org_cn[0]
