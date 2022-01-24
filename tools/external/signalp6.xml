@@ -6,22 +6,19 @@ signalp6
 -org "$organism_group"
 -od ./subDir
 --format png
+--mode slow-sequential
 -ff $infile ;
 cat ./subDir/*.png > pngOut ;
 cat ./subDir/prediction_results.txt > tsvOut ;
 cat ./subDir/output.gff3 > gffOut ;
 </command>
 	<inputs>
-		<param value="" name="infile" optional="False" type="data" label="Input Fasta File" />
-        <param value="" name="organism_group" optional="False" type="select" label="Organism Group">
+	  <param value="" name="infile" optional="False" type="data" label="Input Fasta File" />
+       	  <param value="" name="organism_group" optional="False" type="select" label="Organism Group">
 			<option value="euk">Eukaryotes</option>
 			<option value="other">Other</option>
-        </param>
-        <conditional name="gffOption">
-            <param label="Generate a GFF output using SignalP's GFF option" name="gffOut" type="boolean" truevalue="-gff3" falsevalue="" checked="true"/>
-            <when value="-gff3"/>
-        </conditional>
-	</inputs>
+      	  </param>
+        </inputs>
 	<outputs>
         <data format="tsv" name="tsvOut" label="SignalP TSV Output" />
         <data format="gff3" name="gffOut" label="SignalP GFF Output" />
