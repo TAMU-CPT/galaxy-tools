@@ -226,6 +226,7 @@
         <label id="0ff1e2c8-be52-4fd8-a164-2169a236ba3d" text="Protein"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/tmhmm.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/signalp.xml"/>
+        <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/signalp6.xml"/>
         <tool file="/galaxy/tools/cpt2/galaxy-tools/tools/external/interproscan-5.XX.xml"/>
         <label id="0fbd2d78-ab6e-4807-80b2-41eba62bd28a" text="Nucleotide"/>
         <label id="5d31897d-1b58-4968-ae16-370fd5cd4f8d" text="Motif Tools"/>
