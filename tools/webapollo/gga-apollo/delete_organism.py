@@ -4,6 +4,7 @@ from __future__ import print_function
 import argparse
 import logging
 import os
+import sys
 
 from apollo import accessible_organisms
 from apollo.util import GuessOrg, OrgOrGuess
