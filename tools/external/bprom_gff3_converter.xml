@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<tool id="edu.tamu.cpt.external.BPROM-gff3" name="Convert BPROM results to GFF" version="22.1.0.0">
+  <description></description>
+  <macros>
+    <import>macros.xml</import>
+    <import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/bprom_gff3_converter.py
+-f $txtIn
+> $gffOut]]></command>
+  <inputs>
+    <param name="txtIn" type="data" label="BPROM Results" format="txt"/>
+  </inputs>
+  <outputs>
+    <data format="gff3" name="gffOut" label="BPROM to GFF Results"/>
+  </outputs>
+  <tests/>
+  <help><![CDATA[
+**What it does**
+
+Converts BPROM text output to GFF3 format
+      ]]></help>
+	<citations>
+	                <citation type="bibtex">
+			@unpublished{galaxyTools,
+				author = {J. Chamblee},
+				title = {CPT Galaxy Tools},
+				year = {2022},
+				note = {https://github.com/tamu-cpt/galaxy-tools/}
+			}
+                        </citation>
+        </citations>
+</tool>
