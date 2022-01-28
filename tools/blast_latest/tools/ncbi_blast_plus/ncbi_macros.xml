@@ -8,7 +8,7 @@
     <xml name="preamble">
         <requirements>
             <requirement type="binary">@BINARY@</requirement>
-            <requirement type="package" version="2.9.0">blast+</requirement>
+            <requirement type="package" version="2.12.0">blast+</requirement>
             <requirement type="package" version="0.5.0">taxonkit</requirement>
         </requirements>
         <version_command>@BINARY@ -version</version_command>
