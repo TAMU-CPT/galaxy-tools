@@ -75,7 +75,10 @@ if __name__ == '__main__':
       if noOrg:
         raise Exception("Could not find organism %s" % orgInd)
       else:
-        orgs = accessible_organisms(gx_user, orgInd, 'WRITE')    
+        orgs = accessible_organisms(gx_user, orgInd, 'WRITE')
+        print(orgs)
+        print(gx_user)
+        print(orgInd)
         if not orgs:
           raise Exception("You do not have write permission on this organism")
 
