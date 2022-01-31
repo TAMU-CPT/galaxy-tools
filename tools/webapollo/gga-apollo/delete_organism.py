@@ -76,6 +76,7 @@ if __name__ == '__main__':
         raise Exception("Could not find organism %s" % orgInd)
       else:
         orgs = accessible_organisms(gx_user, orgInd, 'WRITE')
+        print('here confirmed')
         print(orgs)
         print(gx_user)
         print(orgInd)
