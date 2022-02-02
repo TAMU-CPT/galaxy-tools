@@ -72,10 +72,34 @@ if __name__ == '__main__':
     sys.stderr.write("CN List: " + str(org_cn))
             
 
+<<<<<<< HEAD
     # all_orgs = [org['commonName'] for org in all_orgs]
     permdOrgs = accessible_organisms(gx_user, org_cn, 'WRITE')    
     if len(permdOrgs) != len(org_cn):
           raise Exception("You do not have write permission on one or more of the supplied organisms")
+=======
+    all_orgs = wa.organisms.get_organisms()
+    if 'error' in all_orgs:
+        all_orgs = []
+    all_orgs = [org['commonName'] for org in all_orgs]
+    
+    for orgInd in org_cn:
+      noOrg = True
+      for eachOrg in all_orgs:
+        if eachOrg == orgInd:
+          noOrg = False
+          break
+      if noOrg:
+        raise Exception("Could not find organism %s" % orgInd)
+      else:
+        orgs = accessible_organisms(gx_user, orgInd, 'WRITE')
+        print('here confirmed')
+        print(orgs)
+        print(gx_user)
+        print(orgInd)
+        if not orgs:
+          raise Exception("You do not have write permission on this organism")
+>>>>>>> 8f588dc3d0669577948467a2f57f6daffc1f851c
 
     for orgInd in org_cn:
       org = wa.organisms.show_organism(orgInd)
