@@ -92,10 +92,17 @@ if __name__ == '__main__':
 
           if args.fasta_cds:
               uuid_fa = wa.io.write_downloadable(org['commonName'], 'FASTA', sequences=seqs, seq_type='cds')
+              # condition extended to catch a problem where the cds fasta could not be written for
+              # certain organisms. This should allow proper bypass in the event that this error
+              # occurs.
               if 'error' in uuid_fa or 'uuid' not in uuid_fa:
-                  raise Exception("Apollo failed to prepare the cds FASTA file for download: %s" % uuid_fa)
-              args.fasta_cds.write(wa.io.download(uuid_fa['uuid'], output_format="text"))
-              time.sleep(1)
+                  if "null object" in uuid_fa['error']:
+                      pass
+                  else:
+                      raise Exception("Apollo failed to prepare the cds FASTA file for download: %s" % uuid_fa)
+              else:
+                  args.fasta_cds.write(wa.io.download(uuid_fa['uuid'], output_format="text"))
+                  time.sleep(1)
 
           if args.fasta_pep:
               uuid_fa = wa.io.write_downloadable(org['commonName'], 'FASTA', sequences=seqs, seq_type='peptide')
