@@ -5,7 +5,7 @@
 		</requirements>
 	<command>
 mkdir subDir ; 
-python3 signalp6.py
+python3 $__tool_directory__/signalp6.py
 --organism $organism_group
 --inFile $infile ;
 cat ./subDir/prediction_results.txt > $tsvOut ;
