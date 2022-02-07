@@ -6,7 +6,7 @@
     <import>cpt-macros.xml</import>
   </macros>
   <requirements>
-      	<requirement type="package" version="3.6">python</requirement>
+      	<requirement type="package" version="3.8">python</requirement>
         <requirement type="package" version="1.0.5">pandas</requirement>
   </requirements>
   <command detect_errors="aggressive"><![CDATA[
