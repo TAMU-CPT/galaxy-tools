@@ -121,7 +121,7 @@ def convert_extracted_promoter_data_to_ID_column_format(
     promoter_data['minus35_pos'] = minus_35_calculated
 
     # Creates the column 9 string (attributes)
-    promoter_data = [f'{key}={value}' for key, value in promoter_data.items()]
+    promoter_data = ['{}={}'.format(key, value) for key, value in promoter_data.items()]
     promoter_data = 'Description=Predicted promoter data;' + 'Note=' + ','.join(promoter_data) + ';'
     return promoter_data
 
