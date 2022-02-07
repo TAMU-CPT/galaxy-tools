@@ -33,7 +33,12 @@ def check_file_can_be_written(obj, seq_type, export_type):
     :param export_type: Export type. Choices: FASTA, GFF3, VCF
     """
 
-    if "null object" in obj["error"]:
+    matches = [
+        "null object",
+        #"index out of range",
+    ]
+
+    if any(match in obj["error"] for match in matches):
         pass
     else:
         raise Exception(
