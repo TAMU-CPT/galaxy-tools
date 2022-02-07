@@ -1,13 +1,13 @@
 <tool id="SignalP" name="SignalP v6" version="1.0.0">
 	<description>predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms.</description>
+<requirements>
+			<requirement type="package" version="3.6">python</requirement>
+		</requirements>
 	<command>
 mkdir subDir ; 
-signalp6
--org "$organism_group"
--od ./subDir
---format png
---mode slow-sequential
--ff $infile ;
+python3 signalp6.py
+--organism $organism_group
+--inFile $infile ;
 cat ./subDir/prediction_results.txt $tsvOut ;
 cat ./subDir/output.gff3 $gffOut ;
 cp ./subDir/*.png $pngOut ;
