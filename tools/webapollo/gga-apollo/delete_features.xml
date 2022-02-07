@@ -14,10 +14,6 @@
 	python '$__tool_directory__/export.py'
 	@ORG_OR_GUESS@
 	--gff '$gff_out'
-  --fasta_pep '$fasta_pep'
-  --fasta_cds '$fasta_cds'
-  --fasta_cdna '$fasta_cdna'
-  --vcf '$vcf_out'
 	--json '$json_out'
   '$__user_email__'
 
@@ -49,12 +45,7 @@
     <data format="txt" name="output" label="Process and Error Log">
         <discover_datasets pattern="(?P&lt;designation&gt;.+)\.txt" format="tabular" visible="true"/>
     </data>
-
     <data format="gff3" name="gff_out" label="Annotations from Apollo"/>
-    <data format="fasta" name="fasta_pep" label="Peptide sequences from Apollo"/>
-    <data format="fasta" name="fasta_cds" label="CDS sequences from Apollo"/>
-    <data format="fasta" name="fasta_cdna" label="cDNA sequences from Apollo"/>
-    <data format="vcf" name="vcf_out" label="Sequence alterations from Apollo"/>
     <data format="json" name="json_out" label="Metadata from Apollo"/>
   </outputs>
   <tests>
