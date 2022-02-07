@@ -2,16 +2,15 @@
 	<description>predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms.</description>
 	<command>
 mkdir subDir ; 
-chmod 777 subDir ;
 signalp6
 -org "$organism_group"
 -od ./subDir
 --format png
 --mode slow-sequential
 -ff $infile ;
-cat ./subDir/prediction_results.txt > tsvOut ;
-cat ./subDir/output.gff3 > gffOut ;
-cat ./subDir/*.png > pngOut ;
+cat ./subDir/prediction_results.txt $tsvOut ;
+cat ./subDir/output.gff3 $gffOut ;
+cp ./subDir/*.png $pngOut ;
 </command>
 	<inputs>
 	  <param value="" name="infile" optional="False" type="data" label="Input Fasta File" />
