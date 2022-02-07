@@ -7,7 +7,7 @@
   </macros>
   <expand macro="requirements"/>
   <command detect_errors="aggressive"><![CDATA[
-$__tool_directory__/bprom_gff3_converter.py
+python3 $__tool_directory__/bprom_gff3_converter.py
 -f $txtIn
 > $gffOut]]></command>
   <inputs>
