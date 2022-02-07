@@ -8,8 +8,8 @@ mkdir subDir ;
 python3 signalp6.py
 --organism $organism_group
 --inFile $infile ;
-cat ./subDir/prediction_results.txt $tsvOut ;
-cat ./subDir/output.gff3 $gffOut ;
+cat ./subDir/prediction_results.txt > $tsvOut ;
+cat ./subDir/output.gff3 > $gffOut ;
 cp ./subDir/*.png $pngOut ;
 </command>
 	<inputs>
