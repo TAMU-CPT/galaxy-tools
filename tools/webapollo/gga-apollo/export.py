@@ -83,6 +83,12 @@ if __name__ == "__main__":
     if len(org_cn) == 0:
         raise Exception("Organism Common Name not provided")
 
+    if len(org_cn) > 5:
+        # Don't want to be abused by a user that has lots of organisms
+        # and that decides to delete them all in one go.
+        # Make them spread it out.
+        raise Exception("Please reduce organism count to 5 or less. Thank you!")
+
     org_data = []
     for org_ind in org_cn:
         if args.org_raw:
