@@ -247,8 +247,8 @@ def write_to_gff3(dataframe) -> None:
     #with open(f'{year}_{month}_{day}_bprom_as_gff3_{accession}.txt', 'w') as wf:
         # Header so Galaxy can recognize as GFF3
     print('##gff-version 3\n')
-    for line in tsv:
-      print(line)
+    #for line in tsv:
+    print(tsv)
 
     return
 
