@@ -31,7 +31,7 @@ python '$__tool_directory__/export.py'
 #end if
 --json '$json_out'
 
-'$die'
+$die
 
 '$__user_email__'
 ]]></command>
