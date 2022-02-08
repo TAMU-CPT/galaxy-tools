@@ -9,12 +9,11 @@
   <command detect_errors="aggressive"><![CDATA[
 @AUTH@
 python '$__tool_directory__/export.py'
-
 @ORG_CN_OR_GUESS@
-
 #if str($get_gff) == "yes":
     --gff '$gff_out'
 #end if
+'$gff_with_fasta'
 #if str($get_seq) == "yes":
     --seq '$seq_out'
 #end if
@@ -32,17 +31,20 @@ python '$__tool_directory__/export.py'
 #end if
 --json '$json_out'
 
-'$__user_email__'
+'$die'
 
+'$__user_email__'
 ]]></command>
   <inputs>
     <expand macro="cn_or_guess_multi" />
     <param name="get_gff" type="boolean" truevalue="yes" falsevalue="" checked='true' label="Retrieve GFF Annotations + Whole Genome" />
+    <param name="gff_with_fasta" type="boolean" truevalue="--gff_with_fasta" falsevalue="" label="Include fasta in the GFF3 file" help="The fasta is available separately in the cDNA sequence file, but some tools might prefer it included in the GFF3 file."/>
     <param name="get_seq" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve Genomic Sequences" />
     <param name="get_pep" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve Peptide Sequences" />
     <param name="get_cds" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve CDS Sequences" />
     <param name="get_cdna" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve cDNA Sequences" />
     <param name="get_vcf" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve VCF Sequence Alterations" />
+    <param name="die" type="boolean" truevalue="--die" falsevalue="" label="Fail hard if any portion of the export fails" help="By default it will just print a warning message, this causes any error to be fatal."/>
   </inputs>
   <outputs>
     <data format="gff3" name="gff_out" label="Annotations and Sequence from Apollo">
@@ -101,10 +103,9 @@ Exports the sequence data and annotations from Apollo.
 
 If you provide an Apollo JSON file as input to the Organism Common Name list,
 this will enable extracting multiple organism's data at once from Apollo.
-Beware that currently **all gff3 and fasta responses are merged together**. If you
+Beware that currently all gff3 and fasta responses are merged together. If you
 have two separate organisms with identically named reference sequences, it will
 not be possible to separate those out.
-
 @REFERENCES@
       ]]></help>
   <expand macro="citations"/>
