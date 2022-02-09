@@ -12,8 +12,8 @@ python '$__tool_directory__/export.py'
 @ORG_CN_OR_GUESS@
 #if str($get_gff) == "yes":
     --gff '$gff_out'
+    '$gff_with_fasta'
 #end if
-'$gff_with_fasta'
 #if str($get_seq) == "yes":
     --seq '$seq_out'
 #end if
@@ -30,10 +30,10 @@ python '$__tool_directory__/export.py'
     --vcf '#vcf_out'
 #end if
 --json '$json_out'
-
 $die
 
 '$__user_email__'
+
 ]]></command>
   <inputs>
     <expand macro="cn_or_guess_multi" />
