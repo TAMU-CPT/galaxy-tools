@@ -1,8 +1,12 @@
 <tool id="SignalP" name="SignalP v6" version="1.0.0">
 	<description>predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms.</description>
-<requirements>
-			<requirement type="package" version="3.6">python</requirement>
-		</requirements>
+	<requirements>
+		<requirement type="package" version="3.7.9">python</requirement>
+		<requirement type="package" version="1.77">biopython</requirement>
+	        <requirement type="package" version="2.09">transtermhp</requirement> 
+                <requirement type="package" version="1.1.3">cpt_gffparser</requirement> 
+                <requirement type="package" version="1.5">bcftools</requirement>   
+        </requirements>
 	<command>
 mkdir subDir ; 
 python3 $__tool_directory__/signalp6.py
