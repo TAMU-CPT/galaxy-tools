@@ -16,7 +16,7 @@ $filter
 #if $blastIn.blastType == "XML":
 --xmlMode
 #end if
---taxFilter $taxFilter 
+--taxFilter "$taxFilter" 
 > $accession_list
 </command>
 	<inputs>
