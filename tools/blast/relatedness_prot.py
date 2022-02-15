@@ -186,7 +186,7 @@ if __name__ == "__main__":
     
     taxList = []
     if args.taxFilter and args.taxFilter != "" :
-      args.taxFilter = args.taxFilter.split(",")
+      args.taxFilter = args.taxFilter.split(" ")
       for ind in args.taxFilter:
         taxList.append(ind.strip())
 
