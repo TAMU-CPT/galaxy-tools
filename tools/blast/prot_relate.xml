@@ -16,6 +16,7 @@ $filter
 #if $blastIn.blastType == "XML":
 --xmlMode
 #end if
+--taxFilter $taxFilter 
 > $accession_list
 </command>
 	<inputs>
@@ -33,6 +34,7 @@ $filter
         </conditional>
                 <param label = 'Number of results to return' name="hits" type="integer" size="15" value="5"/>
                 <param name="filter" type="boolean" truevalue="" falsevalue="--noFilter" checked="true" label="Automatically filter by phage Taxonomy IDs"/>
+                <param name="taxFilter" type="text" label="TaxIDs to filter out of results (Comma separated)"/>
         </inputs>
 	<outputs>
 		<data format="tabular" name="accession_list" label="Top BlastP Hits" />

@@ -108,13 +108,18 @@ def expand_fields(blast):
         for x in range(0, len(data[4])):
             yield [data[0], data[1], data[2][x], data[3], int(data[4][x])]
 
-def expand_taxIDs(blast):
+def expand_taxIDs(blast, taxFilter):
     for data in blast:
         # if(len(data[4]) > 0):
         #  print(data[0])
         for ID in data[4]:
             if ID != "N/A":
-              yield [data[0], data[1], data[2], data[3], int(ID)]
+              filterOut = False
+              for tax in taxFilter:
+                if str(ID).strip() == tax:
+                  filterOut = True
+              if not filterOut:
+                yield [data[0], data[1], data[2], data[3], int(ID)]
 
 
 def expand_titles(blast):
@@ -169,7 +174,8 @@ if __name__ == "__main__":
     parser.add_argument("--noFilter", action="store_true")
     #parser.add_argument("--title", action="store_true") # Add when ready to update XML after semester
     parser.add_argument("--hits", type=int, default=5)
-    parser.add_argument("--xmlMode", action="store_true")    
+    parser.add_argument("--xmlMode", action="store_true")   
+    parser.add_argument("--taxFilter", type=str) 
 
     args = parser.parse_args()
 
@@ -177,6 +183,13 @@ if __name__ == "__main__":
     phageTaxLookup = []
     sciName = []
     line = phageDb.readline()
+    
+    taxList = []
+    if args.taxFilter and args.taxFilter != "" :
+      args.taxFilter = args.taxFilter.split(",")
+      for ind in args.taxFilter:
+        taxList.append(ind.strip())
+
     while line:
         line = line.split("\t")
         phageTaxLookup.append(int(line[0]))
@@ -201,7 +214,7 @@ if __name__ == "__main__":
     # data = filter_dice(data, threshold=0.0)
     data = important_only(data, splitId)
     
-    data = expand_taxIDs(data)
+    data = expand_taxIDs(data, taxList)
     data = remove_dupes(data)
     if not args.noFilter:
         data = filter_phage(data, phageTaxLookup, sciName)
