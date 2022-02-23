@@ -44,7 +44,7 @@ python '$__tool_directory__/export.py'
   <inputs>
     <expand macro="cn_or_guess_multi" />
     <param name="get_gff" type="boolean" truevalue="yes" falsevalue="" checked='true' label="Retrieve GFF Annotations + Whole Genome" />
-    <param name="gff_with_fasta" type="boolean" truevalue="--gff_with_fasta" falsevalue="" label="Include fasta in the GFF3 file" help="The fasta is available separately in the cDNA sequence file, but some tools might prefer it included in the GFF3 file."/>
+    <param name="gff_with_fasta" type="boolean" truevalue="--gff_with_fasta" falsevalue="" checked='true' label="Include fasta in the GFF3 file" help="The fasta is available separately in the cDNA sequence file, but some tools might prefer it included in the GFF3 file."/>
     <param name="get_seq" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve Genomic Sequences" />
     <param name="get_pep" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve Peptide Sequences" />
     <param name="get_cds" type="boolean" truevalue="yes" falsevalue="" checked='false' label="Retrieve CDS Sequences" />
