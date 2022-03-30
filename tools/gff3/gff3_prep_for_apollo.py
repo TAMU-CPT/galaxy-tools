@@ -104,6 +104,7 @@ def add_exons(features):
                 qualifiers={
                     "ID": ["%s.exon" % clean_gene.qualifiers["ID"][0]],
                     "Parent": [clean_gene.id],
+                    "ApolloExon": ["True"],
                 },
                 sub_features=[],
                 strand=exon_strand
