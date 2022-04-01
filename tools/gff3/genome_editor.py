@@ -82,17 +82,11 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
                     dbxrefs=True,
                 )
 
-            def update_location(feature):
-                tempFeat = feature
-                tempFeat.location._start += len(new_record)
-                tempFeat.location._end += len(new_record)
-
-                #if hasattr(feature, "sub_features"):
-                #    for sf in feature.sub_features:
-                #        update_location(sf)
-                for i in range(0, len(tempFeat.sub_features)):
-                  tempFeat.sub_features[i] = update_location(tempFeat.sub_features[i])
-                return tempFeat
+            def update_location(feature, shiftS):
+                feature.location = FeatureLocation(feature.location.start + shiftS, feature.location.end + shiftS, feature.strand)
+                for i in feature.sub_features:
+                  i = update_location(i, shiftS)
+                return feature
                 
 
             #for feature in tmp_req.features:
@@ -102,9 +96,8 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
                 diffS = i.location.start - topFeats[i.qualifiers["ID"][0]]
                 subFeats = i.sub_features
                 for j in subFeats:
-                  subFeats.extend(j.sub_features)
-                  j.location = FeatureLocation(j.location.start + diffS, j.location.end + diffS, j.strand)
-                 
+                  j = update_location(j, diffS)
+                  
                 
 
             chain.append(
