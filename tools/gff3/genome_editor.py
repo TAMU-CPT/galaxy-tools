@@ -5,6 +5,7 @@ import argparse
 import tsv
 from Bio import SeqIO
 from Bio.Seq import Seq
+from Bio.SeqFeature import SeqFeature, FeatureLocation
 from CPT_GFFParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_contains
 
@@ -33,6 +34,9 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
     new_record.annotations = {}
     # Process changes.
     chain = []
+    topFeats = {}
+    for feat in rec.features:
+        topFeats[feat.ID] = feat.location.start
     for change in changes:
         if "," in change:
             (start, end, strand) = change.split(",")
@@ -78,15 +82,27 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
                 )
 
             def update_location(feature):
-                feature.location._start += len(new_record)
-                feature.location._end += len(new_record)
+                tempFeat = feature
+                tempFeat.location._start += len(new_record)
+                tempFeat.location._end += len(new_record)
 
-                if hasattr(feature, "sub_features"):
-                    for sf in feature.sub_features:
-                        update_location(sf)
+                #if hasattr(feature, "sub_features"):
+                #    for sf in feature.sub_features:
+                #        update_location(sf)
+                for i in range(0, len(tempFeat.sub_features)):
+                  tempFeat.sub_features[i] = update_location(tempFeat.sub_features[i])
+                return tempFeat
+                
 
-            for feature in tmp_req.features:
-                update_location(feature)
+            #for feature in tmp_req.features:
+            for i in tmp_req.features:
+                diffS = i.location.start - topFeats[i.ID]
+                subFeats = i.sub_features
+                for j in subFeats:
+                  subFeats.extend(j.sub_features)
+                  j.location = FeatureLocation(j.location.start + diffS, j.location.end + diffS, j.strand)
+                 
+                
 
             chain.append(
                 [
