@@ -36,7 +36,8 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
     chain = []
     topFeats = {}
     for feat in rec.features:
-        topFeats[feat.ID] = feat.location.start
+        if "ID" in feat.qualifiers.keys():
+          topFeats[feat.qualifiers["ID"][0]] = feat.location.start
     for change in changes:
         if "," in change:
             (start, end, strand) = change.split(",")
@@ -96,7 +97,9 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
 
             #for feature in tmp_req.features:
             for i in tmp_req.features:
-                diffS = i.location.start - topFeats[i.ID]
+                if "ID" not in i.qualifiers.keys():
+                  continue
+                diffS = i.location.start - topFeats[i.qualifiers["ID"][0]]
                 subFeats = i.sub_features
                 for j in subFeats:
                   subFeats.extend(j.sub_features)
