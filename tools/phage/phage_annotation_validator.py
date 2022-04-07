@@ -54,7 +54,7 @@ ENCOURAGEMENT = (
 
 def gen_qc_feature(start, end, message, strand=0, id_src=None, type_src="gene"):
     kwargs = {"qualifiers": {"note": [message]}}
-    kwards["type"] = type_src
+    kwargs["type"] = type_src
     kwargs["strand"] = strand
     kwargs["phase"]=0
     kwargs["score"]=0.0
