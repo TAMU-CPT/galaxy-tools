@@ -1132,9 +1132,9 @@ def evaluate_and_report(
 
     def nice_strand(direction):
         if direction > 0:
-            return "→".decode("utf-8")
+            return "→"#.decode("utf-8")
         else:
-            return "←".decode("utf-8")
+            return "←"#.decode("utf-8")
 
     def nice_strand_tex(direction):
         if direction > 0:
@@ -1153,9 +1153,9 @@ def evaluate_and_report(
 
     def my_decode(data):
         # For production
-        return str(data).decode("utf-8")
+        return str(data)#.decode("utf-8")
         # For local testing. No, I do not understand.
-        return str(data.encode("utf-8")).decode("utf-8")
+        return str(data)#.encode("utf-8")).decode("utf-8")
 
     env = Environment(
         loader=FileSystemLoader(SCRIPT_PATH), trim_blocks=True, lstrip_blocks=True
