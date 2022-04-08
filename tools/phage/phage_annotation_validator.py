@@ -61,7 +61,7 @@ def gen_qc_feature(start, end, message, strand=0, id_src=None, type_src="gene"):
     kwargs["source"]="feature"
     if id_src is not None:
         kwargs["id"] = id_src.id
-	kwargs["qualifiers"]["ID"] = [id_src.id]
+        kwargs["qualifiers"]["ID"] = [id_src.id]
         kwargs["qualifiers"]["Name"] = id_src.qualifiers.get("Name", [])
 	
 
