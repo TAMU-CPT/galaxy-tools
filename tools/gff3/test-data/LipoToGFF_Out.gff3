@@ -1,29 +1,12 @@
 ##gff-version 3
 ##sequence-region testseq_2018-03-08 1 9216
-testseq_2018-03-08	cpt.fixModel	gene	5029	5181	.	-	.	ID=ORF.0.439_0.445866101899;
-testseq_2018-03-08	cpt.fixModel	mRNA	5029	5181	.	-	.	ID=ORF.0.439_0.445866101899.mRNA;Parent=ORF.0.439_0.445866101899;
-testseq_2018-03-08	getOrfsOrCds	CDS	5029	5181	.	-	0	ID=ORF.0.439_0.445866101899.CDS;Parent=ORF.0.439_0.445866101899.mRNA;
-testseq_2018-03-08	CPT_ShineFind	Shine_Dalgarno_sequence	5188	5192	.	-	.	ID=ORF.0.439_0.445866101899.rbs-0;Parent=ORF.0.439_0.445866101899;
-testseq_2018-03-08	feature	cleavage_site	5088	5089	.	-	.	ID=ORF.0.439_0.445866101899_cleavage_1;Parent=ORF.0.439_0.445866101899;
 testseq_2018-03-08	cpt.fixModel	gene	7852	8313	.	+	.	ID=ORF.0.50_0.415010657017;
 testseq_2018-03-08	cpt.fixModel	mRNA	7852	8313	.	+	.	ID=ORF.0.50_0.415010657017.mRNA;Parent=ORF.0.50_0.415010657017;
 testseq_2018-03-08	getOrfsOrCds	CDS	7852	8313	.	+	0	ID=ORF.0.50_0.415010657017.CDS;Parent=ORF.0.50_0.415010657017.mRNA;
 testseq_2018-03-08	CPT_ShineFind	Shine_Dalgarno_sequence	7839	7841	.	+	.	ID=ORF.0.50_0.415010657017.rbs-0;Parent=ORF.0.50_0.415010657017;
 testseq_2018-03-08	feature	cleavage_site	7902	7903	.	+	.	ID=ORF.0.50_0.415010657017_cleavage_1;Parent=ORF.0.50_0.415010657017;
-testseq_2018-03-08	feature	cleavage_site	7917	7918	.	+	.	ID=ORF.0.50_0.415010657017_cleavage_2;Parent=ORF.0.50_0.415010657017;
 testseq_2018-03-08	cpt.fixModel	gene	8072	8254	.	+	.	ID=ORF.0.247_0.938715889806;
 testseq_2018-03-08	cpt.fixModel	mRNA	8072	8254	.	+	.	ID=ORF.0.247_0.938715889806.mRNA;Parent=ORF.0.247_0.938715889806;
 testseq_2018-03-08	getOrfsOrCds	CDS	8072	8254	.	+	0	ID=ORF.0.247_0.938715889806.CDS;Parent=ORF.0.247_0.938715889806.mRNA;
 testseq_2018-03-08	CPT_ShineFind	Shine_Dalgarno_sequence	8060	8064	.	+	.	ID=ORF.0.247_0.938715889806.rbs-0;Parent=ORF.0.247_0.938715889806;
 testseq_2018-03-08	feature	cleavage_site	8128	8129	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_1;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8146	8147	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_2;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8128	8129	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_3;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8137	8138	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_4;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8140	8141	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_5;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8149	8150	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_6;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8152	8153	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_7;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8143	8144	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_8;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8122	8123	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_9;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8134	8135	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_10;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8155	8156	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_11;Parent=ORF.0.247_0.938715889806;
-testseq_2018-03-08	feature	cleavage_site	8131	8132	.	+	.	ID=ORF.0.247_0.938715889806_cleavage_12;Parent=ORF.0.247_0.938715889806;

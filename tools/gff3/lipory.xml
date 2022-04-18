@@ -29,7 +29,7 @@ $positional_2
   <tests>
       <test>
           <param name="positional_1" value="T7_LiporyIn.gff3" />
-          <param name="positional_2" value="T7_Liporyin.fasta" />
+          <param name="positional_2" value="T7_LiporyIn.fasta" />
           <param name="lipobox_mindist" value="10" />
           <param name="lipobox_maxdist" value="60" />
           <output name="default" value="T7_LiporyOut.gff3" />

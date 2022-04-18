@@ -29,6 +29,7 @@ $filterSP2
       <param name="lipoIn" value="LipoToGFF_In.txt" />
       <param name="gff3In" value="LipoToGFF_In.gff3" />
       <param name="jBrowseOut" value="True" />
+      <param name="filterSP2" value="True" />
       <output name="stdout" value="LipoToGFF_Out.gff3" />
     </test>
   </tests>
