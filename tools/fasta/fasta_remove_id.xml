@@ -19,12 +19,8 @@ $__tool_directory__/fasta_remove_id.py
 	</outputs>
 	<tests>
                 <test>
-                        <param name="sequences" value="T7_DESC.fasta"/>
-			<output name="out" file="T7_CLEAN.fasta" />
-		</test>
-		<test>
-			<param name="sequences" value="regex.a3.fa"/>
-			<output name="out" file="regex.a3.clean.fa" />
+                        <param name="sequences" value="T7_RemIDIn.fasta"/>
+			<output name="out" file="T7_RemIDOut.fasta" />
 		</test>
 	</tests>
 	<help>

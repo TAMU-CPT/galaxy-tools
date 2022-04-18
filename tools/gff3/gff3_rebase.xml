@@ -27,28 +27,28 @@ $protein2dna
   </outputs>
   <tests>
       <test>
-          <param name="parent" value="T7_CLEAN.gff3"/>
-          <param name="child" value="T7_TMHMM.gff3"/>
+          <param name="parent" value="T7_RebaseParentIn.gff3"/>
+          <param name="child" value="T7_RebaseChildIn.gff3"/>
           <param name="interpro" value="" />
           <param name="protein2dna" value="--protein2dna" />
           <param name="map_by" value="ID" />
-          <output name="default" file="T7_TMHMM_REBASE.gff3"/>
+          <output name="default" file="T7_RebaseOut.gff3"/>
       </test>
       <test>
-          <param name="parent" value="parent.gff"/>
-          <param name="child" value="child.gff"/>
+          <param name="parent" value="Rebase_ParentIn.gff"/>
+          <param name="child" value="Rebase_ChildIn.gff"/>
 	  <param name="interpro" value="" />
           <param name="protein2dna" value="--protein2dna" />
 	  <param name="map_by" value="ID" />
-          <output name="default" file="proteins.gff"/>
+          <output name="default" file="Rebase_Out1.gff"/>
       </test>
       <test>
-          <param name="parent" value="parent.gff"/>
-          <param name="child" value="child.gff"/>
+          <param name="parent" value="Rebase_ParentIn.gff"/>
+          <param name="child" value="Rebase_ChildIn.gff"/>
           <param name="interpro" value="" />
           <param name="protein2dna" value="" />
 	  <param name="map_by" value="ID" />
-	  <output name="default" file="nonprotein.gff"/>
+	  <output name="default" file="Rebase_Out2.gff"/>
       </test>
   </tests>
   <help><![CDATA[

@@ -1,0 +1,202 @@
+##gff-version 3
+##sequence-region NC_001604 1 39847
+NC_001604	feature	Chain	545	634	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_1-f21272ae-496f-4fc1-8d6e-c0ea75f90171;Note=Transmembrane protein - N in C out;Target=ORF.0.2506_0.167028375883.CDS
+NC_001604	TMHMM	Topological domain	620	637	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_1-f21272ae-496f-4fc1-8d6e-c0ea75f90171
+NC_001604	TMHMM	Transmembrane	551	619	.	-	.	Note=Helical;Parent=tmhmm_tmd_1-f21272ae-496f-4fc1-8d6e-c0ea75f90171
+NC_001604	TMHMM	Topological domain	545	550	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_1-f21272ae-496f-4fc1-8d6e-c0ea75f90171
+NC_001604	feature	Chain	1499	1636	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_2-82f21b97-6a7e-4ddd-9c7a-a6043f5b598e;Note=Transmembrane protein - N out C in;Target=ORF.0.566_0.38534199341.CDS
+NC_001604	TMHMM	Topological domain	1496	1561	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_2-82f21b97-6a7e-4ddd-9c7a-a6043f5b598e
+NC_001604	TMHMM	Transmembrane	1562	1630	.	+	.	Note=Helical;Parent=tmhmm_tmd_2-82f21b97-6a7e-4ddd-9c7a-a6043f5b598e
+NC_001604	TMHMM	Topological domain	1631	1636	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_2-82f21b97-6a7e-4ddd-9c7a-a6043f5b598e
+NC_001604	feature	Chain	1505	1636	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_3-86aae52d-c800-485f-8895-a9287e122d65;Note=Transmembrane protein - N out C in;Target=ORF.0.567_0.804461971525.CDS
+NC_001604	TMHMM	Topological domain	1502	1543	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_3-86aae52d-c800-485f-8895-a9287e122d65
+NC_001604	TMHMM	Transmembrane	1544	1612	.	+	.	Note=Helical;Parent=tmhmm_tmd_3-86aae52d-c800-485f-8895-a9287e122d65
+NC_001604	TMHMM	Topological domain	1613	1636	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_3-86aae52d-c800-485f-8895-a9287e122d65
+NC_001604	feature	Chain	1782	2018	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_4-69abcd70-170f-472f-8d52-eeb29376d71b;Note=Transmembrane protein - N in C out;Target=ORF.0.3347_0.667378729511.CDS
+NC_001604	TMHMM	Topological domain	1986	2021	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_4-69abcd70-170f-472f-8d52-eeb29376d71b
+NC_001604	TMHMM	Transmembrane	1917	1985	.	-	.	Note=Helical;Parent=tmhmm_tmd_4-69abcd70-170f-472f-8d52-eeb29376d71b
+NC_001604	TMHMM	Topological domain	1782	1916	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_4-69abcd70-170f-472f-8d52-eeb29376d71b
+NC_001604	feature	Chain	2801	2896	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_5-727cd513-bd63-4234-b5d0-04c3b0e3e553;Note=Transmembrane protein - N in C out;Target=ORF.0.2482_0.370811900925.CDS
+NC_001604	TMHMM	Topological domain	2864	2899	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_5-727cd513-bd63-4234-b5d0-04c3b0e3e553
+NC_001604	TMHMM	Transmembrane	2804	2863	.	-	.	Note=Helical;Parent=tmhmm_tmd_5-727cd513-bd63-4234-b5d0-04c3b0e3e553
+NC_001604	TMHMM	Topological domain	2801	2803	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_5-727cd513-bd63-4234-b5d0-04c3b0e3e553
+NC_001604	feature	Chain	2997	3089	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_6-378e5997-850e-46f8-8e45-49106261d847;Note=Transmembrane protein - N in C out;Target=ORF.0.1442_0.301385622759.CDS
+NC_001604	TMHMM	Topological domain	2994	3011	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_6-378e5997-850e-46f8-8e45-49106261d847
+NC_001604	TMHMM	Transmembrane	3012	3071	.	+	.	Note=Helical;Parent=tmhmm_tmd_6-378e5997-850e-46f8-8e45-49106261d847
+NC_001604	TMHMM	Topological domain	3072	3089	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_6-378e5997-850e-46f8-8e45-49106261d847
+NC_001604	feature	Chain	4106	4408	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_7-cd8efeae-028d-4b07-876f-435d36998a1d;Note=Transmembrane protein - N out C in;Target=ORF.0.2446_0.195161217306.CDS
+NC_001604	TMHMM	Topological domain	4187	4411	.	-	.	Parent=tmhmm_tmd_7-cd8efeae-028d-4b07-876f-435d36998a1d
+NC_001604	TMHMM	Transmembrane	4118	4186	.	-	.	Note=Helical;Parent=tmhmm_tmd_7-cd8efeae-028d-4b07-876f-435d36998a1d
+NC_001604	TMHMM	Topological domain	4106	4117	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_7-cd8efeae-028d-4b07-876f-435d36998a1d
+NC_001604	feature	Chain	4106	4384	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_8-507b8e45-5895-418c-97ca-3e92fd136054;Note=Transmembrane protein - N in C in;Target=ORF.0.2447_0.435965644427.CDS
+NC_001604	TMHMM	Topological domain	4298	4387	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_8-507b8e45-5895-418c-97ca-3e92fd136054
+NC_001604	TMHMM	Transmembrane	4229	4297	.	-	.	Note=Helical;Parent=tmhmm_tmd_8-507b8e45-5895-418c-97ca-3e92fd136054
+NC_001604	TMHMM	Topological domain	4187	4228	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_8-507b8e45-5895-418c-97ca-3e92fd136054
+NC_001604	TMHMM	Transmembrane	4118	4186	.	-	.	Note=Helical;Parent=tmhmm_tmd_8-507b8e45-5895-418c-97ca-3e92fd136054
+NC_001604	TMHMM	Topological domain	4106	4117	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_8-507b8e45-5895-418c-97ca-3e92fd136054
+NC_001604	feature	Chain	4106	4333	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_9-56f14f9b-21b8-4fe0-8da7-ae789707f0cd;Note=Transmembrane protein - N in C in;Target=ORF.0.2452_0.137810349502.CDS
+NC_001604	TMHMM	Topological domain	4304	4336	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_9-56f14f9b-21b8-4fe0-8da7-ae789707f0cd
+NC_001604	TMHMM	Transmembrane	4244	4303	.	-	.	Note=Helical;Parent=tmhmm_tmd_9-56f14f9b-21b8-4fe0-8da7-ae789707f0cd
+NC_001604	TMHMM	Topological domain	4187	4243	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_9-56f14f9b-21b8-4fe0-8da7-ae789707f0cd
+NC_001604	TMHMM	Transmembrane	4118	4186	.	-	.	Note=Helical;Parent=tmhmm_tmd_9-56f14f9b-21b8-4fe0-8da7-ae789707f0cd
+NC_001604	TMHMM	Topological domain	4106	4117	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_9-56f14f9b-21b8-4fe0-8da7-ae789707f0cd
+NC_001604	feature	Chain	4106	4327	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_10-71767cb3-d5c5-48df-8d08-b6781dcc357f;Note=Transmembrane protein - N in C in;Target=ORF.0.2453_0.868115932092.CDS
+NC_001604	TMHMM	Topological domain	4298	4330	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_10-71767cb3-d5c5-48df-8d08-b6781dcc357f
+NC_001604	TMHMM	Transmembrane	4229	4297	.	-	.	Note=Helical;Parent=tmhmm_tmd_10-71767cb3-d5c5-48df-8d08-b6781dcc357f
+NC_001604	TMHMM	Topological domain	4187	4228	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_10-71767cb3-d5c5-48df-8d08-b6781dcc357f
+NC_001604	TMHMM	Transmembrane	4118	4186	.	-	.	Note=Helical;Parent=tmhmm_tmd_10-71767cb3-d5c5-48df-8d08-b6781dcc357f
+NC_001604	TMHMM	Topological domain	4106	4117	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_10-71767cb3-d5c5-48df-8d08-b6781dcc357f
+NC_001604	feature	Chain	4106	4273	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_11-1cd15c95-d799-428a-ae52-a4b616961c8a;Note=Transmembrane protein - N out C in;Target=ORF.0.2455_0.763533476313.CDS
+NC_001604	TMHMM	Topological domain	4187	4276	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_11-1cd15c95-d799-428a-ae52-a4b616961c8a
+NC_001604	TMHMM	Transmembrane	4118	4186	.	-	.	Note=Helical;Parent=tmhmm_tmd_11-1cd15c95-d799-428a-ae52-a4b616961c8a
+NC_001604	TMHMM	Topological domain	4106	4117	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_11-1cd15c95-d799-428a-ae52-a4b616961c8a
+NC_001604	feature	Chain	4106	4267	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_12-92022042-76b7-4e8a-b952-31f430897d4b;Note=Transmembrane protein - N out C in;Target=ORF.0.2456_0.946273358886.CDS
+NC_001604	TMHMM	Topological domain	4187	4270	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_12-92022042-76b7-4e8a-b952-31f430897d4b
+NC_001604	TMHMM	Transmembrane	4118	4186	.	-	.	Note=Helical;Parent=tmhmm_tmd_12-92022042-76b7-4e8a-b952-31f430897d4b
+NC_001604	TMHMM	Topological domain	4106	4117	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_12-92022042-76b7-4e8a-b952-31f430897d4b
+NC_001604	feature	Chain	4106	4195	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_13-798e70fa-3947-4672-afa7-12fdccbfeac7;Note=Transmembrane protein - N in C out;Target=ORF.0.2460_0.990220383403.CDS
+NC_001604	TMHMM	Topological domain	4187	4198	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_13-798e70fa-3947-4672-afa7-12fdccbfeac7
+NC_001604	TMHMM	Transmembrane	4118	4186	.	-	.	Note=Helical;Parent=tmhmm_tmd_13-798e70fa-3947-4672-afa7-12fdccbfeac7
+NC_001604	TMHMM	Topological domain	4106	4117	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_13-798e70fa-3947-4672-afa7-12fdccbfeac7
+NC_001604	feature	Chain	5442	5525	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_14-94782fdb-8c41-45c5-a39f-efe7b63d9400;Note=Transmembrane protein - N out C in;Target=ORF.0.3307_0.109031738779.CDS
+NC_001604	TMHMM	Topological domain	5502	5528	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_14-94782fdb-8c41-45c5-a39f-efe7b63d9400
+NC_001604	TMHMM	Transmembrane	5448	5501	.	-	.	Note=Helical;Parent=tmhmm_tmd_14-94782fdb-8c41-45c5-a39f-efe7b63d9400
+NC_001604	TMHMM	Topological domain	5442	5447	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_14-94782fdb-8c41-45c5-a39f-efe7b63d9400
+NC_001604	feature	Chain	7611	7760	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_15-06ae012d-7e0c-43f2-b065-b3d75bad06ce;Note=Transmembrane protein - N in C in;Target=ORF.0.1571_0.432752129598.CDS
+NC_001604	TMHMM	Topological domain	7608	7619	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_15-06ae012d-7e0c-43f2-b065-b3d75bad06ce
+NC_001604	TMHMM	Transmembrane	7620	7679	.	+	.	Note=Helical;Parent=tmhmm_tmd_15-06ae012d-7e0c-43f2-b065-b3d75bad06ce
+NC_001604	TMHMM	Topological domain	7680	7688	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_15-06ae012d-7e0c-43f2-b065-b3d75bad06ce
+NC_001604	TMHMM	Transmembrane	7689	7757	.	+	.	Note=Helical;Parent=tmhmm_tmd_15-06ae012d-7e0c-43f2-b065-b3d75bad06ce
+NC_001604	TMHMM	Topological domain	7758	7760	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_15-06ae012d-7e0c-43f2-b065-b3d75bad06ce
+NC_001604	feature	Chain	8241	8417	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_16-c54ddff2-51cc-44c9-9b51-740c9e634c09;Note=Transmembrane protein - N in C in;Target=ORF.0.3257_0.390605676456.CDS
+NC_001604	TMHMM	Topological domain	8385	8420	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_16-c54ddff2-51cc-44c9-9b51-740c9e634c09
+NC_001604	TMHMM	Transmembrane	8325	8384	.	-	.	Note=Helical;Parent=tmhmm_tmd_16-c54ddff2-51cc-44c9-9b51-740c9e634c09
+NC_001604	TMHMM	Topological domain	8313	8324	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_16-c54ddff2-51cc-44c9-9b51-740c9e634c09
+NC_001604	TMHMM	Transmembrane	8244	8312	.	-	.	Note=Helical;Parent=tmhmm_tmd_16-c54ddff2-51cc-44c9-9b51-740c9e634c09
+NC_001604	TMHMM	Topological domain	8241	8243	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_16-c54ddff2-51cc-44c9-9b51-740c9e634c09
+NC_001604	feature	Chain	8241	8393	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_17-acc5c4e6-6a78-4138-b96b-e14da7269fa4;Note=Transmembrane protein - N in C in;Target=ORF.0.3260_0.786396696237.CDS
+NC_001604	TMHMM	Topological domain	8385	8396	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_17-acc5c4e6-6a78-4138-b96b-e14da7269fa4
+NC_001604	TMHMM	Transmembrane	8325	8384	.	-	.	Note=Helical;Parent=tmhmm_tmd_17-acc5c4e6-6a78-4138-b96b-e14da7269fa4
+NC_001604	TMHMM	Topological domain	8313	8324	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_17-acc5c4e6-6a78-4138-b96b-e14da7269fa4
+NC_001604	TMHMM	Transmembrane	8244	8312	.	-	.	Note=Helical;Parent=tmhmm_tmd_17-acc5c4e6-6a78-4138-b96b-e14da7269fa4
+NC_001604	TMHMM	Topological domain	8241	8243	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_17-acc5c4e6-6a78-4138-b96b-e14da7269fa4
+NC_001604	feature	Chain	8614	8751	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_18-f39903d3-a49a-43b4-b8b4-faec398af4ac;Note=Transmembrane protein - N in C out;Target=ORF.0.2902_0.83195723196.CDS
+NC_001604	TMHMM	Topological domain	8719	8754	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_18-f39903d3-a49a-43b4-b8b4-faec398af4ac
+NC_001604	TMHMM	Transmembrane	8650	8718	.	-	.	Note=Helical;Parent=tmhmm_tmd_18-f39903d3-a49a-43b4-b8b4-faec398af4ac
+NC_001604	TMHMM	Topological domain	8614	8649	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_18-f39903d3-a49a-43b4-b8b4-faec398af4ac
+NC_001604	feature	Chain	9554	10030	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_19-2311f09c-6a9d-4be1-b2ee-1932b9f7bdcc;Note=Transmembrane protein - N in C in;Target=ORF.0.2389_0.812387617851.CDS
+NC_001604	TMHMM	Topological domain	9977	10033	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_19-2311f09c-6a9d-4be1-b2ee-1932b9f7bdcc
+NC_001604	TMHMM	Transmembrane	9908	9976	.	-	.	Note=Helical;Parent=tmhmm_tmd_19-2311f09c-6a9d-4be1-b2ee-1932b9f7bdcc
+NC_001604	TMHMM	Topological domain	9851	9907	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_19-2311f09c-6a9d-4be1-b2ee-1932b9f7bdcc
+NC_001604	TMHMM	Transmembrane	9782	9850	.	-	.	Note=Helical;Parent=tmhmm_tmd_19-2311f09c-6a9d-4be1-b2ee-1932b9f7bdcc
+NC_001604	TMHMM	Topological domain	9554	9781	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_19-2311f09c-6a9d-4be1-b2ee-1932b9f7bdcc
+NC_001604	feature	Chain	11808	12101	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_20-164851bc-ac96-4231-b220-b2fe78666da4;Note=Transmembrane protein - N in C out;Target=ORF.0.3228_0.584251370197.CDS
+NC_001604	TMHMM	Topological domain	11949	12104	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_20-164851bc-ac96-4231-b220-b2fe78666da4
+NC_001604	TMHMM	Transmembrane	11880	11948	.	-	.	Note=Helical;Parent=tmhmm_tmd_20-164851bc-ac96-4231-b220-b2fe78666da4
+NC_001604	TMHMM	Topological domain	11808	11879	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_20-164851bc-ac96-4231-b220-b2fe78666da4
+NC_001604	feature	Chain	11808	11969	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_21-1c181346-8781-4e34-ac25-b047b1d43d8d;Note=Transmembrane protein - N in C out;Target=ORF.0.3233_0.929860663537.CDS
+NC_001604	TMHMM	Topological domain	11949	11972	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_21-1c181346-8781-4e34-ac25-b047b1d43d8d
+NC_001604	TMHMM	Transmembrane	11880	11948	.	-	.	Note=Helical;Parent=tmhmm_tmd_21-1c181346-8781-4e34-ac25-b047b1d43d8d
+NC_001604	TMHMM	Topological domain	11808	11879	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_21-1c181346-8781-4e34-ac25-b047b1d43d8d
+NC_001604	feature	Chain	12298	12417	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_22-62203e00-6f4f-44f9-9dfc-e782e68af436;Note=Transmembrane protein - N in C out;Target=ORF.0.146_0.862093981501.CDS
+NC_001604	TMHMM	Topological domain	12295	12312	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_22-62203e00-6f4f-44f9-9dfc-e782e68af436
+NC_001604	TMHMM	Transmembrane	12313	12372	.	+	.	Note=Helical;Parent=tmhmm_tmd_22-62203e00-6f4f-44f9-9dfc-e782e68af436
+NC_001604	TMHMM	Topological domain	12373	12417	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_22-62203e00-6f4f-44f9-9dfc-e782e68af436
+NC_001604	feature	Chain	12310	12417	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_23-d9df3929-0107-4bf7-98fb-af72469396d3;Note=Transmembrane protein - N in C out;Target=ORF.0.147_0.801965827017.CDS
+NC_001604	TMHMM	Topological domain	12307	12324	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_23-d9df3929-0107-4bf7-98fb-af72469396d3
+NC_001604	TMHMM	Transmembrane	12325	12378	.	+	.	Note=Helical;Parent=tmhmm_tmd_23-d9df3929-0107-4bf7-98fb-af72469396d3
+NC_001604	TMHMM	Topological domain	12379	12417	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_23-d9df3929-0107-4bf7-98fb-af72469396d3
+NC_001604	feature	Chain	12991	13323	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_24-976d0b1e-57ab-4a73-8331-9bbd863feaa5;Note=Transmembrane protein - N in C in;Target=ORF.0.156_0.0712415448217.CDS
+NC_001604	TMHMM	Topological domain	12988	13005	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_24-976d0b1e-57ab-4a73-8331-9bbd863feaa5
+NC_001604	TMHMM	Transmembrane	13006	13074	.	+	.	Note=Helical;Parent=tmhmm_tmd_24-976d0b1e-57ab-4a73-8331-9bbd863feaa5
+NC_001604	TMHMM	Topological domain	13075	13086	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_24-976d0b1e-57ab-4a73-8331-9bbd863feaa5
+NC_001604	TMHMM	Transmembrane	13087	13155	.	+	.	Note=Helical;Parent=tmhmm_tmd_24-976d0b1e-57ab-4a73-8331-9bbd863feaa5
+NC_001604	TMHMM	Topological domain	13156	13323	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_24-976d0b1e-57ab-4a73-8331-9bbd863feaa5
+NC_001604	feature	Chain	15202	15372	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_25-fea2e54b-e2fa-47d6-8a46-35e7ba119b92;Note=Transmembrane protein - N in C out;Target=ORF.0.2827_0.307040161403.CDS
+NC_001604	TMHMM	Topological domain	15316	15375	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_25-fea2e54b-e2fa-47d6-8a46-35e7ba119b92
+NC_001604	TMHMM	Transmembrane	15247	15315	.	-	.	Note=Helical;Parent=tmhmm_tmd_25-fea2e54b-e2fa-47d6-8a46-35e7ba119b92
+NC_001604	TMHMM	Topological domain	15202	15246	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_25-fea2e54b-e2fa-47d6-8a46-35e7ba119b92
+NC_001604	feature	Chain	15202	15342	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_26-93e5780e-9be1-40a4-bd26-7389d5e7eb9b;Note=Transmembrane protein - N out C in;Target=ORF.0.2828_0.260962590428.CDS
+NC_001604	TMHMM	Topological domain	15319	15345	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_26-93e5780e-9be1-40a4-bd26-7389d5e7eb9b
+NC_001604	TMHMM	Transmembrane	15250	15318	.	-	.	Note=Helical;Parent=tmhmm_tmd_26-93e5780e-9be1-40a4-bd26-7389d5e7eb9b
+NC_001604	TMHMM	Topological domain	15202	15249	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_26-93e5780e-9be1-40a4-bd26-7389d5e7eb9b
+NC_001604	feature	Chain	15284	15472	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_27-6d85b6cd-a56e-40fc-878e-b22c2200c4ab;Note=Transmembrane protein - N out C in;Target=ORF.0.742_0.279076184927.CDS
+NC_001604	TMHMM	Topological domain	15281	15307	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_27-6d85b6cd-a56e-40fc-878e-b22c2200c4ab
+NC_001604	TMHMM	Transmembrane	15308	15376	.	+	.	Note=Helical;Parent=tmhmm_tmd_27-6d85b6cd-a56e-40fc-878e-b22c2200c4ab
+NC_001604	TMHMM	Topological domain	15377	15472	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_27-6d85b6cd-a56e-40fc-878e-b22c2200c4ab
+NC_001604	feature	Chain	15299	15472	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_28-4218c6d9-3c61-460b-a5bc-ca1850343359;Note=Transmembrane protein - N out C in;Target=ORF.0.743_0.95824473196.CDS
+NC_001604	TMHMM	Topological domain	15296	15304	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_28-4218c6d9-3c61-460b-a5bc-ca1850343359
+NC_001604	TMHMM	Transmembrane	15305	15373	.	+	.	Note=Helical;Parent=tmhmm_tmd_28-4218c6d9-3c61-460b-a5bc-ca1850343359
+NC_001604	TMHMM	Topological domain	15374	15472	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_28-4218c6d9-3c61-460b-a5bc-ca1850343359
+NC_001604	feature	Chain	15605	15742	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_29-27cc050f-d992-4235-b275-5c310a52e21c;Note=Transmembrane protein - N in C out;Target=ORF.0.758_0.969642398146.CDS
+NC_001604	TMHMM	Topological domain	15602	15670	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_29-27cc050f-d992-4235-b275-5c310a52e21c
+NC_001604	TMHMM	Transmembrane	15671	15739	.	+	.	Note=Helical;Parent=tmhmm_tmd_29-27cc050f-d992-4235-b275-5c310a52e21c
+NC_001604	TMHMM	Topological domain	15740	15742	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_29-27cc050f-d992-4235-b275-5c310a52e21c
+NC_001604	feature	Chain	15641	15742	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_30-72609b3e-5be8-483f-8752-ea05dcd993bc;Note=Transmembrane protein - N in C out;Target=ORF.0.761_0.606943986845.CDS
+NC_001604	TMHMM	Topological domain	15638	15670	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_30-72609b3e-5be8-483f-8752-ea05dcd993bc
+NC_001604	TMHMM	Transmembrane	15671	15739	.	+	.	Note=Helical;Parent=tmhmm_tmd_30-72609b3e-5be8-483f-8752-ea05dcd993bc
+NC_001604	TMHMM	Topological domain	15740	15742	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_30-72609b3e-5be8-483f-8752-ea05dcd993bc
+NC_001604	feature	Chain	15650	15742	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_31-fb6d4868-d423-49f2-a541-7ec3cea828e9;Note=Transmembrane protein - N in C out;Target=ORF.0.762_0.807724849681.CDS
+NC_001604	TMHMM	Topological domain	15647	15670	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_31-fb6d4868-d423-49f2-a541-7ec3cea828e9
+NC_001604	TMHMM	Transmembrane	15671	15739	.	+	.	Note=Helical;Parent=tmhmm_tmd_31-fb6d4868-d423-49f2-a541-7ec3cea828e9
+NC_001604	TMHMM	Topological domain	15740	15742	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_31-fb6d4868-d423-49f2-a541-7ec3cea828e9
+NC_001604	feature	Chain	18259	18378	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_32-fac3bca1-fb85-4c82-9c68-28f24d6723b7;Note=Transmembrane protein - N in C out;Target=ORF.0.2763_0.0976798882623.CDS
+NC_001604	TMHMM	Topological domain	18349	18381	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_32-fac3bca1-fb85-4c82-9c68-28f24d6723b7
+NC_001604	TMHMM	Transmembrane	18289	18348	.	-	.	Note=Helical;Parent=tmhmm_tmd_32-fac3bca1-fb85-4c82-9c68-28f24d6723b7
+NC_001604	TMHMM	Topological domain	18259	18288	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_32-fac3bca1-fb85-4c82-9c68-28f24d6723b7
+NC_001604	feature	Chain	18397	18504	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_33-5de09f17-eff3-46d8-abe6-96ae4dfd69fc;Note=Transmembrane protein - N out C in;Target=ORF.0.298_0.896134049513.CDS
+NC_001604	TMHMM	Topological domain	18394	18405	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_33-5de09f17-eff3-46d8-abe6-96ae4dfd69fc
+NC_001604	TMHMM	Transmembrane	18406	18465	.	+	.	Note=Helical;Parent=tmhmm_tmd_33-5de09f17-eff3-46d8-abe6-96ae4dfd69fc
+NC_001604	TMHMM	Topological domain	18466	18504	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_33-5de09f17-eff3-46d8-abe6-96ae4dfd69fc
+NC_001604	feature	Chain	18577	18693	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_34-b3424672-5d80-42eb-a2cb-7ca7a549b9de;Note=Transmembrane protein - N out C in;Target=ORF.0.2761_0.226398266856.CDS
+NC_001604	TMHMM	Topological domain	18670	18696	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_34-b3424672-5d80-42eb-a2cb-7ca7a549b9de
+NC_001604	TMHMM	Transmembrane	18601	18669	.	-	.	Note=Helical;Parent=tmhmm_tmd_34-b3424672-5d80-42eb-a2cb-7ca7a549b9de
+NC_001604	TMHMM	Topological domain	18577	18600	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_34-b3424672-5d80-42eb-a2cb-7ca7a549b9de
+NC_001604	feature	Chain	19351	19761	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_35-6ad75bad-a355-49a8-ae3b-b61762d6bde7;Note=Transmembrane protein - N out C in;Target=ORF.0.2751_0.199850521186.CDS
+NC_001604	TMHMM	Topological domain	19588	19764	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_35-6ad75bad-a355-49a8-ae3b-b61762d6bde7
+NC_001604	TMHMM	Transmembrane	19519	19587	.	-	.	Note=Helical;Parent=tmhmm_tmd_35-6ad75bad-a355-49a8-ae3b-b61762d6bde7
+NC_001604	TMHMM	Topological domain	19351	19518	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_35-6ad75bad-a355-49a8-ae3b-b61762d6bde7
+NC_001604	feature	Chain	28523	29278	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_36-7ccd4500-53cb-4119-b088-ef9b6866ee18;Note=Transmembrane protein - N in C out;Target=ORF.0.2112_0.388955799353.CDS
+NC_001604	TMHMM	Topological domain	28784	29281	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_36-7ccd4500-53cb-4119-b088-ef9b6866ee18
+NC_001604	TMHMM	Transmembrane	28715	28783	.	-	.	Note=Helical;Parent=tmhmm_tmd_36-7ccd4500-53cb-4119-b088-ef9b6866ee18
+NC_001604	TMHMM	Topological domain	28523	28714	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_36-7ccd4500-53cb-4119-b088-ef9b6866ee18
+NC_001604	feature	Chain	28938	29054	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_37-ec9fa92b-dbcb-4a7d-b3fc-d045ef990d91;Note=Transmembrane protein - N in C out;Target=ORF.0.1946_0.470938817659.CDS
+NC_001604	TMHMM	Topological domain	28935	28952	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_37-ec9fa92b-dbcb-4a7d-b3fc-d045ef990d91
+NC_001604	TMHMM	Transmembrane	28953	29021	.	+	.	Note=Helical;Parent=tmhmm_tmd_37-ec9fa92b-dbcb-4a7d-b3fc-d045ef990d91
+NC_001604	TMHMM	Topological domain	29022	29054	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_37-ec9fa92b-dbcb-4a7d-b3fc-d045ef990d91
+NC_001604	feature	Chain	31172	31426	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_38-0ea85e17-7ecf-46ca-964a-c360e66fba68;Note=Transmembrane protein - N out C in;Target=ORF.0.1262_0.230588376361.CDS
+NC_001604	TMHMM	Topological domain	31169	31318	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_38-0ea85e17-7ecf-46ca-964a-c360e66fba68
+NC_001604	TMHMM	Transmembrane	31319	31372	.	+	.	Note=Helical;Parent=tmhmm_tmd_38-0ea85e17-7ecf-46ca-964a-c360e66fba68
+NC_001604	TMHMM	Topological domain	31373	31426	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_38-0ea85e17-7ecf-46ca-964a-c360e66fba68
+NC_001604	feature	Chain	31250	31426	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_39-2b22fdd8-dc82-4ab8-ae3e-f30c5314fae5;Note=Transmembrane protein - N out C in;Target=ORF.0.1263_0.7051683867.CDS
+NC_001604	TMHMM	Topological domain	31247	31303	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_39-2b22fdd8-dc82-4ab8-ae3e-f30c5314fae5
+NC_001604	TMHMM	Transmembrane	31304	31372	.	+	.	Note=Helical;Parent=tmhmm_tmd_39-2b22fdd8-dc82-4ab8-ae3e-f30c5314fae5
+NC_001604	TMHMM	Topological domain	31373	31426	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_39-2b22fdd8-dc82-4ab8-ae3e-f30c5314fae5
+NC_001604	feature	Chain	31292	31426	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_40-5f3b3b76-c62e-4936-8d3d-78e71f81949a;Note=Transmembrane protein - N out C in;Target=ORF.0.1264_0.997259655684.CDS
+NC_001604	TMHMM	Topological domain	31289	31315	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_40-5f3b3b76-c62e-4936-8d3d-78e71f81949a
+NC_001604	TMHMM	Transmembrane	31316	31372	.	+	.	Note=Helical;Parent=tmhmm_tmd_40-5f3b3b76-c62e-4936-8d3d-78e71f81949a
+NC_001604	TMHMM	Topological domain	31373	31426	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_40-5f3b3b76-c62e-4936-8d3d-78e71f81949a
+NC_001604	feature	Chain	33913	34548	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_41-366d135b-3f32-4e85-a42b-79d65e6f26d6;Note=Transmembrane protein - N in C out;Target=ORF.0.470_0.0223503021819.CDS
+NC_001604	TMHMM	Topological domain	33910	33990	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_41-366d135b-3f32-4e85-a42b-79d65e6f26d6
+NC_001604	TMHMM	Transmembrane	33991	34059	.	+	.	Note=Helical;Parent=tmhmm_tmd_41-366d135b-3f32-4e85-a42b-79d65e6f26d6
+NC_001604	TMHMM	Topological domain	34060	34548	.	+	.	Parent=tmhmm_tmd_41-366d135b-3f32-4e85-a42b-79d65e6f26d6
+NC_001604	feature	Chain	36347	36544	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_42-e8edf813-5edf-4572-b01e-a338e0b87f22;Note=Transmembrane protein - N out C in;Target=ORF.0.1312_0.680684781715.CDS
+NC_001604	TMHMM	Topological domain	36344	36451	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_42-e8edf813-5edf-4572-b01e-a338e0b87f22
+NC_001604	TMHMM	Transmembrane	36452	36508	.	+	.	Note=Helical;Parent=tmhmm_tmd_42-e8edf813-5edf-4572-b01e-a338e0b87f22
+NC_001604	TMHMM	Topological domain	36509	36544	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_42-e8edf813-5edf-4572-b01e-a338e0b87f22
+NC_001604	feature	Chain	37001	37102	.	-	.	Description=Transmembrane protein;ID=tmhmm_tmd_43-a4f91c3c-dde7-4dd4-8420-df0050dd1146;Note=Transmembrane protein - N in C out;Target=ORF.0.2065_0.772127826341.CDS
+NC_001604	TMHMM	Topological domain	37073	37105	.	-	.	Note=Cytoplasmic;Parent=tmhmm_tmd_43-a4f91c3c-dde7-4dd4-8420-df0050dd1146
+NC_001604	TMHMM	Transmembrane	37004	37072	.	-	.	Note=Helical;Parent=tmhmm_tmd_43-a4f91c3c-dde7-4dd4-8420-df0050dd1146
+NC_001604	TMHMM	Topological domain	37001	37003	.	-	.	Note=Extracellular;Parent=tmhmm_tmd_43-a4f91c3c-dde7-4dd4-8420-df0050dd1146
+NC_001604	feature	Chain	37035	37280	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_44-b4121b3a-f384-4f27-8abb-e14261bfd2fd;Note=Transmembrane protein - N in C out;Target=ORF.0.1961_0.261039005028.CDS
+NC_001604	TMHMM	Topological domain	37032	37112	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_44-b4121b3a-f384-4f27-8abb-e14261bfd2fd
+NC_001604	TMHMM	Transmembrane	37113	37181	.	+	.	Note=Helical;Parent=tmhmm_tmd_44-b4121b3a-f384-4f27-8abb-e14261bfd2fd
+NC_001604	TMHMM	Topological domain	37182	37280	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_44-b4121b3a-f384-4f27-8abb-e14261bfd2fd
+NC_001604	feature	Chain	39392	39535	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_45-ec6c20e1-8a25-47bf-8ded-cbe854809ce3;Note=Transmembrane protein - N in C out;Target=ORF.0.1414_0.296990322019.CDS
+NC_001604	TMHMM	Topological domain	39389	39424	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_45-ec6c20e1-8a25-47bf-8ded-cbe854809ce3
+NC_001604	TMHMM	Transmembrane	39425	39478	.	+	.	Note=Helical;Parent=tmhmm_tmd_45-ec6c20e1-8a25-47bf-8ded-cbe854809ce3
+NC_001604	TMHMM	Topological domain	39479	39535	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_45-ec6c20e1-8a25-47bf-8ded-cbe854809ce3
+NC_001604	feature	Chain	39456	39554	.	+	.	Description=Transmembrane protein;ID=tmhmm_tmd_46-bb7be945-aca9-4ef4-93f5-4de3337ea164;Note=Transmembrane protein - N out C in;Target=ORF.0.2021_0.203671539857.CDS
+NC_001604	TMHMM	Topological domain	39453	39494	.	+	.	Note=Extracellular;Parent=tmhmm_tmd_46-bb7be945-aca9-4ef4-93f5-4de3337ea164
+NC_001604	TMHMM	Transmembrane	39495	39548	.	+	.	Note=Helical;Parent=tmhmm_tmd_46-bb7be945-aca9-4ef4-93f5-4de3337ea164
+NC_001604	TMHMM	Topological domain	39549	39554	.	+	.	Note=Cytoplasmic;Parent=tmhmm_tmd_46-bb7be945-aca9-4ef4-93f5-4de3337ea164

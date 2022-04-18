@@ -1,0 +1,336 @@
+# ORF.0.472_0.8077298255.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.472_0.8077298255.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.465_0.466377183402.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.465_0.466377183402.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.466_0.685859290271.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.466_0.685859290271.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.468_0.803001272192.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.468_0.803001272192.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.708_0.889453606077.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.708_0.889453606077.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.458_0.61399204562.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.458_0.61399204562.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.459_0.323250347541.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.459_0.323250347541.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.460_0.509039455004.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.460_0.509039455004.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.461_0.392081904542.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.461_0.392081904542.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.699_0.764949625216.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.699_0.764949625216.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.703_0.981371874022.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.703_0.981371874022.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.705_0.438813830323.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.705_0.438813830323.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.622_0.865794102081.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.622_0.865794102081.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.623_0.846988205141.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.623_0.846988205141.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.625_0.0578111846669.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.625_0.0578111846669.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.626_0.303786861772.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.626_0.303786861772.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.630_0.467112600707.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.630_0.467112600707.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.631_0.2883116125.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.631_0.2883116125.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.636_0.876600016398.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.636_0.876600016398.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.640_0.0888066128056.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.640_0.0888066128056.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.655_0.212962186525.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.655_0.212962186525.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.659_0.370352364369.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.659_0.370352364369.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.660_0.561664408596.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.660_0.561664408596.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.662_0.547739243117.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.662_0.547739243117.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.667_0.381504311163.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.667_0.381504311163.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.457_0.112605087319.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.457_0.112605087319.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.518_0.704496503167.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.518_0.704496503167.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.531_0.284124356131.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.531_0.284124356131.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.534_0.230486359187.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.534_0.230486359187.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.549_0.435747482069.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.549_0.435747482069.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.603_0.488926379773.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.603_0.488926379773.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.605_0.950422684088.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.605_0.950422684088.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.606_0.329949811104.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.606_0.329949811104.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.611_0.815705221168.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.611_0.815705221168.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.613_0.104890641676.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.613_0.104890641676.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.17_0.711047642618.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.17_0.711047642618.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.139_0.904626958426.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.139_0.904626958426.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.445_0.286571403109.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.445_0.286571403109.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.345_0.971616620883.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.345_0.971616620883.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.347_0.0208968983552.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.347_0.0208968983552.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.517_0.929120702544.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.517_0.929120702544.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.146_0.351389104617.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.146_0.351389104617.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.439_0.445866101899.CDS TMH score=6.51858 margin=6.713639
+# Cut-off=-3
+ORF.0.439_0.445866101899.CDS	LipoP1.0:Best	TMH	1	1	6.51858
+ORF.0.439_0.445866101899.CDS	LipoP1.0:Margin	TMH	1	1	6.713639
+ORF.0.439_0.445866101899.CDS	LipoP1.0:Class	SpI	1	1	-0.195059
+ORF.0.439_0.445866101899.CDS	LipoP1.0:Class	CYT	1	1	-0.200913
+ORF.0.439_0.445866101899.CDS	LipoP1.0:Signal	CleavI	20	21	-0.295218	# SPGVP|CIMLL
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.440_0.915263915342.CDS TMH score=0.241158 margin=0.442071
+# Cut-off=-3
+ORF.0.440_0.915263915342.CDS	LipoP1.0:Best	TMH	1	1	0.241158
+ORF.0.440_0.915263915342.CDS	LipoP1.0:Margin	TMH	1	1	0.442071
+ORF.0.440_0.915263915342.CDS	LipoP1.0:Class	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.183_0.0663532791257.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.183_0.0663532791257.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.185_0.343675913625.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.185_0.343675913625.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.580_0.42130451371.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.580_0.42130451371.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.429_0.211525337226.CDS CYT score=-0.200913 margin=0.370359
+# Cut-off=-3
+ORF.0.429_0.211525337226.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+ORF.0.429_0.211525337226.CDS	LipoP1.0:Margin	CYT	1	1	0.370359
+ORF.0.429_0.211525337226.CDS	LipoP1.0:Class	TMH	1	1	-0.571272
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.202_0.502577350308.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.202_0.502577350308.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.217_0.854168148494.CDS CYT score=-0.200913 margin=1.810677
+# Cut-off=-3
+ORF.0.217_0.854168148494.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+ORF.0.217_0.854168148494.CDS	LipoP1.0:Margin	CYT	1	1	1.810677
+ORF.0.217_0.854168148494.CDS	LipoP1.0:Class	SpI	1	1	-2.01159
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.224_0.295192659405.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.224_0.295192659405.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.355_0.773691408662.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.355_0.773691408662.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.571_0.245647554641.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.571_0.245647554641.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.492_0.914947831416.CDS CYT score=-0.200913 margin=0.188252
+# Cut-off=-3
+ORF.0.492_0.914947831416.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+ORF.0.492_0.914947831416.CDS	LipoP1.0:Margin	CYT	1	1	0.188252
+ORF.0.492_0.914947831416.CDS	LipoP1.0:Class	TMH	1	1	-0.389165
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.494_0.190486747638.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.494_0.190486747638.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.33_0.821816667683.CDS CYT score=-0.200913 margin=1.151907
+# Cut-off=-3
+ORF.0.33_0.821816667683.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+ORF.0.33_0.821816667683.CDS	LipoP1.0:Margin	CYT	1	1	1.151907
+ORF.0.33_0.821816667683.CDS	LipoP1.0:Class	TMH	1	1	-1.35282
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.34_0.707053863467.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.34_0.707053863467.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.231_0.000923123852602.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.231_0.000923123852602.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.233_0.405974692709.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.233_0.405974692709.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.237_0.755472071473.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.237_0.755472071473.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.238_0.914046339376.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.238_0.914046339376.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.365_0.2945108684.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.365_0.2945108684.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.50_0.415010657017.CDS SpII score=5.92551 margin=3.72509 cleavage=17-18 Pos+2=L
+# Cut-off=-3
+ORF.0.50_0.415010657017.CDS	LipoP1.0:Best	SpII	1	1	5.92551
+ORF.0.50_0.415010657017.CDS	LipoP1.0:Margin	SpII	1	1	3.72509
+ORF.0.50_0.415010657017.CDS	LipoP1.0:Class	SpI	1	1	2.20042
+ORF.0.50_0.415010657017.CDS	LipoP1.0:Class	CYT	1	1	-0.200913
+ORF.0.50_0.415010657017.CDS	LipoP1.0:Signal	CleavII	17	18	5.9255	# ICIIV|CLSWA Pos+2=L
+ORF.0.50_0.415010657017.CDS	LipoP1.0:Signal	CleavI	22	23	2.16267	# CLSWA|VNHYR
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.247_0.938715889806.CDS SpII score=19.8902 margin=11.77152 cleavage=19-20 Pos+2=T
+# Cut-off=-3
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Best	SpII	1	1	19.8902
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Margin	SpII	1	1	11.77152
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Class	SpI	1	1	8.11868
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Class	CYT	1	1	-0.200913
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Class	TMH	1	1	-1.32568
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavII	19	20	19.8902	# LVVVG|CTSKQ Pos+2=T
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	25	26	6.80431	# TSKQS|VSQCV
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	19	20	6.49651	# LVVVG|CTSKQ
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	22	23	5.34572	# VGCTS|KQSVS
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	23	24	3.96804	# GCTSK|QSVSQ
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	26	27	2.72646	# SKQSV|SQCVK
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	27	28	2.57107	# KQSVS|QCVKP
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	24	25	1.65562	# CTSKQ|SVSQC
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	17	18	1.37856	# LPLVV|VGCTS
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	21	22	-0.782641	# VVGCT|SKQSV
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	28	29	-1.09651	# QSVSQ|CVKPP
+ORF.0.247_0.938715889806.CDS	LipoP1.0:Signal	CleavI	20	21	-2.99138	# VVVGC|TSKQS
+# ORF.0.65_0.403948729686.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.65_0.403948729686.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.380_0.771335496557.CDS CYT score=-0.200913 margin=1.869487
+# Cut-off=-3
+ORF.0.380_0.771335496557.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+ORF.0.380_0.771335496557.CDS	LipoP1.0:Margin	CYT	1	1	1.869487
+ORF.0.380_0.771335496557.CDS	LipoP1.0:Class	TMH	1	1	-2.0704
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.391_0.169373954797.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.391_0.169373954797.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.400_0.811321232506.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.400_0.811321232506.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.260_0.577298671452.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.260_0.577298671452.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.261_0.357298653378.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.261_0.357298653378.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.268_0.501011908227.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.268_0.501011908227.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.269_0.219984821414.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.269_0.219984821414.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.278_0.44001518346.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.278_0.44001518346.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.81_0.839099082128.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.81_0.839099082128.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted
+# ORF.0.87_0.518549362319.CDS CYT score=-0.200913
+# Cut-off=-3
+ORF.0.87_0.518549362319.CDS	LipoP1.0:Best	CYT	1	1	-0.200913
+# NO PLOT made - less than 4 putative cleavage sites predicted

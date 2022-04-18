@@ -26,10 +26,10 @@ $filterSP2
   </outputs>
   <tests>
     <test>
-      <param name="lipoIn" value="GalPub.txt" />
-      <param name="gff3In" value="GalPub.gff3" />
+      <param name="lipoIn" value="LipoToGFF_In.txt" />
+      <param name="gff3In" value="LipoToGFF_In.gff3" />
       <param name="jBrowseOut" value="True" />
-      <output name="stdout" value="GalPubExt.gff3" />
+      <output name="stdout" value="LipoToGFF_Out.gff3" />
     </test>
   </tests>
   <help><![CDATA[

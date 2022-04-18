@@ -1,0 +1,2 @@
+##gff-version 3
+PhageBob	blastp	match_part	300	449	1e-40	+	.	ID=m00001;Notes=RNAse A Protein;

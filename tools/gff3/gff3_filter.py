@@ -16,12 +16,15 @@ def gff_filter(gff3, id_list=None, id="", attribute_field="ID", subfeatures=True
     else:
         filter_strings = [x.strip() for x in id.split("__cn__")]
     for rec in gffParse(gff3):
-        rec.features = feature_lambda(
+        tmpRes = feature_lambda(        
             rec.features,
             feature_test_qual_value,
             {"qualifier": attribute_field, "attribute_list": filter_strings},
             subfeatures=subfeatures,
         )
+        rec.features = []
+        for i in tmpRes:
+          rec.features.append(i)
         rec.annotations = {}
         gffWrite([rec], sys.stdout)
 

@@ -1,0 +1,292 @@
+##gff-version 3
+##sequence-region Pipo 1 41839
+Pipo	annotation	remark	1	41839	.	.	.	gff-version=3;sequence-region=%28%27NODE_1_length_42045_cov_96%27%2C 0%2C 41956%29
+Pipo	GenBank	gene	258	566	.	+	1	ID=CPT_Pipo_001;Name=CPT_Pipo_001
+Pipo	GenBank	mRNA	273	566	.	+	1	ID=CPT_Pipo_001.t01;Parent=CPT_Pipo_001
+Pipo	GenBank	CDS	273	566	.	+	1	ID=CPT_Pipo_001.p01;Name=CPT_Pipo_001;Note=detected two transmembrane domains,8782901 HHPR;Parent=CPT_Pipo_001.t01;product=hypothetical protein
+Pipo	GenBank	exon	273	566	.	+	1	Parent=CPT_Pipo_001.t01
+Pipo	GenBank	RBS	258	261	.	+	1	Name=CPT_Pipo_001;Parent=CPT_Pipo_001
+Pipo	GenBank	gene	841	1031	.	+	1	ID=CPT_Pipo_002;Name=CPT_Pipo_002
+Pipo	GenBank	mRNA	852	1031	.	+	1	ID=CPT_Pipo_002.t01;Parent=CPT_Pipo_002
+Pipo	GenBank	CDS	852	1031	.	+	1	ID=CPT_Pipo_002.p01;Name=CPT_Pipo_002;Note=4.9466e-34 %5BAcinetobacter phage vB_ApiP_P1%5D;Parent=CPT_Pipo_002.t01;product=hypothetical protein
+Pipo	GenBank	exon	852	1031	.	+	1	Parent=CPT_Pipo_002.t01
+Pipo	GenBank	RBS	841	844	.	+	1	Name=CPT_Pipo_002;Parent=CPT_Pipo_002
+Pipo	GenBank	gene	1090	1303	.	+	1	ID=CPT_Pipo_003;Name=CPT_Pipo_003
+Pipo	GenBank	mRNA	1100	1303	.	+	1	ID=CPT_Pipo_003.t01;Parent=CPT_Pipo_003
+Pipo	GenBank	CDS	1100	1303	.	+	1	ID=CPT_Pipo_003.p01;Name=CPT_Pipo_003;Note=1.1538e-41%5BAcinetobacter phage vB_AbaP_B09_Aci08%5D;Parent=CPT_Pipo_003.t01;product=hypothetical protein
+Pipo	GenBank	exon	1100	1303	.	+	1	Parent=CPT_Pipo_003.t01
+Pipo	GenBank	RBS	1090	1092	.	+	1	Name=CPT_Pipo_003;Parent=CPT_Pipo_003
+Pipo	GenBank	gene	1732	1992	.	+	1	ID=CPT_Pipo_004;Name=CPT_Pipo_004
+Pipo	GenBank	mRNA	1744	1992	.	+	1	ID=CPT_Pipo_004.t01;Parent=CPT_Pipo_004
+Pipo	GenBank	CDS	1744	1992	.	+	1	ID=CPT_Pipo_004.p01;Name=CPT_Pipo_004;Note=8.14463e-44 %5BAcinetobacter phage vB_AbaP_46-62_Aci07%5D;Parent=CPT_Pipo_004.t01;product=hypothetical protein
+Pipo	GenBank	exon	1744	1992	.	+	1	Parent=CPT_Pipo_004.t01
+Pipo	GenBank	RBS	1732	1736	.	+	1	Name=CPT_Pipo_004;Parent=CPT_Pipo_004
+Pipo	GenBank	gene	2008	2572	.	+	1	ID=CPT_Pipo_005;Name=CPT_Pipo_005
+Pipo	GenBank	mRNA	2021	2572	.	+	1	ID=CPT_Pipo_005.t01;Parent=CPT_Pipo_005
+Pipo	GenBank	CDS	2021	2572	.	+	1	ID=CPT_Pipo_005.p01;Name=CPT_Pipo_005;Note=3.57359e-23 phiKMV NP_877442.1;Parent=CPT_Pipo_005.t01;product=hypothetical protein
+Pipo	GenBank	exon	2021	2572	.	+	1	Parent=CPT_Pipo_005.t01
+Pipo	GenBank	RBS	2008	2010	.	+	1	Name=CPT_Pipo_005;Parent=CPT_Pipo_005
+Pipo	GenBank	gene	2564	2948	.	+	1	ID=CPT_Pipo_006;Name=CPT_Pipo_006
+Pipo	GenBank	mRNA	2574	2948	.	+	1	ID=CPT_Pipo_006.t01;Parent=CPT_Pipo_006
+Pipo	GenBank	CDS	2574	2948	.	+	1	ID=CPT_Pipo_006.p01;Name=CPT_Pipo_006;Note=1.39987e-77 %5BAcinetobacter phage IME200%5D,detected coil fragment;Parent=CPT_Pipo_006.t01;product=hypothetical protein
+Pipo	GenBank	exon	2574	2948	.	+	1	Parent=CPT_Pipo_006.t01
+Pipo	GenBank	RBS	2564	2567	.	+	1	Name=CPT_Pipo_006;Parent=CPT_Pipo_006
+Pipo	GenBank	gene	2930	3052	.	+	1	ID=CPT_Pipo_007;Name=CPT_Pipo_007
+Pipo	GenBank	mRNA	2939	3052	.	+	1	ID=CPT_Pipo_007.t01;Parent=CPT_Pipo_007
+Pipo	GenBank	CDS	2939	3052	.	+	1	ID=CPT_Pipo_007.p01;Name=CPT_Pipo_007;Parent=CPT_Pipo_007.t01;product=hypothetical protein
+Pipo	GenBank	exon	2939	3052	.	+	1	Parent=CPT_Pipo_007.t01
+Pipo	GenBank	RBS	2930	2933	.	+	1	Name=CPT_Pipo_007;Parent=CPT_Pipo_007
+Pipo	GenBank	gene	3027	3263	.	+	1	ID=CPT_Pipo_008;Name=CPT_Pipo_008
+Pipo	GenBank	mRNA	3039	3263	.	+	1	ID=CPT_Pipo_008.t01;Parent=CPT_Pipo_008
+Pipo	GenBank	CDS	3039	3263	.	+	1	ID=CPT_Pipo_008.p01;Name=CPT_Pipo_008;Note=2.88488e-44 %5BAcinetobacter phage Fri1%5D;Parent=CPT_Pipo_008.t01;product=hypothetical protein
+Pipo	GenBank	exon	3039	3263	.	+	1	Parent=CPT_Pipo_008.t01
+Pipo	GenBank	RBS	3027	3030	.	+	1	Name=CPT_Pipo_008;Parent=CPT_Pipo_008
+Pipo	GenBank	gene	3336	3944	.	+	1	ID=CPT_Pipo_009;Name=CPT_Pipo_009
+Pipo	GenBank	mRNA	3348	3944	.	+	1	ID=CPT_Pipo_009.t01;Parent=CPT_Pipo_009
+Pipo	GenBank	CDS	3348	3944	.	+	1	ID=CPT_Pipo_009.p01;Name=CPT_Pipo_009;Note=2.06752e-145 %5BAcinetobacter phage vB_AbaP_B1%5D;Parent=CPT_Pipo_009.t01;product=hypothetical protein
+Pipo	GenBank	exon	3348	3944	.	+	1	Parent=CPT_Pipo_009.t01
+Pipo	GenBank	RBS	3336	3339	.	+	1	Name=CPT_Pipo_009;Parent=CPT_Pipo_009
+Pipo	GenBank	gene	4047	4550	.	+	1	ID=CPT_Pipo_010;Name=CPT_Pipo_010
+Pipo	GenBank	mRNA	4059	4550	.	+	1	ID=CPT_Pipo_010.t01;Parent=CPT_Pipo_010
+Pipo	GenBank	CDS	4059	4550	.	+	1	ID=CPT_Pipo_010.p01;Name=CPT_Pipo_010;Note=putative DNA-binding protein;Parent=CPT_Pipo_010.t01;product=hypothetical protein
+Pipo	GenBank	exon	4059	4550	.	+	1	Parent=CPT_Pipo_010.t01
+Pipo	GenBank	RBS	4047	4050	.	+	1	Name=CPT_Pipo_010;Parent=CPT_Pipo_010
+Pipo	GenBank	gene	4635	4779	.	+	1	ID=CPT_Pipo_011;Name=CPT_Pipo_011
+Pipo	GenBank	mRNA	4645	4779	.	+	1	ID=CPT_Pipo_011.t01;Parent=CPT_Pipo_011
+Pipo	GenBank	CDS	4645	4779	.	+	1	ID=CPT_Pipo_011.p01;Name=CPT_Pipo_011;Note=3.48784e-16 %5BAcinetobacter phage Abp1%5D;Parent=CPT_Pipo_011.t01;product=hypothetical protein
+Pipo	GenBank	exon	4645	4779	.	+	1	Parent=CPT_Pipo_011.t01
+Pipo	GenBank	RBS	4635	4638	.	+	1	Name=CPT_Pipo_011;Parent=CPT_Pipo_011
+Pipo	GenBank	gene	4757	4930	.	+	1	ID=CPT_Pipo_012;Name=CPT_Pipo_012
+Pipo	GenBank	mRNA	4772	4930	.	+	1	ID=CPT_Pipo_012.t01;Parent=CPT_Pipo_012
+Pipo	GenBank	CDS	4772	4930	.	+	1	ID=CPT_Pipo_012.p01;Name=CPT_Pipo_012;Note=1.10076e-24 %5BAcinetobacter phage vB_AbaP_D2%5D,putative membrane protein;Parent=CPT_Pipo_012.t01;product=hypothetical protein
+Pipo	GenBank	exon	4772	4930	.	+	1	Parent=CPT_Pipo_012.t01
+Pipo	GenBank	RBS	4757	4760	.	+	1	Name=CPT_Pipo_012;Parent=CPT_Pipo_012
+Pipo	GenBank	gene	4929	5337	.	+	1	ID=CPT_Pipo_013;Name=CPT_Pipo_013
+Pipo	GenBank	mRNA	4939	5337	.	+	1	ID=CPT_Pipo_013.t01;Parent=CPT_Pipo_013
+Pipo	GenBank	CDS	4939	5337	.	+	1	ID=CPT_Pipo_013.p01;Name=CPT_Pipo_013;Note=5.08591e-94 %5BAcinetobacter phage vB_ApiP_P2 %5D;Parent=CPT_Pipo_013.t01;product=hypothetical protein
+Pipo	GenBank	exon	4939	5337	.	+	1	Parent=CPT_Pipo_013.t01
+Pipo	GenBank	RBS	4929	4932	.	+	1	Name=CPT_Pipo_013;Parent=CPT_Pipo_013
+Pipo	GenBank	gene	5396	5887	.	+	1	ID=CPT_Pipo_014;Name=CPT_Pipo_014
+Pipo	GenBank	mRNA	5408	5887	.	+	1	ID=CPT_Pipo_014.t01;Parent=CPT_Pipo_014
+Pipo	GenBank	CDS	5408	5887	.	+	1	ID=CPT_Pipo_014.p01;Name=CPT_Pipo_014;Note=8.66443e-113 Acinetobacter phage phiAB6;Parent=CPT_Pipo_014.t01;product=hypothetical protein
+Pipo	GenBank	exon	5408	5887	.	+	1	Parent=CPT_Pipo_014.t01
+Pipo	GenBank	RBS	5396	5400	.	+	1	Name=CPT_Pipo_014;Parent=CPT_Pipo_014
+Pipo	GenBank	gene	5875	6194	.	+	1	ID=CPT_Pipo_015;Name=CPT_Pipo_015
+Pipo	GenBank	mRNA	5889	6194	.	+	1	ID=CPT_Pipo_015.t01;Parent=CPT_Pipo_015
+Pipo	GenBank	CDS	5889	6194	.	+	1	ID=CPT_Pipo_015.p01;Name=CPT_Pipo_015;Note=2.41773e-33 Acinetobacter phage vB_AbaP_B1;Parent=CPT_Pipo_015.t01;product=hypothetical protein
+Pipo	GenBank	exon	5889	6194	.	+	1	Parent=CPT_Pipo_015.t01
+Pipo	GenBank	RBS	5875	5879	.	+	1	Name=CPT_Pipo_015;Parent=CPT_Pipo_015
+Pipo	GenBank	gene	6221	6340	.	+	1	ID=CPT_Pipo_016;Name=CPT_Pipo_016
+Pipo	GenBank	mRNA	6221	6340	.	+	1	ID=CPT_Pipo_016.t01;Parent=CPT_Pipo_016
+Pipo	GenBank	CDS	6221	6340	.	+	1	ID=CPT_Pipo_016.p01;Name=CPT_Pipo_016;Parent=CPT_Pipo_016.t01;product=hypothetical protein
+Pipo	GenBank	exon	6221	6340	.	+	1	Parent=CPT_Pipo_016.t01
+Pipo	GenBank	gene	6342	6518	.	+	1	ID=CPT_Pipo_017;Name=CPT_Pipo_017
+Pipo	GenBank	mRNA	6351	6518	.	+	1	ID=CPT_Pipo_017.t01;Parent=CPT_Pipo_017
+Pipo	GenBank	CDS	6351	6518	.	+	1	ID=CPT_Pipo_017.p01;Name=CPT_Pipo_017;Note=detected coil fragment,9.9476e-30 Acinetobacter phage vB_AbaP_B5;Parent=CPT_Pipo_017.t01;product=hypothetical protein
+Pipo	GenBank	exon	6351	6518	.	+	1	Parent=CPT_Pipo_017.t01
+Pipo	GenBank	RBS	6342	6345	.	+	1	Name=CPT_Pipo_017;Parent=CPT_Pipo_017
+Pipo	GenBank	gene	6492	6696	.	+	1	ID=CPT_Pipo_018;Name=CPT_Pipo_018
+Pipo	GenBank	mRNA	6505	6696	.	+	1	ID=CPT_Pipo_018.t01;Parent=CPT_Pipo_018
+Pipo	GenBank	CDS	6505	6696	.	+	1	ID=CPT_Pipo_018.p01;Name=CPT_Pipo_018;Note=4.55802e-26 Acinetobacter phage vB_AbaP_B09_Aci08;Parent=CPT_Pipo_018.t01;product=hypothetical protein
+Pipo	GenBank	exon	6505	6696	.	+	1	Parent=CPT_Pipo_018.t01
+Pipo	GenBank	RBS	6492	6495	.	+	1	Name=CPT_Pipo_018;Parent=CPT_Pipo_018
+Pipo	GenBank	gene	6683	6923	.	+	1	ID=CPT_Pipo_019;Name=CPT_Pipo_019
+Pipo	GenBank	mRNA	6693	6923	.	+	1	ID=CPT_Pipo_019.t01;Parent=CPT_Pipo_019
+Pipo	GenBank	CDS	6693	6923	.	+	1	ID=CPT_Pipo_019.p01;Name=CPT_Pipo_019;Note=8.95155e-34 %5BAcinetobacter phage vB_AbaP_B5%5D;Parent=CPT_Pipo_019.t01;product=hypothetical protein
+Pipo	GenBank	exon	6693	6923	.	+	1	Parent=CPT_Pipo_019.t01
+Pipo	GenBank	RBS	6683	6686	.	+	1	Name=CPT_Pipo_019;Parent=CPT_Pipo_019
+Pipo	GenBank	gene	6899	7137	.	+	1	ID=CPT_Pipo_020;Name=CPT_Pipo_020
+Pipo	GenBank	mRNA	6913	7137	.	+	1	ID=CPT_Pipo_020.t01;Parent=CPT_Pipo_020
+Pipo	GenBank	CDS	6913	7137	.	+	1	ID=CPT_Pipo_020.p01;Name=CPT_Pipo_020;Note=2.54819e-39 %5BAcinetobacter phage IME200%5D;Parent=CPT_Pipo_020.t01;product=hypothetical protein
+Pipo	GenBank	exon	6913	7137	.	+	1	Parent=CPT_Pipo_020.t01
+Pipo	GenBank	RBS	6899	6903	.	+	1	Name=CPT_Pipo_020;Parent=CPT_Pipo_020
+Pipo	GenBank	gene	7150	7609	.	+	1	ID=CPT_Pipo_021;Name=CPT_Pipo_021
+Pipo	GenBank	mRNA	7160	7609	.	+	1	ID=CPT_Pipo_021.t01;Parent=CPT_Pipo_021
+Pipo	GenBank	CDS	7160	7609	.	+	1	ID=CPT_Pipo_021.p01;Name=CPT_Pipo_021;Note=IPR003615 potential putative HNH endonuclease,%5B1.0895e-17 Blast to T7 NP_041994.1%5Dand %5B0.00047196 blast to phage K YP_009041447.1%5D;Parent=CPT_Pipo_021.t01;product=hypothetical protein
+Pipo	GenBank	exon	7160	7609	.	+	1	Parent=CPT_Pipo_021.t01
+Pipo	GenBank	RBS	7150	7154	.	+	1	Name=CPT_Pipo_021;Parent=CPT_Pipo_021
+Pipo	GenBank	gene	7672	8394	.	+	1	ID=CPT_Pipo_022;Name=CPT_Pipo_022
+Pipo	GenBank	mRNA	7687	8394	.	+	1	ID=CPT_Pipo_022.t01;Parent=CPT_Pipo_022
+Pipo	GenBank	CDS	7687	8394	.	+	1	ID=CPT_Pipo_022.p01;Name=CPT_Pipo_022;Note=NP_877453.1 potential putative DNA-like primase,1.71113e-21;Parent=CPT_Pipo_022.t01;product=hypothetical protein
+Pipo	GenBank	exon	7687	8394	.	+	1	Parent=CPT_Pipo_022.t01
+Pipo	GenBank	RBS	7672	7674	.	+	1	Name=CPT_Pipo_022;Parent=CPT_Pipo_022
+Pipo	GenBank	gene	8383	8705	.	+	1	ID=CPT_Pipo_023;Name=CPT_Pipo_023
+Pipo	GenBank	mRNA	8394	8705	.	+	1	ID=CPT_Pipo_023.t01;Parent=CPT_Pipo_023
+Pipo	GenBank	CDS	8394	8705	.	+	1	ID=CPT_Pipo_023.p01;Name=CPT_Pipo_023;Note=3.11975e-49 %5BAcinetobacter phage vB_AbaP_B09_Aci08 %5D;Parent=CPT_Pipo_023.t01;product=hypothetical protein
+Pipo	GenBank	exon	8394	8705	.	+	1	Parent=CPT_Pipo_023.t01
+Pipo	GenBank	RBS	8383	8386	.	+	1	Name=CPT_Pipo_023;Parent=CPT_Pipo_023
+Pipo	GenBank	gene	8778	10086	.	+	1	ID=CPT_Pipo_024;Name=CPT_Pipo_024
+Pipo	GenBank	mRNA	8788	10086	.	+	1	ID=CPT_Pipo_024.t01;Parent=CPT_Pipo_024
+Pipo	GenBank	CDS	8788	10086	.	+	1	ID=CPT_Pipo_024.p01;Name=CPT_Pipo_024;Note=3.12672e-62,NP_877454.1 %5BphiKMVp15%5D;Parent=CPT_Pipo_024.t01;product=hypothetical protein
+Pipo	GenBank	exon	8788	10086	.	+	1	Parent=CPT_Pipo_024.t01
+Pipo	GenBank	RBS	8778	8781	.	+	1	Name=CPT_Pipo_024;Parent=CPT_Pipo_024
+Pipo	GenBank	gene	10079	10826	.	+	1	ID=CPT_Pipo_025;Name=CPT_Pipo_025
+Pipo	GenBank	mRNA	10089	10826	.	+	1	ID=CPT_Pipo_025.t01;Parent=CPT_Pipo_025
+Pipo	GenBank	CDS	10089	10826	.	+	1	ID=CPT_Pipo_025.p01;Name=CPT_Pipo_025;Parent=CPT_Pipo_025.t01;product=hypothetical protein
+Pipo	GenBank	exon	10089	10826	.	+	1	Parent=CPT_Pipo_025.t01
+Pipo	GenBank	RBS	10079	10081	.	+	1	Name=CPT_Pipo_025;Parent=CPT_Pipo_025
+Pipo	GenBank	gene	10809	11794	.	+	1	ID=CPT_Pipo_026;Name=CPT_Pipo_026
+Pipo	GenBank	mRNA	10823	11794	.	+	1	ID=CPT_Pipo_026.t01;Parent=CPT_Pipo_026
+Pipo	GenBank	CDS	10823	11794	.	+	1	ID=CPT_Pipo_026.p01;Name=CPT_Pipo_026;Note=2.84662e-63 NP_853585.1 PMID: 15028677,IPR012310;Parent=CPT_Pipo_026.t01;product=DNA ligase
+Pipo	GenBank	exon	10823	11794	.	+	1	Parent=CPT_Pipo_026.t01
+Pipo	GenBank	RBS	10809	10813	.	+	1	Name=CPT_Pipo_026;Parent=CPT_Pipo_026
+Pipo	GenBank	gene	11755	11870	.	+	1	ID=CPT_Pipo_027;Name=CPT_Pipo_027
+Pipo	GenBank	mRNA	11766	11870	.	+	1	ID=CPT_Pipo_027.t01;Parent=CPT_Pipo_027
+Pipo	GenBank	CDS	11766	11870	.	+	1	ID=CPT_Pipo_027.p01;Name=CPT_Pipo_027;Note=YP_009288649.1;Parent=CPT_Pipo_027.t01;product=hypothetical protein
+Pipo	GenBank	exon	11766	11870	.	+	1	Parent=CPT_Pipo_027.t01
+Pipo	GenBank	RBS	11755	11757	.	+	1	Name=CPT_Pipo_027;Parent=CPT_Pipo_027
+Pipo	GenBank	gene	11927	12041	.	+	1	ID=CPT_Pipo_028;Name=CPT_Pipo_028
+Pipo	GenBank	mRNA	11940	12041	.	+	1	ID=CPT_Pipo_028.t01;Parent=CPT_Pipo_028
+Pipo	GenBank	CDS	11940	12041	.	+	1	ID=CPT_Pipo_028.p01;Name=CPT_Pipo_028;Note=blastp 6e-09 %5BAcinetobacter phage ABPK48-2%5D;Parent=CPT_Pipo_028.t01;product=hypothetical protein
+Pipo	GenBank	exon	11940	12041	.	+	1	Parent=CPT_Pipo_028.t01
+Pipo	GenBank	RBS	11927	11931	.	+	1	Name=CPT_Pipo_028;Parent=CPT_Pipo_028
+Pipo	GenBank	gene	12045	12500	.	+	1	ID=CPT_Pipo_029;Name=CPT_Pipo_029
+Pipo	GenBank	mRNA	12054	12500	.	+	1	ID=CPT_Pipo_029.t01;Parent=CPT_Pipo_029
+Pipo	GenBank	CDS	12054	12500	.	+	1	ID=CPT_Pipo_029.p01;Name=CPT_Pipo_029;Note=0.000330846 %5BphageK_gp041%5D YP_009041447.1,IPR003615;Parent=CPT_Pipo_029.t01;product=putative HNH endonuclease
+Pipo	GenBank	exon	12054	12500	.	+	1	Parent=CPT_Pipo_029.t01
+Pipo	GenBank	RBS	12045	12048	.	+	1	Name=CPT_Pipo_029;Parent=CPT_Pipo_029
+Pipo	GenBank	gene	12485	14815	.	+	1	ID=CPT_Pipo_030;Name=CPT_Pipo_030
+Pipo	GenBank	mRNA	12497	14815	.	+	1	ID=CPT_Pipo_030.t01;Parent=CPT_Pipo_030
+Pipo	GenBank	CDS	12497	14815	.	+	1	ID=CPT_Pipo_030.p01;Name=CPT_Pipo_030;Note=IPR001098,score%3D0 %5BphiKMVp19%5D;Parent=CPT_Pipo_030.t01;product=putative DNA directed DNA polymerase
+Pipo	GenBank	exon	12497	14815	.	+	1	Parent=CPT_Pipo_030.t01
+Pipo	GenBank	RBS	12485	12488	.	+	1	Name=CPT_Pipo_030;Parent=CPT_Pipo_030
+Pipo	GenBank	gene	14794	15038	.	+	1	ID=CPT_Pipo_031;Name=CPT_Pipo_031
+Pipo	GenBank	mRNA	14805	15038	.	+	1	ID=CPT_Pipo_031.t01;Parent=CPT_Pipo_031
+Pipo	GenBank	CDS	14805	15038	.	+	1	ID=CPT_Pipo_031.p01;Name=CPT_Pipo_031;Note=1.07353e-42 %5BAcinetobacter phage Fri1%5D;Parent=CPT_Pipo_031.t01;product=hypothetical protein
+Pipo	GenBank	exon	14805	15038	.	+	1	Parent=CPT_Pipo_031.t01
+Pipo	GenBank	RBS	14794	14796	.	+	1	Name=CPT_Pipo_031;Parent=CPT_Pipo_031
+Pipo	GenBank	gene	15023	15925	.	+	1	ID=CPT_Pipo_032;Name=CPT_Pipo_032
+Pipo	GenBank	mRNA	15035	15925	.	+	1	ID=CPT_Pipo_032.t01;Parent=CPT_Pipo_032
+Pipo	GenBank	CDS	15035	15925	.	+	1	ID=CPT_Pipo_032.p01;Name=CPT_Pipo_032;Note=1.95456e-38 %5BphiKMVp21%5D,contains membrane domain in the extracellular region.;Parent=CPT_Pipo_032.t01;product=hypothetical protein
+Pipo	GenBank	exon	15035	15925	.	+	1	Parent=CPT_Pipo_032.t01
+Pipo	GenBank	RBS	15023	15027	.	+	1	Name=CPT_Pipo_032;Parent=CPT_Pipo_032
+Pipo	GenBank	gene	15972	16101	.	+	1	ID=CPT_Pipo_033;Name=CPT_Pipo_033
+Pipo	GenBank	mRNA	15982	16101	.	+	1	ID=CPT_Pipo_033.t01;Parent=CPT_Pipo_033
+Pipo	GenBank	CDS	15982	16101	.	+	1	ID=CPT_Pipo_033.p01;Name=CPT_Pipo_033;Note=3.59438e-20 %5BAcinetobacter phage Abp1%5D,PubMed: 24153188,hhpred ID: 9162599 HHPR,potential ATPase-dependent domain;Parent=CPT_Pipo_033.t01;product=hypothetical protein
+Pipo	GenBank	exon	15982	16101	.	+	1	Parent=CPT_Pipo_033.t01
+Pipo	GenBank	RBS	15972	15976	.	+	1	Name=CPT_Pipo_033;Parent=CPT_Pipo_033
+Pipo	GenBank	gene	16123	17087	.	+	1	ID=CPT_Pipo_034;Name=CPT_Pipo_034
+Pipo	GenBank	mRNA	16134	17087	.	+	1	ID=CPT_Pipo_034.t01;Parent=CPT_Pipo_034
+Pipo	GenBank	CDS	16134	17087	.	+	1	ID=CPT_Pipo_034.p01;Name=CPT_Pipo_034;Note=1.21811e-55 %5BphiKMVp22 protein%5D;Parent=CPT_Pipo_034.t01;product=hypothetical protein
+Pipo	GenBank	exon	16134	17087	.	+	1	Parent=CPT_Pipo_034.t01
+Pipo	GenBank	RBS	16123	16126	.	+	1	Name=CPT_Pipo_034;Parent=CPT_Pipo_034
+Pipo	GenBank	gene	17064	17646	.	+	1	ID=CPT_Pipo_035;Name=CPT_Pipo_035
+Pipo	GenBank	mRNA	17077	17646	.	+	1	ID=CPT_Pipo_035.t01;Parent=CPT_Pipo_035
+Pipo	GenBank	CDS	17077	17646	.	+	1	ID=CPT_Pipo_035.p01;Name=CPT_Pipo_035;Note=1.49572e-124 %5BAcinetobacter phage vB_AbaP_B09_Aci08%5D,hhpred ID: 9993830 HHPR hits: 3H38_A%2C 1MIW_A%2C 3AQL_B,potential putative tRNA nucleotidyl transferase-related protein;Parent=CPT_Pipo_035.t01;product=hypothetical protein
+Pipo	GenBank	exon	17077	17646	.	+	1	Parent=CPT_Pipo_035.t01
+Pipo	GenBank	RBS	17064	17067	.	+	1	Name=CPT_Pipo_035;Parent=CPT_Pipo_035
+Pipo	GenBank	gene	17630	18083	.	+	1	ID=CPT_Pipo_036;Name=CPT_Pipo_036
+Pipo	GenBank	mRNA	17643	18083	.	+	1	ID=CPT_Pipo_036.t01;Parent=CPT_Pipo_036
+Pipo	GenBank	CDS	17643	18083	.	+	1	ID=CPT_Pipo_036.p01;Name=CPT_Pipo_036;Note=6.07803e-35,NP_877462.1%5BPseudomonas phage phiKMV%5D,IPR004211;Parent=CPT_Pipo_036.t01;product=putative DNA endonuclease VII
+Pipo	GenBank	exon	17643	18083	.	+	1	Parent=CPT_Pipo_036.t01
+Pipo	GenBank	RBS	17630	17632	.	+	1	Name=CPT_Pipo_036;Parent=CPT_Pipo_036
+Pipo	GenBank	gene	18074	19022	.	+	1	ID=CPT_Pipo_037;Name=CPT_Pipo_037
+Pipo	GenBank	mRNA	18087	19022	.	+	1	ID=CPT_Pipo_037.t01;Parent=CPT_Pipo_037
+Pipo	GenBank	CDS	18087	19022	.	+	1	ID=CPT_Pipo_037.p01;Name=CPT_Pipo_037;Note=InterPro:IPR004843,Metallo-dependent phosphatase-like;Parent=CPT_Pipo_037.t01;product=hypothetical protein
+Pipo	GenBank	exon	18087	19022	.	+	1	Parent=CPT_Pipo_037.t01
+Pipo	GenBank	RBS	18074	18077	.	+	1	Name=CPT_Pipo_037;Parent=CPT_Pipo_037
+Pipo	GenBank	gene	19007	19672	.	+	1	ID=CPT_Pipo_038;Name=CPT_Pipo_038
+Pipo	GenBank	mRNA	19022	19672	.	+	1	ID=CPT_Pipo_038.t01;Parent=CPT_Pipo_038
+Pipo	GenBank	CDS	19022	19672	.	+	1	ID=CPT_Pipo_038.p01;Name=CPT_Pipo_038;Note=2.64031e-7,NP_944963.1,InterPro:IPR027417;Parent=CPT_Pipo_038.t01;product=deoxynucleotide monophosphate kinase
+Pipo	GenBank	exon	19022	19672	.	+	1	Parent=CPT_Pipo_038.t01
+Pipo	GenBank	RBS	19007	19011	.	+	1	Name=CPT_Pipo_038;Parent=CPT_Pipo_038
+Pipo	GenBank	gene	19671	22098	.	+	1	ID=CPT_Pipo_039;Name=CPT_Pipo_039
+Pipo	GenBank	mRNA	19681	22098	.	+	1	ID=CPT_Pipo_039.t01;Parent=CPT_Pipo_039
+Pipo	GenBank	CDS	19681	22098	.	+	1	ID=CPT_Pipo_039.p01;Name=CPT_Pipo_039;Note=3.40462e-76  NP_041960.1,IPR002092,T7-like RNA polymerase;Parent=CPT_Pipo_039.t01;product=RNA polymerase
+Pipo	GenBank	exon	19681	22098	.	+	1	Parent=CPT_Pipo_039.t01
+Pipo	GenBank	RBS	19671	19675	.	+	1	Name=CPT_Pipo_039;Parent=CPT_Pipo_039
+Pipo	GenBank	gene	22190	22399	.	+	1	ID=CPT_Pipo_040;Name=CPT_Pipo_040
+Pipo	GenBank	mRNA	22202	22399	.	+	1	ID=CPT_Pipo_040.t01;Parent=CPT_Pipo_040
+Pipo	GenBank	CDS	22202	22399	.	+	1	ID=CPT_Pipo_040.p01;Name=CPT_Pipo_040;Note=1.62918e-40 %5BAcinetobacter phage vB_AbaP_AS11%5D;Parent=CPT_Pipo_040.t01;product=hypothetical protein
+Pipo	GenBank	exon	22202	22399	.	+	1	Parent=CPT_Pipo_040.t01
+Pipo	GenBank	RBS	22190	22194	.	+	1	Name=CPT_Pipo_040;Parent=CPT_Pipo_040
+Pipo	GenBank	gene	22383	22647	.	+	1	ID=CPT_Pipo_041;Name=CPT_Pipo_041
+Pipo	GenBank	mRNA	22396	22647	.	+	1	ID=CPT_Pipo_041.t01;Parent=CPT_Pipo_041
+Pipo	GenBank	CDS	22396	22647	.	+	1	ID=CPT_Pipo_041.p01;Name=CPT_Pipo_041;Note=6.15327e-54 blast to %5BAcinetobacter phage vB_AbaP_B09_Aci08%5D;Parent=CPT_Pipo_041.t01;product=hypothetical protein
+Pipo	GenBank	exon	22396	22647	.	+	1	Parent=CPT_Pipo_041.t01
+Pipo	GenBank	RBS	22383	22387	.	+	1	Name=CPT_Pipo_041;Parent=CPT_Pipo_041
+Pipo	GenBank	gene	22646	24212	.	+	1	ID=CPT_Pipo_042;Name=CPT_Pipo_042
+Pipo	GenBank	mRNA	22656	24212	.	+	1	ID=CPT_Pipo_042.t01;Parent=CPT_Pipo_042
+Pipo	GenBank	CDS	22656	24212	.	+	1	ID=CPT_Pipo_042.p01;Name=CPT_Pipo_042;Note=InterPro:IPR020991,2.31306e-51  NP_041995.1%5Bbacteriophage T7%5D;Parent=CPT_Pipo_042.t01;product=head-tail connector protein
+Pipo	GenBank	exon	22656	24212	.	+	1	Parent=CPT_Pipo_042.t01
+Pipo	GenBank	RBS	22646	22650	.	+	1	Name=CPT_Pipo_042;Parent=CPT_Pipo_042
+Pipo	GenBank	gene	24211	25081	.	+	1	ID=CPT_Pipo_043;Name=CPT_Pipo_043
+Pipo	GenBank	mRNA	24221	25081	.	+	1	ID=CPT_Pipo_043.t01;Parent=CPT_Pipo_043
+Pipo	GenBank	CDS	24221	25081	.	+	1	ID=CPT_Pipo_043.p01;Name=CPT_Pipo_043;Note=score%3D0 blast to %5BAcinetobacter phage vB_AbaP_B3%5D;Parent=CPT_Pipo_043.t01;product=putative scaffolding protein
+Pipo	GenBank	exon	24221	25081	.	+	1	Parent=CPT_Pipo_043.t01
+Pipo	GenBank	RBS	24211	24215	.	+	1	Name=CPT_Pipo_043;Parent=CPT_Pipo_043
+Pipo	GenBank	gene	25083	26128	.	+	1	ID=CPT_Pipo_044;Name=CPT_Pipo_044
+Pipo	GenBank	mRNA	25097	26128	.	+	1	ID=CPT_Pipo_044.t01;Parent=CPT_Pipo_044
+Pipo	GenBank	CDS	25097	26128	.	+	1	ID=CPT_Pipo_044.p01;Name=CPT_Pipo_044;Note=1.92669e-49 NP_877471.1 %5BphiKMV%5D PMID: 16436440,Q7Y2D3;Parent=CPT_Pipo_044.t01;product=major capsid protein
+Pipo	GenBank	exon	25097	26128	.	+	1	Parent=CPT_Pipo_044.t01
+Pipo	GenBank	RBS	25083	25087	.	+	1	Name=CPT_Pipo_044;Parent=CPT_Pipo_044
+Pipo	GenBank	gene	26170	26369	.	+	1	ID=CPT_Pipo_045;Name=CPT_Pipo_045
+Pipo	GenBank	mRNA	26184	26369	.	+	1	ID=CPT_Pipo_045.t01;Parent=CPT_Pipo_045
+Pipo	GenBank	CDS	26184	26369	.	+	1	ID=CPT_Pipo_045.p01;Name=CPT_Pipo_045;Note=detected coil segment,PMID:  20816983,hhpred ID: 1724640 HHPR pdb: 2XDJ;Parent=CPT_Pipo_045.t01;product=hypothetical protein
+Pipo	GenBank	exon	26184	26369	.	+	1	Parent=CPT_Pipo_045.t01
+Pipo	GenBank	RBS	26170	26174	.	+	1	Name=CPT_Pipo_045;Parent=CPT_Pipo_045
+Pipo	GenBank	gene	26371	26674	.	+	1	ID=CPT_Pipo_046;Name=CPT_Pipo_046
+Pipo	GenBank	mRNA	26381	26674	.	+	1	ID=CPT_Pipo_046.t01;Parent=CPT_Pipo_046
+Pipo	GenBank	CDS	26381	26674	.	+	1	ID=CPT_Pipo_046.p01;Name=CPT_Pipo_046;Note=potential tail needle. hhpred ID number: 3392758 HHPR  pdb hit: 4ZXQ,PMID:  26574546;Parent=CPT_Pipo_046.t01;product=hypothetical protein
+Pipo	GenBank	exon	26381	26674	.	+	1	Parent=CPT_Pipo_046.t01
+Pipo	GenBank	RBS	26371	26375	.	+	1	Name=CPT_Pipo_046;Parent=CPT_Pipo_046
+Pipo	GenBank	gene	26730	27372	.	+	1	ID=CPT_Pipo_047;Name=CPT_Pipo_047
+Pipo	GenBank	mRNA	26746	27372	.	+	1	ID=CPT_Pipo_047.t01;Parent=CPT_Pipo_047
+Pipo	GenBank	CDS	26746	27372	.	+	1	ID=CPT_Pipo_047.p01;Name=CPT_Pipo_047;Note=InterPro:IPR033767 tail tubular protein gp11,1.20181e-16   NP_877472.1;Parent=CPT_Pipo_047.t01;product=tail tubular protein A
+Pipo	GenBank	exon	26746	27372	.	+	1	Parent=CPT_Pipo_047.t01
+Pipo	GenBank	RBS	26730	26733	.	+	1	Name=CPT_Pipo_047;Parent=CPT_Pipo_047
+Pipo	GenBank	gene	27371	29672	.	+	1	ID=CPT_Pipo_048;Name=CPT_Pipo_048
+Pipo	GenBank	mRNA	27381	29672	.	+	1	ID=CPT_Pipo_048.t01;Parent=CPT_Pipo_048
+Pipo	GenBank	CDS	27381	29672	.	+	1	ID=CPT_Pipo_048.p01;Name=CPT_Pipo_048;Note=7.22201e-87 phiKMV;Parent=CPT_Pipo_048.t01;product=tail tubular protein B
+Pipo	GenBank	exon	27381	29672	.	+	1	Parent=CPT_Pipo_048.t01
+Pipo	GenBank	RBS	27371	27375	.	+	1	Name=CPT_Pipo_048;Parent=CPT_Pipo_048
+Pipo	GenBank	gene	29659	30343	.	+	1	ID=CPT_Pipo_049;Name=CPT_Pipo_049
+Pipo	GenBank	mRNA	29672	30343	.	+	1	ID=CPT_Pipo_049.t01;Parent=CPT_Pipo_049
+Pipo	GenBank	CDS	29672	30343	.	+	1	ID=CPT_Pipo_049.p01;Name=CPT_Pipo_049;Note=7.47139e-159 %5BAcinetobacter phage IME200%5D;Parent=CPT_Pipo_049.t01;product=hypothetical protein
+Pipo	GenBank	exon	29672	30343	.	+	1	Parent=CPT_Pipo_049.t01
+Pipo	GenBank	RBS	29659	29662	.	+	1	Name=CPT_Pipo_049;Parent=CPT_Pipo_049
+Pipo	GenBank	gene	30347	33241	.	+	1	ID=CPT_Pipo_050;Name=CPT_Pipo_050
+Pipo	GenBank	mRNA	30356	33241	.	+	1	ID=CPT_Pipo_050.t01;Parent=CPT_Pipo_050
+Pipo	GenBank	CDS	30356	33241	.	+	1	ID=CPT_Pipo_050.p01;Name=CPT_Pipo_050;Note=1.5824e-89 %5BAcinetobacter phage AB3%5D;Parent=CPT_Pipo_050.t01;product=hypothetical protein
+Pipo	GenBank	exon	30356	33241	.	+	1	Parent=CPT_Pipo_050.t01
+Pipo	GenBank	RBS	30347	30351	.	+	1	Name=CPT_Pipo_050;Parent=CPT_Pipo_050
+Pipo	GenBank	gene	33240	36349	.	+	1	ID=CPT_Pipo_051;Name=CPT_Pipo_051
+Pipo	GenBank	mRNA	33251	36349	.	+	1	ID=CPT_Pipo_051.t01;Parent=CPT_Pipo_051
+Pipo	GenBank	CDS	33251	36349	.	+	1	ID=CPT_Pipo_051.p01;Name=CPT_Pipo_051;Note=putative membrane protein,blast to phiKMV with score %3D7.0935e-9;Parent=CPT_Pipo_051.t01;product=hypothetical protein
+Pipo	GenBank	exon	33251	36349	.	+	1	Parent=CPT_Pipo_051.t01
+Pipo	GenBank	RBS	33240	33245	.	+	1	Name=CPT_Pipo_051;Parent=CPT_Pipo_051
+Pipo	GenBank	gene	36341	38392	.	+	1	ID=CPT_Pipo_052;Name=CPT_Pipo_052
+Pipo	GenBank	mRNA	36356	38392	.	+	1	ID=CPT_Pipo_052.t01;Parent=CPT_Pipo_052
+Pipo	GenBank	CDS	36356	38392	.	+	1	ID=CPT_Pipo_052.p01;Name=CPT_Pipo_052;Note=potential tail fiber/tail spike,5924656 HHPR hit 5JS4_C%3B 6EU4_C%3B 5W5P %28To be published by Leiman%29,PMID: 28209973;Parent=CPT_Pipo_052.t01;product=tailspike protein
+Pipo	GenBank	exon	36356	38392	.	+	1	Parent=CPT_Pipo_052.t01
+Pipo	GenBank	RBS	36341	36344	.	+	1	Name=CPT_Pipo_052;Parent=CPT_Pipo_052
+Pipo	GenBank	gene	38392	38737	.	+	1	ID=CPT_Pipo_053;Name=CPT_Pipo_053
+Pipo	GenBank	mRNA	38402	38737	.	+	1	ID=CPT_Pipo_053.t01;Parent=CPT_Pipo_053
+Pipo	GenBank	CDS	38402	38737	.	+	1	ID=CPT_Pipo_053.p01;Name=CPT_Pipo_053;Note=7.76278e-74,IPR006481,detected three transmembrane domains;Parent=CPT_Pipo_053.t01;product=holin
+Pipo	GenBank	exon	38402	38737	.	+	1	Parent=CPT_Pipo_053.t01
+Pipo	GenBank	RBS	38392	38396	.	+	1	Name=CPT_Pipo_053;Parent=CPT_Pipo_053
+Pipo	GenBank	gene	38715	39281	.	+	1	ID=CPT_Pipo_054;Name=CPT_Pipo_054
+Pipo	GenBank	mRNA	38724	39281	.	+	1	ID=CPT_Pipo_054.t01;Parent=CPT_Pipo_054
+Pipo	GenBank	CDS	38724	39281	.	+	1	ID=CPT_Pipo_054.p01;Name=CPT_Pipo_054;Note=IPR023346 1.63e-19,Random endo-hydrolysis of N-acetyl-beta-D-glucosaminide %281-%3E4%29-beta-linkages in chitin and chitodextrins.;Parent=CPT_Pipo_054.t01;product=endolysin
+Pipo	GenBank	exon	38724	39281	.	+	1	Parent=CPT_Pipo_054.t01
+Pipo	GenBank	RBS	38715	38718	.	+	1	Name=CPT_Pipo_054;Parent=CPT_Pipo_054
+Pipo	GenBank	gene	39280	39598	.	+	1	ID=CPT_Pipo_055;Name=CPT_Pipo_055
+Pipo	GenBank	mRNA	39290	39598	.	+	1	ID=CPT_Pipo_055.t01;Parent=CPT_Pipo_055
+Pipo	GenBank	CDS	39290	39598	.	+	1	ID=CPT_Pipo_055.p01;Name=CPT_Pipo_055;Note=1.10536e-8 %5BphiKMV%5D;Parent=CPT_Pipo_055.t01;product=hypothetical protein
+Pipo	GenBank	exon	39290	39598	.	+	1	Parent=CPT_Pipo_055.t01
+Pipo	GenBank	RBS	39280	39284	.	+	1	Name=CPT_Pipo_055;Parent=CPT_Pipo_055
+Pipo	GenBank	gene	39598	41545	.	+	1	ID=CPT_Pipo_056;Name=CPT_Pipo_056
+Pipo	GenBank	mRNA	39608	41545	.	+	1	ID=CPT_Pipo_056.t01;Parent=CPT_Pipo_056
+Pipo	GenBank	CDS	39608	41545	.	+	1	ID=CPT_Pipo_056.p01;Name=CPT_Pipo_056;Note=4.73143e-112,probably DNA maturase B phiKMV;Parent=CPT_Pipo_056.t01;product=large terminase subunit
+Pipo	GenBank	exon	39608	41545	.	+	1	Parent=CPT_Pipo_056.t01
+Pipo	GenBank	RBS	39598	39602	.	+	1	Name=CPT_Pipo_056;Parent=CPT_Pipo_056
+Pipo	GenBank	gene	41528	41676	.	+	1	ID=CPT_Pipo_057;Name=CPT_Pipo_057
+Pipo	GenBank	mRNA	41542	41676	.	+	1	ID=CPT_Pipo_057.t01;Parent=CPT_Pipo_057
+Pipo	GenBank	CDS	41542	41676	.	+	1	ID=CPT_Pipo_057.p01;Name=CPT_Pipo_057;Note=1.21677e-21 Acinetobacter phage vB_AbaP_B3;Parent=CPT_Pipo_057.t01;product=hypothetical protein
+Pipo	GenBank	exon	41542	41676	.	+	1	Parent=CPT_Pipo_057.t01
+Pipo	GenBank	RBS	41528	41533	.	+	1	Name=CPT_Pipo_057;Parent=CPT_Pipo_057
+Pipo	GenBank	gene	41624	41839	.	+	1	ID=CPT_Pipo_058;Name=CPT_Pipo_058
+Pipo	GenBank	mRNA	41636	41839	.	+	1	ID=CPT_Pipo_058.t01;Parent=CPT_Pipo_058
+Pipo	GenBank	CDS	41636	41839	.	+	1	ID=CPT_Pipo_058.p01;Name=CPT_Pipo_058;Note=1.12427e-36,Acinetobacter phage vB_AbaP_B5;Parent=CPT_Pipo_058.t01;product=hypothetical protein
+Pipo	GenBank	exon	41636	41839	.	+	1	Parent=CPT_Pipo_058.t01
+Pipo	GenBank	RBS	41624	41628	.	+	1	Name=CPT_Pipo_058;Parent=CPT_Pipo_058

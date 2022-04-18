@@ -18,22 +18,12 @@ $__tool_directory__/gff3_add_parents_to_cds.py
   </outputs>
   <tests>
                 <test>
-			<param name="gff3_data" value="T7_ORF_GFF.gff3" />
-			<output name="output" file="T7_ADD_CDS.gff3">
-			  <assert_contents>
-			    <has_line line="##gff-version 3"/>
-			    <has_n_lines n="10105" />
-			  </assert_contents>
-			</output>
+			<param name="gff3_data" value="T7_AddParentIn.gff3" />
+			<output name="output" file="T7_AddParentOut.gff3"/>
 		</test>
 		<test>
-			<param name="gff3_data" value="miro.gff3" />
-			<output name="output" file="miro.cdsAdd.gff3">
-			  <assert_contents>
-			    <has_line line="##gff-version 3"/>
-			    <has_n_lines n="829" />
-			  </assert_contents>
-			</output>
+			<param name="gff3_data" value="Miro_AddParentIn.gff3" />
+			<output name="output" file="Miro_AddParentOut.gff3"/>
 		</test>
   </tests>
   <help><![CDATA[

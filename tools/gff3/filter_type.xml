@@ -26,16 +26,16 @@ $invert
   </outputs>
   <tests>
 		<test>
-			<param name="gff3_data" value="miro.gff3" />
+			<param name="gff3_data" value="Miro_FilterIn.gff3" />
 			<param name="repeat_0_0|type" value="CDS" />
 			<param name="invert" value="False" />
-			<output name="output" file="miro.cds.gff3" />
+			<output name="output" file="Miro_FilterOut1.gff3" />
 		</test>
 		<test>
-			<param name="gff3_data" value="miro.gff3" />
+			<param name="gff3_data" value="Miro_FilterIn.gff3" />
 			<param name="repeat_0_0|type" value="CDS" />
 			<param name="invert" value="--invert" />
-			<output name="output" file="miro.nocds.gff3" />
+			<output name="output" file="Miro_FilterOut2.gff3" />
 		</test>
   </tests>
   <help><![CDATA[

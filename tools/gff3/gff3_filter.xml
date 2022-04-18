@@ -39,18 +39,18 @@ $subfeatures
   </outputs>
   <tests>
       <test>
-          <param name="gff3_data" value="mga.gff3" />
+          <param name="gff3_data" value="MGA_FilterIn.gff3" />
           <param name="filter_data" value="filter-list.txt" />
           <param name="attribute_field" value="ID" />
           <param name="subfeatures" value="False" />
-          <output name="default" file="filtered_features.gff3" />
+          <output name="default" file="MGA_FilterOut1.gff3" />
       </test>
       <test>
-          <param name="gff3_data" value="mga.gff3" />
-          <param name="filter_data" value="filter-list.txt" />
+          <param name="gff3_data" value="MGA_FilterIn.gff3" />
+          <param name="filter_data" value="FilterListIn.txt" />
           <param name="attribute_field" value="ID" />
           <param name="subfeatures" value="True" />
-          <output name="default" file="filtered_features.subfeatures.gff3" />
+          <output name="default" file="MGA_FilterOut2.gff3" />
       </test>
   </tests>
   <help><![CDATA[

@@ -18,12 +18,8 @@ python $__tool_directory__/start_stats.py
 	</outputs>
 	<tests>
                 <test>
-			<param name="sequences" value="T7_EXT_CDS.fasta" />
-			<output name="output_table" file="T7_STARTS.tabular" />
-		</test>
-		<test>
-			<param name="sequences" value="miro.cds.fa" />
-			<output name="output_table" file="miro.starts.tab" />
+			<param name="sequences" value="T7_StartIn.fasta" />
+			<output name="output_table" file="T7_StartOut.tabular" />
 		</test>
 	</tests>
 	<help><![CDATA[

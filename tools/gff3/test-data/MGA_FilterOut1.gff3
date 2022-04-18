@@ -1,0 +1,4 @@
+##gff-version 3
+01	feature	gene	28	243	.	+	.	ID=gene_1;
+01	feature	Shine_Dalgarno_sequence	616	620	.	+	.	ID=rbs_gene_2;Parent=gene_2;
+01	feature	CDS	945	1130	.	+	0	ID=cds_gene_3;Parent=gene_3;

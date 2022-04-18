@@ -22,10 +22,10 @@ $region
   </outputs>
   <tests>
 		<test>
-			<param name="gff3_data" value="T7_IA1.gff3" />
+			<param name="gff3_data" value="RemoveAnnote_In.gff3" />
 			<param name="remark" value="--remark" />
                         <param name="region" value= "--region" />
-			<output name="default" file="T7_IA1_NO_ANNOT.gff3" />
+			<output name="default" file="RemoveAnnote_Out.gff3" />
 		</test>
   </tests>
   <help><![CDATA[

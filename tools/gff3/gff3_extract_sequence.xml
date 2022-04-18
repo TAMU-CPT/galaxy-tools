@@ -32,27 +32,27 @@ $nodesc
   <tests>
 		<test>
 			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="T7_CLEAN.fasta" />
-			<param name="gff3_data" value="T7_CLEAN.gff3" />
+			<param name="genome_fasta" value="T7_ExtSeqIn.fasta" />
+			<param name="gff3_data" value="T7_ExtSeqIn.gff3" />
 			<param name="nodesc" value="" />
 			<param name="feature_filter" value="CDS" />
-			<output name="output" file="T7_EXT_CDS.fasta" />
+			<output name="output" file="T7_ExtSeqOut.fasta" />
 		</test>
                 <test>
 			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="miro.fa" />
-			<param name="gff3_data" value="miro.gff3" />
+			<param name="genome_fasta" value="Miro_ExtSeqIn.fa" />
+			<param name="gff3_data" value="Miro_ExtSeqIn.gff3" />
 			<param name="nodesc" value="" />
 			<param name="feature_filter" value="CDS" />
-			<output name="output" file="miro.cda.fa" />
+			<output name="output" file="Miro_ExtSeqOut1.fa" />
 		</test>
 		<test>
 			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="miro.fa" />
-			<param name="gff3_data" value="miro.gff3" />
+			<param name="genome_fasta" value="Miro_ExtSeqIn.fa" />
+			<param name="gff3_data" value="Miro_ExtSeqIn.gff3" />
 			<param name="feature_filter" value="CDS" />
 			<param name="nodesc" value="--nodesc" />
-			<output name="output" file="miro.cda-nodesc.fa" />
+			<output name="output" file="Miro_ExtSeqOut2.fa" />
 		</test>
   </tests>
   <help><![CDATA[

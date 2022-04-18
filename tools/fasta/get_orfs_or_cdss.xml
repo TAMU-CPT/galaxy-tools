@@ -51,38 +51,37 @@ get_orfs_or_cdss.py $input_file -f $input_file.ext --table $table -t $ftype -e "
 	</outputs>
 	<tests>
 		<test>
-			<param name="input_file" value="T7_CLEAN.fasta" />
+			<param name="input_file" value="Orf_T7In.fasta" />
 			<param name="table" value="11" />
 			<param name="ftype" value="ORF" />
 			<param name="min_len" value="30" />
 			<param name="strand" value="both" />
-			<output name="out_nuc_file" file="T7_ORF_NUC.fasta" />
-			<output name="out_prot_file" file="T7_ORF_AA.fasta" />
-			<output name="out_bed_file" file="T7_ORF_BED.bed" />
-			<output name="out_gff3_file" file="T7_ORF_GFF.gff3" />
+			<output name="out_nuc_file" file="Orf_T7Out_Nuc.fasta" />
+			<output name="out_prot_file" file="Orf_T7Out_AA.fasta" />
+			<output name="out_bed_file" file="Orf_T7Out_Bed.bed" />
+			<output name="out_gff3_file" file="Orf_T7Out_Gff.gff3" />
 		</test>
 		<test>
-			<param name="input_file" value="get_orf_input.fasta" />
+			<param name="input_file" value="Orf_In2.fasta" />
 			<param name="table" value="1" />
 			<param name="ftype" value="CDS" />
 			<param name="min_len" value="10" />
 			<param name="strand" value="forward" />
-			<output name="out_nuc_file" file="get_orf_input.t1_nuc_out.fasta" />
-			<output name="out_prot_file" file="get_orf_input.t1_prot_out.fasta" />
-			<output name="out_bed_file" file="get_orf_input.t1_bed_out.bed" />
-			<output name="out_gff3_file" file="get_orf_input.t1_gff3_out.gff3" />
+			<output name="out_nuc_file" file="Orf_Out2T1_Nuc.fasta" />
+			<output name="out_prot_file" file="Orf_Out2T1_AA.fasta" />
+			<output name="out_bed_file" file="Orf_Out2T1_Bed.bed" />
+			<output name="out_gff3_file" file="Orf_Out2T1_Gff.gff3" />
 		</test>
 		<test>
-			<param name="input_file" value="get_orf_input.fasta" />
+			<param name="input_file" value="Orf_In2.fasta" />
 			<param name="table" value="11" />
 			<param name="ftype" value="CDS" />
 			<param name="min_len" value="10" />
 			<param name="strand" value="forward" />
-			<output name="out_nuc_file" file="get_orf_input.t11_nuc_out.fasta" />
-			<output name="out_prot_file" file="get_orf_input.t11_prot_out.fasta" />
-			<output name="out_bed_file" file="get_orf_input.t11_bed_out.bed" />
-			<output name="out_gff3_file" file="get_orf_input.t11_gff3_out.gff3" />
-		</test>
+			<output name="out_nuc_file" file="Orf_Out2T11_Nuc.fasta" />
+			<output name="out_prot_file" file="Orf_Out2T11_AA.fasta" />
+			<output name="out_bed_file" file="Orf_Out2T11_Bed.bed" />
+			<output name="out_gff3_file" file="Orf_Out2T11_Gff.gff3" />		</test>
 	</tests>
 	<help>
 **What it does**

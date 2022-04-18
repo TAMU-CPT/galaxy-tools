@@ -18,12 +18,12 @@ $__tool_directory__/gff3_reformat.py
   </outputs>
   <tests>
                 <test>
-			<param name="gff3_data" value="T7_GFF_FROM_GBK.gff3" />
-			<output name="output" file="T7_CLEAN.gff3" />
+			<param name="gff3_data" value="T7_ReformatIn.gff3" />
+			<output name="output" file="T7_ReformatOut.gff3" />
 		</test>
 		<test>
-			<param name="gff3_data" value="miro.gff3" />
-			<output name="output" file="miro.reformat.gff3" />
+			<param name="gff3_data" value="Miro_ReformatIn.gff3" />
+			<output name="output" file="Miro_ReformatOut.gff3" />
 		</test>
 	</tests>
   <help><![CDATA[
