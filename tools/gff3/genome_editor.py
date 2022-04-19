@@ -35,6 +35,7 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
     # Process changes.
     chain = []
     topFeats = {}
+    covered = 0
     for feat in rec.features:
         if "ID" in feat.qualifiers.keys():
           topFeats[feat.qualifiers["ID"][0]] = feat.location.start
@@ -88,15 +89,10 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
                   i = update_location(i, shiftS)
                 return feature
                 
+            
 
             #for feature in tmp_req.features:
-            for i in tmp_req.features:
-                if "ID" not in i.qualifiers.keys():
-                  continue
-                diffS = i.location.start - topFeats[i.qualifiers["ID"][0]]
-                subFeats = i.sub_features
-                for j in subFeats:
-                  j = update_location(j, diffS)
+            
                   
                 
 
@@ -113,10 +109,22 @@ def mutate(gff3, fasta, changes, customSeqs, new_id):
                 ]
             )
 
+            covered += len(new_record.seq)
+            print(covered)
             new_record.seq += tmp_req.seq
             # NB: THIS MUST USE BIOPYTHON 1.67. 1.68 Removes access to
             # subfeatures, which means you will only get top-level features.
+            startInd = len(new_record.features)
             new_record.features += tmp_req.features
+            
+            for i in new_record.features[startInd:]:
+                i.location = FeatureLocation(i.location.start + covered, i.location.end + covered, i.location.strand)
+                if "ID" not in i.qualifiers.keys():
+                  continue
+                diffS = i.location.start - topFeats[i.qualifiers["ID"][0]]
+                subFeats = i.sub_features
+                for j in subFeats:
+                  j = update_location(j, diffS)
         else:
             new_record.seq += custom_seqs[change].seq
     yield new_record, chain
