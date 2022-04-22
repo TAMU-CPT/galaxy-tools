@@ -1,18 +1,18 @@
->alpha|ORF1 length 87 aa, 261 bp, from 75..336[1] of alpha three forward CDS using table 1
+>alpha|CDS1 length 87 aa, 261 bp, from 75..336[1] of alpha three forward CDS using table 1
 MXXXXXXXXKKKKKKKKKKKKKKKKKPPPPPPPPPPPPPPPPPGGGGGGGGGGGGGGGGG
 FFFFFFFFFFFFFFFFFXXXXXXXXX*
->alpha|ORF2 length 88 aa, 264 bp, from 67..331[1] of alpha three forward CDS using table 1
+>alpha|CDS2 length 88 aa, 264 bp, from 67..331[1] of alpha three forward CDS using table 1
 MXXXXXXXXXXXKKKKKKKKKKKKKKKKNPPPPPPPPPPPPPPPPPGGGGGGGGGGGGGG
 GGGFFFFFFFFFFFFFFFFXXXXXXXX*
->alpha|ORF3 length 85 aa, 255 bp, from 71..326[1] of alpha three forward CDS using table 1
+>alpha|CDS3 length 85 aa, 255 bp, from 71..326[1] of alpha three forward CDS using table 1
 MXXXXXXXXXXKKKKKKKKKKKKKKKKTPPPPPPPPPPPPPPPPRGGGGGGGGGGGGGGG
 GVFFFFFFFFFFFFFFFFXXXXXX*
->beta|ORF1 length 85 aa, 255 bp, from 72..327[1] of beta three forward CDS using table 11
+>beta|CDS1 length 85 aa, 255 bp, from 72..327[1] of beta three forward CDS using table 11
 IXXXXXXXXXKKKKKKKKKKKKKKKKKPPPPPPPPPPPPPPPPPGGGGGGGGGGGGGGGG
 GFFFFFFFFFFFFFFFFFXXXXXX*
->beta|ORF2 length 87 aa, 261 bp, from 76..337[1] of beta three forward CDS using table 11
+>beta|CDS2 length 87 aa, 261 bp, from 76..337[1] of beta three forward CDS using table 11
 IXXXXXXXXKKKKKKKKKKKKKKKKNPPPPPPPPPPPPPPPPPGGGGGGGGGGGGGGGGG
 FFFFFFFFFFFFFFFFXXXXXXXXXX*
->beta|ORF3 length 88 aa, 264 bp, from 68..332[1] of beta three forward CDS using table 11
+>beta|CDS3 length 88 aa, 264 bp, from 68..332[1] of beta three forward CDS using table 11
 VXXXXXXXXXXXKKKKKKKKKKKKKKKKTPPPPPPPPPPPPPPPPRGGGGGGGGGGGGGG
 GGVFFFFFFFFFFFFFFFFXXXXXXXX*
