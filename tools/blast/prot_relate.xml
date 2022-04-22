@@ -41,7 +41,10 @@ $filter
 	</outputs>
 	<tests>
 		<test>
-			<param name="blast_tsv" value="prot_relate_in.tab"/>
+                        <conditional name="blastIn">
+                          <param name="blastType" value="TSV"/>
+  			  <param name="blast" value="prot_relate_in.tab"/>
+                        </conditional>
 			<param name="hits" value="10"/>
 			<output name="accession_list" file="prot_relate_out.tab" lines_diff="4"/>
 		</test>

@@ -40,13 +40,19 @@ $filter
 	</outputs>
 	<tests>
 		<test>
-			<param name="blast_tsv" value="nuc_relate_in.tab"/>
+                        <conditional name="blastIn">
+                          <param name="blastType" value="TSV"/>
+  			  <param name="blast" value="nuc_relate_in.tab"/>
+                        </conditional>
 			<param name="hits" value="10"/>
 			<param name="access" value="--access"/>
 			<output name="accession_list" file="nuc_relate_out.tab" />
 		</test>
 		<test>
-			<param name="blast_tsv" value="nuc_relate_in.tab"/>
+                        <conditional name="blastIn">
+                          <param name="blastType" value="TSV"/>
+  			  <param name="blast" value="nuc_relate_in.tab"/>
+                        </conditional>
 			<param name="hits" value="10"/>
 			<param name="access" value=""/>
 			<output name="accession_list" file="nuc_relate_out_noaccess.tab" />
