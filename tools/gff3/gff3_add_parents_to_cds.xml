@@ -22,7 +22,7 @@ $__tool_directory__/gff3_add_parents_to_cds.py
 			<output name="output" file="T7_AddParentOut.gff3">
                           <assert_contents>
 			    <has_line line="##gff-version 3"/>
-			    <has_n_lines n="10104" />
+			    <has_n_lines n="10105" />
 			  </assert_contents>
 			</output>
 		</test>
@@ -31,7 +31,7 @@ $__tool_directory__/gff3_add_parents_to_cds.py
 			<output name="output" file="Miro_AddParentOut.gff3">
                           <assert_contents>
 			    <has_line line="##gff-version 3"/>
-			    <has_n_lines n="828" />
+			    <has_n_lines n="829" />
 			  </assert_contents>
 			</output>
 		</test>
