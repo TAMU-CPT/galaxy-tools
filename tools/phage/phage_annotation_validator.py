@@ -1149,7 +1149,7 @@ def evaluate_and_report(
         return len(data)
 
     def my_encode(data):
-        return str(data).encode("utf-8")
+        return str(data)#.encode("utf-8")
 
     def my_decode(data):
         # For production
@@ -1172,7 +1172,7 @@ def evaluate_and_report(
         }
     )
     tpl = env.get_template(reportTemplateName)
-    return tpl.render(**kwargs).encode("utf-8")
+    return tpl.render(**kwargs)#.encode("utf-8")
 
 
 if __name__ == "__main__":
