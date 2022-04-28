@@ -542,10 +542,10 @@ def genome_overview(record):
         },
         "overall": {
             "comp": {
-                "A": record.seq.count("A"),
-                "C": record.seq.count("C"),
-                "G": record.seq.count("G"),
-                "T": record.seq.count("T"),
+                "A": record.seq.count("A") + record.seq.count("a"),
+                "C": record.seq.count("C") + record.seq.count("c"),
+                "G": record.seq.count("G") + record.seq.count("g"),
+                "T": record.seq.count("T") + record.seq.count("t"),
             },
             "gc": 0,
         },
@@ -554,10 +554,10 @@ def genome_overview(record):
     data["genes"]["count"] = len(gene_features)
 
     for feat in gene_features:
-        data["genes"]["comp"]["A"] += feat.extract(record).seq.count("A")
-        data["genes"]["comp"]["C"] += feat.extract(record).seq.count("C")
-        data["genes"]["comp"]["T"] += feat.extract(record).seq.count("T")
-        data["genes"]["comp"]["G"] += feat.extract(record).seq.count("G")
+        data["genes"]["comp"]["A"] += feat.extract(record).seq.count("A") + feat.extract(record).seq.count("a")
+        data["genes"]["comp"]["C"] += feat.extract(record).seq.count("C") + feat.extract(record).seq.count("c")
+        data["genes"]["comp"]["T"] += feat.extract(record).seq.count("T") + feat.extract(record).seq.count("t")
+        data["genes"]["comp"]["G"] += feat.extract(record).seq.count("G") + feat.extract(record).seq.count("g")
         data["genes"]["bases"] += len(feat)
         data["genes"]["avg_len"].append(len(feat))
 
