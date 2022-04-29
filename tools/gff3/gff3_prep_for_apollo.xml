@@ -18,8 +18,8 @@ $__tool_directory__/gff3_prep_for_apollo.py
   </outputs>
   <tests>
                 <test>
-			<param name="gff3_data" value="exon-parent.gff3" />
-			<output name="output" value="exon-parent-fixed.gff3" />
+			<param name="gff3_data" value="ApolloPrep_In.gff3" />
+			<output name="output" value="ApolloPrep_Out.gff3" />
 		</test>
   </tests>
   <help><![CDATA[
