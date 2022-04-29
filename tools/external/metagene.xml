@@ -1,18 +1,23 @@
 <?xml version="1.0"?>
-<tool id="MGA" name="MetaGeneAnnotator" version="1.0.0">
+<tool id="cpt.external.metagene" name="MetaGeneAnnotator" version="22.0.0">
   <description>MetaGeneAnnotator is a gene-finding program for prokaryote and phage.</description>
-  <stdio>
-	  <exit_code range="1:" level="fatal" />
-  </stdio>
-  <command>mga_linux_x64 $fasta -s > $output
+  <requirements>
+    <requirement type="package" version="1.0">metagene_annotator</requirement>
+  </requirements>
+  <command>mga $fasta -s > $output
 </command>
   <inputs>
     <param format="fasta" name="fasta" help="Input Fasta file" optional="False" label="fasta" type="data"/>
   </inputs>
   <outputs>
-    <data name="output" format="tabular">
-    </data>
+    <data name="output" format="tabular"/>
   </outputs>
   <help>
 </help>
+  <tests>
+                <test>
+			<param name="fasta" value="MGA_In.fasta" />
+			<output name="output" value="MGA_Out.tabular" />
+		</test>
+  </tests>
 </tool>
