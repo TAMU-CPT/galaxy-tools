@@ -5,7 +5,7 @@
 		<import>cpt-macros.xml</import>
 		<import>macros.xml</import>
 	</macros>
-	<expand macro="requirementsPython3"/>
+	<expand macro="requirements"/>
 	<command detect_errors="aggressive">
 @GENOME_SELECTOR_PRE@
 
@@ -26,9 +26,9 @@ $mga
 	<tests>
 		<test>
 			<param name="reference_genome_source" value="history" />
-			<param name="genome_fasta" value="mga.fa" />
-			<param name="mga" value="mga.out" />
-			<output name="data" file="mga.gff3" />
+			<param name="genome_fasta" value="ConvMga_In.fa" />
+			<param name="mga" value="ConvMga_In.out" />
+			<output name="data" file="ConvMga_Out.gff3" />
 		</test>
 	</tests>
 	<help>

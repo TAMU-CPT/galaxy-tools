@@ -1,0 +1,4 @@
+Sequence    		tRNA  	Bounds	tRNA	Anti	Intron Bounds	Inf	      
+Name        	tRNA #	Begin 	End   	Type	Codon	Begin	End	Score	Note
+--------    	------	----- 	------	----	-----	-----	----	------	------
+NC_028755.1 	1	49264 	49339 	Gly	TCC	0	0	77.4	
