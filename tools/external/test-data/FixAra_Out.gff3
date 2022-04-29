@@ -1,0 +1,4 @@
+##gff-version 3
+Phriendly	feature	gene	48610	48685	.	-	.	ID=tRNA-001.gene;source=.;Name=tRNA-"Gly";
+Phriendly	aragorn	tRNA	48610	48685	.	-	.	Anticodon="tcc";Codon="Gly";Name=tRNA-"Gly";ID=tRNA-001;Parent=tRNA-001.gene;
+Phriendly	feature	exon	48610	48685	.	-	.	source=.;ID=tRNA-001.exon;Name=tRNA-"Gly";Parent=tRNA-001;

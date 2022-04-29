@@ -31,9 +31,9 @@ $gff3_data
 	</outputs>
 	<tests>
 		<test>
-			<param name="genome_fasta" value="miro.fa" />
-			<param name="gff3_data" value="miro.gff3" />
-			<output name="output" file="miro.terminators.gff3" />
+			<param name="genome_fasta" value="Transterm_In.fa" />
+			<param name="gff3_data" value="Transterm_In.gff3" />
+			<output name="output" file="Transterm_Out.gff3" />
 		</test>
 	</tests>
 	<help>
