@@ -156,7 +156,15 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
     rec_lgc = list(SeqIO.parse(lgc, "fasta"))
     rec_tmhmm = list(gffParse(tmhmm))
     rec_ipro = list(gffParse(ipro))
-    rec_genome_ini = list(gffParse(genome, limit_info=dict(gff_type=["CDS"])))
+    recTemp = gffParse(genome)
+    tempFeats = feature_lambda(
+                recTemp.features,
+                feature_test_type,
+                {"types": ["CDS"]},
+                subfeatures=True,
+                )
+    recTemp.features = tempFeats
+    rec_genome_ini = list(recTemp)
 
     # genome.seek(0)
     # examiner = GFFExaminer()
