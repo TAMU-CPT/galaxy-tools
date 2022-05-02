@@ -535,7 +535,7 @@ def genome_overview(record):
     data = {
         "genes": {
             "count": 0,
-            "bases": 0,
+            "bases": len(record.seq),
             "density": 0,  # genes / kb
             "avg_len": [],
             "comp": {"A": 0, "C": 0, "G": 0, "T": 0},
@@ -558,7 +558,7 @@ def genome_overview(record):
         data["genes"]["comp"]["C"] += feat.extract(record).seq.count("C") + feat.extract(record).seq.count("c")
         data["genes"]["comp"]["T"] += feat.extract(record).seq.count("T") + feat.extract(record).seq.count("t")
         data["genes"]["comp"]["G"] += feat.extract(record).seq.count("G") + feat.extract(record).seq.count("g")
-        data["genes"]["bases"] += len(feat)
+        #data["genes"]["bases"] += len(feat)
         data["genes"]["avg_len"].append(len(feat))
 
     data["genes"]["avg_len"] = float(sum(data["genes"]["avg_len"])) / len(gene_features)
