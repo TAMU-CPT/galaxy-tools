@@ -2,7 +2,7 @@
 """
 This program is intended to identify protein coding sequences within a certain window (number of base pairs) of genes encoding recognized endolysin domains and genes encoding transmembrane domains. The goal is narrow a list of disruptin candidates by identifying the sequences close to the other lysis genes in the phage genome.
 Inputs for this program include a .fasta file with protein sequences of lysis gene candidates from the phage genome, a .gff3 file with the tmhmm results from the genome, a .gff3 file with the results from interproscan of the genome, a .gff3 file of the genome, window size in number of base pairs, a tab separated list of endolysin domains, and optional names of output files.
-The program outputs lists of lysis gene candidates that are close to protein codings sequences with endolysin domains or to sequences with transmembrane domains and lists of the proteins in proximity to the lysis gene candidates (one list for proteins with endolysin domains and one list for TMD-containing proteins). 
+The program outputs lists of lysis gene candidates that are close to protein codings sequences with endolysin domains or to sequences with transmembrane domains and lists of the proteins in proximity to the lysis gene candidates (one list for proteins with endolysin domains and one list for TMD-containing proteins).
 """
 
 from Bio import SeqIO
@@ -14,6 +14,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature
 from Bio.Seq import Seq
 from intervaltree import IntervalTree, Interval
+from gff3 import feature_lambda, feature_test_type
 
 # Used for genome in fasta format
 # outputs the start and end coordinates from a record in fasta format
@@ -135,8 +136,8 @@ def find_endolysins(rec_ipro, enzyme_domain_ids):
                         domain_description = [str(f.qualifiers['Name'][0])]
                         if 'signature_desc' in f.qualifiers:
                             domain_description += [str(f.qualifiers['signature_desc'][0])]
-                        
-                        for i in enzyme_domain_ids: 
+
+                        for i in enzyme_domain_ids:
                             for y in domain_description:
                                 if i in y:
                                     endo_rec_domain_ids += [f.qualifiers["Name"][0]]
@@ -154,9 +155,9 @@ def find_endolysins(rec_ipro, enzyme_domain_ids):
 
 def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
     rec_lgc = list(SeqIO.parse(lgc, "fasta"))
-    rec_tmhmm = list(gffParse(tmhmm))
-    rec_ipro = list(gffParse(ipro))
-    recTemp = gffParse(genome)
+    rec_tmhmm = gffParse(tmhmm)
+    rec_ipro = gffParse(ipro)
+    recTemp = gffParse(genome)[0]
     tempFeats = feature_lambda(
                 recTemp.features,
                 feature_test_type,
@@ -164,7 +165,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                 subfeatures=True,
                 )
     recTemp.features = tempFeats
-    rec_genome_ini = list(recTemp)
+    rec_genome_ini = [recTemp]
 
     # genome.seek(0)
     # examiner = GFFExaminer()
@@ -223,7 +224,7 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
                     if "Name" in feat.qualifiers:
                         if len(str(feat.qualifiers["Name"][0])) > 5:
                             feat_names.append(str(feat.qualifiers["Name"][0]) + '**')
-                    
+
                     # print(str(feat_names))
                     # print(str(feat.qualifiers))
                     for i in range(len(feat_names)):
@@ -276,7 +277,8 @@ def adjacent_lgc(lgc, tmhmm, ipro, genome, enzyme, window):
             adjacent_tm[rec_genome.id] = adjacent_tm_i
             adjacent_lgc_to_tm[rec_genome.id] = adjacent_lgc_to_tm_i
             # print(rec_genome.id)
-
+    else:
+      return 0, 0, 0, 0
     # print(adjacent_endo)
     return adjacent_endo, adjacent_lgc_to_endo, adjacent_tm, adjacent_lgc_to_tm
 
@@ -331,9 +333,20 @@ if __name__ == "__main__":
         args.lgc, args.tmhmm, args.ipro, args.genome, args.enzyme, args.window
     )
 
+    if endo == 0:
+      with open(args.oa, "w") as handle:
+        handle.write("##gff-version 3")
+      with open(args.ob, "w") as handle:
+        handle.write("##gff-version 3")
+      with open(args.oc, "w") as handle:
+        handle.write("##gff-version 3")
+      with open(args.od, "w") as handle:
+        handle.write("##gff-version 3")
+      return
+
     args.genome.seek(0)
     rec = list(gffParse(args.genome))
-
+    
     with open(args.oa, "w") as handle:
         for i in range(len(rec)):
             rec_i = rec[i]
