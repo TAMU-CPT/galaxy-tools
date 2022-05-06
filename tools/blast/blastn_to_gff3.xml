@@ -34,16 +34,16 @@ $input_type.blast_input
   <tests>
     <test>
       <param name="input_type_selector" value="xml"/>
-      <param name="blast_input" value="bnxmlin.blastxml" />
-      <output name="output" file="bnxmlout.gff3" />
+      <param name="blast_input" value="BlastnXmlToGff_In.blastxml" />
+      <output name="output" file="BlastnXmlToGff_Out.gff3" />
     </test>
     <test>
       <param name="input_type_selector" value="tsv"/>
-      <param name="blast_input" value="blastntab.tabular" ftype="tabular"/>
+      <param name="blast_input" value="BlastnTsvToGff_In.tabular" ftype="tabular"/>
       <output name="output" ftype="gff3" >
 	<assert_contents>
 	  <has_line line="##gff-version 3"/>
-	  <has_n_lines n="3652"/>
+	  <has_n_lines n="3152"/>
 	</assert_contents>
       </output>
     </test>
