@@ -21,9 +21,9 @@ def main(fasta, gff3):
                 codon_usage[seq] = 1
 
     # TODO: print all actg combinations? Or just ones that are there
-    print "# Codon\tCount"
+    print ("# Codon\tCount")
     for key in sorted(codon_usage):
-        print "\t".join((key, str(codon_usage[key])))
+        print ("\t".join((key, str(codon_usage[key]))))
 
 
 if __name__ == "__main__":
