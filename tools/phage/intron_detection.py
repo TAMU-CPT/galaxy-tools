@@ -5,7 +5,7 @@ import itertools
 import argparse
 import hashlib
 import copy
-from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
 from Bio.Blast import NCBIXML
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda
@@ -423,7 +423,10 @@ class IntronFinder(object):
 
             # And we attach the things properly.
             mRNA.sub_features = cdss
+            mRNA.location = FeatureLocation(mRNA.location.start, mRNA.location.end, cds.location.strand)
             gene.sub_features = [mRNA]
+            gene.location = FeatureLocation(gene.location.start, gene.location.end, cds.location.strand)
+            
             # And append to our record
             rec.features.append(gene)
         return rec
