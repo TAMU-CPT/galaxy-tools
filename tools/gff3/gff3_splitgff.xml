@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<tool id="edu.tamu.cpt2.gff3.splitGff" name="Split GFF3+Fasta into separate parts" version="1.2">
+<tool id="edu.tamu.cpt2.gff3.splitGff" name="Split GFF3+Fasta into separate parts" version="22.0.0">
   <description></description>
   <macros>
     <import>macros.xml</import>
@@ -22,9 +22,9 @@ $input
   </outputs>
   <tests>
 		<test>
-			<param name="input" value="to_split.gff3" />
-			<output name="gff" file="miro.gff3" />
-			<output name="fasta" file="miro.fa" />
+			<param name="input" value="Miro_SplitIn.gff3" />
+			<output name="gff" file="Miro_SplitOut.gff3" />
+			<output name="fasta" file="Miro_SplitOut.fa" />
 		</test>
   </tests>
   <help><![CDATA[
