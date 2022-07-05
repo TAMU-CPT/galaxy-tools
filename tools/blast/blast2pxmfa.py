@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from gff3 import feature_lambda, feature_test_true
@@ -78,7 +78,7 @@ def align_sequences(SequenceList):
     t_fa = tempfile.NamedTemporaryFile(prefix="blastxmfa.", delete=False)
     t_aln = tempfile.NamedTemporaryFile(prefix="blastxmfa.", delete=False)
     # Write fasta to file
-    SeqIO.write(SequenceList, str.encode(t_fa.name), "fasta")
+    SeqIO.write(SequenceList, str(t_fa.name), "fasta")
     # Flush & close
     t_fa.flush()
     t_fa.close()

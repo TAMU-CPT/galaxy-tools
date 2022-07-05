@@ -1,0 +1,79 @@
+<tool id="blastxml_to_gapped_gff3" name="BlastXML to gapped GFF3" version="19.1.0.0">
+  <description>converts blast results to a JBrowse-compatible file</description>
+  <macros>
+	<import>macros.xml</import>
+	<import>cpt-macros.xml</import>
+  </macros>
+  <expand macro="requirements"/>
+  <command detect_errors="aggressive"><![CDATA[
+$__tool_directory__/blastxml2_to_gapped_gff3.py
+@BLAST_XML@
+
+--min_gap $min_gap
+$trim
+$include_seq
+> $output]]></command>
+  <inputs>
+    <expand macro="blast_xml" />
+    <param label="Gap Size" help="Maximum gap in blast alignment, before a new match_part is generated" name="min_gap" type="integer" value="10"/>
+
+    <param type="select" label="Trim sides of blast hits" name="trim">
+        <option value="">Neither</option>
+        <option value="--trim">Trim start and end</option>
+        <option value="--trim_end" selected="true">Trim only end</option>
+    </param>
+
+	<param name="include_seq" type="boolean" label="Include protein alignment in Blast view in Apollo/JBrowse" truevalue="--include_seq" falsevalue="" />
+  </inputs>
+  <outputs>
+    <data format="gff3" name="output"/>
+  </outputs>
+  <tests>
+      <test>
+          <param name="blastxml" value="input.xml"/>
+          <output name="output" file="blast.gff"/>
+      </test>
+  </tests>
+  <help><![CDATA[
+**What it does**
+
+Convert BLAST XML results into gapped GFF3 format with flexible options 
+for visualization within JBrowse. This is critical for displaying the 
+position of high-scoring pairs of the Target aligned against the Query.
+
+
+TThe trimming option represents a unique feature among BLAST XML visualization 
+tools allowing the user to view the complete alignment location information 
+captured in the analysis.
+
+When common BLAST visualization tools produce output like this::
+
+.. image:: $PATH_TO_IMAGES/blast2html.png
+
+This tool produces output which showing the true Subject sequence boundaries 
+(start and end position) relative to your Query sequence::
+
+.. image:: $PATH_TO_IMAGES/blast-extended.png
+
+This can be useful for evaluating alternate start locations for your Query by 
+allowing comparison with the Subject sequences found in the BLAST query.
+
+In this example, the green bars on the top row of the JBrowse image indicate 
+start codons. The BLAST hits and gene in the genome share an upstream start site. 
+Here, the option to retain (not trim) the Subject sequence ends from the BLAST XML 
+data allows that conclusion to be easily made. 
+
+**Options::**
+
+- **Neither** will not perform any trimming, therefore showing the entire protein alignment
+- **Trim start and end** where both ends are trimmed, as in the standard BLAST HTML reports
+- **Trim only end** removes the right end overhanging sequence, under the assumption that 
+upstream sequence is more interesting, and since long tails result in poor visualization
+
+By selecting **Include protein alignment…**, the actual sequence alignment will be displayed 
+in the pop-up BLAST view in Apollo/JBrowse.
+
+]]></help>
+	<expand macro="citations" />
+</tool>
+

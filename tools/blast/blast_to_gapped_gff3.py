@@ -4,7 +4,7 @@ import copy
 import logging
 import re
 import sys
-from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(name="blast2gff3")

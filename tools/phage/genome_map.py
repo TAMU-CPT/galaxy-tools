@@ -473,7 +473,7 @@ def parseFile(annotations, genome, subset=None, rows=2, width=0, hypo=False):
 
     with open("temp", "w") as f:
         for line in gffIn:
-            print >> f, line
+            f.write(line + "\n")
 
     tempGff = open("temp", "r")
 

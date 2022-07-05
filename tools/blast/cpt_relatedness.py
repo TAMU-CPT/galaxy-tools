@@ -73,12 +73,12 @@ def top_related(blast, report=None):
 
         top_accessions[key] = value
 
-    print "# " + "\t".join(
+    print ("# " + "\t".join(
         ["Accession", "Score", "Number of hits", "Mean", "Median", "Std Dev"]
-    )
+    ))
 
     for hit in top_accessions:
-        print "\t".join(
+        print ("\t".join(
             map(
                 str,
                 [
@@ -90,7 +90,7 @@ def top_related(blast, report=None):
                     extra_data[hit]["std"],
                 ],
             )
-        )
+        ))
 
 
 if __name__ == "__main__":

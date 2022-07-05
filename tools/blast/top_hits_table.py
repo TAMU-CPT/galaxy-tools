@@ -2,7 +2,7 @@
 import sys
 import os
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from gff3 import feature_lambda, feature_test_type, fsort, get_id
 from relatedness import parse_blast, with_dice
 
