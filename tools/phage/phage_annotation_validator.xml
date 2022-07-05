@@ -89,6 +89,8 @@ Run CPT's Phage Annotation Validator validating the following properties:
 -  Weird Start Codons
 -  Incorrect gene model (when used with our Genbank Gene Model correction tool)
 
+
+Coding Density is calculated as the CDS minus overlapping CDS regions (does not include tRNAs).
         ]]></help>
 		<expand macro="citations" />
 </tool>
