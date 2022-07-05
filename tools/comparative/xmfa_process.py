@@ -3,7 +3,7 @@ from Bio import SeqIO
 import argparse
 import json
 import os
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 
 
 def parse_xmfa(xmfa):

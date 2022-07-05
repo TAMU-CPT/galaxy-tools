@@ -7,7 +7,7 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.Alphabet import IUPAC
-from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
 from xmfa import parse_xmfa, percent_identity, id_tn_dict
 
 logging.basicConfig(level=logging.INFO)
