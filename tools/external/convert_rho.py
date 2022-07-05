@@ -1,7 +1,7 @@
 from Bio.SeqFeature import FeatureLocation, CompoundLocation
 from Bio import SeqIO, SeqFeature, SeqRecord
 from Bio.Seq import Seq, UnknownSeq
-from cpt_gffParser import gffSeqFeature, gffWrite
+from CPT_GFFParser import gffSeqFeature, gffWrite
 import sys
 
 gffOut = open(sys.argv[1], "w")

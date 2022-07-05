@@ -5,7 +5,7 @@ import logging
 import argparse
 import numpy
 from gff3 import feature_lambda, feature_test_true
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)

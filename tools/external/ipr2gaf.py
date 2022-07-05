@@ -2,7 +2,7 @@
 import os
 import argparse
 import logging
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from datetime import date
 
 logging.basicConfig(level=logging.INFO)

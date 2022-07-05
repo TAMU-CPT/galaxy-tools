@@ -9,7 +9,7 @@ import logging
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
 from gff3 import feature_lambda, feature_test_type
 
 logging.basicConfig(level=logging.INFO)

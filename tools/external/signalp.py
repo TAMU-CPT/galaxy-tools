@@ -3,7 +3,7 @@ import sys
 import argparse
 import re
 import logging
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from gff3 import feature_lambda, get_id, fetchParent
 from bigwig import bigwig_add_header, bigwig_store
 
