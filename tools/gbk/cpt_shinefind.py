@@ -3,7 +3,7 @@ import re
 import sys
 import argparse
 import logging
-from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation

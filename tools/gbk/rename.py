@@ -2,7 +2,7 @@
 import BIO_FIX_TOPO  # NOQA
 import argparse
 import sys
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio import SeqIO
 
 import logging

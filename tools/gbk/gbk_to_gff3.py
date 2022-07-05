@@ -6,7 +6,7 @@ import sys
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import FeatureLocation
-from cpt_gffParser import gffSeqFeature, gffWrite
+from CPT_GFFParser import gffSeqFeature, gffWrite
 
 bottomFeatTypes = ["exon", "RBS", "CDS"]
 

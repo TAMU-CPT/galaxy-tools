@@ -85,4 +85,4 @@ if __name__ == "__main__":
 
     for gbk_file in args.genbank_files:
         for metadata in extract_metadata(gbk_file, args.section):
-            print metadata
+            print (metadata)

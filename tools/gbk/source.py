@@ -76,7 +76,7 @@ if __name__ == "__main__":
     )
     parser.add_argument("--version", action="version", version="0.1")
     args = parser.parse_args()
-    print "\t".join(["# ID", "Host Genus", "Host Species", "Host Strain", "Other"])
+    print ("\t".join(["# ID", "Host Genus", "Host Species", "Host Strain", "Other"]))
 
     for line in phage_source(**vars(args)):
-        print "\t".join(map(str, line))
+        print ("\t".join(map(str, line)))

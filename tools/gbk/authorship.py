@@ -45,6 +45,6 @@ if __name__ == "__main__":
 
     parser.add_argument("--version", action="version", version="0.1")
     args = parser.parse_args()
-    print "\t".join(["# sequence", "reference"] + REF_KEYS)
+    print ("\t".join(["# sequence", "reference"] + REF_KEYS))
     for line in lineage(**vars(args)):
-        print "\t".join(line)
+        print ("\t".join(line))

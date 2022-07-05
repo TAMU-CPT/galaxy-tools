@@ -116,4 +116,4 @@ if __name__ == "__main__":
 
     cds1 = get_features_from_gbk(gbk_file=args.gbk1)
     cds2 = get_features_from_gbk(gbk_file=args.gbk2)
-    print compare_feature_lists(list_a=cds1, list_b=cds2)
+    print (compare_feature_lists(list_a=cds1, list_b=cds2))

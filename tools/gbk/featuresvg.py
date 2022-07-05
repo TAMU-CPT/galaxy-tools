@@ -68,7 +68,7 @@ def plot_boxes(parent=None, box_size=20):
                 if len(rgb) == 3:
                     color = "rgb(%s)" % ",".join(rgb)
                 else:
-                    print rgb
+                    print (rgb)
             else:
                 if row_idx % 2 == 0:
                     color = "rgb(220,220,220)"
@@ -93,4 +93,4 @@ if __name__ == "__main__":
     parser.add_argument("--box_size", type=int, help="Box size", default=20)
 
     args = parser.parse_args()
-    print plot_boxes(**vars(args))
+    print (plot_boxes(**vars(args)))
