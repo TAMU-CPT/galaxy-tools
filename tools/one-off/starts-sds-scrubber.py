@@ -3,7 +3,7 @@
 import argparse
 from Bio import SeqIO
 from Bio.Seq import Seq
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio.Data import CodonTable
 from Bio.Alphabet import IUPAC
 import itertools

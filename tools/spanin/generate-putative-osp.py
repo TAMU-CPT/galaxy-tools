@@ -3,7 +3,7 @@ import argparse
 from cpt import OrfFinder
 from Bio import SeqIO
 from Bio import Seq
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from statistics import median
 from spaninFuncs import *
 import re
