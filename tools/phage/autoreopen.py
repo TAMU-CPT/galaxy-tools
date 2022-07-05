@@ -9,7 +9,7 @@ import subprocess
 import numpy as np
 from enum import Enum
 from Bio import SeqIO
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio.SeqRecord import SeqRecord
 from cpt_convert_mga_to_gff3 import mga_to_gff3
 from gff3 import feature_lambda

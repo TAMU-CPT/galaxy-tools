@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import argparse
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio import SeqIO
 import itertools
 

@@ -277,6 +277,9 @@ def excessive_gap(
             b = contiguous_regions[i]
 
         gap_size = abs(b[0] - a[1])
+        print(a)
+        print(b)
+        quit(2)
         if gap_size > min(excess, excess_divergent):
             a_feat_l = itertools.islice(
                 feature_lambda(

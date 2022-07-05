@@ -5,7 +5,7 @@ import argparse
 import svgwrite
 import logging
 from gff3 import feature_lambda, feature_test_type, get_gff3_id, wa_unified_product_name
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.SeqFeature import FeatureLocation, ExactPosition
 

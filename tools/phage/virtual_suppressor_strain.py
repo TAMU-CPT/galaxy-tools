@@ -3,7 +3,7 @@ import logging
 import sys
 import argparse
 from gff3 import feature_lambda
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio import SeqIO
 from Bio.Seq import reverse_complement, translate
 

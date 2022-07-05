@@ -8,7 +8,7 @@ The program outputs lists of lysis gene candidates that are close to protein cod
 from Bio import SeqIO
 import argparse
 import sys
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from BCBio.GFF import GFFExaminer
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature

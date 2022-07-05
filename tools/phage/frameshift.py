@@ -5,7 +5,7 @@ import sys
 import logging
 from collections import Counter
 from Levenshtein import distance
-from cpt_gffParser import gffParse, gffWrite, gffSeqFeature
+from CPT_GFFParser import gffParse, gffWrite, gffSeqFeature
 from Bio import SeqIO
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from gff3 import feature_lambda, feature_test_type

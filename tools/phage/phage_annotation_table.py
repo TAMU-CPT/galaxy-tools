@@ -3,7 +3,7 @@
 import os
 import argparse
 from gff3 import genes, get_gff3_id, get_rbs_from, feature_test_true, feature_lambda, feature_test_type
-from cpt_gffParser import gffParse, gffWrite
+from CPT_GFFParser import gffParse, gffWrite
 from Bio import SeqIO
 from jinja2 import Environment, FileSystemLoader
 import logging
