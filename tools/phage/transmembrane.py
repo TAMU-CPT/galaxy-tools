@@ -50,12 +50,12 @@ def print_seq(locations, record):
             annotate += "-"
 
     if "*" in annotate:
-        print record.id
-        print record.seq
-        print annotate
+        print (record.id)
+        print (record.seq)
+        print (annotate)
         for r in list(ranges(locations)):
-            print r[0], "-", r[1]
-        print "\n"
+            print (r[0], "-", r[1])
+        print ("\n")
     else:
         return (record.id, record.seq)
 
@@ -83,11 +83,11 @@ def find_tmembrane(records):
             rec_id for rec_id in [print_seq(locations, records[rec])] if rec_id
         ]
 
-    print "Records with no found transmembrane domains:"
+    print ("Records with no found transmembrane domains:")
     for i in no_tmembrane_domains:
-        print i[0]
-        print i[1]
-        print "\n"
+        print (i[0])
+        print (i[1])
+        print ("\n")
 
 
 if __name__ == "__main__":

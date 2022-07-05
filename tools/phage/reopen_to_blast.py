@@ -48,7 +48,7 @@ class BlastBasedReopening(object):
             for hit in blast_results
         ]
         totalData = sorted(totalData, key=lambda x: self.avg(x[2], x[3]))
-        print "Reopen at", totalData[0][0]
+        print("Reopen at", totalData[0][0])
 
     def getBlast(self, path):
         blast_results = (
